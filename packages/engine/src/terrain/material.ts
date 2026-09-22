@@ -1,8 +1,10 @@
 import * as THREE from 'three/webgpu'
 import {
+  abs,
   clamp,
   dot,
   float,
+  fwidth,
   max,
   mix,
   normalize,
@@ -16,10 +18,11 @@ import {
 } from 'three/tsl'
 
 /**
- * Terrain shading for the spike: multi-directional light over a hypsometric ramp.
+ * Terrain shading: multi-directional light over a hypsometric ramp, and water from the
+ * coast mask.
  *
- * Deliberately plain — no materials, no water, no coast mask yet (DESIGN.md §11, A1).
- * The point is to judge the relief itself. Colours are the draft tokens in §8.1.
+ * Still deliberately plain on land — no materials yet (DESIGN.md §11, A3). Colours are
+ * the draft tokens in §8.1.
  */
 
 /** Shared by every tile, so one write re-lights the whole map. */
@@ -40,7 +43,10 @@ function rgb(hex: string) {
   return vec3(c.r, c.g, c.b)
 }
 
-const SEA = rgb('#1E3150')
+const SEA_DEEP = rgb('#1E3150')
+const SEA_SHALLOW = rgb('#3E8C98')
+const LAKE = rgb('#2F6478')
+const INK = rgb('#2A241E')
 const RAMP: [number, string][] = [
   [0, '#8E9563'],
   [300, '#A3A270'],
@@ -62,7 +68,12 @@ function lightVector(azDeg: number, altDeg: number) {
   return new THREE.Vector3(Math.sin(az) * Math.cos(alt), Math.cos(az) * Math.cos(alt), Math.sin(alt))
 }
 
-export function createTerrainMaterial(tex: THREE.DataTexture, n: number, skirtDepth: number) {
+export function createTerrainMaterial(
+  terrainTex: THREE.DataTexture,
+  waterTex: THREE.DataTexture,
+  n: number,
+  skirtDepth: number,
+) {
   const mat = new THREE.MeshBasicNodeMaterial()
   // Skirts face every way; culling them by winding would open the cracks they hide.
   mat.side = THREE.DoubleSide
@@ -70,8 +81,7 @@ export function createTerrainMaterial(tex: THREE.DataTexture, n: number, skirtDe
   // Texels are vertex-aligned: uv 0 and 1 land on the centres of the edge texels, which
   // is what lets neighbouring tiles agree exactly along their shared edge.
   const texUV = uv().mul((n - 1) / n).add(0.5 / n)
-  const vertexSample = texture(tex, texUV).level(float(0))
-  const h = vertexSample.r
+  const h = texture(terrainTex, texUV).level(float(0)).r
   mat.positionNode = vec3(
     positionLocal.x,
     positionLocal.y,
@@ -80,7 +90,7 @@ export function createTerrainMaterial(tex: THREE.DataTexture, n: number, skirtDe
     h.mul(terrainUniforms.verticalExaggeration).add(positionLocal.z.mul(uniform(skirtDepth))),
   )
 
-  const s = texture(tex, texUV)
+  const s = texture(terrainTex, texUV)
   const height = s.r
   const grad = vec2(s.g, s.b).mul(terrainUniforms.shadeExaggeration)
   const normal = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
@@ -98,9 +108,32 @@ export function createTerrainMaterial(tex: THREE.DataTexture, n: number, skirtDe
     const [h1, c1] = RAMP[i]
     land = mix(land, rgb(c1), smoothstep(h0, h1, height))
   }
+  const litLand = land.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
 
-  const lit = land.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
-  // Temporary: sea is wherever the source says zero. The coast SDF replaces this (A2).
-  mat.colorNode = mix(SEA, lit, smoothstep(0.0, 0.5, height))
+  // --- water -------------------------------------------------------------------------
+  const w = texture(waterTex, texUV)
+  const shore = w.r // metres to the shore, positive on land
+  const depth = w.g // metres, ≤ 0
+  // One screen pixel, in metres of shore distance: everything that should look the same
+  // width at every zoom is measured in these.
+  const px = max(fwidth(shore), 1e-3)
+  const isLand = smoothstep(px.mul(-0.5), px.mul(0.5), shore)
+
+  // Depth carries the shallows where the sea floor really shelves; a narrow screen-space
+  // rim along every shore keeps the coast legible where the bathymetry is too coarse to.
+  // Squared so the ramp tightens against the coast: the source is ~1–2 km at sea, and a
+  // wide ramp over it shows its blobs where the floor falls away.
+  const shelf = smoothstep(-160, -6, depth).pow(2)
+  const rim = float(1).sub(smoothstep(0, px.mul(7), shore.negate()))
+  const sea = mix(SEA_DEEP, SEA_SHALLOW, max(shelf.mul(0.8), rim.mul(0.45)))
+  // Lakes sit above sea level; the sea and the below-sea-level seas (Caspian, Dead Sea)
+  // do not. Lakes take one flat colour — no shelf, the depth source does not know them.
+  const lake = mix(LAKE, SEA_SHALLOW, rim.mul(0.35))
+  const water = mix(sea, lake, smoothstep(1, 3, height))
+
+  // A hairline of ink on the shore, as on an engraved plate.
+  const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))
+
+  mat.colorNode = mix(mix(water, litLand, isLand), INK, coastLine.mul(0.35))
   return mat
 }

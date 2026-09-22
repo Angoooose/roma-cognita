@@ -65,3 +65,22 @@ export const ROOT = (() => {
   const size = Math.max(DATA_RECT.maxX - DATA_RECT.minX, DATA_RECT.maxY - DATA_RECT.minY)
   return { x: cx - size / 2, y: cy - size / 2, size }
 })()
+
+/**
+ * Tile addressing shared by the engine and the pipeline. A tile is (level, i, j) with
+ * i counting east and j counting north from the root's south-west corner, so a baked
+ * tile and the terrain node it belongs to always agree on where they are.
+ */
+export interface TileAddress {
+  level: number
+  i: number
+  j: number
+}
+
+export function tileRect({ level, i, j }: TileAddress) {
+  const size = ROOT.size / 2 ** level
+  return { x0: ROOT.x + i * size, y0: ROOT.y + j * size, size }
+}
+
+/** Texels per tile side, vertex-aligned so neighbouring tiles share their edge texels. */
+export const TILE_TEXELS = 257

@@ -3,13 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "validate": "tsx src/validate.ts"
+    "validate": "tsx src/validate.ts",
+    "water": "node --max-old-space-size=12288 --import tsx src/water/build.ts"
   },
   "dependencies": {
     "@roman-map/schema": "*",
-    "yaml": "^2.9.1"
+    "shapefile": "^0.6.6",
+    "sharp": "^0.35.4",
+    "yaml": "^2.9.1",
+    "@roman-map/world": "*"
   },
   "devDependencies": {
-    "@types/node": "^24.13.6"
+    "@types/node": "^24.13.6",
+    "@types/shapefile": "^0.6.4"
   }
 }

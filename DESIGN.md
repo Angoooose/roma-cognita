@@ -58,6 +58,7 @@ roman-map/
   data/                 hand-authored records (YAML) + geometry (GeoJSON) — the moat
   pipeline/             ingest, validate, bake — Node/TS, GDAL CLI for rasters
   packages/
+    world/              projection, frame and tile addressing, shared by pipeline and engine
     schema/             zod schemas + TS types, shared by pipeline and engine
     engine/             the renderer and its public API (three.js)
   apps/
@@ -69,7 +70,7 @@ imports `packages/engine` from its own repo; it plugs in through the same API
 as the explorer (§9) either way.
 
 **Flow:** `data/` + external sources → `pipeline` (validate → join → bake) →
-`dist/` build outputs (textures, tiles, JSON) → `engine` → apps.
+`build/` outputs (textures, tiles, JSON) → `engine` → apps.
 
 **Stack, from the research (September 2026):**
 
@@ -222,8 +223,9 @@ Migrating it proves the schema before new curation starts.
 | ---------------------- | --------------------------------------------------- | ----------------- | ----- |
 | Terrain (runtime)      | **Mapterhorn** `planet.pmtiles`, Terrarium encoding | various open; **terms of the hosted file unverified** | 30 m global, finer in parts of Italy and Spain. Web Mercator, reprojected by the engine (§7.1). Fallback: AWS Terrain Tiles. |
 | Terrain (offline bakes) | Copernicus GLO-30; **FABDEM** (bare earth) now allowed | Copernicus licence; CC BY-NC-SA | Used for ambient occlusion and texture-shading bakes |
-| Bathymetry             | **EMODnet DTM 2024**; GEBCO 2026 outside it          | CC BY 4.0; PD     | Drives the shallow-water band |
-| Coastline, modern      | OSM land polygons (osmdata.openstreetmap.de)        | ODbL              | Natural Earth 10m is too coarse at 50 m/px |
+| Bathymetry             | **AWS Terrain Tiles** (ETOPO/GEBCO-derived) at runtime, z≤8; EMODnet DTM 2024 as an upgrade | open; CC BY 4.0 | Drives the shallow-water band. ~450 m is enough for a colour ramp. |
+| Coastline, modern      | OSM land polygons, split edition (osmdata.openstreetmap.de) | ODbL      | Natural Earth 10m is too coarse at 50 m/px |
+| Lakes                  | **HydroLAKES v1.0** (≥ 0.05 km²)                     | CC BY 4.0         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically |
 | Coastline, ancient     | Our `landscape-change` records; AWMC period patches as seed | ours; ODbL  | AWMC's `roman_open_water` layer is 2 polygons (Miletus, Ephesus) and its Hellenistic layer 5 (adding Utica). Checked 2026-09-22. |
 | Places                 | **Pleiades**; DARE as a cross-check                  | CC BY 3.0; CC BY-SA 3.0 | Importance is curated by us |
 | Territory geometry     | AWMC `roman_empire_bce_60` + our own shapes          | ODbL              | As in `cicero-map` |
@@ -295,12 +297,25 @@ tectonics dominate.
 
 ### 7.2 Water
 
-- **The land/water mask is a signed distance field of the coast**, baked in
-  tiles from OSM land polygons with the `landscape-change` records applied for
-  the current year. One field gives a crisp coast at any zoom, the shallow band,
-  and shore foam.
-- Depth comes from EMODnet, baked to a ~1 km texture over the frame. Depth
-  drives the ramp from deep navy to turquoise shallows.
+- **The land/water mask is a signed distance field of the coast**, built by
+  `npm run water -w pipeline` (`pipeline/src/water/`):
+  - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs). The
+    `landscape-change` records will be applied here per year once they exist.
+  - **Layout:** tiles use the terrain quadtree's own addresses and texel grid,
+    for levels 0–8. Texels are 108 m at level 8; deeper terrain reads a window
+    of its level-8 ancestor.
+  - **Encoding:** distance is clamped to ±16 texels, quantised to 8 bits, and
+    stored as lossless WebP (~5 KB per tile).
+  - **Skipped tiles:** tiles with no shore are not written. `index.json`
+    records whether each is all land or all water.
+  - **What it gives the shader:** from one field, a crisp antialiased coast at
+    any zoom (the edge is where the field crosses zero, found to sub-texel
+    precision), a screen-space shore rim, and a hairline of ink. It is also why
+    land below sea level (Qattara, the Jordan valley) is no longer drawn as sea.
+- **Depth** comes from AWS Terrain Tiles, sampled at runtime alongside elevation
+  by the same worker. Depth drives the ramp from deep navy to turquoise
+  shallows. Lakes are told apart from sea by their surface height and take a
+  flat colour.
 - Specular glint and slow normal-map ripples. No foam at low zoom.
 
 ### 7.3 Politics: the atom ID texture

@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { projection } from '../geo/frame.ts'
+import { projection } from '@roman-map/world'
 
 /**
  * A strategy-map camera: a ground target, a distance, and a tilt. No heading — north is

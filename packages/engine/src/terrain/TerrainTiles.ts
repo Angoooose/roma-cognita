@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { DATA_RECT, ROOT } from '../geo/frame.ts'
+import { DATA_RECT, ROOT, TILE_TEXELS } from '@roman-map/world'
 import { createTerrainMaterial } from './material.ts'
 import type { TileJob, TileResult } from './heightWorker.ts'
 
@@ -15,8 +15,7 @@ import type { TileJob, TileResult } from './heightWorker.ts'
  * "zooming in adds detail, never removes it" rule applied to loading.
  */
 
-/** Texels (= vertices of the height texture) per tile side. */
-const TEXELS = 257
+const TEXELS = TILE_TEXELS
 /** Mesh segments per side. Lighting is per-texel, so the mesh can be coarser. */
 const SEGMENTS = 64
 const MAX_LEVEL = 11
@@ -31,12 +30,14 @@ type State = 'idle' | 'loading' | 'ready'
 interface Node {
   key: string
   level: number
+  i: number
+  j: number
   x0: number
   y0: number
   size: number
   state: State
   mesh?: THREE.Mesh
-  texture?: THREE.DataTexture
+  textures?: THREE.DataTexture[]
   minHeight: number
   maxHeight: number
   lastUsed: number
@@ -67,7 +68,7 @@ export class TerrainTiles {
   stats: TerrainStats = { drawn: 0, ready: 0, loading: 0, queued: 0, maxLevelDrawn: 0 }
 
   constructor() {
-    this.root = makeNode(0, ROOT.x, ROOT.y, ROOT.size)
+    this.root = makeNode(0, 0, 0, undefined)
     for (let i = 0; i < WORKERS; i++) {
       const w = new Worker(new URL('./heightWorker.ts', import.meta.url), { type: 'module' })
       w.onmessage = (e: MessageEvent<TileResult>) => this.onResult(e.data)
@@ -173,7 +174,7 @@ export class TerrainTiles {
       const id = this.nextJob++
       node.state = 'loading'
       this.jobs.set(id, node)
-      const job: TileJob = { id, x0: node.x0, y0: node.y0, size: node.size, n: TEXELS }
+      const job: TileJob = { id, level: node.level, i: node.i, j: node.j }
       // Route neighbours to the same worker so they share its source-tile cache.
       const w = hash(node.level, Math.floor(node.x0 / (node.size * 4)), Math.floor(node.y0 / (node.size * 4)))
       this.workers[w % WORKERS].postMessage(job)
@@ -184,15 +185,10 @@ export class TerrainTiles {
     const node = this.jobs.get(r.id)
     if (!node) return
     this.jobs.delete(r.id)
-    const tex = new THREE.DataTexture(r.texels, TEXELS, TEXELS, THREE.RGBAFormat, THREE.HalfFloatType)
-    tex.minFilter = THREE.LinearFilter
-    tex.magFilter = THREE.LinearFilter
-    tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
-    tex.generateMipmaps = false
-    tex.colorSpace = THREE.NoColorSpace
-    tex.needsUpdate = true
-
-    const mesh = new THREE.Mesh(this.geometry, createTerrainMaterial(tex, TEXELS, node.size * 0.01))
+    const terrain = dataTexture(r.terrain, THREE.RGBAFormat)
+    const water = dataTexture(r.water, THREE.RGFormat)
+    const material = createTerrainMaterial(terrain, water, TEXELS, node.size * 0.01)
+    const mesh = new THREE.Mesh(this.geometry, material)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
     mesh.frustumCulled = false
@@ -201,7 +197,7 @@ export class TerrainTiles {
     this.group.add(mesh)
 
     node.mesh = mesh
-    node.texture = tex
+    node.textures = [terrain, water]
     node.minHeight = r.minHeight
     node.maxHeight = r.maxHeight
     node.state = 'ready'
@@ -220,8 +216,8 @@ export class TerrainTiles {
       if (n.level <= 2 || n.lastUsed === this.frame) continue
       this.group.remove(n.mesh!)
       ;(n.mesh!.material as THREE.Material).dispose()
-      n.texture!.dispose()
-      n.mesh = n.texture = undefined
+      for (const t of n.textures!) t.dispose()
+      n.mesh = n.textures = undefined
       n.state = 'idle'
     }
   }
@@ -230,18 +226,21 @@ export class TerrainTiles {
     for (const w of this.workers) w.terminate()
     walk(this.root, (n) => {
       if (n.mesh) (n.mesh.material as THREE.Material).dispose()
-      n.texture?.dispose()
+      for (const t of n.textures ?? []) t.dispose()
     })
     this.geometry.dispose()
   }
 }
 
-function makeNode(level: number, x0: number, y0: number, size: number, parent?: Node): Node {
+function makeNode(level: number, i: number, j: number, parent: Node | undefined): Node {
+  const size = ROOT.size / 2 ** level
   return {
-    key: `${level}/${x0}/${y0}`,
+    key: `${level}/${i}/${j}`,
     level,
-    x0,
-    y0,
+    i,
+    j,
+    x0: ROOT.x + i * size,
+    y0: ROOT.y + j * size,
     size,
     state: 'idle',
     minHeight: 0,
@@ -252,13 +251,24 @@ function makeNode(level: number, x0: number, y0: number, size: number, parent?: 
 }
 
 function split(n: Node): Node[] {
-  const h = n.size / 2
+  const [l, i, j] = [n.level + 1, n.i * 2, n.j * 2]
   return [
-    makeNode(n.level + 1, n.x0, n.y0, h, n),
-    makeNode(n.level + 1, n.x0 + h, n.y0, h, n),
-    makeNode(n.level + 1, n.x0, n.y0 + h, h, n),
-    makeNode(n.level + 1, n.x0 + h, n.y0 + h, h, n),
+    makeNode(l, i, j, n),
+    makeNode(l, i + 1, j, n),
+    makeNode(l, i, j + 1, n),
+    makeNode(l, i + 1, j + 1, n),
   ]
+}
+
+function dataTexture(data: Uint16Array, format: THREE.PixelFormat) {
+  const tex = new THREE.DataTexture(data, TEXELS, TEXELS, format, THREE.HalfFloatType)
+  tex.minFilter = THREE.LinearFilter
+  tex.magFilter = THREE.LinearFilter
+  tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
+  tex.generateMipmaps = false
+  tex.colorSpace = THREE.NoColorSpace
+  tex.needsUpdate = true
+  return tex
 }
 
 function walk(n: Node, fn: (n: Node) => void) {
