@@ -1,0 +1,112 @@
+# Every work and dataset the records cite. A record points here by id and adds
+# a locator (volume, page, map, chapter, fragment). Datasets carry their licence,
+# because the attribution screen is generated from this file and because a
+# re-licensed build must be able to drop anything whose terms it cannot meet.
+#
+# `kind`: ancient — a text from antiquity; modern — scholarship and atlases,
+# cited and never copied; dataset — machine-readable data the pipeline ingests.
+
+# --- compilations --------------------------------------------------------------
+
+- id: cicero-map
+  kind: modern
+  citation: cicero-map, the predecessor of this project — data/*.json (September 2026)
+  note: >-
+    Cited as provenance, not as authority. Where a migrated record carries only
+    this source, cicero-map gave a reason (an event, a statute) rather than a
+    work, and the reason is kept in the record's note. The validator lists every
+    such record so it can be sourced properly.
+
+# --- modern scholarship --------------------------------------------------------
+
+- id: broughton-mrr
+  kind: modern
+  citation: >-
+    T. R. S. Broughton, The Magistrates of the Roman Republic, 3 vols (New York:
+    American Philological Association, 1951–1986)
+
+- id: cah-ix
+  kind: modern
+  citation: >-
+    J. A. Crook, A. Lintott and E. Rawson (eds), The Cambridge Ancient History,
+    vol. IX², The Last Age of the Roman Republic, 146–43 B.C. (Cambridge, 1994)
+
+- id: braund-1984
+  kind: modern
+  citation: >-
+    D. Braund, Rome and the Friendly King: The Character of the Client Kingship
+    (London, 1984)
+
+- id: sullivan-1990
+  kind: modern
+  citation: R. D. Sullivan, Near Eastern Royalty and Rome, 100–30 BC (Toronto, 1990)
+
+- id: barrington
+  kind: modern
+  citation: >-
+    R. J. A. Talbert (ed.), Barrington Atlas of the Greek and Roman World
+    (Princeton, 2000)
+  note: Reference only — cited, never digitised from (DESIGN §6).
+
+# --- ancient texts -------------------------------------------------------------
+
+- id: caesar-bg
+  kind: ancient
+  citation: Caesar, De Bello Gallico (book VIII by A. Hirtius)
+
+- id: cicero-deiotaro
+  kind: ancient
+  citation: Cicero, Pro Rege Deiotaro
+
+- id: cicero-fam
+  kind: ancient
+  citation: Cicero, Epistulae ad Familiares
+
+- id: appian
+  kind: ancient
+  citation: Appian, Roman History
+
+- id: plutarch
+  kind: ancient
+  citation: Plutarch, Parallel Lives
+
+- id: cassius-dio
+  kind: ancient
+  citation: Cassius Dio, Roman History
+
+- id: pausanias
+  kind: ancient
+  citation: Pausanias, Description of Greece
+
+- id: strabo
+  kind: ancient
+  citation: Strabo, Geography
+
+# --- datasets ------------------------------------------------------------------
+
+- id: awmc-roman-60bce
+  kind: dataset
+  citation: >-
+    Ancient World Mapping Center, geodata — Political shading,
+    roman_empire_bce_60 (Barrington-derived)
+  url: https://github.com/AWMC/geodata
+  licence: ODbL-1.0
+  note: >-
+    74 polygons whose only attributes are OBJECTID, AREA and PERIMETER. Named
+    here by seed point, never by OBJECTID, which is not stable across releases.
+
+- id: natural-earth
+  kind: dataset
+  citation: Natural Earth, 1:10m physical vectors — land
+  url: https://www.naturalearthdata.com/
+  licence: public domain
+  note: >-
+    The coastline cicero-map clipped every atom to. The migrated atom geometry
+    inherits it; DESIGN §6 replaces it with OSM land polygons.
+
+- id: pleiades
+  kind: dataset
+  citation: Pleiades, a gazetteer of past places
+  url: https://pleiades.stoa.org/
+  licence: CC-BY-3.0
+  note: Locators are the place path, e.g. places/423025.

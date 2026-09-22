@@ -1,0 +1,27 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #1e3150;
+  overflow: hidden;
+}
+
+#map {
+  position: fixed;
+  inset: 0;
+  touch-action: none;
+}
+
+.debug {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  padding: 8px 10px;
+  font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace;
+  color: #e8e2d4;
+  background: rgb(20 24 30 / 0.82);
+  border-radius: 4px;
+  white-space: pre;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}

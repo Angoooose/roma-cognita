@@ -1,0 +1,312 @@
+# The time series. One row says: this atom was held by this polity, in this
+# way, over these years, inclusive at both ends. Geometry is drawn once; all
+# that changes over time changes here. An atom with no row covering a year is
+# not claimed that year and draws as plain land — the map says nothing rather
+# than guess. Rows on one atom may abut but never overlap within a layer
+# (holding vs occupation, see packages/schema), and the validator fails if
+# they do.
+#
+# Migrated from cicero-map/data/control.json, whose −68 meant 68 BCE (it
+# called that astronomical; it was not). Its window was 68–43 BCE, so every
+# `before 68 BCE` / `after 43 BCE` below is where that window cut the row off:
+# in force at that year, extent beyond it not stated. Only rows that start or
+# end *inside* the window carry a real event date.
+#
+# The year of a transition belongs to the successor: Numidia is the kingdom's
+# to 47 and Africa Nova's from 46.
+
+# --- Italy -------------------------------------------------------------------
+
+- atom: italia
+  polity: italia
+  relation: citizen-territory
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/control.json }
+  confidence: certain
+  review: draft
+  note: Enfranchised after the Social War.
+
+- atom: cisalpina
+  polity: gallia-cisalpina
+  relation: province
+  from: before 68 BCE
+  to: 50 BCE
+  sources:
+    - { source: cah-ix }
+  confidence: probable
+  review: draft
+  note: Provincial from c. 81.
+
+- atom: cisalpina
+  polity: italia
+  relation: citizen-territory
+  from: 49 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/control.json }
+  confidence: certain
+  review: draft
+  note: >-
+    lex Roscia, 49 — citizenship to the Transpadanes. The province is not
+    formally dissolved into Italy until 42, after Cicero's death; the ground
+    becomes citizen territory here.
+
+# --- the islands ---------------------------------------------------------------
+
+- atom: sicilia
+  polity: sicilia
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+  note: >-
+    Not "from 241": the atom is the whole island, and Hiero's Syracuse was a
+    kingdom allied to Rome until 212/211. The polity carries the 241 date; the
+    ground's start is left as cicero-map's window gave it.
+
+- atom: sardinia
+  polity: sardinia-corsica
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: corsica
+  polity: sardinia-corsica
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+# --- the West ------------------------------------------------------------------
+
+- atom: hispania-citerior
+  polity: hispania-citerior
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: hispania-ulterior
+  polity: hispania-ulterior
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: gallia-transalpina
+  polity: gallia-transalpina
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: gallia-comata
+  polity: gallia-comata
+  relation: province
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg, locator: VII–VIII }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The single weakest date in the dataset — see the polity. (cicero-map: check.)
+
+# --- Greece and the East -------------------------------------------------------
+
+- atom: macedonia
+  polity: macedonia
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: creta
+  polity: creta
+  relation: province
+  from: 66 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/control.json }
+  confidence: probable
+  review: draft
+  note: Conquest by Metellus, 69–67.
+
+- atom: asia
+  polity: asia
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: bithynia-pontus
+  polity: bithynia-pontus
+  relation: province
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: certain
+  review: draft
+  note: Pompey's settlement.
+
+- atom: cilicia
+  polity: cilicia
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr, locator: vol. II }]
+  confidence: probable
+  review: draft
+
+- atom: cyprus
+  polity: cyprus-ptolemaic
+  relation: client
+  from: before 68 BCE
+  to: 59 BCE
+  sources:
+    - { source: cicero-map, locator: data/control.json }
+  confidence: certain
+  review: draft
+  note: Ptolemaic until the lex Clodia.
+
+- atom: cyprus
+  polity: cilicia
+  relation: province
+  from: 58 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/control.json }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Annexed 58 and attached to Cilicia; Cicero therefore governed it in 51–50.
+    Migration review: Caesar is usually said to have handed Cyprus back to the
+    Ptolemies (Arsinoe and the younger Ptolemy) in 47 (Dio 42.35), and Antony
+    confirmed it to Cleopatra; if so this row should end in 48 and a Ptolemaic
+    row follow. Kept as cicero-map had it until someone checks.
+
+- atom: syria
+  polity: syria
+  relation: province
+  from: 64 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: certain
+  review: draft
+  note: Pompey's annexation.
+
+# --- Africa --------------------------------------------------------------------
+
+- atom: africa
+  polity: africa
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- atom: cyrenaica
+  polity: cyrenae
+  relation: province
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: probable
+  review: draft
+  note: Organised c. 74.
+
+- atom: numidia
+  polity: numidia
+  relation: client
+  from: before 68 BCE
+  to: 47 BCE
+  sources: [{ source: braund-1984 }]
+  confidence: probable
+  review: draft
+
+- atom: numidia
+  polity: africa-nova
+  relation: province
+  from: 46 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: certain
+  review: draft
+  note: 'Annexed after Thapsus, 46.'
+
+- atom: mauretania
+  polity: mauretania
+  relation: client
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: braund-1984 }]
+  confidence: probable
+  review: draft
+
+- atom: aegyptus
+  polity: aegyptus
+  relation: client
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: braund-1984 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Migration review: the polity's own note puts client standing at 59 or 55;
+    see relations.yaml. Before that the ground is arguably `independent`.
+
+# --- kingdoms drawn schematically ----------------------------------------------
+
+- atom: nabataea
+  polity: nabataea
+  relation: client
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    cicero-map: check. Nabataean control was of routes and watering points, not of area.
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: probable
+  review: draft
+  note: 'Pharnaces II confirmed by Pompey, 63.'
+
+- atom: thracia-odrysae
+  polity: thracia-odrysae
+  relation: client
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    cicero-map: check. Odrysian authority over the inland tribes was intermittent.

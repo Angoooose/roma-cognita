@@ -1,0 +1,17 @@
+{
+  "name": "@roman-map/explorer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@roman-map/engine": "*"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "vite": "^8.3.0"
+  }
+}

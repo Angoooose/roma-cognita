@@ -1,0 +1,474 @@
+# The register of political units, independent of the ground they held. What
+# ground each held is in claims.yaml; how each stood to Rome is in
+# relations.yaml. cicero-map folded both into one `kind` (citizen / province /
+# client); here `kind` says only what sort of thing the polity was.
+#
+# Migrated from cicero-map/data/polities.json. Its confidence meant: `certain`,
+# the date is fixed by an event everyone agrees on; `probable`, the standard
+# accounts converge; `check`, not settled and wants a human with the books open.
+# `check` became a real confidence plus review: needs-check. Nothing here has
+# been re-verified in this project yet, so everything else is review: draft.
+#
+# Dates. `from` is the province's creation (cicero-map's `since`) where one was
+# recorded. Every other `before 68 BCE` / `after 43 BCE` marks where cicero-map's
+# 68–43 BCE window cut the record off: the polity existed at that year and this
+# data says nothing about how far beyond it (see data/README.md, "Open ends").
+# The year of a transition belongs to the successor, as in cicero-map: a
+# kingdom annexed in 46 ends in 47.
+
+- id: rome
+  kind: state
+  names:
+    - { text: Roma, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+  note: >-
+    Added in migration as the other end of every province-of and client-of
+    relation. cicero-map had no record for Rome itself because everything on its
+    map was implicitly Roman.
+
+- id: italia
+  kind: citizen-territory
+  names:
+    - { text: Italia, lang: la, preferred: true }
+  from: { earliest: 90 BCE, latest: 89 BCE }
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: >-
+    Post-Social War enfranchisement: lex Julia 90, lex Plautia Papiria 89.
+    Citizen territory is not a province and had no governor; it is modelled as a
+    polity so the ground can be claimed by it and named ITALIA.
+
+# --- provinces ---------------------------------------------------------------
+
+- id: sicilia
+  kind: province
+  names:
+    - { text: Sicilia, lang: la, preferred: true }
+  from: 241 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: sardinia-corsica
+  kind: province
+  names:
+    - { text: Sardinia et Corsica, lang: la, preferred: true }
+  from: 227 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: hispania-citerior
+  kind: province
+  names:
+    - { text: Hispania Citerior, lang: la, preferred: true }
+  from: 197 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: hispania-ulterior
+  kind: province
+  names:
+    - { text: Hispania Ulterior, lang: la, preferred: true }
+  from: 197 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: macedonia
+  kind: province
+  names:
+    - { text: Macedonia, lang: la, preferred: true }
+  from: 146 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+  note: >-
+    Includes Greece. Achaea is not a separate province until 27 BCE, so for this
+    whole window the governor of Macedonia is Athens' governor too.
+
+- id: africa
+  kind: province
+  names:
+    - { text: Africa, lang: la, preferred: true }
+    - text: Africa Vetus
+      lang: la
+      from: 46 BCE
+      to: after 43 BCE
+      note: Once Africa Nova is created beside it.
+  from: 146 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: asia
+  kind: province
+  names:
+    - { text: Asia, lang: la, preferred: true }
+  from: 129 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: gallia-transalpina
+  kind: province
+  names:
+    - { text: Gallia Transalpina, lang: la, preferred: true }
+  from: 121 BCE
+  to: after 43 BCE
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+
+- id: cilicia
+  kind: province
+  names:
+    - { text: Cilicia, lang: la, preferred: true }
+  from: 80 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cah-ix, locator: ch. 8 }
+    - { source: broughton-mrr, locator: vol. II }
+  confidence: probable
+  review: draft
+  note: >-
+    Cicero's own province in 51–50, when it also carried Cyprus, Pamphylia,
+    Pisidia, Lycaonia and three Phrygian dioceses detached from Asia. A
+    provincia in this period is a portfolio, not a territory.
+
+- id: gallia-cisalpina
+  kind: province
+  names:
+    - { text: Gallia Cisalpina, lang: la, preferred: true }
+  from: c. 81 BCE
+  to: 43 BCE
+  sources:
+    - { source: cah-ix }
+  confidence: probable
+  review: draft
+  note: >-
+    Formally dissolved into Italy in 42, so the province ends in 43 by the
+    successor-takes-the-year rule — but its ground became citizen territory in
+    49 (lex Roscia), which is when the claim moves (claims.yaml). The province
+    outlived its ground by six years; D. Brutus governed it in 44–43.
+
+- id: cyrenae
+  kind: province
+  names:
+    - { text: Cyrenae, lang: la, preferred: true }
+  from: c. 74 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: draft
+  note: Bequeathed to Rome in 96, organised as a province c. 74.
+
+- id: creta
+  kind: province
+  names:
+    - { text: Creta, lang: la, preferred: true }
+  from: 66 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: draft
+  note: >-
+    Conquered by Q. Caecilius Metellus, 69–67. Probably administered with
+    Cyrenae as a single command from soon after the conquest, but the date of
+    the union is not settled, so it is kept as its own unit rather than
+    asserting one.
+
+- id: syria
+  kind: province
+  names:
+    - { text: Syria, lang: la, preferred: true }
+  from: 64 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: Pompey's annexation; the end of the Seleucid kingdom.
+
+- id: bithynia-pontus
+  kind: province
+  names:
+    - { text: Bithynia et Pontus, lang: la, preferred: true }
+  from: 63 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: >-
+    Pompey's settlement of the East; lex Pompeia. Bithynia alone was provincial
+    from the bequest of 74, but the ground drawn includes Pontus, which was not,
+    so the province is dated from 63 rather than 74 — an under-claim.
+
+- id: gallia-comata
+  kind: province
+  names:
+    - { text: Gallia Comata, lang: la, preferred: true }
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: cah-ix, locator: ch. 9 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Conquered progressively 58–50 and held under Caesar's command, but not
+    formally organised as a province until Augustus. Dated from 51, after Alesia
+    and the final campaigns; the single date stands in for eight years of
+    conquest and is the weakest claim in the dataset. (cicero-map: check.)
+
+- id: africa-nova
+  kind: province
+  names:
+    - { text: Africa Nova, lang: la, preferred: true }
+  from: 46 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: Numidia annexed after Thapsus.
+
+# --- kingdoms ----------------------------------------------------------------
+# cicero-map's `client` kind. The client status is now a relation
+# (relations.yaml); `kingdom` here also covers the principalities, tetrarchies
+# and phylarchies of the Levant — anything ruled by a dynast.
+
+- id: cyprus-ptolemaic
+  kind: kingdom
+  names:
+    - { text: Cyprus, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 59 BCE
+  ruler: Ptolemy of Cyprus, to 58
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: Annexed in 58 by the lex Clodia and attached to Cilicia.
+
+- id: numidia
+  kind: kingdom
+  names:
+    - { text: Numidia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 47 BCE
+  ruler: Juba I, c. 60–46
+  sources:
+    - { source: braund-1984 }
+  confidence: probable
+  review: draft
+  note: Annexed as Africa Nova after Thapsus, 46.
+
+- id: mauretania
+  kind: kingdom
+  names:
+    - { text: Mauretania, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Bocchus II and Bogud
+  sources:
+    - { source: braund-1984 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Divided between the two kings around 49; the arrangement before that is not
+    clear enough to date. (cicero-map: check — the kingdom is not in doubt, its
+    internal arrangement is, hence probable.)
+
+- id: aegyptus
+  kind: kingdom
+  names:
+    - { text: Aegyptus, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Ptolemy XII to 51, then Cleopatra VII
+  sources:
+    - { source: braund-1984 }
+  confidence: probable
+  review: draft
+  note: >-
+    Recognised socius et amicus in 59; Gabinius restores Ptolemy XII in 55.
+    Formally independent throughout. Treated as a client because from 55 a Roman
+    garrison sat in Alexandria and the kingdom's foreign policy was not its own.
+
+- id: nabataea
+  kind: kingdom
+  names:
+    - { text: Nabataea, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Aretas III, then Malichus I
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    (cicero-map: check.) The kingdom is not in doubt; its extent and its
+    standing with Rome are — see the claim and the atom.
+
+- id: bosporus
+  kind: kingdom
+  names:
+    - { text: Bosporus, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Pharnaces II, 63–47
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: draft
+  note: Pharnaces II confirmed by Pompey in 63; killed after Zela.
+
+- id: thracia-odrysae
+  kind: kingdom
+  names:
+    - { text: Thracia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Odrysian kings
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    (cicero-map: check.) Odrysian authority over the inland Thracian tribes was
+    intermittent throughout the window.
+
+- id: galatia
+  kind: kingdom
+  names:
+    - { text: Galatia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Deiotarus, c. 63–40
+  sources:
+    - { source: cicero-deiotaro }
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: draft
+  note: Deiotarus confirmed by Pompey in 63.
+
+- id: cappadocia
+  kind: kingdom
+  names:
+    - { text: Cappadocia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Ariobarzanes III, 51–42
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-fam, locator: XV }
+  confidence: probable
+  review: draft
+  note: Cicero was charged with protecting Ariobarzanes during his Cilician command.
+
+- id: commagene
+  kind: kingdom
+  names:
+    - { text: Commagene, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Antiochus I, c. 70–36
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: draft
+
+- id: judaea
+  kind: kingdom
+  names:
+    - { text: Iudaea, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Hyrcanus II, 63–40
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: draft
+  note: Pompey takes Jerusalem, 63; Antipater procurator from 47.
+
+- id: ituraea
+  kind: kingdom
+  names:
+    - { text: Ituraea, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Ptolemy son of Mennaeus
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: '(cicero-map: check.)'
+
+- id: emesa
+  kind: kingdom
+  names:
+    - { text: Emesa, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Sampsiceramus I
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    (cicero-map: check.) Cicero uses the name as a nickname for Pompey in the
+    letters to Atticus.
+
+- id: osroene
+  kind: kingdom
+  names:
+    - { text: Osroene, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Abgar II
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: '(cicero-map: check.)'
+
+- id: cilicia-tracheia
+  kind: kingdom
+  names:
+    - { text: Cilicia Tracheia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Tarcondimotus I
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: '(cicero-map: check.)'

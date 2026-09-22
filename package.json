@@ -1,0 +1,19 @@
+{
+  "name": "roman-map",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*", "apps/*", "pipeline"],
+  "scripts": {
+    "dev": "npm run dev -w apps/explorer",
+    "build": "npm run build -w apps/explorer",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "data:validate": "npm run validate -w pipeline"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2",
+    "vitest": "*",
+    "tsx": "*",
+    "prettier": "*"
+  }
+}

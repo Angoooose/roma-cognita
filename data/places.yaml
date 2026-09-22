@@ -1,0 +1,3733 @@
+# Settlements, and how loudly each is lettered.
+#
+# Pleiades knows what existed and what it was called; it has no idea what
+# mattered, so this file decides. `prominence` is cicero-map's tier: 1 the
+# overview, 2 from 1.5x, 3 from 3x, 4 from 5x — tier 4 is largely Cicero's own
+# Italy. The ranking is Roman civic status and administrative weight, not size:
+# a conventus seat belongs on a political map at a size its population would
+# not earn, and status is datable in a way population is not.
+#
+# Generated once by pipeline/src/migrate/cicero-map.ts from cicero-map's curated
+# data/places.json and the Pleiades join its build resolved: `location` and
+# `pleiades` are Pleiades', the rest is cicero-map's curation. Edit by hand
+# from here on. Name language was not recorded by cicero-map and is left
+# untagged; the non-preferred names are the spellings the gazetteer files the
+# place under.
+#
+# Dates: every place stood throughout cicero-map's 68–43 BCE window (its build
+# filtered Pleiades by attested date), hence the open ends — except where a row
+# overrides Pleiades, because period dating is not event dating: Pleiades has
+# Carthage continuously from 750 BCE although it lay in ruins from 146 until
+# Caesar refounded it.
+#
+# confidence: certain where the Pleiades join landed within 28 km of the
+# curated position; a longer move is marked probable and needs-check.
+
+- id: roma
+  pleiades: '423025'
+  kind: settlement
+  location: [12.4913, 41.89]
+  names:
+    - { text: Roma, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: caput mundi
+  sources:
+    - { source: pleiades, locator: places/423025 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: alexandria
+  pleiades: '727070'
+  kind: settlement
+  location: [29.9098, 31.2014]
+  names:
+    - { text: Alexandria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: royal seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/727070 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: antiochia
+  pleiades: '658381'
+  kind: settlement
+  location: [36.1832, 36.2226]
+  names:
+    - { text: Antiochia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: provincial seat
+  sources:
+    - { source: pleiades, locator: places/658381 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: athenae
+  pleiades: '579885'
+  kind: settlement
+  location: [23.7239, 37.9716]
+  names:
+    - { text: Athenae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: civitas libera
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/579885 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ephesus
+  pleiades: '599612'
+  kind: settlement
+  location: [27.3424, 37.9402]
+  names:
+    - { text: Ephesus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: provincial seat
+  sources:
+    - { source: pleiades, locator: places/599612 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pergamum
+  pleiades: '550812'
+  kind: settlement
+  location: [27.1842, 39.1325]
+  names:
+    - { text: Pergamum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: conventus
+  sources:
+    - { source: pleiades, locator: places/550812 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: massilia
+  pleiades: '148127'
+  kind: settlement
+  location: [5.3825, 43.2969]
+  names:
+    - { text: Massilia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: civitas foederata
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/148127 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: syracusae
+  pleiades: '462503'
+  kind: settlement
+  location: [15.2833, 37.0701]
+  names:
+    - { text: Syracusae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: provincial seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/462503 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: gades
+  pleiades: '256177'
+  kind: settlement
+  location: [-6.2931, 36.5293]
+  names:
+    - { text: Gades, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: civitas foederata
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/256177 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: rhodus
+  pleiades: '590030'
+  kind: settlement
+  location: [28.2276, 36.4431]
+  names:
+    - { text: Rhodus, preferred: true }
+    - { text: Rhodos }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: civitas libera
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/590030 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: carthago
+  pleiades: '314921'
+  kind: settlement
+  location: [10.3231, 36.8531]
+  names:
+    - { text: Carthago, preferred: true }
+  from: 44 BCE
+  to: after 43 BCE
+  prominence: 1
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: appian, locator: Pun. 136 }
+    - { source: plutarch, locator: C. Gracch. 11 }
+    - { source: cassius-dio, locator: '43.50' }
+    - { source: pleiades, locator: places/314921 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: probable
+  review: draft
+  note: Destroyed 146 and left unoccupied by the lex Julia's curse on the site. Caesar's
+    refoundation as Colonia Iulia Concordia Carthago was decreed in 44 and settled under the
+    triumvirs; Pleiades dates the place continuously from 750.
+
+- id: corinthus
+  pleiades: '570182'
+  kind: settlement
+  location: [22.8786, 37.9056]
+  names:
+    - { text: Corinthus, preferred: true }
+  from: 44 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: w
+  sources:
+    - { source: pausanias, locator: 2.1.2 }
+    - { source: strabo, locator: 8.6.23 }
+    - { source: cassius-dio, locator: '43.50' }
+    - { source: pleiades, locator: places/570182 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: probable
+  review: draft
+  note:
+    Sacked by Mummius in 146 and not resettled as a city until Caesar's Colonia Laus Iulia
+    Corinthiensis in 44. The isthmus was never empty, but the polis was.
+
+- id: lugdunum
+  pleiades: '167717'
+  kind: settlement
+  location: [4.8195, 45.7589]
+  names:
+    - { text: Lugdunum, preferred: true }
+  from: 43 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  sources:
+    - { source: cassius-dio, locator: '46.50' }
+    - { source: cicero-fam, locator: '10.11' }
+    - { source: pleiades, locator: places/167717 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+  note: Founded by L. Munatius Plancus in 43, the last year this map covers. Pleiades dates
+    the place from 30.
+
+- id: utica
+  pleiades: '315248'
+  kind: settlement
+  location: [10.06, 37.0559]
+  names:
+    - { text: Utica, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/315248 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: corduba
+  pleiades: '256128'
+  kind: settlement
+  location: [-4.7792, 37.8847]
+  names:
+    - { text: Corduba, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  sources:
+    - { source: pleiades, locator: places/256128 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tarraco
+  pleiades: '246349'
+  kind: settlement
+  location: [1.2583, 41.1169]
+  names:
+    - { text: Tarraco, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  sources:
+    - { source: pleiades, locator: places/246349 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: narbo
+  pleiades: '246347'
+  kind: settlement
+  location: [3.0042, 43.1836]
+  names:
+    - { text: Narbo, preferred: true }
+    - { text: Narbo Martius }
+    - { text: Col. Narbo Martius }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/246347 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: thessalonica
+  pleiades: '491741'
+  kind: settlement
+  location: [22.9529, 40.6283]
+  names:
+    - { text: Thessalonica, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/491741 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tarsus
+  pleiades: '648789'
+  kind: settlement
+  location: [34.8965, 36.914]
+  names:
+    - { text: Tarsus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/648789 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: gortyn
+  pleiades: '589796'
+  kind: settlement
+  location: [24.9469, 35.0621]
+  names:
+    - { text: Gortyn, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/589796 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cyrene
+  pleiades: '373778'
+  kind: settlement
+  location: [21.8565, 32.82]
+  names:
+    - { text: Cyrene, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: provincial seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/373778 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nicomedia
+  pleiades: '511337'
+  kind: settlement
+  location: [29.9199, 40.7652]
+  names:
+    - { text: Nicomedia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/511337 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Migration review: tagged "royal seat", but the Bithynian kingdom ended with the
+    bequest of 74 and Bithynia was a province throughout the window. Probably wants
+    "provincial seat" or nothing.
+
+- id: brundisium
+  pleiades: '442509'
+  kind: settlement
+  location: [17.9429, 40.6387]
+  names:
+    - { text: Brundisium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  sources:
+    - { source: pleiades, locator: places/442509 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: capua
+  pleiades: '432754'
+  kind: settlement
+  location: [14.2502, 41.0861]
+  names:
+    - { text: Capua, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/432754 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: neapolis
+  pleiades: '433014'
+  kind: settlement
+  location: [14.2529, 40.84]
+  names:
+    - { text: Neapolis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: civitas foederata
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/433014 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: puteoli
+  pleiades: '432815'
+  kind: settlement
+  location: [14.1217, 40.8258]
+  names:
+    - { text: Puteoli, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/432815 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ostia
+  pleiades: '422995'
+  kind: settlement
+  location: [12.2894, 41.7536]
+  names:
+    - { text: Ostia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/422995 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ravenna
+  pleiades: '393480'
+  kind: settlement
+  location: [12.1966, 44.4157]
+  names:
+    - { text: Ravenna, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/393480 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ariminum
+  pleiades: '393379'
+  kind: settlement
+  location: [12.5632, 44.059]
+  names:
+    - { text: Ariminum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/393379 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: mediolanum
+  pleiades: '383706'
+  kind: settlement
+  location: [9.1881, 45.4637]
+  names:
+    - { text: Mediolanum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383706 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: aquileia
+  pleiades: '187290'
+  kind: settlement
+  location: [13.3709, 45.7696]
+  names:
+    - { text: Aquileia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/187290 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tarentum
+  pleiades: '442810'
+  kind: settlement
+  location: [17.233, 40.4738]
+  names:
+    - { text: Tarentum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/442810 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: rhegium
+  pleiades: '452416'
+  kind: settlement
+  location: [15.6439, 38.1093]
+  names:
+    - { text: Rhegium, preferred: true }
+    - { text: Regium }
+    - { text: Rhegion }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/452416 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: genua
+  pleiades: '383664'
+  kind: settlement
+  location: [8.9315, 44.4062]
+  names:
+    - { text: Genua, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383664 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: messana
+  pleiades: '462538'
+  kind: settlement
+  location: [15.5566, 38.1923]
+  names:
+    - { text: Messana, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: civitas foederata
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/462538 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: panormus
+  pleiades: '462410'
+  kind: settlement
+  location: [13.3524, 38.1112]
+  names:
+    - { text: Panormus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/462410 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: lilybaeum
+  pleiades: '462281'
+  kind: settlement
+  location: [12.4297, 37.8027]
+  names:
+    - { text: Lilybaeum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/462281 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: caralis
+  pleiades: '471899'
+  kind: settlement
+  location: [9.1095, 39.2149]
+  names:
+    - { text: Caralis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/471899 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: carthago-nova
+  pleiades: '265849'
+  kind: settlement
+  location: [-0.988, 37.6028]
+  names:
+    - { text: Carthago Nova, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/265849 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: hispalis
+  pleiades: '256210'
+  kind: settlement
+  location: [-5.9963, 37.3827]
+  names:
+    - { text: Hispalis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/256210 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: emporiae
+  pleiades: '246382'
+  kind: settlement
+  location: [3.1145, 42.1334]
+  names:
+    - { text: Emporiae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/246382 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: olisipo
+  pleiades: '256338'
+  kind: settlement
+  location: [-9.1355, 38.7072]
+  names:
+    - { text: Olisipo, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/256338 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tolosa
+  pleiades: '246694'
+  kind: settlement
+  location: [1.4432, 43.6042]
+  names:
+    - { text: Tolosa, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/246694 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: bibracte
+  pleiades: '177473'
+  kind: settlement
+  location: [4.0356, 46.9258]
+  names:
+    - { text: Bibracte, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/177473 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Migration review: tagged "royal seat", but the Aedui were governed by an annual
+    vergobret, not a king (Caesar, BG 1.16). Probably wants no status.
+
+- id: alesia
+  pleiades: '177434'
+  kind: settlement
+  location: [4.5039, 47.5366]
+  names:
+    - { text: Alesia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/177434 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: gergovia
+  pleiades: '138373'
+  kind: settlement
+  location: [3.1241, 45.7182]
+  names:
+    - { text: Gergovia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/138373 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: dyrrachium
+  pleiades: '481818'
+  kind: settlement
+  location: [19.4474, 41.3163]
+  names:
+    - { text: Dyrrachium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/481818 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: apollonia
+  pleiades: '481728'
+  kind: settlement
+  location: [19.4693, 40.7202]
+  names:
+    - { text: Apollonia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/481728 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: patrae
+  pleiades: '570567'
+  kind: settlement
+  location: [21.7385, 38.2433]
+  names:
+    - { text: Patrae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/570567 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sparta
+  pleiades: '570685'
+  kind: settlement
+  location: [22.4247, 37.0818]
+  names:
+    - { text: Sparta, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: civitas libera
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/570685 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: delphi
+  pleiades: '540726'
+  kind: settlement
+  location: [22.5012, 38.4823]
+  names:
+    - { text: Delphi, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/540726 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pella
+  pleiades: '491687'
+  kind: settlement
+  location: [22.5182, 40.7544]
+  names:
+    - { text: Pella, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/491687 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: byzantium
+  pleiades: '520985'
+  kind: settlement
+  location: [28.9739, 41.0059]
+  names:
+    - { text: Byzantium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: civitas libera
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/520985 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: smyrna
+  pleiades: '550893'
+  kind: settlement
+  location: [27.1414, 38.4172]
+  names:
+    - { text: Smyrna, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/550893 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sardes
+  pleiades: '550867'
+  kind: settlement
+  location: [28.0403, 38.4883]
+  names:
+    - { text: Sardes, preferred: true }
+    - { text: Sardis }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/550867 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: miletus
+  pleiades: '599799'
+  kind: settlement
+  location: [27.2788, 37.5305]
+  names:
+    - { text: Miletus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/599799 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: laodicea
+  pleiades: '638955'
+  kind: settlement
+  location: [29.1074, 37.8359]
+  names:
+    - { text: Laodicea, preferred: true }
+    - { text: Laodicea ad Lycum }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/638955 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: delos
+  pleiades: '599587'
+  kind: settlement
+  location: [25.2682, 37.3973]
+  names:
+    - { text: Delos, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: emporium
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/599587 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: mytilene
+  pleiades: '550763'
+  kind: settlement
+  location: [26.547, 39.1105]
+  names:
+    - { text: Mytilene, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/550763 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sinope
+  pleiades: '857321'
+  kind: settlement
+  location: [35.143, 42.0258]
+  names:
+    - { text: Sinope, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/857321 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ancyra
+  pleiades: '619103'
+  kind: settlement
+  location: [32.8593, 39.9438]
+  names:
+    - { text: Ancyra, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/619103 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Migration review: tagged "royal seat" for Deiotarus; see the doubt on the Galatian
+    seat in seats.yaml.
+
+- id: mazaca
+  pleiades: '629035'
+  kind: settlement
+  location: [35.4744, 38.7264]
+  names:
+    - { text: Mazaca, preferred: true }
+    - { text: Mazaka }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/629035 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: iconium
+  pleiades: '648647'
+  kind: settlement
+  location: [32.4923, 37.8725]
+  names:
+    - { text: Iconium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/648647 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: damascus
+  pleiades: '678106'
+  kind: settlement
+  location: [36.3091, 33.5116]
+  names:
+    - { text: Damascus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/678106 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tyrus
+  pleiades: '678437'
+  kind: settlement
+  location: [35.2018, 33.2693]
+  names:
+    - { text: Tyrus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/678437 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sidon
+  pleiades: '678393'
+  kind: settlement
+  location: [35.3728, 33.5619]
+  names:
+    - { text: Sidon, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/678393 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: hierosolyma
+  pleiades: '687928'
+  kind: settlement
+  location: [35.235, 31.7772]
+  names:
+    - { text: Hierosolyma, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/687928 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: petra
+  pleiades: '697725'
+  kind: settlement
+  location: [35.3827, 30.345]
+  names:
+    - { text: Petra, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/697725 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: palmyra
+  pleiades: '668331'
+  kind: settlement
+  location: [38.2649, 34.5528]
+  names:
+    - { text: Palmyra, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/668331 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: samosata
+  pleiades: '658587'
+  kind: settlement
+  location: [38.5304, 37.5258]
+  names:
+    - { text: Samosata, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/658587 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: memphis
+  pleiades: '736963'
+  kind: settlement
+  location: [31.2551, 29.8495]
+  names:
+    - { text: Memphis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/736963 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: salamis
+  pleiades: '707617'
+  kind: settlement
+  location: [33.9029, 35.1796]
+  names:
+    - { text: Salamis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/707617 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: leptis-magna
+  pleiades: '344448'
+  kind: settlement
+  location: [14.2971, 32.6364]
+  names:
+    - { text: Leptis Magna, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/344448 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: salonae
+  pleiades: '197488'
+  kind: settlement
+  location: [16.4834, 43.5396]
+  names:
+    - { text: Salonae, preferred: true }
+    - { text: Salona }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: conventus
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/197488 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: panticapaeum
+  pleiades: '854719'
+  kind: settlement
+  location: [36.4686, 45.351]
+  names:
+    - { text: Panticapaeum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 2
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/854719 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: beneventum
+  pleiades: '432721'
+  kind: settlement
+  location: [14.7812, 41.1304]
+  names:
+    - { text: Beneventum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: colonia
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/432721 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: placentia
+  pleiades: '383741'
+  kind: settlement
+  location: [9.6977, 45.0526]
+  names:
+    - { text: Placentia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383741 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pisae
+  pleiades: '403253'
+  kind: settlement
+  location: [10.4001, 43.7194]
+  names:
+    - { text: Pisae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/403253 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: agrigentum
+  pleiades: '462086'
+  kind: settlement
+  location: [13.5855, 37.2906]
+  names:
+    - { text: Agrigentum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/462086 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: aleria
+  pleiades: '472048'
+  kind: settlement
+  location: [9.5105, 42.1025]
+  names:
+    - { text: Aleria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/472048 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: valentia
+  pleiades: '266090'
+  kind: settlement
+  location: [-0.3768, 39.4704]
+  names:
+    - { text: Valentia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/266090 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: saguntum
+  pleiades: '266021'
+  kind: settlement
+  location: [-0.2772, 39.6781]
+  names:
+    - { text: Saguntum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/266021 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: vienna
+  pleiades: '167719'
+  kind: settlement
+  location: [4.876, 45.5245]
+  names:
+    - { text: Vienna, preferred: true }
+    - { text: Col. Vienna }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/167719 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: arelate
+  pleiades: '148217'
+  kind: settlement
+  location: [4.6308, 43.6776]
+  names:
+    - { text: Arelate, preferred: true }
+    - { text: Col. Arelate }
+    - { text: Theline }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: colonia
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/148217 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: avaricum
+  pleiades: '138207'
+  kind: settlement
+  location: [2.3979, 47.0825]
+  names:
+    - { text: Avaricum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/138207 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: lutetia
+  pleiades: '109126'
+  kind: settlement
+  location: [2.3462, 48.8544]
+  names:
+    - { text: Lutetia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/109126 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: durocortorum
+  pleiades: '108945'
+  kind: settlement
+  location: [4.0332, 49.254]
+  names:
+    - { text: Durocortorum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/108945 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cenabum
+  pleiades: '138281'
+  kind: settlement
+  location: [1.9069, 47.9007]
+  names:
+    - { text: Cenabum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/138281 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: vesontio
+  pleiades: '177657'
+  kind: settlement
+  location: [6.0279, 47.2372]
+  names:
+    - { text: Vesontio, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/177657 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: genava
+  pleiades: '177528'
+  kind: settlement
+  location: [6.1438, 46.202]
+  names:
+    - { text: Genava, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/177528 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: hadrumetum
+  pleiades: '324716'
+  kind: settlement
+  location: [10.6388, 35.8259]
+  names:
+    - { text: Hadrumetum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/324716 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: thapsus
+  pleiades: '324827'
+  kind: settlement
+  location: [11.0427, 35.6214]
+  names:
+    - { text: Thapsus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/324827 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: zama
+  pleiades: '315267'
+  kind: settlement
+  location: [9.286, 36.1117]
+  names:
+    - { text: Zama, preferred: true }
+    - { text: Zama Regia }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/315267 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cirta
+  pleiades: '305064'
+  kind: settlement
+  location: [6.6133, 36.3681]
+  names:
+    - { text: Cirta, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: royal seat
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/305064 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: needs-check
+  note:
+    'Migration review: tagged "royal seat" across the window, but after Thapsus (46) Cirta
+    was given to P. Sittius and his men; the status wants to end in 47.'
+
+- id: hippo-regius
+  pleiades: '305090'
+  kind: settlement
+  location: [7.7501, 36.8825]
+  names:
+    - { text: Hippo Regius, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/305090 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sabratha
+  pleiades: '344282'
+  kind: settlement
+  location: [12.4854, 32.805]
+  names:
+    - { text: Sabratha, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/344282 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: oea
+  pleiades: '344456'
+  kind: settlement
+  location: [13.1753, 32.8976]
+  names:
+    - { text: Oea, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/344456 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ptolemais-cyrenaica
+  pleiades: '373879'
+  kind: settlement
+  location: [20.9538, 32.7071]
+  names:
+    - { text: Ptolemais, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/373879 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: berenice
+  pleiades: '373757'
+  kind: settlement
+  location: [20.0643, 32.1245]
+  names:
+    - { text: Berenice, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/373757 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tingi
+  pleiades: '275736'
+  kind: settlement
+  location: [-5.8102, 35.7875]
+  names:
+    - { text: Tingi, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/275736 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: iol
+  pleiades: '295279'
+  kind: settlement
+  location: [2.1918, 36.6071]
+  names:
+    - { text: Iol, preferred: true }
+    - { text: Iol Caesarea }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: royal seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/295279 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: amphipolis
+  pleiades: '501347'
+  kind: settlement
+  location: [23.8416, 40.8258]
+  names:
+    - { text: Amphipolis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/501347 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: philippi
+  pleiades: '501482'
+  kind: settlement
+  location: [24.2846, 41.0127]
+  names:
+    - { text: Philippi, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/501482 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: larisa
+  pleiades: '540905'
+  kind: settlement
+  location: [22.421, 39.6349]
+  names:
+    - { text: Larisa, preferred: true }
+    - { text: Larissa }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/540905 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pharsalus
+  pleiades: '541042'
+  kind: settlement
+  location: [22.3879, 39.2885]
+  names:
+    - { text: Pharsalus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/541042 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: argos
+  pleiades: '570106'
+  kind: settlement
+  location: [22.7204, 37.631]
+  names:
+    - { text: Argos, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/570106 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: thebae
+  pleiades: '541138'
+  kind: settlement
+  location: [23.3177, 38.3199]
+  names:
+    - { text: Thebae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/541138 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: chalcis
+  pleiades: '540703'
+  kind: settlement
+  location: [23.6219, 38.4571]
+  names:
+    - { text: Chalcis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/540703 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: megara
+  pleiades: '570468'
+  kind: settlement
+  location: [23.3402, 37.9851]
+  names:
+    - { text: Megara, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/570468 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: buthrotum
+  pleiades: '530824'
+  kind: settlement
+  location: [20.0208, 39.7458]
+  names:
+    - { text: Buthrotum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/530824 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ambracia
+  pleiades: '530794'
+  kind: settlement
+  location: [20.9901, 39.1549]
+  names:
+    - { text: Ambracia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/530794 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: actium
+  pleiades: '530771'
+  kind: settlement
+  location: [20.7659, 38.9539]
+  names:
+    - { text: Actium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/530771 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cnossus
+  pleiades: '589872'
+  kind: settlement
+  location: [25.1631, 35.2978]
+  names:
+    - { text: Cnossus, preferred: true }
+    - { text: Knosos }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/589872 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cydonia
+  pleiades: '589886'
+  kind: settlement
+  location: [24.0187, 35.5158]
+  names:
+    - { text: Cydonia, preferred: true }
+    - { text: Kydonia }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/589886 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: halicarnassus
+  pleiades: '599636'
+  kind: settlement
+  location: [27.4222, 37.0404]
+  names:
+    - { text: Halicarnassus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/599636 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cnidus
+  pleiades: '599575'
+  kind: settlement
+  location: [27.3728, 36.6882]
+  names:
+    - { text: Cnidus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/599575 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cos
+  pleiades: '599581'
+  kind: settlement
+  location: [27.1374, 36.8229]
+  names:
+    - { text: Cos, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/599581 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: chios
+  pleiades: '550496'
+  kind: settlement
+  location: [26.133, 38.3722]
+  names:
+    - { text: Chios, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/550496 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: samos
+  pleiades: '599925'
+  kind: settlement
+  location: [26.9445, 37.6882]
+  names:
+    - { text: Samos, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/599925 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cyzicus
+  pleiades: '511218'
+  kind: settlement
+  location: [27.8832, 40.3856]
+  names:
+    - { text: Cyzicus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: civitas libera
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/511218 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nicaea
+  pleiades: '511268'
+  kind: settlement
+  location: [29.7147, 40.4291]
+  names:
+    - { text: Nicaea, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/511268 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: heraclea-pontica
+  pleiades: '844944'
+  kind: settlement
+  location: [31.4174, 41.2833]
+  names:
+    - { text: Heraclea Pontica, preferred: true }
+    - { text: Heraclea }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/844944 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: amisus
+  pleiades: '857024'
+  kind: settlement
+  location: [36.3313, 41.2927]
+  names:
+    - { text: Amisus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/857024 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: amasia
+  pleiades: '857018'
+  kind: settlement
+  location: [35.8279, 40.6668]
+  names:
+    - { text: Amasia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/857018 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: trapezus
+  pleiades: '857359'
+  kind: settlement
+  location: [39.7233, 41.0043]
+  names:
+    - { text: Trapezus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/857359 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pessinus
+  pleiades: '609500'
+  kind: settlement
+  location: [31.5836, 39.3329]
+  names:
+    - { text: Pessinus, preferred: true }
+    - { text: Pessinous }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/609500 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: side
+  pleiades: '639105'
+  kind: settlement
+  location: [31.3922, 36.7684]
+  names:
+    - { text: Side, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/639105 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: attalia
+  pleiades: '638778'
+  kind: settlement
+  location: [30.7, 36.8903]
+  names:
+    - { text: Attalia, preferred: true }
+    - { text: Attalea }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/638778 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: xanthus
+  pleiades: '639166'
+  kind: settlement
+  location: [29.3202, 36.3571]
+  names:
+    - { text: Xanthus, preferred: true }
+    - { text: Xanthos }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/639166 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: patara
+  pleiades: '639042'
+  kind: settlement
+  location: [29.3145, 36.2618]
+  names:
+    - { text: Patara, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/639042 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: comana
+  pleiades: '857095'
+  kind: settlement
+  location: [36.6387, 40.3576]
+  names:
+    - { text: Comana, preferred: true }
+    - { text: Komana }
+    - { text: Comana Pontica }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/857095 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: seleucia-pieria
+  pleiades: '658483'
+  kind: settlement
+  location: [35.9286, 36.1213]
+  names:
+    - { text: Seleucia Pieria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/658483 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: apamea
+  pleiades: '668335'
+  kind: settlement
+  location: [36.4024, 35.4214]
+  names:
+    - { text: Apamea, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/668335 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: emesa
+  pleiades: '668261'
+  kind: settlement
+  location: [36.7193, 34.7377]
+  names:
+    - { text: Emesa, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/668261 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Migration review: tagged "royal seat"; see the doubt on the Emesene seat in
+    seats.yaml (Arethusa).
+
+- id: berytus
+  pleiades: '678060'
+  kind: settlement
+  location: [35.5112, 33.8986]
+  names:
+    - { text: Berytus, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/678060 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ptolemais-phoenicia
+  pleiades: '678010'
+  kind: settlement
+  location: [35.0798, 32.9213]
+  names:
+    - { text: Ptolemais, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/678010 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ascalon
+  pleiades: '687839'
+  kind: settlement
+  location: [34.5505, 31.6648]
+  names:
+    - { text: Ascalon, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/687839 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: gaza
+  pleiades: '687902'
+  kind: settlement
+  location: [34.4517, 31.5202]
+  names:
+    - { text: Gaza, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/687902 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: zeugma
+  pleiades: '658636'
+  kind: settlement
+  location: [37.8702, 37.0577]
+  names:
+    - { text: Zeugma, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/658636 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: edessa
+  pleiades: '658457'
+  kind: settlement
+  location: [38.7867, 37.1486]
+  names:
+    - { text: Edessa, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: royal seat
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/658457 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nisibis
+  pleiades: '874623'
+  kind: settlement
+  location: [41.2154, 37.0675]
+  names:
+    - { text: Nisibis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/874623 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pelusium
+  pleiades: '727192'
+  kind: settlement
+  location: [32.5473, 31.0428]
+  names:
+    - { text: Pelusium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/727192 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: paphos
+  pleiades: '707586'
+  kind: settlement
+  location: [32.4066, 34.7572]
+  names:
+    - { text: Paphos, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/707586 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: citium
+  pleiades: '707534'
+  kind: settlement
+  location: [33.632, 34.9212]
+  names:
+    - { text: Citium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/707534 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: iader
+  pleiades: '197312'
+  kind: settlement
+  location: [15.2238, 44.1155]
+  names:
+    - { text: Iader, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/197312 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: narona
+  pleiades: '197400'
+  kind: settlement
+  location: [17.5986, 43.0464]
+  names:
+    - { text: Narona, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/197400 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: scodra
+  pleiades: '481986'
+  kind: settlement
+  location: [19.5129, 42.0602]
+  names:
+    - { text: Scodra, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/481986 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tomis
+  pleiades: '217016'
+  kind: settlement
+  location: [28.6497, 44.1729]
+  names:
+    - { text: Tomis, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/217016 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: istros
+  pleiades: '216839'
+  kind: settlement
+  location: [28.7751, 44.5478]
+  names:
+    - { text: Istros, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/216839 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: olbia
+  pleiades: '226546'
+  kind: settlement
+  location: [31.9059, 46.6924]
+  names:
+    - { text: Olbia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/226546 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: chersonesus
+  pleiades: '226564'
+  kind: settlement
+  location: [33.4923, 44.6111]
+  names:
+    - { text: Chersonesus, preferred: true }
+    - { text: Chersonesos }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/226564 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: phanagoria
+  pleiades: '854724'
+  kind: settlement
+  location: [36.9597, 45.2763]
+  names:
+    - { text: Phanagoria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/854724 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: dioscurias
+  pleiades: '857107'
+  kind: settlement
+  location: [41.0112, 42.9983]
+  names:
+    - { text: Dioscurias, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/857107 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: artaxata
+  pleiades: '874361'
+  kind: settlement
+  location: [44.5752, 39.8819]
+  names:
+    - { text: Artaxata, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 3
+  status: royal seat
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/874361 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: arpinum
+  pleiades: '432700'
+  kind: settlement
+  location: [13.6099, 41.6484]
+  names:
+    - { text: Arpinum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/432700 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: formiae
+  pleiades: '432839'
+  kind: settlement
+  location: [13.6035, 41.256]
+  names:
+    - { text: Formiae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/432839 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tusculum
+  pleiades: '423108'
+  kind: settlement
+  location: [12.7072, 41.7981]
+  names:
+    - { text: Tusculum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/423108 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: astura
+  pleiades: '432703'
+  kind: settlement
+  location: [12.7653, 41.4089]
+  names:
+    - { text: Astura, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432703 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: antium
+  pleiades: '422837'
+  kind: settlement
+  location: [12.629, 41.4479]
+  names:
+    - { text: Antium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/422837 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cumae
+  pleiades: '432808'
+  kind: settlement
+  location: [14.0564, 40.8479]
+  names:
+    - { text: Cumae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/432808 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: baiae
+  pleiades: '432716'
+  kind: settlement
+  location: [14.0703, 40.8174]
+  names:
+    - { text: Baiae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432716 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: misenum
+  pleiades: '432941'
+  kind: settlement
+  location: [14.0849, 40.7863]
+  names:
+    - { text: Misenum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432941 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: pompeii
+  pleiades: '433032'
+  kind: settlement
+  location: [14.4854, 40.7494]
+  names:
+    - { text: Pompeii, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/433032 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: herculaneum
+  pleiades: '432873'
+  kind: settlement
+  location: [14.3474, 40.8054]
+  names:
+    - { text: Herculaneum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432873 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nuceria
+  pleiades: '432985'
+  kind: settlement
+  location: [14.6739, 40.7431]
+  names:
+    - { text: Nuceria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/432985 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nola
+  pleiades: '432981'
+  kind: settlement
+  location: [14.5245, 40.9268]
+  names:
+    - { text: Nola, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/432981 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: salernum
+  pleiades: '433075'
+  kind: settlement
+  location: [14.7659, 40.678]
+  names:
+    - { text: Salernum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/433075 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: paestum
+  pleiades: '442733'
+  kind: settlement
+  location: [15.0051, 40.4208]
+  names:
+    - { text: Paestum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/442733 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: velia
+  pleiades: '452488'
+  kind: settlement
+  location: [15.1562, 40.1605]
+  names:
+    - { text: Velia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/452488 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: caieta
+  pleiades: '432734'
+  kind: settlement
+  location: [13.571, 41.2141]
+  names:
+    - { text: Caieta, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432734 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: minturnae
+  pleiades: '432940'
+  kind: settlement
+  location: [13.7684, 41.2422]
+  names:
+    - { text: Minturnae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/432940 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sinuessa
+  pleiades: '433122'
+  kind: settlement
+  location: [13.8448, 41.1523]
+  names:
+    - { text: Sinuessa, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/433122 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tarracina
+  pleiades: '433143'
+  kind: settlement
+  location: [13.2488, 41.2912]
+  names:
+    - { text: Tarracina, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/433143 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: anagnia
+  pleiades: '422833'
+  kind: settlement
+  location: [13.159, 41.7422]
+  names:
+    - { text: Anagnia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/422833 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: praeneste
+  pleiades: '423013'
+  kind: settlement
+  location: [12.8923, 41.8395]
+  names:
+    - { text: Praeneste, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/423013 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: tibur
+  pleiades: '423081'
+  kind: settlement
+  location: [12.7982, 41.9636]
+  names:
+    - { text: Tibur, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/423081 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: aricia
+  pleiades: '422844'
+  kind: settlement
+  location: [12.6733, 41.7214]
+  names:
+    - { text: Aricia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/422844 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: lanuvium
+  pleiades: '422956'
+  kind: settlement
+  location: [12.6976, 41.6747]
+  names:
+    - { text: Lanuvium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/422956 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: bovillae
+  pleiades: '422852'
+  kind: settlement
+  location: [12.617, 41.7659]
+  names:
+    - { text: Bovillae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/422852 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ardea
+  pleiades: '422843'
+  kind: settlement
+  location: [12.547, 41.6094]
+  names:
+    - { text: Ardea, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/422843 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: lavinium
+  pleiades: '422960'
+  kind: settlement
+  location: [12.4807, 41.6645]
+  names:
+    - { text: Lavinium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/422960 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: veii
+  pleiades: '423116'
+  kind: settlement
+  location: [12.3905, 42.0213]
+  names:
+    - { text: Veii, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/423116 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: reate
+  pleiades: '413283'
+  kind: settlement
+  location: [12.8612, 42.4031]
+  names:
+    - { text: Reate, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413283 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: interamna
+  pleiades: '413178'
+  kind: settlement
+  location: [12.6437, 42.5622]
+  names:
+    - { text: Interamna, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/413178 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: narnia
+  pleiades: '413225'
+  kind: settlement
+  location: [12.5157, 42.5188]
+  names:
+    - { text: Narnia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413225 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ocriculum
+  pleiades: '413231'
+  kind: settlement
+  location: [12.4666, 42.4127]
+  names:
+    - { text: Ocriculum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413231 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: spoletium
+  pleiades: '413320'
+  kind: settlement
+  location: [12.7384, 42.7453]
+  names:
+    - { text: Spoletium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413320 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: nursia
+  pleiades: '413229'
+  kind: settlement
+  location: [13.0964, 42.7942]
+  names:
+    - { text: Nursia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413229 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sulmo
+  pleiades: '433134'
+  kind: settlement
+  location: [13.9257, 42.0468]
+  names:
+    - { text: Sulmo, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/433134 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: corfinium
+  pleiades: '413105'
+  kind: settlement
+  location: [13.839, 42.122]
+  names:
+    - { text: Corfinium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/413105 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: asculum
+  pleiades: '413036'
+  kind: settlement
+  location: [13.575, 42.8554]
+  names:
+    - { text: Asculum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413036 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: ancona
+  pleiades: '413014'
+  kind: settlement
+  location: [13.5161, 43.619]
+  names:
+    - { text: Ancona, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413014 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: fanum-fortunae
+  pleiades: '413129'
+  kind: settlement
+  location: [13.0169, 43.8449]
+  names:
+    - { text: Fanum Fortunae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413129 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: sena-gallica
+  pleiades: '413310'
+  kind: settlement
+  location: [13.218, 43.715]
+  names:
+    - { text: Sena Gallica, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413310 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: arretium
+  pleiades: '413032'
+  kind: settlement
+  location: [11.863, 43.4713]
+  names:
+    - { text: Arretium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413032 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cortona
+  pleiades: '413106'
+  kind: settlement
+  location: [11.9878, 43.2741]
+  names:
+    - { text: Cortona, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413106 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: perusia
+  pleiades: '413248'
+  kind: settlement
+  location: [12.3899, 43.1112]
+  names:
+    - { text: Perusia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/413248 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: clusium
+  pleiades: '413096'
+  kind: settlement
+  location: [11.9477, 43.0165]
+  names:
+    - { text: Clusium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413096 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: volsinii
+  pleiades: '413389'
+  kind: settlement
+  location: [11.9851, 42.648]
+  names:
+    - { text: Volsinii, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413389 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: falerii
+  pleiades: '413125'
+  kind: settlement
+  location: [12.3589, 42.2998]
+  names:
+    - { text: Falerii, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413125 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: volaterrae
+  pleiades: '403292'
+  kind: settlement
+  location: [10.8601, 43.4016]
+  names:
+    - { text: Volaterrae, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: municipium
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/403292 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: populonia
+  pleiades: '403212'
+  kind: settlement
+  location: [10.4896, 42.9882]
+  names:
+    - { text: Populonia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/403212 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cosa
+  pleiades: '413107'
+  kind: settlement
+  location: [11.2885, 42.4113]
+  names:
+    - { text: Cosa, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/413107 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: luca
+  pleiades: '403234'
+  kind: settlement
+  location: [10.507, 43.8418]
+  names:
+    - { text: Luca, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/403234 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: luna
+  pleiades: '403235'
+  kind: settlement
+  location: [10.0168, 44.064]
+  names:
+    - { text: Luna, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/403235 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: bononia
+  pleiades: '393421'
+  kind: settlement
+  location: [11.3455, 44.4946]
+  names:
+    - { text: Bononia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/393421 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: mutina
+  pleiades: '383715'
+  kind: settlement
+  location: [10.9252, 44.6471]
+  names:
+    - { text: Mutina, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383715 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: parma
+  pleiades: '383737'
+  kind: settlement
+  location: [10.328, 44.8015]
+  names:
+    - { text: Parma, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383737 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: cremona
+  pleiades: '383628'
+  kind: settlement
+  location: [10.0261, 45.1336]
+  names:
+    - { text: Cremona, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: s
+  sources:
+    - { source: pleiades, locator: places/383628 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: verona
+  pleiades: '383816'
+  kind: settlement
+  location: [10.9957, 45.4422]
+  names:
+    - { text: Verona, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383816 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: patavium
+  pleiades: '393473'
+  kind: settlement
+  location: [11.877, 45.4096]
+  names:
+    - { text: Patavium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/393473 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: brixia
+  pleiades: '383603'
+  kind: settlement
+  location: [10.2231, 45.5398]
+  names:
+    - { text: Brixia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/383603 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: aesernia
+  pleiades: '432652'
+  kind: settlement
+  location: [14.2324, 41.5963]
+  names:
+    - { text: Aesernia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/432652 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: venusia
+  pleiades: '442847'
+  kind: settlement
+  location: [15.8273, 40.9689]
+  names:
+    - { text: Venusia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  status: colonia
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/442847 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: canusium
+  pleiades: '442525'
+  kind: settlement
+  location: [16.0656, 41.2214]
+  names:
+    - { text: Canusium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/442525 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: luceria
+  pleiades: '442640'
+  kind: settlement
+  location: [15.3355, 41.5086]
+  names:
+    - { text: Luceria, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: n
+  sources:
+    - { source: pleiades, locator: places/442640 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: barium
+  pleiades: '442500'
+  kind: settlement
+  location: [16.8703, 41.1292]
+  names:
+    - { text: Barium, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/442500 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: hydruntum
+  pleiades: '442615'
+  kind: settlement
+  location: [18.4911, 40.1459]
+  names:
+    - { text: Hydruntum, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/442615 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: croton
+  pleiades: '452317'
+  kind: settlement
+  location: [17.128, 39.0812]
+  names:
+    - { text: Croton, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/452317 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: thurii
+  pleiades: '452457'
+  kind: settlement
+  location: [16.4943, 39.7173]
+  names:
+    - { text: Thurii, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/452457 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: vibo-valentia
+  pleiades: '452337'
+  kind: settlement
+  location: [16.0976, 38.6756]
+  names:
+    - { text: Vibo Valentia, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: w
+  sources:
+    - { source: pleiades, locator: places/452337 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: locri
+  pleiades: '452369'
+  kind: settlement
+  location: [16.2443, 38.2263]
+  names:
+    - { text: Locri, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  prominence: 4
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/452369 }
+    - { source: cicero-map, locator: data/places.json }
+  confidence: certain
+  review: draft
+
+- id: hierapolis-castabala
+  kind: settlement
+  location: [36.2667, 37.2167]
+  names:
+    - { text: Hierapolis-Castabala, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-map, locator: data/seats.json }
+  confidence: probable
+  review: needs-check
+  note:
+    Seat of Tarcondimotus (seats.yaml). Not joined to Pleiades by cicero-map; its position
+    is cicero-map's own.
+
+- id: chalcis-sub-libano
+  kind: settlement
+  location: [36.11, 34]
+  names:
+    - { text: Chalcis sub Libano, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-map, locator: data/seats.json }
+  confidence: uncertain
+  review: needs-check
+  note: The Ituraean seat (seats.yaml). The site is not securely identified, and it is not
+    joined to Pleiades; the position is cicero-map's guess and the weakest in the dataset.

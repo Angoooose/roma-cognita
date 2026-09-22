@@ -1,0 +1,15 @@
+{
+  "name": "@roman-map/pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "tsx src/validate.ts"
+  },
+  "dependencies": {
+    "@roman-map/schema": "*",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6"
+  }
+}

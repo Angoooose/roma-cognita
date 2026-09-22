@@ -1,0 +1,3 @@
+data/geometry/*.geojson
+node_modules
+dist

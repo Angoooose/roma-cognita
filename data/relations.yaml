@@ -1,0 +1,335 @@
+# How polities stood to one another over time: `polity` is `type` `of` another.
+# This is what cicero-map's `kind` meant by province and client, lifted out so
+# it can be dated separately from the polity and from the ground it held —
+# Egypt was a kingdom throughout, a client only from some point in the window.
+#
+# Every row here is derived from cicero-map/data/polities.json and control.json;
+# nothing is new. Province rows run from the province's creation. Client rows
+# run over the years cicero-map drew the kingdom as a client, which for the
+# kingdoms drawn as seats was its whole 68–43 window.
+
+# --- citizen territory and provinces -------------------------------------------
+
+- polity: italia
+  type: citizen-territory-of
+  of: rome
+  from: { earliest: 90 BCE, latest: 89 BCE }
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: lex Julia 90, lex Plautia Papiria 89.
+
+- polity: sicilia
+  type: province-of
+  of: rome
+  from: 241 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: sardinia-corsica
+  type: province-of
+  of: rome
+  from: 227 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: hispania-citerior
+  type: province-of
+  of: rome
+  from: 197 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: hispania-ulterior
+  type: province-of
+  of: rome
+  from: 197 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: macedonia
+  type: province-of
+  of: rome
+  from: 146 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: africa
+  type: province-of
+  of: rome
+  from: 146 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: asia
+  type: province-of
+  of: rome
+  from: 129 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: gallia-transalpina
+  type: province-of
+  of: rome
+  from: 121 BCE
+  to: after 43 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: cilicia
+  type: province-of
+  of: rome
+  from: 80 BCE
+  to: after 43 BCE
+  sources: [{ source: cah-ix, locator: ch. 8 }, { source: broughton-mrr, locator: vol. II }]
+  confidence: probable
+  review: draft
+
+- polity: gallia-cisalpina
+  type: province-of
+  of: rome
+  from: c. 81 BCE
+  to: 43 BCE
+  sources: [{ source: cah-ix }]
+  confidence: probable
+  review: draft
+  note: Dissolved into Italy in 42.
+
+- polity: cyrenae
+  type: province-of
+  of: rome
+  from: c. 74 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/polities.json }]
+  confidence: probable
+  review: draft
+  note: 'Bequeathed 96, organised c. 74.'
+
+- polity: creta
+  type: province-of
+  of: rome
+  from: 66 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/polities.json }]
+  confidence: probable
+  review: draft
+  note: 'After the conquest by Metellus, 69–67.'
+
+- polity: syria
+  type: province-of
+  of: rome
+  from: 64 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/polities.json }]
+  confidence: certain
+  review: draft
+  note: Pompey's annexation.
+
+- polity: bithynia-pontus
+  type: province-of
+  of: rome
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/polities.json }]
+  confidence: certain
+  review: draft
+  note: Pompey's settlement; lex Pompeia.
+
+- polity: gallia-comata
+  type: province-of
+  of: rome
+  from: 51 BCE
+  to: after 43 BCE
+  sources: [{ source: caesar-bg }, { source: cah-ix, locator: ch. 9 }]
+  confidence: uncertain
+  review: needs-check
+  note: Not formally a province until Augustus; see the polity.
+
+- polity: africa-nova
+  type: province-of
+  of: rome
+  from: 46 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/polities.json }]
+  confidence: certain
+  review: draft
+  note: Annexation of Numidia after Thapsus.
+
+# --- client kingdoms -------------------------------------------------------------
+
+- polity: cyprus-ptolemaic
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: 59 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: certain
+  review: draft
+  note: Annexed in 58 by the lex Clodia.
+
+- polity: numidia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: 47 BCE
+  sources: [{ source: braund-1984 }]
+  confidence: probable
+  review: draft
+
+- polity: mauretania
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: braund-1984 }]
+  confidence: probable
+  review: needs-check
+  note: Two kings from about 49; see the polity.
+
+- polity: aegyptus
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: braund-1984 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Migrated as cicero-map drew it, a client for the whole window. But
+    cicero-map's own note argues for client standing only from 59 (socius et
+    amicus) or 55 (the Gabinian garrison), and before that Egypt was formally
+    independent. The start probably wants to be 59 or 55 with the years before
+    as `independent`; not changed here because that is a new judgement.
+
+- polity: nabataea
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    cicero-map: check. Migration review: Scaurus campaigned against Aretas III in 62;
+    what standing followed wants confirming.
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-map, locator: data/control.json }]
+  confidence: probable
+  review: draft
+  note: 'Pharnaces II confirmed by Pompey, 63.'
+
+- polity: thracia-odrysae
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: 'cicero-map: check.'
+
+- polity: galatia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: cicero-deiotaro }]
+  confidence: probable
+  review: draft
+
+- polity: cappadocia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
+  confidence: probable
+  review: draft
+
+- polity: commagene
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: probable
+  review: draft
+
+- polity: judaea
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cicero-map, locator: data/polities.json }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Migrated as cicero-map drew it, a client for the whole window. Migration
+    review: cicero-map's own source dates Rome's hold from Pompey's capture of
+    Jerusalem in 63; before that the Hasmoneans were treaty friends of Rome
+    rather than clients, so the start may want to be 63.
+
+- polity: ituraea
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: 'cicero-map: check.'
+
+- polity: emesa
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: 'cicero-map: check.'
+
+- polity: osroene
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: 'cicero-map: check.'
+
+- polity: cilicia-tracheia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: 'cicero-map: check.'
