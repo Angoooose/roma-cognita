@@ -65,9 +65,9 @@ export const terrainTextures = {
 
 // Ground colour families, one per climate channel of the biome texture.
 const GROUND_TEMPERATE = rgb('#7F8757')
-const GROUND_DESERT = rgb('#D9AE7C')
-const GROUND_DESERT_ROCK = rgb('#B9875E')
-const GROUND_STEPPE = rgb('#B3A66A')
+const GROUND_DESERT = rgb('#CDB28A')
+const GROUND_DESERT_ROCK = rgb('#B08C68')
+const GROUND_STEPPE = rgb('#B8A77C')
 const GROUND_DRY_SUMMER = rgb('#939260')
 const GROUND_COLD = rgb('#7C8264')
 const GROUND_FLOODPLAIN = rgb('#738049')
@@ -75,7 +75,7 @@ const ROCK = rgb('#8C8378')
 const SNOW = rgb('#E9E6E0')
 
 const SEA_DEEP = rgb('#1E3150')
-const SEA_SHALLOW = rgb('#3E8C98')
+const SEA_SHALLOW = rgb('#4E7F8A')
 const LAKE = rgb('#2F6478')
 const RIVER = rgb('#3D7A8E')
 const INK = rgb('#2A241E')
