@@ -111,4 +111,20 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   shader draws the holding layer only; occupation wants hatching over it.
 - **Picking against relief.** Picking uses the flat plane, so at steep tilt it
   can miss by a few kilometres near a border.
-- **Curved territory labels**: the next step (§7.5).
+- **Curved territory labels**: built (§7.5).
+
+### Labels, left for later
+
+- **Settlement names and collision.** These come with the places work: EB
+  Garamond small caps, greedy collision by priority, cross-fades.
+- **Greek.** Polytonic atlases and harfbuzz shaping, for names only attested in
+  Greek.
+- **Tilt parallax.** Labels are drawn at sea level with no depth test, so they
+  are never hidden by relief. When the camera tilts, a name over high ground
+  drifts off it by the relief's height. The fix is to lift each name to the
+  ground height under it.
+- **Two-line names** for compact territories with long names (Sardinia et
+  Corsica, Bithynia et Pontus).
+- **Heavier Cinzel.** The atlas is the variable font's default instance
+  (Regular); the hairlines are thickened in the shader. A 600-weight instance
+  would read better at small sizes.

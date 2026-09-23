@@ -354,3 +354,215 @@
     (727191). The course is well attested by its sites; between them it is a spline.
     It was still the eastern outlet in the window and silted later. Display
     discharge 600 m³/s.
+
+# --- seas ------------------------------------------------------------------------
+#
+# Water names, in Latin (DESIGN §8.2). A sea's shape in geometry/features.geojson
+# is the course its name is lettered along, hand-placed in
+# pipeline/src/labels/seas.ts — not its extent, which no source draws as a line.
+# The names are Pliny's; he wrote after our window, but he is the fullest Latin
+# survey of the seas, and these are the forms the Barrington Atlas prints.
+# Locators are to the book only; the paragraphs want checking (review:
+# needs-check).
+
+- id: oceanus-atlanticus
+  kind: sea
+  names:
+    - { text: Oceanus Atlanticus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 3 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: oceanus-germanicus
+  kind: sea
+  names:
+    - { text: Oceanus Germanicus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The North Sea. Pliny's name; the Republic had none it used consistently, and
+    Caesar speaks only of the Ocean.
+
+- id: mare-balearicum
+  kind: sea
+  names:
+    - { text: Mare Balearicum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 3 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-sardoum
+  kind: sea
+  names:
+    - { text: Mare Sardoum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 3 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-tyrrhenum
+  kind: sea
+  names:
+    - { text: Mare Tyrrhenum, lang: la, preferred: true }
+    - { text: Mare Inferum, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 3 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-hadriaticum
+  kind: sea
+  names:
+    - { text: Mare Hadriaticum, lang: la, preferred: true }
+    - { text: Mare Superum, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 3 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-ionium
+  kind: sea
+  names:
+    - { text: Mare Ionium, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-aegaeum
+  kind: sea
+  names:
+    - { text: Mare Aegaeum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: mare-libycum
+  kind: sea
+  names:
+    - { text: Mare Libycum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 5 }
+    - { source: barrington }
+  confidence: probable
+  review: needs-check
+
+- id: mare-aegyptium
+  kind: sea
+  names:
+    - { text: Mare Aegyptium, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 5 }
+    - { source: barrington }
+  confidence: probable
+  review: needs-check
+
+- id: pontus-euxinus
+  kind: sea
+  names:
+    - { text: Pontus Euxinus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: propontis
+  kind: sea
+  names:
+    - { text: Propontis, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: palus-maeotis
+  kind: sea
+  names:
+    - { text: Palus Maeotis, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 4 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+  note: >-
+    The Sea of Azov. The Romans called it a marsh-lake (palus); it is filed as a
+    sea because it is an arm of one, and its name is lettered like the others.
+
+- id: mare-hyrcanium
+  kind: sea
+  names:
+    - { text: Mare Hyrcanium, lang: la, preferred: true }
+    - { text: Mare Caspium, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 6 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+
+- id: sinus-arabicus
+  kind: gulf
+  names:
+    - { text: Sinus Arabicus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 6 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check
+  note: The Red Sea.
+
+- id: sinus-persicus
+  kind: gulf
+  names:
+    - { text: Sinus Persicus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: book 6 }
+    - { source: barrington }
+  confidence: certain
+  review: needs-check

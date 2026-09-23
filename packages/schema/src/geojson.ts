@@ -78,7 +78,7 @@ export const FeaturePropertiesSchema = z
   })
   .nullable()
 
-/** data/geometry/features.geojson: areas for floodplains, lakes, marshes and plains; lines for rivers. */
+/** data/geometry/features.geojson: areas for floodplains, lakes, marshes and plains; lines for rivers and for the courses of water names. */
 export const FeatureGeometrySchema = z.object({
   type: z.literal('FeatureCollection'),
   features: z.array(
@@ -93,10 +93,17 @@ export const FeatureGeometrySchema = z.object({
 export type FeatureGeometry = z.infer<typeof FeatureGeometrySchema>
 export type AnyGeometry = z.infer<typeof AnyGeometrySchema>
 
-/** Which geometry each feature kind takes. Kinds not listed carry no shape yet. */
+/**
+ * Which geometry each feature kind takes. Kinds not listed carry no shape yet. For
+ * water — seas, gulfs, straits — the line is the course the name is lettered along,
+ * not an extent: the coast mask draws the water itself.
+ */
 export const FEATURE_GEOMETRY_KIND = {
   floodplain: 'area',
   lake: 'area',
+  sea: 'line',
+  gulf: 'line',
+  strait: 'line',
   marsh: 'area',
   plain: 'area',
   river: 'line',

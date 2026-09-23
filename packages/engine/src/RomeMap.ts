@@ -3,6 +3,7 @@ import { MapCamera, type CameraState } from './camera/MapCamera.ts'
 import { TerrainTiles } from './terrain/TerrainTiles.ts'
 import { terrainTextures, terrainUniforms } from './terrain/material.ts'
 import { PoliticalLayer, politicsUniforms, type PoliticalHit } from './politics/PoliticalLayer.ts'
+import { LabelLayer, labelUniforms } from './labels/LabelLayer.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -29,6 +30,7 @@ export class RomeMap {
   readonly view: MapCamera
   readonly terrain = new TerrainTiles()
   readonly politics = new PoliticalLayer()
+  readonly labels = new LabelLayer()
   frame: FrameStats = { frameMs: 0, fps: 0, drawCalls: 0, triangles: 0 }
   private resizeObserver: ResizeObserver
   private lastTime = performance.now()
@@ -36,7 +38,8 @@ export class RomeMap {
 
   static async create(container: HTMLElement, opts: RomeMapOptions) {
     const map = new RomeMap(container, opts)
-    await Promise.all([map.renderer.init(), loadBiome(), map.politics.load()])
+    await Promise.all([map.renderer.init(), loadBiome(), map.politics.load(), map.labels.load()])
+    map.labels.setYear(map.politics.year, false)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
   }
@@ -54,6 +57,7 @@ export class RomeMap {
     this.view = new MapCamera(this.renderer.domElement, opts.camera)
     this.view.onChange = () => (this.dirty = true)
     this.scene.add(this.terrain.group)
+    this.scene.add(this.labels.group)
 
     this.resizeObserver = new ResizeObserver(() => this.resize())
     this.resizeObserver.observe(container)
@@ -94,6 +98,7 @@ export class RomeMap {
     politicsUniforms.fill.value = 0.1 + 0.72 * tier
     politicsUniforms.glow.value = 0.7
     if (this.politics.tick(now)) this.dirty = true
+    labelUniforms.metresPerPixel.value = mpp
 
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
     this.terrain.update(this.view.camera, vpPx)
@@ -120,7 +125,9 @@ export class RomeMap {
 
   /** Shows a year. `animate` cross-fades from the current one. */
   setYear(year: number, opts: { animate?: boolean } = {}) {
+    const before = this.politics.year
     this.politics.setYear(year, opts)
+    if (this.politics.year !== before) this.labels.setYear(this.politics.year, !!opts.animate)
     this.dirty = true
   }
 

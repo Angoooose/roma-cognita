@@ -79,3 +79,13 @@ Drawing the data exposed these. None is a drawing bug.
   polygons. Phase 2 replaces them.
 - **Lycia is unclaimed** (the gap in south-west Anatolia). In this period it
   was a free league, so that may be right, but nobody has decided it.
+
+## Sea names (September 2026)
+
+- **Locators are to Pliny's book only.** The paragraph numbers are unchecked,
+  hence `review: needs-check` on every sea.
+- **Pliny wrote a century after our window.** The Republic's own usage was
+  looser: Caesar has only "the Ocean" for the North Sea. The Barrington
+  Atlas's forms are used throughout.
+- **The courses are placement, not extent.** Where one sea ends and the next
+  begins (Ionium against Siculum, Libycum against Aegyptium) is not claimed.

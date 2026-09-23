@@ -19,8 +19,8 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `relations.yaml`         | polity-to-polity links over time (`province-of`, `client-of`)   |
 | `seats.yaml`             | kingdoms drawn as their capital because their extent is unknown |
 | `places.yaml`            | settlements, joined to Pleiades, with prominence and status     |
-| `features.yaml`          | physical features: floodplains, the Nile delta branches         |
-| `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived, see below |
+| `features.yaml`          | physical features: floodplains, the Nile delta branches, seas   |
+| `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived; for seas, the course their name is lettered along |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
 

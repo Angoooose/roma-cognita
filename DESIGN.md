@@ -407,23 +407,45 @@ the current year: filtering is a uniform change, not a rebuild. Points
 
 ### 7.5 Labels
 
-- **Fonts** are baked to MTSDF atlases: Latin, polytonic Greek, and small
-  caps. **Shaping** uses harfbuzzjs in a worker.
-- **Glyph layout is ours:** one instanced draw call for all glyphs. Each glyph
-  instance carries its anchor, angle, size, colour, label id, year range and
-  zoom range.
-- **Curved area labels are computed offline, per distinct territory shape:**
-  - approximate the medial axis, prune the spurs and pick the main path
-    (Barrault; Krumpe & Mendel 2020);
-  - fit an arc or spline and flip it if it would read upside down;
-  - set tracking so the text fills 60–80% of the path.
+Territory and water names were built in September 2026 (`pipeline/src/labels`,
+`packages/engine/src/labels`). Settlement names come with the places work.
 
-  Territory shapes change only at claim boundaries, so this runs per unique
-  configuration, not per year.
-- **Collision** is greedy by priority over a grid index, with per-glyph boxes.
-  It re-runs on zoom or year change, never per frame, and cross-fades
-  MapLibre-style. Carried over: thin labels by the ink on the plate, not by
-  zoom tier alone.
+- **Fonts** are baked to MSDF atlases by `npm run fonts -w pipeline`
+  (msdf-bmfont-xml): Cinzel for land and EB Garamond italic for water, both
+  OFL. The licence texts ship beside the atlases.
+  - Latin only for now. Polytonic Greek and harfbuzz shaping come with Greek
+    names. Until then, kerning comes from the atlas's own pair table.
+- **Glyph layout is ours.** Each glyph is centred on the path at its own arc
+  length and turned to the path's tangent there.
+  - There is one mesh per typeface, rebuilt only when the year changes.
+  - Names are sized in metres, so they grow with the land they name, and each
+    fades in and out by its cap height in pixels.
+  - Land names are dark ink with a faint paper halo; water names are gold on
+    the sea (§8.1).
+- **Territory names are placed offline, per distinct territory** (a polity plus
+  the set of atoms it holds, so once per claim change, not per year):
+  - rasterise the union and keep its largest piece;
+  - distance-transform it;
+  - take the principal axis weighted by depth²;
+  - walk the ridge, the deepest cell in each slice across the axis (after
+    Barrault; Krumpe & Mendel 2020);
+  - fit a depth-weighted parabola and flatten it until it stays inside;
+  - take the largest capitals whose centred text fits the curve and never sits
+    on ground thinner than the letters need, then open the tracking to fill
+    about 72% of the curve.
+- **No name tilts more than 35° from horizontal, plus 10° of bend at its ends**
+  (decided 2026-09-22, after Aegyptus came out almost vertical). The axis is
+  clamped, every angle in range is tried, and the one giving the largest letters
+  wins. Tall, narrow lands get a name across them, not one the reader has to
+  turn their head for. Everything reads left to right.
+- **Water names** follow courses placed by hand (`pipeline/src/labels/seas.ts`),
+  stored as the sea records' line geometry, and are sized to fill 90% of the
+  course.
+- **Not yet built:**
+  - collision between labels (territory names sit inside their territories and
+    have not needed it);
+  - two-line names;
+  - thinning labels by the ink on the plate.
 
 ### 7.6 Zoom tiers
 
