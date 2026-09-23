@@ -5,7 +5,8 @@
  *
  * The known world is the union of the ring in data/known-world.yaml, every atom's
  * outline, and a 150 km disc round every place — so it can never leave out something
- * the rest of the data draws.
+ * the rest of the data draws. The exception is an atom the file lists as running on
+ * `beyond` the ring: only its part inside the ring counts.
  *
  * Output: build/known/known.png, 1024² over the quadtree root, one channel: signed
  * distance to the known world's edge, 128 at the edge, 4 km per step, positive outside,
@@ -19,6 +20,7 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 import { parse } from 'yaml'
 import { ROOT, projection } from '@roman-map/world'
+import { knownPolygons, readKnownWorld, type LonLat } from './world.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/known/known.png')
@@ -27,23 +29,17 @@ const SIZE = 1024
 const KM_PER_STEP = 4
 const PLACE_REACH_KM = 150
 
-type LonLat = [number, number]
-
 async function main() {
   const t0 = Date.now()
   const texelKm = ROOT.size / SIZE / 1000
   const inside = new Uint8Array(SIZE * SIZE)
 
-  const known = parse(readFileSync(join(ROOT_DIR, 'data/known-world.yaml'), 'utf8')) as {
-    ring: LonLat[]
-  }
+  const known = readKnownWorld()
   fillRings([known.ring], inside)
 
   const atoms = JSON.parse(readFileSync(join(ROOT_DIR, 'data/geometry/atoms.geojson'), 'utf8'))
   for (const f of atoms.features) {
-    const g = f.geometry
-    const polys: LonLat[][][] = g.type === 'Polygon' ? [g.coordinates] : g.coordinates
-    for (const rings of polys) fillRings(rings, inside)
+    for (const rings of knownPolygons(known, f.id, f.geometry)) fillRings(rings, inside)
   }
 
   const places = parse(readFileSync(join(ROOT_DIR, 'data/places.yaml'), 'utf8')) as {

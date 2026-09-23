@@ -1072,8 +1072,21 @@
           note: down the Euphrates and the Shatt al-Arab — the Euphrates was the line Rome and Parthia recognised
         - [49.0, 29.5]
         - [52.0, 27.0]
-        - [56.0, 27.0]
-        - [56.0, 38.5]
+        - at: [54.5, 26.2]
+          note: out in the Gulf, so the Persian coast and its islands are the edge
+        - at: [56.3, 26.55]
+          note: the Strait of Hormuz, north of the Musandam
+        - [57.0, 25.8]
+        - at: [57.5, 25.0]
+          note: into the Gulf of Oman, so the Carmanian coast is the edge
+        - [62.5, 24.5]
+        - at: [62.5, 38.5]
+          note: >-
+            past Margiana; the east is drawn on beyond the known world, which cuts
+            it (known-world.yaml `beyond`), so the colour stops where Roman knowledge
+            did and not at a meridian of ours
+        - at: [56.0, 38.5]
+          note: north of the Kopet Dag, against the Dahae
         - [53.5, 37.2]
         - [49.2, 37.6]
         - [48.5, 36.9]
@@ -1094,10 +1107,12 @@
   confidence: probable
   review: draft
   note: >-
-    The Arsacid kingdom west of the frame's edge: Mesopotamia beyond Osroene,
-    Babylonia with Seleucia and Ctesiphon, and Media. The Euphrates is the line
-    Rome and Parthia treated as the frontier after Pompey. Takes Armenia's and
-    Atropatene's edges from theirs.
+    The Arsacid kingdom: Mesopotamia beyond Osroene, Babylonia with Seleucia and
+    Ctesiphon, Media, and on east through Parthyene towards Margiana. The
+    Euphrates is the line Rome and Parthia treated as the frontier after Pompey.
+    The eastern edge is a convention, not a frontier: it lies past the known
+    world, which ends the colour first. Takes Armenia's and Atropatene's edges
+    from theirs.
 
 # === Anatolia ==================================================================
 

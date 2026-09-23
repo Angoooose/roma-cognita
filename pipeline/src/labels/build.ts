@@ -22,6 +22,7 @@ import { loadDataset } from '../load.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
+import { knownPolygons, readKnownWorld } from '../known/world.ts'
 import { projection } from '@roman-map/world'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
@@ -70,12 +71,14 @@ for (let y = first; y <= last; y++) {
   }
 }
 
+// A name goes on the known part of its territory: past the edge of the known world the
+// map is only a sketch, and a name there would claim what the colour does not.
+const known = readKnownWorld()
 const ringsFor = (atoms: string[]): Ring[] => {
   const out: Ring[] = []
   let polygon = 0
   for (const id of atoms) {
-    const geom = data.geometry.atoms.get(id)!
-    for (const poly of geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates) {
+    for (const poly of knownPolygons(known, id, data.geometry.atoms.get(id)!)) {
       const p = polygon++
       for (const ring of poly) out.push(projectRing(ring, p, Infinity))
     }

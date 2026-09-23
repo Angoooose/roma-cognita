@@ -28,6 +28,12 @@ review: draft
 sources:
   - { source: strabo, locator: 'Geography 1–2, 7, 11, 16–17' }
   - { source: herodotus, locator: '4.36–45' }
+# Atoms that run on past the ring into lands Rome knew only by report. Their
+# outer edge is a convention, so rather than let it extend the known world (and
+# show as a ruled line), the ring cuts them: the colour stops at the ragged edge
+# of Roman knowledge, and their names are placed on the part inside it.
+beyond:
+  - parthia
 ring:
   # Atlantic: the Moroccan coast and the Fortunate Isles by report; Iberia; Gaul's
   # Ocean coast; Ierne and Britain by name and coast.
