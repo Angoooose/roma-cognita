@@ -21,10 +21,11 @@ import {
 import { ROOT } from '@roman-map/world'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
+import { waterLattice, waterShading } from './water.ts'
 
 /**
  * Terrain shading: ground colour from climate and terrain, multi-directional light, and
- * water from the coast mask.
+ * water from the coast mask and the baked depth (water.ts).
  *
  * Ground is built only from physical data (DESIGN.md §7.1): the climate texture picks
  * the colour family, slope and height decide rock and snow, and noise breaks up flat
@@ -74,9 +75,6 @@ const GROUND_FLOODPLAIN = rgb('#738049')
 const ROCK = rgb('#8C8378')
 const SNOW = rgb('#E9E6E0')
 
-const SEA_DEEP = rgb('#1E3150')
-const SEA_SHALLOW = rgb('#3E8C98')
-const LAKE = rgb('#2F6478')
 const RIVER = rgb('#3D7A8E')
 const INK = rgb('#2A241E')
 
@@ -218,17 +216,17 @@ export function createTerrainMaterial(
   const px = max(fwidth(shore), 1e-3)
   const isLand = smoothstep(px.mul(-0.5), px.mul(0.5), shore)
 
-  // Depth carries the shallows where the sea floor really shelves; a narrow screen-space
-  // rim along every shore keeps the coast legible where the bathymetry is too coarse to.
-  // Squared so the ramp tightens against the coast: the source is ~1–2 km at sea, and a
-  // wide ramp over it shows its blobs where the floor falls away.
-  const shelf = smoothstep(-160, -6, depth).pow(2)
-  const rim = float(1).sub(smoothstep(0, px.mul(7), shore.negate()))
-  const sea = mix(SEA_DEEP, SEA_SHALLOW, max(shelf.mul(0.8), rim.mul(0.45)))
-  // Lakes sit above sea level; the sea and the below-sea-level seas (Caspian, Dead Sea)
-  // do not. Lakes take one flat colour — no shelf, the depth source does not know them.
-  const lake = mix(LAKE, SEA_SHALLOW, rim.mul(0.35))
-  const water = mix(sea, lake, smoothstep(1, 3, height))
+  const [kaz, kalt] = LIGHTS[0]
+  const { water, wet } = waterShading({
+    shore,
+    depth,
+    height,
+    slope,
+    lattice: waterLattice(tile, uv().mul(extent)),
+    pxM,
+    detail,
+    light: lightVector(kaz, kalt),
+  })
 
   // Rivers, from the per-texel distance and discharge the worker computed (see
   // rivers.ts for the sizing, which this mirrors). A river is drawn at its real width
@@ -268,7 +266,10 @@ export function createTerrainMaterial(
   const floodplain = smoothstep(edge.negate(), edge, toFloodplain)
   const fertile = GROUND_FLOODPLAIN.mul(float(1).add(patch).add(grain))
   const litFertile = fertile.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
-  const ground0 = mix(litLand, litFertile, floodplain.mul(0.9))
+  // Wet sand along low, flat shores: darker and a touch cooler, as damp ground is.
+  const ground0 = mix(litLand, litFertile, floodplain.mul(0.9)).mul(
+    mix(vec3(1, 1, 1), vec3(0.72, 0.74, 0.76), wet),
+  )
 
   // Politics (politics/shading.ts). The fill is lit by the same light as the ground, but
   // compressed towards flat, so relief still reads through it without muddying it; the

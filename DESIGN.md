@@ -357,9 +357,26 @@ tectonics dominate.
   - **At runtime** the worker also stops the floor falling faster than 1:2 from
     the drawn coast, since at a cliff the first texel of 110 m bathymetry is
     already tens of metres deep.
-- Depth drives the ramp from deep navy to turquoise shallows. Lakes are told
-  apart from sea by their surface height and take a flat colour.
-- Specular glint and slow normal-map ripples. No foam at low zoom.
+- **Shading** (`packages/engine/src/terrain/water.ts`) keeps the paper tier's
+  contrast far out and adds detail only as it becomes resolvable:
+  - **Colour from depth** in exponential steps, as light falls off in water:
+    sand showing through the first few metres, turquoise over the shelf, a mid
+    blue on the slope, navy in the basins. Lakes are told apart from sea by
+    their surface height and take a flat colour.
+  - **Surface:** four octaves of drifting noise (1.6 km, 250 m, 60 m, 15 m)
+    perturb a normal lit by the map's north-west light, with a warm glint and a
+    sky sheen that grow as the camera tilts. The noise repeats every 256 cells
+    and each tile gets its offset into that period in double precision: world
+    kilometres over a 15 m wavelength overflow float32 and drew the ripples on
+    a grid. Value noise, warped octave by octave, with a sine-free hash, since
+    both plain value noise and a sin hash showed straight lines close in.
+  - **Surf in metres:** lines 28 m apart roll in over the last ~120 m of gently
+    shelving shores (not cliffs), broken by noise, with foam at the water's
+    edge. A darker band of wet sand runs along low, flat shores.
+  - **The overview rim** (a few pixels of shallows along every coast) is kept
+    only far out. It is measured in the camera's metres per pixel: measured in
+    the field's own derivative, it drew a square around every islet smaller
+    than a mask texel.
 
 ### 7.3 Politics: the atom field
 

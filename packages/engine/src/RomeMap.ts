@@ -10,6 +10,7 @@ import {
 import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
 import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
 import { roadUniforms } from './roads/shading.ts'
+import { waterUniforms } from './terrain/water.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -121,6 +122,9 @@ export class RomeMap {
     politicsUniforms.glow.value = 0.7
     if (this.politics.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
+    // The sea's clock. Wrapped every ~2.8 h so the drifting noise stays in float range;
+    // the wrap is one frame's jump in a swell nobody is timing.
+    waterUniforms.time.value = (now / 1000) % 10000
     roadUniforms.pixelRatio.value = this.renderer.getPixelRatio()
     const w = this.container.clientWidth
     const h = this.container.clientHeight
