@@ -20,6 +20,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
+import { type LegendData, LegendPanel } from '@/components/Legend.tsx'
 import { Kbd } from '@/components/ui/kbd'
 import { Separator } from '@/components/ui/separator'
 import { Slider } from '@/components/ui/slider'
@@ -41,7 +42,7 @@ export function InSitu({ backdrop }: { backdrop: string }) {
       >
         <ModeBar />
         <InspectorDemo />
-        <Legend />
+        <LegendPanel {...LEGEND_63_BCE} className="absolute bottom-4 left-4" />
         <TimelineDemo />
       </div>
     </section>
@@ -177,92 +178,43 @@ function Fact({ label, children }: { label: string; children: ReactNode }) {
   )
 }
 
-function Legend() {
-  return (
-    <Card size="sm" className="absolute bottom-4 left-4 w-[220px] gap-2">
-      <CardHeader>
-        <CardTitle className="text-xs">Legenda</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-1.5 text-sm">
-        <Key swatch="#AE4A42">Rome and her provinces</Key>
-        <Key swatch="#BE7E73">Client kingdoms</Key>
-        <Key swatch="#5A7398">Other powers</Key>
-        <Key
-          swatch="linear-gradient(90deg, transparent, #7A6A96 70%)"
-          className="opacity-80"
-        >
-          <span className="italic">Extent uncertain</span>
-        </Key>
-        <Separator className="my-2" />
-        <Key mark={<Capital />}>Capital</Key>
-        <Key mark={<Town />}>Town</Key>
-        <Key mark={<Seat />}>Kingdom, by its seat</Key>
-        <Key mark={<Road />}>Road, dated</Key>
-      </CardContent>
-    </Card>
-  )
+/**
+ * The real legend, drawn from the live map's legend for 63 BCE (read from
+ * `map.politics.legend(-62)`), so the playground shows what the app does.
+ */
+const LEGEND_63_BCE: LegendData = {
+  politics: {
+    powers: [
+      {
+        id: 'rome',
+        name: 'Roma',
+        fill: '#ae4a42',
+        province: '#b85556',
+        client: '#c39790',
+        atoms: 53,
+      },
+      { id: 'parthia', name: 'Parthia', fill: '#5e8c84', client: '#a5b0a9', atoms: 2 },
+      ...['#a0734f', '#7a6a96', '#b98f4a', '#8e9a52', '#5a7398', '#9a6a7e'].map(
+        (fill, k) => ({
+          id: `other-${k}`,
+          name: '',
+          fill,
+          atoms: 1,
+        }),
+      ),
+    ],
+    uncertain: true,
+    schematic: true,
+    unclaimed: true,
+  },
+  seat: { fill: '#bb938a' },
 }
-
-function Key(props: {
-  swatch?: string
-  mark?: ReactNode
-  className?: string
-  children: ReactNode
-}) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span className="grid w-5 place-items-center">
-        {props.swatch ? (
-          <span
-            className={`h-3 w-5 rounded-[1px] ring-1 ring-foreground/25 ${props.className ?? ''}`}
-            style={{ background: props.swatch }}
-          />
-        ) : (
-          props.mark
-        )}
-      </span>
-      <span className="leading-tight">{props.children}</span>
-    </div>
-  )
-}
-
-// The engine's own markers (PlaceLayer.ts): ink on a paper hairline.
-const Capital = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14">
-    <circle cx="7" cy="7" r="5" fill="#EDE6D6" stroke="#2A241E" strokeWidth="1.2" />
-    <circle cx="7" cy="7" r="2.2" fill="#2A241E" />
-  </svg>
-)
-const Town = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14">
-    <circle cx="7" cy="7" r="2.6" fill="#2A241E" stroke="#EDE6D6" strokeWidth="1" />
-  </svg>
-)
-const Seat = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14">
-    <rect
-      x="3.5"
-      y="3.5"
-      width="7"
-      height="7"
-      transform="rotate(45 7 7)"
-      fill="#5A7398"
-      stroke="#2A241E"
-      strokeWidth="1"
-    />
-  </svg>
-)
-const Road = () => (
-  <svg width="20" height="8" viewBox="0 0 20 8">
-    <rect x="0" y="2" width="20" height="4" fill="#2A241E" />
-    <rect x="0" y="3" width="20" height="2" fill="#F3EBDA" />
-  </svg>
-)
 
 /** The explorer's Timeline, lifted off the store so it runs without a map. */
 function TimelineDemo() {
-  const first = -132
-  const last = -26
+  // The data's window, 68–43 BCE (build/politics/data.json).
+  const first = -67
+  const last = -42
   const [year, setYear] = useState(-62)
   const at = (y: number) => `${((y - first) / (last - first)) * 100}%`
   const ticks: { year: number; bce: number; major: boolean }[] = []

@@ -1,5 +1,6 @@
 import { DebugOverlay } from '@/components/DebugOverlay.tsx'
 import { Inspector } from '@/components/Inspector.tsx'
+import { Legend } from '@/components/Legend.tsx'
 import { MapView } from '@/components/MapView.tsx'
 import { Timeline } from '@/components/Timeline.tsx'
 import { readParams } from '@/lib/params.ts'
@@ -15,6 +16,7 @@ export function App() {
       {ready && !params.bare && (
         <>
           <Inspector />
+          <Legend />
           <Timeline />
         </>
       )}

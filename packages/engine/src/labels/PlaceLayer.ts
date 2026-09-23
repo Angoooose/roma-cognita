@@ -285,6 +285,11 @@ export class PlaceLayer {
     }
   }
 
+  /** The kingdoms drawn by their seat in `year`, for the legend. */
+  seatsIn(year: number): { polity: string; name: string }[] {
+    return this.seats.filter((s) => s.years[0] <= year && year <= s.years[1]).map(({ polity, name }) => ({ polity, name }))
+  }
+
   // --- placement --------------------------------------------------------------------
 
   private candidates(year: number, mpp: number): Item[] {

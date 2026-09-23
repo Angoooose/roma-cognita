@@ -111,6 +111,30 @@ export interface PoliticalHit {
   sources: { citation: string; url?: string; locator?: string }[]
 }
 
+/** An uncertain claim's fill strength: the map says less where the sources do. */
+export const UNCERTAIN_ALPHA = 0.72
+
+/** A power in the legend: its own colour, and a sample of its provinces' and clients'. */
+export interface LegendPower {
+  id: string
+  name: string
+  fill: string
+  province?: string
+  client?: string
+  /** How many atoms it holds, for ordering. */
+  atoms: number
+}
+
+export interface PoliticsLegend {
+  powers: LegendPower[]
+  /** Some claim is uncertain: drawn fainter. */
+  uncertain: boolean
+  /** Some held frontier is schematic: a soft margin, no line. */
+  schematic: boolean
+  /** Some land has no claim: left uncoloured. */
+  unclaimed: boolean
+}
+
 const covers = (r: { from: End; to: End }, year: number) => r.from.year <= year && year <= r.to.year
 const EVIDENCE = { surveyed: 0, derived: 1, schematic: 2 } as const
 /** Relations that make a polity part of another power, rather than an ally of it. */
@@ -206,6 +230,47 @@ export class PoliticalLayer {
     return polityStyle(polity, power, { client, core: polity === power }).fill
   }
 
+  /**
+   * What a legend keys for `year`, in the colours the map draws (sRGB hex): every
+   * power holding ground, largest first, with a sample of its provinces' and clients'
+   * shades; and which of the drawn kinds of doubt occur that year.
+   */
+  legend(year: number): PoliticsLegend | null {
+    const d = this.data
+    if (!d) return null
+    const hex = (c: THREE.Color) => `#${c.getHexString()}`
+    const powers = new Map<string, LegendPower>()
+    let uncertain = false
+    let schematic = false
+    let unclaimed = false
+    for (const atom of d.atoms) {
+      const claim = this.holding(atom.id, year)
+      if (!claim) {
+        unclaimed = true
+        continue
+      }
+      if (claim.confidence === 'uncertain') uncertain = true
+      if (atom.evidence === 'schematic') schematic = true
+      const { power, client } = this.resolve(claim.polity, year)
+      let entry = powers.get(power)
+      if (!entry) {
+        const name = this.named(this.polityById.get(power), year)?.name ?? power
+        const fill = hex(polityStyle(power, power, { client: false, core: true }).fill)
+        entry = { id: power, name, fill, atoms: 0 }
+        powers.set(power, entry)
+      }
+      entry.atoms++
+      // The same styling `write` gives the claim, so the samples are what is drawn.
+      const isClient = client || claim.relation === 'client'
+      const core = claim.polity === power || claim.relation === 'citizen-territory'
+      if (core) continue
+      const shade = hex(polityStyle(claim.polity, power, { client: isClient, core }).fill)
+      if (isClient) entry.client ??= shade
+      else entry.province ??= shade
+    }
+    return { powers: [...powers.values()].sort((a, b) => b.atoms - a.atoms), uncertain, schematic, unclaimed }
+  }
+
   /** A polity's record, for the inspector. */
   polity(id: string) {
     return this.polityById.get(id)
@@ -240,8 +305,7 @@ export class PoliticalLayer {
         client: isClient,
         core: claim.polity === power || claim.relation === 'citizen-territory',
       })
-      // An uncertain claim is drawn fainter: the map says less where the sources do.
-      const alpha = claim.confidence === 'uncertain' ? 0.72 : 1
+      const alpha = claim.confidence === 'uncertain' ? UNCERTAIN_ALPHA : 1
       set(label, 0, [style.fill.r, style.fill.g, style.fill.b, alpha])
       set(label, 1, [this.polityIndex.get(claim.polity) ?? 0, this.polityIndex.get(power) ?? 0, ev, 0])
       set(label, 2, [style.line.r, style.line.g, style.line.b, isClient ? 1 : 0])
