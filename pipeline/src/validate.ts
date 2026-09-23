@@ -3,8 +3,8 @@
  *
  * Loads data/, checks every record against packages/schema and every
  * cross-record rule in rules.ts, and prints its own doubt (DESIGN §1.6): what
- * the data marks as needing a check, what it is uncertain of, what rests only
- * on cicero-map's say-so, and what this validator does not check at all.
+ * the data marks as needing a check, what it is uncertain of, and what this
+ * validator does not check at all.
  * Exits non-zero on any error; warnings and doubts never fail the build.
  *
  *   npm run data:validate               the report
@@ -70,10 +70,6 @@ export function validate(
     out += section(
       `UNCERTAIN — confidence: uncertain (${d.uncertain.length})`,
       doubtLines(d.uncertain),
-    )
-    out += section(
-      `CITED ONLY TO cicero-map — a reason, not a work (${d.compilationOnly.length})`,
-      doubtLines(d.compilationOnly),
     )
     out += section('NOT CHECKED', d.notChecked)
   }

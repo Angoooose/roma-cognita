@@ -16,7 +16,8 @@
   from: { earliest: 90 BCE, latest: 89 BCE }
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
   note: lex Julia 90, lex Plautia Papiria 89.
@@ -117,7 +118,10 @@
   of: rome
   from: c. 74 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
   note: 'Bequeathed 96, organised c. 74.'
@@ -127,7 +131,10 @@
   of: rome
   from: 66 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources:
+    - { source: velleius, locator: '2.38.6' }
+    - { source: livy-per, locator: '100' }
+    - { source: cassius-dio, locator: '36.17a–19' }
   confidence: probable
   review: draft
   note: 'After the conquest by Metellus, 69–67.'
@@ -137,7 +144,9 @@
   of: rome
   from: 64 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: Pompey's annexation.
@@ -177,23 +186,13 @@
   of: rome
   from: 46 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources:
+    - { source: bellum-africum, locator: '97' }
   confidence: certain
   review: draft
   note: Annexation of Numidia after Thapsus.
 
 # --- client kingdoms -------------------------------------------------------------
-
-- polity: cyprus-ptolemaic
-  type: client-of
-  of: rome
-  from: before 68 BCE
-  to: 59 BCE
-  sources:
-    - { source: cicero-map, locator: data/polities.json }
-  confidence: certain
-  review: draft
-  note: Annexed in 58 by the lex Clodia.
 
 - polity: numidia
   type: client-of
@@ -246,11 +245,15 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/control.json }]
-  confidence: probable
+  to: 49 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 113' }
+  confidence: certain
   review: draft
-  note: 'Pharnaces II confirmed by Pompey, 63.'
+  note: >-
+    Pompey inscribed Pharnaces II a friend and ally in 63. It ends with his
+    invasion of Roman Pontus in 48 (claims.yaml); nothing after is a client
+    relation until Rome recognised Asander, which is undated.
 
 - polity: thracia-odrysae
   type: client-of

@@ -23,7 +23,8 @@
   from: before 68 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/control.json }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
   note: Enfranchised after the Social War.
@@ -196,7 +197,9 @@
   from: 66 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/control.json }
+    - { source: velleius, locator: '2.38.6' }
+    - { source: livy-per, locator: '100' }
+    - { source: cassius-dio, locator: '36.17a–19' }
   confidence: probable
   review: draft
   note: Conquest by Metellus, 69–67.
@@ -383,14 +386,18 @@
 
 - atom: cyprus
   polity: cyprus-ptolemaic
-  relation: client
+  relation: independent
   from: before 68 BCE
   to: 59 BCE
   sources:
-    - { source: cicero-map, locator: data/control.json }
-  confidence: certain
+    - { source: cicero-sest, locator: '57' }
+    - { source: strabo, locator: '14.6.6' }
+  confidence: probable
   review: draft
-  note: Ptolemaic until the lex Clodia.
+  note: >-
+    Ptolemaic until the lex Clodia. Not a client: Cicero says the senate had
+    not yet styled Ptolemy an ally (Sest. 57). Rome's claim to the Ptolemaic
+    realms under the will of Ptolemy Alexander stood unenforced until 58.
 
 - atom: cyprus
   polity: cilicia
@@ -399,7 +406,6 @@
   to: 48 BCE
   sources:
     - { source: plutarch, locator: 'Cato Minor 34–38' }
-    - { source: cicero-map, locator: data/control.json }
   confidence: certain
   review: draft
   note: Annexed 58 and attached to Cilicia; Cicero governed it in 51–50.
@@ -425,7 +431,9 @@
   relation: province
   from: 64 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/control.json }]
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: Pompey's annexation.
@@ -566,7 +574,10 @@
   relation: province
   from: before 68 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/control.json }]
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
   note: Organised c. 74.
@@ -725,20 +736,46 @@
   polity: bosporus
   relation: client
   from: 63 BCE
-  to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/control.json }]
-  confidence: probable
+  to: 49 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 113' }
+  confidence: certain
   review: draft
   note: 'Pharnaces II confirmed by Pompey, 63.'
+
+- atom: bosporus
+  polity: bosporus
+  relation: independent
+  from: 48 BCE
+  to: after 43 BCE
+  sources:
+    - { source: bellum-alexandrinum, locator: '34–41' }
+    - { source: appian, locator: 'Mithr. 120' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Pharnaces II turned on Rome after Pharsalus and was beaten at Zela in 47;
+    Asander, who killed him, held the kingdom against Caesar's grant of it to
+    Mithridates of Pergamum. When Rome recognised Asander is not settled.
 
 - atom: bosporus-tanais
   polity: bosporus
   relation: client
   from: 63 BCE
+  to: 49 BCE
+  sources: [{ source: strabo, locator: '11.2.11' }]
+  confidence: uncertain
+  review: draft
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: independent
+  from: 48 BCE
   to: after 43 BCE
   sources: [{ source: strabo, locator: '11.2.11' }]
   confidence: uncertain
   review: draft
+  note: As bosporus.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
@@ -831,7 +868,7 @@
   polity: bosporus
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: 49 BCE
   sources:
     - { source: strabo, locator: '7.4.3' }
   confidence: uncertain
@@ -839,6 +876,17 @@
   note: >-
     Subject to the Bosporan kings from Mithridates' time (Strabo 7.4.3). A grant
     of freedom by Caesar c. 46 is sometimes argued; not drawn.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: independent
+  from: 48 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus; the grant of freedom by Caesar c. 46 would end it early.
 
 - atom: pontus
   polity: bosporus

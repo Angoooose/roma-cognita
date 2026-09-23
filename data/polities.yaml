@@ -38,7 +38,8 @@
   from: { earliest: 90 BCE, latest: 89 BCE }
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
   note: >-
@@ -183,7 +184,9 @@
   from: c. 74 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
   note: Bequeathed to Rome in 96, organised as a province c. 74.
@@ -195,7 +198,9 @@
   from: 66 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: velleius, locator: '2.38.6' }
+    - { source: livy-per, locator: '100' }
+    - { source: cassius-dio, locator: '36.17a–19' }
   confidence: probable
   review: draft
   note: >-
@@ -211,7 +216,8 @@
   from: 64 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: Pompey's annexation; the end of the Seleucid kingdom.
@@ -272,7 +278,7 @@
   from: 46 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: bellum-africum, locator: '97' }
   confidence: certain
   review: draft
   note: Numidia annexed after Thapsus.
@@ -290,7 +296,9 @@
   to: 59 BCE
   ruler: Ptolemy of Cyprus, to 58
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: cicero-sest, locator: '57' }
+    - { source: strabo, locator: '14.6.6' }
+    - { source: plutarch, locator: 'Cato Minor 34–36' }
   confidence: certain
   review: draft
   note: Annexed in 58 by the lex Clodia and attached to Cilicia.
@@ -361,9 +369,9 @@
     - { text: Bosporus, lang: la, preferred: true }
   from: before 68 BCE
   to: after 43 BCE
-  ruler: Pharnaces II, 63–47
+  ruler: Pharnaces II, 63–47; Asander from 47
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: appian, locator: 'Mithr. 113, 120' }
   confidence: probable
   review: draft
   note: Pharnaces II confirmed by Pompey in 63; killed after Zela.
@@ -392,7 +400,6 @@
   ruler: Deiotarus, c. 63–40
   sources:
     - { source: cicero-deiotaro }
-    - { source: cicero-map, locator: data/polities.json }
   confidence: probable
   review: draft
   note: Deiotarus confirmed by Pompey in 63.
@@ -431,7 +438,8 @@
   to: after 43 BCE
   ruler: Hyrcanus II, 63–40
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: josephus-aj, locator: '14.54–79, 14.143' }
+    - { source: josephus-bj, locator: '1.141–158, 1.199' }
   confidence: probable
   review: draft
   note: Pompey takes Jerusalem, 63; Antipater procurator from 47.

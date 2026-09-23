@@ -35,7 +35,6 @@
   status: caput mundi
   sources:
     - { source: pleiades, locator: places/423025 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -52,7 +51,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/727070 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -68,7 +66,6 @@
   status: provincial seat
   sources:
     - { source: pleiades, locator: places/658381 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -85,7 +82,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/579885 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -101,7 +97,6 @@
   status: provincial seat
   sources:
     - { source: pleiades, locator: places/599612 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -117,7 +112,6 @@
   status: conventus
   sources:
     - { source: pleiades, locator: places/550812 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -134,7 +128,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/148127 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -151,7 +144,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/462503 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -168,7 +160,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/256177 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -186,7 +177,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/590030 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -206,7 +196,6 @@
     - { source: plutarch, locator: C. Gracch. 11 }
     - { source: cassius-dio, locator: '43.50' }
     - { source: pleiades, locator: places/314921 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: probable
   review: draft
   note: Destroyed 146 and left unoccupied by the lex Julia's curse on the site. Caesar's
@@ -229,7 +218,6 @@
     - { source: strabo, locator: 8.6.23 }
     - { source: cassius-dio, locator: '43.50' }
     - { source: pleiades, locator: places/570182 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: probable
   review: draft
   note:
@@ -250,7 +238,6 @@
     - { source: cassius-dio, locator: '46.50' }
     - { source: cicero-fam, locator: '10.11' }
     - { source: pleiades, locator: places/167717 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
   note: Founded by L. Munatius Plancus in 43, the last year this map covers. Pleiades dates
@@ -269,7 +256,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/315248 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -285,7 +271,6 @@
   status: provincial seat
   sources:
     - { source: pleiades, locator: places/256128 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -301,7 +286,6 @@
   status: provincial seat
   sources:
     - { source: pleiades, locator: places/246349 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -320,7 +304,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/246347 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -337,7 +320,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/491741 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -354,7 +336,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/648789 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -371,7 +352,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/589796 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -388,7 +368,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/373778 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -405,7 +384,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/511337 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: needs-check
   note: >-
@@ -425,7 +403,6 @@
   status: colonia
   sources:
     - { source: pleiades, locator: places/442509 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -442,7 +419,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432754 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -459,7 +435,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433014 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -476,7 +451,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/432815 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -493,7 +467,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/422995 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -509,7 +482,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393480 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -526,7 +498,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393379 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -542,7 +513,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383706 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -559,7 +529,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/187290 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -576,7 +545,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/442810 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -594,7 +562,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/452416 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -610,7 +577,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383664 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -627,7 +593,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/462538 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -643,7 +608,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/462410 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -660,7 +624,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/462281 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -676,7 +639,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/471899 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -693,7 +655,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/265849 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -710,7 +671,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/256210 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -726,7 +686,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/246382 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -742,7 +701,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/256338 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -758,7 +716,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/246694 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -775,7 +732,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/177473 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: needs-check
   note: >-
@@ -794,7 +750,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/177434 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -810,7 +765,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/138373 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -826,7 +780,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/481818 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -842,7 +795,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/481728 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -858,7 +810,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/570567 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -875,7 +826,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/570685 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -891,7 +841,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/540726 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -907,7 +856,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/491687 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -924,7 +872,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/520985 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -941,7 +888,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/550893 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -959,7 +905,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/550867 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -975,7 +920,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/599799 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -993,7 +937,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/638955 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1010,7 +953,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599587 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1026,7 +968,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/550763 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1042,7 +983,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/857321 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1059,7 +999,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/619103 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: needs-check
   note: >-
@@ -1080,7 +1019,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/629035 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1096,7 +1034,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/648647 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1112,7 +1049,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/678106 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1128,7 +1064,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678437 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1144,7 +1079,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678393 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1161,7 +1095,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/687928 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1178,7 +1111,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/697725 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1194,7 +1126,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/668331 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1211,7 +1142,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/658587 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1227,7 +1157,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/736963 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1243,7 +1172,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/707617 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1259,7 +1187,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/344448 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1277,7 +1204,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/197488 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1294,7 +1220,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/854719 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1311,7 +1236,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432721 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1328,7 +1252,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383741 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1344,7 +1267,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403253 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1360,7 +1282,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/462086 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1376,7 +1297,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/472048 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1392,7 +1312,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/266090 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1408,7 +1327,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/266021 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1425,7 +1343,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/167719 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1444,7 +1361,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/148217 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1460,7 +1376,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/138207 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1476,7 +1391,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/109126 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1492,7 +1406,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/108945 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1508,7 +1421,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/138281 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1524,7 +1436,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/177657 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1540,7 +1451,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/177528 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1556,7 +1466,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/324716 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1572,7 +1481,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/324827 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1589,7 +1497,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/315267 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1606,7 +1513,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/305064 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: needs-check
   note:
@@ -1625,7 +1531,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/305090 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1641,7 +1546,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/344282 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1657,7 +1561,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/344456 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1673,7 +1576,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/373879 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1689,7 +1591,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/373757 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1705,7 +1606,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/275736 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1723,7 +1623,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/295279 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1739,7 +1638,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/501347 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1755,7 +1653,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/501482 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1772,7 +1669,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/540905 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1788,7 +1684,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/541042 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1804,7 +1699,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/570106 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1820,7 +1714,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/541138 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1836,7 +1729,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/540703 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1852,7 +1744,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/570468 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1868,7 +1759,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/530824 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1884,7 +1774,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/530794 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1900,7 +1789,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/530771 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1917,7 +1805,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/589872 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1934,7 +1821,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/589886 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1950,7 +1836,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599636 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1966,7 +1851,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599575 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1982,7 +1866,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599581 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -1998,7 +1881,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/550496 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2014,7 +1896,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599925 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2031,7 +1912,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/511218 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2047,7 +1927,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/511268 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2064,7 +1943,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/844944 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2080,7 +1958,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/857024 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2096,7 +1973,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/857018 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2112,7 +1988,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/857359 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2129,7 +2004,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/609500 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2145,7 +2019,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/639105 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2162,7 +2035,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/638778 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2179,7 +2051,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/639166 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2195,7 +2066,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/639042 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2213,7 +2083,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/857095 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2229,7 +2098,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/658483 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2245,7 +2113,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/668335 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2262,7 +2129,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/668261 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: needs-check
   note: >-
@@ -2281,7 +2147,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678060 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2297,7 +2162,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678010 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2313,7 +2177,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/687839 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2329,7 +2192,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/687902 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2345,7 +2207,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/658636 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2362,7 +2223,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/658457 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2378,7 +2238,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/874623 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2394,7 +2253,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/727192 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2410,7 +2268,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/707586 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2426,7 +2283,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/707534 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2442,7 +2298,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/197312 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2458,7 +2313,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/197400 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2474,7 +2328,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/481986 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2490,7 +2343,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/217016 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2506,7 +2358,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/216839 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2522,7 +2373,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/226546 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2539,7 +2389,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/226564 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2555,7 +2404,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/854724 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2571,7 +2419,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/857107 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2588,7 +2435,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/874361 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2605,7 +2451,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432700 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2622,7 +2467,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432839 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2639,7 +2483,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/423108 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2655,7 +2498,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432703 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2672,7 +2514,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422837 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2688,7 +2529,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/432808 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2704,7 +2544,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432716 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2720,7 +2559,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432941 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2737,7 +2575,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433032 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2753,7 +2590,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432873 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2769,7 +2605,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432985 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2785,7 +2620,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432981 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2801,7 +2635,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/433075 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2817,7 +2650,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/442733 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2833,7 +2665,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/452488 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2849,7 +2680,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432734 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2866,7 +2696,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432940 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2883,7 +2712,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433122 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2900,7 +2728,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433143 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2916,7 +2743,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/422833 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2933,7 +2759,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/423013 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2950,7 +2775,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/423081 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2966,7 +2790,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422844 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2982,7 +2805,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/422956 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -2998,7 +2820,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422852 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3014,7 +2835,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422843 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3030,7 +2850,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422960 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3046,7 +2865,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/423116 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3063,7 +2881,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413283 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3079,7 +2896,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/413178 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3095,7 +2911,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413225 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3111,7 +2926,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413231 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3128,7 +2942,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413320 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3144,7 +2957,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413229 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3160,7 +2972,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/433134 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3176,7 +2987,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/413105 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3192,7 +3002,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413036 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3208,7 +3017,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413014 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3224,7 +3032,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413129 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3240,7 +3047,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413310 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3257,7 +3063,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413032 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3273,7 +3078,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413106 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3289,7 +3093,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413248 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3305,7 +3108,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413096 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3321,7 +3123,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413389 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3337,7 +3138,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413125 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3354,7 +3154,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403292 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3370,7 +3169,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403212 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3387,7 +3185,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413107 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3403,7 +3200,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/403234 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3419,7 +3215,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403235 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3436,7 +3231,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393421 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3453,7 +3247,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383715 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3470,7 +3263,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383737 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3487,7 +3279,6 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/383628 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3503,7 +3294,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383816 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3519,7 +3309,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393473 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3535,7 +3324,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383603 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3552,7 +3340,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432652 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3569,7 +3356,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442847 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3585,7 +3371,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442525 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3601,7 +3386,6 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/442640 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3617,7 +3401,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442500 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3633,7 +3416,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442615 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3649,7 +3431,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452317 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3665,7 +3446,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452457 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3681,7 +3461,6 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/452337 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3697,7 +3476,6 @@
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452369 }
-    - { source: cicero-map, locator: data/places.json }
   confidence: certain
   review: draft
 
@@ -3710,7 +3488,6 @@
   to: after 43 BCE
   sources:
     - { source: sullivan-1990 }
-    - { source: cicero-map, locator: data/seats.json }
   confidence: probable
   review: needs-check
   note:
@@ -3726,7 +3503,6 @@
   to: after 43 BCE
   sources:
     - { source: sullivan-1990 }
-    - { source: cicero-map, locator: data/seats.json }
   confidence: uncertain
   review: needs-check
   note: The Ituraean seat (seats.yaml). The site is not securely identified, and it is not

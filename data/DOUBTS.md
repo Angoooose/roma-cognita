@@ -31,8 +31,6 @@ against the old `control.json`. The reasoning is in each record's `note`.
 
 - **Four extents flagged `check` in cicero-map:** Gallia Comata, Nabataea,
   Odrysian Thrace, and Ituraea's seat at Chalcis sub Libano.
-- **29 records cite only cicero-map.** A reason was recorded but no published
-  work. Each needs a real citation (Broughton, CAH, Barrington map numbers).
 - **Not yet checked by the validator:**
   - that atoms.geojson is what `npm run atoms` builds from atoms.yaml;
   - that places still match Pleiades.

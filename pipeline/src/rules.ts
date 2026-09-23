@@ -53,9 +53,6 @@ const RELATION_BEHIND: Partial<Record<ClaimRelation, string>> = {
 /** Rounding atom coordinates to 4 decimals leaves hairline overlaps; anything bigger is real. */
 const MAX_OVERLAP_KM2 = 0.5
 
-/** The compilation source that stands for "cicero-map gave a reason, not a work". */
-const COMPILATION = 'cicero-map'
-
 export function checkDataset(ds: Dataset): Issue[] {
   const issues: Issue[] = []
   const where = (r: object) => ds.origin.get(r) ?? '(unknown)'
@@ -438,8 +435,6 @@ export interface Doubt {
 export interface DoubtReport {
   needsCheck: Doubt[]
   uncertain: Doubt[]
-  /** Records whose only citation is the cicero-map compilation: a reason, not a work. */
-  compilationOnly: Doubt[]
   /** Rules DESIGN §5.6 asks for that this validator cannot yet check, said out loud. */
   notChecked: string[]
   counts: Record<string, number>
@@ -487,9 +482,6 @@ export function doubts(ds: Dataset): DoubtReport {
     uncertain: reviewed
       .filter((r) => r.confidence === 'uncertain')
       .map((r) => ({ where: where(r), why: reason(r.note) })),
-    compilationOnly: reviewed
-      .filter((r) => r.sources.every((s) => s.source === COMPILATION))
-      .map((r) => ({ where: where(r), why: firstSentence(r.note) })),
     notChecked: [
       'atom geometry against its construction: that data/geometry/atoms.geojson is what npm run atoms -w pipeline builds from atoms.yaml is not re-checked here; rebuild after editing an outline',
       'vertex places: that a vertex naming a Pleiades place stands near it is checked by npm run atoms, not here',

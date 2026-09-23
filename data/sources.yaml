@@ -6,17 +6,6 @@
 # `kind`: ancient — a text from antiquity; modern — scholarship and atlases,
 # cited and never copied; dataset — machine-readable data the pipeline ingests.
 
-# --- compilations --------------------------------------------------------------
-
-- id: cicero-map
-  kind: modern
-  citation: cicero-map, the predecessor of this project — data/*.json (September 2026)
-  note: >-
-    Cited as provenance, not as authority. Where a migrated record carries only
-    this source, cicero-map gave a reason (an event, a statute) rather than a
-    work, and the reason is kept in the record's note. The validator lists every
-    such record so it can be sourced properly.
-
 # --- modern scholarship --------------------------------------------------------
 
 - id: broughton-mrr
@@ -307,6 +296,31 @@
 - id: strabo
   kind: ancient
   citation: Strabo, Geography
+
+- id: cicero-arch
+  kind: ancient
+  citation: Cicero, Pro Archia
+
+- id: cicero-sest
+  kind: ancient
+  citation: Cicero, Pro Sestio
+
+- id: livy-per
+  kind: ancient
+  citation: Livy, Periochae
+
+- id: sallust-hist
+  kind: ancient
+  citation: Sallust, Historiae
+  note: Fragments cited by Maurenbrecher's numbering (M).
+
+- id: velleius
+  kind: ancient
+  citation: Velleius Paterculus, Historiae Romanae
+
+- id: bellum-africum
+  kind: ancient
+  citation: '[Caesar], Bellum Africum'
 
 # --- datasets ------------------------------------------------------------------
 

@@ -396,13 +396,11 @@ describe('consistency warnings', () => {
 })
 
 describe('the doubt report', () => {
-  it('lists needs-check, uncertain and compilation-only records', () => {
+  it('lists needs-check and uncertain records', () => {
     const f = base()
-    f.sources.push({ id: 'cicero-map', kind: 'modern', citation: 'cicero-map' })
     f.claims[0].review = 'needs-check'
     f.claims[0].note = 'Migration review: this is doubtful. And more.'
     f.claims[1].confidence = 'uncertain'
-    f.polities[1].sources = [{ source: 'cicero-map' }]
     const { dataset } = readDataset(write(f))
     const d = doubts(dataset)
     expect(d.needsCheck).toEqual([
@@ -413,9 +411,6 @@ describe('the doubt report', () => {
     ])
     expect(d.uncertain.map((x) => x.where)).toEqual([
       expect.stringContaining('claims.yaml#2'),
-    ])
-    expect(d.compilationOnly.map((x) => x.where)).toEqual([
-      expect.stringContaining('(prov)'),
     ])
     expect(d.notChecked.length).toBeGreaterThan(0)
   })

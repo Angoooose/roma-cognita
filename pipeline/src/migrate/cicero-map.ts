@@ -207,7 +207,6 @@ function migratePlaces() {
       sources: [
         ...(CITATIONS[p.name] ?? []),
         { source: 'pleiades', locator: `places/${b.properties.pid}` },
-        { source: 'cicero-map', locator: 'data/places.json' },
       ],
       confidence,
       review,
@@ -225,7 +224,6 @@ function migratePlaces() {
       to: 'after 43 BCE',
       sources: [
         { source: 'sullivan-1990' },
-        { source: 'cicero-map', locator: 'data/seats.json' },
       ],
       confidence: s.confidence,
       review: 'needs-check',

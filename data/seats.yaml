@@ -19,6 +19,6 @@
   place: edessa
   from: before 68 BCE
   to: after 43 BCE
-  sources: [{ source: sullivan-1990 }, { source: cicero-map, locator: data/seats.json }]
+  sources: [{ source: sullivan-1990 }]
   confidence: certain
   review: draft

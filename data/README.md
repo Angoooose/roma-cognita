@@ -128,9 +128,11 @@ confirming.
 9. **Free-text `source` fields were split.** Where cicero-map named a work (Broughton,
    CAH, Braund, Sullivan, Caesar, Barrington, Cicero, Dio …) it became a source
    reference with its locator. Where it gave a reason instead ("Pompey's
-   annexation", "lex Clodia") the reason went into `note` and the record cites
-   `cicero-map` itself. The validator lists all 29 such records: they want a real
-   citation.
+   annexation", "lex Clodia") the reason went into `note` and the record cited
+   `cicero-map` itself. In September 2026 cicero-map was dropped as a source: those
+   records now cite the ancient texts behind the reason, and the two whose reason
+   did not survive the check were corrected (Cyprus was never a client, Sest. 57;
+   Bosporus stopped being one when Pharnaces invaded Pontus in 48).
 
 10. **Place prominence and status are dated values.** `prominence: 2` is shorthand
     for the place's whole interval; a dated list
