@@ -140,27 +140,94 @@ function sampleFine(lon: number, lat: number) {
 const lonlat = new Float64Array(2)
 
 /**
- * Depths for one tile, row 0 south, 0 where no source knows. Fine levels (PACK_LEVEL
- * and deeper) average S×S fine samples over each texel, S = 2^(8 − level), so every
- * one of them is a box filter over the same ~110 m data; coarser levels sample the
- * GEBCO halving whose pixel is closest to their texel.
+ * Depth smoothing, by depth. EMODnet is a patchwork of surveys, and each survey's
+ * footprint and track lines leave straight-edged steps in the depth: coloured by depth,
+ * the open sea read as a grid of boxes. Nobody needs that detail offshore; near the
+ * coast the shelf, banks and channels are the point. So the smoothing radius (a
+ * Gaussian's sigma, m) grows with depth, from SMOOTH_MIN_M in the shallows to
+ * SMOOTH_MAX_M in deep water, reaching it at SMOOTH_FULL_DEPTH.
+ */
+const SMOOTH_MIN_M = 100
+const SMOOTH_MAX_M = 1000
+const SMOOTH_FULL_DEPTH = 400
+/** The blurred versions blended between, as sigmas in metres (0 is the data as sampled). */
+const SMOOTH_STEPS = [0, 250, 500, SMOOTH_MAX_M]
+
+function smoothingFor(depth: number) {
+  const t = Math.min(1, Math.max(0, -depth / SMOOTH_FULL_DEPTH))
+  return SMOOTH_MIN_M + (SMOOTH_MAX_M - SMOOTH_MIN_M) * t
+}
+
+/**
+ * Depths for one tile, row 0 south, 0 where no source knows, smoothed by depth (above).
+ * The tile is sampled with an apron wide enough for the widest blur, so neighbouring
+ * tiles agree along their shared edge, and every level blurs by the same metres, so a
+ * coarse tile standing in for finer ones shows the same sea.
  */
 function sampleTile(address: TileAddress): Float32Array {
+  const step = tileRect(address).size / (N - 1)
+  const apron = Math.ceil((3 * SMOOTH_MAX_M) / step) + 1
+  const W = N + 2 * apron
+  const raw = sampleGrid(address, apron)
+
+  // Normalised convolution: land beyond the source's extended sea is 0 and must not
+  // drag the sea shallower, so each blur also blurs a weight of where there is water.
+  const weight = new Float32Array(W * W)
+  for (let k = 0; k < raw.length; k++) weight[k] = raw[k] < 0 ? 1 : 0
+  const versions = SMOOTH_STEPS.map((sigmaM) => {
+    const sigma = sigmaM / step
+    if (sigma < 0.35) return raw
+    const num = new Float32Array(W * W)
+    for (let k = 0; k < raw.length; k++) num[k] = raw[k] * weight[k]
+    const den = weight.slice()
+    gaussianBlur(num, W, sigma)
+    gaussianBlur(den, W, sigma)
+    const out = new Float32Array(W * W)
+    for (let k = 0; k < out.length; k++) out[k] = den[k] > 1e-3 ? num[k] / den[k] : 0
+    return out
+  })
+
+  // The depth that picks the radius comes from the smoothest version, so the choice
+  // is itself smooth and never follows a survey seam.
+  const smoothest = versions[versions.length - 1]
+  const out = new Float32Array(N * N)
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const k = (r + apron) * W + (c + apron)
+      const sigma = smoothingFor(smoothest[k])
+      let i = 1
+      while (i < SMOOTH_STEPS.length - 1 && SMOOTH_STEPS[i] < sigma) i++
+      const t = (sigma - SMOOTH_STEPS[i - 1]) / (SMOOTH_STEPS[i] - SMOOTH_STEPS[i - 1])
+      const v = versions[i - 1][k] * (1 - t) + versions[i][k] * t
+      out[r * N + c] = raw[k] < 0 ? Math.min(0, v) : 0
+    }
+  }
+  return out
+}
+
+/**
+ * Raw depths on the tile's texel grid plus `apron` texels each side. Fine levels
+ * (PACK_LEVEL and deeper) average S×S fine samples over each texel, S = 2^(8 − level),
+ * so every one of them is a box filter over the same ~110 m data; coarser levels sample
+ * the GEBCO halving whose pixel is closest to their texel.
+ */
+function sampleGrid(address: TileAddress, apron: number): Float32Array {
   const { x0, y0, size } = tileRect(address)
   const step = size / (N - 1)
-  const out = new Float32Array(N * N)
+  const W = N + 2 * apron
+  const out = new Float32Array(W * W)
   const fine = address.level >= PACK_LEVEL
   const S = fine ? 2 ** Math.max(0, maxLevel - address.level) : 1
   const mip =
     gebco[Math.max(0, Math.min(gebco.length - 1, Math.round(Math.log2(step / GEBCO_M))))]
-  for (let r = 0; r < N; r++) {
-    for (let c = 0; c < N; c++) {
+  for (let r = 0; r < W; r++) {
+    for (let c = 0; c < W; c++) {
       let sum = 0
       let n = 0
       for (let sy = 0; sy < S; sy++) {
         for (let sx = 0; sx < S; sx++) {
-          const x = x0 + (c + (sx + 0.5) / S - 0.5) * step
-          const y = y0 + (r + (sy + 0.5) / S - 0.5) * step
+          const x = x0 + (c - apron + (sx + 0.5) / S - 0.5) * step
+          const y = y0 + (r - apron + (sy + 0.5) / S - 0.5) * step
           projection.inverseInto(x, y, lonlat, 0)
           const v = fine
             ? sampleFine(lonlat[0], lonlat[1])
@@ -171,10 +238,49 @@ function sampleTile(address: TileAddress): Float32Array {
           }
         }
       }
-      out[r * N + c] = n ? Math.min(0, sum / n) : 0
+      out[r * W + c] = n ? Math.min(0, sum / n) : 0
     }
   }
   return out
+}
+
+/**
+ * In-place Gaussian blur of a W×W grid, approximated by three box blurs per axis
+ * (Wells 1986): each pass is a running sum, so the cost does not grow with sigma.
+ */
+function gaussianBlur(a: Float32Array, W: number, sigma: number) {
+  // Box widths whose three-fold convolution has variance sigma² (Kovesi 2010).
+  const ideal = Math.sqrt((12 * sigma * sigma) / 3 + 1)
+  let wl = Math.floor(ideal)
+  if (wl % 2 === 0) wl--
+  const wu = wl + 2
+  const m = Math.round((12 * sigma * sigma - 3 * wl * wl - 12 * wl - 9) / (-4 * wl - 4))
+  const tmp = new Float32Array(W)
+  for (let pass = 0; pass < 3; pass++) {
+    const r = ((pass < m ? wl : wu) - 1) / 2
+    for (let row = 0; row < W; row++) boxLine(a, row * W, 1, W, r, tmp)
+    for (let col = 0; col < W; col++) boxLine(a, col, W, W, r, tmp)
+  }
+}
+
+/** Box blur of radius r along one line of `a` (start, stride, length), edges clamped. */
+function boxLine(
+  a: Float32Array,
+  start: number,
+  stride: number,
+  n: number,
+  r: number,
+  tmp: Float32Array,
+) {
+  for (let i = 0; i < n; i++) tmp[i] = a[start + i * stride]
+  const at = (i: number) => tmp[Math.min(n - 1, Math.max(0, i))]
+  let acc = 0
+  for (let i = -r; i <= r; i++) acc += at(i)
+  const inv = 1 / (2 * r + 1)
+  for (let i = 0; i < n; i++) {
+    a[start + i * stride] = acc * inv
+    acc += at(i + r + 1) - at(i - r)
+  }
 }
 
 // --- adaptive fine levels ------------------------------------------------------------

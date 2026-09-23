@@ -344,6 +344,15 @@ tectonics dominate.
     says land, depth read 0 and drew a turquoise fringe unrelated to the sea
     floor. So each source's sea is carried a short way under its land (1.8 km
     EMODnet, 3.7 km GEBCO) before sampling.
+  - **Smoothed by depth.** EMODnet is a patchwork of surveys, and each
+    footprint and track line leaves a straight-edged step: coloured by depth,
+    the open sea read as a grid of boxes that appeared tile by tile on zooming
+    in. The bake blurs the depth with a radius that grows with it — 100 m in
+    the shallows, 1 km from 400 m down — so shelves, banks and channels keep
+    their shape and the survey seams offshore go. Land does not drag the blur
+    shallower (normalised convolution), tiles are sampled with an apron so
+    neighbours agree, and every level blurs by the same metres, so a coarse
+    tile standing in for finer ones shows the same sea.
   - **Surfaces:** depth is measured from the local water surface. The Caspian
     (−28 m) and the Dead Sea (−430 m) are listed with their modern levels.
   - **Layout:** levels 0–5 sample the GEBCO halving that matches their texel.
