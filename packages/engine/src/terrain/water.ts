@@ -32,24 +32,22 @@ import {
  *   few metres, turquoise over the shelf, a mid blue on the slope, navy in the basins.
  *   Each step is an exponential in depth rather than a ramp between two numbers, so it
  *   has no edge for coarse bathymetry to draw.
- * - **A moving surface:** four octaves of drifting noise (~1.6 km swell, ~250 m chop,
+ * - **A textured surface:** four octaves of noise (~1.6 km swell, ~250 m chop,
  *   ~60 m and ~15 m ripples) perturb a normal, each fading in only once it spans a few pixels.
  *   The normal is lit by the map's own north-west light and gives a warm glint and a
  *   pale sky sheen that grow as the camera tilts.
- * - **Surf in metres, not pixels:** foam lines roll in towards gently shelving shores
+ * - **Surf in metres, not pixels:** lines of foam parallel to gently shelving shores
  *   (beaches, not cliffs) over the last ~120 m, broken up by noise, with a line of
- *   foam at the water's edge. The fixed 7-pixel rim that stood in for all of this is
+ *   foam at the water's edge — the engraver's waterlining, read as surf. The fixed 7-pixel rim that stood in for all of this is
  *   kept only at the overview, where it is what makes the coast legible.
  * - **Wet sand:** a darker band a few metres wide along low, flat shores.
+ *
+ * None of it moves. The map is a plate, not a scene: motion would pull the eye from
+ * what the map is about, and a still map only needs drawing when something changes.
  *
  * Nothing here is a claim about the past: it is how water looks, not where anything
  * was. Colours are the tokens in §8.1 plus the steps between them.
  */
-
-/** Seconds, wrapped so the noise lattice stays well inside float precision. */
-export const waterUniforms = {
-  time: uniform(0),
-}
 
 function rgb(hex: string) {
   const c = new THREE.Color(hex)
@@ -196,7 +194,6 @@ export function waterShading({
   detail,
   light,
 }: WaterInputs) {
-  const t = waterUniforms.time
   const d = depth.negate().max(0)
   const offshore = shore.negate().max(0)
   // Lakes sit above sea level; the sea and the below-sea-level seas (Caspian, Dead Sea)
@@ -221,26 +218,20 @@ export function waterShading({
   let water: V3 = mix(sea, mix(LAKE, SEA_SHALLOW, rim.mul(0.35)), lake)
 
   // --- the surface ---------------------------------------------------------------
-  // Each octave drifts its own way and slowly changes shape (the noise's third axis),
-  // and is warped by the one above it: value noise alone lines up with its lattice, and
+  // Each octave is its own slice of the noise (the third axis) and is warped by the one
+  // above it: value noise alone lines up with its lattice, and
   // close in that read as a faint cross-hatch. Its gradient runs about ±2 per cell,
   // hence the halving.
   let warp: V2 = vec2(0, 0)
-  const octave = (
-    wavelengthKm: Wavelength,
-    drift: [number, number],
-    amp: number,
-    seed: number,
-  ): V2 => {
-    const p = lattice(wavelengthKm).add(vec2(drift[0], drift[1]).mul(t)).add(warp)
-    const g = noise(p, t.mul(0.04).add(seed)).grad
+  const octave = (wavelengthKm: Wavelength, amp: number, seed: number): V2 => {
+    const g = noise(lattice(wavelengthKm).add(warp), float(seed)).grad
     warp = g.mul(0.8)
     return g.mul(amp * 0.5).mul(detail(wavelengthKm))
   }
-  const grad = octave(1.6, [0.006, 0.004], 0.025, 31)
-    .add(octave(0.25, [-0.02, 0.03], 0.06, 37))
-    .add(octave(0.06, [0.05, -0.035], 0.11, 41))
-    .add(octave(0.015, [-0.12, -0.09], 0.14, 43))
+  const grad = octave(1.6, 0.025, 31)
+    .add(octave(0.25, 0.06, 37))
+    .add(octave(0.06, 0.11, 41))
+    .add(octave(0.015, 0.14, 43))
     // Lakes are calmer than the sea.
     .mul(mix(float(1), float(0.5), lake))
   const n = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
@@ -264,8 +255,8 @@ export function waterShading({
   // Only on shores that shelve gently: the bathymetry here falls less than ~1 in 8.
   const gentle = float(1).sub(smoothstep(0.06, 0.2, d.div(offshore.max(5))))
   const surfing = gentle.mul(float(1).sub(lake)).mul(float(1).sub(smoothstep(5, 18, pxM)))
-  // Lines 28 m apart roll shorewards; each crest is sharp, and fades with distance out.
-  const phase = offshore.div(28).add(t.mul(0.09))
+  // Lines 28 m apart, each crest sharp, fading with distance out.
+  const phase = offshore.div(28)
   const crest = pow(
     sin(phase.mul(2 * Math.PI))
       .mul(0.5)
@@ -273,13 +264,13 @@ export function waterShading({
     10,
   )
   const envelope = exp(offshore.div(-45)).mul(float(1).sub(smoothstep(40, 130, offshore)))
-  const breakup = smoothstep(0.35, 0.7, noise(lattice(0.09), t.mul(0.06).add(7)).value)
+  const breakup = smoothstep(0.35, 0.7, noise(lattice(0.09), float(7)).value)
   // The edge line: a few metres wide, never thinner than a pixel and a half.
   const edgeW = max(float(5), pxM.mul(1.5))
   const edge = float(1)
     .sub(smoothstep(edgeW.mul(0.25), edgeW, offshore))
     .mul(
-      smoothstep(0.2, 0.65, noise(lattice(0.03), t.mul(0.1).add(3)).value)
+      smoothstep(0.2, 0.65, noise(lattice(0.03), float(3)).value)
         .mul(0.6)
         .add(0.4),
     )
