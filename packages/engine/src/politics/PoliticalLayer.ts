@@ -79,6 +79,8 @@ export interface PolityRecord {
   id: string
   kind: string
   name: string
+  /** Preferred names with the years they are in force (astronomical, inclusive). */
+  names?: { text: string; from: number; to: number }[]
   ruler?: string
 }
 interface AtomRecord {
@@ -277,14 +279,21 @@ export class PoliticalLayer {
     const claim = this.holding(atom.id, this.year)
     if (!claim) return { atom: atom.id, chain: [], sources: [] }
     const { power, chain } = this.resolve(claim.polity, this.year)
+    const polity = (id: string) => this.named(this.polityById.get(id), this.year)
     return {
       atom: atom.id,
       claim,
-      polity: this.polityById.get(claim.polity),
-      power: this.polityById.get(power),
-      chain: chain.map((l) => ({ polity: this.polityById.get(l.polity)!, type: l.type })).filter((l) => l.polity),
+      polity: polity(claim.polity),
+      power: polity(power),
+      chain: chain.map((l) => ({ polity: polity(l.polity)!, type: l.type })).filter((l) => l.polity),
       sources: claim.sources.map((s) => ({ ...(d.sources[s.source] ?? { citation: s.source }), locator: s.locator })),
     }
+  }
+
+  /** The polity as named in `year`: Bithynia is Bithynia et Pontus from 63. */
+  private named(p: PolityRecord | undefined, year: number): PolityRecord | undefined {
+    const dated = p?.names?.find((n) => n.from <= year && year <= n.to)
+    return p && dated ? { ...p, name: dated.text } : p
   }
 
   private pickTile(key: string) {

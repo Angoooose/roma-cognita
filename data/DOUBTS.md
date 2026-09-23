@@ -69,8 +69,7 @@ Drawing the data exposed these. None is a drawing bug.
 - *Fixed September 2026:* Illyricum is a province from 59 on a coastal atom;
   the seat-only kingdoms except Osroene are drawn as territory; the
   twelve-vertex rings are gone (see below).
-- **Lycia is unclaimed** (the gap in south-west Anatolia). In this period it
-  was a free league, so that may be right, but nobody has decided it.
+- *Fixed September 2026:* Lycia is drawn as the free Lycian League.
 
 ## Territory outlines (September 2026)
 
@@ -94,12 +93,33 @@ lines rest on these choices, each of which wants a reader's eye:
 - **The Rubicon** is the modern Rubicone, whose identification is conventional.
 - **Castabala** is both Tarcondimotus' seat and, in Strabo, a gift to
   Ariobarzanes; it is drawn with the Amanus.
-- **Left unclaimed on purpose:** north-west Iberia and the Vaccaei; the Cottian
-  and Maritime Alps; Istria; the Cyclades, Lemnos and Imbros; the Rhodian
-  Peraea and Lycia; Paphlagonia's dynasts; the Tracheia and Antipater's Derbe;
-  Siwa and inner Sinai; the Propontic and Pontic Greek cities.
-- **Drawn inside a larger atom for now:** Massalia's territory (Transalpina),
-  Comana (Pontus), Issa (Illyricum).
+- **Left unclaimed on purpose:** the Cottian and Maritime Alps and Raetia;
+  Istria; the Cyclades, Lemnos and Imbros; the Tracheia west of Olba; Siwa and
+  inner Sinai; the Propontic Greek cities; Gaul beyond the four peoples drawn,
+  before 51; Osroene, which stays a seat; the Autrigones, Vascones and their
+  neighbours between the Cantabri and Pompaelo; the steppe north of the Crimea.
+- **Inside a larger atom:** Issa (Illyricum); the Suebi's third of the Sequani
+  (BG 1.31).
+
+## The neighbours of Rome (September 2026)
+
+Added in one batch, each from the works it cites; the review plates are the
+same `npm run atoms:preview -w pipeline`. What wants a reader's eye:
+
+- **Extents that are conventions:** Dacia (Burebista's widest reach; Lockyear
+  doubts any fixed extent), Noricum, the Garamantes, Kush's valley strip, the
+  Caucasian kingdoms, Atropatene, Parthia beyond the frame, the Gallic peoples
+  (after the later civitas lines, Fichtl), and the four Iberian peoples (after
+  their Augustan conventus; Strabo's Melsus is taken as the Sella).
+- **Dates that are conventions:** Dacia from c. 60; the Pontic cities free
+  again in 43; Armenia a client from 66 even under Artavasdes II; Iberia and
+  Albania clients from 65.
+- **Doubtful standing:** the Seleucid claim on all of Syria in 68–65 (Antiochus
+  XIII hardly ruled beyond Antioch); Chersonesus under the Bosporus to the end
+  of the window (Caesar's grant of freedom c. 46 is argued, not drawn); Olba
+  and Derbe as independent.
+- **Pharnaces' occupation of 48–47** covers Pontus, Lesser Armenia and
+  Deiotarus' Pontic lands; the part of Cappadocia he overran is not drawn.
 
 ## Sea names (September 2026)
 

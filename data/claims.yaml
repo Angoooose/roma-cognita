@@ -613,7 +613,7 @@
     in 44 (Bridoux ¶159). In 46–45 it was Sittius', and is not claimed here.
 
 - atom: numidia-igilgili
-  polity: numidia
+  polity: numidia-masinissa
   relation: client
   from: before 68 BCE
   to: 47 BCE
@@ -625,7 +625,7 @@
     Numidian kings (¶155). Given to Sittius in 46, recovered by Arabio in 44.
 
 - atom: numidia-soummam
-  polity: numidia
+  polity: numidia-masinissa
   relation: client
   from: before 68 BCE
   to: 47 BCE
@@ -668,7 +668,7 @@
   polity: mauretania
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: 50 BCE
   sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶99–100' }]
   confidence: probable
   review: draft
@@ -738,4 +738,652 @@
   to: after 43 BCE
   sources: [{ source: strabo, locator: '11.2.11' }]
   confidence: uncertain
+  review: draft
+
+# --- added September 2026: the neighbours of Rome ------------------------------
+
+- atom: pontus
+  polity: pontus-regnum
+  relation: independent
+  from: 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+  confidence: probable
+  review: draft
+  note: >-
+    Mithridates won back his kingdom in 68 and lost it to Pompey in 66.
+
+- atom: galatia-pontus
+  polity: pontus-regnum
+  relation: independent
+  from: 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+  confidence: probable
+  review: draft
+
+- atom: armenia-minor
+  polity: pontus-regnum
+  relation: independent
+  from: 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+  confidence: probable
+  review: draft
+
+- atom: comana-pontica
+  polity: pontus-regnum
+  relation: independent
+  from: 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+  confidence: probable
+  review: draft
+
+- atom: colchis
+  polity: pontus-regnum
+  relation: independent
+  from: before 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 101' }
+  confidence: probable
+  review: draft
+
+- atom: bosporus
+  polity: pontus-regnum
+  relation: independent
+  from: 65 BCE
+  to: 64 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 101–111' }
+  confidence: probable
+  review: draft
+  note: >-
+    Mithridates took the Bosporus in 65 — his son Machares killed himself — and
+    died at Panticapaeum in 63 (Appian Mithr. 101–111).
+
+- atom: bosporus-tanais
+  polity: pontus-regnum
+  relation: independent
+  from: 65 BCE
+  to: 64 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 101–111' }
+  confidence: probable
+  review: draft
+
+- atom: chersonesus
+  polity: pontus-regnum
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: 63 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Subject to the Bosporan kings from Mithridates' time (Strabo 7.4.3). A grant
+    of freedom by Caesar c. 46 is sometimes argued; not drawn.
+
+- atom: pontus
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+    - { source: cassius-dio, locator: '42.45–47' }
+  confidence: certain
+  review: draft
+  note: >-
+    Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, until
+    Caesar broke him at Zela in August 47.
+
+- atom: armenia-minor
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+    - { source: cassius-dio, locator: '42.45–47' }
+  confidence: certain
+  review: draft
+
+- atom: galatia-pontus
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+    - { source: cassius-dio, locator: '42.45–47' }
+  confidence: certain
+  review: draft
+
+- atom: comana-pontica
+  polity: comana-pontica
+  relation: client
+  from: 63 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '12.3.34–35' }
+  confidence: probable
+  review: draft
+
+- atom: colchis
+  polity: colchis
+  relation: client
+  from: 63 BCE
+  to: after 43 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 114' }
+  confidence: probable
+  review: draft
+
+- atom: iberia-caucasia
+  polity: iberia-caucasia
+  relation: independent
+  from: before 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54, 37.1' }
+  confidence: probable
+  review: draft
+
+- atom: iberia-caucasia
+  polity: iberia-caucasia
+  relation: client
+  from: 65 BCE
+  to: after 43 BCE
+  sources:
+    - { source: cassius-dio, locator: '37.1–2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Submitted to Pompey after his invasion of 65.
+
+- atom: albania
+  polity: albania
+  relation: independent
+  from: before 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54' }
+  confidence: probable
+  review: draft
+
+- atom: albania
+  polity: albania
+  relation: client
+  from: 65 BCE
+  to: after 43 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 35' }
+    - { source: cassius-dio, locator: '37.3–5' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Oroeses sued for peace after Pompey's campaign of 65.
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: before 68 BCE
+  to: 67 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: sherwin-white-1984 }
+  confidence: probable
+  review: draft
+
+- atom: armenia
+  polity: armenia
+  relation: client
+  from: 66 BCE
+  to: after 43 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: cassius-dio, locator: '36.52–53' }
+  confidence: probable
+  review: draft
+
+- atom: parthia
+  polity: parthia
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: debevoise-1938 }
+    - { source: sherwin-white-1984 }
+  confidence: certain
+  review: draft
+
+- atom: syria
+  polity: seleucid
+  relation: independent
+  from: before 68 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
+
+- atom: creta
+  polity: creta-koinon
+  relation: independent
+  from: before 68 BCE
+  to: 67 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.17a–19' }
+  confidence: certain
+  review: draft
+
+- atom: paphlagonia
+  polity: paphlagonia
+  relation: client
+  from: 63 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '12.3.1' }
+    - { source: appian, locator: 'Mithr. 114' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: olba
+  polity: olba
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '14.5.10' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: derbe
+  polity: derbe
+  relation: independent
+  from: before 50 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '12.6.3' }
+    - { source: cicero-fam, locator: '13.73' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: lycia
+  polity: lycia
+  relation: allied
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '14.3.3' }
+    - { source: mitchell-2005 }
+  confidence: certain
+  review: draft
+
+- atom: rhodian-peraea
+  polity: rhodus
+  relation: allied
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '14.2.2–4' }
+  confidence: certain
+  review: draft
+
+- atom: scythia-minor
+  polity: scythia-minor
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3, 7.4.7' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: kush
+  polity: kush
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: torok-1997, locator: 'chs. 4–5' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: garamantes
+  polity: garamantes
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: mattingly-2003 }
+  confidence: probable
+  review: draft
+
+- atom: mauretania-west
+  polity: mauretania-bogud
+  relation: client
+  from: 49 BCE
+  to: after 43 BCE
+  sources:
+    - { source: pliny-nh, locator: '5.19' }
+    - { source: bridoux-2020, locator: '¶99–100' }
+  confidence: probable
+  review: draft
+
+- atom: numidia-igilgili
+  polity: sittiani
+  relation: client
+  from: 46 BCE
+  to: 45 BCE
+  sources:
+    - { source: appian, locator: 'BC 4.54' }
+    - { source: bridoux-2020, locator: '¶102' }
+  confidence: uncertain
+  review: draft
+
+- atom: numidia-cirta
+  polity: sittiani
+  relation: client
+  from: 46 BCE
+  to: 45 BCE
+  sources:
+    - { source: appian, locator: 'BC 4.54' }
+    - { source: pliny-nh, locator: '5.22' }
+    - { source: bridoux-2020, locator: '¶101, ¶159' }
+  confidence: probable
+  review: draft
+
+- atom: numidia-igilgili
+  polity: numidia-masinissa
+  relation: independent
+  from: 44 BCE
+  to: after 43 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶158–159' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Arabio recovered his father's lands on Caesar's death (Bridoux ¶159).
+
+- atom: numidia-soummam
+  polity: numidia-masinissa
+  relation: independent
+  from: 44 BCE
+  to: after 43 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶158–159' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Arabio recovered his father's lands on Caesar's death (Bridoux ¶159).
+
+- atom: dacia
+  polity: dacia
+  relation: independent
+  from: c. 60 BCE
+  to: 44 BCE
+  sources:
+    - { source: strabo, locator: '7.3.11' }
+    - { source: jordanes-getica, locator: '67' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: pontic-cities
+  polity: pontic-cities
+  relation: allied
+  from: before 68 BCE
+  to: 56 BCE
+  sources:
+    - { source: eutropius, locator: '6.10' }
+  confidence: probable
+  review: needs-check
+
+- atom: pontic-cities
+  polity: dacia
+  relation: independent
+  from: 55 BCE
+  to: 44 BCE
+  sources:
+    - { source: mihailov-igbulg, locator: 'I² 13' }
+    - { source: strabo, locator: '7.3.11' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Burebista's conquest of the coast, c. 55–48, recorded in the Akornion decree
+    of Dionysopolis.
+
+- atom: pontic-cities
+  polity: pontic-cities
+  relation: independent
+  from: 43 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '7.3.11' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Free again when Burebista's kingdom broke up.
+
+- atom: noricum
+  polity: noricum
+  relation: allied
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bc, locator: '1.18' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: delmatae
+  polity: delmatae
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 12–13' }
+  confidence: probable
+  review: draft
+
+- atom: massalia
+  polity: massalia
+  relation: allied
+  from: before 68 BCE
+  to: 50 BCE
+  sources:
+    - { source: strabo, locator: '4.1.5, 4.1.9' }
+  confidence: probable
+  review: draft
+
+- atom: massalia
+  polity: gallia-transalpina
+  relation: province
+  from: 49 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bc, locator: '2.22' }
+    - { source: cassius-dio, locator: '41.25' }
+  confidence: probable
+  review: draft
+  note: >-
+    Caesar left the Massaliots their city and their freedom, but took their
+    territory and ships.
+
+- atom: helvetii
+  polity: helvetii
+  relation: independent
+  from: before 68 BCE
+  to: 59 BCE
+  sources:
+    - { source: caesar-bg, locator: '1.2' }
+  confidence: probable
+  review: draft
+
+- atom: helvetii
+  polity: helvetii
+  relation: allied
+  from: 58 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg, locator: '1.28' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sent back to their land after Bibracte, 58, and received as allies.
+
+- atom: helvetii
+  polity: gallia-comata
+  relation: province
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg, locator: 'VII–VIII' }
+    - { source: suetonius-iul, locator: '25' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    See gallia-comata.
+
+- atom: sequani
+  polity: sequani
+  relation: independent
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+  confidence: probable
+  review: draft
+
+- atom: sequani
+  polity: gallia-comata
+  relation: province
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg, locator: 'VII–VIII' }
+    - { source: suetonius-iul, locator: '25' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    See gallia-comata.
+
+- atom: aedui
+  polity: aedui
+  relation: allied
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg, locator: '1.33, 7.37–43, 7.54–55, 7.63' }
+  confidence: probable
+  review: draft
+  note: >-
+    Allies throughout, until they joined Vercingetorix in 52.
+
+- atom: aedui
+  polity: gallia-comata
+  relation: province
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg, locator: 'VII–VIII' }
+    - { source: suetonius-iul, locator: '25' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    See gallia-comata.
+
+- atom: arverni
+  polity: arverni
+  relation: independent
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+  confidence: probable
+  review: draft
+
+- atom: arverni
+  polity: gallia-comata
+  relation: province
+  from: 51 BCE
+  to: after 43 BCE
+  sources:
+    - { source: caesar-bg, locator: 'VII–VIII' }
+    - { source: suetonius-iul, locator: '25' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    See gallia-comata.
+
+- atom: vaccaei
+  polity: vaccaei
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: probable
+  review: draft
+
+- atom: astures
+  polity: astures
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: probable
+  review: draft
+
+- atom: cantabri
+  polity: cantabri
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: probable
+  review: draft
+
+- atom: callaeci
+  polity: callaeci
+  relation: independent
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: probable
   review: draft

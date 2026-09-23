@@ -105,8 +105,7 @@ interface Reach {
   line: Pt[]
 }
 
-function reachesNear(a: Pt, b: Pt): Map<number, Reach> {
-  const m = 0.6
+function reachesNear(a: Pt, b: Pt, m: number): Map<number, Reach> {
   const bbox = {
     west: Math.min(a[0], b[0]) - m,
     east: Math.max(a[0], b[0]) + m,
@@ -193,15 +192,21 @@ function walk(from: Snap, to: Snap, reaches: Map<number, Reach>): Pt[] | null {
 }
 
 export function riverPath(a: Pt, b: Pt): Pt[] {
-  const reaches = reachesNear(a, b)
-  // The largest pair of nearby reaches that one river actually joins: near a
-  // mouth the biggest stream is not always the one the frontier follows.
-  const pairs = snaps(a, reaches)
-    .flatMap((sa) => snaps(b, reaches).map((sb) => [sa, sb] as const))
-    .sort(([a1, b1], [a2, b2]) => Math.min(a2.reach.upland, b2.reach.upland) - Math.min(a1.reach.upland, b1.reach.upland))
   let path: Pt[] | null | undefined = null
-  for (const [sa, sb] of pairs) {
-    path = walk(sa, sb, reaches) ?? walk(sb, sa, reaches)?.reverse()
+  // A river can bow far outside the box its two ends make (the Danube runs down
+  // to 43.6° N between the Tisza and the delta), so widen the search until the
+  // walk connects.
+  for (const margin of [0.6, 2, 4]) {
+    const reaches = reachesNear(a, b, margin)
+    // The largest pair of nearby reaches that one river actually joins: near a
+    // mouth the biggest stream is not always the one the frontier follows.
+    const pairs = snaps(a, reaches)
+      .flatMap((sa) => snaps(b, reaches).map((sb) => [sa, sb] as const))
+      .sort(([a1, b1], [a2, b2]) => Math.min(a2.reach.upland, b2.reach.upland) - Math.min(a1.reach.upland, b1.reach.upland))
+    for (const [sa, sb] of pairs) {
+      path = walk(sa, sb, reaches) ?? walk(sb, sa, reaches)?.reverse()
+      if (path) break
+    }
     if (path) break
   }
   if (!path) throw new Error(`[${a}] and [${b}] are not on one river`)

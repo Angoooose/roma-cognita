@@ -148,6 +148,77 @@
   citation: >-
     J. F. Drinkwater, Roman Gaul: The Three Provinces, 58 BC–AD 260 (London, 1983)
 
+- id: sherwin-white-1984
+  kind: modern
+  citation: A. N. Sherwin-White, Roman Foreign Policy in the East, 168 B.C. to A.D. 1 (London, 1984)
+
+- id: debevoise-1938
+  kind: modern
+  citation: N. C. Debevoise, A Political History of Parthia (Chicago, 1938)
+
+- id: braund-1994
+  kind: modern
+  citation: >-
+    D. Braund, Georgia in Antiquity: A History of Colchis and Transcaucasian
+    Iberia, 550 BC–AD 562 (Oxford, 1994)
+
+- id: schottky-1989
+  kind: modern
+  citation: >-
+    M. Schottky, Media Atropatene und Gross-Armenien in hellenistischer Zeit
+    (Bonn, 1989)
+
+- id: torok-1997
+  kind: modern
+  citation: >-
+    L. Török, The Kingdom of Kush: Handbook of the Napatan-Meroitic
+    Civilization (Leiden, 1997)
+
+- id: mattingly-2003
+  kind: modern
+  citation: >-
+    D. J. Mattingly (ed.), The Archaeology of Fazzan, vol. 1: Synthesis
+    (London, 2003)
+
+- id: behrwald-2000
+  kind: modern
+  citation: >-
+    R. Behrwald, Der lykische Bund: Untersuchungen zu Geschichte und Verfassung
+    (Bonn, 2000)
+
+- id: mitchell-2005
+  kind: modern
+  citation: >-
+    S. Mitchell, "The Treaty between Rome and Lycia of 46 BC (MS 2070)", in
+    R. Pintaudi (ed.), Papyri Graecae Schøyen (Florence, 2005) 163–250 (SEG 55.1452)
+
+- id: fraser-bean-1954
+  kind: modern
+  citation: P. M. Fraser and G. E. Bean, The Rhodian Peraea and Islands (Oxford, 1954)
+
+- id: alfoldy-1974
+  kind: modern
+  citation: G. Alföldy, Noricum (London, 1974)
+
+- id: lockyear-2004
+  kind: modern
+  citation: >-
+    K. Lockyear, "The Late Iron Age background to Roman Dacia", in W. S. Hanson
+    and I. P. Haynes (eds), Roman Dacia: The Making of a Provincial Society,
+    JRA Supplementary Series 56 (Portsmouth RI, 2004) 33–74
+
+- id: fichtl-2004
+  kind: modern
+  citation: S. Fichtl, Les peuples gaulois, IIIe–Ier siècles av. J.-C. (Paris, 2004)
+
+- id: curchin-1991
+  kind: modern
+  citation: 'L. A. Curchin, Roman Spain: Conquest and Assimilation (London, 1991)'
+
+- id: mihailov-igbulg
+  kind: modern
+  citation: G. Mihailov, Inscriptiones Graecae in Bulgaria repertae, vol. I² (Sofia, 1970)
+
 - id: barrington
   kind: modern
   citation: >-
@@ -216,6 +287,18 @@
 - id: cicero-phil
   kind: ancient
   citation: Cicero, Philippicae
+
+- id: bellum-alexandrinum
+  kind: ancient
+  citation: '[Caesar], Bellum Alexandrinum'
+
+- id: eutropius
+  kind: ancient
+  citation: Eutropius, Breviarium
+
+- id: jordanes-getica
+  kind: ancient
+  citation: Jordanes, Getica
 
 - id: josephus-aj
   kind: ancient

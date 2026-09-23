@@ -209,7 +209,16 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
     windowText: window.map((y) => formatYear(y)),
     sea: SEA,
     atoms: data.atoms.map((a) => ({ id: a.id, evidence: a.evidence, confidence: a.confidence })),
-    polities: data.polities.map((p) => ({ id: p.id, kind: p.kind, name: preferred(p.id), ruler: p.ruler })),
+    polities: data.polities.map((p) => ({
+      id: p.id,
+      kind: p.kind,
+      name: preferred(p.id),
+      // Dated preferred names, for a polity renamed inside the window; the engine picks by year.
+      names: data.names
+        .filter((n) => n.target.kind === 'polity' && n.target.id === p.id && n.preferred)
+        .map((n) => ({ text: n.text, from: n.from.year, to: n.to.year })),
+      ruler: p.ruler,
+    })),
     claims: data.claims.map((c) => ({
       atom: c.atom,
       polity: c.polity,

@@ -67,6 +67,44 @@ const MAX_BEND = (10 * Math.PI) / 180
 /** The ridge a name may run along: slices at least this share of the deepest point. */
 const RIDGE_SHARE = 0.25
 
+/**
+ * Enclaves smaller than this share of a territory are ignored when placing its
+ * name: a name may run over Comana inside Pontus, as a printed map would letter it.
+ */
+const HOLE_SHARE = 0.04
+
+/** Fills every hole (outside cells the border cannot reach) smaller than `share` of the shape. */
+function fillSmallHoles(mask: Uint8Array, w: number, h: number, share: number) {
+  let area = 0
+  for (let k = 0; k < w * h; k++) area += mask[k]
+  const seen = new Uint8Array(w * h)
+  const stack: number[] = []
+  const flood = (start: number, out?: number[]) => {
+    stack.push(start)
+    seen[start] = 1
+    while (stack.length) {
+      const k = stack.pop()!
+      out?.push(k)
+      const x = k % w
+      const y = (k / w) | 0
+      for (const [nx, ny] of [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]]) {
+        if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue
+        const n = ny * w + nx
+        if (!seen[n] && !mask[n]) (seen[n] = 1), stack.push(n)
+      }
+    }
+  }
+  // Everything outside that touches the border is the sea round the shape, not a hole.
+  for (let x = 0; x < w; x++) for (const y of [0, h - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
+  for (let y = 0; y < h; y++) for (const x of [0, w - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
+  for (let k = 0; k < w * h; k++) {
+    if (mask[k] || seen[k]) continue
+    const hole: number[] = []
+    flood(k, hole)
+    if (hole.length < share * area) for (const c of hole) mask[c] = 1
+  }
+}
+
 /** The width of `text` at an em of 1, with `tracking` em between letters. */
 export function textWidth(text: string, m: FontMetrics, tracking: number) {
   let w = 0
@@ -109,6 +147,7 @@ export function placeLabel(
   const mask = new Uint8Array(w * h)
   fillPolygons(rings, g, mask)
   keepLargestComponent(mask, w, h)
+  fillSmallHoles(mask, w, h, HOLE_SHARE)
 
   // Depth of every cell: distance to the nearest outside cell, in metres.
   const d2 = edt(mask, w, h, 0)
