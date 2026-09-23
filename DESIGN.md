@@ -180,8 +180,10 @@ should survive, in the style of `cicero-map`'s `_comment`s.
 - Otherwise **our own stable slugs** (`hispania-citerior`). Never array
   positions, and never IDs from upstream files. AWMC OBJECTIDs are not stable
   across releases.
-- Upstream geometry is matched **by seed point**, and the build fails loudly on
-  ambiguity. This is carried over, and it is the right bargain.
+- Territory geometry is **authored, not ingested** (September 2026): each atom
+  is built by `npm run atoms -w pipeline` from the frontier its sources name —
+  vertices at places (with Pleiades ids), legs along rivers (HydroRIVERS) or
+  ranges (the DEM), clipped to land — so no upstream id is ever needed.
 
 ### 5.5 Atoms across a growing time span
 
@@ -190,8 +192,8 @@ window_". A longer span will need atoms to split: a province divided, a
 kingdom partitioned. The rule is **finest common subdivision**. When a new
 boundary is needed, the atom is split into children with `splitFrom: parent`,
 and claims on the parent are rewritten onto the children by a migration script
-the build can verify. Atoms never overlap, and the build asserts that their
-union equals the land they came from.
+the build can verify. Atoms never overlap: the build cuts every earlier atom out
+of each outline, and the validator asserts it.
 
 ### 5.6 Authoring format
 
@@ -228,7 +230,7 @@ Migrating it proves the schema before new curation starts.
 | Lakes                  | **HydroLAKES v1.0** (≥ 0.05 km²)                     | CC BY 4.0         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically |
 | Coastline, ancient     | Our `landscape-change` records; AWMC period patches as seed | ours; ODbL  | AWMC's `roman_open_water` layer is 2 polygons (Miletus, Ephesus) and its Hellenistic layer 5 (adding Utica). Checked 2026-09-22. |
 | Places                 | **Pleiades**; DARE as a cross-check                  | CC BY 3.0; CC BY-SA 3.0 | Importance is curated by us |
-| Territory geometry     | AWMC `roman_empire_bce_60` + our own shapes          | ODbL              | As in `cicero-map` |
+| Territory geometry     | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | Rebuilt September 2026 (`pipeline/src/atoms`). AWMC's `roman_empire_bce_60` was dropped: one unnamed Roman extent, coarse, cut with straight lines, and ODbL |
 | Region and people names | AWMC `regional_names_linework`                      | ODbL              | Baselines give size and angle |
 | Rivers                 | AWMC river lines (Barrington); HydroRIVERS for minor | ODbL; **licence to verify** | Modern courses corrected at deltas |
 | Roads                  | **Itiner-e**                                         | CC BY 4.0         | Only dated segments ship. Construction date kept per feature, which fixes `cicero-map`'s oldest open bug. |
@@ -236,7 +238,10 @@ Migrating it proves the schema before new curation starts.
 | Aridity / biome        | Köppen–Geiger (Beck et al.)                          | **licence to verify** | Modern climate as a proxy for desert versus green; used coarsely |
 | Reference only         | Barrington Atlas, Broughton MRR, Talbert            | ©                 | Cited, never copied |
 
-ODbL and CC BY-SA are compatible with our CC BY-SA 4.0 release. The
+ODbL is share-alike but it is not CC BY-SA: a database derived from ODbL data
+must itself be released under ODbL, so ODbL-derived layers (the OSM coast
+mask, AWMC names) keep their licence and are credited separately. The territory
+outlines are clipped to public-domain Natural Earth land for that reason. The
 attribution screen is generated from the `source` registry.
 
 ### 6.1 Landscape changes, the v1 list
@@ -605,12 +610,22 @@ Territory and water names were built in September 2026 (`pipeline/src/labels`,
 
 | Tier      | Scale              | What it looks like |
 | --------- | ------------------ | ------------------ |
-| **Paper** | whole frame        | Flat political colour, pale parchment beyond the known world, a dark sea with gold italic sea names, almost no terrain |
+| **Paper** | whole frame        | Flat political colour, the unfinished sketch beyond the known world, a dark sea with gold italic sea names, almost no terrain |
 | **Political** | a region of the Mediterranean | Political colour over lit relief (terrain shows through as light and shade), large curved names, borders, main roads |
 | **Terrain** | a province or smaller | Materials, glowing borders instead of full fills, roads, settlements, physical names, the shore band and foam |
 
 The tiers crossfade continuously with camera distance. They are never hard
 switches.
+
+**Beyond the known world** (`data/known-world.yaml`, c. 63 BCE) the map stops
+claiming anything at every tier. The colour ends at a ragged wash edge and what
+is left is an unfinished sketch in ink on paper: the coast with a few offshore
+lines, rivers, contours on the high ground, and the 5° graticule. The lines give
+out one kind at a time, like a pen running dry, until only paper and graticule
+remain; the paper runs on past the terrain data, so the data's edge never shows.
+Every line is drawn from the same physical data as the coloured map. The known
+world is the union of the ring, every atom and a 150 km reach round every place,
+so it never leaves out something the rest of the data draws.
 
 ---
 
@@ -646,7 +661,8 @@ copy. What we take from it:
 | -------------- | --------- | --- |
 | `sea-deep`     | `#1E3150` | open sea |
 | `sea-shallow`  | `#3E8C98` | shallows band |
-| `parchment`    | `#D8D2C4` | beyond the known world (paper tier) |
+| `parchment`    | `#D8D2C4` | what client kingdoms' colour is washed towards |
+| `paper`        | `#D9CFB8` | the sheet beyond the known world, browning towards `#CDBE9E` far out |
 | `ground-arid`  | `#D6A774` | desert, steppe |
 | `ground-green` | `#7C8848` | fertile lowland |
 | `rock`         | `#8C8378` | high and steep ground |

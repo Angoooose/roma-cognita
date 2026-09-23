@@ -56,7 +56,7 @@ function rgb(hex: string) {
 
 const SEA_DEEP = rgb('#1E3150')
 const SEA_MID = rgb('#24506E')
-const SEA_SHALLOW = rgb('#3E8C98')
+const SEA_SHALLOW = rgb('#4E7F8A')
 const SEA_SAND = rgb('#86BCAD')
 const LAKE = rgb('#2F6478')
 const FOAM = rgb('#E9EEE6')

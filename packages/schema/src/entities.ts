@@ -80,37 +80,52 @@ export interface NameRecord {
 
 // --- atom --------------------------------------------------------------------
 
-const SeedSchema = z.strictObject({ at: LonLatSchema, note: z.string().optional() })
+/**
+ * One vertex of an outline, and how the frontier reaches it from the vertex
+ * before. A bare `[lon, lat]` is a routing point joined by a straight line: out
+ * over the sea, where the coast will cut it, or across ground where the
+ * frontier is a convention and a straight line says so.
+ */
+export const LegSchema = z.union([
+  LonLatSchema,
+  z.strictObject({
+    at: LonLatSchema,
+    /**
+     * `line` (the default): straight from the previous vertex.
+     * `river`: down or up the modern main channel (HydroRIVERS) from the previous
+     *   vertex to this one — for a frontier the sources put on a river.
+     * `crest`: along the ridge in the DEM from the previous vertex to this one —
+     *   for a frontier the sources put on a watershed or a range.
+     * `curve`: a smooth curve through this run of `curve` vertices, for a zone
+     *   whose edge nobody surveyed; it passes through every vertex.
+     */
+    via: z.enum(['line', 'river', 'crest', 'curve']).optional(),
+    /** The Pleiades place the vertex stands on, if it is one; the build checks it is near. */
+    pleiades: PleiadesIdSchema.optional(),
+    /** What the vertex is: "Rubicon mouth", "Saltus Castulonensis". */
+    note: z.string().optional(),
+  }),
+])
+export type Leg = z.infer<typeof LegSchema>
 
 /**
- * How an atom's outline was made, kept so the pipeline can rebuild it against
- * a better coastline without re-deciding anything. Three recipes, matching the
- * three things cicero-map did: name an upstream polygon by seed point, cut an
- * upstream polygon with a straight line, or draw a coarse ring by hand.
+ * How an atom's outline is made, so the pipeline can rebuild it from its parts
+ * (npm run atoms -w pipeline) without re-deciding anything. Every outline is
+ * drawn out over the sea and clipped to land, so the coast is exact and only the
+ * inland frontier is authored; then the atoms earlier in atoms.yaml are cut out
+ * of it, so a frontier two atoms share is drawn once, by the earlier one, and
+ * the later one is drawn to overlap it.
  */
 export const ConstructionSchema = z.discriminatedUnion('method', [
   z.strictObject({
-    method: z.literal('seed'),
-    /** A dataset source id. */
-    dataset: SlugSchema,
-    /** Points known to fall inside exactly one upstream polygon each. Matched by position, never by upstream id. */
-    seeds: z.array(SeedSchema).min(1),
+    method: z.literal('outline'),
+    /** The frontier, vertex by vertex, closed back to the first. */
+    edge: z.array(LegSchema).min(3),
   }),
   z.strictObject({
-    method: z.literal('cut'),
-    dataset: SlugSchema,
-    /** The upstream ground being divided. It is never an atom itself, so it has a label rather than an id. */
-    parent: z.strictObject({ label: z.string(), seeds: z.array(SeedSchema).min(1) }),
-    /** Two points; the line through them is extended to infinity. */
-    line: z.tuple([LonLatSchema, LonLatSchema]),
-    /** Which half, travelling from the first point to the second. */
-    side: z.enum(['left', 'right']),
-  }),
-  z.strictObject({
-    method: z.literal('drawn'),
-    /** Drawn out over the sea on purpose and clipped to land, so only the inland edge is a guess. */
-    ring: z.array(LonLatSchema).min(3).optional(),
-    bbox: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
+    method: z.literal('box'),
+    /** West, south, east, north: an island, whose coast is its boundary. */
+    bbox: z.tuple([z.number(), z.number(), z.number(), z.number()]),
   }),
 ])
 
@@ -123,7 +138,7 @@ export const AtomSchema = z.strictObject({
   evidence: z.enum(['surveyed', 'derived', 'schematic']),
   /** Set when this atom is a child of a split (§5.5); claims on the parent were rewritten onto it. */
   splitFrom: SlugSchema.optional(),
-  /** The atom is the union of these parts — Hispania Citerior is half a cut plus the Baliares by seed. */
+  /** The atom is the union of these parts — Hispania Citerior is the mainland outline plus a box round the Baliares. */
   construction: z.array(ConstructionSchema).min(1),
   /** Overrides where a polity's name hangs on this ground. The pipeline checks it stays inside. */
   anchor: z.strictObject({ at: LonLatSchema, note: z.string().optional() }).optional(),

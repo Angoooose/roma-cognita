@@ -1,0 +1,95 @@
+# The known world: how far Roman geography reached, c. 63 BCE, as one coarse ring.
+#
+# It decides where the map's colour stops. Past it the map is left as an unfinished
+# sketch — coast, rivers and contours in ink on paper — because the physical data
+# goes on but Roman knowledge of it did not (DESIGN.md §7.6). The pipeline takes the
+# union of this ring, every atom, and every place within 150 km, so the known world
+# can never exclude something the rest of the data draws; `npm run known -w pipeline`
+# bakes it into build/known/known.png.
+#
+# `drawn`, in the sense of atoms.yaml: twenty-odd vertices, because that is the
+# resolution the evidence supports, and a straight segment between them is visibly a
+# convention. Drawn out over the sea where the coast was known, so the ring's own line
+# only matters inland and on the open ocean. The Roman map is late-Republican: before
+# Caesar's Gaul and Britain (58–54 BCE) and long before Germanicus, but Pytheas'
+# northern voyage, the Cimbri, the Scythian and Caspian lands of Herodotus and the
+# Hellenistic geographers, and the Seleucid and Parthian east were all in circulation
+# (Strabo, writing a generation later, collects them). The reach is generous where
+# names were known and shapes were not — the map draws those as sketch-adjacent rather
+# than coloured, which the colour's ragged edge already says.
+#
+# Vertices are [lon, lat], clockwise from the Atlantic off Mauretania. Points past the
+# terrain data (south of ~19°N, east of ~53°E) are fine: the shader stops the colour
+# short of the data's edge regardless.
+
+id: known-world-63bce
+confidence: uncertain
+review: draft
+sources:
+  - { source: strabo, locator: 'Geography 1–2, 7, 11, 16–17' }
+  - { source: herodotus, locator: '4.36–45' }
+# Atoms that run on past the ring into lands Rome knew only by report. Their
+# outer edge is a convention, so rather than let it extend the known world (and
+# show as a ruled line), the ring cuts them: the colour stops at the ragged edge
+# of Roman knowledge, and their names are placed on the part inside it.
+beyond:
+  - parthia
+ring:
+  # Atlantic: the Moroccan coast and the Fortunate Isles by report; Iberia; Gaul's
+  # Ocean coast; Ierne and Britain by name and coast.
+  - [-13, 27]
+  - [-11.5, 30.5]
+  - [-12.5, 34]
+  - [-11, 37]
+  - [-13, 40]
+  - [-11.5, 43.5]
+  - [-12, 46.5]
+  - [-10.5, 49]
+  - [-12, 52]
+  - [-11, 55]
+  - [-9, 57.5]
+  - [-5, 59.5]
+  # The North Sea and the Cimbric peninsula; the Germans beyond the Rhine and the
+  # Hercynian forest, thinly.
+  - [0, 58]
+  - [4, 58.8]
+  - [9, 57.8]
+  - [12, 56.2]
+  - [14, 54]
+  - [17, 53]
+  - [19, 50.8]
+  - [23, 51.6]
+  # Scythia: the Borysthenes and the Tanais, the Maeotis, the Caspian's northern
+  # shore as the Hellenistic geographers had it.
+  - [27, 49.8]
+  - [31, 51.2]
+  - [35, 50]
+  - [38, 51]
+  - [42, 49]
+  - [46, 48.5]
+  - [51, 46.5]
+  # Hyrcania and Parthia to the Persian Gulf and Carmania.
+  - [55, 41.5]
+  - [57, 36]
+  - [58, 30]
+  - [58, 25.5]
+  # Arabia: the Gulf coast, the incense road along the Hejaz; the interior deserts
+  # left out.
+  - [52, 24.5]
+  - [48, 27.5]
+  - [44, 26.5]
+  - [41, 21.5]
+  - [39, 17]
+  # Egypt up the Nile towards Meroë; the desert oases; the Garamantes of the Fezzan;
+  # the Saharan fringe of Numidia and Mauretania.
+  - [35, 17]
+  - [30.5, 18]
+  - [27, 23.5]
+  - [22, 24]
+  - [18, 25.8]
+  - [13, 24.5]
+  - [9, 27]
+  - [4, 26.5]
+  - [0, 28]
+  - [-4, 27]
+  - [-9, 27]

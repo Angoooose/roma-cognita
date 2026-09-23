@@ -22,6 +22,7 @@ import { loadDataset } from '../load.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
+import { knownPolygons, readKnownWorld } from '../known/world.ts'
 import { projection } from '@roman-map/world'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
@@ -44,13 +45,16 @@ export function readFont(name: string): FontMetrics {
 
 const data = loadDataset()
 const font = readFont('cinzel')
-const name = (id: string) =>
-  data.names.find((n) => n.target.kind === 'polity' && n.target.id === id && n.preferred)?.text ?? id
+/** The polity's preferred name in force in `year` (Bithynia becomes Bithynia et Pontus in 63). */
+const name = (id: string, year: number) => {
+  const preferred = data.names.filter((n) => n.target.kind === 'polity' && n.target.id === id && n.preferred)
+  return (preferred.find((n) => n.from.year <= year && year <= n.to.year) ?? preferred[0])?.text ?? id
+}
 
 // Territories by year: polity → sorted atom ids. The holding layer only, as drawn.
 const years = data.claims.flatMap((c) => [c.from.year, c.to.year])
 const [first, last] = [Math.min(...years), Math.max(...years)]
-const territories = new Map<string, { polity: string; atoms: string[]; years: number[] }>()
+const territories = new Map<string, { polity: string; atoms: string[]; text: string; years: number[] }>()
 for (let y = first; y <= last; y++) {
   const held = new Map<string, string[]>()
   for (const c of data.claims) {
@@ -58,25 +62,33 @@ for (let y = first; y <= last; y++) {
     held.set(c.polity, [...(held.get(c.polity) ?? []), c.atom])
   }
   for (const [polity, atoms] of held) {
-    const key = `${polity}:${atoms.sort().join('+')}`
+    // A renamed polity on the same ground is a new label.
+    const text = name(polity, y)
+    const key = `${polity}:${atoms.sort().join('+')}:${text}`
     let t = territories.get(key)
-    if (!t) territories.set(key, (t = { polity, atoms, years: [] }))
+    if (!t) territories.set(key, (t = { polity, atoms, text, years: [] }))
     t.years.push(y)
   }
 }
 
+// A name goes on the known part of its territory: past the edge of the known world the
+// map is only a sketch, and a name there would claim what the colour does not.
+const known = readKnownWorld()
 const ringsFor = (atoms: string[]): Ring[] => {
   const out: Ring[] = []
   let polygon = 0
   for (const id of atoms) {
-    const geom = data.geometry.atoms.get(id)!
-    for (const poly of geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates) {
+    for (const poly of knownPolygons(known, id, data.geometry.atoms.get(id)!)) {
       const p = polygon++
       for (const ring of poly) out.push(projectRing(ring, p, Infinity))
     }
   }
   return out
 }
+
+/** Rough plane size of an atom (its rings' boxes), for choosing where a name falls back to. */
+const atomArea = (id: string) =>
+  ringsFor([id]).reduce((sum, r) => sum + (r.maxX - r.minX) * (r.maxY - r.minY), 0)
 
 /** Consecutive years as [from, to] ranges. */
 const ranges = (ys: number[]) => {
@@ -91,8 +103,13 @@ const ranges = (ys: number[]) => {
 
 const labels: Record<string, unknown>[] = []
 for (const t of territories.values()) {
-  const text = name(t.polity).toUpperCase()
-  const place = placeLabel(ringsFor(t.atoms), text, font)
+  const text = t.text.toUpperCase()
+  // A territory joined by a narrow neck (Bithynia and Pontus at the Parthenius) can
+  // be too long and thin for one curve; then the name goes on its largest atom.
+  const byArea = [...t.atoms].sort((a, b) => atomArea(b) - atomArea(a))
+  const place =
+    placeLabel(ringsFor(t.atoms), text, font) ??
+    (t.atoms.length > 1 ? byArea.map((a) => placeLabel(ringsFor([a]), text, font)).find(Boolean) ?? null : null)
   if (!place) {
     console.warn(`  no room for ${text} on ${t.atoms.join('+')}`)
     continue
@@ -240,7 +257,7 @@ for (const p of places) {
 
 const seats = data.seats.map((s) => ({
   polity: s.polity,
-  name: name(s.polity),
+  name: name(s.polity, s.from.year),
   place: s.place,
   years: years2(s),
   confidence: s.confidence,

@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { projection } from '@roman-map/world'
+import { frameRect, projection } from '@roman-map/world'
 
 /**
  * A strategy-map camera: a ground target, a distance, and a tilt. No heading — north is
@@ -21,9 +21,15 @@ export interface CameraState {
 }
 
 const MIN_DISTANCE = 4_000
-const MAX_DISTANCE = 9_000_000
+const MAX_DISTANCE = 7_500_000
 const MAX_PITCH = 55
 const FOV = 30
+
+/**
+ * The ground target stays over the frame, so the camera can look into the cloud bank at
+ * the edge of the known world but never fly past it into the empty plane beyond.
+ */
+const BOUNDS = frameRect(0)
 
 export class MapCamera {
   readonly camera = new THREE.PerspectiveCamera(FOV, 1, 10, 1e8)
@@ -64,6 +70,9 @@ export class MapCamera {
   }
 
   apply() {
+    this.state.x = clamp(this.state.x, BOUNDS.minX, BOUNDS.maxX)
+    this.state.y = clamp(this.state.y, BOUNDS.minY, BOUNDS.maxY)
+    this.state.distance = clamp(this.state.distance, MIN_DISTANCE, MAX_DISTANCE)
     const { x, y, distance, pitch } = this.state
     const p = (pitch * Math.PI) / 180
     const c = this.camera

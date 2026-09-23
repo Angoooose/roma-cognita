@@ -171,10 +171,10 @@
   confidence: probable
   review: draft
   note: >-
-    Formally dissolved into Italy in 42, so the province ends in 43 by the
-    successor-takes-the-year rule — but its ground became citizen territory in
-    49 (lex Roscia), which is when the claim moves (claims.yaml). The province
-    outlived its ground by six years; D. Brutus governed it in 44–43.
+    Formally dissolved into Italy in 42 (Dio 48.12.5), so the province ends in
+    43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
+    the Transpadanes but did not end the province: D. Brutus governed it in
+    44–43. Its ground stays provincial to the end of the window.
 
 - id: cyrenae
   kind: province
@@ -219,17 +219,19 @@
 - id: bithynia-pontus
   kind: province
   names:
-    - { text: Bithynia et Pontus, lang: la, preferred: true }
-  from: 63 BCE
+    - { text: Bithynia, lang: la, preferred: true, from: 74 BCE, to: 64 BCE }
+    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 43 BCE }
+  from: 74 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: magie-1950 }
+    - { source: broughton-mrr, locator: vol. II }
   confidence: certain
   review: draft
   note: >-
-    Pompey's settlement of the East; lex Pompeia. Bithynia alone was provincial
-    from the bequest of 74, but the ground drawn includes Pontus, which was not,
-    so the province is dated from 63 rather than 74 — an under-claim.
+    Bithynia, bequeathed by Nicomedes IV, from 74; joined with Pontus by
+    Pompey's settlement (lex Pompeia) in 63. Bithynia and Pontus are separate
+    atoms now, so the province can start with its bequest.
 
 - id: gallia-comata
   kind: province
@@ -247,6 +249,21 @@
     formally organised as a province until Augustus. Dated from 51, after Alesia
     and the final campaigns; the single date stands in for eight years of
     conquest and is the weakest claim in the dataset. (cicero-map: check.)
+
+- id: illyricum
+  kind: province
+  names:
+    - { text: Illyricum, lang: la, preferred: true }
+  from: 59 BCE
+  to: after 43 BCE
+  sources:
+    - { source: suetonius-iul, locator: '22' }
+    - { source: dzino-2010, locator: 'pp. 80–98' }
+  confidence: probable
+  review: draft
+  note: >-
+    Assigned to Caesar with Cisalpina by the lex Vatinia of 59; governed with
+    it from Aquileia. Vatinius fought the Delmatae there in 45–44.
 
 - id: africa-nova
   kind: province
@@ -460,15 +477,495 @@
   review: needs-check
   note: '(cicero-map: check.)'
 
-- id: cilicia-tracheia
+- id: amanus
   kind: kingdom
   names:
-    - { text: Cilicia Tracheia, lang: la, preferred: true }
+    - { text: Amanus, lang: la, preferred: true }
   from: before 68 BCE
   to: after 43 BCE
   ruler: Tarcondimotus I
   sources:
     - { source: sullivan-1990 }
+    - { source: strabo, locator: '14.5.18' }
   confidence: probable
   review: needs-check
-  note: '(cicero-map: check.)'
+  note: >-
+    Tarcondimotus' principality in the Amanus and on the middle Pyramus, seated
+    at Hierapolis-Castabala. cicero-map called it Cilicia Tracheia, which is the
+    rough country west of the Cilician plain and was not his.
+
+# --- added September 2026: the neighbours of Rome ------------------------------
+
+- id: pontus-regnum
+  kind: kingdom
+  names:
+    - { text: Pontus, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 63 BCE
+  ruler: Mithridates VI Eupator, 120–63
+  sources:
+    - { source: appian, locator: 'Mithr. 88–111' }
+    - { source: sherwin-white-1984, locator: 'chs. 7–8' }
+  confidence: certain
+  review: draft
+  note: >-
+    Mithridates' kingdom in its last years: he won back Pontus in 68 and was
+    driven out by Pompey in 66, fleeing by Colchis to the Bosporus, where he
+    died in 63.
+
+- id: armenia
+  kind: kingdom
+  names:
+    - { text: Armenia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Tigranes II, 95–55; Artavasdes II, 55–34
+  sources:
+    - { source: strabo, locator: '11.14' }
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: sherwin-white-1984, locator: 'chs. 8–12' }
+  confidence: certain
+  review: draft
+  note: >-
+    Tigranes submitted to Pompey in 66 and kept Armenia as a friend and ally of
+    Rome.
+
+- id: parthia
+  kind: kingdom
+  names:
+    - { text: Parthia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Phraates III, c. 70–57; Orodes II, 57–37
+  sources:
+    - { source: debevoise-1938, locator: 'pp. 70–108' }
+    - { source: sherwin-white-1984, locator: 'chs. 10–12' }
+  confidence: certain
+  review: draft
+
+- id: atropatene
+  kind: kingdom
+  names:
+    - { text: Media Atropatene, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Ariobarzanes I; Artavasdes I
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+    - { source: schottky-1989 }
+  confidence: probable
+  review: needs-check
+
+- id: iberia-caucasia
+  kind: kingdom
+  names:
+    - { text: Iberia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Artoces
+  sources:
+    - { source: cassius-dio, locator: '37.1–2' }
+    - { source: braund-1994, locator: 'pp. 152–170' }
+  confidence: probable
+  review: draft
+
+- id: albania
+  kind: kingdom
+  names:
+    - { text: Albania, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Oroeses
+  sources:
+    - { source: cassius-dio, locator: '36.54, 37.3–5' }
+    - { source: strabo, locator: '11.4' }
+  confidence: probable
+  review: draft
+
+- id: colchis
+  kind: kingdom
+  names:
+    - { text: Colchis, lang: la, preferred: true }
+  from: 63 BCE
+  to: after 43 BCE
+  ruler: Aristarchus, from 63
+  sources:
+    - { source: appian, locator: 'Mithr. 114' }
+    - { source: braund-1994, locator: 'pp. 152–170' }
+  confidence: probable
+  review: draft
+
+- id: seleucid
+  kind: kingdom
+  names:
+    - { text: Syria, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 65 BCE
+  ruler: Antiochus XIII Asiaticus, 69–64
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: sherwin-white-1984, locator: 'ch. 9' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The last Seleucids, restored by Lucullus in 69 and set aside by Pompey in
+    64. What they held beyond Antioch is doubtful: the rest of the country was
+    in the hands of local dynasts.
+
+- id: paphlagonia
+  kind: kingdom
+  names:
+    - { text: Paphlagonia, lang: la, preferred: true }
+  from: 63 BCE
+  to: after 43 BCE
+  ruler: Attalus; the house of Pylaemenes
+  sources:
+    - { source: strabo, locator: '12.3.1' }
+    - { source: appian, locator: 'Mithr. 114' }
+  confidence: probable
+  review: needs-check
+
+- id: comana-pontica
+  kind: city-state
+  names:
+    - { text: Comana, lang: la, preferred: true }
+  from: 63 BCE
+  to: after 43 BCE
+  ruler: 'the priests of Ma: Archelaus, then Lycomedes from 47'
+  sources:
+    - { source: strabo, locator: '12.3.34–35' }
+  confidence: probable
+  review: draft
+
+- id: olba
+  kind: kingdom
+  names:
+    - { text: Olba, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: the Teucrid priest-dynasts
+  sources:
+    - { source: strabo, locator: '14.5.10' }
+  confidence: probable
+  review: needs-check
+
+- id: derbe
+  kind: kingdom
+  names:
+    - { text: Derbe, lang: la, preferred: true }
+  from: before 50 BCE
+  to: after 43 BCE
+  ruler: Antipater of Derbe
+  sources:
+    - { source: strabo, locator: '12.6.3' }
+    - { source: dmitriev-2000, locator: 'pp. 359–360' }
+  confidence: probable
+  review: needs-check
+
+- id: lycia
+  kind: league
+  names:
+    - { text: Lycia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '14.3.2–3' }
+    - { source: mitchell-2005 }
+    - { source: behrwald-2000 }
+  confidence: certain
+  review: draft
+  note: >-
+    The Lycian League, a free ally of Rome; its treaty with Rome of 24 July 46
+    survives.
+
+- id: rhodus
+  kind: city-state
+  names:
+    - { text: Rhodus, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '14.2.2–4' }
+    - { source: fraser-bean-1954 }
+  confidence: certain
+  review: draft
+
+- id: scythia-minor
+  kind: kingdom
+  names:
+    - { text: Scythae, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3, 7.4.7' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The Crimean Scythians, with their royal seat at Neapolis.
+
+- id: mauretania-bogud
+  kind: kingdom
+  names:
+    - { text: Mauretania Bogudiana, lang: la, preferred: true }
+  from: 49 BCE
+  to: after 43 BCE
+  ruler: Bogud, 49–38
+  sources:
+    - { source: pliny-nh, locator: '5.19' }
+    - { source: bridoux-2020, locator: '¶99–100' }
+    - { source: cassius-dio, locator: '41.42.7' }
+  confidence: probable
+  review: draft
+  note: >-
+    The western kingdom, west of the Mulucha; Pliny's 'Bogudiana'. Named king with Bocchus II by Caesar's party in Rome in 49 (Dio 41.42.7);
+    Bocchus took it in 38.
+
+- id: numidia-masinissa
+  kind: kingdom
+  names:
+    - { text: Regnum Masinissae, preferred: true, to: 45 BCE }
+    - { text: Regnum Arabionis, preferred: true, from: 44 BCE }
+  from: 88 BCE
+  to: after 43 BCE
+  ruler: Masinissa II, 81–46; Arabio, 44–40
+  sources:
+    - { source: bridoux-2020, locator: '¶147–159 and pl. IX' }
+  confidence: probable
+  review: draft
+  note: >-
+    Western Numidia between the Soummam and the Ampsaga, a vassal of the eastern
+    kings from the partition of 88 (Bridoux ¶147–148). Lost to Bocchus II and
+    Sittius in 46 and recovered by Masinissa's son Arabio in 44. The name is
+    ours; the sources call it by its king.
+
+- id: sittiani
+  kind: people
+  names:
+    - { text: Sittiani, lang: la, preferred: true }
+  from: 46 BCE
+  to: 45 BCE
+  ruler: P. Sittius, 46–44
+  sources:
+    - { source: appian, locator: 'BC 4.54–56' }
+    - { source: pliny-nh, locator: '5.22' }
+    - { source: bridoux-2020, locator: '¶101–102, ¶159' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Campanian adventurer P. Sittius and his followers, given Cirta and part
+    of Masinissa II's lands by Caesar in 46; Sittius was killed in 44.
+
+- id: kush
+  kind: kingdom
+  names:
+    - { text: Aethiopia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: the kings of Meroë
+  sources:
+    - { source: torok-1997, locator: 'chs. 4–5' }
+    - { source: pliny-nh, locator: '5.59, 6.177–197' }
+  confidence: certain
+  review: draft
+  note: >-
+    The Meroitic kingdom of Kush, 'Aethiopia' to Greek and Roman writers.
+
+- id: garamantes
+  kind: people
+  names:
+    - { text: Garamantes, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: pliny-nh, locator: '5.35–38' }
+    - { source: mattingly-2003 }
+  confidence: certain
+  review: draft
+
+- id: dacia
+  kind: kingdom
+  names:
+    - { text: Dacia, lang: la, preferred: true }
+  from: c. 60 BCE
+  to: 44 BCE
+  ruler: Burebista, to c. 44
+  sources:
+    - { source: strabo, locator: '7.3.5, 7.3.11' }
+    - { source: jordanes-getica, locator: '67' }
+    - { source: lockyear-2004 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Burebista's union of the Getae and Dacians, which Strabo says he made 'in a
+    few years' and which broke up when he was overthrown (Strabo
+    7.3.11). Its start is not datable; c. 60
+    is a convention.
+
+- id: pontic-cities
+  kind: league
+  names:
+    - { text: Pontic Greek cities, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: mihailov-igbulg, locator: 'I² 13' }
+  confidence: certain
+  review: draft
+  note: >-
+    The Greek cities of the western Pontus, Apollonia to Histria, drawn as one
+    because their fortunes in this window were shared. The name is ours.
+
+- id: noricum
+  kind: kingdom
+  names:
+    - { text: Noricum, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  ruler: Voccio
+  sources:
+    - { source: caesar-bg, locator: '1.53' }
+    - { source: caesar-bc, locator: '1.18' }
+    - { source: alfoldy-1974, locator: 'ch. 3' }
+  confidence: probable
+  review: needs-check
+
+- id: delmatae
+  kind: people
+  names:
+    - { text: Delmatae, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 12–13' }
+    - { source: wilkes-1969, locator: 'pp. 29–45' }
+  confidence: certain
+  review: draft
+
+- id: massalia
+  kind: city-state
+  names:
+    - { text: Massilia, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '4.1.4–9' }
+    - { source: caesar-bc, locator: '2.22' }
+  confidence: certain
+  review: draft
+  note: >-
+    A free ally with its own territory until Caesar took the city in 49; it kept
+    its freedom but not its lands.
+
+- id: helvetii
+  kind: people
+  names:
+    - { text: Helvetii, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: fichtl-2004 }
+  confidence: certain
+  review: draft
+
+- id: sequani
+  kind: people
+  names:
+    - { text: Sequani, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: fichtl-2004 }
+  confidence: certain
+  review: draft
+
+- id: aedui
+  kind: people
+  names:
+    - { text: Aedui, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: fichtl-2004 }
+  confidence: certain
+  review: draft
+  note: >-
+    'Brothers and kinsmen of the Roman people' (Caesar BG 1.33).
+
+- id: arverni
+  kind: people
+  names:
+    - { text: Arverni, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: fichtl-2004 }
+  confidence: certain
+  review: draft
+
+- id: vaccaei
+  kind: people
+  names:
+    - { text: Vaccaei, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: certain
+  review: draft
+
+- id: astures
+  kind: people
+  names:
+    - { text: Astures, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: certain
+  review: draft
+
+- id: cantabri
+  kind: people
+  names:
+    - { text: Cantabri, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: certain
+  review: draft
+
+- id: callaeci
+  kind: people
+  names:
+    - { text: Callaeci, lang: la, preferred: true }
+  from: before 68 BCE
+  to: after 43 BCE
+  sources:
+    - { source: strabo, locator: '3.3–4' }
+    - { source: curchin-1991 }
+  confidence: certain
+  review: draft
+
+- id: creta-koinon
+  kind: league
+  names:
+    - { text: Creta, lang: la, preferred: true }
+  from: before 68 BCE
+  to: 67 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.17a–19' }
+    - { source: broughton-mrr, locator: 'vol. II, 69–67 BCE' }
+  confidence: certain
+  review: draft
+  note: >-
+    The Cretan cities, independent until Q. Metellus conquered the island in
+    69–67.

@@ -17,12 +17,11 @@ The user signs off on the batch. Each fix moves the record from
 These were migrated unchanged so the migration could be checked year by year
 against the old `control.json`. The reasoning is in each record's `note`.
 
-- **Cyprus → Cilicia runs to 43 BCE.** Caesar is generally held to have
-  returned Cyprus to the Ptolemies in 47 (Dio 42.35).
 - **Egypt is a client from 68.** cicero-map's own note argues for 59 or 55.
-- **Judaea is a client from 68.** Its own source dates Roman control from 63.
-- **Galatia's seat is Ancyra.** Deiotarus' strongholds were Blucium and Peium.
-- **Emesa's seat is Emesa.** Strabo puts Sampsiceramus at Arethusa.
+- *Fixed September 2026:* Cyprus now leaves Cilicia in 48 and is Ptolemaic
+  from 47 (Dio 42.35); Judaea is a client from 63 and independent before;
+  Galatia's and Emesa's seats are gone, because both are now drawn as
+  territory.
 - **"Royal seat" status is wrong in three places:**
   - Nicomedia: Bithynia was a province throughout.
   - Cirta: given to Sittius after 46.
@@ -35,10 +34,9 @@ against the old `control.json`. The reasoning is in each record's `note`.
 - **29 records cite only cicero-map.** A reason was recorded but no published
   work. Each needs a real citation (Broughton, CAH, Barrington map numbers).
 - **Not yet checked by the validator:**
-  - that the atoms tile the land;
-  - that the atoms do not overlap;
-  - that the seed points still match AWMC;
+  - that atoms.geojson is what `npm run atoms` builds from atoms.yaml;
   - that places still match Pleiades.
+  Atom overlap is now checked (September 2026).
 
 ## Before extending the window to 133–27 BCE (step B3)
 
@@ -68,17 +66,60 @@ All `review: draft`. The derivation prints the live list; the standing ones:
 
 Drawing the data exposed these. None is a drawing bug.
 
-- **Illyricum is unclaimed.** The Dalmatian coast is plain land in every year,
-  but it went with Gallia Cisalpina under Caesar. It needs an atom and claims.
-- **The seat-only kingdoms draw nothing.** Galatia, Cappadocia, Commagene,
-  Judaea, Emesa, Osroene, Ituraea and Cilicia Tracheia are `seats.yaml`
-  records. Seat markers are not drawn yet, so central Anatolia reads as empty.
-- **The schematic outlines are placeholders.** Mauretania, Numidia, Egypt,
-  Nabataea, Bosporus and Thrace are the twelve-vertex rings drawn in
-  cicero-map. The soft schematic styling helps, but they still read as
-  polygons. Phase 2 replaces them.
-- **Lycia is unclaimed** (the gap in south-west Anatolia). In this period it
-  was a free league, so that may be right, but nobody has decided it.
+- *Fixed September 2026:* Illyricum is a province from 59 on a coastal atom;
+  the seat-only kingdoms except Osroene are drawn as territory; the
+  twelve-vertex rings are gone (see below).
+- *Fixed September 2026:* Lycia is drawn as the free Lycian League.
+
+## Territory outlines (September 2026)
+
+Every outline was rebuilt from the frontiers the cited works name
+(atoms.yaml; `npm run atoms:preview -w pipeline` for the review plates). The
+lines rest on these choices, each of which wants a reader's eye:
+
+- **Conventions, not frontiers.** Numidia's and Mauretania's southern edges,
+  Cyrenaica's, Egypt's and Nabataea's desert edges, Galatia's and Cappadocia's
+  inner lines, Cilicia's northern edge, the Thracian kingdom and Illyricum's
+  inland edge are drawn where authority faded; Bridoux says of the Numidian
+  south that it was "probablement pas précisément établie".
+- **One scholar's hypothesis.** Mauretania east of Cap Ténès to the Soummam
+  (Desanges, accepted by Bridoux ¶102) is `uncertain`; Gsell's line at Cap
+  Ténès is the cautious alternative.
+- **The fossa regia south of Abthugni** follows Tissot's line along the
+  sebkhas; Saumagne's is more westerly (Bridoux ¶133–134). The Tusca is the
+  oued Zouara (Bridoux ¶127), not the oued el-Kebir Pleiades puts it at.
+- **Citerior/Ulterior north of the Tagus** has an attested direction and no
+  course (Richardson).
+- **The Rubicon** is the modern Rubicone, whose identification is conventional.
+- **Castabala** is both Tarcondimotus' seat and, in Strabo, a gift to
+  Ariobarzanes; it is drawn with the Amanus.
+- **Left unclaimed on purpose:** the Cottian and Maritime Alps and Raetia;
+  Istria; the Cyclades, Lemnos and Imbros; the Tracheia west of Olba; Siwa and
+  inner Sinai; the Propontic Greek cities; Gaul beyond the four peoples drawn,
+  before 51; Osroene, which stays a seat; the Autrigones, Vascones and their
+  neighbours between the Cantabri and Pompaelo; the steppe north of the Crimea.
+- **Inside a larger atom:** Issa (Illyricum); the Suebi's third of the Sequani
+  (BG 1.31).
+
+## The neighbours of Rome (September 2026)
+
+Added in one batch, each from the works it cites; the review plates are the
+same `npm run atoms:preview -w pipeline`. What wants a reader's eye:
+
+- **Extents that are conventions:** Dacia (Burebista's widest reach; Lockyear
+  doubts any fixed extent), Noricum, the Garamantes, Kush's valley strip, the
+  Caucasian kingdoms, Atropatene, Parthia beyond the frame, the Gallic peoples
+  (after the later civitas lines, Fichtl), and the four Iberian peoples (after
+  their Augustan conventus; Strabo's Melsus is taken as the Sella).
+- **Dates that are conventions:** Dacia from c. 60; the Pontic cities free
+  again in 43; Armenia a client from 66 even under Artavasdes II; Iberia and
+  Albania clients from 65.
+- **Doubtful standing:** the Seleucid claim on all of Syria in 68–65 (Antiochus
+  XIII hardly ruled beyond Antioch); Chersonesus under the Bosporus to the end
+  of the window (Caesar's grant of freedom c. 46 is argued, not drawn); Olba
+  and Derbe as independent.
+- **Pharnaces' occupation of 48–47** covers Pontus, Lesser Armenia and
+  Deiotarus' Pontic lands; the part of Cappadocia he overran is not drawn.
 
 ## Sea names (September 2026)
 

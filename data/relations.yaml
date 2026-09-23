@@ -145,12 +145,12 @@
 - polity: bithynia-pontus
   type: province-of
   of: rome
-  from: 63 BCE
+  from: 74 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources: [{ source: magie-1950 }, { source: broughton-mrr, locator: vol. II }]
   confidence: certain
   review: draft
-  note: Pompey's settlement; lex Pompeia.
+  note: Bithynia from the bequest of 74; with Pontus from Pompey's settlement of 63.
 
 - polity: gallia-comata
   type: province-of
@@ -161,6 +161,16 @@
   confidence: uncertain
   review: needs-check
   note: Not formally a province until Augustus; see the polity.
+
+- polity: illyricum
+  type: province-of
+  of: rome
+  from: 59 BCE
+  to: after 43 BCE
+  sources: [{ source: suetonius-iul, locator: '22' }]
+  confidence: probable
+  review: draft
+  note: The lex Vatinia.
 
 - polity: africa-nova
   type: province-of
@@ -282,17 +292,16 @@
 - polity: judaea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 63 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
-  confidence: probable
-  review: needs-check
+    - { source: josephus-aj, locator: '14.74–79' }
+  confidence: certain
+  review: draft
   note: >-
-    Migrated as cicero-map drew it, a client for the whole window. Migration
-    review: cicero-map's own source dates Rome's hold from Pompey's capture of
-    Jerusalem in 63; before that the Hasmoneans were treaty friends of Rome
-    rather than clients, so the start may want to be 63.
+    From Pompey's capture of Jerusalem in 63. Before that the Hasmoneans were
+    friends of Rome by treaty, not clients; their ground is claimed as
+    independent (claims.yaml). cicero-map had a client from 68.
 
 - polity: ituraea
   type: client-of
@@ -324,7 +333,7 @@
   review: needs-check
   note: 'cicero-map: check.'
 
-- polity: cilicia-tracheia
+- polity: amanus
   type: client-of
   of: rome
   from: before 68 BCE
@@ -333,3 +342,163 @@
   confidence: uncertain
   review: needs-check
   note: 'cicero-map: check.'
+
+# --- added September 2026: the neighbours of Rome ------------------------------
+
+- polity: lycia
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: mitchell-2005 }]
+  confidence: certain
+  review: draft
+
+- polity: rhodus
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: fraser-bean-1954 }]
+  confidence: certain
+  review: draft
+
+- polity: massalia
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: strabo, locator: '4.1.5' }]
+  confidence: certain
+  review: draft
+  note: Its territory is the Province's from 49 (claims.yaml).
+
+- polity: paphlagonia
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  confidence: probable
+  review: draft
+
+- polity: comana-pontica
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: strabo, locator: '12.3.34' }]
+  confidence: probable
+  review: draft
+
+- polity: mauretania-bogud
+  type: client-of
+  of: rome
+  from: 49 BCE
+  to: after 43 BCE
+  sources: [{ source: cassius-dio, locator: '41.42.7' }]
+  confidence: probable
+  review: draft
+
+- polity: numidia-masinissa
+  type: client-of
+  of: numidia
+  from: before 68 BCE
+  to: 47 BCE
+  sources: [{ source: bridoux-2020, locator: '¶155' }]
+  confidence: probable
+  review: draft
+  note: A vassal of the eastern Numidian kings (Bridoux).
+
+- polity: sittiani
+  type: client-of
+  of: rome
+  from: 46 BCE
+  to: 45 BCE
+  sources: [{ source: appian, locator: 'BC 4.54' }]
+  confidence: probable
+  review: draft
+
+- polity: pontic-cities
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: 56 BCE
+  sources: [{ source: eutropius, locator: '6.10' }]
+  confidence: probable
+  review: needs-check
+  note: From M. Lucullus' campaign of 72/71 until Burebista.
+
+- polity: noricum
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: caesar-bc, locator: '1.18' }]
+  confidence: probable
+  review: needs-check
+
+- polity: aedui
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: 52 BCE
+  sources: [{ source: caesar-bg, locator: '1.33' }]
+  confidence: certain
+  review: draft
+
+- polity: helvetii
+  type: allied-to
+  of: rome
+  from: 58 BCE
+  to: 52 BCE
+  sources: [{ source: caesar-bg, locator: '1.28' }]
+  confidence: probable
+  review: draft
+  note: Sent home after Bibracte, 58, and received into alliance.
+
+- polity: colchis
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 43 BCE
+  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  confidence: probable
+  review: draft
+
+- polity: iberia-caucasia
+  type: client-of
+  of: rome
+  from: 65 BCE
+  to: after 43 BCE
+  sources: [{ source: cassius-dio, locator: '37.2' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: albania
+  type: client-of
+  of: rome
+  from: 65 BCE
+  to: after 43 BCE
+  sources: [{ source: plutarch, locator: 'Pompey 35' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: armenia
+  type: client-of
+  of: rome
+  from: 66 BCE
+  to: after 43 BCE
+  sources: [{ source: plutarch, locator: 'Pompey 33' }]
+  confidence: probable
+  review: draft
+  note: Tigranes kept his kingdom as a friend and ally after submitting to Pompey.
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: strabo, locator: '11.13.1–2' }]
+  confidence: uncertain
+  review: needs-check
