@@ -1,12 +1,12 @@
 /**
  * Builds one terrain tile in the Albers plane out of its sources.
  *
- * Elevation (Mapterhorn) and sea depth (AWS Terrain Tiles) both live in Web Mercator;
- * the map lives in Albers. Rather than teach the GPU two projections, every plane tile
- * is resampled here once: each texel is inverse-projected to lon/lat, located in the
- * Mercator pyramid and sampled bilinearly. The coast mask is already baked on this
- * tile grid (pipeline/src/water), so it is only windowed and rescaled. The GPU only
- * ever sees plane-space tiles.
+ * Elevation (Mapterhorn) lives in Web Mercator; the map lives in Albers. Rather than
+ * teach the GPU two projections, every plane tile is resampled here once: each texel is
+ * inverse-projected to lon/lat, located in the Mercator pyramid and sampled bilinearly.
+ * The coast mask and sea depth are already baked on this tile grid (pipeline/src/water,
+ * pipeline/src/depth), so they are only windowed and rescaled. The GPU only ever sees
+ * plane-space tiles.
  *
  * Output is three textures. The first carries height and its gradient rather than a
  * normal, so the shader can choose how much to exaggerate relief without the tile
@@ -24,10 +24,18 @@
  * width where tiles of different levels meet.
  */
 
-import { ROOT, TILE_TEXELS, projection, tileRect } from '@roman-map/world'
+import {
+  ROOT,
+  TILE_TEXELS,
+  decodeDepthTile,
+  projection,
+  tileRect,
+  type TileAddress,
+} from '@roman-map/world'
 import { toHalf } from './half.ts'
 import { alignDistance } from '../politics/field.ts'
 import { riverHalfWidth, riverMinDischarge } from './rivers.ts'
+import { TileStore } from './tileStore.ts'
 
 export interface TileJob {
   id: number
@@ -68,23 +76,12 @@ interface MercatorSource {
 
 /**
  * Mapterhorn: Terrarium WebP, 512 px, to z12 (~15 m in Italy). Land only — every sea
- * pixel is exactly 0, which is why depth needs a second source.
+ * pixel is exactly 0, which is why depth is baked separately.
  */
 const ELEVATION: MercatorSource = {
   url: 'https://tiles.mapterhorn.com/{z}/{x}/{y}.webp',
   tileSize: 512,
   maxZoom: 12,
-}
-
-/**
- * AWS Terrain Tiles (Tilezen/Joerd): Terrarium PNG, 256 px, with ETOPO/GEBCO-derived
- * bathymetry. Depth only drives the shallows colour ramp, so z8 (~450 m) is plenty and
- * keeps the request count down.
- */
-const DEPTH: MercatorSource = {
-  url: 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-  tileSize: 256,
-  maxZoom: 8,
 }
 
 const EQUATOR = 40075016.686
@@ -115,10 +112,14 @@ function cached(key: string, load: () => Promise<Float32Array | null>) {
 async function pixels(url: string): Promise<{ rgba: Uint8ClampedArray; width: number } | null> {
   const res = await fetch(url)
   if (!res.ok) return null
+  return decodeImage(await res.blob())
+}
+
+async function decodeImage(blob: Blob): Promise<{ rgba: Uint8ClampedArray; width: number }> {
   // These images are data, not pictures: any colour management or premultiplication
   // corrupts them — the same class of bug as the PNG colour profiles that shift
   // province ids by one or two in the EU4 web map.
-  const bitmap = await createImageBitmap(await res.blob(), {
+  const bitmap = await createImageBitmap(blob, {
     colorSpaceConversion: 'none',
     premultiplyAlpha: 'none',
   })
@@ -213,8 +214,11 @@ async function sampleMercator(
 
 interface WaterIndex {
   maxLevel: number
+  /** Levels with tile codes; below it the pack head says whether a tile was written. */
+  codeLevel: number
   distanceTexels: number
   codes: Uint8Array[]
+  store: TileStore
 }
 
 let waterIndex: Promise<WaterIndex | null> | null = null
@@ -226,8 +230,13 @@ function loadWaterIndex() {
       j
         ? {
             maxLevel: j.maxLevel,
+            // Masks from before the packs: every level has codes, and tiles are loose.
+            codeLevel: j.codeLevel ?? j.maxLevel,
             distanceTexels: j.distanceTexels,
-            codes: (j.codes as string[]).map((b) => Uint8Array.from(atob(b), (c) => c.charCodeAt(0))),
+            codes: (j.codes as string[]).map((b) =>
+              Uint8Array.from(atob(b), (c) => c.charCodeAt(0)),
+            ),
+            store: new TileStore('/water', 'webp', j.packLevel ?? Infinity),
           }
         : null,
     )
@@ -236,10 +245,11 @@ function loadWaterIndex() {
 }
 
 /**
- * Signed distance to shore in metres for every texel of the tile. Tiles at or above
- * the mask's deepest level read their own mask tile; deeper tiles read a window of
- * their ancestor at that level, bilinearly — the same thing the GPU would do.
- * Without a mask (the pipeline has not been run) height decides, as in the first spike.
+ * Signed distance to shore in metres for every texel of the tile, from the deepest
+ * mask tile written at or above it — the tile itself where it has shore, otherwise a
+ * window of its nearest ancestor that does, bilinearly, the same thing the GPU would
+ * do. Without a mask (the pipeline has not been run) height decides, as in the first
+ * spike.
  */
 async function coastDistance(
   job: TileJob,
@@ -251,19 +261,26 @@ async function coastDistance(
   const idx = await loadWaterIndex()
   if (!idx) {
     for (let r = 0; r < N; r++) {
-      for (let c = 0; c < N; c++) shore[r * N + c] = heights[(r + 1) * m + c + 1] > 0 ? 1e4 : -1e4
+      for (let c = 0; c < N; c++)
+        shore[r * N + c] = heights[(r + 1) * m + c + 1] > 0 ? 1e4 : -1e4
     }
     return { shore, floodplain: floodplain.fill(-1e4) }
   }
 
-  const level = Math.min(job.level, idx.maxLevel)
-  const shift = job.level - level
-  const si = job.i >> shift
-  const sj = job.j >> shift
+  // Below the code level, a tile that was not written has no shore within reach: its
+  // parent's field says everything there is to say.
+  const at = (l: number) => ({
+    level: l,
+    i: job.i >> (job.level - l),
+    j: job.j >> (job.level - l),
+  })
+  let level = Math.min(job.level, idx.maxLevel)
+  while (level > idx.codeLevel && !(await idx.store.has(at(level)))) level--
+  const { i: si, j: sj } = at(level)
   const src = tileRect({ level, i: si, j: sj })
   const sstep = src.size / (N - 1)
   const reach = idx.distanceTexels * sstep
-  const code = idx.codes[level]?.[sj * 2 ** level + si] ?? 0
+  const code = level > idx.codeLevel ? 2 : (idx.codes[level]?.[sj * 2 ** level + si] ?? 0)
 
   // Codes: 0 all sea, 1 all land outside any floodplain, 2 mixed (tile written),
   // 3 all land inside a floodplain.
@@ -273,16 +290,13 @@ async function coastDistance(
     return { shore, floodplain }
   }
 
-  const url = `/water/${level}/${si}/${sj}.webp`
-  const [sField, fField] = await Promise.all([
-    cached(`${url}#shore`, () => maskChannel(url, 0)),
-    cached(`${url}#floodplain`, () => maskChannel(url, 1)),
-  ])
-  if (!sField || !fField) {
+  const fields = await cachedMask(idx.store, { level, i: si, j: sj })
+  if (!fields) {
     shore.fill(-reach)
     floodplain.fill(-reach)
     return { shore, floodplain }
   }
+  const [sField, fField] = fields
 
   const me = tileRect(job)
   const step = me.size / (N - 1)
@@ -304,20 +318,137 @@ async function coastDistance(
         const b = field[y * N + x + 1]
         const cc = field[(y + 1) * N + x]
         const d = field[(y + 1) * N + x + 1]
-        out[o] = ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * reach
+        out[o] =
+          ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * reach
       }
     }
   }
   return { shore, floodplain }
 }
 
-/** One channel of a mask tile as −1…1: 0 the shore distance, 1 the floodplain distance. */
-async function maskChannel(url: string, channel: number): Promise<Float32Array | null> {
-  const img = await pixels(url)
-  if (!img) return null
-  const f = new Float32Array(N * N)
-  for (let k = 0; k < f.length; k++) f[k] = (img.rgba[k * 4 + channel] / 255) * 2 - 1
-  return f
+const masks = new Map<string, Promise<[Float32Array, Float32Array] | null>>()
+
+/** A mask tile's two channels as −1…1: 0 the shore distance, 1 the floodplain distance. */
+function cachedMask(store: TileStore, address: TileAddress) {
+  const key = `${address.level}/${address.i}/${address.j}`
+  let p = masks.get(key)
+  if (p) masks.delete(key)
+  else {
+    p = store
+      .get(address)
+      .then(async (bytes) => {
+        const img =
+          bytes &&
+          (await decodeImage(new Blob([bytes as BlobPart], { type: 'image/webp' })))
+        if (!img) return null
+        const channel = (ch: number) => {
+          const f = new Float32Array(N * N)
+          for (let k = 0; k < f.length; k++) f[k] = (img.rgba[k * 4 + ch] / 255) * 2 - 1
+          return f
+        }
+        return [channel(0), channel(1)] as [Float32Array, Float32Array]
+      })
+      .catch(() => null)
+    if (masks.size >= CACHE_LIMIT / 2) masks.delete(masks.keys().next().value!)
+  }
+  masks.set(key, p)
+  return p
+}
+
+// --- sea depth ----------------------------------------------------------------------
+
+interface DepthIndex {
+  maxLevel: number
+  packLevel: number
+  written: Uint8Array[]
+  store: TileStore
+}
+
+let depthIndex: Promise<DepthIndex | null> | null = null
+
+function loadDepthIndex() {
+  depthIndex ??= fetch('/depth/index.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) =>
+      j
+        ? {
+            maxLevel: j.maxLevel,
+            packLevel: j.packLevel,
+            written: (j.written as string[]).map((b) =>
+              Uint8Array.from(atob(b), (c) => c.charCodeAt(0)),
+            ),
+            store: new TileStore('/depth', 'bin', j.packLevel),
+          }
+        : null,
+    )
+    .catch(() => null)
+  return depthIndex
+}
+
+/**
+ * Where no depth has been baked (`npm run depth -w pipeline` not run), the sea reads as
+ * deep: an honest navy rather than shallows invented everywhere.
+ */
+const DEPTH_UNKNOWN = -1000
+
+/**
+ * Sea depth in metres (≤ 0) for every texel of the tile, row 0 south, from the deepest
+ * depth tile written at or above it (pipeline/src/depth), windowed bilinearly. Fine
+ * tiles are only written where they add detail, so most of the open sea reads a window
+ * of level 6.
+ */
+async function depthField(job: TileJob): Promise<Float32Array> {
+  const out = new Float32Array(N * N)
+  const idx = await loadDepthIndex()
+  if (!idx) return out.fill(DEPTH_UNKNOWN)
+
+  const at = (l: number) => ({
+    level: l,
+    i: job.i >> (job.level - l),
+    j: job.j >> (job.level - l),
+  })
+  let level = Math.min(job.level, idx.maxLevel)
+  for (; level >= 0; level--) {
+    const a = at(level)
+    if (level <= idx.packLevel) {
+      if (idx.written[level]?.[a.j * 2 ** level + a.i]) break
+    } else if (await idx.store.has(a)) break
+  }
+  // A dry tile under dry ancestors: nothing will read its depth.
+  if (level < 0) return out
+  const address = at(level)
+  const tile = await cached(`/depth/${level}/${address.i}/${address.j}`, () =>
+    loadDepthTile(idx.store, address),
+  )
+  if (!tile) return out.fill(DEPTH_UNKNOWN)
+
+  const src = tileRect(address)
+  const sstep = src.size / (N - 1)
+  const me = tileRect(job)
+  const step = me.size / (N - 1)
+  for (let r = 0; r < N; r++) {
+    const sy = (me.y0 + r * step - src.y0) / sstep
+    const y = Math.min(N - 2, Math.max(0, Math.floor(sy)))
+    const ty = sy - y
+    for (let c = 0; c < N; c++) {
+      const sx = (me.x0 + c * step - src.x0) / sstep
+      const x = Math.min(N - 2, Math.max(0, Math.floor(sx)))
+      const tx = sx - x
+      out[r * N + c] =
+        (tile[y * N + x] * (1 - tx) + tile[y * N + x + 1] * tx) * (1 - ty) +
+        (tile[(y + 1) * N + x] * (1 - tx) + tile[(y + 1) * N + x + 1] * tx) * ty
+    }
+  }
+  return out
+}
+
+async function loadDepthTile(store: TileStore, address: TileAddress) {
+  const bytes = await store.get(address)
+  if (!bytes) return null
+  const inflated = new Blob([bytes as BlobPart])
+    .stream()
+    .pipeThrough(new DecompressionStream('deflate'))
+  return decodeDepthTile(new Uint8Array(await new Response(inflated).arrayBuffer()))
 }
 
 // --- rivers -------------------------------------------------------------------------
@@ -746,6 +877,9 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
 
 // --- the tile -----------------------------------------------------------------------
 
+/** Steepest sea floor near the shore, as depth per metre offshore (~27°). */
+const MAX_SHORE_SLOPE = 0.5
+
 async function build(job: TileJob): Promise<TileResult> {
   const { x0, y0, size } = tileRect(job)
   const step = size / (N - 1)
@@ -761,7 +895,7 @@ async function build(job: TileJob): Promise<TileResult> {
 
   const [heights, depths, river, politics] = await Promise.all([
     sampleMercator(ELEVATION, lonlat, m * m, zoomFor(ELEVATION, step, lat)),
-    sampleMercator(DEPTH, lonlat, m * m, zoomFor(DEPTH, step, lat)),
+    depthField(job),
     riverField(job),
     politicsField(job),
   ])
@@ -783,7 +917,10 @@ async function build(job: TileJob): Promise<TileResult> {
       terrain[o * 4 + 2] = toHalf((heights[i + m] - heights[i - m]) * inv2)
       terrain[o * 4 + 3] = toHalf(floodplain[o])
       water[o * 4] = toHalf(shore[o])
-      water[o * 4 + 1] = toHalf(Math.min(0, depths[i]))
+      // The sea floor can fall no faster than MAX_SHORE_SLOPE from the drawn coast. The
+      // bathymetry is ~110 m at best, and at a cliff its first sea texel is already
+      // tens of metres deep; this lets the depth meet the coast the mask draws.
+      water[o * 4 + 1] = toHalf(Math.min(0, Math.max(depths[o], shore[o] * MAX_SHORE_SLOPE)))
       water[o * 4 + 2] = toHalf(river.dist[o])
       water[o * 4 + 3] = toHalf(river.q[o])
       if (h < minHeight) minHeight = h

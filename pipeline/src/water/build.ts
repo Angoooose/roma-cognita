@@ -15,13 +15,22 @@
  *
  *   npm run water -w pipeline
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { parse as parseYaml } from 'yaml'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { availableParallelism } from 'node:os'
 import { Worker } from 'node:worker_threads'
-import { DATA_RECT, ROOT, TILE_TEXELS, tileRect } from '@roman-map/world'
+import {
+  DATA_RECT,
+  PACK_LEVEL,
+  ROOT,
+  TILE_TEXELS,
+  packOf,
+  tileRect,
+  writePack,
+  type TileAddress,
+} from '@roman-map/world'
 import type { BakeJob, BakeResult } from './bake-worker.ts'
 import { edgesTouch, inside, type Ring } from './raster.ts'
 import { RingIndex } from './ring-index.ts'
@@ -31,8 +40,19 @@ const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const CACHE = join(ROOT_DIR, '.cache/sources')
 const OUT = join(ROOT_DIR, 'build/water')
 
-/** Deepest baked level: 108 m texels. Deeper terrain samples a window of it. */
-const MAX_LEVEL = 8
+/**
+ * Deepest baked level: 27 m texels, with the shore placed to a quarter of that by the
+ * supersampling. Terrain goes one level deeper (13.5 m) and samples a window of it; at
+ * 2× a distance field still draws a clean edge. Level 8 (108 m) was the limit before,
+ * and at full zoom it rounded every harbour mole and spit into a blob.
+ */
+const MAX_LEVEL = 10
+/**
+ * Deepest level whose tile codes go in index.json. Deeper grids would make the index
+ * megabytes; below it, a tile is written or not, and the pack head says which. An
+ * unwritten deep tile has no shore within reach, so its ancestor's field is right there.
+ */
+const CODE_LEVEL = 8
 /** Clamp distance, in texels of the tile's own level. */
 const DISTANCE_TEXELS = 16
 /** Samples per texel side when rasterising, so the shore lands between texel centres. */
@@ -143,7 +163,10 @@ async function main() {
   const lakeIndex = new RingIndex(lakes.rings)
   const floodplainIndex = new RingIndex(floodplains)
 
+  rmSync(OUT, { recursive: true, force: true })
   const pool = new BakePool(Math.max(1, availableParallelism() - 2))
+  /** Tiles at or below PACK_LEVEL, grouped by pack; written once every level is done. */
+  const packs = new Map<string, { address: TileAddress; bytes: Uint8Array }[]>()
   const writes: Promise<void>[] = []
   const codes: Uint8Array[] = []
   let written = 0
@@ -200,7 +223,6 @@ async function main() {
         }
         grid[j * n + i] = Code.Mixed
         mixed++
-        const file = join(OUT, `${level}/${i}/${j}.webp`)
         const job = {
           x0,
           y0,
@@ -215,10 +237,19 @@ async function main() {
         }
         writes.push(
           pool.bake(job).then((img) => {
-            mkdirSync(dirname(file), { recursive: true })
-            writeFileSync(file, img)
             written++
             bytes += img.length
+            if (level < PACK_LEVEL) {
+              const file = join(OUT, `${level}/${i}/${j}.webp`)
+              mkdirSync(dirname(file), { recursive: true })
+              writeFileSync(file, img)
+              return
+            }
+            const p = packOf({ level, i, j })
+            const key = `${p.i}/${p.j}`
+            let list = packs.get(key)
+            if (!list) packs.set(key, (list = []))
+            list.push({ address: { level, i, j }, bytes: img })
           }),
         )
         // Keep the queue short: each queued job holds a copy of its rings.
@@ -233,14 +264,31 @@ async function main() {
   }
   await pool.close()
 
+  let largest = 0
+  for (const [key, tiles] of packs) {
+    const [pi, pj] = key.split('/')
+    const file = join(OUT, `pack/${pi}/${pj}.pack`)
+    mkdirSync(dirname(file), { recursive: true })
+    tiles.sort(
+      (a, b) =>
+        a.address.level - b.address.level || a.address.j - b.address.j || a.address.i - b.address.i,
+    )
+    const pack = writePack(tiles)
+    largest = Math.max(largest, pack.length)
+    writeFileSync(file, pack)
+  }
+  console.log(`${packs.size} packs, largest ${fmt(largest)} B`)
+
   const index = {
     _comment:
-      'Coast mask tiles. codes[level] is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written as {level}/{i}/{j}.webp), 3 all land inside a floodplain. Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain).',
+      'Coast mask tiles. codes[level] (levels 0 to codeLevel) is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written), 3 all land inside a floodplain. Below codeLevel a tile is written only if it has shore; the pack head lists which. Tiles above packLevel are {level}/{i}/{j}.webp; the rest are in pack/{i}/{j}.pack of their packLevel ancestor (packages/world/src/pack.ts). Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain).',
     texels: TILE_TEXELS,
     maxLevel: MAX_LEVEL,
+    codeLevel: CODE_LEVEL,
+    packLevel: PACK_LEVEL,
     distanceTexels: DISTANCE_TEXELS,
     sources: [SOURCES.land.licence, SOURCES.lakes.licence],
-    codes: codes.map((c) => Buffer.from(c).toString('base64')),
+    codes: codes.slice(0, CODE_LEVEL + 1).map((c) => Buffer.from(c).toString('base64')),
   }
   writeFileSync(join(OUT, 'index.json'), JSON.stringify(index))
   console.log(`wrote ${written} tiles, ${fmt(bytes)} B, in ${((Date.now() - t0) / 1000).toFixed(0)} s`)

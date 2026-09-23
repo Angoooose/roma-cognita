@@ -223,7 +223,7 @@ Migrating it proves the schema before new curation starts.
 | ---------------------- | --------------------------------------------------- | ----------------- | ----- |
 | Terrain (runtime)      | **Mapterhorn** `planet.pmtiles`, Terrarium encoding | various open; **terms of the hosted file unverified** | 30 m global, finer in parts of Italy and Spain. Web Mercator, reprojected by the engine (§7.1). Fallback: AWS Terrain Tiles. |
 | Terrain (offline bakes) | Copernicus GLO-30; **FABDEM** (bare earth) now allowed | Copernicus licence; CC BY-NC-SA | Used for ambient occlusion and texture-shading bakes |
-| Bathymetry             | **AWS Terrain Tiles** (ETOPO/GEBCO-derived) at runtime, z≤8; EMODnet DTM 2024 as an upgrade | open; CC BY 4.0 | Drives the shallow-water band. ~450 m is enough for a colour ramp. |
+| Bathymetry             | **EMODnet DTM 2024** (~115 m) over the European seas, **GEBCO_2026** (15″, ~460 m) elsewhere, baked offline (§7.2) | CC BY 4.0; public domain with attribution | Drives the shallows. AWS Terrain Tiles were used at runtime until September 2026: ~1–2 km at sea, and they drew the Caspian as a flat −28 m slab. |
 | Coastline, modern      | OSM land polygons, split edition (osmdata.openstreetmap.de) | ODbL      | Natural Earth 10m is too coarse at 50 m/px |
 | Lakes                  | **HydroLAKES v1.0** (≥ 0.05 km²)                     | CC BY 4.0         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically |
 | Coastline, ancient     | Our `landscape-change` records; AWMC period patches as seed | ours; ODbL  | AWMC's `roman_open_water` layer is 2 polygons (Miletus, Ephesus) and its Hellenistic layer 5 (adding Utica). Checked 2026-09-22. |
@@ -316,20 +316,49 @@ tectonics dominate.
   - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs). The
     `landscape-change` records will be applied here per year once they exist.
   - **Layout:** tiles use the terrain quadtree's own addresses and texel grid,
-    for levels 0–8. Texels are 108 m at level 8; deeper terrain reads a window
-    of its level-8 ancestor.
+    for levels 0–10. Texels are 27 m at level 10; the deepest terrain (level 11,
+    13.5 m) reads a window of its level-10 ancestor. The mask stopped at level 8
+    (108 m) until September 2026, and at full zoom that rounded every harbour
+    mole, spit and islet into a blob next to 15 m relief.
   - **Encoding:** distance is clamped to ±16 texels, quantised to 8 bits, and
     stored as lossless WebP (~5 KB per tile).
   - **Skipped tiles:** tiles with no shore are not written. `index.json`
-    records whether each is all land or all water.
+    records, for levels 0–8, whether each is all land or all water. Below that
+    a tile is simply written or not: an unwritten one has no shore within
+    reach, so its ancestor's field already describes it.
+  - **Packs:** levels 0–5 are loose files. Every tile from level 6 down lives
+    in the pack of its level-6 ancestor (`packages/world/src/pack.ts`), read
+    with HTTP range requests. A static host counts files (Cloudflare Pages
+    allows 20k), and levels 9–10 alone are hundreds of thousands of tiles.
   - **What it gives the shader:** from one field, a crisp antialiased coast at
     any zoom (the edge is where the field crosses zero, found to sub-texel
     precision), a screen-space shore rim, and a hairline of ink. It is also why
     land below sea level (Qattara, the Jordan valley) is no longer drawn as sea.
-- **Depth** comes from AWS Terrain Tiles, sampled at runtime alongside elevation
-  by the same worker. Depth drives the ramp from deep navy to turquoise
-  shallows. Lakes are told apart from sea by their surface height and take a
-  flat colour.
+- **Depth is baked too** (`npm run depth -w pipeline`, `pipeline/src/depth/`),
+  after the coast mask, whose tile codes say which tiles are dry:
+  - **Sources:** EMODnet DTM 2024 (~115 m) wherever it reaches, which is every
+    European sea; GEBCO_2026 elsewhere (the Red Sea's east, the Gulf, the
+    Caspian). EMODnet is fetched in 2° chunks from its WCS into `.cache`.
+  - **Sea under the source's land.** Neither source's shore agrees with OSM's;
+    GEBCO's can sit half a kilometre off. Where the mask says sea but a source
+    says land, depth read 0 and drew a turquoise fringe unrelated to the sea
+    floor. So each source's sea is carried a short way under its land (1.8 km
+    EMODnet, 3.7 km GEBCO) before sampling.
+  - **Surfaces:** depth is measured from the local water surface. The Caspian
+    (−28 m) and the Dead Sea (−430 m) are listed with their modern levels.
+  - **Layout:** levels 0–5 sample the GEBCO halving that matches their texel.
+    Level 6 (431 m) and below average the fine source over each texel. Levels
+    7 and 8 are written only where they differ from the tile above by more than
+    1 m + 3%, in water shallower than 600 m; the open sea reads a window of
+    level 6.
+  - **Encoding:** √depth in 1/32 steps (0.15 m at 6 m, 4 m at 5,000 m), gradient
+    predictor, deflate (`packages/world/src/depth.ts`). A byte per texel bands
+    the shallows ramp; this is ~30 KB for a level-8 tile full of shelf.
+  - **At runtime** the worker also stops the floor falling faster than 1:2 from
+    the drawn coast, since at a cliff the first texel of 110 m bathymetry is
+    already tens of metres deep.
+- Depth drives the ramp from deep navy to turquoise shallows. Lakes are told
+  apart from sea by their surface height and take a flat colour.
 - Specular glint and slow normal-map ripples. No foam at low zoom.
 
 ### 7.3 Politics: the atom field
