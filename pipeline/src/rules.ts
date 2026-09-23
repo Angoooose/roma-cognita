@@ -24,7 +24,7 @@ import {
   type Interval,
   type Polity,
 } from '@roman-map/schema'
-import { contains as geometryContains, ringProblems } from './geo.ts'
+import { contains as geometryContains, overlapArea, ringProblems } from './geo.ts'
 import type { Dataset, Issue } from './load.ts'
 
 type Dated = { from: Endpoint; to: Endpoint }
@@ -49,6 +49,9 @@ const RELATION_BEHIND: Partial<Record<ClaimRelation, string>> = {
   'citizen-territory': 'citizen-territory-of',
   client: 'client-of',
 }
+
+/** Rounding atom coordinates to 4 decimals leaves hairline overlaps; anything bigger is real. */
+const MAX_OVERLAP_KM2 = 0.5
 
 /** The compilation source that stands for "cicero-map gave a reason, not a work". */
 const COMPILATION = 'cicero-map'
@@ -113,21 +116,6 @@ export function checkDataset(ds: Dataset): Issue[] {
       cited.add(s.source)
       if (!sources.has(s.source))
         error('missing-source', r, `cites unknown source "${s.source}"`)
-    }
-  }
-  for (const a of ds.atoms) {
-    for (const part of a.construction) {
-      if (part.method === 'drawn') continue
-      cited.add(part.dataset)
-      const s = sources.get(part.dataset)
-      if (!s)
-        error('missing-source', a, `construction uses unknown dataset "${part.dataset}"`)
-      else if (s.kind !== 'dataset')
-        error(
-          'missing-source',
-          a,
-          `construction dataset "${part.dataset}" is not a dataset source`,
-        )
     }
   }
   for (const s of ds.sources) {
@@ -338,6 +326,18 @@ export function checkDataset(ds: Dataset): Issue[] {
       warn('unclaimed-atom', a, `atom "${a.id}" is never claimed by anyone`)
     }
   }
+  // Atoms tile: no ground belongs to two. The build (npm run atoms) guarantees
+  // it by cutting every earlier atom out of each outline; this catches a
+  // hand-edited geometry file or a build that went wrong.
+  const shaped = ds.atoms.filter((a) => ds.geometry.atoms.has(a.id))
+  for (let i = 0; i < shaped.length; i++) {
+    for (let j = i + 1; j < shaped.length; j++) {
+      const [a, b] = [shaped[i], shaped[j]]
+      const km2 = overlapArea(ds.geometry.atoms.get(a.id)!, ds.geometry.atoms.get(b.id)!)
+      if (km2 > MAX_OVERLAP_KM2)
+        error('atom-overlap', b, `atom "${b.id}" overlaps "${a.id}" by ${km2.toFixed(1)} km²`)
+    }
+  }
   for (const id of ds.geometry.atoms.keys()) {
     if (!atoms.has(id)) {
       error(
@@ -491,9 +491,8 @@ export function doubts(ds: Dataset): DoubtReport {
       .filter((r) => r.sources.every((s) => s.source === COMPILATION))
       .map((r) => ({ where: where(r), why: firstSentence(r.note) })),
     notChecked: [
-      'atom coverage: that the atoms tile the land they came from (§5.6) needs the land polygons, which the pipeline does not ingest yet',
-      'atom overlap: that no two atoms overlap is not tested; cicero-map differenced them, and nothing has touched the geometry since',
-      'seed matching: construction seeds are not re-run against AWMC, so a renumbered or redrawn upstream polygon would not be noticed here',
+      'atom geometry against its construction: that data/geometry/atoms.geojson is what npm run atoms -w pipeline builds from atoms.yaml is not re-checked here; rebuild after editing an outline',
+      'vertex places: that a vertex naming a Pleiades place stands near it is checked by npm run atoms, not here',
       'places against Pleiades: ids and positions are as cicero-map resolved them and are not re-fetched',
     ],
     counts: {

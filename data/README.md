@@ -13,7 +13,7 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | ------------------------ | --------------------------------------------------------------- |
 | `sources.yaml`           | every cited work and dataset, with licences for datasets        |
 | `atoms.yaml`             | ground that never subdivides: evidence, how it was built        |
-| `geometry/atoms.geojson` | the atoms' outlines, lon/lat, RFC 7946 winding, keyed by id     |
+| `geometry/atoms.geojson` | the atoms' outlines, built from atoms.yaml by `npm run atoms -w pipeline`; lon/lat, RFC 7946, keyed by id |
 | `polities.yaml`          | political units, with dated names                               |
 | `claims.yaml`            | the time series: atom × polity × relation × interval            |
 | `relations.yaml`         | polity-to-polity links over time (`province-of`, `client-of`)   |
@@ -55,7 +55,8 @@ at ingest and the validator asserts it. A consumer that wants the other conventi
 Everything here was migrated from `cicero-map/data/*.json` in September 2026. The
 judgement-heavy files were migrated by hand, row by row; `places.yaml` and
 `geometry/atoms.geojson` by `pipeline/src/migrate/cicero-map.ts`, which is kept as
-the record of what was done. The migrated claims reproduce cicero-map's time series
+the record of what was done. The atom outlines were rebuilt from sources later
+that month (Decision 6), and the claims changed with them. The migrated claims reproduce cicero-map's time series
 exactly for every year 68–43 BCE (checked year by year against `control.json`).
 Nothing was added to extend the data beyond that window.
 
@@ -97,19 +98,24 @@ confirming.
    client, allied, independent) and occupation. The Parthian occupation of Syria in
    40 BCE did not end the province; both rows can stand.
 
-6. **Cuts and shapes became atom `construction`, a list of parts** — `seed`
-   (AWMC polygon by point), `cut` (half of an AWMC polygon by straight line),
-   `drawn` (coarse ring or bbox) — so every outline can be rebuilt against OSM land
-   without re-deciding anything. Hispania Citerior is a cut plus the Baliares by
-   seed. The cut parents (`italia-all`, `hispania`, `anatolia-interior`) never
-   reached the map, so they are labels inside `construction`, not atoms; `splitFrom`
-   is reserved for §5.5 splits of our own atoms. Evidence: cicero-map's `awmc` and
-   `coastline` → `surveyed`, `cut` → `derived`, `schematic` → `schematic`.
+6. **Atom outlines are authored, not migrated** (rebuilt September 2026). The
+   migrated outlines were AWMC's 60 BCE shading cut with straight lines, and
+   twelve-vertex rings for the kingdoms; neither followed a frontier any source
+   names, and AWMC's ODbL would not relicense. Each atom's `construction` is now
+   an `outline` — vertices at places or features, joined straight, along a river
+   (HydroRIVERS), along a range (the DEM) or by a curve for an unsurveyed zone —
+   or a `box` round an island. `npm run atoms -w pipeline` resolves them, clips
+   to Natural Earth land and cuts each earlier atom out of the next, so a shared
+   frontier is authored once, by whichever atom comes first in atoms.yaml.
+   `npm run atoms:preview -w pipeline` draws them over a hillshade for review.
+   Evidence: `surveyed` for coasts and islands, `derived` where the line is
+   reconstructed from named places, `schematic` where authority faded out.
 
-7. **Atom confidence is new.** cicero-map gave none for AWMC atoms. Islands (whose
-   boundary is the coast) are `certain`; AWMC mainland shading is `probable`,
-   because it is a 60 BCE sphere of authority rather than an administrative line.
-   Cut and drawn atoms take their cut's or shape's old confidence.
+7. **Atom confidence** is how far the outline can be trusted as the extent of
+   what its claims say. Islands are `certain`; frontiers the sources name are
+   `probable`; reconstructions resting on one scholar's hypothesis (Mauretania
+   to the Soummam) or a convention (the Galatian and Cappadocian edges) are
+   `uncertain`.
 
 8. **cicero-map's `check` was split by what was in doubt.** For a polity whose
    existence is not in question but whose extent or standing is (Nabataea, Thrace,

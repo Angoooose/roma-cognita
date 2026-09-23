@@ -145,12 +145,12 @@
 - polity: bithynia-pontus
   type: province-of
   of: rome
-  from: 63 BCE
+  from: 74 BCE
   to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/polities.json }]
+  sources: [{ source: magie-1950 }, { source: broughton-mrr, locator: vol. II }]
   confidence: certain
   review: draft
-  note: Pompey's settlement; lex Pompeia.
+  note: Bithynia from the bequest of 74; with Pontus from Pompey's settlement of 63.
 
 - polity: gallia-comata
   type: province-of
@@ -161,6 +161,16 @@
   confidence: uncertain
   review: needs-check
   note: Not formally a province until Augustus; see the polity.
+
+- polity: illyricum
+  type: province-of
+  of: rome
+  from: 59 BCE
+  to: after 43 BCE
+  sources: [{ source: suetonius-iul, locator: '22' }]
+  confidence: probable
+  review: draft
+  note: The lex Vatinia.
 
 - polity: africa-nova
   type: province-of
@@ -282,17 +292,16 @@
 - polity: judaea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 63 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
-  confidence: probable
-  review: needs-check
+    - { source: josephus-aj, locator: '14.74–79' }
+  confidence: certain
+  review: draft
   note: >-
-    Migrated as cicero-map drew it, a client for the whole window. Migration
-    review: cicero-map's own source dates Rome's hold from Pompey's capture of
-    Jerusalem in 63; before that the Hasmoneans were treaty friends of Rome
-    rather than clients, so the start may want to be 63.
+    From Pompey's capture of Jerusalem in 63. Before that the Hasmoneans were
+    friends of Rome by treaty, not clients; their ground is claimed as
+    independent (claims.yaml). cicero-map had a client from 68.
 
 - polity: ituraea
   type: client-of
@@ -324,7 +333,7 @@
   review: needs-check
   note: 'cicero-map: check.'
 
-- polity: cilicia-tracheia
+- polity: amanus
   type: client-of
   of: rome
   from: before 68 BCE

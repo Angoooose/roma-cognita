@@ -1,9 +1,12 @@
-# Kingdoms drawn as their capital rather than as territory. These are the
-# dynasts whose extent no open dataset gives credibly — every published polygon
-# for Galatia, Cappadocia, Commagene or Nabataea that cicero-map could find was
-# a thirty-two-segment ellipse drawn around a centroid and given a scholarly
-# citation. So the map marks the seat of power and says nothing about where the
-# kingdom ended. The capitals are well located; the kingdoms are not.
+# Kingdoms drawn as their capital rather than as territory, because nobody can
+# say where they ended. Every published polygon for these dynasts that
+# cicero-map found was a thirty-two-segment ellipse given a scholarly citation,
+# so the map marks the seat of power instead.
+#
+# September 2026: Galatia, Cappadocia, Commagene, Judaea, Emesa, Ituraea and
+# Tarcondimotus' Amanus are now drawn as territory, from their frontiers in the
+# ancient geographers and the scholarship (atoms.yaml), and their seats are
+# gone. Osroene stays a seat: its extent east of the Euphrates is not known.
 #
 # Migrated from cicero-map/data/seats.json, which gave a confidence but no
 # source; each row now cites its polity's source. Its seats spanned the whole
@@ -12,45 +15,6 @@
 # cicero-map's own seat coordinates agree with Pleiades to within 1.5 km for the
 # six that join.
 
-- polity: galatia
-  place: ancyra
-  from: before 68 BCE
-  to: after 43 BCE
-  sources:
-    - { source: cicero-deiotaro }
-    - { source: cicero-map, locator: data/seats.json }
-  confidence: certain
-  review: needs-check
-  note: >-
-    Migration review: Ancyra was the chief town of the Tectosages, but
-    Deiotarus' own strongholds were Blucium and Peium (Strabo 12.5.2), and he
-    ruled all Galatia only late in his reign. Whether Ancyra is the right mark
-    for Deiotarus' court in this window wants checking.
-
-- polity: cappadocia
-  place: mazaca
-  from: before 68 BCE
-  to: after 43 BCE
-  sources: [{ source: sullivan-1990 }, { source: cicero-map, locator: data/seats.json }]
-  confidence: certain
-  review: draft
-
-- polity: commagene
-  place: samosata
-  from: before 68 BCE
-  to: after 43 BCE
-  sources: [{ source: sullivan-1990 }, { source: cicero-map, locator: data/seats.json }]
-  confidence: certain
-  review: draft
-
-- polity: judaea
-  place: hierosolyma
-  from: before 68 BCE
-  to: after 43 BCE
-  sources: [{ source: cicero-map, locator: data/seats.json }]
-  confidence: certain
-  review: draft
-
 - polity: osroene
   place: edessa
   from: before 68 BCE
@@ -58,42 +22,3 @@
   sources: [{ source: sullivan-1990 }, { source: cicero-map, locator: data/seats.json }]
   confidence: certain
   review: draft
-
-- polity: emesa
-  place: emesa
-  from: before 68 BCE
-  to: after 43 BCE
-  sources:
-    - { source: sullivan-1990 }
-    - { source: cicero-map, locator: data/seats.json }
-  confidence: certain
-  review: needs-check
-  note: >-
-    Migration review: Strabo (16.2.10) places the seat of Sampsiceramus and
-    Iamblichus at Arethusa, not Emesa, which became the dynasty's city later.
-    Check before trusting this mark in the 60s–40s.
-
-- polity: cilicia-tracheia
-  place: hierapolis-castabala
-  from: before 68 BCE
-  to: after 43 BCE
-  sources:
-    - { source: sullivan-1990 }
-    - { source: cicero-map, locator: data/seats.json }
-  confidence: probable
-  review: draft
-  note: Tarcondimotus' seat; the identification is standard but not beyond dispute.
-
-- polity: ituraea
-  place: chalcis-sub-libano
-  from: before 68 BCE
-  to: after 43 BCE
-  sources:
-    - { source: sullivan-1990 }
-    - { source: cicero-map, locator: data/seats.json }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    (cicero-map: check.) The site of Chalcis sub Libano is not securely
-    identified. Marked so the kingdom is not silently omitted, but the position
-    is the weakest in the dataset.

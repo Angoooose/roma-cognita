@@ -171,10 +171,10 @@
   confidence: probable
   review: draft
   note: >-
-    Formally dissolved into Italy in 42, so the province ends in 43 by the
-    successor-takes-the-year rule — but its ground became citizen territory in
-    49 (lex Roscia), which is when the claim moves (claims.yaml). The province
-    outlived its ground by six years; D. Brutus governed it in 44–43.
+    Formally dissolved into Italy in 42 (Dio 48.12.5), so the province ends in
+    43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
+    the Transpadanes but did not end the province: D. Brutus governed it in
+    44–43. Its ground stays provincial to the end of the window.
 
 - id: cyrenae
   kind: province
@@ -219,17 +219,19 @@
 - id: bithynia-pontus
   kind: province
   names:
-    - { text: Bithynia et Pontus, lang: la, preferred: true }
-  from: 63 BCE
+    - { text: Bithynia, lang: la, preferred: true, from: 74 BCE, to: 64 BCE }
+    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 43 BCE }
+  from: 74 BCE
   to: after 43 BCE
   sources:
-    - { source: cicero-map, locator: data/polities.json }
+    - { source: magie-1950 }
+    - { source: broughton-mrr, locator: vol. II }
   confidence: certain
   review: draft
   note: >-
-    Pompey's settlement of the East; lex Pompeia. Bithynia alone was provincial
-    from the bequest of 74, but the ground drawn includes Pontus, which was not,
-    so the province is dated from 63 rather than 74 — an under-claim.
+    Bithynia, bequeathed by Nicomedes IV, from 74; joined with Pontus by
+    Pompey's settlement (lex Pompeia) in 63. Bithynia and Pontus are separate
+    atoms now, so the province can start with its bequest.
 
 - id: gallia-comata
   kind: province
@@ -247,6 +249,21 @@
     formally organised as a province until Augustus. Dated from 51, after Alesia
     and the final campaigns; the single date stands in for eight years of
     conquest and is the weakest claim in the dataset. (cicero-map: check.)
+
+- id: illyricum
+  kind: province
+  names:
+    - { text: Illyricum, lang: la, preferred: true }
+  from: 59 BCE
+  to: after 43 BCE
+  sources:
+    - { source: suetonius-iul, locator: '22' }
+    - { source: dzino-2010, locator: 'pp. 80–98' }
+  confidence: probable
+  review: draft
+  note: >-
+    Assigned to Caesar with Cisalpina by the lex Vatinia of 59; governed with
+    it from Aquileia. Vatinius fought the Delmatae there in 45–44.
 
 - id: africa-nova
   kind: province
@@ -460,15 +477,19 @@
   review: needs-check
   note: '(cicero-map: check.)'
 
-- id: cilicia-tracheia
+- id: amanus
   kind: kingdom
   names:
-    - { text: Cilicia Tracheia, lang: la, preferred: true }
+    - { text: Amanus, lang: la, preferred: true }
   from: before 68 BCE
   to: after 43 BCE
   ruler: Tarcondimotus I
   sources:
     - { source: sullivan-1990 }
+    - { source: strabo, locator: '14.5.18' }
   confidence: probable
   review: needs-check
-  note: '(cicero-map: check.)'
+  note: >-
+    Tarcondimotus' principality in the Amanus and on the middle Pyramus, seated
+    at Hierapolis-Castabala. cicero-map called it Cilicia Tracheia, which is the
+    rough country west of the Cilician plain and was not his.

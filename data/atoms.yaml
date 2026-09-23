@@ -1,445 +1,1952 @@
 # Ground that is never subdivided at any date the data covers. An atom carries
 # an outline and no politics; who held it when is claims.yaml. Its geometry is
-# data/geometry/atoms.geojson, keyed by the same id.
+# data/geometry/atoms.geojson, keyed by the same id, and is built from the
+# `construction` below by `npm run atoms -w pipeline` (pipeline/src/atoms).
 #
-# Migrated from cicero-map/data/atoms.json, cuts.json and shapes.json. The
-# outlines in atoms.geojson are cicero-map's *processed* output
-# (public/geo/polities.json), not re-derived: each part below was built, then
-# clipped to Natural Earth 10m land, differenced against its neighbours so
-# nothing overlaps, given the leftover coastal shreds it surrounded (< 0.25 sq°),
-# simplified at 0.01° and rounded to 4 decimals. That is coarser than v1's
-# regional zoom wants. `construction` is kept so the pipeline can rebuild every
-# outline against OSM land without re-deciding anything:
+# Rebuilt September 2026. The outlines migrated from cicero-map were AWMC's
+# 60 BCE shading cut with straight lines, and hand-drawn twelve-vertex rings
+# for the kingdoms; neither followed anything the sources name, and AWMC's
+# ODbL would not relicense. Every outline is now authored here from the
+# frontiers the cited scholarship describes:
 #
-#   seed   name an upstream polygon by a point known to fall inside it — never
-#          by the upstream id, which AWMC renumbers between releases. AWMC's 59
-#          unseeded polygons are small islands; cicero-map attached each to the
-#          nearest named atom and printed every assignment.
-#   cut    split an upstream polygon along the infinite straight line through
-#          two points; `side` is relative to travelling from the first to the
-#          second. Every cut stands for a frontier that was a zone rather than a
-#          line, and a straight line is visibly a convention where a polyline
-#          would be false precision.
-#   drawn  a coarse hand-drawn ring, twelve-odd vertices because that is the
-#          resolution the evidence supports, drawn out over the sea on purpose
-#          so that clipping to land makes the coast exact and only the inland
-#          edge a guess. Neighbours are drawn to overlap: `difference` removes
-#          overlap but cannot close a gap, so overlap is the only way two drawn
-#          outlines come to share an edge.
+#   outline  the frontier, vertex by vertex. A vertex is a place (with its
+#            Pleiades id where it has one) or a routing point, and says how the
+#            frontier reaches it from the vertex before: straight (`line`, the
+#            default), down or up a river (`river`, the modern main channel from
+#            HydroRIVERS), along a range (`crest`, the ridge in the Mapterhorn
+#            DEM), or as a smooth curve for a zone nobody surveyed (`curve`).
+#            Outlines are drawn out over the sea on purpose and clipped to
+#            Natural Earth land, so the coast is exact and only the inland edge
+#            is authored.
+#   box      a rectangle round an island, whose coast is its boundary.
 #
-# evidence: cicero-map's awmc and coastline → surveyed; cut → derived;
-# schematic → schematic. Confidence is how far the outline can be trusted as
-# the extent of *something*: islands, whose boundary is the coast, are certain;
-# AWMC mainland shading probable, because it is a 60 BCE sphere of authority
-# rather than an administrative line (see the anatolia cut).
+# ORDER MATTERS. Each atom has every atom above it cut out of it, so a frontier
+# two atoms share is authored once, by the earlier atom, and the later atom is
+# drawn to overlap it. The note on the later atom says whose line it takes.
+#
+# evidence: `surveyed` where the boundary is a coast or a named river the sources
+# give as the line; `derived` where it is reconstructed from named places and
+# features in the scholarship; `schematic` where authority faded out (a desert
+# edge, a mountain zone) and the line is a convention. Confidence is how far the
+# outline can be trusted as the extent of what its claims say it was.
 
-# --- named from AWMC by seed ---------------------------------------------------
-
-- id: sicilia
-  evidence: surveyed
-  construction:
-    - method: seed
-      dataset: awmc-roman-60bce
-      seeds:
-        - { at: [14.169, 37.655] }
-        - { at: [14.435, 35.912], note: Melita }
-        - { at: [11.994, 36.794], note: Cossyra }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: certain
-  review: draft
-
-- id: sardinia
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [8.975, 40.053] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: certain
-  review: draft
-
-- id: corsica
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [9.107, 42.222] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: certain
-  review: draft
-
-- id: creta
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [24.867, 35.249] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: certain
-  review: draft
-
-- id: gallia-transalpina
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [3.372, 44.083] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
-
-- id: macedonia
-  evidence: surveyed
-  construction:
-    - method: seed
-      dataset: awmc-roman-60bce
-      seeds:
-        - at: [22.318, 39.015]
-          note: Includes Greece — Achaea is not a separate province before 27 BCE
-        - { at: [23.786, 38.542], note: Euboea }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
-
-- id: asia
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [28.707, 38.579] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
-
-- id: syria
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [35.973, 34.749] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
+# === North Africa ==============================================================
+# Chiefly V. Bridoux, Les royaumes d'Afrique du Nord (2020), ch. 1 and pls. II,
+# VII–XIV, which reviews Gsell, Desanges, Camps and Di Vita-Évrard.
 
 - id: africa
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [9.94, 36.044] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
-
-- id: cyrenaica
-  evidence: surveyed
-  construction:
-    - { method: seed, dataset: awmc-roman-60bce, seeds: [{ at: [21.584, 32.153] }] }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-  confidence: probable
-  review: draft
-
-# --- cut from AWMC ground ------------------------------------------------------
-# AWMC shades the Roman world as one extent, so ground this data has to
-# separate arrives fused. The three parents (italia-all, hispania,
-# anatolia-interior) never reach the map under their own names, so they are
-# labels inside `construction` rather than atoms.
-
-- id: italia
   evidence: derived
   construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: italia-all, seeds: [{ at: [14.199, 41.635] }] }
-      line: [[10.0, 43.55], [12.6, 44.25]]
-      side: right
+    - method: outline
+      edge:
+        - [8.95, 37.3]
+        - at: [9.006, 36.956]
+          note: mouth of the Tusca, taken as the oued Zouara just east of Thabraca (Bridoux ¶127)
+        - at: [9.3, 36.72]
+          note: east of Vaga, as most reconstructions run (Bridoux ¶130–131)
+        - at: [9.37, 36.45]
+          note: the watershed between the oued Khalled and the oued Siliana (Bridoux ¶129)
+        - [9.42, 36.25]
+        - at: [9.6, 36.06]
+          note: south of Furnos Maius (Bridoux ¶129)
+        - at: [10.05, 36.1]
+          note: south of Seressi, towards Abthugni (Bridoux ¶129)
+        - at: [10.2, 35.87]
+          note: west shore of the sebkha Kelbia (Tissot's line, Bridoux ¶133)
+        - at: [10.33, 35.5]
+          note: west of the sebkha of Sidi el-Hani
+        - at: [10.5, 35.08]
+          note: by the sebkha el-Gorra
+        - at: [10.683, 34.656]
+          pleiades: '324825'
+          note: Thaenae (Henchir Thina), the end of the fossa regia (Bridoux ¶128)
+        - [10.9, 34.4]
+        - [11.8, 36.0]
+        - [11.5, 37.6]
   sources:
-    - { source: awmc-roman-60bce }
+    - { source: bridoux-2020, locator: '¶125–135 and pl. II (the fossa regia)' }
+    - { source: pliny-nh, locator: '5.25' }
     - { source: natural-earth }
-    - { source: cicero-map, locator: data/cuts.json }
   confidence: probable
   review: draft
   note: >-
-    The cut is the Rubicon–Arno line, the Republican limit of Italia. It puts
-    Genua on the Cisalpine side, which is right for the Republic though not for
-    the Augustan regiones.
+    The fossa regia, from the Tusca to Thaenae. Bridoux calls the northern and
+    central course reasonably secure (imperial boundary stones on the
+    Khalled–Siliana watershed and at Abthugni) and the south uncertain; the
+    southern stretch follows Tissot's line along the sebkhas, which Bridoux
+    prefers to Saumagne's more westerly one (¶133–134).
 
-- id: cisalpina
-  evidence: derived
-  construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: italia-all, seeds: [{ at: [14.199, 41.635] }] }
-      line: [[10.0, 43.55], [12.6, 44.25]]
-      side: left
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-    - { source: cicero-map, locator: data/cuts.json }
-  confidence: probable
-  review: draft
-  note: North of the Rubicon–Arno line; see italia.
-
-- id: hispania-citerior
-  evidence: derived
-  construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: hispania, seeds: [{ at: [-1.643, 39.059] }] }
-      line: [[-0.9, 37.6], [-8.8, 41.6]]
-      side: right
-    - method: seed
-      dataset: awmc-roman-60bce
-      seeds:
-        - { at: [2.922, 39.632], note: Baliares — Mallorca }
-        - { at: [4.066, 39.964], note: Baliares — Menorca }
-        - { at: [1.401, 38.978], note: Baliares — Ebusus }
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-    - { source: broughton-mrr, locator: vol. II — the Citerior/Ulterior commands }
-  confidence: probable
-  review: draft
-  note: >-
-    The division ran through the Saltus Castulonensis and was never surveyed;
-    the line reproduces its direction, not its course.
-
-- id: hispania-ulterior
-  evidence: derived
-  construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: hispania, seeds: [{ at: [-1.643, 39.059] }] }
-      line: [[-0.9, 37.6], [-8.8, 41.6]]
-      side: left
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-    - { source: broughton-mrr, locator: vol. II — the Citerior/Ulterior commands }
-  confidence: probable
-  review: draft
-  note: See hispania-citerior.
-
-- id: bithynia-pontus
-  evidence: derived
-  construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: anatolia-interior, seeds: [{ at: [31.2, 38.815] }] }
-      line: [[28.0, 38.5], [37.0, 39.4]]
-      side: left
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-    - { source: cah-ix, locator: ch. 8 }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    (cicero-map: check.) Cut along Pompey's settlement of 63. AWMC shades the
-    whole Anatolian interior as Roman at 60 BCE, which overstates it — Galatia
-    and Cappadocia were client kingdoms inside this outline, and are drawn as
-    seats on top of it. The cut divides what AWMC drew; it does not fix it.
-
-- id: cilicia
-  evidence: derived
-  construction:
-    - method: cut
-      dataset: awmc-roman-60bce
-      parent: { label: anatolia-interior, seeds: [{ at: [31.2, 38.815] }] }
-      line: [[28.0, 38.5], [37.0, 39.4]]
-      side: right
-  sources:
-    - { source: awmc-roman-60bce }
-    - { source: natural-earth }
-    - { source: cah-ix, locator: ch. 8 }
-  confidence: uncertain
-  review: needs-check
-  note: '(cicero-map: check.) See bithynia-pontus.'
-
-# --- drawn by hand -------------------------------------------------------------
-# Kingdoms AWMC does not supply. Every published polygon found for these turned
-# out either copyleft or a generated ellipse wearing a citation (cicero-map
-# README, "Rejected: published client-kingdom borders").
-
-- id: cyprus
-  evidence: surveyed
-  construction:
-    - { method: drawn, bbox: [32.2, 34.5, 34.7, 35.8] }
-  sources:
-    - { source: natural-earth }
-    - { source: cicero-map, locator: data/shapes.json }
-  confidence: certain
-  review: draft
-  note: An island; the coastline is the boundary. The box only selects it.
-
-- id: gallia-comata
+- id: numidia-cirta
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [-2.0, 42.6],
-          [-2.5, 47.5],
-          [-4.8, 48.8],
-          [-1.0, 49.8],
-          [2.5, 51.2],
-          [6.0, 51.5],
-          [8.3, 48.9],
-          [7.6, 47.5],
-          [7.0, 46.0],
-          [6.2, 45.0],
-          [4.0, 43.0],
-          [1.0, 42.4],
-        ]
+    - method: outline
+      edge:
+        - [6.1, 37.2]
+        - at: [6.102, 36.877]
+          note: mouth of the Ampsaga (oued el-Kebir)
+        - at: [6.6, 36.34]
+          via: river
+          note: up the Ampsaga to Cirta, which stood on it and was Juba's (Bridoux ¶102)
+        - at: [6.35, 35.95]
+          via: curve
+        - at: [6.9, 35.85]
+          via: curve
+        - at: [7.25, 36.1]
+          via: curve
+        - at: [7.17, 37.08]
+          note: Cap de Fer — the Sittian territory ran to "un point inconnu" between Rusicade and Hippo Regius (Bridoux ¶159)
+        - [7.1, 37.3]
   sources:
-    - { source: caesar-bg }
-    - { source: barrington, locator: maps 7–18 }
-  confidence: probable
+    - { source: bridoux-2020, locator: '¶101–102, ¶157–159 and pls. X–XII' }
+    - { source: pliny-nh, locator: '5.22 ("Cirta Sittianorum cognomine")' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: uncertain
   review: draft
   note: >-
-    The Rhine is a real frontier. The southern edge is not drawn at all: the
-    ring runs past Transalpina into the Pyrenees on purpose, and the seam is
-    what differencing against the neighbours leaves. The eastern edge stops
-    short of the Alpine crest on purpose: the Cottian and Maritime Alps were
-    held by their own tribes until Augustus, and that ground is left unclaimed.
+    Cirta and its surroundings east of the Ampsaga: Juba I's to 46, then the
+    part of his kingdom Caesar gave to P. Sittius (Appian BC 4.54; Bridoux
+    ¶101, ¶157), taken into Africa on Sittius' death in 44 (¶159). Milev,
+    Chullu and Rusicade lie inside. How far the Sittiani reached east and south
+    is unknown; the southern edge is a convention round the plain of Cirta.
+
+- id: numidia-igilgili
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [5.77, 37.1]
+        - at: [5.766, 36.821]
+          pleiades: '305095'
+          note: Igilgili, roughly where Bocchus II's share of Masinissa II's lands met Sittius' in 46–44 (Bridoux ¶102)
+        - at: [5.6, 36.2]
+          via: curve
+        - at: [5.75, 35.7]
+          via: curve
+        - at: [6.3, 35.65]
+          via: curve
+        - [6.6, 36.34]
+        - [6.4, 37.2]
+  sources:
+    - { source: bridoux-2020, locator: '¶102, ¶155, ¶159 and pls. IX–XII' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The eastern part of Masinissa II's principality, from about Igilgili to
+    the Ampsaga, which Bridoux holds went to Sittius in 46 with Cirta and was
+    recovered by Masinissa's son Arabio in 44 (¶102, ¶159). The line at
+    Igilgili is Bridoux's "bien à l'ouest de l'Ampsaga", made a place. Takes
+    the Ampsaga from numidia-cirta.
+
+- id: numidia-soummam
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [5.0, 37.0]
+        - at: [5.077, 36.723]
+          note: mouth of the oued Soummam
+        - at: [4.53, 36.45]
+          via: river
+          note: up the Soummam to Akbou
+        - at: [4.45, 35.95]
+          via: curve
+        - at: [4.7, 35.5]
+          via: curve
+        - [5.75, 35.7]
+        - [5.6, 36.2]
+        - [5.766, 36.821]
+        - [5.77, 37.1]
+  sources:
+    - { source: bridoux-2020, locator: '¶97, ¶102, ¶148, ¶155 and pl. IX' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The western part of Masinissa II's principality, "depuis l'embouchure de
+    l'oued Soummam … au fleuve Ampsaga" (Bridoux ¶155), including the plain of
+    Sitifis. Caesar gave it to Bocchus II in 46 (Appian BC 4.54; Bridoux
+    ¶101–102); Arabio probably took it back in 44 (¶159). Takes Igilgili from
+    numidia-igilgili.
 
 - id: numidia
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [8.5, 38.0],
-          [1.0, 38.0],
-          [0.5, 35.5],
-          [0.0, 34.0],
-          [2.0, 32.5],
-          [5.5, 32.5],
-          [8.0, 33.5],
-          [8.8, 34.8],
-          [8.6, 36.2],
-        ]
+    - method: outline
+      edge:
+        - [7.0, 37.4]
+        - [6.1, 37.2]
+        - [6.102, 36.877]
+        - [6.6, 36.34]
+        - [6.3, 35.65]
+        - at: [5.75, 35.25]
+          via: curve
+          note: the Hodna, where Gaetulian ground began
+        - at: [6.6, 34.95]
+          via: curve
+          note: the southern flank of the Aurasius
+        - at: [7.6, 34.8]
+          via: curve
+          note: the Nementcha
+        - at: [8.6, 34.25]
+          via: curve
+          note: south of Capsa, which was Jugurtha's
+        - at: [9.2, 33.85]
+          via: curve
+          note: the northern shore of the chott el-Jerid
+        - at: [10.08, 33.78]
+          note: south of Tacape — the Little Syrtis emporia were probably Juba's (Bridoux ¶157)
+        - [10.5, 33.7]
+        - [11.3, 34.3]
+        - [11.5, 37.6]
   sources:
-    - { source: barrington, locator: maps 30–34 }
+    - { source: bridoux-2020, locator: '¶157, ¶165–166 and pls. VIII, X–XI' }
+    - { source: barrington, locator: 'maps 33–35' }
+    - { source: natural-earth }
   confidence: probable
   review: draft
   note: >-
-    The desert edge is a fiction of convenience — Numidian authority faded
-    south, it did not stop.
+    Juba I's kingdom east of the Ampsaga and west of the fossa regia (Bridoux
+    ¶157), less the plain of Cirta; annexed as Africa Nova in 46. Its southern
+    limits "nous échappent … cette limite n'était probablement pas précisément
+    établie" (¶165): the edge is drawn along the Hodna, the Aurès, the
+    Nementcha and the chotts, the front of the steppe, as a convention. Takes
+    the fossa regia from africa and its western edges from the three atoms
+    above.
 
-- id: mauretania
+- id: mauretania-east
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [-6.0, 36.5],
-          [-9.5, 34.0],
-          [-9.5, 30.5],
-          [-5.0, 30.0],
-          [-1.5, 31.5],
-          [-0.5, 34.0],
-          [-1.0, 36.5],
-        ]
+    - method: outline
+      edge:
+        - [1.3, 37.0]
+        - at: [1.311, 36.51]
+          pleiades: '295240'
+          note: Cartenna (Ténès) — the eastern limit of Bocchus I's gains of 105 lay between the Chelif mouth and Cap Ténès (Gsell, preferred by Bridoux ¶75)
+        - at: [1.25, 35.3]
+          via: curve
+          note: south of the Ouarsenis
+        - at: [2.3, 35.35]
+          via: curve
+        - at: [3.4, 35.5]
+          via: curve
+          note: the southern front of the Tell Atlas
+        - [4.7, 35.5]
+        - [4.45, 35.95]
+        - [4.53, 36.45]
+        - [5.077, 36.723]
+        - [5.0, 37.0]
   sources:
-    - { source: barrington, locator: maps 28–29 }
+    - { source: bridoux-2020, locator: '¶75, ¶97, ¶102 and pl. IX' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    From Cap Ténès to the Soummam. Desanges, followed by Bridoux ("tout à fait
+    vraisemblable", ¶102), holds that the Mauretanian kingdom had pushed east to
+    the Soummam, "ou tout du moins jusqu'à l'Algérois", in the first half of the
+    first century; so Mauretanian throughout this window, uncertainly. The
+    southern edge is the front of the Tell Atlas, a convention. Takes the
+    Soummam from numidia-soummam.
+
+- id: mauretania-central
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [-2.34, 35.6]
+        - at: [-2.344, 35.123]
+          note: mouth of the Mulucha (Moulouya)
+        - at: [-3.35, 34.23]
+          via: river
+          note: up the Moulouya to Guercif
+        - at: [-2.2, 34.3]
+          via: curve
+        - at: [-1.0, 34.5]
+          via: curve
+          note: south of Pomaria (Tlemcen) and Altava
+        - at: [0.3, 34.95]
+          via: curve
+        - [1.25, 35.3]
+        - [1.311, 36.51]
+        - [1.3, 37.0]
+  sources:
+    - { source: bridoux-2020, locator: '¶74–75, ¶99–100 and pls. VIII, XIII' }
+    - { source: pliny-nh, locator: '5.19' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
   confidence: probable
   review: draft
+  note: >-
+    From the Mulucha, the old Numidian frontier (Sallust Jug. 92.5, 110.8;
+    Bridoux ¶74), east to the region of Cap Ténès, which Bocchus I gained from
+    Numidia in 105 (Sallust Jug. 97.2; Bridoux ¶75). From 49 this is Bocchus
+    II's kingdom, Pliny's "Bocchi quae Caesariensis" (Bridoux ¶99–100). The
+    southern edge is the front of the high plateaux, a convention. Takes Cap
+    Ténès from mauretania-east.
+
+- id: mauretania-west
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [-7.2, 34.0]
+        - at: [-6.82, 34.01]
+          pleiades: '275696'
+          note: Sala, the limit of the effective kingdom on the Atlantic (Barrington Directory, map 28)
+        - at: [-6.2, 33.75]
+          via: curve
+        - at: [-5.55, 33.75]
+          via: curve
+          note: the front of the Middle Atlas south of Volubilis
+        - at: [-4.4, 34.0]
+          via: curve
+        - [-3.35, 34.23]
+        - [-2.344, 35.123]
+        - [-2.34, 35.6]
+        - [-5.6, 36.1]
+        - [-6.4, 35.9]
+  sources:
+    - { source: barrington, locator: 'map 28 and Map-by-Map Directory, map 28 (M. Euzennat)' }
+    - { source: bridoux-2020, locator: '¶99–100 and pl. XIII' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    West of the Mulucha: the Tingitane peninsula and the Atlantic plains "as
+    far as Sala and Volubilis", beyond which the mountains belonged to tribes
+    of varying loyalty (Barrington Directory, map 28). Bogud's kingdom from 49
+    to 38, Pliny's "Bogudiana" (Bridoux ¶99–100). cicero-map ran it south to
+    the Anti-Atlas at 30° N, which nothing supports. Takes the Moulouya from
+    mauretania-central.
+
+- id: cyrenaica
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [18.6, 30.6]
+        - at: [18.788, 30.294]
+          pleiades: '363924'
+          note: Arae Philaenorum, the frontier with the Syrtic lands (Barrington map 37)
+        - at: [19.6, 30.15]
+          via: curve
+        - at: [20.45, 31.2]
+          via: curve
+        - at: [21.1, 31.5]
+          via: curve
+          note: the pre-desert of the Gebel Akhdar
+        - at: [22.4, 31.9]
+          via: curve
+        - at: [23.6, 31.6]
+          via: curve
+        - at: [25.15, 31.3]
+          note: inland of the Catabathmus Maior
+        - at: [25.15, 31.57]
+          note: Catabathmus Maior (Sollum) — "finis Cyrenaicus Catabathmos appellatur" (Pliny 5.38)
+        - [25.2, 32.2]
+        - [22.0, 33.3]
+        - [19.8, 32.6]
+  sources:
+    - { source: pliny-nh, locator: '5.28, 5.38' }
+    - { source: barrington, locator: 'maps 37–38' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The coast from the Altars of the Philaeni to the Catabathmus, with the
+    Gebel Akhdar and its pre-desert; Augila lay outside (Barrington map 38).
+    The end points are ancient; the inland edge is a convention along the
+    desert margin. Replaces AWMC's blob, which stopped short at both ends.
 
 - id: aegyptus
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [29.0, 32.0],
-          [34.5, 32.0],
-          [34.5, 29.5],
-          [33.0, 27.5],
-          [33.5, 24.0],
-          [32.0, 22.0],
-          [30.5, 22.0],
-          [29.5, 26.0],
-          [28.5, 29.0],
-        ]
+    - method: outline
+      edge:
+        - [25.15, 32.2]
+        - [25.15, 31.57]
+        - [25.15, 31.3]
+        - at: [26.6, 31.15]
+          via: curve
+          note: Mareotic Libya, "Aegypto contermina" (Pliny 5.39), with Paraetonium
+        - at: [28.6, 30.85]
+          via: curve
+        - at: [29.9, 30.55]
+          via: curve
+          note: the western edge of the Delta and the Mareotis
+        - at: [30.2, 30.3]
+          via: curve
+          note: the Wadi Natrun
+        - at: [31.0, 29.95]
+          via: curve
+          note: the desert edge behind Memphis
+        - at: [30.45, 29.6]
+          via: curve
+        - at: [30.3, 29.3]
+          via: curve
+          note: the western shore of the Fayum lake
+        - at: [30.62, 29.0]
+          via: curve
+        - at: [30.55, 28.4]
+          via: curve
+          note: the western desert edge of the valley, behind Oxyrhynchus
+        - at: [30.62, 27.75]
+          via: curve
+          note: behind Hermopolis
+        - at: [31.05, 27.2]
+          via: curve
+          note: behind Lycopolis (Asyut)
+        - at: [31.75, 26.3]
+          via: curve
+          note: behind Abydos
+        - at: [32.45, 25.75]
+          via: curve
+          note: the Theban west bank
+        - at: [32.5, 25.1]
+          via: curve
+        - at: [32.8, 24.4]
+          via: curve
+        - at: [32.87, 23.95]
+          note: south of Philae — "incipit a fine Aethiopiae Syene" (Pliny 5.59)
+        - at: [35.5, 23.85]
+          note: Berenice Troglodytica, the Ptolemaic Red Sea port
+        - [36.0, 24.5]
+        - [33.9, 27.7]
+        - at: [32.55, 29.95]
+          note: head of the Gulf of Suez
+        - [33.0, 30.45]
+        - at: [33.78, 30.95]
+          note: behind Rhinocolura — Egypt ends at Ostracine and Lake Sirbonis (Pliny 5.68), Rhinocolura is the next town
+        - [33.82, 31.6]
+    - method: outline
+      edge:
+        - { at: [28.55, 28.45], via: curve, note: the Bahariya oasis (Oasis Parva) }
+        - { at: [28.95, 28.5], via: curve }
+        - { at: [29.2, 28.1], via: curve }
+        - { at: [28.85, 27.85], via: curve }
+        - { at: [28.6, 28.0], via: curve }
+    - method: outline
+      edge:
+        - { at: [27.65, 27.35], via: curve, note: the Farafra oasis }
+        - { at: [28.15, 27.25], via: curve }
+        - { at: [28.25, 26.75], via: curve }
+        - { at: [27.8, 26.7], via: curve }
+    - method: outline
+      edge:
+        - { at: [28.55, 25.75], via: curve, note: the Dakhla oasis }
+        - { at: [29.4, 25.65], via: curve }
+        - { at: [29.4, 25.35], via: curve }
+        - { at: [28.6, 25.45], via: curve }
+    - method: outline
+      edge:
+        - { at: [30.35, 25.8], via: curve, note: 'the Kharga oasis (the Oasis Magna, with Hibis)' }
+        - { at: [30.8, 25.75], via: curve }
+        - { at: [30.85, 24.6], via: curve }
+        - { at: [30.4, 24.65], via: curve }
   anchor:
-    at: [30.9, 29.6]
-    note: >-
-      The pole of inaccessibility falls in the southern desert, below the crop
-      of cicero-map's plate; moved to the Nile valley, where the kingdom was and
-      the name can be read.
+    at: [31.2, 29.2]
+    note: The name belongs on the valley, where the kingdom was, not on the eastern desert.
   sources:
-    - { source: barrington, locator: maps 74–80 }
+    - { source: pliny-nh, locator: '5.39, 5.59, 5.68' }
+    - { source: barrington, locator: 'maps 74–81' }
+    - { source: natural-earth }
   confidence: probable
   review: draft
   note: >-
-    The Nile valley and Delta. Ptolemaic Egypt is the one kingdom whose extent
-    is set by geography rather than treaty, so the guess is cheap.
+    The kingdom of the nomes: the Nile valley to Philae between its desert
+    edges, the Delta, the Fayum and Mareotic Libya west to the Catabathmus,
+    which Pliny makes Egypt's neighbour with Cyrenaica (5.38–39); the eastern
+    desert to the Red Sea ports, whose roads, mines and harbours the Ptolemies
+    held; and the western oases of the Hibite nome and its neighbours
+    (Barrington map 79), drawn as the separate islands of ground they were.
+    Siwa (Ammon), under its own rulers, and the Sinai south of the coast road,
+    a nomad and Nabataean zone (Barrington map 76), are left out, as is the
+    Dodecaschoenus beyond Philae, contested with Meroë. cicero-map ran south to
+    22° N and took in the whole western desert and Sinai. Takes the Catabathmus
+    from cyrenaica.
 
 - id: nabataea
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [[34.5, 29.5], [36.5, 31.5], [38.0, 31.0], [38.5, 29.0], [37.0, 27.0], [35.0, 27.5]]
+    - method: outline
+      edge:
+        - [34.9, 29.3]
+        - at: [34.99, 29.53]
+          note: Aila, the Nabataean port on the gulf
+        - at: [34.45, 30.3]
+          via: curve
+          note: the western Negev
+        - at: [34.43, 30.88]
+          note: Nessana
+        - at: [34.73, 31.2]
+          note: north of Elusa — Idumaea beyond was Judaean
+        - at: [35.35, 31.15]
+          note: the south end of the Dead Sea
+        - at: [35.55, 31.05]
+          note: Zoara, the frontier with Moab
+        - at: [36.1, 30.9]
+          via: curve
+        - at: [36.2, 30.2]
+          via: curve
+          note: the desert edge east of Edom
+        - at: [35.9, 29.3]
+          via: curve
+          note: the Hisma
+        - [35.2, 28.9]
   sources:
+    - { source: barrington, locator: 'maps 70–71, 76' }
+    - { source: sullivan-1990 }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Petra, Edom, the Negev (Elusa, Oboda, Nessana) and the Hisma down to Aila.
+    Nabataean control was of routes and watering places rather than area, so
+    the eastern and southern edges are the desert margin by convention. Hegra
+    is left out: its dated tombs begin only under Aretas IV. The Hauran and
+    Damascus (held c. 85–72) are left out for this window.
+
+- id: nabataea-moab
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [35.55, 31.05]
+        - [35.35, 31.15]
+        - at: [35.55, 31.46]
+          note: mouth of the Arnon (wadi Mujib)
+        - at: [36.1, 31.45]
+          via: curve
+        - at: [36.1, 30.9]
+          via: curve
+  sources:
+    - { source: josephus-aj, locator: '14.18' }
+    - { source: barrington, locator: 'map 71' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Moab from the Zered to the Arnon. Alexander Jannaeus had taken its towns
+    from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
+    for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
+    65. Takes the Dead Sea shore and Zoara from nabataea.
+
+# === The Levant ================================================================
+# Judaea is drawn as Pompey left it in 63 (Josephus AJ 14.74–76; BJ 1.155–157):
+# Judaea, Idumaea, Peraea and Galilee, without the coastal plain, Samaria and the
+# Greek cities, which went to the province. Earlier atoms here cut the envelope
+# of Syria, which is drawn last.
+
+- id: judaea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [34.92, 31.86]
+          pleiades: '687904'
+          note: Gazara, the Judaean edge of the coastal plain
+        - at: [35.05, 32.05]
+          note: the frontier with Samaria
+        - [35.3, 32.12]
+        - at: [35.55, 32.2]
+          note: the Jordan below Pella, which was a Greek city
+        - at: [35.616, 32.281]
+          pleiades: '678015'
+          note: Amathus in Peraea, seat of one of Gabinius' five councils (BJ 1.170)
+        - at: [35.8, 32.1]
+          note: west of Gerasa
+        - at: [35.75, 31.8]
+          note: Peraea, short of Philadelphia
+        - at: [35.62, 31.5]
+          note: the Arnon, with Machaerus inside
+        - [35.55, 31.46]
+        - at: [35.37, 31.3]
+          note: Masada
+        - at: [34.9, 31.25]
+          note: the south of Idumaea
+        - [34.8, 31.45]
+        - at: [34.97, 31.6]
+          note: east of Marisa, which Pompey restored to its own people (AJ 14.75)
+    - method: outline
+      edge:
+        - at: [35.12, 32.72]
+          note: Galilee, east of the territory of Ptolemais
+        - [35.18, 32.95]
+        - [35.3, 33.08]
+        - at: [35.6, 33.1]
+          note: Lake Semechonitis
+        - at: [35.55, 32.72]
+          note: the Sea of Galilee; Hippos across it was Greek
+        - at: [35.42, 32.62]
+          note: Mount Tabor
+        - [35.2, 32.62]
+  sources:
+    - { source: josephus-aj, locator: '14.74–76, 14.91' }
+    - { source: josephus-bj, locator: '1.155–157, 1.170' }
+    - { source: schurer-vermes, locator: 'vol. I, 237–42' }
+    - { source: barrington, locator: 'maps 69–70' }
+  confidence: probable
+  review: draft
+  note: >-
+    The ethnarchy of Hyrcanus II after 63: Judaea, Idumaea and Peraea as one
+    piece, Galilee as another, Samaria and the Jezreel between them in the
+    province. The edges follow the cities Pompey removed from the Jews rather
+    than any surveyed line.
+
+- id: judaea-joppa
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.55, 32.12]
+        - [34.84, 32.12]
+        - at: [34.92, 32.0]
+          note: the territory of Ioppe
+        - [34.84, 31.93]
+        - [34.55, 31.93]
+  sources:
+    - { source: josephus-aj, locator: '14.74–76, 14.202–206' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Joppa: Hasmonean, taken from the Jews by Pompey in 63 and given back to
+    Hyrcanus by Caesar in 47 (Josephus AJ 14.205).
+
+- id: syria-palaestina
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.0, 31.35]
+        - at: [34.2, 31.2]
+          note: south of Raphia (the Egyptian frontier lay at Rhinocolura)
+        - [34.8, 31.25]
+        - [35.3, 32.15]
+        - [35.62, 32.15]
+        - at: [35.95, 32.2]
+          note: Gerasa, taken by Jannaeus
+        - [36.0, 32.55]
+        - at: [35.85, 32.85]
+          note: Gaulanitis
+        - [35.62, 32.9]
+        - [35.3, 32.6]
+        - at: [34.97, 32.73]
+          note: Carmel; Ptolemais beyond was never Hasmonean
+        - [34.6, 32.8]
+  sources:
+    - { source: josephus-aj, locator: '13.395–397, 14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+    - { source: schurer-vermes, locator: 'vol. I, 237–42' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    What Pompey took from the Jews in 63 and put under the governor of Syria:
+    the coastal plain from Raphia to Dora, Samaria, Scythopolis and the Greek
+    cities across the Jordan (Gadara, Hippos, Pella, Dion, Gerasa). Hasmonean
+    before, by Jannaeus' conquests (AJ 13.395–397). Takes Judaea's edges from
+    judaea.
+
+- id: ituraea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.95, 34.4]
+          note: the northern Lebanon
+        - at: [35.75, 34.0]
+          via: curve
+          note: the western foothills of the Lebanon; the coast cities were freed by Pompey
+        - at: [35.62, 33.72]
+          via: curve
+        - at: [35.5, 33.45]
+          via: curve
+        - at: [35.69, 33.25]
+          pleiades: '678324'
+          note: Paneas, under Hermon
+        - at: [35.95, 33.3]
+        - at: [36.15, 33.55]
+          note: west of Damascus, which Rome held from 64
+        - at: [36.45, 33.85]
+          via: curve
+          note: the eastern foot of the Antilebanon
+        - at: [36.6, 34.15]
+          via: curve
+        - at: [36.5, 34.45]
+          note: the head of the Massyas (Beqaa)
+  sources:
+    - { source: strabo, locator: '16.2.10, 16.2.16, 16.2.18' }
+    - { source: myers-2010 }
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
   note: >-
-    (cicero-map: check.) Mostly below cicero-map's frame. Nabataean control was
-    of routes and watering points, not of area at all.
+    The tetrarchy of Ptolemy son of Mennaeus, "who possessed Massyas and the
+    mountainous country of the Ituraeans" (Strabo 16.2.10): the Beqaa with
+    Chalcis and Heliopolis, and the Libanus and Antilibanus (16.2.16), whose
+    "mountainous parts are held by Ituraeans and Arabians" (16.2.18). They raided
+    the coast; they did not hold it.
 
-- id: bosporus
+- id: emesa
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [32.4, 45.3],
-          [33.3, 46.3],
-          [36.2, 46.3],
-          [38.3, 46.9],
-          [40.3, 46.5],
-          [40.0, 44.8],
-          [37.6, 44.9],
-          [36.6, 44.9],
-          [35.4, 44.3],
-          [33.4, 44.3],
-        ]
+    - method: outline
+      edge:
+        - { at: [36.5, 34.45], via: curve }
+        - { at: [36.95, 34.5], via: curve }
+        - { at: [37.15, 34.8], via: curve, note: the steppe east of Emesa }
+        - { at: [36.95, 35.1], via: curve, note: Arethusa inside }
+        - { at: [36.6, 35.1], via: curve }
+        - { at: [36.42, 34.8], via: curve }
   sources:
-    - { source: barrington, locator: 'maps 23–24, 84' }
+    - { source: strabo, locator: '16.2.10' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sampsigeramus' principality on the middle Orontes: Emesa and Arethusa, which
+    Strabo names as his seat (16.2.10), with the steppe of his Arab tribes. The
+    extent is a convention round the two towns. Takes its southern edge from
+    ituraea.
+
+- id: commagene
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [38.95, 38.0]
+          note: the Euphrates where it leaves the Taurus
+        - at: [37.87, 37.06]
+          pleiades: '658636'
+          via: river
+          note: down the Euphrates to Zeugma, which Pompey gave to Antiochus (Strabo 16.2.3)
+        - at: [37.35, 37.0]
+          note: south of Doliche
+        - [36.85, 37.3]
+        - [36.45, 37.2]
+        - [36.5, 37.55]
+        - at: [36.9, 37.62]
+          note: Germanicea
+        - at: [37.4, 37.95]
+          note: the Taurus
+        - [38.3, 38.15]
+  sources:
+    - { source: strabo, locator: '16.2.3' }
+    - { source: facella-2006 }
+    - { source: hydrorivers }
   confidence: probable
   review: draft
-  note: Intersected with land this yields the Crimea and the Taman shore, the
-    right shape for the kingdom.
+  note: >-
+    Antiochus I's kingdom between the Taurus and the Euphrates, with Samosata,
+    and Seleucia at Zeugma added by Pompey. The Euphrates is its eastern line.
+
+- id: amanus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.95, 37.45]
+          note: the foothills of the Taurus above the Pyramus
+        - at: [36.45, 37.45]
+        - at: [36.4, 37.0]
+          note: the crest of the Amanus
+        - at: [36.22, 36.6]
+          note: the Amanus above the Syrian Gates
+        - at: [36.1, 36.85]
+          note: behind Issus, which was in the province
+        - at: [35.95, 37.1]
+  sources:
+    - { source: strabo, locator: '14.5.18' }
+    - { source: cicero-fam, locator: '15.1.2' }
+    - { source: borgia-2017, locator: 'p. 302 n. 29' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tarcondimotus I's principality: the Amanus, which Strabo says he ruled
+    (14.5.18), and the middle Pyramus round Hierapolis-Castabala, outside the
+    province (Borgia); Cicero calls him Rome's most faithful ally "trans Taurum"
+    (Fam. 15.1.2).
+    Strabo also has Pompey giving Castabala to Ariobarzanes of Cappadocia; the
+    two claims are not reconciled here.
+
+- id: syria
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [36.15, 36.72]
+          note: the Syrian Gates, the frontier with Cilicia
+        - [36.4, 37.0]
+        - [36.85, 37.3]
+        - [37.35, 37.0]
+        - [37.87, 37.06]
+        - at: [38.11, 36.03]
+          via: river
+          note: down the Euphrates to Barbalissos
+        - at: [37.4, 35.5]
+          via: curve
+          note: the desert edge east of Chalcis ad Belum
+        - at: [37.2, 35.1]
+          via: curve
+        - [37.15, 34.8]
+        - at: [37.0, 34.2]
+          via: curve
+        - at: [36.7, 33.5]
+          via: curve
+          note: the Damascene, Roman from 64
+        - at: [36.3, 32.8]
+          via: curve
+          note: short of the Hauran
+        - at: [36.1, 32.2]
+          via: curve
+        - at: [35.98, 31.85]
+          note: Philadelphia (Rabbath Ammon)
+        - [35.75, 31.8]
+        - [35.3, 31.2]
+        - [34.8, 31.1]
+        - at: [34.0, 31.1]
+          note: between Raphia and Rhinocolura
+        - [33.9, 31.5]
+        - [35.3, 33.5]
+        - [35.6, 35.2]
+        - [35.8, 36.3]
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: strabo, locator: '16.2' }
+    - { source: sullivan-1990 }
+    - { source: barrington, locator: 'maps 67–69' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The province Pompey made in 64: the Seleucis, Cyrrhestice and the Euphrates
+    bank, the Phoenician coast, the Damascene and the Greek cities east of the
+    Jordan. Commagene, the Amanus, Emesa, Ituraea, Judaea and Nabataea, drawn
+    above, are cut out of it. The desert edge is a convention.
+
+- id: cyprus
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [32.2, 34.5, 34.7, 35.8] }
+  sources:
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: An island; the coastline is the boundary.
+
+# === Anatolia ==================================================================
+
+- id: asia-phrygia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [28.9, 37.55]
+          note: the Maeander valley west of Laodicea
+        - [29.0, 38.05]
+        - [29.45, 38.45]
+        - at: [30.2, 38.95]
+          note: north of the district of Synnada, against Phrygia Epictetus
+        - [31.0, 39.0]
+        - at: [31.25, 38.55]
+          note: west of Philomelium, which was Lycaonian (Cicero Att. 5.20.1)
+        - at: [30.95, 37.95]
+          note: west of Lake Karalis; Pisidia was Cilician
+        - [30.55, 37.75]
+        - [30.1, 37.45]
+        - at: [29.7, 37.05]
+          note: the Cibyratis, north of Balbura and Bubon, which were Lycian
+        - [29.2, 37.1]
+  sources:
+    - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
+    - { source: magie-1950, locator: 'vol. I, 383–4' }
+    - { source: cicero-att, locator: '5.21.9' }
+    - { source: sherk-rdge, locator: 'no. 52' }
+    - { source: barrington, locator: 'maps 62, 65' }
+  confidence: probable
+  review: draft
+  note: >-
+    The three Phrygian assize districts — the Cibyratic (held at Laodicea), the
+    Apamean and the Synnadic — which passed from Asia to Cilicia c. 57/56 and
+    back to Asia under the proconsul C. Fannius in 49 (Dmitriev n. 80, after
+    Magie and Sherk RDGE 52). Cicero held assizes for them as governor of
+    Cilicia in 50 (Att. 5.21.9). The district lines are approximate.
+
+- id: asia
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [28.42, 40.39]
+          note: mouth of the Rhyndacus, the frontier with Bithynia
+        - [28.6, 40.1]
+        - at: [29.2, 40.07]
+          note: Mysian Olympus (Uludağ)
+        - [29.8, 39.95]
+        - [30.4, 39.95]
+        - at: [30.8, 39.85]
+          note: east of Dorylaeum, which was Asian
+        - [31.4, 39.5]
+        - [31.6, 39.05]
+        - [31.65, 38.85]
+        - [31.3, 38.3]
+        - [30.6, 37.5]
+        - [29.8, 36.95]
+        - at: [28.95, 36.95]
+          note: the Calbis (Dalaman), beyond which lay Caunus and Lycia
+        - [28.45, 37.0]
+        - at: [28.2, 36.95]
+          note: north of Physcus; the Rhodian Peraea lay south
+        - [27.98, 36.78]
+        - [27.9, 36.55]
+        - [27.0, 36.4]
+        - [26.0, 37.4]
+        - [25.75, 38.4]
+        - [25.75, 39.5]
+        - [26.0, 39.95]
+        - at: [26.18, 40.03]
+          note: the entrance of the Hellespont; the Chersonese opposite was Macedonia's
+        - [26.34, 40.1]
+        - [26.393, 40.15]
+        - [26.43, 40.25]
+        - [26.55, 40.32]
+        - [26.68, 40.38]
+        - [26.85, 40.46]
+        - [27.5, 40.6]
+        - [28.3, 40.5]
+  sources:
+    - { source: magie-1950 }
+    - { source: dmitriev-2000 }
+    - { source: barrington, locator: 'maps 51, 52, 56, 61–62, 65' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Mysia, Lydia, Ionia, Caria and Phrygia Epictetus, with Tenedos, Lesbos,
+    Chios, Samos, Icaria and Cos. Left out: the Rhodian Peraea and Lycia (free),
+    Lemnos and Imbros (Athenian). Takes the Phrygian districts' line from
+    asia-phrygia.
+
+- id: bithynia
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [28.42, 40.39]
+        - [28.3, 40.7]
+        - at: [28.98, 41.0]
+          note: the Bosporus; Chalcedon was Bithynian, Byzantium free
+        - [29.05, 41.1]
+        - [29.12, 41.22]
+        - [30.5, 41.5]
+        - [32.2, 41.9]
+        - at: [32.31, 41.63]
+          pleiades: '845036'
+          note: the Parthenius
+        - [32.3, 41.2]
+        - [31.9, 40.75]
+        - at: [31.4, 40.0]
+          note: the Sangarius, towards Galatia
+        - [31.3, 39.8]
+        - [30.4, 39.7]
+        - [29.5, 39.8]
+        - [28.5, 39.9]
+        - [28.2, 40.2]
+  sources:
+    - { source: magie-1950 }
+    - { source: barrington, locator: 'maps 52, 86' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The kingdom Nicomedes IV bequeathed in 74, from the Rhyndacus and Olympus
+    to the Parthenius. Takes the Rhyndacus–Olympus line from asia.
+
+- id: pontus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [32.31, 41.63]
+        - [32.4, 42.2]
+        - [35.2, 42.3]
+        - [36.5, 41.8]
+        - at: [37.35, 41.25]
+          note: east of Themiscyra; Pharnacia and Trapezus went to Deiotarus (Strabo 12.3.13)
+        - [37.4, 40.9]
+        - at: [37.1, 40.55]
+          note: Diospolis (Cabira) inside
+        - [37.35, 40.1]
+        - at: [37.2, 39.6]
+          note: south of Megalopolis (Sebasteia)
+        - [36.7, 39.6]
+        - [36.1, 39.95]
+        - at: [35.6, 40.15]
+          note: south of Zela
+        - [35.1, 40.45]
+        - at: [34.95, 40.9]
+          note: the Halys
+        - at: [34.2, 41.08]
+          note: the Olgassys; Gangra and inner Paphlagonia went to dynasts
+        - [33.3, 41.2]
+        - [32.6, 41.15]
+  sources:
+    - { source: strabo, locator: '12.3.1, 12.3.13, 12.3.34' }
+    - { source: hojte-2009, locator: 'pp. 95–96' }
+    - { source: barrington, locator: 'maps 86–87' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Pompey's Pontus: not a coastal strip but "a continuum of city state
+    territories" (Højte) — Amastris, Sinope and Amisus on the coast, and
+    Pompeiopolis, Neapolis, Amaseia, Diospolis, Zela and Megalopolis inland
+    (Strabo 12.3.1). The country towards Armenia and Colchis went to allied
+    dynasts. Comana, a temple state, lies inside this outline. Takes the
+    Parthenius from bithynia.
+
+- id: cilicia-campestris
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [34.2, 36.55]
+          note: mouth of the Lamus, the western limit of Cilicia Pedias; the Tracheia beyond was outside Roman rule
+        - [34.3, 37.0]
+        - at: [34.8, 37.3]
+          via: crest
+          note: the Cilician Gates, on the crest of the Taurus
+        - at: [35.6, 37.55]
+          via: crest
+        - [35.95, 37.45]
+        - [35.95, 37.1]
+        - [36.1, 36.85]
+        - [36.15, 36.72]
+        - [35.9, 36.5]
+        - [34.2, 36.3]
+  sources:
+    - { source: borgia-2017, locator: 'pp. 300–304' }
+    - { source: dmitriev-2000 }
+    - { source: barrington, locator: 'map 66' }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The Cilician plain, Tarsus to Mopsuestia and Issus, bounded by the Taurus.
+    Takes the Amanus from amanus.
+
+- id: cilicia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [30.58, 36.62]
+          note: north of Phaselis, which was Lycian
+        - at: [30.35, 36.95]
+          note: the Solyma range behind Phaselis
+        - [30.1, 37.2]
+        - [30.55, 37.75]
+        - [30.95, 37.95]
+        - [31.25, 38.55]
+        - at: [31.6, 38.9]
+          note: Philomelium inside
+        - [32.5, 38.85]
+        - at: [33.4, 38.8]
+          note: south of Lake Tatta, the Axylon
+        - [33.8, 38.3]
+        - at: [33.8, 37.6]
+          note: west of Cybistra, which was Cappadocian
+        - at: [33.5, 37.55]
+          note: north of Derbe and Laranda, Antipater's principality
+        - [33.0, 37.45]
+        - [32.95, 37.1]
+        - at: [32.6, 36.9]
+          note: Isauria inside
+        - [31.8, 36.9]
+        - at: [31.5, 36.75]
+          note: the Melas (Manavgat), east of Side
+        - [31.5, 36.4]
+        - [30.55, 36.3]
+  sources:
+    - { source: dmitriev-2000, locator: 'pp. 355–363' }
+    - { source: borgia-2017, locator: 'pp. 300–304' }
+    - { source: cicero-att, locator: '5.20.1, 5.21.9' }
+    - { source: barrington, locator: 'maps 62–66' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Pamphylia, Pisidia, Isauria and Lycaonia with Iconium and Philomelium —
+    Cicero's province, "from Laodicea to Tarsus" with the Phrygian districts
+    (Dmitriev). Derbe and Laranda under Antipater, and the Tracheia east of
+    Side, lay outside. The northern edge towards Galatia is approximate. Takes
+    the Phrygian line from asia-phrygia.
+
+- id: galatia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [31.0, 40.2]
+        - [31.2, 40.45]
+        - at: [32.3, 40.7]
+          note: north of Ancyra, against Paphlagonia
+        - [33.4, 40.55]
+        - [34.5, 40.6]
+        - [35.5, 40.6]
+        - [36.3, 40.0]
+        - at: [35.6, 39.6]
+          note: the Trocmi east of the Halys, with Tavium
+        - [35.2, 39.05]
+        - [34.0, 38.7]
+        - at: [33.4, 38.6]
+          note: the Axylon, north of Lake Tatta
+        - [32.3, 38.65]
+        - at: [31.6, 38.8]
+          note: Pessinus inside
+        - [31.0, 39.3]
+  sources:
+    - { source: strabo, locator: '12.5.1–2' }
+    - { source: mitchell-1993, locator: 'vol. I, ch. 3' }
+    - { source: barrington, locator: 'maps 63, 86' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The three Galatian peoples — Tolistobogii (Pessinus, Gordion), Tectosages
+    (Ancyra) and Trocmi (Tavium) — which Deiotarus came to rule. Takes its
+    western and northern edges from asia, bithynia and pontus, and its southern
+    from cilicia.
+
+- id: galatia-pontus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [37.35, 41.25]
+        - [37.6, 41.6]
+        - [40.3, 41.6]
+        - at: [40.3, 40.95]
+          note: east of Trapezus, towards Colchis
+        - at: [39.0, 40.6]
+          via: crest
+          note: the crest of the Pontic range
+        - at: [37.9, 40.6]
+          via: crest
+        - [37.15, 40.8]
+  sources:
+    - { source: strabo, locator: '12.3.13' }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "Pharnacia and Trapezusia as far as Colchis", which Pompey gave to
+    Deiotarus (Strabo 12.3.13). Takes its western edge from pontus.
+
+- id: armenia-minor
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [37.0, 40.1]
+        - [37.0, 40.55]
+        - [37.6, 40.95]
+        - [39.0, 40.95]
+        - [39.9, 40.7]
+        - at: [39.66, 40.03]
+          note: Satala, towards the upper Euphrates
+        - at: [39.42, 39.69]
+          note: the Euphrates (Karasu) below Erzincan
+        - at: [38.61, 39.18]
+          via: river
+          note: down the Euphrates, Armenia Minor's eastern limit (Strabo 12.3.28)
+        - [37.8, 39.4]
+        - [37.2, 39.6]
+  sources:
+    - { source: strabo, locator: '12.3.13, 12.3.28' }
+    - { source: barrington, locator: 'map 87' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lesser Armenia, west of the upper Euphrates, which Pompey gave to Deiotarus.
+    Takes its northern edge from galatia-pontus and its western from pontus.
+
+- id: cappadocia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.0, 39.2]
+        - [35.2, 39.3]
+        - [35.9, 39.8]
+        - [36.4, 40.0]
+        - [37.3, 39.8]
+        - [38.3, 39.5]
+        - [38.61, 39.18]
+        - at: [38.47, 38.49]
+          via: river
+          note: down the Euphrates to Melitene, which was Cappadocian
+        - [37.9, 38.2]
+        - at: [36.9, 37.75]
+          note: the Taurus
+        - [36.6, 37.5]
+        - [36.45, 37.45]
+        - [35.95, 37.45]
+        - [35.6, 37.55]
+        - { at: [34.8, 37.3], via: crest }
+        - at: [33.8, 37.5]
+          note: Cybistra inside — Pompey's "eleventh strategia" (Dmitriev)
+        - [33.5, 38.3]
+        - [33.2, 38.9]
+  sources:
+    - { source: strabo, locator: '12.1.1–4, 12.2.7' }
+    - { source: dmitriev-2000 }
+    - { source: sullivan-1990 }
+    - { source: barrington, locator: 'maps 63–64' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Ariobarzanes' kingdom: the Halys to the north and west, the Taurus to the
+    south, the Euphrates at Melitene to the east (Strabo 12.1), with Cybistra.
+    Takes every edge but the Euphrates from the atoms above.
+
+# === The Balkans ===============================================================
 
 - id: thracia-odrysae
   evidence: schematic
   construction:
-    - method: drawn
-      ring:
-        [
-          [24.0, 40.0],
-          [23.8, 41.5],
-          [24.5, 42.5],
-          [26.5, 43.5],
-          [28.5, 43.5],
-          [29.5, 42.0],
-          [28.2, 41.0],
-          [26.5, 40.2],
-        ]
+    - method: outline
+      edge:
+        - at: [23.95, 41.75]
+          note: the western Rhodope
+        - at: [25.9, 41.35]
+          via: crest
+          note: the crest of the Rhodope, above the Via Egnatia
+        - at: [26.3, 41.2]
+          note: the Hebrus
+        - [27.0, 41.15]
+        - at: [27.9, 41.3]
+          note: inland of the Propontis, whose Greek cities were free
+        - at: [28.096, 41.635]
+          pleiades: '511404'
+          note: Salmydessus
+        - [28.4, 41.6]
+        - [28.2, 42.0]
+        - at: [27.85, 42.1]
+          note: south of Apollonia
+        - at: [27.45, 42.3]
+          note: inland of Apollonia, Anchialus and Mesembria
+        - at: [27.6, 42.85]
+          note: the eastern end of the Haemus
+        - at: [24.0, 42.75]
+          via: crest
+          note: the crest of the Haemus
+        - at: [23.8, 42.3]
+          note: east of the Dentheletae of the upper Strymon
   sources:
-    - { source: barrington, locator: maps 21–22 }
+    - { source: barrington, locator: 'maps 21–22, 51' }
     - { source: sullivan-1990 }
+    - { source: mapterhorn }
   confidence: uncertain
   review: needs-check
   note: >-
-    (cicero-map: check.) Odrysian authority over the inland tribes was intermittent
-    throughout the window.
+    The Odrysian and Sapaean kings between the Haemus and the Rhodope, with the
+    Astae of Bizye towards the Black Sea. Their authority over the inland
+    tribes was intermittent, and the Pontic Greek cities (Apollonia, Mesembria,
+    Anchialus), allied to Rome from Lucullus' campaign of 72/71, are left out.
+    cicero-map's ring ran down to the Aegean and over the Roman Chersonese.
+
+- id: illyricum
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [14.05, 44.95]
+          note: mouth of the Arsia (Raša)
+        - [14.2, 45.2]
+        - at: [14.5, 45.4]
+          note: behind Tarsatica
+        - [14.9, 45.15]
+        - at: [15.3, 44.6]
+          note: the Velebit, the coastal range of Liburnia
+        - [15.7, 44.1]
+        - at: [16.0, 43.85]
+          note: the Titius (Krka) at Scardona; the Delmatae held the hinterland
+        - [16.55, 43.6]
+        - at: [16.8, 43.45]
+          note: behind Salona
+        - [17.35, 43.2]
+        - at: [17.75, 43.1]
+          note: Narona on the Naro (Neretva)
+        - [18.35, 42.65]
+        - [18.8, 42.35]
+        - [19.3, 42.2]
+        - at: [19.7, 41.95]
+          note: the Drilon above Lissus
+        - at: [19.6, 41.72]
+          note: mouth of the Drilon
+        - [19.2, 41.7]
+        - [18.0, 42.2]
+        - at: [16.3, 42.95]
+          note: east of Issa, a free ally
+        - [16.3, 43.3]
+        - [15.0, 43.6]
+        - [14.3, 44.4]
+        - [13.9, 44.9]
+  sources:
+    - { source: suetonius-iul, locator: '22' }
+    - { source: caesar-bc, locator: '3.9, 3.29, 3.40' }
+    - { source: wilkes-1969, locator: 'pp. 37–41' }
+    - { source: dzino-2010, locator: 'pp. 80–98' }
+    - { source: barrington, locator: 'map 20' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    What Rome held of Illyricum when it went to Caesar with Cisalpina under the
+    lex Vatinia of 59: the coast and islands from the Arsia to Lissus, with the
+    conventus of Roman citizens at Salona, Narona and Lissus. Liburnia was
+    friendly; the Delmatae inland were hostile throughout (Appian Ill. 12–13).
+    A strip ten to thirty kilometres deep, drawn as a sphere, not a frontier.
+
+- id: macedonia
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [19.7, 41.95]
+        - [19.6, 41.72]
+        - [19.2, 41.7]
+        - [19.0, 41.0]
+        - [19.1, 40.0]
+        - at: [19.5, 39.3]
+          note: south of Corcyra
+        - at: [20.7, 39.05]
+          note: the Ambracian Gulf, the southern limit of Epirus
+        - [21.1, 39.0]
+        - [21.5, 39.0]
+        - at: [22.2, 39.0]
+          note: Othrys, the southern limit of Thessaly
+        - at: [22.75, 38.95]
+          note: the Malian Gulf
+        - [23.0, 39.0]
+        - [23.3, 39.05]
+        - [24.1, 39.3]
+        - [24.5, 40.0]
+        - [25.3, 40.7]
+        - [26.0, 40.5]
+        - [26.1, 40.2]
+        - [26.3, 39.95]
+        - [27.2, 40.4]
+        - at: [26.85, 40.62]
+          note: the neck of the Chersonese at Lysimachia
+        - [26.7, 40.85]
+        - at: [26.392, 40.925]
+          pleiades: '501489'
+          note: Cypsela on the Hebrus and the Via Egnatia
+        - [26.3, 41.2]
+        - [25.9, 41.5]
+        - [24.0, 41.95]
+        - [23.6, 41.5]
+        - at: [23.4, 41.5]
+          note: north of Heraclea Sintica; the Maedi and Dentheletae were outside (Cicero Pis. 84)
+        - [22.9, 41.6]
+        - at: [22.3, 41.72]
+          note: beyond Stobi (Nigdelis)
+        - [21.75, 41.78]
+        - at: [21.2, 41.85]
+          note: short of Scupi and the Dardanians
+        - [20.6, 41.95]
+        - [20.2, 42.05]
+  sources:
+    - { source: nigdelis-2007 }
+    - { source: cicero-pis, locator: '84' }
+    - { source: barrington, locator: 'maps 49–51, 54–55' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The four Macedonian merides from the Nestus to Pelagonia and the Paeonia
+    that bordered the Dardanians (Nigdelis), with Thessaly, Epirus and the
+    Illyrian coast from Dyrrachium and Apollonia to the Drilon, and the Via
+    Egnatia's coast to the Hebrus and the Thracian Chersonese. The northern
+    edge stops short of Scupi and the Dardanians; cicero-map's ran along 42° N.
+    Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
+    Hellespont from asia.
+
+- id: achaea
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [20.7, 39.05]
+        - [20.0, 39.0]
+        - at: [20.2, 38.0]
+          note: the Ionian islands, Leucas to Zacynthus
+        - [20.8, 37.0]
+        - [21.4, 36.3]
+        - at: [22.9, 35.9]
+          note: Cythera
+        - [23.6, 36.8]
+        - at: [24.1, 37.7]
+          note: the Saronic Gulf; the Cyclades are not claimed
+        - [24.3, 38.0]
+        - [24.9, 38.1]
+        - at: [24.6, 38.8]
+          note: Euboea
+        - [23.8, 39.1]
+        - [23.0, 39.05]
+        - [22.75, 38.95]
+        - [22.2, 39.05]
+        - [21.5, 39.05]
+        - [21.0, 39.1]
+  sources:
+    - { source: kallet-marx-1995 }
+    - { source: barrington, locator: 'maps 54–58' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Greece south of Thessaly. It was not a province of its own before 27; the
+    governor of Macedonia oversaw it, and whether it was formally annexed in 146
+    is disputed (Kallet-Marx argues not). Athens, Sparta and Delphi were free.
+    Claimed for Macedonia with uncertain confidence, which draws it fainter.
+    Takes its northern edge from macedonia.
+
+- id: creta
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [23.4, 34.75, 26.4, 35.75] }
+  sources:
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: An island; the coastline is the boundary.
+
+# === The Black Sea =============================================================
+
+- id: bosporus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.38, 45.03]
+          note: Theodosia, the western limit of the kingdom in the Crimea
+        - [35.25, 45.35]
+        - [36.0, 45.6]
+        - [37.2, 45.55]
+        - at: [37.37, 45.33]
+          note: the Azov mouth of the Hypanis (Kuban)
+        - at: [38.98, 45.03]
+          via: river
+          note: up the Hypanis
+        - [38.8, 44.75]
+        - at: [37.8, 44.65]
+          note: beyond Gorgippia, where the harbourless coast of the Achaei and Zygi began (Strabo 11.2.12, 11.2.14)
+        - [37.6, 44.3]
+        - [36.4, 44.6]
+        - [35.4, 44.8]
+  sources:
+    - { source: strabo, locator: '7.4.4–6, 11.2.10–14' }
+    - { source: barrington, locator: 'maps 84, 87' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The Kerch peninsula from Theodosia, and on the Asiatic side Phanagoria,
+    Hermonassa, Sindice and Gorgippia, to the lower Kuban. cicero-map added a
+    rectangle of open steppe that missed Tanais itself.
+
+- id: bosporus-tanais
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [37.6, 45.8]
+        - [38.0, 46.7]
+        - [38.8, 47.2]
+        - at: [39.25, 47.27]
+          note: Tanais, a Bosporan foundation (Strabo 11.2.3)
+        - [39.75, 47.25]
+        - { at: [39.3, 46.85], via: curve }
+        - { at: [38.85, 46.4], via: curve }
+        - { at: [38.7, 45.9], via: curve, note: the Maeotic steppe behind the shore }
+        - [39.0, 45.0]
+        - [37.3, 45.25]
+  sources:
+    - { source: strabo, locator: '11.2.3, 11.2.11' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Maeotic shore to the Tanais: "often the rulers of the Bosporians held
+    possession of the region as far as the Tanaïs, and particularly the latest
+    rulers, Pharnaces, Asander, and Polemon" (Strabo 11.2.11). Hegemony over
+    Maeotic peoples, not a province; drawn fainter. Takes its southern edge from
+    bosporus.
+
+# === Italy and the islands =====================================================
+
+- id: italia
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [10.3, 43.78]
+          note: the coast between the Arno and the Serchio, keeping Pisae in Italy
+        - [10.47, 43.74]
+        - at: [10.5, 43.68]
+          note: the Arno below Pisae
+        - at: [11.43, 43.77]
+          via: river
+          note: up the Arno to Pontassieve
+        - at: [11.66, 43.93]
+          note: the Apennine watershed at the Muraglione
+        - at: [12.05, 43.83]
+          via: crest
+          note: along the watershed towards the head of the Savio
+        - at: [12.315, 44.065]
+          note: the head of the Rubicon (the modern Rubicone)
+        - at: [12.435, 44.172]
+          via: river
+          note: down the Rubicon to the sea
+        - [12.8, 44.3]
+        - [13.5, 43.6]
+        - [14.3, 42.6]
+        - [16.2, 41.95]
+        - [18.3, 40.6]
+        - [18.7, 40.0]
+        - [17.2, 39.2]
+        - [16.8, 38.4]
+        - [16.1, 37.8]
+        - at: [15.62, 37.95]
+          note: the strait of Messina
+        - [15.62, 38.2]
+        - [15.66, 38.3]
+        - [15.75, 38.6]
+        - [15.7, 38.8]
+        - [15.3, 39.5]
+        - [14.2, 40.5]
+        - [12.6, 41.2]
+        - [11.0, 42.3]
+        - [10.0, 42.5]
+        - [9.9, 43.0]
+        - [10.2, 43.76]
+  sources:
+    - { source: suetonius-iul, locator: '24, 31–32' }
+    - { source: pliny-nh, locator: '3.50' }
+    - { source: broughton-mrr }
+    - { source: hydrorivers }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Italy of the late Republic, bounded by the Rubicon on the Adriatic and the
+    Arno on the Tyrrhenian. Luca, north of the Arno, lay in Caesar's province
+    (the conference of 56); the Macra is the Augustan limit (Pliny 3.50) and is
+    not used. Between the Arno and the Rubicon the line runs along the Apennine
+    watershed. The Rubicon is taken as the modern Rubicone, whose
+    identification is conventional.
+
+- id: cisalpina
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [10.1, 43.7]
+        - [11.0, 43.6]
+        - [12.5, 43.9]
+        - [12.6, 44.2]
+        - [12.6, 44.9]
+        - [13.0, 45.5]
+        - at: [13.74, 45.55]
+          note: the Formio, "antiquus auctae Italiae terminus" (Pliny 3.127)
+        - at: [13.9, 45.75]
+          note: the Karst above Tergeste
+        - [13.6, 46.1]
+        - at: [13.2, 46.25]
+          note: the foot of the Julian Alps
+        - [12.6, 46.1]
+        - at: [12.2, 45.95]
+          note: the Piave at the foot of the Alps
+        - [11.6, 45.8]
+        - at: [11.0, 45.6]
+          note: above Verona
+        - [10.6, 45.75]
+        - at: [10.2, 45.7]
+          note: above Brixia
+        - [9.7, 45.85]
+        - at: [9.09, 45.9]
+          note: above Comum
+        - [8.6, 45.9]
+        - at: [8.0, 45.65]
+          note: short of the Salassi, unconquered until 25
+        - [7.6, 45.35]
+        - at: [7.345, 45.116]
+          pleiades: '383720'
+          note: Ocelum, "the last town of the nearer province" (Caesar BG 1.10)
+        - [7.4, 44.75]
+        - at: [7.55, 44.35]
+          note: the foot of the Maritime Alps, whose peoples were independent until Augustus
+        - at: [7.55, 43.8]
+          note: the coast at Albintimilium
+        - [7.5, 43.6]
+        - [9.0, 44.0]
+  sources:
+    - { source: caesar-bg, locator: '1.10, 8.24' }
+    - { source: pliny-nh, locator: '3.127, 3.136–137' }
+    - { source: barrington, locator: 'maps 39–40' }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The Po plain to the break of slope of the Alps, from Ocelum in the Susa
+    valley to the Formio beyond Aquileia, with Liguria to Albintimilium. The
+    Salassi, the Cottian and Maritime Alps and the Raetian valleys were not
+    held. Takes the Arno–Rubicon line from italia.
+
+- id: sicilia
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [12.0, 36.6, 15.7, 38.35] }
+    - { method: box, bbox: [14.2, 38.35, 15.3, 38.85] }
+    - { method: box, bbox: [14.1, 35.75, 14.65, 36.12] }
+    - { method: box, bbox: [11.9, 36.7, 12.1, 36.86] }
+    - { method: box, bbox: [12.3, 35.45, 12.95, 35.9] }
+  sources:
+    - { source: natural-earth }
+    - { source: cicero-verr, locator: '2.4.103' }
+  confidence: certain
+  review: draft
+  note: >-
+    Sicily with the Aeolian and Aegadian islands, Melita and Gaulos, Cossyra and
+    the Pelagiae. Melita was within Verres' reach as governor of Sicily: he kept
+    a weaving works there and robbed its temple of Juno (Cicero Verr. 2.4.103).
+    Takes Calabria's tip from italia.
+
+- id: sardinia
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [8.0, 38.8, 9.9, 41.3] }
+  sources:
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: An island; the coastline is the boundary.
+
+- id: corsica
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [8.5, 41.3, 9.65, 43.05] }
+  sources:
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: An island; the coastline is the boundary.
+
+# === Iberia ====================================================================
+# Roman control in 68–43 was the south and east and an intermittent Meseta. The
+# Callaeci, Astures, Cantabri and Vaccaei were unconquered until Augustus
+# (Strabo 3.4.20; Dio 51.20, 53.25–29) and are left unclaimed.
+
+- id: meseta-arevaci
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [-2.9, 42.35]
+        - [-2.2, 42.1]
+        - at: [-1.9, 41.7]
+          note: east of Numantia
+        - [-2.2, 41.3]
+        - at: [-3.15, 41.2]
+          note: south of Termes
+        - [-3.6, 41.05]
+        - at: [-4.12, 40.9]
+          note: Segovia, Arevacan
+        - [-4.3, 41.0]
+        - [-4.1, 41.4]
+        - at: [-3.95, 41.75]
+          note: east of Pallantia and the Vaccaei
+        - at: [-3.6, 42.1]
+          note: north of Clunia
+  sources:
+    - { source: cassius-dio, locator: '39.54' }
+    - { source: appian, locator: 'BC 1.108–115' }
+    - { source: richardson-1996, locator: 'ch. 3' }
+    - { source: barrington, locator: 'maps 24–25' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Held
+    after the Sertorian war, when Pompey took its strongholds, but not firmly:
+    in 56 the Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio
+    39.54). Drawn as provincial ground held uncertainly.
+
+- id: hispania-citerior
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [3.17, 42.43]
+          note: Cap Cerbère, the eastern end of the Pyrenees
+        - at: [1.5, 42.55]
+          via: crest
+          note: along the crest of the eastern Pyrenees
+        - [1.0, 42.3]
+        - [0.2, 42.3]
+        - at: [-0.5, 42.45]
+          note: the Pyrenean foothills north of Osca; the high valleys are not claimed
+        - [-1.2, 42.55]
+        - at: [-1.6, 42.95]
+          note: Pompaelo, Pompey's foundation among the Vascones (Strabo 3.4.10)
+        - [-2.2, 42.75]
+        - at: [-2.41, 42.46]
+          pleiades: '246729'
+          note: Vareia on the upper Ebro
+        - [-2.9, 42.35]
+        - [-3.6, 42.1]
+        - [-3.95, 41.75]
+        - [-4.2, 41.4]
+        - at: [-4.5, 41.1]
+          note: south of Cauca, the Vaccaean town
+        - [-4.95, 40.85]
+        - at: [-5.2, 40.35]
+          note: the Sierra de Gredos
+        - [-4.9, 40.05]
+        - at: [-4.85, 39.95]
+          note: the Tagus west of Toletum, which was Citerior's
+        - at: [-4.9, 39.55]
+          note: the Montes de Toledo
+        - [-4.6, 39.0]
+        - at: [-4.5, 38.55]
+          note: the crest of the Sierra Morena
+        - at: [-3.75, 38.35]
+          note: the Saltus Castulonensis (Pliny 3.6, 3.25)
+        - at: [-3.8, 37.95]
+          note: west of Castulo, whose people were in the Carthaginian conventus of Citerior (Pliny 3.25)
+        - [-3.3, 37.6]
+        - [-3.0, 37.2]
+        - at: [-2.813, 36.775]
+          pleiades: '265977'
+          note: Murgi, "Baeticae finis" (Pliny 3.6, 3.8)
+        - [-2.8, 36.4]
+        - [0.0, 37.6]
+        - [0.9, 38.8]
+        - [1.2, 40.5]
+        - [3.5, 41.8]
+        - [3.4, 42.5]
+    - { method: box, bbox: [1.1, 38.6, 4.5, 40.2] }
+  sources:
+    - { source: richardson-1986, locator: 'ch. 1 and appendix' }
+    - { source: richardson-1996 }
+    - { source: pliny-nh, locator: '3.6, 3.8, 3.25' }
+    - { source: strabo, locator: '3.4.10, 3.4.20 (Baetica bounded near Castulo)' }
+    - { source: barrington, locator: 'maps 24–27' }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The nearer province: the Mediterranean coast from the Pyrenees to Murgi, the
+    Ebro valley, Carpetania and Oretania with Toletum and Castulo, and the
+    Baliares. The line with Ulterior ran through the Saltus Castulonensis and
+    was never surveyed; south of the Tagus it follows the named places, north
+    of it only the direction is attested (Richardson). The Arevaci are cut out
+    as meseta-arevaci.
+
+- id: lusitania-north
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [-9.6, 38.6]
+        - at: [-8.994, 38.94]
+          note: the head of the Tagus estuary
+        - at: [-8.2, 39.46]
+          via: river
+          note: up the Tagus to Abrantes
+        - [-7.9, 39.95]
+        - at: [-7.613, 40.322]
+          pleiades: '236480'
+          note: Mons Herminius (Serra da Estrela), which Caesar cleared in 61 (Dio 37.52)
+        - [-7.4, 40.7]
+        - at: [-7.05, 41.05]
+          note: the Durius
+        - at: [-8.648, 41.148]
+          via: river
+          note: down the Durius to the sea at Cale
+        - [-9.2, 41.2]
+        - [-9.8, 39.6]
+  sources:
+    - { source: cassius-dio, locator: '37.52–53' }
+    - { source: strabo, locator: '3.4.20' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Lusitania between the Tagus and the Durius. Caesar, propraetor of Ulterior
+    in 61–60, cleared the Mons Herminius and brought the country to the Durius
+    under Roman arms, then sailed to Brigantium and "alarmed" the Callaeci (Dio
+    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not.
+
+- id: hispania-ulterior
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [-2.8, 36.4]
+        - [-2.5, 37.5]
+        - [-3.2, 38.5]
+        - [-4.0, 39.5]
+        - [-4.5, 40.5]
+        - [-4.95, 40.85]
+        - at: [-5.35, 41.25]
+          note: west of the Vaccaei
+        - at: [-5.746, 41.503]
+          pleiades: '236577'
+          note: Ocelum Duri (Zamora) on the Durius
+        - at: [-7.05, 41.05]
+          via: river
+          note: down the Durius
+        - [-7.5, 40.5]
+        - [-9.0, 39.0]
+        - [-9.2, 37.0]
+        - [-6.5, 36.6]
+        - [-5.4, 35.95]
+  sources:
+    - { source: richardson-1986 }
+    - { source: pliny-nh, locator: '3.6–17' }
+    - { source: barrington, locator: 'maps 26–27' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The further province: the Baetis valley, the lower Anas and southern
+    Lusitania, and the Vettones up to the Durius at Ocelum. Takes the line with
+    Citerior from hispania-citerior and the Tagus–Herminius–Durius edge from
+    lusitania-north.
+
+# === Gaul ======================================================================
+
+- id: gallia-transalpina
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - [3.17, 42.43]
+        - { at: [1.5, 42.55], via: crest }
+        - at: [0.65, 42.72]
+          via: crest
+          note: along the crest of the central Pyrenees
+        - at: [0.6, 43.1]
+          note: the upper Garonne; the Aquitani were outside until 56
+        - at: [1.0, 43.5]
+          note: west of Tolosa; the Tolosates were "in provincia" (Caesar BG 1.10)
+        - [1.3, 43.9]
+        - at: [2.15, 44.05]
+          note: the Ruteni provinciales round Albi (BG 7.7)
+        - [2.9, 43.95]
+        - at: [3.5, 44.2]
+          note: the Cebenna (Cévennes), the barrier against the Arverni (BG 7.8)
+        - [4.1, 44.8]
+        - at: [4.75, 45.05]
+          note: the northern edge of the Helvii (BG 7.64–65)
+        - at: [4.83, 45.7]
+          note: the Rhône below Lugdunum, which was outside
+        - at: [6.144, 46.202]
+          pleiades: '177528'
+          via: river
+          note: up the Rhône to Genava, the last town of the Allobroges (BG 1.6)
+        - at: [6.5, 46.4]
+          note: the south shore of Lake Geneva
+        - [6.9, 46.1]
+        - at: [6.5, 45.7]
+          note: the Alpine front of the Allobroges
+        - [6.3, 45.2]
+        - at: [6.05, 44.8]
+          note: the Vocontii (BG 1.10)
+        - [6.5, 44.4]
+        - at: [6.95, 43.95]
+          note: the Varus
+        - at: [7.198, 43.656]
+          via: river
+          note: down the Varus to the sea
+        - [7.3, 43.4]
+        - [5.0, 42.8]
+        - [3.4, 42.5]
+  sources:
+    - { source: caesar-bg, locator: '1.6–10, 7.7–8, 7.64–65' }
+    - { source: cicero-font, locator: '12–14, 20, 26' }
+    - { source: ebel-1976, locator: 'chs. 4–6' }
+    - { source: rivet-1988, locator: 'chs. 3–4' }
+    - { source: hydrorivers }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    The Province, as Caesar and Cicero give its peoples: the Volcae, the
+    Tolosates, the Ruteni provinciales and the Helvii within the Cévennes, the
+    Allobroges between the Rhône and the Alps to Genava, and the Vocontii.
+    Massalia's own territory lies inside this outline. Takes the eastern
+    Pyrenees from hispania-citerior.
+
+- id: gallia-comata
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [8.748, 47.69]
+          note: the Rhine leaving the Lacus Brigantinus
+        - at: [4.152, 51.96]
+          via: river
+          note: down the Rhine to the Ocean
+        - [3.5, 52.3]
+        - [1.5, 51.2]
+        - [-5.5, 48.5]
+        - [-2.0, 46.5]
+        - [-1.8, 43.5]
+        - at: [-1.78, 43.37]
+          note: the western end of the Pyrenees
+        - { at: [0.65, 42.72], via: crest }
+        - [0.9, 43.2]
+        - [1.4, 43.4]
+        - [2.5, 43.7]
+        - [3.8, 44.0]
+        - [4.9, 44.6]
+        - [5.0, 45.5]
+        - [5.6, 45.65]
+        - [6.3, 46.05]
+        - [6.144, 46.202]
+        - at: [6.9, 46.4]
+          note: the head of Lake Geneva; the Valais was not held (BG 3.1–6)
+        - at: [7.3, 46.6]
+          note: the front of the Bernese Alps
+        - [8.2, 46.8]
+        - [9.0, 47.1]
+        - at: [9.5, 47.45]
+          note: the south shore of the Lacus Brigantinus
+  sources:
+    - { source: caesar-bg, locator: '1.1, 3.1–6, 8.46–49' }
+    - { source: suetonius-iul, locator: '25' }
+    - { source: drinkwater-1983, locator: 'ch. 1' }
+    - { source: hydrorivers }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: probable
+  review: draft
+  note: >-
+    Caesar's conquest, "reduced to the form of a province" with a tribute of 40
+    million sesterces (Suetonius Iul. 25): Gaul between the Ocean, the Rhine and
+    the Pyrenees, with Aquitania and the Helvetii. Formal organisation waited for
+    Augustus. Takes its southern edge from gallia-transalpina.

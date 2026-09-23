@@ -29,16 +29,25 @@ function base() {
   return {
     sources: [
       { id: 'mrr', kind: 'modern', citation: 'Broughton, MRR' },
-      { id: 'awmc', kind: 'dataset', citation: 'AWMC', licence: 'ODbL-1.0' },
     ] as Record<string, unknown>[],
     atoms: [
       {
         id: 'north',
         evidence: 'surveyed',
-        construction: [{ method: 'seed', dataset: 'awmc', seeds: [{ at: [10.5, 44.5] }] }],
+        construction: [{ method: 'box', bbox: [10, 44, 11, 45] }],
         ...ok,
       },
-      { id: 'south', evidence: 'schematic', construction: [{ method: 'drawn' }], ...ok },
+      {
+        id: 'south',
+        evidence: 'schematic',
+        construction: [
+          {
+            method: 'outline',
+            edge: [[10, 43], { at: [11, 43], via: 'curve' }, { at: [11, 44], note: 'a river mouth' }, [10, 44]],
+          },
+        ],
+        ...ok,
+      },
     ] as Record<string, unknown>[],
     polities: [
       {
@@ -214,11 +223,18 @@ describe('references', () => {
     expect(rules(errors)).toContain('missing-place')
   })
 
-  it('fail when construction names a source that is not a dataset', () => {
+  it('fail when two atoms overlap', () => {
     const { errors } = run((f) => {
-      ;(f.atoms[0].construction as { dataset?: string }[])[0].dataset = 'mrr'
+      f.geometry.features[1].geometry = square(10, 43.5)
     })
-    expect(errors.map((e) => e.message).join()).toMatch(/not a dataset/)
+    expect(rules(errors)).toContain('atom-overlap')
+  })
+
+  it('fail on an outline leg that is not a known way of drawing a frontier', () => {
+    const { errors } = run((f) => {
+      ;(f.atoms[1].construction as { edge: unknown[] }[])[0].edge[1] = { at: [11, 43], via: 'wall' }
+    })
+    expect(errors.length).toBeGreaterThan(0)
   })
 })
 
@@ -233,7 +249,8 @@ describe('sources', () => {
 
   it('must state a licence when they are datasets', () => {
     const { errors } = run((f) => {
-      delete f.sources[1].licence
+      f.sources.push({ id: 'ne', kind: 'dataset', citation: 'Natural Earth' })
+      f.atoms[0].sources = [{ source: 'ne' }]
     })
     expect(errors.map((e) => e.message).join()).toMatch(/licence/)
   })
