@@ -101,10 +101,14 @@ export class RomeMap {
     this.dirty = true
   }
 
+  /**
+   * Runs every animation frame, but draws only when something changed: the camera, the
+   * size, the year or its cross-fade, the settlements shown, or the tiles drawn. The map
+   * is still — nothing on it animates on its own (DESIGN.md §7.2) — so at rest it
+   * costs a few selection passes a second and no GPU work.
+   */
   private tick() {
     const now = performance.now()
-    const dt = now - this.lastTime
-    this.lastTime = now
 
     // Relief at the overview comes from coarse texels whose slopes are nearly flat, so
     // it is pushed harder the further out we are. Tuned by eye; a style-spec number.
@@ -134,8 +138,11 @@ export class RomeMap {
       this.dirty = true
 
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
-    this.terrain.update(this.view.camera, vpPx)
+    if (this.terrain.update(this.view.camera, vpPx)) this.dirty = true
+    if (!this.dirty) return
 
+    const dt = now - this.lastTime
+    this.lastTime = now
     const t0 = performance.now()
     this.renderer.render(this.scene, this.view.camera)
     const renderMs = performance.now() - t0

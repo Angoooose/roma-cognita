@@ -83,8 +83,14 @@ export class TerrainTiles {
     return this.jobs.size === 0 && this.queue.length === 0 && this.settled
   }
   private settled = false
+  private drawn = new Set<Node>()
 
-  update(camera: THREE.PerspectiveCamera, viewportPx: number) {
+  /**
+   * Selects, loads and shows the tiles for this view. True when the set of tiles drawn
+   * changed — a tile arrived or was swapped for another level — so the map knows the
+   * picture needs drawing again.
+   */
+  update(camera: THREE.PerspectiveCamera, viewportPx: number): boolean {
     this.frame++
     this.projScreen.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse)
     this.frustum.setFromProjectionMatrix(this.projScreen)
@@ -120,6 +126,10 @@ export class TerrainTiles {
     }
     this.settled = settled
 
+    const changed =
+      draw.size !== this.drawn.size || [...draw].some((n) => !this.drawn.has(n))
+    this.drawn = draw
+
     let maxLevelDrawn = 0
     for (const child of this.group.children) child.visible = false
     for (const node of draw) {
@@ -140,6 +150,7 @@ export class TerrainTiles {
       queued: this.queue.length,
       maxLevelDrawn,
     }
+    return changed
   }
 
   private select(node: Node, eye: THREE.Vector3, focalPx: number, out: Node[]) {
