@@ -63,3 +63,19 @@ All `review: draft`. The derivation prints the live list; the standing ones:
   our choice.
 - **Hull edges that are boundaries, not terrain**: valley/delta at Memphis,
   Fayum/valley at Hawara, Mesopotamia/Susiana, Susiana's south-east.
+
+## Seen on the political map (September 2026)
+
+Drawing the data exposed these. None is a drawing bug.
+
+- **Illyricum is unclaimed.** The Dalmatian coast is plain land in every year,
+  but it went with Gallia Cisalpina under Caesar. It needs an atom and claims.
+- **The seat-only kingdoms draw nothing.** Galatia, Cappadocia, Commagene,
+  Judaea, Emesa, Osroene, Ituraea and Cilicia Tracheia are `seats.yaml`
+  records. Seat markers are not drawn yet, so central Anatolia reads as empty.
+- **The schematic outlines are placeholders.** Mauretania, Numidia, Egypt,
+  Nabataea, Bosporus and Thrace are the twelve-vertex rings drawn in
+  cicero-map. The soft schematic styling helps, but they still read as
+  polygons. Phase 2 replaces them.
+- **Lycia is unclaimed** (the gap in south-west Anatolia). In this period it
+  was a free league, so that may be right, but nobody has decided it.

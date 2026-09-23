@@ -189,7 +189,8 @@ export class TerrainTiles {
     this.jobs.delete(r.id)
     const terrain = dataTexture(r.terrain, THREE.RGBAFormat)
     const water = dataTexture(r.water, THREE.RGBAFormat)
-    const material = createTerrainMaterial(terrain, water, TEXELS, node)
+    const politics = dataTexture(r.politics, THREE.RGBAFormat)
+    const material = createTerrainMaterial(terrain, water, politics, TEXELS, node)
     const mesh = new THREE.Mesh(this.geometry, material)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
@@ -199,7 +200,7 @@ export class TerrainTiles {
     this.group.add(mesh)
 
     node.mesh = mesh
-    node.textures = [terrain, water]
+    node.textures = [terrain, water, politics]
     node.minHeight = r.minHeight
     node.maxHeight = r.maxHeight
     node.state = 'ready'

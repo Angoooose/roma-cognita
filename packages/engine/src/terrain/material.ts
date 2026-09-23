@@ -19,6 +19,7 @@ import {
   vec3,
 } from 'three/tsl'
 import { ROOT } from '@roman-map/world'
+import { politicalShading } from '../politics/shading.ts'
 
 /**
  * Terrain shading: ground colour from climate and terrain, multi-directional light, and
@@ -100,6 +101,7 @@ export interface TileFrame {
 export function createTerrainMaterial(
   terrainTex: THREE.DataTexture,
   waterTex: THREE.DataTexture,
+  politicsTex: THREE.DataTexture,
   n: number,
   tile: TileFrame,
 ) {
@@ -264,7 +266,18 @@ export function createTerrainMaterial(
   const floodplain = smoothstep(edge.negate(), edge, toFloodplain)
   const fertile = GROUND_FLOODPLAIN.mul(float(1).add(patch).add(grain))
   const litFertile = fertile.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
-  const landWithRivers = mix(mix(litLand, litFertile, floodplain.mul(0.9)), RIVER, inRiver)
+  const ground0 = mix(litLand, litFertile, floodplain.mul(0.9))
+
+  // Politics (politics/shading.ts). The fill is lit by the same light as the ground, but
+  // compressed towards flat, so relief still reads through it without muddying it; the
+  // glow and the border are printed over the rivers, as ink would be.
+  const pol = politicalShading(politicsTex, n, pxKm)
+  const lit = clamp(shade, 0, 1.6).mul(0.4).add(0.6)
+  const litFill = pol.fill.mul(lit)
+  const tinted = mix(ground0, litFill, pol.fillAlpha)
+  const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
+  const withRivers = mix(glowed, RIVER, inRiver)
+  const landWithRivers = mix(withRivers, pol.line, pol.lineAlpha)
 
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))

@@ -332,32 +332,71 @@ tectonics dominate.
   flat colour.
 - Specular glint and slow normal-map ripples. No foam at low zoom.
 
-### 7.3 Politics: the atom ID texture
+### 7.3 Politics: the atom field
 
-This is the Imperator: Rome technique (documented by Intel), applied to our
-atoms.
+Built in September 2026 (`npm run politics -w pipeline`,
+`packages/engine/src/politics/`). It follows the Imperator technique, splitting
+*where* from *who*, with one change: borders come from a distance field, not
+from vector lines.
 
-- **Offline:** rasterise the atoms into an ID texture over the frame (R16UI,
-  nearest filtering, no mipmaps). 8192 px across the frame is ~0.6 km/px.
-- **Runtime:** a `claims` texture holds atom → polity per year, and a `palette`
-  texture holds polity → colour. Scrubbing the year rewrites one row of a few
-  thousand texels. A fade binds two year rows and `mix()`es between them.
-- **Soft border glow:** a jump-flood distance field of owner changes at quarter
-  resolution, recomputed only for the regions that changed, and on scrub-end
-  rather than during a drag.
-- **Crisp border lines are vectors, not bitmap edges.** They are extracted
-  offline from the atom polygons. Each segment is tagged with the atom on each
-  side, and the vertex shader hides it when both sides share an owner that
-  year. Line style comes from `evidence`/`confidence`:
-  - surveyed boundaries are drawn solid;
-  - schematic ones are drawn as a soft band with a dashed core. This is carried
-    over.
+- **Offline, the atom field.** Tiles on the terrain quadtree, levels 0–6, with
+  431 m texels at level 6. The atom outlines are ~1 km, so level 6 already holds
+  everything they know. Each texel stores:
+  - the pair of atoms either side of the nearest boundary;
+  - the signed distance to that boundary, reaching 48 texels, on a square-root
+    scale: fine near the line, coarse where only the glow reads it.
 
-  **This is also the fix for the ID texture's resolution limit.** Fills and
-  glows are soft, so 0.6 km/px never shows. The crisp edge is a vector line,
-  and the coast edge comes from the SDF.
-- **Picking:** the engine keeps a CPU copy of the ID texture. A click resolves
-  plane → atom → claims(year) with no GPU readback.
+  Land and sea come from the coast mask, so a fill stops exactly where the drawn
+  coast does. The sea takes its nearest land's label, so a fill reaches the
+  coast at any texel size. Also handled:
+  - slivers between the atom outlines' Natural Earth coast and OSM's;
+  - small islands no outline covers;
+  - gaps left where cicero-map differenced neighbouring outlines.
+
+  Each of these goes to the nearest atom. Any other land is unclaimed, label 0.
+  The result is about 1,000 tiles, 3.4 MB, baked in about 20 s.
+- **Runtime, who held it.** Two 2048×3 tables, `from` and `to`, one column per
+  atom:
+  - row 0: fill colour and coverage;
+  - row 1: polity, power, evidence, and a sea flag;
+  - row 2: border ink, and a client flag.
+
+  `setYear` rewrites one table and cross-fades between the two. It never
+  rebuilds a tile.
+- **Colour by power** (decided 2026-09-22). A polity takes the colour of the
+  power it answers to, found by following `province-of`, `client-of` and
+  similar links up to the top. Provinces are small, stable shifts of that
+  colour. Client kingdoms are the colour washed towards parchment. Uncertain
+  claims draw fainter. Colours are style, in `politics/palette.ts`, not data.
+- **Borders are drawn in the terrain shader from the field.** This replaces the
+  earlier plan of vector segments. The shader:
+  - takes labels from the nearest texel, never interpolated;
+  - interpolates distance from the four texels around, each re-expressed
+    against the nearest texel's pair so no phantom line appears midway between
+    two boundaries.
+
+  Drawing in the terrain pass means borders sit on the relief at any tilt with
+  nothing to z-fight, and one field gives the line, its antialiasing and the
+  glow. What shows is decided per pixel, per year:
+  - nothing between two atoms of one polity;
+  - a light line between provinces of one power;
+  - a full border plus glow between powers, around a client kingdom, or where
+    claimed land meets unclaimed;
+  - nothing on water.
+- **Evidence styling.**
+  - A schematic boundary has no hard line and no glow: a faint, wide soft band,
+    with the fill fading in across the zone. It reads as a region's margin, not
+    a frontier.
+  - The "dashed core" of the first plan needs an along-line coordinate the
+    field does not have, so it was dropped.
+- **Zoom tiers (§7.6).**
+  - The fill runs from 82% at the overview to 10% close in.
+  - The glow stays at 70%, sized in pixels and capped at 15 km. The contrast
+    between a strong edge band and a lighter interior is what makes a border
+    read.
+- **Picking** reads the level-6 tile on the CPU: plane position → atom →
+  claim(year). There is no GPU readback. It ignores relief, so a steep tilt can
+  mis-pick near a border.
 
 ### 7.4 Lines and points
 
@@ -489,7 +528,7 @@ The engine is framework-free. A thin React wrapper lives in the explorer app.
 - **Terrain** comes from Mapterhorn's hosted file, with AWS Terrain Tiles as a
   fallback. The hosted file's terms and rate limits are unverified and must be
   checked before launch.
-- **Everything else is ours and small:** the ID texture, claims, vectors,
+- **Everything else is ours and small:** the atom field, claims, vectors,
   fonts, textures and baked overlays. The target is **under ~200 MB total**,
   which ships with the app on any static host. Cloudflare Pages limits each
   file to 25 MiB, and allows 20k files on the free plan.
@@ -527,7 +566,7 @@ it holds 60 fps, and WebGPU and WebGL2 give matching output.
 3. Extend the data to 133–27 BCE and the full frame, including Parthia and the
    neighbours.
 4. The first 10 `landscape-change` records.
-5. Pipeline outputs: the atom ID texture, the border segments and the
+5. Pipeline outputs: the atom field (built; borders come from it, see §7.3) and the
    claims table.
 
 **M2: merge.** The political layer on the basemap with the year scrubber:

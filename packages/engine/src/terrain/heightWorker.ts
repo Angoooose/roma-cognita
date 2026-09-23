@@ -8,10 +8,14 @@
  * tile grid (pipeline/src/water), so it is only windowed and rescaled. The GPU only
  * ever sees plane-space tiles.
  *
- * Output is two textures. The first carries height and its gradient rather than a
+ * Output is three textures. The first carries height and its gradient rather than a
  * normal, so the shader can choose how much to exaggerate relief without the tile
  * being rebuilt. The second carries the water: signed distance to the shore, depth,
- * and distance to the nearest river with that river's discharge.
+ * and distance to the nearest river with that river's discharge. The third carries
+ * the political field: which atoms meet at the nearest boundary and how far away it
+ * is. It says nothing about who held them — that changes with the year, and lives in
+ * small tables the shader reads (politics/PoliticalLayer.ts), so the timeline never
+ * rebuilds a tile.
  *
  * Rivers are painted into the terrain rather than drawn as lines over it — the way
  * Imperator's rivers bitmap works — so they sit in their valleys at any tilt and
@@ -22,6 +26,7 @@
 
 import { ROOT, TILE_TEXELS, projection, tileRect } from '@roman-map/world'
 import { toHalf } from './half.ts'
+import { alignDistance } from '../politics/field.ts'
 import { riverHalfWidth, riverMinDischarge } from './rivers.ts'
 
 export interface TileJob {
@@ -40,6 +45,12 @@ export interface TileResult {
    * (m), distance to the nearest river centreline (m), that river's discharge (m³/s).
    */
   water: Uint16Array
+  /**
+   * RGBA half floats, n×n: the lower and higher atom label either side of the nearest
+   * political boundary, the signed distance to it (km, positive on the higher label's
+   * side), and 0. See pipeline/src/politics.
+   */
+  politics: Uint16Array
   minHeight: number
   maxHeight: number
 }
@@ -470,6 +481,140 @@ async function riverField(job: TileJob): Promise<RiverField> {
 /** "No river near": far enough that no width or fade reaches it, and exact in half float. */
 const RIVER_FAR = 60000
 
+// --- political field ----------------------------------------------------------------
+
+interface PoliticsIndex {
+  maxLevel: number
+  distanceTexels: number
+  sea: number
+  levels: Uint16Array[]
+  palettes: Record<string, number[]>
+}
+
+let politicsIndex: Promise<PoliticsIndex | null> | null = null
+
+function loadPoliticsIndex() {
+  politicsIndex ??= fetch('/politics/index.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) =>
+      j
+        ? {
+            maxLevel: j.maxLevel,
+            distanceTexels: j.distanceTexels,
+            sea: j.sea,
+            palettes: j.palettes,
+            levels: (j.levels as string[]).map((b) => {
+              const bytes = Uint8Array.from(atob(b), (c) => c.charCodeAt(0))
+              return new Uint16Array(bytes.buffer)
+            }),
+          }
+        : null,
+    )
+    .catch(() => null)
+  return politicsIndex
+}
+
+/** A decoded political tile: labels per texel and signed distance in texels, rows north. */
+interface PoliticsTile {
+  lo: Uint16Array
+  hi: Uint16Array
+  d: Float32Array
+}
+
+const politicsTiles = new Map<string, Promise<PoliticsTile | null>>()
+
+function loadPoliticsTile(idx: PoliticsIndex, key: string): Promise<PoliticsTile | null> {
+  let p = politicsTiles.get(key)
+  if (!p) {
+    p = pixels(`/politics/${key}.webp`)
+      .then((img) => {
+        if (!img) return null
+        const pal = idx.palettes[key]
+        const lo = new Uint16Array(N * N)
+        const hi = new Uint16Array(N * N)
+        const d = new Float32Array(N * N)
+        for (let r = 0; r < N; r++) {
+          for (let c = 0; c < N; c++) {
+            // Image row 0 is the north edge; ours runs north.
+            const k = ((N - 1 - r) * N + c) * 4
+            const o = r * N + c
+            lo[o] = pal[img.rgba[k]]
+            hi[o] = pal[img.rgba[k + 1]]
+            // Square-root scale (encodeDistance in pipeline/src/politics/bake-worker.ts).
+            const u = img.rgba[k + 2] / 127.5 - 1
+            d[o] = Math.sign(u) * u * u * idx.distanceTexels
+          }
+        }
+        return { lo, hi, d }
+      })
+      .catch(() => null)
+    politicsTiles.set(key, p)
+    if (politicsTiles.size > 64) politicsTiles.delete(politicsTiles.keys().next().value!)
+  }
+  return p
+}
+
+/**
+ * The political field for every texel of the tile. Tiles at or above the bake's
+ * deepest level read their own tile; deeper ones read a window of their ancestor,
+ * labels from the nearest texel and distance bilinearly. Distances stay in the
+ * ancestor's reach (48 of its texels, ~21 km), not the tile's own, so a glow can be
+ * wider than a few of these fine texels.
+ */
+async function politicsField(job: TileJob): Promise<Uint16Array> {
+  const out = new Uint16Array(N * N * 4)
+  const idx = await loadPoliticsIndex()
+  const fill = (label: number, dKm: number) => {
+    const l = toHalf(label)
+    const d = toHalf(dKm)
+    for (let o = 0; o < N * N; o++) {
+      out[o * 4] = l
+      out[o * 4 + 1] = l
+      out[o * 4 + 2] = d
+    }
+    return out
+  }
+  if (!idx) return fill(0, 1)
+
+  const level = Math.min(job.level, idx.maxLevel)
+  const shift = job.level - level
+  const si = job.i >> shift
+  const sj = job.j >> shift
+  const src = tileRect({ level, i: si, j: sj })
+  const sstep = src.size / (N - 1)
+  const km = sstep / 1000
+  const code = idx.levels[level]?.[sj * 2 ** level + si] ?? idx.sea
+  if (code !== 0xffff) return fill(code, idx.distanceTexels * km)
+  const tile = await loadPoliticsTile(idx, `${level}/${si}/${sj}`)
+  if (!tile) return fill(idx.sea, idx.distanceTexels * km)
+
+  const me = tileRect(job)
+  const step = me.size / (N - 1)
+  for (let r = 0; r < N; r++) {
+    const sy = (me.y0 + r * step - src.y0) / sstep
+    const y = Math.min(N - 2, Math.max(0, Math.floor(sy)))
+    const ty = sy - y
+    for (let c = 0; c < N; c++) {
+      const sx = (me.x0 + c * step - src.x0) / sstep
+      const x = Math.min(N - 2, Math.max(0, Math.floor(sx)))
+      const tx = sx - x
+      const k00 = y * N + x
+      const near = k00 + (ty > 0.5 ? N : 0) + (tx > 0.5 ? 1 : 0)
+      const lo = tile.lo[near]
+      const hi = tile.hi[near]
+      const at = (k: number) => alignDistance(lo, hi, tile.lo[k], tile.hi[k], tile.d[k])
+      const d =
+        (at(k00) * (1 - tx) + at(k00 + 1) * tx) * (1 - ty) +
+        (at(k00 + N) * (1 - tx) + at(k00 + N + 1) * tx) * ty
+      const o = (r * N + c) * 4
+      out[o] = toHalf(lo)
+      out[o + 1] = toHalf(hi)
+      out[o + 2] = toHalf(d * km)
+    }
+  }
+  return out
+}
+
 // --- the tile -----------------------------------------------------------------------
 
 async function build(job: TileJob): Promise<TileResult> {
@@ -485,10 +630,11 @@ async function build(job: TileJob): Promise<TileResult> {
   }
   const lat = projection.inverse(x0 + size / 2, y0 + size / 2)[1]
 
-  const [heights, depths, river] = await Promise.all([
+  const [heights, depths, river, politics] = await Promise.all([
     sampleMercator(ELEVATION, lonlat, m * m, zoomFor(ELEVATION, step, lat)),
     sampleMercator(DEPTH, lonlat, m * m, zoomFor(DEPTH, step, lat)),
     riverField(job),
+    politicsField(job),
   ])
   const { shore, floodplain } = await coastDistance(job, heights, m)
 
@@ -515,10 +661,14 @@ async function build(job: TileJob): Promise<TileResult> {
     }
   }
 
-  return { id: job.id, terrain, water, minHeight, maxHeight }
+  return { id: job.id, terrain, water, politics, minHeight, maxHeight }
 }
 
 self.onmessage = async (e: MessageEvent<TileJob>) => {
   const result = await build(e.data)
-  ;(self as unknown as Worker).postMessage(result, [result.terrain.buffer, result.water.buffer])
+  ;(self as unknown as Worker).postMessage(result, [
+    result.terrain.buffer,
+    result.water.buffer,
+    result.politics.buffer,
+  ])
 }

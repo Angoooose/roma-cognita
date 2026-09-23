@@ -2,6 +2,7 @@ import * as THREE from 'three/webgpu'
 import { MapCamera, type CameraState } from './camera/MapCamera.ts'
 import { TerrainTiles } from './terrain/TerrainTiles.ts'
 import { terrainTextures, terrainUniforms } from './terrain/material.ts'
+import { PoliticalLayer, politicsUniforms, type PoliticalHit } from './politics/PoliticalLayer.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -27,6 +28,7 @@ export class RomeMap {
   readonly scene = new THREE.Scene()
   readonly view: MapCamera
   readonly terrain = new TerrainTiles()
+  readonly politics = new PoliticalLayer()
   frame: FrameStats = { frameMs: 0, fps: 0, drawCalls: 0, triangles: 0 }
   private resizeObserver: ResizeObserver
   private lastTime = performance.now()
@@ -34,7 +36,7 @@ export class RomeMap {
 
   static async create(container: HTMLElement, opts: RomeMapOptions) {
     const map = new RomeMap(container, opts)
-    await Promise.all([map.renderer.init(), loadBiome()])
+    await Promise.all([map.renderer.init(), loadBiome(), map.politics.load()])
     map.renderer.setAnimationLoop(() => map.tick())
     return map
   }
@@ -83,6 +85,16 @@ export class RomeMap {
     const mpp = this.view.metresPerPixel
     terrainUniforms.shadeExaggeration.value = Math.min(10, Math.max(1, (mpp / 30) ** 0.45))
 
+    // Zoom tiers (DESIGN.md §7.6), continuous in log scale: flat political colour at the
+    // overview, colour over the relief at regional scale, and close in the fill all but
+    // gone, the border's glow carrying it instead.
+    // The glow stays strong throughout; the contrast between it and a lighter interior
+    // is what makes a border read as a border.
+    const tier = smoothstep(Math.log(120), Math.log(4000), Math.log(mpp))
+    politicsUniforms.fill.value = 0.1 + 0.72 * tier
+    politicsUniforms.glow.value = 0.7
+    if (this.politics.tick(now)) this.dirty = true
+
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
     this.terrain.update(this.view.camera, vpPx)
 
@@ -101,6 +113,23 @@ export class RomeMap {
     this.dirty = false
   }
 
+  /** The year on the map, astronomical (1 BCE = 0). */
+  get year() {
+    return this.politics.year
+  }
+
+  /** Shows a year. `animate` cross-fades from the current one. */
+  setYear(year: number, opts: { animate?: boolean } = {}) {
+    this.politics.setYear(year, opts)
+    this.dirty = true
+  }
+
+  /** What is under a client (CSS pixel) position: the atom and the claim on it this year. */
+  async pick(clientX: number, clientY: number): Promise<PoliticalHit | null> {
+    const p = this.view.ground(clientX, clientY)
+    return p ? this.politics.pick(p.x, p.y) : null
+  }
+
   /** True once every visible tile is drawn at its own detail — used by screenshots. */
   get idle() {
     return this.terrain.idle && !this.dirty
@@ -113,6 +142,11 @@ export class RomeMap {
     this.renderer.dispose()
     this.renderer.domElement.remove()
   }
+}
+
+function smoothstep(a: number, b: number, x: number) {
+  const t = Math.min(1, Math.max(0, (x - a) / (b - a)))
+  return t * t * (3 - 2 * t)
 }
 
 /**

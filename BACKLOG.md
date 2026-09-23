@@ -100,3 +100,15 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - For the rivers that matter most at regional zoom (Tiber, Arno, Po, Rhône,
   Nile), OSM waterways would be exact. Worth doing for a curated list, not
   wholesale.
+
+### Political layer, left for later
+
+- **Built:** fills, borders, glow, the year tables and cross-fade, the timeline
+  and the click inspector (DESIGN.md §7.3).
+- **Seat markers** for kingdoms whose extent is unknown. They belong with the
+  point renderer (§7.4).
+- **Occupation** (`relation: occupied`, e.g. Parthia in Syria in 40 BCE). The
+  shader draws the holding layer only; occupation wants hatching over it.
+- **Picking against relief.** Picking uses the flat plane, so at steep tilt it
+  can miss by a few kilometres near a border.
+- **Curved territory labels**: the next step (§7.5).

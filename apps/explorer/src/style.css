@@ -25,3 +25,193 @@ body {
   pointer-events: none;
   font-variant-numeric: tabular-nums;
 }
+
+/* --- interface: quiet, printed, no component-library look (DESIGN.md §8.3) --- */
+
+:root {
+  --ink: #2a241e;
+  --paper: #ece6d8;
+  --paper-edge: rgb(42 36 30 / 0.18);
+  --muted: #6d6252;
+  --rome: #ae4a42;
+}
+
+.timeline {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(620px, calc(100vw - 48px));
+  padding: 30px 16px 12px;
+  background: rgb(236 230 216 / 0.92);
+  border: 1px solid var(--paper-edge);
+  border-radius: 3px;
+  box-shadow: 0 8px 28px rgb(10 16 28 / 0.28);
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--ink);
+  user-select: none;
+}
+
+.timeline .step {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 22px/1 'EB Garamond', Georgia, serif;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.timeline .step:hover {
+  opacity: 1;
+}
+
+.timeline .track {
+  position: relative;
+  flex: 1;
+  height: 26px;
+  cursor: pointer;
+  outline: none;
+}
+.timeline .rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.55;
+}
+.timeline .tick {
+  position: absolute;
+  top: 5px;
+  width: 1px;
+  height: 7px;
+  background: var(--ink);
+  opacity: 0.35;
+}
+.timeline .tick.major {
+  top: 3px;
+  height: 11px;
+  opacity: 0.6;
+}
+.timeline .tick.major::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: oldstyle-nums;
+}
+.timeline .thumb {
+  position: absolute;
+  top: 2px;
+  width: 2px;
+  height: 13px;
+  margin-left: -1px;
+  background: var(--rome);
+  transition: left 120ms ease-out;
+}
+.timeline .year {
+  position: absolute;
+  bottom: 17px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+}
+
+.inspector {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 300px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+  padding: 20px 22px 16px;
+  background: rgb(236 230 216 / 0.95);
+  border: 1px solid var(--paper-edge);
+  border-radius: 3px;
+  box-shadow: 0 8px 28px rgb(10 16 28 / 0.28);
+  font: 15px/1.4 'EB Garamond', Georgia, serif;
+  color: var(--ink);
+}
+.inspector[hidden] {
+  display: none;
+}
+.inspector .close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: none;
+  font: 20px/1 'EB Garamond', Georgia, serif;
+  color: var(--muted);
+  cursor: pointer;
+}
+.inspector h2 {
+  margin: 0 18px 2px 0;
+  font: 600 19px/1.2 'Cinzel', serif;
+  letter-spacing: 0.1em;
+}
+.inspector .standing {
+  margin: 0 0 12px;
+  font-style: italic;
+  color: var(--muted);
+}
+.inspector dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  margin: 0 0 12px;
+}
+.inspector dt {
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.inspector dd {
+  margin: 0;
+}
+.inspector .conf.uncertain {
+  font-style: italic;
+}
+.inspector .note {
+  margin: 0 0 12px;
+  padding-left: 10px;
+  border-left: 2px solid var(--paper-edge);
+  font-size: 14px;
+}
+.inspector h3 {
+  margin: 0 0 4px;
+  font-weight: 500;
+  font-size: 13px;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.inspector .sources {
+  margin: 0 0 10px;
+  padding-left: 16px;
+  font-size: 14px;
+}
+.inspector .sources a {
+  color: inherit;
+}
+.inspector .loc {
+  color: var(--muted);
+}
+.inspector .meta {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}

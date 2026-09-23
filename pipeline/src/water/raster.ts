@@ -115,7 +115,7 @@ function dt1(f: Float64Array, n: number, d: Float64Array, v: Int32Array, z: Floa
 }
 
 /** Squared distance (in samples) from every sample to the nearest one where mask == target. */
-function edt(mask: Uint8Array, w: number, h: number, target: number): Float64Array {
+export function edt(mask: Uint8Array, w: number, h: number, target: number): Float64Array {
   const n = Math.max(w, h)
   const f = new Float64Array(n)
   const d = new Float64Array(n)
