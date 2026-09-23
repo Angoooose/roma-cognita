@@ -215,3 +215,7 @@ body {
   font-size: 12px;
   color: var(--muted);
 }
+.inspector dd a {
+  color: inherit;
+  text-decoration-color: var(--paper-edge);
+}

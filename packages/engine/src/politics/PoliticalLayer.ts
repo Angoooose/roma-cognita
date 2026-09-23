@@ -197,6 +197,18 @@ export class PoliticalLayer {
     return { power: at, chain, client }
   }
 
+  /** The fill a polity is drawn in for `year`: its power's colour, washed if a client. */
+  colourOf(polity: string, year: number): THREE.Color {
+    if (!this.data) return new THREE.Color('#2A241E')
+    const { power, client } = this.resolve(polity, year)
+    return polityStyle(polity, power, { client, core: polity === power }).fill
+  }
+
+  /** A polity's record, for the inspector. */
+  polity(id: string) {
+    return this.polityById.get(id)
+  }
+
   private holding(atom: string, year: number) {
     // Occupation is a separate layer (packages/schema claimLayer); v1 draws holdings.
     return this.data!.claims.find((c) => c.atom === atom && c.relation !== 'occupied' && covers(c, year))

@@ -4,6 +4,8 @@
  * sharp corners on Cinzel's serifs that a single-channel field would round off.
  *
  * - Cinzel: land names, in capitals.
+ * - EB Garamond Medium: settlement names; Cinzel again for capitals, in mixed case,
+ *   whose lowercase are small capitals.
  * - EB Garamond italic: water names.
  *
  * Both are SIL Open Font License; the licence texts ship beside the atlases. The
@@ -27,6 +29,14 @@ const FONTS = [
     file: 'Cinzel.ttf',
     licence: 'OFL-cinzel.txt',
     url: 'https://github.com/google/fonts/raw/main/ofl/cinzel/Cinzel%5Bwght%5D.ttf',
+  },
+  {
+    name: 'garamond',
+    // Medium, not the variable font's Regular default: settlement names are small, and
+    // Regular's hairlines break up at 14 px. The static instance is upstream's.
+    file: 'EBGaramond-Medium.ttf',
+    licence: 'OFL-ebgaramond.txt',
+    url: 'https://github.com/octaviopardo/EBGaramond12/raw/master/fonts/ttf/EBGaramond-Medium.ttf',
   },
   {
     name: 'garamond-italic',

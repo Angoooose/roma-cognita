@@ -105,8 +105,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 - **Built:** fills, borders, glow, the year tables and cross-fade, the timeline
   and the click inspector (DESIGN.md §7.3).
-- **Seat markers** for kingdoms whose extent is unknown. They belong with the
-  point renderer (§7.4).
+- **Seat markers**: built (§7.4).
 - **Occupation** (`relation: occupied`, e.g. Parthia in Syria in 40 BCE). The
   shader draws the holding layer only; occupation wants hatching over it.
 - **Picking against relief.** Picking uses the flat plane, so at steep tilt it
@@ -115,8 +114,10 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ### Labels, left for later
 
-- **Settlement names and collision.** These come with the places work: EB
-  Garamond small caps, greedy collision by priority, cross-fades.
+- **Settlement names**: built (DESIGN §7.4). Left for later:
+  - true small caps, with harfbuzz;
+  - preferring the land side for coastal names; a paper halo makes them legible
+    over water for now.
 - **Greek.** Polytonic atlases and harfbuzz shaping, for names only attested in
   Greek.
 - **Tilt parallax.** Labels are drawn at sea level with no depth test, so they

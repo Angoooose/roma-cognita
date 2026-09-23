@@ -6,6 +6,10 @@
  * - water: one per sea, gulf and strait, along its hand-placed course
  *   (pipeline/src/labels/seas.ts), in EB Garamond italic.
  *
+ * And build/labels/places.json: every settlement in plane metres with its dated
+ * prominence and status, and the seats of kingdoms drawn as their capital. Those are
+ * placed at run time, in screen space, because what fits depends on the zoom.
+ *
  * Needs the font atlases (npm run fonts -w pipeline) for letter widths.
  *
  *   npm run labels -w pipeline
@@ -175,3 +179,127 @@ writeFileSync(
   }),
 )
 console.log(`${labels.length} placements (${territories.size} territories)`)
+
+// --- places and seats -------------------------------------------------------------
+
+const years2 = (e: { from: { year: number }; to: { year: number } }) => [e.from.year, e.to.year]
+const placeName = (id: string) =>
+  data.names.find((n) => n.target.kind === 'place' && n.target.id === id && n.preferred)?.text ??
+  data.names.find((n) => n.target.kind === 'place' && n.target.id === id)?.text ??
+  id
+const sourceText = new Map(data.sources.map((s) => [s.id, s.citation]))
+const places = data.places.map((p) => {
+  const [x, y] = projection.forward(...p.location)
+  return {
+    id: p.id,
+    name: placeName(p.id),
+    pleiades: p.pleiades,
+    kind: p.kind,
+    x: Math.round(x),
+    y: Math.round(y),
+    years: years2(p),
+    prominence: p.prominence.map((d) => ({ value: d.value, years: years2(d) })),
+    status: p.status.map((d) => ({ value: d.value, years: years2(d) })),
+    labelSide: p.labelSide,
+    confidence: p.confidence,
+    review: p.review,
+    sources: p.sources.map((s) => ({ citation: sourceText.get(s.source) ?? s.source, locator: s.locator })),
+    note: p.note,
+  }
+})
+// Which side of each place has land, so a name can sit on the land and not the sea.
+// Measured on the coast mask at 431 m texels over the box a name of this length would
+// cover, at each of LAND_SCALES m/px (the engine picks the nearest): the share of land
+// under the box on each side. Sizes mirror the engine's TIER_EM.
+const LAND_SCALES = [3000, 1500, 800, 400, 200]
+const SIDE_EM = [0, 18, 16.5, 16, 15]
+const water = await coastSampler()
+for (const p of places) {
+  const tier = p.prominence[0]?.value ?? 4
+  const land: Record<string, number[]> = { e: [], w: [], n: [], s: [] }
+  for (const mpp of LAND_SCALES) {
+    const wM = p.name.length * 0.5 * SIDE_EM[tier] * mpp
+    const hM = 0.72 * SIDE_EM[tier] * mpp
+    const off = 8 * mpp
+    const boxes: Record<string, [number, number, number, number]> = {
+      e: [p.x + off, p.y - hM / 2, p.x + off + wM, p.y + hM / 2],
+      w: [p.x - off - wM, p.y - hM / 2, p.x - off, p.y + hM / 2],
+      n: [p.x - wM / 2, p.y + off, p.x + wM / 2, p.y + off + hM],
+      s: [p.x - wM / 2, p.y - off - hM, p.x + wM / 2, p.y - off],
+    }
+    for (const [side, [x0, y0, x1, y1]] of Object.entries(boxes)) {
+      let n = 0
+      for (let i = 0; i < 10; i++)
+        for (let j = 0; j < 3; j++)
+          if (water.isLand(x0 + ((x1 - x0) * (i + 0.5)) / 10, y0 + ((y1 - y0) * (j + 0.5)) / 3)) n++
+      land[side].push(Math.round((n / 30) * 100) / 100)
+    }
+  }
+  ;(p as Record<string, unknown>).land = land
+}
+
+const seats = data.seats.map((s) => ({
+  polity: s.polity,
+  name: name(s.polity),
+  place: s.place,
+  years: years2(s),
+  confidence: s.confidence,
+}))
+writeFileSync(
+  join(OUT, 'places.json'),
+  JSON.stringify({
+    _comment:
+      'Settlements in plane metres with dated prominence (1 overview … 4 close) and status; seats of kingdoms drawn as their capital. Years astronomical, inclusive.',
+    landScales: LAND_SCALES,
+    places,
+    seats,
+  }),
+)
+console.log(`${places.length} places, ${seats.length} seats`)
+
+/** Land or sea at a plane point, from the coast mask's level-6 tiles (build/water). */
+async function coastSampler() {
+  const { default: sharp } = await import('sharp')
+  const { ROOT, TILE_TEXELS } = await import('@roman-map/world')
+  const dir = join(ROOT_DIR, 'build/water')
+  const index = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8'))
+  const level = 6
+  const codes = new Uint8Array(Buffer.from(index.codes[level], 'base64'))
+  const n = 2 ** level
+  const size = ROOT.size / n
+  const tiles = new Map<string, Uint8Array | null>()
+  const keys = new Set<string>()
+  for (const p of data.places) {
+    const [x, y] = projection.forward(...p.location)
+    for (let di = -1; di <= 1; di++)
+      for (let dj = -1; dj <= 1; dj++) {
+        const i = Math.floor((x - ROOT.x) / size) + di
+        const j = Math.floor((y - ROOT.y) / size) + dj
+        if (codes[j * n + i] === 2) keys.add(`${i}/${j}`)
+      }
+  }
+  for (const key of keys) {
+    try {
+      const { data: px, info } = await sharp(join(dir, `${level}/${key}.webp`)).raw().toBuffer({ resolveWithObject: true })
+      const ch = new Uint8Array(TILE_TEXELS * TILE_TEXELS)
+      for (let k = 0; k < ch.length; k++) ch[k] = px[k * info.channels]
+      tiles.set(key, ch)
+    } catch {
+      tiles.set(key, null)
+    }
+  }
+  return {
+    isLand(x: number, y: number) {
+      const i = Math.floor((x - ROOT.x) / size)
+      const j = Math.floor((y - ROOT.y) / size)
+      if (i < 0 || j < 0 || i >= n || j >= n) return false
+      const code = codes[j * n + i]
+      if (code !== 2) return code === 1 || code === 3
+      const t = tiles.get(`${i}/${j}`)
+      if (!t) return false
+      const c = Math.round(((x - (ROOT.x + i * size)) / size) * (TILE_TEXELS - 1))
+      const r = TILE_TEXELS - 1 - Math.round(((y - (ROOT.y + j * size)) / size) * (TILE_TEXELS - 1))
+      return t[r * TILE_TEXELS + c] > 127
+    },
+  }
+}

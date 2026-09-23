@@ -2,8 +2,13 @@ import * as THREE from 'three/webgpu'
 import { MapCamera, type CameraState } from './camera/MapCamera.ts'
 import { TerrainTiles } from './terrain/TerrainTiles.ts'
 import { terrainTextures, terrainUniforms } from './terrain/material.ts'
-import { PoliticalLayer, politicsUniforms, type PoliticalHit } from './politics/PoliticalLayer.ts'
-import { LabelLayer, labelUniforms } from './labels/LabelLayer.ts'
+import {
+  PoliticalLayer,
+  politicsUniforms,
+  type PoliticalHit,
+} from './politics/PoliticalLayer.ts'
+import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
+import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -31,6 +36,7 @@ export class RomeMap {
   readonly terrain = new TerrainTiles()
   readonly politics = new PoliticalLayer()
   readonly labels = new LabelLayer()
+  readonly places = new PlaceLayer()
   frame: FrameStats = { frameMs: 0, fps: 0, drawCalls: 0, triangles: 0 }
   private resizeObserver: ResizeObserver
   private lastTime = performance.now()
@@ -38,7 +44,13 @@ export class RomeMap {
 
   static async create(container: HTMLElement, opts: RomeMapOptions) {
     const map = new RomeMap(container, opts)
-    await Promise.all([map.renderer.init(), loadBiome(), map.politics.load(), map.labels.load()])
+    await Promise.all([
+      map.renderer.init(),
+      loadBiome(),
+      map.politics.load(),
+      map.labels.load(),
+      map.places.load(),
+    ])
     map.labels.setYear(map.politics.year, false)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
@@ -48,16 +60,25 @@ export class RomeMap {
 
   private constructor(container: HTMLElement, opts: RomeMapOptions) {
     this.container = container
-    this.renderer = new THREE.WebGPURenderer({ antialias: true, forceWebGL: opts.forceWebGL })
+    this.renderer = new THREE.WebGPURenderer({
+      antialias: true,
+      forceWebGL: opts.forceWebGL,
+    })
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setClearColor('#1E3150')
     container.appendChild(this.renderer.domElement)
-    Object.assign(this.renderer.domElement.style, { display: 'block', width: '100%', height: '100%' })
+    Object.assign(this.renderer.domElement.style, {
+      display: 'block',
+      width: '100%',
+      height: '100%',
+    })
 
     this.view = new MapCamera(this.renderer.domElement, opts.camera)
     this.view.onChange = () => (this.dirty = true)
     this.scene.add(this.terrain.group)
     this.scene.add(this.labels.group)
+    this.scene.add(this.places.group)
+    this.places.seatColour = (polity, year) => this.politics.colourOf(polity, year)
 
     this.resizeObserver = new ResizeObserver(() => this.resize())
     this.resizeObserver.observe(container)
@@ -99,6 +120,16 @@ export class RomeMap {
     politicsUniforms.glow.value = 0.7
     if (this.politics.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
+    const w = this.container.clientWidth
+    const h = this.container.clientHeight
+    const cam = this.view.camera
+    setKnockouts(this.places.knockouts(cam, w, h), w, h)
+    if (
+      this.places.update(cam, w, h, mpp, this.view.state.pitch, this.politics.year, () =>
+        this.labels.obstacles(cam, w, h, mpp),
+      )
+    )
+      this.dirty = true
 
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
     this.terrain.update(this.view.camera, vpPx)
@@ -127,14 +158,29 @@ export class RomeMap {
   setYear(year: number, opts: { animate?: boolean } = {}) {
     const before = this.politics.year
     this.politics.setYear(year, opts)
-    if (this.politics.year !== before) this.labels.setYear(this.politics.year, !!opts.animate)
+    if (this.politics.year !== before)
+      this.labels.setYear(this.politics.year, !!opts.animate)
     this.dirty = true
   }
 
-  /** What is under a client (CSS pixel) position: the atom and the claim on it this year. */
-  async pick(clientX: number, clientY: number): Promise<PoliticalHit | null> {
+  /**
+   * What is under a client (CSS pixel) position: a settlement if its marker or name is
+   * there, otherwise the atom and the claim on it this year.
+   */
+  async pick(
+    clientX: number,
+    clientY: number,
+  ): Promise<{ place: PlaceHit } | { territory: PoliticalHit } | null> {
+    const place = this.places.pick(
+      this.view.camera,
+      this.renderer.domElement,
+      clientX,
+      clientY,
+    )
+    if (place) return { place }
     const p = this.view.ground(clientX, clientY)
-    return p ? this.politics.pick(p.x, p.y) : null
+    const territory = p ? await this.politics.pick(p.x, p.y) : null
+    return territory ? { territory } : null
   }
 
   /** True once every visible tile is drawn at its own detail — used by screenshots. */

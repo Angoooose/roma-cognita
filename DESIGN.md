@@ -400,15 +400,69 @@ from vector lines.
 
 ### 7.4 Lines and points
 
-Roads, rivers and borders use one instanced line renderer. Every feature
-carries `from`/`to` years as vertex attributes, and the shader hides it outside
-the current year: filtering is a uniform change, not a rebuild. Points
-(settlements, seats) use instanced sprites with the same attributes.
+Roads, rivers and borders were to share one instanced line renderer. In the end,
+rivers and borders are drawn in the terrain shader (§7.1, §7.3); roads are still
+to come.
+
+**Points were built in September 2026** (`packages/engine/src/labels/PlaceLayer.ts`).
+Settlements and seats are screen-sized: each is anchored to its place on the plane
+and offset in pixels by the vertex shader.
+
+- **Markers** are drawn in pixels, like engraved symbols: fixed stroke widths, one
+  pixel of antialiasing, no halo discs (reworked 2026-09-22, after the first
+  version read as a generic web map).
+  - A town is a small ink dot with a paper hairline.
+  - A capital (provincial or royal seat) is a fine ring round a dot, with paper
+    between them.
+  - Rome has a second, finer ring.
+  - A kingdom drawn as its capital (`seats.yaml`) is a diamond in its power's
+    colour, outlined in ink.
+- **What shows** (also reworked 2026-09-22; the first version crowded the
+  overview):
+  - Rome shows at every scale. Tier 1 appears from 3,000 m/px, then 1,500, 800
+    and 400 for tiers 2–4.
+  - Seats name their kingdom from 1,700 m/px in. Further out, the territory
+    colours carry it.
+- **Faces:**
+  - Capitals are set in Cinzel in mixed case, whose lowercase are small
+    capitals, tracked +6%.
+  - Towns are set in EB Garamond Medium; Regular breaks up at 15 px.
+  - A seat is lettered first with its kingdom's name in Cinzel capitals. Its
+    city follows in Garamond once the zoom would show that city anyway.
+  - Sizes are 18–15 px, Rome 19.
+- **Names keep to the land.** The pipeline measures, on the coast mask, how much
+  land lies under a name on each side of its place, at five scales, and
+  placement tries land sides first.
+- **One style everywhere** (decided 2026-09-22): settlement names are light
+  type (`#F3EBDA`) with a soft dark halo, 2.4 px wide, over land or sea. The
+  hierarchy it gives: territories are dark capitals printed on the land,
+  settlements are light type above it, seas are gold italic.
+  - Light reads over busy relief, where dark ink sinks into it.
+  - Dark everywhere was tried and read worse.
+  - Choosing light or dark per name, by the ground under it, was also tried. It
+    read as random: neighbours differed, and names flipped as the zoom crossed
+    a threshold.
+- **Rome** is set at 19 px against 18 for the other great cities. Its double
+  ring and Cinzel capitals carry its weight, not size (22 px was tried and
+  looked oversized).
+- **Knockout.** Where Rome's name is set over territory lettering, that
+  lettering fades to a ghost inside a box around the name, as a printer cuts a
+  territory name back around a city. The box is a screen rectangle, updated
+  every frame, and applies to land lettering only.
+- **Collision** is greedy by rank (tier, then status). Each name tries its
+  record's `labelSide` and the land-first order. Territory and sea lettering
+  are obstacles. Only Rome may be set over them: a map without Rome is wrong,
+  a crowded one only crowded.
+  - It re-runs when the scale changes by more than 4%, or the tilt, the size or
+    the year changes. A pan never triggers it.
+  - Names fade in and out over 220 ms.
+- **Picking:** a click within 10 px of a visible marker, or on its name, opens
+  the place, ahead of the territory under it.
 
 ### 7.5 Labels
 
 Territory and water names were built in September 2026 (`pipeline/src/labels`,
-`packages/engine/src/labels`). Settlement names come with the places work.
+`packages/engine/src/labels`). Settlement names are in §7.4.
 
 - **Fonts** are baked to MSDF atlases by `npm run fonts -w pipeline`
   (msdf-bmfont-xml): Cinzel for land and EB Garamond italic for water, both
@@ -442,8 +496,8 @@ Territory and water names were built in September 2026 (`pipeline/src/labels`,
   stored as the sea records' line geometry, and are sized to fill 90% of the
   course.
 - **Not yet built:**
-  - collision between labels (territory names sit inside their territories and
-    have not needed it);
+  - collision among territory names themselves (they sit inside their
+    territories and have not needed it; settlements avoid them, §7.4);
   - two-line names;
   - thinning labels by the ink on the plate.
 
@@ -505,7 +559,9 @@ copy. What we take from it:
 - **Land names:** Cinzel, or a comparable open Trajan-derived capital face,
   tracked +8% to +40% depending on how much room the label has.
 - **Water and secondary names:** EB Garamond italic.
-- **Settlements:** EB Garamond small caps.
+- **Settlements:** EB Garamond small caps. Built in Regular, mixed case, for
+  now: small caps need OpenType shaping (harfbuzz), not a fake from scaled
+  capitals.
 - **Language:** Latin nominative by default. The Greek-speaking east keeps
   Greek forms where only Greek is attested. It is not silently latinised; this
   is carried over.
