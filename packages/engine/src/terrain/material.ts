@@ -219,6 +219,7 @@ export function createTerrainMaterial(
   const [kaz, kalt] = LIGHTS[0]
   const { water, wet } = waterShading({
     shore,
+    isLand,
     depth,
     height,
     slope,

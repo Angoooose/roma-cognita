@@ -369,7 +369,14 @@ tectonics dominate.
     and each tile gets its offset into that period in double precision: world
     kilometres over a 15 m wavelength overflow float32 and drew the ripples on
     a grid. Value noise, warped octave by octave, with a sine-free hash, since
-    both plain value noise and a sin hash showed straight lines close in.
+    both plain value noise and a sin hash showed straight lines close in. The
+    noise is baked once into a tileable texture (value and gradient, four
+    texels a cell), so an octave is one read rather than eight hashes.
+  - **Cost:** the surface and surf sit behind branches that only water pixels,
+    close enough in to show them, take; an octave finer than a pixel is
+    skipped. Measured September 2026 against the commit before any of this
+    (paired, Retina, M-series): +0.1 ms a frame inland, +0.3–1 ms over water
+    (4–13%). The arithmetic noise, unbranched, had cost up to 25%.
   - **Surf in metres:** lines 28 m apart over the last ~120 m of gently
     shelving shores (not cliffs), broken by noise, with foam at the water's
     edge: the engraver's waterlining, read as surf. A darker band of wet sand
