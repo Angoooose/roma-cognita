@@ -131,7 +131,7 @@ export function checkDataset(ds: Dataset): Issue[] {
     }
   }
   for (const s of ds.sources) {
-    if (!cited.has(s.id)) warn('unused-source', s, `source "${s.id}" is never cited`)
+    if (!cited.has(s.id) && !s.usedBy) warn('unused-source', s, `source "${s.id}" is never cited`)
   }
 
   // --- intervals -------------------------------------------------------------

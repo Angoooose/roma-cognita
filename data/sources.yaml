@@ -169,6 +169,19 @@
     Offline input to derive-floodplains, z10 (~70 m). Heights are whole metres at
     z≤11. It is a surface model, so towns stand up.
 
+- id: itinere
+  kind: dataset
+  citation: >-
+    P. de Soto, A. Pažout, T. Brughmans et al., Itiner-e: A high-resolution
+    dataset of roads of the Roman Empire, static version 2024 (Scientific Data,
+    2025)
+  url: https://doi.org/10.5281/zenodo.17122148
+  licence: CC BY 4.0
+  usedBy: pipeline/src/roads/build.ts
+  note: >-
+    Roads, drawn only where the source dates their construction to 27 BCE or
+    earlier (pipeline/src/roads). Its GeoJSON is EPSG:3395, not 4326.
+
 - id: hydrorivers
   kind: dataset
   citation: B. Lehner and G. Grill, HydroRIVERS v1.0 (HydroSHEDS), 2013

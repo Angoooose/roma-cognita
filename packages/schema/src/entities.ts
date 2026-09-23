@@ -29,6 +29,11 @@ export const SourceSchema = z
     url: z.url().optional(),
     /** Required for datasets: the attribution screen and any re-licensing build are generated from it. */
     licence: z.string().min(1).optional(),
+    /**
+     * For a dataset a build reads directly, with no record between (Itiner-e's roads):
+     * the pipeline step that uses it. Stands in for a citation.
+     */
+    usedBy: z.string().min(1).optional(),
     note: z.string().optional(),
   })
   .refine((s) => s.kind !== 'dataset' || s.licence, {

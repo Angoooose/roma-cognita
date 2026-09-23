@@ -9,6 +9,7 @@ import {
 } from './politics/PoliticalLayer.ts'
 import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
 import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
+import { roadUniforms } from './roads/shading.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -120,6 +121,7 @@ export class RomeMap {
     politicsUniforms.glow.value = 0.7
     if (this.politics.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
+    roadUniforms.pixelRatio.value = this.renderer.getPixelRatio()
     const w = this.container.clientWidth
     const h = this.container.clientHeight
     const cam = this.view.camera
@@ -158,6 +160,7 @@ export class RomeMap {
   setYear(year: number, opts: { animate?: boolean } = {}) {
     const before = this.politics.year
     this.politics.setYear(year, opts)
+    roadUniforms.year.value = this.politics.year
     if (this.politics.year !== before)
       this.labels.setYear(this.politics.year, !!opts.animate)
     this.dirty = true

@@ -400,9 +400,40 @@ from vector lines.
 
 ### 7.4 Lines and points
 
-Roads, rivers and borders were to share one instanced line renderer. In the end,
-rivers and borders are drawn in the terrain shader (§7.1, §7.3); roads are still
-to come.
+Roads, rivers and borders were to share one instanced line renderer. In the end
+all three are painted into the terrain in its own shader pass (§7.1, §7.3), so they
+sit on the relief at any tilt.
+
+**Roads were built in September 2026** (`npm run roads -w pipeline`,
+`packages/engine/src/roads`). The source is Itiner-e, static version 2024, CC BY 4.0.
+cicero-map's work on it is carried over:
+- **The coordinates are EPSG:3395.** The source's GeoJSON is ellipsoidal World
+  Mercator, not EPSG:4326, and is unprojected with an iterated latitude.
+- **Only dated roads are drawn.** A segment is kept only when the source dates
+  its construction to 27 BCE or earlier (`pipeline/src/roads/dating.ts`, ported
+  and moved to astronomical years):
+  - `Cons_per_e`, the Roman builder, outranks `Lower_Date`, the older route;
+  - the latest bound of a range decides.
+
+  That leaves 405 lines: the Republican trunk network as historians name it. An
+  undated road cannot take part in a time series, so it is dropped, not drawn
+  faintly.
+- **Each segment keeps its first year**, and the shader shows it only from then.
+  This fixes cicero-map's oldest bug, which drew roads built in 46 at 68 BCE.
+- **The tile field** holds, per texel, the distance to the nearest road, plus
+  one exact integer packing its year, class and certainty. At a tie between two
+  roads, the older one wins, so a junction never waits on the newer road.
+- **Style** (reworked 2026-09-22; a bare hairline read as unfinished): a cased
+  road, the atlas symbol.
+  - A cream core between fine dark edges, 3.2 CSS px wide for main roads and
+    2.4 for secondary. It is the same language as the settlement names: light
+    type with a dark halo.
+  - Main roads appear from 900 m/px and secondary from 400, never at the
+    overview.
+  - Certainty sets the strength: surveyed 100%, conjectured 80%, hypothetical
+    55%.
+  - Dashes were considered and set aside. They need an along-road coordinate
+    per texel, which half floats cannot hold at close zoom.
 
 **Points were built in September 2026** (`packages/engine/src/labels/PlaceLayer.ts`).
 Settlements and seats are screen-sized: each is anchored to its place on the plane

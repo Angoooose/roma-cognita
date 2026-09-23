@@ -51,6 +51,11 @@ export interface TileResult {
    * side), and 0. See pipeline/src/politics.
    */
   politics: Uint16Array
+  /**
+   * RG half floats, n×n: distance to the nearest dated Roman road (m), and that road's
+   * packed code — see packRoad. Roads are drawn by the shader only from their year.
+   */
+  roads: Uint16Array
   minHeight: number
   maxHeight: number
 }
@@ -615,6 +620,130 @@ async function politicsField(job: TileJob): Promise<Uint16Array> {
   return out
 }
 
+// --- roads --------------------------------------------------------------------------
+
+/**
+ * First year, class and certainty in one integer that half floats hold exactly (≤ 2048):
+ * (max(year, −300) + 300) · 6 + class · 3 + certainty. Roads older than 300 BCE are all
+ * "always there" to a map that starts in 133.
+ */
+export function packRoad(year: number, cls: number, certainty: number) {
+  return (Math.max(-300, Math.min(-26, year)) + 300) * 6 + cls * 3 + certainty
+}
+
+interface RoadIndex {
+  /** Segments as ax, ay, bx, by, code. */
+  segs: Float32Array
+  /** Grid of segment indices, by cell. */
+  cells: Map<number, number[]>
+}
+
+const ROAD_CELL = 50000
+const ROAD_FAR = 60000
+let roadIndex: Promise<RoadIndex | null> | null = null
+
+function loadRoads() {
+  roadIndex ??= fetch('/roads/roads.bin')
+    .then((r) => (r.ok ? r.arrayBuffer() : null))
+    .then((buf) => {
+      if (!buf) return null
+      const v = new DataView(buf)
+      const lines = v.getUint32(0, true)
+      const segs: number[] = []
+      let o = 4
+      for (let l = 0; l < lines; l++) {
+        const n = v.getUint16(o, true)
+        const code = packRoad(v.getInt16(o + 2, true), v.getUint8(o + 4), v.getUint8(o + 5))
+        o += 6
+        let px = 0
+        let py = 0
+        for (let k = 0; k < n; k++) {
+          const x = v.getFloat32(o, true)
+          const y = v.getFloat32(o + 4, true)
+          o += 8
+          if (k > 0) segs.push(px, py, x, y, code)
+          px = x
+          py = y
+        }
+      }
+      const arr = new Float32Array(segs)
+      const cells = new Map<number, number[]>()
+      for (let s = 0; s < arr.length / 5; s++) {
+        const [ax, ay, bx, by] = [arr[s * 5], arr[s * 5 + 1], arr[s * 5 + 2], arr[s * 5 + 3]]
+        const c0 = Math.floor(Math.min(ax, bx) / ROAD_CELL)
+        const c1 = Math.floor(Math.max(ax, bx) / ROAD_CELL)
+        const r0 = Math.floor(Math.min(ay, by) / ROAD_CELL)
+        const r1 = Math.floor(Math.max(ay, by) / ROAD_CELL)
+        for (let r = r0; r <= r1; r++)
+          for (let c = c0; c <= c1; c++) {
+            const key = r * 100000 + c
+            let list = cells.get(key)
+            if (!list) cells.set(key, (list = []))
+            list.push(s)
+          }
+      }
+      return { segs: arr, cells }
+    })
+    .catch(() => null)
+  return roadIndex
+}
+
+/** Distance from every texel to the nearest road, and that road's code. */
+async function roadField(job: TileJob): Promise<Uint16Array> {
+  const out = new Uint16Array(N * N * 2)
+  const far = toHalf(ROAD_FAR)
+  for (let o = 0; o < N * N; o++) out[o * 2] = far
+  const idx = await loadRoads()
+  if (!idx) return out
+  const { x0, y0, size } = tileRect(job)
+  const step = size / (N - 1)
+  // Enough reach for a line a few pixels wide, on this tile or magnified as a stand-in.
+  const reach = Math.max(8 * step, 400)
+  const seen = new Set<number>()
+  const c0 = Math.floor((x0 - reach) / ROAD_CELL)
+  const c1 = Math.floor((x0 + size + reach) / ROAD_CELL)
+  const r0 = Math.floor((y0 - reach) / ROAD_CELL)
+  const r1 = Math.floor((y0 + size + reach) / ROAD_CELL)
+  for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) for (const s of idx.cells.get(r * 100000 + c) ?? []) seen.add(s)
+  if (!seen.size) return out
+  const dist = new Float32Array(N * N).fill(ROAD_FAR)
+  const code = new Float32Array(N * N)
+  const g = idx.segs
+  for (const s of seen) {
+    const ax = g[s * 5]
+    const ay = g[s * 5 + 1]
+    const bx = g[s * 5 + 2]
+    const by = g[s * 5 + 3]
+    const cc0 = Math.max(0, Math.floor((Math.min(ax, bx) - reach - x0) / step))
+    const cc1 = Math.min(N - 1, Math.ceil((Math.max(ax, bx) + reach - x0) / step))
+    const rr0 = Math.max(0, Math.floor((Math.min(ay, by) - reach - y0) / step))
+    const rr1 = Math.min(N - 1, Math.ceil((Math.max(ay, by) + reach - y0) / step))
+    if (cc0 > cc1 || rr0 > rr1) continue
+    const dx = bx - ax
+    const dy = by - ay
+    const len2 = dx * dx + dy * dy || 1
+    for (let rr = rr0; rr <= rr1; rr++) {
+      const py = y0 + rr * step
+      for (let cc = cc0; cc <= cc1; cc++) {
+        const px = x0 + cc * step
+        const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len2))
+        const d = Math.hypot(ax + t * dx - px, ay + t * dy - py)
+        const o = rr * N + cc
+        // Nearest wins; at a tie the older road, so a junction never waits on the newer.
+        if (d < dist[o] - 1 || (Math.abs(d - dist[o]) <= 1 && g[s * 5 + 4] < code[o])) {
+          dist[o] = d
+          code[o] = g[s * 5 + 4]
+        }
+      }
+    }
+  }
+  for (let o = 0; o < N * N; o++) {
+    out[o * 2] = toHalf(Math.min(dist[o], ROAD_FAR))
+    out[o * 2 + 1] = toHalf(code[o])
+  }
+  return out
+}
+
 // --- the tile -----------------------------------------------------------------------
 
 async function build(job: TileJob): Promise<TileResult> {
@@ -636,6 +765,7 @@ async function build(job: TileJob): Promise<TileResult> {
     riverField(job),
     politicsField(job),
   ])
+  const roads = await roadField(job)
   const { shore, floodplain } = await coastDistance(job, heights, m)
 
   const terrain = new Uint16Array(N * N * 4)
@@ -661,7 +791,7 @@ async function build(job: TileJob): Promise<TileResult> {
     }
   }
 
-  return { id: job.id, terrain, water, politics, minHeight, maxHeight }
+  return { id: job.id, terrain, water, politics, roads, minHeight, maxHeight }
 }
 
 self.onmessage = async (e: MessageEvent<TileJob>) => {
@@ -670,5 +800,6 @@ self.onmessage = async (e: MessageEvent<TileJob>) => {
     result.terrain.buffer,
     result.water.buffer,
     result.politics.buffer,
+    result.roads.buffer,
   ])
 }

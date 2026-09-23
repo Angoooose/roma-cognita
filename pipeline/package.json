@@ -9,6 +9,7 @@
     "rivers": "node --max-old-space-size=12288 --import tsx src/rivers/build.ts",
     "fonts": "tsx src/labels/fonts.ts",
     "labels": "tsx src/labels/build.ts",
+    "roads": "node --max-old-space-size=8192 --import tsx src/roads/build.ts",
     "politics": "node --max-old-space-size=8192 --import tsx src/politics/build.ts",
     "derive-floodplains": "node --max-old-space-size=8192 --import tsx src/features/derive-floodplains.ts"
   },

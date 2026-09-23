@@ -20,6 +20,7 @@ import {
 } from 'three/tsl'
 import { ROOT } from '@roman-map/world'
 import { politicalShading } from '../politics/shading.ts'
+import { roadShading } from '../roads/shading.ts'
 
 /**
  * Terrain shading: ground colour from climate and terrain, multi-directional light, and
@@ -102,6 +103,7 @@ export function createTerrainMaterial(
   terrainTex: THREE.DataTexture,
   waterTex: THREE.DataTexture,
   politicsTex: THREE.DataTexture,
+  roadsTex: THREE.DataTexture,
   n: number,
   tile: TileFrame,
 ) {
@@ -277,7 +279,10 @@ export function createTerrainMaterial(
   const tinted = mix(ground0, litFill, pol.fillAlpha)
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
   const withRivers = mix(glowed, RIVER, inRiver)
-  const landWithRivers = mix(withRivers, pol.line, pol.lineAlpha)
+  // Roads over the rivers they cross, under the borders.
+  const road = roadShading(roadsTex, n, pxM, texelM)
+  const withRoads = mix(withRivers, road.colour, road.alpha)
+  const landWithRivers = mix(withRoads, pol.line, pol.lineAlpha)
 
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))

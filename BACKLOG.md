@@ -129,3 +129,16 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - **Heavier Cinzel.** The atlas is the variable font's default instance
   (Regular); the hairlines are thickened in the shader. A 600-weight instance
   would read better at small sizes.
+
+### Roads, left for later
+
+- **Built:** dated Itiner-e roads on the timeline (DESIGN §7.4).
+- **Iberia and Africa are nearly roadless on the map.** That is a gap in
+  Itiner-e's attributions, not in history: Republican Hispania had the coastal
+  corridor and roads round Corduba, and Africa had a network around Carthage
+  from 146. The legend must say so. Dating them means research per road.
+- **Road names in the inspector.** `build/roads/roads.json` already carries each
+  line's name, builder and source, in the order of `roads.bin`. It needs picking
+  against the lines.
+- **Roads under Rome's knockout.** Glyph knockouts apply to lettering only;
+  roads cross names freely, as on a printed map.
