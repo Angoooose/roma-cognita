@@ -363,9 +363,11 @@ tectonics dominate.
   - **Encoding:** √depth in 1/32 steps (0.15 m at 6 m, 4 m at 5,000 m), gradient
     predictor, deflate (`packages/world/src/depth.ts`). A byte per texel bands
     the shallows ramp; this is ~30 KB for a level-8 tile full of shelf.
-  - **At runtime** the worker also stops the floor falling faster than 1:2 from
-    the drawn coast, since at a cliff the first texel of 110 m bathymetry is
-    already tens of metres deep.
+  - **Not tied to the shore distance.** A runtime limit (floor falling no
+    faster than 1:2 from the drawn coast) was tried and removed: the shore
+    distance is clamped at 16 mask texels, a reach that differs between tiles
+    with coast and without, so it capped whole coastal tiles at ~215 m and drew
+    a lighter rectangle round every island.
 - **Shading** (`packages/engine/src/terrain/water.ts`) keeps the paper tier's
   contrast far out and adds detail only as it becomes resolvable:
   - **Colour from depth** in exponential steps, as light falls off in water:

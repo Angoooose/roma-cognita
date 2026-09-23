@@ -877,9 +877,6 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
 
 // --- the tile -----------------------------------------------------------------------
 
-/** Steepest sea floor near the shore, as depth per metre offshore (~27°). */
-const MAX_SHORE_SLOPE = 0.5
-
 async function build(job: TileJob): Promise<TileResult> {
   const { x0, y0, size } = tileRect(job)
   const step = size / (N - 1)
@@ -917,10 +914,11 @@ async function build(job: TileJob): Promise<TileResult> {
       terrain[o * 4 + 2] = toHalf((heights[i + m] - heights[i - m]) * inv2)
       terrain[o * 4 + 3] = toHalf(floodplain[o])
       water[o * 4] = toHalf(shore[o])
-      // The sea floor can fall no faster than MAX_SHORE_SLOPE from the drawn coast. The
-      // bathymetry is ~110 m at best, and at a cliff its first sea texel is already
-      // tens of metres deep; this lets the depth meet the coast the mask draws.
-      water[o * 4 + 1] = toHalf(Math.min(0, Math.max(depths[o], shore[o] * MAX_SHORE_SLOPE)))
+      // Depth as baked. It is not tied to the shore distance: that distance is clamped
+      // at 16 mask texels, a reach that differs between tiles with coast and without,
+      // and a slope limit built on it capped whole coastal tiles at ~215 m — lighter
+      // rectangles round every island.
+      water[o * 4 + 1] = toHalf(Math.min(0, depths[o]))
       water[o * 4 + 2] = toHalf(river.dist[o])
       water[o * 4 + 3] = toHalf(river.q[o])
       if (h < minHeight) minHeight = h
