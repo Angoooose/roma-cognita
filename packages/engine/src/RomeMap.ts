@@ -2,6 +2,8 @@ import * as THREE from 'three/webgpu'
 import { MapCamera, type CameraState } from './camera/MapCamera.ts'
 import { TerrainTiles } from './terrain/TerrainTiles.ts'
 import { terrainTextures, terrainUniforms } from './terrain/material.ts'
+import { PaperLayer } from './edge/PaperLayer.ts'
+import { PAPER_HEX } from './edge/paper.ts'
 import {
   PoliticalLayer,
   politicsUniforms,
@@ -38,6 +40,8 @@ export class RomeMap {
   readonly politics = new PoliticalLayer()
   readonly labels = new LabelLayer()
   readonly places = new PlaceLayer()
+  /** Built in `create`, once the known-world texture it browns from has loaded. */
+  private paper?: PaperLayer
   frame: FrameStats = { frameMs: 0, fps: 0, drawCalls: 0, triangles: 0 }
   private resizeObserver: ResizeObserver
   private lastTime = performance.now()
@@ -47,11 +51,13 @@ export class RomeMap {
     const map = new RomeMap(container, opts)
     await Promise.all([
       map.renderer.init(),
-      loadBiome(),
+      loadDataTextures(),
       map.politics.load(),
       map.labels.load(),
       map.places.load(),
     ])
+    map.paper = new PaperLayer()
+    map.scene.add(map.paper.mesh)
     map.labels.setYear(map.politics.year, false)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
@@ -66,7 +72,9 @@ export class RomeMap {
       forceWebGL: opts.forceWebGL,
     })
     this.renderer.setPixelRatio(window.devicePixelRatio)
-    this.renderer.setClearColor('#1E3150')
+    // Past the last terrain tile: the paper the terrain fades into at the far margin, so
+    // the edge of the data never shows.
+    this.renderer.setClearColor(PAPER_HEX)
     container.appendChild(this.renderer.domElement)
     Object.assign(this.renderer.domElement.style, {
       display: 'block',
@@ -195,6 +203,7 @@ export class RomeMap {
     this.renderer.setAnimationLoop(null)
     this.resizeObserver.disconnect()
     this.terrain.dispose()
+    this.paper?.dispose()
     this.renderer.dispose()
     this.renderer.domElement.remove()
   }
@@ -206,13 +215,20 @@ function smoothstep(a: number, b: number, x: number) {
 }
 
 /**
- * The climate texture, loaded before the first tile so every tile is built with it.
- * Its channels are weights, not colours: no colour management, no premultiplication.
- * A missing file (the pipeline was not run) leaves the humid-temperate default.
+ * The climate and known-world textures, loaded before the first tile so every tile is
+ * built with them. Their channels are data, not colours: no colour management, no
+ * premultiplication. A missing file (the pipeline was not run) leaves the default.
  */
-async function loadBiome() {
+async function loadDataTextures() {
+  await Promise.all([
+    loadData('/biome/biome.png', (t) => (terrainTextures.biome = t)),
+    loadData('/known/known.png', (t) => (terrainTextures.known = t)),
+  ])
+}
+
+async function loadData(url: string, set: (t: THREE.Texture) => void) {
   try {
-    const res = await fetch('/biome/biome.png')
+    const res = await fetch(url)
     if (!res.ok) return
     const bitmap = await createImageBitmap(await res.blob(), {
       colorSpaceConversion: 'none',
@@ -226,7 +242,7 @@ async function loadBiome() {
     tex.magFilter = THREE.LinearFilter
     tex.generateMipmaps = false
     tex.needsUpdate = true
-    terrainTextures.biome = tex
+    set(tex)
   } catch {
     // Keep the default.
   }

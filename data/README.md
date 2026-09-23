@@ -21,6 +21,7 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `places.yaml`            | settlements, joined to Pleiades, with prominence and status     |
 | `features.yaml`          | physical features: floodplains, the Nile delta branches, seas   |
 | `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived; for seas, the course their name is lettered along |
+| `known-world.yaml`       | how far Roman geography reached, as one coarse ring: where the map's colour stops; baked by `npm run known -w pipeline` |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
 

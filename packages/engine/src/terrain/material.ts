@@ -2,11 +2,17 @@ import * as THREE from 'three/webgpu'
 import {
   abs,
   clamp,
+  dFdx,
+  dFdy,
   dot,
   float,
+  Fn,
+  fract,
   fwidth,
+  If,
   length,
   max,
+  min,
   mix,
   mx_noise_float,
   normalize,
@@ -18,9 +24,11 @@ import {
   vec2,
   vec3,
 } from 'three/tsl'
-import { ROOT } from '@roman-map/world'
+import { DATA_RECT, ROOT } from '@roman-map/world'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
+import { GRATICULE_INK, graticuleNode } from '../edge/graticule.ts'
+import { knownDistanceKm, noise2, paperNode } from '../edge/paper.ts'
 
 /**
  * Terrain shading: ground colour from climate and terrain, multi-directional light, and
@@ -61,6 +69,16 @@ export const terrainTextures = {
     t.needsUpdate = true
     return t
   })() as THREE.Texture,
+  /**
+   * Distance to the edge of the known world (`npm run known -w pipeline`; decoded by
+   * edge/paper.ts `knownDistanceKm`). Until it loads, or if it was never built, all of
+   * it reads as known and the colour runs to the edge of the data.
+   */
+  known: (() => {
+    const t = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1)
+    t.needsUpdate = true
+    return t
+  })() as THREE.Texture,
 }
 
 // Ground colour families, one per climate channel of the biome texture.
@@ -78,7 +96,7 @@ const SEA_DEEP = rgb('#1E3150')
 const SEA_SHALLOW = rgb('#4E7F8A')
 const LAKE = rgb('#2F6478')
 const RIVER = rgb('#3D7A8E')
-const INK = rgb('#2A241E')
+export const INK = rgb('#2A241E')
 
 /** Light directions: azimuth clockwise from north, altitude, weight. NW carries it. */
 const LIGHTS: [number, number, number][] = [
@@ -287,6 +305,154 @@ export function createTerrainMaterial(
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))
 
-  mat.colorNode = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
+  const coloured = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
+
+  // --- terra incognita: the unfinished sketch -----------------------------------------
+  // Past the known world the map stops claiming anything. Colour drains away and leaves
+  // only what a cartographer inks first: the coast, a few offshore lines along it, the
+  // rivers, contours on the high ground and the graticule. Nothing here is invented —
+  // every line is drawn from the same physical data as the coloured map, only not
+  // filled in. Where it begins is the edge of the known world (data/known-world.yaml),
+  // made to wander a little further so its straight segments never read as ruled.
+  const knownKm = knownDistanceKm(terrainTextures.known, km)
+
+  // How far inside the edge of the data rectangle this point is. The rectangle bounds
+  // the frame plus 3° and is closest to it in the far north, where 3° of longitude is
+  // only ~160 km; everywhere else the data reaches further.
+  const toRectKm = min(
+    min(km.x.sub(DATA_RECT.minX / 1000), float(DATA_RECT.maxX / 1000).sub(km.x)),
+    min(km.y.sub(DATA_RECT.minY / 1000), float(DATA_RECT.maxY / 1000).sub(km.y)),
+  )
+
+  // Everything below costs some twenty noise lookups a pixel, and most of the map is
+  // nowhere near the edge — so it is drawn only where it can show. The wash's wobble
+  // (±175 km in toKnownKm, ±47 in its ragged edge) and the pooling inside it (at most
+  // max(5 px, 14 km)) cannot reach further in than this bound; inside it the result is
+  // exactly the coloured map.
+  const nearEdge = max(knownKm, float(150).sub(toRectKm)).greaterThan(
+    max(pxKm.mul(5), 14).add(260).negate(),
+  )
+
+  // The sketch, for the branch. Derivatives are undefined inside a branch (and WGSL
+  // rejects them), so the ones it needs are taken outside and passed in: `kmDx` and
+  // `kmDy` for the graticule, `hw` for the contours.
+  const sketchOver = (
+    colouredVar: THREE.Node<'vec3'>,
+    kmDx: THREE.Node<'vec2'>,
+    kmDy: THREE.Node<'vec2'>,
+    hw: THREE.Node<'float'>,
+  ): THREE.Node<'vec3'> => {
+    const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
+    const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
+
+    // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
+    // inside it where the pigment pooled — not a long blend, which over the sea went to
+    // mud between navy and paper. It stops at the known world's edge, or 150 km short of
+    // the data's if that comes first, leaving room for the sketch.
+    const ragged = sketchNoise(40, 24)
+      .mul(35)
+      .add(sketchNoise(12, 25).mul(12).mul(detail(12)))
+    const pastWash = max(toKnownKm, float(150).sub(toRectKm)).add(ragged)
+    const washAA = max(pxKm.mul(1.2), 1.5)
+    const unknown = smoothstep(washAA.negate(), washAA, pastWash)
+    const pooled = smoothstep(max(pxKm.mul(5), 14).negate(), 0, pastWash)
+    const known = colouredVar.mul(float(1).sub(pooled.mul(0.12)))
+
+    // Then the sketch trails off, as a drawing left unfinished does: each kind of line
+    // gives out at its own distance past the wash — contours first, then rivers, the
+    // offshore lines and the coast, and last the graticule, the construction lines drawn
+    // before anything else. A line does not dim as it goes; it breaks, like a pen running
+    // dry, into dashes and then nothing. Everything is gone before the edge of the data.
+    const fadeNoise = sketchNoise(160, 22).mul(30)
+    const past = pastWash.add(fadeNoise)
+    const rectKeep = smoothstep(10, 70, toRectKm.add(fadeNoise))
+    // Where along a line the pen gives out: broad gaps at the overview, finer breaks close
+    // in, each faded by pixel size like the ground's noise.
+    const breaks = sketchNoise(60, 31)
+      .mul(0.6)
+      .add(sketchNoise(14, 32).mul(0.4).mul(detail(14)))
+      .mul(0.5)
+      .add(0.5)
+    const trail = (fromKm: number, toKm: number) => {
+      const t = smoothstep(fromKm, toKm, past).mul(1.3).sub(0.15)
+      return smoothstep(t.sub(0.12), t.add(0.12), breaks).mul(rectKeep)
+    }
+    // Pen pressure: a little heavier and lighter along every line.
+    const pressure = float(0.82).add(sketchNoise(4, 33).mul(0.25).mul(detail(4)))
+    const blank = max(smoothstep(400, 720, past), float(1).sub(rectKeep))
+
+    // The paper (edge/paper.ts), land and sea alike. Near the wash it keeps a faint
+    // mottle and a breath of relief from the ground beneath; both are gone by the blank,
+    // where it must match the paper beneath the map (edge/PaperLayer.ts) exactly.
+    const sheet = paperNode(km, pxKm, knownKm)
+
+    // The graticule, every 5°, only in the sketch: the cartographer's construction lines.
+    // Unlike the rest it does not trail off — it runs on at full strength past the edge
+    // of the data, where the paper beneath the map (edge/PaperLayer.ts) carries it on.
+    const graticule = graticuleNode(km, kmDx, kmDy).mul(GRATICULE_INK)
+
+    // Past the blank that is all there is: every other line has trailed off by 600 km
+    // and the mottle by 720. The lines are drawn only short of it.
+    const sketch = mix(sheet, INK, graticule).toVar()
+    If(past.lessThan(720).and(rectKeep.greaterThan(0)), () => {
+      const mottle = float(1).add(drift.mul(0.5)).add(patch.mul(0.3))
+      const relief = mix(float(1), clamp(shade, 0, 1.6).mul(0.14).add(0.86), isLand)
+      const paper = mix(sheet.mul(mottle).mul(relief), sheet, blank)
+
+      // Offshore lines: three hairlines following the coast a few pixels out, fainter as
+      // they go, as on an engraved chart.
+      const offPx = shore.negate().div(px)
+      const ripple = (at: number, weight: number) =>
+        float(1)
+          .sub(smoothstep(0.3, 0.85, abs(offPx.sub(at))))
+          .mul(weight)
+      // Only along the sea: round every lake they turn the lake country into a scribble.
+      const atSea = float(1).sub(smoothstep(1, 3, height))
+      // And only where the shore distance is finer than the lines: from coarse texels they
+      // trace the texel grid as a maze.
+      const fineShore = float(1).sub(smoothstep(1.5, 3, texelM.div(pxM)))
+      const ripples = max(max(ripple(4, 0.45), ripple(8.5, 0.3)), ripple(14, 0.18))
+        .mul(atSea)
+        .mul(fineShore)
+
+      // Contours every 500 m on the high ground only, dropped where they would crowd
+      // closer than a few pixels (mountains at the overview) and where the tile's texels
+      // are big on screen — bilinear heights draw their grid as square contours.
+      const hq = height.div(500)
+      const contourPx = abs(fract(hq.add(0.5)).sub(0.5)).div(hw)
+      const contour = float(1)
+        .sub(smoothstep(0.35, 0.9, contourPx))
+        .mul(float(1).sub(smoothstep(0.12, 0.3, hw)))
+        .mul(float(1).sub(smoothstep(2, 4, texelM.div(pxM))))
+        .mul(smoothstep(350, 500, height))
+        .mul(isLand)
+
+      const drawnInk = max(
+        max(
+          coastLine.mul(mix(float(0.4), float(0.75), atSea)).mul(trail(40, 600)),
+          ripples.mul(trail(20, 300)),
+        ),
+        max(
+          contour.mul(0.3).mul(trail(0, 200)),
+          inRiver.mul(isLand).mul(0.45).mul(trail(10, 280)),
+        ),
+      )
+      // Pen pressure varies the drawn lines only: the graticule must match the paper's.
+      sketch.assign(mix(paper, INK, max(drawnInk.mul(pressure), graticule)))
+    })
+
+    return mix(known, sketch, unknown)
+  }
+
+  mat.colorNode = Fn(() => {
+    const colour = coloured.toVar()
+    const kmDx = dFdx(km).toVar()
+    const kmDy = dFdy(km).toVar()
+    const hw = max(fwidth(height.div(500)), 1e-4).toVar()
+    If(nearEdge, () => {
+      colour.assign(sketchOver(colour, kmDx, kmDy, hw))
+    })
+    return colour
+  })()
   return mat
 }

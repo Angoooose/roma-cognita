@@ -541,12 +541,22 @@ Territory and water names were built in September 2026 (`pipeline/src/labels`,
 
 | Tier      | Scale              | What it looks like |
 | --------- | ------------------ | ------------------ |
-| **Paper** | whole frame        | Flat political colour, pale parchment beyond the known world, a dark sea with gold italic sea names, almost no terrain |
+| **Paper** | whole frame        | Flat political colour, the unfinished sketch beyond the known world, a dark sea with gold italic sea names, almost no terrain |
 | **Political** | a region of the Mediterranean | Political colour over lit relief (terrain shows through as light and shade), large curved names, borders, main roads |
 | **Terrain** | a province or smaller | Materials, glowing borders instead of full fills, roads, settlements, physical names, the shore band and foam |
 
 The tiers crossfade continuously with camera distance. They are never hard
 switches.
+
+**Beyond the known world** (`data/known-world.yaml`, c. 63 BCE) the map stops
+claiming anything at every tier. The colour ends at a ragged wash edge and what
+is left is an unfinished sketch in ink on paper: the coast with a few offshore
+lines, rivers, contours on the high ground, and the 5° graticule. The lines give
+out one kind at a time, like a pen running dry, until only paper and graticule
+remain; the paper runs on past the terrain data, so the data's edge never shows.
+Every line is drawn from the same physical data as the coloured map. The known
+world is the union of the ring, every atom and a 150 km reach round every place,
+so it never leaves out something the rest of the data draws.
 
 ---
 
@@ -582,7 +592,8 @@ copy. What we take from it:
 | -------------- | --------- | --- |
 | `sea-deep`     | `#1E3150` | open sea |
 | `sea-shallow`  | `#3E8C98` | shallows band |
-| `parchment`    | `#D8D2C4` | beyond the known world (paper tier) |
+| `parchment`    | `#D8D2C4` | what client kingdoms' colour is washed towards |
+| `paper`        | `#D9CFB8` | the sheet beyond the known world, browning towards `#CDBE9E` far out |
 | `ground-arid`  | `#D6A774` | desert, steppe |
 | `ground-green` | `#7C8848` | fertile lowland |
 | `rock`         | `#8C8378` | high and steep ground |

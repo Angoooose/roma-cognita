@@ -6,6 +6,7 @@
     "validate": "tsx src/validate.ts",
     "water": "node --max-old-space-size=12288 --import tsx src/water/build.ts",
     "biome": "node --max-old-space-size=8192 --import tsx src/biome/build.ts",
+    "known": "tsx src/known/build.ts",
     "rivers": "node --max-old-space-size=12288 --import tsx src/rivers/build.ts",
     "fonts": "tsx src/labels/fonts.ts",
     "labels": "tsx src/labels/build.ts",
