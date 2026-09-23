@@ -175,7 +175,11 @@ function ConfidenceBadge({ confidence }: { confidence: string }) {
 }
 
 function Note({ children }: { children: ReactNode }) {
-  return <p className="border-l-2 pl-2.5 text-muted-foreground">{children}</p>
+  return (
+    <p className="border-l-2 border-gold/60 pl-2.5 text-pretty text-foreground/80">
+      {children}
+    </p>
+  )
 }
 
 function Sources({

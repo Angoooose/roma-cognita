@@ -49,7 +49,7 @@ export function Timeline() {
   }
 
   return (
-    <Card className="fixed bottom-5 left-1/2 w-[min(620px,calc(100vw-48px))] -translate-x-1/2 flex-row items-center gap-2 px-3 pt-5 pb-3 select-none">
+    <Card className="fixed bottom-5 left-1/2 w-[min(620px,calc(100vw-48px))] -translate-x-1/2 flex-row items-center gap-2 px-3 pt-6 pb-5 select-none">
       <Button
         variant="ghost"
         size="icon-sm"
@@ -62,7 +62,7 @@ export function Timeline() {
         {/* Inset by half the thumb, where Radix keeps its centre. */}
         <div className="pointer-events-none absolute inset-x-1.5 inset-y-0">
           <span
-            className="absolute bottom-1/2 mb-2.5 -translate-x-1/2 text-sm font-semibold whitespace-nowrap tabular-nums"
+            className="absolute bottom-1/2 mb-3 -translate-x-1/2 font-heading text-sm font-semibold tracking-[0.06em] whitespace-nowrap"
             style={{ left: at(year) }}
           >
             {formatYear(year)}
@@ -79,9 +79,7 @@ export function Timeline() {
                 }
               />
               {t.major && (
-                <span className="text-[11px] text-muted-foreground tabular-nums">
-                  {t.bce}
-                </span>
+                <span className="figures text-[11px] text-muted-foreground">{t.bce}</span>
               )}
             </span>
           ))}

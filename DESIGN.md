@@ -689,7 +689,26 @@ copy. What we take from it:
   Every change must move towards them rather than add something.
 - The interface is minimal and quiet: a timeline, an inspector and a legend.
   No default component-library look.
-  - The explorer's current shadcn default theme is only a placeholder.
+- **The interface theme is an engraved atlas** (decided 2026-09-23;
+  `apps/explorer/src/index.css`). The panels are printed matter laid over the
+  map, in the map's own inks:
+  - two modes: **parchment** (the sheet: paper, dark ink, Rome's red deepened
+    to carry cream type) and **ink & gold** (the sea's voice: warm near-black,
+    cream type, the sea names' gold);
+  - Cinzel for inscriptions (titles, buttons, small labels), EB Garamond for
+    the book; lining figures for years in tables;
+  - ornament is hairlines, a double rule round each panel, a faint paper grain
+    and one seat diamond: on the slider thumb, the selected row of a list, the
+    divider. Confidence badges are dashed when uncertain, as the map's lines
+    are.
+  - Italic is kept to short phrases. Tooltips and notes are upright: Garamond
+    italic thins out over a sentence, and light-on-dark type at 13 px breaks
+    up the way Regular did on the map (§7.4).
+  - `/playground.html` shows the interface over screenshots of the three
+    tiers, a specimen of every component, and a live token editor.
+  - shadcn components are ours once themed. Nine carry edits beyond the tokens
+    (badge, button, card, command, dialog, dropdown-menu, select, skeleton,
+    slider): never re-add them with `shadcn add --overwrite`.
 
 ---
 

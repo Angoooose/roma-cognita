@@ -1,13 +1,42 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/geist';
+@import '@fontsource-variable/cinzel';
+@import '@fontsource-variable/eb-garamond';
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * The interface theme: "engraved atlas" (DESIGN.md §8.3). The panels are printed
+ * matter laid over the map, in the map's own inks:
+ *   - light is the sheet the map is printed on — parchment, dark ink, Roman red;
+ *   - dark is the sea's voice — near-black ink, cream type, the sea names' gold.
+ * Colours are taken from the renderer (labels/LabelLayer.ts, labels/PlaceLayer.ts,
+ * politics/palette.ts), so a panel and the lettering under it share an ink.
+ * Ornament is hairlines, double rules and a faint paper grain; nothing else.
+ * Tune it live at /playground.html.
+ */
+
+@theme {
+  /* Garamond sets small for its size; lift the small steps a touch. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.35;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.45;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.5;
+}
+
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: 'Geist Variable', sans-serif;
+  --font-heading: 'Cinzel Variable', 'Trajan Pro', serif;
+  --font-sans: 'EB Garamond Variable', 'Garamond', serif;
+  --font-serif: 'EB Garamond Variable', 'Garamond', serif;
+  --color-gold: var(--gold);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-sea: var(--sea);
+  --color-rule: var(--rule);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,75 +75,147 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --shadow-plate: var(--plate-shadow);
 }
 
+/* Parchment: the sheet. */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --ink: #2a241e;
+  --paper: #ede6d6;
+  --gold: #a6803b; /* the sea names' gold, darkened to read on paper */
+  --sea: #1e3150;
+  --rule: rgb(42 36 30 / 0.34);
+  --grain-opacity: 0.025;
+  --tracking-caps: 0.08em;
+  --plate-shadow:
+    0 1px 0 rgb(255 250 240 / 0.5) inset, 0 10px 28px -10px rgb(27 22 18 / 0.55),
+    0 2px 6px -2px rgb(27 22 18 / 0.3);
+
+  --background: #ece4d1;
+  --foreground: #2a241e;
+  --card: #f4efe3;
+  --card-foreground: #2a241e;
+  --popover: #f8f4ea;
+  --popover-foreground: #2a241e;
+  --primary: #9a3e35; /* Rome's #AE4A42, deepened to carry cream type */
+  --primary-foreground: #f3ebda;
+  --secondary: #e6dcc6;
+  --secondary-foreground: #2a241e;
+  --muted: #e9e0cc;
+  --muted-foreground: #6b5d4b;
+  --accent: #e3d7bc;
+  --accent-foreground: #2a241e;
+  --destructive: #9e2f24;
+  --border: rgb(42 36 30 / 0.2);
+  --input: rgb(42 36 30 / 0.3);
+  --ring: #a6803b;
+  --chart-1: #ae4a42;
+  --chart-2: #b98f4a;
+  --chart-3: #5e8c84;
+  --chart-4: #7a6a96;
+  --chart-5: #8e9a52;
+  --radius: 0.1875rem;
+  --sidebar: #f0e9d9;
+  --sidebar-foreground: #2a241e;
+  --sidebar-primary: #9a3e35;
+  --sidebar-primary-foreground: #f3ebda;
+  --sidebar-accent: #e3d7bc;
+  --sidebar-accent-foreground: #2a241e;
+  --sidebar-border: rgb(42 36 30 / 0.2);
+  --sidebar-ring: #a6803b;
 }
 
+/* Ink & gold: the sea's voice. */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --ink: #1b1612;
+  --paper: #ede6d6;
+  --gold: #d4ae66;
+  --sea: #1e3150;
+  --rule: rgb(201 161 90 / 0.42);
+  --grain-opacity: 0.025;
+  --plate-shadow:
+    0 1px 0 rgb(201 161 90 / 0.08) inset, 0 12px 32px -10px rgb(0 0 0 / 0.7),
+    0 2px 6px -2px rgb(0 0 0 / 0.5);
+
+  --background: #1c1813;
+  --foreground: #f3ebda;
+  --card: #25201a;
+  --card-foreground: #f3ebda;
+  --popover: #2a241d;
+  --popover-foreground: #f3ebda;
+  --primary: #d4ae66;
+  --primary-foreground: #1b1612;
+  --secondary: #342d24;
+  --secondary-foreground: #f3ebda;
+  --muted: #2e281f;
+  --muted-foreground: #b5a78b;
+  --accent: #3d3428;
+  --accent-foreground: #f3ebda;
+  --destructive: #d0674f;
+  --border: rgb(201 161 90 / 0.2);
+  --input: rgb(237 227 204 / 0.16);
+  --ring: #d4ae66;
+  --chart-1: #c25c53;
+  --chart-2: #d4ae66;
+  --chart-3: #6f9e95;
+  --chart-4: #8e7eab;
+  --chart-5: #9fab62;
+  --sidebar: #25201a;
+  --sidebar-foreground: #f3ebda;
+  --sidebar-primary: #d4ae66;
+  --sidebar-primary-foreground: #1b1612;
+  --sidebar-accent: #3d3428;
+  --sidebar-accent-foreground: #f3ebda;
+  --sidebar-border: rgb(201 161 90 / 0.2);
+  --sidebar-ring: #d4ae66;
+}
+
+/* Paper grain: fractal noise, tinted by the ink colour through its opacity. */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .14 0 0 0 0 .12 0 0 0 1.6 -.55'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* A printed sheet: grain over the fill. Stacks with any bg-* colour utility. */
+@utility paper {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image: var(--grain);
+    opacity: calc(var(--grain-opacity) * 4);
+    mix-blend-mode: multiply;
+  }
+  :where(.dark) &::before {
+    mix-blend-mode: screen;
+    filter: invert(1);
+  }
+}
+
+/* The engraver's frame: a hairline, a gap of the sheet, and a second hairline. */
+@utility rule-double {
+  border: 1px solid var(--rule);
+  box-shadow:
+    inset 0 0 0 3px var(--color-card),
+    inset 0 0 0 4px color-mix(in oklab, var(--rule) 70%, transparent),
+    var(--plate-shadow);
+}
+
+/* Inscriptional small capitals, for labels above a value. */
+@utility caps {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  font-variant-numeric: lining-nums;
+}
+
+/* Years and counts: lining, tabular figures (Garamond's default is old-style). */
+@utility figures {
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 @layer base {
@@ -122,9 +223,49 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply overflow-hidden bg-background text-foreground;
+    @apply overflow-hidden bg-background text-foreground antialiased;
+    font-feature-settings: 'kern', 'liga', 'onum';
   }
   html {
     @apply font-sans;
+  }
+  /* Anything that responds to a click shows the hand. Tailwind v4 resets buttons to the
+     arrow; disabled states keep their own cursor (cursor-not-allowed utilities win). */
+  :where(
+    button:not(:disabled),
+    [role='button']:not([aria-disabled='true']),
+    a[href],
+    summary,
+    label[for],
+    select,
+    input:is([type='checkbox'], [type='radio'], [type='color'], [type='range']),
+    [data-slot='slider']:not([data-disabled])
+  ) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--gold) 35%, transparent);
+  }
+
+  /* Headings are inscriptions; body is book type. */
+  :where([data-slot='card-title'], [data-slot='dialog-title'], h1, h2, h3) {
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-caps);
+  }
+
+  /* Menu section labels and tab triggers speak in capitals. */
+  :where(
+    [data-slot='dropdown-menu-label'],
+    [data-slot='select-label'],
+    [data-slot='command-group'] [cmdk-group-heading],
+    [data-slot='tabs-trigger']
+  ) {
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-caps);
+  }
+  /* Tooltips are small light-on-dark type, where Garamond's hairlines thin out:
+     upright Medium, as the map's town names are (DESIGN.md §7.4). */
+  :where([data-slot='tooltip-content']) {
+    font-weight: 500;
   }
 }

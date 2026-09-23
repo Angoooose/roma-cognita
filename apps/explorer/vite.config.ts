@@ -10,7 +10,16 @@ export default defineConfig({
   // not committed: `npm run water -w pipeline`.
   publicDir: '../../build',
   // Module workers in the engine.
-  build: { target: 'es2023' },
+  // The theme playground is a second page: /playground.html.
+  build: {
+    target: 'es2023',
+    rollupOptions: {
+      input: {
+        main: path.resolve(import.meta.dirname, 'index.html'),
+        playground: path.resolve(import.meta.dirname, 'playground.html'),
+      },
+    },
+  },
   worker: { format: 'es' },
   server: { port: 5180 },
 })
