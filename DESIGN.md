@@ -689,6 +689,7 @@ copy. What we take from it:
   Every change must move towards them rather than add something.
 - The interface is minimal and quiet: a timeline, an inspector and a legend.
   No default component-library look.
+  - The explorer's current shadcn default theme is only a placeholder.
 
 ---
 
