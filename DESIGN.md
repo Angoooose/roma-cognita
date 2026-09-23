@@ -294,6 +294,20 @@ tectonics dominate.
   The masks describe physical ground only. There are no invented fields or
   forests. Centuriation drawn from real survey data is a later, evidenced
   exception.
+- **Floodplains are records, not a runtime derivation.** Irrigated floodplain
+  colour matters only where a great river crosses dry land: the Nile valley and
+  delta, the Fayum, the Mesopotamian alluvium, Susiana. Each is a sourced
+  `kind: floodplain` feature.
+  - Its geometry is derived offline from terrain: height above authored
+    channel lines (the seven ancient delta branches included), clipped to a
+    loose authored outline.
+  - It is baked into channel 1 of the coast mask.
+  - Rejected: computing height above the nearest HydroRIVERS channel at
+    runtime. The modern delta has one channel, so the delta came out lopsided;
+    the reach cut-off drew straight edges; and every zoom level gave a
+    slightly different answer, so the edges jumped as tiles swapped.
+  - Rejected: modern land-cover data, which is anachronistic (20th-century
+    irrigation schemes).
 
 ### 7.2 Water
 

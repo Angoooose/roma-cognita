@@ -318,6 +318,12 @@ export const FeatureSchema = z.strictObject({
     'marsh',
     'plain',
     'island',
+    /**
+     * Ground watered by a great river's flood, drawn green where the river
+     * crosses dry land. Its shape is derived offline from terrain
+     * (pipeline/src/features/derive-floodplains.ts), never traced.
+     */
+    'floodplain',
   ]),
   pleiades: PleiadesIdSchema.optional(),
   names: z.array(NameSchema).min(1),

@@ -15,7 +15,8 @@
  *
  *   npm run water -w pipeline
  */
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { parse as parseYaml } from 'yaml'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { availableParallelism } from 'node:os'
@@ -23,7 +24,8 @@ import { Worker } from 'node:worker_threads'
 import { DATA_RECT, ROOT, TILE_TEXELS, tileRect } from '@roman-map/world'
 import type { BakeJob, BakeResult } from './bake-worker.ts'
 import { edgesTouch, inside, type Ring } from './raster.ts'
-import { SOURCES, ensureUnzipped, keepLake, keepLand, lakeArea, readRings } from './sources.ts'
+import { RingIndex } from './ring-index.ts'
+import { SOURCES, ensureUnzipped, keepLake, keepLand, lakeArea, projectRing, readRings } from './sources.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const CACHE = join(ROOT_DIR, '.cache/sources')
@@ -36,7 +38,8 @@ const DISTANCE_TEXELS = 16
 /** Samples per texel side when rasterising, so the shore lands between texel centres. */
 const SUPERSAMPLE = 4
 
-const Code = { Water: 0, Land: 1, Mixed: 2 } as const
+/** 3 is land wholly inside a floodplain; the engine reads it like 1 plus a full second channel. */
+const Code = { Water: 0, Land: 1, Mixed: 2, Floodplain: 3 } as const
 
 /**
  * The smallest lake a level draws: about 3×3 of its texels. Below that a lake is a
@@ -49,47 +52,72 @@ function minLakeKm2(level: number) {
   return (3 * texelKm) ** 2
 }
 
-/** Rings bucketed on a coarse grid so a tile only looks at rings near it. */
-class RingIndex {
-  private cells = new Map<number, Ring[]>()
-  private readonly n = 64
-  private readonly cell = ROOT.size / this.n
-
-  constructor(rings: Ring[]) {
-    for (const r of rings) {
-      const [c0, r0] = this.cellOf(r.minX, r.minY)
-      const [c1, r1] = this.cellOf(r.maxX, r.maxY)
-      for (let row = r0; row <= r1; row++) {
-        for (let col = c0; col <= c1; col++) {
-          const k = row * this.n + col
-          let list = this.cells.get(k)
-          if (!list) this.cells.set(k, (list = []))
-          list.push(r)
-        }
-      }
+/**
+ * Floodplain polygons from data/: every `kind: floodplain` feature with geometry in
+ * data/geometry/features.geojson. Read directly rather than through the dataset loader
+ * so the coast build does not depend on the rest of the data validating.
+ */
+function readFloodplains(): Ring[] {
+  const recordsFile = join(ROOT_DIR, 'data/features.yaml')
+  const geometryFile = join(ROOT_DIR, 'data/geometry/features.geojson')
+  if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
+  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; kind: string }[]
+  const ids = new Set(records.filter((r) => r.kind === 'floodplain').map((r) => r.id))
+  const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
+    features: { id: string; geometry: { type: string; coordinates: number[][][] | number[][][][] } }[]
+  }
+  const rings: Ring[] = []
+  let polygon = 0
+  for (const f of collection.features) {
+    if (!ids.has(f.id)) continue
+    const polys =
+      f.geometry.type === 'Polygon'
+        ? [f.geometry.coordinates as number[][][]]
+        : f.geometry.type === 'MultiPolygon'
+          ? (f.geometry.coordinates as number[][][][])
+          : []
+    for (const poly of polys) {
+      const id = polygon++
+      for (const ring of poly) rings.push(projectRing(ring, id, Infinity))
     }
   }
+  return rings
+}
 
-  private cellOf(x: number, y: number): [number, number] {
-    const c = Math.floor((x - ROOT.x) / this.cell)
-    const r = Math.floor((y - ROOT.y) / this.cell)
-    return [Math.max(0, Math.min(this.n - 1, c)), Math.max(0, Math.min(this.n - 1, r))]
+/**
+ * `remove-water` and `add-water` records from data/landscape-changes.yaml that apply to
+ * the map's window, with geometry from data/geometry/landscape-changes.geojson. Read
+ * directly, like the floodplains. v1 bakes one landscape for 133–27 BCE, so every
+ * correction that applies at any point in the window is applied; per-year variants
+ * come when a correction ends inside it (the Latmian Gulf silting, for one).
+ */
+function readLandscapeChanges(): { removeWater: Ring[]; addWater: Ring[] } {
+  const recordsFile = join(ROOT_DIR, 'data/landscape-changes.yaml')
+  const geometryFile = join(ROOT_DIR, 'data/geometry/landscape-changes.geojson')
+  const out = { removeWater: [] as Ring[], addWater: [] as Ring[] }
+  if (!existsSync(recordsFile) || !existsSync(geometryFile)) return out
+  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; op: string }[]
+  const ops = new Map(records.map((r) => [r.id, r.op]))
+  const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
+    features: { id: string; geometry: { type: string; coordinates: unknown } }[]
   }
-
-  query(minX: number, minY: number, maxX: number, maxY: number): Ring[] {
-    const [c0, r0] = this.cellOf(minX, minY)
-    const [c1, r1] = this.cellOf(maxX, maxY)
-    const seen = new Set<Ring>()
-    for (let row = r0; row <= r1; row++) {
-      for (let col = c0; col <= c1; col++) {
-        for (const r of this.cells.get(row * this.n + col) ?? []) {
-          if (r.maxX < minX || r.minX > maxX || r.maxY < minY || r.minY > maxY) continue
-          seen.add(r)
-        }
-      }
+  let polygon = 0
+  for (const f of collection.features) {
+    const op = ops.get(f.id)
+    const target = op === 'remove-water' ? out.removeWater : op === 'add-water' ? out.addWater : null
+    if (!target) continue
+    const polys =
+      f.geometry.type === 'Polygon'
+        ? [f.geometry.coordinates as number[][][]]
+        : f.geometry.type === 'MultiPolygon'
+          ? (f.geometry.coordinates as number[][][][])
+          : []
+    for (const poly of polys) {
+      const id = polygon++
+      for (const ring of poly) target.push(projectRing(ring, id, Infinity))
     }
-    return [...seen]
   }
+  return out
 }
 
 async function main() {
@@ -102,8 +130,18 @@ async function main() {
   console.log(`  ${lakes.stats.kept} lakes, ${fmt(lakes.stats.points)} points; dropped`, lakes.stats.dropped)
   console.log(`  read in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
 
+  const floodplains = readFloodplains()
+  console.log(`  ${floodplains.length} floodplain rings from data/`)
+  const changes = readLandscapeChanges()
+  console.log(
+    `  landscape changes: ${changes.removeWater.length} remove-water rings, ${changes.addWater.length} add-water rings`,
+  )
+  const removeIndex = new RingIndex(changes.removeWater)
+  const addIndex = new RingIndex(changes.addWater)
+
   const landIndex = new RingIndex(land.rings)
   const lakeIndex = new RingIndex(lakes.rings)
+  const floodplainIndex = new RingIndex(floodplains)
 
   const pool = new BakePool(Math.max(1, availableParallelism() - 2))
   const writes: Promise<void>[] = []
@@ -126,23 +164,38 @@ async function main() {
         const rect = [x0 - m, y0 - m, x0 + size + m, y0 + size + m] as const
         const minArea = minLakeKm2(level)
         const lakesHere = () => lakeIndex.query(...rect).filter((r) => r.areaKm2 >= minArea)
+        const floodplainsHere = floodplainIndex.query(...rect)
         // A uniform parent has uniform children, with one exception: lakes too small
         // for the parent's level can appear in its children, so an all-land parent only
-        // settles a child that no lake at the child's level reaches.
+        // settles a child that no lake at the child's level reaches. (Floodplain edges
+        // are the same at every level, so a uniform parent already had none.)
         if (parent) {
           const p = parent[(j >> 1) * (n >> 1) + (i >> 1)]
-          if (p === Code.Water || (p === Code.Land && !edgesTouch(lakesHere(), ...rect))) {
+          if (p === Code.Water || (p !== Code.Mixed && !edgesTouch(lakesHere(), ...rect))) {
             grid[j * n + i] = p
             continue
           }
         }
         const landRings = landIndex.query(...rect)
         const lakeRings = lakesHere()
-        if (!edgesTouch(landRings, ...rect) && !edgesTouch(lakeRings, ...rect)) {
+        const removeHere = removeIndex.query(...rect)
+        const addHere = addIndex.query(...rect)
+        if (
+          !edgesTouch(landRings, ...rect) &&
+          !edgesTouch(lakeRings, ...rect) &&
+          !edgesTouch(floodplainsHere, ...rect) &&
+          !edgesTouch(removeHere, ...rect) &&
+          !edgesTouch(addHere, ...rect)
+        ) {
           const cx = x0 + size / 2
           const cy = y0 + size / 2
-          const isLand = inside(landRings, cx, cy) && !inside(lakeRings, cx, cy)
-          grid[j * n + i] = isLand ? Code.Land : Code.Water
+          const modern = inside(landRings, cx, cy) && !inside(lakeRings, cx, cy)
+          const isLand = (modern || inside(removeHere, cx, cy)) && !inside(addHere, cx, cy)
+          grid[j * n + i] = !isLand
+            ? Code.Water
+            : inside(floodplainsHere, cx, cy)
+              ? Code.Floodplain
+              : Code.Land
           continue
         }
         grid[j * n + i] = Code.Mixed
@@ -154,6 +207,9 @@ async function main() {
           step,
           land: landRings,
           lakes: lakeRings,
+          floodplains: floodplainsHere,
+          removeWater: removeHere,
+          addWater: addHere,
           distanceTexels: DISTANCE_TEXELS,
           supersample: SUPERSAMPLE,
         }
@@ -179,7 +235,7 @@ async function main() {
 
   const index = {
     _comment:
-      'Coast mask tiles. codes[level] is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore (tile written as {level}/{i}/{j}.webp). Texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive on land.',
+      'Coast mask tiles. codes[level] is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written as {level}/{i}/{j}.webp), 3 all land inside a floodplain. Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain).',
     texels: TILE_TEXELS,
     maxLevel: MAX_LEVEL,
     distanceTexels: DISTANCE_TEXELS,

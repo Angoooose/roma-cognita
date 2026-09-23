@@ -10,11 +10,19 @@
  *
  * Output is two textures. The first carries height and its gradient rather than a
  * normal, so the shader can choose how much to exaggerate relief without the tile
- * being rebuilt. The second carries the water: signed distance to the shore and depth.
+ * being rebuilt. The second carries the water: signed distance to the shore, depth,
+ * and distance to the nearest river with that river's discharge.
+ *
+ * Rivers are painted into the terrain rather than drawn as lines over it — the way
+ * Imperator's rivers bitmap works — so they sit in their valleys at any tilt and
+ * never fight the terrain for depth. The shader decides their width and visibility per
+ * pixel from the distance and discharge stored here, which keeps a river the same
+ * width where tiles of different levels meet.
  */
 
-import { TILE_TEXELS, projection, tileRect } from '@roman-map/world'
+import { ROOT, TILE_TEXELS, projection, tileRect } from '@roman-map/world'
 import { toHalf } from './half.ts'
+import { riverHalfWidth, riverMinDischarge } from './rivers.ts'
 
 export interface TileJob {
   id: number
@@ -25,9 +33,12 @@ export interface TileJob {
 
 export interface TileResult {
   id: number
-  /** RGBA half floats, n×n: height (m), dh/dx, dh/dy, unused. */
+  /** RGBA half floats, n×n: height (m), dh/dx, dh/dy, signed distance to floodplain edge (m, positive inside). */
   terrain: Uint16Array
-  /** RG half floats, n×n: signed distance to shore (m, positive on land), sea depth (m). */
+  /**
+   * RGBA half floats, n×n: signed distance to shore (m, positive on land), sea depth
+   * (m), distance to the nearest river centreline (m), that river's discharge (m³/s).
+   */
   water: Uint16Array
   minHeight: number
   maxHeight: number
@@ -62,6 +73,9 @@ const DEPTH: MercatorSource = {
 
 const EQUATOR = 40075016.686
 const N = TILE_TEXELS
+const ROOT_X = ROOT.x
+const ROOT_Y = ROOT.y
+const ROOT_SIZE = ROOT.size
 
 // --- source tiles -------------------------------------------------------------------
 
@@ -211,14 +225,19 @@ function loadWaterIndex() {
  * their ancestor at that level, bilinearly — the same thing the GPU would do.
  * Without a mask (the pipeline has not been run) height decides, as in the first spike.
  */
-async function coastDistance(job: TileJob, heights: Float32Array, m: number): Promise<Float32Array> {
-  const out = new Float32Array(N * N)
+async function coastDistance(
+  job: TileJob,
+  heights: Float32Array,
+  m: number,
+): Promise<{ shore: Float32Array; floodplain: Float32Array }> {
+  const shore = new Float32Array(N * N)
+  const floodplain = new Float32Array(N * N)
   const idx = await loadWaterIndex()
   if (!idx) {
     for (let r = 0; r < N; r++) {
-      for (let c = 0; c < N; c++) out[r * N + c] = heights[(r + 1) * m + c + 1] > 0 ? 1e4 : -1e4
+      for (let c = 0; c < N; c++) shore[r * N + c] = heights[(r + 1) * m + c + 1] > 0 ? 1e4 : -1e4
     }
-    return out
+    return { shore, floodplain: floodplain.fill(-1e4) }
   }
 
   const level = Math.min(job.level, idx.maxLevel)
@@ -230,20 +249,24 @@ async function coastDistance(job: TileJob, heights: Float32Array, m: number): Pr
   const reach = idx.distanceTexels * sstep
   const code = idx.codes[level]?.[sj * 2 ** level + si] ?? 0
 
+  // Codes: 0 all sea, 1 all land outside any floodplain, 2 mixed (tile written),
+  // 3 all land inside a floodplain.
   if (code !== 2) {
-    out.fill(code === 1 ? reach : -reach)
-    return out
+    shore.fill(code === 0 ? -reach : reach)
+    floodplain.fill(code === 3 ? reach : -reach)
+    return { shore, floodplain }
   }
 
-  const cacheKey = `/water/${level}/${si}/${sj}.webp`
-  const field = await cached(cacheKey, async () => {
-    const img = await pixels(cacheKey)
-    if (!img) return null
-    const f = new Float32Array(N * N)
-    for (let k = 0; k < f.length; k++) f[k] = (img.rgba[k * 4] / 255) * 2 - 1
-    return f
-  })
-  if (!field) return out.fill(-reach)
+  const url = `/water/${level}/${si}/${sj}.webp`
+  const [sField, fField] = await Promise.all([
+    cached(`${url}#shore`, () => maskChannel(url, 0)),
+    cached(`${url}#floodplain`, () => maskChannel(url, 1)),
+  ])
+  if (!sField || !fField) {
+    shore.fill(-reach)
+    floodplain.fill(-reach)
+    return { shore, floodplain }
+  }
 
   const me = tileRect(job)
   const step = me.size / (N - 1)
@@ -256,15 +279,196 @@ async function coastDistance(job: TileJob, heights: Float32Array, m: number): Pr
       const sx = (me.x0 + c * step - src.x0) / sstep
       const x = Math.min(N - 2, Math.max(0, Math.floor(sx)))
       const tx = sx - x
-      const a = field[y * N + x]
-      const b = field[y * N + x + 1]
-      const cc = field[(y + 1) * N + x]
-      const d = field[(y + 1) * N + x + 1]
-      out[r * N + c] = ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * reach
+      const o = r * N + c
+      for (const [field, out] of [
+        [sField, shore],
+        [fField, floodplain],
+      ] as const) {
+        const a = field[y * N + x]
+        const b = field[y * N + x + 1]
+        const cc = field[(y + 1) * N + x]
+        const d = field[(y + 1) * N + x + 1]
+        out[o] = ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * reach
+      }
     }
   }
-  return out
+  return { shore, floodplain }
 }
+
+/** One channel of a mask tile as −1…1: 0 the shore distance, 1 the floodplain distance. */
+async function maskChannel(url: string, channel: number): Promise<Float32Array | null> {
+  const img = await pixels(url)
+  if (!img) return null
+  const f = new Float32Array(N * N)
+  for (let k = 0; k < f.length; k++) f[k] = (img.rgba[k * 4 + channel] / 255) * 2 - 1
+  return f
+}
+
+// --- rivers -------------------------------------------------------------------------
+
+interface RiverTier {
+  minQ: number
+  level: number
+  tiles: Set<string>
+}
+
+let riverIndex: Promise<RiverTier[] | null> | null = null
+
+function loadRiverIndex() {
+  riverIndex ??= fetch('/rivers/index.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) =>
+      j
+        ? (j.tiers as { minQ: number; level: number; tiles: number[][] }[]).map((t) => ({
+            minQ: t.minQ,
+            level: t.level,
+            tiles: new Set(t.tiles.map(([i, j]) => `${i}/${j}`)),
+          }))
+        : null,
+    )
+    .catch(() => null)
+  return riverIndex
+}
+
+const riverTiles = new Map<string, Promise<Float32Array>>()
+
+/**
+ * Decodes one river tile (format: encodeTile in pipeline/src/rivers/build.ts) into
+ * segments [ax, ay, bx, by, q], q negative for a reconstructed course.
+ */
+function loadRiverTile(tier: number, level: number, i: number, j: number): Promise<Float32Array> {
+  const key = `${tier}/${i}/${j}`
+  let p = riverTiles.get(key)
+  if (!p) {
+    p = fetch(`/rivers/${key}.bin`)
+      .then((r) => (r.ok ? r.arrayBuffer() : new ArrayBuffer(4)))
+      .then((buf) => {
+        const v = new DataView(buf)
+        const { x0, y0, size } = tileRect({ level, i, j })
+        const cx = x0 + size / 2
+        const cy = y0 + size / 2
+        const unit = (size * 1.5) / 32767
+        const lines = v.byteLength >= 4 ? v.getUint32(0, true) : 0
+        const segs: number[] = []
+        let o = 4
+        for (let l = 0; l < lines; l++) {
+          const n = v.getUint16(o, true)
+          // Low 14 bits the log discharge, top bit "reconstructed" — carried as a negative
+          // discharge from here to the shader, which draws those courses fainter.
+          const word = v.getUint16(o + 2, true)
+          const q = 10 ** ((word & 0x3fff) / 2048 - 1) * (word & 0x8000 ? -1 : 1)
+          o += 4
+          let px = 0
+          let py = 0
+          for (let k = 0; k < n; k++) {
+            const x = cx + v.getInt16(o, true) * unit
+            const y = cy + v.getInt16(o + 2, true) * unit
+            o += 4
+            if (k > 0) segs.push(px, py, x, y, q)
+            px = x
+            py = y
+          }
+        }
+        return new Float32Array(segs)
+      })
+      .catch(() => new Float32Array(0))
+    riverTiles.set(key, p)
+  }
+  return p
+}
+
+/**
+ * Distance from every texel to the nearest river centreline, and that river's
+ * discharge. Only rivers the tile could show, itself or standing in for its children,
+ * are considered.
+ */
+interface RiverField {
+  dist: Float32Array
+  q: Float32Array
+}
+
+async function riverField(job: TileJob): Promise<RiverField> {
+  const dist = new Float32Array(N * N).fill(RIVER_FAR)
+  const q = new Float32Array(N * N)
+  const tiers = await loadRiverIndex()
+  if (!tiers) return { dist, q }
+
+  const { x0, y0, size } = tileRect(job)
+  const step = size / (N - 1)
+  // A tile is drawn at one to two screen pixels per texel, but also stands in, stretched,
+  // for its children while they load — at up to four. Carrying the rivers its children
+  // would show keeps them on screen through that, instead of blinking out and back.
+  const qFloor = riverMinDischarge(step / 4)
+  const reachTexels = 6
+
+  const segments: Float32Array[] = []
+  await Promise.all(
+    tiers.map(async (tier, t) => {
+      // Tier t holds rivers from its minQ up to the next tier's; skip it if all of them
+      // are below what this tile can show.
+      const tierMaxQ = t === 0 ? Infinity : tiers[t - 1].minQ
+      if (tierMaxQ < qFloor) return
+      const tsize = ROOT_SIZE / 2 ** tier.level
+      // Reaches are filed under the tile holding their midpoint and may run into the
+      // neighbours, so take a one-tile ring around what the job covers.
+      const i0 = Math.floor((x0 - ROOT_X) / tsize) - 1
+      const i1 = Math.floor((x0 + size - ROOT_X) / tsize) + 1
+      const j0 = Math.floor((y0 - ROOT_Y) / tsize) - 1
+      const j1 = Math.floor((y0 + size - ROOT_Y) / tsize) + 1
+      const loads: Promise<Float32Array>[] = []
+      for (let j = j0; j <= j1; j++) {
+        for (let i = i0; i <= i1; i++) {
+          if (tier.tiles.has(`${i}/${j}`)) loads.push(loadRiverTile(t, tier.level, i, j))
+        }
+      }
+      segments.push(...(await Promise.all(loads)))
+    }),
+  )
+
+  for (const segs of segments) {
+    for (let s = 0; s < segs.length; s += 5) {
+      const signed = segs[s + 4]
+      const rq = Math.abs(signed)
+      if (rq < qFloor) continue
+      const ax = segs[s]
+      const ay = segs[s + 1]
+      const bx = segs[s + 2]
+      const by = segs[s + 3]
+      const reach = Math.max(riverHalfWidth(rq) * 2, reachTexels * step)
+      // Texel window around the segment.
+      const c0 = Math.max(0, Math.floor((Math.min(ax, bx) - reach - x0) / step))
+      const c1 = Math.min(N - 1, Math.ceil((Math.max(ax, bx) + reach - x0) / step))
+      const r0 = Math.max(0, Math.floor((Math.min(ay, by) - reach - y0) / step))
+      const r1 = Math.min(N - 1, Math.ceil((Math.max(ay, by) + reach - y0) / step))
+      if (c0 > c1 || r0 > r1) continue
+      const dx = bx - ax
+      const dy = by - ay
+      const len2 = dx * dx + dy * dy || 1
+      for (let r = r0; r <= r1; r++) {
+        const py = y0 + r * step
+        for (let c = c0; c <= c1; c++) {
+          const px = x0 + c * step
+          const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len2))
+          const ex = ax + t * dx - px
+          const ey = ay + t * dy - py
+          const d = Math.sqrt(ex * ex + ey * ey)
+          const o = r * N + c
+          // Nearest edge rather than nearest centreline: where a big river and a
+          // stream meet, the big one's bank wins.
+          if (d - riverHalfWidth(rq) < dist[o] - riverHalfWidth(Math.abs(q[o]))) {
+            dist[o] = d
+            q[o] = signed
+          }
+        }
+      }
+    }
+  }
+  for (let o = 0; o < dist.length; o++) dist[o] = Math.min(dist[o], RIVER_FAR)
+  return { dist, q }
+}
+
+/** "No river near": far enough that no width or fade reaches it, and exact in half float. */
+const RIVER_FAR = 60000
 
 // --- the tile -----------------------------------------------------------------------
 
@@ -281,14 +485,15 @@ async function build(job: TileJob): Promise<TileResult> {
   }
   const lat = projection.inverse(x0 + size / 2, y0 + size / 2)[1]
 
-  const [heights, depths] = await Promise.all([
+  const [heights, depths, river] = await Promise.all([
     sampleMercator(ELEVATION, lonlat, m * m, zoomFor(ELEVATION, step, lat)),
     sampleMercator(DEPTH, lonlat, m * m, zoomFor(DEPTH, step, lat)),
+    riverField(job),
   ])
-  const shore = await coastDistance(job, heights, m)
+  const { shore, floodplain } = await coastDistance(job, heights, m)
 
   const terrain = new Uint16Array(N * N * 4)
-  const water = new Uint16Array(N * N * 2)
+  const water = new Uint16Array(N * N * 4)
   let minHeight = Infinity
   let maxHeight = -Infinity
   const inv2 = 1 / (2 * step)
@@ -300,8 +505,11 @@ async function build(job: TileJob): Promise<TileResult> {
       terrain[o * 4] = toHalf(h)
       terrain[o * 4 + 1] = toHalf((heights[i + 1] - heights[i - 1]) * inv2)
       terrain[o * 4 + 2] = toHalf((heights[i + m] - heights[i - m]) * inv2)
-      water[o * 2] = toHalf(shore[o])
-      water[o * 2 + 1] = toHalf(Math.min(0, depths[i]))
+      terrain[o * 4 + 3] = toHalf(floodplain[o])
+      water[o * 4] = toHalf(shore[o])
+      water[o * 4 + 1] = toHalf(Math.min(0, depths[i]))
+      water[o * 4 + 2] = toHalf(river.dist[o])
+      water[o * 4 + 3] = toHalf(river.q[o])
       if (h < minHeight) minHeight = h
       if (h > maxHeight) maxHeight = h
     }

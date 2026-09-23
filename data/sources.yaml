@@ -110,3 +110,110 @@
   url: https://pleiades.stoa.org/
   licence: CC-BY-3.0
   note: Locators are the place path, e.g. places/423025.
+
+# --- physical geography: floodplains and the Nile branches ---------------------
+# Added September 2026 for the floodplain records in features.yaml. Floodplain
+# shapes are derived from terrain (pipeline/src/features/derive-floodplains.ts);
+# the modern works below are cited for the regions' extents, the branch courses
+# and the figures the derived areas are checked against — never traced.
+
+- id: herodotus
+  kind: ancient
+  citation: Herodotus, Histories
+
+- id: butzer-1976
+  kind: modern
+  citation: >-
+    K. W. Butzer, Early Hydraulic Civilization in Egypt: A Study in Cultural
+    Ecology (Chicago, 1976)
+
+- id: bunbury-2019
+  kind: modern
+  citation: >-
+    J. Bunbury, The Nile and Ancient Egypt: Changing Land- and Waterscapes, from
+    the Neolithic to the Roman Era (Cambridge, 2019)
+
+- id: toussoun-1922
+  kind: modern
+  citation: >-
+    O. Toussoun, Mémoire sur les anciennes branches du Nil, Mémoires de l'Institut
+    d'Égypte 4 (Cairo, 1922)
+
+- id: bietak-1975
+  kind: modern
+  citation: >-
+    M. Bietak, Tell el-Dab‘a II: Der Fundort im Rahmen einer
+    archäologisch-geographischen Untersuchung über das ägyptische Ostdelta
+    (Vienna, 1975)
+
+- id: ball-1939
+  kind: modern
+  citation: J. Ball, Contributions to the Geography of Egypt (Cairo, 1939)
+
+- id: caton-thompson-gardner-1934
+  kind: modern
+  citation: G. Caton-Thompson and E. W. Gardner, The Desert Fayum (London, 1934)
+
+- id: adams-1981
+  kind: modern
+  citation: >-
+    R. McC. Adams, Heartland of Cities: Surveys of Ancient Settlement and Land Use
+    on the Central Floodplain of the Euphrates (Chicago, 1981)
+
+- id: mapterhorn
+  kind: dataset
+  citation: Mapterhorn terrain tiles (Terrarium encoding), mostly Copernicus GLO-30 in these regions
+  url: https://mapterhorn.com/
+  licence: various open (per-source; Copernicus DEM licence for GLO-30) — terms of the hosted tiles unverified
+  note: >-
+    Offline input to derive-floodplains, z10 (~70 m). Heights are whole metres at
+    z≤11. It is a surface model, so towns stand up.
+
+- id: hydrorivers
+  kind: dataset
+  citation: B. Lehner and G. Grill, HydroRIVERS v1.0 (HydroSHEDS), 2013
+  url: https://www.hydrosheds.org/products/hydrorivers
+  licence: HydroSHEDS licence (free for non-commercial and commercial use, with attribution) — to verify
+  note: Modern main-stem channels used as the height-above-channel reference.
+
+- id: hydrolakes
+  kind: dataset
+  citation: M. L. Messager et al., HydroLAKES v1.0, Nature Communications 7 (2016)
+  url: https://www.hydrosheds.org/products/hydrolakes
+  licence: CC-BY-4.0
+
+- id: osm-land-polygons
+  kind: dataset
+  citation: OpenStreetMap land polygons (split, WGS84), osmdata.openstreetmap.de
+  url: https://osmdata.openstreetmap.de/data/land-polygons.html
+  licence: ODbL-1.0
+
+- id: pliny-nh
+  kind: ancient
+  citation: Pliny the Elder, Naturalis Historia
+
+# --- modern engineering (landscape corrections) --------------------------------
+
+- id: karabell-2003
+  kind: modern
+  citation: >-
+    Z. Karabell, Parting the Desert: The Creation of the Suez Canal (New York:
+    Knopf, 2003)
+  note: The canal was cut 1859–69 and opened in November 1869; the parallel New
+    Suez Canal channels opened in 2015.
+
+- id: corinth-canal-1893
+  kind: modern
+  citation: >-
+    The Corinth Canal, cut 1881–1893 across the Isthmus of Corinth; general
+    reference (to be replaced by a specific engineering history)
+  note: Nero's attempt of 67 CE was abandoned; in our period ships were hauled
+    across on the diolkos.
+
+- id: escwa-bgr-2013
+  kind: modern
+  citation: >-
+    UN-ESCWA and BGR, Inventory of Shared Water Resources in Western Asia
+    (Beirut, 2013), chapter on the Tigris basin
+  note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
+    into the Tharthar depression from 1956.

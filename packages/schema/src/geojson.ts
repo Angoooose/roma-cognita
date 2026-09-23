@@ -58,3 +58,46 @@ export const keyedCollection = <G extends z.ZodType>(geometry: G) =>
 /** data/geometry/atoms.geojson */
 export const AtomGeometrySchema = keyedCollection(AreaGeometrySchema)
 export type AtomGeometry = z.infer<typeof AtomGeometrySchema>
+
+/**
+ * Properties a feature's shape may carry. `discharge` (m³/s) is a rough mean
+ * flow for river lines, used only to size the line on the map; the record's
+ * note says where it came from. `derivation` records how a derived shape was
+ * made (tool, date, thresholds).
+ */
+export const FeaturePropertiesSchema = z
+  .strictObject({
+    discharge: z.number().positive().optional(),
+    /**
+     * For a MultiLineString river, one flag per part: true where the course is our
+     * interpolation between attested sites rather than a channel on the ground. Drawn
+     * fainter, so a guess never reads as a survey.
+     */
+    reconstructed: z.array(z.boolean()).optional(),
+    derivation: z.string().optional(),
+  })
+  .nullable()
+
+/** data/geometry/features.geojson: areas for floodplains, lakes, marshes and plains; lines for rivers. */
+export const FeatureGeometrySchema = z.object({
+  type: z.literal('FeatureCollection'),
+  features: z.array(
+    z.object({
+      type: z.literal('Feature'),
+      id: SlugSchema,
+      properties: FeaturePropertiesSchema,
+      geometry: AnyGeometrySchema,
+    }),
+  ),
+})
+export type FeatureGeometry = z.infer<typeof FeatureGeometrySchema>
+export type AnyGeometry = z.infer<typeof AnyGeometrySchema>
+
+/** Which geometry each feature kind takes. Kinds not listed carry no shape yet. */
+export const FEATURE_GEOMETRY_KIND = {
+  floodplain: 'area',
+  lake: 'area',
+  marsh: 'area',
+  plain: 'area',
+  river: 'line',
+} as const

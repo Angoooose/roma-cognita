@@ -447,3 +447,89 @@ describe('validate', () => {
     expect(r.report).toMatch(/NEEDS CHECK/)
   })
 })
+
+describe('physical features and their shapes', () => {
+  const always = { from: 'before 100 BCE', to: 'after 1 CE', ...ok }
+  const line = { type: 'LineString', coordinates: [[10.2, 44.2], [10.8, 44.8]] }
+  const records = () => [
+    { id: 'plain-green', kind: 'floodplain', names: [{ text: 'Campus', preferred: true }], ...always },
+    { id: 'flumen', kind: 'river', names: [{ text: 'Flumen', preferred: true }], ...always },
+    { id: 'mons', kind: 'mountain', names: [{ text: 'Mons', preferred: true }], ...always },
+  ]
+  const shapes = () => [
+    { type: 'Feature', id: 'plain-green', properties: { derivation: 'test' }, geometry: square(10, 44) },
+    { type: 'Feature', id: 'flumen', properties: { discharge: 120 }, geometry: line },
+  ]
+
+  function runFeatures(
+    mutate: (r: Record<string, unknown>[], s: Record<string, unknown>[]) => void = () => {},
+  ) {
+    const recs: Record<string, unknown>[] = records()
+    const geo: Record<string, unknown>[] = shapes()
+    mutate(recs, geo)
+    const dir = write(base())
+    writeFileSync(join(dir, 'features.yaml'), stringify(recs))
+    writeFileSync(
+      join(dir, 'geometry/features.geojson'),
+      JSON.stringify({ type: 'FeatureCollection', features: geo }),
+    )
+    const { dataset, issues } = readDataset(dir)
+    const all = [...issues, ...checkDataset(dataset)]
+    return { dataset, errors: all.filter((i) => i.level === 'error') }
+  }
+
+  it('load clean, keyed by id, with discharge on the river line', () => {
+    const { dataset, errors } = runFeatures()
+    expect(errors).toEqual([])
+    expect(dataset.geometry.features.get('flumen')?.properties?.discharge).toBe(120)
+    expect(dataset.geometry.features.get('plain-green')?.geometry.type).toBe('Polygon')
+  })
+
+  it('accept floodplain as a feature kind', () => {
+    const { dataset } = runFeatures()
+    expect(dataset.features.map((f) => f.kind)).toContain('floodplain')
+  })
+
+  it('fail when a floodplain or river has no shape', () => {
+    const { errors } = runFeatures((_, s) => s.splice(0, 2))
+    expect(errors.filter((e) => e.rule === 'missing-geometry')).toHaveLength(2)
+  })
+
+  it('fail when the shape is the wrong kind of geometry', () => {
+    const { errors } = runFeatures((_, s) => {
+      s[0].geometry = line
+      s[1].geometry = square(12, 44)
+    })
+    expect(errors.filter((e) => e.rule === 'geometry-kind')).toHaveLength(2)
+  })
+
+  it('fail on a shape for a feature kind that takes none', () => {
+    const { errors } = runFeatures((_, s) => {
+      s.push({ type: 'Feature', id: 'mons', properties: null, geometry: square(14, 44) })
+    })
+    expect(rules(errors)).toContain('geometry-kind')
+  })
+
+  it('fail on an orphan shape', () => {
+    const { errors } = runFeatures((_, s) => {
+      s.push({ type: 'Feature', id: 'nowhere', properties: null, geometry: line })
+    })
+    expect(rules(errors)).toContain('orphan-geometry')
+  })
+
+  it('fail on clockwise exteriors (RFC 7946)', () => {
+    const { errors } = runFeatures((_, s) => {
+      const g = square(10, 44)
+      g.coordinates[0].reverse()
+      s[0].geometry = g
+    })
+    expect(errors.map((e) => e.message).join()).toMatch(/exterior is clockwise/)
+  })
+
+  it('reject unknown shape properties and a non-positive discharge', () => {
+    const { errors } = runFeatures((_, s) => {
+      s[1].properties = { discharge: -5, colour: 'blue' }
+    })
+    expect(rules(errors)).toContain('geojson')
+  })
+})

@@ -24,6 +24,8 @@ const SPLIT_TEXEL_PX = 1.25
 const WORKERS = 4
 const MAX_IN_FLIGHT = 12
 const GPU_TILE_LIMIT = 220
+/** How many levels below a missing tile to look for ready descendants to stand in. */
+const STAND_IN_DEPTH = 3
 
 type State = 'idle' | 'loading' | 'ready'
 
@@ -95,26 +97,26 @@ export class TerrainTiles {
     const selected: Node[] = []
     this.select(this.root, camera.position, focalPx, selected)
 
-    // Stand-ins: a tile that is not ready yet is drawn by its nearest ready ancestor,
-    // and an ancestor standing in hides any of its descendants that happen to be ready.
+    // Stand-ins. A tile that is not ready yet is covered by whatever is loaded around it:
+    // its ready descendants (what zooming out leaves behind — the sharpest thing we
+    // have) and, underneath them, its nearest ready ancestor to fill any gaps. Taking
+    // only the ancestor, as this once did, magnified a tile several levels too coarse
+    // on every zoom-out: blurred terrain, rivers a kilometre wide.
+    // Overlaps are settled by depth, not by hiding: coarser tiles sit a hair lower
+    // (see `standInDrop` in material.ts), so wherever both are drawn the finer wins.
     const draw = new Set<Node>()
     let settled = true
     for (const node of selected) {
-      if (node.state !== 'ready') {
-        settled = false
-        this.enqueue(node)
+      if (node.state === 'ready') {
+        draw.add(node)
+        continue
       }
-      let d: Node | undefined = node
-      while (d && d.state !== 'ready') d = d.parent
-      if (d) draw.add(d)
-    }
-    for (const node of draw) {
-      for (let a = node.parent; a; a = a.parent) {
-        if (draw.has(a)) {
-          draw.delete(node)
-          break
-        }
-      }
+      settled = false
+      this.enqueue(node)
+      let a: Node | undefined = node.parent
+      while (a && a.state !== 'ready') a = a.parent
+      if (a) draw.add(a)
+      collectReady(node, STAND_IN_DEPTH, draw)
     }
     this.settled = settled
 
@@ -186,8 +188,8 @@ export class TerrainTiles {
     if (!node) return
     this.jobs.delete(r.id)
     const terrain = dataTexture(r.terrain, THREE.RGBAFormat)
-    const water = dataTexture(r.water, THREE.RGFormat)
-    const material = createTerrainMaterial(terrain, water, TEXELS, node.size * 0.01)
+    const water = dataTexture(r.water, THREE.RGBAFormat)
+    const material = createTerrainMaterial(terrain, water, TEXELS, node)
     const mesh = new THREE.Mesh(this.geometry, material)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
@@ -269,6 +271,14 @@ function dataTexture(data: Uint16Array, format: THREE.PixelFormat) {
   tex.colorSpace = THREE.NoColorSpace
   tex.needsUpdate = true
   return tex
+}
+
+function collectReady(n: Node, depth: number, out: Set<Node>) {
+  if (!n.children || depth === 0) return
+  for (const c of n.children) {
+    if (c.state === 'ready') out.add(c)
+    else collectReady(c, depth - 1, out)
+  }
 }
 
 function walk(n: Node, fn: (n: Node) => void) {

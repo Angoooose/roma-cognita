@@ -18,6 +18,7 @@ import { parse as parseYaml } from 'yaml'
 import type { z } from 'zod'
 import {
   AtomGeometrySchema,
+  FeatureGeometrySchema,
   AtomSchema,
   ClaimSchema,
   FeatureSchema,
@@ -27,6 +28,7 @@ import {
   RelationSchema,
   SeatSchema,
   SourceSchema,
+  type AnyGeometry,
   type AreaGeometry,
   type Atom,
   type Claim,
@@ -69,9 +71,17 @@ export interface Dataset {
   names: NameRecord[]
   geometry: {
     atoms: Map<string, AreaGeometry>
+    /** data/geometry/features.geojson, keyed by feature id. */
+    features: Map<string, FeatureShape>
   }
   /** Where each record came from, for messages: `claims.yaml#3`. Keyed by the record object. */
   origin: WeakMap<object, string>
+}
+
+/** A feature's shape and the properties it carries (`discharge` for river lines). */
+export interface FeatureShape {
+  geometry: AnyGeometry
+  properties: { discharge?: number; derivation?: string } | null
 }
 
 /** Every entity file, its schema, and whether the dataset is incomplete without it. */
@@ -196,27 +206,28 @@ function readEntity<S extends z.ZodType>(
   return out
 }
 
-function readAtomGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometry> {
-  const out = new Map<string, AreaGeometry>()
-  const path = join(dir, 'geometry/atoms.geojson')
-  const where = 'geometry/atoms.geojson'
+function readGeoJson<S extends z.ZodType<{ features: { id: string }[] }>>(
+  dir: string,
+  file: string,
+  required: boolean,
+  schema: S,
+  issues: Issue[],
+): z.output<S> | null {
+  const path = join(dir, 'geometry', file)
+  const where = `geometry/${file}`
   if (!existsSync(path)) {
-    issues.push({
-      level: 'error',
-      rule: 'missing-file',
-      where,
-      message: 'no atom geometry',
-    })
-    return out
+    if (required)
+      issues.push({ level: 'error', rule: 'missing-file', where, message: `no ${where}` })
+    return null
   }
   let json: unknown
   try {
     json = JSON.parse(readFileSync(path, 'utf8'))
   } catch (err) {
     issues.push({ level: 'error', rule: 'geojson', where, message: (err as Error).message })
-    return out
+    return null
   }
-  const parsed = AtomGeometrySchema.safeParse(json)
+  const parsed = schema.safeParse(json)
   if (!parsed.success) {
     for (const iss of parsed.error.issues.slice(0, 10)) {
       issues.push({
@@ -226,20 +237,34 @@ function readAtomGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometr
         message: iss.message,
       })
     }
-    return out
+    return null
   }
-  for (const f of parsed.data.features) {
-    if (out.has(f.id)) {
+  const seen = new Set<string>()
+  for (const f of (parsed.data as { features: { id: string }[] }).features) {
+    if (seen.has(f.id)) {
       issues.push({
         level: 'error',
         rule: 'duplicate-id',
         where: `${where} (${f.id})`,
-        message: 'two features for one atom',
+        message: 'two shapes for one id',
       })
     }
-    out.set(f.id, f.geometry)
+    seen.add(f.id)
   }
-  return out
+  return parsed.data as z.output<S>
+}
+
+function readAtomGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometry> {
+  const data = readGeoJson(dir, 'atoms.geojson', true, AtomGeometrySchema, issues)
+  return new Map((data?.features ?? []).map((f) => [f.id, f.geometry]))
+}
+
+/** Optional: a dataset with no physical features has no features.geojson. */
+function readFeatureGeometry(dir: string, issues: Issue[]): Map<string, FeatureShape> {
+  const data = readGeoJson(dir, 'features.geojson', false, FeatureGeometrySchema, issues)
+  return new Map(
+    (data?.features ?? []).map((f) => [f.id, { geometry: f.geometry, properties: f.properties }]),
+  )
 }
 
 /** Flattens inline names, filling in what each inherits from the record it names. */
@@ -294,7 +319,10 @@ export function readDataset(dir: string = DATA_DIR): { dataset: Dataset; issues:
       ...flattenNames('place', places, origin),
       ...flattenNames('feature', features, origin),
     ],
-    geometry: { atoms: readAtomGeometry(dir, issues) },
+    geometry: {
+      atoms: readAtomGeometry(dir, issues),
+      features: readFeatureGeometry(dir, issues),
+    },
     origin,
   }
   return { dataset, issues }

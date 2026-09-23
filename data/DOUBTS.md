@@ -45,3 +45,21 @@ against the old `control.json`. The reasoning is in each record's `note`.
 The window's edges are written `before 68 BCE` / `after 43 BCE`. Extending the
 window means replacing each open end with a real date, which re-opens every
 record above.
+
+## Floodplains and the Nile branches (September 2026)
+
+All `review: draft`. The derivation prints the live list; the standing ones:
+
+- **Published areas are unchecked.** Butzer 1976 (Egypt), Adams 1981
+  (Mesopotamia) and the Ptolemaic Fayum figures are cited as "usually cited";
+  nobody has opened the books. Egypt comes out ~35,000 km² against the
+  22,000–34,000 range, mostly because the delta polygon includes the northern
+  lagoon margins that were marsh in antiquity.
+- **Fayum lake level** (−2 m) and the canal-command bound (+26 m) are single
+  numbers for a lake that moved during the window.
+- **Gulf coast**: Mesopotamia and Susiana stop at the modern coast.
+- **Branch courses** between sites are splines; Sebennytic lower course,
+  Mendesian and Tanitic are `uncertain`. Where the Canopic leaves the Rosetta is
+  our choice.
+- **Hull edges that are boundaries, not terrain**: valley/delta at Memphis,
+  Fayum/valley at Hawara, Mesopotamia/Susiana, Susiana's south-east.

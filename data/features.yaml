@@ -1,0 +1,356 @@
+# Physical features. Shapes live in geometry/features.geojson, keyed by id.
+#
+# Floodplains (kind: floodplain) are derived, not drawn: their outlines come from
+# terrain by pipeline/src/features/derive-floodplains.ts (hulls, channels and
+# thresholds in pipeline/src/features/regions.ts). Re-run it after changing any
+# of those; it prints each region's area beside the published figures and flags
+# what it doubts. No outline is traced from any atlas.
+#
+# The Nile delta branches (kind: river) are authored as waypoints with the
+# provenance of every coordinate in pipeline/src/features/delta-branches.ts; the
+# same tool writes their lines. `discharge` on a line is display width only.
+#
+# Every record here is "always" within the window: before 133 BCE to after 27 BCE.
+# Change over the window (the Fayum lake falling, the Pelusiac silting, the Gulf
+# coast advancing) is landscape-change work and is not attempted.
+
+# --- floodplains ---------------------------------------------------------------
+
+- id: nile-valley-floodplain
+  kind: floodplain
+  names:
+    - { text: Nile valley, lang: en, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: butzer-1976, locator: cultivable area of the valley by period (locator to supply) }
+    - { source: strabo, locator: '17.1.4' }
+    - { source: mapterhorn, locator: z10 terrain }
+    - { source: hydrorivers, locator: 'Nile main stem, DIS_AV_CMS ≥ 500' }
+  confidence: probable
+  review: draft
+  note: >-
+    From just below the First Cataract (Syene/Elephantine) to the latitude of
+    Memphis, the traditional junction of Upper and Lower Egypt; north of that is
+    the delta record. Derived as ground within 8 m of the floodplain surface beside
+    the modern Nile (HAND ≤ 8 m, Mapterhorn z10). In the previews the edge sits at
+    the foot of the cliffs and low desert, and the Kom Ombo plain (modern
+    reclamation) stays out. About 10,500 km², in line with the valley figures of
+    the order of 10,000–12,000 km² usually cited (Butzer 1976 — not yet checked
+    against the book). The modern river has moved within the plain since
+    antiquity; that does not move the plain's edge. Doubts: the DEM is a surface
+    model, so Cairo-sized built-up areas read high (none in the valley south of
+    Memphis is large enough to matter), and heights are whole metres at z10.
+
+- id: nile-delta-floodplain
+  kind: floodplain
+  pleiades: '619096567'
+  names:
+    - { text: Delta, lang: grc-Latn, preferred: true }
+    - { text: Nile delta, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.15–17' }
+    - { source: strabo, locator: '17.1.4, 17.1.18' }
+    - { source: butzer-1976, locator: cultivable area of the delta by period (locator to supply) }
+    - { source: bunbury-2019 }
+    - { source: mapterhorn, locator: z10 terrain }
+    - { source: osm-land-polygons }
+    - { source: hydrolakes, locator: natural lakes ≥ 1 km² }
+  confidence: probable
+  review: draft
+  note: >-
+    From the latitude of Memphis to the modern coast. Derived as ground within 4 m
+    of the floodplain surface beside the nearest of the seven ancient branches
+    (the nile-*-branch records) — not the modern Rosetta and Damietta channels, which
+    is what made the earlier runtime approach lopsided. The datum is the ground
+    beside each branch, not its water: a modern channel's water sits metres below
+    its banks and an ancient dry branch has no trench, so measuring from water
+    would have favoured the ancient branches. The fan now fills evenly between the
+    Canopic and the Pelusiac. About 23,000 km², which is the whole modern delta's
+    land, larger than Butzer's cultivable estimates as usually cited (to check):
+    the northern third was lagoon, marsh and pasture (the Boukolia) in antiquity.
+    Lake Mareotis/Maryut, Manzala (the Tanitic lagoon) and Burullus are cut only at
+    their modern HydroLAKES extent; their ancient extent is landscape-change work.
+    Built-up Cairo reads high on the surface model; gaps under 8 km² are filled.
+
+- id: fayum-floodplain
+  kind: floodplain
+  names:
+    - { text: Arsinoites, lang: grc-Latn, preferred: true, note: 'the Arsinoite nome, named for Arsinoe II under Ptolemy II; earlier "the Lake" (Limne)' }
+    - { text: Fayum, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '17.1.35–38' }
+    - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
+    - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
+    - { source: mapterhorn, locator: z10 terrain }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Fayum is watered downhill from the Bahr Yusuf inlet at el-Lahun, so it is
+    derived as an elevation band, not a height above a river: from −2 m, the lake
+    level usually given for the Ptolemaic reclamation (Ball 1939; Caton-Thompson &
+    Gardner 1934 — to check), up to +26 m, the canal command near the inlet. Lake
+    Qarun now stands near −43 m, so the modern shrinkage would badly overstate the
+    Ptolemaic cultivated area; the band leaves the ground between −43 and −2 m as
+    the ancient lake. The hull keeps out the lake's north shore (desert, beyond the
+    canals: Soknopaiou Nesos stood on it) and the Wadi Rayan depression (modern
+    drainage lakes). About 1,500 km², inside the 1,200–1,800 km² range usually
+    cited for Ptolemaic cultivation (not checked against a work). Uncertain because
+    the lake level moved during the window and both bounds are single numbers; the
+    edge villages (Karanis, Bakchias, Philadelpheia, Theadelpheia, Dionysias,
+    Narmouthis) all fall inside or on the edge, which is the check.
+
+- id: mesopotamian-alluvium
+  kind: floodplain
+  names:
+    - { text: Babylonia, lang: la, preferred: true, note: 'with Sumer, the old name of the southern plain, and Characene/Mesene at its head' }
+    - { text: Mesopotamian alluvium, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: adams-1981 }
+    - { source: strabo, locator: '16.1.9–10' }
+    - { source: herodotus, locator: '1.193' }
+    - { source: mapterhorn, locator: z10 terrain }
+    - { source: hydrorivers, locator: 'Tigris, Euphrates, Shatt al-Arab and tributaries, DIS_AV_CMS ≥ 100' }
+  confidence: probable
+  review: draft
+  note: >-
+    The alluvial plain below Hit on the Euphrates and Samarra on the Tigris,
+    through Babylonia and Sumer to Characene at the head of the Gulf. Derived as
+    ground within 6 m of the floodplain surface beside the modern rivers and
+    flatter than 0.06% on terrain smoothed over ~1 km, the flat mask then closed by
+    3 km so levees, canal banks and tells inside the plain stay in: the Southern
+    Desert beyond the Euphrates rises too gently for a height threshold alone, but
+    not as gently as the alluvium. The southern edge is the modern coast. Where the
+    Gulf stood in the late first millennium BCE is debated (the head of the Gulf
+    has been put anywhere from near the modern coast to well inland), so the
+    southern third is the least certain part of the shape; it wants a
+    landscape-change record. The Hawizeh and Hammar marshes are cut only where
+    HydroLAKES has open water. About 78,700 km²; no published area has been
+    checked. Hit itself falls ~25 km short of the polygon: the narrow valley
+    between Hit and Ramadi fails the flatness test.
+
+- id: susiana-plain
+  kind: floodplain
+  names:
+    - { text: Susiana, lang: la, preferred: true }
+    - { text: Khuzestan plain, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '15.3.10–11' }
+    - { source: mapterhorn, locator: z10 terrain }
+    - { source: hydrorivers, locator: 'Karkheh, Dez, Karun, DIS_AV_CMS ≥ 50' }
+  confidence: probable
+  review: draft
+  note: >-
+    The lowland of the Karkheh, Dez and Karun below the Zagros foothills, with Susa
+    in it. Derived as ground within 12 m of the floodplain surface beside the modern
+    rivers: the plain is a set of coalescing fans with the rivers somewhat incised
+    near Dezful and Shushtar, so the threshold is higher than in Mesopotamia. The
+    anticlinal ridges (Ahvaz and its neighbours) come out on their own. Two edges
+    are hull edges, not terrain: the west, where the plain runs on into the
+    Mesopotamian alluvium (the line is the Mesopotamian hull, roughly the modern
+    border and the Hawizeh marsh), and the south-east, where the coastal plain
+    continues to the Jarrahi and Hendijan. The Karkheh and Dez reservoirs are
+    kept out by the hull. About 30,200 km²; no ancient area figure is known to us.
+
+- id: middle-euphrates-valley
+  kind: floodplain
+  names:
+    - { text: Euphrates valley, lang: en, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: mapterhorn, locator: z10 terrain }
+    - { source: hydrorivers, locator: 'Euphrates, DIS_AV_CMS ≥ 100' }
+  confidence: probable
+  review: draft
+  note: >-
+    The narrow Holocene floor of the Euphrates in Syria, from below the Tabqa dam to
+    the Iraqi border below Abu Kamal, past Zenobia, Circesium and Dura-Europos.
+    Derived as ground within 8 m of the floodplain surface beside the river; the
+    edge sits at the first terrace riser, and the terraces (dry-farmed) stay out.
+    Upstream of Tabqa the valley is under Lake Assad and cannot be derived from a
+    modern DEM, so the record starts at the dam — the drowned stretch past
+    Barbalissos wants its own record from pre-dam survey. The last ~10 km of the
+    Khabur valley above Circesium is included. About 2,500 km². It cites no modern work: none with
+    an area was found; it rests on the terrain.
+
+# --- the Nile delta branches -----------------------------------------------------
+#
+# Names follow Strabo 17.1.18 and Pliny, NH 5.64, west to east. Courses: Toussoun
+# 1922 for the delta as a whole, Bietak 1975 for the eastern delta; the waypoints
+# are Pleiades positions of sites on the branches, modern channel points, and our
+# own routing points, each tagged in delta-branches.ts. Between waypoints the line
+# is a spline: interpolation, not evidence. Discharge is apportioned so the seven
+# mouths sum to the pre-dam mean flow of the Nile (~2,800 m³/s), weighted to the
+# branches the ancient writers treat as principal (Herodotus 2.17: the Pelusiac,
+# Canopic and Sebennytic are the natural streams). It sets line width only.
+
+- id: nile-canopic-branch
+  kind: river
+  pleiades: '727138'
+  names:
+    - { text: Ostium Canopicum, lang: la, preferred: true }
+    - { text: Kanobikon stoma, lang: grc-Latn }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17, 2.179' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: toussoun-1922 }
+    - { source: pleiades, locator: 'places/727142, 727169, 727221, 727120' }
+    - { source: hydrorivers, locator: modern Rosetta branch }
+  confidence: probable
+  review: draft
+  note: >-
+    From the fork at Kerkasoros (Pleiades 727142) down the modern Rosetta channel
+    to a point south of Naukratis' latitude (our choice), then past Naukratis
+    (727169) and Schedia (727221, where the Alexandria canal left it) to the mouth
+    at Herakleion-Thonis (727120), now under Abu Qir Bay — the line is trimmed ~5 km
+    at the modern shore. Sais (727217) lies on the modern Rosetta just downstream of
+    the split, so in this reading it is on the Bolbitine; statements that Sais was
+    on the Canopic imply a split below Sais, which cannot then reach Naukratis.
+    Display discharge 600 m³/s.
+
+- id: nile-bolbitine-branch
+  kind: river
+  pleiades: '727087'
+  names:
+    - { text: Ostium Bolbitinum, lang: la, preferred: true }
+    - { text: Bolbitinon stoma, lang: grc-Latn }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: hydrorivers, locator: modern Rosetta branch }
+  confidence: probable
+  review: draft
+  note: >-
+    Leaves the Canopic at the split and follows the modern Rosetta branch past Sais
+    to its mouth (Pleiades calls its Bolbitinos record "the Rosetta branch"). The
+    Rosetta promontory is largely post-antique accretion, so the ancient mouth lay
+    some km inland of the line's end, near Bolbitine (727085). Herodotus calls it
+    dug, not natural. Display discharge 250 m³/s.
+
+- id: nile-sebennytic-branch
+  kind: river
+  pleiades: '727225'
+  names:
+    - { text: Ostium Sebennyticum, lang: la, preferred: true }
+    - { text: Sebennytikon stoma, lang: grc-Latn }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: toussoun-1922 }
+    - { source: pleiades, locator: 'places/727142, 727078, 727227' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Herodotus' "straight" stream. From Kerkasoros down the modern Damietta channel
+    (traced in the DEM) past Athribis (727078) to Sebennytos (727227), then — our
+    routing — north-west across the Sebennytes Kato nome to the Burullus lagoon,
+    where its mouth is usually placed; trimmed at the lagoon shore. The upper
+    course is reasonably placed; the lower course is not. Display discharge 500 m³/s.
+
+- id: nile-phatnitic-branch
+  kind: river
+  names:
+    - { text: Ostium Phatniticum, lang: la, preferred: true }
+    - { text: Phatnitikon stoma, lang: grc-Latn }
+    - { text: Boukolikon stoma, lang: grc-Latn, note: Herodotus' Bucolic mouth }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: pleiades, locator: 'places/727235, 727198' }
+  confidence: probable
+  review: draft
+  note: >-
+    Taken as the lower modern Damietta branch: from Sebennytos past Mansura (modern
+    point) and Tamiathis/Damietta (727235) to the Phatnitikon Stoma (727198), traced
+    along the channel in the DEM. Pleiades has the mouth but no river record.
+    Display discharge 350 m³/s.
+
+- id: nile-mendesian-branch
+  kind: river
+  pleiades: '727158'
+  names:
+    - { text: Ostium Mendesium, lang: la, preferred: true }
+    - { text: Mendesion stoma, lang: grc-Latn }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: pleiades, locator: 'places/727078, 727146, 727156, 727157' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Leaves the Sebennytic (as Herodotus has it) near Athribis, and runs — our
+    routing — past Tell el-Moqdam/Leontopolis (727146) and Mendes (727156) to the
+    Manzala lagoon. The mouth point is Pleiades 727157, whose precision is only
+    "related" (it borrows the Tanitic lagoon's point); trimmed ~2 km at the lagoon
+    shore. Only Mendes is firmly on it. Display discharge 250 m³/s.
+
+- id: nile-tanitic-branch
+  kind: river
+  pleiades: '727240'
+  names:
+    - { text: Ostium Taniticum, lang: la, preferred: true }
+    - { text: Tanitikon stoma, lang: grc-Latn }
+    - { text: Saitikon stoma, lang: grc-Latn, note: Herodotus 2.17 }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: bietak-1975 }
+    - { source: pleiades, locator: 'places/727196, 727236' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Leaves the Pelusiac below Bubastis (our reading of the eastern-delta
+    reconstructions; Herodotus derives it from the Sebennytic, others from the
+    Mendesian), past Pharbaithos (727196) and Tanis (727236) to a mouth near the
+    Manzala outlet at el-Gamil, where it is usually put; trimmed ~2 km at the
+    lagoon shore. Display discharge 250 m³/s.
+
+- id: nile-pelusiac-branch
+  kind: river
+  names:
+    - { text: Ostium Pelusiacum, lang: la, preferred: true }
+    - { text: Pelousiakon stoma, lang: grc-Latn }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: herodotus, locator: '2.17, 2.30' }
+    - { source: strabo, locator: '17.1.18' }
+    - { source: pliny-nh, locator: '5.64' }
+    - { source: bietak-1975 }
+    - { source: pleiades, locator: 'places/727142, 727147, 727088, 727080, 727103, 727192, 727191' }
+  confidence: probable
+  review: draft
+  note: >-
+    From Kerkasoros past Tell el-Yahudiya (727147), Bubastis (727088),
+    Avaris/Pi-Ramesses (727080, placed on the Pelusiac by Bietak 1975) and "Daphnae
+    of Pelusium" (727103; Herodotus 2.30) to Pelusium (727192) and its mouth
+    (727191). The course is well attested by its sites; between them it is a spline.
+    It was still the eastern outlet in the window and silted later. Display
+    discharge 600 m³/s.

@@ -19,6 +19,8 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `relations.yaml`         | polity-to-polity links over time (`province-of`, `client-of`)   |
 | `seats.yaml`             | kingdoms drawn as their capital because their extent is unknown |
 | `places.yaml`            | settlements, joined to Pleiades, with prominence and status     |
+| `features.yaml`          | physical features: floodplains, the Nile delta branches         |
+| `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived, see below |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
 
@@ -145,6 +147,30 @@ confirming.
 14. **Places are `certain`** where cicero-map's Pleiades join landed within 28 km of
     the curated position — all 222 did. That is cicero-map's bargain (Pleiades'
     coordinate and id as truth), recorded rather than re-made.
+
+15. **Floodplains are derived, not drawn** (September 2026). `kind: floodplain`
+    records own names, dates and sources; their outlines are made from terrain by
+    `npm run derive-floodplains -w pipeline` and committed. Per region: an authored
+    loose hull (ours, over a DEM preview, never traced from the Barrington Atlas),
+    channels, a threshold. The measure is height above the *floodplain surface
+    beside* the nearest channel (the median of the DEM within ~1.3 km of it),
+    not above its water: a modern river's water sits metres below its banks and an
+    ancient dry branch has none, so a water datum made the delta lopsided again.
+    Thresholds: Nile valley 8 m; delta 4 m (from the seven branches); Mesopotamia
+    6 m plus a flatness test (≤ 0.06 %, closed by 3 km) because the Southern Desert
+    rises too gently for height alone; Susiana 12 m; middle Euphrates 8 m; the
+    Fayum an elevation band −2…+26 m (Ptolemaic lake level to canal command). The
+    tool prints each area beside published figures — none of which has yet been
+    checked against the work cited — and the check sites. Previews it renders are
+    the review surface. Floodplain shapes are modern-coast: ancient coasts and
+    lagoons are landscape-change work.
+
+16. **The Nile delta branches are authored lines** (`kind: river`), waypoints in
+    `pipeline/src/features/delta-branches.ts` with each coordinate's provenance
+    (Pleiades id, modern channel point, or our routing point with a reason). Legs
+    follow the modern Rosetta (HydroRIVERS), trace the modern Damietta in the DEM,
+    or are splines through the sites. `properties.discharge` (m³/s) apportions the
+    pre-dam mean ~2,800 m³/s among the mouths for line width only.
 
 ## Migration review: things that look wrong
 

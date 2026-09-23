@@ -1,7 +1,7 @@
 import * as THREE from 'three/webgpu'
 import { MapCamera, type CameraState } from './camera/MapCamera.ts'
 import { TerrainTiles } from './terrain/TerrainTiles.ts'
-import { terrainUniforms } from './terrain/material.ts'
+import { terrainTextures, terrainUniforms } from './terrain/material.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -34,7 +34,7 @@ export class RomeMap {
 
   static async create(container: HTMLElement, opts: RomeMapOptions) {
     const map = new RomeMap(container, opts)
-    await map.renderer.init()
+    await Promise.all([map.renderer.init(), loadBiome()])
     map.renderer.setAnimationLoop(() => map.tick())
     return map
   }
@@ -112,5 +112,32 @@ export class RomeMap {
     this.terrain.dispose()
     this.renderer.dispose()
     this.renderer.domElement.remove()
+  }
+}
+
+/**
+ * The climate texture, loaded before the first tile so every tile is built with it.
+ * Its channels are weights, not colours: no colour management, no premultiplication.
+ * A missing file (the pipeline was not run) leaves the humid-temperate default.
+ */
+async function loadBiome() {
+  try {
+    const res = await fetch('/biome/biome.png')
+    if (!res.ok) return
+    const bitmap = await createImageBitmap(await res.blob(), {
+      colorSpaceConversion: 'none',
+      premultiplyAlpha: 'none',
+    })
+    const tex = new THREE.Texture(bitmap)
+    tex.colorSpace = THREE.NoColorSpace
+    tex.flipY = false
+    tex.premultiplyAlpha = false
+    tex.minFilter = THREE.LinearFilter
+    tex.magFilter = THREE.LinearFilter
+    tex.generateMipmaps = false
+    tex.needsUpdate = true
+    terrainTextures.biome = tex
+  } catch {
+    // Keep the default.
   }
 }

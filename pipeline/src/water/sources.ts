@@ -45,7 +45,7 @@ const HYDROLAKES_RESERVOIR = 2
  * and parallels of the box it was built from, and land read only from the smaller box
  * left the north-east corner — the steppe east of the Caspian — as open sea.
  */
-const BBOX = (() => {
+export const BBOX = (() => {
   const b = { west: Infinity, east: -Infinity, south: Infinity, north: -Infinity }
   const steps = 128
   for (let k = 0; k <= steps; k++) {
@@ -181,7 +181,7 @@ function bboxOf(g: { coordinates: unknown }): number[] {
  */
 const MAX_SEGMENT_DEG = 0.01
 
-function projectRing(ring: number[][], polygon: number, areaKm2: number): Ring {
+export function projectRing(ring: number[][], polygon: number, areaKm2: number): Ring {
   const pts: number[] = []
   for (let k = 0; k < ring.length; k++) {
     const [lon, lat] = ring[k]

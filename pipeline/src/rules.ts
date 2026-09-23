@@ -12,6 +12,7 @@
  * this validator could not check at all, so nobody mistakes silence for a pass.
  */
 import {
+  FEATURE_GEOMETRY_KIND,
   claimLayer,
   formatYear,
   highest,
@@ -347,6 +348,53 @@ export function checkDataset(ds: Dataset): Issue[] {
     }
   }
 
+  // --- physical features and their shapes ------------------------------------
+
+  const features = new Map(ds.features.map((f) => [f.id, f]))
+  for (const f of ds.features) {
+    const shape = ds.geometry.features.get(f.id)
+    const expected = (FEATURE_GEOMETRY_KIND as Record<string, 'area' | 'line' | undefined>)[f.kind]
+    if (!shape) {
+      // Floodplains and rivers are drawn from their shapes; without one they are invisible.
+      if (f.kind === 'floodplain' || f.kind === 'river')
+        error('missing-geometry', f, `${f.kind} "${f.id}" has no feature in geometry/features.geojson`)
+      continue
+    }
+    const g = shape.geometry
+    const got = g.type === 'Polygon' || g.type === 'MultiPolygon' ? 'area' : 'line'
+    if (!expected) {
+      error('geometry-kind', f, `a ${f.kind} takes no shape, but geometry/features.geojson has a ${g.type}`)
+      continue
+    }
+    if (got !== expected) {
+      error(
+        'geometry-kind',
+        f,
+        `a ${f.kind} is ${expected === 'area' ? 'a Polygon or MultiPolygon' : 'a LineString or MultiLineString'}, not a ${g.type}`,
+      )
+      continue
+    }
+    if (g.type === 'Polygon' || g.type === 'MultiPolygon') {
+      for (const p of ringProblems(g))
+        error('geometry', f, `polygon ${p.polygon}, ring ${p.ring}: ${p.problem}`)
+    } else {
+      const lines = g.type === 'LineString' ? [g.coordinates] : g.coordinates
+      const bad = lines.flat().find(([x, y]) => !(x >= -180 && x <= 180 && y >= -90 && y <= 90))
+      if (bad) error('geometry', f, `position [${bad}] is not lon/lat — projected coordinates?`)
+    }
+    if (shape.properties?.discharge !== undefined && f.kind !== 'river')
+      warn('discharge', f, `discharge is only meaningful on a river line`)
+  }
+  for (const id of ds.geometry.features.keys()) {
+    if (!features.has(id)) {
+      error(
+        'orphan-geometry',
+        `geometry/features.geojson (${id})`,
+        `a shape for no feature "${id}"`,
+      )
+    }
+  }
+
   // --- polities that nothing draws -------------------------------------------
 
   for (const p of ds.polities) {
@@ -452,6 +500,7 @@ export function doubts(ds: Dataset): DoubtReport {
       sources: ds.sources.length,
       atoms: ds.atoms.length,
       'atom shapes': ds.geometry.atoms.size,
+      'feature shapes': ds.geometry.features.size,
       polities: ds.polities.length,
       claims: ds.claims.length,
       relations: ds.relations.length,

@@ -54,3 +54,49 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   shrunken 21st-century lake.
 - Fix it with a `landscape-change` record, or by treating the margin as
   parchment in the paper tier.
+
+### More landscape corrections
+
+- Done: the Suez Canal, the Corinth Canal and Lake Tharthar are `remove-water`
+  records (`data/landscape-changes.yaml`), applied by the coast build.
+- Next batch: the Latmian Gulf, Ostia and the Tiber mouth, the Po delta, the
+  Fucine Lake, Lake Copais, the Pontine Marshes, and the Nile lagoons (Mareotis,
+  Manzala).
+- A correction that begins or ends inside the window (the Latmian Gulf silting,
+  for one) needs per-year variants of the affected mask tiles. v1 bakes one
+  landscape for the whole window.
+
+### Smooth modern cuts out of the terrain
+
+- **Decided:** 2026-09-23, deferred.
+- The canal corrections remove the *water*, but the elevation data (Copernicus
+  GLO-30 via Mapterhorn) still records the dug channel and its embankments. The
+  Suez Canal shows as a long straight dip with banks either side, and the
+  Corinth Canal as a deep cut through the isthmus: visible in the hillshade, and
+  obvious when the camera tilts.
+- **Fix:** give `remove-water` records, or a new `fill-terrain` op, a terrain
+  effect. Inside the corridor the worker replaces height with a surface
+  interpolated from the ground on either side, feathered at the edge so the
+  seam does not show. The same mechanism would flatten other modern earthworks
+  if they turn out to matter: Tharthar's embankments, dams, motorway and
+  railway cuts.
+- Needs the corrections to reach the terrain worker, not just the coast build.
+  Either bake a small "terrain patch" texture alongside the mask, or send the
+  corridor polygons to the worker.
+
+### River courses are modern
+
+- HydroRIVERS traces today's courses from a 15″ DEM.
+- The Nile delta gets its seven ancient branches as authored `river` features
+  (the floodplain work). The modern Rosetta channel still draws alongside them
+  until the delta's modern channels are suppressed.
+- Other known differences need `river-course` records: the Po, the Euphrates
+  at Babylon, and the Maeander into the Latmian Gulf.
+
+### River precision at regional zoom
+
+- HydroRIVERS is grid-derived (~450 m); smoothing hides the stair-steps but
+  not the imprecision.
+- For the rivers that matter most at regional zoom (Tiber, Arno, Po, Rhône,
+  Nile), OSM waterways would be exact. Worth doing for a curated list, not
+  wholesale.
