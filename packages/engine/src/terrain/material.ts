@@ -356,30 +356,29 @@ export function createTerrainMaterial(n: number) {
     max(pxKm.mul(5), 14).add(260).negate(),
   )
 
+  const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
+  const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
+
+  // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
+  // inside it where the pigment pooled — not a long blend, which over the sea went to
+  // mud between navy and paper. It stops at the known world's edge, or 150 km short of
+  // the data's if that comes first, leaving room for the sketch. `pastWash` is how far
+  // past that edge a point is; `unknown` how much of the sketch shows there.
+  const ragged = sketchNoise(40, 24)
+    .mul(35)
+    .add(sketchNoise(12, 25).mul(12).mul(detail(12)))
+  const pastWash = max(toKnownKm, float(150).sub(toRectKm)).add(ragged)
+  const washAA = max(pxKm.mul(1.2), 1.5)
+
   // The sketch, for the branch. Derivatives are undefined inside a branch (and WGSL
   // rejects them), so the ones it needs are taken outside and passed in: `kmDx` and
   // `kmDy` for the graticule, `hw` for the contours.
-  const sketchOver = (
-    colouredVar: THREE.Node<'vec3'>,
+  const sketchAt = (
+    pastWash: THREE.Node<'float'>,
     kmDx: THREE.Node<'vec2'>,
     kmDy: THREE.Node<'vec2'>,
     hw: THREE.Node<'float'>,
   ): THREE.Node<'vec3'> => {
-    const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
-    const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
-
-    // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
-    // inside it where the pigment pooled — not a long blend, which over the sea went to
-    // mud between navy and paper. It stops at the known world's edge, or 150 km short of
-    // the data's if that comes first, leaving room for the sketch.
-    const ragged = sketchNoise(40, 24)
-      .mul(35)
-      .add(sketchNoise(12, 25).mul(12).mul(detail(12)))
-    const pastWash = max(toKnownKm, float(150).sub(toRectKm)).add(ragged)
-    const washAA = max(pxKm.mul(1.2), 1.5)
-    const unknown = smoothstep(washAA.negate(), washAA, pastWash)
-    const pooled = smoothstep(max(pxKm.mul(5), 14).negate(), 0, pastWash)
-    const known = colouredVar.mul(float(1).sub(pooled.mul(0.12)))
 
     // Then the sketch trails off, as a drawing left unfinished does: each kind of line
     // gives out at its own distance past the wash — contours first, then rivers, the
@@ -463,27 +462,46 @@ export function createTerrainMaterial(n: number) {
       // Pen pressure varies the drawn lines only: the graticule must match the paper's.
       sketch.assign(mix(paper, INK, max(drawnInk.mul(pressure), graticule)))
     })
-
-    return mix(known, sketch, unknown)
+    return sketch
   }
 
   mat.colorNode = Fn(() => {
     // Derivatives first, and the samples they read, outside the branches below: inside
     // one, a derivative is undefined, and a sample first taken there is not taken for
-    // pixels that skip it. The water's pixel size is one; it is taken as the water is.
+    // pixels that skip it. The pixel size in km is taken by `nearEdge`, in shore metres
+    // by `isLand`.
     const kmDx = dFdx(km).toVar()
     const kmDy = dFdy(km).toVar()
     const hw = max(fwidth(height.div(500)), 1e-4).toVar()
-    const sea = water.toVar()
-    // Open sea is drawn from the water alone: the land's shading, most of the cost, is
-    // mixed in by `isLand`, which is 0 there. So it is only worked out where it shows.
-    const land = vec3(0).toVar()
-    If(isLand.greaterThan(0), () => {
-      land.assign(landWithRivers)
-    })
-    const colour = mix(mix(sea, land, isLand), INK, coastLine.mul(0.35)).toVar()
+    const landCover = isLand.toVar()
+
+    // The wash, only near the known world's edge; everywhere else it is the map.
+    const past = float(0).toVar()
+    const unknown = float(0).toVar()
+    const pooled = float(0).toVar()
     If(nearEdge, () => {
-      colour.assign(sketchOver(colour, kmDx, kmDy, hw))
+      past.assign(pastWash)
+      unknown.assign(smoothstep(washAA.negate(), washAA, past))
+      pooled.assign(smoothstep(max(pxKm.mul(5), 14).negate(), 0, past))
+    })
+
+    // The coloured map, except where the sketch covers it entirely.
+    const colour = vec3(0).toVar()
+    If(unknown.lessThan(1), () => {
+      const sea = water.toVar()
+      // Open sea is drawn from the water alone: the land's shading, most of the cost, is
+      // mixed in by `isLand`, which is 0 there. So it is only worked out where it shows.
+      const land = vec3(0).toVar()
+      If(landCover.greaterThan(0), () => {
+        land.assign(landWithRivers)
+      })
+      const coloured = mix(mix(sea, land, landCover), INK, coastLine.mul(0.35))
+      colour.assign(coloured.mul(float(1).sub(pooled.mul(0.12))))
+    })
+
+    // The sketch, only where some of it shows.
+    If(unknown.greaterThan(0), () => {
+      colour.assign(mix(colour, sketchAt(past, kmDx, kmDy, hw), unknown))
     })
     return colour
   })()
