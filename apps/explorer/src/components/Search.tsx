@@ -1,9 +1,10 @@
 import type { MapEntry } from '@roman-map/engine'
+import type { PersonRecord } from '@roman-map/schema'
 import { defaultFilter } from 'cmdk'
 import { Search as SearchIcon } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Capital, Caput, Mark, Seat, Swatch, Town } from '@/components/Legend.tsx'
+import { Capital, Caput, Mark, Portrait, Seat, Swatch, Town } from '@/components/Legend.tsx'
 import {
   Command,
   CommandEmpty,
@@ -13,9 +14,12 @@ import {
   CommandList,
   CommandShortcut,
 } from '@/components/ui/command'
+import { lifeLine } from '@/components/PersonLink.tsx'
+import { activeIn, knownName, nearness, type People, searchTerms } from '@/lib/people.ts'
 import { standing } from '@/lib/standing.ts'
 import { cn } from '@/lib/utils'
 import { formatSpan, formatYear } from '@/lib/year.ts'
+import { usePeople } from '@/peopleStore.ts'
 import { useExplorer } from '@/store.ts'
 
 const MAC = /Mac|iPhone|iPad/.test(navigator.userAgent)
@@ -32,16 +36,32 @@ const OFFERED = 5
 const MIN_SCORE = 0.1
 
 /**
+ * How much the year shown may add to a match's score, to order what matches equally:
+ * what is on the map, or who is attested, before the rest. Less than the gap between
+ * any two of cmdk's scores, so it never lifts a worse match over a better one.
+ */
+const TIE = 0.004
+
+/** The most people listed for a query: `crassus` alone matches seventy. */
+const PEOPLE_SHOWN = 30
+
+/**
  * Search, as an atlas's index. The top-left corner carries the map's title block, and
  * under it the index: ⌘K (Ctrl K elsewhere) or a click opens it. Each name is set
  * against what it belongs to, beside the mark the map draws it with. Enter flies there
  * and opens the inspector; what is not on the map in the year shown is listed greyed
  * with its years, and going to it moves the timeline to the first of them.
+ *
+ * People are listed too (PEOPLE.md §5.3), ordered by the year shown but never filtered
+ * by it: those attested then first, everyone else greyed after. Each is set against
+ * their highest office, which tells namesakes apart. Enter opens the person panel.
  */
 export function Search() {
   const map = useExplorer((s) => s.map)
   const year = useExplorer((s) => s.year)
   const goTo = useExplorer((s) => s.goTo)
+  const people = usePeople((s) => s.people)
+  const openPerson = usePeople((s) => s.open)
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [all, setAll] = useState<MapEntry[]>([])
@@ -97,13 +117,50 @@ export function Search() {
     return { polities, places, largest, cities }
   }, [all, year])
 
+  // Each person's names as one string, matched against every keystroke.
+  const terms = useMemo(
+    () =>
+      people ? [...people.persons.values()].map((p) => [p, searchTerms(p)] as const) : [],
+    [people],
+  )
+
+  const typing = query.trim().length > 0
+
+  // Ranked here, not by cmdk, so that only the best few of five thousand are mounted.
+  const found = useMemo(() => {
+    if (!typing) return []
+    return terms
+      .map(([person, words]) => ({
+        person,
+        score: score(defaultFilter(words, query), person, year),
+      }))
+      .filter((r) => r.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, PEOPLE_SHOWN)
+      .map((r) => r.person)
+  }, [terms, query, year, typing])
+
+  const consuls = useMemo(() => people?.consuls(year) ?? [], [people, year])
+
+  // What the year shown adds to each row's score, by its value, for the filter to read.
+  const tiebreak = useMemo(() => {
+    const m = new Map<string, number>()
+    const now = (e: MapEntry) => e.years.some(([a, b]) => a <= year && year <= b)
+    for (const e of all) m.set(`${e.ref.kind}:${e.ref.id}`, now(e) ? 1 : 0)
+    for (const p of [...found, ...consuls]) m.set(`person:${p.id}`, nearness(p, year))
+    return m
+  }, [all, found, consuls, year])
+
   const span = map?.politics.window
   const last = span?.[1] ?? year
-  const typing = query.trim().length > 0
 
   const select = (entry: MapEntry) => {
     setOpen(false)
     goTo(entry)
+  }
+  const choosePerson = (person: PersonRecord) => {
+    setOpen(false)
+    openPerson(person.id)
   }
   const openChange = (o: boolean) => {
     setOpen(o)
@@ -119,29 +176,29 @@ export function Search() {
           <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-[#EDE6D6]/25 duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 dark:bg-[#1b1612]/30" />
           <DialogPrimitive.Content className="fixed top-1/4 left-1/2 z-50 w-full max-w-[calc(100%-2rem)] -translate-x-1/2 rounded-lg rule-double bg-card px-5 pt-3 pb-4 text-card-foreground outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 sm:max-w-lg">
             <DialogPrimitive.Title className="sr-only">
-              Index of places
+              Index of names
             </DialogPrimitive.Title>
             <DialogPrimitive.Description className="sr-only">
-              Find a place or polity by name, and go to it.
+              Find a place, polity or person by name, and go to it.
             </DialogPrimitive.Description>
             {/* Values are ids, which are unique; matching is on the names alone. */}
             <Command
-              filter={(_, search, keywords) => {
+              filter={(value, search, keywords) => {
                 const score = defaultFilter(keywords?.join(' ') ?? '', search)
-                return score >= MIN_SCORE ? score : 0
+                return score >= MIN_SCORE ? score + TIE * (tiebreak.get(value) ?? 0) : 0
               }}
             >
               <CommandInput
                 value={query}
                 onValueChange={setQuery}
-                placeholder="A place, province or kingdom…"
+                placeholder="A place, province or person…"
                 // Not a login field: keep password managers' icons out of it.
                 autoComplete="off"
                 data-1p-ignore
                 data-lpignore="true"
               />
               <CommandList ref={list} className="max-h-80">
-                <CommandEmpty>Nothing on the map by that name.</CommandEmpty>
+                <CommandEmpty>Nothing by that name.</CommandEmpty>
                 {typing ? (
                   <>
                     <Group
@@ -156,6 +213,15 @@ export function Search() {
                       last={last}
                       onSelect={select}
                     />
+                    {people && (
+                      <PersonGroup
+                        heading="People"
+                        persons={found}
+                        people={people}
+                        year={year}
+                        onSelect={choosePerson}
+                      />
+                    )}
                   </>
                 ) : (
                   <>
@@ -171,6 +237,16 @@ export function Search() {
                       last={last}
                       onSelect={select}
                     />
+                    {people && (
+                      <PersonGroup
+                        heading={`Consuls of ${formatYear(year)}`}
+                        persons={consuls}
+                        people={people}
+                        year={year}
+                        onSelect={choosePerson}
+                        consuls
+                      />
+                    )}
                   </>
                 )}
               </CommandList>
@@ -205,12 +281,21 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
         className="group flex w-full items-center gap-2 rounded-b-lg px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
       >
         <SearchIcon className="text-muted-foreground transition-colors group-hover:text-foreground" />
-        <span className="transition-colors group-hover:text-primary">Index of places</span>
+        <span className="transition-colors group-hover:text-primary">Index of names</span>
         <span className="figures ml-auto text-muted-foreground">{KEY}</span>
       </button>
     </div>
   )
 }
+
+/** A person's match, with the year shown to order namesakes; 0 if it is no match. */
+function score(match: number, person: PersonRecord, year: number) {
+  return match >= MIN_SCORE ? match + TIE * nearness(person, year) : 0
+}
+
+/** A group's heading in small capitals, ruled to the edge. */
+const HEADING =
+  "**:[[cmdk-group-heading]]:caps **:[[cmdk-group-heading]]:flex **:[[cmdk-group-heading]]:items-center **:[[cmdk-group-heading]]:gap-2 **:[[cmdk-group-heading]]:after:h-px **:[[cmdk-group-heading]]:after:flex-1 **:[[cmdk-group-heading]]:after:bg-rule **:[[cmdk-group-heading]]:after:content-['']"
 
 interface Row {
   entry: MapEntry
@@ -226,10 +311,7 @@ function Group(props: {
 }) {
   if (!props.rows.length) return null
   return (
-    <CommandGroup
-      heading={props.heading}
-      className="**:[[cmdk-group-heading]]:caps **:[[cmdk-group-heading]]:flex **:[[cmdk-group-heading]]:items-center **:[[cmdk-group-heading]]:gap-2 **:[[cmdk-group-heading]]:after:h-px **:[[cmdk-group-heading]]:after:flex-1 **:[[cmdk-group-heading]]:after:bg-rule **:[[cmdk-group-heading]]:after:content-['']"
-    >
+    <CommandGroup heading={props.heading} className={HEADING}>
       {props.rows.map(({ entry, now }) => (
         <CommandItem
           key={`${entry.ref.kind}:${entry.ref.id}`}
@@ -259,6 +341,62 @@ function Group(props: {
           </CommandShortcut>
         </CommandItem>
       ))}
+    </CommandGroup>
+  )
+}
+
+/**
+ * People, set as places are: the name, a leader, and against it their highest office
+ * (`consul 70 BCE`), or their dates where DPRR gives none, or among the year's consuls.
+ * Those not attested in the year shown are greyed.
+ */
+function PersonGroup(props: {
+  heading: string
+  persons: PersonRecord[]
+  people: People
+  year: number
+  onSelect: (person: PersonRecord) => void
+  /** The year's consuls: the heading says their office, so the row gives their dates. */
+  consuls?: boolean
+}) {
+  if (!props.persons.length) return null
+  return (
+    <CommandGroup heading={props.heading} className={HEADING}>
+      {props.persons.map((person) => {
+        const now = activeIn(person, props.year)
+        const office = !props.consuls && props.people.highestOffice(person)
+        return (
+          <CommandItem
+            key={person.id}
+            value={`person:${person.id}`}
+            keywords={[searchTerms(person)]}
+            onSelect={() => props.onSelect(person)}
+            className={cn(
+              'items-center gap-2.5',
+              !now && 'text-muted-foreground data-selected:text-muted-foreground',
+            )}
+          >
+            <span className="grid w-5 shrink-0 place-items-center">
+              <Mark>
+                <Portrait />
+              </Mark>
+            </span>
+            <span className="min-w-0 truncate">{knownName(person)}</span>
+            <span
+              className="mx-0.5 min-w-4 flex-1 self-center border-b border-dotted border-foreground/30"
+              aria-hidden
+            />
+            <CommandShortcut
+              className={cn(
+                'ml-0 shrink-0 pr-1 font-normal',
+                !office && 'figures not-italic',
+              )}
+            >
+              {office || lifeLine(props.people, person)}
+            </CommandShortcut>
+          </CommandItem>
+        )
+      })}
     </CommandGroup>
   )
 }

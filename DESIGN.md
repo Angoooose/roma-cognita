@@ -698,7 +698,7 @@ copy. What we take from it:
     either.
   - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
     the plate's title block, the map's name and the years it covers in the
-    double rule, with "Index of places ⌘K" under it. Each result is its map
+    double rule, with "Index of names ⌘K" under it. Each result is its map
     mark, its name, a dotted leader and what it belongs to (`Province of
     Roma`); what is not on the map in the year shown is greyed with its years,
     and going to it moves the timeline to the first. With nothing typed it

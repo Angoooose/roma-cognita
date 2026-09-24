@@ -118,6 +118,21 @@ export class People {
     return this.offices.get(post.office)?.name.trim() ?? 'office unknown'
   }
 
+  /** The consuls who took office in a year, the ordinary pair before any suffect. */
+  consuls(year: number): PersonRecord[] {
+    const out = new Map<PersonId, PersonRecord>()
+    for (const name of ['consul', 'consul suffectus']) {
+      for (const o of this.offices.values()) {
+        if (o.name.trim() !== name) continue
+        for (const post of this.byOfficeYear.get(`${o.id}|${year}`) ?? []) {
+          const p = this.persons.get(post.person)
+          if (p && !out.has(p.id)) out.set(p.id, p)
+        }
+      }
+    }
+    return [...out.values()]
+  }
+
   // --- a province in a year -------------------------------------------------------
 
   /** Whether the province table joins this polity to DPRR at all. */
@@ -702,4 +717,32 @@ function push<K, V>(map: Map<K, V[]>, key: K, value: V) {
 /** The name a reader knows: Wikidata's English label where it has one. */
 export function knownName(p: PersonRecord) {
   return p.en?.label ?? p.name
+}
+
+/** Every name a person is looked up by, as one string for the index to match. */
+export function searchTerms(p: PersonRecord) {
+  return [
+    ...new Set([
+      knownName(p),
+      p.name,
+      p.full,
+      ...(p.en?.aliases ?? []),
+      ...(p.names.otherNames ? [p.names.otherNames] : []),
+    ]),
+  ].join(' ')
+}
+
+/**
+ * How near a person's attested years come to a year, 1 within them and falling away
+ * over decades outside; 0 if nothing dates them. The index orders namesakes by it.
+ */
+export function nearness(p: PersonRecord, year: number) {
+  if (!p.active) return 0
+  const off = Math.max(p.active.from - year, year - p.active.to, 0)
+  return 1 / (1 + off / 10)
+}
+
+/** Whether a person is attested in a year: the index greys everyone else. */
+export function activeIn(p: PersonRecord, year: number) {
+  return !!p.active && p.active.from <= year && year <= p.active.to
 }

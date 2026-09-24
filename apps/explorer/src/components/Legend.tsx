@@ -1,6 +1,6 @@
 import { type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
 import { Shapes, X } from 'lucide-react'
-import { type ReactNode, useMemo, useState } from 'react'
+import { type ReactNode, useId, useMemo, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
@@ -326,6 +326,31 @@ export const Seat = ({ fill }: { fill: string }) => (
     />
   </svg>
 )
+/**
+ * A person, for the index: not a mark the map draws, but engraved as those are, as a
+ * coin shows a Roman: a head in profile, the bust cut off by the rim. It has no wreath:
+ * at this size a laurel cannot be told from hair.
+ */
+export const Portrait = () => {
+  const clip = useId()
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+      <defs>
+        <clipPath id={clip}>
+          <circle cx="8" cy="8" r="7.2" />
+        </clipPath>
+      </defs>
+      <circle cx="8" cy="8" r="7.2" fill={PAPER} />
+      <path
+        clipPath={`url(#${clip})`}
+        fill={INK}
+        d="M5.2 15.5 5.5 12.4C5.5 11.6 5 11 4.6 10.3 3.7 8.9 3.6 6.6 4.6 5.1 5.6 3.6 7.6 3.1 8.9 3.6 10.2 3.9 10.9 4.9 11 6.1L12.4 8.4C12.4 8.6 12.1 8.7 11.5 8.7L11.65 9.15 11.3 9.35 11.5 9.75C11.5 10.6 11.1 11 10.4 11.1 10 11.15 9.8 11.4 9.8 11.9L10.3 15.5Z"
+      />
+      {/* The rim over the bust, so that no paper shows between them. */}
+      <circle cx="8" cy="8" r="7.2" fill="none" stroke={INK} strokeWidth="0.8" />
+    </svg>
+  )
+}
 // A main road (roads/shading.ts): 3.2 px, a warm core between 0.8 px edges.
 const Road = () => (
   <svg width="20" height="8" viewBox="0 0 20 8" aria-hidden>

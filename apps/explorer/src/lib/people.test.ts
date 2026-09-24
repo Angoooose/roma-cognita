@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { People } from './people.ts'
+import { knownName, nearness, People, searchTerms } from './people.ts'
 
 // The panels' reading of the real build: what a reader should see for Cicero.
 const BUILD = resolve(import.meta.dirname, '../../../../build/people')
@@ -133,6 +133,34 @@ describe.skipIf(!built)('People, over build/people', () => {
         [-74, -48, false],
       ])
       expect(lanes.Pontifex).toHaveLength(2)
+    })
+  })
+  describe('in the index', () => {
+    it("lists a year's consuls, the ordinary pair before any suffect", () => {
+      expect(
+        people
+          .consuls(-62)
+          .map((p) => p.name)
+          .sort(),
+      ).toEqual(['C. Antonius Hybrida', 'M. Tullius Cicero'])
+      // 43 BCE: Hirtius and Pansa, then the suffects who followed them.
+      const names = people.consuls(-42).map((p) => p.name)
+      expect(names.slice(0, 2).sort()).toEqual(['A. Hirtius', 'C. Vibius Pansa'])
+      expect(names.length).toBeGreaterThan(2)
+    })
+
+    it('finds a person by the name a reader knows them by', () => {
+      const terms = (id: string) => searchTerms(people.person(id as never)!)
+      expect(terms('dprr:2597')).toContain('Octavian')
+      expect(terms('dprr:2072')).toContain('Cicero')
+    })
+
+    it('orders namesakes by how near they come to the year shown', () => {
+      const crassi = [...people.persons.values()].filter(
+        (p) => knownName(p) === 'Marcus Licinius Crassus',
+      )
+      const [first] = crassi.sort((a, b) => nearness(b, -55) - nearness(a, -55))
+      expect(first.highestOffice).toBe('cos. 70')
     })
   })
 })
