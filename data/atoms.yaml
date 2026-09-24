@@ -1818,9 +1818,49 @@
     48–47 and fought Vatinius in 45–44 (Appian Ill. 12–13). Takes the coastal
     strip's edge from illyricum.
 
+- id: iapydes
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [14.45, 45.45]
+          note: behind Tarsatica, on illyricum's inland edge
+        - at: [14.72, 45.5]
+          note: near the source of the Colapis (Kupa)
+        - at: [15.55, 45.49]
+          via: river
+          note: down the Colapis, short of the Pannonian plain
+        - [15.8, 45.1]
+        - at: [15.87, 44.81]
+          note: the Oeneus (Una) at Bihać
+        - at: [16.1, 44.36]
+          via: river
+          note: up the Una towards its source
+        - [16.3, 44.2]
+        - [15.9, 43.9]
+        - [15.6, 44.15]
+        - [15.2, 44.55]
+        - [14.85, 45.1]
+  sources:
+    - { source: strabo, locator: '4.6.10' }
+    - { source: strabo, locator: '7.5.4' }
+    - { source: strabo, locator: '7.5.2' }
+    - { source: appian, locator: 'Ill. 16–21' }
+    - { source: barrington, locator: 'map 20' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Iapydes behind the Liburnian coast: the Ogulin, Gacka and Lika
+    plateaux, round Strabo's four cities (Metulum, Arupini, Monetium, Vendo;
+    4.6.10, 7.5.4) and Appian's Terponus (Ill. 18). The northern edge on the
+    Colapis and the eastern on the Una are conventions: Strabo says the Colapis
+    flows through the Iapodes' country (7.5.2), so their ground may have
+    straddled it, and the Una as their limit is the usual archaeological one,
+    not confirmed here in the scholarship. Takes the coast's edge from
+    illyricum and the south from delmatae. Added September 2026.
+
 - id: thessalia
   evidence: derived
-  splitFrom: macedonia
   construction:
     - method: outline
       edge:
@@ -1865,7 +1905,6 @@
 
 - id: epirus
   evidence: schematic
-  splitFrom: macedonia
   construction:
     - method: outline
       edge:

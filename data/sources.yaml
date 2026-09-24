@@ -263,6 +263,15 @@
   citation: U. Laffi, "La provincia della Gallia Cisalpina", Athenaeum 80 (1992) 5–23
   note: Entry from index records; the article has not been read.
 
+- id: vnukov-kovalenko-2007
+  kind: modern
+  citation: >-
+    S. J. Vnukov and S. A. Kovalenko, "A Unique Gold Stater of the Bosporan
+    King Asander", Journal of the Numismatic Association of Australia 18 (2007)
+    19–22
+  url: https://numismatics.org.au/wp-content/uploads/2021/06/Vol-18-Article-2.pdf
+  note: Open access; read.
+
 - id: barrington
   kind: modern
   citation: >-
@@ -392,6 +401,10 @@
 - id: tacitus-ann
   kind: ancient
   citation: Tacitus, Annales
+
+- id: lucian-macrobii
+  kind: ancient
+  citation: '[Lucian], Macrobii'
 
 # --- datasets ------------------------------------------------------------------
 

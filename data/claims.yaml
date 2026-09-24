@@ -154,7 +154,7 @@
   polity: illyricum
   relation: province
   from: 59 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: suetonius-iul, locator: '22' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
@@ -171,7 +171,7 @@
   polity: macedonia
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -211,7 +211,7 @@
   polity: thracia-odrysae
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -750,7 +750,7 @@
   polity: bosporus
   relation: independent
   from: 48 BCE
-  to: after 43 BCE
+  to: 42 BCE
   sources:
     - { source: bellum-alexandrinum, locator: '34–41' }
     - { source: appian, locator: 'Mithr. 120' }
@@ -774,7 +774,7 @@
   polity: bosporus
   relation: independent
   from: 48 BCE
-  to: after 43 BCE
+  to: 42 BCE
   sources: [{ source: strabo, locator: '11.2.11' }]
   confidence: uncertain
   review: draft
@@ -884,7 +884,7 @@
   polity: bosporus
   relation: independent
   from: 48 BCE
-  to: after 43 BCE
+  to: 42 BCE
   sources:
     - { source: strabo, locator: '7.4.3' }
   confidence: uncertain
@@ -1114,7 +1114,7 @@
   polity: scythia-minor
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
   confidence: uncertain
@@ -1237,7 +1237,7 @@
   polity: pontic-cities
   relation: independent
   from: 43 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.3.11' }
   confidence: uncertain
@@ -1259,7 +1259,7 @@
   polity: delmatae
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: 34 BCE
   sources:
     - { source: appian, locator: 'Ill. 12–13' }
   confidence: probable
@@ -1596,3 +1596,120 @@
   note: >-
     A province of the people in 27. The free cities (Athens, Sparta, Delphi)
     lay inside it but were not provincial ground.
+
+# Illyricum: Octavian's war of 35–33
+
+- atom: iapydes
+  polity: iapydes
+  relation: independent
+  from: before 68 BCE
+  to: 36 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 18' }
+    - { source: cassius-dio, locator: '49.34.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Hostile to Rome before 35 (App. Ill. 18), though some of them owed tribute
+    (Dio 49.34.2), hence uncertain.
+
+- atom: iapydes
+  polity: illyricum
+  relation: province
+  from: 35 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 21' }
+    - { source: cassius-dio, locator: '49.35' }
+    - { source: cassius-dio, locator: '51.21.5' }
+    - { source: dzino-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Metulum fell in 35 and the transalpine Iapydes were subject "for the first
+    time" (App. Ill. 21); Octavian triumphed over "the Pannonians and
+    Dalmatians, the Iapydes and their neighbours" in 29 (Dio 51.21.5). They rose
+    again with the Delmatae in 16 (Dio 54.20.3), hence uncertain. Siscia on the
+    Save, taken in 35 and held by a garrison of twenty-five cohorts in a walled-off
+    part of the town (App. Ill. 24), is not drawn as ground: the Pannonian
+    country round it was "not yet under subjection" (Ill. 22), its garrison was
+    driven out in 34 (Dio 49.38.3), and Augustus himself dates the frontier on
+    the Danube to Tiberius' war (RGDA 30).
+
+- atom: delmatae
+  polity: illyricum
+  relation: province
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 25–28' }
+    - { source: cassius-dio, locator: '49.38.3–4' }
+    - { source: cassius-dio, locator: '49.43.8' }
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: dzino-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Octavian took Promona in 34 and left Statilius Taurus to finish the war
+    (App. Ill. 25–27). After the Calends of January 33 the Delmatae gave 700
+    children as hostages, the standards taken from Gabinius and the tribute "in
+    arrears since the time of Gaius Caesar" (Ill. 28). Dio lists "the
+    Dalmatian… districts" among the people's provinces in 27 (53.12.4). A
+    tributary people under treaty is a defensible reading too, and they revolted
+    in 16 and 11 (Dio 54.20.3, 54.34.3–4), hence uncertain. Illyricum was
+    governed as a province of its own from some time between 32 and 27 (Džino,
+    as reviewed in BMCR 2010.08.44).
+
+# The Bosporus: Asander recognised
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vnukov-kovalenko-2007 }
+    - { source: lucian-macrobii, locator: '17' }
+    - { source: strabo, locator: '7.4.4' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Asander's gold staters read "archon" for years 1–4 and "king" from year 4
+    to 29. On Vnukov and Kovalenko's chronology, year 1 is 44/43 at the
+    earliest, so the royal title — and with it, most likely, Roman recognition —
+    comes in 41/40 at the earliest, while Antony was ordering the East. Other
+    chronologies put year 1 in 50/49 or 49/48, which would move it under
+    Caesar; and ps.-Lucian (Macr. 17) says Asander "was proclaimed king of
+    Bosporus by the divine Augustus", which read literally points after Actium.
+    Strabo: "since the time of Mithridates the kingdom has been subject to the
+    Romans" (7.4.4).
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: client
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '11.2.11' }
+    - { source: vnukov-kovalenko-2007 }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: pliny-nh, locator: '4.85' }
+    - { source: vnukov-kovalenko-2007 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus. Strabo has the city "subject to the potentates of the Bosporus"
+    down to his own day (7.4.3). Pliny records an undated grant of freedom by the
+    Romans (4.85), dated to Caesar c. 45 by Rostovtzeff; Vnukov and Kovalenko
+    argue from a coin of Asander's year 8 found at Kara-Tobe that Bosporan
+    control was back by about 37/36. The free interval is not drawn.

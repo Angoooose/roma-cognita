@@ -92,14 +92,17 @@
   names:
     - { text: Macedonia, lang: la, preferred: true }
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
   review: draft
   note: >-
-    Includes Greece. Achaea is not a separate province until 27 BCE, so for this
-    whole window the governor of Macedonia is Athens' governor too.
+    Includes Greece until Achaea is attested as a province of its own in the
+    settlement of 27, which also took Thessaly and southern Epirus (see achaea).
+    Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
+    after Philippi it was Antony's, east of Scodra from Brundisium (App. BC
+    5.65), and Octavian's from 31.
 
 - id: africa
   kind: province
@@ -255,7 +258,7 @@
   names:
     - { text: Illyricum, lang: la, preferred: true }
   from: 59 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: suetonius-iul, locator: '22' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
@@ -361,8 +364,8 @@
   names:
     - { text: Bosporus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Pharnaces II, 63–47; Asander from 47
+  to: after 27 BCE
+  ruler: Pharnaces II, 63–47; Asander (archon, then king), from 47; Dynamis his wife
   sources:
     - { source: appian, locator: 'Mithr. 113, 120' }
   confidence: probable
@@ -374,15 +377,26 @@
   names:
     - { text: Thracia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Odrysian kings
+  to: after 27 BCE
+  ruler: Sadalas (d. by 43/42); the Sapaean brothers Rhascupolis and Rhascus, 42; Sadalas at Actium, 31
   sources:
     - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '47.25.1–2' }
+    - { source: appian, locator: 'BC 4.87' }
+    - { source: cassius-dio, locator: '51.25.4–5' }
   confidence: probable
   review: needs-check
   note: >-
-    Odrysian authority over the inland Thracian tribes was
-    intermittent throughout the window.
+    The Thracian kings' authority over the inland tribes was intermittent
+    throughout. The ruler string names only kings the ancient texts name for
+    43–27: Brutus took over the land of Sadalas, "who had died childless and had
+    left it to the Romans" (Dio 47.25.1), in 43/42 — not drawn, since the kings
+    were back by Actium (Plut. Ant. 61.1); Rhascupolis and Rhascus were
+    "ruling one country", the Sapaei and Corpili, at Philippi (App. BC 4.87).
+    The modern king lists (Dessau, Sullivan; revised by Tačeva and Delev) are
+    reconstructions and disputed. In 28 Crassus overran Thrace "except the
+    territory of the Odrysae" and gave them Dionysus' land taken from the Bessi
+    (Dio 51.25.4–5): a client, not annexed.
 
 - id: galatia
   kind: kingdom
@@ -694,7 +708,7 @@
   names:
     - { text: Scythae, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
   confidence: probable
@@ -805,7 +819,7 @@
   names:
     - { text: Pontic Greek cities, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: eutropius, locator: '6.10' }
     - { source: mihailov-igbulg, locator: 'I² 13' }
@@ -834,7 +848,7 @@
   names:
     - { text: Delmatae, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: 34 BCE
   sources:
     - { source: appian, locator: 'Ill. 12–13' }
     - { source: wilkes-1969, locator: 'pp. 29–45' }
@@ -1020,3 +1034,26 @@
     only. Strabo's list (17.3.25), which Bowersock reads as putting Thessaly and
     part of Epirus in Achaea, describes the provinces of Tiberius' time, so
     reading it back to 27 is itself a step of inference.
+
+- id: iapydes
+  kind: people
+  names:
+    - { text: Iapydes, lang: la, preferred: true }
+    - { text: Iapodes, lang: la }
+  from: before 68 BCE
+  to: 36 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 16–21' }
+    - { source: strabo, locator: '4.6.10' }
+    - { source: strabo, locator: '7.5.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Iapydes behind the Liburnian coast, who "drove back the Romans twice
+    within the space of about twenty years, overran Aquileia, and plundered the
+    Roman colony of Tergestus" (App. Ill. 18). Octavian took Metulum in 35, and
+    "the transalpine Iapydes were then for the first time brought in subjection
+    to the Romans" (Ill. 21). Dio has them among peoples who had failed to pay
+    their tribute in 36–35 (49.34.2), so some — probably the cisalpine
+    Moentini and Avendeatae (Ill. 16) — were tributary before. Added September
+    2026.

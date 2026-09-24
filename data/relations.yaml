@@ -61,7 +61,7 @@
   type: province-of
   of: rome
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -174,7 +174,7 @@
   type: province-of
   of: rome
   from: 59 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: suetonius-iul, locator: '22' }]
   confidence: probable
   review: draft
@@ -258,7 +258,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -514,3 +514,18 @@
   note: >-
     From its first firm attestation, the settlement of January 27; it may have
     been governed apart from Macedonia earlier (see the polity).
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vnukov-kovalenko-2007 }
+    - { source: lucian-macrobii, locator: '17' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Asander's recognition as king: 41/40 at the earliest on the coins, or
+    after Actium on ps.-Lucian's "proclaimed king… by the divine Augustus".
+    See the claim on bosporus.
