@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Layers, Search, X } from 'lucide-react'
+import { Layers, Search, X } from 'lucide-react'
 import { type ReactNode, useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -21,12 +21,11 @@ import {
   CommandList,
 } from '@/components/ui/command'
 import { type LegendData, LegendPanel } from '@/components/Legend.tsx'
+import { TimelinePanel } from '@/components/Timeline.tsx'
 import { Kbd } from '@/components/ui/kbd'
 import { Separator } from '@/components/ui/separator'
-import { Slider } from '@/components/ui/slider'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import { formatYear } from '@/lib/year.ts'
 
 /**
  * The interface laid over a screenshot of the map: the explorer's timeline and
@@ -210,72 +209,17 @@ const LEGEND_63_BCE: LegendData = {
   seat: { fill: '#bb938a' },
 }
 
-/** The explorer's Timeline, lifted off the store so it runs without a map. */
+/** The explorer's timeline, driven locally over the data's window, 68–43 BCE. */
 function TimelineDemo() {
-  // The data's window, 68–43 BCE (build/politics/data.json).
-  const first = -67
-  const last = -42
   const [year, setYear] = useState(-62)
-  const at = (y: number) => `${((y - first) / (last - first)) * 100}%`
-  const ticks: { year: number; bce: number; major: boolean }[] = []
-  for (let y = first; y <= last; y++) {
-    const bce = 1 - y
-    if (bce % 5 === 0) ticks.push({ year: y, bce, major: bce % 10 === 0 })
-  }
-  const go = (y: number) => setYear(Math.min(last, Math.max(first, y)))
+  const span: [number, number] = [-67, -42]
+  const go = (y: number) => setYear(Math.min(span[1], Math.max(span[0], y)))
   return (
-    <Card className="absolute bottom-5 left-1/2 w-[min(620px,calc(100%-500px))] -translate-x-1/2 flex-row items-center gap-2 px-3 pt-6 pb-5 select-none">
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        aria-label="Previous year"
-        onClick={() => go(year - 1)}
-      >
-        <ChevronLeft />
-      </Button>
-      <div className="relative flex-1">
-        <div className="pointer-events-none absolute inset-x-1.5 inset-y-0">
-          <span
-            className="absolute bottom-1/2 mb-3 -translate-x-1/2 font-heading text-sm font-semibold tracking-[0.06em] whitespace-nowrap"
-            style={{ left: at(year) }}
-          >
-            {formatYear(year)}
-          </span>
-          {ticks.map((t) => (
-            <span
-              key={t.year}
-              className="absolute top-1/2 mt-2 flex -translate-x-1/2 flex-col items-center"
-              style={{ left: at(t.year) }}
-            >
-              <span
-                className={
-                  t.major ? 'h-2 w-px bg-foreground/50' : 'h-1 w-px bg-foreground/25'
-                }
-              />
-              {t.major && (
-                <span className="figures text-[11px] text-muted-foreground">{t.bce}</span>
-              )}
-            </span>
-          ))}
-        </div>
-        <Slider
-          className="h-7"
-          aria-label="Year"
-          min={first}
-          max={last}
-          step={1}
-          value={[year]}
-          onValueChange={([y]) => setYear(y)}
-        />
-      </div>
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        aria-label="Next year"
-        onClick={() => go(year + 1)}
-      >
-        <ChevronRight />
-      </Button>
-    </Card>
+    <TimelinePanel
+      year={year}
+      span={span}
+      onYear={go}
+      className="absolute right-4 bottom-4"
+    />
   )
 }

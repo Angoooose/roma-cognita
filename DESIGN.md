@@ -698,9 +698,16 @@ copy. What we take from it:
   - Cinzel for inscriptions (titles, buttons, small labels), EB Garamond for
     the book; lining figures for years in tables;
   - ornament is hairlines, a double rule round each panel, a faint paper grain
-    and one seat diamond: on the slider thumb, the selected row of a list, the
-    divider. Confidence badges are dashed when uncertain, as the map's lines
-    are.
+    and one seat diamond: on the selected row of a list and the divider. The
+    timeline is an engraved ruler, not a progress bar: nothing is filled, and
+    the year is a gold index mark on the line. Confidence badges are dashed
+    when uncertain, as the map's lines are.
+  - The panels follow the reader's system theme.
+  - The corner controls are one pattern (decided 2026-09-23): a slim strip,
+    the same 40 px in both corners and in both states, that never moves. The
+    timeline always shows the year and opens its ruler beside it; the legend
+    folds to a square and opens its key above. Only the toggle opens or closes
+    either.
   - Italic is kept to short phrases. Tooltips and notes are upright: Garamond
     italic thins out over a sentence, and light-on-dark type at 13 px breaks
     up the way Regular did on the map (§7.4).

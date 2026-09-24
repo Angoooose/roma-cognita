@@ -1,8 +1,8 @@
 import { type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
-import { ChevronUp } from 'lucide-react'
-import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
+import { Shapes, X } from 'lucide-react'
+import { type ReactNode, useMemo, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { useExplorer } from '@/store.ts'
 
@@ -54,16 +54,8 @@ export function LegendPanel({
   className,
 }: LegendData & { className?: string }) {
   const [open, setOpen] = useState(initialOpen)
-  // Open and collapsed are different buttons; keep focus on the toggle across the swap.
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const toggled = useRef(false)
-  useEffect(() => {
-    if (toggled.current) toggleRef.current?.focus()
-    toggled.current = false
-  }, [open])
   const toggle = () =>
     setOpen((o) => {
-      toggled.current = true
       try {
         localStorage.setItem(STORE, String(!o))
       } catch {}
@@ -73,97 +65,163 @@ export function LegendPanel({
   const [lead, ...others] = politics.powers
   const otherFills = [...new Set(others.map((p) => p.fill))]
 
-  // Collapsed, it is lettered on the map rather than boxed: the settlement names' light
-  // Cinzel on their dark halo (labels/PlaceLayer.ts), so it reads as part of the sheet.
-  if (!open)
-    return (
-      <button
-        ref={toggleRef}
-        type="button"
-        onClick={toggle}
-        aria-expanded={false}
-        className={cn(
-          'px-1 py-1 font-heading text-[0.8125rem] font-semibold tracking-[0.14em] text-[#F3EBDA] opacity-80 transition-opacity outline-none [text-shadow:0_0_2px_#1B1612,0_0_4px_#1B1612,0_0_9px_rgb(27_22_18/0.7)] hover:opacity-100 focus-visible:opacity-100 focus-visible:underline focus-visible:underline-offset-4',
-          className,
-        )}
-      >
-        Legend
-      </button>
-    )
-
   return (
-    <Card size="sm" className={cn('w-[240px] gap-0 py-0', className)}>
-      {/* Not a CardHeader: that is a size container, and needs a width given. */}
-      <button
-        ref={toggleRef}
-        type="button"
-        onClick={toggle}
-        aria-expanded
-        aria-controls="legend-body"
-        className="flex w-full items-center justify-between gap-3 px-(--card-spacing) py-2.5 text-left outline-none focus-visible:text-primary"
-      >
-        <CardTitle className="text-xs">Legend</CardTitle>
-        <ChevronUp className="size-4 rotate-180 text-muted-foreground" />
-      </button>
-      <CardContent id="legend-body" className="space-y-1.5 pb-(--card-spacing) text-sm">
-        {lead && (
-          <>
-            <Key swatch={<Swatch fill={lead.fill} />}>{lead.name}</Key>
-            {lead.province && (
-              <Key swatch={<Swatch fill={lead.province} />}>its provinces</Key>
-            )}
-            {lead.client && (
-              <Key swatch={<Swatch fill={lead.client} />}>its client kingdoms</Key>
-            )}
-          </>
-        )}
-        {otherFills.length > 0 && (
-          <Key swatch={<Strip fills={otherFills} />}>
-            Other powers, <span className="italic">named on the map</span>
-          </Key>
-        )}
-        {politics.uncertain && lead && (
-          <Key
-            swatch={<Swatch fill={lead.province ?? lead.fill} alpha={UNCERTAIN_ALPHA} />}
-          >
-            Claim uncertain: <span className="italic">fainter</span>
-          </Key>
-        )}
-        {politics.schematic && lead && (
+    // The timeline's pattern (Timeline.tsx): a slim strip in the reader's theme that
+    // never moves, with the key opening out of it, upward, not stacked on top of it.
+    <div
+      className={cn(
+        'flex flex-col rounded-lg border border-rule bg-background/90 text-foreground shadow-plate backdrop-blur-sm select-none',
+        open ? 'w-[240px]' : 'w-fit',
+        className,
+      )}
+    >
+      {open && (
+        <div id="legend-body" className="space-y-1.5 px-3 pt-3 pb-2.5 text-sm">
+          {lead && (
+            <>
+              <Key swatch={<Swatch fill={lead.fill} />}>{lead.name}</Key>
+              {lead.province && (
+                <Key swatch={<Swatch fill={lead.province} />}>its provinces</Key>
+              )}
+              {lead.client && (
+                <Key swatch={<Swatch fill={lead.client} />}>its client kingdoms</Key>
+              )}
+            </>
+          )}
+          {otherFills.length > 0 && (
+            <Key swatch={<Strip fills={otherFills} />}>
+              Other powers, <span className="italic">named on the map</span>
+            </Key>
+          )}
+          {politics.uncertain && lead && (
+            <Key
+              swatch={<Swatch fill={lead.province ?? lead.fill} alpha={UNCERTAIN_ALPHA} />}
+            >
+              Claim uncertain: <span className="italic">fainter</span>
+            </Key>
+          )}
+          {politics.schematic && lead && (
+            <Key
+              swatch={
+                <span
+                  className="block h-3 w-5"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${lead.province ?? lead.fill} 85%)`,
+                  }}
+                />
+              }
+            >
+              Frontier schematic: <span className="italic">no line</span>
+            </Key>
+          )}
+          {politics.unclaimed && (
+            <Key
+              swatch={
+                <span className="block h-3 w-5 rounded-[1px] border border-dashed border-foreground/40" />
+              }
+            >
+              No claim recorded
+            </Key>
+          )}
+          <Separator className="my-2" />
           <Key
             swatch={
-              <span
-                className="block h-3 w-5"
-                style={{
-                  background: `linear-gradient(90deg, transparent, ${lead.province ?? lead.fill} 85%)`,
-                }}
-              />
+              <Mark>
+                <Caput />
+              </Mark>
             }
           >
-            Frontier schematic: <span className="italic">no line</span>
+            Rome
           </Key>
-        )}
-        {politics.unclaimed && (
           <Key
             swatch={
-              <span className="block h-3 w-5 rounded-[1px] border border-dashed border-foreground/40" />
+              <Mark>
+                <Capital />
+              </Mark>
             }
           >
-            No claim recorded
+            Provincial or royal seat
           </Key>
-        )}
-        <Separator className="my-2" />
-        <Key swatch={<Caput />}>Rome</Key>
-        <Key swatch={<Capital />}>Provincial or royal seat</Key>
-        <Key swatch={<Town />}>Town</Key>
-        {seat && (
-          <Key swatch={<Seat fill={seat.fill} />}>
-            Kingdom, <span className="italic">extent unknown</span>
+          <Key
+            swatch={
+              <Mark>
+                <Town />
+              </Mark>
+            }
+          >
+            Town
           </Key>
+          {seat && (
+            <Key
+              swatch={
+                <Mark>
+                  <Seat fill={seat.fill} />
+                </Mark>
+              }
+            >
+              Kingdom, <span className="italic">extent unknown</span>
+            </Key>
+          )}
+          <Key
+            swatch={
+              <Mark>
+                <Road />
+              </Mark>
+            }
+          >
+            Road, where dated
+          </Key>
+        </div>
+      )}
+      {open && <span className="mx-3 h-px bg-rule" aria-hidden />}
+      {/* Folded, just the icon: a square the timeline strip's height (40px), named by its
+          tooltip. Open, the row also carries the word, as the key's title. */}
+      {/* Only the icon toggles: folded, it is the whole square; open, it is the ✕, and
+          the title beside it is only a title. One button in both states, so focus
+          stays on it across the toggle. */}
+      <div className="flex h-[38px] items-center gap-1">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              type="button"
+              onClick={toggle}
+              aria-expanded={open}
+              aria-controls="legend-body"
+              aria-label={open ? 'Hide the legend' : 'Show the legend'}
+              className={cn(
+                'grid place-items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring/60',
+                open ? 'ml-1 size-7' : 'size-[38px]',
+              )}
+            >
+              <span className="grid size-7 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground [&_svg]:size-4">
+                {open ? <X /> : <Shapes />}
+              </span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            {open ? 'Hide the legend' : 'Legend'}
+          </TooltipContent>
+        </Tooltip>
+        {open && (
+          <span className="pr-3.5 font-heading text-sm font-semibold tracking-[0.1em]">
+            Legend
+          </span>
         )}
-        <Key swatch={<Road />}>Road, where dated</Key>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
+  )
+}
+
+/**
+ * A map mark, as it is drawn: ink on a paper hairline. Over Parchment that reads as is;
+ * over Ink & gold the ink would vanish, so the mark sits on a small tile of paper, as
+ * it sits on land on the map.
+ */
+function Mark({ children }: { children: ReactNode }) {
+  return (
+    <span className="grid h-[18px] w-5 place-items-center rounded-[2px] dark:bg-[#EDE6D6]/90">
+      {children}
+    </span>
   )
 }
 
