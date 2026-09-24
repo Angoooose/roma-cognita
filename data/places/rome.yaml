@@ -1595,3 +1595,487 @@
   note: >-
     The western end of the Oppius, between S. Pietro in Vincoli and the Via del
     Colosseo (Platner & Ashby), where Pompey had his house; lettered there.
+
+# --- temples placed by a point --------------------------------------------------
+# Republican temples Platner & Ashby place, but with no surveyed outline. Each is
+# drawn in the model as a temple of a standard size at its point, facing downhill
+# (model.ts `POINT_TEMPLE`); the point and its basis are in the note. Pleiades'
+# points for most of them are only a generic point for Rome, so the locations are
+# read from Platner & Ashby's words against modern landmarks.
+
+- id: aedes-dianae-aventinensis
+  kind: temple
+  within: roma
+  location: [12.4834, 41.88325]
+  names:
+    - { text: Aedes Dianae, lang: la, preferred: true }
+    - { text: Temple of Diana on the Aventine, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Diana, aedes, p. 149' }
+  confidence: probable
+  review: draft
+  note: >-
+    The oldest temple on the Aventine, "ascribed by tradition to Servius Tullius",
+    rebuilt under Augustus. Placed "probably just west of the church of S. Prisca
+    on the clivus Publicius" (Platner & Ashby): approximate.
+
+- id: aedes-cereris-liberi-liberae
+  kind: temple
+  within: roma
+  pleiades: '581361483'
+  location: [12.4811, 41.8872]
+  names:
+    - { text: Aedes Cereris Liberi Liberaeque, lang: la, preferred: true }
+    - { text: 'Temple of Ceres, Liber and Libera', lang: en }
+  from: 493 BCE
+  to: after 27 BCE
+  condition:
+    - { value: standing, from: 493 BCE, to: 32 BCE }
+    - { value: burnt, from: 31 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Ceres Liber Liberaque, aedes, pp. 109–110' }
+    - { source: pleiades, locator: places/581361483 }
+  confidence: probable
+  review: draft
+  note: >-
+    The plebeians' temple, "dedicated in 493 B.C. by the consul Sp. Cassius";
+    "burned down in 31 B.C., restored by Augustus, and dedicated by Tiberius in 17
+    A.D." Placed "perhaps near the junction of the modern Vicolo di S. Sabina and
+    Via S. Maria in Cosmedin" (Platner & Ashby): approximate.
+
+- id: aedes-iunonis-reginae-aventinensis
+  kind: temple
+  within: roma
+  location: [12.4808, 41.8844]
+  names:
+    - { text: Aedes Iunonis Reginae, lang: la, preferred: true }
+    - { text: Temple of Juno Regina on the Aventine, lang: en }
+  from: 392 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Iuno Regina, templum, p. 290' }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by Camillus for the Juno of Veii and "dedicated by him in 392". Two
+    dedications "found near the church of S. Sabina indicate the approximate site"
+    (Platner & Ashby); placed between S. Sabina and the Largo Arrigo VII.
+
+- id: aedes-minervae-aventinensis
+  kind: temple
+  within: roma
+  location: [12.4827, 41.88395]
+  names:
+    - { text: Aedes Minervae, lang: la, preferred: true }
+    - { text: Temple of Minerva on the Aventine, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Minerva, aedes, p. 342' }
+  confidence: probable
+  review: draft
+  note: >-
+    The meeting place of scribes and actors in the Second Punic War; "the date of
+    the foundation ... is not known". Placed "probably near the intersection of the
+    modern Vie di S. Sabina and S. Prisca" (Platner & Ashby): approximate. Drawn at
+    the Marble Plan's 22 by 45 m.
+
+- id: aedes-lunae
+  kind: temple
+  within: roma
+  location: [12.4804, 41.8866]
+  names:
+    - { text: Aedes Lunae, lang: la, preferred: true }
+    - { text: Temple of Luna, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Luna, aedes, p. 320' }
+  confidence: probable
+  review: draft
+  note: >-
+    Ascribed to Servius Tullius and "first mentioned ... 182 B.C.". Placed "at the
+    extreme northern point of the Aventine, just above the porta Trigemina"
+    (Platner & Ashby): approximate.
+
+- id: aedes-mercurii
+  kind: temple
+  within: roma
+  pleiades: '107133090'
+  location: [12.4878, 41.88375]
+  names:
+    - { text: Aedes Mercurii, lang: la, preferred: true }
+    - { text: Temple of Mercury, lang: en }
+  from: 495 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Mercurius, aedes, p. 339' }
+    - { source: pleiades, locator: places/107133090 }
+  confidence: probable
+  review: draft
+  note: >-
+    "Dedicated in 495 B.C. by a centurion, M. Plaetorius", "on the slope of the
+    Aventine, above and facing the circus Maximus ... near its south-east end"
+    (Platner & Ashby): approximate.
+
+- id: aedes-quirini
+  kind: temple
+  within: roma
+  pleiades: '524616090'
+  location: [12.489, 41.9011]
+  names:
+    - { text: Aedes Quirini, lang: la, preferred: true }
+    - { text: Temple of Quirinus, lang: en }
+  from: 293 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Quirinus, aedes, pp. 438–439' }
+    - { source: pleiades, locator: places/524616090 }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by L. Papirius Cursor and "dedicated in 293 by his son"; struck by
+    lightning in 49 BCE. On the "north side of the Alta Semita ... eastern part of
+    the present gardens of the royal palace" (Platner & Ashby): approximate.
+
+- id: aedes-salutis
+  kind: temple
+  within: roma
+  pleiades: '377055053'
+  location: [12.48545, 41.90025]
+  names:
+    - { text: Aedes Salutis, lang: la, preferred: true }
+    - { text: Temple of Salus, lang: en }
+  from: 303 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Salus, aedes, p. 462' }
+    - { source: pleiades, locator: places/377055053 }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by C. Junius Bubulcus and "dedicated by him when dictator in 303",
+    painted by Fabius Pictor. "Near the west end of the present royal palace"
+    (Platner & Ashby): approximate.
+
+- id: aedes-semonis-sanci
+  kind: temple
+  within: roma
+  pleiades: '504705904'
+  location: [12.48655, 41.8973]
+  names:
+    - { text: Aedes Semonis Sanci Dii Fidii, lang: la, preferred: true }
+    - { text: Temple of Semo Sancus Dius Fidius, lang: en }
+  from: 466 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Semo Sancus, aedes, pp. 469–470' }
+    - { source: pleiades, locator: places/504705904 }
+  confidence: probable
+  review: draft
+  note: >-
+    "Dedicated by Sp. Postumius ... 5th June, 466 B.C.", "a little north of the
+    porta Sanqualis" where a base to the god was found (Platner & Ashby); placed at
+    the Pleiades point: approximate.
+
+- id: aedes-iunonis-monetae
+  kind: temple
+  within: roma
+  pleiades: '76518529'
+  location: [12.48318, 41.89395]
+  names:
+    - { text: Aedes Iunonis Monetae, lang: la, preferred: true }
+    - { text: Temple of Juno Moneta, lang: en }
+  from: 344 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Iuno Moneta, aedes, pp. 289–290' }
+    - { source: pleiades, locator: places/76518529 }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by Camillus and "dedicated in 344"; the mint worked here in the late
+    Republic. On the Arx, perhaps "the site of the transepts of the church of S.
+    Maria in Aracoeli" (Platner & Ashby): approximate.
+
+- id: aedes-fidei
+  kind: temple
+  within: roma
+  location: [12.4824, 41.89195]
+  names:
+    - { text: Aedes Fidei, lang: la, preferred: true }
+    - { text: Temple of Fides, lang: en }
+  from: 254 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Fides, aedes, p. 209' }
+  confidence: probable
+  review: draft
+  note: >-
+    Dedicated by A. Atilius Calatinus "in 254 or 250 B.C., and restored and
+    re-dedicated by M. Aemilius Scaurus in 115 B.C.". "Probably inside the area
+    Capitolina, at its south-east corner" (Platner & Ashby): approximate.
+
+- id: aedes-veiovis
+  kind: temple
+  within: roma
+  pleiades: '243075423'
+  location: [12.4832, 41.89295]
+  names:
+    - { text: Aedes Veiovis, lang: la, preferred: true }
+    - { text: Temple of Veiovis, lang: en }
+  from: 192 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Veiovis, aedes, pp. 548–549' }
+    - { source: pleiades, locator: places/243075423 }
+  confidence: probable
+  review: draft
+  note: >-
+    "Inter duos lucos", between the Arx and the Capitol; dedicated in 192 on Platner
+    & Ashby's reading of Livy. Its remains were found in 1939, after them, under the
+    Palazzo Senatorio at the north-west end of the Tabularium; placed there.
+
+- id: aedes-victoriae
+  kind: temple
+  within: roma
+  location: [12.4842, 41.8903]
+  names:
+    - { text: Aedes Victoriae, lang: la, preferred: true }
+    - { text: Temple of Victoria, lang: en }
+  from: 294 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Victoria, aedes, p. 570' }
+  confidence: probable
+  review: draft
+  note: >-
+    Dedicated by L. Postumius Megellus "when consul in 294 B.C."; it held the Magna
+    Mater's stone from 204 to 191. Placed where inscriptions "found about 50 metres
+    west of the present church of S. Teodoro may indicate its position" (Platner &
+    Ashby): approximate. It is now more often put beside the Magna Mater.
+
+- id: aedes-iunonis-lucinae
+  kind: temple
+  within: roma
+  location: [12.4978, 41.8964]
+  names:
+    - { text: Aedes Iunonis Lucinae, lang: la, preferred: true }
+    - { text: Temple of Juno Lucina, lang: en }
+  from: 375 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Iuno Lucina, aedes, pp. 288–289' }
+  confidence: probable
+  review: draft
+  note: >-
+    "A temple built in 375 B.C." in the goddess's grove on the Cispius. "Probably
+    not far west of S. Prassede and just north-west of the Torre Cantarelli"
+    (Platner & Ashby): approximate.
+
+- id: aedes-telluris
+  kind: temple
+  within: roma
+  pleiades: '241048343'
+  location: [12.491, 41.8926]
+  names:
+    - { text: Aedes Telluris, lang: la, preferred: true }
+    - { text: Temple of Tellus, lang: en }
+  from: 268 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Tellus, aedes, p. 511' }
+    - { source: pleiades, locator: places/241048343 }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by P. Sempronius Sophus in 268; Q. Cicero "restored the temple about 54
+    B.C.", and the senate met here after Caesar's murder. "In Carinis ... very
+    probably between the present Vie del Colosseo and dei Serpenti" (Platner &
+    Ashby): approximate.
+
+- id: aedes-honoris-et-virtutis
+  kind: temple
+  within: roma
+  pleiades: '387810362'
+  location: [12.4911, 41.88375]
+  names:
+    - { text: Aedes Honoris et Virtutis, lang: la, preferred: true }
+    - { text: Temple of Honour and Virtue, lang: en }
+  from: 234 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Honos et Virtus, aedes, pp. 258–259' }
+    - { source: pleiades, locator: places/387810362 }
+  confidence: probable
+  review: draft
+  note: >-
+    Honos by Q. Fabius Maximus in 234; Marcellus added Virtus, dedicated by his son
+    in 205. "Outside the gate but very near to it ... probably on the north side of
+    the via Appia" (Platner & Ashby), just outside the Porta Capena: approximate.
+
+- id: aedes-iani-foro-holitorio
+  kind: temple
+  within: roma
+  location: [12.4799, 41.89128]
+  names:
+    - { text: Aedes Iani, lang: la, preferred: true }
+    - { text: Temple of Janus in the Forum Holitorium, lang: en }
+  from: 260 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Ianus, aedes, pp. 277–278' }
+  confidence: probable
+  review: draft
+  note: >-
+    Built by C. Duilius after Mylae, "extra portam Carmentalem"; Platner & Ashby
+    take it as the north temple of the three under S. Nicola in Carcere, whose
+    remains place it. Frank dates the rebuilding there to about 90 BCE.
+
+- id: aedes-spei-foro-holitorio
+  kind: temple
+  within: roma
+  location: [12.47994, 41.89109]
+  names:
+    - { text: Aedes Spei, lang: la, preferred: true }
+    - { text: Temple of Spes, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 32 BCE }
+    - { value: burnt, from: 31 BCE, to: 31 BCE }
+    - { value: standing, from: 30 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Spes, aedes, pp. 493–494' }
+  confidence: probable
+  review: draft
+  note: >-
+    Built by A. Atilius Calatinus in the First Punic War; "burned again in 31", and
+    probably repaired by Augustus (when is not recorded, so the map shows it
+    standing again from the next year). "Probably the middle and the largest" of the
+    S. Nicola in Carcere temples, whose remains place it; drawn at 30 by 10 m.
+
+- id: aedes-iunonis-sospitae
+  kind: temple
+  within: roma
+  location: [12.47998, 41.8909]
+  names:
+    - { text: Aedes Iunonis Sospitae, lang: la, preferred: true }
+    - { text: Temple of Juno Sospita, lang: en }
+  from: 194 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Iuno Sospita, aedes (1), p. 291' }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by C. Cornelius Cethegus and dedicated in 194 (Livy; Platner & Ashby
+    misprint "104"). "Generally identified with the smallest", Doric, of the S.
+    Nicola in Carcere temples, whose remains place it.
+
+- id: aedes-pietatis-foro-holitorio
+  kind: temple
+  within: roma
+  location: [12.4801, 41.89165]
+  names:
+    - { text: Aedes Pietatis, lang: la, preferred: true }
+    - { text: Temple of Pietas, lang: en }
+  from: 181 BCE
+  to: 45 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Pietas, aedes, p. 390' }
+  confidence: probable
+  review: draft
+  note: >-
+    Vowed by M'. Acilius Glabrio at Thermopylae and "dedicated in 181 by his son";
+    it "stood at the east end of the area afterwards occupied by the theatre of
+    Marcellus, and was destroyed by Caesar in 44 B.C." (Platner & Ashby):
+    approximate.
+
+- id: aedes-iovis-statoris-metelli
+  kind: temple
+  within: roma
+  location: [12.47927, 41.89299]
+  names:
+    - { text: Aedes Iovis Statoris, lang: la, preferred: true }
+    - { text: Temple of Jupiter Stator in the Porticus Metelli, lang: en }
+  from: c. 146 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - {
+        source: platner-ashby,
+        locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304',
+      }
+  confidence: probable
+  review: draft
+  note: >-
+    Built by Q. Caecilius Metellus Macedonicus "after his triumph in 146 B.C.",
+    the first temple in Rome "entirely of marble". "Its exact site is known,
+    beneath the church of S. Maria in Campitelli" (Platner & Ashby).
+
+- id: aedes-iunonis-reginae-metelli
+  kind: temple
+  within: roma
+  location: [12.4789, 41.893]
+  names:
+    - { text: Aedes Iunonis Reginae, lang: la, preferred: true }
+    - { text: Temple of Juno Regina in the Porticus Metelli, lang: en }
+  from: c. 146 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - {
+        source: platner-ashby,
+        locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304',
+      }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The twin of Metellus's Jupiter Stator in his porticus, "just west of this, on
+    the opposite side of the Via della Tribuna di Campitelli" (Platner & Ashby).
+    Their own article on Juno Regina puts Lepidus's temple of 179 elsewhere.
+
+- id: aedes-herculis-musarum
+  kind: temple
+  within: roma
+  pleiades: '765376678'
+  location: [12.47857, 41.89252]
+  names:
+    - { text: Aedes Herculis Musarum, lang: la, preferred: true }
+    - { text: Temple of Hercules of the Muses, lang: en }
+  from: c. 187 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Hercules Musarum, aedes, p. 255' }
+    - { source: pleiades, locator: places/765376678 }
+  confidence: probable
+  review: draft
+  note: >-
+    Built by M. Fulvius Nobilior after taking Ambracia, "probably after his triumph
+    in 187"; "in 29 B.C. L. Marcius Philippus restored this temple". Placed from a
+    fragment of the Marble Plan "north-west of the porticus Octaviae" (Platner &
+    Ashby).

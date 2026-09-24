@@ -108,6 +108,37 @@ const MEASURED: {
 ]
 
 /**
+ * Temples placed by a point (the records with no outline): their size, width by
+ * length in metres — a typical mid-Republican temple on its podium, or what
+ * Platner & Ashby give.
+ */
+const POINT_TEMPLE: {
+  size: [number, number]
+  sizes: Record<string, [number, number]>
+  /** Temples whose remains fix how they lie: the direction their fronts face, radians from east. */
+  facing: Record<string, number>
+} = {
+  size: [14, 24],
+  sizes: {
+    // "22 × 45 m" on the Marble Plan (Platner & Ashby, Minerva, aedes, p. 342).
+    'aedes-minervae-aventinensis': [22, 45],
+    // About 30 by 10 m, the middle temple under S. Nicola in Carcere (Spes, pp. 493–494).
+    'aedes-spei-foro-holitorio': [12, 30],
+    // The other two under S. Nicola in Carcere, narrower, so the three stand in a
+    // row about 20 m apart as their remains do.
+    'aedes-iani-foro-holitorio': [11, 26],
+    'aedes-iunonis-sospitae': [10, 22],
+  },
+  // The three stand side by side, their long sides together; which way they fronted
+  // is taken as east, towards the Forum Holitorium and the Capitol.
+  facing: {
+    'aedes-iani-foro-holitorio': 0,
+    'aedes-spei-foro-holitorio': 0,
+    'aedes-iunonis-sospitae': 0,
+  },
+}
+
+/**
  * What the known buildings were faced with in the window, where Platner & Ashby say
  * (checked against each article, September 2026), from the year given, astronomical.
  * A building not listed, or before its first entry, is drawn in white stucco over
@@ -146,6 +177,13 @@ const STONE_OF: Record<
       from: -100000,
       stone: 'marble',
       why: '"the entire outside of the building was constructed originally of white marble" (Basilica Julia, pp. 79–80); the description is mostly of Augustus\' rebuilding, so Caesar\'s may have differed',
+    },
+  ],
+  'aedes-iovis-statoris-metelli': [
+    {
+      from: -100000,
+      stone: 'marble',
+      why: 'Metellus was "the first to build a temple in Rome entirely of marble" (Iuppiter Stator, p. 304)',
     },
   ],
   'aedes-apollinis-palatini': [
@@ -339,6 +377,53 @@ export function bakeModel(m: ModelInput) {
     })
   }
 
+  // Temples the records place by a point only: a temple of a standard size (or the
+  // size Platner & Ashby give) at the point, its long axis down the slope and its
+  // front facing downhill, as a temple on a hillside faced out over the valley.
+  // One that would stand on a surveyed monument, or in the river, is left out.
+  const pointFacing = new Map<string, Pt>()
+  const outlined = new Set(m.outlines.map((o) => o.id))
+  const doubts: string[] = []
+  for (const p of m.places.values()) {
+    if (p.kind !== 'temple' || p.within !== 'roma' || outlined.has(p.id)) continue
+    if (MEASURED.some((s) => s.id === p.id)) continue
+    const [cx, cy] = projection.forward(...p.location)
+    const [w, d] = POINT_TEMPLE.sizes[p.id] ?? POINT_TEMPLE.size
+    const gx = at(cx + 15, cy) - at(cx - 15, cy)
+    const gy = at(cx, cy + 15) - at(cx, cy - 15)
+    const fixed = POINT_TEMPLE.facing[p.id]
+    const down: Pt =
+      fixed !== undefined
+        ? [Math.cos(fixed), Math.sin(fixed)]
+        : Math.hypot(gx, gy) > 0.3
+          ? [-gx, -gy]
+          : [0, -1]
+    const angle = Math.atan2(down[1], down[0]) - Math.PI / 2
+    const ring = rect(cx, cy, w, d, angle)
+    const clash = monuments.find((mo) => ring.some((q) => inRing(q, mo.rings[0])))
+    if (clash) {
+      doubts.push(`${p.id} would stand on ${clash.id}: left out`)
+      continue
+    }
+    if (ring.some(([x, y]) => sample(m.water, x, y, 99) < 4)) {
+      doubts.push(`${p.id} would stand in the river: left out`)
+      continue
+    }
+    const l = Math.hypot(down[0], down[1])
+    pointFacing.set(p.id, [cx + (down[0] / l) * 100, cy + (down[1] / l) * 100])
+    monuments.push({
+      id: p.id,
+      kind: 'temple',
+      rings: [ring],
+      base: lowest([ring]),
+      body: MASSING.temple.body,
+      roof: 'gable',
+      podium: MASSING.temple.podium ?? 3,
+      approx: true,
+    })
+  }
+  for (const d of doubts) console.log(`model: ${d}`)
+
   // --- the wall ------------------------------------------------------------------------
   // Every join but the river bank's, stepped every 8 m so it rides the ground.
   const wall = m.wall.map(({ a, b, known }) => {
@@ -416,6 +501,8 @@ export function bakeModel(m: ModelInput) {
       .reduce((s, q) => [s[0] + q[0], s[1] + q[1]], [0, 0])
       .map((v) => v / mo.rings[0].length) as Pt
     if (mo.id === 'aedes-iovis-capitolini') return [c[0], c[1] - 500]
+    const own = pointFacing.get(mo.id)
+    if (own) return own
     const court = courts.find((f) => f !== mo && inRing(c, f.rings[0]))
     if (court) {
       const r = court.rings[0]

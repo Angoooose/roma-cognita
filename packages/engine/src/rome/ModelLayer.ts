@@ -13,7 +13,7 @@ import {
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
-import { groundMeshFade, plateMask } from './shading.ts'
+import { groundMeshFade, plateMask, reliefWash } from './shading.ts'
 
 /**
  * The model of Rome (DESIGN.md §7.7): the city as a museum model, raised out of the
@@ -1181,7 +1181,9 @@ function material() {
   )
   // Where a wall meets the ground it darkens, as a model's does.
   const foot = mix(float(0.7), float(1), smoothstep(0, 4, up))
-  mat.colorNode = attribute('colour', 'vec3').mul(foot)
+  // The relief under the city, washed over it, so the hills read from above.
+  const wash = mix(float(1), reliefWash(positionWorld.x, positionWorld.y), 0.9)
+  mat.colorNode = attribute('colour', 'vec3').mul(foot).mul(wash)
   return mat
 }
 

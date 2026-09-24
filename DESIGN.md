@@ -669,6 +669,16 @@ known and what is generated are kept apart:
   - The Capitoline temple and Pompey's theatre, which OpenStreetMap has no
     outline for, are sized from Platner & Ashby's measurements at their
     locations (`MEASURED`). Their placing is approximate.
+  - Twenty-three more Republican temples that Platner & Ashby place but nobody
+    has surveyed an outline for (Diana, Minerva and Juno Regina on the Aventine,
+    Quirinus and Salus on the Quirinal, Juno Moneta on the Arx, Metellus's marble
+    Jupiter Stator, the three under S. Nicola in Carcere, and others). Each is a
+    temple of a standard 14 by 24 m (or the size Platner & Ashby give) at its
+    recorded point, facing downhill, or as its remains lie (`POINT_TEMPLE`). The
+    point and how it is known are in each record's note; most are approximate,
+    read from Platner & Ashby's words against modern landmarks, since Pleiades
+    gives most of them only a generic point for Rome. One that would stand on a
+    surveyed monument is left out, and the build says so.
   - The Servian Wall on its reconstructed circuit (`servian.ts`), with towers at
     its gates. Reconstructed stretches are a little lower and paler. The river
     bank, where the Tiber was the defence, is left open.
@@ -750,7 +760,8 @@ known and what is generated are kept apart:
 what the city adds drawn on it:
 
 - The terrain is laid on the Mapterhorn heights smoothed over ~45 m (`ground.png`),
-  and lit and given its rock by their slope, so the surface model's modern
+  and lit and given its rock by their slope — the light with the slope drawn up
+  four times, so the hills read — so the surface model's modern
   buildings do not show, and the model stands on it exactly. The relief is
   today's, a few metres above the ancient ground.
 - Inside the walls, the ground between the houses is trodden earth: the
@@ -790,6 +801,11 @@ what the city adds drawn on it:
   shadows across roofs and streets. The shadow map is fitted to the view each
   frame, so its texels stay near a metre;
 - a bright sky and bounce light that keep the shaded walls light;
+- a wash of relief over the whole model, as an illustrated map shades its hills:
+  the smoothed ground lit from the north-west with its slope drawn up four times,
+  so slopes turned from the light fall darker and hilltops a little lighter. It
+  is what lets the seven hills read from straight above, where the roofs cover
+  most of the ground;
 - walls darkening a little where they meet the ground;
 - tilted, a tilt-shift: the top and bottom of the frame out of focus, as a
   close-range photograph of a model is, with a touch more contrast and colour.

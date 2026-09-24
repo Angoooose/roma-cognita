@@ -56,6 +56,12 @@ export const planUniforms = {
   loaded: uniform(0),
   /** How far the model stands (ModelLayer's `grow`): its ground mesh takes the shadows. */
   meshShown: uniform(0),
+  /**
+   * How much the relief under the city is drawn up, so the hills read from above:
+   * the smoothed slope's light is exaggerated this many times, on the ground and in
+   * the wash over the model (`reliefWash`).
+   */
+  relief: uniform(4),
 }
 
 function blank(bytes = [255, 0, 255, 255]) {
@@ -155,6 +161,20 @@ export function plateMask(mx: F, my: F, pxM: F) {
 /** How much the terrain is lit by the smoothed relief (`smoothGradient`) at a point. */
 export function smoothWeight(mx: F, my: F) {
   return groundLift(mx, my).weight.mul(planUniforms.meshShown)
+}
+
+/**
+ * The wash of relief laid over the model, as an illustrated map shades its hills:
+ * the smoothed ground lit from the north-west with its slope drawn up
+ * (`planUniforms.relief`), so slopes turned from the light fall darker, and the
+ * hilltops a little lighter than the valleys. 1 on flat ground at the valleys' mean.
+ */
+export function reliefWash(mx: F, my: F) {
+  const g = smoothGradient(mx, my).mul(planUniforms.relief)
+  const n = normalize(vec3(g.x.negate(), g.y.negate(), 1))
+  const lit = dot(n, vec3(LIGHT.x, LIGHT.y, LIGHT.z)).div(LIGHT.z)
+  const high = smoothstep(18, 55, groundAt(mx, my))
+  return clamp(lit, 0.45, 1.3).mul(mix(float(0.9), float(1.07), high))
 }
 
 /**

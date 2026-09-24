@@ -30,6 +30,7 @@ import { roadShading } from '../roads/shading.ts'
 import {
   groundLift,
   planShading,
+  planUniforms,
   plateMask,
   riverSwap,
   smoothGradient,
@@ -198,12 +199,13 @@ export function createTerrainMaterial(n: number) {
   // Under the model of Rome the ground is lit by, and takes its rock from, the
   // smoothed relief it is laid on (rome/shading.ts).
   const pm = origin.add(uv().mul(extent)).mul(1000)
-  const gradient = mix(
-    vec2(s.g, s.b),
-    smoothGradient(pm.x, pm.y),
-    smoothWeight(pm.x, pm.y),
+  const under = smoothWeight(pm.x, pm.y)
+  const smooth = smoothGradient(pm.x, pm.y)
+  const gradient = mix(vec2(s.g, s.b), smooth, under)
+  // The light takes the smoothed slope drawn up, so the hills read under the city.
+  const grad = mix(vec2(s.g, s.b), smooth.mul(planUniforms.relief), under).mul(
+    terrainUniforms.shadeExaggeration,
   )
-  const grad = gradient.mul(terrainUniforms.shadeExaggeration)
   const normal = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
 
   let shade: THREE.Node<'float'> = float(0)
