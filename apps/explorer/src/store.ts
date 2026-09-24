@@ -28,6 +28,8 @@ interface ExplorerState {
   inspect(x: number, y: number): Promise<void>
   /** Flies to a search result, in the first year it is on the map if not this one, and inspects it. */
   goTo(entry: MapEntry): void
+  /** Shows a polity as it was in a year: moves the timeline there, flies to it, and inspects it. */
+  goToPolity(id: string, year: number): void
   closeInspector(): void
 }
 
@@ -74,10 +76,17 @@ export const useExplorer = create<ExplorerState>()((set, get) => ({
       set({ selection: null })
       get().goToYear(entry.years[0][0])
     }
-    // Beside the inspector, when there is room for both.
-    const inset = window.innerWidth >= 720 ? INSPECTOR_INSET : 0
-    map.flyTo(entry.ref, { inset })
-    inspectRef(entry.ref)
+    flyAndInspect(entry.ref)
+  },
+
+  goToPolity(id, year) {
+    const { map } = get()
+    if (!map) return
+    if (year !== map.year) {
+      set({ selection: null })
+      get().goToYear(year)
+    }
+    flyAndInspect({ kind: 'polity', id })
   },
 
   closeInspector() {
@@ -85,6 +94,15 @@ export const useExplorer = create<ExplorerState>()((set, get) => ({
     set({ inspected: null, selection: null })
   },
 }))
+
+function flyAndInspect(ref: MapRef) {
+  const { map } = useExplorer.getState()
+  if (!map) return
+  // Beside the inspector, when there is room for both.
+  const inset = window.innerWidth >= 720 ? INSPECTOR_INSET : 0
+  map.flyTo(ref, { inset })
+  inspectRef(ref)
+}
 
 function inspectRef(ref: MapRef) {
   const { map } = useExplorer.getState()

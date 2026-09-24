@@ -4,6 +4,7 @@ import { type ReactNode, useMemo, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import { usePeople } from '@/peopleStore.ts'
 import { useExplorer } from '@/store.ts'
 
 /**
@@ -15,6 +16,7 @@ import { useExplorer } from '@/store.ts'
 export function Legend() {
   const map = useExplorer((s) => s.map)
   const year = useExplorer((s) => s.year)
+  const personOpen = usePeople((s) => s.person !== null)
   const data = useMemo(() => {
     if (!map) return null
     const politics = map.politics.legend(year)
@@ -28,7 +30,7 @@ export function Legend() {
     }
   }, [map, year])
   if (!data) return null
-  return <LegendPanel {...data} className="fixed bottom-4 left-4" />
+  return <LegendPanel {...data} folded={personOpen} className="fixed bottom-4 left-4" />
 }
 
 const STORE = 'legend-open'
@@ -51,16 +53,30 @@ export interface LegendData {
 export function LegendPanel({
   politics,
   seat,
+  folded = false,
   className,
-}: LegendData & { className?: string }) {
-  const [open, setOpen] = useState(initialOpen)
-  const toggle = () =>
-    setOpen((o) => {
-      try {
-        localStorage.setItem(STORE, String(!o))
-      } catch {}
-      return !o
-    })
+}: LegendData & {
+  /** Folded to its strip while the person panel needs the left side; the choice stays as it was. */
+  folded?: boolean
+  className?: string
+}) {
+  const [chosen, setChosen] = useState(initialOpen)
+  // Opening the legend while it is folded away opens it anyway, until the fold lifts.
+  const [unfolded, setUnfolded] = useState(false)
+  const [wasFolded, setWasFolded] = useState(folded)
+  if (folded !== wasFolded) {
+    setWasFolded(folded)
+    setUnfolded(false)
+  }
+  const open = chosen && (!folded || unfolded)
+  const toggle = () => {
+    const next = !open
+    if (next && folded) setUnfolded(true)
+    setChosen(next)
+    try {
+      localStorage.setItem(STORE, String(next))
+    } catch {}
+  }
 
   const [lead, ...others] = politics.powers
   const otherFills = [...new Set(others.map((p) => p.fill))]

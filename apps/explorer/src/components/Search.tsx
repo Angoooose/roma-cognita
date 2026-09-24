@@ -184,11 +184,12 @@ export function Search() {
 
 /**
  * An atlas plate's title block: the map's name and the years it covers, framed in the
- * double rule, with the index to it beneath.
+ * double rule, with the index to it beneath. App.tsx places it at the head of the left
+ * column, above the person panel.
  */
 function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }) {
   return (
-    <div className="fixed top-4 left-4 w-[248px] rounded-lg rule-double bg-card/95 text-card-foreground backdrop-blur-sm select-none">
+    <div className="pointer-events-auto w-[248px] shrink-0 rounded-lg rule-double bg-card/95 text-card-foreground backdrop-blur-sm select-none">
       <div className="px-4 pt-3 pb-2.5 text-center">
         <h1 className="font-heading text-lg leading-tight font-semibold tracking-[0.16em]">
           Orbis Romanus

@@ -217,6 +217,11 @@ export class RomeMap {
     return new Map(all.map((p, k) => [p.id, atoms[k]]))
   }
 
+  /** Whether `ref` is on the map in `year`: a province is not drawn before it was one. */
+  shows(ref: MapRef, year: number) {
+    return hitFor(this, ref, year) !== null
+  }
+
   /** What `pick` would report for `ref` in the year shown; null if it is not on the map. */
   inspectRef(ref: MapRef) {
     return hitFor(this, ref, this.year)

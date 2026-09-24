@@ -8,6 +8,7 @@ import { parseYear } from './year.ts'
  *   ?debug=1                                    frame-rate and tile readout
  *   ?year=63BCE                                 the year shown (default: 63 BCE)
  *   ?bare=1                                     no timeline or inspector
+ *   ?person=dprr:2072                           the person panel open on someone (peopleStore.ts)
  */
 export function readParams() {
   const params = new URLSearchParams(location.search)

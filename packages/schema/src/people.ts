@@ -151,6 +151,30 @@ export interface Authorities {
   sources: { id: number; name: string; abbreviation?: string; biblio?: string }[]
 }
 
+/**
+ * One person serving in one of our polities in one year: DPRR's posts joined through
+ * data/dprr-provinces.yaml (pipeline/src/people/governors.ts).
+ */
+export interface GovernorshipRecord {
+  /** Our polity id. */
+  polity: string
+  year: Year
+  post: number
+  /** The DPRR province of the post that put this person here: a post can name several. */
+  province: number
+  /** `command`: governed it. `staff`: served under whoever did. */
+  role: 'command' | 'staff'
+  /** DPRR is unsure of the post or of its province. */
+  uncertain: boolean
+}
+
+/** build/people/governorships.json. */
+export interface Governorships {
+  /** Our polities that data/dprr-provinces.yaml joins to DPRR at all: where "no governor attested" means something. */
+  polities: string[]
+  records: GovernorshipRecord[]
+}
+
 /** A compact row per person for the ⌘K search, so search can open before the rest loads. */
 export interface SearchEntry {
   id: PersonId

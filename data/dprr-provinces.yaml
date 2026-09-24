@@ -1,0 +1,959 @@
+# How the Digital Prosopography of the Roman Republic's 92 "provinces" line up
+# with our polities, so that a province on the map can show who governed it in
+# the year drawn. One entry per DPRR province, keyed by DPRR's own name for it,
+# spelt exactly as DPRR spells it. The schema is packages/schema/src/
+# dprrProvinces.ts; the reasoning behind the join is PEOPLE.md §3.1.
+#
+# Licence. This table is our work, under our licence (CC BY-SA), and lives in
+# data/ for that reason. DPRR is CC BY-NC, and the two cannot be merged
+# (PEOPLE.md §2), so nothing here is taken from DPRR except the names of its
+# provinces. No governors, no dates of office, no counts. Every judgement below
+# rests on the sources cited, not on DPRR's records.
+#
+# `kind` says what sort of thing the name is. DPRR's "provinces" are a
+# praetor's or proconsul's provincia — his assigned sphere of duty — and only
+# some of those were ground. Only a `territory` is joined to polities, and only
+# its posts appear in a polity's inspector. The rest are sorted so the inspector
+# can say what they are: a `region` of Italy, a `city`, a standing `court` at
+# Rome, a praetor's `jurisdiction` at Rome, a `command` with no fixed ground, or
+# a `vague` name that cannot be put on one polity.
+#
+# Rules followed:
+# - A join names only polities in polities.yaml, and agrees with claims.yaml:
+#   where the ground changed hands in 68–43 BCE, the join is dated to match
+#   (Pontus from 63, Cyprus 58–48).
+# - An undated join holds whenever both the DPRR post and the polity exist. So a
+#   post from before a province was created (Crete before 66, Syria before 64)
+#   is simply not shown; that is left to the polity's dates, never faked here.
+# - More than one polity at once means the post covered all of them (Pompey's
+#   two Spains, Caesar's Transalpine Gaul after the conquest).
+# - A name for ground we do not draw as any polity is `vague`, with a note
+#   saying so. No polity is invented to receive it.
+# - A client kingdom or free ally we draw (Egypt, Armenia, Judaea, Lycia) is a
+#   `territory` joined to itself: Romans served there, as commanders, envoys and
+#   staff, though Rome sent no governor. The inspector tells governors from
+#   staff by office, not by this table.
+#
+# Confidence is how sure the classification and join are, not how well any
+# governor is attested. Every entry is review: draft until signed off.
+
+# --- territories: Spain ------------------------------------------------------
+
+- dprr: Hispania
+  kind: territory
+  polities:
+    - polity: hispania-citerior
+      from: 54 BCE
+      to: 49 BCE
+    - polity: hispania-ulterior
+      from: 54 BCE
+      to: 49 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 52' }
+    - { source: cassius-dio, locator: '39.33' }
+    - { source: caesar-bc, locator: '1.38' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Spain as a whole. For 54–49 it is joined to both Spanish provinces, because
+    the lex Trebonia of 55 gave Pompey both of them for five years, and he
+    governed them from Italy through his legates Afranius, Petreius and Varro
+    until Caesar beat them in 49. Outside those years the name marks commands
+    that do not say which Spain they meant, and is left unjoined rather than
+    guessed. The schema's own example treats Hispania as vague; this is a
+    deliberate exception, to be confirmed.
+
+- dprr: Hispania Citerior
+  kind: territory
+  polities:
+    - polity: hispania-citerior
+  confidence: certain
+  review: draft
+
+- dprr: Balearic islands
+  kind: territory
+  polities:
+    - polity: hispania-citerior
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: broughton-mrr }
+  confidence: probable
+  review: draft
+  note: >-
+    Conquered by Q. Caecilius Metellus in 123 and governed from Nearer Spain
+    thereafter; our map draws the islands as part of Hispania Citerior.
+
+- dprr: Hispania Ulterior
+  kind: territory
+  polities:
+    - polity: hispania-ulterior
+  confidence: certain
+  review: draft
+
+# --- territories: Gaul -------------------------------------------------------
+
+- dprr: Gallia Narbonensis
+  kind: territory
+  polities:
+    - polity: gallia-transalpina
+  sources:
+    - { source: pliny-nh, locator: '3.31' }
+    - { source: cah-ix, locator: ch. 9 }
+  confidence: probable
+  review: draft
+  note: >-
+    The later, official name of the old Transalpine province round Narbo, used
+    once the rest of Gaul had been conquered and needed telling apart from it.
+    The same ground as our gallia-transalpina.
+
+- dprr: Gallia Transalpina
+  kind: territory
+  polities:
+    - polity: gallia-transalpina
+    - polity: gallia-comata
+      from: 51 BCE
+      confidence: uncertain
+      note: >-
+        Caesar's conquests, governed with the old province. Uncertain for
+        every governor it brings: DPRR names only Transalpine Gaul, so a man
+        who held the old province alone (Sex. Pompeius at Massilia, 43) is
+        brought here too.
+  sources:
+    - { source: caesar-bg }
+    - { source: cah-ix, locator: ch. 9 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Gaul beyond the Alps. Before the conquest this is only the old province.
+    From 51, when our map first draws Gallia Comata ("long-haired Gaul", the
+    conquered interior), a command over Transalpine Gaul is taken to cover both:
+    Caesar held them as one command. They were first given to different men in
+    44, when Lepidus took the old province and Plancus the rest, so the join is
+    weakest in 44–43, for a governor who held only one half. It also inherits
+    gallia-comata's own doubtful start date.
+
+- dprr: Gallia Cisalpina
+  kind: territory
+  polities:
+    - polity: gallia-cisalpina
+  confidence: certain
+  review: draft
+
+- dprr: Gallia Cispadana
+  kind: territory
+  polities:
+    - polity: gallia-cisalpina
+  sources:
+    - { source: cah-ix }
+  confidence: probable
+  review: draft
+  note: >-
+    Gaul "this side of the Po": the southern half of Cisalpine Gaul, inside
+    our gallia-cisalpina.
+
+- dprr: Liguria
+  kind: territory
+  polities:
+    - polity: gallia-cisalpina
+  sources:
+    - { source: caesar-bg, locator: '1.10' }
+    - { source: barrington, locator: 'maps 39–40' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Ligurian coast and Apennines north of the Arno, which Rome fought over
+    in the second century. By this window it lay inside the province of
+    Cisalpine Gaul, and our cisalpina ground runs to Albintimilium; it became a
+    region of Italy only under Augustus. Joined to the province, not treated
+    as an Italian region.
+
+- dprr: Venetia
+  kind: territory
+  polities:
+    - polity: gallia-cisalpina
+  sources:
+    - { source: pliny-nh, locator: '3.127' }
+    - { source: barrington, locator: 'maps 39–40' }
+  confidence: probable
+  review: draft
+  note: >-
+    The land of the Veneti round Aquileia and Patavium, north of the Po. In this
+    window it was part of Cisalpine Gaul, which our map draws to the Formio; it
+    joined Italy only when the province was dissolved after 43.
+
+# --- territories: the islands ------------------------------------------------
+
+- dprr: Sardinia
+  kind: territory
+  polities:
+    - polity: sardinia-corsica
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+  note: One province with Corsica, under one governor.
+
+- dprr: Corsica
+  kind: territory
+  polities:
+    - polity: sardinia-corsica
+  sources:
+    - { source: broughton-mrr }
+  confidence: certain
+  review: draft
+  note: One province with Sardinia, under one governor.
+
+- dprr: Sicilia
+  kind: territory
+  polities:
+    - polity: sicilia
+  confidence: certain
+  review: draft
+
+# --- territories: Africa -----------------------------------------------------
+
+- dprr: Mauretania
+  kind: territory
+  polities:
+    - polity: mauretania
+    - polity: mauretania-bogud
+      from: 49 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: cassius-dio, locator: '41.42.7' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Moorish kingdom, never a province in this window. Joined to both
+    halves our map draws once it was split between Bocchus and Bogud in 49,
+    since the name does not say which.
+
+- dprr: Numidia
+  kind: territory
+  polities:
+    - polity: numidia
+      to: 47 BCE
+    - polity: africa-nova
+      from: 46 BCE
+  sources:
+    - { source: bellum-africum, locator: '97' }
+  confidence: probable
+  review: draft
+  note: >-
+    Juba's kingdom until Thapsus; annexed by Caesar in 46 as Africa Nova ("New
+    Africa"). Dated to match claims.yaml, where the kingdom's ground passes to
+    the new province in 46.
+
+- dprr: Africa
+  kind: territory
+  polities:
+    - polity: africa
+  confidence: certain
+  review: draft
+  note: >-
+    The old province round Carthage and Utica. After 46 it is also called
+    Africa Vetus ("Old Africa"), and is the same polity.
+
+- dprr: Africa Vetus
+  kind: territory
+  polities:
+    - polity: africa
+  sources:
+    - { source: bellum-africum, locator: '97' }
+  confidence: certain
+  review: draft
+  note: >-
+    "Old Africa": the original province, so called from 46 to tell it from
+    Africa Nova. Our africa carries the name from 46.
+
+- dprr: Africa Nova
+  kind: territory
+  polities:
+    - polity: africa-nova
+  confidence: certain
+  review: draft
+
+- dprr: Cyrenaica
+  kind: territory
+  polities:
+    - polity: cyrenae
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+  confidence: certain
+  review: draft
+  note: The country of Cyrene; the same province as our cyrenae.
+
+- dprr: Cyrene
+  kind: territory
+  polities:
+    - polity: cyrenae
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+  confidence: certain
+  review: draft
+  note: >-
+    The city that gave the province its name. A post "at Cyrene" is a post in
+    the province, so it is joined like Cyrenaica rather than treated as a city.
+
+- dprr: Aegyptus
+  kind: territory
+  polities:
+    - polity: aegyptus
+  sources:
+    - { source: caesar-bc, locator: '3.103–112' }
+    - { source: bellum-alexandrinum }
+    - { source: braund-1984 }
+  confidence: probable
+  review: draft
+  note: >-
+    Ptolemaic Egypt, a client kingdom and never a province before 30. Joined
+    to the kingdom so that Romans who served there — in Caesar's Alexandrian
+    war, or with the legions left behind — show on it; none was its governor.
+
+# --- territories: Illyricum and the Balkans ----------------------------------
+
+- dprr: Illyria
+  kind: territory
+  polities:
+    - polity: illyricum
+  sources:
+    - { source: wilkes-1969, locator: 'pp. 37–41' }
+    - { source: dzino-2010, locator: 'pp. 80–98' }
+  confidence: probable
+  review: draft
+  note: >-
+    The east Adriatic coast, the name used for Rome's third- and second-century
+    Illyrian wars. The same ground became the province of Illyricum, which our
+    map draws from 59; a post before then is not shown.
+
+- dprr: Illyricum
+  kind: territory
+  polities:
+    - polity: illyricum
+  confidence: certain
+  review: draft
+
+- dprr: Dalmatia
+  kind: territory
+  polities:
+    - polity: delmatae
+  sources:
+    - { source: appian, locator: 'Ill. 11–13' }
+    - { source: wilkes-1969, locator: 'pp. 29–45' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The land of the Delmatae, inland from Salona, against whom Rome fought in
+    the second century and again in 45–44. In this window it was hostile ground
+    outside the province of Illyricum, and our map draws it as the Delmatae's
+    own. Joined to them, not to Illyricum; the imperial province of Dalmatia is
+    later. A post here is a war command, never a governorship of the people.
+
+- dprr: Macedonia
+  kind: territory
+  polities:
+    - polity: macedonia
+  confidence: certain
+  review: draft
+
+- dprr: Macedonia/Achaea
+  kind: territory
+  polities:
+    - polity: macedonia
+  sources:
+    - { source: kallet-marx-1995 }
+    - { source: broughton-mrr, locator: vol. II }
+  confidence: probable
+  review: draft
+  note: >-
+    Macedonia with Greece. Greece (Achaea) was governed from Macedonia in this
+    window, and our macedonia includes it.
+
+- dprr: Achaea
+  kind: territory
+  polities:
+    - polity: macedonia
+  sources:
+    - { source: kallet-marx-1995 }
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: cicero-fam, locator: '4.12' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Greece south of Thessaly. It became a separate province only in 27, and our
+    map draws its ground as Macedonia's throughout, so it is joined there.
+    Caesar did send his own governors to Greece in 46–44, which some count as
+    an early province of Achaea; here they appear on Macedonia. The name also
+    covers the civil-war commanders of 49–48, whose posts in Greece were
+    campaigns, not government.
+
+- dprr: Epirus
+  kind: territory
+  polities:
+    - polity: macedonia
+  sources:
+    - { source: kallet-marx-1995 }
+    - { source: barrington, locator: 'maps 49–51, 54–55' }
+  confidence: probable
+  review: draft
+  note: >-
+    The north-west of Greece, down to the Ambracian Gulf, part of the province
+    of Macedonia and inside our macedonia ground.
+
+- dprr: Aetolia
+  kind: territory
+  polities:
+    - polity: macedonia
+  sources:
+    - { source: kallet-marx-1995 }
+    - { source: barrington, locator: 'maps 54–55' }
+  confidence: probable
+  review: draft
+  note: >-
+    Central Greece north of the Gulf of Corinth, the name of Rome's war with the
+    Aetolian League in 191–189. By this window it lay in the Greece governed
+    from Macedonia, which is how our map draws it.
+
+- dprr: Thracia
+  kind: territory
+  polities:
+    - polity: thracia-odrysae
+  sources:
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Thrace inland of the Aegean coast, which in this window was the Odrysian
+    kingdom, a client of Rome. The Thracian coast itself was Macedonia's.
+    Joined to the kingdom; a Roman post here is a campaign, not government.
+
+- dprr: Crete
+  kind: territory
+  polities:
+    - polity: creta
+  sources:
+    - { source: velleius, locator: '2.38.6' }
+    - { source: cassius-dio, locator: '36.17a–19' }
+  confidence: certain
+  review: draft
+  note: >-
+    Our creta starts in 66, when Metellus had finished the conquest; the war
+    years before it are not shown on the province, and the Cretan league that
+    fought him is not the place to show them. Crete is not joined to Cyrenae:
+    polities.yaml leaves the date of their union unsettled.
+
+# --- territories: Asia Minor -------------------------------------------------
+
+- dprr: Asia
+  kind: territory
+  polities:
+    - polity: asia
+  confidence: certain
+  review: draft
+
+- dprr: Rhodes
+  kind: territory
+  polities:
+    - polity: rhodus
+  sources:
+    - { source: strabo, locator: '14.2.2–4' }
+    - { source: fraser-bean-1954 }
+  confidence: probable
+  review: draft
+  note: >-
+    The free island state and ally, never in a province in this window. A Roman
+    post here is a command at or of Rhodes (its fleet served Rome in the civil
+    wars), not a governorship.
+
+- dprr: Lycia
+  kind: territory
+  polities:
+    - polity: lycia
+  sources:
+    - { source: strabo, locator: '14.3.2–3' }
+    - { source: behrwald-2000 }
+  confidence: probable
+  review: draft
+  note: >-
+    The Lycian League, a free ally; a province only from 43 CE. A Roman post
+    here is a command in its territory, such as Brutus's campaign of 42.
+
+- dprr: Bithynia
+  kind: territory
+  polities:
+    - polity: bithynia-pontus
+  confidence: certain
+  review: draft
+  note: >-
+    Our bithynia-pontus is Bithynia alone until 63, then Bithynia and Pontus
+    together; Bithynia is in it throughout.
+
+- dprr: Pontus
+  kind: territory
+  polities:
+    - polity: bithynia-pontus
+      from: 63 BCE
+  sources:
+    - { source: strabo, locator: '12.3.1' }
+    - { source: magie-1950 }
+  confidence: probable
+  review: draft
+  note: >-
+    Mithridates' kingdom until Pompey's settlement of 63, which joined its
+    western half to Bithynia as one province. Before 63 a Roman post in Pontus
+    was a war against the king, not government of his kingdom, so it is not
+    joined; commands over Bithynia in those years reach the province through
+    the Bithynia entry. Dated to match claims.yaml.
+
+- dprr: Galatia
+  kind: territory
+  polities:
+    - polity: galatia
+  sources:
+    - { source: cicero-deiotaro }
+    - { source: mitchell-1993 }
+  confidence: probable
+  review: draft
+  note: >-
+    The Galatian tetrarchs, above all Deiotarus: a client kingdom, a province
+    only from 25. A Roman post here is a campaign or an embassy.
+
+- dprr: Cappadocia
+  kind: territory
+  polities:
+    - polity: cappadocia
+  sources:
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: draft
+  note: >-
+    The kingdom of the Ariobarzanids, a client of Rome, a province only from
+    17 CE. A Roman post here is a campaign or an embassy.
+
+- dprr: Cilicia
+  kind: territory
+  polities:
+    - polity: cilicia
+  confidence: certain
+  review: draft
+  note: >-
+    What else the governor of Cilicia held — Cyprus from 58 to 48, the
+    Phrygian districts from 56 to 50 — follows from claims.yaml, not from here.
+
+- dprr: Cyprus
+  kind: territory
+  polities:
+    - polity: cilicia
+      from: 58 BCE
+      to: 48 BCE
+  sources:
+    - { source: plutarch, locator: 'Cato Minor 34–38' }
+    - { source: cassius-dio, locator: '42.35.5–6' }
+  confidence: probable
+  review: draft
+  note: >-
+    Annexed in 58 under the lex Clodia and governed as part of Cilicia until
+    Caesar gave it back to the Ptolemies in 47. Before and after, it was a
+    Ptolemaic kingdom with no Roman governor, so only those years are joined.
+    Dated to match claims.yaml.
+
+- dprr: Armenia
+  kind: territory
+  polities:
+    - polity: armenia
+  sources:
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: sherwin-white-1984, locator: 'chs. 8–12' }
+  confidence: probable
+  review: draft
+  note: >-
+    Tigranes' kingdom of Greater Armenia, which Lucullus and Pompey invaded and
+    which Tigranes kept as Rome's ally after submitting in 66. A post here is
+    a campaign or an embassy; Rome never governed it. Lesser Armenia, west of
+    the Euphrates, is a different polity and is not meant.
+
+# --- territories: the Levant -------------------------------------------------
+
+- dprr: Syria
+  kind: territory
+  polities:
+    - polity: syria
+  confidence: certain
+  review: draft
+  note: A province from 64; a post before then is not shown.
+
+- dprr: Iudaea
+  kind: territory
+  polities:
+    - polity: judaea
+  sources:
+    - { source: josephus-aj, locator: '14.54–79' }
+    - { source: josephus-bj, locator: '1.141–158' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Hasmonean kingdom, a client after Pompey took Jerusalem in 63 and
+    never a province in this window. A post here is a Roman commander acting
+    in Judaea under the governor of Syria or Pompey; our judaea is the kingdom
+    itself, and the coast Rome took from it in 63 is Syria's.
+
+# --- regions of Italy ------------------------------------------------------------
+# Parts of Italy, which in this window was citizen territory with no governor
+# and is drawn whole as italia. A post in one of these is a special command —
+# a war, a rising, a levy — not the government of a province, so none is joined.
+
+- dprr: Aequian territory
+  kind: region
+  confidence: certain
+  review: draft
+  note: The land of the Aequi, east of Rome; the name of fifth-century wars.
+
+- dprr: Allied cities of Italy
+  kind: region
+  confidence: probable
+  review: draft
+  note: >-
+    Rome's Italian allies as a body, before the Social War made them citizens.
+    Not one part of Italy but the whole of it outside the citizen lands.
+
+- dprr: Apulia
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Bruttium
+  kind: region
+  confidence: certain
+  review: draft
+  note: The toe of Italy.
+
+- dprr: Calabria
+  kind: region
+  confidence: certain
+  review: draft
+  note: >-
+    The ancient Calabria is the heel of Italy, round Brundisium and Tarentum,
+    not the modern region of that name, which is ancient Bruttium.
+
+- dprr: Campania
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Etruria
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Hernican territory
+  kind: region
+  confidence: certain
+  review: draft
+  note: The land of the Hernici, south-east of Rome.
+
+- dprr: Latium
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Lucania
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Picenum
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Sabine territory
+  kind: region
+  confidence: certain
+  review: draft
+  note: The land of the Sabines, north-east of Rome; the same as Sabinum.
+
+- dprr: Sabinum
+  kind: region
+  confidence: certain
+  review: draft
+  note: The same as Sabine territory.
+
+- dprr: Samnium
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Umbria
+  kind: region
+  confidence: certain
+  review: draft
+
+- dprr: Volscian territory
+  kind: region
+  confidence: certain
+  review: draft
+  note: The land of the Volsci, south of Rome; the name of fifth-century wars.
+
+# --- cities ----------------------------------------------------------------------
+# A post at a single city: a garrison, a siege, a local command. Not joined,
+# even where the city lies inside a polity we draw, because it is not the
+# government of that polity.
+
+- dprr: Alexandria
+  kind: city
+  sources:
+    - { source: bellum-alexandrinum }
+  confidence: certain
+  review: draft
+  note: >-
+    The Ptolemaic capital. A post here belongs to Caesar's war in and round the
+    city, not to any government of Egypt; see Aegyptus.
+
+- dprr: Brundisium
+  kind: city
+  confidence: certain
+  review: draft
+
+- dprr: Capua
+  kind: city
+  confidence: certain
+  review: draft
+
+- dprr: Delos
+  kind: city
+  confidence: certain
+  review: draft
+  note: The sacred island and free port in the Cyclades.
+
+- dprr: Luceria
+  kind: city
+  confidence: certain
+  review: draft
+
+- dprr: Pisa
+  kind: city
+  confidence: certain
+  review: draft
+  note: >-
+    South of the Arno, so in Italy; the base for Rome's second-century
+    Ligurian wars.
+
+- dprr: Suessula
+  kind: city
+  confidence: certain
+  review: draft
+
+- dprr: Tarentum
+  kind: city
+  confidence: certain
+  review: draft
+
+# --- jurisdictions at Rome -------------------------------------------------------
+
+- dprr: Rome
+  kind: jurisdiction
+  confidence: certain
+  review: draft
+  note: >-
+    Duties in the city itself. Rome is a polity in our data only as the other
+    end of every province-of relation; it holds no ground, so nothing is joined.
+
+- dprr: urbanus
+  kind: jurisdiction
+  confidence: certain
+  review: draft
+  note: The urban praetor, who heard lawsuits between Roman citizens.
+
+- dprr: inter peregrinos
+  kind: jurisdiction
+  confidence: certain
+  review: draft
+  note: >-
+    The praetor "among foreigners", who heard lawsuits in which one side was
+    not a Roman citizen.
+
+- dprr: city
+  kind: jurisdiction
+  confidence: certain
+  review: draft
+  note: >-
+    A praetor's duties in the city where it is not said whether he was the
+    urban praetor, the foreigners' praetor or both.
+
+# --- standing courts at Rome -----------------------------------------------------
+# The quaestiones perpetuae: juries presided over by a praetor, each for one
+# crime.
+
+- dprr: ambitus
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for electoral bribery.
+
+- dprr: de veneficiis
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for poisoning.
+
+- dprr: de vi
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for public violence.
+
+- dprr: inter sicarios
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for murder (literally "among the assassins").
+
+- dprr: maiestas
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for treason, literally for lessening the dignity of the Roman people.
+
+- dprr: peculatus
+  kind: court
+  confidence: certain
+  review: draft
+  note: The court for embezzlement of public money.
+
+- dprr: repetundae
+  kind: court
+  confidence: certain
+  review: draft
+  note: >-
+    The court for extortion, where provincials sued their former governors to
+    recover what had been taken from them.
+
+- dprr: quaestio extraordinaria
+  kind: court
+  confidence: certain
+  review: draft
+  note: >-
+    A special court, set up by its own law for a single case or affair, rather
+    than a standing one.
+
+# --- commands ----------------------------------------------------------------------
+# Tasks given to a magistrate without fixed ground. Not joined: the ground they
+# ranged over belonged to provinces that had governors of their own.
+
+- dprr: Mediterranean
+  kind: command
+  sources:
+    - { source: cassius-dio, locator: '36.23–37' }
+    - { source: plutarch, locator: 'Pompey 25–26' }
+  confidence: certain
+  review: draft
+  note: >-
+    Commands over the whole sea against the pirates, above all Pompey's under
+    the lex Gabinia of 67, which ran across every coastal province at once.
+
+- dprr: fleet
+  kind: command
+  confidence: certain
+  review: draft
+  note: Command of a fleet, wherever it sailed.
+
+- dprr: cum imperio consulari
+  kind: command
+  confidence: certain
+  review: draft
+  note: >-
+    "With a consul's power": a special command given to someone who was not
+    consul, not tied to any one province.
+
+- dprr: cum imperio consulari infinito
+  kind: command
+  sources:
+    - { source: velleius, locator: '2.31' }
+  confidence: certain
+  review: draft
+  note: >-
+    "With unlimited consular power": the same, with no bounds of place — the
+    kind of command given against the pirates in 74 and 67.
+
+- dprr: In the east
+  kind: command
+  confidence: certain
+  review: draft
+  note: A command in the eastern provinces that does not say which.
+
+- dprr: quo senatus censuisset
+  kind: command
+  confidence: probable
+  review: draft
+  note: >-
+    "Wherever the senate should decide": a praetor held back for a task to be
+    named later, such as putting down a rising in Italy.
+
+# --- vague ---------------------------------------------------------------------------
+
+- dprr: Italia
+  kind: vague
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Italy, which after the Social War was citizen territory with no governor.
+    We draw it as the polity italia, but a post "in Italy" is a war command, a
+    levy, or a general waiting outside Rome for his triumph — never its
+    government — so it is not joined.
+
+- dprr: Gallia
+  kind: vague
+  confidence: probable
+  review: draft
+  note: >-
+    "Gaul", not saying which. Could be the Cisalpine or Transalpine province or
+    the conquered interior; not joined rather than guessed.
+
+- dprr: Britannia
+  kind: vague
+  confidence: certain
+  review: draft
+  note: >-
+    Britain, which Caesar raided in 55 and 54 but Rome did not hold. We draw
+    no polity there.
+
+- dprr: Istria
+  kind: vague
+  sources:
+    - { source: pliny-nh, locator: '3.127' }
+  confidence: probable
+  review: draft
+  note: >-
+    The peninsula between Tergeste and the Arsia, the name of Rome's
+    second-century Istrian wars. Our map leaves it unclaimed in this window,
+    between Cisalpine Gaul at the Formio and Illyricum at the Arsia, so there
+    is no polity to join it to.
+
+- dprr: Pannonia
+  kind: vague
+  confidence: probable
+  review: draft
+  note: >-
+    The middle Danube and Sava lands, not Roman until Augustus. We draw no
+    polity there.
+
+- dprr: provincia declined
+  kind: vague
+  confidence: certain
+  review: draft
+  note: >-
+    Not a place: it records that a magistrate refused the province he was
+    offered.
+
+- dprr: province 92
+  kind: vague
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    DPRR gives this province neither a name nor a description; "province 92" is
+    the label our build makes from its number. What it stands for is not
+    known, so it is not joined.
