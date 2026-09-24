@@ -1291,6 +1291,46 @@
     with a territory round it (Strabo 12.3.34); Caesar gave it to Lycomedes in
     47. The extent is a convention round the town.
 
+- id: pontus-inner
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [34.95, 40.9]
+          note: the Halys
+        - [35.25, 41.2]
+        - at: [35.9, 41.1]
+          note: behind the coastal range; Amisus stays with the coast
+        - [36.6, 41.0]
+        - at: [37.35, 41.0]
+          note: behind Themiscyra
+        - [37.4, 40.9]
+        - at: [37.1, 40.55]
+          note: Diospolis (Cabira) inside
+        - [37.35, 40.1]
+        - at: [37.2, 39.6]
+          note: south of Megalopolis (Sebasteia)
+        - [36.7, 39.6]
+        - [36.1, 39.95]
+        - at: [35.6, 40.15]
+          note: south of Zela
+        - [35.1, 40.45]
+  sources:
+    - { source: magie-1950, locator: 'vol. I, 433–436' }
+    - { source: strabo, locator: '12.3.37–39' }
+    - { source: barrington, locator: 'maps 86–87' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Inner Pontus east of the Halys: Amaseia, Phanaroea with Diospolis
+    (Cabira), Zela, Megalopolis (Sebasteia) and eastern Phazemonitis with
+    Neapolis. Split from pontus (September 2026) because Antony gave it to
+    kings while the coast stayed in the province: Amaseia "was also given to
+    kings" (Strabo 12.3.39), and Polemon took the land east of the Iris, and
+    very probably Amaseia (Magie I 434–435). The Zela temple state and
+    Ateporix's principality lay inside it and cannot be separated. The line
+    behind the coast is a convention. Takes Comana's ground from comana-pontica.
+
 - id: pontus
   evidence: schematic
   construction:
@@ -1333,7 +1373,11 @@
     Pompeiopolis, Neapolis, Amaseia, Diospolis, Zela and Megalopolis inland
     (Strabo 12.3.1). The country towards Armenia and Colchis went to allied
     dynasts. Comana, a temple state, lies inside this outline. Takes the
-    Parthenius from bithynia.
+    Parthenius from bithynia. Inner Pontus east of the Halys is its own atom
+    from September 2026 (pontus-inner), cut out of this one; what is left is
+    the coast from the Parthenius to Themiscyra and the Amnias basin with
+    Pompeiopolis, which went to the kings of Paphlagonia at a date not known
+    (Magie I 434).
 
 - id: cilicia-campestris
   evidence: derived
@@ -1365,6 +1409,84 @@
   note: >-
     The Cilician plain, Tarsus to Mopsuestia and Issus, bounded by the Taurus.
     Takes the Amanus from amanus.
+
+- id: lycaonia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [31.25, 38.55]
+          note: asia-phrygia's corner west of Philomelium
+        - at: [31.6, 38.9]
+          note: Philomelium inside, which was Lycaonian (Cicero Att. 5.20.1)
+        - [32.5, 38.85]
+        - at: [33.4, 38.8]
+          note: south of Lake Tatta, the Axylon
+        - [33.8, 38.3]
+        - at: [33.8, 37.6]
+          note: west of Cybistra, which was Cappadocian
+        - at: [33.5, 37.55]
+          note: north of Derbe and Laranda
+        - [33.0, 37.45]
+        - [32.95, 37.1]
+        - at: [32.6, 36.9]
+          note: Isauria inside, on the north slope of the Taurus
+        - [32.0, 37.1]
+        - at: [31.75, 37.55]
+          note: east of Lake Karalis (Beyşehir)
+        - [31.75, 37.85]
+        - at: [31.5, 38.2]
+          note: the Sultan Dağ, between Philomelium and Antioch
+  sources:
+    - { source: strabo, locator: '12.6.1–3' }
+    - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
+    - { source: cicero-att, locator: '5.20.1' }
+    - { source: barrington, locator: 'maps 63, 65–66' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lycaonia with Iconium, Lystra and Laodicea Catacecaumene, Philomelium, and
+    Isauria (Isaura Vetus and Nova), which Strabo counts as part of Lycaonia
+    (12.6.2). Split from cilicia (September 2026): Antony gave "a part of
+    Cilicia", with Iconium, to Polemon in 39 (App. BC 5.75; Strabo 12.6.1), and
+    it went to Amyntas when Polemon left for Pontus in 37/36 (Dio 49.32.3;
+    Dmitriev 364). Isauria may have come to Amyntas only after Actium (Magie I
+    443); it is drawn with Lycaonia. Its outline is cilicia's old northern
+    part.
+
+- id: pisidia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [31.25, 38.55]
+        - at: [30.95, 37.95]
+          note: west of Lake Karalis, on asia-phrygia's line
+        - [30.55, 37.75]
+        - [30.35, 37.5]
+        - at: [30.75, 37.42]
+          note: Cremna and Sagalassus at the southern edge
+        - [31.3, 37.45]
+        - [31.75, 37.55]
+        - [31.75, 37.85]
+        - [31.5, 38.2]
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+    - { source: strabo, locator: '12.6.4' }
+    - { source: barrington, locator: 'maps 62, 65' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Northern Pisidia, the lake district round Antioch near Pisidia and Lakes
+    Eğirdir and Karalis, which Antony gave to Amyntas in 39 ("in Pisidia,
+    Amyntas", App. BC 5.75; Magie I 433, "the hill-country of northern
+    Pisidia"). Split from cilicia (September 2026). Strabo gives Amyntas the
+    country "as far as the Apollonias near Apameia Cibotus" (12.6.4), which
+    lies inside asia-phrygia; that describes his holdings at his death in 25,
+    and when he gained it is not known, so asia-phrygia is not cut. Cremna and
+    Sandalium he took only later (12.6.4). The south, with Termessus and Selge,
+    stays in cilicia.
 
 - id: cilicia
   evidence: schematic
@@ -1411,7 +1533,10 @@
     Cicero's province, "from Laodicea to Tarsus" with the Phrygian districts
     (Dmitriev). Derbe and Laranda under Antipater, and the Tracheia east of
     Side, lay outside. The northern edge towards Galatia is approximate. Takes
-    the Phrygian line from asia-phrygia.
+    the Phrygian line from asia-phrygia. Lycaonia with Isauria and northern
+    Pisidia are their own atoms from September 2026 (lycaonia, pisidia), cut out
+    of this one; what is left is Pamphylia and southern Pisidia with Termessus
+    and Selge.
 
 - id: galatia
   evidence: schematic
@@ -1664,6 +1789,39 @@
     Antipater of Derbe's principality, Derbe and Laranda (Strabo 12.6.3), a
     friend of Cicero's (Fam. 13.73) outside the province. Takes every edge from
     its neighbours.
+
+- id: cilicia-tracheia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [31.5, 36.75]
+          note: the Melas (Manavgat), cilicia's line east of Side
+        - [31.8, 36.9]
+        - at: [32.6, 36.9]
+          note: the Taurus above Isauria
+        - at: [33.5, 36.75]
+          via: crest
+          note: along the Taurus to the Calycadnus valley, olba's line
+        - at: [33.55, 36.25]
+          note: the coast west of Seleucia
+        - [33.0, 35.9]
+        - [31.5, 36.4]
+  sources:
+    - { source: strabo, locator: '14.5.2–3' }
+    - { source: strabo, locator: '14.5.6' }
+    - { source: magie-1950, locator: 'vol. I, 434, 443' }
+    - { source: barrington, locator: 'maps 65–66' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Rough Cilicia west of Olba: Coracesium, Hamaxia, Laertes, Selinus,
+    Anemurium and Celenderis (Strabo 14.5.2–3), the cedar coast Antony gave
+    Cleopatra "since it was suited to the building of her fleets" (14.5.3).
+    Unclaimed ground until September 2026. Strabo's grant ran over "the whole
+    of Cilicia Tracheia except Seleuceia" (14.5.6), which would take in Olba's
+    coast by Corycus and Elaeussa too; that is left with olba (see its note).
+    Takes every landward edge from its neighbours.
 
 # === The Balkans ===============================================================
 

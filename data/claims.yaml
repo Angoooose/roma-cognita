@@ -224,7 +224,7 @@
   polity: asia
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -258,7 +258,7 @@
   polity: asia
   relation: province
   from: 49 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
     - { source: sherk-rdge, locator: 'no. 52' }
@@ -270,7 +270,7 @@
   polity: bithynia-pontus
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: magie-1950 }
     - { source: broughton-mrr, locator: 'vol. II' }
@@ -284,7 +284,7 @@
   polity: bithynia-pontus
   relation: province
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '12.3.1' }
     - { source: hojte-2009 }
@@ -296,7 +296,7 @@
   polity: cilicia
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: 44 BCE
   sources: [{ source: broughton-mrr, locator: vol. II }]
   confidence: probable
   review: draft
@@ -305,7 +305,7 @@
   polity: cilicia
   relation: province
   from: { earliest: 67 BCE, latest: 64 BCE }
-  to: after 43 BCE
+  to: 44 BCE
   sources:
     - { source: borgia-2017, locator: 'pp. 300–301' }
   confidence: probable
@@ -319,7 +319,7 @@
   polity: galatia
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: cicero-deiotaro }
     - { source: strabo, locator: '12.5.1' }
@@ -333,7 +333,7 @@
   polity: galatia
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: 40 BCE
   sources:
     - { source: strabo, locator: '12.3.13' }
   confidence: uncertain
@@ -368,7 +368,7 @@
   polity: galatia
   relation: client
   from: 44 BCE
-  to: after 43 BCE
+  to: 40 BCE
   sources:
     - { source: cicero-phil, locator: '2.93–95' }
   confidence: probable
@@ -382,7 +382,7 @@
   polity: cappadocia
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: probable
   review: draft
@@ -417,15 +417,25 @@
   polity: aegyptus
   relation: client
   from: 47 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: cassius-dio, locator: '42.35.5–6' }
+    - { source: appian, locator: 'BC 4.61' }
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: cayla-2017 }
   confidence: probable
-  review: draft
+  review: needs-check
   note: >-
     Given back to the Ptolemies — to Arsinoe and the younger Ptolemy — by
     Caesar during the Alexandrian war (Dio 42.35); held by Cleopatra
-    thereafter.
+    thereafter: her governor Serapion sent ships to Cassius in 43 (App. BC
+    4.61). Who ruled it in 41–37 is disputed. Antony's freedman Demetrius "had
+    at this time been assigned to Cyprus by Antony" in 39 (Dio 48.40.6), and
+    Antony gave it to Cleopatra in 37/36 (Plut. Antony 36.2), which suggests
+    she lacked it; but a Salamis inscription of her year 15 (38/37) names her
+    strategos of the island. Bicknell (1977) has Antony take it from her in 41,
+    Schrapel (1996) keeps it hers throughout, and Cayla (2017) argues for joint
+    rule in 41–37/36. Drawn as hers throughout. Roman from 30 (cyprus).
 
 # --- the Levant ----------------------------------------------------------------
 
@@ -551,7 +561,7 @@
   polity: amanus
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: strabo, locator: '14.5.18' }
     - { source: cicero-fam, locator: '15.1.2' }
@@ -931,7 +941,7 @@
   polity: comana-pontica
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '12.3.34–35' }
   confidence: probable
@@ -1061,7 +1071,7 @@
   polity: paphlagonia
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '12.3.1' }
     - { source: appian, locator: 'Mithr. 114' }
@@ -1072,7 +1082,7 @@
   polity: olba
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.5.10' }
   confidence: uncertain
@@ -1082,7 +1092,7 @@
   polity: derbe
   relation: independent
   from: before 50 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: strabo, locator: '12.6.3' }
     - { source: cicero-fam, locator: '13.73' }
@@ -1093,7 +1103,7 @@
   polity: lycia
   relation: allied
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.3.3' }
     - { source: mitchell-2005 }
@@ -1104,7 +1114,7 @@
   polity: rhodus
   relation: allied
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.2.2–4' }
   confidence: certain
@@ -1970,3 +1980,351 @@
   note: >-
     Gallus' buffer under a ruler of his own, from Syene to the Second Cataract,
     the region's name for its extent (see the polity).
+
+- atom: pontus-inner
+  polity: bithynia-pontus
+  relation: province
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: strabo, locator: '12.3.1' }
+    - { source: hojte-2009 }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
+    Pompey's settlement.
+
+- atom: pontus-inner
+  polity: pontus-regnum
+  relation: independent
+  from: 68 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
+    Mithridates won back his kingdom in 68 and lost it to Pompey in 66.
+
+- atom: pontus-inner
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+    - { source: cassius-dio, locator: '42.45–47' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
+    Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, until
+    Caesar broke him at Zela in August 47.
+
+- atom: lycaonia
+  polity: cilicia
+  relation: province
+  from: before 68 BCE
+  to: 44 BCE
+  sources: [{ source: broughton-mrr, locator: vol. II }]
+  confidence: probable
+  review: draft
+  note: Part of the cilicia atom until lycaonia was split from it (September 2026); the row is cilicia's.
+
+- atom: pisidia
+  polity: cilicia
+  relation: province
+  from: before 68 BCE
+  to: 44 BCE
+  sources: [{ source: broughton-mrr, locator: vol. II }]
+  confidence: probable
+  review: draft
+  note: Part of the cilicia atom until pisidia was split from it (September 2026); the row is cilicia's.
+
+- atom: pontus-inner
+  polity: pontus-polemon
+  relation: client
+  from: 36 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.25.4' }
+    - { source: strabo, locator: '12.3.39' }
+    - { source: magie-1950, locator: 'vol. I, 434–435' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Polemon was "king of Pontus" by 36 (Dio 49.25.4), with "that portion of
+    Pontus which lay east of the river Iris" and very probably Amaseia (Magie I
+    434–435); Amaseia "was also given to kings" (Strabo 12.3.39). Inside this
+    ground Zela was a temple state again and Ateporix had a small principality
+    (Strabo 12.3.37), neither of which can be drawn apart. What Darius held of
+    it in 39–37 is not known, so the province is drawn to 37.
+
+- atom: galatia-pontus
+  polity: pontus-polemon
+  relation: client
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: strabo, locator: '12.3.29' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+  confidence: probable
+  review: draft
+  note: >-
+    Deiotarus' Pontic coast with Pharnacia and Trapezus went to Darius son of
+    Pharnaces in 39 (App. BC 5.75; Magie I 433), and from 37/36 to Polemon;
+    Polemon's widow Pythodoris later held "Pharnacia and Trapezus" (Strabo
+    12.3.29).
+
+- atom: armenia-minor
+  polity: pontus-polemon
+  relation: client
+  from: 33 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.33.2' }
+    - { source: cassius-dio, locator: '49.44.3' }
+  confidence: probable
+  review: draft
+  note: >-
+    Promised to Polemon for his embassy to the Mede in 35 (Dio 49.33.2) and
+    given in 33: "Antony bestowed upon Polemon, as I have stated, Lesser
+    Armenia" (49.44.3). Who held it in 39–34 after Deiotarus is not recorded,
+    and it is left unclaimed.
+
+- atom: armenia-minor
+  polity: armenia-minor-artavasdes
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '54.9.2' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Taken from Polemon after Actium and "presented to Artavasdes, the former
+    king of Media Atropatene" (Magie I 443), who had fled to Octavian (Dio
+    51.16.2). Dio says it passed to Archelaus in 20 "because the Mede, who
+    previously had ruled them, was dead" (54.9.2). The year of the gift is not
+    recorded.
+
+- atom: lycaonia
+  polity: lycaonia-polemon
+  relation: client
+  from: 39 BCE
+  to: 37 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: strabo, locator: '12.6.1' }
+    - { source: dmitriev-2000, locator: 'pp. 370–371' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "In a part of Cilicia, Polemon" (App. BC 5.75): Iconium "was held by
+    Polemon" (Strabo 12.6.1), and his Cilicia "stretched from Iconium to
+    Trachea" (Dmitriev 370–371). Where it ended is not recorded; the whole of
+    Lycaonia is drawn his.
+
+- atom: lycaonia
+  polity: galatia
+  relation: client
+  from: 36 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.6.3' }
+    - { source: dmitriev-2000, locator: 'p. 364' }
+  confidence: probable
+  review: draft
+  note: >-
+    Amyntas received Galatia "with Lycaonia" (Dio 49.32.3): "when Polemo left
+    for Pontus in late 37 or 36, Iconium went over to Amyntas" (Dmitriev 364).
+    He "received Isaura from the Romans" and built a palace there (Strabo
+    12.6.3), perhaps only after Actium (Magie I 443); Isauria is drawn with
+    Lycaonia from 36.
+
+- atom: pisidia
+  polity: pisidia-amyntas
+  relation: client
+  from: 39 BCE
+  to: 37 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+  confidence: uncertain
+  review: needs-check
+  note: '"In Pisidia, Amyntas" (App. BC 5.75): the hill country of northern Pisidia (Magie I 433).'
+
+- atom: pisidia
+  polity: galatia
+  relation: client
+  from: 36 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.6.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Amyntas' Pisidia went with him into his Galatian kingdom in 36. He held
+    "the Antiocheia near Pisidia" at his death (Strabo 12.6.4).
+
+- atom: cilicia
+  polity: asia
+  relation: province
+  from: 43 BCE
+  to: 43 BCE
+  sources:
+    - { source: cicero-fam, locator: '12.15.5' }
+    - { source: magie-1950, locator: 'vol. II, 1271' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    In 43 the quaestor of Asia chased Dolabella's ships "usque Sidam, quae
+    extrema regio est provinciae meae" (Cic. Fam. 12.15.5), so Pamphylia
+    counted as Asia's. After that nobody's standing over Pamphylia and southern
+    Pisidia is recorded, and the ground is left unclaimed. Amyntas held
+    "portions of Pamphylia" from 36 (Dio 49.32.3, 53.26.3), at least Side,
+    where he struck coin (Magie I 434); Raillard and Syme took Dio's phrase to
+    mean his Pisidian lands instead (Magie II 1283 n. 21). Termessus' own coins
+    end in 39, which may mean Amyntas had it too (Magie II 1282 n. 17). None of
+    this is drawn.
+
+- atom: cilicia-campestris
+  polity: syria
+  relation: province
+  from: 43 BCE
+  to: 39 BCE
+  sources:
+    - { source: magie-1950, locator: 'vol. I, 433; vol. II, 1270–1271' }
+    - { source: borgia-2017, locator: 'p. 304' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Cassius took the plain for the Liberators in 43, and Tarsus was divided
+    between him and Dolabella (App. BC 4.64). "The province of Cilicia was
+    probably dismembered soon after Caesar's death" (Magie I 433); the plain
+    is drawn with Syria from then, uncertain until 38. Antony made Tarsus a free
+    city in 41 (App. BC 5.7).
+
+- atom: cilicia-campestris
+  polity: syria
+  relation: province
+  from: 38 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.22.2' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+    - { source: borgia-2017, locator: 'p. 304' }
+  confidence: probable
+  review: draft
+  note: >-
+    "Gaius Sosius received from him the governorship of Syria and Cilicia"
+    (Dio 49.22.2), the first firm sign that the plain was governed from Syria;
+    "the separation … had been completed in 38" (Magie I 433). Borgia (2017,
+    304) has it last "at least until Augustus' reorganization of the provinces
+    in 27 BC"; Dio's "Cilicia" among Caesar's provinces then (53.12.7) may be
+    this.
+
+- atom: cilicia-campestris
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: cassius-dio, locator: '48.26.3' }
+    - { source: cassius-dio, locator: '48.41.1' }
+  confidence: certain
+  review: draft
+  note: >-
+    "Labienus had occupied Cilicia" (Dio 48.26.3); Ventidius "recovered
+    Cilicia" in 39 (48.41.1).
+
+- atom: asia
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: cassius-dio, locator: '48.26.3–4' }
+    - { source: strabo, locator: '14.2.24' }
+    - { source: magie-1950, locator: 'vol. I, 430–431' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Labienus, with Parthian troops and some of the Liberators' old soldiers,
+    "obtained the allegiance of the cities of the mainland except Stratonicea,
+    since Plancus, in fear of him, had crossed over to the islands" (Dio
+    48.26.3); he razed Mylasa. Ventidius cleared the province in 39 (Dio
+    48.39–40). The atom takes in Lesbos, Chios, Samos and Cos, which were not
+    taken, and Labienus styled himself a Roman imperator, "Parthicus" (Dio
+    48.26.5): drawn as a Parthian occupation of the whole atom, both of which
+    overstate it, hence uncertain.
+
+- atom: cilicia-tracheia
+  polity: aegyptus
+  relation: client
+  from: { earliest: 37 BCE, latest: 36 BCE }
+  to: 31 BCE
+  sources:
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: strabo, locator: '14.5.3' }
+    - { source: strabo, locator: '14.5.6' }
+  confidence: probable
+  review: draft
+  note: >-
+    Among Antony's gifts to Cleopatra, "a large part of Cilicia" (Plut. Antony
+    36.2): the cedar coast by Hamaxia, which "Antony assigned … to Cleopatra,
+    since it was suited to the building of her fleets" (Strabo 14.5.3). Before
+    the grant, "it is not known what was done with Cilicia Aspera" (Magie II
+    1271), and it is unclaimed.
+
+- atom: cilicia-tracheia
+  polity: galatia
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '14.5.6' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: probable
+  review: draft
+  note: >-
+    After Actium Octavian gave Amyntas "that portion of the coast of Cilicia
+    Aspera which Antony had given to Cleopatra" (Magie I 443); Strabo has the
+    Tracheia "obtained formerly by Amyntas and still earlier by Cleopatra"
+    (14.5.6).
+
+- atom: derbe
+  polity: galatia
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '12.6.3' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Amyntas "attacked and killed Derbetes" (Strabo 12.6.3); the date is
+    disputed (see derbe) and Magie's, after Actium, is drawn.
+
+- atom: cyprus
+  polity: cyprus
+  relation: province
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '14.6.6' }
+    - { source: cassius-dio, locator: '53.12.7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Roman again when Antony fell, "his whole organisation was overthrown with
+    him", and later "a praetorian province by itself" (Strabo 14.6.6); Caesar's
+    in 27 (Dio 53.12.7), given to the people in 22 (54.4.1). Whether it was
+    governed with Cilicia or Syria before then is not recorded.

@@ -157,11 +157,18 @@
   names:
     - { text: Asia, lang: la, preferred: true }
   from: 129 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: magie-1950, locator: 'vol. I, 427–446' }
+    - { source: cassius-dio, locator: '53.12.4' }
   confidence: certain
   review: draft
+  note: >-
+    The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
+    the Parthians in 40, except the islands and Stratonicea (Dio 48.26.3–4),
+    and cleared by Ventidius in 39; Stratonicea and Aphrodisias were made free.
+    A consular province of the people in 27 (Dio 53.12.4).
 
 - id: gallia-transalpina
   kind: province
@@ -185,16 +192,27 @@
   names:
     - { text: Cilicia, lang: la, preferred: true }
   from: 80 BCE
-  to: after 43 BCE
+  to: { earliest: 44 BCE, latest: 43 BCE }
   sources:
     - { source: cah-ix, locator: ch. 8 }
     - { source: broughton-mrr, locator: vol. II }
+    - { source: cicero-phil, locator: '11.30' }
+    - { source: magie-1950, locator: 'vol. II, 1270–1271' }
+    - { source: borgia-2017, locator: 'p. 304' }
   confidence: probable
   review: draft
   note: >-
     Cicero's own province in 51–50, when it also carried Cyprus, Pamphylia,
     Pisidia, Lycaonia and three Phrygian dioceses detached from Asia. A
-    provincia in this period is a portfolio, not a territory.
+    provincia in this period is a portfolio, not a territory. It lapsed soon
+    after Caesar's death: the senate's decree of 43 gives Cassius "Syria, Asia,
+    Bithynia, Pontus" and leaves Cilicia out (Cic. Phil. 11.30); in 43 Side was
+    the "extrema regio" of the quaestor of Asia (Cic. Fam. 12.15.5); and by 38
+    Sosius governed "Syria and Cilicia" (Dio 49.22.2). So Syme and Magie (II
+    1270–1271); Bickerman (1947) held that the plain joined Syria only after AD
+    18, and Dio's "Cilicia" among Caesar's provinces in 27 (53.12.7) is read
+    either way (Borgia 2017, 304). Its northern and western lands went to kings
+    in 39–36.
 
 - id: gallia-cisalpina
   kind: province
@@ -272,18 +290,26 @@
   kind: province
   names:
     - { text: Bithynia, lang: la, preferred: true, from: 74 BCE, to: 64 BCE }
-    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 43 BCE }
+    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 27 BCE }
   from: 74 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
-    - { source: magie-1950 }
+    - { source: magie-1950, locator: 'vol. I, 433–436' }
+    - { source: cassius-dio, locator: '53.12.4' }
     - { source: broughton-mrr, locator: vol. II }
   confidence: certain
   review: draft
   note: >-
     Bithynia, bequeathed by Nicomedes IV, from 74; joined with Pontus by
     Pompey's settlement (lex Pompeia) in 63. Bithynia and Pontus are separate
-    atoms now, so the province can start with its bequest.
+    atoms now, so the province can start with its bequest. From 39 Antony gave
+    most of Pompey's Pontus to kings (Darius, then Polemon, and the kings of
+    Paphlagonia), so that "only the provinces of Asia and Bithynia in the west
+    and the district of Level Cilicia … were directly subject to the rule of
+    Rome" (Magie I 436); what stayed provincial was the coast (the pontus atom).
+    Antony gave the Greek part of Heraclea to the Galatian Adiatorix, who
+    massacred its Roman colonists before Actium (Strabo 12.3.6). "Bithynia with
+    Pontus which adjoined it" was the people's in 27 (Dio 53.12.4).
 
 - id: gallia-comata
   kind: province
@@ -488,27 +514,51 @@
   names:
     - { text: Galatia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Deiotarus, c. 63–40
+  to: after 27 BCE
+  ruler: Deiotarus, c. 63–40; Castor, 40–37/36; Amyntas, 36–25
   sources:
     - { source: cicero-deiotaro }
+    - { source: cassius-dio, locator: '48.33.5' }
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.5.1' }
+    - { source: magie-1950, locator: 'vol. I, 433–434, 443' }
   confidence: probable
   review: draft
-  note: Deiotarus confirmed by Pompey in 63.
+  note: >-
+    Deiotarus confirmed by Pompey in 63. At his death in 40 his lands and
+    Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
+    37/36 to Amyntas, Antony's king in Pisidia since 39 (App. BC 5.75), who
+    received Galatia "with Lycaonia and portions of Pamphylia" (Dio
+    49.32.3). He went over to Octavian before Actium and was confirmed and
+    enlarged with Cleopatra's Rough Cilicia (Dio 51.2.1; Strabo 14.5.6): his
+    kingdom ran "from the mountains of northern Galatia to the shore of the
+    Mediterranean" (Magie I 434) until his death in 25, when it became a
+    province (Dio 53.26.3). The Pontic lands went to Darius in 39.
 
 - id: cappadocia
   kind: kingdom
   names:
     - { text: Cappadocia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ariobarzanes III, 51–42
+  to: after 27 BCE
+  ruler: Ariobarzanes III, 51–43/42; Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
   sources:
     - { source: sullivan-1990 }
     - { source: cicero-fam, locator: XV }
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.2.11' }
+    - { source: luke-2025 }
   confidence: probable
   review: draft
-  note: Cicero was charged with protecting Ariobarzanes during his Cilician command.
+  note: >-
+    Cicero was charged with protecting Ariobarzanes during his Cilician
+    command. Cassius' cavalry killed him — late 43 on Appian (BC 4.63), in 42
+    on Dio (47.33.4) — and Ariarathes X followed. Antony judged between
+    Ariarathes and "Sisina" in 41 and gave the kingdom to Sisina (App. BC 5.7),
+    but only Ariarathes minted (Luke 2025); in 36 Antony gave Cappadocia to
+    Archelaus "after driving out Ariarathes" (Dio 49.32.3). Most take Sisines
+    and Archelaus to be one man (Magie I 435); Syme took them for two. Kept by
+    Octavian (Dio 51.2.1).
 
 - id: commagene
   kind: kingdom
@@ -580,17 +630,25 @@
   names:
     - { text: Amanus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Tarcondimotus I
+  to: 31 BCE
+  ruler: Tarcondimotus I, to 31; Philopator, 31
   sources:
     - { source: sullivan-1990 }
     - { source: strabo, locator: '14.5.18' }
+    - { source: cassius-dio, locator: '51.2.2' }
+    - { source: magie-1950, locator: 'vol. I, 434, 445' }
   confidence: probable
   review: needs-check
   note: >-
     Tarcondimotus' principality in the Amanus and on the middle Pyramus, seated
     at Hierapolis-Castabala. Not Cilicia Tracheia, which is the rough country
-    west of the Cilician plain and was not his.
+    west of the Cilician plain and was not his. Forced into Cassius' alliance in
+    43 (Dio 47.26.2), "King and Friend of Antony" (Magie I 434), "king of Upper
+    Cilicia" at Actium (Plut. Antony 61.1), where he fell (Dio 50.14.2). His son
+    Philopator was deposed by Octavian (Dio 51.2.2), and "the kingship of this
+    region was for a time suspended" (Magie I 445) until Tarcondimotus II was
+    given it in 20 (Dio 54.9.2). Who held the ground in 30–20 is not known;
+    Dmitriev suggests Amyntas, then Archelaus. It is left unclaimed.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
@@ -715,57 +773,93 @@
   names:
     - { text: Paphlagonia, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
-  ruler: Attalus; the house of Pylaemenes
+  to: after 27 BCE
+  ruler: Attalus, to 40; Castor, 40–37/36; Deiotarus Philadelphus, from 37/36
   sources:
     - { source: strabo, locator: '12.3.1' }
     - { source: appian, locator: 'Mithr. 114' }
+    - { source: cassius-dio, locator: '48.33.5' }
+    - { source: strabo, locator: '12.3.41' }
+    - { source: magie-1950, locator: 'vol. I, 434, 443' }
   confidence: probable
   review: needs-check
+  note: >-
+    Castor had "the domains of Attalus" from 40 (Dio 48.33.5), and his son
+    Deiotarus Philadelphus, "who possessed Gangra", was the last king (Strabo
+    12.3.41). Magie (I 434) gives the kings of Paphlagonia the Amnias basin
+    with Pompeiopolis as well, by 37/36 at the latest; its date is not known and
+    it stays with the pontus atom. Philadelphus went over to Octavian before
+    Actium (Plut. Antony 63.3, as Magie I 443 reads it) and kept his kingdom.
 
 - id: comana-pontica
   kind: city-state
   names:
     - { text: Comana, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
-  ruler: 'the priests of Ma: Archelaus, then Lycomedes from 47'
+  to: after 27 BCE
+  ruler: 'the priests of Ma: Archelaus, then Lycomedes from 47; Cleon, 31/30; Dyteutus, from c. 29'
   sources:
     - { source: strabo, locator: '12.3.34–35' }
+    - { source: strabo, locator: '12.8.9' }
+    - { source: cassius-dio, locator: '51.2.2–3' }
   confidence: probable
   review: draft
+  note: >-
+    Antony enlarged Lycomedes' domain by four hundred schoeni (Strabo
+    12.3.35). After Actium Octavian deposed him and gave his kingdom to "one
+    Medeius", who had turned the Mysians against Antony (Dio 51.2.2–3); Strabo
+    has the Mysian brigand chief Cleon, rewarded for the same, receive the
+    priesthood and die within a month (12.8.9), and then Dyteutus son of
+    Adiatorix (12.3.35). Medeius and Cleon may be one man.
 
 - id: olba
   kind: kingdom
   names:
     - { text: Olba, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: the Teucrid priest-dynasts
+  to: after 27 BCE
+  ruler: the Teucrid priest-dynasts; Aba, by Antony's and Cleopatra's favour, then her descendants
   sources:
     - { source: strabo, locator: '14.5.10' }
+    - { source: magie-1950, locator: 'vol. I, 434' }
   confidence: probable
   review: needs-check
+  note: >-
+    Aba, daughter of Xenophanes, held the priest-dynasty because "both Antony
+    and Cleopatra conferred it upon her as a favour"; she was overthrown, "but
+    the empire remained with her descendants" (Strabo 14.5.10). Its standing
+    under Antony — his client, or Cleopatra's dependant within her grant of
+    Rough Cilicia — is not stated, so it stays independent. Strabo's grant of
+    "the whole of Cilicia Tracheia except Seleuceia" to Cleopatra and then
+    Amyntas (14.5.6) would include Olba's coast at Corycus and Elaeussa;
+    Borgia (2017, 305) places Amyntas' holding there. Not drawn.
 
 - id: derbe
   kind: kingdom
   names:
     - { text: Derbe, lang: la, preferred: true }
   from: before 50 BCE
-  to: after 43 BCE
+  to: 31 BCE
   ruler: Antipater of Derbe
   sources:
     - { source: strabo, locator: '12.6.3' }
-    - { source: dmitriev-2000, locator: 'pp. 359–360' }
+    - { source: dmitriev-2000, locator: 'pp. 359–360, 371 n. 81' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
   confidence: probable
   review: needs-check
+  note: >-
+    Antipater held Derbe and Laranda until Amyntas "attacked and killed
+    Derbetes" (Strabo 12.6.3). The date is not recorded: about 36 (Robert), the
+    late 30s or early 20s (Mitchell), or after Actium with Octavian's leave
+    (Magie I 443), which is the date drawn (Dmitriev 371 n. 81 collects the
+    views).
 
 - id: lycia
   kind: league
   names:
     - { text: Lycia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.3.2–3' }
     - { source: mitchell-2005 }
@@ -774,19 +868,29 @@
   review: draft
   note: >-
     The Lycian League, a free ally of Rome; its treaty with Rome of 24 July 46
-    survives.
+    survives. Brutus besieged and destroyed Xanthus in 42 and made the league
+    pay taxes (Plut. Brutus 30–32; App. BC 4.82); Antony released it from them
+    and urged the rebuilding of Xanthus (App. BC 5.7). The standing did not
+    change, so the sack is not drawn.
 
 - id: rhodus
   kind: city-state
   names:
     - { text: Rhodus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.2.2–4' }
     - { source: fraser-bean-1954 }
+    - { source: appian, locator: 'BC 4.65–74' }
+    - { source: appian, locator: 'BC 5.7' }
   confidence: certain
   review: draft
+  note: >-
+    Taken by Cassius in 42 and garrisoned under L. Varus (App. BC 4.74); freed
+    after Philippi, when Antony gave it Andros, Tenos, Naxos and Myndus, soon
+    taken away again "because they ruled them too harshly" (BC 5.7). A free
+    ally throughout; the capture is not drawn.
 
 - id: scythia-minor
   kind: kingdom
@@ -1294,3 +1398,93 @@
     Meroë (the Philae stele; Hoffmann, Minas-Nerpel and Pfeiffer's "vassal
     buffer zone"). By 25/24 Strabo calls Pselchis there "an Aethiopian city"
     (17.1.54), so the arrangement did not last. It rests on one inscription.
+
+- id: pontus-polemon
+  kind: kingdom
+  names:
+    - { text: Pontus, lang: la, preferred: true }
+  from: 39 BCE
+  to: after 27 BCE
+  ruler: Darius son of Pharnaces, 39–37; Polemon I, from 37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: cassius-dio, locator: '49.25.4' }
+    - { source: cassius-dio, locator: '49.44.3' }
+    - { source: magie-1950, locator: 'vol. I, 433–435, 443' }
+  confidence: probable
+  review: draft
+  note: >-
+    The kingdom Antony made in Pontus in 39 for Darius, Mithridates' grandson,
+    "on condition of their paying a prescribed tribute" (App. BC 5.75), and
+    passed to Polemon of Laodicea in 37/36. Polemon lost Lesser Armenia after
+    Actium but kept Pontus, and was declared friend and ally in 26 (Magie I
+    443). Not Mithridates' kingdom (pontus-regnum), which ends in 63.
+
+- id: pisidia-amyntas
+  kind: kingdom
+  names:
+    - { text: Pisidia, lang: la, preferred: true }
+  from: 39 BCE
+  to: 37 BCE
+  ruler: Amyntas, 39–37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+  confidence: probable
+  review: draft
+  note: >-
+    Amyntas' first kingdom, in the hill country of northern Pisidia (App. BC
+    5.75). In 37/36 it went with him into his kingdom of Galatia. The name is
+    ours; the sources call it by its king.
+
+- id: lycaonia-polemon
+  kind: kingdom
+  names:
+    - { text: Lycaonia, lang: la, preferred: true }
+  from: 39 BCE
+  to: 37 BCE
+  ruler: Polemon, 39–37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: strabo, locator: '12.6.1' }
+    - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
+  confidence: probable
+  review: draft
+  note: >-
+    Polemon's "part of Cilicia" (App. BC 5.75), with Iconium (Strabo 12.6.1),
+    until he left for Pontus in 37/36. Magie (I 433) adds "perhaps the
+    adjacent part of Cilicia Aspera", which is not drawn. The name is ours.
+
+- id: armenia-minor-artavasdes
+  kind: kingdom
+  names:
+    - { text: Armenia Minor, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  ruler: Artavasdes, once king of Media Atropatene, to c. 20
+  sources:
+    - { source: cassius-dio, locator: '54.9.2' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lesser Armenia under the Median king Artavasdes, who had fled to Octavian
+    when Phraates took his own kingdom (Dio 51.16.2; see atropatene), until
+    his death c. 20 (Dio 54.9.2). The year it was given is not recorded.
+
+- id: cyprus
+  kind: province
+  names:
+    - { text: Cyprus, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '14.6.6' }
+    - { source: cassius-dio, locator: '53.12.7' }
+    - { source: cassius-dio, locator: '54.4.1' }
+  confidence: probable
+  review: draft
+  note: >-
+    Cyprus after Cleopatra: Caesar's in 27 (Dio 53.12.7), the people's from 22
+    (54.4.1). Before 30 it was hers, with the Cyprus of 58–48 part of Cicero's
+    Cilicia (cilicia).
