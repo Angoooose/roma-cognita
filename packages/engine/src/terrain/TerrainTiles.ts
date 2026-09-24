@@ -1,6 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { DATA_RECT, ROOT, TILE_TEXELS } from '@roman-map/world'
-import { createTerrainMaterial } from './material.ts'
+import { createTerrainMaterial, type TileTextures } from './material.ts'
 import type { TileJob, TileResult } from './heightWorker.ts'
 
 /**
@@ -39,7 +39,7 @@ interface Node {
   size: number
   state: State
   mesh?: THREE.Mesh
-  textures?: THREE.DataTexture[]
+  textures?: TileTextures
   minHeight: number
   maxHeight: number
   lastUsed: number
@@ -59,6 +59,8 @@ export class TerrainTiles {
   readonly group = new THREE.Group()
   private root: Node
   private geometry = createGridGeometry(SEGMENTS)
+  /** Built with the first tile, once the shared textures it reads have loaded. */
+  private material?: ReturnType<typeof createTerrainMaterial>
   private workers: Worker[] = []
   private jobs = new Map<number, Node>()
   private nextJob = 1
@@ -164,6 +166,10 @@ export class TerrainTiles {
     const dist = Math.max(1, this.box.distanceToPoint(eye))
     const texelPx = (node.size / (TEXELS - 1) / dist) * focalPx
     if (texelPx > SPLIT_TEXEL_PX && node.level < MAX_LEVEL) {
+      // Ancestors on the view's path are in use even when not drawn: they are the
+      // stand-ins in waiting. Left to age, eviction dropped them and the next frame
+      // loaded them again, so a view needing near the limit never stopped loading.
+      node.lastUsed = this.frame
       node.children ??= split(node)
       for (const child of node.children) this.select(child, eye, focalPx, out)
       // Ancestors on the path to the view load first (the queue is coarse-first), so a
@@ -198,12 +204,15 @@ export class TerrainTiles {
     const node = this.jobs.get(r.id)
     if (!node) return
     this.jobs.delete(r.id)
-    const terrain = dataTexture(r.terrain, THREE.RGBAFormat)
-    const water = dataTexture(r.water, THREE.RGBAFormat)
-    const politics = dataTexture(r.politics, THREE.RGBAFormat)
-    const roads = dataTexture(r.roads, THREE.RGFormat)
-    const material = createTerrainMaterial(terrain, water, politics, roads, TEXELS, node)
-    const mesh = new THREE.Mesh(this.geometry, material)
+    const textures: TileTextures = {
+      terrain: dataTexture(r.terrain, THREE.RGBAFormat),
+      water: dataTexture(r.water, THREE.RGBAFormat),
+      politics: dataTexture(r.politics, THREE.RGBAFormat),
+      roads: dataTexture(r.roads, THREE.RGFormat),
+    }
+    const material = (this.material ??= createTerrainMaterial(TEXELS))
+    const mesh = new THREE.Mesh(this.geometry, material.material)
+    mesh.onBeforeRender = () => material.bind(node, textures)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
     mesh.frustumCulled = false
@@ -212,7 +221,7 @@ export class TerrainTiles {
     this.group.add(mesh)
 
     node.mesh = mesh
-    node.textures = [terrain, water, politics, roads]
+    node.textures = textures
     node.minHeight = r.minHeight
     node.maxHeight = r.maxHeight
     node.state = 'ready'
@@ -230,8 +239,7 @@ export class TerrainTiles {
       // Never evict the top of the tree: it is the stand-in of last resort.
       if (n.level <= 2 || n.lastUsed === this.frame) continue
       this.group.remove(n.mesh!)
-      ;(n.mesh!.material as THREE.Material).dispose()
-      for (const t of n.textures!) t.dispose()
+      for (const t of Object.values(n.textures!)) t.dispose()
       n.mesh = n.textures = undefined
       n.state = 'idle'
     }
@@ -240,9 +248,9 @@ export class TerrainTiles {
   dispose() {
     for (const w of this.workers) w.terminate()
     walk(this.root, (n) => {
-      if (n.mesh) (n.mesh.material as THREE.Material).dispose()
-      for (const t of n.textures ?? []) t.dispose()
+      for (const t of Object.values(n.textures ?? {})) t.dispose()
     })
+    this.material?.material.dispose()
     this.geometry.dispose()
   }
 }

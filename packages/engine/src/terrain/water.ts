@@ -86,13 +86,21 @@ const PERIOD = 256
  * that period is worked out here in double precision, and the shader only adds the
  * position within the tile. Neighbouring tiles still meet exactly.
  */
-export function waterLattice(tile: { x0: number; y0: number }, local: V2) {
+export function waterLattice(local: V2) {
+  const offsets = new Map<number, THREE.Vector2>()
   const lattices = new Map<number, V2>()
   for (const w of WATER_WAVELENGTHS) {
-    const o = new THREE.Vector2(wrap(tile.x0 / 1000 / w), wrap(tile.y0 / 1000 / w))
+    const o = new THREE.Vector2()
+    offsets.set(w, o)
     lattices.set(w, uniform(o).add(local.div(w)))
   }
-  return (w: Wavelength) => lattices.get(w)!
+  return {
+    at: (w: Wavelength) => lattices.get(w)!,
+    /** Moves every lattice to a tile; the terrain material calls it as each tile draws. */
+    set(tile: { x0: number; y0: number }) {
+      for (const [w, o] of offsets) o.set(wrap(tile.x0 / 1000 / w), wrap(tile.y0 / 1000 / w))
+    },
+  }
 }
 
 function wrap(v: number) {

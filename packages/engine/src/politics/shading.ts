@@ -33,7 +33,7 @@ export interface PoliticalNodes {
 type V4 = THREE.Node<'vec4'>
 type F = THREE.Node<'float'>
 
-export function politicalShading(tex: THREE.DataTexture, n: number, pxKm: F): PoliticalNodes {
+export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): PoliticalNodes {
   // Texel centres sit at integer positions (the grid is vertex-aligned). Labels come
   // from the nearest texel — they can never be interpolated — and the distance from a
   // bilinear mix of the four around, each first expressed against the nearest texel's

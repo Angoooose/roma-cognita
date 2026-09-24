@@ -27,7 +27,7 @@ const CORE = new THREE.Color('#E4D3AE')
 
 type F = THREE.Node<'float'>
 
-export function roadShading(tex: THREE.DataTexture, n: number, pxM: F, texelM: F) {
+export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F) {
   // Distance interpolates; the code is read from the nearest texel, never blended.
   const d = texture(tex, uv().mul((n - 1) / n).add(0.5 / n)).r
   const near = min(floor(uv().mul(n - 1).add(0.5)), float(n - 1))

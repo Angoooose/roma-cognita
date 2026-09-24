@@ -115,21 +115,37 @@ export interface TileFrame {
   size: number
 }
 
-export function createTerrainMaterial(
-  terrainTex: THREE.DataTexture,
-  waterTex: THREE.DataTexture,
-  politicsTex: THREE.DataTexture,
-  roadsTex: THREE.DataTexture,
-  n: number,
-  tile: TileFrame,
-) {
-  // Deep enough to hide the gap where a coarse stand-in meets fine tiles in the
-  // mountains; 1% of the tile left dark cracks along tile edges on zoom-outs.
-  const skirtDepth = tile.size * 0.03
-  // Coarser tiles sit slightly lower, so where a stand-in and the finer tiles over it
-  // are both drawn the finer one wins the depth test. Invisible from above: 0.1% of the
-  // tile's size, 7 m at level 10, 1.8 km for the whole-map level-2 tiles.
-  const standInDrop = uniform(tile.size * 0.001)
+/** A tile's own data textures, in the order the worker builds them. */
+export interface TileTextures {
+  terrain: THREE.DataTexture
+  water: THREE.DataTexture
+  politics: THREE.DataTexture
+  roads: THREE.DataTexture
+}
+
+/**
+ * The terrain material, one for every tile. Building a node material's shader is the
+ * expensive part — some 30 ms of the main thread for this graph — and three rebuilds it
+ * for every material it has not seen, even when the WGSL comes out the same. So there
+ * is one graph, and what differs per tile (its textures and where it sits) is swapped in
+ * by `bind` just before the tile draws: three keeps each object's bindings apart.
+ */
+export function createTerrainMaterial(n: number) {
+  const slots = {
+    terrain: texture(blankTile(THREE.RGBAFormat)),
+    water: texture(blankTile(THREE.RGBAFormat)),
+    politics: texture(blankTile(THREE.RGBAFormat)),
+    roads: texture(blankTile(THREE.RGFormat)),
+  }
+  // Uniforms, not literals: a number baked into the graph makes a distinct shader per
+  // tile size. Set per tile by `bind`.
+  const skirtDepth = uniform(0)
+  const standInDrop = uniform(0)
+  const origin = uniform(new THREE.Vector2())
+  const extent = uniform(1)
+  const texelM = uniform(1)
+  const lattice = waterLattice(uv().mul(extent))
+
   const mat = new THREE.MeshBasicNodeMaterial()
   // Skirts face every way; culling them by winding would open the cracks they hide.
   mat.side = THREE.DoubleSide
@@ -137,19 +153,17 @@ export function createTerrainMaterial(
   // Texels are vertex-aligned: uv 0 and 1 land on the centres of the edge texels, which
   // is what lets neighbouring tiles agree exactly along their shared edge.
   const texUV = uv().mul((n - 1) / n).add(0.5 / n)
-  const h = texture(terrainTex, texUV).level(float(0)).r
+  const h = texture(slots.terrain, texUV).level(float(0)).r
   mat.positionNode = vec3(
     positionLocal.x,
     positionLocal.y,
-    // A uniform, not a literal: a number baked into the graph makes a distinct shader
-    // per tile size, and each one compiles — a 200 ms hitch per new zoom level.
     h
       .mul(terrainUniforms.verticalExaggeration)
-      .add(positionLocal.z.mul(uniform(skirtDepth)))
+      .add(positionLocal.z.mul(skirtDepth))
       .sub(standInDrop),
   )
 
-  const s = texture(terrainTex, texUV)
+  const s = texture(slots.terrain, texUV)
   const height = s.r
   const grad = vec2(s.g, s.b).mul(terrainUniforms.shadeExaggeration)
   const normal = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
@@ -164,9 +178,6 @@ export function createTerrainMaterial(
   // --- ground ------------------------------------------------------------------------
   // World position in km, for noise that runs continuously across tiles. Kilometres
   // rather than metres keep the noise lattice small enough for float32 at every zoom.
-  // Uniforms, not literals, so every tile shares one compiled shader.
-  const origin = uniform(new THREE.Vector2(tile.x0 / 1000, tile.y0 / 1000))
-  const extent = uniform(tile.size / 1000)
   const km = origin.add(uv().mul(extent))
   // Kilometres per screen pixel: detail finer than about two pixels is faded out rather
   // than left to shimmer.
@@ -226,7 +237,7 @@ export function createTerrainMaterial(
   const litLand = ground.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
 
   // --- water -------------------------------------------------------------------------
-  const w = texture(waterTex, texUV)
+  const w = texture(slots.water, texUV)
   const shore = w.r // metres to the shore, positive on land
   const depth = w.g // metres, ≤ 0
   // One screen pixel, in metres of shore distance: everything that should look the same
@@ -241,7 +252,7 @@ export function createTerrainMaterial(
     depth,
     height,
     slope,
-    lattice: waterLattice(tile, uv().mul(extent)),
+    lattice: lattice.at,
     pxM,
     detail,
     light: lightVector(kaz, kalt),
@@ -265,7 +276,6 @@ export function createTerrainMaterial(
   // on a line's centre that overestimates it by up to half a texel (more on the
   // diagonal); a line drawn thinner than that breaks into dashes wherever it runs
   // between texel centres — and where that happens shifts with every zoom step.
-  const texelM = uniform(tile.size / (n - 1))
   // Capped in pixels, so a magnified stand-in tile cannot turn a river into a band.
   const texelFloor = texelM.mul(0.6).min(pxM.mul(1.5))
   const halfWidth = max(riverQ.sqrt().mul(3), screenWidth.mul(pxM).mul(0.5), texelFloor).mul(
@@ -293,14 +303,14 @@ export function createTerrainMaterial(
   // Politics (politics/shading.ts). The fill is lit by the same light as the ground, but
   // compressed towards flat, so relief still reads through it without muddying it; the
   // glow and the border are printed over the rivers, as ink would be.
-  const pol = politicalShading(politicsTex, n, pxKm)
+  const pol = politicalShading(slots.politics, n, pxKm)
   const lit = clamp(shade, 0, 1.6).mul(0.4).add(0.6)
   const litFill = pol.fill.mul(lit)
   const tinted = mix(ground0, litFill, pol.fillAlpha)
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
   const withRivers = mix(glowed, RIVER, inRiver)
   // Roads over the rivers they cross, under the borders.
-  const road = roadShading(roadsTex, n, pxM, texelM)
+  const road = roadShading(slots.roads, n, pxM, texelM)
   const withRoads = mix(withRivers, road.colour, road.alpha)
   const landWithRivers = mix(withRoads, pol.line, pol.lineAlpha)
 
@@ -456,5 +466,36 @@ export function createTerrainMaterial(
     })
     return colour
   })()
-  return mat
+
+  /** Points the material at one tile; called from the tile's `onBeforeRender`. */
+  const bind = (tile: TileFrame, t: TileTextures) => {
+    slots.terrain.value = t.terrain
+    slots.water.value = t.water
+    slots.politics.value = t.politics
+    slots.roads.value = t.roads
+    // Deep enough to hide the gap where a coarse stand-in meets fine tiles in the
+    // mountains; 1% of the tile left dark cracks along tile edges on zoom-outs.
+    skirtDepth.value = tile.size * 0.03
+    // Coarser tiles sit slightly lower, so where a stand-in and the finer tiles over it
+    // are both drawn the finer one wins the depth test. Invisible from above: 0.1% of the
+    // tile's size, 7 m at level 10, 1.8 km for the whole-map level-2 tiles.
+    standInDrop.value = tile.size * 0.001
+    origin.value.set(tile.x0 / 1000, tile.y0 / 1000)
+    extent.value = tile.size / 1000
+    texelM.value = tile.size / (n - 1)
+    lattice.set(tile)
+  }
+  return { material: mat, bind }
+}
+
+/** Stands in for a tile's texture until the first tile binds its own: same format, same sampler. */
+function blankTile(format: THREE.PixelFormat) {
+  const channels = format === THREE.RGFormat ? 2 : 4
+  const t = new THREE.DataTexture(new Uint16Array(channels), 1, 1, format, THREE.HalfFloatType)
+  t.minFilter = t.magFilter = THREE.LinearFilter
+  t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping
+  t.generateMipmaps = false
+  t.colorSpace = THREE.NoColorSpace
+  t.needsUpdate = true
+  return t
 }
