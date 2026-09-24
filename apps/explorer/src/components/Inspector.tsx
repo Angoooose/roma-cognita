@@ -187,7 +187,7 @@ function Note({ children }: { children: ReactNode }) {
 function Sources({
   sources,
 }: {
-  sources: { citation: string; locator?: string; url?: string }[]
+  sources: { citation: string; locator?: string; url?: string; passage?: string }[]
 }) {
   return (
     <div>
@@ -195,27 +195,29 @@ function Sources({
       <ul className="list-disc space-y-0.5 pl-4">
         {sources.map((s, i) => (
           <li key={i}>
-            {s.url ? (
-              <a
-                className="underline underline-offset-2"
-                href={s.url}
-                target="_blank"
-                rel="noopener"
-              >
-                {s.citation}
-              </a>
-            ) : (
-              s.citation
-            )}
+            <Link href={s.url}>{s.citation}</Link>
             {s.locator && (
               <>
-                , <span className="text-muted-foreground">{s.locator}</span>
+                ,{' '}
+                <span className="text-muted-foreground">
+                  <Link href={s.passage}>{s.locator}</Link>
+                </span>
               </>
             )}
           </li>
         ))}
       </ul>
     </div>
+  )
+}
+
+/** The work, or the passage cited in it, opened in a new tab; plain text when there is no link. */
+function Link({ href, children }: { href?: string; children: ReactNode }) {
+  if (!href) return children
+  return (
+    <a className="underline underline-offset-2" href={href} target="_blank" rel="noopener">
+      {children}
+    </a>
   )
 }
 

@@ -17,7 +17,8 @@
     "politics": "node --max-old-space-size=8192 --import tsx src/politics/build.ts",
     "derive-floodplains": "node --max-old-space-size=8192 --import tsx src/features/derive-floodplains.ts",
     "people:fetch": "node --env-file-if-exists=../.env.local --import tsx src/people/dprr.ts && node --env-file-if-exists=../.env.local --import tsx src/people/wikidata.ts",
-    "people": "tsx src/people/build.ts"
+    "people": "tsx src/people/build.ts",
+    "passages:fetch": "node --env-file-if-exists=../.env.local --import tsx src/passages/fetch.ts"
   },
   "dependencies": {
     "@roman-map/schema": "*",

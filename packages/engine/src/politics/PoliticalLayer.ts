@@ -65,7 +65,8 @@ export interface ClaimRecord {
   to: End
   confidence: 'certain' | 'probable' | 'uncertain'
   review: string
-  sources: SourceRef[]
+  /** `passage`: the place in the work the locator cites, when it can be read online. */
+  sources: (SourceRef & { passage?: string })[]
   note?: string
 }
 interface RelationRecord {
@@ -108,7 +109,7 @@ export interface PoliticalHit {
   power?: PolityRecord
   /** The chain itself, polity first. */
   chain: { polity: PolityRecord; type: RelationRecord['type'] }[]
-  sources: { citation: string; url?: string; locator?: string }[]
+  sources: { citation: string; url?: string; locator?: string; passage?: string }[]
 }
 
 /** An uncertain claim's fill strength: the map says less where the sources do. */
@@ -377,7 +378,11 @@ export class PoliticalLayer {
       polity: polity(claim.polity),
       power: polity(power),
       chain: chain.map((l) => ({ polity: polity(l.polity)!, type: l.type })).filter((l) => l.polity),
-      sources: claim.sources.map((s) => ({ ...(d.sources[s.source] ?? { citation: s.source }), locator: s.locator })),
+      sources: claim.sources.map((s) => ({
+        ...(d.sources[s.source] ?? { citation: s.source }),
+        locator: s.locator,
+        passage: s.passage,
+      })),
     }
   }
 
