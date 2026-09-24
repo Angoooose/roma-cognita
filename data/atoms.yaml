@@ -3,7 +3,7 @@
 # data/geometry/atoms.geojson, keyed by the same id, and is built from the
 # `construction` below by `npm run atoms -w pipeline` (pipeline/src/atoms).
 #
-# Rebuilt September 2026. The outlines migrated from cicero-map were AWMC's
+# Rebuilt September 2026. The first outlines were AWMC's
 # 60 BCE shading cut with straight lines, and hand-drawn twelve-vertex rings
 # for the kingdoms; neither followed anything the sources name, and AWMC's
 # ODbL would not relicense. Every outline is now authored here from the
@@ -318,8 +318,7 @@
     West of the Mulucha: the Tingitane peninsula and the Atlantic plains "as
     far as Sala and Volubilis", beyond which the mountains belonged to tribes
     of varying loyalty (Barrington Directory, map 28). Bogud's kingdom from 49
-    to 38, Pliny's "Bogudiana" (Bridoux ¶99–100). cicero-map ran it south to
-    the Anti-Atlas at 30° N, which nothing supports. Takes the Moulouya from
+    to 38, Pliny's "Bogudiana" (Bridoux ¶99–100). Takes the Moulouya from
     mauretania-central.
 
 - id: cyrenaica
@@ -464,8 +463,7 @@
     (Barrington map 79), drawn as the separate islands of ground they were.
     Siwa (Ammon), under its own rulers, and the Sinai south of the coast road,
     a nomad and Nabataean zone (Barrington map 76), are left out, as is the
-    Dodecaschoenus beyond Philae, contested with Meroë. cicero-map ran south to
-    22° N and took in the whole western desert and Sinai. Takes the Catabathmus
+    Dodecaschoenus beyond Philae, contested with Meroë. Takes the Catabathmus
     from cyrenaica.
 
 - id: nabataea
@@ -1678,7 +1676,6 @@
     Astae of Bizye towards the Black Sea. Their authority over the inland
     tribes was intermittent, and the Pontic Greek cities (Apollonia, Mesembria,
     Anchialus), allied to Rome from Lucullus' campaign of 72/71, are left out.
-    cicero-map's ring ran down to the Aegean and over the Roman Chersonese.
 
 - id: pontic-cities
   evidence: schematic
@@ -1882,7 +1879,7 @@
     that bordered the Dardanians (Nigdelis), with Thessaly, Epirus and the
     Illyrian coast from Dyrrachium and Apollonia to the Drilon, and the Via
     Egnatia's coast to the Hebrus and the Thracian Chersonese. The northern
-    edge stops short of Scupi and the Dardanians; cicero-map's ran along 42° N.
+    edge stops short of Scupi and the Dardanians.
     Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
     Hellespont from asia.
 
@@ -1966,8 +1963,7 @@
   review: draft
   note: >-
     The Kerch peninsula from Theodosia, and on the Asiatic side Phanagoria,
-    Hermonassa, Sindice and Gorgippia, to the lower Kuban. cicero-map added a
-    rectangle of open steppe that missed Tanais itself.
+    Hermonassa, Sindice and Gorgippia, to the lower Kuban.
 
 - id: bosporus-tanais
   evidence: schematic

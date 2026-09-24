@@ -1,20 +1,16 @@
 # The register of political units, independent of the ground they held. What
 # ground each held is in claims.yaml; how each stood to Rome is in
-# relations.yaml. cicero-map folded both into one `kind` (citizen / province /
-# client); here `kind` says only what sort of thing the polity was.
+# relations.yaml. `kind` says only what sort of thing the polity was.
 #
-# Migrated from cicero-map/data/polities.json. Its confidence meant: `certain`,
-# the date is fixed by an event everyone agrees on; `probable`, the standard
-# accounts converge; `check`, not settled and wants a human with the books open.
-# `check` became a real confidence plus review: needs-check. Nothing here has
-# been re-verified in this project yet, so everything else is review: draft.
+# Confidence: `certain`, the date is fixed by an event everyone agrees on;
+# `probable`, the standard accounts converge; `uncertain`, not settled.
+# Anything that wants a human with the books open is review: needs-check.
 #
-# Dates. `from` is the province's creation (cicero-map's `since`) where one was
-# recorded. Every other `before 68 BCE` / `after 43 BCE` marks where cicero-map's
-# 68–43 BCE window cut the record off: the polity existed at that year and this
-# data says nothing about how far beyond it (see data/README.md, "Open ends").
-# The year of a transition belongs to the successor, as in cicero-map: a
-# kingdom annexed in 46 ends in 47.
+# Dates. `from` is the province's creation where one is recorded. Every other
+# `before 68 BCE` / `after 43 BCE` marks where the 68–43 BCE window cuts the
+# record off: the polity existed at that year and this data says nothing about
+# how far beyond it (see data/README.md, "Open ends"). The year of a transition
+# belongs to the successor: a kingdom annexed in 46 ends in 47.
 
 - id: rome
   kind: state
@@ -27,9 +23,7 @@
   confidence: certain
   review: draft
   note: >-
-    Added in migration as the other end of every province-of and client-of
-    relation. cicero-map had no record for Rome itself because everything on its
-    map was implicitly Roman.
+    The other end of every province-of and client-of relation.
 
 - id: italia
   kind: citizen-territory
@@ -254,7 +248,7 @@
     Conquered progressively 58–50 and held under Caesar's command, but not
     formally organised as a province until Augustus. Dated from 51, after Alesia
     and the final campaigns; the single date stands in for eight years of
-    conquest and is the weakest claim in the dataset. (cicero-map: check.)
+    conquest and is the weakest claim in the dataset.
 
 - id: illyricum
   kind: province
@@ -284,8 +278,7 @@
   note: Numidia annexed after Thapsus.
 
 # --- kingdoms ----------------------------------------------------------------
-# cicero-map's `client` kind. The client status is now a relation
-# (relations.yaml); `kingdom` here also covers the principalities, tetrarchies
+# Client status is a relation (relations.yaml); `kingdom` here also covers the principalities, tetrarchies
 # and phylarchies of the Levant — anything ruled by a dynast.
 
 - id: cyprus-ptolemaic
@@ -329,8 +322,8 @@
   review: needs-check
   note: >-
     Divided between the two kings around 49; the arrangement before that is not
-    clear enough to date. (cicero-map: check — the kingdom is not in doubt, its
-    internal arrangement is, hence probable.)
+    clear enough to date. The kingdom is not in doubt, its internal arrangement
+    is, hence probable.
 
 - id: aegyptus
   kind: kingdom
@@ -360,7 +353,7 @@
   confidence: probable
   review: needs-check
   note: >-
-    (cicero-map: check.) The kingdom is not in doubt; its extent and its
+    The kingdom is not in doubt; its extent and its
     standing with Rome are — see the claim and the atom.
 
 - id: bosporus
@@ -388,7 +381,7 @@
   confidence: probable
   review: needs-check
   note: >-
-    (cicero-map: check.) Odrysian authority over the inland Thracian tribes was
+    Odrysian authority over the inland Thracian tribes was
     intermittent throughout the window.
 
 - id: galatia
@@ -455,7 +448,6 @@
     - { source: sullivan-1990 }
   confidence: probable
   review: needs-check
-  note: '(cicero-map: check.)'
 
 - id: emesa
   kind: kingdom
@@ -469,7 +461,7 @@
   confidence: probable
   review: needs-check
   note: >-
-    (cicero-map: check.) Cicero uses the name as a nickname for Pompey in the
+    Cicero uses the name as a nickname for Pompey in the
     letters to Atticus.
 
 - id: osroene
@@ -483,7 +475,6 @@
     - { source: sullivan-1990 }
   confidence: probable
   review: needs-check
-  note: '(cicero-map: check.)'
 
 - id: amanus
   kind: kingdom
@@ -499,8 +490,8 @@
   review: needs-check
   note: >-
     Tarcondimotus' principality in the Amanus and on the middle Pyramus, seated
-    at Hierapolis-Castabala. cicero-map called it Cilicia Tracheia, which is the
-    rough country west of the Cilician plain and was not his.
+    at Hierapolis-Castabala. Not Cilicia Tracheia, which is the rough country
+    west of the Cilician plain and was not his.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 

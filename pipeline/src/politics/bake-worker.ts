@@ -12,10 +12,9 @@
  *    OSM's; without this every headland the two disagree on would be a strip of
  *    unclaimed ground with a border round it.
  * 3. A small piece of land no outline covers, within `ISLAND_M` of an atom: the
- *    nearest atom. That is islands — cicero-map attached AWMC's islands to their
- *    nearest atom, and OSM has many more — and the slivers left between neighbouring
- *    outlines where cicero-map differenced them, which would otherwise each draw as a
- *    speck of unclaimed land ringed with border.
+ *    nearest atom. That is islands, which OSM has far more of than any outline
+ *    names, and slivers left between neighbouring outlines, which would otherwise
+ *    each draw as a speck of unclaimed land ringed with border.
  * 4. Any other land: unclaimed (label 0). A frontier between an atom and unclaimed
  *    land is a border like any other.
  * 5. Sea within the clamp distance of land: the nearest land's label, so a fill runs

@@ -5,9 +5,7 @@ Imperator: Rome is the bar for how it should _feel_; the Barrington Atlas is the
 bar for what it may _claim_. The Cicero project will be its first consumer, but
 the map is a general-purpose package and knows nothing about Cicero.
 
-Status: draft, September 2026. Supersedes `cicero-map/` as a codebase, not as
-a body of knowledge — that repo's README and NOTES record hard-won decisions
-and traps, and this design carries most of them forward.
+Status: draft, September 2026.
 
 ---
 
@@ -16,8 +14,7 @@ and traps, and this design carries most of them forward.
 1. **Accuracy first. Nothing is drawn that the data does not support.** Where
    the evidence is weak the drawing says so: a frontier the sources leave vague
    is drawn soft, and a kingdom whose extent nobody knows is drawn as a seat,
-   not a guessed polygon. Carried over from `cicero-map`: _the source's silence
-   is not evidence._
+   not a guessed polygon. _The source's silence is not evidence._
 2. **Everything is dated.** A record without a date range cannot take part in
    the timeline, so it does not ship. (A physical feature is dated too: "always"
    is a date range.)
@@ -108,16 +105,14 @@ Scale error along parallels, computed for the candidates:
 Because every output is pre-projected, **this decision is frozen once the
 pipeline ships.** Changing it means rebuilding every file.
 
-Carried-over trap: d3-geo and polygon-clipping disagree on ring winding
-(`cicero-map` README, "Ring winding"). The pipeline normalises winding once, at
-ingest, and asserts it.
+A known trap: d3-geo and polygon-clipping disagree on ring winding. The
+pipeline normalises winding once, at ingest, and asserts it.
 
 ---
 
 ## 5. Data model
 
-The core idea is carried over from `cicero-map`: **geometry once, time as a
-table.** Shapes are drawn once; everything that changes over time is a dated
+The core idea: **geometry once, time as a table.** Shapes are drawn once; everything that changes over time is a dated
 row that refers to them.
 
 ### 5.1 Entities
@@ -147,9 +142,9 @@ province status, and so on.
   range `"c. 81 BCE"`. The build converts them to **astronomical integers**
   (1 BCE = 0, 43 BCE = −42), so arithmetic across the era boundary is correct.
   Nobody ever types a sign.
-  - This fixes a real ambiguity in `cicero-map`, which calls −43
-    "astronomical" but means 43 BCE. It was harmless there because the window
-    was entirely BCE. It stops being harmless the moment the window grows.
+  - Writing −43 for 43 BCE and calling it "astronomical" is a real ambiguity.
+    It is harmless while the window is entirely BCE, and stops being harmless
+    the moment the window grows.
 - **Fuzzy intervals.** Each endpoint is either a year or
   `{ earliest, latest }`. The renderer takes the midpoint by default, and the
   inspector shows the range.
@@ -162,8 +157,7 @@ province status, and so on.
 
 ### 5.3 Uncertainty and review, as two separate fields
 
-`cicero-map` folded a review state into its confidence scale (`check`). Here
-they are separate:
+Confidence and review state are separate fields, never one scale:
 
 - `confidence: certain | probable | uncertain`. How firmly the sources support
   the claim. **This is drawn.**
@@ -172,7 +166,7 @@ they are separate:
 
 Every historical record needs at least one `sources` entry: a source id plus a
 locator (page, map number, fragment). A `note` field holds reasoning that
-should survive, in the style of `cicero-map`'s `_comment`s.
+should survive.
 
 ### 5.4 Identity
 
@@ -187,7 +181,7 @@ should survive, in the style of `cicero-map`'s `_comment`s.
 
 ### 5.5 Atoms across a growing time span
 
-In `cicero-map` an atom was "ground that never subdivides _during the
+Within one window an atom is "ground that never subdivides _during the
 window_". A longer span will need atoms to split: a province divided, a
 kingdom partitioned. The rule is **finest common subdivision**. When a new
 boundary is needed, the atom is split into children with `splitFrom: parent`,
@@ -211,12 +205,6 @@ of each outline, and the validator asserts it.
 - It lives in git for v1. An editing tool (a map-side inspector that writes
   YAML) is planned once hand-editing hurts, not before.
 
-### 5.7 Migration
-
-`cicero-map/data/*.json` is the first real test of this model. That means
-atoms, cuts, shapes, polities, control, seats and places, all already sourced.
-Migrating it proves the schema before new curation starts.
-
 ---
 
 ## 6. Sources
@@ -233,7 +221,7 @@ Migrating it proves the schema before new curation starts.
 | Territory geometry     | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | Rebuilt September 2026 (`pipeline/src/atoms`). AWMC's `roman_empire_bce_60` was dropped: one unnamed Roman extent, coarse, cut with straight lines, and ODbL |
 | Region and people names | AWMC `regional_names_linework`                      | ODbL              | Baselines give size and angle |
 | Rivers                 | AWMC river lines (Barrington); HydroRIVERS for minor | ODbL; **licence to verify** | Modern courses corrected at deltas |
-| Roads                  | **Itiner-e**                                         | CC BY 4.0         | Only dated segments ship. Construction date kept per feature, which fixes `cicero-map`'s oldest open bug. |
+| Roads                  | **Itiner-e**                                         | CC BY 4.0         | Only dated segments ship. Construction date kept per feature, so a road never draws before it was built. |
 | Surface textures       | ambientCG, Poly Haven                                | CC0               | Rock, scree, sand, soil, scrub |
 | Aridity / biome        | Köppen–Geiger (Beck et al.)                          | **licence to verify** | Modern climate as a proxy for desert versus green; used coarsely |
 | Reference only         | Barrington Atlas, Broughton MRR, Talbert            | ©                 | Cited, never copied |
@@ -425,7 +413,7 @@ from vector lines.
   coast at any texel size. Also handled:
   - slivers between the atom outlines' Natural Earth coast and OSM's;
   - small islands no outline covers;
-  - gaps left where cicero-map differenced neighbouring outlines.
+  - gaps left between neighbouring outlines.
 
   Each of these goes to the nearest atom. Any other land is unclaimed, label 0.
   The result is about 1,000 tiles, 3.4 MB, baked in about 20 s.
@@ -480,7 +468,7 @@ sit on the relief at any tilt.
 
 **Roads were built in September 2026** (`npm run roads -w pipeline`,
 `packages/engine/src/roads`). The source is Itiner-e, static version 2024, CC BY 4.0.
-cicero-map's work on it is carried over:
+What matters about it:
 - **The coordinates are EPSG:3395.** The source's GeoJSON is ellipsoidal World
   Mercator, not EPSG:4326, and is unprojected with an iterated latitude.
 - **Only dated roads are drawn.** A segment is kept only when the source dates
@@ -492,8 +480,8 @@ cicero-map's work on it is carried over:
   That leaves 405 lines: the Republican trunk network as historians name it. An
   undated road cannot take part in a time series, so it is dropped, not drawn
   faintly.
-- **Each segment keeps its first year**, and the shader shows it only from then.
-  This fixes cicero-map's oldest bug, which drew roads built in 46 at 68 BCE.
+- **Each segment keeps its first year**, and the shader shows it only from then,
+  so a road built in 46 does not draw at 68 BCE.
 - **The tile field** holds, per texel, the distance to the nearest road, plus
   one exact integer packing its year, class and certainty. At a tie between two
   roads, the older one wins, so a junction never waits on the newer road.
@@ -783,7 +771,7 @@ it holds 60 fps, and WebGPU and WebGL2 give matching output.
 **Track B: data model and first dataset.**
 
 1. Schema and validator, including the era-string time parser.
-2. Migrate `cicero-map/data` into the new model.
+2. A first dataset in the new model: 68–43 BCE (done September 2026).
 3. Extend the data to 133–27 BCE and the full frame, including Parthia and the
    neighbours.
 4. The first 10 `landscape-change` records.

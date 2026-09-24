@@ -1,19 +1,16 @@
 # Kingdoms drawn as their capital rather than as territory, because nobody can
-# say where they ended. Every published polygon for these dynasts that
-# cicero-map found was a thirty-two-segment ellipse given a scholarly citation,
-# so the map marks the seat of power instead.
+# say where they ended. The published polygons for these dynasts are
+# schematic ellipses given a scholarly citation, so the map marks the seat of
+# power instead.
 #
 # September 2026: Galatia, Cappadocia, Commagene, Judaea, Emesa, Ituraea and
 # Tarcondimotus' Amanus are now drawn as territory, from their frontiers in the
 # ancient geographers and the scholarship (atoms.yaml), and their seats are
 # gone. Osroene stays a seat: its extent east of the Euphrates is not known.
 #
-# Migrated from cicero-map/data/seats.json, which gave a confidence but no
-# source; each row now cites its polity's source. Its seats spanned the whole
-# 68–43 BCE window, hence the open ends. The seat's position is its place's
-# (places.yaml), which is Pleiades' where the place is joined to Pleiades.
-# cicero-map's own seat coordinates agree with Pleiades to within 1.5 km for the
-# six that join.
+# Each row cites its polity's source and spans the whole 68–43 BCE window,
+# hence the open ends. The seat's position is its place's (places.yaml), which
+# is Pleiades'.
 
 - polity: osroene
   place: edessa

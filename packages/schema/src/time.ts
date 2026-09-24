@@ -4,9 +4,9 @@
  * Authors write explicit era strings — `63 BCE`, `14 CE`, `c. 81 BCE` — and
  * never a sign. The build converts them to astronomical integers, where 1 BCE
  * is 0 and 43 BCE is −42, so that subtraction across the era boundary is
- * correct: 1 BCE to 1 CE is one year, not two. cicero-map wrote −43 for 43 BCE
- * and called it astronomical; that was harmless while the window was all BCE,
- * and is exactly the ambiguity this module exists to remove.
+ * correct: 1 BCE to 1 CE is one year, not two. Writing −43 for 43 BCE and
+ * calling it astronomical is harmless while a window is all BCE, and is exactly
+ * the ambiguity this module exists to remove.
  *
  * Every interval is inclusive of both ends, in whole years (DESIGN §5.2).
  *

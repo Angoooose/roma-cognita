@@ -161,7 +161,7 @@ export const PolityKindSchema = z.enum([
 /**
  * A political unit, independent of ground. `kind` says what sort of thing it
  * is; how it stood to Rome is a `relation`, and what ground it held is a
- * `claim`. cicero-map folded all three into one `kind` field.
+ * `claim`, so each can be dated on its own.
  */
 export const PolitySchema = z.strictObject({
   id: SlugSchema,

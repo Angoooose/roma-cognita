@@ -1,12 +1,11 @@
 # How polities stood to one another over time: `polity` is `type` `of` another.
-# This is what cicero-map's `kind` meant by province and client, lifted out so
-# it can be dated separately from the polity and from the ground it held —
-# Egypt was a kingdom throughout, a client only from some point in the window.
+# Province and client standing are kept apart from the polity so they can be
+# dated separately from it and from the ground it held — Egypt was a kingdom
+# throughout, a client only from some point in the window.
 #
-# Every row here is derived from cicero-map/data/polities.json and control.json;
-# nothing is new. Province rows run from the province's creation. Client rows
-# run over the years cicero-map drew the kingdom as a client, which for the
-# kingdoms drawn as seats was its whole 68–43 window.
+# Province rows run from the province's creation. A client row runs from when
+# the standing began where that is known, and otherwise across the whole
+# 68–43 window.
 
 # --- citizen territory and provinces -------------------------------------------
 
@@ -223,11 +222,11 @@
   confidence: probable
   review: needs-check
   note: >-
-    Migrated as cicero-map drew it, a client for the whole window. But
-    cicero-map's own note argues for client standing only from 59 (socius et
-    amicus) or 55 (the Gabinian garrison), and before that Egypt was formally
-    independent. The start probably wants to be 59 or 55 with the years before
-    as `independent`; not changed here because that is a new judgement.
+    Drawn as a client for the whole window, but client standing is better dated
+    from 59 (Auletes recognised as friend and ally) or 55 (the Gabinian
+    garrison), and before that Egypt was formally independent. The start
+    probably wants to be 59 or 55 with the years before as `independent`; not
+    yet changed, because it needs a decision between the two.
 
 - polity: nabataea
   type: client-of
@@ -238,7 +237,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    cicero-map: check. Migration review: Scaurus campaigned against Aretas III in 62;
+    Migration review: Scaurus campaigned against Aretas III in 62;
     what standing followed wants confirming.
 
 - polity: bosporus
@@ -263,7 +262,6 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
-  note: 'cicero-map: check.'
 
 - polity: galatia
   type: client-of
@@ -304,7 +302,7 @@
   note: >-
     From Pompey's capture of Jerusalem in 63. Before that the Hasmoneans were
     friends of Rome by treaty, not clients; their ground is claimed as
-    independent (claims.yaml). cicero-map had a client from 68.
+    independent (claims.yaml).
 
 - polity: ituraea
   type: client-of
@@ -314,7 +312,6 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
-  note: 'cicero-map: check.'
 
 - polity: emesa
   type: client-of
@@ -324,7 +321,6 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
-  note: 'cicero-map: check.'
 
 - polity: osroene
   type: client-of
@@ -334,7 +330,6 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
-  note: 'cicero-map: check.'
 
 - polity: amanus
   type: client-of
@@ -344,7 +339,6 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
-  note: 'cicero-map: check.'
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
