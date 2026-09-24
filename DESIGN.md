@@ -708,6 +708,14 @@ copy. What we take from it:
     timeline always shows the year and opens its ruler beside it; the legend
     folds to a square and opens its key above. Only the toggle opens or closes
     either.
+  - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
+    the plate's title block, the map's name and the years it covers in the
+    double rule, with "Index of places ⌘K" under it. Each result is its map
+    mark, its name, a dotted leader and what it belongs to (`Province of
+    Roma`); what is not on the map in the year shown is greyed with its years,
+    and going to it moves the timeline to the first. With nothing typed it
+    offers the year's largest polities and its great cities. The map stays
+    sharp behind it under a thin paper wash.
   - Italic is kept to short phrases. Tooltips and notes are upright: Garamond
     italic thins out over a sentence, and light-on-dark type at 13 px breaks
     up the way Regular did on the map (§7.4).
@@ -725,7 +733,7 @@ copy. What we take from it:
 const map = await createRomeMap(canvas, { data: '/data', year: '63 BCE' })
 
 map.setYear('49 BCE', { animate: true })
-map.flyTo({ lon: 12.48, lat: 41.89, zoom: 'terrain' })
+map.flyTo({ kind: 'place', id: 'roma' }) // or a polity; entries() lists them
 map.setMode('political') // 'political' | 'physical' | 'status' | ...
 
 map.on('hover', (e) => e.hits) // places, atoms → claims(year), routes

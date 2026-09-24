@@ -217,7 +217,7 @@ export function LegendPanel({
  * over Ink & gold the ink would vanish, so the mark sits on a small tile of paper, as
  * it sits on land on the map.
  */
-function Mark({ children }: { children: ReactNode }) {
+export function Mark({ children }: { children: ReactNode }) {
   return (
     <span className="grid h-[18px] w-5 place-items-center rounded-[2px] dark:bg-[#EDE6D6]/90">
       {children}
@@ -239,7 +239,7 @@ function Key({ swatch, children }: { swatch: ReactNode; children: ReactNode }) {
  * `ground-green`), not over the panel: on the map it is the terrain that shows through,
  * which is why an uncertain province reads brown, not pale pink.
  */
-function Swatch({ fill, alpha = 1 }: { fill: string; alpha?: number }) {
+export function Swatch({ fill, alpha = 1 }: { fill: string; alpha?: number }) {
   return (
     <span
       className="block h-3 w-5 overflow-hidden rounded-[1px] ring-1 ring-foreground/25"
@@ -269,19 +269,19 @@ function Strip({ fills }: { fills: string[] }) {
 const INK = '#2A241E'
 const PAPER = '#EDE6D6'
 
-const Town = () => (
+export const Town = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
     <circle cx="8" cy="8" r="3.2" fill={PAPER} opacity="0.55" />
     <circle cx="8" cy="8" r="2.4" fill={INK} />
   </svg>
 )
-const Capital = () => (
+export const Capital = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
     <circle cx="8" cy="8" r="4.5" fill={PAPER} stroke={INK} strokeWidth="1.3" />
     <circle cx="8" cy="8" r="1.8" fill={INK} />
   </svg>
 )
-const Caput = () => (
+export const Caput = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
     <circle
       cx="8"
@@ -296,7 +296,7 @@ const Caput = () => (
     <circle cx="8" cy="8" r="1.7" fill={INK} />
   </svg>
 )
-const Seat = ({ fill }: { fill: string }) => (
+export const Seat = ({ fill }: { fill: string }) => (
   <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
     <rect
       x="4.5"

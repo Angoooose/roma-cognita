@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { standing } from '@/lib/standing.ts'
 import { formatYear } from '@/lib/year.ts'
 import { useExplorer } from '@/store.ts'
 
@@ -41,7 +42,8 @@ export function Inspector() {
       inspect(e.clientX, e.clientY)
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close()
+      // A dialog over the map takes its own Escape first.
+      if (e.key === 'Escape' && !e.defaultPrevented) close()
     }
     canvas.addEventListener('pointerdown', onDown)
     canvas.addEventListener('pointerup', onUp)
@@ -224,22 +226,4 @@ function Meta({ id, year, review }: { id: string; year: number; review: string }
       {review !== 'verified' && ` · ${review}`}
     </CardFooter>
   )
-}
-
-function standing(relation: string, overlord: string | null) {
-  const of = overlord ? ` of ${overlord}` : ''
-  switch (relation) {
-    case 'province':
-      return `Province${of}`
-    case 'citizen-territory':
-      return `Citizen territory${of}`
-    case 'client':
-      return `Client kingdom${of}`
-    case 'allied':
-      return `Allied${overlord ? ` to ${overlord}` : ''}`
-    case 'occupied':
-      return `Occupied`
-    default:
-      return 'Independent'
-  }
 }

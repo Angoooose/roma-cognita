@@ -12,6 +12,7 @@ import {
 import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
 import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
 import { roadUniforms } from './roads/shading.ts'
+import { entries, frame, hitFor, type MapRef } from './find.ts'
 
 export interface RomeMapOptions {
   camera: CameraState
@@ -117,6 +118,7 @@ export class RomeMap {
    */
   private tick() {
     const now = performance.now()
+    this.view.step(now)
 
     // Relief at the overview comes from coarse texels whose slopes are nearly flat, so
     // it is pushed harder the further out we are. Tuned by eye; a style-spec number.
@@ -199,6 +201,43 @@ export class RomeMap {
     const p = this.view.ground(clientX, clientY)
     const territory = p ? await this.politics.pick(p.x, p.y) : null
     return territory ? { territory } : null
+  }
+
+  /** Everything the reader can search for, named for the year shown. */
+  async entries() {
+    this.placeAtoms ??= this.readPlaceAtoms()
+    return entries(this, this.year, await this.placeAtoms)
+  }
+
+  /** The atom under each settlement, read from the field once: it does not change by year. */
+  private placeAtoms?: Promise<Map<string, string | null>>
+  private async readPlaceAtoms() {
+    const all = this.places.all
+    const atoms = await Promise.all(all.map((p) => this.politics.atomAt(p.x, p.y)))
+    return new Map(all.map((p, k) => [p.id, atoms[k]]))
+  }
+
+  /** What `pick` would report for `ref` in the year shown; null if it is not on the map. */
+  inspectRef(ref: MapRef) {
+    return hitFor(this, ref, this.year)
+  }
+
+  /**
+   * Flies to `ref` as it is in the year shown. `inset` is the CSS px along the right
+   * edge a panel covers: the view is framed on the rest. False if it is not on the map.
+   */
+  flyTo(ref: MapRef, opts: { inset?: number } = {}) {
+    const inset = opts.inset ?? 0
+    const w = Math.max(1, this.container.clientWidth - inset)
+    const f = frame(this, ref, this.year, w, this.container.clientHeight)
+    if (!f) return false
+    // The target sits mid-view; shift it so the thing sits mid the uncovered part.
+    this.view.flyTo({
+      x: f.x + (inset / 2) * f.mpp,
+      y: f.y,
+      distance: this.view.distanceFor(f.mpp),
+    })
+    return true
   }
 
   /** True once every visible tile is drawn at its own detail — used by screenshots. */

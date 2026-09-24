@@ -58,7 +58,7 @@ export interface PlaceRecord {
   note?: string
 }
 
-interface SeatRecord {
+export interface SeatRecord {
   polity: string
   name: string
   place: string
@@ -283,6 +283,40 @@ export class PlaceLayer {
       status: best.status,
       seatOf: best.seat ? { polity: best.seat.polity, name: best.seat.name } : undefined,
     }
+  }
+
+  /** Every settlement in the data, whatever the year. */
+  get all(): readonly PlaceRecord[] {
+    return this.places
+  }
+
+  /** The kingdoms seated at settlements, whatever the year. */
+  get allSeats(): readonly SeatRecord[] {
+    return this.seats
+  }
+
+  /** What the inspector shows for a settlement in `year`, or null if it is not on the map. */
+  hitFor(id: string, year: number): PlaceHit | null {
+    const p = this.places.find((q) => q.id === id)
+    if (!p || p.years[0] > year || p.years[1] < year) return null
+    const seat = this.seats.find((s) => s.place === id && s.years[0] <= year && year <= s.years[1])
+    return {
+      place: p,
+      status: at(p.status, year),
+      seatOf: seat ? { polity: seat.polity, name: seat.name } : undefined,
+    }
+  }
+
+  /**
+   * The scale (m per CSS px) a settlement shows from in `year`: its prominence's tier,
+   * or the regional view for a seat. Rome shows at every scale.
+   */
+  showsFrom(id: string, year: number) {
+    const p = this.places.find((q) => q.id === id)
+    if (!p) return TIER_MPP[4]
+    const tier = at(p.prominence, year) ?? 4
+    const seated = this.seats.some((s) => s.place === id && s.years[0] <= year && year <= s.years[1])
+    return Math.max(TIER_MPP[tier], seated ? SEAT_MPP : 0)
   }
 
   /** The kingdoms drawn by their seat in `year`, for the legend. */

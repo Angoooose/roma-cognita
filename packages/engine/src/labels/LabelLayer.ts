@@ -30,6 +30,9 @@ import { loadFont, msdfInk, type FontData } from './msdf.ts'
 
 interface Placement {
   kind: 'land' | 'water'
+  /** The polity a land name belongs to, and the atoms it names. */
+  polity?: string
+  atoms?: string[]
   font: string
   text: string
   years: [number, number][]
@@ -138,6 +141,21 @@ export class LabelLayer {
         if (face) this.faces.set(name, face)
       }),
     )
+  }
+
+  /**
+   * A polity's names on the map, by the years they are shown: for search to list
+   * when it is on the map, and to frame it. Paths are plane metres.
+   */
+  namesOf(polity: string): {
+    text: string
+    years: [number, number][]
+    path: [number, number][]
+    atoms: string[]
+  }[] {
+    return this.placements
+      .filter((p) => p.kind === 'land' && p.polity === polity)
+      .map((p) => ({ text: p.text, years: p.years, path: p.path, atoms: p.atoms ?? [] }))
   }
 
   /** Rebuilds the glyph meshes for `year`; names that change cross-fade with the colours. */

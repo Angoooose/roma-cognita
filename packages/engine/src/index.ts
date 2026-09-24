@@ -10,3 +10,4 @@ export {
   UNCERTAIN_ALPHA,
 } from './politics/PoliticalLayer.ts'
 export { type PlaceHit, type PlaceRecord } from './labels/PlaceLayer.ts'
+export { type MapRef, type MapEntry } from './find.ts'

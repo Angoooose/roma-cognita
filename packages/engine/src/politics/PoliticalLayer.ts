@@ -271,6 +271,22 @@ export class PoliticalLayer {
     return { powers: [...powers.values()].sort((a, b) => b.atoms - a.atoms), uncertain, schematic, unclaimed }
   }
 
+  /** Every polity in the data, whatever the year. */
+  get polities(): readonly PolityRecord[] {
+    return this.data?.polities ?? []
+  }
+
+  /** The polity whose own claim holds `atom` in `year`, if any. */
+  holderOf(atom: string, year: number) {
+    return this.data ? this.holding(atom, year)?.polity : undefined
+  }
+
+  /** The polity as named in `year`, or its standing name. */
+  nameOf(id: string, year: number) {
+    const p = this.polityById.get(id)
+    return p && (this.named(p, year)?.name ?? p.name)
+  }
+
   /** A polity's record, for the inspector. */
   polity(id: string) {
     return this.polityById.get(id)
@@ -315,6 +331,12 @@ export class PoliticalLayer {
 
   /** The atom under a point on the plane, and what held it in the current year. */
   async pick(x: number, y: number): Promise<PoliticalHit | null> {
+    const atom = await this.atomAt(x, y)
+    return atom ? this.hitAt(atom) : null
+  }
+
+  /** The atom under a point on the plane; null over the sea or unclaimed land. */
+  async atomAt(x: number, y: number): Promise<string | null> {
     const d = this.data
     const idx = this.index
     if (!d || !idx) return null
@@ -338,14 +360,19 @@ export class PoliticalLayer {
       label = img.data[k + 2] > 127 ? pal[img.data[k + 1]] : pal[img.data[k]]
     }
     if (label === 0 || label === d.sea) return null
-    const atom = d.atoms[label - 1]
-    if (!atom) return null
-    const claim = this.holding(atom.id, this.year)
-    if (!claim) return { atom: atom.id, chain: [], sources: [] }
-    const { power, chain } = this.resolve(claim.polity, this.year)
-    const polity = (id: string) => this.named(this.polityById.get(id), this.year)
+    return d.atoms[label - 1]?.id ?? null
+  }
+
+  /** What held an atom in `year` (the year shown by default), as `pick` reports it. */
+  hitAt(atom: string, year = this.year): PoliticalHit | null {
+    const d = this.data
+    if (!d) return null
+    const claim = this.holding(atom, year)
+    if (!claim) return { atom, chain: [], sources: [] }
+    const { power, chain } = this.resolve(claim.polity, year)
+    const polity = (id: string) => this.named(this.polityById.get(id), year)
     return {
-      atom: atom.id,
+      atom,
       claim,
       polity: polity(claim.polity),
       power: polity(power),

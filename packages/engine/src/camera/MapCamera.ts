@@ -35,6 +35,7 @@ export class MapCamera {
   readonly camera = new THREE.PerspectiveCamera(FOV, 1, 10, 1e8)
   state: CameraState
   onChange?: () => void
+  private flight: Flight | null = null
   private raycaster = new THREE.Raycaster()
   private plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0)
   private ndc = new THREE.Vector2()
@@ -87,6 +88,50 @@ export class MapCamera {
     this.onChange?.()
   }
 
+  /** The camera distance at which the target shows `mpp` ground metres per CSS pixel. */
+  distanceFor(mpp: number) {
+    const h = this.el.clientHeight || 1
+    return (mpp * h) / (2 * Math.tan((FOV * Math.PI) / 360))
+  }
+
+  /**
+   * Moves to a ground target and distance, eased. Zoom runs in log space, and a long
+   * jump rises high enough to see both ends on the way, so the reader keeps their
+   * bearings. Grabbing or scrolling the map cancels it.
+   */
+  flyTo(to: { x: number; y: number; distance: number }) {
+    const from = { ...this.state }
+    const target = {
+      x: clamp(to.x, BOUNDS.minX, BOUNDS.maxX),
+      y: clamp(to.y, BOUNDS.minY, BOUNDS.maxY),
+      distance: clamp(to.distance, MIN_DISTANCE, MAX_DISTANCE),
+    }
+    const l0 = Math.log(from.distance)
+    const l1 = Math.log(target.distance)
+    // Both ends in view means their separation within most of the visible ground height.
+    const sep = Math.hypot(target.x - from.x, target.y - from.y)
+    const peak = Math.log(Math.min(MAX_DISTANCE, sep / (1.6 * Math.tan((FOV * Math.PI) / 360))))
+    const rise = Math.max(0, peak - Math.max(l0, l1))
+    // Longer for a longer journey, in screens crossed and in zoom: tuned by eye.
+    const screens = sep / Math.max(from.distance, target.distance)
+    const ms = clamp(550 + 220 * Math.log2(1 + screens) + 90 * Math.abs(l1 - l0), 550, 1800)
+    this.flight = { start: performance.now(), ms, from, to: target, l0, l1, rise }
+  }
+
+  /** Advances a flight; true while one is running. */
+  step(now: number) {
+    const f = this.flight
+    if (!f) return false
+    const t = Math.min(1, (now - f.start) / f.ms)
+    const u = t * t * t * (t * (t * 6 - 15) + 10)
+    this.state.x = f.from.x + (f.to.x - f.from.x) * u
+    this.state.y = f.from.y + (f.to.y - f.from.y) * u
+    this.state.distance = Math.exp(f.l0 + (f.l1 - f.l0) * u + f.rise * 4 * u * (1 - u))
+    if (t >= 1) this.flight = null
+    this.apply()
+    return true
+  }
+
   /** The point on the plane (z = 0) under a client position. Ignores relief. */
   ground(clientX: number, clientY: number): THREE.Vector3 | null {
     const r = this.el.getBoundingClientRect()
@@ -103,6 +148,7 @@ export class MapCamera {
 
     el.addEventListener('contextmenu', (e) => e.preventDefault())
     el.addEventListener('pointerdown', (e) => {
+      this.flight = null
       el.setPointerCapture(e.pointerId)
       tilting = e.button === 2 || e.shiftKey
       lastY = e.clientY
@@ -129,6 +175,7 @@ export class MapCamera {
       'wheel',
       (e) => {
         e.preventDefault()
+        this.flight = null
         const before = this.ground(e.clientX, e.clientY)
         // Trackpad pinches arrive as ctrl+wheel with small deltas; mice as large ones.
         const k = e.ctrlKey ? 0.01 : 0.0015
@@ -148,6 +195,17 @@ export class MapCamera {
       { passive: false },
     )
   }
+}
+
+interface Flight {
+  start: number
+  ms: number
+  from: CameraState
+  to: { x: number; y: number; distance: number }
+  /** Log distances at the ends, and how far above both the path rises midway. */
+  l0: number
+  l1: number
+  rise: number
 }
 
 function clamp(v: number, lo: number, hi: number) {

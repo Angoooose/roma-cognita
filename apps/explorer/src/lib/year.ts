@@ -10,3 +10,10 @@ export function parseYear(s: string): number {
   const n = Number(m[1])
   return /^(CE|AD)$/i.test(m[2] ?? '') ? n : 1 - n
 }
+
+/** A range of astronomical years: `58–51 BCE`, `49 BCE – 14 CE`, or one year. */
+export function formatSpan([a, b]: [number, number]) {
+  if (a === b) return formatYear(a)
+  if (a <= 0 && b <= 0) return `${1 - a}–${formatYear(b)}`
+  return `${formatYear(a)} – ${formatYear(b)}`
+}
