@@ -532,6 +532,39 @@
     for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
     65. Takes the Dead Sea shore and Zoara from nabataea.
 
+- id: triakontaschoinos
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [32.6, 24.0]
+        - [33.15, 24.0]
+        - { at: [33.1, 23.4], via: curve, note: the east bank of the Nile in Lower Nubia }
+        - { at: [32.75, 22.95], via: curve }
+        - { at: [32.2, 22.8], via: curve }
+        - { at: [31.7, 22.5], via: curve, note: Abu Simbel }
+        - { at: [31.45, 22.0], via: curve }
+        - { at: [31.1, 21.6], via: curve, note: the Second Cataract }
+        - [30.9, 21.55]
+        - [31.05, 21.75]
+        - [31.2, 21.65]
+        - { at: [31.5, 22.15], via: curve }
+        - { at: [32.0, 22.45], via: curve }
+        - { at: [32.45, 22.6], via: curve, note: the west bank }
+        - { at: [32.75, 23.2], via: curve }
+  sources:
+    - { source: philae-stele }
+    - { source: barrington, locator: 'map 81' }
+    - { source: torok-1997, locator: 'chs. 4–5' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lower Nubia from Philae to the Second Cataract: the Triacontaschoenus,
+    thirty schoinoi above Syene, of the Philae stele of 29, which Cornelius
+    Gallus set under a ruler of his own. Split from kush (September 2026), which
+    held it before; its outline is kush's own north of the cataract, cut across
+    the valley there. Takes Philae from aegyptus.
+
 - id: kush
   evidence: schematic
   construction:

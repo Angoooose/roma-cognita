@@ -133,14 +133,24 @@
     - text: Africa Vetus
       lang: la
       from: 46 BCE
-      to: after 43 BCE
-      note: Once Africa Nova is created beside it.
+      to: 28 BCE
+      note: >-
+        Once Africa Nova is created beside it, until the two are one province,
+        by 27 at the latest (see africa-nova).
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '48.21–23' }
+    - { source: cassius-dio, locator: '49.14.6' }
   confidence: certain
   review: draft
+  note: >-
+    Held for the Republic by Cornificius in 43–42 and taken by T. Sextius, who
+    handed both Africas to Fango for Octavian and took them back after Philippi
+    (Dio 48.21–22); granted to Lepidus in 41, who came to take possession in 40
+    (App. BC 5.12, 5.53; Dio 48.23.5) and held it until his fall in 36, when
+    Statilius Taurus took "both the Africas without a struggle" (Dio 49.14.6).
 
 - id: asia
   kind: province
@@ -207,21 +217,27 @@
   names:
     - { text: Cyrenae, lang: la, preferred: true }
   from: c. 74 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
     - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
-  note: Bequeathed to Rome in 96, organised as a province c. 74.
+  note: >-
+    Bequeathed to Rome in 96, organised as a province c. 74. Given with Crete
+    to Cassius (or Brutus) in 44 (App. BC 3.8), then Antony's. Promised to
+    Cleopatra Selene in 34 (Dio 49.41.3; see cyrenaica-selene); Scarpus' army,
+    which went over to Octavian after Actium, stood "in Africa" to guard Egypt
+    (Dio 51.5.6). Kept apart from Crete until 27, when the joint province is
+    first attested (see creta-cyrenae).
 
 - id: creta
   kind: province
   names:
     - { text: Creta, lang: la, preferred: true }
   from: 66 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: livy-per, locator: '100' }
@@ -232,7 +248,12 @@
     Conquered by Q. Caecilius Metellus, 69–67. Probably administered with
     Cyrenae as a single command from soon after the conquest, but the date of
     the union is not settled, so it is kept as its own unit rather than
-    asserting one.
+    asserting one. Brought over to Brutus by his officer Lepidus in 42 (App. BC
+    5.2), then Antony's; an Antonian officer, Crassus, struck the same coins at
+    Cnossus and at Cyrene (RPC I 914–917), which suggests one command. In 36
+    Antony gave "parts of Crete" to Cleopatra's children (Dio 49.32.5); which
+    parts is not known, so nothing is drawn. Cydonia and Lappa were freed after
+    Actium (Dio 51.2.3).
 
 - id: syria
   kind: province
@@ -310,12 +331,28 @@
   names:
     - { text: Africa Nova, lang: la, preferred: true }
   from: 46 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
+    - { source: fishwick-shaw-1977 }
+    - { source: fishwick-1993, locator: '53' }
+    - { source: fishwick-1994 }
   confidence: certain
-  review: draft
-  note: Numidia annexed after Thapsus.
+  review: needs-check
+  note: >-
+    Numidia annexed after Thapsus. When it was joined to the old province is
+    disputed. The traditional date is 27, with the division of the provinces;
+    Fishwick and Shaw (1977) and Fishwick (1993, 1994) argue from the Fasti
+    Triumphales that Africa was "already united under one governor by 35 B.C."
+    Dio's "Africa, Numidia" in the list of 27 (53.12.4) is no evidence either
+    way, since he says his list follows the provinces of his own day (53.12.8);
+    his "the Africas" of 36 and 32 (49.14.6, 50.6.4) may be geography. The
+    claims pass to africa at 27, the latest date; only the line between the two
+    Africas is in doubt, not whose ground it was. The polity is kept to 28 to
+    match. Juba II's "kingdom of his
+    fathers" of 30 (Dio 51.15.6) is not drawn: he exchanged it in 25 for
+    Mauretania, its people having "been enrolled in the Roman state" (53.26.2),
+    and nothing shows he ruled Numidia in between.
 
 # --- kingdoms ----------------------------------------------------------------
 # Client status is a relation (relations.yaml); `kingdom` here also covers the principalities, tetrarchies
@@ -354,32 +391,43 @@
   names:
     - { text: Mauretania, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Bocchus II and Bogud
+  to: 34 BCE
+  ruler: Bocchus II, to 33
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '48.45.1–3' }
+    - { source: cassius-dio, locator: '49.43.7' }
+    - { source: bridoux-2020, locator: '¶103' }
   confidence: probable
   review: needs-check
   note: >-
     Divided between the two kings around 49; the arrangement before that is not
     clear enough to date. The kingdom is not in doubt, its internal arrangement
-    is, hence probable.
+    is, hence probable. Bocchus II took Arabio's western Numidia in 41 (Bridoux
+    ¶103, an inference: "se serait emparé") and Bogud's kingdom in 38 (Dio
+    48.45.1–3), and at his death in 33 his kingdom went to Rome (Dio 49.43.7;
+    see mauretania-roman).
 
 - id: aegyptus
   kind: kingdom
   names:
     - { text: Aegyptus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ptolemy XII to 51, then Cleopatra VII
+  to: 31 BCE
+  ruler: Ptolemy XII to 51, then Cleopatra VII (with Ptolemy XV Caesarion from 44), to 30
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '51.19.6' }
+    - { source: holbl-2001 }
   confidence: probable
   review: draft
   note: >-
     Recognised socius et amicus in 59; Gabinius restores Ptolemy XII in 55.
     Formally independent throughout. Treated as a client because from 55 a Roman
     garrison sat in Alexandria and the kingdom's foreign policy was not its own.
+    Antony's grants of 37/36 and the Donations of 34 added ground in Cyprus,
+    Cilicia and the Levant (claims.yaml). Alexandria fell in August 30 (Macrob.
+    Sat. 1.12.35; Dio 51.19.6) and the kingdom ends in 31; Egypt from 30 is aegyptus-province.
 
 - id: nabataea
   kind: kingdom
@@ -758,17 +806,21 @@
   names:
     - { text: Mauretania Bogudiana, lang: la, preferred: true }
   from: 49 BCE
-  to: after 43 BCE
+  to: 39 BCE
   ruler: Bogud, 49–38
   sources:
     - { source: pliny-nh, locator: '5.19' }
     - { source: bridoux-2020, locator: '¶99–100' }
     - { source: cassius-dio, locator: '41.42.7' }
+    - { source: cassius-dio, locator: '48.45.1–3' }
+    - { source: amela-valverde-2012, locator: '151–155' }
   confidence: probable
   review: draft
   note: >-
     The western kingdom, west of the Mulucha; Pliny's 'Bogudiana'. Named king with Bocchus II by Caesar's party in Rome in 49 (Dio 41.42.7);
-    Bocchus took it in 38.
+    Bocchus took it in 38, while Bogud was campaigning for Antony in Spain, and
+    Tingi's people were given citizenship (Dio 48.45.1–3). Freyburger and Roddaz date the Spanish raid to 41
+    (as reported by Amela Valverde 2012, 152); Dio's 38 is followed.
 
 - id: numidia-masinissa
   kind: kingdom
@@ -776,17 +828,21 @@
     - { text: Regnum Masinissae, preferred: true, to: 45 BCE }
     - { text: Regnum Arabionis, preferred: true, from: 44 BCE }
   from: 88 BCE
-  to: after 43 BCE
-  ruler: Masinissa II, 81–46; Arabio, 44–40
+  to: 42 BCE
+  ruler: Masinissa II, 81–46; Arabio, 44–41
   sources:
     - { source: bridoux-2020, locator: '¶147–159 and pl. IX' }
+    - { source: appian, locator: 'BC 4.54–56' }
+    - { source: cassius-dio, locator: '48.22.4–6' }
   confidence: probable
   review: draft
   note: >-
     Western Numidia between the Soummam and the Ampsaga, a vassal of the eastern
     kings from the partition of 88 (Bridoux ¶147–148). Lost to Bocchus II and
-    Sittius in 46 and recovered by Masinissa's son Arabio in 44. The name is
-    ours; the sources call it by its king.
+    Sittius in 46 and recovered by Masinissa's son Arabio in 44. Arabio sided
+    with T. Sextius in 43–42 (App. BC 4.54–56) and was driven out and then
+    killed by him, "vraisemblablement en 41" (Dio 48.22.4–6; Bridoux ¶159). The
+    name is ours; the sources call it by its king.
 
 - id: sittiani
   kind: people
@@ -810,22 +866,28 @@
   names:
     - { text: Aethiopia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: the kings of Meroë
+  to: after 27 BCE
+  ruler: the kings and queens of Meroë
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: pliny-nh, locator: '5.59, 6.177–197' }
+    - { source: philae-stele }
   confidence: certain
   review: draft
   note: >-
-    The Meroitic kingdom of Kush, 'Aethiopia' to Greek and Roman writers.
+    The Meroitic kingdom of Kush, 'Aethiopia' to Greek and Roman writers. In 29
+    Cornelius Gallus received envoys of its king at Philae: the Latin of his
+    stele has the king taken "in tutelam", under protection, the Greek calls
+    him a public friend (proxenos). Neither makes Kush a client, and no Roman
+    ever held its ground; Lower Nubia went to Gallus' buffer ruler (see
+    triakontaschoinos). No Meroitic ruler is securely named for 43–29.
 
 - id: garamantes
   kind: people
   names:
     - { text: Garamantes, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: pliny-nh, locator: '5.35–38' }
     - { source: mattingly-2003 }
@@ -1126,3 +1188,109 @@
     their tribute in 36–35 (49.34.2), so some — probably the cisalpine
     Moentini and Avendeatae (Ill. 16) — were tributary before. Added September
     2026.
+
+- id: mauretania-roman
+  kind: province
+  names:
+    - { text: Mauretania, lang: la, preferred: true }
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.43.7' }
+    - { source: cassius-dio, locator: '53.12.9' }
+    - { source: amela-valverde-2012, locator: '155–164' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Bocchus II's kingdom after his death in 33, until Juba II was given it in 25
+    (Dio 53.26.2). Dio says Octavian "enrolled it among the Roman provinces"
+    (49.43.7), and Octavian's colonies were planted there (Pliny 5.2, 5.20–21);
+    but no governor is known, it is missing from the provinces of 27, and Dio
+    himself says the lands not listed were "left autonomous or entrusted to
+    kings" (53.12.9). A province on Mackie's and Amandry's reading, and Amela
+    Valverde's, who has it run from Further Spain; a legal limbo or protectorate
+    to Gsell, Roller, Coltelloni-Trannoy and Hugoniot (all as Amela reports
+    them). Drawn as a province because that is what the one explicit ancient
+    statement says; uncertain throughout.
+
+- id: aegyptus-province
+  kind: province
+  names:
+    - { text: Aegyptus, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.17.1' }
+    - { source: cassius-dio, locator: '53.12.7' }
+    - { source: res-gestae, locator: '27.1' }
+    - { source: philae-stele }
+    - { source: cah-x, locator: 'ch. 14b' }
+  confidence: certain
+  review: draft
+  note: >-
+    Egypt after Alexandria fell in August 30, "added to the empire of the Roman
+    people" (RGDA 27.1). Octavian's, and Caesar's share in 27 (Dio 53.12.7),
+    governed by a knight: C. Cornelius Gallus, "praefectus Alexandreae et
+    Aegypti primus" on his stele (Dio 51.17.1). The same ground as the kingdom;
+    a separate polity because a kingdom and a province are different things.
+
+- id: cyrenaica-selene
+  kind: kingdom
+  names:
+    - { text: Cyrenaica, lang: la, preferred: true }
+  from: 34 BCE
+  to: 31 BCE
+  ruler: Cleopatra Selene, 34–30
+  sources:
+    - { source: cassius-dio, locator: '49.41.3' }
+    - { source: res-gestae, locator: '27.3' }
+    - { source: rpc-i, locator: '919–925' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony's daughter by Cleopatra was given "the Cyrenaica in Libya" at the
+    Donations of 34 (Dio 49.41.3, where it is a promise). Augustus himself says
+    he recovered "Cyrenae, which were then for the most part in possession of
+    kings" (RGDA 27.3), so the grant largely took effect. A Roman quaestor with
+    a propraetor's powers, A. Pupius Rufus, still struck coin there at some date
+    in 34–31 (RPC I 919–923), which is why this is uncertain.
+
+- id: creta-cyrenae
+  kind: province
+  names:
+    - { text: Creta et Cyrenae, lang: la, preferred: true }
+  from: { earliest: 36 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: rpc-i, locator: '914–917' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Crete and Cyrene as one province of the people, first attested in the
+    settlement of 27 (Dio 53.12.4, "Crete and the Cyrenaic portion of Libya"),
+    though Dio says his list follows later arrangements (53.12.8) and Strabo's
+    joint listing (17.3.25) is Tiberian. An Antonian officer struck coin at
+    Cnossus and Cyrene alike (RPC I 914–917), so a joint command is likely
+    earlier. The ground passes to it at 27.
+
+- id: triakontaschoinos
+  kind: kingdom
+  names:
+    - { text: Triacontaschoenus, lang: la, preferred: true }
+    - { text: Triakontaschoinos, lang: grc-Latn }
+  from: 29 BCE
+  to: after 27 BCE
+  ruler: a ruler set up by Cornelius Gallus, name unknown
+  sources:
+    - { source: philae-stele }
+    - { source: hoffmann-2009 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    After putting down the Thebaid in 29, Gallus marched beyond the First
+    Cataract and set a ruler (tyrannus) over the Triacontaschoenus, the Nile
+    valley from Syene to the Second Cataract, as a buffer between Egypt and
+    Meroë (the Philae stele; Hoffmann, Minas-Nerpel and Pfeiffer's "vassal
+    buffer zone"). By 25/24 Strabo calls Pselchis there "an Aethiopian city"
+    (17.1.54), so the arrangement did not last. It rests on one inscription.

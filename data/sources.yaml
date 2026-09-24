@@ -304,6 +304,57 @@
     géographie", in Mélanges Pierre Lévêque 5 (Besançon, 1990) 161–176
   url: https://www.persee.fr/doc/ista_0000-0000_1990_ant_429_1_1293
 
+- id: fishwick-shaw-1977
+  kind: modern
+  citation: >-
+    D. Fishwick and B. D. Shaw, "The Formation of Africa Proconsularis", Hermes
+    105 (1977) 369–380
+
+- id: fishwick-1993
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, I: The amalgamation of
+    Africa Vetus and Africa Nova", Antiquités africaines 29 (1993) 53–62
+  url: https://www.persee.fr/doc/antaf_0066-4871_1993_num_29_1_1211
+
+- id: fishwick-1994
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, II: The administration
+    of Lepidus and the commission of M. Caelius Phileros", Antiquités africaines
+    30 (1994) 57–80
+  url: https://www.persee.fr/doc/antaf_0066-4871_1994_num_30_1_1222
+
+- id: amela-valverde-2012
+  kind: modern
+  citation: >-
+    L. Amela Valverde, "La situación de Mauretania a finales del Segundo
+    Triunvirato e inicios del principado de Augusto", Gerión 30 (2012) 149–167
+  url: https://revistas.ucm.es/index.php/GERI/article/view/41808
+  note: Open access; read. A survey of the scholarly positions on Mauretania 38–25.
+
+- id: holbl-2001
+  kind: modern
+  citation: >-
+    G. Hölbl, A History of the Ptolemaic Empire, trans. T. Saavedra (London and
+    New York: Routledge, 2001)
+
+- id: hoffmann-2009
+  kind: modern
+  citation: >-
+    F. Hoffmann, M. Minas-Nerpel and S. Pfeiffer, Die dreisprachige Stele des C.
+    Cornelius Gallus. Übersetzung und Kommentar, Archiv für Papyrusforschung,
+    Beiheft 9 (Berlin and New York: de Gruyter, 2009)
+  note: Known here through its review, BMCR 2010.11.03.
+
+- id: rpc-i
+  kind: modern
+  citation: >-
+    A. Burnett, M. Amandry and P. P. Ripollès, Roman Provincial Coinage I: From
+    the Death of Caesar to the Death of Vitellius (44 BC–AD 69) (London and
+    Paris, 1992; Supplement 1998)
+  url: https://rpc.ashmus.ox.ac.uk
+
 - id: barrington
   kind: modern
   citation: >-
@@ -445,6 +496,17 @@
 - id: orosius
   kind: ancient
   citation: Orosius, Historiae adversus paganos
+
+- id: philae-stele
+  kind: ancient
+  citation: >-
+    The trilingual stele of C. Cornelius Gallus, Philae, 29 BCE (CIL III
+    14147.5 = ILS 8995 = OGIS 654)
+  url: https://www.attalus.org/docs/ogis/s654.html
+
+- id: macrobius-sat
+  kind: ancient
+  citation: Macrobius, Saturnalia
 
 # --- datasets ------------------------------------------------------------------
 

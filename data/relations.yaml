@@ -70,7 +70,7 @@
   type: province-of
   of: rome
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -116,7 +116,7 @@
   type: province-of
   of: rome
   from: c. 74 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -129,7 +129,7 @@
   type: province-of
   of: rome
   from: 66 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: livy-per, locator: '100' }
@@ -184,7 +184,7 @@
   type: province-of
   of: rome
   from: 46 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
   confidence: certain
@@ -206,7 +206,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 34 BCE
   sources: [{ source: braund-1984 }]
   confidence: probable
   review: needs-check
@@ -216,7 +216,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: braund-1984 }
   confidence: probable
@@ -392,7 +392,7 @@
   type: client-of
   of: rome
   from: 49 BCE
-  to: after 43 BCE
+  to: 39 BCE
   sources: [{ source: cassius-dio, locator: '41.42.7' }]
   confidence: probable
   review: draft
@@ -529,3 +529,59 @@
     Asander's recognition as king: 41/40 at the earliest on the coins, or
     after Actium on ps.-Lucian's "proclaimed king… by the divine Augustus".
     See the claim on bosporus.
+
+- polity: mauretania-roman
+  type: province-of
+  of: rome
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.43.7' }
+  confidence: uncertain
+  review: needs-check
+  note: See the polity; formal provincial status is doubted.
+
+- polity: aegyptus-province
+  type: province-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: res-gestae, locator: '27.1' }
+    - { source: cassius-dio, locator: '53.12.7' }
+  confidence: certain
+  review: draft
+  note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
+
+- polity: cyrenaica-selene
+  type: client-of
+  of: rome
+  from: 34 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.41.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony's grant, never ratified at Rome (Dio 49.41.4); a client of the Roman
+    order in the East as Antony ran it, and of Cleopatra's house.
+
+- polity: creta-cyrenae
+  type: province-of
+  of: rome
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+  confidence: probable
+  review: draft
+
+- polity: triakontaschoinos
+  type: client-of
+  of: rome
+  from: 29 BCE
+  to: after 27 BCE
+  sources:
+    - { source: philae-stele }
+  confidence: uncertain
+  review: needs-check
