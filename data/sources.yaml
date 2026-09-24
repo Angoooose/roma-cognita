@@ -272,6 +272,38 @@
   url: https://numismatics.org.au/wp-content/uploads/2021/06/Vol-18-Article-2.pdf
   note: Open access; read.
 
+- id: perea-yebenes-2017
+  kind: modern
+  citation: >-
+    S. Perea Yébenes, "Triumphatores ex Hispania (36–26 a.C.) según los Fasti
+    Triumphales", Gerión 35, Nº Esp. (2017) 121–149
+  url: https://revistas.ucm.es/index.php/GERI/article/view/56141
+  note: Open access; read.
+
+- id: villanueva-acuna-2011
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Problemas en torno a la organización administrativa
+    del Noroeste en los inicios del Imperio", Hispania Antiqua 35 (2011) 67–82
+  url: https://dialnet.unirioja.es/descarga/articulo/4087395.pdf
+  note: Open access; read.
+
+- id: villanueva-acuna-2016
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Reflexiones sobre el proceso de control del territorio
+    galaico y la creación de las divisiones administrativas augusteas", Hispania
+    Antiqua 40 (2016) 119–134
+  url: https://dialnet.unirioja.es/descarga/articulo/5843322.pdf
+  note: Abstract read.
+
+- id: goudineau-1990
+  kind: modern
+  citation: >-
+    C. Goudineau, "Les provinces de Gaule : problèmes d'histoire et de
+    géographie", in Mélanges Pierre Lévêque 5 (Besançon, 1990) 161–176
+  url: https://www.persee.fr/doc/ista_0000-0000_1990_ant_429_1_1293
+
 - id: barrington
   kind: modern
   citation: >-
@@ -405,6 +437,14 @@
 - id: lucian-macrobii
   kind: ancient
   citation: '[Lucian], Macrobii'
+
+- id: florus
+  kind: ancient
+  citation: Florus, Epitome of Roman History
+
+- id: orosius
+  kind: ancient
+  citation: Orosius, Historiae adversus paganos
 
 # --- datasets ------------------------------------------------------------------
 

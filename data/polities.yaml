@@ -70,22 +70,44 @@
   names:
     - { text: Hispania Citerior, lang: la, preferred: true }
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '53.12.4–5' }
+    - { source: perea-yebenes-2017 }
   confidence: certain
   review: draft
+  note: >-
+    Lepidus' in 43 (App. BC 4.2); Octavian's after Philippi on Dio (48.1.3),
+    though Appian calls "Gaul and Spain" Antony's in 40 (BC 5.51); Octavian's
+    from 40 in any case. The triumphs "ex Hispania" of 36–26 (Calvinus,
+    Norbanus, Philippus, Pulcher, Calvisius, Appuleius) name no province and,
+    but for Calvinus' Cerretani, no enemy (Perea Yébenes 2017), so they move no
+    frontier. Caesar's in 27 (Dio 53.12.5). Whether Tarraconensis, Baetica and
+    Lusitania were created in 27, as Dio's list has it, or in 16–13 is disputed;
+    the two Spains are kept to 27 (see hispania-ulterior).
 
 - id: hispania-ulterior
   kind: province
   names:
     - { text: Hispania Ulterior, lang: la, preferred: true }
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '53.12.4–5' }
+    - { source: villanueva-acuna-2011, locator: '70–73' }
   confidence: certain
   review: draft
+  note: >-
+    Kept whole to the end of the data. Dio lists Baetica for the people and
+    Lusitania for Caesar at the settlement of January 27 (53.12.4–5), and
+    Albertini (1923) dated the division so; but Dio warns that his list uses
+    later arrangements (53.12.8), and Alföldy (1969), Villanueva Acuña (2011,
+    2016) and López Barja (2017) put Lusitania's creation later, in 16–13, with
+    a separate province north of the Duero before it. Carisius governed "la PH
+    Ulterior tal como existió durante el periodo anterior republicano" from 27
+    (Villanueva Acuña 2011).
 
 - id: macedonia
   kind: province
@@ -135,8 +157,14 @@
   kind: province
   names:
     - { text: Gallia Transalpina, lang: la, preferred: true }
+    - text: Gallia Narbonensis
+      lang: la
+      note: >-
+        The later name (Pliny 3.31, "Bracata antea dicta"; Strabo 4.1.1). Dio uses
+        it for 43 and 27 (46.50.4, 53.12.5), but in the names of his own day; when
+        it became official is not known, so it is not the preferred name here.
   from: 121 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -241,17 +269,26 @@
   names:
     - { text: Gallia Comata, lang: la, preferred: true }
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg }
     - { source: cah-ix, locator: ch. 9 }
+    - { source: goudineau-1990, locator: '161' }
   confidence: uncertain
   review: needs-check
   note: >-
     Conquered progressively 58–50 and held under Caesar's command, but not
     formally organised as a province until Augustus. Dated from 51, after Alesia
     and the final campaigns; the single date stands in for eight years of
-    conquest and is the weakest claim in the dataset.
+    conquest and is the weakest claim in the dataset. Plancus', then Antony's,
+    in 43; Antony's through Calenus to 40, then Octavian's (App. BC 4.2, 5.51).
+    None of the fighting of 43–27 moved the ground: Agrippa against the Aquitani
+    in 38 (App. BC 5.92), Nonius Gallus against the Treveri and Carrinas against
+    the Morini in 30–29 (Dio 51.20.5, 51.21.6), Messalla against the Aquitani in
+    28–27. Augustus took a census of the Gauls in 27 (Dio 53.22.5). Its division
+    into Aquitania, Lugdunensis and Belgica is dated to 27 (Dio 53.12.5) or to
+    16–13; Goudineau (1990) calls the question open, and the province is kept
+    whole to 27.
 
 - id: illyricum
   kind: province
@@ -834,14 +871,21 @@
   names:
     - { text: Noricum, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Voccio
+  to: after 27 BCE
+  ruler: Voccio (fl. 58–49)
   sources:
     - { source: caesar-bg, locator: '1.53' }
     - { source: caesar-bc, locator: '1.18' }
-    - { source: alfoldy-1974, locator: 'ch. 3' }
+    - { source: alfoldy-1974, locator: 'chs. 4–5' }
+    - { source: cassius-dio, locator: '54.20.2' }
   confidence: probable
   review: needs-check
+  note: >-
+    A kingdom friendly to Rome until its annexation after the Norican raid on
+    Istria in 16 (Dio 54.20.2). No king is securely named for 43–27. The
+    Taurisci made to pay tribute in 35 (App. Ill. 16), whom Strabo counts among
+    the Norici (4.6.9), lived south of the kingdom drawn here. The locator was
+    ch. 3 until September 2026; the first century BCE is chs. 4–5.
 
 - id: delmatae
   kind: people
@@ -860,7 +904,7 @@
   names:
     - { text: Massilia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '4.1.4–9' }
     - { source: caesar-bc, locator: '2.22' }
@@ -925,48 +969,73 @@
   names:
     - { text: Vaccaei, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: cassius-dio, locator: '51.20.5' }
   confidence: certain
   review: draft
+  note: >-
+    Dio, in his narrative of 29, has the Cantabri, Vaccaei and Astures subdued
+    by Statilius Taurus, with no year (51.20.5). Only the Vaccaei stayed so: by
+    26 they were the victims of Cantabrian raids, not enemies (Flor. 2.33.47;
+    Oros. 6.21.3). Their ground passes to Hither Spain c. 29.
 
 - id: astures
   kind: people
   names:
     - { text: Astures, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: suetonius-aug, locator: '26.3' }
+    - { source: florus, locator: '2.33.46–48' }
   confidence: certain
   review: draft
+  note: >-
+    Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
+    29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
+    (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
+    53.25.8).
 
 - id: cantabri
   kind: people
   names:
     - { text: Cantabri, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: suetonius-aug, locator: '26.3' }
+    - { source: florus, locator: '2.33.46–48' }
   confidence: certain
   review: draft
+  note: >-
+    Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
+    29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
+    (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
+    53.25.8).
 
 - id: callaeci
   kind: people
   names:
     - { text: Callaeci, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: certain
   review: draft
+  note: >-
+    No source records either their conquest or their independence in 43–27.
+    Villanueva Acuña (2011, 2016) holds that the Cantabrian wars touched their
+    lands only at the margin, and reads the caetra coins of 27–25 from the Braga
+    and Lugo country as signs of a pacified rear.
 
 - id: creta-koinon
   kind: league

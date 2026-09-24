@@ -43,7 +43,7 @@
   type: province-of
   of: rome
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -52,7 +52,7 @@
   type: province-of
   of: rome
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -88,7 +88,7 @@
   type: province-of
   of: rome
   from: 121 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -164,7 +164,7 @@
   type: province-of
   of: rome
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: caesar-bg }, { source: cah-ix, locator: ch. 9 }]
   confidence: uncertain
   review: needs-check
@@ -364,7 +364,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: strabo, locator: '4.1.5' }]
   confidence: certain
   review: draft
@@ -430,7 +430,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: caesar-bc, locator: '1.18' }]
   confidence: probable
   review: needs-check

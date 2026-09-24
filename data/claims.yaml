@@ -86,7 +86,7 @@
   polity: hispania-citerior
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -95,7 +95,7 @@
   polity: hispania-citerior
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: cassius-dio, locator: '39.54' }
     - { source: richardson-1996, locator: 'ch. 3' }
@@ -109,7 +109,7 @@
   polity: hispania-ulterior
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -118,7 +118,7 @@
   polity: hispania-ulterior
   relation: province
   from: 60 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: cassius-dio, locator: '37.52–53' }
     - { source: plutarch, locator: 'Caesar 12' }
@@ -132,7 +132,7 @@
   polity: gallia-transalpina
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -141,7 +141,7 @@
   polity: gallia-comata
   relation: province
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg, locator: VII–VIII }
     - { source: suetonius-iul, locator: '25' }
@@ -1249,7 +1249,7 @@
   polity: noricum
   relation: allied
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bc, locator: '1.18' }
   confidence: uncertain
@@ -1279,7 +1279,7 @@
   polity: gallia-transalpina
   relation: province
   from: 49 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bc, locator: '2.22' }
     - { source: cassius-dio, locator: '41.25' }
@@ -1315,7 +1315,7 @@
   polity: gallia-comata
   relation: province
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg, locator: 'VII–VIII' }
     - { source: suetonius-iul, locator: '25' }
@@ -1338,7 +1338,7 @@
   polity: gallia-comata
   relation: province
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg, locator: 'VII–VIII' }
     - { source: suetonius-iul, locator: '25' }
@@ -1363,7 +1363,7 @@
   polity: gallia-comata
   relation: province
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg, locator: 'VII–VIII' }
     - { source: suetonius-iul, locator: '25' }
@@ -1386,7 +1386,7 @@
   polity: gallia-comata
   relation: province
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg, locator: 'VII–VIII' }
     - { source: suetonius-iul, locator: '25' }
@@ -1399,7 +1399,7 @@
   polity: vaccaei
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
@@ -1410,7 +1410,7 @@
   polity: astures
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
@@ -1421,7 +1421,7 @@
   polity: cantabri
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
@@ -1432,12 +1432,16 @@
   polity: callaeci
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
-  confidence: probable
-  review: draft
+    - { source: villanueva-acuna-2016 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Independent is the literal reading; lowered to uncertain in September 2026
+    because Roman influence in Callaecia may be older (see the polity).
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 #
@@ -1713,3 +1717,24 @@
     Romans (4.85), dated to Caesar c. 45 by Rostovtzeff; Vnukov and Kovalenko
     argue from a coin of Asander's year 8 found at Kara-Tobe that Bosporan
     control was back by about 37/36. The free interval is not drawn.
+
+# The West
+
+- atom: vaccaei
+  polity: hispania-citerior
+  relation: province
+  from: c. 29 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.20.5' }
+    - { source: florus, locator: '2.33.47' }
+    - { source: orosius, locator: '6.21.3' }
+    - { source: perea-yebenes-2017, locator: '127' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Statilius Taurus subdued them (Dio 51.20.5, no year given; his campaign is
+    usually put in 29, Perea Yébenes 2017, 127), and by 26 the Cantabri were
+    raiding the Vaccaei, the Turmogi and the Autrigones (Flor. 2.33.47; Oros.
+    6.21.3) — Rome's charges by then. The Turmogi and Autrigones between them
+    and Pompaelo stay unclaimed: nothing says when they came over.
