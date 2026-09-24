@@ -19,6 +19,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { formatYear } from '@roman-map/schema'
 import { loadDataset } from '../load.ts'
+import { passageUrl, workUrl } from '../passages/passage.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
@@ -204,7 +205,7 @@ const placeName = (id: string) =>
   data.names.find((n) => n.target.kind === 'place' && n.target.id === id && n.preferred)?.text ??
   data.names.find((n) => n.target.kind === 'place' && n.target.id === id)?.text ??
   id
-const sourceText = new Map(data.sources.map((s) => [s.id, s.citation]))
+const sourceById = new Map(data.sources.map((s) => [s.id, s]))
 const places = data.places.map((p) => {
   const [x, y] = projection.forward(...p.location)
   return {
@@ -220,7 +221,12 @@ const places = data.places.map((p) => {
     labelSide: p.labelSide,
     confidence: p.confidence,
     review: p.review,
-    sources: p.sources.map((s) => ({ citation: sourceText.get(s.source) ?? s.source, locator: s.locator })),
+    sources: p.sources.map((s) => ({
+      citation: sourceById.get(s.source)?.citation ?? s.source,
+      url: sourceById.get(s.source)?.url ?? workUrl(s.source),
+      locator: s.locator,
+      passage: passageUrl(s.source, s.locator),
+    })),
     note: p.note,
   }
 })

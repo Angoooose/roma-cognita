@@ -216,6 +216,15 @@ describe('references', () => {
     expect(rules(errors)).toContain('missing-source')
   })
 
+  it('warn on a passage the translation has no place for', () => {
+    const { warnings } = run((f) => {
+      f.sources.push({ id: 'strabo', kind: 'ancient', citation: 'Strabo, Geography' })
+      f.claims[0].sources = [{ source: 'strabo', locator: '16.2.10' }]
+      f.claims[1].sources = [{ source: 'strabo', locator: '16.99.1' }]
+    })
+    expect(warnings.filter((w) => w.rule === 'unlinked-passage')).toHaveLength(1)
+  })
+
   it('fail on a seat at a missing place', () => {
     const { errors } = run((f) => {
       f.seats[0].place = 'atlantis'

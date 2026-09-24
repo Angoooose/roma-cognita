@@ -26,9 +26,11 @@ import {
 } from '@roman-map/schema'
 import { contains as geometryContains, overlapArea, ringProblems } from './geo.ts'
 import type { Dataset, Issue } from './load.ts'
+import { passageUrl } from './passages/passage.ts'
+import { WORKS } from './passages/works.ts'
 
 type Dated = { from: Endpoint; to: Endpoint }
-type Sourced = { sources: { source: string }[] }
+type Sourced = { sources: { source: string; locator?: string }[] }
 type Reviewed = { review: string; confidence: string; note?: string }
 
 const span = (r: Dated) => `${r.from.text} – ${r.to.text}`
@@ -113,6 +115,10 @@ export function checkDataset(ds: Dataset): Issue[] {
       cited.add(s.source)
       if (!sources.has(s.source))
         error('missing-source', r, `cites unknown source "${s.source}"`)
+      // A text we can link into, cited somewhere its page has no place for: a typo,
+      // a numbering the page doesn't use, or an anchor list that needs a re-fetch.
+      else if (s.locator && WORKS[s.source] && !passageUrl(s.source, s.locator))
+        warn('unlinked-passage', r, `${s.source} ${s.locator}: no passage to link to (src/passages)`)
     }
   }
   for (const s of ds.sources) {

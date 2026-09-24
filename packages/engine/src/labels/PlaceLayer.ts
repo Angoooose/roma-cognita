@@ -54,7 +54,8 @@ export interface PlaceRecord {
   land?: Record<string, number[]>
   confidence: string
   review: string
-  sources: { citation: string; locator?: string }[]
+  /** `url` is the work; `passage` the place in it the locator cites, when it can be read online. */
+  sources: { citation: string; url?: string; locator?: string; passage?: string }[]
   note?: string
 }
 

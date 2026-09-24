@@ -28,6 +28,7 @@ import { Worker } from 'node:worker_threads'
 import { DATA_RECT, TILE_TEXELS, tileRect } from '@roman-map/world'
 import { formatYear, type Endpoint } from '@roman-map/schema'
 import { loadDataset } from '../load.ts'
+import { passageUrl, workUrl } from '../passages/passage.ts'
 import { edgesTouch, inside, type Ring } from '../water/raster.ts'
 import { RingIndex } from '../water/ring-index.ts'
 import { projectRing } from '../water/sources.ts'
@@ -227,7 +228,7 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       to: end(c.to),
       confidence: c.confidence,
       review: c.review,
-      sources: c.sources,
+      sources: c.sources.map((s) => ({ ...s, passage: passageUrl(s.source, s.locator) })),
       note: c.note,
     })),
     relations: data.relations.map((r) => ({
@@ -237,7 +238,9 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       from: end(r.from),
       to: end(r.to),
     })),
-    sources: Object.fromEntries(data.sources.map((s) => [s.id, { citation: s.citation, url: s.url }])),
+    sources: Object.fromEntries(
+      data.sources.map((s) => [s.id, { citation: s.citation, url: s.url ?? workUrl(s.id) }]),
+    ),
   }
 }
 

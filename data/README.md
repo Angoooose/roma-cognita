@@ -47,6 +47,14 @@ project yet, so nothing is `verified`.
 **Every historical record cites at least one source**, by id, with a locator where
 there is one. Reasoning that should survive goes in `note`.
 
+**An ancient text's locator links to the passage.** Write it the way the text is
+normally cited ("16.2.10", "Mithr. 114", "Pompey 34–35", "2.43 M"), and the
+inspector opens an English translation at that place, mostly on ToposText.
+`pipeline/src/passages/works.ts` says which page holds each work and how it
+numbers its passages. `npm run passages:fetch -w pipeline` records the anchors
+each page has, and the validator warns about a locator it can't find a place for.
+A new ancient source needs an entry in works.ts and a re-fetch.
+
 **Geometry winding is RFC 7946** (counter-clockwise exteriors). The pipeline rewinds
 at ingest and the validator asserts it. A consumer that wants the other convention
 (d3-geo does) converts at its own boundary. cicero-map lost an afternoon to this.
