@@ -412,6 +412,28 @@
     Roads, drawn only where the source dates their construction to 27 BCE or
     earlier (pipeline/src/roads). Its GeoJSON is EPSG:3395, not 4326.
 
+- id: dprr
+  kind: dataset
+  citation: >-
+    Digital Prosopography of the Roman Republic (DPRR), King's College London,
+    ed. H. Mouritsen and M. Robb (2017)
+  url: https://romanrepublic.ac.uk/
+  licence: CC BY-NC 4.0
+  usedBy: pipeline/src/people/build.ts
+  note: >-
+    People, offices, family relationships and statuses, fetched from its SPARQL
+    endpoint (pipeline/src/people/dprr.ts). Kept in build/people/ only and never
+    copied into data/, because NC cannot be relicensed under our CC BY-SA
+    (PEOPLE.md §2).
+
+- id: wikidata-dprr
+  kind: dataset
+  citation: Wikidata, items with a DPRR id (property P6863)
+  url: https://www.wikidata.org/wiki/Property:P6863
+  licence: CC0 1.0
+  usedBy: pipeline/src/people/build.ts
+  note: English names, descriptions and aliases for DPRR people, so search finds "Pompey".
+
 - id: hydrorivers
   kind: dataset
   citation: B. Lehner and G. Grill, HydroRIVERS v1.0 (HydroSHEDS), 2013
