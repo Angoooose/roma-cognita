@@ -395,9 +395,12 @@
   citation: Mapterhorn terrain tiles (Terrarium encoding), mostly Copernicus GLO-30 in these regions
   url: https://mapterhorn.com/
   licence: various open (per-source; Copernicus DEM licence for GLO-30) — terms of the hosted tiles unverified
+  usedBy: pipeline/src/rome/plate.ts
   note: >-
     Offline input to derive-floodplains, z10 (~70 m). Heights are whole metres at
-    z≤11. It is a surface model, so towns stand up.
+    z≤11. It is a surface model, so towns stand up. Also the contours on the plan of
+    Rome, from z13 (~19 m) smoothed over ~45 m so the modern city's buildings do not
+    trace themselves: the relief is today's, a few metres above the ancient ground.
 
 - id: itinere
   kind: dataset
@@ -407,10 +410,12 @@
     2025)
   url: https://doi.org/10.5281/zenodo.17122148
   licence: CC BY 4.0
-  usedBy: pipeline/src/roads/build.ts
+  usedBy: pipeline/src/roads/build.ts, pipeline/src/rome/streets.ts
   note: >-
     Roads, drawn only where the source dates their construction to 27 BCE or
-    earlier (pipeline/src/roads). Its GeoJSON is EPSG:3395, not 4326.
+    earlier (pipeline/src/roads). Its GeoJSON is EPSG:3395, not 4326. On the plan
+    of Rome its consular roads are drawn up to the gate each left by, and no
+    further; locators there are its line names ("Tarracinae-Rome").
 
 - id: dprr
   kind: dataset
@@ -482,3 +487,173 @@
     (Beirut, 2013), chapter on the Tigris basin
   note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
     into the Tharthar depression from 1956.
+
+# --- the city of Rome (the plan, DESIGN.md §7.7) ------------------------------
+# Added September 2026 for data/places/rome.yaml. Dates come from Platner &
+# Ashby, each article checked on LacusCurtius; outlines from OpenStreetMap, which
+# traces what survives on the ground today (the record says when that is a later
+# rebuilding on the same site); locations from Pleiades where it has the monument.
+
+- id: platner-ashby
+  kind: modern
+  citation: >-
+    S. B. Platner, completed and revised by T. Ashby, A Topographical Dictionary
+    of Ancient Rome (London: Oxford University Press, 1929)
+  url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/home.html
+  note: >-
+    Public domain; transcribed on LacusCurtius by B. Thayer, one page per article.
+    Locators are the article's page there and its pages in the book ("Pons
+    Fabricius, p. 400"), and link to it. Its dates are the ancient sources' and
+    have stood; its identifications predate the excavations of the 1930s (Largo
+    Argentina, the Forum Boarium temples), which is why those monuments are not
+    yet drawn.
+  usedBy: pipeline/src/rome/model.ts
+
+- id: osm-rome
+  kind: dataset
+  citation: >-
+    OpenStreetMap contributors, outlines of ancient monuments in Rome, fetched
+    through the Overpass API
+  url: https://www.openstreetmap.org/
+  licence: ODbL-1.0
+  note: >-
+    Locators are OpenStreetMap elements ("way/131451564") and link to them. The
+    outlines are of the remains as they stand, surveyed on modern imagery, so a
+    temple rebuilt in the empire on its republican podium is outlined as rebuilt.
+    Copied into data/geometry/rome.geojson with the date it was fetched.
+
+# --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
+# Added September 2026. No record cites these: they are the methods and the
+# evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).
+# None of it is traced; the figures are comparanda, several from other cities.
+
+- id: vanegas-2012
+  kind: modern
+  citation: >-
+    C. A. Vanegas, T. Kelly, B. Weber, J. Halatsch, D. G. Aliaga and P. Müller,
+    "Procedural Generation of Parcels in Urban Modeling", Computer Graphics Forum
+    31.2 (2012)
+  url: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2012.03047.x
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    The lots: strips along each street edge of a block, cut to a depth and split
+    along the street, the corners mitred, the middle left as courtyards.
+
+- id: emilien-2012
+  kind: modern
+  citation: >-
+    A. Emilien, A. Bernhardt, A. Peytavie, M.-P. Cani and E. Galin, "Procedural
+    Generation of Villages on Arbitrary Terrains", The Visual Computer 28 (2012)
+  url: https://perso.liris.cnrs.fr/eric.galin/Articles/2012-villages.pdf
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    With Galin et al. 2011, the main streets: cheapest paths over the terrain that
+    shun slopes, so they follow the valleys.
+
+- id: galin-2011
+  kind: modern
+  citation: >-
+    E. Galin, A. Peytavie, E. Guérin and B. Beneš, "Authoring Hierarchical Road
+    Networks", Computer Graphics Forum 30.7 (2011)
+  url: https://onlinelibrary.wiley.com/doi/10.1111/j.1467-8659.2011.02055.x
+  usedBy: pipeline/src/rome/city.ts
+
+- id: dylla-2009
+  kind: modern
+  citation: >-
+    K. Dylla, B. Frischer, P. Müller, A. Ulmer and S. Haegler, "Rome Reborn 2.0: A
+    Case Study of Virtual City Reconstruction Using Procedural Modeling
+    Techniques", Computer Applications and Quantitative Methods in Archaeology
+    (CAA 2009)
+  url: https://proceedings.caaconference.org/files/2009/09_Dylla_et_al_CAA2009.pdf
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    How Rome Reborn built its generic buildings: masses scanned from Gismondi's
+    model, detailed by rules from archaeological plans, counted by region from
+    the regionary catalogues. The lesson taken: a plausible block plan first.
+
+- id: forma-urbis-stanford
+  kind: modern
+  citation: >-
+    Stanford Digital Forma Urbis Romae Project: the Severan Marble Plan of Rome
+    (203–211 CE), its fragments
+  url: https://formaurbis.stanford.edu/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    Rows of shops on the streets, blocks of flats of small rooms round courtyards,
+    atrium houses beside them, built wall to wall (e.g. fragment 10g, the Subura).
+    Imperial, not Republican.
+
+- id: reynolds-expedition
+  kind: modern
+  citation: >-
+    D. W. Reynolds, "The Lost Architecture of Ancient Rome", Expedition (Penn
+    Museum)
+  url: https://www.penn.museum/sites/expedition/the-lost-architecture-of-ancient-rome/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    What the Marble Plan shows of ordinary buildings: shops flanking house doors,
+    flats round courtyards, rich and poor side by side.
+
+- id: poehler-2017
+  kind: modern
+  citation: E. E. Poehler, The Traffic Systems of Pompeii (Oxford, 2017)
+  url: https://bmcr.brynmawr.edu/2018/2018.09.22/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    Pompeii's streets mostly 2–4 m wide and one lane, the main ones about 7 m: the
+    local and main street widths (the URL is the BMCR review).
+
+- id: pecs-cosa
+  kind: modern
+  citation: >-
+    R. Stillwell (ed.), The Princeton Encyclopedia of Classical Sites
+    (Princeton, 1976), "Cosa"
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0006:entry=cosa
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    A Latin colony of 273 BCE: blocks about 35 m by 80 m between streets of about
+    4 m — the block sizes the valleys are split down to.
+
+- id: livy
+  kind: ancient
+  citation: Livy, Ab Urbe Condita
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book%3D5:chapter%3D55
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    5.55: Rome rebuilt after the Gallic sack with no care for straight streets,
+    "casually built upon … rather than regularly planned". 21.62: a third storey
+    in 218 BCE.
+
+- id: tacitus-ann
+  kind: ancient
+  citation: Tacitus, Annales
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Tacitus/Annals/15B*.html
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    15.38: before 64 CE, "narrow, twisting lanes and formless streets"; 15.43:
+    Nero's rule that each building have its own walls, implying shared walls
+    before.
+
+- id: varro-ll
+  kind: ancient
+  citation: Varro, De Lingua Latina
+  usedBy: pipeline/src/rome/city.ts
+  note: 5.145–146, the kinds of street, from via and vicus to angiportum and the dead-end fundula.
+
+- id: cicero-agr
+  kind: ancient
+  citation: Cicero, De Lege Agraria
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0013:text=Agr.:speech=2:chapter=35:section=96
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    2.96 (63 BCE): Rome "raised up and hanging on its upper floors", "non optimis
+    viis, angustissimis semitis" — tall and crowded in the late Republic.
+
+- id: vitruvius
+  kind: ancient
+  citation: Vitruvius, De Architectura
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/2*.html
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    2.8.17: Rome builds upward for want of ground; 6.3: the atrium house.

@@ -16,13 +16,14 @@ export interface MapEntry {
   name: string
   /** Every other name it has carried, for search to match. */
   names: string[]
-  /** A settlement's civic status, or a polity's kind: 'province', 'kingdom', … */
+  /** A settlement's civic status, a monument's kind ('temple'), or a polity's kind: 'province', 'kingdom', … */
   kind: string
   /** The years it is on the map, astronomical and inclusive, in order, within the data's window. */
   years: [number, number][]
   /**
    * What it is part of, in the same year as `name`: for a settlement the polity that
-   * holds its ground, or the kingdom seated there; for a polity the power it answers to.
+   * holds its ground, or the kingdom seated there; for a monument the settlement it
+   * stands in; for a polity the power it answers to.
    */
   of?: string
   /** A polity's footing with that power, as its claim records it. */
@@ -30,7 +31,7 @@ export interface MapEntry {
   /** The mark the map draws it with, and its colour (sRGB hex) for a fill or a seat. */
   mark: 'fill' | 'caput' | 'capital' | 'seat' | 'town'
   fill?: string
-  /** A settlement's prominence, 1 (overview) … 4 (close in). */
+  /** A place's prominence, 1 (overview) … 4 (close in), 5 a monument on a city plan. */
   prominence?: number
   /** How far a polity's name runs on the map, metres: a rough measure of its size. */
   reach?: number
@@ -74,13 +75,14 @@ export function entries(
     const held = holder && politics.nameOf(holder, y)
     const seat = hit?.seatOf
     const capital = status === 'provincial seat' || status === 'royal seat'
+    const city = p.within ? places.all.find((q) => q.id === p.within)?.name : undefined
     out.push({
       ref: { kind: 'place', id: p.id },
       name: p.name,
       names: [],
-      kind: status ?? 'settlement',
+      kind: p.within ? p.kind : (status ?? 'settlement'),
       years,
-      of: seat?.name ?? (held !== p.name ? held : undefined),
+      of: city ?? seat?.name ?? (held !== p.name ? held : undefined),
       mark: seat
         ? 'seat'
         : status === 'caput mundi'

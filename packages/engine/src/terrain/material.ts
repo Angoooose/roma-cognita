@@ -27,6 +27,15 @@ import { DATA_RECT, ROOT } from '@roman-map/world'
 import { politicsUniforms } from '../politics/PoliticalLayer.ts'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
+import {
+  groundLift,
+  planShading,
+  plateMask,
+  riverSwap,
+  smoothGradient,
+  smoothWeight,
+  streetsShow,
+} from '../rome/shading.ts'
 import { GRATICULE_INK, graticuleNode } from '../edge/graticule.ts'
 import { knownDistanceKm, noise2, paperNode } from '../edge/paper.ts'
 import { seededNoise } from './noise.ts'
@@ -109,7 +118,11 @@ const LIGHTS: [number, number, number][] = [
 function lightVector(azDeg: number, altDeg: number) {
   const az = (azDeg * Math.PI) / 180
   const alt = (altDeg * Math.PI) / 180
-  return new THREE.Vector3(Math.sin(az) * Math.cos(alt), Math.cos(az) * Math.cos(alt), Math.sin(alt))
+  return new THREE.Vector3(
+    Math.sin(az) * Math.cos(alt),
+    Math.cos(az) * Math.cos(alt),
+    Math.sin(alt),
+  )
 }
 
 /**
@@ -161,8 +174,16 @@ export function createTerrainMaterial(n: number) {
 
   // Texels are vertex-aligned: uv 0 and 1 land on the centres of the edge texels, which
   // is what lets neighbouring tiles agree exactly along their shared edge.
-  const texUV = uv().mul((n - 1) / n).add(0.5 / n)
-  const h = texture(slots.terrain, texUV).level(float(0)).r
+  const texUV = uv()
+    .mul((n - 1) / n)
+    .add(0.5 / n)
+  const raw = texture(slots.terrain, texUV).level(float(0)).r
+  // Under the model of Rome the ground is laid on its smoothed relief, which the
+  // model stands on exactly (rome/shading.ts `groundLift`).
+  const vm = origin.add(uv().mul(extent)).mul(1000)
+  const lift = groundLift(vm.x, vm.y)
+  // A metre under it, so the model's own ground mesh is always the one seen.
+  const h = mix(raw, lift.height.sub(1), lift.weight)
   mat.positionNode = vec3(
     positionLocal.x,
     positionLocal.y,
@@ -174,7 +195,15 @@ export function createTerrainMaterial(n: number) {
 
   const s = texture(slots.terrain, texUV)
   const height = s.r
-  const grad = vec2(s.g, s.b).mul(terrainUniforms.shadeExaggeration)
+  // Under the model of Rome the ground is lit by, and takes its rock from, the
+  // smoothed relief it is laid on (rome/shading.ts).
+  const pm = origin.add(uv().mul(extent)).mul(1000)
+  const gradient = mix(
+    vec2(s.g, s.b),
+    smoothGradient(pm.x, pm.y),
+    smoothWeight(pm.x, pm.y),
+  )
+  const grad = gradient.mul(terrainUniforms.shadeExaggeration)
   const normal = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
 
   let shade: THREE.Node<'float'> = float(0)
@@ -192,7 +221,8 @@ export function createTerrainMaterial(n: number) {
   // than left to shimmer.
   const pxKm = max(fwidth(km.x), 1e-6)
   const pxM = pxKm.mul(1000)
-  const detail = (wavelengthKm: number) => float(1).sub(smoothstep(wavelengthKm / 6, wavelengthKm / 2, pxKm))
+  const detail = (wavelengthKm: number) =>
+    float(1).sub(smoothstep(wavelengthKm / 6, wavelengthKm / 2, pxKm))
   /**
    * `noise × amplitude × detail`, skipping the noise wherever the fade is 0 and
    * the product is nothing: most of the map, for the finer scales, at the overview —
@@ -213,12 +243,13 @@ export function createTerrainMaterial(n: number) {
       })
       return v
     })()
-  const noise = (wavelengthKm: number, seed: number) => seededNoise(km.div(wavelengthKm), seed)
+  const noise = (wavelengthKm: number, seed: number) =>
+    seededNoise(km.div(wavelengthKm), seed)
 
   // Slope is the raw gradient — the real steepness, not the exaggerated one the lighting
   // uses — so it means the same at every zoom (coarse tiles smooth it, which is right:
   // cliffs are not visible there).
-  const slope = length(vec2(s.g, s.b))
+  const slope = length(gradient)
 
   // Climate. The biome texture spans the quadtree root; image row 0 is the north edge.
   const rootKm = ROOT.size / 1000
@@ -257,7 +288,10 @@ export function createTerrainMaterial(n: number) {
   // Rock on steep ground and bare ground high up. The noise is within ±2 (NOISE_BOUND),
   // so below a slope of 0.05 it cannot lift the ground to the rock's threshold of 0.35.
   const rockBreak = detailNoise(1.5, 4, 0.15, slope.greaterThan(0.35 - 0.15 * NOISE_BOUND))
-  const rock = max(smoothstep(0.35, 0.8, slope.add(rockBreak)), smoothstep(1700, 2600, height))
+  const rock = max(
+    smoothstep(0.35, 0.8, slope.add(rockBreak)),
+    smoothstep(1700, 2600, height),
+  )
   ground = mix(ground, ROCK, rock.mul(0.85))
   // Snow: permanent only on the highest ground, lower where the climate is cold.
   const snowLine = mix(float(3000), float(2400), b.a)
@@ -316,9 +350,11 @@ export function createTerrainMaterial(n: number) {
   // between texel centres — and where that happens shifts with every zoom step.
   // Capped in pixels, so a magnified stand-in tile cannot turn a river into a band.
   const texelFloor = texelM.mul(0.6).min(pxM.mul(1.5))
-  const halfWidth = max(riverQ.sqrt().mul(3), screenWidth.mul(pxM).mul(0.5), texelFloor).mul(
-    mix(float(1), float(0.7), reconstructed),
-  )
+  const halfWidth = max(
+    riverQ.sqrt().mul(3),
+    screenWidth.mul(pxM).mul(0.5),
+    texelFloor,
+  ).mul(mix(float(1), float(0.7), reconstructed))
   const aa = max(pxM.mul(0.5), texelM.mul(0.3).min(pxM.mul(1.5)))
   const inRiver = float(1)
     .sub(smoothstep(halfWidth.sub(aa), halfWidth.add(aa), riverDist))
@@ -347,12 +383,23 @@ export function createTerrainMaterial(n: number) {
   // A focused polity keeps its colour at every zoom, where fills otherwise fade out.
   const tinted = mix(ground0, litFill, max(pol.fillAlpha, pol.focusInside.mul(0.55)))
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
-  const withRivers = mix(glowed, RIVER, inRiver)
+  // On the plan of Rome the plate draws the Tiber on its real course, so the coarse
+  // line gives way there (rome/shading.ts).
+  const mx = km.x.mul(1000)
+  const my = km.y.mul(1000)
+  const withRivers = mix(glowed, RIVER, inRiver.mul(float(1).sub(riverSwap(mx, my, pxM))))
   // Roads over the rivers they cross, under the borders.
   const road = roadShading(slots.roads, n, pxM, texelM)
-  const withRoads = mix(withRivers, road.colour, road.alpha)
+  // The plan draws Rome's own streets and roads, so the map's give way there.
+  const withRoads = mix(
+    withRivers,
+    road.colour,
+    road.alpha.mul(float(1).sub(plateMask(mx, my, pxM).mul(streetsShow(pxM)))),
+  )
+  // The plan of Rome over them, close in: bridges on the river (rome/shading.ts).
+  const withPlan = planShading(withRoads, mx, my, pxM)
   // A focused polity's outline: a bright line in a thin ink casing, over every border.
-  const bordered = mix(withRoads, pol.line, pol.lineAlpha)
+  const bordered = mix(withPlan, pol.line, pol.lineAlpha)
   const cased = mix(bordered, INK, pol.focusCaseAlpha)
   const landWithRivers = mix(cased, FOCUS_LINE, pol.focusLineAlpha)
 
@@ -363,12 +410,16 @@ export function createTerrainMaterial(n: number) {
   // water, so their edge is not the coast, and without this the outline would stop there.
   // Drawn on the water side, along the sea only (lakes sit above sea level): round every
   // lake and pond it would scatter the interior with specks.
-  const seaSide = float(1).sub(isLand).mul(float(1).sub(smoothstep(1, 3, height)))
+  const seaSide = float(1)
+    .sub(isLand)
+    .mul(float(1).sub(smoothstep(1, 3, height)))
   const focusCoast = float(1)
     .sub(smoothstep(px, px.mul(2), abs(shore)))
     .mul(seaSide)
     .mul(pol.focusInside)
-  const nearFocusCoast = politicsUniforms.focusAmount.greaterThan(0).and(abs(shore).lessThan(px.mul(2)))
+  const nearFocusCoast = politicsUniforms.focusAmount
+    .greaterThan(0)
+    .and(abs(shore).lessThan(px.mul(2)))
 
   // --- terra incognita: the unfinished sketch -----------------------------------------
   // Past the known world the map stops claiming anything. Colour drains away and leaves
@@ -396,8 +447,11 @@ export function createTerrainMaterial(n: number) {
     max(pxKm.mul(5), 14).add(260).negate(),
   )
 
-  const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
-  const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
+  const sketchNoise = (wavelengthKm: number, seed: number) =>
+    noise2(km.div(wavelengthKm), seed)
+  const toKnownKm = knownKm
+    .add(sketchNoise(650, 23).mul(130))
+    .add(sketchNoise(180, 21).mul(45))
 
   // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
   // inside it where the pigment pooled — not a long blend, which over the sea went to
@@ -419,7 +473,6 @@ export function createTerrainMaterial(n: number) {
     kmDy: THREE.Node<'vec2'>,
     hw: THREE.Node<'float'>,
   ): THREE.Node<'vec3'> => {
-
     // Then the sketch trails off, as a drawing left unfinished does: each kind of line
     // gives out at its own distance past the wash — contours first, then rivers, the
     // offshore lines and the coast, and last the graticule, the construction lines drawn
@@ -574,7 +627,13 @@ export function createTerrainMaterial(n: number) {
 /** Stands in for a tile's texture until the first tile binds its own: same format, same sampler. */
 function blankTile(format: THREE.PixelFormat) {
   const channels = format === THREE.RGFormat ? 2 : 4
-  const t = new THREE.DataTexture(new Uint16Array(channels), 1, 1, format, THREE.HalfFloatType)
+  const t = new THREE.DataTexture(
+    new Uint16Array(channels),
+    1,
+    1,
+    format,
+    THREE.HalfFloatType,
+  )
   t.minFilter = t.magFilter = THREE.LinearFilter
   t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping
   t.generateMipmaps = false

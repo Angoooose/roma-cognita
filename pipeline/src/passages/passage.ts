@@ -134,12 +134,29 @@ export function workUrl(source: string): string | undefined {
   return e && !('parts' in e) ? pageUrl(e) : undefined
 }
 
+const PLATNER_ASHBY =
+  'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*'
+
 /** A link to the passage a locator cites, or nothing when we can't find it. */
 export function passageUrl(source: string, locator?: string): string | undefined {
   // Not a text but the gazetteer: "places/727142, 727169" is the first place's page.
   if (source === 'pleiades') {
     const id = locator && /^places\/(\d+)/.exec(locator)?.[1]
     return id ? `https://pleiades.stoa.org/places/${id}` : undefined
+  }
+  // Nor is OpenStreetMap: "way/131451564, way/…" is the first element's page.
+  if (source === 'osm-rome') {
+    const el = locator && /^(node|way|relation)\/(\d+)/.exec(locator)
+    return el ? `https://www.openstreetmap.org/${el[1]}/${el[2]}` : undefined
+  }
+  // Platner & Ashby on LacusCurtius, one page per article, named for its headword:
+  // "Pons Fabricius, p. 400" is Pons_Fabricius.html, and "Vesta#aedes, pp. 557–559"
+  // the article on that page's anchor.
+  if (source === 'platner-ashby') {
+    const m = locator && /^([A-Za-z ]+)(#\w+)?,/.exec(locator)
+    return m
+      ? `${PLATNER_ASHBY}/${m[1].trim().replace(/ /g, '_')}.html${m[2] ?? ''}`
+      : undefined
   }
   const found = locator ? work(source, locator) : undefined
   if (!found?.ref) return undefined

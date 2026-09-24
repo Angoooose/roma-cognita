@@ -159,6 +159,24 @@ describe('passageUrl', () => {
     expect(passageUrl('pleiades', 'the gazetteer')).toBeUndefined()
   })
 
+  it("links an OpenStreetMap locator to the first element's page", () => {
+    expect(passageUrl('osm-rome', 'way/112675404, way/105281824')).toBe(
+      'https://www.openstreetmap.org/way/112675404',
+    )
+    expect(passageUrl('osm-rome', 'relation/1841081')).toBe(
+      'https://www.openstreetmap.org/relation/1841081',
+    )
+    expect(passageUrl('osm-rome', 'the Forum')).toBeUndefined()
+  })
+
+  it("links a Platner & Ashby locator to its article on LacusCurtius", () => {
+    const base =
+      'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*'
+    expect(passageUrl('platner-ashby', 'Pons Fabricius, p. 400')).toBe(`${base}/Pons_Fabricius.html`)
+    expect(passageUrl('platner-ashby', 'Vesta#aedes, pp. 556–559')).toBe(`${base}/Vesta.html#aedes`)
+    expect(passageUrl('platner-ashby', 'p. 400')).toBeUndefined()
+  })
+
   it('gives nothing for a work we have no page for, or no locator', () => {
     expect(passageUrl('broughton-mrr', 'vol. II')).toBeUndefined()
     expect(passageUrl('strabo')).toBeUndefined()

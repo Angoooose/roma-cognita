@@ -1,0 +1,77 @@
+/**
+ * Bakes the model of Rome (DESIGN.md §7.7): `npm run rome -w pipeline`.
+ *
+ * Reads the records in data/places/rome.yaml and their shapes in
+ * data/geometry/rome.geojson — monuments' outlines, the river's water, streets' and
+ * roads' lines — and hands them to the plate (plate.ts: the board the model stands on
+ * and its names) and the model (model.ts: the buildings). Writes build/rome/plan.json:
+ * the plate's grid, and each monument's outline and years for picking.
+ */
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { join, resolve } from 'node:path'
+import { projection } from '@roman-map/world'
+import { DATA_DIR, loadDataset } from '../load.ts'
+import { bakePlate } from './plate.ts'
+
+const OUT = resolve(import.meta.dirname, '../../../build/rome')
+
+type Ring = [number, number][]
+
+const data = loadDataset()
+const places = new Map(data.places.map((p) => [p.id, p]))
+const geo = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8'))
+
+/** Monuments' outlines in plane metres: polygons of rings, outer first. */
+const outlines: { id: string; polys: Ring[][] }[] = []
+/** The river is water on the plate, not a monument. */
+const river: [number, number][][][] = []
+/** Streets and roads are lines on the plate, by id. */
+const streets = new Map<string, [number, number][][]>()
+for (const f of geo.features) {
+  if (!places.has(f.id)) throw new Error(`rome.geojson: no place "${f.id}"`)
+  if (f.geometry.type === 'MultiLineString') {
+    streets.set(f.id, f.geometry.coordinates)
+    continue
+  }
+  const raw: [number, number][][][] =
+    f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
+  if (places.get(f.id)!.kind === 'river') {
+    river.push(...raw)
+    continue
+  }
+  outlines.push({
+    id: f.id,
+    polys: raw.map((poly) =>
+      poly.map((r) => r.map(([lon, lat]) => projection.forward(lon, lat))),
+    ),
+  })
+}
+
+mkdirSync(OUT, { recursive: true })
+const plate = await bakePlate(
+  OUT,
+  river,
+  streets,
+  places,
+  outlines.map((o) => ({ id: o.id, kind: places.get(o.id)!.kind, polys: o.polys })),
+)
+const tenth = (v: number) => Math.round(v * 10) / 10
+writeFileSync(
+  join(OUT, 'plan.json'),
+  JSON.stringify({
+    _comment:
+      'The plan of Rome: the plate’s grid (plate-<n>.png, ground.png), and each monument’s outline (plane metres) and years (astronomical, inclusive) for picking.',
+    plate,
+    outlines: outlines.map((o) => {
+      const p = places.get(o.id)!
+      return {
+        id: o.id,
+        years: [p.from.year, p.to.year],
+        rings: o.polys.map((poly) =>
+          poly.map((r) => r.map(([x, y]) => [tenth(x), tenth(y)])),
+        ),
+      }
+    }),
+  }),
+)
+console.log(`${outlines.length} outlines, ${streets.size} streets and roads → ${OUT}`)

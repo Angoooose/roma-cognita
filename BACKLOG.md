@@ -68,6 +68,9 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - For the rivers that matter most at regional zoom (Tiber, Arno, Po, Rhône,
   Nile), OSM waterways would be exact. Worth doing for a curated list, not
   wholesale.
+- **At Rome** the drawn river runs ~150 m west of its real course. On the model
+  of Rome (DESIGN §7.7) the board draws OSM's outline of the Tiber in its place;
+  elsewhere at regional zoom the offset remains.
 
 ### Political layer, left for later
 
@@ -110,3 +113,33 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   against the lines.
 - **Roads under Rome's knockout.** Glyph knockouts apply to lettering only;
   roads cross names freely, as on a printed map.
+
+### The model of Rome, left for later
+
+- **Built:** the museum model (DESIGN §7.7): 40 known buildings, ~7,800
+  generated houses, the wall and gates, trees, baked shadows, and the smoothed
+  board with the Tiber and paved streets.
+- **Monuments not yet in the model.** Researched and rejected, or with no outline;
+  they need a modern source or a surveyed outline:
+  - the Largo Argentina and Forum Boarium temples, S. Omobono and the temple of
+    Bellona, identified after Platner & Ashby;
+  - the Curia of Pompey and the House of Augustus;
+  - the Tabularium, the House of the Vestals and the tombs, which have points
+    only;
+  - the Curia Hostilia and the Basilica Sempronia.
+- **Massing is by type.** Temples, basilicas and the rest take typical heights.
+  Platner & Ashby's dimensions (column heights, the Circus's tiers) could set
+  some of them.
+- **The generated city is uniform.** Quarters differed: the Subura crowded with
+  tall blocks, the Palatine with large houses and gardens, the Aventine more
+  open. The density and heights could follow them.
+- **The wall's reconstructed stretches** are straight joins; Lanciani's plan
+  (public domain) would give the curves.
+- **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
+  line do not meet at its edge, and the Itiner-e roads stop there.
+- **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),
+  the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
+  Latina (no Itiner-e line) are not drawn.
+- **The timeline window is 68–43 BCE.** The Temple of the Deified Julius, Apollo
+  Palatinus and the Mausoleum of Augustus are dated but fall after it.
+- **The legend** has no entry for the model.

@@ -49,6 +49,12 @@ export interface PlaceRecord {
   years: [number, number]
   prominence: { value: number; years: [number, number] }[]
   status: { value: string; years: [number, number] }[]
+  /** A monument's building works and fires; absent, it stood throughout. */
+  condition?: { value: string; years: [number, number] }[]
+  /** For a monument, the settlement it stands in. */
+  within?: string
+  /** Drawn as an outline on the city plan (build/rome): named, with no marker. */
+  outlined?: boolean
   labelSide?: 'n' | 's' | 'e' | 'w'
   /** Share of land under a name on each side, at each of the file's `landScales`. */
   land?: Record<string, number[]>
@@ -70,6 +76,8 @@ export interface SeatRecord {
 export interface PlaceHit {
   place: PlaceRecord
   status?: string
+  /** A monument's condition this year, when it was not simply standing. */
+  condition?: string
   /** The kingdom seated here this year, if any. */
   seatOf?: { polity: string; name: string }
 }
@@ -81,11 +89,11 @@ export type Box = [number, number, number, number]
  * A place appears once the map is at or closer than this, m per CSS px, by prominence.
  * Only Rome is on the map at every scale; zoomed right out the territories carry it.
  */
-const TIER_MPP = [Infinity, 3000, 1500, 800, 400]
+const TIER_MPP = [Infinity, 3000, 1500, 800, 400, 4]
 /** Seats name their kingdom from the regional view in; further out the colours do. */
 const SEAT_MPP = 1700
 /** Name size, em in CSS px, by prominence. EB Garamond's x-height is small. */
-const TIER_EM = [0, 18, 16.5, 16, 15]
+const TIER_EM = [0, 18, 16.5, 16, 15, 14]
 /** Capitals are set in Cinzel, whose lowercase are small capitals, lightly tracked. */
 const CAPITAL_TRACKING = 0.06
 /** Rank of civic status when names compete; lower wins. */
@@ -100,7 +108,10 @@ const STATUS_RANK: Record<string, number> = {
   'civitas foederata': 4,
   emporium: 5,
 }
-const MARKER = { dot: 0, capital: 1, seat: 2, caput: 3 } as const
+/** Kinds the plan of Rome letters as engraved names, not as places with marks. */
+const LETTERED_ON_PLAN = new Set(['hill', 'district', 'river', 'street', 'road'])
+/** `none`: a monument whose outline the plan draws; its name is its only mark here. */
+const MARKER = { dot: 0, capital: 1, seat: 2, caput: 3, none: 4 } as const
 const FADE_MS = 220
 /** Gap between a marker and its name, px. */
 const GAP = 4
@@ -114,6 +125,9 @@ const PAPER = new THREE.Color('#EDE6D6')
  */
 const NAME_INK = new THREE.Color('#F3EBDA')
 const NAME_HALO = new THREE.Color('#1B1612')
+/** On a city's plan the plate is paper, so its monuments are named in dark ink. */
+const PLAN_INK = new THREE.Color('#2A241E')
+const PLAN_HALO = new THREE.Color('#E5D9BE')
 
 export const placeUniforms = {
   /** Viewport, CSS px. */
@@ -134,7 +148,7 @@ interface Item {
   /** The kingdom's name, set beside a seat. */
   title?: string
   /** Which face the place's own name is set in: Garamond, or Cinzel for a capital. */
-  nameFace: 'text' | 'title'
+  nameFace: 'text' | 'title' | 'plan'
   alpha: number
   target: number
   /** Where the name went: offset of its box's lower-left from the anchor, px. */
@@ -151,12 +165,20 @@ export class PlaceLayer {
   private title: { font: FontData; atlas: THREE.Texture } | null = null
   private items = new Map<string, Item>()
   private last = { mpp: 0, pitch: -1, w: 0, h: 0, year: NaN }
-  private meshes: { markers?: THREE.Mesh; text?: THREE.Mesh; title?: THREE.Mesh } = {}
+  private meshes: {
+    markers?: THREE.Mesh
+    text?: THREE.Mesh
+    title?: THREE.Mesh
+    plan?: THREE.Mesh
+  } = {}
   private materials: {
     markers?: THREE.Material
     text?: THREE.Material
     title?: THREE.Material
+    plan?: THREE.Material
   } = {}
+  /** Settlements with monuments of their own: on their plan, the plan names them. */
+  private planned = new Set<string>()
   private lastTick = performance.now()
   /** The seat's colour, from the political layer: its power's, for the year. */
   seatColour: (polity: string, year: number) => THREE.Color = () => INK
@@ -173,6 +195,7 @@ export class PlaceLayer {
     this.places = data.places
     this.landScales = data.landScales ?? []
     this.seats = data.seats
+    this.planned = new Set(this.places.flatMap((p: PlaceRecord) => (p.within ? [p.within] : [])))
     this.text = text
     this.title = title
     this.materials.markers = markerMaterial()
@@ -180,6 +203,8 @@ export class PlaceLayer {
     // Cinzel's hairlines are finer than Garamond's: more gain, and a stronger glow so a
     // capital lifts off the territory lettering it often sits on.
     this.materials.title = textMaterial(title.font, title.atlas, 0.25, 0.66)
+    // A monument's name is printed on the plan of its city, dark ink on its paper.
+    this.materials.plan = textMaterial(text.font, text.atlas, 0.1, 0.5, PLAN_INK, PLAN_HALO)
   }
 
   /**
@@ -282,6 +307,7 @@ export class PlaceLayer {
     return {
       place: best.place,
       status: best.status,
+      condition: conditionIn(best.place, this.last.year),
       seatOf: best.seat ? { polity: best.seat.polity, name: best.seat.name } : undefined,
     }
   }
@@ -304,6 +330,7 @@ export class PlaceLayer {
     return {
       place: p,
       status: at(p.status, year),
+      condition: conditionIn(p, year),
       seatOf: seat ? { polity: seat.polity, name: seat.name } : undefined,
     }
   }
@@ -336,6 +363,10 @@ export class PlaceLayer {
     const out: Item[] = []
     for (const p of this.places) {
       if (p.years[0] > year || p.years[1] < year) continue
+      // The plan of Rome letters its hills, quarters and river itself (LabelLayer).
+      if (LETTERED_ON_PLAN.has(p.kind)) continue
+      // Inside a city's plan the city's own mark gives way to it.
+      if (this.planned.has(p.id) && mpp <= TIER_MPP[5] * 1.5) continue
       const tier = at(p.prominence, year) ?? 4
       const status = at(p.status, year)
       const seat = mpp <= SEAT_MPP ? seatAt.get(p.id) : undefined
@@ -353,14 +384,18 @@ export class PlaceLayer {
         status,
         marker: seat
           ? MARKER.seat
-          : status === 'caput mundi'
+          : p.outlined
+            ? MARKER.none
+            : status === 'caput mundi'
             ? MARKER.caput
             : capital
               ? MARKER.capital
               : MARKER.dot,
         markerPx: seat
           ? 10
-          : status === 'caput mundi'
+          : p.outlined
+            ? 0
+            : status === 'caput mundi'
             ? 10
             : capital
               ? 9
@@ -374,7 +409,7 @@ export class PlaceLayer {
             : TIER_EM[tier],
         title: seat ? seat.name.toUpperCase() : undefined,
         // A seat's city is set in Garamond, so it does not read as a second kingdom.
-        nameFace: capital && !seat ? 'title' : 'text',
+        nameFace: tier === 5 ? 'plan' : capital && !seat ? 'title' : 'text',
         alpha: 0,
         target: 1,
       })
@@ -433,6 +468,8 @@ export class PlaceLayer {
     ) => {
       const off = it.markerPx / 2 + GAP
       const sides: Record<string, [number, number]> = {
+        // On its own outline, as a plan letters a building.
+        c: [-w / 2, -h / 2],
         e: [off, -h / 2],
         w: [-off - w, -h / 2],
         n: [-w / 2, off],
@@ -459,7 +496,7 @@ export class PlaceLayer {
       const marker: Box = [sx - m, sy - m, sx + m, sy + m]
       if (!free(marker, it)) continue
       placed.push(marker)
-      const order = [it.place.labelSide, 'e', 'w', 'n', 's'].filter(
+      const order = [it.place.outlined ? 'c' : undefined, it.place.labelSide, 'e', 'w', 'n', 's'].filter(
         (s, i, a) => s && a.indexOf(s) === i,
       ) as string[]
       // A seat is lettered first with its kingdom's name, in the territory face; the
@@ -488,7 +525,7 @@ export class PlaceLayer {
         nameAt = n?.at
       }
       // A town with no room for its name is left off entirely; a capital keeps its mark.
-      if (!nameAt && !titleAt && it.marker === MARKER.dot) {
+      if (!nameAt && !titleAt && (it.marker === MARKER.dot || it.marker === MARKER.none)) {
         placed.pop()
         continue
       }
@@ -508,13 +545,19 @@ export class PlaceLayer {
   /** Vertex order per item is recorded so alpha can be rewritten without a rebuild. */
   private ranges = new Map<
     string,
-    { markers: [number, number]; text: [number, number]; title: [number, number] }
+    {
+      markers: [number, number]
+      text: [number, number]
+      title: [number, number]
+      plan: [number, number]
+    }
   >()
 
   private rebuild() {
     const markers = new Quads()
     const text = new Quads()
     const title = new Quads()
+    const plan = new Quads()
     this.ranges.clear()
     for (const it of this.items.values()) {
       const { x, y } = it.place
@@ -522,6 +565,7 @@ export class PlaceLayer {
         markers: [0, 0] as [number, number],
         text: [0, 0] as [number, number],
         title: [0, 0] as [number, number],
+        plan: [0, 0] as [number, number],
       }
       r.markers[0] = markers.count
       // The quad covers the mark and its outer ring; the shader draws in pixels from
@@ -529,13 +573,14 @@ export class PlaceLayer {
       const R = it.markerPx / 2
       const s = R + 4
       const colour = it.seat ? this.seatColour(it.seat.polity, this.last.year) : PAPER
-      markers.quad(
-        x,
-        y,
-        [-s, -s, s, s],
-        [R, 0, R, 0],
-        [it.marker, colour.r, colour.g, colour.b],
-      )
+      if (it.marker !== MARKER.none)
+        markers.quad(
+          x,
+          y,
+          [-s, -s, s, s],
+          [R, 0, R, 0],
+          [it.marker, colour.r, colour.g, colour.b],
+        )
       r.markers[1] = markers.count
       r.text[0] = text.count
       if (it.nameAt && it.nameFace === 'text')
@@ -556,6 +601,10 @@ export class PlaceLayer {
       if (it.title && it.titleAt)
         glyphs(title, this.title!.font, it.title, x, y, it.titleAt, it.em * 0.85, 0.12)
       r.title[1] = title.count
+      r.plan[0] = plan.count
+      if (it.nameAt && it.nameFace === 'plan')
+        glyphs(plan, this.text!.font, it.place.name, x, y, it.nameAt, it.em, 0)
+      r.plan[1] = plan.count
       this.ranges.set(it.key, r)
     }
     this.meshes.markers = markers.into(
@@ -566,11 +615,12 @@ export class PlaceLayer {
     )
     this.meshes.text = text.into(this.meshes.text, this.materials.text!, this.group, 13)
     this.meshes.title = title.into(this.meshes.title, this.materials.title!, this.group, 13)
+    this.meshes.plan = plan.into(this.meshes.plan, this.materials.plan!, this.group, 13)
     this.writeAlpha()
   }
 
   private writeAlpha() {
-    for (const k of ['markers', 'text', 'title'] as const) {
+    for (const k of ['markers', 'text', 'title', 'plan'] as const) {
       const mesh = this.meshes[k]
       if (!mesh) continue
       const attr = mesh.geometry.getAttribute('alpha') as THREE.BufferAttribute
@@ -582,6 +632,12 @@ export class PlaceLayer {
       attr.needsUpdate = true
     }
   }
+}
+
+/** A monument's condition in `year`, when it was not simply standing. */
+function conditionIn(p: PlaceRecord, year: number) {
+  const c = p.condition && at(p.condition, year)
+  return c === 'standing' ? undefined : c
 }
 
 /** The value of a dated list in `year`. */
@@ -758,7 +814,14 @@ function markerMaterial() {
   return mat
 }
 
-function textMaterial(f: FontData, atlas: THREE.Texture, gain: number, haloAlpha: number) {
+function textMaterial(
+  f: FontData,
+  atlas: THREE.Texture,
+  gain: number,
+  haloAlpha: number,
+  inkColour = NAME_INK,
+  haloColour = NAME_HALO,
+) {
   const mat = new THREE.MeshBasicNodeMaterial()
   screenAnchored(mat)
   // One style everywhere, land or sea. (Choosing light or dark per name, by the ground
@@ -767,8 +830,8 @@ function textMaterial(f: FontData, atlas: THREE.Texture, gain: number, haloAlpha
   // name holds on pale desert as well as on dark relief.
   const { ink, halo } = msdfInk(f, atlas, uv(), gain, haloAlpha, 2.4)
   mat.colorNode = mix(
-    vec3(NAME_HALO.r, NAME_HALO.g, NAME_HALO.b),
-    vec3(NAME_INK.r, NAME_INK.g, NAME_INK.b),
+    vec3(haloColour.r, haloColour.g, haloColour.b),
+    vec3(inkColour.r, inkColour.g, inkColour.b),
     ink,
   )
   mat.opacityNode = max(ink.mul(0.97), halo)

@@ -11,3 +11,4 @@ export {
 } from './politics/PoliticalLayer.ts'
 export { type PlaceHit, type PlaceRecord } from './labels/PlaceLayer.ts'
 export { type MapRef, type MapEntry } from './find.ts'
+export { MODEL_KEY } from './rome/ModelLayer.ts'

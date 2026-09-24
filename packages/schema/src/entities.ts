@@ -262,8 +262,18 @@ export const PlaceStatusSchema = z.enum([
   'emporium',
 ])
 
-/** 1 is the overview; 4 is a plate zoomed into one region. */
-export const TierSchema = z.number().int().min(1).max(4)
+/**
+ * 1 is the overview; 4 is a plate zoomed into one region; 5 is the plan of a city,
+ * its monuments (DESIGN §7.7).
+ */
+export const TierSchema = z.number().int().min(1).max(5)
+
+/**
+ * What stood on a monument's site: `under construction` from the start of work to
+ * the dedication, `burnt` from a fire until rebuilding began. Omitted, it stood
+ * throughout its interval.
+ */
+export const PlaceConditionSchema = z.enum(['standing', 'under construction', 'burnt'])
 
 export interface Dated<T> {
   value: T
@@ -276,21 +286,63 @@ export const PlaceSchema = z
   .strictObject({
     id: SlugSchema,
     pleiades: PleiadesIdSchema.optional(),
-    kind: z.enum(['settlement', 'fort', 'sanctuary', 'pass', 'port', 'villa']),
+    kind: z.enum([
+      'settlement',
+      'fort',
+      'sanctuary',
+      'pass',
+      'port',
+      'villa',
+      // The monuments of a city plan (DESIGN §7.7).
+      'temple',
+      'basilica',
+      'forum',
+      'curia',
+      'theatre',
+      'circus',
+      'archive',
+      'tomb',
+      'bridge',
+      'city-wall',
+      'island',
+      'river',
+      'portico',
+      'house',
+      'altar',
+      'prison',
+      'fountain',
+      'rostra',
+      'comitium',
+      'warehouse',
+      'street',
+      'road',
+      // A hill or quarter of a city, lettered on its plan and never outlined.
+      'hill',
+      'district',
+    ]),
     location: LonLatSchema,
+    /** For a monument, the settlement it stands in: search says "Temple, Roma". */
+    within: SlugSchema.optional(),
     names: z.array(NameSchema).min(1),
     ...intervalFields,
     /** How loudly the place is lettered — curated, because Pleiades has no measure of importance. */
     prominence: datedValue(TierSchema).optional(),
     /** Roman civic status or administrative role, which is what a political map ranks by. */
     status: datedValue(PlaceStatusSchema).optional(),
+    /** A monument's state over its interval: building works, a fire. */
+    condition: datedValue(PlaceConditionSchema).optional(),
     labelSide: z.enum(['n', 's', 'e', 'w']).optional(),
     ...historical,
   })
   .transform((p) => {
     const expand = <T>(v: T | Dated<T>[] | undefined): Dated<T>[] =>
       v === undefined ? [] : Array.isArray(v) ? v : [{ value: v, from: p.from, to: p.to }]
-    return { ...p, prominence: expand(p.prominence), status: expand(p.status) }
+    return {
+      ...p,
+      prominence: expand(p.prominence),
+      status: expand(p.status),
+      condition: expand(p.condition),
+    }
   })
 export type Place = z.output<typeof PlaceSchema>
 

@@ -1,0 +1,1597 @@
+# The places of Rome, for the model of the city shown when the map is zoomed right
+# into it (DESIGN.md §7.7): its monuments, river, streets, hills and quarters. They
+# are places like any other — named, dated, sourced, searchable — at prominence 5,
+# the city plan, and `within: roma`.
+#
+# Every date is from Platner & Ashby, checked against the article linked by its
+# locator. Outlines are OpenStreetMap's (the osm-rome locators), fetched into
+# data/geometry/rome.geojson by `npm run rome:fetch -w pipeline`, and raised into the
+# model by the type of building (pipeline/src/rome/model.ts). An outline is of the
+# remains as they survive, and the note says when those are a later rebuilding on
+# the same site. Where OSM has no outline the monument is left out of the model,
+# except two landmarks sized from Platner & Ashby's measurements (model.ts).
+# The houses between the monuments are generated, not recorded (DESIGN.md §7.7).
+#
+# Dates follow the atlas's rules: `from` is when a thing stood (or works began, with
+# `condition: under construction` until the dedication), open ends are bounds, and
+# the year of a change belongs to what came after it. The window is before 133 BCE
+# to after 27 BCE.
+#
+# Not yet here, and why (BACKLOG.md): the Largo Argentina and Forum Boarium temples,
+# whose identifications postdate Platner & Ashby; the Curia Hostilia and the
+# Basilica Sempronia, which have no surveyed outline.
+
+# --- the river and its crossings ----------------------------------------------
+
+- id: insula-tiberina
+  kind: island
+  within: roma
+  location: [12.47768, 41.89058]
+  names:
+    - { text: Insula Tiberina, lang: la, preferred: true }
+    - { text: Tiber Island, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Insula Tiberina, pp. 281–282' }
+    - { source: osm-rome, locator: way/126146475 }
+  confidence: certain
+  review: draft
+  note: >-
+    Its temple of Aesculapius dates from the arrival of the god's serpent in 292 BCE.
+    The outline is the island inside its modern embankments, which follow the
+    ancient shore closely; the travertine facing that gave it the shape of a ship
+    was probably built with the bridges of the 60s–40s BCE.
+
+- id: pons-aemilius
+  kind: bridge
+  within: roma
+  pleiades: '425068'
+  location: [12.47937, 41.88934]
+  names:
+    - { text: Pons Aemilius, lang: la, preferred: true }
+    - { text: Ponte Rotto, lang: it }
+  from: 179 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Pons Aemilius, pp. 397–398' }
+    - { source: pleiades, locator: places/425068 }
+    - { source: osm-rome, locator: relation/6384861 }
+  confidence: certain
+  review: draft
+  note: >-
+    Rome's first stone bridge. The censors of 179 BCE set its piers, carrying a
+    wooden deck; the censors of 142 BCE vaulted it in stone. One arch stands, the
+    Ponte Rotto; the outline is what is left of it.
+
+- id: pons-fabricius
+  kind: bridge
+  within: roma
+  pleiades: '68481414'
+  location: [12.47824, 41.89108]
+  names:
+    - { text: Pons Fabricius, lang: la, preferred: true }
+  from: 62 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Pons Fabricius, p. 400' }
+    - { source: pleiades, locator: places/68481414 }
+    - { source: osm-rome, locator: relation/5676411 }
+  confidence: certain
+  review: draft
+  note: >-
+    Built by L. Fabricius, curator of roads in 62 BCE, whose name is inscribed on
+    both arches, and still in use: the outline is the bridge itself.
+
+- id: pons-cestius
+  kind: bridge
+  within: roma
+  pleiades: '211668069'
+  location: [12.47729, 41.89005]
+  names:
+    - { text: Pons Cestius, lang: la, preferred: true }
+  from: { earliest: 62 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Pons Cestius, pp. 399–400' }
+    - { source: pleiades, locator: places/211668069 }
+    - { source: osm-rome, locator: relation/5676410 }
+  confidence: probable
+  review: draft
+  note: >-
+    Probably built by one of the Cestii while curator of roads, some time between
+    62 and 27 BCE; nothing dates it closer, so the map shows it from the middle of
+    that span. Rebuilt in the 4th century CE and again in 1892 on the same line,
+    which is the outline.
+
+# --- the walls ----------------------------------------------------------------
+
+- id: murus-servii-tullii
+  kind: city-wall
+  within: roma
+  pleiades: '103808101'
+  location: [12.50169, 41.90185]
+  names:
+    - { text: Murus Servii Tullii, lang: la, preferred: true }
+    - { text: Servian Wall, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Murus Servii Tullii, pp. 350–355' }
+    - { source: pleiades, locator: places/103808101 }
+    - source: osm-rome
+      locator: >-
+        way/112675404, way/105281824, way/112677344, way/112677349, way/112677352,
+        way/1223826659, way/1223826660, way/781934076, way/781934077, way/427413247,
+        way/785914787, way/120880574, way/120880575
+  confidence: certain
+  review: draft
+  note: >-
+    The circuit of squared tufa the censors contracted for after the Gallic sack
+    (Livy 6.32.1, under 377 BCE). Only the stretches that survive are drawn —
+    the longest by Termini station, others on the Aventine, the Esquiline and the
+    Quirinal; the course between them is well established but not yet traced
+    here. By this period the city had long outgrown it. The Aurelian Walls, which
+    most maps of Rome show, are of 271 CE.
+
+# --- the Forum -----------------------------------------------------------------
+
+- id: aedes-saturni
+  kind: temple
+  within: roma
+  location: [12.48457, 41.89245]
+  names:
+    - { text: Aedes Saturni, lang: la, preferred: true }
+    - { text: Temple of Saturn, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Saturni, pp. 463–465' }
+    - { source: osm-rome, locator: relation/1849835 }
+  confidence: certain
+  review: draft
+  note: >-
+    One of the oldest temples of the Forum, and the state treasury (aerarium).
+    Rebuilt from 42 BCE by L. Munatius Plancus on the same podium; the eight
+    columns standing now are from a late-antique restoration, and the outline is
+    the podium.
+
+- id: aedes-castoris
+  kind: temple
+  within: roma
+  pleiades: '157276290'
+  location: [12.48563, 41.89167]
+  names:
+    - { text: Aedes Castoris, lang: la, preferred: true }
+    - { text: Temple of Castor, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Castoris#in_Foro_Romano, pp. 102–105' }
+    - { source: pleiades, locator: places/157276290 }
+    - { source: osm-rome, locator: relation/1842061 }
+  confidence: certain
+  review: draft
+  note: >-
+    Vowed in 499 BCE after Lake Regillus and dedicated in 484; restored in 117 BCE
+    by L. Caecilius Metellus. The remains, and so the outline, are of Tiberius'
+    rebuilding (dedicated 6 CE) on the same site.
+
+- id: aedes-vestae
+  kind: temple
+  within: roma
+  pleiades: '55302071'
+  location: [12.4862, 41.8917]
+  names:
+    - { text: Aedes Vestae, lang: la, preferred: true }
+    - { text: Temple of Vesta, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Vesta#aedes, pp. 556–559' }
+    - { source: pleiades, locator: places/55302071 }
+    - { source: osm-rome, locator: relation/1842062 }
+  confidence: certain
+  review: draft
+  note: >-
+    The round shrine of the city's hearth, burned and rebuilt many times on the
+    same plan; the surviving remains are of the rebuilding under Septimius Severus.
+
+- id: regia
+  kind: temple
+  within: roma
+  pleiades: '554680094'
+  location: [12.48642, 41.89188]
+  names:
+    - { text: Regia, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Regia, pp. 440–443' }
+    - { source: pleiades, locator: places/554680094 }
+    - { source: osm-rome, locator: relation/1765429 }
+  confidence: certain
+  review: draft
+  note: >-
+    The seat of the pontifex maximus — Caesar's office from 63 BCE. Burned and
+    restored in 148 BCE, and again in 36 BCE by Cn. Domitius Calvinus, whose
+    irregular pentagon is the plan that survives and the outline.
+
+- id: basilica-aemilia
+  kind: basilica
+  within: roma
+  pleiades: '417632343'
+  location: [12.48609, 41.89262]
+  names:
+    - { text: Basilica Aemilia, lang: la, preferred: true }
+  from: 179 BCE
+  to: after 27 BCE
+  condition:
+    - { value: standing, from: 179 BCE, to: 56 BCE }
+    - { value: under construction, from: 55 BCE, to: 35 BCE }
+    - { value: standing, from: 34 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Basilica Aemilia, pp. 72–76' }
+    - { source: pleiades, locator: places/417632343 }
+    - { source: osm-rome, locator: relation/1766532 }
+  confidence: certain
+  review: draft
+  note: >-
+    Built by the censors of 179 BCE and restored in 78. The aedile L. Aemilius
+    Paullus began rebuilding it in 55 BCE, and his son dedicated the work in 34;
+    from then it was often called the basilica Paulli. It burned in 14 BCE and was
+    rebuilt, but Platner & Ashby find little change in its extent and plan, so the
+    surviving outline stands for the whole period.
+
+- id: basilica-iulia
+  kind: basilica
+  within: roma
+  pleiades: '173078007'
+  location: [12.48478, 41.89196]
+  names:
+    - { text: Basilica Iulia, lang: la, preferred: true }
+  from: c. 54 BCE
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: c. 54 BCE, to: 47 BCE }
+    - { value: standing, from: 46 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Basilica Julia, pp. 78–80' }
+    - { source: pleiades, locator: places/173078007 }
+    - { source: osm-rome, locator: way/131451564 }
+  confidence: probable
+  review: draft
+  note: >-
+    Caesar's basilica on the south side of the Forum. Perhaps begun in 54 BCE and
+    dedicated unfinished in 46. The outline is of Augustus' enlarged rebuilding
+    after a fire (dedicated 12 CE), so Caesar's building was somewhat smaller than
+    drawn.
+
+- id: forum-iulium
+  kind: forum
+  within: roma
+  pleiades: '445545537'
+  location: [12.48514, 41.89369]
+  names:
+    - { text: Forum Iulium, lang: la, preferred: true }
+    - { text: Forum of Caesar, lang: en }
+  from: 46 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Forum Julium, pp. 225–227' }
+    - { source: pleiades, locator: places/445545537 }
+    - { source: osm-rome, locator: relation/1841081 }
+  confidence: certain
+  review: draft
+  note: >-
+    Planned by 54 BCE, when Cicero and Oppius were buying up the land for Caesar,
+    and dedicated with its temple on 26 September 46 BCE, the last day of his
+    triumph. When building began is not recorded, so the map shows it from the
+    dedication. The remains are of Trajan's rebuilding on the same plan.
+
+- id: aedes-veneris-genetricis
+  kind: temple
+  within: roma
+  pleiades: '898745908'
+  location: [12.48484, 41.89414]
+  names:
+    - { text: Venus Genetrix, lang: la, preferred: true }
+    - { text: Temple of Venus Genetrix, lang: en }
+  from: 46 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Forum Julium#Venus_Genetrix, pp. 225–227' }
+    - { source: pleiades, locator: places/898745908 }
+    - { source: osm-rome, locator: relation/1809171 }
+  confidence: certain
+  review: draft
+  note: >-
+    The temple of Venus the ancestress of the Julii at the head of Caesar's forum,
+    dedicated with it on 26 September 46 BCE. The three columns standing are of
+    Trajan's rebuilding.
+
+- id: curia-iulia
+  kind: curia
+  within: roma
+  pleiades: '837078212'
+  location: [12.4854, 41.89296]
+  names:
+    - { text: Curia Iulia, lang: la, preferred: true }
+  from: 44 BCE
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: 44 BCE, to: 30 BCE }
+    - { value: standing, from: 29 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Curia Julia, pp. 143–146' }
+    - { source: pleiades, locator: places/837078212 }
+    - { source: osm-rome, locator: relation/1841079 }
+  confidence: certain
+  review: draft
+  note: >-
+    The new senate house, begun by Caesar in 44 BCE just before his murder,
+    continued by the triumvirs and dedicated by Augustus in 29. It replaced the
+    Curia Hostilia, burned at Clodius' funeral in 52 BCE, whose outline is not
+    known. The building standing now is Diocletian's rebuilding on the same site.
+
+- id: aedes-divi-iulii
+  kind: temple
+  within: roma
+  pleiades: '277569430'
+  location: [12.486, 41.89204]
+  names:
+    - { text: Aedes Divi Iulii, lang: la, preferred: true }
+    - { text: Temple of the Deified Julius, lang: en }
+  from: 42 BCE
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: 42 BCE, to: 30 BCE }
+    - { value: standing, from: 29 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Divi Juli, pp. 286–288' }
+    - { source: pleiades, locator: places/277569430 }
+    - { source: osm-rome, locator: way/131451819 }
+  confidence: certain
+  review: draft
+  note: >-
+    Authorised by the triumvirs in 42 BCE on the spot where Caesar's body was
+    burned, and dedicated on 18 August 29 BCE. The outline is its surviving core.
+
+# --- the Forum and the Palatine, further ---------------------------------------
+
+- id: aedes-concordiae
+  kind: temple
+  within: roma
+  pleiades: '694134032'
+  location: [12.48421, 41.89294]
+  names:
+    - { text: Aedes Concordiae, lang: la, preferred: true }
+    - { text: Temple of Concord, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Concordia#5, pp. 138–140' }
+    - { source: pleiades, locator: places/694134032 }
+    - { source: osm-rome, locator: relation/1767601 }
+  confidence: certain
+  review: draft
+  note: >-
+    The temple of Concord at the north-west corner of the forum, below the
+    Capitol, said to have been vowed by Camillus in 367 BCE. The senate had it
+    restored by L. Opimius in 121 BCE, after the death of C. Gracchus, and it was
+    then often used for meetings of the senate. The outline is of Tiberius's
+    rebuilding (dedicated 10 CE); Platner & Ashby say the plan of Opimius's
+    temple seems to have been similar, and much of the podium core is of 121 BCE.
+
+- id: atrium-vestae
+  kind: house
+  within: roma
+  pleiades: '795139357'
+  location: [12.48664, 41.89141]
+  names:
+    - { text: Atrium Vestae, lang: la, preferred: true }
+    - { text: House of the Vestals, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Atrium Vestae, pp. 58–60' }
+    - { source: pleiades, locator: places/795139357 }
+  confidence: certain
+  review: draft
+  note: >-
+    The house of the Vestal Virgins, beside the temple of Vesta at the foot of
+    the Palatine. Remains of the republican house, a small court with rooms on
+    two sides, lie just south of the temple, with almost nothing earlier than
+    the second century BCE. It is drawn as a point: the ruins seen now are of
+    Nero's and later rebuildings, laid out on a different plan and orientation.
+
+- id: lacus-iuturnae
+  kind: fountain
+  within: roma
+  pleiades: '707467453'
+  location: [12.48595, 41.89156]
+  names:
+    - { text: Lacus Iuturnae, lang: la, preferred: true }
+    - { text: Spring of Juturna, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Lacus Juturnae, pp. 311–313' }
+    - { source: pleiades, locator: places/707467453 }
+  confidence: certain
+  review: draft
+  note: >-
+    The spring of Juturna in the south corner of the forum, where Castor and
+    Pollux were said to have watered their horses after Lake Regillus (496 BCE)
+    and again after Pydna (168 BCE); it is shown on coins of about 90 BCE. It is
+    drawn as a point: the basin that survives is mostly imperial, laid over a
+    republican pavement on a different orientation.
+
+- id: carcer
+  kind: prison
+  within: roma
+  pleiades: '755655444'
+  location: [12.48459, 41.89314]
+  names:
+    - { text: Carcer, lang: la, preferred: true }
+    - { text: Tullianum, lang: la }
+    - { text: State Prison, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Carcer, pp. 99–100' }
+    - { source: pleiades, locator: places/755655444 }
+    - { source: osm-rome, locator: relation/1849827 }
+  confidence: certain
+  review: draft
+  note: >-
+    The state prison at the foot of the Capitol, between the temple of Concord
+    and the senate house, where Jugurtha and the Catilinarian conspirators were
+    put to death. Most authorities give the underground chamber, the Tullianum,
+    a high antiquity; Frank dates the upper room to about 100 BCE. The outline
+    is of the surviving building, whose travertine front was added in the first
+    century CE.
+
+- id: rostra
+  kind: rostra
+  within: roma
+  pleiades: '796942355'
+  location: [12.48464, 41.8926]
+  names:
+    - { text: Rostra, lang: la, preferred: true }
+    - { text: Speakers' Platform, lang: en }
+  from: { earliest: 44 BCE, latest: 42 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Rostra Augusti, pp. 451–455' }
+    - { source: pleiades, locator: places/796942355 }
+    - { source: osm-rome, locator: relation/13357829 }
+  confidence: probable
+  review: draft
+  note: >-
+    The new speakers' platform at the north-west end of the forum, which
+    replaced the old one on the edge of the Comitium. Caesar planned the move
+    and built its concrete core, but the dedication seems not to have happened
+    until after 42 BCE, and Augustus completed it. The outline is of Augustus's
+    enlarged platform, which took in Caesar's core, so it is larger than the
+    rostra of our period.
+
+- id: aedes-magnae-matris
+  kind: temple
+  within: roma
+  pleiades: '192818177'
+  location: [12.48498, 41.88949]
+  names:
+    - { text: Aedes Magnae Matris, lang: la, preferred: true }
+    - { text: Temple of the Great Mother, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 112 BCE }
+    - { value: burnt, from: 111 BCE, to: 111 BCE }
+    - {
+        value: standing,
+        from: 110 BCE,
+        to: after 27 BCE,
+        note: 'restored by a Metellus, probably the consul of 110 BCE',
+      }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Matris Deum#3, pp. 324–325' }
+    - { source: pleiades, locator: places/192818177 }
+    - { source: osm-rome, locator: relation/1860921 }
+  confidence: probable
+  review: draft
+  note: >-
+    The temple of Cybele on the south-west corner of the Palatine, begun after
+    the goddess's stone was brought from Pessinus in 204 BCE and dedicated in
+    191. It burned in 111 BCE and was restored by a Metellus, probably the
+    consul of 110. The outline is of the podium, whose concrete is of the
+    Augustan restoration, carried out with the material of the original
+    building; Platner & Ashby call the identification extremely probable.
+
+- id: lacus-curtius
+  kind: sanctuary
+  within: roma
+  pleiades: '459049147'
+  location: [12.48509, 41.89234]
+  names:
+    - { text: Lacus Curtius, lang: la, preferred: true }
+    - { text: Pool of Curtius, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Lacus Curtius, pp. 310–311' }
+    - { source: pleiades, locator: places/459049147 }
+    - { source: osm-rome, locator: way/131557335 }
+  confidence: certain
+  review: draft
+  note: >-
+    A sacred enclosure in the middle of the forum, explained by three legends of
+    a Curtius, one of them a consul of 445 BCE. By Augustus's time it was dry
+    ground into which Romans threw coins. The outline is of the paved field of
+    about 10 by 9 metres, laid in Sulla's time and restored during Caesar's
+    changes to the forum.
+
+- id: sacrum-cloacinae
+  kind: sanctuary
+  within: roma
+  pleiades: '674507252'
+  location: [12.48544, 41.89256]
+  names:
+    - { text: Sacrum Cloacinae, lang: la, preferred: true }
+    - { text: Shrine of Venus Cloacina, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Sacrum Cloacinae, p. 128' }
+    - { source: pleiades, locator: places/674507252 }
+    - { source: osm-rome, locator: relation/1841085 }
+  confidence: certain
+  review: draft
+  note: >-
+    A small round shrine of Cloacina, later called Venus Cloacina, over the
+    drain in front of the Basilica Aemilia; the first shrine probably goes back
+    to the early days of the Cloaca Maxima. It is shown on coins of the second
+    triumvirate. The outline is of its surviving base, about 2.4 metres across.
+
+- id: aedes-apollinis-palatini
+  kind: temple
+  within: roma
+  pleiades: '257097394'
+  location: [12.48566, 41.88878]
+  names:
+    - { text: Aedes Apollinis Palatini, lang: la, preferred: true }
+    - { text: Temple of Palatine Apollo, lang: en }
+  from: { earliest: 36 BCE, latest: 29 BCE }
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: { earliest: 36 BCE, latest: 29 BCE }, to: 29 BCE }
+    - { value: standing, from: 28 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Apollinis Palatini, pp. 16–19' }
+    - { source: pleiades, locator: places/257097394 }
+    - { source: osm-rome, locator: way/132881964 }
+  confidence: probable
+  review: draft
+  note: >-
+    Augustus's temple of Apollo on the Palatine, vowed in 36 BCE on ground struck
+    by lightning and dedicated on 9 October 28 BCE. The outline is of the
+    Augustan concrete podium facing south-west, which Platner & Ashby, weighing
+    three proposed sites, think on the whole the most satisfactory
+    identification.
+
+- id: domus-liviae
+  kind: house
+  within: roma
+  pleiades: '904782880'
+  location: [12.48576, 41.8892]
+  names:
+    - { text: Domus Liviae, lang: la, preferred: true }
+    - { text: House of Livia, lang: en }
+  from: before 36 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Domus Augusti, pp. 156–158' }
+    - { source: platner-ashby, locator: 'Aedes Apollinis Palatini, pp. 16–19' }
+    - { source: pleiades, locator: places/904782880 }
+    - { source: osm-rome, locator: relation/1860919 }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The house on the Palatine known as the House of Livia, with fine
+    second-style wall paintings. Platner & Ashby take it to be the house of
+    Hortensius where Augustus lived; part of that house was struck by lightning
+    and given up for the temple of Apollo, vowed in 36 BCE, and by January 27 BCE
+    the enlarged house was ready. That identification rests on placing the
+    temple on the podium next to it, so it is uncertain.
+
+# --- the Capitol ---------------------------------------------------------------
+
+- id: aedes-iovis-capitolini
+  kind: temple
+  within: roma
+  pleiades: '871801169'
+  location: [12.48167, 41.89222]
+  names:
+    - { text: Aedes Iovis Capitolini, lang: la, preferred: true }
+    - { text: Capitolium, lang: la }
+    - { text: Temple of Jupiter Optimus Maximus, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 84 BCE }
+    - { value: burnt, from: 83 BCE, to: 83 BCE }
+    - { value: under construction, from: 82 BCE, to: 70 BCE }
+    - { value: standing, from: 69 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Jovis Capitolini, pp. 297–302' }
+    - { source: pleiades, locator: places/871801169 }
+  confidence: certain
+  review: draft
+  note: >-
+    The temple of Jupiter, Juno and Minerva on the Capitol, burned to the ground on
+    6 July 83 BCE. Sulla took the rebuilding in hand; most of it fell to Q.
+    Lutatius Catulus, who dedicated it in 69. When the work began is not
+    recorded, so it is shown as building from the year after the fire. Parts of
+    the podium survive under the Palazzo Caffarelli, but no surveyed outline is
+    open, so it is drawn as a point.
+
+- id: tabularium
+  kind: archive
+  within: roma
+  location: [12.48342, 41.89289]
+  names:
+    - { text: Tabularium, lang: la, preferred: true }
+  from: 78 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Tabularium, pp. 506–508' }
+    - { source: osm-rome, locator: node/1447566609 }
+  confidence: certain
+  review: draft
+  note: >-
+    The record office built by Q. Lutatius Catulus in 78 BCE on the slope of the
+    Capitol above the Forum; its arcade is the base of the Palazzo Senatorio.
+    OpenStreetMap has it as a point only, so it is drawn as one.
+
+# --- the Circus and the Campus Martius ------------------------------------------
+
+- id: circus-maximus
+  kind: circus
+  within: roma
+  pleiades: '458808506'
+  location: [12.48571, 41.88593]
+  names:
+    - { text: Circus Maximus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Circus Maximus, pp. 114–120' }
+    - { source: pleiades, locator: places/458808506 }
+    - { source: osm-rome, locator: relation/11384819 }
+  confidence: probable
+  review: draft
+  note: >-
+    In use from the kings; the censors of 174 BCE rebuilt its starting gates.
+    Caesar lengthened it and dug a moat between the arena and the seats in 46 BCE,
+    and a fire destroyed much of it in 31. The outline is the valley it filled at
+    its imperial extent; the republican circus lay in the same place but did not
+    reach as far.
+
+- id: theatrum-pompei
+  kind: theatre
+  within: roma
+  pleiades: '541950317'
+  location: [12.47375, 41.89517]
+  names:
+    - { text: Theatrum Pompei, lang: la, preferred: true }
+    - { text: Theatre of Pompey, lang: en }
+  from: 55 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Theatrum Pompei, pp. 515–517' }
+    - { source: pleiades, locator: places/541950317 }
+  confidence: certain
+  review: draft
+  note: >-
+    Rome's first permanent theatre, built in stone by Pompey in his second
+    consulship and dedicated in 55 BCE. Its curve survives in the street plan
+    east of the Campo de' Fiori, but no surveyed outline is open, so it is drawn
+    as a point.
+
+- id: mausoleum-augusti
+  kind: tomb
+  within: roma
+  pleiades: '281368358'
+  location: [12.47641, 41.906]
+  names:
+    - { text: Mausoleum Augusti, lang: la, preferred: true }
+    - { text: Mausoleum of Augustus, lang: en }
+  from: 28 BCE
+  to: after 27 BCE
+  condition: under construction
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Mausoleum Augusti, pp. 332–336' }
+    - { source: pleiades, locator: places/281368358 }
+    - { source: osm-rome, locator: relation/2709954 }
+  confidence: certain
+  review: draft
+  note: >-
+    Built by Augustus for himself and his family in the northern Campus Martius,
+    begun as early as 28 BCE. When it was finished is not recorded; the first
+    burial in it was Marcellus', in 23 BCE.
+
+# --- the Campus Martius, the river quarter and the tombs -------------------------
+
+- id: aedes-apollinis
+  kind: temple
+  within: roma
+  pleiades: '740034026'
+  location: [12.47955, 41.89241]
+  names:
+    - { text: Aedes Apollinis, lang: la, preferred: true }
+    - { text: Apollo Medicus, lang: la }
+    - { text: Temple of Apollo, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Apollinis in Campo Martio, pp. 15–16' }
+    - { source: pleiades, locator: places/740034026 }
+    - { source: osm-rome, locator: way/182282759 }
+  confidence: probable
+  review: draft
+  note: >-
+    Rome's first temple of Apollo, also called Apollo Medicus, vowed in 433 BCE
+    after a plague and dedicated in 431, just outside the Porta Carmentalis and
+    north of where the Theatre of Marcellus was later built. The senate often met
+    here, outside the sacred boundary. It was restored, probably by C. Sosius
+    (consul 32 BCE), and later called Apollo Sosianus; the outline is the temple as
+    it survives from that restoration, on the same site.
+
+- id: emporium
+  kind: warehouse
+  within: roma
+  pleiades: '937921711'
+  location: [12.47467, 41.88235]
+  names:
+    - { text: Emporium, lang: la, preferred: true }
+    - { text: River port, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Emporium, p. 200' }
+    - { source: pleiades, locator: places/937921711 }
+  confidence: probable
+  review: draft
+  note: >-
+    The landing place and market for goods shipped up the Tiber from Ostia, below
+    the Aventine outside the Porta Trigemina. Set up by the aediles of 193 BCE, it
+    was paved and fenced by the censors of 174, and became part of the quays and
+    warehouses that lined the river bank. Drawn as a point on the surviving quay
+    remains; OpenStreetMap maps only a strip of the embankment.
+
+- id: sepulcrum-bibuli
+  kind: tomb
+  within: roma
+  pleiades: '503777175'
+  location: [12.4832, 41.89523]
+  names:
+    - { text: Sepulcrum Bibuli, lang: la, preferred: true }
+    - { text: Tomb of Bibulus, lang: en }
+  from: { earliest: 133 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Sepulcrum Bibuli, p. 477' }
+    - { source: pleiades, locator: places/503777175 }
+  confidence: certain
+  review: draft
+  note: >-
+    The tomb of C. Publicius Bibulus, a plebeian aedile, built (or more likely
+    restored) by decree of the senate in the last century of the Republic, at the
+    foot of the Capitol beside the Via Flaminia. Its travertine front, about 6.5
+    metres wide, still stands. Drawn as a point: only the front wall survives, so
+    there is no outline of the whole tomb.
+
+- id: sepulcrum-scipionum
+  kind: tomb
+  within: roma
+  pleiades: '999196280'
+  location: [12.50041, 41.8759]
+  names:
+    - { text: Sepulcrum Scipionum, lang: la, preferred: true }
+    - { text: Tomb of the Scipios, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Sepulcrum Scipionum, pp. 484–486' }
+    - { source: pleiades, locator: places/999196280 }
+  confidence: certain
+  review: draft
+  note: >-
+    The family tomb of the Cornelii Scipiones by the Via Appia, cut into the tufa
+    rock, with a painted front about 25 metres long. The first burial was L. Scipio
+    Barbatus, consul in 298 BCE; the poet Ennius was also buried here. Drawn as a
+    point, since the tomb is underground.
+
+- id: sepulcrum-semproniorum
+  kind: tomb
+  within: roma
+  pleiades: '323719627'
+  location: [12.48503, 41.89993]
+  names:
+    - { text: Sepulcrum Semproniorum, lang: la, preferred: true }
+    - { text: Tomb of the Sempronii, lang: en }
+  from: { earliest: 100 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'sepulcra#Semproniorum, p. 486' }
+    - { source: pleiades, locator: places/323719627 }
+  confidence: probable
+  review: draft
+  note: >-
+    The tomb of the Sempronii, which Platner & Ashby date only to "the end of the
+    republic" (so it is shown from the middle of 100–27 BCE), just outside the
+    Porta Sanqualis at the top of the present Via della Dataria. It has a travertine front with an arched door into a chamber cut in
+    the rock, and was excavated in 1863. Drawn as a point.
+
+# --- streets and roads -------------------------------------------------------------
+# Paved on the model's board (pipeline/src/rome/streets.ts). Streets in the Forum
+# and on the Palatine are OpenStreetMap's paths laid on the excavated paving. The
+# streets Platner & Ashby identify with a modern street are traced along it and cut
+# to within the walls. The consular roads outside the walls are Itiner-e's, joined
+# to the gate Platner & Ashby say each left by; their records carry no outline.
+
+- id: sacra-via
+  kind: street
+  within: roma
+  location: [12.48813, 41.89125]
+  names:
+    - { text: Sacra Via, lang: la, preferred: true }
+    - { text: Sacred Way, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Sacra Via, pp. 456–459' }
+    - source: osm-rome
+      locator: >-
+        way/27350506, way/28044935, way/32352952, way/32352953, way/49824318,
+        way/131451590, way/131451591, way/137620725, way/994987247, way/995618424,
+        way/995618433, way/1236900617, way/1236900618, way/1391027807,
+        way/1391027809, way/1543173033
+  confidence: probable
+  review: draft
+  note: >-
+    The oldest street of the Forum, running from the Regia past the temple of Vesta
+    and up to the Velia, the route of the triumph. The paths OpenStreetMap maps
+    follow the excavated paving; east of the Velia that paving is of the street as
+    Nero rebuilt it, which Platner & Ashby say curved north where the republican
+    street did not.
+
+- id: clivus-capitolinus
+  kind: street
+  within: roma
+  location: [12.48409, 41.89262]
+  names:
+    - { text: Clivus Capitolinus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Clivus Capitolinus, pp. 122–123' }
+    - source: osm-rome
+      locator: way/28044937, way/123817451, way/1000529935, way/1101829124, way/1101836685
+  confidence: certain
+  review: draft
+  note: >-
+    The only road up to the Capitol for wheeled traffic, climbing from the Forum
+    past the temple of Saturn; stretches of its paving survive south of the
+    Porticus of the Dei Consentes and south-west of the Tabularium.
+
+- id: vicus-tuscus
+  kind: street
+  within: roma
+  location: [12.48525, 41.89152]
+  names:
+    - { text: Vicus Tuscus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Vicus Tuscus, pp. 579–580' }
+    - { source: osm-rome, locator: way/998877106 }
+  confidence: certain
+  review: draft
+  note: >-
+    The street from the Forum, between the Basilica Iulia and the temple of
+    Castor, to the Velabrum and the Circus Maximus. Only its first stretch is
+    mapped.
+
+- id: vicus-iugarius
+  kind: street
+  within: roma
+  location: [12.4842, 41.89227]
+  names:
+    - { text: Vicus Iugarius, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Vicus Jugarius, pp. 574–575' }
+    - { source: osm-rome, locator: way/1000529940 }
+  confidence: certain
+  review: draft
+  note: >-
+    The street from the Forum along the foot of the Capitol to the Porta
+    Carmentalis. Only its first stretch is mapped.
+
+- id: argiletum
+  kind: street
+  within: roma
+  location: [12.48541, 41.89279]
+  names:
+    - { text: Argiletum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Argiletum, pp. 53–54' }
+    - { source: osm-rome, locator: way/1000529923 }
+  confidence: certain
+  review: draft
+  note: >-
+    The street from the Forum, between the Curia and the Basilica Aemilia, up to
+    the Subura. Only its first stretch is mapped.
+
+- id: nova-via
+  kind: street
+  within: roma
+  location: [12.48692, 41.891]
+  names:
+    - { text: Nova Via, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Nova Via, pp. 361–362' }
+    - source: osm-rome
+      locator: >-
+        way/132682587, way/136630827, way/136630828, way/137620720, way/994987251,
+        way/998809820, way/998809821, way/998809822, way/998809823, way/998809824,
+        way/998809825, way/998809826, way/998809827
+  confidence: probable
+  review: draft
+  note: >-
+    The street along the north foot of the Palatine above the Forum, "new" only
+    by contrast with the Sacra Via. The mapped paths follow its excavated line.
+
+- id: clivus-palatinus
+  kind: street
+  within: roma
+  location: [12.48788, 41.8903]
+  names:
+    - { text: Clivus Palatinus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'cliva#Palatinus, pp. 122–126' }
+    - source: osm-rome
+      locator: >-
+        way/28044906, way/137620702, way/137620703, way/137620704, way/137620705,
+        way/137620706, way/137620707, way/137620708, way/137620709, way/137620721,
+        way/1005260380
+  confidence: probable
+  review: draft
+  note: >-
+    The road up the Palatine from the Sacra Via by the Arch of Titus. The name is
+    modern (it "has no ancient warranty", Platner & Ashby); a piece of its paving
+    of Sulla's time was found.
+
+- id: clivus-victoriae
+  kind: street
+  within: roma
+  location: [12.48628, 41.89091]
+  names:
+    - { text: Clivus Victoriae, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'cliva#Victoriae, pp. 122–126' }
+    - source: osm-rome
+      locator: >-
+        way/132682585, way/998809867, way/998809868, way/998809876, way/998809877,
+        way/998809955, way/1001084344, way/1001084345, way/1005260377
+  confidence: certain
+  review: draft
+  note: >-
+    The ascent to the Palatine from the Velabrum on its west side, named from the
+    temple of Victory. "Ancient pavement exists all along this path" (Platner &
+    Ashby).
+
+- id: alta-semita
+  kind: street
+  within: roma
+  location: [12.48849, 41.9004]
+  names:
+    - { text: Alta Semita, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Alta Semita, p. 4' }
+    - source: osm-rome
+      locator: >-
+        way/22886200, way/232418216, way/232418217, way/23589548, way/24866032,
+        way/26665145, way/27381328, way/27430713, way/35275275, way/35275276,
+        way/59150262, way/59150265, way/99498970, way/106746606, way/106769418,
+        way/184555071, way/202753971, way/204163770, way/366801773, way/977069765,
+        way/978214493, way/983622864, way/1348192833
+  confidence: probable
+  review: draft
+  note: >-
+    The street along the ridge of the Quirinal to the Porta Collina,
+    "corresponding with the modern Via del Quirinale and Via Venti Settembre"
+    (Platner & Ashby). Traced along those streets, inside the wall, and drawn
+    lighter: the modern line only approximates the ancient one.
+
+- id: vicus-patricius
+  kind: street
+  within: roma
+  location: [12.49599, 41.89844]
+  names:
+    - { text: Vicus Patricius, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'vici#Patricius, s.v. Vicus Patricius' }
+    - { source: osm-rome, locator: 'way/52722357, way/52722538, way/189465655' }
+  confidence: probable
+  review: draft
+  note: >-
+    The street from the Subura north between the Cispius and the Viminal to the
+    Porta Viminalis, which "corresponded closely with the modern Via Urbana"
+    (Platner & Ashby). Traced along it, inside the wall, and drawn lighter.
+
+- id: clivus-suburanus
+  kind: street
+  within: roma
+  location: [12.49896, 41.89573]
+  names:
+    - { text: Clivus Suburanus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'cliva#Suburanus, pp. 122–126' }
+    - source: osm-rome
+      locator: >-
+        way/23569690, way/24167334, way/584602767, way/24167737, way/24167740,
+        way/81756179, way/141394860, way/141394861
+  confidence: probable
+  review: draft
+  note: >-
+    The continuation of the Subura up between the Oppius and the Cispius to the
+    Porta Esquilina. "The remains of ancient pavement show that it followed in
+    general the line of the Vie di S. Lucia in Selci, di S. Martino, and di S.
+    Vito" (Platner & Ashby); traced along them and drawn lighter.
+
+- id: vicus-cuprius
+  kind: street
+  within: roma
+  location: [12.4903, 41.8925]
+  names:
+    - { text: Vicus Cuprius, lang: la, preferred: true }
+    - { text: Vicus Ciprius, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'vici#Cuprius, s.v. Vicus Cuprius' }
+    - { source: osm-rome, locator: 'way/190043679, way/625592148, way/201194127' }
+  confidence: probable
+  review: draft
+  note: >-
+    The street from the Tigillum Sororium north across the slope of the Carinae to
+    the Subura, where Tullia drove over her father's body (Livy 1.48; Varro, LL
+    5.159). It "seems to have coincided with the Vie del Colosseo and del Cardello"
+    (Platner & Ashby); traced along them, leaving the north end of the Via del
+    Colosseo, which Platner & Ashby give to the Vicus Sandaliarius, and drawn
+    lighter.
+
+- id: clivus-argentarius
+  kind: street
+  within: roma
+  location: [12.48455, 41.89352]
+  names:
+    - { text: Clivus Argentarius, lang: la, preferred: true }
+    - { text: Lautumiae, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Clivus Argentarius, pp. 121–122' }
+    - { source: osm-rome, locator: 'way/4951346, way/603411427' }
+  confidence: probable
+  review: draft
+  note: >-
+    The only direct way from the Forum to the Campus Martius before the imperial
+    fora, leaving between the Curia and the Carcer along the slope of the Capitol,
+    "corresponding closely with the modern Via di Marforio" (Platner & Ashby). The
+    name is known only from mediaeval documents: "in the time of the republic it
+    seems to have been called Lautumiae". The Via di Marforio was cleared in the
+    1930s; traced along the excavated ancient paving (OpenStreetMap's Clivo
+    Argentario) and drawn lighter.
+
+- id: via-flaminia
+  kind: road
+  within: roma
+  location: [12.48006, 41.90186]
+  names:
+    - { text: Via Flaminia, lang: la, preferred: true }
+    - { text: Via Lata, lang: la }
+  from: 220 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Flaminia#Flaminia, p. 562' }
+    - source: osm-rome
+      locator: >-
+        way/22979103, way/26785433, way/49304929, way/49305153, way/108565606,
+        way/122705896, way/128665329, way/131235408, way/184686429, way/188728063,
+        way/203960983, way/204390269, way/220230152, way/229645760, way/366692686,
+        way/366692687, way/1236333976
+  confidence: certain
+  review: draft
+  note: >-
+    Built in 220 BCE by the censor C. Flaminius, it ran north from the foot of the
+    Capitol across the Campus Martius, where its city stretch was called the Via
+    Lata. "The modern Corso coincides absolutely with the ancient line" (Platner
+    & Ashby), so it is traced along the Corso and drawn as a surveyed street.
+
+- id: via-appia
+  kind: road
+  within: roma
+  location: [12.4945, 41.8795]
+  names:
+    - { text: Via Appia, lang: la, preferred: true }
+    - { text: Appian Way, lang: en }
+  from: 312 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Appia, pp. 559–560' }
+    - { source: itinere, locator: Tarracinae-Rome }
+  confidence: certain
+  review: draft
+  note: >-
+    Built in 312 BCE by the censor Appius Claudius Caecus, leaving the city by
+    the Porta Capena. Drawn from Itiner-e's line, which it gives as certain here,
+    joined to the gate.
+
+- id: via-tiburtina
+  kind: road
+  within: roma
+  location: [12.5075, 41.8975]
+  names:
+    - { text: Via Tiburtina, lang: la, preferred: true }
+  from: 307 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Tiburtina, pp. 568–569' }
+    - { source: itinere, locator: Rome-Tibur }
+  confidence: probable
+  review: draft
+  note: >-
+    The road to Tibur, which "probably left the city by the porta Esquilina"
+    (Platner & Ashby). Drawn from Itiner-e's line, which it gives as conjectured
+    here and dates to 307 BCE, joined to the gate.
+
+- id: via-aurelia
+  kind: road
+  within: roma
+  location: [12.4725, 41.8885]
+  names:
+    - { text: Via Aurelia, lang: la, preferred: true }
+  from: 241 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Aurelia, p. 561' }
+    - { source: itinere, locator: Populonium-Rome }
+  confidence: probable
+  review: draft
+  note: >-
+    The road west along the coast, which "led from the pons Aemilius across the
+    low ground on the right bank of the Tiber" up to the Janiculum (Platner &
+    Ashby). Itiner-e dates it to 241 BCE but brings it in as several conjectured
+    lines across Trastevere, so it is not drawn on the model.
+
+# --- the river, the hills and the quarters --------------------------------------
+# Lettered on the plan, never outlined as monuments. A hill's name is set on its
+# highest ground within 300 m of its location, found on the smoothed relief by
+# pipeline/src/rome/build.ts; a quarter's is set at its location.
+
+- id: tiberis
+  kind: river
+  within: roma
+  pleiades: '423080'
+  location: [12.47768, 41.89058]
+  names:
+    - { text: Tiberis, lang: la, preferred: true }
+    - { text: Tiber, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Tiberis, pp. 536–538' }
+    - { source: pleiades, locator: places/423080 }
+    - { source: osm-rome, locator: 'relation/5071, way/22797948' }
+  confidence: probable
+  review: draft
+  note: >-
+    The river through the city, drawn from OpenStreetMap's outline of its water
+    between the modern embankments (the Lungotevere walls of 1876–1926), which
+    narrowed and straightened it; the ancient banks were lower and less regular,
+    but the course through Rome is the same. The location is the island's.
+
+- id: mons-capitolinus
+  kind: hill
+  within: roma
+  pleiades: '347036492'
+  location: [12.48222, 41.89258]
+  names:
+    - { text: Capitolium, lang: la, preferred: true }
+    - { text: Capitoline Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Capitolinus, pp. 95–98' }
+    - { source: pleiades, locator: places/347036492 }
+  confidence: certain
+  review: draft
+
+- id: mons-palatinus
+  kind: hill
+  within: roma
+  pleiades: '971691208'
+  location: [12.48711, 41.88931]
+  names:
+    - { text: Palatium, lang: la, preferred: true }
+    - { text: Palatine Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Palatinus, pp. 374–380' }
+    - { source: pleiades, locator: places/971691208 }
+  confidence: certain
+  review: draft
+
+- id: mons-aventinus
+  kind: hill
+  within: roma
+  pleiades: '865014139'
+  location: [12.48333, 41.88333]
+  names:
+    - { text: Aventinus, lang: la, preferred: true }
+    - { text: Aventine Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: pleiades, locator: places/865014139 }
+  confidence: certain
+  review: draft
+  note: >-
+    Platner & Ashby's article (Aventinus Mons) is not online: LacusCurtius links
+    to a page that is missing.
+
+- id: mons-caelius
+  kind: hill
+  within: roma
+  pleiades: '695491849'
+  location: [12.50269, 41.88519]
+  names:
+    - { text: Caelius, lang: la, preferred: true }
+    - { text: Caelian Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Caelius Mons, pp. 87–89' }
+    - { source: pleiades, locator: places/695491849 }
+  confidence: certain
+  review: draft
+
+- id: esquiliae
+  kind: hill
+  within: roma
+  pleiades: '679976755'
+  location: [12.5068, 41.8955]
+  names:
+    - { text: Esquiliae, lang: la, preferred: true }
+    - { text: Esquiline Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Esquiliae, pp. 202–203' }
+    - { source: pleiades, locator: places/679976755 }
+  confidence: certain
+  review: draft
+  note: >-
+    Pleiades gives the hill only by association (12.49961, 41.89449). It is lettered
+    on its tableland outside the agger, which the wall crossed rather than
+    following an edge; its two spurs inside, the Oppius and the Cispius, are named
+    themselves.
+
+- id: mons-oppius
+  kind: hill
+  within: roma
+  pleiades: '91325207'
+  location: [12.49654, 41.89341]
+  names:
+    - { text: Oppius, lang: la, preferred: true }
+    - { text: Oppian Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Oppius Mons, pp. 371–372' }
+    - { source: pleiades, locator: places/91325207 }
+  confidence: certain
+  review: draft
+
+- id: mons-cispius
+  kind: hill
+  within: roma
+  pleiades: '257235581'
+  location: [12.49524, 41.89647]
+  names:
+    - { text: Cispius, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Cispius Mons, p. 120' }
+    - { source: pleiades, locator: places/257235581 }
+  confidence: certain
+  review: draft
+
+- id: collis-viminalis
+  kind: hill
+  within: roma
+  pleiades: '755385623'
+  location: [12.49394, 41.89953]
+  names:
+    - { text: Viminalis, lang: la, preferred: true }
+    - { text: Viminal Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Viminalis, pp. 581–582' }
+    - { source: pleiades, locator: places/755385623 }
+  confidence: certain
+  review: draft
+
+- id: collis-quirinalis
+  kind: hill
+  within: roma
+  pleiades: '125119394'
+  location: [12.48333, 41.9]
+  names:
+    - { text: Quirinalis, lang: la, preferred: true }
+    - { text: Quirinal Hill, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Quirinalis, pp. 436–438' }
+    - { source: pleiades, locator: places/125119394 }
+  confidence: certain
+  review: draft
+  note: Pleiades gives the hill only to the nearest 0.01°; its name is set on the ridge.
+
+- id: velia-roma
+  kind: hill
+  within: roma
+  pleiades: '157710058'
+  location: [12.4897, 41.89086]
+  names:
+    - { text: Velia, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Velia, p. 550' }
+    - { source: pleiades, locator: places/157710058 }
+  confidence: probable
+  review: draft
+  note: >-
+    The ridge running from the Palatine towards the Oppius, crossed by the Sacra
+    Via at its summit. Pleiades' location is approximate.
+
+- id: ianiculum
+  kind: hill
+  within: roma
+  pleiades: '430827518'
+  location: [12.46667, 41.88333]
+  names:
+    - { text: Ianiculum, lang: la, preferred: true }
+    - { text: Janiculum, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Janiculum, pp. 274–275' }
+    - { source: pleiades, locator: places/430827518 }
+  confidence: certain
+  review: draft
+  note: The ridge across the river, outside the walls; Pleiades gives it to the nearest 0.01°.
+
+- id: forum-romanum
+  kind: district
+  within: roma
+  pleiades: '502866838'
+  location: [12.48540, 41.89220]
+  names:
+    - { text: Forum Romanum, lang: la, preferred: true }
+    - { text: Roman Forum, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Forum Romanum, pp. 230–237' }
+    - { source: pleiades, locator: places/502866838 }
+  confidence: certain
+  review: draft
+  note: Lettered across the open square, between the Basilica Aemilia and the Basilica Iulia.
+
+- id: forum-boarium
+  kind: district
+  within: roma
+  pleiades: '207271756'
+  location: [12.4809, 41.88886]
+  names:
+    - { text: Forum Boarium, lang: la, preferred: true }
+    - { text: Cattle Market, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Forum Boarium, pp. 224–225' }
+    - { source: pleiades, locator: places/207271756 }
+  confidence: certain
+  review: draft
+
+- id: forum-holitorium
+  kind: district
+  within: roma
+  pleiades: '72845305'
+  location: [12.48001, 41.89124]
+  names:
+    - { text: Forum Holitorium, lang: la, preferred: true }
+    - { text: Vegetable Market, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Forum Holitorium, p. 225' }
+    - { source: pleiades, locator: places/72845305 }
+  confidence: certain
+  review: draft
+
+- id: velabrum
+  kind: district
+  within: roma
+  pleiades: '432833118'
+  location: [12.4819, 41.8892]
+  names:
+    - { text: Velabrum, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Velabrum, pp. 549–550' }
+    - { source: pleiades, locator: places/432833118 }
+  confidence: certain
+  review: draft
+
+- id: campus-martius
+  kind: district
+  within: roma
+  pleiades: '422863'
+  location: [12.4755, 41.9005]
+  names:
+    - { text: Campus Martius, lang: la, preferred: true }
+    - { text: Field of Mars, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Campus Martius, pp. 91–94' }
+    - { source: pleiades, locator: places/422863 }
+  confidence: certain
+  review: draft
+  note: >-
+    The level ground between the Capitoline, the Quirinal, the Pincian and the
+    Tiber (Platner & Ashby). Pleiades' point is approximate; the name is set in the
+    middle of the plain, in the bend of the river.
+
+- id: subura
+  kind: district
+  within: roma
+  pleiades: '451696383'
+  location: [12.4925, 41.8952]
+  names:
+    - { text: Subura, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Subura, pp. 500–501' }
+    - { source: pleiades, locator: places/451696383 }
+  confidence: probable
+  review: draft
+  note: >-
+    The valley between the southern end of the Viminal and the Oppius, now
+    crossed by the Via Cavour (Platner & Ashby); lettered there, since Pleiades
+    has it only at the centre of the city.
+
+- id: carinae
+  kind: district
+  within: roma
+  location: [12.4917, 41.8930]
+  names:
+    - { text: Carinae, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Carinae, p. 100' }
+  confidence: probable
+  review: draft
+  note: >-
+    The western end of the Oppius, between S. Pietro in Vincoli and the Via del
+    Colosseo (Platner & Ashby), where Pompey had his house; lettered there.

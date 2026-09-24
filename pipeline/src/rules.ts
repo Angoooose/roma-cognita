@@ -152,7 +152,7 @@ export function checkDataset(ds: Dataset): Issue[] {
   const sane = new Set<object>()
   for (const r of dated) if (intervalOk(r, r)) sane.add(r)
   for (const p of ds.places) {
-    for (const d of [...p.prominence, ...p.status]) {
+    for (const d of [...p.prominence, ...p.status, ...p.condition]) {
       intervalOk(p, d, `${String(d.value)}: `)
       if (d.from.year < p.from.year || d.to.year > p.to.year) {
         warn(
@@ -293,6 +293,16 @@ export function checkDataset(ds: Dataset): Issue[] {
       )
     }
   }
+  // A monument stands in a settlement. The settlement's open ends are bounds, so only
+  // years it cannot share with the monument under any reading are worth a word.
+  for (const p of ds.places) {
+    if (!p.within) continue
+    const city = places.get(p.within)
+    if (!city) error('missing-place', p, `stands within unknown place "${p.within}"`)
+    else if (sane.has(p) && sane.has(city) && !mayOverlap(p, city))
+      warn('outside-place', p, `(${span(p)}) never shares a year with place "${city.id}" (${span(city)})`)
+  }
+
   // Two courts at once is possible (Mauretania had two kings) but worth a look.
   overlapping(
     ds.seats,

@@ -18,6 +18,8 @@ interface ExplorerState {
   map: RomeMap | null
   /** Mirrors `map.year` (astronomical, 1 BCE = 0) so components re-render on change. */
   year: number
+  /** True while the model of Rome stands, zoomed right into the city. */
+  modelShown: boolean
   /** What the inspector shows, and what it was opened on. */
   inspected: Inspected | null
   selection: Selection | null
@@ -39,11 +41,13 @@ let pickSeq = 0
 export const useExplorer = create<ExplorerState>()((set, get) => ({
   map: null,
   year: 0,
+  modelShown: false,
   inspected: null,
   selection: null,
 
   attach(map) {
-    set({ map, year: map?.year ?? 0, inspected: null, selection: null })
+    set({ map, year: map?.year ?? 0, modelShown: false, inspected: null, selection: null })
+    if (map) map.onModel = (modelShown) => set({ modelShown })
   },
 
   goToYear(year) {
@@ -114,7 +118,8 @@ function inspectRef(ref: MapRef) {
 
 function show(hit: Awaited<ReturnType<RomeMap['pick']>>, selection: Selection) {
   // The territory inspected is brought forward on the map; a settlement is not.
-  const focus = hit && 'territory' in hit && hit.territory.claim ? hit.territory.polity?.id : undefined
+  const focus =
+    hit && 'territory' in hit && hit.territory.claim ? hit.territory.polity?.id : undefined
   useExplorer.getState().map?.setFocus(focus ?? null)
   if (hit && 'place' in hit) {
     useExplorer.setState({ inspected: { kind: 'place', hit: hit.place }, selection })

@@ -206,6 +206,11 @@ const placeName = (id: string) =>
   data.names.find((n) => n.target.kind === 'place' && n.target.id === id)?.text ??
   id
 const sourceById = new Map(data.sources.map((s) => [s.id, s]))
+const planned = new Set<string>(
+  JSON.parse(readFileSync(join(ROOT_DIR, 'data/geometry/rome.geojson'), 'utf8')).features.map(
+    (f: { id: string }) => f.id,
+  ),
+)
 const places = data.places.map((p) => {
   const [x, y] = projection.forward(...p.location)
   return {
@@ -218,6 +223,12 @@ const places = data.places.map((p) => {
     years: years2(p),
     prominence: p.prominence.map((d) => ({ value: d.value, years: years2(d) })),
     status: p.status.map((d) => ({ value: d.value, years: years2(d) })),
+    condition: p.condition.length
+      ? p.condition.map((d) => ({ value: d.value, years: years2(d) }))
+      : undefined,
+    within: p.within,
+    // Drawn on the city plan (build/rome), so it is named without a marker.
+    outlined: planned.has(p.id) || undefined,
     labelSide: p.labelSide,
     confidence: p.confidence,
     review: p.review,
@@ -235,7 +246,7 @@ const places = data.places.map((p) => {
 // cover, at each of LAND_SCALES m/px (the engine picks the nearest): the share of land
 // under the box on each side. Sizes mirror the engine's TIER_EM.
 const LAND_SCALES = [3000, 1500, 800, 400, 200]
-const SIDE_EM = [0, 18, 16.5, 16, 15]
+const SIDE_EM = [0, 18, 16.5, 16, 15, 14]
 const water = await coastSampler()
 for (const p of places) {
   const tier = p.prominence[0]?.value ?? 4
@@ -272,7 +283,7 @@ writeFileSync(
   join(OUT, 'places.json'),
   JSON.stringify({
     _comment:
-      'Settlements in plane metres with dated prominence (1 overview … 4 close) and status; seats of kingdoms drawn as their capital. Years astronomical, inclusive.',
+      'Settlements and monuments in plane metres with dated prominence (1 overview … 4 close, 5 the city plan), status and condition; seats of kingdoms drawn as their capital. Years astronomical, inclusive.',
     landScales: LAND_SCALES,
     places,
     seats,

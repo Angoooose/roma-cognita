@@ -462,6 +462,8 @@ function EntryMark({ entry }: { entry: MapEntry }) {
 
 /** What it belongs to: `Province of Roma`, `Aegyptus`; else what it is: `Kingdom`. */
 function context(entry: MapEntry) {
+  if (entry.ref.kind === 'place' && entry.prominence === 5)
+    return entry.of ? `${kindLabel(entry.kind)}, ${entry.of}` : kindLabel(entry.kind)
   if (entry.ref.kind === 'place') return entry.of ?? kindLabel(entry.kind)
   if (entry.relation && entry.relation !== 'independent')
     return standing(entry.relation, entry.of ?? null)

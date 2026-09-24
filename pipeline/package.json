@@ -11,6 +11,8 @@
     "rivers": "node --max-old-space-size=12288 --import tsx src/rivers/build.ts",
     "fonts": "tsx src/labels/fonts.ts",
     "labels": "tsx src/labels/build.ts",
+    "rome:fetch": "tsx src/rome/fetch.ts",
+    "rome": "tsx src/rome/build.ts",
     "roads": "node --max-old-space-size=8192 --import tsx src/roads/build.ts",
     "atoms": "node --max-old-space-size=8192 --import tsx src/atoms/build.ts",
     "atoms:preview": "tsx src/atoms/preview.ts",
