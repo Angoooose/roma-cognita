@@ -82,6 +82,7 @@ export const useExplorer = create<ExplorerState>()((set, get) => ({
 
   closeInspector() {
     pickSeq++
+    get().map?.setFocus(null)
     set({ inspected: null, selection: null })
   },
 }))
@@ -94,6 +95,9 @@ function inspectRef(ref: MapRef) {
 }
 
 function show(hit: Awaited<ReturnType<RomeMap['pick']>>, selection: Selection) {
+  // The territory inspected is brought forward on the map; a settlement is not.
+  const focus = hit && 'territory' in hit && hit.territory.claim ? hit.territory.polity?.id : undefined
+  useExplorer.getState().map?.setFocus(focus ?? null)
   if (hit && 'place' in hit) {
     useExplorer.setState({ inspected: { kind: 'place', hit: hit.place }, selection })
   } else if (hit?.territory.claim && hit.territory.polity) {

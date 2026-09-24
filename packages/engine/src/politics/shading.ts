@@ -28,6 +28,14 @@ export interface PoliticalNodes {
   glowAlpha: THREE.Node<'float'>
   line: THREE.Node<'vec3'>
   lineAlpha: THREE.Node<'float'>
+  /**
+   * The focused polity (PoliticalLayer.setFocus): how far this pixel is inside it, and
+   * the outline around it (a bright line, and the ink casing that sets it off), all
+   * scaled by the fade. Zero everywhere with no focus.
+   */
+  focusInside: THREE.Node<'float'>
+  focusLineAlpha: THREE.Node<'float'>
+  focusCaseAlpha: THREE.Node<'float'>
 }
 
 type V4 = THREE.Node<'vec4'>
@@ -83,7 +91,11 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
     const schematic = select(max(idLo.z, idHi.z).greaterThan(1.5), float(1), float(0))
     const fill = mix(fillLo, fillHi, side)
     const ink = select(fillHi.w.greaterThan(fillLo.w), inkHi, inkLo)
-    return { fill, power, province, schematic, ink }
+    const focus = politicsUniforms.focus
+    const isFocus = (id: V4) => select(id.x.equal(focus).and(focus.greaterThan(0)), float(1), float(0))
+    const inLo = isFocus(idLo)
+    const inHi = isFocus(idHi)
+    return { fill, power, province, schematic, ink, inLo, inHi }
   }
   // The year shown, and only while a cross-fade runs the one it is leaving: at rest the
   // mix is exactly 1 and the old year's lookups would be multiplied by nothing.
@@ -105,6 +117,13 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
   const schematic = fading((y) => y.schematic).mul(power)
   const ink = fading((y) => y.ink)
   const on = politicsUniforms.enabled
+  // Which side of the focused polity's edge this pixel is on, and whether the nearest
+  // boundary is that edge at all (one side in, one out).
+  const inLo = fading((y) => y.inLo)
+  const inHi = fading((y) => y.inHi)
+  const focusAmount = politicsUniforms.focusAmount.mul(on)
+  const focusInside = mix(inLo, inHi, side).mul(focusAmount)
+  const focusEdge = abs(inLo.sub(inHi)).mul(focusAmount)
 
   // The border zone: in pixels at the overview, capped in kilometres close in, where it
   // becomes the main sign of the border as fills fade (§7.6). It must stay inside the
@@ -128,12 +147,22 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
   const glow = clamp(mix(vec3(luma), fill.xyz, 1.15).mul(0.94), 0, 1)
   const glowAlpha = zone.mul(power).mul(float(1).sub(schematic)).mul(fill.w).mul(politicsUniforms.glow).mul(on)
 
+  // The focus: a bright line, hard even on a schematic frontier (the outline marks the
+  // selection, not the evidence), cased in a hairline of ink a pixel wider on each side
+  // so it reads on pale ground too, and a full glow band just inside it.
+  const focusLineAlpha = float(1).sub(smoothstep(1.0, 2.0, dPx)).mul(focusEdge)
+  const focusCaseAlpha = float(1).sub(smoothstep(2.2, 3.2, dPx)).mul(focusEdge).mul(0.85)
+  const focusGlowAlpha = zone.mul(focusEdge).mul(focusInside).mul(0.85)
+
   return {
     fill: fill.xyz,
     fillAlpha: fill.w.mul(politicsUniforms.fill).mul(feather).mul(on),
     glow,
-    glowAlpha,
+    glowAlpha: max(glowAlpha, focusGlowAlpha),
     line: ink.xyz,
     lineAlpha,
+    focusInside,
+    focusLineAlpha,
+    focusCaseAlpha,
   }
 }
