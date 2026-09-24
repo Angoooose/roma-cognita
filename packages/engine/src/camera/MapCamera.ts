@@ -122,7 +122,9 @@ export class MapCamera {
     const l1 = Math.log(target.distance)
     // Both ends in view means their separation within most of the visible ground height.
     const sep = Math.hypot(target.x - from.x, target.y - from.y)
-    const peak = Math.log(Math.min(MAX_DISTANCE, sep / (1.6 * Math.tan((FOV * Math.PI) / 360))))
+    const peak = Math.log(
+      Math.min(MAX_DISTANCE, sep / (1.6 * Math.tan((FOV * Math.PI) / 360))),
+    )
     const rise = Math.max(0, peak - Math.max(l0, l1))
     // Longer for a longer journey, in screens crossed and in zoom: tuned by eye.
     const screens = sep / Math.max(from.distance, target.distance)
@@ -147,7 +149,10 @@ export class MapCamera {
   /** The point on the plane (z = 0) under a client position. Ignores relief. */
   ground(clientX: number, clientY: number): THREE.Vector3 | null {
     const r = this.el.getBoundingClientRect()
-    this.ndc.set(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1)
+    this.ndc.set(
+      ((clientX - r.left) / r.width) * 2 - 1,
+      -((clientY - r.top) / r.height) * 2 + 1,
+    )
     this.raycaster.setFromCamera(this.ndc, this.camera)
     return this.raycaster.ray.intersectPlane(this.plane, this.hit)?.clone() ?? null
   }
@@ -169,7 +174,11 @@ export class MapCamera {
     el.addEventListener('pointermove', (e) => {
       if (!el.hasPointerCapture(e.pointerId)) return
       if (tilting) {
-        this.state.pitch = clamp(this.state.pitch + (lastY - e.clientY) * 0.25, 0, MAX_PITCH)
+        this.state.pitch = clamp(
+          this.state.pitch + (lastY - e.clientY) * 0.25,
+          0,
+          MAX_PITCH,
+        )
         lastY = e.clientY
         this.apply()
         return

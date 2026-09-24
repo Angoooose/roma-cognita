@@ -195,7 +195,9 @@ export class PlaceLayer {
     this.places = data.places
     this.landScales = data.landScales ?? []
     this.seats = data.seats
-    this.planned = new Set(this.places.flatMap((p: PlaceRecord) => (p.within ? [p.within] : [])))
+    this.planned = new Set(
+      this.places.flatMap((p: PlaceRecord) => (p.within ? [p.within] : [])),
+    )
     this.text = text
     this.title = title
     this.materials.markers = markerMaterial()
@@ -326,7 +328,9 @@ export class PlaceLayer {
   hitFor(id: string, year: number): PlaceHit | null {
     const p = this.places.find((q) => q.id === id)
     if (!p || p.years[0] > year || p.years[1] < year) return null
-    const seat = this.seats.find((s) => s.place === id && s.years[0] <= year && year <= s.years[1])
+    const seat = this.seats.find(
+      (s) => s.place === id && s.years[0] <= year && year <= s.years[1],
+    )
     return {
       place: p,
       status: at(p.status, year),
@@ -343,13 +347,17 @@ export class PlaceLayer {
     const p = this.places.find((q) => q.id === id)
     if (!p) return TIER_MPP[4]
     const tier = at(p.prominence, year) ?? 4
-    const seated = this.seats.some((s) => s.place === id && s.years[0] <= year && year <= s.years[1])
+    const seated = this.seats.some(
+      (s) => s.place === id && s.years[0] <= year && year <= s.years[1],
+    )
     return Math.max(TIER_MPP[tier], seated ? SEAT_MPP : 0)
   }
 
   /** The kingdoms drawn by their seat in `year`, for the legend. */
   seatsIn(year: number): { polity: string; name: string }[] {
-    return this.seats.filter((s) => s.years[0] <= year && year <= s.years[1]).map(({ polity, name }) => ({ polity, name }))
+    return this.seats
+      .filter((s) => s.years[0] <= year && year <= s.years[1])
+      .map(({ polity, name }) => ({ polity, name }))
   }
 
   // --- placement --------------------------------------------------------------------
@@ -387,21 +395,21 @@ export class PlaceLayer {
           : p.outlined
             ? MARKER.none
             : status === 'caput mundi'
-            ? MARKER.caput
-            : capital
-              ? MARKER.capital
-              : MARKER.dot,
+              ? MARKER.caput
+              : capital
+                ? MARKER.capital
+                : MARKER.dot,
         markerPx: seat
           ? 10
           : p.outlined
             ? 0
             : status === 'caput mundi'
-            ? 10
-            : capital
-              ? 9
-              : tier <= 2
-                ? 5.5
-                : 4.5,
+              ? 10
+              : capital
+                ? 9
+                : tier <= 2
+                  ? 5.5
+                  : 4.5,
         em: seat
           ? Math.max(TIER_EM[tier], 16)
           : status === 'caput mundi'
@@ -496,9 +504,14 @@ export class PlaceLayer {
       const marker: Box = [sx - m, sy - m, sx + m, sy + m]
       if (!free(marker, it)) continue
       placed.push(marker)
-      const order = [it.place.outlined ? 'c' : undefined, it.place.labelSide, 'e', 'w', 'n', 's'].filter(
-        (s, i, a) => s && a.indexOf(s) === i,
-      ) as string[]
+      const order = [
+        it.place.outlined ? 'c' : undefined,
+        it.place.labelSide,
+        'e',
+        'w',
+        'n',
+        's',
+      ].filter((s, i, a) => s && a.indexOf(s) === i) as string[]
       // A seat is lettered first with its kingdom's name, in the territory face; the
       // city's own name follows once the zoom would show that city anyway.
       let titleAt: [number, number] | undefined

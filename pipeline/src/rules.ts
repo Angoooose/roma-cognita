@@ -118,11 +118,16 @@ export function checkDataset(ds: Dataset): Issue[] {
       // A text we can link into, cited somewhere its page has no place for: a typo,
       // a numbering the page doesn't use, or an anchor list that needs a re-fetch.
       else if (s.locator && WORKS[s.source] && !passageUrl(s.source, s.locator))
-        warn('unlinked-passage', r, `${s.source} ${s.locator}: no passage to link to (src/passages)`)
+        warn(
+          'unlinked-passage',
+          r,
+          `${s.source} ${s.locator}: no passage to link to (src/passages)`,
+        )
     }
   }
   for (const s of ds.sources) {
-    if (!cited.has(s.id) && !s.usedBy) warn('unused-source', s, `source "${s.id}" is never cited`)
+    if (!cited.has(s.id) && !s.usedBy)
+      warn('unused-source', s, `source "${s.id}" is never cited`)
   }
 
   // --- intervals -------------------------------------------------------------
@@ -300,7 +305,11 @@ export function checkDataset(ds: Dataset): Issue[] {
     const city = places.get(p.within)
     if (!city) error('missing-place', p, `stands within unknown place "${p.within}"`)
     else if (sane.has(p) && sane.has(city) && !mayOverlap(p, city))
-      warn('outside-place', p, `(${span(p)}) never shares a year with place "${city.id}" (${span(city)})`)
+      warn(
+        'outside-place',
+        p,
+        `(${span(p)}) never shares a year with place "${city.id}" (${span(city)})`,
+      )
   }
 
   // Two courts at once is possible (Mauretania had two kings) but worth a look.
@@ -348,7 +357,11 @@ export function checkDataset(ds: Dataset): Issue[] {
       const [a, b] = [shaped[i], shaped[j]]
       const km2 = overlapArea(ds.geometry.atoms.get(a.id)!, ds.geometry.atoms.get(b.id)!)
       if (km2 > MAX_OVERLAP_KM2)
-        error('atom-overlap', b, `atom "${b.id}" overlaps "${a.id}" by ${km2.toFixed(1)} km²`)
+        error(
+          'atom-overlap',
+          b,
+          `atom "${b.id}" overlaps "${a.id}" by ${km2.toFixed(1)} km²`,
+        )
     }
   }
   for (const id of ds.geometry.atoms.keys()) {
@@ -366,17 +379,27 @@ export function checkDataset(ds: Dataset): Issue[] {
   const features = new Map(ds.features.map((f) => [f.id, f]))
   for (const f of ds.features) {
     const shape = ds.geometry.features.get(f.id)
-    const expected = (FEATURE_GEOMETRY_KIND as Record<string, 'area' | 'line' | undefined>)[f.kind]
+    const expected = (FEATURE_GEOMETRY_KIND as Record<string, 'area' | 'line' | undefined>)[
+      f.kind
+    ]
     if (!shape) {
       // Floodplains and rivers are drawn from their shapes; without one they are invisible.
       if (f.kind === 'floodplain' || f.kind === 'river')
-        error('missing-geometry', f, `${f.kind} "${f.id}" has no feature in geometry/features.geojson`)
+        error(
+          'missing-geometry',
+          f,
+          `${f.kind} "${f.id}" has no feature in geometry/features.geojson`,
+        )
       continue
     }
     const g = shape.geometry
     const got = g.type === 'Polygon' || g.type === 'MultiPolygon' ? 'area' : 'line'
     if (!expected) {
-      error('geometry-kind', f, `a ${f.kind} takes no shape, but geometry/features.geojson has a ${g.type}`)
+      error(
+        'geometry-kind',
+        f,
+        `a ${f.kind} takes no shape, but geometry/features.geojson has a ${g.type}`,
+      )
       continue
     }
     if (got !== expected) {
@@ -392,8 +415,11 @@ export function checkDataset(ds: Dataset): Issue[] {
         error('geometry', f, `polygon ${p.polygon}, ring ${p.ring}: ${p.problem}`)
     } else {
       const lines = g.type === 'LineString' ? [g.coordinates] : g.coordinates
-      const bad = lines.flat().find(([x, y]) => !(x >= -180 && x <= 180 && y >= -90 && y <= 90))
-      if (bad) error('geometry', f, `position [${bad}] is not lon/lat — projected coordinates?`)
+      const bad = lines
+        .flat()
+        .find(([x, y]) => !(x >= -180 && x <= 180 && y >= -90 && y <= 90))
+      if (bad)
+        error('geometry', f, `position [${bad}] is not lon/lat — projected coordinates?`)
     }
     if (shape.properties?.discharge !== undefined && f.kind !== 'river')
       warn('discharge', f, `discharge is only meaningful on a river line`)
