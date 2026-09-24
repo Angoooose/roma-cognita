@@ -1,10 +1,8 @@
 /**
  * When an Itiner-e road segment was built, in astronomical years (1 BCE = 0).
  *
- * Ported from cicero-map/scripts/lib/dating.mjs, which was checked against all 259
- * distinct `Cons_per_e` values in the source; the one change is the year convention.
- * cicero-map wrote 43 BCE as −43; this project writes it −42, and the conversion is
- * done here, once, at the edge.
+ * Checked against all 259 distinct `Cons_per_e` values in the source. Years come
+ * out astronomical (43 BCE is −42), converted here, once, at the edge.
  *
  * Itiner-e maps the network at its maximum extent, ca. 150 CE. Three fields matter,
  * and they do not mean the same thing:

@@ -4,7 +4,7 @@
  *
  *   npm run roads -w pipeline
  *
- * What cicero-map learned about the source, and this build keeps:
+ * What to know about the source:
  *
  * - Its GeoJSON is EPSG:3395 — ellipsoidal World Mercator, metres — whatever the
  *   paper says; the file's own `crs` is right. Unprojected here (iterated latitude).
@@ -16,8 +16,8 @@
  * - Iberia and Africa come out nearly empty. That is a gap in the source's
  *   attributions, not in history, and the legend should say so.
  *
- * And the fix for cicero-map's oldest open bug: every segment keeps its first year,
- * so at 68 BCE the map does not draw a road built in 46.
+ * Every segment keeps its first year, so at 68 BCE the map does not draw a road
+ * built in 46.
  *
  * Output:
  * - roads.bin: u32 line count; per line u16 point count, i16 first year

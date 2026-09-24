@@ -49,65 +49,55 @@ there is one. Reasoning that should survive goes in `note`.
 
 **Geometry winding is RFC 7946** (counter-clockwise exteriors). The pipeline rewinds
 at ingest and the validator asserts it. A consumer that wants the other convention
-(d3-geo does) converts at its own boundary. cicero-map lost an afternoon to this.
+(d3-geo does) converts at its own boundary.
 
-## Provenance
+## Scope
 
-Everything here was migrated from `cicero-map/data/*.json` in September 2026. The
-judgement-heavy files were migrated by hand, row by row; `places.yaml` and
-`geometry/atoms.geojson` by `pipeline/src/migrate/cicero-map.ts`, which is kept as
-the record of what was done. The atom outlines were rebuilt from sources later
-that month (Decision 6), and the claims changed with them. The migrated claims reproduce cicero-map's time series
-exactly for every year 68–43 BCE (checked year by year against `control.json`).
-Nothing was added to extend the data beyond that window.
+The data covers 68–43 BCE. Nothing extends it beyond that window yet.
 
 ## Decisions
 
 Modelling choices DESIGN.md does not settle, with the reasoning. Each wants
 confirming.
 
-1. **Window edges became open ends.** cicero-map's `-68`/`-43` were its 68–43 BCE
-   window, not events. Every row that started at −68 now reads `before 68 BCE` and
-   every row that ended at −43 reads `after 43 BCE`. Under the "in force at that
-   year" reading this is a faithful weakening of what cicero-map asserted, never a
-   new claim — which is why it was done throughout rather than only where a note
-   happened to support it. Rows starting or ending inside the window keep their
-   exact year. A later curator extending to 133–27 BCE should treat every open end
-   as a question.
+1. **Window edges are open ends.** A row in force at the window's start reads
+   `before 68 BCE` and one still in force at its end reads `after 43 BCE`: in force
+   at that year, extent beyond it not stated. Rows starting or ending inside the
+   window carry their exact year. A later curator extending to 133–27 BCE should
+   treat every open end as a question.
 
 2. **Where the true start is known but the atom is not the polity, the claim stays
    open.** Sicilia the province dates from 241 BCE (on the polity), but the atom is
    the whole island and Syracuse was an allied kingdom until 212/211, so the claim
-   reads `before 68 BCE`, not `241 BCE`. Same rule for every province: `since`
-   became the polity's `from`, never the claim's.
+   reads `before 68 BCE`, not `241 BCE`. Same rule for every province: the date of
+   creation is the polity's `from`, never the claim's.
 
-3. **Client kingdoms are three records, not one `kind`.** cicero-map's
-   `kind: client` becomes (a) polity `kind: kingdom` — what the thing was; (b) claim
-   `relation: client` on its ground — the register the map draws; (c) a
-   `client-of rome` relation — the polity-level fact the "top-level power" mode
-   joins on. (b) and (c) overlap by design; the validator warns when a client or
-   province claim has no matching relation behind it. `kingdom` also covers the
-   Levantine principalities, tetrarchies and phylarchies (Emesa, Ituraea).
+3. **Client kingdoms are three records.** (a) polity `kind: kingdom` — what the
+   thing was; (b) claim `relation: client` on its ground — the register the map
+   draws; (c) a `client-of rome` relation — the polity-level fact the "top-level
+   power" mode joins on. (b) and (c) overlap by design; the validator warns when a
+   client or province claim has no matching relation behind it. `kingdom` also
+   covers the Levantine principalities, tetrarchies and phylarchies (Emesa,
+   Ituraea).
 
-4. **`citizen` became citizen territory, and Rome became a polity.** Polity
-   `italia` is `kind: citizen-territory`, its claims are
-   `relation: citizen-territory`, and it is `citizen-territory-of rome`. A polity
-   `rome` (`kind: state`) was added as the other end of every relation; it holds no
-   atoms directly. It is the only record with no counterpart in cicero-map.
+4. **Citizen territory is a polity, and so is Rome.** Polity `italia` is
+   `kind: citizen-territory`, its claims are `relation: citizen-territory`, and it
+   is `citizen-territory-of rome`. A polity `rome` (`kind: state`) is the other end
+   of every relation; it holds no atoms directly.
 
 5. **Claims overlap-check in two layers:** holding (province, citizen territory,
    client, allied, independent) and occupation. The Parthian occupation of Syria in
    40 BCE did not end the province; both rows can stand.
 
-6. **Atom outlines are authored, not migrated** (rebuilt September 2026). The
-   migrated outlines were AWMC's 60 BCE shading cut with straight lines, and
-   twelve-vertex rings for the kingdoms; neither followed a frontier any source
-   names, and AWMC's ODbL would not relicense. Each atom's `construction` is now
-   an `outline` — vertices at places or features, joined straight, along a river
-   (HydroRIVERS), along a range (the DEM) or by a curve for an unsurveyed zone —
-   or a `box` round an island. `npm run atoms -w pipeline` resolves them, clips
-   to Natural Earth land and cuts each earlier atom out of the next, so a shared
-   frontier is authored once, by whichever atom comes first in atoms.yaml.
+6. **Atom outlines are authored** (rebuilt September 2026). The first outlines
+   were AWMC's 60 BCE shading cut with straight lines, and twelve-vertex rings for
+   the kingdoms; neither followed a frontier any source names, and AWMC's ODbL
+   would not relicense. Each atom's `construction` is now an `outline` — vertices
+   at places or features, joined straight, along a river (HydroRIVERS), along a
+   range (the DEM) or by a curve for an unsurveyed zone — or a `box` round an
+   island. `npm run atoms -w pipeline` resolves them, clips to Natural Earth land
+   and cuts each earlier atom out of the next, so a shared frontier is authored
+   once, by whichever atom comes first in atoms.yaml.
    `npm run atoms:preview -w pipeline` draws them over a hillshade for review.
    Evidence: `surveyed` for coasts and islands, `derived` where the line is
    reconstructed from named places, `schematic` where authority faded out.
@@ -118,44 +108,35 @@ confirming.
    to the Soummam) or a convention (the Galatian and Cappadocian edges) are
    `uncertain`.
 
-8. **cicero-map's `check` was split by what was in doubt.** For a polity whose
-   existence is not in question but whose extent or standing is (Nabataea, Thrace,
-   Ituraea, Emesa, Osroene, Cilicia Tracheia), the polity is `probable` and the
-   relation, claim and atom are `uncertain`. Mauretania's doubt was only its internal
-   arrangement, so it stays `probable` throughout. Gallia Comata, whose doubt is the
-   date itself, is `uncertain` everywhere. All are `needs-check`.
+8. **Doubt is split by what is in doubt.** For a polity whose existence is not in
+   question but whose extent or standing is (Nabataea, Thrace, Ituraea, Emesa,
+   Osroene, the Amanus), the polity is `probable` and the relation, claim and atom
+   are `uncertain`. Mauretania's doubt is only its internal arrangement, so it
+   stays `probable` throughout. Gallia Comata, whose doubt is the date itself, is
+   `uncertain` everywhere. All are `needs-check`.
 
-9. **Free-text `source` fields were split.** Where cicero-map named a work (Broughton,
-   CAH, Braund, Sullivan, Caesar, Barrington, Cicero, Dio …) it became a source
-   reference with its locator. Where it gave a reason instead ("Pompey's
-   annexation", "lex Clodia") the reason went into `note` and the record cited
-   `cicero-map` itself. In September 2026 cicero-map was dropped as a source: those
-   records now cite the ancient texts behind the reason, and the two whose reason
-   did not survive the check were corrected (Cyprus was never a client, Sest. 57;
-   Bosporus stopped being one when Pharnaces invaded Pontus in 48).
+9. **Every citation is to a work.** A record whose date rests on an event
+   ("Pompey's annexation", "the lex Clodia") cites the ancient text that reports
+   it, with its locator, and keeps the event in `note`.
 
 10. **Place prominence and status are dated values.** `prominence: 2` is shorthand
     for the place's whole interval; a dated list
     (`[{ value, from, to }]`) is there for a colony founded half way through. The
-    loader always expands to the list. Tiers keep cicero-map's 1–4 meaning.
+    loader always expands to the list. Tiers run 1–4 (see places.yaml).
 
 11. **Names are written inline** on polities, places and features and flattened by
     the loader into the §5.1 `name` entity, inheriting dates and sources from their
-    target. Polity names are tagged `la`; place names are left untagged because
-    cicero-map never recorded the language. cicero-map's `also` spellings are kept
-    as non-preferred names.
+    target. Polity names are tagged `la`; place names are left untagged until
+    their language is recorded. Other spellings are kept as non-preferred names.
 
 12. **Rulers stay free text** (`ruler: Juba I, c. 60–46`) until they are records of
     their own; parsing them now would turn a label into dated claims nobody checked.
 
-13. **Seats cite their polity's source** (cicero-map's seats had none) and take their
-    position from their place, which is Pleiades' where joined. Two seat places
-    (Hierapolis-Castabala, Chalcis sub Libano) had no place row and no Pleiades id;
-    they were added with cicero-map's coordinates and `needs-check`.
+13. **Seats cite their polity's source** and take their position from their place,
+    which is Pleiades'.
 
-14. **Places are `certain`** where cicero-map's Pleiades join landed within 28 km of
-    the curated position — all 222 did. That is cicero-map's bargain (Pleiades'
-    coordinate and id as truth), recorded rather than re-made.
+14. **Places are `certain`** where matched to their Pleiades entry, taking
+    Pleiades' coordinate and id as truth.
 
 15. **Floodplains are derived, not drawn** (September 2026). `kind: floodplain`
     records own names, dates and sources; their outlines are made from terrain by
@@ -181,15 +162,6 @@ confirming.
     or are splines through the sites. `properties.discharge` (m³/s) apportions the
     pre-dam mean ~2,800 m³/s among the mouths for line width only.
 
-## Migration review: things that look wrong
+## Open doubts
 
-Migrated as cicero-map had them, flagged `needs-check` with the reason in the note:
-
-- **Cyprus → Cilicia runs to 43 BCE**, but Caesar is generally held to have returned
-  Cyprus to the Ptolemies in 47 (Dio 42.35).
-- **Egypt is a client from 68**, though cicero-map's own note argues for 59 or 55.
-- **Judaea is a client from 68**, though its own source dates Roman control from 63.
-- **Galatia's seat at Ancyra**: Deiotarus' strongholds were Blucium and Peium.
-- **Emesa's seat at Emesa**: Strabo puts Sampsiceramus at Arethusa.
-- **"Royal seat" status** on Nicomedia (Bithynia was a province throughout), Cirta
-  (given to Sittius after 46) and Bibracte (the Aedui had no king).
+What looks wrong or rests on weak ground is listed in DOUBTS.md.

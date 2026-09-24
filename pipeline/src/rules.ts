@@ -485,7 +485,7 @@ export function doubts(ds: Dataset): DoubtReport {
     notChecked: [
       'atom geometry against its construction: that data/geometry/atoms.geojson is what npm run atoms -w pipeline builds from atoms.yaml is not re-checked here; rebuild after editing an outline',
       'vertex places: that a vertex naming a Pleiades place stands near it is checked by npm run atoms, not here',
-      'places against Pleiades: ids and positions are as cicero-map resolved them and are not re-fetched',
+      'places against Pleiades: ids and positions are taken as recorded and are not re-fetched',
     ],
     counts: {
       sources: ds.sources.length,

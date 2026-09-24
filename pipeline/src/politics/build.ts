@@ -12,8 +12,8 @@
  *   shows on a click.
  *
  * Tiles are addressed like terrain nodes and share their texel grid; deeper terrain
- * reads a window of its MAX_LEVEL ancestor. Atom outlines are ~1 km (simplified at
- * 0.01° in cicero-map), so 431 m texels at level 6 already carry all they know.
+ * reads a window of its MAX_LEVEL ancestor. Atom outlines are ~1 km, so 431 m texels
+ * at level 6 already carry all they know.
  *
  * Needs the coast mask (npm run water -w pipeline): land and sea come from it, so a
  * fill stops exactly where the drawn coast does.

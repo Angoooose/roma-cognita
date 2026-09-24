@@ -1,7 +1,7 @@
 /**
- * The little planar geometry the validator and migrations need.
+ * The little planar geometry the validator and the builds need.
  *
- * Ring winding is owned here, once. cicero-map lost an afternoon to it:
+ * Ring winding is owned here, once, because it is easy to lose an afternoon to:
  * polygon-clipping emits RFC 7946 rings (exteriors counter-clockwise), d3-geo
  * reads the opposite, and a ring handed over the wrong way round means "the
  * whole sphere except this shape" — every province filled the plate. So the

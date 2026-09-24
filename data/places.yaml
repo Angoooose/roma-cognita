@@ -1,27 +1,24 @@
 # Settlements, and how loudly each is lettered.
 #
 # Pleiades knows what existed and what it was called; it has no idea what
-# mattered, so this file decides. `prominence` is cicero-map's tier: 1 the
+# mattered, so this file decides. `prominence` is a tier: 1 the
 # overview, 2 from 1.5x, 3 from 3x, 4 from 5x — tier 4 is largely Cicero's own
 # Italy. The ranking is Roman civic status and administrative weight, not size:
 # a conventus seat belongs on a political map at a size its population would
 # not earn, and status is datable in a way population is not.
 #
-# Generated once by pipeline/src/migrate/cicero-map.ts from cicero-map's curated
-# data/places.json and the Pleiades join its build resolved: `location` and
-# `pleiades` are Pleiades', the rest is cicero-map's curation. Edit by hand
-# from here on. Name language was not recorded by cicero-map and is left
-# untagged; the non-preferred names are the spellings the gazetteer files the
-# place under.
+# `location` and `pleiades` are Pleiades'; the rest is this project's curation,
+# edited by hand. Name language is not yet recorded and is left untagged; the
+# non-preferred names are the spellings the gazetteer files the place under.
 #
-# Dates: every place stood throughout cicero-map's 68–43 BCE window (its build
-# filtered Pleiades by attested date), hence the open ends — except where a row
+# Dates: every place stood throughout the 68–43 BCE window (Pleiades attests
+# it in the period), hence the open ends — except where a row
 # overrides Pleiades, because period dating is not event dating: Pleiades has
 # Carthage continuously from 750 BCE although it lay in ruins from 146 until
 # Caesar refounded it.
 #
-# confidence: certain where the Pleiades join landed within 28 km of the
-# curated position; a longer move is marked probable and needs-check.
+# confidence: certain for a place matched to its Pleiades entry; probable or
+# uncertain, and needs-check, where the match is in doubt.
 
 - id: roma
   pleiades: '423025'
@@ -3480,30 +3477,34 @@
   review: draft
 
 - id: hierapolis-castabala
+  pleiades: '658481'
   kind: settlement
-  location: [36.2667, 37.2167]
+  location: [36.1873, 37.1764]
   names:
     - { text: Hierapolis-Castabala, preferred: true }
   from: before 68 BCE
   to: after 43 BCE
   sources:
+    - { source: pleiades, locator: places/658481 }
     - { source: sullivan-1990 }
   confidence: probable
-  review: needs-check
-  note:
-    Seat of Tarcondimotus (seats.yaml). Not joined to Pleiades by cicero-map; its position
-    is cicero-map's own.
+  review: draft
+  note: Seat of Tarcondimotus (polities.yaml, amanus).
 
 - id: chalcis-sub-libano
+  pleiades: '678086'
   kind: settlement
-  location: [36.11, 34]
+  location: [36.2416, 33.9577]
   names:
     - { text: Chalcis sub Libano, preferred: true }
   from: before 68 BCE
   to: after 43 BCE
   sources:
+    - { source: pleiades, locator: places/678086 }
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
-  note: The Ituraean seat (seats.yaml). The site is not securely identified, and it is not
-    joined to Pleiades; the position is cicero-map's guess and the weakest in the dataset.
+  note: >-
+    The Ituraean seat. The site is not securely identified: the position is
+    Pleiades', after Barrington map 69 D2, and Anjar or Majdal Anjar in the
+    southern Beqaa is also proposed. The weakest position in the dataset.

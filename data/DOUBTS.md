@@ -4,7 +4,7 @@ A backlog of historical questions, deliberately left until later (decided
 2026-09-22). None of these block engine work. The **authoritative, always-current
 list** is what `npm run data:validate` prints under NEEDS CHECK, UNCERTAIN and
 NOT CHECKED. This file records what that output cannot: the likely errors
-found during migration, and how we plan to resolve the list.
+known so far, and how we plan to resolve the list.
 
 ## How they will be resolved
 
@@ -12,12 +12,11 @@ In batches. Claude researches each record and proposes a fix with a citation.
 The user signs off on the batch. Each fix moves the record from
 `review: needs-check` to `verified`.
 
-## Likely errors carried over from cicero-map
+## Likely errors
 
-These were migrated unchanged so the migration could be checked year by year
-against the old `control.json`. The reasoning is in each record's `note`.
+The reasoning is in each record's `note`.
 
-- **Egypt is a client from 68.** cicero-map's own note argues for 59 or 55.
+- **Egypt is a client from 68.** Client standing is better dated from 59 or 55.
 - *Fixed September 2026:* Cyprus now leaves Cilicia in 48 and is Ptolemaic
   from 47 (Dio 42.35); Judaea is a client from 63 and independent before;
   Galatia's and Emesa's seats are gone, because both are now drawn as
@@ -29,8 +28,8 @@ against the old `control.json`. The reasoning is in each record's `note`.
 
 ## Known weak spots
 
-- **Four extents flagged `check` in cicero-map:** Gallia Comata, Nabataea,
-  Odrysian Thrace, and Ituraea's seat at Chalcis sub Libano.
+- **Four weak extents:** Gallia Comata, Nabataea, Odrysian Thrace, and
+  Ituraea's seat at Chalcis sub Libano, whose site is not securely identified.
 - **Not yet checked by the validator:**
   - that atoms.geojson is what `npm run atoms` builds from atoms.yaml;
   - that places still match Pleiades.

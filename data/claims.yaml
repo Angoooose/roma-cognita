@@ -6,11 +6,10 @@
 # (holding vs occupation, see packages/schema), and the validator fails if
 # they do.
 #
-# Migrated from cicero-map/data/control.json, whose −68 meant 68 BCE (it
-# called that astronomical; it was not). Its window was 68–43 BCE, so every
-# `before 68 BCE` / `after 43 BCE` below is where that window cut the row off:
-# in force at that year, extent beyond it not stated. Only rows that start or
-# end *inside* the window carry a real event date.
+# The window is 68–43 BCE, so every `before 68 BCE` / `after 43 BCE` below is
+# where that window cuts the row off: in force at that year, extent beyond it
+# not stated. Only rows that start or end *inside* the window carry a real
+# event date.
 #
 # The year of a transition belongs to the successor: Numidia is the kingdom's
 # to 47 and Africa Nova's from 46.
@@ -44,7 +43,6 @@
     Provincial from c. 81. The lex Roscia of 49 gave the Transpadanes
     citizenship, but the province went on: D. Brutus governed it in 44–43 and
     Antony fought him for it. It was merged into Italy only in 42 (Dio 48.12.5).
-    cicero-map made it citizen territory from 49.
 
 # --- the islands ---------------------------------------------------------------
 
@@ -60,7 +58,7 @@
   note: >-
     Not "from 241": the atom is the whole island, and Hiero's Syracuse was a
     kingdom allied to Rome until 212/211. The polity carries the 241 date; the
-    ground's start is left as cicero-map's window gave it.
+    ground's start is left open at the window's edge.
 
 - atom: sardinia
   polity: sardinia-corsica
@@ -148,7 +146,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    The single weakest date in the dataset — see the polity. (cicero-map: check.)
+    The single weakest date in the dataset — see the polity.
 
 - atom: illyricum
   polity: illyricum
@@ -213,7 +211,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    cicero-map: check. Odrysian authority over the inland tribes was intermittent.
+    Odrysian authority over the inland tribes was intermittent.
 
 # --- Anatolia ------------------------------------------------------------------
 
@@ -275,7 +273,7 @@
   review: draft
   note: >-
     Bequeathed by Nicomedes IV and a province from 74; joined with Pontus in
-    63. cicero-map started it in 63 with Pontus.
+    63.
 
 - atom: pontus
   polity: bithynia-pontus
@@ -706,7 +704,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    cicero-map: check. Nabataean control was of routes and watering points, not of area.
+    Nabataean control was of routes and watering points, not of area.
 
 - atom: nabataea-moab
   polity: judaea
