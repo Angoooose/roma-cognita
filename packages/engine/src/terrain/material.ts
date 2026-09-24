@@ -109,6 +109,12 @@ function lightVector(azDeg: number, altDeg: number) {
   return new THREE.Vector3(Math.sin(az) * Math.cos(alt), Math.cos(az) * Math.cos(alt), Math.sin(alt))
 }
 
+/**
+ * A bound on the ground noise's magnitude, for skipping it where no value could matter.
+ * Perlin noise on a plane stays within about ±1; this leaves a factor of two.
+ */
+const NOISE_BOUND = 2
+
 export interface TileFrame {
   x0: number
   y0: number
@@ -186,13 +192,20 @@ export function createTerrainMaterial(n: number) {
   const detail = (wavelengthKm: number) => float(1).sub(smoothstep(wavelengthKm / 6, wavelengthKm / 2, pxKm))
   /**
    * `noise × amplitude × detail`, skipping the noise wherever the fade is 0 and
-   * the product is nothing: most of the map, for the finer scales, at the overview.
+   * the product is nothing: most of the map, for the finer scales, at the overview —
+   * and wherever `matters` says no value of it could change the result.
    */
-  const detailNoise = (wavelengthKm: number, seed: number, amplitude: number) =>
+  const detailNoise = (
+    wavelengthKm: number,
+    seed: number,
+    amplitude: number,
+    matters: THREE.Node<'bool'> | null = null,
+  ) =>
     Fn(() => {
       const fade = detail(wavelengthKm).toVar()
       const v = float(0).toVar()
-      If(fade.greaterThan(0), () => {
+      const needed = fade.greaterThan(0)
+      If(matters ? needed.and(matters) : needed, () => {
         v.assign(noise(wavelengthKm, seed).mul(amplitude).mul(fade))
       })
       return v
@@ -238,13 +251,22 @@ export function createTerrainMaterial(n: number) {
   const desertTone = mix(GROUND_DESERT.mul(1.04), GROUND_DESERT_ROCK, rough)
   ground = mix(ground, desertTone, b.r.mul(0.8))
 
-  // Rock on steep ground and bare ground high up.
-  const rockBreak = detailNoise(1.5, 4, 0.15)
+  // Rock on steep ground and bare ground high up. The noise is within ±2 (NOISE_BOUND),
+  // so below a slope of 0.05 it cannot lift the ground to the rock's threshold of 0.35.
+  const rockBreak = detailNoise(1.5, 4, 0.15, slope.greaterThan(0.35 - 0.15 * NOISE_BOUND))
   const rock = max(smoothstep(0.35, 0.8, slope.add(rockBreak)), smoothstep(1700, 2600, height))
   ground = mix(ground, ROCK, rock.mul(0.85))
   // Snow: permanent only on the highest ground, lower where the climate is cold.
   const snowLine = mix(float(3000), float(2400), b.a)
-  const snow = smoothstep(snowLine, snowLine.add(500), height.add(noise(2, 5).mul(150)))
+  // Its noise (±150 m × NOISE_BOUND) is only needed within reach of the snow line.
+  const snowNoise = Fn(() => {
+    const v = float(0).toVar()
+    If(height.add(150 * NOISE_BOUND).greaterThan(snowLine), () => {
+      v.assign(noise(2, 5).mul(150))
+    })
+    return v
+  })()
+  const snow = smoothstep(snowLine, snowLine.add(500), height.add(snowNoise))
   ground = mix(ground, SNOW, snow.mul(float(1).sub(smoothstep(0.9, 1.3, slope))))
 
   const litLand = ground.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
