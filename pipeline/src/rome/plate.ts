@@ -306,6 +306,8 @@ export async function bakePlate(
     `plate: ${width}×${height} texels of ${TEXEL_M} m, ${wall.filter((w) => w.known).length} of ${wall.length} wall joins known, ${streets.length} street and road lines, ${names.length} names`,
   )
   return {
+    /** Footprints the model drew for monuments with no outline (build.ts picks by them). */
+    drawn: model.drawn,
     x0,
     y0,
     texel: TEXEL_M,

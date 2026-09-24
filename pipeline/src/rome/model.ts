@@ -705,7 +705,11 @@ export function bakeModel(m: ModelInput) {
   console.log(
     `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / 4} trees, ${wall.length} wall stretches, water at ${waterLevel.toFixed(1)} m`,
   )
-  return { png, waterLevel, shadow: soft }
+  // The footprints drawn for monuments with no surveyed outline, for picking.
+  const drawn = monuments
+    .filter((mo) => mo.approx)
+    .map((mo) => ({ id: mo.id, ring: mo.rings[0] }))
+  return { png, waterLevel, shadow: soft, drawn }
 }
 
 /** ground.png: heights in centimetres, high byte red, low byte green. */

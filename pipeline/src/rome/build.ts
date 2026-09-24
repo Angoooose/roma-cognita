@@ -48,7 +48,7 @@ for (const f of geo.features) {
 }
 
 mkdirSync(OUT, { recursive: true })
-const plate = await bakePlate(
+const { drawn, ...plate } = await bakePlate(
   OUT,
   river,
   streets,
@@ -62,7 +62,11 @@ writeFileSync(
     _comment:
       'The plan of Rome: the plate’s grid (plate-<n>.png, ground.png), and each monument’s outline (plane metres) and years (astronomical, inclusive) for picking.',
     plate,
-    outlines: outlines.map((o) => {
+    outlines: [
+      ...outlines.map((o) => ({ id: o.id, polys: o.polys })),
+      // Monuments with no surveyed outline are picked by the footprint the model drew.
+      ...drawn.map((p) => ({ id: p.id, polys: [[p.ring]] })),
+    ].map((o) => {
       const p = places.get(o.id)!
       return {
         id: o.id,

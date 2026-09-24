@@ -827,7 +827,7 @@ where any house stood.
 - the quarters and the Tiber in italic;
 - the monuments from 4 m/px, in dark ink.
 
-Streets are not lettered. A click inside a monument's outline opens it.
+Streets are not lettered. A click inside a monument's outline opens it, or inside the footprint drawn for one with no outline.
 
 **Closer zoom**: over the city the camera may come to 700 m (~0.4 m/px) against
 4 km elsewhere, easing back over 1.5 km outside it.
