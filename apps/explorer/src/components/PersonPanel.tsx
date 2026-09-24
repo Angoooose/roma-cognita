@@ -5,6 +5,7 @@ import type { ReactNode } from 'react'
 import { InPersonPanel, lifeLine, PersonLink } from '@/components/PersonLink.tsx'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import {
   axis,
@@ -81,15 +82,17 @@ export function PersonPanel({ className }: { className?: string }) {
         onBack={back}
         onClose={close}
       />
-      <div className="min-h-0 flex-1 space-y-4 overflow-auto px-4 pb-3">
-        <InPersonPanel value>
-          <LifeChart career={career} />
-          <CareerList career={career} />
-          <Commands career={career} />
-          <Family people={people} person={person} />
-        </InPersonPanel>
-        <Evidence people={people} person={person} />
-      </div>
+      <ScrollArea className="flex-1">
+        <div className="space-y-4 px-4 pb-3">
+          <InPersonPanel value>
+            <LifeChart career={career} />
+            <CareerList career={career} />
+            <Commands career={career} />
+            <Family people={people} person={person} />
+          </InPersonPanel>
+          <Evidence people={people} person={person} />
+        </div>
+      </ScrollArea>
     </aside>
   )
 }

@@ -3,6 +3,7 @@ import { ChevronRight, X } from 'lucide-react'
 import { type ReactNode, useEffect } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import {
   Card,
   CardAction,
@@ -78,12 +79,16 @@ export function Inspector() {
 
   if (!inspected) return null
   return (
-    <Card className="fixed top-4 right-4 max-h-[calc(100vh-140px)] w-[300px] gap-4 overflow-auto">
-      {inspected.kind === 'place' ? (
-        <PlaceBody hit={inspected.hit} year={year} onClose={close} />
-      ) : (
-        <TerritoryBody hit={inspected.hit} year={year} onClose={close} />
-      )}
+    <Card className="fixed top-4 right-4 max-h-[calc(100vh-140px)] w-[300px] py-0">
+      <ScrollArea>
+        <div className="flex flex-col gap-4 py-(--card-spacing)">
+          {inspected.kind === 'place' ? (
+            <PlaceBody hit={inspected.hit} year={year} onClose={close} />
+          ) : (
+            <TerritoryBody hit={inspected.hit} year={year} onClose={close} />
+          )}
+        </div>
+      </ScrollArea>
     </Card>
   )
 }
