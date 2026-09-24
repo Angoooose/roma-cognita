@@ -90,27 +90,20 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
   const k = politicsUniforms.mix
   const b = year(politicsTables.to)
   type Year = ReturnType<typeof year>
-  const fading = (pick: (y: Year) => F): F =>
+  // Typed as floats inside; the same graph serves the vec4s.
+  const fading = <T extends F | V4>(pick: (y: Year) => T): T =>
     Fn(() => {
-      const v = pick(b).toVar()
+      const v = (pick(b) as F).toVar()
       If(k.lessThan(1), () => {
-        v.assign(mix(pick(year(politicsTables.from)), pick(b), k))
+        v.assign(mix(pick(year(politicsTables.from)) as F, pick(b) as F, k))
       })
       return v
-    })() as unknown as F
-  const fading4 = (pick: (y: Year) => V4): V4 =>
-    Fn(() => {
-      const v = pick(b).toVar()
-      If(k.lessThan(1), () => {
-        v.assign(mix(pick(year(politicsTables.from)), pick(b), k))
-      })
-      return v
-    })() as unknown as V4
-  const fill = fading4((y) => y.fill)
+    })() as unknown as T
+  const fill = fading((y) => y.fill)
   const power = fading((y) => y.power)
   const province = fading((y) => y.province)
   const schematic = fading((y) => y.schematic).mul(power)
-  const ink = fading4((y) => y.ink)
+  const ink = fading((y) => y.ink)
   const on = politicsUniforms.enabled
 
   // The border zone: in pixels at the overview, capped in kilometres close in, where it
