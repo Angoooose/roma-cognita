@@ -20,7 +20,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import { type LegendData, LegendPanel } from '@/components/Legend.tsx'
+import { type LegendData, LegendKey } from '@/components/Legend.tsx'
 import { TimelinePanel } from '@/components/Timeline.tsx'
 import { Kbd } from '@/components/ui/kbd'
 import { Separator } from '@/components/ui/separator'
@@ -41,7 +41,10 @@ export function InSitu({ backdrop }: { backdrop: string }) {
       >
         <ModeBar />
         <InspectorDemo />
-        <LegendPanel {...LEGEND_63_BCE} className="absolute bottom-4 left-4" />
+        <LegendKey
+          {...LEGEND_63_BCE}
+          className="absolute bottom-4 left-4 rounded-lg rule-double bg-card/95 px-4 py-2.5 text-card-foreground backdrop-blur-sm"
+        />
         <TimelineDemo />
       </div>
     </section>

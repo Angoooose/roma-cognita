@@ -4,7 +4,17 @@ import { defaultFilter } from 'cmdk'
 import { Search as SearchIcon } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Capital, Caput, Mark, Portrait, Seat, Swatch, Town } from '@/components/Legend.tsx'
+import {
+  Capital,
+  Caput,
+  Legend,
+  LegendRow,
+  Mark,
+  Portrait,
+  Seat,
+  Swatch,
+  Town,
+} from '@/components/Legend.tsx'
 import {
   Command,
   CommandEmpty,
@@ -260,12 +270,12 @@ export function Search() {
 
 /**
  * An atlas plate's title block: the map's name and the years it covers, framed in the
- * double rule, with the index to it beneath. App.tsx places it at the head of the left
- * column, above the person panel.
+ * double rule, with the index to it beneath, and the legend's row beneath that. App.tsx
+ * places it at the head of the left column, above the person panel.
  */
 function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }) {
   return (
-    <div className="pointer-events-auto w-[248px] shrink-0 rounded-lg rule-double bg-card/95 text-card-foreground backdrop-blur-sm select-none">
+    <div className="pointer-events-auto relative w-[248px] shrink-0 rounded-lg rule-double bg-card/95 text-card-foreground backdrop-blur-sm select-none">
       <div className="px-4 pt-3 pb-2.5 text-center">
         <h1 className="font-heading text-lg leading-tight font-semibold tracking-[0.16em]">
           Orbis Romanus
@@ -275,15 +285,21 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
         </div>
       </div>
       <span className="mx-3 block h-px bg-rule" aria-hidden />
-      <button
-        type="button"
-        onClick={onSearch}
-        className="group flex w-full items-center gap-2 rounded-b-lg px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
-      >
-        <SearchIcon className="text-muted-foreground transition-colors group-hover:text-foreground" />
-        <span className="transition-colors group-hover:text-primary">Index of names</span>
-        <span className="figures ml-auto text-muted-foreground">{KEY}</span>
-      </button>
+      {/* The block's two rows, set as one short list: as close to each other as to the
+          rule above and the frame below. */}
+      <div className="py-1.5">
+        <button
+          type="button"
+          onClick={onSearch}
+          className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
+        >
+          <SearchIcon className="text-muted-foreground transition-colors group-hover:text-foreground" />
+          <span className="transition-colors group-hover:text-primary">Index of names</span>
+          <span className="figures ml-auto text-muted-foreground">{KEY}</span>
+        </button>
+        <LegendRow />
+      </div>
+      <Legend />
     </div>
   )
 }

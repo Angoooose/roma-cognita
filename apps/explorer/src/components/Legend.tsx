@@ -1,22 +1,23 @@
 import { type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
-import { Shapes, X } from 'lucide-react'
-import { type ReactNode, useId, useMemo, useState } from 'react'
-import { Separator } from '@/components/ui/separator'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { LayoutList } from 'lucide-react'
+import { type ReactNode, useId, useMemo } from 'react'
+import { create } from 'zustand'
 import { cn } from '@/lib/utils'
-import { usePeople } from '@/peopleStore.ts'
 import { useExplorer } from '@/store.ts'
 
 /**
  * The legend (DESIGN.md §8.3): what each colour and mark on the map means, for the year
- * shown. Colours are read from the engine, never restated here, so a change to the
- * palette cannot leave the legend behind. Each kind of doubt is keyed only in a year
- * that has some.
+ * shown. Its row is in the title block, under the index, and the key opens beside the
+ * block, no taller than it: anchored to the block, which never changes width, it
+ * neither moves nor covers the person panel beneath. It is not a dialog: the
+ * map and the timeline stay live while it is open, and only its row closes it. Colours
+ * are read from the engine, never restated here, so a change to the palette cannot
+ * leave the legend behind. Each kind of doubt is keyed only in a year that has some.
  */
 export function Legend() {
   const map = useExplorer((s) => s.map)
   const year = useExplorer((s) => s.year)
-  const personOpen = usePeople((s) => s.person !== null)
+  const open = useLegend((s) => s.open)
   const data = useMemo(() => {
     if (!map) return null
     const politics = map.politics.legend(year)
@@ -29,19 +30,70 @@ export function Legend() {
       },
     }
   }, [map, year])
-  if (!data) return null
-  return <LegendPanel {...data} folded={personOpen} className="fixed bottom-4 left-4" />
+  if (!open || !data) return null
+  return (
+    <aside
+      id="legend-key"
+      aria-label="Legend"
+      className="pointer-events-auto absolute inset-y-0 left-full ml-3 flex w-max animate-in rounded-lg rule-double bg-card/95 px-4 py-3 text-card-foreground shadow-plate backdrop-blur-sm duration-150 fade-in-0 slide-in-from-left-1 select-none"
+    >
+      <LegendKey {...data} />
+    </aside>
+  )
+}
+
+/** The legend's row in the title block, under the index: it opens the key beside it. */
+export function LegendRow() {
+  const open = useLegend((s) => s.open)
+  const toggle = useLegend((s) => s.toggle)
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-expanded={open}
+      aria-controls="legend-key"
+      className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
+    >
+      <LayoutList className="text-muted-foreground transition-colors group-hover:text-foreground" />
+      <span
+        className={cn('transition-colors group-hover:text-primary', open && 'text-primary')}
+      >
+        Legend
+      </span>
+      {/* Open, the row is marked as a list's chosen row is: the seat's diamond, in gold. */}
+      <span
+        className={cn(
+          'mr-1 ml-auto size-1.5 rotate-45 bg-gold transition-opacity duration-200',
+          !open && 'opacity-0',
+        )}
+        aria-hidden
+      />
+    </button>
+  )
 }
 
 const STORE = 'legend-open'
 
-function initialOpen() {
-  try {
-    return localStorage.getItem(STORE) !== 'false'
-  } catch {
-    return true
-  }
-}
+/**
+ * Whether the key is open, shared by its row and its plate: closed until the reader
+ * opens it, then as they left it.
+ */
+const useLegend = create<{ open: boolean; toggle(): void }>()((set, get) => ({
+  open: (() => {
+    try {
+      return localStorage.getItem(STORE) === 'true'
+    } catch {
+      return false
+    }
+  })(),
+  toggle() {
+    const open = !get().open
+    set({ open })
+    try {
+      localStorage.setItem(STORE, String(open))
+    } catch {}
+  },
+}))
 
 export interface LegendData {
   politics: PoliticsLegend
@@ -49,183 +101,140 @@ export interface LegendData {
   seat?: { fill: string }
 }
 
-/** The legend itself, from data; the playground draws it from a sample. */
-export function LegendPanel({
+/**
+ * The key itself, from data; the playground draws it from a sample. Set in columns, each
+ * five rows at most, so that it is no taller than the title block: Rome's colours, then
+ * the kinds of doubt (only in a year that has some), then the map's marks.
+ */
+export function LegendKey({
   politics,
   seat,
-  folded = false,
   className,
-}: LegendData & {
-  /** Folded to its strip while the person panel needs the left side; the choice stays as it was. */
-  folded?: boolean
-  className?: string
-}) {
-  const [chosen, setChosen] = useState(initialOpen)
-  // Opening the legend while it is folded away opens it anyway, until the fold lifts.
-  const [unfolded, setUnfolded] = useState(false)
-  const [wasFolded, setWasFolded] = useState(folded)
-  if (folded !== wasFolded) {
-    setWasFolded(folded)
-    setUnfolded(false)
-  }
-  const open = chosen && (!folded || unfolded)
-  const toggle = () => {
-    const next = !open
-    if (next && folded) setUnfolded(true)
-    setChosen(next)
-    try {
-      localStorage.setItem(STORE, String(next))
-    } catch {}
-  }
-
+}: LegendData & { className?: string }) {
   const [lead, ...others] = politics.powers
   const otherFills = [...new Set(others.map((p) => p.fill))]
+  const doubt = lead && (politics.uncertain || politics.schematic || politics.unclaimed)
 
   return (
-    // The timeline's pattern (Timeline.tsx): a slim strip in the reader's theme that
-    // never moves, with the key opening out of it, upward, not stacked on top of it.
-    <div
-      className={cn(
-        'flex flex-col rounded-lg border border-rule bg-background/90 text-foreground shadow-plate backdrop-blur-sm select-none',
-        open ? 'w-[240px]' : 'w-fit',
-        className,
-      )}
-    >
-      {open && (
-        <div id="legend-body" className="space-y-1.5 px-3 pt-3 pb-2.5 text-sm">
-          {lead && (
-            <>
-              <Key swatch={<Swatch fill={lead.fill} />}>{lead.name}</Key>
-              {lead.province && (
-                <Key swatch={<Swatch fill={lead.province} />}>its provinces</Key>
-              )}
-              {lead.client && (
-                <Key swatch={<Swatch fill={lead.client} />}>its client kingdoms</Key>
-              )}
-            </>
-          )}
-          {otherFills.length > 0 && (
-            <Key swatch={<Strip fills={otherFills} />}>
-              Other powers, <span className="italic">named on the map</span>
-            </Key>
-          )}
-          {politics.uncertain && lead && (
-            <Key
-              swatch={<Swatch fill={lead.province ?? lead.fill} alpha={UNCERTAIN_ALPHA} />}
-            >
-              Claim uncertain: <span className="italic">fainter</span>
-            </Key>
-          )}
-          {politics.schematic && lead && (
-            <Key
-              swatch={
-                <span
-                  className="block h-3 w-5"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${lead.province ?? lead.fill} 85%)`,
-                  }}
-                />
-              }
-            >
-              Frontier schematic: <span className="italic">no line</span>
-            </Key>
-          )}
-          {politics.unclaimed && (
-            <Key
-              swatch={
-                <span className="block h-3 w-5 rounded-[1px] border border-dashed border-foreground/40" />
-              }
-            >
-              No claim recorded
-            </Key>
-          )}
-          <Separator className="my-2" />
-          <Key
-            swatch={
-              <Mark>
-                <Caput />
-              </Mark>
-            }
-          >
-            Rome
-          </Key>
-          <Key
-            swatch={
-              <Mark>
-                <Capital />
-              </Mark>
-            }
-          >
-            Provincial or royal seat
-          </Key>
-          <Key
-            swatch={
-              <Mark>
-                <Town />
-              </Mark>
-            }
-          >
-            Town
-          </Key>
-          {seat && (
-            <Key
-              swatch={
-                <Mark>
-                  <Seat fill={seat.fill} />
-                </Mark>
-              }
-            >
-              Kingdom, <span className="italic">extent unknown</span>
-            </Key>
-          )}
-          <Key
-            swatch={
-              <Mark>
-                <Road />
-              </Mark>
-            }
-          >
-            Road, where dated
-          </Key>
-        </div>
-      )}
-      {open && <span className="mx-3 h-px bg-rule" aria-hidden />}
-      {/* Folded, just the icon: a square the timeline strip's height (40px), named by its
-          tooltip. Open, the row also carries the word, as the key's title. */}
-      {/* Only the icon toggles: folded, it is the whole square; open, it is the ✕, and
-          the title beside it is only a title. One button in both states, so focus
-          stays on it across the toggle. */}
-      <div className="flex h-[38px] items-center gap-1">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              type="button"
-              onClick={toggle}
-              aria-expanded={open}
-              aria-controls="legend-body"
-              aria-label={open ? 'Hide the legend' : 'Show the legend'}
-              className={cn(
-                'grid place-items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring/60',
-                open ? 'ml-1 size-7' : 'size-[38px]',
-              )}
-            >
-              <span className="grid size-7 place-items-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground [&_svg]:size-4">
-                {open ? <X /> : <Shapes />}
-              </span>
-            </button>
-          </TooltipTrigger>
-          <TooltipContent side="right">
-            {open ? 'Hide the legend' : 'Legend'}
-          </TooltipContent>
-        </Tooltip>
-        {open && (
-          <span className="pr-3.5 font-heading text-sm font-semibold tracking-[0.1em]">
-            Legend
-          </span>
+    <div className={cn('flex gap-4 text-sm', className)}>
+      <Column>
+        {lead && (
+          <>
+            <Key swatch={<Swatch fill={lead.fill} />}>{lead.name}</Key>
+            {lead.province && (
+              <Key swatch={<Swatch fill={lead.province} />}>its provinces</Key>
+            )}
+            {lead.client && (
+              <Key swatch={<Swatch fill={lead.client} />}>its client kingdoms</Key>
+            )}
+          </>
         )}
-      </div>
+        {otherFills.length > 0 && (
+          <Key swatch={<Strip fills={otherFills} />}>
+            Other powers, <span className="italic">named on the map</span>
+          </Key>
+        )}
+      </Column>
+      {doubt && (
+        <>
+          <Rule />
+          <Column>
+            {politics.uncertain && (
+              <Key
+                swatch={
+                  <Swatch fill={lead.province ?? lead.fill} alpha={UNCERTAIN_ALPHA} />
+                }
+              >
+                Claim uncertain: <span className="italic">fainter</span>
+              </Key>
+            )}
+            {politics.schematic && (
+              <Key
+                swatch={
+                  <span
+                    className="block h-3 w-5"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${lead.province ?? lead.fill} 85%)`,
+                    }}
+                  />
+                }
+              >
+                Frontier schematic: <span className="italic">no line</span>
+              </Key>
+            )}
+            {politics.unclaimed && (
+              <Key
+                swatch={
+                  <span className="block h-3 w-5 rounded-[1px] border border-dashed border-foreground/40" />
+                }
+              >
+                No claim recorded
+              </Key>
+            )}
+          </Column>
+        </>
+      )}
+      <Rule />
+      <Column>
+        <Key
+          swatch={
+            <Mark>
+              <Caput />
+            </Mark>
+          }
+        >
+          Rome
+        </Key>
+        <Key
+          swatch={
+            <Mark>
+              <Capital />
+            </Mark>
+          }
+        >
+          Provincial or royal seat
+        </Key>
+        <Key
+          swatch={
+            <Mark>
+              <Town />
+            </Mark>
+          }
+        >
+          Town
+        </Key>
+        {seat && (
+          <Key
+            swatch={
+              <Mark>
+                <Seat fill={seat.fill} />
+              </Mark>
+            }
+          >
+            Kingdom, <span className="italic">extent unknown</span>
+          </Key>
+        )}
+        <Key
+          swatch={
+            <Mark>
+              <Road />
+            </Mark>
+          }
+        >
+          Road, where dated
+        </Key>
+      </Column>
     </div>
   )
+}
+
+function Column({ children }: { children: ReactNode }) {
+  return <div className="flex flex-col gap-1">{children}</div>
+}
+
+/** The hairline between the key's columns. */
+function Rule() {
+  return <span className="w-px self-stretch bg-rule" aria-hidden />
 }
 
 /**
@@ -245,7 +254,7 @@ function Key({ swatch, children }: { swatch: ReactNode; children: ReactNode }) {
   return (
     <div className="flex items-center gap-2.5">
       <span className="grid w-5 shrink-0 place-items-center">{swatch}</span>
-      <span className="leading-tight">{children}</span>
+      <span className="leading-tight whitespace-nowrap">{children}</span>
     </div>
   )
 }

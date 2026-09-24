@@ -225,9 +225,9 @@ The place and the person are different reading, so they are different panels:
   in lanes (who held it, and each governor's term), who is in command in the year
   shown, then all its governors and its sources folded.
 - **The left is the person.** A separate plate beneath the title block, with a margin
-  between, wider than the title block (360px), running down to the legend's strip.
-  The legend folds to its strip while a person is open, without changing the reader's
-  saved choice.
+  between, wider than the title block (360px), running down to the foot of the screen.
+  The legend's key opens beside the title block, no taller than it, so it never covers
+  the panel.
 - **Not a modal.** A life happens on the map: the map stays live between the two
   panels. A person's career is drawn in lanes (offices, commands, the Senate, a
   priesthood) over the timeline's own ruler, with its gold index at the year shown;

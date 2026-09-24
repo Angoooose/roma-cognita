@@ -691,11 +691,16 @@ copy. What we take from it:
     the year is a gold index mark on the line. Confidence badges are dashed
     when uncertain, as the map's lines are.
   - The panels follow the reader's system theme.
-  - The corner controls are one pattern (decided 2026-09-23): a slim strip,
-    the same 40 px in both corners and in both states, that never moves. The
-    timeline always shows the year and opens its ruler beside it; the legend
-    folds to a square and opens its key above. Only the toggle opens or closes
-    either.
+  - The timeline is a slim strip in the bottom-right corner (decided
+    2026-09-23), 40 px in both states, that never moves: it always shows the
+    year and opens its ruler beside it. Only its toggle opens or closes it.
+  - The legend is a row of the title block, under the index (decided
+    2026-09-24). Its key opens beside the title block, over the map, set in
+    short columns (Rome's colours, the kinds of doubt, the map's marks) so it
+    is no taller than the block: it never moves and never covers the person
+    panel. It is not a dialog: the map and timeline stay live while it is
+    open, and only its row closes it. It starts closed, and the reader's
+    choice is remembered.
   - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
     the plate's title block, the map's name and the years it covers in the
     double rule, with "Index of names ⌘K" under it. Each result is its map

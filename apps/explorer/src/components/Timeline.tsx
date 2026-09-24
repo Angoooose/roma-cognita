@@ -80,8 +80,7 @@ export function TimelinePanel({
     // left on the same line, so nothing stacks on the year.
     <div
       className={cn(
-        // One height, open or folded: the ruler's, so nothing shifts when it opens. The
-        // legend's square matches it (Legend.tsx).
+        // One height, open or folded: the ruler's, so nothing shifts when it opens.
         'flex h-10 items-center rounded-lg border border-rule bg-background/90 pr-1 pl-1.5 text-foreground shadow-plate backdrop-blur-sm select-none',
         className,
       )}
