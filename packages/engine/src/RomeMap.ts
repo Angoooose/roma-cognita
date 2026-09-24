@@ -184,6 +184,15 @@ export class RomeMap {
   }
 
   /**
+   * Brings a polity forward on the map, by id: outlined, its colour held at every zoom,
+   * the rest dimmed. Null clears it. It holds across year changes.
+   */
+  setFocus(polity: string | null) {
+    this.politics.setFocus(polity)
+    this.dirty = true
+  }
+
+  /**
    * What is under a client (CSS pixel) position: a settlement if its marker or name is
    * there, otherwise the atom and the claim on it this year.
    */

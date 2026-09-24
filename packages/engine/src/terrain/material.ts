@@ -95,6 +95,8 @@ const SNOW = rgb('#E9E6E0')
 
 const RIVER = rgb('#3D7A8E')
 export const INK = rgb('#2A241E')
+/** The outline of a focused polity: paper-white, so it reads on any fill. */
+const FOCUS_LINE = rgb('#FFF6E0')
 
 /** Light directions: azimuth clockwise from north, altitude, weight. NW carries it. */
 const LIGHTS: [number, number, number][] = [
@@ -296,18 +298,32 @@ export function createTerrainMaterial(
   const pol = politicalShading(politicsTex, n, pxKm)
   const lit = clamp(shade, 0, 1.6).mul(0.4).add(0.6)
   const litFill = pol.fill.mul(lit)
-  const tinted = mix(ground0, litFill, pol.fillAlpha)
+  // A focused polity keeps its colour at every zoom, where fills otherwise fade out.
+  const tinted = mix(ground0, litFill, max(pol.fillAlpha, pol.focusInside.mul(0.55)))
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
   const withRivers = mix(glowed, RIVER, inRiver)
   // Roads over the rivers they cross, under the borders.
   const road = roadShading(roadsTex, n, pxM, texelM)
   const withRoads = mix(withRivers, road.colour, road.alpha)
-  const landWithRivers = mix(withRoads, pol.line, pol.lineAlpha)
+  // A focused polity's outline: a bright line in a thin ink casing, over every border.
+  const bordered = mix(withRoads, pol.line, pol.lineAlpha)
+  const cased = mix(bordered, INK, pol.focusCaseAlpha)
+  const landWithRivers = mix(cased, FOCUS_LINE, pol.focusLineAlpha)
 
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))
 
-  const coloured = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
+  const inked = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
+  // The focused polity's own shore takes the outline too: its atoms reach out over the
+  // water, so their edge is not the coast, and without this the outline would stop there.
+  // Drawn on the water side, along the sea only (lakes sit above sea level): round every
+  // lake and pond it would scatter the interior with specks.
+  const seaSide = float(1).sub(isLand).mul(float(1).sub(smoothstep(1, 3, height)))
+  const focusCoast = float(1)
+    .sub(smoothstep(px, px.mul(2), abs(shore)))
+    .mul(seaSide)
+    .mul(pol.focusInside)
+  const coloured = mix(inked, FOCUS_LINE, focusCoast)
 
   // --- terra incognita: the unfinished sketch -----------------------------------------
   // Past the known world the map stops claiming anything. Colour drains away and leaves

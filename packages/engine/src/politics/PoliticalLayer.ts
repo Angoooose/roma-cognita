@@ -45,6 +45,10 @@ export const politicsUniforms = {
   glow: uniform(0.5),
   /** Master switch, for a physical-only view. */
   enabled: uniform(1),
+  /** The focused polity's index in the tables (row 1, x), 0 for none. */
+  focus: uniform(0),
+  /** How far the focus has faded in, 0 to 1. */
+  focusAmount: uniform(0),
 }
 
 // --- data.json, as written by pipeline/src/politics/build.ts ----------------------
@@ -147,6 +151,9 @@ export class PoliticalLayer {
   private polityIndex = new Map<string, number>()
   private polityById = new Map<string, PolityRecord>()
   private fade: { start: number; ms: number } | null = null
+  private focusFade: { start: number; ms: number; from: number; to: number } | null = null
+  /** The focused polity, if any. */
+  focused: string | null = null
   private index: { maxLevel: number; distanceTexels: number; levels: Uint16Array[]; palettes: Record<string, number[]> } | null =
     null
   private pickTiles = new Map<string, Promise<ImageData | null>>()
@@ -200,13 +207,47 @@ export class PoliticalLayer {
     if (!opts.animate) this.write(politicsTables.from, year)
   }
 
-  /** Advances a cross-fade; true while one is running. */
+  /**
+   * Brings a polity forward: outlined, its fill held up, the rest of the map dimmed.
+   * Null lets it go. The focus is by polity, so it holds across year changes, and draws
+   * nothing in a year the polity holds no ground.
+   */
+  setFocus(polity: string | null) {
+    if (polity === this.focused) return
+    const index = polity ? (this.polityIndex.get(polity) ?? 0) : 0
+    this.focused = index ? polity : null
+    const amount = politicsUniforms.focusAmount
+    if (index) {
+      // From one polity straight to another, the new one fades in from nothing.
+      if (politicsUniforms.focus.value !== index) amount.value = 0
+      politicsUniforms.focus.value = index
+      this.focusFade = { start: performance.now(), ms: 220, from: amount.value, to: 1 }
+    } else {
+      // The index stays set while it fades out, and is cleared at the end.
+      this.focusFade = { start: performance.now(), ms: 220, from: amount.value, to: 0 }
+    }
+  }
+
+  /** Advances a cross-fade or a focus fade; true while one is running. */
   tick(now: number) {
-    if (!this.fade) return false
-    const t = Math.min(1, (now - this.fade.start) / this.fade.ms)
-    politicsUniforms.mix.value = t * t * (3 - 2 * t)
-    if (t >= 1) this.fade = null
-    return true
+    let running = false
+    if (this.fade) {
+      const t = Math.min(1, (now - this.fade.start) / this.fade.ms)
+      politicsUniforms.mix.value = t * t * (3 - 2 * t)
+      if (t >= 1) this.fade = null
+      running = true
+    }
+    const f = this.focusFade
+    if (f) {
+      const t = Math.min(1, (now - f.start) / f.ms)
+      politicsUniforms.focusAmount.value = f.from + (f.to - f.from) * t * t * (3 - 2 * t)
+      if (t >= 1) {
+        this.focusFade = null
+        if (f.to === 0) politicsUniforms.focus.value = 0
+      }
+      running = true
+    }
+    return running
   }
 
   /** The power a polity answers to in `year`, and the chain of links to it. */
