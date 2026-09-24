@@ -14,7 +14,6 @@ import {
   max,
   min,
   mix,
-  mx_noise_float,
   normalize,
   positionLocal,
   smoothstep,
@@ -29,6 +28,7 @@ import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
 import { GRATICULE_INK, graticuleNode } from '../edge/graticule.ts'
 import { knownDistanceKm, noise2, paperNode } from '../edge/paper.ts'
+import { seededNoise } from './noise.ts'
 import { waterLattice, waterShading } from './water.ts'
 
 /**
@@ -109,27 +109,49 @@ function lightVector(azDeg: number, altDeg: number) {
   return new THREE.Vector3(Math.sin(az) * Math.cos(alt), Math.cos(az) * Math.cos(alt), Math.sin(alt))
 }
 
+/**
+ * A bound on the ground noise's magnitude, for skipping it where no value could matter.
+ * Perlin noise on a plane stays within about ±1; this leaves a factor of two.
+ */
+const NOISE_BOUND = 2
+
 export interface TileFrame {
   x0: number
   y0: number
   size: number
 }
 
-export function createTerrainMaterial(
-  terrainTex: THREE.DataTexture,
-  waterTex: THREE.DataTexture,
-  politicsTex: THREE.DataTexture,
-  roadsTex: THREE.DataTexture,
-  n: number,
-  tile: TileFrame,
-) {
-  // Deep enough to hide the gap where a coarse stand-in meets fine tiles in the
-  // mountains; 1% of the tile left dark cracks along tile edges on zoom-outs.
-  const skirtDepth = tile.size * 0.03
-  // Coarser tiles sit slightly lower, so where a stand-in and the finer tiles over it
-  // are both drawn the finer one wins the depth test. Invisible from above: 0.1% of the
-  // tile's size, 7 m at level 10, 1.8 km for the whole-map level-2 tiles.
-  const standInDrop = uniform(tile.size * 0.001)
+/** A tile's own data textures, in the order the worker builds them. */
+export interface TileTextures {
+  terrain: THREE.DataTexture
+  water: THREE.DataTexture
+  politics: THREE.DataTexture
+  roads: THREE.DataTexture
+}
+
+/**
+ * The terrain material, one for every tile. Building a node material's shader is the
+ * expensive part — some 30 ms of the main thread for this graph — and three rebuilds it
+ * for every material it has not seen, even when the WGSL comes out the same. So there
+ * is one graph, and what differs per tile (its textures and where it sits) is swapped in
+ * by `bind` just before the tile draws: three keeps each object's bindings apart.
+ */
+export function createTerrainMaterial(n: number) {
+  const slots = {
+    terrain: texture(blankTile(THREE.RGBAFormat)),
+    water: texture(blankTile(THREE.RGBAFormat)),
+    politics: texture(blankTile(THREE.RGBAFormat)),
+    roads: texture(blankTile(THREE.RGFormat)),
+  }
+  // Uniforms, not literals: a number baked into the graph makes a distinct shader per
+  // tile size. Set per tile by `bind`.
+  const skirtDepth = uniform(0)
+  const standInDrop = uniform(0)
+  const origin = uniform(new THREE.Vector2())
+  const extent = uniform(1)
+  const texelM = uniform(1)
+  const lattice = waterLattice(uv().mul(extent))
+
   const mat = new THREE.MeshBasicNodeMaterial()
   // Skirts face every way; culling them by winding would open the cracks they hide.
   mat.side = THREE.DoubleSide
@@ -137,19 +159,17 @@ export function createTerrainMaterial(
   // Texels are vertex-aligned: uv 0 and 1 land on the centres of the edge texels, which
   // is what lets neighbouring tiles agree exactly along their shared edge.
   const texUV = uv().mul((n - 1) / n).add(0.5 / n)
-  const h = texture(terrainTex, texUV).level(float(0)).r
+  const h = texture(slots.terrain, texUV).level(float(0)).r
   mat.positionNode = vec3(
     positionLocal.x,
     positionLocal.y,
-    // A uniform, not a literal: a number baked into the graph makes a distinct shader
-    // per tile size, and each one compiles — a 200 ms hitch per new zoom level.
     h
       .mul(terrainUniforms.verticalExaggeration)
-      .add(positionLocal.z.mul(uniform(skirtDepth)))
+      .add(positionLocal.z.mul(skirtDepth))
       .sub(standInDrop),
   )
 
-  const s = texture(terrainTex, texUV)
+  const s = texture(slots.terrain, texUV)
   const height = s.r
   const grad = vec2(s.g, s.b).mul(terrainUniforms.shadeExaggeration)
   const normal = normalize(vec3(grad.x.negate(), grad.y.negate(), 1))
@@ -164,16 +184,33 @@ export function createTerrainMaterial(
   // --- ground ------------------------------------------------------------------------
   // World position in km, for noise that runs continuously across tiles. Kilometres
   // rather than metres keep the noise lattice small enough for float32 at every zoom.
-  // Uniforms, not literals, so every tile shares one compiled shader.
-  const origin = uniform(new THREE.Vector2(tile.x0 / 1000, tile.y0 / 1000))
-  const extent = uniform(tile.size / 1000)
   const km = origin.add(uv().mul(extent))
   // Kilometres per screen pixel: detail finer than about two pixels is faded out rather
   // than left to shimmer.
   const pxKm = max(fwidth(km.x), 1e-6)
   const pxM = pxKm.mul(1000)
   const detail = (wavelengthKm: number) => float(1).sub(smoothstep(wavelengthKm / 6, wavelengthKm / 2, pxKm))
-  const noise = (wavelengthKm: number, seed: number) => mx_noise_float(vec3(km.div(wavelengthKm), seed))
+  /**
+   * `noise × amplitude × detail`, skipping the noise wherever the fade is 0 and
+   * the product is nothing: most of the map, for the finer scales, at the overview —
+   * and wherever `matters` says no value of it could change the result.
+   */
+  const detailNoise = (
+    wavelengthKm: number,
+    seed: number,
+    amplitude: number,
+    matters: THREE.Node<'bool'> | null = null,
+  ) =>
+    Fn(() => {
+      const fade = detail(wavelengthKm).toVar()
+      const v = float(0).toVar()
+      const needed = fade.greaterThan(0)
+      If(matters ? needed.and(matters) : needed, () => {
+        v.assign(noise(wavelengthKm, seed).mul(amplitude).mul(fade))
+      })
+      return v
+    })()
+  const noise = (wavelengthKm: number, seed: number) => seededNoise(km.div(wavelengthKm), seed)
 
   // Slope is the raw gradient — the real steepness, not the exaggerated one the lighting
   // uses — so it means the same at every zoom (coarse tiles smooth it, which is right:
@@ -203,8 +240,8 @@ export function createTerrainMaterial(
   // moves lightness a few percent and nudges between the ground's own family and its
   // neighbours, never towards a colour the climate did not pick.
   const drift = noise(60, 1).mul(0.06)
-  const patch = noise(6, 2).mul(0.05).mul(detail(6))
-  const grain = noise(0.6, 3).mul(0.04).mul(detail(0.6))
+  const patch = detailNoise(6, 2, 0.05)
+  const grain = detailNoise(0.6, 3, 0.04)
   ground = ground.mul(float(1).add(drift).add(patch).add(grain))
 
   // Deserts are not one colour: sand seas are pale, rocky plateaus, escarpments and wadi
@@ -214,19 +251,28 @@ export function createTerrainMaterial(
   const desertTone = mix(GROUND_DESERT.mul(1.04), GROUND_DESERT_ROCK, rough)
   ground = mix(ground, desertTone, b.r.mul(0.8))
 
-  // Rock on steep ground and bare ground high up.
-  const rockBreak = noise(1.5, 4).mul(0.15).mul(detail(1.5))
+  // Rock on steep ground and bare ground high up. The noise is within ±2 (NOISE_BOUND),
+  // so below a slope of 0.05 it cannot lift the ground to the rock's threshold of 0.35.
+  const rockBreak = detailNoise(1.5, 4, 0.15, slope.greaterThan(0.35 - 0.15 * NOISE_BOUND))
   const rock = max(smoothstep(0.35, 0.8, slope.add(rockBreak)), smoothstep(1700, 2600, height))
   ground = mix(ground, ROCK, rock.mul(0.85))
   // Snow: permanent only on the highest ground, lower where the climate is cold.
   const snowLine = mix(float(3000), float(2400), b.a)
-  const snow = smoothstep(snowLine, snowLine.add(500), height.add(noise(2, 5).mul(150)))
+  // Its noise (±150 m × NOISE_BOUND) is only needed within reach of the snow line.
+  const snowNoise = Fn(() => {
+    const v = float(0).toVar()
+    If(height.add(150 * NOISE_BOUND).greaterThan(snowLine), () => {
+      v.assign(noise(2, 5).mul(150))
+    })
+    return v
+  })()
+  const snow = smoothstep(snowLine, snowLine.add(500), height.add(snowNoise))
   ground = mix(ground, SNOW, snow.mul(float(1).sub(smoothstep(0.9, 1.3, slope))))
 
   const litLand = ground.mul(clamp(shade, 0, 1.6).mul(0.7).add(0.3))
 
   // --- water -------------------------------------------------------------------------
-  const w = texture(waterTex, texUV)
+  const w = texture(slots.water, texUV)
   const shore = w.r // metres to the shore, positive on land
   const depth = w.g // metres, ≤ 0
   // One screen pixel, in metres of shore distance: everything that should look the same
@@ -241,7 +287,7 @@ export function createTerrainMaterial(
     depth,
     height,
     slope,
-    lattice: waterLattice(tile, uv().mul(extent)),
+    lattice: lattice.at,
     pxM,
     detail,
     light: lightVector(kaz, kalt),
@@ -265,7 +311,6 @@ export function createTerrainMaterial(
   // on a line's centre that overestimates it by up to half a texel (more on the
   // diagonal); a line drawn thinner than that breaks into dashes wherever it runs
   // between texel centres — and where that happens shifts with every zoom step.
-  const texelM = uniform(tile.size / (n - 1))
   // Capped in pixels, so a magnified stand-in tile cannot turn a river into a band.
   const texelFloor = texelM.mul(0.6).min(pxM.mul(1.5))
   const halfWidth = max(riverQ.sqrt().mul(3), screenWidth.mul(pxM).mul(0.5), texelFloor).mul(
@@ -293,21 +338,19 @@ export function createTerrainMaterial(
   // Politics (politics/shading.ts). The fill is lit by the same light as the ground, but
   // compressed towards flat, so relief still reads through it without muddying it; the
   // glow and the border are printed over the rivers, as ink would be.
-  const pol = politicalShading(politicsTex, n, pxKm)
+  const pol = politicalShading(slots.politics, n, pxKm)
   const lit = clamp(shade, 0, 1.6).mul(0.4).add(0.6)
   const litFill = pol.fill.mul(lit)
   const tinted = mix(ground0, litFill, pol.fillAlpha)
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
   const withRivers = mix(glowed, RIVER, inRiver)
   // Roads over the rivers they cross, under the borders.
-  const road = roadShading(roadsTex, n, pxM, texelM)
+  const road = roadShading(slots.roads, n, pxM, texelM)
   const withRoads = mix(withRivers, road.colour, road.alpha)
   const landWithRivers = mix(withRoads, pol.line, pol.lineAlpha)
 
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))
-
-  const coloured = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
 
   // --- terra incognita: the unfinished sketch -----------------------------------------
   // Past the known world the map stops claiming anything. Colour drains away and leaves
@@ -335,30 +378,29 @@ export function createTerrainMaterial(
     max(pxKm.mul(5), 14).add(260).negate(),
   )
 
+  const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
+  const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
+
+  // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
+  // inside it where the pigment pooled — not a long blend, which over the sea went to
+  // mud between navy and paper. It stops at the known world's edge, or 150 km short of
+  // the data's if that comes first, leaving room for the sketch. `pastWash` is how far
+  // past that edge a point is; `unknown` how much of the sketch shows there.
+  const ragged = sketchNoise(40, 24)
+    .mul(35)
+    .add(sketchNoise(12, 25).mul(12).mul(detail(12)))
+  const pastWash = max(toKnownKm, float(150).sub(toRectKm)).add(ragged)
+  const washAA = max(pxKm.mul(1.2), 1.5)
+
   // The sketch, for the branch. Derivatives are undefined inside a branch (and WGSL
   // rejects them), so the ones it needs are taken outside and passed in: `kmDx` and
   // `kmDy` for the graticule, `hw` for the contours.
-  const sketchOver = (
-    colouredVar: THREE.Node<'vec3'>,
+  const sketchAt = (
+    pastWash: THREE.Node<'float'>,
     kmDx: THREE.Node<'vec2'>,
     kmDy: THREE.Node<'vec2'>,
     hw: THREE.Node<'float'>,
   ): THREE.Node<'vec3'> => {
-    const sketchNoise = (wavelengthKm: number, seed: number) => noise2(km.div(wavelengthKm), seed)
-    const toKnownKm = knownKm.add(sketchNoise(650, 23).mul(130)).add(sketchNoise(180, 21).mul(45))
-
-    // The colour stops the way a wash does: at a crisp, ragged edge, a little darker just
-    // inside it where the pigment pooled — not a long blend, which over the sea went to
-    // mud between navy and paper. It stops at the known world's edge, or 150 km short of
-    // the data's if that comes first, leaving room for the sketch.
-    const ragged = sketchNoise(40, 24)
-      .mul(35)
-      .add(sketchNoise(12, 25).mul(12).mul(detail(12)))
-    const pastWash = max(toKnownKm, float(150).sub(toRectKm)).add(ragged)
-    const washAA = max(pxKm.mul(1.2), 1.5)
-    const unknown = smoothstep(washAA.negate(), washAA, pastWash)
-    const pooled = smoothstep(max(pxKm.mul(5), 14).negate(), 0, pastWash)
-    const known = colouredVar.mul(float(1).sub(pooled.mul(0.12)))
 
     // Then the sketch trails off, as a drawing left unfinished does: each kind of line
     // gives out at its own distance past the wash — contours first, then rivers, the
@@ -442,19 +484,79 @@ export function createTerrainMaterial(
       // Pen pressure varies the drawn lines only: the graticule must match the paper's.
       sketch.assign(mix(paper, INK, max(drawnInk.mul(pressure), graticule)))
     })
-
-    return mix(known, sketch, unknown)
+    return sketch
   }
 
   mat.colorNode = Fn(() => {
-    const colour = coloured.toVar()
+    // Derivatives first, and the samples they read, outside the branches below: inside
+    // one, a derivative is undefined, and a sample first taken there is not taken for
+    // pixels that skip it. The pixel size in km is taken by `nearEdge`, in shore metres
+    // by `isLand`.
     const kmDx = dFdx(km).toVar()
     const kmDy = dFdy(km).toVar()
     const hw = max(fwidth(height.div(500)), 1e-4).toVar()
+    const landCover = isLand.toVar()
+
+    // The wash, only near the known world's edge; everywhere else it is the map.
+    const past = float(0).toVar()
+    const unknown = float(0).toVar()
+    const pooled = float(0).toVar()
     If(nearEdge, () => {
-      colour.assign(sketchOver(colour, kmDx, kmDy, hw))
+      past.assign(pastWash)
+      unknown.assign(smoothstep(washAA.negate(), washAA, past))
+      pooled.assign(smoothstep(max(pxKm.mul(5), 14).negate(), 0, past))
+    })
+
+    // The coloured map, except where the sketch covers it entirely.
+    const colour = vec3(0).toVar()
+    If(unknown.lessThan(1), () => {
+      const sea = water.toVar()
+      // Open sea is drawn from the water alone: the land's shading, most of the cost, is
+      // mixed in by `isLand`, which is 0 there. So it is only worked out where it shows.
+      const land = vec3(0).toVar()
+      If(landCover.greaterThan(0), () => {
+        land.assign(landWithRivers)
+      })
+      const coloured = mix(mix(sea, land, landCover), INK, coastLine.mul(0.35))
+      colour.assign(coloured.mul(float(1).sub(pooled.mul(0.12))))
+    })
+
+    // The sketch, only where some of it shows.
+    If(unknown.greaterThan(0), () => {
+      colour.assign(mix(colour, sketchAt(past, kmDx, kmDy, hw), unknown))
     })
     return colour
   })()
-  return mat
+
+  /** Points the material at one tile; called from the tile's `onBeforeRender`. */
+  const bind = (tile: TileFrame, t: TileTextures) => {
+    slots.terrain.value = t.terrain
+    slots.water.value = t.water
+    slots.politics.value = t.politics
+    slots.roads.value = t.roads
+    // Deep enough to hide the gap where a coarse stand-in meets fine tiles in the
+    // mountains; 1% of the tile left dark cracks along tile edges on zoom-outs.
+    skirtDepth.value = tile.size * 0.03
+    // Coarser tiles sit slightly lower, so where a stand-in and the finer tiles over it
+    // are both drawn the finer one wins the depth test. Invisible from above: 0.1% of the
+    // tile's size, 7 m at level 10, 1.8 km for the whole-map level-2 tiles.
+    standInDrop.value = tile.size * 0.001
+    origin.value.set(tile.x0 / 1000, tile.y0 / 1000)
+    extent.value = tile.size / 1000
+    texelM.value = tile.size / (n - 1)
+    lattice.set(tile)
+  }
+  return { material: mat, bind }
+}
+
+/** Stands in for a tile's texture until the first tile binds its own: same format, same sampler. */
+function blankTile(format: THREE.PixelFormat) {
+  const channels = format === THREE.RGFormat ? 2 : 4
+  const t = new THREE.DataTexture(new Uint16Array(channels), 1, 1, format, THREE.HalfFloatType)
+  t.minFilter = t.magFilter = THREE.LinearFilter
+  t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping
+  t.generateMipmaps = false
+  t.colorSpace = THREE.NoColorSpace
+  t.needsUpdate = true
+  return t
 }

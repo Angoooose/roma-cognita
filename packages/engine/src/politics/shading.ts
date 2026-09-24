@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { abs, clamp, dot, float, floor, int, ivec2, max, min, mix, select, smoothstep, textureLoad, uv, vec3 } from 'three/tsl'
+import { abs, clamp, dot, float, floor, Fn, If, int, ivec2, max, min, mix, select, smoothstep, textureLoad, uv, vec3 } from 'three/tsl'
 import { politicsTables, politicsUniforms } from './PoliticalLayer.ts'
 
 /**
@@ -33,7 +33,7 @@ export interface PoliticalNodes {
 type V4 = THREE.Node<'vec4'>
 type F = THREE.Node<'float'>
 
-export function politicalShading(tex: THREE.DataTexture, n: number, pxKm: F): PoliticalNodes {
+export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): PoliticalNodes {
   // Texel centres sit at integer positions (the grid is vertex-aligned). Labels come
   // from the nearest texel — they can never be interpolated — and the distance from a
   // bilinear mix of the four around, each first expressed against the nearest texel's
@@ -85,14 +85,25 @@ export function politicalShading(tex: THREE.DataTexture, n: number, pxKm: F): Po
     const ink = select(fillHi.w.greaterThan(fillLo.w), inkHi, inkLo)
     return { fill, power, province, schematic, ink }
   }
-  const a = year(politicsTables.from)
-  const b = year(politicsTables.to)
+  // The year shown, and only while a cross-fade runs the one it is leaving: at rest the
+  // mix is exactly 1 and the old year's lookups would be multiplied by nothing.
   const k = politicsUniforms.mix
-  const fill = mix(a.fill, b.fill, k) as V4
-  const power = mix(a.power, b.power, k)
-  const province = mix(a.province, b.province, k)
-  const schematic = mix(a.schematic, b.schematic, k).mul(power)
-  const ink = mix(a.ink, b.ink, k) as V4
+  const b = year(politicsTables.to)
+  type Year = ReturnType<typeof year>
+  // Typed as floats inside; the same graph serves the vec4s.
+  const fading = <T extends F | V4>(pick: (y: Year) => T): T =>
+    Fn(() => {
+      const v = (pick(b) as F).toVar()
+      If(k.lessThan(1), () => {
+        v.assign(mix(pick(year(politicsTables.from)) as F, pick(b) as F, k))
+      })
+      return v
+    })() as unknown as T
+  const fill = fading((y) => y.fill)
+  const power = fading((y) => y.power)
+  const province = fading((y) => y.province)
+  const schematic = fading((y) => y.schematic).mul(power)
+  const ink = fading((y) => y.ink)
   const on = politicsUniforms.enabled
 
   // The border zone: in pixels at the overview, capped in kilometres close in, where it
