@@ -66,6 +66,7 @@ import { Switch } from '@/components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { Fleuron } from '@/components/Marks.tsx'
 import { SectionHead } from './InSitu.tsx'
 
 export function Specimens() {
@@ -103,17 +104,6 @@ function Specimen(props: {
       </CardHeader>
       <CardContent>{props.children}</CardContent>
     </Card>
-  )
-}
-
-/** A rule with a seat's diamond at its centre: the one ornament the theme allows. */
-export function Fleuron({ className }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-3 text-rule ${className ?? ''}`} aria-hidden>
-      <span className="h-px flex-1 bg-current" />
-      <span className="size-1.5 rotate-45 bg-gold" />
-      <span className="h-px flex-1 bg-current" />
-    </div>
   )
 }
 

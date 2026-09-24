@@ -701,6 +701,11 @@ copy. What we take from it:
     panel. It is not a dialog: the map and timeline stay live while it is
     open, and only its row closes it. It starts closed, and the reader's
     choice is remembered.
+  - The title block's last row is the preface (decided 2026-09-24), named as
+    an atlas names its front matter. It opens the one dialog in the interface:
+    what the map is, how to read it, what it claims (§1) and whose work it is
+    drawn from (§6), read on its own rather than beside the map. On hover, and
+    while the legend is open, a row's icon takes its text's colour.
   - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
     the plate's title block, the map's name and the years it covers in the
     double rule, with "Index of names ⌘K" under it. Each result is its map

@@ -54,7 +54,12 @@ export function LegendRow() {
       aria-controls="legend-key"
       className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
     >
-      <LayoutList className="text-muted-foreground transition-colors group-hover:text-foreground" />
+      <LayoutList
+        className={cn(
+          'transition-colors group-hover:text-primary',
+          open ? 'text-primary' : 'text-muted-foreground',
+        )}
+      />
       <span
         className={cn('transition-colors group-hover:text-primary', open && 'text-primary')}
       >

@@ -15,6 +15,7 @@ import {
   Swatch,
   Town,
 } from '@/components/Legend.tsx'
+import { Preface } from '@/components/Preface.tsx'
 import {
   Command,
   CommandEmpty,
@@ -270,7 +271,7 @@ export function Search() {
 
 /**
  * An atlas plate's title block: the map's name and the years it covers, framed in the
- * double rule, with the index to it beneath, and the legend's row beneath that. App.tsx
+ * double rule, with its rows beneath: the index, the legend and the preface. App.tsx
  * places it at the head of the left column, above the person panel.
  */
 function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }) {
@@ -285,7 +286,7 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
         </div>
       </div>
       <span className="mx-3 block h-px bg-rule" aria-hidden />
-      {/* The block's two rows, set as one short list: as close to each other as to the
+      {/* The block's rows, set as one short list: as close to each other as to the
           rule above and the frame below. */}
       <div className="py-1.5">
         <button
@@ -293,11 +294,12 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
           onClick={onSearch}
           className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
         >
-          <SearchIcon className="text-muted-foreground transition-colors group-hover:text-foreground" />
+          <SearchIcon className="text-muted-foreground transition-colors group-hover:text-primary" />
           <span className="transition-colors group-hover:text-primary">Index of names</span>
           <span className="figures ml-auto text-muted-foreground">{KEY}</span>
         </button>
         <LegendRow />
+        <Preface years={years} />
       </div>
       <Legend />
     </div>

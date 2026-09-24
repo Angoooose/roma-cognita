@@ -23,6 +23,17 @@ export function Section({ title, children }: { title: ReactNode; children: React
   )
 }
 
+/** A rule with a seat's diamond at its centre: the one ornament the theme allows. */
+export function Fleuron({ className }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-3 text-rule ${className ?? ''}`} aria-hidden>
+      <span className="h-px flex-1 bg-current" />
+      <span className="size-1.5 rotate-45 bg-gold" />
+      <span className="h-px flex-1 bg-current" />
+    </div>
+  )
+}
+
 /**
  * Whether a fold is open, remembered in this browser under `name`, as the legend
  * remembers itself (Legend.tsx): a reader who opens Family keeps it open from one
