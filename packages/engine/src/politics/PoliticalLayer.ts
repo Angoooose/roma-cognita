@@ -334,6 +334,13 @@ export class PoliticalLayer {
     return this.polityById.get(id)
   }
 
+  /** Every claim on an atom over the whole window, in order: who held it when, not only now. */
+  claimsOf(atom: string): ClaimRecord[] {
+    return (this.data?.claims ?? [])
+      .filter((c) => c.atom === atom && c.relation !== 'occupied')
+      .sort((a, b) => a.from.year - b.from.year)
+  }
+
   private holding(atom: string, year: number) {
     // Occupation is a separate layer (packages/schema claimLayer); v1 draws holdings.
     return this.data!.claims.find((c) => c.atom === atom && c.relation !== 'occupied' && covers(c, year))

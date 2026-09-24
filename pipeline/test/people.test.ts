@@ -1,7 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { formatYear, type PersonId } from '@roman-map/schema'
+import {
+  formatYear,
+  parseEraString,
+  type DprrProvince,
+  type OfficeRole,
+  type PersonId,
+} from '@roman-map/schema'
 import {
   activeSpan,
   applyCorrections,
@@ -11,6 +17,7 @@ import {
   fullName,
   type RelationshipAssertion,
 } from '../src/people/build.ts'
+import { joinGovernors, unattestedYears } from '../src/people/governors.ts'
 import { classifyOffices } from '../src/people/offices.ts'
 
 describe('dprrYear', () => {
@@ -287,5 +294,127 @@ describe.skipIf(!existsSync(join(BUILD, 'manifest.json')))('build/people', () =>
     expect(authorities.offices.filter((o) => used.has(o.id) && o.role === 'other')).toEqual(
       [],
     )
+  })
+})
+
+describe('joinGovernors', () => {
+  const post = (
+    id: number,
+    office: number,
+    from: number,
+    to: number,
+    province: number,
+  ) => ({
+    id,
+    person: `dprr:${id}` as PersonId,
+    office,
+    from: { year: from, uncertain: false },
+    to: { year: to, uncertain: false },
+    uncertain: false,
+    provinces: [{ id: province, uncertain: false }],
+    source: 1,
+    citations: [],
+  })
+  const names: Record<number, string> = {
+    1: 'Cilicia',
+    2: 'Cyprus',
+    3: 'repetundae',
+    4: 'Nowhere',
+  }
+  const roles: Record<number, OfficeRole> = { 10: 'command', 11: 'staff', 12: 'magistracy' }
+  const table = [
+    {
+      dprr: 'Cilicia',
+      kind: 'territory',
+      polities: [{ polity: 'cilicia' }],
+      confidence: 'certain',
+      review: 'draft',
+    },
+    {
+      dprr: 'Cyprus',
+      kind: 'territory',
+      polities: [
+        { polity: 'cilicia', from: parseEraString('58 BCE'), to: parseEraString('48 BCE') },
+      ],
+      confidence: 'probable',
+      review: 'draft',
+    },
+    {
+      dprr: 'repetundae',
+      kind: 'court',
+      polities: [],
+      confidence: 'certain',
+      review: 'draft',
+    },
+  ] as DprrProvince[]
+  const join = (posts: ReturnType<typeof post>[]) =>
+    joinGovernors(
+      posts,
+      (id) => names[id],
+      (o) => roles[o],
+      table,
+      new Set(['cilicia']),
+      new Set(Object.values(names)),
+    )
+
+  it('spreads a post over its years, for command and staff only', () => {
+    const { records } = join([
+      post(1, 10, -51, -50, 1),
+      post(2, 11, -50, -50, 1),
+      post(3, 12, -50, -50, 1),
+    ])
+    expect(records.map((r) => [r.post, r.year, r.role])).toEqual([
+      [1, -51, 'command'],
+      [1, -50, 'command'],
+      [2, -50, 'staff'],
+    ])
+  })
+
+  it('keeps the province each year came from, for a post that names several', () => {
+    const two = {
+      ...post(1, 10, -50, -50, 1),
+      provinces: [1, 2].map((id) => ({ id, uncertain: false })),
+    }
+    const { records } = join([two])
+    // Cyprus counts for Cilicia in 50 BCE too: two rows, one from each province.
+    expect(records.map((r) => [r.polity, r.province])).toEqual([
+      ['cilicia', 1],
+      ['cilicia', 2],
+    ])
+  })
+
+  it('marks everyone an uncertain join brings as uncertain there', () => {
+    const doubtful = table.map((t) =>
+      t.dprr === 'Cilicia'
+        ? { ...t, polities: [{ polity: 'cilicia', confidence: 'uncertain' as const }] }
+        : t,
+    )
+    const { records } = joinGovernors(
+      [post(1, 10, -50, -50, 1)],
+      (id) => names[id],
+      (o) => roles[o],
+      doubtful,
+      new Set(['cilicia']),
+      new Set(Object.values(names)),
+    )
+    expect(records.map((r) => r.uncertain)).toEqual([true])
+  })
+
+  it('joins a dated territory only inside its dates', () => {
+    // 60–55 BCE in Cyprus (−59…−54) counts for Cilicia only from 58 BCE (−57).
+    const { records } = join([post(1, 10, -59, -54, 2)])
+    expect(records.map((r) => r.year)).toEqual([-57, -56, -55, -54])
+  })
+
+  it('never puts a court on the map, and reports names the table lacks', () => {
+    const { records, report } = join([post(1, 10, -50, -50, 3), post(2, 10, -50, -50, 4)])
+    expect(records).toEqual([])
+    expect(report.unlisted).toEqual(new Map([['Nowhere', 1]]))
+  })
+
+  it('finds the years with nobody in command', () => {
+    const { records } = join([post(1, 10, -51, -50, 1), post(2, 11, -49, -49, 1)])
+    const years = new Map([['cilicia', new Set([-52, -51, -50, -49])]])
+    expect(unattestedYears(years, records)).toEqual(new Map([['cilicia', [-52, -49]]]))
   })
 })

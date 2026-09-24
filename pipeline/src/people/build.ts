@@ -27,6 +27,7 @@ import { fileURLToPath } from 'node:url'
 import type {
   AssertedYear,
   Authorities,
+  Governorships,
   LifeEventRecord,
   OfficeRole,
   PeopleManifest,
@@ -38,10 +39,13 @@ import type {
   StatusRecord,
   Year,
 } from '@roman-map/schema'
+import { formatYear } from '@roman-map/schema'
 import { readDprr, type Row, type Table } from './dprr.ts'
 import { CORRECTIONS, INVERSE_CORRECTIONS, type Correction } from './corrections.ts'
+import { joinGovernors, readDprrProvinces, unattestedYears } from './governors.ts'
 import { classifyOffices } from './offices.ts'
 import { readWikidata, type WikidataPerson } from './wikidata.ts'
+import { DATA_DIR, loadDataset } from '../load.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/people')
@@ -283,7 +287,7 @@ function main() {
     offices: offices.map((o) => ({ ...o, role: roles.get(o.id)! })),
     provinces: tables.provinces.map((p) => ({
       id: entityId(p.province!),
-      // One of DPRR's provinces has a description and no name.
+      // One of DPRR's provinces has neither a name nor a description.
       name: p.name ?? p.description ?? `province ${entityId(p.province!)}`,
       ...(p.description ? { description: p.description } : {}),
       ...(p.parent ? { parent: entityId(p.parent) } : {}),
@@ -549,7 +553,56 @@ function main() {
   // Write.
   rmSync(OUT, { recursive: true, force: true })
   mkdirSync(OUT, { recursive: true })
-  const files = { persons, posts, relationships, statuses, lifeEvents, authorities, search }
+  // Governors: DPRR's posts joined to our polities through data/dprr-provinces.yaml.
+  const table = readDprrProvinces(DATA_DIR)
+  const dataset = loadDataset()
+  const provinceNames = new Map(authorities.provinces.map((p) => [p.id, p.name]))
+  const { records: governorships, report: joined } = table
+    ? joinGovernors(
+        posts,
+        (id) => provinceNames.get(id),
+        (office) => roles.get(office),
+        table,
+        new Set(dataset.polities.map((p) => p.id)),
+        new Set(provinceNames.values()),
+      )
+    : { records: [], report: null }
+  if (joined && (joined.unknownNames.length || joined.unknownPolities.length)) {
+    throw new Error(
+      `data/dprr-provinces.yaml: ${[
+        ...joined.unknownNames.map((n) => `no DPRR province named "${n}"`),
+        ...joined.unknownPolities.map((p) => `no polity "${p}"`),
+      ].join('; ')}`,
+    )
+  }
+  // The years each polity was a province on our map, to find the ones with nobody attested.
+  const provinceYears = new Map<string, Set<Year>>()
+  if (table) {
+    const joinedPolities = new Set(table.flatMap((t) => t.polities.map((p) => p.polity)))
+    for (const c of dataset.claims) {
+      if (c.relation !== 'province' || !joinedPolities.has(c.polity)) continue
+      const years = provinceYears.get(c.polity) ?? new Set<Year>()
+      for (let y = c.from.year; y <= c.to.year; y++) years.add(y)
+      provinceYears.set(c.polity, years)
+    }
+  }
+  const unattested = unattestedYears(provinceYears, governorships)
+
+  const files = {
+    persons,
+    posts,
+    relationships,
+    statuses,
+    lifeEvents,
+    authorities,
+    search,
+    governorships: {
+      polities: table
+        ? [...new Set(table.flatMap((t) => t.polities.map((p) => p.polity)))].sort()
+        : [],
+      records: governorships,
+    } satisfies Governorships,
+  }
   for (const [name, data] of Object.entries(files)) {
     writeFileSync(join(OUT, `${name}.json`), JSON.stringify(data))
   }
@@ -604,6 +657,22 @@ function main() {
   console.log(
     `  English names: ${wikidata ? `${n(persons.filter((p) => p.en).length)} of ${n(persons.length)} from Wikidata` : 'none (no Wikidata cache)'}`,
   )
+  if (!table) {
+    console.log('  governors: none (no data/dprr-provinces.yaml yet)')
+  } else {
+    const polities = new Set(governorships.map((g) => g.polity))
+    console.log(
+      `  governors: ${n(governorships.filter((g) => g.role === 'command').length)} commands and ${n(governorships.filter((g) => g.role === 'staff').length)} staff years across ${polities.size} polities`,
+    )
+    if (joined!.unlisted.size) {
+      console.log(
+        `  NOT IN dprr-provinces.yaml: ${[...joined!.unlisted].map(([name, c]) => `${name} (${c} posts)`).join(', ')}`,
+      )
+    }
+    for (const [polity, years] of unattested) {
+      console.log(`  NO GOVERNOR ATTESTED in ${polity}: ${spans(years)}`)
+    }
+  }
   for (const e of corrections.applied)
     console.log(
       `  OVERRODE ${e.table} ${e.id} ${e.field} ${e.expect} → ${e.value}: ${e.why}`,
@@ -614,6 +683,18 @@ function main() {
     )
   }
   console.log(`wrote ${OUT} in ${((Date.now() - t0) / 1000).toFixed(1)} s`)
+}
+
+/** −66, −65, −64, −60 → "67–65 BCE, 61 BCE". */
+function spans(years: Year[]): string {
+  const out: string[] = []
+  for (let i = 0; i < years.length;) {
+    let j = i
+    while (j + 1 < years.length && years[j + 1] === years[j] + 1) j++
+    out.push(i === j ? formatYear(years[i]) : `${1 - years[i]}–${formatYear(years[j])}`)
+    i = j + 1
+  }
+  return out.join(', ')
 }
 
 /** When the Wikidata cache was fetched, for the manifest. */

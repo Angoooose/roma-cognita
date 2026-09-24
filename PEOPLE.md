@@ -8,7 +8,7 @@ Prosopography of the Roman Republic (DPRR). It sits beside DESIGN.md, which stay
 source of truth for the principles (§1): nothing is drawn that the data does not
 support, everything is dated, and builds report their own doubt.
 
-Status: phase 1 (ingest) done, 23 September 2026. Phase 2 next.
+Status: phase 1 (ingest) done, 23 September 2026. Phase 2 (governors and the person panel) in progress.
 
 ---
 
@@ -35,8 +35,9 @@ allow commercial use, which NC forbids.
 
 - DPRR-derived data lives only in `build/people/`, generated, with its own `LICENSE`.
   **No DPRR fact is ever written into `data/`.**
-- What we author about DPRR is ours, and lives in `data/`: the crosswalk from DPRR's
-  provinces to our polities (phase 3) refers to DPRR by id and is CC BY-SA.
+- What we author about DPRR is ours, and lives in `data/`: the table that lines up
+  DPRR's provinces with our polities (`data/dprr-provinces.yaml`, phase 2) refers to
+  DPRR only by its province names, and is CC BY-SA.
 - Every person panel credits DPRR, links the person's DPRR page and the licence, and
   says we normalised the data. DPRR's own citations (Broughton, Rüpke, Zmeskal) are
   shown with each assertion.
@@ -86,7 +87,7 @@ check; the endpoint does not.
   - commands (Mediterranean, fleet, "cum imperio consulari infinito");
   - vague areas (Hispania, Gallia, Italia).
   
-  The crosswalk (phase 3) gives each a kind.
+  The province table (phase 2) gives each a kind.
 - **Gaps are real.** Cilicia has no governor attested for 65–57, while Pompey's
   eastern command was in force. "No governor attested" is an answer, not a blank.
 - **Defeated candidacies are posts.** `repulsa (cos.)` and the like record an
@@ -190,32 +191,60 @@ build's report as `other`.
    - tests for the year conversion, the office roles, relationship merging, names,
      corrections, and checks against the real build (Cicero consul in 63 BCE; in
      Cilicia in 51 BCE, Cicero commands and his brother Quintus is staff).
-2. **Person panel and ⌘K search**, with no map join:
-   - career as a dated list;
-   - family grouped (parents, spouses, children, adoptions), uncertain links marked;
-   - sources and the DPRR credit;
-   - `?person=dprr:2072` in the URL.
-3. **Crosswalk and governors:**
+2. **Governors and the person panel** (in progress). Governors come first, because
+   they are what the people layer is for; search waits until there is a panel for it
+   to open.
    - `data/dprr-provinces.yaml`, one entry per DPRR province, with its kind and,
-     for territories, a dated list of our polities;
-   - the territory inspector shows the governor for the year, with staff folded
-     away and his Broughton reference, or "No governor attested";
-   - the build reports each province's unattested years.
-4. **Career on the map:** highlight the provinces of a career and jump to their
-   years. This needs one new engine call, `map.highlight(polityIds, style)`.
+     for territories, a dated list of our polities. Ours, marked `review: draft`
+     until checked.
+   - The province inspector shows who was in command that year, outgoing before
+     incoming, with his staff folded beneath, or "No one attested". The build
+     prints each province's unattested years.
+   - A join can be less sure than its name's others: `confidence: uncertain` on one
+     polity marks everyone it brings there as uncertain. DPRR's "Gallia Transalpina"
+     cannot say which half of Gaul a man held, so its join to Gallia Comata is one.
+   - Names open the person panel; hovering one shows who they were first (§5.1).
+   - `?person=dprr:2072` in the URL.
+3. **People in search:** the index finds people too, ordered by the year shown,
+   never filtered by it: those attested near that year first, everyone else after
+   with their dates. A strict "only this year" switch is optional.
+4. **Career on the map:** a command's provinces already take the map to their first
+   year drawn. Still to do: highlight all the provinces of a career at once, which
+   needs one new engine call, `map.highlight(polityIds, style)`.
 5. **Later:**
    - portraits via Wikidata;
    - a family graph;
    - Cicero's correspondents;
    - our own `person` records for client kings.
 
+### 5.1 Where people appear
+
+The place and the person are different reading, so they are different panels:
+
+- **The right is the place.** A province is drawn as a life is: its years on the map
+  in lanes (who held it, and each governor's term), who is in command in the year
+  shown, then all its governors and its sources folded.
+- **The left is the person.** A separate plate beneath the title block, with a margin
+  between, wider than the title block (360px), running down to the legend's strip.
+  The legend folds to its strip while a person is open, without changing the reader's
+  saved choice.
+- **Not a modal.** A life happens on the map: the map stays live between the two
+  panels. A person's career is drawn in lanes (offices, commands, the Senate, a
+  priesthood) over the timeline's own ruler, with its gold index at the year shown;
+  the rows held that year are shaded; a command's province is a link that moves the
+  timeline to its first year on the map and flies there. A full-width family tree, later, is the one place an overlay
+  earns its keep.
+- **Hover before click.** Every name is a link: hovering shows dates, highest office
+  and Wikidata's one-line description; clicking opens the panel. Opening a relative
+  replaces the person and keeps a way back; a name clicked anywhere else, such as a
+  governor in the province panel, starts afresh with no back link.
+- **Drawn in the map's own hand.** The panels use the interface's existing parts
+  (components/Marks.tsx): the timeline's ruler and index, the legend's swatches, and
+  search's index lines with dotted leaders. The folds remember whether they are open.
+- **Doubt is drawn as on the map:** an uncertain office, span, relative or province is
+  fainter, and in words carries a "?" that explains itself on hover.
+
 ## 6. Open questions
 
-- **Two governors in one year is normal, not an error.** Cilicia in 51 BCE has
-  Appius Claudius Pulcher (outgoing) and Cicero (incoming) both in command. DPRR
-  works in whole years, so phase 3 must show both, in order where the sources allow.
-
-- DPRR has 16k notes on posts and people; phase 1 leaves them out. Show them in the
-  person panel later, or link to DPRR's page?
-- How to show a relationship DPRR marks uncertain: a "?" beside it, or a faded row
-  as on the map?
+- DPRR has 16k notes on posts and people, left out so far; each person panel links to
+  DPRR's full record instead. Show the notes in the panel later?
