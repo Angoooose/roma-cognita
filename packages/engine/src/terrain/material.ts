@@ -14,7 +14,6 @@ import {
   max,
   min,
   mix,
-  mx_noise_float,
   normalize,
   positionLocal,
   smoothstep,
@@ -29,6 +28,7 @@ import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
 import { GRATICULE_INK, graticuleNode } from '../edge/graticule.ts'
 import { knownDistanceKm, noise2, paperNode } from '../edge/paper.ts'
+import { seededNoise } from './noise.ts'
 import { waterLattice, waterShading } from './water.ts'
 
 /**
@@ -184,7 +184,20 @@ export function createTerrainMaterial(n: number) {
   const pxKm = max(fwidth(km.x), 1e-6)
   const pxM = pxKm.mul(1000)
   const detail = (wavelengthKm: number) => float(1).sub(smoothstep(wavelengthKm / 6, wavelengthKm / 2, pxKm))
-  const noise = (wavelengthKm: number, seed: number) => mx_noise_float(vec3(km.div(wavelengthKm), seed))
+  /**
+   * `noise × amplitude × detail`, skipping the noise wherever the fade is 0 and
+   * the product is nothing: most of the map, for the finer scales, at the overview.
+   */
+  const detailNoise = (wavelengthKm: number, seed: number, amplitude: number) =>
+    Fn(() => {
+      const fade = detail(wavelengthKm).toVar()
+      const v = float(0).toVar()
+      If(fade.greaterThan(0), () => {
+        v.assign(noise(wavelengthKm, seed).mul(amplitude).mul(fade))
+      })
+      return v
+    })()
+  const noise = (wavelengthKm: number, seed: number) => seededNoise(km.div(wavelengthKm), seed)
 
   // Slope is the raw gradient — the real steepness, not the exaggerated one the lighting
   // uses — so it means the same at every zoom (coarse tiles smooth it, which is right:
@@ -214,8 +227,8 @@ export function createTerrainMaterial(n: number) {
   // moves lightness a few percent and nudges between the ground's own family and its
   // neighbours, never towards a colour the climate did not pick.
   const drift = noise(60, 1).mul(0.06)
-  const patch = noise(6, 2).mul(0.05).mul(detail(6))
-  const grain = noise(0.6, 3).mul(0.04).mul(detail(0.6))
+  const patch = detailNoise(6, 2, 0.05)
+  const grain = detailNoise(0.6, 3, 0.04)
   ground = ground.mul(float(1).add(drift).add(patch).add(grain))
 
   // Deserts are not one colour: sand seas are pale, rocky plateaus, escarpments and wadi
@@ -226,7 +239,7 @@ export function createTerrainMaterial(n: number) {
   ground = mix(ground, desertTone, b.r.mul(0.8))
 
   // Rock on steep ground and bare ground high up.
-  const rockBreak = noise(1.5, 4).mul(0.15).mul(detail(1.5))
+  const rockBreak = detailNoise(1.5, 4, 0.15)
   const rock = max(smoothstep(0.35, 0.8, slope.add(rockBreak)), smoothstep(1700, 2600, height))
   ground = mix(ground, ROCK, rock.mul(0.85))
   // Snow: permanent only on the highest ground, lower where the climate is cold.
@@ -316,8 +329,6 @@ export function createTerrainMaterial(n: number) {
 
   // A hairline of ink on the shore, as on an engraved plate.
   const coastLine = float(1).sub(smoothstep(0, px.mul(0.9), abs(shore)))
-
-  const coloured = mix(mix(water, landWithRivers, isLand), INK, coastLine.mul(0.35))
 
   // --- terra incognita: the unfinished sketch -----------------------------------------
   // Past the known world the map stops claiming anything. Colour drains away and leaves
@@ -457,10 +468,20 @@ export function createTerrainMaterial(n: number) {
   }
 
   mat.colorNode = Fn(() => {
-    const colour = coloured.toVar()
+    // Derivatives first, and the samples they read, outside the branches below: inside
+    // one, a derivative is undefined, and a sample first taken there is not taken for
+    // pixels that skip it. The water's pixel size is one; it is taken as the water is.
     const kmDx = dFdx(km).toVar()
     const kmDy = dFdy(km).toVar()
     const hw = max(fwidth(height.div(500)), 1e-4).toVar()
+    const sea = water.toVar()
+    // Open sea is drawn from the water alone: the land's shading, most of the cost, is
+    // mixed in by `isLand`, which is 0 there. So it is only worked out where it shows.
+    const land = vec3(0).toVar()
+    If(isLand.greaterThan(0), () => {
+      land.assign(landWithRivers)
+    })
+    const colour = mix(mix(sea, land, isLand), INK, coastLine.mul(0.35)).toVar()
     If(nearEdge, () => {
       colour.assign(sketchOver(colour, kmDx, kmDy, hw))
     })
