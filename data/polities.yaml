@@ -17,7 +17,7 @@
   names:
     - { text: Roma, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -30,7 +30,7 @@
   names:
     - { text: Italia, lang: la, preferred: true }
   from: { earliest: 90 BCE, latest: 89 BCE }
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
@@ -48,7 +48,7 @@
   names:
     - { text: Sicilia, lang: la, preferred: true }
   from: 241 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -59,7 +59,7 @@
   names:
     - { text: Sardinia et Corsica, lang: la, preferred: true }
   from: 227 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -968,3 +968,55 @@
   note: >-
     The Cretan cities, independent until Q. Metellus conquered the island in
     69–67.
+
+# --- added September 2026: the extension to 27 BCE -----------------------------
+
+- id: sextus-pompeius
+  kind: command
+  names:
+    - { text: Sextus Pompeius, preferred: true }
+    - { text: Sex. Pompeius Magnus Pius, lang: la }
+  from: { earliest: 43 BCE, latest: 42 BCE }
+  to: 36 BCE
+  ruler: Sex. Pompeius, 43–36
+  sources:
+    - { source: cassius-dio, locator: '48.17.4–19.1' }
+    - { source: appian, locator: 'BC 4.84–85' }
+    - { source: appian, locator: 'BC 5.72' }
+    - { source: appian, locator: 'BC 5.126' }
+    - { source: welch-2012 }
+  confidence: certain
+  review: draft
+  note: >-
+    Pompey's younger son. The senate gave him the fleet and the coasts in 43
+    (Dio 46.40.3; Vell. 2.73.2); condemned with Caesar's assassins later that
+    year (Dio 48.17.2), he held Sicily from 43/42, Sardinia and Corsica through
+    his freedman Menodorus in 40–38, and was recognised by the triumvirs at
+    Misenum in 39 as governor of Sicily, Sardinia, Corsica and (on paper) the
+    Peloponnese, which Antony never handed over (Dio 48.36.4–5, 48.39.1; App.
+    BC 5.72, 5.77). Beaten at Naulochus in 36, killed at Miletus in 35 (App. BC
+    5.144). A Roman commander, not a state: the provinces he held stayed
+    provinces, so his ground is occupation.
+
+- id: achaea
+  kind: province
+  names:
+    - { text: Achaia, lang: la, preferred: true }
+    - { text: Achaea, lang: la }
+  from: { earliest: 46 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: strabo, locator: '17.3.25' }
+    - { source: bowersock-1965, locator: '284–285' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Attested as a province of the people in the settlement of January 27 (Dio
+    53.12.4, "Greece with Epirus"). 27 is its first firm attestation, not a
+    creation date: Ser. Sulpicius Rufus governed Achaea in 46–45 (Broughton),
+    and Greece had commanders of its own under the triumvirs, so it may have
+    been separate earlier, on and off. The ground is drawn Achaea's from 27
+    only. Strabo's list (17.3.25), which Bowersock reads as putting Thessaly and
+    part of Epirus in Achaea, describes the provinces of Tiberius' time, so
+    reading it back to 27 is itself a step of inference.

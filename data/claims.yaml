@@ -20,7 +20,7 @@
   polity: italia
   relation: citizen-territory
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
@@ -32,7 +32,7 @@
   polity: gallia-cisalpina
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: 43 BCE
   sources:
     - { source: cah-ix }
     - { source: broughton-mrr, locator: 'vol. II, 44–43 BCE (D. Brutus in Cisalpina)' }
@@ -42,7 +42,9 @@
   note: >-
     Provincial from c. 81. The lex Roscia of 49 gave the Transpadanes
     citizenship, but the province went on: D. Brutus governed it in 44–43 and
-    Antony fought him for it. It was merged into Italy only in 42 (Dio 48.12.5).
+    Antony fought him for it. It was merged into Italy only in 42 (App. BC 5.3;
+    Dio 48.12.5); the row ran to "after 43" until September 2026, against its
+    own polity's end.
 
 # --- the islands ---------------------------------------------------------------
 
@@ -50,7 +52,7 @@
   polity: sicilia
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -64,7 +66,7 @@
   polity: sardinia-corsica
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -73,7 +75,7 @@
   polity: sardinia-corsica
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -178,7 +180,7 @@
   polity: macedonia
   relation: province
   from: before 68 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: kallet-marx-1995 }
     - { source: broughton-mrr }
@@ -187,7 +189,10 @@
   note: >-
     Overseen by the governor of Macedonia; whether Greece was formally
     annexed in 146 is disputed, and its free cities (Athens, Sparta, Delphi)
-    were not provincial ground. Uncertain, so drawn fainter.
+    were not provincial ground. Uncertain, so drawn fainter. Ends where the
+    province of Achaea is first firmly attested, in 27; Achaea had a governor of
+    its own at times before (Sulpicius Rufus, 46–45), which this row does not
+    try to show.
 
 - atom: creta
   polity: creta
@@ -1433,3 +1438,161 @@
     - { source: curchin-1991 }
   confidence: probable
   review: draft
+
+# --- added September 2026: the extension to 27 BCE -----------------------------
+#
+# Occupation rows are drawn from the year the occupier took hold to the last
+# year he held, inclusive, as Pharnaces' 48–47 is: the holding goes on
+# underneath in its own layer.
+
+# Italy and the islands
+
+- atom: cisalpina
+  polity: italia
+  relation: citizen-territory
+  from: 42 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.3' }
+    - { source: cassius-dio, locator: '48.12.5' }
+    - { source: laffi-1992 }
+  confidence: probable
+  review: draft
+  note: >-
+    After Philippi the triumvirs agreed to make Cisalpine Gaul "independent, as
+    the elder Caesar had intended" (App. BC 5.3): no longer a province, so no
+    governor could keep an army south of the Alps. Dio has it "included by this
+    time in the district of Italy" in 41 (48.12.5). In practice Pollio held
+    Venetia for Antony into 40 (Vell. 2.76.2), and Broughton still lists
+    commanders there in 42–40; Laffi (not read) is reported to put the real end
+    in late 41. The legal decision is taken as the date.
+
+- atom: sicilia
+  polity: sextus-pompeius
+  relation: occupied
+  from: { earliest: 43 BCE, latest: 42 BCE }
+  to: 37 BCE
+  sources:
+    - { source: cassius-dio, locator: '48.17.4–19.1' }
+    - { source: appian, locator: 'BC 4.84–85' }
+    - { source: cassius-dio, locator: '49.11.3' }
+    - { source: powell-welch-2002 }
+  confidence: certain
+  review: draft
+  note: >-
+    Sextus took Mylae and Tyndaris and shared Messana with the governor
+    Pompeius Bithynicus in 43 (Dio 48.17.4–5), then "occupied the whole of the
+    island" and killed him (48.19.1). Welch: some of the island "must have gone
+    over to Sextus before November 43". Misenum made him its lawful governor in
+    39 (Dio 48.36.5), which changed the legal cover but not who held it, so the
+    row runs on unbroken. Naulochus (September 36) ended it; 36 is Octavian's.
+
+- atom: sardinia
+  polity: sextus-pompeius
+  relation: occupied
+  from: 40 BCE
+  to: 39 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.56' }
+    - { source: cassius-dio, locator: '48.30.7–8' }
+    - { source: appian, locator: 'BC 5.78' }
+    - { source: cassius-dio, locator: '48.45.5–6' }
+  confidence: certain
+  review: draft
+  note: >-
+    Menodorus (Dio's Menas) took Sardinia and its two legions for Sextus while
+    Antony besieged Brundisium in autumn 40 (App. BC 5.56; Dio 48.30.7–8), and
+    handed it to Octavian in 38 (Dio 48.45.5–6; App. BC 5.78, 5.80). Dio 48.2.1
+    has Sextus "still occupying Sardinia and Sicily" already in 42; Appian
+    (5.56) calls Sardinia Octavian's before 40 and Dio's own narrative has the
+    seizure in 40, so 48.2.1 is read as an anticipation.
+
+- atom: corsica
+  polity: sextus-pompeius
+  relation: occupied
+  from: 40 BCE
+  to: 39 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.67' }
+    - { source: appian, locator: 'BC 5.72' }
+    - { source: appian, locator: 'BC 5.80' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sardinia and Corsica were held by Sextus's lieutenants before Misenum (App.
+    BC 5.67), and Menodorus handed over both in 38 (5.80). No source gives the
+    year Corsica was taken; 40 follows Sardinia.
+
+# Greece: the province of Achaea, attested in 27
+
+- atom: thessalia
+  polity: macedonia
+  relation: province
+  from: before 68 BCE
+  to: 28 BCE
+  sources:
+    - { source: broughton-mrr }
+    - { source: nigdelis-2007 }
+  confidence: certain
+  review: draft
+  note: Part of the macedonia atom until it was split out (September 2026); the row is macedonia's.
+
+- atom: thessalia
+  polity: achaea
+  relation: province
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: bowersock-1965, locator: '285' }
+    - { source: strabo, locator: '17.3.25' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Bowersock, emending Strabo 17.3.25, concludes that Augustan Thessaly was
+    "zweifellos ein Teil der provincia Achaia" (p. 285), and that this was
+    also the traditional view. The transmitted text ("as far as Thessaly")
+    could be read as leaving Thessaly out, and the list is Tiberian, so the
+    year 27 rests on reading it back.
+
+- atom: epirus
+  polity: macedonia
+  relation: province
+  from: before 68 BCE
+  to: 28 BCE
+  sources:
+    - { source: broughton-mrr }
+    - { source: nigdelis-2007 }
+  confidence: certain
+  review: draft
+  note: Part of the macedonia atom until it was split out (September 2026); the row is macedonia's.
+
+- atom: epirus
+  polity: achaea
+  relation: province
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: strabo, locator: '17.3.25' }
+    - { source: bowersock-1965, locator: '284–285' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Dio lists "Greece with Epirus" among the people's provinces in 27, though
+    he warns that his list uses the names of his own day (53.12.8). Strabo has
+    "certain Epeirotic tribes which border on Macedonia" in Achaea. How far north
+    that part of Epirus reached is not known.
+
+- atom: achaea
+  polity: achaea
+  relation: province
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: strabo, locator: '17.3.25' }
+  confidence: probable
+  review: draft
+  note: >-
+    A province of the people in 27. The free cities (Athens, Sparta, Delphi)
+    lay inside it but were not provincial ground.

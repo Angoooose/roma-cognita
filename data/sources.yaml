@@ -208,6 +208,61 @@
   kind: modern
   citation: G. Mihailov, Inscriptiones Graecae in Bulgaria repertae, vol. I² (Sofia, 1970)
 
+# Added for the extension to 27 BCE (September 2026). Bibliographic details were
+# checked against the publisher, a library catalogue, JSTOR or a review; a note
+# says where a work's content was read and where only its entry was confirmed.
+
+- id: cah-x
+  kind: modern
+  citation: >-
+    A. K. Bowman, E. Champlin and A. Lintott (eds), The Cambridge Ancient
+    History, vol. X², The Augustan Empire, 43 B.C.–A.D. 69 (Cambridge, 1996)
+  note: >-
+    Chapters cited: C. Pelling, "The triumviral period", ch. 1, pp. 1–69; J. A.
+    Crook, "Political history, 30 B.C. to A.D. 14", ch. 2, pp. 70–112; E. S.
+    Gruen, "The expansion of the empire under Augustus", ch. 4, pp. 147–197; B.
+    M. Levick, "Greece (including Crete and Cyprus) and Asia Minor from 43 B.C.
+    to A.D. 69", ch. 14a, pp. 641–675; A. K. Bowman, "Egypt", ch. 14b, pp.
+    676–702. Chapter pages confirmed on Cambridge Core; contents not re-read.
+
+- id: welch-2012
+  kind: modern
+  citation: >-
+    K. Welch, Magnus Pius: Sextus Pompeius and the Transformation of the Roman
+    Republic (Swansea: The Classical Press of Wales, 2012)
+
+- id: powell-welch-2002
+  kind: modern
+  citation: >-
+    K. Welch, "Sextus Pompeius and the Res Publica in 42–39 BC", in A. Powell
+    and K. Welch (eds), Sextus Pompeius (London: Duckworth and The Classical
+    Press of Wales, 2002) 31–63
+
+- id: rich-1990
+  kind: modern
+  citation: >-
+    J. W. Rich (ed. and trans.), Cassius Dio: The Augustan Settlement (Roman
+    History 53–55.9) (Warminster: Aris & Phillips, 1990)
+
+- id: osgood-2006
+  kind: modern
+  citation: >-
+    J. Osgood, Caesar's Legacy: Civil War and the Emergence of the Roman Empire
+    (Cambridge, 2006)
+
+- id: bowersock-1965
+  kind: modern
+  citation: >-
+    G. W. Bowersock, "Zur Geschichte des römischen Thessaliens", Rheinisches
+    Museum für Philologie 108 (1965) 277–289
+  url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+  note: Open access; read. Argues from an emended Strabo 17.3.25 that Augustan Achaea included Thessaly (p. 285).
+
+- id: laffi-1992
+  kind: modern
+  citation: U. Laffi, "La provincia della Gallia Cisalpina", Athenaeum 80 (1992) 5–23
+  note: Entry from index records; the article has not been read.
+
 - id: barrington
   kind: modern
   citation: >-
@@ -321,6 +376,22 @@
 - id: bellum-africum
   kind: ancient
   citation: '[Caesar], Bellum Africum'
+
+- id: res-gestae
+  kind: ancient
+  citation: Augustus, Res Gestae Divi Augusti
+
+- id: suetonius-aug
+  kind: ancient
+  citation: Suetonius, Divus Augustus
+
+- id: ovid-fasti
+  kind: ancient
+  citation: Ovid, Fasti
+
+- id: tacitus-ann
+  kind: ancient
+  citation: Tacitus, Annales
 
 # --- datasets ------------------------------------------------------------------
 

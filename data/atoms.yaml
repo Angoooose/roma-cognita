@@ -1818,6 +1818,96 @@
     48–47 and fought Vatinius in 45–44 (Appian Ill. 12–13). Takes the coastal
     strip's edge from illyricum.
 
+- id: thessalia
+  evidence: derived
+  splitFrom: macedonia
+  construction:
+    - method: outline
+      edge:
+        - [23.4, 39.95]
+        - at: [22.63, 39.93]
+          note: the mouth of the Peneius, below the Vale of Tempe
+        - at: [22.35, 40.08]
+          note: Olympus, the old frontier of Thessaly and Macedon
+        - at: [22.03, 40.05]
+          via: crest
+          note: the Volustana pass, over the Cambunian mountains
+        - at: [21.35, 39.95]
+          via: crest
+          note: the Cambunian mountains to the Pindus
+        - at: [21.2, 39.77]
+          note: the Pindus at the Zygos pass
+        - at: [21.4, 39.2]
+          via: crest
+          note: south along the Pindus
+        - [21.5, 39.0]
+        - at: [22.2, 39.0]
+          note: Othrys, the southern limit of Thessaly (macedonia's old line)
+        - at: [22.75, 38.95]
+          note: the Malian Gulf
+        - [23.0, 39.0]
+        - [23.3, 39.05]
+        - [24.1, 39.3]
+  sources:
+    - { source: bowersock-1965, locator: '284–285' }
+    - { source: barrington, locator: 'maps 49–51, 55' }
+    - { source: natural-earth }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Thessaly, from Olympus and Tempe to Othrys and the Pindus, with Magnesia
+    (Ossa, Pelion, Demetrias). Split from macedonia (September 2026) because
+    Augustan Achaea took it in (Bowersock 1965), while it had been part of
+    Macedonia before. Whether Perrhaebia and Magnesia went with it is not
+    settled. The northern course between Olympus and the Pindus follows the
+    ridge of the Cambunian mountains, a convention for the ancient border of
+    Thessaly and Macedon.
+
+- id: epirus
+  evidence: schematic
+  splitFrom: macedonia
+  construction:
+    - method: outline
+      edge:
+        - at: [20.7, 39.05]
+          note: the Ambracian Gulf, the southern limit of Epirus (macedonia's old line)
+        - [20.4, 39.1]
+        - [20.12, 39.4]
+        - [20.02, 39.62]
+        - [19.99, 39.8]
+        - [19.7, 40.0]
+        - [19.2, 40.35]
+        - at: [19.35, 40.45]
+          note: the Acroceraunian headland (Karaburun)
+        - at: [19.75, 40.22]
+          note: along the Acroceraunian mountains
+        - at: [20.02, 40.3]
+          note: the Aous at Tepelenë
+        - at: [20.75, 40.05]
+          via: river
+          note: up the Aous to Konitsa
+        - [21.05, 39.9]
+        - [21.2, 39.77]
+        - [21.45, 39.5]
+        - [21.45, 39.05]
+        - [21.1, 39.0]
+  sources:
+    - { source: bowersock-1965, locator: '284–285' }
+    - { source: strabo, locator: '17.3.25' }
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: barrington, locator: 'maps 49, 54' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Epirus south of the Aous and the Acroceraunian mountains. Split from
+    macedonia (September 2026): Dio's "Greece with Epirus" and Strabo's
+    "certain Epeirotic tribes which border on Macedonia" put part of Epirus in
+    Achaea by the Augustan settlement. How far north that part reached is not
+    known; the Aous line keeps Apollonia, Byllis and Amantia in Macedonia and
+    follows the later Epirus Vetus, which is a convention. Corcyra stays with
+    macedonia. Its eastern edge on the Pindus is thessalia's.
+
 - id: macedonia
   evidence: derived
   construction:
@@ -1876,12 +1966,13 @@
   review: draft
   note: >-
     The four Macedonian merides from the Nestus to Pelagonia and the Paeonia
-    that bordered the Dardanians (Nigdelis), with Thessaly, Epirus and the
-    Illyrian coast from Dyrrachium and Apollonia to the Drilon, and the Via
+    that bordered the Dardanians (Nigdelis), with Corcyra and the Illyrian coast
+    from Dyrrachium and Apollonia to the Drilon, and the Via
     Egnatia's coast to the Hebrus and the Thracian Chersonese. The northern
     edge stops short of Scupi and the Dardanians.
     Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
-    Hellespont from asia.
+    Hellespont from asia. Thessaly and southern Epirus, part of this outline
+    until September 2026, are their own atoms (thessalia, epirus), cut out of it.
 
 - id: achaea
   evidence: derived
@@ -1916,11 +2007,12 @@
   confidence: uncertain
   review: draft
   note: >-
-    Greece south of Thessaly. It was not a province of its own before 27; the
-    governor of Macedonia oversaw it, and whether it was formally annexed in 146
-    is disputed (Kallet-Marx argues not). Athens, Sparta and Delphi were free.
-    Claimed for Macedonia with uncertain confidence, which draws it fainter.
-    Takes its northern edge from macedonia.
+    Greece south of Thessaly. The governor of Macedonia oversaw it for most of
+    the Republic, and whether it was formally annexed in 146 is disputed
+    (Kallet-Marx argues not). Athens, Sparta and Delphi were free. Claimed for
+    Macedonia with uncertain confidence, which draws it fainter, until the
+    Augustan settlement attests a province of Achaea. Takes its northern edge
+    from macedonia and thessalia.
 
 - id: creta
   evidence: surveyed
