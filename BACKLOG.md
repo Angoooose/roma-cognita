@@ -140,7 +140,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 - **Built:** the museum model (DESIGN §7.7): every known building built as itself
   from its sourced design (about 100 of them, through 27 BCE), ~15,500 generated
-  houses, the wall and gates, trees, baked shadows, and the smoothed board with the
+  houses, the Servian Wall on SITAR's course with its gates and the agger, trees, baked shadows, and the smoothed board with the
   Tiber and paved streets.
 - **Researched and left out** (September 2026), so the next pass need not repeat
   the search:
@@ -175,11 +175,36 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - **The generated city is uniform elsewhere.** The Palatine now has its great
   houses (DESIGN §7.7); the Subura crowded with tall blocks and the Aventine more
   open could follow.
-- **The wall's reconstructed stretches** are straight joins; Lanciani's plan
-  (public domain) would give the curves. Its gates are plain towers.
+- **The Servian Wall in 27 BCE.** The houses built against it that Livy saw
+  (1.44) and Maecenas's gardens over the agger's cemetery (from about 35 BCE, Horace
+  walking "on the sunny agger") are not drawn; nor the gates whose site is unknown
+  or disputed (Ratumena, Flumentana, Lavernalis, Querquetulana), nor the 87 BCE
+  artillery arches on the Aventine (Via di Sant'Anselmo). On a brow its inner face
+  stands 5–7 m over the hill behind it, where the wall there was more a facing
+  against the hill, its top a parapet's height over the ground inside.
+- **The Capitol's summits.** Smoothed less, the Capitolium stands at ~43 m, but
+  the Arx at only ~27–33 m: the Mapterhorn surface there carries the Vittoriano's
+  terraces and the Aracoeli's stair, and no ancient level of the summit is in
+  SITAR to restore it by.
 - **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
   line do not meet at its edge, and the Itiner-e roads stop there.
 - **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),
   the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
   Latina (no Itiner-e line) are not drawn.
 - **The legend** has no entry for the model.
+- **The country round the city** (DESIGN §7.7), left for later:
+  - The plots and the tombs follow only the roads the plan has. With the Latina,
+    Ostiensis, Portuensis, Praenestina, Labicana and Nomentana drawn, their tombs
+    and roadside plots would follow; until then the land between the Appia and
+    the Tiburtina faces those two.
+  - The Grove of Libitina, the undertakers' grove, is not drawn: no source locates
+    it (Richardson p. 235). Pompey's gardens are a point for the same reason.
+  - The outlines of the gardens and groves are drawn from their sources' bounds by
+    hand; a reading of Lanciani's plan and the excavation reports could firm them
+    up. Maecenas' follow Richardson (south of the Porta Esquilina); Platner &
+    Ashby put them north of it, over the burial ground.
+  - Vines are painted rows only; low 3D rows of vines on their stakes could come
+    close in. The farmsteads' side ranges face the plot, not the yard.
+  - ~33,000 trees now stand in the model, about twice the groves' count, though
+    the olives and fruit trees are a few faces each. Worth measuring on a slow GPU
+    (the explorer-perf work).

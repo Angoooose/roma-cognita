@@ -12,8 +12,12 @@ export const FABRIC_STRIDE = 14
 export const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
 export const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 
-/** What the shader paints on a face (`Builder.look`, `skin` in `material`). */
-export const SKIN = { none: 0, front: 1, wall: 2, roof: 3 }
+/**
+ * What the shader paints on a face (`Builder.look`, `skin` in `material`): a
+ * generated house's front, its other walls or its tiled roof, or squared stone laid
+ * in courses (the Servian Wall, wall.ts).
+ */
+export const SKIN = { none: 0, front: 1, wall: 2, roof: 3, ashlar: 4 }
 
 /**
  * What the known buildings are faced with, as the records' sources say (model.ts
@@ -80,6 +84,13 @@ export const C = {
   /** Warehouses: bare tufa. */
   warehouse: new THREE.Color('#CFC1A2'),
   stone: new THREE.Color('#D2C4AA'),
+  /**
+   * The Servian Wall's Grotta Oscura tufa, pale yellow-grey (Platner & Ashby, Murus
+   * Servii Tullii; Middleton 1892); its walk, trodden; and the shade of its passages.
+   */
+  wallTufa: new THREE.Color('#CEC09D'),
+  wallWalk: new THREE.Color('#B9AC8E'),
+  wallShade: new THREE.Color('#8C8270'),
   /** A retaining wall of squared tufa, and its coping. */
   retaining: new THREE.Color('#C2AE8A'),
   retainingTop: new THREE.Color('#D0C0A0'),
@@ -90,6 +101,10 @@ export const C = {
     new THREE.Color('#7C8B5C'),
   ],
   cypress: new THREE.Color('#4F6040'),
+  /** Olives: the grey-green of their leaves' undersides. */
+  olive: new THREE.Color('#858C66'),
+  /** Fruit trees: a fresher, darker green. */
+  fruit: new THREE.Color('#62784A'),
   trunk: new THREE.Color('#7A6450'),
   paving: new THREE.Color('#E9E1D0'),
 }
@@ -208,8 +223,11 @@ export class Builder {
     return this.topsOf.done()
   }
 
-  /** One triangle; points are [x, y, z above base], and the normal is its own. */
-  tri(a: number[], b: number[], c: number[], base: number, col: THREE.Color) {
+  /**
+   * One triangle; points are [x, y, z above base], and the normal is its own. `base`
+   * is the ground under all three, or under each (a long wall on sloping ground).
+   */
+  tri(a: number[], b: number[], c: number[], base: number | number[], col: THREE.Color) {
     const ux = b[0] - a[0]
     const uy = b[1] - a[1]
     const uz = b[2] - a[2]
@@ -237,7 +255,7 @@ export class Builder {
       P[pos + k * 3] = p[0] - this.ox
       P[pos + k * 3 + 1] = p[1] - this.oy
       P[pos + k * 3 + 2] = p[2]
-      this.base.a[b1 + k] = base
+      this.base.a[b1 + k] = typeof base === 'number' ? base : base[k]
       const Y = this.years.a
       Y[years + k * 4] = d[0]
       Y[years + k * 4 + 1] = d[1]
@@ -276,9 +294,21 @@ export class Builder {
     }
   }
 
-  quad(a: number[], b: number[], c: number[], d: number[], base: number, col: THREE.Color) {
-    this.tri(a, b, c, base, col)
-    this.tri(a, c, d, base, col)
+  quad(
+    a: number[],
+    b: number[],
+    c: number[],
+    d: number[],
+    base: number | number[],
+    col: THREE.Color,
+  ) {
+    if (typeof base === 'number') {
+      this.tri(a, b, c, base, col)
+      this.tri(a, c, d, base, col)
+    } else {
+      this.tri(a, b, c, [base[0], base[1], base[2]], col)
+      this.tri(a, c, d, [base[0], base[2], base[3]], col)
+    }
   }
 
   /** Vertical walls round a ring, from z0 to z1 (outward-facing for a CCW ring). */
@@ -970,6 +1000,25 @@ export class Builder {
     this.cone(x, y, crown, h, -r * 0.45, 8, base, col)
     this.prism(x, y, crown, h, h + r * 0.7, 8, base, col, false)
     this.cone(x, y, crown, h + r * 0.7, r * 0.75, 8, base, col)
+  }
+
+  /**
+   * An olive: a short trunk under a low, broad crown, wider than it is tall. Kept to
+   * a few faces, since the groves hold thousands.
+   */
+  olive(x: number, y: number, r: number, base: number, col: THREE.Color) {
+    const h = r * 0.55
+    this.prism(x, y, 0.3, -0.5, h + 0.3, 3, base, C.trunk, false)
+    this.cone(x, y, r, h, -r * 0.3, 6, base, col)
+    this.cone(x, y, r, h, r * 0.45, 6, base, col)
+  }
+
+  /** A fruit tree: a small round crown on a short trunk, a few faces. */
+  fruit(x: number, y: number, r: number, base: number, col: THREE.Color) {
+    const h = r * 0.8
+    this.prism(x, y, 0.25, -0.5, h + 0.3, 3, base, C.trunk, false)
+    this.cone(x, y, r, h, -r * 0.45, 6, base, col)
+    this.cone(x, y, r, h, r * 0.6, 6, base, col)
   }
 
   /** A cypress: a tall, narrow cone. */

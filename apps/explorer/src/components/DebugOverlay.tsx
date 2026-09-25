@@ -23,7 +23,7 @@ export function DebugOverlay() {
         `draws ${f.drawCalls}   tris ${(f.triangles / 1000).toFixed(0)}k`,
         `tiles drawn ${t.drawn}  ready ${t.ready}  loading ${t.loading}  queued ${t.queued}`,
         `deepest level ${t.maxLevelDrawn}`,
-        `at ${lon.toFixed(3)}, ${lat.toFixed(3)}   ${(s.distance / 1000).toFixed(0)} km   pitch ${s.pitch.toFixed(0)}°`,
+        `at ${lon.toFixed(3)}, ${lat.toFixed(3)}   ${(s.distance / 1000).toFixed(0)} km   pitch ${s.pitch.toFixed(0)}°   heading ${map.view.heading.toFixed(0)}°`,
         `${map.view.metresPerPixel.toFixed(0)} m/px`,
       ].join('\n')
       raf = requestAnimationFrame(tick)

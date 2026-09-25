@@ -6,8 +6,8 @@
  * - **Ground.** The Mapterhorn heights the terrain uses, smoothed over ~SMOOTH_M so
  *   the modern buildings the surface model carries do not show: the hills as they
  *   are now; the ancient ground lay a few metres lower in the valleys.
- * - **The walled city**, reconstructed in servian.ts, for the model's wall and the
- *   generated city inside it.
+ * - **The walled city**, inside the Servian Wall's course (servian.ts, SITAR's), for
+ *   the model's wall and the generated city inside it.
  * - **The Tiber**, a signed distance to OpenStreetMap's outline of its water, so the
  *   board can draw the river on its real course in place of the coarse HydroRIVERS
  *   line.
@@ -20,16 +20,24 @@
  * street drawn lighter, 127 a road, 63 a road drawn lighter.
  * plate-1: R signed distance to the circuit, G signed distance to the river, B the
  * distance to the hull of the circuit and everything on the plan, out to
- * REACH_CLAMP_M, for the board's edge. The fields are loaded without
- * premultiplication, so alpha is data like the rest.
+ * REACH_CLAMP_M, for the board's edge.
+ * plate-2: the country outside the wall, its farmland and gardens (fields.ts).
+ * The fields are loaded without premultiplication, so alpha is data like the rest.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import sharp from 'sharp'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
-import { MAX_KNOWN_M, SERVIAN } from './servian.ts'
-import { streetLines } from './streets.ts'
+import { servianCourse } from './servian.ts'
+import { itinere, streetLines } from './streets.ts'
+import {
+  EDGE_CLAMP_M,
+  FIELDS_REACH_M,
+  LANE_CLAMP_M,
+  layFields,
+  recordedGrounds,
+} from './fields.ts'
 import { ancientGround } from './ground.ts'
 import { COURSES } from './aqueducts.ts'
 import { designFootprints } from './designs.ts'
@@ -47,6 +55,9 @@ const LON = [12.447, 12.585]
 const LAT = [41.826, 41.924]
 const DEM_ZOOM = 13
 const SMOOTH_M = 45
+/** The Capitol's ground is smoothed over this instead, out to `r` from its middle (lon/lat). */
+const SHARP_M = 14
+const CAPITOL = { at: [12.4826, 41.8937] as [number, number], r: 260 }
 const CITY_CLAMP_M = 48
 /** The plate's paper reaches this far beyond everything on the plan (rome/shading.ts REACH_M). */
 const PLATE_REACH_M = 420
@@ -54,6 +65,25 @@ const PLATE_REACH_M = 420
 const REACH_CLAMP_M = 1400
 const RIVER_CLAMP_M = 16
 const STREET_CLAMP_M = 12
+/** The roads' distance field, for the plots that front them (fields.ts), is clamped at this. */
+const ROAD_CLAMP_M = 40
+/**
+ * The open ground of the Campus Martius, lon/lat: the plain north of the Saepta
+ * between the Via Flaminia and the river, where the people drilled, exercised and
+ * raced, "the plain covered with grass throughout the year" (Strabo 5.3.8; Platner
+ * & Ashby, Campus Martius, pp. 91–94). Left open, not farmed. The outline is loose:
+ * the open ground stops at the river, its east edge runs along the Via Flaminia's line
+ * (which ends short of its north edge), and its north and south edges wander.
+ */
+const CAMPUS_OPEN: [number, number][] = [
+  [12.4705, 41.8988],
+  [12.4812, 41.8988],
+  [12.4758, 41.9105],
+  [12.4715, 41.9115],
+  [12.466, 41.904],
+]
+/** Where the Campus Martius is (Platner & Ashby's point): its open ground is on this side of the river. */
+const CAMPUS_AT: [number, number] = [12.4755, 41.9005]
 /** The street field's code for a generated main street (plate-0 alpha). */
 const MAIN_STREET = 223
 /** A hill's name goes on its highest ground within this of its location. */
@@ -93,6 +123,7 @@ export async function bakePlate(
   streetGeometry: Map<string, [number, number][][]>,
   places: Map<string, Place>,
   outlines: { id: string; kind: string; polys: Pt[][][] }[],
+  groundOutlines: Map<string, Pt[][][]>,
 ) {
   const corners = [
     projection.forward(LON[0], LAT[0]),
@@ -130,32 +161,32 @@ export async function bakePlate(
       h[r * width + c] = dem(lon, lat)
     }
   const smooth = blur(h, width, height, SMOOTH_M / TEXEL_M)
+  // The Capitol smoothed less: its cliffs were steep, and over it the modern
+  // buildings the smoothing hides are few; smoothed over SMOOTH_M its summits stand
+  // several metres short and its brows spread far down its slopes.
+  {
+    const sharp = blur(h, width, height, SHARP_M / TEXEL_M)
+    const [cx, cy] = projection.forward(...CAPITOL.at)
+    for (let r = 0; r < height; r++)
+      for (let c = 0; c < width; c++) {
+        const [x, y] = at(c, r)
+        const d = Math.hypot(x - cx, y - cy)
+        if (d > CAPITOL.r) continue
+        const t = 1 - Math.min(1, Math.max(0, (d - CAPITOL.r * 0.6) / (CAPITOL.r * 0.4)))
+        const k = r * width + c
+        smooth[k] += (Math.max(smooth[k], sharp[k]) - smooth[k]) * t * t * (3 - 2 * t)
+      }
+  }
 
   // --- the walled city and the river ------------------------------------------------
   const riverRings = river
     .flat()
     .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
-  const riverEdges = riverRings.flatMap((r) =>
-    r.slice(0, -1).map((p, i) => [p, r[i + 1]] as [Pt, Pt]),
-  )
-  const circuit = SERVIAN.map((v) => {
-    const p = projection.forward(...v.at)
-    return v.snap === 'river' ? nearestOn(riverEdges, p) : p
-  })
-  const circuitRing = [...circuit, circuit[0]]
-  // Every join is wall, known or reconstructed, but the river bank's.
-  const wall: { a: Pt; b: Pt; s0: number; known: boolean }[] = []
-  let along = 0
-  for (let i = 0; i < SERVIAN.length; i++) {
-    const j = (i + 1) % SERVIAN.length
-    const [a, b] = [circuit[i], circuit[j]]
-    const len = Math.hypot(b[0] - a[0], b[1] - a[1])
-    if (!SERVIAN[i].alongRiver) {
-      const surveyed = SERVIAN[i].evidence !== 'course' && SERVIAN[j].evidence !== 'course'
-      wall.push({ a, b, s0: along, known: surveyed && len < MAX_KNOWN_M })
-    }
-    along += len
-  }
+  // The wall's course, SITAR's (servian.ts): the walled city is what it encloses.
+  const course = servianCourse()
+  const circuitRing = course.ring
+  const circuit = circuitRing.slice(0, -1)
+  const gateAt = new Map(course.gates.map((g) => [g.name, g.at]))
 
   const grid = { x0, y1, width, height, texel: TEXEL_M }
   const water = signedField(grid, riverRings, RIVER_CLAMP_M)
@@ -190,7 +221,7 @@ export async function bakePlate(
     ...outlines.flatMap((o) => o.polys.map((poly) => poly[0])),
     ...designed.map((d) => d.ring),
   ]
-  const streets = streetLines(streetGeometry, places, circuitRing, {
+  const streets = streetLines(streetGeometry, places, circuitRing, gateAt, {
     height: (x, y) => {
       const c = Math.min(width - 1, Math.max(0, Math.round((x - x0) / TEXEL_M - 0.5)))
       const r = Math.min(height - 1, Math.max(0, Math.round((y1 - y) / TEXEL_M - 0.5)))
@@ -226,6 +257,48 @@ export async function bakePlate(
   const hull = convexHull([...circuit, ...planned])
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)
 
+  // --- the country ---------------------------------------------------------------------
+  // The roads the plots face: the plan's, and the map's own (Itiner-e) across the grid.
+  const [gx1, gy0] = [x0 + width * TEXEL_M, y0]
+  const onGrid = (q: Pt) =>
+    q[0] > x0 - 2000 && q[0] < gx1 + 2000 && q[1] > gy0 - 2000 && q[1] < y1 + 2000
+  const roads = [
+    ...streets.filter((l) => l.road).map((l) => l.pts),
+    ...[...itinere().values()]
+      .flat()
+      .map((l) => l.pts)
+      .filter((l) => l.some(onGrid)),
+  ]
+  const roadField = unsignedField(
+    grid,
+    roads.flatMap((l) => l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt])),
+    ROAD_CLAMP_M,
+  ).d
+  // The river's level, as the model takes it: the lowest tenth of the ground under it.
+  const onRiver = [...h.filter((_, i) => water[i] < -4)].sort((a, b) => a - b)
+  const grounds = recordedGrounds(places, groundOutlines)
+  const fields = layFields({
+    grid,
+    smooth,
+    water,
+    city,
+    reach: reachField,
+    roadDist: roadField,
+    roads,
+    circuit: circuitRing,
+    riverRings,
+    waterLevel: onRiver[Math.floor(onRiver.length * 0.1)] ?? 8,
+    monuments: monumentRings,
+    open: [
+      {
+        ring: CAMPUS_OPEN.map(([lon, lat]) => projection.forward(lon, lat)),
+        at: projection.forward(...CAMPUS_AT),
+        wobble: 30,
+      },
+    ],
+    grounds,
+  })
+
   // --- the model --------------------------------------------------------------------
   const model = bakeModel({
     out,
@@ -233,8 +306,7 @@ export async function bakePlate(
     raw: h,
     smooth,
     circuit: circuitRing,
-    wall: wall.map(({ a, b, known }) => ({ a, b, known })),
-    gates: SERVIAN.flatMap((v, i) => (v.evidence === 'gate' ? [circuit[i]] : [])),
+    course,
     streets,
     riverRings,
     water,
@@ -242,6 +314,8 @@ export async function bakePlate(
     reachM: PLATE_REACH_M,
     outlines,
     places,
+    fields,
+    grounds,
   })
   const shadowAt = (i: number) => model.shadow[i]
 
@@ -296,7 +370,7 @@ export async function bakePlate(
     img1[i * 4 + 3] = 255
   }
   mkdirSync(out, { recursive: true })
-  for (const [i, img] of [img0, img1].entries())
+  for (const [i, img] of [img0, img1, fields.rgba].entries())
     await sharp(img, { raw: { width, height, channels: 4 } })
       .png({ compressionLevel: 9 })
       .toFile(join(out, `plate-${i}.png`))
@@ -390,7 +464,7 @@ export async function bakePlate(
   )
 
   console.log(
-    `plate: ${width}×${height} texels of ${TEXEL_M} m, ${wall.filter((w) => w.known).length} of ${wall.length} wall joins known, ${streets.length} street and road lines, ${names.length} names`,
+    `plate: ${width}×${height} texels of ${TEXEL_M} m, the wall's course ${(course.lengths.all / 1000).toFixed(2)} km (${(course.lengths.surveyed / 1000).toFixed(2)} km along surveyed stretches) with ${course.gates.length} gates, ${streets.length} street and road lines, ${names.length} names`,
   )
   return {
     /** Footprints the model drew for monuments with no outline (build.ts picks by them). */
@@ -404,6 +478,17 @@ export async function bakePlate(
     cityClamp: CITY_CLAMP_M,
     reachClamp: REACH_CLAMP_M,
     riverClamp: RIVER_CLAMP_M,
+    fields: {
+      reach: FIELDS_REACH_M,
+      edgeClamp: EDGE_CLAMP_M,
+      laneClamp: LANE_CLAMP_M,
+      grounds: grounds.map((gr) => ({
+        id: gr.id,
+        kind: gr.kind,
+        years: gr.years,
+        prior: gr.prior,
+      })),
+    },
   }
 }
 
@@ -479,23 +564,6 @@ function signedField(g: Grid, rings: Pt[][], clamp: number) {
     }
   }
   return d
-}
-
-function nearestOn(edges: [Pt, Pt][], p: Pt): Pt {
-  let best: Pt = p
-  let bestD = Infinity
-  for (const [a, b] of edges) {
-    const dx = b[0] - a[0]
-    const dy = b[1] - a[1]
-    const t = Math.max(
-      0,
-      Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
-    )
-    const q: Pt = [a[0] + t * dx, a[1] + t * dy]
-    const d = Math.hypot(q[0] - p[0], q[1] - p[1])
-    if (d < bestD) [best, bestD] = [q, d]
-  }
-  return best
 }
 
 /** The convex hull of some points, counter-clockwise (Andrew's monotone chain). */

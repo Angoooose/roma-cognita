@@ -288,7 +288,8 @@ tectonics dominate.
 
   The masks describe physical ground only. There are no invented fields or
   forests. Centuriation drawn from real survey data is a later, evidenced
-  exception.
+  exception. The one place farmland is drawn is round the model of Rome (§7.7),
+  close in, keyed as illustrative like its houses.
 
 - **Floodplains are records, not a runtime derivation.** Irrigated floodplain
   colour matters only where a great river crosses dry land: the Nile valley and
@@ -776,16 +777,48 @@ known and what is generated are kept apart:
       1.19). Their channels are stacked on the Marcia's from that year. Where the
       Tepula ran before is unknown, so it is not drawn earlier.
     - A click on the arcade opens the Marcia.
-  - The Servian Wall on its reconstructed circuit (`servian.ts`), with towers at
-    its gates. Reconstructed stretches are a little lower and paler. The river
-    bank, where the Tiber was the defence, is left open.
+  - **The Servian Wall** (decided 2026-09-25; `servian.ts`, model.ts `WALL`,
+    `wall.ts`), on SITAR's reconstruction of its whole course (codice PA 19694,
+    made for the 2017 "Roma medio repubblicana" conference from the surveyed
+    remains, archive plans, historic maps and studies of the terrain): the middle
+    of its band, smoothed a little, following the hills' brows round the Arx, the
+    Quirinal, the Caelian and both Aventines, and bent through the Porta
+    Caelimontana's surveyed blocks in the Arch of Dolabella. Between the Capitol and
+    the Aventine it runs inland from the Porta Carmentalis to the Porta Trigemina,
+    leaving the river outside (SITAR, after Coarelli); the older view had the river
+    close the circuit, and Wiseman (2021) argues the line changed in 212 BCE.
+    - **As it was built**, from the remains and the sources: a curtain of squared
+      pale Grotta Oscura tufa 3.8 m thick, laid dry in courses of two Roman feet,
+      end-out and side-out by turns (painted on, `SKIN.ashlar`), with patches of the
+      darker Anio tufa of the first century's repairs; each face running down to
+      the ground on its side, its walk 7.5 m over its ground or a little over the
+      hill behind where it crowns a brow, rising and falling in long runs. No top of
+      it survives: the battlemented parapet is a reconstruction, as Strabo's "wall
+      with towers" on the agger and Livy's repairs of walls and towers allow.
+    - **The agger** from the Porta Collina to the Porta Esquilina, where the flat
+      plateau gave the wall no brow: its ditch about 30 m wide and 9 m deep cut into
+      the ground in front of it (Dionysius 9.68) and its earth bank 10 m high behind
+      it (Middleton), crossed by causeways and cut through at its gates, with towers
+      along it every ~36 m.
+    - **Thirteen gates**, placed by their surveyed remains or SITAR's sites (after
+      Coarelli and the Lexicon): each a passage 3.6 m wide between two bastions
+      standing out in front, and behind it a court closing in to an inner arch,
+      after the plans of the Porta Collina, Viminalis and Sanqualis. Those whose
+      site is unknown or disputed (Ratumena, Flumentana, Lavernalis, Querquetulana)
+      are not drawn.
+    - Houses keep 3 m from its inner face and off the agger's bank, and the ground
+      at its foot outside is kept open for 12 m. By 27 BCE the city pressed against
+      it ("now commonly", Livy 1.44) and Maecenas's gardens covered the agger's
+      cemetery from about 35 BCE; neither is drawn yet.
+    - The known buildings placed only roughly that would stand on it (Juno Moneta,
+      Luna) are moved in off it; the wall is the better known.
   - The Tiber on OpenStreetMap's course, and the streets and roads (§ below)
     paved on the ground.
 - **Generated**, seeded so every build is the same (`city.ts`, model.ts). The
   method follows procedural city modelling, and the forms follow what Rome's fabric
   is known to have been (the sources are catalogued in data/sources.yaml):
   - **Streets in a hierarchy.** The recorded streets stay. A main street runs from
-    each of the six gates to the Forum by the cheapest way over the ground, shunning
+    each gate to the Forum by the cheapest way over the ground, shunning
     slopes and preferring the recorded streets (Emilien et al. 2012; Galin et al.
     2011), so the main streets follow the valleys and merge as they near the
     centre. Where a main street's way runs along a recorded street, the recorded
@@ -918,12 +951,63 @@ known and what is generated are kept apart:
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb of detached houses lines the roads out of the gates, up to
-    ~450 m, with a few against the wall.
-  - Groves stand on the hills beyond: cypresses and holm oaks, with an umbrella
-    pine here and there. The pine skyline that says "Rome" now is mostly later
-    planting.
+    ~450 m, with a few near the wall, clear of its foot and the agger's ditch.
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
+- **The country round the city** (decided 2026-09-25: it replaced groves scattered
+  on a noise, which drew a wooded country Rome's plain was not). The land outside
+  the wall was farmed hard, and the model shows it as farmland, gardens and tombs
+  (`pipeline/src/rome/fields.ts`, `packages/engine/src/rome/fields.ts`). It is
+  painted on the ground, so it stays quiet under the model, with a little of it
+  raised close in. It reaches ~1.35 km beyond everything on the plan, past the
+  board's own edge, and fades out into the map's ground.
+  - **Known**: the gardens and groves the sources place (kinds `garden`, `grove`
+    and `cemetery` in rome.yaml, with Platner & Ashby's and Richardson's pages):
+    Lucullus' on the Pincian, Caesar's across the Tiber, Sallust's, Maecenas' on the
+    Esquiline over the old burial ground, the groves of Furrina and the Camenae.
+    Their outlines are drawn by hand from the bounds their sources give
+    (`data/geometry/rome-grounds.geojson`, each saying what it follows), and are
+    approximate. Each stands for its own years: a garden laid out within the window
+    shows the farmland it replaced until then, and takes the houses on its ground
+    when it comes; once the burial ground is cleared, about 35 BCE, the farmland
+    round it runs on over it. A garden is lawn crossed by gravel walks, its trees
+    scattered and its edge lined with cypresses; a grove a looser stand of holm oaks. Pompey's gardens, which
+    nobody can place, are a point only.
+  - **Generated**, seeded, following what the sources say the land near the city
+    was used for (Varro, _On Agriculture_ 1.16.3; Cato, _On Agriculture_ 7–8;
+    Morley 1996, ch. 4):
+    - **Lanes and plots.** Blocks between lanes (a Voronoi of jittered points
+      ~230 m apart, the ground pushed about a little so the lanes bend) face the
+      nearest road, and are cut into strips running back from it, so every plot
+      has a frontage: 12–26 m wide near the city, 35–80 m far out. About half the
+      block edges are lanes of trodden earth, the rest only a hedge between plots.
+      The distances to the lanes and hedges are stored signed, by the side of the
+      line a texel is on, so the line crosses zero between texel centres and draws
+      unbroken however close the camera comes (an unsigned distance on a 4 m grid
+      never reaches zero between centres, and a 3 m lane broke into dashes).
+    - **What each plot grows** is drawn by distance from the wall: market gardens
+      and orchards close in, vines and olives in the middle ground, grain, stubble,
+      fallow and pasture beyond. Vines and olives take the slopes, vines the ones
+      turned to the sun; gardens the watered low ground and the roads; meadow the
+      Tiber's flats, which flood; scrub what is too steep to plough. Half the plots
+      of a block share its main use, so a farm reads as one.
+    - **Summer**, as the model's light is: the grain ripe or cut, the fallow being
+      ploughed, the pasture dry, the gardens, vines and meadows green. Vines in rows
+      about two metres apart, garden beds, olives on a 9 m grid and fruit trees on
+      a 7 m one, ploughed furrows, mown swathes — each fading to its average colour
+      when too fine to draw. The palette is muted a quarter of the way to the map's
+      ground.
+    - **Raised close in**: olives and fruit trees on the same rows the ground is
+      painted with, within 1.6 km of the wall; scattered trees on the scrub;
+      farmsteads here and there, ranges round a yard square to their plot (Varro
+      1.13); and tombs along the roads out of the gates, an altar, a façade or a
+      drum as the known tombs are built, thickest near the gates (burial in the
+      city was forbidden: Cicero, _Laws_ 2.58; Purcell 1987).
+    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8),
+      from the river to the Via Flaminia, and the ground round the monuments
+      outside the wall open too.
+  - No umbrella pines outside the gardens: the pine skyline that says "Rome" now
+    is mostly later planting.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not
   shown. One being built stands cut off at two-fifths of its height, open to the
   sky as works rising are (or as far as its design says the works had got: the
@@ -940,8 +1024,10 @@ what the city adds drawn on it:
 - The terrain is laid on the Mapterhorn heights smoothed over ~45 m (`ground.png`),
   and lit and given its rock by their slope — the light with the slope drawn up
   twice, so the hills read — so the surface model's modern
-  buildings do not show, and the model stands on it exactly. The relief is
-  today's, except in the valleys where excavations found the ancient ground.
+  buildings do not show, and the model stands on it exactly. Over the Capitol it
+  is smoothed over ~14 m instead, so its steep brows and its summits stand nearer
+  their height. The relief is today's, except in the valleys where excavations
+  found the ancient ground, and the agger's ditch and bank.
 - **The ancient valley floors** (`ground.ts`, decided 2026-09-24). Since antiquity
   the valleys have filled up. Where SITAR records the height of ground walked on
   then (`rome-levels.geojson`, from its excavated levels), the valley floor is set
@@ -1117,7 +1203,8 @@ copy. What we take from it:
 **What we do not take:**
 
 - Its invented province grid and anachronistic names.
-- Fields everywhere.
+- Fields everywhere. (Round the model of Rome, §7.7, the farmland is drawn close
+  in, keyed as illustrative.)
 - 3D models and unit markers. (The model of Rome, §7.7, is the one exception: a
   museum model of the capital, not game pieces.)
 - A heavy game interface.

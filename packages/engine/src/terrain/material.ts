@@ -27,6 +27,7 @@ import { DATA_RECT, ROOT } from '@roman-map/world'
 import { politicsUniforms } from '../politics/PoliticalLayer.ts'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
+import { fieldShading } from '../rome/fields.ts'
 import {
   groundLift,
   planShading,
@@ -389,7 +390,14 @@ export function createTerrainMaterial(n: number) {
   // line gives way there (rome/shading.ts).
   const mx = km.x.mul(1000)
   const my = km.y.mul(1000)
-  const withRivers = mix(glowed, RIVER, inRiver.mul(float(1).sub(riverSwap(mx, my, pxM))))
+  // The country round Rome, close in: its farmland and gardens, under the rivers and
+  // roads (rome/fields.ts).
+  const withFields = fieldShading(glowed, mx, my, pxM)
+  const withRivers = mix(
+    withFields,
+    RIVER,
+    inRiver.mul(float(1).sub(riverSwap(mx, my, pxM))),
+  )
   // Roads over the rivers they cross, under the borders.
   const road = roadShading(slots.roads, n, pxM, texelM)
   // The plan draws Rome's own streets and roads, so the map's give way there.

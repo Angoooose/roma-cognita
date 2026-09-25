@@ -19,11 +19,13 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `relations.yaml`         | polity-to-polity links over time (`province-of`, `client-of`)   |
 | `seats.yaml`             | kingdoms drawn as their capital because their extent is unknown |
 | `places.yaml`            | settlements, joined to Pleiades, with prominence and status     |
-| `places/rome.yaml`       | the places of the model of Rome: monuments, river, streets, hills and quarters (tier 5, `within: roma`), dated from Platner & Ashby (DESIGN §7.7); the Servian circuit's reconstruction is `pipeline/src/rome/servian.ts`, the generated city `pipeline/src/rome/model.ts` |
+| `places/rome.yaml`       | the places of the model of Rome: monuments, river, streets, hills and quarters (tier 5, `within: roma`), dated from Platner & Ashby (DESIGN §7.7); the Servian Wall's course is SITAR's (`geometry/rome-servian.geojson`, `pipeline/src/rome/servian.ts`), the generated city `pipeline/src/rome/model.ts` |
 | `features.yaml`          | physical features: floodplains, the Nile delta branches, seas   |
 | `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived; for seas, the course their name is lettered along |
 | `geometry/rome.geojson`  | those monuments' outlines, lon/lat, keyed by id; fetched from the OpenStreetMap elements each record cites by `npm run rome:fetch -w pipeline`, never edited by hand; baked by `npm run rome -w pipeline` |
+| `geometry/rome-grounds.geojson` | the outlines of the gardens, groves and burial ground round Rome (kinds `garden`, `grove`, `cemetery` in places/rome.yaml), lon/lat, RFC 7946, keyed by id; drawn by hand from the bounds their sources give, each saying what it follows in `drawn`; approximate, not surveyed |
 | `geometry/rome-sitar.geojson` | the pieces of excavated street in and round the Servian Wall that may have stood in 68–27 BCE, from SITAR (CC BY-SA 4.0), keyed by SITAR's number, with their dates; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
+| `geometry/rome-servian.geojson` | the Servian Wall from SITAR (CC BY-SA 4.0), keyed by SITAR's number: its reconstruction of the whole course (19694), and the pieces of the wall, the agger, its ditch and its gates that were found, with how well each is placed; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
 | `geometry/rome-levels.geojson` | heights (m above the sea) SITAR records on ground walked on, floors, paving and streets, in a phase between 400 BCE and 150 CE, and those the corrections of Rome's valley floors cite (pipeline/src/rome/ground.ts); CC BY-SA 4.0; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
 | `known-world.yaml`       | how far Roman geography reached, as one coarse ring: where the map's colour stops; baked by `npm run known -w pipeline` |
 

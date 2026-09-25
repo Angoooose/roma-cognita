@@ -22,9 +22,10 @@ import {
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
-import { groundMeshFade, plateMask, reliefWash } from './shading.ts'
+import { groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
 import { STONE } from './builder.ts'
 import type { BuiltModel } from './buildModel.ts'
+import { FIELD_KEY } from './fields.ts'
 import { OCC_BLUR, OCC_CELL_M, OCC_STEP_M } from './occlusionGrid.ts'
 import type { OcclusionJob, OcclusionResult } from './occlusionWorker.ts'
 
@@ -82,6 +83,8 @@ export const MODEL_KEY = {
   travertine: `#${STONE.travertine.face.getHexString()}`,
   house: '#DED3BE',
   roof: '#B8957F',
+  /** The country round the city (fields.ts): its generated farmland, and the recorded gardens. */
+  ...FIELD_KEY,
 }
 
 /** How far round a monument's point its marker looks for the top of its building, metres. */
@@ -426,6 +429,7 @@ export class ModelLayer {
    */
   setYear(year: number) {
     modelUniforms.year.value = year
+    planUniforms.year.value = year
     if (!this.occlusion) return
     clearTimeout(this.occlusionTimer)
     this.occlusionTimer = window.setTimeout(async () => {
@@ -609,6 +613,52 @@ function roofPaint(seed: F, across: F, down: F, run: F) {
     .mul(mix(float(1), float(0.78), eave.mul(lines)))
 }
 
+/**
+ * Squared stone laid dry in courses (`SKIN.ashlar`), as the Servian Wall's is: courses
+ * of two Roman feet (0.59 m), blocks laid alternately end-out and side-out course by
+ * course (Platner & Ashby, Murus Servii Tullii; Middleton 1892), each a little lighter
+ * or darker; the joints a thin shadow, there being no mortar; and here and there a
+ * stretch of darker, redder blocks, the Anio tufa of the repairs of the first century
+ * BCE (Frank, AJA 1918). `along` is how far along the face, `height` metres above the sea,
+ * so the courses run level. Fades to its average as it gets too fine to draw.
+ */
+function ashlarPaint(seed: F, along: F, height: F) {
+  const px = max(fwidth(along), fwidth(height)).max(0.005)
+  const joints = float(1).sub(smoothstep(0.06, 0.22, px))
+  const blocks = float(1).sub(smoothstep(0.2, 0.8, px))
+  const course = float(0.59)
+  const row = floor(height.div(course))
+  const inRow = height.sub(row.mul(course))
+  // End-out courses show the blocks' short ends, side-out ones their long sides.
+  const ends = step(0.5, fract(row.mul(0.5)))
+  const len = mix(float(1.2), float(0.6), ends)
+  const shift = hash(row.add(floor(seed.mul(1000)))).mul(len)
+  const col = floor(along.add(shift).div(len))
+  const inCol = along.add(shift).sub(col.mul(len))
+  const w = px.mul(0.7).max(0.025)
+  const joint = float(1).sub(
+    band(inRow, w, course.sub(w), px).mul(band(inCol, w, len.sub(w), px)),
+  )
+  const id = row
+    .mul(131)
+    .add(col.mul(17))
+    .add(floor(seed.mul(997)))
+  const tone = float(1).add(hash(id.abs()).sub(0.5).mul(0.1))
+  // The repairs, in patches some 20–40 m along and a few courses high.
+  const patch = step(
+    0.88,
+    hash(
+      floor(along.div(31))
+        .add(floor(height.div(3.5)).mul(7))
+        .add(floor(seed.mul(53))),
+    ),
+  ).mul(step(0.45, hash(id.abs().add(11))))
+  const repair = mix(vec3(1), vec3(0.93, 0.86, 0.8), patch.mul(blocks))
+  return repair
+    .mul(mix(float(1), tone, blocks))
+    .mul(mix(float(1), float(0.68), joint.mul(joints)))
+}
+
 function material(occlusion: Occlusion, viewM: F) {
   const mat = new THREE.MeshStandardNodeMaterial({ roughness: 0.9, metalness: 0 })
   // Built by hand, the geometry's winding is not consistent: both faces are drawn,
@@ -654,12 +704,16 @@ function material(occlusion: Occlusion, viewM: F) {
   const kind = floor(rest)
   const seed = fract(rest).div(0.9)
   const paint = select(
-    surface.greaterThan(2.5),
-    vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+    surface.greaterThan(3.5),
+    ashlarPaint(seed, skin.y, skin.z),
     select(
-      surface.greaterThan(0.5),
-      wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
-      vec3(1),
+      surface.greaterThan(2.5),
+      vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+      select(
+        surface.greaterThan(0.5),
+        wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
+        vec3(1),
+      ),
     ),
   )
   // The relief under the city, washed over it at half strength, so the hills read

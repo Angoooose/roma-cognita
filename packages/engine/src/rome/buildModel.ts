@@ -18,8 +18,13 @@ import {
   STONE,
   type Stone,
 } from './builder.ts'
-import { Frame } from './architecture.ts'
 import { buildDesign, type Design } from './monuments.ts'
+import { curtain, type Gate, gatehouse, type Tower, tower, type WallBuild } from './wall.ts'
+
+/** Floats per tree in model.bin: x, y, radius, ground, kind, first and last year (pipeline model.ts). */
+const TREE_STRIDE = 7
+/** What a tree is (pipeline fields.ts `TREE`). */
+const TREE = { mixed: 0, olive: 1, fruit: 2, oak: 3, cypress: 4, pine: 5 }
 
 /**
  * The model of Rome's mesh, raised from what the pipeline baked (model.json and
@@ -100,6 +105,14 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     })
   }
   b.dates = ALWAYS
+
+  // The tombs along the roads (pipeline model.ts): generated, built as the known
+  // tombs' designs are, in stucco or travertine.
+  for (const t of (meta.roadTombs ?? []) as (Design & { base: number; stone: Stone })[]) {
+    b.face = STONE[t.stone].face
+    b.shade = STONE[t.stone].shade
+    buildDesign(b, t, t.base)
+  }
 
   // The aqueducts (pipeline aqueducts.ts): arcades of tufa and peperino striding
   // over the low ground, solid walls where the ground rises under them, and over
@@ -201,9 +214,6 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   }
   b.dates = ALWAYS
 
-  // The Servian Wall: drawn a little stouter than its ~4 m so it reads at the city's
-  // scale, 10 m high on known stretches and lower and paler where the course is
-  // reconstructed; towers at its gates.
   // Retaining walls where a levelled site is cut into rising ground (pipeline
   // model.ts): squared tufa from the site's level to a little over the ground
   // behind, standing while its monument does.
@@ -233,59 +243,15 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     }
   }
   b.dates = ALWAYS
-  const gatesAt = meta.gates as number[][]
-  for (const w of meta.wall as { pts: number[][]; known: boolean }[]) {
-    const h = w.known ? 10 : 8.5
-    const col = w.known ? C.stone : C.stoneLight
-    for (let i = 0; i + 1 < w.pts.length; i++) {
-      const [a, c] = [w.pts[i], w.pts[i + 1]]
-      const len = Math.hypot(c[0] - a[0], c[1] - a[1])
-      if (len < 0.1) continue
-      // The gatehouse stands in the wall's place at a gate.
-      const [mx, my] = [(a[0] + c[0]) / 2, (a[1] + c[1]) / 2]
-      if (gatesAt.some(([gx, gy]) => Math.hypot(gx - mx, gy - my) < 7)) continue
-      const angle = Math.atan2(c[1] - a[1], c[0] - a[0]) - Math.PI / 2
-      const ground = Math.min(a[2], c[2])
-      b.block(
-        (a[0] + c[0]) / 2,
-        (a[1] + c[1]) / 2,
-        angle,
-        6,
-        len + 0.8,
-        -6,
-        h + (Math.max(a[2], c[2]) - ground),
-        'flat',
-        ground,
-        col,
-        col,
-      )
-    }
-  }
-  // Each gate a gatehouse on the wall's line: a block of the wall's stone with an
-  // arched passage through it for the road, under a hipped roof of tiles.
-  const wallPts = (meta.wall as { pts: number[][] }[]).flatMap((w) =>
-    w.pts.slice(1).map((q, k) => [w.pts[k], q]),
-  )
-  for (const [x, y, ground] of meta.gates as number[][]) {
-    let best = { d: Infinity, a: 0 }
-    for (const [p, q] of wallPts) {
-      const d = Math.hypot((p[0] + q[0]) / 2 - x, (p[1] + q[1]) / 2 - y)
-      if (d < best.d) best = { d, a: Math.atan2(q[0] - p[0], q[1] - p[1]) }
-    }
-    // The frame's front is square to the wall, along the road through the gate.
-    const G = new Frame(b, x, y, best.a + Math.PI / 2, ground)
-    G.box(-7.5, -2.4, -4.5, 4.5, -6, 11, C.stone)
-    G.box(2.4, 7.5, -4.5, 4.5, -6, 11, C.stone)
-    G.box(-2.4, 2.4, -4.5, 4.5, 7.6, 11, C.stone, C.stone)
-    G.arch(-2.4, 2.4, -4.5, 9, 5.2, 7.6, 7.6, C.stone, C.aqueductShade)
-    G.box(-7.9, 7.9, -4.9, 4.9, 11, 11.6, C.stone)
-    G.roof(-7.9, 7.9, -4.9, 4.9, 11.6, {
-      along: 'u',
-      tiles: C.roof,
-      pitch: 0.3,
-      seed: 0.9,
-    })
-  }
+  // The Servian Wall (wall.ts): the curtain in its runs between the gates, the
+  // agger's towers, and a gatehouse at each gate.
+  const W = meta.wallBuild as WallBuild
+  for (const [k, w] of (meta.wall as { pts: number[][] }[]).entries())
+    curtain(b, w.pts, W, k * 97.3)
+  for (const [k, t] of ((meta.towers ?? []) as Tower[]).entries())
+    tower(b, t, W, k * 0.37)
+  for (const [k, g] of ((meta.gates ?? []) as Gate[]).entries())
+    gatehouse(b, g, W, k * 0.61)
 
   // The generated city (pipeline city.ts): plain stucco in a narrow range under one
   // terracotta, varied a little lot by lot. A building on the site of a later
@@ -314,19 +280,30 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     b.lot(q, h, ground, wall, tiles, roof)
   }
   b.dates = ALWAYS
-  // Trees: cypresses and holm oaks, with an umbrella pine here and there. The pine
-  // skyline that says "Rome" now is mostly later planting.
+  // Trees (pipeline fields.ts `TREE`): the olives and fruit trees of the country's
+  // groves and orchards, holm oaks and cypresses on its scrub and in the sacred
+  // groves, and in the gardens and courtyards a mix of them, with an umbrella pine
+  // here and there. The pine skyline that says "Rome" now is mostly later planting.
   for (let i = 0; i < meta.treeCount; i++) {
-    const [x, y, r, ground] = f.subarray(
-      nF * FABRIC_STRIDE + i * 4,
-      nF * FABRIC_STRIDE + i * 4 + 4,
+    const [x, y, r, ground, kind, from, to] = f.subarray(
+      nF * FABRIC_STRIDE + i * TREE_STRIDE,
+      nF * FABRIC_STRIDE + (i + 1) * TREE_STRIDE,
     )
-    const t = rand()
+    b.dates = [from, to, 1, 0]
     const col = C.tree[Math.floor(rand() * C.tree.length)]
-    if (t < 0.45) b.cypress(x, y, r, ground, C.cypress)
-    else if (t < 0.85) b.oak(x, y, r, ground, col)
-    else b.pine(x, y, r, ground, col)
+    if (kind === TREE.olive) b.olive(x, y, r, ground, C.olive)
+    else if (kind === TREE.fruit) b.fruit(x, y, r, ground, C.fruit)
+    else if (kind === TREE.oak) b.oak(x, y, r, ground, col)
+    else if (kind === TREE.cypress) b.cypress(x, y, r, ground, C.cypress)
+    else if (kind === TREE.pine) b.pine(x, y, r, ground, col)
+    else {
+      const t = rand()
+      if (t < 0.45) b.cypress(x, y, r, ground, C.cypress)
+      else if (t < 0.9) b.oak(x, y, r, ground, col)
+      else b.pine(x, y, r, ground, col)
+    }
   }
+  b.dates = ALWAYS
 
   // The Forum's square, in the paving of each year: tufa, then travertine.
   for (const sq of meta.squares as {

@@ -2,8 +2,10 @@ import * as THREE from 'three/webgpu'
 import { frameRect, projection } from '@roman-map/world'
 
 /**
- * A strategy-map camera: a ground target, a distance, and a tilt. No heading — north is
- * up, as on every map this one is compared against.
+ * A strategy-map camera: a ground target, a distance, a tilt, and a heading. North is up
+ * unless the reader turns the map, and the compass turns it back. Right-drag (a
+ * two-finger click-and-drag on a trackpad) turns it sideways and tilts it up and down;
+ * in Safari a two-finger twist turns it too.
  *
  * Panning and zooming are anchored to the ground point under the cursor, so the place
  * you grabbed stays under your hand. That is the difference between a map that feels
@@ -18,6 +20,8 @@ export interface CameraState {
   distance: number
   /** Tilt from straight down, degrees. */
   pitch: number
+  /** The compass bearing the view faces, degrees clockwise from north; 0 is north up. */
+  heading?: number
 }
 
 const MIN_DISTANCE = 4_000
@@ -42,29 +46,35 @@ export class MapCamera {
    */
   minDistanceAt: (x: number, y: number) => number = () => MIN_DISTANCE
   private flight: Flight | null = null
+  private turn: Turn | null = null
   private raycaster = new THREE.Raycaster()
   private plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0)
   private ndc = new THREE.Vector2()
   private hit = new THREE.Vector3()
 
   private el: HTMLElement
-  /**
-   * For screenshots only (the `heading` URL parameter): the compass direction the
-   * camera looks, degrees. The map is always read north up, and panning and picking
-   * assume it, so nothing in the interface sets this.
-   */
-  static heading = 0
 
   constructor(el: HTMLElement, initial: CameraState) {
     this.el = el
-    this.state = { ...initial }
+    this.state = { heading: 0, ...initial }
     this.apply()
     this.bind()
   }
 
-  static fromLonLat(lon: number, lat: number, distanceKm: number, pitch = 0): CameraState {
+  static fromLonLat(
+    lon: number,
+    lat: number,
+    distanceKm: number,
+    pitch = 0,
+    heading = 0,
+  ): CameraState {
     const [x, y] = projection.forward(lon, lat)
-    return { x, y, distance: distanceKm * 1000, pitch }
+    return { x, y, distance: distanceKm * 1000, pitch, heading }
+  }
+
+  /** The heading, degrees clockwise from north, in (-180, 180]. */
+  get heading() {
+    return this.state.heading ?? 0
   }
 
   get lonLat() {
@@ -90,15 +100,18 @@ export class MapCamera {
       this.minDistanceAt(this.state.x, this.state.y),
       MAX_DISTANCE,
     )
+    this.state.heading = wrap(this.heading)
     const { x, y, distance, pitch } = this.state
     const p = (pitch * Math.PI) / 180
+    const h = (this.heading * Math.PI) / 180
     const c = this.camera
-    const h = (-MapCamera.heading * Math.PI) / 180
+    // The camera stands back from the target against the way it faces.
     const back = distance * Math.sin(p)
-    c.position.set(x + back * Math.sin(h), y - back * Math.cos(h), distance * Math.cos(p))
+    c.position.set(x - back * Math.sin(h), y - back * Math.cos(h), distance * Math.cos(p))
     // Looking straight down with north up is the identity rotation; tilting is a turn
-    // about x. Building it directly avoids lookAt's degenerate up vector at pitch 0.
-    c.rotation.set(p, 0, h, 'ZYX')
+    // about x, and heading a turn about z after it. Building it directly avoids lookAt's
+    // degenerate up vector at pitch 0.
+    c.rotation.set(p, 0, -h, 'ZXY')
     c.near = Math.max(10, distance * 0.02)
     c.far = distance * 30
     c.updateProjectionMatrix()
@@ -140,16 +153,38 @@ export class MapCamera {
     this.flight = { start: performance.now(), ms, from, to: target, l0, l1, rise }
   }
 
-  /** Advances a flight; true while one is running. */
+  /** Turns the map back to north up, eased, the short way round. */
+  resetHeading() {
+    const from = this.heading
+    if (from === 0) return
+    this.turn = {
+      start: performance.now(),
+      ms: clamp(250 + 2.5 * Math.abs(from), 250, 700),
+      from,
+    }
+  }
+
+  /** Advances a flight or a turn; true while one is running. */
   step(now: number) {
+    const turning = this.stepTurn(now)
     const f = this.flight
-    if (!f) return false
+    if (!f) return turning
     const t = Math.min(1, (now - f.start) / f.ms)
     const u = t * t * t * (t * (t * 6 - 15) + 10)
     this.state.x = f.from.x + (f.to.x - f.from.x) * u
     this.state.y = f.from.y + (f.to.y - f.from.y) * u
     this.state.distance = Math.exp(f.l0 + (f.l1 - f.l0) * u + f.rise * 4 * u * (1 - u))
     if (t >= 1) this.flight = null
+    this.apply()
+    return true
+  }
+
+  private stepTurn(now: number) {
+    const r = this.turn
+    if (!r) return false
+    const t = Math.min(1, (now - r.start) / r.ms)
+    this.state.heading = r.from * (1 - t * t * (3 - 2 * t))
+    if (t >= 1) this.turn = null
     this.apply()
     return true
   }
@@ -168,25 +203,31 @@ export class MapCamera {
   private bind() {
     const el = this.el
     let anchor: THREE.Vector3 | null = null
-    let tilting = false
+    let turning = false
+    let lastX = 0
     let lastY = 0
 
     el.addEventListener('contextmenu', (e) => e.preventDefault())
     el.addEventListener('pointerdown', (e) => {
       this.flight = null
+      this.turn = null
       el.setPointerCapture(e.pointerId)
-      tilting = e.button === 2 || e.shiftKey
+      turning = e.button === 2 || e.shiftKey
+      lastX = e.clientX
       lastY = e.clientY
-      anchor = tilting ? null : this.ground(e.clientX, e.clientY)
+      anchor = turning ? null : this.ground(e.clientX, e.clientY)
     })
     el.addEventListener('pointermove', (e) => {
       if (!el.hasPointerCapture(e.pointerId)) return
-      if (tilting) {
+      if (turning) {
+        // Dragging right turns the view right, as a head turns, about the target.
+        this.state.heading = this.heading + (e.clientX - lastX) * 0.3
         this.state.pitch = clamp(
           this.state.pitch + (lastY - e.clientY) * 0.25,
           0,
           MAX_PITCH,
         )
+        lastX = e.clientX
         lastY = e.clientY
         this.apply()
         return
@@ -199,6 +240,21 @@ export class MapCamera {
       this.apply()
     })
     el.addEventListener('pointerup', (e) => el.releasePointerCapture(e.pointerId))
+
+    // Safari's trackpad twist. Its pinch also arrives as ctrl+wheel, which zooms below,
+    // so only the rotation is read here. Twisting clockwise turns the map clockwise.
+    let twistFrom = 0
+    el.addEventListener('gesturestart', (e) => {
+      e.preventDefault()
+      this.flight = null
+      this.turn = null
+      twistFrom = this.heading
+    })
+    el.addEventListener('gesturechange', (e) => {
+      e.preventDefault()
+      this.state.heading = twistFrom - ((e as Event & { rotation?: number }).rotation ?? 0)
+      this.apply()
+    })
 
     el.addEventListener(
       'wheel',
@@ -226,6 +282,13 @@ export class MapCamera {
   }
 }
 
+interface Turn {
+  start: number
+  ms: number
+  /** The heading it turns from, to 0. */
+  from: number
+}
+
 interface Flight {
   start: number
   ms: number
@@ -235,6 +298,12 @@ interface Flight {
   l0: number
   l1: number
   rise: number
+}
+
+/** Degrees into (-180, 180]. */
+function wrap(deg: number) {
+  const d = ((deg % 360) + 360) % 360
+  return d > 180 ? d - 360 : d
 }
 
 function clamp(v: number, lo: number, hi: number) {
