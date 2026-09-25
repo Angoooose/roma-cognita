@@ -71,17 +71,20 @@ const ROAD_CLAMP_M = 40
  * The open ground of the Campus Martius, lon/lat: the plain north of the Saepta
  * between the Via Flaminia and the river, where the people drilled, exercised and
  * raced, "the plain covered with grass throughout the year" (Strabo 5.3.8; Platner
- * & Ashby, Campus Martius, pp. 91–94). The river bank itself is the river's. Left
- * open, not farmed.
+ * & Ashby, Campus Martius, pp. 91–94). Left open, not farmed. The outline is loose:
+ * the open ground stops at the river and the Via Flaminia, and its north and south
+ * edges wander.
  */
 const CAMPUS_OPEN: [number, number][] = [
-  [12.47, 41.899],
-  [12.4805, 41.899],
-  [12.479, 41.903],
-  [12.4768, 41.9085],
-  [12.47, 41.91],
+  [12.4705, 41.8988],
+  [12.4855, 41.8992],
+  [12.4845, 41.9045],
+  [12.482, 41.9105],
+  [12.4715, 41.9115],
   [12.466, 41.904],
 ]
+/** Where the Campus Martius is (Platner & Ashby's point): its open ground is on this side of the river. */
+const CAMPUS_AT: [number, number] = [12.4755, 41.9005]
 /** The street field's code for a generated main street (plate-0 alpha). */
 const MAIN_STREET = 223
 /** A hill's name goes on its highest ground within this of its location. */
@@ -287,7 +290,13 @@ export async function bakePlate(
     riverRings,
     waterLevel: onRiver[Math.floor(onRiver.length * 0.1)] ?? 8,
     monuments: monumentRings,
-    open: [CAMPUS_OPEN.map(([lon, lat]) => projection.forward(lon, lat))],
+    open: [
+      {
+        ring: CAMPUS_OPEN.map(([lon, lat]) => projection.forward(lon, lat)),
+        at: projection.forward(...CAMPUS_AT),
+        wobble: 30,
+      },
+    ],
     grounds,
   })
 

@@ -247,7 +247,8 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
     .toVar()
   const aa = pxM.mul(0.7).toVar()
   const t = tone.div(15).toVar()
-  const edgeM = toEdge.toVar()
+  // A recorded ground's own edge, from the lane field, where it stands pushed out.
+  const edgeM = max(toLane.sub(4), 0).toVar()
 
   /** Bands `duty` of each `spacing` wide across `q`, fading to their share when too fine to draw. */
   const stripes = (q: F, spacing: number, duty: number) => {
@@ -393,14 +394,15 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   const hedge = float(1)
     .sub(smoothstep(hedgeW.sub(aa), hedgeW.add(aa), toEdge))
     .mul(mix(float(0.55), float(0.15), smoothstep(0.6, 3, pxM)))
-  ground.assign(
-    mix(ground, P.hedge.mul(lit), hedge.mul(select(use.equal(LAND.open), 0, 1))),
-  )
+  // Neither on open ground nor in a recorded one, whose edge the lane field carries
+  // only to keep it smooth (pipeline fields.ts).
+  const plotted = select(use.equal(LAND.open).or(use.equal(LAND.recorded)), 0, 1)
+  ground.assign(mix(ground, P.hedge.mul(lit), hedge.mul(plotted)))
   // Never wider than the lane field's offset along block edges that are not lanes.
   const laneW = clamp(pxM.mul(0.8), 1.5, 3)
   const lane = float(1)
     .sub(smoothstep(laneW.sub(aa), laneW.add(aa), toLane))
     .mul(mix(float(0.85), float(0.35), smoothstep(1.5, 6, pxM)))
-  ground.assign(mix(ground, P.lane.mul(lit), lane))
+  ground.assign(mix(ground, P.lane.mul(lit), lane.mul(plotted)))
   return select(use.equal(0), colour, ground)
 }

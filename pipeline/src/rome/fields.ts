@@ -160,8 +160,11 @@ export interface FieldsInput {
   waterLevel: number
   /** Monuments' footprints, left open. */
   monuments: Pt[][]
-  /** Open ground: the Campus Martius. */
-  open: Pt[][]
+  /**
+   * Open ground: the Campus Martius. Its outline is loose; it stops at the river and
+   * the roads, from the side `at` is on, and its edge wanders a little (`wobble`).
+   */
+  open: { ring: Pt[]; at: Pt; wobble: number }[]
   grounds: RecordedGround[]
 }
 
@@ -214,9 +217,41 @@ export function layFields(f: FieldsInput): Fields {
     }
   })
   const open = new Uint8Array(n)
-  for (const ring of f.open) rasterise(g, ring, (i) => (open[i] = 1))
+  const wobbled = (p: Pt, m: number): Pt =>
+    m
+      ? [
+          p[0] + (noise(p[0] / 300, p[1] / 300, 61) - 0.5) * 2 * m,
+          p[1] + (noise(p[0] / 300, p[1] / 300, 62) - 0.5) * 2 * m,
+        ]
+      : p
+  for (const o of f.open) {
+    const within = new Uint8Array(n)
+    rasterise(g, grow(o.ring, o.wobble * 2), (i) => {
+      if (inRing(wobbled(at(i), o.wobble), o.ring)) within[i] = 1
+    })
+    const seed = texelAt(g, o.at)
+    const queue = seed >= 0 && within[seed] ? [seed] : []
+    while (queue.length) {
+      const i = queue.pop()!
+      open[i] = 1
+      const c = i % g.width
+      for (const j of [i - 1, i + 1, i - g.width, i + g.width]) {
+        if (j < 0 || j >= n || open[j] || !within[j] || f.water[j] < 3 || f.roadDist[j] < 6)
+          continue
+        if ((j === i - 1 && c === 0) || (j === i + 1 && c === g.width - 1)) continue
+        open[j] = 1
+        queue.push(j)
+      }
+    }
+  }
   for (const ring of f.monuments)
     rasterise(g, grow(ring, MONUMENT_CLEAR_M), (i) => (open[i] = 1))
+  // The edges of the recorded and open grounds, for the lane field below.
+  const regionEdges: { ring: Pt[]; wobble: number }[] = [
+    ...f.grounds.map((gr) => ({ ring: gr.ring, wobble: 0 })),
+    ...f.open.map((o) => ({ ring: o.ring, wobble: o.wobble })),
+    ...f.monuments.map((ring) => ({ ring: grow(ring, MONUMENT_CLEAR_M), wobble: 0 })),
+  ]
 
   // --- the blocks ------------------------------------------------------------------------
   const roadSegs = f.roads.flatMap((l) => l.slice(1).map((q, k) => [l[k], q] as [Pt, Pt]))
@@ -297,11 +332,6 @@ export function layFields(f: FieldsInput): Fields {
     if (f.reach[i] > FIELDS_REACH_M || (f.city[i] < 0 && !recorded[i]) || f.water[i] < 3)
       continue
     const p = at(i)
-    if (open[i] && !recorded[i]) {
-      use[i] = LAND.open
-      tone[i] = Math.floor(hash(p[0] >> 5, p[1] >> 5, 9) * 16)
-      continue
-    }
     // The two nearest block points, to the ground pushed about a little (`WANDER_M`).
     const q: Pt = [
       p[0] + (noise(p[0] / 260, p[1] / 260, 41) - 0.5) * 2 * WANDER_M,
@@ -323,6 +353,13 @@ export function layFields(f: FieldsInput): Fields {
     const o = blocks[b2]
     const sep = Math.hypot(o.at[0] - b.at[0], o.at[1] - b.at[1]) || 1
     const side = blockSide(b1)
+    if (open[i] && !recorded[i]) {
+      // Open ground: one even tone, no hedges and no lanes.
+      use[i] = LAND.open
+      tone[i] = 8
+      laneAt[i] = side * LANE_CLAMP_M
+      continue
+    }
     const isLane = side !== blockSide(b2)
     const toBlock = (d2 - d1) / (2 * sep)
     const toLane = isLane ? toBlock : LANE_CLAMP_M
@@ -435,8 +472,24 @@ export function layFields(f: FieldsInput): Fields {
     // along it). Elsewhere the land's use changes only at a plot's edge, which the
     // plots' own field already has: the texel-by-texel distance to a change would
     // step along the texels.
-    if (use[i] === LAND.recorded) hedgeAt[i] = bound[i]
+    if (use[i] === LAND.recorded) hedgeAt[i] = EDGE_CLAMP_M
     edge[i] = e
+  }
+
+  // A recorded or open ground's edge is in the lane field, pushed out as a block
+  // edge that is not a lane is (`NOT_A_LANE_M`), keeping each texel's sign: no lane
+  // is drawn along it, but the shader looks up the land's use a step away from it,
+  // so it runs smooth across the texels instead of stepping along them. (A garden's
+  // walk is measured from it too.)
+  for (const { ring, wobble } of regionEdges) {
+    const reach = LANE_CLAMP_M - NOT_A_LANE_M + wobble
+    const closed = ring[0] === ring[ring.length - 1] ? ring : [...ring, ring[0]]
+    const segs = closed.slice(0, -1).map((q, k) => [q, closed[k + 1]] as [Pt, Pt])
+    rasterise(g, grow(ring, reach + wobble), (i) => {
+      const q = wobbled(at(i), wobble)
+      const d = nearestSeg(segs, q).d + NOT_A_LANE_M
+      if (d < Math.abs(laneAt[i])) laneAt[i] = Math.sign(laneAt[i] || 1) * d
+    })
   }
 
   const rgba = new Uint8Array(n * 4)
