@@ -44,20 +44,20 @@ export const TRACED = new Set([
 ])
 
 /**
- * The consular roads: which Itiner-e lines, the record they belong to, and where
- * they meet the city, lon/lat. The gates are the circuit's (servian.ts).
+ * The consular roads: which Itiner-e lines, the record they belong to, and the gate
+ * of the circuit (servian.ts) they meet the city at.
  */
-const CONSULAR: { itinere: string; id: string; to: Pt; what: string }[] = [
+const CONSULAR: { itinere: string; id: string; gate: string; what: string }[] = [
   {
     itinere: 'Tarracinae-Rome',
     id: 'via-appia',
-    to: [12.491, 41.884],
+    gate: 'Porta Capena',
     what: 'the Porta Capena (Platner & Ashby, Via Appia; Porta Capena)',
   },
   {
     itinere: 'Rome-Tibur',
     id: 'via-tiburtina',
-    to: [12.50136, 41.89578],
+    gate: 'Porta Esquilina',
     what: 'the Porta Esquilina, which it "probably" left by (Platner & Ashby, Via Tiburtina)',
   },
 ]
@@ -139,6 +139,7 @@ export function streetLines(
   geometry: Map<string, [number, number][][]>,
   places: Map<string, Place>,
   circuit: Pt[],
+  gates: Map<string, Pt>,
   ground: Ground,
 ): StreetLine[] {
   const out: StreetLine[] = []
@@ -158,7 +159,8 @@ export function streetLines(
   const roads = itinere()
   for (const c of CONSULAR) {
     if (!places.has(c.id)) continue
-    const to = projection.forward(...c.to)
+    const to = gates.get(c.gate)
+    if (!to) throw new Error(`streets.ts: no gate "${c.gate}"`)
     for (const { pts, certain } of roads.get(c.itinere) ?? []) {
       // From the far end in, until it reaches the city or its end; then to the end.
       const far = Math.hypot(pts[0][0] - to[0], pts[0][1] - to[1])

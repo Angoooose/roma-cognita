@@ -140,7 +140,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 - **Built:** the museum model (DESIGN §7.7): every known building built as itself
   from its sourced design (about 100 of them, through 27 BCE), ~15,500 generated
-  houses, the wall and gates, trees, baked shadows, and the smoothed board with the
+  houses, the Servian Wall on SITAR's course with its gates and the agger, trees, baked shadows, and the smoothed board with the
   Tiber and paved streets.
 - **Researched and left out** (September 2026), so the next pass need not repeat
   the search:
@@ -175,8 +175,17 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - **The generated city is uniform elsewhere.** The Palatine now has its great
   houses (DESIGN §7.7); the Subura crowded with tall blocks and the Aventine more
   open could follow.
-- **The wall's reconstructed stretches** are straight joins; Lanciani's plan
-  (public domain) would give the curves. Its gates are plain towers.
+- **The Servian Wall in 27 BCE.** The houses built against it that Livy saw
+  (1.44) and Maecenas's gardens over the agger's cemetery (from about 35 BCE, Horace
+  walking "on the sunny agger") are not drawn; nor the gates whose site is unknown
+  or disputed (Ratumena, Flumentana, Lavernalis, Querquetulana), nor the 87 BCE
+  artillery arches on the Aventine (Via di Sant'Anselmo). On a brow its inner face
+  stands 5–7 m over the hill behind it, where the wall there was more a facing
+  against the hill, its top a parapet's height over the ground inside.
+- **The Capitol's summits.** Smoothed less, the Capitolium stands at ~43 m, but
+  the Arx at only ~27–33 m: the Mapterhorn surface there carries the Vittoriano's
+  terraces and the Aracoeli's stair, and no ancient level of the summit is in
+  SITAR to restore it by.
 - **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
   line do not meet at its edge, and the Itiner-e roads stop there.
 - **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),

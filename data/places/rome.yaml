@@ -134,15 +134,17 @@
         way/112675404, way/105281824, way/112677344, way/112677349, way/112677352,
         way/1223826659, way/1223826660, way/781934076, way/781934077, way/427413247,
         way/785914787, way/120880574, way/120880575
+    - { source: sitar, locator: '19694 (the course); the pieces in rome-servian.geojson' }
   confidence: certain
   review: draft
   note: >-
     The circuit of squared tufa the censors contracted for after the Gallic sack
-    (Livy 6.32.1, under 377 BCE). Only the stretches that survive are drawn —
-    the longest by Termini station, others on the Aventine, the Esquiline and the
-    Quirinal; the course between them is well established but not yet traced
-    here. By this period the city had long outgrown it. The Aurelian Walls, which
-    most maps of Rome show, are of 271 CE.
+    (Livy 6.32.1, under 377 BCE), some 10 km round, on SITAR's reconstruction of
+    its course: along the brows of the hills, and across the Esquiline plateau as
+    the agger, a ditch and an earth bank. It still stood whole in this period,
+    repaired in the civil wars of 87 BCE and manned in 87 and 82, though the city
+    had long outgrown it and pressed against it. The Aurelian Walls, which most
+    maps of Rome show, are of 271 CE.
 
 # --- the Forum -----------------------------------------------------------------
 

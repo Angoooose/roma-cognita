@@ -8,7 +8,7 @@
  *
  * - **What is known** is built from the records: each monument's outline raised by
  *   its design (designs.ts: its type, size, columns and stairs, from its sources),
- *   the bridges, and the Servian Wall on its circuit (servian.ts). A temple with no
+ *   the bridges, and the Servian Wall on its course (servian.ts, `WALL`). A temple with no
  *   design of its own is a typical one (`DEFAULT_TEMPLE`).
  * - **The city around them is generated** — houses and blocks of flats that nobody
  *   can map building by building for this period. Inside the wall city.ts lays out
@@ -33,6 +33,7 @@ import { excavatedPieces, type StreetLine } from './streets.ts'
 import { layCity, LOT_KIND, ROOF } from './city.ts'
 import { COURSES, layCourse } from './aqueducts.ts'
 import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts'
+import { type Course, STEP_M } from './servian.ts'
 
 type Pt = [number, number]
 
@@ -42,8 +43,8 @@ export interface ModelInput {
   raw: Float32Array
   smooth: Float32Array
   circuit: Pt[]
-  wall: { a: Pt; b: Pt; known: boolean }[]
-  gates: Pt[]
+  /** The wall's course and gates (servian.ts). */
+  course: Course
   streets: StreetLine[]
   riverRings: Pt[][]
   /** Signed distance to the river, metres, clamped (plate.ts). */
@@ -76,7 +77,6 @@ const MASSING: Record<
   rostra: { body: 3.5, roof: 'flat' },
   tomb: { body: 12, roof: 'flat' },
   warehouse: { body: 9, roof: 'hip' },
-  'city-wall': { body: 8, roof: 'flat' },
 }
 
 /**
@@ -208,6 +208,56 @@ const ASYLUM_GROVES: [number, number][] = [
  * beyond it the ground eases back, and how deep a cut, metres, needs a retaining wall.
  */
 const SITE = { walk: 3, ease: 10, cut: 1.2 }
+
+/**
+ * The Servian Wall as it was built (DESIGN.md §7.7), metres:
+ * - `thick`: the curtain of squared Grotta Oscura tufa, 3.5–4 m thick where it stands
+ *   free (Termini; the Via di Sant'Anselmo on the Aventine), laid dry in courses of two
+ *   Roman feet (Platner & Ashby, Murus Servii Tullii; Middleton 1892).
+ * - `walk`: its wall-walk over the ground, where it stands free or crowns a hill's
+ *   brow; nothing of its top survives anywhere, but the Aventine's stands 13–15 m on
+ *   its outer face and the stretches across the valleys 8–10 m (Lanciani 1897).
+ * - `parapet` over the walk, with battlements `merlon` wide every `bay`: a reasonable
+ *   reconstruction, not a survival. Strabo (5.3.7) has the agger carry "a wall with
+ *   towers", and the city's walls and towers were repaired in 353, 217 and 212 BCE
+ *   (Livy 7.20, 22.8, 25.7).
+ * - `clear`: how far the generated houses keep from its inner face, and `clearOut`
+ *   from its outer face, where the ground at its foot was kept open.
+ * - `gate`: half a gatehouse's length along the wall, where the curtain stops.
+ * - `tower`: the agger's towers, how far apart (the spacing is not recorded).
+ */
+const WALL = {
+  thick: 3.8,
+  walk: 7.5,
+  parapet: 1.8,
+  merlon: 1.6,
+  bay: 2.8,
+  clear: 3,
+  clearOut: 12,
+  gate: 8,
+  tower: 36,
+}
+/**
+ * The agger on the Esquiline plateau, from the Porta Collina to the Porta Esquilina,
+ * metres: in front of the wall a `berm`, then a ditch `ditch` wide and `depth` deep
+ * ("more than a hundred feet broad where it is narrowest, and thirty feet deep",
+ * Dionysius 9.68; the section Lanciani saw cut in 1861–62 agrees); behind it a bank of
+ * earth `bank` high with a flat top `top` wide, sloping down to the city over `run`
+ * (Middleton 1892, fig. 18; Platner & Ashby, Agger). It runs out over `ends` at the
+ * gates at its ends; each of its gates crosses the ditch on a causeway `causeway`
+ * wide either side of its road, and cuts through the bank `cut` wide.
+ */
+const AGGER = {
+  berm: 4,
+  ditch: 30,
+  depth: 9,
+  bank: 10,
+  top: 13,
+  run: 16,
+  ends: 40,
+  causeway: 7,
+  cut: 5,
+}
 
 /** The suburb's detached houses: their spacing, the gap between them, and where they may stand. */
 const FABRIC = { spacing: 9.5, gap: 1.4, streetClear: 4, monumentClear: 5, maxSlope: 0.45 }
@@ -547,6 +597,46 @@ export function bakeModel(m: ModelInput) {
     })
   }
 
+  // --- the wall's course ----------------------------------------------------------------
+  const ring = m.course.ring
+  const N = ring.length - 1
+  const pt = (i: number) => ring[((i % N) + N) % N]
+  /** Outward, away from the city: the course runs counter-clockwise, the city on its left. */
+  const outward = (i: number): Pt => {
+    const [p, q] = [pt(i - 1), pt(i + 1)]
+    const L = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1
+    return [(q[1] - p[1]) / L, -(q[0] - p[0]) / L]
+  }
+  // A building placed only roughly (by its record's point, or a disputed site) that
+  // would stand on the wall is moved in off it, the wall being the better known.
+  for (const mo of monuments) {
+    if (!mo.approx || mo.clear === false) continue
+    const r0 = mo.rings[0]
+    const hits = ring.map((q, i) => (inRing(q, r0) ? i : -1)).filter((i) => i >= 0)
+    if (!hits.length) continue
+    const n = outward(hits[Math.floor(hits.length / 2)])
+    let shift = 0
+    const moved = (d: number) =>
+      mo.rings.map((r) => r.map(([x, y]) => [x - n[0] * d, y - n[1] * d] as Pt))
+    while (
+      shift < 60 &&
+      ring.some(
+        (q) =>
+          inRing(q, moved(shift)[0]) ||
+          distToRing(q, moved(shift)[0]) < WALL.thick / 2 + WALL.clear,
+      )
+    )
+      shift += 1
+    mo.rings = moved(shift)
+    if (mo.design)
+      mo.design.centre = [
+        mo.design.centre[0] - n[0] * shift,
+        mo.design.centre[1] - n[1] * shift,
+      ]
+    mo.base = lowest(mo.rings)
+    console.log(`model: ${mo.id} moved ${shift} m in off the wall`)
+  }
+
   // --- the sites, levelled -----------------------------------------------------------
   // A Roman building stood on ground cut and filled level for it — Caesar's forum cut
   // into the Capitol's slope behind a wall of peperino 12 m high (Platner & Ashby,
@@ -653,6 +743,54 @@ export function bakeModel(m: ModelInput) {
         )
     }
 
+  // --- the agger ---------------------------------------------------------------------
+  // Where the wall crossed the flat plateau with no brow to stand on, its ditch was
+  // dug in front of it and its earth heaped behind (`AGGER`): cut into the ground
+  // everything stands on, and raised on it, so the houses and trees keep off them.
+  const [a0, a1] = m.course.agger
+  const aggerGates = m.course.gates.filter((gt) => gt.i >= a0 && gt.i <= a1)
+  const g0 = ring.map(([x, y]) => at(x, y))
+  {
+    const pad = WALL.thick / 2 + AGGER.berm + AGGER.ditch + AGGER.top + AGGER.run + 8
+    const span = ring.slice(a0, a1 + 1)
+    const [bx0, by0, bx1, by1] = bounds(span, pad)
+    const before = new Float32Array(ground)
+    for (let y = by0; y <= by1; y += g.texel)
+      for (let x = bx0; x <= bx1; x += g.texel) {
+        const k = idx(x, y)
+        if (k < 0) continue
+        let best = { i: a0, d: Infinity }
+        for (let i = a0; i <= a1; i++) {
+          const d = Math.hypot(ring[i][0] - x, ring[i][1] - y)
+          if (d < best.d) best = { i, d }
+        }
+        const i = best.i
+        const n = outward(i)
+        const across = (x - ring[i][0]) * n[0] + (y - ring[i][1]) * n[1]
+        // Along the wall, whose direction is the outward normal turned left.
+        const along = Math.abs(-(x - ring[i][0]) * n[1] + (y - ring[i][1]) * n[0])
+        if (along > STEP_M) continue
+        const fromEnd = Math.min(i - a0, a1 - i) * STEP_M
+        const fromGate = Math.min(...aggerGates.map((gt) => Math.abs(i - gt.i) * STEP_M))
+        const ends = smoothstep(0, AGGER.ends, fromEnd)
+        const e = across - WALL.thick / 2 - AGGER.berm
+        if (e > 0 && e < AGGER.ditch) {
+          const w = ends * smoothstep(AGGER.causeway, AGGER.causeway + 10, fromGate)
+          const depth = Math.min(AGGER.depth, e, AGGER.ditch - e)
+          ground[k] = Math.min(before[k], before[k] - (before[k] - (g0[i] - depth)) * w)
+        }
+        const f = -across - WALL.thick / 2
+        if (f > -1 && f < AGGER.top + AGGER.run) {
+          const w = ends * smoothstep(AGGER.cut, AGGER.cut + 12, fromGate)
+          const h =
+            f < AGGER.top
+              ? AGGER.bank
+              : AGGER.bank * (1 - smoothstep(AGGER.top, AGGER.top + AGGER.run, f))
+          ground[k] = Math.max(before[k], before[k] + (g0[i] + h - before[k]) * w)
+        }
+      }
+  }
+
   const png = new Uint8Array(g.width * g.height * 4)
   for (let i = 0; i < ground.length; i++) {
     const cm = Math.max(0, Math.min(65535, Math.round(ground[i] * 100)))
@@ -662,18 +800,116 @@ export function bakeModel(m: ModelInput) {
   }
 
   // --- the wall ------------------------------------------------------------------------
-  // Every join but the river bank's, stepped every 8 m so it rides the ground.
-  const wall = m.wall.map(({ a, b, known }) => {
-    const n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 8))
-    const pts: [number, number, number][] = []
-    for (let k = 0; k <= n; k++) {
-      const x = a[0] + ((b[0] - a[0]) * k) / n
-      const y = a[1] + ((b[1] - a[1]) * k) / n
-      pts.push([round(x), round(y), round(at(x, y))])
+  // Along its course, every `STEP_M`: the ground just outside and just inside its
+  // faces, which each face runs down to, and the height of its walk. It stands `walk`
+  // over its ground where it stands free, and crowning a brow, at least a little over
+  // the hill behind it; on the agger its walk is the bank's top. Smoothed along the
+  // wall, so it rises and falls with the ground in long runs, not a step at a time.
+  const face = WALL.thick / 2 + 1
+  const sides = ring.slice(0, N).map((p, i) => {
+    const n = outward(i)
+    return {
+      out: at(p[0] + n[0] * face, p[1] + n[1] * face),
+      in: at(p[0] - n[0] * face, p[1] - n[1] * face),
+      mid: at(p[0], p[1]),
     }
-    return { pts, known }
   })
-  const gates = m.gates.map(([x, y]) => [round(x), round(y), round(at(x, y))])
+  const rawWalk = sides.map((sd) => Math.max(sd.mid + WALL.walk, sd.in + 0.4))
+  const walk = smoothCyclic(rawWalk, 3).map((v, i) => Math.max(v, sides[i].mid + 5.5))
+  const nearGate = (i: number, half: number) =>
+    m.course.gates.some((gt) => {
+      const d = Math.min(Math.abs(i - gt.i), N - Math.abs(i - gt.i)) * STEP_M
+      return d < half
+    })
+  // The curtain in runs between the gatehouses.
+  const wall: { pts: number[][]; agger: boolean }[] = []
+  {
+    const start = m.course.gates[0].i
+    let run: number[][] = []
+    let runAgger = false
+    for (let k = 0; k <= N; k++) {
+      const i = (start + k) % N
+      if (nearGate(i, WALL.gate) || k === N) {
+        if (run.length > 1) wall.push({ pts: run, agger: runAgger })
+        run = []
+        runAgger = false
+        continue
+      }
+      const p = ring[i]
+      run.push([
+        round(p[0]),
+        round(p[1]),
+        round(sides[i].out),
+        round(sides[i].in),
+        round(walk[i]),
+      ])
+      runAgger ||= i >= a0 && i <= a1
+    }
+  }
+  const gates = m.course.gates.map((gt) => ({
+    name: gt.name,
+    at: gt.at.map((v) => round(v)),
+    out: outward(gt.i).map((v) => Math.round(v * 1e4) / 1e4),
+    ground: round(sides[gt.i % N].mid),
+    walk: round(walk[gt.i % N]),
+    surveyed: gt.surveyed,
+  }))
+  // Towers along the agger, clear of its gates.
+  const towers: { at: number[]; out: number[]; ground: number; walk: number }[] = []
+  for (let i = a0; i <= a1; i += Math.round(WALL.tower / STEP_M)) {
+    if (nearGate(i, WALL.gate + 16)) continue
+    towers.push({
+      at: ring[i].map((v) => round(v)),
+      out: outward(i).map((v) => Math.round(v * 1e4) / 1e4),
+      ground: round(sides[i].out),
+      walk: round(walk[i]),
+    })
+  }
+  // Where the wall and its agger lie: no house, street or tree on them. Inside, the
+  // wall's own width and, on the agger, the bank behind it; outside, its foot and the
+  // agger's ditch.
+  const wallGrid = new SegmentGrid(
+    ring.slice(0, N).map((p, i) => [p, pt(i + 1)] as [Pt, Pt]),
+    40,
+  )
+  const aggerGrid = new SegmentGrid(
+    ring.slice(a0, a1).map((p, i) => [p, ring[a0 + i + 1]] as [Pt, Pt]),
+    40,
+  )
+  const aggerBack = WALL.thick / 2 + AGGER.top + AGGER.run * 0.7
+  const aggerFront = WALL.thick / 2 + AGGER.berm + AGGER.ditch + 4
+  const onWall = (p: Pt) => {
+    const inside = inRing(p, m.circuit)
+    if (wallGrid.nearest(p).d < WALL.thick / 2 + (inside ? WALL.clear : WALL.clearOut))
+      return true
+    return aggerGrid.nearest(p).d < (inside ? aggerBack : aggerFront)
+  }
+  // The same, as outlines the generated city (city.ts) keeps off: the wall's width,
+  // and on the agger the bank behind it.
+  const wallBands: Pt[][] = ring.slice(0, N).map((p, i) => {
+    const q = pt(i + 1)
+    const n = outward(i)
+    const back = i >= a0 && i < a1 ? aggerBack - WALL.clear : WALL.thick / 2
+    const front = WALL.thick / 2
+    const mid: Pt = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]
+    const c: Pt = [
+      mid[0] + (n[0] * (front - back)) / 2,
+      mid[1] + (n[1] * (front - back)) / 2,
+    ]
+    return rect(
+      c[0],
+      c[1],
+      front + back,
+      Math.hypot(q[0] - p[0], q[1] - p[1]) + 1,
+      Math.atan2(q[1] - p[1], q[0] - p[0]) - Math.PI / 2,
+    )
+  })
+  // Known buildings on the wall's line: the build says so.
+  for (const mo of monuments) {
+    if (mo.clear === false || mo.kind === 'bridge') continue
+    const hit = ring.find((q) => inRing(q, mo.rings[0]))
+    if (hit) console.log(`model: the wall runs through ${mo.id}`)
+  }
 
   // --- where the generated city may stand ------------------------------------------------
   const inCircuit = (x: number, y: number) => inRing([x, y], m.circuit)
@@ -864,6 +1100,7 @@ export function bakeModel(m: ModelInput) {
     if (streetGrid.nearest(p).d < FABRIC.streetClear) return false
     if (monumentGrid.nearest(p).d < FABRIC.monumentClear || insideMonument(p)) return false
     if (isOpen(p)) return false
+    if (onWall(p)) return false
     if (slopeAt(p[0], p[1]) > FABRIC.maxSlope) return false
     return suburb ? !inCircuit(p[0], p[1]) : inCircuit(p[0], p[1])
   }
@@ -888,12 +1125,12 @@ export function bakeModel(m: ModelInput) {
   // Inside the wall: streets, blocks and lots (city.ts).
   const city = layCity({
     circuit: m.circuit,
-    gates: m.gates,
+    gates: m.course.gates.map((gt) => gt.at),
     streets: m.streets,
     pieces: excavatedPieces(),
     forum: forumHull,
     squares: open,
-    monuments: [...early.map((mo) => mo.rings[0]), ...aqueductBands],
+    monuments: [...early.map((mo) => mo.rings[0]), ...aqueductBands, ...wallBands],
     at,
     slopeAt,
     wet: (x, y) => sample(m.water, x, y, -1) < 6,
@@ -916,7 +1153,7 @@ export function bakeModel(m: ModelInput) {
       const p: Pt = [x + (rand() - 0.5) * s0 * 0.8, y + (rand() - 0.5) * s0 * 0.8]
       if (inCircuit(p[0], p[1])) continue
       const near = streetGrid.nearest(p)
-      const fromWall = distToRing(p, m.circuit)
+      const fromWall = wallGrid.nearest(p).d
       const byRoad = near.d < SUBURB.road && fromWall < SUBURB.reach
       if (!byRoad && fromWall > SUBURB.wall) continue
       if (rand() > SUBURB.density[byRoad ? 0 : 1]) continue
@@ -952,7 +1189,8 @@ export function bakeModel(m: ModelInput) {
         aqueductGrid.nearest(p).d < 8 ||
         streetGrid.nearest(p).d < 6 ||
         monumentGrid.nearest(p).d < 10 ||
-        insideMonument(p)
+        insideMonument(p) ||
+        onWall(p)
       )
         continue
       // Groves where a slow noise says so, thicker on the slopes.
@@ -989,8 +1227,13 @@ export function bakeModel(m: ModelInput) {
   for (const mo of early)
     if (yearsOf(mo.id)[1] >= WINDOW[1]) cast(mo.rings[0].slice(0, -1), mo.podium + mo.body)
   for (const w of wall)
-    for (let k = 0; k + 1 < w.pts.length; k++)
-      cast([w.pts[k].slice(0, 2) as Pt, w.pts[k + 1].slice(0, 2) as Pt], 10)
+    for (let k = 0; k + 1 < w.pts.length; k++) {
+      const [p, q] = [w.pts[k], w.pts[k + 1]]
+      cast(
+        [p.slice(0, 2) as Pt, q.slice(0, 2) as Pt],
+        Math.max(p[4], q[4]) + WALL.parapet - Math.min(p[2], q[2]),
+      )
+    }
   for (let i = 0; i < trees.length; i += 4) {
     const [x, y, r] = trees.slice(i, i + 3)
     cast(
@@ -1049,8 +1292,13 @@ export function bakeModel(m: ModelInput) {
             },
           ]
         : [],
+      // The Servian Wall (`WALL`): its curtain in runs between the gates, each point
+      // x, y, the ground outside and inside its faces and its walk; its gates, each
+      // with the way out of the city; the agger's towers; and its build.
       wall,
       gates,
+      towers,
+      wallBuild: WALL,
       // The retaining walls round the levelled sites: each a line along its edge at the
       // site's level, with the wall's height at each point, and its monument's years.
       retaining,
@@ -1077,11 +1325,28 @@ export function bakeModel(m: ModelInput) {
     }),
   )
   console.log(
-    `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / 4} trees, ${wall.length} wall stretches, water at ${waterLevel.toFixed(1)} m`,
+    `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / 4} trees, the wall in ${wall.length} runs with ${gates.length} gates and ${towers.length} towers, water at ${waterLevel.toFixed(1)} m`,
   )
   // The footprints drawn for monuments with no surveyed outline, for picking.
+  // The wall is picked along its course: a band its width, out one side and back.
+  const wallPick: Pt[] = [
+    ...ring.slice(0, N).map((p, i) => {
+      const n = outward(i)
+      return [p[0] + n[0] * face, p[1] + n[1] * face] as Pt
+    }),
+    ...ring
+      .slice(0, N)
+      .map((p, i) => {
+        const n = outward(i)
+        return [p[0] - n[0] * face, p[1] - n[1] * face] as Pt
+      })
+      .reverse(),
+  ]
   const drawn = [
     ...monuments.filter((mo) => mo.approx).map((mo) => ({ id: mo.id, ring: mo.rings[0] })),
+    ...(m.places.has('murus-servii-tullii')
+      ? [{ id: 'murus-servii-tullii', ring: [...wallPick, wallPick[0]] }]
+      : []),
     // An aqueduct's arcade opens the aqueduct it was built for.
     ...aqueducts.flatMap(({ course }, n) =>
       aqueductBands
@@ -1375,6 +1640,25 @@ function valueNoise(x: number, y: number, seed: number) {
   const a = h(i, j) + (h(i + 1, j) - h(i, j)) * f(u)
   const b = h(i, j + 1) + (h(i + 1, j + 1) - h(i, j + 1)) * f(u)
   return a + (b - a) * f(v)
+}
+
+const smoothstep = (a: number, b: number, x: number) => {
+  const t = Math.max(0, Math.min(1, (x - a) / (b - a)))
+  return t * t * (3 - 2 * t)
+}
+
+/** Values round a ring smoothed along it, sigma in points. */
+function smoothCyclic(v: number[], sigma: number) {
+  const rad = Math.ceil(sigma * 3)
+  const k = Array.from({ length: 2 * rad + 1 }, (_, i) =>
+    Math.exp(-((i - rad) ** 2) / (2 * sigma * sigma)),
+  )
+  const sum = k.reduce((a, b) => a + b, 0)
+  return v.map((_, i) => {
+    let s = 0
+    for (let o = -rad; o <= rad; o++) s += v[(i + o + v.length) % v.length] * k[o + rad]
+    return s / sum
+  })
 }
 
 /** A separable Gaussian blur, sigma in texels. */

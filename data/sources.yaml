@@ -740,6 +740,10 @@
     The heights it records of what excavations found (its altimetry) give the
     ancient valley floors: those on ground walked on are copied into
     data/geometry/rome-levels.geojson, with the piece each belongs to.
+    Its reconstruction of the Servian Wall's whole course (19694, made for the
+    2017 "Roma medio repubblicana" conference) and the pieces of the wall, its
+    agger, ditch and gates are copied into data/geometry/rome-servian.geojson: the
+    model's wall stands on that course (pipeline/src/rome/servian.ts).
 
 - id: digital-augustan-rome
   kind: modern

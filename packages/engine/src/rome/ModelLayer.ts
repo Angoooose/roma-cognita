@@ -42,8 +42,8 @@ import {
   STONE,
   type Stone,
 } from './builder.ts'
-import { Frame } from './architecture.ts'
 import { buildDesign, type Design } from './monuments.ts'
+import { curtain, type Gate, gatehouse, type Tower, tower, type WallBuild } from './wall.ts'
 
 /**
  * The model of Rome (DESIGN.md §7.7): the city as a museum model, raised out of the
@@ -469,9 +469,6 @@ export class ModelLayer {
     }
     b.dates = ALWAYS
 
-    // The Servian Wall: drawn a little stouter than its ~4 m so it reads at the city's
-    // scale, 10 m high on known stretches and lower and paler where the course is
-    // reconstructed; towers at its gates.
     // Retaining walls where a levelled site is cut into rising ground (pipeline
     // model.ts): squared tufa from the site's level to a little over the ground
     // behind, standing while its monument does.
@@ -501,59 +498,15 @@ export class ModelLayer {
       }
     }
     b.dates = ALWAYS
-    const gatesAt = meta.gates as number[][]
-    for (const w of meta.wall as { pts: number[][]; known: boolean }[]) {
-      const h = w.known ? 10 : 8.5
-      const col = w.known ? C.stone : C.stoneLight
-      for (let i = 0; i + 1 < w.pts.length; i++) {
-        const [a, c] = [w.pts[i], w.pts[i + 1]]
-        const len = Math.hypot(c[0] - a[0], c[1] - a[1])
-        if (len < 0.1) continue
-        // The gatehouse stands in the wall's place at a gate.
-        const [mx, my] = [(a[0] + c[0]) / 2, (a[1] + c[1]) / 2]
-        if (gatesAt.some(([gx, gy]) => Math.hypot(gx - mx, gy - my) < 7)) continue
-        const angle = Math.atan2(c[1] - a[1], c[0] - a[0]) - Math.PI / 2
-        const ground = Math.min(a[2], c[2])
-        b.block(
-          (a[0] + c[0]) / 2,
-          (a[1] + c[1]) / 2,
-          angle,
-          6,
-          len + 0.8,
-          -6,
-          h + (Math.max(a[2], c[2]) - ground),
-          'flat',
-          ground,
-          col,
-          col,
-        )
-      }
-    }
-    // Each gate a gatehouse on the wall's line: a block of the wall's stone with an
-    // arched passage through it for the road, under a hipped roof of tiles.
-    const wallPts = (meta.wall as { pts: number[][] }[]).flatMap((w) =>
-      w.pts.slice(1).map((q, k) => [w.pts[k], q]),
-    )
-    for (const [x, y, ground] of meta.gates as number[][]) {
-      let best = { d: Infinity, a: 0 }
-      for (const [p, q] of wallPts) {
-        const d = Math.hypot((p[0] + q[0]) / 2 - x, (p[1] + q[1]) / 2 - y)
-        if (d < best.d) best = { d, a: Math.atan2(q[0] - p[0], q[1] - p[1]) }
-      }
-      // The frame's front is square to the wall, along the road through the gate.
-      const G = new Frame(b, x, y, best.a + Math.PI / 2, ground)
-      G.box(-7.5, -2.4, -4.5, 4.5, -6, 11, C.stone)
-      G.box(2.4, 7.5, -4.5, 4.5, -6, 11, C.stone)
-      G.box(-2.4, 2.4, -4.5, 4.5, 7.6, 11, C.stone, C.stone)
-      G.arch(-2.4, 2.4, -4.5, 9, 5.2, 7.6, 7.6, C.stone, C.aqueductShade)
-      G.box(-7.9, 7.9, -4.9, 4.9, 11, 11.6, C.stone)
-      G.roof(-7.9, 7.9, -4.9, 4.9, 11.6, {
-        along: 'u',
-        tiles: C.roof,
-        pitch: 0.3,
-        seed: 0.9,
-      })
-    }
+    // The Servian Wall (wall.ts): the curtain in its runs between the gates, the
+    // agger's towers, and a gatehouse at each gate.
+    const W = meta.wallBuild as WallBuild
+    for (const [k, w] of (meta.wall as { pts: number[][] }[]).entries())
+      curtain(b, w.pts, W, k * 97.3)
+    for (const [k, t] of ((meta.towers ?? []) as Tower[]).entries())
+      tower(b, t, W, k * 0.37)
+    for (const [k, g] of ((meta.gates ?? []) as Gate[]).entries())
+      gatehouse(b, g, W, k * 0.61)
 
     // The generated city (pipeline city.ts): plain stucco in a narrow range under one
     // terracotta, varied a little lot by lot. A building on the site of a later
@@ -1057,6 +1010,52 @@ function roofPaint(seed: F, across: F, down: F, run: F) {
     .mul(mix(float(1), float(0.78), eave.mul(lines)))
 }
 
+/**
+ * Squared stone laid dry in courses (`SKIN.ashlar`), as the Servian Wall's is: courses
+ * of two Roman feet (0.59 m), blocks laid alternately end-out and side-out course by
+ * course (Platner & Ashby, Murus Servii Tullii; Middleton 1892), each a little lighter
+ * or darker; the joints a thin shadow, there being no mortar; and here and there a
+ * stretch of darker, redder blocks, the Anio tufa of the repairs of the first century
+ * BCE (Frank, AJA 1918). `along` is how far along the face, `height` metres above the sea,
+ * so the courses run level. Fades to its average as it gets too fine to draw.
+ */
+function ashlarPaint(seed: F, along: F, height: F) {
+  const px = max(fwidth(along), fwidth(height)).max(0.005)
+  const joints = float(1).sub(smoothstep(0.06, 0.22, px))
+  const blocks = float(1).sub(smoothstep(0.2, 0.8, px))
+  const course = float(0.59)
+  const row = floor(height.div(course))
+  const inRow = height.sub(row.mul(course))
+  // End-out courses show the blocks' short ends, side-out ones their long sides.
+  const ends = step(0.5, fract(row.mul(0.5)))
+  const len = mix(float(1.2), float(0.6), ends)
+  const shift = hash(row.add(floor(seed.mul(1000)))).mul(len)
+  const col = floor(along.add(shift).div(len))
+  const inCol = along.add(shift).sub(col.mul(len))
+  const w = px.mul(0.7).max(0.025)
+  const joint = float(1).sub(
+    band(inRow, w, course.sub(w), px).mul(band(inCol, w, len.sub(w), px)),
+  )
+  const id = row
+    .mul(131)
+    .add(col.mul(17))
+    .add(floor(seed.mul(997)))
+  const tone = float(1).add(hash(id.abs()).sub(0.5).mul(0.1))
+  // The repairs, in patches some 20–40 m along and a few courses high.
+  const patch = step(
+    0.88,
+    hash(
+      floor(along.div(31))
+        .add(floor(height.div(3.5)).mul(7))
+        .add(floor(seed.mul(53))),
+    ),
+  ).mul(step(0.45, hash(id.abs().add(11))))
+  const repair = mix(vec3(1), vec3(0.93, 0.86, 0.8), patch.mul(blocks))
+  return repair
+    .mul(mix(float(1), tone, blocks))
+    .mul(mix(float(1), float(0.68), joint.mul(joints)))
+}
+
 function material(occlusion: Occlusion, viewM: F) {
   const mat = new THREE.MeshStandardNodeMaterial({ roughness: 0.9, metalness: 0 })
   // Built by hand, the geometry's winding is not consistent: both faces are drawn,
@@ -1102,12 +1101,16 @@ function material(occlusion: Occlusion, viewM: F) {
   const kind = floor(rest)
   const seed = fract(rest).div(0.9)
   const paint = select(
-    surface.greaterThan(2.5),
-    vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+    surface.greaterThan(3.5),
+    ashlarPaint(seed, skin.y, skin.z),
     select(
-      surface.greaterThan(0.5),
-      wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
-      vec3(1),
+      surface.greaterThan(2.5),
+      vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+      select(
+        surface.greaterThan(0.5),
+        wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
+        vec3(1),
+      ),
     ),
   )
   // The relief under the city, washed over it at half strength, so the hills read
