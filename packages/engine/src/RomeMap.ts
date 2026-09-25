@@ -199,8 +199,15 @@ export class RomeMap {
     const cam = this.view.camera
     setKnockouts(this.places.knockouts(cam, w, h), w, h)
     if (
-      this.places.update(cam, w, h, mpp, this.view.state.pitch, this.politics.year, () =>
-        this.labels.obstacles(cam, w, h, mpp),
+      this.places.update(
+        cam,
+        w,
+        h,
+        mpp,
+        this.view.state.pitch,
+        this.view.heading,
+        this.politics.year,
+        () => this.labels.obstacles(cam, w, h, mpp),
       )
     )
       this.dirty = true

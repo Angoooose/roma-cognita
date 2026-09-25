@@ -177,7 +177,7 @@ export class PlaceLayer {
   private text: { font: FontData; atlas: THREE.Texture } | null = null
   private title: { font: FontData; atlas: THREE.Texture } | null = null
   private items = new Map<string, Item>()
-  private last = { mpp: 0, pitch: -1, w: 0, h: 0, year: NaN }
+  private last = { mpp: 0, pitch: -1, heading: NaN, w: 0, h: 0, year: NaN }
   private meshes: {
     markers?: THREE.Mesh
     text?: THREE.Mesh
@@ -248,6 +248,7 @@ export class PlaceLayer {
     h: number,
     mpp: number,
     pitch: number,
+    heading: number,
     year: number,
     obstacles: () => Box[],
   ) {
@@ -258,10 +259,11 @@ export class PlaceLayer {
       year !== l.year ||
       Math.abs(mpp / l.mpp - 1) > 0.04 ||
       pitch !== l.pitch ||
+      heading !== l.heading ||
       w !== l.w ||
       h !== l.h
     ) {
-      Object.assign(l, { mpp, pitch, w, h, year })
+      Object.assign(l, { mpp, pitch, heading, w, h, year })
       this.place(camera, w, h, mpp, year, obstacles())
     }
     const now = performance.now()
