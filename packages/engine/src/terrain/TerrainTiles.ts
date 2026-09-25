@@ -18,6 +18,14 @@ import type { TileJob, TileResult } from './heightWorker.ts'
 const TEXELS = TILE_TEXELS
 /** Mesh segments per side. Lighting is per-texel, so the mesh can be coarser. */
 const SEGMENTS = 64
+/**
+ * Over the model of Rome the mesh must follow the model's ground closely, which the
+ * vertex shader lays at 4 m (rome/shading.ts `groundLift`), or the ground's big
+ * triangles cut through the buildings. Tiles from this level that overlap its board
+ * get a denser grid, about 5 m at the deepest level.
+ */
+const FINE_SEGMENTS = 512
+const FINE_FROM_LEVEL = 9
 const MAX_LEVEL = 11
 /** Split while a texel would cover more than this many device pixels. */
 const SPLIT_TEXEL_PX = 1.25
@@ -59,6 +67,9 @@ export class TerrainTiles {
   readonly group = new THREE.Group()
   private root: Node
   private geometry = createGridGeometry(SEGMENTS)
+  private fineGeometry: THREE.BufferGeometry | null = null
+  /** The rectangle, plane metres, where tiles take the fine grid: the model's board. */
+  private fineRect: [number, number, number, number] | null = null
   /** Built with the first tile, once the shared textures it reads have loaded. */
   private material?: ReturnType<typeof createTerrainMaterial>
   private workers: Worker[] = []
@@ -74,7 +85,9 @@ export class TerrainTiles {
   constructor() {
     this.root = makeNode(0, 0, 0, undefined)
     for (let i = 0; i < WORKERS; i++) {
-      const w = new Worker(new URL('./heightWorker.ts', import.meta.url), { type: 'module' })
+      const w = new Worker(new URL('./heightWorker.ts', import.meta.url), {
+        type: 'module',
+      })
       w.onmessage = (e: MessageEvent<TileResult>) => this.onResult(e.data)
       this.workers.push(w)
     }
@@ -155,10 +168,34 @@ export class TerrainTiles {
     return changed
   }
 
+  /** Tiles over `rect` (plane metres) take the fine grid from now on, those loaded too. */
+  setFineRect(rect: [number, number, number, number]) {
+    this.fineRect = rect
+    const visit = (n: Node) => {
+      if (n.mesh) n.mesh.geometry = this.geometryFor(n)
+      n.children?.forEach(visit)
+    }
+    visit(this.root)
+  }
+
+  private geometryFor(node: Node) {
+    const r = this.fineRect
+    const over =
+      r &&
+      node.level >= FINE_FROM_LEVEL &&
+      node.x0 < r[2] &&
+      node.x0 + node.size > r[0] &&
+      node.y0 < r[3] &&
+      node.y0 + node.size > r[1]
+    if (!over) return this.geometry
+    return (this.fineGeometry ??= createGridGeometry(FINE_SEGMENTS))
+  }
+
   private select(node: Node, eye: THREE.Vector3, focalPx: number, out: Node[]) {
     if (!intersectsData(node)) return
     const zMax = node.state === 'ready' ? node.maxHeight * 1.5 + 10 : 6000
-    const zMin = node.state === 'ready' ? Math.min(node.minHeight * 1.5, 0) - node.size * 0.01 : -500
+    const zMin =
+      node.state === 'ready' ? Math.min(node.minHeight * 1.5, 0) - node.size * 0.01 : -500
     this.box.min.set(node.x0, node.y0, zMin)
     this.box.max.set(node.x0 + node.size, node.y0 + node.size, zMax)
     if (!this.frustum.intersectsBox(this.box)) return
@@ -195,7 +232,11 @@ export class TerrainTiles {
       this.jobs.set(id, node)
       const job: TileJob = { id, level: node.level, i: node.i, j: node.j }
       // Route neighbours to the same worker so they share its source-tile cache.
-      const w = hash(node.level, Math.floor(node.x0 / (node.size * 4)), Math.floor(node.y0 / (node.size * 4)))
+      const w = hash(
+        node.level,
+        Math.floor(node.x0 / (node.size * 4)),
+        Math.floor(node.y0 / (node.size * 4)),
+      )
       this.workers[w % WORKERS].postMessage(job)
     }
   }
@@ -211,7 +252,7 @@ export class TerrainTiles {
       roads: dataTexture(r.roads, THREE.RGFormat),
     }
     const material = (this.material ??= createTerrainMaterial(TEXELS))
-    const mesh = new THREE.Mesh(this.geometry, material.material)
+    const mesh = new THREE.Mesh(this.geometryFor(node), material.material)
     mesh.onBeforeRender = () => material.bind(node, textures)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
@@ -252,6 +293,7 @@ export class TerrainTiles {
     })
     this.material?.material.dispose()
     this.geometry.dispose()
+    this.fineGeometry?.dispose()
   }
 }
 

@@ -271,6 +271,21 @@ export async function bakePlate(
   const unsigned = (d: number, clamp: number) => Math.round(Math.min(1, d / clamp) * 255)
   const signed = (d: number, clamp: number) =>
     Math.round(128 + Math.max(-1, Math.min(1, d / clamp)) * 127)
+  // No street is painted under a building: where a recorded street's line or a main
+  // street's runs across a monument's footprint, it stops at its edge (DESIGN.md §7.7).
+  for (const ring of model.covered) {
+    const xs = ring.map((q) => q[0])
+    const ys = ring.map((q) => q[1])
+    const c0 = Math.max(0, Math.floor((Math.min(...xs) - x0) / TEXEL_M))
+    const c1 = Math.min(width - 1, Math.ceil((Math.max(...xs) - x0) / TEXEL_M))
+    const r0 = Math.max(0, Math.floor((y1 - Math.max(...ys)) / TEXEL_M))
+    const r1 = Math.min(height - 1, Math.ceil((y1 - Math.min(...ys)) / TEXEL_M))
+    for (let r = r0; r <= r1; r++)
+      for (let c = c0; c <= c1; c++) {
+        const p: Pt = [x0 + (c + 0.5) * TEXEL_M, y1 - (r + 0.5) * TEXEL_M]
+        if (inRing(p, ring)) streetField.d[r * width + c] = STREET_CLAMP_M
+      }
+  }
   for (let i = 0; i < width * height; i++) {
     img0[i * 4] = Math.round(shadowAt(i) * 255)
     img0[i * 4 + 2] = unsigned(streetField.d[i], STREET_CLAMP_M)

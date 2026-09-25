@@ -33,9 +33,9 @@ interface Placing {
   /** The building's own extent where it is smaller than its site (its site is `size`). */
   extent?: [number, number]
   /**
-   * The ground it is built on: the lowest under its footprint (the default), or, for
-   * a terrace built out on a slope, the highest or the middle, its foundations running
-   * down to the lowest.
+   * The level its site is cut and filled to (model.ts): the mean of the ground under
+   * it (the default, cut and fill balanced); the lowest, where it was cut into a slope;
+   * or the highest, where it was built out as a terrace, its foundations running down.
    */
   level?: 'low' | 'mean' | 'top'
   /** How much of it stands while it is being built, as a share of its height. */

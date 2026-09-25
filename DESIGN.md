@@ -678,6 +678,22 @@ known and what is generated are kept apart:
       ground, its foundations running down to the lowest (`level`): the Area
       Capitolina and its temples, and the Tabularium, whose substructure rises
       from the Forum's ground to the saddle's.
+    - **Its site levelled** (decided 2026-09-25). Each designed building's site is
+      cut and filled level in the ground everything stands on (`ground.png`, model.ts),
+      the larger first, so a temple in a forum stands on the forum: at the mean of the
+      ground under it, or its lowest where it was cut into a slope (Caesar's forum,
+      cut into the Arx behind a peperino wall "12 m high", Platner & Ashby, p. 227), or
+      its highest where it was built out as a terrace. A walk 3 m wide runs round it
+      at its level; beyond, ground within a metre or two of the level eases back over
+      10 m, and where the site is cut more than 1.2 m into rising ground a retaining
+      wall of squared tufa holds the ground back. Over falling ground its own walls
+      and podium stand on foundations down to the ground. The terrain over the model's
+      board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
+      `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
+      its big triangles cut through the buildings.
+    - **No street under a building.** Where a recorded or main street's line crosses
+      a monument's footprint it stops at its edge (plate.ts), except over the bridges,
+      the island and the open squares.
     - Proportions a source does not give are Vitruvius' rules of thumb: a column
       seven diameters high for the Tuscan, nine for the Ionic, ten for the
       Corinthian; an entablature about a quarter of the column; a pediment a

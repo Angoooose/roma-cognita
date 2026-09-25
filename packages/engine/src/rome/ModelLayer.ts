@@ -472,6 +472,35 @@ export class ModelLayer {
     // The Servian Wall: drawn a little stouter than its ~4 m so it reads at the city's
     // scale, 10 m high on known stretches and lower and paler where the course is
     // reconstructed; towers at its gates.
+    // Retaining walls where a levelled site is cut into rising ground (pipeline
+    // model.ts): squared tufa from the site's level to a little over the ground
+    // behind, standing while its monument does.
+    for (const r of (meta.retaining ?? []) as {
+      base: number
+      pts: number[][]
+      years: [number, number]
+    }[]) {
+      b.dates = [r.years[0], r.years[1], 1, 0]
+      for (let i = 0; i + 1 < r.pts.length; i++) {
+        const [a, c] = [r.pts[i], r.pts[i + 1]]
+        const len = Math.hypot(c[0] - a[0], c[1] - a[1])
+        if (len < 0.1) continue
+        b.block(
+          (a[0] + c[0]) / 2,
+          (a[1] + c[1]) / 2,
+          Math.atan2(c[1] - a[1], c[0] - a[0]) - Math.PI / 2,
+          1.4,
+          len + 0.4,
+          -1,
+          Math.max(a[2], c[2]),
+          'flat',
+          r.base,
+          C.retaining,
+          C.retainingTop,
+        )
+      }
+    }
+    b.dates = ALWAYS
     const gatesAt = meta.gates as number[][]
     for (const w of meta.wall as { pts: number[][]; known: boolean }[]) {
       const h = w.known ? 10 : 8.5

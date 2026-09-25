@@ -136,6 +136,8 @@ export const DESIGNS_FORUM: Record<string, Design> = {
   },
   'forum-iulium': {
     model: 'forum',
+    // Cut into the foot of the Arx behind its peperino wall (P&A, p. 227).
+    level: 'low',
     size: [75, 160],
     bearing: 131,
     depth: 11,

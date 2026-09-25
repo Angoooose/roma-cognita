@@ -80,6 +80,9 @@ export const C = {
   /** Warehouses: bare tufa. */
   warehouse: new THREE.Color('#CFC1A2'),
   stone: new THREE.Color('#D2C4AA'),
+  /** A retaining wall of squared tufa, and its coping. */
+  retaining: new THREE.Color('#C2AE8A'),
+  retainingTop: new THREE.Color('#D0C0A0'),
   stoneLight: new THREE.Color('#DCD1BD'),
   tree: [
     new THREE.Color('#6F8052'),
