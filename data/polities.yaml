@@ -7,7 +7,7 @@
 # Anything that wants a human with the books open is review: needs-check.
 #
 # Dates. `from` is the province's creation where one is recorded. Every other
-# `before 68 BCE` / `after 43 BCE` marks where the 68–43 BCE window cuts the
+# `before 68 BCE` / `after 27 BCE` marks where the 68–27 BCE window cuts the
 # record off: the polity existed at that year and this data says nothing about
 # how far beyond it (see data/README.md, "Open ends"). The year of a transition
 # belongs to the successor: a kingdom annexed in 46 ends in 47.

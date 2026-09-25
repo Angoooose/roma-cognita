@@ -80,6 +80,28 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   can miss by a few kilometres near a border.
 - **Curved territory labels**: built (§7.5).
 
+### After the extension to 27 BCE
+
+- **Who held which province under the triumvirs.** Bononia, Philippi,
+  Brundisium, Misenum and Tarentum moved provinces between Antony, Octavian,
+  Lepidus and Sextus Pompeius. They are portfolios inside one Roman state, not
+  polities, so they want a small dated table of their own (province, commander,
+  interval, sources) and a map mode that colours by it. The research for it is
+  done; the table is not written.
+- **Places of 43–27.** Nicopolis (31/29), Siscia, Metulum, Promona, the western
+  Pontic cities (a distinct id for Pontic Apollonia), the Augustan colonies of
+  Mauretania and Gaul (Zilil, Banasa, Baeterrae, Arausio, Forum Iulii), and the
+  Cilician and Carian free cities. Each needs its Pleiades id checked.
+- **Governors of 30–27.** DPRR follows Broughton, whose second volume ends in
+  31, so the people layer is nearly empty for 30–27 and the build prints "no
+  governor attested" for most provinces. Thomasson's *Laterculi Praesidum* and
+  PIR² would fill it, under their own terms.
+- **Occupation is drawn nowhere.** The extension added Sextus Pompeius in the
+  islands, Labienus and Pacorus in 40, and Antony in Armenia; the hatching in
+  "Political layer, left for later" would show them.
+- **Pharnaces' 48–47** keeps 47 against the successor rule (DOUBTS.md).
+- **Back to 133 BCE.** The other half of step B3.
+
 ### Labels, left for later
 
 - **Settlement names**: built (DESIGN §7.4). Left for later:

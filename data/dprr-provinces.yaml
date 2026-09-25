@@ -277,7 +277,9 @@
   kind: territory
   polities:
     - polity: cyrenae
+      to: 28 BCE
     - polity: creta-cyrenae
+      from: 27 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -289,7 +291,9 @@
   kind: territory
   polities:
     - polity: cyrenae
+      to: 28 BCE
     - polity: creta-cyrenae
+      from: 27 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -303,7 +307,9 @@
   kind: territory
   polities:
     - polity: aegyptus
+      to: 31 BCE
     - polity: aegyptus-province
+      from: 30 BCE
   sources:
     - { source: caesar-bc, locator: '3.103–112' }
     - { source: bellum-alexandrinum }
@@ -453,7 +459,9 @@
   kind: territory
   polities:
     - polity: creta
+      to: 28 BCE
     - polity: creta-cyrenae
+      from: 27 BCE
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: cassius-dio, locator: '36.17a–19' }

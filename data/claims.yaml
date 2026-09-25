@@ -6,7 +6,7 @@
 # (holding vs occupation, see packages/schema), and the validator fails if
 # they do.
 #
-# The window is 68–43 BCE, so every `before 68 BCE` / `after 43 BCE` below is
+# The window is 68–27 BCE, so every `before 68 BCE` / `after 27 BCE` below is
 # where that window cuts the row off: in force at that year, extent beyond it
 # not stated. Only rows that start or end *inside* the window carry a real
 # event date.
