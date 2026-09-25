@@ -353,13 +353,6 @@ export function layFields(f: FieldsInput): Fields {
     const o = blocks[b2]
     const sep = Math.hypot(o.at[0] - b.at[0], o.at[1] - b.at[1]) || 1
     const side = blockSide(b1)
-    if (open[i] && !recorded[i]) {
-      // Open ground: one even tone, no hedges and no lanes.
-      use[i] = LAND.open
-      tone[i] = 8
-      laneAt[i] = side * LANE_CLAMP_M
-      continue
-    }
     const isLane = side !== blockSide(b2)
     const toBlock = (d2 - d1) / (2 * sep)
     const toLane = isLane ? toBlock : LANE_CLAMP_M
@@ -398,6 +391,13 @@ export function layFields(f: FieldsInput): Fields {
       ((iu + iv) & 1 ? 1 : -1) *
       (toPlot <= toBlock ? Math.min(EDGE_CLAMP_M, toPlot) : EDGE_CLAMP_M)
     laneAt[i] = side * Math.min(LANE_CLAMP_M, isLane ? toBlock : toBlock + NOT_A_LANE_M)
+    if (open[i] && !recorded[i]) {
+      // Open ground: one tone, and no hedges or lanes drawn (the fields under it
+      // are kept, so the lines round it stay continuous).
+      use[i] = LAND.open
+      tone[i] = 8
+      continue
+    }
 
     // What the plot grows.
     const { slope, south } = slopeAt(i)
@@ -436,7 +436,6 @@ export function layFields(f: FieldsInput): Fields {
       tone[i] = recorded[i]
       dirByte[i] = (use_ << 4) | (Math.round((a / Math.PI) * 16) % 16)
       lane[i] = LANE_CLAMP_M
-      laneAt[i] = side * LANE_CLAMP_M
       continue
     }
     use[i] = use_
@@ -468,11 +467,8 @@ export function layFields(f: FieldsInput): Fields {
   // Inside a recorded ground only its own edge counts: the plots under it are gone.
   for (let i = 0; i < n; i++) {
     const e = use[i] === LAND.recorded ? bound[i] : Math.min(edge[i], bound[i])
-    // A recorded ground's hedge field is the distance to its own edge (its walk runs
-    // along it). Elsewhere the land's use changes only at a plot's edge, which the
-    // plots' own field already has: the texel-by-texel distance to a change would
-    // step along the texels.
-    if (use[i] === LAND.recorded) hedgeAt[i] = EDGE_CLAMP_M
+    // A recorded ground keeps the hedges of the plots under it, for the years it
+    // does not stand; the shader draws none while it does.
     edge[i] = e
   }
 

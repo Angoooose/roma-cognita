@@ -969,9 +969,9 @@ known and what is generated are kept apart:
     (`data/geometry/rome-grounds.geojson`, each saying what it follows), and are
     approximate. Each stands for its own years: a garden laid out within the window
     shows the farmland it replaced until then, and takes the houses on its ground
-    when it comes; the burial ground is open ground once cleared, about 35 BCE. A
-    garden is lawn crossed by gravel walks, its trees scattered and its edge lined
-    with cypresses; a grove a looser stand of holm oaks. Pompey's gardens, which
+    when it comes; once the burial ground is cleared, about 35 BCE, the farmland
+    round it runs on over it. A garden is lawn crossed by gravel walks, its trees
+    scattered and its edge lined with cypresses; a grove a looser stand of holm oaks. Pompey's gardens, which
     nobody can place, are a point only.
   - **Generated**, seeded, following what the sources say the land near the city
     was used for (Varro, _On Agriculture_ 1.16.3; Cato, _On Agriculture_ 7–8;
@@ -1003,8 +1003,9 @@ known and what is generated are kept apart:
       1.13); and tombs along the roads out of the gates, an altar, a façade or a
       drum as the known tombs are built, thickest near the gates (burial in the
       city was forbidden: Cicero, _Laws_ 2.58; Purcell 1987).
-    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8), and
-      the ground round the monuments outside the wall open too.
+    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8),
+      from the river to the Via Flaminia, and the ground round the monuments
+      outside the wall open too.
   - No umbrella pines outside the gardens: the pine skyline that says "Rome" now
     is mostly later planting.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not

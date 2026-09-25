@@ -247,8 +247,6 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
     .toVar()
   const aa = pxM.mul(0.7).toVar()
   const t = tone.div(15).toVar()
-  // A recorded ground's own edge, from the lane field, where it stands pushed out.
-  const edgeM = max(toLane.sub(4), 0).toVar()
 
   /** Bands `duty` of each `spacing` wide across `q`, fading to their share when too fine to draw. */
   const stripes = (q: F, spacing: number, duty: number) => {
@@ -298,16 +296,9 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
       .and(year.greaterThanEqual(p.x))
       .and(year.lessThanEqual(p.y))
     groundKind.assign(select(now, g.w, select(then, p.w, float(-1))))
-    // After its years (the burial ground, cleared by about 35 BCE) open ground;
-    // before them the farmland it was laid out over.
-    const after = year.greaterThan(g.y)
-    kind.assign(
-      select(
-        groundKind.lessThan(0),
-        select(after, float(LAND.open), floor(g8.div(16))),
-        float(LAND.recorded),
-      ),
-    )
+    // Outside its years, the farmland it was laid out over, before and after (the
+    // burial ground, cleared by about 35 BCE, goes back to the country round it).
+    kind.assign(select(groundKind.lessThan(0), floor(g8.div(16)), float(LAND.recorded)))
   })
 
   If(kind.equal(LAND.garden), () => {
@@ -351,17 +342,17 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
       look.assign(mix(P.scrub, P.scrubBush, bush))
     })
     .ElseIf(kind.equal(LAND.open), () => {
-      look.assign(P.open.mul(float(1).add(mottle(12, 54).mul(0.04))))
+      // Grass kept short by use, greener in the hollows and worn paler in patches,
+      // at two scales, so it reads as ground and not as a flat patch.
+      const worn = mottle(40, 54).mul(0.5).add(mottle(9, 57).mul(0.5))
+      look.assign(mix(P.meadow, P.open, float(0.55).add(worn.mul(0.6))))
     })
     .Else(() => {
       // A recorded ground: a garden's lawns within a walk round its edge, a grove's
       // shaded floor, the burial ground's bare earth and pits.
-      // Gravel walks round the edge and across the lawns, 45 metres apart, on the
-      // lie of the ground it was laid out over.
-      const walk = max(
-        float(1).sub(smoothstep(float(2.2).sub(aa), float(2.2).add(aa), edgeM)),
-        max(stripes(ru, 45, 0.06), stripes(rv, 45, 0.06)).mul(0.7),
-      )
+      // Gravel walks across the lawns, 45 metres apart, on the lie of the ground it
+      // was laid out over; the cypresses along its edge mark the boundary.
+      const walk = max(stripes(ru, 45, 0.06), stripes(rv, 45, 0.06)).mul(0.7)
       const lawn = P.lawn.mul(float(1).add(mottle(8, 56).mul(0.05)))
       const garden = mix(lawn, P.walk, walk.mul(0.6))
       // The burial ground: rough, trodden grass over the pits, bare where they are.
@@ -394,9 +385,10 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   const hedge = float(1)
     .sub(smoothstep(hedgeW.sub(aa), hedgeW.add(aa), toEdge))
     .mul(mix(float(0.55), float(0.15), smoothstep(0.6, 3, pxM)))
-  // Neither on open ground nor in a recorded one, whose edge the lane field carries
-  // only to keep it smooth (pipeline fields.ts).
-  const plotted = select(use.equal(LAND.open).or(use.equal(LAND.recorded)), 0, 1)
+  // Neither on open ground nor in a recorded one while it stands, whose edge the
+  // lane field carries only to keep it smooth (pipeline fields.ts); out of its years
+  // its plots' hedges and lanes show.
+  const plotted = select(kind.equal(LAND.open).or(kind.equal(LAND.recorded)), 0, 1)
   ground.assign(mix(ground, P.hedge.mul(lit), hedge.mul(plotted)))
   // Never wider than the lane field's offset along block edges that are not lanes.
   const laneW = clamp(pxM.mul(0.8), 1.5, 3)

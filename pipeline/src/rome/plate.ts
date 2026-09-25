@@ -72,14 +72,13 @@ const ROAD_CLAMP_M = 40
  * between the Via Flaminia and the river, where the people drilled, exercised and
  * raced, "the plain covered with grass throughout the year" (Strabo 5.3.8; Platner
  * & Ashby, Campus Martius, pp. 91–94). Left open, not farmed. The outline is loose:
- * the open ground stops at the river and the Via Flaminia, and its north and south
- * edges wander.
+ * the open ground stops at the river, its east edge runs along the Via Flaminia's line
+ * (which ends short of its north edge), and its north and south edges wander.
  */
 const CAMPUS_OPEN: [number, number][] = [
   [12.4705, 41.8988],
-  [12.4855, 41.8992],
-  [12.4845, 41.9045],
-  [12.482, 41.9105],
+  [12.4812, 41.8988],
+  [12.4758, 41.9105],
   [12.4715, 41.9115],
   [12.466, 41.904],
 ]
