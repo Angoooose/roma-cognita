@@ -535,14 +535,8 @@ export function bakeModel(m: ModelInput) {
         }),
         // A bridge's banks: the ground a few metres onto the land at each end, over its
         // base, where its deck comes down to meet it.
-        ...(span && {
-          banks: [-1, 1].map((s) => {
-            const e = s < 0 ? span!.a : span!.b
-            return round(
-              at(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8) - (waterLevel - 2),
-            )
-          }),
-        }),
+        // (A bridge's banks, where its deck lands, are set with its approaches below.)
+        ...(span && { span }),
       },
     })
   }
@@ -555,7 +549,8 @@ export function bakeModel(m: ModelInput) {
   // (DESIGN.md §7.7): the larger first, so a temple in a forum stands on the forum.
   // Round each, a walk `SITE.walk` wide at its level; beyond it, where the ground is
   // near the level it eases back over `SITE.ease`; where the site is cut deep into
-  // rising ground a retaining wall of tufa holds it back, and where it is built out
+  // rising ground a retaining wall of tufa holds it back, its coping flush with the
+  // ground behind, and where it is built out
   // over falling ground its own walls and podium stand on foundations to the ground.
   const yearsOf = (id: string) => dates(m.places.get(id)).years
   const retaining: { id: string; base: number; pts: number[][]; years: number[] }[] = []
@@ -629,7 +624,7 @@ export function bakeModel(m: ModelInput) {
           level,
         )
         if (beyond - level > SITE.cut)
-          run.push([round(w[0]), round(w[1]), round(beyond - level + 0.7)])
+          run.push([round(w[0]), round(w[1]), round(beyond - level + 0.2)])
         else flush()
       }
       flush()
@@ -652,6 +647,104 @@ export function bakeModel(m: ModelInput) {
           `model: ${a.id} and ${b.id} overlap by ${Math.round((area / least) * 100)}%`,
         )
     }
+
+  // --- the river's edges, built up -------------------------------------------------------
+  // The river's bed was cut into the ground (above), which slopes the ground down to
+  // the water for some metres either side of it. Where the Romans built at the water's
+  // edge the ground was made up to their masonry instead:
+  // - behind the Tiber Island's embankment, filled to one quay level, the embankment's
+  //   coping flush with it (the island's ship, designs/south.ts);
+  // - at each end of a bridge, a level approach at the bank's own height (the ground
+  //   beyond the cut), which its deck lands on.
+  const eachTexel = (
+    box: [number, number, number, number],
+    f: (k: number, p: Pt) => void,
+  ) => {
+    const c0 = Math.max(0, Math.floor((box[0] - g.x0) / g.texel))
+    const c1 = Math.min(g.width - 1, Math.ceil((box[2] - g.x0) / g.texel))
+    const r0 = Math.max(0, Math.floor((g.y1 - box[3]) / g.texel))
+    const r1 = Math.min(g.height - 1, Math.ceil((g.y1 - box[1]) / g.texel))
+    for (let r = r0; r <= r1; r++)
+      for (let c = c0; c <= c1; c++)
+        f(r * g.width + c, [g.x0 + (c + 0.5) * g.texel, g.y1 - (r + 0.5) * g.texel])
+  }
+  const isle = monuments.find((mo) => mo.kind === 'island' && mo.design)
+  let quayOf: { shore: Pt[]; level: number } | null = null
+  if (isle) {
+    const shore = m.riverRings
+      .filter((r) => inRing(isle.design!.centre, r))
+      .sort((a, b) => Math.abs(ringArea(a)) - Math.abs(ringArea(b)))[0]
+    if (shore) {
+      const box = bounds(shore, 2)
+      // Its quay: the island's ground away from the cut shore, and never under
+      // 2.5 m over the water.
+      const inland: number[] = []
+      eachTexel(box, (k, p) => {
+        if (inRing(p, shore) && distToRing(p, shore) > 18) inland.push(ground[k])
+      })
+      inland.sort((a, b) => a - b)
+      const quay = Math.max(
+        waterLevel + 2.5,
+        inland[Math.floor(inland.length / 2)] ?? waterLevel + 2.5,
+      )
+      eachTexel(box, (k, p) => {
+        if (!inRing(p, shore)) return
+        const d = distToRing(p, shore)
+        const t = Math.min(1, Math.max(0, (22 - d) / 8))
+        ground[k] = Math.max(ground[k], ground[k] + (quay - ground[k]) * t)
+      })
+      quayOf = { shore, level: quay }
+      const extra = isle.extra ?? (isle.extra = {})
+      extra.quay = round(quay - (waterLevel - 2))
+      extra.outline = shore.map(([x, y]) => [round(x), round(y)])
+    }
+  }
+  for (const mo of monuments) {
+    const span = mo.extra?.span as { a: Pt; b: Pt } | undefined
+    if (!span || !mo.design) continue
+    const axis = mo.design.axis
+    const half = mo.design.size[0] / 2 + 3
+    const n: Pt = [-axis[1], axis[0]]
+    const banks: number[] = []
+    for (const [e, s] of [
+      [span.a, -1],
+      [span.b, 1],
+    ] as [Pt, number][]) {
+      // The bank's height: the ground 14–26 m onto the land along its axis, past the cut.
+      let h = -Infinity
+      for (let t = 14; t <= 26; t += 2)
+        h = Math.max(h, at(e[0] + axis[0] * s * t, e[1] + axis[1] * s * t))
+      h = Math.max(h, waterLevel + 2.5)
+      // On the island it lands on the quay.
+      const onto: Pt = [e[0] + axis[0] * s * 6, e[1] + axis[1] * s * 6]
+      if (quayOf && inRing(onto, quayOf.shore)) h = quayOf.level
+      // Its approach: level from the water's edge 18 m onto the land, easing back to
+      // the ground by 28 m, across the deck's width and a little more.
+      const ends = [e, [e[0] + axis[0] * s * 28, e[1] + axis[1] * s * 28] as Pt]
+      const box = bounds(
+        [
+          [ends[0][0] + n[0] * (half + 6), ends[0][1] + n[1] * (half + 6)],
+          [ends[0][0] - n[0] * (half + 6), ends[0][1] - n[1] * (half + 6)],
+          [ends[1][0] + n[0] * (half + 6), ends[1][1] + n[1] * (half + 6)],
+          [ends[1][0] - n[0] * (half + 6), ends[1][1] - n[1] * (half + 6)],
+        ],
+        0,
+      )
+      eachTexel(box, (k, p) => {
+        if (m.water[k] < 0) return
+        const along = ((p[0] - e[0]) * axis[0] + (p[1] - e[1]) * axis[1]) * s
+        const across = Math.abs((p[0] - e[0]) * n[0] + (p[1] - e[1]) * n[1])
+        if (along < -2 || along > 28 || across > half + 6) return
+        const ta = Math.min(1, Math.max(0, (28 - along) / 10))
+        const tc = Math.min(1, Math.max(0, (half + 6 - across) / 6))
+        const t = ta * tc
+        ground[k] = ground[k] + (h - ground[k]) * t
+      })
+      banks.push(round(h - (waterLevel - 2)))
+    }
+    mo.extra = { ...mo.extra, banks }
+    delete mo.extra.span
+  }
 
   const png = new Uint8Array(g.width * g.height * 4)
   for (let i = 0; i < ground.length; i++) {
