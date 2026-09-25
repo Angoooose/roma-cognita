@@ -939,8 +939,10 @@
   review: draft
   note: >-
     The street from the Forum, between the Basilica Iulia and the temple of
-    Castor, to the Velabrum and the Circus Maximus. Only its first stretch is
-    mapped.
+    Castor, "south along the west side of the Palatine" to the forum Boarium and
+    the Circus Maximus (Platner & Ashby). Only its first stretch is surveyed; the
+    rest is drawn over the easiest ground along the foot of the Palatine to the
+    forum Boarium, and lighter.
 
 - id: vicus-iugarius
   kind: street
@@ -958,7 +960,10 @@
   review: draft
   note: >-
     The street from the Forum along the foot of the Capitol to the Porta
-    Carmentalis. Only its first stretch is mapped.
+    Carmentalis, "very near the intersection of the present Via della Consolazione
+    and the Via della Bocca della Verità" (Platner & Ashby). Only its first stretch
+    is surveyed; the rest is drawn over the easiest ground to the gate, and
+    lighter.
 
 - id: argiletum
   kind: street
@@ -976,7 +981,10 @@
   review: draft
   note: >-
     The street from the Forum, between the Curia and the Basilica Aemilia, up to
-    the Subura. Only its first stretch is mapped.
+    the Subura, its lower part lined with houses (Cicero, Att. 1.14.7, 12.32.2).
+    Only its first stretch is surveyed; the rest is drawn over the easiest ground
+    up the valley "now traversed by the Via Cavour" (Platner & Ashby, Subura) to
+    where the Clivus Suburanus begins, and lighter.
 
 - id: nova-via
   kind: street
@@ -1159,6 +1167,79 @@
     seems to have been called Lautumiae". The Via di Marforio was cleared in the
     1930s; traced along the excavated ancient paving (OpenStreetMap's Clivo
     Argentario) and drawn lighter.
+
+- id: vicus-longus
+  kind: street
+  within: roma
+  location: [12.49069, 41.89906]
+  names:
+    - { text: Vicus Longus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'vici#Longus, p. 575' }
+    - { source: sitar, locator: '8782' }
+    - { source: digital-augustan-rome, locator: 'Vicus Longus' }
+  confidence: probable
+  review: draft
+  note: >-
+    The street up the valley between the Quirinal and the Viminal, from the Subura
+    to the Alta Semita inside the Porta Collina, where the shrine of Pudicitia
+    Plebeia was dedicated in 296 BCE (Livy 10.23). Its paving "has been found on a
+    line that crosses the via Nazionale at an angle of twenty degrees near the Banca
+    d'Italia, at various points between the bank and the baths of Diocletian, a
+    distance of one kilometre" (Platner & Ashby). Drawn along the stretch Lanciani
+    mapped under the bank (SITAR 8782) and straight on to where the Via Quintino
+    Sella meets the Via Venti Settembre; its lower end, down the valley into the
+    Subura, is not recorded and takes the easiest ground. Drawn lighter.
+
+- id: clivus-publicius
+  kind: street
+  within: roma
+  location: [12.48273, 41.88545]
+  names:
+    - { text: Clivus Publicius, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'cliva#Publicius, p. 124' }
+    - { source: digital-augustan-rome, locator: 'Aventinus: Street' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The street up the Aventine that the aediles Lucius and Marcus Publicius
+    Malleolus built and paved about 238 BCE (Varro, LL 5.158; Festus). It "began in
+    the forum Boarium, near the west end of the circus Maximus and the porta
+    Trigemina, and must have extended across the Aventine in a southerly direction,
+    past the temple of Diana" (Platner & Ashby); it was "burned to the ground" in 203
+    BCE, so thickly built up. No paving of it has been found: it is drawn up the
+    easiest ground from the end of the Vicus Tuscus to the temple of Diana, and
+    lighter. The modern Clivo dei Publicii is named after it, not traced from it.
+
+- id: street-from-porta-capena
+  kind: street
+  within: roma
+  location: [12.49042, 41.88888]
+  names:
+    - { text: the street from the Porta Capena, lang: en, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: sitar, locator: '16624, 16983' }
+    - { source: platner-ashby, locator: 'Porta Capena, p. 405' }
+    - { source: digital-augustan-rome, locator: 'Via di S. Gregorio' }
+  confidence: probable
+  review: draft
+  note: >-
+    The street from the Porta Capena, where the Via Appia left the city, north up
+    the valley between the Palatine and the Caelian to the Sacra Via. Its ancient
+    name is not known. Under the Via di S. Gregorio an excavation found it paved,
+    5.77 m wide with footways, its republican level raised some 4 m in the early
+    empire (SITAR 16983). Drawn through that stretch and the Appia's paving at the
+    gate (SITAR 16624), over the easiest ground between, and lighter.
 
 - id: via-flaminia
   kind: road

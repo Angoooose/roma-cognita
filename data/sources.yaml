@@ -514,6 +514,37 @@
     yet drawn.
   usedBy: pipeline/src/rome/model.ts
 
+- id: sitar
+  kind: dataset
+  citation: >-
+    SITAR, Sistema Informativo Territoriale Archeologico di Roma (Soprintendenza
+    Speciale Archeologia Belle Arti e Paesaggio di Roma): the archaeological
+    partitions ("partizioni archeologiche") of street infrastructure, fetched through
+    its WFS
+  url: https://www.archeositarproject.it/en/piattaforma/open-data/
+  licence: CC-BY-SA-4.0
+  note: >-
+    Every piece of ancient street an excavation in Rome has found (paving, kerbs,
+    ramps, steps), outlined where it was found and dated. Locators are its numbers
+    (codice PA). The pieces in and around the Servian Wall that may have stood in
+    68–27 BCE are copied into data/geometry/rome-sitar.geojson (pipeline/src/rome/
+    sitar.ts), with the date they were fetched. Most are dated only "Roman" (509
+    BCE–476 CE). Some are SITAR's own digitising of Lanciani's Forma Urbis Romae
+    (1893–1901), which it says in the piece's description.
+
+- id: digital-augustan-rome
+  kind: modern
+  citation: >-
+    D. G. Romano et al., Digital Augustan Rome (University of Arizona,
+    Archaeological Mapping Lab), the successor to L. Haselberger, D. G. Romano and
+    E. A. Dumser (eds.), Mapping Augustan Rome, JRA Supplement 50 (2002)
+  url: https://www.digitalaugustanrome.org/
+  note: >-
+    A plan of the city in 14 CE, its streets "attested / hypothetical", with an
+    entry for each. Read as a scholarly source for which streets there were and
+    roughly where; none of its drawing is copied, since it carries no licence.
+    Locators are its entry titles.
+
 - id: osm-rome
   kind: dataset
   citation: >-

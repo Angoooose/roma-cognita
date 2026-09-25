@@ -154,7 +154,25 @@ export async function bakePlate(
   }
 
   const grid = { x0, y1, width, height, texel: TEXEL_M }
-  const streets = streetLines(streetGeometry, places, circuitRing)
+  // A street drawn from the evidence keeps to the ground and off the monuments: their
+  // outlines, the temples placed by a point (about as far round as one stands), and
+  // the river.
+  const outlined = new Set(outlines.map((o) => o.id))
+  const pointTemples = [...places.values()]
+    .filter((p) => p.kind === 'temple' && p.within === 'roma' && !outlined.has(p.id))
+    .map((p) => projection.forward(...p.location))
+  const monumentRings = outlines.flatMap((o) => o.polys.map((poly) => poly[0]))
+  const streets = streetLines(streetGeometry, places, circuitRing, {
+    height: (x, y) => {
+      const c = Math.min(width - 1, Math.max(0, Math.round((x - x0) / TEXEL_M - 0.5)))
+      const r = Math.min(height - 1, Math.max(0, Math.round((y1 - y) / TEXEL_M - 0.5)))
+      return smooth[r * width + c]
+    },
+    keepOff: (x, y) =>
+      pointTemples.some((q) => Math.hypot(q[0] - x, q[1] - y) < 14) ||
+      monumentRings.some((r) => inRing([x, y], r)) ||
+      riverRings.some((r) => inRing([x, y], r)),
+  })
   const streetSegs = streets.flatMap((l) =>
     l.pts.slice(1).map((q, i) => ({
       seg: [l.pts[i], q] as [Pt, Pt],
@@ -539,4 +557,14 @@ async function demSampler(lons: number[], lats: number[]) {
       u * v * px(tx, ty, i + 1, j + 1)
     )
   }
+}
+
+function inRing([x, y]: Pt, ring: Pt[]) {
+  let c = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i]
+    const [xj, yj] = ring[j]
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c
+  }
+  return c
 }

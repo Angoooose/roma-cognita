@@ -12,6 +12,7 @@
     "fonts": "tsx src/labels/fonts.ts",
     "labels": "tsx src/labels/build.ts",
     "rome:fetch": "tsx src/rome/fetch.ts",
+    "rome:sitar": "tsx src/rome/sitar.ts",
     "rome": "tsx src/rome/build.ts",
     "roads": "node --max-old-space-size=8192 --import tsx src/roads/build.ts",
     "atoms": "node --max-old-space-size=8192 --import tsx src/atoms/build.ts",

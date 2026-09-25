@@ -832,12 +832,36 @@ what the city adds drawn on it:
   paving;
 - five streets traced along the modern streets Platner & Ashby identify them with,
   cut to within the walls: the Alta Semita, the Vicus Patricius, the Clivus
-  Suburanus, the Vicus Cuprius and the Clivus Argentarius. Only these of the
-  Republican streets are both attested before 27 BCE and tied to a modern street
-  that survives. Others it places only by a point (the Vicus Longus crosses the
-  Via Nazionale at an angle), knows only from imperial sources (the Clivus
-  Scauri), or ties to a street since renamed or rebuilt (the Clivus Orbius);
-  they are left to the generated streets;
+  Suburanus, the Vicus Cuprius and the Clivus Argentarius;
+- streets drawn from the evidence (`routes.ts`), where no one modern street
+  carries them: the rest of the Vicus Tuscus, the Vicus Iugarius and the
+  Argiletum beyond their surveyed first stretches; the Vicus Longus; the Clivus
+  Publicius; and the street from the Porta Capena up the valley under the Via di
+  S. Gregorio (decided 2026-09-24). Each is a line through its evidence:
+  - the pieces of its paving that excavations found, from SITAR, the
+    Soprintendenza's archaeological GIS (`sitar.ts`, CC BY-SA 4.0, the project's
+    own licence), cited by number: the Vicus Longus runs along the stretch
+    Lanciani mapped under the Banca d'Italia, and straight on "on a line that
+    crosses the via Nazionale at an angle of twenty degrees" for "one kilometre"
+    to the Alta Semita, as Platner & Ashby have it;
+  - the points the sources fix: gates, the ends of the surveyed stretches, the
+    street corners Platner & Ashby name, the temple of Diana the Clivus Publicius
+    passed;
+  - and between them the easiest way over the ground, off the monuments and the
+    river: a cheapest path over a 3 m grid where a step costs its length and more
+    on a slope, in sixteen directions, smoothed. So a street keeps to its valley
+    and climbs a hill across the slope.
+
+  They are drawn lighter, as the traced streets are. Digital Augustan Rome's
+  plan of 14 CE is read for which streets there were and roughly where; since it
+  carries no licence, none of its drawing is copied. The streets it places only
+  by a point, knows only from imperial sources (the Clivus Scauri), or ties to a
+  street since renamed or rebuilt (the Clivus Orbius) are still left to the
+  generated streets;
+- the pieces of excavated street that belong to no recorded street, 110 in and
+  round the walls that may have stood in 68–27 BCE (most dated only "Roman"),
+  are kept in `data/geometry/rome-sitar.geojson` for the generated streets to
+  follow;
 - the Via Flaminia along the Corso, which "coincides absolutely" with it;
 - the Via Appia and Tiburtina from Itiner-e, joined to their gates.
 

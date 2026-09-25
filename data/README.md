@@ -23,6 +23,7 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `features.yaml`          | physical features: floodplains, the Nile delta branches, seas   |
 | `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived; for seas, the course their name is lettered along |
 | `geometry/rome.geojson`  | those monuments' outlines, lon/lat, keyed by id; fetched from the OpenStreetMap elements each record cites by `npm run rome:fetch -w pipeline`, never edited by hand; baked by `npm run rome -w pipeline` |
+| `geometry/rome-sitar.geojson` | the pieces of excavated street in and round the Servian Wall that may have stood in 68–27 BCE, from SITAR (CC BY-SA 4.0), keyed by SITAR's number, with their dates; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
 | `known-world.yaml`       | how far Roman geography reached, as one coarse ring: where the map's colour stops; baked by `npm run known -w pipeline` |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
