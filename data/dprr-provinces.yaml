@@ -20,7 +20,7 @@
 #
 # Rules followed:
 # - A join names only polities in polities.yaml, and agrees with claims.yaml:
-#   where the ground changed hands in 68–43 BCE, the join is dated to match
+#   where the ground changed hands in 68–27 BCE, the join is dated to match
 #   (Pontus from 63, Cyprus 58–48).
 # - An undated join holds whenever both the DPRR post and the polity exist. So a
 #   post from before a province was created (Crete before 66, Syria before 64)
@@ -277,6 +277,7 @@
   kind: territory
   polities:
     - polity: cyrenae
+    - polity: creta-cyrenae
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -288,6 +289,7 @@
   kind: territory
   polities:
     - polity: cyrenae
+    - polity: creta-cyrenae
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -301,6 +303,7 @@
   kind: territory
   polities:
     - polity: aegyptus
+    - polity: aegyptus-province
   sources:
     - { source: caesar-bc, locator: '3.103–112' }
     - { source: bellum-alexandrinum }
@@ -311,6 +314,7 @@
     Ptolemaic Egypt, a client kingdom and never a province before 30. Joined
     to the kingdom so that Romans who served there — in Caesar's Alexandrian
     war, or with the legions left behind — show on it; none was its governor.
+    From 30 Egypt is a province under an equestrian prefect (aegyptus-province).
 
 # --- territories: Illyricum and the Balkans ----------------------------------
 
@@ -339,8 +343,12 @@
   kind: territory
   polities:
     - polity: delmatae
+      to: 34 BCE
+    - polity: illyricum
+      from: 33 BCE
   sources:
     - { source: appian, locator: 'Ill. 11–13' }
+    - { source: appian, locator: 'Ill. 28' }
     - { source: wilkes-1969, locator: 'pp. 29–45' }
   confidence: uncertain
   review: needs-check
@@ -350,6 +358,8 @@
     outside the province of Illyricum, and our map draws it as the Delmatae's
     own. Joined to them, not to Illyricum; the imperial province of Dalmatia is
     later. A post here is a war command, never a governorship of the people.
+    From their surrender in 33 their ground is Illyricum's (claims.yaml), so the
+    join moves there too (September 2026).
 
 - dprr: Macedonia
   kind: territory
@@ -375,15 +385,20 @@
   kind: territory
   polities:
     - polity: macedonia
+      to: 28 BCE
+    - polity: achaea
+      from: 27 BCE
   sources:
     - { source: kallet-marx-1995 }
     - { source: broughton-mrr, locator: vol. II }
     - { source: cicero-fam, locator: '4.12' }
+    - { source: cassius-dio, locator: '53.12.4' }
   confidence: probable
   review: needs-check
   note: >-
-    Greece south of Thessaly. It became a separate province only in 27, and our
-    map draws its ground as Macedonia's throughout, so it is joined there.
+    Greece south of Thessaly. It is first firmly attested as a province of its
+    own in 27, and our map draws its ground as Macedonia's until then, so it is
+    joined there to 28 and to achaea from 27.
     Caesar did send his own governors to Greece in 46–44, which some count as
     an early province of Achaea; here they appear on Macedonia. The name also
     covers the civil-war commanders of 49–48, whose posts in Greece were
@@ -393,14 +408,19 @@
   kind: territory
   polities:
     - polity: macedonia
+      to: 28 BCE
+    - polity: achaea
+      from: 27 BCE
   sources:
     - { source: kallet-marx-1995 }
     - { source: barrington, locator: 'maps 49–51, 54–55' }
+    - { source: bowersock-1965, locator: '284–285' }
   confidence: probable
   review: draft
   note: >-
     The north-west of Greece, down to the Ambracian Gulf, part of the province
-    of Macedonia and inside our macedonia ground.
+    of Macedonia and inside our macedonia ground until 27, when its southern
+    part (our epirus atom) went with Achaea.
 
 - dprr: Aetolia
   kind: territory
@@ -433,6 +453,7 @@
   kind: territory
   polities:
     - polity: creta
+    - polity: creta-cyrenae
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: cassius-dio, locator: '36.17a–19' }
@@ -442,7 +463,8 @@
     Our creta starts in 66, when Metellus had finished the conquest; the war
     years before it are not shown on the province, and the Cretan league that
     fought him is not the place to show them. Crete is not joined to Cyrenae:
-    polities.yaml leaves the date of their union unsettled.
+    polities.yaml leaves the date of their union unsettled. From 27 the joint
+    province creta-cyrenae carries it.
 
 # --- territories: Asia Minor -------------------------------------------------
 
@@ -548,6 +570,8 @@
     - polity: cilicia
       from: 58 BCE
       to: 48 BCE
+    - polity: cyprus
+      from: 30 BCE
   sources:
     - { source: plutarch, locator: 'Cato Minor 34–38' }
     - { source: cassius-dio, locator: '42.35.5–6' }
@@ -556,8 +580,9 @@
   note: >-
     Annexed in 58 under the lex Clodia and governed as part of Cilicia until
     Caesar gave it back to the Ptolemies in 47. Before and after, it was a
-    Ptolemaic kingdom with no Roman governor, so only those years are joined.
-    Dated to match claims.yaml.
+    Ptolemaic kingdom with no Roman governor, so only those years are joined,
+    and again from 30, when it was a province of its own (cyprus). Dated to
+    match claims.yaml.
 
 - dprr: Armenia
   kind: territory
