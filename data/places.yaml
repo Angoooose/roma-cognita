@@ -11,7 +11,7 @@
 # edited by hand. Name language is not yet recorded and is left untagged; the
 # non-preferred names are the spellings the gazetteer files the place under.
 #
-# Dates: every place stood throughout the 68–43 BCE window (Pleiades attests
+# Dates: every place stood throughout the 68–27 BCE window (Pleiades attests
 # it in the period), hence the open ends — except where a row
 # overrides Pleiades, because period dating is not event dating: Pleiades has
 # Carthage continuously from 750 BCE although it lay in ruins from 146 until
@@ -27,7 +27,7 @@
   names:
     - { text: Roma, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: caput mundi
   sources:
@@ -42,9 +42,14 @@
   names:
     - { text: Alexandria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
-  status: royal seat
+  status:
+    - { value: royal seat, from: before 68 BCE, to: 31 BCE }
+    - value: provincial seat
+      from: 30 BCE
+      to: after 27 BCE
+      note: The prefect of Egypt's seat once the kingdom fell (Dio 51.17.1).
   labelSide: s
   sources:
     - { source: pleiades, locator: places/727070 }
@@ -58,7 +63,7 @@
   names:
     - { text: Antiochia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: provincial seat
   sources:
@@ -73,7 +78,7 @@
   names:
     - { text: Athenae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: civitas libera
   labelSide: s
@@ -89,7 +94,7 @@
   names:
     - { text: Ephesus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: provincial seat
   sources:
@@ -104,7 +109,7 @@
   names:
     - { text: Pergamum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: conventus
   sources:
@@ -119,7 +124,7 @@
   names:
     - { text: Massilia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: civitas foederata
   labelSide: n
@@ -135,7 +140,7 @@
   names:
     - { text: Syracusae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: provincial seat
   labelSide: s
@@ -151,7 +156,7 @@
   names:
     - { text: Gades, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: civitas foederata
   labelSide: s
@@ -168,7 +173,7 @@
     - { text: Rhodus, preferred: true }
     - { text: Rhodos }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: civitas libera
   labelSide: s
@@ -184,7 +189,7 @@
   names:
     - { text: Carthago, preferred: true }
   from: 44 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 1
   status: colonia
   labelSide: s
@@ -206,7 +211,7 @@
   names:
     - { text: Corinthus, preferred: true }
   from: 44 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: w
@@ -228,7 +233,7 @@
   names:
     - { text: Lugdunum, preferred: true }
   from: 43 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   sources:
@@ -237,8 +242,7 @@
     - { source: pleiades, locator: places/167717 }
   confidence: certain
   review: draft
-  note: Founded by L. Munatius Plancus in 43, the last year this map covers. Pleiades dates
-    the place from 30.
+  note: Founded by L. Munatius Plancus in 43 (Dio 46.50). Pleiades dates the place from 30.
 
 - id: utica
   pleiades: '315248'
@@ -247,7 +251,7 @@
   names:
     - { text: Utica, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: n
@@ -263,7 +267,7 @@
   names:
     - { text: Corduba, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   sources:
@@ -278,7 +282,7 @@
   names:
     - { text: Tarraco, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   sources:
@@ -295,7 +299,7 @@
     - { text: Narbo Martius }
     - { text: Col. Narbo Martius }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: s
@@ -311,7 +315,7 @@
   names:
     - { text: Thessalonica, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: n
@@ -327,9 +331,14 @@
   names:
     - { text: Tarsus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
-  status: provincial seat
+  status:
+    - { value: provincial seat, from: before 68 BCE, to: 44 BCE }
+    - value: civitas libera
+      from: 41 BCE
+      to: after 27 BCE
+      note: Made free by Antony in 41 (App. BC 5.7), once Cilicia had lapsed as a province.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/648789 }
@@ -343,7 +352,7 @@
   names:
     - { text: Gortyn, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: s
@@ -359,7 +368,7 @@
   names:
     - { text: Cyrene, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: s
@@ -375,7 +384,7 @@
   names:
     - { text: Nicomedia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
@@ -395,7 +404,7 @@
   names:
     - { text: Brundisium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   sources:
@@ -410,7 +419,7 @@
   names:
     - { text: Capua, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: n
@@ -426,7 +435,7 @@
   names:
     - { text: Neapolis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: civitas foederata
   labelSide: s
@@ -442,7 +451,7 @@
   names:
     - { text: Puteoli, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: w
@@ -458,7 +467,7 @@
   names:
     - { text: Ostia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: s
@@ -474,7 +483,7 @@
   names:
     - { text: Ravenna, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -489,7 +498,7 @@
   names:
     - { text: Ariminum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: e
@@ -505,7 +514,7 @@
   names:
     - { text: Mediolanum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -520,7 +529,7 @@
   names:
     - { text: Aquileia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: n
@@ -536,7 +545,7 @@
   names:
     - { text: Tarentum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: colonia
   labelSide: s
@@ -554,7 +563,7 @@
     - { text: Regium }
     - { text: Rhegion }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -569,7 +578,7 @@
   names:
     - { text: Genua, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -584,7 +593,7 @@
   names:
     - { text: Messana, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: civitas foederata
   labelSide: n
@@ -600,7 +609,7 @@
   names:
     - { text: Panormus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -615,7 +624,7 @@
   names:
     - { text: Lilybaeum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: w
@@ -631,7 +640,7 @@
   names:
     - { text: Caralis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -646,7 +655,7 @@
   names:
     - { text: Carthago Nova, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: s
@@ -662,7 +671,7 @@
   names:
     - { text: Hispalis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: n
@@ -678,7 +687,7 @@
   names:
     - { text: Emporiae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -693,7 +702,7 @@
   names:
     - { text: Olisipo, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -708,7 +717,7 @@
   names:
     - { text: Tolosa, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -723,7 +732,7 @@
   names:
     - { text: Bibracte, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: n
@@ -742,7 +751,7 @@
   names:
     - { text: Alesia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -757,7 +766,7 @@
   names:
     - { text: Gergovia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -772,7 +781,7 @@
   names:
     - { text: Dyrrachium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -787,7 +796,7 @@
   names:
     - { text: Apollonia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -802,7 +811,7 @@
   names:
     - { text: Patrae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -817,7 +826,7 @@
   names:
     - { text: Sparta, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: civitas libera
   labelSide: s
@@ -833,7 +842,7 @@
   names:
     - { text: Delphi, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -848,7 +857,7 @@
   names:
     - { text: Pella, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -863,7 +872,7 @@
   names:
     - { text: Byzantium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: civitas libera
   labelSide: n
@@ -879,7 +888,7 @@
   names:
     - { text: Smyrna, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: w
@@ -896,7 +905,7 @@
     - { text: Sardes, preferred: true }
     - { text: Sardis }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: n
@@ -912,7 +921,7 @@
   names:
     - { text: Miletus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -928,7 +937,7 @@
     - { text: Laodicea, preferred: true }
     - { text: Laodicea ad Lycum }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: e
@@ -944,7 +953,7 @@
   names:
     - { text: Delos, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: emporium
   labelSide: s
@@ -960,7 +969,7 @@
   names:
     - { text: Mytilene, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -975,7 +984,7 @@
   names:
     - { text: Sinope, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: n
   sources:
@@ -990,7 +999,7 @@
   names:
     - { text: Ancyra, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: n
@@ -1010,7 +1019,7 @@
     - { text: Mazaca, preferred: true }
     - { text: Mazaka }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
@@ -1026,7 +1035,7 @@
   names:
     - { text: Iconium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -1041,7 +1050,7 @@
   names:
     - { text: Damascus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -1056,7 +1065,7 @@
   names:
     - { text: Tyrus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -1071,7 +1080,7 @@
   names:
     - { text: Sidon, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
@@ -1086,7 +1095,7 @@
   names:
     - { text: Hierosolyma, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
@@ -1102,7 +1111,7 @@
   names:
     - { text: Petra, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: s
@@ -1118,7 +1127,7 @@
   names:
     - { text: Palmyra, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -1133,7 +1142,7 @@
   names:
     - { text: Samosata, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
@@ -1149,7 +1158,7 @@
   names:
     - { text: Memphis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -1164,7 +1173,7 @@
   names:
     - { text: Salamis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: e
   sources:
@@ -1179,7 +1188,7 @@
   names:
     - { text: Leptis Magna, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
@@ -1195,7 +1204,7 @@
     - { text: Salonae, preferred: true }
     - { text: Salona }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: conventus
   labelSide: e
@@ -1211,7 +1220,7 @@
   names:
     - { text: Panticapaeum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
@@ -1227,7 +1236,7 @@
   names:
     - { text: Beneventum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   status: colonia
   labelSide: e
@@ -1243,7 +1252,7 @@
   names:
     - { text: Placentia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   status: colonia
   labelSide: n
@@ -1259,7 +1268,7 @@
   names:
     - { text: Pisae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1274,7 +1283,7 @@
   names:
     - { text: Agrigentum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1289,7 +1298,7 @@
   names:
     - { text: Aleria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1304,7 +1313,7 @@
   names:
     - { text: Valentia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1319,7 +1328,7 @@
   names:
     - { text: Saguntum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1335,7 +1344,7 @@
     - { text: Vienna, preferred: true }
     - { text: Col. Vienna }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1352,12 +1361,20 @@
     - { text: Col. Arelate }
     - { text: Theline }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
-  status: colonia
+  status:
+    - value: colonia
+      from: 46 BCE
+      to: after 27 BCE
+      note: >-
+        Founded by Ti. Claudius Nero, "sent to conduct colonies to Gaul, among them
+        Narbo and Arelate" (Suet. Tib. 4.1), in 46; it had been a colony "before 68"
+        here until September 2026.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/148217 }
+    - { source: suetonius-tib, locator: '4.1' }
   confidence: certain
   review: draft
 
@@ -1368,7 +1385,7 @@
   names:
     - { text: Avaricum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1383,7 +1400,7 @@
   names:
     - { text: Lutetia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1398,7 +1415,7 @@
   names:
     - { text: Durocortorum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1413,7 +1430,7 @@
   names:
     - { text: Cenabum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1428,7 +1445,7 @@
   names:
     - { text: Vesontio, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1443,7 +1460,7 @@
   names:
     - { text: Genava, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1458,7 +1475,7 @@
   names:
     - { text: Hadrumetum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1473,7 +1490,7 @@
   names:
     - { text: Thapsus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1489,7 +1506,7 @@
     - { text: Zama, preferred: true }
     - { text: Zama Regia }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1504,17 +1521,26 @@
   names:
     - { text: Cirta, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
-  status: royal seat
+  status:
+    - value: royal seat
+      from: before 68 BCE
+      to: 47 BCE
+      note: >-
+        Juba I's until Thapsus; given to P. Sittius and his men in 46 (App. BC 4.54;
+        Pliny 5.22, "colonia Cirta Sittianorum cognomine"). Octavian later made it a
+        full Roman colony, at a date not known, so no status is given after 47.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/305064 }
+    - { source: appian, locator: 'BC 4.54' }
+    - { source: pliny-nh, locator: '5.22' }
   confidence: certain
-  review: needs-check
-  note:
-    'Migration review: tagged "royal seat" across the window, but after Thapsus (46) Cirta
-    was given to P. Sittius and his men; the status wants to end in 47.'
+  review: draft
+  note: >-
+    The royal seat ended in 47 in September 2026; it had run across the whole
+    window.
 
 - id: hippo-regius
   pleiades: '305090'
@@ -1523,7 +1549,7 @@
   names:
     - { text: Hippo Regius, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1538,7 +1564,7 @@
   names:
     - { text: Sabratha, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1553,7 +1579,7 @@
   names:
     - { text: Oea, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1568,7 +1594,7 @@
   names:
     - { text: Ptolemais, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1583,7 +1609,7 @@
   names:
     - { text: Berenice, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1598,7 +1624,7 @@
   names:
     - { text: Tingi, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1614,9 +1640,13 @@
     - { text: Iol, preferred: true }
     - { text: Iol Caesarea }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
-  status: royal seat
+  status:
+    - value: royal seat
+      from: before 68 BCE
+      to: 34 BCE
+      note: Bocchus II's; his kingdom went to Rome at his death in 33 (Dio 49.43.7).
   labelSide: n
   sources:
     - { source: pleiades, locator: places/295279 }
@@ -1630,7 +1660,7 @@
   names:
     - { text: Amphipolis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1645,7 +1675,7 @@
   names:
     - { text: Philippi, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1661,7 +1691,7 @@
     - { text: Larisa, preferred: true }
     - { text: Larissa }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1676,7 +1706,7 @@
   names:
     - { text: Pharsalus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1691,7 +1721,7 @@
   names:
     - { text: Argos, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1706,7 +1736,7 @@
   names:
     - { text: Thebae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1721,7 +1751,7 @@
   names:
     - { text: Chalcis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -1736,7 +1766,7 @@
   names:
     - { text: Megara, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1751,7 +1781,7 @@
   names:
     - { text: Buthrotum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1766,7 +1796,7 @@
   names:
     - { text: Ambracia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1781,7 +1811,7 @@
   names:
     - { text: Actium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1797,7 +1827,7 @@
     - { text: Cnossus, preferred: true }
     - { text: Knosos }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1813,7 +1843,7 @@
     - { text: Cydonia, preferred: true }
     - { text: Kydonia }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1828,7 +1858,7 @@
   names:
     - { text: Halicarnassus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1843,7 +1873,7 @@
   names:
     - { text: Cnidus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1858,7 +1888,7 @@
   names:
     - { text: Cos, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1873,7 +1903,7 @@
   names:
     - { text: Chios, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -1888,7 +1918,7 @@
   names:
     - { text: Samos, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1903,7 +1933,7 @@
   names:
     - { text: Cyzicus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   status: civitas libera
   labelSide: n
@@ -1919,7 +1949,7 @@
   names:
     - { text: Nicaea, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1935,7 +1965,7 @@
     - { text: Heraclea Pontica, preferred: true }
     - { text: Heraclea }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1950,7 +1980,7 @@
   names:
     - { text: Amisus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1965,7 +1995,7 @@
   names:
     - { text: Amasia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -1980,7 +2010,7 @@
   names:
     - { text: Trapezus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -1996,7 +2026,7 @@
     - { text: Pessinus, preferred: true }
     - { text: Pessinous }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2011,7 +2041,7 @@
   names:
     - { text: Side, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2027,7 +2057,7 @@
     - { text: Attalia, preferred: true }
     - { text: Attalea }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2043,7 +2073,7 @@
     - { text: Xanthus, preferred: true }
     - { text: Xanthos }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2058,7 +2088,7 @@
   names:
     - { text: Patara, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2075,7 +2105,7 @@
     - { text: Komana }
     - { text: Comana Pontica }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2090,7 +2120,7 @@
   names:
     - { text: Seleucia Pieria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2105,7 +2135,7 @@
   names:
     - { text: Apamea, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2120,9 +2150,13 @@
   names:
     - { text: Emesa, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
-  status: royal seat
+  status:
+    - value: royal seat
+      from: before 68 BCE
+      to: 31 BCE
+      note: No king from Alexander's deposition to Iamblichus II's restoration in 20 (Dio 51.2.2, 54.9.2).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/668261 }
@@ -2139,7 +2173,7 @@
   names:
     - { text: Berytus, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2154,7 +2188,7 @@
   names:
     - { text: Ptolemais, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2169,7 +2203,7 @@
   names:
     - { text: Ascalon, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2184,7 +2218,7 @@
   names:
     - { text: Gaza, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2199,7 +2233,7 @@
   names:
     - { text: Zeugma, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -2214,7 +2248,7 @@
   names:
     - { text: Edessa, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   status: royal seat
   labelSide: n
@@ -2230,7 +2264,7 @@
   names:
     - { text: Nisibis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2245,7 +2279,7 @@
   names:
     - { text: Pelusium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2260,7 +2294,7 @@
   names:
     - { text: Paphos, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2275,7 +2309,7 @@
   names:
     - { text: Citium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2290,7 +2324,7 @@
   names:
     - { text: Iader, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2305,7 +2339,7 @@
   names:
     - { text: Narona, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2320,7 +2354,7 @@
   names:
     - { text: Scodra, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2335,7 +2369,7 @@
   names:
     - { text: Tomis, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2350,7 +2384,7 @@
   names:
     - { text: Istros, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2365,7 +2399,7 @@
   names:
     - { text: Olbia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: n
   sources:
@@ -2381,7 +2415,7 @@
     - { text: Chersonesus, preferred: true }
     - { text: Chersonesos }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: w
   sources:
@@ -2396,7 +2430,7 @@
   names:
     - { text: Phanagoria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: s
   sources:
@@ -2411,7 +2445,7 @@
   names:
     - { text: Dioscurias, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   labelSide: e
   sources:
@@ -2426,7 +2460,7 @@
   names:
     - { text: Artaxata, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 3
   status: royal seat
   labelSide: e
@@ -2442,7 +2476,7 @@
   names:
     - { text: Arpinum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -2458,7 +2492,7 @@
   names:
     - { text: Formiae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -2474,7 +2508,7 @@
   names:
     - { text: Tusculum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -2490,7 +2524,7 @@
   names:
     - { text: Astura, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2505,7 +2539,7 @@
   names:
     - { text: Antium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: w
@@ -2521,7 +2555,7 @@
   names:
     - { text: Cumae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2536,7 +2570,7 @@
   names:
     - { text: Baiae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2551,7 +2585,7 @@
   names:
     - { text: Misenum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2566,7 +2600,7 @@
   names:
     - { text: Pompeii, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: s
@@ -2582,7 +2616,7 @@
   names:
     - { text: Herculaneum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2597,7 +2631,7 @@
   names:
     - { text: Nuceria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2612,7 +2646,7 @@
   names:
     - { text: Nola, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2627,7 +2661,7 @@
   names:
     - { text: Salernum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2642,7 +2676,7 @@
   names:
     - { text: Paestum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2657,7 +2691,7 @@
   names:
     - { text: Velia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2672,7 +2706,7 @@
   names:
     - { text: Caieta, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2687,7 +2721,7 @@
   names:
     - { text: Minturnae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: s
@@ -2703,7 +2737,7 @@
   names:
     - { text: Sinuessa, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: s
@@ -2719,7 +2753,7 @@
   names:
     - { text: Tarracina, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: s
@@ -2735,7 +2769,7 @@
   names:
     - { text: Anagnia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2750,7 +2784,7 @@
   names:
     - { text: Praeneste, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -2766,7 +2800,7 @@
   names:
     - { text: Tibur, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: n
@@ -2782,7 +2816,7 @@
   names:
     - { text: Aricia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2797,7 +2831,7 @@
   names:
     - { text: Lanuvium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: s
   sources:
@@ -2812,7 +2846,7 @@
   names:
     - { text: Bovillae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2827,7 +2861,7 @@
   names:
     - { text: Ardea, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2842,7 +2876,7 @@
   names:
     - { text: Lavinium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2857,7 +2891,7 @@
   names:
     - { text: Veii, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2872,7 +2906,7 @@
   names:
     - { text: Reate, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -2888,7 +2922,7 @@
   names:
     - { text: Interamna, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -2903,7 +2937,7 @@
   names:
     - { text: Narnia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2918,7 +2952,7 @@
   names:
     - { text: Ocriculum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -2933,7 +2967,7 @@
   names:
     - { text: Spoletium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: e
@@ -2949,7 +2983,7 @@
   names:
     - { text: Nursia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2964,7 +2998,7 @@
   names:
     - { text: Sulmo, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -2979,7 +3013,7 @@
   names:
     - { text: Corfinium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -2994,7 +3028,7 @@
   names:
     - { text: Asculum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3009,7 +3043,7 @@
   names:
     - { text: Ancona, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3024,7 +3058,7 @@
   names:
     - { text: Fanum Fortunae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3039,7 +3073,7 @@
   names:
     - { text: Sena Gallica, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3054,7 +3088,7 @@
   names:
     - { text: Arretium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: e
@@ -3070,7 +3104,7 @@
   names:
     - { text: Cortona, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3085,7 +3119,7 @@
   names:
     - { text: Perusia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3100,7 +3134,7 @@
   names:
     - { text: Clusium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3115,7 +3149,7 @@
   names:
     - { text: Volsinii, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3130,7 +3164,7 @@
   names:
     - { text: Falerii, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3145,7 +3179,7 @@
   names:
     - { text: Volaterrae, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: municipium
   labelSide: w
@@ -3161,7 +3195,7 @@
   names:
     - { text: Populonia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3176,7 +3210,7 @@
   names:
     - { text: Cosa, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: w
@@ -3192,7 +3226,7 @@
   names:
     - { text: Luca, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -3207,7 +3241,7 @@
   names:
     - { text: Luna, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3222,7 +3256,7 @@
   names:
     - { text: Bononia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: e
@@ -3238,7 +3272,7 @@
   names:
     - { text: Mutina, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: n
@@ -3254,7 +3288,7 @@
   names:
     - { text: Parma, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: n
@@ -3270,7 +3304,7 @@
   names:
     - { text: Cremona, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: s
@@ -3286,7 +3320,7 @@
   names:
     - { text: Verona, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -3301,7 +3335,7 @@
   names:
     - { text: Patavium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3316,7 +3350,7 @@
   names:
     - { text: Brixia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -3331,7 +3365,7 @@
   names:
     - { text: Aesernia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: n
@@ -3347,7 +3381,7 @@
   names:
     - { text: Venusia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   status: colonia
   labelSide: e
@@ -3363,7 +3397,7 @@
   names:
     - { text: Canusium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3378,7 +3412,7 @@
   names:
     - { text: Luceria, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: n
   sources:
@@ -3393,7 +3427,7 @@
   names:
     - { text: Barium, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3408,7 +3442,7 @@
   names:
     - { text: Hydruntum, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3423,7 +3457,7 @@
   names:
     - { text: Croton, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3438,7 +3472,7 @@
   names:
     - { text: Thurii, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3453,7 +3487,7 @@
   names:
     - { text: Vibo Valentia, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: w
   sources:
@@ -3468,7 +3502,7 @@
   names:
     - { text: Locri, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   prominence: 4
   labelSide: e
   sources:
@@ -3483,7 +3517,7 @@
   names:
     - { text: Hierapolis-Castabala, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: pleiades, locator: places/658481 }
     - { source: sullivan-1990 }
@@ -3498,7 +3532,7 @@
   names:
     - { text: Chalcis sub Libano, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: pleiades, locator: places/678086 }
     - { source: sullivan-1990 }

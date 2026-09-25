@@ -278,13 +278,22 @@
   names:
     - { text: Syria, lang: la, preferred: true }
   from: 64 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'Syr. 49, 70' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
-  note: Pompey's annexation; the end of the Seleucid kingdom.
+  note: >-
+    Pompey's annexation; the end of the Seleucid kingdom. Cassius' in 43–42;
+    then Antony's, governed by Saxa, Ventidius, Sosius and others. Overrun by
+    the Parthians in 40, all but Tyre (Dio 48.26.1), and recovered in 39; the
+    province went on. The Cilician plain was governed with it from 38 at the
+    latest (Dio 49.22.2). Antony gave the Phoenician and Palestinian coast,
+    less Tyre and Sidon, to Cleopatra in 37/36; Octavian took it back in 30.
+    The promise of "Syria" to Ptolemy Philadelphus at the Donations of 34 (Dio
+    49.41.3) was never carried out: Didius governed it in 31–30 (Dio 51.7).
+    Caesar's in 27 (Dio 53.12.7).
 
 - id: bithynia-pontus
   kind: province
@@ -460,15 +469,24 @@
   names:
     - { text: Nabataea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Aretas III, then Malichus I
+  to: after 27 BCE
+  ruler: Aretas III, then Malichus I, to 31; Obodas, from 30
   sources:
     - { source: sullivan-1990 }
+    - { source: bowersock-1983 }
   confidence: probable
   review: needs-check
   note: >-
     The kingdom is not in doubt; its extent and its
-    standing with Rome are — see the claim and the atom.
+    standing with Rome are — see the claim and the atom. Malichus turned Herod
+    away in 40 "and used the name of the Parthians as a pretense" (BJ 1.274),
+    and was fined by Ventidius in 39 (Dio 48.41.5). From 36/34 he paid tribute
+    to Cleopatra for the "parts of Arabia" Antony gave her, with Herod as
+    surety (AJ 15.106–107); that grant was revenue with no attested frontier and
+    is not drawn. Herod fought him on Antony's orders in 32–31 (AJ 15.108–160),
+    with no change of ground. In 30 "the Arabians about Petra" burned
+    Cleopatra's ships (Dio 51.7.1). Obodas (II or III in modern numbering)
+    followed Malichus c. 30 (Bowersock 1983).
 
 - id: bosporus
   kind: kingdom
@@ -565,65 +583,107 @@
   names:
     - { text: Commagene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Antiochus I, c. 70–36
+  to: after 27 BCE
+  ruler: Antiochus I, c. 70–36 (or later); Mithridates II by 31
   sources:
     - { source: sullivan-1990 }
+    - { source: facella-2006 }
+    - { source: plutarch, locator: 'Antony 34' }
+    - { source: cassius-dio, locator: '49.22.1–2' }
   confidence: probable
   review: draft
+  note: >-
+    Antiochus took in Parthian fugitives after Gindarus and was besieged at
+    Samosata by Ventidius and Antony in 38; he made terms (Plut. Antony 34;
+    Dio 49.22.1–2, where Antony got no money, against Plutarch's 300 talents).
+    He had been fined in 39 for helping Pacorus (Dio 48.41.5). Kept a client
+    throughout. Dio 49.23.4 has Phraates kill an Antiochus, grandfather of his
+    brothers, c. 37–36; whether this is Antiochus I, and so when he died, is
+    disputed. Mithridates II was king at Actium (Plut. Antony 61.1).
 
 - id: judaea
   kind: kingdom
   names:
     - { text: Iudaea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Hyrcanus II, 63–40
+  to: after 27 BCE
+  ruler: Hyrcanus II, 63–40; Herod, king from 40, in Jerusalem from 37
   sources:
     - { source: josephus-aj, locator: '14.54–79, 14.143' }
     - { source: josephus-bj, locator: '1.141–158, 1.199' }
+    - { source: josephus-aj, locator: '14.381–385' }
+    - { source: kokkinos-1998 }
   confidence: probable
   review: draft
-  note: Pompey takes Jerusalem, 63; Antipater procurator from 47.
+  note: >-
+    Pompey takes Jerusalem, 63; Antipater procurator from 47. Antony made Herod
+    and Phasael tetrarchs under Hyrcanus in 41 (AJ 14.324–326). The Parthians
+    carried off Hyrcanus in 40 and made Antigonus king (judaea-antigonus); the
+    senate made Herod king the same year (AJ 14.381–385), and he took Jerusalem
+    in 37. Cleopatra had Jericho and the coast from 36 (claims.yaml); in 30
+    Octavian gave them back and added Samaria, Gadara, Hippos, Gaza, Anthedon,
+    Joppa and Strato's Tower (AJ 15.217; BJ 1.396).
 
 - id: ituraea
   kind: kingdom
   names:
     - { text: Ituraea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ptolemy son of Mennaeus
+  to: after 27 BCE
+  ruler: Ptolemy son of Mennaeus, to 40; Lysanias, 40–36; Zenodorus (lessee), by 30
   sources:
     - { source: sullivan-1990 }
+    - { source: myers-2010 }
+    - { source: cassius-dio, locator: '49.32.5' }
   confidence: probable
   review: needs-check
+  note: >-
+    Lysanias succeeded his father Ptolemy in 40 and was Antigonus' go-between
+    with the Parthians (AJ 14.330); Antony executed him in 36 "on the charge
+    that he had favoured Pacorus" and gave much of the land to Cleopatra (Dio
+    49.32.5). By 30 Zenodorus "had hired what was called the house of
+    Lysanias" (AJ 15.344). Myers (2010) holds that only the southern Beqaa can
+    be placed securely; the atom is wider.
 
 - id: emesa
   kind: kingdom
   names:
     - { text: Emesa, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Sampsiceramus I
+  to: 31 BCE
+  ruler: Sampsiceramus I; Iamblichus I, by 51 to 31; Alexander, 31–30
   sources:
     - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '50.13.7' }
+    - { source: cassius-dio, locator: '51.2.2' }
   confidence: probable
   review: needs-check
   note: >-
     Cicero uses the name as a nickname for Pompey in the
-    letters to Atticus.
+    letters to Atticus. Strabo has "Arethusa, belonging to Sampsiceramus and
+    Iamblichus his son" (16.2.10). Antony tortured Iamblichus to death before
+    Actium (Dio 50.13.7), and his brother Alexander, who had the realm "as a
+    reward for accusing" him, was deposed by Octavian and killed after the
+    triumph (51.2.2; still a suppliant in 30, Josephus BJ 1.393). The kingdom
+    was restored to Iamblichus II only in 20 (Dio 54.9.2).
 
 - id: osroene
   kind: kingdom
   names:
     - { text: Osroene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Abgar II
+  to: after 27 BCE
+  ruler: Abgar II, to 53; Ma'nu II, 52–34; Paqor, 34–29; Abgar III, from 29 (the Edessene list)
   sources:
     - { source: sullivan-1990 }
+    - { source: segal-1970 }
   confidence: probable
   review: needs-check
+  note: >-
+    The kings of Edessa east of the Euphrates, "the boundaries of the Parthian
+    empire" (Strabo 16.1.28). The rulers follow the Edessene king-list as
+    Segal gives it, whose early dates he says are to be treated with caution.
+    Its standing with Rome after the 60s is not known (see relations.yaml).
 
 - id: amanus
   kind: kingdom
@@ -674,8 +734,8 @@
   names:
     - { text: Armenia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Tigranes II, 95–55; Artavasdes II, 55–34
+  to: after 27 BCE
+  ruler: Tigranes II, 95–55; Artavasdes II, 55–34; Artaxias II, from 34 (in Armenia from 32–30)
   sources:
     - { source: strabo, locator: '11.14' }
     - { source: plutarch, locator: 'Pompey 33' }
@@ -684,72 +744,106 @@
   review: draft
   note: >-
     Tigranes submitted to Pompey in 66 and kept Armenia as a friend and ally of
-    Rome.
+    Rome. Canidius made Armenia an ally again in 37/36; Artavasdes II deserted
+    Antony in Media in 36, and in 34 Antony seized him and occupied the country
+    (Dio 49.39–40), which he promised to Alexander Helios. Artavasdes' son
+    Artaxias, proclaimed king by the Armenians, fled to Parthia and came back
+    with its help when Antony withdrew, killing the Romans left behind (Tac.
+    Ann. 2.3; Dio 51.16.2).
 
 - id: parthia
   kind: kingdom
   names:
     - { text: Parthia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Phraates III, c. 70–57; Orodes II, 57–37
+  to: after 27 BCE
+  ruler: Phraates III, c. 70–57; Orodes II, 57–38/37; Phraates IV from 38/37 (the usurper Tiridates II c. 31–30)
   sources:
     - { source: debevoise-1938, locator: 'pp. 70–108' }
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
+    - { source: debevoise-1938, locator: 'pp. 108–138' }
+    - { source: cassius-dio, locator: '51.18.2–3' }
   confidence: certain
   review: draft
+  note: >-
+    Pacorus and Labienus overran Syria and Asia in 40 (the occupation rows);
+    Pacorus fell at Gindarus in 38. Orodes gave up the throne to Phraates IV,
+    who "came into power shortly before 37 B.C." (Debevoise 121). Antony's
+    campaign of 36 went through Armenia to Phraaspa in Media and failed. The
+    usurper Tiridates drove Phraates out c. 31 and fled to Syria in 30/29 (Dio
+    51.18.2–3); he struck coins again in 26–25. Not drawn: nothing divides the
+    ground. The Euphrates stayed the frontier (Strabo 16.1.28).
 
 - id: atropatene
   kind: kingdom
   names:
     - { text: Media Atropatene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ariobarzanes I; Artavasdes I
+  to: after 27 BCE
+  ruler: Ariobarzanes I; Artavasdes I, to c. 31 (in exile with Octavian from 30)
   sources:
     - { source: strabo, locator: '11.13.1–2' }
     - { source: schottky-1989 }
+    - { source: plutarch, locator: 'Antony 38' }
+    - { source: cassius-dio, locator: '49.33.1–2' }
   confidence: probable
   review: needs-check
+  note: >-
+    A Parthian vassal whose capital Antony besieged in 36 (Plut. Antony 38;
+    Strabo 11.13.3); its king then changed sides and was Antony's ally from 35
+    to 31, when Phraates took the kingdom and the Mede fled to Octavian (Dio
+    49.44.4, 51.16.2), who later gave him Lesser Armenia
+    (armenia-minor-artavasdes).
 
 - id: iberia-caucasia
   kind: kingdom
   names:
     - { text: Iberia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Artoces
+  to: after 27 BCE
+  ruler: Artoces (65); Pharnabazus by 36
   sources:
     - { source: cassius-dio, locator: '37.1–2' }
     - { source: braund-1994, locator: 'pp. 152–170' }
+    - { source: cassius-dio, locator: '49.24.1' }
   confidence: probable
   review: draft
+  note: >-
+    Canidius Crassus beat its king Pharnabazus and Zober of Albania in 36 and
+    "brought them to make an alliance" (Dio 49.24.1; Plut. Antony 34): the
+    client standing renewed, not changed.
 
 - id: albania
   kind: kingdom
   names:
     - { text: Albania, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Oroeses
+  to: after 27 BCE
+  ruler: Oroeses (65); Zober by 36
   sources:
     - { source: cassius-dio, locator: '36.54, 37.3–5' }
     - { source: strabo, locator: '11.4' }
+    - { source: cassius-dio, locator: '49.24.1' }
   confidence: probable
   review: draft
+  note: As iberia-caucasia.
 
 - id: colchis
   kind: kingdom
   names:
     - { text: Colchis, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   ruler: Aristarchus, from 63
   sources:
     - { source: appian, locator: 'Mithr. 114' }
     - { source: braund-1994, locator: 'pp. 152–170' }
   confidence: probable
   review: draft
+  note: >-
+    "At last Polemon got Colchis" (Strabo 11.2.18), at a date not given — from
+    Antony, from Augustus after Actium, or c. 14 — so it is not moved to his
+    Pontus here. Nothing is known of its rulers after Aristarchus.
 
 - id: seleucid
   kind: kingdom
@@ -1488,3 +1582,24 @@
     Cyprus after Cleopatra: Caesar's in 27 (Dio 53.12.7), the people's from 22
     (54.4.1). Before 30 it was hers, with the Cyprus of 58–48 part of Cicero's
     Cilicia (cilicia).
+
+- id: judaea-antigonus
+  kind: kingdom
+  names:
+    - { text: Iudaea, lang: la, preferred: true, note: the kingdom of Antigonus }
+  from: 40 BCE
+  to: 38 BCE
+  ruler: Antigonus Mattathias, 40–37
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: debevoise-1938, locator: 'p. 113' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Hasmonean Antigonus, made king by the Parthians when they took
+    Jerusalem in 40, until Sosius and Herod took the city in 37 and he was
+    beheaded at Antioch (AJ 14.487, 15.8–10). A polity of its own because in
+    39–38 there were two Jewish governments: Antigonus in Jerusalem, and Rome's
+    king Herod in Joppa, Idumaea and Galilee. The kingdom's last year, 37,
+    belongs to Herod.

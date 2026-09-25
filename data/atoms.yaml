@@ -635,6 +635,35 @@
 # Greek cities, which went to the province. Earlier atoms here cut the envelope
 # of Syria, which is drawn last.
 
+- id: judaea-jericho
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.36, 31.95]
+          note: the foot of the Judaean escarpment
+        - at: [35.53, 32.05]
+          note: the Jordan near the later Phasaelis
+        - at: [35.555, 31.76]
+          via: river
+          note: down the Jordan to its mouth
+        - [35.5, 31.72]
+        - at: [35.41, 31.75]
+          note: the north shore of the Dead Sea; Hyrcania stays outside
+        - [35.38, 31.85]
+  sources:
+    - { source: josephus-bj, locator: '1.361' }
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: barrington, locator: 'map 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The plain of Jericho between the escarpment and the Jordan, with its palm
+    and balsam groves, "the plantation of palm trees at Jericho, where also
+    grows the balsam tree" (Josephus BJ 1.361), which Antony gave Cleopatra and
+    Herod leased back. Split from judaea (September 2026). The edges are a
+    convention for the plantations' plain.
+
 - id: judaea
   evidence: schematic
   construction:
@@ -710,6 +739,144 @@
   note: >-
     Joppa: Hasmonean, taken from the Jews by Pompey in 63 and given back to
     Hyrcanus by Caesar in 47 (Josephus AJ 14.205).
+
+- id: samaria
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [34.98, 32.45]
+          note: the edge of the coastal plain
+        - at: [35.35, 32.45]
+          note: the southern edge of the Jezreel, which stays with the province
+        - at: [35.55, 32.35]
+          note: the Jordan valley short of Scythopolis
+        - at: [35.56, 32.2]
+          note: judaea's line on the Jordan
+        - [35.3, 32.12]
+        - [35.05, 32.05]
+        - [34.97, 32.2]
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+    - { source: barrington, locator: 'maps 69–70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Samaritis between Judaea and Galilee, with Samaria (Sebaste), which
+    Octavian gave Herod in 30. Split from syria-palaestina (September 2026).
+    Whether the Jezreel went with it is not known; it stays with the province.
+    Takes Judaea's edges from judaea.
+
+- id: gadara-hippos
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.63, 32.87]
+          note: the east shore of the Sea of Galilee
+        - at: [35.85, 32.85]
+          note: Gaulanitis
+        - [35.85, 32.6]
+        - at: [35.7, 32.55]
+          note: the Hieromyces (Yarmuk) south of Gadara
+        - at: [35.57, 32.62]
+          note: the Jordan below the lake
+        - [35.58, 32.72]
+  sources:
+    - { source: josephus-bj, locator: '1.396' }
+    - { source: pliny-nh, locator: '5.74' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The city territories of Hippos and Gadara, south-east and east of the Sea
+    of Galilee: Decapolis cities that Octavian gave Herod in 30 (BJ 1.396).
+    Split from syria-palaestina (September 2026); their extent is a convention.
+
+- id: strato-tower
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.6, 32.53]
+        - at: [34.89, 32.53]
+          note: the Crocodile River (Nahr ez-Zerqa), south of Dora
+        - [35.05, 32.53]
+        - [35.05, 32.3]
+        - at: [34.95, 32.12]
+          note: the northern edge of the territory of Joppa
+        - [34.6, 32.12]
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Strato's Tower (later Caesarea) and the Sharon coast between the Crocodile
+    River and Joppa. Split from syria-palaestina (September 2026). Takes its
+    inland edge from samaria.
+
+- id: palaestina-coast
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.6, 32.8]
+        - at: [34.97, 32.73]
+          note: Carmel, syria-palaestina's line
+        - [35.1, 32.68]
+        - [35.05, 32.53]
+        - [34.89, 32.53]
+        - [34.6, 32.53]
+    - method: outline
+      edge:
+        - [34.4, 31.93]
+        - at: [34.84, 31.93]
+          note: the southern edge of the territory of Joppa
+        - [35.0, 31.85]
+        - [35.0, 31.6]
+        - at: [34.53, 31.6]
+          note: south of Ascalon
+        - [34.3, 31.6]
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The coast cities that were neither Herod's nor Tyre's and Sidon's: Dora
+    between Carmel and the Crocodile River, and Iamnia, Azotus and Ascalon
+    between Joppa and Gaza. They were inside Cleopatra's grant of "the cities
+    that were within the river Eleutherus, as far as Egypt" (AJ 15.95) and are
+    not in Octavian's list for Herod in 30. Two pieces, one atom, because their
+    history is the same. Split from syria-palaestina (September 2026). Takes
+    its inland edges from judaea and judaea-joppa.
+
+- id: gaza
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.0, 31.35]
+        - at: [34.2, 31.2]
+          note: south of Raphia, syria-palaestina's line
+        - [34.8, 31.25]
+        - at: [34.9, 31.25]
+          note: judaea's corner in the south of Idumaea
+        - [35.0, 31.4]
+        - [35.0, 31.62]
+        - [34.7, 31.64]
+        - [34.3, 31.7]
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Gaza with Anthedon and Raphia, which Octavian gave Herod in 30 (Raphia is
+    kept with them by convention). Split from syria-palaestina (September
+    2026). Takes its northern edge from palaestina-coast and its eastern from
+    judaea.
 
 - id: syria-palaestina
   evidence: schematic
@@ -867,6 +1034,92 @@
     (Fam. 15.1.2).
     Strabo also has Pompey giving Castabala to Ariobarzanes of Cappadocia; the
     two claims are not reconciled here.
+
+- id: tyre
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.95, 33.34]
+        - at: [35.245, 33.34]
+          note: the mouth of the Leontes (Litani)
+        - [35.55, 33.28]
+        - [35.5, 33.08]
+        - at: [35.105, 33.09]
+          note: the Ladder of Tyre (Ras en-Naqura)
+        - [34.9, 33.09]
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: cassius-dio, locator: '48.26.1' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tyre and its territory between the Leontes and the Ladder of Tyre. Split
+    from syria (September 2026): Tyre alone of Syria held out against Pacorus
+    (Dio 48.26.1), and Antony left it out of his grant to Cleopatra with Sidon,
+    "which he knew to have been free cities from their ancestors" (AJ 15.95).
+    Takes its inland edge from judaea and ituraea.
+
+- id: sidon
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [34.9, 33.72]
+        - at: [35.44, 33.72]
+          note: the mouth of the Tamyras (Damour)
+        - [35.8, 33.72]
+        - [35.7, 33.6]
+        - [35.6, 33.3]
+        - [35.245, 33.34]
+        - [34.95, 33.34]
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: josephus-aj, locator: '14.333' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sidon and its territory between the Tamyras and the Leontes, left out of
+    Cleopatra's grant with Tyre (AJ 15.95). Split from syria (September 2026).
+    Takes its edges from tyre and ituraea.
+
+- id: phoenicia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [35.3, 34.7]
+        - at: [35.97, 34.64]
+          note: the mouth of the Eleutherus (Nahr el-Kebir); Aradus lies beyond
+        - [36.15, 34.6]
+        - [36.0, 34.35]
+        - [35.8, 34.0]
+        - [35.7, 33.72]
+        - [35.44, 33.72]
+        - [34.9, 33.72]
+    - method: outline
+      edge:
+        - [34.9, 33.09]
+        - [35.105, 33.09]
+        - [35.25, 33.05]
+        - [35.4, 32.6]
+        - [35.1, 32.6]
+        - [34.9, 32.7]
+        - [34.85, 32.85]
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Phoenician coast within the Eleutherus, less Tyre and Sidon: Orthosia,
+    Tripolis, Byblos and Berytus in the north, and Ptolemais between the Ladder
+    of Tyre and Carmel in the south. Cleopatra's from Antony's grant (AJ
+    15.95; Plut. Antony 36.2). Two pieces, one atom. Split from syria
+    (September 2026). Takes its inland edges from ituraea and judaea.
 
 - id: syria
   evidence: schematic

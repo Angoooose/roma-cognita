@@ -238,18 +238,6 @@
     and K. Welch (eds), Sextus Pompeius (London: Duckworth and The Classical
     Press of Wales, 2002) 31–63
 
-- id: rich-1990
-  kind: modern
-  citation: >-
-    J. W. Rich (ed. and trans.), Cassius Dio: The Augustan Settlement (Roman
-    History 53–55.9) (Warminster: Aris & Phillips, 1990)
-
-- id: osgood-2006
-  kind: modern
-  citation: >-
-    J. Osgood, Caesar's Legacy: Civil War and the Emergence of the Roman Empire
-    (Cambridge, 2006)
-
 - id: bowersock-1965
   kind: modern
   citation: >-
@@ -369,6 +357,27 @@
     J.-B. Cayla, "Antoine, Cléopâtre, et les technites dionysiaques à Chypre",
     Bulletin de correspondance hellénique 141.1 (2017) 313–336
   url: https://journals.openedition.org/bch/548
+
+- id: bingen-2007
+  kind: modern
+  citation: >-
+    J. Bingen, "Cleopatra VII Philopatris", in R. S. Bagnall (ed.), Hellenistic
+    Egypt: Monarchy, Society, Economy, Culture (Edinburgh, 2007) 57–62
+
+- id: segal-1970
+  kind: modern
+  citation: J. B. Segal, Edessa, 'The Blessed City' (Oxford, 1970)
+  note: The Edessene king-list, whose early names and dates Segal says "should … be regarded with caution".
+
+- id: bowersock-1983
+  kind: modern
+  citation: G. W. Bowersock, Roman Arabia (Cambridge, MA, 1983)
+
+- id: kokkinos-1998
+  kind: modern
+  citation: >-
+    N. Kokkinos, The Herodian Dynasty: Origins, Role in Society and Eclipse
+    (Sheffield, 1998)
 
 - id: barrington
   kind: modern
@@ -492,10 +501,6 @@
   kind: ancient
   citation: Suetonius, Divus Augustus
 
-- id: ovid-fasti
-  kind: ancient
-  citation: Ovid, Fasti
-
 - id: tacitus-ann
   kind: ancient
   citation: Tacitus, Annales
@@ -522,6 +527,10 @@
 - id: macrobius-sat
   kind: ancient
   citation: Macrobius, Saturnalia
+
+- id: suetonius-tib
+  kind: ancient
+  citation: Suetonius, Tiberius
 
 # --- datasets ------------------------------------------------------------------
 

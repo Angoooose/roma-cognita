@@ -443,7 +443,7 @@
   polity: syria
   relation: province
   from: 64 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'Syr. 49, 70' }
     - { source: velleius, locator: '2.38.6' }
@@ -466,7 +466,7 @@
   polity: syria
   relation: province
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: josephus-aj, locator: '14.74–76' }
     - { source: josephus-bj, locator: '1.155–157' }
@@ -489,7 +489,7 @@
   polity: judaea
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: 41 BCE
   sources:
     - { source: josephus-aj, locator: '14.74–79' }
   confidence: certain
@@ -518,7 +518,7 @@
   polity: judaea
   relation: client
   from: 47 BCE
-  to: after 43 BCE
+  to: 41 BCE
   sources: [{ source: josephus-aj, locator: '14.202–206' }]
   confidence: probable
   review: draft
@@ -528,7 +528,7 @@
   polity: ituraea
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: 37 BCE
   sources:
     - { source: strabo, locator: '16.2.10, 16.2.18' }
     - { source: sullivan-1990 }
@@ -539,7 +539,7 @@
   polity: emesa
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: strabo, locator: '16.2.10' }
     - { source: sullivan-1990 }
@@ -550,7 +550,7 @@
   polity: commagene
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '16.2.3' }
     - { source: facella-2006 }
@@ -714,7 +714,7 @@
   polity: nabataea
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -735,7 +735,7 @@
   polity: nabataea
   relation: client
   from: 65 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: josephus-aj, locator: '14.18' }]
   confidence: uncertain
   review: needs-check
@@ -951,7 +951,7 @@
   polity: colchis
   relation: client
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'Mithr. 114' }
   confidence: probable
@@ -971,7 +971,7 @@
   polity: iberia-caucasia
   relation: client
   from: 65 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: cassius-dio, locator: '37.1–2' }
   confidence: uncertain
@@ -993,7 +993,7 @@
   polity: albania
   relation: client
   from: 65 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: plutarch, locator: 'Pompey 35' }
     - { source: cassius-dio, locator: '37.3–5' }
@@ -1006,7 +1006,7 @@
   polity: atropatene
   relation: client
   from: before 68 BCE
-  to: after 43 BCE
+  to: 36 BCE
   sources:
     - { source: strabo, locator: '11.13.1–2' }
   confidence: uncertain
@@ -1027,7 +1027,7 @@
   polity: armenia
   relation: client
   from: 66 BCE
-  to: after 43 BCE
+  to: 35 BCE
   sources:
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: cassius-dio, locator: '36.52–53' }
@@ -1038,7 +1038,7 @@
   polity: parthia
   relation: independent
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: debevoise-1938 }
     - { source: sherwin-white-1984 }
@@ -1455,9 +1455,11 @@
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 #
-# Occupation rows are drawn from the year the occupier took hold to the last
-# year he held, inclusive, as Pharnaces' 48–47 is: the holding goes on
-# underneath in its own layer.
+# Occupation rows follow the same rule as every other row: the year the
+# occupier was driven out belongs to whoever came back (Labienus' occupation of
+# 40 ends at 40, because Ventidius recovered Asia and Syria in 39). The holding
+# goes on underneath in its own layer. Pharnaces' 48–47 above, from before this
+# extension, keeps 47 though Zela was fought in August 47 (see DOUBTS.md).
 
 # Italy and the islands
 
@@ -2328,3 +2330,739 @@
     him", and later "a praetorian province by itself" (Strabo 14.6.6); Caesar's
     in 27 (Dio 53.12.7), given to the people in 22 (54.4.1). Whether it was
     governed with Cilicia or Syria before then is not recorded.
+
+# The Levant, Parthia, Armenia and the Caucasus
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.1–79' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
+    The Hasmonean kingdom, a friend of Rome by treaty but no client.
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–79' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
+    Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
+
+- atom: samaria
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.395–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
+    The conquests of Alexander Jannaeus.
+
+- atom: samaria
+  polity: syria
+  relation: province
+  from: 63 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
+    Taken from the Jews by Pompey and put under the governor of Syria.
+
+- atom: gadara-hippos
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.395–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
+    The conquests of Alexander Jannaeus.
+
+- atom: gadara-hippos
+  polity: syria
+  relation: province
+  from: 63 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
+    Taken from the Jews by Pompey and put under the governor of Syria.
+
+- atom: strato-tower
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.395–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
+    The conquests of Alexander Jannaeus.
+
+- atom: strato-tower
+  polity: syria
+  relation: province
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
+    Taken from the Jews by Pompey and put under the governor of Syria.
+
+- atom: palaestina-coast
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.395–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
+    The conquests of Alexander Jannaeus.
+
+- atom: palaestina-coast
+  polity: syria
+  relation: province
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
+    Taken from the Jews by Pompey and put under the governor of Syria.
+
+- atom: gaza
+  polity: judaea
+  relation: independent
+  from: before 68 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.395–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
+    The conquests of Alexander Jannaeus.
+
+- atom: gaza
+  polity: syria
+  relation: province
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–76' }
+    - { source: josephus-bj, locator: '1.155–157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
+    Taken from the Jews by Pompey and put under the governor of Syria.
+
+- atom: tyre
+  polity: syria
+  relation: province
+  from: 64 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
+    Pompey's annexation.
+
+- atom: tyre
+  polity: seleucid
+  relation: independent
+  from: before 68 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
+    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
+
+- atom: sidon
+  polity: syria
+  relation: province
+  from: 64 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
+    Pompey's annexation.
+
+- atom: sidon
+  polity: seleucid
+  relation: independent
+  from: before 68 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
+    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
+
+- atom: phoenicia
+  polity: syria
+  relation: province
+  from: 64 BCE
+  to: 37 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
+  confidence: certain
+  review: draft
+  note: >-
+    Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
+    Pompey's annexation.
+
+- atom: phoenicia
+  polity: seleucid
+  relation: independent
+  from: before 68 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
+    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
+
+# The Parthian invasion of 40
+
+- atom: syria
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: cassius-dio, locator: '48.26.1' }
+    - { source: cassius-dio, locator: '48.41.4' }
+    - { source: debevoise-1938, locator: 'pp. 109–116' }
+  confidence: certain
+  review: draft
+  note: >-
+    Pacorus and Labienus crossed the Euphrates "in the spring of 40 B.C."
+    (Debevoise 109), and Pacorus "made himself master of Syria and subjugated
+    all of it except Tyre" (Dio 48.26.1). Ventidius "took over Syria without a
+    battle, now that it was deserted by the Parthians, with the exception of the
+    Aradii" (48.41.4) in 39, which belongs to the province again. The province
+    went on underneath. Missing from the data until September 2026, though the
+    schema's own comment names it.
+
+- atom: sidon
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.333' }
+  confidence: certain
+  review: draft
+  note: '"The Tyrians excluded Pacorus, but the Sidonians and those of Ptolemais received him" (AJ 14.333).'
+
+- atom: phoenicia
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: cassius-dio, locator: '48.26.1' }
+    - { source: josephus-aj, locator: '14.333' }
+  confidence: certain
+  review: draft
+  note: All Syria but Tyre (Dio 48.26.1); Ptolemais received Pacorus (AJ 14.333).
+
+- atom: palaestina-coast
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.333' }
+    - { source: cassius-dio, locator: '48.26.2' }
+  confidence: probable
+  review: draft
+  note: Pacorus "went along the maritime parts" towards Judaea (AJ 14.333) and "invaded Palestine" (Dio 48.26.2).
+
+- atom: strato-tower
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.333' }
+  confidence: probable
+  review: draft
+  note: As palaestina-coast.
+
+- atom: gaza
+  polity: parthia
+  relation: occupied
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.333' }
+  confidence: uncertain
+  review: needs-check
+  note: As palaestina-coast; Gaza is not named.
+
+# Judaea: Antigonus and Herod
+
+- atom: judaea
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+    - { source: cassius-dio, locator: '48.26.2' }
+    - { source: debevoise-1938, locator: 'p. 113' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Parthians took Jerusalem in 40, carried off Hyrcanus and made
+    Antigonus king (AJ 14.330–369). From 39 Herod, whom the senate had made king
+    in 40, held Joppa, Idumaea and by the winter of 39/38 Galilee (AJ
+    14.394–397, 14.413–414) — part of this atom, which cannot be split by year,
+    so it is drawn Antigonus' to the fall of Jerusalem.
+
+- atom: judaea
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: cassius-dio, locator: '49.22.3–6' }
+    - { source: strabo, locator: '16.2.46' }
+    - { source: schurer-vermes, locator: 'vol. I' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sosius and Herod took Jerusalem "when Marcus Agrippa and Caninius Gallus
+    were consuls" (AJ 14.487), 37, the majority date; the same sentence counts
+    "twenty-seven years" from 63, which gives 36, and Dio tells it under 38
+    (49.22.3–6). Herod "received the title and authority of king, first from
+    Antony, and afterwards from Augustus" (Strabo 16.2.46).
+
+- atom: judaea-jericho
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+  confidence: probable
+  review: draft
+  note: As judaea.
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+  confidence: probable
+  review: draft
+
+- atom: judaea-jericho
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: josephus-bj, locator: '1.361–362' }
+    - { source: josephus-aj, locator: '15.96' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "The balsam-producing part of Judaea" (Plut. Antony 36.2): Jericho's palms
+    and balsam went to Cleopatra, and Herod leased them back "at the yearly
+    rent of two hundred talents" (BJ 1.361–362; AJ 15.96). Plutarch has the gift
+    in the winter of 37/36; Josephus tells it with her journey of 34. 36 is
+    drawn.
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+  confidence: certain
+  review: draft
+  note: Octavian "restored that country to him again" (AJ 15.217).
+
+- atom: judaea-joppa
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.396' }
+  confidence: probable
+  review: draft
+  note: Joppa was "a city at variance with" Herod until he took it in 39 (AJ 14.396–397).
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: client
+  from: 39 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.396–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    Herod's from 39. The client relation of Judaea to Rome is drawn from 37,
+    with the fall of Jerusalem; Herod was Rome's king from 40.
+
+- atom: judaea-joppa
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: josephus-aj, locator: '15.217' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Within Cleopatra's grant of the cities "within the river Eleutherus, as far
+    as Egypt" (AJ 15.95), and among the cities Octavian gave Herod in 30 (AJ
+    15.217) — so Herod had lost it. An inference, but a strong one.
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+  confidence: certain
+  review: draft
+
+# Cleopatra's coast, 36–31, and what Octavian gave Herod in 30
+
+- atom: phoenicia
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: plutarch, locator: 'Antony 36.2' }
+    - { source: josephus-aj, locator: '15.95' }
+    - { source: josephus-bj, locator: '1.361' }
+    - { source: bingen-2007 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Antony gave Cleopatra "Phoenicia, Coele Syria" (Plut. Antony 36.2), "the
+    cities that were within the river Eleutherus, as far as Egypt, excepting
+    Tyre and Sidon" (AJ 15.95). She began a second count of her regnal years in
+    37/36, "more or less directly connected with … the first territorial
+    concessions" (Bingen 2007); Josephus tells the gift with the events of 34.
+    Drawn as her holding, not only its revenues: Josephus has Antony take the
+    cities from their governors and give them to her.
+
+- atom: phoenicia
+  polity: syria
+  relation: province
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.2.1' }
+  confidence: probable
+  review: draft
+  note: >-
+    Octavian took back what the kings had received from Antony (Dio 51.2.1),
+    and gave Herod only Gaza, Anthedon, Joppa and Strato's Tower on this coast;
+    the rest is taken to have gone back to the province.
+
+- atom: palaestina-coast
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Within the Eleutherus-to-Egypt clause (AJ 15.95); Ascalon, free since 104,
+    is not named among the exceptions but may have been one.
+
+- atom: palaestina-coast
+  polity: syria
+  relation: province
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.2.1' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Not in Octavian's list of cities for Herod (AJ 15.217), so taken to have
+    gone back to the province. Herod held Iamnia and Azotus at his death, but
+    when he got them is not known.
+
+- atom: strato-tower
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+
+- atom: strato-tower
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+  confidence: certain
+  review: draft
+  note: >-
+    "Of the maritime cities, Gaza and Anthedon, and Joppa, and Strato's Tower"
+    (AJ 15.217), added to Herod's kingdom by Octavian in 30.
+
+- atom: gaza
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+
+- atom: gaza
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+  confidence: certain
+  review: draft
+  note: As strato-tower.
+
+- atom: samaria
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+  confidence: certain
+  review: draft
+  note: >-
+    "Gadara, and Hippos, and Samaria" (AJ 15.217), given to Herod in 30. He had
+    married Mariamme at Samaria in 37, which shows his presence there, not his
+    possession.
+
+- atom: gadara-hippos
+  polity: judaea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.217' }
+    - { source: josephus-bj, locator: '1.396' }
+  confidence: certain
+  review: draft
+  note: As samaria. The other Decapolis cities stayed in Syria (Pliny 5.74).
+
+# The kingdoms of the Lebanon and the desert
+
+- atom: ituraea
+  polity: aegyptus
+  relation: client
+  from: 36 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.32.5' }
+    - { source: josephus-aj, locator: '15.92' }
+    - { source: bingen-2007 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony executed Lysanias, "whom he himself had made king", for favouring
+    Pacorus, and gave "extensive portions" of the Ituraeans' districts to
+    Cleopatra's house (Dio 49.32.5; AJ 15.92); her second count of years was
+    as queen of Chalcis (Porphyry, as Bingen reports). Dio says portions, not
+    all, hence uncertain.
+
+- atom: ituraea
+  polity: ituraea
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.344' }
+    - { source: josephus-bj, locator: '1.398' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Zenodorus "had hired what was called the house of Lysanias" (AJ 15.344)
+    by 30 at the latest, until his death in 20. Whether his lease began under
+    Cleopatra is not known.
+
+- atom: emesa
+  polity: syria
+  relation: province
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.2.2' }
+    - { source: cassius-dio, locator: '54.9.2' }
+    - { source: josephus-bj, locator: '1.393' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony had Iamblichus killed before Actium (Dio 50.13.7); his brother
+    Alexander, who got the kingdom, was still a suppliant with Octavian in 30
+    (BJ 1.393) and was then deposed and led in the triumph (Dio 51.2.2). In 20
+    Augustus gave Iamblichus II "his ancestral dominion" (54.9.2). No source
+    says who governed Emesa in between; the governor of Syria is the natural
+    inference. Leaving it unclaimed would be the stricter choice.
+
+# Armenia and Media
+
+- atom: armenia
+  polity: armenia
+  relation: client
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–41' }
+    - { source: plutarch, locator: 'Antony 50' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony seized Artavasdes II in 34, "occupied the whole of Armenia" and
+    "left his legions in Armenia" (Dio 49.39–40); the crown was promised to
+    Alexander Helios at the Donations (49.41.3), on paper. Drawn as a client
+    kingdom in Roman hands, with the occupation in its own layer; the
+    Armenians proclaimed Artavasdes' son Artaxes king, and he fled to Parthia.
+
+- atom: armenia
+  polity: rome
+  relation: occupied
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–40' }
+    - { source: cassius-dio, locator: '49.44.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Antony's garrison, until he "summoned back his own soldiers" and "Armenia
+    was lost together with Media" (Dio 49.44.4), in 32 or 31.
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: 31 BCE
+  to: after 27 BCE
+  sources:
+    - { source: tacitus-ann, locator: '2.3' }
+    - { source: cassius-dio, locator: '51.16.2' }
+  confidence: probable
+  review: draft
+  note: >-
+    Artaxias II, restored "by the arms of the Arsacidae" (Tac. Ann. 2.3), "put
+    to death the Romans left behind in Armenia" (Dio 51.16.2). When he came back
+    is not recorded, between 32 and 30.
+
+- atom: atropatene
+  polity: atropatene
+  relation: allied
+  from: 35 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.33.1–2' }
+    - { source: cassius-dio, locator: '49.44.1–2' }
+    - { source: plutarch, locator: 'Antony 52' }
+  confidence: probable
+  review: draft
+  note: >-
+    After Antony's siege of his capital in 36, the Mede quarrelled with
+    Phraates and sent Polemon to Antony "requesting his friendship and
+    alliance" (Dio 49.33.1–2, under 35); in 33 "they made a covenant to serve
+    each other as allies", and the Mede received a portion of Armenia (49.44.1–2),
+    which part is not known and is not drawn.
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.44.4' }
+    - { source: cassius-dio, locator: '51.16.2' }
+    - { source: res-gestae, locator: '32' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Mede "was in turn defeated and captured, and so Armenia was lost
+    together with Media" (Dio 49.44.4); he found asylum with Octavian (51.16.2;
+    RGDA 32, "of the Medes, Artavasdes"). Who held Media Atropatene for Phraates
+    in 30–27 is not known.
