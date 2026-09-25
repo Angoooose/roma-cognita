@@ -48,6 +48,12 @@ export class MapCamera {
   private hit = new THREE.Vector3()
 
   private el: HTMLElement
+  /**
+   * For screenshots only (the `heading` URL parameter): the compass direction the
+   * camera looks, degrees. The map is always read north up, and panning and picking
+   * assume it, so nothing in the interface sets this.
+   */
+  static heading = 0
 
   constructor(el: HTMLElement, initial: CameraState) {
     this.el = el
@@ -87,10 +93,12 @@ export class MapCamera {
     const { x, y, distance, pitch } = this.state
     const p = (pitch * Math.PI) / 180
     const c = this.camera
-    c.position.set(x, y - distance * Math.sin(p), distance * Math.cos(p))
+    const h = (-MapCamera.heading * Math.PI) / 180
+    const back = distance * Math.sin(p)
+    c.position.set(x + back * Math.sin(h), y - back * Math.cos(h), distance * Math.cos(p))
     // Looking straight down with north up is the identity rotation; tilting is a turn
     // about x. Building it directly avoids lookAt's degenerate up vector at pitch 0.
-    c.rotation.set(p, 0, 0)
+    c.rotation.set(p, 0, h, 'ZYX')
     c.near = Math.max(10, distance * 0.02)
     c.far = distance * 30
     c.updateProjectionMatrix()

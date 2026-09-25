@@ -97,6 +97,11 @@ export class PlanLayer {
     return CLOSE_IN_M + (normal - CLOSE_IN_M) * t * t * (3 - 2 * t)
   }
 
+  /** The plate's rectangle, plane metres (x0, y0, x1, y1), once loaded. */
+  get rect() {
+    return this.plate
+  }
+
   /** The id of the monument standing at a plane point in `year`, smallest first. */
   pick(x: number, y: number, year: number): string | null {
     const hits = this.outlines.filter(

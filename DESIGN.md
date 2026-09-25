@@ -645,22 +645,73 @@ legend keys it as illustrative. Realism goes into the known buildings first. Wha
 known and what is generated are kept apart:
 
 - **Known**, from the records (every one dated and sourced, like any place):
-  - The 27 monument outlines (OpenStreetMap), raised by the type of building
-    (`ModelLayer.ts`). Proportions are the types' (Vitruvius' rules of thumb), not
-    measurements of these buildings:
-    - temples on a podium with steps at the front, a colonnade round the cella,
-      an entablature and a pedimented tile roof, facing the Forum (or their own
-      forum);
-    - round shrines as a ring of columns under a cone;
-    - basilicas as a colonnade under a raised clerestory;
-    - Caesar's forum as a court inside porticoes;
-    - the Circus's tiered stands and barrier, and the bridges over the water.
+  - **Each built as itself** (decided 2026-09-24). Every known building has a
+    design (`pipeline/src/rome/designs.ts` and `designs/`): its type, its size,
+    its columns, its stairs and the way it faced, as its sources give them for
+    68–27 BCE, with those sources in the design's note. The engine knows how each
+    type is put together (`architecture.ts`, `monuments.ts`); the design says
+    which building it is. So the Capitol's temple is a Tuscan temple with three
+    rows of six columns, three cellae and a gilded roof; Castor's the Metellan
+    octastyle with its speakers' tribunal and side stairs; Vesta's a ring of
+    twenty Ionic columns on three steps; Pompey's theatre a cavea of three
+    arcaded storeys with Venus Victrix's temple at its top; the Circus Caesar's,
+    with its one-storey shop arcade, timber upper tiers and the euripus. The
+    research behind each is summarised in its record's note.
+    - **Placing.** A design stands on its record's surveyed outline (its box and
+      axis) unless it gives a centre, a size and a bearing of its own: where the
+      outline is of a later rebuilding (Castor's Augustan podium, Concord's
+      Tiberian one) or there is none. Where it gives none of them, the monument is
+      placed as its point says, facing downhill.
+    - **Where Platner & Ashby are superseded** (the Largo Argentina, the Forum
+      Boarium, the Circus Flaminius, the Palatine's temples, the Late Republican
+      phases of the Forum) the designs follow Digital Augustan Rome and the
+      Digitales Forum Romanum, which give the modern literature, and the
+      Sovrintendenza and Musei Capitolini for what the excavations found.
+    - **Where nothing is known of a building's form** — most of the temples on the
+      Aventine, the Quirinal and the Esquiline — it is the typical mid-Republican
+      temple (`DEFAULT_TEMPLE`): four Tuscan columns across a deep porch on a
+      podium with a flight across its front, 14 by 24 m, after Vitruvius 4.7 and
+      the Largo Argentina's Temple C. Buildings with no remains whose form is a
+      published hypothesis (the Curia Hostilia, the Basilica Porcia) are drawn to
+      it, and their records say so.
+    - **On a slope** a design may stand as a terrace on its highest or middle
+      ground, its foundations running down to the lowest (`level`): the Area
+      Capitolina and its temples, and the Tabularium, whose substructure rises
+      from the Forum's ground to the saddle's.
+    - **Its site levelled** (decided 2026-09-25). Each designed building's site is
+      cut and filled level in the ground everything stands on (`ground.png`, model.ts),
+      the larger first, so a temple in a forum stands on the forum: at the mean of the
+      ground under it, or its lowest where it was cut into a slope (Caesar's forum,
+      cut into the Arx behind a peperino wall "12 m high", Platner & Ashby, p. 227), or
+      its highest where it was built out as a terrace. A walk 3 m wide runs round it
+      at its level; beyond, ground within a metre or two of the level eases back over
+      10 m, and where the site is cut more than 1.2 m into rising ground a retaining
+      wall of squared tufa holds the ground back. Over falling ground its own walls
+      and podium stand on foundations down to the ground. The terrain over the model's
+      board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
+      `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
+      its big triangles cut through the buildings.
+    - **Bridges run bank to bank** (decided 2026-09-25): each spans the water it
+      crosses along its axis on the plan's river (dry gaps under 45 m joined, as a
+      pier or an islet is), its sourced arches scaled to that width, and its deck
+      comes down to the ground at each end and rises over the arches. The build
+      reports a bridge whose water differs from its design by more than a quarter.
+    - **The Tiber Island's ship** is a travertine embankment on the island's own
+      shore, rising towards its downstream end as a ship's sides rise to the stern,
+      with the relief of Aesculapius' staff near it.
+    - **No street under a building.** Where a recorded or main street's line crosses
+      a monument's footprint it stops at its edge (plate.ts), except over the bridges,
+      the island and the open squares.
+    - Proportions a source does not give are Vitruvius' rules of thumb: a column
+      seven diameters high for the Tuscan, nine for the Ionic, ten for the
+      Corinthian; an entablature about a quarter of the column; a pediment a
+      ninth of its width high.
   - **Their stone** is the one Platner & Ashby give for the window (`STONE_OF`,
     model.ts), and changes with the year where a building was refaced in it:
     - marble for Saturn from Plancus's rebuilding (42 BCE), the Regia from
-      Calvinus's (36 BCE), Venus Genetrix, the Basilica Julia and Palatine
-      Apollo;
-    - travertine for the Mausoleum of Augustus;
+      Calvinus's (36 BCE), Venus Genetrix, the Basilica Julia, Palatine Apollo,
+      Sosius's Apollo from 34 BCE and the round temple by the Tiber;
+    - travertine for the Mausoleum of Augustus and the tomb of Bibulus;
     - the rest white stucco over tufa or peperino, the Republic's usual finish.
       Rome's first marble temple was Metellus's of 146 BCE (Iuppiter Stator,
       p. 304), and Augustus "found it built of brick and left it in marble"
@@ -671,19 +722,29 @@ known and what is generated are kept apart:
   - The Forum square, paved in Monte Verde tufa at the Sullan level and in
     travertine from Caesar's relaying (Forum Romanum, pp. 232–233), taken as 44
     BCE. The travertine that survives is Augustan.
-  - The Capitoline temple and Pompey's theatre, which OpenStreetMap has no
-    outline for, are sized from Platner & Ashby's measurements at their
-    locations (`MEASURED`). Their placing is approximate.
-  - Twenty-three more Republican temples that Platner & Ashby place but nobody
-    has surveyed an outline for (Diana, Minerva and Juno Regina on the Aventine,
-    Quirinus and Salus on the Quirinal, Juno Moneta on the Arx, Metellus's marble
-    Jupiter Stator, the three under S. Nicola in Carcere, and others). Each is a
-    temple of a standard 14 by 24 m (or the size Platner & Ashby give) at its
-    recorded point, facing downhill, or as its remains lie (`POINT_TEMPLE`). The
-    point and how it is known are in each record's note; most are approximate,
-    read from Platner & Ashby's words against modern landmarks, since Pleiades
-    gives most of them only a generic point for Rome. One that would stand on a
-    surveyed monument is left out, and the build says so.
+  - **The years 44–27 BCE** (decided 2026-09-24), when the window was carried to
+    27 BCE. Everything dated in them changes the model in its year:
+    - Caesar's rostra from 44 BCE, the old rostra given up; the Curia Hostilia,
+      rebuilt by Faustus Sulla after the fire of 52, pulled down in 44; the
+      Curia Julia rising from 44 and standing from 29, with Victory on its gable;
+      the Divus Iulius rising from 42 and standing from 29 on its platform with
+      the altar's niche; Plancus's Saturn rising from 42; the Regia in marble
+      from 36; the Basilica Paulli standing from 34;
+    - on the Palatine, Octavian's unfinished house of two peristyles until 36 BCE,
+      then Apollo's temple rising and, from 28, standing in marble over the Circus
+      with the portico of the Danaids before it; the hut of Romulus burnt in 38;
+    - in the Campus Martius, the Theatre of Marcellus's foundations from 44 on
+      the site Caesar cleared (the temple of Pietas gone), the Saepta Julia's
+      porticoes by 36, Sosius's Apollo rising from 34, and the Mausoleum's drum
+      and ring walls rising from 28;
+    - the Aqua Julia and the Tepula on the Marcia's arcade from 33 (below);
+      Agrippa's dolphins on the Circus's axis from 33; the Circus, Ceres and Spes
+      burnt in 31; Cornificius's Diana rising from 32; the Pons Sublicius wrecked
+      in 32; the wall round Juno Lucina's grove from 41.
+    - Left out, and why, in BACKLOG.md: the Pantheon (begun in 27, finished in
+      25), the Amphitheatre of Statilius Taurus and the Porticus Octavia of 168
+      BCE (sites unknown), the Actian arch (doubted), Jupiter Feretrius (tiny, its
+      site unknown).
   - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
     near Rome: the Appia and the Anio Vetus ran underground into the city
     (Frontinus 1.5–1.6), and are recorded but not drawn. The Marcia is drawn for
@@ -761,6 +822,7 @@ known and what is generated are kept apart:
     "casually built upon … rather than regularly planned" (Livy 5.55), with "narrow,
     twisting lanes" (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m
     wide (Poehler 2017).
+
   - **Plots from the street to the middle of the block** (decided 2026-09-24).
     Every 2 m of a block belongs to the street frontage nearest it, so a plot runs
     from its street back to the middle of the block, up to 26 m, where it meets
@@ -837,12 +899,20 @@ known and what is generated are kept apart:
       front one of two storeys), among flats built only 14 m deep with yards
       behind, as rich and poor stood side by side on the Marble Plan.
     - Low ground near the river: warehouses on lots 30–60 m long.
+    - The top of the Palatine: great houses round their courts, of one or two
+      storeys, and hardly a block of flats — the houses "sprang up all over the
+      hill", and no Republican source puts flats there (Platner & Ashby,
+      Palatinus, p. 378).
   - The slopes too steep to build on are left to scattered trees.
   - The houses are plain stucco in a narrow range of washes under one terracotta,
     varied a little lot by lot: plainer than the known buildings. Atrium houses
     are a paler render, warehouses bare tufa.
-  - The monuments, the Forum and the Capitol's precinct, and ground too steep or
-    wet are kept clear. The recorded streets and the generated main streets are
+  - The monuments, the Forum, and ground too steep or wet are kept clear; so are
+    the Capitol's summits and the Asylum between them, sacred ground where
+    nobody lived ("ne quis patricius in arce aut Capitolio habitaret", Livy
+    6.20.13), each as far as the ground stays near its top, the Asylum with its
+    two groves; and the Forum Boarium between its temples and the Ara Maxima,
+    the cattle market, whose limits are not known. The recorded streets and the generated main streets are
     paved in pale basalt, as Rome's streets were from 174 BCE (Livy 41.27), so the
     main network shows from far off; the lanes are trodden earth.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
@@ -855,7 +925,11 @@ known and what is generated are kept apart:
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not
-  shown; one being built or lying burnt stands at a third of its height. The
+  shown. One being built stands cut off at two-fifths of its height, open to the
+  sky as works rising are (or as far as its design says the works had got: the
+  Theatre of Marcellus only its foundations); one burnt is a roofless shell cut at
+  seven-tenths, blackened towards its top (decided 2026-09-24: squashing them to a
+  third of their height made columns stubby). The
   generated city stands throughout, except on the site of a monument begun within
   the window: there houses stand until that year (Caesar's forum went up on the
   houses he bought).
@@ -899,6 +973,7 @@ what the city adds drawn on it:
   rises more than 2.2 m from a plot's street to its back, the building is two or
   three parts, each on its own ground, fewer storeys going up the slope and more
   going down.
+
 - Inside the walls, the ground between the houses is trodden earth: the
   terrain's colour pulled most of the way to it, its relief kept.
 - Close in, a ground mesh over the same heights draws only the model's shadows.
@@ -944,6 +1019,7 @@ what the city adds drawn on it:
   by a point, knows only from imperial sources (the Clivus Scauri), or ties to a
   street since renamed or rebuilt (the Clivus Orbius) are still left to the
   generated streets;
+
 - the pieces of excavated street that belong to no recorded street, 110 in and
   round the walls that may have stood in 68–27 BCE (most dated only "Roman"),
   are kept in `data/geometry/rome-sitar.geojson` for the generated streets to
@@ -989,9 +1065,9 @@ what the city adds drawn on it:
   - tiled roofs, as Rome was from the war with Pyrrhus (Pliny, _Natural History_
     16.36): rows of cover tiles down the slope about half a metre apart, tiles a
     little lighter or darker one by one, the ridge tiles and the eaves' edge.
-  Where the doors and windows fall is generated, as the lots are: illustrative,
-  not of any building. The camera comes in to 250 m over the city, where they can
-  be seen;
+    Where the doors and windows fall is generated, as the lots are: illustrative,
+    not of any building. The camera comes in to 250 m over the city, where they can
+    be seen;
 - tilted, a tilt-shift: the top and bottom of the frame out of focus, as a
   close-range photograph of a model is, with a touch more contrast and colour.
   It is a pass over the whole frame, run only while the model stands and the

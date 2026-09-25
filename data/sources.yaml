@@ -754,6 +754,40 @@
     roughly where; none of its drawing is copied, since it carries no licence.
     Locators are its entry titles.
 
+- id: digitales-forum-romanum
+  kind: modern
+  citation: >-
+    S. Muth (ed.), Digitales Forum Romanum (Humboldt-Universität zu Berlin): the
+    Forum's buildings phase by phase, with their bibliographies
+  url: https://www.projekte.hu-berlin.de/de/digitales-forum-romanum
+  note: >-
+    Read for the Late Republican phases of the Forum's buildings (its "Späte Republik
+    II"), which Platner & Ashby could not separate from the Augustan and later ones;
+    its reconstructions of buildings with no remains (the Curia Hostilia, the
+    Basilicae Porcia and Opimia) are hypotheses and are drawn as such. Locators are
+    its building pages. Nothing is copied.
+
+- id: sovrintendenza-capitolina
+  kind: modern
+  citation: >-
+    Sovrintendenza Capitolina ai Beni Culturali, Roma Capitale: the pages on the
+    monuments of ancient Rome in its care
+  url: https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/monumenti
+  note: >-
+    The measurements and dates of what stands (the Mausoleum of Augustus, the
+    bridges, the Porticus Aemilia, the Tomb of the Scipios). Locators are its page
+    titles.
+
+- id: musei-capitolini
+  kind: modern
+  citation: >-
+    Musei Capitolini, Roma Capitale: the pages on the Capitol's temple of Jupiter,
+    the Tabularium and the temple of Veiovis
+  url: https://www.museicapitolini.org/
+  note: >-
+    The results of the excavations since Platner & Ashby under the Palazzo
+    Caffarelli and the Palazzo Senatorio. Locators are its page titles.
+
 - id: osm-rome
   kind: dataset
   citation: >-
@@ -893,6 +927,14 @@
   note: >-
     A Latin colony of 273 BCE: blocks about 35 m by 80 m between streets of about
     4 m — the block sizes the valleys are split down to.
+
+- id: dionysius
+  kind: ancient
+  citation: Dionysius of Halicarnassus, Roman Antiquities
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/home.html
+  note: >-
+    Written in Rome about 7 BCE: the Circus Maximus as Caesar had rebuilt it (3.68),
+    the hut of Romulus (1.79.11), the Pons Sublicius (3.45).
 
 - id: livy
   kind: ancient

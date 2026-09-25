@@ -7,9 +7,9 @@
  * records (DESIGN.md §1, the exception in §7.7). It keeps the two apart:
  *
  * - **What is known** is built from the records: each monument's outline raised by
- *   the type of building it is (MASSING), two landmarks OpenStreetMap has no
- *   outline for sized from Platner & Ashby's measurements (MEASURED), the bridges,
- *   and the Servian Wall on its circuit (servian.ts).
+ *   its design (designs.ts: its type, size, columns and stairs, from its sources),
+ *   the bridges, and the Servian Wall on its circuit (servian.ts). A temple with no
+ *   design of its own is a typical one (`DEFAULT_TEMPLE`).
  * - **The city around them is generated** — houses and blocks of flats that nobody
  *   can map building by building for this period. Inside the wall city.ts lays out
  *   streets, blocks and the lots round them; the recorded streets, the monuments and
@@ -25,12 +25,14 @@
  */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import polygonClipping from 'polygon-clipping'
 import sharp from 'sharp'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { excavatedPieces, type StreetLine } from './streets.ts'
 import { layCity, LOT_KIND, ROOF } from './city.ts'
 import { COURSES, layCourse } from './aqueducts.ts'
+import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts'
 
 type Pt = [number, number]
 
@@ -78,40 +80,9 @@ const MASSING: Record<
 }
 
 /**
- * Landmarks OpenStreetMap has no outline for, built from Platner & Ashby's
- * measurements at the record's location, lon/lat. Their placing is approximate and
- * the model says so only here and in the record's note.
- */
-const MEASURED: {
-  id: string
-  shape: 'rect' | 'theatre'
-  w: number
-  d: number
-  angle: number
-  what: string
-}[] = [
-  {
-    id: 'aedes-iovis-capitolini',
-    shape: 'rect',
-    w: 55,
-    d: 60,
-    angle: 0,
-    what: 'the stylobate "about 55 metres" by "about 60", on a podium "from 4 to 5 metres" high (Platner & Ashby, pp. 297–302), its long side north–south',
-  },
-  {
-    id: 'theatrum-pompei',
-    shape: 'theatre',
-    w: 155,
-    d: 95,
-    angle: 0,
-    what: 'a diameter of "150‑160 metres" and a stage "about 95 metres" long (Platner & Ashby, pp. 515–517), the stage facing east to its portico',
-  },
-]
-
-/**
- * Temples placed by a point (the records with no outline): their size, width by
- * length in metres — a typical mid-Republican temple on its podium, or what
- * Platner & Ashby give.
+ * Temples placed by a point (the records with no outline): the size of one, width by
+ * length in metres, a typical mid-Republican temple on its podium, until its design
+ * (designs.ts) gives its own. Its point and the slope place it.
  */
 const POINT_TEMPLE: {
   size: [number, number]
@@ -120,23 +91,8 @@ const POINT_TEMPLE: {
   facing: Record<string, number>
 } = {
   size: [14, 24],
-  sizes: {
-    // "22 × 45 m" on the Marble Plan (Platner & Ashby, Minerva, aedes, p. 342).
-    'aedes-minervae-aventinensis': [22, 45],
-    // About 30 by 10 m, the middle temple under S. Nicola in Carcere (Spes, pp. 493–494).
-    'aedes-spei-foro-holitorio': [12, 30],
-    // The other two under S. Nicola in Carcere, narrower, so the three stand in a
-    // row about 20 m apart as their remains do.
-    'aedes-iani-foro-holitorio': [11, 26],
-    'aedes-iunonis-sospitae': [10, 22],
-  },
-  // The three stand side by side, their long sides together; which way they fronted
-  // is taken as east, towards the Forum Holitorium and the Capitol.
-  facing: {
-    'aedes-iani-foro-holitorio': 0,
-    'aedes-spei-foro-holitorio': 0,
-    'aedes-iunonis-sospitae': 0,
-  },
+  sizes: {},
+  facing: {},
 }
 
 /**
@@ -194,6 +150,27 @@ const STONE_OF: Record<
       why: '"constructed of solid blocks of white Luna marble" (Aedes Apollinis Palatini, p. 17)',
     },
   ],
+  'aedes-apollinis': [
+    {
+      from: -33,
+      stone: 'marble',
+      why: "Sosius's rebuilding from about 34 BCE: a superstructure of Luna marble, coloured marbles within (DAR, Apollo Medicus Sosianus)",
+    },
+  ],
+  'aedes-herculis-olivarii': [
+    {
+      from: -100000,
+      stone: 'marble',
+      why: 'its colonnade and cella of Pentelic marble, "the blocks of the cella being solid" (Platner & Ashby, Portunium, p. 430)',
+    },
+  ],
+  'sepulcrum-bibuli': [
+    {
+      from: -100000,
+      stone: 'travertine',
+      why: 'travertine for the visible parts, tufa behind (Platner & Ashby, Sepulcrum Bibuli, p. 477)',
+    },
+  ],
   'mausoleum-augusti': [
     {
       from: -100000,
@@ -214,6 +191,23 @@ const FORUM_PAVING = [
   { from: -100000, stone: 'tufa' },
   { from: -43, stone: 'travertine' },
 ]
+
+/** The Arx's summit and the Asylum, lon/lat and radius, metres: open ground, no houses. */
+const CAPITOL_OPEN: [[number, number], number][] = [
+  [[12.4835, 41.8948], 60],
+  [[12.48266, 41.8933], 38],
+]
+/** The Asylum's two groves, lon/lat: trees towards each summit. */
+const ASYLUM_GROVES: [number, number][] = [
+  [12.48238, 41.89352],
+  [12.48288, 41.89308],
+]
+
+/**
+ * A levelled site (`bakeModel`): the walk round a building at its level, how far
+ * beyond it the ground eases back, and how deep a cut, metres, needs a retaining wall.
+ */
+const SITE = { walk: 3, ease: 10, cut: 1.2 }
 
 /** The suburb's detached houses: their spacing, the gap between them, and where they may stand. */
 const FABRIC = { spacing: 9.5, gap: 1.4, streetClear: 4, monumentClear: 5, maxSlope: 0.45 }
@@ -277,14 +271,6 @@ export function bakeModel(m: ModelInput) {
   const slopeAt = (x: number, y: number) =>
     Math.hypot(at(x + 4, y) - at(x - 4, y), at(x, y + 4) - at(x, y - 4)) / 8
 
-  const png = new Uint8Array(g.width * g.height * 4)
-  for (let i = 0; i < ground.length; i++) {
-    const cm = Math.max(0, Math.min(65535, Math.round(ground[i] * 100)))
-    png[i * 4] = cm >> 8
-    png[i * 4 + 1] = cm & 255
-    png[i * 4 + 3] = 255
-  }
-
   // --- the known buildings ------------------------------------------------------------
   const monuments: {
     id: string
@@ -295,6 +281,19 @@ export function bakeModel(m: ModelInput) {
     roof: string
     podium: number
     approx?: boolean
+    /** Its design (designs.ts), placed: centre, size across and along, and bearing once known. */
+    design?: {
+      d: Design
+      centre: Pt
+      size: Pt
+      bearing: number | null
+      axis: Pt
+      drop: number
+    }
+    /** Whether it keeps the generated houses off its footprint (all but the island). */
+    clear?: boolean
+    /** More that its design needs from the ground: the island's shore, a bridge's banks. */
+    extra?: Record<string, unknown>
   }[] = []
   const lowest = (rings: Pt[][]) => Math.min(...rings[0].map(([x, y]) => at(x, y)))
   for (const o of m.outlines) {
@@ -358,27 +357,6 @@ export function bakeModel(m: ModelInput) {
         })
     }
   }
-  for (const s of MEASURED) {
-    const p = m.places.get(s.id)
-    if (!p) continue
-    const [cx, cy] = projection.forward(...p.location)
-    const rings: Pt[][] =
-      s.shape === 'rect'
-        ? [rect(cx, cy, s.w, s.d, s.angle)]
-        : [theatre(cx, cy, s.w / 2, s.d)]
-    const kind = s.shape === 'rect' ? 'temple' : 'theatre'
-    monuments.push({
-      id: s.id,
-      kind,
-      rings,
-      base: lowest(rings),
-      body: kind === 'temple' ? 14 : 24,
-      roof: kind === 'temple' ? 'gable' : 'flat',
-      podium: kind === 'temple' ? 4.5 : 0,
-      approx: true,
-    })
-  }
-
   // Temples the records place by a point only: a temple of a standard size (or the
   // size Platner & Ashby give) at the point, its long axis down the slope and its
   // front facing downhill, as a temple on a hillside faced out over the valley.
@@ -388,7 +366,8 @@ export function bakeModel(m: ModelInput) {
   const doubts: string[] = []
   for (const p of m.places.values()) {
     if (p.kind !== 'temple' || p.within !== 'roma' || outlined.has(p.id)) continue
-    if (MEASURED.some((s) => s.id === p.id)) continue
+    // One whose design places and sizes it is built from that (below).
+    if (DESIGNS[p.id]?.size) continue
     const [cx, cy] = projection.forward(...p.location)
     const [w, d] = POINT_TEMPLE.sizes[p.id] ?? POINT_TEMPLE.size
     const gx = at(cx + 15, cy) - at(cx - 15, cy)
@@ -426,6 +405,262 @@ export function bakeModel(m: ModelInput) {
   }
   for (const d of doubts) console.log(`model: ${d}`)
 
+  // Each building with a design (designs.ts) is built as itself: placed by its
+  // outline's box unless the design gives its centre, size or bearing, and standing
+  // on the footprint its design gives it, which keeps the houses off.
+  const designed: [string, Design][] = [
+    ...Object.entries(DESIGNS),
+    // Every other temple of the plan is drawn as a typical one.
+    ...monuments
+      .filter((mo) => mo.kind === 'temple' && !DESIGNS[mo.id])
+      .map((mo) => [mo.id, DEFAULT_TEMPLE] as [string, Design]),
+  ]
+  for (const [id, d] of designed) {
+    const p = m.places.get(id)
+    if (!p) throw new Error(`designs.ts: no place "${id}"`)
+    const own = monuments.filter((mo) => mo.id === id)
+    const largest = own
+      .map((mo) => mo.rings[0])
+      .sort((a, b) => Math.abs(ringArea(b)) - Math.abs(ringArea(a)))[0]
+    const box = largest ? orientedBox(largest) : null
+    const centre: Pt = d.at
+      ? projection.forward(...d.at)
+      : box
+        ? [box.cx, box.cy]
+        : projection.forward(...p.location)
+    const bearing =
+      d.bearing !== undefined ? planeBearing(d.bearing, d.at ?? p.location) : null
+    let size: Pt | undefined = d.size
+    if (!size && box) {
+      // The box's long side runs along the building unless its front is on it.
+      const across =
+        bearing !== null &&
+        Math.abs(Math.sin(bearing - Math.atan2(box.axis[0], box.axis[1]))) > 0.7
+      size = across ? [box.long, box.short] : [box.short, box.long]
+    }
+    if (!size) throw new Error(`designs.ts: ${id} has no outline, so needs a size`)
+    // Its depth runs along the bearing, or the box's long axis until the front is known.
+    const axis: Pt = bearing !== null ? [Math.sin(bearing), Math.cos(bearing)] : box!.axis
+    if (d.atLocal) {
+      // `at` is a point of it off its centre: across (to the right of its front) and along.
+      const [du, dv] = d.atLocal
+      centre[0] -= axis[1] * du + axis[0] * dv
+      centre[1] -= -axis[0] * du + axis[1] * dv
+    }
+    const ring = rect(
+      centre[0],
+      centre[1],
+      size[0],
+      size[1],
+      Math.atan2(axis[1], axis[0]) - Math.PI / 2,
+    )
+    const rings =
+      d.at || d.size || !largest ? [ring] : own.find((mo) => mo.rings[0] === largest)!.rings
+    const kind = own[0]?.kind ?? p.kind
+    for (const mo of own) monuments.splice(monuments.indexOf(mo), 1)
+    // The island's own shore, for its embankment: the hole in the river the island is
+    // (OpenStreetMap's outline of it is the modern embankments, wider than its land).
+    const shore =
+      kind === 'island'
+        ? m.riverRings
+            .filter((r) => inRing(centre, r))
+            .sort((a, b) => Math.abs(ringArea(a)) - Math.abs(ringArea(b)))[0]
+        : undefined
+    // A bridge runs from bank to bank along its axis: walked out from its centre until
+    // the ground is dry, so it meets the ground at both ends whatever its design's
+    // length (the river's line here is OpenStreetMap's, not the Republic's).
+    let span: { a: Pt; b: Pt } | null = null
+    if (kind === 'bridge') {
+      // The water along its axis, 0.5 m at a time out to 250 m either side; runs of it
+      // joined across dry gaps under 45 m (a pier, an islet in the river's line, or its line broken under a
+      // bridge); the run nearest its centre is what it crosses.
+      const pt = (t: number): Pt => [centre[0] + axis[0] * t, centre[1] + axis[1] * t]
+      const runs: [number, number][] = []
+      for (let t = -250; t <= 250; t += 0.5) {
+        if (sample(m.water, ...pt(t), 99) >= 0) continue
+        const last = runs[runs.length - 1]
+        if (last && t - last[1] < 45) last[1] = t
+        else runs.push([t, t])
+      }
+      const gap = (r: [number, number]) =>
+        r[0] <= 0 && r[1] >= 0 ? 0 : Math.min(Math.abs(r[0]), Math.abs(r[1]))
+      const run = runs.sort((a, b) => gap(a) - gap(b))[0] ?? [-size[1] / 2, size[1] / 2]
+      span = { a: pt(run[0]), b: pt(run[1]) }
+      const L = Math.hypot(span.b[0] - span.a[0], span.b[1] - span.a[1])
+      const mid: Pt = [(span.a[0] + span.b[0]) / 2, (span.a[1] + span.b[1]) / 2]
+      if (Math.abs(L - size[1]) / size[1] > 0.25)
+        console.log(
+          `model: ${id}: the water here is ${L.toFixed(0)} m across, its design ${size[1].toFixed(0)} m; its arches are scaled to it`,
+        )
+      centre[0] = mid[0]
+      centre[1] = mid[1]
+      size = [size[0], L]
+    }
+    // A bridge stands on the water; the rest on the lowest ground under them, or, where
+    // the design says it is a terrace built out on a slope, its highest or middle
+    // ground, its foundations running down to the lowest.
+    const wet = kind === 'bridge' || kind === 'island'
+    const heights = rings[0].map(([x, y]) => at(x, y))
+    const low = Math.min(...heights)
+    const level =
+      d.level === 'top'
+        ? Math.max(...heights)
+        : d.level === 'mean'
+          ? heights.reduce((a, b) => a + b, 0) / heights.length
+          : low
+    monuments.push({
+      id,
+      kind,
+      rings,
+      base: wet ? waterLevel - 2 : level,
+      body: 0,
+      roof: 'flat',
+      podium: 0,
+      approx: !outlined.has(id) || own.some((mo) => mo.approx),
+      design: { d, centre, size, bearing, axis, drop: wet ? 0 : level - low },
+      // The island keeps no houses off: its embankment is round its shore.
+      clear: kind !== 'island',
+      extra: {
+        ...(shore && {
+          // Each shore point with the island's ground a few metres inland, over its base.
+          outline: shore.map(([x, y]) => {
+            const [dx, dy] = [centre[0] - x, centre[1] - y]
+            const l = Math.hypot(dx, dy) || 1
+            return [
+              round(x),
+              round(y),
+              round(at(x + (dx / l) * 5, y + (dy / l) * 5) - (waterLevel - 2)),
+            ]
+          }),
+        }),
+        // A bridge's banks: the ground a few metres onto the land at each end, over its
+        // base, where its deck comes down to meet it.
+        ...(span && {
+          banks: [-1, 1].map((s) => {
+            const e = s < 0 ? span!.a : span!.b
+            return round(
+              at(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8) - (waterLevel - 2),
+            )
+          }),
+        }),
+      },
+    })
+  }
+
+  // --- the sites, levelled -----------------------------------------------------------
+  // A Roman building stood on ground cut and filled level for it — Caesar's forum cut
+  // into the Capitol's slope behind a wall of peperino 12 m high (Platner & Ashby,
+  // Forum Iulium, p. 227) — and the ground under the model is today's, smoothed. So
+  // each designed building's site is levelled into the ground everything stands on
+  // (DESIGN.md §7.7): the larger first, so a temple in a forum stands on the forum.
+  // Round each, a walk `SITE.walk` wide at its level; beyond it, where the ground is
+  // near the level it eases back over `SITE.ease`; where the site is cut deep into
+  // rising ground a retaining wall of tufa holds it back, and where it is built out
+  // over falling ground its own walls and podium stand on foundations to the ground.
+  const yearsOf = (id: string) => dates(m.places.get(id)).years
+  const retaining: { id: string; base: number; pts: number[][]; years: number[] }[] = []
+  const sites = monuments
+    .filter((mo) => mo.design && mo.clear !== false && mo.kind !== 'bridge')
+    .sort((a, b) => Math.abs(ringArea(b.rings[0])) - Math.abs(ringArea(a.rings[0])))
+  for (const mo of sites) {
+    const ring = mo.rings[0]
+    const d = mo.design!.d
+    const [x0, y0, x1, y1] = bounds(ring, SITE.walk + SITE.ease + g.texel)
+    // Its level: of the ground under it now (the larger sites round it already level).
+    const under: number[] = []
+    for (let y = y0; y <= y1; y += g.texel)
+      for (let x = x0; x <= x1; x += g.texel) if (inRing([x, y], ring)) under.push(at(x, y))
+    if (!under.length) under.push(...ring.map(([x, y]) => at(x, y)))
+    const lowUnder = Math.min(...under)
+    // Cut and fill balanced, unless the design says it was cut in (`low`) or built out
+    // as a terrace (`top`).
+    const level =
+      d.level === 'top'
+        ? Math.max(...under)
+        : d.level === 'low'
+          ? lowUnder
+          : under.reduce((a, b) => a + b, 0) / under.length
+    const before = new Float32Array(ground)
+    const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
+    const c1 = Math.min(g.width - 1, Math.ceil((x1 - g.x0) / g.texel))
+    const r0 = Math.max(0, Math.floor((g.y1 - y1) / g.texel))
+    const r1 = Math.min(g.height - 1, Math.ceil((g.y1 - y0) / g.texel))
+    for (let r = r0; r <= r1; r++)
+      for (let c = c0; c <= c1; c++) {
+        const p: Pt = [g.x0 + (c + 0.5) * g.texel, g.y1 - (r + 0.5) * g.texel]
+        const k = r * g.width + c
+        if (m.water[k] < 4) continue
+        const dist = inRing(p, ring) ? 0 : distToRing(p, ring)
+        if (dist <= SITE.walk) ground[k] = level
+        else if (dist < SITE.walk + SITE.ease) {
+          // Eased back where the ground is near the level; left where it is not, for the
+          // wall or the building's own foundations to meet it.
+          const off = before[k] - level
+          const near = Math.min(1, Math.max(0, 1 - (Math.abs(off) - 1) / 2))
+          const t = 1 - (dist - SITE.walk) / SITE.ease
+          ground[k] = before[k] - off * t * near
+        }
+      }
+    mo.base = level
+    mo.design!.drop = Math.max(mo.design!.drop, level - lowUnder)
+    // Retaining walls: along each edge, where the ground just beyond the walk stands
+    // more than `SITE.cut` over the level.
+    const outward = ringArea(ring) > 0 ? -1 : 1
+    let run: number[][] = []
+    const flush = () => {
+      if (run.length > 1)
+        retaining.push({ id: mo.id, base: round(level), pts: run, years: yearsOf(mo.id) })
+      run = []
+    }
+    for (let i = 0; i + 1 < ring.length; i++) {
+      const [a, b] = [ring[i], ring[i + 1]]
+      const L = Math.hypot(b[0] - a[0], b[1] - a[1])
+      if (L < 0.5) continue
+      const n: Pt = [((b[1] - a[1]) / L) * outward, (-(b[0] - a[0]) / L) * outward]
+      const steps = Math.max(1, Math.round(L / 3))
+      for (let k = 0; k <= steps; k++) {
+        const t = k / steps
+        const q: Pt = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]
+        const w: Pt = [q[0] + n[0] * (SITE.walk - 0.6), q[1] + n[1] * (SITE.walk - 0.6)]
+        const beyond = sample(
+          before,
+          q[0] + n[0] * (SITE.walk + 3),
+          q[1] + n[1] * (SITE.walk + 3),
+          level,
+        )
+        if (beyond - level > SITE.cut)
+          run.push([round(w[0]), round(w[1]), round(beyond - level + 0.7)])
+        else flush()
+      }
+      flush()
+    }
+  }
+
+  // Known buildings standing on one another in the same years are a mistake in their
+  // placing: the build says so.
+  for (let i = 0; i < monuments.length; i++)
+    for (let j = i + 1; j < monuments.length; j++) {
+      const [a, b] = [monuments[i], monuments[j]]
+      if (a.id === b.id || a.clear === false || b.clear === false) continue
+      const [ya, yb] = [dates(m.places.get(a.id)).years, dates(m.places.get(b.id)).years]
+      if (ya[1] < yb[0] || yb[1] < ya[0]) continue
+      const inter = polygonClipping.intersection([a.rings[0]], [b.rings[0]])
+      const area = inter.reduce((s, poly) => s + Math.abs(ringArea(poly[0] as Pt[])), 0)
+      const least = Math.min(Math.abs(ringArea(a.rings[0])), Math.abs(ringArea(b.rings[0])))
+      if (area > least * 0.04)
+        console.log(
+          `model: ${a.id} and ${b.id} overlap by ${Math.round((area / least) * 100)}%`,
+        )
+    }
+
+  const png = new Uint8Array(g.width * g.height * 4)
+  for (let i = 0; i < ground.length; i++) {
+    const cm = Math.max(0, Math.min(65535, Math.round(ground[i] * 100)))
+    png[i * 4] = cm >> 8
+    png[i * 4 + 1] = cm & 255
+    png[i * 4 + 3] = 255
+  }
+
   // --- the wall ------------------------------------------------------------------------
   // Every join but the river bank's, stepped every 8 m so it rides the ground.
   const wall = m.wall.map(({ a, b, known }) => {
@@ -448,9 +683,9 @@ export function bakeModel(m: ModelInput) {
   )
   // Monuments standing from before the window keep houses off their sites for good;
   // later ones take their site from the houses in the year they were begun.
-  const yearsOf = (id: string) => dates(m.places.get(id)).years
-  const early = monuments.filter((mo) => yearsOf(mo.id)[0] <= WINDOW[0])
-  const late = monuments.filter((mo) => yearsOf(mo.id)[0] > WINDOW[0])
+  const clearing = monuments.filter((mo) => mo.clear !== false)
+  const early = clearing.filter((mo) => yearsOf(mo.id)[0] <= WINDOW[0])
+  const late = clearing.filter((mo) => yearsOf(mo.id)[0] > WINDOW[0])
   const inside = (p: Pt, mo: (typeof monuments)[number]) =>
     inRing(p, mo.rings[0]) && !mo.rings.slice(1).some((h) => inRing(p, h))
   const monumentGrid = new SegmentGrid(
@@ -470,7 +705,7 @@ export function bakeModel(m: ModelInput) {
     )
   // Squares no house stands in: the Forum between its buildings, the Capitol's
   // precinct round its temple, and the Circus' arena (inside its outline already).
-  const open: { c: Pt; r: number }[] = []
+  const open: Pt[][] = []
   const forum = [
     'aedes-saturni',
     'aedes-castoris',
@@ -485,8 +720,79 @@ export function bakeModel(m: ModelInput) {
     .filter((p): p is Place => !!p)
     .map((p) => projection.forward(...p.location))
   const forumHull = forum.length > 2 ? hull(forum) : []
-  const capitol = m.places.get('aedes-iovis-capitolini')
-  if (capitol) open.push({ c: projection.forward(...capitol.location), r: 75 })
+  // Nobody lived on the Capitol's summits: "ne quis patricius in arce aut Capitolio
+  // habitaret" (Livy 6.20.13), and in practice both were sacred ground — the Area
+  // Capitolina, the Arx with its Auguraculum and Juno Moneta — and so was the Asylum
+  // between them, "inter duos lucos"; houses climbed the slopes only (Platner & Ashby,
+  // Arx and Asylum, p. 55; Tacitus, Histories 3.71).
+  // The Forum Boarium, the cattle market by the river: its limits are not known, so
+  // only the ground between its temples and the Ara Maxima is kept open (Platner &
+  // Ashby, Forum Boarium, pp. 224–225).
+  const boarium = [
+    'aedes-portuni',
+    'aedes-herculis-olivarii',
+    'ara-maxima-herculis',
+    'aedes-fortunae-foro-boario',
+    'aedes-matris-matutae',
+  ]
+    .map((id) => m.places.get(id))
+    .filter((p): p is Place => !!p)
+    .map((p) => projection.forward(...p.location))
+  if (boarium.length > 2) open.push(hull(boarium))
+  // Before a precinct's gateway the ground is kept open, so it does not open onto a
+  // house: 20 m out, a little wider than the gate.
+  for (const mo of monuments) {
+    const d = mo.design
+    const gate = (d?.d as Record<string, unknown> | undefined)?.gate as number | undefined
+    if (!d || !gate || !d.bearing) continue
+    const sides = ((d.d as Record<string, unknown>).sides as boolean[] | undefined) ?? [
+      true,
+      true,
+      true,
+      true,
+    ]
+    const f: Pt = [Math.sin(d.bearing), Math.cos(d.bearing)]
+    const r: Pt = [f[1], -f[0]]
+    // Each side left without a portico has the gate: front, right, back, left.
+    const outs: Pt[] = [f, r, [-f[0], -f[1]], [-r[0], -r[1]]]
+    const half = [d.size[1] / 2, d.size[0] / 2, d.size[1] / 2, d.size[0] / 2]
+    sides.forEach((has, i) => {
+      if (has) return
+      const n = outs[i]
+      const c: Pt = [
+        d.centre[0] + n[0] * (half[i] + 10),
+        d.centre[1] + n[1] * (half[i] + 10),
+      ]
+      open.push(rect(c[0], c[1], gate + 8, 20, Math.atan2(n[1], n[0]) - Math.PI / 2))
+    })
+  }
+  // Each is the hilltop round its point: out to `r`, as far as the ground stays
+  // within a few metres of the top, so the clearing follows the hill.
+  for (const [c, r] of CAPITOL_OPEN) {
+    const [cx, cy] = projection.forward(...c)
+    let top = -Infinity
+    for (let a = 0; a < 24; a++)
+      for (let d = 0; d <= r; d += 4)
+        top = Math.max(
+          top,
+          at(
+            cx + Math.cos((a / 24) * Math.PI * 2) * d,
+            cy + Math.sin((a / 24) * Math.PI * 2) * d,
+          ),
+        )
+    open.push(
+      Array.from({ length: 32 }, (_, k) => {
+        const a = (k / 32) * Math.PI * 2
+        let d = 12
+        while (
+          d < r &&
+          at(cx + Math.cos(a) * (d + 3), cy + Math.sin(a) * (d + 3)) > top - 9
+        )
+          d += 3
+        return [cx + Math.cos(a) * d, cy + Math.sin(a) * d] as Pt
+      }),
+    )
+  }
   /**
    * The point a building faces: a temple in a forum faces into it, one on the Forum's
    * edge faces the Forum, and the Capitol's temple faces south, down to the city.
@@ -517,7 +823,7 @@ export function bakeModel(m: ModelInput) {
   }
   const isOpen = (p: Pt) =>
     (forumHull.length && inRing(p, [...forumHull, forumHull[0]])) ||
-    open.some((o) => Math.hypot(p[0] - o.c[0], p[1] - o.c[1]) < o.r)
+    open.some((o) => inRing(p, [...o, o[0]]))
 
   // The aqueducts (aqueducts.ts): their arcades and walls keep houses and trees off
   // their line.
@@ -586,18 +892,15 @@ export function bakeModel(m: ModelInput) {
     streets: m.streets,
     pieces: excavatedPieces(),
     forum: forumHull,
-    squares: open.map(
-      (o) =>
-        Array.from({ length: 24 }, (_, k) => [
-          o.c[0] + Math.cos((k / 24) * Math.PI * 2) * o.r,
-          o.c[1] + Math.sin((k / 24) * Math.PI * 2) * o.r,
-        ]) as Pt[],
-    ),
+    squares: open,
     monuments: [...early.map((mo) => mo.rings[0]), ...aqueductBands],
     at,
     slopeAt,
     wet: (x, y) => sample(m.water, x, y, -1) < 6,
     toRiver: (x, y) => Math.min(...m.riverRings.map((r) => distToRing([x, y], r))),
+    palatine: ((p) => p && projection.forward(...p.location))(
+      m.places.get('mons-palatinus'),
+    ),
     richQuarters: RICH_QUARTERS.map((id) => m.places.get(id))
       .filter((p): p is Place => !!p)
       .map((p) => projection.forward(...p.location)),
@@ -699,6 +1002,14 @@ export function bakeModel(m: ModelInput) {
   }
   const soft = blur(shadow, g.width, g.height, 0.8)
 
+  for (const g of ASYLUM_GROVES) {
+    const [gx, gy] = projection.forward(...g)
+    for (let k = 0; k < 9; k++) {
+      const a = k * 2.4
+      const rr = 3 + (k % 3) * 5
+      courtyardTrees.push([gx + Math.cos(a) * rr, gy + Math.sin(a) * rr])
+    }
+  }
   const fab = new Float32Array(fabric)
   for (const [x, y] of courtyardTrees)
     trees.push(round(x), round(y), round(2.5 + rand() * 1.5), round(at(x, y)))
@@ -721,6 +1032,12 @@ export function bakeModel(m: ModelInput) {
         faces: facing(mo).map((v) => round(v)),
         ...dates(m.places.get(mo.id)),
         stone: STONE_OF[mo.id]?.map(({ from, stone }) => ({ from, stone })),
+        design: mo.design && {
+          ...placedDesign(mo.design, facing(mo)),
+          ...mo.extra,
+          // The water's surface over its ground, for what stands in the river.
+          water: round(waterLevel - mo.base),
+        },
       })),
       // The open squares, paved: the Forum between its buildings.
       squares: forumHull.length
@@ -734,13 +1051,16 @@ export function bakeModel(m: ModelInput) {
         : [],
       wall,
       gates,
+      // The retaining walls round the levelled sites: each a line along its edge at the
+      // site's level, with the wall's height at each point, and its monument's years.
+      retaining,
       // The aqueducts, laid out (aqueducts.ts): each channel's years, bottom to top,
       // and the course in runs of arcade, wall and shafts.
       aqueducts: aqueducts.map(({ course, runs }) => ({
         id: course.id,
         size: course.size,
         channels: course.channels.map((ch) => {
-          const d = dates(m.places.get(ch.id))
+          const { burnt: _, ...d } = dates(m.places.get(ch.id))
           const from = Math.max(d.years[0], ch.from ?? -Infinity)
           return { id: ch.id, h: ch.h, years: [from, d.years[1]], unfinished: d.unfinished }
         }),
@@ -769,7 +1089,18 @@ export function bakeModel(m: ModelInput) {
         .map((ring) => ({ id: course.id, ring })),
     ),
   ]
-  return { png, waterLevel, shadow: soft, drawn, mains: city.mains }
+  // The footprints the streets are kept off (plate.ts): the known buildings, but not
+  // the bridges and the island they cross, nor the open squares.
+  const covered = monuments
+    .filter(
+      (mo) =>
+        mo.clear !== false &&
+        mo.kind !== 'bridge' &&
+        mo.design?.d.model !== 'square' &&
+        mo.design?.d.model !== 'quay',
+    )
+    .map((mo) => mo.rings[0])
+  return { png, waterLevel, shadow: soft, drawn, mains: city.mains, covered }
 }
 
 /** ground.png: heights in centimetres, high byte red, low byte green. */
@@ -790,17 +1121,92 @@ export async function writeGround(
  * which the model shows part-built. Astronomical years.
  */
 function dates(p: Place | undefined) {
-  if (!p) return { years: [-10000, 10000], unfinished: null }
+  if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false }
   const weak = p.condition.filter((c) => c.value !== 'standing')
   return {
     years: [p.from.year, p.to.year],
     unfinished: weak.length
       ? [Math.min(...weak.map((c) => c.from.year)), Math.max(...weak.map((c) => c.to.year))]
       : null,
+    // A shell left by fire, not works in progress, when fire is all it suffered.
+    burnt: weak.length > 0 && weak.every((c) => c.value === 'burnt'),
+  }
+}
+
+/**
+ * A design as the engine takes it (ModelLayer `Monument.design`): its own fields, and
+ * where it stands — centre and size in plane metres, and the way its front faces,
+ * radians clockwise from north: the design's, or its axis towards the point it
+ * faces (`facing`).
+ */
+function placedDesign(
+  p: { d: Design; centre: Pt; size: Pt; bearing: number | null; axis: Pt; drop: number },
+  faces: Pt,
+) {
+  const {
+    why: _,
+    at: __,
+    size: ___,
+    bearing: ____,
+    atLocal: _____,
+    level: ______,
+    ...fields
+  } = p.d
+  let bearing = p.bearing
+  if (bearing === null) {
+    const toward =
+      (faces[0] - p.centre[0]) * p.axis[0] + (faces[1] - p.centre[1]) * p.axis[1]
+    const s = toward < 0 ? -1 : 1
+    bearing = Math.atan2(p.axis[0] * s, p.axis[1] * s)
+  }
+  return {
+    ...fields,
+    centre: p.centre.map((v) => round(v)),
+    size: p.size.map((v) => round(v)),
+    bearing: Math.round(bearing * 1e4) / 1e4,
+    // How far its foundations run below its ground to the lowest ground under it.
+    drop: round(p.drop),
   }
 }
 
 // --- geometry helpers ---------------------------------------------------------------------
+
+function ringArea(r: Pt[]) {
+  let s = 0
+  for (let i = 0; i + 1 < r.length; i++) s += r[i][0] * r[i + 1][1] - r[i + 1][0] * r[i][1]
+  return s / 2
+}
+
+/** The smallest rectangle round a ring, by its edges' directions: centre, its long axis (a unit vector), and its sides. */
+function orientedBox(r: Pt[]) {
+  let best = { area: Infinity, cx: 0, cy: 0, axis: [0, 1] as Pt, long: 0, short: 0 }
+  for (let i = 0; i + 1 < r.length; i++) {
+    const a = Math.atan2(r[i + 1][1] - r[i][1], r[i + 1][0] - r[i][0])
+    const [c, s] = [Math.cos(a), Math.sin(a)]
+    const us = r.map(([x, y]) => x * c + y * s)
+    const vs = r.map(([x, y]) => -x * s + y * c)
+    const [u0, u1, v0, v1] = [
+      Math.min(...us),
+      Math.max(...us),
+      Math.min(...vs),
+      Math.max(...vs),
+    ]
+    const area = (u1 - u0) * (v1 - v0)
+    if (area < best.area) {
+      const [mu, mv] = [(u0 + u1) / 2, (v0 + v1) / 2]
+      const alongU = u1 - u0 >= v1 - v0
+      best = {
+        area,
+        cx: mu * c - mv * s,
+        cy: mu * s + mv * c,
+        axis: alongU ? [c, s] : [-s, c],
+        long: Math.max(u1 - u0, v1 - v0),
+        short: Math.min(u1 - u0, v1 - v0),
+      }
+    }
+  }
+  return best
+}
 
 const round = (v: number, k = 10) => Math.round(v * k) / k
 
@@ -812,17 +1218,6 @@ function rect(cx: number, cy: number, w: number, d: number, angle: number): Pt[]
     [w / 2, d / 2],
     [-w / 2, d / 2],
   ].map(([x, y]) => [cx + x * c - y * s, cy + x * s + y * c])
-  return [...pts, pts[0]]
-}
-
-/** A theatre's plan: a half-circle of `r` behind a straight stage on its east side. */
-function theatre(cx: number, cy: number, r: number, stage: number): Pt[] {
-  const pts: Pt[] = []
-  for (let k = 0; k <= 24; k++) {
-    const a = Math.PI / 2 + (Math.PI * k) / 24
-    pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r])
-  }
-  pts.push([cx + 12, cy - stage / 2], [cx + 12, cy + stage / 2])
   return [...pts, pts[0]]
 }
 

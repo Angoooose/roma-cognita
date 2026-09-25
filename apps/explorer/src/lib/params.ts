@@ -9,12 +9,14 @@ import { parseYear } from './year.ts'
  *   ?year=63BCE                                 the year shown (default: 63 BCE)
  *   ?bare=1                                     no timeline or inspector
  *   ?person=dprr:2072                           the person panel open on someone (peopleStore.ts)
+ *   ?heading=<deg>                              for screenshots: the camera turned from north
  */
 export function readParams() {
   const params = new URLSearchParams(location.search)
   const [lon, lat] = (params.get('at') ?? '12.5,41.9').split(',').map(Number)
   const km = Number(params.get('km') ?? 1400)
   const pitch = Number(params.get('pitch') ?? 0)
+  MapCamera.heading = Number(params.get('heading') ?? 0)
   return {
     camera: MapCamera.fromLonLat(lon, lat, km, pitch),
     forceWebGL: params.has('webgl'),

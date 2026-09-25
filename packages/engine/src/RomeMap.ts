@@ -77,6 +77,7 @@ export class RomeMap {
     map.view.state.distance = opts.camera.distance
     map.view.apply()
     if (map.plan.ground) map.model.buildGround(map.plan.ground)
+    if (map.plan.rect) map.terrain.setFineRect(map.plan.rect)
     // Rome's monuments hang on the model's ground, and on their roofs while it stands.
     const anchorOf = map.places.anchorOf
     map.places.anchorOf = (p) =>

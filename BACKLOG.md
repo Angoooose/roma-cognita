@@ -37,7 +37,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 ### Smooth modern cuts out of the terrain
 
 - **Decided:** 2026-09-23, deferred.
-- The canal corrections remove the *water*, but the elevation data (Copernicus
+- The canal corrections remove the _water_, but the elevation data (Copernicus
   GLO-30 via Mapterhorn) still records the dug channel and its embankments. The
   Suez Canal shows as a long straight dip with banks either side, and the
   Corinth Canal as a deep cut through the isthmus: visible in the hillshade, and
@@ -97,7 +97,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   Cilician and Carian free cities. Each needs its Pleiades id checked.
 - **Governors of 30–27.** DPRR follows Broughton, whose second volume ends in
   31, so the people layer is nearly empty for 30–27 and the build prints "no
-  governor attested" for most provinces. Thomasson's *Laterculi Praesidum* and
+  governor attested" for most provinces. Thomasson's _Laterculi Praesidum_ and
   PIR² would fill it, under their own terms.
 - **Occupation is drawn nowhere.** The extension added Sextus Pompeius in the
   islands, Labienus and Pacorus in 40, and Antony in Armenia; the hatching in
@@ -138,30 +138,48 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ### The model of Rome, left for later
 
-- **Built:** the museum model (DESIGN §7.7): 40 known buildings, ~7,800
-  generated houses, the wall and gates, trees, baked shadows, and the smoothed
-  board with the Tiber and paved streets.
-- **Monuments not yet in the model.** Researched and rejected, or with no outline;
-  they need a modern source or a surveyed outline:
-  - the Largo Argentina and Forum Boarium temples, S. Omobono and the temple of
-    Bellona, identified after Platner & Ashby;
-  - the Curia of Pompey and the House of Augustus;
-  - the Tabularium, the House of the Vestals and the tombs, which have points
-    only;
-  - the Curia Hostilia and the Basilica Sempronia.
-- **Massing is by type.** Temples, basilicas and the rest take typical heights.
-  Platner & Ashby's dimensions (column heights, the Circus's tiers) could set
-  some of them.
-- **The generated city is uniform.** Quarters differed: the Subura crowded with
-  tall blocks, the Palatine with large houses and gardens, the Aventine more
-  open. The density and heights could follow them.
+- **Built:** the museum model (DESIGN §7.7): every known building built as itself
+  from its sourced design (about 100 of them, through 27 BCE), ~15,500 generated
+  houses, the wall and gates, trees, baked shadows, and the smoothed board with the
+  Tiber and paved streets.
+- **Researched and left out** (September 2026), so the next pass need not repeat
+  the search:
+  - the Pantheon: begun in 27 BCE, finished in 25; at most a building site in the
+    window, facing north (La Rocca), its first plan disputed;
+  - the Amphitheatre of Statilius Taurus (30/29 BCE), the Porticus Octavia of Cn.
+    Octavius (168 BCE, restored in 33), the Villa Publica and the Navalia: their
+    sites are not known;
+  - the Actian arch of 29 BCE beside the Divus Iulius: its existence is doubted
+    (Nedergaard; Gurval) and no dimensions are published;
+  - Janus Geminus (closed in 29 BCE), the Puteal Libonis, Felicitas: sites or forms
+    unknown; Jupiter Feretrius (restored c. 31 BCE): under 5 m long, its site in
+    the Area Capitolina unknown; Mens, Venus Erycina and Ops on the Capitol: sites
+    unknown;
+  - the Basilica Opimia: its site is disputed (north or south of Concord);
+  - the Porticus Minucia Vetus: its site is disputed (round the Largo Argentina,
+    or east of it);
+  - the Porticus Philippi round Hercules of the Muses (c. 33–29 BCE): its size is
+    not published; the temple on its podium is drawn;
+  - optional and of low confidence: Victoria Virgo's aedicula, Neptune, Mars and
+    Castor in circo, the Lares Permarini, the lost round temple of Hercules north of
+    S. Maria in Cosmedin, the Temple of Sol in the Circus's seats, the Horti
+    Maecenatis (by c. 35 BCE, extent conjectural).
+- **Forms that are typical, not known.** Most temples on the Aventine, the Quirinal
+  and the Esquiline are the typical temple (DESIGN §7.7), and some sizes are
+  conjectural (each design's note says which). The Marble Plan's fragments, read in
+  the Stanford edition, could give several of them.
+- **Where some sites are disputed**, the model follows one reading and the record
+  gives the others: Juno Moneta (Arata's site), Tellus (Palombi's), Victoria
+  (Pensabene's, on an unnamed OpenStreetMap outline to be checked against his plan),
+  Spes and Juno Sospita (which is which), the Theatre of Marcellus's orchestra.
+- **The generated city is uniform elsewhere.** The Palatine now has its great
+  houses (DESIGN §7.7); the Subura crowded with tall blocks and the Aventine more
+  open could follow.
 - **The wall's reconstructed stretches** are straight joins; Lanciani's plan
-  (public domain) would give the curves.
+  (public domain) would give the curves. Its gates are plain towers.
 - **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
   line do not meet at its edge, and the Itiner-e roads stop there.
 - **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),
   the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
   Latina (no Itiner-e line) are not drawn.
-- **The timeline window is 68–43 BCE.** The Temple of the Deified Julius, Apollo
-  Palatinus and the Mausoleum of Augustus are dated but fall after it.
 - **The legend** has no entry for the model.
