@@ -759,15 +759,32 @@ known and what is generated are kept apart:
     "casually built upon … rather than regularly planned" (Livy 5.55), with "narrow,
     twisting lanes" (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m
     wide (Poehler 2017).
-  - **Lots round each block** (Vanegas et al. 2012): a strip of one depth along
-    every street edge, mitred at the corners, cut into lots along the street, so
-    every lot fronts a street and the buildings share their walls. A short edge
-    between two corners becomes a hipped end. In the crowded quarters a ring of
-    back buildings stands behind the street ranges across a 2.5 m light-well, and
-    in a very big block a second, round a small court. This is what the Marble
-    Plan shows: rows of shops on the streets and flats round small courtyards,
-    built wall to wall; Nero's rule that each building have its own walls
-    (_Annals_ 15.43) implies shared walls before.
+  - **Plots from the street to the middle of the block** (decided 2026-09-24).
+    Every 2 m of a block belongs to the street frontage nearest it, so a plot runs
+    from its street back to the middle of the block, up to 26 m, where it meets
+    the plots behind: the block is split between its streets as a straight
+    skeleton splits it (Vanegas et al. 2012), however ragged its outline, and is
+    built solid. Where plots meet at the middle or cross at a cramped corner, the
+    one laid first keeps the ground and the other is cut back.
+    - **A corner plot is one plot.** At a corner turning between 55° and 125° it
+      fronts both streets and belongs to the one that matters more (a main or
+      recorded street), or the longer frontage, as a corner plot belongs to one
+      street (Conzen's town-plan analysis; Emilien et al. 2012). Sharper or more
+      open corners are left to the plots either side.
+    - **Plots come in series.** Along a street a run of two to seven plots is of
+      one width, now and then a double one, then another run begins: plots laid
+      out together, as Conzen found them.
+    - **Courts, not rings.** On a deep plot a block of flats is a range on the
+      street 10–14 m deep, a court of 3–5.5 m, and a range behind it a storey
+      lower; the court falls at a different depth building by building, and a
+      quarter of the buildings, every corner and every plot too shallow for it
+      fill their plot. This is what the Marble Plan shows: rows of shops on the
+      streets and flats round small courtyards, built wall to wall; Nero's rule
+      that each building have its own walls (_Annals_ 15.43) implies shared walls
+      before.
+    - In the quarters of the rich, a plot of flats is built only 14 m deep with a
+      yard behind, and an atrium house takes the front of its plot, as deep as
+      1.3 times its width (18–32 m), its garden behind.
   - **Buildings, not lots.** A run of one to five neighbouring lots of flats along
     a street is one building, as the blocks of flats on the Marble Plan take several
     shops' frontage, and it may run on round a gentle bend in the street (up to
@@ -778,18 +795,16 @@ known and what is generated are kept apart:
     - Heights follow a smooth pattern across the city, some 200 m across, within
       the quarter's range: a stretch of street is of a height, and the change comes
       between stretches. A building on a main or recorded street stands a storey
-      higher, a range behind the street ones a storey lower, and a quarter of the
+      higher, its range behind its court a storey lower, and a quarter of the
       buildings step a storey up or down from the pattern.
-    - Some buildings stop short of the strip's back line, never at a corner;
     - a lone narrow deep lot sometimes turns its gable to the street;
     - one building in sixteen has a flat terrace;
     - an atrium house's ranges fall inward to its court, as a compluviate atrium's
       roof did (Vitruvius 6.3).
     - Nothing narrower than 4 m or shallower than 6 m (a room and its walls) is
-      built, no lot with a corner sharper than 25°, and no wedge at a short corner
-      edge smaller than 40 m²: those are left as yard or street. A strip reaches in
-      from the street to the middle of its block; an atrium house needs a lot 17 m
-      across for ranges round a court, and on a smaller one is a single house.
+      built, and no lot with a corner sharper than 25°: those are left as yard or
+      street. An atrium house needs a lot 17 m across for ranges round a court, and
+      on a smaller one is a single house.
 
     A storey is 3 m over a 3.8 m ground floor of shops. Walls are washed in a
     narrow range with a few ochres and reds, and the tiles are weathered, lighter
