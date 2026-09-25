@@ -458,9 +458,44 @@ export function bakeModel(m: ModelInput) {
       d.at || d.size || !largest ? [ring] : own.find((mo) => mo.rings[0] === largest)!.rings
     const kind = own[0]?.kind ?? p.kind
     for (const mo of own) monuments.splice(monuments.indexOf(mo), 1)
-    // The island's own shore, for its embankment (the plan's land is the island).
+    // The island's own shore, for its embankment: the hole in the river the island is
+    // (OpenStreetMap's outline of it is the modern embankments, wider than its land).
     const shore =
-      kind === 'island' ? m.outlines.find((o) => o.id === id)?.polys[0]?.[0] : undefined
+      kind === 'island'
+        ? m.riverRings
+            .filter((r) => inRing(centre, r))
+            .sort((a, b) => Math.abs(ringArea(a)) - Math.abs(ringArea(b)))[0]
+        : undefined
+    // A bridge runs from bank to bank along its axis: walked out from its centre until
+    // the ground is dry, so it meets the ground at both ends whatever its design's
+    // length (the river's line here is OpenStreetMap's, not the Republic's).
+    let span: { a: Pt; b: Pt } | null = null
+    if (kind === 'bridge') {
+      // The water along its axis, 0.5 m at a time out to 250 m either side; runs of it
+      // joined across dry gaps under 45 m (a pier, an islet in the river's line, or its line broken under a
+      // bridge); the run nearest its centre is what it crosses.
+      const pt = (t: number): Pt => [centre[0] + axis[0] * t, centre[1] + axis[1] * t]
+      const runs: [number, number][] = []
+      for (let t = -250; t <= 250; t += 0.5) {
+        if (sample(m.water, ...pt(t), 99) >= 0) continue
+        const last = runs[runs.length - 1]
+        if (last && t - last[1] < 45) last[1] = t
+        else runs.push([t, t])
+      }
+      const gap = (r: [number, number]) =>
+        r[0] <= 0 && r[1] >= 0 ? 0 : Math.min(Math.abs(r[0]), Math.abs(r[1]))
+      const run = runs.sort((a, b) => gap(a) - gap(b))[0] ?? [-size[1] / 2, size[1] / 2]
+      span = { a: pt(run[0]), b: pt(run[1]) }
+      const L = Math.hypot(span.b[0] - span.a[0], span.b[1] - span.a[1])
+      const mid: Pt = [(span.a[0] + span.b[0]) / 2, (span.a[1] + span.b[1]) / 2]
+      if (Math.abs(L - size[1]) / size[1] > 0.25)
+        console.log(
+          `model: ${id}: the water here is ${L.toFixed(0)} m across, its design ${size[1].toFixed(0)} m; its arches are scaled to it`,
+        )
+      centre[0] = mid[0]
+      centre[1] = mid[1]
+      size = [size[0], L]
+    }
     // A bridge stands on the water; the rest on the lowest ground under them, or, where
     // the design says it is a terrace built out on a slope, its highest or middle
     // ground, its foundations running down to the lowest.
@@ -487,23 +522,26 @@ export function bakeModel(m: ModelInput) {
       clear: kind !== 'island',
       extra: {
         ...(shore && {
-          outline: shore.map(([x, y]) => [
-            round(x),
-            round(y),
-            round(at(x, y) - (waterLevel - 2)),
-          ]),
+          // Each shore point with the island's ground a few metres inland, over its base.
+          outline: shore.map(([x, y]) => {
+            const [dx, dy] = [centre[0] - x, centre[1] - y]
+            const l = Math.hypot(dx, dy) || 1
+            return [
+              round(x),
+              round(y),
+              round(at(x + (dx / l) * 5, y + (dy / l) * 5) - (waterLevel - 2)),
+            ]
+          }),
         }),
-        // A bridge's banks: the ground a few metres beyond each end, over its base.
-        ...(kind === 'bridge' && {
-          banks: [-1, 1].map((s) =>
-            round(
-              at(
-                centre[0] + axis[0] * s * (size![1] / 2 + 6),
-                centre[1] + axis[1] * s * (size![1] / 2 + 6),
-              ) -
-                (waterLevel - 2),
-            ),
-          ),
+        // A bridge's banks: the ground a few metres onto the land at each end, over its
+        // base, where its deck comes down to meet it.
+        ...(span && {
+          banks: [-1, 1].map((s) => {
+            const e = s < 0 ? span!.a : span!.b
+            return round(
+              at(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8) - (waterLevel - 2),
+            )
+          }),
         }),
       },
     })

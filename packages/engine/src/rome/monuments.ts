@@ -685,99 +685,161 @@ interface Bridge {
 
 const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   const wl = d.water ?? 2
-  const banks = d.banks ?? [wl + 8, wl + 8]
-  // Along the bridge in a frame turned so its u runs from bank to bank.
+  const [hA, hB] = d.banks ?? [wl + 8, wl + 8]
+  // Along the bridge in a frame turned so its u runs from bank to bank, -l/2 to l/2.
   const S = F.sub(0, 0, Math.PI / 2)
-  const top = Math.max(wl + 6, ...banks) + 0.3
-  const deckCol = d.timber ? PART.timber : C.paving
   const wall = d.timber ? PART.timber : face
-  if (d.timber) {
-    // Bents of piles across the stream, a deck of planks, a rail.
-    const n = d.spans.length
-    for (let k = 0; k <= n; k++) {
-      const u = -l / 2 + (l * k) / n
-      for (const v of [-w / 2 + 0.4, 0, w / 2 - 0.4])
-        S.drum(u, v, 0.25, 0.25, wl - 3, top - 0.6, 5, PART.wood, null)
-      S.box(u - 0.3, u + 0.3, -w / 2, w / 2, top - 1.1, top - 0.6, PART.wood)
+  const deckCol = d.timber ? PART.timber : C.paving
+  const land = 7
+  // The arches, scaled from the design's spans to the water here, bank to bank.
+  const total = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
+  const k = l / total
+  const spans = d.spans.map((x) => x * k)
+  const piers = d.piers.map((x) => x * k)
+  const rise = d.rise ?? 0.5
+  // The deck: from the ground at one end to the ground at the other, lifted over the
+  // stream to clear its arches, and eased at the banks.
+  const clear = d.timber ? 4.5 : Math.max(...spans) * rise + 2.2
+  const deck = (u: number) => {
+    const t = Math.min(1, Math.max(0, (u + l / 2) / l))
+    const ends = hA + (hB - hA) * t
+    const need = wl + clear
+    const off = Math.max(0, need - ends)
+    // How far out over the water the lift reaches, full across the middle.
+    const e = Math.min(1, Math.min(u + l / 2 + land, l / 2 + land - u) / (l * 0.3 + land))
+    return ends + off * (e * e * (3 - 2 * e))
+  }
+  const step = 2
+  const us: number[] = []
+  for (let u = -l / 2 - land; u < l / 2 + land; u += step) us.push(u)
+  us.push(l / 2 + land)
+  // The deck's paving, its two faces down to where the arches or piers take over,
+  // and its parapets.
+  for (let i = 0; i + 1 < us.length; i++) {
+    const [a, b] = [us[i], us[i + 1]]
+    const [za, zb] = [deck(a), deck(b)]
+    S.quad([a, -w / 2, za], [b, -w / 2, zb], [b, w / 2, zb], [a, w / 2, za], deckCol)
+    for (const s of [-1, 1]) {
+      const v = (s * w) / 2
+      S.quad([a, v, za - 1.2], [b, v, zb - 1.2], [b, v, zb], [a, v, za], wall)
+      const pv = v - s * 0.25
+      S.quad([a, pv, za], [b, pv, zb], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
+      S.quad([a, v, za + 1.1], [b, v, zb + 1.1], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
     }
-    S.box(-l / 2 - 3, l / 2 + 3, -w / 2, w / 2, top - 0.6, top, PART.wood, deckCol)
-    for (const s of [-1, 1])
-      S.box(
-        -l / 2 - 3,
-        l / 2 + 3,
-        (s * w) / 2 - 0.15,
-        (s * w) / 2 + 0.15,
-        top,
-        top + 1,
-        PART.wood,
-      )
+  }
+  if (d.timber) {
+    // Bents of piles across the stream under the deck, with a cross beam on each.
+    const n = spans.length
+    for (let j = 0; j <= n; j++) {
+      const u = -l / 2 + (l * j) / n
+      const z = deck(u) - 0.5
+      for (const v of [-w / 2 + 0.4, 0, w / 2 - 0.4])
+        S.drum(u, v, 0.25, 0.25, wl - 3, z, 5, PART.wood, null)
+      S.box(u - 0.3, u + 0.3, -w / 2, w / 2, z - 0.5, z, PART.wood)
+    }
     return
   }
-  const total = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
-  const rise = d.rise ?? 0.5
-  const arch = (sa: number, sb: number, crown: number, r = rise) => {
-    const span = sb - sa
-    S.arch(
-      sa,
-      sb,
-      -w / 2,
-      w,
-      Math.max(wl - 1, crown - span * r),
-      crown,
-      top - 1.2,
-      wall,
-      PART.dark,
-    )
+  // Solid masonry from the ground up to the deck at each end, onto the land.
+  const solid = (u0: number, u1: number, z0: number) => {
+    const n = Math.max(1, Math.ceil((u1 - u0) / step))
+    for (let j = 0; j < n; j++) {
+      const [a, b] = [u0 + ((u1 - u0) * j) / n, u0 + ((u1 - u0) * (j + 1)) / n]
+      const [za, zb] = [deck(a) - 1.2, deck(b) - 1.2]
+      for (const s of [-1, 1])
+        S.quad(
+          [a, (s * w) / 2, z0],
+          [b, (s * w) / 2, z0],
+          [b, (s * w) / 2, zb],
+          [a, (s * w) / 2, za],
+          wall,
+        )
+    }
+    for (const [u, z] of [
+      [u0, deck(u0) - 1.2],
+      [u1, deck(u1) - 1.2],
+    ])
+      S.quad([u, -w / 2, z0], [u, w / 2, z0], [u, w / 2, z], [u, -w / 2, z], wall)
   }
-  // The abutments run into the banks.
-  S.box(-l / 2 - 6, -total / 2, -w / 2, w / 2, wl - 4, top - 1.2, wall)
-  S.box(total / 2, l / 2 + 6, -w / 2, w / 2, wl - 4, top - 1.2, wall)
-  let u = -total / 2
-  d.spans.forEach((span, i) => {
-    // The crowns rise towards the middle of the stream.
-    const crown =
-      top - 1.6 - (d.spans.length > 1 ? Math.abs(i - (d.spans.length - 1) / 2) * 1.2 : 0)
-    arch(u, u + span, crown)
+  solid(-l / 2 - land, -l / 2, Math.min(hA, wl) - 3)
+  solid(l / 2, l / 2 + land, Math.min(hB, wl) - 3)
+  // An arch from sa to sb: its ring springing over the water, its spandrels up to the
+  // deck on both faces, its soffit dark.
+  const arch = (sa: number, sb: number, r0: number) => {
+    const N = 10
+    const r = (sb - sa) / 2
+    const um = (sa + sb) / 2
+    const crown = deck(um) - 1.6
+    const spring = Math.max(wl - 0.8, crown - (sb - sa) * r0)
+    const pts = Array.from({ length: N + 1 }, (_, j) => {
+      const a = Math.PI * (1 - j / N)
+      return [um + Math.cos(a) * r, spring + Math.sin(a) * (crown - spring)] as Pt
+    })
+    for (const s of [-1, 1]) {
+      const v = (s * w) / 2
+      for (let j = 0; j < N; j++) {
+        const [p, q] = [pts[j], pts[j + 1]]
+        S.quad(
+          [p[0], v, p[1]],
+          [q[0], v, q[1]],
+          [q[0], v, deck(q[0]) - 1.2],
+          [p[0], v, deck(p[0]) - 1.2],
+          wall,
+        )
+      }
+    }
+    for (let j = 0; j < N; j++) {
+      const [p, q] = [pts[j], pts[j + 1]]
+      S.quad(
+        [p[0], -w / 2, p[1]],
+        [q[0], -w / 2, q[1]],
+        [q[0], w / 2, q[1]],
+        [p[0], w / 2, p[1]],
+        PART.dark,
+      )
+    }
+    return spring
+  }
+  let u = -l / 2
+  spans.forEach((span, i) => {
+    arch(u, u + span, rise)
     u += span
-    const p = d.piers[i]
+    const p = piers[i]
     if (p === undefined) return
     const [pa, pb] = [u, u + p]
+    const m = (pa + pb) / 2
+    // The pier up to the deck, a flood arch through it where it had one, and pointed
+    // cutwaters on both faces to above the floods.
     if (d.flood) {
-      const fs = Math.min(d.flood, p * 0.6)
-      const m = (pa + pb) / 2
-      S.box(pa, m - fs / 2, -w / 2, w / 2, wl - 4, top - 1.2, wall)
-      S.box(m + fs / 2, pb, -w / 2, w / 2, wl - 4, top - 1.2, wall)
-      S.box(m - fs / 2, m + fs / 2, -w / 2, w / 2, wl - 4, wl + 2, wall)
-      arch(m - fs / 2, m + fs / 2, wl + 2 + fs * 0.5, 0.5)
-    } else S.box(pa, pb, -w / 2, w / 2, wl - 4, top - 1.2, wall)
-    // Pointed cutwaters on both faces of the pier, up to above the floods.
+      const fs = Math.min(d.flood * k, p * 0.6)
+      solid(pa, m - fs / 2, wl - 4)
+      solid(m + fs / 2, pb, wl - 4)
+      arch(m - fs / 2, m + fs / 2, 0.5)
+    } else solid(pa, pb, wl - 4)
     for (const s of [-1, 1]) {
       const v0 = (s * w) / 2
       S.prism(
         [
           [pa, v0],
           [pb, v0],
-          [(pa + pb) / 2, v0 + s * p * 0.75],
+          [m, v0 + s * p * 0.75],
         ],
         wl - 4,
         wl + 3,
         wall,
       )
+      S.prism(
+        [
+          [pa, v0],
+          [pb, v0],
+          [m, v0 + s * p * 0.75],
+        ],
+        wl + 3,
+        wl + 3.01,
+        wall,
+      )
     }
     u = pb
   })
-  // The deck and its parapets.
-  S.box(-l / 2 - 6, l / 2 + 6, -w / 2, w / 2, top - 1.2, top, wall, deckCol)
-  for (const s of [-1, 1])
-    S.box(
-      -l / 2 - 6,
-      l / 2 + 6,
-      (s * w) / 2 - (s > 0 ? 0.5 : 0),
-      (s * w) / 2 + (s < 0 ? 0.5 : 0),
-      top,
-      top + 1.1,
-      wall,
-    )
 }
 
 /** An honorary arch: `bays` arched passages, piers either side, an attic, and a group on top. */
@@ -1342,56 +1404,69 @@ interface Island {
   ship?: boolean
 }
 
-const island: Build<Design & Island> = (F, d, w, l) => {
+const island: Build<Design & Island> = (F, d) => {
   if (!d.ship || !d.outline) return
   const wl = (d.water as number | undefined) ?? 2
   const trav = C.travertine
-  const pts = d.outline.map(
+  const ring = d.outline.map(
     ([x, y, g]) => [...F.local(x, y), g] as [number, number, number],
   )
-  for (let i = 0; i + 1 < pts.length; i++) {
-    const [a, b] = [pts[i], pts[i + 1]]
-    const top = Math.max(wl + 2.5, Math.max(a[2], b[2]) + 0.7)
+  if (ring.length < 4) return
+  // Its winding, so each wall's inside is towards the island.
+  let area = 0
+  for (let i = 0; i + 1 < ring.length; i++)
+    area += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
+  const inward = area > 0 ? 1 : -1
+  // The ship's end: its tip downstream (the frame's front), the wall rising towards it
+  // as a ship's sides rise to its stern, over its last `SHEER` metres.
+  const SHEER = 40
+  const tip = ring.reduce((m, p) => (p[1] > m[1] ? p : m), ring[0])
+  const top = (p: [number, number, number]) => {
+    const d = Math.hypot(p[0] - tip[0], p[1] - tip[1])
+    return Math.max(wl + 2.2, p[2] + 0.6) + 2.2 * Math.max(0, 1 - d / SHEER) ** 2
+  }
+  const T = 1.4
+  for (let i = 0; i + 1 < ring.length; i++) {
+    const [a, b] = [ring[i], ring[i + 1]]
+    const L = Math.hypot(b[0] - a[0], b[1] - a[1])
+    if (L < 0.05) continue
+    const n = [(-(b[1] - a[1]) / L) * inward, ((b[0] - a[0]) / L) * inward]
+    const [ta, tb] = [top(a), top(b)]
+    const ai = [a[0] + n[0] * T, a[1] + n[1] * T]
+    const bi = [b[0] + n[0] * T, b[1] + n[1] * T]
+    // The face to the river, its coping, and its back down into the island's ground.
     F.quad(
       [a[0], a[1], wl - 1.5],
       [b[0], b[1], wl - 1.5],
-      [b[0], b[1], top],
-      [a[0], a[1], top],
+      [b[0], b[1], tb],
+      [a[0], a[1], ta],
       trav,
     )
+    F.quad([a[0], a[1], ta], [b[0], b[1], tb], [bi[0], bi[1], tb], [ai[0], ai[1], ta], trav)
     F.quad(
-      [a[0], a[1], top],
-      [b[0], b[1], top],
-      [b[0] * 0.995, b[1] * 0.995, top],
-      [a[0] * 0.995, a[1] * 0.995, top],
+      [ai[0], ai[1], ta],
+      [bi[0], bi[1], tb],
+      [bi[0], bi[1], b[2] - 1],
+      [ai[0], ai[1], a[2] - 1],
       trav,
     )
   }
-  // The prow: a pointed bow of travertine standing out from the island's tip, with the
-  // relief of Aesculapius' staff and serpent on its side (drawn as a dark panel).
-  const tip = pts.reduce((m, p) => (p[1] > m[1] ? p : m), pts[0])
-  const P = F.sub(tip[0], tip[1] - 4)
-  const top = Math.max(wl + 3.5, tip[2] + 1.5)
-  P.prism(
-    [
-      [-w / 2, -l / 2],
-      [w / 2, -l / 2],
-      [w / 4, l / 4],
-      [0, l / 2],
-      [-w / 4, l / 4],
-    ],
-    wl - 1.5,
-    top,
-    trav,
-  )
-  for (const s of [-1, 1])
-    P.quad(
-      [s * w * 0.36, -l * 0.1, top - 2.6],
-      [s * w * 0.3, l * 0.08, top - 2.6],
-      [s * w * 0.3, l * 0.08, top - 0.8],
-      [s * w * 0.36, -l * 0.1, top - 0.8],
+  // Near the tip on each side the relief of Aesculapius' staff and serpent (drawn as a
+  // darker panel), as the stern's ornament survives.
+  const near = ring
+    .map((p, i) => ({ p, i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
+    .filter((q) => q.d > 8 && q.d < 16)
+  for (const { i } of near.slice(0, 2)) {
+    const [a, b] = [ring[i], ring[Math.min(ring.length - 1, i + 1)]]
+    const z = top(a)
+    F.quad(
+      [a[0], a[1], z - 2.4],
+      [b[0], b[1], z - 2.4],
+      [b[0], b[1], z - 0.8],
+      [a[0], a[1], z - 0.8],
       PART.tufaGrey,
     )
+  }
 }
 
 /**

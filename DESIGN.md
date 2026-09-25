@@ -691,6 +691,14 @@ known and what is generated are kept apart:
       board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
       `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
       its big triangles cut through the buildings.
+    - **Bridges run bank to bank** (decided 2026-09-25): each spans the water it
+      crosses along its axis on the plan's river (dry gaps under 45 m joined, as a
+      pier or an islet is), its sourced arches scaled to that width, and its deck
+      comes down to the ground at each end and rises over the arches. The build
+      reports a bridge whose water differs from its design by more than a quarter.
+    - **The Tiber Island's ship** is a travertine embankment on the island's own
+      shore, rising towards its downstream end as a ship's sides rise to the stern,
+      with the relief of Aesculapius' staff near it.
     - **No street under a building.** Where a recorded or main street's line crosses
       a monument's footprint it stops at its edge (plate.ts), except over the bridges,
       the island and the open squares.
