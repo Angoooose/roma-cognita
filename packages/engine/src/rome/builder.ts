@@ -101,6 +101,10 @@ export const C = {
     new THREE.Color('#7C8B5C'),
   ],
   cypress: new THREE.Color('#4F6040'),
+  /** Olives: the grey-green of their leaves' undersides. */
+  olive: new THREE.Color('#858C66'),
+  /** Fruit trees: a fresher, darker green. */
+  fruit: new THREE.Color('#62784A'),
   trunk: new THREE.Color('#7A6450'),
   paving: new THREE.Color('#E9E1D0'),
 }
@@ -927,6 +931,25 @@ export class Builder {
     this.cone(x, y, crown, h, -r * 0.45, 8, base, col)
     this.prism(x, y, crown, h, h + r * 0.7, 8, base, col, false)
     this.cone(x, y, crown, h + r * 0.7, r * 0.75, 8, base, col)
+  }
+
+  /**
+   * An olive: a short trunk under a low, broad crown, wider than it is tall. Kept to
+   * a few faces, since the groves hold thousands.
+   */
+  olive(x: number, y: number, r: number, base: number, col: THREE.Color) {
+    const h = r * 0.55
+    this.prism(x, y, 0.3, -0.5, h + 0.3, 3, base, C.trunk, false)
+    this.cone(x, y, r, h, -r * 0.3, 6, base, col)
+    this.cone(x, y, r, h, r * 0.45, 6, base, col)
+  }
+
+  /** A fruit tree: a small round crown on a short trunk, a few faces. */
+  fruit(x: number, y: number, r: number, base: number, col: THREE.Color) {
+    const h = r * 0.8
+    this.prism(x, y, 0.25, -0.5, h + 0.3, 3, base, C.trunk, false)
+    this.cone(x, y, r, h, -r * 0.45, 6, base, col)
+    this.cone(x, y, r, h, r * 0.6, 6, base, col)
   }
 
   /** A cypress: a tall, narrow cone. */

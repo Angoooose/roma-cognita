@@ -5,7 +5,7 @@
  * data/geometry/rome.geojson — monuments' outlines, the river's water, streets' and
  * roads' lines — and hands them to the plate (plate.ts: the board the model stands on
  * and its names) and the model (model.ts: the buildings). Writes build/rome/plan.json:
- * the plate's grid, and each monument's outline and years for picking.
+ * the plate's grid, and each monument's and garden's outline and years for picking.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
@@ -25,6 +25,26 @@ const geo = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'ut
 const outlines: { id: string; polys: Ring[][] }[] = []
 /** The river is water on the plate, not a monument. */
 const river: [number, number][][][] = []
+/**
+ * Gardens, groves and the burial ground are ground on the plate (fields.ts), not
+ * buildings. Their outlines are drawn by hand (rome-grounds.geojson), since
+ * rome.geojson is OpenStreetMap's and rewritten by each fetch.
+ */
+const grounds = new Map<string, Ring[][]>()
+const GROUND_KINDS = new Set(['garden', 'grove', 'cemetery'])
+for (const f of JSON.parse(
+  readFileSync(join(DATA_DIR, 'geometry/rome-grounds.geojson'), 'utf8'),
+).features) {
+  const p = places.get(f.id)
+  if (!p || !GROUND_KINDS.has(p.kind))
+    throw new Error(`rome-grounds.geojson: no garden, grove or cemetery "${f.id}"`)
+  const raw: [number, number][][][] =
+    f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
+  grounds.set(
+    f.id,
+    raw.map((poly) => poly.map((r) => r.map(([lon, lat]) => projection.forward(lon, lat)))),
+  )
+}
 /** Streets and roads are lines on the plate, by id. */
 const streets = new Map<string, [number, number][][]>()
 for (const f of geo.features) {
@@ -54,6 +74,7 @@ const { drawn, ...plate } = await bakePlate(
   streets,
   places,
   outlines.map((o) => ({ id: o.id, kind: places.get(o.id)!.kind, polys: o.polys })),
+  grounds,
 )
 const tenth = (v: number) => Math.round(v * 10) / 10
 writeFileSync(
@@ -64,6 +85,7 @@ writeFileSync(
     plate,
     outlines: [
       ...outlines.map((o) => ({ id: o.id, polys: o.polys })),
+      ...[...grounds].map(([id, polys]) => ({ id, polys })),
       // Monuments with no surveyed outline are picked by the footprint the model drew.
       ...drawn.map((p) => ({ id: p.id, polys: [[p.ring]] })),
     ].map((o) => {

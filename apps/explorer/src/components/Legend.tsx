@@ -258,12 +258,25 @@ function ModelKey({ model, className }: { model: typeof MODEL_KEY; className?: s
         >
           Houses, <span className="italic">illustrative</span>
         </Key>
+        <Key
+          swatch={
+            <span className="flex h-3 w-5 overflow-hidden rounded-[1px]">
+              {model.fields.map((c) => (
+                <span key={c} className="flex-1" style={{ background: c }} />
+              ))}
+            </span>
+          }
+        >
+          Fields, <span className="italic">illustrative</span>
+        </Key>
+        <Key swatch={<Swatch fill={model.garden} />}>Gardens and groves</Key>
       </Column>
       <Rule />
       <p className="w-[220px] text-xs leading-snug text-muted-foreground">
-        Only the named buildings are from the records, in the stone their sources give. The
-        houses between them are generated to show how crowded the city was, not where any
-        house stood.
+        Only the named buildings, gardens and groves are from the records, in the stone and
+        outline their sources give. The houses, tombs and farmland between them are
+        generated to show what the city and its country were like, not where any of them
+        stood.
       </p>
     </div>
   )

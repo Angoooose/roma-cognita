@@ -1037,3 +1037,111 @@
     The taberna: a single room open to the street across most of its width, in rows
     along the street fronts. Its shuttered thresholds spread mostly under the
     empire, after the window, so the model draws the shops as plain openings.
+
+# --- the gardens, groves and country round Rome (DESIGN.md §7.7) ------------------
+# The recorded gardens and groves cite these by page; the generated farmland of the
+# model (pipeline/src/rome/fields.ts) is illustrative, and these are the evidence for
+# what it shows.
+
+- id: richardson-1992
+  kind: modern
+  citation: >-
+    L. Richardson, jr, A New Topographical Dictionary of Ancient Rome (Baltimore and
+    London: Johns Hopkins University Press, 1992)
+  note: >-
+    The successor to Platner & Ashby, with the excavations since 1929. Locators are
+    its entry titles and pages.
+
+- id: horace-sat
+  kind: ancient
+  citation: Horace, Satires (Sermones)
+  note: >-
+    Book 1 was published about 35 BCE. 1.8: the Esquiline's burial ground made
+    healthy ground and gardens; 1.9.18: Caesar's gardens across the Tiber.
+
+- id: asconius
+  kind: ancient
+  citation: Asconius, Commentary on Cicero's Pro Milone
+  url: https://www.attalus.org/latin/asconius2.html
+  note: Cited by the pages of A. C. Clark's edition (Oxford, 1907).
+
+- id: cicero-nd
+  kind: ancient
+  citation: Cicero, De Natura Deorum
+
+- id: ps-cicero-in-sallustium
+  kind: ancient
+  citation: '[Cicero], Invectiva in Sallustium'
+  url: https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Cicero/pseudo/In_Sallustium*.html
+  note: A speech falsely ascribed to Cicero, of disputed date (probably early empire).
+
+- id: de-viris-illustribus
+  kind: ancient
+  citation: '[Aurelius Victor], De Viris Illustribus'
+
+- id: varro-rr
+  kind: ancient
+  citation: Varro, De Re Rustica (On Agriculture)
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/1*.html
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    1.16.3: near a city it pays to grow gardens on a large scale, "of violets and
+    roses", and whatever the city buys; 1.29 and 1.32: the fallow ploughed in
+    spring and summer, the grain reaped in summer. Written in 37 BCE.
+
+- id: cato-agr
+  kind: ancient
+  citation: Cato, De Agri Cultura (On Agriculture)
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/A*.html
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    7.1: on a farm near the city, timber and faggots to sell and several kinds of
+    vine; 7.3–4: fruit trees and olives; 8.1: a hay meadow, a water meadow where
+    possible; 8.2: near a town, a garden of vegetables and flowers for garlands.
+
+- id: cicero-leg
+  kind: ancient
+  citation: Cicero, De Legibus
+  usedBy: pipeline/src/rome/model.ts
+  note: >-
+    2.58: the Twelve Tables' rule that no dead man be buried or burned in the city,
+    which is why the tombs line the roads out of it.
+
+- id: champlin-1982
+  kind: modern
+  citation: E. Champlin, "The Suburbium of Rome", American Journal of Ancient History 7 (1982), 97–117
+  usedBy: pipeline/src/rome/fields.ts
+
+- id: morley-1996
+  kind: modern
+  citation: >-
+    N. Morley, Metropolis and Hinterland: The City of Rome and the Italian Economy,
+    200 B.C.–A.D. 200 (Cambridge, 1996)
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    Chapter 4, "The transformation of the Roman suburbium", pp. 83–107: market
+    gardening, orchards and specialised produce for the city in the ring close
+    round it, grain and pasture further out.
+
+- id: witcher-2005
+  kind: modern
+  citation: >-
+    R. Witcher, "The extended metropolis: urbs, suburbium and population", Journal
+    of Roman Archaeology 18 (2005), 120–138
+  url: https://doi.org/10.1017/S1047759400007248
+  usedBy: pipeline/src/rome/fields.ts
+
+- id: purcell-1987-tomb
+  kind: modern
+  citation: >-
+    N. Purcell, "Tomb and suburb", in H. von Hesberg and P. Zanker (eds), Römische
+    Gräberstrassen: Selbstdarstellung – Status – Standard (Munich, 1987), 25–41
+  usedBy: pipeline/src/rome/model.ts
+  note: The tombs along the roads out of Rome, and the suburb they stood in.
+
+- id: purcell-1987-town
+  kind: modern
+  citation: >-
+    N. Purcell, "Town in country and country in town", in E. B. MacDougall (ed.),
+    Ancient Roman Villa Gardens (Washington, DC: Dumbarton Oaks, 1987), 185–203
+  usedBy: pipeline/src/rome/fields.ts

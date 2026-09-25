@@ -22,7 +22,7 @@ import {
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
-import { groundMeshFade, plateMask, reliefWash } from './shading.ts'
+import { groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
 import {
   ALWAYS,
   type Aqueduct,
@@ -44,6 +44,7 @@ import {
 } from './builder.ts'
 import { buildDesign, type Design } from './monuments.ts'
 import { curtain, type Gate, gatehouse, type Tower, tower, type WallBuild } from './wall.ts'
+import { FIELD_KEY } from './fields.ts'
 
 /**
  * The model of Rome (DESIGN.md §7.7): the city as a museum model, raised out of the
@@ -90,6 +91,10 @@ export const MODEL_MPP: [number, number] = [18, 10]
 const SUN = new THREE.Vector3(-0.54, 0.54, 0.64).normalize()
 /** The ground mesh's grid, metres, and how far past the model it reaches. */
 const GROUND_STEP_M = 10
+/** Floats per tree in model.bin: x, y, radius, ground, kind, first and last year (pipeline model.ts). */
+const TREE_STRIDE = 7
+/** What a tree is (pipeline fields.ts `TREE`). */
+const TREE = { mixed: 0, olive: 1, fruit: 2, oak: 3, cypress: 4, pine: 5 }
 const GROUND_PAD_M = 700
 
 /** The model's colours for its legend, as hex: the stones, and the generated houses. */
@@ -99,6 +104,8 @@ export const MODEL_KEY = {
   travertine: `#${STONE.travertine.face.getHexString()}`,
   house: '#DED3BE',
   roof: '#B8957F',
+  /** The country round the city (fields.ts): its generated farmland, and the recorded gardens. */
+  ...FIELD_KEY,
 }
 
 interface Monument {
@@ -369,6 +376,14 @@ export class ModelLayer {
     }
     b.dates = ALWAYS
 
+    // The tombs along the roads (pipeline model.ts): generated, built as the known
+    // tombs' designs are, in stucco or travertine.
+    for (const t of (meta.roadTombs ?? []) as (Design & { base: number; stone: Stone })[]) {
+      b.face = STONE[t.stone].face
+      b.shade = STONE[t.stone].shade
+      buildDesign(b, t, t.base)
+    }
+
     // The aqueducts (pipeline aqueducts.ts): arcades of tufa and peperino striding
     // over the low ground, solid walls where the ground rises under them, and over
     // the underground stretches only the heads of the shafts down to the channel. Each
@@ -535,19 +550,30 @@ export class ModelLayer {
       b.lot(q, h, ground, wall, tiles, roof)
     }
     b.dates = ALWAYS
-    // Trees: cypresses and holm oaks, with an umbrella pine here and there. The pine
-    // skyline that says "Rome" now is mostly later planting.
+    // Trees (pipeline fields.ts `TREE`): the olives and fruit trees of the country's
+    // groves and orchards, holm oaks and cypresses on its scrub and in the sacred
+    // groves, and in the gardens and courtyards a mix of them, with an umbrella pine
+    // here and there. The pine skyline that says "Rome" now is mostly later planting.
     for (let i = 0; i < meta.treeCount; i++) {
-      const [x, y, r, ground] = f.subarray(
-        nF * FABRIC_STRIDE + i * 4,
-        nF * FABRIC_STRIDE + i * 4 + 4,
+      const [x, y, r, ground, kind, from, to] = f.subarray(
+        nF * FABRIC_STRIDE + i * TREE_STRIDE,
+        nF * FABRIC_STRIDE + (i + 1) * TREE_STRIDE,
       )
-      const t = rand()
+      b.dates = [from, to, 1, 0]
       const col = C.tree[Math.floor(rand() * C.tree.length)]
-      if (t < 0.45) b.cypress(x, y, r, ground, C.cypress)
-      else if (t < 0.85) b.oak(x, y, r, ground, col)
-      else b.pine(x, y, r, ground, col)
+      if (kind === TREE.olive) b.olive(x, y, r, ground, C.olive)
+      else if (kind === TREE.fruit) b.fruit(x, y, r, ground, C.fruit)
+      else if (kind === TREE.oak) b.oak(x, y, r, ground, col)
+      else if (kind === TREE.cypress) b.cypress(x, y, r, ground, C.cypress)
+      else if (kind === TREE.pine) b.pine(x, y, r, ground, col)
+      else {
+        const t = rand()
+        if (t < 0.45) b.cypress(x, y, r, ground, C.cypress)
+        else if (t < 0.9) b.oak(x, y, r, ground, col)
+        else b.pine(x, y, r, ground, col)
+      }
     }
+    b.dates = ALWAYS
 
     // The Forum's square, in the paving of each year: tufa, then travertine.
     for (const sq of meta.squares as {
@@ -732,6 +758,7 @@ export class ModelLayer {
    */
   setYear(year: number) {
     modelUniforms.year.value = year
+    planUniforms.year.value = year
     if (!this.occlusion) return
     clearTimeout(this.occlusionTimer)
     this.occlusionTimer = window.setTimeout(() => {
