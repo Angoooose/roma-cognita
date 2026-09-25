@@ -208,6 +208,177 @@
   kind: modern
   citation: G. Mihailov, Inscriptiones Graecae in Bulgaria repertae, vol. I² (Sofia, 1970)
 
+# Added for the extension to 27 BCE (September 2026). Bibliographic details were
+# checked against the publisher, a library catalogue, JSTOR or a review; a note
+# says where a work's content was read and where only its entry was confirmed.
+
+- id: cah-x
+  kind: modern
+  citation: >-
+    A. K. Bowman, E. Champlin and A. Lintott (eds), The Cambridge Ancient
+    History, vol. X², The Augustan Empire, 43 B.C.–A.D. 69 (Cambridge, 1996)
+  note: >-
+    Chapters cited: C. Pelling, "The triumviral period", ch. 1, pp. 1–69; J. A.
+    Crook, "Political history, 30 B.C. to A.D. 14", ch. 2, pp. 70–112; E. S.
+    Gruen, "The expansion of the empire under Augustus", ch. 4, pp. 147–197; B.
+    M. Levick, "Greece (including Crete and Cyprus) and Asia Minor from 43 B.C.
+    to A.D. 69", ch. 14a, pp. 641–675; A. K. Bowman, "Egypt", ch. 14b, pp.
+    676–702. Chapter pages confirmed on Cambridge Core; contents not re-read.
+
+- id: welch-2012
+  kind: modern
+  citation: >-
+    K. Welch, Magnus Pius: Sextus Pompeius and the Transformation of the Roman
+    Republic (Swansea: The Classical Press of Wales, 2012)
+
+- id: powell-welch-2002
+  kind: modern
+  citation: >-
+    K. Welch, "Sextus Pompeius and the Res Publica in 42–39 BC", in A. Powell
+    and K. Welch (eds), Sextus Pompeius (London: Duckworth and The Classical
+    Press of Wales, 2002) 31–63
+
+- id: bowersock-1965
+  kind: modern
+  citation: >-
+    G. W. Bowersock, "Zur Geschichte des römischen Thessaliens", Rheinisches
+    Museum für Philologie 108 (1965) 277–289
+  url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+  note: Open access; read. Argues from an emended Strabo 17.3.25 that Augustan Achaea included Thessaly (p. 285).
+
+- id: laffi-1992
+  kind: modern
+  citation: U. Laffi, "La provincia della Gallia Cisalpina", Athenaeum 80 (1992) 5–23
+  note: Entry from index records; the article has not been read.
+
+- id: vnukov-kovalenko-2007
+  kind: modern
+  citation: >-
+    S. J. Vnukov and S. A. Kovalenko, "A Unique Gold Stater of the Bosporan
+    King Asander", Journal of the Numismatic Association of Australia 18 (2007)
+    19–22
+  url: https://numismatics.org.au/wp-content/uploads/2021/06/Vol-18-Article-2.pdf
+  note: Open access; read.
+
+- id: perea-yebenes-2017
+  kind: modern
+  citation: >-
+    S. Perea Yébenes, "Triumphatores ex Hispania (36–26 a.C.) según los Fasti
+    Triumphales", Gerión 35, Nº Esp. (2017) 121–149
+  url: https://revistas.ucm.es/index.php/GERI/article/view/56141
+  note: Open access; read.
+
+- id: villanueva-acuna-2011
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Problemas en torno a la organización administrativa
+    del Noroeste en los inicios del Imperio", Hispania Antiqua 35 (2011) 67–82
+  url: https://dialnet.unirioja.es/descarga/articulo/4087395.pdf
+  note: Open access; read.
+
+- id: villanueva-acuna-2016
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Reflexiones sobre el proceso de control del territorio
+    galaico y la creación de las divisiones administrativas augusteas", Hispania
+    Antiqua 40 (2016) 119–134
+  url: https://dialnet.unirioja.es/descarga/articulo/5843322.pdf
+  note: Abstract read.
+
+- id: goudineau-1990
+  kind: modern
+  citation: >-
+    C. Goudineau, "Les provinces de Gaule : problèmes d'histoire et de
+    géographie", in Mélanges Pierre Lévêque 5 (Besançon, 1990) 161–176
+  url: https://www.persee.fr/doc/ista_0000-0000_1990_ant_429_1_1293
+
+- id: fishwick-shaw-1977
+  kind: modern
+  citation: >-
+    D. Fishwick and B. D. Shaw, "The Formation of Africa Proconsularis", Hermes
+    105 (1977) 369–380
+
+- id: fishwick-1993
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, I: The amalgamation of
+    Africa Vetus and Africa Nova", Antiquités africaines 29 (1993) 53–62
+  url: https://www.persee.fr/doc/antaf_0066-4871_1993_num_29_1_1211
+
+- id: fishwick-1994
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, II: The administration
+    of Lepidus and the commission of M. Caelius Phileros", Antiquités africaines
+    30 (1994) 57–80
+  url: https://www.persee.fr/doc/antaf_0066-4871_1994_num_30_1_1222
+
+- id: amela-valverde-2012
+  kind: modern
+  citation: >-
+    L. Amela Valverde, "La situación de Mauretania a finales del Segundo
+    Triunvirato e inicios del principado de Augusto", Gerión 30 (2012) 149–167
+  url: https://revistas.ucm.es/index.php/GERI/article/view/41808
+  note: Open access; read. A survey of the scholarly positions on Mauretania 38–25.
+
+- id: holbl-2001
+  kind: modern
+  citation: >-
+    G. Hölbl, A History of the Ptolemaic Empire, trans. T. Saavedra (London and
+    New York: Routledge, 2001)
+
+- id: hoffmann-2009
+  kind: modern
+  citation: >-
+    F. Hoffmann, M. Minas-Nerpel and S. Pfeiffer, Die dreisprachige Stele des C.
+    Cornelius Gallus. Übersetzung und Kommentar, Archiv für Papyrusforschung,
+    Beiheft 9 (Berlin and New York: de Gruyter, 2009)
+  note: Known here through its review, BMCR 2010.11.03.
+
+- id: rpc-i
+  kind: modern
+  citation: >-
+    A. Burnett, M. Amandry and P. P. Ripollès, Roman Provincial Coinage I: From
+    the Death of Caesar to the Death of Vitellius (44 BC–AD 69) (London and
+    Paris, 1992; Supplement 1998)
+  url: https://rpc.ashmus.ox.ac.uk
+
+- id: luke-2025
+  kind: modern
+  citation: >-
+    T. Luke, "Valerius Maximus on the fate of Ariarathes X", Ancient History
+    Bulletin 39.1–2 (2025) 38–70
+  url: https://www.ancienthistorybulletin.org/subscribed-users-area/wp-content/uploads/2025/06/Luke.pdf
+  note: Read.
+
+- id: cayla-2017
+  kind: modern
+  citation: >-
+    J.-B. Cayla, "Antoine, Cléopâtre, et les technites dionysiaques à Chypre",
+    Bulletin de correspondance hellénique 141.1 (2017) 313–336
+  url: https://journals.openedition.org/bch/548
+
+- id: bingen-2007
+  kind: modern
+  citation: >-
+    J. Bingen, "Cleopatra VII Philopatris", in R. S. Bagnall (ed.), Hellenistic
+    Egypt: Monarchy, Society, Economy, Culture (Edinburgh, 2007) 57–62
+
+- id: segal-1970
+  kind: modern
+  citation: J. B. Segal, Edessa, 'The Blessed City' (Oxford, 1970)
+  note: The Edessene king-list, whose early names and dates Segal says "should … be regarded with caution".
+
+- id: bowersock-1983
+  kind: modern
+  citation: G. W. Bowersock, Roman Arabia (Cambridge, MA, 1983)
+
+- id: kokkinos-1998
+  kind: modern
+  citation: >-
+    N. Kokkinos, The Herodian Dynasty: Origins, Role in Society and Eclipse
+    (Sheffield, 1998)
+
 - id: barrington
   kind: modern
   citation: >-
@@ -321,6 +492,41 @@
 - id: bellum-africum
   kind: ancient
   citation: '[Caesar], Bellum Africum'
+
+- id: res-gestae
+  kind: ancient
+  citation: Augustus, Res Gestae Divi Augusti
+
+- id: suetonius-aug
+  kind: ancient
+  citation: Suetonius, Divus Augustus
+
+- id: lucian-macrobii
+  kind: ancient
+  citation: '[Lucian], Macrobii'
+
+- id: florus
+  kind: ancient
+  citation: Florus, Epitome of Roman History
+
+- id: orosius
+  kind: ancient
+  citation: Orosius, Historiae adversus paganos
+
+- id: philae-stele
+  kind: ancient
+  citation: >-
+    The trilingual stele of C. Cornelius Gallus, Philae, 29 BCE (CIL III
+    14147.5 = ILS 8995 = OGIS 654)
+  url: https://www.attalus.org/docs/ogis/s654.html
+
+- id: macrobius-sat
+  kind: ancient
+  citation: Macrobius, Saturnalia
+
+- id: suetonius-tib
+  kind: ancient
+  citation: Suetonius, Tiberius
 
 # --- datasets ------------------------------------------------------------------
 

@@ -5,7 +5,7 @@
 #
 # Province rows run from the province's creation. A client row runs from when
 # the standing began where that is known, and otherwise across the whole
-# 68–43 window.
+# 68–27 window.
 
 # --- citizen territory and provinces -------------------------------------------
 
@@ -13,7 +13,7 @@
   type: citizen-territory-of
   of: rome
   from: { earliest: 90 BCE, latest: 89 BCE }
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
@@ -25,7 +25,7 @@
   type: province-of
   of: rome
   from: 241 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -34,7 +34,7 @@
   type: province-of
   of: rome
   from: 227 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -43,7 +43,7 @@
   type: province-of
   of: rome
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -52,7 +52,7 @@
   type: province-of
   of: rome
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -61,7 +61,7 @@
   type: province-of
   of: rome
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -70,7 +70,7 @@
   type: province-of
   of: rome
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -79,7 +79,7 @@
   type: province-of
   of: rome
   from: 129 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -88,7 +88,7 @@
   type: province-of
   of: rome
   from: 121 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
@@ -97,7 +97,7 @@
   type: province-of
   of: rome
   from: 80 BCE
-  to: after 43 BCE
+  to: { earliest: 44 BCE, latest: 43 BCE }
   sources: [{ source: cah-ix, locator: ch. 8 }, { source: broughton-mrr, locator: vol. II }]
   confidence: probable
   review: draft
@@ -116,7 +116,7 @@
   type: province-of
   of: rome
   from: c. 74 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
@@ -129,7 +129,7 @@
   type: province-of
   of: rome
   from: 66 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: livy-per, locator: '100' }
@@ -142,7 +142,7 @@
   type: province-of
   of: rome
   from: 64 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'Syr. 49, 70' }
     - { source: velleius, locator: '2.38.6' }
@@ -154,7 +154,7 @@
   type: province-of
   of: rome
   from: 74 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: magie-1950 }, { source: broughton-mrr, locator: vol. II }]
   confidence: certain
   review: draft
@@ -164,7 +164,7 @@
   type: province-of
   of: rome
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: caesar-bg }, { source: cah-ix, locator: ch. 9 }]
   confidence: uncertain
   review: needs-check
@@ -174,7 +174,7 @@
   type: province-of
   of: rome
   from: 59 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: suetonius-iul, locator: '22' }]
   confidence: probable
   review: draft
@@ -184,7 +184,7 @@
   type: province-of
   of: rome
   from: 46 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
   confidence: certain
@@ -206,7 +206,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 34 BCE
   sources: [{ source: braund-1984 }]
   confidence: probable
   review: needs-check
@@ -216,7 +216,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources:
     - { source: braund-1984 }
   confidence: probable
@@ -232,7 +232,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -258,7 +258,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -267,7 +267,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: cicero-deiotaro }]
   confidence: probable
   review: draft
@@ -276,7 +276,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
   confidence: probable
   review: draft
@@ -285,7 +285,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: probable
   review: draft
@@ -294,7 +294,7 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: josephus-aj, locator: '14.74–79' }
   confidence: certain
@@ -308,7 +308,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 37 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -317,7 +317,7 @@
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -330,12 +330,17 @@
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Left open at 43 on purpose (September 2026): nothing attests Osroene's
+    standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
+    served Parthia against Crassus in 53; geography points to a Parthian
+    vassal, but no text says so for these years.
 
 - polity: amanus
   type: client-of
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: 31 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
   review: needs-check
@@ -346,7 +351,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: mitchell-2005 }]
   confidence: certain
   review: draft
@@ -355,7 +360,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: fraser-bean-1954 }]
   confidence: certain
   review: draft
@@ -364,7 +369,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: strabo, locator: '4.1.5' }]
   confidence: certain
   review: draft
@@ -374,7 +379,7 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: appian, locator: 'Mithr. 114' }]
   confidence: probable
   review: draft
@@ -383,7 +388,7 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: strabo, locator: '12.3.34' }]
   confidence: probable
   review: draft
@@ -392,7 +397,7 @@
   type: client-of
   of: rome
   from: 49 BCE
-  to: after 43 BCE
+  to: 39 BCE
   sources: [{ source: cassius-dio, locator: '41.42.7' }]
   confidence: probable
   review: draft
@@ -430,7 +435,7 @@
   type: allied-to
   of: rome
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: caesar-bc, locator: '1.18' }]
   confidence: probable
   review: needs-check
@@ -458,7 +463,7 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: appian, locator: 'Mithr. 114' }]
   confidence: probable
   review: draft
@@ -467,7 +472,7 @@
   type: client-of
   of: rome
   from: 65 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: cassius-dio, locator: '37.2' }]
   confidence: uncertain
   review: needs-check
@@ -476,7 +481,7 @@
   type: client-of
   of: rome
   from: 65 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: plutarch, locator: 'Pompey 35' }]
   confidence: uncertain
   review: needs-check
@@ -485,7 +490,7 @@
   type: client-of
   of: rome
   from: 66 BCE
-  to: after 43 BCE
+  to: 32 BCE
   sources: [{ source: plutarch, locator: 'Pompey 33' }]
   confidence: probable
   review: draft
@@ -495,7 +500,197 @@
   type: client-of
   of: parthia
   from: before 68 BCE
-  to: after 43 BCE
+  to: 36 BCE
   sources: [{ source: strabo, locator: '11.13.1–2' }]
+  confidence: uncertain
+  review: needs-check
+
+# --- added September 2026: the extension to 27 BCE -----------------------------
+
+- polity: achaea
+  type: province-of
+  of: rome
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    From its first firm attestation, the settlement of January 27; it may have
+    been governed apart from Macedonia earlier (see the polity).
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vnukov-kovalenko-2007 }
+    - { source: lucian-macrobii, locator: '17' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Asander's recognition as king: 41/40 at the earliest on the coins, or
+    after Actium on ps.-Lucian's "proclaimed king… by the divine Augustus".
+    See the claim on bosporus.
+
+- polity: mauretania-roman
+  type: province-of
+  of: rome
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.43.7' }
+  confidence: uncertain
+  review: needs-check
+  note: See the polity; formal provincial status is doubted.
+
+- polity: aegyptus-province
+  type: province-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: res-gestae, locator: '27.1' }
+    - { source: cassius-dio, locator: '53.12.7' }
+  confidence: certain
+  review: draft
+  note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
+
+- polity: cyrenaica-selene
+  type: client-of
+  of: rome
+  from: 34 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.41.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony's grant, never ratified at Rome (Dio 49.41.4); a client of the Roman
+    order in the East as Antony ran it, and of Cleopatra's house.
+
+- polity: creta-cyrenae
+  type: province-of
+  of: rome
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+  confidence: probable
+  review: draft
+
+- polity: triakontaschoinos
+  type: client-of
+  of: rome
+  from: 29 BCE
+  to: after 27 BCE
+  sources:
+    - { source: philae-stele }
+  confidence: uncertain
+  review: needs-check
+
+- polity: pontus-polemon
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: probable
+  review: draft
+
+- polity: pisidia-amyntas
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: 37 BCE
+  sources: [{ source: appian, locator: 'BC 5.75' }]
+  confidence: probable
+  review: draft
+
+- polity: lycaonia-polemon
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: 37 BCE
+  sources: [{ source: appian, locator: 'BC 5.75' }]
+  confidence: probable
+  review: draft
+
+- polity: armenia-minor-artavasdes
+  type: client-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources: [{ source: magie-1950, locator: 'vol. I, 443' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: cyprus
+  type: province-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources: [{ source: cassius-dio, locator: '53.12.7' }]
+  confidence: probable
+  review: draft
+
+- polity: judaea-antigonus
+  type: client-of
+  of: parthia
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+    - { source: debevoise-1938, locator: 'pp. 113–116' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Installed by the Parthians; their army left Syria in 39, and after Gindarus
+    in 38 Antigonus had no patron.
+
+- polity: ituraea
+  type: client-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.344' }
+  confidence: probable
+  review: needs-check
+  note: Zenodorus' lease of the house of Lysanias.
+
+- polity: armenia
+  type: client-of
+  of: parthia
+  from: 31 BCE
+  to: after 27 BCE
+  sources:
+    - { source: tacitus-ann, locator: '2.3' }
+  confidence: uncertain
+  review: needs-check
+  note: Artaxias II, restored "by the arms of the Arsacidae".
+
+- polity: atropatene
+  type: allied-to
+  of: rome
+  from: 35 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.33.1–2' }
+    - { source: cassius-dio, locator: '49.44.1' }
+  confidence: probable
+  review: draft
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.44.4' }
   confidence: uncertain
   review: needs-check

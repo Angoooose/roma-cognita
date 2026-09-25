@@ -61,6 +61,11 @@ Uncertainty is recorded throughout: `isUncertain`, `isDateStartUncertain`,
 `isDateEndUncertain`, `isProvinceUncertain`, and flags on each name part. All of it
 is kept.
 
+Coverage ends with Broughton's second volume, in 31 BCE: our build has 77 posts
+starting in 31, 17 in 30 and one to four a year in 29–27. Since the map was
+carried to 27 (September 2026), most provinces show "no governor attested" for
+30–27; that is the source's edge, not history's (BACKLOG.md).
+
 Access: a public SPARQL endpoint (`https://romanrepublic.ac.uk/rdf/endpoint`) that
 answers scripted queries, and a full RDF export. The website itself sits behind a bot
 check; the endpoint does not.

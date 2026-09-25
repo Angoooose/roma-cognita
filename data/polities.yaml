@@ -7,7 +7,7 @@
 # Anything that wants a human with the books open is review: needs-check.
 #
 # Dates. `from` is the province's creation where one is recorded. Every other
-# `before 68 BCE` / `after 43 BCE` marks where the 68–43 BCE window cuts the
+# `before 68 BCE` / `after 27 BCE` marks where the 68–27 BCE window cuts the
 # record off: the polity existed at that year and this data says nothing about
 # how far beyond it (see data/README.md, "Open ends"). The year of a transition
 # belongs to the successor: a kingdom annexed in 46 ends in 47.
@@ -17,7 +17,7 @@
   names:
     - { text: Roma, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -30,7 +30,7 @@
   names:
     - { text: Italia, lang: la, preferred: true }
   from: { earliest: 90 BCE, latest: 89 BCE }
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
@@ -48,7 +48,7 @@
   names:
     - { text: Sicilia, lang: la, preferred: true }
   from: 241 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -59,7 +59,7 @@
   names:
     - { text: Sardinia et Corsica, lang: la, preferred: true }
   from: 227 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -70,36 +70,61 @@
   names:
     - { text: Hispania Citerior, lang: la, preferred: true }
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '53.12.4–5' }
+    - { source: perea-yebenes-2017 }
   confidence: certain
   review: draft
+  note: >-
+    Lepidus' in 43 (App. BC 4.2); Octavian's after Philippi on Dio (48.1.3),
+    though Appian calls "Gaul and Spain" Antony's in 40 (BC 5.51); Octavian's
+    from 40 in any case. The triumphs "ex Hispania" of 36–26 (Calvinus,
+    Norbanus, Philippus, Pulcher, Calvisius, Appuleius) name no province and,
+    but for Calvinus' Cerretani, no enemy (Perea Yébenes 2017), so they move no
+    frontier. Caesar's in 27 (Dio 53.12.5). Whether Tarraconensis, Baetica and
+    Lusitania were created in 27, as Dio's list has it, or in 16–13 is disputed;
+    the two Spains are kept to 27 (see hispania-ulterior).
 
 - id: hispania-ulterior
   kind: province
   names:
     - { text: Hispania Ulterior, lang: la, preferred: true }
   from: 197 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '53.12.4–5' }
+    - { source: villanueva-acuna-2011, locator: '70–73' }
   confidence: certain
   review: draft
+  note: >-
+    Kept whole to the end of the data. Dio lists Baetica for the people and
+    Lusitania for Caesar at the settlement of January 27 (53.12.4–5), and
+    Albertini (1923) dated the division so; but Dio warns that his list uses
+    later arrangements (53.12.8), and Alföldy (1969), Villanueva Acuña (2011,
+    2016) and López Barja (2017) put Lusitania's creation later, in 16–13, with
+    a separate province north of the Duero before it. Carisius governed "la PH
+    Ulterior tal como existió durante el periodo anterior republicano" from 27
+    (Villanueva Acuña 2011).
 
 - id: macedonia
   kind: province
   names:
     - { text: Macedonia, lang: la, preferred: true }
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
   review: draft
   note: >-
-    Includes Greece. Achaea is not a separate province until 27 BCE, so for this
-    whole window the governor of Macedonia is Athens' governor too.
+    Includes Greece until Achaea is attested as a province of its own in the
+    settlement of 27, which also took Thessaly and southern Epirus (see achaea).
+    Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
+    after Philippi it was Antony's, east of Scodra from Brundisium (App. BC
+    5.65), and Octavian's from 31.
 
 - id: africa
   kind: province
@@ -108,32 +133,55 @@
     - text: Africa Vetus
       lang: la
       from: 46 BCE
-      to: after 43 BCE
-      note: Once Africa Nova is created beside it.
+      to: 28 BCE
+      note: >-
+        Once Africa Nova is created beside it, until the two are one province,
+        by 27 at the latest (see africa-nova).
   from: 146 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: cassius-dio, locator: '48.21–23' }
+    - { source: cassius-dio, locator: '49.14.6' }
   confidence: certain
   review: draft
+  note: >-
+    Held for the Republic by Cornificius in 43–42 and taken by T. Sextius, who
+    handed both Africas to Fango for Octavian and took them back after Philippi
+    (Dio 48.21–22); granted to Lepidus in 41, who came to take possession in 40
+    (App. BC 5.12, 5.53; Dio 48.23.5) and held it until his fall in 36, when
+    Statilius Taurus took "both the Africas without a struggle" (Dio 49.14.6).
 
 - id: asia
   kind: province
   names:
     - { text: Asia, lang: la, preferred: true }
   from: 129 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: magie-1950, locator: 'vol. I, 427–446' }
+    - { source: cassius-dio, locator: '53.12.4' }
   confidence: certain
   review: draft
+  note: >-
+    The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
+    the Parthians in 40, except the islands and Stratonicea (Dio 48.26.3–4),
+    and cleared by Ventidius in 39; Stratonicea and Aphrodisias were made free.
+    A consular province of the people in 27 (Dio 53.12.4).
 
 - id: gallia-transalpina
   kind: province
   names:
     - { text: Gallia Transalpina, lang: la, preferred: true }
+    - text: Gallia Narbonensis
+      lang: la
+      note: >-
+        The later name (Pliny 3.31, "Bracata antea dicta"; Strabo 4.1.1). Dio uses
+        it for 43 and 27 (46.50.4, 53.12.5), but in the names of his own day; when
+        it became official is not known, so it is not the preferred name here.
   from: 121 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: broughton-mrr }
   confidence: certain
@@ -144,16 +192,27 @@
   names:
     - { text: Cilicia, lang: la, preferred: true }
   from: 80 BCE
-  to: after 43 BCE
+  to: { earliest: 44 BCE, latest: 43 BCE }
   sources:
     - { source: cah-ix, locator: ch. 8 }
     - { source: broughton-mrr, locator: vol. II }
+    - { source: cicero-phil, locator: '11.30' }
+    - { source: magie-1950, locator: 'vol. II, 1270–1271' }
+    - { source: borgia-2017, locator: 'p. 304' }
   confidence: probable
   review: draft
   note: >-
     Cicero's own province in 51–50, when it also carried Cyprus, Pamphylia,
     Pisidia, Lycaonia and three Phrygian dioceses detached from Asia. A
-    provincia in this period is a portfolio, not a territory.
+    provincia in this period is a portfolio, not a territory. It lapsed soon
+    after Caesar's death: the senate's decree of 43 gives Cassius "Syria, Asia,
+    Bithynia, Pontus" and leaves Cilicia out (Cic. Phil. 11.30); in 43 Side was
+    the "extrema regio" of the quaestor of Asia (Cic. Fam. 12.15.5); and by 38
+    Sosius governed "Syria and Cilicia" (Dio 49.22.2). So Syme and Magie (II
+    1270–1271); Bickerman (1947) held that the plain joined Syria only after AD
+    18, and Dio's "Cilicia" among Caesar's provinces in 27 (53.12.7) is read
+    either way (Borgia 2017, 304). Its northern and western lands went to kings
+    in 39–36.
 
 - id: gallia-cisalpina
   kind: province
@@ -176,21 +235,27 @@
   names:
     - { text: Cyrenae, lang: la, preferred: true }
   from: c. 74 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
     - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
-  note: Bequeathed to Rome in 96, organised as a province c. 74.
+  note: >-
+    Bequeathed to Rome in 96, organised as a province c. 74. Given with Crete
+    to Cassius (or Brutus) in 44 (App. BC 3.8), then Antony's. Promised to
+    Cleopatra Selene in 34 (Dio 49.41.3; see cyrenaica-selene); Scarpus' army,
+    which went over to Octavian after Actium, stood "in Africa" to guard Egypt
+    (Dio 51.5.6). Kept apart from Crete until 27, when the joint province is
+    first attested (see creta-cyrenae).
 
 - id: creta
   kind: province
   names:
     - { text: Creta, lang: la, preferred: true }
   from: 66 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: velleius, locator: '2.38.6' }
     - { source: livy-per, locator: '100' }
@@ -201,61 +266,92 @@
     Conquered by Q. Caecilius Metellus, 69–67. Probably administered with
     Cyrenae as a single command from soon after the conquest, but the date of
     the union is not settled, so it is kept as its own unit rather than
-    asserting one.
+    asserting one. Brought over to Brutus by his officer Lepidus in 42 (App. BC
+    5.2), then Antony's; an Antonian officer, Crassus, struck the same coins at
+    Cnossus and at Cyrene (RPC I 914–917), which suggests one command. In 36
+    Antony gave "parts of Crete" to Cleopatra's children (Dio 49.32.5); which
+    parts is not known, so nothing is drawn. Cydonia and Lappa were freed after
+    Actium (Dio 51.2.3).
 
 - id: syria
   kind: province
   names:
     - { text: Syria, lang: la, preferred: true }
   from: 64 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: appian, locator: 'Syr. 49, 70' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
-  note: Pompey's annexation; the end of the Seleucid kingdom.
+  note: >-
+    Pompey's annexation; the end of the Seleucid kingdom. Cassius' in 43–42;
+    then Antony's, governed by Saxa, Ventidius, Sosius and others. Overrun by
+    the Parthians in 40, all but Tyre (Dio 48.26.1), and recovered in 39; the
+    province went on. The Cilician plain was governed with it from 38 at the
+    latest (Dio 49.22.2). Antony gave the Phoenician and Palestinian coast,
+    less Tyre and Sidon, to Cleopatra in 37/36; Octavian took it back in 30.
+    The promise of "Syria" to Ptolemy Philadelphus at the Donations of 34 (Dio
+    49.41.3) was never carried out: Didius governed it in 31–30 (Dio 51.7).
+    Caesar's in 27 (Dio 53.12.7).
 
 - id: bithynia-pontus
   kind: province
   names:
     - { text: Bithynia, lang: la, preferred: true, from: 74 BCE, to: 64 BCE }
-    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 43 BCE }
+    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 27 BCE }
   from: 74 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
-    - { source: magie-1950 }
+    - { source: magie-1950, locator: 'vol. I, 433–436' }
+    - { source: cassius-dio, locator: '53.12.4' }
     - { source: broughton-mrr, locator: vol. II }
   confidence: certain
   review: draft
   note: >-
     Bithynia, bequeathed by Nicomedes IV, from 74; joined with Pontus by
     Pompey's settlement (lex Pompeia) in 63. Bithynia and Pontus are separate
-    atoms now, so the province can start with its bequest.
+    atoms now, so the province can start with its bequest. From 39 Antony gave
+    most of Pompey's Pontus to kings (Darius, then Polemon, and the kings of
+    Paphlagonia), so that "only the provinces of Asia and Bithynia in the west
+    and the district of Level Cilicia … were directly subject to the rule of
+    Rome" (Magie I 436); what stayed provincial was the coast (the pontus atom).
+    Antony gave the Greek part of Heraclea to the Galatian Adiatorix, who
+    massacred its Roman colonists before Actium (Strabo 12.3.6). "Bithynia with
+    Pontus which adjoined it" was the people's in 27 (Dio 53.12.4).
 
 - id: gallia-comata
   kind: province
   names:
     - { text: Gallia Comata, lang: la, preferred: true }
   from: 51 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: caesar-bg }
     - { source: cah-ix, locator: ch. 9 }
+    - { source: goudineau-1990, locator: '161' }
   confidence: uncertain
   review: needs-check
   note: >-
     Conquered progressively 58–50 and held under Caesar's command, but not
     formally organised as a province until Augustus. Dated from 51, after Alesia
     and the final campaigns; the single date stands in for eight years of
-    conquest and is the weakest claim in the dataset.
+    conquest and is the weakest claim in the dataset. Plancus', then Antony's,
+    in 43; Antony's through Calenus to 40, then Octavian's (App. BC 4.2, 5.51).
+    None of the fighting of 43–27 moved the ground: Agrippa against the Aquitani
+    in 38 (App. BC 5.92), Nonius Gallus against the Treveri and Carrinas against
+    the Morini in 30–29 (Dio 51.20.5, 51.21.6), Messalla against the Aquitani in
+    28–27. Augustus took a census of the Gauls in 27 (Dio 53.22.5). Its division
+    into Aquitania, Lugdunensis and Belgica is dated to 27 (Dio 53.12.5) or to
+    16–13; Goudineau (1990) calls the question open, and the province is kept
+    whole to 27.
 
 - id: illyricum
   kind: province
   names:
     - { text: Illyricum, lang: la, preferred: true }
   from: 59 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: suetonius-iul, locator: '22' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
@@ -270,12 +366,28 @@
   names:
     - { text: Africa Nova, lang: la, preferred: true }
   from: 46 BCE
-  to: after 43 BCE
+  to: 28 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
+    - { source: fishwick-shaw-1977 }
+    - { source: fishwick-1993, locator: '53' }
+    - { source: fishwick-1994 }
   confidence: certain
-  review: draft
-  note: Numidia annexed after Thapsus.
+  review: needs-check
+  note: >-
+    Numidia annexed after Thapsus. When it was joined to the old province is
+    disputed. The traditional date is 27, with the division of the provinces;
+    Fishwick and Shaw (1977) and Fishwick (1993, 1994) argue from the Fasti
+    Triumphales that Africa was "already united under one governor by 35 B.C."
+    Dio's "Africa, Numidia" in the list of 27 (53.12.4) is no evidence either
+    way, since he says his list follows the provinces of his own day (53.12.8);
+    his "the Africas" of 36 and 32 (49.14.6, 50.6.4) may be geography. The
+    claims pass to africa at 27, the latest date; only the line between the two
+    Africas is in doubt, not whose ground it was. The polity is kept to 28 to
+    match. Juba II's "kingdom of his
+    fathers" of 30 (Dio 51.15.6) is not drawn: he exchanged it in 25 for
+    Mauretania, its people having "been enrolled in the Roman state" (53.26.2),
+    and nothing shows he ruled Numidia in between.
 
 # --- kingdoms ----------------------------------------------------------------
 # Client status is a relation (relations.yaml); `kingdom` here also covers the principalities, tetrarchies
@@ -314,55 +426,75 @@
   names:
     - { text: Mauretania, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Bocchus II and Bogud
+  to: 34 BCE
+  ruler: Bocchus II, to 33
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '48.45.1–3' }
+    - { source: cassius-dio, locator: '49.43.7' }
+    - { source: bridoux-2020, locator: '¶103' }
   confidence: probable
   review: needs-check
   note: >-
     Divided between the two kings around 49; the arrangement before that is not
     clear enough to date. The kingdom is not in doubt, its internal arrangement
-    is, hence probable.
+    is, hence probable. Bocchus II took Arabio's western Numidia in 41 (Bridoux
+    ¶103, an inference: "se serait emparé") and Bogud's kingdom in 38 (Dio
+    48.45.1–3), and at his death in 33 his kingdom went to Rome (Dio 49.43.7;
+    see mauretania-roman).
 
 - id: aegyptus
   kind: kingdom
   names:
     - { text: Aegyptus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ptolemy XII to 51, then Cleopatra VII
+  to: 31 BCE
+  ruler: Ptolemy XII to 51, then Cleopatra VII (with Ptolemy XV Caesarion from 44), to 30
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '51.19.6' }
+    - { source: holbl-2001 }
   confidence: probable
   review: draft
   note: >-
     Recognised socius et amicus in 59; Gabinius restores Ptolemy XII in 55.
     Formally independent throughout. Treated as a client because from 55 a Roman
     garrison sat in Alexandria and the kingdom's foreign policy was not its own.
+    Antony's grants of 37/36 and the Donations of 34 added ground in Cyprus,
+    Cilicia and the Levant (claims.yaml). Alexandria fell in August 30 (Macrob.
+    Sat. 1.12.35; Dio 51.19.6) and the kingdom ends in 31; Egypt from 30 is aegyptus-province.
 
 - id: nabataea
   kind: kingdom
   names:
     - { text: Nabataea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Aretas III, then Malichus I
+  to: after 27 BCE
+  ruler: Aretas III, then Malichus I, to 31; Obodas, from 30
   sources:
     - { source: sullivan-1990 }
+    - { source: bowersock-1983 }
   confidence: probable
   review: needs-check
   note: >-
     The kingdom is not in doubt; its extent and its
-    standing with Rome are — see the claim and the atom.
+    standing with Rome are — see the claim and the atom. Malichus turned Herod
+    away in 40 "and used the name of the Parthians as a pretense" (BJ 1.274),
+    and was fined by Ventidius in 39 (Dio 48.41.5). From 36/34 he paid tribute
+    to Cleopatra for the "parts of Arabia" Antony gave her, with Herod as
+    surety (AJ 15.106–107); that grant was revenue with no attested frontier and
+    is not drawn. Herod fought him on Antony's orders in 32–31 (AJ 15.108–160),
+    with no change of ground. In 30 "the Arabians about Petra" burned
+    Cleopatra's ships (Dio 51.7.1). Obodas (II or III in modern numbering)
+    followed Malichus c. 30 (Bowersock 1983).
 
 - id: bosporus
   kind: kingdom
   names:
     - { text: Bosporus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Pharnaces II, 63–47; Asander from 47
+  to: after 27 BCE
+  ruler: Pharnaces II, 63–47; Asander (archon, then king), from 47; Dynamis his wife
   sources:
     - { source: appian, locator: 'Mithr. 113, 120' }
   confidence: probable
@@ -374,124 +506,209 @@
   names:
     - { text: Thracia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Odrysian kings
+  to: after 27 BCE
+  ruler: Sadalas (d. by 43/42); the Sapaean brothers Rhascupolis and Rhascus, 42; Sadalas at Actium, 31
   sources:
     - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '47.25.1–2' }
+    - { source: appian, locator: 'BC 4.87' }
+    - { source: cassius-dio, locator: '51.25.4–5' }
   confidence: probable
   review: needs-check
   note: >-
-    Odrysian authority over the inland Thracian tribes was
-    intermittent throughout the window.
+    The Thracian kings' authority over the inland tribes was intermittent
+    throughout. The ruler string names only kings the ancient texts name for
+    43–27: Brutus took over the land of Sadalas, "who had died childless and had
+    left it to the Romans" (Dio 47.25.1), in 43/42 — not drawn, since the kings
+    were back by Actium (Plut. Ant. 61.1); Rhascupolis and Rhascus were
+    "ruling one country", the Sapaei and Corpili, at Philippi (App. BC 4.87).
+    The modern king lists (Dessau, Sullivan; revised by Tačeva and Delev) are
+    reconstructions and disputed. In 28 Crassus overran Thrace "except the
+    territory of the Odrysae" and gave them Dionysus' land taken from the Bessi
+    (Dio 51.25.4–5): a client, not annexed.
 
 - id: galatia
   kind: kingdom
   names:
     - { text: Galatia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Deiotarus, c. 63–40
+  to: after 27 BCE
+  ruler: Deiotarus, c. 63–40; Castor, 40–37/36; Amyntas, 36–25
   sources:
     - { source: cicero-deiotaro }
+    - { source: cassius-dio, locator: '48.33.5' }
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.5.1' }
+    - { source: magie-1950, locator: 'vol. I, 433–434, 443' }
   confidence: probable
   review: draft
-  note: Deiotarus confirmed by Pompey in 63.
+  note: >-
+    Deiotarus confirmed by Pompey in 63. At his death in 40 his lands and
+    Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
+    37/36 to Amyntas, Antony's king in Pisidia since 39 (App. BC 5.75), who
+    received Galatia "with Lycaonia and portions of Pamphylia" (Dio
+    49.32.3). He went over to Octavian before Actium and was confirmed and
+    enlarged with Cleopatra's Rough Cilicia (Dio 51.2.1; Strabo 14.5.6): his
+    kingdom ran "from the mountains of northern Galatia to the shore of the
+    Mediterranean" (Magie I 434) until his death in 25, when it became a
+    province (Dio 53.26.3). The Pontic lands went to Darius in 39.
 
 - id: cappadocia
   kind: kingdom
   names:
     - { text: Cappadocia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ariobarzanes III, 51–42
+  to: after 27 BCE
+  ruler: Ariobarzanes III, 51–43/42; Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
   sources:
     - { source: sullivan-1990 }
     - { source: cicero-fam, locator: XV }
+    - { source: cassius-dio, locator: '49.32.3' }
+    - { source: strabo, locator: '12.2.11' }
+    - { source: luke-2025 }
   confidence: probable
   review: draft
-  note: Cicero was charged with protecting Ariobarzanes during his Cilician command.
+  note: >-
+    Cicero was charged with protecting Ariobarzanes during his Cilician
+    command. Cassius' cavalry killed him — late 43 on Appian (BC 4.63), in 42
+    on Dio (47.33.4) — and Ariarathes X followed. Antony judged between
+    Ariarathes and "Sisina" in 41 and gave the kingdom to Sisina (App. BC 5.7),
+    but only Ariarathes minted (Luke 2025); in 36 Antony gave Cappadocia to
+    Archelaus "after driving out Ariarathes" (Dio 49.32.3). Most take Sisines
+    and Archelaus to be one man (Magie I 435); Syme took them for two. Kept by
+    Octavian (Dio 51.2.1).
 
 - id: commagene
   kind: kingdom
   names:
     - { text: Commagene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Antiochus I, c. 70–36
+  to: after 27 BCE
+  ruler: Antiochus I, c. 70–36 (or later); Mithridates II by 31
   sources:
     - { source: sullivan-1990 }
+    - { source: facella-2006 }
+    - { source: plutarch, locator: 'Antony 34' }
+    - { source: cassius-dio, locator: '49.22.1–2' }
   confidence: probable
   review: draft
+  note: >-
+    Antiochus took in Parthian fugitives after Gindarus and was besieged at
+    Samosata by Ventidius and Antony in 38; he made terms (Plut. Antony 34;
+    Dio 49.22.1–2, where Antony got no money, against Plutarch's 300 talents).
+    He had been fined in 39 for helping Pacorus (Dio 48.41.5). Kept a client
+    throughout. Dio 49.23.4 has Phraates kill an Antiochus, grandfather of his
+    brothers, c. 37–36; whether this is Antiochus I, and so when he died, is
+    disputed. Mithridates II was king at Actium (Plut. Antony 61.1).
 
 - id: judaea
   kind: kingdom
   names:
     - { text: Iudaea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Hyrcanus II, 63–40
+  to: after 27 BCE
+  ruler: Hyrcanus II, 63–40; Herod, king from 40, in Jerusalem from 37
   sources:
     - { source: josephus-aj, locator: '14.54–79, 14.143' }
     - { source: josephus-bj, locator: '1.141–158, 1.199' }
+    - { source: josephus-aj, locator: '14.381–385' }
+    - { source: kokkinos-1998 }
   confidence: probable
   review: draft
-  note: Pompey takes Jerusalem, 63; Antipater procurator from 47.
+  note: >-
+    Pompey takes Jerusalem, 63; Antipater procurator from 47. Antony made Herod
+    and Phasael tetrarchs under Hyrcanus in 41 (AJ 14.324–326). The Parthians
+    carried off Hyrcanus in 40 and made Antigonus king (judaea-antigonus); the
+    senate made Herod king the same year (AJ 14.381–385), and he took Jerusalem
+    in 37. Cleopatra had Jericho and the coast from 36 (claims.yaml); in 30
+    Octavian gave them back and added Samaria, Gadara, Hippos, Gaza, Anthedon,
+    Joppa and Strato's Tower (AJ 15.217; BJ 1.396).
 
 - id: ituraea
   kind: kingdom
   names:
     - { text: Ituraea, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ptolemy son of Mennaeus
+  to: after 27 BCE
+  ruler: Ptolemy son of Mennaeus, to 40; Lysanias, 40–36; Zenodorus (lessee), by 30
   sources:
     - { source: sullivan-1990 }
+    - { source: myers-2010 }
+    - { source: cassius-dio, locator: '49.32.5' }
   confidence: probable
   review: needs-check
+  note: >-
+    Lysanias succeeded his father Ptolemy in 40 and was Antigonus' go-between
+    with the Parthians (AJ 14.330); Antony executed him in 36 "on the charge
+    that he had favoured Pacorus" and gave much of the land to Cleopatra (Dio
+    49.32.5). By 30 Zenodorus "had hired what was called the house of
+    Lysanias" (AJ 15.344). Myers (2010) holds that only the southern Beqaa can
+    be placed securely; the atom is wider.
 
 - id: emesa
   kind: kingdom
   names:
     - { text: Emesa, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Sampsiceramus I
+  to: 31 BCE
+  ruler: Sampsiceramus I; Iamblichus I, by 51 to 31; Alexander, 31–30
   sources:
     - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '50.13.7' }
+    - { source: cassius-dio, locator: '51.2.2' }
   confidence: probable
   review: needs-check
   note: >-
     Cicero uses the name as a nickname for Pompey in the
-    letters to Atticus.
+    letters to Atticus. Strabo has "Arethusa, belonging to Sampsiceramus and
+    Iamblichus his son" (16.2.10). Antony tortured Iamblichus to death before
+    Actium (Dio 50.13.7), and his brother Alexander, who had the realm "as a
+    reward for accusing" him, was deposed by Octavian and killed after the
+    triumph (51.2.2; still a suppliant in 30, Josephus BJ 1.393). The kingdom
+    was restored to Iamblichus II only in 20 (Dio 54.9.2).
 
 - id: osroene
   kind: kingdom
   names:
     - { text: Osroene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Abgar II
+  to: after 27 BCE
+  ruler: Abgar II, to 53; Ma'nu II, 52–34; Paqor, 34–29; Abgar III, from 29 (the Edessene list)
   sources:
     - { source: sullivan-1990 }
+    - { source: segal-1970 }
   confidence: probable
   review: needs-check
+  note: >-
+    The kings of Edessa east of the Euphrates, "the boundaries of the Parthian
+    empire" (Strabo 16.1.28). The rulers follow the Edessene king-list as
+    Segal gives it, whose early dates he says are to be treated with caution.
+    Its standing with Rome after the 60s is not known (see relations.yaml).
 
 - id: amanus
   kind: kingdom
   names:
     - { text: Amanus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Tarcondimotus I
+  to: 31 BCE
+  ruler: Tarcondimotus I, to 31; Philopator, 31
   sources:
     - { source: sullivan-1990 }
     - { source: strabo, locator: '14.5.18' }
+    - { source: cassius-dio, locator: '51.2.2' }
+    - { source: magie-1950, locator: 'vol. I, 434, 445' }
   confidence: probable
   review: needs-check
   note: >-
     Tarcondimotus' principality in the Amanus and on the middle Pyramus, seated
     at Hierapolis-Castabala. Not Cilicia Tracheia, which is the rough country
-    west of the Cilician plain and was not his.
+    west of the Cilician plain and was not his. Forced into Cassius' alliance in
+    43 (Dio 47.26.2), "King and Friend of Antony" (Magie I 434), "king of Upper
+    Cilicia" at Actium (Plut. Antony 61.1), where he fell (Dio 50.14.2). His son
+    Philopator was deposed by Octavian (Dio 51.2.2), and "the kingship of this
+    region was for a time suspended" (Magie I 445) until Tarcondimotus II was
+    given it in 20 (Dio 54.9.2). Who held the ground in 30–20 is not known;
+    Dmitriev suggests Amyntas, then Archelaus. It is left unclaimed.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
@@ -517,8 +734,8 @@
   names:
     - { text: Armenia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Tigranes II, 95–55; Artavasdes II, 55–34
+  to: after 27 BCE
+  ruler: Tigranes II, 95–55; Artavasdes II, 55–34; Artaxias II, from 34 (in Armenia from 32–30)
   sources:
     - { source: strabo, locator: '11.14' }
     - { source: plutarch, locator: 'Pompey 33' }
@@ -527,72 +744,106 @@
   review: draft
   note: >-
     Tigranes submitted to Pompey in 66 and kept Armenia as a friend and ally of
-    Rome.
+    Rome. Canidius made Armenia an ally again in 37/36; Artavasdes II deserted
+    Antony in Media in 36, and in 34 Antony seized him and occupied the country
+    (Dio 49.39–40), which he promised to Alexander Helios. Artavasdes' son
+    Artaxias, proclaimed king by the Armenians, fled to Parthia and came back
+    with its help when Antony withdrew, killing the Romans left behind (Tac.
+    Ann. 2.3; Dio 51.16.2).
 
 - id: parthia
   kind: kingdom
   names:
     - { text: Parthia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Phraates III, c. 70–57; Orodes II, 57–37
+  to: after 27 BCE
+  ruler: Phraates III, c. 70–57; Orodes II, 57–38/37; Phraates IV from 38/37 (the usurper Tiridates II c. 31–30)
   sources:
     - { source: debevoise-1938, locator: 'pp. 70–108' }
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
+    - { source: debevoise-1938, locator: 'pp. 108–138' }
+    - { source: cassius-dio, locator: '51.18.2–3' }
   confidence: certain
   review: draft
+  note: >-
+    Pacorus and Labienus overran Syria and Asia in 40 (the occupation rows);
+    Pacorus fell at Gindarus in 38. Orodes gave up the throne to Phraates IV,
+    who "came into power shortly before 37 B.C." (Debevoise 121). Antony's
+    campaign of 36 went through Armenia to Phraaspa in Media and failed. The
+    usurper Tiridates drove Phraates out c. 31 and fled to Syria in 30/29 (Dio
+    51.18.2–3); he struck coins again in 26–25. Not drawn: nothing divides the
+    ground. The Euphrates stayed the frontier (Strabo 16.1.28).
 
 - id: atropatene
   kind: kingdom
   names:
     - { text: Media Atropatene, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Ariobarzanes I; Artavasdes I
+  to: after 27 BCE
+  ruler: Ariobarzanes I; Artavasdes I, to c. 31 (in exile with Octavian from 30)
   sources:
     - { source: strabo, locator: '11.13.1–2' }
     - { source: schottky-1989 }
+    - { source: plutarch, locator: 'Antony 38' }
+    - { source: cassius-dio, locator: '49.33.1–2' }
   confidence: probable
   review: needs-check
+  note: >-
+    A Parthian vassal whose capital Antony besieged in 36 (Plut. Antony 38;
+    Strabo 11.13.3); its king then changed sides and was Antony's ally from 35
+    to 31, when Phraates took the kingdom and the Mede fled to Octavian (Dio
+    49.44.4, 51.16.2), who later gave him Lesser Armenia
+    (armenia-minor-artavasdes).
 
 - id: iberia-caucasia
   kind: kingdom
   names:
     - { text: Iberia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Artoces
+  to: after 27 BCE
+  ruler: Artoces (65); Pharnabazus by 36
   sources:
     - { source: cassius-dio, locator: '37.1–2' }
     - { source: braund-1994, locator: 'pp. 152–170' }
+    - { source: cassius-dio, locator: '49.24.1' }
   confidence: probable
   review: draft
+  note: >-
+    Canidius Crassus beat its king Pharnabazus and Zober of Albania in 36 and
+    "brought them to make an alliance" (Dio 49.24.1; Plut. Antony 34): the
+    client standing renewed, not changed.
 
 - id: albania
   kind: kingdom
   names:
     - { text: Albania, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Oroeses
+  to: after 27 BCE
+  ruler: Oroeses (65); Zober by 36
   sources:
     - { source: cassius-dio, locator: '36.54, 37.3–5' }
     - { source: strabo, locator: '11.4' }
+    - { source: cassius-dio, locator: '49.24.1' }
   confidence: probable
   review: draft
+  note: As iberia-caucasia.
 
 - id: colchis
   kind: kingdom
   names:
     - { text: Colchis, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   ruler: Aristarchus, from 63
   sources:
     - { source: appian, locator: 'Mithr. 114' }
     - { source: braund-1994, locator: 'pp. 152–170' }
   confidence: probable
   review: draft
+  note: >-
+    "At last Polemon got Colchis" (Strabo 11.2.18), at a date not given — from
+    Antony, from Augustus after Actium, or c. 14 — so it is not moved to his
+    Pontus here. Nothing is known of its rulers after Aristarchus.
 
 - id: seleucid
   kind: kingdom
@@ -616,57 +867,93 @@
   names:
     - { text: Paphlagonia, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
-  ruler: Attalus; the house of Pylaemenes
+  to: after 27 BCE
+  ruler: Attalus, to 40; Castor, 40–37/36; Deiotarus Philadelphus, from 37/36
   sources:
     - { source: strabo, locator: '12.3.1' }
     - { source: appian, locator: 'Mithr. 114' }
+    - { source: cassius-dio, locator: '48.33.5' }
+    - { source: strabo, locator: '12.3.41' }
+    - { source: magie-1950, locator: 'vol. I, 434, 443' }
   confidence: probable
   review: needs-check
+  note: >-
+    Castor had "the domains of Attalus" from 40 (Dio 48.33.5), and his son
+    Deiotarus Philadelphus, "who possessed Gangra", was the last king (Strabo
+    12.3.41). Magie (I 434) gives the kings of Paphlagonia the Amnias basin
+    with Pompeiopolis as well, by 37/36 at the latest; its date is not known and
+    it stays with the pontus atom. Philadelphus went over to Octavian before
+    Actium (Plut. Antony 63.3, as Magie I 443 reads it) and kept his kingdom.
 
 - id: comana-pontica
   kind: city-state
   names:
     - { text: Comana, lang: la, preferred: true }
   from: 63 BCE
-  to: after 43 BCE
-  ruler: 'the priests of Ma: Archelaus, then Lycomedes from 47'
+  to: after 27 BCE
+  ruler: 'the priests of Ma: Archelaus, then Lycomedes from 47; Cleon, 31/30; Dyteutus, from c. 29'
   sources:
     - { source: strabo, locator: '12.3.34–35' }
+    - { source: strabo, locator: '12.8.9' }
+    - { source: cassius-dio, locator: '51.2.2–3' }
   confidence: probable
   review: draft
+  note: >-
+    Antony enlarged Lycomedes' domain by four hundred schoeni (Strabo
+    12.3.35). After Actium Octavian deposed him and gave his kingdom to "one
+    Medeius", who had turned the Mysians against Antony (Dio 51.2.2–3); Strabo
+    has the Mysian brigand chief Cleon, rewarded for the same, receive the
+    priesthood and die within a month (12.8.9), and then Dyteutus son of
+    Adiatorix (12.3.35). Medeius and Cleon may be one man.
 
 - id: olba
   kind: kingdom
   names:
     - { text: Olba, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: the Teucrid priest-dynasts
+  to: after 27 BCE
+  ruler: the Teucrid priest-dynasts; Aba, by Antony's and Cleopatra's favour, then her descendants
   sources:
     - { source: strabo, locator: '14.5.10' }
+    - { source: magie-1950, locator: 'vol. I, 434' }
   confidence: probable
   review: needs-check
+  note: >-
+    Aba, daughter of Xenophanes, held the priest-dynasty because "both Antony
+    and Cleopatra conferred it upon her as a favour"; she was overthrown, "but
+    the empire remained with her descendants" (Strabo 14.5.10). Its standing
+    under Antony — his client, or Cleopatra's dependant within her grant of
+    Rough Cilicia — is not stated, so it stays independent. Strabo's grant of
+    "the whole of Cilicia Tracheia except Seleuceia" to Cleopatra and then
+    Amyntas (14.5.6) would include Olba's coast at Corycus and Elaeussa;
+    Borgia (2017, 305) places Amyntas' holding there. Not drawn.
 
 - id: derbe
   kind: kingdom
   names:
     - { text: Derbe, lang: la, preferred: true }
   from: before 50 BCE
-  to: after 43 BCE
+  to: 31 BCE
   ruler: Antipater of Derbe
   sources:
     - { source: strabo, locator: '12.6.3' }
-    - { source: dmitriev-2000, locator: 'pp. 359–360' }
+    - { source: dmitriev-2000, locator: 'pp. 359–360, 371 n. 81' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
   confidence: probable
   review: needs-check
+  note: >-
+    Antipater held Derbe and Laranda until Amyntas "attacked and killed
+    Derbetes" (Strabo 12.6.3). The date is not recorded: about 36 (Robert), the
+    late 30s or early 20s (Mitchell), or after Actium with Octavian's leave
+    (Magie I 443), which is the date drawn (Dmitriev 371 n. 81 collects the
+    views).
 
 - id: lycia
   kind: league
   names:
     - { text: Lycia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.3.2–3' }
     - { source: mitchell-2005 }
@@ -675,26 +962,36 @@
   review: draft
   note: >-
     The Lycian League, a free ally of Rome; its treaty with Rome of 24 July 46
-    survives.
+    survives. Brutus besieged and destroyed Xanthus in 42 and made the league
+    pay taxes (Plut. Brutus 30–32; App. BC 4.82); Antony released it from them
+    and urged the rebuilding of Xanthus (App. BC 5.7). The standing did not
+    change, so the sack is not drawn.
 
 - id: rhodus
   kind: city-state
   names:
     - { text: Rhodus, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.2.2–4' }
     - { source: fraser-bean-1954 }
+    - { source: appian, locator: 'BC 4.65–74' }
+    - { source: appian, locator: 'BC 5.7' }
   confidence: certain
   review: draft
+  note: >-
+    Taken by Cassius in 42 and garrisoned under L. Varus (App. BC 4.74); freed
+    after Philippi, when Antony gave it Andros, Tenos, Naxos and Myndus, soon
+    taken away again "because they ruled them too harshly" (BC 5.7). A free
+    ally throughout; the capture is not drawn.
 
 - id: scythia-minor
   kind: kingdom
   names:
     - { text: Scythae, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
   confidence: probable
@@ -707,17 +1004,21 @@
   names:
     - { text: Mauretania Bogudiana, lang: la, preferred: true }
   from: 49 BCE
-  to: after 43 BCE
+  to: 39 BCE
   ruler: Bogud, 49–38
   sources:
     - { source: pliny-nh, locator: '5.19' }
     - { source: bridoux-2020, locator: '¶99–100' }
     - { source: cassius-dio, locator: '41.42.7' }
+    - { source: cassius-dio, locator: '48.45.1–3' }
+    - { source: amela-valverde-2012, locator: '151–155' }
   confidence: probable
   review: draft
   note: >-
     The western kingdom, west of the Mulucha; Pliny's 'Bogudiana'. Named king with Bocchus II by Caesar's party in Rome in 49 (Dio 41.42.7);
-    Bocchus took it in 38.
+    Bocchus took it in 38, while Bogud was campaigning for Antony in Spain, and
+    Tingi's people were given citizenship (Dio 48.45.1–3). Freyburger and Roddaz date the Spanish raid to 41
+    (as reported by Amela Valverde 2012, 152); Dio's 38 is followed.
 
 - id: numidia-masinissa
   kind: kingdom
@@ -725,17 +1026,21 @@
     - { text: Regnum Masinissae, preferred: true, to: 45 BCE }
     - { text: Regnum Arabionis, preferred: true, from: 44 BCE }
   from: 88 BCE
-  to: after 43 BCE
-  ruler: Masinissa II, 81–46; Arabio, 44–40
+  to: 42 BCE
+  ruler: Masinissa II, 81–46; Arabio, 44–41
   sources:
     - { source: bridoux-2020, locator: '¶147–159 and pl. IX' }
+    - { source: appian, locator: 'BC 4.54–56' }
+    - { source: cassius-dio, locator: '48.22.4–6' }
   confidence: probable
   review: draft
   note: >-
     Western Numidia between the Soummam and the Ampsaga, a vassal of the eastern
     kings from the partition of 88 (Bridoux ¶147–148). Lost to Bocchus II and
-    Sittius in 46 and recovered by Masinissa's son Arabio in 44. The name is
-    ours; the sources call it by its king.
+    Sittius in 46 and recovered by Masinissa's son Arabio in 44. Arabio sided
+    with T. Sextius in 43–42 (App. BC 4.54–56) and was driven out and then
+    killed by him, "vraisemblablement en 41" (Dio 48.22.4–6; Bridoux ¶159). The
+    name is ours; the sources call it by its king.
 
 - id: sittiani
   kind: people
@@ -759,22 +1064,28 @@
   names:
     - { text: Aethiopia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: the kings of Meroë
+  to: after 27 BCE
+  ruler: the kings and queens of Meroë
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: pliny-nh, locator: '5.59, 6.177–197' }
+    - { source: philae-stele }
   confidence: certain
   review: draft
   note: >-
-    The Meroitic kingdom of Kush, 'Aethiopia' to Greek and Roman writers.
+    The Meroitic kingdom of Kush, 'Aethiopia' to Greek and Roman writers. In 29
+    Cornelius Gallus received envoys of its king at Philae: the Latin of his
+    stele has the king taken "in tutelam", under protection, the Greek calls
+    him a public friend (proxenos). Neither makes Kush a client, and no Roman
+    ever held its ground; Lower Nubia went to Gallus' buffer ruler (see
+    triakontaschoinos). No Meroitic ruler is securely named for 43–29.
 
 - id: garamantes
   kind: people
   names:
     - { text: Garamantes, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: pliny-nh, locator: '5.35–38' }
     - { source: mattingly-2003 }
@@ -805,7 +1116,7 @@
   names:
     - { text: Pontic Greek cities, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: eutropius, locator: '6.10' }
     - { source: mihailov-igbulg, locator: 'I² 13' }
@@ -820,21 +1131,28 @@
   names:
     - { text: Noricum, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
-  ruler: Voccio
+  to: after 27 BCE
+  ruler: Voccio (fl. 58–49)
   sources:
     - { source: caesar-bg, locator: '1.53' }
     - { source: caesar-bc, locator: '1.18' }
-    - { source: alfoldy-1974, locator: 'ch. 3' }
+    - { source: alfoldy-1974, locator: 'chs. 4–5' }
+    - { source: cassius-dio, locator: '54.20.2' }
   confidence: probable
   review: needs-check
+  note: >-
+    A kingdom friendly to Rome until its annexation after the Norican raid on
+    Istria in 16 (Dio 54.20.2). No king is securely named for 43–27. The
+    Taurisci made to pay tribute in 35 (App. Ill. 16), whom Strabo counts among
+    the Norici (4.6.9), lived south of the kingdom drawn here. The locator was
+    ch. 3 until September 2026; the first century BCE is chs. 4–5.
 
 - id: delmatae
   kind: people
   names:
     - { text: Delmatae, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: 34 BCE
   sources:
     - { source: appian, locator: 'Ill. 12–13' }
     - { source: wilkes-1969, locator: 'pp. 29–45' }
@@ -846,7 +1164,7 @@
   names:
     - { text: Massilia, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '4.1.4–9' }
     - { source: caesar-bc, locator: '2.22' }
@@ -911,48 +1229,73 @@
   names:
     - { text: Vaccaei, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: cassius-dio, locator: '51.20.5' }
   confidence: certain
   review: draft
+  note: >-
+    Dio, in his narrative of 29, has the Cantabri, Vaccaei and Astures subdued
+    by Statilius Taurus, with no year (51.20.5). Only the Vaccaei stayed so: by
+    26 they were the victims of Cantabrian raids, not enemies (Flor. 2.33.47;
+    Oros. 6.21.3). Their ground passes to Hither Spain c. 29.
 
 - id: astures
   kind: people
   names:
     - { text: Astures, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: suetonius-aug, locator: '26.3' }
+    - { source: florus, locator: '2.33.46–48' }
   confidence: certain
   review: draft
+  note: >-
+    Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
+    29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
+    (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
+    53.25.8).
 
 - id: cantabri
   kind: people
   names:
     - { text: Cantabri, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: suetonius-aug, locator: '26.3' }
+    - { source: florus, locator: '2.33.46–48' }
   confidence: certain
   review: draft
+  note: >-
+    Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
+    29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
+    (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
+    53.25.8).
 
 - id: callaeci
   kind: people
   names:
     - { text: Callaeci, lang: la, preferred: true }
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: certain
   review: draft
+  note: >-
+    No source records either their conquest or their independence in 43–27.
+    Villanueva Acuña (2011, 2016) holds that the Cantabrian wars touched their
+    lands only at the margin, and reads the caetra coins of 27–25 from the Braga
+    and Lugo country as signs of a pacified rear.
 
 - id: creta-koinon
   kind: league
@@ -968,3 +1311,295 @@
   note: >-
     The Cretan cities, independent until Q. Metellus conquered the island in
     69–67.
+
+# --- added September 2026: the extension to 27 BCE -----------------------------
+
+- id: sextus-pompeius
+  kind: command
+  names:
+    - { text: Sextus Pompeius, preferred: true }
+    - { text: Sex. Pompeius Magnus Pius, lang: la }
+  from: { earliest: 43 BCE, latest: 42 BCE }
+  to: 36 BCE
+  ruler: Sex. Pompeius, 43–36
+  sources:
+    - { source: cassius-dio, locator: '48.17.4–19.1' }
+    - { source: appian, locator: 'BC 4.84–85' }
+    - { source: appian, locator: 'BC 5.72' }
+    - { source: appian, locator: 'BC 5.126' }
+    - { source: welch-2012 }
+  confidence: certain
+  review: draft
+  note: >-
+    Pompey's younger son. The senate gave him the fleet and the coasts in 43
+    (Dio 46.40.3; Vell. 2.73.2); condemned with Caesar's assassins later that
+    year (Dio 48.17.2), he held Sicily from 43/42, Sardinia and Corsica through
+    his freedman Menodorus in 40–38, and was recognised by the triumvirs at
+    Misenum in 39 as governor of Sicily, Sardinia, Corsica and (on paper) the
+    Peloponnese, which Antony never handed over (Dio 48.36.4–5, 48.39.1; App.
+    BC 5.72, 5.77). Beaten at Naulochus in 36, killed at Miletus in 35 (App. BC
+    5.144). A Roman commander, not a state: the provinces he held stayed
+    provinces, so his ground is occupation.
+
+- id: achaea
+  kind: province
+  names:
+    - { text: Achaia, lang: la, preferred: true }
+    - { text: Achaea, lang: la }
+  from: { earliest: 46 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: strabo, locator: '17.3.25' }
+    - { source: bowersock-1965, locator: '284–285' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Attested as a province of the people in the settlement of January 27 (Dio
+    53.12.4, "Greece with Epirus"). 27 is its first firm attestation, not a
+    creation date: Ser. Sulpicius Rufus governed Achaea in 46–45 (Broughton),
+    and Greece had commanders of its own under the triumvirs, so it may have
+    been separate earlier, on and off. The ground is drawn Achaea's from 27
+    only. Strabo's list (17.3.25), which Bowersock reads as putting Thessaly and
+    part of Epirus in Achaea, describes the provinces of Tiberius' time, so
+    reading it back to 27 is itself a step of inference.
+
+- id: iapydes
+  kind: people
+  names:
+    - { text: Iapydes, lang: la, preferred: true }
+    - { text: Iapodes, lang: la }
+  from: before 68 BCE
+  to: 36 BCE
+  sources:
+    - { source: appian, locator: 'Ill. 16–21' }
+    - { source: strabo, locator: '4.6.10' }
+    - { source: strabo, locator: '7.5.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Iapydes behind the Liburnian coast, who "drove back the Romans twice
+    within the space of about twenty years, overran Aquileia, and plundered the
+    Roman colony of Tergestus" (App. Ill. 18). Octavian took Metulum in 35, and
+    "the transalpine Iapydes were then for the first time brought in subjection
+    to the Romans" (Ill. 21). Dio has them among peoples who had failed to pay
+    their tribute in 36–35 (49.34.2), so some — probably the cisalpine
+    Moentini and Avendeatae (Ill. 16) — were tributary before. Added September
+    2026.
+
+- id: mauretania-roman
+  kind: province
+  names:
+    - { text: Mauretania, lang: la, preferred: true }
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.43.7' }
+    - { source: cassius-dio, locator: '53.12.9' }
+    - { source: amela-valverde-2012, locator: '155–164' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Bocchus II's kingdom after his death in 33, until Juba II was given it in 25
+    (Dio 53.26.2). Dio says Octavian "enrolled it among the Roman provinces"
+    (49.43.7), and Octavian's colonies were planted there (Pliny 5.2, 5.20–21);
+    but no governor is known, it is missing from the provinces of 27, and Dio
+    himself says the lands not listed were "left autonomous or entrusted to
+    kings" (53.12.9). A province on Mackie's and Amandry's reading, and Amela
+    Valverde's, who has it run from Further Spain; a legal limbo or protectorate
+    to Gsell, Roller, Coltelloni-Trannoy and Hugoniot (all as Amela reports
+    them). Drawn as a province because that is what the one explicit ancient
+    statement says; uncertain throughout.
+
+- id: aegyptus-province
+  kind: province
+  names:
+    - { text: Aegyptus, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '51.17.1' }
+    - { source: cassius-dio, locator: '53.12.7' }
+    - { source: res-gestae, locator: '27.1' }
+    - { source: philae-stele }
+    - { source: cah-x, locator: 'ch. 14b' }
+  confidence: certain
+  review: draft
+  note: >-
+    Egypt after Alexandria fell in August 30, "added to the empire of the Roman
+    people" (RGDA 27.1). Octavian's, and Caesar's share in 27 (Dio 53.12.7),
+    governed by a knight: C. Cornelius Gallus, "praefectus Alexandreae et
+    Aegypti primus" on his stele (Dio 51.17.1). The same ground as the kingdom;
+    a separate polity because a kingdom and a province are different things.
+
+- id: cyrenaica-selene
+  kind: kingdom
+  names:
+    - { text: Cyrenaica, lang: la, preferred: true }
+  from: 34 BCE
+  to: 31 BCE
+  ruler: Cleopatra Selene, 34–30
+  sources:
+    - { source: cassius-dio, locator: '49.41.3' }
+    - { source: res-gestae, locator: '27.3' }
+    - { source: rpc-i, locator: '919–925' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony's daughter by Cleopatra was given "the Cyrenaica in Libya" at the
+    Donations of 34 (Dio 49.41.3, where it is a promise). Augustus himself says
+    he recovered "Cyrenae, which were then for the most part in possession of
+    kings" (RGDA 27.3), so the grant largely took effect. A Roman quaestor with
+    a propraetor's powers, A. Pupius Rufus, still struck coin there at some date
+    in 34–31 (RPC I 919–923), which is why this is uncertain.
+
+- id: creta-cyrenae
+  kind: province
+  names:
+    - { text: Creta et Cyrenae, lang: la, preferred: true }
+  from: { earliest: 36 BCE, latest: 27 BCE }
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+    - { source: rpc-i, locator: '914–917' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Crete and Cyrene as one province of the people, first attested in the
+    settlement of 27 (Dio 53.12.4, "Crete and the Cyrenaic portion of Libya"),
+    though Dio says his list follows later arrangements (53.12.8) and Strabo's
+    joint listing (17.3.25) is Tiberian. An Antonian officer struck coin at
+    Cnossus and Cyrene alike (RPC I 914–917), so a joint command is likely
+    earlier. The ground passes to it at 27.
+
+- id: triakontaschoinos
+  kind: kingdom
+  names:
+    - { text: Triacontaschoenus, lang: la, preferred: true }
+    - { text: Triakontaschoinos, lang: grc-Latn }
+  from: 29 BCE
+  to: after 27 BCE
+  ruler: a ruler set up by Cornelius Gallus, name unknown
+  sources:
+    - { source: philae-stele }
+    - { source: hoffmann-2009 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    After putting down the Thebaid in 29, Gallus marched beyond the First
+    Cataract and set a ruler (tyrannus) over the Triacontaschoenus, the Nile
+    valley from Syene to the Second Cataract, as a buffer between Egypt and
+    Meroë (the Philae stele; Hoffmann, Minas-Nerpel and Pfeiffer's "vassal
+    buffer zone"). By 25/24 Strabo calls Pselchis there "an Aethiopian city"
+    (17.1.54), so the arrangement did not last. It rests on one inscription.
+
+- id: pontus-polemon
+  kind: kingdom
+  names:
+    - { text: Pontus, lang: la, preferred: true }
+  from: 39 BCE
+  to: after 27 BCE
+  ruler: Darius son of Pharnaces, 39–37; Polemon I, from 37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: cassius-dio, locator: '49.25.4' }
+    - { source: cassius-dio, locator: '49.44.3' }
+    - { source: magie-1950, locator: 'vol. I, 433–435, 443' }
+  confidence: probable
+  review: draft
+  note: >-
+    The kingdom Antony made in Pontus in 39 for Darius, Mithridates' grandson,
+    "on condition of their paying a prescribed tribute" (App. BC 5.75), and
+    passed to Polemon of Laodicea in 37/36. Polemon lost Lesser Armenia after
+    Actium but kept Pontus, and was declared friend and ally in 26 (Magie I
+    443). Not Mithridates' kingdom (pontus-regnum), which ends in 63.
+
+- id: pisidia-amyntas
+  kind: kingdom
+  names:
+    - { text: Pisidia, lang: la, preferred: true }
+  from: 39 BCE
+  to: 37 BCE
+  ruler: Amyntas, 39–37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 433' }
+  confidence: probable
+  review: draft
+  note: >-
+    Amyntas' first kingdom, in the hill country of northern Pisidia (App. BC
+    5.75). In 37/36 it went with him into his kingdom of Galatia. The name is
+    ours; the sources call it by its king.
+
+- id: lycaonia-polemon
+  kind: kingdom
+  names:
+    - { text: Lycaonia, lang: la, preferred: true }
+  from: 39 BCE
+  to: 37 BCE
+  ruler: Polemon, 39–37/36
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: strabo, locator: '12.6.1' }
+    - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
+  confidence: probable
+  review: draft
+  note: >-
+    Polemon's "part of Cilicia" (App. BC 5.75), with Iconium (Strabo 12.6.1),
+    until he left for Pontus in 37/36. Magie (I 433) adds "perhaps the
+    adjacent part of Cilicia Aspera", which is not drawn. The name is ours.
+
+- id: armenia-minor-artavasdes
+  kind: kingdom
+  names:
+    - { text: Armenia Minor, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  ruler: Artavasdes, once king of Media Atropatene, to c. 20
+  sources:
+    - { source: cassius-dio, locator: '54.9.2' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lesser Armenia under the Median king Artavasdes, who had fled to Octavian
+    when Phraates took his own kingdom (Dio 51.16.2; see atropatene), until
+    his death c. 20 (Dio 54.9.2). The year it was given is not recorded.
+
+- id: cyprus
+  kind: province
+  names:
+    - { text: Cyprus, lang: la, preferred: true }
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '14.6.6' }
+    - { source: cassius-dio, locator: '53.12.7' }
+    - { source: cassius-dio, locator: '54.4.1' }
+  confidence: probable
+  review: draft
+  note: >-
+    Cyprus after Cleopatra: Caesar's in 27 (Dio 53.12.7), the people's from 22
+    (54.4.1). Before 30 it was hers, with the Cyprus of 58–48 part of Cicero's
+    Cilicia (cilicia).
+
+- id: judaea-antigonus
+  kind: kingdom
+  names:
+    - { text: Iudaea, lang: la, preferred: true, note: the kingdom of Antigonus }
+  from: 40 BCE
+  to: 38 BCE
+  ruler: Antigonus Mattathias, 40–37
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: debevoise-1938, locator: 'p. 113' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Hasmonean Antigonus, made king by the Parthians when they took
+    Jerusalem in 40, until Sosius and Herod took the city in 37 and he was
+    beheaded at Antioch (AJ 14.487, 15.8–10). A polity of its own because in
+    39–38 there were two Jewish governments: Antigonus in Jerusalem, and Rome's
+    king Herod in Joppa, Idumaea and Galilee. The kingdom's last year, 37,
+    belongs to Herod.

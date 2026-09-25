@@ -156,6 +156,12 @@ export const PolityKindSchema = z.enum([
   'city-state',
   'league',
   'people',
+  /**
+   * A Roman commander holding ground against the government at Rome, as Sextus
+   * Pompeius held Sicily in 43–36: not a state, and the provinces under him did not
+   * stop being provinces, so his claims are occupation.
+   */
+  'command',
 ])
 
 /**

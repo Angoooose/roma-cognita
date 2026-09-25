@@ -8,14 +8,14 @@
 # ancient geographers and the scholarship (atoms.yaml), and their seats are
 # gone. Osroene stays a seat: its extent east of the Euphrates is not known.
 #
-# Each row cites its polity's source and spans the whole 68–43 BCE window,
+# Each row cites its polity's source and spans the whole 68–27 BCE window,
 # hence the open ends. The seat's position is its place's (places.yaml), which
 # is Pleiades'.
 
 - polity: osroene
   place: edessa
   from: before 68 BCE
-  to: after 43 BCE
+  to: after 27 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: certain
   review: draft

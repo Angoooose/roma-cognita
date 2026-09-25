@@ -1161,7 +1161,9 @@ it holds 60 fps, and WebGPU and WebGL2 give matching output.
 1. Schema and validator, including the era-string time parser.
 2. A first dataset in the new model: 68–43 BCE (done September 2026).
 3. Extend the data to 133–27 BCE and the full frame, including Parthia and the
-   neighbours.
+   neighbours. The neighbours were added in September 2026, and the window was
+   carried forward to 27 BCE the same month (68–27, `data/README.md` decisions
+   17–21); the years 133–69 remain.
 4. The first 10 `landscape-change` records.
 5. Pipeline outputs: the atom field (built; borders come from it, see §7.3) and the
    claims table.

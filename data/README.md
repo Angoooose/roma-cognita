@@ -35,7 +35,7 @@ Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads
 converts to astronomical years (1 BCE = 0). Intervals are inclusive at both ends.
 
 **Open ends.** `from: before 68 BCE` means _in force in 68 BCE, and started no later
-than that_; `to: after 43 BCE` means _in force in 43 BCE, and ended no earlier_.
+than that_; `to: after 27 BCE` means _in force in 27 BCE, and ended no earlier_.
 `before` is only ever a start and `after` only ever an end. An open end is a bound,
 not a guess: it says strictly less than an exact year would.
 
@@ -64,7 +64,11 @@ at ingest and the validator asserts it. A consumer that wants the other conventi
 
 ## Scope
 
-The data covers 68–43 BCE. Nothing extends it beyond that window yet.
+The data covers 68–27 BCE: from the year before Pompey's eastern commands to the
+settlement of January 27. It was 68–43 until September 2026, when it was carried
+forward through the triumviral years to 27 (the research and its independent
+check of every citation are summarised in DOUBTS.md). Nothing reaches back before
+68 yet.
 
 ## Decisions
 
@@ -72,10 +76,12 @@ Modelling choices DESIGN.md does not settle, with the reasoning. Each wants
 confirming.
 
 1. **Window edges are open ends.** A row in force at the window's start reads
-   `before 68 BCE` and one still in force at its end reads `after 43 BCE`: in force
+   `before 68 BCE` and one still in force at its end reads `after 27 BCE`: in force
    at that year, extent beyond it not stated. Rows starting or ending inside the
-   window carry their exact year. A later curator extending to 133–27 BCE should
-   treat every open end as a question.
+   window carry their exact year. A later curator extending the window should
+   treat every open end as a question, as the extension from 43 to 27 did: every
+   `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
+   purpose (Osroene's standing with Rome, which nothing attests after 43).
 
 2. **Where the true start is known but the atom is not the polity, the claim stays
    open.** Sicilia the province dates from 241 BCE (on the polity), but the atom is
@@ -174,6 +180,41 @@ confirming.
     follow the modern Rosetta (HydroRIVERS), trace the modern Damietta in the DEM,
     or are splines through the sites. `properties.discharge` (m³/s) apportions the
     pre-dam mean ~2,800 m³/s among the mouths for line width only.
+
+17. **Occupation follows the successor rule too.** A row in the occupation layer
+    ends the year before the occupier was driven out: Labienus' occupation of
+    Asia and Pacorus' of Syria are 40–40, because Ventidius recovered both in 39.
+    Pharnaces' 48–47, from before, is the one row that does not (DOUBTS.md).
+
+18. **A Roman commander holding ground against Rome is a `command`.** Sextus
+    Pompeius in Sicily, Sardinia and Corsica (43–37) is polity `kind: command`, and
+    his rows are `occupied`: the provinces under him never stopped being
+    provinces. The Liberators and the triumvirs are not polities; which triumvir
+    held which province is left for a table of its own (BACKLOG.md).
+
+19. **When a province is first attested, not founded, the claim moves at the
+    attestation.** Achaea and Creta et Cyrenae are both first firmly attested in the
+    settlement of 27, though each may be older; the polity carries a fuzzy start,
+    and the ground passes to it at 27. A fuzzy end on a polity would push its
+    claims inside its earliest bound (the validator reads the earliest year), so
+    where the end is disputed (Africa Nova, 36–28) the polity and its claims keep
+    the latest date and the note carries the rest.
+
+20. **An atom is split only where a source dates a change of hands at that
+    grain** (decided 2026-09-24). The new atoms of the extension — Thessaly and
+    southern Epirus, the Iapydes, inner Pontus, Lycaonia, northern Pisidia, Rough
+    Cilicia, Lower Nubia (the Triacontaschoenus), Tyre, Sidon, the Phoenician and
+    Palestinian coasts, Strato's Tower, Gaza, Samaria, Gadara with Hippos, and
+    Jericho — each carry copies of their parent's earlier claims, so the years
+    before the split draw as they did. A child that leaves its parent standing
+    does not use `splitFrom`, which means the parent is gone.
+
+21. **Disputed creations of 27 are not drawn.** Lusitania and Baetica, and the
+    three Gauls, are dated by Dio to 27 and by most modern work to 16–13; the two
+    Spains and Gallia Comata are kept whole to 27, and the dispute is in their notes
+    (decided 2026-09-24). Mauretania after Bocchus (33) is drawn as a province,
+    uncertain, because Dio's "enrolled among the provinces" (49.43.7) is the one
+    explicit statement.
 
 ## Open doubts
 
