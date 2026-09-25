@@ -1,4 +1,4 @@
-import { type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
+import { MODEL_KEY, type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
 import { LayoutList } from 'lucide-react'
 import { type ReactNode, useId, useMemo } from 'react'
 import { create } from 'zustand'
@@ -13,10 +13,13 @@ import { useExplorer } from '@/store.ts'
  * map and the timeline stay live while it is open, and only its row closes it. Colours
  * are read from the engine, never restated here, so a change to the palette cannot
  * leave the legend behind. Each kind of doubt is keyed only in a year that has some.
+ * Zoomed right into Rome, where the model of the city stands, it keys the model
+ * instead, and says which of it is recorded and which generated.
  */
 export function Legend() {
   const map = useExplorer((s) => s.map)
   const year = useExplorer((s) => s.year)
+  const modelShown = useExplorer((s) => s.modelShown)
   const open = useLegend((s) => s.open)
   const data = useMemo(() => {
     if (!map) return null
@@ -37,7 +40,7 @@ export function Legend() {
       aria-label="Legend"
       className="pointer-events-auto absolute inset-y-0 left-full ml-3 flex w-max animate-in rounded-lg rule-double bg-card/95 px-4 py-3 text-card-foreground shadow-plate backdrop-blur-sm duration-150 fade-in-0 slide-in-from-left-1 select-none"
     >
-      <LegendKey {...data} />
+      <LegendKey {...data} model={modelShown ? MODEL_KEY : undefined} />
     </aside>
   )
 }
@@ -104,6 +107,8 @@ export interface LegendData {
   politics: PoliticsLegend
   /** A kingdom drawn by its seat this year, in its colour. The map names it. */
   seat?: { fill: string }
+  /** The model of Rome's colours, while it stands: the legend keys it instead. */
+  model?: typeof MODEL_KEY
 }
 
 /**
@@ -114,8 +119,10 @@ export interface LegendData {
 export function LegendKey({
   politics,
   seat,
+  model,
   className,
 }: LegendData & { className?: string }) {
+  if (model) return <ModelKey model={model} className={className} />
   const [lead, ...others] = politics.powers
   const otherFills = [...new Set(others.map((p) => p.fill))]
   const doubt = lead && (politics.uncertain || politics.schematic || politics.unclaimed)
@@ -229,6 +236,35 @@ export function LegendKey({
           Road, where dated
         </Key>
       </Column>
+    </div>
+  )
+}
+
+/** The model of Rome's key: its stones, the houses as illustrative, and what that means. */
+function ModelKey({ model, className }: { model: typeof MODEL_KEY; className?: string }) {
+  return (
+    <div className={cn('flex gap-4 text-sm', className)}>
+      <Column>
+        <Key swatch={<Swatch fill={model.marble} />}>Marble</Key>
+        <Key swatch={<Swatch fill={model.stucco} />}>Stucco over tufa</Key>
+        <Key swatch={<Swatch fill={model.travertine} />}>Travertine</Key>
+        <Key
+          swatch={
+            <span className="flex h-3 w-5 flex-col overflow-hidden rounded-[1px]">
+              <span className="h-1" style={{ background: model.roof }} />
+              <span className="flex-1" style={{ background: model.house }} />
+            </span>
+          }
+        >
+          Houses, <span className="italic">illustrative</span>
+        </Key>
+      </Column>
+      <Rule />
+      <p className="w-[220px] text-xs leading-snug text-muted-foreground">
+        Only the named buildings are from the records, in the stone their sources give. The
+        houses between them are generated to show how crowded the city was, not where any
+        house stood.
+      </p>
     </div>
   )
 }

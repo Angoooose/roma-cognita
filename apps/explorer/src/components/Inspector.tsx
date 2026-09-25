@@ -100,11 +100,20 @@ interface BodyProps<H> {
 }
 
 function PlaceBody({
-  hit: { place: p, status, seatOf },
+  hit: { place: p, status, condition, seatOf },
   year,
   onClose,
 }: BodyProps<PlaceHit>) {
-  const what = [status ? status[0].toUpperCase() + status.slice(1) : 'Settlement']
+  // A monument says what it is, and whether it was building or burnt that year.
+  const kind = p.within ? p.kind.replace(/-/g, ' ') : null
+  const what = [
+    status
+      ? status[0].toUpperCase() + status.slice(1)
+      : kind
+        ? kind[0].toUpperCase() + kind.slice(1)
+        : 'Settlement',
+  ]
+  if (condition) what.push(condition)
   if (seatOf) what.push(`seat of ${seatOf.name}`)
   return (
     <>

@@ -19,8 +19,12 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `relations.yaml`         | polity-to-polity links over time (`province-of`, `client-of`)   |
 | `seats.yaml`             | kingdoms drawn as their capital because their extent is unknown |
 | `places.yaml`            | settlements, joined to Pleiades, with prominence and status     |
+| `places/rome.yaml`       | the places of the model of Rome: monuments, river, streets, hills and quarters (tier 5, `within: roma`), dated from Platner & Ashby (DESIGN §7.7); the Servian circuit's reconstruction is `pipeline/src/rome/servian.ts`, the generated city `pipeline/src/rome/model.ts` |
 | `features.yaml`          | physical features: floodplains, the Nile delta branches, seas   |
 | `geometry/features.geojson` | their shapes, lon/lat, keyed by id; floodplains derived; for seas, the course their name is lettered along |
+| `geometry/rome.geojson`  | those monuments' outlines, lon/lat, keyed by id; fetched from the OpenStreetMap elements each record cites by `npm run rome:fetch -w pipeline`, never edited by hand; baked by `npm run rome -w pipeline` |
+| `geometry/rome-sitar.geojson` | the pieces of excavated street in and round the Servian Wall that may have stood in 68–27 BCE, from SITAR (CC BY-SA 4.0), keyed by SITAR's number, with their dates; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
+| `geometry/rome-levels.geojson` | heights (m above the sea) SITAR records on ground walked on, floors, paving and streets, in a phase between 400 BCE and 150 CE, and those the corrections of Rome's valley floors cite (pipeline/src/rome/ground.ts); CC BY-SA 4.0; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
 | `known-world.yaml`       | how far Roman geography reached, as one coarse ring: where the map's colour stops; baked by `npm run known -w pipeline` |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
@@ -136,7 +140,9 @@ confirming.
 10. **Place prominence and status are dated values.** `prominence: 2` is shorthand
     for the place's whole interval; a dated list
     (`[{ value, from, to }]`) is there for a colony founded half way through. The
-    loader always expands to the list. Tiers run 1–4 (see places.yaml).
+    loader always expands to the list. Tiers run 1–4 for settlements (see
+    places.yaml) and 5 for a city plan's monuments. A monument's `condition`
+    (`under construction`, `burnt`, `standing`) is a dated value the same way.
 
 11. **Names are written inline** on polities, places and features and flattened by
     the loader into the §5.1 `name` entity, inheriting dates and sources from their

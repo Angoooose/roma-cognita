@@ -29,11 +29,14 @@ import { loadFont, msdfInk, type FontData } from './msdf.ts'
  */
 
 interface Placement {
-  kind: 'land' | 'water'
+  /** `plan`: the hills and quarters of the plan of Rome (build/rome/names.json). */
+  kind: 'land' | 'water' | 'plan'
   /** The polity a land name belongs to, and the atoms it names. */
   polity?: string
   atoms?: string[]
   font: string
+  /** How it is inked (STYLES), when that is not the font's own style. */
+  style?: string
   text: string
   years: [number, number][]
   path: [number, number][]
@@ -66,6 +69,45 @@ const STYLES: Record<string, FaceStyle> = {
     knockout: true,
     fadeIn: [7, 11],
     fadeOut: [80, 130],
+  },
+  // The plan of Rome's lettering: dark ink on the plate's paper, as the plate's
+  // engraver would letter it — the hills in spaced capitals, the quarters in italic.
+  // Hill names recede as the zoom reaches the buildings on them.
+  'plan-hill': {
+    ink: new THREE.Color('#2A241E'),
+    inkAlpha: 0.6,
+    halo: new THREE.Color('#E5D9BE'),
+    haloAlpha: 0.3,
+    gain: 0.3,
+    fadeIn: [4, 7],
+    fadeOut: [30, 55],
+  },
+  'plan-district': {
+    ink: new THREE.Color('#2A241E'),
+    inkAlpha: 0.82,
+    halo: new THREE.Color('#E5D9BE'),
+    haloAlpha: 0.4,
+    gain: 0.2,
+    fadeIn: [4, 7],
+    fadeOut: [80, 140],
+  },
+  'plan-street': {
+    ink: new THREE.Color('#2A241E'),
+    inkAlpha: 0.75,
+    halo: new THREE.Color('#E5D9BE'),
+    haloAlpha: 0.5,
+    gain: 0.2,
+    fadeIn: [5, 8],
+    fadeOut: [60, 100],
+  },
+  'plan-water': {
+    ink: new THREE.Color('#2F4F57'),
+    inkAlpha: 0.8,
+    halo: new THREE.Color('#9AB3B3'),
+    haloAlpha: 0.3,
+    gain: 0.2,
+    fadeIn: [4, 7],
+    fadeOut: [80, 140],
   },
   'garamond-italic': {
     ink: new THREE.Color('#C9A15A'),
@@ -125,20 +167,26 @@ export class LabelLayer {
   private placements: Placement[] = []
   private shown = new Set<Placement>()
   /** Glyph corners of the names on the map, plane metres, for other layers to avoid. */
-  private glyphBoxes: { corners: [number, number][]; capHeight: number; font: string }[] =
+  private glyphBoxes: { corners: [number, number][]; capHeight: number; style: string }[] =
     []
 
   async load() {
-    const labels = await fetch('/labels/territories.json')
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null)
+    const read = (url: string) =>
+      fetch(url)
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null)
+    const [labels, plan] = await Promise.all([
+      read('/labels/territories.json'),
+      read('/rome/names.json'),
+    ])
     if (!labels) return
-    this.placements = labels.labels
-    const names = [...new Set(this.placements.map((p) => p.font))]
+    this.placements = [...labels.labels, ...(plan?.labels ?? [])]
+    // One face per style: the plan's lettering shares atlases with the map's.
+    const styles = new Map(this.placements.map((p) => [styleOf(p), p.font]))
     await Promise.all(
-      names.map(async (name) => {
-        const face = await loadFace(name)
-        if (face) this.faces.set(name, face)
+      [...styles].map(async ([style, font]) => {
+        const face = await loadFace(style, font)
+        if (face) this.faces.set(style, face)
       }),
     )
   }
@@ -177,13 +225,13 @@ export class LabelLayer {
       const mode: number[] = []
       const index: number[] = []
       for (const [p, m] of modes) {
-        if (p.font !== name) continue
+        if (styleOf(p) !== name) continue
         for (const q of layout(face.font, p)) {
           if (m !== 2)
             this.glyphBoxes.push({
               corners: q.map(([x, y]) => [x, y]),
               capHeight: p.capHeight,
-              font: p.font,
+              style: styleOf(p),
             })
           const base = positions.length / 3
           for (const [x, y, u, v] of q) {
@@ -226,7 +274,7 @@ export class LabelLayer {
     const out: [number, number, number, number][] = []
     const v = new THREE.Vector3()
     for (const g of this.glyphBoxes) {
-      const style = STYLES[g.font]
+      const style = STYLES[g.style]
       const px = g.capHeight / mpp
       if (!style || px < style.fadeIn[0] || px > style.fadeOut[1]) continue
       let x0 = Infinity
@@ -257,10 +305,12 @@ export class LabelLayer {
   }
 }
 
-async function loadFace(name: string): Promise<Face | null> {
+const styleOf = (p: Placement) => p.style ?? p.font
+
+async function loadFace(name: string, font: string): Promise<Face | null> {
   const style = STYLES[name]
   if (!style) return null
-  const loaded = await loadFont(name)
+  const loaded = await loadFont(font)
   return loaded ? new Face(loaded.font, loaded.atlas, style) : null
 }
 

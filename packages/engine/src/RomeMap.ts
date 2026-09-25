@@ -10,8 +10,12 @@ import {
   type PoliticalHit,
 } from './politics/PoliticalLayer.ts'
 import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
-import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
+import { PlaceLayer, placeUniforms, type PlaceHit } from './labels/PlaceLayer.ts'
 import { roadUniforms } from './roads/shading.ts'
+import { PlanLayer, PLAN_MPP } from './rome/PlanLayer.ts'
+import { ModelLayer, modelUniforms } from './rome/ModelLayer.ts'
+import { planUniforms } from './rome/shading.ts'
+import { Miniature } from './rome/miniature.ts'
 import { entries, frame, hitFor, type MapRef } from './find.ts'
 
 export interface RomeMapOptions {
@@ -41,6 +45,15 @@ export class RomeMap {
   readonly politics = new PoliticalLayer()
   readonly labels = new LabelLayer()
   readonly places = new PlaceLayer()
+  readonly plan = new PlanLayer()
+  readonly model = new ModelLayer()
+  private miniature: Miniature
+  /**
+   * Called when the model of Rome comes up out of the board, or goes back into it,
+   * so the legend can key it (DESIGN.md §7.7).
+   */
+  onModel?: (shown: boolean) => void
+  private modelShown = false
   /** Built in `create`, once the known-world texture it browns from has loaded. */
   private paper?: PaperLayer
   frame: FrameStats = { frameMs: 0, fps: 0, drawCalls: 0, triangles: 0 }
@@ -56,10 +69,26 @@ export class RomeMap {
       map.politics.load(),
       map.labels.load(),
       map.places.load(),
+      map.plan.load(),
+      map.model.load(),
     ])
+    // The plan lets the camera closer than the terrain alone would: the view asked for
+    // was clamped before it loaded, so it is asked for again.
+    map.view.state.distance = opts.camera.distance
+    map.view.apply()
+    if (map.plan.ground) map.model.buildGround(map.plan.ground)
+    // Rome's monuments hang on the model's ground, and on their roofs while it stands.
+    const anchorOf = map.places.anchorOf
+    map.places.anchorOf = (p) =>
+      (p.within === 'roma' && map.model.anchor(p.x, p.y)) || anchorOf(p)
+    map.model.onShaded = () => {
+      map.places.invalidate()
+      map.dirty = true
+    }
     map.paper = new PaperLayer()
     map.scene.add(map.paper.mesh)
     map.labels.setYear(map.politics.year, false)
+    map.model.setYear(map.politics.year)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
   }
@@ -73,6 +102,9 @@ export class RomeMap {
       forceWebGL: opts.forceWebGL,
     })
     this.renderer.setPixelRatio(window.devicePixelRatio)
+    // Only the model of Rome casts and takes shadows (rome/ModelLayer.ts).
+    this.renderer.shadowMap.enabled = true
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
     // Past the last terrain tile: the paper the terrain fades into at the far margin, so
     // the edge of the data never shows.
     this.renderer.setClearColor(PAPER_HEX)
@@ -85,9 +117,13 @@ export class RomeMap {
 
     this.view = new MapCamera(this.renderer.domElement, opts.camera)
     this.view.onChange = () => (this.dirty = true)
+    const normal = this.view.minDistanceAt(0, 0)
+    this.view.minDistanceAt = (x, y) => this.plan.minDistanceAt(x, y, normal)
     this.scene.add(this.terrain.group)
     this.scene.add(this.labels.group)
     this.scene.add(this.places.group)
+    this.scene.add(this.model.group)
+    this.miniature = new Miniature(this.renderer, this.scene, this.view.camera)
     this.places.seatColour = (polity, year) => this.politics.colourOf(polity, year)
 
     this.resizeObserver = new ResizeObserver(() => this.resize())
@@ -136,6 +172,27 @@ export class RomeMap {
     if (this.politics.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
     roadUniforms.pixelRatio.value = this.renderer.getPixelRatio()
+    planUniforms.pixelRatio.value = this.renderer.getPixelRatio()
+    // The terrain lays itself smooth under the model as the board comes in (18–26 m/px),
+    // and the model rises out of it (rome/ModelLayer.ts).
+    const board = 1 - smoothstep(Math.log(18), Math.log(26), Math.log(mpp))
+    if (board !== planUniforms.flatten.value) this.dirty = true
+    planUniforms.flatten.value = board
+    if (this.model.update(mpp)) this.dirty = true
+    planUniforms.meshShown.value = this.model.group.visible ? modelUniforms.grow.value : 0
+    placeUniforms.lift.value = this.model.group.visible ? modelUniforms.grow.value : 0
+    const shown = modelUniforms.grow.value > 0.5
+    if (shown !== this.modelShown) {
+      this.modelShown = shown
+      this.onModel?.(shown)
+    }
+    if (this.model.group.visible) {
+      const target = new THREE.Vector3(this.view.state.x, this.view.state.y, 0)
+      this.model.fit(
+        target,
+        mpp * Math.max(this.container.clientWidth, this.container.clientHeight),
+      )
+    }
     const w = this.container.clientWidth
     const h = this.container.clientHeight
     const cam = this.view.camera
@@ -154,7 +211,14 @@ export class RomeMap {
     const dt = now - this.lastTime
     this.lastTime = now
     const t0 = performance.now()
-    this.renderer.render(this.scene, this.view.camera)
+    // The model's tilt-shift, while it stands and the view is tilted.
+    const tilt = this.model.group.visible
+      ? modelUniforms.grow.value *
+        smoothstep(Math.log(15), Math.log(45), Math.log(Math.max(1, this.view.state.pitch)))
+      : 0
+    this.miniature.amount.value = tilt
+    if (tilt > 0.01) this.miniature.render()
+    else this.renderer.render(this.scene, this.view.camera)
     const renderMs = performance.now() - t0
 
     const info = this.renderer.info.render
@@ -178,6 +242,7 @@ export class RomeMap {
     const before = this.politics.year
     this.politics.setYear(year, opts)
     roadUniforms.year.value = this.politics.year
+    this.model.setYear(this.politics.year)
     if (this.politics.year !== before)
       this.labels.setYear(this.politics.year, !!opts.animate)
     this.dirty = true
@@ -208,6 +273,11 @@ export class RomeMap {
     )
     if (place) return { place }
     const p = this.view.ground(clientX, clientY)
+    // Close in, a click inside a monument's outline on the plan of Rome opens it.
+    const monument =
+      p && this.view.metresPerPixel < PLAN_MPP ? this.plan.pick(p.x, p.y, this.year) : null
+    const hit = monument ? this.places.hitFor(monument, this.year) : null
+    if (hit) return { place: hit }
     const territory = p ? await this.politics.pick(p.x, p.y) : null
     return territory ? { territory } : null
   }
