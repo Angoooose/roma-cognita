@@ -44,6 +44,8 @@ import {
 } from './builder.ts'
 import { Frame } from './architecture.ts'
 import { buildDesign, type Design } from './monuments.ts'
+import { OCC_BLUR, OCC_CELL_M, OCC_STEP_M } from './occlusionGrid.ts'
+import type { OcclusionJob, OcclusionResult } from './occlusionWorker.ts'
 
 /**
  * The model of Rome (DESIGN.md §7.7): the city as a museum model, raised out of the
@@ -124,11 +126,6 @@ interface Monument {
 /** How far round a monument's point its marker looks for the top of its building, metres. */
 const ANCHOR_REACH_M = 6
 
-/** The occlusion grid's cell, metres, the reach of its two blurs, cells, and its height step, metres. */
-const OCC_CELL_M = 2
-const OCC_BLUR = [2, 6]
-const OCC_STEP_M = 0.2
-
 /**
  * How much the model overshadows itself, for its soft shading: a grid over the city
  * of the height of whatever stands in each cell, over its ground, blurred at two
@@ -141,7 +138,11 @@ class Occlusion {
   readonly tex: THREE.DataTexture
   readonly origin = uniform(new THREE.Vector2())
   readonly size = uniform(new THREE.Vector2())
-  private tops: Float32Array
+  private worker = new Worker(new URL('./occlusionWorker.ts', import.meta.url), {
+    type: 'module',
+  })
+  private job = 0
+  private pending = new Map<number, (shown: boolean) => void>()
   private nx: number
   private ny: number
   private x0: number
@@ -153,7 +154,6 @@ class Occlusion {
   readonly bounds: [number, number, number, number]
 
   constructor(tops: ArrayLike<number>) {
-    this.tops = new Float32Array(tops)
     let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity]
     for (let i = 0; i < tops.length; i += 11)
       for (const k of [0, 3, 6]) {
@@ -184,64 +184,37 @@ class Occlusion {
     ]
     this.origin.value.set(this.x0, this.y0)
     this.size.value.set(this.nx * OCC_CELL_M, this.ny * OCC_CELL_M)
+    const t = new Float32Array(tops)
+    const frame = { nx: this.nx, ny: this.ny, x0: this.x0, y0: this.y0 }
+    this.worker.postMessage({ tops: t, frame } satisfies OcclusionJob, [t.buffer])
+    this.worker.onmessage = (e: MessageEvent<OcclusionResult>) => this.onResult(e.data)
   }
 
-  /** Builds the grid for a year; false if it already was. */
-  build(year: number) {
-    if (year === this.year) return false
+  /**
+   * Builds the grid for a year, in the worker (occlusionWorker.ts): true once it is
+   * shown, false if it already was, or a later year was asked for meanwhile.
+   */
+  build(year: number): Promise<boolean> {
+    if (year === this.year) return Promise.resolve(false)
     this.year = year
-    const { nx, ny, tops } = this
-    const grid = new Float32Array(nx * ny)
-    const cx = (x: number) => (x - this.x0) / OCC_CELL_M
-    const cy = (y: number) => (y - this.y0) / OCC_CELL_M
-    for (let i = 0; i < tops.length; i += 11) {
-      if (year < tops[i + 9] || year > tops[i + 10]) continue
-      const [ax, ay, bx, by, qx, qy] = [
-        cx(tops[i]),
-        cy(tops[i + 1]),
-        cx(tops[i + 3]),
-        cy(tops[i + 4]),
-        cx(tops[i + 6]),
-        cy(tops[i + 7]),
-      ]
-      const h = Math.max(tops[i + 2], tops[i + 5], tops[i + 8])
-      if (h <= 0) continue
-      const mark = (x: number, y: number) => {
-        const k = Math.floor(y) * nx + Math.floor(x)
-        if (grid[k] < h) grid[k] = h
-      }
-      mark(ax, ay)
-      mark(bx, by)
-      mark(qx, qy)
-      const area = (bx - ax) * (qy - ay) - (by - ay) * (qx - ax)
-      if (Math.abs(area) < 1e-6) continue
-      const [i0, i1] = [
-        Math.max(0, Math.floor(Math.min(ax, bx, qx))),
-        Math.min(nx - 1, Math.ceil(Math.max(ax, bx, qx))),
-      ]
-      const [j0, j1] = [
-        Math.max(0, Math.floor(Math.min(ay, by, qy))),
-        Math.min(ny - 1, Math.ceil(Math.max(ay, by, qy))),
-      ]
-      for (let j = j0; j <= j1; j++)
-        for (let ii = i0; ii <= i1; ii++) {
-          const [px, py] = [ii + 0.5, j + 0.5]
-          const w0 = ((bx - px) * (qy - py) - (by - py) * (qx - px)) / area
-          const w1 = ((qx - px) * (ay - py) - (qy - py) * (ax - px)) / area
-          if (w0 < 0 || w1 < 0 || w0 + w1 > 1) continue
-          const k = j * nx + ii
-          if (grid[k] < h) grid[k] = h
-        }
-    }
-    this.raw = grid
-    const data = this.tex.image.data as Uint8Array
-    for (const [c, r] of OCC_BLUR.entries()) {
-      const out = blur(blur(grid, nx, ny, r), nx, ny, r)
-      for (let k = 0; k < out.length; k++)
-        data[k * 2 + c] = Math.min(255, Math.round(out[k] / OCC_STEP_M))
-    }
+    const id = ++this.job
+    this.worker.postMessage({ id, year } satisfies OcclusionJob)
+    return new Promise((done) => this.pending.set(id, done))
+  }
+
+  private onResult({ id, year, raw, data }: OcclusionResult) {
+    const done = this.pending.get(id)
+    this.pending.delete(id)
+    if (year !== this.year) return done?.(false)
+    this.raw = raw
+    this.tex.image.data = data
     this.tex.needsUpdate = true
-    return true
+    done?.(true)
+  }
+
+  dispose() {
+    this.worker.terminate()
+    this.tex.dispose()
   }
 
   /** The top of whatever stands within `r` metres of a point, metres over its ground. */
@@ -275,30 +248,6 @@ class Occlusion {
     const round = hs.y.sub(up).div(12).clamp(0, 1)
     return float(1).sub(close.mul(near)).sub(round.mul(far))
   }
-}
-
-/** A box blur of a grid, `r` cells either way, across and then down. */
-function blur(src: Float32Array, nx: number, ny: number, r: number) {
-  const tmp = new Float32Array(src.length)
-  const out = new Float32Array(src.length)
-  const n = 2 * r + 1
-  for (let j = 0; j < ny; j++) {
-    let sum = 0
-    for (let i = -r; i <= r; i++) sum += src[j * nx + Math.min(nx - 1, Math.max(0, i))]
-    for (let i = 0; i < nx; i++) {
-      tmp[j * nx + i] = sum / n
-      sum += src[j * nx + Math.min(nx - 1, i + r + 1)] - src[j * nx + Math.max(0, i - r)]
-    }
-  }
-  for (let i = 0; i < nx; i++) {
-    let sum = 0
-    for (let j = -r; j <= r; j++) sum += tmp[Math.min(ny - 1, Math.max(0, j)) * nx + i]
-    for (let j = 0; j < ny; j++) {
-      out[j * nx + i] = sum / n
-      sum += tmp[Math.min(ny - 1, j + r + 1) * nx + i] - tmp[Math.max(0, j - r) * nx + i]
-    }
-  }
-  return out
 }
 
 export class ModelLayer {
@@ -614,7 +563,7 @@ export class ModelLayer {
     b.dates = ALWAYS
 
     this.occlusion = new Occlusion(b.tops)
-    this.occlusion.build(modelUniforms.year.value)
+    const shaded = this.occlusion.build(modelUniforms.year.value)
     const mesh = new THREE.Mesh(b.geometry(), material(this.occlusion, this.viewM))
     mesh.position.set(ox, oy, 0)
     mesh.frustumCulled = false
@@ -644,6 +593,7 @@ export class ModelLayer {
     this.sun.shadow.radius = 3
     this.group.add(this.sun, this.sun.target, this.sky)
     this.group.visible = false
+    await shaded
     this.loaded = true
   }
 
@@ -657,16 +607,18 @@ export class ModelLayer {
     const [x0, y0] = [ex0 - GROUND_PAD_M, ey0 - GROUND_PAD_M]
     const nx = Math.ceil((ex1 - ex0 + 2 * GROUND_PAD_M) / GROUND_STEP_M) + 1
     const ny = Math.ceil((ey1 - ey0 + 2 * GROUND_PAD_M) / GROUND_STEP_M) + 1
+    const { heights, width, height } = g
     const heightAt = (x: number, y: number) => {
       const fx = (x - g.x0) / g.texel - 0.5
       const fy = (g.y1 - y) / g.texel - 0.5
-      const i = Math.max(0, Math.min(g.width - 2, Math.floor(fx)))
-      const j = Math.max(0, Math.min(g.height - 2, Math.floor(fy)))
-      const [u, v] = [Math.min(1, Math.max(0, fx - i)), Math.min(1, Math.max(0, fy - j))]
-      const h = (a: number, b: number) => g.heights[b * g.width + a]
+      const i = Math.max(0, Math.min(width - 2, Math.floor(fx)))
+      const j = Math.max(0, Math.min(height - 2, Math.floor(fy)))
+      const u = Math.min(1, Math.max(0, fx - i))
+      const v = Math.min(1, Math.max(0, fy - j))
+      const k = j * width + i
       return (
-        (h(i, j) * (1 - u) + h(i + 1, j) * u) * (1 - v) +
-        (h(i, j + 1) * (1 - u) + h(i + 1, j + 1) * u) * v
+        (heights[k] * (1 - u) + heights[k + 1] * u) * (1 - v) +
+        (heights[k + width] * (1 - u) + heights[k + width + 1] * u) * v
       )
     }
     this.ground = (x, y) => Math.max(this.waterLevel, heightAt(x, y))
@@ -685,23 +637,28 @@ export class ModelLayer {
         const z = heightAt(x, y)
         const wet = z < this.waterLevel
         pos[k + 2] = wet ? this.waterLevel : z
+        if (wet) {
+          nrm[k + 2] = 1
+          continue
+        }
         const gx = (heightAt(x + 5, y) - heightAt(x - 5, y)) * vex
         const gy = (heightAt(x, y + 5) - heightAt(x, y - 5)) * vex
-        const n = wet
-          ? new THREE.Vector3(0, 0, 1)
-          : new THREE.Vector3(-gx, -gy, 10).normalize()
-        nrm.set([n.x, n.y, n.z], k)
+        // As THREE.Vector3's normalize() works it out.
+        const s = 1 / (Math.sqrt(-gx * -gx + -gy * -gy + 10 * 10) || 1)
+        nrm[k] = -gx * s
+        nrm[k + 1] = -gy * s
+        nrm[k + 2] = 10 * s
       }
-    const index: number[] = []
-    for (let j = 0; j + 1 < ny; j++)
-      for (let i = 0; i + 1 < nx; i++) {
+    const index = new Uint32Array((nx - 1) * (ny - 1) * 6)
+    for (let j = 0, o = 0; j + 1 < ny; j++)
+      for (let i = 0; i + 1 < nx; i++, o += 6) {
         const a = j * nx + i
-        index.push(a, a + 1, a + nx + 1, a, a + nx + 1, a + nx)
+        index.set([a, a + 1, a + nx + 1, a, a + nx + 1, a + nx], o)
       }
     const geom = new THREE.BufferGeometry()
     geom.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3))
     geom.setAttribute('normal', new THREE.Float32BufferAttribute(nrm, 3))
-    geom.setIndex(index)
+    geom.setIndex(new THREE.BufferAttribute(index, 1))
     // Only the shadows: the terrain's own ground shows through it.
     const mat = new THREE.ShadowNodeMaterial({ color: '#2E2618' })
     mat.positionNode = vec3(
@@ -735,15 +692,15 @@ export class ModelLayer {
       Math.max(0, Math.floor((by0 - y0) / GROUND_STEP_M)),
       Math.min(ny - 1, Math.ceil((by1 - y0) / GROUND_STEP_M)),
     ]
-    const cityIndex: number[] = []
-    for (let j = j0; j < j1; j++)
-      for (let i = i0; i < i1; i++) {
+    const cityIndex = new Uint32Array(Math.max(0, j1 - j0) * Math.max(0, i1 - i0) * 6)
+    for (let j = j0, o = 0; j < j1; j++)
+      for (let i = i0; i < i1; i++, o += 6) {
         const a = j * nx + i
-        cityIndex.push(a, a + 1, a + nx + 1, a, a + nx + 1, a + nx)
+        cityIndex.set([a, a + 1, a + nx + 1, a, a + nx + 1, a + nx], o)
       }
     const city = new THREE.BufferGeometry()
     city.setAttribute('position', geom.getAttribute('position'))
-    city.setIndex(cityIndex)
+    city.setIndex(new THREE.BufferAttribute(cityIndex, 1))
     const dim = new THREE.MeshBasicNodeMaterial({ color: '#2E2618', transparent: true })
     dim.positionNode = mat.positionNode
     // Mostly the narrow streets and the feet of walls; open courtyards only a little.
@@ -781,8 +738,8 @@ export class ModelLayer {
     modelUniforms.year.value = year
     if (!this.occlusion) return
     clearTimeout(this.occlusionTimer)
-    this.occlusionTimer = window.setTimeout(() => {
-      if (this.occlusion?.build(year)) {
+    this.occlusionTimer = window.setTimeout(async () => {
+      if (await this.occlusion?.build(year)) {
         this.occlusionBuilt = true
         this.onShaded?.()
       }
@@ -806,6 +763,11 @@ export class ModelLayer {
     this.sun.target.position.set(target.x, target.y, 0)
     this.sun.position.set(target.x + SUN.x * 3000, target.y + SUN.y * 3000, SUN.z * 3000)
     this.sun.target.updateMatrixWorld()
+  }
+
+  dispose() {
+    clearTimeout(this.occlusionTimer)
+    this.occlusion?.dispose()
   }
 
   /** Called per frame with the scale; true while the city is rising or sinking. */

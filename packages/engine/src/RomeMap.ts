@@ -334,6 +334,7 @@ export class RomeMap {
     this.renderer.setAnimationLoop(null)
     this.resizeObserver.disconnect()
     this.terrain.dispose()
+    this.model.dispose()
     this.paper?.dispose()
     this.renderer.dispose()
     this.renderer.domElement.remove()
