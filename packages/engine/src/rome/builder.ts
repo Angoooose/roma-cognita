@@ -1,7 +1,7 @@
 import * as THREE from 'three/webgpu'
 
 /**
- * The mesh the model of Rome is built of (ModelLayer.ts), and its vocabulary: the
+ * The mesh the model of Rome is built of (buildModel.ts), and its vocabulary: the
  * primitives and the building types every monument is raised from.
  */
 /** Years that span everything: the generated city, the wall, the trees. */
@@ -149,24 +149,57 @@ export interface Aqueduct {
   runs: { kind: 'arcade' | 'wall' | 'shafts'; pts: number[][] }[]
 }
 
+/**
+ * A growing array of floats, doubled as it fills: the model runs to millions of
+ * vertices, and plain arrays of numbers cost twice the memory and a copy at the end.
+ */
+class Floats<T extends Float32Array | Float64Array> {
+  n = 0
+  a: T
+  private make: (n: number) => T
+  constructor(a: T, make: (n: number) => T) {
+    this.a = a
+    this.make = make
+  }
+  /** Room for `k` more, returning where they start. */
+  take(k: number) {
+    if (this.n + k > this.a.length) {
+      const next = this.make(Math.max(this.a.length * 2, this.n + k))
+      next.set(this.a.subarray(0, this.n))
+      this.a = next
+    }
+    const at = this.n
+    this.n += k
+    return at
+  }
+  /** Just what was written. */
+  done() {
+    return this.a.slice(0, this.n) as T
+  }
+}
+const f32 = (n: number) => new Floats(new Float32Array(n), (k) => new Float32Array(k))
+const f64 = (n: number) => new Floats(new Float64Array(n), (k) => new Float64Array(k))
+
 /** A mesh in the making: triangles with a base, a height above it, a normal and a colour. */
 export class Builder {
-  pos: number[] = []
-  base: number[] = []
-  years: number[] = []
+  // Positions and the tops are kept at full precision until the mesh is made: `lift`
+  // and `finish` work on them, and the occlusion grid is fitted to the tops.
+  private pos = f64(1 << 16)
+  private base = f32(1 << 14)
+  private years = f32(1 << 16)
   /** The years of what is being built now: from, to, and a span part-built (from > to for none). */
   dates = ALWAYS
   /** The stone of what is being built now, in the light and in shade (`STONE`). */
   face = STONE.stucco.face
   shade = STONE.stucco.shade
-  normal: number[] = []
-  colour: number[] = []
+  private normal = f32(1 << 16)
+  private colour = f32(1 << 16)
   /**
    * What a face is painted with in the shader (`skin` in `material`): its surface —
    * none, a building's front, its other walls, or tiled roof — the lot's kind and a
    * seed for it. A point's 4th to 6th values are its coordinates on that surface.
    */
-  skin: number[] = []
+  private skin = f32(1 << 16)
   look = 0
   /**
    * How much of a building stands while it is part-built (its years' third and
@@ -174,11 +207,10 @@ export class Builder {
    * it is a burnt shell rather than works in progress. Set per monument once it is
    * built (`finish`).
    */
-  part: number[] = []
+  private part = f32(1 << 15)
   /** Whether what is being built now overshadows its neighbours (`Occlusion`). */
   occludes = true
-  /** The tops of what overshadows: triangles as x, y, height over the ground ×3, then its years. */
-  tops: number[] = []
+  private topsOf = f64(1 << 16)
   private ox: number
   private oy: number
   constructor(ox: number, oy: number) {
@@ -186,43 +218,80 @@ export class Builder {
     this.oy = oy
   }
 
+  /** The tops of what overshadows: triangles as x, y, height over the ground ×3, then its years. */
+  get tops() {
+    return this.topsOf.done()
+  }
+
   /**
    * One triangle; points are [x, y, z above base], and the normal is its own. `base`
    * is the ground under all three, or under each (a long wall on sloping ground).
    */
   tri(a: number[], b: number[], c: number[], base: number | number[], col: THREE.Color) {
-    const u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]]
-    const v = [c[0] - a[0], c[1] - a[1], c[2] - a[2]]
-    let n = [
-      u[1] * v[2] - u[2] * v[1],
-      u[2] * v[0] - u[0] * v[2],
-      u[0] * v[1] - u[1] * v[0],
-    ]
-    const l = Math.hypot(n[0], n[1], n[2]) || 1
-    n = n.map((q) => q / l)
-    for (const [k, p] of [a, b, c].entries()) {
-      this.pos.push(p[0] - this.ox, p[1] - this.oy, p[2])
-      this.base.push(typeof base === 'number' ? base : base[k])
-      this.years.push(...this.dates)
-      this.normal.push(n[0], n[1], n[2])
-      this.colour.push(col.r, col.g, col.b)
-      this.skin.push(this.look, p[3] ?? 0, p[4] ?? 0, p[5] ?? 0)
-      this.part.push(1e5, 0)
+    const ux = b[0] - a[0]
+    const uy = b[1] - a[1]
+    const uz = b[2] - a[2]
+    const vx = c[0] - a[0]
+    const vy = c[1] - a[1]
+    const vz = c[2] - a[2]
+    const cx = uy * vz - uz * vy
+    const cy = uz * vx - ux * vz
+    const cz = ux * vy - uy * vx
+    const l = Math.hypot(cx, cy, cz) || 1
+    const nx = cx / l
+    const ny = cy / l
+    const nz = cz / l
+    const d = this.dates
+    const pos = this.pos.take(9)
+    const nrm = this.normal.take(9)
+    const col3 = this.colour.take(9)
+    const years = this.years.take(12)
+    const skin = this.skin.take(12)
+    const part = this.part.take(6)
+    const b1 = this.base.take(3)
+    for (let k = 0; k < 3; k++) {
+      const p = k === 0 ? a : k === 1 ? b : c
+      const P = this.pos.a
+      P[pos + k * 3] = p[0] - this.ox
+      P[pos + k * 3 + 1] = p[1] - this.oy
+      P[pos + k * 3 + 2] = p[2]
+      this.base.a[b1 + k] = typeof base === 'number' ? base : base[k]
+      const Y = this.years.a
+      Y[years + k * 4] = d[0]
+      Y[years + k * 4 + 1] = d[1]
+      Y[years + k * 4 + 2] = d[2]
+      Y[years + k * 4 + 3] = d[3]
+      const N = this.normal.a
+      N[nrm + k * 3] = nx
+      N[nrm + k * 3 + 1] = ny
+      N[nrm + k * 3 + 2] = nz
+      const C3 = this.colour.a
+      C3[col3 + k * 3] = col.r
+      C3[col3 + k * 3 + 1] = col.g
+      C3[col3 + k * 3 + 2] = col.b
+      const S = this.skin.a
+      S[skin + k * 4] = this.look
+      S[skin + k * 4 + 1] = p[3] ?? 0
+      S[skin + k * 4 + 2] = p[4] ?? 0
+      S[skin + k * 4 + 3] = p[5] ?? 0
+      this.part.a[part + k * 2] = 1e5
+      this.part.a[part + k * 2 + 1] = 0
     }
-    if (this.occludes && Math.abs(n[2]) > 0.3)
-      this.tops.push(
-        a[0],
-        a[1],
-        a[2],
-        b[0],
-        b[1],
-        b[2],
-        c[0],
-        c[1],
-        c[2],
-        this.dates[0],
-        this.dates[1],
-      )
+    if (this.occludes && Math.abs(nz) > 0.3) {
+      const t = this.topsOf.take(11)
+      const T = this.topsOf.a
+      T[t] = a[0]
+      T[t + 1] = a[1]
+      T[t + 2] = a[2]
+      T[t + 3] = b[0]
+      T[t + 4] = b[1]
+      T[t + 5] = b[2]
+      T[t + 6] = c[0]
+      T[t + 7] = c[1]
+      T[t + 8] = c[2]
+      T[t + 9] = d[0]
+      T[t + 10] = d[1]
+    }
   }
 
   quad(
@@ -1168,12 +1237,13 @@ export class Builder {
   /** Raises what was built since `from` by `dz` metres over the same ground. */
   lift(from: number, dz: number) {
     if (!dz) return
-    for (let i = from; i < this.pos.length / 3; i++) this.pos[i * 3 + 2] += dz
+    const P = this.pos.a
+    for (let i = from; i < this.pos.n / 3; i++) P[i * 3 + 2] += dz
   }
 
   /** Where the vertices built from now on start, for `finish`. */
   mark() {
-    return this.pos.length / 3
+    return this.pos.n / 3
   }
 
   /**
@@ -1181,25 +1251,26 @@ export class Builder {
    * its full height, as works rising or a shell left by fire (`burnt`).
    */
   finish(from: number, share: number, burnt: boolean) {
+    const [P, Q, n] = [this.pos.a, this.part.a, this.pos.n / 3]
     let top = 0
-    for (let i = from; i < this.pos.length / 3; i++)
-      top = Math.max(top, this.pos[i * 3 + 2])
-    for (let i = from; i < this.pos.length / 3; i++) {
-      this.part[i * 2] = top * share
-      this.part[i * 2 + 1] = burnt ? 1 : 0
+    for (let i = from; i < n; i++) top = Math.max(top, P[i * 3 + 2])
+    for (let i = from; i < n; i++) {
+      Q[i * 2] = top * share
+      Q[i * 2 + 1] = burnt ? 1 : 0
     }
   }
 
-  geometry() {
-    const g = new THREE.BufferGeometry()
-    g.setAttribute('position', new THREE.Float32BufferAttribute(this.pos, 3))
-    g.setAttribute('ground', new THREE.Float32BufferAttribute(this.base, 1))
-    g.setAttribute('years', new THREE.Float32BufferAttribute(this.years, 4))
-    g.setAttribute('normal', new THREE.Float32BufferAttribute(this.normal, 3))
-    g.setAttribute('colour', new THREE.Float32BufferAttribute(this.colour, 3))
-    g.setAttribute('skin', new THREE.Float32BufferAttribute(this.skin, 4))
-    g.setAttribute('part', new THREE.Float32BufferAttribute(this.part, 2))
-    return g
+  /** The mesh's attributes, by name: values and floats per vertex. */
+  attributes(): Record<string, [Float32Array, number]> {
+    return {
+      position: [new Float32Array(this.pos.done()), 3],
+      ground: [this.base.done(), 1],
+      years: [this.years.done(), 4],
+      normal: [this.normal.done(), 3],
+      colour: [this.colour.done(), 3],
+      skin: [this.skin.done(), 4],
+      part: [this.part.done(), 2],
+    }
   }
 }
 

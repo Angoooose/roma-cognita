@@ -13,7 +13,7 @@ import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
 import { PlaceLayer, placeUniforms, type PlaceHit } from './labels/PlaceLayer.ts'
 import { roadUniforms } from './roads/shading.ts'
 import { PlanLayer, PLAN_MPP } from './rome/PlanLayer.ts'
-import { ModelLayer, modelUniforms } from './rome/ModelLayer.ts'
+import { MODEL_MPP, ModelLayer, modelUniforms } from './rome/ModelLayer.ts'
 import { planUniforms } from './rome/shading.ts'
 import { Miniature } from './rome/miniature.ts'
 import { entries, frame, hitFor, type MapRef } from './find.ts'
@@ -63,6 +63,10 @@ export class RomeMap {
 
   static async create(container: HTMLElement, opts: RomeMapOptions) {
     const map = new RomeMap(container, opts)
+    // The model of Rome is built in the background (rome/modelWorker.ts), unless the
+    // first view is close enough in to show it.
+    const model = map.model.load()
+    const close = opts.camera.distance < map.view.distanceFor(MODEL_MPP[0])
     await Promise.all([
       map.renderer.init(),
       loadDataTextures(),
@@ -70,13 +74,12 @@ export class RomeMap {
       map.labels.load(),
       map.places.load(),
       map.plan.load(),
-      map.model.load(),
+      ...(close ? [model] : []),
     ])
     // The plan lets the camera closer than the terrain alone would: the view asked for
     // was clamped before it loaded, so it is asked for again.
     map.view.state.distance = opts.camera.distance
     map.view.apply()
-    if (map.plan.ground) map.model.buildGround(map.plan.ground)
     if (map.plan.rect) map.terrain.setFineRect(map.plan.rect)
     // Rome's monuments hang on the model's ground, and on their roofs while it stands.
     const anchorOf = map.places.anchorOf
@@ -86,12 +89,34 @@ export class RomeMap {
       map.places.invalidate()
       map.dirty = true
     }
+    model.then(() => {
+      if (map.plan.ground) map.model.buildGround(map.plan.ground)
+      map.places.invalidate()
+      map.dirty = true
+    })
     map.paper = new PaperLayer()
     map.scene.add(map.paper.mesh)
     map.labels.setYear(map.politics.year, false)
     map.model.setYear(map.politics.year)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
+  }
+
+  /**
+   * Builds, in the background, the shaders the map needs once the model of Rome shows:
+   * its own, and every other material's again, since its lights join the scene.
+   * Otherwise the first frame over the city stalls for a tenth of a second or more to
+   * build them. Done once the first view has settled, when the terrain's material
+   * exists.
+   */
+  private prewarmed = false
+  private async prewarm() {
+    this.prewarmed = true
+    const g = this.model.group
+    g.visible = true
+    const built = this.renderer.compileAsync(this.scene, this.view.camera)
+    g.visible = false
+    await built.catch(() => {})
   }
 
   private container: HTMLElement
@@ -188,6 +213,7 @@ export class RomeMap {
       this.onModel?.(shown)
     }
     if (this.model.group.visible) {
+      this.model.cull(this.view.camera)
       const target = new THREE.Vector3(this.view.state.x, this.view.state.y, 0)
       this.model.fit(
         target,
@@ -214,6 +240,7 @@ export class RomeMap {
 
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
     if (this.terrain.update(this.view.camera, vpPx)) this.dirty = true
+    if (!this.prewarmed && this.idle && this.model.ready) this.prewarm()
     if (!this.dirty) return
 
     const dt = now - this.lastTime
@@ -341,6 +368,7 @@ export class RomeMap {
     this.renderer.setAnimationLoop(null)
     this.resizeObserver.disconnect()
     this.terrain.dispose()
+    this.model.dispose()
     this.paper?.dispose()
     this.renderer.dispose()
     this.renderer.domElement.remove()

@@ -1530,7 +1530,7 @@ function dates(p: Place | undefined) {
 }
 
 /**
- * A design as the engine takes it (ModelLayer `Monument.design`): its own fields, and
+ * A design as the engine takes it (buildModel.ts `Monument.design`): its own fields, and
  * where it stands — centre and size in plane metres, and the way its front faces,
  * radians clockwise from north: the design's, or its axis towards the point it
  * faces (`facing`).
