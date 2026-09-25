@@ -145,10 +145,13 @@ export const DESIGNS_FORUM: Record<string, Design> = {
     order: 'corinthian',
     double: true,
     sides: [false, true, true, true],
+    // The south-east end, towards the Argiletum, closed by the precinct's wall with its
+    // entrance: whether a portico stood there, perhaps Augustan, is not known (DAR).
+    gate: 12,
     shops: { depth: 10, sides: [false, true, false, false] },
     paving: 'travertine',
     statue: true,
-    why: 'About 160 by 75 m overall (OCD; the open square "about 115 metres long and 30 wide", P&A, Forum Iulium, p. 227), double porticoes on three sides, the temple at the north-west end facing south-east down its axis, shops behind the south-west portico cut into the Arx under a peperino wall "12 m high" (P&A). Caesar\'s equestrian statue stood in the middle (Pliny, NH 8.155). Dedicated unfinished in 46 BCE, completed by Octavian (RG 20.3).',
+    why: 'About 160 by 75 m overall (OCD; the open square "about 115 metres long and 30 wide", P&A, Forum Iulium, p. 227), double porticoes on three sides, the temple at the north-west end facing south-east down its axis, shops behind the south-west portico cut into the Arx under a peperino wall "12 m high" (P&A). The south-east end towards the Argiletum and the junction with the Curia are hypothetical, and an Augustan portico may have stood there as a monumental entrance (DAR, Forum Iulium): drawn as the precinct\'s wall with a gateway. Caesar\'s equestrian statue stood in the middle (Pliny, NH 8.155). Dedicated unfinished in 46 BCE, completed by Octavian (RG 20.3).',
   },
   'aedes-veneris-genetricis': {
     model: 'temple',

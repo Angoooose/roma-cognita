@@ -199,6 +199,8 @@ interface Porticus {
   h: number
   order: Order
   sides?: [boolean, boolean, boolean, boolean]
+  /** The sides with no portico closed by the precinct's wall, with a gateway this wide. */
+  gate?: number
   double?: boolean
   paving?: 'travertine' | 'tufa' | 'marble' | 'garden'
   /** Shops behind the porticoes on the sides named, this deep. */
@@ -228,6 +230,7 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     shade,
     court,
     sides: d.sides,
+    gate: d.gate,
     double: d.double,
     seed: 0.4,
   })

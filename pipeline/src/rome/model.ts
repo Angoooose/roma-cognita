@@ -701,6 +701,33 @@ export function bakeModel(m: ModelInput) {
     .filter((p): p is Place => !!p)
     .map((p) => projection.forward(...p.location))
   if (boarium.length > 2) open.push(hull(boarium))
+  // Before a precinct's gateway the ground is kept open, so it does not open onto a
+  // house: 20 m out, a little wider than the gate.
+  for (const mo of monuments) {
+    const d = mo.design
+    const gate = (d?.d as Record<string, unknown> | undefined)?.gate as number | undefined
+    if (!d || !gate || !d.bearing) continue
+    const sides = ((d.d as Record<string, unknown>).sides as boolean[] | undefined) ?? [
+      true,
+      true,
+      true,
+      true,
+    ]
+    const f: Pt = [Math.sin(d.bearing), Math.cos(d.bearing)]
+    const r: Pt = [f[1], -f[0]]
+    // Each side left without a portico has the gate: front, right, back, left.
+    const outs: Pt[] = [f, r, [-f[0], -f[1]], [-r[0], -r[1]]]
+    const half = [d.size[1] / 2, d.size[0] / 2, d.size[1] / 2, d.size[0] / 2]
+    sides.forEach((has, i) => {
+      if (has) return
+      const n = outs[i]
+      const c: Pt = [
+        d.centre[0] + n[0] * (half[i] + 10),
+        d.centre[1] + n[1] * (half[i] + 10),
+      ]
+      open.push(rect(c[0], c[1], gate + 8, 20, Math.atan2(n[1], n[0]) - Math.PI / 2))
+    })
+  }
   // Each is the hilltop round its point: out to `r`, as far as the ground stays
   // within a few metres of the top, so the clearing follows the hill.
   for (const [c, r] of CAPITOL_OPEN) {

@@ -1136,6 +1136,8 @@ export function quadriporticus(
     wall?: number
     spacing?: number
     seed?: number
+    /** The sides with no portico closed by the precinct's wall, with a gateway this wide in the middle (none: left open). */
+    gate?: number
   },
 ) {
   const { depth, h, order, face, shade } = opts
@@ -1153,7 +1155,20 @@ export function quadriporticus(
     [F.sub(-w / 2, 0, Math.PI / 2), l],
   ]
   frames.forEach(([S, len], i) => {
-    if (!sides[i]) return
+    if (!sides[i]) {
+      if (opts.gate === undefined) return
+      // The enclosure wall, and its gateway: an opening under a lintel, framed by
+      // pilasters, up the wall's full height.
+      const g = opts.gate / 2
+      const a = -len / 2
+      const b = len / 2
+      S.box(a, -g, -0.9, 0, -S.deep, wall, shade)
+      S.box(g, b, -0.9, 0, -S.deep, wall, shade)
+      S.box(-g - 0.1, g + 0.1, -0.9, 0, h * 0.75, wall, shade)
+      for (const u of [-g, g]) S.box(u - 0.7, u + 0.7, -1.2, 0.3, -S.deep, wall + 0.3, face)
+      S.box(-g - 0.8, g + 0.8, -1.25, 0.35, wall, wall + 0.6, face)
+      return
+    }
     // In the side's frame the court is towards +v, the back wall at v = 0.
     const a = -len / 2
     const b = len / 2
