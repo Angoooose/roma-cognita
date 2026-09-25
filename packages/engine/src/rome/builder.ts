@@ -12,8 +12,12 @@ export const FABRIC_STRIDE = 14
 export const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
 export const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 
-/** What the shader paints on a face (`Builder.look`, `skin` in `material`). */
-export const SKIN = { none: 0, front: 1, wall: 2, roof: 3 }
+/**
+ * What the shader paints on a face (`Builder.look`, `skin` in `material`): a
+ * generated house's front, its other walls or its tiled roof, or squared stone laid
+ * in courses (the Servian Wall, wall.ts).
+ */
+export const SKIN = { none: 0, front: 1, wall: 2, roof: 3, ashlar: 4 }
 
 /**
  * What the known buildings are faced with, as the records' sources say (model.ts
@@ -80,6 +84,13 @@ export const C = {
   /** Warehouses: bare tufa. */
   warehouse: new THREE.Color('#CFC1A2'),
   stone: new THREE.Color('#D2C4AA'),
+  /**
+   * The Servian Wall's Grotta Oscura tufa, pale yellow-grey (Platner & Ashby, Murus
+   * Servii Tullii; Middleton 1892); its walk, trodden; and the shade of its passages.
+   */
+  wallTufa: new THREE.Color('#CEC09D'),
+  wallWalk: new THREE.Color('#B9AC8E'),
+  wallShade: new THREE.Color('#8C8270'),
   /** A retaining wall of squared tufa, and its coping. */
   retaining: new THREE.Color('#C2AE8A'),
   retainingTop: new THREE.Color('#D0C0A0'),
@@ -171,8 +182,11 @@ export class Builder {
     this.oy = oy
   }
 
-  /** One triangle; points are [x, y, z above base], and the normal is its own. */
-  tri(a: number[], b: number[], c: number[], base: number, col: THREE.Color) {
+  /**
+   * One triangle; points are [x, y, z above base], and the normal is its own. `base`
+   * is the ground under all three, or under each (a long wall on sloping ground).
+   */
+  tri(a: number[], b: number[], c: number[], base: number | number[], col: THREE.Color) {
     const u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]]
     const v = [c[0] - a[0], c[1] - a[1], c[2] - a[2]]
     let n = [
@@ -182,9 +196,9 @@ export class Builder {
     ]
     const l = Math.hypot(n[0], n[1], n[2]) || 1
     n = n.map((q) => q / l)
-    for (const p of [a, b, c]) {
+    for (const [k, p] of [a, b, c].entries()) {
       this.pos.push(p[0] - this.ox, p[1] - this.oy, p[2])
-      this.base.push(base)
+      this.base.push(typeof base === 'number' ? base : base[k])
       this.years.push(...this.dates)
       this.normal.push(n[0], n[1], n[2])
       this.colour.push(col.r, col.g, col.b)
@@ -207,9 +221,21 @@ export class Builder {
       )
   }
 
-  quad(a: number[], b: number[], c: number[], d: number[], base: number, col: THREE.Color) {
-    this.tri(a, b, c, base, col)
-    this.tri(a, c, d, base, col)
+  quad(
+    a: number[],
+    b: number[],
+    c: number[],
+    d: number[],
+    base: number | number[],
+    col: THREE.Color,
+  ) {
+    if (typeof base === 'number') {
+      this.tri(a, b, c, base, col)
+      this.tri(a, c, d, base, col)
+    } else {
+      this.tri(a, b, c, [base[0], base[1], base[2]], col)
+      this.tri(a, c, d, [base[0], base[2], base[3]], col)
+    }
   }
 
   /** Vertical walls round a ring, from z0 to z1 (outward-facing for a CCW ring). */

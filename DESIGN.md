@@ -776,16 +776,48 @@ known and what is generated are kept apart:
       1.19). Their channels are stacked on the Marcia's from that year. Where the
       Tepula ran before is unknown, so it is not drawn earlier.
     - A click on the arcade opens the Marcia.
-  - The Servian Wall on its reconstructed circuit (`servian.ts`), with towers at
-    its gates. Reconstructed stretches are a little lower and paler. The river
-    bank, where the Tiber was the defence, is left open.
+  - **The Servian Wall** (decided 2026-09-25; `servian.ts`, model.ts `WALL`,
+    `wall.ts`), on SITAR's reconstruction of its whole course (codice PA 19694,
+    made for the 2017 "Roma medio repubblicana" conference from the surveyed
+    remains, archive plans, historic maps and studies of the terrain): the middle
+    of its band, smoothed a little, following the hills' brows round the Arx, the
+    Quirinal, the Caelian and both Aventines, and bent through the Porta
+    Caelimontana's surveyed blocks in the Arch of Dolabella. Between the Capitol and
+    the Aventine it runs inland from the Porta Carmentalis to the Porta Trigemina,
+    leaving the river outside (SITAR, after Coarelli); the older view had the river
+    close the circuit, and Wiseman (2021) argues the line changed in 212 BCE.
+    - **As it was built**, from the remains and the sources: a curtain of squared
+      pale Grotta Oscura tufa 3.8 m thick, laid dry in courses of two Roman feet,
+      end-out and side-out by turns (painted on, `SKIN.ashlar`), with patches of the
+      darker Anio tufa of the first century's repairs; each face running down to
+      the ground on its side, its walk 7.5 m over its ground or a little over the
+      hill behind where it crowns a brow, rising and falling in long runs. No top of
+      it survives: the battlemented parapet is a reconstruction, as Strabo's "wall
+      with towers" on the agger and Livy's repairs of walls and towers allow.
+    - **The agger** from the Porta Collina to the Porta Esquilina, where the flat
+      plateau gave the wall no brow: its ditch about 30 m wide and 9 m deep cut into
+      the ground in front of it (Dionysius 9.68) and its earth bank 10 m high behind
+      it (Middleton), crossed by causeways and cut through at its gates, with towers
+      along it every ~36 m.
+    - **Thirteen gates**, placed by their surveyed remains or SITAR's sites (after
+      Coarelli and the Lexicon): each a passage 3.6 m wide between two bastions
+      standing out in front, and behind it a court closing in to an inner arch,
+      after the plans of the Porta Collina, Viminalis and Sanqualis. Those whose
+      site is unknown or disputed (Ratumena, Flumentana, Lavernalis, Querquetulana)
+      are not drawn.
+    - Houses keep 3 m from its inner face and off the agger's bank, and the ground
+      at its foot outside is kept open for 12 m. By 27 BCE the city pressed against
+      it ("now commonly", Livy 1.44) and Maecenas's gardens covered the agger's
+      cemetery from about 35 BCE; neither is drawn yet.
+    - The known buildings placed only roughly that would stand on it (Juno Moneta,
+      Luna) are moved in off it; the wall is the better known.
   - The Tiber on OpenStreetMap's course, and the streets and roads (§ below)
     paved on the ground.
 - **Generated**, seeded so every build is the same (`city.ts`, model.ts). The
   method follows procedural city modelling, and the forms follow what Rome's fabric
   is known to have been (the sources are catalogued in data/sources.yaml):
   - **Streets in a hierarchy.** The recorded streets stay. A main street runs from
-    each of the six gates to the Forum by the cheapest way over the ground, shunning
+    each gate to the Forum by the cheapest way over the ground, shunning
     slopes and preferring the recorded streets (Emilien et al. 2012; Galin et al.
     2011), so the main streets follow the valleys and merge as they near the
     centre. Where a main street's way runs along a recorded street, the recorded
@@ -918,7 +950,7 @@ known and what is generated are kept apart:
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb of detached houses lines the roads out of the gates, up to
-    ~450 m, with a few against the wall.
+    ~450 m, with a few near the wall, clear of its foot and the agger's ditch.
   - Groves stand on the hills beyond: cypresses and holm oaks, with an umbrella
     pine here and there. The pine skyline that says "Rome" now is mostly later
     planting.
@@ -940,8 +972,10 @@ what the city adds drawn on it:
 - The terrain is laid on the Mapterhorn heights smoothed over ~45 m (`ground.png`),
   and lit and given its rock by their slope — the light with the slope drawn up
   twice, so the hills read — so the surface model's modern
-  buildings do not show, and the model stands on it exactly. The relief is
-  today's, except in the valleys where excavations found the ancient ground.
+  buildings do not show, and the model stands on it exactly. Over the Capitol it
+  is smoothed over ~14 m instead, so its steep brows and its summits stand nearer
+  their height. The relief is today's, except in the valleys where excavations
+  found the ancient ground, and the agger's ditch and bank.
 - **The ancient valley floors** (`ground.ts`, decided 2026-09-24). Since antiquity
   the valleys have filled up. Where SITAR records the height of ground walked on
   then (`rome-levels.geojson`, from its excavated levels), the valley floor is set
