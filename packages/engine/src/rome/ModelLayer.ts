@@ -2157,8 +2157,10 @@ function material(occlusion: Occlusion, viewM: F) {
       vec3(1),
     ),
   )
-  // The relief under the city, washed over it, so the hills read from above.
-  const wash = mix(float(1), reliefWash(positionWorld.x, positionWorld.y), 0.9)
+  // The relief under the city, washed over it at half strength, so the hills read
+  // from above while the buildings keep their own colour and their real shadows
+  // show the slopes.
+  const wash = mix(float(1), reliefWash(positionWorld.x, positionWorld.y), 0.5)
   const lit = attribute('colour', 'vec3')
     .mul(paint)
     .mul(foot)

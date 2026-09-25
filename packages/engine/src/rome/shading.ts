@@ -59,9 +59,10 @@ export const planUniforms = {
   /**
    * How much the relief under the city is drawn up, so the hills read from above:
    * the smoothed slope's light is exaggerated this many times, on the ground and in
-   * the wash over the model (`reliefWash`).
+   * the wash over the model (`reliefWash`). Twice, now the valley floors lie at
+   * their ancient depth (pipeline ground.ts): more, and a real slope falls muddy.
    */
-  relief: uniform(4),
+  relief: uniform(2),
 }
 
 function blank(bytes = [255, 0, 255, 255]) {
@@ -174,7 +175,7 @@ export function reliefWash(mx: F, my: F) {
   const n = normalize(vec3(g.x.negate(), g.y.negate(), 1))
   const lit = dot(n, vec3(LIGHT.x, LIGHT.y, LIGHT.z)).div(LIGHT.z)
   const high = smoothstep(18, 55, groundAt(mx, my))
-  return clamp(lit, 0.45, 1.3).mul(mix(float(0.9), float(1.07), high))
+  return clamp(lit, 0.7, 1.3).mul(mix(float(0.9), float(1.07), high))
 }
 
 /**

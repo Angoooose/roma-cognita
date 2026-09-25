@@ -865,7 +865,7 @@ what the city adds drawn on it:
 
 - The terrain is laid on the Mapterhorn heights smoothed over ~45 m (`ground.png`),
   and lit and given its rock by their slope — the light with the slope drawn up
-  four times, so the hills read — so the surface model's modern
+  twice, so the hills read — so the surface model's modern
   buildings do not show, and the model stands on it exactly. The relief is
   today's, except in the valleys where excavations found the ancient ground.
 - **The ancient valley floors** (`ground.ts`, decided 2026-09-24). Since antiquity
@@ -961,10 +961,13 @@ what the city adds drawn on it:
   frame, so its texels stay near a metre;
 - a bright sky and bounce light that keep the shaded walls light;
 - a wash of relief over the whole model, as an illustrated map shades its hills:
-  the smoothed ground lit from the north-west with its slope drawn up four times,
-  so slopes turned from the light fall darker and hilltops a little lighter. It
-  is what lets the seven hills read from straight above, where the roofs cover
-  most of the ground;
+  the smoothed ground lit from the north-west with its slope drawn up twice, at
+  half strength and never darker than 70%, so slopes turned from the light fall a
+  little darker and hilltops a little lighter. It helps the seven hills read from
+  straight above, where the roofs cover most of the ground. It was stronger (four
+  times, 90%, down to 45%) while the valleys lay at today's height; with the
+  valley floors at their ancient depth the real slopes and their shadows do most
+  of the work, and the stronger wash turned roofs on the slopes muddy;
 - walls darkening a little where they meet the ground, and everything darkening
   where the model overshadows itself: a grid of the height of what stands in each
   2 m cell, blurred over about 10 m and 30 m, against which a narrow street, a
