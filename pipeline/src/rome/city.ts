@@ -20,9 +20,11 @@
  *    al. 2012, "Procedural Generation of Parcels in Urban Modeling", done cell by
  *    cell so any outline will do). A corner plot is one plot, fronting both streets,
  *    and belongs to the one that matters more (Conzen; Emilien et al. 2012). Along a
- *    street the plots come in series of one width. On a deep plot the flats are a
- *    range on the street, a small court and a range behind: the Marble Plan's rows
- *    of shops on the streets and flats round small courtyards, built wall to wall.
+ *    street the plots come in series of one width. A shallow plot is built to its
+ *    back; a deep one fills its front and leaves its back as yard, so the yards of
+ *    plots back to back make one yard in the middle of the block, and a few large
+ *    buildings stand round a court of their own (the Marble Plan's courtyard
+ *    blocks), all built wall to wall.
  * 3. **Buildings, not lots.** A run of one to five neighbouring lots along a street
  *    is one building, as the blocks of flats on the Marble Plan take several shops'
  *    frontage: one height, one render, and one low roof along the street, hipped at
@@ -103,14 +105,25 @@ const HALF = { road: 4.5, street: 3.5, main: 3, local: [1.7, 2.4], alley: 1.1 }
 const GROUND_FLOOR = 3.8
 /** The furthest a plot reaches in from its street, metres: less where it meets the plots opposite. */
 const PLOT_MAX_M = 26
-/** How deep the range on the street is where a plot has a court behind it, metres. */
-const RANGE_M: [number, number] = [10, 14]
-/** How deep a court is, front to back, metres: a light-well to a small yard. */
-const COURT_M: [number, number] = [3, 5.5]
-/** Of the buildings of flats, the share that fill their plots with no court. */
-const SOLID = 0.25
-/** The longest atrium house, front to back, metres; its plot beyond is garden. */
-const HOUSE_MAX_M = 32
+/** A plot this deep or less, one or two rooms lit from the street, is built to its back, metres. */
+const SOLID_TO_M = 17
+/** How deep a building of flats on a deeper plot runs back from the street, metres; the rest is its yard. */
+const FRONT_M: [number, number] = [12, 17]
+/** The shallowest yard worth leaving behind a building, metres; less is built over. */
+const YARD_MIN_M = 5
+/** Of the runs of three deep plots or more, the share built as one building round a court. */
+const COURTYARD = 0.3
+/** How deep every plot of a courtyard building must be, metres. */
+const COURTYARD_MIN_M = 20
+/** A courtyard building's range on the street, and its court, front to back, metres. */
+const RANGE_M: [number, number] = [9, 12]
+const COURT_M: [number, number] = [6, 9]
+/** Open ground inside a block smaller than this has no tree, m²: a light-well is not a garden. */
+const TREE_YARD_M2 = 150
+/** The atrium's opening, as a share of the house's width: a quarter to a third of an atrium two thirds as wide. */
+const OPENING = 0.2
+/** The deepest atrium house, front to back, metres; its plot beyond is garden. */
+const HOUSE_MAX_M = 26
 /** A corner takes a plot of its own when it turns between 55° and 125°. */
 const CORNER_COS = Math.cos((55 * Math.PI) / 180)
 const FLOOR = 3.0
@@ -377,7 +390,6 @@ export function layCity(c: CityInput) {
   blocks.forEach((b, n) => b.cells.forEach((k) => (blockMask[k] = n)))
   for (const [n, b] of blocks.entries()) {
     const own = (k: number) => k >= 0 && blockMask[k] === n
-    const dist = distanceField(b.cells, own, nx)
     const q = QUARTER[b.quarter]
     const firstLot = lots.length
     /** A lone lot's roof: along the street, the gable to it on a narrow deep lot. */
@@ -413,48 +425,64 @@ export function layCity(c: CityInput) {
         const h = GROUND_FLOOR + (st - 1) * FLOOR + rand() * 0.3
         const tone = rand()
         const terrace = rand() < 0.06
-        // Where the range on the street ends and its court.
+        // A large building of flats — three plots or more, all deep — may be built
+        // round one court: its end plots are its wings, its middle ones a range on
+        // the street, the court, and a range behind (the courtyard blocks of the
+        // Marble Plan). Otherwise a deep plot's building fills its front, lit from the
+        // street, and the back of the plot is its yard; the yards of plots back to back
+        // make an open yard in the middle of the block.
+        const courtyard =
+          !yard &&
+          run.length >= 3 &&
+          run.every((e) => depthOf(e.quad) >= COURTYARD_MIN_M) &&
+          rand() < COURTYARD
         const range = pick(RANGE_M)
         const court = pick(COURT_M)
-        const solid = rand() < SOLID
-        for (const e of run) {
+        run.forEach((e, i) => {
           const roof = terrace
             ? ROOF.flat
             : run.length === 1
               ? loneRoof(e.quad)
               : ROOF.along
-          if (yard) {
-            lots.push({ pts: truncate(e.quad, 14), h, kind: LOT_KIND.flats, roof, tone })
-            continue
-          }
+          const flats = (pts: [Pt, Pt, Pt, Pt], hh = h, r = roof) =>
+            lots.push({ pts, h: hh, kind: LOT_KIND.flats, roof: r, tone })
+          if (yard) return flats(truncate(e.quad, 14))
           const d = depthOf(e.quad)
-          if (solid || e.corner || d < range + court + MIN_DEPTH_M) {
-            lots.push({ pts: e.quad, h, kind: LOT_KIND.flats, roof, tone })
-            continue
+          if (courtyard) {
+            const wing = i === 0 || i === run.length - 1
+            if (wing || d < range + court + MIN_DEPTH_M) return flats(e.quad)
+            flats(truncate(e.quad, range))
+            flats(
+              behind(e.quad, range + court),
+              Math.max(GROUND_FLOOR, h - FLOOR),
+              ROOF.along,
+            )
+            return
           }
-          lots.push({ pts: truncate(e.quad, range), h, kind: LOT_KIND.flats, roof, tone })
-          lots.push({
-            pts: behind(e.quad, range + court),
-            h: Math.max(GROUND_FLOOR, h - FLOOR),
-            kind: LOT_KIND.flats,
-            roof: ROOF.along,
-            tone,
-          })
-        }
+          // One or two rooms deep is lit from the street: the plot is built to its back.
+          if (e.corner || d <= SOLID_TO_M) return flats(e.quad)
+          const front = Math.min(d, pick(FRONT_M))
+          // A yard too shallow to use is built over.
+          if (d - front < YARD_MIN_M) return flats(e.quad)
+          flats(truncate(e.quad, front))
+        })
         run = []
       }
       for (const e of strip) {
         if (e.kind !== LOT_KIND.flats) {
           flush()
           if (e.kind === LOT_KIND.house) {
-            // The house on the front of its plot, as long as a house is; the rest its garden.
+            // The house on the front of its plot, about as deep as it is wide; behind
+            // it, its garden (a peristyle in the houses of the rich).
             const d = depthOf(e.quad)
             const w = Math.hypot(e.quad[1][0] - e.quad[0][0], e.quad[1][1] - e.quad[0][1])
-            const houseD = Math.min(d, Math.max(18, w * 1.3), HOUSE_MAX_M)
-            lots.push(...atriumHouse(truncate(e.quad, houseD), rand, gardens))
+            const houseD = Math.min(d, Math.max(17, w * 1.05), HOUSE_MAX_M)
+            lots.push(...atriumHouse(truncate(e.quad, houseD), rand))
             if (d - houseD > 8) {
-              const g = behind(e.quad, houseD + 3)
+              const g = behind(e.quad, houseD + 2)
               gardens.push(centroid(g))
+              if (d - houseD > 16 && rand() < 0.6)
+                gardens.push(centroid([g[0], g[1], centroid(g)]))
             }
           } else
             lots.push({
@@ -487,7 +515,10 @@ export function layCity(c: CityInput) {
     let series = 0
     let module = 0
     const next = () => {
-      if (b.quarter === 'rich' && rand() < 0.5)
+      if (
+        (b.quarter === 'rich' && rand() < 0.35) ||
+        (b.quarter === 'hill' && rand() < 0.03)
+      )
         return { w: pick([16, 26]), kind: LOT_KIND.house }
       if (b.quarter === 'river') return { w: pick(q.frontage), kind: LOT_KIND.warehouse }
       if (series-- <= 0) {
@@ -516,20 +547,50 @@ export function layCity(c: CityInput) {
     if (b.quarter === 'river')
       for (const e of plots) if (e.corner) e.kind = LOT_KIND.warehouse
     build(plots, b.quarter === 'rich')
-    // What is left in the middle is yard and garden: a tree or two in a courtyard,
-    // more in the gardens of the rich.
-    // Wherever the block is open: clear of the street ranges and of every building.
+    // What is left open is yard and garden. A tree stands only in open ground big
+    // enough to be a yard, more in the gardens of the rich: a light-well is not a
+    // garden, and the crowded quarters had little ground to plant.
     const built = lots.slice(firstLot)
-    const open = b.cells.filter((k) => dist.get(k)! * CELL > 12)
+    const covered = new Set<number>()
+    for (const l of built) {
+      const xs = l.pts.map((p) => p[0])
+      const ys = l.pts.map((p) => p[1])
+      const [i0, i1] = [
+        Math.floor((Math.min(...xs) - x0) / CELL),
+        Math.floor((Math.max(...xs) - x0) / CELL),
+      ]
+      const [j0, j1] = [
+        Math.floor((Math.min(...ys) - y0) / CELL),
+        Math.floor((Math.max(...ys) - y0) / CELL),
+      ]
+      for (let j = j0; j <= j1; j++)
+        for (let i = i0; i <= i1; i++)
+          if (inRing([cx(i), cy(j)], l.pts)) covered.add(j * nx + i)
+    }
+    const want = b.quarter === 'rich' ? 0.7 : 0.15
+    const seen = new Set<number>()
     const planted: Pt[] = []
-    const want = b.quarter === 'rich' ? 0.7 : 0.2
-    for (let t = 0; t < open.length / 8; t++) {
-      const k = open[Math.floor(rand() * open.length)]
-      const p: Pt = [cx(k % nx), cy(Math.floor(k / nx))]
-      if (rand() > want || planted.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 9))
-        continue
-      if (built.some((l) => inRing(p, l.pts) || nearRing(p, l.pts, 3))) continue
-      planted.push(p)
+    for (const k0 of b.cells) {
+      if (covered.has(k0) || seen.has(k0)) continue
+      const yardCells = [k0]
+      seen.add(k0)
+      for (let h = 0; h < yardCells.length; h++) {
+        const k = yardCells[h]
+        for (const q of [k - 1, k + 1, k - nx, k + nx])
+          if (own(q) && !covered.has(q) && !seen.has(q)) {
+            seen.add(q)
+            yardCells.push(q)
+          }
+      }
+      if (yardCells.length * CELL * CELL < TREE_YARD_M2) continue
+      for (let t = 0; t < yardCells.length / 8; t++) {
+        const k = yardCells[Math.floor(rand() * yardCells.length)]
+        const p: Pt = [cx(k % nx), cy(Math.floor(k / nx))]
+        if (rand() > want || planted.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 9))
+          continue
+        if (built.some((l) => nearRing(p, l.pts, 3))) continue
+        planted.push(p)
+      }
     }
     gardens.push(...planted)
   }
@@ -825,14 +886,29 @@ function frontagePlots(
       })
     }
   const out: StripLot[] = []
+  /** Whether the street runs on round the join of two edges, with no more than a gentle bend. */
+  const gentle = (a: number, b: number) => {
+    const [u, v] = [edges[a].u, edges[b].u]
+    return u[0] * v[0] + u[1] * v[1] > BEND_COS && u[0] * v[1] - u[1] * v[0] > -0.05
+  }
   for (const ids of ringEdges)
-    for (const k of ids) {
+    for (const [j, k] of ids.entries()) {
       const e = edges[k]
       const mine: number[] = []
       owner.forEach((o, i) => o === k && mine.push(i))
       if (!mine.length) continue
-      const t0 = Math.max(0, Math.min(...mine.map((i) => T[i])) - CELL / 2)
-      const t1 = Math.min(e.L, Math.max(...mine.map((i) => T[i])) + CELL / 2)
+      // Round a gentle bend the plots run on to the bend, so the row does not break
+      // where the street's outline turns.
+      const [prev, nxt] = [
+        ids[(j - 1 + ids.length) % ids.length],
+        ids[(j + 1) % ids.length],
+      ]
+      const t0 = gentle(prev, k)
+        ? 0
+        : Math.max(0, Math.min(...mine.map((i) => T[i])) - CELL / 2)
+      const t1 = gentle(k, nxt)
+        ? e.L
+        : Math.min(e.L, Math.max(...mine.map((i) => T[i])) + CELL / 2)
       if (t1 - t0 < 4) continue
       const f = split(t1 - t0)
       if (!f) continue
@@ -929,31 +1005,28 @@ function splitFrontage(L: number, next: () => { w: number; kind: number }): Fron
 }
 
 /**
- * An atrium house on its lot: ranges round a central court, the front one of two
- * storeys with shops either side of the door, the others of one (Vitruvius 6.3;
- * the houses of Pompeii). Its court may hold a garden tree.
+ * An atrium house on its lot: its rooms in ranges round the atrium, roofed and
+ * falling inward to the opening over its pool, the front range of two storeys
+ * with shops either side of the door, the others of one. The opening is a quarter
+ * to a third as wide as the atrium (Vitruvius 6.3.6), and the atrium about two
+ * thirds as wide as the house, so the opening is about a fifth of the house's width.
  */
-function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number, gardens: Pt[]): Lot[] {
+function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number): Lot[] {
   const tone = rand()
   const side = (i: number) =>
     Math.hypot(quad[(i + 1) % 4][0] - quad[i][0], quad[(i + 1) % 4][1] - quad[i][1])
   const shortest = Math.min(side(0), side(1), side(2), side(3))
-  // Too small for ranges of rooms round a court: one house under one roof.
-  if (shortest < 17)
+  // Too small for ranges of rooms round an atrium: one house under one roof.
+  if (shortest < 14)
     return [
       { pts: quad, h: GROUND_FLOOR + FLOOR, kind: LOT_KIND.house, roof: ROOF.along, tone },
     ]
-  const d = Math.min(6.5, shortest * 0.3)
-  // Four ranges, one per side, meeting at the corners.
-  const c: Pt = [
-    (quad[0][0] + quad[1][0] + quad[2][0] + quad[3][0]) / 4,
-    (quad[0][1] + quad[1][1] + quad[2][1] + quad[3][1]) / 4,
-  ]
-  const inner = quad.map((p) => {
-    const l = Math.hypot(c[0] - p[0], c[1] - p[1])
-    const k = Math.min(0.45, (d * 1.3) / l)
-    return [p[0] + (c[0] - p[0]) * k, p[1] + (c[1] - p[1]) * k] as Pt
-  })
+  // Each corner drawn in toward the middle, leaving the opening.
+  const k = (1 - OPENING * (0.9 + rand() * 0.2)) / 2
+  const c = centroid(quad)
+  const inner = quad.map(
+    (p) => [p[0] + (c[0] - p[0]) * 2 * k, p[1] + (c[1] - p[1]) * 2 * k] as Pt,
+  )
   const out: Lot[] = []
   for (let i = 0; i < 4; i++) {
     const j = (i + 1) % 4
@@ -965,7 +1038,6 @@ function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number, gardens: Pt[]):
       tone,
     })
   }
-  if (rand() < 0.4) gardens.push(c)
   return out
 }
 
@@ -1086,34 +1158,6 @@ function pca(
     hi2 = Math.max(hi2, t)
   }
   return { c, axis, long: hi - lo + CELL, short: hi2 - lo2 + CELL }
-}
-
-/** Each cell's distance in cells to the nearest cell outside the set (a 3-4 chamfer). */
-function distanceField(cells: number[], own: (k: number) => boolean, nx: number) {
-  const d = new Map<number, number>()
-  for (const k of cells) d.set(k, Infinity)
-  const at = (k: number) => (own(k) ? (d.get(k) ?? Infinity) : 0)
-  const sorted = [...cells].sort((a, b) => a - b)
-  const pass = (list: number[], nbrs: [number, number][]) => {
-    for (const k of list) {
-      let v = d.get(k)!
-      for (const [o, w] of nbrs) v = Math.min(v, at(k + o) + w)
-      d.set(k, v)
-    }
-  }
-  pass(sorted, [
-    [-1, 1],
-    [-nx, 1],
-    [-nx - 1, 1.4],
-    [-nx + 1, 1.4],
-  ])
-  pass(sorted.reverse(), [
-    [1, 1],
-    [nx, 1],
-    [nx + 1, 1.4],
-    [nx - 1, 1.4],
-  ])
-  return d
 }
 
 /**

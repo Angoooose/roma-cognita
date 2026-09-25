@@ -774,17 +774,30 @@ known and what is generated are kept apart:
     - **Plots come in series.** Along a street a run of two to seven plots is of
       one width, now and then a double one, then another run begins: plots laid
       out together, as Conzen found them.
-    - **Courts, not rings.** On a deep plot a block of flats is a range on the
-      street 10–14 m deep, a court of 3–5.5 m, and a range behind it a storey
-      lower; the court falls at a different depth building by building, and a
-      quarter of the buildings, every corner and every plot too shallow for it
-      fill their plot. This is what the Marble Plan shows: rows of shops on the
-      streets and flats round small courtyards, built wall to wall; Nero's rule
-      that each building have its own walls (_Annals_ 15.43) implies shared walls
-      before.
-    - In the quarters of the rich, a plot of flats is built only 14 m deep with a
-      yard behind, and an atrium house takes the front of its plot, as deep as
-      1.3 times its width (18–32 m), its garden behind.
+    - **Yards behind, courts only in large buildings** (decided 2026-09-24, from
+      how the rooms were lit). A plot up to 17 m deep, one or two rooms lit from
+      the street, is built to its back: the rows of shops with rooms over them of
+      the Via Anicia plan and of Cicero's letters. On a deeper plot the building
+      fills its front 12–17 m and the back of the plot is its yard; the yards of
+      plots back to back make one open, irregular yard in the middle of the block,
+      as back land is (Conzen). A yard shallower than 5 m is built over. Of the
+      runs of three deep plots or more, three in ten are one building round a
+      court 6–9 m deep, its end plots its wings: the courtyard blocks of the
+      Marble Plan. So the valleys read as closed rows round a few yards, not a
+      light-well in every building. How the inside of a Republican block was used
+      is not recorded; this is inference from how rooms were lit, the Marble Plan
+      two centuries on, and Pompeii.
+    - **Atrium houses** stand in the quarters of the rich (a third of their plots)
+      and now and then on the hills. A house takes the front of its plot, about as
+      deep as it is wide (17–26 m), its garden behind. Its rooms stand in ranges
+      round the atrium, roofed and falling inward to the opening over its pool:
+      the opening is a quarter to a third as wide as the atrium (Vitruvius 6.3.6),
+      about a fifth of the house's width, not an open court. So the quarters of
+      the rich are more open than the valleys, in their gardens.
+    - A tree stands only in open ground of 150 m² or more, few in the crowded
+      quarters and more in the gardens of the rich: a light-well is not a garden,
+      and the people of Rome grew "images of gardens" in their windows (Pliny,
+      _Natural History_ 19.59).
   - **Buildings, not lots.** A run of one to five neighbouring lots of flats along
     a street is one building, as the blocks of flats on the Marble Plan take several
     shops' frontage, and it may run on round a gentle bend in the street (up to
@@ -795,7 +808,7 @@ known and what is generated are kept apart:
     - Heights follow a smooth pattern across the city, some 200 m across, within
       the quarter's range: a stretch of street is of a height, and the change comes
       between stretches. A building on a main or recorded street stands a storey
-      higher, its range behind its court a storey lower, and a quarter of the
+      higher, a courtyard building's range behind its court a storey lower, and a quarter of the
       buildings step a storey up or down from the pattern.
     - a lone narrow deep lot sometimes turns its gable to the street;
     - one building in sixteen has a flat terrace;
@@ -820,8 +833,7 @@ known and what is generated are kept apart:
       front one of two storeys), among flats built only 14 m deep with yards
       behind, as rich and poor stood side by side on the Marble Plan.
     - Low ground near the river: warehouses on lots 30–60 m long.
-  - Yards and gardens keep trees, more in the quarters of the rich, and the
-    slopes too steep to build on are left to scattered trees.
+  - The slopes too steep to build on are left to scattered trees.
   - The houses are plain stucco in a narrow range of washes under one terracotta,
     varied a little lot by lot: plainer than the known buildings. Atrium houses
     are a paler render, warehouses bare tufa.
