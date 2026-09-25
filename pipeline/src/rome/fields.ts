@@ -29,8 +29,10 @@
  * plate-2: R the land's use × 16 plus a tone (for a recorded ground, its index in
  * `grounds`), G the direction its rows run (0–255 over half a turn; for a recorded
  * ground, the use of the farmland it was laid out over × 16 plus the direction in 16
- * steps), B the distance to the plot's edge, A the distance to a lane, both clamped
- * (`EDGE_CLAMP_M`, `LANE_CLAMP_M`). All of it is seeded, so every build is the same.
+ * steps), B the distance to a hedge between plots, A the distance to a lane (and
+ * along a block edge that is not one, that plus `NOT_A_LANE_M`), both signed by
+ * which side of the line a texel is on (128 for 0) and clamped (`EDGE_CLAMP_M`,
+ * `LANE_CLAMP_M`). All of it is seeded, so every build is the same.
  */
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
@@ -93,8 +95,14 @@ const JITTER = 0.42
  * before the blocks are found, so they bend as country lanes do.
  */
 const WANDER_M = 45
-/** Of the edges between two blocks, this share are lanes; the rest a plot's hedge. */
-const LANE_SHARE = 0.6
+/**
+ * Each block is one of two sides (`hash` below), and the edge between two blocks
+ * of different sides is a lane: about half of them. plate-2's lane field is signed
+ * by the side, so it crosses zero only on a lane.
+ */
+const blockSide = (b: number) => (hash(b, 0, 14) < 0.5 ? 1 : -1)
+/** The lane field along a block edge that is not a lane is pushed this far out, so no lane is drawn there. */
+const NOT_A_LANE_M = 4
 /**
  * The plots, width along the road by depth back from it, metres, near the city and
  * far out (ZONES' first and last `at`), interpolated between.
@@ -261,6 +269,14 @@ export function layFields(f: FieldsInput): Fields {
   const dirByte = new Uint8Array(n)
   const edge = new Float32Array(n).fill(EDGE_CLAMP_M)
   const lane = new Float32Array(n).fill(LANE_CLAMP_M)
+  // What plate-2 stores for the hedges and the lanes, signed by the side of the line
+  // a texel is on: a signed distance interpolated between texel centres crosses zero
+  // on the line and draws it unbroken, where an unsigned one never reaches zero
+  // between them and the line breaks into dashes. The sign must not change except
+  // across a line: a hedge's is the plot's in a checkerboard of its block's plots, a
+  // lane's its block's side.
+  const hedgeAt = new Float32Array(n).fill(EDGE_CLAMP_M)
+  const laneAt = new Float32Array(n).fill(LANE_CLAMP_M)
   const S = 3
   const slopeAt = (i: number) => {
     const c = i % g.width
@@ -306,8 +322,8 @@ export function layFields(f: FieldsInput): Fields {
     const b = blocks[b1]
     const o = blocks[b2]
     const sep = Math.hypot(o.at[0] - b.at[0], o.at[1] - b.at[1]) || 1
-    // Some block edges are lanes, the rest only the hedge between two plots.
-    const isLane = hash(Math.min(b1, b2), Math.max(b1, b2), 13) < LANE_SHARE
+    const side = blockSide(b1)
+    const isLane = side !== blockSide(b2)
     const toBlock = (d2 - d1) / (2 * sep)
     const toLane = isLane ? toBlock : LANE_CLAMP_M
     // A block that reaches over its road is two, one each side.
@@ -332,9 +348,19 @@ export function layFields(f: FieldsInput): Fields {
     const [iu, iv] = [Math.floor(u / w), Math.floor(v / d)]
     const fu = u / w - iu
     const fv = v / d - iv
-    const toPlot = Math.min(Math.min(fu, 1 - fu) * w, Math.min(fv, 1 - fv) * d)
-    edge[i] = Math.min(EDGE_CLAMP_M, toPlot, toBlock, Math.max(0, f.roadDist[i] - 4))
+    const toU = Math.min(fu, 1 - fu) * w
+    const toV = Math.min(fv, 1 - fv) * d
+    const toRoad = Math.max(0, f.roadDist[i] - 4)
+    edge[i] = Math.min(EDGE_CLAMP_M, toU, toV, toBlock, toRoad)
     lane[i] = Math.min(LANE_CLAMP_M, toLane)
+    // Nearer a block's edge than a plot's, the hedge field stands at its clamp.
+    const toPlot = Math.min(toU, toV)
+    // Each plot keeps its sign throughout, so the field crosses zero only on a plot's
+    // edge, and on a block's edge between two plots of opposite sign.
+    hedgeAt[i] =
+      ((iu + iv) & 1 ? 1 : -1) *
+      (toPlot <= toBlock ? Math.min(EDGE_CLAMP_M, toPlot) : EDGE_CLAMP_M)
+    laneAt[i] = side * Math.min(LANE_CLAMP_M, isLane ? toBlock : toBlock + NOT_A_LANE_M)
 
     // What the plot grows.
     const { slope, south } = slopeAt(i)
@@ -373,6 +399,7 @@ export function layFields(f: FieldsInput): Fields {
       tone[i] = recorded[i]
       dirByte[i] = (use_ << 4) | (Math.round((a / Math.PI) * 16) % 16)
       lane[i] = LANE_CLAMP_M
+      laneAt[i] = side * LANE_CLAMP_M
       continue
     }
     use[i] = use_
@@ -402,15 +429,22 @@ export function layFields(f: FieldsInput): Fields {
     }
   chamfer(bound, g.width, g.height, g.texel)
   // Inside a recorded ground only its own edge counts: the plots under it are gone.
-  for (let i = 0; i < n; i++)
-    edge[i] = use[i] === LAND.recorded ? bound[i] : Math.min(edge[i], bound[i])
+  for (let i = 0; i < n; i++) {
+    const e = use[i] === LAND.recorded ? bound[i] : Math.min(edge[i], bound[i])
+    // A recorded ground's hedge field is the distance to its own edge (its walk runs
+    // along it). Elsewhere the land's use changes only at a plot's edge, which the
+    // plots' own field already has: the texel-by-texel distance to a change would
+    // step along the texels.
+    if (use[i] === LAND.recorded) hedgeAt[i] = bound[i]
+    edge[i] = e
+  }
 
   const rgba = new Uint8Array(n * 4)
   for (let i = 0; i < n; i++) {
     rgba[i * 4] = use[i] * 16 + (tone[i] & 15)
     rgba[i * 4 + 1] = dirByte[i]
-    rgba[i * 4 + 2] = Math.round((Math.min(edge[i], EDGE_CLAMP_M) / EDGE_CLAMP_M) * 255)
-    rgba[i * 4 + 3] = Math.round((Math.min(lane[i], LANE_CLAMP_M) / LANE_CLAMP_M) * 255)
+    rgba[i * 4 + 2] = signedByte(hedgeAt[i] / EDGE_CLAMP_M)
+    rgba[i * 4 + 3] = signedByte(laneAt[i] / LANE_CLAMP_M)
   }
   const counts = new Map<number, number>()
   for (let i = 0; i < n; i++) if (use[i]) counts.set(use[i], (counts.get(use[i]) ?? 0) + 1)
@@ -631,6 +665,8 @@ function noise(x: number, y: number, seed: number) {
 }
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+/** −1…1 as a byte, 128 for 0. */
+const signedByte = (v: number) => Math.round(128 + Math.max(-1, Math.min(1, v)) * 127)
 const smooth01 = (t: number) => {
   const c = Math.min(1, Math.max(0, t))
   return c * c * (3 - 2 * c)

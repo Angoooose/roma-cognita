@@ -185,20 +185,33 @@ export function groundStanding(mx: F, my: F) {
 function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   const uv = plateUV(mx, my)
   const lin = texture(planTextures.plate[2], uv).level(float(0))
-  const toEdge = lin.b.mul(fieldUniforms.edgeClamp)
-  const toLane = lin.a.mul(fieldUniforms.laneClamp)
+  // The distances are stored signed by side (pipeline fields.ts), so interpolated
+  // they cross zero on the line itself and it draws unbroken; their size is the
+  // distance.
+  const signed = (v: F) => v.mul(255).sub(128).div(127)
+  const toEdge = abs(signed(lin.b)).mul(fieldUniforms.edgeClamp)
+  const toLane = abs(signed(lin.a)).mul(fieldUniforms.laneClamp)
   // What the land is comes from the nearest texel, looked up a step inside the plot
   // from its nearest edge — down the slope of the interpolated distance — so a plot's
-  // edge runs straight across the texels rather than stepping along them.
-  const edgeAt = (dx: number, dy: number) =>
-    texture(planTextures.plate[2], plateUV(mx.add(dx), my.add(dy))).level(float(0)).b
-  const grad = vec2(
-    edgeAt(1.5, 0).sub(edgeAt(-1.5, 0)),
-    edgeAt(0, 1.5).sub(edgeAt(0, -1.5)),
+  // edge runs straight across the texels rather than stepping along them. A plot's
+  // edge is the hedge field's; a block's the lane field's, which along a block edge
+  // that is not a lane stands `NOT_A_LANE_M` (pipeline fields.ts) further out.
+  const at = (dx: number, dy: number) =>
+    texture(planTextures.plate[2], plateUV(mx.add(dx), my.add(dy))).level(float(0))
+  const [e0, e1, e2, e3] = [at(1.5, 0), at(-1.5, 0), at(0, 1.5), at(0, -1.5)]
+  const slope = (pick: (v: THREE.Node<'vec4'>) => F) =>
+    vec2(
+      abs(signed(pick(e0))).sub(abs(signed(pick(e1)))),
+      abs(signed(pick(e2))).sub(abs(signed(pick(e3)))),
+    )
+  const toward = (g: THREE.Node<'vec2'>) => g.div(max(length(g), 1e-4))
+  const byHedge = float(3.2).sub(toEdge)
+  const byBlock = clamp(float(3.2 + 4).sub(toLane), 0, 3.2)
+  const inward = select(
+    byHedge.greaterThan(0),
+    toward(slope((v) => v.b)).mul(byHedge),
+    toward(slope((v) => v.a)).mul(byBlock),
   )
-  const inward = grad
-    .div(max(length(grad), 1e-4))
-    .mul(max(float(0), float(3.2).sub(toEdge)))
   const cell = min(
     floor(plateUV(mx.add(inward.x), my.add(inward.y)).mul(planUniforms.plateTexels)),
     planUniforms.plateTexels.sub(1),
@@ -383,7 +396,8 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   ground.assign(
     mix(ground, P.hedge.mul(lit), hedge.mul(select(use.equal(LAND.open), 0, 1))),
   )
-  const laneW = max(float(1.5), pxM.mul(0.8))
+  // Never wider than the lane field's offset along block edges that are not lanes.
+  const laneW = clamp(pxM.mul(0.8), 1.5, 3)
   const lane = float(1)
     .sub(smoothstep(laneW.sub(aa), laneW.add(aa), toLane))
     .mul(mix(float(0.85), float(0.35), smoothstep(1.5, 6, pxM)))

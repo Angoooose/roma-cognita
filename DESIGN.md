@@ -979,8 +979,12 @@ known and what is generated are kept apart:
     - **Lanes and plots.** Blocks between lanes (a Voronoi of jittered points
       ~230 m apart, the ground pushed about a little so the lanes bend) face the
       nearest road, and are cut into strips running back from it, so every plot
-      has a frontage: 12–26 m wide near the city, 35–80 m far out. Some block edges
-      are lanes of trodden earth, the rest only a hedge between plots.
+      has a frontage: 12–26 m wide near the city, 35–80 m far out. About half the
+      block edges are lanes of trodden earth, the rest only a hedge between plots.
+      The distances to the lanes and hedges are stored signed, by the side of the
+      line a texel is on, so the line crosses zero between texel centres and draws
+      unbroken however close the camera comes (an unsigned distance on a 4 m grid
+      never reaches zero between centres, and a 3 m lane broke into dashes).
     - **What each plot grows** is drawn by distance from the wall: market gardens
       and orchards close in, vines and olives in the middle ground, grain, stubble,
       fallow and pasture beyond. Vines and olives take the slopes, vines the ones
