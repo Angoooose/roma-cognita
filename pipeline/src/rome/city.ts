@@ -7,12 +7,13 @@
  *    each gate to the Forum by the easiest way over the ground (a cheapest path that
  *    shuns slopes and prefers the recorded streets, after Emilien et al. 2012 and
  *    Galin et al. 2011), so they bend along the valleys and merge as they near the
- *    centre. The big blocks between them are then cut by local streets, each across a
- *    block's long axis with a slight bend, until the blocks are the size of Rome's
- *    comparanda: some 30–40 m by 50–90 m in the crowded valleys (Cosa, Pompeii),
- *    larger on the hills. A few blocks keep a dead-end alley (Varro's *fundula*).
- *    Rome was "casually built upon … rather than regularly planned" (Livy 5.55), with
- *    "narrow, twisting lanes" (Tacitus, *Annals* 15.38).
+ *    centre; where one runs along a recorded street, that street is the street. The
+ *    local streets are grown off them, out from the Forum, one lane off another,
+ *    following the contours and lining up with their neighbours (growth.ts). Blocks
+ *    are what is left between: some 30–40 m by 55–80 m in the crowded valleys
+ *    (Cosa, Pompeii), larger on the hills. Rome was "casually built upon … rather
+ *    than regularly planned" (Livy 5.55), with "narrow, twisting lanes" (Tacitus,
+ *    *Annals* 15.38).
  * 2. **Lots round each block.** Each block is lined with lots along its edges, a strip
  *    of one depth with the corners mitred, so every lot fronts a street, the lots
  *    share their side and back walls, and the middle is left as courtyards (the
@@ -28,9 +29,6 @@
  *    building may stop short of the strip's back line, a lone narrow deep one turns
  *    its gable to the street, a few have a flat terrace, and an atrium house's
  *    ranges fall inward to its court (the houses of Pompeii; the Marble Plan).
- *    On a slope the local streets follow the contours, with narrow stepped lanes
- *    straight up and down, and the blocks are smaller, shallower terraces; on the
- *    flat they leave the nearest major street square.
  * 4. **Quarters.** The valleys (the Subura, the Velabrum) are crowded with blocks of
  *    flats of three to five storeys on narrow lots; the hills are lower. Round the
  *    Palatine, the Carinae, the Velia, the Quirinal and the Caelian, atrium houses on
@@ -39,10 +37,12 @@
  *
  * Everything is on a 2 m grid, and seeded, so every build is the same. The works
  * followed are catalogued in data/sources.yaml (vanegas-2012, emilien-2012,
- * galin-2011, dylla-2009, forma-urbis-stanford, reynolds-expedition, poehler-2017,
- * pecs-cosa, livy, tacitus-ann, varro-ll, cicero-agr, vitruvius).
+ * galin-2011, weber-2009, chen-2008, courtat-2011, dylla-2009, forma-urbis-stanford,
+ * reynolds-expedition, poehler-2017, pecs-cosa, livy, tacitus-ann, varro-ll,
+ * cicero-agr, vitruvius).
  */
 import type { StreetLine } from './streets.ts'
+import { growStreets } from './growth.ts'
 
 type Pt = [number, number]
 
@@ -54,6 +54,8 @@ export interface CityInput {
   forum: Pt[]
   /** Other squares no house stands in: the Capitol's precinct. */
   squares: Pt[][]
+  /** Excavated pieces of street (SITAR) on no recorded street, as short lines, for the generated streets to pass along. */
+  pieces: Pt[][]
   /** Footprints of the monuments standing from before the window, which nothing crosses. */
   monuments: Pt[][]
   /** The ground's height and slope, and whether a point is in the river. */
@@ -111,20 +113,43 @@ const BEND_COS = Math.cos((35 * Math.PI) / 180)
 
 type Quarter = 'valley' | 'hill' | 'rich' | 'river'
 
-/** How each quarter is built: block area to split down to (m²), strip depth, frontage, storeys. */
+/**
+ * How each quarter is built: its blocks' depth between parallel streets and length
+ * along them (m), the lots' strip depth, frontage, storeys.
+ */
 const QUARTER: Record<
   Quarter,
   {
-    area: [number, number]
+    block: { depth: [number, number]; length: [number, number] }
     depth: [number, number]
     frontage: [number, number]
     storeys: [number, number]
   }
 > = {
-  valley: { area: [2200, 4000], depth: [11, 15], frontage: [6, 11], storeys: [3, 5] },
-  hill: { area: [3200, 5500], depth: [12, 16], frontage: [7, 13], storeys: [2, 3] },
-  rich: { area: [4500, 8000], depth: [22, 30], frontage: [7, 12], storeys: [2, 3] },
-  river: { area: [3500, 6500], depth: [12, 15], frontage: [30, 60], storeys: [2, 2] },
+  valley: {
+    block: { depth: [32, 42], length: [55, 80] },
+    depth: [11, 15],
+    frontage: [6, 11],
+    storeys: [3, 5],
+  },
+  hill: {
+    block: { depth: [40, 52], length: [65, 95] },
+    depth: [12, 16],
+    frontage: [7, 13],
+    storeys: [2, 3],
+  },
+  rich: {
+    block: { depth: [48, 62], length: [70, 105] },
+    depth: [22, 30],
+    frontage: [7, 12],
+    storeys: [2, 3],
+  },
+  river: {
+    block: { depth: [36, 46], length: [70, 100] },
+    depth: [12, 15],
+    frontage: [30, 60],
+    storeys: [2, 2],
+  },
 }
 
 export function layCity(c: CityInput) {
@@ -188,32 +213,11 @@ export function layCity(c: CityInput) {
 
   // --- 1. streets -------------------------------------------------------------------------
   for (const s of c.streets) paint(s.pts, s.road ? HALF.road : HALF.street)
-  const mains = mainStreets(c, { x0, y0, nx, ny, inside, monument, wet, slope, square })
+  const mains = offRecorded(
+    mainStreets(c, { x0, y0, nx, ny, inside, monument, wet, slope, square }),
+    c.streets.map((s) => s.pts),
+  )
   for (const m of mains) paint(m, HALF.main)
-
-  // Blocks: what is left between the streets, cut down by local streets.
-  const label = new Int32Array(N).fill(-1)
-  let nextLabel = 0
-  const flood = (seed: number, within: (k: number) => boolean) => {
-    const id = nextLabel++
-    const cells: number[] = [seed]
-    label[seed] = id
-    for (let h = 0; h < cells.length; h++) {
-      const k = cells[h]
-      const i = k % nx
-      for (const q of [k - 1, k + 1, k - nx, k + nx]) {
-        if (q < 0 || q >= N) continue
-        if ((q === k - 1 && i === 0) || (q === k + 1 && i === nx - 1)) continue
-        if (label[q] === id || st[q] !== 1 || !within(q)) continue
-        label[q] = id
-        cells.push(q)
-      }
-    }
-    return { id, cells }
-  }
-  const queue: { id: number; cells: number[] }[] = []
-  for (let k = 0; k < N; k++)
-    if (st[k] === 1 && label[k] < 0) queue.push(flood(k, () => true))
 
   const quarterAt = (p: Pt): Quarter => {
     const low = c.at(p[0], p[1]) < 28
@@ -222,46 +226,10 @@ export function layCity(c: CityInput) {
     const rich = c.richQuarters.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 300)
     return rich ? 'rich' : 'hill'
   }
-
-  // The frame a local street follows. On a slope, the contours: the streets on
-  // Rome's hills ran along them, with steep lanes and stairs straight up and down.
-  // On the flat, the nearest recorded or main street, so side streets leave it
-  // square and the blocks along it line up.
-  const majors: [Pt, Pt][] = [...c.streets.map((s) => s.pts), ...mains].flatMap((l) =>
-    l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt]),
-  )
-  const frameAt = (p: Pt): { dir: Pt; slope: number } | null => {
+  const slopeOf = (p: Pt) => {
     const gx = (c.at(p[0] + 12, p[1]) - c.at(p[0] - 12, p[1])) / 24
     const gy = (c.at(p[0], p[1] + 12) - c.at(p[0], p[1] - 12)) / 24
-    const slope = Math.hypot(gx, gy)
-    if (slope > 0.05) return { dir: [-gy / slope, gx / slope], slope }
-    let best: [Pt, Pt] | null = null
-    let bd = 200
-    for (const sg of majors) {
-      const d = segDist(p, sg[0], sg[1])
-      if (d < bd) [best, bd] = [sg, d]
-    }
-    if (!best) return null
-    const l = Math.hypot(best[1][0] - best[0][0], best[1][1] - best[0][1]) || 1
-    return { dir: [(best[1][0] - best[0][0]) / l, (best[1][1] - best[0][1]) / l], slope }
-  }
-  /** A street from `mid` both ways along `dir`, wandering a little as it goes, out to `reach`. */
-  const wander = (mid: Pt, dir: Pt, reach: number): Pt[] => {
-    const side = (sign: number) => {
-      const pts: Pt[] = []
-      let p = mid
-      let a = Math.atan2(dir[1], dir[0])
-      const base = a
-      for (let run = 0; run < reach;) {
-        const step = 12 + rand() * 10
-        a = base + Math.max(-0.35, Math.min(0.35, a - base + (rand() - 0.5) * 0.3))
-        p = [p[0] + Math.cos(a) * step * sign, p[1] + Math.sin(a) * step * sign]
-        pts.push(p)
-        run += step
-      }
-      return pts
-    }
-    return [...side(-1).reverse(), mid, ...side(1)]
+    return Math.hypot(gx, gy)
   }
 
   // How tall the city stands: a smooth pattern over it, some 200 m across, so a
@@ -284,91 +252,115 @@ export function layCity(c: CityInput) {
   /** Storeys at a point, before a building's own step: the quarter's range, by the pattern. */
   const storeysAt = (p: Pt, lo: number, hi: number) =>
     (lo + hi) / 2 + pattern(p) * ((hi - lo) / 2 + 0.5)
+
+  // The recorded and main streets, which the generated ones grow from.
+  const majors: [Pt, Pt][] = [...c.streets.map((s) => s.pts), ...mains].flatMap((l) =>
+    l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt]),
+  )
   /** Whether a point fronts a main or recorded street. */
   const onMajor = (p: Pt) => majors.some((sg) => segDist(p, sg[0], sg[1]) < 6.5)
 
-  const blocks: { cells: number[]; quarter: Quarter; slope: number }[] = []
+  // Local streets, grown out from them (growth.ts). A block's size is the quarter's,
+  // varying smoothly over the city by a pattern of its own; on a slope the blocks
+  // are shallower terraces.
+  const blockAt = (p: Pt) => {
+    const q = QUARTER[quarterAt(p)].block
+    const t = (pattern([p[0] + 5000, p[1] - 3000]) + 1) / 2
+    const terrace = slopeOf(p) > 0.08 ? 0.75 : 1
+    return {
+      depth: (q.depth[0] + (q.depth[1] - q.depth[0]) * t) * terrace,
+      length: q.length[0] + (q.length[1] - q.length[0]) * (1 - t),
+    }
+  }
+  const circle = c.forum
+  const centre: Pt = [
+    circle.reduce((s, q) => s + q[0], 0) / circle.length,
+    circle.reduce((s, q) => s + q[1], 0) / circle.length,
+  ]
+  const lanes = growStreets({
+    fixed: [...c.streets.map((s) => s.pts), ...mains],
+    pieces: c.pieces,
+    open: (p) => {
+      const k = cellOf(p)
+      return k >= 0 && inside[k] === 1 && st[k] !== 0
+    },
+    height: c.at,
+    block: blockAt,
+    centre,
+    rand,
+  })
   const locals: Pt[][] = []
-  while (queue.length) {
-    const comp = queue.pop()!
-    const cells = comp.cells.filter((k) => st[k] === 1)
-    if (cells.length * CELL * CELL < 120) continue
-    const shape = pca(cells, nx, cx, cy)
-    const quarter = quarterAt(shape.c)
-    const frame = frameAt(shape.c)
-    const slope = frame?.slope ?? 0
-    // Blocks on a slope are terraces, smaller than on the flat.
-    const target = pick(QUARTER[quarter].area) * (slope > 0.08 ? 0.7 : 1)
-    const area = cells.length * CELL * CELL
-    if (area < target || shape.long < 56 || shape.short < 24) {
-      blocks.push({ cells, quarter, slope })
-      continue
-    }
-    // A local street across the block, a little off the middle, in the local frame:
-    // of the frame's two directions, the one nearer to across the block's long axis.
-    const along = (rand() - 0.5) * 0.3 * shape.long
-    const mid: Pt = [shape.c[0] + shape.axis[0] * along, shape.c[1] + shape.axis[1] * along]
-    const across: Pt = [-shape.axis[1], shape.axis[0]]
-    let dir = across
-    let stair = false
-    if (frame) {
-      const a = frame.dir
-      const b: Pt = [-a[1], a[0]]
-      const da = Math.abs(a[0] * across[0] + a[1] * across[1])
-      const db = Math.abs(b[0] * across[0] + b[1] * across[1])
-      // On a real slope the contour wins unless it would run nearly along the block.
-      const contour = frame.slope > 0.05
-      dir = (contour ? da > 0.5 || da >= db : da >= db) ? a : b
-      // A street straight up a slope is a narrow lane of steps.
-      stair = contour && dir === b && frame.slope > 0.1
-    }
-    // If the cut does not divide the block (it ran along it, or into a bay), it stays
-    // as a dead end, and the next goes straight across the long axis.
-    const reach = Math.max(shape.long, shape.short) / 2 + 30
-    let id = comp.id
-    let parts: { id: number; cells: number[] }[] = []
-    const tries: { at: Pt; dir: Pt; half: number }[] = [
-      {
-        at: mid,
-        dir,
-        half: stair ? HALF.alley * 1.2 : pick(HALF.local as [number, number]),
-      },
-      { at: shape.c, dir: across, half: pick(HALF.local as [number, number]) },
-    ]
-    for (const t of tries) {
-      const line = wander(t.at, t.dir, reach)
-      const own = (k: number) => label[k] === id
-      paint(line, t.half, own)
-      locals.push(line)
-      parts = []
-      for (const k of cells) if (st[k] === 1 && label[k] === id) parts.push(flood(k, own))
-      if (parts.length >= 2) break
-      id = parts[0]?.id ?? id
-    }
-    if (parts.length < 2) {
-      blocks.push({
-        cells: parts[0]?.cells ?? cells.filter((k) => st[k] === 1),
-        quarter,
-        slope,
-      })
-      continue
-    }
-    queue.push(...parts)
+  for (const l of lanes) {
+    paint(l.pts, l.stair ? HALF.alley * 1.2 : pick(HALF.local as [number, number]))
+    locals.push(l.pts)
   }
 
-  // A few blocks keep a dead-end alley into their middle.
-  for (const b of blocks) {
-    if (b.cells.length * CELL * CELL < 2500 || rand() > 0.15) continue
-    const shape = pca(b.cells, nx, cx, cy)
-    const across: Pt = [-shape.axis[1], shape.axis[0]]
-    const side = rand() < 0.5 ? 1 : -1
-    const from: Pt = [
-      shape.c[0] + across[0] * side * (shape.short / 2 + 10),
-      shape.c[1] + across[1] * side * (shape.short / 2 + 10),
-    ]
-    const set = new Set(b.cells)
-    paint([from, shape.c], HALF.alley, (k) => set.has(k))
-    b.cells = b.cells.filter((k) => st[k] === 1)
+  // Blocks: what is left between the streets.
+  const findBlocks = () => {
+    const seen = new Uint8Array(N)
+    const found: { cells: number[]; quarter: Quarter; slope: number }[] = []
+    for (let k0 = 0; k0 < N; k0++) {
+      if (st[k0] !== 1 || seen[k0]) continue
+      const cells: number[] = [k0]
+      seen[k0] = 1
+      for (let h = 0; h < cells.length; h++) {
+        const k = cells[h]
+        const i = k % nx
+        for (const q of [k - 1, k + 1, k - nx, k + nx]) {
+          if (q < 0 || q >= N) continue
+          if ((q === k - 1 && i === 0) || (q === k + 1 && i === nx - 1)) continue
+          if (seen[q] || st[q] !== 1) continue
+          seen[q] = 1
+          cells.push(q)
+        }
+      }
+      if (cells.length * CELL * CELL < 120) continue
+      const shape = pca(cells, nx, cx, cy)
+      found.push({ cells, quarter: quarterAt(shape.c), slope: slopeOf(shape.c) })
+    }
+    return found
+  }
+  let blocks = findBlocks()
+
+  // A block the lanes left much longer than the quarter's is cut across its middle,
+  // straight, from street to street — through a junction on one of its long sides
+  // where there is one near, so the street crosses on.
+  const ends = locals.flatMap((l) => [l[0], l[l.length - 1]])
+  for (let round = 0; round < 2; round++) {
+    let cut = false
+    for (const b of blocks) {
+      const shape = pca(b.cells, nx, cx, cy)
+      if (shape.long < LONG_BLOCK * blockAt(shape.c).length || shape.short < 16) continue
+      const across: Pt = [-shape.axis[1], shape.axis[0]]
+      const alongOf = (p: Pt) =>
+        (p[0] - shape.c[0]) * shape.axis[0] + (p[1] - shape.c[1]) * shape.axis[1]
+      const acrossOf = (p: Pt) =>
+        (p[0] - shape.c[0]) * across[0] + (p[1] - shape.c[1]) * across[1]
+      let offset = (rand() - 0.5) * 0.2 * shape.long
+      const aligned = ends
+        .filter(
+          (p) =>
+            Math.abs(alongOf(p)) < shape.long * 0.25 &&
+            Math.abs(Math.abs(acrossOf(p)) - shape.short / 2) < 10,
+        )
+        .sort((p, q) => Math.abs(alongOf(p)) - Math.abs(alongOf(q)))[0]
+      if (aligned) offset = alongOf(aligned)
+      const mid: Pt = [
+        shape.c[0] + shape.axis[0] * offset,
+        shape.c[1] + shape.axis[1] * offset,
+      ]
+      const reach = shape.short / 2 + 10
+      const line: Pt[] = [
+        [mid[0] - across[0] * reach, mid[1] - across[1] * reach],
+        [mid[0] + across[0] * reach, mid[1] + across[1] * reach],
+      ]
+      const set = new Set(b.cells)
+      paint(line, pick(HALF.local as [number, number]), (k) => set.has(k))
+      locals.push(line)
+      cut = true
+    }
+    if (!cut) break
+    blocks = findBlocks()
   }
 
   // --- 2–4. lots round each block ----------------------------------------------------------
@@ -669,6 +661,72 @@ function mainStreets(
     lines.push(chaikin(simplifyLine(path, 5), 2))
   }
   return lines
+}
+
+/** A block longer than this many times its quarter's block length is cut across. */
+const LONG_BLOCK = 1.7
+/** A main street this near a recorded one is running along it, metres. */
+const ALONG_RECORDED = 12
+/** The shortest stretch of main street kept off the recorded ones, metres. */
+const MIN_MAIN = 30
+
+/**
+ * The main streets where they are not the recorded streets over again: a main
+ * street's way to the Forum often follows a recorded street a few metres off its
+ * line, and there the recorded street is the street. What is left of it is joined
+ * on to the recorded street it leaves or meets.
+ */
+function offRecorded(mains: Pt[][], recorded: Pt[][]): Pt[][] {
+  const segs = recorded.flatMap((l) => l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt]))
+  const nearest = (p: Pt) => {
+    let [best, bd]: [Pt, number] = [p, Infinity]
+    for (const [a, b] of segs) {
+      const [dx, dy] = [b[0] - a[0], b[1] - a[1]]
+      const t = Math.max(
+        0,
+        Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
+      )
+      const q: Pt = [a[0] + dx * t, a[1] + dy * t]
+      const d = Math.hypot(q[0] - p[0], q[1] - p[1])
+      if (d < bd) [best, bd] = [q, d]
+    }
+    return { at: best, d: bd }
+  }
+  const out: Pt[][] = []
+  for (const line of mains) {
+    // Resampled every 3 m, so a stretch along a recorded street is found wherever it starts.
+    const pts: Pt[] = [line[0]]
+    for (let i = 0; i + 1 < line.length; i++) {
+      const [a, b] = [line[i], line[i + 1]]
+      const n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 3))
+      for (let k = 1; k <= n; k++)
+        pts.push([a[0] + ((b[0] - a[0]) * k) / n, a[1] + ((b[1] - a[1]) * k) / n])
+    }
+    let run: Pt[] = []
+    const flush = (joinEnd: boolean) => {
+      if (run.length > 1) {
+        const joined = [...run]
+        if (joinEnd) joined.push(nearest(run[run.length - 1]).at)
+        const len = joined
+          .slice(1)
+          .reduce((s, q, i) => s + Math.hypot(q[0] - joined[i][0], q[1] - joined[i][1]), 0)
+        if (len >= MIN_MAIN) out.push(simplifyLine(joined, 1))
+      }
+      run = []
+    }
+    for (const p of pts) {
+      const n = nearest(p)
+      if (n.d < ALONG_RECORDED) {
+        flush(true)
+        continue
+      }
+      // Leaving a recorded street: start from it.
+      if (!run.length && p !== pts[0]) run.push(n.at)
+      run.push(p)
+    }
+    flush(false)
+  }
+  return out
 }
 
 // --- lots -------------------------------------------------------------------------------------

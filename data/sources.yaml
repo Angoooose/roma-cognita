@@ -584,7 +584,41 @@
   usedBy: pipeline/src/rome/city.ts
   note: >-
     With Galin et al. 2011, the main streets: cheapest paths over the terrain that
-    shun slopes, so they follow the valleys.
+    shun slopes, so they follow the valleys. And the lanes grown one off another
+    (growth.ts).
+
+- id: weber-2009
+  kind: modern
+  citation: >-
+    B. Weber, P. Müller, P. Wonka and M. Gross, "Interactive Geometric Simulation
+    of 4D Cities", Computer Graphics Forum 28.2 (2009)
+  url: http://www.peterwonka.net/Publications/pdfs/2009.EG.Weber.UrbanSimulation.FinalVersion.pdf
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    The lanes: grown off the streets already there, and made to meet a street
+    just ahead, end in a junction close by, and keep off one another.
+
+- id: chen-2008
+  kind: modern
+  citation: >-
+    G. Chen, G. Esch, P. Wonka, P. Müller and E. Zhang, "Interactive Procedural
+    Street Modeling", ACM Transactions on Graphics 27.3 (2008)
+  url: https://web.engr.oregonstate.edu/~zhange/images/street_sig08.pdf
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    The one field of directions the lanes follow: along the contours on a slope,
+    and square or parallel to the streets round them elsewhere.
+
+- id: courtat-2011
+  kind: modern
+  citation: >-
+    T. Courtat, C. Gloaguen and S. Douady, "Mathematics and Morphogenesis of
+    Cities: A Geometrical Approach", Physical Review E 83 (2011)
+  url: https://arxiv.org/abs/1010.1762
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    A lane carried on across a street from one opposite, so that streets continue
+    through junctions as the streets of grown towns do.
 
 - id: galin-2011
   kind: modern

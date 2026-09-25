@@ -727,15 +727,38 @@ known and what is generated are kept apart:
     each of the six gates to the Forum by the cheapest way over the ground, shunning
     slopes and preferring the recorded streets (Emilien et al. 2012; Galin et al.
     2011), so the main streets follow the valleys and merge as they near the
-    centre. Local streets 3.5–5 m wide then cut the big blocks, down to blocks
-    the size of Cosa's and Pompeii's (about 35 by 80 m) in the valleys and larger
-    on the hills. They wander a little as they go, and follow the ground: on a
-    slope along the contours, with narrow stepped lanes straight up and down; on
-    the flat square off the nearest major street, so the blocks along it line up.
-    Blocks on a slope are smaller, shallower terraces. A few blocks keep a
-    dead-end alley. Rome was "casually built upon … rather than
-    regularly planned" (Livy 5.55), with "narrow, twisting lanes" (Tacitus,
-    _Annals_ 15.38); Pompeii's streets are mostly 2–4 m wide (Poehler 2017).
+    centre. Where a main street's way runs along a recorded street, the recorded
+    street is the street, and the main street is only what leaves it.
+  - **Local streets grown, not cut** (`growth.ts`, decided 2026-09-24). A town that
+    grew was not divided from above: each lane was laid off one already there and
+    took its line from its neighbours. So the lanes grow out from the Forum:
+    - along every street, a block's side apart, a lane may leave it square on
+      either side; those nearest the Forum are laid first, and each lane laid may
+      branch in its turn (Weber et al. 2009);
+    - a lane follows one field of directions over the city (Chen et al. 2008):
+      along the contours where the ground slopes, and elsewhere square or parallel
+      to the streets round it, the recorded ones weighing most. So the blocks of a
+      quarter line up and the quarters turn with the hills;
+    - a lane that comes near a street runs on to meet it, one near a junction ends
+      in it, and one leaving a street opposite another carries it on across, so
+      streets cross and continue rather than meeting in staggered ends (Weber et
+      al. 2009; Courtat et al. 2011);
+    - none is laid alongside another nearer than a block's depth;
+    - a dead end near a street runs on to it; a short stub is taken away; about a
+      third of the rest are kept as blind alleys;
+    - the excavated pieces of street that belong to no recorded street (SITAR) are
+      laid first and run on along their line, so the lanes pass where streets were
+      found;
+    - a block still more than 1.7 times its quarter's length is cut across the
+      middle, through a junction on its long side where there is one.
+
+    Blocks are what is left between the streets: 32–42 by 55–80 m in the valleys
+    (Cosa's and Pompeii's), larger on the hills and round the houses of the rich,
+    varying smoothly over the city; on a slope, shallower terraces. Lanes are 3.5–5
+    m wide; one rising more than 1 in 8 is a narrow flight of steps. Rome was
+    "casually built upon … rather than regularly planned" (Livy 5.55), with "narrow,
+    twisting lanes" (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m
+    wide (Poehler 2017).
   - **Lots round each block** (Vanegas et al. 2012): a strip of one depth along
     every street edge, mitred at the corners, cut into lots along the street, so
     every lot fronts a street and the buildings share their walls. A short edge

@@ -28,7 +28,7 @@ import { join } from 'node:path'
 import sharp from 'sharp'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
-import type { StreetLine } from './streets.ts'
+import { excavatedPieces, type StreetLine } from './streets.ts'
 import { layCity, LOT_KIND, ROOF } from './city.ts'
 import { COURSES, layCourse } from './aqueducts.ts'
 
@@ -584,6 +584,7 @@ export function bakeModel(m: ModelInput) {
     circuit: m.circuit,
     gates: m.gates,
     streets: m.streets,
+    pieces: excavatedPieces(),
     forum: forumHull,
     squares: open.map(
       (o) =>

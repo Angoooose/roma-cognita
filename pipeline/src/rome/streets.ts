@@ -183,7 +183,7 @@ export function streetLines(
 
 /** The pieces of excavated street, by number, as plane-metre outlines. */
 let pieces: Map<number, Pt[]> | null = null
-function piece(n: number): Pt[] {
+function piece(n: number, need = true): Pt[] {
   if (!pieces) {
     const geo = JSON.parse(
       readFileSync(join(DATA_DIR, 'geometry/rome-sitar.geojson'), 'utf8'),
@@ -201,8 +201,18 @@ function piece(n: number): Pt[] {
     }
   }
   const p = pieces.get(n)
-  if (!p) throw new Error(`routes.ts: SITAR ${n} is not in rome-sitar.geojson`)
-  return p
+  if (!p && need) throw new Error(`routes.ts: SITAR ${n} is not in rome-sitar.geojson`)
+  return p ?? []
+}
+
+/**
+ * The excavated pieces long enough to show which way their street ran (4 m and
+ * more), each as the line between its two ends: for the generated streets to pass
+ * along (city.ts). Those on a recorded street are already drawn.
+ */
+export function excavatedPieces(): Pt[][] {
+  piece(-1, false)
+  return [...pieces!.values()].map(ends).filter(([a, b]) => dist(a, b) >= 4)
 }
 
 /** A piece's two ends: the extremes of its outline along its long axis. */
