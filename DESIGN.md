@@ -506,8 +506,13 @@ What matters about it:
     per texel, which half floats cannot hold at close zoom.
 
 **Points were built in September 2026** (`packages/engine/src/labels/PlaceLayer.ts`).
-Settlements and seats are screen-sized: each is anchored to its place on the plane
-and offset in pixels by the vertex shader.
+Settlements and seats are screen-sized: each is anchored to its place and offset in
+pixels by the vertex shader. The anchor stands on the ground — its height from
+Mapterhorn at z10, baked into places.json, times the terrain's vertical
+exaggeration — so a tilted view does not slide a hill town's marker off its hill.
+Rome's monuments stand on the model's ground and, while the model stands, rise with
+it to the top of their building (or, where it is not drawn, of the roofs round it),
+so each marker sits on its temple's roof.
 
 - **Markers** are drawn in pixels, like engraved symbols: fixed stroke widths, one
   pixel of antialiasing, no halo discs (reworked 2026-09-22, after the first
@@ -740,15 +745,28 @@ known and what is generated are kept apart:
     Plan shows: rows of shops on the streets and flats round small courtyards,
     built wall to wall; Nero's rule that each building have its own walls
     (_Annals_ 15.43) implies shared walls before.
-  - **Massing per block.** A block takes one height, and its lots step a storey up
-    or down from it now and then. Most lots have a low tiled roof (a pitch of about
-    20°) with its ridge along the middle of the strip, so a row makes one long
-    roof, hipped at the corners. But lots were built one at a time, so:
-    - some stop short of the strip's back line, which is ragged;
-    - a narrow deep lot often turns its gable to the street;
-    - one in ten has a flat terrace;
+  - **Buildings, not lots.** A run of one to five neighbouring lots of flats along
+    a street is one building, as the blocks of flats on the Marble Plan take several
+    shops' frontage, and it may run on round a gentle bend in the street (up to
+    35°), never round a corner. A building has one height, one wash and one
+    weathering of its tiles, and a low tiled roof (a pitch of about 20°) with its
+    ridge along the middle of the strip, so a row makes one long roof, hipped at the
+    block's corners.
+    - Heights follow a smooth pattern across the city, some 200 m across, within
+      the quarter's range: a stretch of street is of a height, and the change comes
+      between stretches. A building on a main or recorded street stands a storey
+      higher, a range behind the street ones a storey lower, and a quarter of the
+      buildings step a storey up or down from the pattern.
+    - Some buildings stop short of the strip's back line, never at a corner;
+    - a lone narrow deep lot sometimes turns its gable to the street;
+    - one building in sixteen has a flat terrace;
     - an atrium house's ranges fall inward to its court, as a compluviate atrium's
       roof did (Vitruvius 6.3).
+    - Nothing narrower than 4 m or shallower than 6 m (a room and its walls) is
+      built, no lot with a corner sharper than 25°, and no wedge at a short corner
+      edge smaller than 40 m²: those are left as yard or street. A strip reaches in
+      from the street to the middle of its block; an atrium house needs a lot 17 m
+      across for ranges round a court, and on a smaller one is a single house.
 
     A storey is 3 m over a 3.8 m ground floor of shops. Walls are washed in a
     narrow range with a few ochres and reds, and the tiles are weathered, lighter
@@ -772,7 +790,7 @@ known and what is generated are kept apart:
   - The monuments, the Forum and the Capitol's precinct, and ground too steep or
     wet are kept clear. The generated streets are trodden earth; only the
     recorded ones are paved.
-  - About 23,000 buildings in all. The regional catalogues of the 4th century CE
+  - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb of detached houses lines the roads out of the gates, up to
     ~450 m, with a few against the wall.
@@ -879,7 +897,8 @@ where any house stood.
 - the hills in widely spaced capitals, which recede as the zoom reaches their
   buildings;
 - the quarters and the Tiber in italic;
-- the monuments from 4 m/px, in dark ink.
+- the monuments from 4 m/px, set as the towns are: light type with a dark halo,
+  which reads over the model's roofs where dark ink sank into them.
 
 Streets are not lettered. A click inside a monument's outline opens it, or inside the footprint drawn for one with no outline.
 

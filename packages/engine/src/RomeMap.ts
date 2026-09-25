@@ -10,7 +10,7 @@ import {
   type PoliticalHit,
 } from './politics/PoliticalLayer.ts'
 import { LabelLayer, labelUniforms, setKnockouts } from './labels/LabelLayer.ts'
-import { PlaceLayer, type PlaceHit } from './labels/PlaceLayer.ts'
+import { PlaceLayer, placeUniforms, type PlaceHit } from './labels/PlaceLayer.ts'
 import { roadUniforms } from './roads/shading.ts'
 import { PlanLayer, PLAN_MPP } from './rome/PlanLayer.ts'
 import { ModelLayer, modelUniforms } from './rome/ModelLayer.ts'
@@ -77,6 +77,14 @@ export class RomeMap {
     map.view.state.distance = opts.camera.distance
     map.view.apply()
     if (map.plan.ground) map.model.buildGround(map.plan.ground)
+    // Rome's monuments hang on the model's ground, and on their roofs while it stands.
+    const anchorOf = map.places.anchorOf
+    map.places.anchorOf = (p) =>
+      (p.within === 'roma' && map.model.anchor(p.x, p.y)) || anchorOf(p)
+    map.model.onShaded = () => {
+      map.places.invalidate()
+      map.dirty = true
+    }
     map.paper = new PaperLayer()
     map.scene.add(map.paper.mesh)
     map.labels.setYear(map.politics.year, false)
@@ -172,6 +180,7 @@ export class RomeMap {
     planUniforms.flatten.value = board
     if (this.model.update(mpp)) this.dirty = true
     planUniforms.meshShown.value = this.model.group.visible ? modelUniforms.grow.value : 0
+    placeUniforms.lift.value = this.model.group.visible ? modelUniforms.grow.value : 0
     const shown = modelUniforms.grow.value > 0.5
     if (shown !== this.modelShown) {
       this.modelShown = shown

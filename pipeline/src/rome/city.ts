@@ -19,12 +19,15 @@
  *    straight-skeleton strips of Vanegas et al. 2012, "Procedural Generation of
  *    Parcels in Urban Modeling"). The Marble Plan shows exactly this: rows of shops on
  *    the streets and blocks of flats round small courtyards, built wall to wall.
- * 3. **Massing per block.** A block takes one height and its lots step a storey up or
- *    down from it. Most lots are roofed with a low ridge along the street, so a row
- *    reads as one roof hipped at the corners; but lots were built one at a time, so
- *    some stop short of the strip's back line, a narrow deep lot turns its gable to
- *    the street, some have a flat terrace, and an atrium house's ranges fall inward
- *    to its court (the houses of Pompeii; the Marble Plan).
+ * 3. **Buildings, not lots.** A run of one to five neighbouring lots along a street
+ *    is one building, as the blocks of flats on the Marble Plan take several shops'
+ *    frontage: one height, one render, and one low roof along the street, hipped at
+ *    the block's corners. Heights change smoothly across the city — a pattern some
+ *    200 m across, a storey more on the main and recorded streets, a storey less on
+ *    the ranges behind — and step a storey up or down only between buildings. A
+ *    building may stop short of the strip's back line, a lone narrow deep one turns
+ *    its gable to the street, a few have a flat terrace, and an atrium house's
+ *    ranges fall inward to its court (the houses of Pompeii; the Marble Plan).
  *    On a slope the local streets follow the contours, with narrow stepped lanes
  *    straight up and down, and the blocks are smaller, shallower terraces; on the
  *    flat they leave the nearest major street square.
@@ -81,6 +84,8 @@ export interface Lot {
   h: number
   kind: number
   roof: number
+  /** A seed shared by the lots of one building: its render and its roof's weathering. */
+  tone: number
 }
 
 const CELL = 2
@@ -95,6 +100,14 @@ const GROUND_FLOOR = 3.8
 /** The light-well between a block's street ranges and its back buildings, metres. */
 const WELL = 2.5
 const FLOOR = 3.0
+/** The size of the pattern the city's heights follow, metres. */
+const HEIGHT_PATTERN_M = 200
+/** How many lots a building of flats takes along its street, drawn from these. */
+const BUILDING_LOTS = [1, 2, 2, 2, 3, 3, 3, 4, 4, 5]
+/** The shallowest building, metres front to back: a room and its walls. */
+const MIN_DEPTH_M = 6
+/** A building turns with its street through a bend up to 35°, but not round a corner. */
+const BEND_COS = Math.cos((35 * Math.PI) / 180)
 
 type Quarter = 'valley' | 'hill' | 'rich' | 'river'
 
@@ -117,7 +130,6 @@ const QUARTER: Record<
 export function layCity(c: CityInput) {
   const rand = c.rand
   const pick = ([a, b]: [number, number]) => a + rand() * (b - a)
-  const pickInt = ([a, b]: [number, number]) => a + Math.floor(rand() * (b - a + 1))
 
   // --- the grid -------------------------------------------------------------------------
   const xs = c.circuit.map((p) => p[0])
@@ -252,6 +264,29 @@ export function layCity(c: CityInput) {
     return [...side(-1).reverse(), mid, ...side(1)]
   }
 
+  // How tall the city stands: a smooth pattern over it, some 200 m across, so a
+  // stretch of street is of a height and the change comes between stretches.
+  const seed = Math.floor(rand() * 2 ** 31)
+  const lattice = (i: number, j: number) => {
+    let h = (Math.imul(i, 374761393) + Math.imul(j, 668265263)) ^ seed
+    h = Math.imul(h ^ (h >>> 13), 1274126177)
+    return (((h ^ (h >>> 16)) >>> 0) / 4294967296) * 2 - 1
+  }
+  const ease = (t: number) => t * t * (3 - 2 * t)
+  const pattern = ([x, y]: Pt) => {
+    const [fx, fy] = [x / HEIGHT_PATTERN_M, y / HEIGHT_PATTERN_M]
+    const [i, j] = [Math.floor(fx), Math.floor(fy)]
+    const [u, v] = [ease(fx - i), ease(fy - j)]
+    const top = lattice(i, j) * (1 - u) + lattice(i + 1, j) * u
+    const bottom = lattice(i, j + 1) * (1 - u) + lattice(i + 1, j + 1) * u
+    return top * (1 - v) + bottom * v
+  }
+  /** Storeys at a point, before a building's own step: the quarter's range, by the pattern. */
+  const storeysAt = (p: Pt, lo: number, hi: number) =>
+    (lo + hi) / 2 + pattern(p) * ((hi - lo) / 2 + 0.5)
+  /** Whether a point fronts a main or recorded street. */
+  const onMajor = (p: Pt) => majors.some((sg) => segDist(p, sg[0], sg[1]) < 6.5)
+
   const blocks: { cells: number[]; quarter: Quarter; slope: number }[] = []
   const locals: Pt[][] = []
   while (queue.length) {
@@ -349,18 +384,26 @@ export function layCity(c: CityInput) {
       return k >= 0 && own(k) ? dist.get(k)! * CELL : 0
     }
     /** How deep a strip may go from `p` along `dir` before it meets the strip opposite. */
+    // Going in from the street, the distance to the block's edge rises until the
+    // middle of the block and then falls: the strip may reach the ridge. (Near a
+    // corner it holds level, the other street being as near: that is not the ridge.)
     const room = (p: Pt, dir: Pt, want: number) => {
+      let [top, at] = [0, 0]
       for (let s = 1; s <= want; s += 1) {
         const q: Pt = [p[0] + dir[0] * s, p[1] + dir[1] * s]
         const d = distAt(q)
-        if (d === 0 || d < s * 0.8 - 1) return Math.max(3, s - 1)
+        // The simplified outline may lie a little outside the block: until the strip
+        // is in it, the street under it is not its far side.
+        if (d === 0 && top === 0) continue
+        if (d === 0) return Math.max(3, s - 1)
+        if (d >= top) [top, at] = [d, s]
+        else if (d < top - 1.5) return Math.max(3, at)
       }
       return want
     }
     const q = QUARTER[b.quarter]
     const firstLot = lots.length
     const depth = pick(q.depth) * (1 - Math.min(0.3, b.slope * 1.5))
-    const storeys = pickInt(q.storeys)
     const frontage =
       (kinds: () => { w: number; kind: number }) =>
       (front: [Pt, Pt], first: number, last: number) =>
@@ -370,34 +413,77 @@ export function layCity(c: CityInput) {
           last,
           kinds,
         )
-    /** A roof for flats: mostly along the street, the gable to it on a narrow deep lot, now and then a terrace. */
-    const flatsRoof = (quad: [Pt, Pt, Pt, Pt]) => {
+    /** A lone lot's roof: along the street, the gable to it on a narrow deep lot. */
+    const loneRoof = (quad: [Pt, Pt, Pt, Pt]) => {
       const w = Math.hypot(quad[1][0] - quad[0][0], quad[1][1] - quad[0][1])
       const d = Math.hypot(quad[3][0] - quad[0][0], quad[3][1] - quad[0][1])
-      const r = rand()
-      if (w < d * 0.8 && r < 0.45) return ROOF.across
-      if (r > 0.9) return ROOF.flat
-      if (r > 0.86) return ROOF.lean
-      return ROOF.along
+      return w < d * 0.8 && rand() < 0.2 ? ROOF.across : ROOF.along
     }
-    const ragged = () => (rand() < 0.4 ? 0.62 + rand() * 0.3 : 1)
-    const flats = (quad: [Pt, Pt, Pt, Pt], base: number, deep: boolean) => {
-      // A storey up or down from the block's height, now and then. On a deep strip
-      // (the quarters of the rich) only its front is built; the rest is yard.
-      const s = Math.max(
-        1,
-        Math.min(6, base + (rand() < 0.2 ? (rand() < 0.5 ? -1 : 1) : 0)),
-      )
-      const pts = deep ? truncate(quad, 14) : quad
-      lots.push({
-        pts,
-        h: GROUND_FLOOR + (s - 1) * FLOOR + rand() * 0.4,
-        kind: LOT_KIND.flats,
-        roof: flatsRoof(pts),
-      })
+    /**
+     * The lots of a strip, built: runs of neighbouring flats along one edge become
+     * buildings, each of one height (the city's pattern, `storeysAt`, `level` storeys
+     * down for a range behind), one render and one roof. `deep`: only the front 14 m
+     * is built, the rest yard (the quarters of the rich); `ragged`: a building now and
+     * then stops short of the strip's back line.
+     */
+    const build = (strip: StripLot[], level: number, deep: boolean, ragged: boolean) => {
+      let run: StripLot[] = []
+      let size = 0
+      const flush = () => {
+        if (!run.length) return
+        const front: Pt = [
+          (run[0].quad[0][0] + run[run.length - 1].quad[1][0]) / 2,
+          (run[0].quad[0][1] + run[run.length - 1].quad[1][1]) / 2,
+        ]
+        const [lo, hi] = q.storeys
+        const major = onMajor(front)
+        let st = Math.round(storeysAt(front, lo, hi) + (major ? 1 : 0) - level)
+        if (rand() < 0.25) st += rand() < 0.5 ? -1 : 1
+        st = Math.max(1, Math.min(Math.min(5, hi + 1), st))
+        const h = GROUND_FLOOR + (st - 1) * FLOOR + rand() * 0.3
+        const tone = rand()
+        const terrace = rand() < 0.06
+        const short = ragged && !deep && !run.some((e) => e.corner) && rand() < 0.3
+        const keep = short ? 0.68 + rand() * 0.2 : 1
+        for (const e of run) {
+          let pts = deep ? truncate(e.quad, 14) : e.quad
+          if (keep < 1) pts = shallower(pts, keep)
+          const roof = terrace ? ROOF.flat : run.length === 1 ? loneRoof(pts) : ROOF.along
+          lots.push({ pts, h, kind: LOT_KIND.flats, roof, tone })
+        }
+        run = []
+      }
+      for (const e of strip) {
+        if (e.kind !== LOT_KIND.flats) {
+          flush()
+          if (e.kind === LOT_KIND.house) lots.push(...atriumHouse(e.quad, rand, gardens))
+          else
+            lots.push({
+              pts: e.quad,
+              h: 7.5 + rand() * 1.5,
+              kind: e.kind,
+              roof: ROOF.along,
+              tone: rand(),
+            })
+          continue
+        }
+        // A building runs on round a gentle bend in the street, not round a corner,
+        // and not across a gap where a lot was too small to build.
+        const prev = run[run.length - 1]
+        const bends =
+          prev && prev.edge !== e.edge && prev.u[0] * e.u[0] + prev.u[1] * e.u[1] < BEND_COS
+        const gap =
+          prev &&
+          Math.hypot(prev.quad[1][0] - e.quad[0][0], prev.quad[1][1] - e.quad[0][1]) > 0.5
+        if (run.length && (bends || gap || run.length >= size)) flush()
+        if (!run.length) size = BUILDING_LOTS[Math.floor(rand() * BUILDING_LOTS.length)]
+        run.push(e)
+      }
+      flush()
     }
+    const crowded = b.quarter === 'valley' || b.quarter === 'hill'
     for (const ring of traceRings(b.cells, own, nx, x0, y0)) {
-      const pts = simplifyRing(ring, 2)
+      const pts = simplifyRing(ring, 3)
       if (pts.length < 3 || Math.abs(polygonArea(pts)) < 100) continue
       // A lot along the strip: frontages by quarter; in the quarters of the rich an
       // atrium house on a wide lot among the flats.
@@ -410,20 +496,14 @@ export function layCity(c: CityInput) {
           if (b.quarter === 'river') return { w: pick(q.frontage), kind: 2 }
           return { w: pick(q.frontage), kind: 0 }
         }),
-        b.quarter === 'rich' || b.quarter === 'river' ? undefined : ragged,
       )
-      for (const { quad, kind } of outer.lots) {
-        if (kind === LOT_KIND.house) lots.push(...atriumHouse(quad, rand, gardens))
-        else if (kind === LOT_KIND.warehouse)
-          lots.push({ pts: quad, h: 7.5 + rand() * 1.5, kind, roof: ROOF.along })
-        else flats(quad, storeys, b.quarter === 'rich')
-      }
+      build(outer.lots, 0, b.quarter === 'rich', crowded)
     }
     // In the crowded quarters a big courtyard is built up too: a ring of back
     // buildings behind the street ranges, across a light-well, round a smaller court
     // — and in a very big block, a second.
     let builtTo = depth
-    if (b.quarter === 'valley' || b.quarter === 'hill')
+    if (crowded)
       for (let level = 0; level < 2; level++) {
         const reach = builtTo + WELL
         const deep = pick([8, 11])
@@ -431,17 +511,15 @@ export function layCity(c: CityInput) {
         const cells = b.cells.filter(court)
         if (cells.length * CELL * CELL < 400) break
         for (const ring of traceRings(cells, court, nx, x0, y0)) {
-          const pts = simplifyRing(ring, 2)
+          const pts = simplifyRing(ring, 3)
           if (pts.length < 3 || polygonArea(pts) < 400) continue
           const back = laneLots(
             pts,
             deep,
             room,
             frontage(() => ({ w: pick([8, 14]), kind: 0 })),
-            ragged,
           )
-          for (const { quad } of back.lots)
-            flats(quad, Math.max(1, storeys - 1 - level), false)
+          build(back.lots, 1 + level, false, true)
         }
         builtTo = reach + deep
       }
@@ -596,6 +674,15 @@ function mainStreets(
 // --- lots -------------------------------------------------------------------------------------
 
 type Room = (p: Pt, dir: Pt, want: number) => number
+/** A lot of a strip: its quad, its kind, the edge of the ring it fronts, and whether it turns a corner. */
+type StripLot = {
+  quad: [Pt, Pt, Pt, Pt]
+  kind: number
+  edge: number
+  /** The direction of the edge it fronts. */
+  u: Pt
+  corner: boolean
+}
 type Frontage = { t: number[]; kinds: number[] }
 
 /**
@@ -608,11 +695,9 @@ function laneLots(
   depth: number,
   room: Room,
   split: (front: [Pt, Pt], first: number, last: number) => Frontage | null,
-  /** Lots built one at a time: some shallower than the strip, so its back line is ragged. */
-  ragged?: () => number,
 ) {
   const n = ring.length
-  const out: { quad: [Pt, Pt, Pt, Pt]; kind: number }[] = []
+  const out: StripLot[] = []
   const edge = (k: number) => {
     const [a, b] = [ring[k], ring[(k + 1) % n]]
     const L = Math.hypot(b[0] - a[0], b[1] - a[1])
@@ -660,8 +745,9 @@ function laneLots(
       // Too short for a strip between its mitres: a hipped end, up to where they meet.
       const b = ring[(k + 1) % n]
       const x = meet(a, ma, b, mb)
-      if (f && x && polygonArea([a, b, x]) > 8 && !slender([a, b, x]))
-        out.push({ quad: [a, b, x, x], kind: f.kinds[0] })
+      // Only where it is big enough to build: a small wedge is left to the street.
+      if (f && x && L >= 8 && polygonArea([a, b, x]) > 40 && !slender([a, b, x]))
+        out.push({ quad: [a, b, x, x], kind: f.kinds[0], edge: k, u, corner: true })
       continue
     }
     if (!f) continue
@@ -681,20 +767,11 @@ function laneLots(
         backs[i + 1],
         backs[i],
       ]
-      // A lot between the corners may stop short of the strip's back line.
-      const k = ragged && i > 0 && i < count - 1 ? ragged() : 1
-      if (k < 1) {
-        quad[2] = [
-          quad[1][0] + (quad[2][0] - quad[1][0]) * k,
-          quad[1][1] + (quad[2][1] - quad[1][1]) * k,
-        ]
-        quad[3] = [
-          quad[0][0] + (quad[3][0] - quad[0][0]) * k,
-          quad[0][1] + (quad[3][1] - quad[0][1]) * k,
-        ]
-      }
       if (polygonArea(quad) < 12 || !convex(quad) || slender(quad)) continue
-      out.push({ quad, kind: f.kinds[i] })
+      // Nothing thinner than a room and a wall: a strip squeezed by a narrow block is
+      // left as yard rather than built as a skinny range.
+      if (depthOf(quad) < MIN_DEPTH_M) continue
+      out.push({ quad, kind: f.kinds[i], edge: k, u, corner: i === 0 || i === count - 1 })
     }
   }
   return { lots: out, inner: mitre }
@@ -717,9 +794,9 @@ function splitFrontage(
     const { w, kind } = next()
     let end = pos + w
     if (t.length === 1) end = Math.max(end, first + 3)
-    // The last lot takes what is left when that is less than half a lot, or when
-    // another would start past the last mitre.
-    if (end > last - 3 || L - end < w * 0.5) end = L
+    // The last lot takes what is left when that is less than half a lot (or 4 m, the
+    // narrowest shop), or when another would start past the last mitre.
+    if (end > last - 3 || L - end < Math.max(4, w * 0.5)) end = L
     t.push(end)
     kinds.push(kind)
     pos = end
@@ -734,11 +811,15 @@ function splitFrontage(
  * the houses of Pompeii). Its court may hold a garden tree.
  */
 function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number, gardens: Pt[]): Lot[] {
+  const tone = rand()
   const side = (i: number) =>
     Math.hypot(quad[(i + 1) % 4][0] - quad[i][0], quad[(i + 1) % 4][1] - quad[i][1])
   const shortest = Math.min(side(0), side(1), side(2), side(3))
-  if (shortest < 13)
-    return [{ pts: quad, h: GROUND_FLOOR + FLOOR, kind: LOT_KIND.house, roof: ROOF.along }]
+  // Too small for ranges of rooms round a court: one house under one roof.
+  if (shortest < 17)
+    return [
+      { pts: quad, h: GROUND_FLOOR + FLOOR, kind: LOT_KIND.house, roof: ROOF.along, tone },
+    ]
   const d = Math.min(6.5, shortest * 0.3)
   // Four ranges, one per side, meeting at the corners.
   const c: Pt = [
@@ -758,10 +839,25 @@ function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number, gardens: Pt[]):
       h: i === 0 ? GROUND_FLOOR + FLOOR + rand() * 0.5 : 4.2 + rand() * 0.8,
       kind: LOT_KIND.house,
       roof: ROOF.lean,
+      tone,
     })
   }
   if (rand() < 0.4) gardens.push(c)
   return out
+}
+
+/** How deep a lot quad is: the nearer of its back corners to the line of its front. */
+function depthOf(q: [Pt, Pt, Pt, Pt]) {
+  const L = Math.hypot(q[1][0] - q[0][0], q[1][1] - q[0][1]) || 1
+  const n: Pt = [-(q[1][1] - q[0][1]) / L, (q[1][0] - q[0][0]) / L]
+  const d = (p: Pt) => Math.abs((p[0] - q[0][0]) * n[0] + (p[1] - q[0][1]) * n[1])
+  return Math.min(d(q[2]), d(q[3]))
+}
+
+/** A lot quad cut back to `k` of its depth, measured along its sides. */
+function shallower(q: [Pt, Pt, Pt, Pt], k: number): [Pt, Pt, Pt, Pt] {
+  const at = (f: Pt, b: Pt): Pt => [f[0] + (b[0] - f[0]) * k, f[1] + (b[1] - f[1]) * k]
+  return [q[0], q[1], at(q[1], q[2]), at(q[0], q[3])]
 }
 
 /** The front `d` metres of a lot quad. */
@@ -1025,7 +1121,7 @@ function meet(a: Pt, a2: Pt, b: Pt, b2: Pt): Pt | null {
   return t > 0 && t < 1.2 ? [a[0] + ux * t, a[1] + uy * t] : null
 }
 
-/** A sliver: a lot with a corner sharper than 18°, which no one would build. */
+/** A sliver: a lot with a corner sharper than 25°, which no one would build. */
 function slender(q: Pt[]) {
   const p = q.filter(
     (v, i) => i === 0 || Math.hypot(v[0] - q[i - 1][0], v[1] - q[i - 1][1]) > 0.01,
@@ -1036,7 +1132,7 @@ function slender(q: Pt[]) {
     const v = [c[0] - b[0], c[1] - b[1]]
     const cos =
       (u[0] * v[0] + u[1] * v[1]) / (Math.hypot(u[0], u[1]) * Math.hypot(v[0], v[1]) || 1)
-    if (cos > Math.cos((18 * Math.PI) / 180)) return true
+    if (cos > Math.cos((25 * Math.PI) / 180)) return true
   }
   return false
 }

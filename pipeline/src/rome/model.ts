@@ -225,9 +225,10 @@ const SHADOW = { dx: 0.707, dy: -0.707, vex: 1.5 }
 /**
  * Floats per generated building in model.bin: its lot's four corners (front left,
  * front right, back right, back left), wall height, ground, the last year it
- * stands, its kind (city.ts `LOT_KIND`) and its roof (`ROOF`).
+ * stands, its kind (city.ts `LOT_KIND`), its roof (`ROOF`) and its building's tone
+ * (city.ts `Lot.tone`), shared by the lots of one building.
  */
-const FABRIC_STRIDE = 13
+const FABRIC_STRIDE = 14
 /** The quarters where atrium houses gather among the flats (city.ts). */
 const RICH_QUARTERS = [
   'mons-palatinus',
@@ -566,7 +567,7 @@ export function bakeModel(m: ModelInput) {
   const courtyardTrees: Pt[] = []
   const placed = new SpatialHash(30)
   const [bx0, by0, bx1, by1] = bounds(m.circuit, SUBURB.reach + 20)
-  const lot = (pts: Pt[], h: number, kind: number, roof: number) => {
+  const lot = (pts: Pt[], h: number, kind: number, roof: number, tone: number) => {
     fabric.push(
       ...pts.slice(0, 4).flatMap(([x, y]) => [round(x), round(y)]),
       round(h),
@@ -574,6 +575,7 @@ export function bakeModel(m: ModelInput) {
       until(pts),
       kind,
       roof,
+      Math.round(tone * 1000) / 1000,
     )
   }
 
@@ -600,7 +602,7 @@ export function bakeModel(m: ModelInput) {
       .map((p) => projection.forward(...p.location)),
     rand,
   })
-  for (const l of city.lots) lot(l.pts, l.h, l.kind, l.roof)
+  for (const l of city.lots) lot(l.pts, l.h, l.kind, l.roof, l.tone)
   courtyardTrees.push(...city.gardens)
 
   // Outside it: a thinner suburb of detached houses, along the roads.
@@ -630,7 +632,7 @@ export function bakeModel(m: ModelInput) {
       const r = Math.hypot(w, d) / 2
       if (placed.near(p, r + FABRIC.gap)) continue
       placed.add(p, r)
-      lot(rect(p[0], p[1], w, d, angle), h, LOT_KIND.suburb, ROOF.along)
+      lot(rect(p[0], p[1], w, d, angle), h, LOT_KIND.suburb, ROOF.along, rand())
     }
 
   // --- trees -------------------------------------------------------------------------------
@@ -706,7 +708,7 @@ export function bakeModel(m: ModelInput) {
     join(m.out, 'model.json'),
     JSON.stringify({
       _comment:
-        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof) × fabricCount, then trees (x, y, radius, base) × treeCount, float32.',
+        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof; its building’s tone) × fabricCount, then trees (x, y, radius, base) × treeCount, float32.',
       waterLevel: round(waterLevel),
       fabricCount: fab.length / FABRIC_STRIDE,
       treeCount: tre.length / 4,

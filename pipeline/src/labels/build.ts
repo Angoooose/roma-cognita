@@ -25,6 +25,7 @@ import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
 import { knownPolygons, readKnownWorld } from '../known/world.ts'
 import { projection } from '@roman-map/world'
+import { lonLatToPixel, readDem, TILE, type Raster } from '../features/dem.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/labels')
@@ -270,6 +271,24 @@ const places = data.places.map((p) => {
     note: p.note,
   }
 })
+// The ground under each place, metres, from Mapterhorn at z10 (~100 m texels): the
+// engine lifts its marker and name to it, so a tilted view does not slide them off
+// their place (labels/PlaceLayer.ts).
+const ELEVATION_Z = 10
+const demTiles = new Map<string, Raster>()
+for (const [i, p] of places.entries()) {
+  const [lon, lat] = data.places[i].location
+  const [px, py] = lonLatToPixel(ELEVATION_Z, lon, lat)
+  const key = `${Math.floor(px / TILE)}/${Math.floor(py / TILE)}`
+  let r = demTiles.get(key)
+  if (!r) {
+    r = await readDem({ west: lon, east: lon, south: lat, north: lat }, ELEVATION_Z)
+    demTiles.set(key, r)
+  }
+  const h = r.data[Math.floor(py - r.y0) * r.width + Math.floor(px - r.x0)]
+  ;(p as Record<string, unknown>).z = Math.max(0, Math.round(h))
+}
+
 // Which side of each place has land, so a name can sit on the land and not the sea.
 // Measured on the coast mask at 431 m texels over the box a name of this length would
 // cover, at each of LAND_SCALES m/px (the engine picks the nearest): the share of land
@@ -318,7 +337,7 @@ writeFileSync(
   join(OUT, 'places.json'),
   JSON.stringify({
     _comment:
-      'Settlements and monuments in plane metres with dated prominence (1 overview … 4 close, 5 the city plan), status and condition; seats of kingdoms drawn as their capital. Years astronomical, inclusive.',
+      'Settlements and monuments in plane metres (z: the ground under them, metres) with dated prominence (1 overview … 4 close, 5 the city plan), status and condition; seats of kingdoms drawn as their capital. Years astronomical, inclusive.',
     landScales: LAND_SCALES,
     places,
     seats,

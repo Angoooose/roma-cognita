@@ -17,6 +17,7 @@ import {
   vec4,
 } from 'three/tsl'
 import { advanceOf, loadFont, msdfInk, type FontData } from './msdf.ts'
+import { terrainUniforms } from '../terrain/material.ts'
 
 /**
  * Settlements and seats (DESIGN.md §7.4, §7.5): a marker and a name for every place
@@ -24,7 +25,8 @@ import { advanceOf, loadFont, msdfInk, type FontData } from './msdf.ts'
  * overlaps.
  *
  * Unlike territory names these are set at a fixed size on screen — a town is a point,
- * and its name is type, not land — so each is anchored to its place on the plane and
+ * and its name is type, not land — so each is anchored to its place, on its ground
+ * (lifted in Rome to its building's roof while the model stands, `anchorOf`), and
  * offset in pixels by the vertex shader.
  *
  * - **What shows.** A place's prominence (places.yaml, 1 overview … 4 close in) sets
@@ -46,6 +48,8 @@ export interface PlaceRecord {
   kind: string
   x: number
   y: number
+  /** The ground under it, metres (Mapterhorn, pipeline labels/build.ts). */
+  z?: number
   years: [number, number]
   prominence: { value: number; years: [number, number] }[]
   status: { value: string; years: [number, number] }[]
@@ -125,14 +129,22 @@ const PAPER = new THREE.Color('#EDE6D6')
  */
 const NAME_INK = new THREE.Color('#F3EBDA')
 const NAME_HALO = new THREE.Color('#1B1612')
-/** On a city's plan the plate is paper, so its monuments are named in dark ink. */
-const PLAN_INK = new THREE.Color('#2A241E')
-const PLAN_HALO = new THREE.Color('#E5D9BE')
 
 export const placeUniforms = {
   /** Viewport, CSS px. */
   viewport: uniform(new THREE.Vector2(1, 1)),
   enabled: uniform(1),
+  /** How much of a place's lift over its ground shows: the model of Rome's rise, 0 … 1. */
+  lift: uniform(0),
+}
+
+/**
+ * Where a place's marker and name hang: its ground, metres, and how far over it they
+ * are lifted when the model stands (the top of the building at it), metres.
+ */
+export interface Anchor {
+  ground: number
+  lift: number
 }
 
 interface Item {
@@ -154,6 +166,7 @@ interface Item {
   /** Where the name went: offset of its box's lower-left from the anchor, px. */
   nameAt?: [number, number]
   titleAt?: [number, number]
+  anchor: Anchor
 }
 
 export class PlaceLayer {
@@ -182,6 +195,22 @@ export class PlaceLayer {
   private lastTick = performance.now()
   /** The seat's colour, from the political layer: its power's, for the year. */
   seatColour: (polity: string, year: number) => THREE.Color = () => INK
+  /**
+   * Where a place hangs: on its ground, so a tilted view does not slide it off its
+   * place; Rome's map lifts its monuments to their roofs while the model stands.
+   */
+  anchorOf: (p: PlaceRecord) => Anchor = (p) => ({ ground: p.z ?? 0, lift: 0 })
+
+  /** Places everything again: its anchors have changed (a year's buildings are shaded). */
+  invalidate() {
+    this.last.year = NaN
+  }
+
+  /** A place's anchor in the world, as the shader lifts it (`screenAnchored`). */
+  private at(it: Item, v: THREE.Vector3) {
+    const z = it.anchor.ground + it.anchor.lift * placeUniforms.lift.value
+    return v.set(it.place.x, it.place.y, z * terrainUniforms.verticalExaggeration.value)
+  }
 
   async load() {
     const [data, text, title] = await Promise.all([
@@ -205,8 +234,8 @@ export class PlaceLayer {
     // Cinzel's hairlines are finer than Garamond's: more gain, and a stronger glow so a
     // capital lifts off the territory lettering it often sits on.
     this.materials.title = textMaterial(title.font, title.atlas, 0.25, 0.66)
-    // A monument's name is printed on the plan of its city, dark ink on its paper.
-    this.materials.plan = textMaterial(text.font, text.atlas, 0.1, 0.5, PLAN_INK, PLAN_HALO)
+    // A monument's name is set as a town's is: light type with a dark halo.
+    this.materials.plan = textMaterial(text.font, text.atlas, 0.05, 0.62)
   }
 
   /**
@@ -260,7 +289,7 @@ export class PlaceLayer {
     const v = new THREE.Vector3()
     for (const it of this.items.values()) {
       if (it.status !== 'caput mundi' || !it.nameAt || it.alpha <= 0) continue
-      v.set(it.place.x, it.place.y, 0).project(camera)
+      this.at(it, v).project(camera)
       const sx = ((v.x + 1) / 2) * w
       const sy = ((v.y + 1) / 2) * h
       const [ox, oy] = it.nameAt
@@ -290,7 +319,7 @@ export class PlaceLayer {
     const v = new THREE.Vector3()
     for (const it of this.items.values()) {
       if (it.target < 1) continue
-      v.set(it.place.x, it.place.y, 0).project(camera)
+      this.at(it, v).project(camera)
       const sx = ((v.x + 1) / 2) * r.width
       const sy = ((v.y + 1) / 2) * r.height
       let d = Math.hypot(sx - x, sy - y)
@@ -384,6 +413,7 @@ export class PlaceLayer {
       out.push({
         key: p.id,
         place: p,
+        anchor: this.anchorOf(p),
         seat,
         tier,
         // Seats rank with the provincial capitals: they are the only mark those
@@ -496,7 +526,7 @@ export class PlaceLayer {
     const v = new THREE.Vector3()
     const next = new Map<string, Item>()
     for (const it of this.candidates(year, mpp)) {
-      v.set(it.place.x, it.place.y, 0).project(camera)
+      this.at(it, v).project(camera)
       if (v.z > 1) continue
       const sx = ((v.x + 1) / 2) * w
       const sy = ((v.y + 1) / 2) * h
@@ -574,6 +604,7 @@ export class PlaceLayer {
     this.ranges.clear()
     for (const it of this.items.values()) {
       const { x, y } = it.place
+      for (const q of [markers, text, title, plan]) q.at = it.anchor
       const r = {
         markers: [0, 0] as [number, number],
         text: [0, 0] as [number, number],
@@ -660,7 +691,10 @@ function at<T>(list: { value: T; years: [number, number] }[], year: number): T |
 
 /** Screen-offset quads: an anchor on the plane, corner offsets in px, uv, and one vec4 of data. */
 class Quads {
+  /** The anchor of the quads being laid now. */
+  at: Anchor = { ground: 0, lift: 0 }
   anchor: number[] = []
+  lift: number[] = []
   offset: number[] = []
   uvs: number[] = []
   data: number[] = []
@@ -680,7 +714,8 @@ class Quads {
       [x0, y1, u0, v0],
     ]
     for (const [ox, oy, u, v] of corners) {
-      this.anchor.push(x, y, 0)
+      this.anchor.push(x, y, this.at.ground)
+      this.lift.push(this.at.lift)
       this.offset.push(ox, oy)
       this.uvs.push(u, v)
       this.data.push(...d)
@@ -697,6 +732,7 @@ class Quads {
     const g = new THREE.BufferGeometry()
     g.setAttribute('position', new THREE.Float32BufferAttribute(this.anchor, 3))
     g.setAttribute('offset', new THREE.Float32BufferAttribute(this.offset, 2))
+    g.setAttribute('lift', new THREE.Float32BufferAttribute(this.lift, 1))
     g.setAttribute('uv', new THREE.Float32BufferAttribute(this.uvs, 2))
     g.setAttribute('data', new THREE.Float32BufferAttribute(this.data, 4))
     g.setAttribute(
@@ -759,9 +795,17 @@ function glyphs(
   }
 }
 
-/** Anchored on the plane, offset in pixels: the clip position moves by px × 2 / viewport. */
+/**
+ * Anchored on its ground (lifted, in Rome, to the roof of its building as the model
+ * rises), offset in pixels: the clip position moves by px × 2 / viewport.
+ */
 function screenAnchored(mat: THREE.MeshBasicNodeMaterial) {
-  const clip = cameraProjectionMatrix.mul(cameraViewMatrix).mul(vec4(positionGeometry, 1))
+  const z = positionGeometry.z
+    .add(attribute('lift', 'float').mul(placeUniforms.lift))
+    .mul(terrainUniforms.verticalExaggeration)
+  const clip = cameraProjectionMatrix
+    .mul(cameraViewMatrix)
+    .mul(vec4(vec3(positionGeometry.x, positionGeometry.y, z), 1))
   const px = attribute('offset', 'vec2').mul(2).div(placeUniforms.viewport)
   mat.vertexNode = vec4(clip.xy.add(px.mul(clip.w)), clip.z, clip.w)
   mat.transparent = true

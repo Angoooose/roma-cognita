@@ -59,7 +59,7 @@ export const modelUniforms = {
 const ALWAYS = [-100000, 100000, 1, 0]
 
 /** Floats per generated building in model.bin, its kinds and roofs (pipeline city.ts `LOT_KIND`, `ROOF`). */
-const FABRIC_STRIDE = 13
+const FABRIC_STRIDE = 14
 const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
 const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 /** What the distance fades the model towards: the warm, pale air of a summer day. */
@@ -1207,6 +1207,9 @@ class Builder {
   }
 }
 
+/** How far round a monument's point its marker looks for the top of its building, metres. */
+const ANCHOR_REACH_M = 6
+
 /** The occlusion grid's cell, metres, the reach of its two blurs, cells, and its height step, metres. */
 const OCC_CELL_M = 2
 const OCC_BLUR = [2, 6]
@@ -1230,6 +1233,8 @@ class Occlusion {
   private x0: number
   private y0: number
   private year = NaN
+  /** The height of what stands in each cell, unblurred, metres over its ground. */
+  private raw: Float32Array | null = null
   /** The grid's extent, plane metres: x0, y0, x1, y1. */
   readonly bounds: [number, number, number, number]
 
@@ -1314,6 +1319,7 @@ class Occlusion {
           if (grid[k] < h) grid[k] = h
         }
     }
+    this.raw = grid
     const data = this.tex.image.data as Uint8Array
     for (const [c, r] of OCC_BLUR.entries()) {
       const out = blur(blur(grid, nx, ny, r), nx, ny, r)
@@ -1322,6 +1328,19 @@ class Occlusion {
     }
     this.tex.needsUpdate = true
     return true
+  }
+
+  /** The top of whatever stands within `r` metres of a point, metres over its ground. */
+  topNear(x: number, y: number, r: number) {
+    if (!this.raw) return 0
+    const [ci, cj] = [(x - this.x0) / OCC_CELL_M, (y - this.y0) / OCC_CELL_M]
+    const n = Math.ceil(r / OCC_CELL_M)
+    let top = 0
+    for (let j = Math.floor(cj) - n; j <= Math.floor(cj) + n; j++)
+      for (let i = Math.floor(ci) - n; i <= Math.floor(ci) + n; i++)
+        if (i >= 0 && j >= 0 && i < this.nx && j < this.ny)
+          top = Math.max(top, this.raw[j * this.nx + i])
+    return top
   }
 
   /**
@@ -1380,6 +1399,9 @@ export class ModelLayer {
   private origin: [number, number] = [0, 0]
   private waterLevel = 0
   private occlusion: Occlusion | null = null
+  private ground: ((x: number, y: number) => number) | null = null
+  /** Called when a year's buildings have been shaded: what stands where has changed. */
+  onShaded?: () => void
   private occlusionTimer = 0
   private occlusionBuilt = false
   /** How far the view reaches, metres (`fit`), which the model's haze is measured by. */
@@ -1554,22 +1576,25 @@ export class ModelLayer {
     // monument goes when it comes.
     b.occludes = true
     const nF = meta.fabricCount
-    const vary = (c: THREE.Color, k: number) =>
-      c.clone().multiplyScalar(1 - k + rand() * k * 2)
+    const shade = (c: THREE.Color, k: number, r: () => number) =>
+      c.clone().multiplyScalar(1 - k + r() * k * 2)
     for (let i = 0; i < nF; i++) {
       const v = f.subarray(i * FABRIC_STRIDE, (i + 1) * FABRIC_STRIDE)
       const q: Pt[] = [0, 2, 4, 6].map((k) => [v[k], v[k + 1]])
-      const [h, ground, until, kind, roof] = [v[8], v[9], v[10], v[11], v[12]]
+      const [h, ground, until, kind, roof, tone] = [v[8], v[9], v[10], v[11], v[12], v[13]]
+      // One building's lots share its render and its roof's weathering (`tone`).
+      const own = mulberry32(Math.floor(tone * 1000) + 7)
       const wall =
         kind === LOT.house
-          ? vary(C.house, 0.03)
+          ? shade(C.house, 0.03, own)
           : kind === LOT.warehouse
-            ? vary(C.warehouse, 0.03)
-            : C.stucco[Math.floor(rand() * C.stucco.length)]
+            ? shade(C.warehouse, 0.03, own)
+            : C.stucco[Math.floor(own() * C.stucco.length)]
       b.dates = [ALWAYS[0], until, 1, 0]
-      const tiles = roof === ROOF.flat ? vary(C.terrace, 0.04) : weathered(C.roof, rand)
-      // The lot's kind and a seed for its doors and windows, for the shader.
-      b.look = kind + Math.floor(rand() * 900) / 1000
+      const tiles =
+        roof === ROOF.flat ? shade(C.terrace, 0.04, own) : weathered(C.roof, own)
+      // The lot's kind and its building's seed for its doors and windows, for the shader.
+      b.look = kind + Math.floor(tone * 900) / 1000
       b.lot(q, h, ground, wall, tiles, roof)
     }
     b.dates = ALWAYS
@@ -1660,6 +1685,7 @@ export class ModelLayer {
         (h(i, j + 1) * (1 - u) + h(i + 1, j + 1) * u) * v
       )
     }
+    this.ground = (x, y) => Math.max(this.waterLevel, heightAt(x, y))
     const vex = terrainUniforms.verticalExaggeration.value
     const pos = new Float32Array(nx * ny * 3)
     const nrm = new Float32Array(nx * ny * 3)
@@ -1754,6 +1780,16 @@ export class ModelLayer {
   }
 
   /**
+   * Where a monument's marker and name hang (labels/PlaceLayer.ts `Anchor`): on the
+   * model's ground, lifted to the top of its building while the model stands — or,
+   * where its building is not drawn, of the roofs round it. Null outside the model.
+   */
+  anchor(x: number, y: number) {
+    if (!this.ground || !this.occlusion) return null
+    return { ground: this.ground(x, y), lift: this.occlusion.topNear(x, y, ANCHOR_REACH_M) }
+  }
+
+  /**
    * Shows a year: the buildings of that year stand, and the shading of the ones round
    * them is built again for it, a moment after the year stops changing.
    */
@@ -1762,7 +1798,10 @@ export class ModelLayer {
     if (!this.occlusion) return
     clearTimeout(this.occlusionTimer)
     this.occlusionTimer = window.setTimeout(() => {
-      if (this.occlusion?.build(year)) this.occlusionBuilt = true
+      if (this.occlusion?.build(year)) {
+        this.occlusionBuilt = true
+        this.onShaded?.()
+      }
     }, 150)
   }
 
