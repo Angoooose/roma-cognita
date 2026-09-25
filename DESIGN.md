@@ -867,7 +867,38 @@ what the city adds drawn on it:
   and lit and given its rock by their slope — the light with the slope drawn up
   four times, so the hills read — so the surface model's modern
   buildings do not show, and the model stands on it exactly. The relief is
-  today's, a few metres above the ancient ground.
+  today's, except in the valleys where excavations found the ancient ground.
+- **The ancient valley floors** (`ground.ts`, decided 2026-09-24). Since antiquity
+  the valleys have filled up. Where SITAR records the height of ground walked on
+  then (`rome-levels.geojson`, from its excavated levels), the valley floor is set
+  to it. Each correction cites the pieces whose levels give its height:
+  - the Forum valley at the mouth of the Argiletum, 13.9 m above the sea (a street
+    and a lane later under Caesar's forum, in use until 101 and 55 BCE: SITAR
+    16681, 16671);
+  - the Forum's square, 13.5 m (its paving and a street of the early 2nd century
+    CE, a ceiling for the Republican level: 17854, 17890);
+  - the valley of the Colosseum, 16.2 m (the square and street of 7 BCE–64 CE, a
+    ceiling: 15456, 15428);
+  - the Via Appia inside and at the Porta Capena, 13.0 and 11.3 m (its paving of
+    312 BCE: 17004, 16624);
+  - the Via Flaminia at the foot of the Capitol, 13.2 m (220 BCE–50 CE: 6627,
+    6628).
+
+  The model's ground there is 22–29 m, so the floors fall 9–15 m; part of that is
+  the smoothed surface model's own error, since the Forum is excavated to near its
+  ancient level today. A correction follows its valley: from its point it runs out
+  over ground no more than 12 m above the floor, round the hills, up to 450 m, and
+  lowers the floor by the whole change and the valley's sides less, to nothing 12
+  m up. So the valleys from the Capitol to the Porta Capena deepen round the
+  Palatine, which stands higher for it. Where no valley floor was excavated — the
+  Subura, the Circus' valley, the valleys of the north — the terrain is as it is.
+  Hillsides and the Velia are left out, where the terrain model is too uncertain to
+  measure against; the Velia stood higher before the cut of 1932. SITAR's 1924
+  contours cover only the open ground of the south, where today's terrain is close
+  to them, and are not used. A building on a slope steps with it: where the ground
+  rises more than 2.2 m from a plot's street to its back, the building is two or
+  three parts, each on its own ground, fewer storeys going up the slope and more
+  going down.
 - Inside the walls, the ground between the houses is trodden earth: the
   terrain's colour pulled most of the way to it, its relief kept.
 - Close in, a ground mesh over the same heights draws only the model's shadows.

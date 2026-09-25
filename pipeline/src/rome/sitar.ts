@@ -11,7 +11,14 @@
  * Most are dated only "Roman" (509 BCE–476 CE); those are kept, since nothing says
  * they are later. Undated pieces are not.
  *
- * The recorded streets whose course is drawn from the evidence (courses.ts) pass
+ * It also keeps the heights excavations measured on the ground people walked on
+ * then — floors, paving, the surfaces of streets and yards — for the ancient ground
+ * the model stands on (ground.ts): data/geometry/rome-levels.geojson. Only those in
+ * a phase dated between 400 BCE and 150 CE, begun by 14 CE, are kept, and those of
+ * the pieces the corrections of the ground cite; a piece dated only "Roman" says
+ * nothing of how high the ground then was.
+ *
+ * The recorded streets whose course is drawn from the evidence (routes.ts) pass
  * along these pieces, citing them by number; the generated streets (city.ts) keep
  * to the rest. The data is CC BY-SA 4.0 (data/sources.yaml, `sitar`). Run it again
  * to pick up new excavations, and look at the diff.
@@ -19,6 +26,7 @@
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { DATA_DIR } from '../load.ts'
+import { CORRECTIONS } from './ground.ts'
 
 const WFS = 'https://repositar.archeositarproject.it/geoserver/wfs'
 /** The walled city and a margin round it, lat/lon. */
@@ -30,6 +38,7 @@ interface Props {
   codice_pa: number
   codice_oi: number
   categoria: string
+  def_oggettiva: string | null
   definizione_specifica1: string | null
   def_interpretativa: string | null
   anno_da: number | null
@@ -95,3 +104,76 @@ writeFileSync(
   ) + '\n',
 )
 console.log(`${features.length} pieces of street → ${out}`)
+
+// --- the ancient ground ----------------------------------------------------------------
+
+/** A level is kept if its piece's phase began in these years (astronomical)… */
+const LEVEL_FROM = [-399, 14]
+/** …and ended by this one. */
+const LEVEL_TO = 150
+
+interface Level {
+  codice_pa: number
+  quota: number | null
+  categoria: string | null
+  definizione: string | null
+  nome_pt: string | null
+}
+const levelRes = await fetch(
+  `${WFS}?${new URLSearchParams({ ...Object.fromEntries(params), typeNames: 'sitar:v_st_archaeo_part_altimetry' })}`,
+  { headers: { 'User-Agent': 'roman-map pipeline (rome:sitar)' } },
+)
+if (!levelRes.ok) throw new Error(`SITAR levels: ${levelRes.status}`)
+const levels = (
+  (await levelRes.json()) as {
+    features: { properties: Level; geometry: { coordinates: [number, number] } }[]
+  }
+).features
+const pieceOf = new Map(all.map((f) => [f.properties.codice_pa, f.properties]))
+/** A point on a surface walked on: a floor, a pavement, a street, a walking level; not a wall's top or a foundation. */
+const walkedOn = (l: Level, p: Props) =>
+  l.categoria === 'rivestimenti pavimentali' ||
+  l.definizione === 'piano di calpestio/di frequentazione' ||
+  (p.categoria === 'INFRASTRUTTURE VIARIE' &&
+    !/cresta|fondazione|rasatura|fondo/i.test(l.nome_pt ?? ''))
+const cited = new Set(CORRECTIONS.flatMap((c) => c.pieces))
+const kept = levels
+  .map((f) => ({ f, p: pieceOf.get(f.properties.codice_pa) }))
+  .filter(({ f, p }) => p && f.properties.quota !== null && walkedOn(f.properties, p))
+  // Those the corrections of the ground cite (ground.ts), and the rest of that period.
+  .filter(
+    ({ p }) =>
+      cited.has(p!.codice_pa) ||
+      (p!.anno_da !== null &&
+        p!.anno_da >= LEVEL_FROM[0] &&
+        p!.anno_da <= LEVEL_FROM[1] &&
+        p!.anno_a !== null &&
+        p!.anno_a <= LEVEL_TO),
+  )
+  .sort((a, b) => a.p!.codice_pa - b.p!.codice_pa)
+  .map(({ f, p }) => ({
+    type: 'Feature',
+    properties: {
+      piece: p!.codice_pa,
+      level: f.properties.quota,
+      what:
+        f.properties.categoria === 'rivestimenti pavimentali'
+          ? 'floor or paving'
+          : p!.categoria === 'INFRASTRUTTURE VIARIE'
+            ? 'street'
+            : 'walking level',
+      from: p!.anno_da,
+      to: p!.anno_a,
+      fetched,
+    },
+    geometry: { type: 'Point', coordinates: round(f.geometry.coordinates) },
+  }))
+const levelsOut = join(DATA_DIR, 'geometry/rome-levels.geojson')
+writeFileSync(
+  levelsOut,
+  JSON.stringify({ type: 'FeatureCollection', features: kept }, null, 1).replace(
+    /\[\n\s+(-?[\d.]+),\n\s+(-?[\d.]+)\n\s+\]/g,
+    '[$1, $2]',
+  ) + '\n',
+)
+console.log(`${kept.length} ancient ground levels → ${levelsOut}`)

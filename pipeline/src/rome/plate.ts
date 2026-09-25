@@ -30,6 +30,7 @@ import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { MAX_KNOWN_M, SERVIAN } from './servian.ts'
 import { streetLines } from './streets.ts'
+import { ancientGround } from './ground.ts'
 import { COURSES } from './aqueducts.ts'
 import { bakeModel, writeGround } from './model.ts'
 
@@ -156,6 +157,22 @@ export async function bakePlate(
   }
 
   const grid = { x0, y1, width, height, texel: TEXEL_M }
+  const water = signedField(grid, riverRings, RIVER_CLAMP_M)
+
+  // --- the ancient ground ------------------------------------------------------------
+  // The valley floors set to the ground the excavations found walked on in the late
+  // Republic (ground.ts); the terrain as it is elsewhere, and in the river, whose
+  // level is its own.
+  const ancient = ancientGround(grid, smooth)
+  for (let i = 0; i < h.length; i++) {
+    const k = ancient.change[i] * Math.min(1, Math.max(0, (water[i] - 4) / 30))
+    h[i] += k
+    smooth[i] += k
+  }
+  for (const f of ancient.found)
+    console.log(
+      `  ground: ${f.what.split(':')[0]}: ${f.floor.toFixed(1)} m today, ${f.level.toFixed(1)} m then (${f.change.toFixed(1)} m)`,
+    )
   // A street drawn from the evidence keeps to the ground and off the monuments: their
   // outlines, the temples placed by a point (about as far round as one stands), and
   // the river.
@@ -188,7 +205,6 @@ export async function bakePlate(
   ]
   const hull = convexHull([...circuit, ...planned])
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)
-  const water = signedField(grid, riverRings, RIVER_CLAMP_M)
 
   // --- the model --------------------------------------------------------------------
   const model = bakeModel({

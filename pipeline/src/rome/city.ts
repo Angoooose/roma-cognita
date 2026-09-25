@@ -110,6 +110,10 @@ const HALF = { road: 4.5, street: 3.5, main: 3.5, local: [1.5, 2.2], alley: 1 }
 const GROUND_FLOOR = 3.8
 /** The furthest a plot reaches in from its street, metres: less where it meets the plots opposite. */
 const PLOT_MAX_M = 26
+/** The rise front to back over which a building is cut into steps, metres. */
+const STEP_M = 2.2
+/** Of the ground a step rises or falls, the share its storeys take up: the rest it is cut into the slope. */
+const STEP_STOREYS = 0.6
 /** A plot this deep or less, one or two rooms lit from the street, is built to its back, metres. */
 const SOLID_TO_M = 17
 /** How deep a building of flats on a deeper plot runs back from the street, metres; the rest is its yard. */
@@ -605,6 +609,17 @@ export function layCity(c: CityInput) {
     gardens.push(...planted)
   }
 
+  // On a slope a building steps with the ground it stands on. Where the ground
+  // rises more than STEP_M from a plot's street front to its back, its building is
+  // cut front to back into two or three parts, each on its own ground: going up the
+  // slope from the street, fewer storeys over each step; going down, more. Its shops
+  // stay on its street front.
+  const steppedLots = lots.flatMap((l) =>
+    l.kind === LOT_KIND.house ? [l] : stepped(l, c.at),
+  )
+  lots.length = 0
+  lots.push(...steppedLots)
+
   // The slopes too steep to build on are left to scrub and trees.
   const taken = new Set<number>()
   for (let k = 0; k < N; k++) {
@@ -1047,6 +1062,48 @@ function atriumHouse(quad: [Pt, Pt, Pt, Pt], rand: () => number): Lot[] {
       roof: ROOF.lean,
       tone,
     })
+  }
+  return out
+}
+
+/**
+ * A building cut into steps up or down its slope (`STEP_M`): at most three, each
+ * with the storeys the fall of the ground gives or takes, in whole storeys. A step
+ * behind the first has its front on its back edge, so the shops the renderer paints
+ * on a lot's front face its yard, not the roof below.
+ */
+function stepped(l: Lot, at: (x: number, y: number) => number): Lot[] {
+  const [f0, f1, b1, b0] = l.pts
+  const mid = (a: Pt, b: Pt): Pt => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+  const front = at(...mid(f0, f1))
+  const rise = at(...mid(b0, b1)) - front
+  const k = Math.min(3, Math.ceil(Math.abs(rise) / STEP_M))
+  if (k < 2) return [l]
+  const lerp = (a: Pt, b: Pt, t: number): Pt => [
+    a[0] + (b[0] - a[0]) * t,
+    a[1] + (b[1] - a[1]) * t,
+  ]
+  const storeys = Math.round((l.h - GROUND_FLOOR) / FLOOR)
+  const noise = l.h - GROUND_FLOOR - storeys * FLOOR
+  const out: Lot[] = []
+  for (let j = 0; j < k; j++) {
+    const [t0, t1] = [j / k, (j + 1) / k]
+    const band: [Pt, Pt, Pt, Pt] = [
+      lerp(f0, b0, t0),
+      lerp(f1, b1, t0),
+      lerp(f1, b1, t1),
+      lerp(f0, b0, t1),
+    ]
+    const ground = at(...centroid(band))
+    const n = Math.max(
+      0,
+      Math.min(
+        storeys + 2,
+        Math.round(storeys - ((ground - front) * STEP_STOREYS) / FLOOR),
+      ),
+    )
+    const pts: [Pt, Pt, Pt, Pt] = j === 0 ? band : [band[2], band[3], band[0], band[1]]
+    out.push({ ...l, pts, h: GROUND_FLOOR + n * FLOOR + noise })
   }
   return out
 }

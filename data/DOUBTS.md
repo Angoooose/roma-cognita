@@ -258,3 +258,18 @@ same `npm run atoms:preview -w pipeline`. What wants a reader's eye:
   Atlas's forms are used throughout.
 - **The courses are placement, not extent.** Where one sea ends and the next
   begins (Ionium against Siculum, Libycum against Aegyptium) is not claimed.
+
+## The ancient ground of Rome (September 2026)
+
+- **Only six valley floors are set from excavated levels** (pipeline/src/rome/
+  ground.ts). The Subura, the Circus' valley, the Velabrum and the valleys of the
+  north keep today's terrain, though they too filled up: a published map of the
+  depth of the fill in Rome's centre, or more dated levels, would let them be set.
+- **Two of the six are ceilings.** The Forum's square and the valley of the
+  Colosseum are set from levels of the early empire; the Republican ground lay at
+  or a little below them.
+- **The Velia and the saddle between the Capitol and the Quirinal stood higher**
+  than today (cut in 1932 and by Trajan). Neither is raised: SITAR's levels on the
+  Velia are measured against a terrain model too uncertain there, and no height
+  for the saddle is recorded with a source yet.
+

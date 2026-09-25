@@ -737,6 +737,9 @@
     sitar.ts), with the date they were fetched. Most are dated only "Roman" (509
     BCE–476 CE). Some are SITAR's own digitising of Lanciani's Forma Urbis Romae
     (1893–1901), which it says in the piece's description.
+    The heights it records of what excavations found (its altimetry) give the
+    ancient valley floors: those on ground walked on are copied into
+    data/geometry/rome-levels.geojson, with the piece each belongs to.
 
 - id: digital-augustan-rome
   kind: modern
