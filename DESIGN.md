@@ -697,15 +697,8 @@ known and what is generated are kept apart:
       comes down to the ground at each end and rises over the arches. The build
       reports a bridge whose water differs from its design by more than a quarter.
     - **The Tiber Island's ship** is a travertine embankment on the island's own
-      shore, the island made up behind it to one quay level (its ground away from
-      the shore, at least 2.5 m over the water) with the coping flush, and rising
-      towards the downstream end as a ship's sides rise to the stern, with the
-      relief of Aesculapius' staff near it.
-    - **At the water's edge** the river bed's cut would slope the ground down to the
-      water; a bridge's ends are instead made up to a level approach at the bank's
-      own height (the ground 14–26 m onto the land, or the island's quay), 18 m long
-      and easing back to the ground, which its deck lands on. Retaining walls round
-      the levelled sites likewise stand flush with the ground they hold back.
+      shore, rising towards its downstream end as a ship's sides rise to the stern,
+      with the relief of Aesculapius' staff near it.
     - **No street under a building.** Where a recorded or main street's line crosses
       a monument's footprint it stops at its edge (plate.ts), except over the bridges,
       the island and the open squares.

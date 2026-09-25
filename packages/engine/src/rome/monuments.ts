@@ -1407,26 +1407,25 @@ interface Island {
 const island: Build<Design & Island> = (F, d) => {
   if (!d.ship || !d.outline) return
   const wl = (d.water as number | undefined) ?? 2
-  // The level the island is made up to behind the embankment (pipeline model.ts).
-  const quay = (d.quay as number | undefined) ?? wl + 2.5
   const trav = C.travertine
-  const ring = d.outline.map(([x, y]) => F.local(x, y))
+  const ring = d.outline.map(
+    ([x, y, g]) => [...F.local(x, y), g] as [number, number, number],
+  )
   if (ring.length < 4) return
   // Its winding, so each wall's inside is towards the island.
   let area = 0
   for (let i = 0; i + 1 < ring.length; i++)
     area += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
   const inward = area > 0 ? 1 : -1
-  // The ship's end: its tip downstream (the frame's front). Along the sides the coping
-  // lies flush with the quay behind it, as a retaining wall's does; towards the stern
-  // the wall rises over its last `SHEER` metres into a parapet, as a ship's sides rise.
-  const SHEER = 35
+  // The ship's end: its tip downstream (the frame's front), the wall rising towards it
+  // as a ship's sides rise to its stern, over its last `SHEER` metres.
+  const SHEER = 40
   const tip = ring.reduce((m, p) => (p[1] > m[1] ? p : m), ring[0])
-  const top = (p: Pt) => {
+  const top = (p: [number, number, number]) => {
     const d = Math.hypot(p[0] - tip[0], p[1] - tip[1])
-    return quay + 0.15 + 1.8 * Math.max(0, 1 - d / SHEER) ** 2
+    return Math.max(wl + 2.2, p[2] + 0.6) + 2.2 * Math.max(0, 1 - d / SHEER) ** 2
   }
-  const T = 1.2
+  const T = 1.4
   for (let i = 0; i + 1 < ring.length; i++) {
     const [a, b] = [ring[i], ring[i + 1]]
     const L = Math.hypot(b[0] - a[0], b[1] - a[1])
@@ -1435,8 +1434,7 @@ const island: Build<Design & Island> = (F, d) => {
     const [ta, tb] = [top(a), top(b)]
     const ai = [a[0] + n[0] * T, a[1] + n[1] * T]
     const bi = [b[0] + n[0] * T, b[1] + n[1] * T]
-    // The face to the river, the coping, and (where it stands over the quay at the
-    // stern) its back down to the quay.
+    // The face to the river, its coping, and its back down into the island's ground.
     F.quad(
       [a[0], a[1], wl - 1.5],
       [b[0], b[1], wl - 1.5],
@@ -1444,25 +1442,19 @@ const island: Build<Design & Island> = (F, d) => {
       [a[0], a[1], ta],
       trav,
     )
-    F.quad(
-      [a[0], a[1], ta],
-      [b[0], b[1], tb],
-      [bi[0], bi[1], tb],
-      [ai[0], ai[1], ta],
-      C.retainingTop,
-    )
+    F.quad([a[0], a[1], ta], [b[0], b[1], tb], [bi[0], bi[1], tb], [ai[0], ai[1], ta], trav)
     F.quad(
       [ai[0], ai[1], ta],
       [bi[0], bi[1], tb],
-      [bi[0], bi[1], quay - 0.5],
-      [ai[0], ai[1], quay - 0.5],
+      [bi[0], bi[1], b[2] - 1],
+      [ai[0], ai[1], a[2] - 1],
       trav,
     )
   }
-  // Near the stern on each side the relief of Aesculapius' staff and serpent (drawn as
-  // a darker panel), where it survives.
+  // Near the tip on each side the relief of Aesculapius' staff and serpent (drawn as a
+  // darker panel), as the stern's ornament survives.
   const near = ring
-    .map((p, i) => ({ i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
+    .map((p, i) => ({ p, i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
     .filter((q) => q.d > 8 && q.d < 16)
   for (const { i } of near.slice(0, 2)) {
     const [a, b] = [ring[i], ring[Math.min(ring.length - 1, i + 1)]]
