@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, MoveHorizontal, X } from 'lucide-react'
 import { Slider as SliderPrimitive } from 'radix-ui'
 import { type KeyboardEvent, type ReactNode, useEffect, useState } from 'react'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { Compass } from '@/components/Compass.tsx'
 import { cn } from '@/lib/utils'
 import { formatYear } from '@/lib/year.ts'
 import { useExplorer } from '@/store.ts'
@@ -10,7 +11,7 @@ import { useExplorer } from '@/store.ts'
  * The timeline (DESIGN.md §8.3): a slim ink strip in the bottom-right corner that
  * always shows the year shown, between two steps. Its toggle opens a ruler to the
  * year's left, to drag or click through the data's window; ← → work anywhere (shift
- * for five years). Every change cross-fades on the map.
+ * for five years). Every change cross-fades on the map. The compass sits to its right.
  */
 export function Timeline() {
   const map = useExplorer((s) => s.map)
@@ -32,14 +33,13 @@ export function Timeline() {
     return () => document.removeEventListener('keydown', onKey)
   }, [goToYear])
 
-  if (!span) return null
+  if (!map || !span) return null
   return (
-    <TimelinePanel
-      year={year}
-      span={span}
-      onYear={goToYear}
-      className="fixed right-4 bottom-4"
-    />
+    // The compass stands to the year's right, the corner's last word.
+    <div className="fixed right-4 bottom-4 flex items-center gap-2">
+      <TimelinePanel year={year} span={span} onYear={goToYear} />
+      <Compass map={map} />
+    </div>
   )
 }
 
