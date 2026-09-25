@@ -30,6 +30,7 @@ import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import type { StreetLine } from './streets.ts'
 import { layCity, LOT_KIND, ROOF } from './city.ts'
+import { COURSES, layCourse } from './aqueducts.ts'
 
 type Pt = [number, number]
 
@@ -517,7 +518,41 @@ export function bakeModel(m: ModelInput) {
     (forumHull.length && inRing(p, [...forumHull, forumHull[0]])) ||
     open.some((o) => Math.hypot(p[0] - o.c[0], p[1] - o.c[1]) < o.r)
 
+  // The aqueducts (aqueducts.ts): their arcades and walls keep houses and trees off
+  // their line.
+  const aqueducts = COURSES.map((c) => ({ course: c, runs: layCourse(c, at) }))
+  const aqueductGrid = new SegmentGrid(
+    aqueducts.flatMap(({ runs }) =>
+      runs
+        .filter((r) => r.kind !== 'shafts')
+        .flatMap((r) =>
+          r.pts.slice(1).map((q, i) => [r.pts[i].slice(0, 2), q.slice(0, 2)] as [Pt, Pt]),
+        ),
+    ),
+    40,
+  )
+  const bandOf: number[] = []
+  const aqueductBands: Pt[][] = aqueducts.flatMap(({ course, runs }, n) =>
+    runs
+      .filter((r) => r.kind !== 'shafts')
+      .flatMap((r) =>
+        r.pts.slice(1).map((q, i) => {
+          const [a, b] = [r.pts[i], q]
+          const L = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1
+          bandOf.push(n)
+          return rect(
+            (a[0] + b[0]) / 2,
+            (a[1] + b[1]) / 2,
+            course.size.width + 6,
+            L + 1,
+            Math.atan2(b[1] - a[1], b[0] - a[0]) - Math.PI / 2,
+          )
+        }),
+      ),
+  )
+
   const allowed = (p: Pt, suburb: boolean) => {
+    if (aqueductGrid.nearest(p).d < 5) return false
     if (sample(m.water, p[0], p[1], -1) < 6) return false
     if (streetGrid.nearest(p).d < FABRIC.streetClear) return false
     if (monumentGrid.nearest(p).d < FABRIC.monumentClear || insideMonument(p)) return false
@@ -555,7 +590,7 @@ export function bakeModel(m: ModelInput) {
           o.c[1] + Math.sin((k / 24) * Math.PI * 2) * o.r,
         ]) as Pt[],
     ),
-    monuments: early.map((mo) => mo.rings[0]),
+    monuments: [...early.map((mo) => mo.rings[0]), ...aqueductBands],
     at,
     slopeAt,
     wet: (x, y) => sample(m.water, x, y, -1) < 6,
@@ -608,6 +643,7 @@ export function bakeModel(m: ModelInput) {
       if (inCircuit(p[0], p[1]) || sample(m.water, p[0], p[1], -1) < 10) continue
       if (
         placed.near(p, 10) ||
+        aqueductGrid.nearest(p).d < 8 ||
         streetGrid.nearest(p).d < 6 ||
         monumentGrid.nearest(p).d < 10 ||
         insideMonument(p)
@@ -695,6 +731,21 @@ export function bakeModel(m: ModelInput) {
         : [],
       wall,
       gates,
+      // The aqueducts, laid out (aqueducts.ts): each channel's years, bottom to top,
+      // and the course in runs of arcade, wall and shafts.
+      aqueducts: aqueducts.map(({ course, runs }) => ({
+        id: course.id,
+        size: course.size,
+        channels: course.channels.map((ch) => {
+          const d = dates(m.places.get(ch.id))
+          const from = Math.max(d.years[0], ch.from ?? -Infinity)
+          return { id: ch.id, h: ch.h, years: [from, d.years[1]], unfinished: d.unfinished }
+        }),
+        runs: runs.map((r) => ({
+          kind: r.kind,
+          pts: r.pts.map((q) => q.map((v) => round(v))),
+        })),
+      })),
       // The generated streets, for reference: the main streets and the local ones.
       streets: {
         main: city.mains.map((l) => l.map(([x, y]) => [round(x), round(y)])),
@@ -706,9 +757,15 @@ export function bakeModel(m: ModelInput) {
     `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / 4} trees, ${wall.length} wall stretches, water at ${waterLevel.toFixed(1)} m`,
   )
   // The footprints drawn for monuments with no surveyed outline, for picking.
-  const drawn = monuments
-    .filter((mo) => mo.approx)
-    .map((mo) => ({ id: mo.id, ring: mo.rings[0] }))
+  const drawn = [
+    ...monuments.filter((mo) => mo.approx).map((mo) => ({ id: mo.id, ring: mo.rings[0] })),
+    // An aqueduct's arcade opens the aqueduct it was built for.
+    ...aqueducts.flatMap(({ course }, n) =>
+      aqueductBands
+        .filter((_, k) => bandOf[k] === n)
+        .map((ring) => ({ id: course.id, ring })),
+    ),
+  ]
   return { png, waterLevel, shadow: soft, drawn }
 }
 

@@ -679,6 +679,37 @@ known and what is generated are kept apart:
     read from Platner & Ashby's words against modern landmarks, since Pleiades
     gives most of them only a generic point for Rome. One that would stand on a
     surveyed monument is left out, and the build says so.
+  - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
+    near Rome: the Appia and the Anio Vetus ran underground into the city
+    (Frontinus 1.5–1.6), and are recorded but not drawn. The Marcia is drawn for
+    about 9 km, as Frontinus gives it: out of the ground at Capannelle by the
+    seventh milestone, on substructures, then on arches past Roma Vecchia, Tor
+    Fiscale and Porta Furba, along the line of the Via del Mandrione to just
+    outside the later Porta Maggiore, north to the Porta Tiburtina and along the
+    Via Marsala, then underground again to pass under the agger (Frontinus 1.7;
+    Ashby 1935, pp. 129–148). Where it goes into or comes out of the ground, the
+    masonry slopes into a bank of earth over the channel. Beyond it, the low
+    grassy spoil heaps round its shafts, one every two actus (71 m, Vitruvius
+    8.6.3), trail off and fade out within about 260 m. Whatever of the
+    model runs to the edge of its ground fades out with it. Its terminal
+    reservoir, whose site "is difficult to fix" (Ashby p. 149), is not drawn.
+    - Its line joins its surveyed remains (OpenStreetMap), following
+      OpenStreetMap's reconstruction of the route between them, which is tagged
+      approximate. Its channel is at the levels Ashby surveyed (62.1 m at Tor
+      Fiscale to 52.6 m at the Via Castro Pretorio), interpolated between them.
+    - Where the channel stands more than an arch's height over the ground, it runs
+      on an arcade. Where it is lower it runs on a solid wall, and where it goes
+      below ground only the heads of its shafts show.
+    - The arcade is built as Ashby measured the Republican work: arches of 5.4 m
+      between piers 2.4 m wide and 3.25 m long; piers of reddish tufa; voussoirs,
+      imposts and a string-course of grey peperino; spandrels of yellow tufa; and
+      the Marcia's channel of red tufa under overhanging cover slabs.
+    - It stands from 140 BCE, when the water reached the Capitol, and is shown
+      under construction from 144. From 33 BCE Agrippa carried the Tepula and the
+      Julia on it, "Julia topmost; next below is Tepula; then Marcia" (Frontinus
+      1.19). Their channels are stacked on the Marcia's from that year. Where the
+      Tepula ran before is unknown, so it is not drawn earlier.
+    - A click on the arcade opens the Marcia.
   - The Servian Wall on its reconstructed circuit (`servian.ts`), with towers at
     its gates. Reconstructed stretches are a little lower and paler. The river
     bank, where the Tiber was the defence, is left open.

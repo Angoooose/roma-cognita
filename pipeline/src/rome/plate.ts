@@ -30,17 +30,19 @@ import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { MAX_KNOWN_M, SERVIAN } from './servian.ts'
 import { streetLines } from './streets.ts'
+import { COURSES } from './aqueducts.ts'
 import { bakeModel, writeGround } from './model.ts'
 
 const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
 const TEXEL_M = 4
 /**
  * The grid, lon/lat: the city, the Campus Martius and the Janiculum across the river,
+ * the Marcia's arcade out to Capannelle (aqueducts.ts),
  * with room for the plate's ragged edge, which the shader sets about PLATE_REACH_M
  * beyond the walled city.
  */
-const LON = [12.447, 12.525]
-const LAT = [41.862, 41.924]
+const LON = [12.447, 12.585]
+const LAT = [41.826, 41.924]
 const DEM_ZOOM = 13
 const SMOOTH_M = 45
 const CITY_CLAMP_M = 48
@@ -168,9 +170,14 @@ export async function bakePlate(
   const city = signedField(grid, [circuitRing], CITY_CLAMP_M)
   // The plate reaches round everything on the plan, not just the walled city: the
   // Campus Martius, the Janiculum and the Mausoleum lie well outside the wall.
-  const planned = [...places.values()]
-    .filter((p) => p.within === 'roma')
-    .map((p) => projection.forward(...p.location))
+  // An aqueduct's record stands where its remains are, which may be far out; its
+  // course near the city is what the plate reaches round.
+  const planned = [
+    ...[...places.values()]
+      .filter((p) => p.within === 'roma' && p.kind !== 'aqueduct')
+      .map((p) => projection.forward(...p.location)),
+    ...COURSES.flatMap((c) => c.pts.map((q) => projection.forward(...q.at))),
+  ]
   const hull = convexHull([...circuit, ...planned])
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)
   const water = signedField(grid, riverRings, RIVER_CLAMP_M)

@@ -2079,3 +2079,86 @@
     in 187"; "in 29 B.C. L. Marcius Philippus restored this temple". Placed from a
     fragment of the Marble Plan "north-west of the porticus Octaviae" (Platner &
     Ashby).
+
+# --- aqueducts ------------------------------------------------------------------
+# The aqueducts that ran into Rome in the window. Only the Marcia's arcade stood
+# above ground near the city, and from 33 BCE it carried the Tepula and the Julia
+# too; its course and arcade are drawn in the model (pipeline/src/rome/aqueducts.ts).
+# The Appia and the Anio Vetus ran underground into the city and are not drawn.
+
+- id: aqua-marcia
+  kind: aqueduct
+  within: roma
+  pleiades: '423565'
+  location: [12.539, 41.87122]
+  names:
+    - { text: Aqua Marcia, lang: la, preferred: true }
+  from: 144 BCE
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: 144 BCE, to: 141 BCE }
+    - { value: standing, from: 140 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: frontinus, locator: '1.7' }
+    - { source: platner-ashby, locator: 'Aqua Marcia, s.v.' }
+    - { source: ashby-1935, locator: 'pp. 128–152' }
+    - { source: pleiades, locator: places/423565 }
+  confidence: certain
+  review: draft
+  note: >-
+    Built by the praetor Q. Marcius Rex from 144 BCE, his praetorship "extended for
+    a second year" (Frontinus 1.7), and brought to the Capitol in 140. Of its 91 km,
+    about 9.6 km near Rome ran on arches (6,472 paces), which the model draws from
+    Tor Fiscale to the Via Marsala at the channel levels Ashby surveyed. Placed at
+    its remains at Porta Furba (OpenStreetMap way 113758266). Agrippa repaired it in
+    33 BCE (Frontinus 1.9).
+
+- id: aqua-tepula
+  kind: aqueduct
+  within: roma
+  pleiades: '423566'
+  location: [12.57217, 41.83645]
+  names:
+    - { text: Aqua Tepula, lang: la, preferred: true }
+  from: 125 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: frontinus, locator: '1.8' }
+    - { source: platner-ashby, locator: 'Aqua Tepula, s.v.' }
+    - { source: ashby-1935, locator: 'pp. 159–160' }
+    - { source: pleiades, locator: places/423566 }
+  confidence: certain
+  review: draft
+  note: >-
+    Brought to Rome and the Capitol by the censors Cn. Servilius Caepio and L.
+    Cassius Longinus in 125 BCE (Frontinus 1.8). Where its first channel ran is not
+    known: "no remains of its original channel have ever been found" (Platner &
+    Ashby). From 33 BCE Agrippa carried it on the Marcia's arches, between the Marcia
+    and the Julia (Frontinus 1.19), where the model draws it. Placed at its remains
+    in the Parco degli Acquedotti (OpenStreetMap way 128274604).
+
+- id: aqua-iulia
+  kind: aqueduct
+  within: roma
+  pleiades: '423564'
+  location: [12.51029, 41.89747]
+  names:
+    - { text: Aqua Iulia, lang: la, preferred: true }
+    - { text: Aqua Julia, lang: en }
+  from: 33 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: frontinus, locator: '1.9' }
+    - { source: platner-ashby, locator: 'Aqua Julia, s.v.' }
+    - { source: ashby-1935, locator: 'pp. 161–166' }
+    - { source: pleiades, locator: places/423564 }
+  confidence: probable
+  review: draft
+  note: >-
+    Built by Agrippa as aedile in 33 BCE (Frontinus 1.9; Dio puts it in 40) and
+    carried topmost on the Marcia's arches (Frontinus 1.19). Placed at the Porta
+    Tiburtina, where its channel, with the Tepula's and the Marcia's, crossed the
+    road (Ashby p. 145).

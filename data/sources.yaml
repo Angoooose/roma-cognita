@@ -657,3 +657,29 @@
   usedBy: pipeline/src/rome/city.ts
   note: >-
     2.8.17: Rome builds upward for want of ground; 6.3: the atrium house.
+
+# --- the aqueducts of Rome (DESIGN.md §7.7) --------------------------------------
+# Added September 2026 for the aqueduct records in places/rome.yaml and their
+# courses and arcades (pipeline/src/rome/aqueducts.ts).
+
+- id: frontinus
+  kind: ancient
+  citation: Frontinus, De Aquaeductu Urbis Romae
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/Bennett/1*.html
+  usedBy: pipeline/src/rome/aqueducts.ts
+  note: >-
+    Book 1: each aqueduct's builders and date, its length in paces with how much
+    runs underground, on substructures and on arches (1 pace = 1.485 m), where it
+    enters the city, the order of their levels (1.18), and the Marcia, Tepula and
+    Julia on one arcade, Julia topmost (1.19). Bennett's Loeb translation on
+    LacusCurtius; the Latin is on the same site.
+
+- id: ashby-1935
+  kind: modern
+  citation: T. Ashby, The Aqueducts of Ancient Rome (Oxford, 1935)
+  url: https://archive.org/details/1935TheAqueductsOfAncientRomeThomasAshby
+  usedBy: pipeline/src/rome/aqueducts.ts
+  note: >-
+    The courses near Rome from the remains, the construction and measurements of
+    the Republican arcades (piers of tufa, voussoirs of peperino, spans of about
+    5.4 m), and the surveyed levels of each channel. Locators are the book's pages.

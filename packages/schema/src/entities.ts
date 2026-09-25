@@ -316,6 +316,8 @@ export const PlaceSchema = z
       'warehouse',
       'street',
       'road',
+      // An aqueduct: its course drawn where it stood above ground (DESIGN §7.7).
+      'aqueduct',
       // A hill or quarter of a city, lettered on its plan and never outlined.
       'hill',
       'district',

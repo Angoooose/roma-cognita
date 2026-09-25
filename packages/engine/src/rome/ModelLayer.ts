@@ -93,6 +93,26 @@ export const MODEL_KEY = {
 
 const C = {
   travertine: STONE.travertine.face,
+  /**
+   * The aqueducts, in the stones Ashby records for the Marcia's arcade (1935, pp.
+   * 131–139): piers of reddish grey-brown tufa, spandrels of yellow tufa, voussoirs,
+   * imposts and string-courses of grey peperino, its channel of dark red tufa; the
+   * later channels on it in paler reticulate.
+   */
+  aqueduct: new THREE.Color('#B8A386'),
+  tufaPier: new THREE.Color('#B39B80'),
+  tufaYellow: new THREE.Color('#CDB88E'),
+  peperino: new THREE.Color('#A8A399'),
+  marciaChannel: new THREE.Color('#AE8C76'),
+  aqueductShade: new THREE.Color('#8F8472'),
+  /** A channel added on an older arcade: paler reticulate. */
+  aqueductLater: new THREE.Color('#C3B8A4'),
+  aqueductCap: new THREE.Color('#CFC6B3'),
+  /** A shaft's grassed spoil heap: the ground's own green, a shade lighter. */
+  mound: new THREE.Color('#9A9A62'),
+  /** The earth banked over an aqueduct's channel where it goes into the ground. */
+  earthBank: new THREE.Color('#8E8A5C'),
+  earthBankShade: new THREE.Color('#7D7950'),
   /** Monte Verde tufa paving: a warm grey-brown. */
   tufa: new THREE.Color('#C7B597'),
   /** A theatre's seating: a warmer, darker stone than its walls. */
@@ -151,6 +171,42 @@ interface Monument {
 }
 
 type OBB = ReturnType<typeof orientedBox>
+
+/** The depth of an arch's ring of voussoirs, and of the string-course under a channel, metres (Ashby 1935, p. 131). */
+/** A shaft's spoil heap: its radius and height, metres, and how far from the masonry they fade out. */
+const MOUND_R_M = 4
+const MOUND_H_M = 0.9
+const MOUND_FADE_M = 260
+
+const VOUSSOIR_M = 0.65
+const STRING_M = 0.35
+
+/** An arcade's proportions, metres (pipeline aqueducts.ts `ARCADE`). */
+interface ArcadeSize {
+  span: number
+  pier: number
+  width: number
+  /** The band of voussoirs and masonry between the crown of an arch and the channel. */
+  band: number
+}
+
+/**
+ * An aqueduct as the pipeline laid it out (model.ts): its channels, bottom to top,
+ * each with its own years; and its course in runs — piers of an arcade, a solid
+ * wall, or shafts over an underground channel — as points of x, y, ground and the
+ * underside of the lowest channel.
+ */
+interface Aqueduct {
+  id: string
+  size: ArcadeSize
+  channels: {
+    id: string
+    h: number
+    years: [number, number]
+    unfinished: [number, number] | null
+  }[]
+  runs: { kind: 'arcade' | 'wall' | 'shafts'; pts: number[][] }[]
+}
 
 /** A mesh in the making: triangles with a base, a height above it, a normal and a colour. */
 class Builder {
@@ -623,6 +679,260 @@ class Builder {
     this.cone(x, y, crown, h, -r * 0.2, 7, base, col)
   }
 
+  /**
+   * One bay of an aqueduct's arcade, from pier `a` to pier `b` (x, y, ground, the
+   * underside of the channel — all metres), as the Marcia's were built (Ashby 1935,
+   * pp. 131–139): a semicircular arch springing between the two piers, ringed with
+   * voussoirs of grey peperino, its spandrels of yellow tufa up to a peperino
+   * string-course under the channel, and its underside in the shade of the vault.
+   */
+  arch(a: number[], b: number[], d: ArcadeSize, base: number) {
+    const L = Math.hypot(b[0] - a[0], b[1] - a[1])
+    if (L < d.pier + 1) return
+    const u = [(b[0] - a[0]) / L, (b[1] - a[1]) / L]
+    const n = [-u[1], u[0]]
+    const t = d.width / 2
+    const [s0, s1] = [d.pier / 2, L - d.pier / 2]
+    const r = (s1 - s0) / 2
+    const deck = (s: number) => a[3] + ((b[3] - a[3]) * s) / L - base
+    const ground = Math.min(a[2], b[2]) - base
+    // The arch's crown sits the voussoirs and a course of masonry below the channel;
+    // where the ground is too high for a full semicircle the arch is lower.
+    const crown = Math.min(deck(s0), deck(s1)) - d.band
+    const spring = Math.max(ground + 0.4, crown - r)
+    const rise = crown - spring
+    const ring = Math.min(VOUSSOIR_M, d.band * 0.6)
+    const at = (s: number, z: number, side: number, proud = 0) => [
+      a[0] + u[0] * s + n[0] * (t + proud) * side,
+      a[1] + u[1] * s + n[1] * (t + proud) * side,
+      z,
+    ]
+    const N = 12
+    const arc = (extra: number) =>
+      Array.from({ length: N + 1 }, (_, k) => {
+        const ang = Math.PI * (1 - k / N)
+        return [
+          s0 + r + Math.cos(ang) * (r + extra),
+          spring + Math.sin(ang) * (rise + extra),
+        ]
+      })
+    const inner = arc(0)
+    const outer = arc(ring)
+    const top = (s: number) => deck(Math.min(Math.max(s, 0), L)) - STRING_M
+    for (const side of [-1, 1]) {
+      for (let k = 0; k < N; k++) {
+        const [p, q, P, Q] = [inner[k], inner[k + 1], outer[k], outer[k + 1]]
+        // The voussoirs, a hair proud of the face.
+        this.quad(
+          at(p[0], p[1], side, 0.03),
+          at(q[0], q[1], side, 0.03),
+          at(Q[0], Q[1], side, 0.03),
+          at(P[0], P[1], side, 0.03),
+          base,
+          C.peperino,
+        )
+        // The spandrel, from the voussoirs up to the string-course.
+        this.quad(
+          at(P[0], P[1], side),
+          at(Q[0], Q[1], side),
+          at(Q[0], top(Q[0]), side),
+          at(P[0], top(P[0]), side),
+          base,
+          C.tufaYellow,
+        )
+      }
+      // The spandrel over the piers' halves, beside the voussoirs.
+      this.quad(
+        at(0, spring, side),
+        at(outer[0][0], spring, side),
+        at(outer[0][0], top(outer[0][0]), side),
+        at(0, top(0), side),
+        base,
+        C.tufaYellow,
+      )
+      this.quad(
+        at(outer[N][0], spring, side),
+        at(L, spring, side),
+        at(L, top(L), side),
+        at(outer[N][0], top(outer[N][0]), side),
+        base,
+        C.tufaYellow,
+      )
+      // The string-course: a peperino band under the channel, standing a little proud.
+      this.quad(
+        at(0, deck(0) - STRING_M, side, 0.12),
+        at(L, deck(L) - STRING_M, side, 0.12),
+        at(L, deck(L), side, 0.12),
+        at(0, deck(0), side, 0.12),
+        base,
+        C.peperino,
+      )
+    }
+    // The underside of the arch, in the shade of its own vault.
+    for (let k = 0; k < N; k++) {
+      const [p, q] = [inner[k], inner[k + 1]]
+      this.quad(
+        at(p[0], p[1], -1),
+        at(q[0], q[1], -1),
+        at(q[0], q[1], 1),
+        at(p[0], p[1], 1),
+        base,
+        C.aqueductShade,
+      )
+    }
+  }
+
+  /** A pier of an arcade at (x, y), of bossed tufa, from below its ground up to where its arches spring. */
+  pier(p: number[], u: number[], d: ArcadeSize, top: number) {
+    const angle = Math.atan2(u[1], u[0])
+    const spring = Math.max(p[2] + 0.4, top - d.band - d.span / 2)
+    this.block(
+      p[0],
+      p[1],
+      angle,
+      d.pier,
+      d.width,
+      -3,
+      spring - p[2],
+      'flat',
+      p[2],
+      C.tufaPier,
+      C.tufaPier,
+    )
+    // An impost where the arches spring: a peperino band a little proud of the pier.
+    if (spring - p[2] > 1.5)
+      this.block(
+        p[0],
+        p[1],
+        angle,
+        d.pier + 0.25,
+        d.width + 0.25,
+        spring - p[2] - 0.35,
+        spring - p[2],
+        'flat',
+        p[2],
+        C.peperino,
+        C.peperino,
+      )
+  }
+
+  /**
+   * An aqueduct's channel on its arcade or wall, from `a` to `b` (x, y, ground, its
+   * underside), `h` high: a covered stone conduit, its cover slabs a little proud.
+   */
+  channel(
+    a: number[],
+    b: number[],
+    width: number,
+    z0: number,
+    h: number,
+    base: number,
+    col: THREE.Color,
+    cap: THREE.Color,
+  ) {
+    const L = Math.hypot(b[0] - a[0], b[1] - a[1])
+    if (L < 0.1) return
+    const u = [(b[0] - a[0]) / L, (b[1] - a[1]) / L]
+    const n = [-u[1], u[0]]
+    const at = (s: number, side: number, z: number, w: number) => [
+      a[0] + u[0] * s + n[0] * w * side,
+      a[1] + u[1] * s + n[1] * w * side,
+      z,
+    ]
+    const zA = a[3] - base + z0
+    const zB = b[3] - base + z0
+    const w = width / 2
+    for (const side of [-1, 1])
+      this.quad(
+        at(0, side, zA, w),
+        at(L, side, zB, w),
+        at(L, side, zB + h, w),
+        at(0, side, zA + h, w),
+        base,
+        col,
+      )
+    // The cover slabs, overhanging a hand's breadth.
+    const c = w + 0.15
+    this.quad(
+      at(0, -1, zA + h, c),
+      at(L, -1, zB + h, c),
+      at(L, 1, zB + h, c),
+      at(0, 1, zA + h, c),
+      base,
+      cap,
+    )
+    for (const side of [-1, 1])
+      this.quad(
+        at(0, side, zA + h, c),
+        at(L, side, zB + h, c),
+        at(L, side, zB + h + 0.25, c),
+        at(0, side, zA + h + 0.25, c),
+        base,
+        cap,
+      )
+    this.quad(
+      at(0, -1, zA + h + 0.25, c),
+      at(L, -1, zB + h + 0.25, c),
+      at(L, 1, zB + h + 0.25, c),
+      at(0, 1, zA + h + 0.25, c),
+      base,
+      cap,
+    )
+  }
+
+  /**
+   * A bank of earth over an aqueduct's end at `end` (x, y, ground), away from `next`:
+   * from the top of its channels, `h` over the ground, sloping down to the ground
+   * over twice its height, as a channel is covered where it goes underground.
+   */
+  bank(end: number[], next: number[], width: number, h: number) {
+    const L = Math.hypot(end[0] - next[0], end[1] - next[1]) || 1
+    const u = [(end[0] - next[0]) / L, (end[1] - next[1]) / L]
+    const n = [-u[1], u[0]]
+    const run = Math.max(3, h * 2)
+    const w = width / 2
+    const at = (s: number, side: number, z: number, spread = 0) => [
+      end[0] + u[0] * s + n[0] * (w + spread) * side,
+      end[1] + u[1] * s + n[1] * (w + spread) * side,
+      z,
+    ]
+    const g = end[2]
+    const top = h
+    // The slope, a little wider at its foot, and its two flanks.
+    this.quad(
+      at(-0.5, -1, top),
+      at(-0.5, 1, top),
+      at(run, 1, -0.2, 1.5),
+      at(run, -1, -0.2, 1.5),
+      g,
+      C.earthBank,
+    )
+    for (const side of [-1, 1])
+      this.tri(
+        at(-0.5, side, top),
+        at(run, side, -0.2, 1.5),
+        at(-0.5, side, -1),
+        g,
+        C.earthBankShade,
+      )
+  }
+
+  /** A low round mound of earth at (x, y) on the ground `base`: a shaft's spoil heap, grassed over. */
+  mound(x: number, y: number, base: number, r: number, h: number) {
+    const sides = 10
+    // Two tiers, so it reads as a soft dome rather than a cone.
+    const ring = (rr: number, z: number) =>
+      Array.from({ length: sides + 1 }, (_, k) => {
+        const a = (k / sides) * Math.PI * 2
+        return [x + Math.cos(a) * rr, y + Math.sin(a) * rr, z]
+      })
+    const [foot, shoulder] = [ring(r, -0.3), ring(r * 0.55, h * 0.75)]
+    for (let k = 0; k < sides; k++) {
+      this.quad(foot[k], foot[k + 1], shoulder[k + 1], shoulder[k], base, C.mound)
+      this.tri(shoulder[k], shoulder[k + 1], [x, y, h], base, C.mound)
+    }
+  }
+
   /** A holm oak: a short trunk under a round, dense crown. */
   oak(x: number, y: number, r: number, base: number, col: THREE.Color) {
     const h = r * 0.9
@@ -791,6 +1101,105 @@ export class ModelLayer {
     }
     b.dates = ALWAYS
 
+    // The aqueducts (pipeline aqueducts.ts): arcades of tufa and peperino striding
+    // over the low ground, solid walls where the ground rises under them, and over
+    // the underground stretches only the heads of the shafts down to the channel. Each
+    // channel stands for its own years, stacked on those below it, so the arcade
+    // grows when a new aqueduct is carried on it.
+    for (const aq of (meta.aqueducts ?? []) as Aqueduct[]) {
+      const [first, ...above] = aq.channels
+      const dated = (c: Aqueduct['channels'][number]) => [
+        c.years[0],
+        c.years[1],
+        ...(c.unfinished ?? [1, 0]),
+      ]
+      for (const [r, run] of aq.runs.entries()) {
+        const pts = run.pts
+        const meetsGround = (k: number) => !aq.runs[k] || aq.runs[k].kind === 'shafts'
+        // Where the channel meets the ground — going under it, coming out of it, or at
+        // the end of the course — it does not stop in a cut face: the masonry slopes
+        // down into a bank of earth over the channel's end.
+        if (run.kind !== 'shafts') {
+          const ends: [number[], number[]][] = [
+            ...(meetsGround(r - 1) ? [[pts[0], pts[1]] as [number[], number[]]] : []),
+            ...(meetsGround(r + 1)
+              ? [[pts[pts.length - 1], pts[pts.length - 2]] as [number[], number[]]]
+              : []),
+          ]
+          const stackH = aq.channels.reduce((h, c) => h + c.h + 0.25, 0)
+          for (const [end, next] of ends) {
+            if (!next) continue
+            b.dates = dated(first)
+            b.bank(end, next, aq.size.width + 1, end[3] - end[2] + stackH)
+          }
+        }
+        if (run.kind === 'shafts') {
+          // Over the channel underground, the low grassy mound of spoil round each
+          // shaft, fading out within a couple of hundred metres of where the masonry
+          // goes into the ground, so the line is hinted at and no more.
+          b.dates = dated(first)
+          const from = [
+            ...(aq.runs[r - 1] && aq.runs[r - 1].kind !== 'shafts' ? [pts[0]] : []),
+            ...(aq.runs[r + 1] && aq.runs[r + 1].kind !== 'shafts'
+              ? [pts[pts.length - 1]]
+              : []),
+          ]
+          for (const [x, y, g] of pts) {
+            const d = Math.min(...from.map((e) => Math.hypot(e[0] - x, e[1] - y)))
+            const k = 1 - d / MOUND_FADE_M
+            if (k <= 0.15) continue
+            b.mound(x, y, g, MOUND_R_M * (0.6 + 0.4 * k), MOUND_H_M * k)
+          }
+          continue
+        }
+        for (let i = 0; i + 1 < pts.length; i++) {
+          const [p, q] = [pts[i], pts[i + 1]]
+          const L = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1
+          const u = [(q[0] - p[0]) / L, (q[1] - p[1]) / L]
+          const base = Math.min(p[2], q[2])
+          b.dates = dated(first)
+          if (run.kind === 'arcade') {
+            b.pier(p, u, aq.size, p[3])
+            if (i + 2 === pts.length) b.pier(q, u, aq.size, q[3])
+            b.arch(p, q, aq.size, base)
+          } else {
+            // A solid wall carrying the channel where the ground is too high for arches.
+            const angle = Math.atan2(u[1], u[0]) - Math.PI / 2
+            b.block(
+              (p[0] + q[0]) / 2,
+              (p[1] + q[1]) / 2,
+              angle,
+              aq.size.width,
+              L + 0.05,
+              -3,
+              Math.max(p[3], q[3]) - base,
+              'flat',
+              base,
+              C.tufaPier,
+              C.tufaPier,
+            )
+          }
+          // The channels, one on another, each in its own years.
+          let z = 0
+          for (const c of [first, ...above]) {
+            b.dates = dated(c)
+            b.channel(
+              p,
+              q,
+              aq.size.width - 0.4,
+              z,
+              c.h,
+              base,
+              c === first ? C.marciaChannel : C.aqueductLater,
+              C.aqueductCap,
+            )
+            z += c.h + 0.25
+          }
+        }
+      }
+    }
+    b.dates = ALWAYS
+
     // The Servian Wall: drawn a little stouter than its ~4 m so it reads at the city's
     // scale, 10 m high on known stretches and lower and paler where the course is
     // reconstructed; towers at its gates.
@@ -881,8 +1290,15 @@ export class ModelLayer {
     mesh.receiveShadow = true
     this.group.add(mesh)
 
-    const xs = all.map((p: number[]) => p[0])
-    const ys = all.map((p: number[]) => p[1])
+    // The model's ground reaches round the aqueducts too.
+    const reach = [
+      ...all,
+      ...((meta.aqueducts ?? []) as Aqueduct[]).flatMap((aq) =>
+        aq.runs.flatMap((r) => r.pts),
+      ),
+    ]
+    const xs = reach.map((p: number[]) => p[0])
+    const ys = reach.map((p: number[]) => p[1])
     this.extent = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)]
     this.origin = [ox, oy]
     this.waterLevel = meta.waterLevel
@@ -1184,6 +1600,10 @@ function material() {
   // The relief under the city, washed over it, so the hills read from above.
   const wash = mix(float(1), reliefWash(positionWorld.x, positionWorld.y), 0.9)
   mat.colorNode = attribute('colour', 'vec3').mul(foot).mul(wash)
+  // Whatever runs out to the edge of the modelled ground (an aqueduct across the
+  // Campagna) fades out with it, dithered, rather than stopping in a cut.
+  mat.opacityNode = plateMask(positionWorld.x, positionWorld.y, fwidth(positionWorld.x))
+  mat.alphaHash = true
   return mat
 }
 
