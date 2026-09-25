@@ -94,6 +94,23 @@ export class RomeMap {
     return map
   }
 
+  /**
+   * Builds, in the background, the shaders the map needs once the model of Rome shows:
+   * its own, and every other material's again, since its lights join the scene.
+   * Otherwise the first frame over the city stalls for a tenth of a second or more to
+   * build them. Done once the first view has settled, when the terrain's material
+   * exists.
+   */
+  private prewarmed = false
+  private async prewarm() {
+    this.prewarmed = true
+    const g = this.model.group
+    g.visible = true
+    const built = this.renderer.compileAsync(this.scene, this.view.camera)
+    g.visible = false
+    await built.catch(() => {})
+  }
+
   private container: HTMLElement
 
   private constructor(container: HTMLElement, opts: RomeMapOptions) {
@@ -207,6 +224,7 @@ export class RomeMap {
 
     const vpPx = this.container.clientHeight * this.renderer.getPixelRatio()
     if (this.terrain.update(this.view.camera, vpPx)) this.dirty = true
+    if (!this.prewarmed && this.idle) this.prewarm()
     if (!this.dirty) return
 
     const dt = now - this.lastTime
