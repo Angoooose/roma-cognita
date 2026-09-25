@@ -1,7 +1,7 @@
 import * as THREE from 'three/webgpu'
 
 /**
- * The mesh the model of Rome is built of (ModelLayer.ts), and its vocabulary: the
+ * The mesh the model of Rome is built of (buildModel.ts), and its vocabulary: the
  * primitives and the building types every monument is raised from.
  */
 /** Years that span everything: the generated city, the wall, the trees. */
