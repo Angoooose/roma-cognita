@@ -70,6 +70,8 @@ export interface CityInput {
   toRiver: (x: number, y: number) => number
   /** Where the atrium houses gather: the hills and quarters of the rich. */
   richQuarters: Pt[]
+  /** The Palatine's top, where there were great houses and no flats. */
+  palatine?: Pt
   rand: () => number
 }
 
@@ -145,7 +147,7 @@ const MIN_DEPTH_M = 6
 /** A building turns with its street through a bend up to 35°, but not round a corner. */
 const BEND_COS = Math.cos((35 * Math.PI) / 180)
 
-type Quarter = 'valley' | 'hill' | 'rich' | 'river'
+type Quarter = 'valley' | 'hill' | 'rich' | 'river' | 'palatine'
 
 /**
  * How each quarter is built: its blocks' depth between parallel streets and length
@@ -178,6 +180,14 @@ const QUARTER: Record<
     block: { depth: [36, 46], length: [70, 100] },
     frontage: [30, 60],
     storeys: [2, 2],
+  },
+  // The top of the Palatine: the great houses "sprang up all over the hill", and no
+  // Republican source puts a block of flats on it (Platner & Ashby, Palatinus, p.
+  // 378) — Cicero's, Crassus's, Catulus's, Hortensius's, Clodius's, Antony's.
+  palatine: {
+    block: { depth: [55, 70], length: [75, 110] },
+    frontage: [10, 16],
+    storeys: [1, 2],
   },
 }
 
@@ -252,6 +262,8 @@ export function layCity(c: CityInput) {
     const low = c.at(p[0], p[1]) < 28
     if (low && c.toRiver(p[0], p[1]) < 220) return 'river'
     if (low) return 'valley'
+    if (c.palatine && Math.hypot(c.palatine[0] - p[0], c.palatine[1] - p[1]) < 240)
+      return 'palatine'
     const rich = c.richQuarters.some((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 300)
     return rich ? 'rich' : 'hill'
   }
@@ -530,6 +542,7 @@ export function layCity(c: CityInput) {
     let module = 0
     const next = () => {
       if (
+        (b.quarter === 'palatine' && rand() < 0.8) ||
         (b.quarter === 'rich' && rand() < 0.35) ||
         (b.quarter === 'hill' && rand() < 0.03)
       )
@@ -560,7 +573,7 @@ export function layCity(c: CityInput) {
     const plots = frontagePlots(cellPts, rings, (L) => splitFrontage(L, next), rank)
     if (b.quarter === 'river')
       for (const e of plots) if (e.corner) e.kind = LOT_KIND.warehouse
-    build(plots, b.quarter === 'rich')
+    build(plots, b.quarter === 'rich' || b.quarter === 'palatine')
     // What is left open is yard and garden. A tree stands only in open ground big
     // enough to be a yard, more in the gardens of the rich: a light-well is not a
     // garden, and the crowded quarters had little ground to plant.
@@ -581,7 +594,7 @@ export function layCity(c: CityInput) {
         for (let i = i0; i <= i1; i++)
           if (inRing([cx(i), cy(j)], l.pts)) covered.add(j * nx + i)
     }
-    const want = b.quarter === 'rich' ? 0.7 : 0.15
+    const want = b.quarter === 'rich' || b.quarter === 'palatine' ? 0.7 : 0.15
     const seen = new Set<number>()
     const planted: Pt[] = []
     for (const k0 of b.cells) {

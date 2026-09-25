@@ -32,6 +32,7 @@ import { MAX_KNOWN_M, SERVIAN } from './servian.ts'
 import { streetLines } from './streets.ts'
 import { ancientGround } from './ground.ts'
 import { COURSES } from './aqueducts.ts'
+import { designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
 
 const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
@@ -180,7 +181,15 @@ export async function bakePlate(
   const pointTemples = [...places.values()]
     .filter((p) => p.kind === 'temple' && p.within === 'roma' && !outlined.has(p.id))
     .map((p) => projection.forward(...p.location))
-  const monumentRings = outlines.flatMap((o) => o.polys.map((poly) => poly[0]))
+  // The designed buildings with a size of their own keep the streets off them too
+  // (designs.ts), and the plate reaches round them.
+  const designed = designFootprints(places).filter(
+    (d) => places.get(d.id)!.kind !== 'bridge',
+  )
+  const monumentRings = [
+    ...outlines.flatMap((o) => o.polys.map((poly) => poly[0])),
+    ...designed.map((d) => d.ring),
+  ]
   const streets = streetLines(streetGeometry, places, circuitRing, {
     height: (x, y) => {
       const c = Math.min(width - 1, Math.max(0, Math.round((x - x0) / TEXEL_M - 0.5)))
@@ -202,6 +211,17 @@ export async function bakePlate(
       .filter((p) => p.within === 'roma' && p.kind !== 'aqueduct')
       .map((p) => projection.forward(...p.location)),
     ...COURSES.flatMap((c) => c.pts.map((q) => projection.forward(...q.at))),
+    // With room round each, so the Tiber hands over to the map's river line beyond
+    // them, not under them (rome/shading.ts `tiberReach`).
+    ...designed.flatMap((d) => {
+      const [cx, cy] = [d.ring[0][0] + d.ring[2][0], d.ring[0][1] + d.ring[2][1]].map(
+        (v) => v / 2,
+      )
+      return d.ring.map(([x, y]) => {
+        const l = Math.hypot(x - cx, y - cy) || 1
+        return [x + ((x - cx) / l) * 250, y + ((y - cy) / l) * 250] as [number, number]
+      })
+    }),
   ]
   const hull = convexHull([...circuit, ...planned])
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)

@@ -318,6 +318,7 @@ export const PlaceSchema = z
       'prison',
       'fountain',
       'rostra',
+      'arch',
       'comitium',
       'warehouse',
       'street',
