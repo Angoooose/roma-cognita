@@ -152,7 +152,7 @@ class Occlusion {
   /** The grid's extent, plane metres: x0, y0, x1, y1. */
   readonly bounds: [number, number, number, number]
 
-  constructor(tops: number[]) {
+  constructor(tops: ArrayLike<number>) {
     this.tops = new Float32Array(tops)
     let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity]
     for (let i = 0; i < tops.length; i += 11)
