@@ -754,8 +754,10 @@ known and what is generated are kept apart:
 
     Blocks are what is left between the streets: 32–42 by 55–80 m in the valleys
     (Cosa's and Pompeii's), larger on the hills and round the houses of the rich,
-    varying smoothly over the city; on a slope, shallower terraces. Lanes are 3.5–5
-    m wide; one rising more than 1 in 8 is a narrow flight of steps. Rome was
+    varying smoothly over the city; on a slope, shallower terraces. The streets are
+    of three widths, so the network reads: the main and recorded streets 7 m, the
+    lanes 3–4.4 m, and a lane rising more than 1 in 8 a flight of steps 2 m wide
+    (decided 2026-09-24). Rome was
     "casually built upon … rather than regularly planned" (Livy 5.55), with "narrow,
     twisting lanes" (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m
     wide (Poehler 2017).
@@ -807,9 +809,11 @@ known and what is generated are kept apart:
     block's corners.
     - Heights follow a smooth pattern across the city, some 200 m across, within
       the quarter's range: a stretch of street is of a height, and the change comes
-      between stretches. A building on a main or recorded street stands a storey
-      higher, a courtyard building's range behind its court a storey lower, and a quarter of the
-      buildings step a storey up or down from the pattern.
+      between stretches. Every building on a main or recorded street stands a
+      storey higher, never lower, in runs two plots longer, so the street's
+      frontage reads as one; a courtyard building's range behind its court is a
+      storey lower; and a quarter of the other buildings step a storey up or down
+      from the pattern.
     - a lone narrow deep lot sometimes turns its gable to the street;
     - one building in sixteen has a flat terrace;
     - an atrium house's ranges fall inward to its court, as a compluviate atrium's
@@ -838,8 +842,9 @@ known and what is generated are kept apart:
     varied a little lot by lot: plainer than the known buildings. Atrium houses
     are a paler render, warehouses bare tufa.
   - The monuments, the Forum and the Capitol's precinct, and ground too steep or
-    wet are kept clear. The generated streets are trodden earth; only the
-    recorded ones are paved.
+    wet are kept clear. The recorded streets and the generated main streets are
+    paved in pale basalt, as Rome's streets were from 174 BCE (Livy 41.27), so the
+    main network shows from far off; the lanes are trodden earth.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb of detached houses lines the roads out of the gates, up to

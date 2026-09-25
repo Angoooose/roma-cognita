@@ -99,8 +99,13 @@ const CELL = 2
 const MAX_SLOPE = 0.45
 /** Clearance round the monuments, cells. */
 const MONUMENT_CLEAR = 2
-/** Half-widths, metres: recorded roads and streets, the main streets, the local streets, alleys. */
-const HALF = { road: 4.5, street: 3.5, main: 3, local: [1.7, 2.4], alley: 1.1 }
+/**
+ * Half-widths, metres: recorded roads and streets, the main streets, the local
+ * streets, alleys and stairs. The main streets are 7 m wide, the lanes 3–4.4 m, a
+ * flight of steps 2 m: Pompeii's streets run from some 9 m down to 2–4 m (Poehler
+ * 2017), and no Roman city street was much wider than 10 m.
+ */
+const HALF = { road: 4.5, street: 3.5, main: 3.5, local: [1.5, 2.2], alley: 1 }
 /** Storey heights: a tall ground floor of shops, then upper floors. */
 const GROUND_FLOOR = 3.8
 /** The furthest a plot reaches in from its street, metres: less where it meets the plots opposite. */
@@ -311,7 +316,7 @@ export function layCity(c: CityInput) {
   })
   const locals: Pt[][] = []
   for (const l of lanes) {
-    paint(l.pts, l.stair ? HALF.alley * 1.2 : pick(HALF.local as [number, number]))
+    paint(l.pts, l.stair ? HALF.alley : pick(HALF.local as [number, number]))
     locals.push(l.pts)
   }
 
@@ -420,11 +425,12 @@ export function layCity(c: CityInput) {
         const [lo, hi] = q.storeys
         const major = onMajor(front)
         let st = Math.round(storeysAt(front, lo, hi) + (major ? 1 : 0))
-        if (rand() < 0.25) st += rand() < 0.5 ? -1 : 1
+        // On a main or recorded street every building stands the storey higher.
+        if (!major && rand() < 0.25) st += rand() < 0.5 ? -1 : 1
         st = Math.max(1, Math.min(Math.min(5, hi + 1), st))
         const h = GROUND_FLOOR + (st - 1) * FLOOR + rand() * 0.3
         const tone = rand()
-        const terrace = rand() < 0.06
+        const terrace = !major && rand() < 0.06
         // A large building of flats — three plots or more, all deep — may be built
         // round one court: its end plots are its wings, its middle ones a range on
         // the street, the court, and a range behind (the courtyard blocks of the
@@ -503,7 +509,11 @@ export function layCity(c: CityInput) {
           prev &&
           Math.hypot(prev.quad[1][0] - e.quad[0][0], prev.quad[1][1] - e.quad[0][1]) > 0.5
         if (run.length && (bends || gap || run.length >= size)) flush()
-        if (!run.length) size = BUILDING_LOTS[Math.floor(rand() * BUILDING_LOTS.length)]
+        // Along a main street the buildings run longer, so its frontage reads as one.
+        if (!run.length)
+          size =
+            BUILDING_LOTS[Math.floor(rand() * BUILDING_LOTS.length)] +
+            (onMajor(e.quad[0]) ? 2 : 0)
         run.push(e)
       }
       flush()

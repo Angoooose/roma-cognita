@@ -16,8 +16,8 @@
  *   and the river, as lettering placements for the label layer.
  *
  * plate-0: R the model's shadow on the board (model.ts), B distance to the nearest
- * street or road, A what it is: 255 a street, 191 a street drawn lighter, 127 a road,
- * 63 a road drawn lighter.
+ * street or road, A what it is: 255 a street, 223 a generated main street, 191 a
+ * street drawn lighter, 127 a road, 63 a road drawn lighter.
  * plate-1: R signed distance to the circuit, G signed distance to the river, B the
  * distance to the hull of the circuit and everything on the plan, out to
  * REACH_CLAMP_M, for the board's edge. The fields are loaded without
@@ -52,6 +52,8 @@ const PLATE_REACH_M = 420
 const REACH_CLAMP_M = 1400
 const RIVER_CLAMP_M = 16
 const STREET_CLAMP_M = 12
+/** The street field's code for a generated main street (plate-0 alpha). */
+const MAIN_STREET = 223
 /** A hill's name goes on its highest ground within this of its location. */
 const SUMMIT_SEARCH_M = 150
 /**
@@ -173,18 +175,6 @@ export async function bakePlate(
       monumentRings.some((r) => inRing([x, y], r)) ||
       riverRings.some((r) => inRing([x, y], r)),
   })
-  const streetSegs = streets.flatMap((l) =>
-    l.pts.slice(1).map((q, i) => ({
-      seg: [l.pts[i], q] as [Pt, Pt],
-      code: (l.road ? 127 : 255) - (l.known ? 0 : 64),
-    })),
-  )
-  const streetField = unsignedField(
-    grid,
-    streetSegs.map((x) => x.seg),
-    STREET_CLAMP_M,
-    streetSegs.map((x) => x.code),
-  )
   const city = signedField(grid, [circuitRing], CITY_CLAMP_M)
   // The plate reaches round everything on the plan, not just the walled city: the
   // Campus Martius, the Janiculum and the Mausoleum lie well outside the wall.
@@ -218,6 +208,27 @@ export async function bakePlate(
     places,
   })
   const shadowAt = (i: number) => model.shadow[i]
+
+  // The paved ways: the recorded streets and roads, and the generated main streets,
+  // which were paved in basalt as the city's streets were from 174 BCE (Livy 41.27);
+  // the lanes between are trodden earth.
+  const streetSegs = [
+    ...streets.flatMap((l) =>
+      l.pts.slice(1).map((q, i) => ({
+        seg: [l.pts[i], q] as [Pt, Pt],
+        code: (l.road ? 127 : 255) - (l.known ? 0 : 64),
+      })),
+    ),
+    ...model.mains.flatMap((l) =>
+      l.slice(1).map((q, i) => ({ seg: [l[i], q] as [Pt, Pt], code: MAIN_STREET })),
+    ),
+  ]
+  const streetField = unsignedField(
+    grid,
+    streetSegs.map((x) => x.seg),
+    STREET_CLAMP_M,
+    streetSegs.map((x) => x.code),
+  )
 
   const img0 = new Uint8Array(width * height * 4)
   const img1 = new Uint8Array(width * height * 4)

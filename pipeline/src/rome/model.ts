@@ -769,7 +769,7 @@ export function bakeModel(m: ModelInput) {
         .map((ring) => ({ id: course.id, ring })),
     ),
   ]
-  return { png, waterLevel, shadow: soft, drawn }
+  return { png, waterLevel, shadow: soft, drawn, mains: city.mains }
 }
 
 /** ground.png: heights in centimetres, high byte red, low byte green. */
