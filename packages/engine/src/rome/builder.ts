@@ -205,7 +205,7 @@ export class Builder {
 
   /** The tops of what overshadows: triangles as x, y, height over the ground ×3, then its years. */
   get tops() {
-    return this.topsOf.a.subarray(0, this.topsOf.n)
+    return this.topsOf.done()
   }
 
   /** One triangle; points are [x, y, z above base], and the normal is its own. */
@@ -1211,17 +1211,17 @@ export class Builder {
     }
   }
 
-  geometry() {
-    const g = new THREE.BufferGeometry()
-    const attr = (a: Float32Array, k: number) => new THREE.BufferAttribute(a, k)
-    g.setAttribute('position', attr(new Float32Array(this.pos.done()), 3))
-    g.setAttribute('ground', attr(this.base.done(), 1))
-    g.setAttribute('years', attr(this.years.done(), 4))
-    g.setAttribute('normal', attr(this.normal.done(), 3))
-    g.setAttribute('colour', attr(this.colour.done(), 3))
-    g.setAttribute('skin', attr(this.skin.done(), 4))
-    g.setAttribute('part', attr(this.part.done(), 2))
-    return g
+  /** The mesh's attributes, by name: values and floats per vertex. */
+  attributes(): Record<string, [Float32Array, number]> {
+    return {
+      position: [new Float32Array(this.pos.done()), 3],
+      ground: [this.base.done(), 1],
+      years: [this.years.done(), 4],
+      normal: [this.normal.done(), 3],
+      colour: [this.colour.done(), 3],
+      skin: [this.skin.done(), 4],
+      part: [this.part.done(), 2],
+    }
   }
 }
 
