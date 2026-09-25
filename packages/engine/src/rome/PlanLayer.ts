@@ -1,5 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { planTextures, planUniforms } from './shading.ts'
+import { fieldUniforms, GROUND } from './fields.ts'
 
 /**
  * The plan of Rome (DESIGN.md §7.7): loads the board the model stands on (the
@@ -46,7 +47,7 @@ export class PlanLayer {
       .catch(() => null)
     if (!meta) return
     const [fields, ground] = await Promise.all([
-      Promise.all([0, 1].map((i) => loadField(`/rome/plate-${i}.png`))),
+      Promise.all([0, 1, 2].map((i) => loadField(`/rome/plate-${i}.png`))),
       loadGround('/rome/ground.png'),
     ])
     if (fields.some((t) => !t) || !ground) return
@@ -66,6 +67,18 @@ export class PlanLayer {
     planUniforms.plateTexels.value.set(pl.width, pl.height)
     planUniforms.streetClamp.value = pl.streetClamp
     planUniforms.plateClamps.value.set(0, pl.cityClamp, pl.riverClamp, pl.reachClamp)
+    // The country (fields.ts): its reach and clamps, and the recorded grounds' years.
+    const fl = pl.fields
+    fieldUniforms.reach.value = fl.reach
+    fieldUniforms.edgeClamp.value = fl.edgeClamp
+    fieldUniforms.laneClamp.value = fl.laneClamp
+    const slots = fieldUniforms.grounds.array as THREE.Vector4[]
+    fl.grounds.forEach(
+      (
+        g: { kind: keyof typeof GROUND; years: [number, number]; prior: number },
+        k: number,
+      ) => slots[k + 1].set(g.years[0], g.years[1], g.prior, GROUND[g.kind]),
+    )
     this.plate = [pl.x0, pl.y0, pl.x0 + pl.width * pl.texel, pl.y0 + pl.height * pl.texel]
     this.outlines = meta.outlines.map((o: Omit<Outline, 'box'>) => {
       const pts = o.rings.flat(2)

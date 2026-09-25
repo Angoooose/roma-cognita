@@ -192,3 +192,19 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
   Latina (no Itiner-e line) are not drawn.
 - **The legend** has no entry for the model.
+- **The country round the city** (DESIGN §7.7), left for later:
+  - The plots and the tombs follow only the roads the plan has. With the Latina,
+    Ostiensis, Portuensis, Praenestina, Labicana and Nomentana drawn, their tombs
+    and roadside plots would follow; until then the land between the Appia and
+    the Tiburtina faces those two.
+  - The Grove of Libitina, the undertakers' grove, is not drawn: no source locates
+    it (Richardson p. 235). Pompey's gardens are a point for the same reason.
+  - The outlines of the gardens and groves are drawn from their sources' bounds by
+    hand; a reading of Lanciani's plan and the excavation reports could firm them
+    up. Maecenas' follow Richardson (south of the Porta Esquilina); Platner &
+    Ashby put them north of it, over the burial ground.
+  - Vines are painted rows only; low 3D rows of vines on their stakes could come
+    close in. The farmsteads' side ranges face the plot, not the yard.
+  - ~33,000 trees now stand in the model, about twice the groves' count, though
+    the olives and fruit trees are a few faces each. Worth measuring on a slow GPU
+    (the explorer-perf work).

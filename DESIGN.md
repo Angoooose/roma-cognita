@@ -288,7 +288,8 @@ tectonics dominate.
 
   The masks describe physical ground only. There are no invented fields or
   forests. Centuriation drawn from real survey data is a later, evidenced
-  exception.
+  exception. The one place farmland is drawn is round the model of Rome (§7.7),
+  close in, keyed as illustrative like its houses.
 
 - **Floodplains are records, not a runtime derivation.** Irrigated floodplain
   colour matters only where a great river crosses dry land: the Nile valley and
@@ -951,11 +952,62 @@ known and what is generated are kept apart:
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb of detached houses lines the roads out of the gates, up to
     ~450 m, with a few near the wall, clear of its foot and the agger's ditch.
-  - Groves stand on the hills beyond: cypresses and holm oaks, with an umbrella
-    pine here and there. The pine skyline that says "Rome" now is mostly later
-    planting.
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
+- **The country round the city** (decided 2026-09-25: it replaced groves scattered
+  on a noise, which drew a wooded country Rome's plain was not). The land outside
+  the wall was farmed hard, and the model shows it as farmland, gardens and tombs
+  (`pipeline/src/rome/fields.ts`, `packages/engine/src/rome/fields.ts`). It is
+  painted on the ground, so it stays quiet under the model, with a little of it
+  raised close in. It reaches ~1.35 km beyond everything on the plan, past the
+  board's own edge, and fades out into the map's ground.
+  - **Known**: the gardens and groves the sources place (kinds `garden`, `grove`
+    and `cemetery` in rome.yaml, with Platner & Ashby's and Richardson's pages):
+    Lucullus' on the Pincian, Caesar's across the Tiber, Sallust's, Maecenas' on the
+    Esquiline over the old burial ground, the groves of Furrina and the Camenae.
+    Their outlines are drawn by hand from the bounds their sources give
+    (`data/geometry/rome-grounds.geojson`, each saying what it follows), and are
+    approximate. Each stands for its own years: a garden laid out within the window
+    shows the farmland it replaced until then, and takes the houses on its ground
+    when it comes; once the burial ground is cleared, about 35 BCE, the farmland
+    round it runs on over it. A garden is lawn crossed by gravel walks, its trees
+    scattered and its edge lined with cypresses; a grove a looser stand of holm oaks. Pompey's gardens, which
+    nobody can place, are a point only.
+  - **Generated**, seeded, following what the sources say the land near the city
+    was used for (Varro, _On Agriculture_ 1.16.3; Cato, _On Agriculture_ 7–8;
+    Morley 1996, ch. 4):
+    - **Lanes and plots.** Blocks between lanes (a Voronoi of jittered points
+      ~230 m apart, the ground pushed about a little so the lanes bend) face the
+      nearest road, and are cut into strips running back from it, so every plot
+      has a frontage: 12–26 m wide near the city, 35–80 m far out. About half the
+      block edges are lanes of trodden earth, the rest only a hedge between plots.
+      The distances to the lanes and hedges are stored signed, by the side of the
+      line a texel is on, so the line crosses zero between texel centres and draws
+      unbroken however close the camera comes (an unsigned distance on a 4 m grid
+      never reaches zero between centres, and a 3 m lane broke into dashes).
+    - **What each plot grows** is drawn by distance from the wall: market gardens
+      and orchards close in, vines and olives in the middle ground, grain, stubble,
+      fallow and pasture beyond. Vines and olives take the slopes, vines the ones
+      turned to the sun; gardens the watered low ground and the roads; meadow the
+      Tiber's flats, which flood; scrub what is too steep to plough. Half the plots
+      of a block share its main use, so a farm reads as one.
+    - **Summer**, as the model's light is: the grain ripe or cut, the fallow being
+      ploughed, the pasture dry, the gardens, vines and meadows green. Vines in rows
+      about two metres apart, garden beds, olives on a 9 m grid and fruit trees on
+      a 7 m one, ploughed furrows, mown swathes — each fading to its average colour
+      when too fine to draw. The palette is muted a quarter of the way to the map's
+      ground.
+    - **Raised close in**: olives and fruit trees on the same rows the ground is
+      painted with, within 1.6 km of the wall; scattered trees on the scrub;
+      farmsteads here and there, ranges round a yard square to their plot (Varro
+      1.13); and tombs along the roads out of the gates, an altar, a façade or a
+      drum as the known tombs are built, thickest near the gates (burial in the
+      city was forbidden: Cicero, _Laws_ 2.58; Purcell 1987).
+    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8),
+      from the river to the Via Flaminia, and the ground round the monuments
+      outside the wall open too.
+  - No umbrella pines outside the gardens: the pine skyline that says "Rome" now
+    is mostly later planting.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not
   shown. One being built stands cut off at two-fifths of its height, open to the
   sky as works rising are (or as far as its design says the works had got: the
@@ -1151,7 +1203,8 @@ copy. What we take from it:
 **What we do not take:**
 
 - Its invented province grid and anachronistic names.
-- Fields everywhere.
+- Fields everywhere. (Round the model of Rome, §7.7, the farmland is drawn close
+  in, keyed as illustrative.)
 - 3D models and unit markers. (The model of Rome, §7.7, is the one exception: a
   museum model of the capital, not game pieces.)
 - A heavy game interface.

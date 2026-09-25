@@ -20,8 +20,9 @@
  * street drawn lighter, 127 a road, 63 a road drawn lighter.
  * plate-1: R signed distance to the circuit, G signed distance to the river, B the
  * distance to the hull of the circuit and everything on the plan, out to
- * REACH_CLAMP_M, for the board's edge. The fields are loaded without
- * premultiplication, so alpha is data like the rest.
+ * REACH_CLAMP_M, for the board's edge.
+ * plate-2: the country outside the wall, its farmland and gardens (fields.ts).
+ * The fields are loaded without premultiplication, so alpha is data like the rest.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
@@ -29,7 +30,14 @@ import sharp from 'sharp'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { servianCourse } from './servian.ts'
-import { streetLines } from './streets.ts'
+import { itinere, streetLines } from './streets.ts'
+import {
+  EDGE_CLAMP_M,
+  FIELDS_REACH_M,
+  LANE_CLAMP_M,
+  layFields,
+  recordedGrounds,
+} from './fields.ts'
 import { ancientGround } from './ground.ts'
 import { COURSES } from './aqueducts.ts'
 import { designFootprints } from './designs.ts'
@@ -57,6 +65,25 @@ const PLATE_REACH_M = 420
 const REACH_CLAMP_M = 1400
 const RIVER_CLAMP_M = 16
 const STREET_CLAMP_M = 12
+/** The roads' distance field, for the plots that front them (fields.ts), is clamped at this. */
+const ROAD_CLAMP_M = 40
+/**
+ * The open ground of the Campus Martius, lon/lat: the plain north of the Saepta
+ * between the Via Flaminia and the river, where the people drilled, exercised and
+ * raced, "the plain covered with grass throughout the year" (Strabo 5.3.8; Platner
+ * & Ashby, Campus Martius, pp. 91–94). Left open, not farmed. The outline is loose:
+ * the open ground stops at the river, its east edge runs along the Via Flaminia's line
+ * (which ends short of its north edge), and its north and south edges wander.
+ */
+const CAMPUS_OPEN: [number, number][] = [
+  [12.4705, 41.8988],
+  [12.4812, 41.8988],
+  [12.4758, 41.9105],
+  [12.4715, 41.9115],
+  [12.466, 41.904],
+]
+/** Where the Campus Martius is (Platner & Ashby's point): its open ground is on this side of the river. */
+const CAMPUS_AT: [number, number] = [12.4755, 41.9005]
 /** The street field's code for a generated main street (plate-0 alpha). */
 const MAIN_STREET = 223
 /** A hill's name goes on its highest ground within this of its location. */
@@ -96,6 +123,7 @@ export async function bakePlate(
   streetGeometry: Map<string, [number, number][][]>,
   places: Map<string, Place>,
   outlines: { id: string; kind: string; polys: Pt[][][] }[],
+  groundOutlines: Map<string, Pt[][][]>,
 ) {
   const corners = [
     projection.forward(LON[0], LAT[0]),
@@ -229,6 +257,48 @@ export async function bakePlate(
   const hull = convexHull([...circuit, ...planned])
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)
 
+  // --- the country ---------------------------------------------------------------------
+  // The roads the plots face: the plan's, and the map's own (Itiner-e) across the grid.
+  const [gx1, gy0] = [x0 + width * TEXEL_M, y0]
+  const onGrid = (q: Pt) =>
+    q[0] > x0 - 2000 && q[0] < gx1 + 2000 && q[1] > gy0 - 2000 && q[1] < y1 + 2000
+  const roads = [
+    ...streets.filter((l) => l.road).map((l) => l.pts),
+    ...[...itinere().values()]
+      .flat()
+      .map((l) => l.pts)
+      .filter((l) => l.some(onGrid)),
+  ]
+  const roadField = unsignedField(
+    grid,
+    roads.flatMap((l) => l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt])),
+    ROAD_CLAMP_M,
+  ).d
+  // The river's level, as the model takes it: the lowest tenth of the ground under it.
+  const onRiver = [...h.filter((_, i) => water[i] < -4)].sort((a, b) => a - b)
+  const grounds = recordedGrounds(places, groundOutlines)
+  const fields = layFields({
+    grid,
+    smooth,
+    water,
+    city,
+    reach: reachField,
+    roadDist: roadField,
+    roads,
+    circuit: circuitRing,
+    riverRings,
+    waterLevel: onRiver[Math.floor(onRiver.length * 0.1)] ?? 8,
+    monuments: monumentRings,
+    open: [
+      {
+        ring: CAMPUS_OPEN.map(([lon, lat]) => projection.forward(lon, lat)),
+        at: projection.forward(...CAMPUS_AT),
+        wobble: 30,
+      },
+    ],
+    grounds,
+  })
+
   // --- the model --------------------------------------------------------------------
   const model = bakeModel({
     out,
@@ -244,6 +314,8 @@ export async function bakePlate(
     reachM: PLATE_REACH_M,
     outlines,
     places,
+    fields,
+    grounds,
   })
   const shadowAt = (i: number) => model.shadow[i]
 
@@ -298,7 +370,7 @@ export async function bakePlate(
     img1[i * 4 + 3] = 255
   }
   mkdirSync(out, { recursive: true })
-  for (const [i, img] of [img0, img1].entries())
+  for (const [i, img] of [img0, img1, fields.rgba].entries())
     await sharp(img, { raw: { width, height, channels: 4 } })
       .png({ compressionLevel: 9 })
       .toFile(join(out, `plate-${i}.png`))
@@ -406,6 +478,17 @@ export async function bakePlate(
     cityClamp: CITY_CLAMP_M,
     reachClamp: REACH_CLAMP_M,
     riverClamp: RIVER_CLAMP_M,
+    fields: {
+      reach: FIELDS_REACH_M,
+      edgeClamp: EDGE_CLAMP_M,
+      laneClamp: LANE_CLAMP_M,
+      grounds: grounds.map((gr) => ({
+        id: gr.id,
+        kind: gr.kind,
+        years: gr.years,
+        prior: gr.prior,
+      })),
+    },
   }
 }
 

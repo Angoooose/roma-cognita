@@ -1,0 +1,164 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "horti-luculliani",
+   "properties": {
+    "drawn": "Platner & Ashby's bounds (Horti Luculliani, pp. 268–269): the Aqua Virgo's outlet at the south corner, the slope above the Via dei Due Macelli and the Villa Medici on the west, the Via di Porta Pinciana on the east; the north edge is a guess"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.4862, 41.9055],
+      [12.4865, 41.9074],
+      [12.487, 41.9097],
+      [12.483, 41.9115],
+      [12.48, 41.9105],
+      [12.4805, 41.9085],
+      [12.4822, 41.9062],
+      [12.4838, 41.9046],
+      [12.485, 41.9033],
+      [12.4862, 41.9055]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "horti-caesaris",
+   "properties": {
+    "drawn": "the right bank between the Via Portuensis (the modern Via Portuense) and the river, from the Porta Portese about 1.2 km downstream (Richardson, p. 197), the bank taken from the river as the plan draws it"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.4725, 41.884],
+      [12.47, 41.8815],
+      [12.4678, 41.879],
+      [12.4665, 41.876],
+      [12.4658, 41.873],
+      [12.4703, 41.8732],
+      [12.4693, 41.876],
+      [12.4693, 41.8785],
+      [12.471, 41.881],
+      [12.4745, 41.8835],
+      [12.474, 41.8843],
+      [12.4725, 41.884]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "horti-sallustiani",
+   "properties": {
+    "drawn": "Platner & Ashby's bounds for the gardens the emperors owned (pp. 271–272): the Via Salaria, the Quirinal's ridge, the Piazza Barberini, the line of the later Aurelian wall"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.4981, 41.9107],
+      [12.4935, 41.9102],
+      [12.49, 41.9092],
+      [12.4893, 41.907],
+      [12.4888, 41.9042],
+      [12.4912, 41.9035],
+      [12.495, 41.905],
+      [12.4988, 41.9076],
+      [12.4981, 41.9107]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "campus-esquilinus",
+   "properties": {
+    "drawn": "outside the rampart north of the Porta Esquilina, over the pits found north-west of Piazza Vittorio, south to the road to Labici (Platner & Ashby, pp. 90–91)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.502, 41.8955],
+      [12.5065, 41.894],
+      [12.5068, 41.8955],
+      [12.5065, 41.8985],
+      [12.503, 41.9003],
+      [12.5005, 41.899],
+      [12.5015, 41.8962],
+      [12.502, 41.8955]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "horti-maecenatis",
+   "properties": {
+    "drawn": "Richardson's bounds (p. 201): south of the Porta Esquilina on both sides of the rampart, taking in the Auditorium on Largo Leopardi; the west and south edges are a guess"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.499, 41.895],
+      [12.4985, 41.8925],
+      [12.5005, 41.8912],
+      [12.5035, 41.892],
+      [12.5035, 41.8955],
+      [12.502, 41.896],
+      [12.5005, 41.8958],
+      [12.499, 41.895]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "lucus-furrinae",
+   "properties": {
+    "drawn": "round the Syrian sanctuary on the Via Dandolo, into the lower Villa Sciarra (Richardson, p. 235); its size is a guess"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.4668, 41.8836],
+      [12.467, 41.885],
+      [12.4655, 41.8858],
+      [12.4635, 41.8852],
+      [12.463, 41.8838],
+      [12.4645, 41.8828],
+      [12.4668, 41.8836]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "lucus-camenarum",
+   "properties": {
+    "drawn": "from the Porta Capena along the east side of the Via Appia to the foot of the Villa Celimontana (Platner & Ashby, pp. 89–90)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [12.4915, 41.8822],
+      [12.494, 41.8812],
+      [12.4962, 41.882],
+      [12.4955, 41.8835],
+      [12.493, 41.8842],
+      [12.4908, 41.8836],
+      [12.4915, 41.8822]
+     ]
+    ]
+   }
+  }
+ ]
+}

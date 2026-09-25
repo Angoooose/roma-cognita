@@ -22,6 +22,10 @@ import {
   vec3,
 } from 'three/tsl'
 
+// fields.ts imports this file too; each only calls the other's functions when a
+// shader is built, by when both are loaded.
+import { groundStanding } from './fields.ts'
+
 /**
  * The ground the model of Rome stands on (DESIGN.md §7.7), printed onto the terrain
  * when the map is zoomed right into the city. The buildings are ModelLayer's; this is
@@ -63,6 +67,8 @@ export const planUniforms = {
    * their ancient depth (pipeline ground.ts): more, and a real slope falls muddy.
    */
   relief: uniform(2),
+  /** The year shown, astronomical (ModelLayer sets it with the model's). */
+  year: uniform(-62),
 }
 
 function blank(bytes = [255, 0, 255, 255]) {
@@ -73,11 +79,16 @@ function blank(bytes = [255, 0, 255, 255]) {
 
 /**
  * The texture nodes the shaders read, their values swapped in once loaded: the
- * plate's fields (plate-0 streets, plate-1 the river and the reach), and the smoothed
- * ground heights (ground.png, decoded to metres by PlanLayer).
+ * plate's fields (plate-0 streets, plate-1 the river and the reach, plate-2 the
+ * country, fields.ts), and the smoothed ground heights (ground.png, decoded to metres
+ * by PlanLayer).
  */
 export const planTextures = {
-  plate: [texture(blank([255, 0, 255, 255])), texture(blank([255, 255, 0, 255]))],
+  plate: [
+    texture(blank([255, 0, 255, 255])),
+    texture(blank([255, 255, 0, 255])),
+    texture(blank([0, 0, 255, 255])),
+  ],
   ground: texture(blank([0, 0, 0, 255])),
 }
 
@@ -94,19 +105,19 @@ type F = THREE.Node<'float'>
 const rgb = (c: THREE.Color) => vec3(c.r, c.g, c.b)
 
 /** Metres per CSS pixel from metres per device pixel. */
-const css = (pxM: F) => pxM.mul(planUniforms.pixelRatio)
+export const css = (pxM: F) => pxM.mul(planUniforms.pixelRatio)
 
 /** How far the board reaches beyond everything on the plan, metres, before its wobble. */
 const REACH_M = 420
 
-const plateUV = (mx: F, my: F) =>
+export const plateUV = (mx: F, my: F) =>
   vec2(
     mx.sub(planUniforms.plateOrigin.x).div(planUniforms.plateSize.x),
     planUniforms.plateOrigin.y.sub(my).div(planUniforms.plateSize.y),
   )
 
 /** The distance beyond the hull of the plan, metres (plate-1 blue), at a level safe anywhere. */
-const reachAt = (mx: F, my: F) =>
+export const reachAt = (mx: F, my: F) =>
   texture(planTextures.plate[1], plateUV(mx, my))
     .level(float(0))
     .b.mul(255)
@@ -242,7 +253,10 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   // Inside the walls the ground between the houses is trodden earth, not grass: the
   // terrain's colour pulled most of the way to it, its relief kept.
   const city = p1.r.mul(255).sub(128).div(127).mul(planUniforms.plateClamps.y)
-  const walled = float(1).sub(smoothstep(-24, 8, city))
+  // A recorded garden standing inside the wall keeps its own ground (fields.ts).
+  const walled = float(1)
+    .sub(smoothstep(-24, 8, city))
+    .mul(float(1).sub(groundStanding(mx, my)))
   out.assign(mix(out, rgb(EARTH).mul(lit), walled.mul(0.7).mul(planUniforms.meshShown)))
 
   // Baked shadows, as the model rises, where its ground mesh does not take its real ones.

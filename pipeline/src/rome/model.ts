@@ -17,7 +17,9 @@
  *   houses.
  *   Where a monument was built within the window (Caesar's forum on the houses he
  *   bought up), houses stand on its site until the year it was begun.
- *   Trees stand on the hills beyond. All of it is seeded, so every build is the same.
+ *   Beyond them the country (fields.ts): trees on the rows of its olive groves and
+ *   orchards, scattered on its scrub, and in the recorded gardens and groves. All of
+ *   it is seeded, so every build is the same.
  *
  * The ground under the model is the plate's smoothed relief with the river cut into
  * it (ground.png, heights in centimetres over two bytes), so the terrain can be laid
@@ -34,6 +36,7 @@ import { layCity, LOT_KIND, ROOF } from './city.ts'
 import { COURSES, layCourse } from './aqueducts.ts'
 import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts'
 import { type Course, STEP_M } from './servian.ts'
+import { type Fields, fieldTrees, type RecordedGround, TREE } from './fields.ts'
 
 type Pt = [number, number]
 
@@ -54,6 +57,9 @@ export interface ModelInput {
   reachM: number
   outlines: { id: string; kind: string; polys: Pt[][][] }[]
   places: Map<string, Place>
+  /** The country outside the wall (fields.ts), whose groves and orchards the model plants. */
+  fields: Fields
+  grounds: RecordedGround[]
 }
 
 /**
@@ -289,6 +295,22 @@ const WINDOW = [-132, -26]
  * wall itself, within `wall`; and how much of each is built.
  */
 const SUBURB = { reach: 450, road: 38, wall: 70, density: [0.55, 0.25] }
+/**
+ * The tombs along the roads (`bakeModel`): tried every `step` metres each side,
+ * from `from` metres beyond the wall out to `reach`, with a chance of `density` that
+ * falls off over `fall`; set `gap` metres behind a road's edge.
+ */
+const TOMBS = {
+  step: 7,
+  from: 40,
+  reach: 2600,
+  density: 0.5,
+  fall: 1100,
+  roadHalf: 5,
+  gap: 1.5,
+}
+/** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
+const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
 
 export function bakeModel(m: ModelInput) {
   const { grid: g } = m
@@ -932,12 +954,18 @@ export function bakeModel(m: ModelInput) {
   )
   const insideMonument = (p: Pt) => early.some((mo) => inside(p, mo))
   /** The last year a house at `p` stands: the year before a later monument took its site. */
+  // A garden laid out within the window (Lucullus', Maecenas') takes the houses on
+  // its ground when it comes, as a monument does.
+  const laidOut = m.grounds.filter((gr) => gr.years[0] > WINDOW[0])
   const until = (pts: Pt[]) =>
     Math.min(
       100000,
       ...late
         .filter((mo) => pts.some((q) => inside(q, mo)))
         .map((mo) => yearsOf(mo.id)[0] - 1),
+      ...laidOut
+        .filter((gr) => pts.some((q) => inRing(q, gr.ring)))
+        .map((gr) => gr.years[0] - 1),
     )
   // Squares no house stands in: the Forum between its buildings, the Capitol's
   // precinct round its temple, and the Circus' arena (inside its outline already).
@@ -1102,6 +1130,8 @@ export function bakeModel(m: ModelInput) {
     if (isOpen(p)) return false
     if (onWall(p)) return false
     if (slopeAt(p[0], p[1]) > FABRIC.maxSlope) return false
+    // Nothing is built in a grove or garden that stood through the window.
+    if (m.grounds.some((gr) => gr.years[0] <= WINDOW[0] && inRing(p, gr.ring))) return false
     return suburb ? !inCircuit(p[0], p[1]) : inCircuit(p[0], p[1])
   }
 
@@ -1176,31 +1206,124 @@ export function bakeModel(m: ModelInput) {
       lot(rect(p[0], p[1], w, d, angle), h, LOT_KIND.suburb, ROOF.along, rand())
     }
 
-  // --- trees -------------------------------------------------------------------------------
-  const trees: number[] = []
-  const treePlaced = new SpatialHash(20)
-  for (let y = by0 - 900; y < by1 + 900; y += 9)
-    for (let x = bx0 - 900; x < bx1 + 900; x += 9) {
-      const p: Pt = [x + (rand() - 0.5) * 8, y + (rand() - 0.5) * 8]
-      if (sample(m.reach, p[0], p[1], 1e9) > m.reachM - 150) continue
-      if (inCircuit(p[0], p[1]) || sample(m.water, p[0], p[1], -1) < 10) continue
-      if (
-        placed.near(p, 10) ||
-        aqueductGrid.nearest(p).d < 8 ||
-        streetGrid.nearest(p).d < 6 ||
-        monumentGrid.nearest(p).d < 10 ||
-        insideMonument(p) ||
-        onWall(p)
-      )
-        continue
-      // Groves where a slow noise says so, thicker on the slopes.
-      const grove = valueNoise(p[0] / 260, p[1] / 260, 7) + slopeAt(p[0], p[1]) * 1.2
-      if (grove < 0.66 || rand() > 0.5) continue
-      const rr = 3 + rand() * 3
-      if (treePlaced.near(p, rr * 1.2)) continue
-      treePlaced.add(p, rr)
-      trees.push(round(p[0]), round(p[1]), round(rr), round(at(p[0], p[1])))
+  // --- tombs along the roads ------------------------------------------------------------
+  // No one was buried or burned in the city (the Twelve Tables, in Cicero, Laws 2.58),
+  // so the roads out of it were lined with tombs, thickest near the gates (Purcell
+  // 1987). Generated, like the houses: an altar on its base, a façade with a door, or
+  // a drum under a mound of earth, the forms the known tombs take (designs.ts), each
+  // facing the road a few metres back from it.
+  const roadTombs: Record<string, unknown>[] = []
+  const reachOk = (p: Pt) => sample(m.reach, p[0], p[1], 1e9) < m.reachM - 150
+  for (const l of m.streets.filter((s) => s.road)) {
+    for (let k = 0; k + 1 < l.pts.length; k++) {
+      const [a, b] = [l.pts[k], l.pts[k + 1]]
+      const L = Math.hypot(b[0] - a[0], b[1] - a[1])
+      const [ux, uy] = [(b[0] - a[0]) / (L || 1), (b[1] - a[1]) / (L || 1)]
+      for (let t = 0; t < L; t += TOMBS.step)
+        for (const side of [-1, 1]) {
+          const on: Pt = [a[0] + ux * t, a[1] + uy * t]
+          const fromWall = distToRing(on, m.circuit)
+          if (inCircuit(on[0], on[1]) || fromWall < TOMBS.from || fromWall > TOMBS.reach)
+            continue
+          if (rand() > TOMBS.density * Math.exp(-fromWall / TOMBS.fall)) continue
+          const r = rand()
+          const form = r < 0.55 ? 'altar' : r < 0.8 ? 'facade' : 'drum'
+          const w = form === 'drum' ? 6 + rand() * 7 : 2.6 + rand() * 2.4
+          const d = form === 'drum' ? w : 2.6 + rand() * 2.6
+          const h =
+            form === 'drum'
+              ? 2.5 + rand() * 2
+              : form === 'altar'
+                ? 2.2 + rand() * 1.8
+                : 4 + rand() * 2.5
+          const back = TOMBS.roadHalf + TOMBS.gap + d / 2 + rand() * 3
+          const c: Pt = [on[0] - uy * side * back, on[1] + ux * side * back]
+          // Its front to the road: across it, towards the road's line.
+          const angle = Math.atan2(uy, ux)
+          const corners = rect(c[0], c[1], w + 1, d + 1, angle)
+          if (!reachOk(c) || !corners.every((q) => allowed(q, true)) || !allowed(c, true))
+            continue
+          const rr = Math.hypot(w, d) / 2
+          if (placed.near(c, rr + 1.5)) continue
+          placed.add(c, rr)
+          const stone = rand() < 0.35 ? 'travertine' : 'stucco'
+          roadTombs.push({
+            model: 'tomb',
+            form,
+            h: round(h),
+            centre: [round(c[0]), round(c[1])],
+            size: [round(w), round(d)],
+            // Radians clockwise from north, as designs.ts has it.
+            bearing: round(Math.atan2(uy * side, -ux * side), 1000),
+            base: round(Math.min(...corners.map((q) => at(q[0], q[1])))),
+            stone,
+          })
+        }
     }
+  }
+
+  // --- farmsteads ----------------------------------------------------------------------
+  // Out in the farmland, a farmhouse here and there: ranges round a yard, as Varro
+  // lays out a farm's buildings (On Agriculture 1.13), square to its plot's rows.
+  // Generated, like the houses.
+  const FARM_USES = new Set([2, 3, 5, 6, 7, 8])
+  for (let y = by0 - 1500; y < by1 + 1500; y += FARMS.spacing)
+    for (let x = bx0 - 1500; x < bx1 + 1500; x += FARMS.spacing) {
+      const c: Pt = [
+        x + (rand() - 0.5) * FARMS.spacing * 0.8,
+        y + (rand() - 0.5) * FARMS.spacing * 0.8,
+      ]
+      if (rand() > FARMS.share || !reachOk(c)) continue
+      const fromWall = distToRing(c, m.circuit)
+      if (fromWall < FARMS.from || fromWall > FARMS.reach) continue
+      const i = idx(c[0], c[1])
+      if (i < 0 || !FARM_USES.has(m.fields.use[i]) || m.fields.edge[i] < 3) continue
+      const angle = m.fields.angle(i)
+      const [ca, sa] = [Math.cos(angle), Math.sin(angle)]
+      const at2 = (u: number, v: number): Pt => [
+        c[0] + u * ca - v * sa,
+        c[1] + u * sa + v * ca,
+      ]
+      // The house across the back of the yard, a barn and a byre down its sides.
+      const yard = 12 + rand() * 6
+      const ranges = [
+        { u: 0, v: yard / 2 + 3.5, w: yard + 14, d: 7, h: 6 + rand() * 1.5 },
+        { u: -(yard / 2 + 3.5), v: 0, w: 7, d: yard, h: 4.5 + rand() },
+        { u: yard / 2 + 3.5, v: 0, w: 7, d: yard, h: 4.5 + rand() },
+      ].filter((_, k) => k === 0 || rand() < 0.75)
+      const rects = ranges.map((r) => rect(...at2(r.u, r.v), r.w, r.d, angle))
+      if (!rects.every((q) => q.every((p) => allowed(p, true)))) continue
+      const rr = yard / 2 + 12
+      if (placed.near(c, rr)) continue
+      placed.add(c, rr)
+      const tone = rand()
+      ranges.forEach((r, k) => lot(rects[k], r.h, LOT_KIND.suburb, ROOF.along, tone))
+    }
+
+  // --- trees -------------------------------------------------------------------------------
+  // x, y, radius, ground, kind (fields.ts `TREE`), and the years it stands.
+  const trees: number[] = []
+  const tree = (x: number, y: number, r: number, kind: number, years = [-100000, 100000]) =>
+    trees.push(round(x), round(y), round(r), round(at(x, y)), kind, years[0], years[1])
+  for (const t of fieldTrees(
+    m.fields,
+    g,
+    m.reach,
+    m.reachM - 150,
+    m.grounds,
+    m.circuit,
+    (p, inCity) =>
+      (inCity || !inCircuit(p[0], p[1])) &&
+      sample(m.water, p[0], p[1], -1) >= 10 &&
+      !placed.near(p, 8) &&
+      aqueductGrid.nearest(p).d >= 8 &&
+      streetGrid.nearest(p).d >= 6 &&
+      monumentGrid.nearest(p).d >= 10 &&
+      !insideMonument(p) &&
+      !onWall(p),
+  ))
+    tree(t.x, t.y, t.r, t.kind, t.years)
+  const TREE_STRIDE = 7
 
   // --- shadows on the board ------------------------------------------------------------------
   // Each footprint swept away from the sun by its height, filled on the plate's grid
@@ -1234,8 +1357,15 @@ export function bakeModel(m: ModelInput) {
         Math.max(p[4], q[4]) + WALL.parapet - Math.min(p[2], q[2]),
       )
     }
-  for (let i = 0; i < trees.length; i += 4) {
+  for (const t of roadTombs) {
+    const [cx, cy] = t.centre as Pt
+    const [w, d] = t.size as Pt
+    cast(rect(cx, cy, w, d, -(t.bearing as number)).slice(0, 4), t.h as number)
+  }
+  for (let i = 0; i < trees.length; i += TREE_STRIDE) {
     const [x, y, r] = trees.slice(i, i + 3)
+    // Only what stands through the whole window casts a baked shadow (above).
+    if (trees[i + 5] > WINDOW[0] || trees[i + 6] < WINDOW[1]) continue
     cast(
       [0, 1, 2, 3, 4, 5].map(
         (k) => [x + Math.cos(k * 1.047) * r, y + Math.sin(k * 1.047) * r] as Pt,
@@ -1254,8 +1384,7 @@ export function bakeModel(m: ModelInput) {
     }
   }
   const fab = new Float32Array(fabric)
-  for (const [x, y] of courtyardTrees)
-    trees.push(round(x), round(y), round(2.5 + rand() * 1.5), round(at(x, y)))
+  for (const [x, y] of courtyardTrees) tree(x, y, 2.5 + rand() * 1.5, TREE.mixed)
   const tre = new Float32Array(trees)
   const bin = Buffer.concat([Buffer.from(fab.buffer), Buffer.from(tre.buffer)])
   writeFileSync(join(m.out, 'model.bin'), bin)
@@ -1263,10 +1392,10 @@ export function bakeModel(m: ModelInput) {
     join(m.out, 'model.json'),
     JSON.stringify({
       _comment:
-        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof; its building’s tone) × fabricCount, then trees (x, y, radius, base) × treeCount, float32.',
+        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof; its building’s tone) × fabricCount, then trees (x, y, radius, base, kind, first year, last year) × treeCount, float32.',
       waterLevel: round(waterLevel),
       fabricCount: fab.length / FABRIC_STRIDE,
-      treeCount: tre.length / 4,
+      treeCount: tre.length / TREE_STRIDE,
       river: m.riverRings.map((r) => r.map(([x, y]) => [round(x), round(y)])),
       monuments: monuments.map((mo) => ({
         ...mo,
@@ -1292,6 +1421,8 @@ export function bakeModel(m: ModelInput) {
             },
           ]
         : [],
+      // The tombs along the roads, generated: designs as designs.ts gives them.
+      roadTombs,
       // The Servian Wall (`WALL`): its curtain in runs between the gates, each point
       // x, y, the ground outside and inside its faces and its walk; its gates, each
       // with the way out of the city; the agger's towers; and its build.
@@ -1325,7 +1456,7 @@ export function bakeModel(m: ModelInput) {
     }),
   )
   console.log(
-    `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / 4} trees, the wall in ${wall.length} runs with ${gates.length} gates and ${towers.length} towers, water at ${waterLevel.toFixed(1)} m`,
+    `model: ${monuments.length} buildings known, ${city.mains.length} main streets and ${city.locals.length} local ones generated, ${city.blocks} blocks, ${fab.length / FABRIC_STRIDE} buildings, ${tre.length / TREE_STRIDE} trees, the wall in ${wall.length} runs with ${gates.length} gates and ${towers.length} towers, water at ${waterLevel.toFixed(1)} m`,
   )
   // The footprints drawn for monuments with no surveyed outline, for picking.
   // The wall is picked along its course: a band its width, out one side and back.
@@ -1626,20 +1757,6 @@ function mulberry32(seed: number) {
     t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296
   }
-}
-
-/** Smooth value noise in [0, 1], seeded. */
-function valueNoise(x: number, y: number, seed: number) {
-  const h = (i: number, j: number) => {
-    const s = Math.sin(i * 127.1 + j * 311.7 + seed * 74.7) * 43758.5453
-    return s - Math.floor(s)
-  }
-  const [i, j] = [Math.floor(x), Math.floor(y)]
-  const [u, v] = [x - i, y - j]
-  const f = (t: number) => t * t * (3 - 2 * t)
-  const a = h(i, j) + (h(i + 1, j) - h(i, j)) * f(u)
-  const b = h(i, j + 1) + (h(i + 1, j + 1) - h(i, j + 1)) * f(u)
-  return a + (b - a) * f(v)
 }
 
 const smoothstep = (a: number, b: number, x: number) => {

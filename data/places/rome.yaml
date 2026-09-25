@@ -3042,3 +3042,247 @@
     carried topmost on the Marcia's arches (Frontinus 1.19). Placed at the Porta
     Tiburtina, where its channel, with the Tepula's and the Marcia's, crossed the
     road (Ashby p. 145).
+
+# --- gardens, groves and the burial ground outside the wall (DESIGN.md §7.7) ------
+# Their outlines (data/geometry/rome.geojson) are approximate: drawn from the bounds
+# Platner & Ashby and Richardson give, not surveyed. The model plants them and the
+# plate paints them over the country round the city (pipeline/src/rome/fields.ts).
+
+- id: horti-luculliani
+  kind: garden
+  within: roma
+  pleiades: '418356677'
+  location: [12.4838, 41.9072]
+  names:
+    - { text: Horti Luculliani, lang: la, preferred: true }
+    - { text: Gardens of Lucullus, lang: en }
+  from: { earliest: 63 BCE, latest: 57 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horti Luculliani, pp. 268–269' }
+    - { source: richardson-1992, locator: 'Horti Luculliani, pp. 200–201' }
+    - { source: pleiades, locator: places/418356677 }
+    - { source: tacitus-ann, locator: '11.1.1' }
+    - { source: plutarch, locator: 'Lucullus 39.2, 41.5–6' }
+    - { source: frontinus, locator: '1.22' }
+  confidence: probable
+  review: draft
+  note: >-
+    The first of the great pleasure gardens on the Pincian, laid out by L. Licinius
+    Lucullus after his triumph in 63 BCE ("about 60 B.C.", Platner & Ashby) and
+    unfinished at his death in 57/56. They ran from the top of the hill down its
+    slope towards the Campus Martius; terraced walls with a row of niches survive
+    under the Palazzo Zuccari. The outline follows Platner & Ashby's bounds: the
+    Aqua Virgo came out "under the gardens of Lucullus" at the south corner
+    (Frontinus 1.22), and the east side was probably the road from the Porta
+    Salutaris. How far they reached north is not known, and the north edge is a
+    guess. Pleiades' point, on the Villa Borghese, is not used.
+
+- id: horti-pompeiani
+  kind: garden
+  within: roma
+  location: [12.4728, 41.8958]
+  names:
+    - { text: Horti Pompeiani, lang: la, preferred: true }
+    - { text: Gardens of Pompey, lang: en }
+  from: before 61 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horti Pompeiani, p. 270' }
+    - { source: richardson-1992, locator: 'Horti Pompeiani (1) and (2), p. 201' }
+    - { source: plutarch, locator: 'Pompey 40.5, 44.3' }
+    - { source: asconius, locator: 'Pro Milone, argument, pp. 33, 36 Clark; commentary pp. 50–52 Clark' }
+    - { source: velleius, locator: '2.60.3' }
+    - { source: appian, locator: 'Civil Wars 3.14' }
+    - { source: cicero-phil, locator: '2.109' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Pompey's gardens in the Campus Martius, where the people went to collect his
+    bribes for Afranius in 61 BCE, and where in 52 BCE he shut himself in the
+    "upper gardens" under guard. After his death Caesar gave them to Antony. Where
+    they lay is disputed: Platner & Ashby put them in the Campus, the upper part
+    perhaps on the Pincian's slope; Richardson puts the upper gardens with Pompey's
+    house on the Carinae. So they are drawn as a point beside Pompey's theatre,
+    where his later house stood, and not outlined.
+
+- id: horti-caesaris
+  kind: garden
+  within: roma
+  pleiades: '387197668'
+  location: [12.4686, 41.879]
+  names:
+    - { text: Horti Caesaris, lang: la, preferred: true }
+    - { text: Gardens of Caesar, lang: en }
+  from: before 44 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horti Caesaris, pp. 265–266' }
+    - { source: richardson-1992, locator: 'Horti Caesaris (2), p. 197' }
+    - { source: pleiades, locator: places/387197668 }
+    - { source: suetonius-iul, locator: '83.2' }
+    - { source: cicero-att, locator: '15.15.2' }
+    - { source: cicero-phil, locator: '2.109' }
+    - { source: horace-sat, locator: '1.9.18' }
+    - { source: tacitus-ann, locator: '2.41.1' }
+    - { source: appian, locator: 'Civil Wars 2.143' }
+    - { source: cassius-dio, locator: '44.35.3' }
+  confidence: probable
+  review: draft
+  note: >-
+    Caesar's gardens on the right bank of the Tiber, where he lodged Cleopatra in
+    46–44 BCE, and which his will left to the people of Rome in 44 (Suetonius 83).
+    They ran south from near the gate of the Via Portuensis between the road and the
+    river, "a kilometer or more downstream" (Richardson), with the temple of Fors
+    Fortuna at the first milestone; Horace calls them a long way off across the
+    river. The outline runs between the modern Via Portuense and the river bank;
+    their real limits are not known. "Before 44 BCE" rests on Cicero's letter of
+    June 44 recalling Cleopatra's stay; they may be older.
+
+- id: horti-sallustiani
+  kind: garden
+  within: roma
+  pleiades: '166405461'
+  location: [12.49693, 41.90809]
+  names:
+    - { text: Horti Sallustiani, lang: la, preferred: true }
+    - { text: Gardens of Sallust, lang: en }
+  from: { earliest: 45 BCE, latest: 35 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horti Sallustiani, pp. 271–272' }
+    - { source: richardson-1992, locator: 'Horti Sallustiani, pp. 202–203' }
+    - { source: pleiades, locator: places/166405461 }
+    - { source: ps-cicero-in-sallustium, locator: '19' }
+  confidence: probable
+  review: draft
+  note: >-
+    The historian Sallust's gardens in the valley between the Pincian and the
+    Quirinal, bought with the fortune he made governing Africa in 46–45 BCE, before
+    his death in 35. They may have grown out of gardens of Caesar's by the Porta
+    Collina. The outline follows Platner & Ashby's bounds for the gardens the
+    emperors later owned (the Via Salaria on the east, the Quirinal's ridge on the
+    south, "probably not beyond the Piazza Barberini" on the west); how large they
+    were in Sallust's day is not known. The only near-contemporary evidence is an
+    invective falsely ascribed to Cicero, of disputed date.
+
+- id: campus-esquilinus
+  kind: cemetery
+  within: roma
+  pleiades: '133574713'
+  location: [12.5038, 41.897]
+  names:
+    - { text: Campus Esquilinus, lang: la, preferred: true }
+    - { text: Esquiline burial ground, lang: en }
+  from: before 133 BCE
+  to: { earliest: 43 BCE, latest: 35 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Campus Esquilinus, pp. 90–91' }
+    - { source: platner-ashby, locator: 'Puticuli, p. 435' }
+    - { source: richardson-1992, locator: 'Campus Esquilinus, p. 65; Puticuli, p. 323' }
+    - { source: pleiades, locator: places/133574713 }
+    - { source: horace-sat, locator: '1.8.8–16' }
+    - { source: varro-ll, locator: '5.25' }
+    - { source: cicero-phil, locator: '9.17' }
+    - { source: strabo, locator: '5.3.9' }
+  confidence: probable
+  review: draft
+  note: >-
+    The old burial ground on the Esquiline plateau outside the Porta Esquilina,
+    north of the road to Labici. Men honoured by the senate were buried there
+    (Cicero proposed a tomb there in 43 BCE), and slaves and the poor were thrown
+    into common pits in a plot Horace gives as a thousand feet by three hundred.
+    Stone-lined pits were found north-west of Piazza Vittorio in the 1870s, though
+    whether they are Horace's is disputed. By about 35 BCE, when Horace wrote, it
+    had been cleared and made healthy ground. The outline is approximate.
+
+- id: horti-maecenatis
+  kind: garden
+  within: roma
+  pleiades: '399141643'
+  location: [12.50134, 41.89401]
+  names:
+    - { text: Horti Maecenatis, lang: la, preferred: true }
+    - { text: Gardens of Maecenas, lang: en }
+  from: { earliest: 43 BCE, latest: 35 BCE }
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horti Maecenatis, p. 269' }
+    - { source: richardson-1992, locator: 'Horti Maecenatiani, p. 201' }
+    - { source: pleiades, locator: places/399141643 }
+    - { source: horace-sat, locator: '1.8.7, 14–16' }
+    - { source: cassius-dio, locator: '55.7.6' }
+  confidence: probable
+  review: draft
+  note: >-
+    Maecenas' gardens on the Esquiline, laid out over the old wall's earth rampart
+    and the burial ground beside it, which Horace, about 35 BCE, describes as newly
+    made healthy and open for walking. The outline is Richardson's: south of the
+    Porta Esquilina, on both sides of the rampart, where the sunken hall called the
+    Auditorium of Maecenas survives; he finds them impossible to bound on the west
+    or south, so those edges are a guess. Platner & Ashby put them north of the
+    gate instead, over the burial pits. The start is bracketed only: still a
+    burial ground in 43 BCE (Cicero, Philippics 9.17), done by about 35.
+
+- id: lucus-furrinae
+  kind: grove
+  within: roma
+  pleiades: '432336962'
+  location: [12.4652, 41.8843]
+  names:
+    - { text: Lucus Furrinae, lang: la, preferred: true }
+    - { text: Grove of Furrina, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Lucus Furrinae, pp. 317–318' }
+    - { source: richardson-1992, locator: 'Lucus Furrinae, p. 235' }
+    - { source: pleiades, locator: places/432336962 }
+    - { source: plutarch, locator: 'C. Gracchus 17.2' }
+    - { source: de-viris-illustribus, locator: '65.5' }
+    - { source: cicero-nd, locator: '3.46' }
+    - { source: varro-ll, locator: '6.19' }
+  confidence: probable
+  review: draft
+  note: >-
+    The grove of the old goddess Furrina on the slope of the Janiculum, where Gaius
+    Gracchus, fleeing across the wooden bridge in 121 BCE, was killed by his slave
+    at his own wish (Plutarch calls it a grove of the Furies). Varro says her
+    festival was by then barely known. Inscriptions place it at the lower edge of
+    the Villa Sciarra, where a Syrian sanctuary was later built. Its extent is not
+    known (Richardson); the outline is a guess round that site.
+
+- id: lucus-camenarum
+  kind: grove
+  within: roma
+  pleiades: '307963011'
+  location: [12.4935, 41.8828]
+  names:
+    - { text: Lucus Camenarum, lang: la, preferred: true }
+    - { text: Grove of the Camenae, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Camenae, pp. 89–90' }
+    - { source: richardson-1992, locator: 'Camenae, pp. 63–64' }
+    - { source: pleiades, locator: places/307963011 }
+    - { source: livy, locator: '1.21.3' }
+    - { source: vitruvius, locator: '8.3.1' }
+    - { source: plutarch, locator: 'Numa 13.2' }
+  confidence: probable
+  review: draft
+  note: >-
+    The grove round the spring of the Camenae, water goddesses later taken for the
+    Muses, just outside the Porta Capena beside the Via Appia, where Numa was said to
+    have met the nymph Egeria; the Vestals fetched their water from it. Platner &
+    Ashby put the spring at the south foot of the Caelian, in the grounds of the
+    Villa Celimontana, and the outline follows them; Richardson puts it at S.
+    Gregorio, about 300 m north. Its extent is not known.

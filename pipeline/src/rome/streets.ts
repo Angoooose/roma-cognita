@@ -110,7 +110,7 @@ function clipInside(line: Pt[], ring: Pt[]): Pt[][] {
 }
 
 /** The built Itiner-e lines by name (build/roads, see pipeline/src/roads/build.ts). */
-function itinere(): Map<string, { pts: Pt[]; certain: boolean }[]> {
+export function itinere(): Map<string, { pts: Pt[]; certain: boolean }[]> {
   const dir = resolve(import.meta.dirname, '../../../build/roads')
   const meta = JSON.parse(readFileSync(join(dir, 'roads.json'), 'utf8')).lines
   const b = readFileSync(join(dir, 'roads.bin'))
