@@ -80,7 +80,7 @@ export class RomeMap {
     map.paper = new PaperLayer()
     map.scene.add(map.paper.mesh)
     map.labels.setYear(map.politics.year, false)
-    modelUniforms.year.value = map.politics.year
+    map.model.setYear(map.politics.year)
     map.renderer.setAnimationLoop(() => map.tick())
     return map
   }
@@ -233,7 +233,7 @@ export class RomeMap {
     const before = this.politics.year
     this.politics.setYear(year, opts)
     roadUniforms.year.value = this.politics.year
-    modelUniforms.year.value = this.politics.year
+    this.model.setYear(this.politics.year)
     if (this.politics.year !== before)
       this.labels.setYear(this.politics.year, !!opts.animate)
     this.dirty = true

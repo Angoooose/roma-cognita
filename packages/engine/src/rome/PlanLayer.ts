@@ -30,8 +30,8 @@ export interface Ground {
 /** Below this scale (m per CSS px) a click inside a monument's outline picks it. */
 export const PLAN_MPP = 24
 
-/** The camera's closest distance over the model, metres: ~0.4 m per CSS px. */
-const CLOSE_IN_M = 700
+/** The camera's closest distance over the model, metres: near enough to see its doors and windows. */
+const CLOSE_IN_M = 250
 
 export class PlanLayer {
   private outlines: Outline[] = []

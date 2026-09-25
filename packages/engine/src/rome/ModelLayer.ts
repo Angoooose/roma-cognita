@@ -1,14 +1,23 @@
 import * as THREE from 'three/webgpu'
 import {
   attribute,
+  cameraPosition,
   float,
+  floor,
+  fract,
   fwidth,
+  hash,
+  max,
   mix,
+  positionGeometry,
   positionLocal,
   positionWorld,
   select,
   smoothstep,
+  step,
+  texture,
   uniform,
+  vec2,
   vec3,
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
@@ -53,6 +62,10 @@ const ALWAYS = [-100000, 100000, 1, 0]
 const FABRIC_STRIDE = 13
 const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
 const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
+/** What the distance fades the model towards: the warm, pale air of a summer day. */
+const HAZE = new THREE.Color('#DCCFB8')
+/** What the shader paints on a face (`Builder.look`, `skin` in `material`). */
+const SKIN = { none: 0, front: 1, wall: 2, roof: 3 }
 
 /**
  * The scale (m per CSS px) the model rises between: flat at the first, standing by
@@ -220,6 +233,17 @@ class Builder {
   shade = STONE.stucco.shade
   normal: number[] = []
   colour: number[] = []
+  /**
+   * What a face is painted with in the shader (`skin` in `material`): its surface —
+   * none, a building's front, its other walls, or tiled roof — the lot's kind and a
+   * seed for it. A point's 4th to 6th values are its coordinates on that surface.
+   */
+  skin: number[] = []
+  look = 0
+  /** Whether what is being built now overshadows its neighbours (`Occlusion`). */
+  occludes = true
+  /** The tops of what overshadows: triangles as x, y, height over the ground ×3, then its years. */
+  tops: number[] = []
   private ox: number
   private oy: number
   constructor(ox: number, oy: number) {
@@ -244,7 +268,22 @@ class Builder {
       this.years.push(...this.dates)
       this.normal.push(n[0], n[1], n[2])
       this.colour.push(col.r, col.g, col.b)
+      this.skin.push(this.look, p[3] ?? 0, p[4] ?? 0, p[5] ?? 0)
     }
+    if (this.occludes && Math.abs(n[2]) > 0.3)
+      this.tops.push(
+        a[0],
+        a[1],
+        a[2],
+        b[0],
+        b[1],
+        b[2],
+        c[0],
+        c[1],
+        c[2],
+        this.dates[0],
+        this.dates[1],
+      )
   }
 
   quad(a: number[], b: number[], c: number[], d: number[], base: number, col: THREE.Color) {
@@ -969,46 +1008,158 @@ class Builder {
     eave = 0.4,
   ) {
     const [f0, f1, b1, b0] = q
-    this.walls([f0, f1, b1, b0, f0], -4, h, base, wall)
+    const lot = this.look
+    const as = (surface: number) => (this.look = surface * 10 + lot)
+    // Each wall with its own coordinates: along it from its left end, its length, and
+    // the height of its eaves; the front to the street, the others behind.
+    const side = (a: Pt, c: Pt, surface: number) => {
+      const len = Math.hypot(c[0] - a[0], c[1] - a[1])
+      as(surface)
+      this.quad(
+        [a[0], a[1], -4, 0, len, h],
+        [c[0], c[1], -4, len, len, h],
+        [c[0], c[1], h, len, len, h],
+        [a[0], a[1], h, 0, len, h],
+        base,
+        wall,
+      )
+    }
+    side(f0, f1, SKIN.front)
+    side(f1, b1, SKIN.wall)
+    side(b1, b0, SKIN.wall)
+    side(b0, f0, SKIN.wall)
     const L = Math.hypot(f1[0] - f0[0], f1[1] - f0[1]) || 1
     const u: Pt = [(f1[0] - f0[0]) / L, (f1[1] - f0[1]) / L]
     const n: Pt = [-u[1], u[0]]
     // Depth measured square to the street, so a mitred corner lot keeps the ridge level.
     const depth = (f: Pt, b: Pt) => (b[0] - f[0]) * n[0] + (b[1] - f[1]) * n[1]
     const deep = Math.max(1, (depth(f0, b0) + depth(f1, b1)) / 2)
+    // A point on a wall (`at` along it, of `len`) or on the roof (`across` its tiles'
+    // rows, `down` from the ridge, of `run` to the eaves).
+    const w = (p: Pt, zz: number, at: number, len: number) => [p[0], p[1], zz, at, len, h]
+    const t = (p: number[], across: number, down: number, run: number) => [
+      p[0],
+      p[1],
+      p[2],
+      across,
+      down,
+      run,
+    ]
     const z = (p: Pt, zz: number) => [p[0], p[1], zz]
     const mid = (a: Pt, b: Pt, zz: number) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2, zz]
-    if (roof === ROOF.flat) {
-      // A terrace behind a low parapet.
-      this.quad(z(f0, h), z(f1, h), z(b1, h), z(b0, h), base, tiles)
-      return
+    const sideB = Math.hypot(b0[0] - f0[0], b0[1] - f0[1])
+    const sideF = Math.hypot(b1[0] - f1[0], b1[1] - f1[1])
+    try {
+      if (roof === ROOF.flat) {
+        // A terrace behind a low parapet.
+        as(SKIN.none)
+        this.quad(z(f0, h), z(f1, h), z(b1, h), z(b0, h), base, tiles)
+        return
+      }
+      if (roof === ROOF.lean) {
+        // One slope from the street front down to the back.
+        const top = h + pitch * deep * 0.6
+        as(SKIN.front)
+        this.quad(
+          w(f0, h, 0, L),
+          w(f1, h, L, L),
+          w(f1, top, L, L),
+          w(f0, top, 0, L),
+          base,
+          wall,
+        )
+        as(SKIN.wall)
+        this.tri(
+          w(f0, h, sideB, sideB),
+          w(f0, top, sideB, sideB),
+          w(b0, h, 0, sideB),
+          base,
+          wall,
+        )
+        this.tri(
+          w(f1, h, 0, sideF),
+          w(b1, h, sideF, sideF),
+          w(f1, top, 0, sideF),
+          base,
+          wall,
+        )
+        as(SKIN.roof)
+        this.quad(
+          t(z(f0, top), 0, 0, deep),
+          t(z(f1, top), L, 0, deep),
+          t(z(b1, h), L, deep, deep),
+          t(z(b0, h), 0, deep, deep),
+          base,
+          tiles,
+        )
+        return
+      }
+      if (roof === ROOF.across) {
+        // The ridge from front to back, the gable to the street.
+        const ridge = h + pitch * (L / 2)
+        const [rf, rb] = [mid(f0, f1, ridge), mid(b0, b1, ridge)]
+        as(SKIN.roof)
+        this.quad(
+          t(z(f0, h), 0, L / 2, L / 2),
+          t(rf, 0, 0, L / 2),
+          t(rb, deep, 0, L / 2),
+          t(z(b0, h), deep, L / 2, L / 2),
+          base,
+          tiles,
+        )
+        this.quad(
+          t(rf, 0, 0, L / 2),
+          t(z(f1, h), 0, L / 2, L / 2),
+          t(z(b1, h), deep, L / 2, L / 2),
+          t(rb, deep, 0, L / 2),
+          base,
+          tiles,
+        )
+        as(SKIN.front)
+        this.tri(w(f0, h, 0, L), w(f1, h, L, L), [...rf, L / 2, L, h], base, wall)
+        as(SKIN.wall)
+        this.tri(w(b1, h, 0, L), w(b0, h, L, L), [...rb, L / 2, L, h], base, wall)
+        return
+      }
+      const ridge = h + pitch * (deep / 2)
+      const [r0, r1] = [mid(f0, b0, ridge), mid(f1, b1, ridge)]
+      const out = (p: Pt, s: number) => [p[0] + n[0] * s, p[1] + n[1] * s, h - pitch * eave]
+      const run = deep / 2 + eave
+      as(SKIN.roof)
+      this.quad(
+        t(out(f0, -eave), 0, run, run),
+        t(out(f1, -eave), L, run, run),
+        t(r1, L, 0, run),
+        t(r0, 0, 0, run),
+        base,
+        tiles,
+      )
+      this.quad(
+        t(r0, 0, 0, run),
+        t(r1, L, 0, run),
+        t(out(b1, eave), L, run, run),
+        t(out(b0, eave), 0, run, run),
+        base,
+        tiles,
+      )
+      as(SKIN.wall)
+      this.tri(
+        w(f0, h, sideB, sideB),
+        [...r0, sideB / 2, sideB, h],
+        w(b0, h, 0, sideB),
+        base,
+        wall,
+      )
+      this.tri(
+        w(f1, h, 0, sideF),
+        w(b1, h, sideF, sideF),
+        [...r1, sideF / 2, sideF, h],
+        base,
+        wall,
+      )
+    } finally {
+      this.look = 0
     }
-    if (roof === ROOF.lean) {
-      // One slope from the street front down to the back.
-      const top = h + pitch * deep * 0.6
-      this.quad(z(f0, h), z(f1, h), z(f1, top), z(f0, top), base, wall)
-      this.tri(z(f0, h), z(f0, top), z(b0, h), base, wall)
-      this.tri(z(f1, h), z(b1, h), z(f1, top), base, wall)
-      this.quad(z(f0, top), z(f1, top), z(b1, h), z(b0, h), base, tiles)
-      return
-    }
-    if (roof === ROOF.across) {
-      // The ridge from front to back, the gable to the street.
-      const ridge = h + pitch * (L / 2)
-      const [rf, rb] = [mid(f0, f1, ridge), mid(b0, b1, ridge)]
-      this.quad(z(f0, h), rf, rb, z(b0, h), base, tiles)
-      this.quad(rf, z(f1, h), z(b1, h), rb, base, tiles)
-      this.tri(z(f0, h), z(f1, h), rf, base, wall)
-      this.tri(z(b1, h), z(b0, h), rb, base, wall)
-      return
-    }
-    const ridge = h + pitch * (deep / 2)
-    const [r0, r1] = [mid(f0, b0, ridge), mid(f1, b1, ridge)]
-    const out = (p: Pt, s: number) => [p[0] + n[0] * s, p[1] + n[1] * s, h - pitch * eave]
-    this.quad(out(f0, -eave), out(f1, -eave), r1, r0, base, tiles)
-    this.quad(r0, r1, out(b1, eave), out(b0, eave), base, tiles)
-    this.tri(z(f0, h), r0, z(b0, h), base, wall)
-    this.tri(z(f1, h), z(b1, h), r1, base, wall)
   }
 
   /** A long block along one edge of a CCW outline, on its inside. */
@@ -1051,8 +1202,170 @@ class Builder {
     g.setAttribute('years', new THREE.Float32BufferAttribute(this.years, 4))
     g.setAttribute('normal', new THREE.Float32BufferAttribute(this.normal, 3))
     g.setAttribute('colour', new THREE.Float32BufferAttribute(this.colour, 3))
+    g.setAttribute('skin', new THREE.Float32BufferAttribute(this.skin, 4))
     return g
   }
+}
+
+/** The occlusion grid's cell, metres, the reach of its two blurs, cells, and its height step, metres. */
+const OCC_CELL_M = 2
+const OCC_BLUR = [2, 6]
+const OCC_STEP_M = 0.2
+
+/**
+ * How much the model overshadows itself, for its soft shading: a grid over the city
+ * of the height of whatever stands in each cell, over its ground, blurred at two
+ * reaches (about 10 m and 30 m across). A point lower than the blurred height round
+ * it — a narrow street, a courtyard, the foot of a wall under a taller neighbour —
+ * sees less of the sky and is darker (`occlusion`). Built again for each year, as
+ * buildings come and go.
+ */
+class Occlusion {
+  readonly tex: THREE.DataTexture
+  readonly origin = uniform(new THREE.Vector2())
+  readonly size = uniform(new THREE.Vector2())
+  private tops: Float32Array
+  private nx: number
+  private ny: number
+  private x0: number
+  private y0: number
+  private year = NaN
+  /** The grid's extent, plane metres: x0, y0, x1, y1. */
+  readonly bounds: [number, number, number, number]
+
+  constructor(tops: number[]) {
+    this.tops = new Float32Array(tops)
+    let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity]
+    for (let i = 0; i < tops.length; i += 11)
+      for (const k of [0, 3, 6]) {
+        x0 = Math.min(x0, tops[i + k])
+        x1 = Math.max(x1, tops[i + k])
+        y0 = Math.min(y0, tops[i + k + 1])
+        y1 = Math.max(y1, tops[i + k + 1])
+      }
+    const pad = OCC_CELL_M * OCC_BLUR[1] * 3
+    this.x0 = x0 - pad
+    this.y0 = y0 - pad
+    this.nx = Math.ceil((x1 - x0 + 2 * pad) / OCC_CELL_M)
+    this.ny = Math.ceil((y1 - y0 + 2 * pad) / OCC_CELL_M)
+    this.tex = new THREE.DataTexture(
+      new Uint8Array(this.nx * this.ny * 2),
+      this.nx,
+      this.ny,
+      THREE.RGFormat,
+      THREE.UnsignedByteType,
+    )
+    this.tex.magFilter = this.tex.minFilter = THREE.LinearFilter
+    this.tex.wrapS = this.tex.wrapT = THREE.ClampToEdgeWrapping
+    this.bounds = [
+      this.x0,
+      this.y0,
+      this.x0 + this.nx * OCC_CELL_M,
+      this.y0 + this.ny * OCC_CELL_M,
+    ]
+    this.origin.value.set(this.x0, this.y0)
+    this.size.value.set(this.nx * OCC_CELL_M, this.ny * OCC_CELL_M)
+  }
+
+  /** Builds the grid for a year; false if it already was. */
+  build(year: number) {
+    if (year === this.year) return false
+    this.year = year
+    const { nx, ny, tops } = this
+    const grid = new Float32Array(nx * ny)
+    const cx = (x: number) => (x - this.x0) / OCC_CELL_M
+    const cy = (y: number) => (y - this.y0) / OCC_CELL_M
+    for (let i = 0; i < tops.length; i += 11) {
+      if (year < tops[i + 9] || year > tops[i + 10]) continue
+      const [ax, ay, bx, by, qx, qy] = [
+        cx(tops[i]),
+        cy(tops[i + 1]),
+        cx(tops[i + 3]),
+        cy(tops[i + 4]),
+        cx(tops[i + 6]),
+        cy(tops[i + 7]),
+      ]
+      const h = Math.max(tops[i + 2], tops[i + 5], tops[i + 8])
+      if (h <= 0) continue
+      const mark = (x: number, y: number) => {
+        const k = Math.floor(y) * nx + Math.floor(x)
+        if (grid[k] < h) grid[k] = h
+      }
+      mark(ax, ay)
+      mark(bx, by)
+      mark(qx, qy)
+      const area = (bx - ax) * (qy - ay) - (by - ay) * (qx - ax)
+      if (Math.abs(area) < 1e-6) continue
+      const [i0, i1] = [
+        Math.max(0, Math.floor(Math.min(ax, bx, qx))),
+        Math.min(nx - 1, Math.ceil(Math.max(ax, bx, qx))),
+      ]
+      const [j0, j1] = [
+        Math.max(0, Math.floor(Math.min(ay, by, qy))),
+        Math.min(ny - 1, Math.ceil(Math.max(ay, by, qy))),
+      ]
+      for (let j = j0; j <= j1; j++)
+        for (let ii = i0; ii <= i1; ii++) {
+          const [px, py] = [ii + 0.5, j + 0.5]
+          const w0 = ((bx - px) * (qy - py) - (by - py) * (qx - px)) / area
+          const w1 = ((qx - px) * (ay - py) - (qy - py) * (ax - px)) / area
+          if (w0 < 0 || w1 < 0 || w0 + w1 > 1) continue
+          const k = j * nx + ii
+          if (grid[k] < h) grid[k] = h
+        }
+    }
+    const data = this.tex.image.data as Uint8Array
+    for (const [c, r] of OCC_BLUR.entries()) {
+      const out = blur(blur(grid, nx, ny, r), nx, ny, r)
+      for (let k = 0; k < out.length; k++)
+        data[k * 2 + c] = Math.min(255, Math.round(out[k] / OCC_STEP_M))
+    }
+    this.tex.needsUpdate = true
+    return true
+  }
+
+  /**
+   * How open to the sky a point is, `up` metres over its ground: 1 open, less below
+   * its neighbours, by `near` for the houses close round it and `far` for those
+   * further off.
+   */
+  at(
+    x: THREE.Node<'float'>,
+    y: THREE.Node<'float'>,
+    up: THREE.Node<'float'>,
+    near = 0.35,
+    far = 0.3,
+  ) {
+    const uv = vec2(x, y).sub(this.origin).div(this.size)
+    const hs = texture(this.tex, uv).xy.mul(255 * OCC_STEP_M)
+    const close = hs.x.sub(up).div(6).clamp(0, 1)
+    const round = hs.y.sub(up).div(12).clamp(0, 1)
+    return float(1).sub(close.mul(near)).sub(round.mul(far))
+  }
+}
+
+/** A box blur of a grid, `r` cells either way, across and then down. */
+function blur(src: Float32Array, nx: number, ny: number, r: number) {
+  const tmp = new Float32Array(src.length)
+  const out = new Float32Array(src.length)
+  const n = 2 * r + 1
+  for (let j = 0; j < ny; j++) {
+    let sum = 0
+    for (let i = -r; i <= r; i++) sum += src[j * nx + Math.min(nx - 1, Math.max(0, i))]
+    for (let i = 0; i < nx; i++) {
+      tmp[j * nx + i] = sum / n
+      sum += src[j * nx + Math.min(nx - 1, i + r + 1)] - src[j * nx + Math.max(0, i - r)]
+    }
+  }
+  for (let i = 0; i < nx; i++) {
+    let sum = 0
+    for (let j = -r; j <= r; j++) sum += tmp[Math.min(ny - 1, Math.max(0, j)) * nx + i]
+    for (let j = 0; j < ny; j++) {
+      out[j * nx + i] = sum / n
+      sum += tmp[Math.min(ny - 1, j + r + 1) * nx + i] - tmp[Math.max(0, j - r) * nx + i]
+    }
+  }
+  return out
 }
 
 export class ModelLayer {
@@ -1066,6 +1379,11 @@ export class ModelLayer {
   private extent: [number, number, number, number] = [0, 0, 0, 0]
   private origin: [number, number] = [0, 0]
   private waterLevel = 0
+  private occlusion: Occlusion | null = null
+  private occlusionTimer = 0
+  private occlusionBuilt = false
+  /** How far the view reaches, metres (`fit`), which the model's haze is measured by. */
+  private viewM = uniform(1000)
 
   async load() {
     const [meta, bin] = await Promise.all([
@@ -1106,6 +1424,7 @@ export class ModelLayer {
     // the underground stretches only the heads of the shafts down to the channel. Each
     // channel stands for its own years, stacked on those below it, so the arcade
     // grows when a new aqueduct is carried on it.
+    b.occludes = false
     for (const aq of (meta.aqueducts ?? []) as Aqueduct[]) {
       const [first, ...above] = aq.channels
       const dated = (c: Aqueduct['channels'][number]) => [
@@ -1233,6 +1552,7 @@ export class ModelLayer {
     // The generated city (pipeline city.ts): plain stucco in a narrow range under one
     // terracotta, varied a little lot by lot. A building on the site of a later
     // monument goes when it comes.
+    b.occludes = true
     const nF = meta.fabricCount
     const vary = (c: THREE.Color, k: number) =>
       c.clone().multiplyScalar(1 - k + rand() * k * 2)
@@ -1248,6 +1568,8 @@ export class ModelLayer {
             : C.stucco[Math.floor(rand() * C.stucco.length)]
       b.dates = [ALWAYS[0], until, 1, 0]
       const tiles = roof === ROOF.flat ? vary(C.terrace, 0.04) : weathered(C.roof, rand)
+      // The lot's kind and a seed for its doors and windows, for the shader.
+      b.look = kind + Math.floor(rand() * 900) / 1000
       b.lot(q, h, ground, wall, tiles, roof)
     }
     b.dates = ALWAYS
@@ -1282,7 +1604,9 @@ export class ModelLayer {
       })
     b.dates = ALWAYS
 
-    const mesh = new THREE.Mesh(b.geometry(), material())
+    this.occlusion = new Occlusion(b.tops)
+    this.occlusion.build(modelUniforms.year.value)
+    const mesh = new THREE.Mesh(b.geometry(), material(this.occlusion, this.viewM))
     mesh.position.set(ox, oy, 0)
     mesh.frustumCulled = false
     mesh.renderOrder = 5
@@ -1387,6 +1711,59 @@ export class ModelLayer {
     mesh.frustumCulled = false
     mesh.receiveShadow = true
     this.group.add(mesh)
+
+    // The streets and courtyards in the shade of the houses round them (`Occlusion`):
+    // the same ground, darkened where it sees less of the sky.
+    if (!this.occlusion) return
+    // Over the city only: the same ground's points, fewer of its cells.
+    const [bx0, by0, bx1, by1] = this.occlusion.bounds
+    const [i0, i1] = [
+      Math.max(0, Math.floor((bx0 - x0) / GROUND_STEP_M)),
+      Math.min(nx - 1, Math.ceil((bx1 - x0) / GROUND_STEP_M)),
+    ]
+    const [j0, j1] = [
+      Math.max(0, Math.floor((by0 - y0) / GROUND_STEP_M)),
+      Math.min(ny - 1, Math.ceil((by1 - y0) / GROUND_STEP_M)),
+    ]
+    const cityIndex: number[] = []
+    for (let j = j0; j < j1; j++)
+      for (let i = i0; i < i1; i++) {
+        const a = j * nx + i
+        cityIndex.push(a, a + 1, a + nx + 1, a, a + nx + 1, a + nx)
+      }
+    const city = new THREE.BufferGeometry()
+    city.setAttribute('position', geom.getAttribute('position'))
+    city.setIndex(cityIndex)
+    const dim = new THREE.MeshBasicNodeMaterial({ color: '#2E2618', transparent: true })
+    dim.positionNode = mat.positionNode
+    // Mostly the narrow streets and the feet of walls; open courtyards only a little.
+    const shut = float(1).sub(
+      this.occlusion.at(positionWorld.x, positionWorld.y, float(0), 0.3, 0.1),
+    )
+    dim.opacityNode = shut
+      .mul(0.7)
+      .mul(modelUniforms.grow)
+      .mul(groundMeshFade(positionWorld.x, positionWorld.y))
+      .mul(plateMask(positionWorld.x, positionWorld.y, pxM))
+    dim.depthWrite = false
+    const shade = new THREE.Mesh(city, dim)
+    shade.position.set(ox, oy, 0)
+    shade.frustumCulled = false
+    shade.renderOrder = 4
+    this.group.add(shade)
+  }
+
+  /**
+   * Shows a year: the buildings of that year stand, and the shading of the ones round
+   * them is built again for it, a moment after the year stops changing.
+   */
+  setYear(year: number) {
+    modelUniforms.year.value = year
+    if (!this.occlusion) return
+    clearTimeout(this.occlusionTimer)
+    this.occlusionTimer = window.setTimeout(() => {
+      if (this.occlusion?.build(year)) this.occlusionBuilt = true
+    }, 150)
   }
 
   /**
@@ -1395,6 +1772,7 @@ export class ModelLayer {
    * model shows.
    */
   fit(target: THREE.Vector3, viewM: number) {
+    this.viewM.value = viewM
     const half = Math.min(3200, Math.max(250, viewM * 0.75))
     const cam = this.sun.shadow.camera
     cam.left = cam.bottom = -half
@@ -1413,7 +1791,8 @@ export class ModelLayer {
     const [flat, full] = MODEL_MPP
     const t = Math.min(1, Math.max(0, (flat - mpp) / (flat - full)))
     const grow = t * t * (3 - 2 * t)
-    const changed = grow !== modelUniforms.grow.value
+    const changed = grow !== modelUniforms.grow.value || this.occlusionBuilt
+    this.occlusionBuilt = false
     modelUniforms.grow.value = grow
     this.group.visible = grow > 0.001
     return changed
@@ -1575,7 +1954,129 @@ function orientedBox(r: Pt[]) {
   return best
 }
 
-function material() {
+type F = THREE.Node<'float'>
+
+/** 1 inside [a, b], 0 outside, with edges a pixel `px` soft. */
+function band(v: F, a: F | number, b: F | number, px: F) {
+  const [lo, hi] = [
+    typeof a === 'number' ? float(a) : a,
+    typeof b === 'number' ? float(b) : b,
+  ]
+  return smoothstep(lo.sub(px), lo.add(px), v).mul(
+    float(1).sub(smoothstep(hi.sub(px), hi.add(px), v)),
+  )
+}
+
+/**
+ * The walls of the generated houses, painted on (`SKIN`), after the street fronts of
+ * Pompeii and Herculaneum (Wallace-Hadrill 1994; Ellis 2018; DESIGN.md §7.7): on the
+ * street front a ground floor of shops, each a single room open to the street across
+ * most of its width (the flats'), or a house's door with shops either side of it;
+ * small windows on the floors above, few on a house's front, which looked in on its
+ * atrium; a darker dado of plaster along the foot of the wall; and the shade of the
+ * eaves along the top. Illustrative, not of any known building: where the doors and
+ * windows fall is generated. Returns what the wall's colour is multiplied by, and
+ * fades to its average as the pattern gets too fine to draw.
+ */
+function wallPaint(surface: F, kind: F, seed: F, along: F, len: F, top: F, up: F) {
+  const px = max(fwidth(along), fwidth(up)).max(0.02)
+  // Each drawn while it is a few pixels across: windows close in, shops further out.
+  const detail = float(1).sub(smoothstep(0.12, 0.45, px))
+  const broad = float(1).sub(smoothstep(0.4, 1.2, px))
+  const id = floor(seed.mul(1000))
+  const front = step(0.5, surface).mul(step(surface, 1.5))
+  const flats = step(kind, 0.5)
+  const house = step(0.5, kind).mul(step(kind, 1.5))
+  const store = step(1.5, kind).mul(step(kind, 2.5))
+  const inside = band(along, 0.5, len.sub(0.5), px)
+  // Shops: bays of 3–4 m along the front, most of them open.
+  const bayW = len.div(max(float(1), floor(len.div(seed.mul(0.9).add(3.2)))))
+  const bay = floor(along.div(bayW))
+  const inBay = along.sub(bay.mul(bayW))
+  const open = step(0.25, hash(id.add(bay.mul(7)).add(1)))
+  const shop = band(inBay, 0.45, bayW.sub(0.45), px)
+    .mul(band(up, 0.15, 2.7, px))
+    .mul(open)
+  // A house's door in the middle of its front, with shops either side of a wide front.
+  const door = band(along, len.mul(0.5).sub(0.75), len.mul(0.5).add(0.75), px).mul(
+    band(up, 0, 2.9, px),
+  )
+  const houseShops = shop
+    .mul(step(12, len))
+    .mul(float(1).sub(band(along, len.mul(0.5).sub(3), len.mul(0.5).add(3), px)))
+  // A warehouse's wide door.
+  const gate = band(along, len.mul(0.5).sub(1.6), len.mul(0.5).add(1.6), px).mul(
+    band(up, 0, 3.4, px),
+  )
+  const ground = front.mul(
+    flats
+      .mul(shop)
+      .add(house.mul(max(door, houseShops)))
+      .add(store.mul(gate)),
+  )
+  // Windows: storeys over the tall ground floor (city.ts), one every 2.4–3 m.
+  const sz = up.sub(3.8)
+  const storey = floor(sz.div(3))
+  const inStorey = sz.sub(storey.mul(3))
+  const winW = seed.mul(0.6).add(2.4)
+  const col = floor(along.div(winW))
+  const inCol = along.sub(col.mul(winW))
+  const keep = select(
+    front.greaterThan(0.5),
+    select(house.greaterThan(0.5), float(0.8), float(0.3)),
+    float(0.65),
+  )
+  const win = band(inCol, winW.mul(0.5).sub(0.38), winW.mul(0.5).add(0.38), px)
+    .mul(band(inStorey, 0.95, store.greaterThan(0.5).select(1.5, 2.0), px))
+    .mul(step(0, sz))
+    .mul(step(up, top.sub(0.7)))
+    .mul(step(keep, hash(id.add(col.mul(13)).add(storey.mul(101)).add(surface.mul(7)))))
+  const dark = max(ground.mul(broad), win.mul(detail)).mul(inside)
+  // The dado, a warmer, darker plaster to about a metre; now and then painted red.
+  const red = step(0.6, hash(id.add(3)))
+  const dadoCol = mix(vec3(0.9, 0.88, 0.85), vec3(0.86, 0.72, 0.64), red)
+  const dado = float(1).sub(smoothstep(float(0.95).sub(px), float(0.95).add(px), up))
+  // The shade under the eaves, only below them (not on a gable).
+  const eaves = smoothstep(top.sub(0.9), top.sub(0.05), up).mul(step(up, top.add(0.05)))
+  return mix(vec3(1), dadoCol, dado.mul(mix(0.5, 1, broad)))
+    .mul(mix(float(1), float(0.3), dark))
+    .mul(mix(float(1), float(0.8), eaves))
+    .mul(mix(float(0.95), float(1), broad))
+}
+
+/**
+ * The tiled roofs, painted on — Rome was roofed with tiles, not shingles, from the war
+ * with Pyrrhus (Pliny, Natural History 16.36): the rows of round cover tiles over the
+ * joints of the flat ones, running down the slope about half a metre apart, each lit
+ * on one side and shaded on the other; tiles a little lighter or darker one by one,
+ * as a roof is patched; the ridge tiles along the top and the shade of the eaves'
+ * edge. The spacing is illustrative (flat tiles vary, roughly 0.3–0.5 m wide). Fades
+ * to the plain roof as it gets too fine to draw.
+ */
+function roofPaint(seed: F, across: F, down: F, run: F) {
+  const px = max(fwidth(across), fwidth(down)).max(0.01)
+  const rows = float(1).sub(smoothstep(0.08, 0.3, px))
+  const tiles = float(1).sub(smoothstep(0.15, 0.6, px))
+  const lines = float(1).sub(smoothstep(0.12, 0.5, px))
+  const v = fract(across.div(0.48))
+  // The cover tile over each joint: lit, then in its own shade, then the flat tile.
+  const cover = smoothstep(0.0, 0.12, v).mul(float(1).sub(smoothstep(0.18, 0.3, v)))
+  const shade = smoothstep(0.3, 0.36, v).mul(float(1).sub(smoothstep(0.4, 0.5, v)))
+  const row = float(1).add(cover.mul(0.08)).sub(shade.mul(0.16))
+  const cell = floor(across.div(0.48))
+    .mul(17)
+    .add(floor(down.div(0.45)).mul(131))
+    .add(floor(seed.mul(1000)).mul(7919))
+  const patch = float(1).add(hash(cell.abs()).sub(0.5).mul(0.07))
+  const ridge = float(1).sub(smoothstep(0.2, 0.35, down))
+  const eave = smoothstep(run.sub(0.3), run.sub(0.1), down)
+  return mix(float(1), row, rows)
+    .mul(mix(float(1), patch, tiles))
+    .mul(mix(float(1), float(0.82), ridge.mul(lines)))
+    .mul(mix(float(1), float(0.78), eave.mul(lines)))
+}
+
+function material(occlusion: Occlusion, viewM: F) {
   const mat = new THREE.MeshStandardNodeMaterial({ roughness: 0.9, metalness: 0 })
   // Built by hand, the geometry's winding is not consistent: both faces are drawn,
   // and three turns each face's normal towards the eye.
@@ -1595,11 +2096,39 @@ function material() {
     positionLocal.y,
     ground.add(up.mul(modelUniforms.grow).mul(scale)).sub(sink).mul(vex),
   )
-  // Where a wall meets the ground it darkens, as a model's does.
-  const foot = mix(float(0.7), float(1), smoothstep(0, 4, up))
+  // Heights over the ground as built, before the model rises.
+  const built = positionGeometry.z
+  // Where a wall meets the ground it darkens, as a model's does; and wherever the
+  // model overshadows itself, less of the sky's light reaches.
+  const foot = mix(float(0.85), float(1), smoothstep(0, 3, built))
+  const open = occlusion.at(positionWorld.x, positionWorld.y, built)
+  mat.aoNode = open
+  // The houses' walls and roofs, painted (`SKIN`).
+  const skin = attribute('skin', 'vec4')
+  const surface = floor(skin.x.div(10))
+  const rest = skin.x.sub(surface.mul(10))
+  const kind = floor(rest)
+  const seed = fract(rest).div(0.9)
+  const paint = select(
+    surface.greaterThan(2.5),
+    vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+    select(
+      surface.greaterThan(0.5),
+      wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
+      vec3(1),
+    ),
+  )
   // The relief under the city, washed over it, so the hills read from above.
   const wash = mix(float(1), reliefWash(positionWorld.x, positionWorld.y), 0.9)
-  mat.colorNode = attribute('colour', 'vec3').mul(foot).mul(wash)
+  const lit = attribute('colour', 'vec3')
+    .mul(paint)
+    .mul(foot)
+    .mul(mix(float(1), open, 0.5))
+    .mul(wash)
+  // A little haze with distance, as over a real city: what is far off is paler and
+  // flatter, so the near streets stand out from the roofs behind them.
+  const far = smoothstep(1.2, 3.5, cameraPosition.sub(positionWorld).length().div(viewM))
+  mat.colorNode = mix(lit, vec3(HAZE.r, HAZE.g, HAZE.b), far.mul(0.25))
   // Whatever runs out to the edge of the modelled ground (an aqueduct across the
   // Campagna) fades out with it, dithered, rather than stopping in a cut.
   mat.opacityNode = plateMask(positionWorld.x, positionWorld.y, fwidth(positionWorld.x))

@@ -461,6 +461,11 @@
 - id: pliny-nh
   kind: ancient
   citation: Pliny the Elder, Naturalis Historia
+  url: https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Pliny_the_Elder/home.html
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    16.36: Rome roofed with shingles until the war with Pyrrhus, so with tiles in
+    the window (the model's tiled roofs).
 
 # --- modern engineering (landscape corrections) --------------------------------
 
@@ -683,3 +688,32 @@
     The courses near Rome from the remains, the construction and measurements of
     the Republican arcades (piers of tufa, voussoirs of peperino, spans of about
     5.4 m), and the surveyed levels of each channel. Locators are the book's pages.
+
+# --- the houses of the model of Rome (DESIGN.md §7.7) ----------------------------
+# Added September 2026 for the doors, shops, windows and tiled roofs painted on the
+# generated houses (packages/engine/src/rome/ModelLayer.ts). The patterns are
+# illustrative; these are the evidence for what they show.
+
+- id: wallace-hadrill-1994
+  kind: modern
+  citation: >-
+    A. Wallace-Hadrill, Houses and Society in Pompeii and Herculaneum (Princeton,
+    1994)
+  url: https://press.princeton.edu/books/paperback/9780691029092/houses-and-society-in-pompeii-and-herculaneum
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    The house front of the two towns: the door into the atrium, shops either side
+    of it, few windows onto the street. Pompeii and Herculaneum as they were buried
+    in 79 CE, so comparanda for Republican Rome, not evidence of it.
+
+- id: ellis-2018
+  kind: modern
+  citation: >-
+    S. J. R. Ellis, The Roman Retail Revolution: The Socio-Economic World of the
+    Taberna (Oxford, 2018)
+  url: https://global.oup.com/academic/product/the-roman-retail-revolution-9780198769934
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    The taberna: a single room open to the street across most of its width, in rows
+    along the street fronts. Its shuttered thresholds spread mostly under the
+    empire, after the window, so the model draws the shops as plain openings.

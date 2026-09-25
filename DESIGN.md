@@ -837,7 +837,30 @@ what the city adds drawn on it:
   so slopes turned from the light fall darker and hilltops a little lighter. It
   is what lets the seven hills read from straight above, where the roofs cover
   most of the ground;
-- walls darkening a little where they meet the ground;
+- walls darkening a little where they meet the ground, and everything darkening
+  where the model overshadows itself: a grid of the height of what stands in each
+  2 m cell, blurred over about 10 m and 30 m, against which a narrow street, a
+  courtyard or the foot of a wall under a taller neighbour sees less of the sky.
+  The grid is built again when the year changes, as buildings come and go. The
+  ground between the houses darkens with it, the narrow streets most;
+- a little warm haze with distance, so the near streets stand out from the roofs
+  behind them;
+- the generated houses' walls and roofs painted on in the shader, drawn only while
+  they are a few pixels across and fading to their average beyond:
+  - on the street front, a ground floor of shops, each a room open to the street
+    across most of its width, or an atrium house's door with shops either side,
+    as the street fronts of Pompeii and Herculaneum (Wallace-Hadrill 1994; Ellis
+    2018); warehouses a wide door;
+  - small windows on the floors above, one every 2.4–3 m on the flats, few on a
+    house's front, which looked in on its atrium;
+  - a darker dado along the foot of the wall, now and then red; the shade of the
+    eaves along the top;
+  - tiled roofs, as Rome was from the war with Pyrrhus (Pliny, _Natural History_
+    16.36): rows of cover tiles down the slope about half a metre apart, tiles a
+    little lighter or darker one by one, the ridge tiles and the eaves' edge.
+  Where the doors and windows fall is generated, as the lots are: illustrative,
+  not of any building. The camera comes in to 250 m over the city, where they can
+  be seen;
 - tilted, a tilt-shift: the top and bottom of the frame out of focus, as a
   close-range photograph of a model is, with a touch more contrast and colour.
   It is a pass over the whole frame, run only while the model stands and the
