@@ -1,7 +1,6 @@
 import type { ClaimRecord, PlaceHit, PoliticalHit } from '@roman-map/engine'
 import { ChevronRight, X } from 'lucide-react'
-import { type ReactNode, useEffect } from 'react'
-import { Badge } from '@/components/ui/badge'
+import { type ReactNode, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import {
@@ -9,26 +8,28 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { standing } from '@/lib/standing.ts'
-import { formatSpan, formatYear } from '@/lib/year.ts'
+import { formatSpan } from '@/lib/year.ts'
 import { useExplorer } from '@/store.ts'
 import { usePeople } from '@/peopleStore.ts'
 import {
   axis,
   Bar,
+  Certainty,
   EmptySwatch,
   Fold,
   IndexRow,
   INK,
+  KeyItem,
   KeyRow,
   type Lane,
   LaneChart,
   opacity,
+  Q,
   Section,
   Swatch,
   useRemembered,
@@ -99,48 +100,214 @@ interface BodyProps<H> {
   onClose: () => void
 }
 
-function PlaceBody({
-  hit: { place: p, status, condition, seatOf },
-  year,
-  onClose,
-}: BodyProps<PlaceHit>) {
-  // A monument says what it is, and whether it was building or burnt that year.
-  const kind = p.within ? p.kind.replace(/-/g, ' ') : null
-  const what = [
-    status
-      ? status[0].toUpperCase() + status.slice(1)
-      : kind
-        ? kind[0].toUpperCase() + kind.slice(1)
-        : 'Settlement',
-  ]
-  if (condition) what.push(condition)
-  if (seatOf) what.push(`seat of ${seatOf.name}`)
+/**
+ * A place, drawn as a territory is: what it was in the year shown and where, with how
+ * sure the record is; its note as the opening; its years in lanes, its status and a
+ * monument's building works; then its sources, folded.
+ */
+function PlaceBody({ hit, year, onClose }: BodyProps<PlaceHit>) {
+  const p = hit.place
+  const doubt = p.confidence === 'uncertain'
   return (
     <>
-      <Header title={p.name} standing={what.join(', ')} onClose={onClose} />
-      <CardContent className="space-y-3 text-sm">
-        <Facts>
-          <Fact label="Confidence">
-            <ConfidenceBadge confidence={p.confidence} />
-          </Fact>
-          {p.pleiades && (
-            <Fact label="Pleiades">
-              <a
-                className="underline underline-offset-2"
-                href={`https://pleiades.stoa.org/places/${p.pleiades}`}
-                target="_blank"
-                rel="noopener"
-              >
-                {p.pleiades}
-              </a>
-            </Fact>
-          )}
-        </Facts>
-        {p.note && <Note>{p.note}</Note>}
-        <Sources sources={p.sources} />
+      <Header
+        title={
+          <>
+            {p.name}
+            {doubt && <Q />}
+          </>
+        }
+        standing={
+          <>
+            <PlaceStanding hit={hit} year={year} /> · <Certainty level={p.confidence} />
+          </>
+        }
+        onClose={onClose}
+      />
+      <CardContent className="space-y-4 text-sm">
+        {p.note && <Lede>{p.note}</Lede>}
+        <PlaceChart hit={hit} />
+        <Fold name="place-sources" title={`Sources · ${p.sources.length}`}>
+          <SourceRows sources={p.sources} />
+        </Fold>
       </CardContent>
-      <Meta id={p.id} year={year} review={p.review} />
     </>
+  )
+}
+
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
+
+/**
+ * What a place was in the year shown, and where: `Basilica in Roma, under construction`,
+ * `Provincial seat in Cilicia`. A monument is in its city; a settlement is in the polity
+ * that holds its ground, unless it is that polity's seat or shares its name. The name
+ * where it stands opens it.
+ */
+function PlaceStanding({ hit, year }: { hit: PlaceHit; year: number }) {
+  const { place: p, status, condition, seatOf } = hit
+  const map = useExplorer((s) => s.map)
+  const goToPlace = useExplorer((s) => s.goToPlace)
+  const goToPolity = useExplorer((s) => s.goToPolity)
+  const ground = useGround(p.within ? null : p, year)
+  const city = p.within ? map?.places.all.find((q) => q.id === p.within) : undefined
+  const where = city
+    ? { name: city.name, go: () => goToPlace(city.id, year) }
+    : ground && !seatOf && ground.name !== p.name
+      ? { name: ground.name, go: () => goToPolity(ground.id, year) }
+      : null
+  const rest = [condition, seatOf && `seat of ${seatOf.name}`].filter(Boolean)
+  return (
+    <>
+      {status ? cap(status) : p.within ? cap(p.kind.replace(/-/g, ' ')) : 'Settlement'}
+      {where && (
+        <>
+          {' '}
+          in{' '}
+          <button
+            type="button"
+            onClick={where.go}
+            className="cursor-pointer italic underline decoration-rule underline-offset-2 transition-colors hover:text-foreground hover:decoration-current"
+          >
+            {where.name}
+          </button>
+        </>
+      )}
+      {rest.map((x) => `, ${x}`)}
+    </>
+  )
+}
+
+/** The polity holding the ground a settlement stands on in `year`, read from the map. */
+function useGround(p: PlaceHit['place'] | null, year: number) {
+  const map = useExplorer((s) => s.map)
+  const [atom, setAtom] = useState<string | null>(null)
+  const x = p?.x
+  const y = p?.y
+  useEffect(() => {
+    setAtom(null)
+    if (!map || x === undefined || y === undefined) return
+    let live = true
+    map.politics.atomAt(x, y).then((a) => live && setAtom(a))
+    return () => {
+      live = false
+    }
+  }, [map, x, y])
+  const held = atom && map ? map.politics.hitAt(atom, year) : null
+  return held?.claim ? held.polity : undefined
+}
+
+/** The note as the entry's opening, with a gold initial dropped two lines. */
+function Lede({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-pretty first-letter:mr-1.5 first-letter:font-heading first-letter:text-gold first-letter:[-webkit-initial-letter:2] first-letter:[initial-letter:2]">
+      {children}
+    </p>
+  )
+}
+
+/** Building works hatched, as a plan draws them. */
+const HATCH =
+  'repeating-linear-gradient(135deg, color-mix(in oklab, var(--foreground) 45%, transparent) 0 1.5px, transparent 1.5px 4px)'
+
+/**
+ * A place's years in lanes on the map's axis: its status, in the colours its mark takes
+ * (a seat its ground's, Rome Rome's), and a monument's fabric, standing, building or
+ * burnt. Uncertain, both are drawn fainter.
+ */
+function PlaceChart({ hit }: { hit: PlaceHit }) {
+  const p = hit.place
+  const map = useExplorer((s) => s.map)
+  const fills = useRomeFills()
+  const span = map?.politics.window
+  if (!map || !span) return null
+  const a = axis(span[0], span[1])
+  const doubt = p.confidence === 'uncertain'
+  const seat = map.places.allSeats.find((s) => s.place === p.id)
+  const seatFill = seat
+    ? `#${map.politics.colourOf(seat.polity, seat.years[0]).getHexString()}`
+    : fills.client
+
+  const statusFill = (v: string) =>
+    v === 'caput mundi'
+      ? fills.rome
+      : v === 'provincial seat'
+        ? fills.province
+        : v === 'royal seat'
+          ? seatFill
+          : INK
+  const conditionFill = (v: string) => (v === 'under construction' ? HATCH : INK)
+  const background = (v: string, kind: 'status' | 'condition') =>
+    kind === 'status' ? statusFill(v) : conditionFill(v)
+  const strength = (v: string, kind: 'status' | 'condition') => {
+    const fill = background(v, kind)
+    if (fill === HATCH) return doubt ? 0.45 : 1
+    // Burnt is drawn in the darkest ink, standing in the lane's ordinary grey.
+    if (v === 'burnt') return doubt ? 0.35 : 0.9
+    return opacity(fill, doubt)
+  }
+
+  const runs = (xs: { value: string; years: [number, number] }[], kind: 'status' | 'condition') =>
+    xs
+      .filter((r) => r.years[1] >= span[0] && r.years[0] <= span[1])
+      .map((r, i) => {
+        const from = Math.max(r.years[0], span[0])
+        const to = Math.min(r.years[1], span[1])
+        const fill = background(r.value, kind)
+        const open = r.years[0] < span[0] && fill !== HATCH
+        return (
+          <Tooltip key={i}>
+            <TooltipTrigger asChild>
+              <span
+                className="absolute top-1/2 h-2.5 -translate-y-1/2 cursor-default rounded-[1px]"
+                style={{
+                  left: a.at(from),
+                  width: a.width(from, to),
+                  background: open ? `linear-gradient(90deg, transparent, ${fill} 12%)` : fill,
+                  opacity: strength(r.value, kind),
+                }}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              {cap(r.value)}, {formatSpan(r.years)}
+            </TooltipContent>
+          </Tooltip>
+        )
+      })
+
+  const lanes: Lane[] = []
+  if (p.status.length) lanes.push({ label: 'Status', body: runs(p.status, 'status') })
+  if (p.condition?.length)
+    lanes.push({ label: 'Fabric', body: runs(p.condition, 'condition') })
+  if (!lanes.length) return null
+
+  const keyed = new Map<string, ReactNode>()
+  for (const r of p.status)
+    keyed.set(r.value, <Swatch fill={statusFill(r.value)} uncertain={doubt} />)
+  for (const r of p.condition ?? [])
+    keyed.set(
+      r.value,
+      r.value === 'under construction' ? (
+        <span
+          className="block h-3 w-5 rounded-[1px]"
+          style={{ background: HATCH, opacity: doubt ? 0.45 : 1 }}
+        />
+      ) : (
+        <span
+          className="block h-3 w-5 rounded-[1px]"
+          style={{ background: INK, opacity: strength(r.value, 'condition') }}
+        />
+      ),
+    )
+  return (
+    <LaneChart
+      axis={a}
+      lanes={lanes}
+      legend={[...keyed].map(([v, swatch]) => (
+        <KeyItem key={v} swatch={swatch}>
+          {v === 'under construction' ? 'Building' : cap(v)}
+        </KeyItem>
+      ))}
+    />
   )
 }
 
@@ -461,31 +628,12 @@ function Held({ hit }: { hit: PoliticalHit }) {
           </span>
         </KeyRow>
         <KeyRow swatch={<Swatch fill={fill} uncertain={c.confidence === 'uncertain'} />}>
-          Border <Confidence level={c.confidence} />
+          Border <Certainty level={c.confidence} />
         </KeyRow>
       </div>
       {c.note && <p className="text-pretty text-foreground/80">{c.note}</p>}
       <SourceRows sources={hit.sources} />
     </div>
-  )
-}
-
-/** How sure the border is, in a word that explains itself, as the legend's key does. */
-function Confidence({ level }: { level: string }) {
-  const says: Record<string, string> = {
-    certain: 'The sources agree on it.',
-    probable: 'The sources agree on the substance, not every date. Drawn in full colour.',
-    uncertain: 'The sources conflict or are silent. Drawn fainter on the map.',
-  }
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <span className="cursor-help underline decoration-foreground/30 decoration-dotted underline-offset-[3px]">
-          {level}
-        </span>
-      </TooltipTrigger>
-      <TooltipContent className="max-w-60">{says[level] ?? level}</TooltipContent>
-    </Tooltip>
   )
 }
 
@@ -516,7 +664,7 @@ function SourceRows({ sources }: { sources: PoliticalHit['sources'] }) {
   )
 }
 
-function Header(props: { title: string; standing: string; onClose: () => void }) {
+function Header(props: { title: ReactNode; standing: ReactNode; onClose: () => void }) {
   return (
     <CardHeader>
       <CardTitle>{props.title}</CardTitle>
@@ -530,64 +678,6 @@ function Header(props: { title: string; standing: string; onClose: () => void })
   )
 }
 
-function Facts({ children }: { children: ReactNode }) {
-  return (
-    <dl className="grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-1">{children}</dl>
-  )
-}
-
-function Fact({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <>
-      <dt className="text-muted-foreground">{label}</dt>
-      <dd>{children}</dd>
-    </>
-  )
-}
-
-function ConfidenceBadge({ confidence }: { confidence: string }) {
-  return (
-    <Badge variant="secondary" className={cn(confidence === 'uncertain' && 'italic')}>
-      {confidence}
-    </Badge>
-  )
-}
-
-function Note({ children }: { children: ReactNode }) {
-  return (
-    <p className="border-l-2 border-gold/60 pl-2.5 text-pretty text-foreground/80">
-      {children}
-    </p>
-  )
-}
-
-function Sources({
-  sources,
-}: {
-  sources: { citation: string; locator?: string; url?: string; passage?: string }[]
-}) {
-  return (
-    <div>
-      <h3 className="mb-1 text-xs font-medium text-muted-foreground">Sources</h3>
-      <ul className="list-disc space-y-0.5 pl-4">
-        {sources.map((s, i) => (
-          <li key={i}>
-            <Link href={s.url}>{s.citation}</Link>
-            {s.locator && (
-              <>
-                ,{' '}
-                <span className="text-muted-foreground">
-                  <Link href={s.passage}>{s.locator}</Link>
-                </span>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
 /** The work, or the passage cited in it, opened in a new tab; plain text when there is no link. */
 function Link({ href, children }: { href?: string; children: ReactNode }) {
   if (!href) return children
@@ -595,14 +685,5 @@ function Link({ href, children }: { href?: string; children: ReactNode }) {
     <a className="underline underline-offset-2" href={href} target="_blank" rel="noopener">
       {children}
     </a>
-  )
-}
-
-function Meta({ id, year, review }: { id: string; year: number; review: string }) {
-  return (
-    <CardFooter className="text-xs text-muted-foreground">
-      {id} · {formatYear(year)}
-      {review !== 'verified' && ` · ${review}`}
-    </CardFooter>
   )
 }
