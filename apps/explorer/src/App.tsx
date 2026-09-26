@@ -6,6 +6,7 @@ import { PersonPanel } from '@/components/PersonPanel.tsx'
 import { Search } from '@/components/Search.tsx'
 import { Timeline } from '@/components/Timeline.tsx'
 import { readParams } from '@/lib/params.ts'
+import { dismissSplash } from '@/lib/splash.ts'
 import { usePeople } from '@/peopleStore.ts'
 import { useExplorer } from '@/store.ts'
 
@@ -18,6 +19,9 @@ export function App() {
   useEffect(() => {
     if (ready && !params.bare) loadPeople()
   }, [ready, loadPeople])
+  useEffect(() => {
+    if (ready) dismissSplash()
+  }, [ready])
   return (
     <>
       <MapView camera={params.camera} forceWebGL={params.forceWebGL} year={params.year} />
