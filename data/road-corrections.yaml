@@ -1,0 +1,129 @@
+# Corrections to Itiner-e's dating of its roads (DESIGN.md §7.4). The map draws only
+# the roads Itiner-e dates to 27 BCE or earlier (pipeline/src/roads/dating.ts); some
+# of the oldest roads out of Rome it leaves undated, or dates by a later paving. A
+# record here dates every segment of one Itiner-e line, by its name, from the year
+# the sources show the road in use, and the roads build applies it and says so.
+#
+# Only a road the sources show in use in the window is corrected. Left undated, and
+# why: Rome-Portus (the Via Portuensis, built for Claudius' harbour; its first stretch
+# was the older Via Campana, which the model of Rome draws), Rome-Ardea (the Via
+# Ardeatina, not attested in the window, and where it began is disputed: Platner &
+# Ashby, Via Ardeatina, pp. 560–561), Rome-Veii (the Via Triumphalis, which no bridge
+# reached from the city before Nero's: Platner & Ashby, Via Triumphalis, p. 569).
+#
+# Livy often names a road as his own day knew it, so an early event on one shows at
+# least that the road ran in his lifetime, within the window; where Livy is the only
+# witness the record says so.
+
+- id: salaria
+  itinere: Rome-Reate
+  name: Via Salaria
+  from: before 361 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy, locator: '7.9.6' }
+    - { source: platner-ashby, locator: 'Via Salaria, pp. 567–568' }
+    - { source: ashby-1906, locator: 'pp. 7–14' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Sabines' salt road, older than Rome's own roads: in 361 BCE "the Gauls formed
+    their camp by the Salarian road, three miles from the City at the bridge across
+    the Anio" (Livy 7.9.6). Itiner-e dates the line "Late Republic (72–30 BCE)",
+    which would keep it off the map until 30 BCE; that is a paving or a rebuilding,
+    not the road. Certain near Rome; probable for the whole line to Reate, which
+    Livy does not reach.
+
+- id: nomentana
+  itinere: Rome-Nomentum
+  name: Via Nomentana
+  from: before 449 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy, locator: '3.52.3' }
+    - { source: platner-ashby, locator: 'Via Nomentana, p. 565' }
+    - { source: ashby-1906, locator: 'pp. 38–41' }
+  confidence: probable
+  review: draft
+  note: >-
+    In 449 BCE the armies "going out by the Nomentan — or, as it was then called, the
+    Ficulan — road, … encamped on the Sacred Hill" (Livy 3.52.3), by the Anio. It left
+    the Salaria immediately outside the Porta Collina (Platner & Ashby). Livy is the
+    witness for its early date; the road itself is not in doubt.
+
+- id: labicana
+  itinere: Rome-Ad Bivium
+  name: Via Labicana
+  from: before 418 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy, locator: '4.41.8' }
+    - { source: platner-ashby, locator: 'Via Labicana, pp. 563–564' }
+    - { source: strabo, locator: '5.3.9' }
+    - { source: ashby-1927, locator: 'p. 128' }
+  confidence: probable
+  review: draft
+  note: >-
+    In 418 BCE "the consul had reached the Labican road and was at the chapel of
+    Quies" (Livy 4.41.8). It left the city with the Praenestina by the Porta
+    Esquilina and parted from it at the tomb of Eurysaces, "which stood in the fork"
+    (Ashby 1927). Strabo, writing a few years after the window, gives its course on
+    to where it meets the Latina, which is where Itiner-e's line ends (Ad Bivium).
+    Probable for the whole line.
+
+- id: latina
+  itinere: Rome-Tusculum
+  name: Via Latina
+  from: before 334 BCE
+  to: after 27 BCE
+  sources:
+    - { source: platner-ashby, locator: 'Via Latina, pp. 564–565' }
+    - { source: livy, locator: '2.39.3' }
+    - { source: strabo, locator: '5.3.9' }
+    - { source: sitar, locator: '8722, 8723, 8725, 12438, 9003' }
+  confidence: certain
+  review: draft
+  note: >-
+    "Probably constructed after the pass of Algidus had been secured in 389 B.C.",
+    it "must have run at least as early as 334 B.C." (Platner & Ashby), when the
+    colony of Cales was founded on it. Republican chamber tombs line it just outside
+    the later Porta Latina (SITAR 8722, 8723, 8725, dated 200–27 BCE), and its paving
+    is found beyond (12438, 9003). Livy already has Coriolanus march into the Latin
+    road (2.39.3).
+
+- id: ostiensis
+  itinere: Rome-Ostia
+  name: Via Ostiensis
+  from: before 240 BCE
+  to: after 27 BCE
+  sources:
+    - { source: platner-ashby, locator: 'Via Ostiensis, pp. 565–566' }
+    - { source: sitar, locator: '4707' }
+    - { source: ashby-1927, locator: 'p. 214' }
+  confidence: certain
+  review: draft
+  note: >-
+    The road to Rome's harbour at Ostia. "An archaic milestone of the via Ostiensis
+    was erected by the aediles (CIL I² 22 = VI.31585)" (Platner & Ashby), and a
+    stretch of its basalt paving outside the Porta S. Paolo, "a piece of its pavement
+    … found in the ditch surrounding the old Protestant cemetery in 1824", is dated
+    260–240 BCE (SITAR 4707). The modern road "coincided with it closely" (Ashby
+    1927).
+
+- id: praenestina
+  itinere: Rome-Praeneste
+  name: Via Praenestina
+  from: before 100 BCE
+  to: after 27 BCE
+  sources:
+    - { source: platner-ashby, locator: 'Via Praenestina, pp. 566–567' }
+    - { source: livy, locator: '2.11.7' }
+    - { source: ashby-1902, locator: 'pp. 150–152' }
+  confidence: probable
+  review: draft
+  note: >-
+    "Originally it was called Via Gabina" (Platner & Ashby), the road to Gabii, which
+    Livy has in the first years of the Republic (2.11.7). A milestone of the second
+    century BCE (CIL I² 833) dates it as a road of Rome's; a cippus "of the end of
+    the Republic" stood by it at the first kilometre (Ashby 1902). Probable for the
+    whole line to Praeneste, where Gabii's road ran on.

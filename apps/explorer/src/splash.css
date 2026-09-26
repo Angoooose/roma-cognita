@@ -1,0 +1,119 @@
+@import '@fontsource-variable/cinzel';
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
+
+/*
+ * The frontispiece, shown while the map loads (index.html; lib/splash.ts takes it
+ * away). It is the open sea the map starts from, with the map's name in the sea names'
+ * voice: gold on dark water, the title in Cinzel and the years in Garamond italic. Its
+ * one ornament is the theme's (Marks.tsx, Fleuron): a rule with the seat's diamond,
+ * whose hairlines are drawn out from the diamond while the map loads, and finished
+ * when it is ready. Linked from index.html, not imported, so it paints before the
+ * bundle has run.
+ */
+
+#splash {
+  --sea: #1e3150;
+  --gold: #d4ae66;
+  --cream: #f3ebda;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: var(--sea);
+  transition: opacity 700ms ease;
+  pointer-events: none;
+}
+
+#splash.gone {
+  opacity: 0;
+}
+
+#splash .plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  /* Held back until its fonts have come, so the type never swaps in front of the reader. */
+  opacity: 0;
+  transform: translateY(3px);
+  transition:
+    opacity 900ms ease,
+    transform 900ms ease;
+}
+
+#splash.fonts .plate {
+  opacity: 1;
+  transform: none;
+}
+
+#splash h1 {
+  margin: 0;
+  /* The tracking is set after the last letter too; this puts the word back on centre. */
+  margin-right: -0.32em;
+  font-family: 'Cinzel Variable', 'Trajan Pro', serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  line-height: 1;
+  color: var(--gold);
+}
+
+#splash .years {
+  font-family: 'EB Garamond Variable', 'Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  font-variant-numeric: lining-nums;
+  letter-spacing: 0.02em;
+  color: color-mix(in oklab, var(--cream) 62%, var(--sea));
+}
+
+#splash .rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 280px;
+}
+
+#splash .rule i {
+  flex: 1;
+  height: 1px;
+  background: color-mix(in oklab, var(--gold) 45%, transparent);
+  transform: scaleX(0);
+  /* Drawn out slowly, most of the way, while the map loads… */
+  transition: transform 2.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+#splash .rule i:first-child {
+  transform-origin: right;
+}
+
+#splash .rule i:last-child {
+  transform-origin: left;
+}
+
+#splash.fonts .rule i {
+  transform: scaleX(0.82);
+}
+
+/* …and finished, quickly, when it is ready. */
+#splash.done .rule i {
+  transform: scaleX(1);
+  transition-duration: 280ms;
+  transition-timing-function: ease-out;
+}
+
+#splash .rule b {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #splash .plate,
+  #splash .rule i {
+    transition: opacity 400ms ease;
+    transform: none;
+  }
+}

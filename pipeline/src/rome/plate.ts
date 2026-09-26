@@ -31,7 +31,7 @@ import sharp from 'sharp'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { servianCourse } from './servian.ts'
-import { itinere, streetLines } from './streets.ts'
+import { itinere, streetLines, TAKEN_UP } from './streets.ts'
 import {
   EDGE_CLAMP_M,
   FIELDS_REACH_M,
@@ -224,7 +224,16 @@ export async function bakePlate(
     ...outlines.flatMap((o) => o.polys.map((poly) => poly[0])),
     ...designed.map((d) => d.ring),
   ]
+  // The roads out of the city are routed over kilometres, so what they keep off is
+  // looked up in bands rather than tested against every ring's every edge.
+  const inMonument = insideAny(monumentRings)
+  const inRiver = insideAny(riverRings)
+  const [gx1, gy0] = [x0 + width * TEXEL_M, y0]
+  /** On the board, or near enough that the plots on it face a road there. */
+  const onGrid = (q: Pt) =>
+    q[0] > x0 - 2000 && q[0] < gx1 + 2000 && q[1] > gy0 - 2000 && q[1] < y1 + 2000
   const streets = streetLines(streetGeometry, places, circuitRing, gateAt, {
+    onBoard: onGrid,
     height: (x, y) => {
       const c = Math.min(width - 1, Math.max(0, Math.round((x - x0) / TEXEL_M - 0.5)))
       const r = Math.min(height - 1, Math.max(0, Math.round((y1 - y) / TEXEL_M - 0.5)))
@@ -232,8 +241,8 @@ export async function bakePlate(
     },
     keepOff: (x, y) =>
       pointTemples.some((q) => Math.hypot(q[0] - x, q[1] - y) < 14) ||
-      monumentRings.some((r) => inRing([x, y], r)) ||
-      riverRings.some((r) => inRing([x, y], r)),
+      inMonument(x, y) ||
+      inRiver(x, y),
   })
   const city = signedField(grid, [circuitRing], CITY_CLAMP_M)
   // The plate reaches round everything on the plan, not just the walled city: the
@@ -261,16 +270,17 @@ export async function bakePlate(
   const reachField = signedField(grid, [[...hull, hull[0]]], REACH_CLAMP_M)
 
   // --- the country ---------------------------------------------------------------------
-  // The roads the plots face: the plan's, and the map's own (Itiner-e) across the grid.
-  const [gx1, gy0] = [x0 + width * TEXEL_M, y0]
-  const onGrid = (q: Pt) =>
-    q[0] > x0 - 2000 && q[0] < gx1 + 2000 && q[1] > gy0 - 2000 && q[1] < y1 + 2000
+  // The roads the plots face: the plan's, and the map's own (Itiner-e) across the grid,
+  // but for those the plan takes up (streets.ts TAKEN_UP) and Itiner-e's lines into the
+  // middle of the city, which are no road anyone surveyed.
+  const forum = projection.forward(12.48628, 41.89202)
   const roads = [
     ...streets.filter((l) => l.road).map((l) => l.pts),
-    ...[...itinere().values()]
-      .flat()
-      .map((l) => l.pts)
-      .filter((l) => l.some(onGrid)),
+    ...[...itinere()]
+      .filter(([name]) => !TAKEN_UP.has(name))
+      .flatMap(([, lines]) => lines.map((l) => l.pts))
+      .filter((l) => l.some(onGrid))
+      .filter((l) => !l.some((q) => Math.hypot(q[0] - forum[0], q[1] - forum[1]) < 150)),
   ]
   const roadField = unsignedField(
     grid,
@@ -558,6 +568,37 @@ function unsignedField(
       }
   })
   return { d, flag }
+}
+
+/** How tall a band of `insideAny`'s index is, metres. */
+const BAND_M = 8
+
+/**
+ * Whether a point is inside any of some rings, each even-odd, as `inRing` says of
+ * each: the rings' edges are indexed by the horizontal bands they cross, so a point
+ * is tested only against the edges in its own band.
+ */
+function insideAny(rings: Pt[][]): (x: number, y: number) => boolean {
+  const bands = new Map<number, { ring: number; a: Pt; b: Pt }[]>()
+  rings.forEach((ring, k) => {
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [a, b] = [ring[i], ring[j]]
+      const lo = Math.floor(Math.min(a[1], b[1]) / BAND_M)
+      const hi = Math.floor(Math.max(a[1], b[1]) / BAND_M)
+      for (let n = lo; n <= hi; n++) {
+        const list = bands.get(n) ?? []
+        list.push({ ring: k, a, b })
+        bands.set(n, list)
+      }
+    }
+  })
+  return (x, y) => {
+    const odd = new Set<number>()
+    for (const { ring, a, b } of bands.get(Math.floor(y / BAND_M)) ?? [])
+      if (a[1] > y !== b[1] > y && x < ((b[0] - a[0]) * (y - a[1])) / (b[1] - a[1]) + a[0])
+        if (!odd.delete(ring)) odd.add(ring)
+    return odd.size > 0
+  }
 }
 
 /** Signed distance to some rings (negative inside, even-odd), clamped. */

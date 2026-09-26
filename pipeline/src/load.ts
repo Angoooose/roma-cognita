@@ -39,9 +39,11 @@ import {
   type Place,
   type Polity,
   type Relation,
+  type RoadCorrection,
   type Route,
   type Seat,
   type Source,
+  RoadCorrectionSchema,
   RouteSchema,
 } from '@roman-map/schema'
 
@@ -65,6 +67,8 @@ export interface Dataset {
   seats: Seat[]
   places: Place[]
   routes: Route[]
+  /** Corrections to Itiner-e's dating of its lines (road-corrections.yaml). */
+  roadCorrections: RoadCorrection[]
   landscapeChanges: LandscapeChange[]
   features: Feature[]
   /** Every inline name, flattened into the `name` entity with inherited dates and sources. */
@@ -94,6 +98,11 @@ const ENTITIES = {
   seats: { file: 'seats', schema: SeatSchema, required: false },
   places: { file: 'places', schema: PlaceSchema, required: false },
   routes: { file: 'routes', schema: RouteSchema, required: false },
+  roadCorrections: {
+    file: 'road-corrections',
+    schema: RoadCorrectionSchema,
+    required: false,
+  },
   landscapeChanges: {
     file: 'landscape-changes',
     schema: LandscapeChangeSchema,
@@ -312,6 +321,7 @@ export function readDataset(dir: string = DATA_DIR): { dataset: Dataset; issues:
     seats: read('seats') as Seat[],
     places,
     routes: read('routes') as Route[],
+    roadCorrections: read('roadCorrections') as RoadCorrection[],
     landscapeChanges: read('landscapeChanges') as LandscapeChange[],
     features,
     names: [

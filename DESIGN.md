@@ -485,9 +485,20 @@ What matters about it:
   - `Cons_per_e`, the Roman builder, outranks `Lower_Date`, the older route;
   - the latest bound of a range decides.
 
-  That leaves 405 lines: the Republican trunk network as historians name it. An
-  undated road cannot take part in a time series, so it is dropped, not drawn
-  faintly.
+  That leaves the Republican trunk network as historians name it. An undated road
+  cannot take part in a time series, so it is dropped, not drawn faintly.
+
+- **Corrections to its dating** (`data/road-corrections.yaml`, decided 2026-09-26).
+  Itiner-e leaves some of the oldest roads out of Rome undated, and dates the
+  Salaria by a later paving ("Late Republic (72–30 BCE)"), so zoomed out they were
+  missing round the city. Where the sources show a road in use in the window, a
+  record dates every segment of that Itiner-e line from then, with its sources, and
+  the build prints each line it corrected: the Salaria (Livy 7.9.6), the Nomentana
+  (3.52.3), the Labicana (4.41.8), the Latina (Platner & Ashby, pp. 564–565), the
+  Ostiensis (its paving of 260–240 BCE, SITAR 4707) and the Praenestina (a milestone
+  of the 2nd century BCE). That makes 419 lines. The Portuensis (Claudian), the
+  Ardeatina (unattested in the window) and the road to Veii (no bridge to it) stay
+  undated.
 
 - **Each segment keeps its first year**, and the shader shows it only from then,
   so a road built in 46 does not draw at 68 BCE.
@@ -961,7 +972,7 @@ known and what is generated are kept apart:
     6.20.13), each as far as the ground stays near its top, the Asylum with its
     two groves; and the Forum Boarium between its temples and the Ara Maxima,
     the cattle market, whose limits are not known. The recorded streets and the generated main streets are
-    paved in pale basalt, as Rome's streets were from 174 BCE (Livy 41.27), so the
+    paved in basalt, as Rome's streets were from 174 BCE (Livy 41.27), so the
     main network shows from far off; the lanes are trodden earth.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
@@ -1084,7 +1095,12 @@ what the city adds drawn on it:
   the coarse HydroRIVERS line, crossfading to that line a few hundred metres
   beyond everything on the plan so the river never breaks.
 - The city's streets show only while they can be drawn at their width; the map's
-  roads give way to them then, and draw instead when zoomed out.
+  roads give way to them then, and draw instead when zoomed out. The streets end
+  with the board, but the roads out of the gates run on as far as the country
+  round the city (`fieldsMask`), and the map's roads give way to them there too, so
+  a road does not stop short in the fields: past the Aurelian gates the two are the
+  same Itiner-e line, and one fades into the other where the fields fade into the
+  map's ground (decided 2026-09-26).
 - The earth, the smoothed lighting and the baked shadows come in as the model
   rises, so zoomed out Rome is ordinary terrain like any other town.
 
@@ -1132,7 +1148,41 @@ trodden earth. They are:
   are kept in `data/geometry/rome-sitar.geojson` for the generated streets to
   follow;
 - the Via Flaminia along the Corso, which "coincides absolutely" with it;
-- the Via Appia and Tiburtina from Itiner-e, joined to their gates.
+- **the consular roads out of the gates** (`roads.ts`, decided 2026-09-26). Zoomed
+  out, the map drew its roads into Rome; zoomed in, the board hides the map's roads
+  and drew only the Appia and the Tiburtina, as Itiner-e's lines ruled to a gate
+  (Itiner-e runs every road inside the later Aurelian Wall straight to the Forum),
+  so the rest vanished at the walls. Now eleven roads run from the gate each left by,
+  or the Pons Aemilius, out past the board's edge, each a line through stops as the
+  streets drawn from the evidence are:
+  - the gate (servian.ts) and the sources' fixed points — the later Aurelian gates,
+    which stand on the older roads; the forks; the bridges;
+  - SITAR's reconstructions of three courses, as narrow bands whose middle line is
+    taken: the Flaminia from the Porta Fontinalis to the Ponte Milvio (16890), the
+    Appia's first mile "between the 4th and the 1st century BCE" (19681) and the
+    Latina's line (19682). The two part about 550 m from the Porta Capena, the
+    Latina to the left as Strabo has it (5.3.9); Platner & Ashby put the fork at
+    830 m;
+  - the pieces of their paving that excavations found, wherever they lie, fetched by
+    number into `data/geometry/rome-roads.geojson`;
+  - and then Itiner-e's line, from where it keeps to the ancient road (within a few
+    metres of the modern road that follows it, outside the Aurelian gates), so the
+    board's road meets the map's where one gives way to the other. The Aurelia
+    alone does not: Itiner-e's comes in through the Vatican plain, another road, and
+    the Aurelia is drawn to the board's edge along the Via Aurelia Antica.
+
+  The roads: the Appia and the Latina from the Porta Capena; the Ostiensis from the
+  Porta Trigemina, with its branch from the Porta Raudusculana; the Praenestina and
+  the Labicana together from the Porta Esquilina to their fork at the tomb of
+  Eurysaces; the Tiburtina from the Porta Esquilina (its gate disputed, so drawn
+  lighter); the Salaria and the Nomentana from the Porta Collina; the Flaminia; and
+  over the Pons Aemilius the Aurelia, up the Janiculum, and the Campana along the
+  right bank. Left out: the Ardeatina (unattested in the window, its start
+  disputed), the Laurentina, the Vitellia, the Triumphalis and Cornelia (no bridge
+  before Nero's), the Collatina and the road from the Porta Viminalis (nothing found
+  within 4 km). The suburb's houses, the tombs and the plots of the country face
+  these roads, so they line each one; Itiner-e's lines into the middle of the city
+  are no longer roads the plots face.
 
 **The look** is a photograph of a model city on a table (`ModelLayer.ts`,
 `miniature.ts`):
@@ -1291,8 +1341,10 @@ copy. What we take from it:
     choice is remembered.
   - The title block's last row is the preface (decided 2026-09-24), named as
     an atlas names its front matter. It opens the one dialog in the interface:
-    what the map is, how to read it, what it claims (§1) and whose work it is
-    drawn from (§6), read on its own rather than beside the map. On hover, and
+    what the map is, where it stands, how to use it, how far to trust it (§1,
+    with Rome's generated fabric as the exception, §7.7) and whose work it is
+    drawn from (§6), read on its own rather than beside the map. It is written
+    plainly and without a narrator: no "we" or "I". On hover, and
     while the legend is open, a row's icon takes its text's colour.
   - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
     the plate's title block, the map's name and the years it covers in the

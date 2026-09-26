@@ -8,17 +8,21 @@
  *   within the city, and drawn lighter.
  * - **Streets drawn from the evidence** (routes.ts) run through the finds and the
  *   points the sources fix, and over the easiest ground between them; drawn lighter.
- * - **Consular roads** are Itiner-e's (build/roads, the map's own roads), each cut
- *   where it reaches the walled city or its crossing and joined to the gate Platner
- *   & Ashby say it left by (CONSULAR). Inside the walls Itiner-e runs its roads to a
- *   point in the middle of the city, which is not a street anyone surveyed.
+ * - **Consular roads** (roads.ts) run from the gate each left by, or the bridge it
+ *   crossed on, through SITAR's reconstructions of their course and the finds and
+ *   points the sources fix, and on along Itiner-e's line (build/roads, the map's own
+ *   roads) past the edge of the board, so the board's road meets the map's. Inside
+ *   the later Aurelian Wall Itiner-e runs its roads to a point in the middle of the
+ *   city, which is not a road anyone surveyed, so it is taken up only beyond it.
  */
 import { readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { projection } from '@roman-map/world'
 import type { Place } from '@roman-map/schema'
 import { DATA_DIR } from '../load.ts'
+import { ROADS } from './roads.ts'
 import { ROUTES, type Stop } from './routes.ts'
+import { middleLine } from './servian.ts'
 
 type Pt = [number, number]
 
@@ -42,28 +46,6 @@ export const TRACED = new Set([
   'vicus-cuprius',
   'clivus-argentarius',
 ])
-
-/**
- * The consular roads: which Itiner-e lines, the record they belong to, and the gate
- * of the circuit (servian.ts) they meet the city at.
- */
-const CONSULAR: { itinere: string; id: string; gate: string; what: string }[] = [
-  {
-    itinere: 'Tarracinae-Rome',
-    id: 'via-appia',
-    gate: 'Porta Capena',
-    what: 'the Porta Capena (Platner & Ashby, Via Appia; Porta Capena)',
-  },
-  {
-    itinere: 'Rome-Tibur',
-    id: 'via-tiburtina',
-    gate: 'Porta Esquilina',
-    what: 'the Porta Esquilina, which it "probably" left by (Platner & Ashby, Via Tiburtina)',
-  },
-]
-
-/** An Itiner-e line is joined to its end once it comes this close to it, metres. */
-const JOIN_M = 150
 
 const inRing = ([x, y]: Pt, ring: Pt[]) => {
   let c = false
@@ -129,10 +111,22 @@ export function itinere(): Map<string, { pts: Pt[]; certain: boolean }[]> {
   return out
 }
 
-/** The ground a drawn street crosses: its height, and where no street may go. */
+/**
+ * The ground a drawn street crosses: its height, where no street may go, and how far
+ * a road runs on along the map's line (`onBoard`: the board and a margin round it).
+ */
 export interface Ground {
   height: (x: number, y: number) => number
   keepOff: (x: number, y: number) => boolean
+  onBoard: (p: Pt) => boolean
+}
+
+/** What a street drawn from the evidence runs through, besides the ground. */
+interface Context {
+  drawn: StreetLine[]
+  ground: Ground
+  gates: Map<string, Pt>
+  itinere: Map<string, { pts: Pt[]; certain: boolean }[]>
 }
 
 export function streetLines(
@@ -151,60 +145,68 @@ export function streetLines(
       for (const p of parts) out.push({ id, pts: p, road, known: !TRACED.has(id) })
     }
   }
+  const ctx: Context = { drawn: out, ground, gates, itinere: itinere() }
   for (const r of ROUTES) {
     if (!places.has(r.id)) throw new Error(`routes.ts: no place "${r.id}"`)
     for (const stops of r.lines)
-      out.push({ id: r.id, pts: drawRoute(stops, out, ground), road: false, known: false })
+      out.push({ id: r.id, pts: drawRoute(stops, ctx), road: false, known: false })
   }
-  const roads = itinere()
-  for (const c of CONSULAR) {
-    if (!places.has(c.id)) continue
-    const to = gates.get(c.gate)
-    if (!to) throw new Error(`streets.ts: no gate "${c.gate}"`)
-    for (const { pts, certain } of roads.get(c.itinere) ?? []) {
-      // From the far end in, until it reaches the city or its end; then to the end.
-      const far = Math.hypot(pts[0][0] - to[0], pts[0][1] - to[1])
-      const near = Math.hypot(
-        pts[pts.length - 1][0] - to[0],
-        pts[pts.length - 1][1] - to[1],
-      )
-      const line = far > near ? pts : [...pts].reverse()
-      const kept: Pt[] = []
-      for (const q of line) {
-        if (inRing(q, circuit) || Math.hypot(q[0] - to[0], q[1] - to[1]) < JOIN_M) break
-        kept.push(q)
-      }
-      if (!kept.length) continue
-      out.push({ id: c.id, pts: [...kept, to], road: true, known: certain })
-    }
+  for (const r of ROADS) {
+    const place = places.get(r.id)
+    if (place?.kind !== 'road') throw new Error(`roads.ts: no road "${r.id}"`)
+    for (const stops of r.lines)
+      out.push({ id: r.id, pts: drawRoute(stops, ctx), road: true, known: r.known })
   }
   return out
 }
 
+/**
+ * The Itiner-e lines the plan's roads take up (roads.ts): the plan draws these roads
+ * itself, so their lines into the middle of the city are not roads the country's plots
+ * face (plate.ts).
+ */
+export const TAKEN_UP = new Set(
+  ROADS.flatMap((r) => r.lines.flat().flatMap((s) => (s.itinere ? [s.itinere] : []))),
+)
+
 // --- streets drawn from the evidence (routes.ts) --------------------------------------
 
-/** The pieces of excavated street, by number, as plane-metre outlines. */
-let pieces: Map<number, Pt[]> | null = null
-function piece(n: number, need = true): Pt[] {
-  if (!pieces) {
-    const geo = JSON.parse(
-      readFileSync(join(DATA_DIR, 'geometry/rome-sitar.geojson'), 'utf8'),
+/** A SITAR file's outlines by number, in plane metres: each part's outer ring. */
+function readPieces(file: string): Map<number, Pt[][]> {
+  const geo = JSON.parse(readFileSync(join(DATA_DIR, 'geometry', file), 'utf8'))
+  const out = new Map<number, Pt[][]>()
+  for (const f of geo.features) {
+    const polys =
+      f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
+    out.set(
+      f.id,
+      polys.map((p: [number, number][][]) =>
+        p[0].map(([lon, lat]) => projection.forward(lon, lat)),
+      ),
     )
-    pieces = new Map()
-    for (const f of geo.features) {
-      const polys =
-        f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
-      pieces.set(
-        f.id,
-        polys.flatMap((p: [number, number][][]) =>
-          p[0].map(([lon, lat]) => projection.forward(lon, lat)),
-        ),
-      )
-    }
   }
-  const p = pieces.get(n)
-  if (!p && need) throw new Error(`routes.ts: SITAR ${n} is not in rome-sitar.geojson`)
+  return out
+}
+
+/** The pieces of excavated street in and round the walls, by number, as plane-metre outlines. */
+let pieces: Map<number, Pt[]> | null = null
+/** The finds and reconstructions the consular roads cite (rome-roads.geojson), by number. */
+let roadPieces: Map<number, Pt[][]> | null = null
+function piece(n: number, need = true): Pt[] {
+  if (!pieces)
+    pieces = new Map(
+      [...readPieces('rome-sitar.geojson')].map(([k, parts]) => [k, parts.flat()]),
+    )
+  const p = pieces.get(n) ?? roadPart(n, false)?.flat()
+  if (!p && need)
+    throw new Error(`SITAR ${n} is in neither rome-sitar.geojson nor rome-roads.geojson`)
   return p ?? []
+}
+function roadPart(n: number, need = true): Pt[][] | undefined {
+  roadPieces ??= readPieces('rome-roads.geojson')
+  const p = roadPieces.get(n)
+  if (!p && need) throw new Error(`roads.ts: SITAR ${n} is not in rome-roads.geojson`)
+  return p
 }
 
 /**
@@ -259,8 +261,14 @@ function nearestOnStreet(id: string, drawn: StreetLine[], p: Pt): Pt {
   return best
 }
 
-/** A street through its stops (routes.ts), in plane metres. */
-function drawRoute(stops: Stop[], drawn: StreetLine[], ground: Ground): Pt[] {
+/** A street or road through its stops (routes.ts, roads.ts), in plane metres. */
+function drawRoute(stops: Stop[], ctx: Context): Pt[] {
+  const { drawn, ground, gates } = ctx
+  const gate = (name: string) => {
+    const g = gates.get(name)
+    if (!g) throw new Error(`roads.ts: no gate "${name}"`)
+    return g
+  }
   // Where each stop is, roughly: to order a piece's ends, and to find where a street
   // it runs onto is nearest.
   const rough: (Pt | null)[] = stops.map((s) =>
@@ -268,32 +276,156 @@ function drawRoute(stops: Stop[], drawn: StreetLine[], ground: Ground): Pt[] {
       ? projection.forward(...s.at)
       : s.sitar !== undefined
         ? centre(piece(s.sitar))
-        : null,
+        : s.gate
+          ? gate(s.gate)
+          : s.along !== undefined
+            ? s.to
+              ? projection.forward(...s.to)
+              : centre(roadPart(s.along)!.flat())
+            : null,
   )
   const near = (i: number) => rough[i + 1] ?? rough[i - 1] ?? null
-  const points: Pt[][] = stops.map((s, i) => {
+  let line: Pt[] = []
+  stops.forEach((s, i) => {
+    const end = line[line.length - 1]
+    let points: Pt[]
     if (s.onto) {
       const to = rough[i] ?? near(i)
       if (!to) throw new Error(`routes.ts: "${s.onto}" has nothing to be near`)
-      return [nearestOnStreet(s.onto, drawn, to)]
-    }
-    if (s.sitar !== undefined) {
+      points = [nearestOnStreet(s.onto, drawn, to)]
+    } else if (s.sitar !== undefined) {
       const [a, b] = ends(piece(s.sitar))
       const from =
         rough[i - 1] ?? (rough[i + 1] ? mirror(rough[i + 1]!, centre([a, b])) : a)
-      return dist(from, a) <= dist(from, b) ? [a, b] : [b, a]
+      points = dist(from, a) <= dist(from, b) ? [a, b] : [b, a]
+    } else if (s.gate) points = [gate(s.gate)]
+    else if (s.along !== undefined) {
+      if (!end) throw new Error(`roads.ts: SITAR ${s.along} cannot begin a road`)
+      const to = s.to ? projection.forward(...s.to) : rough[i + 1]
+      points = alongBand(roadPart(s.along)!, end, to ?? null)
+    } else if (s.itinere) {
+      if (i !== stops.length - 1) throw new Error(`roads.ts: ${s.itinere} must come last`)
+      points = alongItinere(s.itinere, projection.forward(...s.at!), ctx)
+    } else points = [projection.forward(...s.at!)]
+    if (!end) {
+      line = [...points]
+      return
     }
-    return [projection.forward(...s.at!)]
+    // A leg over the ground is routed on a grid round it, so a far stop is a mistake.
+    if (stops[i - 1].next !== 'straight' && dist(end, points[0]) > LEG_M)
+      throw new Error(
+        `routes: ${Math.round(dist(end, points[0]))} m over the ground from "${stops[i - 1].what.slice(0, 50)}" to "${s.what.slice(0, 50)}"`,
+      )
+    const leg =
+      stops[i - 1].next === 'straight'
+        ? [end, points[0]]
+        : overGround(end, points[0], ground)
+    line.push(...leg.slice(1), ...points.slice(1))
   })
-  let line: Pt[] = [...points[0]]
-  for (let i = 0; i + 1 < stops.length; i++) {
-    const [a, b] = [line[line.length - 1], points[i + 1][0]]
-    const leg = stops[i].next === 'straight' ? [a, b] : overGround(a, b, ground)
-    line.push(...leg.slice(1), ...points[i + 1].slice(1))
-  }
   const short = stops[stops.length - 1].short
   if (short) line = trimEnd(line, short)
   return line.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10] as Pt)
+}
+
+/** The longest leg a street or road is routed over the ground, metres. */
+const LEG_M = 3000
+
+/** Where the roads out of the city start from, for which way is out: the Forum. */
+const CITY = projection.forward(12.4853, 41.8925)
+/** Pieces of an Itiner-e line are one where their ends are this close, metres. */
+const JOIN_M = 60
+
+/**
+ * The middle line of a reconstruction's band (its parts' outlines), from the point
+ * nearest `from` to the point nearest `to`, or to its end.
+ */
+function alongBand(parts: Pt[][], from: Pt, to: Pt | null): Pt[] {
+  // Each part's middle line, joined end to end in order along the road from `from`.
+  const lines = parts.map((ring) => simplify(middleLine(ring), 0.5))
+  const chain: Pt[] = []
+  let at = from
+  while (lines.length) {
+    const k = lines.reduce(
+      (best, l, j) =>
+        Math.min(dist(l[0], at), dist(l[l.length - 1], at)) <
+        Math.min(dist(lines[best][0], at), dist(lines[best][lines[best].length - 1], at))
+          ? j
+          : best,
+      0,
+    )
+    let l = lines.splice(k, 1)[0]
+    if (dist(l[l.length - 1], at) < dist(l[0], at)) l = [...l].reverse()
+    chain.push(...l)
+    at = l[l.length - 1]
+  }
+  const a = nearestAlong(chain, from)
+  let out: Pt[] = [a.q, ...chain.slice(a.i + 1)]
+  if (to) {
+    const b = nearestAlong(out, to)
+    out = [...out.slice(0, b.i + 1), b.q]
+  }
+  return out
+}
+
+/**
+ * The map's line for a road (Itiner-e), from its point nearest `at` on out away from
+ * the city, taking up the next piece of the same name where one ends, until it is past
+ * the edge of the board.
+ */
+function alongItinere(name: string, at: Pt, ctx: Context): Pt[] {
+  const pieces = (ctx.itinere.get(name) ?? []).map((l) => l.pts)
+  if (!pieces.length) throw new Error(`roads.ts: no Itiner-e line "${name}" on the map`)
+  let best = { k: -1, i: 0, q: at, d: Infinity }
+  pieces.forEach((l, k) => {
+    const n = nearestAlong(l, at)
+    const d = dist(n.q, at)
+    if (d < best.d) best = { k, ...n, d }
+  })
+  if (best.d > 150)
+    console.log(
+      `  doubt: ${name} passes ${Math.round(best.d)} m from where roads.ts takes it up`,
+    )
+  const first = pieces[best.k]
+  // Out is towards the end further from the city.
+  const out = dist(first[first.length - 1], CITY) > dist(first[0], CITY)
+  let line: Pt[] = out
+    ? [best.q, ...first.slice(best.i + 1)]
+    : [best.q, ...first.slice(0, best.i + 1).reverse()]
+  const used = new Set([best.k])
+  for (;;) {
+    const last = line[line.length - 1]
+    if (!ctx.ground.onBoard(last)) break
+    const k = pieces.findIndex(
+      (l, j) =>
+        !used.has(j) && Math.min(dist(l[0], last), dist(l[l.length - 1], last)) < JOIN_M,
+    )
+    if (k < 0) break
+    used.add(k)
+    const l = pieces[k]
+    line.push(
+      ...(dist(l[0], last) < dist(l[l.length - 1], last) ? l : [...l].reverse()).slice(1),
+    )
+  }
+  // Cut just past the board's margin.
+  const past = line.findIndex((p) => !ctx.ground.onBoard(p))
+  return past < 0 ? line : line.slice(0, past + 1)
+}
+
+/** The point of a line nearest `p`, and the index of the segment it is on. */
+function nearestAlong(l: Pt[], p: Pt): { i: number; q: Pt } {
+  let best = { i: 0, q: l[0], d: Infinity }
+  for (let i = 0; i + 1 < l.length; i++) {
+    const [a, b] = [l[i], l[i + 1]]
+    const [dx, dy] = [b[0] - a[0], b[1] - a[1]]
+    const t = Math.max(
+      0,
+      Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
+    )
+    const q: Pt = [a[0] + dx * t, a[1] + dy * t]
+    const d = dist(q, p)
+    if (d < best.d) best = { i, q, d }
+  }
+  return { i: best.i, q: best.q }
 }
 
 const centre = (pts: Pt[]): Pt => [
@@ -372,7 +504,10 @@ function overGround(a: Pt, b: Pt, g: Ground): Pt[] {
       const p: Pt = [x0 + (i + 0.5) * S, y0 + (j + 0.5) * S]
       if (dist(p, a) < 18 || dist(p, b) < 18) off[j * nx + i] = 0
     }
-  const cost = new Float32Array(nx * ny).fill(Infinity)
+  // In double precision, as each cost is reckoned: a float32 cost rounded up would
+  // compare as dearer than the same path reckoned again, and on level ground each
+  // node would be pushed again and again.
+  const cost = new Float64Array(nx * ny).fill(Infinity)
   const prev = new Int32Array(nx * ny).fill(-1)
   const [bi, bj] = [to % nx, Math.floor(to / nx)]
   const heap = new MinHeap()

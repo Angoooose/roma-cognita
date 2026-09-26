@@ -32,6 +32,8 @@ interface ExplorerState {
   goTo(entry: MapEntry): void
   /** Shows a polity as it was in a year: moves the timeline there, flies to it, and inspects it. */
   goToPolity(id: string, year: number): void
+  /** Shows a settlement in a year, as `goToPolity` shows a polity. */
+  goToPlace(id: string, year: number): void
   closeInspector(): void
 }
 
@@ -91,6 +93,16 @@ export const useExplorer = create<ExplorerState>()((set, get) => ({
       get().goToYear(year)
     }
     flyAndInspect({ kind: 'polity', id })
+  },
+
+  goToPlace(id, year) {
+    const { map } = get()
+    if (!map) return
+    if (year !== map.year) {
+      set({ selection: null })
+      get().goToYear(year)
+    }
+    flyAndInspect({ kind: 'place', id })
   },
 
   closeInspector() {

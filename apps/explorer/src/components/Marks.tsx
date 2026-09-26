@@ -91,6 +91,30 @@ export function Q() {
   )
 }
 
+/**
+ * How sure a record is, in one word that explains itself, as the legend's key does.
+ * One language for doubt, for territories, places and people alike: certain and
+ * probable are drawn in full; uncertain is drawn fainter, with the query mark after its
+ * name. A dashed line is not doubt but absence: no claim recorded, no one attested.
+ */
+export function Certainty({ level }: { level: string }) {
+  const says: Record<string, string> = {
+    certain: 'The sources agree on it.',
+    probable: 'The sources agree on the substance, not every date.',
+    uncertain: 'The sources conflict or are silent.',
+  }
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span className="cursor-help underline decoration-foreground/30 decoration-dotted underline-offset-[3px]">
+          {level}
+        </span>
+      </TooltipTrigger>
+      <TooltipContent className="max-w-60">{says[level] ?? level}</TooltipContent>
+    </Tooltip>
+  )
+}
+
 /** The timeline's index (Timeline.tsx): a small gold pointer whose tip meets the rule. */
 export function Index() {
   return (
@@ -144,13 +168,14 @@ export function useRomeFills() {
   return useMemo(() => {
     const rome = map?.politics.legend(year)?.powers.find((p) => p.id === 'rome')
     return {
+      rome: rome?.fill ?? '#ae4a42',
       province: rome?.province ?? '#b85556',
       client: rome?.client ?? '#c39790',
     }
   }, [map, year])
 }
 
-function KeyItem({ swatch, children }: { swatch: ReactNode; children: ReactNode }) {
+export function KeyItem({ swatch, children }: { swatch: ReactNode; children: ReactNode }) {
   return (
     <span className="flex items-center gap-1.5">
       <span className="grid w-5 shrink-0 place-items-center">{swatch}</span>
@@ -207,7 +232,13 @@ export interface Lane {
  * Lanes on one axis over the timeline's ruler, with the gold index at the year the map
  * shows and its hairline up through the lanes, and a key in the legend's manner.
  */
-export function LaneChart(props: { axis: Axis; lanes: Lane[]; fill?: string }) {
+export function LaneChart(props: {
+  axis: Axis
+  lanes: Lane[]
+  fill?: string
+  /** Keys in place of Held and Uncertain, for a chart that is not of holding. */
+  legend?: ReactNode
+}) {
   const year = useExplorer((s) => s.year)
   const { axis: a, lanes } = props
   const shows = a.lo <= year && year <= a.hi
@@ -245,8 +276,12 @@ export function LaneChart(props: { axis: Axis; lanes: Lane[]; fill?: string }) {
         <Ruler axis={a} year={shows ? year : null} />
       </div>
       <div className="mt-1 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-xs">
-        <KeyItem swatch={<Swatch fill={fill} />}>Held</KeyItem>
-        <KeyItem swatch={<Swatch fill={fill} uncertain />}>Uncertain</KeyItem>
+        {props.legend ?? (
+          <>
+            <KeyItem swatch={<Swatch fill={fill} />}>Held</KeyItem>
+            <KeyItem swatch={<Swatch fill={fill} uncertain />}>Uncertain</KeyItem>
+          </>
+        )}
         {shows && <KeyItem swatch={<Index />}>The map's year</KeyItem>}
       </div>
     </div>
