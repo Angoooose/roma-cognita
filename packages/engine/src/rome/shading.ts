@@ -6,6 +6,7 @@ import {
   float,
   floor,
   Fn,
+  fract,
   If,
   int,
   ivec2,
@@ -25,6 +26,8 @@ import {
 // fields.ts imports this file too; each only calls the other's functions when a
 // shader is built, by when both are loaded.
 import { groundStanding } from './fields.ts'
+import { C } from './builder.ts'
+import { seededNoise } from '../terrain/noise.ts'
 
 /**
  * The ground the model of Rome stands on (DESIGN.md §7.7), printed onto the terrain
@@ -38,6 +41,8 @@ import { groundStanding } from './fields.ts'
  *   `plateMask`).
  * - **Streets and roads** (streets.ts) as paved ways between the houses, paler than
  *   the ground; roads wider.
+ * - **The Forum's square**, paved across in tufa and then travertine, its slabs'
+ *   joints drawn close in.
  *
  * - **The walled city's ground** as trodden earth, where it is not paved.
  * - **The model's shadows**, baked, where its ground mesh does not take the real ones.
@@ -54,6 +59,11 @@ export const planUniforms = {
   plateClamps: uniform(new THREE.Vector4(12, 48, 16, 1400)),
   /** The street field's clamp, metres. */
   streetClamp: uniform(12),
+  /** The Forum's square: its field's clamp, metres (0 until loaded), and its length's direction. */
+  squareClamp: uniform(0),
+  squareAxis: uniform(new THREE.Vector2(1, 0)),
+  /** The year its travertine was laid (pipeline model.ts `FORUM_PAVING`); tufa before. */
+  travertineFrom: uniform(-43),
   /** How much the terrain is laid on the smoothed ground: set per frame from the scale. */
   flatten: uniform(0),
   /** 0 until the plate has loaded. */
@@ -94,6 +104,11 @@ export const planTextures = {
 
 /** The trodden ground of the walled city. */
 const EARTH = new THREE.Color('#BCAB88')
+/**
+ * The Forum's slabs, metres: in rows along its length, each row's joints staggered.
+ * Their size is illustrative, not a survey's.
+ */
+const SLAB = { row: 1.5, length: 3 }
 /** The paved streets and roads: pale stone over the ground. */
 const PAVING = new THREE.Color('#D9CFBA')
 /** The river: the map's own river colour (terrain/material.ts). */
@@ -262,6 +277,47 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   // Baked shadows, as the model rises, where its ground mesh does not take its real ones.
   const baked = planUniforms.meshShown.mul(float(1).sub(groundMeshFade(mx, my)))
   out.assign(out.mul(float(1).sub(p0.r.mul(0.3).mul(baked))))
+
+  // The Forum's square, paved: tufa, then Caesar's travertine. Close in, the joints
+  // between its slabs, in rows along its length, and each slab a shade apart.
+  const toSquare = p0.g.mul(255).sub(128).div(127).mul(planUniforms.squareClamp)
+  const hasSquare = select(planUniforms.squareClamp.greaterThan(0), float(1), float(0)).mul(
+    planUniforms.meshShown,
+  )
+  const onSquare = float(1)
+    .sub(smoothstep(aa.negate(), aa, toSquare))
+    .mul(hasSquare)
+  const sx = mx.sub(planUniforms.plateOrigin.x)
+  const sy = my.sub(planUniforms.plateOrigin.y)
+  const ax = planUniforms.squareAxis
+  const along = sx.mul(ax.x).add(sy.mul(ax.y))
+  const across = sy.mul(ax.x).sub(sx.mul(ax.y)).div(SLAB.row)
+  const row = floor(across)
+  const stagger = fract(row.mul(0.618)).mul(SLAB.length)
+  const slabU = along.add(stagger).div(SLAB.length)
+  const joint = min(
+    float(0.5).sub(abs(fract(slabU).sub(0.5))).mul(SLAB.length),
+    float(0.5).sub(abs(fract(across).sub(0.5))).mul(SLAB.row),
+  )
+  // Drawn while a row is several pixels wide; coarser, the square is one stone.
+  const close = float(1).sub(smoothstep(SLAB.row / 8, SLAB.row / 4, css(pxM)))
+  const seam = float(1)
+    .sub(smoothstep(max(px.mul(0.35), 0.04), max(px.mul(0.35), 0.04).add(aa), joint))
+    .mul(close)
+  const shade = seededNoise(vec2(row, floor(slabU)).add(0.5), 7)
+    .mul(0.05)
+    .mul(close)
+  const stone = select(
+    planUniforms.year.greaterThanEqual(planUniforms.travertineFrom),
+    rgb(C.travertine),
+    rgb(C.tufa),
+  )
+  const slab = stone
+    .mul(lit)
+    .mul(float(1).add(shade))
+    .mul(float(1).sub(seam.mul(0.14)))
+  out.assign(mix(out, slab, onSquare))
+  out.assign(mix(out, rgb(INK), line(abs(toSquare), 0.6).mul(0.12).mul(hasSquare)))
 
   // Paved streets and roads. What a line is comes from the nearest texel.
   const cell = min(

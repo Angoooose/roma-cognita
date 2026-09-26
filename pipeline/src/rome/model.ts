@@ -37,6 +37,7 @@ import { COURSES, layCourse } from './aqueducts.ts'
 import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts'
 import { type Course, STEP_M } from './servian.ts'
 import { type Fields, fieldTrees, type RecordedGround, TREE } from './fields.ts'
+import { FORUM_PAVING_PIECES, levelOf } from './ground.ts'
 
 type Pt = [number, number]
 
@@ -214,6 +215,27 @@ const ASYLUM_GROVES: [number, number][] = [
  * beyond it the ground eases back, and how deep a cut, metres, needs a retaining wall.
  */
 const SITE = { walk: 3, ease: 10, cut: 1.2 }
+/**
+ * The buildings round the Forum's square: those of the Forum proper, then those of
+ * the Comitium at its north-west end.
+ */
+const FORUM_FRONTS = [
+  'aedes-saturni',
+  'aedes-castoris',
+  'basilica-iulia',
+  'basilica-aemilia',
+  'curia-iulia',
+  'regia',
+  'aedes-vestae',
+  'aedes-divi-iulii',
+  'aedes-concordiae',
+  'carcer',
+  'curia-hostilia',
+  'rostra-vetera',
+  'rostra',
+]
+/** The Forum's square: how far round it its level eases back to the ground, metres. */
+const FORUM = { ease: 30 }
 
 /**
  * The Servian Wall as it was built (DESIGN.md §7.7), metres:
@@ -659,6 +681,63 @@ export function bakeModel(m: ModelInput) {
     console.log(`model: ${mo.id} moved ${shift} m in off the wall`)
   }
 
+  // --- the Forum's square --------------------------------------------------------------
+  const locate = (ids: string[]) =>
+    ids
+      .map((id) => m.places.get(id))
+      .filter((p): p is Place => !!p)
+      .map((p) => projection.forward(...p.location))
+  const forum = locate(FORUM_FRONTS.slice(0, 8))
+  // Its north-west end was public ground too: the Comitium before the senate house,
+  // with the old Rostra on its edge, the new Rostra, and the ground before Concord
+  // and the Carcer (Platner & Ashby, Comitium). Cato bought up the last private halls
+  // and shops on this side in 184 BCE for his basilica (Livy 39.44.7).
+  const comitium = locate(FORUM_FRONTS.slice(8))
+  // Drawn through the buildings' middles, so pushed out to take in their fronts.
+  const forumHull = forum.length > 2 ? grow(hull([...forum, ...comitium]), 6) : []
+  // The Forum proper: a temple on it faces its middle, and the city is laid out round it.
+  const forumCore = forum.length > 2 ? hull(forum) : []
+  // The square was paved level: its travertine lies at 13.5 m by the Lacus Iuturnae,
+  // and the street at the Argiletum's mouth at 13.9 m (ground.ts). Today's ground,
+  // smoothed, rises 11 m across it to the foot of the Capitol, so the square is cut
+  // and filled to its paving's level, easing back to the ground round it over
+  // `FORUM.ease`; the buildings on it stand on it (the sites, below).
+  const forumLevel = levelOf(FORUM_PAVING_PIECES)
+  const onForum = new Set(
+    monuments
+      .filter((mo) => {
+        const r = mo.rings[0]
+        const c: Pt = [
+          r.reduce((s, q) => s + q[0], 0) / r.length,
+          r.reduce((s, q) => s + q[1], 0) / r.length,
+        ]
+        return (
+          FORUM_FRONTS.includes(mo.id) ||
+          (forumHull.length > 2 && inRing(c, [...forumHull, forumHull[0]]))
+        )
+      })
+      .map((mo) => mo.id),
+  )
+  if (forumHull.length > 2) {
+    const ring = [...forumHull, forumHull[0]]
+    const [x0, y0, x1, y1] = bounds(ring, FORUM.ease + g.texel)
+    const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
+    const c1 = Math.min(g.width - 1, Math.ceil((x1 - g.x0) / g.texel))
+    const r0 = Math.max(0, Math.floor((g.y1 - y1) / g.texel))
+    const r1 = Math.min(g.height - 1, Math.ceil((g.y1 - y0) / g.texel))
+    for (let r = r0; r <= r1; r++)
+      for (let c = c0; c <= c1; c++) {
+        const p: Pt = [g.x0 + (c + 0.5) * g.texel, g.y1 - (r + 0.5) * g.texel]
+        const k = r * g.width + c
+        if (m.water[k] < 4) continue
+        const d = inRing(p, ring) ? 0 : distToRing(p, ring)
+        if (d >= FORUM.ease) continue
+        ground[k] = forumLevel + (ground[k] - forumLevel) * smoothstep(0, FORUM.ease, d)
+      }
+    // What stands on the square without a site of its own stands on its paving.
+    for (const mo of monuments) if (onForum.has(mo.id) && !mo.design) mo.base = forumLevel
+  }
+
   // --- the sites, levelled -----------------------------------------------------------
   // A Roman building stood on ground cut and filled level for it — Caesar's forum cut
   // into the Capitol's slope behind a wall of peperino 12 m high (Platner & Ashby,
@@ -686,8 +765,10 @@ export function bakeModel(m: ModelInput) {
     const lowUnder = Math.min(...under)
     // Cut and fill balanced, unless the design says it was cut in (`low`) or built out
     // as a terrace (`top`).
-    const level =
-      d.level === 'top'
+    // On the Forum's square, the square's own level.
+    const level = onForum.has(mo.id)
+      ? forumLevel
+      : d.level === 'top'
         ? Math.max(...under)
         : d.level === 'low'
           ? lowUnder
@@ -970,37 +1051,6 @@ export function bakeModel(m: ModelInput) {
   // Squares no house stands in: the Forum between its buildings, the Capitol's
   // precinct round its temple, and the Circus' arena (inside its outline already).
   const open: Pt[][] = []
-  const forum = [
-    'aedes-saturni',
-    'aedes-castoris',
-    'basilica-iulia',
-    'basilica-aemilia',
-    'curia-iulia',
-    'regia',
-    'aedes-vestae',
-    'aedes-divi-iulii',
-  ]
-    .map((id) => m.places.get(id))
-    .filter((p): p is Place => !!p)
-    .map((p) => projection.forward(...p.location))
-  // Its north-west end was public ground too: the Comitium before the senate house,
-  // with the old Rostra on its edge, the new Rostra, and the ground before Concord
-  // and the Carcer (Platner & Ashby, Comitium). Cato bought up the last private halls
-  // and shops on this side in 184 BCE for his basilica (Livy 39.44.7).
-  const comitium = [
-    'aedes-concordiae',
-    'carcer',
-    'curia-hostilia',
-    'rostra-vetera',
-    'rostra',
-  ]
-    .map((id) => m.places.get(id))
-    .filter((p): p is Place => !!p)
-    .map((p) => projection.forward(...p.location))
-  // Drawn through the buildings' middles, so pushed out to take in their fronts.
-  const forumHull = forum.length > 2 ? grow(hull([...forum, ...comitium]), 6) : []
-  // The Forum proper: a temple on it faces its middle, and the city is laid out round it.
-  const forumCore = forum.length > 2 ? hull(forum) : []
   // Nobody lived on the Capitol's summits: "ne quis patricius in arce aut Capitolio
   // habitaret" (Livy 6.20.13), and in practice both were sacred ground — the Area
   // Capitolina, the Arx with its Auguraculum and Juno Moneta — and so was the Asylum
@@ -1431,16 +1481,6 @@ export function bakeModel(m: ModelInput) {
           water: round(waterLevel - mo.base),
         },
       })),
-      // The open squares, paved: the Forum between its buildings.
-      squares: forumHull.length
-        ? [
-            {
-              ring: [...forumHull, forumHull[0]].map(([x, y]) => [round(x), round(y)]),
-              base: round(Math.min(...forumHull.map(([x, y]) => at(x, y)))),
-              paving: FORUM_PAVING,
-            },
-          ]
-        : [],
       // The tombs along the roads, generated: designs as designs.ts gives them.
       roadTombs,
       // The Servian Wall (`WALL`): its curtain in runs between the gates, each point
@@ -1516,7 +1556,19 @@ export function bakeModel(m: ModelInput) {
         mo.design?.d.model !== 'quay',
     )
     .map((mo) => mo.rings[0])
-  return { png, waterLevel, shadow: soft, drawn, mains: city.mains, covered }
+  // The Forum's square, painted on the board (plate.ts): its outline, its paving by
+  // year, and its length, from Caesar's rostra to his temple, which face each other
+  // down it; its slabs are laid along it.
+  const [ra, dv] = [m.places.get('rostra'), m.places.get('aedes-divi-iulii')].map(
+    (p) => p && projection.forward(...p.location),
+  )
+  const length = ra && dv ? Math.atan2(dv[1] - ra[1], dv[0] - ra[0]) : 0
+  const square = forumHull.length > 2 && {
+    ring: [...forumHull, forumHull[0]],
+    paving: FORUM_PAVING,
+    axis: [Math.cos(length), Math.sin(length)] as Pt,
+  }
+  return { png, waterLevel, shadow: soft, drawn, mains: city.mains, covered, square }
 }
 
 /** ground.png: heights in centimetres, high byte red, low byte green. */

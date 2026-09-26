@@ -723,6 +723,21 @@ known and what is generated are kept apart:
   - The Forum square, paved in Monte Verde tufa at the Sullan level and in
     travertine from Caesar's relaying (Forum Romanum, pp. 232–233), taken as 44
     BCE. The travertine that survives is Augustan.
+    - **Level** (decided 2026-09-25): its paving lies at 13.5 m by the Lacus
+      Iuturnae (SITAR 17854, 17890), and the street at the Argiletum's mouth at 13.9 m,
+      but today's ground, smoothed, rises 11 m across it to the Capitol's foot. So
+      the square, the Comitium with it, is cut and filled to its paving's level
+      before any site, easing back to the ground round it over 30 m, and the
+      buildings on it (those round it, and what stands inside its outline) stand at
+      that level; behind Concord and Saturn the Capitol's slope rises to the
+      Tabularium.
+    - **Painted on the ground** (plate-0 green, `shading.ts`), not laid as a slab
+      over it: its outline, a fine dark edge as the streets have, the stone of the
+      year, and close in the joints of its slabs, in rows along its length (from
+      Caesar's rostra to his temple, which face each other down it), each row's
+      joints staggered and each slab a shade apart. The slabs' size (rows 1.5 m
+      wide, slabs 3 m long) is illustrative, not a survey's. The streets that cross
+      the square run on its paving, so they are not drawn over it.
   - **The years 44–27 BCE** (decided 2026-09-24), when the window was carried to
     27 BCE. Everything dated in them changes the model in its year:
     - Caesar's rostra from 44 BCE, the old rostra given up; the Curia Hostilia,
