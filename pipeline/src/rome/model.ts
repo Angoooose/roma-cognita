@@ -983,7 +983,24 @@ export function bakeModel(m: ModelInput) {
     .map((id) => m.places.get(id))
     .filter((p): p is Place => !!p)
     .map((p) => projection.forward(...p.location))
-  const forumHull = forum.length > 2 ? hull(forum) : []
+  // Its north-west end was public ground too: the Comitium before the senate house,
+  // with the old Rostra on its edge, the new Rostra, and the ground before Concord
+  // and the Carcer (Platner & Ashby, Comitium). Cato bought up the last private halls
+  // and shops on this side in 184 BCE for his basilica (Livy 39.44.7).
+  const comitium = [
+    'aedes-concordiae',
+    'carcer',
+    'curia-hostilia',
+    'rostra-vetera',
+    'rostra',
+  ]
+    .map((id) => m.places.get(id))
+    .filter((p): p is Place => !!p)
+    .map((p) => projection.forward(...p.location))
+  // Drawn through the buildings' middles, so pushed out to take in their fronts.
+  const forumHull = forum.length > 2 ? grow(hull([...forum, ...comitium]), 6) : []
+  // The Forum proper: a temple on it faces its middle, and the city is laid out round it.
+  const forumCore = forum.length > 2 ? hull(forum) : []
   // Nobody lived on the Capitol's summits: "ne quis patricius in arce aut Capitolio
   // habitaret" (Livy 6.20.13), and in practice both were sacred ground — the Area
   // Capitolina, the Arx with its Auguraculum and Juno Moneta — and so was the Asylum
@@ -1061,10 +1078,10 @@ export function bakeModel(m: ModelInput) {
    * The point a building faces: a temple in a forum faces into it, one on the Forum's
    * edge faces the Forum, and the Capitol's temple faces south, down to the city.
    */
-  const forumMiddle: Pt | null = forumHull.length
+  const forumMiddle: Pt | null = forumCore.length
     ? [
-        forumHull.reduce((s, q) => s + q[0], 0) / forumHull.length,
-        forumHull.reduce((s, q) => s + q[1], 0) / forumHull.length,
+        forumCore.reduce((s, q) => s + q[0], 0) / forumCore.length,
+        forumCore.reduce((s, q) => s + q[1], 0) / forumCore.length,
       ]
     : null
   const courts = monuments.filter((mo) => mo.kind === 'forum')
@@ -1158,7 +1175,7 @@ export function bakeModel(m: ModelInput) {
     gates: m.course.gates.map((gt) => gt.at),
     streets: m.streets,
     pieces: excavatedPieces(),
-    forum: forumHull,
+    forum: forumCore,
     squares: open,
     monuments: [...early.map((mo) => mo.rings[0]), ...aqueductBands, ...wallBands],
     at,
@@ -1173,8 +1190,11 @@ export function bakeModel(m: ModelInput) {
       .map((p) => projection.forward(...p.location)),
     rand,
   })
-  for (const l of city.lots) lot(l.pts, l.h, l.kind, l.roof, l.tone)
-  courtyardTrees.push(...city.gardens)
+  // The city is laid out round the Forum proper, then cleared off the Comitium, so
+  // the ground kept open there does not reshuffle the streets across the city.
+  for (const l of city.lots)
+    if (!l.pts.some((q) => isOpen(q))) lot(l.pts, l.h, l.kind, l.roof, l.tone)
+  courtyardTrees.push(...city.gardens.filter((q) => !isOpen(q)))
 
   // Outside it: a thinner suburb of detached houses, along the roads.
   const s0 = FABRIC.spacing
@@ -1651,6 +1671,16 @@ function bounds(ring: Pt[], pad: number): [number, number, number, number] {
     Math.max(...ring.map((p) => p[0])) + pad,
     Math.max(...ring.map((p) => p[1])) + pad,
   ]
+}
+
+/** A ring pushed out from its centre by `m` metres. */
+function grow(ring: Pt[], m: number): Pt[] {
+  const cx = ring.reduce((s, q) => s + q[0], 0) / ring.length
+  const cy = ring.reduce((s, q) => s + q[1], 0) / ring.length
+  return ring.map(([x, y]) => {
+    const l = Math.hypot(x - cx, y - cy) || 1
+    return [x + ((x - cx) / l) * m, y + ((y - cy) / l) * m]
+  })
 }
 
 function hull(points: Pt[]): Pt[] {
