@@ -7,6 +7,8 @@ import {
   floor,
   Fn,
   fract,
+  length,
+  sin,
   If,
   int,
   ivec2,
@@ -109,14 +111,27 @@ const EARTH = new THREE.Color('#BCAB88')
  * Their size is illustrative, not a survey's.
  */
 const SLAB = { row: 1.5, length: 3 }
-/** The paved streets and roads: pale stone over the ground. */
-const PAVING = new THREE.Color('#D9CFBA')
+/**
+ * The paved streets and roads: basalt, as the censors of 174 BCE had the city's
+ * streets paved (Livy 41.27.5, "vias sternendas silice in urbe"), and the Via Appia
+ * from the temple of Mars to Bovillae in 293 BCE (Livy 10.47.4). A warm grey, the lava weathered
+ * and dusty, not black, so the city stays light.
+ */
+export const BASALT = new THREE.Color('#9A948A')
+/**
+ * The basalt's blocks, metres across: polygonal, fitted to each other. Their size is
+ * illustrative, not a survey's.
+ */
+const BLOCK_M = 0.7
 /** The river: the map's own river colour (terrain/material.ts). */
 const WATER = new THREE.Color('#3D7A8E')
 const INK = new THREE.Color('#2A241E')
 const LIGHT = new THREE.Vector3(-0.5, 0.5, 0.707).normalize()
 
 type F = THREE.Node<'float'>
+/** Two numbers in [0, 1) for a lattice square: a sine hash, for keys under 289. */
+const jitter = (k: THREE.Node<'vec2'>) =>
+  fract(sin(vec2(dot(k, vec2(127.1, 311.7)), dot(k, vec2(269.5, 183.3)))).mul(43758.5453))
 const rgb = (c: THREE.Color) => vec3(c.r, c.g, c.b)
 
 /** Metres per CSS pixel from metres per device pixel. */
@@ -296,8 +311,12 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   const stagger = fract(row.mul(0.618)).mul(SLAB.length)
   const slabU = along.add(stagger).div(SLAB.length)
   const joint = min(
-    float(0.5).sub(abs(fract(slabU).sub(0.5))).mul(SLAB.length),
-    float(0.5).sub(abs(fract(across).sub(0.5))).mul(SLAB.row),
+    float(0.5)
+      .sub(abs(fract(slabU).sub(0.5)))
+      .mul(SLAB.length),
+    float(0.5)
+      .sub(abs(fract(across).sub(0.5)))
+      .mul(SLAB.row),
   )
   // Drawn while a row is several pixels wide; coarser, the square is one stone.
   const close = float(1).sub(smoothstep(SLAB.row / 8, SLAB.row / 4, css(pxM)))
@@ -339,7 +358,43 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   const toStreet = p0.b.mul(planUniforms.streetClamp)
   const paved = float(1).sub(smoothstep(half.sub(aa), half.add(aa), toStreet))
   const show = streetsShow(pxM)
-  out.assign(mix(out, rgb(PAVING).mul(lit), paved.mul(0.9).mul(show)))
+  // Close in, the joints between the basalt's polygonal blocks: the edges of cells
+  // round a jittered point in each square of a lattice, each block a shade apart.
+  const blocks = float(1).sub(smoothstep(BLOCK_M / 8, BLOCK_M / 4, css(pxM)))
+  const basalt = rgb(BASALT).mul(lit).toVar()
+  If(paved.mul(show).mul(blocks).greaterThan(0.001), () => {
+    const q = vec2(sx, sy).div(BLOCK_M)
+    const base = floor(q)
+    const f = q.sub(base)
+    const near = float(8).toVar()
+    const next = float(8).toVar()
+    const tone = float(0).toVar()
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const n = vec2(dx, dy)
+        const k = base.add(n)
+        const h = jitter(k.sub(floor(k.div(289)).mul(289)))
+        const d = length(n.add(h.mul(0.8).add(0.1)).sub(f))
+        If(d.lessThan(near), () => {
+          next.assign(near)
+          near.assign(d)
+          tone.assign(h.x)
+        }).ElseIf(d.lessThan(next), () => {
+          next.assign(d)
+        })
+      }
+    const edge = next.sub(near).mul(0.5 * BLOCK_M)
+    const w = max(px.mul(0.35), 0.03)
+    const seam = float(1)
+      .sub(smoothstep(w, w.add(aa), edge))
+      .mul(blocks)
+    basalt.assign(
+      basalt
+        .mul(float(1).add(tone.sub(0.5).mul(0.08).mul(blocks)))
+        .mul(float(1).sub(seam.mul(0.18))),
+    )
+  })
+  out.assign(mix(out, basalt, paved.mul(0.9).mul(show)))
   out.assign(
     mix(
       out,

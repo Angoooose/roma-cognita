@@ -1088,7 +1088,13 @@ what the city adds drawn on it:
 - The earth, the smoothed lighting and the baked shadows come in as the model
   rises, so zoomed out Rome is ordinary terrain like any other town.
 
-**Streets and roads** (`streets.ts`) are paved ways on the ground, in pale stone:
+**Streets and roads** (`streets.ts`) are paved ways on the ground, in basalt
+(decided 2026-09-26): the censors of 174 BCE had the city's streets paved in it,
+"vias sternendas silice in urbe" (Livy 41.27.5), and the Via Appia in 293 BCE from
+the temple of Mars outside the Porta Capena to Bovillae (Livy 10.47.4). It is a warm grey, weathered and dusty,
+not black, so the city stays light; close in, the joints of its polygonal blocks
+are drawn, about 0.7 m across, a size that is illustrative. The lanes between are
+trodden earth. They are:
 
 - the Forum and Palatine streets from OpenStreetMap's paths on the excavated
   paving;

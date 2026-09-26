@@ -248,6 +248,7 @@ function ModelKey({ model, className }: { model: typeof MODEL_KEY; className?: s
         <Key swatch={<Swatch fill={model.marble} />}>Marble</Key>
         <Key swatch={<Swatch fill={model.stucco} />}>Stucco over tufa</Key>
         <Key swatch={<Swatch fill={model.travertine} />}>Travertine</Key>
+        <Key swatch={<Swatch fill={model.basalt} />}>Basalt streets</Key>
         <Key
           swatch={
             <span className="flex h-3 w-5 flex-col overflow-hidden rounded-[1px]">
