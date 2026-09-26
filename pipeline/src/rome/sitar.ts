@@ -25,12 +25,17 @@
  *
  * And the Servian Wall: SITAR's reconstruction of its whole course, and the pieces of
  * it that were found, into data/geometry/rome-servian.geojson (servian.ts).
+ *
+ * And the consular roads out of the city: the finds and SITAR's reconstructions of
+ * their courses that roads.ts cites, by number, wherever they lie, into
+ * data/geometry/rome-roads.geojson.
  */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { projection } from '@roman-map/world'
 import { DATA_DIR } from '../load.ts'
 import { CORRECTIONS } from './ground.ts'
+import { ROADS } from './roads.ts'
 
 const WFS = 'https://repositar.archeositarproject.it/geoserver/wfs'
 /** The walled city and a margin round it, lat/lon. */
@@ -284,3 +289,72 @@ writeFileSync(
   ) + '\n',
 )
 console.log(`${wallFeatures.length} pieces of the Servian Wall and its course → ${wallOut}`)
+
+// --- the consular roads ----------------------------------------------------------------
+
+/**
+ * What roads.ts cites of SITAR: pieces of the roads' paving outside the wall and three
+ * reconstructions of their courses (the Via Flaminia 16890, the Appia's first mile 19681,
+ * the Latina 19682), fetched by number, whatever their date: they place the road, and
+ * its date is its record's.
+ */
+const roadCited = [
+  ...new Set(
+    ROADS.flatMap((r) =>
+      r.lines.flat().flatMap((s) => [s.sitar, s.along].filter((n) => n !== undefined)),
+    ),
+  ),
+].sort((a, b) => a - b)
+interface RoadProps extends Props {
+  tipo_pa: string | null
+}
+const roadRes = await fetch(
+  `${WFS}?${new URLSearchParams({
+    service: 'WFS',
+    version: '2.0.0',
+    request: 'GetFeature',
+    typeNames: 'sitar:v_st_archaeo_part',
+    outputFormat: 'application/json',
+    srsName: 'EPSG:4326',
+    CQL_FILTER: `codice_pa IN (${roadCited.join(',')})`,
+  })}`,
+  { headers: { 'User-Agent': 'roman-map pipeline (rome:sitar)' } },
+)
+if (!roadRes.ok) throw new Error(`SITAR roads: ${roadRes.status}`)
+const roadFeatures = (
+  (await roadRes.json()) as {
+    features: { properties: RoadProps; geometry: { type: string; coordinates: unknown } }[]
+  }
+).features
+  .sort((a, b) => Number(a.properties.codice_pa) - Number(b.properties.codice_pa))
+  .map(({ properties: p, geometry }) => ({
+    type: 'Feature',
+    id: Number(p.codice_pa),
+    properties: {
+      investigation: Number(p.codice_oi),
+      what: p.definizione_specifica1,
+      name: p.def_interpretativa,
+      // A survey of what was found, or a reconstruction ("ipotesi ricostruttiva").
+      record: p.tipo_pa,
+      from: p.anno_da === null ? null : Number(p.anno_da),
+      to: p.anno_a === null ? null : Number(p.anno_a),
+      placed: p.metodo_georef,
+      note: p.descrizione?.replace(/\s+/g, ' ').trim() ?? null,
+      fetched,
+    },
+    geometry: { type: geometry.type, coordinates: round(geometry.coordinates) },
+  }))
+const missing = roadCited.filter((n) => !roadFeatures.some((f) => f.id === n))
+if (missing.length)
+  throw new Error(`SITAR: roads.ts cites ${missing.join(', ')}, not found`)
+const roadsOut = join(DATA_DIR, 'geometry/rome-roads.geojson')
+writeFileSync(
+  roadsOut,
+  JSON.stringify({ type: 'FeatureCollection', features: roadFeatures }, null, 1).replace(
+    /\[\n\s+(-?[\d.]+),\n\s+(-?[\d.]+)\n\s+\]/g,
+    '[$1, $2]',
+  ) + '\n',
+)
+console.log(
+  `${roadFeatures.length} finds and reconstructions of the consular roads → ${roadsOut}`,
+)

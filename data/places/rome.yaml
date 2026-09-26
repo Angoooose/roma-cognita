@@ -932,8 +932,11 @@
 # Paved on the model's board (pipeline/src/rome/streets.ts). Streets in the Forum
 # and on the Palatine are OpenStreetMap's paths laid on the excavated paving. The
 # streets Platner & Ashby identify with a modern street are traced along it and cut
-# to within the walls. The consular roads outside the walls are Itiner-e's, joined
-# to the gate Platner & Ashby say each left by; their records carry no outline.
+# to within the walls. The consular roads run from the gate Platner & Ashby and
+# Ashby say each left by, through SITAR's reconstructions of their courses and the
+# finds and points the sources fix, and on along Itiner-e's line past the edge of the
+# board (pipeline/src/rome/roads.ts, which cites each stop); their records carry no
+# outline.
 
 - id: sacra-via
   kind: street
@@ -1303,6 +1306,7 @@
 - id: via-flaminia
   kind: road
   within: roma
+  pleiades: '856514595'
   location: [12.48006, 41.90186]
   names:
     - { text: Via Flaminia, lang: la, preferred: true }
@@ -1311,24 +1315,30 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Via Flaminia#Flaminia, p. 562' }
+    - { source: platner-ashby, locator: 'Via Flaminia#Flaminia, pp. 562–563' }
     - source: osm-rome
       locator: >-
         way/22979103, way/26785433, way/49304929, way/49305153, way/108565606,
         way/122705896, way/128665329, way/131235408, way/184686429, way/188728063,
         way/203960983, way/204390269, way/220230152, way/229645760, way/366692686,
         way/366692687, way/1236333976
+    - { source: sitar, locator: '16890, 17882' }
+    - { source: itinere, locator: Fanum Fortunae-Rome }
   confidence: certain
   review: draft
   note: >-
-    Built in 220 BCE by the censor C. Flaminius, it ran north from the foot of the
-    Capitol across the Campus Martius, where its city stretch was called the Via
-    Lata. "The modern Corso coincides absolutely with the ancient line" (Platner
-    & Ashby), so it is traced along the Corso and drawn as a surveyed street.
+    Built in 220 BCE by the censor C. Flaminius, it ran north from the Porta
+    Fontinalis across the Campus Martius, where its city stretch was called the Via
+    Lata, "in an absolutely straight line to the pons Mulvius". "The modern Corso
+    coincides absolutely with the ancient line" (Platner & Ashby), so it is traced
+    along the Corso; from the gate to the Corso and from the Piazza del Popolo on it
+    follows SITAR's reconstruction of its course to the Ponte Milvio (16890), past its
+    paving at Viale delle Belle Arti, dated 220 BCE (17882), and then Itiner-e's line.
 
 - id: via-appia
   kind: road
   within: roma
+  pleiades: '356966898'
   location: [12.4945, 41.8795]
   names:
     - { text: Via Appia, lang: la, preferred: true }
@@ -1338,17 +1348,147 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Via Appia, pp. 559–560' }
+    - { source: livy, locator: '10.23.12' }
+    - { source: livy, locator: '10.47.4' }
+    - { source: sitar, locator: '19681, 19682, 12079, 11402, 22778' }
+    - { source: ashby-1927, locator: 'pp. 176–178' }
     - { source: itinere, locator: Tarracinae-Rome }
   confidence: certain
   review: draft
   note: >-
-    Built in 312 BCE by the censor Appius Claudius Caecus, leaving the city by
-    the Porta Capena. Drawn from Itiner-e's line, which it gives as certain here,
-    joined to the gate.
+    Built in 312 BCE by the censor Appius Claudius Caecus, leaving the city by the
+    Porta Capena. Its first stretch was paved in squared stone from the gate to the
+    temple of Mars in 296 BCE (Livy 10.23.12), and on to Bovillae in 293 (10.47.4).
+    Drawn on SITAR's reconstruction of its first mile "between the 4th and the 1st
+    century BCE" (19681), which starts beside its reconstruction of the Latina's line
+    (19682) about 550 m from the gate, where the two roads part; from the gate to
+    there it shares the Latina's. Then along its dated paving and embankment (12079,
+    11402) past the Almo to Domine Quo Vadis (22778), and on along Itiner-e's line,
+    "absolutely straight … from just beyond the Almo" (Ashby 1927). Platner & Ashby
+    put the fork at 830 m; SITAR's two reconstructions part sooner.
+
+- id: via-latina
+  kind: road
+  within: roma
+  pleiades: '93042695'
+  location: [12.50157, 41.87715]
+  names:
+    - { text: Via Latina, lang: la, preferred: true }
+  from: before 334 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Latina, pp. 564–565' }
+    - { source: strabo, locator: '5.3.9' }
+    - { source: sitar, locator: '19682, 2268, 12438, 9003, 9018' }
+    - { source: itinere, locator: Rome-Tusculum }
+  confidence: certain
+  review: draft
+  note: >-
+    "Probably constructed after the pass of Algidus had been secured in 389 B.C.", it
+    "must have run at least as early as 334 B.C." (Platner & Ashby). It "branched off
+    to the left from the via Appia 830 metres from the porta Capena, and after 500
+    metres more passed through the Porta Latina"; "the whole triangle between the two
+    roads was occupied by tombs". Drawn on SITAR's reconstruction of its line (19682)
+    to the Porta Latina, along its paving there (2268), straight on past its paving
+    outside (12438, 9003), and then Itiner-e's line along the modern Via Latina.
+
+- id: via-ostiensis
+  kind: road
+  within: roma
+  pleiades: '390205932'
+  location: [12.48036, 41.87626]
+  names:
+    - { text: Via Ostiensis, lang: la, preferred: true }
+  from: before 240 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Ostiensis, pp. 565–566' }
+    - { source: platner-ashby, locator: 'Porta Trigemina, p. 418' }
+    - { source: sitar, locator: '4731, 4707, 22777' }
+    - { source: ashby-1927, locator: 'p. 214' }
+    - { source: itinere, locator: Rome-Ostia }
+  confidence: probable
+  review: draft
+  note: >-
+    The road to Ostia. "The road from the porta Trigemina of the Servian wall, which
+    is probably the original via Ostiensis, kept under the north-west and south-west
+    sides of the Aventine", and was "joined by a branch from the porta Lavernalis and
+    another from the porta Raudusculana, the latter (with which the Sepulcrum Cestii
+    is orientated) falling into it a little beyond the tomb" (Platner & Ashby). Its
+    paving outside the later Porta S. Paolo is dated 260–240 BCE (SITAR 4707). Drawn
+    from the Porta Trigemina at SITAR's site (where the gate stood is disputed) along
+    the Via della Marmorata's paving (4731), with the branch from the Porta
+    Raudusculana; the Lavernalis, whose site nobody knows, is not drawn. Then south
+    past Roman paving (22777) and on along Itiner-e's line; the modern road
+    "coincided with it closely" (Ashby 1927).
+
+- id: via-praenestina
+  kind: road
+  within: roma
+  pleiades: '622606468'
+  location: [12.50842, 41.89333]
+  names:
+    - { text: Via Praenestina, lang: la, preferred: true }
+    - { text: Via Gabina, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Praenestina, pp. 566–567' }
+    - { source: livy, locator: '2.11.7' }
+    - { source: strabo, locator: '5.3.9' }
+    - { source: ashby-1902, locator: 'pp. 150–152' }
+    - { source: ashby-1927, locator: 'p. 128' }
+    - { source: sitar, locator: '13944, 3582, 23992' }
+    - { source: itinere, locator: Rome-Praeneste }
+  confidence: certain
+  review: draft
+  note: >-
+    "Originally it was called Via Gabina" (Platner & Ashby), the road to Gabii of the
+    first years of the Republic (Livy 2.11.7), with a milestone of the second century
+    BCE (CIL I² 833). It "began at the porta Esquilina of the Servian wall", and the
+    Labicana with it (Strabo 5.3.9); they "did not bifurcate until about
+    three-quarters of a mile further on, at the tomb of Eurysaces the baker, which
+    stood in the fork" (Ashby 1927). Drawn from the gate along the late Republican
+    paving "of the via Labicana-Praenestina in its first stretch outside the Porta
+    Esquilina" (SITAR 13944) and by the later Porta Maggiore (3582) to the fork, and
+    on along Itiner-e's line.
+
+- id: via-labicana
+  kind: road
+  within: roma
+  pleiades: '74935822'
+  location: [12.52472, 41.88775]
+  names:
+    - { text: Via Labicana, lang: la, preferred: true }
+  from: before 418 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Labicana, pp. 563–564' }
+    - { source: livy, locator: '4.41.8' }
+    - { source: strabo, locator: '5.3.9' }
+    - { source: ashby-1902, locator: 'pp. 220–221' }
+    - { source: ashby-1927, locator: 'p. 128' }
+    - { source: sitar, locator: '24216' }
+    - { source: itinere, locator: Rome-Ad Bivium }
+  confidence: certain
+  review: draft
+  note: >-
+    It left the city by the Porta Esquilina with the Praenestina (Strabo 5.3.9) and
+    "diverged to the right from the via Praenestina just inside the porta Praenestina
+    of the Aurelian wall" (Platner & Ashby), at the tomb of Eurysaces (Ashby 1927).
+    Livy has it in 418 BCE (4.41.8). Its shared first stretch is drawn as the
+    Praenestina's; from the fork it follows Itiner-e's line, along the modern Via
+    Casilina, past its paving by the Marranella (SITAR 24216), which lies a little
+    north of the modern road (Ashby 1902).
 
 - id: via-tiburtina
   kind: road
   within: roma
+  pleiades: '272213281'
   location: [12.5075, 41.8975]
   names:
     - { text: Via Tiburtina, lang: la, preferred: true }
@@ -1357,17 +1497,80 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Via Tiburtina, pp. 568–569' }
+    - { source: ashby-1906, locator: 'pp. 85–88' }
+    - { source: sitar, locator: '21288, 19400' }
     - { source: itinere, locator: Rome-Tibur }
   confidence: probable
   review: draft
   note: >-
     The road to Tibur, which "probably left the city by the porta Esquilina"
-    (Platner & Ashby). Drawn from Itiner-e's line, which it gives as conjectured
-    here and dates to 307 BCE, joined to the gate.
+    (Platner & Ashby), following Hülsen; Ashby thought it "the most probable" start
+    but conceded the road from the Porta Viminalis lines up straight with the later
+    highway, so that it is "difficult to arrive at a definite conclusion" (Ashby
+    1906). Drawn from the Porta Esquilina to the later Porta Tiburtina, the arch of
+    Augustus' aqueducts over it, by its paving just outside (SITAR 21288), and on
+    along Itiner-e's line, which follows the modern Via Tiburtina to its tufa bridge
+    over the Marranella (19400); drawn lighter. Itiner-e dates it to 307 BCE.
+
+- id: via-salaria
+  kind: road
+  within: roma
+  pleiades: '18271457'
+  location: [12.4981, 41.911]
+  names:
+    - { text: Via Salaria, lang: la, preferred: true }
+  from: before 361 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Salaria, pp. 567–568' }
+    - { source: livy, locator: '7.9.6' }
+    - { source: ashby-1906, locator: 'pp. 7–14' }
+    - { source: ashby-1927, locator: 'p. 59' }
+    - { source: itinere, locator: Rome-Reate }
+  confidence: certain
+  review: draft
+  note: >-
+    The salt road of the Sabines, older than Rome's built roads; the Gauls camped by
+    it at the Anio in 361 BCE (Livy 7.9.6). It passed through the Porta Collina and
+    "after less than a quarter of a mile, reached its gate in the Aurelian wall, the
+    Porta Salaria" (Ashby 1927): "the straight road from the Porta Collina to the
+    Porta Salaria … and so on along the line followed by the modern road" (Ashby
+    1906). Drawn so, and on along Itiner-e's line. The "Salaria Vetus" through the
+    burial ground west of it is first named in 335–336 CE, and "that the original
+    road ran this way is unlikely" (Platner & Ashby), so it is not drawn.
+
+- id: via-nomentana
+  kind: road
+  within: roma
+  pleiades: '699256589'
+  location: [12.50654, 41.91301]
+  names:
+    - { text: Via Nomentana, lang: la, preferred: true }
+    - { text: Via Ficulensis, lang: la }
+  from: before 449 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Nomentana, p. 565' }
+    - { source: livy, locator: '3.52.3' }
+    - { source: ashby-1906, locator: 'pp. 38–41' }
+    - { source: itinere, locator: Rome-Nomentum }
+  confidence: probable
+  review: draft
+  note: >-
+    "The Nomentan — or, as it was then called, the Ficulan — road" (Livy 3.52.3). It
+    left the Salaria "immediately outside the Porta Collina" (Platner & Ashby) and ran
+    "to the S.E. of the present Via Venti Settembre" to the Porta Nomentana, 75 m
+    south-east of the Porta Pia, and then near the modern road, "winding
+    considerably": its paving was found 63 m north-west of it at the Viale Regina
+    Margherita (Ashby 1906). Drawn from the gate to the Porta Nomentana and on along
+    Itiner-e's line, lighter: the winding is not drawn.
 
 - id: via-aurelia
   kind: road
   within: roma
+  pleiades: '174900201'
   location: [12.4725, 41.8885]
   names:
     - { text: Via Aurelia, lang: la, preferred: true }
@@ -1376,14 +1579,49 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Via Aurelia, p. 561' }
-    - { source: itinere, locator: Populonium-Rome }
+    - { source: cicero-cat, locator: '2.6' }
+    - { source: ashby-1927, locator: 'pp. 225–226' }
+    - { source: sitar, locator: '15753' }
   confidence: probable
   review: draft
   note: >-
-    The road west along the coast, which "led from the pons Aemilius across the
-    low ground on the right bank of the Tiber" up to the Janiculum (Platner &
-    Ashby). Itiner-e dates it to 241 BCE but brings it in as several conjectured
-    lines across Trastevere, so it is not drawn on the model.
+    The road west along the coast, which Catiline took out of Rome in 63 BCE
+    (Cicero, In Catilinam 2.6); 241 BCE, the censorship of C. Aurelius Cotta, is the
+    usual inference from its name. It "led from the pons Aemilius across the low
+    ground on the right bank of the Tiber (where two arches of a viaduct belonging to
+    it were found near S. Crisogono …) up to the Janiculum", through the later Porta
+    Aurelia (Platner & Ashby), and on along the line of the modern Via Aurelia Antica
+    "for nearly 3 miles" (Ashby 1927). Its line up the Janiculum is not known, and
+    is drawn over the easiest ground, lighter. Itiner-e brings its Aurelia in
+    through the Vatican plain, which is another road, so its line is not used here.
+
+- id: via-campana
+  kind: road
+  within: roma
+  pleiades: '231839930'
+  location: [12.46916, 41.86863]
+  names:
+    - { text: Via Campana, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Via Campana, p. 561' }
+    - { source: platner-ashby, locator: 'Via Portuensis, p. 566' }
+    - { source: ashby-1927, locator: 'p. 217' }
+    - { source: sitar, locator: '11922, 21399, 10390, 10391, 24568' }
+  confidence: probable
+  review: draft
+  note: >-
+    The road along the right bank of the Tiber to the salt beds at its mouth,
+    "probably of very early origin"; "the first part of its course was identical with
+    that of the Via Portuensis" (Platner & Ashby), which was built later, for
+    Claudius' harbour, and "diverged to the right into hilly country from a far older
+    road, the Via Campana" (Ashby 1927). Drawn from the Pons Aemilius over the easiest
+    ground by the river, past a road 4–5 m wide beside a burial ground of the 1st
+    century BCE (SITAR 11922), to the stretches SITAR names as the Campana, gravelled
+    at first and paved about the 1st century BCE (21399, 10390, 10391, 24568); the
+    stretch through Trastevere is not surveyed, so it is drawn lighter.
 
 # --- the river, the hills and the quarters --------------------------------------
 # Lettered on the plan, never outlined as monuments. A hill's name is set on its

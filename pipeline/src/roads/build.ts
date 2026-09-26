@@ -19,6 +19,10 @@
  * Every segment keeps its first year, so at 68 BCE the map does not draw a road
  * built in 46.
  *
+ * Where the sources show a road in use that Itiner-e leaves undated, or dates by a
+ * later paving, data/road-corrections.yaml dates the line instead, and the build
+ * says which lines it corrected.
+ *
  * Output:
  * - roads.bin: u32 line count; per line u16 point count, i16 first year
  *   (astronomical), u8 class (0 main, 1 secondary), u8 certainty (0 certain,
@@ -30,6 +34,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { DATA_RECT, projection } from '@roman-map/world'
 import { formatYear } from '@roman-map/schema'
+import { loadDataset } from '../load.ts'
 import { firstYear } from './dating.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
@@ -105,12 +110,25 @@ const fc = JSON.parse(readFileSync(SRC, 'utf8')) as {
   features: { properties: Props; geometry: { coordinates: number[][][] } }[]
 }
 
+/** The corrections to its dating, by line name (data/road-corrections.yaml). */
+const corrections = new Map(loadDataset().roadCorrections.map((c) => [c.itinere, c]))
+const corrected = new Map<string, number>()
+
 interface Line {
   pts: [number, number][]
   from: number
   cls: number
   certainty: number
-  meta: { name: string | null; builder: string | null; from: string; type: string; certainty: string; bibliography: string | null }
+  meta: {
+    name: string | null
+    builder: string | null
+    from: string
+    type: string
+    certainty: string
+    bibliography: string | null
+    /** The correction that dates it, when Itiner-e's own dating is not used. */
+    corrected?: string
+  }
 }
 const lines: Line[] = []
 let undated = 0
@@ -118,7 +136,9 @@ let late = 0
 const km: Record<string, number> = {}
 for (const f of fc.features) {
   const p = f.properties
-  const from = firstYear(p)
+  const correction = p.Name ? corrections.get(p.Name) : undefined
+  if (correction) corrected.set(correction.id, (corrected.get(correction.id) ?? 0) + 1)
+  const from = correction ? correction.from.year : firstYear(p)
   if (from === null) {
     undated++
     continue
@@ -147,10 +167,13 @@ for (const f of fc.features) {
         type: p.Type,
         certainty: p.Segment_s,
         bibliography: p.Bibliograp,
+        ...(correction && { corrected: correction.id }),
       },
     })
   }
-  const who = p.Cons_per_e ?? `route attested ${formatYear(from)}`
+  const who = correction
+    ? `corrected: ${correction.name}`
+    : (p.Cons_per_e ?? `route attested ${formatYear(from)}`)
   km[who] = (km[who] ?? 0) + (p.Shape_Leng ?? 0) / 1000
 }
 
@@ -183,6 +206,14 @@ const vertices = lines.reduce((n, l) => n + l.pts.length, 0)
 console.log(
   `${lines.length} lines, ${vertices} vertices, ${(bytes / 1e3).toFixed(0)} KB; dropped ${undated} undated and ${late} built after ${formatYear(CUTOFF)}`,
 )
+for (const c of corrections.values()) {
+  const n = corrected.get(c.id)
+  if (!n)
+    throw new Error(`road-corrections.yaml: no Itiner-e line "${c.itinere}" (${c.id})`)
+  console.log(
+    `  corrected: ${c.itinere} (${c.name}) from ${formatYear(c.from.year)}, ${n} segments`,
+  )
+}
 console.log('by builder:')
 for (const [who, k] of Object.entries(km).sort((a, b) => b[1] - a[1]).slice(0, 20))
   console.log(`  ${String(Math.round(k)).padStart(5)} km  ${who}`)

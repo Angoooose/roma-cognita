@@ -260,7 +260,7 @@ export function servianCourse(): Course {
  * The middle line of a band (its outline): each point of one side paired with the
  * nearest point of the other, and their midpoints taken along the longer side.
  */
-function middleLine(outline: Pt[]): Pt[] {
+export function middleLine(outline: Pt[]): Pt[] {
   const P = resample(closed(outline), 1).slice(0, -1)
   const N = P.length
   const CELL = 16

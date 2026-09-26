@@ -13,6 +13,18 @@
  * - `onto`: where it meets another recorded street: the point of that street
  *   nearest `at`, or nearest the next stop.
  *
+ * The consular roads (roads.ts) have three more:
+ *
+ * - `gate`: a gate of the Servian Wall, by name, where servian.ts places it.
+ * - `along`: a SITAR reconstruction of a road's course, drawn as a narrow band (by its
+ *   number in data/geometry/rome-roads.geojson): the road runs along its middle line,
+ *   from the point nearest where it has got to, to the point nearest `to` or the next
+ *   stop.
+ * - `itinere`: the map's own line for the road (Itiner-e, build/roads), by its name:
+ *   from its point nearest `at`, the road runs on along it away from the city, past
+ *   the edge of the board, so the board's road meets the map's where one gives way to
+ *   the other. Always the last stop.
+ *
  * Between stops a street takes the easiest way over the ground, as the streets of
  * the valleys did, keeping off the monuments; or, where the finds lie on one line,
  * runs straight. Every line here is drawn lighter than a surveyed one. The finds are
@@ -26,6 +38,11 @@ export interface Stop {
   at?: LonLat
   sitar?: number
   onto?: string
+  gate?: string
+  along?: number
+  /** With `along`: where to leave the reconstruction, when not for the next stop. */
+  to?: LonLat
+  itinere?: string
   /** How the street goes on to the next stop: by the easiest ground, or straight. */
   next?: 'ground' | 'straight'
   /** Metres to stop short of this, the last stop: the front of a temple, not its steps. */

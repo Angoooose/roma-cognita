@@ -88,6 +88,7 @@ export function checkDataset(ds: Dataset): Issue[] {
   const polities = index('polity', ds.polities)
   const places = index('place', ds.places)
   index('route', ds.routes)
+  index('road-correction', ds.roadCorrections)
   index('landscape-change', ds.landscapeChanges)
   index('feature', ds.features)
 
@@ -102,6 +103,7 @@ export function checkDataset(ds: Dataset): Issue[] {
     ...ds.seats,
     ...ds.places,
     ...ds.routes,
+    ...ds.roadCorrections,
     ...ds.landscapeChanges,
     ...ds.features,
     ...ds.names,
@@ -139,6 +141,7 @@ export function checkDataset(ds: Dataset): Issue[] {
     ...ds.seats,
     ...ds.places,
     ...ds.routes,
+    ...ds.roadCorrections,
     ...ds.landscapeChanges,
     ...ds.features,
     ...ds.names,
@@ -512,6 +515,7 @@ export function doubts(ds: Dataset): DoubtReport {
     ...ds.seats,
     ...ds.places,
     ...ds.routes,
+    ...ds.roadCorrections,
     ...ds.landscapeChanges,
     ...ds.features,
   ]
@@ -541,6 +545,7 @@ export function doubts(ds: Dataset): DoubtReport {
       places: ds.places.length,
       names: ds.names.length,
       routes: ds.routes.length,
+      'road corrections': ds.roadCorrections.length,
       'landscape changes': ds.landscapeChanges.length,
       features: ds.features.length,
     },

@@ -619,9 +619,12 @@
   usedBy: pipeline/src/roads/build.ts, pipeline/src/rome/streets.ts
   note: >-
     Roads, drawn only where the source dates their construction to 27 BCE or
-    earlier (pipeline/src/roads). Its GeoJSON is EPSG:3395, not 4326. On the plan
-    of Rome its consular roads are drawn up to the gate each left by, and no
-    further; locators there are its line names ("Tarracinae-Rome").
+    earlier (pipeline/src/roads), or where data/road-corrections.yaml dates a line
+    it leaves undated. Its GeoJSON is EPSG:3395, not 4326. On the plan of Rome the
+    consular roads take up its lines outside the later Aurelian Wall, where they
+    keep to the ancient roads (pipeline/src/rome/roads.ts); inside it they run to
+    one point in the Forum and are not used. Locators are its line names
+    ("Tarracinae-Rome").
 
 - id: dprr
   kind: dataset
@@ -744,6 +747,10 @@
     2017 "Roma medio repubblicana" conference) and the pieces of the wall, its
     agger, ditch and gates are copied into data/geometry/rome-servian.geojson: the
     model's wall stands on that course (pipeline/src/rome/servian.ts).
+    The pieces of the consular roads' paving outside the wall that the model's roads
+    pass through, and its reconstructions of three of their courses (the Via
+    Flaminia, 16890; the Appia's first mile, 19681; the Latina, 19682), are copied
+    into data/geometry/rome-roads.geojson (pipeline/src/rome/roads.ts).
 
 - id: digital-augustan-rome
   kind: modern
@@ -1145,3 +1152,47 @@
     N. Purcell, "Town in country and country in town", in E. B. MacDougall (ed.),
     Ancient Roman Villa Gardens (Washington, DC: Dumbarton Oaks, 1987), 185–203
   usedBy: pipeline/src/rome/fields.ts
+
+# --- the roads out of Rome (DESIGN.md §7.4, §7.7) ---------------------------------
+# Added September 2026 for data/road-corrections.yaml and the consular roads the
+# model of Rome draws from its gates (pipeline/src/rome/roads.ts). Ashby walked and
+# surveyed the roads of the Campagna; his papers give each one's course from the
+# gate, the finds along it and how far the modern road keeps to it.
+
+- id: ashby-1902
+  kind: modern
+  citation: >-
+    T. Ashby, "The Classical Topography of the Roman Campagna — I", Papers of the
+    British School at Rome 1 (1902)
+  url: https://archive.org/details/pbsr-i.-2-the-classical-topography-of-the-roman-campagna-part-i
+  note: >-
+    The roads east of Rome: the Collatina, the Praenestina and the Labicana, their
+    courses from the Porta Esquilina and the paving found along them. Public domain;
+    locators are the journal's pages.
+
+- id: ashby-1906
+  kind: modern
+  citation: >-
+    T. Ashby, "The Classical Topography of the Roman Campagna — II", Papers of the
+    British School at Rome 3 (1906)
+  url: https://archive.org/details/pbsr-iii.-1-the-classical-topography-of-the-roman-campagna-part-ii
+  note: >-
+    The roads north-east of Rome: the Salaria and the Nomentana from the Porta
+    Collina, the Tiburtina from the Porta Esquilina. Public domain; locators are the
+    journal's pages.
+
+- id: ashby-1927
+  kind: modern
+  citation: T. Ashby, The Roman Campagna in Classical Times (London, 1927)
+  url: https://archive.org/details/romancampagnainc00ashb
+  note: >-
+    Each road out of Rome in turn, from its gate: its course, how far the modern road
+    keeps to it, and what stood along it. Locators are the book's pages.
+
+- id: cicero-cat
+  kind: ancient
+  citation: Cicero, In Catilinam
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0019:text=Catil.:speech=2:chapter=6
+  note: >-
+    2.6 (November 63 BCE): Catiline has left Rome, "Aurelia via profectus est", by
+    the Via Aurelia.
