@@ -12,8 +12,8 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 
 /**
  * The title block's last row, and the plate it opens, as an atlas opens with its
- * preface: what the map is, how to read it, what it will and will not claim (DESIGN.md
- * §1), and whose work it is drawn from (§6, PEOPLE.md §2). Unlike the legend it is a
+ * preface: what the map is, where it stands, how to use it, how far to trust it (DESIGN.md
+ * §1, §7.7), and whose work it is drawn from (§6, PEOPLE.md §2). Unlike the legend it is a
  * dialog: it is read on its own, not beside the map.
  */
 export function Preface({ years }: { years: string }) {
@@ -42,40 +42,57 @@ export function Preface({ years }: { years: string }) {
         <ScrollArea className="min-h-0 flex-1">
           <div className="space-y-6 px-8 pb-8 text-[0.9375rem] leading-relaxed">
             <p className="text-base">
-              An atlas of the last years of the Roman Republic, drawn year by year: Rome,
-              its provinces and client kingdoms, the powers beyond them, the towns and the
-              dated roads, and the men who governed them.
+              A map of the late Roman Republic, from the Gracchi in 133 BCE to Augustus’s
+              settlement in 27. As you move through the years, provinces and kingdoms change
+              hands, roads appear as they’re built, and each province shows who governed it.
             </p>
 
-            <Section title="Reading the map">
+            <Section title="Where it stands">
+              <p>
+                It’s a work in progress. The provinces, client kingdoms, neighbouring
+                powers, towns and roads cover the whole period. All 4,876 people in the
+                Digital Prosopography of the Roman Republic are in, but the ones it doesn’t
+                cover, like the client kings, aren’t yet. Zoom right into Rome and a 3D
+                model of the city rises out of the ground. Some of the landscape is still
+                modern, mostly river courses and a scatter of small lakes, and it’s being
+                corrected bit by bit. It’s made for desktop browsers.
+              </p>
+            </Section>
+
+            <Section title="Using the map">
               <ul className="space-y-1.5">
                 <Item>
-                  The <em>timeline</em>, bottom right, moves the map through the years.
+                  The <em>timeline</em>, bottom right, sets the year. Right-drag to turn the
+                  map; the compass beside the timeline puts north back up.
                 </Item>
                 <Item>
-                  Click a province, kingdom or town to open it on the right: who held it,
-                  who governed it, and on what evidence.
+                  Click a province, kingdom or town to see who held it and who governed it,
+                  with the sources for each.
                 </Item>
+                <Item>⌘K searches for places, provinces and people.</Item>
                 <Item>
-                  The <em>index of names</em> (⌘K) finds a place, a people or a person, and
-                  goes there.
-                </Item>
-                <Item>
-                  A person opens on the left: their career over the same ruler as the
-                  timeline, their family, and their sources.
+                  Clicking a person opens them on the left: their career laid out against
+                  the timeline’s years, their family, and where the evidence comes from.
                 </Item>
               </ul>
             </Section>
 
-            <Section title="What it claims">
-              <p>
-                Nothing is drawn that the evidence does not support. A frontier the sources
-                leave vague is drawn soft, without a line; a claim in doubt is drawn
-                fainter; a kingdom whose extent nobody knows is marked by its seat, not a
-                guessed outline. Everything is dated, so nothing appears before its time: a
-                road is drawn only from the year it was built. The silence of the sources is
-                not evidence.
-              </p>
+            <Section title="How far to trust it">
+              <div className="space-y-3">
+                <p>
+                  The map only shows what the sources support. A frontier the sources leave
+                  vague is shaded without a hard line, and uncertain claims are fainter.
+                  Where nobody knows how far a kingdom reached, only its capital is marked.
+                  Everything has dates, so a road only shows up once it was built.
+                </p>
+                <p>
+                  Rome is the exception. Its known buildings are placed and built from their
+                  sources, and where a building’s form is unknown it’s a typical temple of
+                  the period. Nobody can map the ordinary houses, tombs and farmland in
+                  between, so those are generated to give a sense of the city. They’re drawn
+                  plainer, and the legend marks them as illustrative.
+                </p>
+              </div>
             </Section>
 
             <Section title="Drawn from">
@@ -115,14 +132,14 @@ export function Preface({ years }: { years: string }) {
                 </Source>
               </ul>
               <p className="mt-3 text-sm text-muted-foreground">
-                The territories are our own outlines, drawn from the frontiers the cited
-                scholarship names. The Barrington Atlas and Broughton’s{' '}
-                <em>Magistrates of the Roman Republic</em> are cited, never copied.
+                The territory outlines are original, drawn from the frontiers in the cited
+                scholarship. The Barrington Atlas and Broughton’s{' '}
+                <em>Magistrates of the Roman Republic</em> are cited, not copied.
               </p>
             </Section>
 
             <p className="border-t border-rule/70 pt-4 text-center text-sm text-muted-foreground italic">
-              A non-commercial project. Our own data is released under CC BY-SA 4.0.
+              A non-commercial project. Its own data is released under CC BY-SA 4.0.
             </p>
           </div>
         </ScrollArea>
