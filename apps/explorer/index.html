@@ -4,8 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orbis Romanus</title>
+    <link rel="stylesheet" href="/src/splash.css" />
   </head>
   <body>
+    <!-- Shown while the map loads: src/splash.css, taken away by src/lib/splash.ts. -->
+    <div id="splash" aria-hidden="true">
+      <div class="plate">
+        <h1>Orbis Romanus</h1>
+        <div class="rule"><i></i><b></b><i></i></div>
+        <div class="years">the Roman world</div>
+      </div>
+    </div>
+    <script>
+      // Shows the plate once its two faces have loaded, or after a moment regardless.
+      {
+        const splash = document.getElementById('splash')
+        const show = () => splash.classList.add('fonts')
+        Promise.all([
+          document.fonts.load('500 30px "Cinzel Variable"'),
+          document.fonts.load('italic 17px "EB Garamond Variable"'),
+        ]).then(show, show)
+        setTimeout(show, 900)
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
