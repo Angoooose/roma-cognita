@@ -373,6 +373,24 @@ export const RouteSchema = z.strictObject({
 })
 export type Route = z.output<typeof RouteSchema>
 
+/**
+ * A correction to Itiner-e's dating of one of its lines: the sources show the road in
+ * use by `from`, where Itiner-e leaves it undated or dates it later (the Salaria's
+ * "Late Republic (72–30 BCE)", its paving, not the salt road). The roads build
+ * (pipeline/src/roads/build.ts) dates every segment of that name from it, and says so.
+ */
+export const RoadCorrectionSchema = z.strictObject({
+  id: SlugSchema,
+  /** The Itiner-e line's `Name`, as the source spells it: "Rome-Nomentum". */
+  itinere: z.string().min(1),
+  /** The road the line is, as historians name it. */
+  name: z.string().min(1),
+  /** When it was in use: `from` is the first year the map draws it. */
+  ...intervalFields,
+  ...historical,
+})
+export type RoadCorrection = z.output<typeof RoadCorrectionSchema>
+
 /** A dated correction to modern physical geography: silted bays, drained lakes, reservoirs. */
 export const LandscapeChangeSchema = z.strictObject({
   id: SlugSchema,

@@ -237,9 +237,18 @@ export function smoothGradient(mx: F, my: F) {
  * The plan over the terrain's colour at a plane point: the model's baked shadows
  * where its own cannot fall, the paved streets and roads, and the Tiber. `lit` is
  * the light the paving is shaded by. `pxM` is metres per device pixel, taken
- * outside any branch.
+ * outside any branch. Everything is drawn as far as the board reaches (`plate`), but
+ * the roads, which run on as far as the country does (`roads`).
  */
-function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
+function planOver(
+  colour: THREE.Node<'vec3'>,
+  mx: F,
+  my: F,
+  pxM: F,
+  lit: F,
+  plate: F,
+  roads: F,
+) {
   const aa = pxM.mul(0.6)
   const px = planUniforms.pixelRatio.mul(pxM)
   const line = (d: F, widthPx: number) =>
@@ -257,11 +266,13 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   const walled = float(1)
     .sub(smoothstep(-24, 8, city))
     .mul(float(1).sub(groundStanding(mx, my)))
-  out.assign(mix(out, rgb(EARTH).mul(lit), walled.mul(0.7).mul(planUniforms.meshShown)))
+  out.assign(
+    mix(out, rgb(EARTH).mul(lit), walled.mul(0.7).mul(planUniforms.meshShown).mul(plate)),
+  )
 
   // Baked shadows, as the model rises, where its ground mesh does not take its real ones.
   const baked = planUniforms.meshShown.mul(float(1).sub(groundMeshFade(mx, my)))
-  out.assign(out.mul(float(1).sub(p0.r.mul(0.3).mul(baked))))
+  out.assign(out.mul(float(1).sub(p0.r.mul(0.3).mul(baked).mul(plate))))
 
   // Paved streets and roads. What a line is comes from the nearest texel.
   const cell = min(
@@ -282,7 +293,7 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   const half = select(isRoad, max(px.mul(2), 5), max(px.mul(1.4), 3))
   const toStreet = p0.b.mul(planUniforms.streetClamp)
   const paved = float(1).sub(smoothstep(half.sub(aa), half.add(aa), toStreet))
-  const show = streetsShow(pxM)
+  const show = streetsShow(pxM).mul(select(isRoad, max(plate, roads), plate))
   out.assign(mix(out, rgb(PAVING).mul(lit), paved.mul(0.9).mul(show)))
   out.assign(
     mix(
@@ -298,6 +309,7 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
   const water = float(1)
     .sub(smoothstep(aa.negate(), aa, river))
     .mul(tiberReach(mx, my))
+    .mul(plate)
   out.assign(mix(out, rgb(WATER), water))
   // The bank only while its line fits well inside the river field's clamp; coarser,
   // every texel near the water would read as bank.
@@ -308,7 +320,7 @@ function planOver(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, lit: F) {
     mix(
       out,
       rgb(WATER).mul(0.75),
-      line(abs(river), 1.4).mul(0.6).mul(bank).mul(tiberReach(mx, my)),
+      line(abs(river), 1.4).mul(0.6).mul(bank).mul(tiberReach(mx, my)).mul(plate),
     ),
   )
   return out
@@ -329,14 +341,16 @@ function slopeLight(mx: F, my: F) {
 
 /**
  * The plan over the terrain's `colour` at plane position (`mx`, `my`), metres. `pxM`
- * is metres per device pixel, taken outside any branch.
+ * is metres per device pixel, taken outside any branch. `roads` is how far the plan's
+ * roads run on beyond the board: as far as the country round it (fields.ts
+ * `fieldsMask`), so a road out of a gate does not stop short in the fields.
  */
-export function planShading(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F) {
+export function planShading(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, roads: F) {
   const plate = plateMask(mx, my, pxM)
   return Fn(() => {
     const out = vec3(colour).toVar()
-    If(plate.greaterThan(0), () => {
-      out.assign(mix(out, planOver(out, mx, my, pxM, slopeLight(mx, my)), plate))
+    If(max(plate, roads).greaterThan(0), () => {
+      out.assign(planOver(out, mx, my, pxM, slopeLight(mx, my), plate, roads))
     })
     return out
   })()

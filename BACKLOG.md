@@ -135,6 +135,27 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   against the lines.
 - **Roads under Rome's knockout.** Glyph knockouts apply to lettering only;
   roads cross names freely, as on a printed map.
+- **The map's roads break into dashes close in.** Where the model of Rome's roads
+  hand over to the map's at the edge of the country round the city, the map's line
+  is the thin atlas symbol, and at 1–2 m/px its distance field is too coarse to
+  hold it: it draws as faint dashes. A finer road field near Rome, or the board's
+  roads carried further, would close it.
+- **The consular roads out of Rome** (built September 2026, DESIGN §7.7), left for
+  later:
+  - the Nomentana's winding, 63 m off the modern road at the Viale Regina
+    Margherita (Ashby 1906, pp. 39–41), is not drawn; it follows Itiner-e;
+  - the Aurelia's line up the Janiculum is not known and is drawn over the easiest
+    ground; the Campana's through Trastevere is not surveyed;
+  - the road through the Salarian burial ground ("Salaria Vetus", named only in
+    335–336 CE) and its gravel carriageways in SITAR (18198, 17763, 18402) could be
+    drawn as an unnamed road, uncertain;
+  - the tombs along the roads are generated. SITAR's copy of the Carta dell'Agro
+    Romano (`cartografia_storica:carta_agro_punti`) places 521 tombs and 48 funerary
+    monuments outside the Aurelian Wall, and its `carta_agro_lin_b` the ancient
+    road lines there; SITAR's services are CC BY-SA 4.0, but that layer's own
+    licence wants confirming before any of it is used;
+  - Itiner-e's own Aurelia comes in through the Vatican plain (a later road); on
+    the map it and its line into the Forum still draw zoomed out.
 
 ### The model of Rome, left for later
 
