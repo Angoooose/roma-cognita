@@ -17,8 +17,8 @@
  */
 import { readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
-import { projection } from '@roman-map/world'
-import type { Place } from '@roman-map/schema'
+import { projection } from '@roma-cognita/world'
+import type { Place } from '@roma-cognita/schema'
 import { DATA_DIR } from '../load.ts'
 import { ROADS } from './roads.ts'
 import { ROUTES, type Stop } from './routes.ts'

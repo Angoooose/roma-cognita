@@ -61,7 +61,7 @@ export function Playground() {
               Officina
             </div>
             <div className="text-xs text-muted-foreground italic">
-              the Orbis Romanus interface, on trial
+              the Roma Cognita interface, on trial
             </div>
           </div>
           <ToggleGroup

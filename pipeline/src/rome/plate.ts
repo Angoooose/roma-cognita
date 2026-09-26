@@ -27,8 +27,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import sharp from 'sharp'
-import { projection } from '@roman-map/world'
-import type { Place } from '@roman-map/schema'
+import { projection } from '@roma-cognita/world'
+import type { Place } from '@roma-cognita/schema'
 import { servianCourse } from './servian.ts'
 import { itinere, streetLines, TAKEN_UP } from './streets.ts'
 import {

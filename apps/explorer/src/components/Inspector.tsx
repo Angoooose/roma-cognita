@@ -1,4 +1,4 @@
-import type { ClaimRecord, PlaceHit, PoliticalHit } from '@roman-map/engine'
+import type { ClaimRecord, PlaceHit, PoliticalHit } from '@roma-cognita/engine'
 import { ChevronRight, X } from 'lucide-react'
 import { type ReactNode, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'

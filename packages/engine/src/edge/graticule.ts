@@ -11,7 +11,7 @@ import {
   smoothstep,
   vec2,
 } from 'three/tsl'
-import { EARTH_RADIUS, PROJECTION } from '@roman-map/world'
+import { EARTH_RADIUS, PROJECTION } from '@roma-cognita/world'
 
 /**
  * Longitude and latitude in the shader, and the graticule drawn from them: the terra

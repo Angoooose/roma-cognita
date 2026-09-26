@@ -1,5 +1,5 @@
 {
-  "name": "roman-map",
+  "name": "roma-cognita",
   "private": true,
   "type": "module",
   "workspaces": ["packages/*", "apps/*", "pipeline"],

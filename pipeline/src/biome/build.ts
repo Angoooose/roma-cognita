@@ -21,7 +21,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fromFile } from 'geotiff'
 import sharp from 'sharp'
-import { DATA_RECT, ROOT, projection } from '@roman-map/world'
+import { DATA_RECT, ROOT, projection } from '@roma-cognita/world'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const SRC = join(ROOT_DIR, '.cache/sources/koppen/1991_2020/koppen_geiger_0p00833333.tif')

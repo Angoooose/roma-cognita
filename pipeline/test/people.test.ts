@@ -7,7 +7,7 @@ import {
   type DprrProvince,
   type OfficeRole,
   type PersonId,
-} from '@roman-map/schema'
+} from '@roma-cognita/schema'
 import {
   activeSpan,
   applyCorrections,

@@ -18,7 +18,7 @@
  * Everything returned is simplified to under the political field's texel.
  */
 import { join } from 'node:path'
-import type { Leg } from '@roman-map/schema'
+import type { Leg } from '@roma-cognita/schema'
 import { readDem, lonLatToPixel, pixelToLonLat, isSea } from '../features/dem.ts'
 import { catmullRom, leastCostPath, simplifyIndices, type Pt } from '../features/grid.ts'
 import { readDbf, readShp } from '../features/shp.ts'

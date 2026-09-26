@@ -52,7 +52,7 @@ commercial the build can be re-run without them.
 ## 3. Architecture
 
 ```
-roman-map/
+roma-cognita/
   DESIGN.md
   data/                 hand-authored records (YAML) + geometry (GeoJSON) — the moat
   pipeline/             ingest, validate, bake — Node/TS, GDAL CLI for rasters

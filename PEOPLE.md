@@ -129,7 +129,7 @@ build/people/                   DPRR-derived, CC BY-NC 4.0
 
 - `npm run people:fetch -w pipeline` queries DPRR and Wikidata once and caches the
   answers. It is never run by an ordinary build: KCL's server is not our CDN.
-  Wikimedia asks scripts to give a contact, so the fetch sends `ROMAN_MAP_CONTACT`
+  Wikimedia asks scripts to give a contact, so the fetch sends `ROMA_COGNITA_CONTACT`
   from the gitignored `.env.local` at the repo root. It is never in the code.
 - `npm run people -w pipeline` builds from the cache in under a second. It prints the
   counts, every correction it applied, and anything it could not classify, merge or

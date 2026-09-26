@@ -45,7 +45,7 @@ import {
   type Source,
   RoadCorrectionSchema,
   RouteSchema,
-} from '@roman-map/schema'
+} from '@roma-cognita/schema'
 
 export const DATA_DIR = resolve(import.meta.dirname, '../../data')
 

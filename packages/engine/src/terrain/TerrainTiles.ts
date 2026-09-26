@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { DATA_RECT, ROOT, TILE_TEXELS } from '@roman-map/world'
+import { DATA_RECT, ROOT, TILE_TEXELS } from '@roma-cognita/world'
 import { createTerrainMaterial, type TileTextures } from './material.ts'
 import type { TileJob, TileResult } from './heightWorker.ts'
 

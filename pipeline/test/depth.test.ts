@@ -9,7 +9,7 @@ import {
   packHeadLength,
   readPackHead,
   writePack,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 import { extendSea } from '../src/depth/sources.ts'
 
 const N = TILE_TEXELS

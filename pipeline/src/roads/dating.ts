@@ -19,7 +19,7 @@
  * Cons_per_e wins wherever it is present: a road Trajan built is not a road Cicero
  * could travel, whatever older path it followed. 9999 is the source's "unknown".
  */
-import { toAstronomical } from '@roman-map/schema'
+import { toAstronomical } from '@roma-cognita/schema'
 
 const UNKNOWN = 9999
 

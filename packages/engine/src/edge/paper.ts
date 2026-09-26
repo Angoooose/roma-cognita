@@ -10,7 +10,7 @@ import {
   vec2,
   vec3,
 } from 'three/tsl'
-import { ROOT } from '@roman-map/world'
+import { ROOT } from '@roma-cognita/world'
 
 /**
  * The paper past the known world, as a surface rather than a flat colour: fibre grain,

@@ -1,4 +1,4 @@
-import type { RomeMap } from '@roman-map/engine'
+import type { RomeMap } from '@roma-cognita/engine'
 import { useEffect, useRef } from 'react'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 

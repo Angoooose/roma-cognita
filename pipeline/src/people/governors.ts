@@ -25,7 +25,7 @@ import {
   type OfficeRole,
   type PostRecord,
   type Year,
-} from '@roman-map/schema'
+} from '@roma-cognita/schema'
 
 /** Reads data/dprr-provinces.yaml, or null if it has not been written yet. */
 export function readDprrProvinces(dataDir: string): DprrProvince[] | null {

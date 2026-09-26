@@ -1,5 +1,5 @@
 import * as THREE from 'three/webgpu'
-import { frameRect, projection } from '@roman-map/world'
+import { frameRect, projection } from '@roma-cognita/world'
 
 /**
  * A strategy-map camera: a ground target, a distance, a tilt, and a heading. North is up

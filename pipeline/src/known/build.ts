@@ -19,7 +19,7 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 import { parse } from 'yaml'
-import { ROOT, projection } from '@roman-map/world'
+import { ROOT, projection } from '@roma-cognita/world'
 import { knownPolygons, readKnownWorld, type LonLat } from './world.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')

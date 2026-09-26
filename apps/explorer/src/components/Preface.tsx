@@ -32,7 +32,7 @@ export function Preface({ years }: { years: string }) {
         <header className="px-8 pt-7 pb-5 text-center">
           <div className="caps mb-2 text-xs text-muted-foreground">Preface</div>
           <DialogTitle className="font-heading text-2xl leading-tight font-semibold tracking-[0.16em]">
-            Orbis Romanus
+            Roma Cognita
           </DialogTitle>
           <DialogDescription className="figures mt-1 text-base text-muted-foreground italic">
             the Roman world, {years}

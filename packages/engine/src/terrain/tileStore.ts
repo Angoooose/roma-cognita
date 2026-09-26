@@ -15,7 +15,7 @@ import {
   readPackHead,
   type PackEntry,
   type TileAddress,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 
 const HEAD_LIMIT = 256
 

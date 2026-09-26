@@ -1,5 +1,5 @@
 {
-  "name": "@roman-map/engine",
+  "name": "@roma-cognita/engine",
   "private": true,
   "type": "module",
   "exports": {
@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "three": "^0.186.0",
-    "@roman-map/world": "*"
+    "@roma-cognita/world": "*"
   },
   "devDependencies": {
     "@types/three": "^0.186.0"

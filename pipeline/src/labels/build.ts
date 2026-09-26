@@ -17,14 +17,14 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { formatYear } from '@roman-map/schema'
+import { formatYear } from '@roma-cognita/schema'
 import { loadDataset } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
 import { knownPolygons, readKnownWorld } from '../known/world.ts'
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 import { lonLatToPixel, readDem, TILE, type Raster } from '../features/dem.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
@@ -348,7 +348,7 @@ console.log(`${places.length} places, ${seats.length} seats`)
 /** Land or sea at a plane point, from the coast mask's level-6 tiles (build/water). */
 async function coastSampler() {
   const { default: sharp } = await import('sharp')
-  const { ROOT, TILE_TEXELS } = await import('@roman-map/world')
+  const { ROOT, TILE_TEXELS } = await import('@roma-cognita/world')
   const dir = join(ROOT_DIR, 'build/water')
   const index = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8'))
   const level = 6

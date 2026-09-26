@@ -11,7 +11,7 @@ import {
   positionGeometry,
   vec4,
 } from 'three/tsl'
-import { ROOT } from '@roman-map/world'
+import { ROOT } from '@roma-cognita/world'
 import { GRATICULE_INK, graticuleNode } from './graticule.ts'
 import { knownDistanceKm, paperNode } from './paper.ts'
 import { INK, terrainTextures } from '../terrain/material.ts'

@@ -4,7 +4,7 @@
  * arcade (piers and arches) where the channel stands high over the ground, solid
  * wall where it is lower, and shafts over the stretches underground.
  */
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 
 type Pt = [number, number]
 

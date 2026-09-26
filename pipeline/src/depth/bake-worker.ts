@@ -12,7 +12,7 @@ import {
   projection,
   tileRect,
   type TileAddress,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 import {
   EMODNET_CHUNK_DEG,
   EMODNET_CHUNK_TEXELS,

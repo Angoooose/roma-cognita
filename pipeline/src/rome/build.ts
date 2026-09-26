@@ -9,7 +9,7 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 import { DATA_DIR, loadDataset } from '../load.ts'
 import { bakePlate } from './plate.ts'
 

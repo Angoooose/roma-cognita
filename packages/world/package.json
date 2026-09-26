@@ -1,5 +1,5 @@
 {
-  "name": "@roman-map/world",
+  "name": "@roma-cognita/world",
   "private": true,
   "type": "module",
   "exports": { ".": "./src/index.ts" }

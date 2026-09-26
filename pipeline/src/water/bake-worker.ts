@@ -5,7 +5,7 @@
  */
 import { parentPort } from 'node:worker_threads'
 import sharp from 'sharp'
-import { TILE_TEXELS } from '@roman-map/world'
+import { TILE_TEXELS } from '@roma-cognita/world'
 import { fillPolygons, signedDistance, type Grid, type Ring } from './raster.ts'
 
 export interface BakeJob {

@@ -27,7 +27,7 @@
  */
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 import { DATA_DIR } from '../load.ts'
 
 type Pt = [number, number]

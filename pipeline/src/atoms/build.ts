@@ -19,7 +19,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import pc, { type MultiPolygon, type Polygon } from 'polygon-clipping'
-import type { Atom } from '@roman-map/schema'
+import type { Atom } from '@roma-cognita/schema'
 import { DATA_DIR, readDataset } from '../load.ts'
 import { rewindRFC7946 } from '../geo.ts'
 import { Land, boundsOf, type Bounds } from './land.ts'

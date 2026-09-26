@@ -29,7 +29,7 @@
  * then trimmed where it leaves modern land (sea or lagoon), because the coast has
  * moved and the map's coast is modern.
  */
-import type { Confidence } from '@roman-map/schema'
+import type { Confidence } from '@roma-cognita/schema'
 import type { Pt } from './grid.ts'
 
 export interface Waypoint {

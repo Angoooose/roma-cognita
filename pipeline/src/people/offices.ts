@@ -9,7 +9,7 @@
  * most specific rule wins. An office no rule reaches is `other`, and the build lists
  * it, so a new office in a later fetch cannot slip through unclassified.
  */
-import type { OfficeRole } from '@roman-map/schema'
+import type { OfficeRole } from '@roma-cognita/schema'
 
 /** Office or branch name → role. Checked from the office itself up to the root. */
 const RULES: Record<string, OfficeRole> = {

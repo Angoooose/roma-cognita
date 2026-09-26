@@ -1,6 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { uniform } from 'three/tsl'
-import { ROOT, TILE_TEXELS } from '@roman-map/world'
+import { ROOT, TILE_TEXELS } from '@roma-cognita/world'
 import { toHalf } from '../terrain/half.ts'
 import { polityStyle } from './palette.ts'
 

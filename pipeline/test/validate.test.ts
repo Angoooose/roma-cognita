@@ -151,7 +151,7 @@ afterEach(() => {
 })
 
 function write(f: Fixture): string {
-  const dir = mkdtempSync(join(tmpdir(), 'roman-map-data-'))
+  const dir = mkdtempSync(join(tmpdir(), 'roma-cognita-data-'))
   dirs.push(dir)
   const { geometry, ...files } = f
   for (const [name, rows] of Object.entries(files)) {

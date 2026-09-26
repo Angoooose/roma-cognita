@@ -1,4 +1,4 @@
-import { ROOT } from '@roman-map/world'
+import { ROOT } from '@roma-cognita/world'
 import { inside, type Ring } from './raster.ts'
 
 /** Rings bucketed on a coarse grid so a tile only looks at rings near it. */

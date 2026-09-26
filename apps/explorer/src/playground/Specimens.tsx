@@ -117,7 +117,7 @@ function Type() {
       <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
         <div className="space-y-3">
           <div className="font-heading text-5xl font-medium tracking-[0.12em]">
-            Orbis Romanus
+            Roma Cognita
           </div>
           <div className="font-heading text-2xl tracking-[0.1em] text-muted-foreground">
             Res Publica · 133–27 BCE

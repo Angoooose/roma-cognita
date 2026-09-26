@@ -1,4 +1,4 @@
-import type { PersonId, PersonRecord } from '@roman-map/schema'
+import type { PersonId, PersonRecord } from '@roma-cognita/schema'
 import { createContext, type ReactNode, useContext } from 'react'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { knownName, type People } from '@/lib/people.ts'

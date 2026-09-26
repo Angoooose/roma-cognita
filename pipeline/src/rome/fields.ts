@@ -34,8 +34,8 @@
  * which side of the line a texel is on (128 for 0) and clamped (`EDGE_CLAMP_M`,
  * `LANE_CLAMP_M`). All of it is seeded, so every build is the same.
  */
-import { projection } from '@roman-map/world'
-import type { Place } from '@roman-map/schema'
+import { projection } from '@roma-cognita/world'
+import type { Place } from '@roma-cognita/schema'
 
 type Pt = [number, number]
 

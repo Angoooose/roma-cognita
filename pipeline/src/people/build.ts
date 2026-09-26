@@ -38,8 +38,8 @@ import type {
   SearchEntry,
   StatusRecord,
   Year,
-} from '@roman-map/schema'
-import { formatYear } from '@roman-map/schema'
+} from '@roma-cognita/schema'
+import { formatYear } from '@roma-cognita/schema'
 import { readDprr, type Row, type Table } from './dprr.ts'
 import { CORRECTIONS, INVERSE_CORRECTIONS, type Correction } from './corrections.ts'
 import { joinGovernors, readDprrProvinces, unattestedYears } from './governors.ts'

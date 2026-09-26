@@ -1,4 +1,4 @@
-import { type CameraState, RomeMap } from '@roman-map/engine'
+import { type CameraState, RomeMap } from '@roma-cognita/engine'
 import { useEffect, useRef } from 'react'
 import { useExplorer } from '@/store.ts'
 

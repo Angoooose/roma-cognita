@@ -31,7 +31,7 @@ import {
   projection,
   tileRect,
   type TileAddress,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 import { toHalf } from './half.ts'
 import { alignDistance } from '../politics/field.ts'
 import { riverHalfWidth, riverMinDischarge } from './rivers.ts'

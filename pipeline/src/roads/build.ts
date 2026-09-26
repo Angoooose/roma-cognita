@@ -32,8 +32,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { DATA_RECT, projection } from '@roman-map/world'
-import { formatYear } from '@roman-map/schema'
+import { DATA_RECT, projection } from '@roma-cognita/world'
+import { formatYear } from '@roma-cognita/schema'
 import { loadDataset } from '../load.ts'
 import { firstYear } from './dating.ts'
 

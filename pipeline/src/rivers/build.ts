@@ -23,7 +23,7 @@ import { parse as parseYaml } from 'yaml'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as shapefile from 'shapefile'
-import { DATA_RECT, ROOT, projection } from '@roman-map/world'
+import { DATA_RECT, ROOT, projection } from '@roma-cognita/world'
 import { RingIndex } from '../water/ring-index.ts'
 import { BBOX, SOURCES, ensureUnzipped, keepLake, lakeArea, projectRing, readRings } from '../water/sources.ts'
 

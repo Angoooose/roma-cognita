@@ -1,5 +1,5 @@
-import type { MapEntry } from '@roman-map/engine'
-import type { PersonRecord } from '@roman-map/schema'
+import type { MapEntry } from '@roma-cognita/engine'
+import type { PersonRecord } from '@roma-cognita/schema'
 import { defaultFilter } from 'cmdk'
 import { Search as SearchIcon } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
@@ -279,7 +279,7 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
     <div className="pointer-events-auto relative w-[248px] shrink-0 rounded-lg rule-double bg-card/95 text-card-foreground backdrop-blur-sm select-none">
       <div className="px-4 pt-3 pb-2.5 text-center">
         <h1 className="font-heading text-lg leading-tight font-semibold tracking-[0.16em]">
-          Orbis Romanus
+          Roma Cognita
         </h1>
         <div className="figures text-xs text-muted-foreground italic">
           the Roman world, {years}

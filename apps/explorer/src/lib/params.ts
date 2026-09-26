@@ -1,4 +1,4 @@
-import { MapCamera } from '@roman-map/engine'
+import { MapCamera } from '@roma-cognita/engine'
 import { parseYear } from './year.ts'
 
 /**

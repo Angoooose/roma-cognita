@@ -14,7 +14,7 @@
  * for any ring that does not cross the antimeridian — none in this frame do.
  */
 import pc from 'polygon-clipping'
-import type { AreaGeometry, LonLat } from '@roman-map/schema'
+import type { AreaGeometry, LonLat } from '@roma-cognita/schema'
 
 type Ring = number[][]
 type Polys = Ring[][]

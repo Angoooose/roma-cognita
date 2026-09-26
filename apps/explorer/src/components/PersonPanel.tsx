@@ -1,6 +1,6 @@
-import type { PersonRecord } from '@roman-map/schema'
+import type { PersonRecord } from '@roma-cognita/schema'
 import { ChevronLeft, X } from 'lucide-react'
-import type { RomeMap } from '@roman-map/engine'
+import type { RomeMap } from '@roma-cognita/engine'
 import type { ReactNode } from 'react'
 import { InPersonPanel, lifeLine, PersonLink } from '@/components/PersonLink.tsx'
 import { Badge } from '@/components/ui/badge'

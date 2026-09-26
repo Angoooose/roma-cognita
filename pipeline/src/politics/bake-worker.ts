@@ -23,7 +23,7 @@
  */
 import { parentPort } from 'node:worker_threads'
 import sharp from 'sharp'
-import { TILE_TEXELS } from '@roman-map/world'
+import { TILE_TEXELS } from '@roma-cognita/world'
 import { edt, fillPolygons, type Grid, type Ring } from '../water/raster.ts'
 import { encodeDistance } from './encoding.ts'
 

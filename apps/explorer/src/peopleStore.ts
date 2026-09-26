@@ -1,4 +1,4 @@
-import type { PersonId } from '@roman-map/schema'
+import type { PersonId } from '@roma-cognita/schema'
 import { create } from 'zustand'
 import { People } from '@/lib/people.ts'
 

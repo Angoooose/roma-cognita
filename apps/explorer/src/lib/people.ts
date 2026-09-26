@@ -9,7 +9,7 @@ import type {
   PostRecord,
   RelationshipRecord,
   StatusRecord,
-} from '@roman-map/schema'
+} from '@roma-cognita/schema'
 
 /**
  * The people layer (PEOPLE.md), as the app reads it: build/people/, fetched once after

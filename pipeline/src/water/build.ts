@@ -30,7 +30,7 @@ import {
   tileRect,
   writePack,
   type TileAddress,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 import type { BakeJob, BakeResult } from './bake-worker.ts'
 import { edgesTouch, inside, type Ring } from './raster.ts'
 import { RingIndex } from './ring-index.ts'

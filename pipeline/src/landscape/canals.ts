@@ -21,7 +21,7 @@
  */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 
 type LonLat = [number, number]
 

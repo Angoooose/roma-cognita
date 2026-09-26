@@ -15,7 +15,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import * as shapefile from 'shapefile'
-import { DATA_RECT, projection } from '@roman-map/world'
+import { DATA_RECT, projection } from '@roma-cognita/world'
 import type { Ring } from './raster.ts'
 
 export const SOURCES = {

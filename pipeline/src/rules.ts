@@ -23,7 +23,7 @@ import {
   type Endpoint,
   type Interval,
   type Polity,
-} from '@roman-map/schema'
+} from '@roma-cognita/schema'
 import { contains as geometryContains, overlapArea, ringProblems } from './geo.ts'
 import type { Dataset, Issue } from './load.ts'
 import { passageUrl } from './passages/passage.ts'

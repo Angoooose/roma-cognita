@@ -12,8 +12,8 @@
  * `bearing` for the way its front faces. Numbers are the sources' where they give
  * them; where they do not, the note says what is typical and why.
  */
-import { projection } from '@roman-map/world'
-import type { Place } from '@roman-map/schema'
+import { projection } from '@roma-cognita/world'
+import type { Place } from '@roma-cognita/schema'
 import { DESIGNS_CAMPUS } from './designs/campus.ts'
 import { DESIGNS_CAPITOL } from './designs/capitol.ts'
 import { DESIGNS_FORUM } from './designs/forum.ts'

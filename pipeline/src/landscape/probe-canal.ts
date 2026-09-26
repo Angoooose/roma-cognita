@@ -10,7 +10,7 @@
  */
 import { readRings, ensureUnzipped, SOURCES, keepLand } from '../water/sources.ts'
 import { fillPolygons } from '../water/raster.ts'
-import { projection } from '@roman-map/world'
+import { projection } from '@roma-cognita/world'
 import { join } from 'node:path'
 const CACHE = join(import.meta.dirname, '../../../.cache/sources')
 const land = await readRings(ensureUnzipped(CACHE, SOURCES.land.zip), keepLand)

@@ -32,7 +32,7 @@ import {
   tileRect,
   writePack,
   type TileAddress,
-} from '@roman-map/world'
+} from '@roma-cognita/world'
 import { BBOX } from '../water/sources.ts'
 import type { DepthJob, DepthResult, DepthWorkerData } from './bake-worker.ts'
 import {

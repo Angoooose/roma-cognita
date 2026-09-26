@@ -1,4 +1,4 @@
-import { MODEL_KEY, type PoliticsLegend, UNCERTAIN_ALPHA } from '@roman-map/engine'
+import { MODEL_KEY, type PoliticsLegend, UNCERTAIN_ALPHA } from '@roma-cognita/engine'
 import { LayoutList } from 'lucide-react'
 import { type ReactNode, useId, useMemo } from 'react'
 import { create } from 'zustand'

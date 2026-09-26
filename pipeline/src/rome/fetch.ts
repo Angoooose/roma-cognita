@@ -16,7 +16,7 @@
  */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import type { AreaGeometry, LonLat } from '@roman-map/schema'
+import type { AreaGeometry, LonLat } from '@roma-cognita/schema'
 import { DATA_DIR, loadDataset } from '../load.ts'
 import { distanceKm, rewindRFC7946 } from '../geo.ts'
 
@@ -65,7 +65,7 @@ async function overpass(q: string, tries = 5): Promise<{ elements: Element[] }> 
   for (let i = 1; ; i++) {
     const res = await fetch(OVERPASS, {
       method: 'POST',
-      headers: { 'User-Agent': 'roman-map pipeline (rome:fetch)' },
+      headers: { 'User-Agent': 'roma-cognita pipeline (rome:fetch)' },
       body: new URLSearchParams({ data: q }),
     })
     const body = await res.text()

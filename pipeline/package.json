@@ -1,5 +1,5 @@
 {
-  "name": "@roman-map/pipeline",
+  "name": "@roma-cognita/pipeline",
   "private": true,
   "type": "module",
   "scripts": {
@@ -24,8 +24,8 @@
     "passages:fetch": "node --env-file-if-exists=../.env.local --import tsx src/passages/fetch.ts"
   },
   "dependencies": {
-    "@roman-map/schema": "*",
-    "@roman-map/world": "*",
+    "@roma-cognita/schema": "*",
+    "@roma-cognita/world": "*",
     "@types/d3-contour": "^3.0.6",
     "d3-contour": "^4.0.2",
     "geotiff": "^3.0.5",

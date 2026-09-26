@@ -23,7 +23,7 @@ import {
   vec2,
   vec3,
 } from 'three/tsl'
-import { DATA_RECT, ROOT } from '@roman-map/world'
+import { DATA_RECT, ROOT } from '@roma-cognita/world'
 import { politicsUniforms } from '../politics/PoliticalLayer.ts'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'

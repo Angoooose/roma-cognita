@@ -1,5 +1,5 @@
 {
-  "name": "@roman-map/explorer",
+  "name": "@roma-cognita/explorer",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +10,8 @@
   "dependencies": {
     "@fontsource-variable/cinzel": "^5.3.0",
     "@fontsource-variable/eb-garamond": "^5.3.0",
-    "@roman-map/engine": "*",
-    "@roman-map/schema": "*",
+    "@roma-cognita/engine": "*",
+    "@roma-cognita/schema": "*",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
     "cn": "^0.4.0",
