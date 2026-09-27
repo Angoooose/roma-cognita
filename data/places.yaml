@@ -822,11 +822,11 @@
   confidence: certain
   review: needs-check
   note: >-
-    The Arverni settled the plateau only in the 60s BCE, when its great works
-    were built, moving from Corent, founded at the end of the second century;
-    it was left for Augustonemetum (Clermont) in the first decades CE (Musée de
-    Gergovie; Puy-de-Dôme). It stood "before 68" here until September 2026.
-    Corent, the Arverni's chief oppidum in 133–70, is not yet a place.
+    The Arverni reoccupied the plateau only about 60 BCE, when its great works
+    were built "in the 60s"; it was left for Augustonemetum (Clermont) in the
+    first decades CE (Musée de Gergovie; Puy-de-Dôme). It stood "before 68"
+    here until September 2026. Their oppida before it, Corent (founded at the
+    end of the second century) and Gondole, are not yet places.
 
 - id: dyrrachium
   pleiades: '481818'
@@ -1499,8 +1499,9 @@
   review: needs-check
   note: >-
     "Pompelon, or Pompey's city" among the Vascones (Strabo 3.4.10). When it
-    was founded is not recorded; it is put at Pompey's winter of 75/74, when his
-    army went "into the territory of the Vascones" (Sall. Hist. 2.93 M).
+    was founded is not recorded; it is put at 75, when Pompey's army went "into
+    the territory of the Vascones to gather food" (Sall. Hist. 2.93 M), before
+    his winter of 75/74.
 
 - id: aquae-sextiae
   pleiades: '148053'
@@ -1519,10 +1520,11 @@
   review: draft
   note: >-
     Founded by the proconsul C. Sextius Calvinus after his defeat of the
-    Salluvii, named for its springs and for him (Livy Per. 61), with "a Roman
-    garrison" (Strabo 4.1.5); dated 122, as Livy tells it just before the wars
-    of 121. Marius beat the Teutones near it in 102 (Per. 68). A garrison, not
-    yet a colony.
+    Salluvii, named for its springs (Livy Per. 61) and for him, with "a Roman
+    garrison" (Strabo 4.1.5); dated 122, as Livy tells it first in book 61,
+    before Domitius' war with the Allobroges and the year 121. Marius beat the
+    Teutones near it in 102 (Per. 68). The epitome calls it a colony; Strabo's
+    garrison is the likelier reading, and it is not drawn as one.
 
 - id: vienna
   pleiades: '167719'

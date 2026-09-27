@@ -203,9 +203,9 @@
   review: needs-check
   note: >-
     The Celtiberian heart of Sertorius' power: besieged at Clunia he held out
-    (Livy Per. 92, under 76); Uxama, Termes and Clunia were among the last
-    towns to fall to Pompey after Perperna's end in 72 (Flor. 2.10.9; Oros.
-    5.23.14). Strabo has him driven out of Celtiberia before his end (3.4.10),
+    (Livy Per. 92, under 76); Termes and Uxama were among the last towns to
+    come over after Perperna's end in 72, and Uxama held out until Pompey took
+    it (Flor. 2.10.9; Oros. 5.23.14). Strabo has him driven out of Celtiberia before his end (3.4.10),
     so its last years may be too long.
 
 - atom: lusitania-north
@@ -229,7 +229,7 @@
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
-    - { source: livy-per, locator: '60–61' }
+    - { source: livy-per, locator: '47, 60–61' }
     - { source: velleius, locator: '2.10.2, 2.39.1' }
     - { source: strabo, locator: '4.1.5, 4.1.11' }
   confidence: probable
@@ -237,8 +237,9 @@
   note: >-
     From the defeat of the Allobroges and the Arverni in 121 (Livy Per. 61;
     Strabo 4.1.11), the province's conventional start; unclaimed before, when
-    the land was its Gallic peoples' and Massalia's (Rome's first war here, for
-    Massalia against the Salluvii, was in 125, Per. 60). The Salluvian country
+    the land was its Gallic peoples' and Massalia's (Rome had fought for
+    Massalia beyond the Alps in 154, Livy Per. 47, and came back at its call
+    against the Salluvii in 125, Per. 60). The Salluvian country
     between the Rhône and the Var was beaten in 124–122 and garrisoned at Aquae
     Sextiae in 122 (Strabo 4.1.5); it is not drawn apart, a year or two ahead of
     the rest. The date of the regular province is disputed (see the polity).
@@ -259,7 +260,7 @@
   from: { earliest: 121 BCE, latest: 118 BCE }
   to: 107 BCE
   sources:
-    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
     - { source: velleius, locator: '2.7.8' }
   confidence: uncertain
   review: needs-check

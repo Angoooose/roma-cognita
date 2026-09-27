@@ -469,12 +469,13 @@
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '4.1.5' }
-    - { source: livy-per, locator: '60' }
+    - { source: livy-per, locator: '47, 60' }
   confidence: certain
   review: draft
   note: >-
-    An ally long before 133; Rome's first war beyond the Alps, in 125, was
-    fought at its request (Livy Per. 60). Its territory is the Province's from
+    An ally long before 133: Rome fought the Ligurians beyond the Alps at its
+    request in 154 (Livy Per. 47) and again, against the Salluvii, in 125 (Per.
+    60). Its territory is the Province's from
     49 (claims.yaml).
 
 - polity: paphlagonia
@@ -587,7 +588,7 @@
   from: { earliest: 121 BCE, latest: 118 BCE }
   to: 107 BCE
   sources:
-    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
   confidence: uncertain
   review: needs-check
   note: >-

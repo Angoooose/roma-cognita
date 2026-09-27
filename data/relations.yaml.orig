@@ -1,0 +1,856 @@
+# How polities stood to one another over time: `polity` is `type` `of` another.
+# Province and client standing are kept apart from the polity so they can be
+# dated separately from it and from the ground it held — Egypt was a kingdom
+# throughout, a client only from some point in the window.
+#
+# Province rows run from the province's creation. A client row runs from when
+# the standing began where that is known, and otherwise across the whole
+# 133–27 window.
+
+# --- citizen territory and provinces -------------------------------------------
+
+- polity: italia
+  type: citizen-territory-of
+  of: rome
+  from: { earliest: 90 BCE, latest: 89 BCE }
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: certain
+  review: draft
+  note: lex Julia 90, lex Plautia Papiria 89.
+
+- polity: sicilia
+  type: province-of
+  of: rome
+  from: 241 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: sardinia-corsica
+  type: province-of
+  of: rome
+  from: 227 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: hispania-citerior
+  type: province-of
+  of: rome
+  from: 197 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: hispania-ulterior
+  type: province-of
+  of: rome
+  from: 197 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: macedonia
+  type: province-of
+  of: rome
+  from: 146 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: africa
+  type: province-of
+  of: rome
+  from: 146 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: asia
+  type: province-of
+  of: rome
+  from: 129 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: gallia-transalpina
+  type: province-of
+  of: rome
+  from: 121 BCE
+  to: after 27 BCE
+  sources: [{ source: broughton-mrr }]
+  confidence: certain
+  review: draft
+
+- polity: cilicia
+  type: province-of
+  of: rome
+  from: 80 BCE
+  to: { earliest: 44 BCE, latest: 43 BCE }
+  sources: [{ source: cah-ix, locator: ch. 8 }, { source: broughton-mrr, locator: vol. II }]
+  confidence: probable
+  review: draft
+
+- polity: gallia-cisalpina
+  type: province-of
+  of: rome
+  from: c. 81 BCE
+  to: 43 BCE
+  sources: [{ source: cah-ix }]
+  confidence: probable
+  review: draft
+  note: Dissolved into Italy in 42.
+
+- polity: cyrenae
+  type: province-of
+  of: rome
+  from: c. 74 BCE
+  to: 28 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
+  confidence: probable
+  review: draft
+  note: 'Bequeathed 96, organised c. 74.'
+
+- polity: creta
+  type: province-of
+  of: rome
+  from: 66 BCE
+  to: 28 BCE
+  sources:
+    - { source: velleius, locator: '2.38.6' }
+    - { source: livy-per, locator: '100' }
+    - { source: cassius-dio, locator: '36.17a–19' }
+  confidence: probable
+  review: draft
+  note: 'After the conquest by Metellus, 69–67.'
+
+- polity: syria
+  type: province-of
+  of: rome
+  from: 64 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: velleius, locator: '2.38.6' }
+  confidence: certain
+  review: draft
+  note: Pompey's annexation.
+
+- polity: bithynia-pontus
+  type: province-of
+  of: rome
+  from: 74 BCE
+  to: after 27 BCE
+  sources: [{ source: magie-1950 }, { source: broughton-mrr, locator: vol. II }]
+  confidence: certain
+  review: draft
+  note: Bithynia from the bequest of 74; with Pontus from Pompey's settlement of 63.
+
+- polity: gallia-comata
+  type: province-of
+  of: rome
+  from: 51 BCE
+  to: after 27 BCE
+  sources: [{ source: caesar-bg }, { source: cah-ix, locator: ch. 9 }]
+  confidence: uncertain
+  review: needs-check
+  note: Not formally a province until Augustus; see the polity.
+
+- polity: illyricum
+  type: province-of
+  of: rome
+  from: 59 BCE
+  to: after 27 BCE
+  sources: [{ source: suetonius-iul, locator: '22' }]
+  confidence: probable
+  review: draft
+  note: The lex Vatinia.
+
+- polity: africa-nova
+  type: province-of
+  of: rome
+  from: 46 BCE
+  to: 28 BCE
+  sources:
+    - { source: bellum-africum, locator: '97' }
+  confidence: certain
+  review: draft
+  note: Annexation of Numidia after Thapsus.
+
+# --- client kingdoms -------------------------------------------------------------
+
+- polity: numidia
+  type: client-of
+  of: rome
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '5.4–5, 16, 21.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    The heirs of Masinissa, who "was ever our true and loyal friend" (Sall.
+    Jug. 5.5); the
+    senate divided the kingdom between Micipsa's heirs (Jug. 16) and ordered
+    Jugurtha and Adherbal to lay down their arms (21.4). Broken by Jugurtha's
+    taking of Cirta in 112; Rome declared war in 111.
+
+- polity: numidia
+  type: client-of
+  of: rome
+  from: 105 BCE
+  to: 47 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '65.2–3' }
+    - { source: plutarch, locator: 'Pompey 12.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Gauda, promised Numidia by Marius (Sall. Jug. 65.3), king from Jugurtha's
+    surrender; Hiempsal II owed his throne to Pompey in 81 (Plut. Pompey 12.4).
+    In 111–106 the kingdom was at war with Rome and is drawn independent.
+
+- polity: numidia-jugurtha
+  type: client-of
+  of: rome
+  from: c. 116 BCE
+  to: 113 BCE
+  sources: [{ source: sallust-jug, locator: '16, 20.5' }]
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jugurtha's kingdom by the senate's own division (Sall. Jug. 16); Adherbal
+    still put "more trust in the friendship of the Roman people" (20.5).
+
+- polity: mauretania
+  type: client-of
+  of: rome
+  from: 105 BCE
+  to: 34 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '19.7, 80.4, 111.1' }
+    - { source: bridoux-2020, locator: '¶80' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From Bocchus I's surrender of Jugurtha in 105, for which he was promised
+    "friendship, alliance, and the part of Numidia which he now desired" (Sall.
+    Jug. 111.1); Bridoux calls him Sulla's client from then (¶80). Before, the
+    kingdom was unknown to Rome (Jug. 19.7), its request for a treaty early in
+    the war refused (80.4), and in 106 it fought Marius; it is drawn
+    independent. Two kings from about 49; see the polity.
+
+- polity: aegyptus
+  type: client-of
+  of: rome
+  from: 59 BCE
+  to: 31 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: suetonius-iul, locator: '54.3' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From 59, when Caesar's law and a decree of the senate made Ptolemy XII a
+    friend and ally (Caes. BC 3.107; Dio 39.12.1; Suet. Iul. 54.3). Before it
+    Egypt was an independent kingdom on friendly terms with Rome, and is drawn
+    independent (decided September 2026, over 55, the Gabinian garrison: the
+    formal recognition is the change of standing, the garrison a consequence
+    of it). Until 2026 this row ran across the whole of 68–27.
+
+- polity: nabataea
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Migration review: Scaurus campaigned against Aretas III in 62;
+    what standing followed wants confirming.
+
+- polity: bosporus
+  type: client-of
+  of: pontus-regnum
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares, set over the Bosporus by his father c. 80 (App. Mithr. 67),
+    until he went over to Lucullus. Added for the extension to 133 BCE.
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: plutarch, locator: 'Lucullus 24.1' }
+    - { source: livy-per, locator: '98' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares "received the title of friend from Lucius Lucullus" (Livy Per.
+    98), until his father came to the Bosporus in 65. Added for the extension
+    to 133 BCE.
+
+- polity: scythia-minor
+  type: client-of
+  of: pontus-regnum
+  from: c. 110 BCE
+  to: 64 BCE
+  sources:
+    - { source: diophantus-decree }
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Subject to Mithridates after Diophantus' wars; how long is not recorded
+    (see the claim). Added for the extension to 133 BCE.
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: 49 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 113' }
+  confidence: certain
+  review: draft
+  note: >-
+    Pompey inscribed Pharnaces II a friend and ally in 63. It ends with his
+    invasion of Roman Pontus in 48 (claims.yaml); nothing after is a client
+    relation until Rome recognised Asander, which is undated.
+
+- polity: thracia-odrysae
+  type: client-of
+  of: rome
+  from: c. 80 BCE
+  to: after 27 BCE
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    From the first sign of a friendly Thracian king, Sadala, c. 80 (Cic. Verr.
+    2.1.63); before 68 until the extension to 133 BCE. See the claim.
+
+- polity: galatia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: cicero-deiotaro }]
+  confidence: probable
+  review: draft
+
+- polity: cappadocia
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
+  confidence: probable
+  review: draft
+
+- polity: commagene
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: probable
+  review: draft
+
+- polity: judaea
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.74–79' }
+  confidence: certain
+  review: draft
+  note: >-
+    From Pompey's capture of Jerusalem in 63. Before that the Hasmoneans were
+    friends of Rome by treaty, not clients; their ground is claimed as
+    independent (claims.yaml).
+
+- polity: ituraea
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: 37 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: emesa
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: 31 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: osroene
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: after 43 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Left open at 43 on purpose (September 2026): nothing attests Osroene's
+    standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
+    served Parthia against Crassus in 53; geography points to a Parthian
+    vassal, but no text says so for these years.
+
+- polity: amanus
+  type: client-of
+  of: rome
+  from: before 68 BCE
+  to: 31 BCE
+  sources: [{ source: sullivan-1990 }]
+  confidence: uncertain
+  review: needs-check
+
+# --- added September 2026: the neighbours of Rome ------------------------------
+
+- polity: lycia
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: mitchell-2005 }]
+  confidence: certain
+  review: draft
+
+- polity: rhodus
+  type: allied-to
+  of: rome
+  from: before 68 BCE
+  to: after 27 BCE
+  sources: [{ source: fraser-bean-1954 }]
+  confidence: certain
+  review: draft
+
+- polity: massalia
+  type: allied-to
+  of: rome
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '4.1.5' }
+    - { source: livy-per, locator: '60' }
+  confidence: certain
+  review: draft
+  note: >-
+    An ally long before 133; Rome's first war beyond the Alps, in 125, was
+    fought at its request (Livy Per. 60). Its territory is the Province's from
+    49 (claims.yaml).
+
+- polity: paphlagonia
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 27 BCE
+  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  confidence: probable
+  review: draft
+
+- polity: comana-pontica
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 27 BCE
+  sources: [{ source: strabo, locator: '12.3.34' }]
+  confidence: probable
+  review: draft
+
+- polity: mauretania-bogud
+  type: client-of
+  of: rome
+  from: 49 BCE
+  to: 39 BCE
+  sources: [{ source: cassius-dio, locator: '41.42.7' }]
+  confidence: probable
+  review: draft
+
+- polity: numidia-masinissa
+  type: client-of
+  of: rome
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Masteabar, Gauda's son, a king beside his brother Hiempsal II, not his
+    vassal; his standing to Rome is taken to be his father's, which nothing
+    records directly.
+
+- polity: numidia-masinissa
+  type: client-of
+  of: numidia
+  from: 81 BCE
+  to: 47 BCE
+  sources: [{ source: bridoux-2020, locator: '¶154–155, ¶161' }]
+  confidence: probable
+  review: draft
+  note: >-
+    A vassal of the eastern Numidian kings (Bridoux), from Masinissa II, who is
+    first found in 81.
+
+- polity: sittiani
+  type: client-of
+  of: rome
+  from: 46 BCE
+  to: 45 BCE
+  sources: [{ source: appian, locator: 'BC 4.54' }]
+  confidence: probable
+  review: draft
+
+- polity: pontic-cities
+  type: allied-to
+  of: rome
+  from: 71 BCE
+  to: 56 BCE
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Ill. 30' }
+  confidence: probable
+  review: needs-check
+  note: From M. Lucullus' campaign of 72/71 until Burebista.
+
+- polity: noricum
+  type: allied-to
+  of: rome
+  from: 113 BCE
+  to: after 27 BCE
+  sources:
+    - { source: caesar-bc, locator: '1.18' }
+    - { source: appian, locator: 'Celt. 13' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Foreign friends of the Romans" in 113 (App. Celt. 13), its first
+    attestation; before 68 until the extension to 133 BCE.
+
+- polity: aedui
+  type: allied-to
+  of: rome
+  from: 122 BCE
+  to: 52 BCE
+  sources:
+    - { source: caesar-bg, locator: '1.33' }
+    - { source: livy-per, locator: '61' }
+    - { source: strabo, locator: '4.3.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From its first attestation, in 122, when the Allobroges ravaged the land of
+    "the Aedui, an ally of the Roman people" (Livy Per. 61). Strabo calls them
+    the first in Gaul to seek Rome's friendship (4.3.2), so it may be older;
+    the ground moves at the attestation (decision 19).
+
+- polity: tectosages
+  type: allied-to
+  of: rome
+  from: { earliest: 121 BCE, latest: 118 BCE }
+  to: 107 BCE
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tolosa "had formerly been in alliance with the Romans" and kept a Roman
+    garrison until it revolted (Dio fr. 90); when the alliance began is not
+    recorded (claims.yaml).
+
+- polity: helvetii
+  type: allied-to
+  of: rome
+  from: 58 BCE
+  to: 52 BCE
+  sources: [{ source: caesar-bg, locator: '1.28' }]
+  confidence: probable
+  review: draft
+  note: Sent home after Bibracte, 58, and received into alliance.
+
+- polity: colchis
+  type: client-of
+  of: rome
+  from: 63 BCE
+  to: after 27 BCE
+  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  confidence: probable
+  review: draft
+
+- polity: iberia-caucasia
+  type: client-of
+  of: rome
+  from: 65 BCE
+  to: after 27 BCE
+  sources: [{ source: cassius-dio, locator: '37.2' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: albania
+  type: client-of
+  of: rome
+  from: 65 BCE
+  to: after 27 BCE
+  sources: [{ source: plutarch, locator: 'Pompey 35' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: armenia
+  type: client-of
+  of: rome
+  from: 66 BCE
+  to: 32 BCE
+  sources: [{ source: plutarch, locator: 'Pompey 33' }]
+  confidence: probable
+  review: draft
+  note: Tigranes kept his kingdom as a friend and ally after submitting to Pompey.
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: before 68 BCE
+  to: 36 BCE
+  sources: [{ source: strabo, locator: '11.13.1–2' }]
+  confidence: uncertain
+  review: needs-check
+
+# --- added September 2026: the extension to 27 BCE -----------------------------
+
+- polity: achaea
+  type: province-of
+  of: rome
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    From its first firm attestation, the settlement of January 27; it may have
+    been governed apart from Macedonia earlier (see the polity).
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: c. 41 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vnukov-kovalenko-2007 }
+    - { source: lucian-macrobii, locator: '17' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Asander's recognition as king: 41/40 at the earliest on the coins, or
+    after Actium on ps.-Lucian's "proclaimed king… by the divine Augustus".
+    See the claim on bosporus.
+
+- polity: mauretania-roman
+  type: province-of
+  of: rome
+  from: 33 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.43.7' }
+  confidence: uncertain
+  review: needs-check
+  note: See the polity; formal provincial status is doubted.
+
+- polity: aegyptus-province
+  type: province-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: res-gestae, locator: '27.1' }
+    - { source: cassius-dio, locator: '53.12.7' }
+  confidence: certain
+  review: draft
+  note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
+
+- polity: cyrenaica-free
+  type: allied-to
+  of: rome
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free by the senate's decree on Apion's bequest (Livy Per. 70): Rome's by
+    inheritance, their own in government. "Allied" is the nearest standing the
+    data has for free cities under Rome with no governor; no treaty is recorded.
+
+- polity: cyrenaica-selene
+  type: client-of
+  of: rome
+  from: 34 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.41.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antony's grant, never ratified at Rome (Dio 49.41.4); a client of the Roman
+    order in the East as Antony ran it, and of Cleopatra's house.
+
+- polity: creta-cyrenae
+  type: province-of
+  of: rome
+  from: 27 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '53.12.4' }
+  confidence: probable
+  review: draft
+
+- polity: triakontaschoinos
+  type: client-of
+  of: rome
+  from: 29 BCE
+  to: after 27 BCE
+  sources:
+    - { source: philae-stele }
+  confidence: uncertain
+  review: needs-check
+
+- polity: pontus-polemon
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.75' }
+    - { source: magie-1950, locator: 'vol. I, 443' }
+  confidence: probable
+  review: draft
+
+- polity: pisidia-amyntas
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: 37 BCE
+  sources: [{ source: appian, locator: 'BC 5.75' }]
+  confidence: probable
+  review: draft
+
+- polity: lycaonia-polemon
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: 37 BCE
+  sources: [{ source: appian, locator: 'BC 5.75' }]
+  confidence: probable
+  review: draft
+
+- polity: armenia-minor-artavasdes
+  type: client-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources: [{ source: magie-1950, locator: 'vol. I, 443' }]
+  confidence: uncertain
+  review: needs-check
+
+- polity: cyprus
+  type: province-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources: [{ source: cassius-dio, locator: '53.12.7' }]
+  confidence: probable
+  review: draft
+
+- polity: judaea-antigonus
+  type: client-of
+  of: parthia
+  from: 40 BCE
+  to: 40 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369' }
+    - { source: debevoise-1938, locator: 'pp. 113–116' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Installed by the Parthians; their army left Syria in 39, and after Gindarus
+    in 38 Antigonus had no patron.
+
+- polity: ituraea
+  type: client-of
+  of: rome
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '15.344' }
+  confidence: probable
+  review: needs-check
+  note: Zenodorus' lease of the house of Lysanias.
+
+- polity: armenia
+  type: client-of
+  of: parthia
+  from: 31 BCE
+  to: after 27 BCE
+  sources:
+    - { source: tacitus-ann, locator: '2.3' }
+  confidence: uncertain
+  review: needs-check
+  note: Artaxias II, restored "by the arms of the Arsacidae".
+
+- polity: atropatene
+  type: allied-to
+  of: rome
+  from: 35 BCE
+  to: 31 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.33.1–2' }
+    - { source: cassius-dio, locator: '49.44.1' }
+  confidence: probable
+  review: draft
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: 30 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.44.4' }
+  confidence: uncertain
+  review: needs-check

@@ -2903,6 +2903,7 @@
     - { source: cassius-dio, locator: '39.54' }
     - { source: appian, locator: 'BC 1.108–115' }
     - { source: florus, locator: '2.10.9' }
+    - { source: orosius, locator: '5.23.14' }
     - { source: richardson-1996, locator: 'ch. 3' }
     - { source: barrington, locator: 'maps 24–25' }
   confidence: uncertain
@@ -2911,8 +2912,9 @@
     The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Scipio
     razed Numantia in 133 and divided its land among its neighbours (App. Hisp.
     98); the country rose again and T. Didius moved Termes into the plain in
-    98–93 (Hisp. 99–100); it was Sertorius' in the 70s, until Uxama, Clunia and
-    Termes fell to Pompey in 72 (Flor. 2.10.9); and in 56 the Vaccaei and their
+    98–93 (Hisp. 99–100); it was Sertorius' in the 70s, until Termes and Uxama
+    came over in 72, Uxama only when Pompey took it (Flor. 2.10.9; Oros.
+    5.23.14); and in 56 the Vaccaei and their
     neighbours drove Metellus Nepos off Clunia (Dio 39.54). Drawn as provincial
     ground held uncertainly.
 
@@ -3241,7 +3243,7 @@
         - at: [1.95, 43.0]
           note: the divide between the Ariège and the upper Aude, a convention
   sources:
-    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
     - { source: strabo, locator: '4.1.12–13' }
     - { source: caesar-bg, locator: '1.10' }
     - { source: orosius, locator: '5.15.25' }

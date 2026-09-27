@@ -1359,15 +1359,16 @@
   sources:
     - { source: strabo, locator: '4.1.4–9' }
     - { source: caesar-bc, locator: '1.35, 2.22' }
-    - { source: livy-per, locator: '60' }
+    - { source: livy-per, locator: '47, 60' }
   confidence: certain
   review: draft
   note: >-
     A free ally with its own territory until Caesar took the city in 49; it kept
-    its freedom but not its lands. Rome's wars in Transalpine Gaul began at its
-    call against the Salluvii in 125 (Livy Per. 60); Sextius gave it the coast
-    he cleared of them (Strabo 4.1.5), and Pompey the revenues of lands of the
-    Volcae Arecomici and the Helvii (Caesar BC 1.35), which are not drawn.
+    its freedom but not its lands. Rome fought for it beyond the Alps in 154
+    (Livy Per. 47), and its call against the Salluvii in 125 began the conquest
+    of Transalpine Gaul (Per. 60); Sextius gave it the coast he cleared of them
+    (Strabo 4.1.5), and Pompey lands of the Volcae Arecomici and the Helvii
+    (Caesar BC 1.35), which are not drawn.
 
 - id: helvetii
   kind: people
@@ -1939,7 +1940,7 @@
   to: 107 BCE
   sources:
     - { source: strabo, locator: '4.1.13' }
-    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
     - { source: orosius, locator: '5.15.25' }
     - { source: caesar-bg, locator: '1.10' }
   confidence: probable
