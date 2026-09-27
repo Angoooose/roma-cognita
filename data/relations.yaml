@@ -5,7 +5,7 @@
 #
 # Province rows run from the province's creation. A client row runs from when
 # the standing began where that is known, and otherwise across the whole
-# 68–27 window.
+# 133–27 window.
 
 # --- citizen territory and provinces -------------------------------------------
 
@@ -242,6 +242,49 @@
 
 - polity: bosporus
   type: client-of
+  of: pontus-regnum
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares, set over the Bosporus by his father c. 80 (App. Mithr. 67),
+    until he went over to Lucullus. Added for the extension to 133 BCE.
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: plutarch, locator: 'Lucullus 24.1' }
+    - { source: livy-per, locator: '98' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares "received the title of friend from Lucius Lucullus" (Livy Per.
+    98), until his father came to the Bosporus in 65. Added for the extension
+    to 133 BCE.
+
+- polity: scythia-minor
+  type: client-of
+  of: pontus-regnum
+  from: c. 110 BCE
+  to: 64 BCE
+  sources:
+    - { source: diophantus-decree }
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Subject to Mithridates after Diophantus' wars; how long is not recorded
+    (see the claim). Added for the extension to 133 BCE.
+
+- polity: bosporus
+  type: client-of
   of: rome
   from: 63 BCE
   to: 49 BCE
@@ -257,11 +300,16 @@
 - polity: thracia-odrysae
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: c. 80 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    From the first sign of a friendly Thracian king, Sadala, c. 80 (Cic. Verr.
+    2.1.63); before 68 until the extension to 133 BCE. See the claim.
 
 - polity: galatia
   type: client-of
@@ -424,9 +472,11 @@
 - polity: pontic-cities
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: 71 BCE
   to: 56 BCE
-  sources: [{ source: eutropius, locator: '6.10' }]
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Ill. 30' }
   confidence: probable
   review: needs-check
   note: From M. Lucullus' campaign of 72/71 until Burebista.
@@ -434,11 +484,16 @@
 - polity: noricum
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: 113 BCE
   to: after 27 BCE
-  sources: [{ source: caesar-bc, locator: '1.18' }]
+  sources:
+    - { source: caesar-bc, locator: '1.18' }
+    - { source: appian, locator: 'Celt. 13' }
   confidence: probable
   review: needs-check
+  note: >-
+    "Foreign friends of the Romans" in 113 (App. Celt. 13), its first
+    attestation; before 68 until the extension to 133 BCE.
 
 - polity: aedui
   type: allied-to

@@ -124,7 +124,11 @@
     settlement of 27, which also took Thessaly and southern Epirus (see achaea).
     Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
     after Philippi it was Antony's, east of Scodra from Brundisium (App. BC
-    5.65), and Octavian's from 31.
+    5.65), and Octavian's from 31. In 133–68 its governors fought the
+    Scordisci and Thracians on the northern frontier nearly every year; the
+    one gain of ground dated inside it is T. Didius' Chersonese c. 100, which
+    the law of 101/100 joins to Macedonia (chersonesus-thracica). Mithridates'
+    son overran it in 87–86.
 
 - id: africa
   kind: province
@@ -492,24 +496,39 @@
   kind: kingdom
   names:
     - { text: Bosporus, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  ruler: Pharnaces II, 63–47; Asander (archon, then king), from 47; Dynamis his wife
+  ruler: >-
+    Paerisades V, the last Spartocid, to c. 108; Machares, son of Mithridates
+    VI, c. 80–65; Pharnaces II, 63–47; Asander (archon, then king), from 47;
+    Dynamis his wife
   sources:
-    - { source: appian, locator: 'Mithr. 113, 120' }
+    - { source: appian, locator: 'Mithr. 67, 83, 102, 113, 120' }
+    - { source: strabo, locator: '7.4.4' }
+    - { source: diophantus-decree }
   confidence: probable
   review: draft
-  note: Pharnaces II confirmed by Pompey in 63; killed after Zela.
+  note: >-
+    The Spartocid kingdom until Paerisades V gave it to Mithridates (Strabo
+    7.4.4); the king's own ground from c. 108 to the revolt of the 80s, with no
+    polity of its own (claims.yaml); a kingdom again under Machares, whom his
+    father made king c. 80 and who killed himself when Mithridates came in 65
+    (App. Mithr. 67, 102). Pharnaces II confirmed by Pompey in 63; killed after
+    Zela. Started before 68 until the extension to 133 BCE.
 
 - id: thracia-odrysae
   kind: kingdom
   names:
     - { text: Thracia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  ruler: Sadalas (d. by 43/42); the Sapaean brothers Rhascupolis and Rhascus, 42; Sadalas at Actium, 31
+  ruler: >-
+    Sadala, fl. c. 80; Cotys, fl. 57–55; Sadalas (d. by 43/42); the Sapaean
+    brothers Rhascupolis and Rhascus, 42; Sadalas at Actium, 31
   sources:
     - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
+    - { source: cicero-pis, locator: '84' }
     - { source: cassius-dio, locator: '47.25.1–2' }
     - { source: appian, locator: 'BC 4.87' }
     - { source: cassius-dio, locator: '51.25.4–5' }
@@ -525,7 +544,12 @@
     The modern king lists (Dessau, Sullivan; revised by Tačeva and Delev) are
     reconstructions and disputed. In 28 Crassus overran Thrace "except the
     territory of the Odrysae" and gave them Dionysus' land taken from the Bessi
-    (Dio 51.25.4–5): a client, not annexed.
+    (Dio 51.25.4–5): a client, not annexed. Before 43 the ruler string adds only
+    the two kings Cicero names: Sadala, to whom Verres was sent as legate c. 80
+    (Verr. 2.1.63), and "king Cottus", for whom Piso killed the Bessian prince
+    Rabocentus in 57–55 (Pis. 84). The kingdom was there in 133 (the Odrysian
+    kings go back to the fifth century), hence the open start; its standing
+    with Rome is drawn only from c. 80 (claims.yaml).
 
 - id: galatia
   kind: kingdom
@@ -990,14 +1014,38 @@
   kind: kingdom
   names:
     - { text: Scythae, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
+  ruler: Scilurus; his son Palacus, fl. c. 110–107
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - { source: diophantus-decree }
   confidence: probable
   review: needs-check
   note: >-
-    The Crimean Scythians, with their royal seat at Neapolis.
+    The Crimean Scythians, with their royal seat at Neapolis. Scilurus and his
+    sons, "fifty in number" according to Poseidonius (Strabo 7.4.3), fought
+    Diophantus for Mithridates c. 110–107; "Palakos, king of the Scythians" in
+    the decree. Subject to Mithridates from then (claims.yaml).
+
+- id: chersonesus
+  kind: city-state
+  names:
+    - { text: Chersonesus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '7.4.2–3' }
+    - { source: diophantus-decree }
+  confidence: certain
+  review: draft
+  note: >-
+    The Dorian city on the Heracleian peninsula, "at first self-governing"
+    (Strabo 7.4.3). It kept its council, assembly and yearly eponym (the
+    decree for Diophantus is dated by them) under Mithridates and the
+    Bosporan kings, so the polity runs on; it holds its own ground only until
+    it took the king as protector c. 110 (claims.yaml). Added for the extension
+    to 133 BCE.
 
 - id: mauretania-bogud
   kind: kingdom
@@ -1115,7 +1163,7 @@
   kind: league
   names:
     - { text: Pontic Greek cities, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: eutropius, locator: '6.10' }
@@ -1130,10 +1178,12 @@
   kind: kingdom
   names:
     - { text: Noricum, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   ruler: Voccio (fl. 58–49)
   sources:
+    - { source: strabo, locator: '4.6.12' }
+    - { source: appian, locator: 'Celt. 13' }
     - { source: caesar-bg, locator: '1.53' }
     - { source: caesar-bc, locator: '1.18' }
     - { source: alfoldy-1974, locator: 'chs. 4–5' }
@@ -1145,16 +1195,19 @@
     Istria in 16 (Dio 54.20.2). No king is securely named for 43–27. The
     Taurisci made to pay tribute in 35 (App. Ill. 16), whom Strabo counts among
     the Norici (4.6.9), lived south of the kingdom drawn here. The locator was
-    ch. 3 until September 2026; the first century BCE is chs. 4–5.
+    ch. 3 until September 2026; the first century BCE is chs. 4–5. Polybius
+    knew the gold of "the Taurisci Norici" (Strabo 4.6.12), and in 113 they
+    were "foreign friends of the Romans" (App. Celt. 13), hence the open start
+    at 133.
 
 - id: delmatae
   kind: people
   names:
     - { text: Delmatae, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 34 BCE
   sources:
-    - { source: appian, locator: 'Ill. 12–13' }
+    - { source: appian, locator: 'Ill. 11–13' }
     - { source: wilkes-1969, locator: 'pp. 29–45' }
   confidence: certain
   review: draft
@@ -1301,7 +1354,7 @@
   kind: league
   names:
     - { text: Creta, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 67 BCE
   sources:
     - { source: cassius-dio, locator: '36.17a–19' }
@@ -1369,7 +1422,7 @@
   names:
     - { text: Iapydes, lang: la, preferred: true }
     - { text: Iapodes, lang: la }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 36 BCE
   sources:
     - { source: appian, locator: 'Ill. 16–21' }

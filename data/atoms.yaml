@@ -2391,6 +2391,49 @@
     follows the later Epirus Vetus, which is a convention. Corcyra stays with
     macedonia. Its eastern edge on the Pindus is thessalia's.
 
+- id: chersonesus-thracica
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [26.04, 40.73]
+          note: the mouth of the Hebrus, by Aenus
+        - at: [26.392, 40.925]
+          via: river
+          pleiades: '501489'
+          note: up the Hebrus to Cypsela, where macedonia's line leaves the river
+        - [26.7, 40.85]
+        - at: [26.85, 40.62]
+          note: the neck of the Chersonese at Lysimachia
+        - [27.2, 40.4]
+        - [26.3, 39.95]
+        - [26.1, 40.2]
+        - [25.95, 40.6]
+  sources:
+    - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
+    - { source: sumner-1978, locator: '218–219, 225' }
+    - { source: pliny-nh, locator: '4.47' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Thracian Chersonese and the land east of the lower Hebrus, cut out of
+    macedonia (added for the extension to 133 BCE) because the law on the
+    praetorian provinces of 101/100 dates its coming to Rome: the governor of
+    Macedonia is to go straight to the Chersonese and the Caenic land, which
+    Titus Didius had taken in war as spear-won ground (Knidos IV 6–11, in
+    Sumner's transcription; the Delphi copy, partly restored, reads it as one
+    "Caenic Chersonese", B 27–29), and to hold it with Macedonia. Sumner puts
+    the conquest in eastern Thrace in 101/100. Before it the ground is left
+    unclaimed: the Attalids' Chersonese passed to Rome by Attalus' will in 133,
+    but a conquest by Didius says Rome did not hold it in fact, and who did is
+    not recorded. Where the Caenic land lay is not
+    certain: Pliny puts the district "called Caenica" inland, by Bizye and
+    Apros (4.47), beyond this outline, which keeps macedonia's old northern
+    line and is only the part of Didius' gain the map already drew as
+    Macedonian. Aenus lies inside.
+
 - id: macedonia
   evidence: derived
   construction:
@@ -2455,7 +2498,9 @@
     edge stops short of Scupi and the Dardanians.
     Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
     Hellespont from asia. Thessaly and southern Epirus, part of this outline
-    until September 2026, are their own atoms (thessalia, epirus), cut out of it.
+    until September 2026, are their own atoms (thessalia, epirus), cut out of it,
+    and so, since the extension to 133 BCE, is the Thracian Chersonese with
+    the lower Hebrus (chersonesus-thracica), which Rome took only c. 100.
 
 - id: achaea
   evidence: derived
@@ -2579,12 +2624,17 @@
         - { at: [33.35, 44.38], via: curve }
   sources:
     - { source: strabo, locator: '7.4.2–3' }
+    - { source: diophantus-decree }
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
   note: >-
-    Chersonesus and its chora on the Heracleian peninsula, subject to the
-    Bosporan kings since Mithridates (Strabo 7.4.3).
+    Chersonesus and its chora on the Heracleian peninsula: self-governing
+    until it took Mithridates as its protector against the Scythians c. 110,
+    and subject to the Bosporan kings since his time (Strabo 7.4.3). The
+    Diophantus decree says the city won back Kerkinitis and Kalos Limen on the
+    west coast in those wars; they lie in scythia-minor and are not drawn as
+    the city's.
 
 - id: scythia-minor
   evidence: schematic

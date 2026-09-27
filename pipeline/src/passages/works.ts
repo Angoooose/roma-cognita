@@ -54,6 +54,7 @@ export const WORKS: Record<string, WorkEntry> = {
     parts: {
       'Mithr.': { page: 496, drop: 0 },
       'Ill.': { page: 613, drop: 0 },
+      'Celt.': { page: 876 },
       'Syr.': { page: 497, drop: 0 },
       'Pun.': { page: 880 },
       BC: { page: 498, drop: 1 },
@@ -68,6 +69,8 @@ export const WORKS: Record<string, WorkEntry> = {
       'C. Gracch.': { page: 196 },
       Antony: { page: 180 },
       Brutus: { page: 181, strip: /^Brut\./ },
+      Sulla: { page: 182 },
+      Lucullus: { page: 192 },
     },
   },
   'josephus-aj': { page: 526, inline: 'book' },
