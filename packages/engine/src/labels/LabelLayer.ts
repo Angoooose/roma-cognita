@@ -52,6 +52,8 @@ interface FaceStyle {
   haloAlpha: number
   /** Ink spread past the outline, px: a printer's gain for hairline faces. */
   gain: number
+  /** Halo width, px (msdfInk's default 1.5 when unset). */
+  haloPx?: number
   /** Cap heights, in screen pixels, over which names fade in and out. */
   /** Whether names set over this lettering cut it back (land names, not the seas). */
   knockout?: boolean
@@ -70,25 +72,30 @@ const STYLES: Record<string, FaceStyle> = {
     fadeIn: [7, 11],
     fadeOut: [80, 130],
   },
-  // The plan of Rome's lettering: dark ink on the plate's paper, as the plate's
-  // engraver would letter it — the hills in spaced capitals, the quarters in italic.
-  // Hill names recede as the zoom reaches the buildings on them.
+  // The plan of Rome's lettering: the hills in spaced capitals, the quarters in
+  // italic, set as the monuments' names are, light type with a soft dark halo, since
+  // dark ink sinks into the model's roofs. Fainter than the monuments' names, so they
+  // stay behind them. The plan is read in turns as the zoom comes in: the hills alone
+  // (to about 2.5 m/px), then the quarters as the hills recede, then the monuments
+  // (from 1.5 m/px, PlaceLayer's TIER_MPP) once the hills have gone.
   'plan-hill': {
-    ink: new THREE.Color('#2A241E'),
-    inkAlpha: 0.6,
-    halo: new THREE.Color('#E5D9BE'),
+    ink: new THREE.Color('#F3EBDA'),
+    inkAlpha: 0.74,
+    halo: new THREE.Color('#1B1612'),
     haloAlpha: 0.3,
+    haloPx: 2.6,
     gain: 0.3,
     fadeIn: [4, 7],
-    fadeOut: [30, 55],
+    fadeOut: [18, 30],
   },
   'plan-district': {
-    ink: new THREE.Color('#2A241E'),
-    inkAlpha: 0.82,
-    halo: new THREE.Color('#E5D9BE'),
+    ink: new THREE.Color('#F3EBDA'),
+    inkAlpha: 0.88,
+    halo: new THREE.Color('#1B1612'),
     haloAlpha: 0.4,
+    haloPx: 2.2,
     gain: 0.2,
-    fadeIn: [4, 7],
+    fadeIn: [8, 11],
     fadeOut: [80, 140],
   },
   'plan-street': {
@@ -381,7 +388,7 @@ function createMaterial(f: FontData, atlas: THREE.Texture, style: FaceStyle) {
   mat.depthWrite = false
   mat.side = THREE.DoubleSide
 
-  const { ink, halo } = msdfInk(f, atlas, uv(), style.gain, style.haloAlpha)
+  const { ink, halo } = msdfInk(f, atlas, uv(), style.gain, style.haloAlpha, style.haloPx)
 
   const capPx = attribute('capHeight', 'float').div(labelUniforms.metresPerPixel)
   const zoom = smoothstep(style.fadeIn[0], style.fadeIn[1], capPx).mul(

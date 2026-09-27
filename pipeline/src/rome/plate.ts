@@ -89,6 +89,27 @@ const MAIN_STREET = 223
 /** A hill's name goes on its highest ground within this of its location. */
 const SUMMIT_SEARCH_M = 150
 /**
+ * How each hill's name lies, as an engraver sets it along the hill: turned from level
+ * (degrees, anticlockwise) to its long axis, and bowed up in the middle by this much
+ * of its length. Set by hand from the hills' shapes, since the smoothed modern ground
+ * runs the Quirinal, Viminal and Esquiline together into one tableland. Kept within
+ * about 30° of level so that no name reads steeply; the Janiculum's ridge runs nearer
+ * north to south than that.
+ */
+const HILL_COURSE: Record<string, [number, number]> = {
+  'mons-capitolinus': [0, 0.03],
+  'mons-palatinus': [-15, 0.04],
+  'mons-aventinus': [-30, 0.05],
+  'mons-caelius': [-10, 0.04],
+  esquiliae: [0, 0.04],
+  'collis-viminalis': [30, 0.03],
+  'collis-quirinalis': [32, 0.05],
+  ianiculum: [-28, 0.04],
+  'mons-oppius': [15, 0.03],
+  'mons-cispius': [10, 0.03],
+  'velia-roma': [25, 0],
+}
+/**
  * The Tiber's name is lettered along a course placed by hand, as the sea names' are
  * (labels/seas.ts): the near-level reach below the Ponte Umberto, lon/lat, west to
  * east. The build checks it lies on the water.
@@ -390,9 +411,10 @@ export async function bakePlate(
   // --- names ----------------------------------------------------------------------
   const names = []
   // Hills first, then their spurs, then the quarters; each tries its own place, then
-  // a step north or south, and is left off rather than set over another name. A box
-  // is the name's rough extent: Cinzel capitals run ~1 em a letter, Garamond italic
-  // ~0.6, plus tracking.
+  // a step to either side, and is left off rather than set over another name. A hill's
+  // name lies along the hill (HILL_COURSE), as on the engraved plans; the quarters'
+  // run level. A box is the name's rough extent: Cinzel capitals run ~1 em a letter,
+  // Garamond italic ~0.6, plus tracking.
   const lettered = [...places.values()]
     .filter((p) => p.within === 'roma' && (p.kind === 'hill' || p.kind === 'district'))
     .sort((a, b) => rank(a) - rank(b))
@@ -406,23 +428,39 @@ export async function bakePlate(
     const tracking = hill ? 0.3 : 0.08
     const w = text.length * cap * ((hill ? 1.0 : 0.62) + tracking)
     const h = cap * 1.5
-    const spot = [0, 1, -1, 2, -2]
-      .map((k) => y + k * h)
-      .find(
-        (yy) =>
-          !boxes.some(
-            (b) =>
-              x - w / 2 < b[2] &&
-              x + w / 2 > b[0] &&
-              yy - h / 2 < b[3] &&
-              yy + h / 2 > b[1],
-          ),
-      )
-    if (spot === undefined) {
+    const course: Pt[] =
+      hill && HILL_COURSE[p.id]
+        ? hillCourse(x, y, w, HILL_COURSE[p.id])
+        : [
+            [x - w / 2, y],
+            [x + w / 2, y],
+          ]
+    // The course's normal at its middle: the direction a crowded name steps aside in.
+    const [a, b] = [course[0], course[course.length - 1]]
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1
+    const normal: Pt = [-(b[1] - a[1]) / len, (b[0] - a[0]) / len]
+    const boxOf = (k: number): [number, number, number, number] => {
+      const q = course.map(([qx, qy]): Pt => [qx + normal[0] * k, qy + normal[1] * k])
+      const xs = q.map((v) => v[0])
+      const ys = q.map((v) => v[1])
+      return [
+        Math.min(...xs) - h / 2,
+        Math.min(...ys) - h / 2,
+        Math.max(...xs) + h / 2,
+        Math.max(...ys) + h / 2,
+      ]
+    }
+    const step = [0, 1, -1, 2, -2]
+      .map((k) => k * h)
+      .find((k) => {
+        const [bx0, by0, bx1, by1] = boxOf(k)
+        return !boxes.some((o) => bx0 < o[2] && bx1 > o[0] && by0 < o[3] && by1 > o[1])
+      })
+    if (step === undefined) {
       console.log(`  plate: no room to letter ${p.id}`)
       continue
     }
-    boxes.push([x - w / 2, spot - h / 2, x + w / 2, spot + h / 2])
+    boxes.push(boxOf(step))
     names.push({
       kind: 'plan',
       id: p.id,
@@ -430,10 +468,10 @@ export async function bakePlate(
       style: hill ? 'plan-hill' : 'plan-district',
       text: hill ? text.toUpperCase() : text,
       years: [[p.from.year, p.to.year]],
-      path: [
-        [Math.round(x - 1500), Math.round(spot)],
-        [Math.round(x + 1500), Math.round(spot)],
-      ],
+      path: course.map(([qx, qy]) => [
+        Math.round(qx + normal[0] * step),
+        Math.round(qy + normal[1] * step),
+      ]),
       capHeight: cap,
       tracking,
     })
@@ -647,6 +685,25 @@ function summit(h: Float32Array, g: Grid, x: number, y: number): Pt {
       }
     }
   return best
+}
+
+/**
+ * The course a name `w` metres long follows, centred on (x, y): turned `tilt`
+ * degrees from level and bowed up in the middle by `bow` of its length, a parabola.
+ */
+function hillCourse(x: number, y: number, w: number, [tilt, bow]: [number, number]): Pt[] {
+  const t: Pt = [Math.cos((tilt * Math.PI) / 180), Math.sin((tilt * Math.PI) / 180)]
+  const n: Pt = [-t[1], t[0]]
+  // Lowered by two thirds of its rise, the bow's mean, so the name stays on the point.
+  const rise = bow * w
+  const course: Pt[] = []
+  for (let i = 0; i <= 16; i++) {
+    const u = i / 8 - 1
+    const o = rise * (1 - u * u) - (rise * 2) / 3
+    const s = (u * w) / 2
+    course.push([x + t[0] * s + n[0] * o, y + t[1] * s + n[1] * o])
+  }
+  return course
 }
 
 /** A separable Gaussian blur, sigma in texels. */

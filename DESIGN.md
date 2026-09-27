@@ -1219,11 +1219,18 @@ where any house stood.
 
 **Names** are few:
 
-- the hills in widely spaced capitals, which recede as the zoom reaches their
-  buildings;
+- the hills in widely spaced capitals, each turned to its hill's long axis and
+  bowed gently over it, as the engraved plans set them, and receding as the zoom
+  reaches their buildings;
 - the quarters and the Tiber in italic;
-- the monuments from 4 m/px, set as the towns are: light type with a dark halo,
+- the hills and quarters, like the monuments, in light type with a soft dark halo,
+  but fainter, so that they stay behind the monuments' names;
+- the monuments from 1.5 m/px, set as the towns are: light type with a dark halo,
   which reads over the model's roofs where dark ink sank into them.
+
+They come in turns as the zoom comes in, so that no view carries every layer at
+once: the hills alone to about 2.5 m/px; then the quarters, as the hills recede
+(gone by about 1.5 m/px, the smaller spurs a little later); then the monuments.
 
 Streets are not lettered. A click inside a monument's outline opens it, or inside the footprint drawn for one with no outline.
 
