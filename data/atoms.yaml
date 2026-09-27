@@ -2649,8 +2649,9 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    The territory of Asculum, the one allied city of Picenum (Beloch 55: every
-    other community there was Roman), where the Social War began in 91 with the
+    The territory of Asculum, the one Picene people left sovereign (Beloch 55,
+    165: the rest of Picenum was Roman but for Greek Ancona and the Latin
+    colony of Firmum), where the Social War began in 91 with the
     killing of the praetor Servilius and every Roman in the town (App. BC 1.38)
     and which Pompeius Strabo took in 89 (Livy Per. 76). Its extent is
     unrecorded: drawn as the upper and middle Tronto valley, in the mountains
@@ -2891,7 +2892,7 @@
     colony of Sipontum inside. The Venusini and Apulians joined the revolt in
     91 and Vidacilius won over Canusium and Venusia (App. BC 1.39, 1.42);
     Cosconius took Salapia, Cannae and the lands of Larinum, Venusia and
-    Asculum in 89 (1.52), and Metellus Pius took Venusia and beat the last
+    Apulian Ausculum in 89 (1.52), and Metellus Pius took Venusia and beat the last
     Apulians in 88 (Diodorus 37.2.10; App. BC 1.53). Whether the Messapians of
     the heel rose is not recorded; they are a separate atom (italia-calabria).
 
@@ -2921,8 +2922,8 @@
     The heel: the Messapians and Sallentines, allied cities under treaty
     since the war with Pyrrhus (Beloch 175), with the Latin colony of
     Brundisium and Greek Tarentum, an ally on worse terms after 209 whose
-    confiscated land took the Gracchan colony of Neptunia in 122 (Beloch
-    63–64; Vell. 1.15.4). No source has them in the Social War: drawn as loyal
+    confiscated land took the colony of Neptunia in 123–122 (Vell. 1.15.4),
+    apart from the city (Beloch 63–64). No source has them in the Social War: drawn as loyal
     allies, enfranchised in 90 with the rest. The frontier with Peucetia is a
     convention.
 
@@ -3005,11 +3006,12 @@
   note: >-
     The toe. After the Hannibalic war most of the Bruttians' land was
     confiscated for Roman public land and the colonies of Vibo, Copia, Croton
-    and Tempsa, and in 122 Minervia at Scolacium (Beloch 62–63; Vell. 1.15.4);
-    Rhegium, Locri and a few Bruttian towns kept their treaties. Drawn as
-    allied, uncertain, for want of a way to draw the mixture: no source puts
-    it in the Social War but for the insurgents' failed assault on Rhegium
-    (Diodorus 37.2.13).
+    and Tempsa, and in 123–122 Minervia at Scolacium (Beloch 62–63; Vell.
+    1.15.4); Rhegium, Locri and a few Bruttian towns kept their treaties.
+    Drawn as allied, uncertain, for want of a way to draw the mixture: no
+    source puts it in the Social War but for the insurgents' failed assault on
+    Rhegium after Sulla had left for the East in 87 (Diodorus 37.2.13), when
+    the ground is italia's; not drawn.
 
 - id: italia-etruria
   evidence: schematic
@@ -3076,9 +3078,13 @@
     strip from Narnia to the Gallic land, with Asisium, in it too (56–58); both
     are inferences from colonies, prefectures and voting tribes, and others
     have kept Tarquinii and Vulci allied, so the line is a zone. Some
-    Etruscans and Umbrians took up arms in 90 and were beaten (Livy Per. 74;
-    Tuder joined the rising, Beloch 56); the lex Iulia's offer of citizenship
-    kept the rest loyal (App. BC 1.49). Faesulae, north of the Arno, lies in
+    Etruscans and Umbrians took up arms in 90–89 and were beaten (Livy Per.
+    74); the lex Iulia's offer of citizenship kept the rest loyal (App. BC
+    1.49). Beloch goes further for Umbria: all or most of the Tiber-valley
+    towns later in the tribe Clustumina (Tuder, Iguvium, Arna, Ameria and the
+    rest) joined the rising, which stayed in the west of the region (56–57).
+    Drawn here as loyal and enfranchised in 90, since no source dates their
+    submission. Faesulae, north of the Arno, lies in
     cisalpina-cispadana.
 
 - id: italia
@@ -3192,9 +3198,13 @@
     Ravenna was an ally under treaty (Cic. Balb. 50), and so were Faesulae and
     the Boii left by the Po. It took Roman citizenship in 90–89, while the
     land north of the Po received only Latin rights (Asconius, Pis. 3 C) and
-    Liguria west of the Trebia kept its allied peoples: that is why this atom
-    is cut out of cisalpina, the two differing until the province of c. 81.
-    Takes italia's line on the Arno and the Rubicon.
+    Liguria west of the Trebia kept allied peoples such as Genua and the
+    Statielli: that is why this atom is cut out of cisalpina, the two differing
+    until the province of c. 81. The Trebia is a convention: Beloch has most
+    of the plain on the right bank of the Po west of it Roman as well, with
+    Industria, Pollentia, Hasta and Forum Fulvi in the tribe Pollia (67), and
+    this atom does not reach them. Takes italia's line on the Arno and the
+    Rubicon.
 
 - id: cisalpina
   evidence: derived
@@ -3244,6 +3254,7 @@
     - { source: caesar-bg, locator: '1.10, 8.24' }
     - { source: pliny-nh, locator: '3.127, 3.136–137' }
     - { source: barrington, locator: 'maps 39–40' }
+    - { source: beloch-1880, locator: 'p. 67' }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -3251,9 +3262,11 @@
     The Po plain to the break of slope of the Alps, from Ocelum in the Susa
     valley to the Formio beyond Aquileia, with Liguria to Albintimilium. The
     Salassi, the Cottian and Maritime Alps and the Raetian valleys were not
-    held. Takes the Arno–Rubicon line from italia. Since September 2026 Cispadane Gaul
-    east of the Trebia is cut out of it (cisalpina-cispadana), so this is the
-    land north of the Po and Liguria, allied until the province of c. 81.
+    held. Takes the Arno–Rubicon line from italia. Since September 2026
+    Cispadane Gaul east of the Trebia is cut out of it (cisalpina-cispadana),
+    so this is the land north of the Po and Liguria, drawn allied until the
+    province of c. 81, though Beloch has much of the Ligurian plain south of
+    the Po Roman citizen land already (Beloch 67).
 
 - id: noricum
   evidence: schematic

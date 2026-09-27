@@ -437,7 +437,7 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432754 }
-    - { source: beloch-1880, locator: 'p. 50' }
+    - { source: beloch-1880, locator: 'pp. 115–116, 132' }
     - { source: velleius, locator: '2.44.4' }
   confidence: certain
   review: draft
@@ -454,7 +454,7 @@
   status:
     - value: civitas foederata
       from: before 133 BCE
-      to: 90 BCE
+      to: 91 BCE
       note: an ally under treaty since 326 (Beloch 52, 175).
     - value: municipium
       from: { earliest: 90 BCE, latest: 89 BCE }
@@ -590,17 +590,19 @@
   status:
     - value: civitas foederata
       from: before 133 BCE
-      to: 123 BCE
-      note: an ally, on worse terms after 209, much of its land Roman public land (Beloch 63–64).
-    - value: colonia
-      from: { earliest: 123 BCE, latest: 122 BCE }
+      to: 91 BCE
+      note: an ally, on worse terms after 209, much of its land Roman public land (Beloch 63–64). The colony of Neptunia was planted on that land in 123–122 (Vell. 1.15.4; Gaius Gracchus proposed one at Tarentum, Plut. C. Gracch. 8.3), but Beloch finds it had nothing to do with the Greek city until the two were joined, under Sulla or Augustus (64).
+    - value: municipium
+      from: 90 BCE
       to: after 27 BCE
-      note: Neptunia, the Gracchan colony on Tarentum's public land (Vell. 1.15.4), beside the allied Greek city until the two were joined (Beloch 64).
+      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/442810 }
     - { source: beloch-1880, locator: 'pp. 63–64' }
     - { source: velleius, locator: '1.15.4' }
+    - { source: plutarch, locator: 'C. Gracch. 8.3' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -2709,7 +2711,7 @@
     - value: colonia
       from: c. 80 BCE
       to: after 27 BCE
-      note: a colony of Sulla's veterans, whose quarrels with the old townsmen Cicero describes in 62 (Sull. 60–62); the year is the usual one for Sulla's colonies, not recorded.
+      note: a colony of Sulla's veterans, led out by P. Sulla, whose settlers' quarrels with the old townsmen Cicero describes in 62 (Sull. 60–62); the year is the usual one for Sulla's colonies, not recorded.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433032 }
@@ -3254,13 +3256,14 @@
     - value: 2
       from: 91 BCE
       to: 90 BCE
-      note: the insurgents' capital, renamed Italia (Vell. 2.16.4; Strabo 5.4.2; Diodorus 37.2.4)
+      note: the insurgents' capital (Diodorus 37.2.4), renamed Italia (Diodorus 37.2.7) or Italica (Vell. 2.16.4; Strabo 5.4.2), until they left it for Aesernia (37.2.9)
     - { value: 4, from: 89 BCE, to: after 27 BCE }
   labelSide: n
   sources:
     - { source: pleiades, locator: places/413105 }
     - { source: velleius, locator: '2.16.4' }
-    - { source: diodorus, locator: '37.2.4, 37.2.9' }
+    - { source: diodorus, locator: '37.2.4, 37.2.7, 37.2.9' }
+    - { source: strabo, locator: '5.4.2' }
   confidence: certain
   review: draft
 
@@ -3277,7 +3280,7 @@
     - value: civitas foederata
       from: before 133 BCE
       to: 91 BCE
-      note: the one allied city of Picenum (Beloch 55), where the revolt began in 91 (App. BC 1.38).
+      note: the one Picene people left sovereign, beside Greek Ancona (Beloch 55, 165), where the revolt began in 91 (App. BC 1.38).
     - value: municipium
       from: 89 BCE
       to: after 27 BCE
@@ -3586,7 +3589,7 @@
   labelSide: n
   sources:
     - { source: pleiades, locator: places/403234 }
-    - { source: beloch-1880, locator: 'p. 66' }
+    - { source: beloch-1880, locator: 'pp. 66, 147' }
     - { source: velleius, locator: '1.15.2' }
   confidence: certain
   review: draft
@@ -3750,15 +3753,19 @@
     - value: colonia latina
       from: before 133 BCE
       to: 91 BCE
-      note: a Latin colony, taken by the insurgents in 90 (App. BC 1.41) and their capital after Corfinium (Diodorus 37.2.9); its people became Roman citizens under the lex Iulia of 90.
+      note: a Latin colony, starved out by the insurgents in 90 (App. BC 1.41; Livy Per. 73) and their capital after Corfinium (Diodorus 37.2.9).
     - value: colonia
-      from: 90 BCE
+      from: 87 BCE
       to: after 27 BCE
+      note: Roman again only when the Samnites made terms in 87 (App. BC 1.68); in insurgent hands 90–88, with no status here.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432652 }
     - { source: beloch-1880, locator: 'p. 53' }
     - { source: appian, locator: 'BC 1.41' }
+    - { source: livy-per, locator: '73' }
+    - { source: diodorus, locator: '37.2.9' }
+    - { source: appian, locator: 'BC 1.68' }
   confidence: certain
   review: draft
 
@@ -3775,14 +3782,16 @@
     - value: colonia latina
       from: before 133 BCE
       to: 91 BCE
-      note: a Latin colony, which joined the insurgents and was retaken in 88 (App. BC 1.42; Diodorus 37.2.10); its people became Roman citizens under the lex Iulia of 90.
+      note: a Latin colony, which went over to the insurgents in 90 (App. BC 1.42).
     - value: colonia
-      from: 90 BCE
+      from: 88 BCE
       to: after 27 BCE
+      note: retaken by Metellus Pius in 88 (Diodorus 37.2.10); with the insurgents 90–89, with no status here.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442847 }
     - { source: beloch-1880, locator: 'p. 61' }
+    - { source: appian, locator: 'BC 1.42' }
     - { source: diodorus, locator: '37.2.10' }
   confidence: certain
   review: draft
@@ -4067,7 +4076,7 @@
     - value: colonia
       from: { earliest: 123 BCE, latest: 122 BCE }
       to: after 27 BCE
-      note: Minervia, a Gracchan colony (Vell. 1.15.4), on Roman public land (Beloch 63).
+      note: Minervia, a colony of 123–122 (Vell. 1.15.4), on Roman public land; Beloch gives it to Gracchus' rival Livius Drusus (63).
   sources:
     - { source: velleius, locator: '1.15.4' }
     - { source: beloch-1880, locator: 'p. 63' }

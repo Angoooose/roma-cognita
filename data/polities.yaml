@@ -45,7 +45,9 @@
     Iulia: it was { 90, 89 } until September 2026, which drew it from 89 and
     left the year of the first law to nobody. Before 90 the citizen land is
     ager-romanus, and each part of Italy passes to italia in the year it was
-    enfranchised or submitted (claims.yaml).
+    enfranchised or submitted (claims.yaml). Citizen territory is not a
+    province and had no governor; it is modelled as a polity so the ground can
+    be claimed by it and named ITALIA.
 
 # --- Italy before the Social War (added September 2026, the extension to 133) --
 # Before 90 the peninsula was a patchwork: the Roman citizen land (ager-romanus),
@@ -82,7 +84,7 @@
   from: before 133 BCE
   to: 82 BCE
   sources:
-    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–176; ch. X, pp. 202–211' }
+    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–177; ch. X, pp. 201–215' }
     - { source: cicero-balb, locator: '21, 32, 50' }
     - { source: appian, locator: 'BC 1.39' }
     - { source: asconius-pis, locator: '3 C' }
@@ -96,9 +98,10 @@
     the treaty unit was the community (Beloch ch. VIII counts at least 11
     allied cities in Etruria and 16 in Umbria), and no source draws the
     peoples' frontiers. In the peninsula they end with the Social War (91–87);
-    beyond the Po the Insubres, Cenomani and Veneti, allies under treaty (Cic.
-    Balb. 32), and the Ligurians run on until the province of c. 81, Latin
-    communities from the lex Pompeia of 89 (Asconius, Pis. 3 C).
+    beyond the Po the Cenomani, the Veneti and the Insubres, whose treaty barred
+    their men from Roman citizenship (Cic. Balb. 32), and the Ligurians left
+    allied run on until the province of c. 81, Latin communities from the lex
+    Pompeia of 89 (Asconius, Pis. 3 C).
 
 - id: italici
   kind: league
@@ -152,7 +155,7 @@
   to: 133 BCE
   ruler: Eunus, called Antiochus, c. 135–132
   sources:
-    - { source: diodorus, locator: '34/35.2.10–24' }
+    - { source: diodorus, locator: '34/35.2.10–24, 34/35.2.43' }
     - { source: livy-per, locator: '56, 58, 59' }
     - { source: strabo, locator: '6.2.6' }
   confidence: certain
@@ -161,7 +164,7 @@
     The first Sicilian slave war. The slaves of Enna rose under the Syrian
     Eunus, made him king in the theatre and took the city; Cleon's band joined
     them from Agrigentum, and their armies beat the praetors (Diodorus
-    34/35.2.10–18; Livy Per. 56). The consul Rupilius took Tauromenium and then
+    34/35.2.10–18, 43; Livy Per. 56). The consul Rupilius took Tauromenium and then
     Enna in 132, and Eunus died a prisoner at Morgantina (Diodorus
     34/35.2.20–23; Livy Per. 59); 132 is Rome's. Began c. 135 (Livy Per. 56),
     before the window.
@@ -184,13 +187,11 @@
     Lilybaeum, and then served under Salvius, who took the name Tryphon and
     made the rock of Triocala his royal city (Diodorus 36.4–7). Lucullus and
     then Servilius failed against it, and Athenion succeeded Tryphon; Aquillius,
-    consul in 101, killed Athenion and reduced the rest by siege (36.8–10), and Livy's epitome puts the
-    end in the book of 100 (Per. 69). Diodorus has the war last "almost four
-    years" (36.10.3). The royal city dates from Tryphon's proclamation, a year
-    or so into the rising; the last year is taken as 101, the war's end, the
-    mopping up of 100 being Rome's.
-    Citizen territory is not a province and had no governor; it is modelled as a
-    polity so the ground can be claimed by it and named ITALIA.
+    consul in 101, killed Athenion and reduced the rest by siege (36.8–10), and
+    Livy's epitome puts the end in the book of 100 (Per. 69). Diodorus has the
+    war last "almost four years" (36.10.3). The royal city dates from Tryphon's
+    proclamation, a year or so into the rising; the last year is taken as 101,
+    the war's end, the mopping up of 100 being Rome's.
 
 # --- provinces ---------------------------------------------------------------
 

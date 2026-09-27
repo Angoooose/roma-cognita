@@ -65,15 +65,15 @@
   from: before 133 BCE
   to: 91 BCE
   sources:
-    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–176' }
-    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: beloch-1880, locator: 'pp. 56–57, 160–165, 176' }
     - { source: livy-per, locator: '74' }
   confidence: probable
   review: draft
   note: >-
-    Allied Etruria and western Umbria. Some Etruscans and Umbrians rose in 90
-    and were beaten (Livy Per. 74); the ground is not drawn as the insurgents'
-    because no source says how much.
+    Allied Etruria and western Umbria. Some Etruscans and Umbrians rose in
+    90–89 and were beaten (Livy Per. 74); the ground is not drawn as the
+    insurgents' because no source says how much, though Beloch has most of the
+    Umbrian towns of the Tiber valley in the rising (56–57).
 
 - atom: italia-etruria
   polity: italia
@@ -286,7 +286,6 @@
   to: 90 BCE
   sources:
     - { source: appian, locator: 'BC 1.39' }
-    - { source: livy-per, locator: '72' }
     - { source: appian, locator: 'BC 1.51' }
     - { source: livy-per, locator: '75' }
   confidence: probable
@@ -327,6 +326,7 @@
   to: 89 BCE
   sources:
     - { source: appian, locator: 'BC 1.39, 1.42' }
+    - { source: appian, locator: 'BC 1.52' }
     - { source: diodorus, locator: '37.2.10' }
     - { source: appian, locator: 'BC 1.53' }
   confidence: uncertain
@@ -499,10 +499,13 @@
   confidence: probable
   review: draft
   note: >-
-    The Po plain north of the river and Liguria: the Insubres, Cenomani and
-    Veneti under treaty (Cic. Balb. 32), the Ligurian peoples, and the Latin
-    colonies of Cremona and Aquileia and the Roman colony of Eporedia (100)
-    inside. The lex Pompeia of 89 made the Transpadane communities Latin
+    The Po plain north of the river and Liguria: the Cenomani, the Veneti and
+    the Insubres, whose treaty barred their men from Roman citizenship (Cic.
+    Balb. 32), the Ligurian peoples, and the Latin colonies of Cremona and
+    Aquileia and the Roman colony of Eporedia (100) inside. Uncertain in
+    Liguria: Beloch has most of the plain south of the Po west of the Trebia
+    Roman citizen land, Industria, Pollentia, Hasta and Forum Fulvi, with only
+    Genua and the Statielli allied (67); the atom does not separate them. The lex Pompeia of 89 made the Transpadane communities Latin
     (Asconius, Pis. 3 C), allies still. The Cimbri overran the plain north of
     the Po in 102–101 until Vercellae; not drawn.
 

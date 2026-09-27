@@ -400,7 +400,7 @@
   note: >-
     Read in the scan. Ch. III (pp. 43–77) reconstructs the extent of the Roman
     citizen land (the ager Romanus) region by region, from colonies, prefectures
-    and the later voting tribes; ch. VIII (pp. 158–176) takes the allies region
+    and the later voting tribes; ch. VIII (pp. 158–177) takes the allies region
     by region and lists the allied communities. The atoms of Italy before the
     Social War follow its picture, drawn schematically.
 
@@ -409,7 +409,9 @@
   citation: Diodorus Siculus, Bibliotheca Historica
   note: >-
     Books 34–37 survive in excerpts; cited by the Loeb numbering (34/35.2.21 is
-    Photius' epitome of the first Sicilian slave war).
+    Photius' epitome of the first Sicilian slave war). ToposText numbers
+    34/35.2.x as 34.x (34/35.2.21 is its 34.21.1), which works.ts cannot map, so
+    a 34/35 locator links only to the head of book 34 there.
 
 - id: asconius-pis
   kind: ancient
