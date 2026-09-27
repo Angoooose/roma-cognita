@@ -251,9 +251,10 @@
   sources:
     - { source: dmitriev-2000, locator: 'n. 80 (coins of C. Fabius, proconsul of Asia in 57)' }
     - { source: mcging-1980, locator: 'pp. 35–42' }
+    - { source: kallet-marx-1995, locator: 'pp. 240–242' }
     - { source: appian, locator: 'Mithr. 57' }
     - { source: livy-per, locator: '77' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Taken from the young Mithridates VI after his father's death (Justin
@@ -262,7 +263,12 @@
     the senate on Phrygia (Sherk RDGE 13) is usually dated 116, when C.
     Licinius Geta was consul, or 119 (Drew-Bear), and is read as its
     annexation after a brief freedom (McGing 1980). By 88 it was "Phrygiam,
-    provinciam populi R." (Livy Per. 77).
+    provinciam populi R." (Livy Per. 77). Disputed: Kallet-Marx (240–242)
+    takes Appian's "free" at its word, doubts the decree now that a second
+    copy has turned up, discounts the epitome's "provincia", and puts the
+    freeing of Phrygia "a generation later than where it is usually placed
+    (ca. 119)", after Sulla's Cappadocian campaign of c. 95. Drawn on the
+    usual view.
 
 - atom: asia-phrygia
   polity: cilicia
@@ -3271,13 +3277,16 @@
   to: c. 83 BCE
   sources:
     - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976 }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: probable
   review: needs-check
   note: >-
     The tyrants of Cibyra, until Murena "overthrew it" in the time of Moagetes
-    (Strabo 13.4.17). Murena governed Asia from 84 to 81; Sherwin-White has the
-    tetrapolis independent "to c. 82". Strabo gives no year.
+    (Strabo 13.4.17). Murena governed Asia from 84 to 81; the tetrapolis
+    "survived as independent to c. 82" (Sherwin-White 1976, n. 6), or was
+    "under its own tyrants until captured by L. Murena in 83" (Kallet-Marx
+    114). Strabo gives no year.
 
 - atom: cibyra
   polity: asia
@@ -3431,7 +3440,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    The law on the praetorian provinces (Cnidus copy, col. III 22–27) leaves
+    The law on the praetorian provinces (Cnidus copy, col. III 22–25) leaves
     Lycaonia with the governor of Asia "as before" (Sherwin-White 1976, n. 24;
     Dmitriev 349 on I.Knidos 31). The row starts at the law, not at whatever
     earlier year it came to Asia.
@@ -3445,22 +3454,25 @@
     - { source: livy-per, locator: '68' }
     - { source: cicero-de-oratore, locator: '1.82' }
     - { source: sumner-1978 }
-    - { source: sherwin-white-1976, locator: 'nn. 12, 25, 41' }
-    - { source: borgia-2017 }
+    - { source: sherwin-white-1976, locator: 'nn. 12, 18, 25, 41' }
+    - { source: borgia-2017, locator: 'pp. 299–300' }
     - { source: de-viris-illustribus, locator: '75.4' }
   confidence: uncertain
   review: needs-check
   note: >-
     M. Antonius went "pro consule in Ciliciam" against the pirates in 102
-    (Cicero, De orat. 1.82; Livy Per. 68) and sailed to Side (the Corinth
-    inscription, as Sherwin-White 1976 n. 12 quotes it); the law of 101/100
-    says "they have made Cilicia a praetorian province" (Cnidus col. III 28–37;
-    Sumner 1978). Sulla held it as praetor ("Praetor Ciliciam provinciam
-    habuit", De vir. ill. 75.4), and Q. Oppius was "strategos of Pamphylia" c.
-    89 (Posidonius, as Sherwin-White n. 41 cites him). Drawn as Pamphylia and
-    southern Pisidia, the province's later core, but whether it held ground
-    before 80 is argued: Sherwin-White and Borgia see a sphere of military
-    command, not a territory, until Pompey.
+    (Cicero, De orat. 1.82; Livy Per. 68) and "set out for Side" ("ipse iter
+    eire profectus Sidam", the Corinth inscription, as Sherwin-White 1976 n.
+    12 quotes it); by the law of 101/100 "Cilicia has for this reason been
+    made a praetorian province in accordance with this law" (Cnidus col. III
+    28–37, in Sumner's translation). Sulla held it as praetor ("Praetor
+    Ciliciam provinciam habuit", De vir. ill. 75.4), and Q. Oppius was
+    "strategos of Pamphylia" c. 89 (Posidonius, as Sherwin-White n. 41 cites
+    him). Drawn as Pamphylia and southern Pisidia, the province's later core,
+    but whether it held ground before 80 is argued: Sherwin-White holds that
+    Antonius needed a territorial base, as a free Rhodes could not be one
+    (n. 18); Borgia sees "only a sphere of military and political
+    competence", based in Pamphylia and Pisidia, until Pompey (299–300).
 
 - atom: cilicia
   polity: pontus-regnum
@@ -3601,14 +3613,14 @@
     - { source: memnon, locator: '30, 37' }
     - { source: plutarch, locator: 'Lucullus 19, 23, 35.5' }
     - { source: cassius-dio, locator: '36.43.2' }
-    - { source: kallet-marx-1995, locator: 'pp. 303–304, 312' }
+    - { source: kallet-marx-1995, locator: 'pp. 303, 312' }
   confidence: probable
   review: draft
   note: >-
     Lucullus took Amisus and Eupatoria, then Sinope, which he made free (App.
     Mithr. 83), and Amaseia (Memnon 37): "by the end of 70 the last Pontic
     strongholds at Amisus, Sinope, Amasea, and Heraclea fell" (Kallet-Marx
-    303–304). The senate sent ten commissioners to organise it "on the
+    303). The senate sent ten commissioners to organise it "on the
     supposition that it was a secure Roman possession" (Plut. Luc. 35.5; Dio
     36.43.2), but they reached Lucullus only in 67, and Pontus was never a
     province before Pompey. Mithridates came back in 68 (Dio 36.9).
@@ -3625,8 +3637,8 @@
   confidence: probable
   review: draft
   note: >-
-    After Cabira (72 in Appian's reckoning, 71 in Kallet-Marx's) Mithridates
-    fled by Comana to Tigranes, and Lucullus took "Cabira and most of the other
+    After Cabira (72 on the older chronology, 71 on Kallet-Marx's, p. 303)
+    Mithridates fled by Comana to Tigranes, and Lucullus took "Cabira and most of the other
     strongholds" (Plut. Luc. 18.1). In 68 Mithridates beat his legate Fabius
     and besieged him in Cabira (Dio 36.9–10).
 
@@ -3715,7 +3727,7 @@
     - { source: appian, locator: 'Mithr. 71, 76–77' }
     - { source: memnon, locator: '27–29' }
     - { source: livy-per, locator: '93.4, 95.3' }
-    - { source: kallet-marx-1995 }
+    - { source: kallet-marx-1995, locator: 'pp. 302–303' }
   confidence: probable
   review: needs-check
   note: >-
@@ -3725,31 +3737,9 @@
     garrison left by night (Memnon 28), and the country was clear by the winter
     of 73/72, except Heraclea, which his garrison held until Cotta and Triarius
     took it in 71 or 70 (Memnon 34–35). Kallet-Marx dates the invasion to the
-    spring of 73; Appian's reckoning gives 74.
+    spring of 73; the older chronology gives 74.
 
 # Paphlagonia, Galatia, Cappadocia
-
-- atom: paphlagonia
-  polity: pontus-regnum
-  relation: occupied
-  from: c. 108 BCE
-  to: 96 BCE
-  sources:
-    - { source: justin, locator: '37.4, 38.2' }
-    - { source: mcging-1986 }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Mithridates, "entering then into an alliance with Nicomedes, … invaded
-    Paphlagonia, and divided it, after it was conquered, among his allies"
-    (Justin 37.4); told by the senate to restore it, he answered that "the
-    kingdom had belonged to his father by inheritance". Nicomedes held his share
-    through a son renamed Pylaemenes, until the senate took Paphlagonia from him
-    and Cappadocia from Mithridates and offered both peoples their liberty
-    (38.2). Which part each king held is not recorded, so the whole atom is
-    drawn under Mithridates. The year c. 108 is a modern reckoning; the end is
-    the senate's settlement of c. 96/95. Unclaimed before and after: the
-    Paphlagonian kings' extent is not known.
 
 - atom: paphlagonia
   polity: pontus-regnum
@@ -3759,27 +3749,37 @@
   sources:
     - { source: appian, locator: 'Mithr. 18–21' }
     - { source: plutarch, locator: 'Sulla 22.5, 23.3' }
+    - { source: justin, locator: '37.4, 38.2' }
+    - { source: kallet-marx-1995, locator: 'pp. 242–243' }
   confidence: probable
   review: needs-check
   note: >-
     Paphlagonians still opposed him in 88 (App. Mithr. 21); at Dardanus he was
     to renounce Paphlagonia, the point he fought hardest (Plut. Sulla 22.5,
-    23.3).
+    23.3). The earlier partition is not drawn: Mithridates and Nicomedes III
+    "invaded Paphlagonia, and divided it, after it was conquered, among his
+    allies" (Justin 37.4), in 108/107 (Kallet-Marx 242), but which part each
+    king held is not recorded, and when the senate intervened c. 96/95 it was
+    Nicomedes it took Paphlagonia from (Justin 38.2), who "was eventually able
+    to spread Bithynian control over all Paphlagonia" (Kallet-Marx 243).
 
 - atom: galatia
   polity: pontus-regnum
   relation: occupied
-  from: 88 BCE
+  from: 86 BCE
   to: 86 BCE
   sources:
     - { source: appian, locator: 'Mithr. 46' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    Mithridates "put to death the tetrarchs of Galatia with their wives and
-    children … all except three who escaped" and "appointed Eumachus satrap of
-    the nation"; the survivors "expelled him and his garrisons" (App. Mithr.
-    46), in 86 or 85.
+    After his defeats in Greece Mithridates "put to death the tetrarchs of
+    Galatia with their wives and children, not only those who were united with
+    him as friends, but those who were not his subjects - all except three who
+    escaped", "established garrisons in their towns, and appointed Eumachus
+    satrap of the nation"; the survivors "expelled him and his garrisons"
+    (App. Mithr. 46), in 86 or 85. Before this the Galatians were not his
+    subjects, so the row starts with the massacre, not with 88.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -3799,34 +3799,26 @@
     senate's settlement of c. 96/95. The years are modern reckonings.
 
 - atom: cappadocia
-  polity: armenia
-  relation: occupied
-  from: { earliest: 95 BCE, latest: 93 BCE }
-  to: { earliest: 95 BCE, latest: 93 BCE }
-  sources:
-    - { source: justin, locator: '38.3' }
-    - { source: plutarch, locator: 'Sulla 5.3' }
-    - { source: livy-per, locator: '70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    "On the first approach of Tigranes, Ariobarzanes packed up his baggage and
-    went off to Rome" (Justin 38.3); Sulla "drove out Gordius, and made
-    Ariobarzanes king again" (Plut. Sulla 5.3). Sulla's mission is dated 96
-    (Badian), 95/94 (Sherwin-White) or 92; one year is drawn, within 95–93.
-
-- atom: cappadocia
   polity: pontus-regnum
   relation: occupied
   from: 90 BCE
   to: 90 BCE
   sources:
     - { source: appian, locator: 'Mithr. 10–11' }
+    - { source: justin, locator: '38.3' }
+    - { source: kallet-marx-1995, locator: 'pp. 356–359' }
   confidence: probable
   review: needs-check
   note: >-
     "Mithraas and Bagoas drove out Ariobarzanes … and installed Ariarathes in
-    his place" (App. Mithr. 10); Aquillius' embassy restored him (11).
+    his place" (App. Mithr. 10); Aquillius' embassy restored him (11). Justin
+    tells the same expulsion as Tigranes' ("On the first approach of Tigranes,
+    Ariobarzanes packed up his baggage and went off to Rome", 38.3), just
+    before the senate sent Aquillius. Sherwin-White puts an earlier Armenian
+    expulsion before Sulla's mission, which would then be a restoration;
+    Kallet-Marx (356–359) argues there was only the one, and that Sulla
+    installed Ariobarzanes for the first time in 96 or 95. No Armenian holding
+    is drawn in the 90s.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -3849,6 +3841,7 @@
   to: 79 BCE
   sources:
     - { source: appian, locator: 'Mithr. 66–67' }
+    - { source: kallet-marx-1995, locator: 'p. 295' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -3857,5 +3850,6 @@
     Ariobarzanes complained that "a greater part of it was yet retained by
     Mithridates", and Sulla made him give it up (67). Only part of the kingdom,
     drawn whole; the end is Sulla's order, shortly before his death in 78.
-    Tigranes' raid, when he carried the Cappadocians off to Tigranocerta (67;
-    Strabo 12.2.9), is not drawn as a holding.
+    Tigranes' raid, when he carried the Cappadocians off to Tigranocerta
+    (App. Mithr. 67; Strabo 12.2.9), in 78 or 77 (Kallet-Marx 295), is not
+    drawn as a holding.

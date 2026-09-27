@@ -1419,7 +1419,7 @@
     note: Cibyra
   sources:
     - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976 }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
     - { source: barrington, locator: 'map 65' }
   confidence: uncertain
   review: needs-check

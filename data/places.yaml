@@ -103,7 +103,7 @@
       note: >-
         From Aquillius' organisation of the province. No source names a capital
         before Cicero's day: governors spent their time chiefly at Ephesus and
-        Pergamum (Kallet-Marx 1995, 115).
+        Pergamum (Kallet-Marx 1995, 114–115).
   sources:
     - { source: pleiades, locator: places/599612 }
   confidence: certain
@@ -156,9 +156,11 @@
   review: needs-check
   note: >-
     Stratonicea on the upper Caicus, where Aristonicus fled and was starved
-    into surrender by Perperna (Eutropius 4.20; Orosius 5.10), on the usual
-    identification (Magie; Robert, from the cistophori of "King Eumenes" struck
-    there); a few have argued for Stratonicea in Caria.
+    into surrender by Perperna (Eutropius 4.20; Orosius 5.10). The ancient
+    texts say only "Stratonicea"; Kallet-Marx takes it as the one "on the
+    upper Caicus", where Aristonicus "had had his stronghold" (p. 114). The
+    attribution of his cistophori as "King Eumenes" to its mint (Robinson,
+    NC 1954) was not read.
 
 - id: massilia
   pleiades: '148127'

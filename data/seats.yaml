@@ -29,10 +29,12 @@
     - { source: eutropius, locator: '4.20' }
     - { source: orosius, locator: '5.10.1–5' }
     - { source: strabo, locator: '14.1.38' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: uncertain
   review: needs-check
   note: >-
     Aristonicus held towns and fortresses (Leucae, Thyateira, Apollonis;
     Myndus, Samos and Colophon), not a territory anyone could draw, and had no
-    known capital. The seat is Stratonicea on the Caicus, where he coined as
-    King Eumenes and made his last stand (Kallet-Marx 1995, 114).
+    known capital. The seat is Stratonicea on the Caicus, where he made his
+    last stand: "on the upper Caicus Aristonicus had had his stronghold"
+    (Kallet-Marx 1995, 114).

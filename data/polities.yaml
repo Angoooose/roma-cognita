@@ -180,7 +180,7 @@
     "proconsul of Asia" (Vell. 2.4.1); 129 is the date usually given for the
     province's organisation. No capital is recorded before Cicero's day:
     governors spent their time chiefly at Ephesus and Pergamum (Kallet-Marx
-    115). Overrun by Mithridates in 88–86. The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
+    114–115). Overrun by Mithridates in 88–86. The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
     the Parthians in 40, except the islands and Stratonicea (Dio 48.26.3–4),
     and cleared by Ventidius in 39; Stratonicea and Aphrodisias were made free.
     A consular province of the people in 27 (Dio 53.12.4).
@@ -212,7 +212,7 @@
     - { source: livy-per, locator: '68' }
     - { source: cicero-de-oratore, locator: '1.82' }
     - { source: sumner-1978 }
-    - { source: sherwin-white-1976 }
+    - { source: sherwin-white-1976, locator: 'nn. 12, 18, 24, 25' }
     - { source: cicero-verr, locator: '2.1.44' }
     - { source: cah-ix, locator: ch. 8 }
     - { source: broughton-mrr, locator: vol. II }
@@ -224,13 +224,16 @@
   note: >-
     First a command against the pirates: M. Antonius went "pro consule in
     Ciliciam" in 102 (Cic. De orat. 1.82; Livy Per. 68), and the law on the
-    praetorian provinces of 101/100 says "they have made Cilicia a praetorian
-    province" (Cnidus copy, col. III 28–37; Sumner 1978). Sulla held it as
-    praetor, in 96 or 92. Dolabella's "provincia Cilicia constituta" of 80
+    praetorian provinces of 101/100 says that "Cilicia has for this reason
+    been made a praetorian province in accordance with this law" (Cnidus copy,
+    col. III 28–37, in Sumner's translation). Sulla held it as praetor, in
+    some year between 96 and 92. Dolabella's "provincia Cilicia constituta" of 80
     (Verr. 2.1.44) is the first governorship with its ground in view (Pamphylia,
     Pisidia, Lycia); P. Servilius (78–74) took the pirate strongholds of the
     Lycian coast and Isauria. Whether it was a territory before Pompey or a
-    sphere of command is argued (Sherwin-White 1976; Borgia 2017). Cicero's own
+    sphere of command is argued (Sherwin-White 1976, n. 18, for a territorial
+    base in Pamphylia; Borgia 2017, 299–300, for a sphere of competence until
+    Pompey). Cicero's own
     province in 51–50, when it also carried Cyprus, Pamphylia,
     Pisidia, Lycaonia and three Phrygian dioceses detached from Asia. A
     provincia in this period is a portfolio, not a territory. It lapsed soon
@@ -579,9 +582,9 @@
     Before Deiotarus the Galatians were three peoples under tetrarchs, not a
     kingdom; the polity covers them because the ground and its standing to Rome
     are the same record. Rome raised forces from "the Galatians of Asia" in 89
-    (App. Mithr. 17). Mithridates held Galatia in the war, put its tetrarchs to
-    death at a banquet in 86 and set a satrap, Eumachus, over it; the three who
-    escaped drove him out (Mithr. 46). Deiotarus, one of them, beat Mithridates'
+    (App. Mithr. 17). In 86 Mithridates put its tetrarchs to death, some at a
+    banquet, garrisoned their towns and set a satrap, Eumachus, over it; the
+    three who escaped drove him out (Mithr. 46). Deiotarus, one of them, beat Mithridates'
     generals in Phrygia in the war of the 70s (Mithr. 75; Livy Per. 94.2).
     Deiotarus confirmed by Pompey in 63. At his death in 40 his lands and
     Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
@@ -611,6 +614,8 @@
     - { source: appian, locator: 'Mithr. 10–11, 15, 60, 66–67' }
     - { source: sullivan-1990 }
     - { source: mcging-1986 }
+    - { source: mcging-1980, locator: 'p. 37 n. 14' }
+    - { source: kallet-marx-1995, locator: 'pp. 295, 356–359' }
     - { source: cicero-fam, locator: XV }
     - { source: cassius-dio, locator: '49.32.3' }
     - { source: strabo, locator: '12.2.11' }
@@ -625,15 +630,18 @@
     nephew Ariarathes VII, killed him at a parley, and gave the throne to his
     own son of eight as Ariarathes IX under Gordius (Justin 38.1). The senate
     took Cappadocia from him and let the Cappadocians choose a king:
-    Ariobarzanes (Justin 38.2; Strabo 12.2.11). He was driven out by Tigranes
-    and brought back by Sulla (Justin 38.3; Plut. Sulla 5.3), driven out by
-    Mithridates' generals in 90 and restored by Aquillius' embassy (App.
-    Mithr. 10–11), overrun again in the war of 89–85 and restored by Curio
+    Ariobarzanes (Justin 38.2; Strabo 12.2.11), whom Sulla put on the throne
+    against Gordius (Plut. Sulla 5.3). He was driven out in 90 — by
+    Mithridates' generals in Appian, by Tigranes in Justin, very likely the
+    same event (Kallet-Marx 356–359) — and restored by Aquillius' embassy
+    (App. Mithr. 10–11; Justin 38.3), overrun again in the war of 89–85 and restored by Curio
     after Dardanus (Mithr. 15, 60); Mithridates kept part of it after Murena's
     war until Sulla made him give it up, and Tigranes carried off its people
-    to Tigranocerta (Mithr. 66–67; Strabo 12.2.9). The years of the kings
-    before Ariobarzanes are modern reckonings; Sulla's mission is dated 96
-    (Badian), 95/94 (Sherwin-White) or 92 (the older view). Cicero was charged
+    to Tigranocerta in 78 or 77 (Mithr. 66–67; Strabo 12.2.9; Kallet-Marx
+    295). The years of the kings before Ariobarzanes are modern reckonings;
+    Sulla's mission is dated 96 (Badian, Kallet-Marx), 95/94 (Sherwin-White,
+    who has Tigranes drive Ariobarzanes out first) or 92 (the older view)
+    (McGing 1980, 37 n. 14). Cicero was charged
     with protecting Ariobarzanes III during his Cilician command. Cassius' cavalry killed him — late 43 on Appian (BC 4.63), in 42
     on Dio (47.33.4) — and Ariarathes X followed. Antony judged between
     Ariarathes and "Sisina" in 41 and gave the kingdom to Sisina (App. BC 5.7),
@@ -792,7 +800,7 @@
     - { source: appian, locator: 'Mithr. 10–21, 55–58, 64–83, 88–111' }
     - { source: mcging-1986 }
     - { source: sherwin-white-1984, locator: 'chs. 7–8' }
-    - { source: kallet-marx-1995, locator: 'pp. 303–304, 312' }
+    - { source: kallet-marx-1995, locator: 'pp. 303, 312' }
   confidence: certain
   review: draft
   note: >-
@@ -806,7 +814,7 @@
     overran Bithynia and Asia in 89–88 and gave them up at Dardanus in 85,
     keeping "his ancestral dominions" (App. Mithr. 55, 58). Lucullus took the
     kingdom in 72–70, and "by the end of 70 … Mithridates' kingdom was entirely
-    in Lucullus's hands" (Kallet-Marx 303–304); he slipped back in 68, beat
+    in Lucullus's hands" (Kallet-Marx 303); he slipped back in 68, beat
     Triarius at Zela in 67, was driven out by Pompey in 66, fled by Colchis to
     the Bosporus, and died there in 63.
 
@@ -1762,11 +1770,13 @@
   ruler: its tyrants; Moagetes, the last
   sources:
     - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976 }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: probable
   review: needs-check
   note: >-
     "It was always ruled by tyrants", over a tetrapolis of Cibyra, Bubon,
     Balbura and Oenoanda, until "the tyranny ended in the time of Moagetes,
-    when Murena overthrew it" (Strabo 13.4.17); Murena governed Asia in 84–81,
-    and Sherwin-White dates the end c. 82.
+    when Murena overthrew it" (Strabo 13.4.17); Murena governed Asia in 84–81.
+    Sherwin-White has the tetrapolis independent "to c. 82" (n. 6),
+    Kallet-Marx has Murena capture it in 83 (114).
