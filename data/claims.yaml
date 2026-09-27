@@ -15,23 +15,454 @@
 # to 47 and Africa Nova's from 46.
 
 # --- Italy -------------------------------------------------------------------
+#
+# Carried back to 133 in September 2026. Before the Social War the italia atom
+# is the Roman citizen land (ager-romanus) and the allied regions cut out of it
+# are the socii's, washed Roman on the map (a subject-of relation). The
+# insurgents' league, italici, holds its ground independent from the outbreak
+# at Asculum late in 91 to the year before each region gave in or was taken;
+# the year of submission, or of the law that enfranchised it, is italia's (the
+# lex Iulia of 90 for the loyal, 89 for the Marsic peoples, the Hirpini and the
+# Nucerine cities, 88 for Apulia, 87 for Samnium and Lucania). From 87 all of
+# peninsular Italy is italia, as before. The civil war of 88–82, fought for
+# the government of Rome itself, and Nola's and Volaterrae's last stands, are
+# not drawn.
+
+- atom: italia
+  polity: ager-romanus
+  relation: citizen-territory
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Roman citizen land before the Social War, with the Latin colonies and
+    the allied enclaves inside it (Tibur, Praeneste, Neapolis, Ancona, Teanum
+    Sidicinum, Camerinum), which are places, not ground. Probable, not certain,
+    because Beloch reconstructs its edges from colonies, prefectures and voting
+    tribes, not from a source that draws them.
 
 - atom: italia
   polity: italia
   relation: citizen-territory
-  from: before 68 BCE
+  from: 90 BCE
   to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
-  note: Enfranchised after the Social War.
+  note: >-
+    Enfranchised after the Social War. From 90, with the polity: the Roman land
+    it always was, now with its Latin colonies and loyal allies made citizens by
+    the lex Iulia.
 
-- atom: cisalpina
+- atom: italia-etruria
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–176' }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: livy-per, locator: '74' }
+  confidence: probable
+  review: draft
+  note: >-
+    Allied Etruria and western Umbria. Some Etruscans and Umbrians rose in 90
+    and were beaten (Livy Per. 74); the ground is not drawn as the insurgents'
+    because no source says how much.
+
+- atom: italia-etruria
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: certain
+  review: draft
+  note: >-
+    The lex Iulia of 90 gave citizenship to the allies who had not revolted
+    (App. BC 1.49: the Etruscans gladly accepted it).
+
+- atom: italia-calabria
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 63–64, 174–175' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Messapian and Sallentine allies and Tarentum; no source has them in the
+    revolt, so they are drawn as loyal and enfranchised in 90, uncertain.
+
+- atom: italia-calabria
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: probable
+  review: draft
+  note: >-
+    Enfranchised by the lex Iulia of 90, as allies who had not taken up arms.
+
+- atom: italia-bruttium
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 62–63' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Mostly Roman public land and colonies after the Hannibalic war, with
+    Rhegium, Locri and a few Bruttian towns still allied (Beloch 62–63); drawn
+    as allied, uncertain, for want of a way to draw the mixture.
+
+- atom: italia-bruttium
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: probable
+  review: draft
+  note: >-
+    Enfranchised by the lex Iulia of 90, as allies who had not taken up arms.
+
+- atom: italia-asculum
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 55' }
+  confidence: probable
+  review: draft
+
+- atom: italia-asculum
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.38' }
+    - { source: velleius, locator: '2.15.1' }
+    - { source: livy-per, locator: '76' }
+    - { source: appian, locator: 'BC 1.47–48' }
+  confidence: probable
+  review: draft
+  note: >-
+    Pompeius Strabo besieged Asculum from 90 and took it in 89 (Livy Per. 74,
+    76; App. BC 1.47–48).
+
+- atom: italia-asculum
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '76' }
+    - { source: appian, locator: 'BC 1.47–48' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-marsi
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 165' }
+  confidence: probable
+  review: draft
+
+- atom: italia-marsi
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: strabo, locator: '5.4.2' }
+    - { source: livy-per, locator: '75–76' }
+    - { source: appian, locator: 'BC 1.52' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Vestini, Paeligni and Marrucini surrendered and the Marsi sued for peace
+    in 89 (Livy Per. 75–76; App. BC 1.52); the insurgents left Corfinium for
+    Aesernia (Diodorus 37.2.9). Poppaedius Silo fought on and fell in 88, in
+    Apulia.
+
+- atom: italia-marsi
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '75–76' }
+    - { source: appian, locator: 'BC 1.52' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-campania
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 171' }
+  confidence: probable
+  review: draft
+
+- atom: italia-campania
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39, 1.42' }
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: velleius, locator: '2.16.2' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla destroyed Stabiae on 30 April 89 (Pliny 3.70), took Herculaneum and
+    besieged Pompeii (Vell. 2.16.2); Nola held out until 80 (Livy Per. 89), an
+    enclave not drawn.
+
+- atom: italia-campania
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: velleius, locator: '2.16.2' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-hirpini
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 168' }
+  confidence: probable
+  review: draft
+
+- atom: italia-hirpini
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.51' }
+    - { source: livy-per, locator: '75' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla burned Aeclanum and the rest of the Hirpini surrendered, in 89 (App.
+    BC 1.51; Livy Per. 75).
+
+- atom: italia-hirpini
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.51' }
+    - { source: livy-per, locator: '75' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-apulia
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 175' }
+  confidence: probable
+  review: draft
+
+- atom: italia-apulia
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 89 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39, 1.42' }
+    - { source: diodorus, locator: '37.2.10' }
+    - { source: appian, locator: 'BC 1.53' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus Pius took
+    Venusia and beat the last Apulians in 88 (Diodorus 37.2.10; App. BC 1.53).
+
+- atom: italia-apulia
+  polity: italia
+  relation: citizen-territory
+  from: 88 BCE
+  to: after 27 BCE
+  sources:
+    - { source: diodorus, locator: '37.2.10' }
+    - { source: appian, locator: 'BC 1.53' }
+  confidence: probable
+  review: draft
+
+- atom: italia-samnium
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 167–169' }
+  confidence: probable
+  review: draft
+
+- atom: italia-samnium
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 88 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.53, 1.68' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla took Bovianum in 89 (App. BC 1.51) but the Samnites held Aesernia and
+    fought on through 88; Metellus could not come to terms with them, and Marius
+    and Cinna granted all they asked in 87 (App. BC 1.68; Livy Per. 80). They
+    fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as citizens
+    in a Roman civil war, which is not drawn.
+
+- atom: italia-samnium
+  polity: italia
+  relation: citizen-territory
+  from: 87 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.53, 1.68' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+
+- atom: italia-lucania
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 172–173' }
+  confidence: probable
+  review: draft
+
+- atom: italia-lucania
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 88 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.53' }
+    - { source: diodorus, locator: '37.2.11' }
+    - { source: livy-per, locator: '80' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Gabinius took many Lucanian towns in 89 (Livy Per. 76), so the ground was
+    contested; Lamponius and Clepitius held out with the Samnites into 88
+    (Diodorus 37.2.11), and the Lucanians came in with them (App. BC 1.53; Livy
+    Per. 80).
+
+- atom: italia-lucania
+  polity: italia
+  relation: citizen-territory
+  from: 87 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.53' }
+    - { source: diodorus, locator: '37.2.11' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+
+- atom: cisalpina-cispadana
+  polity: ager-romanus
+  relation: citizen-territory
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 65–68' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Roman land of the Aemilian plain (Beloch 65–68), with the Latin colonies
+    of Placentia and Bononia and allied Ravenna, Faesulae and the Boii by the Po
+    inside: uncertain, a mixture drawn as its larger part. "Gallia" was often a
+    consul's or praetor's command in these years, but not yet a standing
+    province.
+
+- atom: cisalpina-cispadana
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: 82 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+    - { source: asconius-pis, locator: '3 C' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Latin colonies and allies south of the Po became citizens with the rest
+    of Italy in 90–89; north of the Po only Latin rights were given (Asconius,
+    Pis. 3 C). Ends where the province begins.
+
+- atom: cisalpina-cispadana
   polity: gallia-cisalpina
   relation: province
-  from: before 68 BCE
+  from: c. 81 BCE
   to: 43 BCE
   sources:
     - { source: cah-ix }
@@ -40,7 +471,54 @@
   confidence: probable
   review: draft
   note: >-
-    Provincial from c. 81. The lex Roscia of 49 gave the Transpadanes
+    A copy of cisalpina's province row, since the atom was cut out of it in
+    September 2026.
+
+- atom: cisalpina-cispadana
+  polity: italia
+  relation: citizen-territory
+  from: 42 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.3' }
+    - { source: cassius-dio, locator: '48.12.5' }
+  confidence: probable
+  review: draft
+  note: >-
+    A copy of cisalpina's row: merged into Italy after Philippi.
+
+- atom: cisalpina
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 82 BCE
+  sources:
+    - { source: cicero-balb, locator: '32' }
+    - { source: asconius-pis, locator: '3 C' }
+    - { source: beloch-1880, locator: 'pp. 65–67' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Po plain north of the river and Liguria: the Insubres, Cenomani and
+    Veneti under treaty (Cic. Balb. 32), the Ligurian peoples, and the Latin
+    colonies of Cremona and Aquileia and the Roman colony of Eporedia (100)
+    inside. The lex Pompeia of 89 made the Transpadane communities Latin
+    (Asconius, Pis. 3 C), allies still. The Cimbri overran the plain north of
+    the Po in 102–101 until Vercellae; not drawn.
+
+- atom: cisalpina
+  polity: gallia-cisalpina
+  relation: province
+  from: c. 81 BCE
+  to: 43 BCE
+  sources:
+    - { source: cah-ix }
+    - { source: broughton-mrr, locator: 'vol. II, 44–43 BCE (D. Brutus in Cisalpina)' }
+    - { source: cassius-dio, locator: '48.12.5' }
+  confidence: probable
+  review: draft
+  note: >-
+    Provincial from c. 81 (see the polity); before, allied (the row above). The lex Roscia of 49 gave the Transpadanes
     citizenship, but the province went on: D. Brutus governed it in 44–43 and
     Antony fought him for it. It was merged into Italy only in 42 (App. BC 5.3;
     Dio 48.12.5); the row ran to "after 43" until September 2026, against its
@@ -51,7 +529,7 @@
 - atom: sicilia
   polity: sicilia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
@@ -60,21 +538,30 @@
   note: >-
     Not "from 241": the atom is the whole island, and Hiero's Syracuse was a
     kingdom allied to Rome until 212/211. The polity carries the 241 date; the
-    ground's start is left open at the window's edge.
+    ground's start is left open at the window's edge. The slave kingdoms of
+    135–132 and 104–101 held much of the interior but not the province's
+    cities; they are drawn as seats at Enna and Triocala (seats.yaml), not as
+    ground taken from the province.
 
 - atom: sardinia
   polity: sardinia-corsica
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '60' }
   confidence: certain
   review: draft
+  note: >-
+    The whole island, though the mountain peoples of the interior rose again
+    and again, as when L. Aurelius put down the Sardinians in 126 (Livy Per.
+    60). Not a change of hands.
 
 - atom: corsica
   polity: sardinia-corsica
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain

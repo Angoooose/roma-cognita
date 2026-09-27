@@ -262,6 +262,12 @@ export const PlaceStatusSchema = z.enum([
   'royal seat',
   'conventus',
   'colonia',
+  /**
+   * A colony of Latin right: a self-governing ally of Rome, planted by Rome, whose
+   * magistrates became Roman citizens. Italy's Latin colonies became municipia
+   * under the lex Iulia of 90 BCE; many kept the title colonia.
+   */
+  'colonia latina',
   'municipium',
   'civitas libera',
   'civitas foederata',

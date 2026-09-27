@@ -19,3 +19,29 @@
   sources: [{ source: sullivan-1990 }]
   confidence: certain
   review: draft
+
+# Added September 2026 (the extension to 133): the two slave kingdoms of Sicily,
+# whose extent inside the province nobody records.
+
+- polity: sicily-eunus
+  place: enna
+  from: before 133 BCE
+  to: 133 BCE
+  sources:
+    - { source: diodorus, locator: '34/35.2.10–24' }
+    - { source: strabo, locator: '6.2.6' }
+  confidence: certain
+  review: draft
+  note: Eunus' city from the rising of c. 135 until Rupilius took it in 132.
+
+- polity: sicily-tryphon
+  place: triocala
+  from: { earliest: 104 BCE, latest: 103 BCE }
+  to: 101 BCE
+  sources:
+    - { source: diodorus, locator: '36.7.2–4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Tryphon's royal city, walled and given a palace and a market place
+    (Diodorus 36.7.3); the site is Pleiades' doubtful identification.
