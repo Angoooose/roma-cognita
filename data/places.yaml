@@ -62,10 +62,22 @@
   location: [36.1832, 36.2226]
   names:
     - { text: Antiochia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
-  status: provincial seat
+  status:
+    - value: royal seat
+      from: before 133 BCE
+      to: 84 BCE
+      note: >-
+        The Seleucid capital, which Antiochus VIII and Antiochus IX each held
+        in turn in their war from 113 (App. Syr. 69; Justin 39.3). Under
+        Tigranes' governor Magadates in 83–70 (Syr. 48).
+    - value: royal seat
+      from: 69 BCE
+      to: 65 BCE
+      note: Antiochus XIII's, restored by Lucullus (App. Syr. 49).
+    - { value: provincial seat, from: 64 BCE, to: after 27 BCE }
   sources:
     - { source: pleiades, locator: places/658381 }
   confidence: certain
@@ -1266,9 +1278,17 @@
   location: [36.3091, 33.5116]
   names:
     - { text: Damascus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
+  status:
+    - value: royal seat
+      from: c. 96 BCE
+      to: 85 BCE
+      note: >-
+        Ptolemy Lathyrus made Demetrius III "king of Damascus" (Josephus AJ
+        13.370), and Antiochus XII held it after him (13.387–389); then Aretas
+        III, called in by the Damascenes c. 85 (13.392), whose own seat was Petra.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/678106 }
@@ -1281,9 +1301,14 @@
   location: [35.2018, 33.2693]
   names:
     - { text: Tyrus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
+  status:
+    - value: civitas libera
+      from: 126 BCE
+      to: after 27 BCE
+      note: Free from 126/125, its era; a free city still in 36 (Josephus AJ 15.95).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678437 }
@@ -1296,9 +1321,14 @@
   location: [35.3728, 33.5619]
   names:
     - { text: Sidon, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
+  status:
+    - value: civitas libera
+      from: 111 BCE
+      to: after 27 BCE
+      note: Free from 111, its era; a free city still in 36 (Josephus AJ 15.95).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678393 }
@@ -1311,10 +1341,16 @@
   location: [35.235, 31.7772]
   names:
     - { text: Hierosolyma, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: royal seat
+  status:
+    - value: royal seat
+      from: 104 BCE
+      to: after 27 BCE
+      note: >-
+        From Aristobulus I, the first Hasmonean to put on the diadem (Josephus
+        AJ 13.301); before him the high priests ruled from it as ethnarchs.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/687928 }
@@ -1327,10 +1363,11 @@
   location: [35.3827, 30.345]
   names:
     - { text: Petra, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: royal seat
+  status:
+    - { value: royal seat, from: before 133 BCE, to: after 27 BCE }
   labelSide: s
   sources:
     - { source: pleiades, locator: places/697725 }
@@ -1343,7 +1380,7 @@
   location: [38.2649, 34.5528]
   names:
     - { text: Palmyra, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -1358,10 +1395,11 @@
   location: [38.5304, 37.5258]
   names:
     - { text: Samosata, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: royal seat
+  status:
+    - { value: royal seat, from: before 133 BCE, to: after 27 BCE }
   labelSide: e
   sources:
     - { source: pleiades, locator: places/658587 }
@@ -2504,7 +2542,7 @@
   location: [35.9286, 36.1213]
   names:
     - { text: Seleucia Pieria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2519,7 +2557,7 @@
   location: [36.4024, 35.4214]
   names:
     - { text: Apamea, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2534,12 +2572,12 @@
   location: [36.7193, 34.7377]
   names:
     - { text: Emesa, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   status:
     - value: royal seat
-      from: before 68 BCE
+      from: 69 BCE
       to: 31 BCE
       note: No king from Alexander's deposition to Iamblichus II's restoration in 20 (Dio 51.2.2, 54.9.2).
   labelSide: e
@@ -2557,7 +2595,7 @@
   location: [35.5112, 33.8986]
   names:
     - { text: Berytus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2572,7 +2610,7 @@
   location: [35.0798, 32.9213]
   names:
     - { text: Ptolemais, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2587,9 +2625,14 @@
   location: [34.5505, 31.6648]
   names:
     - { text: Ascalon, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
+  status:
+    - value: civitas libera
+      from: 104 BCE
+      to: after 27 BCE
+      note: Free from 104, its era; never Hasmonean.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/687839 }
@@ -2602,7 +2645,7 @@
   location: [34.4517, 31.5202]
   names:
     - { text: Gaza, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2617,7 +2660,7 @@
   location: [37.8702, 37.0577]
   names:
     - { text: Zeugma, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -2632,10 +2675,17 @@
   location: [38.7867, 37.1486]
   names:
     - { text: Edessa, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
-  status: royal seat
+  status:
+    - value: royal seat
+      from: c. 132 BCE
+      to: after 27 BCE
+      note: >-
+        From the Chronicle of Edessa's first entry, "In the year 180 kings began
+        to rule in Edessa" (133/132); the first king of the Edessene list is
+        Aryu (Segal 1970).
   labelSide: n
   sources:
     - { source: pleiades, locator: places/658457 }
@@ -2648,7 +2698,7 @@
   location: [41.2154, 37.0675]
   names:
     - { text: Nisibis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2829,7 +2879,7 @@
   location: [41.0112, 42.9983]
   names:
     - { text: Dioscurias, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2844,15 +2894,48 @@
   location: [44.5752, 39.8819]
   names:
     - { text: Artaxata, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
-  status: royal seat
+  status:
+    - { value: royal seat, from: before 133 BCE, to: after 27 BCE }
   labelSide: e
   sources:
     - { source: pleiades, locator: places/874361 }
   confidence: certain
   review: draft
+
+- id: tigranocerta
+  pleiades: '874774'
+  kind: settlement
+  location: [41.382, 37.977]
+  names:
+    - { text: Tigranocerta, preferred: true }
+    - { text: Cholimma }
+  from: c. 80 BCE
+  to: after 27 BCE
+  prominence: 3
+  status:
+    - value: royal seat
+      from: c. 80 BCE
+      to: 70 BCE
+      note: >-
+        Tigranes' new capital, peopled with Greeks and others carried off from
+        Cappadocia and Cilicia; Lucullus took it after the battle of 6 October
+        69 and sent the settlers home (Plut. Lucullus 26, 29; Strabo 11.14.15,
+        12.2.9; App. Mithr. 67, 84–86).
+  labelSide: e
+  sources:
+    - { source: pleiades, locator: places/874774 }
+    - { source: plutarch, locator: 'Lucullus 21, 25–29' }
+    - { source: strabo, locator: '11.14.15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Founded in the 80s or 70s (c. 80 is a convention; the deportations from
+    Cappadocia of 78/77 fed it). The site is disputed: Pleiades puts it at
+    Arzan, after Barrington map 89 D3; Silvan (Martyropolis) and other sites
+    have been proposed.
 
 - id: arpinum
   pleiades: '432700'
@@ -4273,7 +4356,7 @@
   location: [36.1873, 37.1764]
   names:
     - { text: Hierapolis-Castabala, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: pleiades, locator: places/658481 }
@@ -4288,7 +4371,7 @@
   location: [36.2416, 33.9577]
   names:
     - { text: Chalcis sub Libano, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: pleiades, locator: places/678086 }

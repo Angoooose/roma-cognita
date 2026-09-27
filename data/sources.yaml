@@ -1403,3 +1403,38 @@
     decree is dated only
     by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
     modern dating, not the stone's.
+
+# --- the extension to 133 BCE: the Levant, Armenia and the East -------------------
+# Added September 2026. Josephus' Antiquities 13 was read in Whiston's
+# translation by Niese's numbers (Lexundria); the modern works below were not
+# opened and are cited without pages, their claims resting on the ancient
+# passages cited beside them.
+
+- id: schurer-vermes-ii
+  kind: modern
+  citation: >-
+    E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
+    rev. G. Vermes, F. Millar and M. Black, vol. II (Edinburgh, 1979)
+  note: >-
+    The Hellenistic cities, for the eras of freedom of Tyre (126/125),
+    Sidon (111) and Ascalon (104) counted on their coins. Not opened.
+
+- id: ehling-2008
+  kind: modern
+  citation: >-
+    K. Ehling, Untersuchungen zur Geschichte der späten Seleukiden (164–63 v.
+    Chr.), Historia Einzelschriften 196 (Stuttgart, 2008)
+  note: For the reigns and coinage of the last Seleucids. Not opened.
+
+- id: chronicle-edessa
+  kind: ancient
+  citation: >-
+    The Chronicle of Edessa (sixth century), trans. B. H. C., The Journal of
+    Sacred Literature, 4th series, vol. 5 (1864), pp. 28–45
+  url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+  note: >-
+    Added by the check. Its first entry, "In the year 180 kings began to rule
+    in Edessa", is year 180 of the Seleucid era, 133/132; it names no king.
+    The first king's name (Aryu; "Orhoi, son of Hevia" in the translator's
+    note from Dionysius) comes from the Edessene list in the later
+    chroniclers, as Segal gives it.

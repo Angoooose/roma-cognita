@@ -15,9 +15,11 @@
 
 - polity: osroene
   place: edessa
-  from: before 68 BCE
+  from: c. 132 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: chronicle-edessa, locator: 'year 180' }
   confidence: certain
   review: draft
 

@@ -313,14 +313,17 @@
 - polity: nabataea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 62 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: josephus-aj, locator: '14.80–81' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Migration review: Scaurus campaigned against Aretas III in 62;
-    what standing followed wants confirming.
+    From Scaurus' campaign against Aretas III in 62, which ended with a payment
+    of three hundred talents (AJ 14.80–81); what standing followed wants
+    confirming. Independent before (claims.yaml).
 
 - polity: bosporus
   type: client-of
@@ -426,11 +429,14 @@
 - polity: commagene
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: appian, locator: 'Mithr. 106, 114' }
   confidence: probable
   review: draft
+  note: From Pompey's war with Antiochus I and the friendship that ended it.
 
 - polity: judaea
   type: client-of
@@ -449,16 +455,19 @@
 - polity: ituraea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 63 BCE
   to: 37 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: josephus-aj, locator: '14.39' }
   confidence: uncertain
   review: needs-check
+  note: From Ptolemy's submission to Pompey in 63.
 
 - polity: emesa
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: 31 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
@@ -467,13 +476,17 @@
 - polity: osroene
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: after 43 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '40.20.1' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Left open at 43 on purpose (September 2026): nothing attests Osroene's
+    From Pompey's settlement (Afranius crossed northern Mesopotamia in 65–64):
+    Dio has Abgar in treaty with Rome "in the time of Pompey" (40.20.1), and no
+    earlier tie is recorded. Left open at 43 on purpose (September 2026): nothing attests Osroene's
     standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
     served Parthia against Crassus in 53; geography points to a Parthian
     vassal, but no text says so for these years.
@@ -481,11 +494,16 @@
 - polity: amanus
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: 31 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: strabo, locator: '14.5.18' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Made king by the Romans (Strabo 14.5.18); dated from Pompey's settlement,
+    which no text states.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
@@ -691,11 +709,14 @@
 - polity: atropatene
   type: client-of
   of: parthia
-  from: before 68 BCE
+  from: 65 BCE
   to: 36 BCE
   sources: [{ source: strabo, locator: '11.13.1–2' }]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Back under Parthia once Tigranes had submitted to Pompey (66); when is not
+    recorded. The rows before are in the extension to 133.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 
@@ -931,3 +952,69 @@
     Mithridates V fought for Rome against Aristonicus and was rewarded with
     Greater Phrygia (Justin 37.1); his son was still formally a friend and ally
     of Rome until the war of 89 (App. Mithr. 10–13, 56–57).
+
+# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
+
+- polity: judaea
+  type: client-of
+  of: seleucid
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.236–248, 13.273' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Hyrcanus I paid tribute and gave hostages to Antiochus VII after the siege
+    of Jerusalem, and marched with him to the east; free on the king's death in
+    129 (AJ 13.273).
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+    - { source: schottky-1989 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Under the Arsacids since their conquest of Media (c. 148); Parthian
+    overlordship of Atropatene in these years is inferred, not attested.
+
+- polity: atropatene
+  type: client-of
+  of: armenia
+  from: 85 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 27.6, 31.7' }
+    - { source: cassius-dio, locator: '36.14.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "subjugated to himself the rulers of Atropene and Gordyaea"
+    (Strabo 11.14.15), in the war with Parthia after Mithridates II's death
+    (c. 87–85; Strabo gives no year). The king of the Medes held Tigranes'
+    right wing at Tigranocerta in 69 (Plut. Lucullus 27.6), the Atropateni
+    fought for him at the Arsanias in 68 (31.7), and "Mithridates from Media,
+    the son-in-law of Tigranes" fell on Lucullus' men in 67 (Dio 36.14.2). To
+    Tigranes' submission in 66.
+
+- polity: armenia
+  type: allied-to
+  of: pontus-regnum
+  from: { earliest: 95 BCE, latest: 93 BCE }
+  to: 67 BCE
+  sources:
+    - { source: justin, locator: '38.3' }
+    - { source: appian, locator: 'Mithr. 15, 78, 84–87' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Tigranes married Mithridates' daughter Cleopatra, and the two kings agreed
+    that Mithridates should have the cities and land and Tigranes the people
+    and movables (Justin 38.3); he sheltered his father-in-law from 71 and
+    fought Lucullus for him. Ends with Tigranes' surrender to Pompey (66).
