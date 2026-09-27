@@ -4037,9 +4037,10 @@
   note: >-
     The Parthians took Jerusalem in 40, carried off Hyrcanus and made
     Antigonus king (AJ 14.330–369). From 39 Herod, whom the senate had made king
-    in 40, held Joppa, Idumaea and by the winter of 39/38 Galilee (AJ
-    14.394–397, 14.413–414) — part of this atom, which cannot be split by year,
-    so it is drawn Antigonus' to the fall of Jerusalem.
+    in 40, took Joppa, relieved Masada and by the winter of 39/38 held
+    Galilee (AJ 14.394–399, 14.413–415) — Idumaea and Galilee were part of
+    this atom then (their own atoms since the extension to 133 carry the same
+    rows), so it is drawn Antigonus' to the fall of Jerusalem.
 
 - atom: judaea
   polity: judaea
@@ -5221,6 +5222,7 @@
   to: 127 BCE
   sources:
     - { source: schurer-vermes-ii }
+    - { source: cng-tyre-shekel }
   confidence: probable
   review: needs-check
 
@@ -5230,6 +5232,7 @@
   from: 126 BCE
   to: 65 BCE
   sources:
+    - { source: cng-tyre-shekel }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
   confidence: probable
@@ -5246,6 +5249,7 @@
   to: 112 BCE
   sources:
     - { source: schurer-vermes-ii }
+    - { source: livius-sidon }
   confidence: probable
   review: needs-check
 
@@ -5255,6 +5259,7 @@
   from: 111 BCE
   to: 65 BCE
   sources:
+    - { source: livius-sidon }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
   confidence: probable
@@ -5296,9 +5301,12 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Sampsigeramus of Emesa and Arethusa (Strabo 16.2.10) is first seen in the
-    confusion after Tigranes' withdrawal, when he held Antiochus XIII captive
-    (Diodorus 40.1b, reported by Sullivan); dated from 69 for that reason.
+    Sampsigeramus of Emesa and Arethusa (Strabo 16.2.10) is first seen when,
+    having "secretly agreed with Azizus to kill the kings", he seized Antiochus
+    XIII, held him captive and later killed him (Diodorus 40.1b, attalus.org's
+    translation). Diodorus gives no year: the fragment falls between Antiochus'
+    restoration (69) and Pompey's arrival (64). Dated from 69, the end of
+    Tigranes' hold on Syria, by convention.
 
 - atom: emesa
   polity: emesa
@@ -5419,8 +5427,10 @@
     Antiochus VII besieged Jerusalem in Hyrcanus' first year (134 or 133) and
     lifted the siege when the Jews gave up their arms and agreed to "pay
     tribute for Joppa, and the other cities which bordered upon Judea" (AJ
-    13.246–248); Hyrcanus went with him to the east in 130. A vassal until the
-    king's death in 129.
+    13.245–248), and Justin has Antiochus subdue the Jews (36.1); Hyrcanus
+    went with him to the east in 130 (AJ 13.249–251). A vassal until the
+    king's death in 129. In 133 itself Jerusalem was under siege or had just
+    come to terms; the row is the terms' from the window's start.
 
 - atom: judaea
   polity: judaea
@@ -5479,6 +5489,68 @@
   confidence: probable
   review: draft
 
+- atom: judaea-peraea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 101 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.235, 13.356' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Under the kings in name; Zeno Cotylas held Philadelphia (AJ 13.235) and
+    his son Theodorus the stronghold of Amathus (13.356). Who held the Jewish
+    villages of Peraea before Jannaeus is not recorded.
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: independent
+  from: c. 100 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.374' }
+    - { source: josephus-bj, locator: '1.86–89' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Alexander Jannaeus took Amathus, "a very strong fortress belonging to the
+    inhabitants above Jordan", after Ptolemy Lathyrus' war (AJ 13.356), with
+    Gadara, and demolished it later (13.374). Theodorus beat him once (13.356);
+    the row runs from the first taking.
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-peraea
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources: [{ source: josephus-aj, locator: '14.330–369' }]
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
 - atom: judaea-idumaea
   polity: seleucid
   relation: independent
@@ -5522,12 +5594,13 @@
   from: 40 BCE
   to: 38 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369, 14.394–397' }
+    - { source: josephus-aj, locator: '14.330–369, 14.396–399, 14.413' }
   confidence: probable
   review: draft
   note: >-
-    As judaea (the row is judaea's). Herod held Idumaea from 39 (AJ
-    14.394–397); drawn with Antigonus' Judaea as before the split.
+    As judaea (the row is judaea's). Herod relieved Masada and took Ressa in
+    39 (AJ 14.396–399) and sent his brother Joseph against Idumaea that winter
+    (14.413); drawn with Antigonus' Judaea as before the split.
 
 - atom: judaea-idumaea
   polity: judaea
@@ -5567,7 +5640,8 @@
   note: >-
     Aristobulus I "made war against Iturea, and added a great part of it to
     Judea" (AJ 13.318), which is taken to be Galilee; he reigned a year from
-    Hyrcanus' death in 104. Some put the conquest under Hyrcanus.
+    Hyrcanus' death in 104. Some put the conquest under Hyrcanus: his son
+    Jannaeus had been "brought up in Galilee" (13.322).
 
 - atom: judaea-galilee
   polity: judaea
@@ -5585,12 +5659,13 @@
   from: 40 BCE
   to: 38 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369, 14.413–414' }
+    - { source: josephus-aj, locator: '14.330–369, 14.395, 14.413–415' }
   confidence: probable
   review: draft
   note: >-
-    As judaea (the row is judaea's). Herod held Galilee from the winter of
-    39/38 (AJ 14.413–414); drawn with Antigonus' Judaea as before the split.
+    As judaea (the row is judaea's). "All Galilee, with some small exception,
+    joined him" in 39 (AJ 14.395), and he brought over the rest that winter
+    (14.413–415); drawn with Antigonus' Judaea as before the split.
 
 - atom: judaea-galilee
   polity: judaea
@@ -5629,9 +5704,10 @@
   review: needs-check
   note: >-
     Hyrcanus took "Shechem and Gerizzim, and the nation of the Cutheans" (AJ
-    13.255) and destroyed the temple on Gerizim; Josephus tells it after 129,
-    the excavators date the destruction c. 111. Then he besieged Samaria, "took
-    Samaria" and "demolished it entirely" (13.275–281), c. 108–107.
+    13.255) and the temple on Gerizim; Josephus tells it after 129, and the
+    excavators are reported to date the destruction c. 112–111 (not checked
+    here: the reports of the coin evidence differ). Then he besieged Samaria
+    for a year, took it and "demolished it entirely" (13.275–281), c. 108–107.
 
 - atom: syria-palaestina
   polity: seleucid
@@ -5647,16 +5723,18 @@
 - atom: syria-palaestina
   polity: judaea
   relation: independent
-  from: 107 BCE
+  from: { earliest: 107 BCE, latest: 83 BCE }
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.275–281, 13.393–397' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Scythopolis and the Jezreel fell with Samaria (c. 107); Pella, Dion,
-    Gerasa and the Gaulanitis only to Jannaeus in the 80s (AJ 13.393–397). The
-    atom cannot be split by those years; drawn from the first conquest.
+    Scythopolis and "other places near it" were betrayed to the Jews during
+    the siege of Samaria (AJ 13.280), c. 107; Dion, Pella, Gerasa and the
+    Gaulanitis fell only to Jannaeus in his three years' war of the 80s (AJ
+    13.393–397). The atom cannot be split by those years; the range is both,
+    and it is drawn from the first.
 
 - atom: gadara-hippos
   polity: seleucid
@@ -5729,13 +5807,19 @@
   from: { earliest: 103 BCE, latest: 96 BCE }
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.335, 13.395' }
+    - { source: josephus-aj, locator: '13.324, 13.335, 13.395' }
+    - { source: gitler-master-2010 }
   confidence: uncertain
   review: needs-check
   note: >-
     Dora with Zoilus' country; Iamnia and Azotus are on the list of the Jews'
-    cities (AJ 13.395). Ascalon, inside the atom, was never Hasmonean: it was
-    free from 104 (its era). The atom is drawn Judaean for its other towns.
+    cities (AJ 13.395). The atom's two pieces differ: in Jannaeus' first year
+    "of the maritime cities there remained only Ptolemais and Gaza to be
+    conquered, besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and
+    Azotus were already Jewish by 103, from a date not recorded, and the
+    southern piece is drawn too late. Ascalon, in that piece, was never
+    Hasmonean: it was free from 104/103 (its era). The atom is drawn Judaean
+    for its other towns.
 
 - atom: gaza
   polity: seleucid
@@ -5760,22 +5844,54 @@
   note: >-
     Jannaeus took Raphia and Anthedon, then Gaza, "having spent a year in that
     siege", and "utterly overthrown their city" (AJ 13.357, 13.364), 96 on the
-    usual reckoning.
+    usual reckoning. The atom's eastern corner holds Marisa, which Hyrcanus I
+    had taken with Idumaea (13.257); at this grain it follows Gaza.
 
 - atom: nabataea-moab
   polity: judaea
   relation: independent
   from: c. 93 BCE
-  to: 66 BCE
+  to: c. 88 BCE
   sources:
-    - { source: josephus-aj, locator: '13.374, 13.397, 14.18' }
+    - { source: josephus-aj, locator: '13.374, 13.382' }
+    - { source: josephus-bj, locator: '1.89' }
   confidence: uncertain
   review: needs-check
   note: >-
     Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
-    made them pay tribute (AJ 13.374), after Gaza and before the civil war;
-    Heshbon, Medaba and the other Moabite towns are Jewish at his death
-    (13.397). Unclaimed before: who held Moab is not recorded.
+    made them pay tribute (AJ 13.374), after Gaza and before the civil war. In
+    that war "he was forced to deliver back to the king of Arabia the land of
+    Moab and Gilead, which he had subdued" (13.382), after Demetrius III's
+    invasion, c. 88. Unclaimed before: who held Moab is not recorded.
+
+- atom: nabataea-moab
+  polity: nabataea
+  relation: independent
+  from: c. 87 BCE
+  to: 84 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.382' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Given back to the Arabian king in the civil war (AJ 13.382), to Jannaeus'
+    recovery of it, which is not narrated.
+
+- atom: nabataea-moab
+  polity: judaea
+  relation: independent
+  from: { earliest: 83 BCE, latest: 80 BCE }
+  to: 66 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.393–397, 14.18' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Zoara and the other towns "in the country of Moab" are on the list of the
+    Jews' cities after Jannaeus' three years' war beyond the Jordan (AJ
+    13.393–397), and Hyrcanus II promised twelve of them back to Aretas III in
+    65 (14.18). When Jannaeus took Moab again is not stated; the range is that
+    war.
 
 - atom: nabataea
   polity: nabataea
@@ -5784,15 +5900,18 @@
   to: 63 BCE
   sources:
     - { source: josephus-aj, locator: '13.360, 13.375, 13.387–392' }
+    - { source: josephus-bj, locator: '1.90' }
     - { source: sullivan-1990 }
     - { source: bowersock-1983 }
   confidence: probable
   review: needs-check
   note: >-
     Aretas II, who promised Gaza help against Jannaeus (AJ 13.360); Obodas I,
-    who ambushed Jannaeus in the Gaulanitis (13.375) and beat and killed
-    Antiochus XII; Aretas III, who held Damascus from c. 85 (13.392). Its
-    Damascene is not drawn.
+    who ambushed Jannaeus at a village of Gilead (AJ 13.375; "near Golan", BJ
+    1.90); the Arabian king who beat and killed Antiochus XII (AJ 13.391),
+    unnamed in the Greek (Whiston supplies Aretas) and taken by modern work for
+    Obodas; Aretas III, who held Damascus from c. 85 (13.392). Its Damascene is
+    not drawn.
 
 - atom: nabataea
   polity: nabataea

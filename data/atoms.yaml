@@ -531,7 +531,9 @@
     Moab from the Zered to the Arnon. Alexander Jannaeus had taken its towns
     from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
     for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
-    65. Takes the Dead Sea shore and Zoara from nabataea.
+    65. Jannaeus had given Moab back once before, in his civil war (AJ
+    13.382), and taken it again. Takes the Dead Sea shore and Zoara from
+    nabataea.
 
 - id: triakontaschoinos
   evidence: schematic
@@ -724,6 +726,43 @@
     Beth-Zur and Hebron; Marisa itself lies just outside, in gaza. Takes its
     western and southern edges from judaea.
 
+- id: judaea-peraea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.555, 31.76]
+          note: the mouth of the Jordan
+        - at: [35.55, 32.2]
+          via: river
+          note: up the Jordan to below Pella, judaea's line
+        - at: [35.616, 32.281]
+          pleiades: '678015'
+          note: Amathus, the stronghold of Theodorus son of Zeno until Jannaeus took it (AJ 13.356)
+        - at: [35.8, 32.1]
+          note: west of Gerasa, judaea's line
+        - at: [35.75, 31.8]
+          note: short of Philadelphia
+        - at: [35.62, 31.5]
+          note: the Arnon, with Machaerus inside
+        - at: [35.55, 31.46]
+          note: the mouth of the Arnon; back up the Dead Sea's eastern shore
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.374' }
+    - { source: josephus-bj, locator: '1.86–89' }
+    - { source: barrington, locator: 'maps 69–71' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Peraea, the land beyond the Jordan between Pella and the Arnon, which
+    Pompey left to Hyrcanus II with Judaea. Split from judaea (September 2026,
+    in the check of the extension to 133): its chief fortress, Amathus, was
+    held by Theodorus son of Zeno until Alexander Jannaeus took it after
+    Ptolemy Lathyrus' war (AJ 13.356) and later demolished it (13.374), so the
+    ground was not Hasmonean in 133. Its outline is judaea's old eastern side;
+    how much of it the Jews held before Jannaeus is not known. Takes the Jordan
+    from judaea-jericho.
+
 - id: judaea
   evidence: schematic
   construction:
@@ -762,12 +801,11 @@
   confidence: probable
   review: draft
   note: >-
-    The ethnarchy of Hyrcanus II after 63: Judaea and Peraea, with Idumaea and
-    Galilee (split off for the extension to 133) and Samaria and the Jezreel
+    The ethnarchy of Hyrcanus II after 63: Judaea, with Idumaea, Galilee and
+    Peraea (split off for the extension to 133) and Samaria and the Jezreel
     between them in the province. The edges follow the cities Pompey removed
-    from the Jews rather than any surveyed line. Peraea is not split from
-    Judaea, though its towns were taken one by one (Medaba, AJ 13.255; Amathus,
-    13.356); the whole atom is Hasmonean from before 133.
+    from the Jews rather than any surveyed line. What is left is Judaea
+    proper, Hasmonean from before 133; its eastern side is judaea-peraea's.
 
 - id: judaea-joppa
   evidence: schematic
