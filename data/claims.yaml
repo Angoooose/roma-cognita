@@ -394,12 +394,15 @@
   to: 115 BCE
   sources:
     - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+    - { source: pausanias, locator: '1.9.1–2' }
   confidence: probable
   review: needs-check
   note: >-
-    Governed for the crown of Egypt by a strategos, as Ptolemy IX (c. 118) and
-    Ptolemy X (from 116) were in turn (Bennett). Ptolemy VIII took refuge here
-    in 131/130 during Cleopatra II's revolt.
+    Governed for the crown of Egypt by a strategos: Ptolemy IX, c. 118, then,
+    once he was king, his brother Ptolemy X, sent "ostensibly as general"
+    (Paus. 1.9.1–2). Ptolemy X's command is the usual view; Bennett doubts he
+    held it and gives the post to Helenos. Ptolemy VIII took refuge here in
+    131/130 during Cleopatra II's revolt.
 
 - atom: cyprus
   polity: cyprus-ptolemaic-early
@@ -438,15 +441,16 @@
   from: 105 BCE
   to: 89 BCE
   sources:
-    - { source: bennett-ptolemies, locator: 'Ptolemy IX' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy Apion' }
   confidence: probable
   review: needs-check
   note: >-
     Ptolemy IX's, from his return late in the summer of 105 (the Paphos
-    inscription of his year 12, OGIS 166; the end of Ptolemy X's Paphian and
-    the start of his own Cypriot coinage) until the Alexandrians recalled him
-    in 88. The law of 101/100 names "the king who holds Cyprus" (Cnidus copy)
-    beside the king in Alexandria (Bennett).
+    inscription of his year 12, OGIS 166, and the end of Ptolemy X's Paphian
+    coinage in 106/105) until the Alexandrians recalled him in 88. His own
+    coinage from the Cypriot mints begins only in 100/99 (Mørkholm). The Cnidus
+    copy of the law of 101/100 names "the king who holds Cyprus" (Bennett,
+    "Ptolemy Apion").
 
 - atom: cyprus
   polity: aegyptus
@@ -679,8 +683,10 @@
   note: >-
     Ptolemy VIII had been king at Cyrene before he took Egypt in 145 (Justin
     38.8) and kept it with the crown. Under Ptolemy IX it was still the crown's
-    in his years 9 and 10, 108/107: a royal letter to the city (SEG IX 5) and a
-    statue base (Bennett). What followed until Apion is not known.
+    by a royal letter to the city of April 108, his year 9 (SEG IX 5), and a
+    statue base of his year 10, 108/107 (Bennett). What followed until Apion is
+    not known; Bennett thinks Ptolemy IX may have kept Cyrene after he lost
+    Egypt in 107.
 
 - atom: cyrenaica
   polity: cyrenaica-apion
@@ -694,8 +700,9 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Apion's kingdom, from a start that lies between Ptolemy IX's loss of Egypt
-    and the law of 101/100 that names a king of Cyrene (see the polity). Not a
+    Apion's kingdom, from a start that lies between the Apollonia inscription
+    of Ptolemy IX's admiral, no earlier than 106/105, and the law of 101/100
+    that names a king of Cyrene (see the polity). Not a
     client: nothing makes him more than a friend of Rome until his will.
 
 - atom: cyrenaica
@@ -760,7 +767,7 @@
   note: >-
     Jugurtha's kingdom at war with Rome, from the declaration of 111 (Sall. Jug.
     27; Livy Per. 64) to his surrender in 105. Roman armies garrisoned Vaga
-    (Jug. 47), took Thala (75–76), destroyed Capsa (89–91) and wintered at Cirta
+    (Jug. 47), took Thala (75–76), destroyed Capsa (89–91) and came to Cirta
     (102.1), but held towns, not the country; no occupation is drawn.
 
 - atom: numidia
@@ -1097,8 +1104,8 @@
   note: >-
     The part of Numidia Bocchus I was promised by Jugurtha and then by Sulla
     (Sall. Jug. 97.2, 111.1), perhaps a third of the kingdom, reaching to about
-    Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had stopped it at the
-    Chelif). Ran from "before 68" until September 2026.
+    Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had carried it "au moins
+    jusqu'à l'embouchure du Chélif"). Ran from "before 68" until September 2026.
 
 - atom: mauretania-west
   polity: mauretania
@@ -2409,12 +2416,12 @@
 - atom: triakontaschoinos
   polity: kush
   relation: independent
-  from: before 133 BCE
+  from: before 68 BCE
   to: 30 BCE
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
-    - { source: torok-2009 }
     - { source: barrington, locator: 'map 81' }
+    - { source: eller-2025, locator: 'pp. 67–68' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -2423,11 +2430,11 @@
     to which neither the Roman people nor the kings of Egypt had marched".
     Whether the Dodecaschoenus next to Philae was Ptolemaic before 30 is argued:
     Burstein (Barrington map 81) puts the Egyptian–Kushite boundary at
-    Hierasykaminos for most of the period the map covers. Carried back to 133 in
-    September 2026, uncertain: the Ptolemies retook Lower Nubia in 186, and
-    Török (2009, not read here) is reported to conclude that most of it south of
-    Debod was lost to them by the reign of Ptolemy IX, perhaps by the middle of
-    the second century.
+    Hierasykaminos for most of the period the map covers. Left at "before 68"
+    on purpose, and 133–69 unclaimed: Ptolemy VI had "reestablish[ed] control
+    over Lower Nubia up to the Second Cataract", and when the Ptolemies lost it
+    again is not known; the first century "remains difficult to determine"
+    (Eller 2025, 67–68).
 
 - atom: triakontaschoinos
   polity: triakontaschoinos
