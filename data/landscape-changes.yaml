@@ -122,3 +122,146 @@
     (features.yaml) leaves out, so the two meet. Uncertain for the same reason: the
     level moved during the window and is a single number. Modern drains cut below
     the old level on the south side are left out (arms under 500 m wide).
+
+# --- ancient coasts: Italy ----------------------------------------------------
+# A coast is the shore of about 50 BCE, read from the cited reconstructions (their
+# figures georeferenced against named sites), with the sea filled in to it over
+# today's ground by derive-coasts.ts; coasts.ts says where each vertex comes from.
+# A lagoon is an authored outline of the extent its sources give.
+
+- id: tiber-mouth
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: salomon-2018, locator: 'cores ISF-1, TB-1; fig. 1 (wall of 63–58 BCE, 2nd–3rd-century coast)' }
+    - { source: salomon-2023, locator: 'fig. 1, coastline of the 2nd century CE' }
+    - { source: strabo, locator: '5.3.5: Ostia harbourless from the Tiber’s silt' }
+    - { source: mapterhorn, locator: 'z12 terrain seaward of the shore' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Tiber delta has built out 2–4 km since: Isola Sacra, Fiumicino and Lido di
+    Ostia stand on it, and Claudius's harbour was dug partly into the sea. Certain
+    at Ostia, where cores date the shore; north of the Claudian basin and south of
+    Ostia, where the old coast closes on the modern one, the line is ours.
+
+- id: stagno-di-maccarese
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: di-rita-2010, locator: brackish from the 9th–8th century BCE }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The lagoon north of the Tiber, behind the Roman barrier, reclaimed in the 19th
+    and 20th centuries (Maccarese; Fiumicino airport). Its extent is the sources';
+    its outline is ours.
+
+- id: stagno-di-ostia
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: salomon-2018, locator: 'fig. 1, the 19th-century lagoon' }
+    - { source: vittori-2015, locator: kept open to the sea for the salt works }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The lagoon east of Ostia, the Campus Salinarum Romanarum, drained in the 19th
+    century. Its outline is rounded by us inside the extent the figure gives.
+
+- id: arno-coast
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pasquinucci-2014, locator: 'fig. 2, the innermost ancient shoreline (after Mazzanti 2003)' }
+    - { source: kaniewski-2018, locator: 'fig. 8A, the Roman period' }
+    - { source: strabo, locator: '5.2.5: Pisa 20 stades from the sea by the river' }
+    - { source: mapterhorn, locator: 'z12 terrain seaward of the shore' }
+  confidence: probable
+  review: draft
+  note: >-
+    The coast off Pisa, about 7 km inland of today's at the Arno: it was nearly still
+    from the 8th to the 2nd century BCE and began to build out in the 2nd–1st. North
+    of the Serchio, where it closes on the modern coast towards Viareggio, the line
+    is ours.
+
+- id: portus-pisanus
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: kaniewski-2018, locator: 'fig. 8A; the lagoon formed about 200 BCE' }
+  confidence: probable
+  review: draft
+  note: >-
+    Pisa's harbour lagoon behind the barrier north of Livorno, open to the sea by an
+    inlet. Outline rounded by us inside the figure's extent.
+
+- id: po-delta-coast
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: ispra-205-comacchio, locator: 'fig. 13 (after Ciabatti 1966), ridge V; p. 118, the Comacchio ship' }
+    - { source: ciabatti-1966 }
+    - { source: cirelli-2013, locator: 'fig. 2, Ravenna and Classe' }
+    - { source: strabo, locator: '5.1.7–8: Spina 90 stades from the sea; Atria by canals' }
+    - { source: pliny-nh, locator: '3.119–121, the mouths of the Po' }
+    - { source: mapterhorn, locator: 'z11 terrain seaward of the shore' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Adriatic coast from Ravenna to Chioggia on the Roman beach ridge. Everything
+    seaward of it is later: the lobes of the Po di Goro, Tolle and Pila, most of them
+    after the Porto Viro cut of 1604. Ciabatti's map is a sketch, good to 1–2 km, so
+    uncertain; probable at Ravenna and Comacchio, where it is tied to finds. The
+    delta built out fast between the 4th and the 1st century BCE, so the line is the
+    end of the window more than its start. Comacchio comes out 2.8 km from the water,
+    against a ridge said to pass through it: within the figure's error, not resolved.
+
+- id: ravenna-lagoon
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cirelli-2013, locator: 'fig. 2' }
+    - { source: strabo, locator: '5.1.7: Ravenna built on piles in the marshes' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Open water west and south of Ravenna and between it and Classe. Schematic: the
+    figure is a sketch of the early Empire, and Classe's harbour is Augustan.
+
+# --- modern lagoons that were land --------------------------------------------
+
+- id: valli-di-comacchio
+  op: remove-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: ispra-205-comacchio, locator: 'Roman villas at Agosta and Dosso dei Sassi on the lagoon floor' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The valli west of the Augustan ridge formed as the delta subsided after
+    antiquity; in the window they were land with villas on it. Where some was marsh
+    the map cannot yet say.
+
+- id: grado-lagoon
+  op: remove-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: donda-2025, locator: 'the lagoon mostly emerged land in the Roman period; the San Gottardo harbour 500 m offshore at −4 m' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The eastern lagoon, between Aquileia's plain and the Grado barrier, is post-Roman;
+    the Marano lagoon to the west is older and is left as it is. The coast itself lay
+    at or a little seaward of today's barrier islands, which at this scale changes
+    nothing, so it is not redrawn. Relative sea level was 1.2–1.7 m lower, which the
+    map does not apply.
