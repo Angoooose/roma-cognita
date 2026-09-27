@@ -237,12 +237,15 @@
       from: 46 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
+    - { source: sallust-jug, locator: '27.3–4' }
   confidence: probable
   review: draft
   note: >-
-    Juba's kingdom until Thapsus; annexed by Caesar in 46 as Africa Nova ("New
-    Africa"). Dated to match claims.yaml, where the kingdom's ground passes to
-    the new province in 46.
+    The Numidian kingdom until Thapsus; annexed by Caesar in 46 as Africa Nova
+    ("New Africa"). Dated to match claims.yaml, where the kingdom's ground
+    passes to the new province in 46. The consuls' "Numidia" of the Jugurthine
+    War, from Bestia in 111 (Sall. Jug. 27.3–4) to Marius, was a war against
+    this kingdom and shows on it: numidia is Jugurtha's whole kingdom from 112.
 
 - dprr: Africa
   kind: territory
@@ -276,6 +279,14 @@
 - dprr: Cyrenaica
   kind: territory
   polities:
+    - polity: cyrenaica-free
+      from: 96 BCE
+      to: 75 BCE
+      confidence: uncertain
+      note: >-
+        The free cities of Apion's bequest, before the province of c. 74. P.
+        Lentulus Marcellinus, sent as quaestor "to the new province of Cyrene"
+        in 75 (Sallust Hist. 2.43 M), falls in their last year as drawn.
     - polity: cyrenae
       to: 28 BCE
     - polity: creta-cyrenae
@@ -283,13 +294,22 @@
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
   confidence: certain
   review: draft
-  note: The country of Cyrene; the same province as our cyrenae.
+  note: The country of Cyrene; the same province as our cyrenae, and before it the free cities.
 
 - dprr: Cyrene
   kind: territory
   polities:
+    - polity: cyrenaica-free
+      from: 96 BCE
+      to: 75 BCE
+      confidence: uncertain
+      note: >-
+        The free cities of Apion's bequest, before the province of c. 74. P.
+        Lentulus Marcellinus, sent as quaestor "to the new province of Cyrene"
+        in 75 (Sallust Hist. 2.43 M), falls in their last year as drawn.
     - polity: cyrenae
       to: 28 BCE
     - polity: creta-cyrenae
@@ -317,9 +337,10 @@
   confidence: probable
   review: draft
   note: >-
-    Ptolemaic Egypt, a client kingdom and never a province before 30. Joined
-    to the kingdom so that Romans who served there — in Caesar's Alexandrian
-    war, or with the legions left behind — show on it; none was its governor.
+    Ptolemaic Egypt, an independent friend of Rome to 60, a client kingdom from
+    59, and never a province before 30. Joined to the kingdom so that Romans who
+    served there — in Caesar's Alexandrian war, or with the legions left behind
+    — show on it; none was its governor.
     From 30 Egypt is a province under an equestrian prefect (aegyptus-province).
 
 # --- territories: Illyricum and the Balkans ----------------------------------

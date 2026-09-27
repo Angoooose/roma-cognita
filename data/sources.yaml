@@ -528,6 +528,45 @@
   kind: ancient
   citation: Suetonius, Tiberius
 
+# --- added September 2026: the extension to 133 BCE, Africa and Egypt ------------
+
+- id: sallust-jug
+  kind: ancient
+  citation: Sallust, Bellum Iugurthinum
+  note: Cited by chapter and section; read in Rolfe's Loeb translation on ToposText.
+
+- id: justin
+  kind: ancient
+  citation: Justin, Epitome of the Philippic History of Pompeius Trogus
+
+- id: lex-de-provinciis-praetoriis
+  kind: ancient
+  citation: >-
+    The Roman law on the praetorian provinces and the pirates, 101/100 BCE, in
+    Greek copies from Delphi (SEG III 378) and Cnidus (SEG XXVI 1227); M. H.
+    Crawford (ed.), Roman Statutes (London, 1996) no. 12
+  note: >-
+    Not read in the original here; its mention of the kings of Egypt, Cyprus and
+    Cyrene is as Bennett (Egyptian Royal Genealogy, "Ptolemy Apion") reports it.
+
+- id: bennett-ptolemies
+  kind: modern
+  citation: >-
+    C. J. Bennett, Egyptian Royal Genealogy: the Ptolemaic Dynasty (Tyndale
+    House, Cambridge, web edition)
+  url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/
+  note: >-
+    Read: the entries for Ptolemy VIII, IX, X and XII, Ptolemy Apion, Ptolemy of
+    Cyprus and Cleopatra II, each of which sets out the dated documents behind
+    the reign. Cited by entry.
+
+- id: torok-2009
+  kind: modern
+  citation: >-
+    L. Török, Between Two Worlds: The Frontier Region Between Ancient Nubia and
+    Egypt, 3700 BC–AD 500 (Leiden and Boston, 2009)
+  note: Not read; its conclusion on Lower Nubia after 186 BCE is known from summaries.
+
 # --- datasets ------------------------------------------------------------------
 
 - id: natural-earth

@@ -388,19 +388,98 @@
   review: draft
 
 - atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 115 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Governed for the crown of Egypt by a strategos, as Ptolemy IX (c. 118) and
+    Ptolemy X (from 116) were in turn (Bennett). Ptolemy VIII took refuge here
+    in 131/130 during Cleopatra II's revolt.
+
+- atom: cyprus
+  polity: cyprus-ptolemaic-early
+  relation: independent
+  from: { earliest: 114 BCE, latest: 113 BCE }
+  to: 108 BCE
+  sources:
+    - { source: pausanias, locator: '1.9.2' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy X' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy X, "proclaimed king in Cyprus in 114/3" (Bennett), until he
+    replaced his brother in Alexandria in 107. Pausanias has his mother send
+    him there "ostensibly as general" (1.9.2); the royal title rests on his
+    Cypriot dating (Bennett).
+
+- atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: 107 BCE
+  to: 106 BCE
+  sources:
+    - { source: justin, locator: '39.4' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Ptolemy IX fled to Cyprus in 107 and was driven off it by Cleopatra III's
+    troops (Justin 39.4); her governor Helenos held it for Ptolemy X (Bennett,
+    after Mitford) until Ptolemy IX came back in 105.
+
+- atom: cyprus
+  polity: cyprus-ptolemaic-early
+  relation: independent
+  from: 105 BCE
+  to: 89 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy IX's, from his return late in the summer of 105 (the Paphos
+    inscription of his year 12, OGIS 166; the end of Ptolemy X's Paphian and
+    the start of his own Cypriot coinage) until the Alexandrians recalled him
+    in 88. The law of 101/100 names "the king who holds Cyprus" (Cnidus copy)
+    beside the king in Alexandria (Bennett).
+
+- atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: 88 BCE
+  to: 81 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+    - { source: plutarch, locator: 'Lucullus 3.1–3.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy IX held Egypt and Cyprus together from 88 to his death at the end
+    of 81; Ptolemy X died trying to take the island in 88 or 87 (Bennett).
+    Lucullus sailed on to Cyprus with the king's ships in 86 (Plut. Lucullus
+    3.1–3.2).
+
+- atom: cyprus
   polity: cyprus-ptolemaic
   relation: independent
-  from: before 68 BCE
+  from: 80 BCE
   to: 59 BCE
   sources:
     - { source: cicero-sest, locator: '57' }
     - { source: strabo, locator: '14.6.6' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy of Cyprus' }
   confidence: probable
   review: draft
   note: >-
-    Ptolemaic until the lex Clodia. Not a client: Cicero says the senate had
-    not yet styled Ptolemy an ally (Sest. 57). Rome's claim to the Ptolemaic
-    realms under the will of Ptolemy Alexander stood unenforced until 58.
+    Ptolemy of Cyprus, king from 80 until the lex Clodia. Not a client: Cicero
+    says the senate had not yet styled Ptolemy an ally (Sest. 57). Rome's claim
+    to the Ptolemaic realms under the will of Ptolemy Alexander stood
+    unenforced until 58. Ran from "before 68" until September 2026.
 
 - atom: cyprus
   polity: cilicia
@@ -576,16 +655,68 @@
 - atom: africa
   polity: africa
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+  note: >-
+    Provincial since 146 (the polity). The Gracchan colony at Carthage (122),
+    Marius' Gaetulian settlers of 103 (who lay inside the Numidian kingdom,
+    Bridoux ¶134, ¶146) and the Marian holdouts of 82–81 whom Pompey destroyed
+    (Plut. Pompey 11–12) did not change whose ground this was.
+
+- atom: cyrenaica
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 108 BCE
+  sources:
+    - { source: justin, locator: '38.8' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy VIII had been king at Cyrene before he took Egypt in 145 (Justin
+    38.8) and kept it with the crown. Under Ptolemy IX it was still the crown's
+    in his years 9 and 10, 108/107: a royal letter to the city (SEG IX 5) and a
+    statue base (Bennett). What followed until Apion is not known.
+
+- atom: cyrenaica
+  polity: cyrenaica-apion
+  relation: independent
+  from: { earliest: 105 BCE, latest: 100 BCE }
+  to: 97 BCE
+  sources:
+    - { source: justin, locator: '39.5.2' }
+    - { source: lex-de-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Apion's kingdom, from a start that lies between Ptolemy IX's loss of Egypt
+    and the law of 101/100 that names a king of Cyrene (see the polity). Not a
+    client: nothing makes him more than a friend of Rome until his will.
+
+- atom: cyrenaica
+  polity: cyrenaica-free
+  relation: allied
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The free cities of Apion's bequest, until the province (Livy Per. 70; see
+    the polity). Rome's by inheritance, but with no governor: Lucullus in 87/86
+    came as Sulla's envoy looking for ships, not as a magistrate of Cyrene.
 
 - atom: cyrenaica
   polity: cyrenae
   relation: province
-  from: before 68 BCE
+  from: c. 74 BCE
   to: 35 BCE
   sources:
     - { source: livy-per, locator: '70' }
@@ -593,16 +724,58 @@
     - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
-  note: Organised c. 74.
+  note: >-
+    Organised c. 74: Sallust has P. Lentulus Marcellinus sent as quaestor "to
+    the new province of Cyrene" among the events of 75 (Hist. 2.43 M), Appian
+    puts it in 74 (BC 1.111). Ran from "before 68" until September 2026.
 
 - atom: numidia
   polity: numidia
   relation: client
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶157' }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: bridoux-2020, locator: '¶124, ¶137, ¶141' }
+    - { source: sallust-jug, locator: '16.5' }
   confidence: probable
   review: draft
+  note: >-
+    Micipsa's, then from c. 116 Adherbal's: his kingdom "englobe la contrée
+    comprise depuis la frontière de la province romaine jusqu'à Cirta" (Bridoux
+    ¶141), the part with "more harbours" (Sall. Jug. 16.5). Leptis Magna, which
+    Micipsa held (¶137), has no atom here; it went over to Rome at the start of
+    the war (Jug. 77.2–3).
+
+- atom: numidia
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources:
+    - { source: sallust-jug, locator: '27, 47, 75–76, 89–92, 102.1' }
+    - { source: livy-per, locator: '64–66' }
+  confidence: certain
+  review: draft
+  note: >-
+    Jugurtha's kingdom at war with Rome, from the declaration of 111 (Sall. Jug.
+    27; Livy Per. 64) to his surrender in 105. Roman armies garrisoned Vaga
+    (Jug. 47), took Thala (75–76), destroyed Capsa (89–91) and wintered at Cirta
+    (102.1), but held towns, not the country; no occupation is drawn.
+
+- atom: numidia
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 47 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: bridoux-2020, locator: '¶144–145, ¶153, ¶157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Gauda's, then Hiempsal II's and Juba I's eastern kingdom, to the fossa
+    regia (Bridoux ¶145, ¶153, ¶157). Ran from "before 68" until September 2026.
 
 - atom: numidia
   polity: africa-nova
@@ -617,12 +790,36 @@
 - atom: numidia-cirta
   polity: numidia
   relation: client
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶102, ¶157' }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶141' }
+    - { source: sallust-jug, locator: '21–26' }
   confidence: probable
   review: draft
-  note: Cirta was Juba's capital.
+  note: >-
+    Cirta was Micipsa's, then Adherbal's capital (Bridoux ¶141), where he was
+    besieged and killed in 112 (Sall. Jug. 21–26).
+
+- atom: numidia-cirta
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '27, 102.1' }]
+  confidence: certain
+  review: draft
+  note: As numidia. Marius was at Cirta in 106/105 (Sall. Jug. 102.1).
+
+- atom: numidia-cirta
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 47 BCE
+  sources: [{ source: bridoux-2020, locator: '¶102, ¶145, ¶157' }]
+  confidence: probable
+  review: draft
+  note: Cirta was Juba's capital. Ran from "before 68" until September 2026.
 
 - atom: numidia-cirta
   polity: africa-nova
@@ -637,9 +834,65 @@
     in 44 (Bridoux ¶159). In 46–45 it was Sittius', and is not claimed here.
 
 - atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  confidence: probable
+  review: draft
+  note: >-
+    Micipsa's kingdom ran from the Mulucha to the fossa regia (Bridoux ¶124).
+    In the division of c. 116 this ground went to Jugurtha or to Adherbal, and
+    nobody can say which (¶141): it is unclaimed until 112.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+  note: Jugurtha's whole kingdom once Cirta fell, before Rome declared war.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+  note: Jugurtha's kingdom at war with Rome; see numidia.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  confidence: probable
+  review: draft
+  note: Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶145).
+
+- atom: numidia-igilgili
   polity: numidia-masinissa
   relation: client
-  from: before 68 BCE
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: draft
+  note: >-
+    Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
+    survenue en 88" (Bridoux ¶147–148); split from the next row only because
+    the standing of the kingdom changes (relations.yaml).
+
+- atom: numidia-igilgili
+  polity: numidia-masinissa
+  relation: client
+  from: 81 BCE
   to: 47 BCE
   sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
   confidence: uncertain
@@ -647,11 +900,59 @@
   note: >-
     Masinissa II's principality, which Bridoux takes as a vassal of the eastern
     Numidian kings (¶155). Given to Sittius in 46, recovered by Arabio in 44.
+    Ran from "before 68" until September 2026.
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  confidence: probable
+  review: draft
+  note: As numidia-igilgili; unclaimed in c. 116–113.
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  confidence: probable
+  review: draft
 
 - atom: numidia-soummam
   polity: numidia-masinissa
   relation: client
-  from: before 68 BCE
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: draft
+  note: Masteabar's; see numidia-igilgili.
+
+- atom: numidia-soummam
+  polity: numidia-masinissa
+  relation: client
+  from: 81 BCE
   to: 47 BCE
   sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
   confidence: uncertain
@@ -671,44 +972,198 @@
   note: Caesar's grant to Bocchus II; Arabio probably recovered it in 44 (Bridoux ¶159).
 
 - atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶123–124' }
+    - { source: sallust-jug, locator: '19.7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Numidian to the Mulucha under Micipsa (Bridoux ¶124), one of whose
+    inscriptions was found at Cherchell, Iol (¶123). Unclaimed in c. 116–113,
+    as numidia-igilgili.
+
+- atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-east
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶75, ¶145 and pl. VIII' }]
+  confidence: probable
+  review: draft
+  note: >-
+    East of Bocchus I's gains of 105, which Gsell and Bridoux end between the
+    mouth of the Chelif and Cap Ténès (¶75): so Gauda's (¶145).
+
+- atom: mauretania-east
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: c. 80 BCE
   to: 34 BCE
   sources: [{ source: bridoux-2020, locator: '¶97, ¶102' }]
   confidence: uncertain
   review: draft
+  note: >-
+    Desanges' hypothesis, which Bridoux accepts, that the Moorish kingdom
+    reached the Soummam in the first half of the first century (¶102), perhaps
+    under Sosus, "maître d'un territoire hérité de Bocchus I … qu'il étend peut-
+    être jusqu'à l'oued Soummam" (¶97). Dated from Sosus' accession, c. 80; it
+    could be later. In c. 88–81, between Gauda's death and Sosus, the ground is
+    unclaimed: Masteabar's share began at the Soummam (¶148), and no source says
+    whose this was. Ran from "before 68" until September 2026.
+
+- atom: mauretania-central
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶74, ¶124' }
+    - { source: sallust-jug, locator: '110.8' }
+  confidence: probable
+  review: draft
+  note: >-
+    Numidian west to the Mulucha, "the boundary between Micipsa and myself"
+    (Bocchus in Sall. Jug. 110.8; Bridoux ¶74).
+
+- atom: mauretania-central
+  polity: numidia-jugurtha
+  relation: client
+  from: c. 116 BCE
+  to: 113 BCE
+  sources:
+    - { source: sallust-jug, locator: '16.5' }
+    - { source: bridoux-2020, locator: '¶142' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "The part of Numidia adjoining Mauretania" was Jugurtha's (Sall. Jug.
+    16.5). This atom touches the Mulucha, so it was his whatever the line with
+    Adherbal was; the atoms between are unclaimed.
+
+- atom: mauretania-central
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-central
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 92.5' }]
+  confidence: probable
+  review: draft
+  note: >-
+    "Numidia as far as the river Muluccha" was Jugurtha's (Sall. Jug. 19.7);
+    Marius took his fort near the river in 106 (92.5).
 
 - atom: mauretania-central
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: 105 BCE
   to: 34 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶75' }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '97.2, 111.1' }
+    - { source: bridoux-2020, locator: '¶74–75' }
   confidence: probable
   review: draft
+  note: >-
+    The part of Numidia Bocchus I was promised by Jugurtha and then by Sulla
+    (Sall. Jug. 97.2, 111.1), perhaps a third of the kingdom, reaching to about
+    Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had stopped it at the
+    Chelif). Ran from "before 68" until September 2026.
+
+- atom: mauretania-west
+  polity: mauretania
+  relation: independent
+  from: before 133 BCE
+  to: 106 BCE
+  sources:
+    - { source: sallust-jug, locator: '19.7, 80.4' }
+    - { source: bridoux-2020, locator: '¶73' }
+  confidence: probable
+  review: draft
+  note: >-
+    Bocchus I's kingdom was "unknown to us before that time either in peace or
+    in war" (Sall. Jug. 19.7); his request for a treaty was refused (80.4) and
+    he fought Marius in 106. His predecessors after Baga are unknown (Bridoux
+    ¶73).
 
 - atom: mauretania-west
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: 105 BCE
   to: 50 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶99–100' }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '111.1' }
+    - { source: bridoux-2020, locator: '¶80, ¶91, ¶99–100' }
   confidence: probable
   review: draft
+  note: >-
+    From the alliance of 105. Sosus ruled here as well: his sling bullets were
+    found at Volubilis and Thamusida (Bridoux ¶91). Sertorius' siege of Tingi
+    in 81 left the country as he found it (Plut. Sertorius 9.5). Ran from
+    "before 68" until September 2026.
+
+- atom: aegyptus
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 60 BCE
+  sources:
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy XII' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    A kingdom on friendly terms with Rome but not its client until Ptolemy XII
+    was recognised friend and ally in 59 (see the relation). Its civil wars
+    (132–124, 107, 88) and the Theban revolt of c. 88–86 were fought over the
+    one kingdom and are not drawn.
 
 - atom: aegyptus
   polity: aegyptus
   relation: client
-  from: before 68 BCE
+  from: 59 BCE
   to: 31 BCE
   sources:
     - { source: braund-1984 }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: cassius-dio, locator: '39.12.1' }
   confidence: probable
   review: needs-check
   note: >-
-    Migration review: the polity's own note puts client standing at 59 or 55;
-    see relations.yaml. Before that the ground is arguably `independent`.
+    From the recognition of 59 (Caes. BC 3.107; Dio 39.12.1); a Roman garrison
+    from 55. Until September 2026 this row ran from "before 68" and its note
+    asked for this change.
 
 - atom: nabataea
   polity: nabataea
@@ -1133,7 +1588,7 @@
 - atom: kush
   polity: kush
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
@@ -1143,7 +1598,7 @@
 - atom: garamantes
   polity: garamantes
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: mattingly-2003 }
@@ -1954,10 +2409,11 @@
 - atom: triakontaschoinos
   polity: kush
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 30 BCE
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
+    - { source: torok-2009 }
     - { source: barrington, locator: 'map 81' }
   confidence: uncertain
   review: needs-check
@@ -1967,7 +2423,11 @@
     to which neither the Roman people nor the kings of Egypt had marched".
     Whether the Dodecaschoenus next to Philae was Ptolemaic before 30 is argued:
     Burstein (Barrington map 81) puts the Egyptian–Kushite boundary at
-    Hierasykaminos for most of the period the map covers.
+    Hierasykaminos for most of the period the map covers. Carried back to 133 in
+    September 2026, uncertain: the Ptolemies retook Lower Nubia in 186, and
+    Török (2009, not read here) is reported to conclude that most of it south of
+    Debod was lost to them by the reign of Ptolemy IX, perhaps by the middle of
+    the second century.
 
 - atom: triakontaschoinos
   polity: triakontaschoinos
