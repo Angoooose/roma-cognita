@@ -12,7 +12,8 @@
 #
 # Every record here is "always" within the window: before 133 BCE to after 27 BCE.
 # Change over the window (the Fayum lake falling, the Pelusiac silting, the Gulf
-# coast advancing) is landscape-change work and is not attempted.
+# coast advancing) is not attempted. The floodplains stop at the coast the map
+# draws: today's, with the landscape corrections (landscape-changes.yaml) applied.
 
 # --- floodplains ---------------------------------------------------------------
 
@@ -61,7 +62,7 @@
   confidence: probable
   review: draft
   note: >-
-    From the latitude of Memphis to the modern coast. Derived as ground within 4 m
+    From the latitude of Memphis to the sea. Derived as ground within 4 m
     of the floodplain surface beside the nearest of the seven ancient branches
     (the nile-*-branch records) — not the modern Rosetta and Damietta channels, which
     is what made the earlier runtime approach lopsided. The datum is the ground
@@ -71,8 +72,10 @@
     Canopic and the Pelusiac. About 23,000 km², which is the whole modern delta's
     land, larger than Butzer's cultivable estimates as usually cited (to check):
     the northern third was lagoon, marsh and pasture (the Boukolia) in antiquity.
-    Lake Mareotis/Maryut, Manzala (the Tanitic lagoon) and Burullus are cut only at
-    their modern HydroLAKES extent; their ancient extent is landscape-change work.
+    Lake Mareotis is cut at its ancient extent (landscape change lake-mareotis),
+    and the Canopic promontory now under Aboukir Bay is land (canopic-coast);
+    Manzala (the Tanitic lagoon) and Burullus are cut only at their modern
+    HydroLAKES extent.
     Built-up Cairo reads high on the surface model; gaps under 8 km² are filled.
 
 - id: fayum-floodplain
@@ -126,12 +129,12 @@
     flatter than 0.06% on terrain smoothed over ~1 km, the flat mask then closed by
     3 km so levees, canal banks and tells inside the plain stay in: the Southern
     Desert beyond the Euphrates rises too gently for a height threshold alone, but
-    not as gently as the alluvium. The southern edge is the modern coast. Where the
-    Gulf stood in the late first millennium BCE is debated (the head of the Gulf
-    has been put anywhere from near the modern coast to well inland), so the
-    southern third is the least certain part of the shape; it wants a
-    landscape-change record. The Hawizeh and Hammar marshes are cut only where
-    HydroLAKES has open water. About 78,700 km²; no published area has been
+    not as gently as the alluvium. The southern edge is the head of the Gulf as the
+    landscape change persian-gulf-head draws it. Where the Gulf stood in the late
+    first millennium BCE is debated (anywhere from near the modern coast to well
+    inland), so the southern third is the least certain part of the shape. The
+    Hawizeh and Hammar marshes are cut only where
+    HydroLAKES has open water. About 77,300 km²; no published area has been
     checked. Hit itself falls ~25 km short of the polygon: the narrow valley
     between Hit and Ramadi fails the flatness test.
 
@@ -158,7 +161,9 @@
     Mesopotamian alluvium (the line is the Mesopotamian hull, roughly the modern
     border and the Hawizeh marsh), and the south-east, where the coastal plain
     continues to the Jarrahi and Hendijan. The Karkheh and Dez reservoirs are
-    kept out by the hull. About 30,200 km²; no ancient area figure is known to us.
+    kept out by the hull. The southern edge is the head of the Gulf as
+    persian-gulf-head draws it, which takes the Shadegan flats. About 26,700 km²;
+    no ancient area figure is known to us.
 
 - id: middle-euphrates-valley
   kind: floodplain

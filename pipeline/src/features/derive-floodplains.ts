@@ -33,6 +33,7 @@
  *   npm run derive-floodplains -w pipeline -- nile-delta   regions whose id contains it
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { parse as parseYaml } from 'yaml'
 import { join } from 'node:path'
 import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
@@ -57,6 +58,30 @@ import { REGIONS, type Region } from './regions.ts'
 import { type Channel, readLakes, readLand, readRivers } from './sources.ts'
 
 const OUT = join(DATA_DIR, 'geometry/features.geojson')
+
+/**
+ * The shapes of the remove-water and add-water records (data/landscape-changes.yaml),
+ * remove-water first, as the coast build applies them. One entry per polygon, so
+ * overlapping shapes are filled separately rather than cancelling under even–odd.
+ */
+const CORRECTIONS: { op: 'remove-water' | 'add-water'; rings: Pt[][] }[] = (() => {
+  const ops = new Map(
+    ((parseYaml(readFileSync(join(DATA_DIR, 'landscape-changes.yaml'), 'utf8')) ?? []) as { id: string; op: string }[]).map(
+      (r) => [r.id, r.op],
+    ),
+  )
+  const shapes = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/landscape-changes.geojson'), 'utf8')) as {
+    features: { id: string; geometry: AreaGeometry }[]
+  }
+  const out: { op: 'remove-water' | 'add-water'; rings: Pt[][] }[] = []
+  for (const f of shapes.features) {
+    const op = ops.get(f.id)
+    if (op !== 'remove-water' && op !== 'add-water') continue
+    const polys = (f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates) as Pt[][][]
+    for (const rings of polys) out.push({ op, rings })
+  }
+  return out.sort((a, b) => (a.op === b.op ? 0 : a.op === 'remove-water' ? -1 : 1))
+})()
 const SIMPLIFY_M = 60
 const round = (v: number) => Math.round(v * 1e5) / 1e5
 const argv = process.argv.slice(2)
@@ -228,7 +253,8 @@ function buildBranches(dem: Raster, land: Uint8Array): BuiltBranch[] {
         cur = run[run.length - 1]
       }
     }
-    // Trim the mouth where it leaves modern land: the coast and the lagoons are modern.
+    // Trim the mouth where it leaves the land: today's, with the landscape corrections
+    // applied, so the Canopic runs out over its sunken promontory to Herakleion.
     let end = line.length - 1
     const onLand = ([x, y]: Pt) => {
       const i = Math.floor(x)
@@ -304,6 +330,12 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
   const lakes = readLakes(bbox)
   const lake = rasterise(dem, lakes.flatMap((l) => l.rings))
   for (let p = 0; p < n; p++) if (lake[p]) land[p] = 0
+  // The corrections the coast mask applies, in the same order, so a floodplain stops at
+  // the coast the map draws and a branch runs out to its ancient mouth.
+  for (const c of CORRECTIONS) {
+    const m = rasterise(dem, c.rings)
+    for (let p = 0; p < n; p++) if (m[p]) land[p] = c.op === 'remove-water' ? 1 : 0
+  }
   const hull = rasterise(dem, [region.hull])
   for (const r of previous) {
     const other = rasterise(dem, [r.hull])

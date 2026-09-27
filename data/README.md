@@ -183,8 +183,10 @@ confirming.
     Fayum an elevation band −2…+26 m (Ptolemaic lake level to canal command). The
     tool prints each area beside published figures — none of which has yet been
     checked against the work cited — and the check sites. Previews it renders are
-    the review surface. Floodplain shapes are modern-coast: ancient coasts and
-    lagoons are landscape-change work.
+    the review surface. Floodplain shapes stop at the coast the map draws: the
+    modern one with the landscape corrections applied (the ancient coasts, lakes
+    and lagoons of landscape-changes.yaml, derived by
+    `npm run derive-coasts -w pipeline`), so they are rederived after a shore changes.
 
 16. **The Nile delta branches are authored lines** (`kind: river`), waypoints in
     `pipeline/src/features/delta-branches.ts` with each coordinate's provenance

@@ -472,6 +472,20 @@ export function checkDataset(ds: Dataset): Issue[] {
       )
     }
   }
+  // A place standing in water the map restores is either misplaced or the shore is:
+  // the coast was drawn from reconstructions, and the places are where the sources
+  // put the thing itself, so neither wins by default.
+  const waters = ds.landscapeChanges.filter(
+    (c) => c.op === 'add-water' && ds.geometry.landscapeChanges.has(c.id),
+  )
+  for (const p of ds.places) {
+    if (p.kind === 'river' || p.kind === 'road' || p.kind === 'street') continue
+    for (const c of waters) {
+      if (!geometryContains(ds.geometry.landscapeChanges.get(c.id)!, p.location)) continue
+      if (sane.has(p) && sane.has(c) && !mayOverlap(p, c)) continue
+      warn('place-in-water', p, `stands in water that landscape change "${c.id}" restores`)
+    }
+  }
 
   // --- polities that nothing draws -------------------------------------------
 
