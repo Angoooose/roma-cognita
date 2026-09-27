@@ -652,8 +652,8 @@ export const SHORES: Shore[] = [
       [4.84, 43.46],
       [4.9417, 43.4363],
       // Out to sea and back.
-      [4.96, 43.36],
-      [4.54, 43.34],
+      [4.97, 43.28],
+      [4.54, 43.26],
     ],
     method: { kind: 'sea', maxHeight: 5 },
     why:

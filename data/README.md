@@ -180,7 +180,7 @@ confirming.
     Thresholds: Nile valley 8 m; delta 4 m (from the seven branches); Mesopotamia
     6 m plus a flatness test (≤ 0.06 %, closed by 3 km) because the Southern Desert
     rises too gently for height alone; Susiana 12 m; middle Euphrates 8 m; the
-    Fayum an elevation band −2…+26 m (Ptolemaic lake level to canal command). The
+    Fayum an elevation band up to +26 m (canal command), below which Lake Moeris cuts it. The
     tool prints each area beside published figures — none of which has yet been
     checked against the work cited — and the check sites. Previews it renders are
     the review surface. Floodplain shapes stop at the coast the map draws: the
