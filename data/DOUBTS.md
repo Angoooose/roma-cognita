@@ -16,7 +16,8 @@ The user signs off on the batch. Each fix moves the record from
 
 The reasoning is in each record's `note`.
 
-- **Egypt is a client from 68.** Client standing is better dated from 59 or 55.
+- *Fixed September 2026:* Egypt is independent, a friend of Rome, to 60 and a
+  client from 59, when Ptolemy XII was recognised friend and ally.
 - *Fixed September 2026:* Cyprus now leaves Cilicia in 48 and is Ptolemaic
   from 47 (Dio 42.35); Judaea is a client from 63 and independent before;
   Galatia's and Emesa's seats are gone, because both are now drawn as

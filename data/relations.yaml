@@ -196,37 +196,85 @@
 - polity: numidia
   type: client-of
   of: rome
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: braund-1984 }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '5.4–5, 16, 21.4' }
   confidence: probable
   review: draft
+  note: >-
+    Masinissa's heirs, "ever our true and loyal friend" (Sall. Jug. 5.5); the
+    senate divided the kingdom between Micipsa's heirs (Jug. 16) and ordered
+    Jugurtha and Adherbal to lay down their arms (21.4). Broken by Jugurtha's
+    taking of Cirta in 112; Rome declared war in 111.
+
+- polity: numidia
+  type: client-of
+  of: rome
+  from: 105 BCE
+  to: 47 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '65.2–3' }
+    - { source: plutarch, locator: 'Pompey 12.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Gauda, promised Numidia by Marius (Sall. Jug. 65.3), king from Jugurtha's
+    surrender; Hiempsal II owed his throne to Pompey in 81 (Plut. Pompey 12.4).
+    In 111–106 the kingdom was at war with Rome and is drawn independent.
+
+- polity: numidia-jugurtha
+  type: client-of
+  of: rome
+  from: c. 116 BCE
+  to: 113 BCE
+  sources: [{ source: sallust-jug, locator: '16, 20.5' }]
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jugurtha's kingdom by the senate's own division (Sall. Jug. 16); Adherbal
+    still put "more trust in the friendship of the Roman people" (20.5).
 
 - polity: mauretania
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 105 BCE
   to: 34 BCE
-  sources: [{ source: braund-1984 }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '19.7, 80.4, 111.1' }
+    - { source: bridoux-2020, locator: '¶80' }
   confidence: probable
   review: needs-check
-  note: Two kings from about 49; see the polity.
+  note: >-
+    From Bocchus I's surrender of Jugurtha in 105, for which he was promised
+    "friendship, alliance, and the part of Numidia which he now desired" (Sall.
+    Jug. 111.1); Bridoux calls him Sulla's client from then (¶80). Before, the
+    kingdom was unknown to Rome (Jug. 19.7), its request for a treaty early in
+    the war refused (80.4), and in 106 it fought Marius; it is drawn
+    independent. Two kings from about 49; see the polity.
 
 - polity: aegyptus
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 59 BCE
   to: 31 BCE
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: suetonius-iul, locator: '54.3' }
   confidence: probable
   review: needs-check
   note: >-
-    Drawn as a client for the whole window, but client standing is better dated
-    from 59 (Auletes recognised as friend and ally) or 55 (the Gabinian
-    garrison), and before that Egypt was formally independent. The start
-    probably wants to be 59 or 55 with the years before as `independent`; not
-    yet changed, because it needs a decision between the two.
+    From 59, when Caesar's law and a decree of the senate made Ptolemy XII a
+    friend and ally (Caes. BC 3.107; Dio 39.12.1; Suet. Iul. 54.3). Before it
+    Egypt was an independent kingdom on friendly terms with Rome, and is drawn
+    independent (decided September 2026, over 55, the Gabinian garrison: the
+    formal recognition is the change of standing, the garrison a consequence
+    of it). Until 2026 this row ran across the whole of 68–27.
 
 - polity: nabataea
   type: client-of
@@ -404,13 +452,28 @@
 
 - polity: numidia-masinissa
   type: client-of
+  of: rome
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Masteabar, Gauda's son, a king beside his brother Hiempsal II, not his
+    vassal; his standing to Rome is taken to be his father's, which nothing
+    records directly.
+
+- polity: numidia-masinissa
+  type: client-of
   of: numidia
-  from: before 68 BCE
+  from: 81 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶155' }]
+  sources: [{ source: bridoux-2020, locator: '¶154–155, ¶161' }]
   confidence: probable
   review: draft
-  note: A vassal of the eastern Numidian kings (Bridoux).
+  note: >-
+    A vassal of the eastern Numidian kings (Bridoux), from Masinissa II, who is
+    first found in 81.
 
 - polity: sittiani
   type: client-of
@@ -557,6 +620,20 @@
   confidence: certain
   review: draft
   note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
+
+- polity: cyrenaica-free
+  type: allied-to
+  of: rome
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free by the senate's decree on Apion's bequest (Livy Per. 70): Rome's by
+    inheritance, their own in government. "Allied" is the nearest standing the
+    data has for free cities under Rome with no governor; no treaty is recorded.
 
 - polity: cyrenaica-selene
   type: client-of

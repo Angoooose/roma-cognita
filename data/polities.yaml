@@ -397,70 +397,176 @@
   kind: kingdom
   names:
     - { text: Cyprus, lang: la, preferred: true }
-  from: before 68 BCE
+  from: 80 BCE
   to: 59 BCE
-  ruler: Ptolemy of Cyprus, to 58
+  ruler: Ptolemy of Cyprus, 80–58
   sources:
     - { source: cicero-sest, locator: '57' }
     - { source: strabo, locator: '14.6.6' }
     - { source: plutarch, locator: 'Cato Minor 34–36' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy of Cyprus' }
   confidence: certain
   review: draft
-  note: Annexed in 58 by the lex Clodia and attached to Cilicia.
+  note: >-
+    Auletes' brother, made king of Cyprus when Auletes was made king of Egypt in
+    80: the prologue to Trogus' book 40 has the division, and it is "universally
+    and reasonably inferred" that both kingships began together (Bennett).
+    Annexed in 58 by the lex Clodia and attached to Cilicia. Before 80 the
+    island was the kingdom of Egypt's, except when a rival Ptolemy held it as a
+    kingdom of its own (cyprus-ptolemaic-early).
+
+- id: cyprus-ptolemaic-early
+  kind: kingdom
+  names:
+    - { text: Cyprus, lang: la, preferred: true }
+  from: { earliest: 114 BCE, latest: 113 BCE }
+  to: 89 BCE
+  ruler: Ptolemy X Alexander, 114/113–107; Ptolemy IX Soter II, 105–88
+  sources:
+    - { source: justin, locator: '39.4' }
+    - { source: pausanias, locator: '1.9.1–2' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Cyprus as the kingdom of whichever son of Ptolemy VIII was out of power in
+    Alexandria. Ptolemy X, sent there as governor, took the royal title in
+    114/113 and held it until his mother made him king in Egypt in 107; Ptolemy
+    IX, driven from Alexandria to Cyprus in 107, was forced off the island by
+    her troops (Justin 39.4) and took it back late in the summer of 105 (the
+    Paphos inscription of his year 12, OGIS 166, and the end of Ptolemy X's
+    Paphian coinage: Bennett, after Mitford and Mørkholm). He held it until the
+    Alexandrians recalled him in 88. In 107–106 the island was the Egyptian
+    crown's, and is claimed for aegyptus.
 
 - id: numidia
   kind: kingdom
   names:
     - { text: Numidia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 47 BCE
-  ruler: Juba I, c. 60–46
+  ruler: >-
+    Micipsa, to 118; Adherbal (the eastern kingdom), 116–112; Jugurtha,
+    112–105; Gauda, 105–c. 88; Hiempsal II, c. 88–c. 50; Juba I, by 50–46
   sources:
     - { source: braund-1984 }
+    - { source: bridoux-2020, locator: '¶122–157' }
+    - { source: sallust-jug, locator: '5.4–7, 13, 16, 26–27' }
+    - { source: livy-per, locator: '62, 64' }
+    - { source: plutarch, locator: 'Pompey 12.4' }
   confidence: probable
   review: draft
-  note: Annexed as Africa Nova after Thapsus, 46.
+  note: >-
+    The Massylian kingdom of Masinissa's heirs, drawn as one polity from Micipsa
+    to Juba I. Micipsa ruled from the Mulucha to the fossa regia (Bridoux ¶124;
+    Sall. Jug. 19.7). On his death in 118 Jugurtha had Hiempsal I killed and
+    drove Adherbal out (Livy Per. 62); the senate's commission under Opimius
+    divided the kingdom, "the part of Numidia adjoining Mauretania, which was the
+    more fertile and thickly populated" to Jugurtha and the part "having more
+    harbours and … more buildings" to Adherbal (Sall. Jug. 16.5), dated 116 as
+    usual (Bridoux puts it c. 117). This polity follows Adherbal's eastern
+    kingdom, whose capital was Cirta; Jugurtha's western one is
+    numidia-jugurtha. Jugurtha took Cirta and killed Adherbal in 112 (Jug. 26),
+    and Rome went to war in 111 (Jug. 27; Per. 64). After his surrender in 105
+    Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶144–145); on his
+    death, c. 88, the kingdom was shared between his sons Hiempsal II, in the
+    east, and Masteabar, in the west (numidia-masinissa). The Marian Hiarbas
+    drove Hiempsal out and was killed by Pompey in 81, who gave his kingdom back
+    to Hiempsal (Plut. Pompey 12.4; Bridoux ¶151–152); Hiarbas' reign, of a year
+    or less, is not drawn. Juba I is attested king from 50; the usual "c. 60"
+    for his accession "ne repose sur aucune donnée" (Bridoux ¶152). Annexed as
+    Africa Nova after Thapsus, 46.
+
+- id: numidia-jugurtha
+  kind: kingdom
+  names:
+    - { text: Regnum Iugurthae, preferred: true }
+  from: c. 116 BCE
+  to: 113 BCE
+  ruler: Jugurtha, 116–112
+  sources:
+    - { source: sallust-jug, locator: '16.5, 19.7, 20' }
+    - { source: bridoux-2020, locator: '¶140–142 and pl. VII' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jugurtha's share of the division of c. 116: the part of Numidia next to
+    Mauretania (Sall. Jug. 16.5), whose western frontier was the Mulucha (Jug.
+    19.7, 110.8). Where it met Adherbal's kingdom is unknown: "nous ne disposons
+    d'aucun indice pour proposer une quelconque hypothèse" (Bridoux ¶141). From
+    112 Jugurtha held the whole kingdom, which is numidia. The name is ours.
 
 - id: mauretania
   kind: kingdom
   names:
     - { text: Mauretania, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 34 BCE
-  ruler: Bocchus II, to 33
+  ruler: >-
+    Bocchus I, by 118 to c. 81/80; Sosus (Mastanesosus), c. 80–49; Bocchus II,
+    49–33
   sources:
     - { source: braund-1984 }
+    - { source: sallust-jug, locator: '19.7, 80.4, 97.2, 110.8, 111.1' }
+    - { source: bridoux-2020, locator: '¶73–97' }
     - { source: cassius-dio, locator: '48.45.1–3' }
     - { source: cassius-dio, locator: '49.43.7' }
     - { source: bridoux-2020, locator: '¶103' }
   confidence: probable
   review: needs-check
   note: >-
-    Divided between the two kings around 49; the arrangement before that is not
-    clear enough to date. The kingdom is not in doubt, its internal arrangement
-    is, hence probable. Bocchus II took Arabio's western Numidia in 41 (Bridoux
-    ¶103, an inference: "se serait emparé") and Bogud's kingdom in 38 (Dio
-    48.45.1–3), and at his death in 33 his kingdom went to Rome (Dio 49.43.7;
-    see mauretania-roman).
+    The Moorish kingdom. Its kings between Baga (206) and Bocchus I are unknown,
+    and Bocchus I, already king under Micipsa, was until the Jugurthine War
+    "unknown to us before that time either in peace or in war" (Sall. Jug. 19.7).
+    He asked Rome for a treaty early in the war and was refused (Jug. 80.4),
+    joined Jugurtha for the promise of a third of Numidia (97.2), and in 105
+    handed him over for "friendship, alliance, and the part of Numidia which he
+    now desired" (111.1): the land from the Mulucha to about Cap Ténès (Bridoux
+    ¶74–75, after Gsell). He reigned until 81 or 80; his successor was Sosus, the
+    "Mastanesosus" of Cicero (Vat. 12, as Bridoux ¶89 reads it), who may have
+    carried the kingdom east to the Soummam (¶97, ¶102, after Desanges).
+    Ascalis, whom Sertorius besieged in Tingi in 81, was a local prince under the
+    king, not a rival king (¶81–84); Sertorius "restored to them both property
+    and cities and government" (Plut. Sertorius 9.5), so the episode is not
+    drawn. Divided between two kings around 49; the kingdom is not in doubt, its
+    internal arrangement is, hence probable. Bocchus II took Arabio's western
+    Numidia in 41 (Bridoux ¶103, an inference: "se serait emparé") and Bogud's
+    kingdom in 38 (Dio 48.45.1–3), and at his death in 33 his kingdom went to
+    Rome (Dio 49.43.7; see mauretania-roman).
 
 - id: aegyptus
   kind: kingdom
   names:
     - { text: Aegyptus, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 31 BCE
-  ruler: Ptolemy XII to 51, then Cleopatra VII (with Ptolemy XV Caesarion from 44), to 30
+  ruler: >-
+    Ptolemy VIII, to 116; Cleopatra III with Ptolemy IX (116–107), then with
+    Ptolemy X (107–101); Ptolemy X, 101–88; Ptolemy IX, 88–81; Berenice III and
+    Ptolemy XI, 80; Ptolemy XII, 80–51 (in exile 58–55); Cleopatra VII (with
+    Ptolemy XV Caesarion from 44), to 30
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: suetonius-iul, locator: '54.3' }
     - { source: cassius-dio, locator: '51.19.6' }
     - { source: holbl-2001 }
+    - { source: bennett-ptolemies, locator: 'Ptolemy VIII, IX, X and XII; Cleopatra II' }
   confidence: probable
   review: draft
   note: >-
-    Recognised socius et amicus in 59; Gabinius restores Ptolemy XII in 55.
-    Formally independent throughout. Treated as a client because from 55 a Roman
-    garrison sat in Alexandria and the kingdom's foreign policy was not its own.
-    Antony's grants of 37/36 and the Donations of 34 added ground in Cyprus,
+    The Ptolemaic kingdom. Its dynastic wars are not drawn, since the ground
+    stayed the one kingdom's: Cleopatra II's revolt against Ptolemy VIII
+    (132/131–124, Alexandria hers 130–127), the Alexandrians' expulsions of
+    Ptolemy IX (107) and Ptolemy X (88), and the Theban revolt Ptolemy IX put
+    down c. 88–86 (Paus. 1.9.3). Cyrenaica was the crown's until 108 at least,
+    and Cyprus except when a rival Ptolemy held it as a kingdom
+    (cyprus-ptolemaic-early, cyprus-ptolemaic). Independent, a friend of Rome,
+    until Ptolemy XII bought "the name of friend and ally" (Dio 39.12.1) in
+    Caesar's consulship of 59 (Caes. BC 3.107; Suet. Iul. 54.3): "Ptolemy XII
+    was not recognised as a Roman 'friend and ally' until early … 59" (Bennett).
+    A client from 59; from 55 a Roman garrison sat in Alexandria. Antony's grants of 37/36 and the Donations of 34 added ground in Cyprus,
     Cilicia and the Levant (claims.yaml). Alexandria fell in August 30 (Macrob.
     Sat. 1.12.35; Dio 51.19.6) and the kingdom ends in 31; Egypt from 30 is aegyptus-province.
 
@@ -1023,11 +1129,12 @@
 - id: numidia-masinissa
   kind: kingdom
   names:
-    - { text: Regnum Masinissae, preferred: true, to: 45 BCE }
+    - { text: Regnum Masteabaris, preferred: true, to: 82 BCE }
+    - { text: Regnum Masinissae, preferred: true, from: 81 BCE, to: 45 BCE }
     - { text: Regnum Arabionis, preferred: true, from: 44 BCE }
-  from: 88 BCE
+  from: c. 88 BCE
   to: 42 BCE
-  ruler: Masinissa II, 81–46; Arabio, 44–41
+  ruler: Masteabar, c. 88–82; Masinissa II, by 81–46; Arabio, 44–41
   sources:
     - { source: bridoux-2020, locator: '¶147–159 and pl. IX' }
     - { source: appian, locator: 'BC 4.54–56' }
@@ -1035,12 +1142,15 @@
   confidence: probable
   review: draft
   note: >-
-    Western Numidia between the Soummam and the Ampsaga, a vassal of the eastern
-    kings from the partition of 88 (Bridoux ¶147–148). Lost to Bocchus II and
+    Western Numidia between the Soummam and the Ampsaga. On Gauda's death, "sans
+    doute survenue en 88", his son Masteabar, king by a Greek inscription from
+    Syracuse, held it beside his brother Hiempsal II; by 81 it was Masinissa II's
+    (Bridoux ¶147–148), whom Bridoux takes as a vassal of the eastern kings
+    (¶154–155, ¶161). Lost to Bocchus II and
     Sittius in 46 and recovered by Masinissa's son Arabio in 44. Arabio sided
     with T. Sextius in 43–42 (App. BC 4.54–56) and was driven out and then
     killed by him, "vraisemblablement en 41" (Dio 48.22.4–6; Bridoux ¶159). The
-    name is ours; the sources call it by its king.
+    names are ours; the sources call it by its king.
 
 - id: sittiani
   kind: people
@@ -1063,7 +1173,7 @@
   kind: kingdom
   names:
     - { text: Aethiopia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   ruler: the kings and queens of Meroë
   sources:
@@ -1084,7 +1194,7 @@
   kind: people
   names:
     - { text: Garamantes, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: pliny-nh, locator: '5.35–38' }
@@ -1431,6 +1541,53 @@
     governed by a knight: C. Cornelius Gallus, "praefectus Alexandreae et
     Aegypti primus" on his stele (Dio 51.17.1). The same ground as the kingdom;
     a separate polity because a kingdom and a province are different things.
+
+- id: cyrenaica-apion
+  kind: kingdom
+  names:
+    - { text: Cyrenaica, lang: la, preferred: true }
+  from: { earliest: 105 BCE, latest: 100 BCE }
+  to: 97 BCE
+  ruler: Ptolemy Apion, to 96
+  sources:
+    - { source: justin, locator: '39.5.2' }
+    - { source: livy-per, locator: '70' }
+    - { source: lex-de-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Cyrenaica as a kingdom of its own under Ptolemy VIII's bastard son Apion,
+    "to whom his father had left the kingdom of Cyrene by will" (Justin 39.5).
+    The will would date him from 116, but the documents do not: a statue base of
+    Ptolemy IX's year 10 (108/107) and a royal letter of his year 9 (SEG IX 5)
+    show Cyrene under the crown of Egypt, an inscription of Ptolemy IX's admiral
+    at Apollonia may be as late as 106/105, and the law on the praetorian
+    provinces, of 101/100, names a king of Cyrene beside those of Egypt and
+    Cyprus (Bennett, who sets the likeliest start at 105–101). Drawn from a range,
+    105–100. He died in 96 and left his kingdom to the Roman people (Livy Per.
+    70).
+
+- id: cyrenaica-free
+  kind: city-state
+  names:
+    - { text: Cyrenaica, lang: la, preferred: true }
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
+    - { source: sallust-hist, locator: '2.43 M' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The cities of Apion's kingdom after his bequest: "the Senate decreed that
+    all the towns in his kingdom were to be free" (Livy Per. 70). Drawn as one
+    record for the five cities of the Pentapolis, which the Senate left to govern
+    themselves under the Roman people's inheritance until the province was
+    organised, c. 75/74 (cyrenae). When Lucullus called in the winter of 87/86 he
+    found Cyrene "in confusion in consequence of successive tyrannies and wars"
+    and gave it laws (Plut. Lucullus 2.3–2.4).
 
 - id: cyrenaica-selene
   kind: kingdom

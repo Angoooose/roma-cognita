@@ -41,11 +41,11 @@
   location: [29.9098, 31.2014]
   names:
     - { text: Alexandria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status:
-    - { value: royal seat, from: before 68 BCE, to: 31 BCE }
+    - { value: royal seat, from: before 133 BCE, to: 31 BCE }
     - value: provincial seat
       from: 30 BCE
       to: after 27 BCE
@@ -196,13 +196,18 @@
   sources:
     - { source: appian, locator: Pun. 136 }
     - { source: plutarch, locator: C. Gracch. 11 }
+    - { source: appian, locator: 'BC 1.24' }
     - { source: cassius-dio, locator: '43.50' }
     - { source: pleiades, locator: places/314921 }
   confidence: probable
   review: draft
-  note: Destroyed 146 and left unoccupied by the lex Julia's curse on the site. Caesar's
-    refoundation as Colonia Iulia Concordia Carthago was decreed in 44 and settled under the
-    triumvirs; Pleiades dates the place continuously from 750.
+  note: >-
+    Destroyed 146 and left unoccupied by the curse on the site. Caesar's refoundation as
+    Colonia Iulia Concordia Carthago was decreed in 44 and settled under the triumvirs;
+    Pleiades dates the place continuously from 750. C. Gracchus' colony Iunonia, marked out
+    on the site in 122 (Plut. C. Gracch. 11; App. BC 1.24), is not drawn: the assembly was
+    called to repeal its law in 121 (App. BC 1.24), and no town is known to have stood,
+    whatever became of the settlers' allotments.
 
 - id: corinthus
   pleiades: '570182'
@@ -250,7 +255,7 @@
   location: [10.06, 37.0559]
   names:
     - { text: Utica, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: provincial seat
@@ -367,13 +372,22 @@
   location: [21.8565, 32.82]
   names:
     - { text: Cyrene, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: provincial seat
+  status:
+    - value: provincial seat
+      from: c. 74 BCE
+      to: after 27 BCE
+      note: >-
+        From the province (Sallust Hist. 2.43 M; App. BC 1.111). Before it the
+        city was the Ptolemies', then Apion's, then one of the free cities of
+        his bequest (96–75), and no status is given.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/373778 }
+    - { source: sallust-hist, locator: '2.43 M' }
+    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
   confidence: certain
   review: draft
 
@@ -1157,7 +1171,7 @@
   location: [31.2551, 29.8495]
   names:
     - { text: Memphis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
@@ -1172,7 +1186,7 @@
   location: [33.9029, 35.1796]
   names:
     - { text: Salamis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -1187,14 +1201,21 @@
   location: [14.2971, 32.6364]
   names:
     - { text: Leptis Magna, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
   sources:
     - { source: pleiades, locator: places/344448 }
+    - { source: sallust-jug, locator: '77.2–3' }
+    - { source: bridoux-2020, locator: '¶137, ¶143' }
   confidence: certain
   review: draft
+  note: >-
+    Numidian under Micipsa (Bridoux ¶137); at the start of the Jugurthine War it
+    asked Rome for "friendship and an alliance", which was granted (Sall. Jug.
+    77.2–3; Bridoux ¶143). No status is given: the form of that alliance is not
+    recorded.
 
 - id: salonae
   pleiades: '197488'
@@ -1474,7 +1495,7 @@
   location: [10.6388, 35.8259]
   names:
     - { text: Hadrumetum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1489,7 +1510,7 @@
   location: [11.0427, 35.6214]
   names:
     - { text: Thapsus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1505,7 +1526,7 @@
   names:
     - { text: Zama, preferred: true }
     - { text: Zama Regia }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1520,15 +1541,17 @@
   location: [6.6133, 36.3681]
   names:
     - { text: Cirta, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   status:
     - value: royal seat
-      from: before 68 BCE
+      from: before 133 BCE
       to: 47 BCE
       note: >-
-        Juba I's until Thapsus; given to P. Sittius and his men in 46 (App. BC 4.54;
+        Micipsa's and Adherbal's (Bridoux ¶141), taken by Jugurtha in 112 (Sall.
+        Jug. 26), held by Marius in 106/105 (Jug. 102.1), and the seat of the
+        eastern kings after them to Juba I, whose it was until Thapsus; given to P. Sittius and his men in 46 (App. BC 4.54;
         Pliny 5.22, "colonia Cirta Sittianorum cognomine"). Octavian later made it a
         full Roman colony, at a date not known, so no status is given after 47.
   labelSide: w
@@ -1536,6 +1559,8 @@
     - { source: pleiades, locator: places/305064 }
     - { source: appian, locator: 'BC 4.54' }
     - { source: pliny-nh, locator: '5.22' }
+    - { source: bridoux-2020, locator: '¶141' }
+    - { source: sallust-jug, locator: '21–26, 102.1' }
   confidence: certain
   review: draft
   note: >-
@@ -1548,7 +1573,7 @@
   location: [7.7501, 36.8825]
   names:
     - { text: Hippo Regius, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1563,7 +1588,7 @@
   location: [12.4854, 32.805]
   names:
     - { text: Sabratha, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1578,7 +1603,7 @@
   location: [13.1753, 32.8976]
   names:
     - { text: Oea, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1593,7 +1618,7 @@
   location: [20.9538, 32.7071]
   names:
     - { text: Ptolemais, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1608,7 +1633,7 @@
   location: [20.0643, 32.1245]
   names:
     - { text: Berenice, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1623,7 +1648,7 @@
   location: [-5.8102, 35.7875]
   names:
     - { text: Tingi, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1639,17 +1664,24 @@
   names:
     - { text: Iol, preferred: true }
     - { text: Iol Caesarea }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   status:
     - value: royal seat
-      from: before 68 BCE
+      from: 49 BCE
       to: 34 BCE
-      note: Bocchus II's; his kingdom went to Rome at his death in 33 (Dio 49.43.7).
+      note: >-
+        Bocchus II's, from his accession in 49 (Dio 41.42.7); his kingdom went
+        to Rome at his death in 33 (Dio 49.43.7). Until September 2026 this ran
+        from "before 68", but Iol lay in Numidia until at least 88 (Micipsa's
+        inscription from Cherchell, Bridoux ¶123) and where Sosus reigned from
+        is not known.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/295279 }
+    - { source: cassius-dio, locator: '41.42.7' }
+    - { source: bridoux-2020, locator: '¶123' }
   confidence: certain
   review: draft
 
@@ -2278,7 +2310,7 @@
   location: [32.5473, 31.0428]
   names:
     - { text: Pelusium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2293,7 +2325,7 @@
   location: [32.4066, 34.7572]
   names:
     - { text: Paphos, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2308,7 +2340,7 @@
   location: [33.632, 34.9212]
   names:
     - { text: Citium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
