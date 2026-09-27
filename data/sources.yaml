@@ -1236,3 +1236,40 @@
   note: >-
     2.6 (November 63 BCE): Catiline has left Rome, "Aurelia via profectus est", by
     the Via Aurelia.
+
+# --- the extension to 133 BCE: the Balkans and the Black Sea ----------------------
+# Added September 2026. Each was opened: Sumner's article in full (GRBS, open
+# access), the decree in the English translation on the Chersonesos museum's site.
+
+- id: sumner-1978
+  kind: modern
+  citation: >-
+    G. V. Sumner, "The 'Piracy Law' from Delphi and the Law of the Cnidos
+    Inscription", Greek, Roman and Byzantine Studies 19.3 (1978), 211–225
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/7401
+  note: >-
+    Transcribes and discusses the clauses of both copies of the law of 101/100
+    on the governor of Macedonia and T. Didius' conquest (pp. 218–219, 225).
+
+- id: lex-provinciis-praetoriis
+  kind: ancient
+  citation: >-
+    The law on the praetorian provinces, 101/100 BCE, in two Greek copies: from
+    Cnidos (Knidos) and from the monument of Aemilius Paullus at Delphi (the
+    "piracy law"); M. H. Crawford (ed.), Roman Statutes (London, 1996), no. 12
+  note: >-
+    Cited by the copy and column (Knidos IV 6–11, Delphi B 27–29) as
+    transcribed in Sumner 1978, 218; Roman Statutes itself was not opened.
+
+- id: diophantus-decree
+  kind: ancient
+  citation: >-
+    Decree of Chersonesus in honour of Diophantus, general of Mithridates VI,
+    c. 107 BCE (IOSPE I² 352)
+  url: http://www.chersonesos.org/?p=museum_coll_ep1&l=eng
+  note: >-
+    Read in the English translation on the Chersonesos museum's page, which
+    credits V. V. Latyshev's Russian translation and E. I. Solomonik's
+    commentary. The decree is dated only
+    by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
+    modern dating, not the stone's.

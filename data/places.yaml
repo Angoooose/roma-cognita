@@ -77,13 +77,25 @@
   location: [23.7239, 37.9716]
   names:
     - { text: Athenae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
-  status: civitas libera
+  status:
+    - { value: civitas libera, from: before 133 BCE, to: 89 BCE }
+    - value: civitas libera
+      from: 86 BCE
+      to: after 27 BCE
+      note: >-
+        In 88 Athens went over to Mithridates and Aristion made himself its
+        master (App. Mithr. 28); Sulla took it on the Kalends of March 86
+        (Plut. Sulla 14.6) and "gave it back the freedom it used to have" (Livy
+        Per. 81). The two years between have no Roman status.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/579885 }
+    - { source: appian, locator: 'Mithr. 28' }
+    - { source: livy-per, locator: '81' }
+    - { source: plutarch, locator: 'Sulla 14.6' }
   confidence: certain
   review: draft
 
@@ -319,7 +331,7 @@
   location: [22.9529, 40.6283]
   names:
     - { text: Thessalonica, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: provincial seat
@@ -356,13 +368,21 @@
   location: [24.9469, 35.0621]
   names:
     - { text: Gortyn, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: provincial seat
+  status:
+    - value: provincial seat
+      from: 66 BCE
+      to: after 27 BCE
+      note: >-
+        From the province of Crete, after Metellus' conquest (69–67); it read
+        "provincial seat" from before 68 until the extension to 133 BCE, when
+        Crete was still free.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/589796 }
+    - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
 
@@ -794,7 +814,7 @@
   location: [19.4474, 41.3163]
   names:
     - { text: Dyrrachium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: w
@@ -809,7 +829,7 @@
   location: [19.4693, 40.7202]
   names:
     - { text: Apollonia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: w
@@ -824,7 +844,7 @@
   location: [21.7385, 38.2433]
   names:
     - { text: Patrae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: w
@@ -839,7 +859,7 @@
   location: [22.4247, 37.0818]
   names:
     - { text: Sparta, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: civitas libera
@@ -855,7 +875,7 @@
   location: [22.5012, 38.4823]
   names:
     - { text: Delphi, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: w
@@ -870,7 +890,7 @@
   location: [22.5182, 40.7544]
   names:
     - { text: Pella, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -885,7 +905,7 @@
   location: [28.9739, 41.0059]
   names:
     - { text: Byzantium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: civitas libera
@@ -966,13 +986,26 @@
   location: [25.2682, 37.3973]
   names:
     - { text: Delos, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  prominence: 2
-  status: emporium
+  prominence:
+    - { value: 2, from: before 133 BCE, to: 89 BCE }
+    - { value: 3, from: 88 BCE, to: after 27 BCE }
+  status:
+    - value: emporium
+      from: before 133 BCE
+      to: 89 BCE
+      note: >-
+        The free port, which "the razing of Corinth" in 146 made greater still,
+        until "the generals of Mithridates, and the tyrant who caused it to
+        revolt, visited Delos" in 88 and "completely ruined it"; it "remained
+        in an impoverished condition" to Strabo's day (10.5.4). The emporium
+        ran on through 68–27 until the extension to 133 BCE.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/599587 }
+    - { source: strabo, locator: '10.5.4' }
+    - { source: appian, locator: 'Mithr. 28' }
   confidence: certain
   review: draft
 
@@ -1224,13 +1257,24 @@
   names:
     - { text: Salonae, preferred: true }
     - { text: Salona }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: conventus
+  status:
+    - value: conventus
+      from: 48 BCE
+      to: after 27 BCE
+      note: >-
+        From its first attestation: in 48 "the Roman citizens, residing there"
+        held Salona against Octavius (Caesar BC 3.9). Before 68 until the
+        extension to 133 BCE; nothing records Roman residents when Metellus
+        wintered there in 119 (App. Ill. 11) or when Cosconius took it in 78–76
+        (Eutropius 6.4).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/197488 }
+    - { source: caesar-bc, locator: '3.9' }
+    - { source: appian, locator: 'Ill. 11' }
   confidence: certain
   review: draft
 
@@ -1240,15 +1284,22 @@
   location: [36.4686, 45.351]
   names:
     - { text: Panticapaeum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: royal seat
   labelSide: e
   sources:
     - { source: pleiades, locator: places/854719 }
+    - { source: strabo, locator: '7.4.4' }
+    - { source: appian, locator: 'Mithr. 107' }
   confidence: certain
   review: draft
+  note: >-
+    "The metropolis of the Bosporians" (Strabo 7.4.4): the Spartocids' seat to
+    c. 108, and later Machares', and Mithridates' own, who died there in 63
+    (App. Mithr. 107–111). Kept a royal seat through the years the Bosporus was
+    the king's ground (c. 108–86), when a son of his held it (Plut. Sulla 11.2).
 
 - id: beneventum
   pleiades: '432721'
@@ -1691,7 +1742,7 @@
   location: [23.8416, 40.8258]
   names:
     - { text: Amphipolis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1706,7 +1757,7 @@
   location: [24.2846, 41.0127]
   names:
     - { text: Philippi, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1722,7 +1773,7 @@
   names:
     - { text: Larisa, preferred: true }
     - { text: Larissa }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1737,7 +1788,7 @@
   location: [22.3879, 39.2885]
   names:
     - { text: Pharsalus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1752,7 +1803,7 @@
   location: [22.7204, 37.631]
   names:
     - { text: Argos, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1767,7 +1818,7 @@
   location: [23.3177, 38.3199]
   names:
     - { text: Thebae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1782,7 +1833,7 @@
   location: [23.6219, 38.4571]
   names:
     - { text: Chalcis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1797,7 +1848,7 @@
   location: [23.3402, 37.9851]
   names:
     - { text: Megara, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1812,7 +1863,7 @@
   location: [20.0208, 39.7458]
   names:
     - { text: Buthrotum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1827,7 +1878,7 @@
   location: [20.9901, 39.1549]
   names:
     - { text: Ambracia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1842,7 +1893,7 @@
   location: [20.7659, 38.9539]
   names:
     - { text: Actium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1858,7 +1909,7 @@
   names:
     - { text: Cnossus, preferred: true }
     - { text: Knosos }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1874,7 +1925,7 @@
   names:
     - { text: Cydonia, preferred: true }
     - { text: Kydonia }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -2355,7 +2406,7 @@
   location: [15.2238, 44.1155]
   names:
     - { text: Iader, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2370,7 +2421,7 @@
   location: [17.5986, 43.0464]
   names:
     - { text: Narona, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2385,7 +2436,7 @@
   location: [19.5129, 42.0602]
   names:
     - { text: Scodra, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2400,7 +2451,7 @@
   location: [28.6497, 44.1729]
   names:
     - { text: Tomis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2415,7 +2466,7 @@
   location: [28.7751, 44.5478]
   names:
     - { text: Istros, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -2430,7 +2481,7 @@
   location: [31.9059, 46.6924]
   names:
     - { text: Olbia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -2446,7 +2497,7 @@
   names:
     - { text: Chersonesus, preferred: true }
     - { text: Chersonesos }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2461,7 +2512,7 @@
   location: [36.9597, 45.2763]
   names:
     - { text: Phanagoria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s

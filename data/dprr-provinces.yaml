@@ -466,15 +466,25 @@
 - dprr: Thracia
   kind: territory
   polities:
+    - polity: macedonia
+      to: 81 BCE
     - polity: thracia-odrysae
+      from: 80 BCE
   sources:
     - { source: sullivan-1990 }
+    - { source: livy-per, locator: '56, 63, 65, 70' }
+    - { source: cicero-verr, locator: '2.1.63' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Thrace inland of the Aegean coast, which in this window was the Odrysian
+    Thrace inland of the Aegean coast, which from c. 80 was the Odrysian
     kingdom, a client of Rome. The Thracian coast itself was Macedonia's.
-    Joined to the kingdom; a Roman post here is a campaign, not government.
+    Joined to the kingdom from 80; a Roman post here is a campaign, not
+    government. Before 80 the kingdom had no standing with Rome that the map
+    draws, and the commands "in Thrace" of 135–88 (Cosconius, Cato, Drusus,
+    Minucius, Sentius: Livy Per. 56, 63, 65, 70) were the governors of
+    Macedonia fighting on its frontier, so they are joined to macedonia (the
+    extension to 133 BCE).
 
 - dprr: Crete
   kind: territory

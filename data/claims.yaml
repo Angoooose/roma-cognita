@@ -163,23 +163,35 @@
   note: >-
     Assigned to Caesar with Cisalpina by the lex Vatinia of 59. What Rome held
     was the coast; before 59 its governance is unclear and it is left
-    unclaimed.
+    unclaimed, back to 133: Appian has "Roman Illyria" raided in 135 and
+    "the Illyrian subjects of Rome" in 156 (Ill. 10–11), and Cosconius took
+    Salona in 78–76 (Eutropius 6.4), but no source says who governed the coast
+    or how far Rome's writ ran on it.
 
 # --- Greece and the Balkans ----------------------------------------------------
 
 - atom: macedonia
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '56, 63, 65, 70, 82–83, 91–92, 95, 97' }
   confidence: certain
   review: draft
+  note: >-
+    A province from 146. Its governors fought the Scordisci, Maedi, Dardani
+    and Thracians on its northern edge throughout 133–68 (Livy Per. 56, 63,
+    65, 70, 82–83, 91–92, 95, 97), but no gain of ground beyond this outline is
+    dated before Augustus except Didius' in the Chersonese
+    (chersonesus-thracica). Mithridates' son overran it in 87–86 (the
+    occupation row below).
 
 - atom: achaea
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: kallet-marx-1995 }
@@ -192,7 +204,8 @@
     were not provincial ground. Uncertain, so drawn fainter. Ends where the
     province of Achaea is first firmly attested, in 27; Achaea had a governor of
     its own at times before (Sulpicius Rufus, 46–45), which this row does not
-    try to show.
+    try to show. In force since Mummius' settlement of 146; Archelaus' hold on
+    Greece in 88–86 is the occupation row below.
 
 - atom: creta
   polity: creta
@@ -210,13 +223,113 @@
 - atom: thracia-odrysae
   polity: thracia-odrysae
   relation: client
-  from: before 68 BCE
+  from: c. 80 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
+    - { source: cicero-pis, locator: '84' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Odrysian authority over the inland tribes was intermittent.
+    Odrysian authority over the inland tribes was intermittent. The start is
+    the first sign of a friendly king, not the beginning of one: c. 80 the
+    governor of Cilicia sent Verres as his legate "to king Nicomedes and to
+    king Sadala" (Cic. Verr. 2.1.63). Before it the kingdom is left unclaimed:
+    in 88–87 "all the barbarians" round Macedonia went over to Mithridates
+    (Cic. Pis. 84), Thracians served in his armies (App. Mithr. 41), and the
+    governors of Macedonia fought Thracians almost every year from 114 to 71
+    (Livy Per. 63–97), so no standing with Rome can be drawn back to 133.
+
+# The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
+# Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
+# rows end the year before the occupier was driven out (README decision 17).
+
+- atom: chersonesus-thracica
+  polity: macedonia
+  relation: province
+  from: c. 100 BCE
+  to: after 27 BCE
+  sources:
+    - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
+    - { source: sumner-1978, locator: '218–219' }
+    - { source: cicero-pis, locator: '61' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Didius, praetor in 101 and governor of Macedonia in 100 (Sumner), took
+    "the Chersonese and the Caenic land" in war, and the law of 101/100 gives
+    it to the governor of Macedonia to hold with his province; Didius
+    triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
+    From here the row is macedonia's, which this ground was part of until the
+    extension to 133 BCE.
+
+- atom: macedonia
+  polity: pontus-regnum
+  relation: occupied
+  from: 87 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 35, 41' }
+    - { source: plutarch, locator: 'Sulla 11.2, 15.1, 22.3, 23.1' }
+    - { source: livy-per, locator: '82' }
+    - { source: cicero-pis, locator: '84' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    When Sulla crossed in 87 a son of Mithridates, Ariarathes in Plutarch, "was
+    overrunning Thrace and Macedonia" (Sulla 11.2); while Sulla besieged
+    Athens, Arcathias (Appian's name for him) "overcame the small Roman force
+    there, subjugated the whole country, appointed satraps to govern it"
+    (Mithr. 35). The Dentheletae alone "preserved Macedonia for us, when Caius
+    Sentius was praetor" (Cic. Pis. 84). The army "which had occupied Macedonia
+    and entered Thessalia" was destroyed at Chaeronea in 86 (Livy Per. 82), and
+    Archelaus gave up every place he held under the terms he and Sulla agreed
+    near Delium in the winter of 86/85 (Mithr. 55; Plut. Sulla 22.3); Sulla
+    marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the row
+    ends in 86. Drawn over the whole
+    atom, though Sentius held out somewhere in it.
+
+- atom: chersonesus-thracica
+  polity: pontus-regnum
+  relation: occupied
+  from: 87 BCE
+  to: 86 BCE
+  sources:
+    - { source: plutarch, locator: 'Sulla 11.2' }
+    - { source: appian, locator: 'Mithr. 35' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As macedonia: "Thrace and Macedonia" were overrun (Plut. Sulla 11.2), and
+    the king's armies crossed to Europe by the Hellespont.
+
+- atom: achaea
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 28–29, 45, 55' }
+    - { source: plutarch, locator: 'Sulla 11.3, 14.6, 22.3' }
+    - { source: livy-per, locator: '78, 81' }
+    - { source: strabo, locator: '10.5.4' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Archelaus crossed in 88, took Delos, and brought Athens under Aristion into
+    alliance with the king (App. Mithr. 28; Livy Per. 78); he "brought over to
+    the side of Mithridates the Achaeans, the Lacedaemonians, and all of
+    Boeotia except Thespiae" (Mithr. 29), was "in possession of Euboea
+    itself", and was "bringing into revolt from Rome the peoples of Greece as
+    far as Thessaly" (Plut. Sulla 11.3). Sulla took Athens on the Kalends of
+    March 86 (Plut. Sulla 14.6; Livy Per. 81) and beat Archelaus at Chaeronea
+    and Orchomenus in 86, but Archelaus kept Chalcis and the sea (App. Mithr.
+    45), and the king's garrisons left Greece only under the terms he and Sulla
+    agreed near Delium in the winter of 86/85 (Mithr. 55; Plut. Sulla 22.3). So
+    the row ends in 86. The free cities that held out (Thespiae; Demetrias and
+    Magnesia in Thessaly, Mithr. 29) lie inside, as do Athens and Sparta, which
+    joined him.
 
 # --- Anatolia ------------------------------------------------------------------
 
@@ -1206,6 +1319,126 @@
     Whether the Nabataeans held them afterwards is not stated.
 
 # --- the Black Sea -------------------------------------------------------------
+# Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
+# Paerisades V gave it to Mithridates (Strabo 7.4.4), Diophantus' wars for the
+# king c. 110–107 (the Diophantus decree, IOSPE I² 352), the revolt of the
+# Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
+# the king's son, set over them c. 80 (Mithr. 67), who made himself a friend of
+# Rome in 70 (Mithr. 83). The dates of c. 110–107 are the decree's usual ones;
+# the decree itself is dated only by a Chersonesite eponym.
+
+- atom: bosporus
+  polity: bosporus
+  relation: independent
+  from: before 133 BCE
+  to: c. 109 BCE
+  sources:
+    - { source: strabo, locator: '7.4.4' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The kingdom of the Spartocids ("the dynasty of Leuco, Satyrus, and
+    Parisades", Strabo 7.4.4) until its last king, Paerisades V, "unable to hold
+    out against the barbarians, who kept exacting greater tribute than
+    before", gave it over to Mithridates Eupator. No tie to Rome is recorded.
+
+- atom: bosporus
+  polity: pontus-regnum
+  relation: independent
+  from: c. 108 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3–4' }
+    - { source: diophantus-decree }
+    - { source: plutarch, locator: 'Sulla 11.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
+    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
+    Panticapaeum back for the king (the decree); the revolt is not drawn. In
+    88–87 a son of Mithridates held "Pontus and Bosporus … as far as the
+    deserts beyond Lake Maeotis" (Plut. Sulla 11.2). The Bosporan peoples had
+    revolted by the time the king came home in 85 (App. Mithr. 64); when is not
+    recorded, and the row ends in 86.
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    After Murena's war (83–81) Mithridates "subdued the tribes of the Bosporus
+    and appointed Machares, one of his sons, king over them" (App. Mithr. 67):
+    a kingdom under a son of the king, drawn as Pontus' client. The years of
+    the revolt before it, 85–81, are left unclaimed.
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: plutarch, locator: 'Lucullus 24.1' }
+    - { source: livy-per, locator: '98' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    After Sinope fell, Lucullus "entered into friendly relations with Machares,
+    the son of Mithridates and ruler of the Bosporus, who sent him a crown of
+    gold" (App. Mithr. 83); Machares asked "to be included in the list of
+    Rome's friends and allies" (Plut. Luc. 24.1). Dated to 70 with Sinope; it
+    may belong to the winter of 70/69. It ends when his father came in 65 and
+    Machares killed himself (Mithr. 102).
+
+- atom: bosporus-tanais
+  polity: pontus-regnum
+  relation: independent
+  from: c. 108 BCE
+  to: 86 BCE
+  sources:
+    - { source: plutarch, locator: 'Sulla 11.2' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus. Plutarch's son of Mithridates held the realm "as far as the
+    deserts beyond Lake Maeotis" in 88–87 (Sulla 11.2); how far up the Maeotic
+    shore that reached, and whether it was so from the first, is not known.
+    Under the Spartocids before c. 108 the shore is left unclaimed: Strabo
+    gives them only "the neighboring settlements near the south of Lake
+    Maeotis" (7.4.4).
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus; Appian's "tribes of the Bosporus" were very likely these Maeotic peoples.
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus.
+
 
 - atom: bosporus
   polity: bosporus
@@ -1330,14 +1563,39 @@
   review: draft
 
 - atom: chersonesus
+  polity: chersonesus
+  relation: independent
+  from: before 133 BCE
+  to: c. 111 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "At first self-governing" (Strabo 7.4.3), until the Scythians of Scilurus
+    and his sons pressed it so hard that it took Mithridates as protector.
+
+- atom: chersonesus
   polity: pontus-regnum
   relation: independent
-  from: before 68 BCE
+  from: c. 110 BCE
   to: 64 BCE
   sources:
     - { source: strabo, locator: '7.4.3' }
+    - { source: diophantus-decree }
+    - { source: appian, locator: 'Mithr. 102' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    The city "was forced to choose Mithridates Eupator as protector" (Strabo
+    7.4.3), and Diophantus relieved it c. 110 (the decree, which thanks him
+    for freeing the people "from the domination of the barbarians"). A
+    protectorate over a city that kept its own council and magistrates, drawn
+    as the king's because Strabo has it "subject to the potentates of the
+    Bosporus" from then on. Under Machares it was probably governed from
+    Panticapaeum: he fled "to the Pontic Chersonesus" in 65 (App. Mithr. 102).
+    Started before 68 until the extension to 133 BCE.
 
 - atom: chersonesus
   polity: bosporus
@@ -1522,12 +1780,17 @@
 - atom: creta
   polity: creta-koinon
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 67 BCE
   sources:
     - { source: cassius-dio, locator: '36.17a–19' }
+    - { source: livy-per, locator: '97, 100' }
   confidence: certain
   review: draft
+  note: >-
+    Free throughout: M. Antonius' war on the Cretans ended in his defeat and
+    death (Livy Per. 97, 72/71), and the island had been "independent" until
+    Metellus gave it laws (Per. 100).
 
 - atom: paphlagonia
   polity: paphlagonia
@@ -1585,7 +1848,44 @@
 - atom: scythia-minor
   polity: scythia-minor
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
+  to: c. 111 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The kingdom of Scilurus and his sons, who pressed Chersonesus and fought
+    Mithridates' generals from their forts at Palacium, Chabum and Neapolis
+    (Strabo 7.4.3, 7.4.7).
+
+- atom: scythia-minor
+  polity: scythia-minor
+  relation: client
+  from: c. 110 BCE
+  to: 64 BCE
+  sources:
+    - { source: diophantus-decree }
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 119' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Diophantus beat Palacus and took the royal forts of Chabaioi and
+    Neapolis, "it came to pass that almost all of them became subject to the
+    king Mithridates Eupator" (the decree); they revolted and were beaten again.
+    Strabo: Mithridates "subdued all these by force" (7.4.3). How long the
+    subjection lasted is not recorded; at the end Appian counts "the princes of
+    the Scythian tribes around the Euxine and Maiotis" among the king's allies
+    (Mithr. 119), and the row runs to his death. Until the extension to 133 BCE
+    the Scythians were drawn independent from before 68, which Strabo's
+    account does not support; the row after 64 is unchanged.
+
+- atom: scythia-minor
+  polity: scythia-minor
+  relation: independent
+  from: 63 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
@@ -1683,13 +1983,40 @@
 
 - atom: pontic-cities
   polity: pontic-cities
+  relation: independent
+  from: before 133 BCE
+  to: 72 BCE
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Mithr. 15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free Greek cities, with no recorded tie to Rome before Lucullus. Whether
+    they stood under Mithridates' protection in the 80s and 70s is argued, not
+    shown: in 89 his envoy counts "the Greeks bordering on the Euxine" among
+    his acquisitions (App. Mithr. 15), which may mean only the north coast, and
+    the cities resisted Lucullus in 72/71, which fits a Pontic garrison as well
+    as their own choice. Not drawn as his, hence independent and uncertain.
+
+- atom: pontic-cities
+  polity: pontic-cities
   relation: allied
-  from: before 68 BCE
+  from: 71 BCE
   to: 56 BCE
   sources:
     - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Ill. 30' }
+    - { source: livy-per, locator: '97' }
   confidence: probable
   review: needs-check
+  note: >-
+    M. Lucullus, proconsul of Macedonia in 72–71, besieged "several cities
+    lying above Pontus" and "destroyed Apollonia, Calatis, Parthenopolis, Tomi,
+    Histros, and Burziaone" (Eutropius 6.10); Appian names Istrus,
+    Dionysopolis, Odessus, Mesembria, Callatis and Apollonia (Ill. 30). Allied
+    from the campaign's end, 72/71, drawn from 71; started before 68 until the
+    extension to 133 BCE.
 
 - atom: pontic-cities
   polity: dacia
@@ -1720,22 +2047,42 @@
 - atom: noricum
   polity: noricum
   relation: allied
-  from: before 68 BCE
+  from: 113 BCE
   to: after 27 BCE
   sources:
     - { source: caesar-bc, locator: '1.18' }
+    - { source: appian, locator: 'Celt. 13' }
+    - { source: strabo, locator: '5.1.8' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    First attested in 113, when the consul Carbo attacked the Cimbri and
+    Teutones for invading "the people of Noricum, who were foreign friends of
+    the Romans" — a friendship, Appian adds, that did not oblige Rome "to
+    defend them as allies" (Celt. 13) — and was beaten near Noreia (Strabo
+    5.1.8). The start is the first attestation, not the beginning of the
+    friendship, which Alföldy traces further back; before it the kingdom is
+    left unclaimed.
 
 - atom: delmatae
   polity: delmatae
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 34 BCE
   sources:
-    - { source: appian, locator: 'Ill. 12–13' }
+    - { source: appian, locator: 'Ill. 11–13' }
+    - { source: livy-per, locator: '62' }
+    - { source: eutropius, locator: '6.4' }
   confidence: probable
   review: draft
+  note: >-
+    Rome made war on them twice in 133–68 without holding their ground: L.
+    Metellus in 119–117, who "wintered among them at the town of Salona" and
+    triumphed (App. Ill. 11; Livy Per. 62 has him "subdue" them), and
+    Cosconius in 78–76, who "reduced a great part of Dalmatia, took Salonae"
+    (Eutropius 6.4). Neither left a standing that the sources record, and in
+    50 they were strong enough to take Promona (Ill. 12). Started before 68
+    until the extension to 133 BCE.
 
 - atom: massalia
   polity: massalia
@@ -2006,7 +2353,7 @@
 - atom: thessalia
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: broughton-mrr }
@@ -2035,7 +2382,7 @@
 - atom: epirus
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: broughton-mrr }
@@ -2080,16 +2427,22 @@
 - atom: iapydes
   polity: iapydes
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 36 BCE
   sources:
     - { source: appian, locator: 'Ill. 18' }
+    - { source: appian, locator: 'Ill. 10' }
+    - { source: livy-per, locator: '59' }
     - { source: cassius-dio, locator: '49.34.2' }
   confidence: uncertain
   review: needs-check
   note: >-
     Hostile to Rome before 35 (App. Ill. 18), though some of them owed tribute
-    (Dio 49.34.2), hence uncertain.
+    (Dio 49.34.2), hence uncertain. C. Sempronius Tuditanus made war on them in
+    129 and "seem[s] to have subjugated them", but they "revolted not long
+    afterward" (App. Ill. 10; Livy Per. 59); the brief subjection is not drawn,
+    since neither its extent nor its end is recorded. Started before 68 until
+    the extension to 133 BCE.
 
 - atom: iapydes
   polity: illyricum

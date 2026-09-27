@@ -54,6 +54,7 @@ export const WORKS: Record<string, WorkEntry> = {
     parts: {
       'Mithr.': { page: 496, drop: 0 },
       'Ill.': { page: 613, drop: 0 },
+      'Celt.': { page: 876 },
       'Syr.': { page: 497, drop: 0 },
       'Pun.': { page: 880 },
       BC: { page: 498, drop: 1 },
