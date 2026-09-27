@@ -106,18 +106,21 @@ const basilica: Build<Design & Basilica> = (F, d, w, l, face, shade) => {
   })
   // The nave's clerestory, with its windows, and its gable roof.
   const [nw, nl] = d.nave
-  const along = nl >= nw ? 'u' : 'v'
+  const along = w >= l ? 'u' : 'v'
   const [hu, hv] = along === 'u' ? [nl / 2, nw / 2] : [nw / 2, nl / 2]
   F.box(-hu, hu, -hv, hv, P + H, P + d.naveH, shade, null)
-  const n = Math.max(3, Math.round((2 * hu) / 5))
+  // The windows down its long sides: `s` along the nave, `t` across it.
+  const at = (s: number, t: number, z: number): [number, number, number] =>
+    along === 'u' ? [s, t, z] : [t, s, z]
+  const n = Math.max(3, Math.round(nl / 5))
   for (let k = 0; k < n; k++) {
-    const u = -hu + ((k + 0.5) * 2 * hu) / n
-    for (const v of [-hv - 0.03, hv + 0.03])
+    const s = -nl / 2 + ((k + 0.5) * nl) / n
+    for (const t of [-nw / 2 - 0.03, nw / 2 + 0.03])
       F.quad(
-        [u - 0.9, v, P + d.naveH - 3.4],
-        [u + 0.9, v, P + d.naveH - 3.4],
-        [u + 0.9, v, P + d.naveH - 1],
-        [u - 0.9, v, P + d.naveH - 1],
+        at(s - 0.9, t, P + d.naveH - 3.4),
+        at(s + 0.9, t, P + d.naveH - 3.4),
+        at(s + 0.9, t, P + d.naveH - 1),
+        at(s - 0.9, t, P + d.naveH - 1),
         PART.dark,
       )
   }
