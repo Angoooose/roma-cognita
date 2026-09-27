@@ -85,34 +85,128 @@
 - atom: hispania-citerior
   polity: hispania-citerior
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+  note: >-
+    Not "from 197": the province's first holdings were the coast, and the
+    atom's Ebro valley, Carpetania and Oretania came under Rome over the
+    century of wars that followed (decision 2). In force by 133.
 
 - atom: meseta-arevaci
   polity: hispania-citerior
   relation: province
-  from: before 68 BCE
+  from: 133 BCE
   to: after 27 BCE
   sources:
+    - { source: appian, locator: 'Hisp. 98–100' }
+    - { source: livy-per, locator: '59' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: richardson-1996, locator: 'ch. 3' }
   confidence: uncertain
   review: draft
   note: >-
-    Held after Pompey's Sertorian campaigns, but in 56 the Vaccaei and their
-    neighbours drove Metellus Nepos off Clunia (Dio 39.54).
+    From the fall of Numantia in 133: Scipio razed the city and divided its
+    land among its neighbours (App. Hisp. 98; Livy Per. 59), and ten senators
+    came to settle the newly won ground (Hisp. 99). Held loosely: T. Didius
+    killed some 20,000 Arevaci and brought Termes down into the plain in
+    98–93 (Hisp. 99), Sertorius held the country in the 70s, and in 56 the
+    Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio 39.54).
+    It read "before 68" until September 2026, as held after Pompey's Sertorian
+    campaigns.
+
+- atom: baliares
+  polity: baliares
+  relation: independent
+  from: before 133 BCE
+  to: 124 BCE
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: florus, locator: '1.43' }
+  confidence: certain
+  review: draft
+
+- atom: baliares
+  polity: hispania-citerior
+  relation: province
+  from: 123 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '60' }
+    - { source: strabo, locator: '3.5.1' }
+    - { source: orosius, locator: '5.13.1' }
+    - { source: pliny-nh, locator: '3.77' }
+  confidence: probable
+  review: draft
+  note: >-
+    Conquered by Q. Metellus, consul in 123 (Livy Per. 60, under 123), who
+    settled 3,000 Romans from Spain in his new towns of Palma and Pollentia
+    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). The war may
+    have run into 122. Until September 2026 the islands were part of the
+    hispania-citerior atom and Hither Spain's throughout.
 
 - atom: hispania-ulterior
   polity: hispania-ulterior
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+
+# Sertorius, 80–72: a Roman commander holding Spain against Sulla's government
+# (README decision 18), so occupation over the standing provinces. Like every
+# occupation row, his end the year before the government recovered the ground:
+# Pompey "recovered the Spanish provinces" in 72 (Livy Per. 96).
+
+- atom: hispania-citerior
+  polity: sertorius
+  relation: occupied
+  from: c. 77 BCE
+  to: 73 BCE
+  sources:
+    - { source: plutarch, locator: 'Sertorius 12.3, 16.1' }
+    - { source: orosius, locator: '5.23.3–4' }
+    - { source: livy-per, locator: '90–91, 96' }
+    - { source: strabo, locator: '3.4.10' }
+    - { source: florus, locator: '2.10.9' }
+    - { source: sallust-hist, locator: '2.98 M' }
+    - { source: appian, locator: 'BC 1.112–113' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    His quaestor Hirtuleius beat the governor of Hither Spain, Domitius (Plut.
+    Sert. 12.3), and then Manlius, come from Gaul, who fled to Ilerda (Oros.
+    5.23.3–4; Livy Per. 90, under 78); by the time Pompey crossed the Pyrenees in 77/76 "all the peoples
+    within the river Ebro" had joined Sertorius (Plut. Sert. 16.1). He held on
+    to the end in Ilerda, Osca, Calagurris, Tarraco and Hemeroscopium (Strabo
+    3.4.10), and his last towns surrendered or were stormed after Perperna's
+    defeat in 72 (Flor. 2.10.9; Oros. 5.23.14). Drawn over the whole atom,
+    though Pompey held the coast north of the Ebro from 76 ("I recovered Gaul,
+    the Pyrenees, Lacetania and the Indigetes", Sall. Hist. 2.98 M) and the
+    cities won back from 75 on (App. BC 1.112–113) are not dated at a grain
+    that could be drawn.
+
+- atom: meseta-arevaci
+  polity: sertorius
+  relation: occupied
+  from: c. 77 BCE
+  to: 73 BCE
+  sources:
+    - { source: livy-per, locator: '92' }
+    - { source: florus, locator: '2.10.9' }
+    - { source: orosius, locator: '5.23.14' }
+    - { source: appian, locator: 'BC 1.112' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The Celtiberian heart of Sertorius' power: besieged at Clunia he held out
+    (Livy Per. 92, under 76); Uxama, Termes and Clunia were among the last
+    towns to fall to Pompey after Perperna's end in 72 (Flor. 2.10.9; Oros.
+    5.23.14). Strabo has him driven out of Celtiberia before his end (3.4.10),
+    so its last years may be too long.
 
 - atom: lusitania-north
   polity: hispania-ulterior
@@ -131,11 +225,68 @@
 - atom: gallia-transalpina
   polity: gallia-transalpina
   relation: province
-  from: before 68 BCE
+  from: 121 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
-  confidence: certain
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '60–61' }
+    - { source: velleius, locator: '2.10.2, 2.39.1' }
+    - { source: strabo, locator: '4.1.5, 4.1.11' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From the defeat of the Allobroges and the Arverni in 121 (Livy Per. 61;
+    Strabo 4.1.11), the province's conventional start; unclaimed before, when
+    the land was its Gallic peoples' and Massalia's (Rome's first war here, for
+    Massalia against the Salluvii, was in 125, Per. 60). The Salluvian country
+    between the Rhône and the Var was beaten in 124–122 and garrisoned at Aquae
+    Sextiae in 122 (Strabo 4.1.5); it is not drawn apart, a year or two ahead of
+    the rest. The date of the regular province is disputed (see the polity).
+
+- atom: tolosates
+  polity: tectosages
+  relation: independent
+  from: before 133 BCE
+  to: 122 BCE
+  sources:
+    - { source: strabo, locator: '4.1.13' }
+  confidence: probable
+  review: needs-check
+
+- atom: tolosates
+  polity: tectosages
+  relation: allied
+  from: { earliest: 121 BCE, latest: 118 BCE }
+  to: 107 BCE
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: velleius, locator: '2.7.8' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "Formerly in alliance with the Romans", with a Roman garrison, until the
+    revolt Caepio put down (Dio fr. 90). The alliance's start is not recorded:
+    no earlier than the war of 121, no later, on this reading, than the colony
+    of Narbo on their borders in 118 (Vell. 2.7.8). The revolt of 107 is
+    inside this row.
+
+- atom: tolosates
+  polity: gallia-transalpina
+  relation: province
+  from: 106 BCE
+  to: after 27 BCE
+  sources:
+    - { source: orosius, locator: '5.15.25' }
+    - { source: strabo, locator: '4.1.13' }
+    - { source: caesar-bg, locator: '1.10' }
+    - { source: broughton-mrr, locator: 'vol. I, 106 BCE' }
+  confidence: probable
   review: draft
+  note: >-
+    Taken by Q. Servilius Caepio, consul in 106 (Oros. 5.15.25, who calls him
+    proconsul; Dio fr. 90); "when the
+    Romans obtained possession of the country they put up these lakes to
+    public sale" (Strabo 4.1.13); "a state in the Province" in 58 (BG 1.10).
 
 - atom: gallia-comata
   polity: gallia-comata
@@ -1278,7 +1429,7 @@
 - atom: massalia
   polity: massalia
   relation: allied
-  from: before 68 BCE
+  from: before 133 BCE
   to: 50 BCE
   sources:
     - { source: strabo, locator: '4.1.5, 4.1.9' }
@@ -1302,7 +1453,7 @@
 - atom: helvetii
   polity: helvetii
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 59 BCE
   sources:
     - { source: caesar-bg, locator: '1.2' }
@@ -1337,7 +1488,7 @@
 - atom: sequani
   polity: sequani
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1359,15 +1510,36 @@
 
 - atom: aedui
   polity: aedui
+  relation: independent
+  from: before 133 BCE
+  to: 123 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: strabo, locator: '4.3.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free, and perhaps already Rome's friends: Strabo calls them the first in
+    Gaul to seek friendship and alliance with Rome (4.3.2), but the alliance is
+    not attested before 122, and the ground moves at the attestation (decision
+    19).
+
+- atom: aedui
+  polity: aedui
   relation: allied
-  from: before 68 BCE
+  from: 122 BCE
   to: 52 BCE
   sources:
+    - { source: livy-per, locator: '61' }
+    - { source: florus, locator: '1.37.4' }
     - { source: caesar-bg, locator: '1.33, 7.37–43, 7.54–55, 7.63' }
   confidence: probable
   review: draft
   note: >-
-    Allies throughout, until they joined Vercingetorix in 52.
+    Allies from their first attestation, when the Allobroges, sheltering the
+    Salluvian king Toutomotulus, "devastated the land of the Aedui, an ally of
+    the Roman people" (Livy Per. 61; Flor. 1.37.4), until they joined
+    Vercingetorix in 52.
 
 - atom: aedui
   polity: gallia-comata
@@ -1385,7 +1557,7 @@
 - atom: arverni
   polity: arverni
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1408,7 +1580,7 @@
 - atom: vaccaei
   polity: vaccaei
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1419,7 +1591,7 @@
 - atom: astures
   polity: astures
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1430,7 +1602,7 @@
 - atom: cantabri
   polity: cantabri
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1441,7 +1613,7 @@
 - atom: callaeci
   polity: callaeci
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }

@@ -123,7 +123,7 @@
   location: [5.3825, 43.2969]
   names:
     - { text: Massilia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status: civitas foederata
@@ -155,7 +155,7 @@
   location: [-6.2931, 36.5293]
   names:
     - { text: Gades, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status: civitas foederata
@@ -266,7 +266,7 @@
   location: [-4.7792, 37.8847]
   names:
     - { text: Corduba, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: provincial seat
@@ -281,7 +281,7 @@
   location: [1.2583, 41.1169]
   names:
     - { text: Tarraco, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: provincial seat
@@ -298,15 +298,23 @@
     - { text: Narbo, preferred: true }
     - { text: Narbo Martius }
     - { text: Col. Narbo Martius }
-  from: before 68 BCE
+  from: 118 BCE
   to: after 27 BCE
   prominence: 2
   status: provincial seat
   labelSide: s
   sources:
     - { source: pleiades, locator: places/246347 }
+    - { source: velleius, locator: '2.7.8' }
+    - { source: cicero-font, locator: '13' }
   confidence: certain
   review: draft
+  note: >-
+    The citizen colony of 118, "in the consulship of Porcius and Marcius" (Vell.
+    2.7.8), "a watch-tower of the Roman people" (Cic. Font. 13). Pleiades files
+    the older native Narbo (Naro) under the same entry; it stood at Montlaurès,
+    a few kilometres north, and is not drawn. That the colony was the
+    governor's seat from the start is a convention.
 
 - id: thessalonica
   pleiades: '491741'
@@ -654,7 +662,7 @@
   location: [-0.988, 37.6028]
   names:
     - { text: Carthago Nova, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: conventus
@@ -670,7 +678,7 @@
   location: [-5.9963, 37.3827]
   names:
     - { text: Hispalis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: conventus
@@ -686,7 +694,7 @@
   location: [3.1145, 42.1334]
   names:
     - { text: Emporiae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -701,7 +709,7 @@
   location: [-9.1355, 38.7072]
   names:
     - { text: Olisipo, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
@@ -716,7 +724,7 @@
   location: [1.4432, 43.6042]
   names:
     - { text: Tolosa, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
@@ -731,18 +739,23 @@
   location: [4.0356, 46.9258]
   names:
     - { text: Bibracte, preferred: true }
-  from: before 68 BCE
+  from: { earliest: 120 BCE, latest: 100 BCE }
   to: after 27 BCE
   prominence: 2
-  status: royal seat
   labelSide: n
   sources:
     - { source: pleiades, locator: places/177473 }
+    - { source: bibracte-site }
+    - { source: caesar-bg, locator: '1.16, 1.23' }
   confidence: certain
   review: needs-check
   note: >-
-    Migration review: tagged "royal seat", but the Aedui were governed by an annual
-    vergobret, not a king (Caesar, BG 1.16). Probably wants no status.
+    The oppidum on Mont Beuvray "lived for only the space of a century,
+    straddling the second and first centuries BCE", and was left for Autun in
+    the decades round the turn of the era (Bibracte); its foundation is put at
+    the end of the second century. Its "royal seat" status was dropped in
+    September 2026: the Aedui were governed by an annual vergobret, not a king
+    (BG 1.16).
 
 - id: alesia
   pleiades: '177434'
@@ -750,7 +763,7 @@
   location: [4.5039, 47.5366]
   names:
     - { text: Alesia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -765,14 +778,21 @@
   location: [3.1241, 45.7182]
   names:
     - { text: Gergovia, preferred: true }
-  from: before 68 BCE
+  from: { earliest: 70 BCE, latest: 60 BCE }
   to: after 27 BCE
   prominence: 2
   labelSide: w
   sources:
     - { source: pleiades, locator: places/138373 }
+    - { source: gergovie-archaeology }
   confidence: certain
-  review: draft
+  review: needs-check
+  note: >-
+    The Arverni settled the plateau only in the 60s BCE, when its great works
+    were built, moving from Corent, founded at the end of the second century;
+    it was left for Augustonemetum (Clermont) in the first decades CE (Musée de
+    Gergovie; Puy-de-Dôme). It stood "before 68" here until September 2026.
+    Corent, the Arverni's chief oppidum in 133–70, is not yet a place.
 
 - id: dyrrachium
   pleiades: '481818'
@@ -1312,14 +1332,26 @@
   location: [-0.3768, 39.4704]
   names:
     - { text: Valentia, preferred: true }
-  from: before 68 BCE
-  to: after 27 BCE
+  from: before 133 BCE
+  to: 76 BCE
   prominence: 3
   labelSide: e
   sources:
     - { source: pleiades, locator: places/266090 }
+    - { source: livy-per, locator: '55' }
+    - { source: sallust-hist, locator: '2.98 M' }
+    - { source: ribera-valentia }
   confidence: certain
-  review: draft
+  review: needs-check
+  note: >-
+    Founded in 138 for men who had fought under Viriathus (Livy Per. 55).
+    Pompey destroyed it with Herennius' army in 75 ("the destruction of Gaius
+    Herennius ... together with his army and the city of Valentia", his letter
+    in Sall. Hist. 2.98 M), and the burnt level at l'Almoina bears him out; the
+    city was rebuilt only at the end of Augustus' reign (Ribera). Florus lists a
+    Valentia among the towns that surrendered after Perperna's end in 72
+    (2.10.9): a remnant, or another Valentia. It stood "after 27" here until
+    September 2026.
 
 - id: saguntum
   pleiades: '266021'
@@ -1327,7 +1359,7 @@
   location: [-0.2772, 39.6781]
   names:
     - { text: Saguntum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1336,6 +1368,90 @@
   confidence: certain
   review: draft
 
+# Added September 2026 for the extension to 133 BCE: the foundations of 123–75
+# in Spain and Gaul.
+
+- id: palma
+  pleiades: '265998'
+  kind: settlement
+  location: [2.65, 39.5694]
+  names:
+    - { text: Palma, preferred: true }
+  from: 123 BCE
+  to: after 27 BCE
+  prominence: 3
+  sources:
+    - { source: pleiades, locator: places/265998 }
+    - { source: strabo, locator: '3.5.1' }
+    - { source: pliny-nh, locator: '3.77' }
+  confidence: certain
+  review: draft
+  note: >-
+    Built by Q. Metellus Balearicus, who brought 3,000 Romans from Spain to the
+    islands (Strabo 3.5.1), in or just after his war of 123; a town of Roman
+    citizens in Pliny's day (3.77).
+
+- id: pollentia
+  pleiades: '266004'
+  kind: settlement
+  location: [3.1231, 39.8486]
+  names:
+    - { text: Pollentia, preferred: true }
+    - { text: Polentia }
+  from: 123 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: pleiades, locator: places/266004 }
+    - { source: strabo, locator: '3.5.1' }
+    - { source: pliny-nh, locator: '3.77' }
+  confidence: certain
+  review: draft
+  note: As Palma.
+
+- id: pompaelo
+  pleiades: '246567'
+  kind: settlement
+  location: [-1.6442, 42.818]
+  names:
+    - { text: Pompaelo, preferred: true }
+    - { text: Pompelo }
+  from: c. 75 BCE
+  to: after 27 BCE
+  prominence: 3
+  sources:
+    - { source: pleiades, locator: places/246567 }
+    - { source: strabo, locator: '3.4.10' }
+    - { source: sallust-hist, locator: '2.93 M' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Pompelon, or Pompey's city" among the Vascones (Strabo 3.4.10). When it
+    was founded is not recorded; it is put at Pompey's winter of 75/74, when his
+    army went "into the territory of the Vascones" (Sall. Hist. 2.93 M).
+
+- id: aquae-sextiae
+  pleiades: '148053'
+  kind: settlement
+  location: [5.4454, 43.5262]
+  names:
+    - { text: Aquae Sextiae, preferred: true }
+  from: 122 BCE
+  to: after 27 BCE
+  prominence: 3
+  sources:
+    - { source: pleiades, locator: places/148053 }
+    - { source: livy-per, locator: '61, 68' }
+    - { source: strabo, locator: '4.1.5' }
+  confidence: certain
+  review: draft
+  note: >-
+    Founded by the proconsul C. Sextius Calvinus after his defeat of the
+    Salluvii, named for its springs and for him (Livy Per. 61), with "a Roman
+    garrison" (Strabo 4.1.5); dated 122, as Livy tells it just before the wars
+    of 121. Marius beat the Teutones near it in 102 (Per. 68). A garrison, not
+    yet a colony.
+
 - id: vienna
   pleiades: '167719'
   kind: settlement
@@ -1343,7 +1459,7 @@
   names:
     - { text: Vienna, preferred: true }
     - { text: Col. Vienna }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1360,7 +1476,7 @@
     - { text: Arelate, preferred: true }
     - { text: Col. Arelate }
     - { text: Theline }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   status:
@@ -1384,7 +1500,7 @@
   location: [2.3979, 47.0825]
   names:
     - { text: Avaricum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1399,7 +1515,7 @@
   location: [2.3462, 48.8544]
   names:
     - { text: Lutetia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1414,7 +1530,7 @@
   location: [4.0332, 49.254]
   names:
     - { text: Durocortorum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1429,7 +1545,7 @@
   location: [1.9069, 47.9007]
   names:
     - { text: Cenabum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1444,7 +1560,7 @@
   location: [6.0279, 47.2372]
   names:
     - { text: Vesontio, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e
@@ -1459,7 +1575,7 @@
   location: [6.1438, 46.202]
   names:
     - { text: Genava, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s

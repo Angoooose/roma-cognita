@@ -67,8 +67,15 @@
   kind: territory
   polities:
     - polity: hispania-citerior
+  sources:
+    - { source: appian, locator: 'BC 1.108' }
   confidence: certain
   review: draft
+  note: >-
+    Undated. Sertorius, sent out as its governor in 83–82 (App. BC 1.108), held
+    it against Sulla's government from 80 to his death; on the map that is the
+    command sertorius, occupying the province in 77–73, but any DPRR post of
+    his in Spain still comes here, beside the governors sent against him.
 
 - dprr: Balearic islands
   kind: territory
@@ -130,7 +137,9 @@
     Caesar held them as one command. They were first given to different men in
     44, when Lepidus took the old province and Plancus the rest, so the join is
     weakest in 44–43, for a governor who held only one half. It also inherits
-    gallia-comata's own doubtful start date.
+    gallia-comata's own doubtful start date. The commanders of the conquest,
+    Fulvius Flaccus and Sextius Calvinus in 125–122, fall before the province's
+    conventional start in 121 and are not shown.
 
 - dprr: Gallia Cisalpina
   kind: territory
