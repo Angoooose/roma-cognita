@@ -1155,6 +1155,7 @@
   from: 126 BCE
   to: 65 BCE
   sources:
+    - { source: cng-tyre-shekel }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
   confidence: probable
@@ -1172,6 +1173,7 @@
   from: 111 BCE
   to: 65 BCE
   sources:
+    - { source: livius-sidon }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
   confidence: probable

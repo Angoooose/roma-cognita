@@ -1376,7 +1376,37 @@
     rev. G. Vermes, F. Millar and M. Black, vol. II (Edinburgh, 1979)
   note: >-
     The Hellenistic cities, for the eras of freedom of Tyre (126/125),
-    Sidon (111) and Ascalon (104) counted on their coins. Not opened.
+    Sidon (111) and Ascalon (104/103) counted on their coins. Not opened; each
+    era is also cited from an open source below, found in the check.
+
+- id: cng-tyre-shekel
+  kind: modern
+  citation: >-
+    Classical Numismatic Group, "Phoenicia, Tyre. 126/5 BC–AD 65/6. AR Shekel
+    ... Dated CY 24 (103/2 BC)", catalogue entry (BMC Phoenicia 106–7)
+  url: https://www.cngcoins.com/Coin.aspx?CoinID=99707
+  note: >-
+    A dealer's catalogue entry, cited as open evidence of Tyre's era: year 24
+    is 103/2 BC, so year 1 is 126/5. Opened in the check (September 2026).
+
+- id: livius-sidon
+  kind: modern
+  citation: J. Lendering, "Sidon (3)", Livius.org
+  url: https://www.livius.org/articles/place/sidon/sidon-3/
+  note: >-
+    "In 111 BCE, Sidon regained it independence. Official documents were dated
+    to a Sidonian Era that begins in that year." Opened in the check.
+
+- id: gitler-master-2010
+  kind: modern
+  citation: >-
+    H. Gitler and D. Master, "Cleopatra at Ascalon: Recent Finds from the Leon
+    Levy Expedition", Israel Numismatic Research 5 (2010) 67–98
+  url: https://www.ins.org.il/32/
+  note: >-
+    Only the abstract was opened (the Israel Numismatic Society's page): the
+    city's tetradrachms of "year 55 (50/49 BCE)" and "65=40/39 BCE" put year 1
+    of Ascalon's era in 104/103.
 
 - id: ehling-2008
   kind: modern

@@ -1249,6 +1249,8 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678437 }
+    - { source: cng-tyre-shekel }
+    - { source: josephus-aj, locator: '15.95' }
   confidence: certain
   review: draft
 
@@ -1269,6 +1271,8 @@
   labelSide: w
   sources:
     - { source: pleiades, locator: places/678393 }
+    - { source: livius-sidon }
+    - { source: josephus-aj, locator: '15.95' }
   confidence: certain
   review: draft
 
@@ -2535,10 +2539,14 @@
     - value: civitas libera
       from: 104 BCE
       to: after 27 BCE
-      note: Free from 104, its era; never Hasmonean.
+      note: >-
+        Free from 104/103, the first year of its era (Gitler and Master: year
+        55 is 50/49); never Hasmonean, and not among the cities Pompey took
+        from the Jews (Josephus AJ 14.75–76).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/687839 }
+    - { source: gitler-master-2010 }
   confidence: certain
   review: draft
 
@@ -2554,8 +2562,14 @@
   labelSide: s
   sources:
     - { source: pleiades, locator: places/687902 }
+    - { source: josephus-aj, locator: '13.364, 14.87–88' }
   confidence: certain
-  review: draft
+  review: needs-check
+  note: >-
+    Jannaeus "utterly overthrown their city" after a year's siege, c. 96 (AJ
+    13.364), and Gabinius had it rebuilt with Anthedon, Raphia and others that
+    "had been desolate for a long time" (14.87–88), c. 57. How far it was
+    deserted between is not known; it is drawn standing throughout.
 
 - id: zeugma
   pleiades: '658636'
