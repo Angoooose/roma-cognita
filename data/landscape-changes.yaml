@@ -511,6 +511,8 @@
     Sanlaville & Dalongeville's transgression). The line is a middle one, ±15–25
     km: Juba's 50 miles from Charax along the channel, with Hansman's Chaldean Lakes
     read as marsh behind it. Every study describes a belt of tidal flats, salt flats
-    and marsh tens of km wide rather than a sharp coast, and the map draws one line
-    inside it. The Mesopotamian alluvium (features.yaml) still stops at the modern
-    coast.
+    and marsh tens of km wide rather than a sharp coast. The map draws one line
+    inside it, and the water off that line shelves over 20 km instead of the usual
+    4, so it stays pale and shallow the way the flats were; a soft coastline itself
+    is not drawn. The Mesopotamian alluvium and Susiana (features.yaml) stop at this
+    line.

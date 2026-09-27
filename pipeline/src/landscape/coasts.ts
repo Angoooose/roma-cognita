@@ -55,6 +55,12 @@ export interface Shore {
    * at. Each ring says where it comes from.
    */
   land?: Pt[][]
+  /**
+   * For an uncertain shore across a belt of flats: the distance the water shelves over
+   * to full depth, km, instead of the usual 4. The coast is still one line; the water
+   * off it stays pale and shallow for this far.
+   */
+  shelfKm?: number
   /** Arms of water narrower than this are cut off, m: modern drains cut below the old level. */
   narrowestM?: number
   /** Enclosed rises smaller than this are drowned: towns, levees and spoil on the surface model. */
@@ -758,6 +764,8 @@ export const SHORES: Shore[] = [
       [47.97, 30.05],
     ],
     method: { kind: 'sea', maxHeight: 3 },
+    // The belt of tidal and salt flats every study describes, drawn as shallows 20 km deep.
+    shelfKm: 20,
     why:
       'The Khuzestan coast was stable from 5500 BP and began to build out only about 2500 BP (Heyvaert & Baeteman 2007), ' +
       'and the Shatt al-Arab’s delta is later still, so the Fao peninsula, Abadan and the flats south of Shadegan were sea or ' +

@@ -144,7 +144,7 @@ function readLandscapeChanges() {
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
     features: {
       id: string
-      properties: { surface?: string } | null
+      properties: { surface?: string; shelfKm?: number } | null
       geometry: { type: string; coordinates: unknown }
     }[]
   }
@@ -166,7 +166,10 @@ function readLandscapeChanges() {
       for (const ring of poly) {
         const r = projectRing(ring, id, Infinity)
         target.push(r)
-        if (sea) out.ancientSea.push(r)
+        if (sea) {
+          const shelf = f.properties?.shelfKm
+          out.ancientSea.push(shelf ? { ...r, shelf: shelf * 1000 } : r)
+        }
       }
     }
     out.credits.push({
@@ -213,8 +216,12 @@ async function main() {
    * Channel 2 needs the final coast ANCIENT_REACH_M round the tile, further than the
    * shore channel's margin, so its rings come from a wider query.
    */
+  const widestShelf = Math.max(ANCIENT_REACH_M, ...changes.ancientSea.map((r) => r.shelf ?? 0))
   const ancientJob = (rect: readonly [number, number, number, number]) => {
-    const r = [rect[0] - ANCIENT_REACH_M, rect[1] - ANCIENT_REACH_M, rect[2] + ANCIENT_REACH_M, rect[3] + ANCIENT_REACH_M] as const
+    // As far round the tile as the widest shelf of the ancient sea near it.
+    const near = ancientIndex.query(rect[0] - widestShelf, rect[1] - widestShelf, rect[2] + widestShelf, rect[3] + widestShelf)
+    const m = Math.max(ANCIENT_REACH_M, ...near.map((r) => r.shelf ?? 0))
+    const r = [rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m] as const
     return {
       reach: ANCIENT_REACH_M,
       sea: ancientIndex.query(...r),
@@ -351,7 +358,7 @@ async function main() {
 
   const index = {
     _comment:
-      'Coast mask tiles. codes[level] (levels 0 to codeLevel) is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written), 3 all land inside a floodplain. Below codeLevel a tile is written only if it has shore; the pack head lists which. Tiles above packLevel are {level}/{i}/{j}.webp; the rest are in pack/{i}/{j}.pack of their packLevel ancestor (packages/world/src/pack.ts). Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain). Channel 2 is ancient sea (add-water corrections whose surface is the sea): 0 outside it, else 1 + 254 × the distance to its edge or the shore, clamped at ancientReach metres.',
+      'Coast mask tiles. codes[level] (levels 0 to codeLevel) is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written), 3 all land inside a floodplain. Below codeLevel a tile is written only if it has shore; the pack head lists which. Tiles above packLevel are {level}/{i}/{j}.webp; the rest are in pack/{i}/{j}.pack of their packLevel ancestor (packages/world/src/pack.ts). Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain). Channel 2 is ancient sea (add-water corrections whose surface is the sea): 0 outside it, else 1 + 254 × the distance to its edge or the shore, clamped at ancientReach metres; a shape that shelves more gently (shelfKm) has its distance scaled so its shelf encodes as ancientReach.',
     texels: TILE_TEXELS,
     maxLevel: MAX_LEVEL,
     codeLevel: CODE_LEVEL,

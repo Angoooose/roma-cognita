@@ -12,6 +12,11 @@
  */
 
 export interface Ring {
+  /**
+   * For ancient sea (water/ancient.ts): the distance over which it shelves to full depth,
+   * m. Unset for every other ring.
+   */
+  shelf?: number
   /** Plane metres, interleaved x,y; closed (first point repeated or implied). */
   xy: Float64Array
   minX: number

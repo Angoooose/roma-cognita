@@ -41,6 +41,14 @@ describe('the ancient sea channel', () => {
     expect(at(4900, 10_000)).toBe(1)
   })
 
+  it('shelves more gently where a shape says so', () => {
+    const steep = bake(bay)
+    const flats = bake([{ ...bay[0], shelf: 16_000 }])
+    // 1.5 km in: a quarter of the way down a 4 km shelf, a sixteenth of a 16 km one.
+    expect(flats(6500, 10_000)).toBeLessThan(steep(6500, 10_000) / 3)
+    expect(flats(6500, 10_000)).toBeGreaterThan(1)
+  })
+
   it('measures to land left standing inside it, not only to its edge', () => {
     // An island is a hole in the shape, as derive-coasts writes it: a second ring of the same polygon.
     const at = bake([...bay, square(9500, 9500, 10_500, 10_500, 1)])

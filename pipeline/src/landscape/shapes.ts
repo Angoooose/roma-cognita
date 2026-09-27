@@ -16,6 +16,8 @@ export interface LandscapeShape {
     derivation: string
     /** For ancient water: whether it was sea (the engine lays the ground at sea level) or a lake. */
     surface?: 'sea' | 'lake'
+    /** For ancient sea: the distance it shelves over to full depth, km, where wider than the usual 4. */
+    shelfKm?: number
   }
   geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown }
 }

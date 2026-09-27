@@ -309,6 +309,7 @@ async function main() {
       id: shore.id,
       properties: {
         ...(surface && { surface }),
+        ...(shore.shelfKm && { shelfKm: shore.shelfKm }),
         derivation: `derive-coasts ${stamp}: ${how(shore.method)}${shore.method.kind === 'polygon' ? '' : `, Mapterhorn z${shore.z}, simplified ${SIMPLIFY_M} m`}`,
       },
       geometry,
