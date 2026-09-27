@@ -111,19 +111,30 @@ function readFloodplains(): Ring[] {
  * correction that applies at any point in the window is applied; per-year variants
  * come when a correction ends inside it (the Latmian Gulf silting, for one).
  */
-function readLandscapeChanges(): { removeWater: Ring[]; addWater: Ring[] } {
+function readLandscapeChanges() {
   const recordsFile = join(ROOT_DIR, 'data/landscape-changes.yaml')
   const geometryFile = join(ROOT_DIR, 'data/geometry/landscape-changes.geojson')
-  const out = { removeWater: [] as Ring[], addWater: [] as Ring[] }
+  const sourcesFile = join(ROOT_DIR, 'data/sources.yaml')
+  const out = { removeWater: [] as Ring[], addWater: [] as Ring[], credits: [] as Credit[] }
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return out
-  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; op: string }[]
-  const ops = new Map(records.map((r) => [r.id, r.op]))
+  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as {
+    id: string
+    op: string
+    sources: { source: string }[]
+  }[]
+  const citations = new Map(
+    ((parseYaml(readFileSync(sourcesFile, 'utf8')) ?? []) as { id: string; citation: string }[]).map(
+      (s) => [s.id, s.citation.trim()],
+    ),
+  )
+  const byId = new Map(records.map((r) => [r.id, r]))
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
     features: { id: string; geometry: { type: string; coordinates: unknown } }[]
   }
   let polygon = 0
   for (const f of collection.features) {
-    const op = ops.get(f.id)
+    const record = byId.get(f.id)
+    const op = record?.op
     const target = op === 'remove-water' ? out.removeWater : op === 'add-water' ? out.addWater : null
     if (!target) continue
     const polys =
@@ -136,8 +147,20 @@ function readLandscapeChanges(): { removeWater: Ring[]; addWater: Ring[] } {
       const id = polygon++
       for (const ring of poly) target.push(projectRing(ring, id, Infinity))
     }
+    out.credits.push({
+      id: record!.id,
+      op: record!.op,
+      sources: record!.sources.map((s) => citations.get(s.source) ?? s.source),
+    })
   }
   return out
+}
+
+/** A correction the mask applied, and whose work it rests on: for the attribution screen. */
+interface Credit {
+  id: string
+  op: string
+  sources: string[]
 }
 
 async function main() {
@@ -288,6 +311,7 @@ async function main() {
     packLevel: PACK_LEVEL,
     distanceTexels: DISTANCE_TEXELS,
     sources: [SOURCES.land.licence, SOURCES.lakes.licence],
+    corrections: changes.credits,
     codes: codes.slice(0, CODE_LEVEL + 1).map((c) => Buffer.from(c).toString('base64')),
   }
   writeFileSync(join(OUT, 'index.json'), JSON.stringify(index))

@@ -60,6 +60,12 @@ export const AtomGeometrySchema = keyedCollection(AreaGeometrySchema)
 export type AtomGeometry = z.infer<typeof AtomGeometrySchema>
 
 /**
+ * data/geometry/landscape-changes.geojson: the area each landscape correction covers.
+ * Written by the generators in pipeline/src/landscape, each of which owns its own ids.
+ */
+export const LandscapeChangeGeometrySchema = keyedCollection(AreaGeometrySchema)
+
+/**
  * Properties a feature's shape may carry. `discharge` (m³/s) is a rough mean
  * flow for river lines, used only to size the line on the map; the record's
  * note says where it came from. `derivation` records how a derived shape was

@@ -554,3 +554,52 @@ describe('physical features and their shapes', () => {
     expect(rules(errors)).toContain('geojson')
   })
 })
+
+describe('landscape corrections and their shapes', () => {
+  const records = () => [
+    { id: 'old-bay', op: 'add-water', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
+    { id: 'old-course', op: 'river-course', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
+  ]
+  const shapes = () => [
+    { type: 'Feature', id: 'old-bay', properties: { derivation: 'test' }, geometry: square(10, 44) },
+  ]
+
+  function runChanges(
+    mutate: (r: Record<string, unknown>[], s: Record<string, unknown>[]) => void = () => {},
+  ) {
+    const recs: Record<string, unknown>[] = records()
+    const geo: Record<string, unknown>[] = shapes()
+    mutate(recs, geo)
+    const dir = write(base())
+    writeFileSync(join(dir, 'landscape-changes.yaml'), stringify(recs))
+    writeFileSync(
+      join(dir, 'geometry/landscape-changes.geojson'),
+      JSON.stringify({ type: 'FeatureCollection', features: geo }),
+    )
+    const { dataset, issues } = readDataset(dir)
+    const all = [...issues, ...checkDataset(dataset)]
+    return { dataset, errors: all.filter((i) => i.level === 'error') }
+  }
+
+  it('load clean, keyed by id; an op the coast build does not draw needs no shape', () => {
+    const { dataset, errors } = runChanges()
+    expect(errors).toEqual([])
+    expect(dataset.geometry.landscapeChanges.get('old-bay')?.type).toBe('Polygon')
+  })
+
+  it('fail when a drawn correction has no shape, or a shape has no correction', () => {
+    const { errors } = runChanges((_, s) => {
+      s[0].id = 'elsewhere'
+    })
+    expect(rules(errors)).toEqual(expect.arrayContaining(['missing-geometry', 'orphan-geometry']))
+  })
+
+  it('fail on clockwise exteriors (RFC 7946)', () => {
+    const { errors } = runChanges((_, s) => {
+      const g = square(10, 44)
+      g.coordinates[0].reverse()
+      s[0].geometry = g
+    })
+    expect(errors.map((e) => e.message).join()).toMatch(/exterior is clockwise/)
+  })
+})

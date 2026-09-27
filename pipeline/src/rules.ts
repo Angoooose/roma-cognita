@@ -444,6 +444,35 @@ export function checkDataset(ds: Dataset): Issue[] {
     }
   }
 
+  // --- landscape corrections and their shapes --------------------------------
+
+  // The coast build applies these two from their shapes; without one a record does nothing.
+  const drawnOps = new Set(['add-water', 'remove-water'])
+  const changes = new Map(ds.landscapeChanges.map((c) => [c.id, c]))
+  for (const c of ds.landscapeChanges) {
+    const g = ds.geometry.landscapeChanges.get(c.id)
+    if (!g) {
+      if (drawnOps.has(c.op))
+        error(
+          'missing-geometry',
+          c,
+          `${c.op} "${c.id}" has no feature in geometry/landscape-changes.geojson`,
+        )
+      continue
+    }
+    for (const p of ringProblems(g))
+      error('geometry', c, `polygon ${p.polygon}, ring ${p.ring}: ${p.problem}`)
+  }
+  for (const id of ds.geometry.landscapeChanges.keys()) {
+    if (!changes.has(id)) {
+      error(
+        'orphan-geometry',
+        `geometry/landscape-changes.geojson (${id})`,
+        `a shape for no landscape change "${id}"`,
+      )
+    }
+  }
+
   // --- polities that nothing draws -------------------------------------------
 
   for (const p of ds.polities) {
