@@ -8,9 +8,10 @@
 # ancient geographers and the scholarship (atoms.yaml), and their seats are
 # gone. Osroene stays a seat: its extent east of the Euphrates is not known.
 #
-# Each row cites its polity's source and spans the whole 68–27 BCE window,
-# hence the open ends. The seat's position is its place's (places.yaml), which
-# is Pleiades'.
+# Each row cites its polity's source and runs for its polity's years; an open
+# end is where the 133–27 BCE window cuts it off. Aristonicus (133–130) was
+# added for the extension to 133. The seat's position is its place's
+# (places.yaml), which is Pleiades'.
 
 - polity: osroene
   place: edessa
@@ -19,3 +20,19 @@
   sources: [{ source: sullivan-1990 }]
   confidence: certain
   review: draft
+
+- polity: aristonicus
+  place: stratonicea-caici
+  from: 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: eutropius, locator: '4.20' }
+    - { source: orosius, locator: '5.10.1–5' }
+    - { source: strabo, locator: '14.1.38' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aristonicus held towns and fortresses (Leucae, Thyateira, Apollonis;
+    Myndus, Samos and Colophon), not a territory anyone could draw, and had no
+    known capital. The seat is Stratonicea on the Caicus, where he coined as
+    King Eumenes and made his last stand (Kallet-Marx 1995, 114).

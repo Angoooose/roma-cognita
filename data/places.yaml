@@ -11,7 +11,7 @@
 # edited by hand. Name language is not yet recorded and is left untagged; the
 # non-preferred names are the spellings the gazetteer files the place under.
 #
-# Dates: every place stood throughout the 68–27 BCE window (Pleiades attests
+# Dates: every place stood throughout the 133–27 BCE window (Pleiades attests
 # it in the period), hence the open ends — except where a row
 # overrides Pleiades, because period dating is not event dating: Pleiades has
 # Carthage continuously from 750 BCE although it lay in ruins from 146 until
@@ -93,10 +93,17 @@
   location: [27.3424, 37.9402]
   names:
     - { text: Ephesus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
-  status: provincial seat
+  status:
+    - value: provincial seat
+      from: 129 BCE
+      to: after 27 BCE
+      note: >-
+        From Aquillius' organisation of the province. No source names a capital
+        before Cicero's day: governors spent their time chiefly at Ephesus and
+        Pergamum (Kallet-Marx 1995, 115).
   sources:
     - { source: pleiades, locator: places/599612 }
   confidence: certain
@@ -108,14 +115,50 @@
   location: [27.1842, 39.1325]
   names:
     - { text: Pergamum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
-  status: conventus
+  status:
+    - value: conventus
+      from: 129 BCE
+      to: 89 BCE
+      note: >-
+        The Attalid capital until Attalus III died in 133, a year that belongs to
+        Rome. When the assize districts were first drawn is not recorded; dated
+        from Aquillius' organisation of the province.
+    - value: royal seat
+      from: 88 BCE
+      to: 86 BCE
+      note: >-
+        Mithridates' seat in Asia: "Mithridates, who was staying at Pergamum"
+        (Plut. Sulla 11.1); Fimbria drove him out in 85 (App. Mithr. 52).
+    - { value: conventus, from: 85 BCE, to: after 27 BCE }
   sources:
     - { source: pleiades, locator: places/550812 }
   confidence: certain
   review: draft
+
+- id: stratonicea-caici
+  pleiades: '550898'
+  kind: settlement
+  location: [27.801765, 39.142114]
+  names:
+    - { text: Stratonicea, preferred: true }
+    - { text: Stratonicaea }
+    - { text: Hadrianopolis }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: pleiades, locator: places/550898 }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Stratonicea on the upper Caicus, where Aristonicus fled and was starved
+    into surrender by Perperna (Eutropius 4.20; Orosius 5.10), on the usual
+    identification (Magie; Robert, from the cistophori of "King Eumenes" struck
+    there); a few have argued for Stratonicea in Caria.
 
 - id: massilia
   pleiades: '148127'
@@ -172,7 +215,7 @@
   names:
     - { text: Rhodus, preferred: true }
     - { text: Rhodos }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status: civitas libera
@@ -330,11 +373,16 @@
   location: [34.8965, 36.914]
   names:
     - { text: Tarsus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status:
-    - { value: provincial seat, from: before 68 BCE, to: 44 BCE }
+    - value: provincial seat
+      from: { earliest: 67 BCE, latest: 64 BCE }
+      to: 44 BCE
+      note: >-
+        Seleucid, then Tigranes', until the plain came under Rome with Pompey
+        (claims.yaml, cilicia-campestris).
     - value: civitas libera
       from: 41 BCE
       to: after 27 BCE
@@ -383,19 +431,23 @@
   location: [29.9199, 40.7652]
   names:
     - { text: Nicomedia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: royal seat
+  status:
+    - value: royal seat
+      from: before 133 BCE
+      to: 75 BCE
+      note: The seat of the kings of Bithynia until the bequest.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/511337 }
   confidence: certain
   review: needs-check
   note: >-
-    Migration review: tagged "royal seat", but the Bithynian kingdom ended with the
-    bequest of 74 and Bithynia was a province throughout the window. Probably wants
-    "provincial seat" or nothing.
+    The royal seat of the Bithynian kings until the bequest of 74 (Mithridates
+    stayed there in 73, Memnon 29). Where the governor of Bithynia sat in the
+    Republic is not recorded, so no status is given after 75.
 
 - id: brundisium
   pleiades: '442509'
@@ -887,10 +939,16 @@
   location: [27.1414, 38.4172]
   names:
     - { text: Smyrna, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: conventus
+  status:
+    - value: conventus
+      from: 129 BCE
+      to: after 27 BCE
+      note: >-
+        When the assize districts were first drawn is not recorded; dated from
+        Aquillius' organisation of the province.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/550893 }
@@ -904,10 +962,16 @@
   names:
     - { text: Sardes, preferred: true }
     - { text: Sardis }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: conventus
+  status:
+    - value: conventus
+      from: 129 BCE
+      to: after 27 BCE
+      note: >-
+        When the assize districts were first drawn is not recorded; dated from
+        Aquillius' organisation of the province.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/550867 }
@@ -920,7 +984,7 @@
   location: [27.2788, 37.5305]
   names:
     - { text: Miletus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -936,10 +1000,16 @@
   names:
     - { text: Laodicea, preferred: true }
     - { text: Laodicea ad Lycum }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: conventus
+  status:
+    - value: conventus
+      from: c. 82 BCE
+      to: after 27 BCE
+      note: >-
+        The seat of the Cibyratic assize district, which could only be Asia's
+        once Murena had put down Cibyra's tyranny (Strabo 13.4.17).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/638955 }
@@ -968,7 +1038,7 @@
   location: [26.547, 39.1105]
   names:
     - { text: Mytilene, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -983,9 +1053,17 @@
   location: [35.143, 42.0258]
   names:
     - { text: Sinope, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
+  status:
+    - value: royal seat
+      from: before 133 BCE
+      to: 71 BCE
+      note: >-
+        Eupator "was both born and reared at Sinopê; and he accorded it special
+        honour and treated it as the metropolis of his kingdom" (Strabo 12.3.11).
+        Lucullus took it in 70 and made it free (App. Mithr. 83).
   labelSide: n
   sources:
     - { source: pleiades, locator: places/857321 }
@@ -998,10 +1076,16 @@
   location: [32.8593, 39.9438]
   names:
     - { text: Ancyra, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: royal seat
+  status:
+    - value: royal seat
+      from: 63 BCE
+      to: after 27 BCE
+      note: >-
+        From Pompey's confirmation of Deiotarus; before him the Galatians were
+        ruled by tetrarchs, and Ancyra was the Tectosages' town.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/619103 }
@@ -1018,7 +1102,8 @@
   names:
     - { text: Mazaca, preferred: true }
     - { text: Mazaka }
-  from: before 68 BCE
+    - { text: Eusebeia, note: 'called "Eusebeia" with "near the Argaeus" (Strabo 12.2.7)' }
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: royal seat
@@ -1034,7 +1119,7 @@
   location: [32.4923, 37.8725]
   names:
     - { text: Iconium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
@@ -1857,7 +1942,7 @@
   location: [27.4222, 37.0404]
   names:
     - { text: Halicarnassus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1872,7 +1957,7 @@
   location: [27.3728, 36.6882]
   names:
     - { text: Cnidus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1887,7 +1972,7 @@
   location: [27.1374, 36.8229]
   names:
     - { text: Cos, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1902,7 +1987,7 @@
   location: [26.133, 38.3722]
   names:
     - { text: Chios, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -1917,7 +2002,7 @@
   location: [26.9445, 37.6882]
   names:
     - { text: Samos, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1932,7 +2017,7 @@
   location: [27.8832, 40.3856]
   names:
     - { text: Cyzicus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   status: civitas libera
@@ -1948,7 +2033,7 @@
   location: [29.7147, 40.4291]
   names:
     - { text: Nicaea, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1964,7 +2049,7 @@
   names:
     - { text: Heraclea Pontica, preferred: true }
     - { text: Heraclea }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1979,7 +2064,7 @@
   location: [36.3313, 41.2927]
   names:
     - { text: Amisus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -1994,7 +2079,7 @@
   location: [35.8279, 40.6668]
   names:
     - { text: Amasia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2009,7 +2094,7 @@
   location: [39.7233, 41.0043]
   names:
     - { text: Trapezus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: n
@@ -2025,7 +2110,7 @@
   names:
     - { text: Pessinus, preferred: true }
     - { text: Pessinous }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2040,7 +2125,7 @@
   location: [31.3922, 36.7684]
   names:
     - { text: Side, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2056,7 +2141,7 @@
   names:
     - { text: Attalia, preferred: true }
     - { text: Attalea }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: w
@@ -2072,7 +2157,7 @@
   names:
     - { text: Xanthus, preferred: true }
     - { text: Xanthos }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2087,7 +2172,7 @@
   location: [29.3145, 36.2618]
   names:
     - { text: Patara, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -2104,7 +2189,7 @@
     - { text: Comana, preferred: true }
     - { text: Komana }
     - { text: Comana Pontica }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: e

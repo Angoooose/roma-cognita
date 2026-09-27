@@ -68,6 +68,9 @@ export const WORKS: Record<string, WorkEntry> = {
       'C. Gracch.': { page: 196 },
       Antony: { page: 180 },
       Brutus: { page: 181, strip: /^Brut\./ },
+      Lucullus: { page: 192 },
+      Sulla: { page: 182 },
+      'Ti. Gracch.': { page: 195 },
     },
   },
   'josephus-aj': { page: 526, inline: 'book' },
@@ -98,6 +101,8 @@ export const WORKS: Record<string, WorkEntry> = {
   eutropius: { page: 684 },
   'res-gestae': { page: 614 },
   florus: { page: 559 },
+  justin: { page: 226 },
+  memnon: { page: 'https://www.attalus.org/translate/memnon2.html', site: 'attalus' },
   'tacitus-ann': { page: 200 },
   'jordanes-getica': { page: 744 },
   'sallust-hist': {
