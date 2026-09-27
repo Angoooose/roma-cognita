@@ -225,6 +225,33 @@ confirming.
     uncertain, because Dio's "enrolled among the provinces" (49.43.7) is the one
     explicit statement.
 
+22. **Italy before the Social War is three polities** (decided 2026-09-27). Before
+    90 the single `italia` atom could not stand: its ground was Roman citizen land
+    and allied land, which the Social War enfranchised piece by piece in 90–87.
+    Ten atoms are cut from `italia`, and Cispadana from `cisalpina`, at the grain
+    the war and its laws date (Beloch 1880; DOUBTS.md), each carrying `italia` from its own year on, so from 87 the map
+    reads ITALIA as before. Before that: `ager-romanus` (citizen territory of
+    Rome, to 91); `socii`, one league for every allied community, `subject-of
+    rome`, so it draws as a washed shade of Rome (the allies had no right of war
+    and peace and owed troops under the formula togatorum; one polity, because
+    Rome's treaties were with some 150 communities and no source draws the
+    peoples' frontiers); and `italici`, the insurgents of 91–88, `independent`,
+    in a colour of their own. Their own name, Italia, is kept as a non-preferred
+    name so the map never letters two ITALIAs at once. A Latin colony is a place
+    status, `colonia latina`, not ground.
+
+23. **A rising that held towns but no territory is a seat.** Aristonicus
+    (133–130) and the slave kings of Sicily (Eunus at Enna, Tryphon at Triocala)
+    are drawn at their strongholds (`seats.yaml`): their power inside a province
+    is not recorded at any grain that could be drawn, and the province under them
+    went on being one.
+
+24. **A king who was Rome's friend and ally but no client is `allied`** — Pontus to
+    90 (Appian's "friendship and alliance") — and **a Roman general's hold on
+    conquered ground before any settlement is Rome's occupation**: Lucullus' of
+    Pontus in 72/71–69, which no commission organised until 67, is a row in the
+    occupation layer by polity `rome`, over the kingdom's own.
+
 ## Open doubts
 
 What looks wrong or rests on weak ground is listed in DOUBTS.md.
