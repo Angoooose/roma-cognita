@@ -75,6 +75,8 @@
     - { source: broughton-mrr }
     - { source: cassius-dio, locator: '53.12.4–5' }
     - { source: perea-yebenes-2017 }
+    - { source: appian, locator: 'Hisp. 98–100' }
+    - { source: strabo, locator: '3.5.1' }
   confidence: certain
   review: draft
   note: >-
@@ -85,7 +87,12 @@
     but for Calvinus' Cerretani, no enemy (Perea Yébenes 2017), so they move no
     frontier. Caesar's in 27 (Dio 53.12.5). Whether Tarraconensis, Baetica and
     Lusitania were created in 27, as Dio's list has it, or in 16–13 is disputed;
-    the two Spains are kept to 27 (see hispania-ulterior).
+    the two Spains are kept to 27 (see hispania-ulterior). Before 68: the
+    Arevaci are its from the fall of Numantia in 133 (App. Hisp. 98), the
+    Baliares from Metellus' conquest of 123 (Strabo 3.5.1); the Celtiberian
+    risings put down by T. Didius and C. Valerius Flaccus in 98–92 (Hisp.
+    99–100) moved no frontier. In 77–73 most of it was Sertorius' (the polity
+    sertorius).
 
 - id: hispania-ulterior
   kind: province
@@ -188,8 +195,28 @@
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
-  confidence: certain
-  review: draft
+    - { source: livy-per, locator: '60–61, 65–68, 73' }
+    - { source: velleius, locator: '2.7.8, 2.10.2, 2.39.1' }
+    - { source: strabo, locator: '4.1.5' }
+    - { source: cicero-font, locator: '12, 16' }
+    - { source: amela-valverde-2019, locator: '39' }
+    - { source: ebel-1976 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Dated, by convention, from the victories of Domitius Ahenobarbus and Fabius
+    Maximus over the Allobroges and the Arverni in 121 (Livy Per. 61; Vell.
+    2.10.2, 2.39.1), after Fulvius Flaccus and Sextius Calvinus had beaten the
+    Salluvii in 125–122 and founded Aquae Sextiae (Per. 60–61; Strabo 4.1.5);
+    Narbo followed in 118 (Vell. 2.7.8). When it became a regular province is
+    disputed: traditionally Domitius' work, now often put down to Marius in the
+    Cimbric wars or to Pompey in the Sertorian (Amela Valverde 2019, 39), and
+    Ebel (1976, not read) holds that the ground west of the Rhône was governed
+    from Hither Spain until then. Lowered from certain in September 2026. The
+    Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae, 102)
+    without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73); and in
+    the 70s peoples of the Province fought Fonteius himself while Pompey's army
+    wintered there (Cic. Font. 12, 16).
 
 - id: cilicia
   kind: province
@@ -1327,34 +1354,44 @@
   kind: city-state
   names:
     - { text: Massilia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '4.1.4–9' }
-    - { source: caesar-bc, locator: '2.22' }
+    - { source: caesar-bc, locator: '1.35, 2.22' }
+    - { source: livy-per, locator: '60' }
   confidence: certain
   review: draft
   note: >-
     A free ally with its own territory until Caesar took the city in 49; it kept
-    its freedom but not its lands.
+    its freedom but not its lands. Rome's wars in Transalpine Gaul began at its
+    call against the Salluvii in 125 (Livy Per. 60); Sextius gave it the coast
+    he cleared of them (Strabo 4.1.5), and Pompey the revenues of lands of the
+    Volcae Arecomici and the Helvii (Caesar BC 1.35), which are not drawn.
 
 - id: helvetii
   kind: people
   names:
     - { text: Helvetii, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
-    - { source: caesar-bg }
+    - { source: caesar-bg, locator: '1.12' }
     - { source: fichtl-2004 }
+    - { source: livy-per, locator: '65' }
   confidence: certain
   review: draft
+  note: >-
+    Their Tigurini joined the Cimbri and killed the consul L. Cassius among the
+    Nitiobriges in 107 (Livy Per. 65; BG 1.12). Tacitus puts the Helvetii of an
+    earlier age between the Rhine and the Main (Germania 28); when they settled
+    the plateau Caesar knew is not recorded.
 
 - id: sequani
   kind: people
   names:
     - { text: Sequani, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1366,7 +1403,7 @@
   kind: people
   names:
     - { text: Aedui, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1374,43 +1411,60 @@
   confidence: certain
   review: draft
   note: >-
-    'Brothers and kinsmen of the Roman people' (Caesar BG 1.33).
+    'Brothers and kinsmen of the Roman people' (Caesar BG 1.33), and "the first
+    to enter into friendship and alliance" with Rome (Strabo 4.3.2); the
+    alliance is first attested in 122, when the Allobroges ravaged their land
+    (relations.yaml).
 
 - id: arverni
   kind: people
   names:
     - { text: Arverni, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
+  ruler: Bituitus, son of Luerius, king to 121
   sources:
-    - { source: caesar-bg }
+    - { source: caesar-bg, locator: '1.45' }
     - { source: fichtl-2004 }
+    - { source: strabo, locator: '4.2.3' }
+    - { source: livy-per, locator: '61' }
   confidence: certain
   review: draft
+  note: >-
+    Under their kings Luerius and Bituitus the Arverni "extended their dominion
+    as far as Narbonne and the borders of Marseilles" and held sway to the
+    Pyrenees, the Ocean and the Rhine (Strabo 4.2.3); that hegemony has no
+    extent anyone can draw and is not claimed. Beaten by Domitius and Fabius in
+    121, Bituitus was held at Alba (Livy Per. 61), but the Arverni were
+    pardoned and neither made a province nor taxed (BG 1.45).
 
 - id: vaccaei
   kind: people
   names:
     - { text: Vaccaei, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: cassius-dio, locator: '51.20.5' }
+    - { source: plutarch, locator: 'Sertorius 21.5' }
+    - { source: appian, locator: 'BC 1.112' }
   confidence: certain
   review: draft
   note: >-
     Dio, in his narrative of 29, has the Cantabri, Vaccaei and Astures subdued
     by Statilius Taurus, with no year (51.20.5). Only the Vaccaei stayed so: by
     26 they were the victims of Cantabrian raids, not enemies (Flor. 2.33.47;
-    Oros. 6.21.3). Their ground passes to Hither Spain c. 29.
+    Oros. 6.21.3). Their ground passes to Hither Spain c. 29. Free before
+    that: Pompey wintered among them in 75/74 (Plut. Sert. 21.5), and his
+    siege of Pallantia failed (App. BC 1.112).
 
 - id: astures
   kind: people
   names:
     - { text: Astures, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1429,7 +1483,7 @@
   kind: people
   names:
     - { text: Cantabri, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1448,15 +1502,19 @@
   kind: people
   names:
     - { text: Callaeci, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
+    - { source: appian, locator: 'Hisp. 72' }
+    - { source: livy-per, locator: '56' }
   confidence: certain
   review: draft
   note: >-
-    No source records either their conquest or their independence in 43–27.
+    D. Brutus raided them to the Lethe and the Nimis in 137 (App. Hisp. 72; Livy
+    Per. 56), but conquered nothing. No source
+    records either their conquest or their independence in 43–27.
     Villanueva Acuña (2011, 2016) holds that the Cantabrian wars touched their
     lands only at the margin, and reads the caetra coins of 27–25 from the Braga
     and Lugo country as signs of a pacified rear.
@@ -1815,3 +1873,83 @@
     39–38 there were two Jewish governments: Antigonus in Jerusalem, and Rome's
     king Herod in Joppa, Idumaea and Galilee. The kingdom's last year, 37,
     belongs to Herod.
+
+# --- added September 2026: the extension to 133 BCE — the West ---------------
+
+- id: sertorius
+  kind: command
+  names:
+    - { text: Sertorius, preferred: true }
+    - { text: Q. Sertorius, lang: la }
+  from: 80 BCE
+  to: 72 BCE
+  ruler: Q. Sertorius, 80–73 or 72; M. Perperna, to 72
+  sources:
+    - { source: plutarch, locator: 'Sertorius 7–27' }
+    - { source: appian, locator: 'BC 1.108–115' }
+    - { source: livy-per, locator: '90–96' }
+    - { source: florus, locator: '2.10' }
+    - { source: orosius, locator: '5.23' }
+    - { source: broughton-mrr, locator: 'vol. II, 80–72 BCE' }
+  confidence: certain
+  review: draft
+  note: >-
+    Marius' and Cinna's man, sent to govern Spain in the civil war of 83–82
+    (App. BC 1.108), he held the Pyrenees against Sulla's commander Annius in 81
+    and lost them (Plut. Sert. 7). Invited back from Africa by the Lusitanians in 80 (Sert. 10–11), he beat
+    the governors of both Spains and Metellus Pius, and ruled through a senate
+    of exiles and Roman officers (Sert. 12–14, 22; App. BC 1.108). Perperna
+    brought him Lepidus' army as Pompey crossed the Pyrenees (Sert. 15). Killed
+    by Perperna at a banquet "during the eighth year of his command" (Livy Per.
+    96, under 72; the year is 73 or 72); Pompey then beat Perperna and
+    "recovered the Spanish provinces" in 72 (Per. 96; App. BC 1.115). A Roman
+    commander, not a state: the provinces he held did not stop being provinces,
+    so his ground is occupation (README decision 18). What he held is drawn
+    from c. 77, when "all the peoples within the river Ebro" had come over to
+    him (Sert. 16.1); in 80–78 he was in Lusitania and Further Spain, where
+    Metellus held the Baetis throughout and the Lusitanians' own land is
+    unclaimed, so no ground is drawn.
+
+- id: baliares
+  kind: people
+  names:
+    - { text: Baliares, lang: la, preferred: true }
+    - { text: Gymnesiae, lang: grc-Latn }
+  from: before 133 BCE
+  to: 124 BCE
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: livy-per, locator: '60' }
+    - { source: florus, locator: '1.43' }
+    - { source: orosius, locator: '5.13.1' }
+  confidence: certain
+  review: draft
+  note: >-
+    The islanders of Mallorca and Menorca, free until Q. Caecilius Metellus,
+    consul in 123, put down the piracy some of them had joined (Strabo 3.5.1;
+    Flor. 1.43) and took the name Balearicus. Livy tells the war in book 60,
+    under 123. Their land is Hither Spain's from 123.
+
+- id: tectosages
+  kind: people
+  names:
+    - { text: Volcae Tectosages, lang: la, preferred: true }
+    - { text: Tolosates, lang: la }
+  from: before 133 BCE
+  to: 107 BCE
+  sources:
+    - { source: strabo, locator: '4.1.13' }
+    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: orosius, locator: '5.15.25' }
+    - { source: caesar-bg, locator: '1.10' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The Tectosages of Tolosa. Dio: "Tolosa, which had formerly been in alliance
+    with the Romans, but had revolted, as a result of the hopes placed in the
+    Cimbri, even to the point of keeping the garrison in chains, was suddenly
+    occupied at night by the Romans" (fr. 90); Q. Servilius Caepio, consul in
+    106, took the city and its temple treasure (Oros. 5.15.25; Strabo 4.1.13). By 58
+    the Tolosates were "a state in the Province" (BG 1.10). When the alliance
+    began is not recorded: after the war of 121, and by the foundation of Narbo
+    on their borders in 118, is the likeliest reading.

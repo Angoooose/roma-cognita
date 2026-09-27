@@ -386,6 +386,51 @@
     (Princeton, 2000)
   note: Reference only — cited, never digitised from (DESIGN §6).
 
+# Added for the extension to 133 BCE: the West (September 2026). Read where the
+# note says so; otherwise only the entry was confirmed.
+
+- id: amela-valverde-2019
+  kind: modern
+  citation: >-
+    L. Amela Valverde, "Pompeyo Magno y la Galia Transalpina. La guerra
+    sertoriana", Helmantica 70, nº 204 (2019) 9–52
+  url: https://revistas.upsa.es/index.php/helmantica/article/view/468
+  note: >-
+    Open access; read. Pompey's march through the Province in 77, Fonteius'
+    wars, and a survey of opinion on when the Province was organised (39).
+
+- id: ribera-valentia
+  kind: modern
+  citation: >-
+    A. Ribera i Lacomba, "Conjunto arqueológico de Valentia", Portal Antigua:
+    Historia y Arqueología de las civilizaciones, Biblioteca Virtual Miguel de
+    Cervantes
+  url: https://www.cervantesvirtual.com/portales/antigua_historia_y_arqueologia/valentia/
+  note: >-
+    Read. By A. Ribera of the city of Valencia's archaeological service:
+    Valentia founded in 138, destroyed by Pompey (a burnt level dated by its
+    coins), and rebuilt only at the end of Augustus' reign.
+
+- id: bibracte-site
+  kind: modern
+  citation: >-
+    Bibracte EPCC, "Bibracte à travers les âges", the site's own history page
+  url: https://www.bibracte.fr/bibracte-travers-les-ages
+  note: Read.
+
+- id: gergovie-archaeology
+  kind: modern
+  citation: >-
+    Musée Archéologique de la Bataille de Gergovie, "La vie au temps des
+    Arvernes", and Département du Puy-de-Dôme, "Plateau de Gergovie: au temps
+    des oppida"
+  url: https://musee-gergovie.fr/la-vie-au-temps-des-arvernes/
+  note: >-
+    Read, both: the plateau "réinvesti ... en 60 avant notre ère" (the museum);
+    great works there "dans les années 60 avant J.-C.", and Corent "fondé à la
+    fin du IIe siècle" (the Département,
+    https://www.puy-de-dome.fr/culture/archeologie/plateau-de-gergovie/poi-au-temps-des-oppida.html).
+
 # --- ancient texts -------------------------------------------------------------
 
 - id: caesar-bg

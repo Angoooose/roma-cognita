@@ -57,6 +57,7 @@ export const WORKS: Record<string, WorkEntry> = {
       'Celt.': { page: 876 },
       'Syr.': { page: 497, drop: 0 },
       'Pun.': { page: 880 },
+      'Hisp.': { page: 878 },
       BC: { page: 498, drop: 1 },
     },
   },

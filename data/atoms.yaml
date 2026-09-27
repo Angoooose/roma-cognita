@@ -2853,10 +2853,29 @@
   note: An island; the coastline is the boundary.
 
 # === Iberia ====================================================================
-# Roman control in 68–27 was the south and east and an intermittent Meseta. The
+# Roman control in 133–27 was the south and east and an intermittent Meseta. The
 # Callaeci, Astures, Cantabri and Vaccaei were unconquered until Augustus
 # (Strabo 3.4.20; Dio 51.20, 53.25–29) and are drawn as independent; the
-# Vaccaei pass to Hither Spain c. 29.
+# Vaccaei pass to Hither Spain c. 29. The Arevaci are Hither Spain's from the
+# fall of Numantia in 133; the Baliares from Metellus' conquest of 123.
+
+- id: baliares
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [2.2, 39.05, 4.5, 40.2] }
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: livy-per, locator: '60' }
+    - { source: pliny-nh, locator: '3.76–77' }
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: >-
+    The Baliares proper, Strabo's Gymnesiae — Mallorca, Menorca and Cabrera —
+    which Q. Metellus conquered in 123 (Livy Per. 60; Strabo 3.5.1). Cut from
+    hispania-citerior in September 2026 for the extension to 133 BCE. Ebusus and
+    the Pityussae, a federate city in Pliny's day (3.76) and no part of
+    Metellus' war, stay with hispania-citerior.
 
 - id: meseta-arevaci
   evidence: schematic
@@ -2880,17 +2899,22 @@
         - at: [-3.6, 42.1]
           note: north of Clunia
   sources:
+    - { source: appian, locator: 'Hisp. 98–100' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: appian, locator: 'BC 1.108–115' }
+    - { source: florus, locator: '2.10.9' }
     - { source: richardson-1996, locator: 'ch. 3' }
     - { source: barrington, locator: 'maps 24–25' }
   confidence: uncertain
   review: draft
   note: >-
-    The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Held
-    after the Sertorian war, when Pompey took its strongholds, but not firmly:
-    in 56 the Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio
-    39.54). Drawn as provincial ground held uncertainly.
+    The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Scipio
+    razed Numantia in 133 and divided its land among its neighbours (App. Hisp.
+    98); the country rose again and T. Didius moved Termes into the plain in
+    98–93 (Hisp. 99–100); it was Sertorius' in the 70s, until Uxama, Clunia and
+    Termes fell to Pompey in 72 (Flor. 2.10.9); and in 56 the Vaccaei and their
+    neighbours drove Metellus Nepos off Clunia (Dio 39.54). Drawn as provincial
+    ground held uncertainly.
 
 - id: hispania-citerior
   evidence: derived
@@ -2945,7 +2969,7 @@
         - [1.2, 40.5]
         - [3.5, 41.8]
         - [3.4, 42.5]
-    - { method: box, bbox: [1.1, 38.6, 4.5, 40.2] }
+    - { method: box, bbox: [1.1, 38.6, 1.8, 39.2] }
   sources:
     - { source: richardson-1986, locator: 'ch. 1 and appendix' }
     - { source: richardson-1996 }
@@ -2958,11 +2982,13 @@
   review: draft
   note: >-
     The nearer province: the Mediterranean coast from the Pyrenees to Murgi, the
-    Ebro valley, Carpetania and Oretania with Toletum and Castulo, and the
-    Baliares. The line with Ulterior ran through the Saltus Castulonensis and
-    was never surveyed; south of the Tagus it follows the named places, north
-    of it only the direction is attested (Richardson). The Arevaci are cut out
-    as meseta-arevaci.
+    Ebro valley, Carpetania and Oretania with Toletum and Castulo, and Ebusus.
+    The line with Ulterior ran through the Saltus Castulonensis and was never
+    surveyed; south of the Tagus it follows the named places, north of it only
+    the direction is attested (Richardson). The Arevaci are cut out as
+    meseta-arevaci, and the Baliares as baliares. The Pompaelo corner is drawn
+    as it stood after Pompey (Strabo 3.4.10); when the Vascon uplands came under
+    Roman arms before him is not recorded.
 
 - id: lusitania-north
   evidence: derived
@@ -2989,7 +3015,9 @@
         - [-9.8, 39.6]
   sources:
     - { source: cassius-dio, locator: '37.52–53' }
-    - { source: strabo, locator: '3.4.20' }
+    - { source: strabo, locator: '3.3.1, 3.4.20' }
+    - { source: appian, locator: 'Hisp. 71–73, 99' }
+    - { source: plutarch, locator: 'Sertorius 10–12' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
@@ -2998,7 +3026,12 @@
     Lusitania between the Tagus and the Durius. Caesar, propraetor of Ulterior
     in 61–60, cleared the Mons Herminius and brought the country to the Durius
     under Roman arms, then sailed to Brigantium and "alarmed" the Callaeci (Dio
-    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not.
+    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not. Left
+    unclaimed in 133–61: D. Brutus had taken the surrender of its towns in
+    138–136 (App. Hisp. 71–73; Strabo 3.3.1), and the Senate sent ten
+    commissioners to settle what he had won (Hisp. 99); but the Lusitanians were
+    Sertorius' mainstay in the 70s (Plut. Sert. 10–12), and Caesar had to
+    conquer the Herminius afresh.
 
 - id: hispania-ulterior
   evidence: derived
@@ -3139,13 +3172,16 @@
   sources:
     - { source: strabo, locator: '3.3.2–5' }
     - { source: cassius-dio, locator: '37.53' }
+    - { source: appian, locator: 'Hisp. 72' }
+    - { source: livy-per, locator: '56' }
     - { source: curchin-1991 }
   confidence: uncertain
   review: needs-check
   note: >-
-    The Callaeci north of the Durius, whom Caesar "alarmed" from the sea at
-    Brigantium in 60 (Dio 37.53) but did not conquer. Takes every edge from the
-    atoms above.
+    The Callaeci north of the Durius, whom D. Brutus raided as far as the Lethe
+    and the Nimis in 137 (App. Hisp. 72; Livy Per. 56) and Caesar "alarmed" from
+    the sea at Brigantium in 60 (Dio 37.53); neither conquered them. Takes every
+    edge from the atoms above.
 
 # === Gaul ======================================================================
 
@@ -3179,7 +3215,48 @@
     Massalia's own territory and its coastal colonies — Tauroentium, Olbia,
     Antipolis, Nicaea (Strabo 4.1.9): a free ally inside the Province until
     Caesar took the city in 49 (BC 2.22). A strip for the chora and the string
-    of foundations; its depth is a convention.
+    of foundations; its depth is a convention. The coast Sextius cleared for the
+    city in 122, twelve stadia deep where there were harbours and eight where it
+    was rugged (Strabo 4.1.5), is about as deep as the strip.
+
+- id: tolosates
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [1.5, 42.55]
+          note: the crest of the Pyrenees east of the head of the Ariège
+        - at: [0.65, 42.72]
+          via: crest
+          note: along the crest of the central Pyrenees, as gallia-transalpina
+        - at: [0.6, 43.1]
+          note: the upper Garonne, as gallia-transalpina
+        - at: [1.0, 43.5]
+          note: west of Tolosa, as gallia-transalpina
+        - [1.3, 43.9]
+        - at: [1.75, 43.75]
+          note: towards the Ruteni of Albi, a convention
+        - at: [1.82, 43.38]
+          note: the Seuil de Naurouze, the watershed between the Garonne and the Aude
+        - at: [1.95, 43.0]
+          note: the divide between the Ariège and the upper Aude, a convention
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (fr. 90)' }
+    - { source: strabo, locator: '4.1.12–13' }
+    - { source: caesar-bg, locator: '1.10' }
+    - { source: orosius, locator: '5.15.25' }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Tolosates, the Volcae Tectosages of Tolosa and the upper Garonne (Strabo
+    4.1.13): "formerly in alliance with the Romans", with a Roman garrison, until
+    they rose in the hope of the Cimbri and Caepio took the city in 106 (Dio fr.
+    90; Oros. 5.15.25); "in the Province" by 58 (BG 1.10). Cut from
+    gallia-transalpina in September 2026 because that change is dated at this
+    grain. The eastern edge towards Carcaso and Narbo is a convention at the
+    watershed; the other edges are the Province's own.
 
 - id: gallia-transalpina
   evidence: derived
@@ -3228,8 +3305,9 @@
         - [5.0, 42.8]
         - [3.4, 42.5]
   sources:
-    - { source: caesar-bg, locator: '1.6–10, 7.7–8, 7.64–65' }
+    - { source: caesar-bg, locator: '1.6–10, 1.45, 7.7–8, 7.64–65' }
     - { source: cicero-font, locator: '12–14, 20, 26' }
+    - { source: amela-valverde-2019, locator: '24, 28' }
     - { source: ebel-1976, locator: 'chs. 4–6' }
     - { source: rivet-1988, locator: 'chs. 3–4' }
     - { source: hydrorivers }
@@ -3241,8 +3319,11 @@
     The Province, as Caesar and Cicero give its peoples: the Volcae, the
     Tolosates, the Ruteni provinciales and the Helvii within the Cévennes, the
     Allobroges between the Rhône and the Alps to Genava, and the Vocontii.
-    Massalia's own territory lies inside this outline. Takes the eastern
-    Pyrenees from hispania-citerior.
+    Massalia's own territory lies inside this outline, and the Tolosates are cut
+    out as tolosates. When the Ruteni provinciales came in is not recorded: the
+    Ruteni were not made provincial in 121 (BG 1.45), and the 70s are argued
+    (Amela Valverde 2019, 24, 28). Takes the eastern Pyrenees from
+    hispania-citerior.
 
 - id: helvetii
   evidence: derived
