@@ -92,8 +92,12 @@ export type Box = [number, number, number, number]
 /**
  * A place appears once the map is at or closer than this, m per CSS px, by prominence.
  * Only Rome is on the map at every scale; zoomed right out the territories carry it.
+ * Monuments (5) wait until the plan's hill names have given way to its quarters'
+ * (LabelLayer), so the plan is read by its hills first and its buildings after.
  */
-const TIER_MPP = [Infinity, 3000, 1500, 800, 400, 4]
+const TIER_MPP = [Infinity, 3000, 1500, 800, 400, 1.5]
+/** Inside a city's plan, closer than this, the city's own mark gives way to it. */
+const PLAN_NAMES_MPP = 6
 /** Seats name their kingdom from the regional view in; further out the colours do. */
 const SEAT_MPP = 1700
 /** Name size, em in CSS px, by prominence. EB Garamond's x-height is small. */
@@ -405,7 +409,7 @@ export class PlaceLayer {
       // The plan of Rome letters its hills, quarters and river itself (LabelLayer).
       if (LETTERED_ON_PLAN.has(p.kind)) continue
       // Inside a city's plan the city's own mark gives way to it.
-      if (this.planned.has(p.id) && mpp <= TIER_MPP[5] * 1.5) continue
+      if (this.planned.has(p.id) && mpp <= PLAN_NAMES_MPP) continue
       const tier = at(p.prominence, year) ?? 4
       const status = at(p.status, year)
       const seat = mpp <= SEAT_MPP ? seatAt.get(p.id) : undefined
