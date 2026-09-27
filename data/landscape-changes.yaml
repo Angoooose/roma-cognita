@@ -265,3 +265,65 @@
     at or a little seaward of today's barrier islands, which at this scale changes
     nothing, so it is not redrawn. Relative sea level was 1.2–1.7 m lower, which the
     map does not apply.
+
+# --- ancient coasts: the Aegean -----------------------------------------------
+
+- id: latmian-gulf
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: bruckner-2017, locator: 'fig. 1, the "±0" delta front; Lade, pp. 880–881 and fig. 4' }
+    - { source: mullenhoff-2005 }
+    - { source: bruckner-2014, locator: 'p. 68: Priene cut off from the open sea by the 90s BCE' }
+    - { source: akcer-on-2020, locator: 'Bafa a lagoon with a narrow link to the sea by about 33 BCE' }
+    - { source: strabo, locator: '12.8.17; 14.1.7–10' }
+    - { source: pausanias, locator: '7.2.11; 8.24.11 (the gulf silted, 2nd century CE)' }
+    - { source: mapterhorn, locator: 'z11 terrain below 6 m seaward of the delta front' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Latmian Gulf, open from Miletus to Herakleia and up to Myus; now the Maeander
+    plain, with Lake Bafa its last remnant. The delta advanced about 1 km within the
+    window, so the line (the turn of the eras) is its end more than its start. Lade
+    is an island, as Strabo has it. Miletus's own ground is buried in the same silt,
+    so its peninsula is kept dry by hand. Priene comes out 2 km from the water: by
+    the 90s BCE it had no harbour on the open sea, and Strabo puts it 40 stades from
+    it; the figure puts water a little nearer.
+
+- id: ephesus-coast
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: stock-2013, locator: 'fig. 1, the "1st c. BC" shore and the "0 AD/BC" front' }
+    - { source: kraft-2007, locator: 'fig. 12; pp. 134, 138' }
+    - { source: strabo, locator: '14.1.24: Attalus II’s mole' }
+    - { source: livy, locator: '37.14–15: the harbour mouth like a river' }
+    - { source: mapterhorn, locator: 'z12 terrain below 10 m seaward of the shore' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Cayster delta west of Ephesus, drawn halfway between the shore of the early
+    1st century BCE and the delta front of 0 CE: it advanced about 1.5 km within the
+    window, so any single line is loose. North of Syrie (Kuru Tepe) the line across
+    the plain is ours.
+
+- id: malian-gulf
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: kraft-1987, locator: 'fig. 14, the shoreline of 480 BCE; p. 189 on the pass' }
+    - { source: vouvalidis-2010, locator: '8–10 km of advance since 480 BCE (abstract)' }
+    - { source: livy, locator: '36.15–18: swamp and quicksand between the defences and the sea' }
+    - { source: herodotus, locator: '7.176, 7.198–200' }
+    - { source: mapterhorn, locator: 'z12 terrain below 30 m seaward of the shore' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Malian Gulf reached far up what is now the Spercheios plain. No shoreline is
+    dated to the 1st century BCE: this is Kraft's 480 BCE line with the gulf's head
+    moved 1.5 km east, at the steady rate the 8–10 km since then implies, and at the
+    pass set a quarter of a kilometre off the cliff, for the marsh and shoal that by
+    191 BCE a Roman army could stand on. Probable at the pass, uncertain at the head.

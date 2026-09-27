@@ -153,6 +153,12 @@ async function deriveShore(shore: Shore): Promise<Result> {
     if (!reach[seed]) throw new Error(`${shore.id}: the seed stands ${dem.data[seed].toFixed(1)} m, above the lake level`)
     seeds.push(seed)
   }
+  // Authored ancient land is closed to the flood before it starts.
+  if (shore.land?.length) {
+    const dry = new Uint8Array(hull.length)
+    fillRings(dry, width, height, shore.land.map((r) => [...r, r[0]].map((p) => toPx(dem, p))))
+    for (let p = 0; p < dry.length; p++) if (dry[p]) reach[p] = 0
+  }
   water = flood(reach, seeds, width)
   if (shore.narrowestM) {
     // Modern drains and canals are cut below the old water level and would carry it

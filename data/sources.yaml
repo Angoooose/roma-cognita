@@ -1829,3 +1829,65 @@
     F. Donda and others, on the Roman landscape now under the Grado lagoon,
     Scientific Reports (2025) (full title to confirm)
   url: https://www.nature.com/articles/s41598-025-18346-7
+
+# --- ancient coasts: the Aegean -----------------------------------------------
+
+- id: bruckner-2017
+  kind: modern
+  citation: >-
+    H. Brückner, A. Herda, M. Kerschner, M. Müllenhoff and F. Stock, "Life cycle of
+    estuarine islands — from the formation to the landlocking of former islands in
+    the environs of Miletos and Ephesos in western Asia Minor (Turkey)", Journal of
+    Archaeological Science: Reports 12 (2017) 876–894
+  url: https://www.sciencedirect.com/science/article/pii/S2352409X16307416
+  note: Fig. 1 (after Müllenhoff 2005) dates the Maeander delta front at intervals.
+
+- id: mullenhoff-2005
+  kind: modern
+  citation: >-
+    M. Müllenhoff, Geoarchäologische, sedimentologische und morphodynamische
+    Untersuchungen im Mündungsgebiet des Büyük Menderes (Mäander), Westtürkei,
+    Marburger Geographische Schriften 141 (2005)
+  note: Not seen; read through bruckner-2017 fig. 1.
+
+- id: bruckner-2014
+  kind: modern
+  citation: >-
+    H. Brückner and others, "On the Lion Harbour and other harbours in Miletos",
+    Proceedings of the Danish Institute at Athens 7 (2014) 49–103
+  url: https://tidsskrift.dk/pdia/article/view/24132
+
+- id: akcer-on-2020
+  kind: modern
+  citation: >-
+    S. Akçer-Ön and others, on Lake Bafa's separation from the sea, Geoarchaeology
+    (2020) (full title to confirm)
+
+- id: stock-2013
+  kind: modern
+  citation: >-
+    F. Stock and others, on the harbours of Ephesos, Quaternary International 312
+    (2013) 57–69 (full title to confirm)
+  note: Fig. 1 draws the shore of the early 1st century BCE and the delta front of 0 CE.
+
+- id: kraft-2007
+  kind: modern
+  citation: >-
+    J. C. Kraft, H. Brückner, I. Kayan and H. Engelmann, "The geographies of ancient
+    Ephesus and the Artemision in Anatolia", Geoarchaeology 22 (2007) 121–149
+  url: https://doi.org/10.1002/gea.20151
+
+- id: kraft-1987
+  kind: modern
+  citation: >-
+    J. C. Kraft, G. Rapp, J. A. Szemler, C. Tziavos and E. W. Kase, "The pass at
+    Thermopylae, Greece", Journal of Field Archaeology 14 (1987) 181–198
+  note: Fig. 14 draws the shoreline of 480 BCE.
+
+- id: vouvalidis-2010
+  kind: modern
+  citation: >-
+    K. Vouvalidis and others, on the palaeogeography of Thermopylae and the Malian
+    Gulf, Geodinamica Acta 23 (2010) 241–253 (full title to confirm)
+  url: https://doi.org/10.3166/ga.23.241-253
+  note: Only the abstract seen; it gives 8–10 km of advance since 480 BCE.

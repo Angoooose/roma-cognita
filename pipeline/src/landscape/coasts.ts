@@ -44,6 +44,12 @@ export interface Shore {
    */
   surface?: 'sea' | 'lake'
   why: string
+  /**
+   * Ancient land that the terrain cannot tell from the water around it — a town whose
+   * ground is now buried under the same silt as the bay — kept dry whatever it stands
+   * at. Each ring says where it comes from.
+   */
+  land?: Pt[][]
   /** Arms of water narrower than this are cut off, m: modern drains cut below the old level. */
   narrowestM?: number
   /** Enclosed rises smaller than this are drowned: towns, levees and spoil on the surface model. */
@@ -296,6 +302,147 @@ export const SHORES: Shore[] = [
     why: 'Schematic: Cirelli’s figure is a sketch of the early Empire, and Classe’s harbour is Augustan, at the end of the window.',
     minIslandKm2: 0,
     sites: [],
+  },
+
+  // --- the Aegean ---------------------------------------------------------------
+
+  {
+    id: 'latmian-gulf',
+    label: 'The Latmian Gulf',
+    z: 11,
+    hull: [
+      // The Maeander delta front at the turn of the eras: the seaward edge of the "±0"
+      // band in Brückner et al. 2017 fig. 1 (after Müllenhoff 2005), read against Priene,
+      // Miletus, Myus and Herakleia. From the foot of Mykale beside Priene south-west
+      // down the lobe's north-west edge…
+      [27.2898, 37.6582],
+      [27.265, 37.6277],
+      [27.2639, 37.5883],
+      // …to its tip, 2.8 km north of the Miletus theatre…
+      [27.2668, 37.5552],
+      // …and back north-east along its south-east edge to the Latmos side at Myus.
+      [27.2862, 37.5826],
+      [27.3293, 37.6083],
+      [27.3816, 37.626],
+      [27.3948, 37.6055],
+      [27.4314, 37.6104],
+      // Loose: round the head of the gulf and the Bafa basin over the Latmos hills, and
+      // back west over the hills behind Miletus and out to sea.
+      [27.47, 37.63],
+      [27.64, 37.57],
+      [27.64, 37.42],
+      [27.3, 37.4],
+      [27.08, 37.44],
+      [27.08, 37.69],
+      [27.27, 37.69],
+    ],
+    method: { kind: 'sea', maxHeight: 6 },
+    land: [
+      // The Milesian peninsula, from Kalabaktepe north to Humeitepe, between the Theatre
+      // Harbour and the Lion Harbour; outline ours, from the city plan. Its streets lie
+      // under 1–4 m of the same silt as the gulf, so the terrain cannot find it.
+      [
+        [27.262, 37.515],
+        [27.268, 37.528],
+        [27.273, 37.5355],
+        [27.2795, 37.5395],
+        [27.2865, 37.5355],
+        [27.2915, 37.526],
+        [27.29, 37.513],
+      ],
+    ],
+    why:
+      'The gulf south of the delta lobe, Bafa included, was open sea in the window and filled between 0 and 300 CE. The ' +
+      'plain it left stands at 1–4 m, and the hills round it and Lade (99 m) well above, so the threshold clears the silt ' +
+      'and nothing else. Miletus itself is buried in the same silt and is kept dry by hand. The figure’s line is for the ' +
+      'turn of the eras; for 50 BCE it would sit 0.3–0.5 km further inland, less than its own error.',
+    minIslandKm2: 0.5,
+    sites: [
+      { name: 'Miletus theatre', at: [27.2779, 37.53], prov: 'on the Theatre Harbour', expect: 'shore' },
+      { name: 'Lade', at: [27.223, 37.531], prov: 'on the island, until the Late Roman period (Brückner et al. 2017)', expect: 'shore' },
+      { name: 'Priene', at: [27.296, 37.6613], prov: 'cut off from the open sea by the 90s BCE (Brückner et al. 2014); 40 stades from it by Strabo’s day (12.8.17)', expect: 'land' },
+      { name: 'Myus', at: [27.4259, 37.5987], prov: 'the site (OSM); 30 stades up from the mouth (Strabo 14.1.10)', expect: 'shore' },
+      { name: 'Herakleia', at: [27.5398, 37.5052], prov: 'the site (OSM); "a small town with an anchorage" (Strabo 14.1.8)', expect: 'shore' },
+    ],
+    view: { west: 27.08, south: 37.4, east: 27.65, north: 37.7 },
+  },
+  {
+    id: 'ephesus-coast',
+    label: 'The coast at Ephesus',
+    z: 12,
+    hull: [
+      // Ours: from the hills on the north side of the Cayster valley straight across the
+      // plain to Syrie (Kuru Tepe)…
+      [27.345, 38.003],
+      [27.3558, 37.9746],
+      // …then halfway between Stock et al. 2013 fig. 1's "1st c. BC" shore and its
+      // "0 AD/BC" delta front (graticule corrected on the Artemision and Ayasuluk;
+      // cross-checked on Kraft et al. 2007 fig. 12), south to Panayırdağ.
+      [27.347, 37.968],
+      [27.342, 37.963],
+      [27.338, 37.957],
+      [27.34, 37.951],
+      [27.3512, 37.9485],
+      // Loose: along the foot of Panayırdağ and Bülbüldağ, then out to sea and back.
+      [27.345, 37.935],
+      [27.32, 37.915],
+      [27.2, 37.91],
+      [27.2, 38.02],
+      [27.34, 38.02],
+    ],
+    method: { kind: 'sea', maxHeight: 10 },
+    why:
+      'Between those two dated lines the delta advanced about 1.5 km, so a single date is loose here; the Hellenistic ' +
+      'harbour west of the theatre lies seaward of the line and so is water, as it was, dredged.',
+    minIslandKm2: 0.3,
+    sites: [
+      { name: 'Artemision', at: [27.3636, 37.9498], prov: 'about 1.3 km from open water by 50 BCE (Kraft et al. 2007)', expect: 'land' },
+      { name: 'Ephesus theatre', at: [27.3419, 37.941], prov: 'above the harbour', expect: 'shore' },
+    ],
+    view: { west: 27.2, south: 37.9, east: 27.4, north: 38.02 },
+  },
+  {
+    id: 'malian-gulf',
+    label: 'The Malian Gulf at Thermopylae',
+    z: 12,
+    hull: [
+      // Kraft et al. 1987 fig. 14 (480 BCE; scale bar, tied to the middle gate), north
+      // shore on the Othrys side…
+      [22.5408, 38.9111],
+      // …the head of the gulf moved 1.5 km east of the 480 BCE line for 50 BCE, at the
+      // steady rate that gives Vouvalidis et al. 2010's 8–10 km since 480…
+      [22.503, 38.8954],
+      [22.469, 38.8741],
+      [22.463, 38.8576],
+      [22.469, 38.8313],
+      [22.495, 38.8165],
+      // …and the pass: 0.25 km off the 480 BCE shore at the west, middle (Kolonos) and
+      // east gates, for the strip of marsh and shoal in front of the cliff that the
+      // Roman army could stage on in 191 BCE (Livy 36.15–18).
+      [22.4987, 38.8097],
+      [22.5366, 38.799],
+      [22.564, 38.8031],
+      [22.5976, 38.8105],
+      // Ours: east along the foot of Kallidromon, where the plain in front is later too,
+      // to the modern coast past Molos, then out to sea.
+      [22.64, 38.815],
+      [22.7, 38.806],
+      [22.76, 38.8],
+      [22.8, 38.84],
+      [22.72, 38.9],
+      [22.62, 38.93],
+    ],
+    // High enough for the travertine at the pass, which stands ~20 m over the 480 BCE surface (Kraft et al. 1987).
+    method: { kind: 'sea', maxHeight: 30 },
+    why:
+      'Seaward of the line all the ground is later: the Spercheios plain and the travertine under the pass. So the ' +
+      'threshold is set above the travertine, and the line does the work.',
+    minIslandKm2: 0.5,
+    sites: [
+      { name: 'Thermopylae, middle gate', at: [22.5366, 38.7968], prov: 'the Kolonos, by the Leonidas monument', expect: 'shore' },
+      { name: 'Lamia', at: [22.434, 38.899], prov: 'on the hills above the gulf’s head', expect: 'land' },
+    ],
+    view: { west: 22.4, south: 38.77, east: 22.82, north: 38.95 },
   },
 
   // --- modern lagoons that were land -------------------------------------------
