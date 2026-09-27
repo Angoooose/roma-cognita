@@ -37,6 +37,11 @@ export interface Shore {
     | { kind: 'lake'; level: number; seed: Pt }
     /** The hull as the shape: ancient land where there is now sea, or water too uncertain for the terrain to shape. */
     | { kind: 'polygon' }
+    /**
+     * Ancient land that is sea now: today's sea inside the hull, reached a little onto
+     * the land so no sliver of the modern shore survives between the two coasts.
+     */
+    | { kind: 'sea-to-land' }
   /**
    * For water: whether the engine lays its ground at sea level (`sea`) or leaves the
    * lake bed as it is (`lake`). A `sea` shore is sea and a `lake` shore a lake unless
@@ -443,6 +448,325 @@ export const SHORES: Shore[] = [
       { name: 'Lamia', at: [22.434, 38.899], prov: 'on the hills above the gulf’s head', expect: 'land' },
     ],
     view: { west: 22.4, south: 38.77, east: 22.82, north: 38.95 },
+  },
+
+  // --- Africa and Egypt ---------------------------------------------------------
+
+  {
+    id: 'gulf-of-utica',
+    label: 'The Gulf of Utica',
+    z: 11,
+    hull: [
+      // Delile et al. 2015 fig. 1 (its corner coordinates): the rocky tip of Cap Farina,
+      // then the foot of Jebel Ennadhour west past Ghar el-Melh, with open bay in front:
+      // the lagoon and its barrier did not yet exist.
+      [10.276, 37.178],
+      [10.17, 37.166],
+      [10.111, 37.152],
+      [10.056, 37.135],
+      [10.04, 37.119],
+      // Pleuger et al. 2019 fig. 7 panel 2 ("2600 BC–1st c. AD"), tied to its cores: the
+      // bay's north-west, west and south-west shores…
+      [10.022, 37.099],
+      [10.011, 37.083],
+      [10.014, 37.071],
+      [10.03, 37.064],
+      [10.05, 37.062],
+      // …Utica's north face, Lézine's ancient coastline (Delile fig. 2's graticule)…
+      [10.061, 37.059],
+      // …the north tip of the Kalaat el-Andalous ridge, and Castra Cornelia, "a straight
+      // ridge projecting into the sea" 4 km east of Utica (Caesar, BC 2.24).
+      [10.09, 37.063],
+      [10.12, 37.06],
+      // Ours: the southern compartment's coast, with no dated figure; then the west end
+      // of Sebkhet Ariana, a lagoon open to the Gulf of Tunis until about 1300 BP (Ben
+      // Mosbah et al., fig. 7B), and the rock at Gammarth.
+      [10.16, 36.98],
+      [10.17, 36.93],
+      [10.284, 36.915],
+      // Out to sea and back.
+      [10.4, 36.93],
+      [10.4, 37.2],
+    ],
+    method: { kind: 'sea', maxHeight: 8 },
+    why:
+      'The Bagradas has since filled the bay: in the window the whole northern compartment was open sea from Utica to ' +
+      'Jebel Ennadhour, and its delta was only beginning to push into it; the corridor between Utica and Kalaat el-Andalous ' +
+      'was emerging from the 1st century BCE, and is drawn as the shallow water it still mostly was. The plain stands at ' +
+      '2–5 m; the ridges well above.',
+    minIslandKm2: 0.5,
+    sites: [
+      { name: 'Utica', at: [10.062, 37.056], prov: '"washed by the sea on one side" (Livy 29.35)', expect: 'shore' },
+    ],
+    view: { west: 9.98, south: 36.9, east: 10.32, north: 37.2 },
+  },
+  {
+    id: 'lake-mareotis',
+    label: 'Lake Mareotis',
+    z: 11,
+    // Round the eastern Maryut basin, between the Alexandria ridge and the ridges to the
+    // south, from Marea (29.66° E) to the Canopic canal: Crépy & Boussac 2021 fig. 7. West
+    // of Marea the basins were separate and filled only by winter rain, and are left out.
+    hull: [
+      [29.66, 31.02],
+      [29.66, 31.12],
+      [29.8, 31.155],
+      [29.95, 31.18],
+      [30.06, 31.17],
+      [30.12, 31.1],
+      [30.08, 31.0],
+      [29.88, 30.98],
+    ],
+    method: { kind: 'lake', level: 0, seed: [29.9, 31.13] },
+    surface: 'sea',
+    why:
+      'Fed from the Canopic branch by canals and cut off from the sea, "more than 150 stades wide and under 300 long" ' +
+      '(Strabo 17.1.7). Its bed has been reclaimed and pumped below sea level; the lake is drawn to 0 m, which gives the ' +
+      'main basin east of Marea.',
+    minIslandKm2: 0.5,
+    sites: [],
+    view: { west: 29.6, south: 30.95, east: 30.15, north: 31.22 },
+  },
+  {
+    id: 'canopic-coast',
+    label: 'The Canopic coast, now under Aboukir Bay',
+    z: 11,
+    // Flaux et al. 2021 fig. 1, "coastline in Antiquity" (tied to Taposiris, Marea,
+    // Qaitbay and Heracleion): from Eastern Canopus past Heracleion–Thonis at the Canopic
+    // mouth, 6.5–7 km off today's shore, along the promontory; then round the bay inside
+    // the modern shore, which the method follows.
+    hull: [
+      [30.09, 31.336],
+      [30.129, 31.313],
+      [30.165, 31.29],
+      [30.203, 31.261],
+      [30.21, 31.24],
+      [30.13, 31.25],
+      [30.075, 31.3],
+      [30.07, 31.335],
+    ],
+    method: { kind: 'sea-to-land' },
+    why:
+      'Canopus stood on dry land in the window and sank by the 8th century CE; Heracleion had partly collapsed about ' +
+      '100 BCE and was declining (Goddio). The promontory has been eroded since.',
+    minIslandKm2: 0,
+    sites: [],
+  },
+  {
+    id: 'alexandria-heptastadion',
+    label: 'The harbours either side of the Heptastadion',
+    z: 12,
+    // The broad modern tombolo between the city and Ras el-Tin was harbour water on both
+    // sides of the Heptastadion, the causeway to Pharos (about 1.3 km; Strabo 17.1.6):
+    // its ends, inferred to ±0.3 km, at 31.207° N 29.877° E and 31.198° N 29.892° E. Two
+    // strips, west (Eunostos) and east (the Great Harbour), leaving the causeway dry.
+    hull: [
+      [29.8655, 31.2005],
+      [29.8745, 31.2058],
+      [29.8895, 31.1972],
+      [29.883, 31.1935],
+      [29.8705, 31.1965],
+    ],
+    method: { kind: 'polygon' },
+    surface: 'sea',
+    why: 'Uncertain in outline: the causeway silted into the tombolo after antiquity, and the modern city covers it.',
+    minIslandKm2: 0,
+    sites: [],
+  },
+  {
+    id: 'alexandria-great-harbour',
+    label: 'The Great Harbour east of the Heptastadion',
+    z: 12,
+    hull: [
+      [29.8795, 31.2082],
+      [29.8865, 31.2105],
+      [29.8995, 31.2035],
+      [29.894, 31.1995],
+    ],
+    method: { kind: 'polygon' },
+    surface: 'sea',
+    why: 'As alexandria-heptastadion, on the causeway’s other side.',
+    minIslandKm2: 0,
+    sites: [],
+  },
+  {
+    id: 'toshka-lakes',
+    label: 'The Toshka lakes (modern)',
+    z: 9,
+    // A box round the lakes in the Toshka depression and nothing else that is water;
+    // the Nile and Lake Nasser lie east of it.
+    hull: [
+      [30.3, 22.4],
+      [31.5, 22.4],
+      [31.5, 23.6],
+      [30.3, 23.6],
+    ],
+    method: { kind: 'polygon' },
+    why: 'Filled after 1998 by Lake Nasser’s spillway; HydroLAKES types them as natural lakes, so the reservoir filter keeps them.',
+    minIslandKm2: 0,
+    sites: [],
+  },
+
+  // --- Gaul and Spain -------------------------------------------------------------
+
+  {
+    id: 'rhone-saint-ferreol',
+    label: 'The Saint-Ferréol lobe, now eroded',
+    z: 12,
+    // Vella et al. 2005 fig. 5, lobe 1 (Lambert II étendu, converted): the pointed lobe
+    // of the Petit Rhône active at 50 BCE, reaching 2–3 km beyond today's coast near
+    // Saintes-Maries, where fourteen Roman wrecks of 50 BCE–50 CE stranded on its bar;
+    // then back along the inside of the modern beach.
+    hull: [
+      [4.37, 43.441],
+      [4.401, 43.425],
+      [4.449, 43.43],
+      [4.497, 43.441],
+      [4.533, 43.447],
+      [4.535, 43.46],
+      [4.37, 43.465],
+    ],
+    method: { kind: 'sea-to-land' },
+    why: 'The lobe’s tip has been eroded since the Petit Rhône’s mouth moved; what is sea there now was land then.',
+    minIslandKm2: 0,
+    sites: [],
+  },
+  {
+    id: 'rhone-east-coast',
+    label: 'The coast east of the Petit Rhône',
+    z: 11,
+    hull: [
+      // The east end of the Saint-Ferréol lobe (Vella et al. 2005 fig. 5)…
+      [4.533, 43.447],
+      // …the Ulmet lobe's beach ridge at Cabane Rouge, 832–764 BCE (core, their table 3)…
+      [4.6601, 43.4627],
+      // …ours, from there to the Marais de Fos, whose peat is dated 305 BCE–2 CE before a
+      // marine incursion (core): the Grand Rhône plain in front is mostly post-medieval.
+      [4.75, 43.465],
+      [4.84, 43.46],
+      [4.9417, 43.4363],
+      // Out to sea and back.
+      [4.96, 43.36],
+      [4.54, 43.34],
+    ],
+    method: { kind: 'sea', maxHeight: 5 },
+    why:
+      'East of the Petit Rhône the Beauduc spit, Piémanson and the Grand Rhône’s mouth are later than the window. The ' +
+      'Camargue stands at 0–2 m, so the threshold only has to clear its dunes. The line east of Cabane Rouge is inferred, ' +
+      'to ±3 km.',
+    minIslandKm2: 0.5,
+    sites: [],
+    view: { west: 4.5, south: 43.33, east: 4.98, north: 43.5 },
+  },
+  {
+    id: 'ebro-delta',
+    label: 'The Ebro delta, before it grew',
+    z: 11,
+    hull: [
+      // Ours: the mainland coast north of the delta, roughly as today (L'Ampolla).
+      [0.71, 40.81],
+      // Nienhuis et al. 2017 fig. 1 (after Canicio & Ibáñez 1999), the "start growth"
+      // stage, read against the modern delta on the same frame: the cusp's north
+      // shoulder, its tip at the river mouth, and its south shoulder.
+      [0.688, 40.762],
+      [0.706, 40.717],
+      [0.607, 40.654],
+      // Ours: the mainland coast south of it at Sant Carles, roughly as today.
+      [0.585, 40.62],
+      // Out round the modern delta and back.
+      [0.6, 40.54],
+      [0.95, 40.54],
+      [0.95, 40.82],
+    ],
+    method: { kind: 'sea', maxHeight: 6 },
+    why:
+      'The delta was small and cuspate until at least 3000 BP and began to grow fast about 2100 BP; the Riet Vell lobe, ' +
+      'the Fangar and Banya spits and the Alfacs enclosure are all later. The delta plain stands at 0–4 m.',
+    minIslandKm2: 1,
+    sites: [
+      { name: 'Amposta', at: [0.58, 40.708], prov: 'the maximum Holocene flooding reached it; 10–12 km from the Roman mouth', expect: 'land' },
+    ],
+    view: { west: 0.5, south: 40.52, east: 0.95, north: 40.85 },
+  },
+  {
+    id: 'lacus-rubresus',
+    label: 'Lacus Rubresus, the Narbonne lagoon',
+    z: 12,
+    hull: [
+      // Salel 2014's map "vers 550 / 50 av. n. ère" (after Faïsse et al.), fitted to
+      // Narbonne, Port-la-Nautique, Peyriac, Pech Maho, Saint-Martin and Sainte-Lucie:
+      // the west shore, the north shore at Port-la-Nautique and at the Aude mouth…
+      [2.976, 43.138],
+      [3.002, 43.146],
+      [3.024, 43.126],
+      // …under La Clape…
+      [3.041, 43.143],
+      [3.063, 43.143],
+      [3.088, 43.134],
+      [3.114, 43.128],
+      // …the barrier, landward of today's, north to south…
+      [3.12, 43.134],
+      [3.097, 43.11],
+      [3.079, 43.085],
+      [3.066, 43.054],
+      [3.055, 43.027],
+      // …and the west shore back north.
+      [2.948, 43.049],
+      [2.953, 43.096],
+    ],
+    method: { kind: 'sea', maxHeight: 3 },
+    why:
+      'One lagoon joining Bages–Sigean, Ayrolle and Gruissan, "very broad but admitting the sea by a narrow mouth" ' +
+      '(Mela 2.81–82), with Saint-Martin and Sainte-Lucie islands in it; the Aude plain has filled its northern arm since. ' +
+      'The map is schematic, to about 1.5 km.',
+    minIslandKm2: 0.3,
+    sites: [
+      { name: 'Narbo Martius', at: [3.003, 43.184], prov: 'above the lake (Strabo 4.1.6)', expect: 'land' },
+    ],
+  },
+
+  // --- the Persian Gulf -----------------------------------------------------------
+
+  {
+    id: 'persian-gulf-head',
+    label: 'The head of the Persian Gulf',
+    z: 9,
+    hull: [
+      // Ours throughout, and uncertain to 15–25 km: no study dates a line here. It takes
+      // Juba's 50 miles from Charax to the sea (Pliny 6.138–140) along the channel, and
+      // reads Hansman's Chaldean Lakes behind it as marsh, not sea. From the Kuwait side…
+      [47.9, 30.1],
+      // …the head of the Khor al-Zubair, the Euphrates' separate mouth…
+      [47.75, 30.3],
+      // …north of Abadan, across the Tigris–Karun estuary…
+      [48.0, 30.25],
+      [48.3, 30.3],
+      [48.6, 30.36],
+      // …the head of the Khor Musa, at the south edge of the Shadegan flats…
+      [48.9, 30.55],
+      [49.2, 30.52],
+      [49.5, 30.4],
+      // …to Hendijan, where the coast was near today's, closing on it past the town.
+      [49.7, 30.28],
+      [49.85, 30.15],
+      // Out into the Gulf, and back up the Khor Abdullah, leaving Bubiyan and Warbah
+      // outside: they already existed about 4000 BP (Reinink-Smith & Carter 2022).
+      [49.85, 29.8],
+      [48.6, 29.72],
+      [48.35, 29.95],
+      [48.15, 30.02],
+      [47.97, 30.05],
+    ],
+    method: { kind: 'sea', maxHeight: 3 },
+    why:
+      'The Khuzestan coast was stable from 5500 BP and began to build out only about 2500 BP (Heyvaert & Baeteman 2007), ' +
+      'and the Shatt al-Arab’s delta is later still, so the Fao peninsula, Abadan and the flats south of Shadegan were sea or ' +
+      'tidal flat. Every study describes a belt of flats and marsh tens of km wide rather than a sharp coast; the map draws ' +
+      'one line inside that belt. The ground here stands at 0–2 m.',
+    minIslandKm2: 5,
+    sites: [
+      { name: 'Charax Spasinou', at: [47.578, 30.895], prov: 'Jebel Khayyaber; 50 miles from the sea in Juba’s day', expect: 'land' },
+    ],
   },
 
   // --- modern lagoons that were land -------------------------------------------

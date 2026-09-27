@@ -327,3 +327,190 @@
     moved 1.5 km east, at the steady rate the 8–10 km since then implies, and at the
     pass set a quarter of a kilometre off the cliff, for the marsh and shoal that by
     191 BCE a Roman army could stand on. Probable at the pass, uncertain at the head.
+
+# --- ancient coasts: Africa and Egypt -----------------------------------------
+
+- id: gulf-of-utica
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pleuger-2019, locator: 'fig. 7 panel 2 ("2600 BC–1st c. AD"), fig. 1c' }
+    - { source: delile-2015, locator: 'figs. 1–2' }
+    - { source: ben-mosbah-sebkhet-ariana, locator: 'fig. 7B: Sebkhet Ariana open to the gulf until about 1300 BP' }
+    - { source: caesar-bc, locator: '2.24: Castra Cornelia' }
+    - { source: livy, locator: '29.35: Utica washed by the sea on one side' }
+    - { source: mapterhorn, locator: 'z11 terrain below 8 m seaward of the shore' }
+  confidence: probable
+  review: draft
+  note: >-
+    The bay the Bagradas has filled since: open from Utica to Jebel Ennadhour, with
+    no Ghar el-Melh lagoon yet, and Sebkhet Ariana a lagoon open to the Gulf of
+    Tunis. The corridor between Utica and Kalaat el-Andalous was emerging in the
+    1st century BCE and is drawn as the shallow water it still mostly was. Probable
+    from Ghar el-Melh round to Castra Cornelia; the southern compartment's coast,
+    with no dated figure, is ours and uncertain. Relative sea level was about 0.6 m
+    lower (Pleuger), which the map does not apply.
+
+- id: lake-mareotis
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: crepy-boussac-2021, locator: 'fig. 7: the western basins separate in the Hellenistic and early Roman periods' }
+    - { source: flaux-2021 }
+    - { source: strabo, locator: '17.1.7' }
+    - { source: mapterhorn, locator: 'z11 terrain below 0 m in the eastern basin' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The main lake east of Marea, fed from the Canopic branch and cut off from the
+    sea. Its bed is reclaimed and pumped below sea level today, so the lake is drawn
+    to 0 m; its level in the window was lower than the Roman peak and is not known
+    to a metre. West of Marea the basins were separate and filled only by winter
+    rain; they are left out.
+
+- id: canopic-coast
+  op: remove-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: flaux-2021, locator: 'fig. 1, the coastline in antiquity' }
+    - { source: goddio-heracleion }
+    - { source: strabo, locator: '17.1.16–18: Canopus and Heracleion' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Canopic promontory, 3–7 km of land now under Aboukir Bay: Eastern Canopus
+    and Heracleion–Thonis at the Canopic mouth. Heracleion had partly collapsed about
+    100 BCE; Canopus stood on dry land until it sank by the 8th century CE.
+
+- id: alexandria-heptastadion
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '17.1.6: Pharos, the Heptastadion, the two harbours' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Pharos was an island joined to the city only by the Heptastadion; the broad
+    tombolo the modern city stands on was harbour water either side of it. This is
+    the western harbour (Eunostos). The causeway's ends are inferred to ±0.3 km and
+    the outline is ours. The eastern harbour's sunken quarters (Antirhodos, the
+    palaces, Cape Lochias, now 5–7 m down) are a band too narrow for this map.
+
+- id: alexandria-great-harbour
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '17.1.6' }
+  confidence: uncertain
+  review: needs-check
+  note: The Great Harbour's side of the tombolo, as alexandria-heptastadion.
+
+# --- modern water that was not there -----------------------------------------
+
+- id: toshka-lakes
+  op: remove-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: hydrolakes, locator: 'lakes 1492, 1494, 1495 (Toshka 1 and 2 and their neighbour)' }
+  confidence: certain
+  review: needs-check
+  note: >-
+    Desert until Lake Nasser's spillway filled the Toshka depression after 1998.
+    HydroLAKES types the lakes as natural, so the reservoir filter keeps them. A
+    source for the dates is to be supplied.
+
+# --- ancient coasts: Gaul and Spain -------------------------------------------
+
+- id: rhone-saint-ferreol
+  op: remove-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vella-2005, locator: 'fig. 5, lobe 1; the Roman wrecks of 50 BCE–50 CE on its bar' }
+  confidence: probable
+  review: draft
+  note: >-
+    The pointed Saint-Ferréol lobe of the Petit Rhône, active in the window and
+    reaching 2–3 km beyond today's coast near Saintes-Maries; eroded since.
+
+- id: rhone-east-coast
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: vella-2005, locator: 'fig. 5; table 3, the Cabane Rouge ridge and the Marais de Fos cores' }
+    - { source: strabo, locator: '4.1.8: the mouths silt up; Marius’s canal' }
+    - { source: pliny-nh, locator: '3.33' }
+    - { source: mapterhorn, locator: 'z11 terrain below 5 m seaward of the shore' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    East of the Petit Rhône the Beauduc spit, Piémanson and the Grand Rhône's mouth
+    are later than the window, and the Marais de Fos became marine before the
+    Christian era. Probable at the Saint-Ferréol lobe and Cabane Rouge; the line east
+    to Fos is inferred to ±3 km. West of the delta a wide gulf lay behind the
+    Espiguette and Peccais, which is not yet drawn.
+
+- id: ebro-delta
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: nienhuis-2017, locator: 'fig. 1, the "start growth" stage' }
+    - { source: mapterhorn, locator: 'z11 terrain below 6 m seaward of the shore' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    A small cuspate delta 10–12 km east of Amposta; the Riet Vell lobe, the Fangar
+    and Banya spits and the Alfacs enclosure are all later. Probable that it was far
+    smaller than today; uncertain in shape, read to 2–3 km from a staged figure.
+
+- id: lacus-rubresus
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: salel-2014 }
+    - { source: mela, locator: '2.81–82: very broad, admitting the sea by a narrow mouth' }
+    - { source: strabo, locator: '4.1.6' }
+    - { source: pliny-nh, locator: '3.32' }
+    - { source: mapterhorn, locator: 'z12 terrain below 3 m inside the shore' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    One lagoon joining Bages–Sigean, Ayrolle and Gruissan, with Saint-Martin and
+    Sainte-Lucie islands in it; the Aude has since filled its northern arm. That it
+    was one open lagoon is probable; the outline, from a schematic map, is good to
+    about 1.5 km. Its barrier stood landward of today's; the sea between the two is
+    not redrawn.
+
+# --- ancient coasts: the Persian Gulf -----------------------------------------
+
+- id: persian-gulf-head
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: '6.138–140: Charax 10 stades from the shore at its founding, 50 miles in Juba’s day' }
+    - { source: hansman-1967, locator: 'the Chaldean Lakes and their 4th-century limit' }
+    - { source: heyvaert-baeteman-2007, locator: 'the coast stable from 5500 BP, building out from about 2500 BP' }
+    - { source: walstra-2010, locator: 'the Karun, Karkheh and Tigris near Charax' }
+    - { source: reinink-smith-carter-2022, locator: 'Bubiyan already existed about 4000 BP' }
+    - { source: mapterhorn, locator: 'z9 terrain below 3 m seaward of the shore' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The head of the Gulf, whose ancient shore is debated: from near the modern coast
+    (Lees & Falcon; Heyvaert & Baeteman) to open water up to Charax (de Morgan;
+    Sanlaville & Dalongeville's transgression). The line is a middle one, ±15–25
+    km: Juba's 50 miles from Charax along the channel, with Hansman's Chaldean Lakes
+    read as marsh behind it. Every study describes a belt of tidal flats, salt flats
+    and marsh tens of km wide rather than a sharp coast, and the map draws one line
+    inside it. The Mesopotamian alluvium (features.yaml) still stops at the modern
+    coast.

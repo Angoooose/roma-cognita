@@ -18,8 +18,10 @@
  *     further than the delta front stood in the map's window.
  *     `lake`: flood from a seed through ground below the lake's `level`, inside the
  *     hull — for lakes drained since, whose beds are now fields.
- *     `polygon`: the hull itself is the shape (ancient land where there is now sea,
- *     or a shore too uncertain for the terrain to add anything).
+ *     `polygon`: the hull itself is the shape (a lagoon whose basin the terrain does
+ *     not show, or land drawn by hand).
+ *     `sea-to-land`: the modern sea inside the hull, for ancient land that has sunk
+ *     or been eroded since (Canopus, Heracleion).
  *  3. Clean: majority smoothing, enclosed land under `minIslandKm2` drowned (towns
  *     and levees stand up on the surface model; real islands are rock), specks
  *     dropped.
@@ -133,6 +135,8 @@ async function deriveShore(shore: Shore): Promise<Result> {
   const hull = new Uint8Array(width * height)
   fillRings(hull, width, height, [hullRing.map((p) => toPx(dem, p))])
 
+  if (shore.method.kind === 'sea-to-land') return deriveSunkenLand(shore, dem, hull)
+
   let water: Uint8Array
   const m = shore.method
   const reach = new Uint8Array(hull.length)
@@ -212,8 +216,9 @@ async function deriveShore(shore: Shore): Promise<Result> {
     const got = dist <= SHORE_KM ? 'shore' : wet ? 'water' : 'land'
     const ok = got === s.expect || (s.expect === 'shore' && dist <= 2 * SHORE_KM)
     const [x, y] = toPx(dem, s.at)
-    const h = dem.data[Math.floor(y) * width + Math.floor(x)]
-    const line = `${s.name}: ${wet ? 'in the water' : 'on land'}, ${dist.toFixed(1)} km from the shore; ground ${h.toFixed(0)} m (expected ${s.expect})`
+    const inside = x >= 0 && y >= 0 && x < width && y < height
+    const ground = inside ? `ground ${dem.data[Math.floor(y) * width + Math.floor(x)].toFixed(0)} m` : 'off the terrain read'
+    const line = `${s.name}: ${wet ? 'in the water' : 'on land'}, ${dist.toFixed(1)} km from the shore; ${ground} (expected ${s.expect})`
     console.log(`    site ${ok ? '  ' : '✗ '}${line}`)
     if (!ok) doubt(`${shore.id}: ${line}`)
     return { name: s.name, at: s.at, verdict: ok ? '✓' : `✗ ${got}` }
@@ -238,6 +243,25 @@ async function deriveShore(shore: Shore): Promise<Result> {
     console.log(`  preview ${file}`)
   }
   return { shore, geometry, areaKm2 }
+}
+
+/** How far a sunken shape reaches onto today's land, m, so the two coasts leave no sliver between them. */
+const SUNKEN_OVERLAP_M = 150
+
+function deriveSunkenLand(shore: Shore, dem: Raster, hull: Uint8Array): Result {
+  const { width, height } = dem
+  const sea: number[] = []
+  for (let p = 0; p < hull.length; p++) if (hull[p] && isSea(dem.data[p])) sea.push(p)
+  if (!sea.length) throw new Error(`${shore.id}: no modern sea inside the hull`)
+  const r = SUNKEN_OVERLAP_M / pixelMetres(dem.z, dem.y0 + dem.height / 2)
+  const d = nearestSeed(width, height, Int32Array.from(sea)).dist2
+  const land = Uint8Array.from(d, (v, p) => (hull[p] && v <= r * r ? 1 : 0))
+  const geometry = vectorise(land, dem, { simplifyM: SIMPLIFY_M, minRingKm2: MIN_RING_KM2 })
+  const rows = rowAreas(dem)
+  let km2 = 0
+  for (const p of sea) km2 += rows[(p / width) | 0]
+  console.log(`  modern sea inside the hull: ${km2.toFixed(1)} km² returned to land`)
+  return { shore, geometry, areaKm2: geometryArea(geometry) }
 }
 
 function inRing([x, y]: Pt, ring: Pt[]): boolean {
@@ -270,19 +294,26 @@ async function main() {
   const results: Result[] = []
   for (const shore of selected) results.push(await deriveShore(shore))
   const stamp = new Date().toISOString().slice(0, 10)
-  const surfaceOf = (s: Shore) => s.surface ?? (s.method.kind === 'polygon' ? undefined : s.method.kind)
-  const features: LandscapeShape[] = results.map(({ shore, geometry }) => ({
-    type: 'Feature',
-    id: shore.id,
-    properties: {
-      ...(surfaceOf(shore) && { surface: surfaceOf(shore) }),
-      derivation:
-        shore.method.kind === 'polygon'
-          ? `derive-coasts ${stamp}: authored polygon (pipeline/src/landscape/coasts.ts)`
-          : `derive-coasts ${stamp}: ${shore.method.kind === 'sea' ? `ground ≤ ${shore.method.maxHeight} m reached from the sea` : `ground < ${shore.method.level} m reached from the lake bed`} inside the authored shore, Mapterhorn z${shore.z}, simplified ${SIMPLIFY_M} m`,
-    },
-    geometry,
-  }))
+  const surfaceOf = (s: Shore) =>
+    s.surface ?? (s.method.kind === 'sea' || s.method.kind === 'lake' ? s.method.kind : undefined)
+  const how = (m: Shore['method']) =>
+    m.kind === 'polygon'
+      ? 'authored polygon (pipeline/src/landscape/coasts.ts)'
+      : m.kind === 'sea-to-land'
+        ? `modern sea inside the authored shore, ${SUNKEN_OVERLAP_M} m onto the land`
+        : `${m.kind === 'sea' ? `ground ≤ ${m.maxHeight} m reached from the sea` : `ground < ${m.level} m reached from the lake bed`} inside the authored shore`
+  const features: LandscapeShape[] = results.map(({ shore, geometry }) => {
+    const surface = surfaceOf(shore)
+    return {
+      type: 'Feature',
+      id: shore.id,
+      properties: {
+        ...(surface && { surface }),
+        derivation: `derive-coasts ${stamp}: ${how(shore.method)}${shore.method.kind === 'polygon' ? '' : `, Mapterhorn z${shore.z}, simplified ${SIMPLIFY_M} m`}`,
+      },
+      geometry,
+    }
+  })
   writeLandscapeShapes(features)
   console.log(`\n${doubts.length ? `${doubts.length} doubts:\n  ${doubts.join('\n  ')}` : 'no doubts'}`)
 }

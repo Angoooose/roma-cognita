@@ -1891,3 +1891,103 @@
     Gulf, Geodinamica Acta 23 (2010) 241–253 (full title to confirm)
   url: https://doi.org/10.3166/ga.23.241-253
   note: Only the abstract seen; it gives 8–10 km of advance since 480 BCE.
+
+# --- ancient coasts: Africa, Egypt, Gaul, Spain, the Gulf ---------------------
+
+- id: pleuger-2019
+  kind: modern
+  citation: >-
+    E. Pleuger and others, on the Holocene evolution of the Gulf of Utica and the
+    Medjerda delta, Quaternary Science Reviews 220 (2019) 263–278 (full title to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/NorthAfrica/Utica-Pleuger2019.pdf
+
+- id: delile-2015
+  kind: modern
+  citation: >-
+    H. Delile and others, on the geoarchaeology of Utica, Geoarchaeology 30 (2015) 291
+    (full title to confirm)
+  url: https://ancientportsantiques.com/wp-content/uploads/Documents/PLACES/NorthAfrica/Utica-Delile2015.pdf
+
+- id: ben-mosbah-sebkhet-ariana
+  kind: modern
+  citation: M. Ben Mosbah and others, on Sebkhet Ariana, Quaternaire (full reference to confirm)
+  url: https://journals.openedition.org/quaternaire/5548
+
+- id: mela
+  kind: ancient
+  citation: Pomponius Mela, De chorographia
+
+- id: crepy-boussac-2021
+  kind: modern
+  citation: >-
+    M. Crépy and M.-F. Boussac, on the western Mareotis in the Hellenistic and Roman
+    periods, E&G Quaternary Science Journal 70 (2021) 39 (full title to confirm)
+  url: https://egqsj.copernicus.org/articles/70/39/2021/
+  licence: CC BY 4.0
+
+- id: flaux-2021
+  kind: modern
+  citation: >-
+    C. Flaux and others, on the Canopic coast and Lake Mareotis, E&G Quaternary
+    Science Journal 70 (2021) 93 (full title to confirm)
+  url: https://egqsj.copernicus.org/articles/70/93/2021/
+  licence: CC BY 4.0
+  note: Fig. 1 draws the coastline in antiquity round Aboukir Bay.
+
+- id: goddio-heracleion
+  kind: modern
+  citation: F. Goddio, the Heracleion–Thonis and Canopus excavations (project pages)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/heracleion/
+
+- id: vella-2005
+  kind: modern
+  citation: >-
+    C. Vella, T.-J. Fleury, G. Raccasi, M. Provansal, F. Sabatier and M. Bourcier,
+    "Evolution of the Rhône delta plain in the Holocene", Marine Geology 222–223
+    (2005) 235–265
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/France/Camargue/Camargue-Vella&Provansal2005.pdf
+  note: Fig. 5 (Lambert II étendu) draws the lobes; table 3 gives the cores in WGS84.
+
+- id: nienhuis-2017
+  kind: modern
+  citation: >-
+    J. H. Nienhuis and others, on the Ebro delta's growth, Earth Surface Dynamics 5
+    (2017) 585 (full title to confirm)
+  url: https://esurf.copernicus.org/articles/5/585/2017/
+  licence: CC BY 4.0
+  note: Fig. 1, after Canicio & Ibáñez 1999, stages the delta's growth.
+
+- id: salel-2014
+  kind: modern
+  citation: >-
+    T. Salel, map of the Narbonne lagoons "vers 550 / 50 av. n. ère" (2014), after
+    Faïsse and others (as reproduced; full reference to confirm)
+  url: https://www.ancientportsantiques.com/a-few-ports/narbonne/
+
+- id: hansman-1967
+  kind: modern
+  citation: J. Hansman, "Charax and the Karkheh" (1967; venue and pages to confirm)
+  url: https://archive.org/stream/HansmanCharaxAndTheKarkheh/Hansman-Charax%20and%20the%20Karkheh_djvu.txt
+
+- id: heyvaert-baeteman-2007
+  kind: modern
+  citation: >-
+    V. M. A. Heyvaert and C. Baeteman, on the Holocene coastal evolution of lower
+    Khuzestan, Marine Geology 242 (2007) (full title to confirm)
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0025322707000217
+  note: Only the abstract seen.
+
+- id: walstra-2010
+  kind: modern
+  citation: >-
+    J. Walstra and others, on the rivers of lower Khuzestan and the site of Charax
+    Spasinou (2010) (full reference to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/IndOc-Gulf/CharaxSpasinou-Walstra2010.pdf
+
+- id: reinink-smith-carter-2022
+  kind: modern
+  citation: >-
+    L. Reinink-Smith and R. Carter, "Late Holocene development of Bubiyan Island,
+    Kuwait", Quaternary Research (2022)
+  url: https://www.cambridge.org/core/journals/quaternary-research/article/abs/late-holocene-development-of-bubiyan-island-kuwait/FD3CB9742FC8B0A5EDE6EBAC8F15C301
+  note: Only the abstract seen.
