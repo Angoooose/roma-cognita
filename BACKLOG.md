@@ -103,7 +103,26 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   islands, Labienus and Pacorus in 40, and Antony in Armenia; the hatching in
   "Political layer, left for later" would show them.
 - **Pharnaces' 48–47** keeps 47 against the successor rule (DOUBTS.md).
-- **Back to 133 BCE.** The other half of step B3.
+
+### After the extension to 133 BCE
+
+- **Occupation matters more now.** Mithridates in Asia, Greece, Macedonia,
+  Bithynia, Cappadocia and Galatia (88–85 and after), Sertorius in Spain (77–73)
+  and Lucullus in Pontus (72–69) are all `occupied` rows, and none is drawn: the
+  hatching in "Political layer, left for later" would show them.
+- **Decisions the checks left for a human** (each is in DOUBTS.md, "The extension
+  to 133 BCE"): whether Liguria south of the Po and Tiber-valley Umbria should
+  move with Beloch; splitting the Palestinian coast so Ascalon is not Judaean, and
+  giving Marisa's corner to Idumaea; a Gordyene atom; who held Sophene from 66;
+  Armenia as Parthia's client before 95; Kallet-Marx's later Phrygia; Noricum and
+  Thrace before their first attestations; the Scythians of the Crimea in 70–66.
+- **Places of 133–68.** Numantia (destroyed 133), Iunonia (122–121), Pompey's
+  trophy at the Pyrenees (no place kind for a monument), Corent, Metellinum and
+  Castra Caecilia, Stratonicea's Carian twin, Marius' Gaetulian settlements.
+- **Governors before 68.** DPRR covers the years, so the inspector shows them, but
+  its joins in `dprr-provinces.yaml` were only touched where the ground changed;
+  a pass over every join for 133–68 (Asia before 129, Cilicia as a command, the
+  "Gallia" of the 120s) is still to do.
 
 ### Labels, left for later
 
