@@ -16,7 +16,7 @@
   kind: state
   names:
     - { text: Roma, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
@@ -29,17 +29,169 @@
   kind: citizen-territory
   names:
     - { text: Italia, lang: la, preferred: true }
-  from: { earliest: 90 BCE, latest: 89 BCE }
+  from: 90 BCE
   to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
   note: >-
-    Post-Social War enfranchisement: lex Julia 90, lex Plautia Papiria 89.
-    Citizen territory is not a province and had no governor; it is modelled as a
-    polity so the ground can be claimed by it and named ITALIA.
+    Italy enfranchised by the Social War: the lex Iulia of 90 gave citizenship
+    to the Latins and the allies who had stayed loyal (App. BC 1.49; Cic. Balb.
+    21), the lex Plautia Papiria of 89 to the rest who registered (Cic. Arch.
+    7); the Samnites and Lucanians came in last, in 87. Begins at the lex
+    Iulia: it was { 90, 89 } until September 2026, which drew it from 89 and
+    left the year of the first law to nobody. Before 90 the citizen land is
+    ager-romanus, and each part of Italy passes to italia in the year it was
+    enfranchised or submitted (claims.yaml). Citizen territory is not a
+    province and had no governor; it is modelled as a polity so the ground can
+    be claimed by it and named ITALIA.
+
+# --- Italy before the Social War (added September 2026, the extension to 133) --
+# Before 90 the peninsula was a patchwork: the Roman citizen land (ager-romanus),
+# the Latin colonies (drawn as places, status colonia latina) and some 150
+# allied communities bound to Rome by treaties (socii). The allies are one
+# polity because the treaty unit was the community, not the people, and their
+# peoples' frontiers are not recorded; the atoms of the allied regions are cut
+# only where the Social War gives them different dates (atoms.yaml). In 91–88
+# the insurgents' league (italici) holds its ground against Rome.
+
+- id: ager-romanus
+  kind: citizen-territory
+  names:
+    - { text: Ager Romanus, lang: la, preferred: true }
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+    - { source: appian, locator: 'BC 1.49' }
+  confidence: certain
+  review: draft
+  note: >-
+    The land of the Roman citizens before the Social War: Latium, southern
+    Etruria, the Sabine country, Picenum and the Gallic land on the Adriatic,
+    the strip of Umbria along the Via Flaminia, and northern Campania, with the
+    confiscated public land in the south and the citizen colonies of Cispadane
+    Gaul (Beloch ch. III). It did not end so much as grow into italia: from 90
+    the enfranchised allies joined it and the whole is drawn as Italia.
+
+- id: socii
+  kind: league
+  names:
+    - { text: Socii, lang: la, preferred: true }
+  from: before 133 BCE
+  to: 82 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–177; ch. X, pp. 201–215' }
+    - { source: cicero-balb, locator: '21, 32, 50' }
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: asconius-pis, locator: '3 C' }
+  confidence: certain
+  review: draft
+  note: >-
+    Rome's Italian allies, the "Italian league under Rome's hegemony" of
+    Beloch's title: some 150 communities, peoples and leagues, each bound by
+    its own treaty, sovereign at home but with no foreign policy of their own,
+    owing troops by the list of the togati. One polity, not one per people:
+    the treaty unit was the community (Beloch ch. VIII counts at least 11
+    allied cities in Etruria and 16 in Umbria), and no source draws the
+    peoples' frontiers. In the peninsula they end with the Social War (91–87);
+    beyond the Po the Cenomani, the Veneti and the Insubres, whose treaty barred
+    their men from Roman citizenship (Cic. Balb. 32), and the Ligurians left
+    allied run on until the province of c. 81, Latin communities from the lex
+    Pompeia of 89 (Asconius, Pis. 3 C).
+
+- id: italici
+  kind: league
+  names:
+    - { text: Italici, lang: la, preferred: true }
+    - text: Italia
+      lang: la
+      note: >-
+        The insurgents' own name for their state and its capital, Corfinium
+        renamed (Vell. 2.16.4; Strabo 5.4.2 "Italica"; Diodorus 37.2.7). Not
+        preferred, so the map does not letter two Italias at once.
+    - text: Víteliú
+      lang: osc
+      note: The Oscan form, on the insurgents' coins.
+  from: 91 BCE
+  to: 88 BCE
+  ruler: >-
+    two consuls a year and a senate of 500 (Diodorus 37.2.5–6): Q. Poppaedius
+    Silo the Marsian and C. Papius Mutilus the Samnite, 90
+  sources:
+    - { source: diodorus, locator: '37.2.4–11' }
+    - { source: strabo, locator: '5.4.2' }
+    - { source: velleius, locator: '2.15–17' }
+    - { source: appian, locator: 'BC 1.38–53' }
+    - { source: appian, locator: 'BC 1.68' }
+    - { source: livy-per, locator: '72–76' }
+    - { source: livy-per, locator: '80' }
+  confidence: certain
+  review: draft
+  note: >-
+    The allies in revolt, the Social or "Marsic" War. The rising began at
+    Asculum late in 91 (Livy Per. 72; App. BC 1.38–39); the league took
+    Corfinium as its capital, with a senate, consuls and generals on the Roman
+    model, and moved to Aesernia when the Marsi and their neighbours gave in
+    (Diodorus 37.2.9). By the end of 88 only the Samnites, the Lucanians and
+    Nola held out (Diodorus 37.2.11; App. BC 1.53), and the Samnites made
+    terms with Marius and Cinna in 87 (App. BC 1.68; Livy Per. 80). Its last
+    year, 87, belongs to italia. Drawn in a colour of its own: an independent
+    power at war with Rome, not an ally.
+
+# The two slave kingdoms of Sicily are drawn as seats (seats.yaml): each held
+# the interior and some cities of a province Rome never stopped governing from
+# Syracuse and Lilybaeum, and no source says how far either reached.
+
+- id: sicily-eunus
+  kind: kingdom
+  names:
+    - { text: Fugitivi, lang: la, preferred: true, note: 'the runaways, as the Latin tradition calls the rebels (Livy Per. 58, 59)' }
+    - { text: Syri, lang: la, note: 'Eunus took the name Antiochus and called his followers Syrians (Diodorus 34/35.2.24)' }
+  from: before 133 BCE
+  to: 133 BCE
+  ruler: Eunus, called Antiochus, c. 135–132
+  sources:
+    - { source: diodorus, locator: '34/35.2.10–24, 34/35.2.43' }
+    - { source: livy-per, locator: '56, 58, 59' }
+    - { source: strabo, locator: '6.2.6' }
+  confidence: certain
+  review: draft
+  note: >-
+    The first Sicilian slave war. The slaves of Enna rose under the Syrian
+    Eunus, made him king in the theatre and took the city; Cleon's band joined
+    them from Agrigentum, and their armies beat the praetors (Diodorus
+    34/35.2.10–18, 43; Livy Per. 56). The consul Rupilius took Tauromenium and then
+    Enna in 132, and Eunus died a prisoner at Morgantina (Diodorus
+    34/35.2.20–23; Livy Per. 59); 132 is Rome's. Began c. 135 (Livy Per. 56),
+    before the window.
+
+- id: sicily-tryphon
+  kind: kingdom
+  names:
+    - { text: Fugitivi, lang: la, preferred: true, note: 'the runaways of the second Sicilian slave war' }
+  from: { earliest: 104 BCE, latest: 103 BCE }
+  to: 101 BCE
+  ruler: Salvius, called Tryphon, c. 104–c. 102; Athenion, c. 102–101
+  sources:
+    - { source: diodorus, locator: '36.3–10' }
+    - { source: livy-per, locator: '69' }
+  confidence: probable
+  review: draft
+  note: >-
+    The second Sicilian slave war. The slaves rose round Heraclea and made
+    Salvius king; Athenion was made king in the west, round Segesta and
+    Lilybaeum, and then served under Salvius, who took the name Tryphon and
+    made the rock of Triocala his royal city (Diodorus 36.4–7). Lucullus and
+    then Servilius failed against it, and Athenion succeeded Tryphon; Aquillius,
+    consul in 101, killed Athenion and reduced the rest by siege (36.8–10), and
+    Livy's epitome puts the end in the book of 100 (Per. 69). Diodorus has the
+    war last "almost four years" (36.10.3). The royal city dates from Tryphon's
+    proclamation, a year or so into the rising; the last year is taken as 101,
+    the war's end, the mopping up of 100 being Rome's.
 
 # --- provinces ---------------------------------------------------------------
 
@@ -288,7 +440,12 @@
   confidence: probable
   review: draft
   note: >-
-    Formally dissolved into Italy in 42 (Dio 48.12.5), so the province ends in
+    Before c. 81 Cisalpine Gaul was not a standing province: "Gallia" was a
+    command given to consuls and praetors when there was fighting, over ground
+    that was Roman citizen land and Latin colonies south of the Po and allied
+    peoples beyond it (claims.yaml). Its standing governor is dated to Sulla's
+    reorganisation, as in CAH IX; some date it earlier, to the 90s or to
+    Pompeius Strabo in 89. Formally dissolved into Italy in 42 (Dio 48.12.5), so the province ends in
     43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
     the Transpadanes but did not end the province: D. Brutus governed it in
     44–43. Its ground stays provincial to the end of the window.

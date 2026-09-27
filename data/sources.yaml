@@ -492,6 +492,47 @@
   kind: ancient
   citation: Cicero, De Oratore
 
+# --- the extension to 133 BCE: Italy and the islands ---------------------------
+# Added September 2026. Beloch was read on the Internet Archive and is cited by
+# page; the ancient texts were read in the English translations works.ts points
+# to (Asconius in Latin on attalus.org, where no English translation is online).
+
+- id: beloch-1880
+  kind: modern
+  citation: >-
+    J. Beloch, Der italische Bund unter Roms Hegemonie: staatsrechtliche und
+    statistische Forschungen (Leipzig: Teubner, 1880)
+  url: https://archive.org/details/deritalischebund00belo
+  note: >-
+    Read in the scan. Ch. III (pp. 43–77) reconstructs the extent of the Roman
+    citizen land (the ager Romanus) region by region, from colonies, prefectures
+    and the later voting tribes; ch. VIII (pp. 158–177) takes the allies region
+    by region and lists the allied communities. The atoms of Italy before the
+    Social War follow its picture, drawn schematically.
+
+- id: diodorus
+  kind: ancient
+  citation: Diodorus Siculus, Bibliotheca Historica
+  note: >-
+    Books 34–37 survive in excerpts; cited by the Loeb numbering (34/35.2.21 is
+    Photius' epitome of the first Sicilian slave war). ToposText numbers
+    34/35.2.x as 34.x (34/35.2.21 is its 34.21.1), which works.ts cannot map, so
+    a 34/35 locator links only to the head of book 34 there.
+
+- id: asconius-pis
+  kind: ancient
+  citation: Asconius, Commentary on Cicero's In Pisonem
+  url: https://www.attalus.org/latin/asconius1.html
+  note: Cited by the pages of A. C. Clark's edition (Oxford, 1907).
+
+- id: cicero-balb
+  kind: ancient
+  citation: Cicero, Pro Balbo
+
+- id: cicero-sull
+  kind: ancient
+  citation: Cicero, Pro Sulla
+
 # --- ancient texts -------------------------------------------------------------
 
 - id: caesar-bg

@@ -12,14 +12,42 @@
 - polity: italia
   type: citizen-territory-of
   of: rome
-  from: { earliest: 90 BCE, latest: 89 BCE }
+  from: 90 BCE
   to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
-  note: lex Julia 90, lex Plautia Papiria 89.
+  note: lex Iulia 90, lex Plautia Papiria 89; from 90, with its polity.
+
+- polity: ager-romanus
+  type: citizen-territory-of
+  of: rome
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+  confidence: certain
+  review: draft
+
+- polity: socii
+  type: subject-of
+  of: rome
+  from: before 133 BCE
+  to: 82 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. X, pp. 201–215' }
+    - { source: appian, locator: 'BC 1.39' }
+  confidence: certain
+  review: draft
+  note: >-
+    The allies were bound to Rome by treaty, sovereign at home but without
+    the right of war and peace, which was Rome's, and owed troops by the list
+    of the togati (Beloch pp. 201–215). Subject rather than allied, so the map
+    draws them as a washed shade of Rome, the way the atlases draw Roman Italy
+    before the Social War, and not as a dozen independent powers.
 
 - polity: sicilia
   type: province-of

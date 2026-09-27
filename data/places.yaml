@@ -26,7 +26,7 @@
   location: [12.4913, 41.89]
   names:
     - { text: Roma, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status: caput mundi
@@ -196,7 +196,7 @@
   location: [15.2833, 37.0701]
   names:
     - { text: Syracusae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 1
   status: provincial seat
@@ -499,12 +499,20 @@
   location: [17.9429, 40.6387]
   names:
     - { text: Brundisium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   sources:
     - { source: pleiades, locator: places/442509 }
+    - { source: beloch-1880, locator: 'p. 61' }
   confidence: certain
   review: draft
 
@@ -514,13 +522,19 @@
   location: [14.2502, 41.0861]
   names:
     - { text: Capua, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: colonia
+  status:
+    - value: colonia
+      from: 59 BCE
+      to: after 27 BCE
+      note: Capua was a prefecture with no civic rights of its own from 211 until Caesar's law of 59 settled 20,000 citizens on its land and restored them (Vell. 2.44.4). M. Brutus' colony there of 83 did not outlast Sulla. It was a colonia from before 68 in this record until September 2026.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432754 }
+    - { source: beloch-1880, locator: 'pp. 115–116, 132' }
+    - { source: velleius, locator: '2.44.4' }
   confidence: certain
   review: draft
 
@@ -530,13 +544,23 @@
   location: [14.2529, 40.84]
   names:
     - { text: Neapolis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: civitas foederata
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty since 326 (Beloch 52, 175).
+    - value: municipium
+      from: { earliest: 90 BCE, latest: 89 BCE }
+      to: after 27 BCE
+      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21).
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433014 }
+    - { source: beloch-1880, locator: 'pp. 52, 175' }
+    - { source: cicero-balb, locator: '21' }
   confidence: certain
   review: draft
 
@@ -546,7 +570,7 @@
   location: [14.1217, 40.8258]
   names:
     - { text: Puteoli, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: colonia
@@ -562,7 +586,7 @@
   location: [12.2894, 41.7536]
   names:
     - { text: Ostia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: colonia
@@ -578,7 +602,7 @@
   location: [12.1966, 44.4157]
   names:
     - { text: Ravenna, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: e
@@ -593,13 +617,21 @@
   location: [12.5632, 44.059]
   names:
     - { text: Ariminum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393379 }
+    - { source: beloch-1880, locator: 'p. 56' }
   confidence: certain
   review: draft
 
@@ -609,7 +641,7 @@
   location: [9.1881, 45.4637]
   names:
     - { text: Mediolanum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -624,13 +656,21 @@
   location: [13.3709, 45.7696]
   names:
     - { text: Aquileia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: n
   sources:
     - { source: pleiades, locator: places/187290 }
+    - { source: velleius, locator: '1.15.2' }
   confidence: certain
   review: draft
 
@@ -640,13 +680,25 @@
   location: [17.233, 40.4738]
   names:
     - { text: Tarentum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status: colonia
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally, on worse terms after 209, much of its land Roman public land (Beloch 63–64). The colony of Neptunia was planted on that land in 123–122 (Vell. 1.15.4; Gaius Gracchus proposed one at Tarentum, Plut. C. Gracch. 8.3), but Beloch finds it had nothing to do with the Greek city until the two were joined, under Sulla or Augustus (64).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/442810 }
+    - { source: beloch-1880, locator: 'pp. 63–64' }
+    - { source: velleius, locator: '1.15.4' }
+    - { source: plutarch, locator: 'C. Gracch. 8.3' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -658,12 +710,23 @@
     - { text: Rhegium, preferred: true }
     - { text: Regium }
     - { text: Rhegion }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Greek ally that stayed loyal through the Hannibalic war (Beloch 62).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/452416 }
+    - { source: beloch-1880, locator: 'p. 62' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -673,7 +736,7 @@
   location: [8.9315, 44.4062]
   names:
     - { text: Genua, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -688,7 +751,7 @@
   location: [15.5566, 38.1923]
   names:
     - { text: Messana, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: civitas foederata
@@ -704,7 +767,7 @@
   location: [13.3524, 38.1112]
   names:
     - { text: Panormus, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -719,7 +782,7 @@
   location: [12.4297, 37.8027]
   names:
     - { text: Lilybaeum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   status: conventus
@@ -735,7 +798,7 @@
   location: [9.1095, 39.2149]
   names:
     - { text: Caralis, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: s
@@ -1414,13 +1477,21 @@
   location: [14.7812, 41.1304]
   names:
     - { text: Beneventum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432721 }
+    - { source: beloch-1880, locator: 'p. 53' }
   confidence: certain
   review: draft
 
@@ -1430,13 +1501,22 @@
   location: [9.6977, 45.0526]
   names:
     - { text: Placentia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383741 }
+    - { source: beloch-1880, locator: 'pp. 65, 67' }
+    - { source: asconius-pis, locator: '3 C' }
   confidence: certain
   review: draft
 
@@ -1446,12 +1526,23 @@
   location: [10.4001, 43.7194]
   names:
     - { text: Pisae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403253 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -1461,7 +1552,7 @@
   location: [13.5855, 37.2906]
   names:
     - { text: Agrigentum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
   labelSide: s
@@ -1476,12 +1567,18 @@
   location: [9.5105, 42.1025]
   names:
     - { text: Aleria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 3
+  status:
+    - value: colonia
+      from: c. 81 BCE
+      to: after 27 BCE
+      note: a colony of the dictator Sulla (Pliny 3.80).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/472048 }
+    - { source: pliny-nh, locator: '3.80' }
   confidence: certain
   review: draft
 
@@ -2763,7 +2860,7 @@
   location: [13.6099, 41.6484]
   names:
     - { text: Arpinum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: municipium
@@ -2779,7 +2876,7 @@
   location: [13.6035, 41.256]
   names:
     - { text: Formiae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: municipium
@@ -2795,7 +2892,7 @@
   location: [12.7072, 41.7981]
   names:
     - { text: Tusculum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: municipium
@@ -2811,7 +2908,7 @@
   location: [12.7653, 41.4089]
   names:
     - { text: Astura, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: s
@@ -2826,7 +2923,7 @@
   location: [12.629, 41.4479]
   names:
     - { text: Antium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -2842,7 +2939,7 @@
   location: [14.0564, 40.8479]
   names:
     - { text: Cumae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -2857,7 +2954,7 @@
   location: [14.0703, 40.8174]
   names:
     - { text: Baiae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: s
@@ -2872,7 +2969,7 @@
   location: [14.0849, 40.7863]
   names:
     - { text: Misenum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: s
@@ -2887,13 +2984,29 @@
   location: [14.4854, 40.7494]
   names:
     - { text: Pompeii, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: one of the Nucerine league (Beloch 171); the Pompeians were among the first insurgents (App. BC 1.39), and Sulla besieged the town in 89 (Vell. 2.16.2).
+    - value: municipium
+      from: 89 BCE
+      to: 81 BCE
+      note: enfranchised after its capture.
+    - value: colonia
+      from: c. 80 BCE
+      to: after 27 BCE
+      note: a colony of Sulla's veterans, led out by P. Sulla, whose settlers' quarrels with the old townsmen Cicero describes in 62 (Sull. 60–62); the year is the usual one for Sulla's colonies, not recorded.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/433032 }
+    - { source: beloch-1880, locator: 'p. 171' }
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: velleius, locator: '2.16.2' }
+    - { source: cicero-sull, locator: '60–62' }
   confidence: certain
   review: draft
 
@@ -2903,12 +3016,23 @@
   location: [14.3474, 40.8054]
   names:
     - { text: Herculaneum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: one of the Nucerine league (Beloch 171); with the insurgents until Minatius Magius and Didius took it in 89 (Vell. 2.16.2).
+    - value: municipium
+      from: 89 BCE
+      to: after 27 BCE
+      note: enfranchised after its capture.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/432873 }
+    - { source: beloch-1880, locator: 'p. 171' }
+    - { source: velleius, locator: '2.16.2' }
   confidence: certain
   review: draft
 
@@ -2918,12 +3042,24 @@
   location: [14.6739, 40.7431]
   names:
     - { text: Nuceria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: the head of the Nucerine league of allied cities (Beloch 171); loyal, its country ravaged by Papius Mutilus in 90 (App. BC 1.42).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432985 }
+    - { source: beloch-1880, locator: 'p. 171' }
+    - { source: appian, locator: 'BC 1.42' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -2933,12 +3069,20 @@
   location: [14.5245, 40.9268]
   names:
     - { text: Nola, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under the treaty of 311 (Beloch 52); taken by Papius Mutilus in 90 and held by the insurgents until Sulla took it in 80 (App. BC 1.42; Livy Per. 89).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/432981 }
+    - { source: beloch-1880, locator: 'pp. 52, 171' }
+    - { source: appian, locator: 'BC 1.42' }
+    - { source: livy-per, locator: '89' }
   confidence: certain
   review: draft
 
@@ -2948,12 +3092,19 @@
   location: [14.7659, 40.678]
   names:
     - { text: Salernum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia
+      from: before 133 BCE
+      to: after 27 BCE
+      note: A Roman colony of 194 (Beloch 63); taken by Papius Mutilus in 90 (App. BC 1.42).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/433075 }
+    - { source: beloch-1880, locator: 'p. 63' }
+    - { source: appian, locator: 'BC 1.42' }
   confidence: certain
   review: draft
 
@@ -2963,12 +3114,18 @@
   location: [15.0051, 40.4208]
   names:
     - { text: Paestum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/442733 }
+    - { source: beloch-1880, locator: 'p. 61' }
   confidence: certain
   review: draft
 
@@ -2978,12 +3135,24 @@
   location: [15.1562, 40.1605]
   names:
     - { text: Velia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Greek ally (Beloch 175; Cic. Balb. 55).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/452488 }
+    - { source: beloch-1880, locator: 'p. 175' }
+    - { source: cicero-balb, locator: '55' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -2993,7 +3162,7 @@
   location: [13.571, 41.2141]
   names:
     - { text: Caieta, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: s
@@ -3008,7 +3177,7 @@
   location: [13.7684, 41.2422]
   names:
     - { text: Minturnae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -3024,7 +3193,7 @@
   location: [13.8448, 41.1523]
   names:
     - { text: Sinuessa, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -3040,7 +3209,7 @@
   location: [13.2488, 41.2912]
   names:
     - { text: Tarracina, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -3056,7 +3225,7 @@
   location: [13.159, 41.7422]
   names:
     - { text: Anagnia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: e
@@ -3071,13 +3240,29 @@
   location: [12.8923, 41.8395]
   names:
     - { text: Praeneste, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: municipium
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin state, one of the old Latin league left sovereign (Beloch 49–50).
+    - value: municipium
+      from: 90 BCE
+      to: 82 BCE
+      note: enfranchised under the lex Iulia; held for the younger Marius and taken by Sulla's men in 82 (App. BC 1.94).
+    - value: colonia
+      from: c. 81 BCE
+      to: after 27 BCE
+      note: a colony of Sulla's veterans; Cicero calls it a colony in 63 (Cat. 1.8). It was a municipium in this record until September 2026.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/423013 }
+    - { source: beloch-1880, locator: 'pp. 49–50' }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: appian, locator: 'BC 1.94' }
+    - { source: cicero-cat, locator: '1.8' }
   confidence: certain
   review: draft
 
@@ -3087,13 +3272,23 @@
   location: [12.7982, 41.9636]
   names:
     - { text: Tibur, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: municipium
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin state, one of the old Latin league left sovereign (Beloch 49–50).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/423081 }
+    - { source: beloch-1880, locator: 'pp. 49–50' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3103,7 +3298,7 @@
   location: [12.6733, 41.7214]
   names:
     - { text: Aricia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -3118,7 +3313,7 @@
   location: [12.6976, 41.6747]
   names:
     - { text: Lanuvium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: s
@@ -3133,7 +3328,7 @@
   location: [12.617, 41.7659]
   names:
     - { text: Bovillae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -3148,12 +3343,18 @@
   location: [12.547, 41.6094]
   names:
     - { text: Ardea, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/422843 }
+    - { source: beloch-1880, locator: 'p. 50' }
   confidence: certain
   review: draft
 
@@ -3163,7 +3364,7 @@
   location: [12.4807, 41.6645]
   names:
     - { text: Lavinium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -3178,7 +3379,7 @@
   location: [12.3905, 42.0213]
   names:
     - { text: Veii, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -3193,7 +3394,7 @@
   location: [12.8612, 42.4031]
   names:
     - { text: Reate, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: municipium
@@ -3209,7 +3410,7 @@
   location: [12.6437, 42.5622]
   names:
     - { text: Interamna, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: n
@@ -3224,12 +3425,18 @@
   location: [12.5157, 42.5188]
   names:
     - { text: Narnia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413225 }
+    - { source: beloch-1880, locator: 'p. 51' }
   confidence: certain
   review: draft
 
@@ -3239,12 +3446,23 @@
   location: [12.4666, 42.4127]
   names:
     - { text: Ocriculum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under the treaty of 308 (Beloch 51).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413231 }
+    - { source: beloch-1880, locator: 'p. 51' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3254,13 +3472,21 @@
   location: [12.7384, 42.7453]
   names:
     - { text: Spoletium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413320 }
+    - { source: beloch-1880, locator: 'p. 57' }
   confidence: certain
   review: draft
 
@@ -3270,7 +3496,7 @@
   location: [13.0964, 42.7942]
   names:
     - { text: Nursia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: e
@@ -3285,12 +3511,23 @@
   location: [13.9257, 42.0468]
   names:
     - { text: Sulmo, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a town of the Paeligni, allies under treaty (Beloch 52, 165).
+    - value: municipium
+      from: 89 BCE
+      to: after 27 BCE
+      note: enfranchised after the Paeligni surrendered (Livy Per. 76).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/433134 }
+    - { source: beloch-1880, locator: 'p. 165' }
+    - { source: livy-per, locator: '76' }
   confidence: certain
   review: draft
 
@@ -3300,12 +3537,21 @@
   location: [13.839, 42.122]
   names:
     - { text: Corfinium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  prominence: 4
+  prominence:
+    - { value: 4, from: before 133 BCE, to: 92 BCE }
+    - value: 2
+      from: 91 BCE
+      to: 90 BCE
+      note: the insurgents' capital (Diodorus 37.2.4), renamed Italia (Diodorus 37.2.7) or Italica (Vell. 2.16.4; Strabo 5.4.2), until they left it for Aesernia (37.2.9)
+    - { value: 4, from: 89 BCE, to: after 27 BCE }
   labelSide: n
   sources:
     - { source: pleiades, locator: places/413105 }
+    - { source: velleius, locator: '2.16.4' }
+    - { source: diodorus, locator: '37.2.4, 37.2.7, 37.2.9' }
+    - { source: strabo, locator: '5.4.2' }
   confidence: certain
   review: draft
 
@@ -3315,12 +3561,24 @@
   location: [13.575, 42.8554]
   names:
     - { text: Asculum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: the one Picene people left sovereign, beside Greek Ancona (Beloch 55, 165), where the revolt began in 91 (App. BC 1.38).
+    - value: municipium
+      from: 89 BCE
+      to: after 27 BCE
+      note: enfranchised after Pompeius Strabo took it (Livy Per. 76).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413036 }
+    - { source: beloch-1880, locator: 'p. 55' }
+    - { source: appian, locator: 'BC 1.38' }
+    - { source: livy-per, locator: '76' }
   confidence: certain
   review: draft
 
@@ -3330,12 +3588,23 @@
   location: [13.5161, 43.619]
   names:
     - { text: Ancona, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Greek city allied to Rome (Beloch 55, 176).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413014 }
+    - { source: beloch-1880, locator: 'pp. 55, 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3345,7 +3614,7 @@
   location: [13.0169, 43.8449]
   names:
     - { text: Fanum Fortunae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: e
@@ -3360,7 +3629,7 @@
   location: [13.218, 43.715]
   names:
     - { text: Sena Gallica, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: e
@@ -3375,13 +3644,23 @@
   location: [11.863, 43.4713]
   names:
     - { text: Arretium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: municipium
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413032 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3391,12 +3670,23 @@
   location: [11.9878, 43.2741]
   names:
     - { text: Cortona, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413106 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3406,12 +3696,23 @@
   location: [12.3899, 43.1112]
   names:
     - { text: Perusia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/413248 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3421,12 +3722,23 @@
   location: [11.9477, 43.0165]
   names:
     - { text: Clusium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413096 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3436,12 +3748,23 @@
   location: [11.9851, 42.648]
   names:
     - { text: Volsinii, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413389 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3451,7 +3774,7 @@
   location: [12.3589, 42.2998]
   names:
     - { text: Falerii, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: w
@@ -3466,13 +3789,24 @@
   location: [10.8601, 43.4016]
   names:
     - { text: Volaterrae, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: municipium
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia; it held out against Sulla until c. 80 (Livy Per. 89).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403292 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: livy-per, locator: '89' }
   confidence: certain
   review: draft
 
@@ -3482,12 +3816,23 @@
   location: [10.4896, 42.9882]
   names:
     - { text: Populonia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403212 }
+    - { source: beloch-1880, locator: 'p. 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3497,13 +3842,21 @@
   location: [11.2885, 42.4113]
   names:
     - { text: Cosa, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: w
   sources:
     - { source: pleiades, locator: places/413107 }
+    - { source: beloch-1880, locator: 'p. 58' }
   confidence: certain
   review: draft
 
@@ -3513,12 +3866,19 @@
   location: [10.507, 43.8418]
   names:
     - { text: Luca, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/403234 }
+    - { source: beloch-1880, locator: 'pp. 66, 147' }
+    - { source: velleius, locator: '1.15.2' }
   confidence: certain
   review: draft
 
@@ -3528,12 +3888,18 @@
   location: [10.0168, 44.064]
   names:
     - { text: Luna, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia
+      from: before 133 BCE
+      to: after 27 BCE
+      note: A Roman colony of 177 (Beloch 66).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403235 }
+    - { source: beloch-1880, locator: 'p. 66' }
   confidence: certain
   review: draft
 
@@ -3543,13 +3909,21 @@
   location: [11.3455, 44.4946]
   names:
     - { text: Bononia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: e
   sources:
     - { source: pleiades, locator: places/393421 }
+    - { source: beloch-1880, locator: 'p. 65' }
   confidence: certain
   review: draft
 
@@ -3559,7 +3933,7 @@
   location: [10.9252, 44.6471]
   names:
     - { text: Mutina, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -3575,7 +3949,7 @@
   location: [10.328, 44.8015]
   names:
     - { text: Parma, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   status: colonia
@@ -3591,13 +3965,21 @@
   location: [10.0261, 45.1336]
   names:
     - { text: Cremona, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
   labelSide: s
   sources:
     - { source: pleiades, locator: places/383628 }
+    - { source: beloch-1880, locator: 'p. 65' }
   confidence: certain
   review: draft
 
@@ -3607,7 +3989,7 @@
   location: [10.9957, 45.4422]
   names:
     - { text: Verona, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: n
@@ -3622,7 +4004,7 @@
   location: [11.877, 45.4096]
   names:
     - { text: Patavium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: e
@@ -3637,7 +4019,7 @@
   location: [10.2231, 45.5398]
   names:
     - { text: Brixia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
   labelSide: n
@@ -3652,13 +4034,26 @@
   location: [14.2324, 41.5963]
   names:
     - { text: Aesernia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony, starved out by the insurgents in 90 (App. BC 1.41; Livy Per. 73) and their capital after Corfinium (Diodorus 37.2.9).
+    - value: colonia
+      from: 87 BCE
+      to: after 27 BCE
+      note: Roman again only when the Samnites made terms in 87 (App. BC 1.68); in insurgent hands 90–88, with no status here.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/432652 }
+    - { source: beloch-1880, locator: 'p. 53' }
+    - { source: appian, locator: 'BC 1.41' }
+    - { source: livy-per, locator: '73' }
+    - { source: diodorus, locator: '37.2.9' }
+    - { source: appian, locator: 'BC 1.68' }
   confidence: certain
   review: draft
 
@@ -3668,13 +4063,24 @@
   location: [15.8273, 40.9689]
   names:
     - { text: Venusia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
-  status: colonia
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony, which went over to the insurgents in 90 (App. BC 1.42).
+    - value: colonia
+      from: 88 BCE
+      to: after 27 BCE
+      note: retaken by Metellus Pius in 88 (Diodorus 37.2.10); with the insurgents 90–89, with no status here.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442847 }
+    - { source: beloch-1880, locator: 'p. 61' }
+    - { source: appian, locator: 'BC 1.42' }
+    - { source: diodorus, locator: '37.2.10' }
   confidence: certain
   review: draft
 
@@ -3684,12 +4090,23 @@
   location: [16.0656, 41.2214]
   names:
     - { text: Canusium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an Apulian ally under the treaty of 318 (Beloch 175); it went over to Vidacilius in 90 (App. BC 1.42).
+    - value: municipium
+      from: 88 BCE
+      to: after 27 BCE
+      note: enfranchised once Apulia was retaken.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442525 }
+    - { source: beloch-1880, locator: 'p. 175' }
+    - { source: appian, locator: 'BC 1.42, 1.52' }
   confidence: certain
   review: draft
 
@@ -3699,12 +4116,18 @@
   location: [15.3355, 41.5086]
   names:
     - { text: Luceria, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/442640 }
+    - { source: beloch-1880, locator: 'p. 51' }
   confidence: certain
   review: draft
 
@@ -3714,12 +4137,18 @@
   location: [16.8703, 41.1292]
   names:
     - { text: Barium, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Peucetian ally that struck its own coins (Beloch 175).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442500 }
+    - { source: beloch-1880, locator: 'p. 175' }
   confidence: certain
   review: draft
 
@@ -3729,12 +4158,23 @@
   location: [18.4911, 40.1459]
   names:
     - { text: Hydruntum, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: an ally under treaty.
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/442615 }
+    - { source: beloch-1880, locator: 'p. 175' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3744,12 +4184,18 @@
   location: [17.128, 39.0812]
   names:
     - { text: Croton, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia
+      from: before 133 BCE
+      to: after 27 BCE
+      note: A Roman colony of 194 (Beloch 62).
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452317 }
+    - { source: beloch-1880, locator: 'p. 62' }
   confidence: certain
   review: draft
 
@@ -3759,12 +4205,18 @@
   location: [16.4943, 39.7173]
   names:
     - { text: Thurii, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: Copia, a Latin colony of 193 on the land of Thurii, which stood beside it as an ally (Beloch 62, 64); its people became Roman citizens under the lex Iulia of 90.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452457 }
+    - { source: beloch-1880, locator: 'pp. 62, 64' }
   confidence: certain
   review: draft
 
@@ -3774,12 +4226,18 @@
   location: [16.0976, 38.6756]
   names:
     - { text: Vibo Valentia, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: Valentia, a Latin colony of 192; its people became Roman citizens under the lex Iulia of 90.
   labelSide: w
   sources:
     - { source: pleiades, locator: places/452337 }
+    - { source: beloch-1880, locator: 'p. 62' }
   confidence: certain
   review: draft
 
@@ -3789,12 +4247,23 @@
   location: [16.2443, 38.2263]
   names:
     - { text: Locri, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 4
+  status:
+    - value: civitas foederata
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Greek ally (Beloch 62, 176).
+    - value: municipium
+      from: 90 BCE
+      to: after 27 BCE
+      note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/452369 }
+    - { source: beloch-1880, locator: 'pp. 62, 176' }
+    - { source: appian, locator: 'BC 1.49' }
   confidence: certain
   review: draft
 
@@ -3830,3 +4299,234 @@
     The Ituraean seat. The site is not securely identified: the position is
     Pleiades', after Barrington map 69 D2, and Anjar or Majdal Anjar in the
     southern Beqaa is also proposed. The weakest position in the dataset.
+
+# --- Italy and the islands: added September 2026 (the extension to 133) -------
+# Places the years 133–68 need: colonies founded and a city destroyed, the
+# insurgents' strongholds, and the seats of the Sicilian slave kings.
+
+- id: fregellae
+  pleiades: '432846'
+  kind: settlement
+  location: [13.5389, 41.5367]
+  names:
+    - { text: Fregellae, preferred: true }
+  from: before 133 BCE
+  to: 125 BCE
+  prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 125 BCE
+      note: a Latin colony of 328 (Beloch 51).
+  sources:
+    - { source: livy-per, locator: '60' }
+    - { source: velleius, locator: '2.6.4' }
+    - { source: beloch-1880, locator: 'p. 51' }
+    - { source: pleiades, locator: places/432846 }
+  confidence: certain
+  review: draft
+  note: >-
+    The Latin colony that revolted in 125 and was taken and destroyed by the
+    praetor Opimius (Livy Per. 60; Vell. 2.6.4). Its people were resettled at
+    Fabrateria Nova the next year.
+
+- id: fabrateria-nova
+  pleiades: '432825'
+  kind: settlement
+  location: [13.5581, 41.5193]
+  names:
+    - { text: Fabrateria Nova, preferred: true }
+  from: 124 BCE
+  to: after 27 BCE
+  prominence: 4
+  status: colonia
+  sources:
+    - { source: velleius, locator: '1.15.4' }
+    - { source: pleiades, locator: places/432825 }
+  confidence: probable
+  review: draft
+  note: >-
+    Founded in 124 (Vell. 1.15.4), near the ruins of Fregellae. Whether it
+    was a Roman or a Latin colony is disputed; colonia either way.
+
+- id: scolacium
+  pleiades: '452439'
+  kind: settlement
+  location: [16.5944, 38.8078]
+  names:
+    - { text: Scolacium, preferred: true }
+    - { text: Minervia }
+    - { text: Scylletium }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  status:
+    - value: colonia
+      from: { earliest: 123 BCE, latest: 122 BCE }
+      to: after 27 BCE
+      note: Minervia, a colony of 123–122 (Vell. 1.15.4), on Roman public land; Beloch gives it to Gracchus' rival Livius Drusus (63).
+  sources:
+    - { source: velleius, locator: '1.15.4' }
+    - { source: beloch-1880, locator: 'p. 63' }
+    - { source: pleiades, locator: places/452439 }
+  confidence: certain
+  review: draft
+
+- id: eporedia
+  pleiades: '383642'
+  kind: settlement
+  location: [7.8759, 45.4666]
+  names:
+    - { text: Eporedia, preferred: true }
+  from: 100 BCE
+  to: after 27 BCE
+  prominence: 4
+  status: colonia
+  sources:
+    - { source: velleius, locator: '1.15.5' }
+    - { source: beloch-1880, locator: 'p. 67' }
+    - { source: pleiades, locator: places/383642 }
+  confidence: certain
+  review: draft
+  note: >-
+    A Roman colony of 100, the consulship of Marius' sixth (Vell. 1.15.5),
+    guarding the road to the Salassi; the only citizen community north of the
+    Po before the Social War (Beloch 67).
+
+- id: alba-fucens
+  pleiades: '413005'
+  kind: settlement
+  location: [13.4112, 42.0799]
+  names:
+    - { text: Alba Fucens, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony of 303 (Beloch 51), besieged by the insurgents (Livy Per. 72).
+  sources:
+    - { source: beloch-1880, locator: 'p. 51' }
+    - { source: livy-per, locator: '72' }
+    - { source: pleiades, locator: places/413005 }
+  confidence: certain
+  review: draft
+
+- id: firmum
+  pleiades: '413135'
+  kind: settlement
+  location: [13.7168, 43.1611]
+  names:
+    - { text: Firmum Picenum, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  status:
+    - value: colonia latina
+      from: before 133 BCE
+      to: 91 BCE
+      note: a Latin colony (Beloch 55), where Pompeius Strabo was besieged in 90 (App. BC 1.47).
+  sources:
+    - { source: beloch-1880, locator: 'p. 55' }
+    - { source: appian, locator: 'BC 1.47' }
+    - { source: pleiades, locator: places/413135 }
+  confidence: certain
+  review: draft
+
+- id: bovianum
+  pleiades: '432725'
+  kind: settlement
+  location: [14.4739, 41.4867]
+  names:
+    - { text: Bovianum, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: appian, locator: 'BC 1.51' }
+    - { source: strabo, locator: '5.4.11' }
+    - { source: pleiades, locator: places/432725 }
+  confidence: certain
+  review: draft
+  note: >-
+    The chief town of the Pentri, where the insurgents' council met when
+    Sulla took it in 89 (App. BC 1.51); a village by Strabo's day (5.4.11).
+
+- id: stabiae
+  pleiades: '433128'
+  kind: settlement
+  location: [14.4989, 40.703]
+  names:
+    - { text: Stabiae, preferred: true }
+  from: before 133 BCE
+  to: 89 BCE
+  prominence: 4
+  sources:
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: appian, locator: 'BC 1.42' }
+    - { source: pleiades, locator: places/433128 }
+  confidence: certain
+  review: draft
+  note: >-
+    One of the Nucerine league, taken by Papius Mutilus in 90 (App. BC 1.42)
+    and destroyed by Sulla on 30 April 89, after which only a farmhouse stood
+    there (Pliny 3.70); the villas of the bay came later.
+
+- id: enna
+  pleiades: '462236'
+  kind: settlement
+  location: [14.2802, 37.5672]
+  names:
+    - { text: Henna, preferred: true }
+    - { text: Enna }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: diodorus, locator: '34/35.2.11–24' }
+    - { source: strabo, locator: '6.2.6' }
+    - { source: pleiades, locator: places/462236 }
+  confidence: certain
+  review: draft
+  note: >-
+    Eunus' city in the first slave war, taken by Rupilius in 132; by
+    Strabo's time it had few inhabitants (6.2.6).
+
+- id: triocala
+  pleiades: '462525'
+  kind: fort
+  location: [13.2176, 37.5786]
+  names:
+    - { text: Triocala, preferred: true }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 4
+  sources:
+    - { source: diodorus, locator: '36.7.2–4' }
+    - { source: pleiades, locator: places/462525 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The rock Tryphon walled as his royal city (Diodorus 36.7.3). Pleiades
+    marks its identification with a question mark.
+
+- id: mariana
+  pleiades: '472096'
+  kind: settlement
+  location: [9.4957, 42.5391]
+  names:
+    - { text: Mariana, preferred: true }
+  from: { earliest: 103 BCE, latest: 86 BCE }
+  to: after 27 BCE
+  prominence: 4
+  status: colonia
+  sources:
+    - { source: pliny-nh, locator: '3.80' }
+    - { source: pleiades, locator: places/472096 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    A colony founded by C. Marius (Pliny 3.80). The year is not recorded:
+    between his colonial laws of 103–100 and his death in January 86.

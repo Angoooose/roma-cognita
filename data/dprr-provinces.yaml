@@ -687,8 +687,9 @@
     itself, and the coast Rome took from it in 63 is Syria's.
 
 # --- regions of Italy ------------------------------------------------------------
-# Parts of Italy, which in this window was citizen territory with no governor
-# and is drawn whole as italia. A post in one of these is a special command —
+# Parts of Italy, which had no governor: before the Social War citizen land
+# (ager-romanus) and allies (socii), and from 90–87 citizen territory, drawn
+# whole as italia. A post in one of these is a special command —
 # a war, a rising, a levy — not the government of a province, so none is joined.
 
 - dprr: Aequian territory
