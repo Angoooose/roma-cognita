@@ -120,8 +120,10 @@ function work(
 ): { w: Work; key: string; ref?: string } | undefined {
   const e = WORKS[source]
   if (!e) return undefined
-  if (!('parts' in e))
+  if (!('parts' in e)) {
+    if (locator && e.rewrite) locator = locator.replace(e.rewrite[0], e.rewrite[1])
     return { w: e, key: source, ref: locator ? readLocator(locator)?.ref : undefined }
+  }
   const read = locator ? readLocator(locator, Object.keys(e.parts)) : undefined
   return read?.part
     ? { w: e.parts[read.part], key: `${source} ${read.part}`, ref: read.ref }

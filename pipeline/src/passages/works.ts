@@ -41,6 +41,12 @@ export interface Work {
   inline?: 'book' | 'bare'
   unit?: number
   exact?: boolean
+  /**
+   * Rewrites the locator, as cited, into the page's own numbering before it is read:
+   * Diodorus' fragmentary books are cited by the Loeb's "34/35.2.21", which ToposText
+   * numbers "34.21".
+   */
+  rewrite?: [RegExp, string]
 }
 
 /** A source with one page, or one per part: Appian's wars, Plutarch's lives. */
@@ -102,7 +108,7 @@ export const WORKS: Record<string, WorkEntry> = {
   'cicero-balb': { page: 711, inline: 'bare' },
   'cicero-sull': { page: 702, inline: 'bare' },
   'cicero-cat': { page: 700, inline: 'book' },
-  diodorus: { page: 134 },
+  diodorus: { page: 134, rewrite: [/^34\/35\.2\./, '34.'] },
   'cicero-phil': { page: 720 },
   velleius: { page: 727 },
   'livy-per': { page: 658, strip: /\.e$/ },
@@ -114,7 +120,6 @@ export const WORKS: Record<string, WorkEntry> = {
   'tacitus-ann': { page: 200 },
   'jordanes-getica': { page: 744 },
   'sallust-jug': { page: 659 },
-  justin: { page: 226 },
   'sallust-hist': {
     page: 'https://www.attalus.org/translate/sallust.html',
     site: 'attalus',
