@@ -932,7 +932,13 @@ function layAncientSea(
     // Full on the water, none on the land, over a texel either side of the shore.
     flatten[o] = ancient[o] * Math.min(1, Math.max(0, 0.5 - shore[o] / step))
     const ramp = -Math.min(ANCIENT_DEPTH_M, ancientDistance[o] * ANCIENT_SLOPE)
-    depths[o] += ancient[o] * (Math.min(depths[o], ramp) - depths[o])
+    // The bathymetry only counts where today's terrain is sea (Mapterhorn's exact 0):
+    // under a lake inside the old bay (Bafa) the sources hold the lake bed, which would
+    // print a dark hole in the shallows.
+    const r = Math.floor(o / N)
+    const modernSea = Math.abs(heights[(r + 1) * m + (o - r * N) + 1]) < 0.5
+    const deepest = modernSea ? Math.min(depths[o], ramp) : ramp
+    depths[o] += ancient[o] * (deepest - depths[o])
   }
   if (!any) return
   // Heights carry a border texel each side for the gradients; it takes its neighbour's factor.
