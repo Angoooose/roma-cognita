@@ -1,0 +1,1275 @@
+# Every work and dataset the records cite. A record points here by id and adds
+# a locator (volume, page, map, chapter, fragment). Datasets carry their licence,
+# because the attribution screen is generated from this file and because a
+# re-licensed build must be able to drop anything whose terms it cannot meet.
+#
+# `kind`: ancient — a text from antiquity; modern — scholarship and atlases,
+# cited and never copied; dataset — machine-readable data the pipeline ingests.
+
+# --- modern scholarship --------------------------------------------------------
+
+- id: broughton-mrr
+  kind: modern
+  citation: >-
+    T. R. S. Broughton, The Magistrates of the Roman Republic, 3 vols (New York:
+    American Philological Association, 1951–1986)
+
+- id: cah-ix
+  kind: modern
+  citation: >-
+    J. A. Crook, A. Lintott and E. Rawson (eds), The Cambridge Ancient History,
+    vol. IX², The Last Age of the Roman Republic, 146–43 B.C. (Cambridge, 1994)
+
+- id: braund-1984
+  kind: modern
+  citation: >-
+    D. Braund, Rome and the Friendly King: The Character of the Client Kingship
+    (London, 1984)
+
+- id: sullivan-1990
+  kind: modern
+  citation: R. D. Sullivan, Near Eastern Royalty and Rome, 100–30 BC (Toronto, 1990)
+
+- id: bridoux-2020
+  kind: modern
+  citation: >-
+    V. Bridoux, Les royaumes d'Afrique du Nord : émergence, consolidation et
+    insertion dans les aires d'influences méditerranéennes (201–33 av. J.-C.),
+    BEFAR 388 (Rome: École française de Rome, 2020)
+  url: https://books.openedition.org/efr/31955
+  note: >-
+    Open access. Chapter 1 (territories) is cited by paragraph number (¶), with
+    its territorial plates (pl. II for the fossa regia, VII–XIV for the kingdoms
+    by period).
+
+- id: dmitriev-2000
+  kind: modern
+  citation: >-
+    S. Dmitriev, "Observations on the Historical Geography of Roman Lycaonia",
+    Greek, Roman, and Byzantine Studies 41 (2000) 349–375
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/2041
+
+- id: borgia-2017
+  kind: modern
+  citation: >-
+    E. Borgia, "Cilicia and the Roman Empire: Reflections on Provincia Cilicia
+    and its Romanisation", Studia Europaea Gnesnensia 16 (2017) 295–318
+  url: https://doi.org/10.14746/seg.2017.16.15
+
+- id: hojte-2009
+  kind: modern
+  citation: >-
+    J. M. Højte, "The Administrative Organisation of the Pontic Kingdom", in
+    J. M. Højte (ed.), Mithridates VI and the Pontic Kingdom, Black Sea Studies 9
+    (Aarhus, 2009) 95–107
+  url: https://antikmuseet.au.dk/fileadmin/www.antikmuseet.au.dk/Pontosfiler/BSS_9/BSS9_05_hojte-1.pdf
+
+- id: magie-1950
+  kind: modern
+  citation: D. Magie, Roman Rule in Asia Minor to the End of the Third Century after Christ, 2 vols (Princeton, 1950)
+
+- id: mitchell-1993
+  kind: modern
+  citation: S. Mitchell, Anatolia. Land, Men, and Gods in Asia Minor, 2 vols (Oxford, 1993)
+
+- id: sherk-rdge
+  kind: modern
+  citation: R. K. Sherk, Roman Documents from the Greek East (Baltimore, 1969)
+
+- id: schurer-vermes
+  kind: modern
+  citation: >-
+    E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
+    rev. G. Vermes, F. Millar et al., vol. I (Edinburgh, 1973)
+
+- id: myers-2010
+  kind: modern
+  citation: E. A. Myers, The Ituraeans and the Roman Near East (Cambridge, 2010)
+
+- id: facella-2006
+  kind: modern
+  citation: >-
+    M. Facella, La dinastia degli Orontidi nella Commagene ellenistico-romana
+    (Pisa, 2006)
+
+- id: nigdelis-2007
+  kind: modern
+  citation: >-
+    P. Nigdelis, "Roman Macedonia (168 BC – AD 284)", in The History of
+    Macedonia (Thessaloniki: Museum of the Macedonian Struggle, 2007), ch. III
+  url: http://www.macedonian-heritage.gr/HistoryOfMacedonia/
+
+- id: kallet-marx-1995
+  kind: modern
+  citation: >-
+    R. M. Kallet-Marx, Hegemony to Empire: The Development of the Roman
+    Imperium in the East from 148 to 62 B.C. (Berkeley, 1995)
+
+- id: wilkes-1969
+  kind: modern
+  citation: J. J. Wilkes, Dalmatia (London, 1969)
+
+- id: dzino-2010
+  kind: modern
+  citation: D. Džino, Illyricum in Roman Politics, 229 BC–AD 68 (Cambridge, 2010)
+
+- id: richardson-1986
+  kind: modern
+  citation: >-
+    J. S. Richardson, Hispaniae: Spain and the Development of Roman
+    Imperialism, 218–82 BC (Cambridge, 1986)
+
+- id: richardson-1996
+  kind: modern
+  citation: J. S. Richardson, The Romans in Spain (Oxford, 1996)
+
+- id: ebel-1976
+  kind: modern
+  citation: >-
+    C. Ebel, Transalpine Gaul: The Emergence of a Roman Province (Leiden, 1976)
+
+- id: rivet-1988
+  kind: modern
+  citation: A. L. F. Rivet, Gallia Narbonensis (London, 1988)
+
+- id: drinkwater-1983
+  kind: modern
+  citation: >-
+    J. F. Drinkwater, Roman Gaul: The Three Provinces, 58 BC–AD 260 (London, 1983)
+
+- id: sherwin-white-1984
+  kind: modern
+  citation: A. N. Sherwin-White, Roman Foreign Policy in the East, 168 B.C. to A.D. 1 (London, 1984)
+
+- id: debevoise-1938
+  kind: modern
+  citation: N. C. Debevoise, A Political History of Parthia (Chicago, 1938)
+
+- id: braund-1994
+  kind: modern
+  citation: >-
+    D. Braund, Georgia in Antiquity: A History of Colchis and Transcaucasian
+    Iberia, 550 BC–AD 562 (Oxford, 1994)
+
+- id: schottky-1989
+  kind: modern
+  citation: >-
+    M. Schottky, Media Atropatene und Gross-Armenien in hellenistischer Zeit
+    (Bonn, 1989)
+
+- id: torok-1997
+  kind: modern
+  citation: >-
+    L. Török, The Kingdom of Kush: Handbook of the Napatan-Meroitic
+    Civilization (Leiden, 1997)
+
+- id: mattingly-2003
+  kind: modern
+  citation: >-
+    D. J. Mattingly (ed.), The Archaeology of Fazzan, vol. 1: Synthesis
+    (London, 2003)
+
+- id: behrwald-2000
+  kind: modern
+  citation: >-
+    R. Behrwald, Der lykische Bund: Untersuchungen zu Geschichte und Verfassung
+    (Bonn, 2000)
+
+- id: mitchell-2005
+  kind: modern
+  citation: >-
+    S. Mitchell, "The Treaty between Rome and Lycia of 46 BC (MS 2070)", in
+    R. Pintaudi (ed.), Papyri Graecae Schøyen (Florence, 2005) 163–250 (SEG 55.1452)
+
+- id: fraser-bean-1954
+  kind: modern
+  citation: P. M. Fraser and G. E. Bean, The Rhodian Peraea and Islands (Oxford, 1954)
+
+- id: alfoldy-1974
+  kind: modern
+  citation: G. Alföldy, Noricum (London, 1974)
+
+- id: lockyear-2004
+  kind: modern
+  citation: >-
+    K. Lockyear, "The Late Iron Age background to Roman Dacia", in W. S. Hanson
+    and I. P. Haynes (eds), Roman Dacia: The Making of a Provincial Society,
+    JRA Supplementary Series 56 (Portsmouth RI, 2004) 33–74
+
+- id: fichtl-2004
+  kind: modern
+  citation: S. Fichtl, Les peuples gaulois, IIIe–Ier siècles av. J.-C. (Paris, 2004)
+
+- id: curchin-1991
+  kind: modern
+  citation: 'L. A. Curchin, Roman Spain: Conquest and Assimilation (London, 1991)'
+
+- id: mihailov-igbulg
+  kind: modern
+  citation: G. Mihailov, Inscriptiones Graecae in Bulgaria repertae, vol. I² (Sofia, 1970)
+
+# Added for the extension to 27 BCE (September 2026). Bibliographic details were
+# checked against the publisher, a library catalogue, JSTOR or a review; a note
+# says where a work's content was read and where only its entry was confirmed.
+
+- id: cah-x
+  kind: modern
+  citation: >-
+    A. K. Bowman, E. Champlin and A. Lintott (eds), The Cambridge Ancient
+    History, vol. X², The Augustan Empire, 43 B.C.–A.D. 69 (Cambridge, 1996)
+  note: >-
+    Chapters cited: C. Pelling, "The triumviral period", ch. 1, pp. 1–69; J. A.
+    Crook, "Political history, 30 B.C. to A.D. 14", ch. 2, pp. 70–112; E. S.
+    Gruen, "The expansion of the empire under Augustus", ch. 4, pp. 147–197; B.
+    M. Levick, "Greece (including Crete and Cyprus) and Asia Minor from 43 B.C.
+    to A.D. 69", ch. 14a, pp. 641–675; A. K. Bowman, "Egypt", ch. 14b, pp.
+    676–702. Chapter pages confirmed on Cambridge Core; contents not re-read.
+
+- id: welch-2012
+  kind: modern
+  citation: >-
+    K. Welch, Magnus Pius: Sextus Pompeius and the Transformation of the Roman
+    Republic (Swansea: The Classical Press of Wales, 2012)
+
+- id: powell-welch-2002
+  kind: modern
+  citation: >-
+    K. Welch, "Sextus Pompeius and the Res Publica in 42–39 BC", in A. Powell
+    and K. Welch (eds), Sextus Pompeius (London: Duckworth and The Classical
+    Press of Wales, 2002) 31–63
+
+- id: bowersock-1965
+  kind: modern
+  citation: >-
+    G. W. Bowersock, "Zur Geschichte des römischen Thessaliens", Rheinisches
+    Museum für Philologie 108 (1965) 277–289
+  url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+  note: Open access; read. Argues from an emended Strabo 17.3.25 that Augustan Achaea included Thessaly (p. 285).
+
+- id: laffi-1992
+  kind: modern
+  citation: U. Laffi, "La provincia della Gallia Cisalpina", Athenaeum 80 (1992) 5–23
+  note: Entry from index records; the article has not been read.
+
+- id: vnukov-kovalenko-2007
+  kind: modern
+  citation: >-
+    S. J. Vnukov and S. A. Kovalenko, "A Unique Gold Stater of the Bosporan
+    King Asander", Journal of the Numismatic Association of Australia 18 (2007)
+    19–22
+  url: https://numismatics.org.au/wp-content/uploads/2021/06/Vol-18-Article-2.pdf
+  note: Open access; read.
+
+- id: perea-yebenes-2017
+  kind: modern
+  citation: >-
+    S. Perea Yébenes, "Triumphatores ex Hispania (36–26 a.C.) según los Fasti
+    Triumphales", Gerión 35, Nº Esp. (2017) 121–149
+  url: https://revistas.ucm.es/index.php/GERI/article/view/56141
+  note: Open access; read.
+
+- id: villanueva-acuna-2011
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Problemas en torno a la organización administrativa
+    del Noroeste en los inicios del Imperio", Hispania Antiqua 35 (2011) 67–82
+  url: https://dialnet.unirioja.es/descarga/articulo/4087395.pdf
+  note: Open access; read.
+
+- id: villanueva-acuna-2016
+  kind: modern
+  citation: >-
+    M. Villanueva Acuña, "Reflexiones sobre el proceso de control del territorio
+    galaico y la creación de las divisiones administrativas augusteas", Hispania
+    Antiqua 40 (2016) 119–134
+  url: https://dialnet.unirioja.es/descarga/articulo/5843322.pdf
+  note: Abstract read.
+
+- id: goudineau-1990
+  kind: modern
+  citation: >-
+    C. Goudineau, "Les provinces de Gaule : problèmes d'histoire et de
+    géographie", in Mélanges Pierre Lévêque 5 (Besançon, 1990) 161–176
+  url: https://www.persee.fr/doc/ista_0000-0000_1990_ant_429_1_1293
+
+- id: fishwick-shaw-1977
+  kind: modern
+  citation: >-
+    D. Fishwick and B. D. Shaw, "The Formation of Africa Proconsularis", Hermes
+    105 (1977) 369–380
+
+- id: fishwick-1993
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, I: The amalgamation of
+    Africa Vetus and Africa Nova", Antiquités africaines 29 (1993) 53–62
+  url: https://www.persee.fr/doc/antaf_0066-4871_1993_num_29_1_1211
+
+- id: fishwick-1994
+  kind: modern
+  citation: >-
+    D. Fishwick, "On the origins of Africa Proconsularis, II: The administration
+    of Lepidus and the commission of M. Caelius Phileros", Antiquités africaines
+    30 (1994) 57–80
+  url: https://www.persee.fr/doc/antaf_0066-4871_1994_num_30_1_1222
+
+- id: amela-valverde-2012
+  kind: modern
+  citation: >-
+    L. Amela Valverde, "La situación de Mauretania a finales del Segundo
+    Triunvirato e inicios del principado de Augusto", Gerión 30 (2012) 149–167
+  url: https://revistas.ucm.es/index.php/GERI/article/view/41808
+  note: Open access; read. A survey of the scholarly positions on Mauretania 38–25.
+
+- id: holbl-2001
+  kind: modern
+  citation: >-
+    G. Hölbl, A History of the Ptolemaic Empire, trans. T. Saavedra (London and
+    New York: Routledge, 2001)
+
+- id: hoffmann-2009
+  kind: modern
+  citation: >-
+    F. Hoffmann, M. Minas-Nerpel and S. Pfeiffer, Die dreisprachige Stele des C.
+    Cornelius Gallus. Übersetzung und Kommentar, Archiv für Papyrusforschung,
+    Beiheft 9 (Berlin and New York: de Gruyter, 2009)
+  note: Known here through its review, BMCR 2010.11.03.
+
+- id: rpc-i
+  kind: modern
+  citation: >-
+    A. Burnett, M. Amandry and P. P. Ripollès, Roman Provincial Coinage I: From
+    the Death of Caesar to the Death of Vitellius (44 BC–AD 69) (London and
+    Paris, 1992; Supplement 1998)
+  url: https://rpc.ashmus.ox.ac.uk
+
+- id: luke-2025
+  kind: modern
+  citation: >-
+    T. Luke, "Valerius Maximus on the fate of Ariarathes X", Ancient History
+    Bulletin 39.1–2 (2025) 38–70
+  url: https://www.ancienthistorybulletin.org/subscribed-users-area/wp-content/uploads/2025/06/Luke.pdf
+  note: Read.
+
+- id: cayla-2017
+  kind: modern
+  citation: >-
+    J.-B. Cayla, "Antoine, Cléopâtre, et les technites dionysiaques à Chypre",
+    Bulletin de correspondance hellénique 141.1 (2017) 313–336
+  url: https://journals.openedition.org/bch/548
+
+- id: bingen-2007
+  kind: modern
+  citation: >-
+    J. Bingen, "Cleopatra VII Philopatris", in R. S. Bagnall (ed.), Hellenistic
+    Egypt: Monarchy, Society, Economy, Culture (Edinburgh, 2007) 57–62
+
+- id: segal-1970
+  kind: modern
+  citation: J. B. Segal, Edessa, 'The Blessed City' (Oxford, 1970)
+  note: The Edessene king-list, whose early names and dates Segal says "should … be regarded with caution".
+
+- id: bowersock-1983
+  kind: modern
+  citation: G. W. Bowersock, Roman Arabia (Cambridge, MA, 1983)
+
+- id: kokkinos-1998
+  kind: modern
+  citation: >-
+    N. Kokkinos, The Herodian Dynasty: Origins, Role in Society and Eclipse
+    (Sheffield, 1998)
+
+- id: barrington
+  kind: modern
+  citation: >-
+    R. J. A. Talbert (ed.), Barrington Atlas of the Greek and Roman World
+    (Princeton, 2000)
+  note: Reference only — cited, never digitised from (DESIGN §6).
+
+# --- ancient texts -------------------------------------------------------------
+
+- id: caesar-bg
+  kind: ancient
+  citation: Caesar, De Bello Gallico (book VIII by A. Hirtius)
+
+- id: cicero-deiotaro
+  kind: ancient
+  citation: Cicero, Pro Rege Deiotaro
+
+- id: cicero-fam
+  kind: ancient
+  citation: Cicero, Epistulae ad Familiares
+
+- id: appian
+  kind: ancient
+  citation: Appian, Roman History
+
+- id: plutarch
+  kind: ancient
+  citation: Plutarch, Parallel Lives
+
+- id: cassius-dio
+  kind: ancient
+  citation: Cassius Dio, Roman History
+
+- id: pausanias
+  kind: ancient
+  citation: Pausanias, Description of Greece
+
+- id: caesar-bc
+  kind: ancient
+  citation: Caesar, De Bello Civili
+
+- id: cicero-att
+  kind: ancient
+  citation: Cicero, Epistulae ad Atticum
+
+- id: cicero-pis
+  kind: ancient
+  citation: Cicero, In Pisonem
+
+- id: cicero-verr
+  kind: ancient
+  citation: Cicero, In Verrem
+
+- id: cicero-font
+  kind: ancient
+  citation: Cicero, Pro Fonteio
+
+- id: suetonius-iul
+  kind: ancient
+  citation: Suetonius, Divus Iulius
+
+- id: josephus-bj
+  kind: ancient
+  citation: Josephus, Bellum Iudaicum
+
+- id: cicero-phil
+  kind: ancient
+  citation: Cicero, Philippicae
+
+- id: bellum-alexandrinum
+  kind: ancient
+  citation: '[Caesar], Bellum Alexandrinum'
+
+- id: eutropius
+  kind: ancient
+  citation: Eutropius, Breviarium
+
+- id: jordanes-getica
+  kind: ancient
+  citation: Jordanes, Getica
+
+- id: josephus-aj
+  kind: ancient
+  citation: Josephus, Antiquitates Iudaicae
+
+- id: strabo
+  kind: ancient
+  citation: Strabo, Geography
+
+- id: cicero-arch
+  kind: ancient
+  citation: Cicero, Pro Archia
+
+- id: cicero-sest
+  kind: ancient
+  citation: Cicero, Pro Sestio
+
+- id: livy-per
+  kind: ancient
+  citation: Livy, Periochae
+
+- id: sallust-hist
+  kind: ancient
+  citation: Sallust, Historiae
+  note: Fragments cited by Maurenbrecher's numbering (M).
+
+- id: velleius
+  kind: ancient
+  citation: Velleius Paterculus, Historiae Romanae
+
+- id: bellum-africum
+  kind: ancient
+  citation: '[Caesar], Bellum Africum'
+
+- id: res-gestae
+  kind: ancient
+  citation: Augustus, Res Gestae Divi Augusti
+
+- id: suetonius-aug
+  kind: ancient
+  citation: Suetonius, Divus Augustus
+
+- id: lucian-macrobii
+  kind: ancient
+  citation: '[Lucian], Macrobii'
+
+- id: florus
+  kind: ancient
+  citation: Florus, Epitome of Roman History
+
+- id: orosius
+  kind: ancient
+  citation: Orosius, Historiae adversus paganos
+
+- id: philae-stele
+  kind: ancient
+  citation: >-
+    The trilingual stele of C. Cornelius Gallus, Philae, 29 BCE (CIL III
+    14147.5 = ILS 8995 = OGIS 654)
+  url: https://www.attalus.org/docs/ogis/s654.html
+
+- id: macrobius-sat
+  kind: ancient
+  citation: Macrobius, Saturnalia
+
+- id: suetonius-tib
+  kind: ancient
+  citation: Suetonius, Tiberius
+
+# --- added September 2026: the extension to 133 BCE, Africa and Egypt ------------
+
+- id: sallust-jug
+  kind: ancient
+  citation: Sallust, Bellum Iugurthinum
+  note: Cited by chapter and section; read in Rolfe's Loeb translation on ToposText.
+
+- id: justin
+  kind: ancient
+  citation: Justin, Epitome of the Philippic History of Pompeius Trogus
+
+- id: lex-de-provinciis-praetoriis
+  kind: ancient
+  citation: >-
+    The Roman law on the praetorian provinces and the pirates, 101/100 BCE, in
+    Greek copies from Delphi (SEG III 378) and Cnidus (SEG XXVI 1227); M. H.
+    Crawford (ed.), Roman Statutes (London, 1996) no. 12
+  note: >-
+    Not read in the original here; its mention of the kings of Egypt, Cyprus and
+    Cyrene is as Bennett (Egyptian Royal Genealogy, "Ptolemy Apion") reports it.
+
+- id: bennett-ptolemies
+  kind: modern
+  citation: >-
+    C. J. Bennett, Egyptian Royal Genealogy: the Ptolemaic Dynasty (Tyndale
+    House, Cambridge, web edition)
+  url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/
+  note: >-
+    Read: the entries for Ptolemy VIII, IX, X and XII, Ptolemy Apion, Ptolemy of
+    Cyprus and Cleopatra II, each of which sets out the dated documents behind
+    the reign. Cited by entry.
+
+- id: eller-2025
+  kind: modern
+  citation: >-
+    A. Eller, "Borders and Frontiers of Ptolemaic and Roman Egypt. The Case of
+    Lower Nubia", Études et Travaux 38 (2025), 61–84
+  url: https://doi.org/10.12775/EtudTrav.38.003
+  note: Open access; read. Cited by page.
+
+# --- datasets ------------------------------------------------------------------
+
+- id: natural-earth
+  kind: dataset
+  citation: Natural Earth, 1:10m physical vectors — land
+  url: https://www.naturalearthdata.com/
+  licence: public domain
+  note: >-
+    Land (ne_10m_land plus ne_10m_minor_islands) is what every atom outline is
+    clipped to (pipeline/src/atoms/land.ts). The map draws the OSM coast; the
+    political bake gives the slivers between the two to the nearest atom.
+
+- id: pleiades
+  kind: dataset
+  citation: Pleiades, a gazetteer of past places
+  url: https://pleiades.stoa.org/
+  licence: CC-BY-3.0
+  note: Locators are the place path, e.g. places/423025.
+
+# --- physical geography: floodplains and the Nile branches ---------------------
+# Added September 2026 for the floodplain records in features.yaml. Floodplain
+# shapes are derived from terrain (pipeline/src/features/derive-floodplains.ts);
+# the modern works below are cited for the regions' extents, the branch courses
+# and the figures the derived areas are checked against — never traced.
+
+- id: herodotus
+  kind: ancient
+  citation: Herodotus, Histories
+
+- id: butzer-1976
+  kind: modern
+  citation: >-
+    K. W. Butzer, Early Hydraulic Civilization in Egypt: A Study in Cultural
+    Ecology (Chicago, 1976)
+
+- id: bunbury-2019
+  kind: modern
+  citation: >-
+    J. Bunbury, The Nile and Ancient Egypt: Changing Land- and Waterscapes, from
+    the Neolithic to the Roman Era (Cambridge, 2019)
+
+- id: toussoun-1922
+  kind: modern
+  citation: >-
+    O. Toussoun, Mémoire sur les anciennes branches du Nil, Mémoires de l'Institut
+    d'Égypte 4 (Cairo, 1922)
+
+- id: bietak-1975
+  kind: modern
+  citation: >-
+    M. Bietak, Tell el-Dab‘a II: Der Fundort im Rahmen einer
+    archäologisch-geographischen Untersuchung über das ägyptische Ostdelta
+    (Vienna, 1975)
+
+- id: ball-1939
+  kind: modern
+  citation: J. Ball, Contributions to the Geography of Egypt (Cairo, 1939)
+
+- id: caton-thompson-gardner-1934
+  kind: modern
+  citation: G. Caton-Thompson and E. W. Gardner, The Desert Fayum (London, 1934)
+
+- id: adams-1981
+  kind: modern
+  citation: >-
+    R. McC. Adams, Heartland of Cities: Surveys of Ancient Settlement and Land Use
+    on the Central Floodplain of the Euphrates (Chicago, 1981)
+
+- id: mapterhorn
+  kind: dataset
+  citation: Mapterhorn terrain tiles (Terrarium encoding), mostly Copernicus GLO-30 in these regions
+  url: https://mapterhorn.com/
+  licence: various open (per-source; Copernicus DEM licence for GLO-30) — terms of the hosted tiles unverified
+  usedBy: pipeline/src/rome/plate.ts
+  note: >-
+    Offline input to derive-floodplains, z10 (~70 m). Heights are whole metres at
+    z≤11. It is a surface model, so towns stand up. Also the contours on the plan of
+    Rome, from z13 (~19 m) smoothed over ~45 m so the modern city's buildings do not
+    trace themselves: the relief is today's, a few metres above the ancient ground.
+
+- id: itinere
+  kind: dataset
+  citation: >-
+    P. de Soto, A. Pažout, T. Brughmans et al., Itiner-e: A high-resolution
+    dataset of roads of the Roman Empire, static version 2024 (Scientific Data,
+    2025)
+  url: https://doi.org/10.5281/zenodo.17122148
+  licence: CC BY 4.0
+  usedBy: pipeline/src/roads/build.ts, pipeline/src/rome/streets.ts
+  note: >-
+    Roads, drawn only where the source dates their construction to 27 BCE or
+    earlier (pipeline/src/roads), or where data/road-corrections.yaml dates a line
+    it leaves undated. Its GeoJSON is EPSG:3395, not 4326. On the plan of Rome the
+    consular roads take up its lines outside the later Aurelian Wall, where they
+    keep to the ancient roads (pipeline/src/rome/roads.ts); inside it they run to
+    one point in the Forum and are not used. Locators are its line names
+    ("Tarracinae-Rome").
+
+- id: dprr
+  kind: dataset
+  citation: >-
+    Digital Prosopography of the Roman Republic (DPRR), King's College London,
+    ed. H. Mouritsen and M. Robb (2017)
+  url: https://romanrepublic.ac.uk/
+  licence: CC BY-NC 4.0
+  usedBy: pipeline/src/people/build.ts
+  note: >-
+    People, offices, family relationships and statuses, fetched from its SPARQL
+    endpoint (pipeline/src/people/dprr.ts). Kept in build/people/ only and never
+    copied into data/, because NC cannot be relicensed under our CC BY-SA
+    (PEOPLE.md §2).
+
+- id: wikidata-dprr
+  kind: dataset
+  citation: Wikidata, items with a DPRR id (property P6863)
+  url: https://www.wikidata.org/wiki/Property:P6863
+  licence: CC0 1.0
+  usedBy: pipeline/src/people/build.ts
+  note: English names, descriptions and aliases for DPRR people, so search finds "Pompey".
+
+- id: hydrorivers
+  kind: dataset
+  citation: B. Lehner and G. Grill, HydroRIVERS v1.0 (HydroSHEDS), 2013
+  url: https://www.hydrosheds.org/products/hydrorivers
+  licence: HydroSHEDS licence (free for non-commercial and commercial use, with attribution) — to verify
+  note: Modern main-stem channels used as the height-above-channel reference.
+
+- id: hydrolakes
+  kind: dataset
+  citation: M. L. Messager et al., HydroLAKES v1.0, Nature Communications 7 (2016)
+  url: https://www.hydrosheds.org/products/hydrolakes
+  licence: CC-BY-4.0
+
+- id: osm-land-polygons
+  kind: dataset
+  citation: OpenStreetMap land polygons (split, WGS84), osmdata.openstreetmap.de
+  url: https://osmdata.openstreetmap.de/data/land-polygons.html
+  licence: ODbL-1.0
+
+- id: pliny-nh
+  kind: ancient
+  citation: Pliny the Elder, Naturalis Historia
+  url: https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Pliny_the_Elder/home.html
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    16.36: Rome roofed with shingles until the war with Pyrrhus, so with tiles in
+    the window (the model's tiled roofs).
+
+# --- modern engineering (landscape corrections) --------------------------------
+
+- id: karabell-2003
+  kind: modern
+  citation: >-
+    Z. Karabell, Parting the Desert: The Creation of the Suez Canal (New York:
+    Knopf, 2003)
+  note: The canal was cut 1859–69 and opened in November 1869; the parallel New
+    Suez Canal channels opened in 2015.
+
+- id: corinth-canal-1893
+  kind: modern
+  citation: >-
+    The Corinth Canal, cut 1881–1893 across the Isthmus of Corinth; general
+    reference (to be replaced by a specific engineering history)
+  note: Nero's attempt of 67 CE was abandoned; in our period ships were hauled
+    across on the diolkos.
+
+- id: escwa-bgr-2013
+  kind: modern
+  citation: >-
+    UN-ESCWA and BGR, Inventory of Shared Water Resources in Western Asia
+    (Beirut, 2013), chapter on the Tigris basin
+  note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
+    into the Tharthar depression from 1956.
+
+# --- the city of Rome (the plan, DESIGN.md §7.7) ------------------------------
+# Added September 2026 for data/places/rome.yaml. Dates come from Platner &
+# Ashby, each article checked on LacusCurtius; outlines from OpenStreetMap, which
+# traces what survives on the ground today (the record says when that is a later
+# rebuilding on the same site); locations from Pleiades where it has the monument.
+
+- id: platner-ashby
+  kind: modern
+  citation: >-
+    S. B. Platner, completed and revised by T. Ashby, A Topographical Dictionary
+    of Ancient Rome (London: Oxford University Press, 1929)
+  url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/home.html
+  note: >-
+    Public domain; transcribed on LacusCurtius by B. Thayer, one page per article.
+    Locators are the article's page there and its pages in the book ("Pons
+    Fabricius, p. 400"), and link to it. Its dates are the ancient sources' and
+    have stood; its identifications predate the excavations of the 1930s (Largo
+    Argentina, the Forum Boarium temples), which is why those monuments are not
+    yet drawn.
+  usedBy: pipeline/src/rome/model.ts
+
+- id: sitar
+  kind: dataset
+  citation: >-
+    SITAR, Sistema Informativo Territoriale Archeologico di Roma (Soprintendenza
+    Speciale Archeologia Belle Arti e Paesaggio di Roma): the archaeological
+    partitions ("partizioni archeologiche") of street infrastructure, fetched through
+    its WFS
+  url: https://www.archeositarproject.it/en/piattaforma/open-data/
+  licence: CC-BY-SA-4.0
+  note: >-
+    Every piece of ancient street an excavation in Rome has found (paving, kerbs,
+    ramps, steps), outlined where it was found and dated. Locators are its numbers
+    (codice PA). The pieces in and around the Servian Wall that may have stood in
+    68–27 BCE are copied into data/geometry/rome-sitar.geojson (pipeline/src/rome/
+    sitar.ts), with the date they were fetched. Most are dated only "Roman" (509
+    BCE–476 CE). Some are SITAR's own digitising of Lanciani's Forma Urbis Romae
+    (1893–1901), which it says in the piece's description.
+    The heights it records of what excavations found (its altimetry) give the
+    ancient valley floors: those on ground walked on are copied into
+    data/geometry/rome-levels.geojson, with the piece each belongs to.
+    Its reconstruction of the Servian Wall's whole course (19694, made for the
+    2017 "Roma medio repubblicana" conference) and the pieces of the wall, its
+    agger, ditch and gates are copied into data/geometry/rome-servian.geojson: the
+    model's wall stands on that course (pipeline/src/rome/servian.ts).
+    The pieces of the consular roads' paving outside the wall that the model's roads
+    pass through, and its reconstructions of three of their courses (the Via
+    Flaminia, 16890; the Appia's first mile, 19681; the Latina, 19682), are copied
+    into data/geometry/rome-roads.geojson (pipeline/src/rome/roads.ts).
+
+- id: digital-augustan-rome
+  kind: modern
+  citation: >-
+    D. G. Romano et al., Digital Augustan Rome (University of Arizona,
+    Archaeological Mapping Lab), the successor to L. Haselberger, D. G. Romano and
+    E. A. Dumser (eds.), Mapping Augustan Rome, JRA Supplement 50 (2002)
+  url: https://www.digitalaugustanrome.org/
+  note: >-
+    A plan of the city in 14 CE, its streets "attested / hypothetical", with an
+    entry for each. Read as a scholarly source for which streets there were and
+    roughly where; none of its drawing is copied, since it carries no licence.
+    Locators are its entry titles.
+
+- id: digitales-forum-romanum
+  kind: modern
+  citation: >-
+    S. Muth (ed.), Digitales Forum Romanum (Humboldt-Universität zu Berlin): the
+    Forum's buildings phase by phase, with their bibliographies
+  url: https://www.projekte.hu-berlin.de/de/digitales-forum-romanum
+  note: >-
+    Read for the Late Republican phases of the Forum's buildings (its "Späte Republik
+    II"), which Platner & Ashby could not separate from the Augustan and later ones;
+    its reconstructions of buildings with no remains (the Curia Hostilia, the
+    Basilicae Porcia and Opimia) are hypotheses and are drawn as such. Locators are
+    its building pages. Nothing is copied.
+
+- id: sovrintendenza-capitolina
+  kind: modern
+  citation: >-
+    Sovrintendenza Capitolina ai Beni Culturali, Roma Capitale: the pages on the
+    monuments of ancient Rome in its care
+  url: https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/monumenti
+  note: >-
+    The measurements and dates of what stands (the Mausoleum of Augustus, the
+    bridges, the Porticus Aemilia, the Tomb of the Scipios). Locators are its page
+    titles.
+
+- id: musei-capitolini
+  kind: modern
+  citation: >-
+    Musei Capitolini, Roma Capitale: the pages on the Capitol's temple of Jupiter,
+    the Tabularium and the temple of Veiovis
+  url: https://www.museicapitolini.org/
+  note: >-
+    The results of the excavations since Platner & Ashby under the Palazzo
+    Caffarelli and the Palazzo Senatorio. Locators are its page titles.
+
+- id: osm-rome
+  kind: dataset
+  citation: >-
+    OpenStreetMap contributors, outlines of ancient monuments in Rome, fetched
+    through the Overpass API
+  url: https://www.openstreetmap.org/
+  licence: ODbL-1.0
+  note: >-
+    Locators are OpenStreetMap elements ("way/131451564") and link to them. The
+    outlines are of the remains as they stand, surveyed on modern imagery, so a
+    temple rebuilt in the empire on its republican podium is outlined as rebuilt.
+    Copied into data/geometry/rome.geojson with the date it was fetched.
+
+# --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
+# Added September 2026. No record cites these: they are the methods and the
+# evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).
+# None of it is traced; the figures are comparanda, several from other cities.
+
+- id: vanegas-2012
+  kind: modern
+  citation: >-
+    C. A. Vanegas, T. Kelly, B. Weber, J. Halatsch, D. G. Aliaga and P. Müller,
+    "Procedural Generation of Parcels in Urban Modeling", Computer Graphics Forum
+    31.2 (2012)
+  url: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8659.2012.03047.x
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    The lots: strips along each street edge of a block, cut to a depth and split
+    along the street, the corners mitred, the middle left as courtyards.
+
+- id: emilien-2012
+  kind: modern
+  citation: >-
+    A. Emilien, A. Bernhardt, A. Peytavie, M.-P. Cani and E. Galin, "Procedural
+    Generation of Villages on Arbitrary Terrains", The Visual Computer 28 (2012)
+  url: https://perso.liris.cnrs.fr/eric.galin/Articles/2012-villages.pdf
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    With Galin et al. 2011, the main streets: cheapest paths over the terrain that
+    shun slopes, so they follow the valleys. And the lanes grown one off another
+    (growth.ts).
+
+- id: weber-2009
+  kind: modern
+  citation: >-
+    B. Weber, P. Müller, P. Wonka and M. Gross, "Interactive Geometric Simulation
+    of 4D Cities", Computer Graphics Forum 28.2 (2009)
+  url: http://www.peterwonka.net/Publications/pdfs/2009.EG.Weber.UrbanSimulation.FinalVersion.pdf
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    The lanes: grown off the streets already there, and made to meet a street
+    just ahead, end in a junction close by, and keep off one another.
+
+- id: chen-2008
+  kind: modern
+  citation: >-
+    G. Chen, G. Esch, P. Wonka, P. Müller and E. Zhang, "Interactive Procedural
+    Street Modeling", ACM Transactions on Graphics 27.3 (2008)
+  url: https://web.engr.oregonstate.edu/~zhange/images/street_sig08.pdf
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    The one field of directions the lanes follow: along the contours on a slope,
+    and square or parallel to the streets round them elsewhere.
+
+- id: courtat-2011
+  kind: modern
+  citation: >-
+    T. Courtat, C. Gloaguen and S. Douady, "Mathematics and Morphogenesis of
+    Cities: A Geometrical Approach", Physical Review E 83 (2011)
+  url: https://arxiv.org/abs/1010.1762
+  usedBy: pipeline/src/rome/growth.ts
+  note: >-
+    A lane carried on across a street from one opposite, so that streets continue
+    through junctions as the streets of grown towns do.
+
+- id: galin-2011
+  kind: modern
+  citation: >-
+    E. Galin, A. Peytavie, E. Guérin and B. Beneš, "Authoring Hierarchical Road
+    Networks", Computer Graphics Forum 30.7 (2011)
+  url: https://onlinelibrary.wiley.com/doi/10.1111/j.1467-8659.2011.02055.x
+  usedBy: pipeline/src/rome/city.ts
+
+- id: dylla-2009
+  kind: modern
+  citation: >-
+    K. Dylla, B. Frischer, P. Müller, A. Ulmer and S. Haegler, "Rome Reborn 2.0: A
+    Case Study of Virtual City Reconstruction Using Procedural Modeling
+    Techniques", Computer Applications and Quantitative Methods in Archaeology
+    (CAA 2009)
+  url: https://proceedings.caaconference.org/files/2009/09_Dylla_et_al_CAA2009.pdf
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    How Rome Reborn built its generic buildings: masses scanned from Gismondi's
+    model, detailed by rules from archaeological plans, counted by region from
+    the regionary catalogues. The lesson taken: a plausible block plan first.
+
+- id: forma-urbis-stanford
+  kind: modern
+  citation: >-
+    Stanford Digital Forma Urbis Romae Project: the Severan Marble Plan of Rome
+    (203–211 CE), its fragments
+  url: https://formaurbis.stanford.edu/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    Rows of shops on the streets, blocks of flats of small rooms round courtyards,
+    atrium houses beside them, built wall to wall (e.g. fragment 10g, the Subura).
+    Imperial, not Republican.
+
+- id: reynolds-expedition
+  kind: modern
+  citation: >-
+    D. W. Reynolds, "The Lost Architecture of Ancient Rome", Expedition (Penn
+    Museum)
+  url: https://www.penn.museum/sites/expedition/the-lost-architecture-of-ancient-rome/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    What the Marble Plan shows of ordinary buildings: shops flanking house doors,
+    flats round courtyards, rich and poor side by side.
+
+- id: poehler-2017
+  kind: modern
+  citation: E. E. Poehler, The Traffic Systems of Pompeii (Oxford, 2017)
+  url: https://bmcr.brynmawr.edu/2018/2018.09.22/
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    Pompeii's streets mostly 2–4 m wide and one lane, the main ones about 7 m: the
+    local and main street widths (the URL is the BMCR review).
+
+- id: pecs-cosa
+  kind: modern
+  citation: >-
+    R. Stillwell (ed.), The Princeton Encyclopedia of Classical Sites
+    (Princeton, 1976), "Cosa"
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0006:entry=cosa
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    A Latin colony of 273 BCE: blocks about 35 m by 80 m between streets of about
+    4 m — the block sizes the valleys are split down to.
+
+- id: dionysius
+  kind: ancient
+  citation: Dionysius of Halicarnassus, Roman Antiquities
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/home.html
+  note: >-
+    Written in Rome about 7 BCE: the Circus Maximus as Caesar had rebuilt it (3.68),
+    the hut of Romulus (1.79.11), the Pons Sublicius (3.45).
+
+- id: livy
+  kind: ancient
+  citation: Livy, Ab Urbe Condita
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book%3D5:chapter%3D55
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    5.55: Rome rebuilt after the Gallic sack with no care for straight streets,
+    "casually built upon … rather than regularly planned". 21.62: a third storey
+    in 218 BCE.
+
+- id: tacitus-ann
+  kind: ancient
+  citation: Tacitus, Annales
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Tacitus/Annals/15B*.html
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    15.38: before 64 CE, "narrow, twisting lanes and formless streets"; 15.43:
+    Nero's rule that each building have its own walls, implying shared walls
+    before.
+
+- id: varro-ll
+  kind: ancient
+  citation: Varro, De Lingua Latina
+  usedBy: pipeline/src/rome/city.ts
+  note: 5.145–146, the kinds of street, from via and vicus to angiportum and the dead-end fundula.
+
+- id: cicero-agr
+  kind: ancient
+  citation: Cicero, De Lege Agraria
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0013:text=Agr.:speech=2:chapter=35:section=96
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    2.96 (63 BCE): Rome "raised up and hanging on its upper floors", "non optimis
+    viis, angustissimis semitis" — tall and crowded in the late Republic.
+
+- id: vitruvius
+  kind: ancient
+  citation: Vitruvius, De Architectura
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/2*.html
+  usedBy: pipeline/src/rome/city.ts
+  note: >-
+    2.8.17: Rome builds upward for want of ground; 6.3: the atrium house.
+
+# --- the aqueducts of Rome (DESIGN.md §7.7) --------------------------------------
+# Added September 2026 for the aqueduct records in places/rome.yaml and their
+# courses and arcades (pipeline/src/rome/aqueducts.ts).
+
+- id: frontinus
+  kind: ancient
+  citation: Frontinus, De Aquaeductu Urbis Romae
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/Bennett/1*.html
+  usedBy: pipeline/src/rome/aqueducts.ts
+  note: >-
+    Book 1: each aqueduct's builders and date, its length in paces with how much
+    runs underground, on substructures and on arches (1 pace = 1.485 m), where it
+    enters the city, the order of their levels (1.18), and the Marcia, Tepula and
+    Julia on one arcade, Julia topmost (1.19). Bennett's Loeb translation on
+    LacusCurtius; the Latin is on the same site.
+
+- id: ashby-1935
+  kind: modern
+  citation: T. Ashby, The Aqueducts of Ancient Rome (Oxford, 1935)
+  url: https://archive.org/details/1935TheAqueductsOfAncientRomeThomasAshby
+  usedBy: pipeline/src/rome/aqueducts.ts
+  note: >-
+    The courses near Rome from the remains, the construction and measurements of
+    the Republican arcades (piers of tufa, voussoirs of peperino, spans of about
+    5.4 m), and the surveyed levels of each channel. Locators are the book's pages.
+
+# --- the houses of the model of Rome (DESIGN.md §7.7) ----------------------------
+# Added September 2026 for the doors, shops, windows and tiled roofs painted on the
+# generated houses (packages/engine/src/rome/ModelLayer.ts). The patterns are
+# illustrative; these are the evidence for what they show.
+
+- id: wallace-hadrill-1994
+  kind: modern
+  citation: >-
+    A. Wallace-Hadrill, Houses and Society in Pompeii and Herculaneum (Princeton,
+    1994)
+  url: https://press.princeton.edu/books/paperback/9780691029092/houses-and-society-in-pompeii-and-herculaneum
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    The house front of the two towns: the door into the atrium, shops either side
+    of it, few windows onto the street. Pompeii and Herculaneum as they were buried
+    in 79 CE, so comparanda for Republican Rome, not evidence of it.
+
+- id: ellis-2018
+  kind: modern
+  citation: >-
+    S. J. R. Ellis, The Roman Retail Revolution: The Socio-Economic World of the
+    Taberna (Oxford, 2018)
+  url: https://global.oup.com/academic/product/the-roman-retail-revolution-9780198769934
+  usedBy: packages/engine/src/rome/ModelLayer.ts
+  note: >-
+    The taberna: a single room open to the street across most of its width, in rows
+    along the street fronts. Its shuttered thresholds spread mostly under the
+    empire, after the window, so the model draws the shops as plain openings.
+
+# --- the gardens, groves and country round Rome (DESIGN.md §7.7) ------------------
+# The recorded gardens and groves cite these by page; the generated farmland of the
+# model (pipeline/src/rome/fields.ts) is illustrative, and these are the evidence for
+# what it shows.
+
+- id: richardson-1992
+  kind: modern
+  citation: >-
+    L. Richardson, jr, A New Topographical Dictionary of Ancient Rome (Baltimore and
+    London: Johns Hopkins University Press, 1992)
+  note: >-
+    The successor to Platner & Ashby, with the excavations since 1929. Locators are
+    its entry titles and pages.
+
+- id: horace-sat
+  kind: ancient
+  citation: Horace, Satires (Sermones)
+  note: >-
+    Book 1 was published about 35 BCE. 1.8: the Esquiline's burial ground made
+    healthy ground and gardens; 1.9.18: Caesar's gardens across the Tiber.
+
+- id: asconius
+  kind: ancient
+  citation: Asconius, Commentary on Cicero's Pro Milone
+  url: https://www.attalus.org/latin/asconius2.html
+  note: Cited by the pages of A. C. Clark's edition (Oxford, 1907).
+
+- id: cicero-nd
+  kind: ancient
+  citation: Cicero, De Natura Deorum
+
+- id: ps-cicero-in-sallustium
+  kind: ancient
+  citation: '[Cicero], Invectiva in Sallustium'
+  url: https://penelope.uchicago.edu/Thayer/L/Roman/Texts/Cicero/pseudo/In_Sallustium*.html
+  note: A speech falsely ascribed to Cicero, of disputed date (probably early empire).
+
+- id: de-viris-illustribus
+  kind: ancient
+  citation: '[Aurelius Victor], De Viris Illustribus'
+
+- id: varro-rr
+  kind: ancient
+  citation: Varro, De Re Rustica (On Agriculture)
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Varro/de_Re_Rustica/1*.html
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    1.16.3: near a city it pays to grow gardens on a large scale, "of violets and
+    roses", and whatever the city buys; 1.29 and 1.32: the fallow ploughed in
+    spring and summer, the grain reaped in summer. Written in 37 BCE.
+
+- id: cato-agr
+  kind: ancient
+  citation: Cato, De Agri Cultura (On Agriculture)
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/A*.html
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    7.1: on a farm near the city, timber and faggots to sell and several kinds of
+    vine; 7.3–4: fruit trees and olives; 8.1: a hay meadow, a water meadow where
+    possible; 8.2: near a town, a garden of vegetables and flowers for garlands.
+
+- id: cicero-leg
+  kind: ancient
+  citation: Cicero, De Legibus
+  usedBy: pipeline/src/rome/model.ts
+  note: >-
+    2.58: the Twelve Tables' rule that no dead man be buried or burned in the city,
+    which is why the tombs line the roads out of it.
+
+- id: champlin-1982
+  kind: modern
+  citation: E. Champlin, "The Suburbium of Rome", American Journal of Ancient History 7 (1982), 97–117
+  usedBy: pipeline/src/rome/fields.ts
+
+- id: morley-1996
+  kind: modern
+  citation: >-
+    N. Morley, Metropolis and Hinterland: The City of Rome and the Italian Economy,
+    200 B.C.–A.D. 200 (Cambridge, 1996)
+  usedBy: pipeline/src/rome/fields.ts
+  note: >-
+    Chapter 4, "The transformation of the Roman suburbium", pp. 83–107: market
+    gardening, orchards and specialised produce for the city in the ring close
+    round it, grain and pasture further out.
+
+- id: witcher-2005
+  kind: modern
+  citation: >-
+    R. Witcher, "The extended metropolis: urbs, suburbium and population", Journal
+    of Roman Archaeology 18 (2005), 120–138
+  url: https://doi.org/10.1017/S1047759400007248
+  usedBy: pipeline/src/rome/fields.ts
+
+- id: purcell-1987-tomb
+  kind: modern
+  citation: >-
+    N. Purcell, "Tomb and suburb", in H. von Hesberg and P. Zanker (eds), Römische
+    Gräberstrassen: Selbstdarstellung – Status – Standard (Munich, 1987), 25–41
+  usedBy: pipeline/src/rome/model.ts
+  note: The tombs along the roads out of Rome, and the suburb they stood in.
+
+- id: purcell-1987-town
+  kind: modern
+  citation: >-
+    N. Purcell, "Town in country and country in town", in E. B. MacDougall (ed.),
+    Ancient Roman Villa Gardens (Washington, DC: Dumbarton Oaks, 1987), 185–203
+  usedBy: pipeline/src/rome/fields.ts
+
+# --- the roads out of Rome (DESIGN.md §7.4, §7.7) ---------------------------------
+# Added September 2026 for data/road-corrections.yaml and the consular roads the
+# model of Rome draws from its gates (pipeline/src/rome/roads.ts). Ashby walked and
+# surveyed the roads of the Campagna; his papers give each one's course from the
+# gate, the finds along it and how far the modern road keeps to it.
+
+- id: ashby-1902
+  kind: modern
+  citation: >-
+    T. Ashby, "The Classical Topography of the Roman Campagna — I", Papers of the
+    British School at Rome 1 (1902)
+  url: https://archive.org/details/pbsr-i.-2-the-classical-topography-of-the-roman-campagna-part-i
+  note: >-
+    The roads east of Rome: the Collatina, the Praenestina and the Labicana, their
+    courses from the Porta Esquilina and the paving found along them. Public domain;
+    locators are the journal's pages.
+
+- id: ashby-1906
+  kind: modern
+  citation: >-
+    T. Ashby, "The Classical Topography of the Roman Campagna — II", Papers of the
+    British School at Rome 3 (1906)
+  url: https://archive.org/details/pbsr-iii.-1-the-classical-topography-of-the-roman-campagna-part-ii
+  note: >-
+    The roads north-east of Rome: the Salaria and the Nomentana from the Porta
+    Collina, the Tiburtina from the Porta Esquilina. Public domain; locators are the
+    journal's pages.
+
+- id: ashby-1927
+  kind: modern
+  citation: T. Ashby, The Roman Campagna in Classical Times (London, 1927)
+  url: https://archive.org/details/romancampagnainc00ashb
+  note: >-
+    Each road out of Rome in turn, from its gate: its course, how far the modern road
+    keeps to it, and what stood along it. Locators are the book's pages.
+
+- id: cicero-cat
+  kind: ancient
+  citation: Cicero, In Catilinam
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0019:text=Catil.:speech=2:chapter=6
+  note: >-
+    2.6 (November 63 BCE): Catiline has left Rome, "Aurelia via profectus est", by
+    the Via Aurelia.
+
+# --- the extension to 133 BCE: the Balkans and the Black Sea ----------------------
+# Added September 2026. Each was opened: Sumner's article in full (GRBS, open
+# access), the decree in the English translation on the Chersonesos museum's site.
+
+- id: sumner-1978
+  kind: modern
+  citation: >-
+    G. V. Sumner, "The 'Piracy Law' from Delphi and the Law of the Cnidos
+    Inscription", Greek, Roman and Byzantine Studies 19.3 (1978), 211–225
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/7401
+  note: >-
+    Transcribes and discusses the clauses of both copies of the law of 101/100
+    on the governor of Macedonia and T. Didius' conquest (pp. 218–219, 225).
+
+- id: lex-provinciis-praetoriis
+  kind: ancient
+  citation: >-
+    The law on the praetorian provinces, 101/100 BCE, in two Greek copies: from
+    Cnidos (Knidos) and from the monument of Aemilius Paullus at Delphi (the
+    "piracy law"); M. H. Crawford (ed.), Roman Statutes (London, 1996), no. 12
+  note: >-
+    Cited by the copy and column (Knidos IV 6–11, Delphi B 27–29) as
+    transcribed in Sumner 1978, 218; Roman Statutes itself was not opened.
+
+- id: diophantus-decree
+  kind: ancient
+  citation: >-
+    Decree of Chersonesus in honour of Diophantus, general of Mithridates VI,
+    c. 107 BCE (IOSPE I² 352)
+  url: http://www.chersonesos.org/?p=museum_coll_ep1&l=eng
+  note: >-
+    Read in the English translation on the Chersonesos museum's page, which
+    credits V. V. Latyshev's Russian translation and E. I. Solomonik's
+    commentary. The decree is dated only
+    by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
+    modern dating, not the stone's.

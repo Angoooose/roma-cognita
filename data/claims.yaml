@@ -181,11 +181,11 @@
   confidence: certain
   review: draft
   note: >-
-    A province from 146. Its governors fought the Scordisci, Maedi, Dardani
-    and Thracians on its northern edge throughout 133–68 (Livy Per. 56, 63,
+    A province from 146. Its governors fought the Scordisci, Dardani and
+    Thracians on its northern edge throughout 133–68 (Livy Per. 56, 63,
     65, 70, 82–83, 91–92, 95, 97), but no gain of ground beyond this outline is
     dated before Augustus except Didius' in the Chersonese
-    (chersonesus-thracica). Mithridates' son overran it in 87–86 (the
+    (chersonesus-thracica). Mithridates' son overran it in 87 (the
     occupation row below).
 
 - atom: achaea
@@ -236,10 +236,11 @@
     the first sign of a friendly king, not the beginning of one: c. 80 the
     governor of Cilicia sent Verres as his legate "to king Nicomedes and to
     king Sadala" (Cic. Verr. 2.1.63). Before it the kingdom is left unclaimed:
-    in 88–87 "all the barbarians" round Macedonia went over to Mithridates
-    (Cic. Pis. 84), Thracians served in his armies (App. Mithr. 41), and the
-    governors of Macedonia fought Thracians almost every year from 114 to 71
-    (Livy Per. 63–97), so no standing with Rome can be drawn back to 133.
+    Cicero recalls "that general defection of all the barbarians" round
+    Macedonia under Sentius, governor c. 93–87 (Pis. 84), Thracians served in
+    Mithridates' armies (App. Mithr. 41), and the governors of Macedonia
+    fought Thracians again and again from 114 to 71 (Livy Per. 63–97), so no
+    standing with Rome can be drawn back to 133.
 
 # The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
 # Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
@@ -258,9 +259,9 @@
   review: needs-check
   note: >-
     Didius, praetor in 101 and governor of Macedonia in 100 (Sumner), took
-    "the Chersonese and the Caenic land" in war, and the law of 101/100 gives
-    it to the governor of Macedonia to hold with his province; Didius
-    triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
+    the Chersonese and the Caenic land in war, and the law of 101/100 (late
+    100 or early 99 in Sumner) sends the governor of Macedonia straight
+    there; Didius triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
     From here the row is macedonia's, which this ground was part of until the
     extension to 133 BCE.
 
@@ -268,10 +269,10 @@
   polity: pontus-regnum
   relation: occupied
   from: 87 BCE
-  to: 86 BCE
+  to: 87 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 35, 41' }
-    - { source: plutarch, locator: 'Sulla 11.2, 15.1, 22.3, 23.1' }
+    - { source: appian, locator: 'Mithr. 35, 41, 52' }
+    - { source: plutarch, locator: 'Sulla 11.2, 15.1, 23.1' }
     - { source: livy-per, locator: '82' }
     - { source: cicero-pis, locator: '84' }
   confidence: probable
@@ -281,20 +282,23 @@
     overrunning Thrace and Macedonia" (Sulla 11.2); while Sulla besieged
     Athens, Arcathias (Appian's name for him) "overcame the small Roman force
     there, subjugated the whole country, appointed satraps to govern it"
-    (Mithr. 35). The Dentheletae alone "preserved Macedonia for us, when Caius
-    Sentius was praetor" (Cic. Pis. 84). The army "which had occupied Macedonia
-    and entered Thessalia" was destroyed at Chaeronea in 86 (Livy Per. 82), and
-    Archelaus gave up every place he held under the terms he and Sulla agreed
-    near Delium in the winter of 86/85 (Mithr. 55; Plut. Sulla 22.3); Sulla
-    marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the row
-    ends in 86. Drawn over the whole
-    atom, though Sentius held out somewhere in it.
+    (Mithr. 35). Cicero has the Denseletae, at "that general defection of all
+    the barbarians", preserve "Macedonia for us, when Caius Sentius was
+    praetor" (Pis. 84). In 86 that army left Macedonia to join Archelaus at
+    Thermopylae (Mithr. 41; Taxiles "had come down from Thrace and Macedonia",
+    Sulla 15.1), and "the army of the king, which had occupied Macedonia and
+    entered Thessalia" was destroyed at Chaeronea (Livy Per. 82); Flaccus'
+    army crossed from Europe to Chalcedon later that year (Mithr. 52), and Sulla
+    marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the
+    occupation ends with 86 and the row with 87 (README decision 17); until
+    the check it ran to 86, with Greece. Drawn over the whole atom, though
+    Sentius held out somewhere in it.
 
 - atom: chersonesus-thracica
   polity: pontus-regnum
   relation: occupied
   from: 87 BCE
-  to: 86 BCE
+  to: 87 BCE
   sources:
     - { source: plutarch, locator: 'Sulla 11.2' }
     - { source: appian, locator: 'Mithr. 35' }
@@ -302,7 +306,8 @@
   review: needs-check
   note: >-
     As macedonia: "Thrace and Macedonia" were overrun (Plut. Sulla 11.2), and
-    the king's armies crossed to Europe by the Hellespont.
+    the king's armies crossed to Europe by the Hellespont. Ends with
+    macedonia's row.
 
 - atom: achaea
   polity: pontus-regnum
@@ -1580,11 +1585,10 @@
   polity: pontus-regnum
   relation: independent
   from: c. 110 BCE
-  to: 64 BCE
+  to: 81 BCE
   sources:
     - { source: strabo, locator: '7.4.3' }
     - { source: diophantus-decree }
-    - { source: appian, locator: 'Mithr. 102' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1593,9 +1597,51 @@
     for freeing the people "from the domination of the barbarians"). A
     protectorate over a city that kept its own council and magistrates, drawn
     as the king's because Strabo has it "subject to the potentates of the
-    Bosporus" from then on. Under Machares it was probably governed from
-    Panticapaeum: he fled "to the Pontic Chersonesus" in 65 (App. Mithr. 102).
-    Started before 68 until the extension to 133 BCE.
+    Bosporus" from then on. Nothing says it joined the Bosporan revolt of the
+    80s, so the row runs to Machares. Until the extension to 133 BCE one row
+    of the king's ran from before 68 to 64.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 67, 102' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus: "subject to the potentates of the Bosporus" (Strabo 7.4.3),
+    and so to Machares, king of the Bosporus from c. 80 (App. Mithr. 67), who
+    fled "to the Pontic Chersonesus" when his father came in 65 (Mithr. 102).
+    Added in the check of the extension to 133 BCE, which had drawn the city
+    as the king's own through Machares' reign.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 83, 102' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus, under Machares as Rome's friend.
+
+- atom: chersonesus
+  polity: pontus-regnum
+  relation: independent
+  from: 65 BCE
+  to: 64 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 102, 108' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus: the king's again from his coming in 65 until it revolted from
+    him with Theodosia and Nymphaeum (Mithr. 108) and he died in 63.
 
 - atom: chersonesus
   polity: bosporus
@@ -2056,8 +2102,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    First attested in 113, when the consul Carbo attacked the Cimbri and
-    Teutones for invading "the people of Noricum, who were foreign friends of
+    First attested in 113, when the consul Carbo attacked the Teutones (the
+    Cimbri in Strabo) for invading "the people of Noricum, who were foreign friends of
     the Romans" — a friendship, Appian adds, that did not oblige Rome "to
     defend them as allies" (Celt. 13) — and was beaten near Noreia (Strabo
     5.1.8). The start is the first attestation, not the beginning of the
