@@ -12,7 +12,11 @@ export const LANDSCAPE_SHAPES = join(DATA_DIR, 'geometry/landscape-changes.geojs
 export interface LandscapeShape {
   type: 'Feature'
   id: string
-  properties: { derivation: string }
+  properties: {
+    derivation: string
+    /** For ancient water: whether it was sea (the engine lays the ground at sea level) or a lake. */
+    surface?: 'sea' | 'lake'
+  }
   geometry: { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown }
 }
 

@@ -14,6 +14,8 @@ export interface Overlay {
   channels: { line: Pt[]; style: 'modern' | 'certain' | 'probable' | 'uncertain' }[]
   sites: { name: string; at: Pt; verdict: string }[]
   caption: string[]
+  /** Polygon fill; floodplain green when omitted. */
+  fill?: string
 }
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -75,7 +77,7 @@ export async function renderPreview(dem: Raster, view: Bbox, overlay: Overlay, f
   const path = (pts: Pt[], close = false) => `M${pts.map(P).join('L')}${close ? 'Z' : ''}`
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`
   const polys = overlay.polygons.map((poly) => poly.map((r) => path(r, true)).join(' ')).join(' ')
-  svg += `<path d="${polys}" fill="#3c8c28" fill-opacity="0.45" fill-rule="evenodd" stroke="#1d4d10" stroke-width="1"/>`
+  svg += `<path d="${polys}" fill="${overlay.fill ?? '#3c8c28'}" fill-opacity="0.45" fill-rule="evenodd" stroke="#1d4d10" stroke-width="1"/>`
   svg += `<path d="${path(overlay.hull, true)}" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6 4"/>`
   const colour = { modern: '#1f5fbf', certain: '#0b2f8a', probable: '#0b2f8a', uncertain: '#8a0b6a' }
   for (const c of overlay.channels) {

@@ -34,10 +34,8 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { contours } from 'd3-contour'
 import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
-import { rewindRFC7946, ringProblems } from '../geo.ts'
 import { DATA_DIR } from '../load.ts'
 import { BRANCHES, type Branch } from './delta-branches.ts'
 import { type Bbox, type Raster, lonLatToPixel, pixelMetres, pixelToLonLat, readDem } from './dem.ts'
@@ -54,11 +52,13 @@ import {
   simplifyIndices,
 } from './grid.ts'
 import { type Overlay, renderPreview } from './preview.ts'
+import { geometryArea, vectorise } from './vectorise.ts'
 import { REGIONS, type Region } from './regions.ts'
 import { type Channel, readLakes, readLand, readRivers } from './sources.ts'
 
 const OUT = join(DATA_DIR, 'geometry/features.geojson')
 const SIMPLIFY_M = 60
+const round = (v: number) => Math.round(v * 1e5) / 1e5
 const argv = process.argv.slice(2)
 const previewFlag = argv.indexOf('--preview')
 const PREVIEW_DIR =
@@ -400,7 +400,7 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
   )
 
   tick('cleaned')
-  const geometry = vectorise(mask, dem)
+  const geometry = vectorise(mask, dem, { simplifyM: SIMPLIFY_M, minRingKm2: 0.5 })
   tick('vectorised')
   const areaKm2 = geometryArea(geometry)
 
@@ -522,80 +522,6 @@ function majority(mask: Uint8Array, dem: Raster): Uint8Array {
   const out = new Uint8Array(mask.length)
   for (let p = 0; p < mask.length; p++) out[p] = b[p] > 0.5 ? 1 : 0
   return out
-}
-
-function vectorise(mask: Uint8Array, dem: Raster): AreaGeometry {
-  // Crop to the mask with a margin so the contour closes inside the grid.
-  let i0 = dem.width
-  let j0 = dem.height
-  let i1 = -1
-  let j1 = -1
-  for (let p = 0; p < mask.length; p++) {
-    if (!mask[p]) continue
-    const i = p % dem.width
-    const j = (p / dem.width) | 0
-    i0 = Math.min(i0, i)
-    i1 = Math.max(i1, i)
-    j0 = Math.min(j0, j)
-    j1 = Math.max(j1, j)
-  }
-  if (i1 < 0) throw new Error('empty floodplain')
-  const pad = 2
-  const w = i1 - i0 + 1 + 2 * pad
-  const h = j1 - j0 + 1 + 2 * pad
-  const values = new Float32Array(w * h)
-  for (let j = j0; j <= j1; j++)
-    for (let i = i0; i <= i1; i++) values[(j - j0 + pad) * w + (i - i0 + pad)] = mask[j * dem.width + i]
-  const smooth = blur(values, w, h, 1)
-  const [mp] = contours().size([w, h]).thresholds([0.5])(smooth as unknown as number[])
-  const polys: Pt[][][] = []
-  for (const poly of mp.coordinates as Pt[][][]) {
-    const rings: Pt[][] = []
-    for (const [ri, ring] of poly.entries()) {
-      const ll = ring.map(([x, y]) => toLonLat(dem, [x + i0 - pad, y + j0 - pad]))
-      const s = simplifyRing(ll)
-      if (s.length < 4) continue
-      const a = Math.abs(ringArea(s))
-      if (ri === 0 && a < 0.5) break // an exterior too small after simplifying: drop the polygon
-      if (ri > 0 && a < 0.5) continue
-      rings.push(s)
-    }
-    if (rings.length) polys.push(rings)
-  }
-  const g = rewindRFC7946({ type: 'MultiPolygon', coordinates: polys } as AreaGeometry)
-  const problems = ringProblems(g)
-  if (problems.length) throw new Error(`vectorised geometry is unsound: ${JSON.stringify(problems.slice(0, 3))}`)
-  return g
-}
-
-const round = (v: number) => Math.round(v * 1e5) / 1e5
-
-function simplifyRing(ring: Pt[]): Pt[] {
-  const planar = ring.map(([lon, lat]) => projection.forward(lon, lat) as Pt)
-  const keep = simplifyIndices(planar, SIMPLIFY_M)
-  const out: Pt[] = []
-  for (const k of keep) {
-    const p: Pt = [round(ring[k][0]), round(ring[k][1])]
-    const last = out[out.length - 1]
-    if (!last || last[0] !== p[0] || last[1] !== p[1]) out.push(p)
-  }
-  if (out.length && (out[0][0] !== out[out.length - 1][0] || out[0][1] !== out[out.length - 1][1])) out.push(out[0])
-  return out
-}
-
-/** Signed area in km² in the equal-area plane. */
-function ringArea(ring: Pt[]): number {
-  let s = 0
-  const p = ring.map(([lon, lat]) => projection.forward(lon, lat))
-  for (let k = 0; k + 1 < p.length; k++) s += p[k][0] * p[k + 1][1] - p[k + 1][0] * p[k][1]
-  return s / 2 / 1e6
-}
-
-function geometryArea(g: AreaGeometry): number {
-  const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates
-  let a = 0
-  for (const poly of polys) poly.forEach((r, i) => (a += (i === 0 ? 1 : -1) * Math.abs(ringArea(r as Pt[]))))
-  return a
 }
 
 function inRing([x, y]: Pt, ring: Pt[]): boolean {

@@ -1716,3 +1716,38 @@
     The first king's name (Aryu; "Orhoi, son of Hevia" in the translator's
     note from Dionysius) comes from the Edessene list in the later
     chroniclers, as Segal gives it.
+
+- id: wikipedia-fucine-lake
+  kind: modern
+  citation: Wikipedia, "Fucine Lake" (consulted 27 September 2026)
+  url: https://en.wikipedia.org/wiki/Fucine_Lake
+  note: >-
+    A placeholder for the lake's recorded levels (650–680 m), its depths measured
+    between 1783 and 1861 and its area at its largest (about 140 km²). The figures
+    come from the survey made for the Torlonia drainage, which is to be found and
+    cited in its place.
+
+- id: koutsoyiannis-kopais
+  kind: modern
+  citation: >-
+    D. Koutsoyiannis and others (NTUA), on the hydrology and drainage of Lake Kopais,
+    after Knauss's reconstruction (full title and venue to confirm)
+  url: https://www.itia.ntua.gr/en/getfile/1539/1/documents/Copais_WH10_9_14.pdf
+  note: >-
+    The lake bed at about +92 m, the water ranging from +92 to +97 m before it
+    overflowed westward, and the areas between those levels.
+
+- id: knauss-1987
+  kind: modern
+  citation: >-
+    J. Knauss, Die Melioration des Kopaisbeckens durch die Minyer im 2. Jt. v. Chr.
+    (Munich, 1987)
+  note: Not seen; cited through koutsoyiannis-kopais, which models his levels.
+
+- id: wikipedia-lake-karla
+  kind: modern
+  citation: Wikipedia, "Lake Karla" (consulted 27 September 2026)
+  url: https://en.wikipedia.org/wiki/Lake_Karla
+  note: >-
+    A placeholder for the lake's seasonal area (up to about 180 km²) and its drainage
+    in 1962, to be replaced by a hydrological study of the basin.

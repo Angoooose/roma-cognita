@@ -49,3 +49,76 @@
     A dry salt depression (Wadi Tharthar) until the Tigris was diverted into it
     from 1956. HydroLAKES types it as a natural lake, so the reservoir filter
     in the coast build does not catch it. The locator is still to be supplied.
+
+# --- lakes drained since ------------------------------------------------------
+# Shapes derived by pipeline/src/landscape/derive-coasts.ts: the modern ground
+# below the lake's level, flooded from its bed; the level is argued in coasts.ts.
+
+- id: lacus-fucinus
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: suetonius-iul, locator: '44: Caesar planned to drain it' }
+    - { source: wikipedia-fucine-lake, locator: recorded depths 1783–1861; area at its largest }
+    - { source: mapterhorn, locator: 'z11 terrain: the basin below 668 m' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The Fucine Lake, drained by the Torlonia works of 1854–78. In the window it was
+    natural and closed, draining only through swallow-holes: Claudius's tunnel came
+    in AD 52. Its level moved with the seasons and the decades, so the outline is a
+    middling high stand (668 m), not a survey; about 147 km².
+
+- id: lake-copais
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '9.2.16–18: a circuit of 380 stades, changing greatly with the seasons' }
+    - { source: koutsoyiannis-kopais, locator: 'levels +92 to +97 m' }
+    - { source: knauss-1987 }
+    - { source: mapterhorn, locator: 'z11 terrain: the basin below 97 m' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lake Copais, drained between 1882 and 1931. A seasonal lake and reed fen: drawn
+    at its high stand (97 m, about 235 km², against 241 km² reclaimed), because the
+    drained peat has since shrunk and at lower levels the modern ground misplaces the
+    western shore. Even so Orchomenos is 2 km from the water; the western arm was
+    more fen than lake.
+
+- id: lake-boibeis
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '9.5.15, 9.5.22: Lake Boebeïs' }
+    - { source: wikipedia-lake-karla, locator: area; drained 1962 }
+    - { source: mapterhorn, locator: 'z11 terrain: the basin below 49 m' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lake Boibeis (Karla), drained in 1962. Certainly a lake; its outline is not. The
+    floor is so flat that each metre of level adds or removes about a hundred km², so
+    49 m is a middle choice inside its seasonal range (about 119 km²), and the
+    north-west side, where it met the Peneios's flood plain, is drawn by us.
+
+- id: lake-moeris
+  op: add-water
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '17.1.35–38' }
+    - { source: herodotus, locator: '2.149' }
+    - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
+    - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
+    - { source: mapterhorn, locator: 'z10 terrain: the depression below −2 m' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Fayum lake at the level usually given for the Ptolemaic reclamation, about
+    −2 m, against Lake Qarun's −43 m today: exactly the ground the Fayum floodplain
+    (features.yaml) leaves out, so the two meet. Uncertain for the same reason: the
+    level moved during the window and is a single number. Modern drains cut below
+    the old level on the south side are left out (arms under 500 m wide).
