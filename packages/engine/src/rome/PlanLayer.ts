@@ -66,6 +66,14 @@ export class PlanLayer {
     planUniforms.plateSize.value.set(pl.width * pl.texel, pl.height * pl.texel)
     planUniforms.plateTexels.value.set(pl.width, pl.height)
     planUniforms.streetClamp.value = pl.streetClamp
+    if (pl.square) {
+      planUniforms.squareClamp.value = pl.square.clamp
+      planUniforms.squareAxis.value.set(pl.square.axis[0], pl.square.axis[1])
+      const trav = pl.square.paving.find(
+        (ph: { stone: string }) => ph.stone === 'travertine',
+      )
+      if (trav) planUniforms.travertineFrom.value = trav.from
+    }
     planUniforms.plateClamps.value.set(0, pl.cityClamp, pl.riverClamp, pl.reachClamp)
     // The country (fields.ts): its reach and clamps, and the recorded grounds' years.
     const fl = pl.fields

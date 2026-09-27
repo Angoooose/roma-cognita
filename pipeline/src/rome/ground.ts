@@ -33,6 +33,9 @@ export interface Correction {
   pieces: number[]
 }
 
+/** The paving of the Forum's square and the street beside it, by the Lacus Iuturnae. */
+export const FORUM_PAVING_PIECES = [17854, 17890]
+
 export const CORRECTIONS: Correction[] = [
   {
     what: 'the Forum valley at the mouth of the Argiletum: a street and the lane between two houses, later under the Forum of Caesar, in use 380–101 BCE and until 55 BCE',
@@ -42,7 +45,7 @@ export const CORRECTIONS: Correction[] = [
   {
     what: "the Forum's square by the Lacus Iuturnae: its travertine paving and the street west of the Lacus, of the early 2nd century CE, a ceiling for the Republican level",
     at: [12.48591, 41.89158],
-    pieces: [17854, 17890],
+    pieces: FORUM_PAVING_PIECES,
   },
   {
     what: 'the valley of the Colosseum at the head of the street from the Porta Capena: the paved square and street there of 7 BCE to 64 CE, a ceiling for the Republican level',
@@ -81,15 +84,26 @@ export interface Grid {
   texel: number
 }
 
-/** The change to the terrain at every texel of `grid`, metres, and what each correction found. */
-export function ancientGround(grid: Grid, terrain: Float32Array) {
+/** The levels SITAR records on each of `pieces`, metres above the sea. */
+function levelsOf(pieces: number[]): number[] {
   const geo = JSON.parse(
     readFileSync(join(DATA_DIR, 'geometry/rome-levels.geojson'), 'utf8'),
   )
-  const levelsOf = (piece: number): number[] =>
-    geo.features
-      .filter((f: { properties: { piece: number } }) => f.properties.piece === piece)
-      .map((f: { properties: { level: number } }) => f.properties.level)
+  return geo.features
+    .filter((f: { properties: { piece: number } }) => pieces.includes(f.properties.piece))
+    .map((f: { properties: { level: number } }) => f.properties.level)
+    .sort((a: number, b: number) => a - b)
+}
+
+/** The median of the levels SITAR records on `pieces`, metres above the sea. */
+export function levelOf(pieces: number[]) {
+  const levels = levelsOf(pieces)
+  if (!levels.length) throw new Error(`ground.ts: no level for SITAR ${pieces.join(', ')}`)
+  return levels[Math.floor(levels.length / 2)]
+}
+
+/** The change to the terrain at every texel of `grid`, metres, and what each correction found. */
+export function ancientGround(grid: Grid, terrain: Float32Array) {
   const { width: W, height: H, texel: T } = grid
   const cellOf = ([x, y]: Pt) => {
     const c = Math.floor((x - grid.x0) / T)
@@ -100,10 +114,7 @@ export function ancientGround(grid: Grid, terrain: Float32Array) {
   const weight = new Float32Array(W * H)
   const found: { what: string; level: number; floor: number; change: number }[] = []
   for (const k of CORRECTIONS) {
-    const levels = k.pieces.flatMap(levelsOf).sort((a, b) => a - b)
-    if (!levels.length)
-      throw new Error(`ground.ts: no level for SITAR ${k.pieces.join(', ')}`)
-    const level = levels[Math.floor(levels.length / 2)]
+    const level = levelOf(k.pieces)
     const start = cellOf(projection.forward(...k.at))
     if (start < 0) continue
     const floor = terrain[start]

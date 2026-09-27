@@ -6,6 +6,9 @@ import {
   float,
   floor,
   Fn,
+  fract,
+  length,
+  sin,
   If,
   int,
   ivec2,
@@ -25,6 +28,8 @@ import {
 // fields.ts imports this file too; each only calls the other's functions when a
 // shader is built, by when both are loaded.
 import { groundStanding, plotShown } from './fields.ts'
+import { C } from './builder.ts'
+import { seededNoise } from '../terrain/noise.ts'
 
 /**
  * The ground the model of Rome stands on (DESIGN.md §7.7), printed onto the terrain
@@ -38,6 +43,8 @@ import { groundStanding, plotShown } from './fields.ts'
  *   `plateMask`).
  * - **Streets and roads** (streets.ts) as paved ways between the houses, paler than
  *   the ground; roads wider.
+ * - **The Forum's square**, paved across in tufa and then travertine, its slabs'
+ *   joints drawn close in.
  *
  * - **The walled city's ground** as trodden earth, where it is not paved.
  * - **The model's shadows**, baked, where its ground mesh does not take the real ones.
@@ -54,6 +61,11 @@ export const planUniforms = {
   plateClamps: uniform(new THREE.Vector4(12, 48, 16, 1400)),
   /** The street field's clamp, metres. */
   streetClamp: uniform(12),
+  /** The Forum's square: its field's clamp, metres (0 until loaded), and its length's direction. */
+  squareClamp: uniform(0),
+  squareAxis: uniform(new THREE.Vector2(1, 0)),
+  /** The year its travertine was laid (pipeline model.ts `FORUM_PAVING`); tufa before. */
+  travertineFrom: uniform(-43),
   /** How much the terrain is laid on the smoothed ground: set per frame from the scale. */
   flatten: uniform(0),
   /** 0 until the plate has loaded. */
@@ -94,14 +106,32 @@ export const planTextures = {
 
 /** The trodden ground of the walled city. */
 const EARTH = new THREE.Color('#BCAB88')
-/** The paved streets and roads: pale stone over the ground. */
-const PAVING = new THREE.Color('#D9CFBA')
+/**
+ * The Forum's slabs, metres: in rows along its length, each row's joints staggered.
+ * Their size is illustrative, not a survey's.
+ */
+const SLAB = { row: 1.5, length: 3 }
+/**
+ * The paved streets and roads: basalt, as the censors of 174 BCE had the city's
+ * streets paved (Livy 41.27.5, "vias sternendas silice in urbe"), and the Via Appia
+ * from the temple of Mars to Bovillae in 293 BCE (Livy 10.47.4). A warm grey, the lava weathered
+ * and dusty, not black, so the city stays light.
+ */
+export const BASALT = new THREE.Color('#9A948A')
+/**
+ * The basalt's blocks, metres across: polygonal, fitted to each other. Their size is
+ * illustrative, not a survey's.
+ */
+const BLOCK_M = 0.7
 /** The river: the map's own river colour (terrain/material.ts). */
 const WATER = new THREE.Color('#3D7A8E')
 const INK = new THREE.Color('#2A241E')
 const LIGHT = new THREE.Vector3(-0.5, 0.5, 0.707).normalize()
 
 type F = THREE.Node<'float'>
+/** Two numbers in [0, 1) for a lattice square: a sine hash, for keys under 289. */
+const jitter = (k: THREE.Node<'vec2'>) =>
+  fract(sin(vec2(dot(k, vec2(127.1, 311.7)), dot(k, vec2(269.5, 183.3)))).mul(43758.5453))
 const rgb = (c: THREE.Color) => vec3(c.r, c.g, c.b)
 
 /** Metres per CSS pixel from metres per device pixel. */
@@ -278,6 +308,51 @@ function planOver(
     .mul(plotShown(mx, my))
   out.assign(out.mul(float(1).sub(p0.r.mul(0.3).mul(baked).mul(plate))))
 
+  // The Forum's square, paved: tufa, then Caesar's travertine. Close in, the joints
+  // between its slabs, in rows along its length, and each slab a shade apart.
+  const toSquare = p0.g.mul(255).sub(128).div(127).mul(planUniforms.squareClamp)
+  const hasSquare = select(planUniforms.squareClamp.greaterThan(0), float(1), float(0))
+    .mul(planUniforms.meshShown)
+    .mul(plate)
+  const onSquare = float(1)
+    .sub(smoothstep(aa.negate(), aa, toSquare))
+    .mul(hasSquare)
+  const sx = mx.sub(planUniforms.plateOrigin.x)
+  const sy = my.sub(planUniforms.plateOrigin.y)
+  const ax = planUniforms.squareAxis
+  const along = sx.mul(ax.x).add(sy.mul(ax.y))
+  const across = sy.mul(ax.x).sub(sx.mul(ax.y)).div(SLAB.row)
+  const row = floor(across)
+  const stagger = fract(row.mul(0.618)).mul(SLAB.length)
+  const slabU = along.add(stagger).div(SLAB.length)
+  const joint = min(
+    float(0.5)
+      .sub(abs(fract(slabU).sub(0.5)))
+      .mul(SLAB.length),
+    float(0.5)
+      .sub(abs(fract(across).sub(0.5)))
+      .mul(SLAB.row),
+  )
+  // Drawn while a row is several pixels wide; coarser, the square is one stone.
+  const close = float(1).sub(smoothstep(SLAB.row / 8, SLAB.row / 4, css(pxM)))
+  const seam = float(1)
+    .sub(smoothstep(max(px.mul(0.35), 0.04), max(px.mul(0.35), 0.04).add(aa), joint))
+    .mul(close)
+  const shade = seededNoise(vec2(row, floor(slabU)).add(0.5), 7)
+    .mul(0.05)
+    .mul(close)
+  const stone = select(
+    planUniforms.year.greaterThanEqual(planUniforms.travertineFrom),
+    rgb(C.travertine),
+    rgb(C.tufa),
+  )
+  const slab = stone
+    .mul(lit)
+    .mul(float(1).add(shade))
+    .mul(float(1).sub(seam.mul(0.14)))
+  out.assign(mix(out, slab, onSquare))
+  out.assign(mix(out, rgb(INK), line(abs(toSquare), 0.6).mul(0.12).mul(hasSquare)))
+
   // Paved streets and roads. What a line is comes from the nearest texel.
   const cell = min(
     floor(uv2.mul(planUniforms.plateTexels)),
@@ -298,7 +373,43 @@ function planOver(
   const toStreet = p0.b.mul(planUniforms.streetClamp)
   const paved = float(1).sub(smoothstep(half.sub(aa), half.add(aa), toStreet))
   const show = streetsShow(pxM).mul(select(isRoad, max(plate, roads), plate))
-  out.assign(mix(out, rgb(PAVING).mul(lit), paved.mul(0.9).mul(show)))
+  // Close in, the joints between the basalt's polygonal blocks: the edges of cells
+  // round a jittered point in each square of a lattice, each block a shade apart.
+  const blocks = float(1).sub(smoothstep(BLOCK_M / 8, BLOCK_M / 4, css(pxM)))
+  const basalt = rgb(BASALT).mul(lit).toVar()
+  If(paved.mul(show).mul(blocks).greaterThan(0.001), () => {
+    const q = vec2(sx, sy).div(BLOCK_M)
+    const base = floor(q)
+    const f = q.sub(base)
+    const near = float(8).toVar()
+    const next = float(8).toVar()
+    const tone = float(0).toVar()
+    for (let dy = -1; dy <= 1; dy++)
+      for (let dx = -1; dx <= 1; dx++) {
+        const n = vec2(dx, dy)
+        const k = base.add(n)
+        const h = jitter(k.sub(floor(k.div(289)).mul(289)))
+        const d = length(n.add(h.mul(0.8).add(0.1)).sub(f))
+        If(d.lessThan(near), () => {
+          next.assign(near)
+          near.assign(d)
+          tone.assign(h.x)
+        }).ElseIf(d.lessThan(next), () => {
+          next.assign(d)
+        })
+      }
+    const edge = next.sub(near).mul(0.5 * BLOCK_M)
+    const w = max(px.mul(0.35), 0.03)
+    const seam = float(1)
+      .sub(smoothstep(w, w.add(aa), edge))
+      .mul(blocks)
+    basalt.assign(
+      basalt
+        .mul(float(1).add(tone.sub(0.5).mul(0.08).mul(blocks)))
+        .mul(float(1).sub(seam.mul(0.18))),
+    )
+  })
+  out.assign(mix(out, basalt, paved.mul(0.9).mul(show)))
   out.assign(
     mix(
       out,

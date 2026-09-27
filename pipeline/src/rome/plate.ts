@@ -15,7 +15,8 @@
  * - **Names** of the hills (on their highest ground near their location), quarters
  *   and the river, as lettering placements for the label layer.
  *
- * plate-0: R the model's shadow on the board (model.ts), B distance to the nearest
+ * plate-0: R the model's shadow on the board (model.ts), G signed distance to the
+ * Forum's square (negative inside), B distance to the nearest
  * street or road, A what it is: 255 a street, 223 a generated main street, 191 a
  * street drawn lighter, 127 a road, 63 a road drawn lighter.
  * plate-1: R signed distance to the circuit, G signed distance to the river, B the
@@ -65,6 +66,8 @@ const PLATE_REACH_M = 420
 const REACH_CLAMP_M = 1400
 const RIVER_CLAMP_M = 16
 const STREET_CLAMP_M = 12
+/** The Forum's square's signed distance field is clamped at this. */
+const SQUARE_CLAMP_M = 16
 /** The roads' distance field, for the plots that front them (fields.ts), is clamped at this. */
 const ROAD_CLAMP_M = 40
 /**
@@ -391,8 +394,16 @@ export async function bakePlate(
         if (inRing(p, ring)) streetField.d[r * width + c] = STREET_CLAMP_M
       }
   }
+  // The Forum's square is paved across (model.ts), so the streets that cross it run
+  // on its paving rather than being drawn over it.
+  const square = model.square
+    ? signedField(grid, [model.square.ring], SQUARE_CLAMP_M)
+    : new Float32Array(width * height).fill(SQUARE_CLAMP_M)
+  for (let i = 0; i < width * height; i++)
+    if (square[i] < 0) streetField.d[i] = STREET_CLAMP_M
   for (let i = 0; i < width * height; i++) {
     img0[i * 4] = Math.round(shadowAt(i) * 255)
+    img0[i * 4 + 1] = signed(square[i], SQUARE_CLAMP_M)
     img0[i * 4 + 2] = unsigned(streetField.d[i], STREET_CLAMP_M)
     img0[i * 4 + 3] = streetField.flag[i]
     img1[i * 4] = signed(city[i], CITY_CLAMP_M)
@@ -523,6 +534,11 @@ export async function bakePlate(
     width,
     height,
     streetClamp: STREET_CLAMP_M,
+    square: model.square && {
+      clamp: SQUARE_CLAMP_M,
+      axis: model.square.axis.map((v) => Math.round(v * 1e4) / 1e4),
+      paving: model.square.paving,
+    },
     cityClamp: CITY_CLAMP_M,
     reachClamp: REACH_CLAMP_M,
     riverClamp: RIVER_CLAMP_M,

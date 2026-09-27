@@ -22,7 +22,7 @@ import {
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
-import { groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
+import { BASALT, groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
 import { STONE } from './builder.ts'
 import type { BuiltModel } from './buildModel.ts'
 import { FIELD_KEY, fieldsRevealAt, fieldUniforms, plotShown } from './fields.ts'
@@ -94,6 +94,7 @@ export const MODEL_KEY = {
   marble: `#${STONE.marble.face.getHexString()}`,
   stucco: `#${STONE.stucco.face.getHexString()}`,
   travertine: `#${STONE.travertine.face.getHexString()}`,
+  basalt: `#${BASALT.getHexString()}`,
   house: '#DED3BE',
   roof: '#B8957F',
   /** The country round the city (fields.ts): its generated farmland, and the recorded gardens. */

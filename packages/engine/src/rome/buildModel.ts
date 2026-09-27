@@ -308,23 +308,6 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   b.look = 0
   b.dates = ALWAYS
 
-  // The Forum's square, in the paving of each year: tufa, then travertine.
-  for (const sq of meta.squares as {
-    ring: Pt[]
-    base: number
-    paving: { from: number; stone: 'tufa' | 'travertine' }[]
-  }[])
-    sq.paving.forEach((ph, i) => {
-      b.dates = [ph.from, (sq.paving[i + 1]?.from ?? ALWAYS[1] + 1) - 1, 1, 0]
-      b.top(
-        [ccw(sq.ring, true)],
-        0.3,
-        sq.base,
-        ph.stone === 'tufa' ? C.tufa : C.travertine,
-      )
-    })
-  b.dates = ALWAYS
-
   // The model's ground reaches round the aqueducts too.
   const reach = [
     ...all,
