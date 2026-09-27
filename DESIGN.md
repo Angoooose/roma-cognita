@@ -218,7 +218,7 @@ of each outline, and the validator asserts it.
 | Bathymetry              | **EMODnet DTM 2024** (~115 m) over the European seas, **GEBCO_2026** (15″, ~460 m) elsewhere, baked offline (§7.2)                                                      | CC BY 4.0; public domain with attribution                         | Drives the shallows. AWS Terrain Tiles were used at runtime until September 2026: ~1–2 km at sea, and they drew the Caspian as a flat −28 m slab.            |
 | Coastline, modern       | OSM land polygons, split edition (osmdata.openstreetmap.de)                                                                                                             | ODbL                                                              | Natural Earth 10m is too coarse at 50 m/px                                                                                                                   |
 | Lakes                   | **HydroLAKES v1.0** (≥ 0.05 km²)                                                                                                                                        | CC BY 4.0                                                         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically                                                              |
-| Coastline, ancient      | Our `landscape-change` records; AWMC period patches as seed                                                                                                             | ours; ODbL                                                        | AWMC's `roman_open_water` layer is 2 polygons (Miletus, Ephesus) and its Hellenistic layer 5 (adding Utica). Checked 2026-09-22.                             |
+| Coastline, ancient      | Our `landscape-change` records: shores read off published reconstructions, filled over the Mapterhorn terrain (§6.1)                                                   | ours                                                              | AWMC's period layers were checked and not used: a handful of coarse, uncited polygons (`roman_open_water` is 2, Miletus and Ephesus). Checked 2026-09-22. |
 | Places                  | **Pleiades**; DARE as a cross-check                                                                                                                                     | CC BY 3.0; CC BY-SA 3.0                                           | Importance is curated by us                                                                                                                                  |
 | Territory geometry      | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | Rebuilt September 2026 (`pipeline/src/atoms`). AWMC's `roman_empire_bce_60` was dropped: one unnamed Roman extent, coarse, cut with straight lines, and ODbL |
 | Region and people names | AWMC `regional_names_linework`                                                                                                                                          | ODbL                                                              | Baselines give size and angle                                                                                                                                |
@@ -239,6 +239,36 @@ attribution screen is generated from the `source` registry.
 These are changes visible at regional scale, each digitised from a published
 reconstruction. Each record starts at `review: draft` or `needs-check`.
 
+**How a shore is made** (`npm run derive-coasts -w pipeline`,
+`pipeline/src/landscape/`). Almost none of this exists as data, so each shore
+is read off a dated figure in a published study, georeferenced against the
+named sites on it, to the kilometre or so the figure supports. That line is
+the landward side of an authored hull; the hull's other sides run out over the
+sea or up hillsides. The derivation then floods today's terrain from the sea,
+inside the hull, through ground no higher than a threshold: the figure says how
+far the water reached, and the terrain gives its shape along the valley sides.
+The same flood from a seed below a level draws a drained lake. Where the terrain
+cannot help it gives way to the author: a lagoon whose basin the reclaimed
+ground no longer shows is an outline (`polygon`); a town buried in the same silt
+as its bay (Miletus) is kept dry by hand; land that has sunk since (Canopus,
+the Saint-Ferréol lobe) is today's sea inside the hull. Every vertex says where
+it comes from in `coasts.ts`, and every record in `landscape-changes.yaml`
+cites its figures. Each run prints the areas and whether check sites (Ostia's
+theatre, Priene, Lade, Utica…) fall on the water, the shore or the land where
+the sources put them; its previews are the review surface.
+
+**Drawn** (September 2026): the Fucine Lake, Copais, Boibeis and the Fayum's
+Lake Moeris; the Tiber mouth and its two lagoons, the Arno and Portus Pisanus,
+the Po delta and the Ravenna lagoon; the Latmian Gulf, Ephesus, the Malian Gulf;
+the Gulf of Utica, Lake Mareotis, the Canopic promontory and Alexandria's
+harbours; the Rhône east of the Petit Rhône and the Saint-Ferréol lobe; the Ebro;
+the Narbonne lagoon; the head of the Persian Gulf. Returned to land: the Valli di
+Comacchio, the Grado lagoon and the Toshka lakes. Aquileia's coast was checked
+and does not move at this scale. The Pontine Marshes were checked and are not
+drawn: drained enough by the Republic to be marsh and farmland, not water.
+
+**The list it was drawn from:**
+
 - **Silted bays and deltas:**
   - the Latmian Gulf (Miletus, Priene, Myus, Heraclea);
   - Ephesus and the Cayster;
@@ -256,7 +286,8 @@ reconstruction. Each record starts at `review: draft` or `needs-check`.
 - **Drained water to restore:** the Fucine Lake, Lake Copais, the Pontine
   Marshes.
 - **Persian Gulf head:** the ancient shoreline is debated, so it is drawn with
-  `confidence: uncertain` and a soft edge.
+  `confidence: uncertain`, at a middle line, with 20 km of shallows off it for
+  the belt of flats the studies describe (`shelfKm`).
 
 Sea level was about −1.35 m in the central Mediterranean (Lambeck 2004), which
 is invisible at regional scale. It is not applied globally, because local
@@ -310,8 +341,19 @@ tectonics dominate.
 
 - **The land/water mask is a signed distance field of the coast**, built by
   `npm run water -w pipeline` (`pipeline/src/water/`):
-  - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs). The
-    `landscape-change` records will be applied here per year once they exist.
+  - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs), then the
+    `remove-water` and `add-water` records (§6.1), which win over both. One
+    landscape for the whole window: each shore is drawn as it stood about 50 BCE.
+  - **Channel 2 is ancient sea:** inside an `add-water` shape whose surface was
+    the sea, how far each texel lies from its edge, to 4 km (further where a
+    shape shelves more gently). The modern plain under an old bay stands a few
+    metres up, and everything that reads height would have drawn it as a lake on
+    today's relief — flat lake colour, no surf, the furrows in the water. So the
+    terrain worker lays that ground at sea level wherever channel 0 says water
+    (an island keeps its hill), and gives it a depth from the distance: a gentle
+    ramp to 12 m, not a reconstruction, with the baked bathymetry winning where
+    it is deeper so the old bay's mouth has no seam. The distance is in metres,
+    not texels, so every level encodes the same ramp.
   - **Layout:** tiles use the terrain quadtree's own addresses and texel grid,
     for levels 0–10. Texels are 27 m at level 10; the deepest terrain (level 11,
     13.5 m) reads a window of its level-10 ancestor. The mask stopped at level 8

@@ -25,14 +25,44 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ### More landscape corrections
 
-- Done: the Suez Canal, the Corinth Canal and Lake Tharthar are `remove-water`
-  records (`data/landscape-changes.yaml`), applied by the coast build.
-- Next batch: the Latmian Gulf, Ostia and the Tiber mouth, the Po delta, the
-  Fucine Lake, Lake Copais, the Pontine Marshes, and the Nile lagoons (Mareotis,
-  Manzala).
-- A correction that begins or ends inside the window (the Latmian Gulf silting,
-  for one) needs per-year variants of the affected mask tiles. v1 bakes one
-  landscape for the whole window.
+- Drawn (DESIGN.md §6.1): the canals and Tharthar, four drained lakes, and the
+  ancient coasts and lagoons of the first list.
+- Still to draw, each needing its own reconstruction read:
+  - the Thermaic Gulf and the lagoon that linked Pella to the sea (Loudias,
+    Giannitsa), and the Acheloos at Oiniadai — AWMC has classical-period patches
+    for both;
+  - Manzala smaller than today, with marsh on its south and east;
+  - the western Rhône: the gulf behind the Espiguette and Peccais;
+  - Lacus Prilius at Grosseto; Troy and the Scamander; the Ambracian Gulf;
+    Paestum and the Sele; the smaller western Mareotis basins;
+  - Amik (the Lake of Antioch), smaller than its modern extent, and Kerkini,
+    whose predecessor's extent needs a source;
+  - the sea between Narbonne's ancient barrier and today's, and Alexandria's
+    sunken quarters (Antirhodos, Lochias), both too fine for the first pass.
+- Placeholder citations (Wikipedia for the Fucine Lake and Karla, papers whose
+  full titles are to confirm) are marked in `data/sources.yaml`.
+- A correction that begins or ends inside the window needs per-year variants of
+  the affected mask tiles. v1 bakes one landscape for the whole window, about
+  50 BCE. The Maeander advanced ~1 km and the Cayster ~1.5 km within it;
+  Utica's corridor was emerging.
+
+### Uncertain shores are drawn as one line
+
+- The head of the Gulf, the Po delta and the Ebro are `uncertain`, but the mask
+  is binary: the coast is one crisp line. The Gulf's water shelves over 20 km so
+  it stays pale, which is the only softening.
+- A true soft coast needs a softness input to the shader (a fourth mask
+  channel, or a texture beside it), so that the land/water edge itself can fade
+  over kilometres where the record is uncertain, or be hatched as flats.
+
+### Ancient sea depth is a ramp
+
+- The terrain worker gives ancient sea a gentle depth from its shore (3 m per km,
+  to 12 m). Where a study gives depths (the Lion Harbour's 22 m basin, the
+  Ephesus shoals), a record could carry them.
+- Land that has sunk (Canopus, the Saint-Ferréol lobe) is drawn as flat ground at
+  0 m, since the terrain there is sea. Subsidence and uplift are otherwise not
+  applied; see DESIGN.md §6.1 on sea level.
 
 ### Smooth modern cuts out of the terrain
 

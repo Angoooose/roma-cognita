@@ -187,6 +187,8 @@ confirming.
     modern one with the landscape corrections applied (the ancient coasts, lakes
     and lagoons of landscape-changes.yaml, derived by
     `npm run derive-coasts -w pipeline`), so they are rederived after a shore changes.
+    After a shore changes the order is: derive-coasts, derive-floodplains, then
+    the coast mask (npm run water) and what reads it (politics, labels).
 
 16. **The Nile delta branches are authored lines** (`kind: river`), waypoints in
     `pipeline/src/features/delta-branches.ts` with each coordinate's provenance
