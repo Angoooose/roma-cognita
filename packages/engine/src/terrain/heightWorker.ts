@@ -217,6 +217,8 @@ interface WaterIndex {
   /** Levels with tile codes; below it the pack head says whether a tile was written. */
   codeLevel: number
   distanceTexels: number
+  /** Metres channel 2 measures into ancient sea; 0 for masks baked before it existed. */
+  ancientReach: number
   codes: Uint8Array[]
   store: TileStore
 }
@@ -233,6 +235,7 @@ function loadWaterIndex() {
             // Masks from before the packs: every level has codes, and tiles are loose.
             codeLevel: j.codeLevel ?? j.maxLevel,
             distanceTexels: j.distanceTexels,
+            ancientReach: j.ancientReach ?? 0,
             codes: (j.codes as string[]).map((b) =>
               Uint8Array.from(atob(b), (c) => c.charCodeAt(0)),
             ),
@@ -251,20 +254,27 @@ function loadWaterIndex() {
  * do. Without a mask (the pipeline has not been run) height decides, as in the first
  * spike.
  */
-async function coastDistance(
-  job: TileJob,
-  heights: Float32Array,
-  m: number,
-): Promise<{ shore: Float32Array; floodplain: Float32Array }> {
+interface Coast {
+  shore: Float32Array
+  floodplain: Float32Array
+  /** How far each texel is inside ancient sea, 0…1: 1 inside, 0 outside, between on its edge. */
+  ancient: Float32Array
+  /** Metres from the edge of the ancient sea, where `ancient` > 0. */
+  ancientDistance: Float32Array
+}
+
+async function coastDistance(job: TileJob, heights: Float32Array, m: number): Promise<Coast> {
   const shore = new Float32Array(N * N)
   const floodplain = new Float32Array(N * N)
+  const ancient = new Float32Array(N * N)
+  const ancientDistance = new Float32Array(N * N)
   const idx = await loadWaterIndex()
   if (!idx) {
     for (let r = 0; r < N; r++) {
       for (let c = 0; c < N; c++)
         shore[r * N + c] = heights[(r + 1) * m + c + 1] > 0 ? 1e4 : -1e4
     }
-    return { shore, floodplain: floodplain.fill(-1e4) }
+    return { shore, floodplain: floodplain.fill(-1e4), ancient, ancientDistance }
   }
 
   // Below the code level, a tile that was not written has no shore within reach: its
@@ -287,16 +297,16 @@ async function coastDistance(
   if (code !== 2) {
     shore.fill(code === 0 ? -reach : reach)
     floodplain.fill(code === 3 ? reach : -reach)
-    return { shore, floodplain }
+    return { shore, floodplain, ancient, ancientDistance }
   }
 
   const fields = await cachedMask(idx.store, { level, i: si, j: sj })
   if (!fields) {
     shore.fill(-reach)
     floodplain.fill(-reach)
-    return { shore, floodplain }
+    return { shore, floodplain, ancient, ancientDistance }
   }
-  const [sField, fField] = fields
+  const [sField, fField, aField] = fields
 
   const me = tileRect(job)
   const step = me.size / (N - 1)
@@ -321,14 +331,26 @@ async function coastDistance(
         out[o] =
           ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * reach
       }
+      // Channel 2 is 0 outside ancient sea and 1 + 254 × distance / reach inside, so
+      // bilinear values under 1 are the edge, where the texel is only partly inside.
+      const a = aField[y * N + x]
+      const b = aField[y * N + x + 1]
+      const cc = aField[(y + 1) * N + x]
+      const d = aField[(y + 1) * N + x + 1]
+      const u = ((a * (1 - tx) + b * tx) * (1 - ty) + (cc * (1 - tx) + d * tx) * ty) * 255
+      ancient[o] = Math.min(1, u)
+      ancientDistance[o] = (Math.max(0, u - 1) / 254) * idx.ancientReach
     }
   }
-  return { shore, floodplain }
+  return { shore, floodplain, ancient, ancientDistance }
 }
 
-const masks = new Map<string, Promise<[Float32Array, Float32Array] | null>>()
+const masks = new Map<string, Promise<[Float32Array, Float32Array, Float32Array] | null>>()
 
-/** A mask tile's two channels as −1…1: 0 the shore distance, 1 the floodplain distance. */
+/**
+ * A mask tile's channels: 0 the shore distance and 1 the floodplain distance as −1…1,
+ * 2 the ancient sea as 0…1 (see coastDistance).
+ */
 function cachedMask(store: TileStore, address: TileAddress) {
   const key = `${address.level}/${address.i}/${address.j}`
   let p = masks.get(key)
@@ -346,7 +368,9 @@ function cachedMask(store: TileStore, address: TileAddress) {
           for (let k = 0; k < f.length; k++) f[k] = (img.rgba[k * 4 + ch] / 255) * 2 - 1
           return f
         }
-        return [channel(0), channel(1)] as [Float32Array, Float32Array]
+        const ancient = new Float32Array(N * N)
+        for (let k = 0; k < ancient.length; k++) ancient[k] = img.rgba[k * 4 + 2] / 255
+        return [channel(0), channel(1), ancient] as [Float32Array, Float32Array, Float32Array]
       })
       .catch(() => null)
     if (masks.size >= CACHE_LIMIT / 2) masks.delete(masks.keys().next().value!)
@@ -877,6 +901,50 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
 
 // --- the tile -----------------------------------------------------------------------
 
+/** How ancient sea deepens away from its shore, m per m, and the deepest it is drawn, m. */
+const ANCIENT_SLOPE = 0.003
+const ANCIENT_DEPTH_M = 12
+
+/**
+ * Where the coast mask says a silted bay was sea (pipeline/src/landscape), the modern
+ * plain stands a few metres up, and everything that reads height would draw it as a
+ * lake on today's relief: a flat lake colour, no surf, the plain's furrows in the water.
+ * So the ground there is laid at sea level — only where channel 0 says water, so an
+ * island in the old bay keeps its hill — and given a depth, which the baked bathymetry
+ * cannot know. The depth is a gentle ramp from the ancient shore, not a reconstruction:
+ * enough for the shallows to grade into sea. Where the bathymetry is deeper (the old
+ * bay's mouth, in today's sea) it wins, so there is no seam where the two meet.
+ */
+function layAncientSea(
+  heights: Float32Array,
+  depths: Float32Array,
+  m: number,
+  step: number,
+  shore: Float32Array,
+  ancient: Float32Array,
+  ancientDistance: Float32Array,
+) {
+  const flatten = new Float32Array(N * N)
+  let any = false
+  for (let o = 0; o < N * N; o++) {
+    if (!ancient[o]) continue
+    any = true
+    // Full on the water, none on the land, over a texel either side of the shore.
+    flatten[o] = ancient[o] * Math.min(1, Math.max(0, 0.5 - shore[o] / step))
+    const ramp = -Math.min(ANCIENT_DEPTH_M, ancientDistance[o] * ANCIENT_SLOPE)
+    depths[o] += ancient[o] * (Math.min(depths[o], ramp) - depths[o])
+  }
+  if (!any) return
+  // Heights carry a border texel each side for the gradients; it takes its neighbour's factor.
+  for (let r = 0; r < m; r++) {
+    const rr = Math.min(N - 1, Math.max(0, r - 1))
+    for (let c = 0; c < m; c++) {
+      const f = flatten[rr * N + Math.min(N - 1, Math.max(0, c - 1))]
+      if (f) heights[r * m + c] *= 1 - f
+    }
+  }
+}
+
 async function build(job: TileJob): Promise<TileResult> {
   const { x0, y0, size } = tileRect(job)
   const step = size / (N - 1)
@@ -897,7 +965,8 @@ async function build(job: TileJob): Promise<TileResult> {
     politicsField(job),
   ])
   const roads = await roadField(job)
-  const { shore, floodplain } = await coastDistance(job, heights, m)
+  const { shore, floodplain, ancient, ancientDistance } = await coastDistance(job, heights, m)
+  layAncientSea(heights, depths, m, step, shore, ancient, ancientDistance)
 
   const terrain = new Uint16Array(N * N * 4)
   const water = new Uint16Array(N * N * 4)

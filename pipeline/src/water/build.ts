@@ -58,6 +58,13 @@ const DISTANCE_TEXELS = 16
 /** Samples per texel side when rasterising, so the shore lands between texel centres. */
 const SUPERSAMPLE = 4
 
+/**
+ * How far channel 2 measures into ancient sea, m: the distance from which the engine
+ * draws its depth (packages/engine/src/terrain/heightWorker.ts). Absolute, not in
+ * texels, so every level encodes the same ramp and no tile edge shows in the shallows.
+ */
+const ANCIENT_REACH_M = 4000
+
 /** 3 is land wholly inside a floodplain; the engine reads it like 1 plus a full second channel. */
 const Code = { Water: 0, Land: 1, Mixed: 2, Floodplain: 3 } as const
 
@@ -115,7 +122,13 @@ function readLandscapeChanges() {
   const recordsFile = join(ROOT_DIR, 'data/landscape-changes.yaml')
   const geometryFile = join(ROOT_DIR, 'data/geometry/landscape-changes.geojson')
   const sourcesFile = join(ROOT_DIR, 'data/sources.yaml')
-  const out = { removeWater: [] as Ring[], addWater: [] as Ring[], credits: [] as Credit[] }
+  const out = {
+    removeWater: [] as Ring[],
+    addWater: [] as Ring[],
+    /** The add-water shapes that were sea, not lake: the engine lays their ground at sea level. */
+    ancientSea: [] as Ring[],
+    credits: [] as Credit[],
+  }
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return out
   const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as {
     id: string
@@ -129,7 +142,11 @@ function readLandscapeChanges() {
   )
   const byId = new Map(records.map((r) => [r.id, r]))
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
-    features: { id: string; geometry: { type: string; coordinates: unknown } }[]
+    features: {
+      id: string
+      properties: { surface?: string } | null
+      geometry: { type: string; coordinates: unknown }
+    }[]
   }
   let polygon = 0
   for (const f of collection.features) {
@@ -143,9 +160,14 @@ function readLandscapeChanges() {
         : f.geometry.type === 'MultiPolygon'
           ? (f.geometry.coordinates as number[][][][])
           : []
+    const sea = op === 'add-water' && f.properties?.surface === 'sea'
     for (const poly of polys) {
       const id = polygon++
-      for (const ring of poly) target.push(projectRing(ring, id, Infinity))
+      for (const ring of poly) {
+        const r = projectRing(ring, id, Infinity)
+        target.push(r)
+        if (sea) out.ancientSea.push(r)
+      }
     }
     out.credits.push({
       id: record!.id,
@@ -177,14 +199,31 @@ async function main() {
   console.log(`  ${floodplains.length} floodplain rings from data/`)
   const changes = readLandscapeChanges()
   console.log(
-    `  landscape changes: ${changes.removeWater.length} remove-water rings, ${changes.addWater.length} add-water rings`,
+    `  landscape changes: ${changes.removeWater.length} remove-water rings, ${changes.addWater.length} add-water rings (${changes.ancientSea.length} ancient sea)`,
   )
   const removeIndex = new RingIndex(changes.removeWater)
   const addIndex = new RingIndex(changes.addWater)
+  const ancientIndex = new RingIndex(changes.ancientSea)
 
   const landIndex = new RingIndex(land.rings)
   const lakeIndex = new RingIndex(lakes.rings)
   const floodplainIndex = new RingIndex(floodplains)
+
+  /**
+   * Channel 2 needs the final coast ANCIENT_REACH_M round the tile, further than the
+   * shore channel's margin, so its rings come from a wider query.
+   */
+  const ancientJob = (rect: readonly [number, number, number, number]) => {
+    const r = [rect[0] - ANCIENT_REACH_M, rect[1] - ANCIENT_REACH_M, rect[2] + ANCIENT_REACH_M, rect[3] + ANCIENT_REACH_M] as const
+    return {
+      reach: ANCIENT_REACH_M,
+      sea: ancientIndex.query(...r),
+      land: landIndex.query(...r),
+      lakes: lakeIndex.query(...r),
+      removeWater: removeIndex.query(...r),
+      addWater: addIndex.query(...r),
+    }
+  }
 
   rmSync(OUT, { recursive: true, force: true })
   const pool = new BakePool(Math.max(1, availableParallelism() - 2))
@@ -211,11 +250,17 @@ async function main() {
         const minArea = minLakeKm2(level)
         const lakesHere = () => lakeIndex.query(...rect).filter((r) => r.areaKm2 >= minArea)
         const floodplainsHere = floodplainIndex.query(...rect)
+        // A tile that reaches ancient sea is always written, whatever its parent was:
+        // channel 2 varies across it even where it is all water.
+        const ancientHere = ancientIndex.query(...rect)
+        const ancient =
+          ancientHere.length > 0 &&
+          (edgesTouch(ancientHere, ...rect) || inside(ancientHere, x0 + size / 2, y0 + size / 2))
         // A uniform parent has uniform children, with one exception: lakes too small
         // for the parent's level can appear in its children, so an all-land parent only
         // settles a child that no lake at the child's level reaches. (Floodplain edges
         // are the same at every level, so a uniform parent already had none.)
-        if (parent) {
+        if (parent && !ancient) {
           const p = parent[(j >> 1) * (n >> 1) + (i >> 1)]
           if (p === Code.Water || (p !== Code.Mixed && !edgesTouch(lakesHere(), ...rect))) {
             grid[j * n + i] = p
@@ -227,6 +272,7 @@ async function main() {
         const removeHere = removeIndex.query(...rect)
         const addHere = addIndex.query(...rect)
         if (
+          !ancient &&
           !edgesTouch(landRings, ...rect) &&
           !edgesTouch(lakeRings, ...rect) &&
           !edgesTouch(floodplainsHere, ...rect) &&
@@ -257,6 +303,7 @@ async function main() {
           addWater: addHere,
           distanceTexels: DISTANCE_TEXELS,
           supersample: SUPERSAMPLE,
+          ancient: ancient ? ancientJob(rect) : undefined,
         }
         writes.push(
           pool.bake(job).then((img) => {
@@ -304,12 +351,13 @@ async function main() {
 
   const index = {
     _comment:
-      'Coast mask tiles. codes[level] (levels 0 to codeLevel) is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written), 3 all land inside a floodplain. Below codeLevel a tile is written only if it has shore; the pack head lists which. Tiles above packLevel are {level}/{i}/{j}.webp; the rest are in pack/{i}/{j}.pack of their packLevel ancestor (packages/world/src/pack.ts). Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain).',
+      'Coast mask tiles. codes[level] (levels 0 to codeLevel) is base64 of a 2^level × 2^level byte grid, row j north from the root, column i east: 0 all water, 1 all land, 2 shore or floodplain edge (tile written), 3 all land inside a floodplain. Below codeLevel a tile is written only if it has shore; the pack head lists which. Tiles above packLevel are {level}/{i}/{j}.webp; the rest are in pack/{i}/{j}.pack of their packLevel ancestor (packages/world/src/pack.ts). Channel 0 is the shore, channel 1 the floodplain edge; texel value v decodes to metres as (v / 255 * 2 - 1) * distanceTexels * texelSize, positive inside (land, floodplain). Channel 2 is ancient sea (add-water corrections whose surface is the sea): 0 outside it, else 1 + 254 × the distance to its edge or the shore, clamped at ancientReach metres.',
     texels: TILE_TEXELS,
     maxLevel: MAX_LEVEL,
     codeLevel: CODE_LEVEL,
     packLevel: PACK_LEVEL,
     distanceTexels: DISTANCE_TEXELS,
+    ancientReach: ANCIENT_REACH_M,
     sources: [SOURCES.land.licence, SOURCES.lakes.licence],
     corrections: changes.credits,
     codes: codes.slice(0, CODE_LEVEL + 1).map((c) => Buffer.from(c).toString('base64')),
