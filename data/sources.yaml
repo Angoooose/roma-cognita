@@ -1362,3 +1362,25 @@
     decree is dated only
     by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
     modern dating, not the stone's.
+
+# --- the extension to 133 BCE: the Levant, Armenia and the East -------------------
+# Added September 2026. Josephus' Antiquities 13 was read in Whiston's
+# translation by Niese's numbers (Lexundria); the modern works below were not
+# opened and are cited without pages, their claims resting on the ancient
+# passages cited beside them.
+
+- id: schurer-vermes-ii
+  kind: modern
+  citation: >-
+    E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
+    rev. G. Vermes, F. Millar and M. Black, vol. II (Edinburgh, 1979)
+  note: >-
+    The Hellenistic cities, for the eras of freedom of Tyre (126/125),
+    Sidon (111) and Ascalon (104) counted on their coins. Not opened.
+
+- id: ehling-2008
+  kind: modern
+  citation: >-
+    K. Ehling, Untersuchungen zur Geschichte der späten Seleukiden (164–63 v.
+    Chr.), Historia Einzelschriften 196 (Stuttgart, 2008)
+  note: For the reigns and coinage of the last Seleucids. Not opened.

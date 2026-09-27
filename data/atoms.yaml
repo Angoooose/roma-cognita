@@ -665,6 +665,65 @@
     Herod leased back. Split from judaea (September 2026). The edges are a
     convention for the plantations' plain.
 
+- id: judaea-galilee
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.12, 32.72]
+          note: Galilee, east of the territory of Ptolemais
+        - [35.18, 32.95]
+        - [35.3, 33.08]
+        - at: [35.6, 33.1]
+          note: Lake Semechonitis
+        - at: [35.55, 32.72]
+          note: the Sea of Galilee; Hippos across it was Greek
+        - at: [35.42, 32.62]
+          note: Mount Tabor
+        - [35.2, 32.62]
+  sources:
+    - { source: josephus-aj, locator: '13.318–319, 14.74–76' }
+    - { source: schurer-vermes }
+    - { source: barrington, locator: 'maps 69–70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Galilee, the northern piece of Hyrcanus II's ethnarchy. Split from judaea
+    (September 2026, for the extension to 133): Aristobulus I (104–103) "made
+    war against Iturea, and added a great part of it to Judea" (AJ 13.318),
+    which most modern work (Schürer–Vermes) takes to be the conquest of
+    Galilee; some put it under Hyrcanus I. Its outline is judaea's old second
+    piece.
+
+- id: judaea-idumaea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [34.97, 31.6]
+          note: judaea's corner east of Marisa
+        - at: [35.1, 31.58]
+          note: south of Beth-Zur, the Judaean fortress facing Idumaea (1 Macc 14.33)
+        - at: [35.47, 31.52]
+          note: the Dead Sea north of En-gedi, by convention
+        - at: [35.37, 31.3]
+          note: Masada, judaea's line
+        - [34.9, 31.25]
+        - [34.8, 31.45]
+  sources:
+    - { source: josephus-aj, locator: '13.257–258' }
+    - { source: schurer-vermes }
+    - { source: barrington, locator: 'map 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Idumaea, the hills south of Beth-Zur with Hebron and Adora, which Hyrcanus
+    I conquered: "Hyrcanus took also Dora and Marissa, cities of Idumea, and
+    subdued all the Idumeans" (AJ 13.257). Split from judaea (September 2026,
+    for the extension to 133). Its northern line is a convention between
+    Beth-Zur and Hebron; Marisa itself lies just outside, in gaza. Takes its
+    western and southern edges from judaea.
+
 - id: judaea
   evidence: schematic
   construction:
@@ -695,19 +754,6 @@
         - [34.8, 31.45]
         - at: [34.97, 31.6]
           note: east of Marisa, which Pompey restored to its own people (AJ 14.75)
-    - method: outline
-      edge:
-        - at: [35.12, 32.72]
-          note: Galilee, east of the territory of Ptolemais
-        - [35.18, 32.95]
-        - [35.3, 33.08]
-        - at: [35.6, 33.1]
-          note: Lake Semechonitis
-        - at: [35.55, 32.72]
-          note: the Sea of Galilee; Hippos across it was Greek
-        - at: [35.42, 32.62]
-          note: Mount Tabor
-        - [35.2, 32.62]
   sources:
     - { source: josephus-aj, locator: '14.74–76, 14.91' }
     - { source: josephus-bj, locator: '1.155–157, 1.170' }
@@ -716,10 +762,12 @@
   confidence: probable
   review: draft
   note: >-
-    The ethnarchy of Hyrcanus II after 63: Judaea, Idumaea and Peraea as one
-    piece, Galilee as another, Samaria and the Jezreel between them in the
-    province. The edges follow the cities Pompey removed from the Jews rather
-    than any surveyed line.
+    The ethnarchy of Hyrcanus II after 63: Judaea and Peraea, with Idumaea and
+    Galilee (split off for the extension to 133) and Samaria and the Jezreel
+    between them in the province. The edges follow the cities Pompey removed
+    from the Jews rather than any surveyed line. Peraea is not split from
+    Judaea, though its towns were taken one by one (Medaba, AJ 13.255; Amathus,
+    13.356); the whole atom is Hasmonean from before 133.
 
 - id: judaea-joppa
   evidence: schematic
@@ -1304,6 +1352,41 @@
     Armenia on the Araxes and Greater Media to the south (Strabo 11.13); a
     vassal of Parthia in this window. Takes the lower Araxes from albania.
 
+- id: sophene
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [38.6, 38.1]
+          note: armenia's corner on the Euphrates below Melitene
+        - [39.2, 37.9]
+        - at: [40.2, 37.85]
+          note: the Tigris at Amida, armenia's line
+        - at: [40.9, 38.35]
+          via: curve
+          note: the Taurus east of the upper Tigris, towards Arzanene
+        - at: [40.2, 38.85]
+          via: curve
+          note: the Antitaurus above the Arsanias, by convention
+        - at: [39.2, 38.95]
+          via: curve
+        - at: [38.45, 38.85]
+          note: back on armenia's Euphrates line
+  sources:
+    - { source: strabo, locator: '11.12.4, 11.14.2, 11.14.15' }
+    - { source: sullivan-1990 }
+    - { source: barrington, locator: 'map 89' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sophene, the kingdom of the Zariadrids between the Euphrates, the
+    Antitaurus and the Taurus, with Carcathiocerta, which Strabo describes
+    between Masius and the Antitaurus (11.12.4) and whose last king Artanes
+    Tigranes put down (11.14.15). Split from armenia (September 2026, for the
+    extension to 133): a kingdom of its own until Tigranes' accession, c. 95.
+    Its northern edge is a convention along the Antitaurus. Takes its western
+    and southern edges from armenia's.
+
 - id: armenia
   evidence: schematic
   construction:
@@ -1340,8 +1423,11 @@
   review: needs-check
   note: >-
     Armenia Maior as Pompey left it to Tigranes in 66: the Araxes valley with
-    Artaxata, the lands round Lake Van, and Sophene and Gordyene towards the
-    Tigris. Before 66 Tigranes' empire was larger; that is not drawn. Takes the
+    Artaxata, the lands round Lake Van, and Gordyene towards the Tigris
+    (Sophene, a kingdom of its own until c. 95, is its own atom since the
+    extension to 133). Before 66 Tigranes' empire was larger; that is not
+    drawn, nor is Gordyene's own history (its king Zarbienus under Tigranes,
+    Plut. Lucullus 21, 29; Parthian in 66–65, Dio 37.5.3–4). Takes the
     Euphrates from armenia-minor and cappadocia, the Caucasian kingdoms' lines
     from theirs, and the Araxes from atropatene.
 

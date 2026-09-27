@@ -869,17 +869,6 @@
   note: Pompey's annexation.
 
 - atom: syria-palaestina
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: The conquests of Alexander Jannaeus.
-
-- atom: syria-palaestina
   polity: syria
   relation: province
   from: 63 BCE
@@ -893,17 +882,6 @@
 
 - atom: judaea
   polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '14.1–79' }
-  confidence: certain
-  review: draft
-  note: The Hasmonean kingdom, a friend of Rome by treaty but no client.
-
-- atom: judaea
-  polity: judaea
   relation: client
   from: 63 BCE
   to: 41 BCE
@@ -912,15 +890,6 @@
   confidence: certain
   review: draft
   note: Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
-
-- atom: judaea-joppa
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources: [{ source: josephus-aj, locator: '13.395' }]
-  confidence: probable
-  review: draft
 
 - atom: judaea-joppa
   polity: syria
@@ -940,53 +909,6 @@
   confidence: probable
   review: draft
   note: Restored to Hyrcanus by Caesar (AJ 14.205).
-
-- atom: ituraea
-  polity: ituraea
-  relation: client
-  from: before 68 BCE
-  to: 37 BCE
-  sources:
-    - { source: strabo, locator: '16.2.10, 16.2.18' }
-    - { source: sullivan-1990 }
-  confidence: uncertain
-  review: needs-check
-
-- atom: emesa
-  polity: emesa
-  relation: client
-  from: before 68 BCE
-  to: 31 BCE
-  sources:
-    - { source: strabo, locator: '16.2.10' }
-    - { source: sullivan-1990 }
-  confidence: uncertain
-  review: needs-check
-
-- atom: commagene
-  polity: commagene
-  relation: client
-  from: before 68 BCE
-  to: after 27 BCE
-  sources:
-    - { source: strabo, locator: '16.2.3' }
-    - { source: facella-2006 }
-  confidence: probable
-  review: draft
-
-- atom: amanus
-  polity: amanus
-  relation: client
-  from: before 68 BCE
-  to: 31 BCE
-  sources:
-    - { source: strabo, locator: '14.5.18' }
-    - { source: cicero-fam, locator: '15.1.2' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Strabo names Tarcondimotus as tyrant of the Amanus, made king by the
-    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus.
 
 # --- Africa --------------------------------------------------------------------
 
@@ -1506,38 +1428,28 @@
     from 55. Until September 2026 this row ran from "before 68" and its note
     asked for this change.
 
-- atom: nabataea
-  polity: nabataea
-  relation: client
-  from: before 68 BCE
-  to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Nabataean control was of routes and watering points, not of area.
-
 - atom: nabataea-moab
-  polity: judaea
+  polity: nabataea
   relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources: [{ source: josephus-aj, locator: '13.397, 14.18' }]
-  confidence: uncertain
-  review: draft
-  note: Jannaeus' conquest, still Hasmonean when Hyrcanus fled to Aretas.
-
-- atom: nabataea-moab
-  polity: nabataea
-  relation: client
   from: 65 BCE
-  to: after 27 BCE
+  to: 63 BCE
   sources: [{ source: josephus-aj, locator: '14.18' }]
   confidence: uncertain
   review: needs-check
   note: >-
     Hyrcanus promised the twelve towns back to Aretas III for his help, c. 65.
-    Whether the Nabataeans held them afterwards is not stated.
+    Whether the Nabataeans held them afterwards is not stated. Independent to
+    Scaurus' campaign, as nabataea (the extension to 133).
+
+- atom: nabataea-moab
+  polity: nabataea
+  relation: client
+  from: 62 BCE
+  to: after 27 BCE
+  sources: [{ source: josephus-aj, locator: '14.18, 14.80–81' }]
+  confidence: uncertain
+  review: needs-check
+  note: As nabataea, from Scaurus' campaign of 62.
 
 # --- the Black Sea -------------------------------------------------------------
 # Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
@@ -1660,7 +1572,6 @@
   review: needs-check
   note: As bosporus.
 
-
 - atom: bosporus
   polity: bosporus
   relation: client
@@ -1760,16 +1671,6 @@
     and Eupator gave the priesthood to his friend Dorylaus (Strabo 12.3.32–34).
     Murena attacked it in 83 as "a very large country town belonging to
     Mithridates" (App. Mithr. 64).
-
-- atom: colchis
-  polity: pontus-regnum
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 101' }
-  confidence: probable
-  review: draft
 
 - atom: bosporus
   polity: pontus-regnum
@@ -1952,16 +1853,6 @@
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: cassius-dio, locator: '36.54, 37.1' }
-  confidence: probable
-  review: draft
-
-- atom: iberia-caucasia
-  polity: iberia-caucasia
   relation: client
   from: 65 BCE
   to: after 27 BCE
@@ -1971,16 +1862,6 @@
   review: needs-check
   note: >-
     Submitted to Pompey after his invasion of 65.
-
-- atom: albania
-  polity: albania
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: cassius-dio, locator: '36.54' }
-  confidence: probable
-  review: draft
 
 - atom: albania
   polity: albania
@@ -1995,27 +1876,6 @@
   note: >-
     Oroeses sued for peace after Pompey's campaign of 65.
 
-- atom: atropatene
-  polity: atropatene
-  relation: client
-  from: before 68 BCE
-  to: 36 BCE
-  sources:
-    - { source: strabo, locator: '11.13.1–2' }
-  confidence: uncertain
-  review: needs-check
-
-- atom: armenia
-  polity: armenia
-  relation: independent
-  from: before 68 BCE
-  to: 67 BCE
-  sources:
-    - { source: plutarch, locator: 'Pompey 33' }
-    - { source: sherwin-white-1984 }
-  confidence: probable
-  review: draft
-
 - atom: armenia
   polity: armenia
   relation: client
@@ -2026,29 +1886,6 @@
     - { source: cassius-dio, locator: '36.52–53' }
   confidence: probable
   review: draft
-
-- atom: parthia
-  polity: parthia
-  relation: independent
-  from: before 68 BCE
-  to: after 27 BCE
-  sources:
-    - { source: debevoise-1938 }
-    - { source: sherwin-white-1984 }
-  confidence: certain
-  review: draft
-
-- atom: syria
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
 
 - atom: creta
   polity: creta-koinon
@@ -3492,19 +3329,6 @@
 
 - atom: judaea-jericho
   polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '14.1–79' }
-  confidence: certain
-  review: draft
-  note: >-
-    Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
-    The Hasmonean kingdom, a friend of Rome by treaty but no client.
-
-- atom: judaea-jericho
-  polity: judaea
   relation: client
   from: 63 BCE
   to: 41 BCE
@@ -3517,19 +3341,6 @@
     Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
 
 - atom: samaria
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: samaria
   polity: syria
   relation: province
   from: 63 BCE
@@ -3542,19 +3353,6 @@
   note: >-
     Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
     Taken from the Jews by Pompey and put under the governor of Syria.
-
-- atom: gadara-hippos
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
 
 - atom: gadara-hippos
   polity: syria
@@ -3571,19 +3369,6 @@
     Taken from the Jews by Pompey and put under the governor of Syria.
 
 - atom: strato-tower
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: strato-tower
   polity: syria
   relation: province
   from: 63 BCE
@@ -3598,19 +3383,6 @@
     Taken from the Jews by Pompey and put under the governor of Syria.
 
 - atom: palaestina-coast
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: palaestina-coast
   polity: syria
   relation: province
   from: 63 BCE
@@ -3623,19 +3395,6 @@
   note: >-
     Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
     Taken from the Jews by Pompey and put under the governor of Syria.
-
-- atom: gaza
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
 
 - atom: gaza
   polity: syria
@@ -3665,19 +3424,6 @@
     Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
     Pompey's annexation.
 
-- atom: tyre
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
-
 - atom: sidon
   polity: syria
   relation: province
@@ -3692,19 +3438,6 @@
     Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
     Pompey's annexation.
 
-- atom: sidon
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
-
 - atom: phoenicia
   polity: syria
   relation: province
@@ -3718,19 +3451,6 @@
   note: >-
     Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
     Pompey's annexation.
-
-- atom: phoenicia
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
 
 # The Parthian invasion of 40
 
@@ -4892,3 +4612,903 @@
     Tigranes' raid, when he carried the Cappadocians off to Tigranocerta
     (App. Mithr. 67; Strabo 12.2.9), in 78 or 77 (Kallet-Marx 295), is not
     drawn as a holding.
+
+# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
+# The rows of these atoms that used to open at 68 are rewritten here, so each
+# atom's history reads in one place. The Seleucid kingdom is one polity
+# throughout, though from 113 its rival kings divided it; that division is not
+# drawn, because no source gives it a line at the atoms' grain.
+
+# Syria and the Phoenician coast
+
+- atom: syria
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: justin, locator: '39.1–39.3, 40.1' }
+    - { source: ehling-2008 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Antiochus VII Sidetes to his death in Media (129), then Demetrius II again,
+    Alexander Zabinas, and from 113 the war of Antiochus VIII Grypus at Antioch
+    and Antiochus IX Cyzicenus, who held Coele-Syria from Damascus; then their
+    sons, to Philip I and Antiochus XII (App. Syr. 68–69). Drawn as one kingdom:
+    who held which town in which year is argued from coins (Ehling) and not
+    drawn. Damascus fell to Aretas III of Nabataea c. 85 (Josephus AJ 13.392)
+    and is not split out. Ends with Tigranes' conquest.
+
+- atom: syria
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48–49, 70' }
+    - { source: justin, locator: '40.1–40.2' }
+    - { source: strabo, locator: '11.14.15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Syrians, worn out by the kings' wars, called in Tigranes (Justin 40.1),
+    who "took Cilicia at the same time" and put Magadates over his conquests for
+    fourteen years (App. Syr. 48): 83 on Appian's count, as the Cilician plain
+    (cilicia-campestris). Justin's eighteen years would put it earlier, and
+    some modern work later (c. 74). Queen Selene still held Ptolemais into the
+    70s (Josephus AJ 13.420), and Damascus was Aretas' until c. 72; neither is
+    drawn at this grain. After Tigranocerta (69) Lucullus "wrested his newly
+    acquired territory from him" (Syr. 49).
+
+- atom: syria
+  polity: seleucid
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: justin, locator: '40.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antiochus XIII, whom Lucullus let into Syria in 69 (Justin 40.2; App. Syr.
+    49); his writ hardly ran beyond Antioch. Pompey set him aside in 64.
+
+- atom: phoenicia
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: schurer-vermes-ii }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Orthosia, Tripolis, Byblos, Berytus and Ptolemais. As syria; the cities
+    drifted towards self-rule under the late kings (Tripolis counted an era of
+    its own from 105/104), which is not drawn.
+
+- atom: phoenicia
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48' }
+    - { source: strabo, locator: '11.14.15' }
+    - { source: josephus-aj, locator: '13.419–421' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "took Syria itself and Phoenicia" (Strabo 11.14.15). Ptolemais
+    held out under Selene until he besieged it, c. 70–69, and withdrew when
+    Lucullus invaded Armenia (AJ 13.419–421).
+
+- atom: phoenicia
+  polity: seleucid
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria.
+
+- atom: tyre
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 127 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+  confidence: probable
+  review: needs-check
+
+- atom: tyre
+  polity: tyre
+  relation: independent
+  from: 126 BCE
+  to: 65 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Free from 126/125, the first year of the city's era on its coins. No source
+    says Tigranes took it; left free through his years. Pompey's province from
+    64 (syria's row), a free city within it.
+
+- atom: sidon
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+  confidence: probable
+  review: needs-check
+
+- atom: sidon
+  polity: sidon
+  relation: independent
+  from: 111 BCE
+  to: 65 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Free from 111, the first year of the city's era. As tyre, Tigranes is not
+    recorded holding it.
+
+- atom: emesa
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria; Emesa is not heard of as a principality before the 60s.
+
+- atom: emesa
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria.
+
+- atom: emesa
+  polity: emesa
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: strabo, locator: '16.2.10' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sampsigeramus of Emesa and Arethusa (Strabo 16.2.10) is first seen in the
+    confusion after Tigranes' withdrawal, when he held Antiochus XIII captive
+    (Diodorus 40.1b, reported by Sullivan); dated from 69 for that reason.
+
+- atom: emesa
+  polity: emesa
+  relation: client
+  from: 64 BCE
+  to: 31 BCE
+  sources:
+    - { source: strabo, locator: '16.2.10' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: From Pompey's settlement of Syria, which left the dynasts in place.
+
+- atom: ituraea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: myers-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Beqaa, with Chalcis and Heliopolis, under the kings in name. The
+    Ituraean mountain tribes were never much governed by them.
+
+- atom: ituraea
+  polity: ituraea
+  relation: independent
+  from: c. 85 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.392, 13.418' }
+    - { source: strabo, locator: '16.2.10' }
+    - { source: myers-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Ptolemy son of Mennaeus, whom the Damascenes so hated that they called in
+    Aretas c. 85 (AJ 13.392); Aristobulus marched on Damascus against him under
+    Salome Alexandra (13.418). Whether he acknowledged Tigranes is not
+    recorded. He bought off Pompey in 63 (AJ 14.39).
+
+- atom: ituraea
+  polity: ituraea
+  relation: client
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.39' }
+    - { source: strabo, locator: '16.2.10, 16.2.18' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+
+- atom: commagene
+  polity: commagene
+  relation: independent
+  from: before 133 BCE
+  to: 65 BCE
+  sources:
+    - { source: facella-2006 }
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Independent of the Seleucids since Ptolemaeus, c. 163; Sames II, then
+    Mithridates I Callinicus, who married Laodice, daughter of Antiochus VIII,
+    then Antiochus I from c. 70. Tigranes is not recorded taking it.
+
+- atom: commagene
+  polity: commagene
+  relation: client
+  from: 64 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 106, 114' }
+    - { source: strabo, locator: '16.2.3' }
+    - { source: facella-2006 }
+  confidence: probable
+  review: draft
+  note: >-
+    Pompey fought Antiochus I, made him a friend, and added Seleucia at Zeugma
+    (App. Mithr. 106, 114).
+
+- atom: amanus
+  polity: amanus
+  relation: client
+  from: 64 BCE
+  to: 31 BCE
+  sources:
+    - { source: strabo, locator: '14.5.18' }
+    - { source: cicero-fam, locator: '15.1.2' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Strabo names Tarcondimotus as tyrant of the Amanus, made king by the
+    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus. When
+    Rome made him king is not recorded; dated from Pompey's settlement, when
+    Sullivan puts it. Unclaimed before: the Amanus was robbers' country under
+    the last Seleucids.
+
+# The Hasmoneans
+
+- atom: judaea
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.236–248' }
+    - { source: justin, locator: '36.1' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Antiochus VII besieged Jerusalem in Hyrcanus' first year (134 or 133) and
+    lifted the siege when the Jews gave up their arms and agreed to "pay
+    tribute for Joppa, and the other cities which bordered upon Judea" (AJ
+    13.246–248); Hyrcanus went with him to the east in 130. A vassal until the
+    king's death in 129.
+
+- atom: judaea
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.254, 13.273, 14.1–79' }
+  confidence: certain
+  review: draft
+  note: >-
+    "After the death of Antiochus, he revolted from the Macedonians, nor did he
+    any longer pay them the least regard" (AJ 13.273). The Hasmonean kingdom,
+    a friend of Rome by treaty but no client; kings from Aristobulus I (104).
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources: [{ source: josephus-aj, locator: '13.236–248' }]
+  confidence: probable
+  review: needs-check
+  note: As judaea.
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources: [{ source: josephus-aj, locator: '13.273' }]
+  confidence: certain
+  review: draft
+  note: As judaea.
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.246' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Simon's since the 140s; under Antiochus VII the Jews paid "tribute for
+    Joppa" (AJ 13.246).
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.273, 13.395' }
+  confidence: probable
+  review: draft
+
+- atom: judaea-idumaea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.257' }
+  confidence: uncertain
+  review: needs-check
+  note: The Idumaeans before Hyrcanus' conquest, under the kings in name.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: independent
+  from: { earliest: 129 BCE, latest: 111 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.257–258' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Hyrcanus took also Dora and Marissa, cities of Idumea, and subdued all the
+    Idumeans" (AJ 13.257; "Dora" is Adora). Josephus tells it straight after
+    Antiochus' death (129); the coins and the end of occupation at Marisa have
+    led much modern work to put it c. 112–111. The range is both.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-idumaea
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369, 14.394–397' }
+  confidence: probable
+  review: draft
+  note: >-
+    As judaea (the row is judaea's). Herod held Idumaea from 39 (AJ
+    14.394–397); drawn with Antigonus' Judaea as before the split.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-galilee
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 105 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.318–319' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Seleucid in name; its people in part Ituraean (AJ 13.318–319). Who ruled
+    it before the Hasmoneans is not recorded.
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: independent
+  from: 104 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.318–319' }
+    - { source: schurer-vermes }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aristobulus I "made war against Iturea, and added a great part of it to
+    Judea" (AJ 13.318), which is taken to be Galilee; he reigned a year from
+    Hyrcanus' death in 104. Some put the conquest under Hyrcanus.
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-galilee
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369, 14.413–414' }
+  confidence: probable
+  review: draft
+  note: >-
+    As judaea (the row is judaea's). Herod held Galilee from the winter of
+    39/38 (AJ 14.413–414); drawn with Antigonus' Judaea as before the split.
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: samaria
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Samaria was a Seleucid city: Antiochus IX came to its help when Hyrcanus'
+    sons besieged it (AJ 13.276–277).
+
+- atom: samaria
+  polity: judaea
+  relation: independent
+  from: { earliest: 111 BCE, latest: 107 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.255–256, 13.275–281' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Hyrcanus took "Shechem and Gerizzim, and the nation of the Cutheans" (AJ
+    13.255) and destroyed the temple on Gerizim; Josephus tells it after 129,
+    the excavators date the destruction c. 111. Then he besieged Samaria, "took
+    Samaria" and "demolished it entirely" (13.275–281), c. 108–107.
+
+- atom: syria-palaestina
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 108 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281' }
+  confidence: uncertain
+  review: needs-check
+  note: The Jezreel with Scythopolis, and the Greek cities across the Jordan.
+
+- atom: syria-palaestina
+  polity: judaea
+  relation: independent
+  from: 107 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281, 13.393–397' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Scythopolis and the Jezreel fell with Samaria (c. 107); Pella, Dion,
+    Gerasa and the Gaulanitis only to Jannaeus in the 80s (AJ 13.393–397). The
+    atom cannot be split by those years; drawn from the first conquest.
+
+- atom: gadara-hippos
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 101 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: gadara-hippos
+  polity: judaea
+  relation: independent
+  from: c. 100 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.396' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jannaeus "took Gadara, after a siege of ten months" (AJ 13.356), after
+    Ptolemy Lathyrus' war (103–101); Gadara is in the list of the Jews' cities
+    at his death (13.396). Hippos is not in that list, but Pompey took it from
+    them (AJ 14.75).
+
+- atom: strato-tower
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 104 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    In Jannaeus' first year Strato's Tower and Dora "were held by the tyrant
+    Zoilus" (AJ 13.324), who had set himself up "on occasion of the contest
+    between the kings" (13.326); when is not known, and he is not drawn.
+
+- atom: strato-tower
+  polity: judaea
+  relation: independent
+  from: { earliest: 103 BCE, latest: 96 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324–335, 13.395' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Jannaeus bought Ptolemy Lathyrus' help to "take off Zoilus the tyrant, and
+    give his country to the Jews" (AJ 13.335), c. 103–102; Strato's Tower is
+    the first city on the list of the Jews' possessions at his death (13.395).
+    When it passed is not stated; by the war on Gaza (96) at the latest.
+
+- atom: palaestina-coast
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 104 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324' }
+  confidence: uncertain
+  review: needs-check
+  note: As strato-tower; Dora was Zoilus' too.
+
+- atom: palaestina-coast
+  polity: judaea
+  relation: independent
+  from: { earliest: 103 BCE, latest: 96 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.335, 13.395' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Dora with Zoilus' country; Iamnia and Azotus are on the list of the Jews'
+    cities (AJ 13.395). Ascalon, inside the atom, was never Hasmonean: it was
+    free from 104 (its era). The atom is drawn Judaean for its other towns.
+
+- atom: gaza
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 97 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.357–364' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: gaza
+  polity: judaea
+  relation: independent
+  from: 96 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.357–364, 13.395' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: draft
+  note: >-
+    Jannaeus took Raphia and Anthedon, then Gaza, "having spent a year in that
+    siege", and "utterly overthrown their city" (AJ 13.357, 13.364), 96 on the
+    usual reckoning.
+
+- atom: nabataea-moab
+  polity: judaea
+  relation: independent
+  from: c. 93 BCE
+  to: 66 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.374, 13.397, 14.18' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
+    made them pay tribute (AJ 13.374), after Gaza and before the civil war;
+    Heshbon, Medaba and the other Moabite towns are Jewish at his death
+    (13.397). Unclaimed before: who held Moab is not recorded.
+
+- atom: nabataea
+  polity: nabataea
+  relation: independent
+  from: before 133 BCE
+  to: 63 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.360, 13.375, 13.387–392' }
+    - { source: sullivan-1990 }
+    - { source: bowersock-1983 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Aretas II, who promised Gaza help against Jannaeus (AJ 13.360); Obodas I,
+    who ambushed Jannaeus in the Gaulanitis (13.375) and beat and killed
+    Antiochus XII; Aretas III, who held Damascus from c. 85 (13.392). Its
+    Damascene is not drawn.
+
+- atom: nabataea
+  polity: nabataea
+  relation: client
+  from: 62 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.80–81' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    From Scaurus' campaign of 62, after which Aretas paid three hundred
+    talents (AJ 14.80–81).
+
+# Armenia, Sophene and the Caucasus
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: before 133 BCE
+  to: 67 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: justin, locator: '42.2' }
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: sherwin-white-1984 }
+  confidence: probable
+  review: draft
+  note: >-
+    The Artaxiad kingdom: Artavasdes I, against whom Mithridates II made war
+    (Justin 42.2); Tigranes II from c. 95, who had been a hostage in Parthia
+    and bought his return with "seventy valleys" (Strabo 11.14.15), which he
+    took back. The standing to Parthia before him is not drawn.
+
+- atom: sophene
+  polity: sophene
+  relation: independent
+  from: before 133 BCE
+  to: 95 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The kingdom of Zariadris' line, to Artanes, whom Tigranes put down.
+
+- atom: sophene
+  polity: armenia
+  relation: independent
+  from: c. 94 BCE
+  to: 67 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes' first conquest after his accession (Sullivan); Strabo gives no
+    year.
+
+- atom: sophene
+  polity: armenia
+  relation: client
+  from: 66 BCE
+  to: 35 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: cassius-dio, locator: '36.52–53' }
+  confidence: probable
+  review: draft
+  note: >-
+    As armenia (the row is armenia's). Pompey first gave Sophene to Tigranes'
+    son and took it back when he quarrelled with him (Dio 36.53); not drawn.
+
+- atom: sophene
+  polity: armenia
+  relation: client
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–41' }
+  confidence: uncertain
+  review: needs-check
+  note: As armenia (the row is armenia's).
+
+- atom: sophene
+  polity: rome
+  relation: occupied
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–40, 49.44.4' }
+  confidence: probable
+  review: draft
+  note: As armenia (the row is armenia's).
+
+- atom: sophene
+  polity: armenia
+  relation: independent
+  from: 31 BCE
+  to: after 27 BCE
+  sources:
+    - { source: tacitus-ann, locator: '2.3' }
+    - { source: cassius-dio, locator: '51.16.2' }
+  confidence: probable
+  review: draft
+  note: As armenia (the row is armenia's).
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+    - { source: schottky-1989 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    A vassal kingdom throughout: of Parthia, then of Tigranes, then of Parthia
+    again (relations.yaml). One row for each master.
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: 85 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: cassius-dio, locator: '36.14.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15).
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: 65 BCE
+  to: 36 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: iberia-caucasia
+  polity: iberia-caucasia
+  relation: independent
+  from: before 133 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54, 37.1' }
+    - { source: strabo, locator: '11.3.1–6' }
+  confidence: probable
+  review: draft
+
+- atom: albania
+  polity: albania
+  relation: independent
+  from: before 133 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54' }
+    - { source: strabo, locator: '11.4.1–2' }
+  confidence: probable
+  review: draft
+
+- atom: colchis
+  polity: pontus-regnum
+  relation: allied
+  from: { earliest: 113 BCE, latest: 90 BCE }
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.28, 11.2.18' }
+    - { source: appian, locator: 'Mithr. 15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Mithridates "established himself as master, not only of Colchis, but also"
+    of Lesser Armenia (Strabo 12.3.28); dated with Lesser Armenia
+    (armenia-minor), between his sole rule and the war with Rome, when the
+    relation is Pontus' alliance with Rome. Before, "the country was divided
+    among sceptuchi" (11.2.18) and is unclaimed.
+
+- atom: colchis
+  polity: pontus-regnum
+  relation: independent
+  from: 89 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 64, 101' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Colchians rose c. 84–83 and asked for Mithridates' son as their king,
+    whom the king then put to death (App. Mithr. 64); a revolt, not drawn.
+
+- atom: parthia
+  polity: parthia
+  relation: independent
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: justin, locator: '42.1–42.4' }
+    - { source: debevoise-1938 }
+    - { source: sherwin-white-1984 }
+  confidence: certain
+  review: draft
+  note: >-
+    Not drawn inside the atom: Antiochus VII's recovery of Babylonia and Media
+    in 130–129 (Justin 38.10), Characene's independence under Hyspaosines, and
+    Tigranes' conquest of northern Mesopotamia and Adiabene (Strabo 11.14.15),
+    none of which has a line the sources give at this grain.
