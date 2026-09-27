@@ -24,7 +24,7 @@ import {
 
 // fields.ts imports this file too; each only calls the other's functions when a
 // shader is built, by when both are loaded.
-import { groundStanding } from './fields.ts'
+import { groundStanding, plotShown } from './fields.ts'
 
 /**
  * The ground the model of Rome stands on (DESIGN.md §7.7), printed onto the terrain
@@ -270,8 +270,12 @@ function planOver(
     mix(out, rgb(EARTH).mul(lit), walled.mul(0.7).mul(planUniforms.meshShown).mul(plate)),
   )
 
-  // Baked shadows, as the model rises, where its ground mesh does not take its real ones.
-  const baked = planUniforms.meshShown.mul(float(1).sub(groundMeshFade(mx, my)))
+  // Baked shadows, as the model rises, where its ground mesh does not take its real ones:
+  // out in the country, as its fields come in, since most there are its trees'
+  // (fields.ts `plotShown`).
+  const baked = planUniforms.meshShown
+    .mul(float(1).sub(groundMeshFade(mx, my)))
+    .mul(plotShown(mx, my))
   out.assign(out.mul(float(1).sub(p0.r.mul(0.3).mul(baked).mul(plate))))
 
   // Paved streets and roads. What a line is comes from the nearest texel.
@@ -343,7 +347,7 @@ function slopeLight(mx: F, my: F) {
  * The plan over the terrain's `colour` at plane position (`mx`, `my`), metres. `pxM`
  * is metres per device pixel, taken outside any branch. `roads` is how far the plan's
  * roads run on beyond the board: as far as the country round it (fields.ts
- * `fieldsMask`), so a road out of a gate does not stop short in the fields.
+ * `countryMask`), so a road out of a gate does not stop short in the fields.
  */
 export function planShading(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, roads: F) {
   const plate = plateMask(mx, my, pxM)

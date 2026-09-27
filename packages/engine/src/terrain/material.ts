@@ -27,7 +27,8 @@ import { DATA_RECT, ROOT } from '@roma-cognita/world'
 import { politicsUniforms } from '../politics/PoliticalLayer.ts'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
-import { fieldShading, fieldsMask } from '../rome/fields.ts'
+import { countryMask, fieldShading } from '../rome/fields.ts'
+import { portraitCover, portraitShading } from '../rome/portrait.ts'
 import {
   groundLift,
   planShading,
@@ -403,18 +404,20 @@ export function createTerrainMaterial(n: number) {
   // The plan draws Rome's own streets and roads, so the map's give way there: to its
   // streets on the board, and to its roads out of the gates as far as the country
   // round the city reaches, where one road hands over to the other.
-  const planRoads = fieldsMask(mx, my, pxM)
+  const planRoads = countryMask(mx, my, pxM)
   const withRoads = mix(
     withRivers,
     road.colour,
-    road.alpha.mul(
-      float(1).sub(max(plateMask(mx, my, pxM), planRoads).mul(streetsShow(pxM))),
-    ),
+    road.alpha
+      .mul(float(1).sub(max(plateMask(mx, my, pxM), planRoads).mul(streetsShow(pxM))))
+      .mul(float(1).sub(portraitCover(mx, my, pxM))),
   )
   // The plan of Rome over them, close in: bridges on the river (rome/shading.ts).
   const withPlan = planShading(withRoads, mx, my, pxM, planRoads)
+  // The city drawn from overhead over it, until its model rises (rome/portrait.ts).
+  const withCity = portraitShading(withPlan, mx, my, pxM, lit)
   // A focused polity's outline: a bright line in a thin ink casing, over every border.
-  const bordered = mix(withPlan, pol.line, pol.lineAlpha)
+  const bordered = mix(withCity, pol.line, pol.lineAlpha)
   const cased = mix(bordered, INK, pol.focusCaseAlpha)
   const landWithRivers = mix(cased, FOCUS_LINE, pol.focusLineAlpha)
 

@@ -3,11 +3,11 @@ import {
   abs,
   clamp,
   cos,
-  dot,
   float,
   floor,
   fract,
   Fn,
+  hash,
   If,
   int,
   ivec2,
@@ -39,10 +39,23 @@ import { css, planTextures, planUniforms, plateUV, reachAt } from './shading.ts'
  * generated houses it is illustrative, and plainer than what is recorded. It is
  * painted under the rivers and roads, and reaches beyond the board (`fieldsMask`),
  * fading out into the map's own ground.
+ *
+ * It comes in only once the model stands and the view is well inside the city
+ * (`FIELDS_MPP`): further out it would be a patch of country unlike the rest of
+ * Italy's. Its plots are drawn as the map's own ground there, lighter or darker,
+ * yellower or greener (`REFERENCE`), so where they thin out towards the edge the one
+ * runs into the other, plot by plot (`keepPlot`); and zooming in, they come up out
+ * of it all together (`reveal`).
  */
 export const fieldUniforms = {
   /** How far beyond everything on the plan the country is drawn, metres. */
   reach: uniform(1350),
+  /**
+   * How far the fields have come in, 0 … 1: set per frame from the view's scale
+   * (`fieldsRevealAt`), one for the whole view, as the model's rise is, so on a
+   * tilted view the fields and the trees standing in them come in together.
+   */
+  reveal: uniform(0),
   /** plate-2's clamps, metres: the distance to a plot's edge, and to a lane. */
   edgeClamp: uniform(6),
   laneClamp: uniform(10),
@@ -122,11 +135,43 @@ export const FIELD_KEY = {
 }
 
 /**
- * How much of the country shows at a plane point: all of it from 18 m/px in, as the
- * plan does, out to `reach` beyond everything on it, fading over its last 450 m and
- * at the edges of the plate's grid. `pxM` must be taken outside a branch.
+ * The scale (m per CSS px) the fields come in between: none at the first, where the
+ * model has just come to stand (ModelLayer `MODEL_MPP`), all of them by the second.
  */
-export function fieldsMask(mx: F, my: F, pxM: F) {
+const FIELDS_MPP: [number, number] = [8, 4]
+
+/** How far the fields have come in at a scale, m per CSS px (`fieldUniforms.reveal`). */
+export function fieldsRevealAt(mpp: number) {
+  const [none, all] = FIELDS_MPP
+  const t = Math.min(1, Math.max(0, (none - mpp) / (none - all)))
+  return t * t * (3 - 2 * t)
+}
+/**
+ * How the country thins out towards its edge (`thinAt`), metres: over the last
+ * stretch of its reach, and of the plate's grid.
+ */
+const THIN_REACH_M: [number, number] = [1000, 60]
+const THIN_PLATE_M: [number, number] = [700, 60]
+/** How soft one plot's own fade is, as a share of the thinning (`keepPlot`). */
+const PLOT_SOFT = 0.12
+
+/** Metres from a plane point to the nearest edge of the plate's grid. */
+function toPlateEdge(mx: F, my: F) {
+  const uv = plateUV(mx, my)
+  return min(
+    min(uv.x, float(1).sub(uv.x)).mul(planUniforms.plateSize.x),
+    min(uv.y, float(1).sub(uv.y)).mul(planUniforms.plateSize.y),
+  )
+}
+
+/**
+ * How far out the country reaches at a plane point, at any zoom from the board's in:
+ * out to `reach` beyond everything on the plan, fading over its last 450 m and at the
+ * edges of the plate's grid. The plan's roads out of the gates run on as far
+ * (shading.ts `planShading`), so they hand over to the map's where it ends. `pxM`
+ * must be taken outside a branch.
+ */
+export function countryMask(mx: F, my: F, pxM: F) {
   const zoom = float(1)
     .sub(smoothstep(18, 26, css(pxM)))
     .mul(planUniforms.enabled)
@@ -134,12 +179,42 @@ export function fieldsMask(mx: F, my: F, pxM: F) {
   const far = float(1).sub(
     smoothstep(fieldUniforms.reach.sub(450), fieldUniforms.reach.sub(50), reachAt(mx, my)),
   )
-  const uv = plateUV(mx, my)
-  const toEdge = min(
-    min(uv.x, float(1).sub(uv.x)).mul(planUniforms.plateSize.x),
-    min(uv.y, float(1).sub(uv.y)).mul(planUniforms.plateSize.y),
+  return zoom.mul(far).mul(smoothstep(0, 300, toPlateEdge(mx, my)))
+}
+
+/** 0 well inside the country … 1 at its edge, by its reach and the plate's grid. */
+function thinAt(mx: F, my: F) {
+  const r = fieldUniforms.reach
+  return max(
+    smoothstep(r.sub(THIN_REACH_M[0]), r.sub(THIN_REACH_M[1]), reachAt(mx, my)),
+    smoothstep(THIN_PLATE_M[0], THIN_PLATE_M[1], toPlateEdge(mx, my)),
   )
-  return zoom.mul(far).mul(smoothstep(0, 300, toEdge))
+}
+
+/**
+ * How much of the country is drawn at a plane point: from `FIELDS_MPP` in, out to
+ * where it has thinned away (`thinAt`), plot by plot (`keepPlot`).
+ */
+export function fieldsMask(mx: F, my: F) {
+  const shown = fieldUniforms.reveal.greaterThan(0).and(thinAt(mx, my).lessThan(1))
+  return select(shown, float(1), float(0))
+    .mul(planUniforms.enabled)
+    .mul(planUniforms.loaded)
+}
+
+/**
+ * Whether a plot is drawn, 0 … 1: each has its own draw (`id`, from what it is and
+ * the lie of its rows, which neighbours rarely share), and drops out once the
+ * thinning passes it. So towards its edge the country trails off plot by plot, as an
+ * engraved map's does towards its margin, rather than ending in a soft outline. And
+ * all of it as far as the fields have come in (`reveal`).
+ */
+function keepPlot(id: F, mx: F, my: F) {
+  const thin = thinAt(mx, my)
+  const drop = hash(id).mul(1 - PLOT_SOFT)
+  return float(1)
+    .sub(smoothstep(drop, drop.add(PLOT_SOFT), thin))
+    .mul(fieldUniforms.reveal)
 }
 
 /**
@@ -148,7 +223,7 @@ export function fieldsMask(mx: F, my: F, pxM: F) {
  * branch.
  */
 export function fieldShading(colour: V3, mx: F, my: F, pxM: F) {
-  const mask = fieldsMask(mx, my, pxM)
+  const mask = fieldsMask(mx, my)
   return Fn(() => {
     const out = vec3(colour).toVar()
     If(mask.greaterThan(0), () => {
@@ -156,6 +231,30 @@ export function fieldShading(colour: V3, mx: F, my: F, pxM: F) {
     })
     return out
   })()
+}
+
+/**
+ * How much a tree of the model's standing on the country at a plane point shows: its
+ * plot's own (`keepPlot`), so the olives and orchards come in with the fields they
+ * stand in, rather than drawing the plots on the map's plain ground before them. Those
+ * inside the wall and in the recorded gardens and groves always stand.
+ */
+export function plotShown(mx: F, my: F) {
+  const uv = plateUV(mx, my)
+  const cell = clamp(
+    floor(uv.mul(planUniforms.plateTexels)),
+    vec2(0),
+    planUniforms.plateTexels.sub(1),
+  )
+  const raw = textureLoad(
+    planTextures.plate[2],
+    ivec2(int(cell.x), int(cell.y)),
+  ) as unknown as THREE.Node<'vec4'>
+  const code = floor(raw.r.mul(255).add(0.5))
+  const use = floor(code.div(16))
+  const g8 = floor(raw.g.mul(255).add(0.5))
+  const keep = keepPlot(code.mul(256).add(g8).add(7), mx, my)
+  return select(use.equal(0).or(use.equal(LAND.recorded)), float(1), keep)
 }
 
 /**
@@ -228,6 +327,7 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   // recorded ground carries the farmland it was laid out over, and its rows' direction
   // in 16 steps.
   const g8 = floor(raw.g.mul(255).add(0.5))
+  const keep = keepPlot(code.mul(256).add(g8).add(7), mx, my).toVar()
   const isRecorded = use.equal(LAND.recorded)
   const a = select(isRecorded, g8.sub(floor(g8.div(16)).mul(16)).div(16), g8.div(256)).mul(
     Math.PI,
@@ -368,15 +468,13 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
     })
 
   // Each plot a shade its own, muted a quarter of the way to the map's ground so the
-  // patchwork stays quiet under the model, lit as the ground under it is.
-  look.assign(mix(look, vec3(REFERENCE.r, REFERENCE.g, REFERENCE.b), 0.25))
+  // patchwork stays quiet under the model. It is drawn as the map's ground, lit as it
+  // is, taken from `REFERENCE` towards the plot's own colour: where the terrain is
+  // greener or darker, so are the fields, and they thin out into it without an edge.
+  const ref = vec3(REFERENCE.r, REFERENCE.g, REFERENCE.b)
+  look.assign(mix(look, ref, 0.25))
   const shade = float(0.975).add(t.mul(0.05))
-  const lum = (c: V3) => dot(c, vec3(0.2126, 0.7152, 0.0722))
-  const lit = clamp(
-    lum(colour).div(lum(vec3(REFERENCE.r, REFERENCE.g, REFERENCE.b))),
-    0.6,
-    1.4,
-  )
+  const lit = clamp(vec3(colour).div(ref), 0.5, 1.6).toVar()
   const ground = look.mul(shade).mul(lit).toVar()
 
   // Hedges and walls between plots, a metre wide; lanes of trodden earth three wide,
@@ -396,5 +494,5 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
     .sub(smoothstep(laneW.sub(aa), laneW.add(aa), toLane))
     .mul(mix(float(0.85), float(0.35), smoothstep(1.5, 6, pxM)))
   ground.assign(mix(ground, P.lane.mul(lit), lane.mul(plotted)))
-  return select(use.equal(0), colour, ground)
+  return select(use.equal(0), colour, mix(colour, ground, keep))
 }

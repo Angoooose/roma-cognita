@@ -644,7 +644,7 @@ so it never leaves out something the rest of the data draws.
 
 **Built in September 2026** (`data/places/rome.yaml`, `pipeline/src/rome`,
 `packages/engine/src/rome`). Zoomed right into Rome, a model of the city rises out
-of the map's own terrain: below ~18 m/px it starts to rise, and it stands by 10. It is the one exception to §2's "city-plan
+of the map's own terrain: below ~14 m/px it starts to rise, and it stands by 8. It is the one exception to §2's "city-plan
 level is a separate product": a capital drawn in detail is normal in an atlas, and
 nobody expects every town to get the same.
 
@@ -971,7 +971,8 @@ known and what is generated are kept apart:
   (`pipeline/src/rome/fields.ts`, `packages/engine/src/rome/fields.ts`). It is
   painted on the ground, so it stays quiet under the model, with a little of it
   raised close in. It reaches ~1.35 km beyond everything on the plan, past the
-  board's own edge, and fades out into the map's ground.
+  board's own edge, and thins out plot by plot into the map's ground. It shows
+  only once the model stands (see **Zooming in** below).
   - **Known**: the gardens and groves the sources place (kinds `garden`, `grove`
     and `cemetery` in rome.yaml, with Platner & Ashby's and Richardson's pages):
     Lucullus' on the Pincian, Caesar's across the Tiber, Sallust's, Maecenas' on the
@@ -1082,12 +1083,13 @@ what the city adds drawn on it:
 - The city's streets show only while they can be drawn at their width; the map's
   roads give way to them then, and draw instead when zoomed out. The streets end
   with the board, but the roads out of the gates run on as far as the country
-  round the city (`fieldsMask`), and the map's roads give way to them there too, so
+  round the city (`countryMask`), and the map's roads give way to them there too, so
   a road does not stop short in the fields: past the Aurelian gates the two are the
   same Itiner-e line, and one fades into the other where the fields fade into the
   map's ground (decided 2026-09-26).
 - The earth, the smoothed lighting and the baked shadows come in as the model
-  rises, so zoomed out Rome is ordinary terrain like any other town.
+  rises. Before it the city is its picture from overhead, and beyond ~70 m/px
+  Rome is ordinary terrain like any other town (**Zooming in**, below).
 
 **Streets and roads** (`streets.ts`) are paved ways on the ground, in pale stone:
 
@@ -1210,7 +1212,25 @@ what the city adds drawn on it:
   view is tilted.
 
 Heights scale with the terrain's vertical exaggeration, and the model grows out
-of the ground as the zoom comes in, between 18 and 10 m/px.
+of the ground as the zoom comes in, between 14 and 8 m/px.
+
+**Zooming in** (decided 2026-09-27), the city comes in first and the country
+round it last, so that Rome never looks like a patch of different ground in
+Italy's:
+
+- **From ~70 m/px to 50** the city fades in as a picture of the model drawn from
+  straight overhead (`rome/portrait.ts`, ModelLayer `paint`): standing, in its sun
+  and its shadows, drawn again for each year's buildings. It is only the city, its
+  suburb and its known groves and gardens, on the map's own ground; the ground
+  inside the wall is trodden earth, and the map's roads give way under it.
+- **From 14 m/px to 8** the model rises out of that picture, which fades out under
+  it; the model is not drawn further out, so the whole city is only ever standing
+  in 3D once its buildings are a few pixels high.
+- **From 8 m/px to 4**, once it stands, the country comes in (`FIELDS_MPP`),
+  evenly over the whole view, as the model's rise is: the fields, and the olives,
+  orchards and baked shadows standing on them, together. Its plots are drawn
+  relative to the map's ground under them, and towards the country's edge they
+  drop out one by one into it. The known gardens and groves stand throughout.
 
 **The legend** keys the model while it stands: marble, stucco over tufa,
 travertine, and the houses as illustrative, with a line saying that only the named
