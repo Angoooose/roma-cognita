@@ -15,6 +15,7 @@ import {
   edges,
   type Pt,
   ROOF,
+  SKIN,
   STONE,
   type Stone,
 } from './builder.ts'
@@ -280,6 +281,7 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     b.lot(q, h, ground, wall, tiles, roof)
   }
   b.dates = ALWAYS
+  b.look = SKIN.tree * 10
   // Trees (pipeline fields.ts `TREE`): the olives and fruit trees of the country's
   // groves and orchards, holm oaks and cypresses on its scrub and in the sacred
   // groves, and in the gardens and courtyards a mix of them, with an umbrella pine
@@ -303,6 +305,7 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
       else b.pine(x, y, r, ground, col)
     }
   }
+  b.look = 0
   b.dates = ALWAYS
 
   // The Forum's square, in the paving of each year: tufa, then travertine.

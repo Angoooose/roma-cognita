@@ -85,12 +85,16 @@ export class RomeMap {
     const anchorOf = map.places.anchorOf
     map.places.anchorOf = (p) =>
       (p.within === 'roma' && map.model.anchor(p.x, p.y)) || anchorOf(p)
+    // The city from overhead, for the map further out (rome/portrait.ts), drawn again
+    // for each year's buildings.
     map.model.onShaded = () => {
+      map.model.paint(map.renderer)
       map.places.invalidate()
       map.dirty = true
     }
     model.then(() => {
       if (map.plan.ground) map.model.buildGround(map.plan.ground)
+      map.model.paint(map.renderer)
       map.places.invalidate()
       map.dirty = true
     })

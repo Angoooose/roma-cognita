@@ -25,7 +25,8 @@ import type { Ground } from './PlanLayer.ts'
 import { groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
 import { STONE } from './builder.ts'
 import type { BuiltModel } from './buildModel.ts'
-import { FIELD_KEY } from './fields.ts'
+import { FIELD_KEY, fieldsRevealAt, fieldUniforms, plotShown } from './fields.ts'
+import { portraitTexture, portraitUniforms } from './portrait.ts'
 import { OCC_BLUR, OCC_CELL_M, OCC_STEP_M } from './occlusionGrid.ts'
 import type { OcclusionJob, OcclusionResult } from './occlusionWorker.ts'
 
@@ -58,6 +59,12 @@ export const modelUniforms = {
   grow: uniform(0),
   /** The year shown, astronomical. */
   year: uniform(-62),
+  /**
+   * 1 while the city is drawn from overhead (`paint`), with no terrain: a building
+   * not standing that year, sunk out of sight under the ground otherwise, would show
+   * through, so it is not drawn at all.
+   */
+  overhead: uniform(0),
 }
 
 /** What the distance fades the model towards: the warm, pale air of a summer day. */
@@ -65,16 +72,22 @@ const HAZE = new THREE.Color('#DCCFB8')
 
 /**
  * The scale (m per CSS px) the model rises between: flat at the first, standing by
- * the second. It starts once the terrain is laid smooth (18 m/px, RomeMap), so its
- * ground mesh always has the terrain's own ground just under it.
+ * the second. Further out the city is its portrait (`paint`, portrait.ts), which it
+ * rises out of, so the model is only drawn once its buildings are a few pixels high.
+ * It starts after the terrain is laid smooth (18 m/px, RomeMap), so its ground mesh
+ * always has the terrain's own ground just under it.
  */
-export const MODEL_MPP: [number, number] = [18, 10]
+export const MODEL_MPP: [number, number] = [14, 8]
 
 /** Towards the sun: north-west, 40° up. */
 const SUN = new THREE.Vector3(-0.54, 0.54, 0.64).normalize()
 /** The ground mesh's grid, metres, and how far past the model it reaches. */
 const GROUND_STEP_M = 10
 const GROUND_PAD_M = 700
+/** The portrait (`paint`): how far past the model it reaches, and its finest texel, metres. */
+const PORTRAIT_PAD_M = 60
+const PORTRAIT_TEXEL_M = 2
+const PORTRAIT_MAX_TEXELS = 2048
 
 /** The model's colours for its legend, as hex: the stones, and the generated houses. */
 export const MODEL_KEY = {
@@ -223,6 +236,8 @@ export class ModelLayer {
   private sky = new THREE.HemisphereLight('#EEF2F4', '#D8CBB2', 2.1)
   /** The model's extent, plane metres: x0, y0, x1, y1. */
   private extent: [number, number, number, number] = [0, 0, 0, 0]
+  /** Where any of its vertices lie, plane metres: x0, y0, x1, y1. */
+  private bounds: [number, number, number, number] = [0, 0, 0, 0]
   private origin: [number, number] = [0, 0]
   private waterLevel = 0
   private occlusion: Occlusion | null = null
@@ -236,6 +251,10 @@ export class ModelLayer {
   /** Round everything the model draws, plane metres, heights well past its own (`cull`). */
   private box = new THREE.Box3()
   private frustum = new THREE.Frustum()
+  /** The city from overhead (`paint`), and what it is drawn with. */
+  private portrait: THREE.RenderTarget | null = null
+  private portraitScene = new THREE.Scene()
+  private portraitCamera = new THREE.OrthographicCamera()
   private viewProjection = new THREE.Matrix4()
 
   /** Whether the model has loaded. */
@@ -261,7 +280,10 @@ export class ModelLayer {
     const geometry = new THREE.BufferGeometry()
     for (const [name, [array, size]] of Object.entries(built.attributes))
       geometry.setAttribute(name, new THREE.BufferAttribute(array, size))
-    const mesh = new THREE.Mesh(geometry, material(this.occlusion, this.viewM))
+    const mesh = new THREE.Mesh(
+      geometry,
+      material(this.occlusion, this.viewM, new THREE.Vector2(ox, oy)),
+    )
     mesh.position.set(ox, oy, 0)
     mesh.frustumCulled = false
     mesh.renderOrder = 5
@@ -270,13 +292,22 @@ export class ModelLayer {
     this.group.add(mesh)
 
     this.extent = built.extent
+    this.bounds = built.bounds
     this.origin = [ox, oy]
     this.waterLevel = built.waterLevel
     // Its buildings, and its ground (`buildGround`) round its extent.
     const [bx0, by0, bx1, by1] = built.bounds
     const [ex0, ey0, ex1, ey1] = built.extent
-    this.box.min.set(Math.min(bx0, ex0 - GROUND_PAD_M), Math.min(by0, ey0 - GROUND_PAD_M), -2000)
-    this.box.max.set(Math.max(bx1, ex1 + GROUND_PAD_M), Math.max(by1, ey1 + GROUND_PAD_M), 4000)
+    this.box.min.set(
+      Math.min(bx0, ex0 - GROUND_PAD_M),
+      Math.min(by0, ey0 - GROUND_PAD_M),
+      -2000,
+    )
+    this.box.max.set(
+      Math.max(bx1, ex1 + GROUND_PAD_M),
+      Math.max(by1, ey1 + GROUND_PAD_M),
+      4000,
+    )
 
     // The sun casts; the shadow camera is fitted to the view (`fit`).
     this.sun.castShadow = true
@@ -414,6 +445,113 @@ export class ModelLayer {
   }
 
   /**
+   * Draws the city from straight overhead into its portrait (portrait.ts), standing,
+   * lit and shadowed as it is when zoomed in, for the map to show further out; called
+   * once its ground is built, and again each time a year's buildings are shaded.
+   */
+  paint(renderer: THREE.WebGPURenderer) {
+    if (!this.loaded || !this.ground) return
+    // Round everything it draws: its trees reach past the extent of its buildings.
+    const [ex0, ey0, ex1, ey1] = [
+      Math.min(this.extent[0], this.bounds[0]),
+      Math.min(this.extent[1], this.bounds[1]),
+      Math.max(this.extent[2], this.bounds[2]),
+      Math.max(this.extent[3], this.bounds[3]),
+    ]
+    const [x0, y0] = [ex0 - PORTRAIT_PAD_M, ey0 - PORTRAIT_PAD_M]
+    const [w, h] = [ex1 - ex0 + 2 * PORTRAIT_PAD_M, ey1 - ey0 + 2 * PORTRAIT_PAD_M]
+    const texel = Math.max(PORTRAIT_TEXEL_M, Math.max(w, h) / PORTRAIT_MAX_TEXELS)
+    const [nx, ny] = [Math.ceil(w / texel), Math.ceil(h / texel)]
+    // Multisampled only under WebGPU: WebGL2's fallback drew a multisampled target
+    // all but empty to the terrain.
+    const webgpu = !!(renderer.backend as { isWebGPUBackend?: boolean }).isWebGPUBackend
+    if (!this.portrait || this.portrait.width !== nx || this.portrait.height !== ny) {
+      this.portrait?.dispose()
+      this.portrait = new THREE.RenderTarget(nx, ny, {
+        type: THREE.HalfFloatType,
+        generateMipmaps: true,
+        minFilter: THREE.LinearMipmapLinearFilter,
+        magFilter: THREE.LinearFilter,
+        depthBuffer: true,
+        samples: webgpu ? 4 : 0,
+      })
+    }
+    const [cw, ch] = [nx * texel, ny * texel]
+    const [cx, cy] = [x0 + cw / 2, y0 + ch / 2]
+    const cam = this.portraitCamera
+    cam.left = -cw / 2
+    cam.right = cw / 2
+    cam.bottom = -ch / 2
+    cam.top = ch / 2
+    cam.near = 10
+    cam.far = 8000
+    cam.position.set(cx, cy, 4000)
+    cam.up.set(0, 1, 0)
+    cam.lookAt(cx, cy, 0)
+    cam.updateProjectionMatrix()
+    cam.updateMatrixWorld()
+
+    // Standing, every mesh drawn, the sun's shadow over the whole city, no haze, and
+    // at a scale the model's own fades (`plateMask`) take for close in.
+    const parent = this.group.parent
+    const was = {
+      grow: modelUniforms.grow.value,
+      meshShown: planUniforms.meshShown.value,
+      pixelRatio: planUniforms.pixelRatio.value,
+      reveal: fieldUniforms.reveal.value,
+      viewM: this.viewM.value,
+      visible: this.group.visible,
+      shown: this.group.children.map((c) => c.visible),
+      target: renderer.getRenderTarget(),
+      clear: renderer.getClearColor(new THREE.Color()),
+      alpha: renderer.getClearAlpha(),
+    }
+    modelUniforms.grow.value = 1
+    modelUniforms.overhead.value = 1
+    planUniforms.meshShown.value = 1
+    planUniforms.pixelRatio.value = 1
+    fieldUniforms.reveal.value = 0
+    this.viewM.value = 1e6
+    this.group.visible = true
+    for (const c of this.group.children) c.visible = true
+    // `fit` sets the shadow back to the view on the next frame.
+    const half = Math.max(cw, ch) * 0.75
+    const reach = half * 1.5 + 1000
+    const shadow = this.sun.shadow.camera
+    shadow.left = shadow.bottom = -half
+    shadow.right = shadow.top = half
+    shadow.near = 10
+    shadow.far = reach * 2
+    shadow.updateProjectionMatrix()
+    this.sun.target.position.set(cx, cy, 0)
+    this.sun.position.set(cx + SUN.x * reach, cy + SUN.y * reach, SUN.z * reach)
+    this.sun.target.updateMatrixWorld()
+    this.portraitScene.add(this.group)
+    renderer.setRenderTarget(this.portrait)
+    renderer.setClearColor(0x000000, 0)
+    renderer.clear()
+    renderer.render(this.portraitScene, cam)
+
+    renderer.setRenderTarget(was.target)
+    renderer.setClearColor(was.clear, was.alpha)
+    parent?.add(this.group)
+    modelUniforms.grow.value = was.grow
+    modelUniforms.overhead.value = 0
+    planUniforms.meshShown.value = was.meshShown
+    planUniforms.pixelRatio.value = was.pixelRatio
+    fieldUniforms.reveal.value = was.reveal
+    this.viewM.value = was.viewM
+    this.group.visible = was.visible
+    this.group.children.forEach((c, i) => (c.visible = was.shown[i]))
+
+    portraitTexture.value = this.portrait.texture
+    portraitUniforms.origin.value.set(x0, y0)
+    portraitUniforms.size.value.set(cw, ch)
+    portraitUniforms.texel.value = texel
+    portraitUniforms.ready.value = 1
+  }
+
+  /**
    * Where a monument's marker and name hang (labels/PlaceLayer.ts `Anchor`): on the
    * model's ground, lifted to the top of its building while the model stands — or,
    * where its building is not drawn, of the roofs round it. Null outside the model.
@@ -461,6 +599,7 @@ export class ModelLayer {
 
   dispose() {
     clearTimeout(this.occlusionTimer)
+    this.portrait?.dispose()
     this.occlusion?.dispose()
   }
 
@@ -478,6 +617,8 @@ export class ModelLayer {
 
   /** Called per frame with the scale; true while the city is rising or sinking. */
   update(mpp: number) {
+    // The country's fields come in after it has risen, with its trees (fields.ts).
+    fieldUniforms.reveal.value = fieldsRevealAt(mpp)
     if (!this.loaded) return false
     const [flat, full] = MODEL_MPP
     const t = Math.min(1, Math.max(0, (flat - mpp) / (flat - full)))
@@ -488,7 +629,6 @@ export class ModelLayer {
     this.group.visible = grow > 0.001
     return changed
   }
-
 }
 
 type F = THREE.Node<'float'>
@@ -659,7 +799,7 @@ function ashlarPaint(seed: F, along: F, height: F) {
     .mul(mix(float(1), float(0.68), joint.mul(joints)))
 }
 
-function material(occlusion: Occlusion, viewM: F) {
+function material(occlusion: Occlusion, viewM: F, origin: THREE.Vector2) {
   const mat = new THREE.MeshStandardNodeMaterial({ roughness: 0.9, metalness: 0 })
   // Built by hand, the geometry's winding is not consistent: both faces are drawn,
   // and three turns each face's normal towards the eye.
@@ -671,9 +811,21 @@ function material(occlusion: Occlusion, viewM: F) {
   const y = modelUniforms.year
   const stands = y.greaterThanEqual(years.x).and(y.lessThanEqual(years.y))
   const unfinished = y.greaterThanEqual(years.z).and(y.lessThanEqual(years.w))
-  // Not standing this year: sunk well under the ground, where the terrain hides it.
-  const scale = select(stands, float(1), float(0))
-  const sink = select(stands, float(0), float(40))
+  // What a face is painted with (`SKIN`, below): a tree's is only that it is one.
+  const skin = attribute('skin', 'vec4')
+  const surface = floor(skin.x.div(10))
+  const tree = surface.greaterThan(4.5)
+  // The country's trees grow up out of the ground with the fields they stand in
+  // (fields.ts `plotShown`), so neither they nor their shadows draw the plots on the
+  // map's plain ground before them; and the portrait (`paint`), shown before them,
+  // is drawn without them.
+  const at = positionLocal.xy.add(vec2(origin.x, origin.y))
+  const planted = select(tree, plotShown(at.x, at.y), float(1))
+  // Not standing this year, or a tree not yet come in: sunk well under the ground,
+  // where the terrain hides it.
+  const shows = stands.and(planted.greaterThan(0.01))
+  const scale = select(shows, planted, float(0))
+  const sink = select(shows, float(0), float(40))
   mat.positionNode = vec3(
     positionLocal.x,
     positionLocal.y,
@@ -686,7 +838,10 @@ function material(occlusion: Occlusion, viewM: F) {
   // or burnt out is — and a burnt one is blackened towards its top.
   const part = attribute('part', 'vec2')
   const cut = select(unfinished, part.x, float(1e5))
-  mat.maskNode = built.lessThanEqual(cut)
+  // Overhead there is no terrain to hide what is sunk.
+  mat.maskNode = built
+    .lessThanEqual(cut)
+    .and(shows.or(modelUniforms.overhead.lessThan(0.5)))
   const soot = select(
     unfinished.and(part.y.greaterThan(0.5)),
     mix(float(0.8), float(0.45), smoothstep(0, part.x.max(1), built)),
@@ -698,21 +853,23 @@ function material(occlusion: Occlusion, viewM: F) {
   const open = occlusion.at(positionWorld.x, positionWorld.y, built)
   mat.aoNode = open
   // The houses' walls and roofs, painted (`SKIN`).
-  const skin = attribute('skin', 'vec4')
-  const surface = floor(skin.x.div(10))
   const rest = skin.x.sub(surface.mul(10))
   const kind = floor(rest)
   const seed = fract(rest).div(0.9)
   const paint = select(
-    surface.greaterThan(3.5),
-    ashlarPaint(seed, skin.y, skin.z),
+    tree,
+    vec3(1),
     select(
-      surface.greaterThan(2.5),
-      vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+      surface.greaterThan(3.5),
+      ashlarPaint(seed, skin.y, skin.z),
       select(
-        surface.greaterThan(0.5),
-        wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
-        vec3(1),
+        surface.greaterThan(2.5),
+        vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+        select(
+          surface.greaterThan(0.5),
+          wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
+          vec3(1),
+        ),
       ),
     ),
   )

@@ -15,9 +15,10 @@ export const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 /**
  * What the shader paints on a face (`Builder.look`, `skin` in `material`): a
  * generated house's front, its other walls or its tiled roof, or squared stone laid
- * in courses (the Servian Wall, wall.ts).
+ * in courses (the Servian Wall, wall.ts); or a tree, which the country's fields
+ * bring in with them (fields.ts `plotShown`).
  */
-export const SKIN = { none: 0, front: 1, wall: 2, roof: 3, ashlar: 4 }
+export const SKIN = { none: 0, front: 1, wall: 2, roof: 3, ashlar: 4, tree: 5 }
 
 /**
  * What the known buildings are faced with, as the records' sources say (model.ts
