@@ -104,6 +104,7 @@
   citation: >-
     R. M. Kallet-Marx, Hegemony to Empire: The Development of the Roman
     Imperium in the East from 148 to 62 B.C. (Berkeley, 1995)
+  url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
 
 - id: wilkes-1969
   kind: modern
@@ -386,6 +387,152 @@
     (Princeton, 2000)
   note: Reference only — cited, never digitised from (DESIGN §6).
 
+# Added for the extension to 133 BCE: the West (September 2026). Read where the
+# note says so; otherwise only the entry was confirmed.
+
+- id: amela-valverde-2019
+  kind: modern
+  citation: >-
+    L. Amela Valverde, "Pompeyo Magno y la Galia Transalpina. La guerra
+    sertoriana", Helmantica 70, nº 204 (2019) 9–52
+  url: https://revistas.upsa.es/index.php/helmantica/article/view/468
+  note: >-
+    Open access; read. Pompey's march through the Province in 77, Fonteius'
+    wars, and a survey of opinion on when the Province was organised (39).
+
+- id: ribera-valentia
+  kind: modern
+  citation: >-
+    A. Ribera i Lacomba, "Conjunto arqueológico de Valentia", Portal Antigua:
+    Historia y Arqueología de las civilizaciones, Biblioteca Virtual Miguel de
+    Cervantes
+  url: https://www.cervantesvirtual.com/portales/antigua_historia_y_arqueologia/valentia/
+  note: >-
+    Read. By A. Ribera of the city of Valencia's archaeological service:
+    Valentia founded in 138, destroyed by Pompey (a burnt level dated by its
+    coins), and rebuilt only at the end of Augustus' reign.
+
+- id: bibracte-site
+  kind: modern
+  citation: >-
+    Bibracte EPCC, "Bibracte à travers les âges", the site's own history page
+  url: https://www.bibracte.fr/bibracte-travers-les-ages
+  note: Read.
+
+- id: gergovie-archaeology
+  kind: modern
+  citation: >-
+    Musée Archéologique de la Bataille de Gergovie, "La vie au temps des
+    Arvernes", and Département du Puy-de-Dôme, "Plateau de Gergovie: au temps
+    des oppida"
+  url: https://musee-gergovie.fr/la-vie-au-temps-des-arvernes/
+  note: >-
+    Read, both: the plateau "réinvesti ... en 60 avant notre ère" (the museum);
+    great works there "dans les années 60 avant J.-C.", and Corent "fondé à la
+    fin du IIe siècle" (the Département,
+    https://www.puy-de-dome.fr/culture/archeologie/plateau-de-gergovie/poi-au-temps-des-oppida.html).
+
+# Added for the extension to 133 BCE, Anatolia (September 2026). The ancient
+# texts were read in English translation (Justin, Memnon) or in Latin (Cicero)
+# on the pages given; a note says how much of each modern work was read.
+
+- id: sherwin-white-1976
+  kind: modern
+  citation: >-
+    A. N. Sherwin-White, "Rome, Pamphylia and Cilicia, 133–70 B.C.", Journal of
+    Roman Studies 66 (1976) 1–14
+  url: https://www.cambridge.org/core/journals/journal-of-roman-studies/article/abs/rome-pamphylia-and-cilicia-13370-bc/51CDA88670DB806F4A2A39AC556417BC
+  note: >-
+    Only the footnotes the publisher's page shows were read (nn. 6, 7, 12, 18,
+    24, 25, 41, 51, 54, 61, checked again in the independent check); the main
+    text is cited through them.
+
+- id: sumner-1978
+  kind: modern
+  citation: >-
+    G. V. Sumner, "The 'Piracy Law' from Delphi and the Law of the Cnidos
+    Inscription", Greek, Roman, and Byzantine Studies 19 (1978) 211–225
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/7401
+  note: >-
+    Open access; read. Transcribes and discusses the law of 101/100: the Cilicia
+    clause (Cnidus col. III 28–37), and the clauses on the governor of Macedonia
+    and T. Didius' conquest (Knidos IV 6–11, Delphi B 27–29; pp. 218–219, 225).
+
+- id: mcging-1980
+  kind: modern
+  citation: >-
+    B. C. McGing, "Appian, Manius Aquillius, and Phrygia", Greek, Roman, and
+    Byzantine Studies 21 (1980) 35–42
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/6961
+  note: Open access; read.
+
+- id: mcging-1986
+  kind: modern
+  citation: >-
+    B. C. McGing, The Foreign Policy of Mithridates VI Eupator, King of Pontus,
+    Mnemosyne Supplements 89 (Leiden: Brill, 1986)
+  note: Not read; cited for the conventional chronology, which rests on the ancient texts cited beside it.
+
+- id: justin
+  kind: ancient
+  citation: Justin, Epitome of the Philippic History of Pompeius Trogus
+  url: https://topostext.org/work/226
+  note: Watson's translation (1853); cited by book and chapter, with the conventional sections.
+
+- id: memnon
+  kind: ancient
+  citation: Memnon of Heraclea, History of Heraclea (FGrHist 434), from Photius, Bibliotheca 224
+  url: https://www.attalus.org/translate/memnon2.html
+
+- id: cicero-qfr
+  kind: ancient
+  citation: Cicero, Epistulae ad Quintum Fratrem
+
+- id: cicero-de-oratore
+  kind: ancient
+  citation: Cicero, De Oratore
+
+# --- the extension to 133 BCE: Italy and the islands ---------------------------
+# Added September 2026. Beloch was read on the Internet Archive and is cited by
+# page; the ancient texts were read in the English translations works.ts points
+# to (Asconius in Latin on attalus.org, where no English translation is online).
+
+- id: beloch-1880
+  kind: modern
+  citation: >-
+    J. Beloch, Der italische Bund unter Roms Hegemonie: staatsrechtliche und
+    statistische Forschungen (Leipzig: Teubner, 1880)
+  url: https://archive.org/details/deritalischebund00belo
+  note: >-
+    Read in the scan. Ch. III (pp. 43–77) reconstructs the extent of the Roman
+    citizen land (the ager Romanus) region by region, from colonies, prefectures
+    and the later voting tribes; ch. VIII (pp. 158–177) takes the allies region
+    by region and lists the allied communities. The atoms of Italy before the
+    Social War follow its picture, drawn schematically.
+
+- id: diodorus
+  kind: ancient
+  citation: Diodorus Siculus, Bibliotheca Historica
+  note: >-
+    Books 34–37 survive in excerpts; cited by the Loeb numbering (34/35.2.21 is
+    Photius' epitome of the first Sicilian slave war). ToposText numbers
+    34/35.2.x as 34.x (34/35.2.21 is its 34.21.1), which works.ts cannot map, so
+    a 34/35 locator links only to the head of book 34 there.
+
+- id: asconius-pis
+  kind: ancient
+  citation: Asconius, Commentary on Cicero's In Pisonem
+  url: https://www.attalus.org/latin/asconius1.html
+  note: Cited by the pages of A. C. Clark's edition (Oxford, 1907).
+
+- id: cicero-balb
+  kind: ancient
+  citation: Cicero, Pro Balbo
+
+- id: cicero-sull
+  kind: ancient
+  citation: Cicero, Pro Sulla
+
 # --- ancient texts -------------------------------------------------------------
 
 - id: caesar-bg
@@ -527,6 +674,32 @@
 - id: suetonius-tib
   kind: ancient
   citation: Suetonius, Tiberius
+
+# --- added September 2026: the extension to 133 BCE, Africa and Egypt ------------
+
+- id: sallust-jug
+  kind: ancient
+  citation: Sallust, Bellum Iugurthinum
+  note: Cited by chapter and section; read in Rolfe's Loeb translation on ToposText.
+
+- id: bennett-ptolemies
+  kind: modern
+  citation: >-
+    C. J. Bennett, Egyptian Royal Genealogy: the Ptolemaic Dynasty (Tyndale
+    House, Cambridge, web edition)
+  url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/
+  note: >-
+    Read: the entries for Ptolemy VIII, IX, X and XII, Ptolemy Apion, Ptolemy of
+    Cyprus and Cleopatra II, each of which sets out the dated documents behind
+    the reign. Cited by entry.
+
+- id: eller-2025
+  kind: modern
+  citation: >-
+    A. Eller, "Borders and Frontiers of Ptolemaic and Roman Egypt. The Case of
+    Lower Nubia", Études et Travaux 38 (2025), 61–84
+  url: https://doi.org/10.12775/EtudTrav.38.003
+  note: Open access; read. Cited by page.
 
 # --- datasets ------------------------------------------------------------------
 
@@ -1196,3 +1369,102 @@
   note: >-
     2.6 (November 63 BCE): Catiline has left Rome, "Aurelia via profectus est", by
     the Via Aurelia.
+
+# --- the extension to 133 BCE: the Balkans and the Black Sea ----------------------
+# Added September 2026. Each was opened: Sumner's article in full (GRBS, open
+# access), the decree in the English translation on the Chersonesos museum's site.
+
+- id: lex-provinciis-praetoriis
+  kind: ancient
+  citation: >-
+    The law on the praetorian provinces, 101/100 BCE, in two Greek copies: from
+    Cnidos (Knidos) and from the monument of Aemilius Paullus at Delphi (the
+    "piracy law"); M. H. Crawford (ed.), Roman Statutes (London, 1996), no. 12
+  note: >-
+    Cited by the copy and column (Knidos IV 6–11, Delphi B 27–29) as
+    transcribed in Sumner 1978, 218; Roman Statutes itself was not opened.
+    Sumner dates the law late in 100 or early in 99 (pp. 219, 225), not
+    101/100. English renderings in the notes are ours from his Greek, not
+    quotations. Its naming of the kings of Egypt, Cyprus and Cyrene (Delphi
+    copy, SEG III 378) and "the king who holds Cyprus" (Cnidus copy, SEG XXVI
+    1227) are as Bennett (Egyptian Royal Genealogy, "Ptolemy Apion") reports
+    them.
+
+- id: diophantus-decree
+  kind: ancient
+  citation: >-
+    Decree of Chersonesus in honour of Diophantus, general of Mithridates VI,
+    c. 107 BCE (IOSPE I² 352)
+  url: http://www.chersonesos.org/?p=museum_coll_ep1&l=eng
+  note: >-
+    Read in the English translation on the Chersonesos museum's page, by N.
+    Khrapunov, which heads the text with V. V. Latyshev's Russian translation
+    and E. I. Solomonik's commentary; quotations are Khrapunov's English. The
+    decree is dated only
+    by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
+    modern dating, not the stone's.
+
+# --- the extension to 133 BCE: the Levant, Armenia and the East -------------------
+# Added September 2026. Josephus' Antiquities 13 was read in Whiston's
+# translation by Niese's numbers (Lexundria); the modern works below were not
+# opened and are cited without pages, their claims resting on the ancient
+# passages cited beside them.
+
+- id: schurer-vermes-ii
+  kind: modern
+  citation: >-
+    E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
+    rev. G. Vermes, F. Millar and M. Black, vol. II (Edinburgh, 1979)
+  note: >-
+    The Hellenistic cities, for the eras of freedom of Tyre (126/125),
+    Sidon (111) and Ascalon (104/103) counted on their coins. Not opened; each
+    era is also cited from an open source below, found in the check.
+
+- id: cng-tyre-shekel
+  kind: modern
+  citation: >-
+    Classical Numismatic Group, "Phoenicia, Tyre. 126/5 BC–AD 65/6. AR Shekel
+    ... Dated CY 24 (103/2 BC)", catalogue entry (BMC Phoenicia 106–7)
+  url: https://www.cngcoins.com/Coin.aspx?CoinID=99707
+  note: >-
+    A dealer's catalogue entry, cited as open evidence of Tyre's era: year 24
+    is 103/2 BC, so year 1 is 126/5. Opened in the check (September 2026).
+
+- id: livius-sidon
+  kind: modern
+  citation: J. Lendering, "Sidon (3)", Livius.org
+  url: https://www.livius.org/articles/place/sidon/sidon-3/
+  note: >-
+    "In 111 BCE, Sidon regained it independence. Official documents were dated
+    to a Sidonian Era that begins in that year." Opened in the check.
+
+- id: gitler-master-2010
+  kind: modern
+  citation: >-
+    H. Gitler and D. Master, "Cleopatra at Ascalon: Recent Finds from the Leon
+    Levy Expedition", Israel Numismatic Research 5 (2010) 67–98
+  url: https://www.ins.org.il/32/
+  note: >-
+    Only the abstract was opened (the Israel Numismatic Society's page): the
+    city's tetradrachms of "year 55 (50/49 BCE)" and "65=40/39 BCE" put year 1
+    of Ascalon's era in 104/103.
+
+- id: ehling-2008
+  kind: modern
+  citation: >-
+    K. Ehling, Untersuchungen zur Geschichte der späten Seleukiden (164–63 v.
+    Chr.), Historia Einzelschriften 196 (Stuttgart, 2008)
+  note: For the reigns and coinage of the last Seleucids. Not opened.
+
+- id: chronicle-edessa
+  kind: ancient
+  citation: >-
+    The Chronicle of Edessa (sixth century), trans. B. H. C., The Journal of
+    Sacred Literature, 4th series, vol. 5 (1864), pp. 28–45
+  url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+  note: >-
+    Added by the check. Its first entry, "In the year 180 kings began to rule
+    in Edessa", is year 180 of the Seleucid era, 133/132; it names no king.
+    The first king's name (Aryu; "Orhoi, son of Hevia" in the translator's
+    note from Dionysius) comes from the Edessene list in the later
+    chroniclers, as Segal gives it.

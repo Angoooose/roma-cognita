@@ -215,7 +215,7 @@ const LEGEND_63_BCE: LegendData = {
 /** The explorer's timeline, driven locally over the data's window, 68–27 BCE. */
 function TimelineDemo() {
   const [year, setYear] = useState(-62)
-  const span: [number, number] = [-67, -26]
+  const span: [number, number] = [-132, -26]
   const go = (y: number) => setYear(Math.min(span[1], Math.max(span[0], y)))
   return (
     <TimelinePanel

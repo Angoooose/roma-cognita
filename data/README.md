@@ -69,11 +69,12 @@ at ingest and the validator asserts it. A consumer that wants the other conventi
 
 ## Scope
 
-The data covers 68–27 BCE: from the year before Pompey's eastern commands to the
-settlement of January 27. It was 68–43 until September 2026, when it was carried
-forward through the triumviral years to 27 (the research and its independent
-check of every citation are summarised in DOUBTS.md). Nothing reaches back before
-68 yet.
+The data covers 133–27 BCE: from Tiberius Gracchus' tribunate and Attalus'
+bequest to the settlement of January 27. It was 68–43 until September 2026, when
+it was carried forward through the triumviral years to 27, and then back through
+the Gracchi, Jugurtha, the Social War, Mithridates, Sulla and Sertorius to 133
+(the research and its independent check of every citation are summarised in
+DOUBTS.md, one section per extension). Nothing reaches back before 133 yet.
 
 ## Decisions
 
@@ -81,12 +82,15 @@ Modelling choices DESIGN.md does not settle, with the reasoning. Each wants
 confirming.
 
 1. **Window edges are open ends.** A row in force at the window's start reads
-   `before 68 BCE` and one still in force at its end reads `after 27 BCE`: in force
+   `before 133 BCE` and one still in force at its end reads `after 27 BCE`: in force
    at that year, extent beyond it not stated. Rows starting or ending inside the
    window carry their exact year. A later curator extending the window should
    treat every open end as a question, as the extension from 43 to 27 did: every
    `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
-   purpose (Osroene's standing with Rome, which nothing attests after 43).
+   purpose (Osroene's standing with Rome, which nothing attests after 43). The
+   extension back to 133 did the same for every `before 68 BCE`, except one left
+   open on purpose (the Kushite hold on Lower Nubia, which nothing dates before
+   68).
 
 2. **Where the true start is known but the atom is not the polity, the claim stays
    open.** Sicilia the province dates from 241 BCE (on the polity), but the atom is
@@ -220,6 +224,33 @@ confirming.
     (decided 2026-09-24). Mauretania after Bocchus (33) is drawn as a province,
     uncertain, because Dio's "enrolled among the provinces" (49.43.7) is the one
     explicit statement.
+
+22. **Italy before the Social War is three polities** (decided 2026-09-27). Before
+    90 the single `italia` atom could not stand: its ground was Roman citizen land
+    and allied land, which the Social War enfranchised piece by piece in 90–87.
+    Ten atoms are cut from `italia`, and Cispadana from `cisalpina`, at the grain
+    the war and its laws date (Beloch 1880; DOUBTS.md), each carrying `italia` from its own year on, so from 87 the map
+    reads ITALIA as before. Before that: `ager-romanus` (citizen territory of
+    Rome, to 91); `socii`, one league for every allied community, `subject-of
+    rome`, so it draws as a washed shade of Rome (the allies had no right of war
+    and peace and owed troops under the formula togatorum; one polity, because
+    Rome's treaties were with some 150 communities and no source draws the
+    peoples' frontiers); and `italici`, the insurgents of 91–88, `independent`,
+    in a colour of their own. Their own name, Italia, is kept as a non-preferred
+    name so the map never letters two ITALIAs at once. A Latin colony is a place
+    status, `colonia latina`, not ground.
+
+23. **A rising that held towns but no territory is a seat.** Aristonicus
+    (133–130) and the slave kings of Sicily (Eunus at Enna, Tryphon at Triocala)
+    are drawn at their strongholds (`seats.yaml`): their power inside a province
+    is not recorded at any grain that could be drawn, and the province under them
+    went on being one.
+
+24. **A king who was Rome's friend and ally but no client is `allied`** — Pontus to
+    90 (Appian's "friendship and alliance") — and **a Roman general's hold on
+    conquered ground before any settlement is Rome's occupation**: Lucullus' of
+    Pontus in 72/71–69, which no commission organised until 67, is a row in the
+    occupation layer by polity `rome`, over the kingdom's own.
 
 ## Open doubts
 

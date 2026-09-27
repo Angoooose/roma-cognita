@@ -67,8 +67,15 @@
   kind: territory
   polities:
     - polity: hispania-citerior
+  sources:
+    - { source: appian, locator: 'BC 1.108' }
   confidence: certain
   review: draft
+  note: >-
+    Undated. Sertorius, sent out as its governor in 83–82 (App. BC 1.108), held
+    it against Sulla's government from 80 to his death; on the map that is the
+    command sertorius, occupying the province in 77–73, but any DPRR post of
+    his in Spain still comes here, beside the governors sent against him.
 
 - dprr: Balearic islands
   kind: territory
@@ -81,7 +88,8 @@
   review: draft
   note: >-
     Conquered by Q. Caecilius Metellus in 123 and governed from Nearer Spain
-    thereafter; our map draws the islands as part of Hispania Citerior.
+    thereafter; our map draws the islands (the atom baliares) as Hispania
+    Citerior's from 123.
 
 - dprr: Hispania Ulterior
   kind: territory
@@ -130,7 +138,9 @@
     Caesar held them as one command. They were first given to different men in
     44, when Lepidus took the old province and Plancus the rest, so the join is
     weakest in 44–43, for a governor who held only one half. It also inherits
-    gallia-comata's own doubtful start date.
+    gallia-comata's own doubtful start date. The commanders of the conquest,
+    Fulvius Flaccus and Sextius Calvinus in 125–122, fall before the province's
+    conventional start in 121 and are not shown.
 
 - dprr: Gallia Cisalpina
   kind: territory
@@ -237,12 +247,15 @@
       from: 46 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
+    - { source: sallust-jug, locator: '27.3–4' }
   confidence: probable
   review: draft
   note: >-
-    Juba's kingdom until Thapsus; annexed by Caesar in 46 as Africa Nova ("New
-    Africa"). Dated to match claims.yaml, where the kingdom's ground passes to
-    the new province in 46.
+    The Numidian kingdom until Thapsus; annexed by Caesar in 46 as Africa Nova
+    ("New Africa"). Dated to match claims.yaml, where the kingdom's ground
+    passes to the new province in 46. The consuls' "Numidia" of the Jugurthine
+    War, from Bestia in 111 (Sall. Jug. 27.3–4) to Marius, was a war against
+    this kingdom and shows on it: numidia is Jugurtha's whole kingdom from 112.
 
 - dprr: Africa
   kind: territory
@@ -276,6 +289,14 @@
 - dprr: Cyrenaica
   kind: territory
   polities:
+    - polity: cyrenaica-free
+      from: 96 BCE
+      to: 75 BCE
+      confidence: uncertain
+      note: >-
+        The free cities of Apion's bequest, before the province of c. 74. P.
+        Lentulus Marcellinus, sent as quaestor "to the new province of Cyrene"
+        in 75 (Sallust Hist. 2.43 M), falls in their last year as drawn.
     - polity: cyrenae
       to: 28 BCE
     - polity: creta-cyrenae
@@ -283,13 +304,22 @@
   sources:
     - { source: livy-per, locator: '70' }
     - { source: appian, locator: 'BC 1.111' }
+    - { source: sallust-hist, locator: '2.43 M' }
   confidence: certain
   review: draft
-  note: The country of Cyrene; the same province as our cyrenae.
+  note: The country of Cyrene; the same province as our cyrenae, and before it the free cities.
 
 - dprr: Cyrene
   kind: territory
   polities:
+    - polity: cyrenaica-free
+      from: 96 BCE
+      to: 75 BCE
+      confidence: uncertain
+      note: >-
+        The free cities of Apion's bequest, before the province of c. 74. P.
+        Lentulus Marcellinus, sent as quaestor "to the new province of Cyrene"
+        in 75 (Sallust Hist. 2.43 M), falls in their last year as drawn.
     - polity: cyrenae
       to: 28 BCE
     - polity: creta-cyrenae
@@ -317,9 +347,10 @@
   confidence: probable
   review: draft
   note: >-
-    Ptolemaic Egypt, a client kingdom and never a province before 30. Joined
-    to the kingdom so that Romans who served there — in Caesar's Alexandrian
-    war, or with the legions left behind — show on it; none was its governor.
+    Ptolemaic Egypt, an independent friend of Rome to 60, a client kingdom from
+    59, and never a province before 30. Joined to the kingdom so that Romans who
+    served there — in Caesar's Alexandrian war, or with the legions left behind
+    — show on it; none was its governor.
     From 30 Egypt is a province under an equestrian prefect (aegyptus-province).
 
 # --- territories: Illyricum and the Balkans ----------------------------------
@@ -445,15 +476,25 @@
 - dprr: Thracia
   kind: territory
   polities:
+    - polity: macedonia
+      to: 81 BCE
     - polity: thracia-odrysae
+      from: 80 BCE
   sources:
     - { source: sullivan-1990 }
+    - { source: livy-per, locator: '56, 63, 65, 70' }
+    - { source: cicero-verr, locator: '2.1.63' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Thrace inland of the Aegean coast, which in this window was the Odrysian
+    Thrace inland of the Aegean coast, which from c. 80 was the Odrysian
     kingdom, a client of Rome. The Thracian coast itself was Macedonia's.
-    Joined to the kingdom; a Roman post here is a campaign, not government.
+    Joined to the kingdom from 80; a Roman post here is a campaign, not
+    government. Before 80 the kingdom had no standing with Rome that the map
+    draws, and the commands "in Thrace" of 135–88 (Cosconius, Cato, Drusus,
+    Minucius, Sentius: Livy Per. 56, 63, 65, 70) were the governors of
+    Macedonia fighting on its frontier, so they are joined to macedonia (the
+    extension to 133 BCE).
 
 - dprr: Crete
   kind: territory
@@ -482,6 +523,9 @@
     - polity: asia
   confidence: certain
   review: draft
+  note: >-
+    The polity runs from Attalus' bequest of 133, so the commands against
+    Aristonicus (Crassus, Perperna, Aquillius) are joined to it.
 
 - dprr: Rhodes
   kind: territory
@@ -535,7 +579,9 @@
     western half to Bithynia as one province. Before 63 a Roman post in Pontus
     was a war against the king, not government of his kingdom, so it is not
     joined; commands over Bithynia in those years reach the province through
-    the Bithynia entry. Dated to match claims.yaml.
+    the Bithynia entry. Lucullus' hold on Pontus in 71–69 was a conquest
+    awaiting its commissioners, never a province, so it is not joined either.
+    Dated to match claims.yaml.
 
 - dprr: Galatia
   kind: territory
@@ -566,11 +612,19 @@
   kind: territory
   polities:
     - polity: cilicia
-  confidence: certain
-  review: draft
+  sources:
+    - { source: cicero-de-oratore, locator: '1.82' }
+    - { source: sumner-1978 }
+  confidence: probable
+  review: needs-check
   note: >-
     What else the governor of Cilicia held — Cyprus from 58 to 48, the
     Phrygian districts from 56 to 50 — follows from claims.yaml, not from here.
+    The polity starts with M. Antonius' command against the pirates (102) and
+    the law of 101/100 that made Cilicia a praetorian province, so the posts
+    of Antonius and of Sulla are joined; until Dolabella's of 80 these were
+    commands against the pirates more than the government of a territory
+    (claims.yaml).
 
 - dprr: Cyprus
   kind: territory
@@ -633,8 +687,9 @@
     itself, and the coast Rome took from it in 63 is Syria's.
 
 # --- regions of Italy ------------------------------------------------------------
-# Parts of Italy, which in this window was citizen territory with no governor
-# and is drawn whole as italia. A post in one of these is a special command —
+# Parts of Italy, which had no governor: before the Social War citizen land
+# (ager-romanus) and allies (socii), and from 90–87 citizen territory, drawn
+# whole as italia. A post in one of these is a special command —
 # a war, a rising, a levy — not the government of a province, so none is joined.
 
 - dprr: Aequian territory

@@ -41,6 +41,12 @@ export interface Work {
   inline?: 'book' | 'bare'
   unit?: number
   exact?: boolean
+  /**
+   * Rewrites the locator, as cited, into the page's own numbering before it is read:
+   * Diodorus' fragmentary books are cited by the Loeb's "34/35.2.21", which ToposText
+   * numbers "34.21".
+   */
+  rewrite?: [RegExp, string]
 }
 
 /** A source with one page, or one per part: Appian's wars, Plutarch's lives. */
@@ -54,8 +60,10 @@ export const WORKS: Record<string, WorkEntry> = {
     parts: {
       'Mithr.': { page: 496, drop: 0 },
       'Ill.': { page: 613, drop: 0 },
+      'Celt.': { page: 876 },
       'Syr.': { page: 497, drop: 0 },
       'Pun.': { page: 880 },
+      'Hisp.': { page: 878 },
       BC: { page: 498, drop: 1 },
     },
   },
@@ -68,6 +76,11 @@ export const WORKS: Record<string, WorkEntry> = {
       'C. Gracch.': { page: 196 },
       Antony: { page: 180 },
       Brutus: { page: 181, strip: /^Brut\./ },
+      Marius: { page: 194 },
+      Sulla: { page: 182 },
+      Lucullus: { page: 192 },
+      Sertorius: { page: 191 },
+      'Ti. Gracch.': { page: 195 },
     },
   },
   'josephus-aj': { page: 526, inline: 'book' },
@@ -92,14 +105,21 @@ export const WORKS: Record<string, WorkEntry> = {
   'cicero-arch': { page: 703, inline: 'bare' },
   'cicero-sest': { page: 709, inline: 'bare' },
   'cicero-deiotaro': { page: 719, inline: 'bare' },
+  'cicero-balb': { page: 711, inline: 'bare' },
+  'cicero-sull': { page: 702, inline: 'bare' },
+  'cicero-cat': { page: 700, inline: 'book' },
+  diodorus: { page: 134, rewrite: [/^34\/35\.2\./, '34.'] },
   'cicero-phil': { page: 720 },
   velleius: { page: 727 },
   'livy-per': { page: 658, strip: /\.e$/ },
   eutropius: { page: 684 },
   'res-gestae': { page: 614 },
   florus: { page: 559 },
+  justin: { page: 226 },
+  memnon: { page: 'https://www.attalus.org/translate/memnon2.html', site: 'attalus' },
   'tacitus-ann': { page: 200 },
   'jordanes-getica': { page: 744 },
+  'sallust-jug': { page: 659 },
   'sallust-hist': {
     page: 'https://www.attalus.org/translate/sallust.html',
     site: 'attalus',

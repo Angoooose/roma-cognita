@@ -6,7 +6,7 @@
 # (holding vs occupation, see packages/schema), and the validator fails if
 # they do.
 #
-# The window is 68–27 BCE, so every `before 68 BCE` / `after 27 BCE` below is
+# The window is 133–27 BCE, so every `before 133 BCE` / `after 27 BCE` below is
 # where that window cuts the row off: in force at that year, extent beyond it
 # not stated. Only rows that start or end *inside* the window carry a real
 # event date.
@@ -15,23 +15,454 @@
 # to 47 and Africa Nova's from 46.
 
 # --- Italy -------------------------------------------------------------------
+#
+# Carried back to 133 in September 2026. Before the Social War the italia atom
+# is the Roman citizen land (ager-romanus) and the allied regions cut out of it
+# are the socii's, washed Roman on the map (a subject-of relation). The
+# insurgents' league, italici, holds its ground independent from the outbreak
+# at Asculum late in 91 to the year before each region gave in or was taken;
+# the year of submission, or of the law that enfranchised it, is italia's (the
+# lex Iulia of 90 for the loyal, 89 for the Marsic peoples, the Hirpini and the
+# Nucerine cities, 88 for Apulia, 87 for Samnium and Lucania). From 87 all of
+# peninsular Italy is italia, as before. The civil war of 88–82, fought for
+# the government of Rome itself, and Nola's and Volaterrae's last stands, are
+# not drawn.
+
+- atom: italia
+  polity: ager-romanus
+  relation: citizen-territory
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Roman citizen land before the Social War, with the Latin colonies and
+    the allied enclaves inside it (Tibur, Praeneste, Neapolis, Ancona, Teanum
+    Sidicinum, Camerinum), which are places, not ground. Probable, not certain,
+    because Beloch reconstructs its edges from colonies, prefectures and voting
+    tribes, not from a source that draws them.
 
 - atom: italia
   polity: italia
   relation: citizen-territory
-  from: before 68 BCE
+  from: 90 BCE
   to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
-  note: Enfranchised after the Social War.
+  note: >-
+    Enfranchised after the Social War. From 90, with the polity: the Roman land
+    it always was, now with its Latin colonies and loyal allies made citizens by
+    the lex Iulia.
 
-- atom: cisalpina
+- atom: italia-etruria
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 56–57, 160–165, 176' }
+    - { source: livy-per, locator: '74' }
+  confidence: probable
+  review: draft
+  note: >-
+    Allied Etruria and western Umbria. Some Etruscans and Umbrians rose in
+    90–89 and were beaten (Livy Per. 74); the ground is not drawn as the
+    insurgents' because no source says how much, though Beloch has most of the
+    Umbrian towns of the Tiber valley in the rising (56–57).
+
+- atom: italia-etruria
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: certain
+  review: draft
+  note: >-
+    The lex Iulia of 90 gave citizenship to the allies who had not revolted
+    (App. BC 1.49: the Etruscans gladly accepted it).
+
+- atom: italia-calabria
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 63–64, 174–175' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Messapian and Sallentine allies and Tarentum; no source has them in the
+    revolt, so they are drawn as loyal and enfranchised in 90, uncertain.
+
+- atom: italia-calabria
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: probable
+  review: draft
+  note: >-
+    Enfranchised by the lex Iulia of 90, as allies who had not taken up arms.
+
+- atom: italia-bruttium
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 62–63' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Mostly Roman public land and colonies after the Hannibalic war, with
+    Rhegium, Locri and a few Bruttian towns still allied (Beloch 62–63); drawn
+    as allied, uncertain, for want of a way to draw the mixture.
+
+- atom: italia-bruttium
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+  confidence: probable
+  review: draft
+  note: >-
+    Enfranchised by the lex Iulia of 90, as allies who had not taken up arms.
+
+- atom: italia-asculum
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 55' }
+  confidence: probable
+  review: draft
+
+- atom: italia-asculum
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.38' }
+    - { source: velleius, locator: '2.15.1' }
+    - { source: livy-per, locator: '76' }
+    - { source: appian, locator: 'BC 1.47–48' }
+  confidence: probable
+  review: draft
+  note: >-
+    Pompeius Strabo besieged Asculum from 90 and took it in 89 (Livy Per. 74,
+    76; App. BC 1.47–48).
+
+- atom: italia-asculum
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '76' }
+    - { source: appian, locator: 'BC 1.47–48' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-marsi
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 165' }
+  confidence: probable
+  review: draft
+
+- atom: italia-marsi
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: strabo, locator: '5.4.2' }
+    - { source: livy-per, locator: '75–76' }
+    - { source: appian, locator: 'BC 1.52' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Vestini, Paeligni and Marrucini surrendered and the Marsi sued for peace
+    in 89 (Livy Per. 75–76; App. BC 1.52); the insurgents left Corfinium for
+    Aesernia (Diodorus 37.2.9). Poppaedius Silo fought on and fell in 88, in
+    Apulia.
+
+- atom: italia-marsi
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '75–76' }
+    - { source: appian, locator: 'BC 1.52' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-campania
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 171' }
+  confidence: probable
+  review: draft
+
+- atom: italia-campania
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39, 1.42' }
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: velleius, locator: '2.16.2' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla destroyed Stabiae on 30 April 89 (Pliny 3.70), took Herculaneum and
+    besieged Pompeii (Vell. 2.16.2); Nola held out until 80 (Livy Per. 89), an
+    enclave not drawn.
+
+- atom: italia-campania
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: velleius, locator: '2.16.2' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-hirpini
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 168' }
+  confidence: probable
+  review: draft
+
+- atom: italia-hirpini
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: appian, locator: 'BC 1.51' }
+    - { source: livy-per, locator: '75' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla burned Aeclanum and the rest of the Hirpini surrendered, in 89 (App.
+    BC 1.51; Livy Per. 75).
+
+- atom: italia-hirpini
+  polity: italia
+  relation: citizen-territory
+  from: 89 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.51' }
+    - { source: livy-per, locator: '75' }
+    - { source: cicero-arch, locator: '7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
+    Arch. 7).
+
+- atom: italia-apulia
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'p. 175' }
+  confidence: probable
+  review: draft
+
+- atom: italia-apulia
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 89 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39, 1.42' }
+    - { source: appian, locator: 'BC 1.52' }
+    - { source: diodorus, locator: '37.2.10' }
+    - { source: appian, locator: 'BC 1.53' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus Pius took
+    Venusia and beat the last Apulians in 88 (Diodorus 37.2.10; App. BC 1.53).
+
+- atom: italia-apulia
+  polity: italia
+  relation: citizen-territory
+  from: 88 BCE
+  to: after 27 BCE
+  sources:
+    - { source: diodorus, locator: '37.2.10' }
+    - { source: appian, locator: 'BC 1.53' }
+  confidence: probable
+  review: draft
+
+- atom: italia-samnium
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 167–169' }
+  confidence: probable
+  review: draft
+
+- atom: italia-samnium
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 88 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.53, 1.68' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+  note: >-
+    Sulla took Bovianum in 89 (App. BC 1.51) but the Samnites held Aesernia and
+    fought on through 88; Metellus could not come to terms with them, and Marius
+    and Cinna granted all they asked in 87 (App. BC 1.68; Livy Per. 80). They
+    fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as citizens
+    in a Roman civil war, which is not drawn.
+
+- atom: italia-samnium
+  polity: italia
+  relation: citizen-territory
+  from: 87 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.53, 1.68' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+
+- atom: italia-lucania
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 92 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 172–173' }
+  confidence: probable
+  review: draft
+
+- atom: italia-lucania
+  polity: italici
+  relation: independent
+  from: 91 BCE
+  to: 88 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.39' }
+    - { source: livy-per, locator: '72' }
+    - { source: appian, locator: 'BC 1.53' }
+    - { source: diodorus, locator: '37.2.11' }
+    - { source: livy-per, locator: '80' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    Gabinius took many Lucanian towns in 89 (Livy Per. 76), so the ground was
+    contested; Lamponius and Clepitius held out with the Samnites into 88
+    (Diodorus 37.2.11), and the Lucanians came in with them (App. BC 1.53; Livy
+    Per. 80).
+
+- atom: italia-lucania
+  polity: italia
+  relation: citizen-territory
+  from: 87 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.53' }
+    - { source: diodorus, locator: '37.2.11' }
+    - { source: livy-per, locator: '80' }
+  confidence: probable
+  review: draft
+
+- atom: cisalpina-cispadana
+  polity: ager-romanus
+  relation: citizen-territory
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'pp. 65–68' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The Roman land of the Aemilian plain (Beloch 65–68), with the Latin colonies
+    of Placentia and Bononia and allied Ravenna, Faesulae and the Boii by the Po
+    inside: uncertain, a mixture drawn as its larger part. "Gallia" was often a
+    consul's or praetor's command in these years, but not yet a standing
+    province.
+
+- atom: cisalpina-cispadana
+  polity: italia
+  relation: citizen-territory
+  from: 90 BCE
+  to: 82 BCE
+  sources:
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
+    - { source: asconius-pis, locator: '3 C' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Latin colonies and allies south of the Po became citizens with the rest
+    of Italy in 90–89; north of the Po only Latin rights were given (Asconius,
+    Pis. 3 C). Ends where the province begins.
+
+- atom: cisalpina-cispadana
   polity: gallia-cisalpina
   relation: province
-  from: before 68 BCE
+  from: c. 81 BCE
   to: 43 BCE
   sources:
     - { source: cah-ix }
@@ -40,7 +471,57 @@
   confidence: probable
   review: draft
   note: >-
-    Provincial from c. 81. The lex Roscia of 49 gave the Transpadanes
+    A copy of cisalpina's province row, since the atom was cut out of it in
+    September 2026.
+
+- atom: cisalpina-cispadana
+  polity: italia
+  relation: citizen-territory
+  from: 42 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'BC 5.3' }
+    - { source: cassius-dio, locator: '48.12.5' }
+  confidence: probable
+  review: draft
+  note: >-
+    A copy of cisalpina's row: merged into Italy after Philippi.
+
+- atom: cisalpina
+  polity: socii
+  relation: allied
+  from: before 133 BCE
+  to: 82 BCE
+  sources:
+    - { source: cicero-balb, locator: '32' }
+    - { source: asconius-pis, locator: '3 C' }
+    - { source: beloch-1880, locator: 'pp. 65–67' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Po plain north of the river and Liguria: the Cenomani, the Veneti and
+    the Insubres, whose treaty barred their men from Roman citizenship (Cic.
+    Balb. 32), the Ligurian peoples, and the Latin colonies of Cremona and
+    Aquileia and the Roman colony of Eporedia (100) inside. Uncertain in
+    Liguria: Beloch has most of the plain south of the Po west of the Trebia
+    Roman citizen land, Industria, Pollentia, Hasta and Forum Fulvi, with only
+    Genua and the Statielli allied (67); the atom does not separate them. The lex Pompeia of 89 made the Transpadane communities Latin
+    (Asconius, Pis. 3 C), allies still. The Cimbri overran the plain north of
+    the Po in 102–101 until Vercellae; not drawn.
+
+- atom: cisalpina
+  polity: gallia-cisalpina
+  relation: province
+  from: c. 81 BCE
+  to: 43 BCE
+  sources:
+    - { source: cah-ix }
+    - { source: broughton-mrr, locator: 'vol. II, 44–43 BCE (D. Brutus in Cisalpina)' }
+    - { source: cassius-dio, locator: '48.12.5' }
+  confidence: probable
+  review: draft
+  note: >-
+    Provincial from c. 81 (see the polity); before, allied (the row above). The lex Roscia of 49 gave the Transpadanes
     citizenship, but the province went on: D. Brutus governed it in 44–43 and
     Antony fought him for it. It was merged into Italy only in 42 (App. BC 5.3;
     Dio 48.12.5); the row ran to "after 43" until September 2026, against its
@@ -51,7 +532,7 @@
 - atom: sicilia
   polity: sicilia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
@@ -60,21 +541,30 @@
   note: >-
     Not "from 241": the atom is the whole island, and Hiero's Syracuse was a
     kingdom allied to Rome until 212/211. The polity carries the 241 date; the
-    ground's start is left open at the window's edge.
+    ground's start is left open at the window's edge. The slave kingdoms of
+    135–132 and 104–101 held much of the interior but not the province's
+    cities; they are drawn as seats at Enna and Triocala (seats.yaml), not as
+    ground taken from the province.
 
 - atom: sardinia
   polity: sardinia-corsica
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '60' }
   confidence: certain
   review: draft
+  note: >-
+    The whole island, though the mountain peoples of the interior rose again
+    and again, as when L. Aurelius put down the Sardinians in 126 (Livy Per.
+    60). Not a change of hands.
 
 - atom: corsica
   polity: sardinia-corsica
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
@@ -85,34 +575,128 @@
 - atom: hispania-citerior
   polity: hispania-citerior
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+  note: >-
+    Not "from 197": the province's first holdings were the coast, and the
+    atom's Ebro valley, Carpetania and Oretania came under Rome over the
+    century of wars that followed (decision 2). In force by 133.
 
 - atom: meseta-arevaci
   polity: hispania-citerior
   relation: province
-  from: before 68 BCE
+  from: 133 BCE
   to: after 27 BCE
   sources:
+    - { source: appian, locator: 'Hisp. 98–100' }
+    - { source: livy-per, locator: '59' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: richardson-1996, locator: 'ch. 3' }
   confidence: uncertain
   review: draft
   note: >-
-    Held after Pompey's Sertorian campaigns, but in 56 the Vaccaei and their
-    neighbours drove Metellus Nepos off Clunia (Dio 39.54).
+    From the fall of Numantia in 133: Scipio razed the city and divided its
+    land among its neighbours (App. Hisp. 98; Livy Per. 59), and ten senators
+    came to settle the newly won ground (Hisp. 99). Held loosely: T. Didius
+    killed some 20,000 Arevaci and brought Termes down into the plain in
+    98–93 (Hisp. 99), Sertorius held the country in the 70s, and in 56 the
+    Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio 39.54).
+    It read "before 68" until September 2026, as held after Pompey's Sertorian
+    campaigns.
+
+- atom: baliares
+  polity: baliares
+  relation: independent
+  from: before 133 BCE
+  to: 124 BCE
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: florus, locator: '1.43' }
+  confidence: certain
+  review: draft
+
+- atom: baliares
+  polity: hispania-citerior
+  relation: province
+  from: 123 BCE
+  to: after 27 BCE
+  sources:
+    - { source: livy-per, locator: '60' }
+    - { source: strabo, locator: '3.5.1' }
+    - { source: orosius, locator: '5.13.1' }
+    - { source: pliny-nh, locator: '3.77' }
+  confidence: probable
+  review: draft
+  note: >-
+    Conquered by Q. Metellus, consul in 123 (Livy Per. 60, under 123), who
+    settled 3,000 Romans from Spain in his new towns of Palma and Pollentia
+    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). The war may
+    have run into 122. Until September 2026 the islands were part of the
+    hispania-citerior atom and Hither Spain's throughout.
 
 - atom: hispania-ulterior
   polity: hispania-ulterior
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+
+# Sertorius, 80–72: a Roman commander holding Spain against Sulla's government
+# (README decision 18), so occupation over the standing provinces. Like every
+# occupation row, his end the year before the government recovered the ground:
+# Pompey "recovered the Spanish provinces" in 72 (Livy Per. 96).
+
+- atom: hispania-citerior
+  polity: sertorius
+  relation: occupied
+  from: c. 77 BCE
+  to: 73 BCE
+  sources:
+    - { source: plutarch, locator: 'Sertorius 12.3, 16.1' }
+    - { source: orosius, locator: '5.23.3–4' }
+    - { source: livy-per, locator: '90–91, 96' }
+    - { source: strabo, locator: '3.4.10' }
+    - { source: florus, locator: '2.10.9' }
+    - { source: sallust-hist, locator: '2.98 M' }
+    - { source: appian, locator: 'BC 1.112–113' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    His quaestor Hirtuleius beat the governor of Hither Spain, Domitius (Plut.
+    Sert. 12.3), and then Manlius, come from Gaul, who fled to Ilerda (Oros.
+    5.23.3–4; Livy Per. 90, under 78); by the time Pompey crossed the Pyrenees in 77/76 "all the peoples
+    within the river Ebro" had joined Sertorius (Plut. Sert. 16.1). He held on
+    to the end in Ilerda, Osca, Calagurris, Tarraco and Hemeroscopium (Strabo
+    3.4.10), and his last towns surrendered or were stormed after Perperna's
+    defeat in 72 (Flor. 2.10.9; Oros. 5.23.14). Drawn over the whole atom,
+    though Pompey held the coast north of the Ebro from 76 ("I recovered Gaul,
+    the Pyrenees, Lacetania and the Indigetes", Sall. Hist. 2.98 M) and the
+    cities won back from 75 on (App. BC 1.112–113) are not dated at a grain
+    that could be drawn.
+
+- atom: meseta-arevaci
+  polity: sertorius
+  relation: occupied
+  from: c. 77 BCE
+  to: 73 BCE
+  sources:
+    - { source: livy-per, locator: '92' }
+    - { source: florus, locator: '2.10.9' }
+    - { source: orosius, locator: '5.23.14' }
+    - { source: appian, locator: 'BC 1.112' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The Celtiberian heart of Sertorius' power: besieged at Clunia he held out
+    (Livy Per. 92, under 76); Termes and Uxama were among the last towns to
+    come over after Perperna's end in 72, and Uxama held out until Pompey took
+    it (Flor. 2.10.9; Oros. 5.23.14). Strabo has him driven out of Celtiberia before his end (3.4.10),
+    so its last years may be too long.
 
 - atom: lusitania-north
   polity: hispania-ulterior
@@ -131,11 +715,69 @@
 - atom: gallia-transalpina
   polity: gallia-transalpina
   relation: province
-  from: before 68 BCE
+  from: 121 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
-  confidence: certain
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '47, 60–61' }
+    - { source: velleius, locator: '2.10.2, 2.39.1' }
+    - { source: strabo, locator: '4.1.5, 4.1.11' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From the defeat of the Allobroges and the Arverni in 121 (Livy Per. 61;
+    Strabo 4.1.11), the province's conventional start; unclaimed before, when
+    the land was its Gallic peoples' and Massalia's (Rome had fought for
+    Massalia beyond the Alps in 154, Livy Per. 47, and came back at its call
+    against the Salluvii in 125, Per. 60). The Salluvian country
+    between the Rhône and the Var was beaten in 124–122 and garrisoned at Aquae
+    Sextiae in 122 (Strabo 4.1.5); it is not drawn apart, a year or two ahead of
+    the rest. The date of the regular province is disputed (see the polity).
+
+- atom: tolosates
+  polity: tectosages
+  relation: independent
+  from: before 133 BCE
+  to: 122 BCE
+  sources:
+    - { source: strabo, locator: '4.1.13' }
+  confidence: probable
+  review: needs-check
+
+- atom: tolosates
+  polity: tectosages
+  relation: allied
+  from: { earliest: 121 BCE, latest: 118 BCE }
+  to: 107 BCE
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
+    - { source: velleius, locator: '2.7.8' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "Formerly in alliance with the Romans", with a Roman garrison, until the
+    revolt Caepio put down (Dio fr. 90). The alliance's start is not recorded:
+    no earlier than the war of 121, no later, on this reading, than the colony
+    of Narbo on their borders in 118 (Vell. 2.7.8). The revolt of 107 is
+    inside this row.
+
+- atom: tolosates
+  polity: gallia-transalpina
+  relation: province
+  from: 106 BCE
+  to: after 27 BCE
+  sources:
+    - { source: orosius, locator: '5.15.25' }
+    - { source: strabo, locator: '4.1.13' }
+    - { source: caesar-bg, locator: '1.10' }
+    - { source: broughton-mrr, locator: 'vol. I, 106 BCE' }
+  confidence: probable
   review: draft
+  note: >-
+    Taken by Q. Servilius Caepio, consul in 106 (Oros. 5.15.25, who calls him
+    proconsul; Dio fr. 90); "when the
+    Romans obtained possession of the country they put up these lakes to
+    public sale" (Strabo 4.1.13); "a state in the Province" in 58 (BG 1.10).
 
 - atom: gallia-comata
   polity: gallia-comata
@@ -163,23 +805,35 @@
   note: >-
     Assigned to Caesar with Cisalpina by the lex Vatinia of 59. What Rome held
     was the coast; before 59 its governance is unclear and it is left
-    unclaimed.
+    unclaimed, back to 133: Appian has "Roman Illyria" raided in 135 and
+    "the Illyrian subjects of Rome" in 156 (Ill. 10–11), and Cosconius took
+    Salona in 78–76 (Eutropius 6.4), but no source says who governed the coast
+    or how far Rome's writ ran on it.
 
 # --- Greece and the Balkans ----------------------------------------------------
 
 - atom: macedonia
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - { source: broughton-mrr }
+    - { source: livy-per, locator: '56, 63, 65, 70, 82–83, 91–92, 95, 97' }
   confidence: certain
   review: draft
+  note: >-
+    A province from 146. Its governors fought the Scordisci, Dardani and
+    Thracians on its northern edge throughout 133–68 (Livy Per. 56, 63,
+    65, 70, 82–83, 91–92, 95, 97), but no gain of ground beyond this outline is
+    dated before Augustus except Didius' in the Chersonese
+    (chersonesus-thracica). Mithridates' son overran it in 87 (the
+    occupation row below).
 
 - atom: achaea
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: kallet-marx-1995 }
@@ -192,7 +846,8 @@
     were not provincial ground. Uncertain, so drawn fainter. Ends where the
     province of Achaea is first firmly attested, in 27; Achaea had a governor of
     its own at times before (Sulpicius Rufus, 46–45), which this row does not
-    try to show.
+    try to show. In force since Mummius' settlement of 146; Archelaus' hold on
+    Greece in 88–86 is the occupation row below.
 
 - atom: creta
   polity: creta
@@ -210,34 +865,170 @@
 - atom: thracia-odrysae
   polity: thracia-odrysae
   relation: client
-  from: before 68 BCE
+  from: c. 80 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
+    - { source: cicero-pis, locator: '84' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Odrysian authority over the inland tribes was intermittent.
+    Odrysian authority over the inland tribes was intermittent. The start is
+    the first sign of a friendly king, not the beginning of one: c. 80 the
+    governor of Cilicia sent Verres as his legate "to king Nicomedes and to
+    king Sadala" (Cic. Verr. 2.1.63). Before it the kingdom is left unclaimed:
+    Cicero recalls "that general defection of all the barbarians" round
+    Macedonia under Sentius, governor c. 93–87 (Pis. 84), Thracians served in
+    Mithridates' armies (App. Mithr. 41), and the governors of Macedonia
+    fought Thracians again and again from 114 to 71 (Livy Per. 63–97), so no
+    standing with Rome can be drawn back to 133.
+
+# The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
+# Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
+# rows end the year before the occupier was driven out (README decision 17).
+
+- atom: chersonesus-thracica
+  polity: macedonia
+  relation: province
+  from: c. 100 BCE
+  to: after 27 BCE
+  sources:
+    - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
+    - { source: sumner-1978, locator: '218–219' }
+    - { source: cicero-pis, locator: '61' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Didius, praetor in 101 and governor of Macedonia in 100 (Sumner), took
+    the Chersonese and the Caenic land in war, and the law of 101/100 (late
+    100 or early 99 in Sumner) sends the governor of Macedonia straight
+    there; Didius triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
+    From here the row is macedonia's, which this ground was part of until the
+    extension to 133 BCE.
+
+- atom: macedonia
+  polity: pontus-regnum
+  relation: occupied
+  from: 87 BCE
+  to: 87 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 35, 41, 52' }
+    - { source: plutarch, locator: 'Sulla 11.2, 15.1, 23.1' }
+    - { source: livy-per, locator: '82' }
+    - { source: cicero-pis, locator: '84' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    When Sulla crossed in 87 a son of Mithridates, Ariarathes in Plutarch, "was
+    overrunning Thrace and Macedonia" (Sulla 11.2); while Sulla besieged
+    Athens, Arcathias (Appian's name for him) "overcame the small Roman force
+    there, subjugated the whole country, appointed satraps to govern it"
+    (Mithr. 35). Cicero has the Denseletae, at "that general defection of all
+    the barbarians", preserve "Macedonia for us, when Caius Sentius was
+    praetor" (Pis. 84). In 86 that army left Macedonia to join Archelaus at
+    Thermopylae (Mithr. 41; Taxiles "had come down from Thrace and Macedonia",
+    Sulla 15.1), and "the army of the king, which had occupied Macedonia and
+    entered Thessalia" was destroyed at Chaeronea (Livy Per. 82); Flaccus'
+    army crossed from Europe to Chalcedon later that year (Mithr. 52), and Sulla
+    marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the
+    occupation ends with 86 and the row with 87 (README decision 17); until
+    the check it ran to 86, with Greece. Drawn over the whole atom, though
+    Sentius held out somewhere in it.
+
+- atom: chersonesus-thracica
+  polity: pontus-regnum
+  relation: occupied
+  from: 87 BCE
+  to: 87 BCE
+  sources:
+    - { source: plutarch, locator: 'Sulla 11.2' }
+    - { source: appian, locator: 'Mithr. 35' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As macedonia: "Thrace and Macedonia" were overrun (Plut. Sulla 11.2), and
+    the king's armies crossed to Europe by the Hellespont. Ends with
+    macedonia's row.
+
+- atom: achaea
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 28–29, 45, 55' }
+    - { source: plutarch, locator: 'Sulla 11.3, 14.6, 22.3' }
+    - { source: livy-per, locator: '78, 81' }
+    - { source: strabo, locator: '10.5.4' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Archelaus crossed in 88, took Delos, and brought Athens under Aristion into
+    alliance with the king (App. Mithr. 28; Livy Per. 78); he "brought over to
+    the side of Mithridates the Achaeans, the Lacedaemonians, and all of
+    Boeotia except Thespiae" (Mithr. 29), was "in possession of Euboea
+    itself", and was "bringing into revolt from Rome the peoples of Greece as
+    far as Thessaly" (Plut. Sulla 11.3). Sulla took Athens on the Kalends of
+    March 86 (Plut. Sulla 14.6; Livy Per. 81) and beat Archelaus at Chaeronea
+    and Orchomenus in 86, but Archelaus kept Chalcis and the sea (App. Mithr.
+    45), and the king's garrisons left Greece only under the terms he and Sulla
+    agreed near Delium in the winter of 86/85 (Mithr. 55; Plut. Sulla 22.3). So
+    the row ends in 86. The free cities that held out (Thespiae; Demetrias and
+    Magnesia in Thessaly, Mithr. 29) lie inside, as do Athens and Sparta, which
+    joined him.
 
 # --- Anatolia ------------------------------------------------------------------
 
 - atom: asia
   polity: asia
   relation: province
-  from: before 68 BCE
+  from: 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
-  confidence: certain
-  review: draft
+  sources:
+    - { source: broughton-mrr }
+    - { source: strabo, locator: '13.4.2, 14.1.38' }
+    - { source: kallet-marx-1995, locator: 'pp. 112–115' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Attalus III left his kingdom to the Roman people in 133, and "the Romans
+    proclaimed the country a province, calling it Asia" (Strabo 13.4.2);
+    Aquillius organised it with ten commissioners after the war with
+    Aristonicus (14.1.38). The atom is the province of Cicero's day. At first
+    the ground subject to tribute was "a patchwork of communities and regions
+    concentrated chiefly in Mysia and Lydia … interspersed with the autonomous
+    Greek cities of the coast", and neither Caria nor Lycia had been Attalid
+    (Kallet-Marx 112–115); when Caria came under the governor is not recorded,
+    so the whole atom is drawn from the bequest, as with the free cities
+    elsewhere (README decision 2). Aristonicus is drawn as a seat, 133–130.
 
 - atom: asia-phrygia
   polity: asia
   relation: province
-  from: before 68 BCE
+  from: { earliest: 119 BCE, latest: 116 BCE }
   to: 57 BCE
   sources:
     - { source: dmitriev-2000, locator: 'n. 80 (coins of C. Fabius, proconsul of Asia in 57)' }
-  confidence: probable
-  review: draft
+    - { source: mcging-1980, locator: 'pp. 35–42' }
+    - { source: kallet-marx-1995, locator: 'pp. 240–242' }
+    - { source: appian, locator: 'Mithr. 57' }
+    - { source: livy-per, locator: '77' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Taken from the young Mithridates VI after his father's death (Justin
+    38.5.3). Sulla told him the senate had decided that Phrygia should be
+    "free" rather than "made tributary to Rome" (App. Mithr. 57); a decree of
+    the senate on Phrygia (Sherk RDGE 13) is usually dated 116, when C.
+    Licinius Geta was consul, or 119 (Drew-Bear), and is read as its
+    annexation after a brief freedom (McGing 1980). By 88 it was "Phrygiam,
+    provinciam populi R." (Livy Per. 77). Disputed: Kallet-Marx (240–242)
+    takes Appian's "free" at its word, doubts the decree now that a second
+    copy has turned up, discounts the epitome's "provincia", and puts the
+    freeing of Phrygia "a generation later than where it is usually placed
+    (ca. 119)", after Sulla's Cappadocian campaign of c. 95. Drawn on the
+    usual view.
 
 - atom: asia-phrygia
   polity: cilicia
@@ -269,7 +1060,7 @@
 - atom: bithynia
   polity: bithynia-pontus
   relation: province
-  from: before 68 BCE
+  from: 74 BCE
   to: after 27 BCE
   sources:
     - { source: magie-1950 }
@@ -295,11 +1086,19 @@
 - atom: cilicia
   polity: cilicia
   relation: province
-  from: before 68 BCE
+  from: 80 BCE
   to: 44 BCE
-  sources: [{ source: broughton-mrr, locator: vol. II }]
+  sources:
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: cicero-verr, locator: '2.1.44, 2.1.53–54, 2.1.93' }
   confidence: probable
   review: draft
+  note: >-
+    "Posteaquam Cn. Dolabellae provincia Cilicia constituta est" (Verr.
+    2.1.44): Dolabella's province in 80–79, where his legate Verres plundered
+    Aspendus and Perge "in Pamphylia" and had "omnis ad praedandum Pamphylia"
+    open to him. The earlier, doubtful years are a row of their own, under the
+    extension to 133 below.
 
 - atom: cilicia-campestris
   polity: cilicia
@@ -318,7 +1117,25 @@
 - atom: galatia
   polity: galatia
   relation: client
-  from: before 68 BCE
+  from: before 133 BCE
+  to: 64 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 17, 46, 75' }
+    - { source: livy-per, locator: '94.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The three peoples under their tetrarchs. Their standing to Rome before
+    Pompey is not stated anywhere: Rome raised troops from "the Galatians of
+    Asia" in 89 (App. Mithr. 17), Mithridates killed their tetrarchs in 86 and
+    the survivors drove out his satrap (46), and Deiotarus fought his generals
+    in the 70s (75; Livy Per. 94.2). Justin says Mithridates "seized also on
+    Galatia" after Paphlagonia (37.4), undated and not drawn.
+
+- atom: galatia
+  polity: galatia
+  relation: client
+  from: 63 BCE
   to: after 27 BCE
   sources:
     - { source: cicero-deiotaro }
@@ -327,7 +1144,8 @@
   review: needs-check
   note: >-
     Deiotarus came to rule all three Galatian peoples; for part of the window
-    other tetrarchs (Brogitarus of the Trocmi, 58) held pieces of it.
+    other tetrarchs (Brogitarus of the Trocmi, 58) held pieces of it. Dated
+    from Pompey's settlement, which confirmed him.
 
 - atom: galatia-pontus
   polity: galatia
@@ -381,26 +1199,115 @@
 - atom: cappadocia
   polity: cappadocia
   relation: client
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: strabo, locator: '12.2.11' }
+    - { source: justin, locator: '37.1, 38.1–38.2' }
   confidence: probable
   review: draft
+  note: >-
+    The kingdom went on under every king, including the Pontic prince Ariarathes
+    IX; the years Mithridates and Tigranes held it are occupation rows.
+
+- atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 115 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+    - { source: pausanias, locator: '1.9.1–2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Governed for the crown of Egypt by a strategos: Ptolemy IX, c. 118, then,
+    once he was king, his brother Ptolemy X, sent "ostensibly as general"
+    (Paus. 1.9.1–2). Ptolemy X's command is the usual view; Bennett doubts he
+    held it and gives the post to Helenos. Ptolemy VIII took refuge here in
+    131/130 during Cleopatra II's revolt.
+
+- atom: cyprus
+  polity: cyprus-ptolemaic-early
+  relation: independent
+  from: { earliest: 114 BCE, latest: 113 BCE }
+  to: 108 BCE
+  sources:
+    - { source: pausanias, locator: '1.9.2' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy X' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy X, "proclaimed king in Cyprus in 114/3" (Bennett), until he
+    replaced his brother in Alexandria in 107. Pausanias has his mother send
+    him there "ostensibly as general" (1.9.2); the royal title rests on his
+    Cypriot dating (Bennett).
+
+- atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: 107 BCE
+  to: 106 BCE
+  sources:
+    - { source: justin, locator: '39.4' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Ptolemy IX fled to Cyprus in 107 and was driven off it by Cleopatra III's
+    troops (Justin 39.4); her governor Helenos held it for Ptolemy X (Bennett,
+    after Mitford) until Ptolemy IX came back in 105.
+
+- atom: cyprus
+  polity: cyprus-ptolemaic-early
+  relation: independent
+  from: 105 BCE
+  to: 89 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy Apion' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy IX's, from his return late in the summer of 105 (the Paphos
+    inscription of his year 12, OGIS 166, and the end of Ptolemy X's Paphian
+    coinage in 106/105) until the Alexandrians recalled him in 88. His own
+    coinage from the Cypriot mints begins only in 100/99 (Mørkholm). The Cnidus
+    copy of the law of 101/100 names "the king who holds Cyprus" (Bennett,
+    "Ptolemy Apion").
+
+- atom: cyprus
+  polity: aegyptus
+  relation: independent
+  from: 88 BCE
+  to: 81 BCE
+  sources:
+    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+    - { source: plutarch, locator: 'Lucullus 3.1–3.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy IX held Egypt and Cyprus together from 88 to his death at the end
+    of 81; Ptolemy X died trying to take the island in 88 or 87 (Bennett).
+    Lucullus sailed on to Cyprus with the king's ships in 86 (Plut. Lucullus
+    3.1–3.2).
 
 - atom: cyprus
   polity: cyprus-ptolemaic
   relation: independent
-  from: before 68 BCE
+  from: 80 BCE
   to: 59 BCE
   sources:
     - { source: cicero-sest, locator: '57' }
     - { source: strabo, locator: '14.6.6' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy of Cyprus' }
   confidence: probable
   review: draft
   note: >-
-    Ptolemaic until the lex Clodia. Not a client: Cicero says the senate had
-    not yet styled Ptolemy an ally (Sest. 57). Rome's claim to the Ptolemaic
-    realms under the will of Ptolemy Alexander stood unenforced until 58.
+    Ptolemy of Cyprus, king from 80 until the lex Clodia. Not a client: Cicero
+    says the senate had not yet styled Ptolemy an ally (Sest. 57). Rome's claim
+    to the Ptolemaic realms under the will of Ptolemy Alexander stood
+    unenforced until 58. Ran from "before 68" until September 2026.
 
 - atom: cyprus
   polity: cilicia
@@ -452,17 +1359,6 @@
   note: Pompey's annexation.
 
 - atom: syria-palaestina
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: The conquests of Alexander Jannaeus.
-
-- atom: syria-palaestina
   polity: syria
   relation: province
   from: 63 BCE
@@ -476,17 +1372,6 @@
 
 - atom: judaea
   polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '14.1–79' }
-  confidence: certain
-  review: draft
-  note: The Hasmonean kingdom, a friend of Rome by treaty but no client.
-
-- atom: judaea
-  polity: judaea
   relation: client
   from: 63 BCE
   to: 41 BCE
@@ -495,15 +1380,6 @@
   confidence: certain
   review: draft
   note: Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
-
-- atom: judaea-joppa
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources: [{ source: josephus-aj, locator: '13.395' }]
-  confidence: probable
-  review: draft
 
 - atom: judaea-joppa
   polity: syria
@@ -524,68 +1400,76 @@
   review: draft
   note: Restored to Hyrcanus by Caesar (AJ 14.205).
 
-- atom: ituraea
-  polity: ituraea
-  relation: client
-  from: before 68 BCE
-  to: 37 BCE
-  sources:
-    - { source: strabo, locator: '16.2.10, 16.2.18' }
-    - { source: sullivan-1990 }
-  confidence: uncertain
-  review: needs-check
-
-- atom: emesa
-  polity: emesa
-  relation: client
-  from: before 68 BCE
-  to: 31 BCE
-  sources:
-    - { source: strabo, locator: '16.2.10' }
-    - { source: sullivan-1990 }
-  confidence: uncertain
-  review: needs-check
-
-- atom: commagene
-  polity: commagene
-  relation: client
-  from: before 68 BCE
-  to: after 27 BCE
-  sources:
-    - { source: strabo, locator: '16.2.3' }
-    - { source: facella-2006 }
-  confidence: probable
-  review: draft
-
-- atom: amanus
-  polity: amanus
-  relation: client
-  from: before 68 BCE
-  to: 31 BCE
-  sources:
-    - { source: strabo, locator: '14.5.18' }
-    - { source: cicero-fam, locator: '15.1.2' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Strabo names Tarcondimotus as tyrant of the Amanus, made king by the
-    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus.
-
 # --- Africa --------------------------------------------------------------------
 
 - atom: africa
   polity: africa
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: broughton-mrr }]
   confidence: certain
   review: draft
+  note: >-
+    Provincial since 146 (the polity). The Gracchan colony at Carthage (122),
+    Marius' Gaetulian settlers of 103 (who lay inside the Numidian kingdom,
+    Bridoux ¶134, ¶146) and the Marian holdouts of 82–81 whom Pompey destroyed
+    (Plut. Pompey 11–12) did not change whose ground this was.
+
+- atom: cyrenaica
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 108 BCE
+  sources:
+    - { source: justin, locator: '38.8' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Ptolemy VIII had been king at Cyrene before he took Egypt in 145 (Justin
+    38.8) and kept it with the crown. Under Ptolemy IX it was still the crown's
+    by a royal letter to the city of April 108, his year 9 (SEG IX 5), and a
+    statue base of his year 10, 108/107 (Bennett). What followed until Apion is
+    not known; Bennett thinks Ptolemy IX may have kept Cyrene after he lost
+    Egypt in 107.
+
+- atom: cyrenaica
+  polity: cyrenaica-apion
+  relation: independent
+  from: { earliest: 105 BCE, latest: 100 BCE }
+  to: 97 BCE
+  sources:
+    - { source: justin, locator: '39.5.2' }
+    - { source: lex-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Apion's kingdom, from a start that lies between the Apollonia inscription
+    of Ptolemy IX's admiral, no earlier than 106/105, and the law of 101/100
+    that names a king of Cyrene (see the polity). Not a
+    client: nothing makes him more than a friend of Rome until his will.
+
+- atom: cyrenaica
+  polity: cyrenaica-free
+  relation: allied
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The free cities of Apion's bequest, until the province (Livy Per. 70; see
+    the polity). Rome's by inheritance, but with no governor: Lucullus in 87/86
+    came as Sulla's envoy looking for ships, not as a magistrate of Cyrene.
 
 - atom: cyrenaica
   polity: cyrenae
   relation: province
-  from: before 68 BCE
+  from: c. 74 BCE
   to: 35 BCE
   sources:
     - { source: livy-per, locator: '70' }
@@ -593,16 +1477,58 @@
     - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
-  note: Organised c. 74.
+  note: >-
+    Organised c. 74: Sallust has P. Lentulus Marcellinus sent as quaestor "to
+    the new province of Cyrene" among the events of 75 (Hist. 2.43 M), Appian
+    puts it in 74 (BC 1.111). Ran from "before 68" until September 2026.
 
 - atom: numidia
   polity: numidia
   relation: client
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶157' }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: bridoux-2020, locator: '¶124, ¶137, ¶141' }
+    - { source: sallust-jug, locator: '16.5' }
   confidence: probable
   review: draft
+  note: >-
+    Micipsa's, then from c. 116 Adherbal's: his kingdom "englobe la contrée
+    comprise depuis la frontière de la province romaine jusqu'à Cirta" (Bridoux
+    ¶141), the part with "more harbours" (Sall. Jug. 16.5). Leptis Magna, which
+    Micipsa held (¶137), has no atom here; it went over to Rome at the start of
+    the war (Jug. 77.2–3).
+
+- atom: numidia
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources:
+    - { source: sallust-jug, locator: '27, 47, 75–76, 89–92, 102.1' }
+    - { source: livy-per, locator: '64–66' }
+  confidence: certain
+  review: draft
+  note: >-
+    Jugurtha's kingdom at war with Rome, from the declaration of 111 (Sall. Jug.
+    27; Livy Per. 64) to his surrender in 105. Roman armies garrisoned Vaga
+    (Jug. 47), took Thala (75–76), destroyed Capsa (89–91) and came to Cirta
+    (102.1), but held towns, not the country; no occupation is drawn.
+
+- atom: numidia
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 47 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: bridoux-2020, locator: '¶144–145, ¶153, ¶157' }
+  confidence: probable
+  review: draft
+  note: >-
+    Gauda's, then Hiempsal II's and Juba I's eastern kingdom, to the fossa
+    regia (Bridoux ¶145, ¶153, ¶157). Ran from "before 68" until September 2026.
 
 - atom: numidia
   polity: africa-nova
@@ -617,12 +1543,36 @@
 - atom: numidia-cirta
   polity: numidia
   relation: client
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶102, ¶157' }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶141' }
+    - { source: sallust-jug, locator: '21–26' }
   confidence: probable
   review: draft
-  note: Cirta was Juba's capital.
+  note: >-
+    Cirta was Micipsa's, then Adherbal's capital (Bridoux ¶141), where he was
+    besieged and killed in 112 (Sall. Jug. 21–26).
+
+- atom: numidia-cirta
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '27, 102.1' }]
+  confidence: certain
+  review: draft
+  note: As numidia. Marius was at Cirta in 106/105 (Sall. Jug. 102.1).
+
+- atom: numidia-cirta
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 47 BCE
+  sources: [{ source: bridoux-2020, locator: '¶102, ¶145, ¶157' }]
+  confidence: probable
+  review: draft
+  note: Cirta was Juba's capital. Ran from "before 68" until September 2026.
 
 - atom: numidia-cirta
   polity: africa-nova
@@ -637,9 +1587,65 @@
     in 44 (Bridoux ¶159). In 46–45 it was Sittius', and is not claimed here.
 
 - atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  confidence: probable
+  review: draft
+  note: >-
+    Micipsa's kingdom ran from the Mulucha to the fossa regia (Bridoux ¶124).
+    In the division of c. 116 this ground went to Jugurtha or to Adherbal, and
+    nobody can say which (¶141): it is unclaimed until 112.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+  note: Jugurtha's whole kingdom once Cirta fell, before Rome declared war.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+  note: Jugurtha's kingdom at war with Rome; see numidia.
+
+- atom: numidia-igilgili
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  confidence: probable
+  review: draft
+  note: Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶145).
+
+- atom: numidia-igilgili
   polity: numidia-masinissa
   relation: client
-  from: before 68 BCE
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: draft
+  note: >-
+    Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
+    survenue en 88" (Bridoux ¶147–148); split from the next row only because
+    the standing of the kingdom changes (relations.yaml).
+
+- atom: numidia-igilgili
+  polity: numidia-masinissa
+  relation: client
+  from: 81 BCE
   to: 47 BCE
   sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
   confidence: uncertain
@@ -647,11 +1653,59 @@
   note: >-
     Masinissa II's principality, which Bridoux takes as a vassal of the eastern
     Numidian kings (¶155). Given to Sittius in 46, recovered by Arabio in 44.
+    Ran from "before 68" until September 2026.
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  confidence: probable
+  review: draft
+  note: As numidia-igilgili; unclaimed in c. 116–113.
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+
+- atom: numidia-soummam
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  confidence: probable
+  review: draft
 
 - atom: numidia-soummam
   polity: numidia-masinissa
   relation: client
-  from: before 68 BCE
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: draft
+  note: Masteabar's; see numidia-igilgili.
+
+- atom: numidia-soummam
+  polity: numidia-masinissa
+  relation: client
+  from: 81 BCE
   to: 47 BCE
   sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
   confidence: uncertain
@@ -671,79 +1725,342 @@
   note: Caesar's grant to Bocchus II; Arabio probably recovered it in 44 (Bridoux ¶159).
 
 - atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶123–124' }
+    - { source: sallust-jug, locator: '19.7' }
+  confidence: probable
+  review: draft
+  note: >-
+    Numidian to the Mulucha under Micipsa (Bridoux ¶124), one of whose
+    inscriptions was found at Cherchell, Iol (¶123). Unclaimed in c. 116–113,
+    as numidia-igilgili.
+
+- atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-east
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-east
+  polity: numidia
+  relation: client
+  from: 105 BCE
+  to: 89 BCE
+  sources: [{ source: bridoux-2020, locator: '¶75, ¶145 and pl. VIII' }]
+  confidence: probable
+  review: draft
+  note: >-
+    East of Bocchus I's gains of 105, which Gsell and Bridoux end between the
+    mouth of the Chelif and Cap Ténès (¶75): so Gauda's (¶145).
+
+- atom: mauretania-east
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: c. 80 BCE
   to: 34 BCE
   sources: [{ source: bridoux-2020, locator: '¶97, ¶102' }]
   confidence: uncertain
   review: draft
+  note: >-
+    Desanges' hypothesis, which Bridoux accepts, that the Moorish kingdom
+    reached the Soummam in the first half of the first century (¶102), perhaps
+    under Sosus, "maître d'un territoire hérité de Bocchus I … qu'il étend peut-
+    être jusqu'à l'oued Soummam" (¶97). Dated from Sosus' accession, c. 80; it
+    could be later. In c. 88–81, between Gauda's death and Sosus, the ground is
+    unclaimed: Masteabar's share began at the Soummam (¶148), and no source says
+    whose this was. Ran from "before 68" until September 2026.
+
+- atom: mauretania-central
+  polity: numidia
+  relation: client
+  from: before 133 BCE
+  to: 117 BCE
+  sources:
+    - { source: bridoux-2020, locator: '¶74, ¶124' }
+    - { source: sallust-jug, locator: '110.8' }
+  confidence: probable
+  review: draft
+  note: >-
+    Numidian west to the Mulucha, "the boundary between Micipsa and myself"
+    (Bocchus in Sall. Jug. 110.8; Bridoux ¶74).
+
+- atom: mauretania-central
+  polity: numidia-jugurtha
+  relation: client
+  from: c. 116 BCE
+  to: 113 BCE
+  sources:
+    - { source: sallust-jug, locator: '16.5' }
+    - { source: bridoux-2020, locator: '¶142' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "The part of Numidia adjoining Mauretania" was Jugurtha's (Sall. Jug.
+    16.5). This atom touches the Mulucha, so it was his whatever the line with
+    Adherbal was; the atoms between are unclaimed.
+
+- atom: mauretania-central
+  polity: numidia
+  relation: client
+  from: 112 BCE
+  to: 112 BCE
+  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  confidence: probable
+  review: draft
+
+- atom: mauretania-central
+  polity: numidia
+  relation: independent
+  from: 111 BCE
+  to: 106 BCE
+  sources: [{ source: sallust-jug, locator: '19.7, 92.5' }]
+  confidence: probable
+  review: draft
+  note: >-
+    "Numidia as far as the river Muluccha" was Jugurtha's (Sall. Jug. 19.7);
+    Marius took his fort near the river in 106 (92.5).
 
 - atom: mauretania-central
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: 105 BCE
   to: 34 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶75' }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '97.2, 111.1' }
+    - { source: bridoux-2020, locator: '¶74–75' }
   confidence: probable
   review: draft
+  note: >-
+    The part of Numidia Bocchus I was promised by Jugurtha and then by Sulla
+    (Sall. Jug. 97.2, 111.1), perhaps a third of the kingdom, reaching to about
+    Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had carried it "au moins
+    jusqu'à l'embouchure du Chélif"). Ran from "before 68" until September 2026.
+
+- atom: mauretania-west
+  polity: mauretania
+  relation: independent
+  from: before 133 BCE
+  to: 106 BCE
+  sources:
+    - { source: sallust-jug, locator: '19.7, 80.4' }
+    - { source: bridoux-2020, locator: '¶73' }
+  confidence: probable
+  review: draft
+  note: >-
+    Bocchus I's kingdom was "unknown to us before that time either in peace or
+    in war" (Sall. Jug. 19.7); his request for a treaty was refused (80.4) and
+    he fought Marius in 106. His predecessors after Baga are unknown (Bridoux
+    ¶73).
 
 - atom: mauretania-west
   polity: mauretania
   relation: client
-  from: before 68 BCE
+  from: 105 BCE
   to: 50 BCE
-  sources: [{ source: braund-1984 }, { source: bridoux-2020, locator: '¶99–100' }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '111.1' }
+    - { source: bridoux-2020, locator: '¶80, ¶91, ¶99–100' }
   confidence: probable
   review: draft
+  note: >-
+    From the alliance of 105. Sosus ruled here as well: his sling bullets were
+    found at Volubilis and Thamusida (Bridoux ¶91). Sertorius' siege of Tingi
+    in 81 left the country as he found it (Plut. Sertorius 9.5). Ran from
+    "before 68" until September 2026.
+
+- atom: aegyptus
+  polity: aegyptus
+  relation: independent
+  from: before 133 BCE
+  to: 60 BCE
+  sources:
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: bennett-ptolemies, locator: 'Ptolemy XII' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    A kingdom on friendly terms with Rome but not its client until Ptolemy XII
+    was recognised friend and ally in 59 (see the relation). Its civil wars
+    (132–124, 107, 88) and the Theban revolt of c. 88–86 were fought over the
+    one kingdom and are not drawn.
 
 - atom: aegyptus
   polity: aegyptus
   relation: client
-  from: before 68 BCE
+  from: 59 BCE
   to: 31 BCE
   sources:
     - { source: braund-1984 }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: cassius-dio, locator: '39.12.1' }
   confidence: probable
   review: needs-check
   note: >-
-    Migration review: the polity's own note puts client standing at 59 or 55;
-    see relations.yaml. Before that the ground is arguably `independent`.
-
-- atom: nabataea
-  polity: nabataea
-  relation: client
-  from: before 68 BCE
-  to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Nabataean control was of routes and watering points, not of area.
+    From the recognition of 59 (Caes. BC 3.107; Dio 39.12.1); a Roman garrison
+    from 55. Until September 2026 this row ran from "before 68" and its note
+    asked for this change.
 
 - atom: nabataea-moab
-  polity: judaea
+  polity: nabataea
   relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources: [{ source: josephus-aj, locator: '13.397, 14.18' }]
-  confidence: uncertain
-  review: draft
-  note: Jannaeus' conquest, still Hasmonean when Hyrcanus fled to Aretas.
-
-- atom: nabataea-moab
-  polity: nabataea
-  relation: client
   from: 65 BCE
-  to: after 27 BCE
+  to: 63 BCE
   sources: [{ source: josephus-aj, locator: '14.18' }]
   confidence: uncertain
   review: needs-check
   note: >-
     Hyrcanus promised the twelve towns back to Aretas III for his help, c. 65.
-    Whether the Nabataeans held them afterwards is not stated.
+    Whether the Nabataeans held them afterwards is not stated. Independent to
+    Scaurus' campaign, as nabataea (the extension to 133).
+
+- atom: nabataea-moab
+  polity: nabataea
+  relation: client
+  from: 62 BCE
+  to: after 27 BCE
+  sources: [{ source: josephus-aj, locator: '14.18, 14.80–81' }]
+  confidence: uncertain
+  review: needs-check
+  note: As nabataea, from Scaurus' campaign of 62.
 
 # --- the Black Sea -------------------------------------------------------------
+# Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
+# Paerisades V gave it to Mithridates (Strabo 7.4.4), Diophantus' wars for the
+# king c. 110–107 (the Diophantus decree, IOSPE I² 352), the revolt of the
+# Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
+# the king's son, set over them c. 80 (Mithr. 67), who made himself a friend of
+# Rome in 70 (Mithr. 83). The dates of c. 110–107 are the decree's usual ones;
+# the decree itself is dated only by a Chersonesite eponym.
+
+- atom: bosporus
+  polity: bosporus
+  relation: independent
+  from: before 133 BCE
+  to: c. 109 BCE
+  sources:
+    - { source: strabo, locator: '7.4.4' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The kingdom of the Spartocids ("the dynasty of Leuco, Satyrus, and
+    Parisades", Strabo 7.4.4) until its last king, Paerisades V, "unable to hold
+    out against the barbarians, who kept exacting greater tribute than
+    before", gave it over to Mithridates Eupator. No tie to Rome is recorded.
+
+- atom: bosporus
+  polity: pontus-regnum
+  relation: independent
+  from: c. 108 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3–4' }
+    - { source: diophantus-decree }
+    - { source: plutarch, locator: 'Sulla 11.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
+    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
+    Panticapaeum back for the king (the decree); the revolt is not drawn. In
+    88–87 a son of Mithridates held "Pontus and Bosporus … as far as the
+    deserts beyond Lake Maeotis" (Plut. Sulla 11.2). The Bosporan peoples had
+    revolted by the time the king came home in 85 (App. Mithr. 64); when is not
+    recorded, and the row ends in 86.
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    After Murena's war (83–81) Mithridates "subdued the tribes of the Bosporus
+    and appointed Machares, one of his sons, king over them" (App. Mithr. 67):
+    a kingdom under a son of the king, drawn as Pontus' client. The years of
+    the revolt before it, 85–81, are left unclaimed.
+
+- atom: bosporus
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: plutarch, locator: 'Lucullus 24.1' }
+    - { source: livy-per, locator: '98' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    After Sinope fell, Lucullus "entered into friendly relations with Machares,
+    the son of Mithridates and ruler of the Bosporus, who sent him a crown of
+    gold" (App. Mithr. 83); Machares asked "to be included in the list of
+    Rome's friends and allies" (Plut. Luc. 24.1). Dated to 70 with Sinope; it
+    may belong to the winter of 70/69. It ends when his father came in 65 and
+    Machares killed himself (Mithr. 102).
+
+- atom: bosporus-tanais
+  polity: pontus-regnum
+  relation: independent
+  from: c. 108 BCE
+  to: 86 BCE
+  sources:
+    - { source: plutarch, locator: 'Sulla 11.2' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus. Plutarch's son of Mithridates held the realm "as far as the
+    deserts beyond Lake Maeotis" in 88–87 (Sulla 11.2); how far up the Maeotic
+    shore that reached, and whether it was so from the first, is not known.
+    Under the Spartocids before c. 108 the shore is left unclaimed: Strabo
+    gives them only "the neighboring settlements near the south of Lake
+    Maeotis" (7.4.4).
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus; Appian's "tribes of the Bosporus" were very likely these Maeotic peoples.
+
+- atom: bosporus-tanais
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: strabo, locator: '11.2.11' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus.
 
 - atom: bosporus
   polity: bosporus
@@ -795,54 +2112,55 @@
 - atom: pontus
   polity: pontus-regnum
   relation: independent
-  from: 68 BCE
+  from: 89 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+    - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
+    - { source: cassius-dio, locator: '36.9–12' }
   confidence: probable
   review: draft
   note: >-
-    Mithridates won back his kingdom in 68 and lost it to Pompey in 66.
+    At war with Rome from 89. The kingdom went on while Lucullus held it in
+    71–69 (the occupation is its own row); Mithridates slipped back in 68, won
+    back "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66.
 
 - atom: galatia-pontus
   polity: pontus-regnum
   relation: independent
-  from: 68 BCE
+  from: 89 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+    - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
   confidence: probable
   review: draft
 
 - atom: armenia-minor
   polity: pontus-regnum
   relation: independent
-  from: 68 BCE
+  from: 89 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+    - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
   confidence: probable
   review: draft
+  note: >-
+    Mithridates' son Arcathias led ten thousand horse "from Armenia Minor" in 89
+    (App. Mithr. 17).
 
 - atom: comana-pontica
   polity: pontus-regnum
   relation: independent
-  from: 68 BCE
+  from: 89 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+    - { source: appian, locator: 'Mithr. 64, 82, 88–89, 99–100' }
   confidence: probable
   review: draft
-
-- atom: colchis
-  polity: pontus-regnum
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 101' }
-  confidence: probable
-  review: draft
+  note: >-
+    A temple state under the kings: its priest ranked second after the king,
+    and Eupator gave the priesthood to his friend Dorylaus (Strabo 12.3.32–34).
+    Murena attacked it in 83 as "a very large country town belonging to
+    Mithridates" (App. Mithr. 64).
 
 - atom: bosporus
   polity: pontus-regnum
@@ -868,14 +2186,80 @@
   review: draft
 
 - atom: chersonesus
-  polity: pontus-regnum
+  polity: chersonesus
   relation: independent
-  from: before 68 BCE
-  to: 64 BCE
+  from: before 133 BCE
+  to: c. 111 BCE
   sources:
     - { source: strabo, locator: '7.4.3' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "At first self-governing" (Strabo 7.4.3), until the Scythians of Scilurus
+    and his sons pressed it so hard that it took Mithridates as protector.
+
+- atom: chersonesus
+  polity: pontus-regnum
+  relation: independent
+  from: c. 110 BCE
+  to: 81 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: diophantus-decree }
   confidence: uncertain
   review: needs-check
+  note: >-
+    The city "was forced to choose Mithridates Eupator as protector" (Strabo
+    7.4.3), and Diophantus relieved it c. 110 (the decree, which thanks him
+    for freeing the people "from the domination of the barbarians"). A
+    protectorate over a city that kept its own council and magistrates, drawn
+    as the king's because Strabo has it "subject to the potentates of the
+    Bosporus" from then on. Nothing says it joined the Bosporan revolt of the
+    80s, so the row runs to Machares. Until the extension to 133 BCE one row
+    of the king's ran from before 68 to 64.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 67, 102' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus: "subject to the potentates of the Bosporus" (Strabo 7.4.3),
+    and so to Machares, king of the Bosporus from c. 80 (App. Mithr. 67), who
+    fled "to the Pontic Chersonesus" when his father came in 65 (Mithr. 102).
+    Added in the check of the extension to 133 BCE, which had drawn the city
+    as the king's own through Machares' reign.
+
+- atom: chersonesus
+  polity: bosporus
+  relation: client
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 83, 102' }
+  confidence: uncertain
+  review: needs-check
+  note: As bosporus, under Machares as Rome's friend.
+
+- atom: chersonesus
+  polity: pontus-regnum
+  relation: independent
+  from: 65 BCE
+  to: 64 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 102, 108' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As bosporus: the king's again from his coming in 65 until it revolted from
+    him with Theodosia and Nymphaeum (Mithr. 108) and he died in 63.
 
 - atom: chersonesus
   polity: bosporus
@@ -959,16 +2343,6 @@
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: cassius-dio, locator: '36.54, 37.1' }
-  confidence: probable
-  review: draft
-
-- atom: iberia-caucasia
-  polity: iberia-caucasia
   relation: client
   from: 65 BCE
   to: after 27 BCE
@@ -978,16 +2352,6 @@
   review: needs-check
   note: >-
     Submitted to Pompey after his invasion of 65.
-
-- atom: albania
-  polity: albania
-  relation: independent
-  from: before 68 BCE
-  to: 66 BCE
-  sources:
-    - { source: cassius-dio, locator: '36.54' }
-  confidence: probable
-  review: draft
 
 - atom: albania
   polity: albania
@@ -1002,27 +2366,6 @@
   note: >-
     Oroeses sued for peace after Pompey's campaign of 65.
 
-- atom: atropatene
-  polity: atropatene
-  relation: client
-  from: before 68 BCE
-  to: 36 BCE
-  sources:
-    - { source: strabo, locator: '11.13.1–2' }
-  confidence: uncertain
-  review: needs-check
-
-- atom: armenia
-  polity: armenia
-  relation: independent
-  from: before 68 BCE
-  to: 67 BCE
-  sources:
-    - { source: plutarch, locator: 'Pompey 33' }
-    - { source: sherwin-white-1984 }
-  confidence: probable
-  review: draft
-
 - atom: armenia
   polity: armenia
   relation: client
@@ -1034,38 +2377,20 @@
   confidence: probable
   review: draft
 
-- atom: parthia
-  polity: parthia
-  relation: independent
-  from: before 68 BCE
-  to: after 27 BCE
-  sources:
-    - { source: debevoise-1938 }
-    - { source: sherwin-white-1984 }
-  confidence: certain
-  review: draft
-
-- atom: syria
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
-
 - atom: creta
   polity: creta-koinon
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 67 BCE
   sources:
     - { source: cassius-dio, locator: '36.17a–19' }
+    - { source: livy-per, locator: '97, 100' }
   confidence: certain
   review: draft
+  note: >-
+    Free throughout: M. Antonius' war on the Cretans ended in his defeat and
+    death (Livy Per. 97, 72/71), and the island had been "independent" until
+    Metellus gave it laws (Per. 100).
 
 - atom: paphlagonia
   polity: paphlagonia
@@ -1081,12 +2406,21 @@
 - atom: olba
   polity: olba
   relation: independent
-  from: before 68 BCE
+  from: 67 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.5.10' }
+    - { source: plutarch, locator: 'Pompey 28' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Strabo: "The priest of this temple became dynast of Cilicia Tracheia; and
+    then the country was beset by numerous tyrants, and the gangs of pirates
+    were organised. And after the overthrow of these they called this country
+    the domain of Teucer, and called the same also the priesthood of Teucer"
+    (14.5.10). So the priests' domain is drawn from Pompey's war on the pirates
+    in 67; before it the country is left unclaimed with the rest of the
+    Tracheia.
 
 - atom: derbe
   polity: derbe
@@ -1102,28 +2436,78 @@
 - atom: lycia
   polity: lycia
   relation: allied
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.3.3' }
+    - { source: strabo, locator: '14.3.3, 14.3.9, 14.5.7' }
+    - { source: appian, locator: 'Mithr. 21, 24, 27, 61' }
     - { source: mitchell-2005 }
   confidence: certain
   review: draft
+  note: >-
+    Free since Rome took Lycia from Rhodes in 167, the Lycians "remained ever
+    free under the Romans" (Strabo 14.3.3). They held out against Mithridates,
+    who besieged Patara, and helped Rhodes (App. Mithr. 21, 24, 27); Sulla
+    confirmed their freedom (61). Phaselis, Lycian but outside the League
+    (14.3.9), and Olympus and Corycus were the pirate Zenicetus' until P.
+    Servilius took them in the 70s (14.5.7); not drawn, as the atom cannot be
+    cut at that grain.
 
 - atom: rhodian-peraea
   polity: rhodus
   relation: allied
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.2.2–4' }
+    - { source: appian, locator: 'Mithr. 24–27' }
   confidence: certain
   review: draft
+  note: >-
+    Rhodes held out against Mithridates' siege in 88 (App. Mithr. 24–27).
+    Caunus is its own atom, Rhodian again only from Sulla (caunus).
 
 - atom: scythia-minor
   polity: scythia-minor
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
+  to: c. 111 BCE
+  sources:
+    - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - { source: diophantus-decree }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The kingdom of Scilurus and his sons, who pressed Chersonesus and fought
+    Mithridates' generals from their forts at Palacium, Chabum and Neapolis
+    (Strabo 7.4.3, 7.4.7).
+
+- atom: scythia-minor
+  polity: scythia-minor
+  relation: client
+  from: c. 110 BCE
+  to: 64 BCE
+  sources:
+    - { source: diophantus-decree }
+    - { source: strabo, locator: '7.4.3' }
+    - { source: appian, locator: 'Mithr. 119' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Diophantus beat Palacus and took the royal forts of Chabaioi and
+    Neapolis, "it came to pass that almost all of them became subject to the
+    king Mithridates Eupator" (the decree); they revolted and were beaten again.
+    Strabo: Mithridates "subdued all these by force" (7.4.3). How long the
+    subjection lasted is not recorded; at the end Appian counts "the princes of
+    the Scythian tribes around the Euxine and Maiotis" among the king's allies
+    (Mithr. 119), and the row runs to his death. Until the extension to 133 BCE
+    the Scythians were drawn independent from before 68, which Strabo's
+    account does not support; the row after 64 is unchanged.
+
+- atom: scythia-minor
+  polity: scythia-minor
+  relation: independent
+  from: 63 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '7.4.3, 7.4.7' }
@@ -1133,7 +2517,7 @@
 - atom: kush
   polity: kush
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
@@ -1143,7 +2527,7 @@
 - atom: garamantes
   polity: garamantes
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: mattingly-2003 }
@@ -1221,13 +2605,40 @@
 
 - atom: pontic-cities
   polity: pontic-cities
+  relation: independent
+  from: before 133 BCE
+  to: 72 BCE
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Mithr. 15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free Greek cities, with no recorded tie to Rome before Lucullus. Whether
+    they stood under Mithridates' protection in the 80s and 70s is argued, not
+    shown: in 89 his envoy counts "the Greeks bordering on the Euxine" among
+    his acquisitions (App. Mithr. 15), which may mean only the north coast, and
+    the cities resisted Lucullus in 72/71, which fits a Pontic garrison as well
+    as their own choice. Not drawn as his, hence independent and uncertain.
+
+- atom: pontic-cities
+  polity: pontic-cities
   relation: allied
-  from: before 68 BCE
+  from: 71 BCE
   to: 56 BCE
   sources:
     - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Ill. 30' }
+    - { source: livy-per, locator: '97' }
   confidence: probable
   review: needs-check
+  note: >-
+    M. Lucullus, proconsul of Macedonia in 72–71, besieged "several cities
+    lying above Pontus" and "destroyed Apollonia, Calatis, Parthenopolis, Tomi,
+    Histros, and Burziaone" (Eutropius 6.10); Appian names Istrus,
+    Dionysopolis, Odessus, Mesembria, Callatis and Apollonia (Ill. 30). Allied
+    from the campaign's end, 72/71, drawn from 71; started before 68 until the
+    extension to 133 BCE.
 
 - atom: pontic-cities
   polity: dacia
@@ -1258,27 +2669,47 @@
 - atom: noricum
   polity: noricum
   relation: allied
-  from: before 68 BCE
+  from: 113 BCE
   to: after 27 BCE
   sources:
     - { source: caesar-bc, locator: '1.18' }
+    - { source: appian, locator: 'Celt. 13' }
+    - { source: strabo, locator: '5.1.8' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    First attested in 113, when the consul Carbo attacked the Teutones (the
+    Cimbri in Strabo) for invading "the people of Noricum, who were foreign friends of
+    the Romans" — a friendship, Appian adds, that did not oblige Rome "to
+    defend them as allies" (Celt. 13) — and was beaten near Noreia (Strabo
+    5.1.8). The start is the first attestation, not the beginning of the
+    friendship, which Alföldy traces further back; before it the kingdom is
+    left unclaimed.
 
 - atom: delmatae
   polity: delmatae
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 34 BCE
   sources:
-    - { source: appian, locator: 'Ill. 12–13' }
+    - { source: appian, locator: 'Ill. 11–13' }
+    - { source: livy-per, locator: '62' }
+    - { source: eutropius, locator: '6.4' }
   confidence: probable
   review: draft
+  note: >-
+    Rome made war on them twice in 133–68 without holding their ground: L.
+    Metellus in 119–117, who "wintered among them at the town of Salona" and
+    triumphed (App. Ill. 11; Livy Per. 62 has him "subdue" them), and
+    Cosconius in 78–76, who "reduced a great part of Dalmatia, took Salonae"
+    (Eutropius 6.4). Neither left a standing that the sources record, and in
+    50 they were strong enough to take Promona (Ill. 12). Started before 68
+    until the extension to 133 BCE.
 
 - atom: massalia
   polity: massalia
   relation: allied
-  from: before 68 BCE
+  from: before 133 BCE
   to: 50 BCE
   sources:
     - { source: strabo, locator: '4.1.5, 4.1.9' }
@@ -1302,7 +2733,7 @@
 - atom: helvetii
   polity: helvetii
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 59 BCE
   sources:
     - { source: caesar-bg, locator: '1.2' }
@@ -1337,7 +2768,7 @@
 - atom: sequani
   polity: sequani
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1359,15 +2790,36 @@
 
 - atom: aedui
   polity: aedui
+  relation: independent
+  from: before 133 BCE
+  to: 123 BCE
+  sources:
+    - { source: caesar-bg }
+    - { source: strabo, locator: '4.3.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free, and perhaps already Rome's friends: Strabo calls them the first in
+    Gaul to seek friendship and alliance with Rome (4.3.2), but the alliance is
+    not attested before 122, and the ground moves at the attestation (decision
+    19).
+
+- atom: aedui
+  polity: aedui
   relation: allied
-  from: before 68 BCE
+  from: 122 BCE
   to: 52 BCE
   sources:
+    - { source: livy-per, locator: '61' }
+    - { source: florus, locator: '1.37.4' }
     - { source: caesar-bg, locator: '1.33, 7.37–43, 7.54–55, 7.63' }
   confidence: probable
   review: draft
   note: >-
-    Allies throughout, until they joined Vercingetorix in 52.
+    Allies from their first attestation, when the Allobroges, sheltering the
+    Salluvian king Toutomotulus, "devastated the land of the Aedui, an ally of
+    the Roman people" (Livy Per. 61; Flor. 1.37.4), until they joined
+    Vercingetorix in 52.
 
 - atom: aedui
   polity: gallia-comata
@@ -1385,7 +2837,7 @@
 - atom: arverni
   polity: arverni
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 52 BCE
   sources:
     - { source: caesar-bg }
@@ -1408,7 +2860,7 @@
 - atom: vaccaei
   polity: vaccaei
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: c. 30 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1419,7 +2871,7 @@
 - atom: astures
   polity: astures
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1430,7 +2882,7 @@
 - atom: cantabri
   polity: cantabri
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1441,7 +2893,7 @@
 - atom: callaeci
   polity: callaeci
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '3.3–4' }
@@ -1544,7 +2996,7 @@
 - atom: thessalia
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: broughton-mrr }
@@ -1573,7 +3025,7 @@
 - atom: epirus
   polity: macedonia
   relation: province
-  from: before 68 BCE
+  from: before 133 BCE
   to: 28 BCE
   sources:
     - { source: broughton-mrr }
@@ -1618,16 +3070,22 @@
 - atom: iapydes
   polity: iapydes
   relation: independent
-  from: before 68 BCE
+  from: before 133 BCE
   to: 36 BCE
   sources:
     - { source: appian, locator: 'Ill. 18' }
+    - { source: appian, locator: 'Ill. 10' }
+    - { source: livy-per, locator: '59' }
     - { source: cassius-dio, locator: '49.34.2' }
   confidence: uncertain
   review: needs-check
   note: >-
     Hostile to Rome before 35 (App. Ill. 18), though some of them owed tribute
-    (Dio 49.34.2), hence uncertain.
+    (Dio 49.34.2), hence uncertain. C. Sempronius Tuditanus made war on them in
+    129 and "seem[s] to have subjugated them", but they "revolted not long
+    afterward" (App. Ill. 10; Livy Per. 59); the brief subjection is not drawn,
+    since neither its extent nor its end is recorded. Started before 68 until
+    the extension to 133 BCE.
 
 - atom: iapydes
   polity: illyricum
@@ -1959,6 +3417,7 @@
   sources:
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: barrington, locator: 'map 81' }
+    - { source: eller-2025, locator: 'pp. 67–68' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1967,7 +3426,11 @@
     to which neither the Roman people nor the kings of Egypt had marched".
     Whether the Dodecaschoenus next to Philae was Ptolemaic before 30 is argued:
     Burstein (Barrington map 81) puts the Egyptian–Kushite boundary at
-    Hierasykaminos for most of the period the map covers.
+    Hierasykaminos for most of the period the map covers. Left at "before 68"
+    on purpose, and 133–69 unclaimed: Ptolemy VI had "reestablish[ed] control
+    over Lower Nubia up to the Second Cataract", and when the Ptolemies lost it
+    again is not known; the first century "remains difficult to determine"
+    (Eller 2025, 67–68).
 
 - atom: triakontaschoinos
   polity: triakontaschoinos
@@ -2000,15 +3463,18 @@
 - atom: pontus-inner
   polity: pontus-regnum
   relation: independent
-  from: 68 BCE
+  from: 89 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 88–89, 99–100' }
+    - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
+    - { source: cassius-dio, locator: '36.9–12' }
   confidence: probable
   review: draft
   note: >-
     Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Mithridates won back his kingdom in 68 and lost it to Pompey in 66.
+    At war with Rome from 89. The kingdom went on while Lucullus held it in
+    71–69 (the occupation is its own row); Mithridates slipped back in 68, won
+    back "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66.
 
 - atom: pontus-inner
   polity: bosporus
@@ -2028,22 +3494,40 @@
 - atom: lycaonia
   polity: cilicia
   relation: province
-  from: before 68 BCE
+  from: 75 BCE
   to: 44 BCE
-  sources: [{ source: broughton-mrr, locator: vol. II }]
-  confidence: probable
-  review: draft
-  note: Part of the cilicia atom until lycaonia was split from it (September 2026); the row is cilicia's.
+  sources:
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: livy-per, locator: '93' }
+    - { source: strabo, locator: '12.6.2' }
+    - { source: dmitriev-2000 }
+    - { source: sherwin-white-1976, locator: 'n. 61' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Part of the cilicia atom until lycaonia was split from it (September 2026); the row was cilicia's.
+    When Lycaonia passed from Asia to Cilicia is not recorded; Dmitriev says
+    only that it had been attached to Cilicia "by the mid-first century B.C."
+    Dated from P. Servilius, proconsul of Cilicia, who "in Cilicia Isauros
+    domuit" in 75 (Livy Per. 93) — Isauria belonged to Lycaonia (Strabo 12.6.2);
+    Marcius Rex, governor of Cilicia, was in Lycaonia in 67 (a fragment of
+    Sallust's Histories, as Sherwin-White 1976 n. 61 cites it; not read).
 
 - atom: pisidia
   polity: cilicia
   relation: province
-  from: before 68 BCE
+  from: 80 BCE
   to: 44 BCE
-  sources: [{ source: broughton-mrr, locator: vol. II }]
-  confidence: probable
-  review: draft
-  note: Part of the cilicia atom until pisidia was split from it (September 2026); the row is cilicia's.
+  sources:
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: cicero-verr, locator: '2.1.95' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Part of the cilicia atom until pisidia was split from it (September 2026); the row was cilicia's.
+    Dated from Dolabella's province, when his pro-quaestor Verres levied grain
+    on "Lyciam, Pamphyliam, Pisidiam Phrygiamque totam" (Verr. 2.1.95); who held
+    the lake district before is not known, and it is unclaimed.
 
 - atom: pontus-inner
   polity: pontus-polemon
@@ -2335,19 +3819,6 @@
 
 - atom: judaea-jericho
   polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '14.1–79' }
-  confidence: certain
-  review: draft
-  note: >-
-    Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
-    The Hasmonean kingdom, a friend of Rome by treaty but no client.
-
-- atom: judaea-jericho
-  polity: judaea
   relation: client
   from: 63 BCE
   to: 41 BCE
@@ -2360,19 +3831,6 @@
     Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
 
 - atom: samaria
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: samaria
   polity: syria
   relation: province
   from: 63 BCE
@@ -2385,19 +3843,6 @@
   note: >-
     Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
     Taken from the Jews by Pompey and put under the governor of Syria.
-
-- atom: gadara-hippos
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
 
 - atom: gadara-hippos
   polity: syria
@@ -2414,19 +3859,6 @@
     Taken from the Jews by Pompey and put under the governor of Syria.
 
 - atom: strato-tower
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: strato-tower
   polity: syria
   relation: province
   from: 63 BCE
@@ -2441,19 +3873,6 @@
     Taken from the Jews by Pompey and put under the governor of Syria.
 
 - atom: palaestina-coast
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
-
-- atom: palaestina-coast
   polity: syria
   relation: province
   from: 63 BCE
@@ -2466,19 +3885,6 @@
   note: >-
     Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
     Taken from the Jews by Pompey and put under the governor of Syria.
-
-- atom: gaza
-  polity: judaea
-  relation: independent
-  from: before 68 BCE
-  to: 64 BCE
-  sources:
-    - { source: josephus-aj, locator: '13.395–397' }
-  confidence: probable
-  review: draft
-  note: >-
-    Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
-    The conquests of Alexander Jannaeus.
 
 - atom: gaza
   polity: syria
@@ -2508,19 +3914,6 @@
     Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
     Pompey's annexation.
 
-- atom: tyre
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
-
 - atom: sidon
   polity: syria
   relation: province
@@ -2535,19 +3928,6 @@
     Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
     Pompey's annexation.
 
-- atom: sidon
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
-
 - atom: phoenicia
   polity: syria
   relation: province
@@ -2561,19 +3941,6 @@
   note: >-
     Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
     Pompey's annexation.
-
-- atom: phoenicia
-  polity: seleucid
-  relation: independent
-  from: before 68 BCE
-  to: 65 BCE
-  sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
-    Antiochus XIII, restored in 69; his writ hardly ran beyond Antioch.
 
 # The Parthian invasion of 40
 
@@ -2670,9 +4037,10 @@
   note: >-
     The Parthians took Jerusalem in 40, carried off Hyrcanus and made
     Antigonus king (AJ 14.330–369). From 39 Herod, whom the senate had made king
-    in 40, held Joppa, Idumaea and by the winter of 39/38 Galilee (AJ
-    14.394–397, 14.413–414) — part of this atom, which cannot be split by year,
-    so it is drawn Antigonus' to the fall of Jerusalem.
+    in 40, took Joppa, relieved Masada and by the winter of 39/38 held
+    Galilee (AJ 14.394–399, 14.413–415) — Idumaea and Galilee were part of
+    this atom then (their own atoms since the extension to 133 carry the same
+    rows), so it is drawn Antigonus' to the fall of Jerusalem.
 
 - atom: judaea
   polity: judaea
@@ -3066,3 +4434,1726 @@
     together with Media" (Dio 49.44.4); he found asylum with Octavian (51.16.2;
     RGDA 32, "of the Medes, Artavasdes"). Who held Media Atropatene for Phraates
     in 30–27 is not known.
+
+# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+#
+# Attalus' bequest and Aristonicus; Greater Phrygia and Lycaonia given to kings
+# and taken back; Cibyra's tyranny to Murena; Pontus growing under the two
+# Mithridates, its three wars with Rome and Lucullus' conquest; the Bithynian
+# kingdom to its bequest; Cappadocia's kings driven out and restored; Cilicia
+# as a praetorian province from Antonius' war on the pirates; the Cilician plain
+# Seleucid, then Tigranes'. Occupations end the year before the occupier was
+# driven out, as above: Mithridates gave up Asia, Bithynia, Paphlagonia and
+# Cappadocia at Dardanus in the late summer or autumn of 85, so his rows there
+# end with 86.
+
+# Asia and its borders
+
+- atom: asia
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 20–23, 48, 52, 55–58' }
+    - { source: plutarch, locator: 'Sulla 11.1, 22.5, 24.1' }
+    - { source: strabo, locator: '12.3.40' }
+    - { source: kallet-marx-1995 }
+  confidence: certain
+  review: draft
+  note: >-
+    Mithridates "took possession of Asia as far as Caria and Lycia" (Strabo
+    12.3.40) in 88, sat at Pergamum (Plut. Sulla 11.1) and had the Italians of
+    the province massacred on one day (App. Mithr. 22–23). Drawn over the
+    whole atom, though Magnesia on Sipylus held out (Mithr. 21), Ephesus, Tralles
+    and other towns revolted in 86 (48), and Fimbria drove him from Pergamum in
+    85 (52). At Dardanus in 85 he was "to renounce Asia and Paphlagonia" (Plut.
+    Sulla 22.5). Mytilene held out against Rome until 81 or 80 (Kallet-Marx);
+    not drawn.
+
+- atom: asia-phrygia
+  polity: asia
+  relation: province
+  from: 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: strabo, locator: '13.4.2' }
+    - { source: justin, locator: '37.1' }
+    - { source: kallet-marx-1995, locator: 'pp. 112–115' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Greater Phrygia was Attalid, so it passed to Rome with the kingdom; Rome
+    gave it to Mithridates V after the war with Aristonicus (Justin 37.1).
+    Who governed it in the war is not recorded.
+
+- atom: asia-phrygia
+  polity: pontus-regnum
+  relation: allied
+  from: 129 BCE
+  to: c. 120 BCE
+  sources:
+    - { source: justin, locator: '37.1, 38.5' }
+    - { source: appian, locator: 'Mithr. 11–13, 57' }
+    - { source: mcging-1980, locator: 'pp. 35–42' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "To Mithridates of Pontus was allotted Greater Phrygia" for his help against
+    Aristonicus (Justin 37.1); Appian's Mithridates says it was "given to him by
+    your own general as a reward for his victory over Aristonicus" and that his
+    father paid that general for it (Mithr. 12). Taken from the son "in his
+    minority" (Justin 38.5) after the father's death, c. 120. Dated from
+    Aquillius' first year; he stayed until 126, and the grant may be later.
+
+- atom: asia-phrygia
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 20' }
+    - { source: livy-per, locator: '77' }
+  confidence: certain
+  review: draft
+  note: >-
+    Mithridates "overran the rest of Phrygia" (App. Mithr. 20); "Phrygiam,
+    provinciam populi R., cum ingenti exercitu intrauit" (Livy Per. 77).
+
+- atom: cibyra
+  polity: cibyra
+  relation: independent
+  from: before 133 BCE
+  to: c. 83 BCE
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The tyrants of Cibyra, until Murena "overthrew it" in the time of Moagetes
+    (Strabo 13.4.17). Murena governed Asia from 84 to 81; the tetrapolis
+    "survived as independent to c. 82" (Sherwin-White 1976, n. 6), or was
+    "under its own tyrants until captured by L. Murena in 83" (Kallet-Marx
+    114). Strabo gives no year.
+
+- atom: cibyra
+  polity: asia
+  relation: province
+  from: c. 82 BCE
+  to: 57 BCE
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: dmitriev-2000, locator: 'n. 80' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "The jurisdiction of Cibyra is rated among the greatest in Asia" (Strabo
+    13.4.17). From here the rows are asia-phrygia's, whose atom it was part of.
+
+- atom: cibyra
+  polity: cilicia
+  relation: province
+  from: 56 BCE
+  to: 50 BCE
+  sources:
+    - { source: dmitriev-2000, locator: 'n. 80' }
+    - { source: magie-1950, locator: 'vol. I, 383–4' }
+    - { source: cicero-att, locator: '5.21.9' }
+  confidence: probable
+  review: draft
+  note: Part of asia-phrygia until cibyra was split from it (September 2026); the row is asia-phrygia's.
+
+- atom: cibyra
+  polity: asia
+  relation: province
+  from: 49 BCE
+  to: after 27 BCE
+  sources:
+    - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
+    - { source: sherk-rdge, locator: 'no. 52' }
+  confidence: probable
+  review: draft
+  note: Part of asia-phrygia until cibyra was split from it (September 2026); the row is asia-phrygia's.
+
+- atom: bubon-balbura
+  polity: cibyra
+  relation: independent
+  from: before 133 BCE
+  to: c. 83 BCE
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+  confidence: probable
+  review: needs-check
+  note: Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17).
+
+- atom: bubon-balbura
+  polity: lycia
+  relation: allied
+  from: c. 82 BCE
+  to: after 27 BCE
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: mitchell-2005 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Murena "included Balbura and Bubon within the territory of the Lycians"
+    (Strabo 13.4.17). Oenoanda's passing to the Lycians is not recorded.
+
+- atom: caunus
+  polity: asia
+  relation: province
+  from: 133 BCE
+  to: 85 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 23' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free since Rome took it from Rhodes after 167, "lately liberated by the
+    Romans" (App. Mithr. 23). Drawn with Asia as the other free cities of Caria
+    are (see asia); whether it was ever under the governor is not recorded.
+
+- atom: caunus
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 23' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Caunians hunted down the Italians who had fled to the statue of Vesta
+    and killed them with their families (App. Mithr. 23).
+
+- atom: caunus
+  polity: rhodus
+  relation: allied
+  from: 84 BCE
+  to: after 27 BCE
+  sources:
+    - { source: cicero-qfr, locator: '1.1.33' }
+    - { source: strabo, locator: '14.2.3' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Caunii … quae erant a Sulla Rhodiis attributae" (Cicero, Q. fr. 1.1.33):
+    given to Rhodes in Sulla's settlement of 85/84. "The Caunians once revolted
+    from the Rhodians, but by a judicial decision of the Romans they were
+    restored to them" (Strabo 14.2.3). From here the row is rhodian-peraea's.
+
+# Lycaonia, Pamphylia and the Cilician plain
+
+- atom: lycaonia
+  polity: asia
+  relation: province
+  from: 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: justin, locator: '37.1' }
+    - { source: kallet-marx-1995, locator: 'pp. 112–115' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Attalid since the peace of 188, so it passed to Rome with the kingdom and
+    was Rome's to give after the war (Justin 37.1).
+
+- atom: lycaonia
+  polity: cappadocia
+  relation: client
+  from: 129 BCE
+  to: 102 BCE
+  sources:
+    - { source: justin, locator: '37.1' }
+    - { source: sherwin-white-1976, locator: 'n. 7' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "To the sons of Ariarathes … were assigned Lycaonia and Cilicia" (Justin
+    37.1); the manuscripts read Lycia, emended, and Seleucid Cilicia was not
+    Rome's to give (Sherwin-White 1976, n. 7). When it came back to Rome is not
+    recorded; it runs here to the law of 101/100, which first shows it under
+    the governor of Asia (README decision 19).
+
+- atom: lycaonia
+  polity: asia
+  relation: province
+  from: { earliest: 101 BCE, latest: 100 BCE }
+  to: 76 BCE
+  sources:
+    - { source: sherwin-white-1976, locator: 'n. 24' }
+    - { source: dmitriev-2000, locator: 'p. 349' }
+    - { source: mcging-1980 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The law on the praetorian provinces (Cnidus copy, col. III 22–25) leaves
+    Lycaonia with the governor of Asia "as before" (Sherwin-White 1976, n. 24;
+    Dmitriev 349 on I.Knidos 31). The row starts at the law, not at whatever
+    earlier year it came to Asia.
+
+- atom: cilicia
+  polity: cilicia
+  relation: province
+  from: { earliest: 102 BCE, latest: 100 BCE }
+  to: 81 BCE
+  sources:
+    - { source: livy-per, locator: '68' }
+    - { source: cicero-de-oratore, locator: '1.82' }
+    - { source: sumner-1978 }
+    - { source: sherwin-white-1976, locator: 'nn. 12, 18, 25, 41' }
+    - { source: borgia-2017, locator: 'pp. 299–300' }
+    - { source: de-viris-illustribus, locator: '75.4' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    M. Antonius went "pro consule in Ciliciam" against the pirates in 102
+    (Cicero, De orat. 1.82; Livy Per. 68) and "set out for Side" ("ipse iter
+    eire profectus Sidam", the Corinth inscription, as Sherwin-White 1976 n.
+    12 quotes it); by the law of 101/100 "Cilicia has for this reason been
+    made a praetorian province in accordance with this law" (Cnidus col. III
+    28–37, in Sumner's translation). Sulla held it as praetor ("Praetor
+    Ciliciam provinciam habuit", De vir. ill. 75.4), and Q. Oppius was
+    "strategos of Pamphylia" c. 89 (Posidonius, as Sherwin-White n. 41 cites
+    him). Drawn as Pamphylia and southern Pisidia, the province's later core,
+    but whether it held ground before 80 is argued: Sherwin-White holds that
+    Antonius needed a territorial base, as a free Rhodes could not be one
+    (n. 18); Borgia sees "only a sphere of military and political
+    competence", based in Pamphylia and Pisidia, until Pompey (299–300).
+
+- atom: cilicia
+  polity: pontus-regnum
+  relation: occupied
+  from: 88 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 20' }
+  confidence: probable
+  review: draft
+  note: >-
+    Mithridates "subjugated Lycia, Pamphylia, and the rest as far as Ionia"
+    (App. Mithr. 20) — though Lycia held out (21, 27).
+
+- atom: cilicia-campestris
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48, 69' }
+    - { source: strabo, locator: '14.5.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Seleucid Cilicia, "subject to the Seleucids" when Tigranes took it (App.
+    Syr. 48). Strabo blames "the worthlessness of the kings who by succession
+    were then reigning over Syria and at the same time over Cilicia" for the
+    pirates (14.5.2). The rival kings of the 90s fought over it: Seleucus VI
+    was burnt alive at Mopsuestia (Syr. 69).
+
+- atom: cilicia-campestris
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48–49, 70' }
+    - { source: justin, locator: '40.1–40.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "took Cilicia at the same time (for this was also subject to the
+    Seleucids) and put his general, Magadates, in command of all these
+    conquests for fourteen years" (App. Syr. 48), until Lucullus "wrested his
+    newly acquired territory from him" after Tigranocerta in 69 (Syr. 49).
+    Appian's fourteen years give 83; Justin has eighteen (40.1), and some
+    modern work puts the conquest of Cilicia later. Unclaimed from 69 until
+    Pompey (cilicia).
+
+# Pontus
+
+- atom: pontus
+  polity: pontus-regnum
+  relation: allied
+  from: before 133 BCE
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.11, 12.3.39' }
+    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
+    - { source: justin, locator: '37.1, 38.5' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    The kingdom of Mithridates V, a friend and ally of Rome who fought for it
+    against Aristonicus, and of his son, still formally a friend and ally when
+    Aquillius' embassy provoked the war (App. Mithr. 10–13, 56–57). Sinope,
+    taken by Pharnaces I, was its "metropolis" under Eupator (Strabo 12.3.11).
+    The coast from the Parthenius to Themiscyra with the Amnias basin; Amastris
+    and Sinope were Pontic well before 133.
+
+- atom: pontus-inner
+  polity: pontus-regnum
+  relation: allied
+  from: before 133 BCE
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.30, 12.3.39' }
+    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Inner Pontus, with Amaseia and "the palaces and monuments of the kings"
+    (Strabo 12.3.39) and Mithridates' palace at Cabira (12.3.30). As pontus.
+
+- atom: comana-pontica
+  polity: pontus-regnum
+  relation: allied
+  from: before 133 BCE
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.32–34' }
+  confidence: probable
+  review: needs-check
+  note: The temple state under the kings (Strabo 12.3.32–34). As pontus.
+
+- atom: armenia-minor
+  polity: pontus-regnum
+  relation: allied
+  from: { earliest: 113 BCE, latest: 90 BCE }
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.28' }
+    - { source: appian, locator: 'Mithr. 17' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "When Mithridates Eupator had increased in power, he established himself as
+    master, not only of Colchis, but also of all these places, these having been
+    ceded to him by Antipater, the son of Sisis. And he cared so much for these
+    places that he built seventy-five strongholds" (Strabo 12.3.28). No year is
+    given; it was his by 89 (App. Mithr. 17). Dated between his sole rule, c.
+    113 (a modern reckoning), and the war. Unclaimed before.
+
+- atom: galatia-pontus
+  polity: pontus-regnum
+  relation: allied
+  from: { earliest: 113 BCE, latest: 90 BCE }
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.28' }
+    - { source: appian, locator: 'Mithr. 15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Pharnacia and the coast to Colchis. Pharnacia had been Pontic since
+    Pharnaces I, but the coast towards Colchis is not recorded as Pontic before
+    Eupator took Colchis and Lesser Armenia (Strabo 12.3.28); drawn with Lesser
+    Armenia, and unclaimed before.
+
+- atom: pontus
+  polity: rome
+  relation: occupied
+  from: { earliest: 71 BCE, latest: 70 BCE }
+  to: 69 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 78, 82–83' }
+    - { source: memnon, locator: '30, 37' }
+    - { source: plutarch, locator: 'Lucullus 19, 23, 35.5' }
+    - { source: cassius-dio, locator: '36.43.2' }
+    - { source: kallet-marx-1995, locator: 'pp. 303, 312' }
+  confidence: probable
+  review: draft
+  note: >-
+    Lucullus took Amisus and Eupatoria, then Sinope, which he made free (App.
+    Mithr. 83), and Amaseia (Memnon 37): "by the end of 70 the last Pontic
+    strongholds at Amisus, Sinope, Amasea, and Heraclea fell" (Kallet-Marx
+    303). The senate sent ten commissioners to organise it "on the
+    supposition that it was a secure Roman possession" (Plut. Luc. 35.5; Dio
+    36.43.2), but they reached Lucullus only in 67, and Pontus was never a
+    province before Pompey. Mithridates came back in 68 (Dio 36.9).
+
+- atom: pontus-inner
+  polity: rome
+  relation: occupied
+  from: { earliest: 72 BCE, latest: 71 BCE }
+  to: 69 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 78–82' }
+    - { source: plutarch, locator: 'Lucullus 15–18' }
+    - { source: cassius-dio, locator: '36.9–10' }
+  confidence: probable
+  review: draft
+  note: >-
+    After Cabira (72 on the older chronology, 71 on Kallet-Marx's, p. 303)
+    Mithridates fled by Comana to Tigranes, and Lucullus took "Cabira and most of the other
+    strongholds" (Plut. Luc. 18.1). In 68 Mithridates beat his legate Fabius
+    and besieged him in Cabira (Dio 36.9–10).
+
+- atom: comana-pontica
+  polity: rome
+  relation: occupied
+  from: { earliest: 72 BCE, latest: 71 BCE }
+  to: 69 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 82' }
+    - { source: cassius-dio, locator: '36.10' }
+  confidence: uncertain
+  review: needs-check
+  note: As pontus-inner; Triarius beat Mithridates near Comana in 68 (Dio 36.10).
+
+- atom: armenia-minor
+  polity: rome
+  relation: occupied
+  from: { earliest: 71 BCE, latest: 70 BCE }
+  to: 69 BCE
+  sources:
+    - { source: plutarch, locator: 'Lucullus 19.1' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lucullus "occupied Lesser Armenia, reducing its fortresses and cities"
+    (Plut. Luc. 19.1).
+
+# Bithynia
+
+- atom: bithynia
+  polity: bithynia-regnum
+  relation: client
+  from: before 133 BCE
+  to: 75 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 7, 10–11, 60, 71' }
+    - { source: strabo, locator: '14.1.38' }
+    - { source: livy-per, locator: '93.2' }
+    - { source: eutropius, locator: '6.6.1' }
+  confidence: certain
+  review: draft
+  note: >-
+    The kingdom of the Nicomedes, to the bequest (the polity has the dates).
+    Heraclea, a free city, and Chalcedon lie inside the atom.
+
+- atom: bithynia
+  polity: pontus-regnum
+  relation: occupied
+  from: 90 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 10–11, 13' }
+    - { source: memnon, locator: '22.5' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Mithridates "put Socrates on the throne by force and arms" (App. Mithr. 13)
+    in place of his brother Nicomedes IV, who was restored by Aquillius'
+    embassy (11). Socrates reigned by Mithridates' troops, so it is drawn as his
+    occupation.
+
+- atom: bithynia
+  polity: pontus-regnum
+  relation: occupied
+  from: { earliest: 89 BCE, latest: 88 BCE }
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 18–20, 55–60' }
+    - { source: strabo, locator: '12.3.40' }
+    - { source: plutarch, locator: 'Sulla 22.5' }
+  confidence: certain
+  review: draft
+  note: >-
+    After the battle on the Amnias, "having subverted the whole dominion of
+    Nicomedes at one blow, Mithridates took possession of it" (App. Mithr. 20);
+    Nicomedes fled to Italy (Strabo 12.3.40). Restored by Curio after Dardanus
+    (Mithr. 60). The battle is put in 89 or 88.
+
+- atom: bithynia
+  polity: pontus-regnum
+  relation: occupied
+  from: 73 BCE
+  to: 73 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 71, 76–77' }
+    - { source: memnon, locator: '27–29' }
+    - { source: livy-per, locator: '93.4, 95.3' }
+    - { source: kallet-marx-1995, locator: 'pp. 302–303' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Thus Bithynia again passed under the rule of Mithridates" (App. Mithr.
+    71): Cotta was shut up in Chalcedon, which never fell, and Mithridates
+    stayed at Nicomedia (Memnon 29). After Cyzicus he fell back, Nicaea's
+    garrison left by night (Memnon 28), and the country was clear by the winter
+    of 73/72, except Heraclea, which his garrison held until Cotta and Triarius
+    took it in 71 or 70 (Memnon 34–35). Kallet-Marx dates the invasion to the
+    spring of 73; the older chronology gives 74.
+
+# Paphlagonia, Galatia, Cappadocia
+
+- atom: paphlagonia
+  polity: pontus-regnum
+  relation: occupied
+  from: { earliest: 89 BCE, latest: 88 BCE }
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 18–21' }
+    - { source: plutarch, locator: 'Sulla 22.5, 23.3' }
+    - { source: justin, locator: '37.4, 38.2' }
+    - { source: kallet-marx-1995, locator: 'pp. 242–243' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Paphlagonians still opposed him in 88 (App. Mithr. 21); at Dardanus he was
+    to renounce Paphlagonia, the point he fought hardest (Plut. Sulla 22.5,
+    23.3). The earlier partition is not drawn: Mithridates and Nicomedes III
+    "invaded Paphlagonia, and divided it, after it was conquered, among his
+    allies" (Justin 37.4), in 108/107 (Kallet-Marx 242), but which part each
+    king held is not recorded, and when the senate intervened c. 96/95 it was
+    Nicomedes it took Paphlagonia from (Justin 38.2), who "was eventually able
+    to spread Bithynian control over all Paphlagonia" (Kallet-Marx 243).
+
+- atom: galatia
+  polity: pontus-regnum
+  relation: occupied
+  from: 86 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 46' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    After his defeats in Greece Mithridates "put to death the tetrarchs of
+    Galatia with their wives and children, not only those who were united with
+    him as friends, but those who were not his subjects - all except three who
+    escaped", "established garrisons in their towns, and appointed Eumachus
+    satrap of the nation"; the survivors "expelled him and his garrisons"
+    (App. Mithr. 46), in 86 or 85. Before this the Galatians were not his
+    subjects, so the row starts with the massacre, not with 88.
+
+- atom: cappadocia
+  polity: pontus-regnum
+  relation: occupied
+  from: c. 100 BCE
+  to: 96 BCE
+  sources:
+    - { source: justin, locator: '38.1–38.2' }
+    - { source: memnon, locator: '22.1' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Mithridates killed his nephew Ariarathes VII at a parley and "bestowed the
+    kingdom of Cappadocia on his own son, a child eight years old, giving him the
+    name of Ariarathes, and appointing Gordius his guardian"; the Cappadocians'
+    own candidate, Ariarathes VIII, was driven out (Justin 38.1–2). Ended by the
+    senate's settlement of c. 96/95. The years are modern reckonings.
+
+- atom: cappadocia
+  polity: pontus-regnum
+  relation: occupied
+  from: 90 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 10–11' }
+    - { source: justin, locator: '38.3' }
+    - { source: kallet-marx-1995, locator: 'pp. 356–359' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Mithraas and Bagoas drove out Ariobarzanes … and installed Ariarathes in
+    his place" (App. Mithr. 10); Aquillius' embassy restored him (11). Justin
+    tells the same expulsion as Tigranes' ("On the first approach of Tigranes,
+    Ariobarzanes packed up his baggage and went off to Rome", 38.3), just
+    before the senate sent Aquillius. Sherwin-White puts an earlier Armenian
+    expulsion before Sulla's mission, which would then be a restoration;
+    Kallet-Marx (356–359) argues there was only the one, and that Sulla
+    installed Ariobarzanes for the first time in 96 or 95. No Armenian holding
+    is drawn in the 90s.
+
+- atom: cappadocia
+  polity: pontus-regnum
+  relation: occupied
+  from: { earliest: 89 BCE, latest: 88 BCE }
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 15, 60' }
+    - { source: plutarch, locator: 'Sulla 22.5' }
+  confidence: probable
+  review: draft
+  note: >-
+    His son Ariarathes "drove out Ariobarzanes" (App. Mithr. 15); Curio
+    restored him after Dardanus (60).
+
+- atom: cappadocia
+  polity: pontus-regnum
+  relation: occupied
+  from: 81 BCE
+  to: 79 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 66–67' }
+    - { source: kallet-marx-1995, locator: 'p. 295' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    After Murena's war Mithridates was to "retain that part of Cappadocia which
+    he then held, but have another part in addition" (App. Mithr. 66);
+    Ariobarzanes complained that "a greater part of it was yet retained by
+    Mithridates", and Sulla made him give it up (67). Only part of the kingdom,
+    drawn whole; the end is Sulla's order, shortly before his death in 78.
+    Tigranes' raid, when he carried the Cappadocians off to Tigranocerta
+    (App. Mithr. 67; Strabo 12.2.9), in 78 or 77 (Kallet-Marx 295), is not
+    drawn as a holding.
+
+# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
+# The rows of these atoms that used to open at 68 are rewritten here, so each
+# atom's history reads in one place. The Seleucid kingdom is one polity
+# throughout, though from 113 its rival kings divided it; that division is not
+# drawn, because no source gives it a line at the atoms' grain.
+
+# Syria and the Phoenician coast
+
+- atom: syria
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: justin, locator: '38.10, 39.1–39.3, 40.1' }
+    - { source: josephus-aj, locator: '13.365–371, 13.387–392' }
+    - { source: ehling-2008 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Antiochus VII Sidetes to his death fighting the Parthians (129; Justin
+    38.10), then Demetrius II again, Alexander Zabinas, and from 113 the war of
+    Antiochus VIII Grypus and Antiochus IX Cyzicenus, each of whom held Antioch
+    in turn (App. Syr. 69; Justin 39.3); then their sons, Seleucus VI and
+    Antiochus X (Syr. 69), Philip I and Demetrius III at Damascus, and
+    Antiochus XII (AJ 13.365–371, 13.387–391). Drawn as one kingdom:
+    who held which town in which year is argued from coins (Ehling) and not
+    drawn. Damascus fell to Aretas III of Nabataea c. 85 (Josephus AJ 13.392)
+    and is not split out. Ends with Tigranes' conquest.
+
+- atom: syria
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48–49, 70' }
+    - { source: justin, locator: '40.1–40.2' }
+    - { source: strabo, locator: '11.14.15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Syrians, worn out by the kings' wars, called in Tigranes (Justin 40.1),
+    who "took Cilicia at the same time" and put Magadates over his conquests for
+    fourteen years (App. Syr. 48): 83 on Appian's count, as the Cilician plain
+    (cilicia-campestris). Justin's eighteen years would put it earlier, and
+    some modern work later (c. 74). Queen Selene still held Ptolemais into the
+    70s (Josephus AJ 13.420), and Damascus was Aretas' until c. 72; neither is
+    drawn at this grain. After Tigranocerta (69) Lucullus "wrested his newly
+    acquired territory from him" (Syr. 49).
+
+- atom: syria
+  polity: seleucid
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+    - { source: justin, locator: '40.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Antiochus XIII, whom Lucullus let into Syria in 69 (Justin 40.2; App. Syr.
+    49); his writ hardly ran beyond Antioch. Pompey set him aside in 64.
+
+- atom: phoenicia
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: schurer-vermes-ii }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Orthosia, Tripolis, Byblos, Berytus and Ptolemais. As syria; the cities
+    drifted towards self-rule under the late kings (Tripolis counted an era of
+    its own from 105/104), which is not drawn.
+
+- atom: phoenicia
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48' }
+    - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 21.2' }
+    - { source: josephus-aj, locator: '13.419–421' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "took Syria itself and Phoenicia" (Strabo 11.14.15), and was
+    "still engaged in subduing some cities of Phoenicia" when Appius Clodius
+    came to him (Plut. Lucullus 21.2). Ptolemais held out under Selene until
+    he took it, c. 70, and went home on the news that Lucullus was in Armenia
+    (AJ 13.419–421).
+
+- atom: phoenicia
+  polity: seleucid
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 49, 70' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria.
+
+- atom: tyre
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 127 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+    - { source: cng-tyre-shekel }
+  confidence: probable
+  review: needs-check
+
+- atom: tyre
+  polity: tyre
+  relation: independent
+  from: 126 BCE
+  to: 65 BCE
+  sources:
+    - { source: cng-tyre-shekel }
+    - { source: schurer-vermes-ii }
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Free from 126/125, the first year of the city's era on its coins. No source
+    says Tigranes took it; left free through his years. Pompey's province from
+    64 (syria's row), a free city within it.
+
+- atom: sidon
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: schurer-vermes-ii }
+    - { source: livius-sidon }
+  confidence: probable
+  review: needs-check
+
+- atom: sidon
+  polity: sidon
+  relation: independent
+  from: 111 BCE
+  to: 65 BCE
+  sources:
+    - { source: livius-sidon }
+    - { source: schurer-vermes-ii }
+    - { source: josephus-aj, locator: '15.95' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Free from 111, the first year of the city's era. As tyre, Tigranes is not
+    recorded holding it.
+
+- atom: emesa
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 84 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria; Emesa is not heard of as a principality before the 60s.
+
+- atom: emesa
+  polity: armenia
+  relation: independent
+  from: 83 BCE
+  to: 70 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 48' }
+  confidence: uncertain
+  review: needs-check
+  note: As syria.
+
+- atom: emesa
+  polity: emesa
+  relation: independent
+  from: 69 BCE
+  to: 65 BCE
+  sources:
+    - { source: strabo, locator: '16.2.10' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sampsigeramus of Emesa and Arethusa (Strabo 16.2.10) is first seen when,
+    having "secretly agreed with Azizus to kill the kings", he seized Antiochus
+    XIII, held him captive and later killed him (Diodorus 40.1b, attalus.org's
+    translation). Diodorus gives no year: the fragment falls between Antiochus'
+    restoration (69) and Pompey's arrival (64). Dated from 69, the end of
+    Tigranes' hold on Syria, by convention.
+
+- atom: emesa
+  polity: emesa
+  relation: client
+  from: 64 BCE
+  to: 31 BCE
+  sources:
+    - { source: strabo, locator: '16.2.10' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: From Pompey's settlement of Syria, which left the dynasts in place.
+
+- atom: ituraea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: appian, locator: 'Syr. 68–70' }
+    - { source: myers-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Beqaa, with Chalcis and Heliopolis, under the kings in name. The
+    Ituraean mountain tribes were never much governed by them.
+
+- atom: ituraea
+  polity: ituraea
+  relation: independent
+  from: c. 85 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.392, 13.418' }
+    - { source: strabo, locator: '16.2.10' }
+    - { source: myers-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Ptolemy son of Mennaeus, whom the Damascenes so hated that they called in
+    Aretas c. 85 (AJ 13.392); Aristobulus marched on Damascus against him under
+    Salome Alexandra (13.418). Whether he acknowledged Tigranes is not
+    recorded. He bought off Pompey in 63 (AJ 14.39).
+
+- atom: ituraea
+  polity: ituraea
+  relation: client
+  from: 63 BCE
+  to: 37 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.39' }
+    - { source: strabo, locator: '16.2.10, 16.2.18' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+
+- atom: commagene
+  polity: commagene
+  relation: independent
+  from: before 133 BCE
+  to: 65 BCE
+  sources:
+    - { source: facella-2006 }
+    - { source: sullivan-1990 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Independent of the Seleucids since Ptolemaeus, c. 163; Sames II, then
+    Mithridates I Callinicus, who married Laodice, daughter of Antiochus VIII,
+    then Antiochus I from c. 70. Tigranes is not recorded taking it.
+
+- atom: commagene
+  polity: commagene
+  relation: client
+  from: 64 BCE
+  to: after 27 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 106, 114' }
+    - { source: strabo, locator: '16.2.3' }
+    - { source: facella-2006 }
+  confidence: probable
+  review: draft
+  note: >-
+    Pompey fought Antiochus I, made him a friend, and added Seleucia at Zeugma
+    (App. Mithr. 106, 114).
+
+- atom: amanus
+  polity: amanus
+  relation: client
+  from: 64 BCE
+  to: 31 BCE
+  sources:
+    - { source: strabo, locator: '14.5.18' }
+    - { source: cicero-fam, locator: '15.1.2' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Strabo names Tarcondimotus as tyrant of the Amanus, made king by the
+    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus. When
+    Rome made him king is not recorded; dated from Pompey's settlement, when
+    Sullivan puts it. Unclaimed before: the Amanus was robbers' country under
+    the last Seleucids.
+
+# The Hasmoneans
+
+- atom: judaea
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.236–248' }
+    - { source: justin, locator: '36.1' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Antiochus VII besieged Jerusalem in Hyrcanus' first year (134 or 133) and
+    lifted the siege when the Jews gave up their arms and agreed to "pay
+    tribute for Joppa, and the other cities which bordered upon Judea" (AJ
+    13.245–248), and Justin has Antiochus subdue the Jews (36.1); Hyrcanus
+    went with him to the east in 130 (AJ 13.249–251). A vassal until the
+    king's death in 129. In 133 itself Jerusalem was under siege or had just
+    come to terms; the row is the terms' from the window's start.
+
+- atom: judaea
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.254, 13.273, 14.1–79' }
+  confidence: certain
+  review: draft
+  note: >-
+    "After the death of Antiochus, he revolted from the Macedonians, nor did he
+    any longer pay them the least regard" (AJ 13.273). The Hasmonean kingdom,
+    a friend of Rome by treaty but no client; kings from Aristobulus I (104).
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources: [{ source: josephus-aj, locator: '13.236–248' }]
+  confidence: probable
+  review: needs-check
+  note: As judaea.
+
+- atom: judaea-jericho
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources: [{ source: josephus-aj, locator: '13.273' }]
+  confidence: certain
+  review: draft
+  note: As judaea.
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: client
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.246' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Simon's since the 140s; under Antiochus VII the Jews paid "tribute for
+    Joppa" (AJ 13.246).
+
+- atom: judaea-joppa
+  polity: judaea
+  relation: independent
+  from: 129 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.273, 13.395' }
+  confidence: probable
+  review: draft
+
+- atom: judaea-peraea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 101 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.235, 13.356' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Under the kings in name; Zeno Cotylas held Philadelphia (AJ 13.235) and
+    his son Theodorus the stronghold of Amathus (13.356). Who held the Jewish
+    villages of Peraea before Jannaeus is not recorded.
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: independent
+  from: c. 100 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.374' }
+    - { source: josephus-bj, locator: '1.86–89' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Alexander Jannaeus took Amathus, "a very strong fortress belonging to the
+    inhabitants above Jordan", after Ptolemy Lathyrus' war (AJ 13.356), with
+    Gadara, and demolished it later (13.374). Theodorus beat him once (13.356);
+    the row runs from the first taking.
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-peraea
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources: [{ source: josephus-aj, locator: '14.330–369' }]
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-peraea
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-idumaea
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.257' }
+  confidence: uncertain
+  review: needs-check
+  note: The Idumaeans before Hyrcanus' conquest, under the kings in name.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: independent
+  from: { earliest: 129 BCE, latest: 111 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.257–258' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "Hyrcanus took also Dora and Marissa, cities of Idumea, and subdued all the
+    Idumeans" (AJ 13.257; "Dora" is Adora). Josephus tells it straight after
+    Antiochus' death (129); the coins and the end of occupation at Marisa have
+    led much modern work to put it c. 112–111. The range is both.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-idumaea
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369, 14.396–399, 14.413' }
+  confidence: probable
+  review: draft
+  note: >-
+    As judaea (the row is judaea's). Herod relieved Masada and took Ressa in
+    39 (AJ 14.396–399) and sent his brother Joseph against Idumaea that winter
+    (14.413); drawn with Antigonus' Judaea as before the split.
+
+- atom: judaea-idumaea
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-galilee
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 105 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.318–319' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Seleucid in name; its people in part Ituraean (AJ 13.318–319). Who ruled
+    it before the Hasmoneans is not recorded.
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: independent
+  from: 104 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.318–319' }
+    - { source: schurer-vermes }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aristobulus I "made war against Iturea, and added a great part of it to
+    Judea" (AJ 13.318), which is taken to be Galilee; he reigned a year from
+    Hyrcanus' death in 104. Some put the conquest under Hyrcanus: his son
+    Jannaeus had been "brought up in Galilee" (13.322).
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: client
+  from: 63 BCE
+  to: 41 BCE
+  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  confidence: certain
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: judaea-galilee
+  polity: judaea-antigonus
+  relation: independent
+  from: 40 BCE
+  to: 38 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.330–369, 14.395, 14.413–415' }
+  confidence: probable
+  review: draft
+  note: >-
+    As judaea (the row is judaea's). "All Galilee, with some small exception,
+    joined him" in 39 (AJ 14.395), and he brought over the rest that winter
+    (14.413–415); drawn with Antigonus' Judaea as before the split.
+
+- atom: judaea-galilee
+  polity: judaea
+  relation: client
+  from: 37 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.487' }
+    - { source: strabo, locator: '16.2.46' }
+  confidence: probable
+  review: draft
+  note: As judaea (the row is judaea's).
+
+- atom: samaria
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Samaria was a Seleucid city: Antiochus IX came to its help when Hyrcanus'
+    sons besieged it (AJ 13.276–277).
+
+- atom: samaria
+  polity: judaea
+  relation: independent
+  from: { earliest: 111 BCE, latest: 107 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.255–256, 13.275–281' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Hyrcanus took "Shechem and Gerizzim, and the nation of the Cutheans" (AJ
+    13.255) and the temple on Gerizim; Josephus tells it after 129, and the
+    excavators are reported to date the destruction c. 112–111 (not checked
+    here: the reports of the coin evidence differ). Then he besieged Samaria
+    for a year, took it and "demolished it entirely" (13.275–281), c. 108–107.
+
+- atom: syria-palaestina
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 108 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281' }
+  confidence: uncertain
+  review: needs-check
+  note: The Jezreel with Scythopolis, and the Greek cities across the Jordan.
+
+- atom: syria-palaestina
+  polity: judaea
+  relation: independent
+  from: { earliest: 107 BCE, latest: 83 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.275–281, 13.393–397' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Scythopolis and "other places near it" were betrayed to the Jews during
+    the siege of Samaria (AJ 13.280), c. 107; Dion, Pella, Gerasa and the
+    Gaulanitis fell only to Jannaeus in his three years' war of the 80s (AJ
+    13.393–397). The atom cannot be split by those years; the range is both,
+    and it is drawn from the first.
+
+- atom: gadara-hippos
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 101 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: gadara-hippos
+  polity: judaea
+  relation: independent
+  from: c. 100 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.396' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jannaeus "took Gadara, after a siege of ten months" (AJ 13.356), after
+    Ptolemy Lathyrus' war (103–101); Gadara is in the list of the Jews' cities
+    at his death (13.396). Hippos is not in that list, but Pompey took it from
+    them (AJ 14.75).
+
+- atom: strato-tower
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 104 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    In Jannaeus' first year Strato's Tower and Dora "were held by the tyrant
+    Zoilus" (AJ 13.324), who had set himself up "on occasion of the contest
+    between the kings" (13.326); when is not known, and he is not drawn.
+
+- atom: strato-tower
+  polity: judaea
+  relation: independent
+  from: { earliest: 103 BCE, latest: 96 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324–335, 13.395' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Jannaeus bought Ptolemy Lathyrus' help to "take off Zoilus the tyrant, and
+    give his country to the Jews" (AJ 13.335), c. 103–102; Strato's Tower is
+    the first city on the list of the Jews' possessions at his death (13.395).
+    When it passed is not stated; by the war on Gaza (96) at the latest.
+
+- atom: palaestina-coast
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 104 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324' }
+  confidence: uncertain
+  review: needs-check
+  note: As strato-tower; Dora was Zoilus' too.
+
+- atom: palaestina-coast
+  polity: judaea
+  relation: independent
+  from: { earliest: 103 BCE, latest: 96 BCE }
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.324, 13.335, 13.395' }
+    - { source: gitler-master-2010 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Dora with Zoilus' country; Iamnia and Azotus are on the list of the Jews'
+    cities (AJ 13.395). The atom's two pieces differ: in Jannaeus' first year
+    "of the maritime cities there remained only Ptolemais and Gaza to be
+    conquered, besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and
+    Azotus were already Jewish by 103, from a date not recorded, and the
+    southern piece is drawn too late. Ascalon, in that piece, was never
+    Hasmonean: it was free from 104/103 (its era). The atom is drawn Judaean
+    for its other towns.
+
+- atom: gaza
+  polity: seleucid
+  relation: independent
+  from: before 133 BCE
+  to: 97 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.357–364' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: gaza
+  polity: judaea
+  relation: independent
+  from: 96 BCE
+  to: 64 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.357–364, 13.395' }
+    - { source: schurer-vermes }
+  confidence: probable
+  review: draft
+  note: >-
+    Jannaeus took Raphia and Anthedon, then Gaza, "having spent a year in that
+    siege", and "utterly overthrown their city" (AJ 13.357, 13.364), 96 on the
+    usual reckoning. The atom's eastern corner holds Marisa, which Hyrcanus I
+    had taken with Idumaea (13.257); at this grain it follows Gaza.
+
+- atom: nabataea-moab
+  polity: judaea
+  relation: independent
+  from: c. 93 BCE
+  to: c. 88 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.374, 13.382' }
+    - { source: josephus-bj, locator: '1.89' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
+    made them pay tribute (AJ 13.374), after Gaza and before the civil war. In
+    that war "he was forced to deliver back to the king of Arabia the land of
+    Moab and Gilead, which he had subdued" (13.382), after Demetrius III's
+    invasion, c. 88. Unclaimed before: who held Moab is not recorded.
+
+- atom: nabataea-moab
+  polity: nabataea
+  relation: independent
+  from: c. 87 BCE
+  to: 84 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.382' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Given back to the Arabian king in the civil war (AJ 13.382), to Jannaeus'
+    recovery of it, which is not narrated.
+
+- atom: nabataea-moab
+  polity: judaea
+  relation: independent
+  from: { earliest: 83 BCE, latest: 80 BCE }
+  to: 66 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.393–397, 14.18' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Zoara and the other towns "in the country of Moab" are on the list of the
+    Jews' cities after Jannaeus' three years' war beyond the Jordan (AJ
+    13.393–397), and Hyrcanus II promised twelve of them back to Aretas III in
+    65 (14.18). When Jannaeus took Moab again is not stated; the range is that
+    war.
+
+- atom: nabataea
+  polity: nabataea
+  relation: independent
+  from: before 133 BCE
+  to: 63 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.360, 13.375, 13.387–392' }
+    - { source: josephus-bj, locator: '1.90' }
+    - { source: sullivan-1990 }
+    - { source: bowersock-1983 }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Aretas II, who promised Gaza help against Jannaeus (AJ 13.360); Obodas I,
+    who ambushed Jannaeus at a village of Gilead (AJ 13.375; "near Golan", BJ
+    1.90); the Arabian king who beat and killed Antiochus XII (AJ 13.391),
+    unnamed in the Greek (Whiston supplies Aretas) and taken by modern work for
+    Obodas; Aretas III, who held Damascus from c. 85 (13.392). Its Damascene is
+    not drawn.
+
+- atom: nabataea
+  polity: nabataea
+  relation: client
+  from: 62 BCE
+  to: after 27 BCE
+  sources:
+    - { source: josephus-aj, locator: '14.80–81' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    From Scaurus' campaign of 62, after which Aretas paid three hundred
+    talents (AJ 14.80–81).
+
+# Armenia, Sophene and the Caucasus
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: before 133 BCE
+  to: 96 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: justin, locator: '38.3, 42.2' }
+    - { source: sherwin-white-1984 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Artaxiad kingdom under Artavasdes I, against whom Mithridates II "turned
+    his arms" (Justin 42.2). The war cost Armenia its heir: Tigranes "had long
+    before been committed as a hostage to the Parthians" (Justin 38.3). Whether
+    Armenia was then Parthia's vassal is not recorded; drawn independent, with
+    that doubt. Split from the row below in September 2026 by the check.
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: 95 BCE
+  to: 67 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: justin, locator: '40.1' }
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: sherwin-white-1984 }
+  confidence: probable
+  review: draft
+  note: >-
+    Tigranes II from c. 95, sent home by the Parthians for "seventy valleys in
+    Armenia" (Strabo 11.14.15), which he took back as he grew; by the 80s he
+    was "supported by an alliance with Parthia" (Justin 40.1), not its vassal.
+    The seventy valleys are not located and not drawn. Gordyene, in this atom,
+    was a kingdom of its own until Tigranes "subjugated" it (Strabo 11.14.15),
+    under its king Zarbienus (Plut. Lucullus 21.2); that is not drawn.
+
+- atom: sophene
+  polity: sophene
+  relation: independent
+  from: before 133 BCE
+  to: 95 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The kingdom of Zariadris' line, to Artanes, whom Tigranes put down.
+
+- atom: sophene
+  polity: armenia
+  relation: independent
+  from: c. 94 BCE
+  to: 67 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes' first conquest after his accession (Sullivan); Strabo gives no
+    year.
+
+- atom: sophene
+  polity: armenia
+  relation: client
+  from: 66 BCE
+  to: 35 BCE
+  sources:
+    - { source: plutarch, locator: 'Pompey 33' }
+    - { source: cassius-dio, locator: '36.52–53' }
+    - { source: appian, locator: 'Mithr. 105' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    As armenia (the row is armenia's). In 66 Sophene was not reckoned part of
+    Tigranes' hereditary kingdom: Lucullus had "robbed him of" it (Plut.
+    Pompey 33.4), and Pompey took it from him and gave it to Tigranes' son,
+    whom he then put in chains (Dio 36.53.2–4). Appian has Sophene and
+    Gordyene then given to Ariobarzanes of Cappadocia (Mithr. 105). None of
+    this is drawn; who held Sophene after 66 wants a human decision.
+
+- atom: sophene
+  polity: armenia
+  relation: client
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–41' }
+  confidence: uncertain
+  review: needs-check
+  note: As armenia (the row is armenia's).
+
+- atom: sophene
+  polity: rome
+  relation: occupied
+  from: 34 BCE
+  to: 32 BCE
+  sources:
+    - { source: cassius-dio, locator: '49.39–40, 49.44.4' }
+  confidence: probable
+  review: draft
+  note: As armenia (the row is armenia's).
+
+- atom: sophene
+  polity: armenia
+  relation: independent
+  from: 31 BCE
+  to: after 27 BCE
+  sources:
+    - { source: tacitus-ann, locator: '2.3' }
+    - { source: cassius-dio, locator: '51.16.2' }
+  confidence: probable
+  review: draft
+  note: As armenia (the row is armenia's).
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+    - { source: schottky-1989 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    A vassal kingdom throughout: of Parthia, then of Tigranes, then of Parthia
+    again (relations.yaml). One row for each master.
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: 85 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 31.7' }
+    - { source: cassius-dio, locator: '36.14.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15);
+    the Atropateni fought for him in 68 (Plut. Lucullus 31.7).
+
+- atom: atropatene
+  polity: atropatene
+  relation: client
+  from: 65 BCE
+  to: 36 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+  confidence: uncertain
+  review: needs-check
+
+- atom: iberia-caucasia
+  polity: iberia-caucasia
+  relation: independent
+  from: before 133 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54, 37.1' }
+    - { source: strabo, locator: '11.3.1–6' }
+  confidence: probable
+  review: draft
+
+- atom: albania
+  polity: albania
+  relation: independent
+  from: before 133 BCE
+  to: 66 BCE
+  sources:
+    - { source: cassius-dio, locator: '36.54' }
+    - { source: strabo, locator: '11.4.1–2' }
+  confidence: probable
+  review: draft
+
+- atom: colchis
+  polity: pontus-regnum
+  relation: allied
+  from: { earliest: 113 BCE, latest: 90 BCE }
+  to: 90 BCE
+  sources:
+    - { source: strabo, locator: '12.3.28, 11.2.18' }
+    - { source: appian, locator: 'Mithr. 15' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Mithridates "established himself as master, not only of Colchis, but also"
+    of Lesser Armenia (Strabo 12.3.28); dated with Lesser Armenia
+    (armenia-minor), between his sole rule and the war with Rome, when the
+    relation is Pontus' alliance with Rome. Before, under its own kings, "the
+    country being divided into 'sceptuchies'" (11.2.18), it is unclaimed; once
+    it was his, Mithridates "would always send one of his friends as
+    sub-governor or administrator of the country" (11.2.18).
+
+- atom: colchis
+  polity: pontus-regnum
+  relation: independent
+  from: 89 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 64, 101' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Colchians rose c. 84–83 and asked for Mithridates' son as their king,
+    whom the king then put to death (App. Mithr. 64); a revolt, not drawn.
+
+- atom: parthia
+  polity: parthia
+  relation: independent
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: justin, locator: '38.10, 42.1–42.4' }
+    - { source: debevoise-1938 }
+    - { source: sherwin-white-1984 }
+  confidence: certain
+  review: draft
+  note: >-
+    Not drawn inside the atom: Antiochus VII's recovery of Babylonia in 130–129,
+    when "nothing was left to the Parthians but their own country" (Justin
+    38.10), Characene's independence under Hyspaosines, and
+    Tigranes' conquest of northern Mesopotamia and Adiabene (Strabo 11.14.15),
+    none of which has a line the sources give at this grain.

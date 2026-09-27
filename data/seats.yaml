@@ -8,14 +8,58 @@
 # ancient geographers and the scholarship (atoms.yaml), and their seats are
 # gone. Osroene stays a seat: its extent east of the Euphrates is not known.
 #
-# Each row cites its polity's source and spans the whole 68–27 BCE window,
-# hence the open ends. The seat's position is its place's (places.yaml), which
-# is Pleiades'.
+# Each row cites its polity's source and runs for its polity's years; an open
+# end is where the 133–27 BCE window cuts it off. Aristonicus (133–130) and the
+# slave kings of Sicily were added for the extension to 133. The seat's position is its place's
+# (places.yaml), which is Pleiades'.
 
 - polity: osroene
   place: edessa
-  from: before 68 BCE
+  from: c. 132 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: chronicle-edessa, locator: 'year 180' }
   confidence: certain
   review: draft
+
+- polity: aristonicus
+  place: stratonicea-caici
+  from: 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: eutropius, locator: '4.20' }
+    - { source: orosius, locator: '5.10.1–5' }
+    - { source: strabo, locator: '14.1.38' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aristonicus held towns and fortresses (Leucae, Thyateira, Apollonis;
+    Myndus, Samos and Colophon), not a territory anyone could draw, and had no
+    known capital. The seat is Stratonicea on the Caicus, where he made his
+    last stand: "on the upper Caicus Aristonicus had had his stronghold"
+    (Kallet-Marx 1995, 114).
+
+- polity: sicily-eunus
+  place: enna
+  from: before 133 BCE
+  to: 133 BCE
+  sources:
+    - { source: diodorus, locator: '34/35.2.10–24' }
+    - { source: strabo, locator: '6.2.6' }
+  confidence: certain
+  review: draft
+  note: Eunus' city from the rising of c. 135 until Rupilius took it in 132.
+
+- polity: sicily-tryphon
+  place: triocala
+  from: { earliest: 104 BCE, latest: 103 BCE }
+  to: 101 BCE
+  sources:
+    - { source: diodorus, locator: '36.7.2–4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Tryphon's royal city, walled and given a palace and a market place
+    (Diodorus 36.7.3); the site is Pleiades' doubtful identification.

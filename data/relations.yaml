@@ -5,21 +5,49 @@
 #
 # Province rows run from the province's creation. A client row runs from when
 # the standing began where that is known, and otherwise across the whole
-# 68–27 window.
+# 133–27 window.
 
 # --- citizen territory and provinces -------------------------------------------
 
 - polity: italia
   type: citizen-territory-of
   of: rome
-  from: { earliest: 90 BCE, latest: 89 BCE }
+  from: 90 BCE
   to: after 27 BCE
   sources:
     - { source: appian, locator: 'BC 1.49' }
+    - { source: cicero-balb, locator: '21' }
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
-  note: lex Julia 90, lex Plautia Papiria 89.
+  note: lex Iulia 90, lex Plautia Papiria 89; from 90, with its polity.
+
+- polity: ager-romanus
+  type: citizen-territory-of
+  of: rome
+  from: before 133 BCE
+  to: 91 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+  confidence: certain
+  review: draft
+
+- polity: socii
+  type: subject-of
+  of: rome
+  from: before 133 BCE
+  to: 82 BCE
+  sources:
+    - { source: beloch-1880, locator: 'ch. X, pp. 201–215' }
+    - { source: appian, locator: 'BC 1.39' }
+  confidence: certain
+  review: draft
+  note: >-
+    The allies were bound to Rome by treaty, sovereign at home but without
+    the right of war and peace, which was Rome's, and owed troops by the list
+    of the togati (Beloch pp. 201–215). Subject rather than allied, so the map
+    draws them as a washed shade of Rome, the way the atlases draw Roman Italy
+    before the Social War, and not as a dozen independent powers.
 
 - polity: sicilia
   type: province-of
@@ -78,11 +106,12 @@
 - polity: asia
   type: province-of
   of: rome
-  from: 129 BCE
+  from: 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
-  confidence: certain
-  review: draft
+  sources: [{ source: broughton-mrr }, { source: strabo, locator: '13.4.2' }]
+  confidence: probable
+  review: needs-check
+  note: From Attalus' bequest (133); organised by Aquillius from 129 (polities.yaml).
 
 - polity: gallia-transalpina
   type: province-of
@@ -96,11 +125,15 @@
 - polity: cilicia
   type: province-of
   of: rome
-  from: 80 BCE
+  from: { earliest: 102 BCE, latest: 100 BCE }
   to: { earliest: 44 BCE, latest: 43 BCE }
-  sources: [{ source: cah-ix, locator: ch. 8 }, { source: broughton-mrr, locator: vol. II }]
+  sources:
+    - { source: cah-ix, locator: ch. 8 }
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: sumner-1978 }
   confidence: probable
-  review: draft
+  review: needs-check
+  note: From Antonius' command of 102 and the law of 101/100 (polities.yaml).
 
 - polity: gallia-cisalpina
   type: province-of
@@ -196,49 +229,144 @@
 - polity: numidia
   type: client-of
   of: rome
-  from: before 68 BCE
-  to: 47 BCE
-  sources: [{ source: braund-1984 }]
+  from: before 133 BCE
+  to: 112 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '5.4–5, 16, 21.4' }
   confidence: probable
   review: draft
+  note: >-
+    The heirs of Masinissa, who "was ever our true and loyal friend" (Sall.
+    Jug. 5.5); the
+    senate divided the kingdom between Micipsa's heirs (Jug. 16) and ordered
+    Jugurtha and Adherbal to lay down their arms (21.4). Broken by Jugurtha's
+    taking of Cirta in 112; Rome declared war in 111.
+
+- polity: numidia
+  type: client-of
+  of: rome
+  from: 105 BCE
+  to: 47 BCE
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '65.2–3' }
+    - { source: plutarch, locator: 'Pompey 12.4' }
+  confidence: probable
+  review: draft
+  note: >-
+    Gauda, promised Numidia by Marius (Sall. Jug. 65.3), king from Jugurtha's
+    surrender; Hiempsal II owed his throne to Pompey in 81 (Plut. Pompey 12.4).
+    In 111–106 the kingdom was at war with Rome and is drawn independent.
+
+- polity: numidia-jugurtha
+  type: client-of
+  of: rome
+  from: c. 116 BCE
+  to: 113 BCE
+  sources: [{ source: sallust-jug, locator: '16, 20.5' }]
+  confidence: probable
+  review: needs-check
+  note: >-
+    Jugurtha's kingdom by the senate's own division (Sall. Jug. 16); Adherbal
+    still put "more trust in the friendship of the Roman people" (20.5).
 
 - polity: mauretania
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 105 BCE
   to: 34 BCE
-  sources: [{ source: braund-1984 }]
+  sources:
+    - { source: braund-1984 }
+    - { source: sallust-jug, locator: '19.7, 80.4, 111.1' }
+    - { source: bridoux-2020, locator: '¶80' }
   confidence: probable
   review: needs-check
-  note: Two kings from about 49; see the polity.
+  note: >-
+    From Bocchus I's surrender of Jugurtha in 105, for which he was promised
+    "friendship, alliance, and the part of Numidia which he now desired" (Sall.
+    Jug. 111.1); Bridoux calls him Sulla's client from then (¶80). Before, the
+    kingdom was unknown to Rome (Jug. 19.7), its request for a treaty early in
+    the war refused (80.4), and in 106 it fought Marius; it is drawn
+    independent. Two kings from about 49; see the polity.
 
 - polity: aegyptus
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 59 BCE
   to: 31 BCE
   sources:
     - { source: braund-1984 }
+    - { source: cassius-dio, locator: '39.12.1' }
+    - { source: caesar-bc, locator: '3.107' }
+    - { source: suetonius-iul, locator: '54.3' }
   confidence: probable
   review: needs-check
   note: >-
-    Drawn as a client for the whole window, but client standing is better dated
-    from 59 (Auletes recognised as friend and ally) or 55 (the Gabinian
-    garrison), and before that Egypt was formally independent. The start
-    probably wants to be 59 or 55 with the years before as `independent`; not
-    yet changed, because it needs a decision between the two.
+    From 59, when Caesar's law and a decree of the senate made Ptolemy XII a
+    friend and ally (Caes. BC 3.107; Dio 39.12.1; Suet. Iul. 54.3). Before it
+    Egypt was an independent kingdom on friendly terms with Rome, and is drawn
+    independent (decided September 2026, over 55, the Gabinian garrison: the
+    formal recognition is the change of standing, the garrison a consequence
+    of it). Until 2026 this row ran across the whole of 68–27.
 
 - polity: nabataea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 62 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: josephus-aj, locator: '14.80–81' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Migration review: Scaurus campaigned against Aretas III in 62;
-    what standing followed wants confirming.
+    From Scaurus' campaign against Aretas III in 62, which ended with a payment
+    of three hundred talents (AJ 14.80–81); what standing followed wants
+    confirming. Independent before (claims.yaml).
+
+- polity: bosporus
+  type: client-of
+  of: pontus-regnum
+  from: c. 80 BCE
+  to: 71 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 67' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares, set over the Bosporus by his father c. 80 (App. Mithr. 67),
+    until he went over to Lucullus. Added for the extension to 133 BCE.
+
+- polity: bosporus
+  type: client-of
+  of: rome
+  from: 70 BCE
+  to: 66 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: plutarch, locator: 'Lucullus 24.1' }
+    - { source: livy-per, locator: '98' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Machares "received the title of friend from Lucius Lucullus" (Livy Per.
+    98), until his father came to the Bosporus in 65. Added for the extension
+    to 133 BCE.
+
+- polity: scythia-minor
+  type: client-of
+  of: pontus-regnum
+  from: c. 110 BCE
+  to: 64 BCE
+  sources:
+    - { source: diophantus-decree }
+    - { source: strabo, locator: '7.4.3' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Subject to Mithridates after Diophantus' wars; how long is not recorded
+    (see the claim). Added for the extension to 133 BCE.
 
 - polity: bosporus
   type: client-of
@@ -257,16 +385,33 @@
 - polity: thracia-odrysae
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: c. 80 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cicero-verr, locator: '2.1.63' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    From the first sign of a friendly Thracian king, Sadala, c. 80 (Cic. Verr.
+    2.1.63); before 68 until the extension to 133 BCE. See the claim.
 
 - polity: galatia
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
+  to: 64 BCE
+  sources: [{ source: appian, locator: 'Mithr. 17, 75' }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The tetrarchs' standing before Pompey is not stated; they fought on Rome's
+    side in 89 and in the 70s.
+
+- polity: galatia
+  type: client-of
+  of: rome
+  from: 63 BCE
   to: after 27 BCE
   sources: [{ source: cicero-deiotaro }]
   confidence: probable
@@ -275,7 +420,7 @@
 - polity: cappadocia
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
   confidence: probable
@@ -284,11 +429,14 @@
 - polity: commagene
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: appian, locator: 'Mithr. 106, 114' }
   confidence: probable
   review: draft
+  note: From Pompey's war with Antiochus I and the friendship that ended it.
 
 - polity: judaea
   type: client-of
@@ -307,16 +455,19 @@
 - polity: ituraea
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 63 BCE
   to: 37 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: josephus-aj, locator: '14.39' }
   confidence: uncertain
   review: needs-check
+  note: From Ptolemy's submission to Pompey in 63.
 
 - polity: emesa
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: 31 BCE
   sources: [{ source: sullivan-1990 }]
   confidence: uncertain
@@ -325,13 +476,17 @@
 - polity: osroene
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: after 43 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: cassius-dio, locator: '40.20.1' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Left open at 43 on purpose (September 2026): nothing attests Osroene's
+    From Pompey's settlement (Afranius crossed northern Mesopotamia in 65–64):
+    Dio has Abgar in treaty with Rome "in the time of Pompey" (40.20.1), and no
+    earlier tie is recorded. Left open at 43 on purpose (September 2026): nothing attests Osroene's
     standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
     served Parthia against Crassus in 53; geography points to a Parthian
     vassal, but no text says so for these years.
@@ -339,18 +494,23 @@
 - polity: amanus
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: 64 BCE
   to: 31 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - { source: sullivan-1990 }
+    - { source: strabo, locator: '14.5.18' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Made king by the Romans (Strabo 14.5.18); dated from Pompey's settlement,
+    which no text states.
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
 - polity: lycia
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: mitchell-2005 }]
   confidence: certain
@@ -359,7 +519,7 @@
 - polity: rhodus
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: fraser-bean-1954 }]
   confidence: certain
@@ -368,12 +528,18 @@
 - polity: massalia
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: strabo, locator: '4.1.5' }]
+  sources:
+    - { source: strabo, locator: '4.1.5' }
+    - { source: livy-per, locator: '47, 60' }
   confidence: certain
   review: draft
-  note: Its territory is the Province's from 49 (claims.yaml).
+  note: >-
+    An ally long before 133: Rome fought the Ligurians beyond the Alps at its
+    request in 154 (Livy Per. 47) and again, against the Salluvii, in 125 (Per.
+    60). Its territory is the Province's from
+    49 (claims.yaml).
 
 - polity: paphlagonia
   type: client-of
@@ -404,13 +570,28 @@
 
 - polity: numidia-masinissa
   type: client-of
+  of: rome
+  from: c. 88 BCE
+  to: 82 BCE
+  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Masteabar, Gauda's son, a king beside his brother Hiempsal II, not his
+    vassal; his standing to Rome is taken to be his father's, which nothing
+    records directly.
+
+- polity: numidia-masinissa
+  type: client-of
   of: numidia
-  from: before 68 BCE
+  from: 81 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶155' }]
+  sources: [{ source: bridoux-2020, locator: '¶154–155, ¶161' }]
   confidence: probable
   review: draft
-  note: A vassal of the eastern Numidian kings (Bridoux).
+  note: >-
+    A vassal of the eastern Numidian kings (Bridoux), from Masinissa II, who is
+    first found in 81.
 
 - polity: sittiani
   type: client-of
@@ -424,9 +605,11 @@
 - polity: pontic-cities
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: 71 BCE
   to: 56 BCE
-  sources: [{ source: eutropius, locator: '6.10' }]
+  sources:
+    - { source: eutropius, locator: '6.10' }
+    - { source: appian, locator: 'Ill. 30' }
   confidence: probable
   review: needs-check
   note: From M. Lucullus' campaign of 72/71 until Burebista.
@@ -434,20 +617,47 @@
 - polity: noricum
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: 113 BCE
   to: after 27 BCE
-  sources: [{ source: caesar-bc, locator: '1.18' }]
+  sources:
+    - { source: caesar-bc, locator: '1.18' }
+    - { source: appian, locator: 'Celt. 13' }
   confidence: probable
   review: needs-check
+  note: >-
+    "Foreign friends of the Romans" in 113 (App. Celt. 13), its first
+    attestation; before 68 until the extension to 133 BCE.
 
 - polity: aedui
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: 122 BCE
   to: 52 BCE
-  sources: [{ source: caesar-bg, locator: '1.33' }]
-  confidence: certain
-  review: draft
+  sources:
+    - { source: caesar-bg, locator: '1.33' }
+    - { source: livy-per, locator: '61' }
+    - { source: strabo, locator: '4.3.2' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    From its first attestation, in 122, when the Allobroges ravaged the land of
+    "the Aedui, an ally of the Roman people" (Livy Per. 61). Strabo calls them
+    the first in Gaul to seek Rome's friendship (4.3.2), so it may be older;
+    the ground moves at the attestation (decision 19).
+
+- polity: tectosages
+  type: allied-to
+  of: rome
+  from: { earliest: 121 BCE, latest: 118 BCE }
+  to: 107 BCE
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tolosa "had formerly been in alliance with the Romans" and kept a Roman
+    garrison until it revolted (Dio fr. 90); when the alliance began is not
+    recorded (claims.yaml).
 
 - polity: helvetii
   type: allied-to
@@ -499,11 +709,14 @@
 - polity: atropatene
   type: client-of
   of: parthia
-  from: before 68 BCE
+  from: 65 BCE
   to: 36 BCE
   sources: [{ source: strabo, locator: '11.13.1–2' }]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Back under Parthia once Tigranes had submitted to Pompey (66); when is not
+    recorded. The rows before are in the extension to 133.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 
@@ -557,6 +770,20 @@
   confidence: certain
   review: draft
   note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
+
+- polity: cyrenaica-free
+  type: allied-to
+  of: rome
+  from: 96 BCE
+  to: 75 BCE
+  sources:
+    - { source: livy-per, locator: '70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Free by the senate's decree on Apion's bequest (Livy Per. 70): Rome's by
+    inheritance, their own in government. "Allied" is the nearest standing the
+    data has for free cities under Rome with no governor; no treaty is recorded.
 
 - polity: cyrenaica-selene
   type: client-of
@@ -694,3 +921,100 @@
     - { source: cassius-dio, locator: '49.44.4' }
   confidence: uncertain
   review: needs-check
+
+# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+
+- polity: bithynia-regnum
+  type: client-of
+  of: rome
+  from: before 133 BCE
+  to: 75 BCE
+  sources:
+    - { source: strabo, locator: '14.1.38' }
+    - { source: appian, locator: 'Mithr. 10–11, 60, 71' }
+  confidence: certain
+  review: draft
+  note: >-
+    A friend of Rome: Nicomedes II sent help against Aristonicus (Strabo
+    14.1.38), and Rome twice restored Nicomedes IV, who left it his kingdom.
+
+- polity: pontus-regnum
+  type: allied-to
+  of: rome
+  from: before 133 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
+    - { source: justin, locator: '37.1, 38.5' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Mithridates V fought for Rome against Aristonicus and was rewarded with
+    Greater Phrygia (Justin 37.1); his son was still formally a friend and ally
+    of Rome until the war of 89 (App. Mithr. 10–13, 56–57).
+
+# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
+
+- polity: judaea
+  type: client-of
+  of: seleucid
+  from: before 133 BCE
+  to: 130 BCE
+  sources:
+    - { source: josephus-aj, locator: '13.236–248, 13.273' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Hyrcanus I paid tribute and gave hostages to Antiochus VII after the siege
+    of Jerusalem, and marched with him to the east; free on the king's death in
+    129 (AJ 13.273).
+
+- polity: atropatene
+  type: client-of
+  of: parthia
+  from: before 133 BCE
+  to: 86 BCE
+  sources:
+    - { source: strabo, locator: '11.13.1–2' }
+    - { source: schottky-1989 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Under the Arsacids since their conquest of Media (c. 148); Parthian
+    overlordship of Atropatene in these years is inferred, not attested.
+
+- polity: atropatene
+  type: client-of
+  of: armenia
+  from: 85 BCE
+  to: 66 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 27.6, 31.7' }
+    - { source: cassius-dio, locator: '36.14.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Tigranes "subjugated to himself the rulers of Atropene and Gordyaea"
+    (Strabo 11.14.15), in the war with Parthia after Mithridates II's death
+    (c. 87–85; Strabo gives no year). The king of the Medes held Tigranes'
+    right wing at Tigranocerta in 69 (Plut. Lucullus 27.6), the Atropateni
+    fought for him at the Arsanias in 68 (31.7), and "Mithridates from Media,
+    the son-in-law of Tigranes" fell on Lucullus' men in 67 (Dio 36.14.2). To
+    Tigranes' submission in 66.
+
+- polity: armenia
+  type: allied-to
+  of: pontus-regnum
+  from: { earliest: 95 BCE, latest: 93 BCE }
+  to: 67 BCE
+  sources:
+    - { source: justin, locator: '38.3' }
+    - { source: appian, locator: 'Mithr. 15, 78, 84–87' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Tigranes married Mithridates' daughter Cleopatra, and the two kings agreed
+    that Mithridates should have the cities and land and Tigranes the people
+    and movables (Justin 38.3); he sheltered his father-in-law from 71 and
+    fought Lucullus for him. Ends with Tigranes' surrender to Pompey (66).

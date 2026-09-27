@@ -87,7 +87,7 @@ export function TimelinePanel({
     >
       <div
         className="overflow-hidden transition-[width,opacity] duration-300 ease-out"
-        style={{ width: open ? SCALE_WIDTH : 0, opacity: open ? 1 : 0 }}
+        style={{ width: open ? scaleWidth(first, last) : 0, opacity: open ? 1 : 0 }}
         aria-hidden={!open}
       >
         {open && <Scale year={year} first={first} last={last} onYear={onYear} />}
@@ -121,7 +121,14 @@ export function TimelinePanel({
   )
 }
 
-const SCALE_WIDTH = 300
+/**
+ * The ruler grows with the window, 4.2 px a year, between 300 px (68–27 BCE fitted it)
+ * and 460, so a longer window stays legible without taking the corner.
+ */
+const scaleWidth = (first: number, last: number) =>
+  Math.round(Math.min(460, Math.max(300, (last - first) * 4.2)))
+/** The narrowest gap, in px, a number on the ruler keeps from its neighbour. */
+const LABEL_GAP = 22
 /** The index is the sea names' gold (labels/LabelLayer.ts), apart from the cream rule. */
 const INDEX = 'var(--gold)'
 /** Where the rule runs, from the top of the scale. */
@@ -135,13 +142,18 @@ function Scale(props: {
 }) {
   const { year, first, last, onYear } = props
   const at = (y: number) => `${((y - first) / (last - first)) * 100}%`
-  // A fine tick every year, a longer one every five; those and the window's ends are
-  // numbered.
+  // A fine tick every year, a longer one every five. The window's ends are numbered,
+  // and the fives between them, or only the tens when fives would crowd; a round number
+  // too close to an end gives way to it.
+  const perYear = (scaleWidth(first, last) - 28) / (last - first)
+  const every = perYear * 5 >= LABEL_GAP ? 5 : 10
   const ticks: { year: number; bce: number; major: boolean; label: boolean }[] = []
   for (let y = first; y <= last; y++) {
     const bce = 1 - y
     const major = bce % 5 === 0
-    ticks.push({ year: y, bce, major, label: major || y === first || y === last })
+    const end = y === first || y === last
+    const clear = Math.min(y - first, last - y) * perYear >= LABEL_GAP
+    ticks.push({ year: y, bce, major, label: end || (bce % every === 0 && clear) })
   }
   // ← → belong to the page-wide handler, which knows shift means five years; stop the
   // slider stepping too when it has focus.

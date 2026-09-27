@@ -16,14 +16,15 @@ The user signs off on the batch. Each fix moves the record from
 
 The reasoning is in each record's `note`.
 
-- **Egypt is a client from 68.** Client standing is better dated from 59 or 55.
+- *Fixed September 2026:* Egypt is independent, a friend of Rome, to 60 and a
+  client from 59, when Ptolemy XII was recognised friend and ally.
 - *Fixed September 2026:* Cyprus now leaves Cilicia in 48 and is Ptolemaic
   from 47 (Dio 42.35); Judaea is a client from 63 and independent before;
   Galatia's and Emesa's seats are gone, because both are now drawn as
   territory.
-- **"Royal seat" status is wrong in two places:**
-  - Nicomedia: Bithynia was a province throughout.
-  - Bibracte: the Aedui had no king.
+- *Fixed September 2026:* Nicomedia is the royal seat of the Nicomedes to 75
+  and has no seat status after; Bibracte's royal seat is gone (the Aedui had no
+  king), and the oppidum dates from {120–100}.
 - *Fixed September 2026:* Cirta's royal seat ends in 47; Arelate is a colony
   from 46; Cicero's Cilicia ends in 44/43; the Cisalpina claim ends in 43 with
   its polity; the Parthian occupation of Syria in 40 is in the data; Noricum's
@@ -40,10 +41,11 @@ The reasoning is in each record's `note`.
 
 ## Before extending the window further
 
-The window's edges are written `before 68 BCE` / `after 27 BCE`. Extending it
+The window's edges are written `before 133 BCE` / `after 27 BCE`. Extending it
 means replacing each open end with a real date, which re-opens every record
 above. The extension from 43 to 27 did this for every open end but one
-(Osroene's relation, left open on purpose).
+(Osroene's relation, left open on purpose), and the extension back from 68 to
+133 for every one but the Kushite row on Lower Nubia.
 
 ## The extension to 27 BCE (September 2026)
 
@@ -248,6 +250,227 @@ same `npm run atoms:preview -w pipeline`. What wants a reader's eye:
   and Derbe as independent.
 - **Pharnaces' occupation of 48–47** covers Pontus, Lesser Armenia and
   Deiotarus' Pontic lands; the part of Cappadocia he overran is not drawn.
+
+## The extension to 133 BCE (September 2026)
+
+How it was done: six research agents, one per region, read the ancient texts
+and the open scholarship for 133–68 and wrote the records; a second set checked
+every citation against the text, adversarially, and corrected what failed
+before the regions were merged. Modern works that could not be opened are cited
+without pages, and their claims rest on the ancient passages cited beside them.
+Every new row is `draft` or `needs-check`. What the checks left open:
+
+**Italy and the islands**
+- *How Italy is split before the Social War* (README decision 22). The frontier
+  between the citizen land and the allies is a zone, drawn as a line: it follows
+  Beloch's inferences from colonies, prefectures and the later voting tribes
+  (1880, ch. III). Beloch puts Tarquinii, Vulci and Falerii in the Roman land to
+  the Umbro and Monte Amiata (others keep Tarquinii and Vulci allied), and the
+  strip along the Via Flaminia past Asisium. The Frentani and Caraceni, the
+  Samnite, Hirpine and Apulian lines, and the Laus–Crathis frontier are
+  conventions. All eleven new atoms (ten from Italy, Cispadana from Cisalpina) are schematic, uncertain and needs-check.
+- *The allies are one polity*, `socii`, not a dozen peoples: Rome's treaties were
+  with some 150 communities (Beloch ch. VIII), and no source draws the peoples'
+  frontiers. "SOCII" is therefore lettered once, on the largest piece.
+- *Enclaves not drawn*: the Latin colonies (a place status, `colonia latina`),
+  Tibur and Praeneste, Neapolis and Capri, Ancona, Teanum Sidicinum, Camerinum,
+  Ravenna; Nola, which held out until 80 (Per. 89); Volaterrae (to c. 80 or 79).
+- *The dates of the Social War*: Etruria, the heel and the toe enfranchised in 90;
+  the Marsic peoples, Asculum, the Nucerine cities and the Hirpini in 89 (the
+  Marsi may have held into 88); Apulia in 88; Samnium and Lucania in 87 (App. BC
+  1.68, Per. 80), though Gabinius took many Lucanian towns in 89. The Samnites at
+  the Colline Gate in 82 are not drawn. Beloch has most of Tiber-valley Umbria
+  (Tuder, Iguvium, Arna, Ameria) join the rising in 90–89 (Per. 74); it is drawn
+  loyal, as no source dates its submission. Calabria is drawn loyal because no
+  source puts it in the revolt; Bruttium is drawn allied though much of it was
+  Roman public land.
+- *Cisalpina*: Cispadana is drawn as citizen land before 91, a mixture drawn as
+  its larger part, which sweeps in allied Faesulae, the Veleiates and Sarsina;
+  Beloch (p. 67) has most of the Ligurian plain west of the Trebia already Roman,
+  though it is drawn allied inside cisalpina. Transpadana has Latin rights from 89
+  (Asconius, Pis. 3 C) and is allied to 82. The province of c. 81 is disputed
+  (the 90s, 89).
+- *The Sicilian slave kingdoms* are seats (Enna, Triocala), since nothing records
+  how far their power reached inside a province Rome still governed; the Triocala
+  site is Pleiades' doubtful identification. Spartacus (73–71) is not drawn.
+- *Places*: Mariana's founding ({103–86}) and Pompeii's colony (c. 80) are not
+  dated by any source; Tarentum's municipium from 90 rests on App. BC 1.49, and
+  when Neptunia was joined to the city is Beloch's "Sulla or Augustus";
+  Hydruntum's status rests on a general page of Beloch (p. 175). Víteliú on the
+  insurgents' coins is not cited from a coin catalogue.
+- *Not drawn*: the civil war of 88–82 and any Sullan command in Italy; the
+  Cimbri in Transpadana (102–101).
+
+**The West**
+- *The Province's date.* Transalpina is drawn from 121 by convention; the regular
+  province is now often put down to Marius in the Cimbric wars or to Pompey in
+  the 70s (Amela Valverde 2019, 39), and Ebel (1976, not read) has the ground west
+  of the Rhône governed from Hither Spain until then. The Salluvian country,
+  beaten in 124–122 and garrisoned at Aquae Sextiae, is not drawn apart. Before
+  121 the land is unclaimed but for Massalia: the Arvernian hegemony (Strabo
+  4.2.3) has no extent anyone can draw. Rome's first war beyond the Alps was
+  Opimius' for Massalia in 154 (Per. 47).
+- *The Tolosates' alliance* is undated and drawn from {121–118}; their revolt of
+  107 sits inside it; Caepio's sack is drawn in his consulship, 106 (Orosius'
+  "proconsul" would make it 105).
+- *The Ruteni provinciales* are inside the Province from 121, though BG 1.45
+  says they were not made provincial then; the 70s are argued (Amela 24, 28).
+- *Sertorius* (a `command`, README decision 18) is drawn over Hither Spain and
+  the Arevaci from c. 77 (Plut. Sert. 16.1) to 73, uncertain: the coast towns
+  stayed with the government (Pompey's letter, Sall. Hist. 2.98 M), and Strabo has
+  him driven from Celtiberia before his death. His years in Lusitania and Further
+  Spain (80–78) draw no ground; his death is 73 or 72.
+- *Lusitania between the Tagus and the Durius* stays unclaimed in 133–61,
+  despite Brutus' surrender of 138–136 and its ten commissioners (App. Hisp. 99).
+- *The Aedui 133–123* are independent, uncertain: their alliance is first
+  attested in 122 (Per. 61), though Strabo 4.3.2 suggests it is older.
+- *Not drawn*: the Cimbri and Teutones (109–102), who crossed the land without
+  holding it; Pompey's grants of Volcan and Helvian land to Massalia (BC 1.35);
+  Pompey's trophy at the Col de Panissars (no place kind fits a monument).
+- *The Gallic oppida* start before 133 only on Pleiades' period attestation;
+  Bibracte ({120–100}) and Gergovia ({70–60}) show how wrong that can be.
+
+**Africa and Egypt**
+- *The division of c. 116* (Bridoux has c. 117): Adherbal's western limit is
+  unknown (Bridoux ¶141), so the three atoms between the Ampsaga and the Chelif
+  are unclaimed in c. 116–113.
+- *The Jugurthine War* is the kingdom's independence, 111–106; the Roman
+  garrisons (Vaga, Thala, Cirta) and Capsa's destruction are not drawn.
+- *Bocchus I's gain of 105* is taken to Cap Ténès (Gsell; Bridoux ¶75, ¶145);
+  Desanges carried it at least to the mouth of the Chelif; Sallust's "a third of
+  Numidia" is a promise.
+- *Mauretania to the Soummam* from c. 80 rests on Desanges and Bridoux ¶97,
+  ¶102, and could be as late as the 50s; unclaimed c. 88–81. Masteabar's standing
+  to Rome (c. 88–82) is inferred from his father's.
+- *Not drawn*: Hiarbas (82/81), the Marian hold on Africa in 82–81, Sertorius
+  at Tingi in 81, Iunonia (122–121), Marius' Gaetulian settlements.
+- *Cyrenaica*: the crown's to 108/107, a king of Cyrene by 101/100 (Justin puts
+  Apion's accession at 116); 107–106 is unclaimed. The free cities of 96–75 are
+  drawn `allied` for want of a closer standing; Sallust's quaestor "to the new
+  province" (Hist. 2.43 M) falls in 75, against the province's c. 74.
+- *Egypt a client from 59*, at the recognition, not the garrison of 55; its
+  civil wars and the Theban revolt of c. 88–86 are not drawn.
+- *Cyprus*: Ptolemy X's kingdom from 114/113 and Ptolemy IX's from 105 rest on
+  Bennett's reading of Mitford and Mørkholm; Bennett doubts the usual view that
+  Ptolemy X went first as its general; Ptolemy of Cyprus from 80 is inferred
+  from Trogus' Prologue 40.
+- *Lower Nubia* keeps its `before 68 BCE` open end on purpose: Eller (2025) has
+  Ptolemy VI re-establish control to the Second Cataract and the first century
+  "difficult to determine", and questions the Kushite row even for 68–30.
+- *Unread*: the law of 101/100 (Crawford, Roman Statutes 12), SEG IX 5, OGIS 166,
+  known only through Bennett; Braund 1984 and Török 1997.
+
+**The Balkans and the Black Sea**
+- *The Caenic land.* Pliny puts Caenica inland near Bizye and Apros (4.47),
+  beyond the drawn Chersonese; the Knidos copy's "which Didius took" may govern
+  only the Caenic land. The Chersonese was the Attalids' in 133 and Rome's hold on
+  it before c. 100 is unrecorded, so it is unclaimed. Sumner dates the law late
+  100 or early 99.
+- *Mithridates in Greece*: Achaea occupied 88–86, to the Delium terms of winter
+  86/85, when Archelaus withdrew his garrisons (Mithr. 55); Macedonia and the
+  Chersonese only 87 (Arcathias' army came down to Thermopylae in 86). Sentius and
+  the Denseletae held out. Sparta keeps its free status through 88–86 though it
+  sided with Mithridates (Mithr. 29); Athens under Aristion has none.
+- *The Crimean Scythians* are Pontus' client from c. 110 to 64, on the decree
+  and Strabo 7.4.3, and Appian's "princes of the Scythian tribes" among the king's
+  allies at the end (Mithr. 119); in 70–66, while the king was a refugee, this is
+  doubtful. The old data had them independent in 68–64.
+- *Chersonesus* is Mithridates' c. 110–81, under the Bosporus in c. 80–66
+  (Strabo 7.4.3), and his again in 65–64.
+- *The Bosporus*: c. 110–107 for the decree is the usual reckoning, the stone
+  being dated only by a local eponym; when its peoples revolted is not recorded,
+  so the Pontic row ends in 86. Machares' friendship with Rome is dated 70. The
+  Maeotic shore under the Spartocids is unclaimed, though Plutarch's "ancient
+  realm as far as the deserts beyond Lake Maeotis" cuts against that.
+- *A Pontic protectorate over the west Pontic cities* before 72 is argued in the
+  scholarship but not drawn: Mithr. 15's "Greeks bordering on the Euxine" is too
+  vague to draw from.
+- *Thrace before c. 80 and Noricum before 113* are unclaimed: those years are
+  first attestations (Verr. 2.1.63; App. Celt. 13), not beginnings.
+- *Not drawn*: the Illyrian coast before 59 ("Roman Illyria", App. Ill. 10–11,
+  with no governor recorded); Tuditanus' Iapydes (129) and Metellus' Segestani
+  (119); the Scordisci's raids to Delphi; Curio's and M. Lucullus' wars; Getic
+  Dacia before Burebista.
+
+**Anatolia**
+- *Asia from 133.* Strabo has the province proclaimed at the bequest (13.4.2);
+  129 is the usual date for its organisation, and at first the tribute-paying
+  ground was "a patchwork … chiefly in Mysia and Lydia" (Kallet-Marx 112–115).
+  The whole atom is drawn from 133 as a convention.
+- *Aristonicus* is a seat at Stratonicea on the Caicus, not an occupation: he held
+  towns and forts, not a territory. Coarelli argues for the Carian Stratonicea.
+- *Greater Phrygia*: Aquillius' grant to Pontus may fall anywhere in 129–126, and
+  its return to Asia is drawn {119–116}, uncertain; Kallet-Marx (240–242) has it
+  freed, not annexed, and taken in only after c. 95.
+- *Lycaonia's* return to Asia is placed at the law of 101/100 and its passage to
+  Cilicia at Servilius' Isaurian war (75), an inference.
+- *Cilicia before 80*: whether a territory or only a command against the pirates
+  is argued (Sherwin-White, n. 18, for a base in Pamphylia; Borgia 299–300 for a
+  sphere of competence); drawn uncertain from {102–100}. Zenicetus' Lycian
+  strongholds are not drawn.
+- *The Cilician plain* is Armenian from 83 on Appian's fourteen years; Justin has
+  eighteen and some modern work later dates. Unclaimed from 69 until Pompey.
+- *Pontus*: c. 120 and c. 113 are modern reckonings. Paphlagonia's partition of
+  c. 108 is told in a note, not drawn: which king held what is unknown, and the
+  senate took Paphlagonia from Nicomedes (Justin 38.2). Pontus is drawn `allied`
+  to 90 on Appian's "friend and ally". Lucullus' hold of 72/71–69 is a Roman
+  occupation, not a province: the commissioners came only in 67. Heraclea's
+  Pontic garrison of 73–71/70 and Mytilene's holding out to 81/80 are not drawn.
+- *Cappadocia*: Tigranes' first expulsion of Ariobarzanes (Sherwin-White's, c.
+  95–93) is not drawn; Justin's "first approach of Tigranes" is read as the
+  expulsion of 90 (Kallet-Marx 356–359). The 81–79 occupation covers only "a
+  greater part" of the kingdom but is drawn whole; Tigranes' raid of 78 or 77 and
+  the overrunning of 67–66 are not drawn.
+- *Galatia* is a client, uncertain (its standing is nowhere stated), occupied by
+  Mithridates only in 86, when Eumachus was sent after the massacre (Mithr. 46).
+- *Cibyra's tyranny* ends c. 83 (Kallet-Marx 114) or c. 82 (Sherwin-White n. 6).
+- *Unread*: Robinson (NC 1954) on Aristonicus' cistophori; the Cnidus text itself;
+  Sallust's fragment on Marcius Rex in Lycaonia; Posidonius' "strategos of
+  Pamphylia"; McGing 1986.
+
+**The Levant, Armenia and the East**
+- *Tigranes' Syria* is 83–70 on Appian's fourteen years (Syr. 48); Justin has
+  eighteen (40.1), and some modern work c. 74. Selene held Ptolemais to c. 70/69
+  until Tigranes took it (AJ 13.419–421) and Aretas held Damascus c. 85–72 (no
+  passage opened), but the Syria and Phoenicia atoms are Armenian throughout.
+  Tyre and Sidon stay free through his years: no source says he took them.
+- *The Seleucid division* from 113 (Grypus against Cyzicenus, and their sons),
+  and the Nabataean and Armenian Damascus, are not drawn: no line for them.
+  Antiochus VII's Babylonia (130–129) and Tigranes' northern Mesopotamia (Nisibis,
+  to 68) have no grain in the parthia atom; nor have Characene and Adiabene.
+- *The Hasmonean conquests* are dated per atom: Idumaea {129–111} (Josephus puts
+  it straight after 129, the archaeology of Marisa and Gerizim c. 112–111, not
+  opened here); Samaria {111–107}; Scythopolis 107, though Pella, Dion, Gerasa and
+  the Gaulanitis fell in the 80s, hence {107–83}; Galilee 104, on the usual reading
+  of AJ 13.318 (some put it under Hyrcanus I); Peraea c. 100, when Jannaeus took
+  Theodorus' Amathus (AJ 13.356); Strato's Tower and Dora {103–96} (Zoilus'
+  tyranny is not drawn); Gaza 96. By 103 Iamnia and Azotus were already Jewish (AJ
+  13.324), so the southern coast is drawn too late; Ascalon, never Hasmonean, lies
+  inside that Judaean atom, its freedom only a place status; the gaza atom's
+  eastern corner is Marisa's lowland, drawn Seleucid to 97 against AJ 13.257.
+  Gaza is drawn standing though Jannaeus destroyed it (AJ 13.364) and Gabinius
+  rebuilt it (14.87–88).
+- *Moab* is Judaean c. 93–88, Nabataean c. 87–84 (given back in the civil war, AJ
+  13.382) and Judaean again from {83–80}.
+- *Nabataea* is independent until Scaurus (62; AJ 14.80–81), which changes 68–63
+  of the old data; the king who killed Antiochus XII is unnamed in the Greek (AJ
+  13.391).
+- *The city eras* of Tyre (126/125), Sidon (111) and Ascalon (104/103) rest on a
+  dealer's catalogue entry, Livius.org and an abstract respectively; BMC
+  Phoenicia was not opened.
+- *Emesa* from 69 is a convention: Diodorus 40.1b, the first mention of
+  Sampsigeramus, is undated (c. 67–64). *The Amanus* from 64 is a convention too.
+- *Armenia before 95* is independent, uncertain: Mithridates II fought Artavasdes
+  (Justin 42.2) and held Tigranes hostage (38.3), but a Parthian overlordship is
+  recorded nowhere. Gordyene, a kingdom of its own until Tigranes took it (Strabo
+  11.14.15), lies inside the armenia atom and is drawn Armenian throughout.
+  Sophene from 66 is uncertain: Tigranes' (Pompey), his son's (Dio 36.53) or
+  Cappadocia's (App. Mithr. 105). Tigranes' conquests of Sophene (c. 94) and
+  Atropatene (c. 87–85) have no ancient year; Parthian overlordship of Atropatene
+  before 85 is inferred.
+- *Osroene* from c. 132 rests on the Chronicle of Edessa's first entry (Seleucid
+  year 180); the name Aryu is Segal's, not opened. Tigranocerta's founding c. 80
+  is a convention.
 
 ## Sea names (September 2026)
 

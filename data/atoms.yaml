@@ -247,7 +247,8 @@
     From Cap Ténès to the Soummam. Desanges, followed by Bridoux ("tout à fait
     vraisemblable", ¶102), holds that the Mauretanian kingdom had pushed east to
     the Soummam, "ou tout du moins jusqu'à l'Algérois", in the first half of the
-    first century; so Mauretanian throughout this window, uncertainly. The
+    first century; so Mauretanian from Sosus' accession, c. 80, uncertainly.
+    Numidian before, to Gauda's death c. 88 (Bridoux ¶124, ¶145). The
     southern edge is the front of the Tell Atlas, a convention. Takes the
     Soummam from numidia-soummam.
 
@@ -530,7 +531,9 @@
     Moab from the Zered to the Arnon. Alexander Jannaeus had taken its towns
     from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
     for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
-    65. Takes the Dead Sea shore and Zoara from nabataea.
+    65. Jannaeus had given Moab back once before, in his civil war (AJ
+    13.382), and taken it again. Takes the Dead Sea shore and Zoara from
+    nabataea.
 
 - id: triakontaschoinos
   evidence: schematic
@@ -664,6 +667,102 @@
     Herod leased back. Split from judaea (September 2026). The edges are a
     convention for the plantations' plain.
 
+- id: judaea-galilee
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.12, 32.72]
+          note: Galilee, east of the territory of Ptolemais
+        - [35.18, 32.95]
+        - [35.3, 33.08]
+        - at: [35.6, 33.1]
+          note: Lake Semechonitis
+        - at: [35.55, 32.72]
+          note: the Sea of Galilee; Hippos across it was Greek
+        - at: [35.42, 32.62]
+          note: Mount Tabor
+        - [35.2, 32.62]
+  sources:
+    - { source: josephus-aj, locator: '13.318–319, 14.74–76' }
+    - { source: schurer-vermes }
+    - { source: barrington, locator: 'maps 69–70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Galilee, the northern piece of Hyrcanus II's ethnarchy. Split from judaea
+    (September 2026, for the extension to 133): Aristobulus I (104–103) "made
+    war against Iturea, and added a great part of it to Judea" (AJ 13.318),
+    which most modern work (Schürer–Vermes) takes to be the conquest of
+    Galilee; some put it under Hyrcanus I. Its outline is judaea's old second
+    piece.
+
+- id: judaea-idumaea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [34.97, 31.6]
+          note: judaea's corner east of Marisa
+        - at: [35.1, 31.58]
+          note: south of Beth-Zur, the Judaean fortress facing Idumaea (1 Macc 14.33)
+        - at: [35.47, 31.52]
+          note: the Dead Sea north of En-gedi, by convention
+        - at: [35.37, 31.3]
+          note: Masada, judaea's line
+        - [34.9, 31.25]
+        - [34.8, 31.45]
+  sources:
+    - { source: josephus-aj, locator: '13.257–258' }
+    - { source: schurer-vermes }
+    - { source: barrington, locator: 'map 70' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Idumaea, the hills south of Beth-Zur with Hebron and Adora, which Hyrcanus
+    I conquered: "Hyrcanus took also Dora and Marissa, cities of Idumea, and
+    subdued all the Idumeans" (AJ 13.257). Split from judaea (September 2026,
+    for the extension to 133). Its northern line is a convention between
+    Beth-Zur and Hebron; Marisa itself lies just outside, in gaza. Takes its
+    western and southern edges from judaea.
+
+- id: judaea-peraea
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [35.555, 31.76]
+          note: the mouth of the Jordan
+        - at: [35.55, 32.2]
+          via: river
+          note: up the Jordan to below Pella, judaea's line
+        - at: [35.616, 32.281]
+          pleiades: '678015'
+          note: Amathus, the stronghold of Theodorus son of Zeno until Jannaeus took it (AJ 13.356)
+        - at: [35.8, 32.1]
+          note: west of Gerasa, judaea's line
+        - at: [35.75, 31.8]
+          note: short of Philadelphia
+        - at: [35.62, 31.5]
+          note: the Arnon, with Machaerus inside
+        - at: [35.55, 31.46]
+          note: the mouth of the Arnon; back up the Dead Sea's eastern shore
+  sources:
+    - { source: josephus-aj, locator: '13.356, 13.374' }
+    - { source: josephus-bj, locator: '1.86–89' }
+    - { source: barrington, locator: 'maps 69–71' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Peraea, the land beyond the Jordan between Pella and the Arnon, which
+    Pompey left to Hyrcanus II with Judaea. Split from judaea (September 2026,
+    in the check of the extension to 133): its chief fortress, Amathus, was
+    held by Theodorus son of Zeno until Alexander Jannaeus took it after
+    Ptolemy Lathyrus' war (AJ 13.356) and later demolished it (13.374), so the
+    ground was not Hasmonean in 133. Its outline is judaea's old eastern side;
+    how much of it the Jews held before Jannaeus is not known. Takes the Jordan
+    from judaea-jericho.
+
 - id: judaea
   evidence: schematic
   construction:
@@ -694,19 +793,6 @@
         - [34.8, 31.45]
         - at: [34.97, 31.6]
           note: east of Marisa, which Pompey restored to its own people (AJ 14.75)
-    - method: outline
-      edge:
-        - at: [35.12, 32.72]
-          note: Galilee, east of the territory of Ptolemais
-        - [35.18, 32.95]
-        - [35.3, 33.08]
-        - at: [35.6, 33.1]
-          note: Lake Semechonitis
-        - at: [35.55, 32.72]
-          note: the Sea of Galilee; Hippos across it was Greek
-        - at: [35.42, 32.62]
-          note: Mount Tabor
-        - [35.2, 32.62]
   sources:
     - { source: josephus-aj, locator: '14.74–76, 14.91' }
     - { source: josephus-bj, locator: '1.155–157, 1.170' }
@@ -715,10 +801,11 @@
   confidence: probable
   review: draft
   note: >-
-    The ethnarchy of Hyrcanus II after 63: Judaea, Idumaea and Peraea as one
-    piece, Galilee as another, Samaria and the Jezreel between them in the
-    province. The edges follow the cities Pompey removed from the Jews rather
-    than any surveyed line.
+    The ethnarchy of Hyrcanus II after 63: Judaea, with Idumaea, Galilee and
+    Peraea (split off for the extension to 133) and Samaria and the Jezreel
+    between them in the province. The edges follow the cities Pompey removed
+    from the Jews rather than any surveyed line. What is left is Judaea
+    proper, Hasmonean from before 133; its eastern side is judaea-peraea's.
 
 - id: judaea-joppa
   evidence: schematic
@@ -1303,6 +1390,43 @@
     Armenia on the Araxes and Greater Media to the south (Strabo 11.13); a
     vassal of Parthia in this window. Takes the lower Araxes from albania.
 
+- id: sophene
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [38.6, 38.1]
+          note: armenia's corner on the Euphrates below Melitene
+        - [39.2, 37.9]
+        - at: [40.2, 37.85]
+          note: the Tigris at Amida, armenia's line
+        - at: [40.9, 38.35]
+          via: curve
+          note: the Taurus east of the upper Tigris, towards Arzanene
+        - at: [40.2, 38.85]
+          via: curve
+          note: the Antitaurus above the Arsanias, by convention
+        - at: [39.2, 38.95]
+          via: curve
+        - at: [38.45, 38.85]
+          note: back on armenia's Euphrates line
+  sources:
+    - { source: strabo, locator: '11.12.4, 11.14.2, 11.14.15' }
+    - { source: sullivan-1990 }
+    - { source: barrington, locator: 'map 89' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Sophene, the kingdom of the Zariadrids between the Euphrates, the
+    Antitaurus and the Taurus, with Carcathiocerta: the Antitaurus "encloses
+    Sophene in a valley situated between itself and the Taurus" (Strabo
+    11.12.4), and Sophene lies "between Masius and Antitaurus", with its royal
+    city Carcathiocerta (11.14.2). Tigranes put down its last king, Artanes
+    (11.14.15). Split from armenia (September 2026, for the
+    extension to 133): a kingdom of its own until Tigranes' accession, c. 95.
+    Its northern edge is a convention along the Antitaurus. Takes its western
+    and southern edges from armenia's.
+
 - id: armenia
   evidence: schematic
   construction:
@@ -1339,8 +1463,11 @@
   review: needs-check
   note: >-
     Armenia Maior as Pompey left it to Tigranes in 66: the Araxes valley with
-    Artaxata, the lands round Lake Van, and Sophene and Gordyene towards the
-    Tigris. Before 66 Tigranes' empire was larger; that is not drawn. Takes the
+    Artaxata, the lands round Lake Van, and Gordyene towards the Tigris
+    (Sophene, a kingdom of its own until c. 95, is its own atom since the
+    extension to 133). Before 66 Tigranes' empire was larger; that is not
+    drawn, nor is Gordyene's own history (its king Zarbienus under Tigranes,
+    Plut. Lucullus 21, 29; Parthian in 66–65, Dio 37.5.3–4). Takes the
     Euphrates from armenia-minor and cappadocia, the Caucasian kingdoms' lines
     from theirs, and the Araxes from atropatene.
 
@@ -1400,6 +1527,40 @@
 
 # === Anatolia ==================================================================
 
+- id: cibyra
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [29.2, 37.1]
+          note: asia-phrygia's old line against the Lycian side, kept
+        - at: [29.7, 37.05]
+          note: north of Balbura, which was one of the four cities
+        - [29.85, 37.15]
+        - [29.8, 37.35]
+        - [29.5, 37.45]
+        - [29.2, 37.35]
+        - [29.15, 37.2]
+  anchor:
+    at: [29.49, 37.2]
+    note: Cibyra
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: barrington, locator: 'map 65' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Cibyra's own land, round the city (Pleiades 638804) in the upper Indus
+    valley. Strabo: "It was always ruled by tyrants … However, the tyranny
+    ended in the time of Moagetes, when Murena overthrew it and included
+    Balbura and Bubon within the territory of the Lycians. But none the less
+    the jurisdiction of Cibyra is rated among the greatest in Asia" (13.4.17).
+    Split from asia-phrygia (September 2026, for the extension to 133) because
+    the tyranny held it until Murena, governor of Asia in 84–81; its southern
+    line is asia-phrygia's, unchanged, and its northern edge towards the
+    Phrygian districts is a convention.
+
 - id: asia-phrygia
   evidence: schematic
   construction:
@@ -1434,7 +1595,39 @@
     Apamean and the Synnadic — which passed from Asia to Cilicia c. 57/56 and
     back to Asia under the proconsul C. Fannius in 49 (Dmitriev n. 80, after
     Magie and Sherk RDGE 52). Cicero held assizes for them as governor of
-    Cilicia in 50 (Att. 5.21.9). The district lines are approximate.
+    Cilicia in 50 (Att. 5.21.9). The district lines are approximate. Cibyra's
+    own land is its own atom from September 2026 (cibyra), cut out of this one.
+
+- id: bubon-balbura
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [29.15, 37.2]
+          note: drawn into cibyra and asia-phrygia, which take the northern line
+        - [29.85, 37.2]
+        - at: [29.75, 36.95]
+          note: east of Balbura (Pleiades 638789)
+        - at: [29.68, 36.72]
+          note: south of Oenoanda (Pleiades 639013)
+        - [29.45, 36.7]
+        - at: [29.28, 36.85]
+          note: west of Bubon (Pleiades 638792)
+        - [29.12, 37.0]
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: barrington, locator: 'map 65' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Bubon, Balbura and Oenoanda, three of the four cities of Cibyra's
+    tetrapolis (Strabo 13.4.17), which Murena gave to the Lycians when he put
+    down the tyranny. Split (September 2026, for the extension to 133) from
+    the ground of asia and lycia: until then Bubon and Balbura fell in a strip
+    of asia between asia-phrygia's line and asia's own southern edge, though
+    lycia's note meant them to be Lycian. Strabo names only Bubon and Balbura;
+    Oenoanda, Lycian later, is drawn with them. Takes its northern line from
+    cibyra and asia-phrygia.
 
 - id: asia
   evidence: derived
@@ -1974,6 +2167,35 @@
     Cibyran cities Bubon and Balbura. The treaty of 24 July 46 names the towns
     assigned to it. Takes its edges from asia, asia-phrygia and cilicia.
 
+- id: caunus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [28.45, 36.6]
+          note: west of Lake Köyceğiz, a convention for Caunus' western bound
+        - [28.45, 37.1]
+        - [28.95, 37.1]
+        - [28.95, 36.6]
+  anchor:
+    at: [28.66, 36.86]
+    note: Caunus (Pleiades 638796)
+  sources:
+    - { source: strabo, locator: '14.2.2–3' }
+    - { source: appian, locator: 'Mithr. 23' }
+    - { source: cicero-qfr, locator: '1.1.33' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Caunus and its land by the Calbis and Lake Köyceğiz. Split from
+    rhodian-peraea (September 2026, for the extension to 133) because it was
+    not Rhodian for the whole span: "made subject to Rhodes after the war
+    against Antiochus and … lately liberated by the Romans" (App. Mithr. 23),
+    it was given back to Rhodes by Sulla, and in the 50s the Caunians asked the
+    senate to pay their tribute to Rome rather than to the Rhodians (Cicero,
+    Q. fr. 1.1.33). Takes its edges from asia and lycia; the western line is a
+    convention.
+
 - id: rhodian-peraea
   evidence: derived
   construction:
@@ -1994,7 +2216,8 @@
   review: draft
   note: >-
     Rhodes with its mainland Peraea: the Loryma peninsula, Physcus and Caunus
-    (Strabo 14.2.2–4). Takes its edges from asia and lycia.
+    (Strabo 14.2.2–4). Takes its edges from asia and lycia. Caunus is its own
+    atom from September 2026 (caunus), cut out of this one.
 
 - id: olba
   evidence: schematic
@@ -2391,6 +2614,51 @@
     follows the later Epirus Vetus, which is a convention. Corcyra stays with
     macedonia. Its eastern edge on the Pindus is thessalia's.
 
+- id: chersonesus-thracica
+  evidence: derived
+  construction:
+    - method: outline
+      edge:
+        - at: [26.04, 40.73]
+          note: the mouth of the Hebrus, by Aenus
+        - at: [26.392, 40.925]
+          via: river
+          pleiades: '501489'
+          note: up the Hebrus to Cypsela, where macedonia's line leaves the river
+        - [26.7, 40.85]
+        - at: [26.85, 40.62]
+          note: the neck of the Chersonese at Lysimachia
+        - [27.2, 40.4]
+        - [26.3, 39.95]
+        - [26.1, 40.2]
+        - [25.95, 40.6]
+  sources:
+    - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
+    - { source: sumner-1978, locator: '218–219, 225' }
+    - { source: pliny-nh, locator: '4.47' }
+    - { source: hydrorivers }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Thracian Chersonese and the land east of the lower Hebrus, cut out of
+    macedonia (added for the extension to 133 BCE) because the law on the
+    praetorian provinces of 101/100 dates its coming to Rome: the governor of
+    Macedonia is to go straight to the Chersonese and the Caenic land, which
+    Titus Didius had taken in war as spear-won ground (Knidos IV 6–11, in
+    Sumner's transcription; the Delphi copy, partly restored, has one Caenic
+    Chersonese, B 27–29). Sumner puts Didius' governorship, and so the
+    conquest, in 100, and the law late in 100 or early in 99 (Crawford has
+    101/100). Before it the ground is left
+    unclaimed: the Attalids' Chersonese passed to Rome by Attalus' will in 133,
+    but a conquest by Didius says Rome did not hold it in fact, and who did is
+    not recorded, though the Knidos clause can be read as making only the
+    Caenic land his conquest. Where the Caenic land lay is not
+    certain: Pliny puts the district "called Caenica" inland, by Bizye and
+    Apros (4.47), beyond this outline, which keeps macedonia's old northern
+    line and is only the part of Didius' gain the map already drew as
+    Macedonian. Aenus lies inside.
+
 - id: macedonia
   evidence: derived
   construction:
@@ -2455,7 +2723,9 @@
     edge stops short of Scupi and the Dardanians.
     Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
     Hellespont from asia. Thessaly and southern Epirus, part of this outline
-    until September 2026, are their own atoms (thessalia, epirus), cut out of it.
+    until September 2026, are their own atoms (thessalia, epirus), cut out of it,
+    and so, since the extension to 133 BCE, is the Thracian Chersonese with
+    the lower Hebrus (chersonesus-thracica), which Rome took only c. 100.
 
 - id: achaea
   evidence: derived
@@ -2579,12 +2849,17 @@
         - { at: [33.35, 44.38], via: curve }
   sources:
     - { source: strabo, locator: '7.4.2–3' }
+    - { source: diophantus-decree }
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
   note: >-
-    Chersonesus and its chora on the Heracleian peninsula, subject to the
-    Bosporan kings since Mithridates (Strabo 7.4.3).
+    Chersonesus and its chora on the Heracleian peninsula: self-governing
+    until it took Mithridates as its protector against the Scythians c. 110,
+    and subject to the Bosporan kings since his time (Strabo 7.4.3). The
+    Diophantus decree has him take Kerkinitis and besiege Kalos Limen on the
+    west coast in those wars; they lie in scythia-minor and are not drawn as
+    the city's.
 
 - id: scythia-minor
   evidence: schematic
@@ -2610,6 +2885,482 @@
     7.4.7). Takes its edges from bosporus and chersonesus.
 
 # === Italy and the islands =====================================================
+
+# Italy before the Social War (the extension to 133 BCE, September 2026). The
+# italia atom is what was Roman citizen land in 133–91; the atoms above it are
+# the allied regions cut out of it, one for each group the Social War dates
+# differently: the loyal allies of Etruria and Umbria, of the heel and of the
+# toe, enfranchised in 90; the insurgents of Asculum, of the Marsic peoples, of
+# the Nucerine cities and of the Hirpini, who gave in or were taken in 89; of
+# Apulia, in 88; of Samnium and Lucania, the last, in 87. The frontiers between
+# the citizen land and the allies follow Beloch's reconstruction (1880, ch.
+# III) and are known only as zones, so every one of these atoms is schematic
+# and uncertain; the Latin colonies and the allied cities left inside the
+# citizen land (Tibur, Praeneste, Neapolis, Nola's neighbours) are places.
+# From 90–87 each carries the italia rows its parent does.
+
+- id: italia-asculum
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [13.32, 42.70]
+          note: the Monti della Laga, towards Amiternum's Sabine land (Roman)
+        - at: [13.24, 42.84]
+          note: the Sibillini, towards Nursia (Roman)
+        - [13.36, 42.96]
+        - at: [13.60, 43.03]
+          note: the Aso valley, towards Firmum's Latin colony
+        - at: [13.82, 42.95]
+          note: short of the coast at Castrum Truentinum
+        - at: [13.74, 42.81]
+          note: the watershed towards Interamnia of the Praetuttii, Roman since 290
+        - [13.50, 42.72]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 54–55' }
+    - { source: appian, locator: 'BC 1.38, 1.47–48' }
+    - { source: strabo, locator: '5.4.2' }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The territory of Asculum, the one Picene people left sovereign (Beloch 55,
+    165: the rest of Picenum was Roman but for Greek Ancona and the Latin
+    colony of Firmum), where the Social War began in 91 with the
+    killing of the praetor Servilius and every Roman in the town (App. BC 1.38)
+    and which Pompeius Strabo took in 89 (Livy Per. 76). Its extent is
+    unrecorded: drawn as the upper and middle Tronto valley, in the mountains
+    Strabo says no army could cross (5.4.2), short of the coast.
+
+- id: italia-campania
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [14.29, 40.79]
+        - at: [14.37, 40.84]
+          note: on the slope of Vesuvius, between Neapolis' land and Herculaneum
+        - at: [14.43, 40.91]
+          note: between Neapolis and Nola
+        - at: [14.47, 40.97]
+          note: south of Acerrae, a Roman town
+        - at: [14.55, 41.0]
+          note: north of Nola, towards Suessula, a Roman town
+        - at: [14.64, 41.0]
+          note: north of Abella
+        - at: [14.69, 40.93]
+          note: the hills east of Abella, towards the Hirpini
+        - at: [14.73, 40.8]
+          note: east of Nuceria, towards the Picentine hills
+        - at: [14.7, 40.68]
+          note: the Lattari, above Salernum, a Roman colony
+        - at: [14.63, 40.62]
+          note: the coast east of Amalfi
+        - [14.6, 40.55]
+        - [14.36, 40.54]
+        - at: [14.3, 40.575]
+          note: in the strait, leaving Capreae to Neapolis
+        - [14.28, 40.7]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 50, 52, 171' }
+    - { source: appian, locator: 'BC 1.39, 1.42, 1.50' }
+    - { source: pliny-nh, locator: '3.70' }
+    - { source: velleius, locator: '2.16.2' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The allied Oscan cities south of the Roman land of Capua: Nola with Abella,
+    and Nuceria with Pompeii, Herculaneum, Stabiae and Surrentum, the Nucerine
+    league (Beloch 171). The Pompeians were among the first to revolt (App. BC
+    1.39) and Papius Mutilus took Nola and Stabiae in 90, the towns round
+    Nuceria submitting to him (1.42); Sulla destroyed Stabiae on 30 April 89
+    (Pliny 3.70) and took Herculaneum and besieged Pompeii (Vell. 2.16.2).
+    Neapolis, a loyal ally, and its Capreae are left out; Nola itself held out
+    until 80 (Livy Per. 89; Vell. 2.17.1), an enclave the atom does not show.
+
+- id: italia-marsi
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [14.35, 42.72]
+        - at: [14.1, 42.57]
+          note: mouth of the Matrinus (Piomba), Hatria's land to the north (Strabo 5.4.2)
+        - at: [13.95, 42.5]
+          note: south of Hatria, a Latin colony
+        - at: [13.72, 42.45]
+          note: the Gran Sasso; the Roman land did not cross it (Beloch 53)
+        - at: [13.69, 42.31]
+          note: east of Peltuinum, a Roman prefecture of the upper Aternus (Beloch 52)
+        - at: [13.6, 42.21]
+          note: between Peltuinum and the Paeligni of Superaequum
+        - at: [13.47, 42.17]
+          note: the Sirente
+        - at: [13.46, 42.12]
+          note: east of Alba Fucens, a Latin colony besieged by the insurgents (Livy Per. 72)
+        - at: [13.42, 42.03]
+          note: south of Alba, on the western rim of the Fucine lake
+        - at: [13.33, 41.95]
+          note: the Simbruini, towards Carseoli, a Latin colony
+        - at: [13.47, 41.8]
+          note: the Liris above Sora, a Latin colony; Antinum Marsic
+        - at: [13.76, 41.78]
+          note: the Mainarde, the watershed with the upper Volturnus
+        - at: [13.97, 41.86]
+          note: between the Paeligni and the Caraceni of Aufidena, Samnites
+        - at: [14.25, 41.95]
+          note: the Sangro below Juvanum
+        - at: [14.55, 41.86]
+          note: the Trigno, between the Frentani and the Pentri
+        - at: [14.8, 41.8]
+          note: the Biferno above Larinum, which is Apulia's
+        - at: [15.0, 41.99]
+          note: mouth of the Biferno (Tifernus)
+        - [15.15, 42.15]
+  sources:
+    - { source: strabo, locator: '5.4.2' }
+    - { source: beloch-1880, locator: 'pp. 51–54, 165' }
+    - { source: appian, locator: 'BC 1.39, 1.52' }
+    - { source: livy-per, locator: '75–76' }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Marsic peoples: Marsi, Paeligni, Vestini, Marrucini and Frentani,
+    whom Strabo takes together as the small, brave nations above Picenum who
+    started the "Marsic" war and made Corfinium their capital (5.4.2). Allies
+    under treaties of 305–302 (Beloch 165); in revolt from 91; the Vestini,
+    Paeligni and Marrucini surrendered and the Marsi sued for peace in 89 (Livy
+    Per. 75–76; App. BC 1.52). The Roman prefectures of the upper Aternus
+    (Amiternum, Peltuinum) and the Latin colonies of Alba and Carseoli are left
+    out (Beloch 52); the frontiers with the Samnite Caraceni and Pentri follow
+    the Sangro and the Trigno, a convention.
+
+- id: italia-samnium
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [13.7, 41.93]
+        - [14.4, 42.0]
+        - [14.85, 41.88]
+        - at: [15.0, 41.62]
+          note: the upper Fortore, towards Larinum and the Apulians
+        - at: [15.1, 41.45]
+          note: the Fortore, between the Pentri and Daunia
+        - at: [15.0, 41.33]
+          note: the Tammaro, between Saepinum and the Ligures Baebiani on Roman land (Beloch 52–53)
+        - at: [14.8, 41.22]
+          note: north of Beneventum, a Latin colony
+        - at: [14.75, 41.1]
+          note: west of Beneventum
+        - at: [14.68, 41.02]
+          note: south of Caudium, the Caudine valley
+        - at: [14.55, 41.02]
+          note: towards Saticula, a Latin colony
+        - at: [14.52, 41.12]
+          note: Monte Taburno
+        - at: [14.45, 41.24]
+          note: west of Telesia, a Samnite town (Strabo 5.4.11)
+        - at: [14.3, 41.38]
+          note: above Allifae, a Roman prefecture (Beloch 52)
+        - at: [14.18, 41.46]
+          note: between Venafrum, a Roman prefecture, and Aesernia, a Latin colony
+        - at: [13.92, 41.62]
+          note: above Venafrum
+        - [13.76, 41.74]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 52–53, 167–169' }
+    - { source: strabo, locator: '5.4.11' }
+    - { source: appian, locator: 'BC 1.51, 1.53, 1.68' }
+    - { source: diodorus, locator: '37.2.9–11' }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Samnium of the Pentri and Caraceni, with the Caudine valley: what was left
+    to the Samnites after the confiscations that gave Rome Venafrum, Allifae and
+    Atina and the old land of Taurasia (Beloch 52–53), with the Latin colony of
+    Aesernia, which the insurgents took in 90 and made their capital when they
+    left Corfinium (Diodorus 37.2.9). Sulla took Bovianum in 89 (App. BC 1.51),
+    but the Samnites held out through 88 and made terms with Marius and Cinna
+    in 87 (App. BC 1.53, 1.68).
+
+- id: italia-hirpini
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [14.62, 41.08]
+        - [14.7, 41.2]
+        - [15.1, 41.42]
+        - at: [15.25, 41.28]
+          note: Aequum Tuticum, on the road into Apulia
+        - at: [15.45, 41.1]
+          note: the Daunian hills, towards Ausculum in Apulia
+        - at: [15.53, 40.98]
+          note: the upper Aufidus (Ofanto)
+        - at: [15.4, 40.84]
+          note: between Compsa, Hirpine, and Volcei, Lucanian
+        - at: [15.2, 40.7]
+          note: the upper Sele, where the Hirpini, the Lucanians and the Roman Picentine land met
+        - at: [14.95, 40.8]
+          note: the Picentine mountains, above the Roman land of Salernum
+        - at: [14.78, 40.84]
+          note: above Nuceria; Abellinum Hirpine
+        - [14.66, 40.9]
+        - [14.64, 41.0]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 64–65, 168' }
+    - { source: appian, locator: 'BC 1.39, 1.51' }
+    - { source: livy-per, locator: '75' }
+    - { source: velleius, locator: '2.16.2' }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Hirpini, a people apart from the Samnites since the third century and
+    enrolled in a different tribe after the Social War (Beloch 168), with
+    Beneventum, a Latin colony, and the Roman public land Gracchus' boundary
+    stones mark (Beloch 65) inside. In revolt from 91; Sulla burned Aeclanum
+    and the rest surrendered, in 89 (App. BC 1.51; Livy Per. 75). Minatius
+    Magius of Aeclanum raised a loyal legion among them (Vell. 2.16.2).
+
+- id: italia-apulia
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [15.0, 41.99]
+          note: mouth of the Biferno
+        - [15.4, 42.3]
+        - [16.2, 42.0]
+        - [17.6, 41.25]
+        - at: [17.42, 40.9]
+          note: the coast south of Egnatia, between the Peucetians and the Messapians
+        - at: [17.15, 40.72]
+          note: the Murge, north of Tarentum's land
+        - at: [16.8, 40.58]
+          note: towards the Bradanus
+        - at: [16.63, 40.5]
+          note: the Bradanus (Bradano)
+        - at: [16.24, 40.76]
+          via: river
+          note: up the Bradanus, between Peucetia and Lucania
+        - at: [15.9, 40.92]
+          note: between Venusia, a Latin colony, and Lucanian Bantia
+        - [15.53, 40.98]
+        - [15.3, 41.2]
+        - [15.05, 41.5]
+        - [14.9, 41.85]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 64–65, 174–175' }
+    - { source: appian, locator: 'BC 1.39, 1.42, 1.52–53' }
+    - { source: diodorus, locator: '37.2.8, 37.2.10' }
+    - { source: strabo, locator: '5.4.2' }
+    - { source: hydrorivers }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Daunia and Peucetia with Larinum: allied cities under separate treaties
+    (Beloch 175), with the Latin colonies of Luceria and Venusia and the Roman
+    colony of Sipontum inside. The Venusini and Apulians joined the revolt in
+    91 and Vidacilius won over Canusium and Venusia (App. BC 1.39, 1.42);
+    Cosconius took Salapia, Cannae and the lands of Larinum, Venusia and
+    Apulian Ausculum in 89 (1.52), and Metellus Pius took Venusia and beat the last
+    Apulians in 88 (Diodorus 37.2.10; App. BC 1.53). Whether the Messapians of
+    the heel rose is not recorded; they are a separate atom (italia-calabria).
+
+- id: italia-calabria
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [17.6, 41.1]
+        - [18.3, 40.6]
+        - [18.7, 40.0]
+        - [17.3, 39.8]
+        - at: [16.87, 40.39]
+          note: mouth of the Bradanus, between Tarentum's land and Metapontum
+        - at: [16.63, 40.5]
+          via: river
+          note: up the Bradanus
+        - [16.9, 40.72]
+        - [17.3, 40.95]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 63–64, 174–176' }
+    - { source: velleius, locator: '1.15.4' }
+    - { source: hydrorivers }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The heel: the Messapians and Sallentines, allied cities under treaty
+    since the war with Pyrrhus (Beloch 175), with the Latin colony of
+    Brundisium and Greek Tarentum, an ally on worse terms after 209 whose
+    confiscated land took the colony of Neptunia in 123–122 (Vell. 1.15.4),
+    apart from the city (Beloch 63–64). No source has them in the Social War: drawn as loyal
+    allies, enfranchised in 90 with the rest. The frontier with Peucetia is a
+    convention.
+
+- id: italia-lucania
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [14.97, 40.48]
+          note: mouth of the Silarus (Sele), the boundary of the Roman Picentine land (Strabo 5.4.13)
+        - at: [15.24, 40.64]
+          via: river
+          note: up the Silarus to the Tanager
+        - [15.2, 40.7]
+        - [15.5, 40.92]
+        - [15.9, 41.0]
+        - [16.5, 40.7]
+        - [16.9, 40.47]
+        - [16.87, 40.39]
+        - [17.0, 40.2]
+        - [16.75, 39.68]
+        - at: [16.55, 39.66]
+          note: south of the Crathis, Thurii and its Latin colony Copia to the north
+        - at: [16.2, 39.83]
+          note: the Crathis valley above Thurii
+        - at: [15.95, 39.9]
+          note: the Pollino
+        - at: [15.8, 39.87]
+          note: mouth of the Laus, the old frontier of the Lucanians and Bruttians
+        - [15.55, 39.95]
+        - [15.1, 40.05]
+        - [14.8, 40.3]
+        - [14.85, 40.47]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 63, 172–173' }
+    - { source: strabo, locator: '5.4.13, 6.1.1' }
+    - { source: appian, locator: 'BC 1.39, 1.41, 1.53' }
+    - { source: livy-per, locator: '76' }
+    - { source: diodorus, locator: '37.2.11, 37.2.13' }
+    - { source: hydrorivers }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Lucania, its league broken up by the Hannibalic war into allied
+    communities (Beloch 172–173), with Paestum, a Latin colony, the Roman
+    colonies of Buxentum and Salernum's Picentine land beyond the Sele, the
+    public land of the Tanager valley, and the Greek allies Velia, Heraclea and
+    Metapontum. The Lucanians were among the first to rise (App. BC 1.39);
+    Gabinius took many of their towns in 89 (Livy Per. 76), but Lamponius and
+    Clepitius held out with the Samnites into 88 (Diodorus 37.2.11; App. BC
+    1.53).
+
+- id: italia-bruttium
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [15.8, 39.87]
+          note: mouth of the Laus
+        - [16.1, 39.97]
+        - [16.6, 39.75]
+        - [16.9, 39.62]
+        - [17.2, 39.2]
+        - [16.8, 38.4]
+        - [16.1, 37.8]
+        - at: [15.62, 37.95]
+          note: the strait of Messina
+        - [15.62, 38.2]
+        - [15.66, 38.3]
+        - [15.75, 38.6]
+        - [15.7, 38.8]
+        - [15.3, 39.5]
+        - [15.55, 39.9]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 62–63, 174–176' }
+    - { source: velleius, locator: '1.15.4' }
+    - { source: diodorus, locator: '37.2.13' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The toe. After the Hannibalic war most of the Bruttians' land was
+    confiscated for Roman public land and the colonies of Vibo, Copia, Croton
+    and Tempsa, and in 123–122 Minervia at Scolacium (Beloch 62–63; Vell.
+    1.15.4); Rhegium, Locri and a few Bruttian towns kept their treaties.
+    Drawn as allied, uncertain, for want of a way to draw the mixture: no
+    source puts it in the Social War but for the insurgents' failed assault on
+    Rhegium after Sulla had left for the East in 87 (Diodorus 37.2.13), when
+    the ground is italia's; not drawn.
+
+- id: italia-etruria
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [10.3, 43.78]
+          note: the coast between the Arno and the Serchio, as italia
+        - [10.47, 43.74]
+        - at: [10.5, 43.68]
+          note: the Arno below Pisae
+        - at: [11.43, 43.77]
+          via: river
+          note: up the Arno to Pontassieve
+        - at: [11.66, 43.93]
+          note: the Apennine watershed at the Muraglione
+        - at: [12.05, 43.83]
+          via: crest
+          note: along the watershed towards the head of the Tiber
+        - at: [12.36, 43.69]
+          note: east of Sestinum, an allied Umbrian town (Beloch 56)
+        - at: [12.52, 43.52]
+          note: west of Cales on the Via Flaminia, whose strip was Roman (Beloch 57)
+        - at: [12.64, 43.36]
+          note: east of Iguvium, an ally under treaty (Cic. Balb. 47; Beloch 56)
+        - at: [12.55, 43.1]
+          note: between Arna, allied, and Asisium, a citizen town (Beloch 57–58)
+        - at: [12.55, 42.97]
+          note: between Vettona and Mevania
+        - at: [12.6, 42.66]
+          note: east of Carsulae
+        - at: [12.48, 42.545]
+          note: between Ameria, allied, and Narnia, a Latin colony
+        - at: [12.3864, 42.4603]
+          pleiades: '413172'
+          note: Horta, on the Tiber
+        - at: [12.03, 42.55]
+          note: the eastern shore of the lake of Volsinii
+        - at: [11.88, 42.7]
+          note: Tarquinii's land reached the lake (Beloch 60); Volsinii allied, to the north
+        - at: [11.6, 42.8]
+          note: the southern foot of Monte Amiata (Beloch 61)
+        - [11.2, 42.7]
+        - at: [11.03, 42.65]
+          note: near the mouth of the Umbro (Ombrone), Rusellae allied to the north
+        - [10.8, 42.55]
+        - [10.0, 42.5]
+        - [9.9, 43.0]
+        - [10.2, 43.76]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 55–61, 160–165, 176' }
+    - { source: appian, locator: 'BC 1.49' }
+    - { source: livy-per, locator: '74' }
+    - { source: hydrorivers }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Allied Etruria and the Umbrian towns of the Tiber valley: Pisae,
+    Volaterrae, Populonia, Rusellae, Vetulonia, Volsinii, Clusium, Perusia,
+    Cortona, Arretium, Faesulae, Tuder, Iguvium and their neighbours (Beloch
+    176), with Elba. Beloch puts Tarquinii, Vulci, Saturnia and Falerii in the
+    Roman land to the Umbro and Monte Amiata (58–61) and the Via Flaminia's
+    strip from Narnia to the Gallic land, with Asisium, in it too (56–58); both
+    are inferences from colonies, prefectures and voting tribes, and others
+    have kept Tarquinii and Vulci allied, so the line is a zone. Some
+    Etruscans and Umbrians took up arms in 90–89 and were beaten (Livy Per.
+    74); the lex Iulia's offer of citizenship kept the rest loyal (App. BC
+    1.49). Beloch goes further for Umbria: all or most of the Tiber-valley
+    towns later in the tribe Clustumina (Tuder, Iguvium, Arna, Ameria and the
+    rest) joined the rising, which stayed in the west of the region (56–57).
+    Drawn here as loyal and enfranchised in 90, since no source dates their
+    submission. Faesulae, north of the Arno, lies in
+    cisalpina-cispadana.
 
 - id: italia
   evidence: derived
@@ -2671,7 +3422,64 @@
     (the conference of 56); the Macra is the Augustan limit (Pliny 3.50) and is
     not used. Between the Arno and the Rubicon the line runs along the Apennine
     watershed. The Rubicon is taken as the modern Rubicone, whose
-    identification is conventional.
+    identification is conventional. Since September 2026 the allied regions of
+    133–91 are cut out of it (the atoms above), and what is left is the Roman
+    citizen land of those years, with the Latin colonies and a few allied
+    cities inside (Beloch 1880, ch. III); after 87 it is Italy with the rest.
+
+- id: cisalpina-cispadana
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - [9.93, 43.98]
+        - at: [9.98, 44.05]
+          note: mouth of the Macra, the frontier of Luna's land
+        - at: [9.878, 44.376]
+          via: river
+          note: up the Macra to Pontremoli
+        - at: [9.93, 44.47]
+          note: the Apennine watershed at the Cisa
+        - at: [9.28, 44.56]
+          via: crest
+          note: along the watershed to the head of the Trebia
+        - at: [9.62, 45.08]
+          via: river
+          note: down the Trebia to the Po, above Placentia
+        - at: [12.45, 44.97]
+          via: river
+          note: down the Po to the sea
+        - [12.8, 44.9]
+        - [12.6, 44.2]
+        - [12.3, 43.9]
+        - [11.5, 43.6]
+        - [10.6, 43.6]
+        - [10.1, 43.8]
+  sources:
+    - { source: beloch-1880, locator: 'pp. 65–68' }
+    - { source: asconius-pis, locator: '3 C' }
+    - { source: cicero-balb, locator: '50' }
+    - { source: hydrorivers }
+    - { source: mapterhorn }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Cisalpine Gaul south of the Po and east of the Trebia and the Macra, with
+    the Etruscan and Ligurian land north of the Arno. Beloch finds the plain
+    between Placentia and the Rubicon Roman citizen land, the tribe Pollia's
+    (the colonies of Mutina and Parma, Regium Lepidi, Faventia, Fidentia and
+    the other market towns), with the Latin colonies of Placentia and Bononia,
+    and Luna, a Roman colony, on the land of the deported Apuani (65–68).
+    Ravenna was an ally under treaty (Cic. Balb. 50), and so were Faesulae and
+    the Boii left by the Po. It took Roman citizenship in 90–89, while the
+    land north of the Po received only Latin rights (Asconius, Pis. 3 C) and
+    Liguria west of the Trebia kept allied peoples such as Genua and the
+    Statielli: that is why this atom is cut out of cisalpina, the two differing
+    until the province of c. 81. The Trebia is a convention: Beloch has most
+    of the plain on the right bank of the Po west of it Roman as well, with
+    Industria, Pollentia, Hasta and Forum Fulvi in the tribe Pollia (67), and
+    this atom does not reach them. Takes italia's line on the Arno and the
+    Rubicon.
 
 - id: cisalpina
   evidence: derived
@@ -2721,6 +3529,7 @@
     - { source: caesar-bg, locator: '1.10, 8.24' }
     - { source: pliny-nh, locator: '3.127, 3.136–137' }
     - { source: barrington, locator: 'maps 39–40' }
+    - { source: beloch-1880, locator: 'p. 67' }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -2728,7 +3537,11 @@
     The Po plain to the break of slope of the Alps, from Ocelum in the Susa
     valley to the Formio beyond Aquileia, with Liguria to Albintimilium. The
     Salassi, the Cottian and Maritime Alps and the Raetian valleys were not
-    held. Takes the Arno–Rubicon line from italia.
+    held. Takes the Arno–Rubicon line from italia. Since September 2026
+    Cispadane Gaul east of the Trebia is cut out of it (cisalpina-cispadana),
+    so this is the land north of the Po and Liguria, drawn allied until the
+    province of c. 81, though Beloch has much of the Ligurian plain south of
+    the Po Roman citizen land already (Beloch 67).
 
 - id: noricum
   evidence: schematic
@@ -2800,10 +3613,29 @@
   note: An island; the coastline is the boundary.
 
 # === Iberia ====================================================================
-# Roman control in 68–27 was the south and east and an intermittent Meseta. The
+# Roman control in 133–27 was the south and east and an intermittent Meseta. The
 # Callaeci, Astures, Cantabri and Vaccaei were unconquered until Augustus
 # (Strabo 3.4.20; Dio 51.20, 53.25–29) and are drawn as independent; the
-# Vaccaei pass to Hither Spain c. 29.
+# Vaccaei pass to Hither Spain c. 29. The Arevaci are Hither Spain's from the
+# fall of Numantia in 133; the Baliares from Metellus' conquest of 123.
+
+- id: baliares
+  evidence: surveyed
+  construction:
+    - { method: box, bbox: [2.2, 39.05, 4.5, 40.2] }
+  sources:
+    - { source: strabo, locator: '3.5.1' }
+    - { source: livy-per, locator: '60' }
+    - { source: pliny-nh, locator: '3.76–77' }
+    - { source: natural-earth }
+  confidence: certain
+  review: draft
+  note: >-
+    The Baliares proper, Strabo's Gymnesiae — Mallorca, Menorca and Cabrera —
+    which Q. Metellus conquered in 123 (Livy Per. 60; Strabo 3.5.1). Cut from
+    hispania-citerior in September 2026 for the extension to 133 BCE. Ebusus and
+    the Pityussae, a federate city in Pliny's day (3.76) and no part of
+    Metellus' war, stay with hispania-citerior.
 
 - id: meseta-arevaci
   evidence: schematic
@@ -2827,17 +3659,24 @@
         - at: [-3.6, 42.1]
           note: north of Clunia
   sources:
+    - { source: appian, locator: 'Hisp. 98–100' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: appian, locator: 'BC 1.108–115' }
+    - { source: florus, locator: '2.10.9' }
+    - { source: orosius, locator: '5.23.14' }
     - { source: richardson-1996, locator: 'ch. 3' }
     - { source: barrington, locator: 'maps 24–25' }
   confidence: uncertain
   review: draft
   note: >-
-    The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Held
-    after the Sertorian war, when Pompey took its strongholds, but not firmly:
-    in 56 the Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio
-    39.54). Drawn as provincial ground held uncertainly.
+    The Arevaci and the upper Duero — Numantia, Clunia, Uxama, Termes. Scipio
+    razed Numantia in 133 and divided its land among its neighbours (App. Hisp.
+    98); the country rose again and T. Didius moved Termes into the plain in
+    98–93 (Hisp. 99–100); it was Sertorius' in the 70s, until Termes and Uxama
+    came over in 72, Uxama only when Pompey took it (Flor. 2.10.9; Oros.
+    5.23.14); and in 56 the Vaccaei and their
+    neighbours drove Metellus Nepos off Clunia (Dio 39.54). Drawn as provincial
+    ground held uncertainly.
 
 - id: hispania-citerior
   evidence: derived
@@ -2892,7 +3731,7 @@
         - [1.2, 40.5]
         - [3.5, 41.8]
         - [3.4, 42.5]
-    - { method: box, bbox: [1.1, 38.6, 4.5, 40.2] }
+    - { method: box, bbox: [1.1, 38.6, 1.8, 39.2] }
   sources:
     - { source: richardson-1986, locator: 'ch. 1 and appendix' }
     - { source: richardson-1996 }
@@ -2905,11 +3744,13 @@
   review: draft
   note: >-
     The nearer province: the Mediterranean coast from the Pyrenees to Murgi, the
-    Ebro valley, Carpetania and Oretania with Toletum and Castulo, and the
-    Baliares. The line with Ulterior ran through the Saltus Castulonensis and
-    was never surveyed; south of the Tagus it follows the named places, north
-    of it only the direction is attested (Richardson). The Arevaci are cut out
-    as meseta-arevaci.
+    Ebro valley, Carpetania and Oretania with Toletum and Castulo, and Ebusus.
+    The line with Ulterior ran through the Saltus Castulonensis and was never
+    surveyed; south of the Tagus it follows the named places, north of it only
+    the direction is attested (Richardson). The Arevaci are cut out as
+    meseta-arevaci, and the Baliares as baliares. The Pompaelo corner is drawn
+    as it stood after Pompey (Strabo 3.4.10); when the Vascon uplands came under
+    Roman arms before him is not recorded.
 
 - id: lusitania-north
   evidence: derived
@@ -2936,7 +3777,9 @@
         - [-9.8, 39.6]
   sources:
     - { source: cassius-dio, locator: '37.52–53' }
-    - { source: strabo, locator: '3.4.20' }
+    - { source: strabo, locator: '3.3.1, 3.4.20' }
+    - { source: appian, locator: 'Hisp. 71–73, 99' }
+    - { source: plutarch, locator: 'Sertorius 10–12' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
@@ -2945,7 +3788,12 @@
     Lusitania between the Tagus and the Durius. Caesar, propraetor of Ulterior
     in 61–60, cleared the Mons Herminius and brought the country to the Durius
     under Roman arms, then sailed to Brigantium and "alarmed" the Callaeci (Dio
-    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not.
+    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not. Left
+    unclaimed in 133–61: D. Brutus had taken the surrender of its towns in
+    138–136 (App. Hisp. 71–73; Strabo 3.3.1), and the Senate sent ten
+    commissioners to settle what he had won (Hisp. 99); but the Lusitanians were
+    Sertorius' mainstay in the 70s (Plut. Sert. 10–12), and Caesar had to
+    conquer the Herminius afresh.
 
 - id: hispania-ulterior
   evidence: derived
@@ -3086,13 +3934,16 @@
   sources:
     - { source: strabo, locator: '3.3.2–5' }
     - { source: cassius-dio, locator: '37.53' }
+    - { source: appian, locator: 'Hisp. 72' }
+    - { source: livy-per, locator: '56' }
     - { source: curchin-1991 }
   confidence: uncertain
   review: needs-check
   note: >-
-    The Callaeci north of the Durius, whom Caesar "alarmed" from the sea at
-    Brigantium in 60 (Dio 37.53) but did not conquer. Takes every edge from the
-    atoms above.
+    The Callaeci north of the Durius, whom D. Brutus raided as far as the Lethe
+    and the Nimis in 137 (App. Hisp. 72; Livy Per. 56) and Caesar "alarmed" from
+    the sea at Brigantium in 60 (Dio 37.53); neither conquered them. Takes every
+    edge from the atoms above.
 
 # === Gaul ======================================================================
 
@@ -3126,7 +3977,48 @@
     Massalia's own territory and its coastal colonies — Tauroentium, Olbia,
     Antipolis, Nicaea (Strabo 4.1.9): a free ally inside the Province until
     Caesar took the city in 49 (BC 2.22). A strip for the chora and the string
-    of foundations; its depth is a convention.
+    of foundations; its depth is a convention. The coast Sextius cleared for the
+    city in 122, twelve stadia deep where there were harbours and eight where it
+    was rugged (Strabo 4.1.5), is about as deep as the strip.
+
+- id: tolosates
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [1.5, 42.55]
+          note: the crest of the Pyrenees east of the head of the Ariège
+        - at: [0.65, 42.72]
+          via: crest
+          note: along the crest of the central Pyrenees, as gallia-transalpina
+        - at: [0.6, 43.1]
+          note: the upper Garonne, as gallia-transalpina
+        - at: [1.0, 43.5]
+          note: west of Tolosa, as gallia-transalpina
+        - [1.3, 43.9]
+        - at: [1.75, 43.75]
+          note: towards the Ruteni of Albi, a convention
+        - at: [1.82, 43.38]
+          note: the Seuil de Naurouze, the watershed between the Garonne and the Aude
+        - at: [1.95, 43.0]
+          note: the divide between the Ariège and the upper Aude, a convention
+  sources:
+    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
+    - { source: strabo, locator: '4.1.12–13' }
+    - { source: caesar-bg, locator: '1.10' }
+    - { source: orosius, locator: '5.15.25' }
+    - { source: mapterhorn }
+    - { source: natural-earth }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Tolosates, the Volcae Tectosages of Tolosa and the upper Garonne (Strabo
+    4.1.13): "formerly in alliance with the Romans", with a Roman garrison, until
+    they rose in the hope of the Cimbri and Caepio took the city in 106 (Dio fr.
+    90; Oros. 5.15.25); "in the Province" by 58 (BG 1.10). Cut from
+    gallia-transalpina in September 2026 because that change is dated at this
+    grain. The eastern edge towards Carcaso and Narbo is a convention at the
+    watershed; the other edges are the Province's own.
 
 - id: gallia-transalpina
   evidence: derived
@@ -3175,8 +4067,9 @@
         - [5.0, 42.8]
         - [3.4, 42.5]
   sources:
-    - { source: caesar-bg, locator: '1.6–10, 7.7–8, 7.64–65' }
+    - { source: caesar-bg, locator: '1.6–10, 1.45, 7.7–8, 7.64–65' }
     - { source: cicero-font, locator: '12–14, 20, 26' }
+    - { source: amela-valverde-2019, locator: '24, 28' }
     - { source: ebel-1976, locator: 'chs. 4–6' }
     - { source: rivet-1988, locator: 'chs. 3–4' }
     - { source: hydrorivers }
@@ -3188,8 +4081,11 @@
     The Province, as Caesar and Cicero give its peoples: the Volcae, the
     Tolosates, the Ruteni provinciales and the Helvii within the Cévennes, the
     Allobroges between the Rhône and the Alps to Genava, and the Vocontii.
-    Massalia's own territory lies inside this outline. Takes the eastern
-    Pyrenees from hispania-citerior.
+    Massalia's own territory lies inside this outline, and the Tolosates are cut
+    out as tolosates. When the Ruteni provinciales came in is not recorded: the
+    Ruteni were not made provincial in 121 (BG 1.45), and the 70s are argued
+    (Amela Valverde 2019, 24, 28). Takes the eastern Pyrenees from
+    hispania-citerior.
 
 - id: helvetii
   evidence: derived

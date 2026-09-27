@@ -111,6 +111,7 @@ const STATUS_RANK: Record<string, number> = {
   'royal seat': 1,
   conventus: 2,
   colonia: 3,
+  'colonia latina': 3,
   municipium: 4,
   'civitas libera': 4,
   'civitas foederata': 4,
