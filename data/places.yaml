@@ -70,9 +70,9 @@
       from: before 133 BCE
       to: 84 BCE
       note: >-
-        The Seleucid capital; from 113 the seat of Antiochus VIII and his line,
-        against Cyzicenus' line in Coele-Syria (App. Syr. 69). Under Tigranes'
-        governor Magadates in 83–70 (Syr. 48).
+        The Seleucid capital, which Antiochus VIII and Antiochus IX each held
+        in turn in their war from 113 (App. Syr. 69; Justin 39.3). Under
+        Tigranes' governor Magadates in 83–70 (Syr. 48).
     - value: royal seat
       from: 69 BCE
       to: 65 BCE
@@ -2585,7 +2585,10 @@
     - value: royal seat
       from: c. 132 BCE
       to: after 27 BCE
-      note: From the first king of the Edessene list, Aryu (Segal 1970).
+      note: >-
+        From the Chronicle of Edessa's first entry, "In the year 180 kings began
+        to rule in Edessa" (133/132); the first king of the Edessene list is
+        Aryu (Segal 1970).
   labelSide: n
   sources:
     - { source: pleiades, locator: places/658457 }

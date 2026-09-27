@@ -4628,15 +4628,18 @@
   to: 84 BCE
   sources:
     - { source: appian, locator: 'Syr. 68–70' }
-    - { source: justin, locator: '39.1–39.3, 40.1' }
+    - { source: justin, locator: '38.10, 39.1–39.3, 40.1' }
+    - { source: josephus-aj, locator: '13.365–371, 13.387–392' }
     - { source: ehling-2008 }
   confidence: probable
   review: needs-check
   note: >-
-    Antiochus VII Sidetes to his death in Media (129), then Demetrius II again,
-    Alexander Zabinas, and from 113 the war of Antiochus VIII Grypus at Antioch
-    and Antiochus IX Cyzicenus, who held Coele-Syria from Damascus; then their
-    sons, to Philip I and Antiochus XII (App. Syr. 68–69). Drawn as one kingdom:
+    Antiochus VII Sidetes to his death fighting the Parthians (129; Justin
+    38.10), then Demetrius II again, Alexander Zabinas, and from 113 the war of
+    Antiochus VIII Grypus and Antiochus IX Cyzicenus, each of whom held Antioch
+    in turn (App. Syr. 69; Justin 39.3); then their sons, Seleucus VI and
+    Antiochus X (Syr. 69), Philip I and Demetrius III at Damascus, and
+    Antiochus XII (AJ 13.365–371, 13.387–391). Drawn as one kingdom:
     who held which town in which year is argued from coins (Ehling) and not
     drawn. Damascus fell to Aretas III of Nabataea c. 85 (Josephus AJ 13.392)
     and is not split out. Ends with Tigranes' conquest.
@@ -4699,13 +4702,16 @@
   sources:
     - { source: appian, locator: 'Syr. 48' }
     - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 21.2' }
     - { source: josephus-aj, locator: '13.419–421' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Tigranes "took Syria itself and Phoenicia" (Strabo 11.14.15). Ptolemais
-    held out under Selene until he besieged it, c. 70–69, and withdrew when
-    Lucullus invaded Armenia (AJ 13.419–421).
+    Tigranes "took Syria itself and Phoenicia" (Strabo 11.14.15), and was
+    "still engaged in subduing some cities of Phoenicia" when Appius Clodius
+    came to him (Plut. Lucullus 21.2). Ptolemais held out under Selene until
+    he took it, c. 70, and went home on the news that Lucullus was in Armenia
+    (AJ 13.419–421).
 
 - atom: phoenicia
   polity: seleucid
@@ -5318,19 +5324,39 @@
   polity: armenia
   relation: independent
   from: before 133 BCE
+  to: 96 BCE
+  sources:
+    - { source: strabo, locator: '11.14.15' }
+    - { source: justin, locator: '38.3, 42.2' }
+    - { source: sherwin-white-1984 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Artaxiad kingdom under Artavasdes I, against whom Mithridates II "turned
+    his arms" (Justin 42.2). The war cost Armenia its heir: Tigranes "had long
+    before been committed as a hostage to the Parthians" (Justin 38.3). Whether
+    Armenia was then Parthia's vassal is not recorded; drawn independent, with
+    that doubt. Split from the row below in September 2026 by the check.
+
+- atom: armenia
+  polity: armenia
+  relation: independent
+  from: 95 BCE
   to: 67 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
-    - { source: justin, locator: '42.2' }
+    - { source: justin, locator: '40.1' }
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: sherwin-white-1984 }
   confidence: probable
   review: draft
   note: >-
-    The Artaxiad kingdom: Artavasdes I, against whom Mithridates II made war
-    (Justin 42.2); Tigranes II from c. 95, who had been a hostage in Parthia
-    and bought his return with "seventy valleys" (Strabo 11.14.15), which he
-    took back. The standing to Parthia before him is not drawn.
+    Tigranes II from c. 95, sent home by the Parthians for "seventy valleys in
+    Armenia" (Strabo 11.14.15), which he took back as he grew; by the 80s he
+    was "supported by an alliance with Parthia" (Justin 40.1), not its vassal.
+    The seventy valleys are not located and not drawn. Gordyene, in this atom,
+    was a kingdom of its own until Tigranes "subjugated" it (Strabo 11.14.15),
+    under its king Zarbienus (Plut. Lucullus 21.2); that is not drawn.
 
 - atom: sophene
   polity: sophene
@@ -5367,11 +5393,16 @@
   sources:
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: cassius-dio, locator: '36.52–53' }
-  confidence: probable
-  review: draft
+    - { source: appian, locator: 'Mithr. 105' }
+  confidence: uncertain
+  review: needs-check
   note: >-
-    As armenia (the row is armenia's). Pompey first gave Sophene to Tigranes'
-    son and took it back when he quarrelled with him (Dio 36.53); not drawn.
+    As armenia (the row is armenia's). In 66 Sophene was not reckoned part of
+    Tigranes' hereditary kingdom: Lucullus had "robbed him of" it (Plut.
+    Pompey 33.4), and Pompey took it from him and gave it to Tigranes' son,
+    whom he then put in chains (Dio 36.53.2–4). Appian has Sophene and
+    Gordyene then given to Ariobarzanes of Cappadocia (Mithr. 105). None of
+    this is drawn; who held Sophene after 66 wants a human decision.
 
 - atom: sophene
   polity: armenia
@@ -5428,11 +5459,13 @@
   to: 66 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
+    - { source: plutarch, locator: 'Lucullus 31.7' }
     - { source: cassius-dio, locator: '36.14.2' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15).
+    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15);
+    the Atropateni fought for him in 68 (Plut. Lucullus 31.7).
 
 - atom: atropatene
   polity: atropatene
@@ -5480,8 +5513,10 @@
     Mithridates "established himself as master, not only of Colchis, but also"
     of Lesser Armenia (Strabo 12.3.28); dated with Lesser Armenia
     (armenia-minor), between his sole rule and the war with Rome, when the
-    relation is Pontus' alliance with Rome. Before, "the country was divided
-    among sceptuchi" (11.2.18) and is unclaimed.
+    relation is Pontus' alliance with Rome. Before, under its own kings, "the
+    country being divided into 'sceptuchies'" (11.2.18), it is unclaimed; once
+    it was his, Mithridates "would always send one of his friends as
+    sub-governor or administrator of the country" (11.2.18).
 
 - atom: colchis
   polity: pontus-regnum
@@ -5502,13 +5537,14 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: justin, locator: '42.1–42.4' }
+    - { source: justin, locator: '38.10, 42.1–42.4' }
     - { source: debevoise-1938 }
     - { source: sherwin-white-1984 }
   confidence: certain
   review: draft
   note: >-
-    Not drawn inside the atom: Antiochus VII's recovery of Babylonia and Media
-    in 130–129 (Justin 38.10), Characene's independence under Hyspaosines, and
+    Not drawn inside the atom: Antiochus VII's recovery of Babylonia in 130–129,
+    when "nothing was left to the Parthians but their own country" (Justin
+    38.10), Characene's independence under Hyspaosines, and
     Tigranes' conquest of northern Mesopotamia and Adiabene (Strabo 11.14.15),
     none of which has a line the sources give at this grain.

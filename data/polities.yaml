@@ -920,14 +920,18 @@
     Aryu, from 132, and his successors; Abgar II, to 53; Ma'nu II, 52–34;
     Paqor, 34–29; Abgar III, from 29 (the Edessene list)
   sources:
+    - { source: chronicle-edessa, locator: 'year 180' }
     - { source: sullivan-1990 }
     - { source: segal-1970 }
   confidence: probable
   review: needs-check
   note: >-
     The kings of Edessa east of the Euphrates, "the boundaries of the Parthian
-    empire" (Strabo 16.1.28). The rulers follow the Edessene king-list as
-    Segal gives it, whose early dates he says are to be treated with caution.
+    empire" (Strabo 16.1.28). The start is the Chronicle of Edessa's first
+    entry, "In the year 180 kings began to rule in Edessa" (Seleucid year 180,
+    133/132). The rulers follow the Edessene king-list as Segal gives it
+    (not opened for this extension), whose early dates he says are to be
+    treated with caution.
     Its standing with Rome after the 60s is not known (see relations.yaml).
 
 - id: amanus
@@ -1139,8 +1143,8 @@
     One polity for a dynasty at war with itself: from 113 the kingdom was
     divided between Grypus at Antioch and Cyzicenus in Coele-Syria, and their
     sons after them; the reign dates are argued from coins (Ehling) and are
-    approximate. Antiochus VII won back Babylonia and Media in 130 and died in
-    Media in 129 (Justin 38.10). Tigranes held Syria and the Cilician plain in
+    approximate. Antiochus VII won back Babylon in 130 ("having got possession
+    of Babylon", Justin 38.10) and was killed fighting Phraates II in 129. Tigranes held Syria and the Cilician plain in
     83–70 (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set
     aside by Pompey in 64. What Antiochus XIII held beyond Antioch is doubtful:
     the rest of the country was in the hands of local dynasts.
@@ -1192,7 +1196,9 @@
   review: needs-check
   note: >-
     The Armenian kingdom of the Zariadrids west of the Tigris, seated at
-    Carcathiocerta, independent since the 190s. Tigranes deposed its last king,
+    Carcathiocerta, independent since Antiochus III's defeat by Rome (Strabo
+    11.14.15: "they joined the Romans and were ranked as autonomous, with the
+    title of king"). Tigranes deposed its last king,
     Artanes, soon after his accession (Strabo 11.14.15), c. 95–94.
 
 - id: paphlagonia
