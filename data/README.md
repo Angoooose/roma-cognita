@@ -69,11 +69,12 @@ at ingest and the validator asserts it. A consumer that wants the other conventi
 
 ## Scope
 
-The data covers 68–27 BCE: from the year before Pompey's eastern commands to the
-settlement of January 27. It was 68–43 until September 2026, when it was carried
-forward through the triumviral years to 27 (the research and its independent
-check of every citation are summarised in DOUBTS.md). Nothing reaches back before
-68 yet.
+The data covers 133–27 BCE: from Tiberius Gracchus' tribunate and Attalus'
+bequest to the settlement of January 27. It was 68–43 until September 2026, when
+it was carried forward through the triumviral years to 27, and then back through
+the Gracchi, Jugurtha, the Social War, Mithridates, Sulla and Sertorius to 133
+(the research and its independent check of every citation are summarised in
+DOUBTS.md, one section per extension). Nothing reaches back before 133 yet.
 
 ## Decisions
 
@@ -81,12 +82,15 @@ Modelling choices DESIGN.md does not settle, with the reasoning. Each wants
 confirming.
 
 1. **Window edges are open ends.** A row in force at the window's start reads
-   `before 68 BCE` and one still in force at its end reads `after 27 BCE`: in force
+   `before 133 BCE` and one still in force at its end reads `after 27 BCE`: in force
    at that year, extent beyond it not stated. Rows starting or ending inside the
    window carry their exact year. A later curator extending the window should
    treat every open end as a question, as the extension from 43 to 27 did: every
    `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
-   purpose (Osroene's standing with Rome, which nothing attests after 43).
+   purpose (Osroene's standing with Rome, which nothing attests after 43). The
+   extension back to 133 did the same for every `before 68 BCE`, except one left
+   open on purpose (the Kushite hold on Lower Nubia, which nothing dates before
+   68).
 
 2. **Where the true start is known but the atom is not the polity, the claim stays
    open.** Sicilia the province dates from 241 BCE (on the polity), but the atom is

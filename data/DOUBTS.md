@@ -22,9 +22,9 @@ The reasoning is in each record's `note`.
   from 47 (Dio 42.35); Judaea is a client from 63 and independent before;
   Galatia's and Emesa's seats are gone, because both are now drawn as
   territory.
-- **"Royal seat" status is wrong in two places:**
-  - Nicomedia: Bithynia was a province throughout.
-  - Bibracte: the Aedui had no king.
+- *Fixed September 2026:* Nicomedia is the royal seat of the Nicomedes to 75
+  and has no seat status after; Bibracte's royal seat is gone (the Aedui had no
+  king), and the oppidum dates from {120–100}.
 - *Fixed September 2026:* Cirta's royal seat ends in 47; Arelate is a colony
   from 46; Cicero's Cilicia ends in 44/43; the Cisalpina claim ends in 43 with
   its polity; the Parthian occupation of Syria in 40 is in the data; Noricum's
@@ -41,10 +41,11 @@ The reasoning is in each record's `note`.
 
 ## Before extending the window further
 
-The window's edges are written `before 68 BCE` / `after 27 BCE`. Extending it
+The window's edges are written `before 133 BCE` / `after 27 BCE`. Extending it
 means replacing each open end with a real date, which re-opens every record
 above. The extension from 43 to 27 did this for every open end but one
-(Osroene's relation, left open on purpose).
+(Osroene's relation, left open on purpose), and the extension back from 68 to
+133 for every one but the Kushite row on Lower Nubia.
 
 ## The extension to 27 BCE (September 2026)
 
