@@ -523,6 +523,9 @@
     - polity: asia
   confidence: certain
   review: draft
+  note: >-
+    The polity runs from Attalus' bequest of 133, so the commands against
+    Aristonicus (Crassus, Perperna, Aquillius) are joined to it.
 
 - dprr: Rhodes
   kind: territory
@@ -576,7 +579,9 @@
     western half to Bithynia as one province. Before 63 a Roman post in Pontus
     was a war against the king, not government of his kingdom, so it is not
     joined; commands over Bithynia in those years reach the province through
-    the Bithynia entry. Dated to match claims.yaml.
+    the Bithynia entry. Lucullus' hold on Pontus in 71–69 was a conquest
+    awaiting its commissioners, never a province, so it is not joined either.
+    Dated to match claims.yaml.
 
 - dprr: Galatia
   kind: territory
@@ -607,11 +612,19 @@
   kind: territory
   polities:
     - polity: cilicia
-  confidence: certain
-  review: draft
+  sources:
+    - { source: cicero-de-oratore, locator: '1.82' }
+    - { source: sumner-1978 }
+  confidence: probable
+  review: needs-check
   note: >-
     What else the governor of Cilicia held — Cyprus from 58 to 48, the
     Phrygian districts from 56 to 50 — follows from claims.yaml, not from here.
+    The polity starts with M. Antonius' command against the pirates (102) and
+    the law of 101/100 that made Cilicia a praetorian province, so the posts
+    of Antonius and of Sulla are joined; until Dolabella's of 80 these were
+    commands against the pirates more than the government of a territory
+    (claims.yaml).
 
 - dprr: Cyprus
   kind: territory

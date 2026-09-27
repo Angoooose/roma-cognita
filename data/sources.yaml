@@ -104,6 +104,7 @@
   citation: >-
     R. M. Kallet-Marx, Hegemony to Empire: The Development of the Roman
     Imperium in the East from 148 to 62 B.C. (Berkeley, 1995)
+  url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
 
 - id: wilkes-1969
   kind: modern
@@ -431,6 +432,66 @@
     fin du IIe siècle" (the Département,
     https://www.puy-de-dome.fr/culture/archeologie/plateau-de-gergovie/poi-au-temps-des-oppida.html).
 
+# Added for the extension to 133 BCE, Anatolia (September 2026). The ancient
+# texts were read in English translation (Justin, Memnon) or in Latin (Cicero)
+# on the pages given; a note says how much of each modern work was read.
+
+- id: sherwin-white-1976
+  kind: modern
+  citation: >-
+    A. N. Sherwin-White, "Rome, Pamphylia and Cilicia, 133–70 B.C.", Journal of
+    Roman Studies 66 (1976) 1–14
+  url: https://www.cambridge.org/core/journals/journal-of-roman-studies/article/abs/rome-pamphylia-and-cilicia-13370-bc/51CDA88670DB806F4A2A39AC556417BC
+  note: >-
+    Only the footnotes the publisher's page shows were read (nn. 6, 7, 12, 18,
+    24, 25, 41, 51, 54, 61, checked again in the independent check); the main
+    text is cited through them.
+
+- id: sumner-1978
+  kind: modern
+  citation: >-
+    G. V. Sumner, "The 'Piracy Law' from Delphi and the Law of the Cnidos
+    Inscription", Greek, Roman, and Byzantine Studies 19 (1978) 211–225
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/7401
+  note: >-
+    Open access; read. Transcribes and discusses the law of 101/100: the Cilicia
+    clause (Cnidus col. III 28–37), and the clauses on the governor of Macedonia
+    and T. Didius' conquest (Knidos IV 6–11, Delphi B 27–29; pp. 218–219, 225).
+
+- id: mcging-1980
+  kind: modern
+  citation: >-
+    B. C. McGing, "Appian, Manius Aquillius, and Phrygia", Greek, Roman, and
+    Byzantine Studies 21 (1980) 35–42
+  url: https://grbs.library.duke.edu/index.php/grbs/article/view/6961
+  note: Open access; read.
+
+- id: mcging-1986
+  kind: modern
+  citation: >-
+    B. C. McGing, The Foreign Policy of Mithridates VI Eupator, King of Pontus,
+    Mnemosyne Supplements 89 (Leiden: Brill, 1986)
+  note: Not read; cited for the conventional chronology, which rests on the ancient texts cited beside it.
+
+- id: justin
+  kind: ancient
+  citation: Justin, Epitome of the Philippic History of Pompeius Trogus
+  url: https://topostext.org/work/226
+  note: Watson's translation (1853); cited by book and chapter, with the conventional sections.
+
+- id: memnon
+  kind: ancient
+  citation: Memnon of Heraclea, History of Heraclea (FGrHist 434), from Photius, Bibliotheca 224
+  url: https://www.attalus.org/translate/memnon2.html
+
+- id: cicero-qfr
+  kind: ancient
+  citation: Cicero, Epistulae ad Quintum Fratrem
+
+- id: cicero-de-oratore
+  kind: ancient
+  citation: Cicero, De Oratore
+
 # --- ancient texts -------------------------------------------------------------
 
 - id: caesar-bg
@@ -579,20 +640,6 @@
   kind: ancient
   citation: Sallust, Bellum Iugurthinum
   note: Cited by chapter and section; read in Rolfe's Loeb translation on ToposText.
-
-- id: justin
-  kind: ancient
-  citation: Justin, Epitome of the Philippic History of Pompeius Trogus
-
-- id: lex-de-provinciis-praetoriis
-  kind: ancient
-  citation: >-
-    The Roman law on the praetorian provinces and the pirates, 101/100 BCE, in
-    Greek copies from Delphi (SEG III 378) and Cnidus (SEG XXVI 1227); M. H.
-    Crawford (ed.), Roman Statutes (London, 1996) no. 12
-  note: >-
-    Not read in the original here; its mention of the kings of Egypt, Cyprus and
-    Cyrene is as Bennett (Egyptian Royal Genealogy, "Ptolemy Apion") reports it.
 
 - id: bennett-ptolemies
   kind: modern
@@ -1286,16 +1333,6 @@
 # Added September 2026. Each was opened: Sumner's article in full (GRBS, open
 # access), the decree in the English translation on the Chersonesos museum's site.
 
-- id: sumner-1978
-  kind: modern
-  citation: >-
-    G. V. Sumner, "The 'Piracy Law' from Delphi and the Law of the Cnidos
-    Inscription", Greek, Roman and Byzantine Studies 19.3 (1978), 211–225
-  url: https://grbs.library.duke.edu/index.php/grbs/article/view/7401
-  note: >-
-    Transcribes and discusses the clauses of both copies of the law of 101/100
-    on the governor of Macedonia and T. Didius' conquest (pp. 218–219, 225).
-
 - id: lex-provinciis-praetoriis
   kind: ancient
   citation: >-
@@ -1307,7 +1344,10 @@
     transcribed in Sumner 1978, 218; Roman Statutes itself was not opened.
     Sumner dates the law late in 100 or early in 99 (pp. 219, 225), not
     101/100. English renderings in the notes are ours from his Greek, not
-    quotations.
+    quotations. Its naming of the kings of Egypt, Cyprus and Cyrene (Delphi
+    copy, SEG III 378) and "the king who holds Cyprus" (Cnidus copy, SEG XXVI
+    1227) are as Bennett (Egyptian Royal Genealogy, "Ptolemy Apion") reports
+    them.
 
 - id: diophantus-decree
   kind: ancient

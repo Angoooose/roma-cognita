@@ -7,7 +7,7 @@
 # Anything that wants a human with the books open is review: needs-check.
 #
 # Dates. `from` is the province's creation where one is recorded. Every other
-# `before 68 BCE` / `after 27 BCE` marks where the 68–27 BCE window cuts the
+# `before 133 BCE` / `after 27 BCE` marks where the 133–27 BCE window cuts the
 # record off: the polity existed at that year and this data says nothing about
 # how far beyond it (see data/README.md, "Open ends"). The year of a transition
 # belongs to the successor: a kingdom annexed in 46 ends in 47.
@@ -167,16 +167,31 @@
   kind: province
   names:
     - { text: Asia, lang: la, preferred: true }
-  from: 129 BCE
+  from: 133 BCE
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
+    - { source: strabo, locator: '13.4.2, 14.1.38' }
+    - { source: plutarch, locator: 'Ti. Gracch. 14.1' }
+    - { source: livy-per, locator: '58–59' }
+    - { source: velleius, locator: '2.4.1' }
+    - { source: kallet-marx-1995, locator: 'pp. 112–115' }
     - { source: magie-1950, locator: 'vol. I, 427–446' }
     - { source: cassius-dio, locator: '53.12.4' }
-  confidence: certain
-  review: draft
+  confidence: probable
+  review: needs-check
   note: >-
-    The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
+    Attalus III died in 133 and his will made the Roman people his heir (Plut.
+    Ti. Gracch. 14.1; Livy Per. 58); "the Romans proclaimed the country a
+    province, calling it Asia" (Strabo 13.4.2). The war with Aristonicus kept
+    it from being organised until M'. Aquillius, consul in 129, "came over as
+    consul with ten lieutenants and organised the province into the form of
+    government that still now endures" (14.1.38); he triumphed on 11 November
+    126. The polity is dated from the bequest; Crassus, consul in 131, fell as
+    "proconsul of Asia" (Vell. 2.4.1); 129 is the date usually given for the
+    province's organisation. No capital is recorded before Cicero's day:
+    governors spent their time chiefly at Ephesus and Pergamum (Kallet-Marx
+    114–115). Overrun by Mithridates in 88–86. The Liberators' in 43–42, Antony's from Philippi. Overrun by Labienus and
     the Parthians in 40, except the islands and Stratonicea (Dio 48.26.3–4),
     and cleared by Ventidius in 39; Stratonicea and Aphrodisias were made free.
     A consular province of the people in 27 (Dio 53.12.4).
@@ -222,9 +237,14 @@
   kind: province
   names:
     - { text: Cilicia, lang: la, preferred: true }
-  from: 80 BCE
+  from: { earliest: 102 BCE, latest: 100 BCE }
   to: { earliest: 44 BCE, latest: 43 BCE }
   sources:
+    - { source: livy-per, locator: '68' }
+    - { source: cicero-de-oratore, locator: '1.82' }
+    - { source: sumner-1978 }
+    - { source: sherwin-white-1976, locator: 'nn. 12, 18, 24, 25' }
+    - { source: cicero-verr, locator: '2.1.44' }
     - { source: cah-ix, locator: ch. 8 }
     - { source: broughton-mrr, locator: vol. II }
     - { source: cicero-phil, locator: '11.30' }
@@ -233,7 +253,19 @@
   confidence: probable
   review: draft
   note: >-
-    Cicero's own province in 51–50, when it also carried Cyprus, Pamphylia,
+    First a command against the pirates: M. Antonius went "pro consule in
+    Ciliciam" in 102 (Cic. De orat. 1.82; Livy Per. 68), and the law on the
+    praetorian provinces of 101/100 says that "Cilicia has for this reason
+    been made a praetorian province in accordance with this law" (Cnidus copy,
+    col. III 28–37, in Sumner's translation). Sulla held it as praetor, in
+    some year between 96 and 92. Dolabella's "provincia Cilicia constituta" of 80
+    (Verr. 2.1.44) is the first governorship with its ground in view (Pamphylia,
+    Pisidia, Lycia); P. Servilius (78–74) took the pirate strongholds of the
+    Lycian coast and Isauria. Whether it was a territory before Pompey or a
+    sphere of command is argued (Sherwin-White 1976, n. 18, for a territorial
+    base in Pamphylia; Borgia 2017, 299–300, for a sphere of competence until
+    Pompey). Cicero's own
+    province in 51–50, when it also carried Cyprus, Pamphylia,
     Pisidia, Lycaonia and three Phrygian dioceses detached from Asia. A
     provincia in this period is a portfolio, not a territory. It lapsed soon
     after Caesar's death: the senate's decree of 43 gives Cassius "Syria, Asia,
@@ -689,11 +721,15 @@
   kind: kingdom
   names:
     - { text: Galatia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  ruler: Deiotarus, c. 63–40; Castor, 40–37/36; Amyntas, 36–25
+  ruler: >-
+    the tetrarchs of the three peoples, to c. 63; Deiotarus, c. 63–40; Castor,
+    40–37/36; Amyntas, 36–25
   sources:
     - { source: cicero-deiotaro }
+    - { source: appian, locator: 'Mithr. 17, 46, 75' }
+    - { source: livy-per, locator: '94.2' }
     - { source: cassius-dio, locator: '48.33.5' }
     - { source: cassius-dio, locator: '49.32.3' }
     - { source: strabo, locator: '12.5.1' }
@@ -701,6 +737,13 @@
   confidence: probable
   review: draft
   note: >-
+    Before Deiotarus the Galatians were three peoples under tetrarchs, not a
+    kingdom; the polity covers them because the ground and its standing to Rome
+    are the same record. Rome raised forces from "the Galatians of Asia" in 89
+    (App. Mithr. 17). In 86 Mithridates put its tetrarchs to death, some at a
+    banquet, garrisoned their towns and set a satrap, Eumachus, over it; the
+    three who escaped drove him out (Mithr. 46). Deiotarus, one of them, beat Mithridates'
+    generals in Phrygia in the war of the 70s (Mithr. 75; Livy Per. 94.2).
     Deiotarus confirmed by Pompey in 63. At his death in 40 his lands and
     Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
     37/36 to Amyntas, Antony's king in Pisidia since 39 (App. BC 5.75), who
@@ -715,11 +758,22 @@
   kind: kingdom
   names:
     - { text: Cappadocia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
-  ruler: Ariobarzanes III, 51–43/42; Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
+  ruler: >-
+    Ariarathes V, to 130; Ariarathes VI, 130–c. 116; Ariarathes VII, c. 116–c.
+    100; Ariarathes IX (Mithridates' son), c. 100–c. 96; Ariobarzanes I, c.
+    96/95–c. 63/62; Ariobarzanes II, c. 63/62–52/51; Ariobarzanes III, 51–43/42;
+    Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
   sources:
+    - { source: justin, locator: '37.1, 38.1–38.3' }
+    - { source: strabo, locator: '12.2.11' }
+    - { source: plutarch, locator: 'Sulla 5.3' }
+    - { source: appian, locator: 'Mithr. 10–11, 15, 60, 66–67' }
     - { source: sullivan-1990 }
+    - { source: mcging-1986 }
+    - { source: mcging-1980, locator: 'p. 37 n. 14' }
+    - { source: kallet-marx-1995, locator: 'pp. 295, 356–359' }
     - { source: cicero-fam, locator: XV }
     - { source: cassius-dio, locator: '49.32.3' }
     - { source: strabo, locator: '12.2.11' }
@@ -727,8 +781,26 @@
   confidence: probable
   review: draft
   note: >-
-    Cicero was charged with protecting Ariobarzanes during his Cilician
-    command. Cassius' cavalry killed him — late 43 on Appian (BC 4.63), in 42
+    Ariarathes V fell fighting Aristonicus in 130, and Rome gave his sons
+    Lycaonia (Justin 37.1); their mother poisoned five of the six. Ariarathes
+    VI was murdered through Gordius at Mithridates' prompting; Nicomedes III
+    seized the kingdom with the widowed Laodice; Mithridates restored his
+    nephew Ariarathes VII, killed him at a parley, and gave the throne to his
+    own son of eight as Ariarathes IX under Gordius (Justin 38.1). The senate
+    took Cappadocia from him and let the Cappadocians choose a king:
+    Ariobarzanes (Justin 38.2; Strabo 12.2.11), whom Sulla put on the throne
+    against Gordius (Plut. Sulla 5.3). He was driven out in 90 — by
+    Mithridates' generals in Appian, by Tigranes in Justin, very likely the
+    same event (Kallet-Marx 356–359) — and restored by Aquillius' embassy
+    (App. Mithr. 10–11; Justin 38.3), overrun again in the war of 89–85 and restored by Curio
+    after Dardanus (Mithr. 15, 60); Mithridates kept part of it after Murena's
+    war until Sulla made him give it up, and Tigranes carried off its people
+    to Tigranocerta in 78 or 77 (Mithr. 66–67; Strabo 12.2.9; Kallet-Marx
+    295). The years of the kings before Ariobarzanes are modern reckonings;
+    Sulla's mission is dated 96 (Badian, Kallet-Marx), 95/94 (Sherwin-White,
+    who has Tigranes drive Ariobarzanes out first) or 92 (the older view)
+    (McGing 1980, 37 n. 14). Cicero was charged
+    with protecting Ariobarzanes III during his Cilician command. Cassius' cavalry killed him — late 43 on Appian (BC 4.63), in 42
     on Dio (47.33.4) — and Ariarathes X followed. Antony judged between
     Ariarathes and "Sisina" in 41 and gave the kingdom to Sisina (App. BC 5.7),
     but only Ariarathes minted (Luke 2025); in 36 Antony gave Cappadocia to
@@ -874,18 +946,35 @@
   kind: kingdom
   names:
     - { text: Pontus, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: 63 BCE
-  ruler: Mithridates VI Eupator, 120–63
+  ruler: >-
+    Mithridates V Euergetes, to c. 120; Mithridates VI Eupator, c. 120–63 (at
+    first with his mother as joint ruler)
   sources:
-    - { source: appian, locator: 'Mithr. 88–111' }
+    - { source: strabo, locator: '10.4.10' }
+    - { source: memnon, locator: '22.2' }
+    - { source: justin, locator: '37.1–38.7' }
+    - { source: appian, locator: 'Mithr. 10–21, 55–58, 64–83, 88–111' }
+    - { source: mcging-1986 }
     - { source: sherwin-white-1984, locator: 'chs. 7–8' }
+    - { source: kallet-marx-1995, locator: 'pp. 303, 312' }
   confidence: certain
   review: draft
   note: >-
-    Mithridates' kingdom in its last years: he won back Pontus in 68 and was
-    driven out by Pompey in 66, fleeing by Colchis to the Bosporus, where he
-    died in 63.
+    Mithridates V, a friend and ally of Rome who fought for it against
+    Aristonicus and was given Greater Phrygia for it, was murdered at Sinope
+    (Strabo 10.4.10); his son succeeded at eleven (Strabo) or thirteen (Memnon
+    22.2) with his mother, whom he later imprisoned. The years c. 120 and c. 113
+    for his accession and sole rule are modern reckonings; no ancient text
+    gives them. He took Lesser Armenia and Colchis, the Bosporus by Parisades'
+    gift, part of Paphlagonia with Nicomedes III, and Cappadocia for his son;
+    overran Bithynia and Asia in 89–88 and gave them up at Dardanus in 85,
+    keeping "his ancestral dominions" (App. Mithr. 55, 58). Lucullus took the
+    kingdom in 72–70, and "by the end of 70 … Mithridates' kingdom was entirely
+    in Lucullus's hands" (Kallet-Marx 303); he slipped back in 68, beat
+    Triarius at Zela in 67, was driven out by Pompey in 66, fled by Colchis to
+    the Bosporus, and died there in 63.
 
 - id: armenia
   kind: kingdom
@@ -1068,7 +1157,7 @@
   kind: kingdom
   names:
     - { text: Olba, lang: la, preferred: true }
-  from: before 68 BCE
+  from: 67 BCE
   to: after 27 BCE
   ruler: the Teucrid priest-dynasts; Aba, by Antony's and Cleopatra's favour, then her descendants
   sources:
@@ -1077,7 +1166,11 @@
   confidence: probable
   review: needs-check
   note: >-
-    Aba, daughter of Xenophanes, held the priest-dynasty because "both Antony
+    The priests of Zeus at Olba had been dynasts of the Tracheia, but "then the
+    country was beset by numerous tyrants, and the gangs of pirates were
+    organised. And after the overthrow of these they called this country the
+    domain of Teucer" (Strabo 14.5.10); so the polity is dated from Pompey's
+    war on the pirates in 67. Aba, daughter of Xenophanes, held the priest-dynasty because "both Antony
     and Cleopatra conferred it upon her as a favour"; she was overthrown, "but
     the empire remained with her descendants" (Strabo 14.5.10). Its standing
     under Antony — his client, or Cleopatra's dependant within her grant of
@@ -1110,7 +1203,7 @@
   kind: league
   names:
     - { text: Lycia, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.3.2–3' }
@@ -1129,7 +1222,7 @@
   kind: city-state
   names:
     - { text: Rhodus, lang: la, preferred: true }
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources:
     - { source: strabo, locator: '14.2.2–4' }
@@ -1665,7 +1758,7 @@
   sources:
     - { source: justin, locator: '39.5.2' }
     - { source: livy-per, locator: '70' }
-    - { source: lex-de-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
+    - { source: lex-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
     - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
   confidence: probable
   review: needs-check
@@ -1954,3 +2047,87 @@
     the Tolosates were "a state in the Province" (BG 1.10). When the alliance
     began is not recorded: after the war of 121, and by the foundation of Narbo
     on their borders in 118, is the likeliest reading.
+
+# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+
+- id: bithynia-regnum
+  kind: kingdom
+  names:
+    - { text: Bithynia, lang: la, preferred: true, note: the kingdom of the Nicomedes }
+  from: before 133 BCE
+  to: 75 BCE
+  ruler: >-
+    Nicomedes II Epiphanes, to c. 128/127; Nicomedes III Euergetes, c.
+    128/127–c. 94; Nicomedes IV Philopator, c. 94–75/74
+  sources:
+    - { source: appian, locator: 'Mithr. 7, 10–11, 13, 18–20, 60, 71' }
+    - { source: memnon, locator: '22.5' }
+    - { source: justin, locator: '37.4, 38.1–38.3' }
+    - { source: livy-per, locator: '93.2' }
+    - { source: eutropius, locator: '6.6.1' }
+    - { source: magie-1950 }
+  confidence: certain
+  review: draft
+  note: >-
+    A friend of Rome, which sent help against Aristonicus (Strabo 14.1.38).
+    Nicomedes III shared Paphlagonia with Mithridates and seized Cappadocia with
+    Laodice (Justin 37.4, 38.1). Nicomedes IV, whom the senate recognised, was
+    driven out by his brother Socrates Chrestus with Mithridates' troops in 90
+    and restored by Aquillius' embassy (App. Mithr. 10–11, 13; Memnon 22.5);
+    beaten on the Amnias in the war that followed, he fled to Italy (Mithr.
+    18–20; Strabo 12.3.40), and Curio restored him after Dardanus (Mithr. 60).
+    He died childless and left the kingdom to Rome (Mithr. 71; Livy Per. 93.2).
+    Eutropius puts his death in the consulship of Lucullus and Cotta, 74
+    (6.6.1); Livy's epitome tells it among the events of 75. The province is
+    dated from 74 (bithynia-pontus), so the kingdom ends with 75. The years of
+    the first two kings are modern reckonings.
+
+- id: aristonicus
+  kind: kingdom
+  names:
+    - { text: Aristonicus, preferred: true, note: the kingdom he claimed as Eumenes III }
+    - { text: Eumenes III }
+  from: 133 BCE
+  to: 130 BCE
+  ruler: Aristonicus (King Eumenes), 133–130
+  sources:
+    - { source: strabo, locator: '14.1.38' }
+    - { source: florus, locator: '1.35.4–7' }
+    - { source: justin, locator: '36.4' }
+    - { source: eutropius, locator: '4.20' }
+    - { source: orosius, locator: '5.10.1–5' }
+    - { source: velleius, locator: '2.4.1' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
+  confidence: certain
+  review: draft
+  note: >-
+    Eumenes II's bastard son, who claimed Attalus' kingdom against the will.
+    He raised Leucae, lost a sea battle to the Ephesians off Cyme, and went
+    inland with the poor and the slaves he called Heliopolitae; he took
+    Thyateira and Apollonis (Strabo 14.1.38) and by force Myndus, Samos and
+    Colophon (Florus 1.35.4). He beat and killed the consul Crassus near Leucae
+    (131 or 130), was beaten by Perperna and starved out of Stratonicea, where he
+    had fled (Eutropius 4.20; Orosius 5.10), late in 130 or in the winter
+    after, and died in prison at Rome; Aquillius finished the war in 129. His
+    extent is not known — cities and fortresses, not a territory — so he is
+    drawn as a seat (seats.yaml).
+
+- id: cibyra
+  kind: city-state
+  names:
+    - { text: Cibyra, lang: la, preferred: true }
+  from: before 133 BCE
+  to: c. 83 BCE
+  ruler: its tyrants; Moagetes, the last
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: kallet-marx-1995, locator: 'p. 114' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    "It was always ruled by tyrants", over a tetrapolis of Cibyra, Bubon,
+    Balbura and Oenoanda, until "the tyranny ended in the time of Moagetes,
+    when Murena overthrew it" (Strabo 13.4.17); Murena governed Asia in 84–81.
+    Sherwin-White has the tetrapolis independent "to c. 82" (n. 6),
+    Kallet-Marx has Murena capture it in 83 (114).

@@ -1401,6 +1401,40 @@
 
 # === Anatolia ==================================================================
 
+- id: cibyra
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [29.2, 37.1]
+          note: asia-phrygia's old line against the Lycian side, kept
+        - at: [29.7, 37.05]
+          note: north of Balbura, which was one of the four cities
+        - [29.85, 37.15]
+        - [29.8, 37.35]
+        - [29.5, 37.45]
+        - [29.2, 37.35]
+        - [29.15, 37.2]
+  anchor:
+    at: [29.49, 37.2]
+    note: Cibyra
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
+    - { source: barrington, locator: 'map 65' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Cibyra's own land, round the city (Pleiades 638804) in the upper Indus
+    valley. Strabo: "It was always ruled by tyrants … However, the tyranny
+    ended in the time of Moagetes, when Murena overthrew it and included
+    Balbura and Bubon within the territory of the Lycians. But none the less
+    the jurisdiction of Cibyra is rated among the greatest in Asia" (13.4.17).
+    Split from asia-phrygia (September 2026, for the extension to 133) because
+    the tyranny held it until Murena, governor of Asia in 84–81; its southern
+    line is asia-phrygia's, unchanged, and its northern edge towards the
+    Phrygian districts is a convention.
+
 - id: asia-phrygia
   evidence: schematic
   construction:
@@ -1435,7 +1469,39 @@
     Apamean and the Synnadic — which passed from Asia to Cilicia c. 57/56 and
     back to Asia under the proconsul C. Fannius in 49 (Dmitriev n. 80, after
     Magie and Sherk RDGE 52). Cicero held assizes for them as governor of
-    Cilicia in 50 (Att. 5.21.9). The district lines are approximate.
+    Cilicia in 50 (Att. 5.21.9). The district lines are approximate. Cibyra's
+    own land is its own atom from September 2026 (cibyra), cut out of this one.
+
+- id: bubon-balbura
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [29.15, 37.2]
+          note: drawn into cibyra and asia-phrygia, which take the northern line
+        - [29.85, 37.2]
+        - at: [29.75, 36.95]
+          note: east of Balbura (Pleiades 638789)
+        - at: [29.68, 36.72]
+          note: south of Oenoanda (Pleiades 639013)
+        - [29.45, 36.7]
+        - at: [29.28, 36.85]
+          note: west of Bubon (Pleiades 638792)
+        - [29.12, 37.0]
+  sources:
+    - { source: strabo, locator: '13.4.17' }
+    - { source: barrington, locator: 'map 65' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Bubon, Balbura and Oenoanda, three of the four cities of Cibyra's
+    tetrapolis (Strabo 13.4.17), which Murena gave to the Lycians when he put
+    down the tyranny. Split (September 2026, for the extension to 133) from
+    the ground of asia and lycia: until then Bubon and Balbura fell in a strip
+    of asia between asia-phrygia's line and asia's own southern edge, though
+    lycia's note meant them to be Lycian. Strabo names only Bubon and Balbura;
+    Oenoanda, Lycian later, is drawn with them. Takes its northern line from
+    cibyra and asia-phrygia.
 
 - id: asia
   evidence: derived
@@ -1975,6 +2041,35 @@
     Cibyran cities Bubon and Balbura. The treaty of 24 July 46 names the towns
     assigned to it. Takes its edges from asia, asia-phrygia and cilicia.
 
+- id: caunus
+  evidence: schematic
+  construction:
+    - method: outline
+      edge:
+        - at: [28.45, 36.6]
+          note: west of Lake Köyceğiz, a convention for Caunus' western bound
+        - [28.45, 37.1]
+        - [28.95, 37.1]
+        - [28.95, 36.6]
+  anchor:
+    at: [28.66, 36.86]
+    note: Caunus (Pleiades 638796)
+  sources:
+    - { source: strabo, locator: '14.2.2–3' }
+    - { source: appian, locator: 'Mithr. 23' }
+    - { source: cicero-qfr, locator: '1.1.33' }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Caunus and its land by the Calbis and Lake Köyceğiz. Split from
+    rhodian-peraea (September 2026, for the extension to 133) because it was
+    not Rhodian for the whole span: "made subject to Rhodes after the war
+    against Antiochus and … lately liberated by the Romans" (App. Mithr. 23),
+    it was given back to Rhodes by Sulla, and in the 50s the Caunians asked the
+    senate to pay their tribute to Rome rather than to the Rhodians (Cicero,
+    Q. fr. 1.1.33). Takes its edges from asia and lycia; the western line is a
+    convention.
+
 - id: rhodian-peraea
   evidence: derived
   construction:
@@ -1995,7 +2090,8 @@
   review: draft
   note: >-
     Rhodes with its mainland Peraea: the Loryma peninsula, Physcus and Caunus
-    (Strabo 14.2.2–4). Takes its edges from asia and lycia.
+    (Strabo 14.2.2–4). Takes its edges from asia and lycia. Caunus is its own
+    atom from September 2026 (caunus), cut out of this one.
 
 - id: olba
   evidence: schematic

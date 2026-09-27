@@ -78,11 +78,12 @@
 - polity: asia
   type: province-of
   of: rome
-  from: 129 BCE
+  from: 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
-  confidence: certain
-  review: draft
+  sources: [{ source: broughton-mrr }, { source: strabo, locator: '13.4.2' }]
+  confidence: probable
+  review: needs-check
+  note: From Attalus' bequest (133); organised by Aquillius from 129 (polities.yaml).
 
 - polity: gallia-transalpina
   type: province-of
@@ -96,11 +97,15 @@
 - polity: cilicia
   type: province-of
   of: rome
-  from: 80 BCE
+  from: { earliest: 102 BCE, latest: 100 BCE }
   to: { earliest: 44 BCE, latest: 43 BCE }
-  sources: [{ source: cah-ix, locator: ch. 8 }, { source: broughton-mrr, locator: vol. II }]
+  sources:
+    - { source: cah-ix, locator: ch. 8 }
+    - { source: broughton-mrr, locator: vol. II }
+    - { source: sumner-1978 }
   confidence: probable
-  review: draft
+  review: needs-check
+  note: From Antonius' command of 102 and the law of 101/100 (polities.yaml).
 
 - polity: gallia-cisalpina
   type: province-of
@@ -363,7 +368,19 @@
 - polity: galatia
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
+  to: 64 BCE
+  sources: [{ source: appian, locator: 'Mithr. 17, 75' }]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The tetrarchs' standing before Pompey is not stated; they fought on Rome's
+    side in 89 and in the 70s.
+
+- polity: galatia
+  type: client-of
+  of: rome
+  from: 63 BCE
   to: after 27 BCE
   sources: [{ source: cicero-deiotaro }]
   confidence: probable
@@ -372,7 +389,7 @@
 - polity: cappadocia
   type: client-of
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
   confidence: probable
@@ -447,7 +464,7 @@
 - polity: lycia
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: mitchell-2005 }]
   confidence: certain
@@ -456,7 +473,7 @@
 - polity: rhodus
   type: allied-to
   of: rome
-  from: before 68 BCE
+  from: before 133 BCE
   to: after 27 BCE
   sources: [{ source: fraser-bean-1954 }]
   confidence: certain
@@ -855,3 +872,34 @@
     - { source: cassius-dio, locator: '49.44.4' }
   confidence: uncertain
   review: needs-check
+
+# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+
+- polity: bithynia-regnum
+  type: client-of
+  of: rome
+  from: before 133 BCE
+  to: 75 BCE
+  sources:
+    - { source: strabo, locator: '14.1.38' }
+    - { source: appian, locator: 'Mithr. 10–11, 60, 71' }
+  confidence: certain
+  review: draft
+  note: >-
+    A friend of Rome: Nicomedes II sent help against Aristonicus (Strabo
+    14.1.38), and Rome twice restored Nicomedes IV, who left it his kingdom.
+
+- polity: pontus-regnum
+  type: allied-to
+  of: rome
+  from: before 133 BCE
+  to: 90 BCE
+  sources:
+    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
+    - { source: justin, locator: '37.1, 38.5' }
+  confidence: probable
+  review: needs-check
+  note: >-
+    Mithridates V fought for Rome against Aristonicus and was rewarded with
+    Greater Phrygia (Justin 37.1); his son was still formally a friend and ally
+    of Rome until the war of 89 (App. Mithr. 10–13, 56–57).
