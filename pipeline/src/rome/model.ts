@@ -150,6 +150,13 @@ const STONE_OF: Record<
       why: 'Metellus was "the first to build a temple in Rome entirely of marble" (Iuppiter Stator, p. 304)',
     },
   ],
+  'aedes-martis-in-circo': [
+    {
+      from: -100000,
+      stone: 'marble',
+      why: "Hermodorus's temple of about 133 BCE, its columns of Greek marble 1.10–1.15 m thick, the second marble temple in Rome after Jupiter Stator's (Cavallero 2018, pp. 325–327)",
+    },
+  ],
   'aedes-apollinis-palatini': [
     {
       from: -100000,
@@ -1023,8 +1030,11 @@ export function bakeModel(m: ModelInput) {
   // Monuments standing from before the window keep houses off their sites for good;
   // later ones take their site from the houses in the year they were begun.
   const clearing = monuments.filter((mo) => mo.clear !== false)
-  const early = clearing.filter((mo) => yearsOf(mo.id)[0] <= WINDOW[0])
-  const late = clearing.filter((mo) => yearsOf(mo.id)[0] > WINDOW[0])
+  // So do those whose design says their site was open ground before them (`open`).
+  const keptOpen = (mo: (typeof monuments)[number]) =>
+    yearsOf(mo.id)[0] <= WINDOW[0] || mo.design?.d.open === true
+  const early = clearing.filter(keptOpen)
+  const late = clearing.filter((mo) => !keptOpen(mo))
   const inside = (p: Pt, mo: (typeof monuments)[number]) =>
     inRing(p, mo.rings[0]) && !mo.rings.slice(1).some((h) => inRing(p, h))
   const monumentGrid = new SegmentGrid(
@@ -1587,9 +1597,13 @@ export async function writeGround(
  * When a monument stands in the model: its years, and the span within them when it
  * was building or lay burnt (the conditions that are not `standing`, run together),
  * which the model shows part-built. Astronomical years.
+ *
+ * A building may be part-built more than once in the window — the Capitol's temple
+ * standing, burnt in 83 BCE, rising again and dedicated in 69 — so `spans` keeps each
+ * spell apart, a burnt one and the works that follow it each as itself.
  */
 function dates(p: Place | undefined) {
-  if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false }
+  if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false, spans: [] }
   const weak = p.condition.filter((c) => c.value !== 'standing')
   return {
     years: [p.from.year, p.to.year],
@@ -1598,6 +1612,10 @@ function dates(p: Place | undefined) {
       : null,
     // A shell left by fire, not works in progress, when fire is all it suffered.
     burnt: weak.length > 0 && weak.every((c) => c.value === 'burnt'),
+    spans: weak.map((c) => ({
+      years: [c.from.year, c.to.year],
+      burnt: c.value === 'burnt',
+    })),
   }
 }
 

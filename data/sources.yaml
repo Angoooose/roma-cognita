@@ -985,6 +985,250 @@
     temple rebuilt in the empire on its republican podium is outlined as rebuilt.
     Copied into data/geometry/rome.geojson with the date it was fetched.
 
+# --- the model of Rome carried back to 133 BCE (DESIGN.md §7.7) -------------
+# Added September 2026 for the buildings built, rebuilt, burnt or pulled down in
+# 133–68 BCE. Where a work was read only through another that summarises it, its
+# note says which.
+
+- id: obsequens
+  kind: ancient
+  citation: Julius Obsequens, Liber prodigiorum
+  url: https://www.thelatinlibrary.com/obsequens.html
+  note: >-
+    The prodigies of 190–12 BCE, drawn from Livy: the fires of 111 BCE ("a very great
+    part of the city", 39) and of the Capitol in 83 (57), and Caecilia Metella's dream
+    of Juno Sospita in 90 (55). Locators are its chapters.
+
+- id: valerius-maximus
+  kind: ancient
+  citation: Valerius Maximus, Facta et dicta memorabilia
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Valerius_Maximus/home.html
+  note: 1.8.11, the Magna Mater's fire; 4.4.11, "veteris Capitolii humilia tecta".
+
+- id: tacitus-hist
+  kind: ancient
+  citation: Tacitus, Historiae
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Tacitus/Histories/3C*.html
+  note: >-
+    3.71–72: the Capitol's temple burnt in 83 BCE, rebuilt by Sulla "on the same spot"
+    and dedicated by Catulus.
+
+- id: gellius
+  kind: ancient
+  citation: Aulus Gellius, Noctes Atticae
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Gellius/2*.html
+  note: 2.10, Varro on the favisae and Catulus's wish to lower the Area Capitolina.
+
+- id: cicero-div
+  kind: ancient
+  citation: Cicero, De divinatione
+  url: https://www.thelatinlibrary.com/cicero/divinatione1.shtml
+  note: 1.4 and 1.99, the temple of Juno Sospita restored in 90 BCE after Caecilia's dream.
+
+- id: cicero-scaur
+  kind: ancient
+  citation: Cicero, Pro Scauro, with Asconius's commentary
+  note: 46, L. Metellus's rebuilding of the temple of Castor.
+
+- id: parco-colosseo-castori
+  kind: modern
+  citation: >-
+    Parco archeologico del Colosseo, Quaderni della didattica, I parte: "I Dioscuri e il
+    Tempio dei Castori" (Rome, 2024), summarising I. Nielsen and B. Poulsen (eds.), The
+    Temple of Castor and Pollux I: The Pre-Augustan Temple Phases (Rome, 1992)
+  url: https://colosseo.it/sito/wp-content/uploads/2024/03/QuaderniDidattica_Tempio-dei-Castori.pdf
+  note: The archaic temple's size and plan, and Metellus's of 117 BCE; Nielsen and Poulsen read through it.
+
+- id: basilica-aemilia-online
+  kind: modern
+  citation: >-
+    Basilica Aemilia online (Deutsches Archäologisches Institut Rom and Universität zu
+    Köln, Arachne): the project description, after Freyberger and Ertel
+  url: http://arachne.uni-koeln.de/drupal/?q=en/node/220
+  note: The Basilica Fulvia of 179 BCE "a single-story construction", made two-storeyed early in the 1st century.
+
+- id: freyberger-ertel-2016
+  kind: modern
+  citation: >-
+    K. S. Freyberger and C. Ertel, Die Basilica Aemilia auf dem Forum Romanum in Rom:
+    Bauphasen, Rekonstruktion, Funktion und Bedeutung (Wiesbaden, 2016)
+  note: Not read directly; cited through Basilica Aemilia online.
+
+- id: humm-1999
+  kind: modern
+  citation: >-
+    M. Humm, "Le Comitium du forum romain et la réforme des tribus d'Appius Claudius
+    Caecus", Mélanges de l'École française de Rome, Antiquité 111.2 (1999), 625–694
+  url: https://www.persee.fr/doc/mefr_0223-5102_1999_num_111_2_2095
+  note: The circular Comitium, its phases and pavements, and Carafa's dissent, summarised page by page.
+
+- id: humm-2005
+  kind: modern
+  citation: >-
+    M. Humm, Appius Claudius Caecus. La République accomplie (Rome: École française de
+    Rome, 2005), ch. 12, "Espace et temps civiques au Comitium"
+  url: https://books.openedition.org/efr/1625
+  note: Coarelli's reconstruction of the Comitium, about 46 m across; Sulla's curia over its north "horns".
+
+- id: carafa-1998
+  kind: modern
+  citation: >-
+    P. Carafa, Il Comizio di Roma dalle origini all'età di Augusto (BullCom Supplementi
+    5, Rome, 1998)
+  note: Argues the Comitium was never circular. Not read directly; cited through Humm 1999.
+
+- id: nash-1961
+  kind: modern
+  citation: E. Nash, Pictorial Dictionary of Ancient Rome (London, 1961–62)
+  note: The Magna Mater's podium of tufa blocks and its concrete rebuilding after 111 BCE; read in a quotation.
+
+- id: kaderka-tucci-2021
+  kind: modern
+  citation: >-
+    K. Kaderka and P. L. Tucci, "The Capitoline Temple of Jupiter. The Best, the
+    Greatest, but not Colossal", Mitteilungen des Deutschen Archäologischen Instituts,
+    Römische Abteilung 127 (2021), 146–187
+  url: https://doi.org/10.34780/a20j-2hj9
+  note: >-
+    Reviews the reconstructions of the temple's plan (Gjerstad, Mura Sommella, Cifani,
+    Hopkins, Arata), with the levels of its foundations and the terracottas found under
+    the Ospedale Teutonico from 2014; argues for a smaller temple. Locators are its
+    paragraph numbers.
+
+- id: arata-2010-giove
+  kind: modern
+  citation: >-
+    F. P. Arata, "Nuove considerazioni a proposito del tempio di Giove Capitolino",
+    Mélanges de l'École française de Rome, Antiquité 122.2 (2010), 585–624
+  url: https://journals.openedition.org/mefra/317
+  note: A smaller archaic temple that Catulus enlarged; read through a summary.
+
+- id: tucci-2005
+  kind: modern
+  citation: >-
+    P. L. Tucci, "'Where high Moneta leads her steps sublime': the 'Tabularium' and the
+    Temple of Juno Moneta", Journal of Roman Archaeology 18 (2005), 6–33
+  url: https://doi.org/10.1017/S1047759400007194
+  note: Not read directly; cited through Digital Augustan Rome.
+
+- id: coarelli-2010
+  kind: modern
+  citation: F. Coarelli, "Substructio et tabularium", Papers of the British School at Rome 78 (2010)
+  url: https://doi.org/10.1017/S0068246200000817
+  note: Not read directly; cited through Digital Augustan Rome.
+
+- id: reusser-1993
+  kind: modern
+  citation: >-
+    C. Reusser, Der Fidestempel auf dem Kapitol in Rom und seine Ausstattung (BullCom
+    Supplementi 2, Rome, 1993)
+  note: Not read directly; cited through Digital Augustan Rome, which gives its pages.
+
+- id: humphrey-1986
+  kind: modern
+  citation: "J. H. Humphrey, Roman Circuses: Arenas for Chariot Racing (London, 1986)"
+  note: The Circus Maximus before Caesar; not read directly, cited through Digital Augustan Rome.
+
+- id: coarelli-1988
+  kind: modern
+  citation: F. Coarelli, Il Foro Boario dalle origini alla fine della Repubblica (Rome, 1988)
+  note: Not read directly; cited through Digital Augustan Rome, which gives its pages.
+
+- id: rakob-heilmeyer-1973
+  kind: modern
+  citation: F. Rakob and W.-D. Heilmeyer, Der Rundtempel am Tiber in Rom (Mainz, 1973)
+  note: The round temple's date from its architecture; cited through Digital Augustan Rome.
+
+- id: ziolkowski-1988
+  kind: modern
+  citation: >-
+    A. Ziolkowski, "Mummius' Temple of Hercules Victor and the Round Temple on the
+    Tiber", Phoenix 42 (1988), 309–333
+  url: https://doi.org/10.2307/1088657
+
+- id: ruggiero-1991
+  kind: modern
+  citation: >-
+    I. Ruggiero, "Ricerche sul tempio di Portuno nel Foro Boario: per una rilettura del
+    monumento", BullCom 94 (1991–92), 253–286
+  note: The temple of Portunus rebuilt about 80/70 BCE; cited through Digital Augustan Rome.
+
+- id: colini-buzzetti-1986
+  kind: modern
+  citation: A. M. Colini and C. Buzzetti, "Aedes Portuni in Portu Tiberino", BullCom 91 (1986), 7–30
+  note: Cited through Digital Augustan Rome.
+
+- id: adam-1994
+  kind: modern
+  citation: J.-P. Adam, Le temple de Portunus au Forum Boarium (Rome, 1994)
+  note: Cited through Digital Augustan Rome.
+
+- id: cozza-tucci-2006
+  kind: modern
+  citation: L. Cozza and P. L. Tucci, "Navalia", Archeologia Classica 57 (2006), 175–201
+  note: The great hall by the Emporium read as the ship sheds of Hermodorus.
+
+- id: tucci-2012
+  kind: modern
+  citation: P. L. Tucci, "La controversa storia della Porticus Aemilia", Archeologia Classica 63 (2012), 575–591
+
+- id: arata-felici-2011
+  kind: modern
+  citation: >-
+    F. P. Arata and E. Felici, "Porticus Aemilia, navalia o horrea? Ancora sui frammenti
+    23 e 24 b–d della Forma Urbis", Archeologia Classica 62 (2011), 127–153
+
+- id: burgers-2015
+  kind: modern
+  citation: >-
+    G.-J. Burgers, R.-A. Kok-Merlino and R. Sebastiani, "The Imperial horrea of the
+    Porticus Aemilia", BABESCH 90 (2015), 199–212
+  url: https://doi.org/10.2143/BAB.90.0.3089920
+  note: The excavation of 2011–13, which found no Republican layers.
+
+- id: caprioli-2010
+  kind: modern
+  citation: >-
+    F. Caprioli, "Problematiche del tempio B di Largo Argentina attraverso la sua
+    decorazione architettonica", Bollettino di Archeologia on line, volume speciale F
+    (2010), 48–58
+  url: https://bollettinodiarcheologiaonline.beniculturali.it/wp-content/uploads/2020/10/5_Caprioli_paper.pdf
+  note: Temple B measured as an open ring of columns; the tufa pavement of the Largo Argentina raised 1.40 m after the fire of 111 BCE.
+
+- id: cavallero-2018
+  kind: modern
+  citation: >-
+    F. G. Cavallero, "Il tempio di Marte in Circo e il suo architetto greco", Annuario
+    della Scuola Archeologica di Atene 95 (2017, published 2018), 317–334
+  url: https://iris.uniroma1.it/handle/11573/1276798
+  note: Hermodorus's temple of Mars under S. Salvatore in Campo, reconstructed from its remains and the Marble Plan.
+
+- id: facchin-2011
+  kind: modern
+  citation: >-
+    G. Facchin, Archeologia e storia di un paesaggio urbano: l'area a nord di via delle
+    Botteghe Oscure, doctoral thesis, Università Roma Tre (2010/2011)
+  url: https://arcadia.sba.uniroma3.it/bitstream/2307/3900/1/Archeologia%20e%20Storia%20di%20un%20paesaggio%20urbano.pdf
+  note: >-
+    Summarises the Siena excavations of 1996–98 at the temple of Via delle Botteghe
+    Oscure, with its size and phases. Cited by its pages.
+
+- id: vitti-2010
+  kind: modern
+  citation: >-
+    M. Vitti, "Note di topografia sull'area del Teatro di Marcello", Mélanges de l'École
+    française de Rome, Antiquité 122.2 (2010), 549–584
+  url: https://journals.openedition.org/mefra/315
+  note: The Republican temple of Apollo and the temple of Pietas measured; read through a summary, so its figures want checking in the article.
+
+- id: archeometra-bibulus
+  kind: modern
+  citation: >-
+    Archeometra, Restauro del Sepolcro di Caio Publicio Bibulo (Rome, 2024), for the
+    Sovrintendenza Capitolina: the project's pages on the monument and its
+    reconstruction
+  url: https://bibulus.archeometra.it/en/ricostruzioni/
+
 # --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
 # Added September 2026. No record cites these: they are the methods and the
 # evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).

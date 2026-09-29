@@ -18,15 +18,17 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     porch: 3,
     fullPorch: true,
     order: 'tuscan',
-    column: 13.5,
+    // Until the fire of 83 BCE the archaic temple, lower, under terracotta tiles.
+    column: 12,
     podium: 4.5,
     stairs: 'front',
     cellae: 3,
-    covering: 'gilt',
+    covering: 'tile',
     quadriga: true,
     // The great altar of Jupiter before the steps (P&A, p. 298).
     altar: 12,
-    why: 'Catulus\'s temple of 69 BCE on the old podium, "about 55 metres" by "about 60" (P&A, Iuppiter Optimus Maximus, pp. 297–302; "62 x 54 mt, almost square", Musei Capitolini), "apparently from 4 to 5 metres" high, fronting south-south-east with its axis "about 26½ degrees to the east" of north–south. Hexastyle, "three rows of six columns" in the porch, a row down each flank and a closed back, three cellae (P&A; Musei Capitolini); areostyle (Vitruvius 3.3.5); Doric columns on the coins of 43 BCE, so plain Tuscan here, about 13.5 m (seven diameters of the 2.23 m bases). Catulus "first gilded the bronze tiles of the Capitol" (Pliny, NH 33.57), and a chariot group stood on the apex.',
+    phases: [{ from: -80, column: 13.5, covering: 'gilt' }],
+    why: 'Until 83 BCE the archaic temple on the same foundations: tufa under white stucco ("columnasque circa poliendas albo", Livy 40.51.3), its entablature of timber, a terracotta roof (the revetments found under the Ospedale Teutonico since 2014: Kaderka and Tucci, RM 127, 2021, §22), gilt shields on the pediment (Livy 35.10.12) and the Ogulnii\'s chariot of 296 on the apex (Livy 10.23.12); lower than its successor ("veteris Capitolii humilia tecta", Valerius Maximus 4.4.11; Catulus wanted more steps for his larger pediment, Varro in Gellius 2.10), by how much is not known: its columns drawn 1.5 m shorter, a guess. Burnt on 6 July 83 (Plutarch, Sulla 27.6), a ruin until Sulla took the city late in 82, rebuilt "on the same spot" (Tacitus, Hist. 3.72; "upon the same foundations", Dionysius 4.61.4). Then Catulus\'s temple of 69 BCE on the old podium, "about 55 metres" by "about 60" (P&A, Iuppiter Optimus Maximus, pp. 297–302; "62 x 54 mt, almost square", Musei Capitolini), "apparently from 4 to 5 metres" high, fronting south-south-east with its axis "about 26½ degrees to the east" of north–south. Hexastyle, "three rows of six columns" in the porch, a row down each flank and a closed back, three cellae (P&A; Musei Capitolini); areostyle (Vitruvius 3.3.5); Doric columns on the coins of 43 BCE, so plain Tuscan here, about 13.5 m (seven diameters of the 2.23 m bases). Catulus "first gilded the bronze tiles of the Capitol" (Pliny, NH 33.57), and a chariot group stood on the apex. Whether the temple filled the whole platform is disputed (Arata, MEFRA 122, 2010; Kaderka and Tucci 2021): it is drawn filling it, as P&A and the Musei Capitolini have it.',
   },
   'area-capitolina': {
     model: 'porticus',
@@ -55,7 +57,9 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     body: 11,
     // Veiovis's temple stands in its west corner, built round (Musei Capitolini).
     notch: [8, 36, -22.5, -4],
-    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993): a substructure wall 3.43 m thick with "six recesses with narrow windows", and on it a gallery "5 m wide and 10 m high" of eleven arches, "7.50 m high and 3.54–3.60 m wide", between Doric half-columns of peperino; outer walls of grey sperone with travertine dressings (P&A, Tabularium, pp. 506–508). The upper Corinthian storey is Flavian and is left out. Facing about 118°, down the Forum.',
+    // Its works drawn at their middle: the lower storeys were up long before 65.
+    progress: 0.6,
+    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993): a substructure wall 3.43 m thick with "six recesses with narrow windows", and on it a gallery "5 m wide and 10 m high" of eleven arches, "7.50 m high and 3.54–3.60 m wide", between Doric half-columns of peperino; outer walls of grey sperone with travertine dressings (P&A, Tabularium, pp. 506–508). The upper Corinthian storey is Flavian and is left out. Facing about 118°, down the Forum. Built from 78 BCE, probably to 65, Catulus\'s censorship (DAR, after Mura Sommella, LTUR), in part over buildings of the 2nd century damaged in the fire of 83.',
   },
   'aedes-iunonis-monetae': {
     model: 'temple',
@@ -89,19 +93,19 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
   },
   'aedes-fidei': {
     model: 'temple',
-    // Inside the Area Capitolina at its south-east corner, over the drop to the
-    // Vicus Iugarius, clear of Jupiter's forecourt.
-    at: [12.48266, 41.89216],
+    // On the precinct's south-west side near its southern corner, over the Tarpeian
+    // cliff, its back to the precinct wall, facing into the precinct.
+    at: [12.4817, 41.89184],
     size: [20, 32],
     level: 'top',
-    bearing: 153,
+    bearing: 63,
     plan: 'sine-postico',
     front: 6,
     order: 'ionic',
     column: 11,
     podium: 2.5,
     stairs: 'front',
-    why: "Scaurus's temple of 115 BCE on the south edge of the Area Capitolina: hexastyle, columns down the flanks and none behind, on a podium \"at least 2 m high, about 20 × 30–35 m\" (DAR, Fides, after Reusser 1993; Freyburger); columns of about 10–12 m. Its facing is not known: taken as the Capitol's. Placed in the precinct's south-east corner, within about 25 m of the record's point.",
+    why: 'Scaurus\'s temple of 115 BCE on the south edge of the Area Capitolina: hexastyle, columns down the flanks and none behind, on a podium "at least 2 m high, about 20 × 30–35 m" (DAR, Fides, after Reusser 1993; Freyburger); columns of about 10–12 m. Rebuilt by Scaurus between 115 and 109 (Cicero, ND 2.61; DAR, after Reusser, pp. 55, 64); Calatinus\'s temple of the 250s before it is of unknown form, so Scaurus\'s is drawn throughout, rising 115–110. It stood "on the SW edge of the Area Capitolina", on the evidence of the statue base of Fides and the treaty tablets fallen into the Piazza della Consolazione, a Marble Plan temple "facing into the Area Capitolina" (DAR; Reusser 1993, 62, 78), near the Tarpeian cliff (Jordan, in P&A, p. 510): placed there against the precinct wall, facing across the precinct. Platner & Ashby call the same corner south-east in one article and south-west in another.',
   },
   'aedes-magnae-matris': {
     model: 'temple',
@@ -112,9 +116,11 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     porch: 2,
     order: 'corinthian',
     column: 11,
-    podium: 5,
+    // Until the fire of 111 BCE the temple of 191 on its lower podium of tufa blocks.
+    podium: 3.5,
     stairs: 'front',
-    why: 'The Metellan temple of about 110 BCE: "33.18 × 17.10 m" overall, "approached by a flight of steps extending entirely across the front", six Corinthian columns across, of peperino under white stucco (P&A, Magna Mater, pp. 323–326), facing the platform of the Megalesian games at about 203°. The podium\'s height is not published.',
+    phases: [{ from: -109, podium: 5 }],
+    why: 'The temple of 191 BCE stood on a podium of "massive tufa blocks" (Nash 1961); burnt with "a very great part of the city" in 111 (Obsequens 39), it was rebuilt by a Metellus, probably Numidicus (consul 109), "on a higher podium" (Latham 2012, p. 94) of concrete faced in opus quasi reticulatum (Nash), on the same plan (DAR, after Pensabene); both heights are not published. The Metellan temple: "33.18 × 17.10 m" overall, "approached by a flight of steps extending entirely across the front", six Corinthian columns across, of peperino under white stucco (P&A, Magna Mater, pp. 323–326), facing the platform of the Megalesian games at about 203°. The podium\'s height is not published.',
   },
   'aedes-victoriae': {
     model: 'temple',
@@ -125,11 +131,13 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     flank: 9,
     porch: 2,
     fullPorch: true,
-    order: 'corinthian',
+    // Tufa columns until its restoration in the third quarter of the 1st century BCE.
+    order: 'tuscan',
     column: 11,
     podium: 4,
     stairs: 'front',
-    why: 'Identified by Pensabene beside the Magna Mater: 33.40 by 19.35 m on a high podium of tufa, six columns across in a double row and nine down each flank, none behind (DAR, Victoria, after Pensabene), hexastyle Corinthian (Rose, JRA 2025); its podium is the grassed platform of OpenStreetMap way 132881789, facing about 227°.',
+    phases: [{ from: -39, order: 'corinthian' }],
+    why: 'Identified by Pensabene beside the Magna Mater: 33.40 by 19.35 m on a high podium of tufa, six columns across in a double row and nine down each flank, none behind (DAR, Victoria, after Pensabene), hexastyle Corinthian (Rose, JRA 2025) from a restoration of "the third quarter of the 1st c. B.C." that replaced "the tufa superstructure with a Corinthian columnar order" (DAR, after Pensabene, LTUR), taken as about 40 BCE; before it its tufa columns are drawn Tuscan, their order not recorded; its podium is the grassed platform of OpenStreetMap way 132881789, facing about 227°.',
   },
   'aedes-apollinis-palatini': {
     model: 'temple',

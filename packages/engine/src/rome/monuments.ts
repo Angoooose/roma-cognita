@@ -412,11 +412,13 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
  * Agrippa's dolphins.
  */
 interface Circus {
-  /** How deep the stands are, the top of the seats and the outer arcade's height. */
+  /** How deep the stands are, the top of the seats and the outer arcade's height (0: none). */
   stands: number
   h: number
   arcade: number
   gates: number
+  /** Whether seats run round the curved end (from Caesar's rebuilding); default true. */
+  curve?: boolean
   /** Whether the lowest tier is of stone (from Caesar's rebuilding), the rest timber. */
   stone?: boolean
   euripus?: boolean
@@ -432,7 +434,7 @@ const circus: Build<Design & Circus> = (F, d, w, l, face) => {
   const gates = -l / 2
   const D = d.stands
   const inner = R - D
-  const arcadeD = 4
+  const arcadeD = d.arcade > 0 ? 4 : 0
   const seatD = D - arcadeD
   const timber = PART.timber
   const stone = C.seating
@@ -478,6 +480,7 @@ const circus: Build<Design & Circus> = (F, d, w, l, face) => {
     S.box(-len / 2, len / 2, seatD / 2 - 0.8, seatD / 2, -F.deep, z0 + 0.3, face)
     S.box(-len / 2, len / 2, -seatD / 2 - 0.6, -seatD / 2, -F.deep, zr + 1.2, face)
     // The shops' arcade outside, under a lean-to of tiles against the stands.
+    if (d.arcade <= 0) continue
     const A = F.sub(s * R, (gates + 10 + cv) / 2, s > 0 ? -Math.PI / 2 : Math.PI / 2)
     A.arcade(
       -len / 2,
@@ -500,9 +503,10 @@ const circus: Build<Design & Circus> = (F, d, w, l, face) => {
     )
     F.b.look = look
   }
-  // Round the curved end: the seats, their back, the arcade.
+  // Round the curved end: the seats, their back, the arcade. Before Caesar the stands
+  // ran along the sides only, and the curved end was open.
   const rc = inner + seatD
-  for (let j = 0; j < rows; j++) {
+  for (let j = 0; j < (d.curve === false ? 0 : rows); j++) {
     const ra = inner + (seatD * j) / rows
     const rb = inner + (seatD * (j + 1)) / rows
     const za = z0 + ((zr - z0) * j) / rows
@@ -510,21 +514,25 @@ const circus: Build<Design & Circus> = (F, d, w, l, face) => {
     F.ring(0, cv, ra - 0.01, ra, za, zb, 24, riserOf(j), riserOf(j), 0, Math.PI)
     F.ring(0, cv, ra, rb, zb - 0.01, zb, 24, tierOf(j), tierOf(j), 0, Math.PI)
   }
-  F.ring(0, cv, inner - 0.8, inner, -F.deep, z0 + 0.3, 24, face, face, 0, Math.PI)
-  F.ring(0, cv, rc, rc + 0.6, -F.deep, zr + 1.2, 24, face, face, 0, Math.PI)
-  F.arcadeArc(
-    0,
-    cv,
-    R,
-    0,
-    Math.PI,
-    arcadeD,
-    0,
-    [{ h: d.arcade, order: 'tuscan', open: true }],
-    5.8,
-    face,
-  )
-  F.ring(0, cv, rc, R + 0.3, d.arcade, d.arcade + 0.6, 24, face, C.roofTemple, 0, Math.PI)
+  if (d.curve !== false) {
+    F.ring(0, cv, inner - 0.8, inner, -F.deep, z0 + 0.3, 24, face, face, 0, Math.PI)
+    F.ring(0, cv, rc, rc + 0.6, -F.deep, zr + 1.2, 24, face, face, 0, Math.PI)
+  }
+  if (d.curve !== false && d.arcade > 0) {
+    F.arcadeArc(
+      0,
+      cv,
+      R,
+      0,
+      Math.PI,
+      arcadeD,
+      0,
+      [{ h: d.arcade, order: 'tuscan', open: true }],
+      5.8,
+      face,
+    )
+    F.ring(0, cv, rc, R + 0.3, d.arcade, d.arcade + 0.6, 24, face, C.roofTemple, 0, Math.PI)
+  }
   if (d.euripus) {
     // The channel of water round the arena, at the foot of the podium wall, ten feet wide.
     for (const s of [-1, 1])
@@ -1396,6 +1404,35 @@ const square: Build<Design & { paving?: 'earth' | 'tufa' | 'travertine' }> = (
 }
 
 /**
+ * An assembly place open to the sky (the Comitium): rings of low tufa steps round a
+ * paved floor, standing along the arcs its design gives (degrees clockwise from its
+ * front, +v), the rest of the ring left out where other buildings stood on it — the
+ * Rostra at its front, and from Sulla's time the Curia over its north side.
+ */
+interface Comitium {
+  /** The outer radius and the floor's, metres. */
+  radius: number
+  orchestra: number
+  /** The top step's height over the floor, and how many steps. */
+  h: number
+  steps: number
+  arcs: [number, number][]
+}
+
+const comitium: Build<Design & Comitium> = (F, d) => {
+  F.drum(0, 0, d.orchestra, d.orchestra, -0.3, 0.12, 32, C.tufa)
+  for (const [from, to] of d.arcs) {
+    const a0 = Math.PI / 2 - (to * Math.PI) / 180
+    const a1 = Math.PI / 2 - (from * Math.PI) / 180
+    F.cavea(0, 0, d.orchestra, d.radius, 0.12, d.h, a0, a1, C.tufa, {
+      rows: d.steps,
+      stairs: 3,
+      bands: 0,
+    })
+  }
+}
+
+/**
  * The Tiber Island walled as a ship (from the 60s–50s BCE): a travertine embankment
  * round its shore, from the water up past the ground, and its prow at the downstream
  * end, towards the front (+v).
@@ -1502,6 +1539,7 @@ const ara: Build<Design & { h: number }> = (F, d, w, l, face) => {
 
 const BUILD: Record<string, Build<never>> = {
   square,
+  comitium,
   island,
   quay,
   ara,

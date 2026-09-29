@@ -59,6 +59,8 @@ interface Monument {
   unfinished: [number, number] | null
   /** Whether its part-built years are a burnt shell rather than works rising. */
   burnt?: boolean
+  /** Each spell it was part-built, where there were several: its years, and whether burnt. */
+  spans?: { years: [number, number]; burnt: boolean }[]
   /** The point it faces: a temple's front is the end nearer it. */
   faces: Pt
   /** What it was faced with, from the year given; stucco when not recorded. */
@@ -78,14 +80,22 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   const rand = mulberry32(31)
 
   // A building refaced or rebuilt within its years is built once for each stone and
-  // each form of its design, each standing for its own years.
+  // each form of its design, each standing for its own years. One part-built more than
+  // once (burnt, then rising again) is cut at each spell, so each is shown as itself.
   for (const m of meta.monuments as Monument[]) {
     const stones = m.stone ?? [{ from: ALWAYS[0], stone: 'stucco' as Stone }]
+    const spans = m.spans?.length
+      ? m.spans
+      : m.unfinished
+        ? [{ years: m.unfinished, burnt: !!m.burnt }]
+        : []
+    const several = spans.length > 1
     const cuts = [
       ...new Set([
         m.years[0],
         ...stones.map((s) => s.from),
         ...(m.design?.phases ?? []).map((ph) => ph.from),
+        ...(several ? spans.flatMap((s) => [s.years[0], s.years[1] + 1]) : []),
       ]),
     ]
       .filter((y) => y >= m.years[0] && y <= m.years[1])
@@ -93,16 +103,24 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     cuts.forEach((from, i) => {
       const to = Math.min(m.years[1], (cuts[i + 1] ?? ALWAYS[1] + 1) - 1)
       const stone = stones.filter((s) => s.from <= from).pop() ?? stones[0]
-      b.dates = [from, to, ...(m.unfinished ?? [1, 0])]
+      const span = several
+        ? spans.find((s) => s.years[0] <= from && from <= s.years[1])
+        : spans[0]
+      b.dates = [from, to, ...(span?.years ?? [1, 0])]
       b.face = STONE[stone.stone].face
       b.shade = STONE[stone.stone].shade
       const start = b.mark()
       monument(b, m, from)
       // Works in progress stand to about two-fifths of their height; a burnt
       // building is a roofless shell.
-      // A design may say how far its works had got (`progress`).
-      const progress = (m.design?.progress as number | undefined) ?? 0.4
-      if (m.unfinished) b.finish(start, m.burnt ? 0.72 : progress, !!m.burnt)
+      // A design may say how far its works had got (`progress`), or each phase.
+      const now: Record<string, unknown>[] = [
+        m.design ?? {},
+        ...(m.design?.phases ?? []).filter((ph) => ph.from <= from),
+      ]
+      const progress = (now.map((d) => d.progress).filter((v) => v !== undefined).pop() ??
+        0.4) as number
+      if (span) b.finish(start, span.burnt ? 0.72 : progress, span.burnt)
     })
   }
   b.dates = ALWAYS
