@@ -1,9 +1,12 @@
 import * as THREE from 'three/webgpu'
 import { type Builder, C, type Pt, SKIN } from './builder.ts'
 import {
+  beam,
   beds,
   centering,
   COURSE,
+  roundBeds,
+  templeSiteRound,
   disc,
   lag,
   rafters,
@@ -1199,6 +1202,8 @@ function cellaWalls(
 
 /** A round temple (a tholos): a round podium, a ring of columns round a round cella, a conical roof. */
 export interface Tholos {
+  /** While it is being built: which flank its crane stands on (works.ts; default the right). */
+  works?: { crane?: 'left' | 'right' }
   columns: number
   order: Order
   column: number
@@ -1219,19 +1224,55 @@ export function tholos(
   face: THREE.Color,
   shade: THREE.Color,
 ) {
+  // While it is being built, each part goes up in its own years (works.ts), as a
+  // temple's do: the podium or steps cored then faced, the cella's round wall and the
+  // ring of columns drum by drum, the round entablature, the cone of the roof over
+  // its radial rafters.
+  const W = F0.b.works
+  const S = TEMPLE_WORKS
+  W?.follow(S)
+  const stage = (
+    share: [number, number],
+    rise: [number, number] | null = null,
+    end?: number,
+  ) => W?.stage(F0.b, share, rise, end)
+  const kept = (share: [number, number]) => !!W?.survived(share)
+  const cored = !!W && !kept(S.base)
+  stage(S.ground)
   let F = F0
+  // Where the temple stands in F0: its centre, and its ground's height there.
+  let [cu, cv, cz] = [0, 0, 0]
   if (t.platform) {
     // A long podium with a flight across its front; the temple towards its back.
     const [pw, pl, ph] = t.platform
     const run = Frame.flight(ph)
+    if (cored) {
+      stage(S.base, [0, ph], S.facing[0])
+      F0.box(-pw / 2, pw / 2, -pl / 2, pl / 2 - run, -F0.deep, ph, SITE_COLOURS.core)
+      stage(S.base, [0, ph], S.base[1])
+      beds(F0, -pw / 2, pw / 2, -pl / 2, pl / 2 - run, 0, ph, SITE_COLOURS.core)
+    }
+    stage(kept(S.base) ? S.base : S.facing)
     F0.box(-pw / 2, pw / 2, -pl / 2, pl / 2 - run, -F0.deep, ph, face)
     F0.steps(-pw / 2, pw / 2, pl / 2 - run, pl / 2, 0, ph, '+v', face)
-    F = F0.sub(0, -pl / 2 + radius + 1.5, 0, ph)
+    ;[cu, cv, cz] = [0, -pl / 2 + radius + 1.5, ph]
+    F = F0.sub(cu, cv, 0, ph)
   }
   const P = t.podium
   const H = t.column
   const R = radius
   const D = Math.min(Frame.diameter(H, t.order), (2 * Math.PI * R) / (t.columns * 2.4))
+  // Rising: heights in its own frame, which stands on its platform's top, as the
+  // shader measures them (Builder `rise`).
+  const up = (z0: number, z1: number): [number, number] => [z0, z1]
+  if (cored) {
+    stage(S.base, up(0, P), S.facing[0])
+    F.drum(0, 0, R, R, -F.deep, P, 24, SITE_COLOURS.core)
+    stage(S.base, up(0, P), S.base[1])
+    for (let z = COURSE; z < P - 0.05; z += COURSE)
+      disc(F, 0, 0, R, z, 24, SITE_COLOURS.core)
+  }
+  stage(kept(S.base) ? S.base : S.facing)
   if (t.crepis) {
     const n = Math.max(2, Math.round(P / RISE_M))
     for (let k = 0; k < n; k++) {
@@ -1248,10 +1289,28 @@ export function tholos(
   const rc = R - D * 0.9
   for (let k = 0; k < t.columns; k++) {
     const a = Math.PI / 2 + (k / t.columns) * Math.PI * 2
-    F.column(Math.cos(a) * rc, Math.sin(a) * rc, D, P, H, t.order, face)
+    const [u, v] = [Math.cos(a) * rc, Math.sin(a) * rc]
+    if (W) {
+      // Raised drum by drum, some ahead of others; a bed on each drum laid.
+      const behind = P - lag(k) * H * 0.4
+      if (!kept(S.walls)) {
+        stage(S.walls, up(behind, P + H), S.walls[1])
+        for (let z = behind + COURSE; z < P + H - D; z += COURSE)
+          if (z > P + D * 0.45)
+            disc(F, u, v, (D / 2) * (1 - 0.16 * ((z - P) / H)), z, 10, face)
+      }
+      stage(S.walls, up(behind, P + H))
+    }
+    F.column(u, v, D, P, H, t.order, face)
   }
+  // The cella's round wall, a course at a time, a bed on each.
   const rCella = t.walled ? rc - D * 0.3 : rc - D * 1.6
-  F.drum(0, 0, rCella, rCella, P, P + H, 20, shade)
+  if (W && !kept(S.walls)) {
+    stage(S.walls, up(P, P + H), S.walls[1])
+    roundBeds(F, 0, 0, rCella - 0.9, rCella, P, P + H, 20, shade)
+  }
+  stage(S.walls, up(P, P + H))
+  F.drum(0, 0, rCella, rCella, P, P + H, 20, shade, W && !kept(S.upper) ? null : shade)
   F.quad(
     [-1, rCella + 0.02, P],
     [1, rCella + 0.02, P],
@@ -1260,18 +1319,55 @@ export function tholos(
     PART.door,
   )
   const E = Math.max(0.8, H * ENTABLATURE * 0.9)
+  stage(S.upper, up(P + H, P + H + E))
   F.ring(0, 0, rCella - 0.2, rc + D * 0.65, P + H, P + H + E, 24, face)
   const tiles = t.covering === 'gilt' ? PART.gilt : C.roofTemple
-  F.drum(0, 0, rc + D * 0.95, 0.4, P + H + E, P + H + E + (rc + D) * 0.42, 24, tiles, null)
-  F.drum(
-    0,
-    0,
-    0.5,
-    0.2,
-    P + H + E + (rc + D) * 0.42 - 0.2,
-    P + H + E + (rc + D) * 0.42 + 1,
-    6,
-    face,
+  const eaves = P + H + E
+  const apex = eaves + (rc + D) * 0.42
+  // The cone of tiles from the eaves up, over its rafters.
+  stage(S.roof, up(eaves, apex))
+  F.drum(0, 0, rc + D * 0.95, 0.4, eaves, apex, 24, tiles, null)
+  if (W && !kept(S.roof)) {
+    stage(S.roof, null, S.finish[0])
+    const rr = rc + D * 0.85
+    for (let k = 0; k < 12; k++) {
+      const a = (k / 12) * Math.PI * 2
+      const foot = [Math.cos(a) * rr, Math.sin(a) * rr, eaves - 0.1]
+      beam(F, foot, [0, 0, apex - 0.3], 0.22, SITE_COLOURS.timber)
+      const b = (((k + 1) % 12) / 12) * Math.PI * 2
+      beam(
+        F,
+        foot,
+        [Math.cos(b) * rr, Math.sin(b) * rr, eaves - 0.1],
+        0.2,
+        SITE_COLOURS.timber,
+      )
+    }
+  }
+  stage(S.finish)
+  F.drum(0, 0, 0.5, 0.2, apex - 0.2, apex + 1, 6, face)
+  if (!W) return
+  // The site round it: the scaffold round the colonnade, the crane leaning over the
+  // cella's wall, the yard before its steps.
+  const side = t.works?.crane === 'left' ? -1 : 1
+  const front =
+    cv + R + (t.platform ? t.platform[1] / 2 - radius - 1.5 + 1 : Frame.flight(P)) + 1.2
+  templeSiteRound(
+    F0,
+    {
+      centre: [cu, cv],
+      radius: R,
+      base: cz,
+      podium: cz + P,
+      top: cz + P + H + E,
+      cella: rCella,
+      column: D,
+      face,
+      side,
+      yard: front,
+      platform: t.platform,
+    },
+    W,
   )
 }
 

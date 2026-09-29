@@ -492,7 +492,7 @@ function raise(
 }
 
 /** The types of building that rise through their works stage by stage (works.ts). */
-const STAGED = new Set(['temple', 'basilica', 'curia'])
+const STAGED = new Set(['temple', 'tholos', 'basilica', 'curia'])
 
 /**
  * One known building, raised by its type. Temples stand on a podium with steps at

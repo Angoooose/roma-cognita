@@ -353,6 +353,8 @@ export interface SitePlan {
   ground: Rect
   /** The footings laid in its first years, when it rises from bare ground. */
   footings: Rect[]
+  /** Round footings: rings about a centre, u, v, the inner and outer radius. */
+  footingRings?: [number, number, number, number][]
   /** Where the foundations' spoil is heaped. */
   spoil: Pt2
   /** Its scaffolds: faces of poles, standing on z0, rising to `top` over `share`, down before `end`. */
@@ -402,6 +404,8 @@ export function site(F: Frame, s: SitePlan, works: Works) {
     at(S.ground, null, S.base[0] + 0.01)
     for (const [u0, u1, v0, v1] of s.footings)
       F.box(u0, u1, v0, v1, -0.3, 0.35, SITE.footing)
+    for (const [u, v, r0, r1] of s.footingRings ?? [])
+      F.ring(u, v, r0, r1, -0.3, 0.35, 20, SITE.footing)
     at(S.ground, null, S.base[1])
     F.drum(s.spoil[0], s.spoil[1], 3.2, 0.6, 0.05, 1.6, 7, SITE.earth)
   }
@@ -409,7 +413,7 @@ export function site(F: Frame, s: SitePlan, works: Works) {
     at(sc.share, [sc.z0, sc.top], sc.end)
     scaffold(F, sc.faces, sc.z0, sc.top)
   }
-  if (s.crane) crane(F, s.crane, s.yard.stone, S, at)
+  if (s.crane) crane(F, s.crane, s.yard.stone, works)
   yardStock(F, s.yard, S, at)
   b.occludes = occludes
 }
@@ -494,9 +498,10 @@ function crane(
   F: Frame,
   c: NonNullable<SitePlan['crane']>,
   stone: THREE.Color,
-  S: Stages,
-  at: (s: Share, r?: Share | null, e?: number) => void,
+  works: Works,
 ) {
+  const S = works.plan
+  const b = F.b
   const head = c.head
   const hc = head[2]
   const [su, sv] = c.spread
@@ -512,7 +517,8 @@ function crane(
     [c.foot[0] + (su * spread) / 2, c.foot[1] + (sv * spread) / 2, 0],
   ]
   const along = (p: number[], t: number) => p.map((x, i) => x + (head[i] - x) * t)
-  at([S.base[0], S.finish[1]], null, S.facing[0])
+  works.stage(b, [S.base[0], S.finish[1]], null, S.facing[0])
+  const standing = b.dates
   for (const g of legs) beam(F, g, head, 0.46, SITE.legs)
   // A spreader between the legs, above the wheel.
   const sp = (2 * R + 1.2) / hc
@@ -559,7 +565,10 @@ function crane(
   // What it lifts: a block in its grips, long along the spread.
   F.obox(head[0], head[1], Math.atan2(su, sv), 0.9, 2.2, drop - 0.7, drop, stone)
   // The palm at its head, once the roof is on.
-  at(S.finish, null, S.facing[0])
+  // Never after the crane is gone: in works of few years the two can fall in one.
+  works.stage(b, S.finish, null, S.facing[0])
+  if (b.dates[0] > standing[1])
+    b.dates = standing[0] <= standing[1] ? [standing[1], standing[1], 1, 0] : [1, 0, 1, 0]
   F.drum(head[0], head[1], 0.3, 0.3, hc, hc + 0.5, 6, SITE.rope)
   F.drum(head[0], head[1], 0.15, 0.9, hc + 0.4, hc + 2.2, 6, SITE.palm)
 }
@@ -694,6 +703,123 @@ export function templeSite(F: Frame, s: TempleSite, works: Works) {
     },
     works,
   )
+}
+
+/** A round temple's layout, as its works need it (architecture.ts `tholos`). */
+export interface RoundSite {
+  /** Its centre in the frame of its ground, and the ground's height under it (its platform's top, if on one). */
+  centre: Pt2
+  base: number
+  /** Its podium's radius, the podium's top and the entablature's, over the ground. */
+  radius: number
+  podium: number
+  top: number
+  /** The cella's radius, and the columns' lower diameter. */
+  cella: number
+  column: number
+  face: THREE.Color
+  /** Which flank the crane stands on: +1 the right, -1 the left. */
+  side: 1 | -1
+  /** Where the yard begins, before its front. */
+  yard: number
+  /** The long platform it stands at the back of, across, along and high, if any. */
+  platform?: [number, number, number]
+}
+
+/**
+ * The site round a round temple: a ring of scaffold round its colonnade, the crane
+ * on one flank leaning over the cella's wall, the yard before its front, round
+ * footings under the podium's edge and the cella's wall.
+ */
+export function templeSiteRound(F: Frame, s: RoundSite, works: Works) {
+  const S = works.plan
+  const [cu, cv] = s.centre
+  const R = s.radius
+  const [w, back] = s.platform ? [s.platform[0], -s.platform[1] / 2] : [2 * R, cv - R]
+  const off = 1.2
+  site(
+    F,
+    {
+      ground: [-w / 2 - 1.5, w / 2 + 1.5, back - 1.5, s.yard + 8.3],
+      footings: [],
+      footingRings: [
+        [cu, cv, R - 1.4, R],
+        [cu, cv, s.cella - 1.2, s.cella],
+      ],
+      spoil: [-w / 2 - 1, back - 1],
+      scaffolds: [
+        {
+          faces: roundFaces(cu, cv, R + off, 10, off + s.column * 0.4),
+          z0: s.base,
+          top: s.top + 1.2,
+          share: [S.base[0], S.upper[1]],
+          end: S.facing[0],
+        },
+      ],
+      crane: {
+        foot: [cu + s.side * (R + off + 3.6), cv],
+        spread: [0, 1],
+        head: [cu + s.side * (s.cella - 0.4), cv, s.top + 3],
+      },
+      yard: {
+        at: [-Math.max(R, 7), Math.max(R, 7), s.yard, s.yard + 8],
+        drums: s.column,
+        stone: s.face,
+      },
+      ruin: {
+        at: [cu - s.cella, cu + s.cella, cv - s.cella, cv + s.cella],
+        z: works.survived(S.base) ? s.podium : s.base,
+        flanks: [
+          [cu - (R + 2.5), cv],
+          [cu + R + 2.5, cv],
+        ],
+      },
+    },
+    works,
+  )
+}
+
+/**
+ * The faces of a scaffold standing round a circle of radius `r` about (u, v), in `n`
+ * straight runs, each reaching `reach` in towards the centre.
+ */
+export function roundFaces(u: number, v: number, r: number, n: number, reach: number) {
+  const faces: ScaffoldFace[] = []
+  for (let k = 0; k < n; k++) {
+    const [a0, a1] = [(k / n) * Math.PI * 2, ((k + 1) / n) * Math.PI * 2]
+    const am = (a0 + a1) / 2
+    faces.push({
+      a: [u + Math.cos(a0) * r, v + Math.sin(a0) * r],
+      b: [u + Math.cos(a1) * r, v + Math.sin(a1) * r],
+      inward: [-Math.cos(am), -Math.sin(am)],
+      reach,
+    })
+  }
+  return faces
+}
+
+/**
+ * The beds of the courses laid so far round a round wall between radii r0 and r1
+ * about (u, v), from z0 up to z1: a drum's wall seen from above as a wall.
+ */
+export function roundBeds(
+  F: Frame,
+  u: number,
+  v: number,
+  r0: number,
+  r1: number,
+  z0: number,
+  z1: number,
+  sides: number,
+  col: THREE.Color,
+) {
+  const at = (k: number, r: number, z: number) => {
+    const a = (k / sides) * Math.PI * 2
+    return [u + Math.cos(a) * r, v + Math.sin(a) * r, z]
+  }
+  for (let z = z0 + COURSE; z < z1 - 0.05; z += COURSE)
+    for (let k = 0; k < sides; k++)
+      F.quad(at(k, r0, z), at(k + 1, r0, z), at(k + 1, r1, z), at(k, r1, z), col)
 }
 
 /**

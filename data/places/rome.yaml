@@ -2621,18 +2621,27 @@
     - { text: Temple of Hercules of the Muses, lang: en }
   from: c. 187 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: c. 187 BCE, to: 34 BCE }
+    - { value: under construction, from: 33 BCE, to: 30 BCE }
+    - { value: standing, from: 29 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Hercules Musarum, aedes, p. 255' }
     - { source: pleiades, locator: places/765376678 }
     - { source: digital-augustan-rome, locator: 'Porticus Philippi' }
     - { source: suetonius-aug, locator: '29.5' }
+    - { source: ovid-fasti, locator: '6.801–812' }
   confidence: probable
   review: draft
   note: >-
     Built by M. Fulvius Nobilior after taking Ambracia, "probably after his triumph
     in 187"; "in 29 B.C. L. Marcius Philippus restored this temple" and put a
-    portico round it (Suetonius). Placed from a fragment of the Marble Plan
+    portico round it (Suetonius, Augustus 29.5; the monument of Philippus in Ovid,
+    Fasti 6.801–812). When the works began is not recorded: the map shows them from
+    33 BCE, the year of Philippus's triumph from Spain, whose spoils would have paid
+    for them, to the restoration P&A date to 29; what they kept of Fulvius's temple
+    is not known, so it rises from the ground. Placed from a fragment of the Marble Plan
     "north-west of the porticus Octaviae" (Platner & Ashby), about 100 m north-west
     of its entrance, which is where Pleiades and this record once put it. A small
     round temple on a podium of about 48 by 21 m facing south (Coarelli, in Digital

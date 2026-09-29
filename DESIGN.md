@@ -1223,6 +1223,18 @@ known and what is generated are kept apart:
     Capitol's to 62 BCE, when Caesar said much of it was half finished:
     Suetonius, _Divus Iulius_ 15; Dio 37.44.1–2). The inspector's Fabric lane
     hatches it more sparsely than building.
+  - **Round temples** (decided 2026-09-29) rise in a temple's shares: the podium
+    or steps (and the long platform, where there is one) cored then faced; the
+    cella's round wall, a bed on each course, and the ring of columns drum by drum;
+    the round entablature; the cone of tiles from the eaves up over twelve radial
+    rafters. The scaffold stands round the colonnade in ten runs; the crane leans
+    over the cella's wall from a flank. Of the four on the map only Hercules
+    Musarum was rebuilt in the window: by L. Marcius Philippus with a portico round
+    it (Suetonius, _Augustus_ 29.5; Ovid, _Fasti_ 6.801–812), shown from his
+    triumph of 33 BCE to 29, the year P&A give. Vesta had no works in it; Temple B
+    of the Largo Argentina (vowed 101 BCE, dedicated before 87) and the Forum
+    Boarium's tholos (late 2nd century, its owner disputed) have no dated works to
+    show.
   - **Basilicas** (decided 2026-09-29) rise the same way, with their own shares
     (`BASILICA_WORKS`): the platform, cored then faced (0.06–0.15); the storeys of
     arcades one after another (0.15–0.5); the clerestory over the nave, its walls
