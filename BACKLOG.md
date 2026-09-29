@@ -179,7 +179,7 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 ### The model of Rome, left for later
 
 - **Built:** the museum model (DESIGN §7.7): every known building built as itself
-  from its sourced design (about 100 of them, through 27 BCE), ~15,500 generated
+  from its sourced design (about 100 of them, 133–27 BCE), ~15,500 generated
   houses, the Servian Wall on SITAR's course with its gates and the agger, trees, baked shadows, and the smoothed board with the
   Tiber and paved streets.
 - **Researched and left out** (September 2026), so the next pass need not repeat
@@ -204,6 +204,46 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
     Castor in circo, the Lares Permarini, the lost round temple of Hercules north of
     S. Maria in Cosmedin, the Temple of Sol in the Circus's seats, the Horti
     Maecenatis (by c. 35 BCE, extent conjectural).
+- **Researched for 133–68 BCE and left out** (September 2026), so the next pass need
+  not repeat the search:
+  - houses of known owners (Fulvius Flaccus, razed 121; Saturninus, razed 100; Catulus
+    and his Porticus after 101; Crassus the orator's with its six Hymettian columns;
+    Livius Drusus's; Marius's by the Forum): no site is fixed closely enough to draw.
+    The House of the Griffins under the Flavian palace has no known owner or footprint;
+  - temples whose sites are unknown or disputed: Honos et Virtus of Marius (c. 101,
+    on the Velia or the Capitol), Venus Verticordia (114), Hercules Custos (restored by
+    Sulla), Fortuna Equestris, Diana and Vulcan in the Campus, Neptune in Circo (Tucci's
+    site at Piazza Costaguti, but its size and facing unpublished), Jupiter Stator on the
+    Velia, the Lares, the Penates, Mens and Ops on the Capitol; the Basilica Opimia (121);
+  - the Arch of Scipio on the Capitol (190), the two arches of Stertinius before Fortuna
+    and Mater Matuta (196) and his third in the Circus: sites approximate, forms unknown;
+  - the augurs' thatched hut on the Arx (Arata's site; its size unknown) and the grove
+    of the Asylum (its extent unknown);
+  - the Porticus Minucia under that name (106–100): its site is disputed, so the paved
+    Largo Argentina and the temple of Via delle Botteghe Oscure are drawn under neutral
+    names; the Porticus Octavia (168); the Villa Publica, rebuilt by T. Didius about
+    98–93 BCE (the coin of 55), its site approximate; the Ovile, the Navalia and the
+    two-sided portico under Via Arenula (length unknown, and no stoa type);
+  - the artillery arch of 87 BCE in the Aventine stretch of the Servian Wall (Via di S.
+    Anselmo): its size is not published; Säflund 1932 would give it;
+  - the Cloaca Maxima's outlet arches (c. 100 BCE, Frank): small, sourced, not yet drawn;
+  - the Graecostasis, the Senaculum (removed in 121), the Columna Maenia, the Tribunal
+    Aurelium (c. 75), the Lapis Niger's pavement, Sulla's viaduct under the Clivus
+    Capitolinus and his gilded equestrian statue before the Rostra (from 82/81), the
+    shields Lepidus hung on the Basilica Fulvia (78): below the model's scale, or no size;
+  - Sulla's tomb in the Campus (78): no site; the Pons Mulvius (109): off the board;
+  - the Lacus Iuturnae's larger basin before 117, on the precinct of Vesta's axis: a
+    phase cannot yet turn a design's bearing;
+  - the priests' land round the Capitol sold in 89 BCE (Orosius 5.18.27, not 93 as
+    Platner & Ashby have it), after which houses crowded its slopes; the generated city
+    is the same through the window;
+  - Castor and Pollux in Circo (after 71?), whose plan the Via Anicia marble plan gives,
+    and the house of Scaurus (OpenStreetMap relation 1842059, of the 60s–50s): for the
+    68–27 years.
+- **Checks for 133–68 BCE worth making**: Vitti 2010's figures for the Republican
+  Apollo (a podium 7.10 m high) and Pietas were read through a summary; the Digitales
+  Forum Romanum could not be read in this pass; a crepis for rectangular temples would
+  draw Mars in Circo and Jupiter Stator truer than a low podium.
 - **Forms that are typical, not known.** Most temples on the Aventine, the Quirinal
   and the Esquiline are the typical temple (DESIGN §7.7), and some sizes are
   conjectural (each design's note says which). The Marble Plan's fragments, read in
@@ -211,7 +251,9 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - **Where some sites are disputed**, the model follows one reading and the record
   gives the others: Juno Moneta (Arata's site), Tellus (Palombi's), Victoria
   (Pensabene's, on an unnamed OpenStreetMap outline to be checked against his plan),
-  Spes and Juno Sospita (which is which), the Theatre of Marcellus's orchestra.
+  Spes and Juno Sospita (now the Sovrintendenza's and Coarelli's: Juno the middle
+  temple), the Comitium's ring (Coarelli's, against Carafa), the Theatre of
+  Marcellus's orchestra.
 - **The generated city is uniform elsewhere.** The Palatine now has its great
   houses (DESIGN §7.7); the Subura crowded with tall blocks and the Aventine more
   open could follow.

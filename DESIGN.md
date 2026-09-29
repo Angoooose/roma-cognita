@@ -660,7 +660,7 @@ known and what is generated are kept apart:
   - **Each built as itself** (decided 2026-09-24). Every known building has a
     design (`pipeline/src/rome/designs.ts` and `designs/`): its type, its size,
     its columns, its stairs and the way it faced, as its sources give them for
-    68–27 BCE, with those sources in the design's note. The engine knows how each
+    133–27 BCE, with those sources in the design's note. The engine knows how each
     type is put together (`architecture.ts`, `monuments.ts`); the design says
     which building it is. So the Capitol's temple is a Tuscan temple with three
     rows of six columns, three cellae and a gilded roof; Castor's the Metellan
@@ -772,6 +772,54 @@ known and what is generated are kept apart:
       25), the Amphitheatre of Statilius Taurus and the Porticus Octavia of 168
       BCE (sites unknown), the Actian arch (doubted), Jupiter Feretrius (tiny, its
       site unknown).
+  - **The years 133–68 BCE** (decided 2026-09-28), when the window was carried back
+    to 133 BCE with the world map. Five research passes (the Forum and Palatine, the
+    Capitol, the Campus Martius, the south of the city, and a chronicle of every
+    recorded building, fire and demolition year by year) found what changed; each
+    change is in its record's dates and note and its design's `phases`, with its
+    sources. Everything dated in them changes the model in its year:
+    - **In the Forum**: the archaic temple of Castor (three cellae behind a deep porch
+      of Tuscan columns, Nielsen and Poulsen) until L. Metellus's of 117; an older
+      Concord, of unknown form and so the typical temple, until Opimius's of 121; the
+      Basilica Fulvia of one storey until Lepidus's restoration of 78 (the second
+      storey is taken to be his, from his son's coin); the **Comitium** (a new
+      builder, `comitium`): rings of low tufa steps round a paved floor, the old
+      Rostra on its south rim, about 42 m across on Coarelli's reading (Carafa's
+      dissent in the record), until Sulla's larger curia of 80 took its north side;
+      the older, smaller curia behind its steps until Sulla pulled it down in 81.
+    - **On the Palatine**: the Magna Mater burnt with "a very great part of the city"
+      in 111 and rebuilt on a higher podium to 106; Victoria's tufa columns Tuscan
+      until its restoration of about 40.
+    - **On the Capitol**: Jupiter's archaic temple, lower and under terracotta tiles,
+      until the fire of 6 July 83; a burnt shell through 82; Catulus's rising from 81
+      and dedicated in 69. Fides moved to the precinct's south-west side, where
+      Reusser's evidence puts it, and rising 115–110; the Tabularium rising 78–66.
+    - **In the Campus Martius**: Mars in Circo, Hermodorus's marble temple, going up
+      in 133–132; the Largo Argentina paved 1.40 m over the old ground after the fire
+      of 111, with its north portico (`area-sacra-largo-argentina`), the older temples'
+      podia standing lower from then; Temple A small until about 50, Temple B an open
+      ring of columns until 68 (a choice between "early" and "mid" 1st century);
+      the temple of Via delle Botteghe Oscure, missing before, standing throughout;
+      Bellona the typical temple until its rebuilding of 32; Spes and Juno Sospita
+      swapped to the modern identification.
+    - **In the south**: the round temple by the Tiber from 105 (the middle of
+      120–90), its platform open before; Portunus's older temple, of unknown form,
+      until the Ionic one rose in 80–76; the Horrea Galbana and Galba's tomb from
+      about 100, the family's estate open before; the Circus Maximus with timber
+      stands along its sides only, no shops and its curved end open, until Caesar's
+      rebuilding of 46.
+    - **The Servian Wall**'s patches of darker Anio tufa appear from 87, when the
+      consuls "repaired the walls, and planted engines on them" (Appian, Civil Wars
+      1.66).
+    - A building may be part-built more than once (Jupiter's: burnt, then rising), so
+      each spell of its `condition` is shown as itself (model.ts `dates`, buildModel.ts).
+    - A design whose site was open ground before it (`open`: a platform, an estate)
+      keeps the generated houses off it in the years before; otherwise houses stand on
+      a later monument's site until it is begun, as before.
+    - The generated city is the same through the window: nothing records how much
+      denser it grew between 133 and 68, and the Campus north of the Largo Argentina
+      stays open, as no private house is recorded there before Pompey's.
+    - Researched and left out, and why, in BACKLOG.md.
   - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
     near Rome: the Appia and the Anio Vetus ran underground into the city
     (Frontinus 1.5–1.6), and are recorded but not drawn. The Marcia is drawn for
