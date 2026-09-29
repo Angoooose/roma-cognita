@@ -1037,9 +1037,14 @@ known and what is generated are kept apart:
       two in five an L with a lower wing behind, a walled garden beyond;
     - **workshops**, a small building at one side of a walled yard;
     - beyond ~650 m, **farmsteads**: ranges round a yard, square to the plot (Varro 1.13);
-    - in the Emporium, **warehouses**: storerooms round a court, 44 by 30 m and
-      smaller, on a grid square to the Porticus Aemilia, a street between each, as
-      the Horrea Galbana and the Marble Plan's horrea are built.
+    - in the Emporium, a grid of blocks square to the Porticus Aemilia, a street
+      between each, a block one cell (26 by 30 m) or two, each one of the kinds a
+      river port's warehouse quarter had on the Marble Plan and at Ostia: storerooms
+      round one court or two (the Horrea Galbana has three); a long range on the
+      street; two ranges back to back along a corridor; an open yard for timber or
+      stone, walled, with a shed ("inter lignarios", Livy 35.41.10); a merchant's
+      house with shops on the street. One storey or two, their depths and setbacks
+      varied block by block.
     The yards and gardens are a floor, trodden earth or garden beds, over the
     fields' paint, and a plastered wall 1.8 m high open at the front for a gate. No
     part of a building comes within 8 m of a road's or street's line, tested all

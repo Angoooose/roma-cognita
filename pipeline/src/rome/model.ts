@@ -364,10 +364,10 @@ const SUBURB = {
   roadClear: 8,
 }
 /**
- * The Emporium's warehouses: a block `w` along the Porticus Aemilia and `d` across it,
- * ranges of storerooms `range` deep round its court, `street` between blocks.
+ * The Emporium's grid: a cell `cell` along the Porticus Aemilia and `deep` across it,
+ * `street` between them; a block is a cell or two.
  */
-const HORREA = { w: 44, d: 30, range: 7, street: 7 }
+const HORREA = { cell: 26, deep: 30, street: 6 }
 
 /**
  * How much of a stretch of suburb is built, year by year: [astronomical year, share of
@@ -1870,9 +1870,14 @@ export function bakeModel(m: ModelInput) {
         if (kind < LOT_KIND.yard || ok(ring)) put(ring, h, kind, roof, from, tone)
     }
 
-  // The Emporium's warehouses: each a block of storerooms round a long court, as the
-  // Horrea Galbana's (designs.ts) and the Marble Plan's horrea are, on a grid square
-  // to the Porticus Aemilia, a street between each.
+  // The Emporium (DESIGN.md §7.7): a grid of blocks square to the Porticus Aemilia, a
+  // street between each, a block one cell or two, each built as one of the kinds of
+  // building a river port's warehouse quarter had — on the Marble Plan and at Ostia:
+  // storerooms round a court, one or two (the Horrea Galbana has three); a long range
+  // of storerooms on the street; two ranges back to back along a corridor; an open
+  // yard for timber or stone, walled, with a shed ("inter lignarios", the timber
+  // merchants' quarter by the Porta Trigemina, Livy 35.41.10); and a merchant's house
+  // with shops on the street. Which, and how big, is generated.
   const emporium = areas.find((a) => a.kind === 'warehouse')
   if (emporium) {
     const [ex, ey] = [
@@ -1880,52 +1885,97 @@ export function bakeModel(m: ModelInput) {
       emporium.pts.reduce((s, q) => s + q[1], 0) / emporium.pts.length,
     ]
     const [ca, sa] = [Math.cos(emporiumAngle), Math.sin(emporiumAngle)]
-    const W = HORREA.w + HORREA.street
-    const D = HORREA.d + HORREA.street
-    for (let j = -12; j <= 12; j++)
-      for (let i = -12; i <= 12; i++) {
-        const [u, v] = [i * W, j * D]
+    const { cell, deep, street } = HORREA
+    const taken = new Set<string>()
+    for (let j = -16; j <= 16; j++)
+      for (let i = -24; i <= 24; i++) {
+        if (taken.has(`${i},${j}`)) continue
+        const r = mulberry32(i * 1000 + j * 7 + 99)
+        // Some blocks take the next cell along too.
+        const span = r() < 0.35 && !taken.has(`${i + 1},${j}`) ? 2 : 1
+        const w = cell * span + street * (span - 1)
+        const d = deep
+        const [u, v] = [i * (cell + street) + (w - cell) / 2, j * (deep + street)]
         const c: Pt = [ex + ca * u - sa * v, ey + sa * u + ca * v]
         if (!inRing(c, emporium.pts)) continue
         const edge = Math.min(1, distToRing(c, emporium.pts) / GROWN_EDGE)
+        // The area's shares were of the old blocks, about two of these cells: a cell is
+        // built if either would be, as a plot is.
         const from = builtFrom(
-          emporium.curve,
+          emporium.curve.map(([yr, sh]) => [yr, 1 - (1 - sh) ** 2] as [number, number]),
           hash2(i * 13.1 + 5, j * 7.7 - 3) / Math.max(edge, 1e-3),
         )
         if (from === null) continue
-        const r = mulberry32(i * 1000 + j + 99)
-        const w = HORREA.w - r() * 10
-        const d = HORREA.d - r() * 8
         const at = (a: number, b: number): Pt => [
           c[0] + ca * a - sa * b,
           c[1] + sa * a + ca * b,
         ]
-        const rect4 = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
+        // A box in the block's frame: `a` along the street, `b` across, from its middle.
+        const box = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
           at(a0, b0),
           at(a1, b0),
           at(a1, b1),
           at(a0, b1),
         ]
-        const rd = HORREA.range
-        const h = 6 + r() * 2
-        const ranges = [
-          rect4(-w / 2, w / 2, -d / 2, -d / 2 + rd),
-          rect4(-w / 2, w / 2, d / 2 - rd, d / 2),
-          rect4(-w / 2, -w / 2 + rd, -d / 2 + rd, d / 2 - rd),
-          rect4(w / 2 - rd, w / 2, -d / 2 + rd, d / 2 - rd),
-        ]
-        const whole = rect4(-w / 2, w / 2, -d / 2, d / 2)
-        if (!fits(whole) || placed.near(c, Math.hypot(w, d) / 2)) continue
+        // Each block stands back a little from its street, by its own amount.
+        const [sw, sd] = [w - r() * 4, d - r() * 5]
+        const whole = box(-sw / 2, sw / 2, -sd / 2, sd / 2)
+        if (!fits(whole) || placed.near(c, Math.hypot(sw, sd) / 2)) continue
+        for (let k = 0; k < span; k++) taken.add(`${i + k},${j}`)
         const tone = r()
-        for (const ring of ranges) put(ring, h, LOT_KIND.warehouse, ROOF.along, from, tone)
-        put(
-          rect4(-w / 2 + rd, w / 2 - rd, -d / 2 + rd, d / 2 - rd),
-          0.3,
-          LOT_KIND.yard,
-          ROOF.flat,
-          from,
-          tone,
-        )
+        const storeys = r() < 0.4 ? 2 : 1
+        const h = storeys === 2 ? 7.5 + r() * 1.5 : 4.8 + r() * 1.2
+        const rd = 5.5 + r() * 3
+        const [A, B] = [sw / 2, sd / 2]
+        const add = (ring: Pt[], hh: number, kind: number, roof: number) =>
+          put(ring, hh, kind, roof, from, tone)
+        const pick = r()
+        if (pick < 0.4) {
+          // Storerooms round a court, or two courts with a range between them.
+          add(box(-A, A, -B, -B + rd), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, B - rd, B), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, -A + rd, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+          add(box(A - rd, A, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+          if (sw > 40) {
+            add(box(-rd / 2, rd / 2, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+            add(box(-A + rd, -rd / 2, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+            add(box(rd / 2, A - rd, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+          } else add(box(-A + rd, A - rd, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.6) {
+          // Two ranges back to back along a corridor open to the sky.
+          const cw = 3 + r() * 2
+          add(box(-A, A, -B, -cw / 2), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, cw / 2, B), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, -cw / 2, cw / 2), 0.3, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.75) {
+          // A long range of storerooms on the street, its yard behind.
+          const dd = Math.min(sd - 6, 8 + r() * 4)
+          add(box(-A, A, -B, -B + dd), h, LOT_KIND.warehouse, ROOF.lean)
+          add(box(-A + 0.6, A - 0.6, -B + dd, B), 1.9, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.9) {
+          // An open yard, walled, a shed along one side and a lodge at its gate.
+          const side = r() < 0.5 ? -1 : 1
+          add(box(-A, A, -B, B), 2.2, LOT_KIND.yard, ROOF.flat)
+          const sh = 5 + r() * 2
+          add(
+            box(
+              -A + 1,
+              A - 1,
+              side < 0 ? -B + 1 : B - 1 - sh,
+              side < 0 ? -B + 1 + sh : B - 1,
+            ),
+            4 + r(),
+            LOT_KIND.warehouse,
+            ROOF.lean,
+          )
+          const lw = 5 + r() * 3
+          add(box(-A + 1, -A + 1 + lw, -sh / 2, sh / 2), 4.5, LOT_KIND.suburb, ROOF.along)
+        } else {
+          // A merchant's house, shops on the street, a court behind.
+          const dd = 10 + r() * 3
+          add(box(-A, A, -B, -B + dd), 6.8 + r() * 3, LOT_KIND.flats, ROOF.along)
+          add(box(-A + 0.6, A - 0.6, -B + dd, B), 1.9, LOT_KIND.garden, ROOF.flat)
+        }
       }
   }
 
