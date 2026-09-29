@@ -10,6 +10,7 @@ import {
   MOUND_FADE_M,
   MOUND_H_M,
   MOUND_R_M,
+  type Mesh,
   orientedBox,
   polygonArea,
   edges,
@@ -34,8 +35,8 @@ const TREE = { mixed: 0, olive: 1, fruit: 2, oak: 3, cypress: 4, pine: 5 }
  * built off the main thread (modelWorker.ts); ModelLayer draws it.
  */
 export interface BuiltModel {
-  /** The mesh's attributes, by name: values and floats per vertex (Builder `attributes`). */
-  attributes: Record<string, [Float32Array, number]>
+  /** The mesh: its attributes and its triangles' index (Builder `mesh`). */
+  mesh: Mesh
   /** What overshadows its neighbours, for the shading (Builder `tops`). */
   tops: Float64Array
   /** Where the mesh's local coordinates are centred, plane metres. */
@@ -409,14 +410,14 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     Math.max(...xs),
     Math.max(...ys),
   ]
-  const attributes = b.attributes()
+  const mesh = b.mesh()
   const bounds: [number, number, number, number] = [
     Infinity,
     Infinity,
     -Infinity,
     -Infinity,
   ]
-  const [pos] = attributes.position
+  const pos = mesh.attributes.position.array
   for (let i = 0; i < pos.length; i += 3) {
     bounds[0] = Math.min(bounds[0], pos[i] + ox)
     bounds[1] = Math.min(bounds[1], pos[i + 1] + oy)
@@ -424,7 +425,7 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     bounds[3] = Math.max(bounds[3], pos[i + 1] + oy)
   }
   return {
-    attributes,
+    mesh,
     tops: b.tops,
     origin: [ox, oy],
     extent,

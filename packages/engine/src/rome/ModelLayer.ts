@@ -257,6 +257,8 @@ export class ModelLayer {
   private portraitScene = new THREE.Scene()
   private portraitCamera = new THREE.OrthographicCamera()
   private viewProjection = new THREE.Matrix4()
+  /** The buildings, trees and walls: the mesh `release` lets go of the data of. */
+  private buildings: THREE.Mesh | null = null
 
   /** Whether the model has loaded. */
   get ready() {
@@ -279,8 +281,13 @@ export class ModelLayer {
     this.occlusion = new Occlusion(built.tops)
     const shaded = this.occlusion.build(modelUniforms.year.value)
     const geometry = new THREE.BufferGeometry()
-    for (const [name, [array, size]] of Object.entries(built.attributes))
-      geometry.setAttribute(name, new THREE.BufferAttribute(array, size))
+    for (const [name, a] of Object.entries(built.mesh.attributes))
+      geometry.setAttribute(
+        name,
+        // three's types do not list Float16Array yet, though it draws from one.
+        new THREE.BufferAttribute(a.array as THREE.TypedArray, a.itemSize, a.normalized),
+      )
+    geometry.setIndex(new THREE.BufferAttribute(built.mesh.index, 1))
     const mesh = new THREE.Mesh(
       geometry,
       material(this.occlusion, this.viewM, new THREE.Vector2(ox, oy)),
@@ -291,6 +298,7 @@ export class ModelLayer {
     mesh.castShadow = true
     mesh.receiveShadow = true
     this.group.add(mesh)
+    this.buildings = mesh
 
     this.extent = built.extent
     this.bounds = built.bounds
@@ -532,6 +540,7 @@ export class ModelLayer {
     renderer.setClearColor(0x000000, 0)
     renderer.clear()
     renderer.render(this.portraitScene, cam)
+    this.release(renderer)
 
     renderer.setRenderTarget(was.target)
     renderer.setClearColor(was.clear, was.alpha)
@@ -577,6 +586,23 @@ export class ModelLayer {
         this.onShaded?.()
       }
     }, 150)
+  }
+
+  /**
+   * Lets go of the buildings' vertex data once it is on the GPU, which `paint` has
+   * just put it on: a quarter of a gigabyte the page would otherwise hold for nothing,
+   * since nothing reads it back. What is not on the GPU yet is kept.
+   */
+  private release(renderer: THREE.WebGPURenderer) {
+    const g = this.buildings?.geometry
+    if (!g) return
+    const backend = renderer.backend as unknown as { has(o: object): boolean }
+    for (const a of [...Object.values(g.attributes), g.index]) {
+      // `count` stays as it was: three draws by it, not by the array's length. (The
+      // array is typed read-only, but three reassigns it itself when it pads one.)
+      if (a && a.array.length > 0 && backend.has(a))
+        (a as { array: THREE.TypedArray }).array = a.array.slice(0, 0)
+    }
   }
 
   /**
