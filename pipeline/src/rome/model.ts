@@ -609,6 +609,9 @@ const GROWN: {
   ],
 }
 
+/** How far inside an area of `GROWN` its houses thin out to its edge, metres. */
+const GROWN_EDGE = 80
+
 /** The first year a draw `t` is built under `c`, or null if never: -100000 if from before the window. */
 function builtFrom(c: Curve, t: number): number | null {
   if (t < c[0][1]) return -100000
@@ -1654,7 +1657,11 @@ export function bakeModel(m: ModelInput) {
         }
       }
       if (!curve) continue
-      const from = builtFrom(curve, draw)
+      // An area's houses thin out over its last `GROWN_EDGE` metres, so it has no hard
+      // outline: its bounds are approximate.
+      const edge = area ? Math.min(1, distToRing(p, area.pts) / GROWN_EDGE) : 1
+      if (edge <= 0) continue
+      const from = builtFrom(curve, draw / edge)
       if (from === null) continue
       const near = road ?? streetGrid.nearest(p)
       const gx = at(p[0] + 4, p[1]) - at(p[0] - 4, p[1])
