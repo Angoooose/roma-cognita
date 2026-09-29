@@ -2643,7 +2643,7 @@
 - id: rostra-vetera
   kind: rostra
   within: roma
-  location: [12.4849, 41.8927]
+  location: [12.48495, 41.892665]
   names:
     - { text: Rostra, lang: la, preferred: true }
     - { text: The old Rostra, lang: en }

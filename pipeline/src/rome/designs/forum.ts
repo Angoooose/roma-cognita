@@ -285,12 +285,15 @@ export const DESIGNS_FORUM: Record<string, Design> = {
   },
   'rostra-vetera': {
     model: 'rostra',
+    // On the Comitium's axis against the south side of its ring, its top level with
+    // the top step: the ring's southern segment, facing the Forum (Coarelli, in Humm).
+    at: [12.48495, 41.892665],
     size: [20, 10],
     bearing: 180,
     h: 2.2,
     beaks: 10,
     statues: 4,
-    why: "The Republican rostra between the Comitium and the Forum, its curved front of tufa steps hung with beaks on the coin of Lollius Palikanus (45 BCE) and its statues of worthies (P&A, Rostra, pp. 450–451; DFR). Its width is not known: about 20 m. Given up for Caesar's in 44 BCE.",
+    why: "The Republican rostra between the Comitium and the Forum, its curved front of tufa steps hung with beaks on the coin of Lollius Palikanus (45 BCE) and its statues of worthies (P&A, Rostra, pp. 450–451; DFR). Its width is not known: about 20 m. On Coarelli's reading it was the southern segment of the Comitium's ring, the curved steps rising to it from the Comitium's floor (P&A, Comitium, p. 136, 'the curved steps of the rostra Vetera ascend' from its third level; Humm 2005, p. 610): placed on the ring's axis against its south side. Given up for Caesar's in 44 BCE.",
   },
   comitium: {
     model: 'comitium',
@@ -301,19 +304,19 @@ export const DESIGNS_FORUM: Record<string, Design> = {
     orchestra: 13,
     h: 2.4,
     steps: 8,
-    // All round but the old Rostra's segment at its front, which is its own record;
-    // from Sulla's curia of 80 BCE its north side is gone under the curia.
-    arcs: [[25, 335]],
+    // All round, the old Rostra against its south side at the top of the steps (its
+    // own record); from Sulla's curia of 80 BCE its north side is gone under the curia.
+    arcs: [[0, 360]],
     phases: [
       {
         from: -79,
         arcs: [
-          [25, 115],
-          [245, 335],
+          [0, 115],
+          [245, 360],
         ],
       },
     ],
-    why: 'The circular Comitium, "admise par la plupart des archéologues" (Humm, MEFRA 111, 1999, p. 650): rings of steps round a paved floor, its curved podium of Monteverde tufa on the south the Rostra, oriented to the cardinal points (P&A, Comitium, p. 135), with the Curia on the north and the Carcer on the west, as the comitia of Cosa, Alba Fucens and Paestum were built. Coarelli gave it "un diamètre d\'environ 46 m" (Humm 2005, pp. 610–612); drawn about 42 m across so that it fits between the old Rostra and the Curia as they are placed. The number and height of its steps are not published: eight low steps rising 2.4 m, after the comitium of Cosa. From Sulla\'s curia of 80 BCE its north "cornua" were destroyed and the statues of Pythagoras and Alcibiades removed (Pliny, NH 34.26; Humm 2005, p. 611, n. 38), and it was repaved (the sixth pavement, Lamboglia; Humm 1999, p. 655, n. 74). Carafa (1998) denies it was ever circular; its site is placed to about 10 m.',
+    why: 'The circular Comitium, "admise par la plupart des archéologues" (Humm, MEFRA 111, 1999, p. 650): rings of steps round a paved floor, its curved podium of Monteverde tufa on the south carrying the Rostra, which stand against it, oriented to the cardinal points (P&A, Comitium, p. 135), with the Curia on the north and the Carcer on the west, as the comitia of Cosa, Alba Fucens and Paestum were built. Coarelli gave it "un diamètre d\'environ 46 m" (Humm 2005, pp. 610–612); drawn about 42 m across so that it fits between the old Rostra and the Curia as they are placed. The number and height of its steps are not published: eight low steps rising 2.4 m, after the comitium of Cosa. From Sulla\'s curia of 80 BCE its north "cornua" were destroyed and the statues of Pythagoras and Alcibiades removed (Pliny, NH 34.26; Humm 2005, p. 611, n. 38), and it was repaved (the sixth pavement, Lamboglia; Humm 1999, p. 655, n. 74). Carafa (1998) denies it was ever circular; its site is placed to about 10 m.',
   },
   'lacus-curtius': {
     model: 'shrine',
