@@ -240,6 +240,16 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   - Castor and Pollux in Circo (after 71?), whose plan the Via Anicia marble plan gives,
     and the house of Scaurus (OpenStreetMap relation 1842059, of the 60s–50s): for the
     68–27 years.
+- **The city growing, left for later** (September 2026): heights by date (the texts
+  give the direction, not the numbers); the Aventine's north-west plateau as a
+  mixed quarter of atrium houses (DAR; SITAR 3195, 8500); the groves of Juno Lucina
+  and the Fagutal as small open spots (sites approximate); the Esquiline burial
+  ground's first 60 m filled from about 80 (SITAR 13941); riverside gardens across
+  the Tiber from about 60 (Cicero, Pro Caelio 36; Letters to Atticus 12.19, 12.33,
+  12.37), extent unknown; tombs of Julia (54), Hirtius and Pansa (43) in the Campus,
+  and Pompey's house by his theatre; larger villas 2–4 km out (probably off the
+  board); per-road tomb densities (the Salaria's columbaria from about 50). Not
+  read in the suburbs pass: LTUR Suburbium, Bodel 1994, Purcell 1987, Witcher 2005.
 - **Checks for 133–68 BCE worth making**: Vitti 2010's figures for the Republican
   Apollo (a podium 7.10 m high) and Pietas were read through a summary; the Digitales
   Forum Romanum could not be read in this pass; a crepis for rectangular temples would

@@ -118,8 +118,10 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
         m.design ?? {},
         ...(m.design?.phases ?? []).filter((ph) => ph.from <= from),
       ]
-      const progress = (now.map((d) => d.progress).filter((v) => v !== undefined).pop() ??
-        0.4) as number
+      const progress = (now
+        .map((d) => d.progress)
+        .filter((v) => v !== undefined)
+        .pop() ?? 0.4) as number
       if (span) b.finish(start, span.burnt ? 0.72 : progress, span.burnt)
     })
   }
@@ -127,7 +129,13 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
 
   // The tombs along the roads (pipeline model.ts): generated, built as the known
   // tombs' designs are, in stucco or travertine.
-  for (const t of (meta.roadTombs ?? []) as (Design & { base: number; stone: Stone })[]) {
+  for (const t of (meta.roadTombs ?? []) as (Design & {
+    base: number
+    stone: Stone
+    from?: number
+  })[]) {
+    // Each from the year it was built (pipeline model.ts `GROWN.tombs`).
+    b.dates = [t.from ?? ALWAYS[0], ALWAYS[1], 1, 0]
     b.face = STONE[t.stone].face
     b.shade = STONE[t.stone].shade
     buildDesign(b, t, t.base)
@@ -267,14 +275,13 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   const W = meta.wallBuild as WallBuild
   for (const [k, w] of (meta.wall as { pts: number[][] }[]).entries())
     curtain(b, w.pts, W, k * 97.3)
-  for (const [k, t] of ((meta.towers ?? []) as Tower[]).entries())
-    tower(b, t, W, k * 0.37)
+  for (const [k, t] of ((meta.towers ?? []) as Tower[]).entries()) tower(b, t, W, k * 0.37)
   for (const [k, g] of ((meta.gates ?? []) as Gate[]).entries())
     gatehouse(b, g, W, k * 0.61)
 
   // The generated city (pipeline city.ts): plain stucco in a narrow range under one
   // terracotta, varied a little lot by lot. A building on the site of a later
-  // monument goes when it comes.
+  // monument goes when it comes; one the city grew into comes in its year (`since`).
   b.occludes = true
   const nF = meta.fabricCount
   const shade = (c: THREE.Color, k: number, r: () => number) =>
@@ -282,7 +289,15 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   for (let i = 0; i < nF; i++) {
     const v = f.subarray(i * FABRIC_STRIDE, (i + 1) * FABRIC_STRIDE)
     const q: Pt[] = [0, 2, 4, 6].map((k) => [v[k], v[k + 1]])
-    const [h, ground, until, kind, roof, tone] = [v[8], v[9], v[10], v[11], v[12], v[13]]
+    const [h, ground, until, kind, roof, tone, since] = [
+      v[8],
+      v[9],
+      v[10],
+      v[11],
+      v[12],
+      v[13],
+      v[14],
+    ]
     // One building's lots share its render and its roof's weathering (`tone`).
     const own = mulberry32(Math.floor(tone * 1000) + 7)
     const wall =
@@ -291,9 +306,8 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
         : kind === LOT.warehouse
           ? shade(C.warehouse, 0.03, own)
           : C.stucco[Math.floor(own() * C.stucco.length)]
-    b.dates = [ALWAYS[0], until, 1, 0]
-    const tiles =
-      roof === ROOF.flat ? shade(C.terrace, 0.04, own) : weathered(C.roof, own)
+    b.dates = [since, until, 1, 0]
+    const tiles = roof === ROOF.flat ? shade(C.terrace, 0.04, own) : weathered(C.roof, own)
     // The lot's kind and its building's seed for its doors and windows, for the shader.
     b.look = kind + Math.floor(tone * 900) / 1000
     b.lot(q, h, ground, wall, tiles, roof)
@@ -335,9 +349,19 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   ]
   const xs = reach.map((p: number[]) => p[0])
   const ys = reach.map((p: number[]) => p[1])
-  const extent: [number, number, number, number] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)]
+  const extent: [number, number, number, number] = [
+    Math.min(...xs),
+    Math.min(...ys),
+    Math.max(...xs),
+    Math.max(...ys),
+  ]
   const attributes = b.attributes()
-  const bounds: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity]
+  const bounds: [number, number, number, number] = [
+    Infinity,
+    Infinity,
+    -Infinity,
+    -Infinity,
+  ]
   const [pos] = attributes.position
   for (let i = 0; i < pos.length; i += 3) {
     bounds[0] = Math.min(bounds[0], pos[i] + ox)
@@ -463,8 +487,7 @@ function monument(b: Builder, m: Monument, year: number) {
     b.top(rings, podium, base, b.face)
   }
   b.walls(outer, podium > 0 ? podium : -6, body, base, b.face)
-  for (const h of holes)
-    b.walls(ccw(h, true), podium > 0 ? podium : -6, body, base, b.face)
+  for (const h of holes) b.walls(ccw(h, true), podium > 0 ? podium : -6, body, base, b.face)
   b.top(rings, body, base, m.roof === 'flat' ? b.shade : C.roofTemple)
 }
 

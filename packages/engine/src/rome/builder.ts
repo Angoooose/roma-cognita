@@ -8,7 +8,7 @@ import * as THREE from 'three/webgpu'
 export const ALWAYS = [-100000, 100000, 1, 0]
 
 /** Floats per generated building in model.bin, its kinds and roofs (pipeline city.ts `LOT_KIND`, `ROOF`). */
-export const FABRIC_STRIDE = 14
+export const FABRIC_STRIDE = 15
 export const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
 export const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 

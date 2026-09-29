@@ -816,9 +816,8 @@ known and what is generated are kept apart:
     - A design whose site was open ground before it (`open`: a platform, an estate)
       keeps the generated houses off it in the years before; otherwise houses stand on
       a later monument's site until it is begun, as before.
-    - The generated city is the same through the window: nothing records how much
-      denser it grew between 133 and 68, and the Campus north of the Largo Argentina
-      stays open, as no private house is recorded there before Pompey's.
+    - The generated city grows with the year where the sources date its growth
+      (**The city growing**, below).
     - Researched and left out, and why, in BACKLOG.md.
   - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
     near Rome: the Appia and the Anio Vetus ran underground into the city
@@ -1024,8 +1023,70 @@ known and what is generated are kept apart:
     main network shows from far off; the lanes are trodden earth.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
-  - A thinner suburb of detached houses lines the roads out of the gates, up to
-    ~450 m, with a few near the wall, clear of its foot and the agger's ditch.
+  - A thinner suburb lines the roads out of the gates and fills a few areas beyond
+    them, growing year by year (**The city growing**, below).
+  - **The city growing** (decided 2026-09-29; `GROWTH` and `GROWN` in model.ts). Two
+    research passes, on the city inside the wall and on the suburbs, read the texts,
+    the modern literature and SITAR's dated remains of houses, warehouses and tombs
+    (queried from its WFS: 36 private buildings founded 200–28 BCE inside the wall,
+    and the dated houses and tombs outside it counted by road and period). Each
+    generated house and tomb has a first year as well as a last; a stretch of suburb
+    has a share built that rises with the year, and each try draws one number, built
+    from the year the share passes it, so a house once built stays. Every share and
+    reach is inferred, the direction of each change sourced:
+    - **Inside the wall** the city was full by 133: private houses of the 2nd century
+      BCE are found in every quarter excavated (SITAR), Livy has three-storey blocks
+      in 218 (21.62.3), and Varro finds the Esquiline's groves hemmed in and the
+      Aventine's laurel grove built over (LL 5.49, 5.152). So nothing inside the wall
+      is thinned for 133, except: the Capitol's slopes, where half the houses within
+      120 m of the open summits come only after the priests' land round the Capitol
+      was sold in 89 BCE (Orosius 5.18.27; Tacitus, Histories 3.71); and Caesar's
+      forum, whose houses (excavated, ending in 55: SITAR) go when the land was bought
+      in 54 (Cicero, Letters to Atticus 4.16.8), its works rising from then. The head
+      of the Subura at the foot of the Cispius is a quarter of the rich throughout (a
+      house of 150–100 BCE with a coloured-stone floor, peristyle houses of the
+      mid-1st century: SITAR; Caesar's house in the Subura, Suetonius, Iulius 46).
+      Heights stay as they are: the texts show blocks growing taller (Cicero, De
+      lege agraria 2.96; Vitruvius 2.8.17; Augustus's cap of 70 feet, Strabo 5.3.7)
+      but give no numbers by date.
+    - **Outside it** the texts that describe a suburb without a break are Augustan
+      (Dionysius 4.13.3–5; Strabo 5.3.7–8; Livy 1.44.4); the law of about 45 BCE
+      speaks of "continuous habitation" within a mile (Tabula Heracleensis ll. 20,
+      56). The suburb was "less evenly distributed" than a ring (Digital Augustan
+      Rome, Continentia):
+      - along the **Appia**'s first mile, the Vicus Sulpicius and the shops the flood
+        of 54 swept away by the temple of Mars (Cicero, Letters to Quintus 3.7.1), 1.5
+        km out, densest in its first 600 m, growing to 54; the **Latina** beyond the
+        fork tombs only;
+      - the **Emporium** filling with warehouses, a fifth of its ground in 133 to
+        seven-tenths from 50 (the Horrea Galbana of about 100; others from about 80:
+        SITAR; DAR), Monte Testaccio's site kept open (its dumping is Augustan);
+      - outside the **Porta Esquilina**, south of the Labicana, where houses of the
+        2nd century BCE are excavated 216–440 m out, and along the Labicana and
+        Praenestina to 1.2 km from about 100; the **Tiburtina** crossing the open
+        common of the Campus Viminalis, bounded by L. Sentius's stones of about
+        100–75: tombs, no houses;
+      - the **Salaria** and **Nomentana** roads of tombs, houses only by the Porta
+        Collina (41 of the Salaria's 56 dated tombs, no houses: SITAR);
+      - the valley between the **Quirinal and the Pincian** (a house of the late 2nd
+        century with fine floors: SITAR);
+      - a modest quarter at the **Trastevere bridgehead** (a Republican house there:
+        SITAR), of two or three storeys, and a thin suburb along the Aurelia and
+        the Campana;
+      - houses against the wall's outer face by the gates, growing late, as the
+        Augustan writers saw them;
+      - **left open**: the Campus west of the Flaminia (Caesar's plan to build over
+        it in 45, "campum Martium coaedificari", came to nothing: Cicero, Letters to
+        Atticus 13.33a.1) and the Caelian beyond the Porta Caelimontana, whose houses
+        are Augustan (DAR).
+    - **The tombs** along the roads thicken, ×0.4 of the most in 133, ×0.6 by 80,
+      ×1.0 by 45: of the dated tombs within 4 km, 17 begin before 133, 45 in 133–81
+      and 58 in 80–28 (SITAR; its dates come in broad bins, "from about 100" and
+      "from about 50"). Drums under their mounds only from 50; travertine more often
+      from then.
+    - The wall's distance, for a house far from it, is the true distance to its
+      course (the grid used near it found nothing beyond ~80 m, so the old suburb
+      had not reached its ~450 m).
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
 - **The country round the city** (decided 2026-09-25: it replaced groves scattered
