@@ -22,9 +22,14 @@ const SEGMENTS = 64
  * Over the model of Rome the mesh must follow the model's ground closely, which the
  * vertex shader lays at 4 m (rome/shading.ts `groundLift`), or the ground's big
  * triangles cut through the buildings. Tiles from this level that overlap its board
- * get a denser grid, about 5 m at the deepest level.
+ * get a denser grid: up to 512 segments, about 5 m at the deepest level, but never
+ * so dense that its quads are under `FINE_QUAD_PX` on screen. Smaller than a pixel,
+ * as they are wherever a tile is drawn at its own detail, they draw nothing finer
+ * and shading them was half the cost of a frame over Rome; close in, where a tile
+ * is magnified, the full grid is used.
  */
-const FINE_SEGMENTS = 512
+const FINE_SEGMENTS = [128, 256, 512]
+const FINE_QUAD_PX = 4
 const FINE_FROM_LEVEL = 9
 const MAX_LEVEL = 11
 /** Split while a texel would cover more than this many device pixels. */
@@ -51,6 +56,8 @@ interface Node {
   minHeight: number
   maxHeight: number
   lastUsed: number
+  /** Device pixels one of its texels covered when last selected. */
+  texelPx: number
   parent?: Node
   children?: Node[]
 }
@@ -67,7 +74,7 @@ export class TerrainTiles {
   readonly group = new THREE.Group()
   private root: Node
   private geometry = createGridGeometry(SEGMENTS)
-  private fineGeometry: THREE.BufferGeometry | null = null
+  private fineGeometries = new Map<number, THREE.BufferGeometry>()
   /** The rectangle, plane metres, where tiles take the fine grid: the model's board. */
   private fineRect: [number, number, number, number] | null = null
   /** Built with the first tile, once the shared textures it reads have loaded. */
@@ -149,6 +156,7 @@ export class TerrainTiles {
     for (const child of this.group.children) child.visible = false
     for (const node of draw) {
       node.mesh!.visible = true
+      node.mesh!.geometry = this.geometryFor(node)
       node.lastUsed = this.frame
       maxLevelDrawn = Math.max(maxLevelDrawn, node.level)
     }
@@ -178,17 +186,27 @@ export class TerrainTiles {
     visit(this.root)
   }
 
-  private geometryFor(node: Node) {
+  /** Whether the tile overlaps the plan of Rome, the fine rectangle. */
+  private overlapsPlan(node: Node) {
     const r = this.fineRect
-    const over =
-      r &&
-      node.level >= FINE_FROM_LEVEL &&
+    return (
+      !!r &&
       node.x0 < r[2] &&
       node.x0 + node.size > r[0] &&
       node.y0 < r[3] &&
       node.y0 + node.size > r[1]
-    if (!over) return this.geometry
-    return (this.fineGeometry ??= createGridGeometry(FINE_SEGMENTS))
+    )
+  }
+
+  private geometryFor(node: Node) {
+    if (node.level < FINE_FROM_LEVEL || !this.overlapsPlan(node)) return this.geometry
+    const texels = TEXELS - 1
+    const segments =
+      FINE_SEGMENTS.findLast((n) => (node.texelPx * texels) / n >= FINE_QUAD_PX) ??
+      FINE_SEGMENTS[0]
+    let g = this.fineGeometries.get(segments)
+    if (!g) this.fineGeometries.set(segments, (g = createGridGeometry(segments)))
+    return g
   }
 
   private select(node: Node, eye: THREE.Vector3, focalPx: number, out: Node[]) {
@@ -202,6 +220,7 @@ export class TerrainTiles {
 
     const dist = Math.max(1, this.box.distanceToPoint(eye))
     const texelPx = (node.size / (TEXELS - 1) / dist) * focalPx
+    node.texelPx = texelPx
     if (texelPx > SPLIT_TEXEL_PX && node.level < MAX_LEVEL) {
       // Ancestors on the view's path are in use even when not drawn: they are the
       // stand-ins in waiting. Left to age, eviction dropped them and the next frame
@@ -253,7 +272,8 @@ export class TerrainTiles {
     }
     const material = (this.material ??= createTerrainMaterial(TEXELS))
     const mesh = new THREE.Mesh(this.geometryFor(node), material.material)
-    mesh.onBeforeRender = () => material.bind(node, textures)
+    mesh.onBeforeRender = () =>
+      material.bind({ ...node, nearRome: this.overlapsPlan(node) }, textures)
     mesh.position.set(node.x0, node.y0, 0)
     mesh.scale.set(node.size, node.size, 1)
     mesh.frustumCulled = false
@@ -293,7 +313,7 @@ export class TerrainTiles {
     })
     this.material?.material.dispose()
     this.geometry.dispose()
-    this.fineGeometry?.dispose()
+    for (const g of this.fineGeometries.values()) g.dispose()
   }
 }
 
@@ -311,6 +331,7 @@ function makeNode(level: number, i: number, j: number, parent: Node | undefined)
     minHeight: 0,
     maxHeight: 0,
     lastUsed: 0,
+    texelPx: 0,
     parent,
   }
 }

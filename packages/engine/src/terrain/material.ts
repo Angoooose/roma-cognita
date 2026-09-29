@@ -20,6 +20,7 @@ import {
   texture,
   uniform,
   uv,
+  Var,
   vec2,
   vec3,
 } from 'three/tsl'
@@ -138,6 +139,12 @@ export interface TileFrame {
   x0: number
   y0: number
   size: number
+  /**
+   * Whether the tile overlaps the plan of Rome. Everything the plan adds to the terrain
+   * fades to nothing outside it, so the tiles that do not skip working it out: a
+   * quarter to a third of the shader's cost, on every other tile of the map.
+   */
+  nearRome: boolean
 }
 
 /** A tile's own data textures, in the order the worker builds them. */
@@ -170,6 +177,22 @@ export function createTerrainMaterial(n: number) {
   const extent = uniform(1)
   const texelM = uniform(1)
   const lattice = waterLattice(uv().mul(extent))
+  const nearRome = uniform(0)
+  /**
+   * `plan()` on a tile over the plan of Rome; elsewhere `off`, what it comes to there.
+   * The condition is the same across a draw, so the branch is taken or skipped whole.
+   */
+  const nearRomeOnly = <T extends 'float' | 'vec2' | 'vec3'>(
+    off: THREE.Node<T>,
+    plan: () => THREE.Node<T>,
+  ): THREE.Node<T> =>
+    Fn(() => {
+      const v = Var<T, THREE.Node<T>>(off)
+      If(nearRome.greaterThan(0.5), () => {
+        v.assign(plan())
+      })
+      return v
+    })() as unknown as THREE.Node<T>
 
   const mat = new THREE.MeshBasicNodeMaterial()
   // Skirts face every way; culling them by winding would open the cracks they hide.
@@ -201,8 +224,8 @@ export function createTerrainMaterial(n: number) {
   // Under the model of Rome the ground is lit by, and takes its rock from, the
   // smoothed relief it is laid on (rome/shading.ts).
   const pm = origin.add(uv().mul(extent)).mul(1000)
-  const under = smoothWeight(pm.x, pm.y)
-  const smooth = smoothGradient(pm.x, pm.y)
+  const under = nearRomeOnly(float(0), () => smoothWeight(pm.x, pm.y))
+  const smooth = nearRomeOnly(vec2(0, 0), () => smoothGradient(pm.x, pm.y))
   const gradient = mix(vec2(s.g, s.b), smooth, under)
   // The light takes the smoothed slope drawn up, so the hills read under the city.
   const grad = mix(vec2(s.g, s.b), smooth.mul(planUniforms.relief), under).mul(
@@ -393,29 +416,35 @@ export function createTerrainMaterial(n: number) {
   const my = km.y.mul(1000)
   // The country round Rome, close in: its farmland and gardens, under the rivers and
   // roads (rome/fields.ts).
-  const withFields = fieldShading(glowed, mx, my, pxM)
+  const withFields = nearRomeOnly(glowed, () => fieldShading(glowed, mx, my, pxM))
   const withRivers = mix(
     withFields,
     RIVER,
-    inRiver.mul(float(1).sub(riverSwap(mx, my, pxM))),
+    inRiver.mul(float(1).sub(nearRomeOnly(float(0), () => riverSwap(mx, my, pxM)))),
   )
   // Roads over the rivers they cross, under the borders.
   const road = roadShading(slots.roads, n, pxM, texelM)
   // The plan draws Rome's own streets and roads, so the map's give way there: to its
   // streets on the board, and to its roads out of the gates as far as the country
   // round the city reaches, where one road hands over to the other.
-  const planRoads = countryMask(mx, my, pxM)
+  const planRoads = nearRomeOnly(float(0), () => countryMask(mx, my, pxM))
   const withRoads = mix(
     withRivers,
     road.colour,
     road.alpha
-      .mul(float(1).sub(max(plateMask(mx, my, pxM), planRoads).mul(streetsShow(pxM))))
-      .mul(float(1).sub(portraitCover(mx, my, pxM))),
+      .mul(
+        nearRomeOnly(float(1), () =>
+          float(1).sub(max(plateMask(mx, my, pxM), planRoads).mul(streetsShow(pxM))),
+        ),
+      )
+      .mul(nearRomeOnly(float(1), () => float(1).sub(portraitCover(mx, my, pxM)))),
   )
   // The plan of Rome over them, close in: bridges on the river (rome/shading.ts).
-  const withPlan = planShading(withRoads, mx, my, pxM, planRoads)
+  const withPlan = nearRomeOnly(withRoads, () =>
+    planShading(withRoads, mx, my, pxM, planRoads),
+  )
   // The city drawn from overhead over it, until its model rises (rome/portrait.ts).
-  const withCity = portraitShading(withPlan, mx, my, pxM, lit)
+  const withCity = nearRomeOnly(withPlan, () => portraitShading(withPlan, mx, my, pxM, lit))
   // A focused polity's outline: a bright line in a thin ink casing, over every border.
   const bordered = mix(withCity, pol.line, pol.lineAlpha)
   const cased = mix(bordered, INK, pol.focusCaseAlpha)
@@ -638,6 +667,7 @@ export function createTerrainMaterial(n: number) {
     extent.value = tile.size / 1000
     texelM.value = tile.size / (n - 1)
     lattice.set(tile)
+    nearRome.value = tile.nearRome ? 1 : 0
   }
   return { material: mat, bind }
 }
