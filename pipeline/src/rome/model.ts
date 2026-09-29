@@ -355,7 +355,19 @@ const WINDOW = [-132, -26]
  * `reach` metres from the wall and within `road` of the road, and a few against the
  * wall itself, within `wall`; and how much of each is built.
  */
-const SUBURB = { reach: 450, road: 38, wall: 70, density: [0.55, 0.25] }
+const SUBURB = {
+  reach: 450,
+  road: 38,
+  wall: 70,
+  density: [0.55, 0.25],
+  /** How far every part of a suburban building keeps from a road's or street's line: its drawn half-width, about 5 m, and a margin. */
+  roadClear: 8,
+}
+/**
+ * The Emporium's warehouses: a block `w` along the Porticus Aemilia and `d` across it,
+ * ranges of storerooms `range` deep round its court, `street` between blocks.
+ */
+const HORREA = { w: 44, d: 30, range: 7, street: 7 }
 
 /**
  * How much of a stretch of suburb is built, year by year: [astronomical year, share of
@@ -633,7 +645,8 @@ const TOMBS = {
   density: 0.5,
   fall: 1100,
   roadHalf: 5,
-  gap: 1.5,
+  // Clear of the road as it is drawn, which widens a little when seen from far off.
+  gap: 2.5,
 }
 /** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
 const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
@@ -1590,9 +1603,12 @@ export function bakeModel(m: ModelInput) {
     if (!l.pts.some((q) => isOpen(q))) lot(l.pts, l.h, l.kind, l.roof, l.tone)
   courtyardTrees.push(...city.gardens.filter((q) => !isOpen(q)))
 
-  // Outside it: a thinner suburb, along the roads and in the few areas the excavations
-  // and the texts date (`GROWN`), each growing year by year.
-  // Each road's line (the Flaminia comes in several pieces), for the nearest road.
+  // Outside it the suburb (`GROWN`), built on the country's own plots (fields.ts): a
+  // built plot has its building at the road end — a row of shops by the gates, a
+  // house, a workshop, a farmstead further out — and a walled yard or garden behind
+  // it, the rest of the plot left to its crop, so the buildings keep the plots' lines
+  // and face the roads. In the Emporium, warehouses round courts on a grid of their
+  // own. Each plot is built from the year its share of the zone passes its draw.
   const roadSegs = new Map<string, [Pt, Pt][]>()
   for (const l of m.streets.filter((l) => l.road))
     roadSegs.set(l.id, [
@@ -1611,84 +1627,307 @@ export function bakeModel(m: ModelInput) {
     return at ? [{ at, r }] : []
   })
   const gatePts = m.course.gates.map((gt) => gt.at)
+  const toGate = (p: Pt) =>
+    Math.min(...gatePts.map((g) => Math.hypot(g[0] - p[0], g[1] - p[1])))
+  /** How far from the wall, truly: its grid finds only what is near it. */
+  const wallDistAt = (p: Pt) => {
+    const d = wallGrid.nearest(p).d
+    return d < Infinity ? d : distToRing(p, m.circuit)
+  }
+  /** Clear of every road and street by their drawn width and a margin, all along its outline. */
+  const clearOfRoads = (ring: Pt[]) =>
+    ring.every((a, k) => {
+      const c = ring[(k + 1) % ring.length]
+      const L = Math.hypot(c[0] - a[0], c[1] - a[1])
+      for (let t = 0; t <= L; t += 2.5) {
+        const q: Pt = [
+          a[0] + ((c[0] - a[0]) * t) / (L || 1),
+          a[1] + ((c[1] - a[1]) * t) / (L || 1),
+        ]
+        if (streetGrid.nearest(q).d < SUBURB.roadClear) return false
+      }
+      return true
+    })
+  const fits = (ring: Pt[]) =>
+    ring.every((c) => allowed(c, true)) &&
+    clearOfRoads(ring) &&
+    !kept.some((k) => ring.some((c) => inRing(c, k)))
+  /** A lot's corners, round from the front left, and whether it can stand. */
+  const put = (
+    ring: Pt[],
+    h: number,
+    kind: number,
+    roof: number,
+    from: number,
+    tone: number,
+  ) => {
+    lot(ring, h, kind, roof, tone, from)
+    const c: Pt = [
+      ring.reduce((s, q) => s + q[0], 0) / 4,
+      ring.reduce((s, q) => s + q[1], 0) / 4,
+    ]
+    placed.add(c, Math.hypot(ring[0][0] - ring[2][0], ring[0][1] - ring[2][1]) / 2)
+  }
   const emporiumAngle = ((d) =>
     d?.bearing !== undefined
       ? -planeBearing(d.bearing, d.at ?? m.places.get('porticus-aemilia')!.location)
       : 0)(DESIGNS['porticus-aemilia'])
-  const s0 = FABRIC.spacing
-  const reachAll = Math.max(
-    SUBURB.reach,
-    ...Object.values(GROWN.roads).flatMap((r) => r.map(([out]) => out)),
-  )
-  const [ux0, uy0, ux1, uy1] = bounds(m.circuit, reachAll + 20)
-  for (let y = uy0; y < uy1; y += s0)
-    for (let x = ux0; x < ux1; x += s0) {
-      const p: Pt = [x + (rand() - 0.5) * s0 * 0.8, y + (rand() - 0.5) * s0 * 0.8]
-      const draw = rand()
-      if (inCircuit(p[0], p[1])) continue
-      if (kept.some((r) => inRing(p, r))) continue
-      if (bare.some((b) => Math.hypot(b.at[0] - p[0], b.at[1] - p[1]) < b.r)) continue
-      // The wall's grid finds only what is near it; farther out, the true distance.
-      const nearWall = wallGrid.nearest(p).d
-      let far = -1
-      const wallDist = () =>
-        nearWall < Infinity ? nearWall : far >= 0 ? far : (far = distToRing(p, m.circuit))
-      // Which stretch it is in: an area, a road, or the foot of the wall.
-      const area = areas.find((a) => inRing(p, a.pts))
-      let curve: Curve | null = null
-      let road: { d: number; seg?: [Pt, Pt] } | null = null
-      if (area) curve = area.curve
-      else {
-        for (const [id, grid] of roadGrids) {
-          const n = grid.nearest(p)
-          if (n.d >= SUBURB.road || (road && n.d >= road.d)) continue
-          const stretches = GROWN.roads[id] ?? [[SUBURB.reach, [[-132, SUBURB.density[0]]]]]
-          const st = stretches.find(([out]) => wallDist() < out)
-          road = n
-          curve = st ? st[1] : null
-        }
-        // West of the Flaminia is the open Campus (`GROWN.open`); off the roads, only
-        // the foot of the wall by the gates.
-        if (!road) {
-          if (nearWall > SUBURB.wall) continue
-          if (!gatePts.some((g) => Math.hypot(g[0] - p[0], g[1] - p[1]) < GROWN.wall.near))
-            continue
-          curve = GROWN.wall.curve
-        }
-      }
-      if (!curve) continue
-      // An area's houses thin out over its last `GROWN_EDGE` metres, so it has no hard
-      // outline: its bounds are approximate.
-      const edge = area ? Math.min(1, distToRing(p, area.pts) / GROWN_EDGE) : 1
-      if (edge <= 0) continue
-      const from = builtFrom(curve, draw / edge)
-      if (from === null) continue
-      const near = road ?? streetGrid.nearest(p)
-      const gx = at(p[0] + 4, p[1]) - at(p[0] - 4, p[1])
-      const gy = at(p[0], p[1] + 4) - at(p[0], p[1] - 4)
-      const angle =
-        area?.kind === 'warehouse'
-          ? emporiumAngle
-          : near.d < 45 && near.seg
-            ? Math.atan2(near.seg[1][1] - near.seg[0][1], near.seg[1][0] - near.seg[0][0])
-            : Math.hypot(gx, gy) > 0.4
-              ? Math.atan2(gx, -gy)
-              : Math.floor(x / 400) * 0.37 + Math.floor(y / 400) * 0.61
-      // Warehouses long and low, as the storerooms of the Horrea Galbana; the
-      // bridgehead's houses and flats of two or three storeys; elsewhere detached houses.
-      const [w, d, h, kind] =
-        area?.kind === 'warehouse'
-          ? [12 + rand() * 8, 30 + rand() * 30, 6.5 + rand() * 2, LOT_KIND.warehouse]
-          : area?.kind === 'town'
-            ? [7 + rand() * 6, 12 + rand() * 8, 6.8 + rand() * 3, LOT_KIND.flats]
-            : [8 + rand() * 8, 10 + rand() * 12, 4.5 + rand() * 3, LOT_KIND.suburb]
-      const corners = rect(p[0], p[1], w + FABRIC.gap, d + FABRIC.gap, angle)
-      if (!corners.every((c) => allowed(c, true)) || !allowed(p, true)) continue
-      const r = Math.hypot(w, d) / 2
-      if (placed.near(p, r + FABRIC.gap)) continue
-      placed.add(p, r)
-      lot(rect(p[0], p[1], w, d, angle), h, kind, ROOF.along, rand(), from)
+
+  // Which zone a plot's front is in, and its curve: an area, a road's stretch, or the
+  // foot of the wall by a gate.
+  const zoneOf = (p: Pt, iv: number) => {
+    if (inCircuit(p[0], p[1])) return null
+    if (kept.some((r) => inRing(p, r))) return null
+    if (bare.some((b) => Math.hypot(b.at[0] - p[0], b.at[1] - p[1]) < b.r)) return null
+    const area = areas.find((a) => inRing(p, a.pts))
+    if (area) {
+      if (area.kind === 'warehouse' || iv > 3) return null
+      const edge = Math.min(1, distToRing(p, area.pts) / GROWN_EDGE)
+      return { curve: area.curve, edge, kind: area.kind, fromWall: wallDistAt(p) }
     }
+    if (iv > 0) return null
+    let best: { id: string; d: number } | null = null
+    for (const [id, grid] of roadGrids) {
+      const d = grid.nearest(p).d
+      if (d < SUBURB.road + 10 && (!best || d < best.d)) best = { id, d }
+    }
+    const fromWall = wallDistAt(p)
+    if (best) {
+      const stretches = GROWN.roads[best.id] ?? [
+        [SUBURB.reach, [[-132, SUBURB.density[0]]]],
+      ]
+      const st = stretches.find(([out]) => fromWall < out)
+      return st ? { curve: st[1], edge: 1, kind: 'road' as const, fromWall } : null
+    }
+    if (fromWall < SUBURB.wall && toGate(p) < GROWN.wall.near)
+      return { curve: GROWN.wall.curve, edge: 1, kind: 'wall' as const, fromWall }
+    return null
+  }
+
+  const seenPlot = new Set<string>()
+  const [ux0, uy0, ux1, uy1] = bounds(
+    m.circuit,
+    Math.max(
+      SUBURB.reach,
+      ...Object.values(GROWN.roads).flatMap((r) => r.map(([o]) => o)),
+    ) + 40,
+  )
+  for (let y = uy0; y < uy1; y += 6)
+    for (let x = ux0; x < ux1; x += 6) {
+      if (inCircuit(x, y)) continue
+      const P = m.fields.plotAt([x, y])
+      if (P.iv > 3 || seenPlot.has(P.key)) continue
+      seenPlot.add(P.key)
+      // The plot's frame: `a` along the road from its left edge, `b` back from the road.
+      const U0 = P.iu * P.w - P.off
+      const toWorld = (a: number, b: number): Pt => [
+        P.foot[0] + P.dir[0] * (U0 + a) + P.n[0] * P.s * b,
+        P.foot[1] + P.dir[1] * (U0 + a) + P.n[1] * P.s * b,
+      ]
+      const box = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
+        toWorld(a0, b0),
+        toWorld(a1, b0),
+        toWorld(a1, b1),
+        toWorld(a0, b1),
+      ]
+      const front0 = P.iv * P.d
+      const zone = zoneOf(toWorld(P.w / 2, front0 + SUBURB.roadClear + 4), P.iv)
+      if (!zone || zone.edge <= 0) continue
+      const draw = hash2(P.foot[0] + P.iu * 7.3 + P.iv * 1.9, P.foot[1] + P.iu * 3.1)
+      // The shares are of tries about 10 m apart along the road; a plot's frontage is
+      // about two of them, so it is built if either would be.
+      const plotCurve = zone.curve.map(
+        ([yr, sh]) => [yr, 1 - (1 - sh) ** 2] as [number, number],
+      )
+      const from = builtFrom(plotCurve, draw / zone.edge)
+      if (from === null) continue
+      const pick = hash2(x * 0.37 + 11, y * 0.53 - 7)
+      const r = mulberry32(Math.floor(draw * 1e9))
+      const inPlot = (ring: Pt[]) => ring.every((c) => m.fields.plotAt(c).key === P.key)
+      // Its front: on the road's row, clear of the road; deeper rows, off their front.
+      const b0 =
+        P.iv === 0 ? SUBURB.roadClear + (zone.kind === 'road' ? 0.5 : r() * 3) : front0 + 2
+      const bMax = front0 + P.d - 1
+      const nearGate = toGate(toWorld(P.w / 2, b0)) < 320
+      const type =
+        zone.kind === 'town'
+          ? pick < 0.55
+            ? 'row'
+            : 'house'
+          : nearGate && P.iv === 0
+            ? pick < 0.6
+              ? 'row'
+              : 'house'
+            : zone.fromWall > 650
+              ? pick < 0.45
+                ? 'farm'
+                : pick < 0.8
+                  ? 'house'
+                  : 'workshop'
+              : pick < 0.62
+                ? 'house'
+                : 'workshop'
+      const tone = r()
+      const parts: [Pt[], number, number, number][] = []
+      if (type === 'row') {
+        // Shops with rooms over them, the plot's whole frontage, so neighbours make a row.
+        const depth = 9 + r() * 4
+        const storeys = zone.kind === 'town' || r() < 0.4 ? 2 : 1
+        parts.push([
+          box(0.25, P.w - 0.25, b0, b0 + depth),
+          3.8 + 3 * storeys,
+          LOT_KIND.flats,
+          ROOF.along,
+        ])
+        const yd = 6 + r() * 6
+        if (b0 + depth + yd < bMax)
+          parts.push([
+            box(0.6, P.w - 0.6, b0 + depth, b0 + depth + yd),
+            1.9,
+            LOT_KIND.yard,
+            ROOF.flat,
+          ])
+      } else if (type === 'house') {
+        const bw = Math.min(P.w - 2, P.w * (0.55 + r() * 0.35))
+        const a0 = 1 + r() * (P.w - 2 - bw)
+        const depth = 10 + r() * 6
+        const h = r() < 0.35 ? 6.8 + r() * 0.6 : 4.2 + r() * 1.2
+        const rr = r()
+        const roof =
+          rr < 0.55 ? ROOF.along : rr < 0.8 ? ROOF.across : rr < 0.9 ? ROOF.lean : ROOF.flat
+        parts.push([box(a0, a0 + bw, b0, b0 + depth), h, LOT_KIND.suburb, roof])
+        // A wing at the back, at one side, a storey lower: the plan an L.
+        if (r() < 0.4 && bw > 9) {
+          const ww = 4 + r() * 2.5
+          const left = r() < 0.5
+          const [wa0, wa1] = left ? [a0, a0 + ww] : [a0 + bw - ww, a0 + bw]
+          const wd = 6 + r() * 5
+          parts.push([
+            box(wa0, wa1, b0 + depth, b0 + depth + wd),
+            Math.max(3.8, h - 2.6),
+            LOT_KIND.suburb,
+            ROOF.lean,
+          ])
+        }
+        const gd = 10 + r() * 10
+        if (b0 + depth + gd < bMax)
+          parts.push([
+            box(0.8, P.w - 0.8, b0 + depth, b0 + depth + gd),
+            1.8,
+            LOT_KIND.garden,
+            ROOF.flat,
+          ])
+      } else if (type === 'workshop') {
+        const bw = 6 + r() * 4
+        const left = r() < 0.5
+        const [a0, a1] = left ? [1, 1 + bw] : [P.w - 1 - bw, P.w - 1]
+        const depth = 7 + r() * 4
+        parts.push([
+          box(a0, a1, b0, b0 + depth),
+          4 + r(),
+          LOT_KIND.suburb,
+          r() < 0.5 ? ROOF.lean : ROOF.along,
+        ])
+        const yd = 12 + r() * 8
+        const [ya0, ya1] = left ? [1 + bw, P.w - 0.8] : [0.8, P.w - 1 - bw]
+        if (ya1 - ya0 > 4)
+          parts.push([
+            box(ya0, ya1, b0, b0 + Math.min(yd, bMax - b0)),
+            1.9,
+            LOT_KIND.yard,
+            ROOF.flat,
+          ])
+      } else {
+        // A farmstead: ranges round a yard, square to the plot (Varro 1.13), set back.
+        const fb = b0 + 6 + r() * 6
+        const fw = Math.min(P.w - 2, 18 + r() * 8)
+        const fa = (P.w - fw) / 2
+        const fd = 16 + r() * 8
+        const rd = 5.5 + r()
+        const h = 4 + r() * 1.2
+        parts.push([box(fa, fa + fw, fb, fb + rd), h + 1.2, LOT_KIND.suburb, ROOF.along])
+        parts.push([box(fa, fa + rd, fb + rd, fb + fd), h, LOT_KIND.suburb, ROOF.lean])
+        if (r() < 0.7)
+          parts.push([
+            box(fa + fw - rd, fa + fw, fb + rd, fb + fd),
+            h,
+            LOT_KIND.suburb,
+            ROOF.lean,
+          ])
+        parts.push([
+          box(fa + rd, fa + fw - rd, fb + rd, fb + fd),
+          1.9,
+          LOT_KIND.yard,
+          ROOF.flat,
+        ])
+      }
+      // The buildings first: if they cannot stand, nothing does; a yard that cannot, goes.
+      const buildings = parts.filter((q) => q[2] < LOT_KIND.yard)
+      // The plots do not overlap, so only the plot, the ground and the roads decide.
+      const ok = (ring: Pt[]) => inPlot(ring) && fits(ring)
+      if (!buildings.length || !buildings.every(([ring]) => ok(ring))) continue
+      for (const [ring, h, kind, roof] of parts)
+        if (kind < LOT_KIND.yard || ok(ring)) put(ring, h, kind, roof, from, tone)
+    }
+
+  // The Emporium's warehouses: each a block of storerooms round a long court, as the
+  // Horrea Galbana's (designs.ts) and the Marble Plan's horrea are, on a grid square
+  // to the Porticus Aemilia, a street between each.
+  const emporium = areas.find((a) => a.kind === 'warehouse')
+  if (emporium) {
+    const [ex, ey] = [
+      emporium.pts.reduce((s, q) => s + q[0], 0) / emporium.pts.length,
+      emporium.pts.reduce((s, q) => s + q[1], 0) / emporium.pts.length,
+    ]
+    const [ca, sa] = [Math.cos(emporiumAngle), Math.sin(emporiumAngle)]
+    const W = HORREA.w + HORREA.street
+    const D = HORREA.d + HORREA.street
+    for (let j = -12; j <= 12; j++)
+      for (let i = -12; i <= 12; i++) {
+        const [u, v] = [i * W, j * D]
+        const c: Pt = [ex + ca * u - sa * v, ey + sa * u + ca * v]
+        if (!inRing(c, emporium.pts)) continue
+        const edge = Math.min(1, distToRing(c, emporium.pts) / GROWN_EDGE)
+        const from = builtFrom(
+          emporium.curve,
+          hash2(i * 13.1 + 5, j * 7.7 - 3) / Math.max(edge, 1e-3),
+        )
+        if (from === null) continue
+        const r = mulberry32(i * 1000 + j + 99)
+        const w = HORREA.w - r() * 10
+        const d = HORREA.d - r() * 8
+        const at = (a: number, b: number): Pt => [
+          c[0] + ca * a - sa * b,
+          c[1] + sa * a + ca * b,
+        ]
+        const rect4 = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
+          at(a0, b0),
+          at(a1, b0),
+          at(a1, b1),
+          at(a0, b1),
+        ]
+        const rd = HORREA.range
+        const h = 6 + r() * 2
+        const ranges = [
+          rect4(-w / 2, w / 2, -d / 2, -d / 2 + rd),
+          rect4(-w / 2, w / 2, d / 2 - rd, d / 2),
+          rect4(-w / 2, -w / 2 + rd, -d / 2 + rd, d / 2 - rd),
+          rect4(w / 2 - rd, w / 2, -d / 2 + rd, d / 2 - rd),
+        ]
+        const whole = rect4(-w / 2, w / 2, -d / 2, d / 2)
+        if (!fits(whole) || placed.near(c, Math.hypot(w, d) / 2)) continue
+        const tone = r()
+        for (const ring of ranges) put(ring, h, LOT_KIND.warehouse, ROOF.along, from, tone)
+        put(
+          rect4(-w / 2 + rd, w / 2 - rd, -d / 2 + rd, d / 2 - rd),
+          0.3,
+          LOT_KIND.yard,
+          ROOF.flat,
+          from,
+          tone,
+        )
+      }
+  }
 
   // --- tombs along the roads ------------------------------------------------------------
   // No one was buried or burned in the city (the Twelve Tables, in Cicero, Laws 2.58),
@@ -1836,6 +2075,8 @@ export function bakeModel(m: ModelInput) {
   // would outlast a house or come before a monument.
   for (let i = 0; i < fabric.length; i += FABRIC_STRIDE) {
     if (fabric[i + 10] < WINDOW[1] || fabric[i + 14] > WINDOW[0]) continue
+    // A yard's or garden's low wall casts no shadow worth baking.
+    if (fabric[i + 11] >= LOT_KIND.yard) continue
     const f = fabric.slice(i, i + 8)
     cast(
       [0, 2, 4, 6].map((k) => [f[k], f[k + 1]] as Pt),

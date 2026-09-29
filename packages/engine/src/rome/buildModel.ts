@@ -283,6 +283,56 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   // terracotta, varied a little lot by lot. A building on the site of a later
   // monument goes when it comes; one the city grew into comes in its year (`since`).
   b.occludes = true
+  /**
+   * A suburban yard or garden (pipeline model.ts): its floor, trodden earth or garden
+   * beds, over the fields' paint, and a low plastered wall round it `h` high, open in
+   * the middle of its front (`q`'s first side) for a gate.
+   */
+  const yard = (q: Pt[], h: number, ground: number, garden: boolean) => {
+    const look = b.look
+    // Its kind, so the walls take no shops or windows (ModelLayer `wallPaint`).
+    b.look = SKIN.none * 10 + LOT.yard
+    const floor = garden ? C.garden : C.yard
+    b.quad(
+      [q[0][0], q[0][1], 0.1],
+      [q[1][0], q[1][1], 0.1],
+      [q[2][0], q[2][1], 0.1],
+      [q[3][0], q[3][1], 0.1],
+      ground,
+      floor,
+    )
+    const T = 0.45
+    const wall = (a: Pt, c: Pt) => {
+      const L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1
+      const [nx, ny] = [(-(c[1] - a[1]) / L) * (T / 2), ((c[0] - a[0]) / L) * (T / 2)]
+      b.lot(
+        [
+          [a[0] - nx, a[1] - ny],
+          [c[0] - nx, c[1] - ny],
+          [c[0] + nx, c[1] + ny],
+          [a[0] + nx, a[1] + ny],
+        ],
+        h,
+        ground,
+        C.yardWall,
+        C.yardWall,
+        ROOF.flat,
+      )
+    }
+    const [f0, f1, b1, b0] = q
+    const mid = (t: number): Pt => [
+      f0[0] + (f1[0] - f0[0]) * t,
+      f0[1] + (f1[1] - f0[1]) * t,
+    ]
+    const flen = Math.hypot(f1[0] - f0[0], f1[1] - f0[1]) || 1
+    const gap = Math.min(0.4, 1.6 / flen)
+    wall(f0, mid(0.5 - gap))
+    wall(mid(0.5 + gap), f1)
+    wall(f1, b1)
+    wall(b1, b0)
+    wall(b0, f0)
+    b.look = look
+  }
   const nF = meta.fabricCount
   const shade = (c: THREE.Color, k: number, r: () => number) =>
     c.clone().multiplyScalar(1 - k + r() * k * 2)
@@ -298,6 +348,11 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
       v[13],
       v[14],
     ]
+    b.dates = [since, until, 1, 0]
+    if (kind === LOT.yard || kind === LOT.garden) {
+      yard(q, h, ground, kind === LOT.garden)
+      continue
+    }
     // One building's lots share its render and its roof's weathering (`tone`).
     const own = mulberry32(Math.floor(tone * 1000) + 7)
     const wall =
@@ -306,7 +361,6 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
         : kind === LOT.warehouse
           ? shade(C.warehouse, 0.03, own)
           : C.stucco[Math.floor(own() * C.stucco.length)]
-    b.dates = [since, until, 1, 0]
     const tiles = roof === ROOF.flat ? shade(C.terrace, 0.04, own) : weathered(C.roof, own)
     // The lot's kind and its building's seed for its doors and windows, for the shader.
     b.look = kind + Math.floor(tone * 900) / 1000

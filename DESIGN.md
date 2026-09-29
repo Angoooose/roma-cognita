@@ -1025,6 +1025,29 @@ known and what is generated are kept apart:
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
   - A thinner suburb lines the roads out of the gates and fills a few areas beyond
     them, growing year by year (**The city growing**, below).
+  - **The suburb on the country's plots** (decided 2026-09-29, replacing houses
+    scattered on a jittered grid, which read as one box repeated and could stand on
+    a road). A suburban building takes a plot of the fields (fields.ts `plotAt`):
+    its front at the plot's road end, the rest of the plot left to its crop, so the
+    buildings keep the plots' lines and face the roads. By kind:
+    - within ~320 m of a gate, **rows of shops** with rooms over them, the plot's
+      whole frontage, so neighbouring plots make a row, a yard behind;
+    - **houses**, most of a plot's width, one or two storeys, their roofs ridged
+      along the road or gabled to it, now and then a lean-to or a flat terrace, and
+      two in five an L with a lower wing behind, a walled garden beyond;
+    - **workshops**, a small building at one side of a walled yard;
+    - beyond ~650 m, **farmsteads**: ranges round a yard, square to the plot (Varro 1.13);
+    - in the Emporium, **warehouses**: storerooms round a court, 44 by 30 m and
+      smaller, on a grid square to the Porticus Aemilia, a street between each, as
+      the Horrea Galbana and the Marble Plan's horrea are built.
+    The yards and gardens are a floor, trodden earth or garden beds, over the
+    fields' paint, and a plastered wall 1.8 m high open at the front for a gate. No
+    part of a building comes within 8 m of a road's or street's line, tested all
+    along its outline, nor over a plot's edge, where the lanes run; tombs stand 7.5 m
+    back from the road's line. The shares of **The city growing** are of tries about
+    10 m apart along a road; a plot's frontage is about two, so a plot is built if
+    either would be (1 − (1 − share)²). Which plots are built, and as what, is
+    generated: illustrative, not of any building.
   - **The city growing** (decided 2026-09-29; `GROWTH` and `GROWN` in model.ts). Two
     research passes, on the city inside the wall and on the suburbs, read the texts,
     the modern literature and SITAR's dated remains of houses, warehouses and tombs
