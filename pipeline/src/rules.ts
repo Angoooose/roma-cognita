@@ -160,6 +160,13 @@ export function checkDataset(ds: Dataset): Issue[] {
   const sane = new Set<object>()
   for (const r of dated) if (intervalOk(r, r)) sane.add(r)
   for (const p of ds.places) {
+    for (const c of p.condition)
+      if (c.kept && c.value !== 'under construction')
+        error(
+          'kept-not-works',
+          p,
+          `"kept" is only for works rebuilding it, not "${c.value}"`,
+        )
     for (const d of [...p.prominence, ...p.status, ...p.condition]) {
       intervalOk(p, d, `${String(d.value)}: `)
       if (d.from.year < p.from.year || d.to.year > p.to.year) {

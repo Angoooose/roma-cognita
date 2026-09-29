@@ -1,4 +1,5 @@
 import * as THREE from 'three/webgpu'
+import type { Works } from './works.ts'
 
 /**
  * The mesh the model of Rome is built of (buildModel.ts), and its vocabulary: the
@@ -209,11 +210,17 @@ export class Builder {
   look = 0
   /**
    * How much of a building stands while it is part-built (its years' third and
-   * fourth values): the height it is cut off at, metres over its ground, and 1 if
-   * it is a burnt shell rather than works in progress. Set per monument once it is
-   * built (`finish`).
+   * fourth values): the height it has risen to, metres over its ground, in its first
+   * year and in its last — it rises between them a course at a time — or, for a
+   * burnt shell, the height it is cut off at and -1. A vertex never part-built has
+   * 1e5 for both. Set per monument once it is built (`finish`), or as it is built
+   * (`rise`).
    */
   private part = f32(1 << 15)
+  /** How what is being built now rises over its part-built years (`part`); null: it is not cut. */
+  rise: [number, number] | null = null
+  /** The works a monument is being built in, while it is (works.ts); null otherwise. */
+  works: Works | null = null
   /** Whether what is being built now overshadows its neighbours (`Occlusion`). */
   occludes = true
   private topsOf = f64(1 << 16)
@@ -280,8 +287,8 @@ export class Builder {
       S[skin + k * 4 + 1] = p[3] ?? 0
       S[skin + k * 4 + 2] = p[4] ?? 0
       S[skin + k * 4 + 3] = p[5] ?? 0
-      this.part.a[part + k * 2] = 1e5
-      this.part.a[part + k * 2 + 1] = 0
+      this.part.a[part + k * 2] = this.rise ? this.rise[0] : 1e5
+      this.part.a[part + k * 2 + 1] = this.rise ? this.rise[1] : 1e5
     }
     if (this.occludes && Math.abs(nz) > 0.3) {
       const t = this.topsOf.take(11)
@@ -1262,7 +1269,7 @@ export class Builder {
     for (let i = from; i < n; i++) top = Math.max(top, P[i * 3 + 2])
     for (let i = from; i < n; i++) {
       Q[i * 2] = top * share
-      Q[i * 2 + 1] = burnt ? 1 : 0
+      Q[i * 2 + 1] = burnt ? -1 : top * share
     }
   }
 

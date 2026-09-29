@@ -208,11 +208,20 @@ function Lede({ children }: { children: ReactNode }) {
 /** Building works hatched, as a plan draws them. */
 const HATCH =
   'repeating-linear-gradient(135deg, color-mix(in oklab, var(--foreground) 45%, transparent) 0 1.5px, transparent 1.5px 4px)'
+/** Finishing work after the dedication: a sparser hatch over the standing grey. */
+const FINISHING =
+  'repeating-linear-gradient(135deg, color-mix(in oklab, var(--foreground) 70%, transparent) 0 1.5px, transparent 1.5px 6px), color-mix(in oklab, var(--foreground) 32%, transparent)'
+
+/** What the Fabric lane's key calls a condition. */
+const CONDITION_NAME: Record<string, string> = {
+  'under construction': 'Building',
+  'being finished': 'Being finished',
+}
 
 /**
  * A place's years in lanes on the map's axis: its status, in the colours its mark takes
- * (a seat its ground's, Rome Rome's), and a monument's fabric, standing, building or
- * burnt. Uncertain, both are drawn fainter.
+ * (a seat its ground's, Rome Rome's), and a monument's fabric, standing, building,
+ * being finished or burnt. Uncertain, both are drawn fainter.
  */
 function PlaceChart({ hit }: { hit: PlaceHit }) {
   const p = hit.place
@@ -235,25 +244,30 @@ function PlaceChart({ hit }: { hit: PlaceHit }) {
         : v === 'royal seat'
           ? seatFill
           : INK
-  const conditionFill = (v: string) => (v === 'under construction' ? HATCH : INK)
+  const conditionFill = (v: string) =>
+    v === 'under construction' ? HATCH : v === 'being finished' ? FINISHING : INK
+  const hatched = (fill: string) => fill === HATCH || fill === FINISHING
   const background = (v: string, kind: 'status' | 'condition') =>
     kind === 'status' ? statusFill(v) : conditionFill(v)
   const strength = (v: string, kind: 'status' | 'condition') => {
     const fill = background(v, kind)
-    if (fill === HATCH) return doubt ? 0.45 : 1
+    if (hatched(fill)) return doubt ? 0.45 : 1
     // Burnt is drawn in the darkest ink, standing in the lane's ordinary grey.
     if (v === 'burnt') return doubt ? 0.35 : 0.9
     return opacity(fill, doubt)
   }
 
-  const runs = (xs: { value: string; years: [number, number] }[], kind: 'status' | 'condition') =>
+  const runs = (
+    xs: { value: string; years: [number, number] }[],
+    kind: 'status' | 'condition',
+  ) =>
     xs
       .filter((r) => r.years[1] >= span[0] && r.years[0] <= span[1])
       .map((r, i) => {
         const from = Math.max(r.years[0], span[0])
         const to = Math.min(r.years[1], span[1])
         const fill = background(r.value, kind)
-        const open = r.years[0] < span[0] && fill !== HATCH
+        const open = r.years[0] < span[0] && !hatched(fill)
         return (
           <Tooltip key={i}>
             <TooltipTrigger asChild>
@@ -262,7 +276,9 @@ function PlaceChart({ hit }: { hit: PlaceHit }) {
                 style={{
                   left: a.at(from),
                   width: a.width(from, to),
-                  background: open ? `linear-gradient(90deg, transparent, ${fill} 12%)` : fill,
+                  background: open
+                    ? `linear-gradient(90deg, transparent, ${fill} 12%)`
+                    : fill,
                   opacity: strength(r.value, kind),
                 }}
               />
@@ -286,10 +302,10 @@ function PlaceChart({ hit }: { hit: PlaceHit }) {
   for (const r of p.condition ?? [])
     keyed.set(
       r.value,
-      r.value === 'under construction' ? (
+      hatched(conditionFill(r.value)) ? (
         <span
           className="block h-3 w-5 rounded-[1px]"
-          style={{ background: HATCH, opacity: doubt ? 0.45 : 1 }}
+          style={{ background: conditionFill(r.value), opacity: doubt ? 0.45 : 1 }}
         />
       ) : (
         <span
@@ -304,7 +320,7 @@ function PlaceChart({ hit }: { hit: PlaceHit }) {
       lanes={lanes}
       legend={[...keyed].map(([v, swatch]) => (
         <KeyItem key={v} swatch={swatch}>
-          {v === 'under construction' ? 'Building' : cap(v)}
+          {CONDITION_NAME[v] ?? cap(v)}
         </KeyItem>
       ))}
     />

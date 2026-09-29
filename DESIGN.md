@@ -1173,12 +1173,59 @@ known and what is generated are kept apart:
   - No umbrella pines outside the gardens: the pine skyline that says "Rome" now
     is mostly later planting.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not
-  shown. One being built stands cut off at two-fifths of its height, open to the
-  sky as works rising are (or as far as its design says the works had got: the
-  Theatre of Marcellus only its foundations); one burnt is a roofless shell cut at
-  seven-tenths, blackened towards its top (decided 2026-09-24: squashing them to a
-  third of their height made columns stubby). The
-  generated city stands throughout, except on the site of a monument begun within
+  shown. One burnt is a roofless shell cut at seven-tenths, blackened towards its
+  top (decided 2026-09-24: squashing them to a third of their height made columns
+  stubby).
+- **Building sites** (`rome/works.ts`, decided 2026-09-29). A temple being built
+  rises through its works, from the year they began to its dedication, a course of
+  two Roman feet at a time, each part in its own share of the years:
+  - The records say when works began and ended, almost never how far they had got
+    in a given year. So the share each part takes is a convention, the same for
+    every temple, drawn from how Roman builders worked, not a record of any one:
+    | share     | what goes up                                                                                                  | why                                                                                 |
+    | --------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+    | 0–0.08    | the site dug, travertine footings under its walls and column lines                                            | the Augustan podium of Castor (Platner & Ashby, Aedes Castoris)                     |
+    | 0.08–0.28 | the podium's core, concrete in lifts inside tufa, a bed at each course                                        | the same; the core and its walls rise together, the walls its formwork              |
+    | 0.28–0.55 | the cella's walls in peperino, stepped back as they rise, and the columns, drum by drum, some ahead of others | Mars Ultor's peperino cella lined with marble (P&A, Forum Augustum); Vitruvius 10.2 |
+    | 0.55–0.68 | the entablature, an open ring of blocks until the roof closes it                                              | capitals finished in the yard, then lifted                                          |
+    | 0.68–0.78 | the roof: its timbers, then its tiles from the eaves up                                                       | Vitruvius 4.2.1                                                                     |
+    | 0.78–0.90 | the pediment's figures; the palm on the crane                                                                 | set while the scaffold stands (Pliny NH 36.13); the Haterii relief                  |
+    | 0.90–1    | the podium faced in marble, the steps laid, the scaffold and crane gone                                       | the surfaces most easily spoilt go on last                                          |
+  - Round it, for the years each is needed: the site's trodden earth; a
+    free-standing scaffold of poles round the cella's flanks and back, a runner at
+    every lift of a metre and a half and putlogs in to the wall (not socketed: a
+    marble face takes no putlog holes; J.-P. Adam, _Roman Building_, 1994, pp.
+    145–156); a crane of two legs bolted at the head and spread at the foot, held
+    by stays to stakes, worked by a treadwheel at its foot (Vitruvius 10.2.1–3,
+    10.2.7; the Haterii relief, Vatican Museums inv. 9998); and the yard before its
+    front, with tufa seasoning in stacks (Vitruvius 2.7.5), drums, entablature
+    blocks and a roughed capital, heaps of lime and sand (Vitruvius 2.5.1), roof
+    timbers and tiles.
+  - Left out, as not attested: wheelbarrows, sawn planks decked all round, turning
+    jibs, cranes worked by cranks.
+  - **Rebuilding** (decided 2026-09-29). A record's works span may say what of the
+    old building they `kept`: `footings`, its `podium`, or its `walls` (re-roofed
+    and refitted), each only where a source says so; left out, the works start from
+    bare ground. What was kept stands from the first year. The first year is spent
+    clearing the ruin: heaps of smoke-stained rubble and charred timbers on what was
+    kept, or on the ground. The rest goes up over the years left, in the same order.
+    Each burnt or building span of a record is its own, so a temple burnt one year
+    and rebuilt from the next stands as a shell for a year and then rises (the
+    Capitol's, burnt in 83 BCE and rebuilt on the old foundations, Dionysius of
+    Halicarnassus 4.61.4). Each type of building says how far through its works
+    each `kept` reaches (`TEMPLE_KEPT`), so the same words serve the types to come.
+  - **Being finished**: work a source puts on a building after its dedication.
+    A temple stands whole, the scaffold still round its cella, with no crane or
+    yard; any other building simply stands. The span runs to the last year a
+    source puts work on it, since when the work ended is seldom recorded (the
+    Capitol's to 62 BCE, when Caesar said much of it was half finished:
+    Suetonius, _Divus Iulius_ 15; Dio 37.44.1–2). The inspector's Fabric lane
+    hatches it more sparsely than building.
+  - Other buildings being built (basilicas, the Curia, theatres, the Mausoleum)
+    still stand cut off at two-fifths of their height, open to the sky, or as far
+    as their design says the works had got (the Theatre of Marcellus only its
+    foundations).
+- The generated city stands throughout, except on the site of a monument begun within
   the window: there houses stand until that year (Caesar's forum went up on the
   houses he bought).
 

@@ -161,7 +161,7 @@
   to: after 27 BCE
   condition:
     - { value: standing, from: before 133 BCE, to: 43 BCE }
-    - { value: under construction, from: 42 BCE, to: c. 35 BCE }
+    - { value: under construction, from: 42 BCE, to: c. 35 BCE, kept: footings }
     - { value: standing, from: c. 34 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -172,9 +172,12 @@
   review: draft
   note: >-
     One of the oldest temples of the Forum, and the state treasury (aerarium).
-    Rebuilt from 42 BCE by L. Munatius Plancus on the same podium; the eight
-    columns standing now are from a late-antique restoration, and the outline is
-    the podium.
+    Rebuilt from 42 BCE by L. Munatius Plancus on the old temple's site: the
+    podium standing now is his, of travertine and peperino walls filled with
+    concrete, and only "a few blocks of the podium of the original temple" remain
+    in it (P&A, p. 464), so only the footings are kept and the podium rises new.
+    The eight columns standing now are from a late-antique restoration, and the
+    outline is the podium.
     Plancus's rebuilding from 42 BCE is not dated to its end; the map shows it under
     way to about 35 BCE (Digital Augustan Rome: it "must have begun in the late 40s").
     The point is the podium's centre, about 40 m west of where the Forum's plan once
@@ -721,8 +724,10 @@
   condition:
     - { value: standing, from: before 133 BCE, to: 84 BCE }
     - { value: burnt, from: 83 BCE, to: 82 BCE }
-    - { value: under construction, from: 81 BCE, to: 70 BCE }
-    - { value: standing, from: 69 BCE, to: after 27 BCE }
+    - { value: under construction, from: 81 BCE, to: 70 BCE, kept: podium }
+    - { value: standing, from: 69 BCE, to: 69 BCE }
+    - { value: being finished, from: 68 BCE, to: 62 BCE }
+    - { value: standing, from: 61 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Jovis Capitolini, pp. 297–302' }
@@ -733,10 +738,12 @@
     - { source: digital-augustan-rome, locator: 'Iuppiter Optimus Maximus Capitolinus, Aedes' }
     - { source: livy, locator: '10.23.12; 35.10.12; 40.51.3' }
     - { source: pliny-nh, locator: '33.57; 36.45; 36.185' }
+    - { source: dionysius, locator: '4.61.4' }
     - { source: tacitus-hist, locator: '3.72' }
     - { source: gellius, locator: '2.10' }
     - { source: valerius-maximus, locator: '4.4.11' }
-    - { source: cassius-dio, locator: '37.44' }
+    - { source: suetonius-iul, locator: '15' }
+    - { source: cassius-dio, locator: '37.44.1–2; 43.14.6' }
   confidence: certain
   review: draft
   note: >-
@@ -746,12 +753,21 @@
     laid after 149 and ceilings gilded in 142 (Pliny). It burned to the ground on 6 July
     83 BCE, and the ruin is shown to the end of 82, when Sulla took the city and the
     rebuilding in hand; Catulus's temple, on the same foundations but higher and roofed
-    with gilded bronze tiles, was dedicated in 69, though in 62 Caesar could still claim
-    many parts were "but half finished" (Dio 37.44). Whether the temple filled the whole
-    53 by 62 m platform, as drawn, or stood on part of it, is disputed (Arata 2010;
-    Kaderka and Tucci 2021); the 74 m length of some plans takes in a wall behind it
-    that others give to the precinct. Parts of the podium survive under the Palazzo
-    Caffarelli, but no surveyed outline is open, so it is drawn as a point.
+    with gilded bronze tiles, was dedicated in 69. It was rebuilt on the old
+    foundations (Dionysius of Halicarnassus 4.61.4; "eodem loco", Tacitus, Histories
+    3.72), so the podium is kept and the temple rises on it. It was not finished at
+    the dedication: in 62 Caesar, as praetor, called Catulus to account for the
+    rebuilding and would have handed the rest of the work to Pompey (Suetonius, Divus
+    Iulius 15), saying many parts were "but half finished, or at any rate Caesar
+    pretended this was the case" (Dio 37.44.1–2). So it is shown being finished to 62,
+    the last year a source puts work on it; when the work ended is not recorded. In 46
+    the Senate voted Caesar's name onto it in place of Catulus's, as having completed
+    it (Dio 43.14.6), which was never carried out and dates no work. Whether the
+    temple filled the whole 53 by 62 m platform, as drawn, or stood on part of it, is
+    disputed (Arata 2010; Kaderka and Tucci 2021); the 74 m length of some plans takes
+    in a wall behind it that others give to the precinct. Parts of the podium survive
+    under the Palazzo Caffarelli, but no surveyed outline is open, so it is drawn as a
+    point.
 
 - id: tabularium
   kind: archive
