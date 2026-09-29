@@ -8,8 +8,8 @@ import * as THREE from 'three/webgpu'
 export const ALWAYS = [-100000, 100000, 1, 0]
 
 /** Floats per generated building in model.bin, its kinds and roofs (pipeline city.ts `LOT_KIND`, `ROOF`). */
-export const FABRIC_STRIDE = 14
-export const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3 }
+export const FABRIC_STRIDE = 15
+export const LOT = { flats: 0, house: 1, warehouse: 2, suburb: 3, yard: 4, garden: 5 }
 export const ROOF = { along: 0, across: 1, flat: 2, lean: 3 }
 
 /**
@@ -76,6 +76,11 @@ export const C = {
     new THREE.Color('#DBC29C'),
     new THREE.Color('#D6B79A'),
   ],
+  /** A suburban yard's floor, trodden earth, and a garden's, its beds and greens. */
+  yard: new THREE.Color('#BCA784'),
+  garden: new THREE.Color('#98A06A'),
+  /** The low wall round a yard or garden: rough stone under a coat of plaster. */
+  yardWall: new THREE.Color('#D6C7AA'),
   /** A flat roof terrace: tiled or trodden mortar, greyer than the roofs. */
   terrace: new THREE.Color('#BFA894'),
   /** One terracotta for the generated roofs, varied a little lot by lot. */

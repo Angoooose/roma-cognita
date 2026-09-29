@@ -150,6 +150,13 @@ const STONE_OF: Record<
       why: 'Metellus was "the first to build a temple in Rome entirely of marble" (Iuppiter Stator, p. 304)',
     },
   ],
+  'aedes-martis-in-circo': [
+    {
+      from: -100000,
+      stone: 'marble',
+      why: "Hermodorus's temple of about 133 BCE, its columns of Greek marble 1.10–1.15 m thick, the second marble temple in Rome after Jupiter Stator's (Cavallero 2018, pp. 325–327)",
+    },
+  ],
   'aedes-apollinis-palatini': [
     {
       from: -100000,
@@ -297,17 +304,49 @@ const SHADOW = { dx: 0.707, dy: -0.707, vex: 1.5 }
 /**
  * Floats per generated building in model.bin: its lot's four corners (front left,
  * front right, back right, back left), wall height, ground, the last year it
- * stands, its kind (city.ts `LOT_KIND`), its roof (`ROOF`) and its building's tone
- * (city.ts `Lot.tone`), shared by the lots of one building.
+ * stands, its kind (city.ts `LOT_KIND`), its roof (`ROOF`), its building's tone
+ * (city.ts `Lot.tone`), shared by the lots of one building, and the first year it stands.
  */
-const FABRIC_STRIDE = 14
+const FABRIC_STRIDE = 15
 /** The quarters where atrium houses gather among the flats (city.ts). */
 const RICH_QUARTERS = [
+  // The Cispius's foot at the head of the Subura: a house of 150–100 BCE with a
+  // floor of coloured stone by S. Pudenziana, peristyle houses and aristocratic
+  // painting of the mid-1st century on the Clivus Suburanus (SITAR, investigations
+  // 2805, 633, 714; part 20790); Caesar's house in the Subura (Suetonius, Iulius 46).
+  'mons-cispius',
   'mons-palatinus',
   'velia-roma',
   'carinae',
   'collis-quirinalis',
   'mons-caelius',
+]
+/**
+ * Where the city is known to have grown within the window (DESIGN.md §7.7, "The city
+ * growing"): in an area (`where`), a `share` of its lots of these `kinds`, chosen by
+ * a hash of each lot's place so every build is the same, stands only from `from`.
+ * - The Capitol's slopes, within `reach` metres of its open summits and inside the
+ *   wall: "loca publica quae in circuitu Capitolii pontificibus auguribus
+ *   decemviris et flaminibus in possessionem tradita erant, cogente inopia vendita
+ *   sunt" (Orosius 5.18.27), the priests' land round the Capitol sold in 89 BCE (not
+ *   93, as Platner & Ashby have it), and houses climbed until by 69 CE they "reached
+ *   the level of the Capitol" (Tacitus, Histories 3.71). That the land had stood open
+ *   is inferred from its being sold; the share is illustrative.
+ */
+const GROWTH: {
+  where: 'capitol-slopes'
+  reach: number
+  share: number
+  from: number
+  kinds: number[]
+}[] = [
+  {
+    where: 'capitol-slopes',
+    reach: 120,
+    share: 0.5,
+    from: -88,
+    kinds: [LOT_KIND.flats, LOT_KIND.house],
+  },
 ]
 /** The atlas's window, astronomical: 133 to 27 BCE. */
 const WINDOW = [-132, -26]
@@ -316,7 +355,284 @@ const WINDOW = [-132, -26]
  * `reach` metres from the wall and within `road` of the road, and a few against the
  * wall itself, within `wall`; and how much of each is built.
  */
-const SUBURB = { reach: 450, road: 38, wall: 70, density: [0.55, 0.25] }
+const SUBURB = {
+  reach: 450,
+  road: 38,
+  wall: 70,
+  density: [0.55, 0.25],
+  /** How far every part of a suburban building keeps from a road's or street's line: its drawn half-width, about 5 m, and a margin. */
+  roadClear: 8,
+}
+/**
+ * The Emporium's grid: a cell `cell` along the Porticus Aemilia and `deep` across it,
+ * `street` between them; a block is a cell or two.
+ */
+const HORREA = { cell: 26, deep: 30, street: 6 }
+
+/**
+ * How much of a stretch of suburb is built, year by year: [astronomical year, share of
+ * tries built], the share held before the first year and after the last, and straight
+ * between. Each try draws one number; it is built from the first year the share
+ * passes it, so a house once built stays.
+ */
+type Curve = [number, number][]
+/**
+ * The suburb as it grew, 133–27 BCE (DESIGN.md §7.7, "The city growing"; the research
+ * behind it is summarised there). The texts that describe a suburb running on without
+ * a break from the city (Dionysius 4.13.3–5; Strabo 5.3.7–8; Livy 1.44.4) are
+ * Augustan; the one Republican witness, the law of about 45 BCE, regulates streets
+ * "within a mile of Rome, where there is continuous habitation" (Tabula Heracleensis
+ * ll. 20, 56). The excavations date suburban houses in only a few places (SITAR), and
+ * the suburb was "less evenly distributed" than a ring round the wall (Digital
+ * Augustan Rome, Continentia): built up along the Appia, in the Emporium and by the
+ * bridges, thin elsewhere, with the Campus, the Caelian beyond the wall, the Vatican
+ * plain and the Janiculum left to fields and tombs. Every share and reach is
+ * inferred; what they rest on is said for each.
+ */
+const GROWN: {
+  /** Houses along these roads, by distance from the wall: [out to, curve]. */
+  roads: Record<string, [number, Curve][]>
+  /** Areas built off the roads, lon/lat: houses, or warehouses. */
+  areas: {
+    id: string
+    ring: [number, number][]
+    curve: Curve
+    kind: 'house' | 'town' | 'warehouse'
+  }[]
+  /** Ground kept open, lon/lat. */
+  open: [number, number][][]
+  /** Against the wall's outer face, within `near` metres of a gate. */
+  wall: { near: number; curve: Curve }
+  /** The gates beyond which no suburb stood, and how far round them. */
+  bare: { gate: string; r: number }[]
+  /** Tombs along the roads: how many stand, as a share of the most (at 27 BCE). */
+  tombs: Curve
+} = {
+  roads: {
+    // A settlement along the Appia's first mile: the Vicus Sulpicius, and in 54 BCE
+    // the flood that swept away "a great many shops" and gardens by the temple of Mars
+    // (Cicero, Letters to Quintus 3.7.1; Tusculans 1.13); the mile of the law of
+    // about 45 (1,480 m).
+    'via-appia': [
+      [
+        600,
+        [
+          [-132, 0.35],
+          [-79, 0.45],
+          [-53, 0.55],
+        ],
+      ],
+      [
+        1500,
+        [
+          [-132, 0.15],
+          [-79, 0.25],
+          [-53, 0.35],
+          [-26, 0.4],
+        ],
+      ],
+    ],
+    // The Latina shares the Appia's first stretch; beyond the fork, tombs only (SITAR).
+    'via-latina': [
+      [
+        600,
+        [
+          [-132, 0.35],
+          [-79, 0.45],
+          [-53, 0.55],
+        ],
+      ],
+    ],
+    // Houses of the 2nd century BCE 216–440 m out of the Porta Esquilina (SITAR 2555,
+    // 2770, 13830, 2748), and from about 100 BCE out to 1.2 km (15365, 3182).
+    'via-labicana': [
+      [
+        450,
+        [
+          [-132, 0.25],
+          [-79, 0.4],
+          [-59, 0.5],
+        ],
+      ],
+      [
+        1200,
+        [
+          [-132, 0.2],
+          [-79, 0.35],
+        ],
+      ],
+    ],
+    'via-praenestina': [
+      [
+        450,
+        [
+          [-132, 0.25],
+          [-79, 0.4],
+          [-59, 0.5],
+        ],
+      ],
+      [
+        1200,
+        [
+          [-132, 0.2],
+          [-79, 0.35],
+        ],
+      ],
+    ],
+    // Beyond the Porta Collina a road of tombs: houses only by the gate (SITAR: 41 of
+    // the Salaria's 56 dated tombs, and no houses; DAR, Sepulcra Salaria).
+    'via-salaria': [[250, [[-132, 0.25]]]],
+    'via-nomentana': [[200, [[-132, 0.25]]]],
+    // The Tiburtina crossed the open common of the Campus Viminalis, bounded by the
+    // praetor L. Sentius's stones of about 100–75 BCE (CIL VI 31614–31615): tombs, no houses.
+    'via-tiburtina': [],
+    // The Flaminia: nothing dates houses on its east side, which stays as it was; on
+    // its west the open Campus (below).
+    'via-flaminia': [[450, [[-132, 0.55]]]],
+    // Beyond the Emporium the Ostiensis ran through fields and a few tombs (SITAR).
+    'via-ostiensis': [],
+    // Across the river, the bridgehead quarter (below), and beyond it a thin suburb
+    // along the roads (the pagus Ianiculensis; SITAR 2518).
+    'via-aurelia': [[400, [[-132, 0.25]]]],
+    'via-campana': [[400, [[-132, 0.25]]]],
+  },
+  areas: [
+    // The Emporium, filled with warehouses mostly after 100 BCE: the Horrea Galbana of
+    // about 100, others from about 80 (SITAR 3944, 4526), "extensively built through
+    // the first half of the 1st c. B.C." (DAR, Emporium).
+    {
+      id: 'emporium',
+      kind: 'warehouse',
+      ring: [
+        [12.4812, 41.888],
+        [12.478, 41.887],
+        [12.4735, 41.883],
+        [12.4705, 41.879],
+        [12.4715, 41.876],
+        [12.4745, 41.875],
+        [12.477, 41.8775],
+        [12.4795, 41.882],
+        [12.4812, 41.886],
+      ],
+      curve: [
+        [-132, 0.2],
+        [-99, 0.35],
+        [-79, 0.5],
+        [-49, 0.7],
+      ],
+    },
+    // Outside the Porta Esquilina, south of the Labicana, where the excavated houses of
+    // the 2nd century BCE lie (SITAR 2555, 2770, 13830, 2748).
+    {
+      id: 'esquiline-south',
+      kind: 'house',
+      ring: [
+        [12.5015, 41.895],
+        [12.5075, 41.895],
+        [12.5085, 41.8895],
+        [12.502, 41.89],
+      ],
+      curve: [
+        [-132, 0.25],
+        [-79, 0.4],
+        [-59, 0.5],
+      ],
+    },
+    // The valley between the Quirinal and the Pincian: a house of the late 2nd century
+    // with fine floors (SITAR 2091, 2040).
+    {
+      id: 'quirinal-pincian',
+      kind: 'house',
+      ring: [
+        [12.483, 41.901],
+        [12.488, 41.901],
+        [12.4885, 41.906],
+        [12.483, 41.906],
+      ],
+      curve: [
+        [-132, 0.3],
+        [-79, 0.4],
+      ],
+    },
+    // The Trastevere bridgehead: houses and flats of two or three storeys, "rather
+    // modest" (DAR, Continentia), a Republican house by the bridge (SITAR 2518).
+    {
+      id: 'trastevere',
+      kind: 'town',
+      // Kept to the ground by the Pons Aemilius and the island's bridges, about 350 m in.
+      ring: [
+        [12.4715, 41.8925],
+        [12.4765, 41.8915],
+        [12.4785, 41.8885],
+        [12.4775, 41.8865],
+        [12.4725, 41.8862],
+        [12.47, 41.8895],
+      ],
+      // A modest quarter in the Republic, thinner than the Emporium's.
+      curve: [
+        [-132, 0.18],
+        [-59, 0.28],
+        [-26, 0.38],
+      ],
+    },
+  ],
+  open: [
+    // Monte Testaccio: the dumping of oil jars began under Augustus (DAR).
+    [
+      [12.4745, 41.8745],
+      [12.478, 41.8745],
+      [12.478, 41.8765],
+      [12.4745, 41.8765],
+    ],
+    // The Campus west of the Flaminia, north of the Circus Flaminius: public land,
+    // unbuilt in 45 (Caesar's plan "campum Martium coaedificari", Cicero, Letters to
+    // Atticus 13.33a.1, came to nothing).
+    [
+      [12.4705, 41.8965],
+      [12.4795, 41.8965],
+      [12.4812, 41.905],
+      [12.476, 41.911],
+      [12.469, 41.906],
+    ],
+  ],
+  // Houses backed onto the wall "now commonly" (Livy 1.44.4) and hid it "in many
+  // places" (Dionysius 4.13.5): Augustan witnesses, so the change is put late; by the
+  // gates only.
+  wall: {
+    near: 250,
+    curve: [
+      [-132, 0.1],
+      [-59, 0.25],
+      [-29, 0.45],
+    ],
+  },
+  // The Caelian beyond the wall was tombs, the Campus Martialis and fields; its houses
+  // are Augustan (DAR, Caelius Mons).
+  // (Kept to 300 m, short of the Porta Capena and the Appia's first stretch.)
+  bare: [{ gate: 'Porta Caelimontana', r: 300 }],
+  // Of the dated tombs within 4 km, 17 begin before 133, 45 in 133–81 (most "from
+  // about 100") and 58 in 80–28 (most "from about 50"): so ×0.4 in 133, ×0.6 by 80,
+  // ×1.0 by 45 and ×1.2 by 27, as a share of the most.
+  tombs: [
+    [-132, 0.33],
+    [-79, 0.5],
+    [-44, 0.83],
+    [-26, 1],
+  ],
+}
+
+/** How far inside an area of `GROWN` its houses thin out to its edge, metres. */
+const GROWN_EDGE = 80
+
+/** The first year a draw `t` is built under `c`, or null if never: -100000 if from before the window. */
+function builtFrom(c: Curve, t: number): number | null {
+  if (t < c[0][1]) return -100000
+  for (let k = 1; k < c.length; k++) {
+    const [[y0, s0], [y1, s1]] = [c[k - 1], c[k]]
+    if (t < s1) return Math.ceil(y0 + ((t - s0) / (s1 - s0)) * (y1 - y0))
+  }
+  return null
+}
 /**
  * The tombs along the roads (`bakeModel`): tried every `step` metres each side,
  * from `from` metres beyond the wall out to `reach`, with a chance of `density` that
@@ -329,7 +645,8 @@ const TOMBS = {
   density: 0.5,
   fall: 1100,
   roadHalf: 5,
-  gap: 1.5,
+  // Clear of the road as it is drawn, which widens a little when seen from far off.
+  gap: 2.5,
 }
 /** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
 const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
@@ -1023,8 +1340,11 @@ export function bakeModel(m: ModelInput) {
   // Monuments standing from before the window keep houses off their sites for good;
   // later ones take their site from the houses in the year they were begun.
   const clearing = monuments.filter((mo) => mo.clear !== false)
-  const early = clearing.filter((mo) => yearsOf(mo.id)[0] <= WINDOW[0])
-  const late = clearing.filter((mo) => yearsOf(mo.id)[0] > WINDOW[0])
+  // So do those whose design says their site was open ground before them (`open`).
+  const keptOpen = (mo: (typeof monuments)[number]) =>
+    yearsOf(mo.id)[0] <= WINDOW[0] || mo.design?.d.open === true
+  const early = clearing.filter(keptOpen)
+  const late = clearing.filter((mo) => !keptOpen(mo))
   const inside = (p: Pt, mo: (typeof monuments)[number]) =>
     inRing(p, mo.rings[0]) && !mo.rings.slice(1).some((h) => inRing(p, h))
   const monumentGrid = new SegmentGrid(
@@ -1048,6 +1368,24 @@ export function bakeModel(m: ModelInput) {
         .filter((gr) => pts.some((q) => inRing(q, gr.ring)))
         .map((gr) => gr.years[0] - 1),
     )
+  /**
+   * The first year a house at `pts` stands (DESIGN.md §7.7, "The city growing"). The
+   * city inside the wall was full by 133 BCE: private houses of the 2nd century BCE
+   * are found in every quarter excavated (SITAR), and Livy already has three-storey
+   * blocks in 218 (21.62.3). So a lot inside the wall stands from before the window,
+   * except where a source dates the building: `GROWTH`.
+   */
+  const since = (pts: Pt[], kind: number) => {
+    const c: Pt = [
+      pts.reduce((s, q) => s + q[0], 0) / pts.length,
+      pts.reduce((s, q) => s + q[1], 0) / pts.length,
+    ]
+    const roll = hash2(c[0], c[1])
+    let from = -100000
+    for (const g of growth)
+      if (g.kinds.includes(kind) && g.at(c) && roll < g.share) from = Math.max(from, g.from)
+    return from
+  }
   // Squares no house stands in: the Forum between its buildings, the Capitol's
   // precinct round its temple, and the Circus' arena (inside its outline already).
   const open: Pt[][] = []
@@ -1124,6 +1462,17 @@ export function bakeModel(m: ModelInput) {
       }),
     )
   }
+  // What the city grew into within the window, by the sources (`GROWTH`).
+  const capitolTops = open.slice(-CAPITOL_OPEN.length)
+  const growth = GROWTH.map((g) => ({
+    ...g,
+    at:
+      g.where === 'capitol-slopes'
+        ? (p: Pt) =>
+            inCircuit(p[0], p[1]) &&
+            capitolTops.some((r) => !inRing(p, [...r, r[0]]) && distToRing(p, r) < g.reach)
+        : (_p: Pt) => false,
+  }))
   /**
    * The point a building faces: a temple in a forum faces into it, one on the Forum's
    * edge faces the Forum, and the Capitol's temple faces south, down to the city.
@@ -1207,7 +1556,14 @@ export function bakeModel(m: ModelInput) {
   const courtyardTrees: Pt[] = []
   const placed = new SpatialHash(30)
   const [bx0, by0, bx1, by1] = bounds(m.circuit, SUBURB.reach + 20)
-  const lot = (pts: Pt[], h: number, kind: number, roof: number, tone: number) => {
+  const lot = (
+    pts: Pt[],
+    h: number,
+    kind: number,
+    roof: number,
+    tone: number,
+    from?: number,
+  ) => {
     fabric.push(
       ...pts.slice(0, 4).flatMap(([x, y]) => [round(x), round(y)]),
       round(h),
@@ -1216,6 +1572,7 @@ export function bakeModel(m: ModelInput) {
       kind,
       roof,
       Math.round(tone * 1000) / 1000,
+      from ?? since(pts, kind),
     )
   }
 
@@ -1246,35 +1603,381 @@ export function bakeModel(m: ModelInput) {
     if (!l.pts.some((q) => isOpen(q))) lot(l.pts, l.h, l.kind, l.roof, l.tone)
   courtyardTrees.push(...city.gardens.filter((q) => !isOpen(q)))
 
-  // Outside it: a thinner suburb of detached houses, along the roads.
-  const s0 = FABRIC.spacing
-  for (let y = by0; y < by1; y += s0)
-    for (let x = bx0; x < bx1; x += s0) {
-      const p: Pt = [x + (rand() - 0.5) * s0 * 0.8, y + (rand() - 0.5) * s0 * 0.8]
-      if (inCircuit(p[0], p[1])) continue
-      const near = streetGrid.nearest(p)
-      const fromWall = wallGrid.nearest(p).d
-      const byRoad = near.d < SUBURB.road && fromWall < SUBURB.reach
-      if (!byRoad && fromWall > SUBURB.wall) continue
-      if (rand() > SUBURB.density[byRoad ? 0 : 1]) continue
-      const gx = at(p[0] + 4, p[1]) - at(p[0] - 4, p[1])
-      const gy = at(p[0], p[1] + 4) - at(p[0], p[1] - 4)
-      const angle =
-        near.d < 45 && near.seg
-          ? Math.atan2(near.seg[1][1] - near.seg[0][1], near.seg[1][0] - near.seg[0][0])
-          : Math.hypot(gx, gy) > 0.4
-            ? Math.atan2(gx, -gy)
-            : Math.floor(x / 400) * 0.37 + Math.floor(y / 400) * 0.61
-      const w = 8 + rand() * 8
-      const d = 10 + rand() * 12
-      const h = 4.5 + rand() * 3
-      const corners = rect(p[0], p[1], w + FABRIC.gap, d + FABRIC.gap, angle)
-      if (!corners.every((c) => allowed(c, true)) || !allowed(p, true)) continue
-      const r = Math.hypot(w, d) / 2
-      if (placed.near(p, r + FABRIC.gap)) continue
-      placed.add(p, r)
-      lot(rect(p[0], p[1], w, d, angle), h, LOT_KIND.suburb, ROOF.along, rand())
+  // Outside it the suburb (`GROWN`), built on the country's own plots (fields.ts): a
+  // built plot has its building at the road end — a row of shops by the gates, a
+  // house, a workshop, a farmstead further out — and a walled yard or garden behind
+  // it, the rest of the plot left to its crop, so the buildings keep the plots' lines
+  // and face the roads. In the Emporium, warehouses round courts on a grid of their
+  // own. Each plot is built from the year its share of the zone passes its draw.
+  const roadSegs = new Map<string, [Pt, Pt][]>()
+  for (const l of m.streets.filter((l) => l.road))
+    roadSegs.set(l.id, [
+      ...(roadSegs.get(l.id) ?? []),
+      ...l.pts.slice(1).map((q, i) => [l.pts[i], q] as [Pt, Pt]),
+    ])
+  const roadGrids = new Map(
+    [...roadSegs].map(([id, segs]) => [id, new SegmentGrid(segs, 40)]),
+  )
+  const ringOf = (r: [number, number][]) => r.map((c) => projection.forward(...c))
+  const areas = GROWN.areas.map((a) => ({ ...a, pts: ringOf(a.ring) }))
+  const kept = GROWN.open.map(ringOf)
+  const gateAt = new Map(m.course.gates.map((gt) => [gt.name, gt.at]))
+  const bare = GROWN.bare.flatMap(({ gate, r }) => {
+    const at = gateAt.get(gate)
+    return at ? [{ at, r }] : []
+  })
+  const gatePts = m.course.gates.map((gt) => gt.at)
+  const toGate = (p: Pt) =>
+    Math.min(...gatePts.map((g) => Math.hypot(g[0] - p[0], g[1] - p[1])))
+  /** How far from the wall, truly: its grid finds only what is near it. */
+  const wallDistAt = (p: Pt) => {
+    const d = wallGrid.nearest(p).d
+    return d < Infinity ? d : distToRing(p, m.circuit)
+  }
+  /** Clear of every road and street by their drawn width and a margin, all along its outline. */
+  const clearOfRoads = (ring: Pt[]) =>
+    ring.every((a, k) => {
+      const c = ring[(k + 1) % ring.length]
+      const L = Math.hypot(c[0] - a[0], c[1] - a[1])
+      for (let t = 0; t <= L; t += 2.5) {
+        const q: Pt = [
+          a[0] + ((c[0] - a[0]) * t) / (L || 1),
+          a[1] + ((c[1] - a[1]) * t) / (L || 1),
+        ]
+        if (streetGrid.nearest(q).d < SUBURB.roadClear) return false
+      }
+      return true
+    })
+  const fits = (ring: Pt[]) =>
+    ring.every((c) => allowed(c, true)) &&
+    clearOfRoads(ring) &&
+    !kept.some((k) => ring.some((c) => inRing(c, k)))
+  /** A lot's corners, round from the front left, and whether it can stand. */
+  const put = (
+    ring: Pt[],
+    h: number,
+    kind: number,
+    roof: number,
+    from: number,
+    tone: number,
+  ) => {
+    lot(ring, h, kind, roof, tone, from)
+    const c: Pt = [
+      ring.reduce((s, q) => s + q[0], 0) / 4,
+      ring.reduce((s, q) => s + q[1], 0) / 4,
+    ]
+    placed.add(c, Math.hypot(ring[0][0] - ring[2][0], ring[0][1] - ring[2][1]) / 2)
+  }
+  const emporiumAngle = ((d) =>
+    d?.bearing !== undefined
+      ? -planeBearing(d.bearing, d.at ?? m.places.get('porticus-aemilia')!.location)
+      : 0)(DESIGNS['porticus-aemilia'])
+
+  // Which zone a plot's front is in, and its curve: an area, a road's stretch, or the
+  // foot of the wall by a gate.
+  const zoneOf = (p: Pt, iv: number) => {
+    if (inCircuit(p[0], p[1])) return null
+    if (kept.some((r) => inRing(p, r))) return null
+    if (bare.some((b) => Math.hypot(b.at[0] - p[0], b.at[1] - p[1]) < b.r)) return null
+    const area = areas.find((a) => inRing(p, a.pts))
+    if (area) {
+      if (area.kind === 'warehouse' || iv > 3) return null
+      const edge = Math.min(1, distToRing(p, area.pts) / GROWN_EDGE)
+      return { curve: area.curve, edge, kind: area.kind, fromWall: wallDistAt(p) }
     }
+    if (iv > 0) return null
+    let best: { id: string; d: number } | null = null
+    for (const [id, grid] of roadGrids) {
+      const d = grid.nearest(p).d
+      if (d < SUBURB.road + 10 && (!best || d < best.d)) best = { id, d }
+    }
+    const fromWall = wallDistAt(p)
+    if (best) {
+      const stretches = GROWN.roads[best.id] ?? [
+        [SUBURB.reach, [[-132, SUBURB.density[0]]]],
+      ]
+      const st = stretches.find(([out]) => fromWall < out)
+      return st ? { curve: st[1], edge: 1, kind: 'road' as const, fromWall } : null
+    }
+    if (fromWall < SUBURB.wall && toGate(p) < GROWN.wall.near)
+      return { curve: GROWN.wall.curve, edge: 1, kind: 'wall' as const, fromWall }
+    return null
+  }
+
+  const seenPlot = new Set<string>()
+  const [ux0, uy0, ux1, uy1] = bounds(
+    m.circuit,
+    Math.max(
+      SUBURB.reach,
+      ...Object.values(GROWN.roads).flatMap((r) => r.map(([o]) => o)),
+    ) + 40,
+  )
+  for (let y = uy0; y < uy1; y += 6)
+    for (let x = ux0; x < ux1; x += 6) {
+      if (inCircuit(x, y)) continue
+      const P = m.fields.plotAt([x, y])
+      if (P.iv > 3 || seenPlot.has(P.key)) continue
+      seenPlot.add(P.key)
+      // The plot's frame: `a` along the road from its left edge, `b` back from the road.
+      const U0 = P.iu * P.w - P.off
+      const toWorld = (a: number, b: number): Pt => [
+        P.foot[0] + P.dir[0] * (U0 + a) + P.n[0] * P.s * b,
+        P.foot[1] + P.dir[1] * (U0 + a) + P.n[1] * P.s * b,
+      ]
+      const box = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
+        toWorld(a0, b0),
+        toWorld(a1, b0),
+        toWorld(a1, b1),
+        toWorld(a0, b1),
+      ]
+      const front0 = P.iv * P.d
+      const zone = zoneOf(toWorld(P.w / 2, front0 + SUBURB.roadClear + 4), P.iv)
+      if (!zone || zone.edge <= 0) continue
+      const draw = hash2(P.foot[0] + P.iu * 7.3 + P.iv * 1.9, P.foot[1] + P.iu * 3.1)
+      // The shares are of tries about 10 m apart along the road; a plot's frontage is
+      // about two of them, so it is built if either would be.
+      const plotCurve = zone.curve.map(
+        ([yr, sh]) => [yr, 1 - (1 - sh) ** 2] as [number, number],
+      )
+      const from = builtFrom(plotCurve, draw / zone.edge)
+      if (from === null) continue
+      const pick = hash2(x * 0.37 + 11, y * 0.53 - 7)
+      const r = mulberry32(Math.floor(draw * 1e9))
+      const inPlot = (ring: Pt[]) => ring.every((c) => m.fields.plotAt(c).key === P.key)
+      // Its front: on the road's row, clear of the road; deeper rows, off their front.
+      const b0 =
+        P.iv === 0 ? SUBURB.roadClear + (zone.kind === 'road' ? 0.5 : r() * 3) : front0 + 2
+      const bMax = front0 + P.d - 1
+      const nearGate = toGate(toWorld(P.w / 2, b0)) < 320
+      const type =
+        zone.kind === 'town'
+          ? pick < 0.55
+            ? 'row'
+            : 'house'
+          : nearGate && P.iv === 0
+            ? pick < 0.6
+              ? 'row'
+              : 'house'
+            : zone.fromWall > 650
+              ? pick < 0.45
+                ? 'farm'
+                : pick < 0.8
+                  ? 'house'
+                  : 'workshop'
+              : pick < 0.62
+                ? 'house'
+                : 'workshop'
+      const tone = r()
+      const parts: [Pt[], number, number, number][] = []
+      if (type === 'row') {
+        // Shops with rooms over them, the plot's whole frontage, so neighbours make a row.
+        const depth = 9 + r() * 4
+        const storeys = zone.kind === 'town' || r() < 0.4 ? 2 : 1
+        parts.push([
+          box(0.25, P.w - 0.25, b0, b0 + depth),
+          3.8 + 3 * storeys,
+          LOT_KIND.flats,
+          ROOF.along,
+        ])
+        const yd = 6 + r() * 6
+        if (b0 + depth + yd < bMax)
+          parts.push([
+            box(0.6, P.w - 0.6, b0 + depth, b0 + depth + yd),
+            1.9,
+            LOT_KIND.yard,
+            ROOF.flat,
+          ])
+      } else if (type === 'house') {
+        const bw = Math.min(P.w - 2, P.w * (0.55 + r() * 0.35))
+        const a0 = 1 + r() * (P.w - 2 - bw)
+        const depth = 10 + r() * 6
+        const h = r() < 0.35 ? 6.8 + r() * 0.6 : 4.2 + r() * 1.2
+        const rr = r()
+        const roof =
+          rr < 0.55 ? ROOF.along : rr < 0.8 ? ROOF.across : rr < 0.9 ? ROOF.lean : ROOF.flat
+        parts.push([box(a0, a0 + bw, b0, b0 + depth), h, LOT_KIND.suburb, roof])
+        // A wing at the back, at one side, a storey lower: the plan an L.
+        if (r() < 0.4 && bw > 9) {
+          const ww = 4 + r() * 2.5
+          const left = r() < 0.5
+          const [wa0, wa1] = left ? [a0, a0 + ww] : [a0 + bw - ww, a0 + bw]
+          const wd = 6 + r() * 5
+          parts.push([
+            box(wa0, wa1, b0 + depth, b0 + depth + wd),
+            Math.max(3.8, h - 2.6),
+            LOT_KIND.suburb,
+            ROOF.lean,
+          ])
+        }
+        const gd = 10 + r() * 10
+        if (b0 + depth + gd < bMax)
+          parts.push([
+            box(0.8, P.w - 0.8, b0 + depth, b0 + depth + gd),
+            1.8,
+            LOT_KIND.garden,
+            ROOF.flat,
+          ])
+      } else if (type === 'workshop') {
+        const bw = 6 + r() * 4
+        const left = r() < 0.5
+        const [a0, a1] = left ? [1, 1 + bw] : [P.w - 1 - bw, P.w - 1]
+        const depth = 7 + r() * 4
+        parts.push([
+          box(a0, a1, b0, b0 + depth),
+          4 + r(),
+          LOT_KIND.suburb,
+          r() < 0.5 ? ROOF.lean : ROOF.along,
+        ])
+        const yd = 12 + r() * 8
+        const [ya0, ya1] = left ? [1 + bw, P.w - 0.8] : [0.8, P.w - 1 - bw]
+        if (ya1 - ya0 > 4)
+          parts.push([
+            box(ya0, ya1, b0, b0 + Math.min(yd, bMax - b0)),
+            1.9,
+            LOT_KIND.yard,
+            ROOF.flat,
+          ])
+      } else {
+        // A farmstead: ranges round a yard, square to the plot (Varro 1.13), set back.
+        const fb = b0 + 6 + r() * 6
+        const fw = Math.min(P.w - 2, 18 + r() * 8)
+        const fa = (P.w - fw) / 2
+        const fd = 16 + r() * 8
+        const rd = 5.5 + r()
+        const h = 4 + r() * 1.2
+        parts.push([box(fa, fa + fw, fb, fb + rd), h + 1.2, LOT_KIND.suburb, ROOF.along])
+        parts.push([box(fa, fa + rd, fb + rd, fb + fd), h, LOT_KIND.suburb, ROOF.lean])
+        if (r() < 0.7)
+          parts.push([
+            box(fa + fw - rd, fa + fw, fb + rd, fb + fd),
+            h,
+            LOT_KIND.suburb,
+            ROOF.lean,
+          ])
+        parts.push([
+          box(fa + rd, fa + fw - rd, fb + rd, fb + fd),
+          1.9,
+          LOT_KIND.yard,
+          ROOF.flat,
+        ])
+      }
+      // The buildings first: if they cannot stand, nothing does; a yard that cannot, goes.
+      const buildings = parts.filter((q) => q[2] < LOT_KIND.yard)
+      // The plots do not overlap, so only the plot, the ground and the roads decide.
+      const ok = (ring: Pt[]) => inPlot(ring) && fits(ring)
+      if (!buildings.length || !buildings.every(([ring]) => ok(ring))) continue
+      for (const [ring, h, kind, roof] of parts)
+        if (kind < LOT_KIND.yard || ok(ring)) put(ring, h, kind, roof, from, tone)
+    }
+
+  // The Emporium (DESIGN.md §7.7): a grid of blocks square to the Porticus Aemilia, a
+  // street between each, a block one cell or two, each built as one of the kinds of
+  // building a river port's warehouse quarter had — on the Marble Plan and at Ostia:
+  // storerooms round a court, one or two (the Horrea Galbana has three); a long range
+  // of storerooms on the street; two ranges back to back along a corridor; an open
+  // yard for timber or stone, walled, with a shed ("inter lignarios", the timber
+  // merchants' quarter by the Porta Trigemina, Livy 35.41.10); and a merchant's house
+  // with shops on the street. Which, and how big, is generated.
+  const emporium = areas.find((a) => a.kind === 'warehouse')
+  if (emporium) {
+    const [ex, ey] = [
+      emporium.pts.reduce((s, q) => s + q[0], 0) / emporium.pts.length,
+      emporium.pts.reduce((s, q) => s + q[1], 0) / emporium.pts.length,
+    ]
+    const [ca, sa] = [Math.cos(emporiumAngle), Math.sin(emporiumAngle)]
+    const { cell, deep, street } = HORREA
+    const taken = new Set<string>()
+    for (let j = -16; j <= 16; j++)
+      for (let i = -24; i <= 24; i++) {
+        if (taken.has(`${i},${j}`)) continue
+        const r = mulberry32(i * 1000 + j * 7 + 99)
+        // Some blocks take the next cell along too.
+        const span = r() < 0.35 && !taken.has(`${i + 1},${j}`) ? 2 : 1
+        const w = cell * span + street * (span - 1)
+        const d = deep
+        const [u, v] = [i * (cell + street) + (w - cell) / 2, j * (deep + street)]
+        const c: Pt = [ex + ca * u - sa * v, ey + sa * u + ca * v]
+        if (!inRing(c, emporium.pts)) continue
+        const edge = Math.min(1, distToRing(c, emporium.pts) / GROWN_EDGE)
+        // The area's shares were of the old blocks, about two of these cells: a cell is
+        // built if either would be, as a plot is.
+        const from = builtFrom(
+          emporium.curve.map(([yr, sh]) => [yr, 1 - (1 - sh) ** 2] as [number, number]),
+          hash2(i * 13.1 + 5, j * 7.7 - 3) / Math.max(edge, 1e-3),
+        )
+        if (from === null) continue
+        const at = (a: number, b: number): Pt => [
+          c[0] + ca * a - sa * b,
+          c[1] + sa * a + ca * b,
+        ]
+        // A box in the block's frame: `a` along the street, `b` across, from its middle.
+        const box = (a0: number, a1: number, b0: number, b1: number): Pt[] => [
+          at(a0, b0),
+          at(a1, b0),
+          at(a1, b1),
+          at(a0, b1),
+        ]
+        // Each block stands back a little from its street, by its own amount.
+        const [sw, sd] = [w - r() * 4, d - r() * 5]
+        const whole = box(-sw / 2, sw / 2, -sd / 2, sd / 2)
+        if (!fits(whole) || placed.near(c, Math.hypot(sw, sd) / 2)) continue
+        for (let k = 0; k < span; k++) taken.add(`${i + k},${j}`)
+        const tone = r()
+        const storeys = r() < 0.4 ? 2 : 1
+        const h = storeys === 2 ? 7.5 + r() * 1.5 : 4.8 + r() * 1.2
+        const rd = 5.5 + r() * 3
+        const [A, B] = [sw / 2, sd / 2]
+        const add = (ring: Pt[], hh: number, kind: number, roof: number) =>
+          put(ring, hh, kind, roof, from, tone)
+        const pick = r()
+        if (pick < 0.4) {
+          // Storerooms round a court, or two courts with a range between them.
+          add(box(-A, A, -B, -B + rd), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, B - rd, B), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, -A + rd, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+          add(box(A - rd, A, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+          if (sw > 40) {
+            add(box(-rd / 2, rd / 2, -B + rd, B - rd), h, LOT_KIND.warehouse, ROOF.across)
+            add(box(-A + rd, -rd / 2, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+            add(box(rd / 2, A - rd, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+          } else add(box(-A + rd, A - rd, -B + rd, B - rd), 0.3, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.6) {
+          // Two ranges back to back along a corridor open to the sky.
+          const cw = 3 + r() * 2
+          add(box(-A, A, -B, -cw / 2), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, cw / 2, B), h, LOT_KIND.warehouse, ROOF.along)
+          add(box(-A, A, -cw / 2, cw / 2), 0.3, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.75) {
+          // A long range of storerooms on the street, its yard behind.
+          const dd = Math.min(sd - 6, 8 + r() * 4)
+          add(box(-A, A, -B, -B + dd), h, LOT_KIND.warehouse, ROOF.lean)
+          add(box(-A + 0.6, A - 0.6, -B + dd, B), 1.9, LOT_KIND.yard, ROOF.flat)
+        } else if (pick < 0.9) {
+          // An open yard, walled, a shed along one side and a lodge at its gate.
+          const side = r() < 0.5 ? -1 : 1
+          add(box(-A, A, -B, B), 2.2, LOT_KIND.yard, ROOF.flat)
+          const sh = 5 + r() * 2
+          add(
+            box(
+              -A + 1,
+              A - 1,
+              side < 0 ? -B + 1 : B - 1 - sh,
+              side < 0 ? -B + 1 + sh : B - 1,
+            ),
+            4 + r(),
+            LOT_KIND.warehouse,
+            ROOF.lean,
+          )
+          const lw = 5 + r() * 3
+          add(box(-A + 1, -A + 1 + lw, -sh / 2, sh / 2), 4.5, LOT_KIND.suburb, ROOF.along)
+        } else {
+          // A merchant's house, shops on the street, a court behind.
+          const dd = 10 + r() * 3
+          add(box(-A, A, -B, -B + dd), 6.8 + r() * 3, LOT_KIND.flats, ROOF.along)
+          add(box(-A + 0.6, A - 0.6, -B + dd, B), 1.9, LOT_KIND.garden, ROOF.flat)
+        }
+      }
+  }
 
   // --- tombs along the roads ------------------------------------------------------------
   // No one was buried or burned in the city (the Twelve Tables, in Cicero, Laws 2.58),
@@ -1295,9 +1998,15 @@ export function bakeModel(m: ModelInput) {
           const fromWall = distToRing(on, m.circuit)
           if (inCircuit(on[0], on[1]) || fromWall < TOMBS.from || fromWall > TOMBS.reach)
             continue
-          if (rand() > TOMBS.density * Math.exp(-fromWall / TOMBS.fall)) continue
+          // The tombs stood thickest at the end of the window (`GROWN.tombs`): the most
+          // there were, a fifth more than the curve's ×1.0 of about 45 BCE.
+          if (rand() > 1.2 * TOMBS.density * Math.exp(-fromWall / TOMBS.fall)) continue
+          const from = builtFrom(GROWN.tombs, rand()) ?? -26
+          // Altars on their dados and façades throughout; the drums under their mounds
+          // only from about 50 BCE (the Salaria's, Cornelia's of about 40–30, the
+          // Casa Tonda: SITAR; DAR).
           const r = rand()
-          const form = r < 0.55 ? 'altar' : r < 0.8 ? 'facade' : 'drum'
+          const form = r < 0.55 ? 'altar' : r < 0.8 || from < -49 ? 'facade' : 'drum'
           const w = form === 'drum' ? 6 + rand() * 7 : 2.6 + rand() * 2.4
           const d = form === 'drum' ? w : 2.6 + rand() * 2.6
           const h =
@@ -1316,7 +2025,10 @@ export function bakeModel(m: ModelInput) {
           const rr = Math.hypot(w, d) / 2
           if (placed.near(c, rr + 1.5)) continue
           placed.add(c, rr)
-          const stone = rand() < 0.35 ? 'travertine' : 'stucco'
+          // Tufa and peperino under stucco at first; travertine more often from about
+          // 50 BCE (SITAR's early tombs are peperino and tufa dado tombs).
+          const stone =
+            rand() < (from < -79 ? 0.1 : from < -49 ? 0.2 : 0.35) ? 'travertine' : 'stucco'
           roadTombs.push({
             model: 'tomb',
             form,
@@ -1327,6 +2039,8 @@ export function bakeModel(m: ModelInput) {
             bearing: round(Math.atan2(uy * side, -ux * side), 1000),
             base: round(Math.min(...corners.map((q) => at(q[0], q[1])))),
             stone,
+            // The first year it stands.
+            from,
           })
         }
     }
@@ -1410,7 +2124,9 @@ export function bakeModel(m: ModelInput) {
   // Only what stands through the whole window casts one: the shadow is baked, and
   // would outlast a house or come before a monument.
   for (let i = 0; i < fabric.length; i += FABRIC_STRIDE) {
-    if (fabric[i + 10] < WINDOW[1]) continue
+    if (fabric[i + 10] < WINDOW[1] || fabric[i + 14] > WINDOW[0]) continue
+    // A yard's or garden's low wall casts no shadow worth baking.
+    if (fabric[i + 11] >= LOT_KIND.yard) continue
     const f = fabric.slice(i, i + 8)
     cast(
       [0, 2, 4, 6].map((k) => [f[k], f[k + 1]] as Pt),
@@ -1462,7 +2178,7 @@ export function bakeModel(m: ModelInput) {
     join(m.out, 'model.json'),
     JSON.stringify({
       _comment:
-        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof; its building’s tone) × fabricCount, then trees (x, y, radius, base, kind, first year, last year) × treeCount, float32.',
+        'The model of Rome (pipeline/src/rome/model.ts). Plane metres; heights are ground metres above sea level, before the terrain’s vertical exaggeration. model.bin: fabric (its lot’s corners: front left, front right, back right, back left, x and y each; wall height; base; the last year it stands; kind; roof; its building’s tone; the first year it stands) × fabricCount, then trees (x, y, radius, base, kind, first year, last year) × treeCount, float32.',
       waterLevel: round(waterLevel),
       fabricCount: fab.length / FABRIC_STRIDE,
       treeCount: tre.length / TREE_STRIDE,
@@ -1587,9 +2303,13 @@ export async function writeGround(
  * When a monument stands in the model: its years, and the span within them when it
  * was building or lay burnt (the conditions that are not `standing`, run together),
  * which the model shows part-built. Astronomical years.
+ *
+ * A building may be part-built more than once in the window — the Capitol's temple
+ * standing, burnt in 83 BCE, rising again and dedicated in 69 — so `spans` keeps each
+ * spell apart, a burnt one and the works that follow it each as itself.
  */
 function dates(p: Place | undefined) {
-  if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false }
+  if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false, spans: [] }
   const weak = p.condition.filter((c) => c.value !== 'standing')
   return {
     years: [p.from.year, p.to.year],
@@ -1598,6 +2318,10 @@ function dates(p: Place | undefined) {
       : null,
     // A shell left by fire, not works in progress, when fire is all it suffered.
     burnt: weak.length > 0 && weak.every((c) => c.value === 'burnt'),
+    spans: weak.map((c) => ({
+      years: [c.from.year, c.to.year],
+      burnt: c.value === 'burnt',
+    })),
   }
 }
 
@@ -1707,6 +2431,12 @@ function segDist(p: Pt, a: Pt, b: Pt) {
     Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
   )
   return Math.hypot(a[0] + t * dx - p[0], a[1] + t * dy - p[1])
+}
+
+/** A fixed number in [0, 1) for a place, so a seeded choice does not depend on the build's order. */
+function hash2(x: number, y: number) {
+  const v = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453
+  return v - Math.floor(v)
 }
 
 function distToRing(p: Pt, ring: Pt[]) {

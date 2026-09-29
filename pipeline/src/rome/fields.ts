@@ -176,6 +176,20 @@ export interface Fields {
   angle: (i: number) => number
   /** Distance to the plot's edge, metres, clamped. */
   edge: Float32Array
+  /** The plot a point is in, and its frame: `foot` on the road, `dir` along it, `n·s` away from it. */
+  plotAt: (p: Pt) => {
+    key: string
+    iu: number
+    iv: number
+    w: number
+    d: number
+    dir: Pt
+    foot: Pt
+    n: Pt
+    s: number
+    off: number
+    fromWall: number
+  }
   /** The recorded ground at each texel: its index in `grounds` plus 1, or 0. */
   recorded: Uint8Array
 }
@@ -298,40 +312,12 @@ export function layFields(f: FieldsInput): Fields {
       })
     }
 
-  // --- each texel ----------------------------------------------------------------------
-  const use = new Uint8Array(n)
-  const tone = new Uint8Array(n)
-  const dirByte = new Uint8Array(n)
-  const edge = new Float32Array(n).fill(EDGE_CLAMP_M)
-  const lane = new Float32Array(n).fill(LANE_CLAMP_M)
-  // What plate-2 stores for the hedges and the lanes, signed by the side of the line
-  // a texel is on: a signed distance interpolated between texel centres crosses zero
-  // on the line and draws it unbroken, where an unsigned one never reaches zero
-  // between them and the line breaks into dashes. The sign must not change except
-  // across a line: a hedge's is the plot's in a checkerboard of its block's plots, a
-  // lane's its block's side.
-  const hedgeAt = new Float32Array(n).fill(EDGE_CLAMP_M)
-  const laneAt = new Float32Array(n).fill(LANE_CLAMP_M)
-  const S = 3
-  const slopeAt = (i: number) => {
-    const c = i % g.width
-    const r = Math.floor(i / g.width)
-    const cl = Math.max(0, c - S)
-    const cr = Math.min(g.width - 1, c + S)
-    const ru = Math.max(0, r - S)
-    const rd = Math.min(g.height - 1, r + S)
-    const gx =
-      (f.smooth[r * g.width + cr] - f.smooth[r * g.width + cl]) / ((cr - cl) * g.texel)
-    // Rows run south, so up the grid is north.
-    const gy =
-      (f.smooth[ru * g.width + c] - f.smooth[rd * g.width + c]) / ((rd - ru) * g.texel)
-    return { slope: Math.hypot(gx, gy), south: gy / (Math.hypot(gx, gy) || 1) }
-  }
-  for (let i = 0; i < n; i++) {
-    // Inside the wall only a recorded ground (Maecenas', over the rampart) is drawn.
-    if (f.reach[i] > FIELDS_REACH_M || (f.city[i] < 0 && !recorded[i]) || f.water[i] < 3)
-      continue
-    const p = at(i)
+  /**
+   * The plot a point is in (the texel loop below, and the suburb's buildings,
+   * model.ts): its block, the plot's place in it — `iu` along the road it faces, `iv`
+   * back from it — its width `w` and depth `d`, and the point's `u`, `v` in its block.
+   */
+  const plotOf = (p: Pt) => {
     // The two nearest block points, to the ground pushed about a little (`WANDER_M`).
     const q: Pt = [
       p[0] + (noise(p[0] / 260, p[1] / 260, 41) - 0.5) * 2 * WANDER_M,
@@ -376,6 +362,44 @@ export function layFields(f: FieldsInput): Fields {
     const u = rel[0] * b.dir[0] + rel[1] * b.dir[1] + hash(key, 0, 6) * w
     const v = Math.abs(rel[0] * -b.dir[1] + rel[1] * b.dir[0])
     const [iu, iv] = [Math.floor(u / w), Math.floor(v / d)]
+    return { b1, b, side, isLane, toBlock, toLane, rel, key, w, d, u, v, iu, iv }
+  }
+
+  // --- each texel ----------------------------------------------------------------------
+  const use = new Uint8Array(n)
+  const tone = new Uint8Array(n)
+  const dirByte = new Uint8Array(n)
+  const edge = new Float32Array(n).fill(EDGE_CLAMP_M)
+  const lane = new Float32Array(n).fill(LANE_CLAMP_M)
+  // What plate-2 stores for the hedges and the lanes, signed by the side of the line
+  // a texel is on: a signed distance interpolated between texel centres crosses zero
+  // on the line and draws it unbroken, where an unsigned one never reaches zero
+  // between them and the line breaks into dashes. The sign must not change except
+  // across a line: a hedge's is the plot's in a checkerboard of its block's plots, a
+  // lane's its block's side.
+  const hedgeAt = new Float32Array(n).fill(EDGE_CLAMP_M)
+  const laneAt = new Float32Array(n).fill(LANE_CLAMP_M)
+  const S = 3
+  const slopeAt = (i: number) => {
+    const c = i % g.width
+    const r = Math.floor(i / g.width)
+    const cl = Math.max(0, c - S)
+    const cr = Math.min(g.width - 1, c + S)
+    const ru = Math.max(0, r - S)
+    const rd = Math.min(g.height - 1, r + S)
+    const gx =
+      (f.smooth[r * g.width + cr] - f.smooth[r * g.width + cl]) / ((cr - cl) * g.texel)
+    // Rows run south, so up the grid is north.
+    const gy =
+      (f.smooth[ru * g.width + c] - f.smooth[rd * g.width + c]) / ((rd - ru) * g.texel)
+    return { slope: Math.hypot(gx, gy), south: gy / (Math.hypot(gx, gy) || 1) }
+  }
+  for (let i = 0; i < n; i++) {
+    // Inside the wall only a recorded ground (Maecenas', over the rampart) is drawn.
+    if (f.reach[i] > FIELDS_REACH_M || (f.city[i] < 0 && !recorded[i]) || f.water[i] < 3)
+      continue
+    const p = at(i)
+    const { b, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane } = plotOf(p)
     const fu = u / w - iu
     const fv = v / d - iv
     const toU = Math.min(fu, 1 - fu) * w
@@ -510,6 +534,26 @@ export function layFields(f: FieldsInput): Fields {
     angle: (i: number) => (dirByte[i] / 256) * Math.PI,
     edge,
     recorded,
+    plotAt: (p: Pt) => {
+      const { key, iu, iv, w, d, b, rel } = plotOf(p)
+      const n: Pt = [-b.dir[1], b.dir[0]]
+      const s = Math.sign(rel[0] * n[0] + rel[1] * n[1]) || 1
+      // The plot's u runs from `off` along the road: u = rel·dir + off.
+      const off = hash(key, 0, 6) * w
+      return {
+        key: `${key}:${iu}:${iv}`,
+        iu,
+        iv,
+        w,
+        d,
+        dir: b.dir,
+        foot: b.foot,
+        n,
+        s,
+        off,
+        fromWall: b.fromWall,
+      }
+    },
   }
 }
 

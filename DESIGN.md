@@ -660,7 +660,7 @@ known and what is generated are kept apart:
   - **Each built as itself** (decided 2026-09-24). Every known building has a
     design (`pipeline/src/rome/designs.ts` and `designs/`): its type, its size,
     its columns, its stairs and the way it faced, as its sources give them for
-    68–27 BCE, with those sources in the design's note. The engine knows how each
+    133–27 BCE, with those sources in the design's note. The engine knows how each
     type is put together (`architecture.ts`, `monuments.ts`); the design says
     which building it is. So the Capitol's temple is a Tuscan temple with three
     rows of six columns, three cellae and a gilded roof; Castor's the Metellan
@@ -772,6 +772,53 @@ known and what is generated are kept apart:
       25), the Amphitheatre of Statilius Taurus and the Porticus Octavia of 168
       BCE (sites unknown), the Actian arch (doubted), Jupiter Feretrius (tiny, its
       site unknown).
+  - **The years 133–68 BCE** (decided 2026-09-28), when the window was carried back
+    to 133 BCE with the world map. Five research passes (the Forum and Palatine, the
+    Capitol, the Campus Martius, the south of the city, and a chronicle of every
+    recorded building, fire and demolition year by year) found what changed; each
+    change is in its record's dates and note and its design's `phases`, with its
+    sources. Everything dated in them changes the model in its year:
+    - **In the Forum**: the archaic temple of Castor (three cellae behind a deep porch
+      of Tuscan columns, Nielsen and Poulsen) until L. Metellus's of 117; an older
+      Concord, of unknown form and so the typical temple, until Opimius's of 121; the
+      Basilica Fulvia of one storey until Lepidus's restoration of 78 (the second
+      storey is taken to be his, from his son's coin); the **Comitium** (a new
+      builder, `comitium`): rings of low tufa steps round a paved floor, the old
+      Rostra on its south rim, about 42 m across on Coarelli's reading (Carafa's
+      dissent in the record), until Sulla's larger curia of 80 took its north side;
+      the older, smaller curia behind its steps until Sulla pulled it down in 81.
+    - **On the Palatine**: the Magna Mater burnt with "a very great part of the city"
+      in 111 and rebuilt on a higher podium to 106; Victoria's tufa columns Tuscan
+      until its restoration of about 40.
+    - **On the Capitol**: Jupiter's archaic temple, lower and under terracotta tiles,
+      until the fire of 6 July 83; a burnt shell through 82; Catulus's rising from 81
+      and dedicated in 69. Fides moved to the precinct's south-west side, where
+      Reusser's evidence puts it, and rising 115–110; the Tabularium rising 78–66.
+    - **In the Campus Martius**: Mars in Circo, Hermodorus's marble temple, going up
+      in 133–132; the Largo Argentina paved 1.40 m over the old ground after the fire
+      of 111, with its north portico (`area-sacra-largo-argentina`), the older temples'
+      podia standing lower from then; Temple A small until about 50, Temple B an open
+      ring of columns until 68 (a choice between "early" and "mid" 1st century);
+      the temple of Via delle Botteghe Oscure, missing before, standing throughout;
+      Bellona the typical temple until its rebuilding of 32; Spes and Juno Sospita
+      swapped to the modern identification.
+    - **In the south**: the round temple by the Tiber from 105 (the middle of
+      120–90), its platform open before; Portunus's older temple, of unknown form,
+      until the Ionic one rose in 80–76; the Horrea Galbana and Galba's tomb from
+      about 100, the family's estate open before; the Circus Maximus with timber
+      stands along its sides only, no shops and its curved end open, until Caesar's
+      rebuilding of 46.
+    - **The Servian Wall**'s patches of darker Anio tufa appear from 87, when the
+      consuls "repaired the walls, and planted engines on them" (Appian, Civil Wars
+      1.66).
+    - A building may be part-built more than once (Jupiter's: burnt, then rising), so
+      each spell of its `condition` is shown as itself (model.ts `dates`, buildModel.ts).
+    - A design whose site was open ground before it (`open`: a platform, an estate)
+      keeps the generated houses off it in the years before; otherwise houses stand on
+      a later monument's site until it is begun, as before.
+    - The generated city grows with the year where the sources date its growth
+      (**The city growing**, below).
+    - Researched and left out, and why, in BACKLOG.md.
   - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
     near Rome: the Appia and the Anio Vetus ran underground into the city
     (Frontinus 1.5–1.6), and are recorded but not drawn. The Marcia is drawn for
@@ -976,8 +1023,98 @@ known and what is generated are kept apart:
     main network shows from far off; the lanes are trodden earth.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
-  - A thinner suburb of detached houses lines the roads out of the gates, up to
-    ~450 m, with a few near the wall, clear of its foot and the agger's ditch.
+  - A thinner suburb lines the roads out of the gates and fills a few areas beyond
+    them, growing year by year (**The city growing**, below).
+  - **The suburb on the country's plots** (decided 2026-09-29, replacing houses
+    scattered on a jittered grid, which read as one box repeated and could stand on
+    a road). A suburban building takes a plot of the fields (fields.ts `plotAt`):
+    its front at the plot's road end, the rest of the plot left to its crop, so the
+    buildings keep the plots' lines and face the roads. By kind:
+    - within ~320 m of a gate, **rows of shops** with rooms over them, the plot's
+      whole frontage, so neighbouring plots make a row, a yard behind;
+    - **houses**, most of a plot's width, one or two storeys, their roofs ridged
+      along the road or gabled to it, now and then a lean-to or a flat terrace, and
+      two in five an L with a lower wing behind, a walled garden beyond;
+    - **workshops**, a small building at one side of a walled yard;
+    - beyond ~650 m, **farmsteads**: ranges round a yard, square to the plot (Varro 1.13);
+    - in the Emporium, a grid of blocks square to the Porticus Aemilia, a street
+      between each, a block one cell (26 by 30 m) or two, each one of the kinds a
+      river port's warehouse quarter had on the Marble Plan and at Ostia: storerooms
+      round one court or two (the Horrea Galbana has three); a long range on the
+      street; two ranges back to back along a corridor; an open yard for timber or
+      stone, walled, with a shed ("inter lignarios", Livy 35.41.10); a merchant's
+      house with shops on the street. One storey or two, their depths and setbacks
+      varied block by block.
+    The yards and gardens are a floor, trodden earth or garden beds, over the
+    fields' paint, and a plastered wall 1.8 m high open at the front for a gate. No
+    part of a building comes within 8 m of a road's or street's line, tested all
+    along its outline, nor over a plot's edge, where the lanes run; tombs stand 7.5 m
+    back from the road's line. The shares of **The city growing** are of tries about
+    10 m apart along a road; a plot's frontage is about two, so a plot is built if
+    either would be (1 − (1 − share)²). Which plots are built, and as what, is
+    generated: illustrative, not of any building.
+  - **The city growing** (decided 2026-09-29; `GROWTH` and `GROWN` in model.ts). Two
+    research passes, on the city inside the wall and on the suburbs, read the texts,
+    the modern literature and SITAR's dated remains of houses, warehouses and tombs
+    (queried from its WFS: 36 private buildings founded 200–28 BCE inside the wall,
+    and the dated houses and tombs outside it counted by road and period). Each
+    generated house and tomb has a first year as well as a last; a stretch of suburb
+    has a share built that rises with the year, and each try draws one number, built
+    from the year the share passes it, so a house once built stays. Every share and
+    reach is inferred, the direction of each change sourced:
+    - **Inside the wall** the city was full by 133: private houses of the 2nd century
+      BCE are found in every quarter excavated (SITAR), Livy has three-storey blocks
+      in 218 (21.62.3), and Varro finds the Esquiline's groves hemmed in and the
+      Aventine's laurel grove built over (LL 5.49, 5.152). So nothing inside the wall
+      is thinned for 133, except: the Capitol's slopes, where half the houses within
+      120 m of the open summits come only after the priests' land round the Capitol
+      was sold in 89 BCE (Orosius 5.18.27; Tacitus, Histories 3.71); and Caesar's
+      forum, whose houses (excavated, ending in 55: SITAR) go when the land was bought
+      in 54 (Cicero, Letters to Atticus 4.16.8), its works rising from then. The head
+      of the Subura at the foot of the Cispius is a quarter of the rich throughout (a
+      house of 150–100 BCE with a coloured-stone floor, peristyle houses of the
+      mid-1st century: SITAR; Caesar's house in the Subura, Suetonius, Iulius 46).
+      Heights stay as they are: the texts show blocks growing taller (Cicero, De
+      lege agraria 2.96; Vitruvius 2.8.17; Augustus's cap of 70 feet, Strabo 5.3.7)
+      but give no numbers by date.
+    - **Outside it** the texts that describe a suburb without a break are Augustan
+      (Dionysius 4.13.3–5; Strabo 5.3.7–8; Livy 1.44.4); the law of about 45 BCE
+      speaks of "continuous habitation" within a mile (Tabula Heracleensis ll. 20,
+      56). The suburb was "less evenly distributed" than a ring (Digital Augustan
+      Rome, Continentia):
+      - along the **Appia**'s first mile, the Vicus Sulpicius and the shops the flood
+        of 54 swept away by the temple of Mars (Cicero, Letters to Quintus 3.7.1), 1.5
+        km out, densest in its first 600 m, growing to 54; the **Latina** beyond the
+        fork tombs only;
+      - the **Emporium** filling with warehouses, a fifth of its ground in 133 to
+        seven-tenths from 50 (the Horrea Galbana of about 100; others from about 80:
+        SITAR; DAR), Monte Testaccio's site kept open (its dumping is Augustan);
+      - outside the **Porta Esquilina**, south of the Labicana, where houses of the
+        2nd century BCE are excavated 216–440 m out, and along the Labicana and
+        Praenestina to 1.2 km from about 100; the **Tiburtina** crossing the open
+        common of the Campus Viminalis, bounded by L. Sentius's stones of about
+        100–75: tombs, no houses;
+      - the **Salaria** and **Nomentana** roads of tombs, houses only by the Porta
+        Collina (41 of the Salaria's 56 dated tombs, no houses: SITAR);
+      - the valley between the **Quirinal and the Pincian** (a house of the late 2nd
+        century with fine floors: SITAR);
+      - a modest quarter at the **Trastevere bridgehead** (a Republican house there:
+        SITAR), of two or three storeys, and a thin suburb along the Aurelia and
+        the Campana;
+      - houses against the wall's outer face by the gates, growing late, as the
+        Augustan writers saw them;
+      - **left open**: the Campus west of the Flaminia (Caesar's plan to build over
+        it in 45, "campum Martium coaedificari", came to nothing: Cicero, Letters to
+        Atticus 13.33a.1) and the Caelian beyond the Porta Caelimontana, whose houses
+        are Augustan (DAR).
+    - **The tombs** along the roads thicken, ×0.4 of the most in 133, ×0.6 by 80,
+      ×1.0 by 45: of the dated tombs within 4 km, 17 begin before 133, 45 in 133–81
+      and 58 in 80–28 (SITAR; its dates come in broad bins, "from about 100" and
+      "from about 50"). Drums under their mounds only from 50; travertine more often
+      from then.
+    - The wall's distance, for a house far from it, is the true distance to its
+      course (the grid used near it found nothing beyond ~80 m, so the old suburb
+      had not reached its ~450 m).
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
 - **The country round the city** (decided 2026-09-25: it replaced groves scattered

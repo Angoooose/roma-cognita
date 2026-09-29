@@ -75,7 +75,19 @@ export interface CityInput {
   rand: () => number
 }
 
-export const LOT_KIND = { flats: 0, house: 1, warehouse: 2, suburb: 3 } as const
+/**
+ * What a generated lot is: flats over shops, an atrium house, a warehouse, a suburban
+ * house, or open ground walled round (the suburb's yards and gardens: a floor and a
+ * low wall, not a building).
+ */
+export const LOT_KIND = {
+  flats: 0,
+  house: 1,
+  warehouse: 2,
+  suburb: 3,
+  yard: 4,
+  garden: 5,
+} as const
 
 /**
  * How a lot is roofed: a ridge along the street (a row makes one long roof), a

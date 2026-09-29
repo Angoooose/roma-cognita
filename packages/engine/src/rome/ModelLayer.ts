@@ -760,7 +760,7 @@ function roofPaint(seed: F, across: F, down: F, run: F) {
  * course (Platner & Ashby, Murus Servii Tullii; Middleton 1892), each a little lighter
  * or darker; the joints a thin shadow, there being no mortar; and here and there a
  * stretch of darker, redder blocks, the Anio tufa of the repairs of the first century
- * BCE (Frank, AJA 1918). `along` is how far along the face, `height` metres above the sea,
+ * BCE (Frank, AJA 1918), from 87 BCE. `along` is how far along the face, `height` metres above the sea,
  * so the courses run level. Fades to its average as it gets too fine to draw.
  */
 function ashlarPaint(seed: F, along: F, height: F) {
@@ -785,7 +785,10 @@ function ashlarPaint(seed: F, along: F, height: F) {
     .add(col.mul(17))
     .add(floor(seed.mul(997)))
   const tone = float(1).add(hash(id.abs()).sub(0.5).mul(0.1))
-  // The repairs, in patches some 20–40 m along and a few courses high.
+  // The repairs, in patches some 20–40 m along and a few courses high, made when the
+  // consuls "repaired the walls, and planted engines on them" in 87 BCE (Appian, Civil
+  // Wars 1.66): from then only.
+  const repaired = step(float(-86.5), modelUniforms.year)
   const patch = step(
     0.88,
     hash(
@@ -793,7 +796,9 @@ function ashlarPaint(seed: F, along: F, height: F) {
         .add(floor(height.div(3.5)).mul(7))
         .add(floor(seed.mul(53))),
     ),
-  ).mul(step(0.45, hash(id.abs().add(11))))
+  )
+    .mul(step(0.45, hash(id.abs().add(11))))
+    .mul(repaired)
   const repair = mix(vec3(1), vec3(0.93, 0.86, 0.8), patch.mul(blocks))
   return repair
     .mul(mix(float(1), tone, blocks))

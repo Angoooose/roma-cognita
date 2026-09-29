@@ -10,7 +10,7 @@
 # rome:fetch -w pipeline`. An outline is of the remains as they survive, and the note
 # says when those are a later rebuilding on the same site. Each monument is built in
 # the model from its design (pipeline/src/rome/designs.ts), which says what it was
-# like in 68–27 BCE and on what evidence. The houses between the monuments are
+# like in 133–27 BCE and on what evidence. The houses between the monuments are
 # generated, not recorded (DESIGN.md §7.7).
 #
 # Dates follow the atlas's rules: `from` is when a thing stood (or works began, with
@@ -135,6 +135,7 @@
         way/1223826659, way/1223826660, way/781934076, way/781934077, way/427413247,
         way/785914787, way/120880574, way/120880575
     - { source: sitar, locator: '19694 (the course); the pieces in rome-servian.geojson' }
+    - { source: appian, locator: 'BC 1.66' }
   confidence: certain
   review: draft
   note: >-
@@ -142,7 +143,8 @@
     (Livy 6.32.1, under 377 BCE), some 10 km round, on SITAR's reconstruction of
     its course: along the brows of the hills, and across the Esquiline plateau as
     the agger, a ditch and an earth bank. It still stood whole in this period,
-    repaired in the civil wars of 87 BCE and manned in 87 and 82, though the city
+    repaired in the civil wars of 87 BCE, when the consuls "repaired the walls, and
+    planted engines on them" (Appian, Civil Wars 1.66), and manned in 87 and 82, though the city
     had long outgrown it and pressed against it. The Aurelian Walls, which most
     maps of Rome show, are of 271 CE.
 
@@ -188,21 +190,33 @@
     - { text: Temple of Castor, lang: en }
   from: before 133 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 118 BCE }
+    - { value: under construction, from: 117 BCE, to: 117 BCE }
+    - { value: standing, from: 116 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Castoris#in_Foro_Romano, pp. 102–105' }
     - { source: pleiades, locator: places/157276290 }
     - { source: osm-rome, locator: relation/1842061 }
     - { source: digitales-forum-romanum, locator: 'Dioskurentempel' }
+    - { source: parco-colosseo-castori, locator: 'pp. 2–3' }
+    - { source: cicero-scaur, locator: '46' }
   confidence: certain
   review: draft
   note: >-
-    Vowed in 499 BCE after Lake Regillus and dedicated in 484; restored in 117 BCE
-    by L. Caecilius Metellus. The remains, and so the outline, are of Tiberius'
-    rebuilding (dedicated 6 CE) on the same site.
-    The outline is the Augustan podium of 6 CE; the Metellan temple of 117 BCE that
-    stood through the window was six-sevenths its scale (Nielsen and Poulsen), with a
-    deep speakers' tribunal before it reached by stairs at its sides.
+    Vowed in 499 BCE after Lake Regillus and dedicated in 484; restored in 117 BCE by L.
+    Caecilius Metellus. The remains, and so the outline, are of Tiberius' rebuilding
+    (dedicated 6 CE) on the same site. The outline is the Augustan podium of 6 CE; the
+    Metellan temple of 117 BCE that stood through the window was six-sevenths its scale
+    (Nielsen and Poulsen), with a deep speakers' tribunal before it reached by stairs at
+    its sides.
+    Until 117 the archaic temple of 484 stood, 27.5 by 37–40 m on a podium of
+    cappellaccio 3–5 m high, three cellae behind a deep porch of three rows of four tufa
+    columns; from the early 2nd century it had stairs at its sides and a provisional
+    speakers' tribunal in front (Nielsen and Poulsen, as the Parco archeologico del
+    Colosseo summarises them). Metellus's rebuilding is dated only to 117: the map shows
+    that one year as building.
 
 - id: aedes-vestae
   kind: temple
@@ -256,7 +270,9 @@
   from: 179 BCE
   to: after 27 BCE
   condition:
-    - { value: standing, from: 179 BCE, to: 56 BCE }
+    - { value: standing, from: 179 BCE, to: 79 BCE }
+    - { value: under construction, from: 78 BCE, to: 78 BCE }
+    - { value: standing, from: 77 BCE, to: 56 BCE }
     - { value: under construction, from: 55 BCE, to: 35 BCE }
     - { value: standing, from: 34 BCE, to: after 27 BCE }
   prominence: 5
@@ -264,14 +280,21 @@
     - { source: platner-ashby, locator: 'Basilica Aemilia, pp. 72–76' }
     - { source: pleiades, locator: places/417632343 }
     - { source: osm-rome, locator: relation/1766532 }
+    - { source: pliny-nh, locator: '35.13' }
+    - { source: basilica-aemilia-online, locator: 'project description' }
+    - { source: freyberger-ertel-2016 }
   confidence: certain
   review: draft
   note: >-
-    Built by the censors of 179 BCE and restored in 78. The aedile L. Aemilius
-    Paullus began rebuilding it in 55 BCE, and his son dedicated the work in 34;
-    from then it was often called the basilica Paulli. It burned in 14 BCE and was
-    rebuilt, but Platner & Ashby find little change in its extent and plan, so the
-    surviving outline stands for the whole period.
+    Built by the censors of 179 BCE as a hall of one storey; "in the early years of the
+    1st century B.C." it was made two-storeyed (Freyberger and Ertel). The consul M.
+    Aemilius Lepidus restored it in 78, hanging shields with his ancestors' portraits on
+    it (Pliny, NH 35.13), and his son's coin shows it two-storeyed with the shields and
+    "ref(ecta)": the map takes the second storey to be his work, an inference. The
+    aedile L. Aemilius Paullus began rebuilding it in 55 BCE, and his son dedicated the
+    work in 34; from then it was often called the basilica Paulli. It burned in 14 BCE
+    and was rebuilt, but Platner & Ashby find little change in its extent and plan, so
+    the surviving outline stands for the whole period.
 
 - id: basilica-iulia
   kind: basilica
@@ -306,20 +329,27 @@
   names:
     - { text: Forum Iulium, lang: la, preferred: true }
     - { text: Forum of Caesar, lang: en }
-  from: 46 BCE
+  from: 54 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 54 BCE, to: 47 BCE }
+    - { value: standing, from: 46 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Forum Julium, pp. 225–227' }
     - { source: pleiades, locator: places/445545537 }
     - { source: osm-rome, locator: relation/1841081 }
+    - { source: cicero-att, locator: '4.16.8' }
+    - { source: sitar, locator: '16664, 16675, 16688, 16703 (the houses under it, to 55 BCE)' }
   confidence: certain
   review: draft
   note: >-
-    Planned by 54 BCE, when Cicero and Oppius were buying up the land for Caesar,
-    and dedicated with its temple on 26 September 46 BCE, the last day of his
-    triumph. When building began is not recorded, so the map shows it from the
-    dedication. The remains are of Trajan's rebuilding on the same plan.
+    Planned by 54 BCE, when Cicero and Oppius were buying up the land for Caesar for
+    sixty million sesterces (Cicero, Letters to Atticus 4.16.8), and dedicated with its
+    temple on 26 September 46 BCE, the last day of his triumph. The houses excavated
+    under it end in 55 BCE (SITAR), so the map shows the houses gone and the works under
+    way from 54, and the forum standing from its dedication. The remains are of Trajan's
+    rebuilding on the same plan.
 
 - id: aedes-veneris-genetricis
   kind: temple
@@ -404,24 +434,34 @@
     - { text: Temple of Concord, lang: en }
   from: before 133 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 122 BCE }
+    - { value: under construction, from: 121 BCE, to: 121 BCE }
+    - { value: standing, from: 120 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Concordia#5, pp. 138–140' }
     - { source: pleiades, locator: places/694134032 }
     - { source: osm-rome, locator: relation/1767601 }
     - { source: digitales-forum-romanum, locator: 'Concordiatempel' }
+    - { source: appian, locator: 'BC 1.26' }
+    - { source: digital-augustan-rome, locator: 'Concordia Augusta, Aedes' }
   confidence: certain
   review: draft
   note: >-
-    The temple of Concord at the north-west corner of the forum, below the
-    Capitol, said to have been vowed by Camillus in 367 BCE. The senate had it
-    restored by L. Opimius in 121 BCE, after the death of C. Gracchus, and it was
-    then often used for meetings of the senate. The outline is of Tiberius's
-    rebuilding (dedicated 10 CE); Platner & Ashby say the plan of Opimius's
-    temple seems to have been similar, and much of the podium core is of 121 BCE.
-    The outline is Tiberius's temple, whose cella lay across its width; Opimius's of
-    121 BCE was laid out lengthwise, eight columns across its front (Digitales Forum
-    Romanum, after Gasparri and Ferroni).
+    The temple of Concord at the north-west corner of the forum, below the Capitol, said
+    to have been vowed by Camillus in 367 BCE. The senate had it restored by L. Opimius
+    in 121 BCE, after the death of C. Gracchus, and it was then often used for meetings
+    of the senate. The outline is of Tiberius's rebuilding (dedicated 10 CE); Platner &
+    Ashby say the plan of Opimius's temple seems to have been similar, and much of the
+    podium core is of 121 BCE. The outline is Tiberius's temple, whose cella lay across
+    its width; Opimius's of 121 BCE was laid out lengthwise, eight columns across its
+    front (Digitales Forum Romanum, after Gasparri and Ferroni).
+    Before 121 an older temple stood here, of which 4th-century remains have been found
+    (Ferroni); its form is not known, and it is drawn as a typical temple. Opimius's
+    enlarged temple did away with Cn. Flavius's bronze shrine of Concord on the
+    Graecostasis (304 BCE) and the old Senaculum (Platner & Ashby, pp. 138, 470). Its
+    dedication is not dated: the map shows 121 as building.
 
 - id: atrium-vestae
   kind: house
@@ -540,26 +580,29 @@
   condition:
     - { value: standing, from: before 133 BCE, to: 112 BCE }
     - { value: burnt, from: 111 BCE, to: 111 BCE }
-    - {
-        value: standing,
-        from: 110 BCE,
-        to: after 27 BCE,
-        note: 'restored by a Metellus, probably the consul of 110 BCE',
-      }
+    - { value: under construction, from: 110 BCE, to: 106 BCE }
+    - { value: standing, from: 105 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Matris Deum#3, pp. 324–325' }
     - { source: pleiades, locator: places/192818177 }
     - { source: osm-rome, locator: relation/1860921 }
+    - { source: obsequens, locator: '39' }
+    - { source: valerius-maximus, locator: '1.8.11' }
+    - { source: digital-augustan-rome, locator: 'Magna Mater, Aedes' }
+    - { source: nash-1961, locator: 'Magna Mater' }
   confidence: probable
   review: draft
   note: >-
-    The temple of Cybele on the south-west corner of the Palatine, begun after
-    the goddess's stone was brought from Pessinus in 204 BCE and dedicated in
-    191. It burned in 111 BCE and was restored by a Metellus, probably the
-    consul of 110. The outline is of the podium, whose concrete is of the
-    Augustan restoration, carried out with the material of the original
-    building; Platner & Ashby call the identification extremely probable.
+    The temple of Cybele on the south-west corner of the Palatine, begun after the
+    goddess's stone was brought from Pessinus in 204 BCE and dedicated in 191, on a
+    podium of tufa blocks. It burned with "a very great part of the city" in 111 BCE
+    (Obsequens 39) and was rebuilt on a higher podium of concrete by a Metellus,
+    probably Q. Metellus Numidicus, consul in 109 (Platner & Ashby's "consul of 110" is
+    a slip: no Metellus held it). How long the works took is not recorded: the map shows
+    them to 106, after his return from Numidia. The outline is of the podium, whose
+    concrete is of the Augustan restoration, carried out with the material of the
+    original building; Platner & Ashby call the identification extremely probable.
 
 - id: lacus-curtius
   kind: sanctuary
@@ -576,14 +619,15 @@
     - { source: platner-ashby, locator: 'Lacus Curtius, pp. 310–311' }
     - { source: pleiades, locator: places/459049147 }
     - { source: osm-rome, locator: way/131557335 }
+    - { source: digital-augustan-rome, locator: 'Lacus Curtius' }
   confidence: certain
   review: draft
   note: >-
-    A sacred enclosure in the middle of the forum, explained by three legends of
-    a Curtius, one of them a consul of 445 BCE. By Augustus's time it was dry
-    ground into which Romans threw coins. The outline is of the paved field of
-    about 10 by 9 metres, laid in Sulla's time and restored during Caesar's
-    changes to the forum.
+    A sacred enclosure in the middle of the forum, explained by three legends of a
+    Curtius, one of them a consul of 445 BCE. By Augustus's time it was dry ground into
+    which Romans threw coins. The outline is of the paved field of about 10 by 9 metres:
+    tufa paving of the 2nd century BCE under travertine of the 1st (Giuliani and
+    Verduchi, in Digital Augustan Rome), restored during Caesar's changes to the forum.
 
 - id: sacrum-cloacinae
   kind: sanctuary
@@ -676,23 +720,38 @@
   to: after 27 BCE
   condition:
     - { value: standing, from: before 133 BCE, to: 84 BCE }
-    - { value: burnt, from: 83 BCE, to: 83 BCE }
-    - { value: under construction, from: 82 BCE, to: 70 BCE }
+    - { value: burnt, from: 83 BCE, to: 82 BCE }
+    - { value: under construction, from: 81 BCE, to: 70 BCE }
     - { value: standing, from: 69 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Jovis Capitolini, pp. 297–302' }
     - { source: pleiades, locator: places/871801169 }
     - { source: musei-capitolini, locator: 'Area of the temple of Jupiter Capitolinus' }
+    - { source: kaderka-tucci-2021, locator: '§§1–40' }
+    - { source: arata-2010-giove, locator: 'pp. 585–624' }
+    - { source: digital-augustan-rome, locator: 'Iuppiter Optimus Maximus Capitolinus, Aedes' }
+    - { source: livy, locator: '10.23.12; 35.10.12; 40.51.3' }
+    - { source: pliny-nh, locator: '33.57; 36.45; 36.185' }
+    - { source: tacitus-hist, locator: '3.72' }
+    - { source: gellius, locator: '2.10' }
+    - { source: valerius-maximus, locator: '4.4.11' }
+    - { source: cassius-dio, locator: '37.44' }
   confidence: certain
   review: draft
   note: >-
-    The temple of Jupiter, Juno and Minerva on the Capitol, burned to the ground on
-    6 July 83 BCE. Sulla took the rebuilding in hand; most of it fell to Q.
-    Lutatius Catulus, who dedicated it in 69. When the work began is not
-    recorded, so it is shown as building from the year after the fire. Parts of
-    the podium survive under the Palazzo Caffarelli, but no surveyed outline is
-    open, so it is drawn as a point.
+    The temple of Jupiter, Juno and Minerva on the Capitol. Until 83 BCE the archaic
+    temple: tufa under white stucco, a timber entablature and a terracotta roof, gilt
+    shields on its pediment (193 BCE) and a chariot group on its apex; a mosaic floor
+    laid after 149 and ceilings gilded in 142 (Pliny). It burned to the ground on 6 July
+    83 BCE, and the ruin is shown to the end of 82, when Sulla took the city and the
+    rebuilding in hand; Catulus's temple, on the same foundations but higher and roofed
+    with gilded bronze tiles, was dedicated in 69, though in 62 Caesar could still claim
+    many parts were "but half finished" (Dio 37.44). Whether the temple filled the whole
+    53 by 62 m platform, as drawn, or stood on part of it, is disputed (Arata 2010;
+    Kaderka and Tucci 2021); the 74 m length of some plans takes in a wall behind it
+    that others give to the precinct. Parts of the podium survive under the Palazzo
+    Caffarelli, but no surveyed outline is open, so it is drawn as a point.
 
 - id: tabularium
   kind: archive
@@ -702,17 +761,28 @@
     - { text: Tabularium, lang: la, preferred: true }
   from: 78 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 78 BCE, to: 66 BCE }
+    - { value: standing, from: 65 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Tabularium, pp. 506–508' }
     - { source: osm-rome, locator: node/1447566609 }
     - { source: musei-capitolini, locator: 'Tabularium' }
-  confidence: certain
+    - { source: digital-augustan-rome, locator: 'Tabularium' }
+    - { source: tucci-2005, locator: 'pp. 6–33' }
+    - { source: coarelli-2010 }
+  confidence: probable
   review: draft
   note: >-
-    The record office built by Q. Lutatius Catulus in 78 BCE on the slope of the
-    Capitol above the Forum; its arcade is the base of the Palazzo Senatorio.
-    OpenStreetMap has it as a point only, so it is drawn as one.
+    The record office built by Q. Lutatius Catulus in 78 BCE on the slope of the Capitol
+    above the Forum; its arcade is the base of the Palazzo Senatorio. OpenStreetMap has
+    it as a point only, so it is drawn as one.
+    Built from 78 BCE, probably to 65, the year of Catulus's censorship (Digital
+    Augustan Rome, after Mura Sommella), in part over buildings of the 2nd century BCE
+    damaged in the fire of 83. What it was is disputed: a record office, the
+    substructure of a temple (Tucci 2005; Coarelli 2010), or the Atrium Libertatis
+    (Purcell).
 
 # --- the Circus and the Campus Martius ------------------------------------------
 
@@ -737,19 +807,25 @@
     - { source: dionysius, locator: '3.68' }
     - { source: cassius-dio, locator: '49.43.2; 50.10.3' }
     - { source: digital-augustan-rome, locator: 'Circus Maximus' }
+    - { source: livy, locator: '1.35.8; 8.20.1; 40.2.2; 41.27.6' }
+    - { source: suetonius-iul, locator: '39.2' }
+    - { source: humphrey-1986, locator: 'pp. 68–72, 136–137, 292–293' }
   confidence: probable
   review: draft
   note: >-
-    In use from the kings; the censors of 174 BCE rebuilt its starting gates.
-    Caesar lengthened it and dug a moat between the arena and the seats in 46 BCE,
-    and a fire destroyed much of it in 31. The outline is the valley it filled at
-    its imperial extent; the republican circus lay in the same place but did not
-    reach as far.
-    Caesar rebuilt it in 46 BCE, three stadia long, with a moat round the arena and
-    stands of stone below and timber above behind a one-storey arcade of shops
-    (Pliny, NH 36.102; Dionysius 3.68); Agrippa set up the seven dolphins to count the
-    laps in 33 BCE (Dio 49.43.2); in 31 BCE "fire also consumed a considerable portion
-    of the Circus itself" (Dio 50.10.3), and the map shows it a burnt shell that year.
+    In use from the kings; the censors of 174 BCE rebuilt its starting gates. Caesar
+    lengthened it and dug a moat between the arena and the seats in 46 BCE, and a fire
+    destroyed much of it in 31. The outline is the valley it filled at its imperial
+    extent; the republican circus lay in the same place but did not reach as far. Caesar
+    rebuilt it in 46 BCE, three stadia long, with a moat round the arena and stands of
+    stone below and timber above behind a one-storey arcade of shops (Pliny, NH 36.102;
+    Dionysius 3.68); Agrippa set up the seven dolphins to count the laps in 33 BCE (Dio
+    49.43.2); in 31 BCE "fire also consumed a considerable portion of the Circus itself"
+    (Dio 50.10.3), and the map shows it a burnt shell that year.
+    Before Caesar it had timber stands along parts of its long sides only and no seats
+    round its curved end, and no shops outside; its twelve starting gates were the
+    censors' of 174 BCE, and statues on columns stood down its axis. How far Caesar
+    lengthened it is not recorded, so the model keeps the arena's length.
 
 - id: theatrum-pompei
   kind: theatre
@@ -818,6 +894,7 @@
     - { source: digital-augustan-rome, locator: 'Apollo Medicus Sosianus, Aedes' }
     - { source: pleiades, locator: places/740034026 }
     - { source: osm-rome, locator: way/182282759 }
+    - { source: vitti-2010, locator: '§8' }
   confidence: probable
   review: draft
   note: >-
@@ -829,8 +906,8 @@
     21.3 m and 5.5 m high, six Corinthian columns across a deep porch and half-
     columns down the cella, reached by stairs at the sides; it was finished under
     Augustus, after the window (Digital Augustan Rome). So until 35 BCE the model
-    shows the smaller Republican temple, of four columns, whose size is not
-    published, and from 34 the new one rising. It faced south.
+    shows the Republican temple, of four columns, on a podium 21.45 m wide, 25.05 m
+    long and 7.10 m high (Vitti 2010), and from 34 the new one rising. It faced south.
 
 - id: emporium
   kind: warehouse
@@ -865,20 +942,26 @@
   names:
     - { text: Sepulcrum Bibuli, lang: la, preferred: true }
     - { text: Tomb of Bibulus, lang: en }
-  from: { earliest: 133 BCE, latest: 27 BCE }
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Sepulcrum Bibuli, p. 477' }
     - { source: pleiades, locator: places/503777175 }
-  confidence: certain
+    - { source: archeometra-bibulus, locator: 'Monumentum; Ricostruzioni' }
+    - { source: digital-augustan-rome, locator: 'Sepulcrum: C. Publicius Bibulus' }
+  confidence: probable
   review: draft
   note: >-
-    The tomb of C. Publicius Bibulus, a plebeian aedile, built (or more likely
-    restored) by decree of the senate in the last century of the Republic, at the
-    foot of the Capitol beside the Via Flaminia. Its travertine front, about 6.5
-    metres wide, still stands. Drawn as a point: only the front wall survives, so
-    there is no outline of the whole tomb.
+    The tomb of C. Publicius Bibulus, a plebeian aedile, at the foot of the Capitol
+    beside the road out of the Porta Fontinalis. The restorers of 2024 make it a small
+    temple-tomb of the 2nd century BCE, distyle in antis on a high podium faced in
+    travertine, its front with a false door on its short north-west side, whose
+    superstructure was restored in the 1st century BCE in the old forms (Archeometra);
+    Digital Augustan Rome dates the standing work to the early 1st century as a
+    rebuilding of an earlier tomb. The wall that still stands, with its four Tuscan
+    pilasters, is its flank. Drawn from before 133 on its surviving wall; its width is
+    not known.
 
 - id: sepulcrum-scipionum
   kind: tomb
@@ -2212,21 +2295,36 @@
 - id: aedes-fidei
   kind: temple
   within: roma
-  location: [12.48266, 41.89216]
+  location: [12.4817, 41.89184]
   names:
     - { text: Aedes Fidei, lang: la, preferred: true }
     - { text: Temple of Fides, lang: en }
   from: 254 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: 254 BCE, to: 116 BCE }
+    - { value: under construction, from: 115 BCE, to: 110 BCE }
+    - { value: standing, from: 109 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Fides, aedes, p. 209' }
+    - { source: digital-augustan-rome, locator: 'Fides, Aedes' }
+    - { source: reusser-1993, locator: 'pp. 34–36, 55, 62, 64, 78' }
+    - { source: cicero-nd, locator: '2.61' }
+    - { source: appian, locator: 'BC 1.16' }
   confidence: probable
   review: draft
   note: >-
-    Dedicated by A. Atilius Calatinus "in 254 or 250 B.C., and restored and
-    re-dedicated by M. Aemilius Scaurus in 115 B.C.". "Probably inside the area
-    Capitolina, at its south-east corner" (Platner & Ashby): approximate.
+    Dedicated by A. Atilius Calatinus "in 254 or 250 B.C., and restored and re-dedicated
+    by M. Aemilius Scaurus in 115 B.C." (Platner & Ashby); rebuilt between his
+    consulship of 115 and his censorship of 109 (Reusser), which the map shows as
+    building. The senate met in it on the day Ti. Gracchus was killed. It stood on the
+    south-west side of the Area Capitolina near its southern corner, over the Tarpeian
+    cliff, where the base of its statue and the treaty tablets once fixed to its walls
+    fell into the Piazza della Consolazione, its back against the precinct wall, facing
+    into the precinct (Digital Augustan Rome, after Reusser). Platner & Ashby call the
+    same corner "south-east" in one article and "south-west" in another. The older
+    temple's form is not known, so Scaurus's is drawn throughout.
 
 - id: aedes-veiovis
   kind: temple
@@ -2267,13 +2365,17 @@
   review: draft
   note: >-
     Dedicated by L. Postumius Megellus "when consul in 294 B.C."; it held the Magna
-    Mater's stone from 204 to 191. Placed where inscriptions "found about 50 metres
-    west of the present church of S. Teodoro may indicate its position" (Platner &
-    Ashby): approximate. It is now more often put beside the Magna Mater.
-    Platner & Ashby did not know its site and guessed at the Clivus Victoriae near S.
-    Teodoro; Pensabene identified it on the south-west Palatine beside the Magna
-    Mater, 33.4 by 19.35 m on a podium of tufa, and it is placed there, on the
-    platform of OpenStreetMap way 132881789, to be checked against his plan.
+    Mater's stone from 204 to 191. Placed where inscriptions "found about 50 metres west
+    of the present church of S. Teodoro may indicate its position" (Platner & Ashby):
+    approximate. It is now more often put beside the Magna Mater. Platner & Ashby did
+    not know its site and guessed at the Clivus Victoriae near S. Teodoro; Pensabene
+    identified it on the south-west Palatine beside the Magna Mater, 33.4 by 19.35 m on
+    a podium of tufa, and it is placed there, on the platform of OpenStreetMap way
+    132881789, to be checked against his plan.
+    Its tufa temple was restored "during the third quarter of the 1st c. B.C." with a
+    Corinthian order in travertine on the same plan (Digital Augustan Rome, after
+    Pensabene): the map takes the change as about 40 BCE and draws the older columns
+    Tuscan, their order not recorded.
 
 - id: aedes-iunonis-lucinae
   kind: temple
@@ -2353,17 +2455,22 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Ianus, aedes, pp. 277–278' }
+    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
   confidence: probable
   review: draft
   note: >-
-    Built by C. Duilius after Mylae, "extra portam Carmentalem"; Platner & Ashby
-    take it as the north temple of the three under S. Nicola in Carcere, whose
-    remains place it. Frank dates the rebuilding there to about 90 BCE.
+    Built by C. Duilius after Mylae, "extra portam Carmentalem"; Platner & Ashby take it
+    as the north temple of the three under S. Nicola in Carcere, whose remains place it.
+    Frank dates the rebuilding there to about 90 BCE.
+    Its standing remains, six Ionic columns across a triple row at the front, are of a
+    rebuilding early in the 1st century BCE (Sovrintendenza), though Crozzoli Aite dates
+    their decoration to Augustus (Digital Augustan Rome). What stood before is not
+    known, so the rebuilt form is drawn throughout.
 
 - id: aedes-spei-foro-holitorio
   kind: temple
   within: roma
-  location: [12.47994, 41.89109]
+  location: [12.47998, 41.8909]
   names:
     - { text: Aedes Spei, lang: la, preferred: true }
     - { text: Temple of Spes, lang: en }
@@ -2376,18 +2483,22 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Spes, aedes, pp. 493–494' }
+    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - { source: digital-augustan-rome, locator: 'Spes, Aedes (Forum Holitorium)' }
   confidence: probable
   review: draft
   note: >-
     Built by A. Atilius Calatinus in the First Punic War; "burned again in 31", and
-    probably repaired by Augustus (when is not recorded, so the map shows it
-    standing again from the next year). "Probably the middle and the largest" of the
-    S. Nicola in Carcere temples, whose remains place it; drawn at 30 by 10 m.
+    probably repaired by Augustus (when is not recorded, so the map shows it standing
+    again from the next year). The southern and smallest, Doric, of the three temples
+    under S. Nicola in Carcere, as Coarelli, Crozzoli Aite and the Sovrintendenza
+    identify them; Platner & Ashby took it for the middle one. Its standing remains are
+    of a rebuilding early in the 1st century BCE.
 
 - id: aedes-iunonis-sospitae
   kind: temple
   within: roma
-  location: [12.47998, 41.8909]
+  location: [12.47994, 41.89109]
   names:
     - { text: Aedes Iunonis Sospitae, lang: la, preferred: true }
     - { text: Temple of Juno Sospita, lang: en }
@@ -2396,12 +2507,21 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Iuno Sospita, aedes (1), p. 291' }
+    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - { source: digital-augustan-rome, locator: 'Iuno Sospita, Aedes' }
+    - { source: cicero-div, locator: '1.4; 1.99' }
+    - { source: obsequens, locator: '55' }
   confidence: probable
   review: draft
   note: >-
-    Vowed by C. Cornelius Cethegus and dedicated in 194 (Livy; Platner & Ashby
-    misprint "104"). "Generally identified with the smallest", Doric, of the S.
-    Nicola in Carcere temples, whose remains place it.
+    Vowed by C. Cornelius Cethegus and dedicated in 194 (Livy; Platner & Ashby misprint
+    "104"). The central and largest of the three temples under S. Nicola in Carcere, as
+    Coarelli, Crozzoli Aite and the Sovrintendenza identify them (Platner & Ashby took
+    it for Spes). Restored in 90 BCE by the consul L. Iulius Caesar after Caecilia
+    Metella's dream (Cicero, De divinatione 1.4; Obsequens 55), if that was this temple
+    and not the great one at Lanuvium; nothing dates the works, so no building years are
+    drawn. Its visible remains are of a rebuilding early in the 1st century BCE
+    (Sovrintendenza).
 
 - id: aedes-pietatis-foro-holitorio
   kind: temple
@@ -2415,13 +2535,16 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Pietas, aedes, p. 390' }
+    - { source: vitti-2010, locator: '§7' }
   confidence: probable
   review: draft
   note: >-
-    Vowed by M'. Acilius Glabrio at Thermopylae and "dedicated in 181 by his son";
-    it "stood at the east end of the area afterwards occupied by the theatre of
-    Marcellus, and was destroyed by Caesar in 44 B.C." (Platner & Ashby):
-    approximate.
+    Vowed by M'. Acilius Glabrio at Thermopylae and "dedicated in 181 by his son"; it
+    "stood at the east end of the area afterwards occupied by the theatre of Marcellus,
+    and was destroyed by Caesar in 44 B.C." (Platner & Ashby): approximate.
+    The north-west corner of its podium, of Monteverde tufa, was found in 1995–2000 in
+    front of the Theatre of Marcellus, giving a width of about 30 feet, 9 m (Vitti
+    2010).
 
 - id: aedes-iovis-statoris-metelli
   kind: temple
@@ -2527,7 +2650,7 @@
 - id: rostra-vetera
   kind: rostra
   within: roma
-  location: [12.4849, 41.8927]
+  location: [12.48495, 41.892665]
   names:
     - { text: Rostra, lang: la, preferred: true }
     - { text: The old Rostra, lang: en }
@@ -2538,13 +2661,47 @@
     - { source: platner-ashby, locator: 'Rostra, pp. 450–451' }
     - { source: digitales-forum-romanum, locator: 'Republikanische Rostra' }
     - { source: cassius-dio, locator: '43.49.1' }
+    - { source: appian, locator: 'BC 1.97' }
+    - { source: velleius, locator: '2.61.3' }
   confidence: probable
   review: draft
   note: >-
     The speakers' platform between the Comitium and the Forum, hung with the beaks of
     the ships of Antium from 338 BCE, its curved front of tufa steps shown on the coin
-    of Lollius Palikanus (45 BCE). Caesar moved the rostra to the west end of the
-    Forum in 45/44 BCE, and the old one was given up. Its width is not known.
+    of Lollius Palikanus (45 BCE). Caesar moved the rostra to the west end of the Forum
+    in 45/44 BCE, and the old one was given up. Its width is not known.
+    From 82/81 BCE Sulla's gilded equestrian statue stood before it (Appian, BC 1.97;
+    Velleius 2.61.3); it is not drawn.
+
+- id: comitium
+  kind: comitium
+  within: roma
+  location: [12.48495, 41.89289]
+  names:
+    - { text: Comitium, lang: la, preferred: true }
+    - { text: the assembly place, lang: en }
+  from: before 133 BCE
+  to: 45 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Comitium, pp. 134–137' }
+    - { source: humm-1999, locator: 'pp. 648–662' }
+    - { source: humm-2005, locator: 'ch. 12, pp. 603–626' }
+    - { source: carafa-1998, locator: 'pp. 135–155' }
+    - { source: pliny-nh, locator: '34.26' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The inaugurated assembly place in front of the senate house, with the Rostra on its
+    south side facing the Forum. From the late 4th or early 3rd century it was, on the
+    reading most archaeologists follow (Coarelli, Humm), a ring of stepped tufa about 46
+    m across like the comitia of Cosa and Paestum; Carafa (1998) argues it was only ever
+    an irregular open space. In 145 BCE C. Licinius Crassus first turned the people's
+    assemblies to the Forum. Sulla's larger curia of 80 BCE destroyed the ring's north
+    "horns" and the square was repaved; Caesar's new rostra and curia from 44 BCE ended
+    it. Nothing of it stands above the Caesarian level: its site is placed between the
+    old Rostra and the Curia Hostilia, to about 10 m, and drawn about 42 m across so
+    that it fits between them.
 
 - id: curia-hostilia
   kind: curia
@@ -2556,7 +2713,9 @@
   from: before 133 BCE
   to: 45 BCE
   condition:
-    - { value: standing, from: before 133 BCE, to: 53 BCE }
+    - { value: standing, from: before 133 BCE, to: 82 BCE }
+    - { value: under construction, from: 81 BCE, to: 81 BCE }
+    - { value: standing, from: 80 BCE, to: 53 BCE }
     - { value: burnt, from: 52 BCE, to: 52 BCE }
     - { value: under construction, from: 51 BCE, to: 46 BCE }
     - { value: standing, from: 45 BCE, to: 45 BCE }
@@ -2565,14 +2724,23 @@
     - { source: platner-ashby, locator: 'Curia Hostilia, pp. 142–143' }
     - { source: digitales-forum-romanum, locator: 'Curia' }
     - { source: cassius-dio, locator: '40.49; 44.5.1–2' }
+    - { source: pliny-nh, locator: '34.26' }
+    - { source: appian, locator: 'BC 1.32' }
+    - { source: humm-2005, locator: 'p. 611, n. 38' }
   confidence: uncertain
   review: draft
   note: >-
     The old senate house on the north side of the Comitium, facing south, enlarged by
-    Sulla in 80 BCE. Burnt at Clodius's funeral in January 52 BCE and rebuilt by
-    Faustus Sulla (Cicero, De finibus 5.2, "hanc novam", in 45), then pulled down in
-    44 for a temple of Felicitas as Caesar built his own. Unexcavated: its size,
-    about 27 by 18 m and 15 m high, is the Digitales Forum Romanum's hypothesis.
+    Sulla in 80 BCE. Burnt at Clodius's funeral in January 52 BCE and rebuilt by Faustus
+    Sulla (Cicero, De finibus 5.2, "hanc novam", in 45), then pulled down in 44 for a
+    temple of Felicitas as Caesar built his own. Unexcavated: its size, about 27 by 18 m
+    and 15 m high, is the Digitales Forum Romanum's hypothesis.
+    Sulla pulled down the old curia and built a larger one forward over the Comitium's
+    north steps, where the statues of Pythagoras and Alcibiades had stood (Pliny, NH
+    34.26): shown building in 81 and standing from 80. The older curia's size is not
+    known; it is drawn a little smaller and further back, as "somewhat enlarged"
+    implies. In 100 BCE the crowd stripped its roof of tiles to stone Saturninus and
+    Glaucia, shut inside by Marius (Appian, BC 1.32).
 
 - id: basilica-porcia
   kind: basilica
@@ -2802,16 +2970,23 @@
     - { source: platner-ashby, locator: 'Porticus Aemilia, p. 420' }
     - { source: sovrintendenza-capitolina, locator: 'Porticus Aemilia' }
     - { source: digital-augustan-rome, locator: 'Porticus Aemilia (Emporium)' }
+    - { source: cozza-tucci-2006, locator: 'pp. 175–201' }
+    - { source: tucci-2012, locator: 'pp. 575–591' }
+    - { source: arata-felici-2011, locator: 'pp. 127–153' }
+    - { source: burgers-2015, locator: 'pp. 199–201' }
   confidence: uncertain
   review: draft
   note: >-
-    The hall of fifty barrel-vaulted naves by the Emporium, 487 by 60 m, stepping
-    down in four levels to the river, of concrete faced in tufa. Gatti (1934) read it
-    as the Porticus Aemilia of 193 BCE; Cozza and Tucci (2006) as the Navalia, the
-    ship sheds; Arata and Felici (2011) defended Gatti; and excavation in 2011–13
-    found no Republican layers and left its first use "obscure" (Burgers et al.
-    2015). Its opus incertum points to the 2nd or early 1st century BCE, so it stood
-    through the window whatever it was.
+    The hall of fifty barrel-vaulted naves by the Emporium, 487 by 60 m, stepping down
+    in four levels to the river, of concrete faced in tufa opus incertum. Gatti (1934)
+    read it as the Porticus Aemilia of 193 BCE, repaired in 174, and Arata and Felici
+    (2011) defended him; Cozza and Tucci (2006; Tucci 2012) read the Marble Plan's label
+    as [nava]lia and made it the ship sheds Hermodorus of Salamis built soon after 150
+    BCE; Richardson and others dated its concrete to Sulla's time and made it a
+    warehouse. Excavation in 2011–13 found no Republican layers and left its first use
+    "obscure" (Burgers et al. 2015). The map follows the two readings that date it to
+    the 2nd century, so it stands through the window; on the Sullan dating it would rise
+    about 80 BCE.
 
 - id: horrea-galbana
   kind: warehouse
@@ -2819,19 +2994,47 @@
   location: [12.4755, 41.8785]
   names:
     - { text: Horrea Galbana, lang: la, preferred: true }
-  from: before 133 BCE
+  from: c. 100 BCE
   to: after 27 BCE
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Horrea Galbae, pp. 261–262' }
     - { source: digital-augustan-rome, locator: 'Horrea Galbana' }
+    - { source: coarelli-1988, locator: 'p. 42' }
+  confidence: uncertain
+  review: draft
+  note: >-
+    The warehouses of the Sulpicii Galbae south of the Porticus Aemilia, on the family's
+    estate: "a rectangle … about 200 metres long and 155 wide … divided symmetrically
+    into sections separated by courts … three in number", on either side of the Via
+    Bodoni. Built most probably by Ser. Sulpicius Galba, consul in 108 BCE, whose tomb
+    of about 100 BCE stood beside them (Coarelli); the walls excavated in 1955 were
+    dated to the mid-1st century (Rickman). The map shows them from about 100 BCE;
+    nothing supports a date before 133.
+
+- id: sepulcrum-sulpicii-galbae
+  kind: tomb
+  within: roma
+  location: [12.4747, 41.8799]
+  names:
+    - { text: Sepulcrum Ser. Sulpicii Galbae, lang: la, preferred: true }
+    - { text: Tomb of Servius Sulpicius Galba, lang: en }
+  from: c. 100 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Horrea Galbae, p. 261' }
+    - { source: digital-augustan-rome, locator: 'Sepulcrum: Ser. Sulpicius Galba' }
   confidence: probable
   review: draft
   note: >-
-    The warehouses of the Sulpicii Galbae south of the Porticus Aemilia, of the late
-    2nd century BCE (Coarelli): "a rectangle … about 200 metres long and 155 wide …
-    divided symmetrically into sections separated by courts … three in number", on
-    either side of the Via Bodoni.
+    The tomb of Ser. Sulpicius Galba, most probably the consul of 108 BCE, whose
+    family's estate and warehouses surrounded it: a small square monument of Monte Verde
+    tufa with a peperino cornice and an inscribed travertine panel with the consul's
+    fasces, on a plot "30 feet square" by its inscription (CIL VI 31617), of about 100
+    BCE. Found in 1885 in the Via Giovanni Branca and rebuilt on the Caelian; it is drawn
+    where it was found, facing the street between the Porticus Aemilia and the Horrea
+    Galbana. Its height is not published.
 
 - id: aedes-portuni
   kind: temple
@@ -2842,19 +3045,31 @@
     - { text: Temple of Portunus, lang: en }
   from: before 133 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: before 133 BCE, to: 81 BCE }
+    - { value: under construction, from: 80 BCE, to: 76 BCE }
+    - { value: standing, from: 75 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Mater Matuta, aedes, pp. 330–331' }
     - { source: digital-augustan-rome, locator: 'Portunus, Aedes' }
     - { source: osm-rome, locator: way/251331418 }
-  confidence: certain
+    - { source: ruggiero-1991, locator: 'pp. 265–282' }
+    - { source: colini-buzzetti-1986, locator: 'pp. 8–20' }
+    - { source: adam-1994 }
+  confidence: probable
   review: draft
   note: >-
-    The temple of the god of the harbour by the Pons Aemilius, standing today:
-    Ionic, four columns across its front and half-columns down the cella, of tufa and
-    travertine under stucco, rebuilt about 80–70 BCE on a podium of the 3rd century
-    (DAR). Platner & Ashby called it Mater Matuta's; it is now "widely agreed to be
-    that of Portunus". It faces north-north-west, towards the river.
+    The temple of the god of the harbour by the Pons Aemilius, standing today: Ionic,
+    four columns across its front and half-columns down the cella, of Anio tufa and
+    travertine under stucco. Platner & Ashby called it Mater Matuta's; it is now "widely
+    agreed to be that of Portunus". It faces north-north-west, towards the river.
+    It was built about 80/70 BCE (Ruggiero; Coarelli argued for the early 2nd century)
+    on the podium of a temple of the late 4th or early 3rd century, a podium of Grotta
+    Oscura tufa 6 m high with an arched passage in its front. The building years are not
+    recorded: the map shows it rising from 80 and standing from 75. What the old temple
+    over its podium looked like is not known, so until 80 it is the typical Tuscan
+    temple.
 
 - id: aedes-herculis-olivarii
   kind: temple
@@ -2863,21 +3078,29 @@
   names:
     - { text: Round Temple of the Forum Boarium, lang: en, preferred: true }
     - { text: Aedes Herculis Olivarii, lang: la }
-  from: before 133 BCE
+  from: { earliest: 120 BCE, latest: 90 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Portunium, p. 430' }
     - { source: digital-augustan-rome, locator: 'Round Temple by the Tiber' }
     - { source: osm-rome, locator: way/251342364 }
-  confidence: certain
+    - { source: coarelli-1988, locator: 'pp. 38, 180–204' }
+    - { source: rakob-heilmeyer-1973, locator: 'pp. 4, 19, 35–36' }
+    - { source: ziolkowski-1988, locator: 'pp. 309–333' }
+  confidence: probable
   review: draft
   note: >-
     The round marble temple by the Tiber, standing today: twenty Corinthian columns
-    10.66 m high round a cella 10 m across, of Pentelic marble on a stepped tufa base,
-    built about 120 BCE (Coarelli) or early in the 1st century (Rakob and Heilmeyer).
-    Whose it was is disputed: Hercules Olivarius (Coarelli) or Hercules Victor
+    10.66 m high round a cella 10 m across, of Pentelic marble on a tufa podium 2 m
+    high. Whose it was is disputed: Hercules Olivarius (Coarelli) or Hercules Victor
     (Ziolkowski).
+    It was built between about 120 BCE (Coarelli, who gives it to the oil merchant M.
+    Octavius Herrenus and the Greek architect Hermodorus) and the early 1st century
+    (Rakob and Heilmeyer, from its architecture), so the map shows it from the middle of
+    that span, 105 BCE. Ziolkowski's reading, Mummius's temple of Hercules Victor
+    dedicated in 142 BCE, would put it before 133. Nothing is known of what stood on its
+    platform before; the model leaves it open.
 
 - id: aedes-fortunae-foro-boario
   kind: temple
@@ -3005,15 +3228,19 @@
   prominence: 5
   sources:
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple A' }
+    - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
+    - { source: caprioli-2010, locator: 'p. 49' }
   confidence: certain
   review: draft
   note: >-
-    The northernmost of the four Republican temples of the Largo Argentina, all
-    facing east. Built c. 250–225 BCE, and rebuilt in the third quarter of the 1st
-    century BCE on a new podium of about 15 by 27.5 m with a ring of thirty
-    Corinthian columns of Anio tufa, stuccoed; the rebuilding cannot be dated
-    closer, so the model shows it throughout. Juturna's (Coarelli) or Feronia's: the
-    god is not known.
+    The northernmost of the four Republican temples of the Largo Argentina, all facing
+    east. Built c. 250–225 BCE: a small tetrastyle temple of Grotta Oscura tufa, 9.5 by
+    16 m on a podium 4 m high with a flight of 18 steps, its podium cut down by the
+    raising of the ground after 111 BCE. "Nella seconda metà del I secolo a.C."
+    (Sovrintendenza) it was enclosed in a new temple on a podium of about 15 by 27.5 m
+    with a ring of thirty Corinthian columns of Anio tufa, stuccoed: drawn from 50 BCE,
+    the earliest the sources allow. Juturna's (Coarelli) or Feronia's: the god is not
+    known.
 
 - id: aedes-fortunae-huiusce-diei
   kind: temple
@@ -3028,14 +3255,18 @@
   sources:
     - { source: platner-ashby, locator: 'Fortuna Huiusce Diei, aedes, p. 216' }
     - { source: digital-augustan-rome, locator: 'Fortuna Huiusce Diei, Aedes' }
+    - { source: caprioli-2010, locator: 'pp. 48–58' }
+    - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
   confidence: certain
   review: draft
   note: >-
-    Q. Lutatius Catulus's round temple, vowed at Vercellae in 101 BCE: Varro's
-    "aedes Catuli … tholos columnatus". A ring of eighteen Corinthian columns of
-    stuccoed tufa on a podium with a flight at its front; in the mid-1st century BCE
-    walls were built between the columns, closing it into a drum 15.5 m across, and
-    so the model shows it. A colossal Fortuna stood inside.
+    Q. Lutatius Catulus's round temple, vowed at Vercellae in 101 BCE: Varro's "aedes
+    Catuli … tholos columnatus". A ring of eighteen Corinthian columns of stuccoed tufa,
+    18.87 m across, round a cella 11.45 m across, on a podium with nine travertine steps
+    at its front (Caprioli 2010). Later walls were built between the columns, closing it
+    into a drum 15.5 m across: early in the 1st century BCE (Sovrintendenza) or in its
+    middle (Digital Augustan Rome), so the model shows it open until 68 BCE and walled
+    after, a choice between them. A colossal Fortuna stood inside.
 
 - id: aedes-c-largo-argentina
   kind: temple
@@ -3049,12 +3280,16 @@
   prominence: 5
   sources:
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple C' }
+    - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
+    - { source: caprioli-2010, locator: 'p. 49' }
   confidence: certain
   review: draft
   note: >-
-    The oldest of the four, of the first half of the 3rd century BCE: four widely
-    spaced columns across its front and none behind, on a high podium of tufa
-    with heavy mouldings, facing east. Feronia's or Juturna's.
+    The oldest of the four, of the first half of the 3rd century BCE: four columns
+    across its front and five down its sides, none behind, on a podium of tufa about 3.8
+    m high with a flight of 20 steps, facing east. At the end of the 2nd century BCE the
+    ground before it was raised and paved in tufa, burying the altar A. Postumius
+    Albinus had renewed, and its podium stood lower. Feronia's or Juturna's.
 
 - id: aedes-d-largo-argentina
   kind: temple
@@ -3068,12 +3303,103 @@
   prominence: 5
   sources:
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple D' }
+    - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
   confidence: probable
   review: draft
   note: >-
-    The largest of the four: built c. 200–150 BCE and enlarged in the late 2nd or
-    early 1st century BCE on a travertine-faced podium of about 23.5 by 37 m, six
-    columns across its front. Its brick cella is Domitianic. Not identified.
+    The largest of the four: built c. 200–150 BCE and large by the late 2nd century at
+    the latest, on a podium of about 23.5 by 37 m, six columns across its front. Its
+    travertine facing and the fountains by its stair are of a complete renewal at the
+    end of the 1st century BCE (Sovrintendenza), its brick cella Domitianic, so it is
+    drawn stuccoed. Coarelli's Lares Permarini, Zevi's Nymphs; not identified.
+
+- id: area-sacra-largo-argentina
+  kind: sanctuary
+  within: roma
+  location: [12.47689, 41.8954]
+  names:
+    - { text: Area Sacra of Largo Argentina, lang: en, preferred: true }
+    - { text: Area sacra di Largo Argentina, lang: it }
+  from: c. 110 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: sovrintendenza-capitolina, locator: 'Area Sacra di Largo Argentina' }
+    - { source: caprioli-2010, locator: 'p. 49' }
+    - { source: digital-augustan-rome, locator: '"Area Sacra": Largo Argentina' }
+    - { source: obsequens, locator: '39' }
+    - { source: osm-rome, locator: way/23955329 }
+  confidence: probable
+  review: draft
+  note: >-
+    The temples of the Largo Argentina stood separately on the old ground until,
+    "probably after the devastating fire of 111 BCE" (Sovrintendenza; Obsequens 39),
+    the ground before them was raised about 1.40 m and paved in slabs of tufa, burying
+    their altars, and a portico was built along its north side. Coarelli takes the
+    paved and porticoed area for the Porticus Minucia Vetus of M. Minucius Rufus (after
+    his triumph of 106 BCE); Digital Augustan Rome, Zevi and Claridge put the Minucia
+    east of it, round the temple of Via delle Botteghe Oscure. The model draws the
+    pavement and the north portico, which are found, under neither name; the portico's
+    size is not published.
+
+- id: aedes-via-delle-botteghe-oscure
+  kind: temple
+  within: roma
+  location: [12.47875, 41.89531]
+  names:
+    - { text: Temple of Via delle Botteghe Oscure, lang: en, preferred: true }
+    - { text: Aedes Nympharum, lang: la }
+    - { text: Aedes Larum Permarinum, lang: la }
+  from: before 133 BCE
+  to: after 27 BCE
+  prominence: 5
+  sources:
+    - { source: sovrintendenza-capitolina, locator: 'Area archeologica di via delle Botteghe Oscure' }
+    - { source: facchin-2011, locator: 'pp. 13–38' }
+    - { source: digital-augustan-rome, locator: 'Lares Permarini, Aedes' }
+    - { source: osm-rome, locator: way/125375013 }
+  confidence: probable
+  review: draft
+  note: >-
+    The largest Republican temple known in the Campus Martius: octastyle and
+    peripteral, twelve columns down its sides, on a travertine-faced podium of 42 by 25
+    m, facing west towards the Largo Argentina. Its podium core is of the 2nd century
+    BCE, its columns redecorated in the mid-1st; its brick cella is Domitianic. Whose it
+    was is disputed: the Nymphs' (Coarelli), whose temple Clodius burnt in 57 BCE
+    (Cicero, Pro Milone 73), or the Lares Permarini's of 179 BCE (Livy 40.52), "in
+    porticu Minucia" (Zevi; Digital Augustan Rome). Placed from its south colonnade by
+    Via delle Botteghe Oscure and its cella under Via Celsa, to about 10 m.
+
+- id: aedes-martis-in-circo
+  kind: temple
+  within: roma
+  location: [12.47425, 41.89362]
+  names:
+    - { text: Aedes Martis in Circo, lang: la, preferred: true }
+    - { text: Temple of Mars in the Circus Flaminius, lang: en }
+  from: 133 BCE
+  to: after 27 BCE
+  condition:
+    - { value: under construction, from: 133 BCE, to: 132 BCE }
+    - { value: standing, from: 131 BCE, to: after 27 BCE }
+  prominence: 5
+  sources:
+    - { source: platner-ashby, locator: 'Aedes Martis#in_circo_Flaminio, p. 328' }
+    - { source: digital-augustan-rome, locator: 'Mars, Aedes (Campus Flaminius)' }
+    - { source: cavallero-2018, locator: 'pp. 317–334' }
+    - { source: pliny-nh, locator: '36.26' }
+    - { source: cicero-arch, locator: '27' }
+  confidence: probable
+  review: draft
+  note: >-
+    Built from his spoils for D. Iunius Brutus Callaicus after his triumph over the
+    Callaeci (about 133 BCE) by the Greek architect Hermodorus of Salamis, with verses
+    of Accius at its entrance and a colossal Mars and a Venus by Scopas inside. Its
+    remains, under S. Salvatore in Campo, are of a marble temple of six columns by
+    eleven on a crepis of six steps, about 14.6 by 27.8 m, facing north-east (Zevi;
+    Cavallero 2018); Tortorici thought a prostyle temple on a podium equally possible.
+    The year of its dedication is not recorded: the model shows it going up in 133–132
+    BCE.
 
 - id: aedes-bellonae
   kind: temple
@@ -3097,8 +3423,8 @@
     the Marble Plan (Platner & Ashby, before that, put it north-east of the Circus
     Flaminius). Rebuilt with six columns across its front and columns round it on a
     podium of about 42 by 18 m, probably by Ap. Claudius Pulcher in 33 or 32 BCE;
-    what it was like before is not known, so the model shows the rebuilt temple
-    throughout.
+    what it was like before is not known, so until 32 BCE the model shows the typical
+    temple of its day, and the rebuilt one from 32.
 
 - id: porticus-metelli
   kind: portico

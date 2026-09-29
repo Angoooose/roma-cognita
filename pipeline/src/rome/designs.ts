@@ -1,7 +1,7 @@
 /**
  * What each known building of the model of Rome was like (DESIGN.md §7.7): its type,
  * its size, its columns, its stairs, the way it faced — as its sources describe it for
- * 68–27 BCE, with those sources, so the model builds each one as itself and not as a
+ * 133–27 BCE, with those sources, so the model builds each one as itself and not as a
  * typical box of its kind. The engine's architecture (packages/engine/src/rome/
  * architecture.ts and monuments.ts) knows how such a building is put together; this
  * file says which building it is.
@@ -40,6 +40,11 @@ interface Placing {
   level?: 'low' | 'mean' | 'top'
   /** How much of it stands while it is being built, as a share of its height. */
   progress?: number
+  /**
+   * Its site was open ground before it was built — a platform, a precinct, an estate's
+   * grounds — so no generated houses stand there in the years before it.
+   */
+  open?: boolean
   /** What the numbers rest on: the sources, and what is inferred. */
   why: string
 }
@@ -114,6 +119,7 @@ export interface OtherDesign {
     | 'hut'
     | 'enclosure'
     | 'square'
+    | 'comitium'
     | 'quay'
     | 'horrea'
     | 'ara'
