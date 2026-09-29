@@ -424,9 +424,10 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
 
 /**
  * A monument for years a–z, which begin with (or run into) a span of works or fire.
- * A temple going up rises through its works, each part in its years, with its
- * scaffold, crane and yard round it, on what a rebuilding kept (works.ts); before
- * them it stands as it was. Any other building being built stands cut off at about
+ * A temple, basilica or senate house going up rises through its works, each part in
+ * its years, with its scaffold, crane and yard round it, on what a rebuilding kept
+ * (works.ts); before them it stands as it was. Any other building being built stands
+ * cut off at about
  * two-fifths of its height, or as far as its design says its works had got
  * (`progress`); a burnt one is a roofless shell. `phase` is the year its design's
  * form is taken from.
@@ -442,8 +443,9 @@ function raise(
   const [w0, w1] = sp.years
   // Being finished after its dedication: a temple stands whole in its scaffold;
   // any other building simply stands.
+  const staged = STAGED.has(m.design?.model ?? '')
   if (sp.kind === 'finishing') {
-    if (m.design?.model !== 'temple') {
+    if (!staged) {
       b.dates = [a, z, 1, 0]
       monument(b, m, phase)
       return
@@ -458,7 +460,7 @@ function raise(
     b.rise = null
     return
   }
-  if (sp.kind === 'works' && m.design?.model === 'temple') {
+  if (sp.kind === 'works' && staged) {
     if (a < w0) {
       b.dates = [a, w0 - 1, 1, 0]
       monument(b, m, phase)
@@ -488,6 +490,9 @@ function raise(
     .pop() ?? 0.4) as number
   b.finish(start, burnt ? 0.72 : progress, burnt)
 }
+
+/** The types of building that rise through their works stage by stage (works.ts). */
+const STAGED = new Set(['temple', 'basilica', 'curia'])
 
 /**
  * One known building, raised by its type. Temples stand on a podium with steps at

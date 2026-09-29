@@ -1212,8 +1212,10 @@ known and what is generated are kept apart:
     Each burnt or building span of a record is its own, so a temple burnt one year
     and rebuilt from the next stands as a shell for a year and then rises (the
     Capitol's, burnt in 83 BCE and rebuilt on the old foundations, Dionysius of
-    Halicarnassus 4.61.4). Each type of building says how far through its works
-    each `kept` reaches (`TEMPLE_KEPT`), so the same words serve the types to come.
+    Halicarnassus 4.61.4). Every type's works have the same seven stages (ground,
+    base, walls, upper, roof, finish, facing; `Stages`), each type its own shares
+    of them, and `kept` reaches the end of the ground, the base or the walls, so
+    the same words serve every type.
   - **Being finished**: work a source puts on a building after its dedication.
     A temple stands whole, the scaffold still round its cella, with no crane or
     yard; any other building simply stands. The span runs to the last year a
@@ -1221,10 +1223,32 @@ known and what is generated are kept apart:
     Capitol's to 62 BCE, when Caesar said much of it was half finished:
     Suetonius, _Divus Iulius_ 15; Dio 37.44.1–2). The inspector's Fabric lane
     hatches it more sparsely than building.
-  - Other buildings being built (basilicas, the Curia, theatres, the Mausoleum)
-    still stand cut off at two-fifths of their height, open to the sky, or as far
-    as their design says the works had got (the Theatre of Marcellus only its
-    foundations).
+  - **Basilicas** (decided 2026-09-29) rise the same way, with their own shares
+    (`BASILICA_WORKS`): the platform, cored then faced (0.06–0.15); the storeys of
+    arcades one after another (0.15–0.5); the clerestory over the nave, its walls
+    between the beams left open for light (Vitruvius 5.1.6–7; 0.5–0.65); the low
+    roof of the aisles and the nave's gable, over a truss on each pier (5.1.9;
+    0.65–0.8); the marble last. The scaffold stands round the flanks and back while
+    the arcades go up, and a second one on the aisles round the clerestory; the
+    crane leans over the outer arcade from a long side.
+  - **Timber centering** under the arches while a storey goes up: "at least two
+    arcs of a circle made of wood and solidly braced" (J.-P. Adam, _Roman
+    Building_, p. 357), a rib at either face on a chord at the springing, with
+    laggings across. It stands at the springing, which the Romans chose "very
+    frequently … to save on wood" (the same), with no ledge drawn for it, as none
+    is known on the arcades of Rome. The same centering "was then moved along to
+    put up the next section" (p. 358), so it is under a third of the arches at a
+    time, a different third on each storey, and it stands until the storey over it
+    is half built. No Roman picture of it survives (p. 358), so its sizes are a
+    guess.
+  - **Senate houses** (`CURIA_WORKS`): the podium (0.05–0.15); the tall walls, a
+    bed on each course so they read as walls (0.15–0.55); the trusses over the
+    hall and its tiles (0.6–0.75); then the porch and the Victory on the gable
+    (0.75–0.9), the porch late as the chalcidicum beside the Curia Julia (RG 19);
+    the facing and steps last.
+  - Other buildings being built (theatres, the Mausoleum) still stand cut off at
+    two-fifths of their height, open to the sky, or as far as their design says
+    the works had got (the Theatre of Marcellus only its foundations).
 - The generated city stands throughout, except on the site of a monument begun within
   the window: there houses stand until that year (Caesar's forum went up on the
   houses he bought).

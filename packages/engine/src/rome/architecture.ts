@@ -2,8 +2,8 @@ import * as THREE from 'three/webgpu'
 import { type Builder, C, type Pt, SKIN } from './builder.ts'
 import {
   beds,
+  centering,
   COURSE,
-  TEMPLE_KEPT,
   disc,
   lag,
   rafters,
@@ -533,7 +533,9 @@ export class Frame {
    * storeys of arches between piers, each pier with a half-column of the storey's
    * order on its face and an entablature over each storey. `open` storeys are
    * arches; closed ones are blind (a wall with the half-columns). Behind the arches
-   * a vaulted gallery, its back wall in the dark of the building.
+   * a vaulted gallery, its back wall in the dark of the building. While it is being
+   * built (works.ts), `rising` dates each storey — `i` its index, from z to top — and,
+   * with `centering`, the timber centering under its arches.
    */
   arcade(
     u0: number,
@@ -545,12 +547,14 @@ export class Frame {
     bay: number,
     col: THREE.Color,
     inner: THREE.Color = PART.dark,
+    rising?: (i: number, z: number, top: number, centering: boolean) => void,
   ) {
     const len = u1 - u0
     const n = Math.max(1, Math.round(len / bay))
     const B = len / n
     let z = z0
-    for (const s of storeys) {
+    for (const [i, s] of storeys.entries()) {
+      rising?.(i, z, z + s.h, false)
       if (s.lintel) {
         // A colonnade: columns at each bay, the back wall behind, an entablature over.
         const ent = Math.min(1.4, s.h * 0.14)
@@ -587,6 +591,13 @@ export class Frame {
         const sb = ua + B - pier / 2
         if (s.open) {
           this.arch(sa, sb, v, depth, spring, archTop, top - ent, col, inner)
+          // Centering under a third of the arches, a different third on each storey:
+          // the sets moved along the arcade from bay to bay (works.ts `centering`).
+          if (rising && (k + i) % 3 === 0) {
+            rising(i, z, top, true)
+            centering(this, sa, sb, v, depth, spring, archTop)
+            rising(i, z, top, false)
+          }
           // The back wall and the gallery's vault behind the arches.
           this.quad(
             [sa, v + depth, z],
@@ -857,7 +868,7 @@ export function temple(
     end?: number,
   ) => W?.stage(F.b, share, rise, end)
   // Rebuilt, what survived stands from the first year (works.ts `kept`).
-  W?.follow(TEMPLE_KEPT)
+  W?.follow(TEMPLE_WORKS)
   const kept = (share: [number, number]) => !!W?.survived(share)
   stage(S.ground)
   if (t.terrace) {
@@ -883,9 +894,9 @@ export function temple(
   const podium = (v0: number, v1: number, h: number, flush: boolean) => {
     if (core) {
       F.box(-w / 2, w / 2, v0, v1, deep, h, SITE_COLOURS.core)
-      stage(S.podium, [0, P], S.podium[1])
+      stage(S.base, [0, P], S.base[1])
       beds(F, -w / 2, w / 2, v0, v1, 0, h, SITE_COLOURS.core)
-      stage(S.podium, [0, P], S.facing[0])
+      stage(S.base, [0, P], S.facing[0])
       return
     }
     F.box(-w / 2 - 0.2, w / 2 + 0.2, v0 - 0.2, v1 + (flush ? 0 : 0.2), deep, 0.6, face)
@@ -900,11 +911,11 @@ export function temple(
       face,
     )
   }
-  for (const pass of W && !kept(S.podium) ? ['core', 'faced'] : ['faced']) {
+  for (const pass of W && !kept(S.base) ? ['core', 'faced'] : ['faced']) {
     core = pass === 'core'
     face = core ? SITE_COLOURS.core : face0
-    if (core) stage(S.podium, [0, P], S.facing[0])
-    else stage(kept(S.podium) ? S.podium : S.facing)
+    if (core) stage(S.base, [0, P], S.facing[0])
+    else stage(kept(S.base) ? S.base : S.facing)
     if (plat && ph < P) {
       // A lower platform before the temple, and a flight up from it to the porch.
       podium(back, front - plat, P, true)
@@ -1039,9 +1050,9 @@ export function temple(
   const [eu, ef] = [Math.max(iw / 2 + ext, cw / 2 + 0.3), colFront + ext]
   const eb = peri ? colBack - ext : cb
   const E = Math.max(1, H * ENTABLATURE)
-  if (W && !kept(S.entablature)) {
+  if (W && !kept(S.upper)) {
     // Set block by block, open over the cella until the roof closes it.
-    stage(S.entablature, [P + H, P + H + E], S.roof[0])
+    stage(S.upper, [P + H, P + H + E], S.roof[0])
     F.entablature(-eu, eu, eb, ef, P + H, E, face, E * 0.35, true)
     stage(S.roof)
   }
@@ -1055,10 +1066,10 @@ export function temple(
     covering: t.covering,
   })
   if (W && !kept(S.roof)) {
-    stage(S.roof, null, S.sculpture[0])
+    stage(S.roof, null, S.finish[0])
     rafters(F, -eu - 0.45, eu + 0.45, eb - 0.45, ef + 0.45, z, apex)
   }
-  stage(S.sculpture)
+  stage(S.finish)
   if (t.quadriga) {
     // A chariot of four on the front apex: the horses' block and the driver.
     F.box(-2.2, 2.2, ef - 1.8, ef + 0.2, apex, apex + 1.8, PART.bronze)
@@ -1091,7 +1102,7 @@ export function temple(
   }
   if (t.precinct) {
     const [pw, pl] = t.precinct
-    stage(S.podium, [0, 3.2])
+    stage(S.base, [0, 3.2])
     const g = Math.min(6, w * 0.5)
     const T = 0.7
     const h = 3.2
@@ -1126,7 +1137,6 @@ export function temple(
         l,
         podium: P,
         top: z,
-        apex,
         cella: [-cw / 2, cw / 2, cb, cellaFront],
         column: D,
         face,
@@ -1379,6 +1389,8 @@ export function hall(
     windows?: number
     along?: 'u' | 'v'
     pitch?: number
+    /** Called before its roof is built, to date it while it is being built (works.ts). */
+    roofing?: (z: number) => void
   } = {},
 ) {
   F.box(
@@ -1418,6 +1430,7 @@ export function hall(
       )
     }
   }
+  opts.roofing?.(z0 + h)
   if (opts.roof !== 'flat')
     F.roof(u0 - 0.4, u1 + 0.4, v0 - 0.4, v1 + 0.4, z0 + h, {
       along: opts.along,
