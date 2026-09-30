@@ -1071,6 +1071,22 @@ export const THEATRE_WORKS: Stages = {
   facing: [0.9, 1],
 }
 
+/**
+ * A portico's or a forum's works round its court: the colonnades' floors, the
+ * enclosure walls rising, then the columns and entablature, the lean-to roofs, the
+ * statues, and the court paved and planted last (the temple, where there is one, is
+ * its own record). A convention from the order of work, not a record.
+ */
+export const PORTICUS_WORKS: Stages = {
+  ground: [0, 0.08],
+  base: [0.08, 0.2],
+  walls: [0.2, 0.45],
+  upper: [0.45, 0.68],
+  roof: [0.68, 0.82],
+  finish: [0.82, 0.9],
+  facing: [0.9, 1],
+}
+
 /** A share `i` of `n` parts of a share of the works: the years of one storey of several. */
 export function part([a, b]: Share, i: number, n: number): Share {
   return [a + ((b - a) * i) / n, a + ((b - a) * (i + 1)) / n]

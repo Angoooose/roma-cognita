@@ -1275,6 +1275,13 @@ known and what is generated are kept apart:
     theatre at Mytilene he had drawn in 62 (Plutarch, _Pompey_ 42.4), to its
     dedication in 55 (Dio 39.38.1); its porticus and curia with it. No source dates
     its start.
+  - **Porticoes and forums** (decided 2026-09-29; `PORTICUS_WORKS`): round the court,
+    the colonnades' floors, then the enclosure walls rising, the columns and
+    entablature, the lean-to roofs, the statues, and the court paved and planted
+    last; shops rise with the walls, a gateway with the columns. The court is the
+    yard, the crane stands in it leaning over the back colonnade, and the scaffold
+    stands outside the walls of the sides with porticoes. A temple in the court is
+    its own record, with its own works (Venus Genetrix in Caesar's forum, 48–47).
   - **Every other type** (decided 2026-09-29): with no stages of its own, the whole
     building rises a course at a time over its works (`GENERAL_WORKS`), to its top
     or as far as its design says the works had got by the end of the window (the

@@ -498,7 +498,15 @@ function reached(m: Monument, phase: number, none = 1) {
 }
 
 /** The types of building that rise through their works stage by stage (works.ts). */
-const STAGED = new Set(['temple', 'tholos', 'basilica', 'curia', 'theatre'])
+const STAGED = new Set([
+  'temple',
+  'tholos',
+  'basilica',
+  'curia',
+  'theatre',
+  'porticus',
+  'forum',
+])
 /**
  * The types whose works are too large or too slight to rise as a building
  * (monuments.ts `rising`): they keep the cut at two-fifths.

@@ -1408,11 +1408,24 @@ export function quadriporticus(
     seed?: number
     /** The sides with no portico closed by the precinct's wall, with a gateway this wide in the middle (none: left open). */
     gate?: number
+    /**
+     * While it is being built (works.ts): dates each part before it is built — the
+     * court's paving, and for side `i` its enclosure wall, its colonnade's floor, its
+     * columns and entablature, its roof — with the heights each rises between.
+     */
+    stage?: (
+      part: 'court' | 'wall' | 'floor' | 'colonnade' | 'roof',
+      i: number,
+      z0: number,
+      z1: number,
+    ) => void
   },
 ) {
   const { depth, h, order, face, shade } = opts
   const sides = opts.sides ?? [true, true, true, true]
   const wall = opts.wall ?? h + 1.4
+  const at = opts.stage ?? (() => {})
+  at('court', -1, 0, 0.25)
   if (opts.court !== null)
     F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, 0.25, opts.court ?? face)
   const D = Frame.diameter(h, order)
@@ -1432,6 +1445,7 @@ export function quadriporticus(
       const g = opts.gate / 2
       const a = -len / 2
       const b = len / 2
+      at('wall', i, 0, wall + 0.6)
       S.box(a, -g, -0.9, 0, -S.deep, wall, shade)
       S.box(g, b, -0.9, 0, -S.deep, wall, shade)
       S.box(-g - 0.1, g + 0.1, -0.9, 0, h * 0.75, wall, shade)
@@ -1442,8 +1456,12 @@ export function quadriporticus(
     // In the side's frame the court is towards +v, the back wall at v = 0.
     const a = -len / 2
     const b = len / 2
+    at('wall', i, 0, wall)
     S.box(a, b, -0.9, 0, -S.deep, wall, shade)
+    at('floor', i, 0, 0.4)
     S.box(a, b, 0, depth, -0.2, 0.4, face)
+    const E = Math.max(0.8, h * 0.18)
+    at('colonnade', i, 0.4, h + 0.4 + E)
     const rows = opts.double ? [depth * 0.45, depth - D] : [depth - D]
     for (const vv of rows) {
       const n = Math.max(2, Math.round((len - 2 * depth) / sp))
@@ -1453,7 +1471,6 @@ export function quadriporticus(
         S.column(u, vv, D, 0.4, h, order, face)
       }
     }
-    const E = Math.max(0.8, h * 0.18)
     S.entablature(
       a + depth - D * 1.2,
       b - depth + D * 1.2,
@@ -1465,9 +1482,10 @@ export function quadriporticus(
       0.2,
     )
     // A lean-to of tiles from the back wall down over the colonnade.
+    const z0 = h + 0.4 + E
+    at('roof', i, z0, wall + 0.6)
     const look = S.b.look
     S.b.look = SKIN.roof * 10 + (opts.seed ?? 0.3) * 0.9
-    const z0 = h + 0.4 + E
     const run = depth + 0.3
     S.skinQuad(
       [a, -0.2, wall + 0.6, 0, 0, run],

@@ -30,6 +30,7 @@ import {
   type Stages,
   THEATRE_WORKS,
   arcFaces,
+  PORTICUS_WORKS,
 } from './works.ts'
 
 /**
@@ -68,7 +69,15 @@ export function buildDesign(b: Builder, d: Design, base: number) {
 }
 
 /** The types whose builders stage their own works (works.ts); any other rises whole (`rising`). */
-const STAGED_TYPES = new Set(['temple', 'tholos', 'basilica', 'curia', 'theatre'])
+const STAGED_TYPES = new Set([
+  'temple',
+  'tholos',
+  'basilica',
+  'curia',
+  'theatre',
+  'porticus',
+  'forum',
+])
 
 /**
  * A building of a type with no stages of its own, while it is being built: the whole
@@ -547,7 +556,12 @@ interface Porticus {
   statue?: boolean
 }
 
-const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
+const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) => {
+  // While it is being built (works.ts `PORTICUS_WORKS`): the colonnades' floors, then
+  // the enclosure walls, the columns and entablature, the lean-to roofs, and the
+  // court paved last; the shops rise with the walls, the gateway with the columns.
+  const P = PORTICUS_WORKS
+  const { W, stage } = staging(F, P)
   const court =
     d.paving === 'garden'
       ? PART.garden
@@ -567,6 +581,18 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     gate: d.gate,
     double: d.double,
     seed: 0.4,
+    stage: W
+      ? (part, _i, z0, z1) =>
+          part === 'court'
+            ? stage(P.facing)
+            : part === 'floor'
+              ? stage(P.base, [z0, z1])
+              : part === 'wall'
+                ? stage(P.walls, [z0, z1])
+                : part === 'colonnade'
+                  ? stage(P.upper, [z0, z1])
+                  : stage(P.roof, [z0, z1])
+      : undefined,
   })
   if (d.shops) {
     const s = d.shops.depth
@@ -579,7 +605,13 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     ]
     edges.forEach(([u0, u1, v0, v1], i) => {
       if (!d.shops!.sides[i]) return
+      stage(P.walls, [0, H])
       F.box(u0, u1, v0, v1, -F.deep, H, shade, null)
+      if (W) {
+        stage(P.walls, [0, H], P.walls[1])
+        ringBeds(F, [u0, u1, v0, v1], 0.8, 0, H, shade)
+      }
+      stage(P.roof, [H, H + ((Math.min(u1 - u0, v1 - v0) + 0.6) / 2) * 0.28 + 0.5])
       F.roof(u0 - 0.3, u1 + 0.3, v0 - 0.3, v1 + 0.3, H, {
         tiles: C.roofTemple,
         pitch: 0.28,
@@ -590,9 +622,11 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
   if (d.propylon) {
     const pw = d.propylon.w
     const S = F.sub(0, l / 2 - 1, 0)
+    stage(P.base)
     S.box(-pw / 2, pw / 2, -1.5, 3.5, -S.deep, 0.6, face)
     const D = Frame.diameter(d.h * 1.15, d.order)
     const n = d.propylon.columns
+    stage(P.upper, [0.6, 0.6 + d.h * 1.15 + 1.3])
     for (let k = 0; k < n; k++)
       S.column(
         -pw / 2 + D + ((pw - 2 * D) * k) / (n - 1),
@@ -604,6 +638,7 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
         face,
       )
     const z = S.entablature(-pw / 2, pw / 2, -1.5, 3.5, 0.6 + d.h * 1.15, 1.3, face)
+    stage(P.roof)
     S.roof(-pw / 2 - 0.3, pw / 2 + 0.3, -1.8, 3.8, z, {
       along: 'v',
       tiles: C.roofTemple,
@@ -611,11 +646,14 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     })
   }
   if (d.statue) {
+    stage(P.finish)
     F.box(-1.4, 1.4, -2.6, 2.6, 0, 2.4, face)
     F.box(-0.5, 0.5, -1.6, 1.6, 2.4, 4.2, PART.bronze)
     F.box(-0.35, 0.35, -0.8, 0.2, 4.2, 5.6, PART.bronze)
   }
   if (d.groves) {
+    // Planted once the court is laid out.
+    stage(P.facing)
     const { rows, spacing, kind } = d.groves
     const inner = [w / 2 - d.depth - 4, l / 2 - d.depth - 4]
     for (let i = 0; i < rows; i++) {
@@ -624,6 +662,57 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
         F.tree(u, v, kind === 'cypress' ? 2.2 : 3.4, kind === 'plane' ? 'oak' : kind)
     }
   }
+  if (!W) return
+  // The site: the court is the yard, the crane stands in it leaning over the back
+  // colonnade, and the scaffold stands round the outside of the walls.
+  const wallTop = d.h + 1.4
+  const sides = d.sides ?? [true, true, true, true]
+  const inner: Rect = [-w / 2 + d.depth, w / 2 - d.depth, -l / 2 + d.depth, l / 2 - d.depth]
+  site(
+    F,
+    {
+      ground: [-w / 2 - 1.5, w / 2 + 1.5, -l / 2 - 1.5, l / 2 + 1.5],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.4],
+        [-w / 2, w / 2, l / 2 - 1.4, l / 2],
+        [-w / 2, -w / 2 + 1.4, -l / 2, l / 2],
+        [w / 2 - 1.4, w / 2, -l / 2, l / 2],
+      ],
+      spoil: [0, 0],
+      scaffolds: [
+        {
+          // Outside the walls of the sides with porticoes (front, right, back, left).
+          faces: ringFaces([-w / 2, w / 2, -l / 2, l / 2], 1.2, [
+            sides[1],
+            sides[3],
+            sides[0],
+            sides[2],
+          ]),
+          z0: 0,
+          top: wallTop + 1.2,
+          share: [P.base[0], P.upper[1]],
+          end: P.facing[0],
+        },
+      ],
+      crane: {
+        foot: [0, inner[2] + 7],
+        spread: [1, 0],
+        head: [0, -l / 2 + d.depth * 0.5, wallTop + 3],
+      },
+      yard: {
+        at: [
+          -Math.min(12, (inner[1] - inner[0]) / 2),
+          Math.min(12, (inner[1] - inner[0]) / 2),
+          2,
+          10,
+        ],
+        drums: Frame.diameter(d.h, d.order),
+        stone: face,
+      },
+      ruin: { at: inner, z: 0, flanks: [] },
+    },
+    W,
+  )
 }
 
 /**
