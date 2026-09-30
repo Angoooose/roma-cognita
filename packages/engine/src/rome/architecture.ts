@@ -551,6 +551,7 @@ export class Frame {
     col: THREE.Color,
     inner: THREE.Color = PART.dark,
     rising?: (i: number, z: number, top: number, centering: boolean) => void,
+    bay0 = 0,
   ) {
     const len = u1 - u0
     const n = Math.max(1, Math.round(len / bay))
@@ -596,7 +597,7 @@ export class Frame {
           this.arch(sa, sb, v, depth, spring, archTop, top - ent, col, inner)
           // Centering under a third of the arches, a different third on each storey:
           // the sets moved along the arcade from bay to bay (works.ts `centering`).
-          if (rising && (k + i) % 3 === 0) {
+          if (rising && (bay0 + k + i) % 3 === 0) {
             rising(i, z, top, true)
             centering(this, sa, sb, v, depth, spring, archTop)
             rising(i, z, top, false)
@@ -697,6 +698,7 @@ export class Frame {
     storeys: Storey[],
     bay: number,
     col: THREE.Color,
+    rising?: (i: number, z: number, top: number, centering: boolean) => void,
   ) {
     const n = Math.max(2, Math.round((Math.abs(a1 - a0) * r) / bay))
     for (let k = 0; k < n; k++) {
@@ -710,7 +712,19 @@ export class Frame {
         v + Math.sin(m) * d,
         Math.atan2(-Math.cos(m), -Math.sin(m)),
       )
-      S.arcade(-chord / 2 - 0.05, chord / 2 + 0.05, 0, depth, z0, storeys, chord, col)
+      S.arcade(
+        -chord / 2 - 0.05,
+        chord / 2 + 0.05,
+        0,
+        depth,
+        z0,
+        storeys,
+        chord,
+        col,
+        undefined,
+        rising,
+        k,
+      )
     }
   }
 

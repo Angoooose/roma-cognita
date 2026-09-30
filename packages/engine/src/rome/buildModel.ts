@@ -471,6 +471,8 @@ function raise(
       (x) => x.kind === 'burnt' && x.years[1] < w0 && x.years[1] >= w0 - 1,
     )
     b.works = new Works(w0, w1, Math.max(a, w0), z, sp.kept ?? null, afterFire)
+    // How far works still going on at the end of the map had got (`progress`).
+    if (STAGED.has(model)) b.works.reach = reached(m, phase)
     monument(b, m, phase)
     b.works = null
     b.rise = null
@@ -480,20 +482,23 @@ function raise(
   b.dates = [a, z, w0, w1]
   const start = b.mark()
   monument(b, m, phase)
-  // How far its works had got: its design's `progress`, or its phase's.
+  b.finish(start, burnt ? 0.72 : (reached(m, phase, 0.4) ?? 0.4), burnt)
+}
+
+/** How far its works had got: its design's `progress`, or its phase's; `none` if neither says. */
+function reached(m: Monument, phase: number, none = 1) {
   const now: Record<string, unknown>[] = [
     m.design ?? {},
     ...(m.design?.phases ?? []).filter((ph) => ph.from <= phase),
   ]
-  const progress = (now
+  return (now
     .map((d) => d.progress)
     .filter((v) => v !== undefined)
-    .pop() ?? 0.4) as number
-  b.finish(start, burnt ? 0.72 : progress, burnt)
+    .pop() ?? none) as number
 }
 
 /** The types of building that rise through their works stage by stage (works.ts). */
-const STAGED = new Set(['temple', 'tholos', 'basilica', 'curia'])
+const STAGED = new Set(['temple', 'tholos', 'basilica', 'curia', 'theatre'])
 /**
  * The types whose works are too large or too slight to rise as a building
  * (monuments.ts `rising`): they keep the cut at two-fifths.

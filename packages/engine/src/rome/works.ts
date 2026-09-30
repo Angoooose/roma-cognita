@@ -154,6 +154,18 @@ export class Works {
     return this.keep > 0 && !this.finishing ? Math.min(0.5, 1 / this.years) : 0
   }
 
+  /**
+   * How far through its type's works these had got by their last year, as a share:
+   * 1 for works that were finished; less for works still going on when the map ends
+   * (a design's `progress`), which get no further than that.
+   */
+  reach = 1
+
+  /** A share of the type's works as a share of these years, taking account of `reach`. */
+  private scale(share: number) {
+    return this.map(share) / this.reach
+  }
+
   /** A share of the type's works as a share of these: after what was kept and the clearing. */
   private map(share: number) {
     if (!this.keep) return share
@@ -175,19 +187,36 @@ export class Works {
    */
   stage(b: Builder, share: Share, rise: Share | null = null, end?: number) {
     const kept = this.survived(share)
-    const a = kept ? this.from : this.year(this.map(share[0]))
-    const z = Math.max(a, this.from + Math.ceil(this.map(share[1]) * this.years) - 1)
+    // Not reached by the end of these works (`reach`): not built at all.
+    if (!kept && this.scale(share[0]) >= 1) return this.none(b)
+    const a = kept ? this.from : this.year(this.scale(share[0]))
+    // Its last year of rising may fall after the works end: it is still rising then.
+    const z = Math.max(a, this.from + Math.ceil(this.scale(share[1]) * this.years) - 1)
     // Taken away the year before the share `end` begins, so that what replaces it
     // never stands in the same year.
     const until =
       end === undefined
         ? this.last
-        : end >= 1
+        : end >= 1 || this.scale(end) >= 1
           ? this.to
-          : Math.max(a, this.year(this.map(end)) - 1)
+          : Math.max(a, this.year(this.scale(end)) - 1)
     const r = kept ? null : rise
     this.date(b, a, until, r && [a, z])
     b.rise = r
+  }
+
+  /**
+   * Works for a part of a building done in a share of these works' time, with an
+   * order of its own (a theatre's temple, over the seats built under it).
+   */
+  within(share: Share): Works {
+    const a = this.year(this.scale(share[0]))
+    const z = share[1] >= 1 ? this.to : this.year(this.scale(share[1]))
+    const w = new Works(a, Math.max(a, z), Math.max(a, this.first), this.last)
+    // How far into its share these works get: none of it, if they end before it.
+    const reach = (this.reach - share[0]) / (share[1] - share[0])
+    w.reach = Math.min(1, Math.max(1e-9, reach))
+    return w
   }
 
   /** Dates what is built next for no year: it is not needed (centering under walls kept). */
@@ -353,8 +382,8 @@ export interface SitePlan {
   ground: Rect
   /** The footings laid in its first years, when it rises from bare ground. */
   footings: Rect[]
-  /** Round footings: rings about a centre, u, v, the inner and outer radius. */
-  footingRings?: [number, number, number, number][]
+  /** Round footings: rings about a centre, u, v, the inner and outer radius, and the arc (all round, without). */
+  footingRings?: [number, number, number, number, number?, number?][]
   /** Where the foundations' spoil is heaped. */
   spoil: Pt2
   /** Its scaffolds: faces of poles, standing on z0, rising to `top` over `share`, down before `end`. */
@@ -404,8 +433,8 @@ export function site(F: Frame, s: SitePlan, works: Works) {
     at(S.ground, null, S.base[0] + 0.01)
     for (const [u0, u1, v0, v1] of s.footings)
       F.box(u0, u1, v0, v1, -0.3, 0.35, SITE.footing)
-    for (const [u, v, r0, r1] of s.footingRings ?? [])
-      F.ring(u, v, r0, r1, -0.3, 0.35, 20, SITE.footing)
+    for (const [u, v, r0, r1, a0, a1] of s.footingRings ?? [])
+      F.ring(u, v, r0, r1, -0.3, 0.35, 32, SITE.footing, SITE.footing, a0, a1)
     at(S.ground, null, S.base[1])
     F.drum(s.spoil[0], s.spoil[1], 3.2, 0.6, 0.05, 1.6, 7, SITE.earth)
   }
@@ -780,6 +809,33 @@ export function templeSiteRound(F: Frame, s: RoundSite, works: Works) {
 }
 
 /**
+ * The faces of a scaffold standing round an arc of radius `r` about (u, v), from
+ * angle a0 to a1, in `n` straight runs, each reaching `reach` in towards the centre.
+ */
+export function arcFaces(
+  u: number,
+  v: number,
+  r: number,
+  a0: number,
+  a1: number,
+  n: number,
+  reach: number,
+) {
+  const faces: ScaffoldFace[] = []
+  for (let k = 0; k < n; k++) {
+    const [p, q] = [a0 + ((a1 - a0) * k) / n, a0 + ((a1 - a0) * (k + 1)) / n]
+    const m = (p + q) / 2
+    faces.push({
+      a: [u + Math.cos(p) * r, v + Math.sin(p) * r],
+      b: [u + Math.cos(q) * r, v + Math.sin(q) * r],
+      inward: [-Math.cos(m), -Math.sin(m)],
+      reach,
+    })
+  }
+  return faces
+}
+
+/**
  * The faces of a scaffold standing round a circle of radius `r` about (u, v), in `n`
  * straight runs, each reaching `reach` in towards the centre.
  */
@@ -996,6 +1052,23 @@ export const GENERAL_WORKS: Stages = {
   roof: [0.7, 0.85],
   finish: [0.85, 0.92],
   facing: [0.92, 1],
+}
+
+/**
+ * A theatre's works: the whole of the seating rising storey by storey with its outer
+ * arcade, on centering, as one structure of radial walls and vaults (0.08–0.65), the
+ * stage building beside it; the portico round the top and the roofs; the stage's
+ * marble front; the orchestra paved last. From the order of work in Vitruvius 5.3.3
+ * and the theatres of Pompey and Marcellus (P&A); the shares are a convention.
+ */
+export const THEATRE_WORKS: Stages = {
+  ground: [0, 0.08],
+  base: [0.08, 0.3],
+  walls: [0.3, 0.5],
+  upper: [0.5, 0.65],
+  roof: [0.65, 0.75],
+  finish: [0.75, 0.9],
+  facing: [0.9, 1],
 }
 
 /** A share `i` of `n` parts of a share of the works: the years of one storey of several. */

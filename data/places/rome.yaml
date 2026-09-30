@@ -867,12 +867,19 @@
   names:
     - { text: Theatrum Pompei, lang: la, preferred: true }
     - { text: Theatre of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Theatrum Pompei, pp. 515–517' }
     - { source: pleiades, locator: places/541950317 }
+    - { source: plutarch, locator: 'Pompey 42.4' }
+    - { source: cassius-dio, locator: '39.38.1' }
+    - { source: pliny-nh, locator: '8.20' }
+    - { source: gellius, locator: '10.1.7' }
   confidence: certain
   review: draft
   note: >-
@@ -880,6 +887,12 @@
     consulship and dedicated in 55 BCE. Its curve survives in the street plan
     east of the Campo de' Fiori, but no surveyed outline is open, so it is drawn
     as a point.
+    No source dates the start of the works: the map shows them from 61 BCE, the
+    year of Pompey's triumph, whose spoils paid for them (as it shows others' from
+    the triumph that funded them), after the plans of the theatre at Mytilene he had
+    drawn in 62 (Plutarch, Pompey 42.4), to the dedication of 55 (Dio 39.38.1). The temple of Venus Victrix at the top of its
+    seats was dedicated with it (Pliny, NH 8.20), its inscription only set up in 52
+    (Gellius 10.1.7).
 
 - id: mausoleum-augusti
   kind: tomb
@@ -3226,8 +3239,11 @@
   names:
     - { text: Porticus Pompeiana, lang: la, preferred: true }
     - { text: Portico of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Porticus Pompei, pp. 428–429' }
@@ -3239,7 +3255,8 @@
     long and 135 wide" (Platner & Ashby), porticoes on three sides with shops behind
     the south one, and in the court the double grove of plane trees the poets
     describe (Propertius 2.32.11–16). Its outline is known from the Marble Plan and
-    the modern streets; "no remains of this building are visible".
+    the modern streets; "no remains of this building are visible". Its works are
+    shown with the theatre's, from 61 BCE.
 
 - id: curia-pompei
   kind: curia
@@ -3248,8 +3265,11 @@
   names:
     - { text: Curia Pompeia, lang: la, preferred: true }
     - { text: Curia of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Curia Pompeia, p. 146' }
@@ -3263,7 +3283,7 @@
     44 BCE and Caesar was killed. In 42 BCE the triumvirs had it closed up (Dio
     47.19.1; "curiam … obstrui placuit", Suetonius), so from then it stood sealed
     and out of use. Its tufa walls survive behind Temple B of the Largo Argentina,
-    about 20 by 24 m.
+    about 20 by 24 m. Its works are shown with the theatre's, from 61 BCE.
 
 - id: aedes-a-largo-argentina
   kind: temple

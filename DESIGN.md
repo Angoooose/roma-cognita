@@ -1258,6 +1258,23 @@ known and what is generated are kept apart:
     hall and its tiles (0.6–0.75); then the porch and the Victory on the gable
     (0.75–0.9), the porch late as the chalcidicum beside the Curia Julia (RG 19);
     the facing and steps last.
+  - **Theatres** (decided 2026-09-29; `THEATRE_WORKS`): the seating and its outer
+    arcade rise together as one structure of radial walls and vaults, storey by
+    storey on centering (0.08–0.65), since the façade's piers, the ring corridors
+    and the sloping vaults carry one another; the radial walls show under the
+    seats while they go up. A theatre on the plain wants deep foundations (Vitruvius
+    5.3.3): curved footings under the arcade, the radial walls and the seats' inner
+    edge. The stage building rises beside the seats, with its own scaffold; then
+    the portico round the top and the roofs, the stage's marble front, and the
+    orchestra paved last. The temple at the top of the seats, Venus Victrix's in
+    Pompey's (Tertullian, _De spectaculis_ 10), has works of its own over the last
+    third, once the seats under it are up. Works still going on when the map ends
+    get as far as their design says (`progress`), and no further: the Theatre of
+    Marcellus shows only its foundations by 27 BCE. Pompey's is shown building from
+    61 BCE, the year of his triumph whose spoils paid for it, after the plans of the
+    theatre at Mytilene he had drawn in 62 (Plutarch, _Pompey_ 42.4), to its
+    dedication in 55 (Dio 39.38.1); its porticus and curia with it. No source dates
+    its start.
   - **Every other type** (decided 2026-09-29): with no stages of its own, the whole
     building rises a course at a time over its works (`GENERAL_WORKS`), to its top
     or as far as its design says the works had got by the end of the window (the

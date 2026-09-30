@@ -28,6 +28,8 @@ import {
   SITE_COLOURS,
   site,
   type Stages,
+  THEATRE_WORKS,
+  arcFaces,
 } from './works.ts'
 
 /**
@@ -66,7 +68,7 @@ export function buildDesign(b: Builder, d: Design, base: number) {
 }
 
 /** The types whose builders stage their own works (works.ts); any other rises whole (`rising`). */
-const STAGED_TYPES = new Set(['temple', 'tholos', 'basilica', 'curia'])
+const STAGED_TYPES = new Set(['temple', 'tholos', 'basilica', 'curia', 'theatre'])
 
 /**
  * A building of a type with no stages of its own, while it is being built: the whole
@@ -642,17 +644,69 @@ interface Theatre {
   temple?: Temple & { size: [number, number] }
 }
 
-const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
+const theatre: Build<Design & Theatre & Building> = (F, d, w, l, face, shade) => {
   void w
   const R = d.radius
   const cv = -l / 2 + R
   const S = F.sub(0, cv)
+  // While it is being built (works.ts `THEATRE_WORKS`): the arcade storey by storey
+  // on centering, the vaulted seating rising behind it with it and the stage
+  // building beside them; then the portico and roofs at the top, the stage's marble
+  // front, and the orchestra paved last; the temple over the seats in its own works.
+  const T = THEATRE_WORKS
+  const { W, stage } = staging(F, T)
+  const H = d.storeys.reduce((s, st) => s + st.h, 0)
+  const n = d.storeys.length
+  const rising = W
+    ? (i: number, z: number, top: number, centering: boolean) => {
+        const own = part([T.base[0], T.upper[1]], i, n)
+        const next = i + 1 < n ? part([T.base[0], T.upper[1]], i + 1, n) : T.roof
+        stage(own, [z, top], centering ? (next[0] + next[1]) / 2 : undefined)
+      }
+    : undefined
   // The half-ring behind the orchestra is towards -v: angles π to 2π.
   const [a0, a1] = [Math.PI, Math.PI * 2]
   const gallery = 5
-  S.arcadeArc(0, 0, R, a0, a1, gallery, 0, d.storeys, 6.2, face)
+  S.arcadeArc(0, 0, R, a0, a1, gallery, 0, d.storeys, 6.2, face, rising)
+  stage([T.base[0], T.roof[0]], [1.2, d.h - 3.5])
   S.cavea(0, 0, d.orchestra, R - gallery, 1.2, d.h - 3.5, a0, a1, C.seating, { bands: 2 })
+  if (W) {
+    // Under the seats, the radial walls their vaults spring from, rising with the
+    // arcade as one structure; each a little under the seats' slope, so the seats
+    // cover it once laid.
+    stage([T.base[0], T.upper[1]], [0, d.h - 3.5])
+    const [r0, r1] = [d.orchestra + 2, R - gallery]
+    const slope = (r: number) =>
+      1.2 + ((d.h - 4.7) * (r - d.orchestra)) / (R - gallery - d.orchestra)
+    const nr = Math.round(((a1 - a0) * R) / 6.2)
+    for (let k = 1; k < nr; k++) {
+      const a = a0 + ((a1 - a0) * k) / nr
+      const [c, s] = [Math.cos(a), Math.sin(a)]
+      const [nx, ny] = [-s * 0.6, c * 0.6]
+      const P = (r: number, side: number, z: number) => [
+        c * r + nx * side,
+        s * r + ny * side,
+        z,
+      ]
+      for (const side of [-1, 1])
+        S.quad(
+          P(r0, side, 0),
+          P(r1, side, 0),
+          P(r1, side, slope(r1)),
+          P(r0, side, slope(r0)),
+          SITE_COLOURS.core,
+        )
+      S.quad(
+        P(r0, -1, slope(r0)),
+        P(r1, -1, slope(r1)),
+        P(r1, 1, slope(r1)),
+        P(r0, 1, slope(r0)),
+        SITE_COLOURS.core,
+      )
+    }
+  }
   // The gallery's roof, the colonnade round the top of the seats and its roof.
+  stage(T.roof, [d.h - 3.5, d.h + 2.3])
   S.ring(0, 0, R - gallery, R, d.h - 0.4, d.h, 48, face, face, a0, a1)
   const top = d.h
   for (let k = 0; k <= 40; k++) {
@@ -681,24 +735,33 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
     a1,
   )
   // The orchestra, paved, and the stage.
+  stage(T.facing)
   S.drum(0, 0, d.orchestra, d.orchestra, -0.2, 0.3, 24, C.travertine, C.travertine, a0, a1)
-  const stage = 7
-  S.box(-d.orchestra - 12, d.orchestra + 12, 0, stage, -S.deep, 1.5, face)
+  const platform = 7
+  stage(T.base, [0, 1.5])
+  S.box(-d.orchestra - 12, d.orchestra + 12, 0, platform, -S.deep, 1.5, face)
   // The stage building: its front of columns in storeys, and its roof sloping back.
   const sw = R * 0.9
-  const v0 = stage
-  const v1 = stage + d.scaena
+  const v0 = platform
+  const v1 = platform + d.scaena
+  const scaena: [number, number] = [T.base[0] + 0.07, T.upper[1]]
+  stage(scaena, [0, top + 2])
   S.box(-sw, sw, v0, v1, -S.deep, top + 2, shade, null)
+  if (W) {
+    stage(scaena, [0, top + 2], scaena[1])
+    ringBeds(S, [-sw, sw, v0, v1], 1.4, 0, top + 2, shade)
+  }
+  stage(T.finish, [1.5, top])
   const D = 1.1
-  const n = Math.round((2 * sw) / 4.2)
+  const nc = Math.round((2 * sw) / 4.2)
   for (const [z, h] of [
     [1.5, (top - 1.5) * 0.36],
     [1.5 + (top - 1.5) * 0.36, (top - 1.5) * 0.32],
     [1.5 + (top - 1.5) * 0.68, (top - 1.5) * 0.3],
   ] as const) {
-    for (let k = 0; k <= n; k++)
+    for (let k = 0; k <= nc; k++)
       S.column(
-        -sw + 1 + ((2 * sw - 2) * k) / n,
+        -sw + 1 + ((2 * sw - 2) * k) / nc,
         v0 - D,
         D * (h / 9),
         z,
@@ -708,6 +771,12 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
       )
     S.box(-sw, sw, v0 - D * 1.6, v0, z + h - 0.8, z + h, face)
   }
+  const ridge = top + 2 + (d.scaena / 2 + 1.5) * 0.18
+  if (W) {
+    stage(T.roof, null, T.finish[0])
+    rafters(S, -sw - 0.4, sw + 0.4, v0 - 2.5, v1 + 0.4, top + 2, ridge, 'u')
+  }
+  stage(T.roof, [top + 2, ridge + 1])
   S.roof(-sw - 0.4, sw + 0.4, v0 - 2.5, v1 + 0.4, top + 2, {
     along: 'u',
     tiles: C.roofTemple,
@@ -719,14 +788,67 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
   for (const s of [-1, 1]) {
     const u0 = s < 0 ? -R : sw
     const u1 = s < 0 ? -sw : R
-    hall(S, u0, u1, 0, v1, 0, top * 0.72, face, { roof: 'hip' })
+    stage(scaena, [0, top * 0.72])
+    hall(S, u0, u1, 0, v1, 0, top * 0.72, face, {
+      roof: 'hip',
+      roofing: (z) => stage(T.roof, [z, z + 4]),
+    })
   }
-  // A temple at the top of the seats, on the axis, facing the stage.
+  // A temple at the top of the seats, on the axis, facing the stage: built once the
+  // seats under it are up, in its own works over the rest of the theatre's.
   if (d.temple) {
     const [tw, tl] = d.temple.size
-    const T = S.sub(0, -R + tl / 2 - 2, 0, d.h - 4)
-    temple(T, d.temple, tw, tl, face, shade)
+    const Tf = S.sub(0, -R + tl / 2 - 2, 0, d.h - 4)
+    const b = F.b
+    const whole = b.works
+    b.works = whole?.within([T.roof[0], 1]) ?? null
+    temple(Tf, d.temple, tw, tl, face, shade)
+    b.works = whole
+    whole?.follow(T)
   }
+  if (!W) return
+  site(
+    S,
+    {
+      ground: [-R - 2, R + 2, -R - 2, v1 + 2],
+      // Under the outer arcade, the ring of radial walls and the seats' inner edge;
+      // under the stage building.
+      footings: [[-sw, sw, v0, v1]],
+      footingRings: [
+        [0, 0, R - gallery, R, a0, a1],
+        [0, 0, R * 0.62 - 1.4, R * 0.62, a0, a1],
+        [0, 0, d.orchestra, d.orchestra + 1.4, a0, a1],
+      ],
+      spoil: [R + 4, -R * 0.5],
+      scaffolds: [
+        {
+          // Round the outer arcade as it goes up, and faced from it last.
+          faces: arcFaces(0, 0, R + 1.2, a0, a1, 16, 1.15),
+          z0: 0,
+          top: H + 1.2,
+          share: [T.base[0], T.upper[1]],
+          end: T.facing[0],
+        },
+        {
+          // Round the stage building's flanks and back.
+          faces: ringFaces([-sw, sw, v0, v1], 1.2, [true, true, true, false]),
+          z0: 0,
+          top: top + 3.2,
+          share: scaena,
+          end: T.facing[0],
+        },
+      ],
+      crane: {
+        // Behind the curve, leaning in over the outer arcade.
+        foot: [0, -(R + 6.4)],
+        spread: [1, 0],
+        head: [0, -(R - gallery / 2), H + 3],
+      },
+      yard: { at: [R + 2, R + 16, -8, 0], stone: face },
+      ruin: { at: [-R / 2, R / 2, -R / 2, 0], z: 0, flanks: [] },
+    },
+    W,
+  )
 }
 
 /**
