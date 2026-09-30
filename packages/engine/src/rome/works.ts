@@ -983,6 +983,21 @@ export const CURIA_WORKS: Stages = {
   facing: [0.9, 1],
 }
 
+/**
+ * The works of a building of a type with no stages of its own (monuments.ts
+ * `rising`): cleared and footed, then the whole of it rising over most of its years,
+ * the facing last. A convention, not a record.
+ */
+export const GENERAL_WORKS: Stages = {
+  ground: [0, 0.06],
+  base: [0.06, 0.12],
+  walls: [0.12, 0.5],
+  upper: [0.5, 0.7],
+  roof: [0.7, 0.85],
+  finish: [0.85, 0.92],
+  facing: [0.92, 1],
+}
+
 /** A share `i` of `n` parts of a share of the works: the years of one storey of several. */
 export function part([a, b]: Share, i: number, n: number): Share {
   return [a + ((b - a) * i) / n, a + ((b - a) * (i + 1)) / n]

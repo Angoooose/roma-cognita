@@ -1259,6 +1259,23 @@ export class Builder {
     return this.pos.n / 3
   }
 
+  /** The height of the highest vertex built since `from`, over its ground. */
+  topSince(from: number) {
+    const P = this.pos.a
+    let top = 0
+    for (let i = from; i < this.pos.n / 3; i++) top = Math.max(top, P[i * 3 + 2])
+    return top
+  }
+
+  /** Sets how what was built since `from` rises over its part-built years (`rise`). */
+  riseSince(from: number, rise: [number, number]) {
+    const Q = this.part.a
+    for (let i = from; i < this.pos.n / 3; i++) {
+      Q[i * 2] = rise[0]
+      Q[i * 2 + 1] = rise[1]
+    }
+  }
+
   /**
    * Sets how much of what was built since `from` stands while part-built: `share` of
    * its full height, as works rising or a shell left by fire (`burnt`).

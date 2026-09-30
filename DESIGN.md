@@ -1258,9 +1258,26 @@ known and what is generated are kept apart:
     hall and its tiles (0.6–0.75); then the porch and the Victory on the gable
     (0.75–0.9), the porch late as the chalcidicum beside the Curia Julia (RG 19);
     the facing and steps last.
-  - Other buildings being built (theatres, the Mausoleum) still stand cut off at
-    two-fifths of their height, open to the sky, or as far as their design says
-    the works had got (the Theatre of Marcellus only its foundations).
+  - **Every other type** (decided 2026-09-29): with no stages of its own, the whole
+    building rises a course at a time over its works (`GENERAL_WORKS`), to its top
+    or as far as its design says the works had got by the end of the window (the
+    Theatre of Marcellus only its foundations, the Mausoleum a third of its height),
+    with the scaffold on its flanks and back, a crane if it stands over 6 m and the
+    yard before its front. The Mausoleum has no scaffold: its rings were raised
+    about 70 cm at a time with the earth between them filled in, each fill the floor
+    for the next lift, "instead of scaffolding" (the excavators of 2021, as reported
+    at its reopening), so earth floors rise inside it. A bridge has none either, its
+    works standing in the river. The circus, squares, the island, quays and
+    enclosures keep the cut at two-fifths.
+  - Works the records date only where the sources do: the Pons Fabricius in 62 BCE,
+    let and approved by L. Fabricius in his year (CIL VI 1305; Dio 37.45.3); Venus
+    Genetrix from its vow at Pharsalus in 48 to its dedication in 46 (Appian, _Civil
+    Wars_ 2.68; Dio 43.22); the Fornix Fabianus restored on its footings by the
+    builder's grandson as curule aedile in 57 (CIL VI 1303; Broughton). Where no
+    source dates the works — the start of Pompey's theatre (only its plans, drawn in
+    62, bound it: Plutarch, _Pompey_ 42.4), the round temple by the Tiber, the
+    Horrea Galbana, the tombs, the Area Sacra's paving, Temple B's end, the new
+    Rostra's end, the Saepta's start — the building appears in its first year.
 - The generated city stands throughout, except on the site of a monument begun within
   the window: there houses stand until that year (Caesar's forum went up on the
   houses he bought).

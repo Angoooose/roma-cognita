@@ -16,7 +16,10 @@ import { type Builder, C, type Pt, SKIN } from './builder.ts'
 import {
   BASILICA_WORKS,
   beds,
+  COURSE,
   CURIA_WORKS,
+  disc,
+  GENERAL_WORKS,
   part,
   rafters,
   type Rect,
@@ -58,7 +61,98 @@ export function buildDesign(b: Builder, d: Design, base: number) {
   const [w, l] = (d.extent as Pt | undefined) ?? d.size
   const build = BUILD[d.model]
   if (!build) throw new Error(`model of Rome: no way to build a ${d.model}`)
+  if (b.works && !STAGED_TYPES.has(d.model)) return rising(F, d, w, l, build)
   build(F, d as never, w, l, b.face, b.shade)
+}
+
+/** The types whose builders stage their own works (works.ts); any other rises whole (`rising`). */
+const STAGED_TYPES = new Set(['temple', 'tholos', 'basilica', 'curia'])
+
+/**
+ * A building of a type with no stages of its own, while it is being built: the whole
+ * of it rising a course at a time over its works (`GENERAL_WORKS`), to the share of
+ * its height its design says its works had reached (`progress`) or to its top, with
+ * the site round its footprint — the scaffold on its flanks and back, a crane if it
+ * is tall enough to want one, the yard before its front.
+ */
+function rising(F: Frame, d: Design, w: number, l: number, build: Build<never>) {
+  const b = F.b
+  const W = b.works!
+  const S = GENERAL_WORKS
+  W.follow(S)
+  const share: [number, number] = [S.base[0], S.roof[1]]
+  // Dated first (so what it overshadows is dated too), then told how it rises.
+  W.stage(b, share, [0, 1])
+  const start = b.mark()
+  build(F, d as never, w, l, b.face, b.shade)
+  const top = b.topSince(start)
+  const reach = Math.min(1, (d.progress as number | undefined) ?? 1)
+  if (b.rise) b.riseSince(start, [0, top * reach])
+  const high = top * reach
+  if (high < 3) return
+  // The Mausoleum's rings were raised about 70 cm at a time with the earth between
+  // them filled in as they went, each fill the floor for the next lift, "instead of
+  // scaffolding" (the excavators of 2021, as reported at its reopening): earth
+  // floors rise inside it, and no scaffold stands round it. A bridge's works stand in
+  // the river, where no scaffold of poles on the ground could.
+  const mausoleum = d.model === 'mausoleum'
+  const open = mausoleum || d.model === 'bridge'
+  if (mausoleum) {
+    W.stage(b, share, [0, high], 1)
+    for (let z = COURSE; z < high - 0.05; z += COURSE)
+      disc(F, 0, 0, w / 2 - 0.6, z, 36, SITE_COLOURS.earth)
+  }
+  const side = (d.works as { crane?: string } | undefined)?.crane === 'left' ? -1 : 1
+  site(
+    F,
+    {
+      ground: [-w / 2 - 2, w / 2 + 2, -l / 2 - 2, l / 2 + 9.3],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.4],
+        [-w / 2, w / 2, l / 2 - 1.4, l / 2],
+        [-w / 2, -w / 2 + 1.4, -l / 2, l / 2],
+        [w / 2 - 1.4, w / 2, -l / 2, l / 2],
+      ],
+      spoil: [-w / 2 - 1.5, -l / 2 - 1.5],
+      scaffolds: open
+        ? []
+        : [
+            {
+              faces: ringFaces([-w / 2, w / 2, -l / 2, l / 2], 1.2, [
+                true,
+                true,
+                false,
+                true,
+              ]),
+              z0: 0,
+              top: Math.min(high, 30) + 1.2,
+              share,
+              end: S.facing[0],
+            },
+          ],
+      crane:
+        high > 6 && d.model !== 'bridge'
+          ? {
+              foot: [side * (w / 2 + 5), 0],
+              spread: [0, 1],
+              head: [side * (w / 2 - 0.8), 0, high + 3],
+            }
+          : undefined,
+      yard: {
+        at: [-Math.min(w / 2, 12), Math.min(w / 2, 12), l / 2 + 1.2, l / 2 + 9],
+        stone: b.face,
+      },
+      ruin: {
+        at: [-w / 2, w / 2, -l / 2, l / 2],
+        z: 0,
+        flanks: [
+          [-(w / 2 + 2.5), 0],
+          [w / 2 + 2.5, 0],
+        ],
+      },
+    },
+    W,
+  )
 }
 
 type Build<T = Design> = (

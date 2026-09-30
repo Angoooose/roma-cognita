@@ -443,7 +443,8 @@ function raise(
   const [w0, w1] = sp.years
   // Being finished after its dedication: a temple stands whole in its scaffold;
   // any other building simply stands.
-  const staged = STAGED.has(m.design?.model ?? '')
+  const model = m.design?.model ?? ''
+  const staged = STAGED.has(model) || (!!m.design && !UNRISEN.has(model))
   if (sp.kind === 'finishing') {
     if (!staged) {
       b.dates = [a, z, 1, 0]
@@ -493,6 +494,11 @@ function raise(
 
 /** The types of building that rise through their works stage by stage (works.ts). */
 const STAGED = new Set(['temple', 'tholos', 'basilica', 'curia'])
+/**
+ * The types whose works are too large or too slight to rise as a building
+ * (monuments.ts `rising`): they keep the cut at two-fifths.
+ */
+const UNRISEN = new Set(['circus', 'square', 'island', 'quay', 'enclosure'])
 
 /**
  * One known building, raised by its type. Temples stand on a podium with steps at
