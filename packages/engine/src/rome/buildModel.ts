@@ -10,6 +10,7 @@ import {
   MOUND_FADE_M,
   MOUND_H_M,
   MOUND_R_M,
+  type Mesh,
   orientedBox,
   polygonArea,
   edges,
@@ -20,6 +21,7 @@ import {
   type Stone,
 } from './builder.ts'
 import { buildDesign, type Design } from './monuments.ts'
+import { type Kept, Works } from './works.ts'
 import { curtain, type Gate, gatehouse, type Tower, tower, type WallBuild } from './wall.ts'
 
 /** Floats per tree in model.bin: x, y, radius, ground, kind, first and last year (pipeline model.ts). */
@@ -34,8 +36,8 @@ const TREE = { mixed: 0, olive: 1, fruit: 2, oak: 3, cypress: 4, pine: 5 }
  * built off the main thread (modelWorker.ts); ModelLayer draws it.
  */
 export interface BuiltModel {
-  /** The mesh's attributes, by name: values and floats per vertex (Builder `attributes`). */
-  attributes: Record<string, [Float32Array, number]>
+  /** The mesh: its attributes and its triangles' index (Builder `mesh`). */
+  mesh: Mesh
   /** What overshadows its neighbours, for the shading (Builder `tops`). */
   tops: Float64Array
   /** Where the mesh's local coordinates are centred, plane metres. */
@@ -56,11 +58,11 @@ interface Monument {
   roof: string
   podium: number
   years: [number, number]
-  unfinished: [number, number] | null
-  /** Whether its part-built years are a burnt shell rather than works rising. */
-  burnt?: boolean
-  /** Each spell it was part-built, where there were several: its years, and whether burnt. */
-  spans?: { years: [number, number]; burnt: boolean }[]
+  /**
+   * The spans of its years when it was building or lay burnt, in order; for works
+   * rebuilding it, what they kept of it (pipeline model.ts `dates`).
+   */
+  spans?: { kind: 'burnt' | 'works' | 'finishing'; years: [number, number]; kept?: Kept }[]
   /** The point it faces: a temple's front is the end nearer it. */
   faces: Pt
   /** What it was faced with, from the year given; stucco when not recorded. */
@@ -80,22 +82,15 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
   const rand = mulberry32(31)
 
   // A building refaced or rebuilt within its years is built once for each stone and
-  // each form of its design, each standing for its own years. One part-built more than
-  // once (burnt, then rising again) is cut at each spell, so each is shown as itself.
+  // each form of its design, each standing for its own years; each span of works or
+  // fire within them as itself (`raise`).
   for (const m of meta.monuments as Monument[]) {
     const stones = m.stone ?? [{ from: ALWAYS[0], stone: 'stucco' as Stone }]
-    const spans = m.spans?.length
-      ? m.spans
-      : m.unfinished
-        ? [{ years: m.unfinished, burnt: !!m.burnt }]
-        : []
-    const several = spans.length > 1
     const cuts = [
       ...new Set([
         m.years[0],
         ...stones.map((s) => s.from),
         ...(m.design?.phases ?? []).map((ph) => ph.from),
-        ...(several ? spans.flatMap((s) => [s.years[0], s.years[1] + 1]) : []),
       ]),
     ]
       .filter((y) => y >= m.years[0] && y <= m.years[1])
@@ -103,26 +98,20 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     cuts.forEach((from, i) => {
       const to = Math.min(m.years[1], (cuts[i + 1] ?? ALWAYS[1] + 1) - 1)
       const stone = stones.filter((s) => s.from <= from).pop() ?? stones[0]
-      const span = several
-        ? spans.find((s) => s.years[0] <= from && from <= s.years[1])
-        : spans[0]
-      b.dates = [from, to, ...(span?.years ?? [1, 0])]
       b.face = STONE[stone.stone].face
       b.shade = STONE[stone.stone].shade
-      const start = b.mark()
-      monument(b, m, from)
-      // Works in progress stand to about two-fifths of their height; a burnt
-      // building is a roofless shell.
-      // A design may say how far its works had got (`progress`), or each phase.
-      const now: Record<string, unknown>[] = [
-        m.design ?? {},
-        ...(m.design?.phases ?? []).filter((ph) => ph.from <= from),
-      ]
-      const progress = (now
-        .map((d) => d.progress)
-        .filter((v) => v !== undefined)
-        .pop() ?? 0.4) as number
-      if (span) b.finish(start, span.burnt ? 0.72 : progress, span.burnt)
+      // Each span of works or fire within these years is built on its own, from its
+      // first year until the next begins; the first also stands for the years before it.
+      const spans = (m.spans ?? []).filter((sp) => sp.years[0] <= to && sp.years[1] >= from)
+      if (!spans.length) {
+        b.dates = [from, to, 1, 0]
+        monument(b, m, from)
+      }
+      spans.forEach((sp, k) => {
+        const a = k === 0 ? from : Math.max(from, sp.years[0])
+        const z = k + 1 < spans.length ? Math.min(to, spans[k + 1].years[0] - 1) : to
+        raise(b, m, from, a, z, sp)
+      })
     })
   }
   b.dates = ALWAYS
@@ -409,14 +398,14 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     Math.max(...xs),
     Math.max(...ys),
   ]
-  const attributes = b.attributes()
+  const mesh = b.mesh()
   const bounds: [number, number, number, number] = [
     Infinity,
     Infinity,
     -Infinity,
     -Infinity,
   ]
-  const [pos] = attributes.position
+  const pos = mesh.attributes.position.array
   for (let i = 0; i < pos.length; i += 3) {
     bounds[0] = Math.min(bounds[0], pos[i] + ox)
     bounds[1] = Math.min(bounds[1], pos[i + 1] + oy)
@@ -424,7 +413,7 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     bounds[3] = Math.max(bounds[3], pos[i + 1] + oy)
   }
   return {
-    attributes,
+    mesh,
     tops: b.tops,
     origin: [ox, oy],
     extent,
@@ -432,6 +421,97 @@ export function buildModel(meta: any, bin: ArrayBuffer): BuiltModel {
     waterLevel: meta.waterLevel,
   }
 }
+
+/**
+ * A monument for years a–z, which begin with (or run into) a span of works or fire.
+ * A temple, basilica or senate house going up rises through its works, each part in
+ * its years, with its scaffold, crane and yard round it, on what a rebuilding kept
+ * (works.ts); before them it stands as it was. Any other building being built stands
+ * cut off at about
+ * two-fifths of its height, or as far as its design says its works had got
+ * (`progress`); a burnt one is a roofless shell. `phase` is the year its design's
+ * form is taken from.
+ */
+function raise(
+  b: Builder,
+  m: Monument,
+  phase: number,
+  a: number,
+  z: number,
+  sp: NonNullable<Monument['spans']>[number],
+) {
+  const [w0, w1] = sp.years
+  // Being finished after its dedication: a temple stands whole in its scaffold;
+  // any other building simply stands.
+  const model = m.design?.model ?? ''
+  const staged = STAGED.has(model) || (!!m.design && !UNRISEN.has(model))
+  if (sp.kind === 'finishing') {
+    if (!staged) {
+      b.dates = [a, z, 1, 0]
+      monument(b, m, phase)
+      return
+    }
+    if (a < w0) {
+      b.dates = [a, w0 - 1, 1, 0]
+      monument(b, m, phase)
+    }
+    b.works = new Works(w0, w1, Math.max(a, w0), z, 'finishing')
+    monument(b, m, phase)
+    b.works = null
+    b.rise = null
+    return
+  }
+  if (sp.kind === 'works' && staged) {
+    if (a < w0) {
+      b.dates = [a, w0 - 1, 1, 0]
+      monument(b, m, phase)
+    }
+    // Works straight after a fire rebuild a burnt ruin.
+    const afterFire = (m.spans ?? []).some(
+      (x) => x.kind === 'burnt' && x.years[1] < w0 && x.years[1] >= w0 - 1,
+    )
+    b.works = new Works(w0, w1, Math.max(a, w0), z, sp.kept ?? null, afterFire)
+    // How far works still going on at the end of the map had got (`progress`).
+    if (STAGED.has(model)) b.works.reach = reached(m, phase)
+    monument(b, m, phase)
+    b.works = null
+    b.rise = null
+    return
+  }
+  const burnt = sp.kind === 'burnt'
+  b.dates = [a, z, w0, w1]
+  const start = b.mark()
+  monument(b, m, phase)
+  b.finish(start, burnt ? 0.72 : (reached(m, phase, 0.4) ?? 0.4), burnt)
+}
+
+/** How far its works had got: its design's `progress`, or its phase's; `none` if neither says. */
+function reached(m: Monument, phase: number, none = 1) {
+  const now: Record<string, unknown>[] = [
+    m.design ?? {},
+    ...(m.design?.phases ?? []).filter((ph) => ph.from <= phase),
+  ]
+  return (now
+    .map((d) => d.progress)
+    .filter((v) => v !== undefined)
+    .pop() ?? none) as number
+}
+
+/** The types of building that rise through their works stage by stage (works.ts). */
+const STAGED = new Set([
+  'temple',
+  'tholos',
+  'basilica',
+  'curia',
+  'theatre',
+  'porticus',
+  'forum',
+])
+/**
+ * The types whose works are too large or too slight to rise as a building
+ * (monuments.ts `rising`): they keep the cut at two-fifths.
+ */
+const UNRISEN = new Set(['circus', 'square', 'island', 'quay', 'enclosure'])
 
 /**
  * One known building, raised by its type. Temples stand on a podium with steps at

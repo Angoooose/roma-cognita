@@ -18,7 +18,8 @@ self.onmessage = async () => {
   if (!meta || !bin) return post.postMessage(null)
   const built: BuiltModel = buildModel(meta, bin)
   post.postMessage(built, [
-    ...Object.values(built.attributes).map(([a]) => a.buffer),
+    ...Object.values(built.mesh.attributes).map((a) => a.array.buffer),
+    built.mesh.index.buffer,
     built.tops.buffer,
   ])
 }

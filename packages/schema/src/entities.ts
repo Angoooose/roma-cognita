@@ -282,10 +282,23 @@ export const TierSchema = z.number().int().min(1).max(5)
 
 /**
  * What stood on a monument's site: `under construction` from the start of work to
- * the dedication, `burnt` from a fire until rebuilding began. Omitted, it stood
+ * the dedication, `being finished` where a source puts work on it after it was
+ * dedicated, `burnt` from a fire until rebuilding began. Omitted, it stood
  * throughout its interval.
  */
-export const PlaceConditionSchema = z.enum(['standing', 'under construction', 'burnt'])
+export const PlaceConditionSchema = z.enum([
+  'standing',
+  'under construction',
+  'being finished',
+  'burnt',
+])
+/**
+ * What of a monument survived to be built on again, on works rebuilding it: its
+ * foundations only, its podium or base, or its walls (it was re-roofed and refitted).
+ * Left out when the works began from bare ground, or the sources do not say.
+ */
+export const PlaceKeptSchema = z.enum(['footings', 'podium', 'walls'])
+export type PlaceKept = z.infer<typeof PlaceKeptSchema>
 
 export interface Dated<T> {
   value: T
@@ -349,14 +362,32 @@ export const PlaceSchema = z
     prominence: datedValue(TierSchema).optional(),
     /** Roman civic status or administrative role, which is what a political map ranks by. */
     status: datedValue(PlaceStatusSchema).optional(),
-    /** A monument's state over its interval: building works, a fire. */
-    condition: datedValue(PlaceConditionSchema).optional(),
+    /** A monument's state over its interval: building works, a fire; for works rebuilding it, what was `kept`. */
+    condition: z
+      .union([
+        PlaceConditionSchema,
+        z
+          .array(
+            z.strictObject({
+              value: PlaceConditionSchema,
+              ...intervalFields,
+              note: z.string().optional(),
+              kept: PlaceKeptSchema.optional(),
+            }),
+          )
+          .min(1),
+      ])
+      .optional(),
     labelSide: z.enum(['n', 's', 'e', 'w']).optional(),
     ...historical,
   })
   .transform((p) => {
-    const expand = <T>(v: T | Dated<T>[] | undefined): Dated<T>[] =>
-      v === undefined ? [] : Array.isArray(v) ? v : [{ value: v, from: p.from, to: p.to }]
+    const expand = <T, D extends Dated<T>>(v: T | D[] | undefined): D[] =>
+      v === undefined
+        ? []
+        : Array.isArray(v)
+          ? v
+          : [{ value: v, from: p.from, to: p.to } as D]
     return {
       ...p,
       prominence: expand(p.prominence),

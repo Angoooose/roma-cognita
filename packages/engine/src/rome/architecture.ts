@@ -1,5 +1,20 @@
 import * as THREE from 'three/webgpu'
 import { type Builder, C, type Pt, SKIN } from './builder.ts'
+import {
+  beam,
+  beds,
+  centering,
+  COURSE,
+  roundBeds,
+  templeSiteRound,
+  disc,
+  lag,
+  rafters,
+  SITE_COLOURS,
+  TEMPLE_WORKS,
+  templeSite,
+  type Works,
+} from './works.ts'
 
 /**
  * The architecture of the known buildings (DESIGN.md §7.7): a monument's own frame of
@@ -391,7 +406,8 @@ export class Frame {
 
   /**
    * An entablature over the rectangle u0–u1 × v0–v1 from z: architrave, frieze and a
-   * cornice standing out `over` beyond them. Returns the height of its top.
+   * cornice standing out `over` beyond them. Returns the height of its top. `open`,
+   * it is only its ring of blocks, not yet closed over by a roof (works.ts).
    */
   entablature(
     u0: number,
@@ -402,11 +418,13 @@ export class Frame {
     h: number,
     col: THREE.Color,
     over = h * 0.35,
+    open = false,
   ) {
     const [a, f] = [h * 0.4, h * 0.33]
-    this.box(u0, u1, v0, v1, z, z + a, col)
-    this.box(u0 + 0.04, u1 - 0.04, v0 + 0.04, v1 - 0.04, z + a, z + a + f, col)
-    this.box(u0 - over, u1 + over, v0 - over, v1 + over, z + a + f, z + h, col, col, true)
+    const top = open ? null : col
+    this.box(u0, u1, v0, v1, z, z + a, col, top)
+    this.box(u0 + 0.04, u1 - 0.04, v0 + 0.04, v1 - 0.04, z + a, z + a + f, col, top)
+    this.box(u0 - over, u1 + over, v0 - over, v1 + over, z + a + f, z + h, col, top, true)
     return z + h
   }
 
@@ -518,7 +536,9 @@ export class Frame {
    * storeys of arches between piers, each pier with a half-column of the storey's
    * order on its face and an entablature over each storey. `open` storeys are
    * arches; closed ones are blind (a wall with the half-columns). Behind the arches
-   * a vaulted gallery, its back wall in the dark of the building.
+   * a vaulted gallery, its back wall in the dark of the building. While it is being
+   * built (works.ts), `rising` dates each storey — `i` its index, from z to top — and,
+   * with `centering`, the timber centering under its arches.
    */
   arcade(
     u0: number,
@@ -530,12 +550,15 @@ export class Frame {
     bay: number,
     col: THREE.Color,
     inner: THREE.Color = PART.dark,
+    rising?: (i: number, z: number, top: number, centering: boolean) => void,
+    bay0 = 0,
   ) {
     const len = u1 - u0
     const n = Math.max(1, Math.round(len / bay))
     const B = len / n
     let z = z0
-    for (const s of storeys) {
+    for (const [i, s] of storeys.entries()) {
+      rising?.(i, z, z + s.h, false)
       if (s.lintel) {
         // A colonnade: columns at each bay, the back wall behind, an entablature over.
         const ent = Math.min(1.4, s.h * 0.14)
@@ -572,6 +595,13 @@ export class Frame {
         const sb = ua + B - pier / 2
         if (s.open) {
           this.arch(sa, sb, v, depth, spring, archTop, top - ent, col, inner)
+          // Centering under a third of the arches, a different third on each storey:
+          // the sets moved along the arcade from bay to bay (works.ts `centering`).
+          if (rising && (bay0 + k + i) % 3 === 0) {
+            rising(i, z, top, true)
+            centering(this, sa, sb, v, depth, spring, archTop)
+            rising(i, z, top, false)
+          }
           // The back wall and the gallery's vault behind the arches.
           this.quad(
             [sa, v + depth, z],
@@ -668,6 +698,7 @@ export class Frame {
     storeys: Storey[],
     bay: number,
     col: THREE.Color,
+    rising?: (i: number, z: number, top: number, centering: boolean) => void,
   ) {
     const n = Math.max(2, Math.round((Math.abs(a1 - a0) * r) / bay))
     for (let k = 0; k < n; k++) {
@@ -681,7 +712,19 @@ export class Frame {
         v + Math.sin(m) * d,
         Math.atan2(-Math.cos(m), -Math.sin(m)),
       )
-      S.arcade(-chord / 2 - 0.05, chord / 2 + 0.05, 0, depth, z0, storeys, chord, col)
+      S.arcade(
+        -chord / 2 - 0.05,
+        chord / 2 + 0.05,
+        0,
+        depth,
+        z0,
+        storeys,
+        chord,
+        col,
+        undefined,
+        rising,
+        k,
+      )
     }
   }
 
@@ -820,6 +863,8 @@ export interface Temple {
   altar?: number
   /** A court in front of it, across and along, framed by porticoes (Apollo's on the Palatine). */
   forecourt?: { w: number; l: number; h: number; order: Order; colour?: string }
+  /** While it is being built: which flank its crane stands on (works.ts; default the right). */
+  works?: { crane?: 'left' | 'right' }
 }
 
 export function temple(
@@ -831,6 +876,18 @@ export function temple(
   shade: THREE.Color,
 ) {
   const deep = -F.deep
+  // While it is being built, each part goes up in its own years (works.ts).
+  const W = F.b.works
+  const S = TEMPLE_WORKS
+  const stage = (
+    share: [number, number],
+    rise: [number, number] | null = null,
+    end?: number,
+  ) => W?.stage(F.b, share, rise, end)
+  // Rebuilt, what survived stands from the first year (works.ts `kept`).
+  W?.follow(TEMPLE_WORKS)
+  const kept = (share: [number, number]) => !!W?.survived(share)
+  stage(S.ground)
   if (t.terrace) {
     const [tw, tl, th, du, dv] = t.terrace
     F.box(du - tw / 2, du + tw / 2, dv - tl / 2, dv + tl / 2, deep, th, C.tufa)
@@ -847,8 +904,18 @@ export function temple(
   const ph = Math.min(P, t.platformH ?? P)
   const stairD = t.stairs === 'front' ? Math.min(l * 0.3, Frame.flight(P)) : 0
   const podFront = front - stairD
-  // The podium: a plinth, the die and a crowning moulding.
+  // The podium: a plinth, the die and a crowning moulding. Going up, it is its core,
+  // poured in lifts with a bed at every course; faced, moulded and stepped at the end.
+  const face0 = face
+  let core = false
   const podium = (v0: number, v1: number, h: number, flush: boolean) => {
+    if (core) {
+      F.box(-w / 2, w / 2, v0, v1, deep, h, SITE_COLOURS.core)
+      stage(S.base, [0, P], S.base[1])
+      beds(F, -w / 2, w / 2, v0, v1, 0, h, SITE_COLOURS.core)
+      stage(S.base, [0, P], S.facing[0])
+      return
+    }
     F.box(-w / 2 - 0.2, w / 2 + 0.2, v0 - 0.2, v1 + (flush ? 0 : 0.2), deep, 0.6, face)
     F.box(-w / 2, w / 2, v0, v1, 0.6, h - 0.45, face)
     F.box(
@@ -861,44 +928,51 @@ export function temple(
       face,
     )
   }
-  if (plat && ph < P) {
-    // A lower platform before the temple, and a flight up from it to the porch.
-    podium(back, front - plat, P, true)
-    podium(front - plat, front, ph, false)
-    const run = Math.min(plat * 0.6, Frame.flight(P - ph))
-    F.steps(-w * 0.3, w * 0.3, front - plat, front - plat + run, ph, P, '+v', face)
-  } else podium(back, podFront, P, stairD > 0)
-  if (t.niche) {
-    // A dark half-round in the platform's face, where the altar stood.
-    F.drum(
-      0,
-      front + 0.05,
-      t.niche,
-      t.niche,
-      0.6,
-      ph - 0.5,
-      10,
-      PART.dark,
-      face,
-      Math.PI,
-      Math.PI * 2,
-    )
-  }
-  if (t.stairs === 'front') {
-    const sw = (w * (t.stairWidth ?? 1)) / 2
-    const cheek = Math.min(1.6, w * 0.07)
-    F.box(-w / 2, -sw + cheek, podFront, front, deep, P - 0.45, face)
-    F.box(sw - cheek, w / 2, podFront, front, deep, P - 0.45, face)
-    F.steps(-sw + cheek, sw - cheek, podFront, front, 0, P, '+v', face)
-  } else if (t.stairs === 'lateral') {
-    // Flights up either side of the front platform, climbing towards the back.
-    const sw = Math.min(3.5, Math.max(2, plat * 0.4))
-    const run = Math.min(plat || 6, Frame.flight(ph))
-    for (const s of [-1, 1]) {
-      const u0 = s < 0 ? -w / 2 - sw : w / 2
-      F.steps(u0, u0 + sw, front - run, front, 0, ph, '+v', face)
+  for (const pass of W && !kept(S.base) ? ['core', 'faced'] : ['faced']) {
+    core = pass === 'core'
+    face = core ? SITE_COLOURS.core : face0
+    if (core) stage(S.base, [0, P], S.facing[0])
+    else stage(kept(S.base) ? S.base : S.facing)
+    if (plat && ph < P) {
+      // A lower platform before the temple, and a flight up from it to the porch.
+      podium(back, front - plat, P, true)
+      podium(front - plat, front, ph, false)
+      const run = Math.min(plat * 0.6, Frame.flight(P - ph))
+      F.steps(-w * 0.3, w * 0.3, front - plat, front - plat + run, ph, P, '+v', face)
+    } else podium(back, podFront, P, stairD > 0)
+    if (t.niche && !core) {
+      // A dark half-round in the platform's face, where the altar stood.
+      F.drum(
+        0,
+        front + 0.05,
+        t.niche,
+        t.niche,
+        0.6,
+        ph - 0.5,
+        10,
+        PART.dark,
+        face,
+        Math.PI,
+        Math.PI * 2,
+      )
+    }
+    if (t.stairs === 'front') {
+      const sw = (w * (t.stairWidth ?? 1)) / 2
+      const cheek = Math.min(1.6, w * 0.07)
+      F.box(-w / 2, -sw + cheek, podFront, front, deep, P - 0.45, face)
+      F.box(sw - cheek, w / 2, podFront, front, deep, P - 0.45, face)
+      F.steps(-sw + cheek, sw - cheek, podFront, front, 0, P, '+v', face)
+    } else if (t.stairs === 'lateral') {
+      // Flights up either side of the front platform, climbing towards the back.
+      const sw = Math.min(3.5, Math.max(2, plat * 0.4))
+      const run = Math.min(plat || 6, Frame.flight(ph))
+      for (const s of [-1, 1]) {
+        const u0 = s < 0 ? -w / 2 - sw : w / 2
+        F.steps(u0, u0 + sw, front - run, front, 0, ph, '+v', face)
+      }
     }
   }
+  face = face0
   // The columns.
   const colFront = front - stairD - plat - margin
   const iw = (t.porchWidth ?? w) - 2 * margin
@@ -934,7 +1008,20 @@ export function temple(
     cellaFront = colFront - s * (rows - 1) - D * 0.9
     colBack = back
   }
-  for (const [u, v] of cols) F.column(u, v, D, P, H, t.order, face)
+  cols.forEach(([u, v], i) => {
+    if (W) {
+      // Raised drum by drum, some ahead of others; a bed on each drum laid.
+      const behind = P - lag(i) * H * 0.4
+      if (!kept(S.walls)) {
+        stage(S.walls, [behind, P + H], S.walls[1])
+        for (let z = behind + COURSE; z < P + H - D; z += COURSE)
+          if (z > P + D * 0.45)
+            disc(F, u, v, (D / 2) * (1 - 0.16 * ((z - P) / H)), z, 10, face)
+      }
+      stage(S.walls, [behind, P + H])
+    }
+    F.column(u, v, D, P, H, t.order, face)
+  })
   // The cella, its walls in line with the outer columns (or inside the peristyle),
   // with a dark doorway in its front.
   const peri = t.plan === 'peripteral'
@@ -943,8 +1030,16 @@ export function temple(
     (peri ? iw - s * 1.1 : t.plan === 'sine-postico' ? iw - s * 0.9 : iw + D)
   const cb = peri ? colBack + s * 0.55 : back + 0.3
   const cellae = t.cellae ?? 1
+  const doors = Array.from({ length: cellae }, (_, k) => {
+    const du = cw / cellae
+    return [-cw / 2 + du * (k + 0.5), Math.min(du * 0.35, 4)]
+  })
+  if (W && !kept(S.walls)) cellaWalls(F, W, [-cw / 2, cw / 2, cb, cellaFront], P, H, doors)
+  const cellaDone = kept(S.walls) ? S.walls : S.facing
+  stage(cellaDone)
   F.box(-cw / 2, cw / 2, cb, cellaFront, P, P + H, shade)
   if (t.plan === 'pseudoperipteral') {
+    stage(S.walls, [P, P + H])
     // Half-columns engaged in the cella's walls.
     const nL = Math.max(3, Math.round((cellaFront - cb) / s) + 1)
     for (let j = 1; j < nL; j++) {
@@ -954,12 +1049,11 @@ export function temple(
     }
     for (const u of us.slice(1, -1)) F.column(u, cb, D, P, H, t.order, face)
   }
+  stage(S.walls, [P, P + H])
   if (t.apse)
     F.drum(0, cb, cw * 0.28, cw * 0.28, P, P + H, 12, shade, shade, Math.PI, Math.PI * 2)
-  for (let k = 0; k < cellae; k++) {
-    const du = cw / cellae
-    const uc = -cw / 2 + du * (k + 0.5)
-    const dw = Math.min(du * 0.35, 4)
+  stage(cellaDone)
+  for (const [uc, dw] of doors) {
     F.quad(
       [uc - dw / 2, cellaFront + 0.03, P],
       [uc + dw / 2, cellaFront + 0.03, P],
@@ -973,18 +1067,32 @@ export function temple(
   const [eu, ef] = [Math.max(iw / 2 + ext, cw / 2 + 0.3), colFront + ext]
   const eb = peri ? colBack - ext : cb
   const E = Math.max(1, H * ENTABLATURE)
+  if (W && !kept(S.upper)) {
+    // Set block by block, open over the cella until the roof closes it.
+    stage(S.upper, [P + H, P + H + E], S.roof[0])
+    F.entablature(-eu, eu, eb, ef, P + H, E, face, E * 0.35, true)
+    stage(S.roof)
+  }
   const z = F.entablature(-eu, eu, eb, ef, P + H, E, face)
+  // The tiles laid from the eaves up, over the timbers.
+  stage(S.roof, [z, z + (eu + 0.45) * PEDIMENT + 1])
   const apex = F.roof(-eu - 0.45, eu + 0.45, eb - 0.45, ef + 0.45, z, {
     along: 'v',
     tiles: C.roofTemple,
     gable: face,
     covering: t.covering,
   })
+  if (W && !kept(S.roof)) {
+    stage(S.roof, null, S.finish[0])
+    rafters(F, -eu - 0.45, eu + 0.45, eb - 0.45, ef + 0.45, z, apex)
+  }
+  stage(S.finish)
   if (t.quadriga) {
     // A chariot of four on the front apex: the horses' block and the driver.
     F.box(-2.2, 2.2, ef - 1.8, ef + 0.2, apex, apex + 1.8, PART.bronze)
     F.box(-0.7, 0.7, ef - 2.4, ef - 1.2, apex, apex + 3.4, PART.bronze)
   }
+  stage(S.facing)
   if (t.altar) {
     const aw = Math.min(8, w * 0.3)
     const v = front + t.altar
@@ -995,6 +1103,7 @@ export function temple(
   if (t.forecourt) {
     // Porticoes round a court before the temple, open towards it.
     const fc = t.forecourt
+    stage(S.walls, [0, fc.h + 3])
     const Fc = F.sub(0, front + fc.l / 2, 0)
     const colour = fc.colour ? new THREE.Color(fc.colour) : face
     quadriporticus(Fc, fc.w, fc.l, {
@@ -1010,6 +1119,7 @@ export function temple(
   }
   if (t.precinct) {
     const [pw, pl] = t.precinct
+    stage(S.base, [0, 3.2])
     const g = Math.min(6, w * 0.5)
     const T = 0.7
     const h = 3.2
@@ -1020,7 +1130,8 @@ export function temple(
     F.box(g / 2, pw / 2, pl / 2 - T, pl / 2, deep, h, C.tufa)
   }
   if (t.grove) {
-    // Trees in the ground round the temple, clear of it and of its front.
+    // Trees in the ground round the temple, clear of it and of its front; planted last.
+    stage(S.facing)
     const [gw, gl] = t.grove
     let k = 0
     for (let v = -gl / 2 + 4; v < gl / 2 - 3; v += 7)
@@ -1035,10 +1146,78 @@ export function temple(
         )
       }
   }
+  if (W)
+    templeSite(
+      F,
+      {
+        w,
+        l,
+        podium: P,
+        top: z,
+        cella: [-cw / 2, cw / 2, cb, cellaFront],
+        column: D,
+        face,
+        crane: t.works?.crane === 'left' ? -1 : 1,
+      },
+      W,
+    )
+}
+
+/**
+ * A cella's walls while they go up: four walls of peperino in stretches, each
+ * rising a course at a time a little ahead of or behind the next, as walls are
+ * raised; a gap for each door, bridged by its lintel. They come down for the
+ * finished cella at the facing (`temple`).
+ */
+function cellaWalls(
+  F: Frame,
+  W: Works,
+  [u0, u1, v0, v1]: [number, number, number, number],
+  P: number,
+  H: number,
+  doors: number[][],
+) {
+  const S = TEMPLE_WORKS
+  const T = Math.min(1.2, (u1 - u0) * 0.12)
+  const col = SITE_COLOURS.peperino
+  let n = 0
+  // A stretch of wall over a0–a1 along one side, from z0.
+  const stretch = (
+    box: (a: number, b: number) => number[],
+    a0: number,
+    a1: number,
+    z0 = P,
+  ) => {
+    const k = Math.max(1, Math.round((a1 - a0) / 3.5))
+    for (let i = 0; i < k; i++) {
+      const [a, b] = [a0 + ((a1 - a0) * i) / k, a0 + ((a1 - a0) * (i + 1)) / k]
+      const [bu0, bu1, bv0, bv1] = box(a, b)
+      // Racked: each stretch a little behind or ahead of the last, never far.
+      const behind = P - H * 0.3 * (0.5 + 0.5 * Math.sin(++n * 1.3 + lag(n) * 0.8))
+      W.stage(F.b, S.walls, [behind, P + H], S.walls[1])
+      beds(F, bu0, bu1, bv0, bv1, behind, P + H, col, z0)
+      W.stage(F.b, S.walls, [behind, P + H], S.facing[0])
+      F.box(bu0, bu1, bv0, bv1, z0, P + H, col)
+    }
+  }
+  const across = (v: number) => (a: number, b: number) => [a, b, v - T, v]
+  stretch((a, b) => [u0, u0 + T, a, b], v0, v1)
+  stretch((a, b) => [u1 - T, u1, a, b], v0, v1)
+  stretch((a, b) => [a, b, v0, v0 + T], u0 + T, u1 - T)
+  // The front, round its doors.
+  let a = u0 + T
+  for (const [uc, dw] of doors) {
+    stretch(across(v1), a, uc - dw / 2)
+    stretch(across(v1), uc - dw / 2, uc + dw / 2, P + H * 0.72)
+    a = uc + dw / 2
+  }
+  stretch(across(v1), a, u1 - T)
 }
 
 /** A round temple (a tholos): a round podium, a ring of columns round a round cella, a conical roof. */
 export interface Tholos {
+  /** While it is being built: which flank its crane stands on (works.ts; default the right). */
+  works?: { crane?: 'left' | 'right' }
   columns: number
   order: Order
   column: number
@@ -1059,19 +1238,55 @@ export function tholos(
   face: THREE.Color,
   shade: THREE.Color,
 ) {
+  // While it is being built, each part goes up in its own years (works.ts), as a
+  // temple's do: the podium or steps cored then faced, the cella's round wall and the
+  // ring of columns drum by drum, the round entablature, the cone of the roof over
+  // its radial rafters.
+  const W = F0.b.works
+  const S = TEMPLE_WORKS
+  W?.follow(S)
+  const stage = (
+    share: [number, number],
+    rise: [number, number] | null = null,
+    end?: number,
+  ) => W?.stage(F0.b, share, rise, end)
+  const kept = (share: [number, number]) => !!W?.survived(share)
+  const cored = !!W && !kept(S.base)
+  stage(S.ground)
   let F = F0
+  // Where the temple stands in F0: its centre, and its ground's height there.
+  let [cu, cv, cz] = [0, 0, 0]
   if (t.platform) {
     // A long podium with a flight across its front; the temple towards its back.
     const [pw, pl, ph] = t.platform
     const run = Frame.flight(ph)
+    if (cored) {
+      stage(S.base, [0, ph], S.facing[0])
+      F0.box(-pw / 2, pw / 2, -pl / 2, pl / 2 - run, -F0.deep, ph, SITE_COLOURS.core)
+      stage(S.base, [0, ph], S.base[1])
+      beds(F0, -pw / 2, pw / 2, -pl / 2, pl / 2 - run, 0, ph, SITE_COLOURS.core)
+    }
+    stage(kept(S.base) ? S.base : S.facing)
     F0.box(-pw / 2, pw / 2, -pl / 2, pl / 2 - run, -F0.deep, ph, face)
     F0.steps(-pw / 2, pw / 2, pl / 2 - run, pl / 2, 0, ph, '+v', face)
-    F = F0.sub(0, -pl / 2 + radius + 1.5, 0, ph)
+    ;[cu, cv, cz] = [0, -pl / 2 + radius + 1.5, ph]
+    F = F0.sub(cu, cv, 0, ph)
   }
   const P = t.podium
   const H = t.column
   const R = radius
   const D = Math.min(Frame.diameter(H, t.order), (2 * Math.PI * R) / (t.columns * 2.4))
+  // Rising: heights in its own frame, which stands on its platform's top, as the
+  // shader measures them (Builder `rise`).
+  const up = (z0: number, z1: number): [number, number] => [z0, z1]
+  if (cored) {
+    stage(S.base, up(0, P), S.facing[0])
+    F.drum(0, 0, R, R, -F.deep, P, 24, SITE_COLOURS.core)
+    stage(S.base, up(0, P), S.base[1])
+    for (let z = COURSE; z < P - 0.05; z += COURSE)
+      disc(F, 0, 0, R, z, 24, SITE_COLOURS.core)
+  }
+  stage(kept(S.base) ? S.base : S.facing)
   if (t.crepis) {
     const n = Math.max(2, Math.round(P / RISE_M))
     for (let k = 0; k < n; k++) {
@@ -1088,10 +1303,28 @@ export function tholos(
   const rc = R - D * 0.9
   for (let k = 0; k < t.columns; k++) {
     const a = Math.PI / 2 + (k / t.columns) * Math.PI * 2
-    F.column(Math.cos(a) * rc, Math.sin(a) * rc, D, P, H, t.order, face)
+    const [u, v] = [Math.cos(a) * rc, Math.sin(a) * rc]
+    if (W) {
+      // Raised drum by drum, some ahead of others; a bed on each drum laid.
+      const behind = P - lag(k) * H * 0.4
+      if (!kept(S.walls)) {
+        stage(S.walls, up(behind, P + H), S.walls[1])
+        for (let z = behind + COURSE; z < P + H - D; z += COURSE)
+          if (z > P + D * 0.45)
+            disc(F, u, v, (D / 2) * (1 - 0.16 * ((z - P) / H)), z, 10, face)
+      }
+      stage(S.walls, up(behind, P + H))
+    }
+    F.column(u, v, D, P, H, t.order, face)
   }
+  // The cella's round wall, a course at a time, a bed on each.
   const rCella = t.walled ? rc - D * 0.3 : rc - D * 1.6
-  F.drum(0, 0, rCella, rCella, P, P + H, 20, shade)
+  if (W && !kept(S.walls)) {
+    stage(S.walls, up(P, P + H), S.walls[1])
+    roundBeds(F, 0, 0, rCella - 0.9, rCella, P, P + H, 20, shade)
+  }
+  stage(S.walls, up(P, P + H))
+  F.drum(0, 0, rCella, rCella, P, P + H, 20, shade, W && !kept(S.upper) ? null : shade)
   F.quad(
     [-1, rCella + 0.02, P],
     [1, rCella + 0.02, P],
@@ -1100,18 +1333,55 @@ export function tholos(
     PART.door,
   )
   const E = Math.max(0.8, H * ENTABLATURE * 0.9)
+  stage(S.upper, up(P + H, P + H + E))
   F.ring(0, 0, rCella - 0.2, rc + D * 0.65, P + H, P + H + E, 24, face)
   const tiles = t.covering === 'gilt' ? PART.gilt : C.roofTemple
-  F.drum(0, 0, rc + D * 0.95, 0.4, P + H + E, P + H + E + (rc + D) * 0.42, 24, tiles, null)
-  F.drum(
-    0,
-    0,
-    0.5,
-    0.2,
-    P + H + E + (rc + D) * 0.42 - 0.2,
-    P + H + E + (rc + D) * 0.42 + 1,
-    6,
-    face,
+  const eaves = P + H + E
+  const apex = eaves + (rc + D) * 0.42
+  // The cone of tiles from the eaves up, over its rafters.
+  stage(S.roof, up(eaves, apex))
+  F.drum(0, 0, rc + D * 0.95, 0.4, eaves, apex, 24, tiles, null)
+  if (W && !kept(S.roof)) {
+    stage(S.roof, null, S.finish[0])
+    const rr = rc + D * 0.85
+    for (let k = 0; k < 12; k++) {
+      const a = (k / 12) * Math.PI * 2
+      const foot = [Math.cos(a) * rr, Math.sin(a) * rr, eaves - 0.1]
+      beam(F, foot, [0, 0, apex - 0.3], 0.22, SITE_COLOURS.timber)
+      const b = (((k + 1) % 12) / 12) * Math.PI * 2
+      beam(
+        F,
+        foot,
+        [Math.cos(b) * rr, Math.sin(b) * rr, eaves - 0.1],
+        0.2,
+        SITE_COLOURS.timber,
+      )
+    }
+  }
+  stage(S.finish)
+  F.drum(0, 0, 0.5, 0.2, apex - 0.2, apex + 1, 6, face)
+  if (!W) return
+  // The site round it: the scaffold round the colonnade, the crane leaning over the
+  // cella's wall, the yard before its steps.
+  const side = t.works?.crane === 'left' ? -1 : 1
+  const front =
+    cv + R + (t.platform ? t.platform[1] / 2 - radius - 1.5 + 1 : Frame.flight(P)) + 1.2
+  templeSiteRound(
+    F0,
+    {
+      centre: [cu, cv],
+      radius: R,
+      base: cz,
+      podium: cz + P,
+      top: cz + P + H + E,
+      cella: rCella,
+      column: D,
+      face,
+      side,
+      yard: front,
+      platform: t.platform,
+    },
+    W,
   )
 }
 
@@ -1138,11 +1408,24 @@ export function quadriporticus(
     seed?: number
     /** The sides with no portico closed by the precinct's wall, with a gateway this wide in the middle (none: left open). */
     gate?: number
+    /**
+     * While it is being built (works.ts): dates each part before it is built — the
+     * court's paving, and for side `i` its enclosure wall, its colonnade's floor, its
+     * columns and entablature, its roof — with the heights each rises between.
+     */
+    stage?: (
+      part: 'court' | 'wall' | 'floor' | 'colonnade' | 'roof',
+      i: number,
+      z0: number,
+      z1: number,
+    ) => void
   },
 ) {
   const { depth, h, order, face, shade } = opts
   const sides = opts.sides ?? [true, true, true, true]
   const wall = opts.wall ?? h + 1.4
+  const at = opts.stage ?? (() => {})
+  at('court', -1, 0, 0.25)
   if (opts.court !== null)
     F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, 0.25, opts.court ?? face)
   const D = Frame.diameter(h, order)
@@ -1162,6 +1445,7 @@ export function quadriporticus(
       const g = opts.gate / 2
       const a = -len / 2
       const b = len / 2
+      at('wall', i, 0, wall + 0.6)
       S.box(a, -g, -0.9, 0, -S.deep, wall, shade)
       S.box(g, b, -0.9, 0, -S.deep, wall, shade)
       S.box(-g - 0.1, g + 0.1, -0.9, 0, h * 0.75, wall, shade)
@@ -1172,8 +1456,12 @@ export function quadriporticus(
     // In the side's frame the court is towards +v, the back wall at v = 0.
     const a = -len / 2
     const b = len / 2
+    at('wall', i, 0, wall)
     S.box(a, b, -0.9, 0, -S.deep, wall, shade)
+    at('floor', i, 0, 0.4)
     S.box(a, b, 0, depth, -0.2, 0.4, face)
+    const E = Math.max(0.8, h * 0.18)
+    at('colonnade', i, 0.4, h + 0.4 + E)
     const rows = opts.double ? [depth * 0.45, depth - D] : [depth - D]
     for (const vv of rows) {
       const n = Math.max(2, Math.round((len - 2 * depth) / sp))
@@ -1183,7 +1471,6 @@ export function quadriporticus(
         S.column(u, vv, D, 0.4, h, order, face)
       }
     }
-    const E = Math.max(0.8, h * 0.18)
     S.entablature(
       a + depth - D * 1.2,
       b - depth + D * 1.2,
@@ -1195,9 +1482,10 @@ export function quadriporticus(
       0.2,
     )
     // A lean-to of tiles from the back wall down over the colonnade.
+    const z0 = h + 0.4 + E
+    at('roof', i, z0, wall + 0.6)
     const look = S.b.look
     S.b.look = SKIN.roof * 10 + (opts.seed ?? 0.3) * 0.9
-    const z0 = h + 0.4 + E
     const run = depth + 0.3
     S.skinQuad(
       [a, -0.2, wall + 0.6, 0, 0, run],
@@ -1229,6 +1517,8 @@ export function hall(
     windows?: number
     along?: 'u' | 'v'
     pitch?: number
+    /** Called before its roof is built, to date it while it is being built (works.ts). */
+    roofing?: (z: number) => void
   } = {},
 ) {
   F.box(
@@ -1268,6 +1558,7 @@ export function hall(
       )
     }
   }
+  opts.roofing?.(z0 + h)
   if (opts.roof !== 'flat')
     F.roof(u0 - 0.4, u1 + 0.4, v0 - 0.4, v1 + 0.4, z0 + h, {
       along: opts.along,

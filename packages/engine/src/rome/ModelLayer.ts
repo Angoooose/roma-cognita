@@ -2,6 +2,7 @@ import * as THREE from 'three/webgpu'
 import {
   attribute,
   cameraPosition,
+  clamp,
   float,
   floor,
   fract,
@@ -24,6 +25,7 @@ import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
 import { BASALT, groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
 import { STONE } from './builder.ts'
+import { COURSE } from './works.ts'
 import type { BuiltModel } from './buildModel.ts'
 import { FIELD_KEY, fieldsRevealAt, fieldUniforms, plotShown } from './fields.ts'
 import { portraitTexture, portraitUniforms } from './portrait.ts'
@@ -51,8 +53,8 @@ import type { OcclusionJob, OcclusionResult } from './occlusionWorker.ts'
  * the zoom comes in and sinks back into it going out.
  *
  * The timeline moves the known buildings: one not yet built, or gone, is sunk out of
- * sight; one building or burnt stands a third of its height; the generated city and
- * the wall stand throughout.
+ * sight; one being built rises through its years (works.ts); one burnt stands a
+ * roofless shell; the generated city and the wall stand throughout.
  */
 export const modelUniforms = {
   /** 0 flat into the ground … 1 standing. Set per frame from the scale. */
@@ -257,6 +259,8 @@ export class ModelLayer {
   private portraitScene = new THREE.Scene()
   private portraitCamera = new THREE.OrthographicCamera()
   private viewProjection = new THREE.Matrix4()
+  /** The buildings, trees and walls: the mesh `release` lets go of the data of. */
+  private buildings: THREE.Mesh | null = null
 
   /** Whether the model has loaded. */
   get ready() {
@@ -279,8 +283,13 @@ export class ModelLayer {
     this.occlusion = new Occlusion(built.tops)
     const shaded = this.occlusion.build(modelUniforms.year.value)
     const geometry = new THREE.BufferGeometry()
-    for (const [name, [array, size]] of Object.entries(built.attributes))
-      geometry.setAttribute(name, new THREE.BufferAttribute(array, size))
+    for (const [name, a] of Object.entries(built.mesh.attributes))
+      geometry.setAttribute(
+        name,
+        // three's types do not list Float16Array yet, though it draws from one.
+        new THREE.BufferAttribute(a.array as THREE.TypedArray, a.itemSize, a.normalized),
+      )
+    geometry.setIndex(new THREE.BufferAttribute(built.mesh.index, 1))
     const mesh = new THREE.Mesh(
       geometry,
       material(this.occlusion, this.viewM, new THREE.Vector2(ox, oy)),
@@ -291,6 +300,7 @@ export class ModelLayer {
     mesh.castShadow = true
     mesh.receiveShadow = true
     this.group.add(mesh)
+    this.buildings = mesh
 
     this.extent = built.extent
     this.bounds = built.bounds
@@ -532,6 +542,7 @@ export class ModelLayer {
     renderer.setClearColor(0x000000, 0)
     renderer.clear()
     renderer.render(this.portraitScene, cam)
+    this.release(renderer)
 
     renderer.setRenderTarget(was.target)
     renderer.setClearColor(was.clear, was.alpha)
@@ -577,6 +588,23 @@ export class ModelLayer {
         this.onShaded?.()
       }
     }, 150)
+  }
+
+  /**
+   * Lets go of the buildings' vertex data once it is on the GPU, which `paint` has
+   * just put it on: a quarter of a gigabyte the page would otherwise hold for nothing,
+   * since nothing reads it back. What is not on the GPU yet is kept.
+   */
+  private release(renderer: THREE.WebGPURenderer) {
+    const g = this.buildings?.geometry
+    if (!g) return
+    const backend = renderer.backend as unknown as { has(o: object): boolean }
+    for (const a of [...Object.values(g.attributes), g.index]) {
+      // `count` stays as it was: three draws by it, not by the array's length. (The
+      // array is typed read-only, but three reassigns it itself when it pads one.)
+      if (a && a.array.length > 0 && backend.has(a))
+        (a as { array: THREE.TypedArray }).array = a.array.slice(0, 0)
+    }
   }
 
   /**
@@ -839,17 +867,30 @@ function material(occlusion: Occlusion, viewM: F, origin: THREE.Vector2) {
   )
   // Heights over the ground as built, before the model rises.
   const built = positionGeometry.z
-  // Part-built (`Builder.finish`): works in progress, or a shell left by fire, are
-  // cut off at the height they had reached — open to the sky, as a building going up
-  // or burnt out is — and a burnt one is blackened towards its top.
+  // Part-built (`Builder.finish`, `Builder.rise`): works in progress, or a shell left
+  // by fire, are cut off at the height they had reached — open to the sky, as a
+  // building going up or burnt out is — and a burnt one is blackened towards its top.
+  // Works rise year by year from the height of their first year to that of their
+  // last, a course of blocks at a time (works.ts `COURSE`).
   const part = attribute('part', 'vec2')
-  const cut = select(unfinished, part.x, float(1e5))
+  const burnt = part.y.lessThan(-0.5)
+  const span = years.w.sub(years.z).add(1)
+  const done = clamp(y.sub(years.z).add(1).div(span), 0, 1)
+  const risen = part.x.add(
+    floor(mix(part.x, part.y, done).sub(part.x).div(COURSE).add(1e-3)).mul(COURSE),
+  )
+  const reached = select(done.greaterThan(0.999), part.y, risen)
+  const cut = select(
+    unfinished.and(part.x.lessThan(5e4)),
+    select(burnt, part.x, reached).add(0.02),
+    float(1e5),
+  )
   // Overhead there is no terrain to hide what is sunk.
   mat.maskNode = built
     .lessThanEqual(cut)
     .and(shows.or(modelUniforms.overhead.lessThan(0.5)))
   const soot = select(
-    unfinished.and(part.y.greaterThan(0.5)),
+    unfinished.and(burnt),
     mix(float(0.8), float(0.45), smoothstep(0, part.x.max(1), built)),
     float(1),
   )

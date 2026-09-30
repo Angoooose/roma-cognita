@@ -150,7 +150,10 @@ confirming.
     (`[{ value, from, to }]`) is there for a colony founded half way through. The
     loader always expands to the list. Tiers run 1–4 for settlements (see
     places.yaml) and 5 for a city plan's monuments. A monument's `condition`
-    (`under construction`, `burnt`, `standing`) is a dated value the same way.
+    (`under construction`, `being finished`, `burnt`, `standing`) is a dated value
+    the same way; `being finished` is for work a source puts on a building after its
+    dedication, and a works span may say what of the old building it `kept`
+    (`footings`, `podium`, `walls`).
 
 11. **Names are written inline** on polities, places and features and flattened by
     the loader into the §5.1 `name` entity, inheriting dates and sources from their

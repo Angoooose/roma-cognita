@@ -2215,7 +2215,7 @@ export function bakeModel(m: ModelInput) {
         id: course.id,
         size: course.size,
         channels: course.channels.map((ch) => {
-          const { burnt: _, ...d } = dates(m.places.get(ch.id))
+          const { burnt: _burnt, spans: _spans, ...d } = dates(m.places.get(ch.id))
           const from = Math.max(d.years[0], ch.from ?? -Infinity)
           return { id: ch.id, h: ch.h, years: [from, d.years[1]], unfinished: d.unfinished }
         }),
@@ -2300,13 +2300,12 @@ export async function writeGround(
 }
 
 /**
- * When a monument stands in the model: its years, and the span within them when it
- * was building or lay burnt (the conditions that are not `standing`, run together),
- * which the model shows part-built. Astronomical years.
- *
+ * When a monument stands in the model: its years, and each span within them when it
+ * was building or lay burnt (the conditions that are not `standing`), in order, with
+ * what works rebuilding it kept of it; the engine builds each (buildModel.ts). The
+ * aqueducts' channels take the spans run together (`unfinished`). Astronomical years.
  * A building may be part-built more than once in the window — the Capitol's temple
- * standing, burnt in 83 BCE, rising again and dedicated in 69 — so `spans` keeps each
- * spell apart, a burnt one and the works that follow it each as itself.
+ * standing, burnt in 83 BCE, rising again and dedicated in 69 — and each spell is its own.
  */
 function dates(p: Place | undefined) {
   if (!p) return { years: [-10000, 10000], unfinished: null, burnt: false, spans: [] }
@@ -2318,10 +2317,18 @@ function dates(p: Place | undefined) {
       : null,
     // A shell left by fire, not works in progress, when fire is all it suffered.
     burnt: weak.length > 0 && weak.every((c) => c.value === 'burnt'),
-    spans: weak.map((c) => ({
-      years: [c.from.year, c.to.year],
-      burnt: c.value === 'burnt',
-    })),
+    spans: weak
+      .map((c) => ({
+        kind:
+          c.value === 'burnt'
+            ? 'burnt'
+            : c.value === 'being finished'
+              ? 'finishing'
+              : 'works',
+        years: [c.from.year, c.to.year],
+        ...(c.kept && { kept: c.kept }),
+      }))
+      .sort((x, y) => x.years[0] - y.years[0]),
   }
 }
 

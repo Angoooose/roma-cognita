@@ -77,16 +77,23 @@
     - { text: Pons Fabricius, lang: la, preferred: true }
   from: 62 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 62 BCE, to: 62 BCE }
+    - { value: standing, from: 61 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Pons Fabricius, p. 400' }
+    - { source: cassius-dio, locator: '37.45.3' }
     - { source: pleiades, locator: places/68481414 }
     - { source: osm-rome, locator: relation/5676411 }
   confidence: certain
   review: draft
   note: >-
     Built by L. Fabricius, curator of roads in 62 BCE, whose name is inscribed on
-    both arches, and still in use: the outline is the bridge itself.
+    both arches, and still in use: the outline is the bridge itself. The
+    inscription says he both let the work and approved it ("faciundum coeravit
+    idemque probavit", CIL VI 1305), so it was built within his year; Dio puts
+    it among the events of 62 (37.45.3), and the map shows it being built then.
 
 - id: pons-cestius
   kind: bridge
@@ -161,7 +168,7 @@
   to: after 27 BCE
   condition:
     - { value: standing, from: before 133 BCE, to: 43 BCE }
-    - { value: under construction, from: 42 BCE, to: c. 35 BCE }
+    - { value: under construction, from: 42 BCE, to: c. 35 BCE, kept: footings }
     - { value: standing, from: c. 34 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -172,9 +179,12 @@
   review: draft
   note: >-
     One of the oldest temples of the Forum, and the state treasury (aerarium).
-    Rebuilt from 42 BCE by L. Munatius Plancus on the same podium; the eight
-    columns standing now are from a late-antique restoration, and the outline is
-    the podium.
+    Rebuilt from 42 BCE by L. Munatius Plancus on the old temple's site: the
+    podium standing now is his, of travertine and peperino walls filled with
+    concrete, and only "a few blocks of the podium of the original temple" remain
+    in it (P&A, p. 464), so only the footings are kept and the podium rises new.
+    The eight columns standing now are from a late-antique restoration, and the
+    outline is the podium.
     Plancus's rebuilding from 42 BCE is not dated to its end; the map shows it under
     way to about 35 BCE (Digital Augustan Rome: it "must have begun in the late 40s").
     The point is the podium's centre, about 40 m west of where the Forum's plan once
@@ -359,19 +369,28 @@
   names:
     - { text: Venus Genetrix, lang: la, preferred: true }
     - { text: Temple of Venus Genetrix, lang: en }
-  from: 46 BCE
+  from: 48 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 48 BCE, to: 47 BCE }
+    - { value: standing, from: 46 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Forum Julium#Venus_Genetrix, pp. 225–227' }
+    - { source: appian, locator: 'Civil Wars 2.68' }
+    - { source: cassius-dio, locator: '43.22.1–3' }
     - { source: pleiades, locator: places/898745908 }
     - { source: osm-rome, locator: relation/1809171 }
   confidence: certain
   review: draft
   note: >-
     The temple of Venus the ancestress of the Julii at the head of Caesar's forum,
-    dedicated with it on 26 September 46 BCE. The three columns standing are of
-    Trajan's rebuilding.
+    vowed by Caesar at Pharsalus in 48 BCE (Appian, Civil Wars 2.68) and dedicated
+    with the forum on 26 September 46 (Dio 43.22), so it is shown being built in
+    48–47. It was dedicated unfinished: its cult statue was set up "before it was
+    finished, in the haste to dedicate" (Pliny, NH 35.156), and Augustus says he
+    completed the forum (RG 20.3); when is not recorded. The three columns
+    standing are of Trajan's rebuilding.
 
 - id: curia-iulia
   kind: curia
@@ -721,8 +740,10 @@
   condition:
     - { value: standing, from: before 133 BCE, to: 84 BCE }
     - { value: burnt, from: 83 BCE, to: 82 BCE }
-    - { value: under construction, from: 81 BCE, to: 70 BCE }
-    - { value: standing, from: 69 BCE, to: after 27 BCE }
+    - { value: under construction, from: 81 BCE, to: 70 BCE, kept: podium }
+    - { value: standing, from: 69 BCE, to: 69 BCE }
+    - { value: being finished, from: 68 BCE, to: 62 BCE }
+    - { value: standing, from: 61 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Jovis Capitolini, pp. 297–302' }
@@ -733,10 +754,12 @@
     - { source: digital-augustan-rome, locator: 'Iuppiter Optimus Maximus Capitolinus, Aedes' }
     - { source: livy, locator: '10.23.12; 35.10.12; 40.51.3' }
     - { source: pliny-nh, locator: '33.57; 36.45; 36.185' }
+    - { source: dionysius, locator: '4.61.4' }
     - { source: tacitus-hist, locator: '3.72' }
     - { source: gellius, locator: '2.10' }
     - { source: valerius-maximus, locator: '4.4.11' }
-    - { source: cassius-dio, locator: '37.44' }
+    - { source: suetonius-iul, locator: '15' }
+    - { source: cassius-dio, locator: '37.44.1–2; 43.14.6' }
   confidence: certain
   review: draft
   note: >-
@@ -746,12 +769,21 @@
     laid after 149 and ceilings gilded in 142 (Pliny). It burned to the ground on 6 July
     83 BCE, and the ruin is shown to the end of 82, when Sulla took the city and the
     rebuilding in hand; Catulus's temple, on the same foundations but higher and roofed
-    with gilded bronze tiles, was dedicated in 69, though in 62 Caesar could still claim
-    many parts were "but half finished" (Dio 37.44). Whether the temple filled the whole
-    53 by 62 m platform, as drawn, or stood on part of it, is disputed (Arata 2010;
-    Kaderka and Tucci 2021); the 74 m length of some plans takes in a wall behind it
-    that others give to the precinct. Parts of the podium survive under the Palazzo
-    Caffarelli, but no surveyed outline is open, so it is drawn as a point.
+    with gilded bronze tiles, was dedicated in 69. It was rebuilt on the old
+    foundations (Dionysius of Halicarnassus 4.61.4; "eodem loco", Tacitus, Histories
+    3.72), so the podium is kept and the temple rises on it. It was not finished at
+    the dedication: in 62 Caesar, as praetor, called Catulus to account for the
+    rebuilding and would have handed the rest of the work to Pompey (Suetonius, Divus
+    Iulius 15), saying many parts were "but half finished, or at any rate Caesar
+    pretended this was the case" (Dio 37.44.1–2). So it is shown being finished to 62,
+    the last year a source puts work on it; when the work ended is not recorded. In 46
+    the Senate voted Caesar's name onto it in place of Catulus's, as having completed
+    it (Dio 43.14.6), which was never carried out and dates no work. Whether the
+    temple filled the whole 53 by 62 m platform, as drawn, or stood on part of it, is
+    disputed (Arata 2010; Kaderka and Tucci 2021); the 74 m length of some plans takes
+    in a wall behind it that others give to the precinct. Parts of the podium survive
+    under the Palazzo Caffarelli, but no surveyed outline is open, so it is drawn as a
+    point.
 
 - id: tabularium
   kind: archive
@@ -835,12 +867,19 @@
   names:
     - { text: Theatrum Pompei, lang: la, preferred: true }
     - { text: Theatre of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Theatrum Pompei, pp. 515–517' }
     - { source: pleiades, locator: places/541950317 }
+    - { source: plutarch, locator: 'Pompey 42.4' }
+    - { source: cassius-dio, locator: '39.38.1' }
+    - { source: pliny-nh, locator: '8.20' }
+    - { source: gellius, locator: '10.1.7' }
   confidence: certain
   review: draft
   note: >-
@@ -848,6 +887,12 @@
     consulship and dedicated in 55 BCE. Its curve survives in the street plan
     east of the Campo de' Fiori, but no surveyed outline is open, so it is drawn
     as a point.
+    No source dates the start of the works: the map shows them from 61 BCE, the
+    year of Pompey's triumph, whose spoils paid for them (as it shows others' from
+    the triumph that funded them), after the plans of the theatre at Mytilene he had
+    drawn in 62 (Plutarch, Pompey 42.4), to the dedication of 55 (Dio 39.38.1). The temple of Venus Victrix at the top of its
+    seats was dedicated with it (Pliny, NH 8.20), its inscription only set up in 52
+    (Gellius 10.1.7).
 
 - id: mausoleum-augusti
   kind: tomb
@@ -2605,18 +2650,27 @@
     - { text: Temple of Hercules of the Muses, lang: en }
   from: c. 187 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: c. 187 BCE, to: 34 BCE }
+    - { value: under construction, from: 33 BCE, to: 30 BCE }
+    - { value: standing, from: 29 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Hercules Musarum, aedes, p. 255' }
     - { source: pleiades, locator: places/765376678 }
     - { source: digital-augustan-rome, locator: 'Porticus Philippi' }
     - { source: suetonius-aug, locator: '29.5' }
+    - { source: ovid-fasti, locator: '6.801–812' }
   confidence: probable
   review: draft
   note: >-
     Built by M. Fulvius Nobilior after taking Ambracia, "probably after his triumph
     in 187"; "in 29 B.C. L. Marcius Philippus restored this temple" and put a
-    portico round it (Suetonius). Placed from a fragment of the Marble Plan
+    portico round it (Suetonius, Augustus 29.5; the monument of Philippus in Ovid,
+    Fasti 6.801–812). When the works began is not recorded: the map shows them from
+    33 BCE, the year of Philippus's triumph from Spain, whose spoils would have paid
+    for them, to the restoration P&A date to 29; what they kept of Fulvius's temple
+    is not known, so it rises from the ground. Placed from a fragment of the Marble Plan
     "north-west of the porticus Octaviae" (Platner & Ashby), about 100 m north-west
     of its entrance, which is where Pleiades and this record once put it. A small
     round temple on a podium of about 48 by 21 m facing south (Coarelli, in Digital
@@ -2796,16 +2850,24 @@
     - { text: Arch of Fabius, lang: en }
   from: 121 BCE
   to: after 27 BCE
+  condition:
+    - { value: standing, from: 121 BCE, to: 58 BCE }
+    - { value: under construction, from: 57 BCE, to: 57 BCE, kept: footings }
+    - { value: standing, from: 56 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Fornix Fabianus, pp. 211–212' }
+    - { source: broughton-mrr, locator: 'Q. Fabius Maximus, curule aedile, 57 BCE' }
     - { source: digital-augustan-rome, locator: 'Fornix Fabianus' }
   confidence: probable
   review: draft
   note: >-
     Q. Fabius Allobrogicus's arch of 121 BCE over the Sacra Via at the east entrance
     of the Forum, north of the Regia, restored by his grandson in 57/56 BCE. A single
-    arch; its size is not known.
+    arch; its size is not known. The restoration is his grandson's as curule aedile
+    ("restituit", CIL VI 1303), which Broughton puts in 57, so it is shown rebuilt
+    then on the old arch's footings: its tufa foundations were found north of the
+    Temple of Caesar (Van Deman, in P&A p. 212); what else was kept is not known.
 
 # --- the Capitol and the Palatine, further --------------------------------------
 
@@ -3177,8 +3239,11 @@
   names:
     - { text: Porticus Pompeiana, lang: la, preferred: true }
     - { text: Portico of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Porticus Pompei, pp. 428–429' }
@@ -3190,7 +3255,8 @@
     long and 135 wide" (Platner & Ashby), porticoes on three sides with shops behind
     the south one, and in the court the double grove of plane trees the poets
     describe (Propertius 2.32.11–16). Its outline is known from the Marble Plan and
-    the modern streets; "no remains of this building are visible".
+    the modern streets; "no remains of this building are visible". Its works are
+    shown with the theatre's, from 61 BCE.
 
 - id: curia-pompei
   kind: curia
@@ -3199,8 +3265,11 @@
   names:
     - { text: Curia Pompeia, lang: la, preferred: true }
     - { text: Curia of Pompey, lang: en }
-  from: 55 BCE
+  from: 61 BCE
   to: after 27 BCE
+  condition:
+    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Curia Pompeia, p. 146' }
@@ -3214,7 +3283,7 @@
     44 BCE and Caesar was killed. In 42 BCE the triumvirs had it closed up (Dio
     47.19.1; "curiam … obstrui placuit", Suetonius), so from then it stood sealed
     and out of use. Its tufa walls survive behind Temple B of the Largo Argentina,
-    about 20 by 24 m.
+    about 20 by 24 m. Its works are shown with the theatre's, from 61 BCE.
 
 - id: aedes-a-largo-argentina
   kind: temple

@@ -1,4 +1,5 @@
 import * as THREE from 'three/webgpu'
+import type { Works } from './works.ts'
 
 /**
  * The mesh the model of Rome is built of (buildModel.ts), and its vocabulary: the
@@ -209,11 +210,17 @@ export class Builder {
   look = 0
   /**
    * How much of a building stands while it is part-built (its years' third and
-   * fourth values): the height it is cut off at, metres over its ground, and 1 if
-   * it is a burnt shell rather than works in progress. Set per monument once it is
-   * built (`finish`).
+   * fourth values): the height it has risen to, metres over its ground, in its first
+   * year and in its last — it rises between them a course at a time — or, for a
+   * burnt shell, the height it is cut off at and -1. A vertex never part-built has
+   * 1e5 for both. Set per monument once it is built (`finish`), or as it is built
+   * (`rise`).
    */
   private part = f32(1 << 15)
+  /** How what is being built now rises over its part-built years (`part`); null: it is not cut. */
+  rise: [number, number] | null = null
+  /** The works a monument is being built in, while it is (works.ts); null otherwise. */
+  works: Works | null = null
   /** Whether what is being built now overshadows its neighbours (`Occlusion`). */
   occludes = true
   private topsOf = f64(1 << 16)
@@ -280,8 +287,8 @@ export class Builder {
       S[skin + k * 4 + 1] = p[3] ?? 0
       S[skin + k * 4 + 2] = p[4] ?? 0
       S[skin + k * 4 + 3] = p[5] ?? 0
-      this.part.a[part + k * 2] = 1e5
-      this.part.a[part + k * 2 + 1] = 0
+      this.part.a[part + k * 2] = this.rise ? this.rise[0] : 1e5
+      this.part.a[part + k * 2 + 1] = this.rise ? this.rise[1] : 1e5
     }
     if (this.occludes && Math.abs(nz) > 0.3) {
       const t = this.topsOf.take(11)
@@ -1252,6 +1259,23 @@ export class Builder {
     return this.pos.n / 3
   }
 
+  /** The height of the highest vertex built since `from`, over its ground. */
+  topSince(from: number) {
+    const P = this.pos.a
+    let top = 0
+    for (let i = from; i < this.pos.n / 3; i++) top = Math.max(top, P[i * 3 + 2])
+    return top
+  }
+
+  /** Sets how what was built since `from` rises over its part-built years (`rise`). */
+  riseSince(from: number, rise: [number, number]) {
+    const Q = this.part.a
+    for (let i = from; i < this.pos.n / 3; i++) {
+      Q[i * 2] = rise[0]
+      Q[i * 2 + 1] = rise[1]
+    }
+  }
+
   /**
    * Sets how much of what was built since `from` stands while part-built: `share` of
    * its full height, as works rising or a shell left by fire (`burnt`).
@@ -1262,22 +1286,114 @@ export class Builder {
     for (let i = from; i < n; i++) top = Math.max(top, P[i * 3 + 2])
     for (let i = from; i < n; i++) {
       Q[i * 2] = top * share
-      Q[i * 2 + 1] = burnt ? 1 : 0
+      Q[i * 2 + 1] = burnt ? -1 : top * share
     }
   }
 
-  /** The mesh's attributes, by name: values and floats per vertex. */
-  attributes(): Record<string, [Float32Array, number]> {
+  /**
+   * The mesh: its attributes, by name, and the index of its triangles. The two
+   * triangles of a flat quad share two corners, and a corner shared is stored once
+   * (about a quarter fewer vertices). What needs less precision is stored at less:
+   * the years and the part-built height at half precision, the normal and the colour
+   * as 16-bit integers; the rest as it was. 60 bytes a vertex, not 80. Half precision
+   * holds a year exactly to ±2048; the model's "always" (±100000) becomes infinity,
+   * which compares the same.
+   */
+  mesh(): Mesh {
+    const [P, G, Y, N, C3, S, Q] = [
+      this.pos.a,
+      this.base.a,
+      this.years.a,
+      this.normal.a,
+      this.colour.a,
+      this.skin.a,
+      this.part.a,
+    ]
+    const n = this.pos.n / 3
+    // The position first, which tells most corners apart; then the rest. An array
+    // each, so every comparison reads one kind of array.
+    const same = (i: number, j: number) =>
+      P[i * 3] === P[j * 3] &&
+      P[i * 3 + 1] === P[j * 3 + 1] &&
+      P[i * 3 + 2] === P[j * 3 + 2] &&
+      G[i] === G[j] &&
+      sameRun(N, i, j, 3) &&
+      sameRun(S, i, j, 4) &&
+      sameRun(C3, i, j, 3) &&
+      sameRun(Y, i, j, 4) &&
+      sameRun(Q, i, j, 2)
+    // Shared corners are found among the last few kept: a quad's second triangle
+    // repeats two of its first's.
+    const index = new Uint32Array(n)
+    const kept = new Uint32Array(n)
+    let count = 0
+    for (let i = 0; i < n; i++) {
+      let found = -1
+      for (let back = 1; back <= SHARED_REACH && back <= count; back++)
+        if (same(kept[count - back], i)) {
+          found = count - back
+          break
+        }
+      if (found < 0) kept[(found = count++)] = i
+      index[i] = found
+    }
+    const position = new Float32Array(count * 3)
+    const ground = new Float32Array(count)
+    const years = new Float32Array(count * 4)
+    const normal = new Int16Array(count * 3)
+    const colour = new Uint16Array(count * 3)
+    const skin = new Float32Array(count * 4)
+    const part = new Float32Array(count * 2)
+    for (let v = 0; v < count; v++) {
+      const i = kept[v]
+      for (let c = 0; c < 3; c++) {
+        position[v * 3 + c] = P[i * 3 + c]
+        normal[v * 3 + c] = Math.round(N[i * 3 + c] * 32767)
+        colour[v * 3 + c] = Math.round(Math.min(1, Math.max(0, C3[i * 3 + c])) * 65535)
+      }
+      ground[v] = G[i]
+      for (let c = 0; c < 4; c++) {
+        years[v * 4 + c] = Y[i * 4 + c]
+        skin[v * 4 + c] = S[i * 4 + c]
+      }
+      part[v * 2] = Q[i * 2]
+      part[v * 2 + 1] = Q[i * 2 + 1]
+    }
     return {
-      position: [new Float32Array(this.pos.done()), 3],
-      ground: [this.base.done(), 1],
-      years: [this.years.done(), 4],
-      normal: [this.normal.done(), 3],
-      colour: [this.colour.done(), 3],
-      skin: [this.skin.done(), 4],
-      part: [this.part.done(), 2],
+      attributes: {
+        position: { array: position, itemSize: 3 },
+        ground: { array: ground, itemSize: 1 },
+        years: { array: new Float16Array(years), itemSize: 4 },
+        normal: { array: normal, itemSize: 3, normalized: true },
+        colour: { array: colour, itemSize: 3, normalized: true },
+        skin: { array: skin, itemSize: 4 },
+        part: { array: new Float16Array(part), itemSize: 2 },
+      },
+      index,
     }
   }
+}
+
+/** How many kept corners back a triangle's corner is looked for among (`mesh`). */
+const SHARED_REACH = 6
+
+/** Whether vertices `i` and `j` have the same `k` values in `a`. */
+function sameRun(a: Float32Array, i: number, j: number, k: number) {
+  for (let c = 0; c < k; c++) if (a[i * k + c] !== a[j * k + c]) return false
+  return true
+}
+
+/** One of the mesh's attributes: its values, per vertex, and whether they are normalized integers. */
+export interface MeshAttribute {
+  array: Float32Array | Float16Array | Int16Array | Uint16Array
+  itemSize: number
+  normalized?: boolean
+}
+
+/** The model's mesh (`Builder.mesh`): its attributes by name, and its triangles' index. */
+export interface Mesh {
+  attributes: Record<string, MeshAttribute>
+  index: Uint32Array
 }
 
 export function edges(ring: Pt[], f: (a: Pt, c: Pt) => void) {

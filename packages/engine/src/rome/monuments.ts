@@ -13,6 +13,25 @@ import {
   tholos,
 } from './architecture.ts'
 import { type Builder, C, type Pt, SKIN } from './builder.ts'
+import {
+  BASILICA_WORKS,
+  beds,
+  COURSE,
+  CURIA_WORKS,
+  disc,
+  GENERAL_WORKS,
+  part,
+  rafters,
+  type Rect,
+  ringBeds,
+  ringFaces,
+  SITE_COLOURS,
+  site,
+  type Stages,
+  THEATRE_WORKS,
+  arcFaces,
+  PORTICUS_WORKS,
+} from './works.ts'
 
 /**
  * The known buildings built as themselves (DESIGN.md §7.7), from their designs
@@ -45,7 +64,106 @@ export function buildDesign(b: Builder, d: Design, base: number) {
   const [w, l] = (d.extent as Pt | undefined) ?? d.size
   const build = BUILD[d.model]
   if (!build) throw new Error(`model of Rome: no way to build a ${d.model}`)
+  if (b.works && !STAGED_TYPES.has(d.model)) return rising(F, d, w, l, build)
   build(F, d as never, w, l, b.face, b.shade)
+}
+
+/** The types whose builders stage their own works (works.ts); any other rises whole (`rising`). */
+const STAGED_TYPES = new Set([
+  'temple',
+  'tholos',
+  'basilica',
+  'curia',
+  'theatre',
+  'porticus',
+  'forum',
+])
+
+/**
+ * A building of a type with no stages of its own, while it is being built: the whole
+ * of it rising a course at a time over its works (`GENERAL_WORKS`), to the share of
+ * its height its design says its works had reached (`progress`) or to its top, with
+ * the site round its footprint — the scaffold on its flanks and back, a crane if it
+ * is tall enough to want one, the yard before its front.
+ */
+function rising(F: Frame, d: Design, w: number, l: number, build: Build<never>) {
+  const b = F.b
+  const W = b.works!
+  const S = GENERAL_WORKS
+  W.follow(S)
+  const share: [number, number] = [S.base[0], S.roof[1]]
+  // Dated first (so what it overshadows is dated too), then told how it rises.
+  W.stage(b, share, [0, 1])
+  const start = b.mark()
+  build(F, d as never, w, l, b.face, b.shade)
+  const top = b.topSince(start)
+  const reach = Math.min(1, (d.progress as number | undefined) ?? 1)
+  if (b.rise) b.riseSince(start, [0, top * reach])
+  const high = top * reach
+  if (high < 3) return
+  // The Mausoleum's rings were raised about 70 cm at a time with the earth between
+  // them filled in as they went, each fill the floor for the next lift, "instead of
+  // scaffolding" (the excavators of 2021, as reported at its reopening): earth
+  // floors rise inside it, and no scaffold stands round it. A bridge's works stand in
+  // the river, where no scaffold of poles on the ground could.
+  const mausoleum = d.model === 'mausoleum'
+  const open = mausoleum || d.model === 'bridge'
+  if (mausoleum) {
+    W.stage(b, share, [0, high], 1)
+    for (let z = COURSE; z < high - 0.05; z += COURSE)
+      disc(F, 0, 0, w / 2 - 0.6, z, 36, SITE_COLOURS.earth)
+  }
+  const side = (d.works as { crane?: string } | undefined)?.crane === 'left' ? -1 : 1
+  site(
+    F,
+    {
+      ground: [-w / 2 - 2, w / 2 + 2, -l / 2 - 2, l / 2 + 9.3],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.4],
+        [-w / 2, w / 2, l / 2 - 1.4, l / 2],
+        [-w / 2, -w / 2 + 1.4, -l / 2, l / 2],
+        [w / 2 - 1.4, w / 2, -l / 2, l / 2],
+      ],
+      spoil: [-w / 2 - 1.5, -l / 2 - 1.5],
+      scaffolds: open
+        ? []
+        : [
+            {
+              faces: ringFaces([-w / 2, w / 2, -l / 2, l / 2], 1.2, [
+                true,
+                true,
+                false,
+                true,
+              ]),
+              z0: 0,
+              top: Math.min(high, 30) + 1.2,
+              share,
+              end: S.facing[0],
+            },
+          ],
+      crane:
+        high > 6 && d.model !== 'bridge'
+          ? {
+              foot: [side * (w / 2 + 5), 0],
+              spread: [0, 1],
+              head: [side * (w / 2 - 0.8), 0, high + 3],
+            }
+          : undefined,
+      yard: {
+        at: [-Math.min(w / 2, 12), Math.min(w / 2, 12), l / 2 + 1.2, l / 2 + 9],
+        stone: b.face,
+      },
+      ruin: {
+        at: [-w / 2, w / 2, -l / 2, l / 2],
+        z: 0,
+        flanks: [
+          [-(w / 2 + 2.5), 0],
+          [w / 2 + 2.5, 0],
+        ],
+      },
+    },
+    W,
+  )
 }
 
 type Build<T = Design> = (
@@ -79,42 +197,118 @@ interface Basilica {
   depth?: number
 }
 
-const basilica: Build<Design & Basilica> = (F, d, w, l, face, shade) => {
+/** While it is being built (works.ts): which flank its crane stands on. */
+interface Building {
+  works?: { crane?: 'left' | 'right' }
+}
+
+/**
+ * Dates what a building of a type is built of while it goes up (works.ts): `stage`
+ * for the parts that rise in a share of its works, `kept` for what a rebuilding kept.
+ * Without works, both do nothing.
+ */
+function staging(F: Frame, stages: Stages) {
+  const W = F.b.works
+  W?.follow(stages)
+  return {
+    W,
+    stage: (share: [number, number], rise: [number, number] | null = null, end?: number) =>
+      W?.stage(F.b, share, rise, end),
+    kept: (share: [number, number]) => !!W?.survived(share),
+  }
+}
+
+/**
+ * A base (a platform or a podium) over u0–u1 × v0–v1 up to P: going up, its core in
+ * lifts with a bed at each course, faced at the end (`faced`); rebuilt on it, it
+ * stands throughout.
+ */
+function base(
+  F: Frame,
+  S: Stages,
+  { W, stage, kept }: ReturnType<typeof staging>,
+  rect: Rect,
+  P: number,
+  faced: () => void,
+) {
+  const [u0, u1, v0, v1] = rect
+  if (W && !kept(S.base)) {
+    stage(S.base, [0, P], S.facing[0])
+    F.box(u0, u1, v0, v1, -F.deep, P, SITE_COLOURS.core)
+    stage(S.base, [0, P], S.base[1])
+    beds(F, u0, u1, v0, v1, 0, P, SITE_COLOURS.core)
+  }
+  stage(kept(S.base) ? S.base : S.facing)
+  faced()
+}
+
+const basilica: Build<Design & Basilica & Building> = (F, d, w, l, face, shade) => {
+  const S = BASILICA_WORKS
+  const st = staging(F, S)
+  const { W, stage, kept } = st
+  stage(S.ground)
   const P = d.platform ?? 1
-  F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, P, face)
-  if (P > 0.3) F.steps(-w / 2, w / 2, l / 2, l / 2 + Frame.flight(P), 0, P, '+v', face)
+  const flight = P > 0.3 ? Frame.flight(P) : 0
+  base(F, S, st, [-w / 2, w / 2, -l / 2, l / 2], P, () => {
+    F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, P, face)
+    if (flight) F.steps(-w / 2, w / 2, l / 2, l / 2 + flight, 0, P, '+v', face)
+  })
   const depth = d.depth ?? 5
   const H = d.storeys.reduce((s, st) => s + st.h, 0)
+  const n = d.storeys.length
+  // Each storey of the arcades goes up in its own share of the walls' years, on
+  // centering; a rebuilding that kept the walls has them standing.
+  const rising = W
+    ? (i: number, z: number, top: number, centering: boolean) => {
+        // Its centering stands until the storey over it is half built, or the
+        // clerestory, over the last.
+        const next = i + 1 < n ? part(S.walls, i + 1, n) : S.upper
+        if (!kept(S.walls))
+          stage(
+            part(S.walls, i, n),
+            [z, top],
+            centering ? (next[0] + next[1]) / 2 : undefined,
+          )
+        else if (centering) W.none(F.b)
+        else stage(S.walls)
+      }
+    : undefined
   const sides: [Frame, number][] = [
     [F.sub(0, l / 2, Math.PI), w],
     [F.sub(w / 2, 0, -Math.PI / 2), l],
     [F.sub(0, -l / 2, 0), w],
     [F.sub(-w / 2, 0, Math.PI / 2), l],
   ]
-  sides.forEach(([S, len], i) => {
+  sides.forEach(([Sd, len], i) => {
     if (i === 0 || d.arcade === 'all')
-      S.arcade(-len / 2, len / 2, 0, depth, P, d.storeys, d.bay, face)
+      Sd.arcade(-len / 2, len / 2, 0, depth, P, d.storeys, d.bay, face, undefined, rising)
   })
   // Behind a front-only arcade, the body of the building to the arcade's height.
-  if (d.arcade === 'front')
+  if (d.arcade === 'front') {
+    stage(S.walls, [P, P + H])
     F.box(-w / 2, w / 2, -l / 2, l / 2 - depth, P, P + H, face, null)
-  // The aisles' roof, a low hip of tiles over the whole, under the nave.
-  F.roof(-w / 2 - 0.3, w / 2 + 0.3, -l / 2 - 0.3, l / 2 + 0.3, P + H + 0.2, {
-    tiles: C.roofTemple,
-    pitch: 0.14,
-    seed: 0.21,
-  })
-  // The nave's clerestory, with its windows, and its gable roof.
+    if (W && !kept(S.walls)) {
+      stage(S.walls, [P, P + H], S.walls[1])
+      ringBeds(F, [-w / 2, w / 2, -l / 2, l / 2 - depth], 1.2, P, P + H, face)
+    }
+  }
+  // The nave's clerestory, with its windows, over the aisles.
   const [nw, nl] = d.nave
   const along = w >= l ? 'u' : 'v'
   const [hu, hv] = along === 'u' ? [nl / 2, nw / 2] : [nw / 2, nl / 2]
+  stage(S.upper, [P + H, P + d.naveH])
   F.box(-hu, hu, -hv, hv, P + H, P + d.naveH, shade, null)
+  if (W && !kept(S.upper)) {
+    stage(S.upper, [P + H, P + d.naveH], S.upper[1])
+    ringBeds(F, [-hu, hu, -hv, hv], 1, P + H, P + d.naveH, shade)
+    stage(S.upper, [P + H, P + d.naveH])
+  }
   // The windows down its long sides: `s` along the nave, `t` across it.
   const at = (s: number, t: number, z: number): [number, number, number] =>
     along === 'u' ? [s, t, z] : [t, s, z]
-  const n = Math.max(3, Math.round(nl / 5))
-  for (let k = 0; k < n; k++) {
-    const s = -nl / 2 + ((k + 0.5) * nl) / n
+  const nwin = Math.max(3, Math.round(nl / 5))
+  for (let k = 0; k < nwin; k++) {
+    const s = -nl / 2 + ((k + 0.5) * nl) / nwin
     for (const t of [-nw / 2 - 0.03, nw / 2 + 0.03])
       F.quad(
         at(s - 0.9, t, P + d.naveH - 3.4),
@@ -124,13 +318,95 @@ const basilica: Build<Design & Basilica> = (F, d, w, l, face, shade) => {
         PART.dark,
       )
   }
-  F.roof(-hu - 0.4, hu + 0.4, -hv - 0.4, hv + 0.4, P + d.naveH, {
+  // The aisles' roof, a low hip of tiles over the whole, under the nave; then the
+  // nave's gable over its timbers.
+  const aisles = P + H + 0.2
+  stage(S.roof, [aisles, aisles + (Math.min(w, l) / 2) * 0.14 + 0.6])
+  F.roof(-w / 2 - 0.3, w / 2 + 0.3, -l / 2 - 0.3, l / 2 + 0.3, aisles, {
+    tiles: C.roofTemple,
+    pitch: 0.14,
+    seed: 0.21,
+  })
+  const eaves = P + d.naveH
+  const ridge = eaves + (along === 'u' ? hv + 0.4 : hu + 0.4) * 0.2
+  stage(S.roof, [eaves, ridge + 1])
+  F.roof(-hu - 0.4, hu + 0.4, -hv - 0.4, hv + 0.4, eaves, {
     along,
     tiles: C.roofTemple,
     gable: shade,
     pitch: 0.2,
     seed: 0.63,
   })
+  if (W && !kept(S.roof)) {
+    stage(S.roof, null, S.finish[0])
+    rafters(F, -hu - 0.4, hu + 0.4, -hv - 0.4, hv + 0.4, eaves, ridge, along)
+  }
+  if (!W) return
+  const side = d.works?.crane === 'left' ? -1 : 1
+  const off = 1.2
+  const yard0 = l / 2 + flight + 1.2
+  const order = d.storeys[0].order ?? 'tuscan'
+  site(
+    F,
+    {
+      ground: [-w / 2 - 2, w / 2 + 2, -l / 2 - 2, yard0 + 8.3],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.6],
+        [-w / 2, w / 2, l / 2 - 1.6, l / 2],
+        [-w / 2, -w / 2 + 1.6, -l / 2, l / 2],
+        [w / 2 - 1.6, w / 2, -l / 2, l / 2],
+        [-hu, hu, -hv, -hv + 1.4],
+        [-hu, hu, hv - 1.4, hv],
+      ],
+      spoil: [-w / 2 - 1.5, -l / 2 - 1.5],
+      scaffolds: [
+        {
+          // Round its flanks and back while its storeys go up, and faced from it last.
+          faces: ringFaces([-w / 2, w / 2, -l / 2, l / 2], off, [true, true, false, true]),
+          z0: 0,
+          top: P + H + 1.2,
+          share: [S.base[0], S.walls[1]],
+          end: S.facing[0],
+        },
+        {
+          // Round the clerestory, standing on the aisles.
+          faces: ringFaces([-hu, hu, -hv, hv], 1, [true, true, true, true]),
+          z0: P + H,
+          top: P + d.naveH + 1.2,
+          share: S.upper,
+          end: S.finish[0],
+        },
+      ],
+      // The crane on a long side — the back, when the long sides are front and back —
+      // leaning over the outer arcade, which is the heavy lifting.
+      crane:
+        along === 'u'
+          ? {
+              foot: [side * w * 0.2, -(l / 2 + off + 3.8)],
+              spread: [1, 0],
+              head: [side * w * 0.2, -(l / 2 - depth / 2), P + H + 3],
+            }
+          : {
+              foot: [side * (w / 2 + off + 3.8), 0],
+              spread: [0, 1],
+              head: [side * (w / 2 - depth / 2), 0, P + H + 3],
+            },
+      yard: {
+        at: [-Math.min(w / 2, 14), Math.min(w / 2, 14), yard0, yard0 + 8],
+        drums: Frame.diameter(d.storeys[0].h, order),
+        stone: face,
+      },
+      ruin: {
+        at: [-hu, hu, -hv, hv],
+        z: kept(S.base) ? P : 0,
+        flanks: [
+          [-(w / 2 + 2.5), 0],
+          [w / 2 + 2.5, 0],
+        ],
+      },
+    },
+    W,
+  )
 }
 
 /** A senate house: a tall hall on a podium with a flight to its doors and a pedimented roof. */
@@ -143,15 +419,23 @@ interface Curia {
   victory?: boolean
 }
 
-const curia: Build<Design & Curia> = (F, d, w, l, face) => {
+const curia: Build<Design & Curia & Building> = (F, d, w, l, face) => {
+  const S = CURIA_WORKS
+  const st = staging(F, S)
+  const { W, stage, kept } = st
+  stage(S.ground)
   const P = d.podium
   const stairs = Frame.flight(P)
   const front = l / 2 - stairs - (d.porch?.depth ?? 0)
-  F.box(-w / 2, w / 2, -l / 2, front, -F.deep, P, face)
-  F.steps(-w * 0.3, w * 0.3, front + (d.porch?.depth ?? 0), l / 2, 0, P, '+v', face)
+  base(F, S, st, [-w / 2, w / 2, -l / 2, front + (d.porch?.depth ?? 0)], P, () => {
+    F.box(-w / 2, w / 2, -l / 2, front, -F.deep, P, face)
+    F.steps(-w * 0.3, w * 0.3, front + (d.porch?.depth ?? 0), l / 2, 0, P, '+v', face)
+    if (d.porch) F.box(-w / 2, w / 2, front, front + d.porch.depth, -F.deep, P, face)
+  })
   if (d.porch) {
-    F.box(-w / 2, w / 2, front, front + d.porch.depth, -F.deep, P, face)
-    const D = Frame.diameter(d.h * 0.55, d.porch.order)
+    const ph = d.h * 0.55
+    stage(S.finish, [P, P + ph + 1])
+    const D = Frame.diameter(ph, d.porch.order)
     const n = d.porch.columns
     for (let k = 0; k < n; k++)
       F.column(
@@ -159,29 +443,46 @@ const curia: Build<Design & Curia> = (F, d, w, l, face) => {
         front + d.porch.depth - D,
         D,
         P,
-        d.h * 0.55,
+        ph,
         d.porch.order,
         face,
       )
-    F.entablature(-w / 2, w / 2, front, front + d.porch.depth, P + d.h * 0.55, 1, face)
-    F.roof(-w / 2, w / 2, front - 0.2, front + d.porch.depth + 0.2, P + d.h * 0.55 + 1, {
+    F.entablature(-w / 2, w / 2, front, front + d.porch.depth, P + ph, 1, face)
+    stage([S.finish[1] - 0.01, S.finish[1]])
+    F.roof(-w / 2, w / 2, front - 0.2, front + d.porch.depth + 0.2, P + ph + 1, {
       along: 'u',
       tiles: C.roofTemple,
       pitch: 0.2,
     })
   }
+  // Its walls, a course at a time, with a bed on each; its roof over its timbers.
+  const walls: Rect = [-w / 2, w / 2, -l / 2, front]
+  if (W && !kept(S.walls)) {
+    stage(S.walls, [P, P + d.h], S.walls[1])
+    ringBeds(F, walls, 1.4, P, P + d.h, face)
+  }
+  stage(S.walls, [P, P + d.h])
+  const ridge = P + d.h + (w / 2 + 0.4) * (2 / 9)
   hall(F, -w / 2, w / 2, -l / 2, front, P, d.h, face, {
     door: 3.2,
     windows: 0,
     along: 'v',
     roof: 'gable',
+    roofing: (z) => {
+      if (W && !kept(S.roof)) {
+        stage(S.roof, null, S.finish[0])
+        rafters(F, -w / 2 - 0.4, w / 2 + 0.4, -l / 2 - 0.4, front + 0.4, z, ridge, 'v')
+      }
+      stage(S.roof, [z, ridge + 1])
+    },
   })
   if (d.victory) {
-    const apex = P + d.h + (w / 2 + 0.4) * (2 / 9)
-    F.drum(0, front, 0.9, 0.9, apex - 0.2, apex + 1.4, 8, PART.gilt)
-    F.box(-0.3, 0.3, front - 0.3, front + 0.3, apex + 1.4, apex + 3.4, PART.gilt)
+    stage(S.finish)
+    F.drum(0, front, 0.9, 0.9, ridge - 0.2, ridge + 1.4, 8, PART.gilt)
+    F.box(-0.3, 0.3, front - 0.3, front + 0.3, ridge + 1.4, ridge + 3.4, PART.gilt)
   }
   // Three tall windows over the doors.
+  stage(S.walls, [P, P + d.h])
   for (const u of [-w * 0.26, 0, w * 0.26])
     F.quad(
       [u - 1.1, front + 0.04, P + d.h * 0.62],
@@ -190,6 +491,45 @@ const curia: Build<Design & Curia> = (F, d, w, l, face) => {
       [u - 1.1, front + 0.04, P + d.h * 0.9],
       PART.dark,
     )
+  if (!W) return
+  const side = d.works?.crane === 'left' ? -1 : 1
+  site(
+    F,
+    {
+      ground: [-w / 2 - 2, w / 2 + 2, -l / 2 - 2, l / 2 + 9.3],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.6],
+        [-w / 2, w / 2, front - 1.6, front],
+        [-w / 2, -w / 2 + 1.6, -l / 2, front],
+        [w / 2 - 1.6, w / 2, -l / 2, front],
+      ],
+      spoil: [-w / 2 - 1.5, -l / 2 - 1.5],
+      scaffolds: [
+        {
+          faces: ringFaces(walls, 1.2, [true, true, false, true]),
+          z0: 0,
+          top: P + d.h + 1.2,
+          share: [S.base[0], S.walls[1]],
+          end: S.facing[0],
+        },
+      ],
+      crane: {
+        foot: [side * (w / 2 + 5), 0],
+        spread: [0, 1],
+        head: [side * (w / 2 - 0.8), 0, P + d.h + 3],
+      },
+      yard: { at: [-w / 2, w / 2, l / 2 + 1.2, l / 2 + 9], stone: face },
+      ruin: {
+        at: walls,
+        z: kept(S.base) ? P : 0,
+        flanks: [
+          [-(w / 2 + 2.5), 0],
+          [w / 2 + 2.5, 0],
+        ],
+      },
+    },
+    W,
+  )
 }
 
 /**
@@ -216,7 +556,12 @@ interface Porticus {
   statue?: boolean
 }
 
-const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
+const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) => {
+  // While it is being built (works.ts `PORTICUS_WORKS`): the colonnades' floors, then
+  // the enclosure walls, the columns and entablature, the lean-to roofs, and the
+  // court paved last; the shops rise with the walls, the gateway with the columns.
+  const P = PORTICUS_WORKS
+  const { W, stage } = staging(F, P)
   const court =
     d.paving === 'garden'
       ? PART.garden
@@ -236,6 +581,18 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     gate: d.gate,
     double: d.double,
     seed: 0.4,
+    stage: W
+      ? (part, _i, z0, z1) =>
+          part === 'court'
+            ? stage(P.facing)
+            : part === 'floor'
+              ? stage(P.base, [z0, z1])
+              : part === 'wall'
+                ? stage(P.walls, [z0, z1])
+                : part === 'colonnade'
+                  ? stage(P.upper, [z0, z1])
+                  : stage(P.roof, [z0, z1])
+      : undefined,
   })
   if (d.shops) {
     const s = d.shops.depth
@@ -248,7 +605,13 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     ]
     edges.forEach(([u0, u1, v0, v1], i) => {
       if (!d.shops!.sides[i]) return
+      stage(P.walls, [0, H])
       F.box(u0, u1, v0, v1, -F.deep, H, shade, null)
+      if (W) {
+        stage(P.walls, [0, H], P.walls[1])
+        ringBeds(F, [u0, u1, v0, v1], 0.8, 0, H, shade)
+      }
+      stage(P.roof, [H, H + ((Math.min(u1 - u0, v1 - v0) + 0.6) / 2) * 0.28 + 0.5])
       F.roof(u0 - 0.3, u1 + 0.3, v0 - 0.3, v1 + 0.3, H, {
         tiles: C.roofTemple,
         pitch: 0.28,
@@ -259,9 +622,11 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
   if (d.propylon) {
     const pw = d.propylon.w
     const S = F.sub(0, l / 2 - 1, 0)
+    stage(P.base)
     S.box(-pw / 2, pw / 2, -1.5, 3.5, -S.deep, 0.6, face)
     const D = Frame.diameter(d.h * 1.15, d.order)
     const n = d.propylon.columns
+    stage(P.upper, [0.6, 0.6 + d.h * 1.15 + 1.3])
     for (let k = 0; k < n; k++)
       S.column(
         -pw / 2 + D + ((pw - 2 * D) * k) / (n - 1),
@@ -273,6 +638,7 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
         face,
       )
     const z = S.entablature(-pw / 2, pw / 2, -1.5, 3.5, 0.6 + d.h * 1.15, 1.3, face)
+    stage(P.roof)
     S.roof(-pw / 2 - 0.3, pw / 2 + 0.3, -1.8, 3.8, z, {
       along: 'v',
       tiles: C.roofTemple,
@@ -280,11 +646,14 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
     })
   }
   if (d.statue) {
+    stage(P.finish)
     F.box(-1.4, 1.4, -2.6, 2.6, 0, 2.4, face)
     F.box(-0.5, 0.5, -1.6, 1.6, 2.4, 4.2, PART.bronze)
     F.box(-0.35, 0.35, -0.8, 0.2, 4.2, 5.6, PART.bronze)
   }
   if (d.groves) {
+    // Planted once the court is laid out.
+    stage(P.facing)
     const { rows, spacing, kind } = d.groves
     const inner = [w / 2 - d.depth - 4, l / 2 - d.depth - 4]
     for (let i = 0; i < rows; i++) {
@@ -293,6 +662,57 @@ const porticus: Build<Design & Porticus> = (F, d, w, l, face, shade) => {
         F.tree(u, v, kind === 'cypress' ? 2.2 : 3.4, kind === 'plane' ? 'oak' : kind)
     }
   }
+  if (!W) return
+  // The site: the court is the yard, the crane stands in it leaning over the back
+  // colonnade, and the scaffold stands round the outside of the walls.
+  const wallTop = d.h + 1.4
+  const sides = d.sides ?? [true, true, true, true]
+  const inner: Rect = [-w / 2 + d.depth, w / 2 - d.depth, -l / 2 + d.depth, l / 2 - d.depth]
+  site(
+    F,
+    {
+      ground: [-w / 2 - 1.5, w / 2 + 1.5, -l / 2 - 1.5, l / 2 + 1.5],
+      footings: [
+        [-w / 2, w / 2, -l / 2, -l / 2 + 1.4],
+        [-w / 2, w / 2, l / 2 - 1.4, l / 2],
+        [-w / 2, -w / 2 + 1.4, -l / 2, l / 2],
+        [w / 2 - 1.4, w / 2, -l / 2, l / 2],
+      ],
+      spoil: [0, 0],
+      scaffolds: [
+        {
+          // Outside the walls of the sides with porticoes (front, right, back, left).
+          faces: ringFaces([-w / 2, w / 2, -l / 2, l / 2], 1.2, [
+            sides[1],
+            sides[3],
+            sides[0],
+            sides[2],
+          ]),
+          z0: 0,
+          top: wallTop + 1.2,
+          share: [P.base[0], P.upper[1]],
+          end: P.facing[0],
+        },
+      ],
+      crane: {
+        foot: [0, inner[2] + 7],
+        spread: [1, 0],
+        head: [0, -l / 2 + d.depth * 0.5, wallTop + 3],
+      },
+      yard: {
+        at: [
+          -Math.min(12, (inner[1] - inner[0]) / 2),
+          Math.min(12, (inner[1] - inner[0]) / 2),
+          2,
+          10,
+        ],
+        drums: Frame.diameter(d.h, d.order),
+        stone: face,
+      },
+      ruin: { at: inner, z: 0, flanks: [] },
+    },
+    W,
+  )
 }
 
 /**
@@ -313,17 +733,69 @@ interface Theatre {
   temple?: Temple & { size: [number, number] }
 }
 
-const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
+const theatre: Build<Design & Theatre & Building> = (F, d, w, l, face, shade) => {
   void w
   const R = d.radius
   const cv = -l / 2 + R
   const S = F.sub(0, cv)
+  // While it is being built (works.ts `THEATRE_WORKS`): the arcade storey by storey
+  // on centering, the vaulted seating rising behind it with it and the stage
+  // building beside them; then the portico and roofs at the top, the stage's marble
+  // front, and the orchestra paved last; the temple over the seats in its own works.
+  const T = THEATRE_WORKS
+  const { W, stage } = staging(F, T)
+  const H = d.storeys.reduce((s, st) => s + st.h, 0)
+  const n = d.storeys.length
+  const rising = W
+    ? (i: number, z: number, top: number, centering: boolean) => {
+        const own = part([T.base[0], T.upper[1]], i, n)
+        const next = i + 1 < n ? part([T.base[0], T.upper[1]], i + 1, n) : T.roof
+        stage(own, [z, top], centering ? (next[0] + next[1]) / 2 : undefined)
+      }
+    : undefined
   // The half-ring behind the orchestra is towards -v: angles π to 2π.
   const [a0, a1] = [Math.PI, Math.PI * 2]
   const gallery = 5
-  S.arcadeArc(0, 0, R, a0, a1, gallery, 0, d.storeys, 6.2, face)
+  S.arcadeArc(0, 0, R, a0, a1, gallery, 0, d.storeys, 6.2, face, rising)
+  stage([T.base[0], T.roof[0]], [1.2, d.h - 3.5])
   S.cavea(0, 0, d.orchestra, R - gallery, 1.2, d.h - 3.5, a0, a1, C.seating, { bands: 2 })
+  if (W) {
+    // Under the seats, the radial walls their vaults spring from, rising with the
+    // arcade as one structure; each a little under the seats' slope, so the seats
+    // cover it once laid.
+    stage([T.base[0], T.upper[1]], [0, d.h - 3.5])
+    const [r0, r1] = [d.orchestra + 2, R - gallery]
+    const slope = (r: number) =>
+      1.2 + ((d.h - 4.7) * (r - d.orchestra)) / (R - gallery - d.orchestra)
+    const nr = Math.round(((a1 - a0) * R) / 6.2)
+    for (let k = 1; k < nr; k++) {
+      const a = a0 + ((a1 - a0) * k) / nr
+      const [c, s] = [Math.cos(a), Math.sin(a)]
+      const [nx, ny] = [-s * 0.6, c * 0.6]
+      const P = (r: number, side: number, z: number) => [
+        c * r + nx * side,
+        s * r + ny * side,
+        z,
+      ]
+      for (const side of [-1, 1])
+        S.quad(
+          P(r0, side, 0),
+          P(r1, side, 0),
+          P(r1, side, slope(r1)),
+          P(r0, side, slope(r0)),
+          SITE_COLOURS.core,
+        )
+      S.quad(
+        P(r0, -1, slope(r0)),
+        P(r1, -1, slope(r1)),
+        P(r1, 1, slope(r1)),
+        P(r0, 1, slope(r0)),
+        SITE_COLOURS.core,
+      )
+    }
+  }
   // The gallery's roof, the colonnade round the top of the seats and its roof.
+  stage(T.roof, [d.h - 3.5, d.h + 2.3])
   S.ring(0, 0, R - gallery, R, d.h - 0.4, d.h, 48, face, face, a0, a1)
   const top = d.h
   for (let k = 0; k <= 40; k++) {
@@ -352,24 +824,33 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
     a1,
   )
   // The orchestra, paved, and the stage.
+  stage(T.facing)
   S.drum(0, 0, d.orchestra, d.orchestra, -0.2, 0.3, 24, C.travertine, C.travertine, a0, a1)
-  const stage = 7
-  S.box(-d.orchestra - 12, d.orchestra + 12, 0, stage, -S.deep, 1.5, face)
+  const platform = 7
+  stage(T.base, [0, 1.5])
+  S.box(-d.orchestra - 12, d.orchestra + 12, 0, platform, -S.deep, 1.5, face)
   // The stage building: its front of columns in storeys, and its roof sloping back.
   const sw = R * 0.9
-  const v0 = stage
-  const v1 = stage + d.scaena
+  const v0 = platform
+  const v1 = platform + d.scaena
+  const scaena: [number, number] = [T.base[0] + 0.07, T.upper[1]]
+  stage(scaena, [0, top + 2])
   S.box(-sw, sw, v0, v1, -S.deep, top + 2, shade, null)
+  if (W) {
+    stage(scaena, [0, top + 2], scaena[1])
+    ringBeds(S, [-sw, sw, v0, v1], 1.4, 0, top + 2, shade)
+  }
+  stage(T.finish, [1.5, top])
   const D = 1.1
-  const n = Math.round((2 * sw) / 4.2)
+  const nc = Math.round((2 * sw) / 4.2)
   for (const [z, h] of [
     [1.5, (top - 1.5) * 0.36],
     [1.5 + (top - 1.5) * 0.36, (top - 1.5) * 0.32],
     [1.5 + (top - 1.5) * 0.68, (top - 1.5) * 0.3],
   ] as const) {
-    for (let k = 0; k <= n; k++)
+    for (let k = 0; k <= nc; k++)
       S.column(
-        -sw + 1 + ((2 * sw - 2) * k) / n,
+        -sw + 1 + ((2 * sw - 2) * k) / nc,
         v0 - D,
         D * (h / 9),
         z,
@@ -379,6 +860,12 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
       )
     S.box(-sw, sw, v0 - D * 1.6, v0, z + h - 0.8, z + h, face)
   }
+  const ridge = top + 2 + (d.scaena / 2 + 1.5) * 0.18
+  if (W) {
+    stage(T.roof, null, T.finish[0])
+    rafters(S, -sw - 0.4, sw + 0.4, v0 - 2.5, v1 + 0.4, top + 2, ridge, 'u')
+  }
+  stage(T.roof, [top + 2, ridge + 1])
   S.roof(-sw - 0.4, sw + 0.4, v0 - 2.5, v1 + 0.4, top + 2, {
     along: 'u',
     tiles: C.roofTemple,
@@ -390,14 +877,67 @@ const theatre: Build<Design & Theatre> = (F, d, w, l, face, shade) => {
   for (const s of [-1, 1]) {
     const u0 = s < 0 ? -R : sw
     const u1 = s < 0 ? -sw : R
-    hall(S, u0, u1, 0, v1, 0, top * 0.72, face, { roof: 'hip' })
+    stage(scaena, [0, top * 0.72])
+    hall(S, u0, u1, 0, v1, 0, top * 0.72, face, {
+      roof: 'hip',
+      roofing: (z) => stage(T.roof, [z, z + 4]),
+    })
   }
-  // A temple at the top of the seats, on the axis, facing the stage.
+  // A temple at the top of the seats, on the axis, facing the stage: built once the
+  // seats under it are up, in its own works over the rest of the theatre's.
   if (d.temple) {
     const [tw, tl] = d.temple.size
-    const T = S.sub(0, -R + tl / 2 - 2, 0, d.h - 4)
-    temple(T, d.temple, tw, tl, face, shade)
+    const Tf = S.sub(0, -R + tl / 2 - 2, 0, d.h - 4)
+    const b = F.b
+    const whole = b.works
+    b.works = whole?.within([T.roof[0], 1]) ?? null
+    temple(Tf, d.temple, tw, tl, face, shade)
+    b.works = whole
+    whole?.follow(T)
   }
+  if (!W) return
+  site(
+    S,
+    {
+      ground: [-R - 2, R + 2, -R - 2, v1 + 2],
+      // Under the outer arcade, the ring of radial walls and the seats' inner edge;
+      // under the stage building.
+      footings: [[-sw, sw, v0, v1]],
+      footingRings: [
+        [0, 0, R - gallery, R, a0, a1],
+        [0, 0, R * 0.62 - 1.4, R * 0.62, a0, a1],
+        [0, 0, d.orchestra, d.orchestra + 1.4, a0, a1],
+      ],
+      spoil: [R + 4, -R * 0.5],
+      scaffolds: [
+        {
+          // Round the outer arcade as it goes up, and faced from it last.
+          faces: arcFaces(0, 0, R + 1.2, a0, a1, 16, 1.15),
+          z0: 0,
+          top: H + 1.2,
+          share: [T.base[0], T.upper[1]],
+          end: T.facing[0],
+        },
+        {
+          // Round the stage building's flanks and back.
+          faces: ringFaces([-sw, sw, v0, v1], 1.2, [true, true, true, false]),
+          z0: 0,
+          top: top + 3.2,
+          share: scaena,
+          end: T.facing[0],
+        },
+      ],
+      crane: {
+        // Behind the curve, leaning in over the outer arcade.
+        foot: [0, -(R + 6.4)],
+        spread: [1, 0],
+        head: [0, -(R - gallery / 2), H + 3],
+      },
+      yard: { at: [R + 2, R + 16, -8, 0], stone: face },
+      ruin: { at: [-R / 2, R / 2, -R / 2, 0], z: 0, flanks: [] },
+    },
+    W,
+  )
 }
 
 /**
