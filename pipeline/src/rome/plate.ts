@@ -39,7 +39,7 @@ import {
   layFields,
   recordedGrounds,
 } from './fields.ts'
-import { ancientGround } from './ground.ts'
+import { ancientGround, capRidges } from './ground.ts'
 import { COURSES } from './aqueducts.ts'
 import { designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
@@ -219,13 +219,23 @@ export async function bakePlate(
   // The valley floors set to the ground the excavations found walked on in the late
   // Republic (ground.ts); the terrain as it is elsewhere, and in the river, whose
   // level is its own.
+  // Whole on land from RIVER_CLAMP_M off the water (the field stops there), and
+  // fading to nothing 4 m off it.
   const ancient = ancientGround(grid, smooth)
   for (let i = 0; i < h.length; i++) {
-    const k = ancient.change[i] * Math.min(1, Math.max(0, (water[i] - 4) / 30))
+    const k =
+      ancient.change[i] * Math.min(1, Math.max(0, (water[i] - 4) / (RIVER_CLAMP_M - 4)))
     h[i] += k
     smooth[i] += k
   }
-  for (const f of ancient.found)
+  // The ridges capped on the valleys' ground, on land.
+  const ridges = capRidges(grid, smooth)
+  for (let i = 0; i < h.length; i++) {
+    if (water[i] <= 4) continue
+    h[i] += ridges.change[i]
+    smooth[i] += ridges.change[i]
+  }
+  for (const f of [...ancient.found, ...ridges.found])
     console.log(
       `  ground: ${f.what.split(':')[0]}: ${f.floor.toFixed(1)} m today, ${f.level.toFixed(1)} m then (${f.change.toFixed(1)} m)`,
     )
