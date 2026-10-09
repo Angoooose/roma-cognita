@@ -50,16 +50,21 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     at: [12.48356, 41.89293],
     size: [72, 45],
     bearing: 118,
-    level: 'top',
+    // Its halls on the saddle, at the Asylum's level; on the Forum side the gallery
+    // 10.5 m below them, and under it the substructure down to the Forum's level, "the
+    // level of the area Volcani".
+    level: 38.5,
+    cut: { sides: [false, true, true, true], h: 12, foot: 13.5 },
     gallery: { h: 10, order: 'doric', open: true, pier: 2.9 },
+    below: 10.5,
     bays: 11,
     windows: 6,
-    body: 11,
+    body: 7,
     // Veiovis's temple stands in its west corner, built round (Musei Capitolini).
     notch: [8, 36, -22.5, -4],
     // Its works drawn at their middle: the lower storeys were up long before 65.
     progress: 0.6,
-    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993): a substructure wall 3.43 m thick with "six recesses with narrow windows", and on it a gallery "5 m wide and 10 m high" of eleven arches, "7.50 m high and 3.54–3.60 m wide", between Doric half-columns of peperino; outer walls of grey sperone with travertine dressings (P&A, Tabularium, pp. 506–508). The upper Corinthian storey is Flavian and is left out. Facing about 118°, down the Forum. Built from 78 BCE, probably to 65, Catulus\'s censorship (DAR, after Mura Sommella, LTUR), in part over buildings of the 2nd century damaged in the fire of 83.',
+    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993): a substructure wall 3.43 m thick with "six recesses with narrow windows", and on it a gallery "5 m wide and 10 m high" of eleven arches, "7.50 m high and 3.54–3.60 m wide", between Doric half-columns of peperino; outer walls of grey sperone with travertine dressings (P&A, Tabularium, pp. 506–508). The upper Corinthian storey is Flavian and is left out. Facing about 118°, down the Forum. Built from 78 BCE, probably to 65, Catulus\'s censorship (DAR, after Mura Sommella, LTUR), in part over buildings of the 2nd century damaged in the fire of 83. On the Forum side "the foundation wall began on the level of the area Volcani" (P&A, p. 507) and rose "in a solid mass with perceptible batter, broken only by small windows, from the slope of the hill behind the Temple of Concordia to the floor of the saddle" (Richardson, p. 376), Concord\'s back wall "tight against" it (p. 99); "a long flight of sixty-six steps" led up inside it from "a fine arched doorway" at its south-west end (P&A, p. 507). Behind the gallery "a hall on a higher level than the corridor, which probably opened out on the Asylum" (P&A, p. 507): its halls are drawn on the saddle, about 38.5 m. No source read gives its levels: the gallery floor is drawn at 28 m, about 15 m over the Forum (the sixty-six steps), its roof a terrace at the halls\' level.',
   },
   'aedes-iunonis-monetae': {
     model: 'temple',
@@ -77,7 +82,9 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
   'aedes-veiovis': {
     model: 'temple',
     at: [12.4833, 41.89285],
-    level: 'top',
+    // On the saddle, as the Tabularium's halls round it (the ground under the
+    // Tabularium is taken down to the Forum's level).
+    level: 38.5,
     size: [15, 18],
     bearing: 220,
     plan: 'prostyle',

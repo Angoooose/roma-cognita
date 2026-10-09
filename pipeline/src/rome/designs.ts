@@ -42,10 +42,11 @@ interface Placing {
   /**
    * The sides (front, right, back, left) where its site was cut into a hillside, behind
    * retaining walls no higher than `h`, metres. On its other sides the ground stood
-   * near its level, and today's higher ground there, the fill of later centuries, is
-   * taken down to it (model.ts).
+   * near its level, or at `foot` where it was built out over lower ground on its own
+   * walls, and today's higher ground there, the fill of later centuries, is taken
+   * down to it (model.ts).
    */
-  cut?: { sides: [boolean, boolean, boolean, boolean]; h: number }
+  cut?: { sides: [boolean, boolean, boolean, boolean]; h: number; foot?: number }
   /** How much of it stands while it is being built, as a share of its height. */
   progress?: number
   /**

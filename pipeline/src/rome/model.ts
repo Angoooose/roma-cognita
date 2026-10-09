@@ -226,9 +226,11 @@ const SITE = { walk: 3, ease: 10, cut: 1.2 }
  * A site cut into a hillside on some sides only (a design's `cut`): how far beyond its
  * other sides today's higher ground is taken down to its level, how steeply, as a
  * share of the distance, the hill rises again from the top of its retaining wall, and
- * that wall's thickness (the engine's, buildModel.ts), standing against the building.
+ * that wall's thickness (the engine's, buildModel.ts), standing against the building;
+ * and how far in from such a wall the ground under a building built out over lower
+ * ground follows the hill outside it (wider than the terrain mesh's step).
  */
-const CUT = { lower: 30, rise: 0.5, wall: 1.4 }
+const CUT = { lower: 30, rise: 0.5, wall: 1.4, inside: 10 }
 /**
  * The buildings round the Forum's square: those of the Forum proper, then those of
  * the Comitium at its north-west end.
@@ -1089,12 +1091,17 @@ export function bakeModel(m: ModelInput) {
     } = footprint(d, mo.design!.centre, mo.design!.size, axis)
     const right: Pt = [axis[1], -axis[0]]
     const ring = cut ? box : mo.rings[0]
-    const sideOf = (p: Pt) => {
+    // How far a point is beyond each side (front, right, back, left): negative inside.
+    const beyondOf = (p: Pt) => {
       const [x, y] = [p[0] - mid[0], p[1] - mid[1]]
       const [u, v] = [x * right[0] + y * right[1], x * axis[0] + y * axis[1]]
-      const beyond = [v - sl / 2, u - sw / 2, -v - sl / 2, -u - sw / 2]
+      return [v - sl / 2, u - sw / 2, -v - sl / 2, -u - sw / 2]
+    }
+    const sideOf = (p: Pt) => {
+      const beyond = beyondOf(p)
       return beyond.indexOf(Math.max(...beyond))
     }
+    const outOf: Pt[] = [axis, right, [-axis[0], -axis[1]], [-right[0], -right[1]]]
     const [x0, y0, x1, y1] = bounds(
       ring,
       SITE.walk + (cut ? Math.max(SITE.ease, CUT.lower) : SITE.ease) + g.texel,
@@ -1117,6 +1124,31 @@ export function bakeModel(m: ModelInput) {
           : d.level === 'low'
             ? lowUnder
             : under.reduce((a, b) => a + b, 0) / under.length
+    const foot = Math.min(level, cut?.foot ?? level)
+    // The ground under a building built out over lower ground, where the terrain's
+    // coarse mesh is hidden inside it: within CUT.inside of a wall cut into the hill
+    // the hill's own height just outside that wall, so the mesh never dips along it;
+    // elsewhere its foot's level under the half towards its open sides, and its own
+    // level under the half towards the hill, the step between them in its middle.
+    const underBuilt = (p: Pt) => {
+      const beyond = beyondOf(p)
+      const sides = cut!.sides
+      let near = -1
+      for (let i = 0; i < 4; i++)
+        if (sides[i] && -beyond[i] < CUT.inside && (near < 0 || beyond[i] > beyond[near]))
+          near = i
+      if (near >= 0) {
+        const o = outOf[near]
+        const reach = -beyond[near] + CUT.wall + 3
+        return Math.max(
+          foot,
+          Math.min(level, sample(before, p[0] + o[0] * reach, p[1] + o[1] * reach, level)),
+        )
+      }
+      const open = [0, 1, 2, 3].filter((i) => !sides[i])
+      const half = (i: number) => (i % 2 ? sw : sl) / 2
+      return open.some((i) => -beyond[i] < half(i)) ? foot : level
+    }
     const before = new Float32Array(ground)
     const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
     const c1 = Math.min(g.width - 1, Math.ceil((x1 - g.x0) / g.texel))
@@ -1131,15 +1163,23 @@ export function bakeModel(m: ModelInput) {
         // Where it was cut into the hill its own back wall is the retaining wall's face:
         // no walk round it there.
         const hill = !!cut && cut.sides[sideOf(p)]
-        if (dist <= (hill ? CUT.wall : SITE.walk)) ground[k] = level
+        // Beside its other sides the ground is only ever lowered, to its level or to the
+        // ground at its foot (`cut.foot`): where it stands over lower ground its own
+        // walls go down to meet it.
+        if (dist === 0 && cut && foot < level) ground[k] = underBuilt(p)
+        else if (dist <= (hill ? CUT.wall : SITE.walk))
+          // Outside a building cut into a hill the ground is only ever lowered: the hill
+          // meets its walls at its own height, and on its open sides it is taken down to
+          // the ground at its foot.
+          ground[k] = cut && dist > 0 ? Math.min(before[k], hill ? level : foot) : level
         else if (cut) {
           // Where it was cut into the hill, the hill rising from its retaining wall's top;
-          // elsewhere today's higher ground, the fill of later centuries, taken down to
-          // its level and eased back.
+          // elsewhere today's higher ground, the fill of later centuries, taken down and
+          // eased back.
           const out = dist - (hill ? CUT.wall : SITE.walk)
           if (hill) ground[k] = Math.min(before[k], level + cut.h + out * CUT.rise)
-          else if (before[k] > level && out < CUT.lower)
-            ground[k] = level + (before[k] - level) * smoothstep(0, CUT.lower, out)
+          else if (before[k] > foot && out < CUT.lower)
+            ground[k] = foot + (before[k] - foot) * smoothstep(0, CUT.lower, out)
         } else if (dist < SITE.walk + SITE.ease) {
           // Eased back where the ground is near the level; left where it is not, for the
           // wall or the building's own foundations to meet it.
@@ -1150,15 +1190,28 @@ export function bakeModel(m: ModelInput) {
         }
       }
     mo.base = level
-    mo.design!.drop = Math.max(mo.design!.drop, level - lowUnder)
+    mo.design!.drop = Math.max(mo.design!.drop, level - Math.min(lowUnder, foot))
     // Retaining walls: along each edge, where the ground just beyond the walk stands
     // more than `SITE.cut` over the level.
     // Each edge's right-hand normal, which points out of a ring wound anticlockwise.
     const outward = ringArea(ring) > 0 ? 1 : -1
+    // Where another building stands on the ground behind, its own walls hold that
+    // ground once it is begun: the wall stands only until then.
+    const own = yearsOf(mo.id)
+    const coverOf = (p: Pt) =>
+      sites.find(
+        (o) =>
+          o !== mo &&
+          yearsOf(o.id)[1] >= own[0] &&
+          yearsOf(o.id)[0] <= own[1] &&
+          inRing(p, o.rings[0]),
+      )
     let run: number[][] = []
+    let cover: (typeof sites)[number] | undefined
     const flush = () => {
-      if (run.length > 1)
-        retaining.push({ id: mo.id, base: round(level), pts: run, years: yearsOf(mo.id) })
+      const years = [own[0], cover ? Math.min(own[1], yearsOf(cover.id)[0] - 1) : own[1]]
+      if (run.length > 1 && years[0] <= years[1])
+        retaining.push({ id: mo.id, base: round(level), pts: run, years })
       run = []
     }
     for (let i = 0; i + 1 < ring.length; i++) {
@@ -1175,12 +1228,13 @@ export function bakeModel(m: ModelInput) {
         const face = cut ? CUT.wall / 2 : SITE.walk - 0.6
         const w: Pt = [q[0] + n[0] * face, q[1] + n[1] * face]
         const behind = (cut ? CUT.wall : SITE.walk) + 3
-        const beyond = sample(
-          cut ? ground : before,
-          q[0] + n[0] * behind,
-          q[1] + n[1] * behind,
-          level,
-        )
+        const back: Pt = [q[0] + n[0] * behind, q[1] + n[1] * behind]
+        const beyond = sample(cut ? ground : before, back[0], back[1], level)
+        const covered = coverOf(back)
+        if (covered !== cover) {
+          flush()
+          cover = covered
+        }
         const high = cut ? Math.min(beyond - level, cut.h) : beyond - level
         if (high > SITE.cut && walled)
           run.push([round(w[0]), round(w[1]), round(high + 0.7)])

@@ -156,7 +156,7 @@ export const reachAt = (mx: F, my: F) =>
     .mul(planUniforms.plateClamps.w)
 
 /** Smoothed ground height at a plane point, metres (a half-float texture, PlanLayer). */
-function groundAt(mx: F, my: F) {
+export function groundAt(mx: F, my: F) {
   return texture(planTextures.ground, plateUV(mx, my)).level(float(0)).r
 }
 

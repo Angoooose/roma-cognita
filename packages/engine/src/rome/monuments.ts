@@ -1523,6 +1523,8 @@ const arch: Build<Design & Arch> = (F, d, w, l, face) => {
  */
 interface Tabularium {
   gallery: Storey
+  /** How far the gallery's floor lies below the saddle's level, on the Forum side. */
+  below?: number
   bays: number
   windows: number
   /** The body behind the gallery, its height over the saddle. */
@@ -1535,10 +1537,13 @@ const tabularium: Build<Design & Tabularium> = (F, d, w, l, _face, shade) => {
   // Sperone, the grey-brown Gabine stone of its outer walls, with travertine dressings.
   const sperone = new THREE.Color('#B3A58C')
   const drop = F.deep - 1.5
-  F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, 0.4, sperone)
+  const below = d.below ?? 0
+  // The substructure: under the halls up to the saddle, under the gallery to its floor.
+  F.box(-w / 2, w / 2, -l / 2, l / 2 - 5, -F.deep, 0.4, sperone)
+  F.box(-w / 2, w / 2, l / 2 - 5, l / 2, -F.deep, 0.4 - below, sperone)
   for (let k = 0; k < d.windows; k++) {
     const u = -w / 2 + ((k + 0.5) * w) / d.windows
-    const z = -drop * 0.45
+    const z = -below - (drop - below) * 0.5
     F.quad(
       [u - 0.45, l / 2 + 0.03, z],
       [u + 0.45, l / 2 + 0.03, z],
@@ -1547,8 +1552,17 @@ const tabularium: Build<Design & Tabularium> = (F, d, w, l, _face, shade) => {
       PART.dark,
     )
   }
+  // The doorway of its stair up from the Forum, at the south-west end (+u), on the
+  // ground at its foot.
+  F.quad(
+    [w / 2 - 6, l / 2 + 0.03, -drop],
+    [w / 2 - 3.6, l / 2 + 0.03, -drop],
+    [w / 2 - 3.6, l / 2 + 0.03, -drop + 4],
+    [w / 2 - 6, l / 2 + 0.03, -drop + 4],
+    PART.dark,
+  )
   const G = F.sub(0, l / 2, Math.PI)
-  const z = G.arcade(-w / 2, w / 2, 0, 5, 0.4, [d.gallery], w / d.bays, sperone)
+  const z = G.arcade(-w / 2, w / 2, 0, 5, 0.4 - below, [d.gallery], w / d.bays, sperone)
   // A low parapet over the gallery, its roof a terrace.
   G.box(-w / 2, w / 2, 0, 0.6, z, z + 1.1, sperone)
   G.box(-w / 2, w / 2, 0, 5, z - 0.2, z, C.travertine)

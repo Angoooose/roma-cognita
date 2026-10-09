@@ -23,7 +23,14 @@ import {
 } from 'three/tsl'
 import { terrainUniforms } from '../terrain/material.ts'
 import type { Ground } from './PlanLayer.ts'
-import { BASALT, groundMeshFade, planUniforms, plateMask, reliefWash } from './shading.ts'
+import {
+  BASALT,
+  groundAt,
+  groundMeshFade,
+  planUniforms,
+  plateMask,
+  reliefWash,
+} from './shading.ts'
 import { STONE } from './builder.ts'
 import { COURSE } from './works.ts'
 import type { BuiltModel } from './buildModel.ts'
@@ -895,9 +902,12 @@ function material(occlusion: Occlusion, viewM: F, origin: THREE.Vector2) {
     float(1),
   )
   // Where a wall meets the ground it darkens, as a model's does; and wherever the
-  // model overshadows itself, less of the sky's light reaches.
-  const foot = mix(float(0.85), float(1), smoothstep(0, 3, built))
-  const open = occlusion.at(positionWorld.x, positionWorld.y, built)
+  // model overshadows itself, less of the sky's light reaches. Both by its height
+  // over the ground under it, which is over its own ground but for a building that
+  // stands on a terrace and hangs its front over lower ground (the Tabularium).
+  const over = built.max(ground.add(built).sub(groundAt(positionWorld.x, positionWorld.y)))
+  const foot = mix(float(0.85), float(1), smoothstep(0, 3, over))
+  const open = occlusion.at(positionWorld.x, positionWorld.y, over)
   mat.aoNode = open
   // The houses' walls and roofs, painted (`SKIN`).
   const rest = skin.x.sub(surface.mul(10))
