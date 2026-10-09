@@ -35,9 +35,17 @@ interface Placing {
   /**
    * The level its site is cut and filled to (model.ts): the mean of the ground under
    * it (the default, cut and fill balanced); the lowest, where it was cut into a slope;
-   * or the highest, where it was built out as a terrace, its foundations running down.
+   * the highest, where it was built out as a terrace, its foundations running down;
+   * or the height above the sea its excavators found, metres.
    */
-  level?: 'low' | 'mean' | 'top'
+  level?: 'low' | 'mean' | 'top' | number
+  /**
+   * The sides (front, right, back, left) where its site was cut into a hillside, behind
+   * retaining walls no higher than `h`, metres. On its other sides the ground stood
+   * near its level, and today's higher ground there, the fill of later centuries, is
+   * taken down to it (model.ts).
+   */
+  cut?: { sides: [boolean, boolean, boolean, boolean]; h: number }
   /** How much of it stands while it is being built, as a share of its height. */
   progress?: number
   /**
@@ -160,8 +168,8 @@ export const DEFAULT_TEMPLE: Design = {
 }
 
 /**
- * The footprints of the designs that give their own size, as rectangles in plane
- * metres, for what must reach round them or keep off them before the model is built
+ * The footprints of the designs that give their own size, with any shops behind
+ * their porticoes, as rectangles in plane metres, for what must reach round them or keep off them before the model is built
  * (the plate's extent, the streets drawn from the evidence). Placed as the model
  * places them (model.ts), but without the outline's box, so a design with no `at`
  * is centred on its record's point.
@@ -179,12 +187,15 @@ export function designFootprints(
     const [du, dv] = d.atLocal ?? [0, 0]
     const [ox, oy] = [cx - r[0] * du - f[0] * dv, cy - r[1] * du - f[1] * dv]
     const [w, l] = d.size
+    // With the shops behind its porticoes (front, right, back, left).
+    const shops = (d as { shops?: { depth: number; sides: boolean[] } }).shops
+    const [mf, mr, mb, ml] = [0, 1, 2, 3].map((i) => (shops?.sides[i] ? shops.depth : 0))
     const ring = [
-      [-w / 2, -l / 2],
-      [w / 2, -l / 2],
-      [w / 2, l / 2],
-      [-w / 2, l / 2],
-      [-w / 2, -l / 2],
+      [-w / 2 - ml, -l / 2 - mb],
+      [w / 2 + mr, -l / 2 - mb],
+      [w / 2 + mr, l / 2 + mf],
+      [-w / 2 - ml, l / 2 + mf],
+      [-w / 2 - ml, -l / 2 - mb],
     ].map(
       ([u, v]) => [ox + r[0] * u + f[0] * v, oy + r[1] * u + f[1] * v] as [number, number],
     )

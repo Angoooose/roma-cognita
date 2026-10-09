@@ -223,6 +223,13 @@ const ASYLUM_GROVES: [number, number][] = [
  */
 const SITE = { walk: 3, ease: 10, cut: 1.2 }
 /**
+ * A site cut into a hillside on some sides only (a design's `cut`): how far beyond its
+ * other sides today's higher ground is taken down to its level, how steeply, as a
+ * share of the distance, the hill rises again from the top of its retaining wall, and
+ * that wall's thickness (the engine's, buildModel.ts), standing against the building.
+ */
+const CUT = { lower: 30, rise: 0.5, wall: 1.4 }
+/**
  * The buildings round the Forum's square: those of the Forum proper, then those of
  * the Comitium at its north-west end.
  */
@@ -858,13 +865,8 @@ export function bakeModel(m: ModelInput) {
       centre[0] -= axis[1] * du + axis[0] * dv
       centre[1] -= -axis[0] * du + axis[1] * dv
     }
-    const ring = rect(
-      centre[0],
-      centre[1],
-      size[0],
-      size[1],
-      Math.atan2(axis[1], axis[0]) - Math.PI / 2,
-    )
+    // With the shops behind its porticoes, which keep the houses off too.
+    const ring = footprint(d, centre, size, axis).ring
     const rings =
       d.at || d.size || !largest ? [ring] : own.find((mo) => mo.rings[0] === largest)!.rings
     const kind = own[0]?.kind ?? p.kind
@@ -914,11 +916,13 @@ export function bakeModel(m: ModelInput) {
     const heights = rings[0].map(([x, y]) => at(x, y))
     const low = Math.min(...heights)
     const level =
-      d.level === 'top'
-        ? Math.max(...heights)
-        : d.level === 'mean'
-          ? heights.reduce((a, b) => a + b, 0) / heights.length
-          : low
+      typeof d.level === 'number'
+        ? d.level
+        : d.level === 'top'
+          ? Math.max(...heights)
+          : d.level === 'mean'
+            ? heights.reduce((a, b) => a + b, 0) / heights.length
+            : low
     monuments.push({
       id,
       kind,
@@ -1071,9 +1075,30 @@ export function bakeModel(m: ModelInput) {
     .filter((mo) => mo.design && mo.clear !== false && mo.kind !== 'bridge')
     .sort((a, b) => Math.abs(ringArea(b.rings[0])) - Math.abs(ringArea(a.rings[0])))
   for (const mo of sites) {
-    const ring = mo.rings[0]
     const d = mo.design!.d
-    const [x0, y0, x1, y1] = bounds(ring, SITE.walk + SITE.ease + g.texel)
+    const cut = d.cut
+    // A site cut in on some sides only: its footprint with the shops behind its
+    // porticoes, which were cut into the hill with it, and which side of it each point
+    // is beyond (front, right, back, left).
+    const { axis } = mo.design!
+    const {
+      mid,
+      w: sw,
+      l: sl,
+      ring: box,
+    } = footprint(d, mo.design!.centre, mo.design!.size, axis)
+    const right: Pt = [axis[1], -axis[0]]
+    const ring = cut ? box : mo.rings[0]
+    const sideOf = (p: Pt) => {
+      const [x, y] = [p[0] - mid[0], p[1] - mid[1]]
+      const [u, v] = [x * right[0] + y * right[1], x * axis[0] + y * axis[1]]
+      const beyond = [v - sl / 2, u - sw / 2, -v - sl / 2, -u - sw / 2]
+      return beyond.indexOf(Math.max(...beyond))
+    }
+    const [x0, y0, x1, y1] = bounds(
+      ring,
+      SITE.walk + (cut ? Math.max(SITE.ease, CUT.lower) : SITE.ease) + g.texel,
+    )
     // Its level: of the ground under it now (the larger sites round it already level).
     const under: number[] = []
     for (let y = y0; y <= y1; y += g.texel)
@@ -1081,15 +1106,17 @@ export function bakeModel(m: ModelInput) {
     if (!under.length) under.push(...ring.map(([x, y]) => at(x, y)))
     const lowUnder = Math.min(...under)
     // Cut and fill balanced, unless the design says it was cut in (`low`) or built out
-    // as a terrace (`top`).
+    // as a terrace (`top`), or gives the level its excavators found.
     // On the Forum's square, the square's own level.
     const level = onForum.has(mo.id)
       ? forumLevel
-      : d.level === 'top'
-        ? Math.max(...under)
-        : d.level === 'low'
-          ? lowUnder
-          : under.reduce((a, b) => a + b, 0) / under.length
+      : typeof d.level === 'number'
+        ? d.level
+        : d.level === 'top'
+          ? Math.max(...under)
+          : d.level === 'low'
+            ? lowUnder
+            : under.reduce((a, b) => a + b, 0) / under.length
     const before = new Float32Array(ground)
     const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
     const c1 = Math.min(g.width - 1, Math.ceil((x1 - g.x0) / g.texel))
@@ -1101,8 +1128,19 @@ export function bakeModel(m: ModelInput) {
         const k = r * g.width + c
         if (m.water[k] < 4) continue
         const dist = inRing(p, ring) ? 0 : distToRing(p, ring)
-        if (dist <= SITE.walk) ground[k] = level
-        else if (dist < SITE.walk + SITE.ease) {
+        // Where it was cut into the hill its own back wall is the retaining wall's face:
+        // no walk round it there.
+        const hill = !!cut && cut.sides[sideOf(p)]
+        if (dist <= (hill ? CUT.wall : SITE.walk)) ground[k] = level
+        else if (cut) {
+          // Where it was cut into the hill, the hill rising from its retaining wall's top;
+          // elsewhere today's higher ground, the fill of later centuries, taken down to
+          // its level and eased back.
+          const out = dist - (hill ? CUT.wall : SITE.walk)
+          if (hill) ground[k] = Math.min(before[k], level + cut.h + out * CUT.rise)
+          else if (before[k] > level && out < CUT.lower)
+            ground[k] = level + (before[k] - level) * smoothstep(0, CUT.lower, out)
+        } else if (dist < SITE.walk + SITE.ease) {
           // Eased back where the ground is near the level; left where it is not, for the
           // wall or the building's own foundations to meet it.
           const off = before[k] - level
@@ -1115,7 +1153,8 @@ export function bakeModel(m: ModelInput) {
     mo.design!.drop = Math.max(mo.design!.drop, level - lowUnder)
     // Retaining walls: along each edge, where the ground just beyond the walk stands
     // more than `SITE.cut` over the level.
-    const outward = ringArea(ring) > 0 ? -1 : 1
+    // Each edge's right-hand normal, which points out of a ring wound anticlockwise.
+    const outward = ringArea(ring) > 0 ? 1 : -1
     let run: number[][] = []
     const flush = () => {
       if (run.length > 1)
@@ -1128,18 +1167,23 @@ export function bakeModel(m: ModelInput) {
       if (L < 0.5) continue
       const n: Pt = [((b[1] - a[1]) / L) * outward, (-(b[0] - a[0]) / L) * outward]
       const steps = Math.max(1, Math.round(L / 3))
+      const walled = !cut || cut.sides[sideOf([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2])]
       for (let k = 0; k <= steps; k++) {
         const t = k / steps
         const q: Pt = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]
-        const w: Pt = [q[0] + n[0] * (SITE.walk - 0.6), q[1] + n[1] * (SITE.walk - 0.6)]
+        // Its middle: at the walk's edge, or on a cut side against the building's back.
+        const face = cut ? CUT.wall / 2 : SITE.walk - 0.6
+        const w: Pt = [q[0] + n[0] * face, q[1] + n[1] * face]
+        const behind = (cut ? CUT.wall : SITE.walk) + 3
         const beyond = sample(
-          before,
-          q[0] + n[0] * (SITE.walk + 3),
-          q[1] + n[1] * (SITE.walk + 3),
+          cut ? ground : before,
+          q[0] + n[0] * behind,
+          q[1] + n[1] * behind,
           level,
         )
-        if (beyond - level > SITE.cut)
-          run.push([round(w[0]), round(w[1]), round(beyond - level + 0.7)])
+        const high = cut ? Math.min(beyond - level, cut.h) : beyond - level
+        if (high > SITE.cut && walled)
+          run.push([round(w[0]), round(w[1]), round(high + 0.7)])
         else flush()
       }
       flush()
@@ -1368,6 +1412,15 @@ export function bakeModel(m: ModelInput) {
         .filter((gr) => pts.some((q) => inRing(q, gr.ring)))
         .map((gr) => gr.years[0] - 1),
     )
+  /** The last year a tree at `q` stands: until a later monument takes the ground its crown spreads over. */
+  const crownUntil = ([x, y]: Pt, r = 3) =>
+    until([
+      [x, y],
+      [x + r, y],
+      [x - r, y],
+      [x, y + r],
+      [x, y - r],
+    ])
   /**
    * The first year a house at `pts` stands (DESIGN.md §7.7, "The city growing"). The
    * city inside the wall was full by 133 BCE: private houses of the 2nd century BCE
@@ -1553,7 +1606,8 @@ export function bakeModel(m: ModelInput) {
 
   // --- the generated city ------------------------------------------------------------------
   const fabric: number[] = []
-  const courtyardTrees: Pt[] = []
+  /** Trees in gardens and groves, and the years they stand (a house's, its garden's). */
+  const courtyardTrees: { at: Pt; years?: number[] }[] = []
   const placed = new SpatialHash(30)
   const [bx0, by0, bx1, by1] = bounds(m.circuit, SUBURB.reach + 20)
   const lot = (
@@ -1601,7 +1655,11 @@ export function bakeModel(m: ModelInput) {
   // the ground kept open there does not reshuffle the streets across the city.
   for (const l of city.lots)
     if (!l.pts.some((q) => isOpen(q))) lot(l.pts, l.h, l.kind, l.roof, l.tone)
-  courtyardTrees.push(...city.gardens.filter((q) => !isOpen(q)))
+  // A garden's tree stands as long as its house: a monument that takes the house's
+  // site takes its garden too.
+  for (const q of city.gardens)
+    if (!isOpen(q))
+      courtyardTrees.push({ at: q, years: [since([q], LOT_KIND.house), crownUntil(q)] })
 
   // Outside it the suburb (`GROWN`), built on the country's own plots (fields.ts): a
   // built plot has its building at the road end — a row of shops by the gates, a
@@ -2106,7 +2164,11 @@ export function bakeModel(m: ModelInput) {
       !insideMonument(p) &&
       !onWall(p),
   ))
-    tree(t.x, t.y, t.r, t.kind, t.years)
+    // Until a monument begun within the window takes its ground, as a house does.
+    tree(t.x, t.y, t.r, t.kind, [
+      t.years[0],
+      Math.min(t.years[1], crownUntil([t.x, t.y], t.r)),
+    ])
   const TREE_STRIDE = 7
 
   // --- shadows on the board ------------------------------------------------------------------
@@ -2166,11 +2228,15 @@ export function bakeModel(m: ModelInput) {
     for (let k = 0; k < 9; k++) {
       const a = k * 2.4
       const rr = 3 + (k % 3) * 5
-      courtyardTrees.push([gx + Math.cos(a) * rr, gy + Math.sin(a) * rr])
+      courtyardTrees.push({ at: [gx + Math.cos(a) * rr, gy + Math.sin(a) * rr] })
     }
   }
   const fab = new Float32Array(fabric)
-  for (const [x, y] of courtyardTrees) tree(x, y, 2.5 + rand() * 1.5, TREE.mixed)
+  for (const {
+    at: [x, y],
+    years,
+  } of courtyardTrees)
+    tree(x, y, 2.5 + rand() * 1.5, TREE.mixed, years)
   const tre = new Float32Array(trees)
   const bin = Buffer.concat([Buffer.from(fab.buffer), Buffer.from(tre.buffer)])
   writeFileSync(join(m.out, 'model.bin'), bin)
@@ -2408,6 +2474,28 @@ function orientedBox(r: Pt[]) {
 }
 
 const round = (v: number, k = 10) => Math.round(v * k) / k
+
+/**
+ * A design's footprint: its box, `size` across and along round `centre`, with the
+ * shops behind its porticoes on the sides it has them (front, right, back, left).
+ */
+function footprint(d: Design, centre: Pt, size: Pt, axis: Pt) {
+  const right: Pt = [axis[1], -axis[0]]
+  const shops = (d as { shops?: { depth: number; sides: boolean[] } }).shops
+  const margin = [0, 1, 2, 3].map((i) => (shops?.sides[i] ? shops.depth : 0))
+  const [du, dv] = [(margin[1] - margin[3]) / 2, (margin[0] - margin[2]) / 2]
+  const [w, l] = [size[0] + margin[1] + margin[3], size[1] + margin[0] + margin[2]]
+  const mid: Pt = [
+    centre[0] + right[0] * du + axis[0] * dv,
+    centre[1] + right[1] * du + axis[1] * dv,
+  ]
+  return {
+    mid,
+    w,
+    l,
+    ring: rect(mid[0], mid[1], w, l, Math.atan2(axis[1], axis[0]) - Math.PI / 2),
+  }
+}
 
 function rect(cx: number, cy: number, w: number, d: number, angle: number): Pt[] {
   const [c, s] = [Math.cos(angle), Math.sin(angle)]

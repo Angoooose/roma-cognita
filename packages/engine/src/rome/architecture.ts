@@ -1406,8 +1406,15 @@ export function quadriporticus(
     wall?: number
     spacing?: number
     seed?: number
-    /** The sides with no portico closed by the precinct's wall, with a gateway this wide in the middle (none: left open). */
+    /** The sides with no portico closed by the precinct's wall, with a gateway this wide in the middle of the front (none: left open). */
     gate?: number
+    /**
+     * Where the side porticoes end, this far from the back: level with the front of a
+     * temple standing at the back, behind them only the precinct's wall.
+     */
+    heads?: number
+    /** The sides whose portico is roofed by what stands behind it instead (shops on a hillside). */
+    roofless?: boolean[]
     /**
      * While it is being built (works.ts): dates each part before it is built — the
      * court's paving, and for side `i` its enclosure wall, its colonnade's floor, its
@@ -1442,9 +1449,14 @@ export function quadriporticus(
       if (opts.gate === undefined) return
       // The enclosure wall, and its gateway: an opening under a lintel, framed by
       // pilasters, up the wall's full height.
-      const g = opts.gate / 2
       const a = -len / 2
       const b = len / 2
+      if (i !== 0) {
+        at('wall', i, 0, wall)
+        S.box(a, b, -0.9, 0, -S.deep, wall, shade)
+        return
+      }
+      const g = opts.gate / 2
       at('wall', i, 0, wall + 0.6)
       S.box(a, -g, -0.9, 0, -S.deep, wall, shade)
       S.box(g, b, -0.9, 0, -S.deep, wall, shade)
@@ -1453,27 +1465,33 @@ export function quadriporticus(
       S.box(-g - 0.8, g + 0.8, -1.25, 0.35, wall, wall + 0.6, face)
       return
     }
-    // In the side's frame the court is towards +v, the back wall at v = 0.
-    const a = -len / 2
-    const b = len / 2
+    // In the side's frame the court is towards +v, the back wall at v = 0. The right
+    // side runs from the back (-u) to the front, the left from the front to the back.
     at('wall', i, 0, wall)
-    S.box(a, b, -0.9, 0, -S.deep, wall, shade)
+    S.box(-len / 2, len / 2, -0.9, 0, -S.deep, wall, shade)
+    const cut = opts.heads !== undefined && (i === 1 || i === 3) ? opts.heads : 0
+    const a = -len / 2 + (i === 1 ? cut : 0)
+    const b = len / 2 - (i === 3 ? cut : 0)
+    // Its columns are set in from an end where it meets another portico, not where it
+    // stops at its head.
+    const [inA, inB] = [i === 1 && cut, i === 3 && cut].map((open) => !open)
     at('floor', i, 0, 0.4)
     S.box(a, b, 0, depth, -0.2, 0.4, face)
     const E = Math.max(0.8, h * 0.18)
     at('colonnade', i, 0.4, h + 0.4 + E)
     const rows = opts.double ? [depth * 0.45, depth - D] : [depth - D]
+    const ua = a + (inA ? depth - D : D)
+    const ub = b - (inB ? depth - D : D)
     for (const vv of rows) {
-      const n = Math.max(2, Math.round((len - 2 * depth) / sp))
-      const inset = depth - D
+      const n = Math.max(2, Math.round((ub - ua - 2 * D) / sp))
       for (let k = 0; k <= n; k++) {
-        const u = a + inset + ((len - 2 * inset) * k) / n
+        const u = ua + ((ub - ua) * k) / n
         S.column(u, vv, D, 0.4, h, order, face)
       }
     }
     S.entablature(
-      a + depth - D * 1.2,
-      b - depth + D * 1.2,
+      ua - D * 0.2,
+      ub + D * 0.2,
       depth - D * 1.6,
       depth - D * 0.4,
       h + 0.4,
@@ -1482,6 +1500,7 @@ export function quadriporticus(
       0.2,
     )
     // A lean-to of tiles from the back wall down over the colonnade.
+    if (opts.roofless?.[i]) return
     const z0 = h + 0.4 + E
     at('roof', i, z0, wall + 0.6)
     const look = S.b.look
@@ -1489,8 +1508,8 @@ export function quadriporticus(
     const run = depth + 0.3
     S.skinQuad(
       [a, -0.2, wall + 0.6, 0, 0, run],
-      [b, -0.2, wall + 0.6, len, 0, run],
-      [b, depth + 0.3, z0, len, run, run],
+      [b, -0.2, wall + 0.6, b - a, 0, run],
+      [b, depth + 0.3, z0, b - a, run, run],
       [a, depth + 0.3, z0, 0, run, run],
       C.roofTemple,
     )

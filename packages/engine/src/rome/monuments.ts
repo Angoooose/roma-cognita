@@ -542,12 +542,23 @@ interface Porticus {
   h: number
   order: Order
   sides?: [boolean, boolean, boolean, boolean]
-  /** The sides with no portico closed by the precinct's wall, with a gateway this wide. */
+  /** The sides with no portico closed by the precinct's wall, with a gateway this wide in its front. */
   gate?: number
+  /** The side porticoes ending this far from the back, level with the front of a temple there. */
+  heads?: number
   double?: boolean
   paving?: 'travertine' | 'tufa' | 'marble' | 'garden'
-  /** Shops behind the porticoes on the sides named, this deep. */
-  shops?: { depth: number; sides: [boolean, boolean, boolean, boolean] }
+  /**
+   * Shops behind the porticoes on the sides named, this deep: `h` high (the
+   * portico's wall, if not given); where they were cut into a hillside (`hillside`),
+   * under one roof with their portico, rising from its columns to `h` at the hill.
+   */
+  shops?: {
+    depth: number
+    sides: [boolean, boolean, boolean, boolean]
+    h?: number
+    hillside?: boolean
+  }
   /** A gateway in the middle of the front. */
   propylon?: { w: number; columns: number }
   /** Rows of trees in a garden court: how many rows, and their spacing. */
@@ -570,7 +581,79 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
         : d.paving === 'marble'
           ? face
           : C.travertine
+  /**
+   * Shops cut into the hillside behind side `i`'s portico, under one roof with it: one
+   * slope from the hill at the shops' back, `shops.h` high, down over the shops and the
+   * portico to its columns; beyond the portico's heads over the shops alone.
+   */
+  const hillside = (i: number) => {
+    const s = d.shops!.depth
+    const zb = d.shops!.h ?? d.h + 1.4
+    const zf = d.h + 0.4 + Math.max(0.8, d.h * 0.18)
+    const z = (c: number) => zf + ((zb - zf) * (c + d.depth)) / (s + d.depth)
+    // A point `along` the side and `c` out from the precinct's line.
+    const len = i % 2 ? l : w
+    const pt = (along: number, c: number): [number, number] =>
+      i === 0
+        ? [along, l / 2 + c]
+        : i === 1
+          ? [w / 2 + c, along]
+          : i === 2
+            ? [along, -l / 2 - c]
+            : [-w / 2 - c, along]
+    // Where the portico runs along it: all of it, or from its heads (towards the back,
+    // -v) to the front.
+    const porch = (d.sides ?? [true, true, true, true])[i]
+    const cut = porch && d.heads !== undefined && i % 2 ? d.heads : 0
+    const p0 = -len / 2 + cut
+    const [a0, a1] = [-len / 2, len / 2]
+    const zj = z(0)
+    stage(P.walls, [0, zj])
+    const [q0, q1] = [pt(a0, 0), pt(a1, s)]
+    F.box(
+      Math.min(q0[0], q1[0]),
+      Math.max(q0[0], q1[0]),
+      Math.min(q0[1], q1[1]),
+      Math.max(q0[1], q1[1]),
+      -F.deep,
+      zj,
+      shade,
+      null,
+    )
+    stage(P.roof, [zf, zb])
+    const look = F.b.look
+    F.b.look = SKIN.roof * 10 + 0.7 * 0.9
+    const run = s + d.depth
+    const slope = (b0: number, b1: number, c0: number) =>
+      F.skinQuad(
+        [...pt(b0, s + 0.3), zb, 0, 0, run],
+        [...pt(b1, s + 0.3), zb, b1 - b0, 0, run],
+        [...pt(b1, c0), z(c0), b1 - b0, s + 0.3 - c0, run],
+        [...pt(b0, c0), z(c0), 0, s + 0.3 - c0, run],
+        C.roofTemple,
+      )
+    if (porch) slope(p0, len / 2, -d.depth)
+    // Beyond the heads the shops' part alone, down to the precinct's wall.
+    if (p0 > a0) slope(a0, p0, 0)
+    F.b.look = look
+    // The ends closed under the roof: the shops' from their walls' top, the portico's
+    // from the precinct's wall.
+    const wall = d.h + 1.4
+    for (const a of [a0, a1]) {
+      F.tri([...pt(a, 0), zj], [...pt(a, s), zj], [...pt(a, s), zb], shade)
+      const open = porch && (a === a1 || p0 === a0)
+      if (open)
+        F.skinQuad(
+          [...pt(a, -d.depth), wall],
+          [...pt(a, 0), wall],
+          [...pt(a, 0), zj],
+          [...pt(a, -d.depth), z(-d.depth)],
+          shade,
+        )
+    }
+  }
   quadriporticus(F, w, l, {
+    roofless: [0, 1, 2, 3].map((i) => !!d.shops?.hillside && !!d.shops.sides[i]),
     depth: d.depth,
     h: d.h,
     order: d.order,
@@ -579,6 +662,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
     court,
     sides: d.sides,
     gate: d.gate,
+    heads: d.heads,
     double: d.double,
     seed: 0.4,
     stage: W
@@ -596,7 +680,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
   })
   if (d.shops) {
     const s = d.shops.depth
-    const H = d.h + 1.4
+    const H = d.shops.h ?? d.h + 1.4
     const edges: [number, number, number, number][] = [
       [-w / 2, w / 2, l / 2, l / 2 + s],
       [w / 2, w / 2 + s, -l / 2, l / 2],
@@ -605,6 +689,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
     ]
     edges.forEach(([u0, u1, v0, v1], i) => {
       if (!d.shops!.sides[i]) return
+      if (d.shops!.hillside) return hillside(i)
       stage(P.walls, [0, H])
       F.box(u0, u1, v0, v1, -F.deep, H, shade, null)
       if (W) {
