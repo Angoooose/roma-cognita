@@ -2412,13 +2412,33 @@
   type: client-of
   of: rome
   from: 63 BCE
-  to: after 27 BCE
+  to: 48 BCE
   sources:
     - source: appian
       locator: 'Mithr. 114'
       quote: >-
         He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis.
       supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His first move was directed against the district of Colchis at the
+        eastern end of the Euxine Sea, which had been placed by Pompey under the
+        rule of the dynast Aristarchus but now submitted without a struggle
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '42.45.3'
+      quote: >-
+        he got possession of Colchis without any difficulty
+      supports: [to]
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        But when the power of Mithridates had been broken up, all the territory
+        subject to him was also broken up and distributed among many persons.
+        At last Polemon got Colchis
+      supports: []
     - source: magie-1950
       locator: 'vol. I, p. 374'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
@@ -2443,6 +2463,13 @@
       supports: [from]
   confidence: probable
   review: draft
+  note: >-
+    Aristarchus' Colchis, from Pompey's settlement until it submitted to
+    Pharnaces in 48, after Pharsalus (Magie I 408; Dio 42.45.3), as on the
+    claim. Who held it after Zela is not recorded until Polemon, to whom
+    Antony gave it ("At last Polemon got Colchis", Strabo 11.2.18), on a date
+    no readable text gives. Ran to after 27 BCE until October 2026, which no
+    readable text supports.
 
 - polity: iberia-caucasia
   type: client-of
