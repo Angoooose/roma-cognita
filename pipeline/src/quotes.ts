@@ -36,6 +36,8 @@ const QUOTED = join(ROOT_DIR, '.cache/sources/quoted')
 const ENTITIES: Record<string, string> = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
   mdash: '—', ndash: '–', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', hellip: '…',
+  sect: '§', para: '¶', middot: '·', aelig: 'æ', AElig: 'Æ', oelig: 'œ', OElig: 'Œ',
+  szlig: 'ß', laquo: '«', raquo: '»',
 }
 
 /** A page's words, without its markup. */
@@ -45,7 +47,7 @@ export function htmlText(html: string): string {
     .replace(/<[^>]*>/g, ' ')
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&([a-z]+);/gi, (m, n) => ENTITIES[n.toLowerCase()] ?? m)
+    .replace(/&([a-z]+);/gi, (m, n) => ENTITIES[n] ?? ENTITIES[n.toLowerCase()] ?? m)
 }
 
 /** Words only: lower case, no accents, no punctuation, no bare numbers. */
