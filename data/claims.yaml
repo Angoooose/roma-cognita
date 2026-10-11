@@ -14453,14 +14453,41 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
-    - { source: josephus-bj, locator: '1.396' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        he heard the news that Caesar was the victor in the war, and that
+        Antony and Cleopatra were both dead … He also added to his kingdom
+        Gadara, Hippos, and Samaria
+      supports: [polity, relation, from]
+    - source: josephus-bj
+      locator: '1.396'
+      quote: >-
+        when Caesar was come into Egypt, and Cleopatra and Antony were dead, he
+        did not only bestow other marks of honor upon him, but made an addition
+        to his kingdom, by giving him not only the country which had been taken
+        from him by Cleopatra, but besides that, Gadara, and Hippos, and Samaria
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30 … Augustus now gave him back, not only the district of Jericho, but
+        also Gadara, Hippos, Samaria
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        Idumea, and Judea, and the country of Samaria paid tribute to Archelaus
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     "Gadara, and Hippos, and Samaria" (AJ 15.217), given to Herod in 30. He had
     married Mariamme at Samaria in 37, which shows his presence there, not his
-    possession.
+    possession. Still in his kingdom at his death in 4, when "the country of
+    Samaria" paid its tribute to his son Archelaus (AJ 17.319).
 
 - atom: gadara-hippos
   polity: judaea
@@ -14468,11 +14495,42 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
-    - { source: josephus-bj, locator: '1.396' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        he heard the news that Caesar was the victor in the war, and that
+        Antony and Cleopatra were both dead … He also added to his kingdom
+        Gadara, Hippos, and Samaria
+      supports: [polity, relation, from]
+    - source: josephus-bj
+      locator: '1.396'
+      quote: >-
+        when Caesar was come into Egypt, and Cleopatra and Antony were dead, he
+        did not only bestow other marks of honor upon him, but made an addition
+        to his kingdom, by giving him not only the country which had been taken
+        from him by Cleopatra, but besides that, Gadara, and Hippos, and Samaria
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30 … Augustus now gave him back, not only the district of Jericho, but
+        also Gadara, Hippos, Samaria
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        for as to Gaza, and Gadara, and Hippos, they were Grecian cities, which
+        Caesar separated from his government, and added them to the province of
+        Syria
+      supports: [to]
   confidence: certain
   review: draft
-  note: As samaria. The other Decapolis cities stayed in Syria (Pliny 5.74).
+  note: >-
+    As samaria. The other Decapolis cities stayed in Syria (Pliny 5.74). Gadara
+    and Hippos stayed Herod's until his death in 4, when Augustus "separated
+    [them] from his government" and added them to Syria (AJ 17.320).
 
 # The kingdoms of the Lebanon and the desert
 
@@ -14482,8 +14540,49 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '49.32.5' }
-    - { source: josephus-aj, locator: '15.92' }
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        he had presented them with extensive portions of Arabia, in the
+        districts both of Malchus and of the Ituraeans (for he executed
+        Lysanias, whom he himself had made king over them, on the charge that he
+        had favoured Pacorus)
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.92'
+      quote: >-
+        so he slew Lysanias, the son of Ptolemy, accusing him of his bringing
+        the Parthians upon those countries
+      supports: []
+    - source: schurer-1890
+      locator: 'App. I, p. 332'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        At the instigation of Cleopatra, Antony caused Lysanias to be executed
+        in B.C. 36 … and gifted a large portion of his territory to Cleopatra
+      supports: [polity, relation, from]
+    - source: schurer-1890
+      locator: 'App. I, p. 333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        It seems therefore that Zenodorus, after the death of Lysanias, had
+        received on rent a portion of his territory from Cleopatra, and that
+        aftei Cleopatra's death this "rented" domain, subject to tribute, was
+        continued to him
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30
+      supports: [to]
     - { source: bingen-2007 }
   confidence: uncertain
   review: needs-check
@@ -14491,8 +14590,11 @@
     Antony executed Lysanias, "whom he himself had made king", for favouring
     Pacorus, and gave "extensive portions" of the Ituraeans' districts to
     Cleopatra's house (Dio 49.32.5; AJ 15.92); her second count of years was
-    as queen of Chalcis (Porphyry, as Bingen reports). Dio says portions, not
-    all, hence uncertain.
+    as queen of Chalcis (Porphyry, as Bingen reports). Dio puts it the year
+    before Pompeius and Cornificius were consuls (35), so in 36, as Schürer
+    does; her hold ended with her
+    death in 30, when Zenodorus' lease was continued to him (Schürer, App. I).
+    Dio says portions, not all, hence uncertain.
 
 - atom: ituraea
   polity: ituraea
@@ -14500,14 +14602,48 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.344' }
+    - source: schurer-1890
+      locator: 'App. I, p. 333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        It seems therefore that Zenodorus, after the death of Lysanias, had
+        received on rent a portion of his territory from Cleopatra, and that
+        aftei Cleopatra's death this "rented" domain, subject to tribute, was
+        continued to him with the title of tetrarch.
+      supports: [polity, relation, from]
+    - source: schurer-1890
+      locator: 'App. I, p. 334'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        It may be taken as certain that the coins with the superscription …
+        belong to our Zenodorus … aera Seleuc. or B.C. 32, 30, and 25, which
+        precisely fit our hypothesis
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.344'
+      quote: >-
+        One Zenodorus had hired what was called the house of Lysanias
+      supports: [polity]
+    - source: cassius-dio
+      locator: '54.9.3'
+      quote: >-
+        To Herod he entrusted the tetrarchy of a certain Zenodorus
+      supports: [relation]
     - { source: josephus-bj, locator: '1.398' }
   confidence: probable
   review: needs-check
   note: >-
-    Zenodorus "had hired what was called the house of Lysanias" (AJ 15.344)
-    by 30 at the latest, until his death in 20. Whether his lease began under
-    Cleopatra is not known.
+    Zenodorus "had hired what was called the house of Lysanias" (AJ 15.344);
+    Schürer has him renting it from Cleopatra and keeping it as tetrarch, under
+    tribute, after her death in 30, with coins of his dated 30 and 25; he died
+    in 20, when Augustus gave his tetrarchy to Herod (Dio 54.9.3).
 
 - atom: emesa
   polity: syria
@@ -14515,8 +14651,25 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '51.2.2' }
-    - { source: cassius-dio, locator: '54.9.2' }
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus, Lycomedes, the king of a part of Cappadocian Pontus, and
+        Alexander, the brother of Iamblichus
+      supports: [from]
+    - source: cassius-dio
+      locator: '54.7.4'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia
+      supports: [to]
+    - source: cassius-dio
+      locator: '54.9.2'
+      quote: >-
+        actually gave away certain principalities — to Iamblichus, the son of
+        Iamblichus, his ancestral dominion over the Arabians
+      supports: [to]
     - { source: josephus-bj, locator: '1.393' }
   confidence: uncertain
   review: needs-check
@@ -14534,10 +14687,49 @@
   polity: armenia
   relation: client
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
-    - { source: cassius-dio, locator: '49.39–41' }
-    - { source: plutarch, locator: 'Antony 50' }
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.39.5–6'
+      quote: >-
+        Thereupon he arrested him … for he professed to have arrested him for
+        no other purpose than to levy tribute upon the Armenians for the
+        safeguarding of the king and to maintain his sovereignty
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.41.3'
+      quote: >-
+        and to their brother Alexander, Armenia and the rest of the countries
+        east of the Euphrates as far as India
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.44.1–2'
+      quote: >-
+        the Mede received a portion of the newly-acquire Armenia
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
+    - source: plutarch
+      locator: 'Antony 50.1'
+      quote: >-
+        when he once more invaded Armenia, and by many invitations and promises
+        induced Artavasdes to come to him, Antony seized him
+      supports: [relation]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -14546,35 +14738,108 @@
     Alexander Helios at the Donations (49.41.3), on paper. Drawn as a client
     kingdom in Roman hands, with the occupation in its own layer; the
     Armenians proclaimed Artavasdes' son Artaxes king, and he fled to Parthia.
+    Antony still disposed of "the newly-acquire[d] Armenia" in 33, the year of
+    Caesar's second consulship (Dio 49.43.6, 49.44.2); Artaxes had killed the
+    Romans left there by 30 (51.16.2), so the end lies in 33–31, drawn at 32.
 
 - atom: armenia
   polity: rome
   relation: occupied
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
-    - { source: cassius-dio, locator: '49.39–40' }
-    - { source: cassius-dio, locator: '49.44.4' }
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.40.1–2'
+      quote: >-
+        After this Antony occupied the whole of Armenia, taking some of the
+        people peaceably and some by force … then he left his legions in Armenia
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Antony's garrison, until he "summoned back his own soldiers" and "Armenia
-    was lost together with Media" (Dio 49.44.4), in 32 or 31.
+    was lost together with Media" (Dio 49.44.4): after the Araxes compact of 33,
+    the year of Caesar's second consulship (49.43.6), and before 30, when Artaxes
+    had killed the Romans left behind (51.16.2). Drawn to 32.
 
 - atom: armenia
   polity: armenia
   relation: independent
-  from: 31 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
-    - { source: tacitus-ann, locator: '2.3' }
-    - { source: cassius-dio, locator: '51.16.2' }
-  confidence: probable
+    - source: tacitus-ann
+      locator: '2.3'
+      quote: >-
+        Artavasdes’ son, Artaxias II, hostile to us on account of his father,
+        defended himself and his crown by virtue of Parthian strength
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        he refused the request of Artaxes that his brothers be sent to him,
+        because this prince had put to death the Romans left behind in Armenia
+      supports: [polity, relation, from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30
+      supports: [from]
+    - source: cassius-dio
+      locator: '54.7.4'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia
+      supports: [to]
+    - source: cassius-dio
+      locator: '54.9.4'
+      quote: >-
+        since the other Armenians had preferred charges against Artaxes and had
+        summoned his brother Tigranes, who was in Rome, the emperor sent
+        Tiberius to drive Artaxes out of the kingdom
+      supports: [polity, to]
+  confidence: uncertain
   review: draft
   note: >-
-    Artaxias II, restored "by the arms of the Arsacidae" (Tac. Ann. 2.3), "put
-    to death the Romans left behind in Armenia" (Dio 51.16.2). When he came back
-    is not recorded, between 32 and 30.
+    Artaxias II, defending his crown "by virtue of Parthian strength" (Tac.
+    Ann. 2.3), "put to death the Romans left behind in Armenia" (Dio 51.16.2),
+    which Dio tells among Octavian's dispositions at Alexandria after Antony's
+    and Cleopatra's deaths in 30. When he came back is not recorded: after
+    Antony's compact on the Araxes in 33, by 30; drawn from 31. Still king in
+    20, when Tiberius was sent to drive him out (54.9.4).
 
 - atom: atropatene
   polity: atropatene
@@ -14582,9 +14847,28 @@
   from: 35 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '49.33.1–2' }
-    - { source: cassius-dio, locator: '49.44.1–2' }
-    - { source: plutarch, locator: 'Antony 52' }
+    - source: cassius-dio
+      locator: '49.33.1–2'
+      quote: >-
+        the following year, when Pompeius and Cornificius were consuls … in his
+        anger against Phraates … had sent Polemon to him requesting his
+        friendship and alliance. Antony was apparently so exceedingly delighted
+        over the affair that he both made terms with the Mede
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.44.1–2'
+      quote: >-
+        was satisfied to arrange terms with the Median king. They made a
+        covenant to serve each other as allies, the one against the Parthians
+        and the other against Caesar
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Antony 52.1'
+      quote: >-
+        And now the king of the Medes had a quarrel with Phraortes the Parthian
+        … For this reason he sent and invited Antony to come, promising to join
+        him in the war with his own forces.
+      supports: [relation]
   confidence: probable
   review: draft
   note: >-
@@ -14600,9 +14884,39 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.44.4' }
-    - { source: cassius-dio, locator: '51.16.2' }
-    - { source: res-gestae, locator: '32' }
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [relation]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        Of his own accord he restored Iotape to the Median king, who had found
+        an asylum with him after his defeat
+      supports: []
+    - source: res-gestae
+      locator: '32'
+      quote: >-
+        The following kings sought refuge with me as suppliants: Tiridates,
+        King of Parthia, and later Phraates son of King Phraates; Artavasdes,
+        King of the Medes
+      supports: []
+    - source: strabo
+      locator: '11.13.1'
+      quote: >-
+        The other part is Atropatian Media … after he was proclaimed king, he
+        organized this country into a separate state by itself, and his
+        succession of descendants is preserved to this day
+      supports: [polity, to]
+    - source: strabo
+      locator: '11.13.2'
+      quote: >-
+        they themselves have attained to friendship with Caesar. But they are
+        also paying court to the Parthians at the same time.
+      supports: [relation]
   confidence: uncertain
   review: needs-check
   note: >-
