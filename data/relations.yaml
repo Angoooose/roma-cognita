@@ -1821,7 +1821,7 @@
   type: client-of
   of: seleucid
   from: before 133 BCE
-  to: 130 BCE
+  to: after 130 BCE
   sources:
     - source: josephus-aj
       locator: '13.245–248'
@@ -1863,14 +1863,19 @@
         the Syrian monarch against the Parthians in b.c. 129. … The death of
         Antiochus in the Parthian campaign, in b.c. 128, was for Hyrcanns a
         favourable occurrence.
-      supports: []
+      supports: [to]
     - { source: josephus-aj, locator: '13.236' }
   confidence: probable
   review: needs-check
   note: >-
     Hyrcanus I paid tribute and gave hostages to Antiochus VII after the siege
-    of Jerusalem, and marched with him to the east; free on the king's death in
-    129 (AJ 13.273).
+    of Jerusalem, and marched with him to the east; free on the king's death
+    (AJ 13.273). Schürer dates the siege's start to Hyrcanus' first year,
+    135/134, and reports Clinton's 134–133 for it; the terms followed it. The
+    king's death is usually put in 129, but no readable text here says so:
+    Schürer has the campaign in 129 and the death in 128. So the end is open,
+    in force in 130 and ended no earlier. It read 130 until October 2026; the
+    claims on judaea and judaea-joppa still end the client row in 130.
 
 - polity: atropatene
   type: client-of
