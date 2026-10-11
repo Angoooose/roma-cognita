@@ -160,13 +160,15 @@
         The Po divides it almost through its midst, one side being denominated
         Cispadana, and the other Transpadana. Cispadana comprehends that part
         next the Apennines and Liguria, and Transpadana the remainder.
-      supports: [kind, polities]
+      supports: [kind]
     - { source: cah-ix }
   confidence: probable
   review: draft
   note: >-
     Gaul "this side of the Po": the southern half of Cisalpine Gaul, inside
-    our gallia-cisalpina.
+    our gallia-cisalpina. Strabo names Cispadana as the half of the plain below
+    the Alps that lies south of the Po; he does not say it was part of a
+    province, so no quote yet backs the join to gallia-cisalpina.
 
 - dprr: Liguria
   kind: territory
