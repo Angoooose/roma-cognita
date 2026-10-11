@@ -15654,22 +15654,60 @@
   from: before 133 BCE
   to: 84 BCE
   sources:
-    - { source: appian, locator: 'Syr. 68–70' }
-    - { source: justin, locator: '38.10, 39.1–39.3, 40.1' }
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria.
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Syr. 69'
+      quote: >-
+        After Seleucus, Grypus became king … made war on him, drove him out of
+        the kingdom, and became king of Syria in his stead.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The result of these contendings was that Tigranes, king of Armenia,
+        took possession for himself of the kingdom of Syria. His reign over
+        Syria lasted for fourteen years, from B.C. 83 to B.C. 69.
+      supports: [to]
+    - source: appian
+      locator: 'Syr. 48'
+      quote: >-
+        Tigranes conquered all of the Syrian peoples this side of the Euphrates
+        as far as Egypt. He took Cilicia at the same time (for this was also
+        subject to the Seleucidae) and put his general, Magadates, in command
+        of all these conquests for fourteen years.
+      supports: [to]
+    - source: justin
+      locator: '40.1'
+      quote: >-
+        Tigranes, accordingly, being invited to the throne of Syria, enjoyed a
+        most tranquil reign over it for eighteen years
+      supports: []
     - { source: josephus-aj, locator: '13.365–371, 13.387–392' }
     - { source: ehling-2008 }
   confidence: probable
   review: needs-check
   note: >-
-    Antiochus VII Sidetes to his death fighting the Parthians (129; Justin
-    38.10), then Demetrius II again, Alexander Zabinas, and from 113 the war of
+    Antiochus VII Sidetes to his death fighting the Parthians (128, Schürer;
+    Justin 38.10), then Demetrius II again, Alexander Zabinas, and from 113 the war of
     Antiochus VIII Grypus and Antiochus IX Cyzicenus, each of whom held Antioch
     in turn (App. Syr. 69; Justin 39.3); then their sons, Seleucus VI and
     Antiochus X (Syr. 69), Philip I and Demetrius III at Damascus, and
     Antiochus XII (AJ 13.365–371, 13.387–391). Drawn as one kingdom:
     who held which town in which year is argued from coins (Ehling) and not
     drawn. Damascus fell to Aretas III of Nabataea c. 85 (Josephus AJ 13.392)
-    and is not split out. Ends with Tigranes' conquest.
+    and is not split out. Ends with Tigranes' conquest: his fourteen years in
+    Syria (App. Syr. 48, 70) ended with his defeat by Lucullus in 69, so began
+    in 83 (Schürer). The translation of Justin read here gives him eighteen
+    (40.1), which would start them c. 87; Schürer takes fourteen as Justin's
+    correct reading, so the years are kept and the variant is noted.
 
 - atom: syria
   polity: armenia
@@ -15677,17 +15715,69 @@
   from: 83 BCE
   to: 70 BCE
   sources:
-    - { source: appian, locator: 'Syr. 48–49, 70' }
-    - { source: justin, locator: '40.1–40.2' }
-    - { source: strabo, locator: '11.14.15' }
+    - source: appian
+      locator: 'Syr. 48'
+      quote: >-
+        Tigranes conquered all of the Syrian peoples this side of the Euphrates
+        as far as Egypt. He took Cilicia at the same time (for this was also
+        subject to the Seleucidae) and put his general, Magadates, in command
+        of all these conquests for fourteen years.
+      supports: [polity, relation]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        crossed the Euphrates and by main strength took Syria itself and
+        Phoenicia … and he drove Tigranes out of both Syria and Phoenicia.
+      supports: [polity, relation, to]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The result of these contendings was that Tigranes, king of Armenia,
+        took possession for himself of the kingdom of Syria. His reign over
+        Syria lasted for fourteen years, from B.C. 83 to B.C. 69.
+      supports: [polity, relation, from, to]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        This much is known regarding the period of Tigranes : that according
+        to Appian. Syr. 48,70, and Justin, xl. 1-2 (according to the correct
+        reading), he reigned over Syria fourteen years. The end of his reign,
+        however, — that is, his defeat by Lucullus, — occurred, as is well
+        known from the Ponian history, in B.c. 69.
+      supports: [from, to]
+    - source: appian
+      locator: 'Syr. 49'
+      quote: >-
+        When the Roman general, Lucullus, was pursuing Mithridates, who had
+        taken refuge in the territory of Tigranes, Magadates went with his army
+        to Tigranes' assistance. Thereupon Antiochus, the son of Antiochus
+        Pius, entered Syria clandestinely and assumed the government
+      supports: [to]
+    - source: cassius-dio
+      locator: '36.1.1'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … Lucius Lucullus at this time had defeated in battle the
+        lords of Asia, Mithridates and Tigranes the Armenian
+      supports: [to]
+    - source: justin
+      locator: '40.1'
+      quote: >-
+        Tigranes, accordingly, being invited to the throne of Syria, enjoyed a
+        most tranquil reign over it for eighteen years
+      supports: [polity]
   confidence: uncertain
   review: needs-check
   note: >-
     The Syrians, worn out by the kings' wars, called in Tigranes (Justin 40.1),
     who "took Cilicia at the same time" and put Magadates over his conquests for
     fourteen years (App. Syr. 48): 83 on Appian's count, as the Cilician plain
-    (cilicia-campestris). Justin's eighteen years would put it earlier, and
-    some modern work later (c. 74). Queen Selene still held Ptolemais into the
+    (cilicia-campestris), and Schürer's "from B.C. 83 to B.C. 69". The
+    translation of Justin read here has eighteen years, which would put it c.
+    87; Schürer reads Justin as fourteen. Some modern work puts it later (c.
+    74). Queen Selene still held Ptolemais into the
     70s (Josephus AJ 13.420), and Damascus was Aretas' until c. 72; neither is
     drawn at this grain. After Tigranocerta (69) Lucullus "wrested his newly
     acquired territory from him" (Syr. 49).
@@ -15698,13 +15788,48 @@
   from: 69 BCE
   to: 65 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
-    - { source: justin, locator: '40.2' }
+    - source: appian
+      locator: 'Syr. 49'
+      quote: >-
+        Thereupon Antiochus, the son of Antiochus Pius, entered Syria
+        clandestinely and assumed the government with the consent of the
+        people. Nor did Lucullus, who first made war on Tigranes and wrested his
+        newly acquired territory from him, object to Antiochus exercising his
+        ancestral authority. But Pompey, the successor of Lucullus, when he had
+        overthrown Mithridates, allowed Tigranes to reign in Armenia and
+        expelled Antiochus from the government of Syria
+      supports: [polity, relation, from, to]
+    - source: justin
+      locator: '40.2'
+      quote: >-
+        After Tigranes was conquered by Lucullus, Antiochus, the son of
+        Cyzicenus, was made king of Syria by his authority. But what Lucullus
+        gave, Pompey soon after took away
+      supports: [polity, relation, from, to]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65 under the title of Antiochus … It was Pompey who, on
+        his victorious march through Asia, first made a complete end of the
+        Seleucid dynasty, in B.c. 65
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
+    - { source: appian, locator: 'Syr. 70' }
   confidence: uncertain
   review: needs-check
   note: >-
     Antiochus XIII, whom Lucullus let into Syria in 69 (Justin 40.2; App. Syr.
-    49); his writ hardly ran beyond Antioch. Pompey set him aside in 64.
+    49); his writ hardly ran beyond Antioch. Schürer has him reign 69–65, and
+    Pompey in Syria himself in the consulship of L. Caesar and Figulus (64,
+    Dio), when the province begins. Appian says he "reigned only one year,
+    while Pompey was busy elsewhere" (Syr. 70).
 
 - atom: phoenicia
   polity: seleucid
@@ -15712,14 +15837,49 @@
   from: before 133 BCE
   to: 84 BCE
   sources:
-    - { source: appian, locator: 'Syr. 68–70' }
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria.
+      supports: [relation, from]
+    - source: josephus-aj
+      locator: '13.278'
+      quote: >-
+        he went away to Tripoli, and committed the prosecution of the war
+        against the Jews to Callimander and Epicrates
+      supports: [polity]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        the Romans, without fighting, came into possession of Cilicia and both
+        inland Syria and Coele-Syria, Phoenicia, Palestine … Pompey put the
+        various nations that had belonged to the Seleucidae under kings or
+        chiefs of their own.
+      supports: [polity]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        crossed the Euphrates and by main strength took Syria itself and
+        Phoenicia
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        His reign over Syria lasted for fourteen years, from B.C. 83 to B.C.
+        69.
+      supports: [to]
     - { source: schurer-vermes-ii }
   confidence: uncertain
   review: needs-check
   note: >-
     Orthosia, Tripolis, Byblos, Berytus and Ptolemais. As syria; the cities
     drifted towards self-rule under the late kings (Tripolis counted an era of
-    its own from 105/104), which is not drawn.
+    its own from 105/104), which is not drawn. Antiochus IX withdrew to
+    Tripolis during Hyrcanus' siege of Samaria (AJ 13.278).
 
 - atom: phoenicia
   polity: armenia
@@ -15727,10 +15887,35 @@
   from: 83 BCE
   to: 70 BCE
   sources:
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        crossed the Euphrates and by main strength took Syria itself and
+        Phoenicia … and he drove Tigranes out of both Syria and Phoenicia.
+      supports: [polity, relation, to]
+    - source: plutarch
+      locator: 'Lucullus 21.2'
+      quote: >-
+        the king was still engaged in subduing some cities of Phoenicia
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.419'
+      quote: >-
+        news was brought that Tigranes, the king of Armenia, had made an
+        irruption into Syria … as he was besieging Ptolemais … But as soon as
+        Ptolemais was taken, news came to Tigranes, that Lucullus, in his
+        pursuit of Mithridates, could not light upon him, who was fled into
+        Iberia, but was laying waste Armenia
+      supports: [polity, to]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tigranes, king of Armenia, took possession for himself of the kingdom
+        of Syria. His reign over Syria lasted for fourteen years, from B.C. 83
+        to B.C. 69.
+      supports: [from, to]
     - { source: appian, locator: 'Syr. 48' }
-    - { source: strabo, locator: '11.14.15' }
-    - { source: plutarch, locator: 'Lucullus 21.2' }
-    - { source: josephus-aj, locator: '13.419–421' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15746,10 +15931,40 @@
   from: 69 BCE
   to: 65 BCE
   sources:
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        he drove Tigranes out of both Syria and Phoenicia.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65 under the title of Antiochus … It was Pompey who, on
+        his victorious march through Asia, first made a complete end of the
+        Seleucid dynasty, in B.c. 65
+      supports: [relation, from, to]
+    - source: strabo
+      locator: '16.2.18'
+      quote: >-
+        Pompey delivered this place from the tyranny of Cinyrus, by striking off
+        his head.
+      supports: []
+    - source: josephus-aj
+      locator: '14.39'
+      quote: >-
+        Dionysius of Tripoli, who had been beheaded
+      supports: []
     - { source: appian, locator: 'Syr. 49, 70' }
   confidence: uncertain
   review: needs-check
-  note: As syria.
+  note: >-
+    As syria. Lucullus drove Tigranes from Phoenicia (Strabo 11.14.15), but
+    no text says Antiochus XIII then held its cities; when Pompey came,
+    Byblus (Strabo 16.2.18) and Tripolis (AJ 14.39) were under tyrants of
+    their own. Drawn as the kingdom's for want of a grain to draw the tyrants
+    at; the holder is not backed.
 
 - atom: tyre
   polity: seleucid
@@ -15757,10 +15972,30 @@
   from: before 133 BCE
   to: 127 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Towards the end of the second century before Christ, the kingdom of
+        the Seleucidae increasingly exhibits an image of dissolution. … a
+        number also of the larger towns … declared themselves independent, and
+        as a sign of their independence began a new computation of time. Thus
+        Tyre had an era dating from the year 126 B.C.
+      supports: [polity, relation, from, to]
+    - source: josephus-aj
+      locator: '13.268'
+      quote: >-
+        He went thence to Tyre, and was there caught; and when he had suffered
+        much from his enemies before his death, he was slain by them.
+      supports: []
     - { source: schurer-vermes-ii }
     - { source: cng-tyre-shekel }
   confidence: probable
   review: needs-check
+  note: >-
+    A city of the kingdom until it counted an era of its own from 126 (Schürer).
+    Demetrius II was caught and killed at Tyre (AJ 13.268) in about the same
+    year.
 
 - atom: tyre
   polity: tyre
@@ -15768,6 +16003,45 @@
   from: 126 BCE
   to: 65 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        declared themselves independent, and as a sign of their independence
+        began a new computation of time. Thus Tyre had an era dating from the
+        year 126 B.C.
+      supports: [polity, relation, from]
+    - source: schurer-1891
+      locator: 'p. 258'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tyre has an era beginning b.c. 126
+      supports: [from]
+    - source: strabo
+      locator: '16.2.23'
+      quote: >-
+        Their independence was secured to them at a small expense to
+        themselves, not only by the kings of Syria, but also by the Romans, who
+        confirmed what the former had conceded.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        the Romans, without fighting, came into possession of Cilicia and both
+        inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [to]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        crossed the Euphrates and by main strength took Syria itself and
+        Phoenicia
+      supports: []
     - { source: cng-tyre-shekel }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
@@ -15784,10 +16058,22 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Towards the end of the second century before Christ, the kingdom of
+        the Seleucidae increasingly exhibits an image of dissolution. … a
+        number also of the larger towns … declared themselves independent, and
+        as a sign of their independence began a new computation of time. Thus
+        Tyre had an era dating from the year 126 B.C.; Sidon a similar one
+        from the year 111
+      supports: [polity, relation, from, to]
     - { source: schurer-vermes-ii }
     - { source: livius-sidon }
   confidence: probable
   review: needs-check
+  note: A city of the kingdom until it counted an era of its own from 111 (Schürer).
 
 - atom: sidon
   polity: sidon
@@ -15795,9 +16081,46 @@
   from: 111 BCE
   to: 65 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        declared themselves independent, and as a sign of their independence
+        began a new computation of time. Thus Tyre had an era dating from the
+        year 126 B.C.; Sidon a similar one from the year 111
+      supports: [polity, relation, from]
+    - source: schurer-1891
+      locator: 'p. 258'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tyre has an era beginning b.c. 126, Sidon one beginning b.c. Ill
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        excepting Tyre and Sidon, which he knew to have been free cities from
+        their ancestors
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        the Romans, without fighting, came into possession of Cilicia and both
+        inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [to]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        crossed the Euphrates and by main strength took Syria itself and
+        Phoenicia
+      supports: []
     - { source: livius-sidon }
     - { source: schurer-vermes-ii }
-    - { source: josephus-aj, locator: '15.95' }
   confidence: probable
   review: needs-check
   note: >-
@@ -15810,10 +16133,28 @@
   from: before 133 BCE
   to: 84 BCE
   sources:
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria.
+      supports: [polity, relation, from]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tigranes, king of Armenia, took possession for himself of the kingdom
+        of Syria. His reign over Syria lasted for fourteen years, from B.C. 83
+        to B.C. 69.
+      supports: [to]
     - { source: appian, locator: 'Syr. 68–70' }
   confidence: uncertain
   review: needs-check
-  note: As syria; Emesa is not heard of as a principality before the 60s.
+  note: >-
+    As syria; Emesa is not heard of as a principality before the 60s. The
+    quotes speak of Syria, not of Emesa by name.
 
 - atom: emesa
   polity: armenia
@@ -15821,7 +16162,20 @@
   from: 83 BCE
   to: 70 BCE
   sources:
-    - { source: appian, locator: 'Syr. 48' }
+    - source: appian
+      locator: 'Syr. 48'
+      quote: >-
+        Tigranes conquered all of the Syrian peoples this side of the Euphrates
+        as far as Egypt.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tigranes, king of Armenia, took possession for himself of the kingdom
+        of Syria. His reign over Syria lasted for fourteen years, from B.C. 83
+        to B.C. 69.
+      supports: [polity, relation, from, to]
   confidence: uncertain
   review: needs-check
   note: As syria.
@@ -15832,17 +16186,55 @@
   from: 69 BCE
   to: 65 BCE
   sources:
-    - { source: strabo, locator: '16.2.10' }
+    - source: diodorus
+      locator: '40.1b.1'
+      quote: >-
+        Since all his hopes rested on his alliance with Sampsiceramus, he
+        summoned him to come with his forces. Sampsiceramus, who had secretly
+        agreed with Azizus to kill the kings, came with his forces and sent for
+        Antiochus. … In a similar way Azizus, in accordance with their agreement
+        to divide up the kingdom of Syria between them
+      supports: [polity, relation]
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        Arethusa, belonging to Sampsiceramus and Iamblichus his son, chiefs of
+        the tribe of the Emeseni.
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65
+      supports: [from, to]
+    - source: schurer-1891
+      locator: 'p. 184'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.C. 65 or 64, probably the disturbances broke out of which
+        Diodorus … gives an account. Antiochus XIII. Asiaticus sought to
+        maintain his possession of the throne by the aid of Sampsigeram of
+        Emesa.
+      supports: [polity, from, to]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
   note: >-
     Sampsigeramus of Emesa and Arethusa (Strabo 16.2.10) is first seen when,
     having "secretly agreed with Azizus to kill the kings", he seized Antiochus
-    XIII, held him captive and later killed him (Diodorus 40.1b, attalus.org's
-    translation). Diodorus gives no year: the fragment falls between Antiochus'
-    restoration (69) and Pompey's arrival (64). Dated from 69, the end of
-    Tigranes' hold on Syria, by convention.
+    XIII, held him captive and later killed him (Diodorus 40.1b). Diodorus
+    gives no year; Schürer puts the episode "probably" in 65 or 64, within
+    Antiochus' reign of 69–65. So the principality is first attested between
+    69 and 65; the row starts at the earlier bound, 69, next to Tigranes'
+    row, rather than leave the years between blank. Ends with Pompey in Syria
+    (64).
 
 - atom: emesa
   polity: emesa
@@ -15931,13 +16323,36 @@
   from: before 133 BCE
   to: 86 BCE
   sources:
+    - source: schurer-1890
+      locator: 'App. I, p. 330'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Ptolemy, son of Mennaus, reigned from about B.C. 85 to about B.C. 40.
+      supports: [to]
+    - source: schurer-1890
+      locator: 'App. I, p. 330'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Indeed in the time of the Jewish king Aristobulus I., the kingdom of
+        the Itureans seems to have embraced even Galilee
+      supports: []
+    - source: josephus-aj
+      locator: '13.318'
+      quote: >-
+        made war against Iturea, and added a great part of it to Judea
+      supports: []
     - { source: appian, locator: 'Syr. 68–70' }
     - { source: myers-2010 }
   confidence: uncertain
   review: needs-check
   note: >-
     The Beqaa, with Chalcis and Heliopolis, under the kings in name. The
-    Ituraean mountain tribes were never much governed by them.
+    Ituraean mountain tribes were never much governed by them. No text read
+    says the kings held the Beqaa in these years, so the holder and the start
+    are unbacked; the end is the year before Ptolemy son of Mennaeus is first
+    seen (Schürer). Aristobulus I's war on the Ituraeans in 104/103 (AJ
+    13.318), when Schürer thinks their kingdom "seems to have embraced even
+    Galilee", may mean they were their own masters well before 85.
 
 - atom: ituraea
   polity: ituraea
@@ -15945,16 +16360,56 @@
   from: c. 85 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.392, 13.418' }
-    - { source: strabo, locator: '16.2.10' }
+    - source: schurer-1890
+      locator: 'App. I, p. 330'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        We have therefore before us a State constructed precisely in the same
+        fashion as was the Jewish State of that time, only that Ptolemy, son of
+        Mennaus, was in point of civilisation a good way in advance of
+        Alexander Jannaus. Ptolemy, son of Mennaus, reigned from about B.C. 85
+        to about B.C. 40. About B.C. 85, from fear of him, the Damascenes
+        called in the aid of Aretas, king of the Arabians
+      supports: [polity, relation, from]
+    - source: josephus-aj
+      locator: '13.392'
+      quote: >-
+        After him Aretas reigned over Coele Syria, being called to the
+        government by those that held Damascus, by reason of the hatred they
+        bore to Ptolemy Menneus.
+      supports: [polity, relation]
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        Heliopolis and Chalcis, which were subject to Ptolemy, son of Mennaeus,
+        who possessed the Massyas and the mountainous country of the Ituraeans.
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.39'
+      quote: >-
+        took cognizance of the country of Ptolemy Menneus, a wicked man, and
+        not less so than Dionysius of Tripoli, who had been beheaded, who was
+        also his relation by marriage; yet did he buy off the punishment of his
+        crimes for a thousand talents
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
+    - { source: josephus-aj, locator: '13.418' }
     - { source: myers-2010 }
   confidence: uncertain
   review: needs-check
   note: >-
     Ptolemy son of Mennaeus, whom the Damascenes so hated that they called in
-    Aretas c. 85 (AJ 13.392); Aristobulus marched on Damascus against him under
-    Salome Alexandra (13.418). Whether he acknowledged Tigranes is not
-    recorded. He bought off Pompey in 63 (AJ 14.39).
+    Aretas, about 85 (AJ 13.392; Schürer); Aristobulus marched on Damascus
+    against him under Salome Alexandra (13.418). Whether he acknowledged
+    Tigranes is not recorded. He bought off Pompey on the march to Damascus
+    in the spring of the year Jerusalem fell, in the consulship of Antonius
+    and Cicero (63; AJ 14.39, 14.66).
 
 - atom: ituraea
   polity: ituraea
@@ -15962,11 +16417,56 @@
   from: 63 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.39' }
+    - source: josephus-aj
+      locator: '14.39'
+      quote: >-
+        took cognizance of the country of Ptolemy Menneus, a wicked man, and
+        not less so than Dionysius of Tripoli, who had been beheaded, who was
+        also his relation by marriage; yet did he buy off the punishment of his
+        crimes for a thousand talents
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: schurer-1890
+      locator: 'App. I, pp. 330–331'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        When Pompey arrived, … Ptolemy purchased immunity from him by the
+        payment of a thousand talents
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        for he executed Lysanias, whom he himself had made king over them, on
+        the charge that he had favoured Pacorus
+      supports: [polity, relation, to]
+    - source: schurer-1890
+      locator: 'App. I, p. 332'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        At the instigation of Cleopatra, Antony caused Lysanias to be executed
+        in B.C. 36
+      supports: [to]
+    - source: josephus-bj
+      locator: '1.248'
+      quote: >-
+        Lysanias had already succeeded upon the death of his father Ptolemy, the
+        son of Menneus, in the government
+      supports: [polity]
     - { source: strabo, locator: '16.2.10, 16.2.18' }
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Ptolemy son of Mennaeus bought off Pompey for a thousand talents in 63
+    (AJ 14.39); his son Lysanias succeeded him c. 40 (BJ 1.248) and was king
+    by Antony's appointment until Antony executed him in 36 (Dio 49.32.5;
+    Schürer), when the ground passes to Cleopatra (aegyptus).
 
 - atom: commagene
   polity: commagene
@@ -16040,14 +16540,63 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 106, 114' }
-    - { source: strabo, locator: '16.2.3' }
+    - source: appian
+      locator: 'Mithr. 106'
+      quote: >-
+        Pompey then passed over Mount Taurus and made … war against Antiochus , the
+        king of Commagene , until the latter entered into friendly relations with
+        him.
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        To Antiochus of Commagene he turned over Seleucia and the parts of
+        Mesopotamia that he conquered.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 377'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The “conquered” Antiochus, therefore, was allowed to retain his
+        kingdom. His royal title was recognized by Pompey and he was added to
+        the list of Rome’s client-kings.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. II, p. 1216'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For the submission of AntiOchus to Pompey in 64 see above p. 376.
+      supports: [from]
+    - source: strabo
+      locator: '16.2.3'
+      quote: >-
+        Commagene is rather a small district. It contains a strong city, Samosata
+        , in which was the seat of the kings.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 445'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In Commagene, on the other hand, King Mithradates II, even though he
+        had fought on Antony’s side, was retained in power.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '54.7.4–9.3'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia … to one Mithridates, though still a mere
+        boy, he gave Commagene, inasmuch as its king had put the boy's father
+        to death.
+      supports: [relation, to]
     - { source: facella-2006 }
   confidence: probable
   review: draft
   note: >-
     Pompey fought Antiochus I, made him a friend, and added Seleucia at Zeugma
-    (App. Mithr. 106, 114).
+    (App. Mithr. 106, 114); Magie has him recognised as king and "added to the
+    list of Rome's client-kings", and dates his submission to 64. Still a
+    kingdom under Rome after Actium (Magie) and in the consulship of Apuleius
+    and Silius (20), when Augustus gave it to a boy Mithridates (Dio 54.9.3).
 
 - atom: amanus
   polity: amanus
@@ -16055,17 +16604,76 @@
   from: 64 BCE
   to: 31 BCE
   sources:
-    - { source: strabo, locator: '14.5.18' }
-    - { source: cicero-fam, locator: '15.1.2' }
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        It was always ruled by several powerful tyrants, who possessed
+        strongholds; but in my time a notable man established himself as lord
+        of all, and was named king by the Romans because of his manly virtues
+        — I refer to Tarcondimotus
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 377'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        This region had been overrun by Afranius in the autumn of 64, but,
+        peopled in part by bandit-tribes, it was ill-suited for incorporation
+        in a Roman province. It was therefore left under the rule of a local
+        dynast, Tarcondimotus, who was now recognized as friend and ally of
+        Rome.
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 397'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Tarcondimotus, whom Pompey had made ruler over part of the mountain
+        region of the Amanus
+      supports: [polity, relation, from]
+    - source: cicero-fam
+      locator: '15.1.2'
+      quote: >-
+        a despatch was handed to me from Tarcondimotus, who is considered to be
+        the most faithful ally and the most devoted friend of the Roman people
+        beyond Mount Taurus
+      supports: [polity]
+    - source: cassius-dio
+      locator: '50.14.2'
+      quote: >-
+        he not only gained nothing from the victory, but perished, together
+        with Tarcondimotus
+      supports: [to]
+    - source: cassius-dio
+      locator: '50.10.1'
+      quote: >-
+        Valerius Messalla, who had once been proscribed by them, became consul
+        with Caesar.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 445'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Philopator was not permitted to succeed to his father’s power, and the
+        kingship of this region was for a time suspended.
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
   note: >-
     Strabo names Tarcondimotus as tyrant of the Amanus, made king by the
-    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus. When
-    Rome made him king is not recorded; dated from Pompey's settlement, when
-    Sullivan puts it. Unclaimed before: the Amanus was robbers' country under
-    the last Seleucids.
+    Romans; Cicero calls him Rome's most faithful ally beyond the Taurus. Magie
+    has Afranius overrun the region in the autumn of 64 and Pompey make
+    Tarcondimotus its ruler, "now recognized as friend and ally of Rome"; the
+    title of king came later, probably under Antony (Magie II p. 1240 n. 53).
+    Set up by Rome, so a client throughout. He fell fighting for Antony in the
+    consulship of Caesar and Messalla (31, Dio 50.14.2), and Octavian did not
+    let his son succeed (Dio 51.2.2). Unclaimed before: the Amanus was
+    robbers' country under the last Seleucids.
 
 # The Hasmoneans
 
@@ -16075,18 +16683,88 @@
   from: before 133 BCE
   to: 130 BCE
   sources:
-    - { source: josephus-aj, locator: '13.236–248' }
-    - { source: justin, locator: '36.1' }
-  confidence: probable
+    - source: josephus-aj
+      locator: '13.245'
+      quote: >-
+        if the besieged would deliver up their arms, and pay tribute for Joppa,
+        and the other cities which bordered upon Judea, and admit a garrison of
+        his, on these terms he would make war against them no longer.
+      supports: [polity, relation]
+    - source: justin
+      locator: '36.1'
+      quote: >-
+        He also reduced the Jews, who, during the Macedonian rule under his
+        father Demetrius, had recovered their liberty by force of arms
+      supports: [relation]
+    - source: schurer-1891
+      locator: 'p. 276'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The terms of the arrangement were that the Jews should deliver up their
+        arms, pay tribute for Joppa and the other towns lying outside of Judea
+        which they had conquered, give hostages, and besides pay 500 talents.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the first year of John Hyrcanus, B.c. 135—134, he invaded Judea,
+        devastated the whole country, and finally laid siege to Hyrcanus in
+        his capital, Jerusalem.
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.236'
+      quote: >-
+        he invaded Judea in the fourth years' of his reign, and the first year
+        of the principality of Hyrcanus, in the hundred and sixty-second
+        Olympiad.
+      supports: []
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the latter period, in Olympiad 162, 3, or B.c. 130-129, Porphyry
+        puts the attack
+      supports: []
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 279'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        dependence on Antiochus VII. also obliged him to take the field with
+        the Syrian monarch against the Parthians in b.c. 129. … The death of
+        Antiochus in the Parthian campaign, in b.c. 128
+      supports: [relation]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+  confidence: uncertain
   review: needs-check
   note: >-
     Antiochus VII besieged Jerusalem in Hyrcanus' first year (134 or 133) and
     lifted the siege when the Jews gave up their arms and agreed to "pay
     tribute for Joppa, and the other cities which bordered upon Judea" (AJ
     13.245–248), and Justin has Antiochus subdue the Jews (36.1); Hyrcanus
-    went with him to the east in 130 (AJ 13.249–251). A vassal until the
-    king's death in 129. In 133 itself Jerusalem was under siege or had just
-    come to terms; the row is the terms' from the window's start.
+    went with him to the east (AJ 13.249–251). A vassal until the king's
+    death. In 133 itself Jerusalem was under siege or had just come to terms;
+    the row is the terms' from the window's start. Both ends are in doubt.
+    Josephus dates the invasion both to Hyrcanus' first year (135/134, as
+    Schürer reckons it) and to the 162nd Olympiad (132–128), and Porphyry
+    puts the attack in 130/129, so the terms may postdate 133. Schürer has
+    Hyrcanus march with Antiochus in 129 and the king die in 128, a year
+    later than this row's end; moving it to 129 waits on the judaea
+    client-of seleucid relation, which ends "after 130". Probable until
+    October 2026.
 
 - atom: judaea
   polity: judaea
@@ -16094,33 +16772,157 @@
   from: 129 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.254, 13.273, 14.1–79' }
-  confidence: certain
+    - source: josephus-aj
+      locator: '13.273'
+      quote: >-
+        for after the death of Antiochus, he revolted from the Macedonians, nor
+        did he any longer pay them the least regard, either as their subject or
+        their friend
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Judea had been able to keep itself … absolutely independent of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+    - { source: josephus-aj, locator: '13.254' }
+  confidence: probable
   review: draft
   note: >-
     "After the death of Antiochus, he revolted from the Macedonians, nor did he
     any longer pay them the least regard" (AJ 13.273). The Hasmonean kingdom,
     a friend of Rome by treaty but no client; kings from Aristobulus I (104).
+    Porphyry puts Antiochus VII's death in Olympiad 162.4, 129/128, and
+    Schürer in 128, which would start the row a year later; certain until
+    October 2026. Ends when Pompey took Jerusalem in the consulship of
+    Antonius and Cicero (63; AJ 14.66).
 
 - atom: judaea-jericho
   polity: judaea
   relation: client
   from: before 133 BCE
   to: 130 BCE
-  sources: [{ source: josephus-aj, locator: '13.236–248' }]
-  confidence: probable
+  sources:
+    - source: josephus-aj
+      locator: '13.245'
+      quote: >-
+        if the besieged would deliver up their arms, and pay tribute for Joppa,
+        and the other cities which bordered upon Judea, and admit a garrison of
+        his, on these terms he would make war against them no longer.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '13.230'
+      quote: >-
+        So Ptolemy retired to one of the fortresses that was above Jericho,
+        which was called Dagon. But Hyrcanus having taken the high priesthood
+        that had been his father's before
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the first year of John Hyrcanus, B.c. 135—134, he invaded Judea,
+        devastated the whole country, and finally laid siege to Hyrcanus in
+        his capital, Jerusalem.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the latter period, in Olympiad 162, 3, or B.c. 130-129, Porphyry
+        puts the attack
+      supports: []
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+    - { source: josephus-aj, locator: '13.236–248' }
+  confidence: uncertain
   review: needs-check
-  note: As judaea.
+  note: >-
+    As judaea, with the same doubt over both ends (the siege's year; Antiochus
+    VII's death in 129 or 128); probable until October 2026. Hyrcanus besieged
+    his father's murderer in Dagon, the fortress above Jericho, in his first
+    year (AJ 13.230).
 
 - atom: judaea-jericho
   polity: judaea
   relation: independent
   from: 129 BCE
   to: 64 BCE
-  sources: [{ source: josephus-aj, locator: '13.273' }]
-  confidence: certain
+  sources:
+    - source: josephus-aj
+      locator: '13.273'
+      quote: >-
+        for after the death of Antiochus, he revolted from the Macedonians, nor
+        did he any longer pay them the least regard, either as their subject or
+        their friend
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.4'
+      quote: >-
+        when Quintus Hortensius and Quintus Metellus, who was called Metellus of
+        Crete, were consuls at Rome … as it came to a battle with Hyrcanus at
+        Jericho
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+  confidence: probable
   review: draft
-  note: As judaea.
+  note: >-
+    As judaea: Porphyry puts Antiochus VII's death in 129/128, Schürer in 128;
+    certain until October 2026. The brothers' war of 69 was fought at Jericho
+    (AJ 14.4).
 
 - atom: judaea-joppa
   polity: judaea
