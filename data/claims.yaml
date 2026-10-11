@@ -7250,7 +7250,7 @@
   polity: colchis
   relation: client
   from: 63 BCE
-  to: after 27 BCE
+  to: 48 BCE
   sources:
     - source: appian
       locator: 'Mithr. 114'
@@ -7264,8 +7264,45 @@
         peace was assured by the recognition of the local dynast Aristarchus as
         the ruler of Colchis
       supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His first move was directed against the district of Colchis at the
+        eastern end of the Euxine Sea, which had been placed by Pompey under the
+        rule of the dynast Aristarchus but now submitted without a struggle
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '42.45.3'
+      quote: >-
+        he got possession of Colchis without any difficulty
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Later, Antony further enlarged his kingdom by the gift of both Lesser
+        Armenia and Colchis.
+      supports: []
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        But when the power of Mithridates had been broken up, all the territory
+        subject to him was also broken up and distributed among many persons.
+        At last Polemon got Colchis
+      supports: []
   confidence: probable
   review: draft
+  note: >-
+    Aristarchus' Colchis, from Pompey's settlement until it submitted to
+    Pharnaces in 48, after Pharsalus (Magie I 408; Dio 42.45.3). Who held it
+    after Zela is not recorded until Polemon, to whom Antony gave it (Magie I
+    435; "At last Polemon got Colchis", Strabo 11.2.18), on a date no
+    readable text gives. Until October 2026 the row ran to after 27 BCE, which
+    no readable text supports. The start of 63 is no text's either: Magie
+    dates Pompey's arrangements from the spring of 64 (I 360) to the winter of
+    63–62 (I 365, 368), a range whose middle is 63; the polity and its
+    relation also start in 63.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
