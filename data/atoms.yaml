@@ -3896,6 +3896,22 @@
         - [-6.5, 36.6]
         - [-5.4, 35.95]
   sources:
+    - source: pliny-nh
+      locator: '3.6'
+      quote: >-
+        The first land situate upon this Gulf is that which is called the
+        Farther Spain or Baetica; next to which, beginning at the frontier town
+        of Urgi, is the Nearer, or Tarraconensian Spain, extending as far as the
+        chain of the Pyrenees. The Farther Spain is divided lengthwise into two
+        provinces, Lusitania and Baetica, the former stretching along the
+        northern side of the latter, and being divided from it by the river Ana.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.112–113'
+      quote: >-
+        the river Durius … dividing the Vettones from Asturia, the Gallaeci from
+        Lusitania … After passing the Durius, Lusitania begins.
+      supports: [construction]
     - { source: richardson-1986 }
     - { source: pliny-nh, locator: '3.6–17' }
     - { source: barrington, locator: 'maps 26–27' }
@@ -4079,9 +4095,21 @@
         - at: [1.95, 43.0]
           note: the divide between the Ariège and the upper Aude, a convention
   sources:
+    - source: strabo
+      locator: '4.1.12–13'
+      quote: >-
+        The Tectosages, and certain others whom we shall mention afterwards,
+        border on the range of the Cevennes … But the Tectosages dwell near to
+        the Pyrenees, bordering for a small space the northern side of the
+        Cevennes
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the borders of the Santones, which are not far removed from the borders
+        of the Tolosates, a state in the Province
+      supports: [construction]
     - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
-    - { source: strabo, locator: '4.1.12–13' }
-    - { source: caesar-bg, locator: '1.10' }
     - { source: orosius, locator: '5.15.25' }
     - { source: mapterhorn }
     - { source: natural-earth }
@@ -4143,6 +4171,38 @@
         - [5.0, 42.8]
         - [3.4, 42.5]
   sources:
+    - source: caesar-bg
+      locator: '1.6'
+      quote: >-
+        The other route, through the Roman Province, was far more easy and
+        convenient, forasmuch as the Rhone flows between the borders of the
+        Helvetii and the Allobroges … The last town of the Allobroges, the
+        nearest to the borders of the Helvetii, is Geneva
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the Tolosates, a state in the Province. … he moved from Ocelum, the last
+        station of Hither Gaul, into the borders of the Vocontii in Further
+        Gaul. Thence he led his army into the borders of the Allobroges, and
+        from thence into the country of the Segusiavi, the first tribe outside
+        the Province, across the Rhone.
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.7–8'
+      quote: >-
+        posting garrisons among the Ruteni of the Province, the Volcae
+        Arecomici, the Tolosates, and around Narbo … the territory of the
+        Helvii, which touches the borders of the Arverni. … Now the range of the
+        Cevennes, which parts the Arverni from the Helvii
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.30–31'
+      quote: >-
+        The Pyrenean mountains divide Spain from Gaul … the province of [Gallia]
+        Narbonensis … It is divided from Italy by the river Varus, and by the
+        range of the Alps
+      supports: [construction]
     - { source: caesar-bg, locator: '1.6–10, 1.45, 7.7–8, 7.64–65' }
     - { source: cicero-font, locator: '12–14, 20, 26' }
     - { source: amela-valverde-2019, locator: '24, 28' }
@@ -4322,8 +4382,25 @@
         - at: [9.5, 47.45]
           note: the south shore of the Lacus Brigantinus
   sources:
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers, a circuit of some 3,200
+        miles, with the exception of some allied states which had rendered him
+        good service, he reduced to the form of a province
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.1'
+      quote: >-
+        Gaul is a whole divided into three parts, one of which is inhabited by
+        the Belgae, another by the Aquitani, and a third by a people called in
+        their own tongue Celtae … The Belgae, beginning from the edge of the
+        Gallic territory, reach to the lower part of the river Rhine … Aquitania,
+        starting from the Garonne, reaches to the Pyrenees and to that part of
+        the Ocean which is by Spain
+      supports: [construction]
     - { source: caesar-bg, locator: '1.1, 3.1–6, 8.46–49' }
-    - { source: suetonius-iul, locator: '25' }
     - { source: drinkwater-1983, locator: 'ch. 1' }
     - { source: hydrorivers }
     - { source: mapterhorn }
