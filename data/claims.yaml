@@ -7736,7 +7736,7 @@
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
-  relation: client
+  relation: allied
   from: 65 BCE
   to: after 36 BCE
   sources:
@@ -7769,6 +7769,9 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    Allied, not client (October 2026; it read client): the texts give a
+    treaty, peace or alliance (Dio 37.2.7, 37.5.1, 49.24.1; Magie I 359), and
+    none has Rome set up or depose the king, as on the relation.
     Submitted to Pompey after his invasion of 65. Last attested in 36, when
     Canidius beat Pharnabazus and brought the Iberians into alliance (Dio
     49.24.1); the row ends open there. Augustus records their kings' embassies
@@ -7777,7 +7780,7 @@
 
 - atom: albania
   polity: albania
-  relation: client
+  relation: allied
   from: 65 BCE
   to: after 36 BCE
   sources:
@@ -7819,6 +7822,9 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    Allied, not client (October 2026; it read client): the texts give a
+    treaty, peace or alliance (Dio 37.2.7, 37.5.1, 49.24.1; Magie I 359), and
+    none has Rome set up or depose the king, as on the relation.
     Oroeses sued for peace after Pompey's campaign of 65. Last attested in 36,
     when Canidius, in the year of Gellius and Nerva, beat Zober and
     "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the row

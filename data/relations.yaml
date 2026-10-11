@@ -3058,7 +3058,7 @@
   type: allied-to
   of: rome
   from: 35 BCE
-  to: 31 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - { source: cassius-dio, locator: '49.33.1–2' }
     - { source: cassius-dio, locator: '49.44.1' }
@@ -3068,7 +3068,7 @@
 - polity: atropatene
   type: client-of
   of: parthia
-  from: 30 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
     - { source: cassius-dio, locator: '49.44.4' }
