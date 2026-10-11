@@ -62,9 +62,9 @@ export function normalise(s: string): string {
   return ` ${words.join(' ')} `
 }
 
-/** Whether the quote's pieces appear in the text, in order. */
-export function quoteIn(quote: string, text: string): boolean {
-  const hay = normalise(text)
+/** Whether the quote's pieces appear in the text (or the text already normalised), in order. */
+export function quoteIn(quote: string, text: string | { normalised: string }): boolean {
+  const hay = typeof text === 'string' ? normalise(text) : text.normalised
   let from = 0
   for (const piece of quote.split(/…|\.\.\./).map(normalise)) {
     if (!piece.trim()) continue
@@ -119,6 +119,14 @@ function textUrl(ref: SourceRef, source: Source | undefined): string | undefined
 
 const checked = new WeakMap<SourceRef, QuoteCheck>()
 
+/** Each downloaded text, normalised once: a scanned book is quoted from many times. */
+const texts = new Map<string, { normalised: string }>()
+function downloaded(file: string) {
+  let t = texts.get(file)
+  if (!t) texts.set(file, (t = { normalised: normalise(readFileSync(file, 'utf8')) }))
+  return t
+}
+
 /** Finds a citation's quote in its text. Call only for citations with a quote. */
 export function checkQuote(ref: SourceRef, source: Source | undefined): QuoteCheck {
   const memo = checked.get(ref)
@@ -129,7 +137,7 @@ export function checkQuote(ref: SourceRef, source: Source | undefined): QuoteChe
     const file = quotedFile(url)
     out = !existsSync(file)
       ? { status: 'unread', why: `${url} not downloaded: npm run quotes:fetch -w pipeline` }
-      : quoteIn(ref.quote!, readFileSync(file, 'utf8'))
+      : quoteIn(ref.quote!, downloaded(file))
         ? { status: 'found' }
         : { status: 'not-found', in: url }
   } else if (work(ref.source, ref.locator)) {
