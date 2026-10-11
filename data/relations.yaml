@@ -738,9 +738,12 @@
   to: 28 BCE
   sources:
     - { source: bellum-africum, locator: '97' }
-  confidence: certain
+  confidence: probable
   review: draft
-  note: Annexation of Numidia after Thapsus.
+  note: >-
+    Annexation of Numidia after Thapsus. Its end is disputed: 27 by the view
+    once unanimous, by 35 for Fishwick and Shaw (see the polity); kept at 28,
+    probable (was certain).
 
 # --- client kingdoms -------------------------------------------------------------
 
