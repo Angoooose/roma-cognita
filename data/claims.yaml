@@ -2761,7 +2761,7 @@
 - atom: thracia-odrysae
   polity: thracia-odrysae
   relation: client
-  from: c. 80 BCE
+  from: before 31 BCE
   to: after 27 BCE
   sources:
     - source: cicero-verr
@@ -2769,13 +2769,13 @@
       quote: >-
         when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
         and to king Sadala
-      supports: [polity, from]
+      supports: []
     - source: broughton-mrr
       locator: 'vol. II, 80 B.C., p. 81'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Legate, then Legatus pro quaestore, under Cn. Dolabella in Cilicia
-      supports: [from]
+      supports: []
     - source: cicero-pis
       locator: '84'
       quote: >-
@@ -2786,7 +2786,7 @@
       locator: 'Antony 61.1'
       quote: >-
         Of subject kings who fought with him, there were … Sadalas of Thrace
-      supports: [polity, relation]
+      supports: [polity, relation, from]
     - source: cassius-dio
       locator: '51.25.4–5'
       quote: >-
@@ -2808,10 +2808,12 @@
     27: Crassus spared the Odrysae and gave them land in 29–28 (Dio
     51.25.4–5), and Lollius was aiding their king's house against the Bessi
     before 16 (Dio 54.20.3). Antony's "subject kings" at Actium included
-    Sadalas of Thrace (Plut. Ant. 61.1). The start is
-    the first sign of a friendly king, not the beginning of one: c. 80 the
+    Sadalas of Thrace (Plut. Ant. 61.1). The start is the first year a text
+    has the king Rome's subject, 31, not the beginning of the tie: c. 80 the
     governor of Cilicia sent Verres as his legate "to king Nicomedes and to
-    king Sadala" (Cic. Verr. 2.1.63). Before it the kingdom is left unclaimed:
+    king Sadala" (Cic. Verr. 2.1.63), which shows a king in touch with Rome but
+    says nothing of his standing, and the claim read "c. 80" on it until the
+    check. Before 31 the kingdom is left unclaimed:
     Cicero recalls "that general defection of all the barbarians" round
     Macedonia under Sentius, governor c. 93–87 (Pis. 84), Thracians served in
     Mithridates' armies (App. Mithr. 41), and the governors of Macedonia
