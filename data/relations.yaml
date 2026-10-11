@@ -1083,6 +1083,41 @@
     independent. Two kings from about 49; see the polity.
 
 - polity: aegyptus
+  type: allied-to
+  of: rome
+  from: before 133 BCE
+  to: 60 BCE
+  sources:
+    - source: justin
+      locator: '38.8'
+      quote: >-
+        he went out to meet some Roman commissioners, Scipio Africanus, Spurius
+        Mummius, and Lucius Metellus, who had come to inspect the dominions of
+        their allies
+      supports: [type, of, from]
+    - source: caesar-bc
+      locator: '3.107'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=107
+      quote: >-
+        the alliance with Ptolemy, the father, had been contracted during his
+        former consulship
+      supports: [to]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy XII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_xii.htm
+      quote: >-
+        Ptolemy XII was not recognised as a Roman "friend and ally" until early
+        A.U.C. 695 = 59, with the help of some extremely large bribes
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Rome's ally when Scipio Aemilianus' embassy visited Ptolemy VIII (Justin
+    38.8), to Ptolemy XII's recognition as friend and ally in 59, when the
+    client-of row begins (Caes. BC 3.107; Bennett). Added October 2026; Egypt
+    had no relation to Rome before 59.
+
+- polity: aegyptus
   type: client-of
   of: rome
   from: 59 BCE
@@ -1422,7 +1457,7 @@
     claim.
 
 - polity: galatia
-  type: client-of
+  type: allied-to
   of: rome
   from: before 133 BCE
   to: 64 BCE
@@ -1459,6 +1494,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    Allied, the closest standing the texts describe (see the claim); it read
+    client-of until October 2026.
     The tetrarchs' standing before Pompey is not stated; they fought on Rome's
     side in 89 and in the 70s.
 

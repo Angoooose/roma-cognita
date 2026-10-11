@@ -3541,7 +3541,7 @@
 
 - atom: galatia
   polity: galatia
-  relation: client
+  relation: allied
   from: before 133 BCE
   to: 64 BCE
   sources:
@@ -3605,6 +3605,10 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    Allied, not client: no readable text calls the Galatians Rome's clients
+    before Pompey; the senate left them autonomous (Polybius 30.28) and they
+    sent forces to Rome's generals in 89 (App. Mithr. 17), so the row reads
+    allied, the closest the texts describe (October 2026; it read client).
     The three peoples under their tetrarchs. Their standing to Rome before
     Pompey is not stated anywhere: Rome raised troops from "the Galatians of
     Asia" in 89 (App. Mithr. 17), Mithridates killed their tetrarchs in 86 and
@@ -6222,7 +6226,7 @@
 
 - atom: aegyptus
   polity: aegyptus
-  relation: independent
+  relation: allied
   from: before 133 BCE
   to: 60 BCE
   sources:
@@ -6254,7 +6258,7 @@
         he went out to meet some Roman commissioners, Scipio Africanus, Spurius
         Mummius, and Lucius Metellus, who had come to inspect the dominions of
         their allies
-      supports: []
+      supports: [relation]
     - { source: cassius-dio, locator: '39.12.1' }
     - source: bennett-ptolemies
       locator: 'Ptolemy XII'
@@ -6273,9 +6277,8 @@
     59). Its civil wars (132–124, 107, 88) and the Theban revolt of c. 88–86
     were fought over the one kingdom and are not drawn. Justin calls Egypt one
     of Rome's allies when Scipio Aemilianus' embassy visited Ptolemy VIII
-    (38.8), which by the rule for Pontus would make this row allied, not
-    independent; that would need an allied-to relation, so the relation is
-    left as it was. Bennett (Ptolemy XII, which is as far as it goes) says
+    (38.8), so the row is allied, as Pontus is before 89; it read independent
+    until October 2026. Bennett (Ptolemy XII, which is as far as it goes) says
     Ptolemy XII was not recognised as friend and ally until 59, but that
     Ptolemy XI (80) was "certainly" one and Ptolemy X only hypothetically:
     the texts do not agree, so the row is uncertain (checked, October 2026).
