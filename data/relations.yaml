@@ -3076,13 +3076,64 @@
   from: before 133 BCE
   to: 75 BCE
   sources:
-    - { source: strabo, locator: '14.1.38' }
-    - { source: appian, locator: 'Mithr. 10–11, 60, 71' }
+    - source: magie-1950
+      locator: 'vol. I, pp. 317–318'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in 149 b.c., when Prusias’s son, Nicomedes, setting out from Rome …
+        rebelled against the old monarch and entered Bithynia with an army …
+        The Senate was probably not unwilling to have an assurance of a stable
+        peace between the two rival client-kingdoms. Nicomedes II, surnamed
+        Epiphanes, thus began his reign as the protege of Attalus. … the
+        example of Attalus probably contributed to his conception of his duties
+        as a client-king. His fidelity was shown when he responded to the
+        Senate’s call for aid in the suppression of the revolt of Aristonicus.
+      supports: [type, of, from]
+    - source: strabo
+      locator: '14.1.38'
+      quote: >-
+        After Smyrna one comes to Leucae, a small town, which after the death of
+        Attalus Philometor was caused to revolt by Aristonicus … and they were
+        assisted by Nicomedes the Bithynian and by the kings of the Cappadocians
+      supports: [of, from]
+    - source: appian
+      locator: 'Mithr. 7'
+      quote: >-
+        At his death his son, Nicomedes, surnamed Philopator, succeeded him, the
+        Senate confirming his ancestral authority.
+      supports: [type, of]
+    - source: appian
+      locator: 'Mithr. 11'
+      quote: >-
+        The Romans decided to restore Nicomedes and Ariobarzanes at the same
+        time, each to his own kingdom
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 319'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His ultimate restoration by Sulla — one of the provisions of the Treaty
+        of Dardanus f — made him an obedient vassal of Rome for the remaining
+        eleven years of his reign.
+      supports: [type, of, to]
+    - source: eutropius
+      locator: '6.6'
+      quote: >-
+        in the consulate of Lucius Licinius Lucullus and Marcus Aurelius Cotta.
+        Nicomedes, king of Bithynia, died, appointing by his will the Roman
+        people his heir.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 10, 60, 71' }
   confidence: certain
   review: draft
   note: >-
     A friend of Rome: Nicomedes II sent help against Aristonicus (Strabo
     14.1.38), and Rome twice restored Nicomedes IV, who left it his kingdom.
+    Client is Magie's word for it from Nicomedes II's accession in 149 to
+    Nicomedes IV's last years, "an obedient vassal of Rome" (317–319), and the
+    senate confirmed the kings (App. Mithr. 7) and restored them (11). Nicomedes
+    IV died in Lucullus' and Cotta's consulship, 74 (Eutropius 6.6), so the
+    relation ends with 75.
 
 - polity: pontus-regnum
   type: allied-to
