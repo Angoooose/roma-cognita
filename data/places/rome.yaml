@@ -605,10 +605,10 @@
   names:
     - { text: Forum Iulium, lang: la, preferred: true }
     - { text: Forum of Caesar, lang: en }
-  from: 54 BCE
+  from: { earliest: 54 BCE, latest: 51 BCE }
   to: after 27 BCE
   condition:
-    - { value: under construction, from: 54 BCE, to: 47 BCE }
+    - { value: under construction, from: { earliest: 54 BCE, latest: 51 BCE }, to: 47 BCE }
     - { value: standing, from: 46 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -625,7 +625,7 @@
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
       quote: >-
         Work was probably begun in 51, during Caesar's absence in Gaul
-      supports: []
+      supports: [from, condition]
     - source: platner-ashby
       locator: 'Forum Julium, p. 226'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
@@ -654,15 +654,17 @@
     - { source: osm-rome, locator: relation/1841081 }
     - { source: cicero-att, locator: '4.16.8' }
     - { source: sitar, locator: '16664, 16675, 16688, 16703 (the houses under it, to 55 BCE)' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Planned by 54 BCE, when Cicero and Oppius were buying up the land for Caesar for
     sixty million sesterces (Cicero, Letters to Atticus 4.16.8), and dedicated with its
     temple on 26 September 46 BCE, the last day of his triumph. The houses excavated
-    under it end in 55 BCE (SITAR), so the map shows the houses gone and the works under
-    way from 54, and the forum standing from its dedication. The remains are of Trajan's
-    rebuilding on the same plan.
+    under it end in 55 BCE (SITAR), but Platner & Ashby put the start of the work
+    "probably" in 51, during Caesar's absence in Gaul, so the works are shown starting
+    some time between 54 and 51, and the forum standing from its dedication. Until
+    October 2026 the works started in 54. The remains are of Trajan's rebuilding on
+    the same plan.
 
 - id: aedes-veneris-genetricis
   kind: temple
