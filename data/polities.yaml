@@ -2622,9 +2622,7 @@
     - { text: Commagene, lang: la, preferred: true }
   from: before 133 BCE
   to: after 27 BCE
-  ruler: >-
-    Sames II; Mithridates I Callinicus, c. 100–70; Antiochus I, c. 70–36 (or
-    later); Mithridates II by 31
+  ruler: Antiochus I, by 69 to 38 or later; Mithridates II by 31
   sources:
     - source: magie-1950
       locator: 'vol. I, p. 376'
@@ -2695,6 +2693,12 @@
     throughout. Dio 49.23.4 has Phraates kill an Antiochus, grandfather of his
     brothers, c. 37–36; whether this is Antiochus I, and so when he died, is
     disputed. Mithridates II was king at Actium (Plut. Antony 61.1).
+    The ruler reads only what readable texts give: Antiochus king in
+    Hortensius' consulship (69, Dio 36.1.1–2.5) and at the siege of Samosata
+    after Pacorus fell (38, Plut. Antony 34.1); Mithridates II at Actium.
+    Until October 2026 it began "Sames II; Mithridates I Callinicus, c.
+    100–70; Antiochus I, c. 70–36", from Sullivan and Facella, which were not
+    read.
 
 - id: judaea
   kind: kingdom
