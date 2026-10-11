@@ -116,6 +116,12 @@ evidence; it isn't a disagreement. Expect conventional dates to be contradicted
 by the texts (Sicily "from 241", Macedonia "from 146"); when they are, that is a
 disagreement (below), not something to explain away.
 
+**A relation no readable text names takes the closest type the texts
+describe.** "Friend", "ally", a king working with Rome: allied. A king Rome
+set up, deposed or called "subject": client. If the texts describe nothing
+of the tie at all, keep the type and leave the field partly backed, rather
+than leaving the ground blank.
+
 ## Disagreements
 
 **When a readable source contradicts the record, fix the record.** A
