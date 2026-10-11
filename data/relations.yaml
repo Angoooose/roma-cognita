@@ -58,6 +58,14 @@
         for lands in Italy, and about 260,000,000 disbursed for provincial
         lands.
       supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [from]
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
@@ -106,6 +114,14 @@
       quote: >-
         The Senate also voted that those Italians who had adhered to their
         alliance should be admitted to citizenship
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
       supports: [to]
     - { source: beloch-1880, locator: 'ch. III, pp. 43–64' }
   confidence: certain
