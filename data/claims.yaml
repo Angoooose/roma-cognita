@@ -16240,7 +16240,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 105 BCE
+  to: 106 BCE
   sources:
     - { source: josephus-aj, locator: '13.318–319' }
   confidence: uncertain
@@ -16252,7 +16252,7 @@
 - atom: judaea-galilee
   polity: judaea
   relation: independent
-  from: 104 BCE
+  from: 105 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.318–319' }
@@ -16261,9 +16261,12 @@
   review: needs-check
   note: >-
     Aristobulus I "made war against Iturea, and added a great part of it to
-    Judea" (AJ 13.318), which is taken to be Galilee; he reigned a year from
-    Hyrcanus' death in 104. Some put the conquest under Hyrcanus: his son
-    Jannaeus had been "brought up in Galilee" (13.322).
+    Judea" (AJ 13.318), which is taken to be Galilee; he reigned a year,
+    which Schürer (1891, 273) puts in 105–104, after Hyrcanus' 135–105. Some
+    put the conquest under Hyrcanus: his son Jannaeus had been "brought up in
+    Galilee" (13.322). Drawn from 105, the earlier year of that reign, so
+    the Seleucid row before it ends in 106; until October 2026 it read 104
+    (and the Seleucid row 105), from a reign put in 104–103.
 
 - atom: judaea-galilee
   polity: judaea
