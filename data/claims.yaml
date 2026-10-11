@@ -19196,7 +19196,7 @@
 - atom: nabataea-moab
   polity: judaea
   relation: independent
-  from: c. 93 BCE
+  from: { earliest: 96 BCE, latest: 90 BCE }
   to: c. 88 BCE
   sources:
     - { source: josephus-aj, locator: '13.374, 13.382' }
@@ -19205,7 +19205,9 @@
   review: needs-check
   note: >-
     Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
-    made them pay tribute (AJ 13.374), after Gaza and before the civil war. In
+    made them pay tribute (AJ 13.374), after Gaza (96) and before he attacked
+    Obodas, about 90 (Schürer 1890, 351); drawn at the midpoint, 93, which it
+    read as "c. 93" until October 2026. In
     that war "he was forced to deliver back to the king of Arabia the land of
     Moab and Gilead, which he had subdued" (13.382), after Demetrius III's
     invasion, c. 88. Unclaimed before: who held Moab is not recorded.
