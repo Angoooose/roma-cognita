@@ -11206,7 +11206,7 @@
         not only the district of Jericho, but also Gadara, Hippos, Samaria,
         Gaza, Anthedon, Joppa, and Straton's Tower
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     "The balsam-producing part of Judaea" (Plut. Antony 36.2): Jericho's palms
@@ -11214,7 +11214,10 @@
     rent of two hundred talents" (BJ 1.361–362; AJ 15.96). Plutarch has the
     gift in the winter of 37/36 and Dio in 36 (49.32.5–33.1); Josephus tells
     it with her journey of 34. 36 is drawn. Hers until she died in 30 (Schürer
-    428).
+    428). Dio and Plutarch date the grant to 36, Josephus (as Schürer reads
+    him, and follows him) to 34 (Schürer 402, n. 5): drawn from 36, the bound
+    next to the rows before, so no year is left blank. It was probable until
+    October 2026.
 
 - atom: judaea-jericho
   polity: judaea
@@ -11395,13 +11398,16 @@
         not only the district of Jericho, but also Gadara, Hippos, Samaria,
         Gaza, Anthedon, Joppa, and Straton's Tower
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Within Cleopatra's grant of the cities "within the river Eleutherus, as
     far as Egypt" (AJ 15.95), and among the cities Octavian gave Herod in 30
     (AJ 15.217) — so Herod had lost it; Schürer has it hers "during the years
-    34-30" (II 82). Dio dates the grant to 36 (49.32.5–33.1).
+    34-30" (II 82). Dio dates the grant to 36 (49.32.5–33.1). Dio and Plutarch
+    date the grant to 36, Josephus (as Schürer reads him, and follows him) to
+    34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows before,
+    so no year is left blank. It was probable until October 2026.
 
 - atom: judaea-joppa
   polity: judaea
@@ -11516,7 +11522,7 @@
         Gaza, Anthedon, Joppa, and Straton's Tower
       supports: [to]
     - { source: bingen-2007 }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Antony gave Cleopatra "Phoenicia, Coele Syria" (Plut. Antony 36.2), "the
@@ -11526,7 +11532,10 @@
     concessions" (Bingen 2007); Dio has the gift in 36 (49.32.5–33.1) and
     Josephus tells it with the events of 34. Drawn as her holding, not only
     its revenues: Josephus has Antony take the cities from their governors and
-    give them to her. Hers until she died in 30 (Schürer 428).
+    give them to her. Hers until she died in 30 (Schürer 428). Dio and
+    Plutarch date the grant to 36, Josephus (as Schürer reads him, and follows
+    him) to 34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows
+    before, so no year is left blank. It was probable until October 2026.
 
 - atom: phoenicia
   polity: syria
@@ -11634,7 +11643,9 @@
     Within the Eleutherus-to-Egypt clause (AJ 15.95), "the entire Philistinian
     and Phoenician coast" (Schürer II 62); Ascalon, free since 104, is not
     named among the exceptions but may have been one. Dio dates the grant to
-    36 (49.32.5–33.1).
+    36 (49.32.5–33.1). Dio and Plutarch date the grant to 36, Josephus (as
+    Schürer reads him, and follows him) to 34 (Schürer 402, n. 5): drawn from
+    36, the bound next to the rows before, so no year is left blank.
 
 - atom: palaestina-coast
   polity: syria
@@ -11747,11 +11758,14 @@
         not only the district of Jericho, but also Gadara, Hippos, Samaria,
         Gaza, Anthedon, Joppa, and Straton's Tower
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Within the Eleutherus-to-Egypt clause (AJ 15.95); Dio dates the grant to
-    36 (49.32.5–33.1). Hers until she died in 30 (Schürer 428).
+    36 (49.32.5–33.1). Hers until she died in 30 (Schürer 428). Dio and
+    Plutarch date the grant to 36, Josephus (as Schürer reads him, and follows
+    him) to 34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows
+    before, so no year is left blank. It was probable until October 2026.
 
 - atom: strato-tower
   polity: judaea
@@ -11851,10 +11865,13 @@
         not only the district of Jericho, but also Gadara, Hippos, Samaria,
         Gaza, Anthedon, Joppa, and Straton's Tower
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    As strato-tower.
+    As strato-tower. Dio and Plutarch date the grant to 36, Josephus (as
+    Schürer reads him, and follows him) to 34 (Schürer 402, n. 5): drawn from
+    36, the bound next to the rows before, so no year is left blank. It was
+    probable until October 2026.
 
 - atom: gaza
   polity: judaea
