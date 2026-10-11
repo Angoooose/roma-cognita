@@ -5529,9 +5529,12 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
+    - value: municipium
       from: 90 BCE
       to: after 27 BCE
+      note: >-
+        Festus names Bononia among the old Latin colonies that became municipia through the Social War (Beloch 147), and the Latin colonies were municipia from the lex Iulia (Beloch 5). It read
+        colonia from 90 here until October 2026: Pliny calls Bononia a colony (3.115), but his colonies are those Augustus himself made (Beloch 5), at a date nothing here gives.
   labelSide: e
   sources:
     - source: pleiades
@@ -5553,6 +5556,19 @@
         Firinum, Aesernia, Brundisium, Spoletium, Cremona, Placentia, Copia,
         Valentia, Bononia, Aquileia
       supports: [status]
+    - source: beloch-1880
+      locator: 'p. 147'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        an dritter Stelle stehen die Gemeinden, die erst durch den Socialkrieg
+        römisches Bürgerrecht erlangt haben (municipia fundana) … darauf 5 alte
+        coloniae Latinae: Bononia, Placentia, Nepet, Sutrium, Luca
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 5'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: Für die latinischen Colonien bedarf das weiter keines Beweises; sie waren seit der Lex Iulia Municipien.
+      supports: [status]
     - source: cicero-balb
       locator: '21'
       quote: >-
@@ -5572,7 +5588,7 @@
       quote: >-
         In the interior there are the colonies of Bononia, formerly called
         Felsina
-      supports: [status, to]
+      supports: [to]
   confidence: certain
   review: draft
 
