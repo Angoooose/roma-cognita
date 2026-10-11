@@ -19063,7 +19063,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 101 BCE
+  to: 105 BCE
   sources:
     - source: schurer-1910
       locator: 'p. 101'
@@ -19089,34 +19089,96 @@
         again ruler of the country. … He began these on the east of the
         Jordan, for he took Gadara
       supports: [to]
-    - source: bennett-ptolemies
-      locator: 'Ptolemy IX, n. 14'
-      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
       quote: >-
-        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+        Alexander Jannuus, ...... 104-78.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
       supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Gadara was Seleucid from Antiochus III's conquest of 198 until Jannaeus
-    took it (Schürer 1910, 101), once Cleopatra had left the country after
-    the war of 103–101 (Schürer 1891, 297; Van't Dack, cited by Bennett).
-    Hippos' history before Pompey is not recorded.
+    took it (Schürer 1910, 101), once Ptolemy Lathyrus and Cleopatra had left
+    the country (Schürer 1891, 297), in a reign that began in 104 (273) and
+    before Gaza fell in 96 (298): somewhere in 104–96, so the row ends the
+    year before the earliest, as the Judaean row starts at it. Until the
+    checking of October 2026 it ended in 101, from a book title Bennett
+    cites that dates nothing here. Hippos' history before Pompey is not
+    recorded.
 
 - atom: gadara-hippos
   polity: judaea
   relation: independent
-  from: c. 100 BCE
+  from: 104 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.356, 13.396' }
-  confidence: probable
+    - source: josephus-aj
+      locator: '13.356'
+      quote: >-
+        So when Alexander was delivered from the fear he was in of Ptolemy, he
+        presently made an expedition against Coele Syria. He also took Gadara,
+        after a siege of ten months.
+      supports: [polity, from]
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Alexander Jannuus, ...... 104-78.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        Now at this time the Jews were in possession of the following cities
+        that had belonged to the Syrians, and Idumeans, and Phoenicians: …
+        Scythopolis, and Gadara
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        he made Jerusalem tributary to the Romans, and took away those cities
+        of Coele Syria which the inhabitants of Judea had subdued, and put them
+        under the government of the Roman president … Moreover, he rebuilt
+        Gadara, which had been demolished a little before
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
+  confidence: uncertain
   review: needs-check
   note: >-
     Jannaeus "took Gadara, after a siege of ten months" (AJ 13.356), after
-    Ptolemy Lathyrus' war (103–101); Gadara is in the list of the Jews' cities
-    at his death (13.396). Hippos is not in that list, but Pompey took it from
-    them (AJ 14.75).
+    Ptolemy Lathyrus left (Schürer 1891, 297) and before Gaza fell in 96 (298),
+    in a reign that began in 104 (273): somewhere in 104–96, drawn from the
+    earliest year, which is also the year after the Seleucid row's end. Until
+    the checking of October 2026 it started c. 100 (probable), from a book
+    title Bennett cites that dates nothing here; its sources were a locator
+    with no quote. Gadara is in the list of the Jews' cities at his death
+    (13.395). Hippos is not in that list, but Pompey took it from them (AJ
+    14.75).
 
 - atom: strato-tower
   polity: seleucid
