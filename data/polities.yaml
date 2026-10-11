@@ -2860,8 +2860,8 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    Artavasdes I; Tigranes II, 95–55; Artavasdes II, 55–34; Artaxias II, from
-    34 (in Armenia from 32–30)
+    Artavasdes I; Tigranes II, from 95; Artavasdes II, his successor by 54, to
+    34; Artaxias II, from 34 (back in Armenia by 30)
   sources:
     - source: strabo
       locator: '11.14.15'
@@ -2895,6 +2895,19 @@
         the Armenian citizens who bore arms chose Artaxes, the eldest of his
         sons, king in his stead
       supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. II, 1252 n. 60'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Artavasdes (sometimes spelled Artabazes), the son of Tigranes, succeeded
+        his father before 54 b.c.
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        he refused the request of Artaxes that his brothers be sent to him,
+        because this prince had put to death the Romans left behind in Armenia
+      supports: [ruler]
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: sherwin-white-1984, locator: 'chs. 8–12' }
   confidence: certain
@@ -2906,7 +2919,10 @@
     (Dio 49.39–40), which he promised to Alexander Helios. Artavasdes' son
     Artaxias, proclaimed king by the Armenians, fled to Parthia and came back
     with its help when Antony withdrew, killing the Romans left behind (Tac.
-    Ann. 2.3; Dio 51.16.2).
+    Ann. 2.3; Dio 51.16.2). The rulers were dated Tigranes 95–55, Artavasdes
+    55–34 and Artaxias back in Armenia 32–30; no text read gives 55 or 32.
+    Magie (II 1252 n. 60) has Artavasdes succeed "before 54", and Dio 51.16.2,
+    among Octavian's acts at Alexandria in 30, has Artaxias already back.
 
 - id: parthia
   kind: kingdom
