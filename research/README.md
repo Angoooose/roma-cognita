@@ -99,6 +99,10 @@ provinces in 27, names many but not all: check the province is in his list.
 **A chain of passages backs a field when every link is quoted.** Cicero's
 Iamblichus is Emesa's ruler only through Strabo naming him so: quote both.
 
+**A range on a start is drawn at its midpoint.** Check it doesn't leave a
+year blank, or overlap, against the record before it on the same ground; where
+it would, lower the confidence instead and quote both readings.
+
 **A year no readable text states is not kept.** "Province from 146", a client
 king's first year, a frontier's date: these are often scholars' inferences,
 from coins or inscriptions. A scholar who states one in an open text can be
