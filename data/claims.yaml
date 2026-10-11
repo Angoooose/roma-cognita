@@ -5587,7 +5587,34 @@
   from: { earliest: 64 BCE, latest: 51 BCE }
   to: 31 BCE
   sources:
-    - { source: strabo, locator: '16.2.10' }
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        Arethusa, belonging to Sampsiceramus and Iamblichus his son, chiefs of
+        the tribe of the Emeseni.
+      supports: [polity]
+    - source: cicero-fam
+      locator: '15.1.2'
+      quote: >-
+        a despatch on the same subject reached me from Iamblichus, phylarch of
+        the Arabians, who is generally considered to be well-disposed and
+        friendly to our Republic.
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus, Lycomedes, the king of a part of Cappadocian Pontus, and
+        Alexander, the brother of Iamblichus. The last-named, because he had
+        secured his realm as a reward for accusing Caesar, he led in his
+        triumphal procession and afterwards put to death.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '50.13.7'
+      quote: >-
+        For this reason he tortured and put to death, among others, Iamblichus,
+        king of a tribe of the Arabians
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
