@@ -9653,7 +9653,7 @@
   polity: callaeci
   relation: independent
   from: before 133 BCE
-  to: after 27 BCE
+  to: after 61 BCE
   sources:
     - source: velleius
       locator: '2.5.1'
@@ -9701,11 +9701,12 @@
     Brutus fought them before Numantia fell (Vell. 2.5.1; Per. 56); Florus
     has him conquer "all the peoples of Callaecia" (1.33.12), but Plutarch has
     Caesar, in 61, subdue Callaican tribes "which before were not obedient to
-    Rome" (Caes. 12.1), so in 133 they were free. The end is not backed:
-    Plutarch and Dio have Caesar subdue them in 61–60 ("and subjugated them",
-    Dio 37.53.4), and no readable text has them free in 27. Ending the row at
-    61–60 needs a holder for the ground after it, which no row gives yet;
-    left as it is and reported (October 2026).
+    Rome" (Caes. 12.1), so in 133 they were free. The end read "after 27"
+    until the October 2026 check: Plutarch and Dio have Caesar subdue them in
+    61–60 ("and subjugated them", Dio 37.53.4), and no readable text has them
+    free in 27. It is now "after 61", the last year a text has them free; an
+    open end draws the same, and the ground after Caesar's campaign is still
+    left to whoever the texts show holding it.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 #
