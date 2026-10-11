@@ -16084,11 +16084,18 @@
   to: 130 BCE
   sources:
     - { source: josephus-aj, locator: '13.246' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Simon's since the 140s; under Antiochus VII the Jews paid "tribute for
-    Joppa" (AJ 13.246).
+    Joppa" (AJ 13.246). Both ends are disputed. Josephus dates the siege
+    that ended in those terms to Hyrcanus' first year (135/134) and, in the
+    same sentence, to the 162nd Olympiad (132–128); Porphyry puts it in
+    130–129, and Schürer finds it "exceedingly risky to fix a particular
+    year" (1891, 275); in 133 the city may still have been besieged, and
+    Joppa held by the king (Schürer 277). The end follows Antiochus' death,
+    put in 129 (Gutschmid, Porphyry's 129–128) or 128 (Schürer 177–178,
+    279), so the tribute may have run into 129. Probable until October 2026.
 
 - atom: judaea-joppa
   polity: judaea
