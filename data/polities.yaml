@@ -6004,7 +6004,7 @@
     - { text: Aristonicus, preferred: true, note: the kingdom he claimed as Eumenes III }
     - { text: Eumenes III }
   from: 133 BCE
-  to: 130 BCE
+  to: 131 BCE
   ruler: Aristonicus (King Eumenes), 133–130
   sources:
     - source: velleius
@@ -6045,8 +6045,27 @@
         Aristonicus, who was reputed to belong to the royal family and intended
         to usurp the kingdom
       supports: [kind, ruler]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Marcus Perperna, however, accepted the surrender of the defeated
+        Aristonicus.
+      supports: [to, ruler]
+    - source: eutropius
+      locator: '4.20'
+      quote: >-
+        Soon after Perperna, the Roman consul, who was appointed successor to
+        Crassus, hearing of the event of the war, hastened to Asia; and
+        defeating Aristonicus in battle, near the city Stratonice to which he
+        had fled, reduced him by famine to surrender.
+      supports: [to, ruler]
+    - source: justin
+      locator: '36.4'
+      quote: >-
+        The consul Perperna being sent in his place, reduced Aristonicus, who
+        was defeated in the first engagement, under his power
+      supports: [to, ruler]
     - { source: florus, locator: '1.35.4–7' }
-    - { source: eutropius, locator: '4.20' }
     - { source: orosius, locator: '5.10.1–5' }
     - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: certain
@@ -6058,8 +6077,11 @@
     Thyateira and Apollonis (Strabo 14.1.38) and by force Myndus, Samos and
     Colophon (Florus 1.35.4). He beat and killed the consul Crassus near Leucae
     (131 or 130), was beaten by Perperna and starved out of Stratonicea, where he
-    had fled (Eutropius 4.20; Orosius 5.10), late in 130 or in the winter
-    after, and died in prison at Rome; Aquillius finished the war in 129. His
+    had fled (Eutropius 4.20; Orosius 5.10), and died in prison at Rome;
+    Aquillius finished the war in 129. Livy's epitome, Eutropius and Justin
+    all have him surrender to Perperna as consul, which was 130 (DPRR), so
+    130 is Rome's and the kingdom's last year is 131 (it was 130 until
+    October 2026). His
     extent is not known — cities and fortresses, not a territory — so he is
     drawn as a seat (seats.yaml).
 
