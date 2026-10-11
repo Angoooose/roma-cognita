@@ -4366,8 +4366,22 @@
       quote: >-
         the Ocriculani
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Umbrians in the Social War. Appian has Etruria
+    and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain.
 
 - id: spoletium
   pleiades: '413320'
@@ -4823,8 +4837,31 @@
       quote: >-
         The remaining peoples are … the Arretini Veteres, the Arretini Fidentes, the Arretini Julienses
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - source: beloch-1880
+      locator: 'p. 5'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Ebenso die sullanischen Colonien Faesulae, Clusium Novum, Arretium,
+        Cortona (III 52)
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Etruscans in the Social War. Appian has
+    Etruria and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain. Beloch counts Arretium among Sulla's colonies (p. 5; Pliny 3.52
+    has Arretini Veteres, Fidentes and Julienses), but no readable text dates
+    the settlement, so no later change is drawn.
 
 - id: cortona
   pleiades: '413106'
@@ -4881,8 +4918,30 @@
       quote: >-
         The remaining peoples are … the Blerani, the Cortonenses, the Capenates
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - source: beloch-1880
+      locator: 'p. 5'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Ebenso die sullanischen Colonien Faesulae, Clusium Novum, Arretium,
+        Cortona (III 52)
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Etruscans in the Social War. Appian has
+    Etruria and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain. Beloch counts Cortona among Sulla's colonies (pp. 5, 8), but no
+    readable text dates the settlement, so no later change is drawn.
 
 - id: perusia
   pleiades: '413248'
@@ -4951,8 +5010,24 @@
         it secured for the city the privilege of being peopled again by any who
         desired to settle there
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Etruscans in the Social War. Appian has
+    Etruria and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain. The town burnt down when Octavian took it in 40 (App. BC 5.49;
+    Dio 48.14.5) and was allowed to be peopled again (Dio 48.14.6), so it is
+    drawn standing throughout.
 
 - id: clusium
   pleiades: '413096'
@@ -5009,8 +5084,31 @@
       quote: >-
         The remaining peoples are … the Clusini Novi, the Clusini Veteres
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - source: beloch-1880
+      locator: 'p. 5'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Ebenso die sullanischen Colonien Faesulae, Clusium Novum, Arretium,
+        Cortona (III 52)
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Etruscans in the Social War. Appian has
+    Etruria and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain. Beloch counts Clusium Novum among Sulla's colonies (p. 5), a
+    community beside the old town (Pliny 3.52: Clusini Novi, Clusini Veteres);
+    this record is the old town.
 
 - id: volsinii
   pleiades: '413389'
@@ -5067,8 +5165,22 @@
       quote: >-
         The remaining peoples are … the Volcentini, surnamed Etrusci, and the Volsinienses
       supports: [to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+  confidence: probable
   review: draft
+  note: >-
+    The sources disagree on the Etruscans in the Social War. Appian has
+    Etruria and Umbria stirred to revolt in 90 and won back by the offer of
+    citizenship to the allies who stayed loyal, which the Etruscans "gladly
+    accepted" (BC 1.49); the epitome of Livy has both peoples in revolt and
+    beaten in 89 (Per. 74). Which towns rose is not known, so the change is
+    kept at 90, the earlier year, and the record is probable rather than
+    certain.
 
 - id: falerii
   pleiades: '413125'
