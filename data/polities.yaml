@@ -567,8 +567,23 @@
       url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
       quote: >-
         Tradicionalmente, la creación de la provincia de la Galia Transalpina se
-        ha atribuido a la acción de Cn. Domicio Ahenobarbo
-      supports: [from]
+        ha atribuido a la acción de Cn. Domicio Ahenobarbo … En la actualidad,
+        se considera que más bien fue obra de C. Mario … como consecuencia de las
+        guerras címbricas … o incluso de Pompeyo durante el conflicto sertoriano.
+      supports: []
+    - source: amela-valverde-2019
+      locator: '38'
+      url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
+      quote: >-
+        el gobernador de la Galia Transalpina en el año 78 a.C., L. Manlio,
+        había sido derrotado por el legado sertoriano L. Hirtuleyo
+      supports: []
+    - source: livy-per
+      locator: '90'
+      quote: >-
+        Proconsul Lucius Manlius and Marcus Domitius, his deputy, were defeated
+        in battle by quaestor Hirtuleius.
+      supports: []
     - source: caesar-bg
       locator: '1.10'
       quote: >-
@@ -587,18 +602,22 @@
     - { source: cicero-font, locator: '12, 16' }
     - { source: amela-valverde-2019, locator: '39' }
     - { source: ebel-1976 }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    Dated, by convention, from the victories of Domitius Ahenobarbus and Fabius
-    Maximus over the Allobroges and the Arverni in 121 (Livy Per. 61; Vell.
-    2.10.2, 2.39.1), after Fulvius Flaccus and Sextius Calvinus had beaten the
-    Salluvii in 125–122 and founded Aquae Sextiae (Per. 60–61; Strabo 4.1.5);
-    Narbo followed in 118 (Vell. 2.7.8). When it became a regular province is
+    Dated from the victories of Domitius Ahenobarbus and Fabius Maximus over
+    the Allobroges and the Arverni in 121 (Livy Per. 61; Vell. 2.10.2,
+    2.39.1), after Fulvius Flaccus and Sextius Calvinus had beaten the Salluvii
+    in 125–122 and founded Aquae Sextiae (Per. 60–61; Strabo 4.1.5); Narbo
+    followed in 118 (Vell. 2.7.8). When it became a regular province is
     disputed: traditionally Domitius' work, now often put down to Marius in the
     Cimbric wars or to Pompey in the Sertorian (Amela Valverde 2019, 39), and
     Ebel (1976, not read) holds that the ground west of the Rhône was governed
-    from Hither Spain until then. Lowered from certain in September 2026. The
+    from Hither Spain until then. It certainly had a governor in 78, L.
+    Manlius, beaten by Sertorius' quaestor Hirtuleius (Amela Valverde 2019, 38;
+    Livy Per. 90). Lowered from certain in September 2026, and to uncertain in
+    October 2026 for the dispute; a range of 121–78 would also need the
+    Province's claims and its province-of relation to start as a range. The
     Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae, 102)
     without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73); and in
     the 70s peoples of the Province fought Fonteius himself while Pompey's army
