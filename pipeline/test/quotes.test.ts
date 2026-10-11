@@ -23,6 +23,12 @@ describe('quoteIn', () => {
     expect(quoteIn('Pompeius took Amaseia', 'Pompéius 12 took [3] Amáseia')).toBe(true)
   })
 
+  it('requires every number the quote has', () => {
+    expect(quoteIn('in 74 Nicomedes died', 'in 74 Nicomedes died')).toBe(true)
+    expect(quoteIn('in 75 Nicomedes died', 'in 74 Nicomedes died')).toBe(false)
+    expect(quoteIn('in 74 Nicomedes died', 'in 74 [3] Nicomedes 12 died')).toBe(true)
+  })
+
   it('rejoins a word a scan broke at a line end', () => {
     expect(quoteIn('the kingdom of Commagene', 'the king-\ndom of Commagene')).toBe(true)
     expect(quoteIn('the king- dom of Commagene', 'the king-\ndom of Commagene')).toBe(true)

@@ -16,9 +16,10 @@
  *   PDFs are read with pdf.js, so nothing needs installing beyond npm's.
  *
  * A quote matches when its words appear in order, ignoring case, accents,
- * punctuation, bare numbers (section and footnote marks) and words a scan broke
- * at a line end; `…` is a cut, and the pieces must appear in that order. A text
- * not downloaded is reported, never failed: a fresh clone has no cache.
+ * punctuation, numbers in the text that the quote doesn't have (section and
+ * footnote marks) and words a scan broke at a line end; every number the quote
+ * has must be there. `…` is a cut, and the pieces must appear in that order.
+ * A text not downloaded is reported, never failed: a fresh clone has no cache.
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -50,7 +51,7 @@ export function htmlText(html: string): string {
     .replace(/&([a-z]+);/gi, (m, n) => ENTITIES[n] ?? ENTITIES[n.toLowerCase()] ?? m)
 }
 
-/** Words only: lower case, no accents, no punctuation, no bare numbers. */
+/** Words only: lower case, no accents, no punctuation. Numbers are kept. */
 export function normalise(s: string): string {
   const words = s
     // A word a scan broke at a line end ("king- dom") is one word.
@@ -59,9 +60,21 @@ export function normalise(s: string): string {
     .replace(/\p{M}/gu, '')
     .toLowerCase()
     .split(/[^\p{L}\p{N}]+/u)
-    .filter((w) => w && !/^\d+$/.test(w))
+    .filter(Boolean)
   // Padded, so a piece only ever matches whole words.
   return ` ${words.join(' ')} `
+}
+
+/**
+ * A piece of a quote as a pattern over normalised text: its words in order,
+ * with any bare numbers the text has between them skipped (section and
+ * footnote marks), but every number the quote has required, so a year quoted
+ * is a year checked.
+ */
+function piecePattern(piece: string): RegExp {
+  const words = piece.trim().split(' ')
+  const escaped = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  return new RegExp(` ${escaped.join('(?: \\d+)* ')} `, 'g')
 }
 
 /** Whether the quote's pieces appear in the text (or the text already normalised), in order. */
@@ -70,9 +83,11 @@ export function quoteIn(quote: string, text: string | { normalised: string }): b
   let from = 0
   for (const piece of quote.split(/…|\.\.\./).map(normalise)) {
     if (!piece.trim()) continue
-    const at = hay.indexOf(piece, from)
-    if (at < 0) return false
-    from = at + piece.length - 1
+    const re = piecePattern(piece)
+    re.lastIndex = from
+    const m = re.exec(hay)
+    if (!m) return false
+    from = m.index + m[0].length - 1
   }
   return true
 }
