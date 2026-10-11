@@ -279,6 +279,13 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans. The rebellion began with the people of
+        Asculum
+      supports: [from]
     - source: diodorus
       locator: '37.2.4'
       quote: >-
@@ -334,17 +341,22 @@
     - { source: velleius, locator: '2.15–17' }
     - { source: appian, locator: 'BC 1.39–52' }
     - { source: livy-per, locator: '72–76' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The allies in revolt, the Social or "Marsic" War. The rising began at
-    Asculum late in 91 (Livy Per. 72; App. BC 1.38–39); the league took
+    Asculum, in 91 or 90 (Livy Per. 72; App. BC 1.38–39); the league took
     Corfinium as its capital, with a senate, consuls and generals on the Roman
     model, and moved to Aesernia when the Marsi and their neighbours gave in
     (Diodorus 37.2.9). By the end of 88 only the Samnites, the Lucanians and
     Nola held out (Diodorus 37.2.11; App. BC 1.53), and the Samnites made
     terms with Marius and Cinna in 87 (App. BC 1.68; Livy Per. 80). Its last
-    year, 87, belongs to italia. Drawn in a colour of its own: an independent
+    year, 87, belongs to italia. Its first year is 91 or 90: Diodorus dates
+    the outbreak to the consuls Philippus and Sextus Julius, 91 (37.2.2),
+    Velleius the rising, Asculum's first, to the consuls L. Caesar and
+    Rutilius, 90 (2.15.1). It stays 91, since the claims on the allied
+    atoms start then, but is probable, not certain, until they can be made a
+    range with it (October 2026). Drawn in a colour of its own: an independent
     power at war with Rome, not an ally.
 
 # The two slave kingdoms of Sicily are drawn as seats (seats.yaml): each held
