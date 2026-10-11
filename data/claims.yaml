@@ -3506,6 +3506,14 @@
         in 168 they again broke out in revolt. … he finally succeeded in forcing
         the enemy to withdraw to their own territory.
       supports: [polity, from]
+    - source: polybius
+      locator: '30.28'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/30*.html
+      quote: >-
+        The autonomy of their country was granted by the senate to the Galatian
+        envoys on condition that they remained in their own settlements and did
+        not cross their frontier in arms.
+      supports: [relation, from]
     - source: appian
       locator: 'Mithr. 17'
       quote: >-
@@ -3561,8 +3569,12 @@
     Pompey's settlement after Mithridates' death in 63 (App. Mithr. 114; Dio
     37.10.4). No readable text calls them clients before Pompey: Magie has
     them "in general" supporting Rome, their relations with it still to be
-    "more definitely established" in 63 (I 372). The relation is left as
-    client, to match the relation row (galatia client-of rome, to 64).
+    "more definitely established" in 63 (I 372). The relation is client on
+    one passage: the senate granted their autonomy on condition that they
+    stayed in their settlements and did not cross their frontier in arms
+    (Polybius 30.28, in a book of the 160s, before his history stops in 146),
+    terms Rome set and could enforce; the relation row (galatia client-of
+    rome, to 64) rests on the same passage.
 
 - atom: galatia
   polity: galatia
