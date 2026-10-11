@@ -627,7 +627,33 @@
   of: rome
   from: 51 BCE
   to: after 27 BCE
-  sources: [{ source: caesar-bg }, { source: cah-ix, locator: ch. 9 }]
+  sources:
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the form
+        of a province; and imposed upon it a yearly tribute of 40,000,000
+        sesterces.
+      supports: [type, of]
+    - source: caesar-bg
+      locator: '8.46–48'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued. … to spend there the campaign season of his last
+        summer. And he carried out this work, like all others, with speed and
+        success, for all the states of Aquitaine sent deputies to him and gave
+        hostages. … the ensuing year … when Lucius Paulus and Gaius Marcellus
+        were consuls, contains no operations on a large scale in Gaul.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        to Caesar belonged … all the Gauls, — that is, Gallia Narbonensis,
+        Gallia Lugdunensis, Aquitania, and Belgica
+      supports: [type, of, to]
+    - { source: caesar-bg }
+    - { source: cah-ix, locator: ch. 9 }
   confidence: uncertain
   review: needs-check
   note: Not formally a province until Augustus; see the polity.
@@ -635,12 +661,35 @@
 - polity: illyricum
   type: province-of
   of: rome
-  from: 59 BCE
+  from: before 59 BCE
   to: after 27 BCE
-  sources: [{ source: suetonius-iul, locator: '22' }]
+  sources:
+    - source: eutropius
+      locator: '6.17'
+      quote: >-
+        Caius Julius Caesar, who was afterwards emperor, was made consul with
+        Lucius Bibulus; and Gaul and Illyricum, with ten legions, were decreed
+        to him.
+      supports: [of, from]
+    - source: suetonius-iul
+      locator: '22'
+      quote: >-
+        out of all the numerous provinces he made Gallia his choice … by the
+        bill of Vatinius he received only Gallia Cisalpina with the addition of
+        Illyricum
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [type, of, to]
   confidence: probable
   review: draft
-  note: The lex Vatinia.
+  note: >-
+    The lex Vatinia of 59 gave it to Caesar; it read "from 59" until October
+    2026, but a proconsul had been sent into Illyricum about 78 (Eutropius
+    6.4–5), so the start is open, as the polity.
 
 - polity: africa-nova
   type: province-of
@@ -1243,7 +1292,21 @@
   from: { earliest: 121 BCE, latest: 118 BCE }
   to: 107 BCE
   sources:
-    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
+    - source: cassius-dio
+      locator: '26.90.1 (Loeb fr. 90, book 27)'
+      quote: >-
+        Tolosa, which had formerly been in alliance with the Romans, but had
+        revolted, as a result of the hopes placed in the Cimbri, even to the
+        point of keeping the garrison in chains, was suddenly occupied at night
+        by the Romans
+      supports: [type, of, to]
+    - source: broughton-mrr
+      locator: 'vol. I, 106 B.C., p. 553'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls Q. SERVILIUS CN. f. CN. n. CAEPIO … In Gaul he attacked the
+        Volcae Tectosages and seized the sacred treasure at Tolosa
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-

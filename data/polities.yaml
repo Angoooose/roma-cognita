@@ -535,8 +535,27 @@
   from: 197 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
-    - { source: cassius-dio, locator: '53.12.4–5' }
+    - source: livy
+      locator: '32.28'
+      url: https://www.thelatinlibrary.com/livy/liv.32.shtml
+      quote: >-
+        C. Cornelio et Q. Minucio consulibus omnium primum de prouinciis
+        consulum praetorumque actum. … Hispanias Sempronius citeriorem, Heluius
+        ulteriorem est sortitus. … et terminare iussi qua ulterior citeriorue
+        prouincia seruaretur.
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 197 B.C., p. 333'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Election: Liv. 32.27.7 Provinces: Liv. 32.28.2 and 11 … Hither Spain
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [kind, to]
     - { source: perea-yebenes-2017 }
     - { source: appian, locator: 'Hisp. 98–100' }
     - { source: strabo, locator: '3.5.1' }
@@ -564,8 +583,32 @@
   from: 197 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
-    - { source: cassius-dio, locator: '53.12.4–5' }
+    - source: livy
+      locator: '32.28'
+      url: https://www.thelatinlibrary.com/livy/liv.32.shtml
+      quote: >-
+        C. Cornelio et Q. Minucio consulibus omnium primum de prouinciis
+        consulum praetorumque actum. … Hispanias Sempronius citeriorem, Heluius
+        ulteriorem est sortitus. … et terminare iussi qua ulterior citeriorue
+        prouincia seruaretur.
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 197 B.C., p. 333'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Election: Liv. 32.27.7 Provinces: Liv. 32.28.2 and 11 … Farther Spain
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sardinia and Baetica were held to belong to the people and the senate
+      supports: [kind, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [kind, to]
     - { source: villanueva-acuna-2011, locator: '70–73' }
   confidence: certain
   review: draft
@@ -713,6 +756,47 @@
   from: 121 BCE
   to: after 27 BCE
   sources:
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Proconsul Gnaeus Domitius successfully fought against the Allobroges
+        near the town of Vindalium. … Consul Quintus Fabius Maximus, grandson of
+        Paulus, successfully fought against the Allobroges and Bituitus, the
+        king of the Arvernians. … The surrender of the Allobroges was accepted.
+      supports: [from]
+    - source: amela-valverde-2019
+      locator: '39'
+      url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
+      quote: >-
+        Tradicionalmente, la creación de la provincia de la Galia Transalpina se
+        ha atribuido a la acción de Cn. Domicio Ahenobarbo … En la actualidad,
+        se considera que más bien fue obra de C. Mario … como consecuencia de las
+        guerras címbricas … o incluso de Pompeyo durante el conflicto sertoriano.
+      supports: []
+    - source: amela-valverde-2019
+      locator: '38'
+      url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
+      quote: >-
+        el gobernador de la Galia Transalpina en el año 78 a.C., L. Manlio,
+        había sido derrotado por el legado sertoriano L. Hirtuleyo
+      supports: []
+    - source: livy-per
+      locator: '90'
+      quote: >-
+        Proconsul Lucius Manlius and Marcus Domitius, his deputy, were defeated
+        in battle by quaestor Hirtuleius.
+      supports: []
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the borders of the Tolosates, a state in the Province. He perceived that
+        this event would bring great danger upon the Province
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        to Caesar belonged … all the Gauls, — that is, Gallia Narbonensis
+      supports: [kind, to]
     - { source: broughton-mrr }
     - { source: livy-per, locator: '60–61, 65–68, 73' }
     - { source: velleius, locator: '2.7.8, 2.10.2, 2.39.1' }
@@ -720,18 +804,22 @@
     - { source: cicero-font, locator: '12, 16' }
     - { source: amela-valverde-2019, locator: '39' }
     - { source: ebel-1976 }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    Dated, by convention, from the victories of Domitius Ahenobarbus and Fabius
-    Maximus over the Allobroges and the Arverni in 121 (Livy Per. 61; Vell.
-    2.10.2, 2.39.1), after Fulvius Flaccus and Sextius Calvinus had beaten the
-    Salluvii in 125–122 and founded Aquae Sextiae (Per. 60–61; Strabo 4.1.5);
-    Narbo followed in 118 (Vell. 2.7.8). When it became a regular province is
+    Dated from the victories of Domitius Ahenobarbus and Fabius Maximus over
+    the Allobroges and the Arverni in 121 (Livy Per. 61; Vell. 2.10.2,
+    2.39.1), after Fulvius Flaccus and Sextius Calvinus had beaten the Salluvii
+    in 125–122 and founded Aquae Sextiae (Per. 60–61; Strabo 4.1.5); Narbo
+    followed in 118 (Vell. 2.7.8). When it became a regular province is
     disputed: traditionally Domitius' work, now often put down to Marius in the
     Cimbric wars or to Pompey in the Sertorian (Amela Valverde 2019, 39), and
     Ebel (1976, not read) holds that the ground west of the Rhône was governed
-    from Hither Spain until then. Lowered from certain in September 2026. The
+    from Hither Spain until then. It certainly had a governor in 78, L.
+    Manlius, beaten by Sertorius' quaestor Hirtuleius (Amela Valverde 2019, 38;
+    Livy Per. 90). Lowered from certain in September 2026, and to uncertain in
+    October 2026 for the dispute; a range of 121–78 would also need the
+    Province's claims and its province-of relation to start as a range. The
     Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae, 102)
     without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73); and in
     the 70s peoples of the Province fought Fonteius himself while Pompey's army
@@ -951,6 +1039,31 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        During the nine years of his command this is in substance what he did.
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the form
+        of a province; and imposed upon it a yearly tribute of 40,000,000
+        sesterces.
+      supports: [kind]
+    - source: caesar-bg
+      locator: '8.46–48'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued. … to spend there the campaign season of his last
+        summer. And he carried out this work, like all others, with speed and
+        success, for all the states of Aquitaine sent deputies to him and gave
+        hostages. … the ensuing year … when Lucius Paulus and Gaius Marcellus
+        were consuls, contains no operations on a large scale in Gaul.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        to Caesar belonged … all the Gauls, — that is, Gallia Narbonensis,
+        Gallia Lugdunensis, Aquitania, and Belgica
+      supports: [kind, to]
     - { source: caesar-bg }
     - { source: cah-ix, locator: ch. 9 }
     - { source: goudineau-1990, locator: '161' }
@@ -974,16 +1087,55 @@
   kind: province
   names:
     - { text: Illyricum, lang: la, preferred: true }
-  from: 59 BCE
+  from: before 59 BCE
   to: after 27 BCE
   sources:
-    - { source: suetonius-iul, locator: '22' }
+    - source: eutropius
+      locator: '6.17'
+      quote: >-
+        Caius Julius Caesar, who was afterwards emperor, was made consul with
+        Lucius Bibulus; and Gaul and Illyricum, with ten legions, were decreed
+        to him.
+      supports: [from]
+    - source: suetonius-iul
+      locator: '22'
+      quote: >-
+        out of all the numerous provinces he made Gallia his choice … by the
+        bill of Vatinius he received only Gallia Cisalpina with the addition of
+        Illyricum
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [kind, to]
+    - source: eutropius
+      locator: '6.4–5'
+      quote: >-
+        Cnaeus Cosconius was sent into Illyricum as proconsul. He reduced a
+        great part of Dalmatia, took Salonae … About the same time, the consul
+        Marcus Aemilius Lepidus, the colleague of Catulus
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. II, 78 B.C., p. 86'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul in Illyricum, where he occupied portions of the Dalmatian
+        coast, and captured Salonae after two years of campaigning
+      supports: []
     - { source: dzino-2010, locator: 'pp. 80–98' }
   confidence: probable
   review: draft
   note: >-
-    Assigned to Caesar with Cisalpina by the lex Vatinia of 59; governed with
-    it from Aquileia. Vatinius fought the Delmatae there in 45–44.
+    Assigned to Caesar with Cisalpina by the lex Vatinia of 59 (Suet. Iul. 22;
+    Eutropius 6.17, under Caesar and Bibulus); governed with it from Aquileia.
+    Vatinius fought the Delmatae there in 45–44. It read "from 59" until
+    October 2026, but Illyricum was a proconsul's province before Caesar:
+    Cosconius was "sent into Illyricum as proconsul" about Lepidus' consulship
+    of 78 (Eutropius 6.4–5; MRR, 78–76), and Culleolus may have governed it
+    before 59 (MRR). Whether it was held without a break from then is not
+    recorded, so the start is left open: in force in 59, begun no later.
 
 - id: africa-nova
   kind: province
@@ -2747,6 +2899,37 @@
   to: 72 BCE
   ruler: Q. Sertorius, 80–73 or 72; M. Perperna, to 72
   sources:
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 77'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Expelled from Spain by the Proconsul C. Annius, he won support in
+        Africa and in 80 returned at the invitation of the Lusitanians
+      supports: [from, ruler]
+    - source: broughton-mrr
+      locator: 'vol. II, 80 B.C., p. 82, n. 6'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Sertorius no longer had legal standing with the government in Rome, but
+        continued to use the regular Roman titles for his government in Spain
+      supports: [kind]
+    - source: livy-per
+      locator: '96'
+      quote: >-
+        Consul Gnaeus Lentulus, however, unsuccessfully fought against
+        Spartacus. … At a banquet, Sertorius was killed by Marcus Perpenna,
+        Marcus Antonius and other conspirators, during the eighth year of his
+        command … Leadership of his faction was transferred to Marcus
+        [Perpenna], who was defeated, captured and killed by Gnaeus Pompey,
+        after the latter had recovered the Spanish provinces
+      supports: [to, ruler]
+    - source: broughton-mrr
+      locator: 'vol. II, 72 B.C., p. 118'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        After the murder of Sertorius Pompey defeated Perperna and crushed the
+        remnants of resistance in Spain
+      supports: [to, ruler]
     - { source: plutarch, locator: 'Sertorius 7–27' }
     - { source: appian, locator: 'BC 1.108–115' }
     - { source: livy-per, locator: '90–96' }
@@ -2780,9 +2963,28 @@
   from: before 133 BCE
   to: 124 BCE
   sources:
+    - source: florus
+      locator: '1.43'
+      quote: >-
+        The Balearic islanders at this period had ravaged the seas with their
+        piratical outrages. … they raised a bellowing like cattle and fled to
+        the shore, and scattering among the neighbouring hills had to be hunted
+        down before they could be conquered.
+      supports: [kind, from]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        It also contains an account of the war of Quintus [Caecilius] Metellus
+        against those Balearans whom the Greeks call Gymnesios
+      supports: [kind]
+    - source: broughton-mrr
+      locator: 'vol. I, 123 B.C., pp. 512–513'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … METELLUS (BaLiaRicus) … Metellus received command against the piratical inhabitants of the
+        Balearic islands
+      supports: [to]
     - { source: strabo, locator: '3.5.1' }
-    - { source: livy-per, locator: '60' }
-    - { source: florus, locator: '1.43' }
     - { source: orosius, locator: '5.13.1' }
   confidence: certain
   review: draft
@@ -2800,7 +3002,21 @@
   from: before 133 BCE
   to: 107 BCE
   sources:
-    - { source: strabo, locator: '4.1.13' }
+    - source: strabo
+      locator: '4.1.13'
+      quote: >-
+        But the Tectosages dwell near to the Pyrenees … It is said that the
+        Tectosages took part in the expedition to Delphi, and that the treasures
+        found in the city of Tolosa (Tolosse) by the Roman general Caepio formed
+        a portion of the booty gained there
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 106 B.C., p. 553'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls Q. SERVILIUS CN. f. CN. n. CAEPIO … In Gaul he attacked the
+        Volcae Tectosages and seized the sacred treasure at Tolosa
+      supports: [to]
     - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
     - { source: orosius, locator: '5.15.25' }
     - { source: caesar-bg, locator: '1.10' }
