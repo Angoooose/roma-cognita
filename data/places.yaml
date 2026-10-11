@@ -448,12 +448,15 @@
   prominence: 2
   status:
     - value: provincial seat
-      from: 66 BCE
+      from: 27 BCE
       to: after 27 BCE
       note: >-
-        From the province of Crete, after Metellus' conquest (69–67); it read
-        "provincial seat" from before 68 until the extension to 133 BCE, when
-        Crete was still free.
+        The capital of Creta et Cyrenae (Pleiades), the joint province first
+        attested in the settlement of 27 (Dio 53.12.4). It was a seat from 66,
+        the province of Crete, until October 2026: no open text says where the
+        governor of Crete sat before the joint province. It read "provincial
+        seat" from before 68 until the extension to 133 BCE, when Crete was
+        still free.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/589796 }
