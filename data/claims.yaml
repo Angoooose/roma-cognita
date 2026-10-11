@@ -6728,10 +6728,66 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '12.3.1' }
-    - { source: appian, locator: 'Mithr. 114' }
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        this country was comprised within these boundaries when Pompey took it
+        over, upon his overthrow of Mithridates … And he gave over to the
+        descendants of Pylaemenes the office of king over certain of the
+        Paphlagonians situated in the interior
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 372'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The remainder … was assigned to princes of native stock. … Paphlagonia
+        was divided between them, and it was expected that in return for this
+        boon they would rule in the interest of Rome.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the possession
+        of their kingdoms.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, 465'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        which Antony had granted, and Augustus confirmed, to Deiotarus
+        Philadelphus, the old monarch’s great-grandson. … On his death (or that
+        of his heir) in 6/5 b.c., his dominions, like those of Amyntas, were
+        annexed to Rome’s Empire. Not only eastern Paphlagonia, including Gangra
+      supports: [to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Pompey's arrangements for Pontus and its neighbours ran from the winter of
+    65/64 to that of 63/62 (Magie I 365, 372); drawn from 63, the year
+    Mithridates died (Dio 37.10.4). The kingdom passed to Castor and then to
+    Deiotarus Philadelphus, confirmed by Octavian after Actium, and was annexed
+    only on his death in 6/5 (Magie I 434, 443, 465).
 
 - atom: olba
   polity: olba
@@ -6739,18 +6795,42 @@
   from: 67 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.5.10' }
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        a city Olbe, with a sanctuary of Zeus … The priest of this sanctuary
+        became dynast of Cilicia Tracheia; and then the country was beset by
+        numerous tyrants, and the gangs of pirates were organized. And after the
+        overthrow of these they called this country the domain of Teucer, and
+        called the same also the priesthood of Teucer
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '36.37.3–38.1'
+      quote: >-
+        he subdued the greater part of it that very year … Among the other
+        cities settled at this time was the one called Pompeiopolis. It is on
+        the coast of Cilicia … Besides these events in the year of Acilius and
+        Piso
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        temple-state of Olba was ruled by Aba … This woman, by courting the
+        favour of Antony and Cleopatra, succeeded in retaining her power, and
+        under Augustus her descendants continued to rule this mountain-region.
+      supports: [polity, to]
     - { source: plutarch, locator: 'Pompey 28' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Strabo: "The priest of this temple became dynast of Cilicia Tracheia; and
-    then the country was beset by numerous tyrants, and the gangs of pirates
-    were organised. And after the overthrow of these they called this country
-    the domain of Teucer, and called the same also the priesthood of Teucer"
-    (14.5.10). So the priests' domain is drawn from Pompey's war on the pirates
-    in 67; before it the country is left unclaimed with the rest of the
-    Tracheia.
+    The priests' domain is drawn from Pompey's war on the pirates, which Dio
+    puts in the year of Acilius and Piso, 67 (36.37.3–38.1); before it the
+    country is left unclaimed with the rest of the Tracheia. Nothing read states
+    the relation: Strabo's "both Antony and Cleopatra conferred it upon her as a
+    favor" (14.5.10) reads as dependence under Antony rather than independence,
+    but drawing it as a client would need a client-of relation in
+    relations.yaml, and the polity (see olba) leaves it independent.
 
 - atom: derbe
   polity: derbe
@@ -6758,10 +6838,45 @@
   from: before 50 BCE
   to: 31 BCE
   sources:
-    - { source: strabo, locator: '12.6.3' }
-    - { source: cicero-fam, locator: '13.73' }
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        Derbe, which lies closer to Cappadocia than to any other country and was
+        the royal seat of the tyrant Antipater Derbetes. He also possessed
+        Laranda. But in my time Derbe and also the two Isauras have been held by
+        Amyntas, who attacked and killed Derbetes
+      supports: [polity]
+    - source: cicero-fam
+      locator: '13.73'
+      quote: >-
+        With Antipater of Derbe I have become not merely on visiting terms, but
+        really very intimate.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 375'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        one of whom, a certain Antipater, was now brought into the position of a
+        Roman vassal by the gift of a territory containing Derbe and Laranda
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the campaign ended at Actium. … On the south of Lycaonia, he was
+        permitted to attack the dynast Antipater, ruler of Derbe and Laranda,
+        and, after killing him, to seize this Taurus region
+      supports: [to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Antipater held Derbe and Laranda from Pompey's settlement (Magie I 375,
+    whose "now" is Pompey's arrangements of 64–63) and was Cicero's friend
+    (Fam. 13.73); Octavian let Amyntas attack him after Actium (Magie I 443),
+    so the row runs to 31 and Galatia's from 30. The relation is not backed:
+    Magie calls Antipater "a Roman vassal", which reads as a client, not
+    independent; drawing it so would need a client-of relation for derbe in
+    relations.yaml and a change to the polity.
 
 - atom: lycia
   polity: lycia
@@ -6769,8 +6884,30 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.3.3, 14.3.9, 14.5.7' }
-    - { source: appian, locator: 'Mithr. 21, 24, 27, 61' }
+    - source: strabo
+      locator: '14.3.3'
+      quote: >-
+        In earlier times they would deliberate about war and peace and
+        alliances, but now they naturally do not do so, since these matters
+        necessarily lie in the power of the Romans … they remained ever free
+        under the Romans, thus retaining their ancestral usages
+      supports: [polity, relation, from, to]
+    - source: appian
+      locator: 'Mithr. 24'
+      quote: >-
+        the Rhodians strengthened their walls and their harbor and erected
+        engines of war everywhere, receiving some assistance from Telmessus and
+        Lycia.
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 61'
+      quote: >-
+        Sulla bestowed freedom on the inhabitants of Ilium, Chios, Lycia,
+        Rhodes, Magnesia, and some others … and inscribed them as friends of the
+        Roman people.
+      supports: [polity, relation]
+    - { source: strabo, locator: '14.3.9' }
+    - { source: strabo, locator: '14.5.7' }
     - { source: mitchell-2005 }
   confidence: certain
   review: draft
@@ -6789,8 +6926,35 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.2.2–4' }
-    - { source: appian, locator: 'Mithr. 24–27' }
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        The Peraea of the Rhodians begins with Daedala, a place in the Rhodian
+        territory, but ends with Mt. Phoenix, as it is called, which is also in
+        the Rhodian territory.
+      supports: [polity, to]
+    - source: strabo
+      locator: '14.2.5'
+      quote: >-
+        whereby it held the mastery of the sea for a long time and overthrew the
+        business of piracy, and became a friend to the Romans and to all kings
+        who favoured both the Romans and the Greeks. Consequently it not only
+        has remained autonomous
+      supports: [polity, relation, from, to]
+    - source: appian
+      locator: 'Mithr. 24'
+      quote: >-
+        All the Italians who escaped from Asia collected at Rhodes, among them
+        Lucius Cassius, the proconsul of the province. When Mithridates
+        approached with his fleet
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 61'
+      quote: >-
+        Sulla bestowed freedom on the inhabitants of Ilium, Chios, Lycia,
+        Rhodes, Magnesia, and some others … and inscribed them as friends of the
+        Roman people.
+      supports: [relation]
   confidence: certain
   review: draft
   note: >-
@@ -6803,8 +6967,34 @@
   from: before 133 BCE
   to: c. 111 BCE
   sources:
-    - { source: strabo, locator: '7.4.3, 7.4.7' }
-    - { source: diophantus-decree }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        This city was at first self-governing, but when it was sacked by the
+        barbarians it was forced to choose Mithridates Eupator as protector. …
+        carried on war against the Scythians, not only against Scilurus, but
+        also the sons of Scilurus
+      supports: [polity, relation]
+    - source: strabo
+      locator: '7.4.7'
+      quote: >-
+        the three forts which were built by Scilurus and his sons — the forts
+        which they used as bases of operations against the generals of
+        Mithridates
+      supports: [polity, relation]
+    - source: diophantus-decree
+      locator: 'commentary'
+      quote: >-
+        how did Chersonesos regain the lands that had been occupied by the
+        Scythians in the 3rd and 2nd century B. C.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -6818,9 +7008,37 @@
   from: c. 110 BCE
   to: 64 BCE
   sources:
-    - { source: diophantus-decree }
-    - { source: strabo, locator: '7.4.3' }
-    - { source: appian, locator: 'Mithr. 119' }
+    - source: diophantus-decree
+      quote: >-
+        when the Scythians surrendered to him the royal fortresses of Chabaioi
+        and Neapolis, it came to pass that almost all of them became subject to
+        the king Mithridates Eupator
+      supports: [polity, relation]
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        he not only subdued all these by force
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 119'
+      quote: >-
+        For allies he had the king of Armenia and the princes of the Scythian
+        tribes around the Euxine and Maiotis
+      supports: []
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -6830,9 +7048,9 @@
     Strabo: Mithridates "subdued all these by force" (7.4.3). How long the
     subjection lasted is not recorded; at the end Appian counts "the princes of
     the Scythian tribes around the Euxine and Maiotis" among the king's allies
-    (Mithr. 119), and the row runs to his death. Until the extension to 133 BCE
-    the Scythians were drawn independent from before 68, which Strabo's
-    account does not support; the row after 64 is unchanged.
+    (Mithr. 119), and the row runs to his death in 63 (Dio 37.10.4). Until the
+    extension to 133 BCE the Scythians were drawn independent from before 68,
+    which Strabo's account does not support.
 
 - atom: scythia-minor
   polity: scythia-minor
@@ -6840,9 +7058,24 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: strabo
+      locator: '7.4.7'
+      quote: >-
+        the three forts which were built by Scilurus and his sons … And today
+        everything is subject to whatever kings of the Bosporians the Romans
+        choose to set up.
+      supports: [polity]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Free of Pontus at Mithridates' death in 63 (Dio 37.10.4).
 
 - atom: kush
   polity: kush
@@ -6920,10 +7153,49 @@
   from: 49 BCE
   to: 39 BCE
   sources:
-    - { source: pliny-nh, locator: '5.19' }
-    - { source: bridoux-2020, locator: '¶99–100' }
+    - source: cassius-dio
+      locator: '41.42.7–43.1'
+      quote: >-
+        by Caesar and those in the city he was called to account and declared an
+        enemy, while Bocchus and Bogud were named kings, because they were
+        hostile to him. … The ensuing year the Romans had two sets of
+        magistrates … The people of the city had chosen as consuls Caesar and
+        Publius Servius
+      supports: [polity, relation, from]
+    - source: pliny-nh
+      locator: '5.19'
+      quote: >-
+        the further Mauritania being called the “land of Bogud,”
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶99'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Dion Cassius mentionne les deux monarques maures et nous indique
+        précisément qu’ils sont reconnus comme tels par Rome en 49 av. J.-C. …
+        Bogud règne sur la Maurétanie occidentale
+      supports: [polity, relation, from]
+    - source: bridoux-2020
+      locator: '¶100'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Nous sommes par ailleurs informés qu’en 38 av. J.-C., alors que Bogud
+        combat en Espagne, « les habitants de son royaume, dans la région de
+        Tingi, se soulevèrent contre lui
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.43.1–45.3'
+      quote: >-
+        in the consulship of Appius Claudius and Gaius Norbanus … Bogud the Moor
+        sailed to Spain … failed to win back his own domain … Bocchus forthwith
+        took possession of his kingdom
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    Named king by Caesar's senate in 49 (Dio 41.42.7); lost his kingdom to
+    Bocchus in 38, the year of Appius Claudius and Norbanus (Dio 48.43.1,
+    48.45.1–3), so the row runs to 39.
 
 - atom: numidia-igilgili
   polity: sittiani
@@ -6931,10 +7203,46 @@
   from: 46 BCE
   to: 45 BCE
   sources:
-    - { source: appian, locator: 'BC 4.54' }
-    - { source: bridoux-2020, locator: '¶102' }
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        When Gaius Caesar pursued the Pompeians to Africa Sittius joined him and
+        destroyed Juba's famous general, Saburra, and received from Caesar, as
+        a reward for these services, the territory of Masinissa, not all, but
+        the best part of it. … He returned to Africa after Caesar's death
+      supports: [polity, relation, from, to]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au moment de la chute de Juba I, en 46 av. J.-C., le roi Massinissa II
+        périt visiblement lui aussi
+      supports: [from]
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Or, la cité et, selon toute logique, la partie orientale du territoire
+        de Massinissa II sont remises à Sittius.
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Aussitôt après la mort de César, Arabion récupère vraisemblablement
+        l’intégralité du territoire de son père
+      supports: [to]
+    - source: bridoux-2020
+      locator: '¶160'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        gouverné par Arabion de 44 à 41 av. J.-C.
+      supports: [to]
   confidence: uncertain
   review: draft
+  note: >-
+    Sittius' share of Masinissa II's land was its east (Bridoux ¶102), which
+    Arabio took back on Caesar's death (¶159), in 44 (¶160).
 
 - atom: numidia-cirta
   polity: sittiani
@@ -6942,9 +7250,33 @@
   from: 46 BCE
   to: 45 BCE
   sources:
-    - { source: appian, locator: 'BC 4.54' }
-    - { source: pliny-nh, locator: '5.22' }
-    - { source: bridoux-2020, locator: '¶101, ¶159' }
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        When Gaius Caesar pursued the Pompeians to Africa Sittius joined him and
+        destroyed Juba's famous general, Saburra, and received from Caesar, as
+        a reward for these services, the territory of Masinissa
+      supports: [polity, relation, from]
+    - source: pliny-nh
+      locator: '5.22'
+      quote: >-
+        the colony of Cirta, surnamed “of the Sitiani;”
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus II et l’aventurier campanien Sittius pénètrent en Numidie,
+        conquièrent le royaume de Massinissa II et s’emparent de Cirta,
+        capitale de Juba I … Au moment de la chute de Juba I, en 46 av. J.-C.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est sans doute en 44 av. J.-C., à la mort de Sittius, que le
+        territoire des Sittiani est rattaché à la province romaine d’Afrique
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -6954,11 +7286,34 @@
   from: 44 BCE
   to: 42 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶158–159' }
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        Masinissa was the father of this Arabio and the ally of Juba. … He
+        returned to Africa after Caesar's death … He expelled Bocchus from his
+        territory and killed Sittius by stratagem.
+      supports: [polity, relation, from]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Aussitôt après la mort de César, Arabion récupère vraisemblablement
+        l’intégralité du territoire de son père … Le souverain numide périt
+        vraisemblablement en 41 av. J.-C.
+      supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: '¶160'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        gouverné par Arabion de 44 à 41 av. J.-C.
+      supports: [from, to]
   confidence: uncertain
   review: draft
   note: >-
-    Arabio recovered his father's lands on Caesar's death (Bridoux ¶159).
+    Arabio recovered his father's lands on Caesar's death (Bridoux ¶159) and
+    held them until he died, probably in 41 (¶159–160). He later "acquired the
+    favor of Octavius" through Sextius (App. BC 4.54), not a standing the
+    sources describe.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
@@ -6966,11 +7321,40 @@
   from: 44 BCE
   to: 42 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶158–159' }
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        Masinissa was the father of this Arabio and the ally of Juba. … He
+        returned to Africa after Caesar's death … He expelled Bocchus from his
+        territory and killed Sittius by stratagem.
+      supports: [polity, relation, from]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Aussitôt après la mort de César, Arabion récupère vraisemblablement
+        l’intégralité du territoire de son père … Le souverain numide périt
+        vraisemblablement en 41 av. J.-C.
+      supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: '¶160'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        gouverné par Arabion de 44 à 41 av. J.-C.
+      supports: [from, to]
   confidence: uncertain
   review: draft
   note: >-
-    Arabio recovered his father's lands on Caesar's death (Bridoux ¶159).
+    Arabio recovered his father's lands on Caesar's death, expelling Bocchus
+    (App. BC 4.54; Bridoux ¶159), and held them until he died, probably in 41
+    (¶159–160).
 
 - atom: dacia
   polity: dacia
@@ -6978,10 +7362,44 @@
   from: c. 60 BCE
   to: 44 BCE
   sources:
-    - { source: strabo, locator: '7.3.11' }
-    - { source: jordanes-getica, locator: '67' }
+    - source: strabo
+      locator: '7.3.11'
+      quote: >-
+        Boerebistas a Getan, on setting himself in authority over the tribe …
+        within only a few years he had established a great empire and
+        subordinated to the Getae most of the neighboring peoples. And he began
+        to be formidable even to the Romans … he was deposed before the Romans
+        sent an expedition against him; and those who succeeded him divided the
+        empire into several parts.
+      supports: [polity, relation, to]
+    - source: strabo
+      locator: '7.3.5'
+      quote: >-
+        at the time when Byrebistas, against whom already the Deified Caesar had
+        prepared to make an expedition, was reigning over the Getae
+      supports: [to]
+    - source: suetonius-iul
+      locator: '44'
+      quote: >-
+        to check the Dacians, who had poured into Pontus and Thrace … All these
+        enterprises and plans were cut short by his death.
+      supports: [to]
+    - source: jordanes-getica
+      locator: '67'
+      quote: >-
+        Then when Buruista was king of the Goths, Dicineus came to Gothia at the
+        time when Sulla ruled the Romans.
+      supports: []
   confidence: uncertain
   review: needs-check
+  note: >-
+    Burebista was reigning when Caesar planned his expedition against the
+    Dacians, cut short by his death in 44 (Strabo 7.3.5; Suet. Iul. 44), and
+    was deposed before any Roman expedition came (7.3.11). The start, c. 60, is
+    not stated by any text read: Strabo gives no year, and Jordanes, the only
+    one that dates him, makes him king "when Sulla ruled the Romans" (Getica
+    67), twenty years earlier. Left unnarrowed because the polity (dacia) has
+    the same start; see the backfill report.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -6989,17 +7407,62 @@
   from: before 133 BCE
   to: 72 BCE
   sources:
-    - { source: eutropius, locator: '6.10' }
-    - { source: appian, locator: 'Mithr. 15' }
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        a small town, Ister, founded by the Milesians; then, at a distance of two
+        hundred and fifty stadia, to a second small town, Tomis; then, at two
+        hundred and eighty stadia, to a city Callatis, a colony of the
+        Heracleotae; then, at one thousand three hundred stadia, to Apollonia, a
+        colony of the Milesians
+      supports: [polity, from]
+    - source: eutropius
+      locator: '6.10'
+      quote: >-
+        He then besieged several cities lying above Pontus, where he destroyed
+        Apollonia, Calatis, Parthenopolis, Tomi, Histros, and Burziaone, and,
+        putting an end to the war, returned to Rome.
+      supports: [polity, to]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
+        Pompey were made consuls
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine, and the barbarian tribes
+        beyond them
+      supports: []
+    - source: magie-1950
+      locator: 'vol. I, 195'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Thus the Crimea became a part of Mithradates’s realm, and with it not
+        only the neighbouring regions but apparently the Greek cities on the
+        western shore of the Euxine also were brought under his power.
+      supports: []
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        that Mithradates established “a kind of Pontic protectorate” over these
+        cities has been confirmed by an inscription from Apollonia Pontica
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
-    Free Greek cities, with no recorded tie to Rome before Lucullus. Whether
-    they stood under Mithridates' protection in the 80s and 70s is argued, not
-    shown: in 89 his envoy counts "the Greeks bordering on the Euxine" among
-    his acquisitions (App. Mithr. 15), which may mean only the north coast, and
-    the cities resisted Lucullus in 72/71, which fits a Pontic garrison as well
-    as their own choice. Not drawn as his, hence independent and uncertain.
+    Old Greek foundations (Strabo 7.6.1), with no recorded tie to Rome before
+    M. Lucullus took them in his campaign of 72–71, ended before the consuls of
+    70 (Eutropius 6.10; Livy Per. 97). The relation is not backed and is
+    contradicted: in 89 Mithridates' envoy counts "the Greeks bordering on the
+    Euxine" among his acquisitions (App. Mithr. 15), and Magie has the western
+    cities "apparently" under his power after Diophantus' war (I 195), a
+    "Pontic protectorate" an inscription from Apollonia confirms (II 1092 n.
+    53). Drawing them as his would need a client-of pontus-regnum relation in
+    relations.yaml and a start for it, which Magie leaves undated.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -7007,9 +7470,39 @@
   from: 71 BCE
   to: 56 BCE
   sources:
-    - { source: eutropius, locator: '6.10' }
-    - { source: appian, locator: 'Ill. 30' }
-    - { source: livy-per, locator: '97' }
+    - source: eutropius
+      locator: '6.10'
+      quote: >-
+        He then besieged several cities lying above Pontus, where he destroyed
+        Apollonia, Calatis, Parthenopolis, Tomi, Histros, and Burziaone, and,
+        putting an end to the war, returned to Rome.
+      supports: [from]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
+        Pompey were made consuls
+      supports: [from]
+    - source: appian
+      locator: 'Ill. 30'
+      quote: >-
+        arrived at the river outlets where six Grecian cities lie adjacent to the
+        Mysian [Moesian] territory, namely, Istrus, Dionysopolis, Odessus,
+        Mesembria, Callatis, and Apollonia
+      supports: [polity]
+    - source: cassius-dio
+      locator: '38.10.1–3'
+      quote: >-
+        The latter, while governor of Macedonia, had inflicted many injuries upon
+        the subject territory as well as upon that which was in alliance with
+        Rome … When he tried the same tactics on the allies in Moesia, he was
+        defeated near the city of the Istrians
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius
+      supports: []
   confidence: probable
   review: needs-check
   note: >-
@@ -7017,8 +7510,13 @@
     lying above Pontus" and "destroyed Apollonia, Calatis, Parthenopolis, Tomi,
     Histros, and Burziaone" (Eutropius 6.10); Appian names Istrus,
     Dionysopolis, Odessus, Mesembria, Callatis and Apollonia (Ill. 30). Allied
-    from the campaign's end, 72/71, drawn from 71; started before 68 until the
-    extension to 133 BCE.
+    from the campaign's end, before the consuls of 70 (Livy Per. 97), drawn
+    from 71. They were "the allies in Moesia" whom C. Antonius, consul in 63,
+    attacked as governor of Macedonia (Dio 38.10.1–3, 37.10.4), so in force in
+    62. The end, 56, is the year before Burebista's conquest as conventionally
+    dated, and no text read states it: the readable bounds are 62, still Rome's
+    allies, and 48, already Burebista's (see the next row). Left closed because
+    an open end here overlaps the next row and the polity dacia starts c. 60.
 
 - atom: pontic-cities
   polity: dacia
@@ -7026,13 +7524,46 @@
   from: 55 BCE
   to: 44 BCE
   sources:
+    - source: akornion-decree
+      quote: >-
+        recently, after King Byrebistas became the first and supreme among the
+        Thracian Kings and gained control of the entire land beyond the river
+        (Istros), as well as of the land on this side, he (Akornion) became his
+        foremost and greatest friend … when he was sent by King Byrebistas as an
+        envoy to the Roman imperator (commander) Gnaeus Pompeius, son of Gnaeus,
+        and met with him in Macedonia
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '41.43.1–2'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates … The people of
+        the city had chosen as consuls Caesar and Publius Servius … Those in
+        Thessalonica had made no such appointments
+      supports: []
+    - source: strabo
+      locator: '7.3.5'
+      quote: >-
+        at the time when Byrebistas, against whom already the Deified Caesar had
+        prepared to make an expedition, was reigning over the Getae
+      supports: [to]
+    - source: suetonius-iul
+      locator: '44'
+      quote: >-
+        to check the Dacians, who had poured into Pontus and Thrace … All these
+        enterprises and plans were cut short by his death.
+      supports: [to]
     - { source: mihailov-igbulg, locator: 'I² 13' }
-    - { source: strabo, locator: '7.3.11' }
   confidence: probable
   review: needs-check
   note: >-
-    Burebista's conquest of the coast, c. 55–48, recorded in the Akornion decree
-    of Dionysopolis.
+    The Akornion decree of Dionysopolis: Burebista "gained control of the
+    entire land beyond the river (Istros), as well as of the land on this
+    side", and sent Akornion to Pompey in Macedonia, where the Pompeians sat
+    at Thessalonica in 48 (Dio 41.43.1–2), so in force by 48. The start, 55,
+    is the conventional date (c. 55–48) and no text read states it; the
+    readable bounds are 62, when the cities were still Rome's allies (the row
+    before), and 48. A range or open start would overlap the row before and
+    reach outside the polity dacia (c. 60), so it is left at 55.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -7040,11 +7571,23 @@
   from: 43 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '7.3.11' }
+    - source: strabo
+      locator: '7.3.11'
+      quote: >-
+        he was deposed before the Romans sent an expedition against him; and
+        those who succeeded him divided the empire into several parts.
+      supports: [from]
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        a small town, Ister, founded by the Milesians; then, at a distance of two
+        hundred and fifty stadia, to a second small town, Tomis
+      supports: [polity]
   confidence: uncertain
   review: draft
   note: >-
-    Free again when Burebista's kingdom broke up.
+    Free again when Burebista's kingdom broke up (Strabo 7.3.11). No text read
+    states the cities' standing after him, or after 27.
 
 - atom: noricum
   polity: noricum
@@ -7052,17 +7595,44 @@
   from: 113 BCE
   to: after 27 BCE
   sources:
-    - { source: caesar-bc, locator: '1.18' }
-    - { source: appian, locator: 'Celt. 13' }
-    - { source: strabo, locator: '5.1.8' }
+    - source: appian
+      locator: 'Celt. 13'
+      quote: >-
+        A numerous band of the Teutones bent on plunder invaded the territory of
+        Noricum. The Roman consul, Papirius Carbo … complaining that they had
+        invaded the people of Noricum, who were foreign friends of the Romans.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '5.1.8'
+      quote: >-
+        as far as the city of Noreia, near to where Cnaeus Carbo was defeated in
+        his attack upon the Kimbrians
+      supports: [polity]
+    - source: caesar-bc
+      locator: '1.18'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=1:chapter=18
+      quote: >-
+        about three hundred horse from the king of Noricum
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '54.19.1–20.2'
+      quote: >-
+        during the consulship of Lucius Domitius and Publius Scipio … The
+        Pannonians in company with the Norici overran Istria; but the former,
+        upon being discomfited by Silius and his lieutenants, both came to terms
+        again themselves and caused the Norici to be subjected to the same
+        slavery.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    First attested in 113, when the consul Carbo attacked the Teutones (the
-    Cimbri in Strabo) for invading "the people of Noricum, who were foreign friends of
-    the Romans" — a friendship, Appian adds, that did not oblige Rome "to
-    defend them as allies" (Celt. 13) — and was beaten near Noreia (Strabo
-    5.1.8). The start is the first attestation, not the beginning of the
+    First attested in 113, the consulship of Carbo, when he attacked the
+    Teutones (the Cimbri in Strabo) for invading "the people of Noricum, who
+    were foreign friends of the Romans" — a friendship, Appian adds, that did
+    not oblige Rome "to defend them as allies" (Celt. 13) — and was beaten near
+    Noreia (Strabo 5.1.8). The king sent Caesar cavalry in 49 (BC 1.18). The
+    Norici were subjected in 16, the consulship of Domitius and Scipio (Dio
+    54.19.1–20.2). The start is the first attestation, not the beginning of the
     friendship, which Alföldy traces further back; before it the kingdom is
     left unclaimed.
 
@@ -7072,19 +7642,49 @@
   from: before 133 BCE
   to: 34 BCE
   sources:
-    - { source: appian, locator: 'Ill. 11–13' }
+    - source: appian
+      locator: 'Ill. 11'
+      quote: >-
+        The Romans accordingly sent an army against them, with Marcius Figulus
+        as consul and commander. … in the consulship of Caecilius Metellus, war
+        was declared … against the Dalmatians, although they had been guilty of
+        no offence, because he desired a triumph.
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Ill. 12'
+      quote: >-
+        these same Dalmatians and other Illyrians, who were then in a very
+        prosperous condition, took the city of Promona from the Liburni
+      supports: [relation]
+    - source: appian
+      locator: 'Ill. 13'
+      quote: >-
+        When Caesar was slain the Dalmatians, thinking … that the Roman power
+        resided in him and had perished with him, would not listen to Vatinius
+        on the subject of the tribute or anything else.
+      supports: [relation]
+    - source: appian
+      locator: 'Ill. 27–28'
+      quote: >-
+        he returned to Rome to perform the duties of the consulship with
+        Volcatius Tullus, his colleague, leaving Statilius Taurus to finish the
+        war. … Entering upon his new consulship on the Calends … of January … the
+        Dalmatians, oppressed by hunger and cut off from foreign supplies, met
+        him on the road and delivered themselves up with supplications
+      supports: [to]
     - { source: livy-per, locator: '62' }
     - { source: eutropius, locator: '6.4' }
   confidence: probable
   review: draft
   note: >-
-    Rome made war on them twice in 133–68 without holding their ground: L.
-    Metellus in 119–117, who "wintered among them at the town of Salona" and
-    triumphed (App. Ill. 11; Livy Per. 62 has him "subdue" them), and
+    At war with Rome under Figulus, consul in 156, and again under Metellus,
+    consul in 119 (App. Ill. 11), who "wintered among them at the town of
+    Salona" and triumphed (Livy Per. 62 has him "subdue" them), and under
     Cosconius in 78–76, who "reduced a great part of Dalmatia, took Salonae"
-    (Eutropius 6.4). Neither left a standing that the sources record, and in
-    50 they were strong enough to take Promona (Ill. 12). Started before 68
-    until the extension to 133 BCE.
+    (Eutropius 6.4). Neither left a standing that the sources record, and in 50
+    they were strong enough to take Promona (Ill. 12). They surrendered to
+    Octavian in his consulship with Volcatius Tullus, 33 (Ill. 27–28), so the
+    row runs to 34. Started before 68 until the extension to 133 BCE.
 
 - atom: massalia
   polity: massalia
@@ -7092,9 +7692,38 @@
   from: before 133 BCE
   to: 50 BCE
   sources:
-    - { source: strabo, locator: '4.1.5, 4.1.9' }
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        by means of which they defended themselves against the barbarians, and
+        likewise obtained the alliance of the Romans, to whom they rendered many
+        important services; the Romans in their turn assisting in their
+        aggrandizement. Sextius, who defeated the Salyes … The land which they
+        thus abandoned, he presented to the Massilians. … Their prosperity has in
+        a great measure decayed since the war of Pompey against Caesar, in which
+        they sided with the vanquished party.
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '41.25.1–3'
+      quote: >-
+        the Massaliots hazarded another conflict after ships had again been sent
+        them by Pompey. … With Caesar himself, however, they made terms upon his
+        arrival
+      supports: [to]
+    - source: cassius-dio
+      locator: '41.43.1'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates … The people of
+        the city had chosen as consuls Caesar and Publius Servius
+      supports: [to]
+    - { source: strabo, locator: '4.1.9' }
   confidence: probable
   review: draft
+  note: >-
+    Rome's ally from long before 133, still so when Sextius gave it the coast
+    he cleared of the Salyes (Strabo 4.1.5), until it sided with Pompey and
+    surrendered to Caesar in 49, the year before Caesar's second consulship
+    (Dio 41.25.1–3, 41.43.1).
 
 - atom: massalia
   polity: gallia-transalpina
@@ -7102,8 +7731,43 @@
   from: 49 BCE
   to: after 27 BCE
   sources:
-    - { source: caesar-bc, locator: '2.22' }
-    - { source: cassius-dio, locator: '41.25' }
+    - source: caesar-bc
+      locator: '2.22'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=22
+      quote: >-
+        Caesar spared the town, more in regard to its antiquity and reputation,
+        than any real merit it could plead. He obliged the citizens however to
+        deliver up their arms, machines, and ships of war … to surrender all the
+        money in their treasury; and to receive a garrison of two legions.
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '41.25.3'
+      quote: >-
+        he at that time deprived them of their arms, ships, and money, and later
+        of everything else except the name of freedom.
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '41.43.1'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates … The people of
+        the city had chosen as consuls Caesar and Publius Servius
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania, — and all the Gauls, — that is, Gallia
+        Narbonensis
+      supports: [polity, to]
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        Caesar and his successors treated with moderation the offences of which
+        they were guilty during the war, in consideration of their former
+        friendship; and have preserved to the state the right of governing
+        according to its ancient laws. So that neither Marseilles nor the cities
+        dependent on it are under submission to the governors sent
+      supports: []
   confidence: probable
   review: draft
   note: >-
