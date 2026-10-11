@@ -516,7 +516,8 @@ describe('validate', () => {
     const r = validate(DATA_DIR)
     expect(r.issues.filter((i) => i.level === 'error')).toEqual([])
     expect(r.report).toMatch(/NEEDS CHECK/)
-  })
+    // Reads every downloaded text the quotes cite: a few seconds, more under load.
+  }, 30_000)
 })
 
 describe('physical features and their shapes', () => {
