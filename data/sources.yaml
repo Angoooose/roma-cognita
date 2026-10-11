@@ -79,6 +79,19 @@
     https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt,
     vol. II https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt.
 
+- id: minns-1913
+  kind: modern
+  citation: >-
+    E. H. Minns, Scythians and Greeks: A Survey of Ancient History and
+    Archaeology on the North Coast of the Euxine from the Danube to the
+    Caucasus (Cambridge, 1913)
+  url: https://archive.org/details/scythiansgreekss00minn
+  note: >-
+    A scan on archive.org, readable without borrowing. Quote from the full text,
+    given as the citation's url:
+    https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt.
+    Its running heads, with the page number, come before each page's text.
+
 - id: mitchell-1993
   kind: modern
   citation: S. Mitchell, Anatolia. Land, Men, and Gods in Asia Minor, 2 vols (Oxford, 1993)

@@ -6445,14 +6445,52 @@
   from: 88 BCE
   to: 66 BCE
   sources:
+    - source: strabo
+      locator: '12.3.11'
+      quote: >-
+        Eupator was both born and reared at Sinope; and he accorded it especial
+        honor and treated it as the metropolis of his kingdom.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        the first civil war began at Rome; and in the same year also the
+        Mithridatic war. … for when Sulla. the consul, was sent to conduct the
+        war against Mithridates
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '36.50.1'
+      quote: >-
+        Failing, therefore, of the expected refuge, he turned aside into Colchis
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
     - { source: cassius-dio, locator: '36.9–12' }
   confidence: probable
   review: draft
   note: >-
-    At war with Rome from 89. The kingdom went on while Lucullus held it in
-    71–69 (the occupation is its own row); Mithridates slipped back in 68, won
-    back "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66.
+    At war with Rome from 89, when the Roman envoys and generals attacked
+    "without any public decree" (App. Mithr. 19); Rome declared war in 88, in
+    Sulla's consulship (Mithr. 22), and Eutropius puts the war's start in the
+    year of the first civil war (5.4), so the alliance's row ends with 89. The
+    kingdom went on while Lucullus held it in 71–69 (the occupation is its own
+    row); Mithridates slipped back in 68, won back "almost all his domain" (Dio
+    36.17.1) and lost it to Pompey in 66: the battle and his flight to Colchis
+    (Dio 36.48–50) came the year before Cotta and Torquatus' consulship, 65
+    (37.1.1).
 
 - atom: galatia-pontus
   polity: pontus-regnum
@@ -6460,9 +6498,43 @@
   from: 88 BCE
   to: 66 BCE
   sources:
+    - source: plutarch
+      locator: 'Lucullus 18.2'
+      quote: >-
+        the sisters and wives of the king who were thought to be at farthest
+        remove from danger and quietly hidden away in Pharnacia
+      supports: [polity]
+    - source: eutropius
+      locator: '5.5'
+      quote: >-
+        Mithridates, who was king of Pontus, and possessed Armenia Minor and the
+        entire circuit of the Pontic sea with the Bosphorus
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '36.50.1'
+      quote: >-
+        Failing, therefore, of the expected refuge, he turned aside into Colchis
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
   confidence: probable
   review: draft
+  note: >-
+    Pharnacia, where the king kept his sisters and wives until Lucullus came
+    (Plut. Luc. 18.2), and the coast to Colchis. Dated as pontus.
 
 - atom: armenia-minor
   polity: pontus-regnum
@@ -6470,12 +6542,44 @@
   from: 88 BCE
   to: 66 BCE
   sources:
+    - source: appian
+      locator: 'Mithr. 17'
+      quote: >-
+        Arcathias, the son of Mithridates, led 10,000 horse from Armenia Minor
+      supports: [polity]
+    - source: eutropius
+      locator: '5.5'
+      quote: >-
+        Mithridates, who was king of Pontus, and possessed Armenia Minor and the
+        entire circuit of the Pontic sea with the Bosphorus
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: eutropius
+      locator: '6.12'
+      quote: >-
+        he overcame Mithridates in Armenia Minor in a battle by night, and
+        plundered his camp
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
   confidence: probable
   review: draft
   note: >-
     Mithridates' son Arcathias led ten thousand horse "from Armenia Minor" in 89
-    (App. Mithr. 17).
+    (App. Mithr. 17). Pompey beat the king there by night in 66 (Eutropius
+    6.12), the year before Cotta and Torquatus' consulship (Dio 37.1.1).
 
 - atom: comana-pontica
   polity: pontus-regnum
@@ -6483,14 +6587,39 @@
   from: 88 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 64, 82, 88–89, 99–100' }
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        attacked Comana, a very large country town belonging to Mithridates,
+        with a rich and renowned sanctuary
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '36.50.1'
+      quote: >-
+        Failing, therefore, of the expected refuge, he turned aside into Colchis
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 82, 88–89, 99–100' }
   confidence: probable
   review: draft
   note: >-
     A temple state under the kings: its priest ranked second after the king,
     and Eupator gave the priesthood to his friend Dorylaus (Strabo 12.3.32–34).
     Murena attacked it in 83 as "a very large country town belonging to
-    Mithridates" (App. Mithr. 64).
+    Mithridates" (App. Mithr. 64). Dated as pontus.
 
 - atom: bosporus
   polity: pontus-regnum
@@ -6498,12 +6627,47 @@
   from: 65 BCE
   to: 64 BCE
   sources:
+    - source: appian
+      locator: 'Mithr. 102'
+      quote: >-
+        When his son, Machares, learned that he had made such a journey in so
+        short a time among savage tribes … he fled to the Pontic Chersonesus …
+        he anticipated his fate by killing himself.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 107'
+      quote: >-
+        Mithridates had completed his circuit of the Euxine and occupied
+        Panticapaeum, a European market-town at the outlet of that sea.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 356'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But the indomitable old man, setting forth in the spring of 65, overcame
+        all obstacles. … and arrived at the Strait of Kertch. Here, before he
+        could be assured of safety, he had to deal with an unfaithful son.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.11.1'
+      quote: >-
+        he planned, especially as Pompey was now tarrying in Syria, to reach the
+        Ister through Scythia, and from there to invade Italy
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and Mithridates
+        no longer caused any injury to the Romans, but had destroyed himself
+      supports: [to]
     - { source: appian, locator: 'Mithr. 101–111' }
   confidence: probable
   review: draft
   note: >-
-    Mithridates took the Bosporus in 65 — his son Machares killed himself — and
-    died at Panticapaeum in 63 (Appian Mithr. 101–111).
+    Mithridates wintered at Dioscurias after his defeat (App. Mithr. 101), set
+    out in the spring of 65 (Magie I 356) and took the Bosporus — his son
+    Machares killed himself — and died at Panticapaeum in 63, the year of
+    Cicero's consulship (Dio 37.10.4).
 
 - atom: bosporus-tanais
   polity: pontus-regnum
@@ -6511,9 +6675,54 @@
   from: 65 BCE
   to: 64 BCE
   sources:
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        As for the Asiatic Maeotae in general, some of them were subjects of
+        those who possessed the emporium on the Tanais, and the others of the
+        Bosporians
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 107'
+      quote: >-
+        Mithridates had completed his circuit of the Euxine and occupied
+        Panticapaeum, a European market-town at the outlet of that sea.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 102'
+      quote: >-
+        Mithridates finally reached the Maiotis country, of which there were
+        many princes, all of whom received him, escorted him, and exchanged
+        presents with him
+      supports: []
+    - source: magie-1950
+      locator: 'vol. I, p. 356'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But the indomitable old man, setting forth in the spring of 65, overcame
+        all obstacles. … and arrived at the Strait of Kertch.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.11.1'
+      quote: >-
+        he planned, especially as Pompey was now tarrying in Syria, to reach the
+        Ister through Scythia, and from there to invade Italy
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and Mithridates
+        no longer caused any injury to the Romans, but had destroyed himself
+      supports: [to]
     - { source: appian, locator: 'Mithr. 101–111' }
   confidence: probable
   review: draft
+  note: >-
+    As bosporus. The Maeotic peoples were subject to whoever held the Bosporus
+    (Strabo 11.2.11), here Mithridates at Panticapaeum (App. Mithr. 107). On
+    his way he was received by the Maeotic princes and made alliances with them
+    (Mithr. 102), which is not rule: the polity rests on Strabo's general
+    statement.
 
 - atom: chersonesus
   polity: chersonesus
@@ -6521,13 +6730,28 @@
   from: before 133 BCE
   to: c. 111 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        This city was at first self-governing, but when it was sacked by the
+        barbarians it was forced to choose Mithridates Eupator as protector.
+      supports: [polity, relation, from]
+    - source: minns-1913
+      locator: 'p. 519'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        Now Mithridates only returned from his wild life and succeeded to power
+        in 1 1 1 15. c.', so he could scarcely send help before the following
+        year
+      supports: [to]
     - { source: diophantus-decree }
   confidence: probable
   review: needs-check
   note: >-
     "At first self-governing" (Strabo 7.4.3), until the Scythians of Scilurus
     and his sons pressed it so hard that it took Mithridates as protector.
+    Self-governing in 133 because Eupator only came to power in 111 (Minns p.
+    519, "1 1 1 15. c." in the scan's text).
 
 - atom: chersonesus
   polity: pontus-regnum
@@ -6535,7 +6759,35 @@
   from: c. 110 BCE
   to: 81 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        forced to choose Mithridates Eupator as protector … established himself
+        as lord of the Bosporus … So from that time on down to the present the
+        city of the Chersonesites has been subject to the potentates of the
+        Bosporus.
+      supports: [polity]
+    - source: minns-1913
+      locator: 'p. 519'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        Diophantus then crossed the Euxine with a fleet in the summer of i 10.
+      supports: [from]
+    - source: minns-1913
+      locator: 'p. 520'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        The net result was that Chersonese became tributary to Mithridates in
+        return for effective protection against the Scythians.
+      supports: [polity]
+    - source: minns-1913
+      locator: 'p. 587'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        After the defeat of Murena and the conclusion of peace {81 h.c.)
+        Mithridates was free to deal with Bosporus, which he speedily
+        reconquered.
+      supports: [to]
     - { source: diophantus-decree }
   confidence: uncertain
   review: needs-check
@@ -6555,16 +6807,45 @@
   from: c. 80 BCE
   to: 71 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
-    - { source: appian, locator: 'Mithr. 67, 102' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 67'
+      quote: >-
+        As Mithridates was now at leisure he subdued the tribes of the Bosporus
+        and appointed Machares, one of his sons, king over them.
+      supports: [polity, relation]
+    - source: minns-1913
+      locator: 'p. 587'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        After the defeat of Murena and the conclusion of peace {81 h.c.)
+        Mithridates was free to deal with Bosporus, which he speedily
+        reconquered. … Meanwhile Machares was installed as viceroy of Bosporus
+        (B.C. 79)
+      supports: [relation, from]
+    - source: plutarch
+      locator: 'Lucullus 24.1'
+      quote: >-
+        But when Machares also, the son of Mithridates, who held the Bosporus,
+        sent Lucullus a crown valued at a thousand pieces of gold, begging to be
+        included in the list of Rome's friends and allies
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 102' }
   confidence: uncertain
   review: needs-check
   note: >-
     As bosporus: "subject to the potentates of the Bosporus" (Strabo 7.4.3),
     and so to Machares, king of the Bosporus from c. 80 (App. Mithr. 67), who
     fled "to the Pontic Chersonesus" when his father came in 65 (Mithr. 102).
-    Added in the check of the extension to 133 BCE, which had drawn the city
-    as the king's own through Machares' reign.
+    Minns (p. 587) has the peace with Rome in 81 and Machares installed in 79;
+    c. 80 is the middle of that range. Added in the check of the extension to
+    133 BCE, which had drawn the city as the king's own through Machares'
+    reign.
 
 - atom: chersonesus
   polity: bosporus
@@ -6572,11 +6853,47 @@
   from: 70 BCE
   to: 66 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
-    - { source: appian, locator: 'Mithr. 83, 102' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity]
+    - source: plutarch
+      locator: 'Lucullus 24.1'
+      quote: >-
+        But when Machares also, the son of Mithridates, who held the Bosporus,
+        sent Lucullus a crown valued at a thousand pieces of gold, begging to be
+        included in the list of Rome's friends and allies
+      supports: [polity, relation]
+    - source: minns-1913
+      locator: 'p. 587'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        Finally he gave in to Lucullus and made a treaty with him, offering him
+        a gold wreath
+      supports: [relation]
+    - source: minns-1913
+      locator: 'p. 587, n.'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        B.C. 70, Appian, XII. 83 ; Memnon, f. 54.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 356'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But the indomitable old man, setting forth in the spring of 65, overcame
+        all obstacles. … and arrived at the Strait of Kertch. Here, before he
+        could be assured of safety, he had to deal with an unfaithful son.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 83' }
   confidence: uncertain
   review: needs-check
-  note: As bosporus, under Machares as Rome's friend.
+  note: >-
+    As bosporus, under Machares as Rome's friend: his treaty with Lucullus is
+    dated 70 by Minns (p. 587 and note), until his father came in the spring of
+    65 (Magie I 356).
 
 - atom: chersonesus
   polity: pontus-regnum
@@ -6584,7 +6901,33 @@
   from: 65 BCE
   to: 64 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 102, 108' }
+    - source: appian
+      locator: 'Mithr. 108'
+      quote: >-
+        All the neighboring castles that had been lately occupied by
+        Mithridates now revolted from him in emulation of the Phanagoreans,
+        namely, Chersonesus, Theodosia, Nymphaeum
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 356'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But the indomitable old man, setting forth in the spring of 65, overcame
+        all obstacles. … and arrived at the Strait of Kertch.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.11.1'
+      quote: >-
+        he planned, especially as Pompey was now tarrying in Syria, to reach the
+        Ister through Scythia, and from there to invade Italy
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and Mithridates
+        no longer caused any injury to the Romans, but had destroyed himself
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 102' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -6597,12 +6940,43 @@
   from: 63 BCE
   to: 49 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity]
+    - source: cassius-dio
+      locator: '37.14.2'
+      quote: >-
+        he granted the kingdom of Bosporus to Pharnaces as the wages of his
+        bloody deed, and enrolled him as a friend and ally
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he was recognized as ruler of the Crimean kingdom with the rank of a
+        King and Ally of the Romans. … The winter of 63-62 Pompey spent in
+        Pontus
+      supports: [relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    Subject to the Bosporan kings from Mithridates' time (Strabo 7.4.3). A grant
-    of freedom by Caesar c. 46 is sometimes argued; not drawn.
+    Subject to the Bosporan kings from Mithridates' time (Strabo 7.4.3): from
+    Pompey's grant of the kingdom to Pharnaces, after his father's death in 63
+    (Dio 37.10.4, 37.14.2), until Pharnaces' war on Rome in 48. A grant of
+    freedom by Caesar c. 46 is sometimes argued; not drawn. Chersonesus
+    revolted from Mithridates in 63 (App. Mithr. 108); that Pharnaces held it
+    from the first rests on Strabo's "from that time on".
 
 - atom: chersonesus
   polity: bosporus
@@ -6610,10 +6984,43 @@
   from: 48 BCE
   to: 42 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces.
+      supports: [relation, from]
+    - source: minns-1913
+      locator: 'p. 589'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        Caesar, disgustt^d by his treachery, named as king one Mithridates
+      supports: [relation]
+    - source: minns-1913
+      locator: 'p. 589'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        However, this Mithridates of Pergamum was defeated and slain by the
+        native claimant, and for the next few years the Romans were much too
+        taken up with their own affairs to disturb Asander
+      supports: [relation]
   confidence: uncertain
   review: needs-check
-  note: As bosporus; the grant of freedom by Caesar c. 46 would end it early.
+  note: >-
+    As bosporus; the grant of freedom by Caesar c. 46 would end it early. No
+    readable text dates Rome's recognition of Asander, which ends the row:
+    Minns (p. 592, n.) reports von Sallet's view that Caesar recognised him,
+    with coins from 46/5, and himself reads the coins' first years as Asander
+    archon under the heads of Octavian and Antony. The end of 42 is kept for
+    the next row's c. 41.
 
 - atom: pontus
   polity: bosporus
@@ -6621,13 +7028,45 @@
   from: 48 BCE
   to: 47 BCE
   sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces. … This victory made Pharnaces master of Pontus. Following up
+        his success, he overran the kingdom of his ancestors
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '42.46.3'
+      quote: >-
+        after acquiring all the rest of Pontus, captured Amisus also
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
     - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
-    - { source: cassius-dio, locator: '42.45–47' }
   confidence: certain
   review: draft
   note: >-
     Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, until
-    Caesar broke him at Zela in August 47.
+    Caesar, who reached Tarsus in 47 (Magie I 410), broke him at Zela in August
+    47.
 
 - atom: armenia-minor
   polity: bosporus
@@ -6635,8 +7074,42 @@
   from: 48 BCE
   to: 47 BCE
   sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        From here he advanced into Armenia Minor, the kingdom of Deiotarus,
+        whose absence — for he had not yet returned from his expedition in
+        behalf of Pompey — made it easier for the invader to take possession of
+        his dominions.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
     - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
-    - { source: cassius-dio, locator: '42.45–47' }
   confidence: certain
   review: draft
 
@@ -6646,10 +7119,48 @@
   from: 48 BCE
   to: 47 BCE
   sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        From here he advanced into Armenia Minor, the kingdom of Deiotarus,
+        whose absence — for he had not yet returned from his expedition in
+        behalf of Pompey — made it easier for the invader to take possession of
+        his dominions.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces. … This victory made Pharnaces master of Pontus. Following up
+        his success, he overran the kingdom of his ancestors
+      supports: [relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
     - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
-    - { source: cassius-dio, locator: '42.45–47' }
   confidence: certain
   review: draft
+  note: >-
+    The coast of Pharnacia and Trapezus, part of Deiotarus' kingdom since
+    Pompey (Magie I 374), whose dominions Pharnaces took with Armenia Minor.
 
 - atom: comana-pontica
   polity: comana-pontica
@@ -6657,9 +7168,35 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '12.3.34–35' }
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He also appointed Archelaus to the priesthood of the goddess worshipped
+        at Comana, which is a royal prerogative.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 371'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        He preserved the high-priesthood of the Goddess but appointed to the
+        office a man who would be an obedient vassal of Rome.
+      supports: [polity, relation]
+    - source: strabo
+      locator: '12.3.35'
+      quote: >-
+        but now that he has been deposed, the office is held by Dyteutus, son of
+        Adiatorix, who is thought to have obtained the honor from Augustus
+        Caesar
+      supports: [polity, relation, to]
+    - { source: strabo, locator: '12.3.34' }
   confidence: probable
   review: draft
+  note: >-
+    Pompey's priest-ruler Archelaus, his son, then Caesar's Lycomedes from 47
+    (Magie I 411), and Dyteutus, whom Augustus made priest after his triumph
+    over Adiatorix (Strabo 12.3.35). The start of 63 is no text's: Magie dates
+    Pompey's arrangements from Amisus in the spring of 64 (I 360) to the
+    winter of 63–62 (I 365, 368), a range whose middle is 63.
 
 - atom: colchis
   polity: colchis
@@ -6667,7 +7204,18 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 114' }
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        peace was assured by the recognition of the local dynast Aristarchus as
+        the ruler of Colchis
+      supports: [polity, relation]
   confidence: probable
   review: draft
 
@@ -6677,6 +7225,18 @@
   from: 65 BCE
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '37.2.7'
+      quote: >-
+        then at last he sent his children to Pompey and concluded a treaty
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [from]
     - { source: cassius-dio, locator: '37.1–2' }
   confidence: uncertain
   review: needs-check
@@ -6689,6 +7249,25 @@
   from: 65 BCE
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '37.5.1'
+      quote: >-
+        Pompey granted peace to the Albanians
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 359'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        After the battle Pompey made a formal treaty with the vanquished
+        Albanian prince, who presented him with costly gifts.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [from]
     - { source: plutarch, locator: 'Pompey 35' }
     - { source: cassius-dio, locator: '37.3–5' }
   confidence: uncertain
@@ -6702,10 +7281,38 @@
   from: 66 BCE
   to: 35 BCE
   sources:
+    - source: cassius-dio
+      locator: '36.52.3–4'
+      quote: >-
+        telling him among other things that he had not lost the kingdom of
+        Armenia, but had gained the friendship of the Romans
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '36.53.6'
+      quote: >-
+        he shortly afterwards enrolled the king among the friends and allies of
+        the Roman people
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.39.1–5'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place … Thereupon he arrested him
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 33' }
-    - { source: cassius-dio, locator: '36.52–53' }
   confidence: probable
   review: draft
+  note: >-
+    Tigranes' surrender to Pompey (Dio 36.52–53) came the year before Cotta and
+    Torquatus' consulship, 65 (37.1.1). The row ends the year before Antony
+    seized Artavasdes in 34, the year of his second consulship, which he
+    resigned on its first day to Sempronius Atratinus (Dio 49.39).
 
 - atom: creta
   polity: creta-koinon
@@ -6713,14 +7320,42 @@
   from: before 133 BCE
   to: 67 BCE
   sources:
+    - source: cassius-dio
+      locator: '36.19.3'
+      quote: >-
+        In this way the Cretans, who had been free through all preceding ages
+        and had never had a foreign master, became enslaved
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '100'
+      quote: >-
+        Having subdued the Cretans, Quintus Metellus gave laws to their island,
+        which had until then been independent.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '36.1.1'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … Metellus accordingly set out for Crete
+      supports: [to]
+    - source: velleius
+      locator: '2.34.1'
+      quote: >-
+        During the same period the island of Crete was brought under the
+        sovereignty of the Roman people by Quintus Metellus. For three years
+        this island … had worn out the Roman armies.
+      supports: [to]
     - { source: cassius-dio, locator: '36.17a–19' }
-    - { source: livy-per, locator: '97, 100' }
+    - { source: livy-per, locator: '97' }
   confidence: certain
   review: draft
   note: >-
     Free throughout: M. Antonius' war on the Cretans ended in his defeat and
     death (Livy Per. 97, 72/71), and the island had been "independent" until
-    Metellus gave it laws (Per. 100).
+    Metellus gave it laws (Per. 100). Metellus went out in his consulship with
+    Hortensius, 69 (Dio 36.1.1), and the island held out three years (Velleius
+    2.34.1), to 67; the cities surrendered to Pompey's legate under his pirate
+    command of 67 (Per. 99; Dio 36.18–19).
 
 - atom: paphlagonia
   polity: paphlagonia
