@@ -2993,9 +2993,45 @@
           note: the watershed towards Interamnia of the Praetuttii, Roman since 290
         - [13.50, 42.72]
   sources:
-    - { source: beloch-1880, locator: 'pp. 54–55' }
-    - { source: appian, locator: 'BC 1.38, 1.47–48' }
-    - { source: strabo, locator: '5.4.2' }
+    - source: beloch-1880
+      locator: 'p. 55'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Freilich fehlen directe Zeugnisse dafür, wieweit sich das römische
+        Staatsgebiet in Picenum erstreckt hat; nur dass Asculum bis zum
+        Bundesgenossenkrieg foederirt war
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 55'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Jedenfalls lässt sich keine der Städte Picenums, die später die Velina
+        gehabt haben, als frühere Bundesgemeinde nachweisen, mit Ausnahme
+        natürlich der latinischen Colonie Firmum; und im Socialkrieg ist von
+        allen picentischen Gemeinden allein Asculum von Rom abgefallen.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 54'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        die Praetuttianer bis zur Küste des adriatischen Meeres der römischen
+        Herrschaft unterworfen. … so lassen diese Thatsachen keinen Zweifel
+        daran, dass diese Landschaft schon lange vor dem Socialkrieg das
+        römische Bürgerrecht besessen hat.
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        Asculum Picenum , a very strong position, upon which is built a wall:
+        the mountains which surround it are not accessible to armies.
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.38'
+      quote: >-
+        Servilius hastened to Asculum and indulged in very menacing language to
+        the people, who were celebrating a festival, and they put him to death
+      supports: []
+    - { source: appian, locator: 'BC 1.47–48' }
     - { source: mapterhorn }
   confidence: uncertain
   review: needs-check
@@ -3038,8 +3074,41 @@
           note: in the strait, leaving Capreae to Neapolis
         - [14.28, 40.7]
   sources:
-    - { source: beloch-1880, locator: 'pp. 50, 52, 171' }
-    - { source: appian, locator: 'BC 1.39, 1.42, 1.50' }
+    - source: beloch-1880
+      locator: 'p. 171'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Südlich vom Volturnus sind foederirte Gemeinden die … oskischen Städte
+        Nola mit Abella, und Nuceria mit den ihm engverbundenen Orten Pompei,
+        Herculaneum, Stabiae
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 50'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Dasselbe Recht erhalten in Campanien Fundi, Formiae, ferner Capua mit
+        seinen abhängigen Orten Volturnum … dann Cumae, Acerrae, Suessula.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 52'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        der Abschluss der Foedera mit Neapolis 326, Nola 311, Nuceria 308
+        unterwarf ganz Campanien dem römischen Einfluss.
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.42'
+      quote: >-
+        Gaius Papius captured Nola by treachery … Then he plundered the entire
+        country around Nuceria . The towns in the vicinity were struck with
+        terror and submitted to him
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Hirpini , the Pompeiians, the Venusini
+      supports: [construction]
+    - { source: appian, locator: 'BC 1.50' }
     - { source: pliny-nh, locator: '3.70' }
     - { source: velleius, locator: '2.16.2' }
   confidence: uncertain
@@ -3094,8 +3163,46 @@
           note: mouth of the Biferno (Tifernus)
         - [15.15, 42.15]
   sources:
-    - { source: strabo, locator: '5.4.2' }
-    - { source: beloch-1880, locator: 'pp. 51–54, 165' }
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        Above Picenum are the Vestini , the Marsi , the Peligni , the Marucini ,
+        and the Frentani , a Samnitic nation possessing the hill-country, and
+        extending almost to the sea. All these nations are small, but extremely
+        brave
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        After Aternum is Orton , a naval arsenal of the Frentani , and Buca ,
+        which belongs to the same people, and is conterminous with the Apulian
+        Teanum
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 54'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Entschieden bundesgenössisch sind ferner bis zum Socialkriege gewesen
+        alle Städte der Marser, die Paeligner … und die Frentaner
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 53'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Wie es scheint, hat damals das unmittelbar römische Gebiet den Kamm des
+        Gran Sasso d'Italia (Fiscellus) nicht überschritten, und hat Pinna das
+        römische Passivbürgerrecht nicht erhalten, sondern ist civitas foederata
+        geblieben.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 52'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Paeligner um Corfinium und Sulmo haben bekanntlich bis zum Socialkrieg
+        eine foederirte Gemeinde gebildet. Amiternum und Peltuinum sind also wie
+        es scheint schon jetzt römische Praefecturen geworden.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'p. 165' }
     - { source: appian, locator: 'BC 1.39, 1.52' }
     - { source: livy-per, locator: '75–76' }
     - { source: mapterhorn }

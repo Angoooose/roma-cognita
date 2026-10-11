@@ -912,14 +912,57 @@
   from: 89 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 1.51' }
-    - { source: livy-per, locator: '75' }
-    - { source: cicero-arch, locator: '7' }
+    - source: appian
+      locator: 'BC 1.50–51'
+      quote: >-
+        Gnaeus Pompeius , who was now consul … in this way the entire
+        population of the Hirpini was brought under subjection
+      supports: [from]
+    - source: livy-per
+      locator: '75'
+      quote: >-
+        consul Lucius Porcius fell while storming one of their camps … Lucius
+        Sulla subdued the Hirpinians
+      supports: [from]
+    - source: velleius
+      locator: '2.16.4'
+      quote: >-
+        little by little the strength of the Romans was recruited by admitting
+        to the citizenship those who had not taken arms or had not been slow to
+        lay them down again
+      supports: [polity, relation]
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        until the whole of Italy came into the Roman state except the Lucanians
+        and the Samnites
+      supports: [polity, relation, to]
+    - source: beloch-1880
+      locator: 'p. 168'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        nach dem Kriege sind sie in eine andere Tribus eingetragen worden als
+        diese : die Hirpiner in die Galeria
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '3.99'
+      quote: >-
+        the second region of Italy , which embraces the Hirpini , Calabria ,
+        Apulia , and the Salentini
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Citizens under the lex Plautia Papiria of 89 once they had given in (Cic.
-    Arch. 7).
+    Sulla took the Hirpini in the summer of 89, Pompeius Strabo's consulship
+    (App. BC 1.50–51; Livy Per. 75); citizenship went to those who laid down
+    their arms (Vell. 2.16.4), and by the end of the war all but the Lucanians
+    and Samnites were in the Roman state (App. BC 1.53). Velleius has the grant
+    to the conquered states in the year of Sulla's consulship, 88 (2.17.1): the
+    year of submission is taken, as for the other regions. Under Augustus the
+    Hirpini were in the second region of Italy (Pliny 3.99). The row cited
+    Cicero, Arch. 7, for the lex Plautia Papiria until October 2026, but that
+    passage is about a law for individual citizens of allied cities, not the
+    surrendered peoples.
 
 - atom: italia-apulia
   polity: socii
@@ -927,25 +970,106 @@
   from: before 133 BCE
   to: 92 BCE
   sources:
-    - { source: beloch-1880, locator: 'p. 175' }
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Nehmen wir zu diesem Zweck das Jahr des Ausbruchs des hannibalischen
+        Krieges, 218 v. Chr. … endlich ca. 40 apulische Gemeinden
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Venusini , the Apulians , the Lucanians , and the Samnites , all of
+        whom had been hostile to the Romans before … They sent ambassadors to
+        Rome to complain that although they had cooperated in all ways with the
+        Romans in building up the empire, the latter had not been willing to
+        admit their helpers to citizenship
+      supports: [polity, relation, from]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
   confidence: probable
   review: draft
+  note: >-
+    Some forty Apulian communities were allies of Rome at the outbreak of the
+    Hannibalic war (Beloch 176), and the Apulians were still allies without
+    citizenship when they revolted (App. BC 1.39), which Diodorus dates to the
+    consuls of 91 (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-apulia
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 89 BCE
   sources:
-    - { source: appian, locator: 'BC 1.39, 1.42' }
-    - { source: appian, locator: 'BC 1.52' }
-    - { source: diodorus, locator: '37.2.10' }
-    - { source: appian, locator: 'BC 1.53' }
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Venusini , the Apulians , the Lucanians , and the Samnites … Besides
+        the soldiers which were kept for guards at each town, they had forces in
+        common amounting to about 100,000 foot and horse
+      supports: [polity, relation]
+    - source: appian
+      locator: 'BC 1.42'
+      quote: >-
+        Canusia and Venusia and many other towns in Apulia sided with Judacilius
+      supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        Caecilius Metellus , his successor in the praetorship, attacked the
+        Apulians and overcame them in battle … until the whole of Italy came
+        into the Roman state except the Lucanians and the Samnites
+      supports: [to]
+    - source: velleius
+      locator: '2.17.1'
+      quote: >-
+        Except for the remnants of hostility which lingered at Nola the Italian
+        war was now in large measure ended … This was the year in which Quintus
+        Pompeius and Lucius Cornelius Sulla entered upon the consulship
+      supports: [to]
+    - source: diodorus
+      locator: '37.2.10'
+      quote: >-
+        Metellus captured the important city of Venusia in Apulia , which had in
+        it a great number of soldiers
+      supports: []
   confidence: uncertain
   review: draft
   note: >-
-    Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus Pius took
-    Venusia and beat the last Apulians in 88 (Diodorus 37.2.10; App. BC 1.53).
+    Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus took
+    Venusia and beat the last Apulians (Diodorus 37.2.10; App. BC 1.53), and
+    the war was over but for Nola in the year of Sulla's consulship, 88 (Vell.
+    2.17.1). The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-apulia
   polity: italia
@@ -953,8 +1077,27 @@
   from: 88 BCE
   to: after 27 BCE
   sources:
-    - { source: diodorus, locator: '37.2.10' }
-    - { source: appian, locator: 'BC 1.53' }
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        Caecilius Metellus , his successor in the praetorship, attacked the
+        Apulians and overcame them in battle … until the whole of Italy came
+        into the Roman state except the Lucanians and the Samnites
+      supports: [polity, relation, to]
+    - source: velleius
+      locator: '2.17.1'
+      quote: >-
+        the Romans , themselves exhausted, consenting to grant the citizenship
+        individually to the conquered and humbled states … This was the year in
+        which Quintus Pompeius and Lucius Cornelius Sulla entered upon the
+        consulship
+      supports: [polity, relation, from]
+    - source: pliny-nh
+      locator: '3.99'
+      quote: >-
+        the second region of Italy , which embraces the Hirpini , Calabria ,
+        Apulia , and the Salentini
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -964,28 +1107,113 @@
   from: before 133 BCE
   to: 92 BCE
   sources:
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Nehmen wir zu diesem Zweck das Jahr des Ausbruchs des hannibalischen
+        Krieges, 218 v. Chr. … dann die 10 Eidgenossenschaften der Marser,
+        Paeligner, Vestiner, Marruciner, Frentaner, Samniten
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Venusini , the Apulians , the Lucanians , and the Samnites , all of
+        whom had been hostile to the Romans before … They sent ambassadors to
+        Rome to complain that although they had cooperated in all ways with the
+        Romans in building up the empire, the latter had not been willing to
+        admit their helpers to citizenship
+      supports: [polity, relation, from]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
     - { source: beloch-1880, locator: 'pp. 167–169' }
   confidence: probable
   review: draft
+  note: >-
+    The Samnite confederacy was an ally of Rome at the outbreak of the
+    Hannibalic war (Beloch 176), and still an ally without citizenship when it
+    revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
+    (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-samnium
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 88 BCE
   sources:
-    - { source: appian, locator: 'BC 1.39' }
-    - { source: livy-per, locator: '72' }
-    - { source: appian, locator: 'BC 1.53, 1.68' }
-    - { source: livy-per, locator: '80' }
+    - source: livy-per
+      locator: '72'
+      quote: >-
+        The following Italian nations revolted: the Picentes , Vestini ,
+        Marsians , Paelignians , Marrucinians , Samnites , and Lucanians
+      supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.4–5'
+      quote: >-
+        There were engaged against them in this war the Samnites , the people
+        of Asculum , the Lucanians … Corfinium , a large and famous city,
+        recently established as the capital city of the Italians … They had
+        likewise a senate consisting of five hundred members
+      supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: [from]
+    - source: diodorus
+      locator: '37.2.11–13'
+      quote: >-
+        there were but a few of the Samnites remaining … for Sulla the consul
+        went from Rome to the forces which lay near to Nola
+      supports: [to]
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        Citizenship was given to the Italian nations by the Senate. The Samnites
+        , the only ones to take up arms again, sided with Cinna and Marius …
+        Consul Gnaeus Octavius was killed
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.68'
+      quote: >-
+        Caecilius Metellus , who was carrying on the remainder of the Social War
+        against the Samnites , to make peace on the best terms he could … when
+        Marius heard of this he made an engagement with them to grant all that
+        they asked from Metellus
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Sulla took Bovianum in 89 (App. BC 1.51) but the Samnites held Aesernia and
-    fought on through 88; Metellus could not come to terms with them, and Marius
-    and Cinna granted all they asked in 87 (App. BC 1.68; Livy Per. 80). They
-    fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as citizens
-    in a Roman civil war, which is not drawn.
+    fought on through Sulla's consulship of 88 (Diodorus 37.2.11–13); Metellus
+    could not come to terms with them, and Marius and Cinna granted all they
+    asked in 87, the year of Octavius' consulship (App. BC 1.68; Livy Per. 80).
+    They fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as
+    citizens in a Roman civil war, which is not drawn. The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-samnium
   polity: italia
@@ -993,8 +1221,26 @@
   from: 87 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 1.53, 1.68' }
-    - { source: livy-per, locator: '80' }
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        Citizenship was given to the Italian nations by the Senate. The Samnites
+        , the only ones to take up arms again, sided with Cinna and Marius …
+        Consul Gnaeus Octavius was killed
+      supports: [polity, relation, from, to]
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        until the whole of Italy came into the Roman state except the Lucanians
+        and the Samnites . These also seem to have obtained what they desired
+        somewhat later
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '3.106–107'
+      quote: >-
+        THE FOURTH REGION OF ITALY … in that of the Samnites , who have been
+        called Sabelli
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -1004,28 +1250,107 @@
   from: before 133 BCE
   to: 92 BCE
   sources:
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Nehmen wir zu diesem Zweck das Jahr des Ausbruchs des hannibalischen
+        Krieges, 218 v. Chr. … dann die 10 Eidgenossenschaften der Marser,
+        Paeligner, Vestiner, Marruciner, Frentaner, Samniten, Hirpiner,
+        Nuceriner, Lucaner
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Venusini , the Apulians , the Lucanians , and the Samnites , all of
+        whom had been hostile to the Romans before … They sent ambassadors to
+        Rome to complain that although they had cooperated in all ways with the
+        Romans in building up the empire, the latter had not been willing to
+        admit their helpers to citizenship
+      supports: [polity, relation, from]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
     - { source: beloch-1880, locator: 'pp. 172–173' }
   confidence: probable
   review: draft
+  note: >-
+    The Lucanian confederacy was an ally of Rome at the outbreak of the
+    Hannibalic war (Beloch 176), and still an ally without citizenship when it
+    revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
+    (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-lucania
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 88 BCE
   sources:
-    - { source: appian, locator: 'BC 1.39' }
-    - { source: livy-per, locator: '72' }
-    - { source: appian, locator: 'BC 1.53' }
-    - { source: diodorus, locator: '37.2.11' }
-    - { source: livy-per, locator: '80' }
+    - source: livy-per
+      locator: '72'
+      quote: >-
+        The following Italian nations revolted: the Picentes , Vestini ,
+        Marsians , Paelignians , Marrucinians , Samnites , and Lucanians
+      supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.4–5'
+      quote: >-
+        There were engaged against them in this war the Samnites , the people
+        of Asculum , the Lucanians … Corfinium , a large and famous city,
+        recently established as the capital city of the Italians … They had
+        likewise a senate consisting of five hundred members
+      supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: [from]
+    - source: diodorus
+      locator: '37.2.11–13'
+      quote: >-
+        Lamponius and Clepitius, who commanded what were left of the Lucanians
+        … for Sulla the consul went from Rome to the forces which lay near to
+        Nola
+      supports: [to]
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        Citizenship was given to the Italian nations by the Senate … Consul
+        Gnaeus Octavius was killed
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
     Gabinius took many Lucanian towns in 89 (Livy Per. 76), so the ground was
-    contested; Lamponius and Clepitius held out with the Samnites into 88
-    (Diodorus 37.2.11), and the Lucanians came in with them (App. BC 1.53; Livy
-    Per. 80).
+    contested; Lamponius and Clepitius held out with the Samnites through
+    Sulla's consulship of 88 (Diodorus 37.2.11–13), and the Lucanians came in
+    with them (App. BC 1.53) when the Senate gave citizenship to the Italians
+    in 87, the year of Octavius' consulship (Livy Per. 80). Lamponius' remnant
+    went on fighting in Bruttium after Sulla had left for the East (Diodorus
+    37.2.13), but is not drawn as holding Lucania. The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-lucania
   polity: italia
@@ -1033,9 +1358,30 @@
   from: 87 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 1.53' }
-    - { source: diodorus, locator: '37.2.11' }
-    - { source: livy-per, locator: '80' }
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        until the whole of Italy came into the Roman state except the Lucanians
+        and the Samnites . These also seem to have obtained what they desired
+        somewhat later
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        Citizenship was given to the Italian nations by the Senate … Consul
+        Gnaeus Octavius was killed
+      supports: [polity, relation, from, to]
+    - source: pliny-nh
+      locator: '3.71'
+      quote: >-
+        At the Silarus begins the third region of Italy , consisting of the
+        territory of Lucania and Bruttium
+      supports: [to]
+    - source: diodorus
+      locator: '37.2.11'
+      quote: >-
+        Lamponius and Clepitius, who commanded what were left of the Lucanians
+      supports: []
   confidence: probable
   review: draft
 
@@ -1045,7 +1391,34 @@
   from: before 133 BCE
   to: 91 BCE
   sources:
-    - { source: beloch-1880, locator: 'pp. 65–68' }
+    - source: beloch-1880
+      locator: 'p. 66'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die Bürgercolonien Mutina und Parma … zeigen, in welcher Weise das
+        gewonnene Land von Rom verwendet ward
+      supports: [polity, relation, from]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        alle Bürgergemeinden des diesseitigen Galliens bis auf den Socialkrieg
+        in die Tribus Pollia eingeschrieben worden sind : Mutina, Parma, Regium
+        Lepidi, Forum Cornelii, Faventia
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.49–50'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship … Gnaeus Pompeius , who was
+        now consul
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -1053,7 +1426,10 @@
     of Placentia and Bononia and allied Ravenna, Faesulae and the Boii by the Po
     inside: uncertain, a mixture drawn as its larger part. "Gallia" was often a
     consul's or praetor's command in these years, but not yet a standing
-    province.
+    province. Ends the year before the Senate's grant to the loyal allies,
+    made after the consuls of 90 (Appian names L. Caesar's colleague Rutilius
+    but gives L. Caesar as Sextus) took the field and before Pompeius
+    Strabo's consulship of 89 (App. BC 1.40, 1.49–50).
 
 - atom: cisalpina-cispadana
   polity: italia
@@ -1061,15 +1437,63 @@
   from: 90 BCE
   to: 82 BCE
   sources:
-    - { source: appian, locator: 'BC 1.49' }
-    - { source: cicero-balb, locator: '21' }
-    - { source: asconius-pis, locator: '3 C' }
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [polity, relation]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        auch diesseits des Stromes gehören alle Gemeinden; die nachweislich bis
+        zum Socialkriege Bundesrecht gehabt haben, zu anderen Tribus: so
+        Placentia zur Voturia, Bononia zur Lemonia
+      supports: [polity, relation]
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.49–50'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship … Gnaeus Pompeius , who was
+        now consul
+      supports: [from]
+    - source: piegdon-2010
+      quote: >-
+        Historical sources offer only one mention confirming the creation of
+        the province of Cisalpine Gaul; a fragment of the Late Antiquity work
+        of the rhetor Licinianus says that the province was established by
+        Sulla
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [to]
+    - source: asconius-pis
+      locator: '3 C'
+      quote: >-
+        Cn. Pompeius Strabo, pater Cn. Pompei Magni, Transpadanas colonias
+        deduxerit. Pompeius enim non novis colonis eas constituit sed veteribus
+        incolis manentibus ius dedit Latii
+      supports: []
   confidence: probable
   review: draft
   note: >-
     The Latin colonies and allies south of the Po became citizens with the rest
-    of Italy in 90–89; north of the Po only Latin rights were given (Asconius,
-    Pis. 3 C). Ends where the province begins.
+    of Italy in 90–89 (the Julian law: Cic. Balb. 21); north of the Po
+    Pompeius Strabo gave only Latin rights (Asconius, Pis. 3 C). Ends the year
+    before the province begins, which Sulla established and Broughton puts
+    his reforms mostly in 81 (see the polity).
 
 - atom: cisalpina-cispadana
   polity: gallia-cisalpina
@@ -1077,9 +1501,43 @@
   from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [polity, relation, from]
+    - source: piegdon-2010
+      quote: >-
+        Historical sources offer only one mention confirming the creation of
+        the province of Cisalpine Gaul; a fragment of the Late Antiquity work
+        of the rhetor Licinianus says that the province was established by
+        Sulla
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [from]
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps.
+      supports: [to]
     - { source: cah-ix }
     - { source: broughton-mrr, locator: 'vol. II, 44–43 BCE (D. Brutus in Cisalpina)' }
-    - { source: cassius-dio, locator: '48.12.5' }
   confidence: probable
   review: draft
   note: >-
@@ -1092,12 +1550,33 @@
   from: 42 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 5.3' }
-    - { source: cassius-dio, locator: '48.12.5' }
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps.
+      supports: [polity, relation, to]
+    - source: pliny-nh
+      locator: '3.115'
+      quote: >-
+        The eighth region is bounded by Ariminum , the Padus , and the Apennines
+        … In the interior there are the colonies of Bononia , formerly called
+        Felsina , when it was the chief place of Etruria , Brixillum , Mutina ,
+        Parma , and Placentia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    A copy of cisalpina's row: merged into Italy after Philippi.
+    A copy of cisalpina's row: merged into Italy after Philippi (App. BC 5.3;
+    Dio 48.12.5). Under Augustus the plain between the Apennines and the Po
+    was the eighth region of Italy (Pliny 3.115).
 
 - atom: cisalpina
   polity: socii
@@ -1105,8 +1584,70 @@
   from: before 133 BCE
   to: 82 BCE
   sources:
-    - { source: cicero-balb, locator: '32' }
-    - { source: asconius-pis, locator: '3 C' }
+    - source: beloch-1880
+      locator: 'p. 223'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Der hannibalische Krieg macht auch hierin Epoche für das italische
+        Bundesrecht; und die seit dieser Zeit geschlossenen foedera, wie die mit
+        den Cenomanen und Insubrern
+      supports: [polity, relation, from]
+    - source: beloch-1880
+      locator: 'p. 216'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        wenn Sertorius als Quaestor im Paduslande am Anfang des marsischen
+        Krieges dort Truppen aushebt, so ist doch zunächst gewiss an den weiten
+        Bürgerbezirk der Cispadana zu denken, und nicht an die Contingente der
+        Insubrer oder Cenomanen
+      supports: [polity, relation, from]
+    - source: beloch-1880
+      locator: 'p. 27'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Vercellae, Novaria, Ticinum, Laus Pompeia, Mediolanium, Comum, Bergomum,
+        wohl auch der Gau der Tauriner, sind erst durch die Lex Pompeia als
+        Municipien constituirt worden. Eporedia ist die einzige römische
+        Gemeinde in diesem Gebiet aus der Zeit vor dem Socialkrieg.
+      supports: [polity, relation]
+    - source: beloch-1880
+      locator: 'p. 26'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die übrigen Municipien verdanken ihre Entstehung der Lex Pompeia de
+        Gallia Cisalpina … entspricht einer der bisher foederirten ligurischen
+        Völkerschaften
+      supports: [polity, relation]
+    - source: asconius-pis
+      locator: '3 C'
+      quote: >-
+        Cn. Pompeius Strabo, pater Cn. Pompei Magni, Transpadanas colonias
+        deduxerit. Pompeius enim non novis colonis eas constituit sed veteribus
+        incolis manentibus ius dedit Latii
+      supports: [relation]
+    - source: cicero-balb
+      locator: '32'
+      quote: >-
+        some treaties are in existence, as for instance those with the Germans,
+        the Insubres , the Helvetians , and the Iapidae , and with some of the
+        barbarian tribes in Gaul in which there is a special exception made that
+        no one of them is to be received by us as a citizen of Rome
+      supports: []
+    - source: piegdon-2010
+      quote: >-
+        Historical sources offer only one mention confirming the creation of
+        the province of Cisalpine Gaul; a fragment of the Late Antiquity work
+        of the rhetor Licinianus says that the province was established by
+        Sulla
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [to]
     - { source: beloch-1880, locator: 'pp. 65–67' }
   confidence: probable
   review: draft
@@ -1117,8 +1658,10 @@
     Aquileia and the Roman colony of Eporedia (100) inside. Uncertain in
     Liguria: Beloch has most of the plain south of the Po west of the Trebia
     Roman citizen land, Industria, Pollentia, Hasta and Forum Fulvi, with only
-    Genua and the Statielli allied (67); the atom does not separate them. The lex Pompeia of 89 made the Transpadane communities Latin
-    (Asconius, Pis. 3 C), allies still. The Cimbri overran the plain north of
+    Genua and the Statielli allied (67); the atom does not separate them. The
+    lex Pompeia of 89 made the Transpadane communities Latin (Asconius, Pis. 3
+    C; Beloch 26–27), allies still. Ends the year before the province, which
+    Sulla established (see the polity). The Cimbri overran the plain north of
     the Po in 102–101 until Vercellae; not drawn.
 
 - atom: cisalpina
@@ -1127,17 +1670,51 @@
   from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [polity, relation, from]
+    - source: piegdon-2010
+      quote: >-
+        Historical sources offer only one mention confirming the creation of
+        the province of Cisalpine Gaul; a fragment of the Late Antiquity work
+        of the rhetor Licinianus says that the province was established by
+        Sulla
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [from]
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps.
+      supports: [to]
     - { source: cah-ix }
     - { source: broughton-mrr, locator: 'vol. II, 44–43 BCE (D. Brutus in Cisalpina)' }
-    - { source: cassius-dio, locator: '48.12.5' }
   confidence: probable
   review: draft
   note: >-
-    Provincial from c. 81 (see the polity); before, allied (the row above). The lex Roscia of 49 gave the Transpadanes
-    citizenship, but the province went on: D. Brutus governed it in 44–43 and
-    Antony fought him for it. It was merged into Italy only in 42 (App. BC 5.3;
-    Dio 48.12.5); the row ran to "after 43" until September 2026, against its
-    own polity's end.
+    Provincial from 81–80 (see the polity); before, allied (the row above). The
+    lex Roscia of 49 gave the Transpadanes citizenship, but the province went
+    on: D. Brutus governed it in 44–43 and Antony fought him for it. It was
+    merged into Italy only in 42 (App. BC 5.3; Dio 48.12.5); the row ran to
+    "after 43" until September 2026, against its own polity's end.
 
 # --- the islands ---------------------------------------------------------------
 
