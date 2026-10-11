@@ -4030,9 +4030,12 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
+    - value: municipium
       from: 90 BCE
       to: after 27 BCE
+      note: >-
+        a municipal town by the time of Verres (Cic. Verr. 2.5.161), not
+        colonia as this row read until October 2026.
   labelSide: w
   sources:
     - source: pleiades
@@ -4072,6 +4075,12 @@
         Consuls … In the Social War Caesar held general command in the southern
         area … In Rome he carried his law to give citizenship to all Latins and
         [talians who had remained loyal
+      supports: [status]
+    - source: cicero-verr
+      locator: '2.5.161'
+      quote: >-
+        The miserable man cried out that he was a Roman citizen, a citizen,
+        also, of the municipal town of Cosa
       supports: [status]
     - source: strabo
       locator: '5.2.8'
