@@ -4549,6 +4549,26 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: appian
+      locator: 'Hisp. 80'
+      quote: >-
+        On a false rumor that the Cantabri and Vaccaei were coming to the aid
+        of the Numantines, he became alarmed … the other consul, Aemilius
+        Lepidus
+      supports: [kind, from]
+    - source: florus
+      locator: '2.33.46'
+      quote: >-
+        Here two powerful nations, the Cantabrians and the Asturians, lived in
+        freedom from the rule of Rome.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.25.2–3'
+      quote: >-
+        he was detained by the revolt of the Salassi and by the hostility of
+        the Cantabri and Astures. … Augustus, who was now consul for the ninth
+        time, with Marcus Silanus as colleague
+      supports: [kind, to]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: suetonius-aug, locator: '26.3' }
@@ -4568,10 +4588,38 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        In Hispania Ulterior, Decimus Junius Brutus successfully fought against
+        the Gallaecians. Proconsul Marcus Aemilius Lepidus obtained different
+        results against the Vaccaeans
+      supports: [kind, from]
+    - source: velleius
+      locator: '2.5.1'
+      quote: >-
+        In Spain, even before the destruction of Numantia, Decimus Brutus had
+        conducted a brilliant campaign … earned for himself the cognomen of
+        Gallaecus.
+      supports: [from]
+    - source: plutarch
+      locator: 'Caesar 12.1'
+      quote: >-
+        Then he led his army against the Callaici and Lusitani, overpowered
+        them, and marched on as far as the outer sea, subduing their tribes
+        which before were not obedient to Rome.
+      supports: [kind, from]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        At the present time some of the provinces having been assigned to the
+        people and senate of the Romans, and the others to the emperor … guards
+        the whole country north of the Douro, the inhabitants of which formerly
+        were styled Lusitanians, but are now called Gallicians.
+      supports: [kind, to]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: appian, locator: 'Hisp. 72' }
-    - { source: livy-per, locator: '56' }
   confidence: certain
   review: draft
   note: >-
@@ -4589,6 +4637,39 @@
   from: before 133 BCE
   to: 67 BCE
   sources:
+    - source: diodorus
+      locator: '40.1.1'
+      quote: >-
+        Marcus Antonius agreed peace terms with the Cretans, which they observed
+        for some time; but afterwards, they called together a council to
+        consider what would be most advantageous for them.
+      supports: [kind]
+    - source: diodorus
+      locator: '40.1.3'
+      quote: >-
+        the Cretans should surrender all their ships to Rome … and jointly pay
+        four thousand talents of silver. The Cretans, hearing what was decreed,
+        went into a consultation about these commands imposed upon them.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '36.19.3'
+      quote: >-
+        In this way the Cretans, who had been free through all preceding ages
+        and had never had a foreign master, became enslaved
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '36.1.1'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … Metellus accordingly set out for Crete
+      supports: [to]
+    - source: velleius
+      locator: '2.34.1'
+      quote: >-
+        During the same period the island of Crete was brought under the
+        sovereignty of the Roman people by Quintus Metellus. For three years
+        this island … had worn out the Roman armies.
+      supports: [to]
     - { source: cassius-dio, locator: '36.17a–19' }
     - { source: broughton-mrr, locator: 'vol. II, 69–67 BCE' }
   confidence: certain
