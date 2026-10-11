@@ -24,6 +24,10 @@ independent, so:
    - **silent:** it doesn't address it;
    - **no:** it contradicts it.
 
+   A passage that names the larger region (Syria) and not the part the record
+   is about (Phoenicia) is **partly**, not **yes**: it backs the part only if
+   nothing suggests the part was held differently.
+
    Judge against the conventions in [data/README.md](../data/README.md) and the
    method: open ends
    need only the state in force at that year, and a year given by consuls or by

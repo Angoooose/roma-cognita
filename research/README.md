@@ -104,6 +104,11 @@ year blank, or overlap, against the record before it on the same ground. Where
 it would, start at the range's stated bound next to that record (its earliest
 year, quoted), give the whole range in `note`, and lower the confidence. The
 year written is then a bound a text states, not a guess.
+For example: Gadara passed to the Hasmoneans some time between 104 and
+96, and the Seleucid row before it ends in 105. Drawn as `{ earliest: 104,
+latest: 96 }` it would sit at 100 and leave 104–101 blank, so the Judaean row
+starts at `104 BCE` (in BCE the earlier year is the larger number), the note
+gives 104–96, and the confidence drops.
 
 **A year no readable text states is not kept.** "Province from 146", a client
 king's first year, a frontier's date: these are often scholars' inferences,
