@@ -901,7 +901,7 @@
 - polity: thracia-odrysae
   type: client-of
   of: rome
-  from: c. 80 BCE
+  from: before 31 BCE
   to: after 27 BCE
   sources:
     - source: cicero-verr
@@ -909,18 +909,18 @@
       quote: >-
         when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
         and to king Sadala
-      supports: [from]
+      supports: []
     - source: broughton-mrr
       locator: 'vol. II, 80 B.C., p. 81'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Legate, then Legatus pro quaestore, under Cn. Dolabella in Cilicia
-      supports: [from]
+      supports: []
     - source: plutarch
       locator: 'Antony 61.1'
       quote: >-
         Of subject kings who fought with him, there were … Sadalas of Thrace
-      supports: [type, of]
+      supports: [type, of, from]
     - source: cassius-dio
       locator: '51.25.4–5'
       quote: >-
@@ -938,8 +938,10 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    From the first sign of a friendly Thracian king, Sadala, c. 80 (Cic. Verr.
-    2.1.63); before 68 until the extension to 133 BCE. See the claim.
+    From the first year a text has the king Rome's subject, 31 (Plut. Ant.
+    61.1); Sadala, whom Verres was sent to c. 80 (Cic. Verr. 2.1.63), is a king
+    in touch with Rome, nothing more. It read c. 80 until the check. See the
+    claim.
 
 - polity: galatia
   type: client-of
