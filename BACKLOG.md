@@ -7,6 +7,21 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ## Deferred
 
+### The ground and river fitted to the bridges show in every year
+
+- The river is fitted to each bridge, and made ground laid under its ramps
+  (bridges.ts), once, for all years. So before a bridge is built its channel and
+  made ground still show: the Tiber Island's notches before the Fabricius (62 BCE)
+  and the Cestius (about 46 BCE), the cut bank and mound at the Fabricius' mainland
+  end.
+- Fix: bake a second, "before" texture (the ground before the made ground, the
+  river's distance before it was fitted, and which bridge changed each texel, its
+  year in plan.json), and have the shaders that read the ground and the river use
+  it before that year. The model's own shadow-catching ground mesh can follow the
+  year or be left; the difference there is small.
+- Keep the island's smoothed shore in every year: OpenStreetMap's stepped modern
+  shore is no better before 62 BCE. Only the embankment is dated.
+
 ### Modern ponds in HydroLAKES
 
 - Lakes now appear only once they are ~3×3 texels at the current level. That
