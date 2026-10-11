@@ -19216,19 +19216,20 @@
   polity: nabataea
   relation: independent
   from: c. 87 BCE
-  to: 84 BCE
+  to: 85 BCE
   sources:
     - { source: josephus-aj, locator: '13.382' }
   confidence: uncertain
   review: needs-check
   note: >-
     Given back to the Arabian king in the civil war (AJ 13.382), to Jannaeus'
-    recovery of it, which is not narrated.
+    recovery of it, which is not narrated (see the next row). Until October
+    2026 it ended in 84.
 
 - atom: nabataea-moab
   polity: judaea
   relation: independent
-  from: { earliest: 83 BCE, latest: 80 BCE }
+  from: 84 BCE
   to: 66 BCE
   sources:
     - { source: josephus-aj, locator: '13.393–397, 14.18' }
@@ -19237,9 +19238,12 @@
   note: >-
     Zoara and the other towns "in the country of Moab" are on the list of the
     Jews' cities after Jannaeus' three years' war beyond the Jordan (AJ
-    13.393–397), and Hyrcanus II promised twelve of them back to Aretas III in
-    65 (14.18). When Jannaeus took Moab again is not stated; the range is that
-    war.
+    13.393–397), which Schürer (1891, 304) dates 84–81; Hyrcanus II promised
+    twelve of them back to Aretas III (14.18) before Scaurus came south, while
+    Pompey was at war with Tigranes in 66 (14.29). When Jannaeus took Moab
+    again is not stated: the range is that war, 84–81, drawn from its first
+    year so as to follow the Nabataean row. Until October 2026 it read 83–80,
+    which no readable text gives.
 
 - atom: nabataea
   polity: nabataea
