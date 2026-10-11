@@ -745,19 +745,36 @@ known and what is generated are kept apart:
       board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
       `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
       its big triangles cut through the buildings.
-    - **Bridges run bank to bank** (decided 2026-09-25): each spans the water it
-      crosses along its axis on the plan's river (dry gaps under 45 m joined, as a
-      pier or an islet is), its sourced arches scaled to that width, and its deck
-      comes down to the ground at each end and rises over the arches. The build
-      reports a bridge whose water differs from its design by more than a quarter.
-      Its faces are laid in courses, with a ring of voussoirs round each arch, a
-      string course at the deck and a coped parapet, in a lighter shade of its
-      stone; its cutwaters are hooded. Past each end its deck comes down as a ramp until
-      it meets the ground along its line (the model samples the lowest ground across
-      the deck every 2 m past the water), runs on a few metres, and goes into the
-      ground; its parapets step down and end where it meets the ground, and its
-      abutments follow the ground down. Where one lands on the Tiber Island its deck
-      comes down to the island's top and the embankment opens for its abutment. The
+    - **Bridges are built as their sources give them, and the river fitted to them**
+      (decided 2026-10-11, replacing bridges scaled to the water, 2026-09-25;
+      bridges.ts). The plan's river is OpenStreetMap's, the Tiber inside its
+      1870s–1900s embankment walls, so a bridge scaled to it was the wrong size (the
+      Fabricius' arches at 70% of their 24 m, the Cestius' at under half). Now each
+      bridge stands at its sourced size over the middle of the water on its axis,
+      and the river's banks are moved to meet its abutments: the water under it is
+      exactly as wide as its arches and piers, a channel cut either side easing
+      back to the river's own, or the ground made up where the river is wider. An
+      island it does not land on keeps its shore. The build reports how far each
+      bank moved (the Cestius' most, about 12 m each side, through the island's
+      bulge). Its deck is its design's: over its arches it clears their crowns,
+      level or rising to the middle and never dipping between them; smaller arches
+      beside a great one spring higher, on taller piers, under the deck it sets.
+      Past its outermost arches it comes down on ramps at 22% to its banks, the
+      same height at both ends (on the Tiber Island its top; elsewhere the mean
+      ground past its abutments), and runs on level 6 m as its approach. Every
+      change of grade is rounded by a parabolic curve, as a road over a hump is:
+      over a crown along the length of its arch (the crown first raised by what
+      the curve takes off, so the deck still clears it), at a ramp's foot over
+      8 m. The Cestius' arch rises 0.3 of its span, a shallow segment like the
+      bridge's surviving form: its rise is not recorded, so this is a judgement. The ground
+      is fitted to the bridge, not the bridge to the ground: made ground laid just
+      under its ramps and approaches across its width and a shoulder, eased back
+      into the land over 10 m; its walls run down into it. Its footprint, which
+      keeps the houses off, runs the length of its approaches. Its faces are laid
+      in courses, with a ring of voussoirs round each arch, a string course at the
+      deck and a coped parapet, in a lighter shade of its stone; its cutwaters are
+      hooded; its parapets come down towards each ramp's foot and end there. Where
+      one lands on the Tiber Island the embankment opens for its abutment. The
       small holes in the modern river's outline (today's bridge piers, the islet
       under the Pons Fabricius, the Ponte Rotto) are left out of the plan's river.
     - **The Tiber Island's ship** (reworked 2026-09-29) is a travertine embankment on
@@ -767,7 +784,7 @@ known and what is generated are kept apart:
       face is laid in courses, leaning back a little and stained where the river
       rises; a coping stands out over it, and a low parapet along the top rises
       towards the prow as a ship's sides do, with the relief of Aesculapius' staff
-      near it. Behind it the island is level, 3 m over the water, with a paved walk
+      near it. Behind it the island is level, 5 m over the water, with a paved walk
       along the parapet. The embankment lays the island's top itself, since the
       terrain's cells are too coarse to hold an edge at the wall; the ground under
       it rises from the river as a bank, which is what shows before the wall's

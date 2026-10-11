@@ -39,6 +39,7 @@ import { type Course, STEP_M } from './servian.ts'
 import { type Fields, fieldTrees, type RecordedGround, TREE } from './fields.ts'
 import { FORUM_PAVING_PIECES, levelOf } from './ground.ts'
 import { ISLAND, islandAt, islandRing } from './island.ts'
+import { type BridgeSite, deckProfile } from './bridges.ts'
 
 type Pt = [number, number]
 
@@ -52,6 +53,8 @@ export interface ModelInput {
   course: Course
   streets: StreetLine[]
   riverRings: Pt[][]
+  /** The bridges placed over the river, which is fitted to them (bridges.ts). */
+  bridges: BridgeSite[]
   /** Signed distance to the river, metres, clamped (plate.ts). */
   water: Float32Array
   /** Signed distance to the hull of the plan, metres (plate.ts). */
@@ -677,16 +680,18 @@ const TOMBS = {
  * How high the Tiber Island's level top stands over the river, metres: an
  * illustration's, not a survey's — enough for its embankment to read as one.
  */
-const ISLE_TOP_M = 3
+const ISLE_TOP_M = 5
 /** How far in from its shore the Tiber Island's ground rises to its top, metres. */
 const ISLE_BANK_M = 16
 /** How far in from its shore that bank starts: behind the embankment's face. */
 const ISLE_BANK_FROM_M = 4
 /** The river round the Tiber Island, level, metres against the water's level. */
 const ISLE_RIVER_M = -1
-/** How far apart, and how many, the samples of the ground past a bridge's ends are, metres. */
-const BRIDGE_PROFILE_M = 2
-const BRIDGE_PROFILE_N = 21
+/**
+ * The made ground under a bridge's ramps and approaches, metres: its shoulder either
+ * side of the deck, how far it eases back into the land, and how far under the paving.
+ */
+const MADE_GROUND = { shoulder: 2, ease: 10, under: 0.3 }
 /** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
 const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
 
@@ -752,26 +757,6 @@ export function bakeModel(m: ModelInput) {
       }
   }
   const at = (x: number, y: number) => sample(ground, x, y, waterLevel)
-  // The ground between the texel centres, as the terrain draws it.
-  const between = (x: number, y: number) => {
-    const fx = (x - g.x0) / g.texel - 0.5
-    const fy = (g.y1 - y) / g.texel - 0.5
-    const [c, r] = [Math.floor(fx), Math.floor(fy)]
-    const [u, v] = [fx - c, fy - r]
-    const h = (cc: number, rr: number) =>
-      cc < 0 || rr < 0 || cc >= g.width || rr >= g.height
-        ? waterLevel
-        : ground[rr * g.width + cc]
-    return (
-      (h(c, r) * (1 - u) + h(c + 1, r) * u) * (1 - v) +
-      (h(c, r + 1) * (1 - u) + h(c + 1, r + 1) * u) * v
-    )
-  }
-  // The ground over the base of what stands in the river (the bridges): on the Tiber
-  // Island its level top, which its embankment lays over the bank.
-  const groundOver = (x: number, y: number) =>
-    (shoreAt >= 0 && inRing([x, y], m.riverRings[shoreAt]) ? isleTop : between(x, y)) -
-    (waterLevel - 2)
   const slopeAt = (x: number, y: number) =>
     Math.hypot(at(x + 4, y) - at(x - 4, y), at(x, y + 4) - at(x, y - 4)) / 8
 
@@ -951,11 +936,34 @@ export function bakeModel(m: ModelInput) {
       centre[0] -= axis[1] * du + axis[0] * dv
       centre[1] -= -axis[0] * du + axis[1] * dv
     }
+    const kind = own[0]?.kind ?? p.kind
+    // A bridge at its sourced size, over the middle of the water it crosses, the river
+    // fitted to it (bridges.ts); its deck from its design, its banks the same height at
+    // both ends: on the Tiber Island its level top, elsewhere the mean of the ground
+    // past its abutments, to which the ground is fitted (below). Its footprint runs the
+    // length of its ramps and approaches, so they keep the houses off.
+    let deck: ReturnType<typeof deckProfile> | null = null
+    let reach: Pt = size
+    const site = kind === 'bridge' ? m.bridges.find((b) => b.id === id) : undefined
+    if (site) {
+      centre[0] = site.centre[0]
+      centre[1] = site.centre[1]
+      const ends = [-1, 1].map((s): Pt => [
+        centre[0] + (axis[0] * s * (size[1] + 12)) / 2,
+        centre[1] + (axis[1] * s * (size[1] + 12)) / 2,
+      ])
+      const onIsle = ends.some((e) => shoreAt >= 0 && inRing(e, m.riverRings[shoreAt]))
+      const bank = onIsle
+        ? isleTop
+        : ends.reduce((s, e) => s + at(e[0], e[1]), 0) / ends.length
+      deck = deckProfile(d, Math.max(bank - waterLevel, 1))
+      const half = Math.max(-deck.from, deck.from + deck.z.length - 1)
+      reach = [size[0] + 2 * MADE_GROUND.shoulder, 2 * half]
+    }
     // With the shops behind its porticoes, which keep the houses off too.
-    const ring = footprint(d, centre, size, axis).ring
+    const ring = footprint(d, centre, reach, axis).ring
     const rings =
       d.at || d.size || !largest ? [ring] : own.find((mo) => mo.rings[0] === largest)!.rings
-    const kind = own[0]?.kind ?? p.kind
     for (const mo of own) monuments.splice(monuments.indexOf(mo), 1)
     // The island's own shore, for its embankment: the hole in the river the island is
     // (OpenStreetMap's outline of it is the modern embankments, wider than its land).
@@ -965,36 +973,6 @@ export function bakeModel(m: ModelInput) {
             .filter((r) => inRing(centre, r))
             .sort((a, b) => Math.abs(ringArea(a)) - Math.abs(ringArea(b)))[0]
         : undefined
-    // A bridge runs from bank to bank along its axis: walked out from its centre until
-    // the ground is dry, so it meets the ground at both ends whatever its design's
-    // length (the river's line here is OpenStreetMap's, not the Republic's).
-    let span: { a: Pt; b: Pt } | null = null
-    if (kind === 'bridge') {
-      // The water along its axis, 0.5 m at a time out to 250 m either side; runs of it
-      // joined across dry gaps under 45 m (a pier, an islet in the river's line, or its line broken under a
-      // bridge); the run nearest its centre is what it crosses.
-      const pt = (t: number): Pt => [centre[0] + axis[0] * t, centre[1] + axis[1] * t]
-      const runs: [number, number][] = []
-      for (let t = -250; t <= 250; t += 0.5) {
-        if (sample(m.water, ...pt(t), 99) >= 0) continue
-        const last = runs[runs.length - 1]
-        if (last && t - last[1] < 45) last[1] = t
-        else runs.push([t, t])
-      }
-      const gap = (r: [number, number]) =>
-        r[0] <= 0 && r[1] >= 0 ? 0 : Math.min(Math.abs(r[0]), Math.abs(r[1]))
-      const run = runs.sort((a, b) => gap(a) - gap(b))[0] ?? [-size[1] / 2, size[1] / 2]
-      span = { a: pt(run[0]), b: pt(run[1]) }
-      const L = Math.hypot(span.b[0] - span.a[0], span.b[1] - span.a[1])
-      const mid: Pt = [(span.a[0] + span.b[0]) / 2, (span.a[1] + span.b[1]) / 2]
-      if (Math.abs(L - size[1]) / size[1] > 0.25)
-        console.log(
-          `model: ${id}: the water here is ${L.toFixed(0)} m across, its design ${size[1].toFixed(0)} m; its arches are scaled to it`,
-        )
-      centre[0] = mid[0]
-      centre[1] = mid[1]
-      size = [size[0], L]
-    }
     // A bridge stands on the water; the rest on the lowest ground under them, or, where
     // the design says it is a terrace built out on a slope, its highest or middle
     // ground, its foundations running down to the lowest.
@@ -1040,33 +1018,15 @@ export function bakeModel(m: ModelInput) {
             ]
           }),
         }),
-        // A bridge's banks: the ground a few metres onto the land at each end, over its
-        // base, where its deck comes down to meet it.
-        ...(span && {
-          // On the Tiber Island, its level top, which its embankment lays over the bank.
-          banks: [-1, 1].map((s) => {
-            const e = s < 0 ? span!.a : span!.b
-            return round(groundOver(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8))
-          }),
-          // And the ground along its line past each end, every BRIDGE_PROFILE_M out
-          // from the water, so its deck comes down to meet it wherever it lies.
-          // The lowest across its deck, so where a bank slopes across it the deck lies
-          // on its low side and goes into the high one.
-          profiles: [-1, 1].map((s) => {
-            const e = s < 0 ? span!.a : span!.b
-            const half = size[0] / 2 + 0.5
-            return Array.from({ length: BRIDGE_PROFILE_N }, (_, j) => {
-              const t = j * BRIDGE_PROFILE_M
-              const [x, y] = [e[0] + axis[0] * s * t, e[1] + axis[1] * s * t]
-              return round(
-                Math.min(
-                  ...[-half, 0, half].map((v) =>
-                    groundOver(x + axis[1] * v, y - axis[0] * v),
-                  ),
-                ),
-              )
-            })
-          }),
+        // A bridge's deck over its base, every metre along it from `from` (the
+        // engine's u), where its ramps reach its banks, and each arch's springing.
+        ...(deck && {
+          deck: {
+            from: deck.from,
+            z: deck.z.map((z) => round(z + 2, 100)),
+            ramps: deck.ramps.map((r) => round(r)),
+          },
+          springs: deck.springs.map((s) => round(s + 2, 100)),
         }),
       },
     })
@@ -1432,6 +1392,46 @@ export function bakeModel(m: ModelInput) {
               : AGGER.bank * (1 - smoothstep(AGGER.top, AGGER.top + AGGER.run, f))
           ground[k] = Math.max(before[k], before[k] + (g0[i] + h - before[k]) * w)
         }
+      }
+  }
+
+  // The made ground under each bridge's ramps and approaches (bridges.ts): laid just
+  // under its deck across its width and a shoulder, and eased back into the land round
+  // it, so the ground meets the bridge rather than the bridge the ground. Not in the
+  // river, nor on the Tiber Island, whose embankment lays its own top.
+  for (const mo of monuments) {
+    const deck = mo.extra?.deck as { from: number; z: number[] } | undefined
+    if (!deck || !mo.design) continue
+    const { centre, size, axis } = mo.design
+    const side: Pt = [axis[1], -axis[0]]
+    const zAt = (u: number) => {
+      const f = Math.min(deck.z.length - 1, Math.max(0, u - deck.from))
+      const i = Math.min(deck.z.length - 2, Math.floor(f))
+      return mo.base + deck.z[i] + (deck.z[i + 1] - deck.z[i]) * (f - i)
+    }
+    const [u0, u1] = [deck.from, deck.from + deck.z.length - 1]
+    const half = size[0] / 2 + MADE_GROUND.shoulder
+    const E = MADE_GROUND.ease
+    const r = Math.max(-u0, u1) + E
+    for (let x = centre[0] - r; x <= centre[0] + r; x += g.texel)
+      for (let y = centre[1] - r; y <= centre[1] + r; y += g.texel) {
+        const k = idx(x, y)
+        if (k < 0 || m.water[k] < 0) continue
+        const [cx, cy] = [
+          g.x0 + (Math.floor((x - g.x0) / g.texel) + 0.5) * g.texel,
+          g.y1 - (Math.floor((g.y1 - y) / g.texel) + 0.5) * g.texel,
+        ]
+        const [dx, dy] = [cx - centre[0], cy - centre[1]]
+        // The engine's u runs against the model's axis (monuments.ts `bridge`).
+        const u = -(dx * axis[0] + dy * axis[1])
+        const v = Math.abs(dx * side[0] + dy * side[1])
+        if (u < u0 - E || u > u1 + E || v > half + E) continue
+        if (shoreAt >= 0 && inRing([cx, cy], m.riverRings[shoreAt])) continue
+        const w =
+          (1 - smoothstep(half, half + E, v)) *
+          (1 - smoothstep(0, E, Math.max(u0 - u, u - u1, 0)))
+        const line = zAt(u) - MADE_GROUND.under
+        ground[k] += (line - ground[k]) * w
       }
   }
 
@@ -2664,7 +2664,7 @@ function ringArea(r: Pt[]) {
 }
 
 /** The smallest rectangle round a ring, by its edges' directions: centre, its long axis (a unit vector), and its sides. */
-function orientedBox(r: Pt[]) {
+export function orientedBox(r: Pt[]) {
   let best = { area: Infinity, cx: 0, cy: 0, axis: [0, 1] as Pt, long: 0, short: 0 }
   for (let i = 0; i + 1 < r.length; i++) {
     const a = Math.atan2(r[i + 1][1] - r[i][1], r[i + 1][0] - r[i][0])

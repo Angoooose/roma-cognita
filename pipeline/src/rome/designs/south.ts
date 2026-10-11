@@ -67,7 +67,9 @@ export const DESIGNS_SOUTH: Record<string, Design> = {
     bearing: 17,
     spans: [5.8, 23.65, 5.8],
     piers: [6, 6],
-    rise: 0.4,
+    // Its arch's rise is not recorded: a judgement, a shallow segment like the
+    // bridge's surviving form, not a sourced figure.
+    rise: 0.3,
     why: 'Its Republican form is not known; the late bridge on its line was "48 metres long and 8.20 wide, with one central arch, 23.65 metres in span, and a small arch on each side, 5.80 metres wide", and "the general appearance and form of the two bridges were doubtless about the same" (P&A, Pons Cestius, p. 400).',
   },
   'pons-sublicius': {

@@ -1299,10 +1299,13 @@ const mausoleum: Build<Design & Mausoleum> = (F, d, w, _l, face) => {
 }
 
 /**
- * A bridge along its length (v, from bank to bank), `w` wide: arches of the given
- * spans springing from piers with pointed cutwaters, a small flood arch through a
- * pier where it had one, and a deck with parapets at the height of its banks. A
- * timber bridge (the Sublicius) is a deck on trestles of piles.
+ * A bridge along its length (v, from bank to bank), `w` wide, built as its sources give
+ * it (pipeline bridges.ts): arches of the given spans springing from piers with
+ * pointed cutwaters, a small flood arch through a pier where it had one, abutments to
+ * its full length, and the deck its design sets — clearing its arches, coming down on
+ * ramps to its banks and running on as its approaches. The river and the ground are
+ * fitted to it, not it to them. A timber bridge (the Sublicius) is a deck on trestles
+ * of piles.
  */
 interface Bridge {
   /** The arches' spans, bank to bank, metres; and the piers' widths between them. */
@@ -1314,34 +1317,25 @@ interface Bridge {
   flood?: number
   /** A timber bridge on trestles of piles. */
   timber?: boolean
-  /** The water's surface, and the ground at its two ends, metres over its ground (from the model). */
+  /** The water's surface over its ground, metres (from the model). */
   water?: number
-  banks?: [number, number]
-  /** The ground past each end over its ground, every BRIDGE_PROFILE_M out from the water (from the model). */
-  profiles?: [number[], number[]]
+  /**
+   * Its deck over its ground every metre along it from `from` (this frame's u), and
+   * where its ramps come down to its banks; and each arch's springing (from the model).
+   */
+  deck?: { from: number; z: number[]; ramps: [number, number] }
+  springs?: number[]
 }
 
-/** How far apart the model samples the ground past a bridge's ends (model.ts `BRIDGE_PROFILE_M`). */
-const BRIDGE_PROFILE_M = 2
-/**
- * A deck's ramp down from the water's edge until it meets the ground, how steep; how
- * far it runs on along the ground as its approach, and how far it sinks into it by
- * the end, metres.
- */
-const BRIDGE_RAMP = 0.16
-const BRIDGE_APPROACH = 5
-const BRIDGE_SINK = 0.6
-/** How far past its approach it dives into the ground, metres, one down for one along. */
-const BRIDGE_DIVE = 3
-/** How far past where its deck meets the ground its parapets run on, stepping down, before they end. */
-const BRIDGE_PARAPET_END = 2
+/** How low its parapets come down towards the foot of each ramp, and over how many metres. */
+const PARAPET_FOOT = { h: 0.5, over: 3 }
 
 /**
  * A bridge's parts, metres: the band of its faces between the arches' crowns and the
  * deck; its parapet's height and thickness; the string course along its faces at the
  * deck, how deep and how far it stands out; the ring of voussoirs round each arch, how
- * deep and how far it stands out; and how high the hood over each cutwater rises to
- * the pier's face.
+ * deep and how far it stands out; how high the hood over each cutwater rises to the
+ * pier's face; and how far under its deck its walls run down into the made ground.
  */
 const BRIDGE = {
   fascia: 1.2,
@@ -1352,96 +1346,48 @@ const BRIDGE = {
   ring: 0.7,
   ringOut: 0.08,
   hood: 1.4,
+  footing: 4,
 }
 
 const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   const wl = d.water ?? 2
-  // The model gives its ends in the order of its axis, which this frame's u runs against.
-  const [hB, hA] = d.banks ?? [wl + 8, wl + 8]
-  // Along the bridge in a frame turned so its u runs from bank to bank, -l/2 to l/2.
+  // Along the bridge in a frame turned so its u runs from bank to bank.
   const S = F.sub(0, 0, Math.PI / 2)
   const wall = d.timber ? PART.timber : face
   // Its copings, string courses and arch rings: the face's stone, a shade lighter.
   const trim = d.timber ? PART.timber : face.clone().lerp(C.paving, 0.45)
   const deckCol = d.timber ? PART.timber : C.paving
-  const land = 7
-  // The arches, scaled from the design's spans to the water here, bank to bank.
-  const total = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
-  const k = l / total
-  const spans = d.spans.map((x) => x * k)
-  const piers = d.piers.map((x) => x * k)
+  // Its arches and piers at their sourced size, centred, its abutments out to its
+  // length; its deck as the model set it from its design, or level where it set none.
+  const T = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
   const rise = d.rise ?? 0.5
-  // The deck: lifted over the stream to clear its arches, eased down to its banks.
-  const clear = d.timber ? 4.5 : Math.max(...spans) * rise + 2.2
-  const lifted = (u: number) => {
-    const t = Math.min(1, Math.max(0, (u + l / 2) / l))
-    const ends = hA + (hB - hA) * t
-    const need = wl + clear
-    const off = Math.max(0, need - ends)
-    // How far out over the water the lift reaches, full across the middle.
-    const e = Math.max(
-      0,
-      Math.min(1, Math.min(u + l / 2 + land, l / 2 + land - u) / (l * 0.3 + land)),
-    )
-    return ends + off * (e * e * (3 - 2 * e))
+  const flat = wl + 8
+  const profile = d.deck ?? {
+    from: -l / 2,
+    z: [flat, flat],
+    ramps: [-l / 2, l / 2] as [number, number],
   }
-  // Past each end the ground along its line (from the model), `x` out from the water;
-  // or its bank, where the model gave none.
-  const groundAt = (end: number, x: number) => {
-    const p = d.profiles?.[1 - end]
-    if (!p || p.length < 2) return end ? hB : hA
-    const f = Math.min(p.length - 1, Math.max(0, x / BRIDGE_PROFILE_M))
-    const i = Math.min(p.length - 2, Math.floor(f))
-    return p[i] + (p[i + 1] - p[i]) * (f - i)
-  }
-  // Onto the land the deck comes down from the water's edge as a ramp until it meets
-  // the ground wherever that lies, and runs on a few metres as its approach, sinking
-  // into the ground (the terrain is drawn from coarser cells than the model samples,
-  // and lies a little off its heights).
-  const past = (u: number) =>
-    u < -l / 2 ? { end: 0, x: -l / 2 - u } : u > l / 2 ? { end: 1, x: u - l / 2 } : null
-  const edge = [lifted(-l / 2), lifted(l / 2)]
-  const ramp = (end: number, x: number) => edge[end] - BRIDGE_RAMP * x
-  const meets = [0, 1].map((end) => {
-    for (let x = 0; x < BRIDGE_PROFILE_M * 20; x += 0.5)
-      if (ramp(end, x) <= groundAt(end, x)) return x
-    return BRIDGE_PROFILE_M * 20
-  })
-  // How far along its approach a point past the ends is, 0 to 1.
-  const along = (p: { end: number; x: number }) =>
-    Math.min(1, Math.max(0, (p.x - meets[p.end]) / BRIDGE_APPROACH))
-  // Past its approach it dives into the ground, so where the terrain is drawn below
-  // its heights the paving is seen going down into the bank, not a face standing on it.
   const deck = (u: number) => {
-    const p = past(u)
-    if (!p) return lifted(u)
-    const dive = Math.max(0, p.x - meets[p.end] - BRIDGE_APPROACH)
-    const g = groundAt(p.end, p.x) - BRIDGE_SINK * along(p) - dive
-    return Math.max(ramp(p.end, p.x), g)
+    const { from, z } = profile
+    const f = Math.min(z.length - 1, Math.max(0, u - from))
+    const i = Math.min(z.length - 2, Math.floor(f))
+    return z[i] + (z[i + 1] - z[i]) * (f - i)
   }
-  // Its parapets: stepping down where the deck meets the ground, and ending there,
-  // the approach running on without them.
+  const [uA, uB] = [profile.from, profile.from + profile.z.length - 1]
+  const [rA, rB] = profile.ramps
+  // Its parapets the length of the bridge and its ramps, coming down towards each
+  // ramp's foot and ending there; the level approaches beyond run on without them.
   const parapetAt = (u: number) => {
-    const p = past(u)
-    if (!p) return BRIDGE.parapet
-    const t = (p.x - meets[p.end]) / BRIDGE_PARAPET_END
-    return t > 1.001 ? 0 : BRIDGE.parapet * (1 - 0.6 * Math.max(0, t))
+    if (u < rA - 1e-3 || u > rB + 1e-3) return 0
+    const t = Math.min(1, Math.max(0, Math.min(u - rA, rB - u) / PARAPET_FOOT.over))
+    return PARAPET_FOOT.h + (BRIDGE.parapet - PARAPET_FOOT.h) * t
   }
-  const run = BRIDGE_APPROACH + BRIDGE_DIVE
-  const [uA, uB] = [-l / 2 - meets[0] - run, l / 2 + meets[1] + run]
-  const [pA, pB] = [
-    -l / 2 - meets[0] - BRIDGE_PARAPET_END,
-    l / 2 + meets[1] + BRIDGE_PARAPET_END,
-  ]
-  // The ground under a point past the ends, for the masonry to go down into.
-  const under = (u: number) => {
-    const p = past(u)
-    return p ? groundAt(p.end, p.x) - 2 : wl - 4
-  }
+  // Its walls run down into the made ground under its ramps and approaches.
+  const under = (u: number) => deck(u) - BRIDGE.footing
   const step = 2
   const us: number[] = []
   for (let u = uA; u < uB; u += step) us.push(u)
-  us.push(uB, pA, pB)
+  us.push(uB, rA, rB)
   us.sort((a, b) => a - b)
   // A stone face laid in courses (`SKIN.ashlar`), as the island's embankment is, or
   // the timber bridge's planks left plain.
@@ -1493,8 +1439,8 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     const z = deck(u)
     S.quad([u, -w / 2, under(u)], [u, w / 2, under(u)], [u, w / 2, z], [u, -w / 2, z], wall)
   }
-  for (const u of [pA, pB]) {
-    const [z, h] = [deck(u), BRIDGE.parapet * 0.4]
+  for (const u of [rA, rB]) {
+    const [z, h] = [deck(u), PARAPET_FOOT.h]
     for (const s of [-1, 1]) {
       const [v, pv] = [(s * w) / 2, (s * w) / 2 - s * P.parapetThick]
       S.quad([u, v, z], [u, pv, z], [u, pv, z + h], [u, v, z + h], wall)
@@ -1502,9 +1448,9 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   }
   if (d.timber) {
     // Bents of piles across the stream under the deck, with a cross beam on each.
-    const n = spans.length
+    const n = d.spans.length
     for (let j = 0; j <= n; j++) {
-      const u = -l / 2 + (l * j) / n
+      const u = -T / 2 + (T * j) / n
       const z = deck(u) - 0.5
       for (const v of [-w / 2 + 0.4, 0, w / 2 - 0.4])
         S.drum(u, v, 0.25, 0.25, wl - 3, z, 5, PART.wood, null)
@@ -1531,18 +1477,18 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
       S.quad([u, -w / 2, z0], [u, w / 2, z0], [u, w / 2, z], [u, -w / 2, z], wall)
     }
   }
-  // The abutments, from under the river at the water's edge down the ground behind.
+  // The abutments, ramps and approaches: from under the river at its banks, down into
+  // the made ground behind.
   const abut = (u: number) => Math.min(under(u), wl - 4)
-  solid(uA, -l / 2, abut)
-  solid(l / 2, uB, abut)
-  // An arch from sa to sb: its ring of voussoirs springing over the water, its
-  // spandrels up to the deck on both faces, its soffit dark.
-  const arch = (sa: number, sb: number, r0: number) => {
+  solid(uA, -T / 2, abut)
+  solid(T / 2, uB, abut)
+  // An arch from sa to sb springing at `spring`, rising `r0` of its span: its ring of
+  // voussoirs, its spandrels up to the deck on both faces, its soffit dark.
+  const arch = (sa: number, sb: number, spring: number, r0: number) => {
     const N = 16
     const r = (sb - sa) / 2
     const um = (sa + sb) / 2
-    const crown = deck(um) - 1.6
-    const spring = Math.max(wl - 0.8, crown - (sb - sa) * r0)
+    const crown = spring + (sb - sa) * r0
     // The intrados, and the ring's outer edge round it.
     const curve = (grow: number) =>
       Array.from({ length: N + 1 }, (_, j) => {
@@ -1598,21 +1544,22 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     }
     return spring
   }
-  let u = -l / 2
-  spans.forEach((span, i) => {
-    arch(u, u + span, rise)
+  let u = -T / 2
+  d.spans.forEach((span, i) => {
+    arch(u, u + span, d.springs?.[i] ?? wl + 0.3, rise)
     u += span
-    const p = piers[i]
+    const p = d.piers[i]
     if (p === undefined) return
     const [pa, pb] = [u, u + p]
     const m = (pa + pb) / 2
-    // The pier up to the deck, a flood arch through it where it had one, and pointed
-    // cutwaters on both faces to above the floods.
+    // The pier up to the deck, a flood arch through it where it had one (its crown a
+    // little under the arches' ring course), and pointed cutwaters on both faces to
+    // above the floods.
     if (d.flood) {
-      const fs = Math.min(d.flood * k, p * 0.6)
+      const fs = Math.min(d.flood, p * 0.6)
       solid(pa, m - fs / 2, () => wl - 4)
       solid(m + fs / 2, pb, () => wl - 4)
-      arch(m - fs / 2, m + fs / 2, 0.5)
+      arch(m - fs / 2, m + fs / 2, deck(m) - P.fascia - 1 - fs / 2, 0.5)
     } else solid(pa, pb, () => wl - 4)
     for (const s of [-1, 1]) {
       const v0 = (s * w) / 2

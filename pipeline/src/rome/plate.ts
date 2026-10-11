@@ -41,8 +41,9 @@ import {
 } from './fields.ts'
 import { ancientGround, capRidges } from './ground.ts'
 import { ISLAND, islandAt, islandRing, shipShore } from './island.ts'
+import { fitRiver, placeBridges } from './bridges.ts'
 import { COURSES } from './aqueducts.ts'
-import { designFootprints } from './designs.ts'
+import { DESIGNS, designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
 
 const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
@@ -209,17 +210,40 @@ export async function bakePlate(
   // Without the small holes in the modern river's outline: the piers of today's
   // bridges, the islet under the Pons Fabricius and the Ponte Rotto's ruin, which
   // were none of them dry ground in the Republic.
-  const riverRings = river
-    .flat()
-    .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
-    .filter((ring) => Math.abs(ringArea(ring)) >= MIN_ISLET_M2)
+  let riverPolys = river
+    .map((poly) =>
+      poly
+        .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
+        .filter((ring) => Math.abs(ringArea(ring)) >= MIN_ISLET_M2),
+    )
+    .filter((poly) => poly.length > 0)
   // The Tiber Island's shore as the ship's sides, not the modern embankment's steps
   // (island.ts).
   const island = places.get(ISLAND)
   if (island) {
-    const i = islandRing(riverRings, islandAt(island.location))
-    if (i >= 0) riverRings[i] = shipShore(riverRings[i], island.location)
+    for (const poly of riverPolys) {
+      const i = islandRing(poly, islandAt(island.location))
+      if (i > 0) poly[i] = shipShore(poly[i], island.location)
+    }
   }
+  // The bridges at their sourced size, and the river's banks moved to meet them
+  // (bridges.ts).
+  const wetIn = (rings: Pt[][]) => (p: Pt) =>
+    rings.filter((r) => inRing(p, r)).length % 2 === 1
+  const bridges = placeBridges(places, outlines, wetIn(riverPolys.flat()))
+  const isles = island
+    ? riverPolys.flatMap((poly) => {
+        const i = islandRing(poly, islandAt(island.location))
+        return i > 0 ? [poly[i]] : []
+      })
+    : []
+  riverPolys = fitRiver(riverPolys, bridges, (id) => DESIGNS[id].size?.[0] ?? 8, isles)
+  for (const b of bridges)
+    if (Math.abs(b.moved) > 0.5)
+      console.log(
+        `model: ${b.id}: its banks moved ${Math.abs(b.moved).toFixed(1)} m ${b.moved > 0 ? 'back' : 'out'} on each side to meet its ${b.water.toFixed(1)} m of arches and piers`,
+      )
+  const riverRings = riverPolys.flat()
   // The wall's course, SITAR's (servian.ts): the walled city is what it encloses.
   const course = servianCourse()
   const circuitRing = course.ring
@@ -370,6 +394,7 @@ export async function bakePlate(
     course,
     streets,
     riverRings,
+    bridges,
     water,
     reach: reachField,
     reachM: PLATE_REACH_M,
