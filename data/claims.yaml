@@ -7693,16 +7693,21 @@
 - atom: astures
   polity: astures
   relation: independent
-  from: before 133 BCE
+  from: before 29 BCE
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '51.20.1'
+      quote: >-
+        when he was consul for the fifth time, with Sextus Apuleius
+      supports: [from]
     - source: cassius-dio
       locator: '51.20.5'
       quote: >-
         To be sure, there were still under arms the Treveri, who had brought
         in the Germans to help them, and the Cantabri, the Vaccaei, and the
         Astures
-      supports: [polity, relation]
+      supports: [polity, relation, from]
     - source: florus
       locator: '2.33.46'
       quote: >-
@@ -7727,6 +7732,13 @@
     - { source: curchin-1991 }
   confidence: probable
   review: draft
+  note: >-
+    First attested among the events of Octavian's fifth consulship, 29, as
+    "still under arms" (Dio 51.20.1, 51.20.5), and free of Rome's rule until
+    Augustus' war of 26–25 (Flor. 2.33.46; Dio 53.25.2–8). It read "before
+    133" until October 2026: no readable text names the Astures before Dio's
+    notice, and Strabo describes them only as they were in his own day
+    (3.3.7).
 
 - atom: cantabri
   polity: cantabri
