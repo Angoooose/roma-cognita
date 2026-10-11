@@ -3053,10 +3053,34 @@
   kind: kingdom
   names:
     - { text: Colchis, lang: la, preferred: true }
-  from: 63 BCE
+  from: { earliest: 64 BCE, latest: 62 BCE }
   to: after 27 BCE
-  ruler: Aristarchus, from 63
+  ruler: Aristarchus, from Pompey's settlement (64–62)
   sources:
+    - source: magie-1950
+      locator: 'vol. I, 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        peace was assured by the recognition of the local dynast Aristarchus as
+        the ruler of Colchis
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 360'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the spring of 64 Pompey advanced to Amisus, and here, as the arbiter
+        of Asia Minor, the conqueror announced his plans for the disposal of his
+        conquests.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 368'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        These arrangements for the organization of northern and eastern Asia
+        Minor as well as of Syria, begun by Pompey at Amisus in the winter of
+        65-64 and completed at Antioch in 64-63 and again at Amisus in the
+        following winter
+      supports: [from]
     - source: appian
       locator: 'Mithr. 114'
       quote: >-
@@ -3074,7 +3098,11 @@
   note: >-
     "At last Polemon got Colchis" (Strabo 11.2.18), at a date not given — from
     Antony, from Augustus after Actium, or c. 14 — so it is not moved to his
-    Pontus here. Nothing is known of its rulers after Aristarchus.
+    Pontus here. Nothing is known of its rulers after Aristarchus. It was dated
+    63; no text read dates Aristarchus' recognition within Pompey's
+    arrangements, which Magie (I 360, 368) has begun in the winter of 65–64,
+    announced at Amisus in the spring of 64 and finished there in the winter
+    of 63–62, so the start is 64–62 (drawn at its midpoint, 63).
 
 - id: seleucid
   kind: kingdom
