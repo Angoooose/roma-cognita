@@ -1523,6 +1523,8 @@ const arch: Build<Design & Arch> = (F, d, w, l, face) => {
  */
 interface Tabularium {
   gallery: Storey
+  /** The upper storey: its height over the platform, and how far it is set in from the platform's edges. */
+  upper?: { h: number; set: number }
   bays: number
   windows: number
   /** A corner left open, across and along (u0, u1, v0, v1): Veiovis's temple, built round. */
@@ -1534,15 +1536,55 @@ interface Tabularium {
  * 23–46; designs/capitol.ts): on the Forum side its substructure, battered and under a
  * projecting top course, with small windows and the door of its stair; on it the
  * gallery, its floor the building's level, under a low attic and a paved walk; behind
- * it a platform at the gallery's top over the substructures and rooms, its upper
- * storey left off, its form not being known; its south-west end closed, with
+ * it a platform at the gallery's top over the substructures and rooms, and on it a
+ * light upper storey drawn as two plain ranges; its south-west end closed, with
  * wall strips and a deep niche; a travertine socle along its north-west front.
  */
 const tabularium: Build<Design & Tabularium> = (F, d, w, l, face) => {
   const drop = F.deep - 1.5
   const { g, batter, course } = TABULARIUM
+  const s = d.gallery
+  const pier = s.pier ?? 2.6
+  const ent = Math.min(1.6, s.h * 0.13)
+  const half = Math.min(pier * 0.7, Frame.diameter(s.h - ent, s.order ?? 'doric') * 1.1)
+  const inset = Math.max(half * 0.6, 0.35) - 0.15
+  const back = l / 2 - inset - g
+  const end0 = w / 2 - pier / 2 - 0.25
+  // The deep niche in the south-west end, between its two north-western wall
+  // strips, from the ground at its foot to its lintel under the top course (p. 40):
+  // cut out of the walls it is in (`solid`).
+  const end = d.notch ? d.notch[3] : -l / 2
+  const strips = [back, back - TABULARIUM.rooms, end + 0.75]
+  const N = TABULARIUM.niche
+  const nv = (strips[1] + strips[2]) / 2
+  const niche = [
+    w / 2 - N.deep,
+    nv - N.w / 2,
+    nv + N.w / 2,
+    N.floor,
+    0.4 + s.h - 0.6 - N.lintel,
+  ]
+  const solid = (
+    u0: number,
+    u1: number,
+    v0: number,
+    v1: number,
+    z0: number,
+    z1: number,
+    top: THREE.Color | null = face,
+  ) => {
+    const [nu, a, b, nz0, nz1] = niche
+    if (u1 <= nu || v1 <= a || v0 >= b || z1 <= nz0 || z0 >= nz1)
+      return F.box(u0, u1, v0, v1, z0, z1, face, top)
+    if (v0 < a) F.box(u0, u1, v0, a, z0, z1, face, top)
+    if (v1 > b) F.box(u0, u1, b, v1, z0, z1, face, top)
+    const [c0, c1] = [Math.max(v0, a), Math.min(v1, b)]
+    if (u0 < nu) F.box(u0, nu, c0, c1, z0, z1, face, top)
+    if (z0 < nz0) F.box(Math.max(u0, nu), u1, c0, c1, z0, nz0, face)
+    if (z1 > nz1) F.box(Math.max(u0, nu), u1, c0, c1, nz1, z1, face, top, true)
+  }
   // The substructure under the platform, to the gallery's floor.
-  F.box(-w / 2, w / 2, -l / 2, l / 2 - g, -F.deep, 0.4, face)
+  solid(-w / 2, w / 2, -l / 2, l / 2 - g, -F.deep, 0.4)
   // Under the gallery its Forum face, set back a little as it rises (25 courses
   // "treten leicht zurück", p. 29), under a projecting top course ("kragt vor"); the
   // courses show through its stucco as lines.
@@ -1588,13 +1630,6 @@ const tabularium: Build<Design & Tabularium> = (F, d, w, l, face) => {
   // on the wall below, its half-columns' fronts over the top course's (p. 33: "unter
   // den Halbsäulen liegt je ein Läufer") and its end piers and entablature within the
   // building's ends.
-  const s = d.gallery
-  const pier = s.pier ?? 2.6
-  const ent = Math.min(1.6, s.h * 0.13)
-  const half = Math.min(pier * 0.7, Frame.diameter(s.h - ent, s.order ?? 'doric') * 1.1)
-  const inset = Math.max(half * 0.6, 0.35) - 0.15
-  const back = l / 2 - inset - g
-  const end0 = w / 2 - pier / 2 - 0.25
   const G = F.sub(0, l / 2 - inset, Math.PI)
   const z = G.arcade(
     -end0,
@@ -1627,8 +1662,7 @@ const tabularium: Build<Design & Tabularium> = (F, d, w, l, face) => {
   void n1
   void m0
   // Its face to the gallery a little behind the gallery's back wall, not in its plane.
-  for (const [u0, u1, v0, v1] of parts)
-    F.box(u0, u1, v0, v1 - 0.05, 0.4, z, face, C.travertine)
+  for (const [u0, u1, v0, v1] of parts) solid(u0, u1, v0, v1 - 0.05, 0.4, z, C.travertine)
   F.box(
     -w / 2,
     d.notch ? n0 : w / 2,
@@ -1639,33 +1673,56 @@ const tabularium: Build<Design & Tabularium> = (F, d, w, l, face) => {
     C.travertine,
     C.travertine,
   )
+  // The upper storey, light (p. 46): a range behind the gallery and, behind it, a
+  // second beside Veiovis's corner, their roofs of tiles side by side meeting in a
+  // valley, set in from the platform's edges; its form drawn plain, not being known.
+  if (d.upper) {
+    const { h, set } = d.upper
+    const front = d.notch ? m1 + set : -l / 2 + set
+    const ranges: [number, number, number, number][] = [
+      [-w / 2 + set, w / 2 - set, front, back - set],
+    ]
+    if (d.notch) ranges.push([-w / 2 + set, n0 - set, -l / 2 + set, front])
+    for (const [k, [u0, u1, v0, v1]] of ranges.entries()) {
+      F.box(u0, u1, v0, v1, z, z + h, face, null)
+      F.roof(u0 - 0.4, u1 + 0.4, v0 - (k ? 0.4 : 0), v1 + (k ? 0 : 0.4), z + h, {
+        along: 'u',
+        tiles: C.roofTemple,
+        pitch: 0.25,
+        seed: 0.45 + k * 0.1,
+      })
+    }
+  }
   // The south-west end, where it stands (to Veiovis's corner): three wall strips under
   // its top course, at the back walls of the gallery and of the rooms behind it and
   // further north-west, and a deep niche between the two north-western strips, its
   // lintel under the top course (pp. 37, 40).
-  const end = d.notch ? m1 : -l / 2
-  const strips = [back, back - TABULARIUM.rooms, end + 0.75]
   for (const v of strips)
     F.box(w / 2, w / 2 + 0.15, v - 0.75, v + 0.75, -F.deep, z - 0.3, face)
   F.box(w / 2, w / 2 + 0.25, end, back, z - 0.6, z, face)
-  const nv = (strips[1] + strips[2]) / 2
-  F.quad(
-    [w / 2 + 0.03, nv - 1.4, z - 1.2 - TABULARIUM.niche],
-    [w / 2 + 0.03, nv + 1.4, z - 1.2 - TABULARIUM.niche],
-    [w / 2 + 0.03, nv + 1.4, z - 1.2],
-    [w / 2 + 0.03, nv - 1.4, z - 1.2],
-    PART.dark,
-  )
+  // Over the niche its lintel, a flat arch of wedges (p. 40), standing a little proud
+  // of the wall.
+  const [, a, b, , top] = niche
+  F.box(w / 2, w / 2 + 0.08, a - 0.5, b + 0.5, top, top + N.lintel, face)
 }
 
 /**
  * The Tabularium's parts, metres: the gallery's depth (P&A, p. 507: "5 m wide"); how
  * far its Forum face is set back over its height, and its top course's depth (both
  * "leicht", not measured); the depth of the rooms behind the gallery, between the wall
- * strips of its south-west end (not given; drawn); the niche's height (not given in
- * the text read; drawn under the top course).
+ * strips of its south-west end (not given; drawn); the niche's width and depth (not
+ * given; drawn), its floor (lost: drawn on the ground at its foot, at the higher end
+ * of its slope, 1.9 m under the gallery's floor, as a shelter for the gate's guard,
+ * which Delbrück suggests it may have been, would open on the street) and its
+ * lintel's height (drawn).
  */
-const TABULARIUM = { g: 5, batter: 0.5, course: 0.6, rooms: 6, niche: 6 }
+const TABULARIUM = {
+  g: 5,
+  batter: 0.5,
+  course: 0.6,
+  rooms: 6,
+  niche: { w: 3.6, deep: 2.4, floor: -1.9, lintel: 1.1 },
+}
 
 /**
  * A house or warehouse of rooms round courts: ranges roofed with tiles falling in to
