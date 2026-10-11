@@ -827,7 +827,14 @@
         - { at: [32.45, 22.6], via: curve, note: the west bank }
         - { at: [32.75, 23.2], via: curve }
   sources:
-    - { source: philae-stele }
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        brought the army beyond the Nile Cataract … gave audience to ambassadors
+        from the king of the Aethiopians at Philae, received the same king under
+        his protection, and installed a ruler over the Triacontaschoenos on
+        Aethiopian territory
+      supports: [construction]
     - { source: barrington, locator: 'map 81' }
     - { source: torok-1997, locator: 'chs. 4–5' }
   confidence: uncertain
@@ -1002,8 +1009,25 @@
           note: the north shore of the Dead Sea; Hyrcania stays outside
         - [35.38, 31.85]
   sources:
-    - { source: josephus-bj, locator: '1.361' }
-    - { source: plutarch, locator: 'Antony 36.2' }
+    - source: josephus-bj
+      locator: '1.361'
+      quote: >-
+        He also took away a great deal of their country; nay, even the
+        plantation of palm trees at Jericho, where also grows the balsam tree,
+        and bestowed them upon her
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.41'
+      quote: >-
+        Jericho is a plain encompassed by a mountainous district, which slopes
+        towards it somewhat in the manner of a theatre. Here is the Phoenicon
+        (or palm plantation)
+      supports: [construction]
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        and still further, the balsam-producing part of Judaea
+      supports: [construction]
     - { source: barrington, locator: 'map 70' }
   confidence: uncertain
   review: needs-check
@@ -1220,7 +1244,26 @@
         - [35.05, 32.05]
         - [34.97, 32.2]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: josephus-bj
+      locator: '3.48'
+      quote: >-
+        Now as to the country of Samaria, it lies between Judea and Galilee; it
+        begins at a village that is in the great plain called Ginea, and ends at
+        the Acrabbene toparchy
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.69'
+      quote: >-
+        In the interior of Samaria are the towns of Neapolis, formerly called
+        Mamortha, Sebaste, situate on a mountain
+      supports: [construction]
     - { source: josephus-bj, locator: '1.396' }
     - { source: barrington, locator: 'maps 69–70' }
   confidence: uncertain
@@ -1247,8 +1290,32 @@
           note: the Jordan below the lake
         - [35.58, 32.72]
   sources:
-    - { source: josephus-bj, locator: '1.396' }
-    - { source: pliny-nh, locator: '5.74' }
+    - source: josephus-bj
+      locator: '1.396'
+      quote: >-
+        made an addition to his kingdom, by giving him not only the country
+        which had been taken from him by Cleopatra, but besides that, Gadara,
+        and Hippos, and Samaria
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.71'
+      quote: >-
+        a lake, by many writers known as Genesara, sixteen miles in length and
+        six wide; which is skirted by the pleasant towns of Julias and Hippo on
+        the east
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.74'
+      quote: >-
+        Gadara, before which the river Hieromix flows; Hippo, which has been
+        previously mentioned
+      supports: [construction]
+    - source: josephus-bj
+      locator: '3.37'
+      quote: >-
+        they are bounded on the south with Samaria and Scythopolis, as far as
+        the river Jordan; on the east with Hippeae and Gadaris
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1270,7 +1337,27 @@
           note: the northern edge of the territory of Joppa
         - [34.6, 32.12]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.69'
+      quote: >-
+        and Joppe, a city of the Phoenicians … Next to this place comes
+        Apollonia, and then the Tower of Strato, otherwise Caesarea, built by
+        King Herod
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.75'
+      quote: >-
+        There was formerly a town here known as Crocodilon; there is still a
+        river of that name: Dorum and Sycaminon are the names of cities of which
+        the remembrance only exists.
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1302,7 +1389,28 @@
           note: south of Ascalon
         - [34.3, 31.6]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.28–29'
+      quote: >-
+        The district was so populous that the neighbouring village Iamneia, and
+        the settlements around, could furnish forty thousand soldiers … then
+        Azotus and Ascalon. From Iamneia to Azotus and Ascalon are about 200
+        stadia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.75'
+      quote: >-
+        There was formerly a town here known as Crocodilon; there is still a
+        river of that name: Dorum and Sycaminon are the names of cities of which
+        the remembrance only exists. We then come to the Promontory of Carmelus
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1331,7 +1439,25 @@
         - [34.7, 31.64]
         - [34.3, 31.7]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.30–31'
+      quote: >-
+        Next and near Ascalon is the harbour of the Gazaei. The city is situated
+        inland at the distance of seven stadia … Next to Gaza is Raphia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.68'
+      quote: >-
+        The towns are Rhinocolura, and, in the interior, Rhaphea, Gaza, and,
+        still more inland, Anthedon
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1418,7 +1544,28 @@
         - at: [36.5, 34.45]
           note: the head of the Massyas (Beqaa)
   sources:
-    - { source: strabo, locator: '16.2.10, 16.2.16, 16.2.18' }
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        At no great distance were Heliopolis and Chalcis, which were subject to
+        Ptolemy, son of Mennaeus, who possessed the Massyas and the mountainous
+        country of the Ituraeans.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.16'
+      quote: >-
+        There are two mountains, which form Coele-Syria, as it is called, lying
+        nearly parallel to each other … Libanus and Antilibanus … A hollow plain
+        lies between them
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.18'
+      quote: >-
+        Next to the plain of Macras is that of Massyas, which also contains some
+        mountainous parts, among which is Chalcis, the acropolis, as it were, of
+        the Massyas … The Ituraeans and Arabians, all of whom are freebooters,
+        occupy the whole of the mountainous tracts.
+      supports: [construction]
     - { source: myers-2010 }
     - { source: sullivan-1990 }
   confidence: uncertain
@@ -1442,7 +1589,20 @@
         - { at: [36.6, 35.1], via: curve }
         - { at: [36.42, 34.8], via: curve }
   sources:
-    - { source: strabo, locator: '16.2.10' }
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        a great many of the chiefs of the neighbouring tribes were his allies,
+        who possessed strongholds, among which was Lysias, situated above the
+        lake, near Apameia, Arethusa, belonging to Sampsiceramus and Iamblichus
+        his son, chiefs of the tribe of the Emeseni
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.11'
+      quote: >-
+        nearly all the country further to the south of Apameia belongs to the
+        Scenitae … as that of Arethusa under Sampsiceramus
+      supports: [construction]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
@@ -1526,8 +1686,32 @@
           note: the Ladder of Tyre (Ras en-Naqura)
         - [34.9, 33.09]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: cassius-dio, locator: '48.26.1' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: cassius-dio
+      locator: '48.26.1'
+      quote: >-
+        Pacorus made himself master of Syria and subjugated all of it except
+        Tyre
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.24'
+      quote: >-
+        Tyre is distant from Sidon not more than 200 stadia. Between the two is
+        situated a small town, called Ornithopolis, (the city of birds); next a
+        river which empties itself near Tyre into the sea.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.25'
+      quote: >-
+        Then follows Ptolemais, a large city, formerly called Ace … Between Ace
+        and Tyre is a sandy beach
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1552,7 +1736,20 @@
         - [35.245, 33.34]
         - [34.95, 33.34]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.22'
+      quote: >-
+        Next to Berytus is Sidon, at the distance of 400 stadia. Between these
+        places is the river Tamyras, and the grove of Asclepius and Leontopolis.
+        Next to Sidon is Tyre
+      supports: [construction]
     - { source: josephus-aj, locator: '14.333' }
     - { source: natural-earth }
   confidence: uncertain
@@ -1586,8 +1783,38 @@
         - [34.9, 32.7]
         - [34.85, 32.85]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: plutarch, locator: 'Antony 36.2' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.12'
+      quote: >-
+        Continuous with these places is Orthosia, then the river Eleutherus,
+        which some make the boundary of Seleucis towards Phoenicia and
+        Coele-Syria.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.18'
+      quote: >-
+        the robbers overran Byblus, and Berytus situated next to it, and which
+        lie between Sidon and Theoprosopon
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.27'
+      quote: >-
+        Next to Ace is the Tower of Strato, with a station for vessels. Between
+        these places is Mount Carmel
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
