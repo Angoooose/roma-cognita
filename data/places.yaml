@@ -473,14 +473,6 @@
   from: before 133 BCE
   to: after 27 BCE
   prominence: 2
-  status:
-    - value: provincial seat
-      from: c. 74 BCE
-      to: after 27 BCE
-      note: >-
-        From the province (Sallust Hist. 2.43 M; App. BC 1.111). Before it the
-        city was the Ptolemies', then Apion's, then one of the free cities of
-        his bequest (96–75), and no status is given.
   labelSide: s
   sources:
     - { source: pleiades, locator: places/373778 }
@@ -488,6 +480,13 @@
     - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
   confidence: certain
   review: draft
+  note: >-
+    The city was the Ptolemies', then Apion's, then one of the free cities of
+    his bequest (96–75), then in the province named for it (Sallust Hist. 2.43
+    M, "the new province of Cyrene"). No status is given: it was a provincial
+    seat from c. 74 until October 2026, but no open text says where the
+    governor sat, and the joint province of 27 had its capital at Gortyn
+    (Pleiades).
 
 - id: nicomedia
   pleiades: '511337'
