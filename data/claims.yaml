@@ -16203,27 +16203,32 @@
   polity: judaea-antigonus
   relation: independent
   from: 40 BCE
-  to: 38 BCE
+  to: 39 BCE
   sources:
     - { source: josephus-aj, locator: '14.330–369, 14.396–399, 14.413' }
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
-    As judaea (the row is judaea's). Herod relieved Masada and took Ressa in
-    39 (AJ 14.396–399) and sent his brother Joseph against Idumaea that winter
-    (14.413); drawn with Antigonus' Judaea as before the split.
+    Antigonus' from the Parthian invasion of 40. Herod relieved Masada and
+    took Ressa in 39 (AJ 14.396–399), and in the winter of 39/38 "seized upon
+    Idumea, and kept it", sending his brother Joseph there "that no innovation
+    might be made by Antigonus" (BJ 1.303; AJ 14.413). It ran to 38 with
+    Antigonus' Judaea until October 2026; uncertain, because when in that
+    winter is not said.
 
 - atom: judaea-idumaea
   polity: judaea
   relation: client
-  from: 37 BCE
+  from: 38 BCE
   to: after 27 BCE
   sources:
     - { source: josephus-aj, locator: '14.487' }
     - { source: strabo, locator: '16.2.46' }
   confidence: probable
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    Herod's from the winter of 39/38 (BJ 1.303), drawn from 38. It started
+    in 37, with Jerusalem, until October 2026.
 
 - atom: judaea-galilee
   polity: seleucid
