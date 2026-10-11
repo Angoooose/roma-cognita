@@ -2935,9 +2935,38 @@
 - polity: armenia
   type: client-of
   of: parthia
-  from: 31 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '49.44.3–4'
+      quote: >-
+        set out for Ionia and Greece to wage war against Caesar. The Mede at
+        first, by employing the Romans as allies, conquered the Parthians and
+        Artaxes who came again him; but as Antony summoned back his own
+        soldiers, and moreover retained those of the king, the latter was in
+        turn defeated and captured, and so Armenia was lost together with Media.
+      supports: [from]
+    - source: cassius-dio
+      locator: '50.2.2'
+      quote: >-
+        until the time that Gnaeus Domitius and Gaius Sosius, both belonging to
+        Antony's party, became consuls. Then they made no further concealment,
+        but became openly hostile.
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.4.3'
+      quote: >-
+        hurried to Italy himself, in the middle of the winter of the year in
+        which he was holding office for the fourth time, along with Marcus
+        Crassus
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        he refused the request of Artaxes that his brothers be sent to him,
+        because this prince had put to death the Romans left behind in Armenia.
+      supports: [from]
     - source: tacitus-ann
       locator: '2.3'
       quote: >-
@@ -2969,7 +2998,13 @@
   note: >-
     Artaxias II, who "defended himself and his crown by virtue of Parthian
     strength" (Tac. Ann. 2.3), until the Armenians killed him in 20, the
-    consulship of Apuleius and Silius (Dio 54.7.4, 54.9.4–5).
+    consulship of Apuleius and Silius (Dio 54.7.4, 54.9.4–5). When he came
+    back is not recorded: Armenia was lost after Antony recalled his soldiers
+    for the war with Caesar, open from the consulship of Domitius and Sosius,
+    32 (Dio 49.44.3–4, 50.2.2), and Artaxes had killed the Romans left there
+    by the time Caesar settled Egypt in his fourth consulship, 30 (51.4.3,
+    51.16.2). It read 31 until October 2026, which no text states; the range
+    is drawn at its midpoint, 31.
 
 - polity: atropatene
   type: allied-to
