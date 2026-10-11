@@ -15474,31 +15474,98 @@
 - atom: pontus-inner
   polity: rome
   relation: occupied
-  from: { earliest: 72 BCE, latest: 71 BCE }
+  from: 71 BCE
   to: 69 BCE
   sources:
+    - source: plutarch
+      locator: 'Lucullus 18.1'
+      quote: >-
+        In capturing Cabira and most of the other strongholds, he found great
+        treasures
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'p. 303'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Mithridates swiftly relinquished Bithynia and beat a retreat to Cabira
+        in Pontus, where in 71 he was again defeated by Lucullus
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 336'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        With the King’s flight from Pontus in the summer of 71 all opposition
+        to the Romans, except in isolated places, collapsed at once. Cabeira
+        surrendered and the other royal strongholds hastened to follow its
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 312'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Mithridates was able to slip back into his kingdom in 68 with a new
+        army provided by Tigranes
+      supports: [to]
+    - source: cassius-dio
+      locator: '36.10.1'
+      quote: >-
+        Fabius was subsequently shut up and besieged in Cabira, but was rescued
+        by Triarius.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 78–82' }
-    - { source: plutarch, locator: 'Lucullus 15–18' }
-    - { source: cassius-dio, locator: '36.9–10' }
   confidence: probable
   review: draft
   note: >-
-    After Cabira (72 on the older chronology, 71 on Kallet-Marx's, p. 303)
-    Mithridates fled by Comana to Tigranes, and Lucullus took "Cabira and most of the other
-    strongholds" (Plut. Luc. 18.1). In 68 Mithridates beat his legate Fabius
-    and besieged him in Cabira (Dio 36.9–10).
+    After Cabira Mithridates fled by Comana to Tigranes, and Lucullus took
+    "Cabira and most of the other strongholds" (Plut. Luc. 18.1). Kallet-Marx
+    (303) and Magie (334–336) both put Cabira in 71, Magie's flight "in the
+    summer of 71"; the range back to 72, "the older chronology", was dropped in
+    October 2026, as no readable text gives it. Mithridates came back in 68
+    (Kallet-Marx 312), beat the legate Fabius and besieged him in Cabira (Dio
+    36.9–10).
 
 - atom: comana-pontica
   polity: rome
   relation: occupied
-  from: { earliest: 72 BCE, latest: 71 BCE }
+  from: 71 BCE
   to: 69 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 82' }
-    - { source: cassius-dio, locator: '36.10' }
+    - source: appian
+      locator: 'Mithr. 82'
+      quote: >-
+        they allowed him to escape to Comona. From thence he fled to Tigranes
+        … When the garrison commanders of Mithridates saw these things they
+        went over to Lucullus in crowds, all but a few. Lucullus marched among
+        the others and regulated them.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 336'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        escaped to the temple-city of Comana. … With the King’s flight from
+        Pontus in the summer of 71 all opposition to the Romans, except in
+        isolated places, collapsed at once.
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 312'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Mithridates was able to slip back into his kingdom in 68 with a new
+        army provided by Tigranes
+      supports: [to]
+    - source: cassius-dio
+      locator: '36.10.2'
+      quote: >-
+        pursuing the king as far as Comana, whither he had retired, won a
+        victory over him there.
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: As pontus-inner; Triarius beat Mithridates near Comana in 68 (Dio 36.10).
+  note: >-
+    As pontus-inner: Mithridates fled from Cabira by Comana, and his garrison
+    commanders went over to Lucullus (App. Mithr. 82), in 71 (Magie 336); the
+    range back to 72 was dropped in October 2026, as no readable text gives it.
+    Back in 68 (Kallet-Marx 312), he retired to Comana before Triarius, who beat
+    him there (Dio 36.10).
 
 - atom: armenia-minor
   polity: rome
