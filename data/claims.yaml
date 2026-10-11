@@ -11516,9 +11516,22 @@
         Thus he gave her the cities that were within the river Eleutherus, as
         far as Egypt, excepting Tyre and Sidon
       supports: []
+    - source: josephus-aj
+      locator: '15.96'
+      quote: >-
+        When Cleopatra had obtained thus much, and had accompanied Antony in
+        his expedition to Armenia as far as Euphrates, she returned back
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.39.1–2'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place … In his endeavour to take
+        vengeance on Armenian king with the least trouble to himself
+      supports: [to]
     - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
@@ -11526,7 +11539,10 @@
     Phoenicia and Palestine" in the year before Pompeius and Cornificius, 36
     (Dio 49.32.5, 49.33.1), "the cities that were within the river
     Eleutherus, as far as Egypt, excepting Tyre and Sidon" (AJ 15.95), which
-    Josephus tells with the events of 34.
+    Josephus tells just before Cleopatra went with Antony to Armenia (AJ
+    15.96), the expedition of his second consulship, 34 (Dio 49.39.1–2),
+    which would keep the coast Syria's to 35. Probable, not certain, since
+    October 2026: the end year is Dio's against Josephus' order of events.
 
 # The Parthian invasion of 40
 
