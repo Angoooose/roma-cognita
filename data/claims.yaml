@@ -16268,27 +16268,33 @@
   polity: judaea-antigonus
   relation: independent
   from: 40 BCE
-  to: 38 BCE
+  to: 40 BCE
   sources:
     - { source: josephus-aj, locator: '14.330–369, 14.395, 14.413–415' }
   confidence: probable
   review: draft
   note: >-
-    As judaea (the row is judaea's). "All Galilee, with some small exception,
-    joined him" in 39 (AJ 14.395), and he brought over the rest that winter
-    (14.413–415); drawn with Antigonus' Judaea as before the split.
+    Antigonus' from the Parthian invasion of 40. Herod landed at Ptolemais in
+    39 and "all Galilee, with some small exception, joined him" (AJ 14.395;
+    Schürer 394); the Romans wintered in "Judea, and Galilee, and Samaria"
+    (14.411), and he brought over the rest that winter (14.413–415). It ran to
+    38 with Antigonus' Judaea until October 2026.
 
 - atom: judaea-galilee
   polity: judaea
   relation: client
-  from: 37 BCE
+  from: 39 BCE
   to: after 27 BCE
   sources:
     - { source: josephus-aj, locator: '14.487' }
     - { source: strabo, locator: '16.2.46' }
   confidence: probable
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    Herod's from 39, when Galilee joined him (AJ 14.395); the Galileans rose
+    against him in 38 while he was with Antony at Samosata, and he took it
+    back "without difficulty" (Schürer 395). It started in 37, with Jerusalem,
+    until October 2026.
 
 - atom: samaria
   polity: seleucid
