@@ -3428,7 +3428,25 @@
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.44.4' }
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [of, from]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        Of his own accord he restored Iotape to the Median king, who had found
+        an asylum with him after his defeat
+      supports: [from]
+    - source: strabo
+      locator: '11.13.2'
+      quote: >-
+        they themselves have attained to friendship with Caesar. But they are
+        also paying court to the Parthians at the same time.
+      supports: [to]
   confidence: uncertain
   review: needs-check
 
