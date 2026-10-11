@@ -3522,7 +3522,39 @@
         - [36.4, 44.6]
         - [35.4, 44.8]
   sources:
-    - { source: strabo, locator: '7.4.4–6, 11.2.10–14' }
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        After the aforesaid mountainous district is the city Theodosia. It is
+        situated in a fertile plain and has a harbor that can accommodate as
+        many as a hundred ships; this harbor in earlier times was a boundary
+        between the countries of the Bosporians and the Taurians.
+      supports: [construction]
+    - source: strabo
+      locator: '7.4.5'
+      quote: >-
+        But in earlier times only a small part of it — that which is close to
+        the mouth of Lake Maeotis and to Panticapaion and extends as far as
+        Theodosia — was held by the tyrants of the Bosporians
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.10'
+      quote: >-
+        Of these, Phanagoreia and Kepoi are situated on the island
+        above-mentioned, on the left as one sails in, but the other cities are
+        on the right, across the Hypanis, in the Syndic territory. There is also
+        a place called Gorgipia in the Syndic territory, the royal residence of
+        the Sindi, near the sea; and also a place called Aborace. All the people
+        who are subject to the potentates of the Bosporus are called Bosporians
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.12'
+      quote: >-
+        After the Sindic territory and Gorgipia, on the sea, one comes to the
+        coast of the Achaei and the Zygi and the Heniochi, which for the most
+        part is harborless and mountainous
+      supports: [construction]
+    - { source: strabo, locator: '11.2.14' }
     - { source: barrington, locator: 'maps 84, 87' }
     - { source: natural-earth }
   confidence: probable
@@ -3548,7 +3580,28 @@
         - [39.0, 45.0]
         - [37.3, 45.25]
   sources:
-    - { source: strabo, locator: '11.2.3, 11.2.11' }
+    - source: strabo
+      locator: '11.2.3'
+      quote: >-
+        On the river and the lake is an inhabited city bearing the same name,
+        Tanais; it was founded by the Greeks who held the Bosporus.
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        As for the Asiatic Maeotae in general, some of them were subjects of
+        those who possessed the emporium on the Tanais, and the others of the
+        Bosporians … And often the rulers of the Bosporians held possession of
+        the region as far as the Tanais, and particularly the latest rulers,
+        Pharnaces, Asander, and Polemon.
+      supports: [construction]
+    - source: magie-1950
+      locator: 'p. 477'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        extending his power along the shore of the Sea of Azov as far as the
+        river Don
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
