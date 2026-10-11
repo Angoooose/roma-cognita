@@ -15798,10 +15798,66 @@
 - atom: cappadocia
   polity: pontus-regnum
   relation: occupied
-  from: c. 100 BCE
-  to: 96 BCE
+  from: { earliest: 102 BCE, latest: 98 BCE }
+  to: { earliest: 97 BCE, latest: 96 BCE }
   sources:
-    - { source: justin, locator: '38.1–38.2' }
+    - source: justin
+      locator: '38.1'
+      quote: >-
+        he killed his nephew, (after drawing him aside from his friends as if
+        to confer with him secretly), in the sight of both armies, and bestowed
+        the kingdom of Cappadocia on his own son, a child eight years old,
+        giving him the name of Ariarathes, and appointing Gordius his guardian.
+      supports: [polity, relation]
+    - source: justin
+      locator: '38.2'
+      quote: >-
+        the senate, perceiving the ambitious designs of the two kings, who were
+        seizing the dominions of others on false pretences, took away
+        Cappadocia from Mithridates
+      supports: [polity, to]
+    - source: magie-1950
+      locator: 'vol. I, pp. 202–203'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Laodice, evidently preferring the invader to her brother, married
+        Nicomedes. … Forcing Nicomedes and his new wife to leave Cappadocia,
+        he reinstated the young Ariarathes VII on his ancestral throne. … About
+        102 B.c.; see Reinach
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'pp. 245–246'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        After his victory over the Germans, Marius in 99 or 98 duly traveled to
+        Cappadocia and Galatia … Mithridates, of course, was now in control of
+        Cappadocia, a fact that provides the appropriate context for his
+        meeting with Marius.
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 203'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        during the next five years this child was titular King of Cappadocia.
+        … At the end of 96 b.c. Mithradates seemed to have gained complete
+        control of Cappadocia.
+      supports: [polity, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 205'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        not long after the Senate’s decision against him in 95
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 248'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It not only called upon Mithridates to evacuate Cappadocia and take his
+        son with him but assigned L. Cornelius Sulla the task of escorting
+        Ariobarzanes into Cappadocia and establishing him on his throne.
+        Mithridates duly obeyed the demand, and Sulla marched into Cappadocia
+        in 96 or 95
+      supports: [to]
     - { source: memnon, locator: '22.1' }
   confidence: uncertain
   review: needs-check
@@ -15809,8 +15865,15 @@
     Mithridates killed his nephew Ariarathes VII at a parley and "bestowed the
     kingdom of Cappadocia on his own son, a child eight years old, giving him the
     name of Ariarathes, and appointing Gordius his guardian"; the Cappadocians'
-    own candidate, Ariarathes VIII, was driven out (Justin 38.1–2). Ended by the
-    senate's settlement of c. 96/95. The years are modern reckonings.
+    own candidate, Ariarathes VIII, was driven out (Justin 38.1–2). Until
+    October 2026 this started c. 100, a year no readable text states. Magie
+    dates Laodice's marriage to Nicomedes, before Mithridates reinstated and
+    then killed Ariarathes VII, "about 102" (202–203); Kallet-Marx has
+    Mithridates in control when Marius came to Cappadocia in 99 or 98 (245–246).
+    So the start is 102–98. It ended when the senate took Cappadocia from him
+    (Justin 38.2): Magie has him in full control at the end of 96 and the
+    decision in 95 (203, 205); Kallet-Marx has him evacuate it before Sulla
+    marched in, in 96 or 95 (248). So the end, the year before, is 97–96.
 
 - atom: cappadocia
   polity: pontus-regnum
