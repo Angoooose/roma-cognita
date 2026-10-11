@@ -1257,10 +1257,27 @@
   from: 39 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute: in Pontus , Darius , the son of Pharnaces
+      supports: [type, of, from]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        it was not until four years later — in 26 b.c. — that he was formally
+        declared a “friend and ally” of Rome
+      supports: [type, of, to]
   confidence: probable
   review: draft
+  note: >-
+    A client from 39, when Antony set Darius up in Pontus on terms of tribute
+    (App. BC 5.75; Polemon followed in 37/36). After Actium Octavian let
+    Polemon keep Pontus and declared him "friend and ally" in 26 (Magie I 443):
+    that title is the relation confirmed, not its start, which is why Magie's
+    26 doesn't move the row.
 
 - polity: pisidia-amyntas
   type: client-of
