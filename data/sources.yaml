@@ -1229,6 +1229,19 @@
     reconstruction
   url: https://bibulus.archeometra.it/en/ricostruzioni/
 
+- id: osm-waterways
+  kind: dataset
+  citation: >-
+    OpenStreetMap contributors, river centrelines (waterway=river), fetched through
+    the Overpass API
+  url: https://www.openstreetmap.org/
+  licence: ODbL-1.0
+  note: >-
+    Locators are OpenStreetMap ways ("way/547426106"). Modern courses, surveyed on
+    imagery, far closer than HydroRIVERS' grid-derived ones; copied into
+    data/geometry/features.geojson with the date they were fetched
+    (pipeline/src/rivers/fetch.ts).
+
 # --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
 # Added September 2026. No record cites these: they are the methods and the
 # evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).

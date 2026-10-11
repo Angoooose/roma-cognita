@@ -1770,14 +1770,17 @@
   sources:
     - { source: platner-ashby, locator: 'Tiberis, pp. 536–538' }
     - { source: pleiades, locator: places/423080 }
-    - { source: osm-rome, locator: 'relation/5071, way/22797948' }
+    - { source: osm-rome, locator: 'relation/17258409, way/22747533, way/22797948, relation/5071, way/23353973, way/23353974, relation/15909049, way/23354406, way/23354527, way/23354547' }
   confidence: probable
   review: draft
   note: >-
     The river through the city, drawn from OpenStreetMap's outline of its water
     between the modern embankments (the Lungotevere walls of 1876–1926), which
     narrowed and straightened it; the ancient banks were lower and less regular,
-    but the course through Rome is the same. The location is the island's.
+    but the course through Rome is the same. Its pieces run from above the Ponte
+    Milvio to the Magliana, the length of the board's grid; the map's line of the
+    river beyond is OpenStreetMap's too (tiber, features.yaml). The location is
+    the island's.
 
 - id: mons-capitolinus
   kind: hill

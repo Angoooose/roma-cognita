@@ -318,8 +318,11 @@ export async function bakePlate(
     roads.flatMap((l) => l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt])),
     ROAD_CLAMP_M,
   ).d
-  // The river's level, as the model takes it: the lowest tenth of the ground under it.
-  const onRiver = [...h.filter((_, i) => water[i] < -4)].sort((a, b) => a - b)
+  // The river's level, as the model takes it: the lowest tenth of the ground under it
+  // within the plan, where the model stands (the board carries it kilometres beyond).
+  const onRiver = [
+    ...h.filter((_, i) => water[i] < -4 && reachField[i] < PLATE_REACH_M),
+  ].sort((a, b) => a - b)
   const grounds = recordedGrounds(places, groundOutlines)
   const fields = layFields({
     grid,

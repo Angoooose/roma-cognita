@@ -80,6 +80,12 @@ export const FeaturePropertiesSchema = z
      * fainter, so a guess never reads as a survey.
      */
     reconstructed: z.array(z.boolean()).optional(),
+    /**
+     * A river line surveyed more closely than HydroRIVERS' modern channel it follows
+     * (OpenStreetMap's, rivers/fetch.ts): the rivers build draws it in place of the
+     * modern reaches along it and joins their tributaries to it.
+     */
+    replacesModern: z.boolean().optional(),
     derivation: z.string().optional(),
   })
   .nullable()

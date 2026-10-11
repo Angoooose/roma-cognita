@@ -98,9 +98,13 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - For the rivers that matter most at regional zoom (Tiber, Arno, Po, Rhône,
   Nile), OSM waterways would be exact. Worth doing for a curated list, not
   wholesale.
-- **At Rome** the drawn river runs ~150 m west of its real course. On the model
-  of Rome (DESIGN §7.7) the board draws OSM's outline of the Tiber in its place;
-  elsewhere at regional zoom the offset remains.
+- **Done: the Tiber**, from above the Aniene to the sea, on OSM's centreline
+  (`tiber` in features.yaml, `npm run rivers:fetch`); HydroRIVERS' main stem
+  along it is dropped and its tributaries joined to it. Another river is a record
+  citing `osm-waterways` and a discharge in rivers/fetch.ts.
+- **The Tiber at Ostia** follows today's course. Until the flood of 1557 it looped
+  round the town (the Fiume Morto); OSM does not map the old bed, so it needs a
+  course drawn from a study of the delta.
 
 ### Political layer, left for later
 
@@ -308,8 +312,8 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   the Arx at only ~27–33 m: the Mapterhorn surface there carries the Vittoriano's
   terraces and the Aracoeli's stair, and no ancient level of the summit is in
   SITAR to restore it by.
-- **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
-  line do not meet at its edge, and the Itiner-e roads stop there.
+- **Where the board meets the map.** The Itiner-e roads stop at its edge. (The
+  Tiber now runs on across it: board and map draw one course.)
 - **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),
   the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
   Latina (no Itiner-e line) are not drawn.

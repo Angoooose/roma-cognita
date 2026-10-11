@@ -927,8 +927,9 @@ known and what is generated are kept apart:
       cemetery from about 35 BCE; neither is drawn yet.
     - The known buildings placed only roughly that would stand on it (Juno Moneta,
       Luna) are moved in off it; the wall is the better known.
-  - The Tiber on OpenStreetMap's course, and the streets and roads (§ below)
-    paved on the ground.
+  - The Tiber on OpenStreetMap's course, from above the Ponte Milvio to the
+    Magliana (its pieces of water joined into one), and the streets and roads
+    (§ below) paved on the ground.
 - **Generated**, seeded so every build is the same (`city.ts`, model.ts). The
   method follows procedural city modelling, and the forms follow what Rome's fabric
   is known to have been (the sources are catalogued in data/sources.yaml):
@@ -1395,9 +1396,12 @@ what the city adds drawn on it:
 - Close in, a ground mesh over the same heights draws only the model's shadows.
   Beyond it the terrain carries them baked: each footprint swept away from the
   sun. Only what stands through the whole window casts a baked shadow.
-- The Tiber is drawn in the map's river colour on its real course, in place of
-  the coarse HydroRIVERS line, crossfading to that line a few hundred metres
-  beyond everything on the plan so the river never breaks.
+- The Tiber is drawn in the map's river colour as OpenStreetMap's outline of its
+  water, across the whole plate's grid rather than only the board, so the fields
+  beside it always have their river. The map's line of it is OpenStreetMap's
+  centreline (`tiber` in features.yaml, drawn in place of HydroRIVERS'), so the two
+  follow one course: the water hands over to the line by zoom, and a few hundred
+  metres inside the grid's edge, without a break.
 - The city's streets show only while they can be drawn at their width; the map's
   roads give way to them then, and draw instead when zoomed out. The streets end
   with the board, but the roads out of the gates run on as far as the country

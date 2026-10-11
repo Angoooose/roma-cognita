@@ -9,6 +9,7 @@
     "biome": "node --max-old-space-size=8192 --import tsx src/biome/build.ts",
     "known": "tsx src/known/build.ts",
     "rivers": "node --max-old-space-size=12288 --import tsx src/rivers/build.ts",
+    "rivers:fetch": "tsx src/rivers/fetch.ts",
     "fonts": "tsx src/labels/fonts.ts",
     "labels": "tsx src/labels/build.ts",
     "rome:fetch": "tsx src/rome/fetch.ts",

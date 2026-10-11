@@ -39,8 +39,8 @@ import { seededNoise } from '../terrain/noise.ts'
  * - **The ground** keeps the terrain's own colour, laid on and lit by the smoothed
  *   relief (`groundLift`, `smoothGradient`), not the surface model the rest of the
  *   map uses, whose modern buildings would show through.
- * - **The Tiber** on its real course, in place of the coarse river line (see
- *   `plateMask`).
+ * - **The Tiber** on its real course, in place of the coarse river line, across
+ *   the whole grid (see `riverSwap`).
  * - **Streets and roads** (streets.ts) as paved ways between the houses, paler than
  *   the ground; roads wider.
  * - **The Forum's square**, paved across in tufa and then travertine, its slabs'
@@ -193,11 +193,17 @@ export function groundMeshFade(mx: F, my: F) {
  * streets. `pxM` must be taken outside a branch.
  */
 export function plateMask(mx: F, my: F, pxM: F) {
-  const zoom = float(1)
+  return planZoom(pxM).mul(
+    float(1).sub(smoothstep(REACH_M - 120, REACH_M, reachAt(mx, my))),
+  )
+}
+
+/** How much of the plan shows at a scale: all of it from 18 m/px in, none from 26 out. */
+function planZoom(pxM: F) {
+  return float(1)
     .sub(smoothstep(18, 26, css(pxM)))
     .mul(planUniforms.enabled)
     .mul(planUniforms.loaded)
-  return zoom.mul(float(1).sub(smoothstep(REACH_M - 120, REACH_M, reachAt(mx, my))))
 }
 
 /** How much the terrain is lit by the smoothed relief (`smoothGradient`) at a point. */
@@ -222,21 +228,26 @@ export function reliefWash(mx: F, my: F) {
 }
 
 /**
- * How much the map's coarse river line gives way to the plan's Tiber: like
- * `plateMask`, but ending well inside the plan's edge, so the coarse line is back
- * under the Tiber before the Tiber fades out, and the river never breaks.
+ * How much the map's river line gives way to the plan's Tiber, and so how much of the
+ * plan's Tiber is drawn: all of it across the plate's grid, not only the board, so
+ * the farmland beside it (fields.ts) always has its river; crossfading to the map's
+ * line before the grid's edge. The two follow the same course (OpenStreetMap's), so
+ * the one hands over to the other without a break.
  */
 export function riverSwap(mx: F, my: F, pxM: F) {
-  const zoom = float(1)
-    .sub(smoothstep(18, 26, css(pxM)))
-    .mul(planUniforms.enabled)
-    .mul(planUniforms.loaded)
-  return zoom.mul(tiberReach(mx, my))
+  return planZoom(pxM).mul(smoothstep(TIBER_EDGE_M, TIBER_EDGE_M * 3, insideGrid(mx, my)))
 }
 
-/** How much of the plan's Tiber is drawn: all of it well inside, crossfading to the map's line. */
-function tiberReach(mx: F, my: F) {
-  return float(1).sub(smoothstep(REACH_M - 520, REACH_M - 260, reachAt(mx, my)))
+/** The plan's Tiber fades into the map's line from this far inside the grid's edge, metres. */
+const TIBER_EDGE_M = 150
+
+/** How far a plane point lies inside the plate's grid, metres. */
+function insideGrid(mx: F, my: F) {
+  const uv = plateUV(mx, my)
+  return min(
+    min(uv.x, float(1).sub(uv.x)).mul(planUniforms.plateSize.x),
+    min(uv.y, float(1).sub(uv.y)).mul(planUniforms.plateSize.y),
+  )
 }
 
 /**
@@ -270,7 +281,8 @@ export function smoothGradient(mx: F, my: F, across = 4) {
  * where its own cannot fall, the paved streets and roads, and the Tiber. `lit` is
  * the light the paving is shaded by. `pxM` is metres per device pixel, taken
  * outside any branch. Everything is drawn as far as the board reaches (`plate`), but
- * the roads, which run on as far as the country does (`roads`).
+ * the roads, which run on as far as the country does (`roads`), and the Tiber, as far
+ * as the grid (`tiber`).
  */
 function planOver(
   colour: THREE.Node<'vec3'>,
@@ -280,6 +292,7 @@ function planOver(
   lit: F,
   plate: F,
   roads: F,
+  tiber: F,
 ) {
   const aa = pxM.mul(0.6)
   const px = planUniforms.pixelRatio.mul(pxM)
@@ -425,8 +438,7 @@ function planOver(
   // The Tiber, with a soft darker bank.
   const water = float(1)
     .sub(smoothstep(aa.negate(), aa, river))
-    .mul(tiberReach(mx, my))
-    .mul(plate)
+    .mul(tiber)
   out.assign(mix(out, rgb(WATER), water))
   // The bank only while its line fits well inside the river field's clamp; coarser,
   // every texel near the water would read as bank.
@@ -434,11 +446,7 @@ function planOver(
     smoothstep(0.3, 0.6, px.mul(0.7).div(planUniforms.plateClamps.z)),
   )
   out.assign(
-    mix(
-      out,
-      rgb(WATER).mul(0.75),
-      line(abs(river), 1.4).mul(0.6).mul(bank).mul(tiberReach(mx, my)).mul(plate),
-    ),
+    mix(out, rgb(WATER).mul(0.75), line(abs(river), 1.4).mul(0.6).mul(bank).mul(tiber)),
   )
   return out
 }
@@ -464,10 +472,11 @@ function slopeLight(mx: F, my: F) {
  */
 export function planShading(colour: THREE.Node<'vec3'>, mx: F, my: F, pxM: F, roads: F) {
   const plate = plateMask(mx, my, pxM)
+  const tiber = riverSwap(mx, my, pxM)
   return Fn(() => {
     const out = vec3(colour).toVar()
-    If(max(plate, roads).greaterThan(0), () => {
-      out.assign(planOver(out, mx, my, pxM, slopeLight(mx, my), plate, roads))
+    If(max(plate, roads, tiber).greaterThan(0), () => {
+      out.assign(planOver(out, mx, my, pxM, slopeLight(mx, my), plate, roads, tiber))
     })
     return out
   })()

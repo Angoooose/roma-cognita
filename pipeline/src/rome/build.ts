@@ -9,6 +9,7 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
+import pc, { type Polygon } from 'polygon-clipping'
 import { projection } from '@roma-cognita/world'
 import { DATA_DIR, loadDataset } from '../load.ts'
 import { bakePlate } from './plate.ts'
@@ -56,7 +57,9 @@ for (const f of geo.features) {
   const raw: [number, number][][][] =
     f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
   if (places.get(f.id)!.kind === 'river') {
-    river.push(...raw)
+    // OpenStreetMap maps the Tiber's water in pieces laid end to end: joined into one,
+    // so no seam between them draws as a bank across the river.
+    river.push(...pc.union(raw[0] as Polygon, ...(raw.slice(1) as Polygon[])))
     continue
   }
   outlines.push({

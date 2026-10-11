@@ -690,10 +690,12 @@ export function bakeModel(m: ModelInput) {
 
   // --- the ground -------------------------------------------------------------------
   // The water surface is the river's lowest tenth under the surface model, which
-  // records the water itself; the bed is laid 3 m below it so the terrain never
-  // shows through, with a light blur so the banks are not cliffs.
+  // records the water itself, within the plan (the river falls on beyond it); the bed
+  // is laid 3 m below it so the terrain never shows through, with a light blur so the
+  // banks are not cliffs.
   const onRiver: number[] = []
-  for (let i = 0; i < m.water.length; i++) if (m.water[i] < -4) onRiver.push(m.raw[i])
+  for (let i = 0; i < m.water.length; i++)
+    if (m.water[i] < -4 && m.reach[i] < m.reachM) onRiver.push(m.raw[i])
   onRiver.sort((a, b) => a - b)
   const waterLevel = onRiver[Math.floor(onRiver.length * 0.1)] ?? 8
   const cut = new Float32Array(m.smooth)

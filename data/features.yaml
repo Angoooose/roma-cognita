@@ -10,6 +10,10 @@
 # provenance of every coordinate in pipeline/src/features/delta-branches.ts; the
 # same tool writes their lines. `discharge` on a line is display width only.
 #
+# Rivers surveyed from OpenStreetMap (sources: osm-waterways) are fetched into
+# their lines by pipeline/src/rivers/fetch.ts, and drawn in place of HydroRIVERS'
+# coarser modern channel along them.
+#
 # Every record here is "always" within the window: before 133 BCE to after 27 BCE.
 # Change over the window (the Fayum lake falling, the Pelusiac silting, the Gulf
 # coast advancing) is not attempted. The floodplains stop at the coast the map
@@ -360,6 +364,32 @@
     (727191). The course is well attested by its sites; between them it is a spline.
     It was still the eastern outlet in the window and silted later. Display
     discharge 600 m³/s.
+
+# --- rivers surveyed from OpenStreetMap ---------------------------------------------
+
+- id: tiber
+  kind: river
+  pleiades: '423080'
+  names:
+    - { text: Tiberis, lang: la, preferred: true }
+    - { text: Tiber, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: osm-waterways, locator: way/547426106 }
+    - { source: hydrorivers, locator: 'main stem, DIS_AV_CMS 190–228' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Tiber from above the Aniene to the sea, on OpenStreetMap's centreline, in
+    place of HydroRIVERS', which runs ~150 m west of it through Rome and cuts
+    straight across the bend round the Campus Martius. The same course the model of
+    Rome draws the river's water on (the tiberis place in places/rome.yaml), so the
+    two meet without a break. The course is today's: through Rome it is the
+    Republic's, between the modern embankments; at Ostia the river looped round the
+    town until the flood of 1557 cut it off (the Fiume Morto), which is not drawn.
+    Below Ostia the line runs on over land the delta has built since, where the map
+    draws the Republic's sea. Display discharge 220 m³/s, HydroRIVERS' through Rome.
 
 # --- seas ------------------------------------------------------------------------
 #
