@@ -2775,9 +2775,7 @@
   from: before 133 BCE
   to: 45 BCE
   condition:
-    - { value: standing, from: before 133 BCE, to: 82 BCE }
-    - { value: under construction, from: 81 BCE, to: 81 BCE }
-    - { value: standing, from: 80 BCE, to: 53 BCE }
+    - { value: standing, from: before 133 BCE, to: 53 BCE }
     - { value: burnt, from: 52 BCE, to: 52 BCE }
     - { value: under construction, from: 51 BCE, to: 46 BCE }
     - { value: standing, from: 45 BCE, to: 45 BCE }
@@ -2799,7 +2797,10 @@
     and 15 m high, is the Digitales Forum Romanum's hypothesis.
     Sulla pulled down the old curia and built a larger one forward over the Comitium's
     north steps, where the statues of Pythagoras and Alcibiades had stood (Pliny, NH
-    34.26): shown building in 81 and standing from 80. The older curia's size is not
+    34.26): "restored by Sulla in 80 B.C. and somewhat enlarged" (Platner & Ashby).
+    Until October 2026 the map showed it building in 81; no readable text dates the
+    works, so the enlarged curia now simply replaces the old one in 80 (in the design,
+    not the condition). The older curia's size is not
     known; it is drawn a little smaller and further back, as "somewhat enlarged"
     implies. In 100 BCE the crowd stripped its roof of tiles to stone Saturninus and
     Glaucia, shut inside by Marius (Appian, BC 1.32).
