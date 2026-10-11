@@ -19,11 +19,29 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: appian
+      locator: 'BC 1.9'
+      quote: >-
+        At length Tiberius Sempronius Gracchus, an illustrious man, eager for
+        glory, a most powerful speaker, and for these reasons well known to all,
+        delivered an eloquent discourse, while serving as tribune
+      supports: [from]
+    - source: res-gestae
+      locator: '34'
+      quote: >-
+        In my sixth and seventh consulships, after I had extinguished civil
+        wars, and at a time when with universal consent I was in complete
+        control of affairs, I transferred the republic from my power to the
+        dominion of the senate and people of Rome.
+      supports: [kind, to]
     - { source: broughton-mrr }
   confidence: certain
   review: draft
   note: >-
-    The other end of every province-of and client-of relation.
+    The other end of every province-of and client-of relation. In force at
+    133, Tiberius Gracchus' tribunate (App. BC 1.9), and at 27, when Augustus
+    in his sixth and seventh consulships (28–27) handed the republic back to
+    the senate and people (RG 34).
 
 - id: italia
   kind: citizen-territory
@@ -202,9 +220,67 @@
   from: 241 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
+    - source: appian
+      locator: 'Sic. 2'
+      url: https://topostext.org/work/877
+      quote: >-
+        So ended the first war between the Romans and the Carthaginians for the
+        possession of Sicily … In this way the chief part of Sicily (all of it
+        that had been held by the Carthaginians) passed into the possession of
+        the Romans. The latter levied tribute on the Sicilians, and apportioned
+        certain naval charges among their towns, and sent a praetor each year to
+        govern them.
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 241 B.C., p. 219'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Lutatius also went to Sicily, probably early in the year … to assist his
+        brother in making peace with the Carthaginians and in organizing the new
+        territory in Sicily
+      supports: [from]
+    - source: cicero-verr
+      locator: '2.2.2'
+      quote: >-
+        She was the first to be called a province
+      supports: [kind]
+    - source: broughton-mrr
+      locator: 'vol. I, 227 B.C., p. 229'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        First Praetor in Sicily (Solin. 5.1, p. 52 M; cf., on the election of
+        four Praetors, Liv. Per. 20
+      supports: []
+    - source: solinus
+      locator: '5.1'
+      quote: >-
+        utraque insula in Romanum arbitratum redacta, iisdem temporibus facta
+        est provincia: cum eodem anno Sardiniam M. Valerius, alteram C.
+        Flaminius
+      supports: []
+    - source: velleius
+      locator: '2.38.2'
+      quote: >-
+        Claudius the consul was the first to cross into Sicily with an army, but
+        it was only after the capture of Syracuse, fifty years later, that it
+        was converted into a province by Marcellus Claudius.
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya … were held to belong to
+        the people and the senate
+      supports: [kind, to]
   confidence: certain
   review: draft
+  note: >-
+    From the peace of 241, which ended the first war with Carthage: Lutatius'
+    year (MRR), when Appian has Rome take the Carthaginian part of the island,
+    tax it and send a praetor each year (Sic. 2). The start is disputed (see
+    data/proposed-corrections.yaml): Solinus makes Sicily and Sardinia
+    provinces in the same year, with the praetors Broughton dates to 227, and
+    Velleius only after Syracuse fell (212/211). Left at 241 until that is
+    decided.
 
 - id: sardinia-corsica
   kind: province
@@ -213,9 +289,37 @@
   from: 227 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
+    - source: broughton-mrr
+      locator: 'vol. I, 227 B.C., p. 229'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Praetor in Sardinia (Solin. 5.1, p. 52 M; cf. Liv. 23.24.4; Zon. 8.19).
+      supports: [kind, from]
+    - source: solinus
+      locator: '5.1'
+      quote: >-
+        utraque insula in Romanum arbitratum redacta, iisdem temporibus facta
+        est provincia: cum eodem anno Sardiniam M. Valerius, alteram C.
+        Flaminius
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 115 B.C., p. 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus held command in Sardinia and Corsica (see 111, Promagistrates
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sardinia and Baetica were held to belong to the people and the senate
+      supports: [kind, to]
   confidence: certain
   review: draft
+  note: >-
+    A province from 227, when M. Valerius was the first praetor sent to
+    Sardinia (Solinus 5.1; MRR), and the people's in 27 (Dio 53.12.4, who
+    names Sardinia only). Corsica's place in it is under discussion (see the
+    corsica claim).
 
 - id: hispania-citerior
   kind: province
@@ -275,11 +379,52 @@
   from: 146 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
+    - source: livy-per
+      locator: '54'
+      quote: >-
+        When Macedonian envoys arrived to complain about praetor Decimus Junius
+        Silanus, who had accepted bribes and had looted the province
+      supports: [kind]
+    - source: sallust-jug
+      locator: '35.3'
+      quote: >-
+        He had drawn Numidia as his province, while Minucius had Macedonia.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [kind, to]
+    - source: livy-per
+      locator: '45'
+      url: https://www.thelatinlibrary.com/livy/liv.per45.shtml
+      quote: >-
+        Macedonia in prouinciae formam redacta
+      supports: []
+    - source: livy-per
+      locator: '50'
+      quote: >-
+        After the false Philip had massacred praetor Publius Juventius with his
+        army in Macedonia, he was defeated and captured by Quintus Caecilius,
+        and Macedonia was subdued again.
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. I, 148 B.C., p. 461'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Recaptured Macedonia from the pretender Andriscus, and secured the
+        person of the pretender himself from the Thracian prince Byzes
+      supports: []
   confidence: certain
   review: draft
   note: >-
-    Includes Greece until Achaea is attested as a province of its own in the
+    The start, 146, is disputed and no readable text states it (see
+    data/proposed-corrections.yaml): the epitome of Livy has Macedonia "made
+    a province" after Pydna, in 167 (Per. 45), and Metellus, praetor in 148
+    (MRR), won it back from Andriscus (Per. 50). Left at 146 until that is
+    decided. A province in the window: the praetor Silanus looted it (Per. 54);
+    Minucius drew it, consul in 110 (Sall. Jug. 35.3). Includes Greece until Achaea is attested as a province of its own in the
     settlement of 27, which also took Thessaly and southern Epirus (see achaea).
     Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
     after Philippi it was Antony's, east of Scodra from Brundisium (App. BC
@@ -436,6 +581,42 @@
   from: c. 81 BCE
   to: 43 BCE
   sources:
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [kind, from]
+    - source: piegdon-2010
+      quote: >-
+        The determination of the precise date when the province in northern
+        Italy was created has been and still is contentious … Historical
+        sources offer only one mention confirming the creation of the province
+        of Cisalpine Gaul; a fragment of the Late Antiquity work of the rhetor
+        Licinianus says that the province was established by Sulla
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [from]
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps.
+      supports: [kind, to]
     - { source: cah-ix }
   confidence: probable
   review: draft
@@ -444,9 +625,13 @@
     command given to consuls and praetors when there was fighting, over ground
     that was Roman citizen land and Latin colonies south of the Po and allied
     peoples beyond it (claims.yaml). Its standing governor is dated to Sulla's
-    reorganisation, as in CAH IX; some date it earlier, to the 90s or to
-    Pompeius Strabo in 89. Formally dissolved into Italy in 42 (Dio 48.12.5), so the province ends in
-    43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
+    reorganisation, as in CAH IX: the one ancient witness, Granius Licinianus,
+    has it given to Sulla as his province, in his account of the year of the
+    consuls Claudius and Servilius (79), and Piegdoń (2010) reads that as its
+    creation by Sulla, whose administrative reforms Broughton puts mostly in
+    81 (MRR II 74). Some date it earlier, to the 90s or to Pompeius Strabo in
+    89. Formally dissolved into Italy in 42 (Dio 48.12.5; App. BC 5.3), so the
+    province ends in 43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
     the Transpadanes but did not end the province: D. Brutus governed it in
     44–43. Its ground stays provincial to the end of the window.
 

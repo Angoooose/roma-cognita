@@ -54,16 +54,79 @@
   of: rome
   from: 241 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: appian
+      locator: 'Sic. 2'
+      url: https://topostext.org/work/877
+      quote: >-
+        In this way the chief part of Sicily (all of it that had been held by
+        the Carthaginians) passed into the possession of the Romans. The latter
+        levied tribute on the Sicilians, and apportioned certain naval charges
+        among their towns, and sent a praetor each year to govern them.
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 241 B.C., p. 219'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        to assist his brother in making peace with the Carthaginians and in
+        organizing the new territory in Sicily
+      supports: [from]
+    - source: cicero-verr
+      locator: '2.2.2'
+      quote: >-
+        of all foreign nations Sicily was the first who joined herself to the
+        friendship and alliance of the Roman people. She was the first to be
+        called a province
+      supports: [type, of]
+    - source: broughton-mrr
+      locator: 'vol. I, 227 B.C., p. 229'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        First Praetor in Sicily (Solin. 5.1, p. 52 M
+      supports: []
+    - source: velleius
+      locator: '2.38.2'
+      quote: >-
+        it was only after the capture of Syracuse, fifty years later, that it
+        was converted into a province by Marcellus Claudius
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya … were held to belong to
+        the people and the senate
+      supports: [type, to]
   confidence: certain
   review: draft
+  note: >-
+    The start is disputed, as on the polity (data/proposed-corrections.yaml):
+    241 on Appian and the peace, 227 for the first praetor (Solinus 5.1; MRR),
+    212/211 on Velleius. Left at 241 until that is decided.
 
 - polity: sardinia-corsica
   type: province-of
   of: rome
   from: 227 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 227 B.C., p. 229'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Praetor in Sardinia (Solin. 5.1, p. 52 M; cf. Liv. 23.24.4; Zon. 8.19).
+      supports: [type, of, from]
+    - source: solinus
+      locator: '5.1'
+      quote: >-
+        utraque insula in Romanum arbitratum redacta, iisdem temporibus facta
+        est provincia: cum eodem anno Sardiniam M. Valerius, alteram C.
+        Flaminius
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sardinia and Baetica were held to belong to the people and the senate
+      supports: [type, to]
   confidence: certain
   review: draft
 
@@ -72,36 +135,151 @@
   of: rome
   from: 197 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 197 B.C., p. 333'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Election: Liv. 32.27.7 Provinces: Liv. 32.28.2 and 11 … Hither Spain
+      supports: [type, of, from]
+    - source: livy
+      locator: '32.28'
+      url: https://www.thelatinlibrary.com/livy/liv.32.shtml
+      quote: >-
+        C. Cornelio et Q. Minucio consulibus omnium primum de prouinciis
+        consulum praetorumque actum. … Hispanias Sempronius citeriorem, Heluius
+        ulteriorem est sortitus. … et terminare iussi qua ulterior citeriorue
+        prouincia seruaretur.
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [type, to]
   confidence: certain
   review: draft
+  note: >-
+    From the first year of six praetors, in the consulship of Cethegus and
+    Minucius (197), when the two Spains were drawn as praetors' provinces and
+    their boundary was to be fixed (Livy 32.27–28; MRR).
 
 - polity: hispania-ulterior
   type: province-of
   of: rome
   from: 197 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 197 B.C., p. 333'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Election: Liv. 32.27.7 Provinces: Liv. 32.28.2 and 11 … Farther Spain
+      supports: [type, of, from]
+    - source: livy
+      locator: '32.28'
+      url: https://www.thelatinlibrary.com/livy/liv.32.shtml
+      quote: >-
+        C. Cornelio et Q. Minucio consulibus omnium primum de prouinciis
+        consulum praetorumque actum. … Hispanias Sempronius citeriorem, Heluius
+        ulteriorem est sortitus. … et terminare iussi qua ulterior citeriorue
+        prouincia seruaretur.
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sardinia and Baetica were held to belong to the people and the senate
+      supports: [type, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [type, to]
   confidence: certain
   review: draft
+  note: As hispania-citerior; in 27 split by Dio into Baetica and Lusitania.
 
 - polity: macedonia
   type: province-of
   of: rome
   from: 146 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: livy-per
+      locator: '54'
+      quote: >-
+        When Macedonian envoys arrived to complain about praetor Decimus Junius
+        Silanus, who had accepted bribes and had looted the province
+      supports: [type, of]
+    - source: sallust-jug
+      locator: '35.3'
+      quote: >-
+        He had drawn Numidia as his province, while Minucius had Macedonia.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [type, to]
+    - source: livy-per
+      locator: '45'
+      url: https://www.thelatinlibrary.com/livy/liv.per45.shtml
+      quote: >-
+        Macedonia in prouinciae formam redacta
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. I, 148 B.C., p. 461'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Recaptured Macedonia from the pretender Andriscus
+      supports: []
   confidence: certain
   review: draft
+  note: >-
+    The start, 146, is disputed and no readable text states it, as on the
+    polity (data/proposed-corrections.yaml): 167 on Livy Per. 45, 148 for
+    Metellus' recovery (MRR). Left at 146 until that is decided.
 
 - polity: africa
   type: province-of
   of: rome
   from: 146 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 146 B.C., p. 467'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        with the assistance of & senatorial commission (see Tribunes of the
+        Plebs) destroyed the city, cursed the site, and organized the new
+        province of Africa
+      supports: [type, of, from]
+    - source: appian
+      locator: 'Pun. 135'
+      quote: >-
+        Upon all the rest a tribute was imposed, both a land tax and a personal
+        tax, upon men and women alike. It was decreed that a praetor should be
+        sent from Rome yearly to govern the country.
+      supports: [type, of, from]
+    - source: velleius
+      locator: '2.38.2'
+      quote: >-
+        Publius Scipio Aemilianus destroyed Carthage and reduced Africa to the
+        form of a province.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [type, to]
   confidence: certain
   review: draft
+  note: >-
+    From the fall of Carthage (146): Scipio and the ten commissioners
+    organised the province (MRR; App. Pun. 135).
 
 - polity: asia
   type: province-of
@@ -116,11 +294,54 @@
 - polity: gallia-transalpina
   type: province-of
   of: rome
-  from: 121 BCE
+  from: { earliest: 121 BCE, latest: 120 BCE }
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Proconsul Gnaeus Domitius successfully fought against the Allobroges
+        near the town of Vindalium. … Consul Quintus Fabius Maximus, grandson of
+        Paulus, successfully fought against the Allobroges and Bituitus, the king
+        of the Arvernians. … The surrender of the Allobroges was accepted.
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. I, 120 B.C., p. 524'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr.). Completed his campaign in Gaul … He built the Via
+        Domitia and organized the province (see Cic. Font. 18).
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 76 B.C., p. 96, n. 4'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Cisalpine Gaul and Transalpine Gaul are the two provinces whose
+        governors in 76 remain
+      supports: [type, of]
+    - source: amela-valverde-2019
+      locator: '39'
+      url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
+      quote: >-
+        Tradicionalmente, la creación de la provincia de la Galia Transalpina se
+        ha atribuido a la acción de Cn. Domicio Ahenobarbo … más bien fue obra
+        de C. Mario
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [type, to]
   confidence: certain
   review: draft
+  note: >-
+    From the conquest, no earlier than the surrender of the Allobroges in the
+    consulship of Q. Fabius Maximus (121; Livy Per. 61), and no later than
+    Domitius' proconsulship of 120, in which Broughton has him organise the
+    province (MRR I 524). It read 121 until October 2026, a convention no
+    readable text states; whether the regular province is this old is
+    disputed (data/proposed-corrections.yaml).
 
 - polity: cilicia
   type: province-of
@@ -140,10 +361,53 @@
   of: rome
   from: c. 81 BCE
   to: 43 BCE
-  sources: [{ source: cah-ix }]
+  sources:
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [type, of, from]
+    - source: piegdon-2010
+      quote: >-
+        The determination of the precise date when the province in northern
+        Italy was created has been and still is contentious … a fragment of the
+        Late Antiquity work of the rhetor Licinianus says that the province was
+        established by Sulla
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. II, 76 B.C., p. 96, n. 4'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Cisalpine Gaul and Transalpine Gaul are the two provinces whose
+        governors in 76 remain
+      supports: [type, of]
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps.
+      supports: [to]
+    - { source: cah-ix }
   confidence: probable
   review: draft
-  note: Dissolved into Italy in 42.
+  note: From Sulla's reorganisation (see the polity); dissolved into Italy in 42.
 
 - polity: cyrenae
   type: province-of
