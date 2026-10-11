@@ -1949,13 +1949,24 @@
         according to its ancient laws. So that neither Marseilles nor the cities
         dependent on it are under submission to the governors sent
       supports: [to]
-  confidence: certain
+    - source: cassius-dio
+      locator: '41.25.3'
+      quote: >-
+        he at that time deprived them of their arms, ships, and money, and later
+        of everything else except the name of freedom.
+      supports: []
+  confidence: uncertain
   review: draft
   note: >-
     An ally long before 133: Rome fought the Ligurians beyond the Alps at its
     request in 154, the consulship of Opimius (Livy Per. 47), and again, against
     the Salluvii, under Fulvius Flaccus, consul in 125 (Per. 60). Its territory
-    is the Province's from 49 (claims.yaml).
+    is the Province's from 49 (claims.yaml). After Caesar took the city in 49
+    the sources disagree: Strabo, under Augustus, has Caesar and his successors
+    keep its laws and its freedom from the governors "in consideration of their
+    former friendship" (4.1.5); Dio has Caesar strip it "of everything else
+    except the name of freedom" (41.25.3). Both are quoted and the confidence
+    lowered from certain in October 2026.
 
 - polity: paphlagonia
   type: client-of
