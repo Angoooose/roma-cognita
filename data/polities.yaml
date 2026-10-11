@@ -3123,7 +3123,7 @@
     - { text: Baliares, lang: la, preferred: true }
     - { text: Gymnesiae, lang: grc-Latn }
   from: before 133 BCE
-  to: 124 BCE
+  to: 122 BCE
   sources:
     - source: florus
       locator: '1.43'
@@ -3145,16 +3145,25 @@
       quote: >-
         Consuls … METELLUS (BaLiaRicus) … Metellus received command against the piratical inhabitants of the
         Balearic islands
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 518'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr. for 121). Continued his reduction and settlement
+        of the Balearic islands
       supports: [to]
     - { source: strabo, locator: '3.5.1' }
     - { source: orosius, locator: '5.13.1' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The islanders of Mallorca and Menorca, free until Q. Caecilius Metellus,
     consul in 123, put down the piracy some of them had joined (Strabo 3.5.1;
     Flor. 1.43) and took the name Balearicus. Livy tells the war in book 60,
-    under 123. Their land is Hither Spain's from 123.
+    under 123. Metellus was still at "his reduction and settlement" as
+    proconsul in 122 and triumphed in 121 (MRR), so they are free to 122 and
+    their land is Hither Spain's from 121. It read 124 until the check.
 
 - id: tectosages
   kind: people
