@@ -1558,9 +1558,15 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
+    - value: municipium
       from: 90 BCE
       to: after 27 BCE
+      note: >-
+        Cicero called it a municipium in 55, to Asconius' surprise, who knew it
+        as a Latin colony of 218 (Ascon. 2–3 C). It was a colonia from 90 here
+        until October 2026. Pliny lists it among the colonies (3.115), and
+        Beloch takes it as a colony again by Asconius' day (p. 12); when it
+        became one is not known.
   labelSide: n
   sources:
     - { source: pleiades, locator: places/383741 }
