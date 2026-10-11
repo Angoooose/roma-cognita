@@ -2409,6 +2409,25 @@
         - at: [23.8, 42.3]
           note: east of the Dentheletae of the upper Strymon
   sources:
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        Bizye was the royal residence of the Astae. The term "Odrysae" is
+        applied by some to all the peoples living above the seaboard from the
+        Hebrus and Cypsela as far as Odessus
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        the districts beyond the Strymon, extending as far as the mouth of the
+        Pontus and the Haemus, all belong to the Thracians, except the
+        seaboard. This seaboard is inhabited by Greeks
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.40'
+      quote: >-
+        The territory of the Odrysae gives birth to the Hebrus
+      supports: [construction]
     - { source: barrington, locator: 'maps 21–22, 51' }
     - { source: sullivan-1990 }
     - { source: mapterhorn }
@@ -2709,9 +2728,36 @@
         - [26.1, 40.2]
         - [25.95, 40.6]
   sources:
+    - source: sumner-1978
+      locator: 'p. 219'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        the first person to have the province following Didius' conquest of
+        the Caineic Cherso- nese in eastern Thrace; he is to go directly to the
+        Chersonese.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.47'
+      quote: >-
+        In the interior are Bizya, a citadel of the kings of Thrace … the
+        district called Caenica … Lysimachia in the Chersonesus is being now
+        gradually deserted
+      supports: [construction]
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        then to the Hebrus, which is navigable inland to Cypsela, a distance of
+        one hundred and twenty stadia. This, he says, was the boundary of the
+        Macedonia which the Romans first took away from Perseus
+      supports: [construction]
+    - source: strabo
+      locator: '7.8.52 (fr. 52)'
+      quote: >-
+        The Thracian Chersonesus forms three seas: the Propontis in the north,
+        the Hellespont in the east, and the Melas Gulf in the south
+      supports: [construction]
     - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
-    - { source: sumner-1978, locator: '218–219, 225' }
-    - { source: pliny-nh, locator: '4.47' }
+    - { source: sumner-1978, locator: '225' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: uncertain
@@ -2785,8 +2831,47 @@
         - [20.6, 41.95]
         - [20.2, 42.05]
   sources:
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        then to the Hebrus, which is navigable inland to Cypsela, a distance of
+        one hundred and twenty stadia. This, he says, was the boundary of the
+        Macedonia which the Romans first took away from Perseus and afterwards
+        from the Pseudo- Philip. Now Paulus, who captured Perseus, annexed the
+        Epeirotic tribes to Macedonia, divided the country into four parts for
+        purposes of administration, and apportioned one part to Amphipolis,
+        another to Thessaloniceia, another to Pella, and another to the
+        Pelagonians
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        From Apollonia to Macedonia one travels the Egnatian Road towards the
+        east; it has been measured by Roman miles and marked by pillars as far
+        as Cypsela and the Hebrus River
+      supports: [construction]
+    - source: cicero-pis
+      locator: '96'
+      quote: >-
+        Dyrrachium and Apollonia which have been completely emptied by you
+      supports: [construction]
+    - source: cicero-pis
+      locator: '37'
+      quote: >-
+        who ever had Macedonia of all provinces — a land which has on its
+        borders so many tribes of barbarians that the commanders in Macedonia
+        have always had only just those boundaries of their province which were
+        also the boundaries of their swords and javelins
+      supports: [construction]
+    - source: cicero-pis
+      locator: '84'
+      quote: >-
+        You waged a wicked and cruel war against the Denseletae, a nation which
+        has at all times been obedient to this empire, and which even at the
+        time of that general defection of all the barbarians, preserved
+        Macedonia for us
+      supports: [construction]
     - { source: nigdelis-2007 }
-    - { source: cicero-pis, locator: '84' }
     - { source: barrington, locator: 'maps 49–51, 54–55' }
     - { source: natural-earth }
   confidence: probable
@@ -2830,6 +2915,24 @@
         - [21.5, 39.05]
         - [21.0, 39.1]
   sources:
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        Then, beginning at the Ambracian Gulf, all the districts which, one
+        after another, incline towards the east and stretch parallel to the
+        Peloponnesus belong to Greece
+      supports: [construction]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the seventh Achaia, extending to Thessaly, the Aetolians, Acarnanians,
+        and the Epirotic nations who border upon Macedonia
+      supports: [construction]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        Officially Greece was again "freed" in 146 as it had been in 196.
+      supports: [construction]
     - { source: kallet-marx-1995 }
     - { source: barrington, locator: 'maps 54–58' }
     - { source: natural-earth }

@@ -978,12 +978,37 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
+    - source: broughton-mrr
+      locator: 'vol. I, 135 B.C., p. 489'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Held command in Macedonia, and won victories over Scordisci in Thrace
+        (Liv. Per. 56). Probably remained until 133 or 132
+      supports: [polity, relation, from]
+    - source: velleius
+      locator: '2.38.1–5'
+      quote: >-
+        the races and nations which were reduced to provinces and made
+        tributary to Rome … Paulus conquered Macedonia
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [polity, relation, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the fifth and sixth Illyria, districts near Epirus, and Macedonia
+      supports: [polity, relation, to]
     - { source: livy-per, locator: '56, 63, 65, 70, 82–83, 91–92, 95, 97' }
   confidence: certain
   review: draft
   note: >-
-    A province from 146. Its governors fought the Scordisci, Dardani and
+    In force in 133: M. Cosconius, praetor in 135, held command in Macedonia
+    and probably stayed until 133 or 132 (MRR); in 27 the Macedonian districts
+    went to the people (Dio 53.12.4; Strabo 17.3.25). A province from 146. Its governors fought the Scordisci, Dardani and
     Thracians on its northern edge throughout 133–68 (Livy Per. 56, 63,
     65, 70, 82–83, 91–92, 95, 97), but no gain of ground beyond this outline is
     dated before Augustus except Didius' in the Chersonese
@@ -996,17 +1021,56 @@
   from: before 133 BCE
   to: 28 BCE
   sources:
-    - { source: kallet-marx-1995 }
+    - source: kallet-marx-1995
+      locator: 'pp. 50–51'
+      quote: >-
+        It is clear that the Roman commander in Macedonia was the most
+        convenient representative for Greeks to approach when Rome's
+        intervention in some Greek affair was desired; likewise, he was the
+        Senate's administrative deputy, carrying out its instructions in
+        matters involving mainland Greeks
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        it is clear that Graecia or Achaia was not assigned regularly as a
+        provincia until 27 B.C. (with the exception of a brief period ca. 81,
+        and another possible exception in 46-44)
+      supports: [to]
+    - source: pausanias
+      locator: '7.16.9–10'
+      quote: >-
+        Tribute was imposed on Greece … down to my day a Roman governor
+        [hegemon] has been sent to the country. The Romans call him the
+        Governor, not of Greece, but of Achaia
+      supports: [relation, from]
+    - source: cicero-pis
+      locator: '37'
+      quote: >-
+        all Achaia, and Thessaly, and Athens, — in short the whole of Greece,
+        was made over to you
+      supports: [polity]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus … were held to belong to the people and the senate
+      supports: [to]
     - { source: broughton-mrr }
   confidence: uncertain
   review: draft
   note: >-
     Overseen by the governor of Macedonia; whether Greece was formally
     annexed in 146 is disputed, and its free cities (Athens, Sparta, Delphi)
-    were not provincial ground. Uncertain, so drawn fainter. Ends where the
-    province of Achaea is first firmly attested, in 27; Achaea had a governor of
-    its own at times before (Sulpicius Rufus, 46–45), which this row does not
-    try to show. In force since Mummius' settlement of 146; Archelaus' hold on
+    were not provincial ground. The readable sources disagree: Pausanias has
+    tribute imposed on Greece in Mummius' settlement and a governor sent from
+    then on (7.16.9–10); Kallet-Marx calls that "a gross anachronism", has
+    Greece formally free after 146, and makes the commander in Macedonia the
+    Senate's deputy for mainland Greeks (pp. 50–51). Uncertain, so drawn
+    fainter. Ends where the province of Achaea is first firmly attested, in 27
+    (Dio 53.12.4); Greece was assigned as a provincia of its own briefly ca. 81
+    and perhaps in 46–44 (Kallet-Marx; Sulpicius Rufus, 46–45), which this row
+    does not try to show. Piso's command of 57–55 took in "all Achaia" (Cic.
+    Pis. 37). In force since Mummius' settlement of 146; Archelaus' hold on
     Greece in 88–86 is the occupation row below.
 
 - atom: creta
@@ -1015,12 +1079,52 @@
   from: 66 BCE
   to: 28 BCE
   sources:
+    - source: kallet-marx-1995
+      locator: 'p. 319'
+      quote: >-
+        when in 66 news reached Pompey of the transfer to him of command of the
+        Mithridatic War (Dio 36.45.1). Metellus was now left to complete the
+        subjugation of Crete after a bitter three years' conflict. Metellus
+        imposed terms on the Cretans that signified the end of their long-lived
+        independence, doubtless including the payment of vectigalia to Rome
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '100'
+      quote: >-
+        tribune Gaius Manilius passed a law that transferred the [Third]
+        Mithridatic War to Pompey … Having subdued the Cretans, Quintus
+        Metellus gave laws to their island, which had until then been
+        independent
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '36.42.3'
+      quote: >-
+        the day on which Lucius Tullus and Aemilius Lepidus entered upon their
+        consulship
+      supports: [from]
+    - source: velleius
+      locator: '2.34.1'
+      quote: >-
+        During the same period the island of Crete was brought under the
+        sovereignty of the Roman people by Quintus Metellus
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Crete and the Cyrenaic portion of Libya … were held to belong to the
+        people and the senate
+      supports: [to]
     - { source: velleius, locator: '2.38.6' }
-    - { source: livy-per, locator: '100' }
     - { source: cassius-dio, locator: '36.17a–19' }
   confidence: probable
   review: draft
-  note: Conquest by Metellus, 69–67.
+  note: >-
+    Conquest by Metellus, 69–67. Metellus gave the island laws in the book of
+    Livy that opens with Manilius' law (Per. 100), which Dio puts in the
+    consulship of Tullus and Lepidus, 66 (36.42.3–4); Kallet-Marx has the
+    subjugation finished once Pompey left for the Mithridatic war in 66. In 27
+    Crete went to the people with Cyrene as one province (Dio 53.12.4), whose
+    row takes the ground from then.
 
 - atom: thracia-odrysae
   polity: thracia-odrysae
@@ -1028,13 +1132,51 @@
   from: c. 80 BCE
   to: after 27 BCE
   sources:
+    - source: cicero-verr
+      locator: '2.1.63'
+      quote: >-
+        when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
+        and to king Sadala
+      supports: [polity, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 80 B.C., p. 81'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Legate, then Legatus pro quaestore, under Cn. Dolabella in Cilicia
+      supports: [from]
+    - source: cicero-pis
+      locator: '84'
+      quote: >-
+        Rabocentus, a prince of the Bessic tribe, having sold yourself to do
+        this to king Cottus
+      supports: [polity]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were … Sadalas of Thrace
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '51.25.4–5'
+      quote: >-
+        he overran the rest of the country except the territory of the Odrysae
+        … These he spared because they are attached to the service of Dionysus
+        … and he also granted them the land in which they magnify the god
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '54.20.3'
+      quote: >-
+        In Thrace somewhat earlier Marcus Lollius, while aiding Rhoemetalces,
+        the uncle and guardian of the sons of Cotys, had subjugated the Bessi
+      supports: [polity, relation, to]
     - { source: sullivan-1990 }
-    - { source: cicero-verr, locator: '2.1.63' }
-    - { source: cicero-pis, locator: '84' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Odrysian authority over the inland tribes was intermittent. The start is
+    Odrysian authority over the inland tribes was intermittent. In force at
+    27: Crassus spared the Odrysae and gave them land in 29–28 (Dio
+    51.25.4–5), and Lollius was aiding their king's house against the Bessi
+    before 16 (Dio 54.20.3). Antony's "subject kings" at Actium included
+    Sadalas of Thrace (Plut. Ant. 61.1). The start is
     the first sign of a friendly king, not the beginning of one: c. 80 the
     governor of Cilicia sent Verres as his legate "to king Nicomedes and to
     king Sadala" (Cic. Verr. 2.1.63). Before it the kingdom is left unclaimed:
@@ -1054,8 +1196,36 @@
   from: c. 100 BCE
   to: after 27 BCE
   sources:
+    - source: sumner-1978
+      locator: 'p. 218'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        It is virtually certain that he was praetor in 101, propraetor or
+        proconsul of Macedonia in 100.
+      supports: [from]
+    - source: sumner-1978
+      locator: 'p. 219'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        the "praetor or propraetor or pro- consul" of Macedonia here referred
+        to is probably the first person to have the province following Didius'
+        conquest of the Caineic Cherso- nese in eastern Thrace; he is to go
+        directly to the Chersonese.
+      supports: [polity, relation, from]
+    - source: cicero-pis
+      locator: '86'
+      quote: >-
+        the people of the Chersonesus and Thessalonica. You were the only
+        master, you were the only valuer, you were the only seller of all the
+        corn in the whole province
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '54.29.5'
+      quote: >-
+        he had inherited most of Agrippa's property, including the Chersonese
+        on the Hellespont
+      supports: [to]
     - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
-    - { source: sumner-1978, locator: '218–219' }
     - { source: cicero-pis, locator: '61' }
   confidence: probable
   review: needs-check
@@ -1065,7 +1235,10 @@
     100 or early 99 in Sumner) sends the governor of Macedonia straight
     there; Didius triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
     From here the row is macedonia's, which this ground was part of until the
-    extension to 133 BCE.
+    extension to 133 BCE. Still Roman in 27: the Chersonese was in Piso's
+    province in 57–55, where he sold its corn (Cic. Pis. 86), and by 12 it
+    was Agrippa's property, inherited by Augustus (Dio 54.29.5); nothing
+    between says it left Roman hands.
 
 - atom: macedonia
   polity: pontus-regnum
@@ -1073,9 +1246,47 @@
   from: 87 BCE
   to: 87 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 35, 41, 52' }
-    - { source: plutarch, locator: 'Sulla 11.2, 15.1, 23.1' }
-    - { source: livy-per, locator: '82' }
+    - source: appian
+      locator: 'Mithr. 35'
+      quote: >-
+        Arcathias, the son of Mithridates, with another army invaded Macedonia
+        and without difficulty overcame the small Roman force there, subjugated
+        the whole country, appointed satraps to govern it
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Sulla 11.1–2'
+      quote: >-
+        about the time when Sulla was moving his armament from Italy … while
+        Ariarathes was overrunning Thrace and Macedonia with a large army
+      supports: [polity, relation, from]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [from]
+    - source: livy-per
+      locator: '82'
+      quote: >-
+        Sulla defeated in battle the army of the king, which had occupied
+        Macedonia and entered Thessalia … consul Lucius Valerius Flaccus, the
+        colleague of Cinna
+      supports: [polity, relation, to]
+    - source: velleius
+      locator: '2.23.1–3'
+      quote: >-
+        Cinna then entered upon his second consulship, and Marius upon his
+        seventh … Sulla fought with the generals of Mithridates at Athens, in
+        Boeotia, and in Macedonia
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 41'
+      quote: >-
+        He also united with his command the army that had invaded Macedonia
+        under Arcathias
+      supports: []
+    - { source: appian, locator: 'Mithr. 52' }
+    - { source: plutarch, locator: 'Sulla 15.1, 23.1' }
     - { source: cicero-pis, locator: '84' }
   confidence: probable
   review: needs-check
@@ -1094,7 +1305,10 @@
     marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the
     occupation ends with 86 and the row with 87 (README decision 17); until
     the check it ran to 86, with Greece. Drawn over the whole atom, though
-    Sentius held out somewhere in it.
+    Sentius held out somewhere in it. The years: Sulla left Italy after
+    naming the consuls of 87 (Eutrop. 5.4), and the army that had occupied
+    Macedonia was beaten in the year Flaccus was consul with Cinna, 86 (Livy
+    Per. 82; Vell. 2.23.1–3).
 
 - atom: chersonesus-thracica
   polity: pontus-regnum
@@ -1102,14 +1316,33 @@
   from: 87 BCE
   to: 87 BCE
   sources:
-    - { source: plutarch, locator: 'Sulla 11.2' }
+    - source: plutarch
+      locator: 'Sulla 11.1–2'
+      quote: >-
+        about the time when Sulla was moving his armament from Italy … while
+        Ariarathes was overrunning Thrace and Macedonia with a large army
+      supports: [polity, relation, from]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [from]
+    - source: livy-per
+      locator: '82'
+      quote: >-
+        Sulla defeated in battle the army of the king, which had occupied
+        Macedonia and entered Thessalia … consul Lucius Valerius Flaccus, the
+        colleague of Cinna
+      supports: [to]
     - { source: appian, locator: 'Mithr. 35' }
   confidence: uncertain
   review: needs-check
   note: >-
     As macedonia: "Thrace and Macedonia" were overrun (Plut. Sulla 11.2), and
     the king's armies crossed to Europe by the Hellespont. Ends with
-    macedonia's row.
+    macedonia's row. No text names the Chersonese itself: it was part of
+    the province of Macedonia, which the king's army held until 86.
 
 - atom: achaea
   polity: pontus-regnum
@@ -1117,8 +1350,39 @@
   from: 88 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 28–29, 45, 55' }
-    - { source: plutarch, locator: 'Sulla 11.3, 14.6, 22.3' }
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        when Sulla. the consul, was sent to conduct the war against
+        Mithridates, who had possessed himself of Asia and Achaia
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 29'
+      quote: >-
+        Archelaus brought over to the side of Mithridates the Achaeans, the
+        Lacedaemonians, and all of Boeotia except Thespiae
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Sulla 11.3'
+      quote: >-
+        was in possession of Euboea itself, while from his head-quarters at
+        Athens he was bringing into revolt from Rome the peoples of Greece as
+        far as Thessaly
+      supports: [polity, relation]
+    - source: velleius
+      locator: '2.23.1–3'
+      quote: >-
+        Cinna then entered upon his second consulship, and Marius upon his
+        seventh … Sulla fought with the generals of Mithridates at Athens, in
+        Boeotia, and in Macedonia with such success that he recovered Athens
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 55'
+      quote: >-
+        Archelaus at once withdrew his garrison from all the places he held
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 28, 45' }
+    - { source: plutarch, locator: 'Sulla 14.6, 22.3' }
     - { source: livy-per, locator: '78, 81' }
     - { source: strabo, locator: '10.5.4' }
   confidence: probable
@@ -1136,7 +1400,10 @@
     agreed near Delium in the winter of 86/85 (Mithr. 55; Plut. Sulla 22.3). So
     the row ends in 86. The free cities that held out (Thespiae; Demetrias and
     Magnesia in Thessaly, Mithr. 29) lie inside, as do Athens and Sparta, which
-    joined him.
+    joined him. The years: Mithridates already held Achaia when Sulla, as
+    consul (88), was sent against him (Eutrop. 5.4), and Sulla was fighting
+    his generals in Greece in the year Cinna and Marius were consuls, 86
+    (Vell. 2.23.1–3).
 
 # --- Anatolia ------------------------------------------------------------------
 
