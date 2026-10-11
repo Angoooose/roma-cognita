@@ -4547,7 +4547,7 @@
   kind: people
   names:
     - { text: Astures, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 29 BCE
   to: after 27 BCE
   sources:
     - source: florus
@@ -4557,11 +4557,16 @@
         freedom from the rule of Rome .
       supports: [kind, to]
     - source: cassius-dio
+      locator: '51.20.1'
+      quote: >-
+        when he was consul for the fifth time, with Sextus Apuleius
+      supports: [from]
+    - source: cassius-dio
       locator: '51.20.5'
       quote: >-
         there were still under arms the Treveri , who had brought in the Germans
         to help them, and the Cantabri , the Vaccaei , and the Astures
-      supports: [kind]
+      supports: [kind, from]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: suetonius-aug, locator: '26.3' }
@@ -4572,7 +4577,8 @@
     Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
     29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
     (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
-    53.25.8).
+    53.25.8). It read "before 133" until the October 2026 check: the first text
+    with them is Dio's for 29, the year their claim starts from.
 
 - id: cantabri
   kind: people
