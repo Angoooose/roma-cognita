@@ -18468,13 +18468,20 @@
         eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
         second time, and Caius Asinius Pollio
       supports: [to]
-  confidence: certain
+    - source: appian
+      locator: 'Mithr. 106'
+      quote: >-
+        brought under Roman rule without fighting, … also Idumea and Ituraea
+      supports: [relation]
+  confidence: probable
   review: draft
   note: >-
     As judaea (the row is judaea's). No readable text here says Idumaea
     stayed with Hyrcanus II under Pompey's settlement, though Antipater, his
     minister, was "in great repute with the Idumeans" (AJ 14.121): the polity
-    is unbacked.
+    is unbacked. Appian has Pompey bring Idumaea under Roman rule, which backs
+    the relation but not who held it. Lowered from certain at the checking of
+    October 2026, since one of its fields is unbacked.
 
 - atom: judaea-idumaea
   polity: judaea-antigonus
