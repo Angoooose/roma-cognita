@@ -52,7 +52,7 @@
 - polity: sicilia
   type: province-of
   of: rome
-  from: 241 BCE
+  from: { earliest: 241 BCE, latest: 211 BCE }
   to: after 27 BCE
   sources:
     - source: appian
@@ -83,25 +83,25 @@
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         First Praetor in Sicily (Solin. 5.1, p. 52 M
-      supports: []
+      supports: [from]
     - source: velleius
       locator: '2.38.2'
       quote: >-
         it was only after the capture of Syracuse, fifty years later, that it
         was converted into a province by Marcellus Claudius
-      supports: []
+      supports: [from]
     - source: cassius-dio
       locator: '53.12.4'
       quote: >-
         Sicily, Crete and the Cyrenaic portion of Libya … were held to belong to
         the people and the senate
       supports: [type, to]
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
-    The start is disputed, as on the polity (data/proposed-corrections.yaml):
-    241 on Appian and the peace, 227 for the first praetor (Solinus 5.1; MRR),
-    212/211 on Velleius. Left at 241 until that is decided.
+    The sources disagree on the start, so it covers them all, as on the
+    polity: 241 on Appian and the peace, 227 for the first praetor (Solinus
+    5.1; MRR), 212/211 on Velleius. It read 241 until October 2026.
 
 - polity: sardinia-corsica
   type: province-of
@@ -208,7 +208,7 @@
 - polity: macedonia
   type: province-of
   of: rome
-  from: 146 BCE
+  from: { earliest: 167 BCE, latest: 148 BCE }
   to: after 27 BCE
   sources:
     - source: livy-per
@@ -233,19 +233,19 @@
       url: https://www.thelatinlibrary.com/livy/liv.per45.shtml
       quote: >-
         Macedonia in prouinciae formam redacta
-      supports: []
+      supports: [from]
     - source: broughton-mrr
       locator: 'vol. I, 148 B.C., p. 461'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Recaptured Macedonia from the pretender Andriscus
-      supports: []
-  confidence: certain
+      supports: [from]
+  confidence: probable
   review: draft
   note: >-
-    The start, 146, is disputed and no readable text states it, as on the
-    polity (data/proposed-corrections.yaml): 167 on Livy Per. 45, 148 for
-    Metellus' recovery (MRR). Left at 146 until that is decided.
+    No readable text gives the conventional 146, so the start covers what
+    the texts do say, as on the polity: 167 on Livy Per. 45, 148 for
+    Metellus' recovery (MRR). It read 146 until October 2026.
 
 - polity: africa
   type: province-of
@@ -346,7 +346,7 @@
     Domitius' proconsulship of 120, in which Broughton has him organise the
     province (MRR I 524). It read 121 until October 2026, a convention no
     readable text states; whether the regular province is this old is
-    disputed (data/proposed-corrections.yaml). Amela Valverde (2019, p. 39)
+    disputed. Amela Valverde (2019, p. 39)
     writes that the creation, traditionally Domitius', is now held to be rather
     Marius' work after the Cimbric wars (consul 107), or even Pompey's in the
     Sertorian war. Broughton and Amela Valverde disagree, so the confidence is

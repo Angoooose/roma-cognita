@@ -217,7 +217,7 @@
   kind: province
   names:
     - { text: Sicilia, lang: la, preferred: true }
-  from: 241 BCE
+  from: { earliest: 241 BCE, latest: 211 BCE }
   to: after 27 BCE
   sources:
     - source: appian
@@ -250,37 +250,37 @@
       quote: >-
         First Praetor in Sicily (Solin. 5.1, p. 52 M; cf., on the election of
         four Praetors, Liv. Per. 20
-      supports: []
+      supports: [from]
     - source: solinus
       locator: '5.1'
       quote: >-
         utraque insula in Romanum arbitratum redacta, iisdem temporibus facta
         est provincia: cum eodem anno Sardiniam M. Valerius, alteram C.
         Flaminius
-      supports: []
+      supports: [from]
     - source: velleius
       locator: '2.38.2'
       quote: >-
         Claudius the consul was the first to cross into Sicily with an army, but
         it was only after the capture of Syracuse, fifty years later, that it
         was converted into a province by Marcellus Claudius.
-      supports: []
+      supports: [from]
     - source: cassius-dio
       locator: '53.12.4'
       quote: >-
         Sicily, Crete and the Cyrenaic portion of Libya … were held to belong to
         the people and the senate
       supports: [kind, to]
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
-    From the peace of 241, which ended the first war with Carthage: Lutatius'
-    year (MRR), when Appian has Rome take the Carthaginian part of the island,
-    tax it and send a praetor each year (Sic. 2). The start is disputed (see
-    data/proposed-corrections.yaml): Solinus makes Sicily and Sardinia
-    provinces in the same year, with the praetors Broughton dates to 227, and
-    Velleius only after Syracuse fell (212/211). Left at 241 until that is
-    decided.
+    The sources disagree on when Sicily became a province, so the start covers
+    them all. Appian has Rome take the Carthaginian part of the island at the
+    peace of 241, Lutatius' year (MRR), tax it and send a praetor each year
+    (Sic. 2); Solinus makes Sicily and Sardinia provinces in the same year,
+    with the first praetors, whom Broughton dates to 227; Velleius has it made
+    a province only after Syracuse fell (212/211), perhaps meaning the whole
+    island. It read 241 until October 2026.
 
 - id: sardinia-corsica
   kind: province
@@ -381,7 +381,7 @@
   kind: province
   names:
     - { text: Macedonia, lang: la, preferred: true }
-  from: 146 BCE
+  from: { earliest: 167 BCE, latest: 148 BCE }
   to: after 27 BCE
   sources:
     - source: livy-per
@@ -406,29 +406,29 @@
       url: https://www.thelatinlibrary.com/livy/liv.per45.shtml
       quote: >-
         Macedonia in prouinciae formam redacta
-      supports: []
+      supports: [from]
     - source: livy-per
       locator: '50'
       quote: >-
         After the false Philip had massacred praetor Publius Juventius with his
         army in Macedonia, he was defeated and captured by Quintus Caecilius,
         and Macedonia was subdued again.
-      supports: []
+      supports: [from]
     - source: broughton-mrr
       locator: 'vol. I, 148 B.C., p. 461'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Recaptured Macedonia from the pretender Andriscus, and secured the
         person of the pretender himself from the Thracian prince Byzes
-      supports: []
-  confidence: certain
+      supports: [from]
+  confidence: probable
   review: draft
   note: >-
-    The start, 146, is disputed and no readable text states it (see
-    data/proposed-corrections.yaml): the epitome of Livy has Macedonia "made
-    a province" after Pydna, in 167 (Per. 45), and Metellus, praetor in 148
-    (MRR), won it back from Andriscus (Per. 50). Left at 146 until that is
-    decided. A province in the window: the praetor Silanus looted it (Per. 54);
+    No readable text gives the conventional 146, and those that do date it
+    disagree, so the start covers them: the epitome of Livy has Macedonia
+    "made a province" after Pydna, in 167 (Per. 45); a Roman praetor was
+    already fighting there when Andriscus killed him, and Metellus, praetor in
+    148 (MRR), won it back (Per. 50). It read 146 until October 2026. A province in the window: the praetor Silanus looted it (Per. 54);
     Minucius drew it, consul in 110 (Sall. Jug. 35.3). Includes Greece until Achaea is attested as a province of its own in the
     settlement of 27, which also took Thessaly and southern Epirus (see achaea).
     Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
