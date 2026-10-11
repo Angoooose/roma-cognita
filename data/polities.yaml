@@ -389,7 +389,7 @@
     - { text: Syri, lang: la, note: 'Eunus took the name Antiochus and called his followers Syrians (Diodorus 34/35.2.24)' }
   from: before 133 BCE
   to: 133 BCE
-  ruler: Eunus, called Antiochus, c. 135–132
+  ruler: Eunus, called Antiochus, by 134 to 132
   sources:
     - source: diodorus
       locator: '34/35.2.14'
@@ -450,8 +450,10 @@
     them from Agrigentum, and their armies beat the praetors (Diodorus
     34/35.2.10–18, 43; Livy Per. 56). The consul Rupilius took Tauromenium and then
     Enna in 132, and Eunus died a prisoner at Morgantina (Diodorus
-    34/35.2.20–23; Livy Per. 59); 132 is Rome's. Began c. 135 (Livy Per. 56),
-    before the window.
+    34/35.2.20–23; Livy Per. 59); 132 is Rome's. Began before the window: the
+    praetors had already failed when the consul C. Fulvius, of 134, was sent
+    (Livy Per. 56). The ruler's first year was "c. 135" until October 2026;
+    no readable text gives it, so it now reads "by 134".
 
 - id: sicily-tryphon
   kind: kingdom
