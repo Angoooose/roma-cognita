@@ -603,6 +603,19 @@
       quote: >-
         Metellus held command in Sardinia and Corsica (see 111, Promagistrates
       supports: [polity, relation]
+    - source: broughton-mrr
+      locator: 'vol. I, 163 B.C., p. 440'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Iuventius died in Corsica just after receiving news that the Senate had
+        decreed a supplicatio for his successes … whereupon Gracchus, after
+        holding the elections, succeeded him in Corsica and Sardinia
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        The third was Sardinia, with Corsica; the fourth Sicily
+      supports: [polity, relation, to]
     - source: pliny-nh
       locator: '3.80'
       quote: >-
@@ -620,11 +633,13 @@
   review: draft
   note: >-
     Held with Sardinia by M. Metellus, consul in 115 (MRR), and settled with
-    colonies by Marius and Sulla (Pliny 3.80). No readable text yet shows the
-    island in 133 or in 27: Dio's list of 27 names Sardinia, not Corsica
-    (53.12.4), and Strabo's Roman generals raiding it are undated. Its joint
-    province with Sardinia is under discussion and the dates are left as they
-    are until that is settled.
+    colonies by Marius and Sulla (Pliny 3.80). Tiberius Gracchus (consul 163)
+    governed Corsica and Sardinia together (MRR), so the island is a Roman
+    command both before and after 133, and Strabo's list of Augustus' provinces
+    in 27 has "Sardinia, with Corsica". Dio's list of 27 names Sardinia, not
+    Corsica (53.12.4). Nothing readable puts the island in 133 itself.
+    Its joint province with Sardinia is under discussion and the dates are left
+    as they are until that is settled.
 
 # --- the West ------------------------------------------------------------------
 
