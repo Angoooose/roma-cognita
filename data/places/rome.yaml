@@ -2989,7 +2989,7 @@
   names:
     - { text: Aedes Fauni, lang: la, preferred: true }
     - { text: Temple of Faunus, lang: en }
-  from: 194 BCE
+  from: { earliest: 196 BCE, latest: 194 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2999,7 +2999,9 @@
   confidence: probable
   review: draft
   note: >-
-    Dedicated in 194 BCE at the island's upstream end (Ovid, Fasti 2.193–194), and
+    Vowed in 196 and dedicated "two years later" (Platner & Ashby), but "dedicated …
+    in 196 B.C." in Digital Augustan Rome; 194 BCE until October 2026, now the range
+    of both. At the island's upstream end (Ovid, Fasti 2.193–194), and
     Vitruvius's own example of a temple of four columns across its front and none
     down its sides. Its size is not known.
 
