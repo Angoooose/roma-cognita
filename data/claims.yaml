@@ -3784,6 +3784,19 @@
         the portion of Lesser Armenia which bordered on Cappadocia was taken
         from him and given to Ariobarzanes.
       supports: [polity, relation]
+    - source: bellum-alexandrinum
+      locator: '34'
+      quote: >-
+        Lesser Armenia, his own kingdom, or Cappadocia, the kingdom of
+        Ariobarzanes
+      supports: [polity]
+    - source: bellum-alexandrinum
+      locator: '66'
+      quote: >-
+        As for Ariobarzanes and his brother Ariarathes, both of them had
+        deserved well of the Republic … Caesar granted him part of Lesser
+        Armenia and allowed Ariobarzanes to treat him as his vassal.
+      supports: [polity, relation]
     - source: cassius-dio
       locator: '42.55.4'
       quote: >-
@@ -3811,6 +3824,9 @@
     After Zela Caesar restored everything to the dispossessed "except a portion
     of Armenia, which he granted to Ariobarzanes" (Dio 42.48.3); Cicero has
     Caesar take from Deiotarus the Armenia the senate had given him (Phil. 2.94).
+    The Alexandrian War names Ariobarzanes' kingdom Cappadocia (34) and has
+    Caesar give part of Lesser Armenia to Ariobarzanes' brother Ariarathes,
+    as Ariobarzanes' vassal (66), on the way to Zela.
 
 - atom: armenia-minor
   polity: galatia
