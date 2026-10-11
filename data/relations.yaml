@@ -1818,7 +1818,7 @@
   type: allied-to
   of: rome
   from: 64 BCE
-  to: after 43 BCE
+  to: 54 BCE
   sources:
     - { source: sullivan-1990 }
     - source: cassius-dio
@@ -1827,6 +1827,25 @@
         Abgarus of Osroene. For he had pledged himself to peace with the
         Romans in the time of Pompey
       supports: [type, of]
+    - source: cassius-dio
+      locator: '40.20.1–2'
+      quote: >-
+        but now chose the side of the barbarians. … but Abgarus, while
+        favouring the Parthian cause, pretended to be well disposed toward
+        Crassus.
+      supports: [to]
+    - source: cassius-dio
+      locator: '40.23.1'
+      quote: >-
+        But when he, too, attacked, thereupon the Osroeni themselves assailed
+        the Romans on their exposed rear
+      supports: [to]
+    - source: cassius-dio
+      locator: '40.17.1'
+      quote: >-
+        And when the winter set in, in which Gnaeus Calvinus and Valerius
+        Messalla became consuls
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1835,10 +1854,11 @@
     Rome set him up, depose him or call him subject.
     From Pompey's settlement (Afranius crossed northern Mesopotamia in 65–64):
     Dio has Abgar in treaty with Rome "in the time of Pompey" (40.20.1), and no
-    earlier tie is recorded. Left open at 43 on purpose (September 2026): nothing attests Osroene's
-    standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
-    served Parthia against Crassus in 53; geography points to a Parthian
-    vassal, but no text says so for these years.
+    earlier tie is recorded. It ends with 54: in Crassus' campaign of 53, the
+    year of Calvinus and Messalla (40.17.1), Abgar "chose the side of the
+    barbarians" and his Osroeni fell on the Roman rear (40.20.1, 40.23.1).
+    It was left open at "after 43" until October 2026; no text renews the
+    tie after 53.
 
 - polity: amanus
   type: client-of
