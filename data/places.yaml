@@ -4383,9 +4383,14 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony of 241 (Vell. 1.14.8; Beloch 145); its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
+    - value: municipium
       from: 90 BCE
       to: after 27 BCE
+      note: >-
+        the Latin colonies were municipia from the lex Iulia (Beloch 5). It was a
+        colonia from 90 here until October 2026. Beloch counts Spoletium among
+        Sulla's colonies (p. 8), but no readable text dates that settlement, so
+        no later change is drawn.
   labelSide: e
   sources:
     - source: pleiades
@@ -4413,6 +4418,20 @@
         Für die latinischen Colonien bedarf das weiter keines Beweises; sie waren
         seit der Lex Iulia Municipien.
       supports: [from, status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        90 B.C. A.U.C. 664 Consuls … In Rome he carried his law to give
+        citizenship to all Latins
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 8'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So finden wir in den sullanischen Colonien ursprünglich überall
+        Quattuorvirn: in Cortona … Spoletium
+      supports: []
     - source: strabo
       locator: '5.2.10'
       quote: >-
