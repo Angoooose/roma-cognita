@@ -19450,7 +19450,7 @@
   polity: atropatene
   relation: client
   from: 86 BCE
-  to: 66 BCE
+  to: 67 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
     - { source: plutarch, locator: 'Lucullus 31.7' }
@@ -19464,17 +19464,23 @@
     Tigranocerta in 69 (Plut. Lucullus 27.6), so the start lies in 86–69; the
     Atropateni fought for him again in 68 (31.7). Drawn from 86, its first year,
     to follow the Parthian row; until October 2026 it read 85, which no text
-    states.
+    states. To 67: Tigranes' submission in 66 belongs to the next row.
 
 - atom: atropatene
   polity: atropatene
   relation: client
-  from: 65 BCE
+  from: 66 BCE
   to: 36 BCE
   sources:
     - { source: strabo, locator: '11.13.1–2' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    From Tigranes' submission to Pompey, in which "what he had acquired later"
+    was taken from him (Dio 36.53.2), the year before the consulship of Cotta
+    and Torquatus (37.1.1): 66, which belongs to this row as Armenia's own
+    client row starts then. Until October 2026 it read 65, and the row before
+    ended in 66.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia

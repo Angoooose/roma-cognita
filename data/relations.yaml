@@ -2699,14 +2699,16 @@
 - polity: atropatene
   type: client-of
   of: parthia
-  from: 65 BCE
+  from: 66 BCE
   to: 36 BCE
   sources: [{ source: strabo, locator: '11.13.1–2' }]
   confidence: uncertain
   review: needs-check
   note: >-
     Back under Parthia once Tigranes had submitted to Pompey (66); when is not
-    recorded. The rows before are in the extension to 133.
+    recorded. The rows before are in the extension to 133. From 66, the year
+    of the submission, as Armenia's client-of rome; it read 65 until October
+    2026, and the tie to Armenia ended in 66.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 
@@ -3239,7 +3241,7 @@
   type: client-of
   of: armenia
   from: 86 BCE
-  to: 66 BCE
+  to: 67 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
     - { source: plutarch, locator: 'Lucullus 27.6, 31.7' }
@@ -3255,7 +3257,7 @@
     right wing at Tigranocerta in 69 (Plut. Lucullus 27.6), the Atropateni
     fought for him at the Arsanias in 68 (31.7), and "Mithridates from Media,
     the son-in-law of Tigranes" fell on Lucullus' men in 67 (Dio 36.14.2). To
-    Tigranes' submission in 66.
+    67: Tigranes' submission in 66 belongs to the next row.
 
 - polity: armenia
   type: allied-to
