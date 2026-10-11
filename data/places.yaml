@@ -1637,9 +1637,12 @@
   prominence: 3
   status:
     - value: colonia
-      from: c. 81 BCE
+      from: { earliest: 82 BCE, latest: 80 BCE }
       to: after 27 BCE
-      note: a colony of the dictator Sulla (Pliny 3.80).
+      note: >-
+        a colony of the dictator Sulla (Pliny 3.80), so founded in his
+        dictatorship, which Broughton gives from 82 and still in 80; no text
+        dates the colony closer. It began "c. 81" until October 2026.
   labelSide: e
   sources:
     - { source: pleiades, locator: places/472048 }
