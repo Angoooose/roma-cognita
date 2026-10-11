@@ -2973,7 +2973,7 @@
   kind: kingdom
   names:
     - { text: Osroene, lang: la, preferred: true }
-  from: c. 132 BCE
+  from: { earliest: 136 BCE, latest: 132 BCE }
   to: after 27 BCE
   ruler: >-
     Aryu, from 132, and his successors; Abgar II, to 53; Ma'nu II, 52–34;
@@ -2984,6 +2984,13 @@
       url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
       quote: >-
         In the year 180 kings began to rule in Edessa.
+      supports: [kind, from]
+    - source: chronicle-edessa
+      locator: 'note 1'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        Dionysius places the commencement of the Edessene kingdom in B.C. 136,
+        or, as he calls it, in the year of Abraham 1880.
       supports: [kind, from]
     - source: chronicle-edessa
       locator: 'year 400'
@@ -3010,7 +3017,11 @@
     The kings of Edessa east of the Euphrates, "the boundaries of the Parthian
     empire" (Strabo 16.1.28). The start is the Chronicle of Edessa's first
     entry, "In the year 180 kings began to rule in Edessa" (Seleucid year 180,
-    133/132). The rulers follow the Edessene king-list as Segal gives it
+    133/132). The translator's note gives Dionysius' date for the first king,
+    the year of Abraham 1880, B.C. 136, and Assemani's reckoning of year 180 as
+    B.C. 129, which the Seleucid era does not bear out. The start was "c. 132"
+    until October 2026; it is now the range between Dionysius' year and the
+    Chronicle's, drawn at 134. The rulers follow the Edessene king-list as Segal gives it
     (not opened for this extension), whose early dates he says are to be
     treated with caution.
     Its standing with Rome after the 60s is not known (see relations.yaml).

@@ -15,13 +15,17 @@
 
 - polity: osroene
   place: edessa
-  from: c. 132 BCE
+  from: { earliest: 133 BCE, latest: 132 BCE }
   to: after 27 BCE
   sources:
     - { source: sullivan-1990 }
     - { source: chronicle-edessa, locator: 'year 180' }
   confidence: certain
   review: draft
+  note: >-
+    From the Chronicle of Edessa's year 180 (133/132), when "kings began to
+    rule in Edessa"; Dionysius' earlier date for the first king (136, see the
+    polity) is before the window and the place's own start.
 
 - polity: aristonicus
   place: stratonicea-caici
