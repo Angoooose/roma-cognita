@@ -6337,7 +6337,7 @@
   polity: pontus-regnum
   relation: independent
   from: c. 110 BCE
-  to: 86 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
   sources:
     - source: minns-1913
       locator: 'p. 582'
@@ -6379,7 +6379,27 @@
         about the time when Sulla was moving his armament from Italy … of his
         sons, one was in Pontus and Bosporus, holding without any opposition the
         ancient realm as far as the deserts beyond Lake Maeotis
-      supports: [polity, relation]
+      supports: [polity, relation, to]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        Mithridates, after his return to Pontus, went to war with the Colchians
+        and the tribes around the Cimmerian Bosporus who had revolted from him.
+      supports: [to]
+    - source: magie-1950
+      locator: 'p. 230'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Then Mithradates, leaving his refuge in Mitylene, advanced to the city
+        of Dardanus, not far from the ravaged Ilium. 58 Here, in the early
+        autumn of 85, the Roman general and the King of Pontus met.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -6393,10 +6413,14 @@
     spring after: the change of hands falls somewhere in 110–106, and the row
     starts at its first year. It started c. 108 until October 2026, a year no
     readable text gives. In
-    88–87 a son of Mithridates held "Pontus and Bosporus … as far as the
-    deserts beyond Lake Maeotis" (Plut. Sulla 11.2). The Bosporan peoples had
-    revolted by the time the king came home in 85 (App. Mithr. 64); when is not
-    recorded, and the row ends in 86.
+    87, as Sulla left Italy after naming the consuls of that year (Eutrop.
+    5.4), a son of Mithridates held "Pontus and Bosporus … as far as the
+    deserts beyond Lake Maeotis" (Plut. Sulla 11.1–2). The Bosporan peoples had
+    revolted by the time the king came home after Dardanus, in the autumn of
+    85 (App. Mithr. 64; Magie): the last year of the row is 87 or 86. It ended
+    in 86 until October 2026; no readable text dates the revolt (Minns, p. 586
+    n. 1, reports Reinach's date of 86 for a rising under one Hygiaenon, which
+    he doubts).
 
 - atom: bosporus
   polity: bosporus
@@ -6507,15 +6531,41 @@
   polity: pontus-regnum
   relation: independent
   from: c. 108 BCE
-  to: 86 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
   sources:
-    - { source: plutarch, locator: 'Sulla 11.2' }
+    - source: plutarch
+      locator: 'Sulla 11.1–2'
+      quote: >-
+        about the time when Sulla was moving his armament from Italy … of his
+        sons, one was in Pontus and Bosporus, holding without any opposition the
+        ancient realm as far as the deserts beyond Lake Maeotis
+      supports: [to]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        Mithridates, after his return to Pontus, went to war with the Colchians
+        and the tribes around the Cimmerian Bosporus who had revolted from him.
+      supports: [to]
+    - source: magie-1950
+      locator: 'p. 230'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Here, in the early autumn of 85, the Roman general and the King of
+        Pontus met.
+      supports: [to]
     - { source: strabo, locator: '11.2.11' }
   confidence: uncertain
   review: needs-check
   note: >-
-    As bosporus. Plutarch's son of Mithridates held the realm "as far as the
-    deserts beyond Lake Maeotis" in 88–87 (Sulla 11.2); how far up the Maeotic
+    As bosporus, whose end it shares (87 or 86; 86 until October 2026).
+    Plutarch's son of Mithridates held the realm "as far as the deserts beyond
+    Lake Maeotis" in 87 (Sulla 11.2); how far up the Maeotic
     shore that reached, and whether it was so from the first, is not known.
     Under the Spartocids before c. 108 the shore is left unclaimed: Strabo
     gives them only "the neighboring settlements near the south of Lake
