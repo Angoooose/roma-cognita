@@ -19394,35 +19394,41 @@
   polity: armenia
   relation: client
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - { source: cassius-dio, locator: '49.39–41' }
   confidence: uncertain
   review: needs-check
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose end has been 33–31 since October
+    2026; this read 32 until then.
 
 - atom: sophene
   polity: rome
   relation: occupied
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - { source: cassius-dio, locator: '49.39–40, 49.44.4' }
   confidence: probable
   review: draft
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose end has been 33–31 since October
+    2026; this read 32 until then.
 
 - atom: sophene
   polity: armenia
   relation: independent
-  from: 31 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
     - { source: tacitus-ann, locator: '2.3' }
     - { source: cassius-dio, locator: '51.16.2' }
   confidence: probable
   review: draft
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose start has been 32–30 since
+    October 2026; this read 31 until then.
 
 - atom: atropatene
   polity: atropatene
