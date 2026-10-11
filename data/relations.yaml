@@ -2910,7 +2910,32 @@
   from: 34 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '49.41.3' }
+    - source: cassius-dio
+      locator: '49.41.3'
+      quote: >-
+        he promised to give to his own children by Cleopatra the following
+        districts: … to Cleopatra, the Cyrenaica in Libya
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.5.6'
+      quote: >-
+        Antony, for his part, had sailed to Pinarius Scarpus in Africa and to
+        the army under Scarpus' command previously assembled there for the
+        protection of Egypt. But when this general not only refused to receive
+        him
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
