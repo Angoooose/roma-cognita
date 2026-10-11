@@ -2734,13 +2734,66 @@
     - { text: Commagene, lang: la, preferred: true }
   from: before 133 BCE
   to: after 27 BCE
-  ruler: >-
-    Sames II; Mithridates I Callinicus, c. 100–70; Antiochus I, c. 70–36 (or
-    later); Mithridates II by 31
+  ruler: Antiochus I, by 69 to 38 or later; Mithridates II by 31
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The descendant of a long line of princes, one of whom, about 162 b.c.,
+        made himself independent of Seleucid rule and perhaps even assumed the
+        royal title, he ruled over a kingdom which extended from the Taurus to
+        the northern border of Syria.
+      supports: [kind, from]
+    - source: magie-1950
+      locator: 'vol. II, p. 1239'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For his great-grandfather Ptolemaeus, who seems to have made himself
+        independent of the Seleucids and to have taken the title of King
+      supports: [kind, from]
+    - source: strabo
+      locator: '16.2.3'
+      quote: >-
+        Commagene is rather a small district. It contains a strong city,
+        Samosata, in which was the seat of the kings.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '36.1.1–2.5'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … He furthermore received Antiochus, king of Commagene
+      supports: [kind, from, ruler]
+    - source: plutarch
+      locator: 'Antony 34.1'
+      quote: >-
+        Pacorus fell among the first. … and besieged Antiochus of Commagene in
+        the city of Samosata
+      supports: [ruler]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were Bocchus the king of
+        Libya, Tarcondemus the king of Upper Cilicia, Archelaus of Cappadocia,
+        Philadelphus of Paphlagonia, Mithridates of Commagene
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 445'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In Commagene, on the other hand, King Mithradates II, even though he
+        had fought on Antony’s side, was retained in power.
+      supports: [kind, ruler, to]
+    - source: cassius-dio
+      locator: '54.7.4–9.3'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia … to one Mithridates, though still a mere
+        boy, he gave Commagene, inasmuch as its king had put the boy's father
+        to death.
+      supports: [kind, to]
     - { source: sullivan-1990 }
     - { source: facella-2006 }
-    - { source: plutarch, locator: 'Antony 34' }
     - { source: cassius-dio, locator: '49.22.1–2' }
   confidence: probable
   review: draft
@@ -2752,6 +2805,12 @@
     throughout. Dio 49.23.4 has Phraates kill an Antiochus, grandfather of his
     brothers, c. 37–36; whether this is Antiochus I, and so when he died, is
     disputed. Mithridates II was king at Actium (Plut. Antony 61.1).
+    The ruler reads only what readable texts give: Antiochus king in
+    Hortensius' consulship (69, Dio 36.1.1–2.5) and at the siege of Samosata
+    after Pacorus fell (38, Plut. Antony 34.1); Mithridates II at Actium.
+    Until October 2026 it began "Sames II; Mithridates I Callinicus, c.
+    100–70; Antiochus I, c. 70–36", from Sullivan and Facella, which were not
+    read.
 
 - id: judaea
   kind: kingdom
@@ -2951,13 +3010,62 @@
   kind: kingdom
   names:
     - { text: Emesa, lang: la, preferred: true }
-  from: before 69 BCE
+  from: 69 BCE
   to: 31 BCE
-  ruler: Sampsiceramus I; Iamblichus I, by 51 to 31; Alexander, 31–30
+  ruler: >-
+    Sampsiceramus I, by 65/64; Iamblichus I, his son, by 51 to 31;
+    Alexander, Iamblichus' brother, 31
   sources:
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        Arethusa, belonging to Sampsiceramus and Iamblichus his son, chiefs of
+        the tribe of the Emeseni.
+      supports: [kind, ruler]
+    - source: diodorus
+      locator: '40.1b.1'
+      quote: >-
+        Since all his hopes rested on his alliance with Sampsiceramus, he
+        summoned him to come with his forces.
+      supports: [kind, ruler]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 184'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.C. 65 or 64, probably the disturbances broke out of which
+        Diodorus … gives an account. Antiochus XIII. Asiaticus sought to
+        maintain his possession of the throne by the aid of Sampsigeram of
+        Emesa.
+      supports: [kind, from, ruler]
+    - source: cicero-fam
+      locator: '15.1.2'
+      quote: >-
+        M. Tullius Cicero, son of Marcus, proconsul, greets the consuls,
+        praetors, tribunes, and senate. … a despatch on the same subject reached
+        me from Iamblichus, phylarch of the Arabians
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '50.10.1–13.7'
+      quote: >-
+        Valerius Messalla, who had once been proscribed by them, became consul
+        with Caesar. … For this reason he tortured and put to death, among
+        others, Iamblichus, king of a tribe of the Arabians
+      supports: [kind, ruler, to]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        Alexander, the brother of Iamblichus. The last-named, because he had
+        secured his realm as a reward for accusing Caesar, he led in his
+        triumphal procession and afterwards put to death.
+      supports: [ruler, to]
     - { source: sullivan-1990 }
-    - { source: cassius-dio, locator: '50.13.7' }
-    - { source: cassius-dio, locator: '51.2.2' }
   confidence: probable
   review: needs-check
   note: >-
@@ -2966,8 +3074,19 @@
     Iamblichus his son" (16.2.10). Antony tortured Iamblichus to death before
     Actium (Dio 50.13.7), and his brother Alexander, who had the realm "as a
     reward for accusing" him, was deposed by Octavian and killed after the
-    triumph (51.2.2; still a suppliant in 30, Josephus BJ 1.393). The kingdom
+    triumph (51.2.2). Iamblichus' first year is Cicero's despatch as
+    proconsul of Cilicia, 51 (Fam. 15.1.2). Alexander's reign is given only
+    as 31, the year Octavian deposed him; until October 2026 it read 31–30,
+    on Josephus BJ 1.393, whose suppliant Alexander, "one of Antony's
+    friends", is not said to be of Emesa. The kingdom
     was restored to Iamblichus II only in 20 (Dio 54.9.2).
+    The principality is first seen when Antiochus XIII called on
+    Sampsiceramus (Diodorus 40.1b.1), an episode Schürer puts "probably" in
+    65 or 64, within Antiochus' reign of 69–65 (pp. 183–184): so it begins
+    between 69 and 65. Like its first claim row, it starts at the earlier
+    bound, 69, next to Tigranes' years, rather than leave a gap. Until
+    October 2026 it read "before 69", which says it stood in 69 and earlier;
+    no readable text does.
 
 - id: osroene
   kind: kingdom
@@ -3055,10 +3174,55 @@
   to: 31 BCE
   ruler: Tarcondimotus I, to 31; Philopator, 31
   sources:
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        in my time a notable man established himself as lord of all, and was
+        named king by the Romans because of his manly virtues — I refer to
+        Tarcondimotus, who bequeathed the succession to his posterity
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 377'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        This region had been overrun by Afranius in the autumn of 64, but,
+        peopled in part by bandit-tribes, it was ill-suited for incorporation
+        in a Roman province. It was therefore left under the rule of a local
+        dynast, Tarcondimotus
+      supports: [from, ruler]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were Bocchus the king of
+        Libya, Tarcondemus the king of Upper Cilicia
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '50.14.2'
+      quote: >-
+        he not only gained nothing from the victory, but perished, together
+        with Tarcondimotus
+      supports: [ruler, to]
+    - source: cassius-dio
+      locator: '50.10.1'
+      quote: >-
+        Valerius Messalla, who had once been proscribed by them, became consul
+        with Caesar.
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus
+      supports: [ruler, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 445'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Philopator was not permitted to succeed to his father’s power, and the
+        kingship of this region was for a time suspended.
+      supports: [to]
     - { source: sullivan-1990 }
-    - { source: strabo, locator: '14.5.18' }
-    - { source: cassius-dio, locator: '51.2.2' }
-    - { source: magie-1950, locator: 'vol. I, 434, 445' }
+    - { source: magie-1950, locator: 'vol. I, 434' }
   confidence: probable
   review: needs-check
   note: >-
@@ -3617,6 +3781,39 @@
   from: 126 BCE
   to: 65 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        a number also of the larger towns … declared themselves independent,
+        and as a sign of their independence began a new computation of time.
+        Thus Tyre had an era dating from the year 126 B.C.
+      supports: [kind, from]
+    - source: schurer-1891
+      locator: 'p. 258'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tyre has an era beginning b.c. 126
+      supports: [from]
+    - source: strabo
+      locator: '16.2.23'
+      quote: >-
+        Their independence was secured to them at a small expense to
+        themselves, not only by the kings of Syria, but also by the Romans, who
+        confirmed what the former had conceded.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        the Romans, without fighting, came into possession of Cilicia and both
+        inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [to]
     - { source: cng-tyre-shekel }
     - { source: schurer-vermes-ii }
     - { source: josephus-aj, locator: '15.95' }
@@ -3635,9 +3832,41 @@
   from: 111 BCE
   to: 65 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        a number also of the larger towns … declared themselves independent,
+        and as a sign of their independence began a new computation of time.
+        Thus Tyre had an era dating from the year 126 B.C.; Sidon a similar one
+        from the year 111
+      supports: [kind, from]
+    - source: schurer-1891
+      locator: 'p. 258'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Tyre has an era beginning b.c. 126, Sidon one beginning b.c. Ill
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        excepting Tyre and Sidon, which he knew to have been free cities from
+        their ancestors
+      supports: [kind]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [to]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        the Romans, without fighting, came into possession of Cilicia and both
+        inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [to]
     - { source: livius-sidon }
     - { source: schurer-vermes-ii }
-    - { source: josephus-aj, locator: '15.95' }
   confidence: probable
   review: needs-check
   note: As tyre; Sidon's era of freedom begins in 111.
@@ -3650,7 +3879,31 @@
   to: 95 BCE
   ruler: The line of Zariadris, to Artanes
   sources:
-    - { source: strabo, locator: '11.14.15' }
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        the country was divided into two parts by Artaxias and Zariadris, the
+        generals of Antiochus the Great, who made war against the Romans; and
+        these generals ruled the country, since it was turned over to them by
+        the king; but when the king was defeated, they joined the Romans and
+        were ranked as autonomous, with the title of king.
+      supports: [kind, from]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        the Sophenian Artanes, who held the southern parts and those that lay
+        more to the west than these, was a descendant of Zariadris. But he was
+        overcome by Tigranes, who established himself as lord of all.
+      supports: [kind, ruler, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Having ascended the throne of Armenia in 95 b.c. at the age of about
+        forty-five, he entered almost at once upon an ambitious career of
+        conquest. After seizing the district of Sophene on the eastern bank of
+        the Euphrates, he had invaded Cappadocia
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: probable
   review: needs-check

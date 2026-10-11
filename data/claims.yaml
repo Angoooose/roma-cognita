@@ -20343,10 +20343,39 @@
   from: before 133 BCE
   to: 66 BCE
   sources:
-    - { source: cassius-dio, locator: '36.54, 37.1' }
+    - source: plutarch
+      locator: 'Pompey 34.5'
+      quote: >-
+        For the Iberians had not been subject either to the Medes or the
+        Persians, and they escaped the Macedonian dominion also
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '11.14.5'
+      quote: >-
+        Artaxias and Zariadris, who formerly were generals of Antiochus the
+        Great, but later, after his defeat, reigned as kings … by cutting off
+        … the country along the side of Mt. Paryadres and Chorsene and
+        Gogarene, which last is on the far side of the Cyrus River, from that
+        of the Iberians
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '37.1.1–2'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta
+        and Lucius Torquatus, Pompey engaged in warfare with both the Albanians
+        and the Iberians. … and Artoces, their king, fearing that Pompey would
+        direct his course against him
+      supports: [polity, relation, to]
     - { source: strabo, locator: '11.3.1–6' }
   confidence: probable
   review: draft
+  note: >-
+    In force in 133 by two passages that bracket it: the Iberians were a
+    people with land of their own when the Armenian kings cut Gogarene from
+    it after Antiochus III's defeat (Strabo 11.14.5), and Plutarch has them
+    never subject to Medes, Persians or Macedonians down to Pompey (Pompey
+    34.5). Their king Artoces fought Pompey in the consulship of Cotta and
+    Torquatus (65), when the allied row begins (Dio 37.1.1–2).
 
 - atom: albania
   polity: albania
@@ -20354,29 +20383,121 @@
   from: before 133 BCE
   to: 66 BCE
   sources:
-    - { source: cassius-dio, locator: '36.54' }
+    - source: pliny-nh
+      locator: '8.61.2'
+      quote: >-
+        When Alexander the Great was on his way to India, the king of Albania
+        had presented him with one dog of unusually large size
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '36.54.1'
+      quote: >-
+        Oroeses, king of the Albanians dwelling beyond the Cyrnus, made an
+        expedition against them just at the time of the Saturnalia. He was
+        impelled partly by the desire to do a favour to Tigranes the younger
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta
+        and Lucius Torquatus, Pompey engaged in warfare with both the Albanians
+        and the Iberians.
+      supports: [to]
+    - source: strabo
+      locator: '11.14.5'
+      quote: >-
+        jointly enlarged their kingdoms by cutting off for themselves parts of
+        the surrounding nations, — I mean by cutting off Caspiane and Phaunitis
+        and Basoropeda from the country of the Medes
+      supports: []
     - { source: strabo, locator: '11.4.1–2' }
   confidence: probable
   review: draft
+  note: >-
+    In force in 133 by two passages that bracket it: a king of Albania sent
+    Alexander a hound (Pliny NH 8.149, at ToposText's 8.61), and its king
+    Oroeses attacked Pompey's winter quarters at the Saturnalia of 66/65 (Dio
+    36.54.1). Nothing between records a change: the Armenian kings who
+    enlarged their realm after Antiochus III's defeat took land from the
+    Medes and the Iberians, not from the Albanians (Strabo 11.14.5). Pompey's
+    war with them fell in the consulship of Cotta and Torquatus (65), when the
+    allied row begins (Dio 37.1.1).
 
 - atom: colchis
   polity: pontus-regnum
   relation: allied
-  from: { earliest: 113 BCE, latest: 90 BCE }
+  from: { earliest: 120 BCE, latest: 89 BCE }
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.28, 11.2.18' }
-    - { source: appian, locator: 'Mithr. 15' }
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        But when Mithridates Eupator had increased in power, he established
+        himself as master, not only of Colchis, but also of all these places
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 112'
+      quote: >-
+        He lived sixty-eight or sixty-nine years, and of these he reigned
+        fifty-seven, for the kingdom came to him when he was an orphan.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        Mithridates is ruling his ancestral domain, which is 2000 stades long,
+        and that he has acquired many neighboring nations, the Colchians, a
+        very warlike people
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Mithridates, who is your friend and ally, calls upon you as friends and
+        allies (for so the treaty reads)
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation, to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        In Bithynia Nicomedes was restored to the throne and Ariobarzanes in the
+        kingdom of Cappadocia. … Consul Gnaeus Pompeius defeated the Marsians
+      supports: [to]
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        he would always send one of his friends as sub-governor or
+        administrator of the country
+      supports: [polity]
   confidence: uncertain
   review: needs-check
   note: >-
     Mithridates "established himself as master, not only of Colchis, but also"
-    of Lesser Armenia (Strabo 12.3.28); dated with Lesser Armenia
-    (armenia-minor), between his sole rule and the war with Rome, when the
+    of Lesser Armenia (Strabo 12.3.28); dated, like Lesser Armenia
+    (armenia-minor), between his rule and the war with Rome, when the
     relation is Pontus' alliance with Rome. Before, under its own kings, "the
     country being divided into 'sceptuchies'" (11.2.18), it is unclaimed; once
     it was his, Mithridates "would always send one of his friends as
-    sub-governor or administrator of the country" (11.2.18).
+    sub-governor or administrator of the country" (11.2.18). His envoy
+    Pelopidas counted the Colchians among his conquests in the embassy that
+    followed Nicomedes' raid (App. Mithr. 12–15), while the alliance was
+    "still in force"; Nicomedes had been restored in the year of Pompeius'
+    consulship, 89 (Livy Per. 74), which is where the row ends.
+    The start is a range: no earlier than Eupator's accession, 57 years
+    before his death in Cicero and Antonius' consulship (App. Mithr. 112; Dio
+    37.10.4), so 120; no later than that embassy of 89. Until October 2026 it
+    read 113–90: 113 is a modern reckoning of his sole rule that no readable
+    text states, and no text has Colchis his by 90.
 
 - atom: colchis
   polity: pontus-regnum
@@ -20384,12 +20505,51 @@
   from: 88 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 64, 101' }
+    - source: justin
+      locator: '38.7'
+      quote: >-
+        he alone, of all kings, possessed not only his father's dominions, but
+        foreign kingdoms, acquired by inheritance through his liberality,
+        namely, Colchis, Paphlagonia, and the Bosporus
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        Mithridates, after his return to Pontus, went to war with the Colchians
+        and the tribes around the Cimmerian Bosporus who had revolted from him.
+        The Colchians asked him to give them his son, Mithridates, as their
+        ruler, and when he did so they at once returned to their allegiance.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 101'
+      quote: >-
+        Mithridates wintered at Dioscurias in Colchis
+      supports: [polity, to]
+    - source: cassius-dio
+      locator: '36.50.1–37.1.1'
+      quote: >-
+        Failing, therefore, of the expected refuge, he turned aside into
+        Colchis … The year following these exploits, in the consulship of
+        Lucius Cotta and Lucius Torquatus
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    The Colchians rose c. 84–83 and asked for Mithridates' son as their king,
+    Mithridates counted Colchis among his kingdoms when he went to war (Justin
+    38.7), which Rome declared in Sulla's consulship, 88 (App. Mithr. 22). The
+    Colchians rose c. 84–83 and asked for Mithridates' son as their king,
     whom the king then put to death (App. Mithr. 64); a revolt, not drawn.
+    After his defeat in 66 the king fled into Colchis and wintered at
+    Dioscurias (Dio 36.50.1; App. Mithr. 101), the year before Cotta and
+    Torquatus' consulship (Dio 37.1.1); from there he went on to the
+    Bosporus, and Pompey came down the Phasis in 65.
 
 - atom: parthia
   polity: parthia
@@ -20397,12 +20557,55 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: justin, locator: '38.10, 42.1–42.4' }
+    - source: justin
+      locator: '41.1'
+      quote: >-
+        THE Parthians, in whose hands the empire of the east now is, having
+        divided the world, as it were, with the Romans
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria.
+      supports: [polity, relation, from]
+    - source: justin
+      locator: '38.10'
+      quote: >-
+        Antiochus, having heard of their designs, and thinking it proper to be
+        first in the field, led forth an army … against the Parthians
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.23.3–5'
+      quote: >-
+        Orodes, the Parthian king, had succumbed to age and to grief for
+        Pacorus as well, but before he died had delivered the government to
+        Phraates … This happened in the consulship of Agrippa and Gallus.
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '54.7.4–8.1'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia … Meanwhile Phraates, fearing that
+        Augustus would lead an expedition against him because he had not yet
+        performed any of his engagements, sent back to him the standards and all
+        the captives
+      supports: [polity, relation, to]
+    - { source: justin, locator: '42.1–42.4' }
     - { source: debevoise-1938 }
     - { source: sherwin-white-1984 }
   confidence: certain
   review: draft
   note: >-
+    In force in 133 and after 27 by passages that bracket each end: the
+    Parthians held Demetrius II captive through Antiochus VII's reign,
+    138–128 (Schürer p. 177), and Antiochus then marched against them (Justin
+    38.10); Phraates had the kingdom in the consulship of Agrippa and Gallus
+    (37, Dio 49.23.3–5) and was still king, and no subject of Rome's, when he
+    sent back the standards in the year of Apuleius and Silius (20, Dio
+    54.7.4–8.1).
     Not drawn inside the atom: Antiochus VII's recovery of Babylonia in 130–129,
     when "nothing was left to the Parthians but their own country" (Justin
     38.10), Characene's independence under Hyspaosines, and
