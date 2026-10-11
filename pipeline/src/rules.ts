@@ -23,14 +23,16 @@ import {
   type Endpoint,
   type Interval,
   type Polity,
+  type SourceRef,
 } from '@roma-cognita/schema'
 import { contains as geometryContains, overlapArea, ringProblems } from './geo.ts'
 import type { Dataset, Issue } from './load.ts'
-import { passageUrl } from './passages/passage.ts'
+import { namesSeveral, passageUrl } from './passages/passage.ts'
 import { WORKS } from './passages/works.ts'
+import { checkQuote } from './quotes.ts'
 
 type Dated = { from: Endpoint; to: Endpoint }
-type Sourced = { sources: { source: string; locator?: string }[] }
+type Sourced = { sources: SourceRef[] }
 type Reviewed = { review: string; confidence: string; note?: string }
 
 const span = (r: Dated) => `${r.from.text} – ${r.to.text}`
@@ -108,6 +110,8 @@ export function checkDataset(ds: Dataset): Issue[] {
     ...ds.features,
     ...ds.names,
   ]
+  const names = new Set<object>(ds.names)
+  const quoted = new Set<SourceRef>()
   for (const r of sourced) {
     // The schema requires at least one source; this catches records built in
     // code (fixtures, migrations) that bypassed it.
@@ -115,6 +119,22 @@ export function checkDataset(ds: Dataset): Issue[] {
       error('no-source', r, 'a historical record needs at least one source')
     for (const s of r.sources) {
       cited.add(s.source)
+      // A name's citations are usually its record's, inherited: checked there.
+      for (const f of names.has(r) ? [] : (s.supports ?? []))
+        if (!hasField(r, f))
+          error('supports-field', r, `${s.source} supports "${f}", which the record doesn't have`)
+      if (s.quote && !quoted.has(s)) {
+        quoted.add(s)
+        if (s.locator && WORKS[s.source] && namesSeveral(s.locator))
+          error('one-passage', r, `${s.source} ${s.locator}: a quoted citation names one passage; cite the source once for each`)
+        else if (!s.locator && WORKS[s.source] && !s.url)
+          error('quote-locator', r, `${s.source}: a quote needs the locator of the passage it is from`)
+        else {
+          const q = checkQuote(s, sources.get(s.source))
+          if (q.status === 'not-found')
+            error('quote-not-found', r, `${s.source} ${s.locator ?? ''}: the quote isn't in ${q.in}`)
+        }
+      }
       if (!sources.has(s.source))
         error('missing-source', r, `cites unknown source "${s.source}"`)
       // A text we can link into, cited somewhere its page has no place for: a typo,
@@ -518,6 +538,84 @@ export function checkDataset(ds: Dataset): Issue[] {
   )
 
   return issues
+}
+
+// --- evidence ------------------------------------------------------------------
+
+/** Fields that only describe the record itself, which no passage is cited for. */
+const OWN_FIELDS = new Set(['id', 'sources', 'confidence', 'review', 'note', 'names'])
+
+/** Whether a record has this field, filled in: a citation can only support what it says. */
+function hasField(r: object, f: string): boolean {
+  const v = (r as Record<string, unknown>)[f]
+  return !OWN_FIELDS.has(f) && v !== undefined && !(Array.isArray(v) && !v.length)
+}
+
+/**
+ * The fields of each kind of record that say something happened, which the
+ * research rule asks a quote for (research/README.md). Where a record leaves one
+ * out, it isn't asked for.
+ */
+type RecordKind =
+  | 'atoms' | 'polities' | 'claims' | 'relations' | 'seats' | 'places'
+  | 'routes' | 'roadCorrections' | 'landscapeChanges' | 'features'
+
+const STATED: Record<RecordKind, string[]> = {
+  atoms: ['construction'],
+  polities: ['kind', 'from', 'to', 'ruler'],
+  claims: ['polity', 'relation', 'from', 'to'],
+  relations: ['type', 'of', 'from', 'to'],
+  seats: ['place', 'from', 'to'],
+  places: ['location', 'from', 'to', 'status', 'condition'],
+  routes: ['from', 'to'],
+  roadCorrections: ['from', 'to'],
+  landscapeChanges: ['op', 'from', 'to'],
+  features: ['from', 'to'],
+}
+
+export interface EvidenceReport {
+  /** Every stated field has a quote, found in its text, that supports it. */
+  backed: number
+  /** Some do. */
+  partly: number
+  /** None do: no quoted citation yet. */
+  unresearched: number
+  /** Cited only to datasets, which back geometry and positions, not events. */
+  datasets: number
+  quotes: { found: number; unread: number }
+}
+
+export function evidence(ds: Dataset): EvidenceReport {
+  const byId = new Map(ds.sources.map((s) => [s.id, s]))
+  const out: EvidenceReport = {
+    backed: 0, partly: 0, unresearched: 0, datasets: 0, quotes: { found: 0, unread: 0 },
+  }
+  const counted = new Set<SourceRef>()
+  for (const [kind, fields] of Object.entries(STATED) as [RecordKind, string[]][]) {
+    for (const r of ds[kind] as (object & Sourced)[]) {
+      if (r.sources.every((s) => byId.get(s.source)?.kind === 'dataset')) {
+        out.datasets++
+        continue
+      }
+      const backed = new Set<string>()
+      for (const s of r.sources) {
+        if (!s.quote) continue
+        const q = checkQuote(s, byId.get(s.source))
+        if (!counted.has(s)) {
+          counted.add(s)
+          if (q.status === 'found') out.quotes.found++
+          if (q.status === 'unread') out.quotes.unread++
+        }
+        if (q.status === 'found') for (const f of s.supports ?? []) backed.add(f)
+      }
+      const asked = fields.filter((f) => hasField(r, f))
+      const got = asked.filter((f) => backed.has(f)).length
+      if (got && got === asked.length) out.backed++
+      else if (got) out.partly++
+      else out.unresearched++
+    }
+  }
+  return out
 }
 
 // --- the doubt report ----------------------------------------------------------

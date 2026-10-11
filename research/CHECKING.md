@@ -33,16 +33,15 @@ independent, so:
 
 ## For each record
 
-- Is every historical field backed by at least one **yes**? A field with none is
-  unbacked unless the record's `note` says it is a reconstruction (you may read
-  the note for this, after judging).
+- Is every historical field backed by at least one **yes**? A field with none
+  is unbacked, whatever the note says.
 
 ## What to write
 
 Don't edit the record. Add an entry to `data/proposed-corrections.yaml` for
 anything that isn't a clean **yes**: a quote not found, a passage that is
-**silent** or **no** on a field it supposedly supports, a field left unbacked
-without a reason. Use the format in the method, with `found by` naming yourself
-and `field` naming what fails.
+**silent** or **no** on a field it supposedly supports, a field left unbacked.
+Use the format in the method, with `found by` naming yourself and `field`
+naming what fails.
 
 The project's owner decides each entry.

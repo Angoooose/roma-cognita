@@ -16,4 +16,13 @@ Where open texts can be read, and what to watch for in each. Started October
 | Blocked | PHI Greek Inscriptions, JSTOR, OAPEN, HathiTrust full text, Qatar Digital Library, Chiron (DAI). |
 | Not open | Society for Libyan Studies e-books (form), Cambridge Core unless marked open access. |
 
-PDFs need converting to text before searching (`pypdf`, `pdftotext`).
+Any page or PDF that isn't an ancient work we link into: read it with
+
+```bash
+npm run quotes:fetch -w pipeline -- <url>
+```
+
+which prints the text exactly as the validator will search it (PDFs included),
+so a quote copied from it will match. A table's cells may come out in a
+different order than they look: quote one cell at a time, or cut between them
+with `…`.

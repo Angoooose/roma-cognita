@@ -50,6 +50,9 @@ sources:
   `relation`, `from`, `to`, and so on. Only the fields it actually states, not
   the ones it is consistent with. `supports: []` means cited for context (a
   revolt the map does not draw, say).
+- **`url`** is the page you read the quote on, when it isn't the passage the
+  locator already links to: a scan's full text on archive.org (the `_djvu.txt`
+  file, not the book's landing page), an article's PDF, a page on another site.
 
 The historical fields are the ones that say something happened: who held what,
 in what relation, from when, to when, where. Ids, display names and styling are
@@ -89,13 +92,16 @@ in 133 (see data/README.md). Back it with a passage showing it in force at or
 near 133, not with its origin. Dio 53.12.4–5, Augustus' division of the
 provinces, backs "in force at 27" for every province that survived.
 
-**Some years are reconstructions.** "Province from 146", a client king's first
-year, a frontier's date: often no text states them. They are scholars'
-inferences, usually from coins or inscriptions. Don't force a quote onto one.
-Leave the field without a supporting quote, cite the modern authority, and say
-in `note` what the year rests on. Expect conventional dates to be contradicted
+**A year no readable text states is not kept.** "Province from 146", a client
+king's first year, a frontier's date: these are often scholars' inferences,
+from coins or inscriptions. A scholar who states one in an open text can be
+quoted for it. If no text you can read states it, a closed book doesn't save
+it: change the field to what readable texts do support, an open end
+(`from: before 51 BCE`, the first year it is attested) or a range, and say in
+`note` what it was and why it changed. This narrows the record to its
+evidence; it isn't a disagreement. Expect conventional dates to be contradicted
 by the texts (Sicily "from 241", Macedonia "from 146"); when they are, that is a
-correction (below), not something to explain away.
+disagreement (below), not something to explain away.
 
 ## Disagreements
 
@@ -144,6 +150,15 @@ starts from it.
 ## When you finish
 
 1. Every quoted citation has one passage, a quote and `supports`.
-2. Every historical field is backed, or its `note` says what it rests on.
+2. Every historical field is backed by a quote, or narrowed to what is.
 3. Every disagreement is in `data/proposed-corrections.yaml`.
-4. `npm run data:validate` passes.
+4. The texts are downloaded and the quotes found in them:
+
+   ```bash
+   npm run passages:fetch -w pipeline   # the ancient works we link into
+   npm run quotes:fetch -w pipeline     # every other text a quote cites by url
+   npm run data:validate                # fails on a quote not in its text
+   ```
+
+   The validator's `evidence:` line counts the records backed by quotes. A quote
+   whose text isn't downloaded is listed under NOT CHECKED, not passed.

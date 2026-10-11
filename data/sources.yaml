@@ -13,6 +13,11 @@
   citation: >-
     T. R. S. Broughton, The Magistrates of the Roman Republic, 3 vols (New York:
     American Philological Association, 1951–1986)
+  url: https://archive.org/details/broughton-magistrates-roman-republic
+  note: >-
+    A scan on archive.org, readable without borrowing. Quote from its full text,
+    https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt,
+    given as the citation's url.
 
 - id: cah-ix
   kind: modern
@@ -67,6 +72,12 @@
 - id: magie-1950
   kind: modern
   citation: D. Magie, Roman Rule in Asia Minor to the End of the Third Century after Christ, 2 vols (Princeton, 1950)
+  url: https://archive.org/details/RRAM01Magie1950
+  note: >-
+    Scans on archive.org, readable without borrowing. Quote from the full text of
+    the volume cited, given as the citation's url: vol. I
+    https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt,
+    vol. II https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt.
 
 - id: mitchell-1993
   kind: modern
@@ -872,6 +883,7 @@
   citation: >-
     UN-ESCWA and BGR, Inventory of Shared Water Resources in Western Asia
     (Beirut, 2013), chapter on the Tigris basin
+  url: https://waterinventory.org/sites/waterinventory.org/files/chapters/Chapter-03-Tigris_River-Basin-web_0.pdf
   note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
     into the Tharthar depression from 1956.
 

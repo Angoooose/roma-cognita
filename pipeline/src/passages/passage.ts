@@ -86,6 +86,11 @@ function load() {
   return index
 }
 
+/** A page's address and the references it has anchors for, from passages.json. */
+export function pageIndex(key: string) {
+  return load().get(key)
+}
+
 /** The anchor on a page for a reference, by the rules at the top of this file and works.ts. */
 export function findAnchor(
   refs: [Ref, string, string][],
@@ -114,7 +119,8 @@ export function findAnchor(
   return before
 }
 
-function work(
+/** The page a citation's locator falls on (its key in the anchor index) and the reference it starts at. */
+export function work(
   source: string,
   locator?: string,
 ): { w: Work; key: string; ref?: string } | undefined {
@@ -128,6 +134,33 @@ function work(
   return read?.part
     ? { w: e.parts[read.part], key: `${source} ${read.part}`, ref: read.ref }
     : undefined
+}
+
+/**
+ * The last reference a locator's first range reaches: "42.35.5–6" ends at 42.35.6,
+ * "Mithr. 17–21" at 21, "14.5.2–14.6.1" at 14.6.1, a single reference at itself.
+ */
+export function rangeEnd(locator: string, start: string): string {
+  const m = /[–-]\s*(\d+[a-z]?(?:\.\d+[a-z]?)*)/.exec(
+    locator.split(/[,;]/)[0].replace(/\(.*$/, ''),
+  )
+  if (!m) return start
+  const head = start.split('.')
+  const tail = m[1].split('.')
+  return [...head.slice(0, Math.max(0, head.length - tail.length)), ...tail].join('.')
+}
+
+/**
+ * Whether a locator names more than one passage: "Mithr. 64, 101", "13.273; 14.18",
+ * "1.5 and 1.53". A range ("42.35.5–6") is one passage; a note in brackets is not
+ * another.
+ */
+export function namesSeveral(locator: string): boolean {
+  const pieces = locator
+    .replace(/\([^)]*\)/g, '')
+    .split(/[,;]|\band\b/)
+    .filter((p) => /\d/.test(p))
+  return pieces.length > 1
 }
 
 /** The page for a work as a whole, when it has one page (Appian and Plutarch have many). */

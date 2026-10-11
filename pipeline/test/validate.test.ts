@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { stringify } from 'yaml'
 import { DATA_DIR, loadDataset, readDataset } from '../src/load.ts'
-import { checkDataset, doubts } from '../src/rules.ts'
+import { checkDataset, doubts, evidence } from '../src/rules.ts'
 import { validate } from '../src/validate.ts'
 
 /** A counter-clockwise square: a valid RFC 7946 exterior. */
@@ -262,6 +262,56 @@ describe('sources', () => {
       f.atoms[0].sources = [{ source: 'ne' }]
     })
     expect(errors.map((e) => e.message).join()).toMatch(/licence/)
+  })
+})
+
+describe('quoted citations', () => {
+  const strabo = { id: 'strabo', kind: 'ancient', citation: 'Strabo, Geography' }
+
+  it('name one passage each', () => {
+    const { errors } = run((f) => {
+      f.sources.push(strabo)
+      f.claims[0].sources = [{ source: 'strabo', locator: '16.2.10, 16.2.16', quote: 'Apameia' }]
+    })
+    expect(rules(errors)).toContain('one-passage')
+  })
+
+  it('need a locator in a text we link into', () => {
+    const { errors } = run((f) => {
+      f.sources.push(strabo)
+      f.claims[0].sources = [{ source: 'strabo', quote: 'Apameia' }]
+    })
+    expect(rules(errors)).toContain('quote-locator')
+  })
+
+  it('support only fields the record has', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'held', supports: ['relation', 'ruler'] }]
+    })
+    expect(errors.filter((e) => e.rule === 'supports-field')).toHaveLength(1)
+  })
+
+  it('must have a quote to support anything', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', supports: ['relation'] }]
+    })
+    expect(rules(errors)).toContain('schema')
+  })
+
+  it('may be cited for context, supporting nothing', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'a revolt', supports: [] }]
+    })
+    expect(errors).toEqual([])
+  })
+
+  it('back nothing until their text is read', () => {
+    const { dataset } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'held', supports: ['relation'] }]
+    })
+    const e = evidence(dataset)
+    expect(e.backed + e.partly).toBe(0)
+    expect(e.quotes).toEqual({ found: 0, unread: 1 })
   })
 })
 

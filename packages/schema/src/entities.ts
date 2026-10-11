@@ -27,6 +27,8 @@ export const SourceSchema = z
     kind: z.enum(['ancient', 'modern', 'dataset']),
     citation: z.string().min(1),
     url: z.url().optional(),
+    /** The text quotes are copied from: "Cary's Loeb translation, on ToposText". */
+    edition: z.string().min(1).optional(),
     /** Required for datasets: the attribution screen and any re-licensing build are generated from it. */
     licence: z.string().min(1).optional(),
     /**
