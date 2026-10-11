@@ -18036,7 +18036,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 101 BCE
+  to: 105 BCE
   sources:
     - source: josephus-aj
       locator: '13.235'
@@ -18061,11 +18061,17 @@
         again ruler of the country. … He began these on the east of the
         Jordan, for he took Gadara
       supports: [to]
-    - source: bennett-ptolemies
-      locator: 'Ptolemy IX, n. 14'
-      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
       quote: >-
-        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+        Alexander Jannuus, ...... 104-78.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
       supports: [to]
   confidence: uncertain
   review: needs-check
@@ -18074,13 +18080,18 @@
     his son Theodorus the stronghold of Amathus (13.356, where the
     translation has "Areathus"). Who held the Jewish villages of Peraea
     before Jannaeus is not recorded, and no readable text names the kings
-    here: the polity is unbacked. Jannaeus took Amathus once Cleopatra had
-    left the country after the war of 103–101 (Schürer 1891, 297).
+    here: the polity is unbacked. Jannaeus took Gadara and Amathus after
+    Ptolemy Lathyrus withdrew (AJ 13.356; Schürer 1891, 297) and before he
+    took Gaza (96, Schürer 298), in a reign that began in 104 (Schürer 273),
+    so the year is somewhere in 104–96. Until the checking of October 2026
+    the end was 101, from "the war of 103–101" in Van't Dack's title as
+    Bennett cites it, which dates nothing here; it is now the year before
+    the earliest year, 104, as with the neighbouring rows.
 
 - atom: judaea-peraea
   polity: judaea
   relation: independent
-  from: c. 100 BCE
+  from: 104 BCE
   to: 64 BCE
   sources:
     - source: josephus-aj
@@ -18105,11 +18116,17 @@
         again ruler of the country. … He began these on the east of the
         Jordan, for he took Gadara
       supports: [polity, from]
-    - source: bennett-ptolemies
-      locator: 'Ptolemy IX, n. 14'
-      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
       quote: >-
-        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+        Alexander Jannuus, ...... 104-78.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
       supports: [from]
     - source: schurer-1891
       locator: 'pp. 282–283'
@@ -18138,7 +18155,13 @@
     strong fortress belonging to the inhabitants above Jordan", after Ptolemy
     Lathyrus' war (AJ 13.356), with Gadara, and demolished it later (13.374).
     Theodorus beat him once (13.356); the row runs from the first taking.
-    The war is dated 103–101 (Van't Dack, cited by Bennett).
+    Ptolemy's withdrawal comes after Alexander's accession in 104 (Schürer
+    273) and before the fall of Gaza in 96 (Schürer 298), which Josephus puts
+    after Gadara and Amathus, so the year is somewhere in 104–96; drawn from
+    104, the earliest, so that no year is left blank after the Seleucid row.
+    Until the checking of October 2026 the start was c. 100, from "the war of
+    103–101" in Van't Dack's title as Bennett cites it, which dates nothing
+    here.
 
 - atom: judaea-peraea
   polity: judaea
