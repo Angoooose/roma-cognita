@@ -535,11 +535,41 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        When the Servile War in Sicily could not be suppressed by the praetors,
+        consul Gaius Fulvius was sent.
+      supports: [polity, relation, from]
+    - source: cicero-verr
+      locator: '2.2.2'
+      quote: >-
+        of all foreign nations Sicily was the first who joined herself to the
+        friendship and alliance of the Roman people. She was the first to be
+        called a province
+      supports: [polity, relation]
+    - source: velleius
+      locator: '2.38.2'
+      quote: >-
+        it was only after the capture of Syracuse, fifty years later, that it
+        was converted into a province by Marcellus Claudius
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts, Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with
+        Pontus which adjoined it, Sardinia and Baetica were held to belong to
+        the people and the senate
+      supports: [polity, relation, to]
     - { source: broughton-mrr }
   confidence: certain
   review: draft
   note: >-
-    Not "from 241": the atom is the whole island, and Hiero's Syracuse was a
+    In force in 133: its praetors could not put down the slave war, and the
+    consul C. Fulvius (134) was sent (Livy Per. 56); Augustus' division of 27
+    gives Sicily to the people (Dio 53.12.4). Not "from 241": the atom is the
+    whole island, and Hiero's Syracuse was a
     kingdom allied to Rome until 212/211. The polity carries the 241 date; the
     ground's start is left open at the window's edge. The slave kingdoms of
     135–132 and 104–101 held much of the interior but not the province's
@@ -566,9 +596,35 @@
   relation: province
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 115 B.C., p. 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus held command in Sardinia and Corsica (see 111, Promagistrates
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '3.80'
+      quote: >-
+        It contains thirty-two states, and two colonies, that of Mariana,
+        founded by C. Marius, and that of Aleria, founded by the Dictator Sulla.
+      supports: []
+    - source: strabo
+      locator: '5.2.7'
+      quote: >-
+        Cyrnus is called by the Romans Corsica … Whenever any Roman general
+        invades the country, and, penetrating into the wilds, seizes a vast
+        number of slaves
+      supports: []
   confidence: certain
   review: draft
+  note: >-
+    Held with Sardinia by M. Metellus, consul in 115 (MRR), and settled with
+    colonies by Marius and Sulla (Pliny 3.80). No readable text yet shows the
+    island in 133 or in 27: Dio's list of 27 names Sardinia, not Corsica
+    (53.12.4), and Strabo's Roman generals raiding it are undated. Its joint
+    province with Sardinia is under discussion and the dates are left as they
+    are until that is settled.
 
 # --- the West ------------------------------------------------------------------
 
@@ -577,12 +633,41 @@
   relation: province
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 134 B.C., p. 490'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        given the command in Hither Spain by special vote
+      supports: [polity]
+    - source: broughton-mrr
+      locator: 'vol. I, 133 B.C., p. 494'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Destroyed Numantia and sold the survivors into slavery, and with the aid
+        of the usual senatorial commission completed arrangements in his
+        province
+      supports: [relation, from]
+    - source: appian
+      locator: 'Hisp. 99'
+      quote: >-
+        The Romans, according to their custom, sent ten senators to the newly
+        acquired provinces of Spain, which Scipio, or Brutus before him, had
+        received in surrender, or had taken by force
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [polity, relation, to]
   confidence: certain
   review: draft
   note: >-
-    Not "from 197": the province's first holdings were the coast, and the
-    atom's Ebro valley, Carpetania and Oretania came under Rome over the
+    Scipio's province in 134–133, Hither Spain (MRR), where he took Numantia in
+    133; Tarraco's district was Caesar's in 27 (Dio 53.12.5, who warns that his
+    list uses later names, 53.12.8). Not "from 197": the province's first
+    holdings were the coast, and the atom's Ebro valley, Carpetania and Oretania came under Rome over the
     century of wars that followed (decision 2). In force by 133.
 
 - atom: meseta-arevaci
@@ -642,9 +727,42 @@
   relation: province
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        In Hispania Ulterior, Decimus Junius Brutus successfully fought against
+        the Gallaecians.
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Hisp. 99'
+      quote: >-
+        The Romans, according to their custom, sent ten senators to the newly
+        acquired provinces of Spain, which Scipio, or Brutus before him, had
+        received in surrender, or had taken by force
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [relation, to]
+    - { source: broughton-mrr }
   confidence: certain
   review: draft
+  note: >-
+    Brutus' province in the 130s (Livy Per. 56), one of the provinces of Spain
+    to which ten senators came after Numantia fell in 133 (App. Hisp. 99). In
+    27 Dio has Baetica for the people and Lusitania for Caesar (53.12.4–5),
+    which he warns are later arrangements (53.12.8): its two halves, so in
+    force at 27 either way (see the polity).
 
 # Sertorius, 80–72: a Roman commander holding Spain against Sulla's government
 # (README decision 18), so occupation over the standing provinces. Like every
@@ -1407,7 +1525,28 @@
   relation: province
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }]
+  sources:
+    - source: appian
+      locator: 'Pun. 135'
+      quote: >-
+        Upon all the rest a tribute was imposed, both a land tax and a personal
+        tax, upon men and women alike. It was decreed that a praetor should be
+        sent from Rome yearly to govern the country.
+      supports: [polity, relation, from]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        Now at the time of the war with Jugurtha the Romans were governing
+        through their officials nearly all the Punic cities, as well as the
+        territory which in their latter days had belonged to the Carthaginians.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [polity, relation, to]
+    - { source: broughton-mrr }
   confidence: certain
   review: draft
   note: >-

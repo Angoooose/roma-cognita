@@ -154,6 +154,13 @@
   polities:
     - polity: gallia-cisalpina
   sources:
+    - source: strabo
+      locator: '5.1.4'
+      quote: >-
+        The Po divides it almost through its midst, one side being denominated
+        Cispadana, and the other Transpadana. Cispadana comprehends that part
+        next the Apennines and Liguria, and Transpadana the remainder.
+      supports: [kind, polities]
     - { source: cah-ix }
   confidence: probable
   review: draft
@@ -198,7 +205,29 @@
   polities:
     - polity: sardinia-corsica
   sources:
-    - { source: broughton-mrr }
+    - source: broughton-mrr
+      locator: 'vol. I, 227 B.C., p. 229'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Praetor in Sardinia (Solin. 5.1, p. 52 M; cf. Liv. 23.24.4; Zon. 8.19).
+      supports: [kind, polities]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        Consul Lucius Aurelius subdued rebellious Sardinians.
+      supports: [kind]
+    - source: strabo
+      locator: '5.2.7'
+      quote: >-
+        The prefects sent [into Sardinia ] sometimes resist them, but at other
+        times leave them alone
+      supports: [kind]
+    - source: broughton-mrr
+      locator: 'vol. I, 115 B.C., p. 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus held command in Sardinia and Corsica (see 111, Promagistrates
+      supports: [kind, polities]
   confidence: certain
   review: draft
   note: One province with Corsica, under one governor.
@@ -208,7 +237,23 @@
   polities:
     - polity: sardinia-corsica
   sources:
-    - { source: broughton-mrr }
+    - source: broughton-mrr
+      locator: 'vol. I, 115 B.C., p. 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus held command in Sardinia and Corsica (see 111, Promagistrates
+      supports: [kind, polities]
+    - source: pliny-nh
+      locator: '3.80'
+      quote: >-
+        It contains thirty-two states, and two colonies, that of Mariana,
+        founded by C. Marius, and that of Aleria, founded by the Dictator Sulla.
+      supports: [kind]
+    - source: strabo
+      locator: '5.2.7'
+      quote: >-
+        Cyrnus is called by the Romans Corsica
+      supports: [kind]
   confidence: certain
   review: draft
   note: One province with Sardinia, under one governor.

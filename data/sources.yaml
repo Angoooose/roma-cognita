@@ -410,6 +410,21 @@
   note: >-
     Open access; read. Pompey's march through the Province in 77, Fonteius'
     wars, and a survey of opinion on when the Province was organised (39).
+    Quote from the article's PDF,
+    https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056,
+    given as the citation's url.
+
+- id: piegdon-2010
+  kind: modern
+  citation: >-
+    M. Piegdoń, "'Est enim ille flos Italiae': Northern Italy in the legal and
+    administrative structures of the Roman Republic in the 3rd–1st BC", Studia
+    Prawnoustrojowe 12 (2010) 175–188
+  url: https://ruj.uj.edu.pl/server/api/core/items/21e914ac-e90f-4017-99db-5937d25cc387
+  note: >-
+    Only the English abstract is open, in the Jagiellonian University
+    repository's record of the article (the url); the article itself was not
+    read.
 
 - id: ribera-valentia
   kind: modern
@@ -666,6 +681,26 @@
 - id: florus
   kind: ancient
   citation: Florus, Epitome of Roman History
+
+- id: solinus
+  kind: ancient
+  citation: Solinus, Collectanea rerum memorabilium
+  url: https://www.thelatinlibrary.com/solinus1.html
+  edition: Latin text on The Latin Library
+
+- id: granius-licinianus
+  kind: ancient
+  citation: >-
+    Granius Licinianus, ed. M. Flemisch, Grani Liciniani quae supersunt
+    (Leipzig: Teubner, 1904)
+  url: https://archive.org/details/granilicinianiqu00liciuoft
+  edition: >-
+    Flemisch's Teubner text, from the full text of the archive.org scan; cited by
+    its page and line
+  note: >-
+    A damaged palimpsest, and the scan's text is rough OCR: quote it exactly as
+    https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+    prints it, given as the citation's url.
 
 - id: orosius
   kind: ancient
