@@ -19531,7 +19531,7 @@
 - atom: colchis
   polity: pontus-regnum
   relation: allied
-  from: { earliest: 113 BCE, latest: 90 BCE }
+  from: { earliest: 120 BCE, latest: 89 BCE }
   to: 89 BCE
   sources:
     - source: strabo
@@ -19539,7 +19539,20 @@
       quote: >-
         But when Mithridates Eupator had increased in power, he established
         himself as master, not only of Colchis, but also of all these places
-      supports: [polity]
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 112'
+      quote: >-
+        He lived sixty-eight or sixty-nine years, and of these he reigned
+        fifty-seven, for the kingdom came to him when he was an orphan.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
     - source: appian
       locator: 'Mithr. 15'
       quote: >-
@@ -19575,8 +19588,8 @@
   review: needs-check
   note: >-
     Mithridates "established himself as master, not only of Colchis, but also"
-    of Lesser Armenia (Strabo 12.3.28); dated with Lesser Armenia
-    (armenia-minor), between his sole rule and the war with Rome, when the
+    of Lesser Armenia (Strabo 12.3.28); dated, like Lesser Armenia
+    (armenia-minor), between his rule and the war with Rome, when the
     relation is Pontus' alliance with Rome. Before, under its own kings, "the
     country being divided into 'sceptuchies'" (11.2.18), it is unclaimed; once
     it was his, Mithridates "would always send one of his friends as
@@ -19585,6 +19598,11 @@
     followed Nicomedes' raid (App. Mithr. 12–15), while the alliance was
     "still in force"; Nicomedes had been restored in the year of Pompeius'
     consulship, 89 (Livy Per. 74), which is where the row ends.
+    The start is a range: no earlier than Eupator's accession, 57 years
+    before his death in Cicero and Antonius' consulship (App. Mithr. 112; Dio
+    37.10.4), so 120; no later than that embassy of 89. Until October 2026 it
+    read 113–90: 113 is a modern reckoning of his sole rule that no readable
+    text states, and no text has Colchis his by 90.
 
 - atom: colchis
   polity: pontus-regnum
