@@ -5494,7 +5494,48 @@
     - { method: box, bbox: [12.3, 35.45, 12.95, 35.9] }
   sources:
     - { source: natural-earth }
-    - { source: cicero-verr, locator: '2.4.103' }
+    - source: pliny-nh
+      locator: '3.87'
+      quote: >-
+        Of this triangle, the promontory, which, as we have already mentioned,
+        is called Pelorus, faces Scylla and juts out towards Italy, while
+        Pachynum extends in the direction of Greece
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.92'
+      quote: >-
+        Towards Africa, its islands are Gaulos, Melita, 87 miles from Camerina,
+        and 113 from Lilybaion, Cosyra, Hieronnesos, Caene, Galata, Lopadusa,
+        Aethusa
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.92'
+      quote: >-
+        On this side of Sicily, facing the river Metaurus, at a distance of
+        nearly 25 miles from Italy, are the seven islands called the Aeolian
+      supports: [construction]
+    - source: strabo
+      locator: '6.2.11'
+      quote: >-
+        the governor of Sicily, Titus Flaminius, reported the event to the
+        Senate, and the Senate sent a deputation to offer propitiatory
+        sacrifices, both in the islet and in Liparae
+      supports: [construction]
+    - source: strabo
+      locator: '6.2.11'
+      quote: >-
+        Off Pachynus lie Melita, whence come the little dogs called Melitaean,
+        and Gaudos, both eighty-eight miles distant from the Cape. Cossura lies
+        off Lilybaion
+      supports: [construction]
+    - source: cicero-verr
+      locator: '2.4.103'
+      quote: >-
+        There is an island called Melita, O judges, separated from Sicily by a
+        sufficiently wide and perilous navigation, in which there is a town of
+        the same name, to which Verres never went, though it was for three
+        years a manufactory to him for weaving women's garments.
+      supports: [construction]
   confidence: certain
   review: draft
   note: >-

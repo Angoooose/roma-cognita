@@ -391,8 +391,56 @@
   to: 133 BCE
   ruler: Eunus, called Antiochus, c. 135–132
   sources:
+    - source: diodorus
+      locator: '34/35.2.14'
+      quote: >-
+        Then they made Eunus king, not for his valour or skill in warfare, but
+        on account of his extraordinary tricks
+      supports: [kind]
+    - source: diodorus
+      locator: '34/35.2.16'
+      quote: >-
+        At length, putting a diadem upon his head and graced with all the
+        emblems of royalty, he caused his wife, who was a Syrian from the same
+        city, to be called queen
+      supports: [kind]
+    - source: diodorus
+      locator: '34/35.2.24'
+      quote: >-
+        This Eunus king of the robbers called himself Antiochus and all his
+        followers Syrians.
+      supports: [kind, ruler]
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        When the Servile War in Sicily could not be suppressed by the praetors,
+        consul Gaius Fulvius was sent. This war was started by a Syrian slave
+        named Eunus
+      supports: [from, ruler]
+    - source: livy-per
+      locator: '58'
+      quote: >-
+        It also contains an account of actions with various outcomes against
+        the Sicilian runaway slaves.
+      supports: [from]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Publius Rupilius defeated the Sicilian runaway slaves.
+      supports: [to, ruler]
+    - source: diodorus
+      locator: '34/35.2.21'
+      quote: >-
+        He marched from there to Enna, and by a long siege reduced it to such
+        straits, that there was no hope left for anyone to escape
+      supports: [to]
+    - source: diodorus
+      locator: '34/35.2.22'
+      quote: >-
+        Finally he was thrown into prison, and there consumed by lice, and so
+        ended his days at Morgantina
+      supports: [to, ruler]
     - { source: diodorus, locator: '34/35.2.10–24, 34/35.2.43' }
-    - { source: livy-per, locator: '56, 58, 59' }
     - { source: strabo, locator: '6.2.6' }
   confidence: certain
   review: draft
@@ -413,8 +461,65 @@
   to: 101 BCE
   ruler: Salvius, called Tryphon, c. 104–c. 102; Athenion, c. 102–101
   sources:
-    - { source: diodorus, locator: '36.3–10' }
-    - { source: livy-per, locator: '69' }
+    - source: diodorus
+      locator: '36.3.2'
+      quote: >-
+        In pursuance of this order Licinius Nerva, then praetor in Sicily,
+        appointed hearings
+      supports: [from]
+    - source: diodorus
+      locator: '36.4.4'
+      quote: >-
+        They now called an assembly, and held a debate; in the first place they
+        chose a king called Salvius
+      supports: [kind, from, ruler]
+    - source: diodorus
+      locator: '36.5.2'
+      quote: >-
+        They made him king, and placed a diadem upon his head.
+      supports: [kind, ruler]
+    - source: diodorus
+      locator: '36.7.1–2'
+      quote: >-
+        He caused himself to he proclaimed king, and was given the name Tryphon
+        by the rebels. … Since he wished to take possession of Triocala, and
+        there to build a palace, he sent to Athenion, summoning him as a king
+        would summon a general.
+      supports: [kind, from, ruler]
+    - source: diodorus
+      locator: '36.8.1–2'
+      quote: >-
+        At length, Lucius Licinius Lucullus was chosen general by the senate of
+        Rome, to go against the rebels. … Tryphon released Athenion
+      supports: [from]
+    - source: diodorus
+      locator: '36.9.1'
+      quote: >-
+        Neither did Gaius Servilius, who succeeded Lucullus, do anything worth
+        remembering … In the meantime Tryphon died, and Athenion succeeded him
+        as king of the rebels.
+      supports: [ruler]
+    - source: diodorus
+      locator: '36.10.1'
+      quote: >-
+        In the following year, Gaius Marius was elected as consul at Rome for
+        the fifth time, and with him Gaius Aquilius. Aquilius was sent as
+        general against the rebels
+      supports: [to, ruler]
+    - source: diodorus
+      locator: '36.10.1'
+      quote: >-
+        Then he marched against the remainder of them, who were about ten
+        thousand; and though they did not wait for his attack, but fled to their
+        defences, yet Aquilius did not slacken his resolution in the least,
+        until he had overcome them by siege.
+      supports: [to]
+    - source: livy-per
+      locator: '69'
+      quote: >-
+        Proconsul Manius Aquilius put an end to the war against the slaves that
+        had originated in Sicily.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -427,7 +532,12 @@
     Livy's epitome puts the end in the book of 100 (Per. 69). Diodorus has the
     war last "almost four years" (36.10.3). The royal city dates from Tryphon's
     proclamation, a year or so into the rising; the last year is taken as 101,
-    the war's end, the mopping up of 100 being Rome's.
+    the war's end, the mopping up of 100 being Rome's. The years are the
+    magistrates' (DPRR): Salvius was made king while P. Licinius Nerva, praetor
+    in 104, governed Sicily (36.3.2, 36.4.4), Tryphon held Triocala before
+    Lucullus, propraetor in 103, came against him (36.8.1–2), and died under
+    Servilius, praetor in 102 (36.9.1); Aquillius was consul in 101 and
+    proconsul in 100, when Livy's epitome has him end the war (Per. 69).
 
 # --- provinces ---------------------------------------------------------------
 
@@ -2867,7 +2977,29 @@
     Aryu, from 132, and his successors; Abgar II, to 53; Ma'nu II, 52–34;
     Paqor, 34–29; Abgar III, from 29 (the Edessene list)
   sources:
-    - { source: chronicle-edessa, locator: 'year 180' }
+    - source: chronicle-edessa
+      locator: 'year 180'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        In the year 180 kings began to rule in Edessa.
+      supports: [kind, from]
+    - source: chronicle-edessa
+      locator: 'year 400'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        In the year 400 Abgar the king built a mausoleum for himself.
+      supports: [kind, to]
+    - source: cassius-dio
+      locator: '40.20.1'
+      quote: >-
+        Nevertheless, the greatest injury was done them by Abgarus of Osroene.
+      supports: [ruler, to]
+    - source: tacitus-ann
+      locator: '12.12'
+      quote: >-
+        the Arab prince Acbarus (king of Osroene) … being detained by him, day
+        after day, in the town of Edessa
+      supports: [kind, to]
     - { source: sullivan-1990 }
     - { source: segal-1970 }
   confidence: probable
@@ -2880,6 +3012,10 @@
     (not opened for this extension), whose early dates he says are to be
     treated with caution.
     Its standing with Rome after the 60s is not known (see relations.yaml).
+    Still a kingdom in 27: Abgarus of Osroene fought Crassus in 53 (Dio
+    40.20.1), Acbarus held Edessa in 49 CE (Tacitus Ann. 12.12), and the
+    Chronicle has its kings from year 180 to Abgar's mausoleum in year 400
+    (89 CE), with nothing between to suggest a break.
 
 - id: amanus
   kind: kingdom
@@ -5869,12 +6005,47 @@
   to: 130 BCE
   ruler: Aristonicus (King Eumenes), 133–130
   sources:
-    - { source: strabo, locator: '14.1.38' }
+    - source: velleius
+      locator: '2.4.1'
+      quote: >-
+        While these events were taking place in Italy King Attalus had died,
+        bequeathing Asia in his will to the Roman people … and Aristonicus,
+        falsely claiming to be a scion of the royal house, had forcibly seized
+        the province.
+      supports: []
+    - source: kallet-marx-1995
+      locator: 'p. 99'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Attalus Ill died most likely in the spring of 133
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 99'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        shortly or immediately after Attalus's death, … one Aristonicus,
+        alleging to be an illegitimate son of Eumenes II, and thus Attalus's
+        half brother, laid claim to the Pergamene throne, taking the royal name
+        Eumenes (III).
+      supports: [kind, from, ruler]
+    - source: justin
+      locator: '36.4'
+      quote: >-
+        this young man, after the death of Attalus, laid claim to the throne of
+        Asia as having been his father's. When he had fought several successful
+        battles against the provinces, which, from fear of the Romans, refused
+        to submit to him, and seemed to be established as king.
+      supports: [kind, ruler]
+    - source: strabo
+      locator: '14.1.38'
+      quote: >-
+        after the death of Attalus Philometor was caused to revolt by
+        Aristonicus, who was reputed to belong to the royal family and intended
+        to usurp the kingdom
+      supports: [kind, ruler]
     - { source: florus, locator: '1.35.4–7' }
-    - { source: justin, locator: '36.4' }
     - { source: eutropius, locator: '4.20' }
     - { source: orosius, locator: '5.10.1–5' }
-    - { source: velleius, locator: '2.4.1' }
     - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: certain
   review: draft

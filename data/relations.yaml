@@ -1821,7 +1821,12 @@
   to: after 43 BCE
   sources:
     - { source: sullivan-1990 }
-    - { source: cassius-dio, locator: '40.20.1' }
+    - source: cassius-dio
+      locator: '40.20.1'
+      quote: >-
+        Abgarus of Osroene. For he had pledged himself to peace with the
+        Romans in the time of Pompey
+      supports: [of]
   confidence: uncertain
   review: needs-check
   note: >-
