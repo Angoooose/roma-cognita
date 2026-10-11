@@ -1786,10 +1786,11 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    John Hyrcanus I, 134–104; Aristobulus I, 104–103, the first to take the
-    diadem (AJ 13.301); Alexander Jannaeus, 103–76; Salome Alexandra, 76–67;
-    Aristobulus II, 67–63; Hyrcanus II, 63–40; Herod, king from 40, in
-    Jerusalem from 37
+    John Hyrcanus I, 134–104 (or 135–105); Aristobulus I, 104–103 (or
+    105–104), the first to take the diadem (AJ 13.301); Alexander Jannaeus,
+    103–76 (or 104–78); Salome Alexandra, 76–67 (or 78–69); Aristobulus II,
+    67–63 (or 69–63); Hyrcanus II, 63–40; Herod, king from 40, in Jerusalem
+    from 37
   sources:
     - source: schurer-1891
       locator: 'p. 275'
@@ -1836,6 +1837,13 @@
         hundred and seventy-seventh Olympiad … when Quintus Hortensius and
         Quintus Metellus, who was called Metellus of Crete, were consuls at
         Rome … when presently Aristobulus began to make war against him
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The beginning of that war of the brothers, and consequently also the
+        death of Alexandra, occurred therefore in the first half of B.c. 69.
       supports: [ruler]
     - source: josephus-aj
       locator: '14.66'
@@ -1884,7 +1892,13 @@
     senate made Herod king the same year (AJ 14.381–385), and he took Jerusalem
     in 37. Cleopatra had Jericho and the coast from 36 (claims.yaml); in 30
     Octavian gave them back and added Samaria, Gadara, Hippos, Gaza, Anthedon,
-    Joppa and Strato's Tower (AJ 15.217; BJ 1.396).
+    Joppa and Strato's Tower (AJ 15.217; BJ 1.396). Josephus' two
+    chronologies of the Hasmoneans disagree: counting his reign lengths back
+    from 63 (Aristobulus II three years and three months, Alexandra nine,
+    Jannaeus twenty-seven, Aristobulus I one, Hyrcanus thirty-one) gives the
+    first dates in ruler; his consuls of 69 for the start of the brothers' war
+    (AJ 14.4), which Schürer follows, give those in brackets. The ruler line
+    read 134–104, 104–103, 103–76, 76–67 and 67–63 alone until October 2026.
 
 - id: ituraea
   kind: kingdom
