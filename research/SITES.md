@@ -15,6 +15,8 @@ Where open texts can be read, and what to watch for in each. Started October
 | DPRR (romanrepublic.ac.uk) | The website blocks bots; use the SPARQL endpoint or the local cache. Its `primaryReferences` look misaligned: don't use them to find ancient passages without checking. |
 | figshare, OJS journals | Open theses and articles download as PDFs without a gate. The figshare API (`api.figshare.com/v2/articles/<id>`) gives the PDF's `ndownloader` address. Some PDFs (apcz.umk.pl) split words at ligatures ("e ff orts") or turn small capitals into odd glyphs: quote around them. |
 | Blocked | PHI Greek Inscriptions, JSTOR, OAPEN, HathiTrust full text, Qatar Digital Library, Chiron (DAI). |
+| Bennett's Ptolemies (instonebrewer.com) | Blocks scripted downloads (403/406) at times; `quotes:fetch` sometimes gets through, and the Wayback Machine always does: `https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/<page>.htm` (the content page, not `_fr.htm`). |
+| OpenEdition Books | A browser User-Agent gets a bot challenge; `quotes:fetch`'s own gets the page. Bridoux 2020 is one page per chapter (ch. 1 `efr/31990`, ch. 3 `efr/32000`), paragraphs numbered per chapter, so a locator needs chapter and ¶; the citation's `url` is the chapter page. |
 | Not open | Society for Libyan Studies e-books (form), Cambridge Core unless marked open access. |
 
 Any page or PDF that isn't an ancient work we link into: read it with
