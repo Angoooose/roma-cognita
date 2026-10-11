@@ -7113,7 +7113,7 @@
 - atom: helvetii
   polity: helvetii
   relation: independent
-  from: before 133 BCE
+  from: before 107 BCE
   to: 59 BCE
   sources:
     - source: livy-per
@@ -7122,7 +7122,7 @@
         In the country of the Nitiobriges, consul Lucius Cassius … was
         massacred with his army by the Gallic Tigurini, a Helvetian tribe that
         had left its own country.
-      supports: [polity, relation]
+      supports: [polity, relation, from]
     - source: cicero-att
       locator: '1.19.2'
       quote: >-
@@ -7144,9 +7144,24 @@
         Rhone. The day was the 28th of March, in the consulship of Lucius Piso
         and Aulus Gabinius.
       supports: [to]
+    - source: strabo
+      locator: '7.2.2'
+      quote: >-
+        and then to the country of the Helvetii — men rich in gold but
+        peaceable; however, when the Helvetii saw that the wealth which the
+        Cimbri had got from their robberies surpassed that of their own
+        country, they, and particularly their tribes of Tigyreni and of
+        Toygeni, were so excited that they sallied forth with the Cimbri
+      supports: [polity, relation]
     - { source: caesar-bg, locator: '1.12' }
   confidence: probable
   review: draft
+  note: >-
+    First attested when their Tigurini killed the consul L. Cassius in 107
+    (Per. 65; BG 1.12), having joined the Cimbri (Strabo 7.2.2). It read
+    "before 133" until October 2026: no readable text names the Helvetii
+    before the Cimbri reached them, and the polity's note doubts that they
+    held the plateau Caesar knew so early.
 
 - atom: helvetii
   polity: helvetii
