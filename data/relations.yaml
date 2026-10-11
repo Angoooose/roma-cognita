@@ -294,7 +294,7 @@
 - polity: gallia-transalpina
   type: province-of
   of: rome
-  from: 121 BCE
+  from: { earliest: 121 BCE, latest: 120 BCE }
   to: after 27 BCE
   sources:
     - source: livy-per
@@ -304,14 +304,14 @@
         near the town of Vindalium. … Consul Quintus Fabius Maximus, grandson of
         Paulus, successfully fought against the Allobroges and Bituitus, the king
         of the Arvernians. … The surrender of the Allobroges was accepted.
-      supports: []
+      supports: [from]
     - source: broughton-mrr
       locator: 'vol. I, 120 B.C., p. 524'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Proconsul (Act. Tr.). Completed his campaign in Gaul … He built the Via
         Domitia and organized the province (see Cic. Font. 18).
-      supports: [type, of]
+      supports: [type, of, from]
     - source: broughton-mrr
       locator: 'vol. II, 76 B.C., p. 96, n. 4'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
@@ -335,6 +335,13 @@
       supports: [type, to]
   confidence: certain
   review: draft
+  note: >-
+    From the conquest, no earlier than the surrender of the Allobroges in the
+    consulship of Q. Fabius Maximus (121; Livy Per. 61), and no later than
+    Domitius' proconsulship of 120, in which Broughton has him organise the
+    province (MRR I 524). It read 121 until October 2026, a convention no
+    readable text states; whether the regular province is this old is
+    disputed (data/proposed-corrections.yaml).
 
 - polity: cilicia
   type: province-of
