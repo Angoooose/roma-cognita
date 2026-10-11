@@ -4331,9 +4331,23 @@
   kind: people
   names:
     - { text: Sequani, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 61 BCE
   to: 52 BCE
   sources:
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        In the consulship of Marcus Messalla and Marcus Piso … on another the
+        Jura range, exceeding high, lying between Sequani and the Helvetii
+      supports: [kind, from]
+    - source: caesar-bg
+      locator: '1.3'
+      quote: >-
+        Casticus, of the Sequani, son of Catamantaloedes, who had held for many
+        years the kingship of the Sequani, and had been called by the Senate
+        “the friend of the Roman people,” to seize in his own state the
+        kingship which his father had held before him
+      supports: [kind, from]
     - source: caesar-bg
       locator: '1.31'
       quote: >-
@@ -4365,6 +4379,11 @@
     - { source: fichtl-2004 }
   confidence: certain
   review: draft
+  note: >-
+    First dated in 61, when Casticus, son of the Sequani's long-reigning king,
+    is named (BG 1.2–3). It read "before 133" until the October 2026 check:
+    no text read has them in 133, though Strabo has them "for long" at
+    enmity with Rome (4.3.2), and their claim already started at 61.
 
 - id: aedui
   kind: people
