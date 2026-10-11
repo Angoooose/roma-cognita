@@ -6755,9 +6755,9 @@
 
 - atom: chersonesus
   polity: pontus-regnum
-  relation: independent
+  relation: allied
   from: c. 110 BCE
-  to: 81 BCE
+  to: 89 BCE
   sources:
     - source: strabo
       locator: '7.4.3'
@@ -6780,6 +6780,60 @@
         The net result was that Chersonese became tributary to Mithridates in
         return for effective protection against the Scythians.
       supports: [polity]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [to]
+    - { source: diophantus-decree }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The city "was forced to choose Mithridates Eupator as protector" (Strabo
+    7.4.3), and Diophantus crossed to relieve it in 110 (Minns p. 519; the
+    decree thanks him for freeing the people "from the domination of the
+    barbarians"), after which it was tributary to the king (Minns p. 520). A
+    protectorate over a city that kept its own council and magistrates, drawn
+    as the king's because Strabo has it "subject to the potentates of the
+    Bosporus" from then on. Allied, as the kingdom was, while the king's
+    alliance with Rome was "still in force" (App. Mithr. 14), until Rome
+    declared war in 88 (Mithr. 22). Until the extension to 133 BCE one row of
+    the king's ran from before 68 to 64.
+
+- atom: chersonesus
+  polity: pontus-regnum
+  relation: independent
+  from: 88 BCE
+  to: 81 BCE
+  sources:
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: minns-1913
+      locator: 'p. 521'
+      url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+      quote: >-
+        It was perhaps rather as a subject of Mithridates than as a daughter
+        state and ancient ally that Chersonese sent help to Heraclea Pontica
+      supports: [polity]
     - source: minns-1913
       locator: 'p. 587'
       url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
@@ -6788,18 +6842,12 @@
         Mithridates was free to deal with Bosporus, which he speedily
         reconquered.
       supports: [to]
-    - { source: diophantus-decree }
   confidence: uncertain
   review: needs-check
   note: >-
-    The city "was forced to choose Mithridates Eupator as protector" (Strabo
-    7.4.3), and Diophantus relieved it c. 110 (the decree, which thanks him
-    for freeing the people "from the domination of the barbarians"). A
-    protectorate over a city that kept its own council and magistrates, drawn
-    as the king's because Strabo has it "subject to the potentates of the
-    Bosporus" from then on. Nothing says it joined the Bosporan revolt of the
-    80s, so the row runs to Machares. Until the extension to 133 BCE one row
-    of the king's ran from before 68 to 64.
+    As the row before, from Rome's declaration of war in 88 (App. Mithr. 22).
+    Nothing says it joined the Bosporan revolt of the 80s, so the row runs to
+    Machares, set over the Bosporus after the peace of 81 (Minns p. 587).
 
 - atom: chersonesus
   polity: bosporus
