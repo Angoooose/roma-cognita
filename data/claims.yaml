@@ -1200,7 +1200,7 @@
 - atom: tolosates
   polity: tectosages
   relation: allied
-  from: { earliest: 121 BCE, latest: 118 BCE }
+  from: { earliest: 121 BCE, latest: 107 BCE }
   to: 107 BCE
   sources:
     - source: cassius-dio
@@ -1223,7 +1223,7 @@
       quote: >-
         In Gaul he attacked the Volcae Tectosages and seized the sacred treasure
         at Tolosa
-      supports: [polity, to]
+      supports: [polity, from, to]
     - source: strabo
       locator: '4.2.3'
       quote: >-
@@ -1243,9 +1243,12 @@
   note: >-
     "Formerly in alliance with the Romans", with a Roman garrison, until the
     revolt Caepio put down (Dio fr. 90). The alliance's start is not recorded:
-    no earlier than the war of 121, no later, on this reading, than the colony
-    of Narbo on their borders in 118 (Vell. 2.7.8). The revolt of 107 is
-    inside this row.
+    no earlier than 121, when Fabius broke the Arverni, whose authority had
+    reached the Pyrenees (Strabo 4.2.3; Livy Per. 61), and no later than the
+    revolt that ended it, before Caepio took the city in 106 (MRR). Until
+    October 2026 it read 121–118, taking the colony of Narbo on their borders
+    in 118 (Vell. 2.7.8) as its latest start; no readable text ties Narbo to
+    the Tolosates' alliance. The revolt of 107 is inside this row.
 
 - atom: tolosates
   polity: gallia-transalpina
