@@ -9905,7 +9905,7 @@
 - atom: corsica
   polity: sextus-pompeius
   relation: occupied
-  from: 40 BCE
+  from: before 40 BCE
   to: 39 BCE
   sources:
     - source: appian
@@ -9914,7 +9914,7 @@
         those of the west were deterred by Sardinia and Corsica, which the
         lieutenants of Pompeius held … an edict was published that the owners
         of slaves should pay a tax for each one
-      supports: [polity, relation]
+      supports: [polity, relation, from]
     - source: cassius-dio
       locator: '48.31.1'
       quote: >-
@@ -9923,7 +9923,19 @@
         number of taxes of all sorts which were being imposed, and in addition
         contributions assessed upon such as possessed slaves, all irritated them
         greatly
-      supports: []
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.15.1'
+      quote: >-
+        After the capture of Perusia in the consulship of Gnaeus Calvinus (who
+        was serving for the second time) and Asinius Pollio
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        These were the events of the two years; the next year, when Lucius
+        Marcius and Gaius Sabinus held the consulship
+      supports: [from]
     - source: appian
       locator: 'BC 5.72'
       quote: >-
@@ -9959,7 +9971,13 @@
     Sardinia and Corsica were held by Sextus's lieutenants before Misenum (App.
     BC 5.67), and Menodorus handed over both in 38 (5.80), the year Dio dates
     his desertion by the consuls Claudius and Norbanus (48.43.1, 48.45.5–6).
-    No source gives the year Corsica was taken; 40 follows Sardinia.
+    No source gives the year Corsica was taken. Appian first has it in
+    Sextus' hands in the famine that followed the peace of Brundisium, when
+    slave-owners were taxed (5.67); Dio puts that famine and that tax after
+    Perusia, taken in the consulship of Calvinus and Pollio, and before the
+    year of Marcius and Sabinus (48.15.1, 48.31.1, 48.34.1): 40. The start
+    read 40 BCE, after Sardinia, until October 2026; it is now open, held in
+    40 and taken no later.
 
 # Greece: the province of Achaea, attested in 27
 
