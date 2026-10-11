@@ -1815,7 +1815,7 @@
     and by 31.
 
 - polity: osroene
-  type: client-of
+  type: allied-to
   of: rome
   from: 64 BCE
   to: after 43 BCE
@@ -1826,10 +1826,13 @@
       quote: >-
         Abgarus of Osroene. For he had pledged himself to peace with the
         Romans in the time of Pompey
-      supports: [of]
+      supports: [type, of]
   confidence: uncertain
   review: needs-check
   note: >-
+    Allied, not client (it was client-of until October 2026): the one text on
+    the tie has Abgar "pledged himself to peace with the Romans", and none has
+    Rome set him up, depose him or call him subject.
     From Pompey's settlement (Afranius crossed northern Mesopotamia in 65–64):
     Dio has Abgar in treaty with Rome "in the time of Pompey" (40.20.1), and no
     earlier tie is recorded. Left open at 43 on purpose (September 2026): nothing attests Osroene's
