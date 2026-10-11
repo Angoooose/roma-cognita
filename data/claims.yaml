@@ -19434,13 +19434,31 @@
 
 - atom: atropatene
   polity: atropatene
-  relation: client
+  relation: allied
   from: 65 BCE
   to: 36 BCE
   sources:
+    - source: cassius-dio
+      locator: '49.25.2'
+      quote: >-
+        learning there that the Mede had gone far away from his own land to bear
+        aid to his ally, the Parthian king
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls … the Mede, who in his anger against Phraates
+        because he had not received from him many of the spoils or any other
+        honour
+      supports: [relation, to]
     - { source: strabo, locator: '11.13.1–2' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Parthia's ally in 36 (Dio 49.25.2); no text names the tie before that, so it
+    is drawn allied, the closest type the texts describe, over the years since
+    Tigranes' submission. It read client until October 2026.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia

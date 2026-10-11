@@ -2718,16 +2718,33 @@
     (50.2.2).
 
 - polity: atropatene
-  type: client-of
+  type: allied-to
   of: parthia
   from: 65 BCE
   to: 36 BCE
-  sources: [{ source: strabo, locator: '11.13.1–2' }]
+  sources:
+    - source: cassius-dio
+      locator: '49.25.2'
+      quote: >-
+        learning there that the Mede had gone far away from his own land to bear
+        aid to his ally, the Parthian king
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls … the Mede, who in his anger against Phraates
+        because he had not received from him many of the spoils or any other
+        honour
+      supports: [type, of, to]
+    - { source: strabo, locator: '11.13.1–2' }
   confidence: uncertain
   review: needs-check
   note: >-
     Back under Parthia once Tigranes had submitted to Pompey (66); when is not
-    recorded. The rows before are in the extension to 133.
+    recorded. The rows before are in the extension to 133. The only text that
+    names the tie says "ally" (Dio 49.25.2, in 36), so the type is allied-to, as
+    the method has it, not client; it was client-of until October 2026.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 
