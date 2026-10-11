@@ -16815,12 +16815,21 @@
         Porphyry assigns the death of Antiochus, after a nine years' reign, to
         Olympiad 162. 4, or B.c. 129-128.
       supports: [to]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
     - { source: josephus-aj, locator: '13.236–248' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    As judaea. Hyrcanus besieged his father's murderer in Dagon, the fortress
-    above Jericho, in his first year (AJ 13.230).
+    As judaea, with the same doubt over both ends (the siege's year; Antiochus
+    VII's death in 129 or 128); probable until October 2026. Hyrcanus besieged
+    his father's murderer in Dagon, the fortress above Jericho, in his first
+    year (AJ 13.230).
 
 - atom: judaea-jericho
   polity: judaea
