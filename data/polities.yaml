@@ -3342,13 +3342,83 @@
   from: before 133 BCE
   to: 65 BCE
   ruler: >-
-    Antiochus VII Sidetes, to 129; Demetrius II again, 129–126/125; Alexander
-    Zabinas, c. 128–123; Antiochus VIII Grypus, 125–96, against Antiochus IX
-    Cyzicenus from 114/113; their sons Seleucus VI, Antiochus X, Demetrius III
-    (at Damascus), Philip I and Antiochus XII, to c. 83; Antiochus XIII
-    Asiaticus, 69–64
+    Antiochus VII Sidetes, to 129/128; Demetrius II again, 128–125/124;
+    Alexander Zabinas, 128–122; Antiochus VIII Grypus, 125/124–96, against
+    Antiochus IX Cyzicenus, 113–95; their sons Seleucus VI, Antiochus X,
+    Antiochus XI, Philip I, Demetrius III (at Damascus) and Antiochus XII,
+    95–83; Antiochus XIII Asiaticus, 69–65
   sources:
-    - { source: appian, locator: 'Syr. 49, 68–70' }
+    - source: schurer-1891
+      locator: 'pp. 177–178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria. — In B.c. 129 he undertook a campaign against the Parthians, and
+        in it he met his death in b.c. 128.
+      supports: [kind, from, ruler]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Gutschmid, Geschichte Iran's, Tub. 1888, pp. 75-77, who places the
+        death of Antiochus in B.c. 129.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        NiCATOR, a second time, b.c. 128-125 or 124(?). Alexander Zabinas, b.c.
+        128-122 (?). After a ten years' imprisonment among the Parthians, as
+        Porphyry relates in Eusebius, Demetrius II. once again became king of
+        Syria.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'pp. 179–180'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VIII. Grypos, b.c. 125 or 124-113. … After a reign of eleven
+        years, in b.c. 113, Antiochus VIII. Grypos was driven from the throne
+        by Antiochus IX. Kyri- kenos
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 181'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus IX. Cyzicexos, B.c. 113-95. … For two years Cyzicenos now
+        ruled as sole monarch. But in B.c. Ill, Grypos returned and wrested the
+        greater part of Syria from his cousin. Only Coele-Syria remained in the
+        possession of Cyzicenos. … Antiochus Grypos died fifteen years after his
+        return, in B.c. 96
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'pp. 181–182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        During the next twelve years, from B.C. 95 to b.c. 83, there now
+        followed an almost unbroken series of conflicts between the five sons
+        of Antiochus Grypos … and the son of Antiochus Cyzicenos, Antiochus X.
+        Eusebes, on the other … the fourth brother, Demetrius Eucarus, had
+        seized upon another portion, with Damascus as its capital.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65 under the title of Antiochus … It was Pompey who, on
+        his victorious march through Asia, first made a complete end of the
+        Seleucid dynasty, in B.c. 65
+      supports: [to, ruler]
+    - source: appian
+      locator: 'Syr. 70'
+      quote: >-
+        The son of Pius and Selene, who was brought up in Asia and was for that
+        reason called Asiaticus, was deprived of the government of Syria by
+        Pompey, as I have already mentioned. He was the seventeenth king of
+        Syria
+      supports: [kind, ruler]
+    - { source: appian, locator: 'Syr. 49, 68–69' }
     - { source: justin, locator: '38.10, 39.1–39.5, 40.1–40.2' }
     - { source: josephus-aj, locator: '13.365–371, 13.387–391' }
     - { source: sherwin-white-1984, locator: 'ch. 9' }
@@ -3358,12 +3428,18 @@
   note: >-
     One polity for a dynasty at war with itself: from 113 the kingdom was
     divided between Grypus at Antioch and Cyzicenus in Coele-Syria, and their
-    sons after them; the reign dates are argued from coins (Ehling) and are
-    approximate. Antiochus VII won back Babylon in 130 ("having got possession
-    of Babylon", Justin 38.10) and was killed fighting Phraates II in 129. Tigranes held Syria and the Cilician plain in
-    83–70 (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set
-    aside by Pompey in 64. What Antiochus XIII held beyond Antioch is doubtful:
-    the rest of the country was in the hands of local dynasts.
+    sons after them; the reign dates are Schürer's (1891, pp. 177–183), from
+    Porphyry, Josephus and the coins, and are approximate. Until October 2026
+    they were given as Ehling's, a book not opened, and differed: Sidetes to
+    129, Demetrius II 129–126/125, Zabinas c. 128–123, Grypus from 125,
+    Cyzicenus from 114/113, Asiaticus to 64; they now follow Schürer, who also
+    gives Gutschmid's 129 for Sidetes' death. Antiochus VII won back Babylon in
+    130 ("having got possession of Babylon", Justin 38.10) and was killed
+    fighting Phraates II. Tigranes held Syria and the Cilician plain in 83–70
+    (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set aside by
+    Pompey, in 65 by Schürer's reckoning (183), though Pompey himself came to
+    Syria only in 64. What Antiochus XIII held beyond Antioch is doubtful: the
+    rest of the country was in the hands of local dynasts.
 
 # Added September 2026 for the extension to 133 BCE: the free cities of the
 # Phoenician coast and the kingdom of Sophene.
@@ -5835,30 +5911,80 @@
   from: before 133 BCE
   to: 75 BCE
   ruler: >-
-    Nicomedes II Epiphanes, to c. 128/127; Nicomedes III Euergetes, c.
-    128/127–c. 94; Nicomedes IV Philopator, c. 94–75/74
+    Nicomedes II Epiphanes, to c. 127; Nicomedes III Euergetes, c. 127–c. 94;
+    Nicomedes IV Philopator, c. 94–74
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 317'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in 149 b.c., when Prusias’s son, Nicomedes, setting out from Rome …
+        rebelled against the old monarch and entered Bithynia with an army …
+        he made himself king without opposition either in Rome or in Asia
+        Minor. … Nicomedes II, surnamed Epiphanes, thus began his reign as the
+        protege of Attalus.
+      supports: [kind, from, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 318'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        About 127 b.c. Epiphanes was succeeded by his son, Nicomedes III, who,
+        because of his many benefactions, received the surname of Euer- getes.
+      supports: [from, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 319'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        When he died, not without the suspicion of poison, … about 94 b.c., he
+        was dis- credited at Rome … Nicomedes Euergetes left two sons. The
+        elder, also named Nico- medes, born of his first wife, succeeded to the
+        throne with the surname Philopator.
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 320'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        When he died, in 74, it was found that he had bequeathed his king- dom
+        to the Roman people.
+      supports: [to, ruler]
+    - source: eutropius
+      locator: '6.6'
+      quote: >-
+        in the consulate of Lucius Licinius Lucullus and Marcus Aurelius Cotta.
+        Nicomedes, king of Bithynia, died, appointing by his will the Roman
+        people his heir.
+      supports: [kind, to]
+    - source: kallet-marx-1995
+      locator: 'p. 299'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        But events in the year 74 escalated Rome's involvement in Eastern parts
+        far beyond even this level. In that year Nicomedes IV, king of
+        Bithynia, died.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 7, 10–11, 13, 18–20, 60, 71' }
     - { source: memnon, locator: '22.5' }
     - { source: justin, locator: '37.4, 38.1–38.3' }
     - { source: livy-per, locator: '93.2' }
-    - { source: eutropius, locator: '6.6.1' }
-    - { source: magie-1950 }
   confidence: certain
   review: draft
   note: >-
     A friend of Rome, which sent help against Aristonicus (Strabo 14.1.38).
     Nicomedes III shared Paphlagonia with Mithridates and seized Cappadocia with
     Laodice (Justin 37.4, 38.1). Nicomedes IV, whom the senate recognised, was
-    driven out by his brother Socrates Chrestus with Mithridates' troops in 90
-    and restored by Aquillius' embassy (App. Mithr. 10–11, 13; Memnon 22.5);
-    beaten on the Amnias in the war that followed, he fled to Italy (Mithr.
-    18–20; Strabo 12.3.40), and Curio restored him after Dardanus (Mithr. 60).
-    He died childless and left the kingdom to Rome (Mithr. 71; Livy Per. 93.2).
-    Eutropius puts his death in the consulship of Lucullus and Cotta, 74
-    (6.6.1); Livy's epitome tells it among the events of 75. The province is
-    dated from 74 (bithynia-pontus), so the kingdom ends with 75. The years of
-    the first two kings are modern reckonings.
+    driven out by his brother Socrates Chrestus with Mithridates' troops in
+    92–91 and restored by Aquillius' embassy in 90–89 (App. Mithr. 10–11, 13;
+    Memnon 22.5; see claims.yaml); beaten on the Amnias in the war that
+    followed, he fled to Italy (Mithr. 18–20; Strabo 12.3.40), and Curio
+    restored him after Dardanus (Mithr. 60). He died childless and left the
+    kingdom to Rome (Mithr. 71; Livy Per. 93.2). Eutropius puts his death in
+    the consulship of Lucullus and Cotta, 74 (6.6), as do Magie (320) and
+    Kallet-Marx (299); Livy's epitome tells it in book 93, which ToposText
+    heads 75, a date of the site's. The province is dated from 74
+    (bithynia-pontus), so the kingdom ends with 75. The kings' years are
+    Magie's (317–320): Nicomedes II from 149 to about 127, Nicomedes III to
+    about 94. Until October 2026 the ruler read "to c. 128/127" and
+    "c. 94–75/74", years no readable text gives.
 
 - id: aristonicus
   kind: kingdom
@@ -5898,14 +6024,54 @@
   to: c. 83 BCE
   ruler: its tyrants; Moagetes, the last
   sources:
-    - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
-    - { source: kallet-marx-1995, locator: 'p. 114' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        Three bordering cities were added to it, Bubon, Balbura, and Oenoandon,
+        and the union was called Tetrapolis … It was always ruled by tyrants;
+        but still they ruled it with moderation. However, the tyranny ended in
+        the time of Moagetes, when Murena overthrew it
+      supports: [kind, ruler, to]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        On the east of Caria lay the state of Cibyratis. It included the four
+        communities of Cibyra, Bubon, Balbura and Oenoanda, which formed a
+        federation, known as the Tetrapolis … When the Romans first came to
+        Asia it was ruled by a “tyrant” named Moagetes, who was characterized
+        as cruel and treacherous, and it seems to have been similarly governed
+        by a single ruler, though perhaps unofficially, down to the time of
+        Murena. … ence of the state of Cibyra, Murena brought to an abrupt end.
+        Enter- ing the district with an army, he overthrew the reigning
+        “tyrant,” who, like his predecessor of the previous century, bore the
+        name of Moagetes.
+      supports: [kind, from, ruler]
+    - source: sherwin-white-1976
+      locator: 'n. 51'
+      quote: >-
+        There is no reason to doubt either the identification of Strabo's
+        Murena with the famous legate of Sulla, or the survival of the dynasty
+        of Cibyra from 190 down to this period
+      supports: [from, ruler]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Cibyra, which enjoyed a treaty of alliance with Rome, remained under its
+        own tyrants until captured by L. Murena in 83
+      supports: [from, to, ruler]
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        Further east the tetrapolis of Cibyra survived as independent to c. 82
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     "It was always ruled by tyrants", over a tetrapolis of Cibyra, Bubon,
     Balbura and Oenoanda, until "the tyranny ended in the time of Moagetes,
     when Murena overthrew it" (Strabo 13.4.17); Murena governed Asia in 84–81.
-    Sherwin-White has the tetrapolis independent "to c. 82" (n. 6),
-    Kallet-Marx has Murena capture it in 83 (114).
+    Sherwin-White has the dynasty survive "from 190" (n. 51) and the tetrapolis
+    independent "to c. 82" (n. 6); Kallet-Marx has Murena capture it in 83
+    (113–114). The end, c. 83, sits between the two.
