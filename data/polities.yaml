@@ -2898,7 +2898,7 @@
   kind: kingdom
   names:
     - { text: Emesa, lang: la, preferred: true }
-  from: before 69 BCE
+  from: 69 BCE
   to: 31 BCE
   ruler: Sampsiceramus I; Iamblichus I, by 51 to 31; Alexander, 31–30
   sources:
@@ -2962,6 +2962,13 @@
     reward for accusing" him, was deposed by Octavian and killed after the
     triumph (51.2.2; still a suppliant in 30, Josephus BJ 1.393). The kingdom
     was restored to Iamblichus II only in 20 (Dio 54.9.2).
+    The principality is first seen when Antiochus XIII called on
+    Sampsiceramus (Diodorus 40.1b.1), an episode Schürer puts "probably" in
+    65 or 64, within Antiochus' reign of 69–65 (pp. 183–184): so it begins
+    between 69 and 65. Like its first claim row, it starts at the earlier
+    bound, 69, next to Tigranes' years, rather than leave a gap. Until
+    October 2026 it read "before 69", which says it stood in 69 and earlier;
+    no readable text does.
 
 - id: osroene
   kind: kingdom
