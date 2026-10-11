@@ -379,7 +379,7 @@
   from: 118 BCE
   to: after 27 BCE
   prominence: 2
-  status: provincial seat
+  status: colonia
   labelSide: s
   sources:
     - { source: pleiades, locator: places/246347 }
@@ -391,8 +391,9 @@
     The citizen colony of 118, "in the consulship of Porcius and Marcius" (Vell.
     2.7.8), "a watch-tower of the Roman people" (Cic. Font. 13). Pleiades files
     the older native Narbo (Naro) under the same entry; it stood at Montlaurès,
-    a few kilometres north, and is not drawn. That the colony was the
-    governor's seat from the start is a convention.
+    a few kilometres north, and is not drawn. It was a "provincial seat" here
+    until October 2026, by convention: no open text makes it the governor's
+    seat, so its status is the colony the texts name.
 
 - id: thessalonica
   pleiades: '491741'
