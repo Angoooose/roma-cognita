@@ -19369,7 +19369,7 @@
     year.
 
 - atom: sophene
-  polity: armenia
+  polity: cappadocia
   relation: client
   from: 66 BCE
   to: 35 BCE
@@ -19380,12 +19380,15 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    As armenia (the row is armenia's). In 66 Sophene was not reckoned part of
-    Tigranes' hereditary kingdom: Lucullus had "robbed him of" it (Plut.
-    Pompey 33.4), and Pompey took it from him and gave it to Tigranes' son,
-    whom he then put in chains (Dio 36.53.2–4). Appian has Sophene and
-    Gordyene then given to Ariobarzanes of Cappadocia (Mithr. 105). None of
-    this is drawn; who held Sophene after 66 wants a human decision.
+    In 66 Sophene was not reckoned part of Tigranes' hereditary kingdom:
+    Pompey took it from him and gave it to Tigranes' son, whom he then put in
+    chains (Dio 36.53.2–4), and added it to Ariobarzanes' Cappadocia (Appian
+    Mithr. 105; Magie 375). The son's months are not drawn. Until October
+    2026 this row was Armenia's, as a client, which those texts contradict.
+    When Sophene went back to Armenia is not recorded (Strabo has it in
+    Greater Armenia in his own day, 11.12.3); the end at 35 is only the
+    boundary with the Armenian rows from Antony's seizure of Armenia in 34,
+    and wants a human decision.
 
 - atom: sophene
   polity: armenia
