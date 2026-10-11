@@ -851,7 +851,33 @@
   from: { earliest: 121 BCE, latest: 120 BCE }
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
+    - source: broughton-mrr
+      locator: 'vol. I, 120 B.C., p. 524'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr.). Completed his campaign in Gaul … He built the Via
+        Domitia and organized the province (see Cic. Font. 18).
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Consul Quintus Fabius Maximus, grandson of Paulus, successfully fought
+        against the Allobroges and Bituitus, the king of the Arvernians. … The
+        surrender of the Allobroges was accepted.
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. II, 76 B.C., p. 96, n. 4'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Cisalpine Gaul and Transalpine Gaul are the two provinces whose
+        governors in 76 remain
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: livy-per, locator: '47, 60–61' }
     - { source: velleius, locator: '2.10.2, 2.39.1' }
     - { source: strabo, locator: '4.1.5, 4.1.11' }
