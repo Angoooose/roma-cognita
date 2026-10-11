@@ -3434,11 +3434,34 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [polity, relation, to]
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
-  note: Pompey's annexation.
+  note: >-
+    Pompey's annexation. Plutarch has him declare Syria a province when he came
+    down into it, and Dio has him in Syria in the consulship of L. Caesar and
+    Figulus (64).
 
 - atom: syria-palaestina
   polity: syria
@@ -3446,11 +3469,40 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president … and
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella, and
+        Dia, and Samaria … All these Pompey left in a state of freedom, and
+        joined them to the province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        together with Coele-Syria, as it is called, Phoenicia, Cilicia, Cyprus
+        and Egypt, fell at that time to Caesar's share
+      supports: [polity, to]
   confidence: probable
   review: draft
-  note: Taken from the Jews by Pompey and put under the governor of Syria.
+  note: >-
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63).
 
 - atom: judaea
   polity: judaea
@@ -3458,17 +3510,83 @@
   from: 63 BCE
   to: 41 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–79' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        He then invaded Palestine and deposed Hyrcanus, who was at the moment in
+        charge of affairs there, having been appointed by the Romans
+      supports: [polity, relation, to]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did
+        this man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: certain
   review: draft
-  note: Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
+  note: >-
+    Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
+    The Parthians deposed him and set up Antigonus before Herod was made king
+    at Rome in the consulship of Calvinus and Pollio (40), so Hyrcanus' rule
+    ends in 41 (Antigonus' from 40).
 
 - atom: judaea-joppa
   polity: syria
   relation: province
   from: 63 BCE
   to: 48 BCE
-  sources: [{ source: josephus-aj, locator: '14.76' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+        … All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 382'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        If it is correct that the beginning of Antiq. xiv. 10. 6 belongs to a
+        decree of the year B.c. 47, a portion of the tribute of Joppa would
+        have been assigned, even so early as that, to the Jews.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 381'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The chief portion of the passage peculiarly rich in material, Antiq.
+        xiv. 10. 6, belongs most probably to B.c. 44.
+      supports: []
   confidence: probable
   review: draft
 
@@ -3477,7 +3595,37 @@
   relation: client
   from: 47 BCE
   to: 41 BCE
-  sources: [{ source: josephus-aj, locator: '14.202–206' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.202–206'
+      quote: >-
+        It is also our pleasure that the city Joppa, which the Jews had
+        originally, when they made a league of friendship with the Romans,
+        shall belong to them, as it. formerly did; and that Hyrcanus, the son
+        of Alexander, and his sons, have as tribute of that city
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 382'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Mendelssohn's hypothesis, that the passage in Antiq. xiv. 10. 5 and 6a
+        belongs to the year b.c. 47, is highly probable.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 382'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        They did certainly hold it in the year B.C. 44 altogether in their own
+        possession
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        taken the government from the Parthians. … And thus did this man
+        receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: probable
   review: draft
   note: Restored to Hyrcanus by Caesar (AJ 14.205).

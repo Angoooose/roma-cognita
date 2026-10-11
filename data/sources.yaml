@@ -107,6 +107,20 @@
     given as the citation's url. The revision by Vermes and Millar
     (schurer-vermes) supersedes it but is not open.
 
+- id: schurer-1891
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division I, vol. I, trans. J. Macpherson (New York: Scribner's, 1891)
+  url: https://archive.org/details/historyofjewishp01sch
+  note: >-
+    The political history from 175 BCE: the Hasmoneans, Pompey, Caesar's
+    decrees for Hyrcanus II, Herod. A scan on archive.org, readable without
+    borrowing. Quote from its full text,
+    https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt,
+    given as the citation's url; page numbers are the running heads.
+    Superseded by schurer-vermes, which is not open.
+
 - id: myers-2010
   kind: modern
   citation: E. A. Myers, The Ituraeans and the Roman Near East (Cambridge, 2010)
