@@ -55,6 +55,9 @@ sources:
   locator already links to: a scan's full text on archive.org (the `_djvu.txt`
   file, not the book's landing page), an article's PDF, a page on another site.
 
+A relation states the same fact as its claim (and a seat as its polity), so
+it may carry the same quotes, with `supports` naming its own fields.
+
 The historical fields are the ones that say something happened: who held what,
 in what relation, from when, to when, where. Ids, display names and styling are
 not.

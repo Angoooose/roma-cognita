@@ -28,6 +28,9 @@ independent, so:
    is about (Phoenicia) is **partly**, not **yes**: it backs the part only if
    nothing suggests the part was held differently.
 
+   A source that hedges ("possibly", "probably") is **partly**. So is a quote
+   whose `…` cut hides the words the field rests on: read what was cut.
+
    Judge against the conventions in [data/README.md](../data/README.md) and the
    method: open ends
    need only the state in force at that year, and a year given by consuls or by
