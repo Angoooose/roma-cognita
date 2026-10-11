@@ -3662,9 +3662,31 @@
 - atom: armenia-minor
   polity: galatia
   relation: client
-  from: 63 BCE
+  from: { earliest: 63 BCE, latest: 62 BCE }
   to: 48 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Deiotarus received also the valleys which contain the headwaters of the
+        Lycus and the Qoruh and all the northern portion of Armenia Minor
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions along the Euxine coast, which had been assigned to him in
+        62 by Pompey
+      supports: [from]
     - source: strabo
       locator: '12.3.13'
       quote: >-
@@ -3701,7 +3723,10 @@
   confidence: probable
   review: needs-check
   note: >-
-    Given to Deiotarus by Pompey (Strabo 12.3.13; Eutrop. 6.14). Pharnaces
+    Given to Deiotarus by Pompey (Strabo 12.3.13; Eutrop. 6.14), with the
+    Euxine coast (Magie I 374), in the settlement of the winter of 63/62
+    (I 365); Magie dates that grant to 62 (I 413). Until October 2026 the row
+    started in 63. Pharnaces
     overran it in 48 (an occupation row), and after Zela Caesar gave the part
     bordering Cappadocia to Ariobarzanes (Dio 42.48.3; Magie I 413), in the
     year Calenus and Vatinius were consuls, 47 (Dio 42.55.4).
