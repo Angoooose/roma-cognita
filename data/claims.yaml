@@ -14846,7 +14846,7 @@
   polity: atropatene
   relation: allied
   from: 35 BCE
-  to: 31 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - source: cassius-dio
       locator: '49.33.1–2'
@@ -14862,7 +14862,14 @@
         was satisfied to arrange terms with the Median king. They made a
         covenant to serve each other as allies, the one against the Parthians
         and the other against Caesar
-      supports: [polity, relation]
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [to]
     - source: plutarch
       locator: 'Antony 52.1'
       quote: >-
@@ -14877,7 +14884,12 @@
     Phraates and sent Polemon to Antony "requesting his friendship and
     alliance" (Dio 49.33.1–2, under 35); in 33 "they made a covenant to serve
     each other as allies", and the Mede received a portion of Armenia (49.44.1–2),
-    which part is not known and is not drawn.
+    which part is not known and is not drawn. The alliance ended when the Mede
+    was "defeated and captured" after Antony "summoned back his own soldiers"
+    (49.44.4), told after Antony set out for Greece in 32 (49.44.3) and no
+    later than his asylum with Octavian in 30 (51.16.2); no text dates it, so
+    the end is between 33 and 31, as Armenia's is, drawn at the midpoint.
+    Until October 2026 it read 31.
 
 - atom: atropatene
   polity: atropatene
