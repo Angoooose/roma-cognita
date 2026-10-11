@@ -1675,7 +1675,7 @@
   location: [2.65, 39.5694]
   names:
     - { text: Palma, preferred: true }
-  from: 123 BCE
+  from: { earliest: 123 BCE, latest: 121 BCE }
   to: after 27 BCE
   prominence: 3
   sources:
@@ -1686,8 +1686,11 @@
   review: draft
   note: >-
     Built by Q. Metellus Balearicus, who brought 3,000 Romans from Spain to the
-    islands (Strabo 3.5.1), in or just after his war of 123; a town of Roman
-    citizens in Pliny's day (3.77).
+    islands (Strabo 3.5.1), during his command there: consul in 123, he went
+    on with the settlement of the islands as proconsul in 122 and triumphed
+    over them in 121 (Broughton). No text dates the building within those
+    years, so the start is that range; it was 123 until October 2026. A town
+    of Roman citizens in Pliny's day (3.77).
 
 - id: pollentia
   pleiades: '266004'
@@ -1696,7 +1699,7 @@
   names:
     - { text: Pollentia, preferred: true }
     - { text: Polentia }
-  from: 123 BCE
+  from: { earliest: 123 BCE, latest: 121 BCE }
   to: after 27 BCE
   prominence: 4
   sources:
