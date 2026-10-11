@@ -3390,8 +3390,35 @@
   from: 35 BCE
   to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
-    - { source: cassius-dio, locator: '49.33.1–2' }
-    - { source: cassius-dio, locator: '49.44.1' }
+    - source: cassius-dio
+      locator: '49.33.1–2'
+      quote: >-
+        the following year, when Pompeius and Cornificius were consuls … in his
+        anger against Phraates … had sent Polemon to him requesting his
+        friendship and alliance. Antony was apparently so exceedingly delighted
+        over the affair that he both made terms with the Mede
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '49.44.1–2'
+      quote: >-
+        was satisfied to arrange terms with the Median king. They made a
+        covenant to serve each other as allies, the one against the Parthians
+        and the other against Caesar
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [to]
+    - source: plutarch
+      locator: 'Antony 52.1'
+      quote: >-
+        And now the king of the Medes had a quarrel with Phraortes the Parthian
+        … For this reason he sent and invited Antony to come, promising to join
+        him in the war with his own forces.
+      supports: [type]
   confidence: probable
   review: draft
 
