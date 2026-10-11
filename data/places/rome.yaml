@@ -3143,12 +3143,41 @@
   names:
     - { text: Round Temple of the Forum Boarium, lang: en, preferred: true }
     - { text: Aedes Herculis Olivarii, lang: la }
-  from: { earliest: 120 BCE, latest: 90 BCE }
+  from: { earliest: 130 BCE, latest: 51 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Portunium, p. 430' }
-    - { source: digital-augustan-rome, locator: 'Round Temple by the Tiber' }
+    - source: platner-ashby
+      locator: 'Portunium, p. 430'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html
+      quote: >-
+        the ancient circular temple … which was occupied by the church of S.
+        Stephanus Rotundus (1140), S. Stefano delle Carrozze (sixteenth century), and
+        was later called S. Maria del Sole, in the Piazza Bocca della Verità
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Portunium, p. 431, n. 3'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html
+      quote: >-
+        Delbrück ( Hellenistische Bauten , II .43) identifies it with the temple of
+        Hercules erected about 130 B.C. by Aemilius Paullus
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: https://www.digitalaugustanrome.org/api/dag/records/round-temple-tiberis/
+      quote: >-
+        The well-preserved Round Temple by the *Tiber, with its ring of 20 Corinthian
+        columns surrounding a circular cella, had been attributed to the first half of
+        the 1st c. B.C. (Strong and Ward-Perkins), and intensive re-examination of its
+        architecture has suggested a more precise date in the early 1st c. B.C.
+      supports: [location, from]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: https://www.digitalaugustanrome.org/api/dag/records/round-temple-tiberis/
+      quote: >-
+        Sometime in the decades after Augustus, major repair work was carried out on
+        about half of the colonnade
+      supports: [to]
     - { source: osm-rome, locator: way/251342364 }
     - { source: coarelli-1988, locator: 'pp. 38, 180–204' }
     - { source: rakob-heilmeyer-1973, locator: 'pp. 4, 19, 35–36' }
@@ -3160,12 +3189,16 @@
     10.66 m high round a cella 10 m across, of Pentelic marble on a tufa podium 2 m
     high. Whose it was is disputed: Hercules Olivarius (Coarelli) or Hercules Victor
     (Ziolkowski).
-    It was built between about 120 BCE (Coarelli, who gives it to the oil merchant M.
-    Octavius Herrenus and the Greek architect Hermodorus) and the early 1st century
-    (Rakob and Heilmeyer, from its architecture), so the map shows it from the middle of
-    that span, 105 BCE. Ziolkowski's reading, Mummius's temple of Hercules Victor
-    dedicated in 142 BCE, would put it before 133. Nothing is known of what stood on its
-    platform before; the model leaves it open.
+    When it was built is disputed. Delbrück (as Platner & Ashby report him) gave it to
+    a temple of Hercules of about 130 BCE; Digital Augustan Rome gives the first half of
+    the 1st century BCE (Strong and Ward-Perkins), or more precisely its early years
+    (Rakob and Heilmeyer, from its architecture). The span 130–51 BCE covers both, so the
+    map shows it from about 90 BCE. It read 120–90 BCE until October 2026: 120 is
+    Coarelli's (who gives it to the oil merchant M. Octavius Herrenus and the Greek
+    architect Hermodorus), in a book that could not be read. Ziolkowski's reading,
+    Mummius's temple of Hercules Victor dedicated in 142 BCE, would put it before 133;
+    Platner & Ashby thought its superstructure early imperial on a Republican podium.
+    Nothing is known of what stood on its platform before; the model leaves it open.
 
 - id: aedes-fortunae-foro-boario
   kind: temple
