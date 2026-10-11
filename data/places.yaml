@@ -1714,7 +1714,7 @@
   names:
     - { text: Pompaelo, preferred: true }
     - { text: Pompelo }
-  from: c. 75 BCE
+  from: before 48 BCE
   to: after 27 BCE
   prominence: 3
   sources:
@@ -1729,7 +1729,14 @@
       quote: >-
         The nation of the Vascons, in which is Pompelon, or Pompey's city, lies
         north of Iaccetania.
-      supports: [to]
+      supports: [from, to]
+    - source: velleius
+      locator: '2.53.2'
+      quote: >-
+        the first of the citizens of Rome was stabbed to death by the order and
+        dictation of an Egyptian vassal, the year of his death being the
+        consulship of Gaius Caesar and Publius Servilius
+      supports: [from]
     - source: pliny-nh
       locator: '3.24'
       quote: >-
@@ -1739,10 +1746,12 @@
   confidence: probable
   review: needs-check
   note: >-
-    "Pompelon, or Pompey's city" among the Vascones (Strabo 3.4.10). When it
-    was founded is not recorded; it is put at 75, when Pompey's army went "into
-    the territory of the Vascones to gather food" (Sall. Hist. 2.93 M), before
-    his winter of 75/74.
+    "Pompelon, or Pompey's city" among the Vascones (Strabo 3.4.10), so it
+    stood by Pompey's death in 48, in the consulship of Caesar and Servilius
+    (Vell. 2.53.2). When it was founded is not recorded. Until October 2026 it
+    started c. 75, when Pompey's army went "into the territory of the Vascones
+    to gather food" (Sall. Hist. 2.93 M), before his winter of 75/74; but no
+    readable text puts the town's founding then, and Sallust does not name it.
 
 - id: aquae-sextiae
   pleiades: '148053'
