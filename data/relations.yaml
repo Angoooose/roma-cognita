@@ -2877,7 +2877,24 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship
+      supports: [from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar … the eighth Crete,
+        with Cyrenaea
+      supports: [type, to]
   confidence: probable
   review: draft
 
