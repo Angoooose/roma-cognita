@@ -127,6 +127,11 @@
       quote: >-
         Sardinia and Baetica were held to belong to the people and the senate
       supports: [type, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        The third was Sardinia, with Corsica; the fourth Sicily
+      supports: [type, to]
   confidence: certain
   review: draft
 
