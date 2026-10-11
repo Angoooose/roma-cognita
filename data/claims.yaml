@@ -8061,8 +8061,7 @@
     (Fam. 13.73); Octavian let Amyntas attack him after Actium (Magie I 443),
     so the row runs to 31 and Galatia's from 30. Client, not independent
     (October 2026; it read independent): Magie calls Antipater "a Roman vassal"
-    by Pompey's gift. The validator warns that it has no client-of relation
-    behind it; that needs a relations.yaml record for derbe, not yet written.
+    by Pompey's gift, with a client-of relation behind it.
 
 - atom: lycia
   polity: lycia
