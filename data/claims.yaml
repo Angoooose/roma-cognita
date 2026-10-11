@@ -7116,7 +7116,35 @@
   from: before 133 BCE
   to: 59 BCE
   sources:
-    - { source: caesar-bg, locator: '1.2' }
+    - source: livy-per
+      locator: '65'
+      quote: >-
+        In the country of the Nitiobriges, consul Lucius Cassius … was
+        massacred with his army by the Gallic Tigurini, a Helvetian tribe that
+        had left its own country.
+      supports: [polity, relation]
+    - source: cicero-att
+      locator: '1.19.2'
+      quote: >-
+        the Helvetii are undoubtedly in arms and making raids upon our
+        province. … legates with full powers be sent to visit the states in
+        Gaul, and see that they do not join the Helvetii
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        Among the Helvetii the noblest man by far and the most wealthy was
+        Orgetorix. In the consulship of Marcus Messalla and Marcus Piso … he
+        persuaded the community to march out of their territory in full force
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '1.6'
+      quote: >-
+        they named a day by which all should assemble upon the bank of the
+        Rhone. The day was the 28th of March, in the consulship of Lucius Piso
+        and Aulus Gabinius.
+      supports: [to]
+    - { source: caesar-bg, locator: '1.12' }
   confidence: probable
   review: draft
 
@@ -7126,11 +7154,43 @@
   from: 58 BCE
   to: 52 BCE
   sources:
-    - { source: caesar-bg, locator: '1.28' }
+    - source: caesar-bg
+      locator: '1.28'
+      quote: >-
+        all the remainder, upon delivery of hostages, arms, and deserters, he
+        admitted to surrender. He commanded the Helvetii, Tulingi, and
+        Latobrigi to return to their own borders, whence they had started
+      supports: [polity, from]
+    - source: caesar-bg
+      locator: '1.6'
+      quote: >-
+        The day was the 28th of March, in the consulship of Lucius Piso and
+        Aulus Gabinius.
+      supports: [from]
+    - source: cicero-balb
+      locator: '32'
+      quote: >-
+        But some treaties are in existence, as for instance those with the
+        Germans, the Insubres, the Helvetians, and the Iapidae
+      supports: [relation]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.75'
+      quote: >-
+        eight thousand each from the Pictones, Turoni, Parisii, and Helvetii
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Sent back to their land after Bibracte, 58, and received as allies.
+    Sent back to their land after Bibracte, 58, and received as allies:
+    Caesar admitted them to surrender and sent them home (BG 1.28), and in 56
+    Cicero names the Helvetians among the peoples Rome had treaties with
+    (Balb. 32), without saying when the treaty was made. In 52 they owed
+    eight thousand men to the army raised to relieve Alesia (BG 7.75).
 
 - atom: helvetii
   polity: gallia-comata
@@ -7138,12 +7198,47 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: caesar-bg
+      locator: '8.46'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued
+      supports: [from]
+    - source: caesar-bg
+      locator: '8.48'
+      quote: >-
+        the ensuing year … when Lucius Paulus and Gaius Marcellus were
+        consuls, contains no operations on a large scale in Gaul
+      supports: [from]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the
+        form of a province
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '4.105–106'
+      quote: >-
+        The whole of Gaul that is comprehended under the one general name of
+        Comata, is divided into three races of people … From the Scaldis to
+        the Sequana it is Belgic Gaul … the Mediomatrici, the Sequani, the
+        Raurici, and the Helvetii.
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: caesar-bg, locator: 'VII–VIII' }
-    - { source: suetonius-iul, locator: '25' }
   confidence: uncertain
   review: needs-check
   note: >-
-    See gallia-comata.
+    See gallia-comata. Suetonius bounds Caesar's province by the Rhine and the
+    Rhone (Iul. 25), which takes in the Helvetian country between them, and
+    Pliny's account of the Gauls, from Agrippa's survey, puts the Helvetii in
+    Belgica (NH 4.106).
 
 - atom: sequani
   polity: sequani
@@ -7151,7 +7246,51 @@
   from: before 133 BCE
   to: 52 BCE
   sources:
-    - { source: caesar-bg }
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        In the consulship of Marcus Messalla and Marcus Piso … on another the
+        Jura range, exceeding high, lying between Sequani and the Helvetii
+      supports: [polity]
+    - source: caesar-bg
+      locator: '1.31'
+      quote: >-
+        obliged them to give as hostages to the Sequani the noblest men of the
+        state, and to bind the state by oath not to require the return of the
+        hostages, not to entreat the assistance of Rome, nor to refuse eternal
+        submission to the sway and sovereignty of the Sequani
+      supports: [polity, relation]
+    - source: strabo
+      locator: '4.3.2'
+      quote: >-
+        On the other side of the Arar dwell the Sequani, who have for long been
+        at enmity with the Romans and Aedui, having frequently allied
+        themselves with the Germans in their incursions into Italy.
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '1.3'
+      quote: >-
+        Casticus, of the Sequani, son of Catamantaloedes, who had held for many
+        years the kingship of the Sequani, and had been called by the Senate
+        “the friend of the Roman people,”
+      supports: [polity]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.75'
+      quote: >-
+        from the Sequani, Senones, Bituriges, Santoni, Ruteni, and Carnutes,
+        twelve thousand each
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.90'
+      quote: >-
+        He ordered Titus Labienus with two legions and cavalry to march off
+        into the country of the Sequani
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -7161,12 +7300,45 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: caesar-bg
+      locator: '8.46'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued
+      supports: [from]
+    - source: caesar-bg
+      locator: '8.48'
+      quote: >-
+        the ensuing year … when Lucius Paulus and Gaius Marcellus were consuls,
+        contains no operations on a large scale in Gaul
+      supports: [from]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the
+        form of a province
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '4.105–106'
+      quote: >-
+        The whole of Gaul that is comprehended under the one general name of
+        Comata, is divided into three races of people … From the Scaldis to
+        the Sequana it is Belgic Gaul … the Mediomatrici, the Sequani, the
+        Raurici, and the Helvetii.
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: caesar-bg, locator: 'VII–VIII' }
-    - { source: suetonius-iul, locator: '25' }
   confidence: uncertain
   review: needs-check
   note: >-
-    See gallia-comata.
+    See gallia-comata. Pliny's account of the Gauls, from Agrippa's survey,
+    puts the Sequani in Belgica (NH 4.106).
 
 - atom: aedui
   polity: aedui
@@ -7174,15 +7346,28 @@
   from: before 133 BCE
   to: 123 BCE
   sources:
-    - { source: caesar-bg }
-    - { source: strabo, locator: '4.3.2' }
+    - source: caesar-bg
+      locator: '1.43'
+      quote: >-
+        the manner in which, even before they had sought the friendship of
+        Rome, the Aedui had always held the primacy of all Gaul
+      supports: [polity, relation]
+    - source: strabo
+      locator: '4.3.2'
+      quote: >-
+        The Aedui are said to be related to the Romans, and they were the first
+        to enter into friendship and alliance with them.
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
     Free, and perhaps already Rome's friends: Strabo calls them the first in
     Gaul to seek friendship and alliance with Rome (4.3.2), but the alliance is
     not attested before 122, and the ground moves at the attestation (decision
-    19).
+    19). Caesar has them leading Gaul "even before they had sought the
+    friendship of Rome" (BG 1.43), but no readable text dates that time or
+    puts it in 133–123: the row's start and end rest on the window's edge and
+    on the alliance's first attestation, not on a text (October 2026).
 
 - atom: aedui
   polity: aedui
@@ -7190,9 +7375,61 @@
   from: 122 BCE
   to: 52 BCE
   sources:
-    - { source: livy-per, locator: '61' }
-    - { source: florus, locator: '1.37.4' }
-    - { source: caesar-bg, locator: '1.33, 7.37–43, 7.54–55, 7.63' }
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Proconsul Gnaeus Domitius successfully fought against the Allobroges
+        near the town of Vindalium. The reason for starting this war was that
+        the Allobroges had offered refuge to king Toutomotulus of the
+        Salluvians, and had supported him with all possible means when he
+        devastated the land of the Aedui, an ally of the Roman people.
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 516'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
+        was victorious over the Salluvii, and then engaged in war against the
+        Allobroges and the Arverni
+      supports: [from]
+    - source: florus
+      locator: '1.37.4'
+      quote: >-
+        The Allobroges and Arveni were next attacked, when similar complaints
+        against them on the part of the Aedui demanded our help and assistance.
+      supports: [polity, relation]
+    - source: cicero-att
+      locator: '1.19.2'
+      quote: >-
+        For the Aedui — “our brethren” — have recently fought a losing battle
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '1.35'
+      quote: >-
+        in the consulship of Marcus Messalla and Marcus Piso … the Senate had
+        decided that the governor of the Province of Gaul should protect, as
+        far as he could do so with advantage to the state, the Aedui and the
+        other friends of the Roman people
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.55'
+      quote: >-
+        Litaviccus had been received by the Aedui at Bibracte, the town of
+        supreme influence among them; the magistrate, Convictolitavis, and a
+        great part of the senate had gone to join him; deputies had been
+        despatched officially to Vercingetorix to secure peace and friendship.
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.63'
+      quote: >-
+        When the revolt of the Aedui became known the war increased in extent.
+      supports: [to]
+    - { source: caesar-bg, locator: '1.33, 7.37–43, 7.54' }
   confidence: probable
   review: draft
   note: >-
@@ -7207,12 +7444,55 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: caesar-bg
+      locator: '7.90'
+      quote: >-
+        When these affairs were settled he started for the country of the
+        Aedui and recovered the state.
+      supports: [polity]
+    - source: caesar-bg
+      locator: '8.46'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued. … two he despatched into the country of the
+        Aedui, whose influence he knew to be supreme in the whole of Gaul
+      supports: [from]
+    - source: caesar-bg
+      locator: '8.48'
+      quote: >-
+        the ensuing year … when Lucius Paulus and Gaius Marcellus were consuls,
+        contains no operations on a large scale in Gaul
+      supports: [from]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers, a circuit of some
+        3,200 miles, with the exception of some allied states which had
+        rendered him good service, he reduced to the form of a province
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '4.107'
+      quote: >-
+        GALLIA LUGDUNENSIS: … and in the interior are the Aedui, a federal
+        people
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: caesar-bg, locator: 'VII–VIII' }
-    - { source: suetonius-iul, locator: '25' }
   confidence: uncertain
   review: needs-check
   note: >-
-    See gallia-comata.
+    See gallia-comata. Suetonius excepts from the province "some allied
+    states which had rendered him good service" (Iul. 25), and Pliny's account
+    of the Gauls, from Agrippa's survey, lists the Aedui in Lugdunensis as "a
+    federal people" (NH 4.107): a treaty state inside the province, not
+    outside it. Whether the Aedui, who joined Vercingetorix in 52, were among
+    Suetonius' exceptions no text says.
 
 - atom: arverni
   polity: arverni
@@ -7220,7 +7500,55 @@
   from: before 133 BCE
   to: 52 BCE
   sources:
-    - { source: caesar-bg }
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 516'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
+        was victorious over the Salluvii, and then engaged in war against the
+        Allobroges and the Arverni
+      supports: [polity, relation]
+    - source: strabo
+      locator: '4.2.3'
+      quote: >-
+        Before this they had brought 200,000 men against Maximus Aemilianus,
+        and the same number against Domitius Aenobarbus. … The Arverni
+        extended their dominion as far as Narbonne and the borders of
+        Marseilles, and exercised authority over the nations as far as the
+        Pyrenees, the ocean, and the Rhine.
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Consul Quintus Fabius Maximus, grandson of Paulus, successfully fought
+        against the Allobroges and Bituitus, the king of the Arvernians.
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '1.45'
+      quote: >-
+        The Arverni and the Ruteni had been subdued in a campaign by Quintus
+        Fabius Maximus: the Roman people had pardoned them, and had not formed
+        them into a province nor imposed a tribute.
+      supports: [polity, relation]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.4'
+      quote: >-
+        There in like fashion Vercingetorix, son of Celtillus, an Arvernian
+        young of supreme influence … summoned his own dependents and easily
+        fired their spirit. Directly his design was known there was a general
+        rush to arms.
+      supports: [relation, to]
+    - source: caesar-bg
+      locator: '7.90'
+      quote: >-
+        The Arverni sent deputies to him there who promised to carry out his
+        commands: he required of them a great number of hostages.
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -7230,12 +7558,47 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: caesar-bg
+      locator: '8.46'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued. … the remaining two in the country of the
+        Lemovices, not far from the Arverni, in order that no part of Gaul
+        might be without an army
+      supports: [from]
+    - source: caesar-bg
+      locator: '8.48'
+      quote: >-
+        the ensuing year … when Lucius Paulus and Gaius Marcellus were consuls,
+        contains no operations on a large scale in Gaul
+      supports: [from]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the
+        form of a province
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '4.108–109'
+      quote: >-
+        GALLIA AQUITANICA: In Aquitanica are … Joining up to the Pictones are
+        the Bituriges, a free people, who are also known as the Cubi, and then
+        the Lemovices, the Arverni, a free people
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: caesar-bg, locator: 'VII–VIII' }
-    - { source: suetonius-iul, locator: '25' }
   confidence: uncertain
   review: needs-check
   note: >-
-    See gallia-comata.
+    See gallia-comata. Pliny's account of the Gauls, from Agrippa's survey,
+    lists the Arverni in Aquitania as "a free people" (NH 4.109): free inside
+    the province, as Massalia was in Narbonensis.
 
 - atom: vaccaei
   polity: vaccaei
@@ -7243,10 +7606,53 @@
   from: before 133 BCE
   to: c. 30 BCE
   sources:
+    - source: appian
+      locator: 'Hisp. 80'
+      quote: >-
+        the other consul, Aemilius Lepidus, was sent to Spain, Mancinus being
+        called home to stand trial. … falsely accused the Vaccaei of supplying
+        the Numantines with provisions during the war. Accordingly he ravaged
+        their country and laid siege to their principal city, Pallantia
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '57'
+      quote: >-
+        Scipio Africanus … besieged Numantia … When the Vaccaeans
+        were besieged, they massacred their children and wives and killed
+        themselves.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '39.54'
+      quote: >-
+        there was an uprising in Spain, which was consequently assigned to
+        Pompey's care. Some tribes had revolted and put themselves under the
+        leadership of the Vaccaei.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '51.20.1'
+      quote: >-
+        when he was consul for the fifth time, with Sextus Apuleius
+      supports: []
+    - source: cassius-dio
+      locator: '51.20.5'
+      quote: >-
+        To be sure, there were still under arms the Treveri, who had brought
+        in the Germans to help them, and the Cantabri, the Vaccaei, and the
+        Astures, — the three last-named of whom were later subjugated by
+        Statilius Taurus
+      supports: [polity, relation]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: probable
   review: draft
+  note: >-
+    Dio, among the events of Octavian's fifth consulship (29), has the
+    Vaccaei "still under arms" and subdued "later" by Statilius Taurus
+    (51.20.1, 51.20.5): free in 29, not to c. 30 as the end reads. By 26
+    they were the Cantabri's victims, not Rome's enemies (Flor. 2.33.47). The
+    end would be 29 or a range 29–27, but that moves the start of the
+    hispania-citerior row after it (c. 29); left as it is and reported
+    (October 2026).
 
 - atom: astures
   polity: astures
@@ -7254,6 +7660,33 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '51.20.5'
+      quote: >-
+        To be sure, there were still under arms the Treveri, who had brought
+        in the Germans to help them, and the Cantabri, the Vaccaei, and the
+        Astures
+      supports: [polity, relation]
+    - source: florus
+      locator: '2.33.46'
+      quote: >-
+        In the west almost all Spain had been subjugated, except that part
+        which adjoins the cliffs where the Pyrenees end and is washed by the
+        nearer waters of the Ocean. Here two powerful nations, the Cantabrians
+        and the Asturians, lived in freedom from the rule of Rome.
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.25.2'
+      quote: >-
+        but he was detained by the revolt of the Salassi and by the hostility
+        of the Cantabri and Astures
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.25.7–8'
+      quote: >-
+        afterwards Titus Carisius took Lancia, the principal fortress of the
+        Astures, after it had been abandoned
+      supports: [to]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: probable
@@ -7265,10 +7698,50 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: appian
+      locator: 'Hisp. 80'
+      quote: >-
+        On a false rumor that the Cantabri and Vaccaei were coming to the aid
+        of the Numantines, he became alarmed, extinguished his fires, and fled
+        in the darkness of night … the other consul, Aemilius Lepidus, was sent
+        to Spain, Mancinus being called home to stand trial.
+      supports: [polity, relation, from]
+    - source: florus
+      locator: '2.33.50'
+      quote: >-
+        Thus most of them saved themselves from a captivity which was deemed
+        more grievous than death itself by men who had hitherto never been
+        conquered.
+      supports: [relation, from]
+    - source: florus
+      locator: '2.33.46'
+      quote: >-
+        Here two powerful nations, the Cantabrians and the Asturians, lived in
+        freedom from the rule of Rome.
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.25.2'
+      quote: >-
+        but he was detained by the revolt of the Salassi and by the hostility
+        of the Cantabri and Astures
+      supports: [polity, relation, to]
+    - source: livy-per
+      locator: '48'
+      quote: >-
+        his successor consul Lucullus subdued the Vaccaeans and Cantabrians and
+        several other hitherto unknown nations in Hispania
+      supports: []
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: probable
   review: draft
+  note: >-
+    Free in 137, when a rumour that they were coming to Numantia's aid put
+    Mancinus to flight (App. Hisp. 80), and "hitherto never been conquered"
+    when Mount Medullus fell in Augustus' war (Flor. 2.33.50), which began in
+    26 (Dio 53.25.2; Flor. 2.33.46). The Periochae have Lucullus subdue them in
+    151 (Per. 48), which Florus' "never" contradicts; whatever it was, it had
+    not held by 137.
 
 - atom: callaeci
   polity: callaeci
@@ -7276,6 +7749,41 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: velleius
+      locator: '2.5.1'
+      quote: >-
+        In Spain, even before the destruction of Numantia, Decimus Brutus had
+        conducted a brilliant campaign in which he penetrated to all the peoples
+        of the country … earned for himself the cognomen of Gallaecus.
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        In Hispania Ulterior, Decimus Junius Brutus successfully fought against
+        the Gallaecians. Proconsul Marcus Aemilius Lepidus obtained different
+        results against the Vaccaeans
+      supports: [polity, relation, from]
+    - source: plutarch
+      locator: 'Caesar 12.1'
+      quote: >-
+        Then he led his army against the Callaici and Lusitani, overpowered
+        them, and marched on as far as the outer sea, subduing their tribes
+        which before were not obedient to Rome.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.53.4'
+      quote: >-
+        Thence sailing along to Brigantium, a city of Callaecia, he alarmed the
+        people, who had never before seen a fleet, by the breakers which his
+        approach to land caused, and subjugated them.
+      supports: []
+    - source: florus
+      locator: '1.33.12'
+      quote: >-
+        Decimus Brutus conquered a much wider district, which included the
+        Celts and Lusitanians and all the peoples of Callaecia and the River of
+        Lethe
+      supports: []
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: villanueva-acuna-2016 }
@@ -7283,7 +7791,15 @@
   review: needs-check
   note: >-
     Independent is the literal reading; lowered to uncertain in September 2026
-    because Roman influence in Callaecia may be older (see the polity).
+    because Roman influence in Callaecia may be older (see the polity). D.
+    Brutus fought them before Numantia fell (Vell. 2.5.1; Per. 56); Florus
+    has him conquer "all the peoples of Callaecia" (1.33.12), but Plutarch has
+    Caesar, in 61, subdue Callaican tribes "which before were not obedient to
+    Rome" (Caes. 12.1), so in 133 they were free. The end is not backed:
+    Plutarch and Dio have Caesar subdue them in 61–60 ("and subjugated them",
+    Dio 37.53.4), and no readable text has them free in 27. Ending the row at
+    61–60 needs a holder for the ground after it, which no row gives yet;
+    left as it is and reported (October 2026).
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 #

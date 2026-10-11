@@ -1713,8 +1713,43 @@
         - [40.6, 43.4]
         - [39.8, 42.5]
   sources:
+    - source: strabo
+      locator: '11.2.16'
+      quote: >-
+        since Dioscurias is situated in such a gulf and occupies the most
+        easterly point of the whole sea … The same Dioscurias is the beginning
+        of the isthmus between the Caspian Sea and the Euxine
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.17'
+      quote: >-
+        Further, the greater part of the remainder of Colchis is on the sea.
+        Through it flows the Phasis, a large river having its sources in
+        Armenia and receiving the waters of the Glaucus and the Hippus, which
+        issue from the neighboring mountains.
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        Now the Moschian country, in which is situated the sanctuary, is
+        divided into three parts: one part is held by the Colchians, another by
+        the Iberians, and another by the Armenians. There is also a small city
+        in Iberia, the city of Phrixus, the present Ideessa, well fortified, on
+        the confines of Colchis.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.17'
+      quote: >-
+        and then, near Hermonassa, to Trapezus, and then to Colchis
+      supports: [construction]
+    - source: strabo
+      locator: '11.3.4'
+      quote: >-
+        Such, then, is the pass that leads from Colchis into Iberia, being
+        shut in by rocks, by strongholds, and by rivers that run through
+        ravines.
+      supports: [construction]
     - { source: appian, locator: 'Mithr. 114' }
-    - { source: strabo, locator: '11.2.16–18' }
     - { source: braund-1994, locator: 'pp. 152–170' }
   confidence: uncertain
   review: needs-check
@@ -1741,6 +1776,30 @@
         - [44.5, 42.7]
         - [42.0, 43.1]
   sources:
+    - source: strabo
+      locator: '11.3.2'
+      quote: >-
+        Parts of the country are surrounded by the Caucasian Mountains; for
+        branches of these mountains, as I said before, project towards the
+        south; they are fruitful, comprise the whole of Iberia, and border on
+        both Armenia and Colchis. In the middle is a plain intersected by
+        rivers, the largest being the Cyrus. … and empties through a narrow
+        valley into Albania
+      supports: [construction]
+    - source: strabo
+      locator: '11.3.5'
+      quote: >-
+        The pass leading from Albania into Iberia is at first hewn through
+        rock, and then leads through a marsh formed by the River Alazonius,
+        which falls from the Caucasus. The passes from Armenia into Iberia are
+        the defiles on the Cyrus and those on the Aragus.
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        They dwell on both sides of the Cyrnus, adjoining the Albanians on the
+        one hand and the Armenians on the other
+      supports: [construction]
     - { source: cassius-dio, locator: '37.1–2' }
     - { source: strabo, locator: '11.3.1–6' }
     - { source: braund-1994, locator: 'pp. 152–170' }
@@ -1770,8 +1829,29 @@
         - at: [47.5, 42.0]
           note: the crest of the Caucasus
   sources:
-    - { source: plutarch, locator: 'Pompey 34–35' }
-    - { source: strabo, locator: '11.4.1–2' }
+    - source: strabo
+      locator: '11.4.1'
+      quote: >-
+        They live between the Iberians and the Caspian Sea, their country
+        bordering on the sea towards the east and on the country of the
+        Iberians towards the west. Of the remaining sides the northern is
+        protected by the Caucasian Mountains … whereas the southern side is
+        formed by Armenia, which stretches alongside it
+      supports: [construction]
+    - source: strabo
+      locator: '11.4.2'
+      quote: >-
+        The Cyrus, which flows through Albania … Near by is also the mouth of
+        the Araxes, a turbulent stream that flows down from Armenia.
+      supports: [construction]
+    - source: plutarch
+      locator: 'Pompey 34.1'
+      quote: >-
+        The greatest of these peoples are the Albanians and the Iberians, of
+        whom the Iberians extend to the Moschian mountains and the Euxine Sea,
+        while the Albanians lie to the eastward as far as the Caspian Sea.
+      supports: [construction]
+    - { source: plutarch, locator: 'Pompey 35' }
     - { source: cassius-dio, locator: '37.3–5' }
   confidence: uncertain
   review: needs-check
@@ -1873,9 +1953,47 @@
         - [39.2, 37.9]
         - [38.6, 38.1]
   sources:
-    - { source: strabo, locator: '11.14.1–5' }
-    - { source: plutarch, locator: 'Pompey 33' }
-    - { source: cassius-dio, locator: '36.52–53, 37.5.3–4' }
+    - source: strabo
+      locator: '11.14.1'
+      quote: >-
+        As for Armenia, the southern parts of it have the Taurus situated in
+        front of them, which separates it from the whole of the country
+        between the Euphrates and the Tigris … and on the north are the
+        mountains of Parachoathras that lie above the Caspian Sea, and Albania,
+        and Iberia, and the Caucasus … and on the west are these nations and
+        the mountains Paryadres and Scydises in their extent to Lesser Armenia
+        and the river land of the Euphrates, which latter separates Armenia
+        from Cappadocia and Commagene.
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.3'
+      quote: >-
+        As for the Araxes, it first flows towards the east as far as
+        Atropatene, and then bends towards the west and towards the north and
+        flows first past Azara and then past Artaxata, Armenian cities
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        Now Tigranes was a descendant of Artaxias and held what is properly
+        called Armenia, which lay adjacent to Media and Albania and Iberia,
+        extending as far as Colchis and Cappadocia on the Euxine
+      supports: [construction]
+    - source: plutarch
+      locator: 'Pompey 33.4'
+      quote: >-
+        he must lay the rest of his losses to Lucullus, who had robbed him of
+        Syria, Phoenicia, Cilicia, Galatia, and Sophene; but that what he had
+        kept up to the present time he should continue to hold
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.5.3–4'
+      quote: >-
+        demanding back the territory of Corduene, concerning which Phraates
+        was quarrelling with Tigranes … sent Afranius into the territory at
+        once, and having occupied it without a battle, gave it to Tigranes
+      supports: [construction]
+    - { source: cassius-dio, locator: '36.52–53' }
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
   confidence: uncertain
   review: needs-check
@@ -2205,13 +2323,37 @@
         - { at: [36.62, 40.25], via: curve }
         - { at: [36.15, 40.2], via: curve }
   sources:
-    - { source: strabo, locator: '12.3.32–36' }
+    - source: strabo
+      locator: '12.3.32'
+      quote: >-
+        Above Phanaroea is the Pontic Comana
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.34'
+      quote: >-
+        when Pompey took over the authority, he appointed Archelaus priest and
+        included within his boundaries, in addition to the sacred land, a
+        territory of two schoeni (that is, sixty stadia) in circuit and ordered
+        the inhabitants to obey his rule
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.35'
+      quote: >-
+        But his son succeeded to the priesthood; and then later, Lycomedes, to
+        whom was assigned an additional territory of four hundred schoeni
+      supports: []
+    - { source: strabo, locator: '12.3.36' }
   confidence: uncertain
   review: needs-check
   note: >-
     The temple state of Ma at Comana, whose priesthood Pompey gave to Archelaus
     with a territory round it (Strabo 12.3.34); Caesar gave it to Lycomedes in
-    47. The extent is a convention round the town.
+    47. The extent is a convention round the town. Strabo gives Pompey's grant
+    as the sacred land and "a territory of two schoeni (that is, sixty stadia)
+    in circuit" (12.3.34), some 11 km round, far smaller than the outline
+    drawn, and Lycomedes' later addition as four hundred schoeni (12.3.35),
+    far larger; the outline sits between the two and follows neither (noted
+    October 2026).
 
 - id: pontus-inner
   evidence: schematic
@@ -2714,7 +2856,28 @@
         - [32.3, 40.4]
         - [31.9, 40.75]
   sources:
-    - { source: strabo, locator: '12.3.1, 12.3.41' }
+    - source: strabo
+      locator: '12.3.9'
+      quote: >-
+        On the east, then, the Paphlagonians are bounded by the Halys River; on
+        the south by Phrygians and the Galatians who settled among them; on the
+        west by the Bithynians and the Mariandyni … and on the north by the
+        Euxine. Now this country was divided into two parts, the interior and
+        the part on the sea, each stretching from the Halys River to Bithynia;
+        and Eupator not only held the coast as far as Heracleia, but also took
+        the nearest part of the interior … The remaining parts of the interior,
+        however, were subject to potentates, even after the overthrow of
+        Mithridates.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.41'
+      quote: >-
+        After Pompeiupolis comes the remainder of the interior of Paphlagonia,
+        extending westwards as far as Bithynia. … The last to reign over
+        Paphlagonia was Deiotarus, the son of Castor, surnamed Philadelphus,
+        who possessed Gangra, the royal residence of Morzeus
+      supports: [construction]
+    - { source: strabo, locator: '12.3.1' }
     - { source: appian, locator: 'Mithr. 114' }
   confidence: uncertain
   review: needs-check
@@ -2741,7 +2904,35 @@
         - [30.7, 36.2]
         - [29.0, 35.95]
   sources:
-    - { source: strabo, locator: '14.3.1–3, 13.4.17' }
+    - source: strabo
+      locator: '14.3.1'
+      quote: >-
+        After the Peraea of the Rhodians, of which Daedala is a boundary,
+        sailing next in order towards the rising sun, one comes to Lycia, which
+        extends as far as Pamphylia
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.1'
+      quote: >-
+        the whole of Lycia, towards the parts outside and on its southern side,
+        is separated by a mountainous ridge of the Taurus from the country of
+        the Cibyrans as far as the Peraea of the Rhodians
+      supports: [construction]
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        However, the tyranny ended in the time of Moagetes, when Murena
+        overthrew it and included Balbura and Bubon within the territory of the
+        Lycians.
+      supports: [construction]
+    - source: strabo
+      locator: '14.3.9'
+      quote: >-
+        Now this city too is Lycian, being situated on the borders towards
+        Pamphylia, but it has no part in the common League and is a separate
+        organization to itself.
+      supports: [construction]
+    - { source: strabo, locator: '14.3.2–3' }
     - { source: mitchell-2005 }
     - { source: behrwald-2000 }
   confidence: probable
@@ -2750,6 +2941,8 @@
     The Lycian League, a free ally of Rome, from Telmessus to Phaselis with the
     Cibyran cities Bubon and Balbura. The treaty of 24 July 46 names the towns
     assigned to it. Takes its edges from asia, asia-phrygia and cilicia.
+    Strabo calls Phaselis Lycian but "no part in the common League" in his
+    day (14.3.9); it is inside the outline on the treaty of 46.
 
 - id: caunus
   evidence: schematic
@@ -2794,7 +2987,22 @@
         - [28.95, 36.6]
     - { method: box, bbox: [27.65, 35.85, 28.3, 36.5] }
   sources:
-    - { source: strabo, locator: '14.2.2–4' }
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        The Peraea of the Rhodians begins with Daedala, a place in the Rhodian
+        territory, but ends with Mt. Phoenix, as it is called, which is also
+        in the Rhodian territory. … then to Caunus and to the Calbis, a river
+        near Caunus
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.4'
+      quote: >-
+        Next one comes to Physcus, a small town, which has a harbor and a
+        sacred precinct of Leto; and then to Loryma, a rugged coast, and to the
+        highest mountain in that part of the country; and on top of the
+        mountain is Phoenix
+      supports: [construction]
     - { source: fraser-bean-1954 }
   confidence: probable
   review: draft
