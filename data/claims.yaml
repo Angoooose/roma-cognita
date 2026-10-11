@@ -7172,7 +7172,7 @@
         Now Mithridates only returned from his wild life and succeeded to power
         in 1 1 1 15. c.', so he could scarcely send help before the following
         year
-      supports: [to]
+      supports: [from, to]
     - { source: diophantus-decree }
   confidence: probable
   review: needs-check
