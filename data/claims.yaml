@@ -16681,16 +16681,38 @@
         In the latter period, in Olympiad 162, 3, or B.c. 130-129, Porphyry
         puts the attack
       supports: []
-  confidence: probable
+    - source: schurer-1891
+      locator: 'p. 279'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        dependence on Antiochus VII. also obliged him to take the field with
+        the Syrian monarch against the Parthians in b.c. 129. … The death of
+        Antiochus in the Parthian campaign, in b.c. 128
+      supports: [relation]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+  confidence: uncertain
   review: needs-check
   note: >-
     Antiochus VII besieged Jerusalem in Hyrcanus' first year (134 or 133) and
     lifted the siege when the Jews gave up their arms and agreed to "pay
     tribute for Joppa, and the other cities which bordered upon Judea" (AJ
     13.245–248), and Justin has Antiochus subdue the Jews (36.1); Hyrcanus
-    went with him to the east in 130 (AJ 13.249–251). A vassal until the
-    king's death in 129. In 133 itself Jerusalem was under siege or had just
-    come to terms; the row is the terms' from the window's start.
+    went with him to the east (AJ 13.249–251). A vassal until the king's
+    death. In 133 itself Jerusalem was under siege or had just come to terms;
+    the row is the terms' from the window's start. Both ends are in doubt.
+    Josephus dates the invasion both to Hyrcanus' first year (135/134, as
+    Schürer reckons it) and to the 162nd Olympiad (132–128), and Porphyry
+    puts the attack in 130/129, so the terms may postdate 133. Schürer has
+    Hyrcanus march with Antiochus in 129 and the king die in 128, a year
+    later than this row's end; moving it to 129 waits on the judaea
+    client-of seleucid relation, which ends "after 130". Probable until
+    October 2026.
 
 - atom: judaea
   polity: judaea
