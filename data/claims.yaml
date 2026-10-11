@@ -15197,7 +15197,7 @@
 
 - atom: cibyra
   polity: cibyra
-  relation: independent
+  relation: allied
   from: before 133 BCE
   to: c. 83 BCE
   sources:
@@ -15223,6 +15223,21 @@
         the survival of the dynasty of Cibyra from 190 down to this period
       supports: [polity, from]
     - source: magie-1950
+      locator: 'vol. I, p. 241'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        At some time early in the second century the city erected a statue of
+        the Goddess Roma and concluded with Rome a formal treaty of friendship
+        and alliance, by the terms of which each of the contracting parties
+        bound itself by an oath to aid the other in the event of war.
+      supports: [relation, from]
+    - source: sherwin-white-1976
+      locator: 'n. 51'
+      quote: >-
+        despite the lack of mention of ‘tyrants’ in the text of the treaty of
+        the populus Cibyratis with Rome
+      supports: [relation]
+    - source: magie-1950
       locator: 'vol. I, pp. 241–242'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
       quote: >-
@@ -15234,13 +15249,13 @@
       quote: >-
         Further east the tetrapolis of Cibyra survived as independent to c.
         82
-      supports: [relation, to]
+      supports: [to]
     - source: kallet-marx-1995
       locator: 'pp. 113–114'
       quote: >-
         Cibyra, which enjoyed a treaty of alliance with Rome, remained under its
         own tyrants until captured by L. Murena in 83
-      supports: [polity, to]
+      supports: [polity, relation, to]
     - source: magie-1950
       locator: 'vol. I, p. 516'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
@@ -15252,7 +15267,10 @@
   review: needs-check
   note: >-
     The tyrants of Cibyra, until Murena "overthrew it" in the time of Moagetes
-    (Strabo 13.4.17), who gives no year. Ruled by a Moagetes "when the
+    (Strabo 13.4.17), who gives no year. Allied: the city had "a formal treaty
+    of friendship and alliance" with Rome from early in the second century
+    (Magie I 241; Sherwin-White n. 51; Kallet-Marx 113), which Murena
+    disregarded; it read independent until October 2026. Ruled by a Moagetes "when the
     Romans first came to Asia" (in 189) and similarly down to Murena (Magie I
     240–241); the dynasty survived "from 190 down to this period"
     (Sherwin-White 1976, n. 51). The end: Murena governed Asia from 84 to 81;
@@ -15426,7 +15444,7 @@
 
 - atom: bubon-balbura
   polity: cibyra
-  relation: independent
+  relation: allied
   from: before 133 BCE
   to: c. 83 BCE
   sources:
@@ -15442,7 +15460,12 @@
       quote: >-
         Further east the tetrapolis of Cibyra survived as independent to c.
         82
-      supports: [polity, relation, to]
+      supports: [polity, to]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      quote: >-
+        Cibyra, which enjoyed a treaty of alliance with Rome
+      supports: [relation]
     - source: sherwin-white-1976
       locator: 'n. 51'
       quote: >-
@@ -15465,7 +15488,9 @@
   confidence: probable
   review: needs-check
   note: >-
-    Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17).
+    Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17),
+    allied to Rome by Cibyra's treaty (as cibyra; independent until October
+    2026).
     Dated as cibyra: the dynasty lasted from 190 (Sherwin-White n. 51), and
     Murena broke up the tetrapolis in 84 (Magie I 516), 83 (Kallet-Marx 114)
     or c. 82 (Sherwin-White n. 6).
