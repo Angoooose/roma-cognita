@@ -795,7 +795,7 @@
   kind: kingdom
   names:
     - { text: Nabataea, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 96 BCE
   to: after 27 BCE
   ruler: >-
     Aretas II, c. 120/110–96; Obodas I, c. 96–85; Aretas III, c. 85–62; then
@@ -807,7 +807,7 @@
         Aretas , king of the Arabians , a person then very illustrious,
         encouraged them to go on with alacrity, and promised them that he would
         come to their assistance
-      supports: [kind, ruler]
+      supports: [kind, from, ruler]
     - source: josephus-aj
       locator: '13.375'
       quote: >-
@@ -878,7 +878,7 @@
         is spoken of at the time of the siege of Gaza by Alexander Jannaus in
         B.C. 96. … A couple of years later, about B.C. 90, Alexander Jannaus
         attacked King Obedas I.
-      supports: [kind, ruler]
+      supports: [kind, from, ruler]
     - source: schurer-1890
       locator: 'p. 355'
       url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
@@ -914,7 +914,13 @@
     is not drawn. Herod fought him on Antony's orders in 32–31 (AJ 15.108–160),
     with no change of ground. In 30 "the Arabians about Petra" burned
     Cleopatra's ships (Dio 51.7.1). Obodas (II or III in modern numbering)
-    followed Malichus c. 30 (Bowersock 1983).
+    followed Malichus c. 30 (Bowersock 1983). The kingdom was "before 133"
+    until October 2026: no readable text shows a Nabataean king between
+    Aretas I, a "prince" in 169 who had "not yet assumed the title of king"
+    (Schürer), and Aretas II, "king of the Arabians" at Alexander Jannaeus'
+    siege of Gaza in 96 (Josephus, AJ 13.360; Schürer). Schürer makes Justin's
+    Erotimus (39.5.5–6) the founder of the royal line, but Justin dates him
+    only loosely. So the kingdom now opens at 96.
 
 - id: bosporus
   kind: kingdom
