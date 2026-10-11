@@ -15313,11 +15313,62 @@
 - atom: armenia-minor
   polity: pontus-regnum
   relation: allied
-  from: { earliest: 113 BCE, latest: 90 BCE }
+  from: { earliest: 113 BCE, latest: 89 BCE }
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.28' }
-    - { source: appian, locator: 'Mithr. 17' }
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        Lesser Armenia, like Sophene, was always in the possession of
+        potentates … But when Mithridates Eupator had increased in power, he
+        established himself as master, not only of Colchis, but also of all
+        these places, these having been ceded to him by Antipater, the son of
+        Sisis.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, pp. 194–196'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        About 120 b . c . Mithradates Euergetes was assassinated in Sinope …
+        fled to the mountains of Pontus, where for seven years he lived in the
+        forests … taking the royal power into his own hands. … During these
+        years Mithradates also extended his power toward the east. By forcing
+        the ruler of Lesser Armenia — the country west and … north of the upper
+        Euphrates — to cede this district to him
+      supports: [polity, from]
+    - source: kallet-marx-1995
+      locator: 'p. 359'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Nor should Armenia Minor be forgotten—a vassal state abutting
+        Cappadocia, rich in horsemen, and under Mithridates' control by the
+        time of the war with Rome.
+      supports: [polity, from]
+    - source: kallet-marx-1995
+      locator: 'p. 252'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It is now clear that the Mithridatic War began in 89
+      supports: [from, to]
+    - source: appian
+      locator: 'Mithr. 17'
+      quote: >-
+        Of the allied forces Arcathias, the son of Mithridates, led 10,000 horse
+        from Armenia Minor
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation, to]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government
+        of Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15325,24 +15376,78 @@
     master, not only of Colchis, but also of all these places, these having been
     ceded to him by Antipater, the son of Sisis. And he cared so much for these
     places that he built seventy-five strongholds" (Strabo 12.3.28). No year is
-    given; it was his by 89 (App. Mithr. 17). Dated between his sole rule, c.
-    113 (a modern reckoning), and the war. Unclaimed before.
+    given. Magie puts it in the years after Eupator took power: his father was
+    killed about 120 and he spent seven years in the mountains before he did
+    (pp. 194–195), so not before 113. It was his by the war with Rome
+    (Kallet-Marx 359), which began in 89 (252); Arcathias led its horse in the
+    first battle (App. Mithr. 17). The range ran to 90 until October 2026, a
+    year no readable text gives; it now ends at 89. The alliance was still in
+    force in 89 (Mithr. 14), and Rome declared war in Sulla's consulship, 88
+    (Mithr. 22). Unclaimed before.
 
 - atom: galatia-pontus
   polity: pontus-regnum
   relation: allied
-  from: { earliest: 113 BCE, latest: 90 BCE }
+  from: { earliest: 113 BCE, latest: 89 BCE }
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.28' }
-    - { source: appian, locator: 'Mithr. 15' }
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        They held as subjects the Chaldaei and the Tibareni, and therefore their
+        empire extended to Trapezus and Pharnacia. But when Mithridates Eupator
+        had increased in power, he established himself as master, not only of
+        Colchis, but also of all these places
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, pp. 194–196'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        About 120 b . c . Mithradates Euergetes was assassinated in Sinope …
+        fled to the mountains of Pontus, where for seven years he lived in the
+        forests … taking the royal power into his own hands. … During these
+        years Mithradates also extended his power toward the east. … he gained
+        possession of the eastern Paryadres and also of the Euxine coast beyond
+        Pharnaceia as far as Trapezus
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine
+      supports: [polity, from]
+    - source: kallet-marx-1995
+      locator: 'p. 252'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It is now clear that the Mithridatic War began in 89
+      supports: [from, to]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation, to]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government
+        of Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Pharnacia and the coast to Colchis. Pharnacia had been Pontic since
     Pharnaces I, but the coast towards Colchis is not recorded as Pontic before
     Eupator took Colchis and Lesser Armenia (Strabo 12.3.28); drawn with Lesser
-    Armenia, and unclaimed before.
+    Armenia, and unclaimed before. Magie puts the coast to Trapezus with Lesser
+    Armenia in the years after Eupator took power, which was after his father's
+    death about 120 and seven years in the mountains (pp. 194–196), so not
+    before 113. Pelopidas counts "the Greeks bordering on the Euxine" among
+    his acquisitions on the eve of the war (App. Mithr. 15), which began in 89
+    (Kallet-Marx 252). The range ran to 90 until October 2026, a year no
+    readable text gives; it now ends at 89. To 89 as armenia-minor.
 
 - atom: pontus
   polity: rome
