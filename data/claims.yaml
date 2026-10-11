@@ -19434,20 +19434,22 @@
   polity: atropatene
   relation: client
   from: before 133 BCE
-  to: 86 BCE
+  to: 87 BCE
   sources:
     - { source: strabo, locator: '11.13.1–2' }
     - { source: schottky-1989 }
   confidence: uncertain
   review: needs-check
   note: >-
-    A vassal kingdom throughout: of Parthia, then of Tigranes, then of Parthia
-    again (relations.yaml). One row for each master.
+    One row for each master (relations.yaml): Parthia, then Tigranes, then
+    Parthia again. Mithradates II of Parthia, who "had controlled Iran", was
+    still alive in 87 (Debevoise 50); Tigranes moved only after his death.
+    Until October 2026 this ended in 86, which no text states.
 
 - atom: atropatene
   polity: atropatene
   relation: client
-  from: 85 BCE
+  from: 86 BCE
   to: 66 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
@@ -19456,8 +19458,13 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15);
-    the Atropateni fought for him in 68 (Plut. Lucullus 31.7).
+    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15)
+    after the death of Mithradates II, still alive in 87 (Debevoise 50–51);
+    no text gives the year, and the king of the Medes held his right wing at
+    Tigranocerta in 69 (Plut. Lucullus 27.6), so the start lies in 86–69; the
+    Atropateni fought for him again in 68 (31.7). Drawn from 86, its first year,
+    to follow the Parthian row; until October 2026 it read 85, which no text
+    states.
 
 - atom: atropatene
   polity: atropatene
