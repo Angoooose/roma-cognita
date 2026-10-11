@@ -2716,7 +2716,17 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
