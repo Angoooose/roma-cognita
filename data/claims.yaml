@@ -16176,18 +16176,24 @@
 - atom: judaea-idumaea
   polity: judaea
   relation: independent
-  from: { earliest: 129 BCE, latest: 111 BCE }
+  from: 129 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.257–258' }
     - { source: schurer-vermes }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     "Hyrcanus took also Dora and Marissa, cities of Idumea, and subdued all the
-    Idumeans" (AJ 13.257; "Dora" is Adora). Josephus tells it straight after
-    Antiochus' death (129); the coins and the end of occupation at Marisa have
-    led much modern work to put it c. 112–111. The range is both.
+    Idumeans" (AJ 13.257; "Dora" is Adora). The Antiquities tell it straight
+    after Antiochus VII's death (13.254), the Jewish War while he was away on
+    his expedition against the Medes (BJ 1.62); his death is put in 129
+    (Gutschmid) or 128 (Schürer 1891, 177–178). The coins and the end of
+    occupation at Marisa have led much modern work (Schürer–Vermes, not read)
+    to put it c. 112–111. Until October 2026 the start was the range 129–111,
+    drawn at its midpoint (120), which left 129–121 blank after the Seleucid
+    row; it is now drawn from 129, the earliest year, and lowered from
+    probable.
 
 - atom: judaea-idumaea
   polity: judaea
