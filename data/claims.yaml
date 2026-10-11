@@ -7349,7 +7349,7 @@
   polity: albania
   relation: client
   from: 65 BCE
-  to: after 27 BCE
+  to: after 36 BCE
   sources:
     - source: cassius-dio
       locator: '37.5.1'
@@ -7370,12 +7370,31 @@
         Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
         the Iberians.
       supports: [from]
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        when Gellius and Nerva were now holding office … with this king he
+        invaded Albania, the adjoining country, and, after
+        overcoming the inhabitants and their king Zober, conciliated them
+        likewise
+      supports: [polity, relation, to]
+    - source: res-gestae
+      locator: '31'
+      quote: >-
+        and the kings of the Albanians and the Iberians and the Medes sent
+        embassies to seek our friendship
+      supports: []
     - { source: plutarch, locator: 'Pompey 35' }
     - { source: cassius-dio, locator: '37.3–5' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Oroeses sued for peace after Pompey's campaign of 65.
+    Oroeses sued for peace after Pompey's campaign of 65. Last attested in 36,
+    when Canidius, in the year of Gellius and Nerva, beat Zober and
+    "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the row
+    ends open there. Augustus records their kings' embassies seeking his
+    friendship (Res Gestae 31) without a date. Until October 2026 the row ran
+    to after 27 BCE, which no readable text supports.
 
 - atom: armenia
   polity: armenia
