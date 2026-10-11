@@ -5301,7 +5301,7 @@
         I recovered all the provinces beyond the Adriatic sea towards the east,
         together with Cyrene, the greater part of them being then occupied by
         kings.
-      supports: [kind, to]
+      supports: [kind]
     - source: velleius
       locator: '2.84.1'
       quote: >-
