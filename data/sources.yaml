@@ -140,6 +140,22 @@
     given as the citation's url; page numbers are the running heads.
     Superseded by schurer-vermes, which is not open.
 
+- id: schurer-1910
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division II, vol. I, trans. S. Taylor and P. Christie (Edinburgh: T. & T.
+    Clark, 1910 printing)
+  url: https://archive.org/details/p2historyofjewishp01schuoft
+  note: >-
+    The Hellenistic towns of Palestine one by one (§ 23): who held Gaza,
+    Ascalon, Azotus, Iamnia, Joppa, Strato's Tower and Dora, and when. A scan
+    on archive.org, readable without borrowing. Quote from its full text,
+    https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt,
+    given as the citation's url; page numbers are the running heads, which
+    come before each page's text. Superseded by schurer-vermes-ii, which is
+    not open.
+
 - id: myers-2010
   kind: modern
   citation: E. A. Myers, The Ituraeans and the Roman Near East (Cambridge, 2010)

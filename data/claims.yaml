@@ -10783,11 +10783,44 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: cassius-dio, locator: '48.26.1' }
-    - { source: josephus-aj, locator: '14.333' }
+    - source: cassius-dio
+      locator: '48.26.1'
+      quote: >-
+        After the death of Saxa, Pacorus made himself master of Syria and
+        subjugated all of it except Tyre
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.333'
+      quote: >-
+        Now the Tyrians excluded Pacorus, but the Sidontans and those of
+        Ptolemais received him.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Pacorus marched along to the Phoenician coast
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 393'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The Parthians were indeed driven out of Syria in b.c. 39 by Ventidius,
+        the legate of Antony
+      supports: [to]
   confidence: certain
   review: draft
-  note: All Syria but Tyre (Dio 48.26.1); Ptolemais received Pacorus (AJ 14.333).
+  note: >-
+    All Syria but Tyre (Dio 48.26.1); Ptolemais received Pacorus (AJ 14.333).
+    The invasion was in 40 and Ventidius drove the Parthians out of Syria in
+    39 (Schürer 389, 393), which belongs to the province again.
 
 - atom: palaestina-coast
   polity: parthia
@@ -10795,11 +10828,43 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.333' }
-    - { source: cassius-dio, locator: '48.26.2' }
+    - source: josephus-aj
+      locator: '14.333'
+      quote: >-
+        Pacorus went along the maritime parts, but the commander Barzapharnes
+        through the midland.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        Pacorus secured all the rest of Syria. He then invaded Palestine
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.16.5'
+      quote: >-
+        Palestine; for this is the name that has been given from of old to the
+        whole country extending from Phoenicia to Egypt along the inner sea
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 393'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The Parthians were indeed driven out of Syria in b.c. 39 by Ventidius,
+        the legate of Antony
+      supports: [to]
   confidence: probable
   review: draft
-  note: Pacorus "went along the maritime parts" towards Judaea (AJ 14.333) and "invaded Palestine" (Dio 48.26.2).
+  note: >-
+    Pacorus "went along the maritime parts" towards Judaea (AJ 14.333) and
+    "invaded Palestine" (Dio 48.26.2), which for Dio is the whole coast from
+    Phoenicia to Egypt (37.16.5). In 40, gone in 39 (Schürer 389, 393).
 
 - atom: strato-tower
   polity: parthia
@@ -10807,10 +10872,41 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.333' }
+    - source: josephus-aj
+      locator: '14.333'
+      quote: >-
+        Pacorus went along the maritime parts, but the commander Barzapharnes
+        through the midland.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        Pacorus secured all the rest of Syria. He then invaded Palestine
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.16.5'
+      quote: >-
+        Palestine; for this is the name that has been given from of old to the
+        whole country extending from Phoenicia to Egypt along the inner sea
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 393'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The Parthians were indeed driven out of Syria in b.c. 39 by Ventidius,
+        the legate of Antony
+      supports: [to]
   confidence: probable
   review: draft
-  note: As palaestina-coast.
+  note: >-
+    As palaestina-coast.
 
 - atom: gaza
   polity: parthia
@@ -10818,10 +10914,36 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.333' }
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        Pacorus secured all the rest of Syria. He then invaded Palestine
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.16.5'
+      quote: >-
+        Palestine; for this is the name that has been given from of old to the
+        whole country extending from Phoenicia to Egypt along the inner sea
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 393'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The Parthians were indeed driven out of Syria in b.c. 39 by Ventidius,
+        the legate of Antony
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: As palaestina-coast; Gaza is not named.
+  note: >-
+    As palaestina-coast. Gaza is not named: only Dio's "Palestine" (48.26.2),
+    the coast "from Phoenicia to Egypt" (37.16.5), takes it in.
 
 # Judaea: Antigonus and Herod
 
@@ -10831,18 +10953,74 @@
   from: 40 BCE
   to: 38 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369' }
-    - { source: cassius-dio, locator: '48.26.2' }
+    - source: josephus-aj
+      locator: '14.365'
+      quote: >-
+        And thus was Antigonus brought back into Judea by the king of the
+        Parthians, and received Hyrcanus and Phasaelus for his prisoners
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 390'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Afterwards the Parthians carried away Hyrcanus with them as a prisoner,
+        and set up Antigonus as king
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 398, n. 11'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from tlie statement of Josephus it must certainly be concluded that the
+        fall of the city did not occur before B.c. 37
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: []
+    - source: cassius-dio
+      locator: '49.23.1'
+      quote: >-
+        This was the course of events in the consulship of Claudius and Norbanus
+      supports: []
     - { source: debevoise-1938, locator: 'p. 113' }
   confidence: probable
   review: draft
   note: >-
     The Parthians took Jerusalem in 40, carried off Hyrcanus and made
-    Antigonus king (AJ 14.330–369). From 39 Herod, whom the senate had made king
-    in 40, took Joppa, relieved Masada and by the winter of 39/38 held
-    Galilee (AJ 14.394–399, 14.413–415) — Idumaea and Galilee were part of
-    this atom then (their own atoms since the extension to 133 carry the same
-    rows), so it is drawn Antigonus' to the fall of Jerusalem.
+    Antigonus king (AJ 14.330–369; Schürer 389–390); the senate declared him
+    an enemy and made Herod king in the consulship of Calvinus and Pollio, 40
+    (AJ 14.384–389). From 39 Herod took Joppa, relieved Masada and by the
+    winter of 39/38 held Galilee (AJ 14.394–399, 14.413–415) — Idumaea and
+    Galilee were part of this atom then (their own atoms since the extension
+    to 133 carry the same rows), so it is drawn Antigonus' to the fall of
+    Jerusalem: in the consulship of Agrippa and Gallus, 37 (AJ 14.487), which
+    Schürer follows; Dio tells it under Claudius and Norbanus, 38
+    (49.22–23.1).
 
 - atom: judaea
   polity: judaea
@@ -10850,18 +11028,53 @@
   from: 37 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.487' }
-    - { source: cassius-dio, locator: '49.22.3–6' }
-    - { source: strabo, locator: '16.2.46' }
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 398, n. 11'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from tlie statement of Josephus it must certainly be concluded that the
+        fall of the city did not occur before B.c. 37
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.23.1'
+      quote: >-
+        This was the course of events in the consulship of Claudius and Norbanus
+      supports: []
+    - source: strabo
+      locator: '16.2.46'
+      quote: >-
+        he received the title and authority of king, first from Antony, and
+        afterwards from Augustus Caesar
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain, thirty-four
+        years; but since he had been declared king by the Romans, thirty-seven
+      supports: [to]
     - { source: schurer-vermes, locator: 'vol. I' }
   confidence: probable
   review: draft
   note: >-
     Sosius and Herod took Jerusalem "when Marcus Agrippa and Caninius Gallus
-    were consuls" (AJ 14.487), 37, the majority date; the same sentence counts
-    "twenty-seven years" from 63, which gives 36, and Dio tells it under 38
-    (49.22.3–6). Herod "received the title and authority of king, first from
-    Antony, and afterwards from Augustus" (Strabo 16.2.46).
+    were consuls" (AJ 14.487), 37, the majority date and Schürer's; the same
+    sentence counts "twenty-seven years" from 63, which gives 36, and Dio
+    tells it under Claudius and Norbanus, 38 (49.22.3–23.1). Herod "received
+    the title and authority of king, first from Antony, and afterwards from
+    Augustus" (Strabo 16.2.46), and reigned thirty-four years from Antigonus'
+    death (AJ 17.191).
 
 - atom: judaea-jericho
   polity: judaea-antigonus
@@ -10869,10 +11082,45 @@
   from: 40 BCE
   to: 38 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369' }
+    - source: josephus-aj
+      locator: '14.365'
+      quote: >-
+        And thus was Antigonus brought back into Judea by the king of the
+        Parthians, and received Hyrcanus and Phasaelus for his prisoners
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 395'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        At Jericho he encountered the army of Antigonus
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [to]
   confidence: probable
   review: draft
-  note: As judaea.
+  note: >-
+    As judaea. Herod met Antigonus' army at Jericho in 38 (Schürer 395).
 
 - atom: judaea-jericho
   polity: judaea
@@ -10880,9 +11128,28 @@
   from: 37 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.487' }
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    As judaea, to Cleopatra's grant (the next row).
 
 - atom: judaea-jericho
   polity: aegyptus
@@ -10890,17 +11157,64 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: plutarch, locator: 'Antony 36.2' }
-    - { source: josephus-bj, locator: '1.361–362' }
-    - { source: josephus-aj, locator: '15.96' }
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus, and a large part of
+        Cilicia; and still further, the balsam-producing part of Judaea
+      supports: [polity, relation]
+    - source: josephus-bj
+      locator: '1.361'
+      quote: >-
+        He also took away a great deal of their country; nay, even the
+        plantation of palm trees at Jericho, where also grows the balsam tree,
+        and bestowed them upon her
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '15.96'
+      quote: >-
+        where Herod met her, and farmed of her parts of Arabia, and those
+        revenues that came to her from the region about Jericho
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     "The balsam-producing part of Judaea" (Plut. Antony 36.2): Jericho's palms
     and balsam went to Cleopatra, and Herod leased them back "at the yearly
-    rent of two hundred talents" (BJ 1.361–362; AJ 15.96). Plutarch has the gift
-    in the winter of 37/36; Josephus tells it with her journey of 34. 36 is
-    drawn.
+    rent of two hundred talents" (BJ 1.361–362; AJ 15.96). Plutarch has the
+    gift in the winter of 37/36 and Dio in 36 (49.32.5–33.1); Josephus tells
+    it with her journey of 34. 36 is drawn. Hers until she died in 30 (Schürer
+    428).
 
 - atom: judaea-jericho
   polity: judaea
@@ -10908,10 +11222,40 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        restored that country to him again, which, by her means, had been taken
+        away from him. He also added to his kingdom Gadara, Hippos, and Samaria;
+        and, besides those, the maritime cities, Gaza, and Anthedon, and Joppa,
+        and Strato's Tower.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        confirmed him in his royal rank
+      supports: [relation]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        Idumea, and Judea, and the country of Samaria paid tribute to Archelaus
+      supports: [to]
   confidence: certain
   review: draft
-  note: Octavian "restored that country to him again" (AJ 15.217).
+  note: >-
+    Octavian "restored that country to him again" (AJ 15.217) after Antony and
+    Cleopatra died in 30 (Schürer 428); Judaea was still Herod's at his death
+    (AJ 17.317–320).
 
 - atom: judaea-joppa
   polity: judaea-antigonus
@@ -10919,10 +11263,41 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.396' }
+    - source: josephus-aj
+      locator: '14.396'
+      quote: >-
+        Joppa was a hinderance to him, for it was necessary for him to take that
+        place first, it being a city at variance with him
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        when Herod, in b.c. 39, landed at Ptolemais. … First of all Joppa fell
+        into his hands.
+      supports: [to]
   confidence: probable
   review: draft
-  note: Joppa was "a city at variance with" Herod until he took it in 39 (AJ 14.396–397).
+  note: >-
+    Joppa was "a city at variance with" Herod until he took it in 39 (AJ
+    14.396–397; Schürer 394).
 
 - atom: judaea-joppa
   polity: judaea
@@ -10930,12 +11305,46 @@
   from: 39 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.396–397' }
+    - source: josephus-aj
+      locator: '14.396–397'
+      quote: >-
+        but when Herod had taken Joppa, he made haste to set free those of his
+        family that were in Masada
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        when Herod, in b.c. 39, landed at Ptolemais. … First of all Joppa fell
+        into his hands.
+      supports: [polity, from]
+    - source: schurer-1910
+      locator: 'p. 82, n. 112'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        it must be supposed that it was his from the beginning of his reign, and
+        that he then obtained it again in the year 30, after the short
+        interregnum of Cleopatra
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        Antony informed them further, that it was for their advantage in the
+        Parthian war that Herod should be king. This seemed good to all the
+        senators; and so they made a decree accordingly.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Herod's from 39. The client relation of Judaea to Rome is drawn from 37,
-    with the fall of Jerusalem; Herod was Rome's king from 40.
+    Herod's from 39 (Schürer 394). The client relation of Judaea to Rome is
+    drawn from 37, with the fall of Jerusalem; Herod was Rome's king from 40
+    (AJ 14.384–389). To Cleopatra's grant (the next row).
 
 - atom: judaea-joppa
   polity: aegyptus
@@ -10943,14 +11352,56 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        he took some parts of each of those countries away from their former
+        governors, and gave them to her. Thus he gave her the cities that were
+        within the river Eleutherus, as far as Egypt, excepting Tyre and Sidon
+      supports: [polity, relation]
+    - source: schurer-1910
+      locator: 'p. 82'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        like the other coast towns, it belonged, during the years 34-30 B.C., to
+        Cleopatra
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
-    Within Cleopatra's grant of the cities "within the river Eleutherus, as far
-    as Egypt" (AJ 15.95), and among the cities Octavian gave Herod in 30 (AJ
-    15.217) — so Herod had lost it. An inference, but a strong one.
+    Within Cleopatra's grant of the cities "within the river Eleutherus, as
+    far as Egypt" (AJ 15.95), and among the cities Octavian gave Herod in 30
+    (AJ 15.217) — so Herod had lost it; Schürer has it hers "during the years
+    34-30" (II 82). Dio dates the grant to 36 (49.32.5–33.1).
 
 - atom: judaea-joppa
   polity: judaea
@@ -10958,10 +11409,46 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
-    - { source: josephus-bj, locator: '1.396' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        restored that country to him again, which, by her means, had been taken
+        away from him. He also added to his kingdom Gadara, Hippos, and Samaria;
+        and, besides those, the maritime cities, Gaza, and Anthedon, and Joppa,
+        and Strato's Tower.
+      supports: [polity, relation]
+    - source: josephus-bj
+      locator: '1.393–396'
+      quote: >-
+        had put the diadem again about his head … when Caesar was come into
+        Egypt, and Cleopatra and Antony were dead, he did not only bestow other
+        marks of honor upon him, but made an addition to his kingdom, by giving
+        him not only the country which had been taken from him by Cleopatra, but
+        besides that, Gadara, and Hippos, and Samaria; and moreover, of the
+        maritime cities, Gaza and Anthedon, and Joppa, and Strato's Tower
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        There were also certain of the cities which paid tribute to Archelaus:
+        Strato's Tower and Sebaste, with Joppa and Jerusalem; for as to Gaza,
+        and Gadara, and Hippos, they were Grecian cities, which Caesar separated
+        from his government, and added them to the province of Syria
+      supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    Given back to Herod after Antony and Cleopatra died in 30 (AJ 15.217; BJ
+    1.396; Schürer 428), and his at his death (AJ 17.317–320).
 
 # Cleopatra's coast, 36–31, and what Octavian gave Herod in 30
 
@@ -10971,20 +11458,75 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: plutarch, locator: 'Antony 36.2' }
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: josephus-bj, locator: '1.361' }
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus, and a large part of
+        Cilicia; and still further, the balsam-producing part of Judaea
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        he took some parts of each of those countries away from their former
+        governors, and gave them to her. Thus he gave her the cities that were
+        within the river Eleutherus, as far as Egypt, excepting Tyre and Sidon
+      supports: [polity, relation]
+    - source: josephus-bj
+      locator: '1.361'
+      quote: >-
+        bestowed them upon her; as also all the cities on this side the river
+        Eleutherus, Tyre and Sidon excepted
+      supports: [polity]
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        bestowed upon Cleopatra the entire Philistinian and Phoenician coast,
+        from the borders of Egypt to Eleutherus, with the sole exception of Tyre
+        and Sidon
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
     - { source: bingen-2007 }
   confidence: probable
   review: needs-check
   note: >-
     Antony gave Cleopatra "Phoenicia, Coele Syria" (Plut. Antony 36.2), "the
     cities that were within the river Eleutherus, as far as Egypt, excepting
-    Tyre and Sidon" (AJ 15.95). She began a second count of her regnal years in
-    37/36, "more or less directly connected with … the first territorial
-    concessions" (Bingen 2007); Josephus tells the gift with the events of 34.
-    Drawn as her holding, not only its revenues: Josephus has Antony take the
-    cities from their governors and give them to her.
+    Tyre and Sidon" (AJ 15.95). She began a second count of her regnal years
+    in 37/36, "more or less directly connected with … the first territorial
+    concessions" (Bingen 2007); Dio has the gift in 36 (49.32.5–33.1) and
+    Josephus tells it with the events of 34. Drawn as her holding, not only
+    its revenues: Josephus has Antony take the cities from their governors and
+    give them to her. Hers until she died in 30 (Schürer 428).
 
 - atom: phoenicia
   polity: syria
@@ -10992,13 +11534,49 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '51.2.1' }
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        after the fall of Antony and Cleopatra, whose authority had ceased of
+        itself
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.8'
+      quote: >-
+        in the beginning and for a long period thereafter they were administered
+        two and three together
+      supports: [polity]
   confidence: probable
   review: draft
   note: >-
     Octavian took back what the kings had received from Antony (Dio 51.2.1),
-    and gave Herod only Gaza, Anthedon, Joppa and Strato's Tower on this coast;
-    the rest is taken to have gone back to the province.
+    and Cleopatra's authority "had ceased of itself" with her death in 30
+    (Schürer II 62, I 428); he gave Herod only Gaza, Anthedon, Joppa and
+    Strato's Tower on this coast. Phoenicia was Caesar's, with Coele-Syria, in
+    27, the two then governed together (Dio 53.12.7–8).
 
 - atom: palaestina-coast
   polity: aegyptus
@@ -11006,12 +11584,57 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        he took some parts of each of those countries away from their former
+        governors, and gave them to her. Thus he gave her the cities that were
+        within the river Eleutherus, as far as Egypt, excepting Tyre and Sidon
+      supports: [polity, relation]
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        bestowed upon Cleopatra the entire Philistinian and Phoenician coast,
+        from the borders of Egypt to Eleutherus, with the sole exception of Tyre
+        and Sidon
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    Within the Eleutherus-to-Egypt clause (AJ 15.95); Ascalon, free since 104,
-    is not named among the exceptions but may have been one.
+    Within the Eleutherus-to-Egypt clause (AJ 15.95), "the entire Philistinian
+    and Phoenician coast" (Schürer II 62); Ascalon, free since 104, is not
+    named among the exceptions but may have been one. Dio dates the grant to
+    36 (49.32.5–33.1).
 
 - atom: palaestina-coast
   polity: syria
@@ -11019,13 +11642,60 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '51.2.1' }
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        after the fall of Antony and Cleopatra, whose authority had ceased of
+        itself
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: schurer-1910
+      locator: 'p. 90'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        it was under direct Eoman government, and therefore never belonged to
+        Herod (whose dominions on the coast extended no farther northward than
+        Caesarea)
+      supports: [polity, relation, to]
+    - source: schurer-1910
+      locator: 'p. 76'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Ascalon was never in the possession of Herod and his successors
+      supports: []
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        restored that country to him again, which, by her means, had been taken
+        away from him. He also added to his kingdom Gadara, Hippos, and Samaria;
+        and, besides those, the maritime cities, Gaza, and Anthedon, and Joppa,
+        and Strato's Tower.
+      supports: []
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Augustus bestowed upon Herod all the coast towns from Gaza to Straton's
+        Tower, with the exception of Ascalon
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
-    Not in Octavian's list of cities for Herod (AJ 15.217), so taken to have
-    gone back to the province. Herod held Iamnia and Azotus at his death, but
-    when he got them is not known.
+    Dora was "under direct Roman government" and never Herod's (Schürer II
+    90), and Ascalon never his (II 76). Iamnia and Azotus are not in
+    Octavian's list for Herod in 30 (AJ 15.217), so they are drawn as the
+    province's; but Herod left them to Salome (AJ 17.321), and Schürer has
+    Augustus give Herod "all the coast towns from Gaza to Straton's Tower,
+    with the exception of Ascalon" (II 62), so they may have been his from 30.
 
 - atom: strato-tower
   polity: aegyptus
@@ -11033,9 +11703,55 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        he took some parts of each of those countries away from their former
+        governors, and gave them to her. Thus he gave her the cities that were
+        within the river Eleutherus, as far as Egypt, excepting Tyre and Sidon
+      supports: [polity, relation]
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        bestowed upon Cleopatra the entire Philistinian and Phoenician coast,
+        from the borders of Egypt to Eleutherus, with the sole exception of Tyre
+        and Sidon
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
   confidence: probable
   review: needs-check
+  note: >-
+    Within the Eleutherus-to-Egypt clause (AJ 15.95); Dio dates the grant to
+    36 (49.32.5–33.1). Hers until she died in 30 (Schürer 428).
 
 - atom: strato-tower
   polity: judaea
@@ -11043,13 +11759,47 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
-    - { source: josephus-bj, locator: '1.396' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        restored that country to him again, which, by her means, had been taken
+        away from him. He also added to his kingdom Gadara, Hippos, and Samaria;
+        and, besides those, the maritime cities, Gaza, and Anthedon, and Joppa,
+        and Strato's Tower.
+      supports: [polity, relation]
+    - source: josephus-bj
+      locator: '1.393–396'
+      quote: >-
+        had put the diadem again about his head … when Caesar was come into
+        Egypt, and Cleopatra and Antony were dead, he did not only bestow other
+        marks of honor upon him, but made an addition to his kingdom, by giving
+        him not only the country which had been taken from him by Cleopatra, but
+        besides that, Gadara, and Hippos, and Samaria; and moreover, of the
+        maritime cities, Gaza and Anthedon, and Joppa, and Strato's Tower
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        There were also certain of the cities which paid tribute to Archelaus:
+        Strato's Tower and Sebaste, with Joppa and Jerusalem; for as to Gaza,
+        and Gadara, and Hippos, they were Grecian cities, which Caesar separated
+        from his government, and added them to the province of Syria
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     "Of the maritime cities, Gaza and Anthedon, and Joppa, and Strato's Tower"
-    (AJ 15.217), added to Herod's kingdom by Octavian in 30.
+    (AJ 15.217), added to Herod's kingdom by Octavian after Antony and
+    Cleopatra died in 30 (Schürer 428); his at his death (AJ 17.317–320).
 
 - atom: gaza
   polity: aegyptus
@@ -11057,9 +11807,54 @@
   from: 36 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        he took some parts of each of those countries away from their former
+        governors, and gave them to her. Thus he gave her the cities that were
+        within the river Eleutherus, as far as Egypt, excepting Tyre and Sidon
+      supports: [polity, relation]
+    - source: schurer-1910
+      locator: 'p. 62'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        bestowed upon Cleopatra the entire Philistinian and Phoenician coast,
+        from the borders of Egypt to Eleutherus, with the sole exception of Tyre
+        and Sidon
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        because he had presented them with extensive portions of Arabia, … and
+        also extensive portions of Phoenicia and Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 402, n. 5'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Both writers assign these proceedings to the year B.c. 36. … According
+        to Josephus, on the other hand, the presentation of portions of Arabia,
+        Judea, and Phoenicia took place in B.c. 34
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [to]
   confidence: probable
   review: needs-check
+  note: >-
+    As strato-tower.
 
 - atom: gaza
   polity: judaea
@@ -11067,11 +11862,46 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.217' }
-    - { source: josephus-bj, locator: '1.396' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        restored that country to him again, which, by her means, had been taken
+        away from him. He also added to his kingdom Gadara, Hippos, and Samaria;
+        and, besides those, the maritime cities, Gaza, and Anthedon, and Joppa,
+        and Strato's Tower.
+      supports: [polity, relation]
+    - source: josephus-bj
+      locator: '1.393–396'
+      quote: >-
+        had put the diadem again about his head … when Caesar was come into
+        Egypt, and Cleopatra and Antony were dead, he did not only bestow other
+        marks of honor upon him, but made an addition to his kingdom, by giving
+        him not only the country which had been taken from him by Cleopatra, but
+        besides that, Gadara, and Hippos, and Samaria; and moreover, of the
+        maritime cities, Gaza and Anthedon, and Joppa, and Strato's Tower
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After Augustus in Egypt had done with Antony, who, as well as Cleopatra,
+        had committed suicide in August b.c. 30, … Augustus now gave him back,
+        not only the district of Jericho, but also Gadara, Hippos, Samaria,
+        Gaza, Anthedon, Joppa, and Straton's Tower
+      supports: [from]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        There were also certain of the cities which paid tribute to Archelaus:
+        Strato's Tower and Sebaste, with Joppa and Jerusalem; for as to Gaza,
+        and Gadara, and Hippos, they were Grecian cities, which Caesar separated
+        from his government, and added them to the province of Syria
+      supports: [to]
   confidence: certain
   review: draft
-  note: As strato-tower.
+  note: >-
+    As strato-tower. Augustus took Gaza from Herod's heirs and added it to
+    Syria (AJ 17.320).
 
 - atom: samaria
   polity: judaea
