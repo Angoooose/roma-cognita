@@ -3598,9 +3598,30 @@
   from: 85 BCE
   to: 66 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
-    - { source: plutarch, locator: 'Lucullus 27.6, 31.7' }
-    - { source: cassius-dio, locator: '36.14.2' }
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        he subjugated to himself the rulers of Atropene and Gordyaea, and along
+        with these the rest of Mesopotamia
+      supports: [type, of]
+    - source: plutarch
+      locator: 'Lucullus 27.6'
+      quote: >-
+        the king himself occupying the centre, and assigning the left wing to
+        the king of the Adiabeni, the right to the king of the Medes.
+      supports: [type]
+    - source: plutarch
+      locator: 'Lucullus 31.7'
+      quote: >-
+        set upon the Atropateni, who were stationed opposite him with the
+        magnates of the king's following
+      supports: [type]
+    - source: cassius-dio
+      locator: '36.14.2'
+      quote: >-
+        the other Mithridates from Media, the son-in-law of Tigranes, fell
+        suddenly upon the Romans while they were scattered
+      supports: [type]
   confidence: uncertain
   review: needs-check
   note: >-
