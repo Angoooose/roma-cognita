@@ -2629,7 +2629,7 @@
   names:
     - { text: Aedes Iunonis Reginae, lang: la, preferred: true }
     - { text: Temple of Juno Regina in the Porticus Metelli, lang: en }
-  from: 179 BCE
+  from: { earliest: 179 BCE, latest: 146 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2647,7 +2647,9 @@
     is now taken to be M. Aemilius Lepidus's temple dedicated in 179 BCE (Livy
     40.52.1), which Metellus's porticus later enclosed (Digital Augustan Rome,
     Porticus Octaviae); Platner & Ashby's own article on Juno Regina put that one
-    elsewhere. Six columns across its front.
+    elsewhere, and their article on Jupiter Stator has Metellus build both temples
+    after his triumph of 146. The start was 179 BCE until October 2026 and is now the
+    range of the two readings. Six columns across its front.
 
 - id: aedes-herculis-musarum
   kind: temple
