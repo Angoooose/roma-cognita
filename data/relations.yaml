@@ -547,12 +547,50 @@
   from: 66 BCE
   to: 28 BCE
   sources:
+    - source: kallet-marx-1995
+      locator: 'p. 319'
+      quote: >-
+        when in 66 news reached Pompey of the transfer to him of command of the
+        Mithridatic War (Dio 36.45.1). Metellus was now left to complete the
+        subjugation of Crete after a bitter three years' conflict. Metellus
+        imposed terms on the Cretans that signified the end of their long-lived
+        independence, doubtless including the payment of vectigalia to Rome
+      supports: [type, of, from]
+    - source: livy-per
+      locator: '100'
+      quote: >-
+        tribune Gaius Manilius passed a law that transferred the [Third]
+        Mithridatic War to Pompey … Having subdued the Cretans, Quintus
+        Metellus gave laws to their island, which had until then been
+        independent
+      supports: [type, from]
+    - source: cassius-dio
+      locator: '36.42.3'
+      quote: >-
+        the day on which Lucius Tullus and Aemilius Lepidus entered upon their
+        consulship
+      supports: [from]
+    - source: velleius
+      locator: '2.34.1'
+      quote: >-
+        During the same period the island of Crete was brought under the
+        sovereignty of the Roman people by Quintus Metellus
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Crete and the Cyrenaic portion of Libya … were held to belong to the
+        people and the senate
+      supports: [to]
     - { source: velleius, locator: '2.38.6' }
-    - { source: livy-per, locator: '100' }
     - { source: cassius-dio, locator: '36.17a–19' }
   confidence: probable
   review: draft
-  note: 'After the conquest by Metellus, 69–67.'
+  note: >-
+    After the conquest by Metellus, 69–67. From the laws he gave the island in
+    66 (Livy Per. 100, with Manilius' law, which Dio dates to the consuls of
+    66, 36.42.3–4; Kallet-Marx p. 319) to 28: in 27 Crete went to the people
+    with Cyrene as one province (Dio 53.12.4).
 
 - polity: syria
   type: province-of
@@ -866,8 +904,37 @@
   from: c. 80 BCE
   to: after 27 BCE
   sources:
+    - source: cicero-verr
+      locator: '2.1.63'
+      quote: >-
+        when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
+        and to king Sadala
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. II, 80 B.C., p. 81'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Legate, then Legatus pro quaestore, under Cn. Dolabella in Cilicia
+      supports: [from]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were … Sadalas of Thrace
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '51.25.4–5'
+      quote: >-
+        he overran the rest of the country except the territory of the Odrysae
+        … These he spared because they are attached to the service of Dionysus
+        … and he also granted them the land in which they magnify the god
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '54.20.3'
+      quote: >-
+        In Thrace somewhat earlier Marcus Lollius, while aiding Rhoemetalces,
+        the uncle and guardian of the sons of Cotys, had subjugated the Bessi
+      supports: [type, of, to]
     - { source: sullivan-1990 }
-    - { source: cicero-verr, locator: '2.1.63' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1642,14 +1709,45 @@
   from: before 133 BCE
   to: 90 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
-    - { source: justin, locator: '37.1, 38.5' }
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        the Mithridates surnamed Euergetes (the Benefactor), who was the first
+        of them inscribed as a friend of the Roman people, and who even sent
+        some ships and a small force of auxiliaries to aid them against the
+        Carthaginians
+      supports: [type, of, from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … Rewards were then bestowed on
+        the princes who had given aid against Aristonicus; to Mithridates of
+        Pontus was allotted Greater Phrygia
+      supports: [type, of, from]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Mithridates, who is your friend and ally, calls upon you as friends and
+        allies (for so the treaty reads)
+      supports: [type, of]
+    - { source: appian, locator: 'Mithr. 11, 13, 56–57' }
+    - { source: justin, locator: '38.5' }
   confidence: probable
   review: needs-check
   note: >-
     Mithridates V fought for Rome against Aristonicus and was rewarded with
     Greater Phrygia (Justin 37.1); his son was still formally a friend and ally
-    of Rome until the war of 89 (App. Mithr. 10–13, 56–57).
+    of Rome until the war of 89 (App. Mithr. 10–13, 56–57). In force in 133:
+    Euergetes was a friend of Rome in the Third Punic War and rewarded after
+    Aristonicus' capture (130). The end is not backed: no readable text
+    dates the break to 89. Mithridates' envoy still invoked the treaty after
+    Nicomedes' raid (Mithr. 12), which followed his restoration in 89 (Livy
+    Per. 74, in the year of Pompeius' consulship); Appian puts the first clash
+    "about the 173rd Olympiad", 88/87 (Mithr. 17), and Livy the king's
+    seizure of Bithynia and Cappadocia in the book of Sulla's consulship, 88
+    (Per. 77). On those the alliance would run to 89; left at 90 because the
+    claims on Pontus' own ground (outside this research) change hands at
+    89/90 too.
 
 # --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
 
