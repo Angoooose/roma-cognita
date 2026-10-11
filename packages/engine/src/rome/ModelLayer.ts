@@ -790,6 +790,23 @@ function roofPaint(seed: F, across: F, down: F, run: F) {
 }
 
 /**
+ * A stuccoed wall over courses that each stand back a little from the one under it
+ * (`SKIN.courses`), as the Tabularium's Forum face: 25 courses over its 15.3 m
+ * (Delbrück 1907, p. 29), each one's foot a faint line of shadow under the thin
+ * stucco. `height` is metres above the sea, so the courses run level. Fades to plain
+ * as they get too fine to draw.
+ */
+function coursesPaint(height: F) {
+  const px = fwidth(height).max(0.005)
+  const lines = float(1).sub(smoothstep(0.05, 0.16, px))
+  const course = float(15.32 / 25)
+  const inRow = height.sub(floor(height.div(course)).mul(course))
+  const w = px.mul(0.8).max(0.03)
+  const line = float(1).sub(band(inRow, w, course, px))
+  return mix(float(1), float(0.88), line.mul(lines))
+}
+
+/**
  * Squared stone laid dry in courses (`SKIN.ashlar`), as the Servian Wall's is: courses
  * of two Roman feet (0.59 m), blocks laid alternately end-out and side-out course by
  * course (Platner & Ashby, Murus Servii Tullii; Middleton 1892), each a little lighter
@@ -855,7 +872,7 @@ function material(occlusion: Occlusion, viewM: F, origin: THREE.Vector2) {
   // What a face is painted with (`SKIN`, below): a tree's is only that it is one.
   const skin = attribute('skin', 'vec4')
   const surface = floor(skin.x.div(10))
-  const tree = surface.greaterThan(4.5)
+  const tree = surface.greaterThan(4.5).and(surface.lessThan(5.5))
   // The country's trees grow up out of the ground with the fields they stand in
   // (fields.ts `plotShown`), so neither they nor their shadows draw the plots on the
   // map's plain ground before them; and the portrait (`paint`), shown before them,
@@ -917,15 +934,19 @@ function material(occlusion: Occlusion, viewM: F, origin: THREE.Vector2) {
     tree,
     vec3(1),
     select(
-      surface.greaterThan(3.5),
-      ashlarPaint(seed, skin.y, skin.z),
+      surface.greaterThan(5.5),
+      vec3(coursesPaint(ground.add(built))),
       select(
-        surface.greaterThan(2.5),
-        vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+        surface.greaterThan(3.5),
+        ashlarPaint(seed, skin.y, skin.z),
         select(
-          surface.greaterThan(0.5),
-          wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
-          vec3(1),
+          surface.greaterThan(2.5),
+          vec3(roofPaint(seed, skin.y, skin.z, skin.w)),
+          select(
+            surface.greaterThan(0.5),
+            wallPaint(surface, kind, seed, skin.y, skin.z, skin.w, built),
+            vec3(1),
+          ),
         ),
       ),
     ),

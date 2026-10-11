@@ -212,7 +212,9 @@ export function smoothWeight(mx: F, my: F) {
  * hilltops a little lighter than the valleys. 1 on flat ground at the valleys' mean.
  */
 export function reliefWash(mx: F, my: F) {
-  const g = smoothGradient(mx, my).mul(planUniforms.relief)
+  // Taken across 12 m, so it follows the hills and not the sharp steps a building's
+  // site was levelled with, which would print as blotches on its roof.
+  const g = smoothGradient(mx, my, 12).mul(planUniforms.relief)
   const n = normalize(vec3(g.x.negate(), g.y.negate(), 1))
   const lit = dot(n, vec3(LIGHT.x, LIGHT.y, LIGHT.z)).div(LIGHT.z)
   const high = smoothstep(18, 55, groundAt(mx, my))
@@ -253,10 +255,10 @@ export function streetsShow(pxM: F) {
  * north as the terrain's own: under the model the terrain is lit and coloured by it,
  * so the surface model's modern buildings do not show as relief or rock.
  */
-export function smoothGradient(mx: F, my: F) {
+export function smoothGradient(mx: F, my: F, across = 4) {
   // Taken up as the model rises (`smoothWeight`); coarser, the surface model's
   // buildings are below a texel anyway.
-  const step = float(4)
+  const step = float(across)
   return vec2(
     groundAt(mx.add(step), my).sub(groundAt(mx.sub(step), my)),
     groundAt(mx, my.add(step)).sub(groundAt(mx, my.sub(step))),

@@ -44,9 +44,18 @@ interface Placing {
    * retaining walls no higher than `h`, metres. On its other sides the ground stood
    * near its level, or at `foot` where it was built out over lower ground on its own
    * walls, and today's higher ground there, the fill of later centuries, is taken
-   * down to it (model.ts).
+   * down to it, or along a `street` at its level raised to it (model.ts).
    */
-  cut?: { sides: [boolean, boolean, boolean, boolean]; h: number; foot?: number }
+  cut?: {
+    sides: [boolean, boolean, boolean, boolean]
+    h: number
+    foot?: number
+    /**
+     * The sides along which a street or terrace ran at its level, where today's ground
+     * is lower: the ground there raised to its level and eased back down beyond.
+     */
+    street?: [boolean, boolean, boolean, boolean]
+  }
   /** How much of it stands while it is being built, as a share of its height. */
   progress?: number
   /**

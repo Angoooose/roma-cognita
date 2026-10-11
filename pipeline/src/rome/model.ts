@@ -206,11 +206,23 @@ const FORUM_PAVING = [
   { from: -43, stone: 'travertine' },
 ]
 
-/** The Arx's summit and the Asylum, lon/lat and radius, metres: open ground, no houses. */
+/**
+ * The Arx's summit and the Asylum, lon/lat and radius, metres: open ground, no houses.
+ * The Asylum is the saddle between the summits, under the Piazza del Campidoglio, out
+ * to the halls of the Tabularium on its Forum side.
+ */
 const CAPITOL_OPEN: [[number, number], number][] = [
   [[12.4835, 41.8948], 60],
-  [[12.48266, 41.8933], 38],
+  [[12.48285, 41.89325], 65],
 ]
+/**
+ * The ground between the foot of the Capitol and the Forum's head, kept open: the
+ * Area Volcani, at whose level the Tabularium's substructure began (Platner & Ashby,
+ * Tabularium, p. 507), and the Clivus Capitolinus climbing past Saturn and turning up
+ * the hill (Clivus Capitolinus, p. 122): the ground the Tabularium's front, Concord
+ * and Saturn close round.
+ */
+const FORUM_HEAD = ['tabularium', 'aedes-concordiae', 'aedes-saturni']
 /** The Asylum's two groves, lon/lat: trees towards each summit. */
 const ASYLUM_GROVES: [number, number][] = [
   [12.48238, 41.89352],
@@ -219,18 +231,21 @@ const ASYLUM_GROVES: [number, number][] = [
 
 /**
  * A levelled site (`bakeModel`): the walk round a building at its level, how far
- * beyond it the ground eases back, and how deep a cut, metres, needs a retaining wall.
+ * beyond it the ground eases back, how deep a cut, metres, needs a retaining wall, and
+ * how long a run of it must be to be drawn: shorter, a stub of a wall holding nothing.
  */
-const SITE = { walk: 3, ease: 10, cut: 1.2 }
+const SITE = { walk: 3, ease: 10, cut: 1.2, run: 8 }
 /**
  * A site cut into a hillside on some sides only (a design's `cut`): how far beyond its
  * other sides today's higher ground is taken down to its level, how steeply, as a
  * share of the distance, the hill rises again from the top of its retaining wall, and
  * that wall's thickness (the engine's, buildModel.ts), standing against the building;
- * and how far in from such a wall the ground under a building built out over lower
- * ground follows the hill outside it (wider than the terrain mesh's step).
+ * how far in from such a wall the ground under a building built out over lower
+ * ground follows the hill outside it (wider than the terrain mesh's step); and how
+ * far across it, as a share of its depth from its open sides, that ground climbs from
+ * its foot to its level, the hillside's top under the rest of it.
  */
-const CUT = { lower: 30, rise: 0.5, wall: 1.4, inside: 10 }
+const CUT = { lower: 30, rise: 0.5, wall: 1.4, inside: 10, slope: 0.6 }
 /**
  * The buildings round the Forum's square: those of the Forum proper, then those of
  * the Comitium at its north-west end.
@@ -1101,6 +1116,10 @@ export function bakeModel(m: ModelInput) {
       const beyond = beyondOf(p)
       return beyond.indexOf(Math.max(...beyond))
     }
+    const alongside = (p: Pt, side: number) => {
+      const beyond = beyondOf(p)
+      return beyond[(side + 1) % 4] <= 0 && beyond[(side + 3) % 4] <= 0
+    }
     const outOf: Pt[] = [axis, right, [-axis[0], -axis[1]], [-right[0], -right[1]]]
     const [x0, y0, x1, y1] = bounds(
       ring,
@@ -1126,28 +1145,30 @@ export function bakeModel(m: ModelInput) {
             : under.reduce((a, b) => a + b, 0) / under.length
     const foot = Math.min(level, cut?.foot ?? level)
     // The ground under a building built out over lower ground, where the terrain's
-    // coarse mesh is hidden inside it: within CUT.inside of a wall cut into the hill
-    // the hill's own height just outside that wall, so the mesh never dips along it;
-    // elsewhere its foot's level under the half towards its open sides, and its own
-    // level under the half towards the hill, the step between them in its middle.
+    // coarse mesh is hidden inside it: a slope rising from its foot's level at its
+    // open sides to its own level CUT.slope of the way across, as the hillside it was
+    // set into, so that before it was built the ground reads as a slope and not a cliff;
+    // and within CUT.inside of a wall cut into the hill, eased to the hill's own
+    // height just outside that wall, so the mesh never dips along it.
     const underBuilt = (p: Pt) => {
       const beyond = beyondOf(p)
       const sides = cut!.sides
+      const half = (i: number) => (i % 2 ? sw : sl) / 2
+      const open = [0, 1, 2, 3].filter((i) => !sides[i])
+      const t = Math.min(1, ...open.map((i) => -beyond[i] / (2 * half(i))))
+      const slope = foot + (level - foot) * smoothstep(0, CUT.slope, t)
       let near = -1
       for (let i = 0; i < 4; i++)
         if (sides[i] && -beyond[i] < CUT.inside && (near < 0 || beyond[i] > beyond[near]))
           near = i
-      if (near >= 0) {
-        const o = outOf[near]
-        const reach = -beyond[near] + CUT.wall + 3
-        return Math.max(
-          foot,
-          Math.min(level, sample(before, p[0] + o[0] * reach, p[1] + o[1] * reach, level)),
-        )
-      }
-      const open = [0, 1, 2, 3].filter((i) => !sides[i])
-      const half = (i: number) => (i % 2 ? sw : sl) / 2
-      return open.some((i) => -beyond[i] < half(i)) ? foot : level
+      if (near < 0) return slope
+      const o = outOf[near]
+      const reach = -beyond[near] + CUT.wall + 3
+      const edge = Math.max(
+        foot,
+        Math.min(level, sample(before, p[0] + o[0] * reach, p[1] + o[1] * reach, level)),
+      )
+      return edge + (slope - edge) * smoothstep(0, CUT.inside, -beyond[near])
     }
     const before = new Float32Array(ground)
     const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
@@ -1162,12 +1183,21 @@ export function bakeModel(m: ModelInput) {
         const dist = inRing(p, ring) ? 0 : distToRing(p, ring)
         // Where it was cut into the hill its own back wall is the retaining wall's face:
         // no walk round it there.
-        const hill = !!cut && cut.sides[sideOf(p)]
+        const side = sideOf(p)
+        const hill = !!cut && cut.sides[side]
         // Beside its other sides the ground is only ever lowered, to its level or to the
         // ground at its foot (`cut.foot`): where it stands over lower ground its own
         // walls go down to meet it.
         if (dist === 0 && cut && foot < level) ground[k] = underBuilt(p)
-        else if (dist <= (hill ? CUT.wall : SITE.walk))
+        else if (cut?.street?.[side] && dist > 0 && alongside(p, side)) {
+          // A street along it at its level, where today's ground is lower: raised to
+          // it, and eased back down beyond; only alongside it, not past its corners.
+          const out = Math.max(0, dist - SITE.walk)
+          ground[k] =
+            before[k] >= level
+              ? Math.min(before[k], level + cut.h + out * CUT.rise)
+              : level + (before[k] - level) * smoothstep(0, CUT.lower, out)
+        } else if (dist <= (hill ? CUT.wall : SITE.walk))
           // Outside a building cut into a hill the ground is only ever lowered: the hill
           // meets its walls at its own height, and on its open sides it is taken down to
           // the ground at its foot.
@@ -1210,7 +1240,10 @@ export function bakeModel(m: ModelInput) {
     let cover: (typeof sites)[number] | undefined
     const flush = () => {
       const years = [own[0], cover ? Math.min(own[1], yearsOf(cover.id)[0] - 1) : own[1]]
-      if (run.length > 1 && years[0] <= years[1])
+      const long = run
+        .slice(1)
+        .reduce((a, q, i) => a + Math.hypot(q[0] - run[i][0], q[1] - run[i][1]), 0)
+      if (long >= SITE.run && years[0] <= years[1])
         retaining.push({ id: mo.id, base: round(level), pts: run, years })
       run = []
     }
@@ -1515,6 +1548,8 @@ export function bakeModel(m: ModelInput) {
     .filter((p): p is Place => !!p)
     .map((p) => projection.forward(...p.location))
   if (boarium.length > 2) open.push(hull(boarium))
+  const head = monuments.filter((mo) => FORUM_HEAD.includes(mo.id))
+  if (head.length === FORUM_HEAD.length) open.push(hull(head.flatMap((mo) => mo.rings[0])))
   // Before a precinct's gateway the ground is kept open, so it does not open onto a
   // house: 20 m out, a little wider than the gate.
   for (const mo of monuments) {

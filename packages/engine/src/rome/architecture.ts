@@ -538,7 +538,8 @@ export class Frame {
    * arches; closed ones are blind (a wall with the half-columns). Behind the arches
    * a vaulted gallery, its back wall in the dark of the building. While it is being
    * built (works.ts), `rising` dates each storey — `i` its index, from z to top — and,
-   * with `centering`, the timber centering under its arches.
+   * with `centering`, the timber centering under its arches. `trim` is the stone of
+   * its entablatures, where it differs from its walls'.
    */
   arcade(
     u0: number,
@@ -552,6 +553,7 @@ export class Frame {
     inner: THREE.Color = PART.dark,
     rising?: (i: number, z: number, top: number, centering: boolean) => void,
     bay0 = 0,
+    trim = col,
   ) {
     const len = u1 - u0
     const n = Math.max(1, Math.round(len / bay))
@@ -573,7 +575,7 @@ export class Frame {
           v + depth,
           z + s.h - ent,
           ent,
-          col,
+          trim,
           0.25,
         )
         z += s.h
@@ -635,7 +637,7 @@ export class Frame {
         v + depth,
         top - ent,
         ent,
-        col,
+        trim,
         0.25,
       )
       z = top
