@@ -637,9 +637,10 @@
     governed Corsica and Sardinia together (MRR), so the island is a Roman
     command both before and after 133, and Strabo's list of Augustus' provinces
     in 27 has "Sardinia, with Corsica". Dio's list of 27 names Sardinia, not
-    Corsica (53.12.4). Nothing readable puts the island in 133 itself.
-    Its joint province with Sardinia is under discussion and the dates are left
-    as they are until that is settled.
+    Corsica (53.12.4). Nothing readable puts the island in 133 itself; the
+    commands of 163 and 115 bracket it. Livy has a praetor sent to Corsica on
+    its own in 173 (42.7), during a war there, which doesn't make it a province
+    apart in this window.
 
 # --- the West ------------------------------------------------------------------
 
@@ -1270,8 +1271,8 @@
   note: >-
     Bequeathed by Nicomedes IV and a province from 74; joined with Pontus in
     63. Eutropius dates the death to the consuls of 74 and Magie follows him;
-    Broughton allows the end of 75 (the start year is an open question for the
-    project's owner, left at 74).
+    Broughton allows the end of 75 but doesn't assert it, and ToposText's
+    "[75 BCE]" over Per. 93 is the site's heading, so the year is 74.
 
 - atom: pontus
   polity: bithynia-pontus
