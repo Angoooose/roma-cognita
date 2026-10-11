@@ -2947,10 +2947,54 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    Artavasdes I; Tigranes II, 95–55; Artavasdes II, 55–34; Artaxias II, from
-    34 (in Armenia from 32–30)
+    Artavasdes I; Tigranes II, from 95; Artavasdes II, his successor by 54, to
+    34; Artaxias II, from 34 (back in Armenia by 30)
   sources:
-    - { source: strabo, locator: '11.14' }
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        when the king was defeated, they joined the Romans and were ranked as
+        autonomous, with the title of king. Now Tigranes was a descendant of
+        Artaxias and held what is properly called Armenia … His successor
+        Artavasdes was indeed prosperous for a time, while he was a friend to
+        the Romans, but when he betrayed Antony to the Parthians in his war
+        against them he paid the penalty for it, for he was carried off prisoner
+        to Alexandreia by Antony … After him several kings reigned, these being
+        subject to Caesar and the Romans; and still today the country is
+        governed in the same way.
+      supports: [kind, from, to, ruler]
+    - source: justin
+      locator: '42.2'
+      quote: >-
+        At last he turned his arms against Ortoadistes, king of Armenia.
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. II, 1099 n. 16'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For Tigranes I of Armenia see Geyer … He began to reign in 95 b.c.
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '49.39.1–6'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place … Thereupon he arrested him …
+        the Armenian citizens who bore arms chose Artaxes, the eldest of his
+        sons, king in his stead
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. II, 1252 n. 60'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Artavasdes (sometimes spelled Artabazes), the son of Tigranes, succeeded
+        his father before 54 b.c.
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        he refused the request of Artaxes that his brothers be sent to him,
+        because this prince had put to death the Romans left behind in Armenia
+      supports: [ruler]
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: sherwin-white-1984, locator: 'chs. 8–12' }
   confidence: certain
@@ -2962,7 +3006,10 @@
     (Dio 49.39–40), which he promised to Alexander Helios. Artavasdes' son
     Artaxias, proclaimed king by the Armenians, fled to Parthia and came back
     with its help when Antony withdrew, killing the Romans left behind (Tac.
-    Ann. 2.3; Dio 51.16.2).
+    Ann. 2.3; Dio 51.16.2). The rulers were dated Tigranes 95–55, Artavasdes
+    55–34 and Artaxias back in Armenia 32–30; no text read gives 55 or 32.
+    Magie (II 1252 n. 60) has Artavasdes succeed "before 54", and Dio 51.16.2,
+    among Octavian's acts at Alexandria in 30, has Artaxias already back.
 
 - id: parthia
   kind: kingdom
@@ -3022,9 +3069,27 @@
   to: after 27 BCE
   ruler: Artoces (65); Pharnabazus by 36
   sources:
-    - { source: cassius-dio, locator: '37.1–2' }
+    - source: cassius-dio
+      locator: '37.1.1–2'
+      quote: >-
+        in the consulship of Lucius Cotta and Lucius Torquatus, Pompey engaged
+        in warfare with both the Albanians and the Iberians … and Artoces,
+        their king, fearing that Pompey would direct his course against him
+      supports: [kind, ruler]
     - { source: braund-1994, locator: 'pp. 152–170' }
-    - { source: cassius-dio, locator: '49.24.1' }
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        when Gellius and Nerva were now holding office, Publius Canidius
+        Crassus made a campaign against the Iberians in Asia, conquered in
+        battle their king Pharnabazus and brought them to make an alliance
+      supports: [ruler]
+    - source: strabo
+      locator: '11.3.6'
+      quote: >-
+        There are also four castes among the inhabitants of Iberia. One, and
+        the first of all, is that from which they appoint their kings
+      supports: [kind, to]
   confidence: probable
   review: draft
   note: >-
@@ -3040,9 +3105,33 @@
   to: after 27 BCE
   ruler: Oroeses (65); Zober by 36
   sources:
-    - { source: cassius-dio, locator: '36.54, 37.3–5' }
-    - { source: strabo, locator: '11.4' }
-    - { source: cassius-dio, locator: '49.24.1' }
+    - source: cassius-dio
+      locator: '36.54.1'
+      quote: >-
+        Oroeses, king of the Albanians dwelling beyond the Cyrnus, made an
+        expedition against them just at the time of the Saturnalia
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        in the consulship of Lucius Cotta and Lucius Torquatus, Pompey engaged
+        in warfare with both the Albanians and the Iberians
+      supports: [ruler]
+    - { source: cassius-dio, locator: '37.3–5' }
+    - source: strabo
+      locator: '11.4.6'
+      quote: >-
+        Their kings, also, are excellent. At the present time, indeed, one king
+        rules all the tribes, but formerly the several tribes were ruled
+        separately by kings of their own according to their several languages.
+      supports: [kind, to]
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        when Gellius and Nerva were now holding office … with this king he
+        invaded Albania, the adjoining country, and, after overcoming the
+        inhabitants and their king Zober, conciliated them likewise
+      supports: [ruler]
   confidence: probable
   review: draft
   note: As iberia-caucasia.
@@ -3051,18 +3140,56 @@
   kind: kingdom
   names:
     - { text: Colchis, lang: la, preferred: true }
-  from: 63 BCE
+  from: { earliest: 64 BCE, latest: 62 BCE }
   to: after 27 BCE
-  ruler: Aristarchus, from 63
+  ruler: Aristarchus, from Pompey's settlement (64–62)
   sources:
-    - { source: appian, locator: 'Mithr. 114' }
+    - source: magie-1950
+      locator: 'vol. I, 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        peace was assured by the recognition of the local dynast Aristarchus as
+        the ruler of Colchis
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 360'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the spring of 64 Pompey advanced to Amisus, and here, as the arbiter
+        of Asia Minor, the conqueror announced his plans for the disposal of his
+        conquests.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 368'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        These arrangements for the organization of northern and eastern Asia
+        Minor as well as of Syria, begun by Pompey at Amisus in the winter of
+        65-64 and completed at Antioch in 64-63 and again at Amisus in the
+        following winter
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis
+      supports: [ruler]
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        At last Polemon got Colchis; and since his death his wife Pythodoris has
+        been in power, being queen, not only of the Colchians
+      supports: [kind, to]
     - { source: braund-1994, locator: 'pp. 152–170' }
   confidence: probable
   review: draft
   note: >-
     "At last Polemon got Colchis" (Strabo 11.2.18), at a date not given — from
     Antony, from Augustus after Actium, or c. 14 — so it is not moved to his
-    Pontus here. Nothing is known of its rulers after Aristarchus.
+    Pontus here. Nothing is known of its rulers after Aristarchus. It was dated
+    63; no text read dates Aristarchus' recognition within Pompey's
+    arrangements, which Magie (I 360, 368) has begun in the winter of 65–64,
+    announced at Amisus in the spring of 64 and finished there in the winter
+    of 63–62, so the start is 64–62 (drawn at its midpoint, 63).
 
 - id: seleucid
   kind: kingdom
@@ -3152,15 +3279,98 @@
   kind: kingdom
   names:
     - { text: Paphlagonia, lang: la, preferred: true }
-  from: 63 BCE
+  from: { earliest: 64 BCE, latest: 62 BCE }
   to: after 27 BCE
   ruler: Attalus, to 40; Castor, 40–37/36; Deiotarus Philadelphus, from 37/36
   sources:
-    - { source: strabo, locator: '12.3.1' }
-    - { source: appian, locator: 'Mithr. 114' }
-    - { source: cassius-dio, locator: '48.33.5' }
-    - { source: strabo, locator: '12.3.41' }
-    - { source: magie-1950, locator: 'vol. I, 434, 443' }
+    - source: magie-1950
+      locator: 'vol. I, 372'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Paphlagonia, along with the rest of the defeated King’s dominions, had
+        become part of the spoils of war, to be disposed of by Pompey … Two
+        claimants were found, Attalus and Pylaemenes
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, 360'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the spring of 64 Pompey advanced to Amisus, and here, as the arbiter
+        of Asia Minor, the conqueror announced his plans for the disposal of his
+        conquests.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 368'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        These arrangements for the organization of northern and eastern Asia
+        Minor as well as of Syria, begun by Pompey at Amisus in the winter of
+        65-64 and completed at Antioch in 64-63 and again at Amisus in the
+        following winter
+      supports: [from]
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        he gave over to the descendants of Pylaemenes the office of king over
+        certain of the Paphlagonians situated in the interior between them
+      supports: [kind]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '48.33.5'
+      quote: >-
+        The domains of Attalus and of Deiotarus, who had both died in Galatia,
+        were given to a certain Castor.
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 431'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        made his way to Italy in the summer of 40, and in October, meeting
+        Octavian at Brundisium, he formed a compact with his associate
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the disposition of the dominions of Deiotarus, whose adventurous life
+        came to an end about the time when the compact was formed … Castor also
+        obtained, presumably by gift from Antony, the interior of Paphlagonia,
+        whose ruler Attalus, appointed by Pompey, died about the same time as
+        Deiotarus.
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. His dominions in Paphlagonia, including the
+        capital, Gangra … were inherited by his son, Deiotarus Philadelphus
+      supports: [ruler]
+    - source: strabo
+      locator: '12.3.41'
+      quote: >-
+        The last to reign over Paphlagonia was Deiotarus, the son of Castor,
+        surnamed Philadelphus, who possessed Gangra
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the possession
+        of their kingdoms
+      supports: []
+    - source: magie-1950
+      locator: 'vol. I, 465'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        On his death (or that of his heir) in 6/5 b.c., his dominions, like
+        those of Amyntas, were annexed to Rome’s Empire. Not only eastern
+        Paphlagonia, including Gangra, the capital
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -3170,6 +3380,11 @@
     with Pompeiopolis as well, by 37/36 at the latest; its date is not known and
     it stays with the pontus atom. Philadelphus went over to Octavian before
     Actium (Plut. Antony 63.3, as Magie I 443 reads it) and kept his kingdom.
+    It was dated 63; no text read dates the grant to Attalus and Pylaemenes
+    within Pompey's arrangements, which Magie (I 360, 368) has begun in the
+    winter of 65–64, announced at Amisus in the spring of 64 and finished
+    there in the winter of 63–62, so the start is 64–62 (drawn at its
+    midpoint, 63).
 
 - id: comana-pontica
   kind: city-state

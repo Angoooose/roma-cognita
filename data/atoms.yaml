@@ -3026,7 +3026,13 @@
           note: the coast west of Seleucia
         - [33.8, 36.05]
   sources:
-    - { source: strabo, locator: '14.5.10' }
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        above this and Soli is a mountainous country, in which is a city Olbe,
+        with a sanctuary of Zeus, founded by Ajax the son of Teucer. The
+        priest of this sanctuary became dynast of Cilicia Tracheia
+      supports: [construction]
     - { source: borgia-2017, locator: 'p. 302' }
   confidence: uncertain
   review: needs-check
@@ -3049,7 +3055,14 @@
         - at: [33.4, 36.9]
           note: the Taurus south of Laranda
   sources:
-    - { source: strabo, locator: '12.1.4, 12.6.3' }
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        On the side of Isaurice lies Derbe, which lies closer to Cappadocia
+        than to any other country and was the royal seat of the tyrant Antipater
+        Derbetes. He also possessed Laranda
+      supports: [construction]
+    - { source: strabo, locator: '12.1.4' }
     - { source: dmitriev-2000, locator: 'pp. 359–360' }
   confidence: uncertain
   review: needs-check
@@ -3176,6 +3189,16 @@
     - { source: eutropius, locator: '6.10' }
     - { source: mihailov-igbulg, locator: 'I² 13 (the Akornion decree)' }
     - { source: strabo, locator: '7.3.11' }
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        if one begins at the Sacred Mouth of the Ister and keeps the continuous
+        seaboard on the right, one comes, at a distance of five hundred stadia,
+        to a small town, Ister, founded by the Milesians; then, at a distance
+        of two hundred and fifty stadia, to a second small town, Tomis; then,
+        at two hundred and eighty stadia, to a city Callatis, a colony of the
+        Heracleotae; then, at one thousand three hundred stadia, to Apollonia
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -3207,7 +3230,25 @@
         - at: [21.8, 48.2]
           note: the upper Tisza
   sources:
-    - { source: strabo, locator: '7.3.5, 7.3.11, 7.5.2' }
+    - source: strabo
+      locator: '7.3.11'
+      quote: >-
+        within only a few years he had established a great empire and
+        subordinated to the Getae most of the neighboring peoples … he not only
+        laid waste the country of the Celti who were intermingled with the
+        Thracians and the Illyrians, but actually caused the complete
+        disappearance of the Boii who were under the rule of Critasirus, and
+        also of the Taurisci
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.2'
+      quote: >-
+        A part of this country was laid waste by the Dacians when they subdued
+        the Boii and Taurisci, Celtic tribes under the rule of Critasirus.
+        They alleged that the country was theirs, although it was separated from
+        theirs by the River Parisus
+      supports: [construction]
+    - { source: strabo, locator: '7.3.5' }
     - { source: jordanes-getica, locator: '67' }
     - { source: lockyear-2004 }
     - { source: hydrorivers }
@@ -3322,6 +3363,15 @@
   sources:
     - { source: wilkes-1969, locator: 'pp. 29–45' }
     - { source: appian, locator: 'Ill. 12–13' }
+    - source: strabo
+      locator: '7.5.5'
+      quote: >-
+        Then comes the seaboard of the Dalmatians, and also their sea-port,
+        Salona … And there is Andretium, a fortified place; and also Dalmium
+        (whence the name of the tribe) … And there is Mount Adrium, which cuts
+        the Dalmatian country through the middle into two parts, one facing the
+        sea and the other in the opposite direction. Then come the River Naro
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -3830,7 +3880,14 @@
         - { at: [33.72, 44.45], via: curve }
         - { at: [33.35, 44.38], via: curve }
   sources:
-    - { source: strabo, locator: '7.4.2–3' }
+    - source: strabo
+      locator: '7.4.2'
+      quote: >-
+        this is the isthmus that encloses the Little Chersonesus, which, as I
+        was saying, is a part of the Great Chersonesus and has on it the city of
+        Chersonesus, which bears the same name as the peninsula
+      supports: [construction]
+    - { source: strabo, locator: '7.4.3' }
     - { source: diophantus-decree }
     - { source: natural-earth }
   confidence: uncertain
@@ -3857,7 +3914,15 @@
         - [34.0, 44.4]
         - [33.3, 44.3]
   sources:
-    - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - source: strabo
+      locator: '7.4.7'
+      quote: >-
+        In addition to the places in the Chersonesus which I have enumerated,
+        there were also the three forts which were built by Scilurus and his
+        sons — the forts which they used as bases of operations against the
+        generals of Mithridates — I mean Palacium, Chabum, and Neapolis
+      supports: [construction]
+    - { source: strabo, locator: '7.4.3' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -4932,7 +4997,20 @@
         - [12.6, 46.7]
         - [12.2, 47.1]
   sources:
-    - { source: caesar-bg, locator: '1.5, 1.53' }
+    - source: caesar-bg
+      locator: '1.53'
+      quote: >-
+        a woman of Noricum, sister to King Voccio
+      supports: [construction]
+    - source: strabo
+      locator: '7.1.5'
+      quote: >-
+        the countries of the Rhaeti and the Norici extend as far as the passes
+        over the Alps and verge toward Italy, a part thereof bordering on the
+        country of the Insubri and a part on that of the Carni and the legions
+        about Aquileia
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.5' }
     - { source: caesar-bc, locator: '1.18' }
     - { source: alfoldy-1974, locator: 'ch. 3' }
     - { source: mapterhorn }
@@ -5330,7 +5408,14 @@
           note: the Esla
         - [-5.75, 41.9]
   sources:
-    - { source: strabo, locator: '3.3.2–3, 3.4.13' }
+    - source: strabo
+      locator: '3.3.2'
+      quote: >-
+        the Vettones and Vaccaei, through whose [country] the Douro flows as it
+        passes Acontia, a city of the Vaccaei
+      supports: [construction]
+    - { source: strabo, locator: '3.3.3' }
+    - { source: strabo, locator: '3.4.13' }
     - { source: cassius-dio, locator: '39.54, 51.20' }
     - { source: curchin-1991 }
   confidence: uncertain
@@ -5360,7 +5445,20 @@
           note: the boundary with the Cantabri, which Strabo puts at the estuary of the Melsus (3.4.20); taken at the Sella
         - [-5.5, 43.8]
   sources:
-    - { source: strabo, locator: '3.3.3, 3.3.7, 3.4.20' }
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        The river Melsus flows through the country of the Asturians, and at a
+        little distance is the city of Nougat, close to an estuary formed by the
+        ocean, which separates the Asturians from the Cantabrians
+      supports: [construction]
+    - source: strabo
+      locator: '3.3.3'
+      quote: >-
+        To the east the Gallicians border on the nation of the Astures and
+        Keltiberians
+      supports: [construction]
+    - { source: strabo, locator: '3.3.7' }
     - { source: curchin-1991 }
     - { source: barrington, locator: 'map 24' }
   confidence: uncertain
@@ -5385,7 +5483,20 @@
           note: the mouth of the Asón
         - [-4.5, 43.8]
   sources:
-    - { source: strabo, locator: '3.3.7–8, 3.4.12' }
+    - source: strabo
+      locator: '3.3.7'
+      quote: >-
+        those bordering the northern side of Iberia, the Gallicians, the
+        Asturians, and the Cantabrians, as far as the Vascons and the Pyrenees
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        an estuary formed by the ocean, which separates the Asturians from the
+        Cantabrians
+      supports: [construction]
+    - { source: strabo, locator: '3.3.8' }
+    - { source: strabo, locator: '3.4.12' }
     - { source: cassius-dio, locator: '53.25–26, 53.29' }
     - { source: curchin-1991 }
   confidence: uncertain
@@ -5409,6 +5520,14 @@
         - [-6.9, 42.2]
         - [-6.9, 42.9]
   sources:
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        one of whom with two legions guards the whole country north of the Douro, the
+        inhabitants of which formerly were styled Lusitanians, but are now
+        called Gallicians. The northern mountains, together with the Asturian
+        and Cantabrian, border on these
+      supports: [construction]
     - { source: strabo, locator: '3.3.2–5' }
     - { source: cassius-dio, locator: '37.53' }
     - { source: appian, locator: 'Hisp. 72' }
@@ -5445,7 +5564,22 @@
         - [7.3, 43.4]
         - [5.5, 43.0]
   sources:
-    - { source: strabo, locator: '4.1.4–9' }
+    - source: strabo
+      locator: '4.1.9'
+      quote: >-
+        The [coast] which extends from this [last city] to the river Var, and
+        the Ligurians who dwell near it, contains the Massilian cities of
+        Tauroentium, Olbia, Antipolis, Nicaea
+      supports: [construction]
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        compel the barbarians to keep at a distance of twelve stadia from those
+        parts of the coast which possessed good harbours, and at a distance of
+        eight stadia where it was rugged. The land which they thus abandoned, he
+        presented to the Massilians
+      supports: [construction]
+    - { source: strabo, locator: '4.1.4' }
     - { source: caesar-bc, locator: '1.34–36, 2.1–22' }
     - { source: ebel-1976 }
   confidence: uncertain
@@ -5632,7 +5766,16 @@
         - at: [6.9, 46.4]
           note: Lake Geneva, the frontier with the Province
   sources:
-    - { source: caesar-bg, locator: '1.2, 1.6' }
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        On one side there is the river Rhine, exceeding broad and deep, which
+        separates the Helvetian territory from the Germans; on another the Jura
+        range, exceeding high, lying between Sequani and the Helvetii; on the
+        third, the Lake of Geneva and the river Rhone, which separates the
+        Roman Province from the Helvetii
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.6' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
@@ -5663,7 +5806,25 @@
           note: the southern Vosges
         - [7.3, 47.95]
   sources:
-    - { source: caesar-bg, locator: '1.1, 1.8, 1.12, 1.31' }
+    - source: caesar-bg
+      locator: '1.12'
+      quote: >-
+        There is a river Arar (Saone), which flows through the borders of the
+        Aedui and the Sequani into the Rhone
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.8'
+      quote: >-
+        the Jura range, which separates the territory of the Sequani from the
+        Helvetii
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.1'
+      quote: >-
+        on the side of the Sequani and the Helvetii, it touches on the river
+        Rhine
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.31' }
     - { source: fichtl-2004 }
     - { source: hydrorivers }
   confidence: uncertain
@@ -5692,7 +5853,19 @@
         - [4.6, 45.9]
         - [4.85, 46.0]
   sources:
-    - { source: caesar-bg, locator: '1.10–12, 7.55' }
+    - source: caesar-bg
+      locator: '1.12'
+      quote: >-
+        There is a river Arar (Saone), which flows through the borders of the
+        Aedui and the Sequani into the Rhone
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.55'
+      quote: >-
+        Noviodunum was a town of the Aedui situated in an advantageous position
+        by the banks of the Loire
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.10–11' }
     - { source: fichtl-2004 }
     - { source: hydrorivers }
   confidence: uncertain
@@ -5722,7 +5895,18 @@
           note: towards the Lemovices
         - [2.2, 46.0]
   sources:
-    - { source: caesar-bg, locator: '7.4–8, 7.75' }
+    - source: caesar-bg
+      locator: '7.8'
+      quote: >-
+        the range of the Cevennes, which parts the Arverni from the Helvii
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.75'
+      quote: >-
+        the Arverni, together with the Eleuteti, Cadurci, Gabali, and
+        Vellavii, who are regularly under the sovereignty of the Arverni
+      supports: [construction]
+    - { source: caesar-bg, locator: '7.4–7' }
     - { source: fichtl-2004 }
   confidence: uncertain
   review: needs-check
