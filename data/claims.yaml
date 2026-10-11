@@ -7523,7 +7523,7 @@
 - atom: arverni
   polity: arverni
   relation: independent
-  from: before 133 BCE
+  from: before 122 BCE
   to: 52 BCE
   sources:
     - source: broughton-mrr
@@ -7533,7 +7533,7 @@
         Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
         was victorious over the Salluvii, and then engaged in war against the
         Allobroges and the Arverni
-      supports: [polity, relation]
+      supports: [polity, relation, from]
     - source: strabo
       locator: '4.2.3'
       quote: >-
@@ -7577,6 +7577,16 @@
       supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    First dated in 122, when Domitius, consul that year, went to war with the
+    Allobroges and the Arverni (MRR I 516; Strabo 4.2.3); their king Bituitus
+    was beaten by Fabius in 121 (Per. 61) and the people pardoned, neither
+    made a province nor taxed (BG 1.45). It read "before 133" until October
+    2026: Strabo has their dominion reach the Pyrenees, the ocean and the
+    Rhine under Bituitus' father Luerius (4.2.3), but gives no year, and no
+    readable text names the Arverni in 133–123. Eutropius puts the war in
+    the 627th year of the city, under consuls who never held office together
+    (4.22); the open start holds on either date.
 
 - atom: arverni
   polity: gallia-comata
