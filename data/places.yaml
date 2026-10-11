@@ -5817,10 +5817,6 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony, which went over to the insurgents in 90 (App. BC 1.42).
-    - value: colonia
-      from: 88 BCE
-      to: after 27 BCE
-      note: retaken by Metellus Pius in 88 (Diodorus 37.2.10); with the insurgents 90–89, with no status here. One of the cities the triumvirs promised their soldiers in 43 (App. BC 4.3), a colony in Pliny's list (3.104).
   labelSide: e
   sources:
     - source: pleiades
@@ -5850,23 +5846,30 @@
       quote: >-
         Metellus captured the important city of Venusia in Apulia, which had in
         it a great number of soldiers
-      supports: [status]
+      supports: []
     - source: appian
       locator: 'BC 4.3'
       quote: >-
         they promised them, beside other gifts, eighteen cities of Italy as
         colonies … The most renowned among these were Capua, Rhegium, Venusia
-      supports: [status]
+      supports: []
     - source: pliny-nh
       locator: '3.104'
       quote: of the Daunii, the colonies of Luceria and Venusia
-      supports: [status, to]
+      supports: [to]
     - source: strabo
       locator: '5.4.11'
       quote: Beneventum, however, has held up very well, and so has Venusia.
       supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    A Latin colony that joined the insurgents in 90 and was retaken by Metellus
+    Pius (Diodorus 37.2.10). Until October 2026 the status read colonia again
+    from 88, the year of the retaking; but the retaking only ends the
+    insurgents' hold, no text read gives the town's standing after the war, and
+    the colony of the triumvirs is only promised in 43 (App. BC 4.3) or listed
+    by Pliny (3.104), so that row was dropped.
 
 - id: canusium
   pleiades: '442525'
