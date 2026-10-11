@@ -717,14 +717,50 @@
   from: 133 BCE
   to: after 27 BCE
   sources:
+    - source: strabo
+      locator: '13.4.2'
+      quote: >-
+        Attalus surnamed Philometor , reigned five years, died of disease, and
+        left the Romans his heirs. The Romans proclaimed the country a
+        province, calling it Asia
+      supports: [kind]
+    - source: velleius
+      locator: '2.2.2'
+      quote: >-
+        In the consulship of Publius Mucius Scaevola and Lucius Calpurnius (one
+        hundred and sixty-two years ago) … he split with the party of the
+        nobles
+      supports: [from]
+    - source: velleius
+      locator: '2.4.1'
+      quote: >-
+        While these events were taking place in Italy King Attalus had died,
+        bequeathing Asia in his will to the Roman people
+      supports: [from]
+    - source: plutarch
+      locator: 'Ti. Gracch. 14.1'
+      quote: >-
+        And now Attalus Philometor died, and Eudemus of Pergamum brought to
+        Rome the king's last will and testament, by which the Roman people was
+        made his heir.
+      supports: [from]
+    - source: strabo
+      locator: '14.1.38'
+      quote: >-
+        And Manius Aquillius came over as consul with ten lieutenants and
+        organized the province into the form of government that still now
+        endures.
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia , Asia , Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [kind, to]
     - { source: broughton-mrr }
-    - { source: strabo, locator: '13.4.2, 14.1.38' }
-    - { source: plutarch, locator: 'Ti. Gracch. 14.1' }
     - { source: livy-per, locator: '58–59' }
-    - { source: velleius, locator: '2.4.1' }
     - { source: kallet-marx-1995, locator: 'pp. 112–115' }
     - { source: magie-1950, locator: 'vol. I, 427–446' }
-    - { source: cassius-dio, locator: '53.12.4' }
   confidence: probable
   review: needs-check
   note: >-
@@ -832,6 +868,47 @@
   from: { earliest: 102 BCE, latest: 100 BCE }
   to: { earliest: 44 BCE, latest: 43 BCE }
   sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 102 B.C., p. 568'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Praetors M. ANTONIUS? (28) Cos. 99 Received command against the pirates
+        in Cilicia, a command which he continued to hold until 100
+      supports: [from]
+    - source: sumner-1978
+      locator: 'p. 213'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        and that Cilicia has for this reason been made a praetorian province in
+        accordance with this law
+      supports: [kind]
+    - source: sumner-1978
+      locator: 'p. 216'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        Cilicia had already come into view as a potential praetorian province
+        through the command ofM. Antonius against the pirates, 102-100.22 The
+        first praetor of Cilida under the terms of our law would most likely be
+        a praetor of 100
+      supports: [kind, from]
+    - source: magie-1950
+      locator: 'vol. II, 1270–1271, n. 44'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        the first actual mention of a united Syria and Cilicia is in their
+        assignment to C. Sosius in 38 b.c. … of any mention of Cilicia among
+        the provinces (Syria, Asia, Bithynia and Pontus) over which Cicero
+        proposed in March, 43 to give maius imperium to Cassius (Phil, xi 30)
+        that the province was no longer in existence. For a view that Cilicia
+        Campestris was not attached to Syria until after
+      supports: [to]
+    - source: cicero-phil
+      locator: '11.30'
+      quote: >-
+        whatever else may be necessary or useful for the carrying on of the
+        war, in whatever places it seems fitting to him to do so, throughout
+        Syria , Asia , Bithynia , and Pontus
+      supports: [to]
     - { source: livy-per, locator: '68' }
     - { source: cicero-de-oratore, locator: '1.82' }
     - { source: sumner-1978 }
@@ -1051,8 +1128,37 @@
   from: 74 BCE
   to: after 27 BCE
   sources:
+    - source: eutropius
+      locator: '6.6'
+      quote: >-
+        in the consulate of Lucius Licinius Lucullus and Marcus Aurelius Cotta
+        . Nicomedes , king of Bithynia , died, appointing by his will the Roman
+        people his heir.
+      supports: [from]
+    - source: livy-per
+      locator: '93'
+      quote: >-
+        King Nicomedes of Bithynia made the Roman nation his heir and his
+        kingdom was transformed into a province.
+      supports: [kind, from]
+    - source: livy-per
+      locator: '102'
+      quote: >-
+        Gnaeus Pompey organized Pontus as a province.
+      supports: [kind]
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        the remaining parts he divided into eleven states and added them to
+        Bithynia , so that out of both there was formed a single province
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Bithynia with Pontus which adjoined it, Sardinia and Baetica were held
+        to belong to the people and the senate
+      supports: [kind, to]
     - { source: magie-1950, locator: 'vol. I, 433–436' }
-    - { source: cassius-dio, locator: '53.12.4' }
     - { source: broughton-mrr, locator: vol. II }
   confidence: certain
   review: draft
@@ -1213,8 +1319,38 @@
   to: 59 BCE
   ruler: Ptolemy of Cyprus, 80–58
   sources:
+    - source: bennett-ptolemies
+      locator: 'Ptolemy of Cyprus'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cyprus.htm
+      quote: >-
+        Ptolemy of Cyprus , king of Cyprus, son of Ptolemy IX … returned to
+        Egypt with Ptolemy XII in 80 and was made king of Cyprus , committed
+        suicide by poison in 58
+      supports: [kind, from, to, ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy of Cyprus, n. 7'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cyprus.htm
+      quote: >-
+        It is universally and reasonably inferred that Ptolemy was given Cyprus
+        at the same time that Ptolemy XII was made king of Egypt, although the
+        text does not actually say so.
+      supports: [from]
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        But when the last Ptolemy that reigned, the brother of the father of
+        Cleopatra , the queen in my time, was decreed to be both disagreeable
+        and ungrateful to his benefactors, he was deposed, and the Romans took
+        possession of the island
+      supports: [kind, to, ruler]
+    - source: cicero-sest
+      locator: '59'
+      quote: >-
+        That unhappy king of Cyprus — who was always our ally, always our
+        friend … has now, as they say, while alive and beholding the light,
+        been seized and sold with all his means of support
+      supports: [kind, to]
     - { source: cicero-sest, locator: '57' }
-    - { source: strabo, locator: '14.6.6' }
     - { source: plutarch, locator: 'Cato Minor 34–36' }
     - { source: bennett-ptolemies, locator: 'Ptolemy of Cyprus' }
   confidence: certain
@@ -1235,6 +1371,22 @@
   to: 89 BCE
   ruler: Ptolemy X Alexander, 114/113–107; Ptolemy IX Soter II, 105–88
   sources:
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        possibly governor of Cyprus c. July 116 , proclaimed king in Cyprus in
+        114/3 , replaced Ptolemy IX as junior ruler under Cleopatra III in
+        September 107
+      supports: [kind, from, ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        expelled by Cleopatra III and replaced by Ptolemy X in
+        September/October 107 , took control of Cyprus in 105 , recalled to
+        Alexandria to replace Ptolemy X c. May 88
+      supports: [to, ruler]
     - { source: justin, locator: '39.4' }
     - { source: pausanias, locator: '1.9.1–2' }
     - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
@@ -1359,6 +1511,67 @@
     Ptolemy XI, 80; Ptolemy XII, 80–51 (in exile 58–55); Cleopatra VII (with
     Ptolemy XV Caesarion from 44), to 30
   sources:
+    - source: bennett-ptolemies
+      locator: 'Ptolemy VIII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_viii.htm
+      quote: >-
+        recalled to Alexandria to become king with Cleopatra II on the death of
+        Ptolemy VI in 145 … died 11 Payni year 54 = 28 June 116 , and was
+        succeeded by Cleopatra II ruling jointly with Cleopatra III and Ptolemy
+        IX
+      supports: [kind, from, ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        succeeded 11 Payni year 54 = 28 June 116 as junior coruler with
+        Cleopatra II and Cleopatra III … expelled by Cleopatra III and replaced
+        by Ptolemy X in September/October 107 … recalled to Alexandria to
+        replace Ptolemy X c. May 88 … till his death c. December 81 ,
+        succeeded by Berenice III
+      supports: [ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        replaced Ptolemy IX as junior ruler under Cleopatra III in September
+        107 … became senior ruler associated with Berenice III in October 101
+        , expelled from Alexandria and replaced by Ptolemy IX in c. May 88
+      supports: [ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy XI'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_xi.htm
+      quote: >-
+        returned to Egypt as coregent with Berenice III shortly before 13
+        Pharmouthi year 2 = 22 April 80 , killed by the Alexandrian mob for
+        murdering her
+      supports: [ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy XII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_xii.htm
+      quote: >-
+        returned to Egypt as king probably shortly before 13 Pharmouthi year 2
+        (of Berenice III ) = year 1 = 22 April 80 … in c. June 58 , restored in
+        February 55 … died of disease February/March 51
+      supports: [ruler]
+    - source: bennett-ptolemies
+      locator: 'Cleopatra VII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cleopatra_vii.htm
+      quote: >-
+        succeeded Ptolemy XII spring 51 … associated as senior ruler with her
+        son Ptolemy XV probably 1 Thoth year 9 = 4 September 44 … committed
+        suicide in Alexandria by poison … probably on 17 Mesore year 22 = 12
+        August 30 . Egypt was formally annexed to the Roman Republic with
+        effect from 6 Mesore year 1 of Augustus = Kal. Sex. AUC 724 = 1 August
+        30
+      supports: [to, ruler]
+    - source: cassius-dio
+      locator: '51.19.4–6'
+      quote: >-
+        When, however, they learned of Antony 's death, the news of which came
+        while Cicero , the son of Cicero , was consul for a part of the year …
+        The day on which Alexandria had been captured they declared a lucky day
+      supports: [to]
     - { source: braund-1984 }
     - { source: cassius-dio, locator: '39.12.1' }
     - { source: caesar-bc, locator: '3.107' }
@@ -1648,9 +1861,124 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    the tetrarchs of the three peoples, to c. 63; Deiotarus, c. 63–40; Castor,
-    40–37/36; Amyntas, 36–25
+    the twelve tetrarchs of the three peoples, to 64; three tetrarchs, one to
+    each people (Deiotarus of the Tolistobogii), from 63; Deiotarus alone, from
+    after 44 to 40; Castor, 40–37/36; Amyntas, 36–25
   sources:
+    - source: polybius
+      locator: '30.28'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/30*.html
+      quote: >-
+        The autonomy of their country was granted by the senate to the Galatian
+        envoys on condition that they remained in their own settlements and did
+        not cross their frontier in arms.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 46'
+      quote: >-
+        First, he put to death the tetrarchs of Galatia with their wives and
+        children … all except three who escaped. … But the tetrarchs who had
+        escaped raised an army from the country people forthwith, expelled him
+        and his garrisons, and drove them out of Galatia
+      supports: [from, ruler]
+    - source: strabo
+      locator: '12.5.1'
+      quote: >-
+        each was divided into four portions which were called tetrarchies, each
+        tetrarchy having its own tetrarch … Such, then, was the organization of
+        Galatia long ago, but in my time the power has passed to three rulers,
+        then to two; and then to one, Deiotarus , and then to Amyntas , who
+        succeeded him.
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius , and
+        Mithridates no longer caused any injury to the Romans, but had
+        destroyed himself
+      supports: [ruler]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Deiotarus and others tetrarchs of the Gallograecians , who are
+        now the Galatians bordering on Cappadocia .
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 373'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Pompey, therefore, simplified the ancient system by replacing the twelve
+        tetrarchs by three, one for each of the tribes. … Deiotarus was made
+        sole tetrarch of the tribe of the Tolistobogii, and his son-in-law,
+        Brogitarus, was appointed ruler of the Trocmi. … Deiotarus, although
+        his rule over the Tolistobogii remained only a “tetrarchate,” was
+        exalted by the bestowal of the title of King
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, 426'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Deiotarus, to be sure, seems, on hearing of Caesar’s death, to have
+        attained his end by means of violence … Deiotarus attacked Gorbeus,
+        the residence of Tarcondarius, and after killing both his daughter and
+        his son-in-law, levelled the place to the ground. … Now, through the
+        death of Tarcondarius, he was sole ruler in Galatia
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '48.32.1–2'
+      quote: >-
+        Caesar and Antony removed the praetors and the consuls, although it was
+        now near the close of the year … One of those who at this time became
+        consuls was Lucius Cornelius Balbus
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '48.33.1–5'
+      quote: >-
+        Besides these events which took place that year … The domains of
+        Attalus and of Deiotarus , who had both died in Galatia , were given to
+        a certain Castor .
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … Galatia, on the other hand, did not pass to
+        Castor’s heir. Antony, evidently regarding Amyntas as a more valuable
+        supporter, presented the district to him, conferring on him also the
+        title of King.
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        Antony , in addition to making the arrangements mentioned above,
+        assigned principalities, giving Galatia to Amyntas
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus , who was now consul for the ninth time, with Marcus Silanus
+        as colleague
+      supports: [to, ruler]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory. Thus Galatia
+        together with Lycaonia obtained a Roman governor
+      supports: [to, ruler]
     - { source: cicero-deiotaro }
     - { source: appian, locator: 'Mithr. 17, 46, 75' }
     - { source: livy-per, locator: '94.2' }
@@ -1668,7 +1996,11 @@
     banquet, garrisoned their towns and set a satrap, Eumachus, over it; the
     three who escaped drove him out (Mithr. 46). Deiotarus, one of them, beat Mithridates'
     generals in Phrygia in the war of the 70s (Mithr. 75; Livy Per. 94.2).
-    Deiotarus confirmed by Pompey in 63. At his death in 40 his lands and
+    In 63 Pompey replaced the twelve tetrarchs by three, one to each people,
+    Deiotarus taking the Tolistobogii (App. Mithr. 114; Magie I 373); he
+    seized the Trocmi on Brogitarus' death and became sole ruler only after
+    Caesar's death, when he killed Castor Tarcondarius (Strabo 12.5.3; Magie I
+    426). The ruler read "Deiotarus, c. 63–40" until October 2026. At his death in 40 his lands and
     Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
     37/36 to Amyntas, Antony's king in Pisidia since 39 (App. BC 5.75), who
     received Galatia "with Lycaonia and portions of Pamphylia" (Dio
@@ -1687,11 +2019,151 @@
   ruler: >-
     Ariarathes V, to 130; Ariarathes VI, 130–c. 116; Ariarathes VII, c. 116–c.
     100; Ariarathes IX (Mithridates' son), c. 100–c. 96; Ariobarzanes I, c.
-    96/95–c. 63/62; Ariobarzanes II, c. 63/62–52/51; Ariobarzanes III, 51–43/42;
-    Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
+    96/95–64/62; Ariobarzanes II, 64/62–c. 54/51; Ariobarzanes III, c.
+    54/51–43/42; Ariarathes X, 43/42–36; Archelaus (Sisines), from 36
   sources:
-    - { source: justin, locator: '37.1, 38.1–38.3' }
-    - { source: strabo, locator: '12.2.11' }
+    - source: magie-1950
+      locator: 'vol. I, 202'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Ariarathes’s son, Ariarathes V Eusebes Philopator, who became king
+        about 164
+      supports: [kind, from, ruler]
+    - source: eutropius
+      locator: '4.20'
+      quote: >-
+        Against him was sent out Publius Licinius Crassus , who had ample
+        assistance from several kings … as well as Ariarathes , king of
+        Cappadocia
+      supports: [kind, from, ruler]
+    - source: velleius
+      locator: '2.4.1'
+      quote: >-
+        the celebrated jurist Crassus Mucianus , proconsul of Asia , as he was
+        leaving his province
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 151'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Only his head was brought to the rebel general; his body was buried in
+        Smyrna. About the same time, perhaps. King Ariarathes of Cappadocia met
+        his death.
+      supports: [ruler]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        to the sons of Ariarathes , king of Cappadocia , who had fallen in that
+        war, were assigned Lycaonia and Cilicia … rescued from the barbarous
+        hands of their mother one infant, who, after the death of Laodice (for
+        the people killed her for her cruelty), became sole king
+      supports: [ruler]
+    - source: kallet-marx-1995
+      locator: 'pp. 243–244'
+      quote: >-
+        a certain Gordius killed Ariarathes VI, Mithridates' own brother-in-law,
+        … perhaps around 116 but possibly later. … he installed on the throne
+        as Ariarathes VII his nephew, Laodice's son. … Eupator swiftly disposed
+        of him as well and boldly placed on the throne his own eight-year-old
+        son, now dubbed Ariarathes (IX)
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 203'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        at this meeting he stabbed the young man in full view of both their
+        armies. Thereupon he proclaimed his own eight- … About 102 B.c.
+      supports: [ruler]
+    - source: justin
+      locator: '38.2'
+      quote: >-
+        took away Cappadocia from Mithridates … But the Cappadocians declined
+        the favour, saying that 'their nation could not subsist without a
+        king.' Ariobarzanes was in consequence appointed their king by the
+        senate.
+      supports: [kind, ruler]
+    - source: kallet-marx-1995
+      locator: 'p. 248'
+      quote: >-
+        it ensured only further political chaos—as did the virtually
+        contemporaneous declaration of the "freedom" of Cyrene in 96 after the
+        death of Ptolemy Apion. … The Cappadocians themselves were not
+        satisfied with this solution, which resolved nothing, and requested
+        that the Senate name a king for them.
+      supports: [ruler]
+    - source: kallet-marx-1995
+      locator: 'p. 215'
+      quote: >-
+        since Ariobarzanes II acceded to the throne no earlier than 64
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 390'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        On the old ruler’s abdication in 62 his son, Ariobarzanes II, had become
+        king. … Nevertheless, he fell a victim to those who remained, and died
+        a violent death, probably about 54, leaving his son the kingdom
+      supports: [ruler]
+    - source: cicero-fam
+      locator: '15.2.4–6'
+      quote: >-
+        the duty of protecting king Ariobarzanes (surnamed Eusebes and
+        Philorhomaeus) … warned by his father's most lamentable murder
+      supports: [kind, ruler]
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I entered the province at Laodicea in the consulship of Sulpicius and
+        Marcellus on the 31st of July.
+      supports: [ruler]
+    - source: appian
+      locator: 'BC 4.63'
+      quote: >-
+        sent his cavalry in advance into Cappadocia , who presently killed
+        Ariobarzanes for plotting against Cassius
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '47.33.4'
+      quote: >-
+        Afterwards he arrested and killed Ariobarzanes .
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        On the murder of Ariobarzanes III by order of Cassius, his younger
+        brother, Ariarathes, … became the lawful ruler. Antony, however, …
+        deposed Ariarathes and installed as king a certain Sisines, a grandson
+        of that Archelaus whom Pompey had created priest of the Pontic Comana .
+        … Assuming the ancestral name Archelaus, … this young man took the
+        throne of Cappadocia, which he held for a half-century, enjoying the
+        favour not only of Antony but also of Augustus
+      supports: [kind, to, ruler]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        bestowing upon Archelaus Cappadocia , after driving out Ariarathes
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [to]
+    - source: strabo
+      locator: '12.2.11'
+      quote: >-
+        And they chose Ariobarzanes ; but in the course of the third generation
+        his family died out; and Archelaus was appointed king, though not
+        related to the people, being appointed by Antony .
+      supports: [kind, ruler]
+    - { source: justin, locator: '38.1–38.3' }
     - { source: plutarch, locator: 'Sulla 5.3' }
     - { source: appian, locator: 'Mithr. 10–11, 15, 60, 66–67' }
     - { source: sullivan-1990 }
@@ -1699,8 +2171,6 @@
     - { source: mcging-1980, locator: 'p. 37 n. 14' }
     - { source: kallet-marx-1995, locator: 'pp. 295, 356–359' }
     - { source: cicero-fam, locator: XV }
-    - { source: cassius-dio, locator: '49.32.3' }
-    - { source: strabo, locator: '12.2.11' }
     - { source: luke-2025 }
   confidence: probable
   review: draft
@@ -1730,7 +2200,13 @@
     but only Ariarathes minted (Luke 2025); in 36 Antony gave Cappadocia to
     Archelaus "after driving out Ariarathes" (Dio 49.32.3). Most take Sisines
     and Archelaus to be one man (Magie I 435); Syme took them for two. Kept by
-    Octavian (Dio 51.2.1).
+    Octavian (Dio 51.2.1). Ariobarzanes I gave up the throne to his son in 62
+    on Magie (I 390), in 64 at the earliest on Kallet-Marx (215, after
+    Mattingly's spring 64); Ariobarzanes II was murdered "probably about 54"
+    (Magie I 390) and certainly before Cicero met his son as king in September
+    51 (Fam. 15.2). The ruler read "Ariobarzanes I, c. 96/95–c. 63/62;
+    Ariobarzanes II, c. 63/62–52/51; Ariobarzanes III, 51–43/42" until October
+    2026.
 
 - id: commagene
   kind: kingdom

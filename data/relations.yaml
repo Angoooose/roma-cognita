@@ -399,7 +399,34 @@
   of: rome
   from: 133 BCE
   to: after 27 BCE
-  sources: [{ source: broughton-mrr }, { source: strabo, locator: '13.4.2' }]
+  sources:
+    - source: strabo
+      locator: '13.4.2'
+      quote: >-
+        Attalus surnamed Philometor , reigned five years, died of disease, and
+        left the Romans his heirs. The Romans proclaimed the country a
+        province, calling it Asia
+      supports: [type, of]
+    - source: velleius
+      locator: '2.2.2'
+      quote: >-
+        In the consulship of Publius Mucius Scaevola and Lucius Calpurnius (one
+        hundred and sixty-two years ago) … he split with the party of the
+        nobles
+      supports: [from]
+    - source: velleius
+      locator: '2.4.1'
+      quote: >-
+        While these events were taking place in Italy King Attalus had died,
+        bequeathing Asia in his will to the Roman people
+      supports: [of, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia , Asia , Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [type, of, to]
+    - { source: broughton-mrr }
   confidence: probable
   review: needs-check
   note: From Attalus' bequest (133); organised by Aquillius from 129 (polities.yaml).
@@ -466,9 +493,48 @@
   from: { earliest: 102 BCE, latest: 100 BCE }
   to: { earliest: 44 BCE, latest: 43 BCE }
   sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 102 B.C., p. 568'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Praetors M. ANTONIUS? (28) Cos. 99 Received command against the pirates
+        in Cilicia, a command which he continued to hold until 100
+      supports: [from]
+    - source: sumner-1978
+      locator: 'p. 213'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        so that the citizens of Rome and the Allies and Latins and those of the
+        external nations who are in the friendship of the Roman People may be
+        able to sail the seas in safety; and that Cilicia has for this reason
+        been made a praetorian province in accordance with this law
+      supports: [type, of]
+    - source: sumner-1978
+      locator: 'p. 216'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        Cilicia had already come into view as a potential praetorian province
+        through the command ofM. Antonius against the pirates, 102-100.22 The
+        first praetor of Cilida under the terms of our law would most likely be
+        a praetor of 100
+      supports: [type, from]
+    - source: magie-1950
+      locator: 'vol. II, 1270–1271, n. 44'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        the first actual mention of a united Syria and Cilicia is in their
+        assignment to C. Sosius in 38 b.c. … of any mention of Cilicia among
+        the provinces (Syria, Asia, Bithynia and Pontus) over which Cicero
+        proposed in March, 43 to give maius imperium to Cassius (Phil, xi 30)
+        that the province was no longer in existence.
+      supports: [to]
+    - source: cicero-phil
+      locator: '11.30'
+      quote: >-
+        throughout Syria , Asia , Bithynia , and Pontus
+      supports: [to]
     - { source: cah-ix, locator: ch. 8 }
     - { source: broughton-mrr, locator: vol. II }
-    - { source: sumner-1978 }
   confidence: probable
   review: needs-check
   note: From Antonius' command of 102 and the law of 101/100 (polities.yaml).
@@ -812,10 +878,43 @@
   from: 59 BCE
   to: 31 BCE
   sources:
+    - source: bennett-ptolemies
+      locator: 'Ptolemy XII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_xii.htm
+      quote: >-
+        Ptolemy XII was not recognised as a Roman "friend and ally" until early
+        A.U.C. 695 = 59, with the help of some extremely large bribes
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '39.12.1'
+      quote: >-
+        in order to have his rule confirmed and to receive the name of friend
+        and ally
+      supports: [type, of]
+    - source: suetonius-iul
+      locator: '54.3'
+      quote: >-
+        In his first consulship he stole three thousand pounds of gold from the
+        Capitol … He made alliances and thrones a matter of barter, for he
+        extorted from Ptolemy alone in his own name and that of Pompeius nearly
+        six thousand talents
+      supports: [type, of, from]
+    - source: bennett-ptolemies
+      locator: 'Cleopatra VII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cleopatra_vii.htm
+      quote: >-
+        Egypt was formally annexed to the Roman Republic with effect from 6
+        Mesore year 1 of Augustus = Kal. Sex. AUC 724 = 1 August 30
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.19.4–6'
+      quote: >-
+        When, however, they learned of Antony 's death, the news of which came
+        while Cicero , the son of Cicero , was consul for a part of the year …
+        The day on which Alexandria had been captured they declared a lucky day
+      supports: [to]
     - { source: braund-1984 }
-    - { source: cassius-dio, locator: '39.12.1' }
     - { source: caesar-bc, locator: '3.107' }
-    - { source: suetonius-iul, locator: '54.3' }
   confidence: probable
   review: needs-check
   note: >-
@@ -948,7 +1047,36 @@
   of: rome
   from: before 133 BCE
   to: 64 BCE
-  sources: [{ source: appian, locator: 'Mithr. 17, 75' }]
+  sources:
+    - source: polybius
+      locator: '30.28'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/30*.html
+      quote: >-
+        The autonomy of their country was granted by the senate to the Galatian
+        envoys on condition that they remained in their own settlements and did
+        not cross their frontier in arms.
+      supports: [type, of, from]
+    - source: appian
+      locator: 'Mithr. 17'
+      quote: >-
+        began to collect forces from Bithynia , Cappadocia , Paphlagonia , and
+        the Galatians of Asia . As soon as Lucius Cassius , the governor of
+        Asia , had his own army in readiness all the allied forces were
+        assembled.
+      supports: [type, of, from]
+    - source: appian
+      locator: 'Mithr. 75'
+      quote: >-
+        Finally Deiotarus , one of the tetrarchs of Galatia , drove the
+        marauder away and slew many of his men.
+      supports: []
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius , and
+        Mithridates no longer caused any injury to the Romans, but had
+        destroyed himself
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -960,7 +1088,44 @@
   of: rome
   from: 63 BCE
   to: after 27 BCE
-  sources: [{ source: cicero-deiotaro }]
+  sources:
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Deiotarus and others tetrarchs of the Gallograecians , who are
+        now the Galatians bordering on Cappadocia .
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius , and
+        Mithridates no longer caused any injury to the Romans, but had
+        destroyed himself
+      supports: [from]
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        just as he gave over the Galatians to the hereditary tetrarchs
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory.
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus , who was now consul for the ninth time, with Marcus Silanus
+        as colleague
+      supports: [to]
+    - { source: cicero-deiotaro }
   confidence: probable
   review: draft
 
@@ -969,7 +1134,52 @@
   of: rome
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: sullivan-1990 }, { source: cicero-fam, locator: XV }]
+  sources:
+    - source: strabo
+      locator: '12.2.11'
+      quote: >-
+        as soon as the Romans, after conquering Antiochus , began to administer
+        the affairs of Asia and were forming friendships and alliances both
+        with the tribes and with the kings, that in all other cases they gave
+        this honor to the kings individually, but gave it to the king of
+        Cappadocia and the tribe jointly. … And they chose Ariobarzanes ; but
+        in the course of the third generation his family died out; and
+        Archelaus was appointed king, though not related to the people, being
+        appointed by Antony .
+      supports: [type, of, from]
+    - source: magie-1950
+      locator: 'vol. I, 202'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        One of the first actions of this monarch was to renew his father’s
+        treaty of alliance with Rome. … Ariarathes maintained the alliance
+        loyally, and when the Senate issued a call for aid against Aristonicus
+        he responded at once, with the result that his life was sacrificed in
+        the cause of Rome.
+      supports: [type, of, from]
+    - source: cicero-fam
+      locator: '15.2.4'
+      quote: >-
+        a formal resolution of yours had imposed upon me the duty of protecting
+        king Ariobarzanes (surnamed Eusebes and Philorhomaeus), of defending
+        the personal safety of that sovereign and the integrity of his
+        dominions, and of being the guardian of king and kingdom alike
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        this young man took the throne of Cappadocia, which he held for a
+        half-century, enjoying the favour not only of Antony but also of
+        Augustus, from whom he received an addition to his kingdom.
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [type, of, to]
+    - { source: sullivan-1990 }
   confidence: probable
   review: draft
 
