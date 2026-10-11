@@ -5636,11 +5636,11 @@
   status:
     - value: colonia latina
       from: before 133 BCE
-      to: 91 BCE
-      note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
-      from: 90 BCE
-      to: after 27 BCE
+      to: 50 BCE
+      note: >-
+        A Latin colony north of the Po. The lex Iulia did not reach it: the people beyond the Po were still not citizens when the censors disputed whether to admit them (Dio 37.9.3), and Caesar gave
+        them citizenship in his dictatorship of 49 (Dio 41.36.3). It read colonia from 90 here until October 2026; Pliny's "colonies of Cremona" (3.130) are those Augustus himself made (Beloch 5), at
+        a date nothing here gives, so no status is drawn from 49.
   labelSide: s
   sources:
     - source: pleiades
@@ -5661,24 +5661,23 @@
         auf dem eroberten Lande wurden 218 die latinischen Colonien Cremona und
         Placentia gegründet
       supports: [from, status]
-    - source: cicero-balb
-      locator: '21'
+    - source: cassius-dio
+      locator: '37.9.3'
       quote: >-
-        by the Julian law itself, by which the rights of citizenship were given
-        to the allies and to the Latins
+        The censors also became involved in a dispute about the people living
+        beyond the Po, one believing it wise to admit them to citizenship, while
+        the other did not
       supports: [status]
-    - source: broughton-mrr
-      locator: 'vol. II, 90 B.C., p. 25'
-      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+    - source: cassius-dio
+      locator: '41.36.3'
       quote: >-
-        Consuls … In the Social War Caesar held general command in the southern
-        area … In Rome he carried his law to give citizenship to all Latins and
-        [talians who had remained loyal
+        to the Gauls living south of the Alps and beyond the Po he gave
+        citizenship because he had once governed them
       supports: [status]
     - source: pliny-nh
       locator: '3.130'
       quote: In the interior of the tenth region are the colonies of Cremona
-      supports: [status, to]
+      supports: [to]
     - source: strabo
       locator: '5.1.11'
       quote: >-
