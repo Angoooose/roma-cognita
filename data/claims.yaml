@@ -5720,17 +5720,18 @@
       supports: [to]
     - { source: facella-2006 }
     - { source: sullivan-1990 }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Independent of the Seleucids since Ptolemaeus, c. 163; Sames II, then
     Mithridates I Callinicus, who married Laodice, daughter of Antiochus VIII,
     then Antiochus I from c. 70. Tigranes is not recorded taking it. Ptolemaeus'
     break with the Seleucids is Diodorus 31.19a, which ToposText prints inside
-    its § 31.22.1, so it can't yet be quoted at its own locator. Dio 36.2.5
-    and Magie (II p. 1216) have Antiochus surrendering to Lucullus in 69, which
-    bears on whether the tie with Rome starts in 69 or 64 (left for the
-    project's owner).
+    its § 31.22.1, so it can't yet be quoted at its own locator. The sources
+    differ on when its tie with Rome began, so the end is uncertain: Appian
+    and Magie (II p. 1216) have Antiochus submit to Pompey in 64, where the
+    row ends, but Dio has him make overtures to Lucullus in 69 (36.2.5). It was
+    probable until October 2026.
 
 - atom: commagene
   polity: commagene
