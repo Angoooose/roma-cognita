@@ -1602,13 +1602,17 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia.
+      note: >-
+        enfranchised under the lex Iulia. Pleiades has it "a Roman colony in
+        89 B.C." and Pliny "the colony of Pisae" (3.50), in his day; no open
+        text calls it a municipium, so the record is probable, not certain
+        (October 2026).
   labelSide: w
   sources:
     - { source: pleiades, locator: places/403253 }
     - { source: beloch-1880, locator: 'p. 176' }
     - { source: appian, locator: 'BC 1.49' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: agrigentum
