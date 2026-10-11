@@ -10441,11 +10441,55 @@
   from: 39 BCE
   to: 37 BCE
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        The Senate having voted to ratify all that he had done or should do
+        … He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute … in Pisidia, Amyntas
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of what remained, the hill-country of northern Pisidia was now given
+        to Amyntas
+      supports: [polity]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Their rule over their respective assignments, however, proved to be
+        of short duration, for three years later each received a kingdom which
+        greatly increased his prestige and power. … In 37/6 b.c. Castor, ruler
+        of Galatia and Paphlagonia, died or was deposed from his throne.
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        assigned principalities, giving Galatia to Amyntas
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: '"In Pisidia, Amyntas" (App. BC 5.75): the hill country of northern Pisidia (Magie I 433).'
+  note: >-
+    "In Pisidia, Amyntas" (App. BC 5.75), one of the kings Antony set up once
+    the senate had ratified his acts, in the consulship of Marcius and Sabinus
+    (39; Dio 48.34.1): the hill country of northern Pisidia (Magie I 433).
+    Three years later, in 37/36, he received Galatia (Magie I 434); Dio tells
+    it under 36 (49.32.3, 49.33.1), which the next row takes.
 
 - atom: pisidia
   polity: galatia
@@ -10453,13 +10497,69 @@
   from: 36 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.32.3' }
-    - { source: strabo, locator: '12.6.4' }
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        Antony, in addition to making the arrangements mentioned above,
+        assigned principalities, giving Galatia to Amyntas
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Galatia, on the other hand, did not pass to Castor’s heir. Antony,
+        evidently regarding Amyntas as a more valuable supporter, presented
+        the district to him, conferring on him also the title of King. … Thus
+        enlarged, his rule extended from the mountains of northern Galatia to
+        the shore of the Mediterranean.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '12.6.4'
+      quote: >-
+        being in possession of the Antiocheia near Pisidia and of the country
+        as far as the Apollonias near Apameia Cibotus … he was trying to
+        exterminate the Cilicians and the Pisidians … and he captured many
+        places which previously had been impregnable, among which was Cremna.
+      supports: [polity]
+    - source: strabo
+      locator: '12.6.5'
+      quote: >-
+        Sagalassus is subject to the same Roman governor to whom the whole
+        kingdom of Amyntas was subject.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the
+        possession of their kingdoms.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus
+        as colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Amyntas' Pisidia went with him into his Galatian kingdom in 36. He held
-    "the Antiocheia near Pisidia" at his death (Strabo 12.6.4).
+    Amyntas' Pisidia went with him into his Galatian kingdom in 36 (Dio
+    49.32.3, told under the year before Pompeius and Cornificius, 49.33.1;
+    Magie I 434, 37/36). He held "the Antiocheia near Pisidia" and took
+    Cremna (Strabo 12.6.4), was confirmed by Octavian after Actium (Magie I
+    443), and ruled until his death in 25 (Dio 53.25.3, 53.26.3).
 
 - atom: cilicia
   polity: asia
@@ -10467,8 +10567,21 @@
   from: 43 BCE
   to: 43 BCE
   sources:
-    - { source: cicero-fam, locator: '12.15.5' }
-    - { source: magie-1950, locator: 'vol. II, 1271' }
+    - source: cicero-fam
+      locator: '12.15.5'
+      quote: >-
+        We pursued his flying fleet as far as Sida, which is the farthest
+        district of my province.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. II, 1272'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For the inclusion of Pamphylia in Asia in May-June, 43 b.c. see Cicero
+        Epist. ad Fam. xn 14, 8 and 15, 5 and 7, in which the younger Lentulus,
+        the quaestor of Asia, writing from Perge, mentions Side as in his
+        province.
+      supports: [polity, relation, from, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -10488,16 +10601,49 @@
   from: 43 BCE
   to: 39 BCE
   sources:
-    - { source: magie-1950, locator: 'vol. I, 433; vol. II, 1270–1271' }
-    - { source: borgia-2017, locator: 'p. 304' }
+    - source: borgia-2017
+      locator: 'p. 304'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        the eastern portion of Cilicia was attached to Syria: this event is
+        likely to have taken place in 46-43 BC, even if official sources refer
+        to it only in 38 BC
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It has been previously observed that the province of Cilicia was
+        probably dismembered soon after Caesar’s death. In any case, the
+        separation into its component parts had been completed in 38, when
+        the Level District was subject to Gaius Sosius, the governor of Syria.
+      supports: [polity, relation, from, to]
+    - source: magie-1950
+      locator: 'vol. II, 1271–1272'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        See Syme in Anat. Stud. Bucher, p. 323L, who, while pointing out
+        that the first actual mention of a united Syria and Cilicia is in their
+        assignment to C. Sosius in 38 b.c. … inferred from the lack … of any
+        mention of Cilicia among the provinces (Syria, Asia, Bithynia and
+        Pontus) over which Cicero proposed in March, 43 to give maius imperium
+        to Cassius (Phil, xi 30) that the province was no longer in existence.
+        For a view that Cilicia Campestris was not attached to Syria until
+        after aj>. 18 see Bickerman
+      supports: [from, to]
+    - { source: appian, locator: 'BC 4.64' }
   confidence: uncertain
   review: needs-check
   note: >-
     Cassius took the plain for the Liberators in 43, and Tarsus was divided
     between him and Dolabella (App. BC 4.64). "The province of Cilicia was
-    probably dismembered soon after Caesar's death" (Magie I 433); the plain
-    is drawn with Syria from then, uncertain until 38. Antony made Tarsus a free
-    city in 41 (App. BC 5.7).
+    probably dismembered soon after Caesar's death" (Magie I 433); Syme
+    inferred it was gone by March 43, when Cicero's list of Cassius' provinces
+    left it out (Magie II 1271–1272), and Borgia (304) puts the plain's
+    attachment to Syria in 46–43. The plain is drawn with Syria from 43, the
+    latest of those years, uncertain until 38, when it is first attested.
+    Bickerman held it was not attached to Syria until after 18 CE (Magie,
+    there; not read). Antony made Tarsus a free city in 41 (App. BC 5.7).
 
 - atom: cilicia-campestris
   polity: syria
@@ -10505,9 +10651,40 @@
   from: 38 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.22.2' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
-    - { source: borgia-2017, locator: 'p. 304' }
+    - source: cassius-dio
+      locator: '49.22.2'
+      quote: >-
+        After doing this he set out for Italy, and Gaius Sosius received from
+        him the governorship of Syria and Cilicia.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.23.1'
+      quote: >-
+        This was the course of events in the consulship of Claudius and
+        Norbanus
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the separation into its component parts had been completed in 38, when
+        the Level District was subject to Gaius Sosius, the governor of Syria.
+      supports: [polity, relation, from]
+    - source: borgia-2017
+      locator: 'p. 304'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        even if official sources refer to it only in 38 BC . This situation
+        lasted at least until Augustus’ reorganization of the provinces in 27
+        BC or, according to some scholars, persisted even longer
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [relation, to]
   confidence: probable
   review: draft
   note: >-
@@ -10524,13 +10701,61 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: cassius-dio, locator: '48.26.3' }
-    - { source: cassius-dio, locator: '48.41.1' }
+    - source: cassius-dio
+      locator: '48.25.1'
+      quote: >-
+        persuaded Orodes to wage war and was entrusted by him with a large
+        force and with the king's son Pacorus.
+      supports: [polity]
+    - source: cassius-dio
+      locator: '48.26.3'
+      quote: >-
+        In the meantime Labienus had occupied Cilicia and had obtained the
+        allegiance of the cities of the mainland except Stratonicea
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 430'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the renegade Labienus, now intent on the conquest of Asia Minor for
+        his Parthian allies, left Pacorus to complete the conquest of Syria and
+        advanced across the Taurus. … Saxa, who had taken refuge in Cilicia,
+        was put to death
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 432'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In August, 39, an embassy from Stratoniceia, coming to Rome, obtained a
+        senatorial decree apparently granting the city its freedom, presumably
+        in recognition of its resistance to Labienus in the preceding year.
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.41.1'
+      quote: >-
+        After this Ventidius recovered Cilicia and attended to the
+        administration of this district himself
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        This is what happened at that time. But in the consulship of Appius
+        Claudius and Gaius Norbanus
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
-    "Labienus had occupied Cilicia" (Dio 48.26.3); Ventidius "recovered
-    Cilicia" in 39 (48.41.1).
+    "Labienus had occupied Cilicia" (Dio 48.26.3), on his way across the
+    Taurus into Asia, where he was resisted in 40, "the preceding year" to
+    August 39 (Magie I 430–432). Ventidius "recovered Cilicia" (48.41.1) in
+    the year Dio opens with Marcius and Sabinus, 39, and closes before
+    Claudius and Norbanus, 38 (48.34.1, 48.43.1).
 
 - atom: asia
   polity: parthia
@@ -10538,9 +10763,50 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: cassius-dio, locator: '48.26.3–4' }
+    - source: cassius-dio
+      locator: '48.25.1'
+      quote: >-
+        persuaded Orodes to wage war and was entrusted by him with a large
+        force and with the king's son Pacorus.
+      supports: [polity]
+    - source: cassius-dio
+      locator: '48.26.3–4'
+      quote: >-
+        Labienus had occupied Cilicia and had obtained the allegiance of the
+        cities of the mainland except Stratonicea, since Plancus, in fear of
+        him, had crossed over to the islands; most of the places he took
+        without conflict
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 431'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The brunt of the invasion, however, seems to have fallen on the
+        district of Caria, which was overrun by the main part of the army under
+        Labienus himself, now turned wholly Parthian and officially styled
+        Parthicus Imperator.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 432'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In August, 39, an embassy from Stratoniceia, coming to Rome, obtained a
+        senatorial decree apparently granting the city its freedom, presumably
+        in recognition of its resistance to Labienus in the preceding year.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 431'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Meanwhile Antony, tearing himself away from the allurements of
+        Alexandria, made his way to Italy in the summer of 40 … In the
+        following spring, setting himself to the task of providing for the
+        defence of Asia Minor, he sent Publius Ventidius Bassus … Labienus and
+        his forces were unable to oppose a really formidable enemy, and,
+        evacuating the province of Asia without a battle, they withdrew in
+        haste to the Taurus.
+      supports: [to]
     - { source: strabo, locator: '14.2.24' }
-    - { source: magie-1950, locator: 'vol. I, 430–431' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -10559,17 +10825,64 @@
   from: { earliest: 37 BCE, latest: 36 BCE }
   to: 31 BCE
   sources:
-    - { source: plutarch, locator: 'Antony 36.2' }
-    - { source: strabo, locator: '14.5.3' }
-    - { source: strabo, locator: '14.5.6' }
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus, and a large part of
+        Cilicia
+      supports: [polity, relation]
+    - source: strabo
+      locator: '14.5.3'
+      quote: >-
+        it was on this account that Antony assigned this region to Cleopatra,
+        since it was suited to the building of her fleets.
+      supports: [polity]
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        the same way in which it was obtained formerly by Amyntas and still
+        earlier by Cleopatra … the Romans thought that it was better for the
+        region to be ruled by kings than to be under the Roman prefects
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … Whatever portion of Cilicia Aspera this
+        prince held or hoped to hold, was likewise lost to him, for the region
+        was now presented by Antony to Cleopatra, to whom its timber was
+        especially valuable for building a fleet.
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Octavian, furthermore, presented him with that portion of the coast of
+        Cilicia Aspera which Antony had given to Cleopatra. … it was not until
+        four years later — in 26 b.c. — that he was formally declared a
+        “friend and ally” of Rome.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. II, 1272'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        It is not known what was done with Cilicia Aspera at this time.
+        Antony may perhaps have given part of it to Polemo of Laodiceia in 39
+        and he gave the coast to Cleopatra in 36
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
     Among Antony's gifts to Cleopatra, "a large part of Cilicia" (Plut. Antony
     36.2): the cedar coast by Hamaxia, which "Antony assigned … to Cleopatra,
-    since it was suited to the building of her fleets" (Strabo 14.5.3). Before
-    the grant, "it is not known what was done with Cilicia Aspera" (Magie II
-    1271), and it is unclaimed.
+    since it was suited to the building of her fleets" (Strabo 14.5.3). Magie
+    dates the gift with Amyntas' Galatia in 37/36 (I 434) and to 36 (II
+    1272). Octavian gave it to Amyntas in his settlement after Actium, four
+    years before 26 (Magie I 443), so it is hers to 31. Before the grant, "it
+    is not known what was done with Cilicia Aspera" (Magie II 1272), and it is
+    unclaimed.
 
 - atom: cilicia-tracheia
   polity: galatia
@@ -10577,15 +10890,49 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.5.6' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        the same way in which it was obtained formerly by Amyntas and still
+        earlier by Cleopatra … the Romans thought that it was better for the
+        region to be ruled by kings than to be under the Roman prefects
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the
+        possession of their kingdoms. … Octavian, furthermore, presented him
+        with that portion of the coast of Cilicia Aspera which Antony had given
+        to Cleopatra. … it was not until four years later — in 26 b.c. — that
+        he was formally declared a “friend and ally” of Rome.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [relation]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus
+        as colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     After Actium Octavian gave Amyntas "that portion of the coast of Cilicia
-    Aspera which Antony had given to Cleopatra" (Magie I 443); Strabo has the
-    Tracheia "obtained formerly by Amyntas and still earlier by Cleopatra"
-    (14.5.6).
+    Aspera which Antony had given to Cleopatra", in the settlement four years
+    before 26 (Magie I 443); Strabo has the Tracheia "obtained formerly by
+    Amyntas and still earlier by Cleopatra" (14.5.6). Amyntas held it until
+    his death in 25 (Dio 53.25.3, 53.26.3); Archelaus had it later.
 
 - atom: derbe
   polity: galatia
@@ -10593,13 +10940,43 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '12.6.3' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        But in my time Derbe and also the two Isauras have been held by
+        Amyntas, who attacked and killed Derbetes
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the
+        possession of their kingdoms. The dominions of the former, in fact,
+        were greatly enlarged. On the south of Lycaonia, he was permitted to
+        attack the dynast Antipater, ruler of Derbe and Laranda, and, after
+        killing him, to seize this Taurus region … it was not until four
+        years later — in 26 b.c. — that he was formally declared a “friend
+        and ally” of Rome.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus
+        as colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Amyntas "attacked and killed Derbetes" (Strabo 12.6.3); the date is
-    disputed (see derbe) and Magie's, after Actium, is drawn.
+    disputed (see derbe) and Magie's, in Octavian's settlement after Actium,
+    four years before 26 (I 443), is drawn. Amyntas held it until his death in
+    25 (Dio 53.25.3, 53.26.3).
 
 - atom: cyprus
   polity: cyprus
@@ -10607,15 +10984,50 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.6.6' }
-    - { source: cassius-dio, locator: '53.12.7' }
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        From that time the island became a province, just as it is now — a
+        praetorian province. During a short intervening time Antony gave it
+        over to Cleopatra and her sister Arsinoe, but when he was overthrown
+        his whole organization was overthrown with him.
+      supports: [polity, relation, from]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        Then, in the consulship of Caesar and Messala Corvinus, the decisive
+        battle took place at Actium.
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Roman again when Antony fell, "his whole organisation was overthrown with
-    him", and later "a praetorian province by itself" (Strabo 14.6.6); Caesar's
-    in 27 (Dio 53.12.7), given to the people in 22 (54.4.1). Whether it was
-    governed with Cilicia or Syria before then is not recorded.
+    Roman again when Antony fell, "his whole organization was overthrown with
+    him", and "a praetorian province" as in Strabo's day (14.6.6): Actium was
+    fought in the consulship of Caesar and Messalla (31) and Antony died "the
+    following year" (Vell. 2.84.1, 2.87.1), so the province is drawn from 30.
+    Caesar's in the settlement of his seventh consulship, 27 (Dio 53.2.7,
+    53.12.7), given to the people in 22 (54.4.1). Whether it was governed with
+    Cilicia or Syria before then is not recorded.
 
 # The Levant, Parthia, Armenia and the Caucasus
 
@@ -10625,12 +11037,48 @@
   from: 63 BCE
   to: 41 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–79' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        He then invaded Palestine and deposed Hyrcanus, who was at the moment in
+        charge of affairs there, having been appointed by the Romans
+      supports: [polity, relation, to]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did
+        this man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
     Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
+    The Parthians deposed him and set up Antigonus before Herod was made king
+    at Rome in the consulship of Calvinus and Pollio (40), so Hyrcanus' rule
+    ends in 41 (Antigonus' from 40).
 
 - atom: samaria
   polity: syria
@@ -10638,13 +11086,57 @@
   from: 63 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president … and
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella, and
+        Dia, and Samaria … All these Pompey left in a state of freedom, and
+        joined them to the province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '15.215–217'
+      quote: >-
+        he heard the news that Caesar was the victor in the war, and that
+        Antony and Cleopatra were both dead … He also added to his kingdom
+        Gadara, Hippos, and Samaria
+      supports: [to]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        Then, in the consulship of Caesar and Messala Corvinus, the decisive
+        battle took place at Actium.
+      supports: [to]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria.
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63). Octavian
+    gave it to Herod once Antony and Cleopatra were dead (AJ 15.217), the year
+    after Actium (Vell. 2.84.1, 2.87.1), 30.
 
 - atom: gadara-hippos
   polity: syria
@@ -10652,13 +11144,56 @@
   from: 63 BCE
   to: 31 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        he rebuilt Gadara, which had been demolished a little before, to
+        gratify Demetrius of Gadara, who was his freedman, and restored the
+        rest of the cities, Hippos … All these Pompey left in a state of
+        freedom, and joined them to the province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '15.215–217'
+      quote: >-
+        he heard the news that Caesar was the victor in the war, and that
+        Antony and Cleopatra were both dead … He also added to his kingdom
+        Gadara, Hippos, and Samaria
+      supports: [to]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        Then, in the consulship of Caesar and Messala Corvinus, the decisive
+        battle took place at Actium.
+      supports: [to]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria.
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63). Octavian
+    gave Gadara and Hippos to Herod once Antony and Cleopatra were dead (AJ
+    15.217), the year after Actium (Vell. 2.84.1, 2.87.1), 30.
 
 - atom: strato-tower
   polity: syria
@@ -10666,13 +11201,54 @@
   from: 63 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+        … All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        and also extensive portions of Phoenicia and Palestine
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [to]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria.
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63). Antony
+    gave Cleopatra "extensive portions of Phoenicia and Palestine" in the year
+    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
+    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
+    Josephus tells with the events of 34.
 
 - atom: palaestina-coast
   polity: syria
@@ -10680,13 +11256,55 @@
   from: 63 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        as also Marissa, and Azotos, and Iamnia, and Arethusa, to their own
+        inhabitants … and Dora and Strato's Tower … All these Pompey left in a
+        state of freedom, and joined them to the province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        and also extensive portions of Phoenicia and Palestine
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [to]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria.
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63): Dora,
+    Azotus and Iamnia are named; Ascalon, free since 104, is not. Antony gave
+    Cleopatra "extensive portions of Phoenicia and Palestine" in the year
+    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
+    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
+    Josephus tells with the events of 34.
 
 - atom: gaza
   polity: syria
@@ -10694,13 +11312,54 @@
   from: 63 BCE
   to: 37 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+        … All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also took away from the nation all those cities that they had
+        formerly taken, and that belonged to Coele Syria, and made them subject
+        to him that was at that time appointed to be the Roman president there
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        and also extensive portions of Phoenicia and Palestine
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [to]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria.
+    Taken from the Jews by Pompey and put under the governor of Syria, after
+    he took Jerusalem in the consulship of Antonius and Cicero (63). Antony
+    gave Cleopatra "extensive portions of Phoenicia and Palestine" in the year
+    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
+    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
+    Josephus tells with the events of 34.
 
 - atom: tyre
   polity: syria
@@ -10708,13 +11367,57 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        In this way the Romans, without fighting, came into possession of
+        Cilicia and both inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [to]
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: >-
     Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
-    Pompey's annexation.
+    Pompey's annexation: he declared Syria a province when he came down into
+    it (Plut. Pompey 39.2), in the consulship of L. Caesar and Figulus (64;
+    Dio 37.6.4–7.1), and Phoenicia came with it (App. Syr. 50). A free city
+    inside the province, which Antony kept out of his gift to Cleopatra (AJ
+    15.95); Phoenicia was Caesar's in the settlement of his seventh
+    consulship, 27 (Dio 53.2.7, 53.12.7).
 
 - atom: sidon
   polity: syria
@@ -10722,13 +11425,54 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        In this way the Romans, without fighting, came into possession of
+        Cilicia and both inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [to]
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: >-
     Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
-    Pompey's annexation.
+    Pompey's annexation, as tyre: a free city inside the province, kept out of
+    Antony's gift to Cleopatra (AJ 15.95), and in Caesar's Phoenicia in 27
+    (Dio 53.12.7).
 
 - atom: phoenicia
   polity: syria
@@ -10736,13 +11480,53 @@
   from: 64 BCE
   to: 37 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        In this way the Romans, without fighting, came into possession of
+        Cilicia and both inland Syria and Coele-Syria, Phoenicia, Palestine
+      supports: [polity]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        and also extensive portions of Phoenicia and Palestine
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius
+        and Cornificius were consuls
+      supports: [to]
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon
+      supports: []
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: >-
     Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
-    Pompey's annexation.
+    Pompey's annexation, as tyre. Antony gave Cleopatra "extensive portions of
+    Phoenicia and Palestine" in the year before Pompeius and Cornificius, 36
+    (Dio 49.32.5, 49.33.1), "the cities that were within the river
+    Eleutherus, as far as Egypt, excepting Tyre and Sidon" (AJ 15.95), which
+    Josephus tells with the events of 34.
 
 # The Parthian invasion of 40
 
@@ -10752,19 +11536,59 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: cassius-dio, locator: '48.26.1' }
-    - { source: cassius-dio, locator: '48.41.4' }
+    - source: cassius-dio
+      locator: '48.26.1'
+      quote: >-
+        After the death of Saxa, Pacorus made himself master of Syria and
+        subjugated all of it except Tyre
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.330'
+      quote: >-
+        Now, in the second year, Pacorus, the king of Parthia's son, and
+        Barzapharnes, a commander of the Parthians, possessed themselves of
+        Syria.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        taken the government from the Parthians. … And thus did this man
+        receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.41.4'
+      quote: >-
+        In this way he took over Syria without a battle, now that it was
+        deserted by the Parthians, with the exception of the Aradii
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        This is what happened at that time. But in the consulship of Appius
+        Claudius and Gaius Norbanus
+      supports: [to]
     - { source: debevoise-1938, locator: 'pp. 109–116' }
   confidence: certain
   review: draft
   note: >-
     Pacorus and Labienus crossed the Euphrates "in the spring of 40 B.C."
-    (Debevoise 109), and Pacorus "made himself master of Syria and subjugated
-    all of it except Tyre" (Dio 48.26.1). Ventidius "took over Syria without a
-    battle, now that it was deserted by the Parthians, with the exception of the
-    Aradii" (48.41.4) in 39, which belongs to the province again. The province
-    went on underneath. Missing from the data until September 2026, though the
-    schema's own comment names it.
+    (Debevoise 109, not read), and Pacorus "made himself master of Syria and
+    subjugated all of it except Tyre" (Dio 48.26.1); the Parthians held it
+    when Herod was made king at Rome in the consulship of Calvinus and Pollio,
+    40 (AJ 14.330, 14.389). Ventidius "took over Syria without a battle, now
+    that it was deserted by the Parthians, with the exception of the Aradii"
+    (48.41.4) in the year of Marcius and Sabinus, 39 (48.34.1, 48.43.1), which
+    belongs to the province again. The province went on underneath. Missing
+    from the data until September 2026, though the schema's own comment names
+    it.
 
 - atom: sidon
   polity: parthia
@@ -10772,10 +11596,46 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.333' }
+    - source: josephus-aj
+      locator: '14.330–333'
+      quote: >-
+        Pacorus went along the maritime parts, but the commander Barzapharnes
+        through the midland. Now the Tyrians excluded Pacorus, but the
+        Sidontans and those of Ptolemais received him.
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        taken the government from the Parthians. … And thus did this man
+        receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.41.4'
+      quote: >-
+        In this way he took over Syria without a battle, now that it was
+        deserted by the Parthians, with the exception of the Aradii
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        This is what happened at that time. But in the consulship of Appius
+        Claudius and Gaius Norbanus
+      supports: [to]
   confidence: certain
   review: draft
-  note: '"The Tyrians excluded Pacorus, but the Sidonians and those of Ptolemais received him" (AJ 14.333).'
+  note: >-
+    "The Tyrians excluded Pacorus, but the Sidonians and those of Ptolemais
+    received him" (AJ 14.333; ToposText prints "Sidontans"), before Herod was
+    made king at Rome in 40 (AJ 14.389). Recovered with the rest of Syria by
+    Ventidius in 39 (Dio 48.34.1, 48.41.4, 48.43.1).
 
 - atom: phoenicia
   polity: parthia
