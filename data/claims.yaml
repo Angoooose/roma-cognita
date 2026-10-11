@@ -3525,17 +3525,38 @@
   from: before 133 BCE
   to: 108 BCE
   sources:
-    - { source: justin, locator: '38.8' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
+    - source: justin
+      locator: '38.8'
+      quote: >-
+        In Egypt , meanwhile, on the death of Ptolemy , the throne, with the
+        queen Cleopatra his sister in marriage, was offered by an embassy to the
+        Ptolemy who was reigning at Cyrene
+      supports: [polity, relation, from]
+    - source: justin
+      locator: '39.5'
+      quote: >-
+        his natural brother, to whom his father had left the kingdom of Cyrene
+        by will
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        The most secure terminus post quem for his accession is set by a statue
+        base dated to year 10 of Ptolemy (IX) Soter = 108/7 … which attests to
+        the rule of Ptolemy IX at that time
+      supports: [polity, to]
   confidence: probable
   review: needs-check
   note: >-
     Ptolemy VIII had been king at Cyrene before he took Egypt in 145 (Justin
-    38.8) and kept it with the crown. Under Ptolemy IX it was still the crown's
-    by a royal letter to the city of April 108, his year 9 (SEG IX 5), and a
-    statue base of his year 10, 108/107 (Bennett). What followed until Apion is
-    not known; Bennett thinks Ptolemy IX may have kept Cyrene after he lost
-    Egypt in 107.
+    38.8) and still held it to leave by will at his death in 116 (39.5), which
+    brackets 133. Under Ptolemy IX it was still the crown's by a royal letter
+    to the city of April 108, his year 9 (SEG IX 5), and a statue base of his
+    year 10, 108/107 (Bennett). Justin's will would put Apion in Cyrene from
+    116, which these documents contradict; Bennett sets out both. What followed
+    until Apion is not known; Bennett thinks Ptolemy IX may have kept Cyrene
+    after he lost Egypt in 107.
 
 - atom: cyrenaica
   polity: cyrenaica-apion
@@ -3543,16 +3564,49 @@
   from: { earliest: 105 BCE, latest: 100 BCE }
   to: 97 BCE
   sources:
-    - { source: justin, locator: '39.5.2' }
+    - source: livy-per
+      locator: '70'
+      quote: >-
+        After his death, king Ptolemy of Cyrene , surnamed Apion , made the
+        Roman people his inheritor
+      supports: [polity, relation, to]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        became king of Cyrene 5 possibly in 116 or 101, probably between 105 and
+        101
+      supports: [polity, relation, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        suggesting Ptolemy IX lost control of Cyrene after that date, presumably
+        to Ptolemy Apion, i.e. a terminus post quem of 105
+      supports: [from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        This seems a reasonable argument to me, giving a terminus ante quem of
+        100 for Apion
+      supports: [from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        Obsequens 49 , under the consulship of Cn. Domitius and C. Cassius
+      supports: [to]
     - { source: lex-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
   confidence: uncertain
   review: needs-check
   note: >-
     Apion's kingdom, from a start that lies between the Apollonia inscription
     of Ptolemy IX's admiral, no earlier than 106/105, and the law of 101/100
-    that names a king of Cyrene (see the polity). Not a
-    client: nothing makes him more than a friend of Rome until his will.
+    that names a king of Cyrene (see the polity). Justin's will (39.5) would
+    put it at 116; Bennett holds the inscriptions against that. He died in the
+    consulship of Domitius and Cassius, 96 (Obsequens, as Bennett gives it).
+    Not a client: nothing makes him more than a friend of Rome until his will.
 
 - atom: cyrenaica
   polity: cyrenaica-free
@@ -3560,14 +3614,39 @@
   from: 96 BCE
   to: 75 BCE
   sources:
-    - { source: livy-per, locator: '70' }
-    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
+    - source: livy-per
+      locator: '70'
+      quote: >-
+        made the Roman people his inheritor and the Senate decreed that all the
+        towns in his kingdom were to be free
+      supports: [polity, relation]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        Obsequens 49 , under the consulship of Cn. Domitius and C. Cassius
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.111'
+      quote: >-
+        The following year, which was in the 176th Olympiad , two countries
+        were acquired by the Romans by bequest. Bithynia was left to them by
+        Nicomedes , and Cyrene by Ptolemy Apion
+      supports: [to]
+    - source: plutarch
+      locator: 'Lucullus 2.3'
+      quote: >-
+        He also made Cyrene , and finding it in confusion in consequence of
+        successive tyrannies and wars, he restored it to order, and fixed its
+        constitution
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
     The free cities of Apion's bequest, until the province (Livy Per. 70; see
     the polity). Rome's by inheritance, but with no governor: Lucullus in 87/86
-    came as Sulla's envoy looking for ships, not as a magistrate of Cyrene.
+    came as Sulla's envoy looking for ships, not as a magistrate of Cyrene, and
+    found it torn by "successive tyrannies" (Lucullus 2.3).
 
 - atom: cyrenaica
   polity: cyrenae
@@ -3575,15 +3654,44 @@
   from: c. 74 BCE
   to: 35 BCE
   sources:
+    - source: sallust-hist
+      locator: '2.43 M'
+      quote: >-
+        P. Lentulus Marcellinus was sent out as quaestor to the new province of
+        Cyrene . This province had been given to us by the will of the deceased
+        king Apion
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 1.111'
+      quote: >-
+        The following year, which was in the 176th Olympiad , two countries
+        were acquired by the Romans by bequest. Bithynia was left to them by
+        Nicomedes , and Cyrene by Ptolemy Apion
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.41.3'
+      quote: >-
+        he promised to give to his own children by Cleopatra the following
+        districts: to Ptolemy , Syria and all the region west of the Euphrates
+        as far as the Hellespont ; to Cleopatra , the Cyrenaica in Libya
+      supports: [to]
     - { source: livy-per, locator: '70' }
-    - { source: appian, locator: 'BC 1.111' }
-    - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
   note: >-
     Organised c. 74: Sallust has P. Lentulus Marcellinus sent as quaestor "to
-    the new province of Cyrene" among the events of 75 (Hist. 2.43 M), Appian
-    puts it in 74 (BC 1.111). Ran from "before 68" until September 2026.
+    the new province of Cyrene" among the events of 75, the year Maurenbrecher
+    gives the fragment (Hist. 2.43 M, after the consuls Octavius and Cotta,
+    2.42 M); Appian has Cyrene acquired "the following year" in the 176th
+    Olympiad, 76–73 (BC 1.111). Ends with Antony's grant to Cleopatra Selene
+    in his consular year, 34 (Dio 49.39.1, 49.41.3). Ran from "before 68"
+    until September 2026.
 
 - atom: numidia
   polity: numidia
@@ -3591,17 +3699,59 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
+    - source: sallust-jug
+      locator: '7.2'
+      quote: >-
+        Accordingly, when Micipsa sent cavalry and infantry to aid the Romans in
+        the war with Numantia , he gave Jugurtha command of the Numidians whom
+        he sent to Spain
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '14.1'
+      quote: >-
+        my sire Micipsa admonished me on his death-bed to consider that I was
+        only a steward of the kingdom of Numidia , but that the right and
+        authority were in your hands
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶141'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Nous pouvons seulement certifier que ce royaume englobe la contrée
+        comprise depuis la frontière de la province romaine jusqu’à Cirta, que
+        le roi semble avoir choisie comme capitale
+      supports: [polity]
+    - source: sallust-jug
+      locator: '16.5'
+      quote: >-
+        the other part, preferable in appearance rather than in reality, having
+        more harbours and being provided with more buildings, fell to Adherbal
+      supports: [polity]
+    - source: sallust-jug
+      locator: '27.3'
+      quote: >-
+        Numidia and Italy , as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were Publius
+        Scipio Nasica and Lucius Calpurnius Bestia
+      supports: [to]
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Adherbal , attacked by Jugurtha and besieged in the town of Cirtha was
+        killed in violation of a senatorial decree.
+      supports: [polity, to]
     - { source: braund-1984 }
-    - { source: bridoux-2020, locator: '¶124, ¶137, ¶141' }
-    - { source: sallust-jug, locator: '16.5' }
   confidence: probable
   review: draft
   note: >-
     Micipsa's, then from c. 116 Adherbal's: his kingdom "englobe la contrée
     comprise depuis la frontière de la province romaine jusqu'à Cirta" (Bridoux
-    ¶141), the part with "more harbours" (Sall. Jug. 16.5). Leptis Magna, which
-    Micipsa held (¶137), has no atom here; it went over to Rome at the start of
-    the war (Jug. 77.2–3).
+    ¶141), the part with "more harbours" (Sall. Jug. 16.5). In force at 133:
+    Micipsa sent troops to Scipio at Numantia (Jug. 7.2). Ends with Adherbal's
+    death at Cirta, in the year before the consuls Scipio Nasica and Bestia
+    (111) were given Numidia (Jug. 27.3). Leptis Magna, which Micipsa held
+    (Bridoux ¶137), has no atom here; it went over to Rome at the start of the
+    war (Jug. 77.2–3).
 
 - atom: numidia
   polity: numidia
@@ -3609,15 +3759,41 @@
   from: 111 BCE
   to: 106 BCE
   sources:
-    - { source: sallust-jug, locator: '27, 47, 75–76, 89–92, 102.1' }
-    - { source: livy-per, locator: '64–66' }
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Because of this, war was declared upon Jugurtha , and consul Calpurnius
+        Bestia , who was sent out to conduct this war
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '27.3'
+      quote: >-
+        Numidia and Italy , as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were Publius
+        Scipio Nasica and Lucius Calpurnius Bestia
+      supports: [from]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians , and Numidia as far as the river
+        Muluccha , were subject to Jugurtha
+      supports: [polity]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome
+      supports: [to]
+    - { source: sallust-jug, locator: '47, 75–76, 89–92, 102.1' }
   confidence: certain
   review: draft
   note: >-
     Jugurtha's kingdom at war with Rome, from the declaration of 111 (Sall. Jug.
-    27; Livy Per. 64) to his surrender in 105. Roman armies garrisoned Vaga
-    (Jug. 47), took Thala (75–76), destroyed Capsa (89–91) and came to Cirta
-    (102.1), but held towns, not the country; no occupation is drawn.
+    27; Livy Per. 64) to his surrender in 105, when Cn. Manlius was consul
+    (Jug. 114). Roman armies garrisoned Vaga (Jug. 47), took Thala (75–76),
+    destroyed Capsa (89–91) and came to Cirta (102.1), but held towns, not the
+    country; no occupation is drawn.
 
 - atom: numidia
   polity: numidia
@@ -3625,23 +3801,93 @@
   from: 105 BCE
   to: 47 BCE
   sources:
+    - source: bridoux-2020
+      locator: '¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Marius promet à Gauda le commandement de la Numidie si Jugurtha est
+        capturé ou tué et les droits du prince, de par le testament de Micipsa,
+        sont visiblement confirmés dès après la victoire romaine en 105 av.
+        J.-C.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Gauda, que les auteurs anciens s’emploient à décrire comme un prince
+        faible d’esprit, est manifestement considéré par les Romains comme un
+        roi docile. Le souverain doit donc régner sur l’ensemble de la Numidie.
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Pompey 12.4'
+      quote: >-
+        King Iarbas also, the confederate of Domitius , was captured, and his
+        kingdom given to Hiempsal
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Depuis le fleuve Ampsaga, le royaume de Juba I doit s’étendre vers l’est
+        jusqu’à la Fossa Regia … Après la défaite du roi numide, la partie
+        orientale de son royaume est annexée et constitue la nouvelle province
+        d’Afrique
+      supports: [polity, to]
+    - source: bridoux-2020
+      locator: '¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        se constituent deux royaumes numides qui coexistent jusqu’à la victoire
+        de César à Thapsus en l’an 46 av. J.-C.
+      supports: [to]
     - { source: braund-1984 }
-    - { source: bridoux-2020, locator: '¶144–145, ¶153, ¶157' }
+    - { source: bridoux-2020, locator: '¶153' }
   confidence: probable
   review: draft
   note: >-
     Gauda's, then Hiempsal II's and Juba I's eastern kingdom, to the fossa
-    regia (Bridoux ¶145, ¶153, ¶157). Ran from "before 68" until September 2026.
+    regia (Bridoux ¶145, ¶153, ¶157); Pompey gave it back to Hiempsal in 81
+    (Plut. Pompey 12.4). Ran from "before 68" until September 2026.
 
 - atom: numidia
   polity: africa-nova
   relation: province
   from: 46 BCE
   to: 28 BCE
-  sources: [{ source: bridoux-2020, locator: '¶157' }]
+  sources:
+    - source: bellum-africum
+      locator: '97'
+      quote: >-
+        farmed out the collection of the royal taxes, and turned the kingdom
+        into a province. Then, leaving C. Sallustius behind there in military
+        command with the powers of proconsul
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '43.1.1'
+      quote: >-
+        The following year he became both dictator and consul at once, holding
+        each of the offices for the third time, and with Lepidus as his
+        colleague in both instances.
+      supports: [from]
+    - source: cassius-dio
+      locator: '43.9.4'
+      quote: >-
+        the region of the Numidians was called the new province, because it
+        had been newly captured
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [relation, to]
+    - { source: bridoux-2020, locator: '¶157' }
   confidence: certain
   review: draft
-  note: 'Annexed after Thapsus, 46.'
+  note: >-
+    Annexed after Thapsus, in Caesar's third consulship with Lepidus, 46 (Dio
+    43.1.1, 43.9.2–4; Bell. Afr. 97). Kept to the settlement of 27, as the
+    polity (see africa-nova).
 
 - atom: numidia-cirta
   polity: numidia
@@ -3649,20 +3895,82 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶141' }
-    - { source: sallust-jug, locator: '21–26' }
+    - source: bridoux-2020
+      locator: '¶141'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Nous pouvons seulement certifier que ce royaume englobe la contrée
+        comprise depuis la frontière de la province romaine jusqu’à Cirta, que
+        le roi semble avoir choisie comme capitale
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶124'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À l’ouest, ce territoire parvient en 118 av. J.-C. jusqu’au fleuve
+        Mulucha (oued Moulouya), tandis qu’à l’est il est délimité depuis 146
+        av. J.-C. par la frontière de la province romaine d’Afrique
+      supports: [polity]
+    - source: sallust-jug
+      locator: '7.2'
+      quote: >-
+        Accordingly, when Micipsa sent cavalry and infantry to aid the Romans in
+        the war with Numantia , he gave Jugurtha command of the Numidians whom
+        he sent to Spain
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '14.1'
+      quote: >-
+        my sire Micipsa admonished me on his death-bed to consider that I was
+        only a steward of the kingdom of Numidia , but that the right and
+        authority were in your hands
+      supports: [relation]
+    - source: sallust-jug
+      locator: '26.2–3'
+      quote: >-
+        surrendered on the terms which they had advised. 3 Thereupon Jugurtha
+        first tortured Adherbal to death
+      supports: [polity, to]
+    - source: sallust-jug
+      locator: '27.3'
+      quote: >-
+        Numidia and Italy , as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were Publius
+        Scipio Nasica and Lucius Calpurnius Bestia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Cirta was Micipsa's, then Adherbal's capital (Bridoux ¶141), where he was
-    besieged and killed in 112 (Sall. Jug. 21–26).
+    besieged and killed in 112, the year before the consuls Scipio Nasica and
+    Bestia (Sall. Jug. 21–27).
 
 - atom: numidia-cirta
   polity: numidia
   relation: independent
   from: 111 BCE
   to: 106 BCE
-  sources: [{ source: sallust-jug, locator: '27, 102.1' }]
+  sources:
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Because of this, war was declared upon Jugurtha , and consul Calpurnius
+        Bestia , who was sent out to conduct this war
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians , and Numidia as far as the river
+        Muluccha , were subject to Jugurtha
+      supports: [polity]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome
+      supports: [to]
+    - { source: sallust-jug, locator: '102.1' }
   confidence: certain
   review: draft
   note: As numidia. Marius was at Cirta in 106/105 (Sall. Jug. 102.1).
@@ -3672,7 +3980,33 @@
   relation: client
   from: 105 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶102, ¶145, ¶157' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Marius promet à Gauda le commandement de la Numidie si Jugurtha est
+        capturé ou tué et les droits du prince, de par le testament de Micipsa,
+        sont visiblement confirmés dès après la victoire romaine en 105 av.
+        J.-C.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Gauda, que les auteurs anciens s’emploient à décrire comme un prince
+        faible d’esprit, est manifestement considéré par les Romains comme un
+        roi docile. Le souverain doit donc régner sur l’ensemble de la Numidie.
+      supports: [polity, relation]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus II et l’aventurier campanien Sittius pénètrent en Numidie,
+        conquièrent le royaume de Massinissa II et s’emparent de Cirta, capitale
+        de Juba I. Au moment de la chute de Juba I, en 46 av. J.-C.
+      supports: [polity, to]
+    - { source: bridoux-2020, locator: '¶102' }
   confidence: probable
   review: draft
   note: Cirta was Juba's capital. Ran from "before 68" until September 2026.
@@ -3682,7 +4016,20 @@
   relation: province
   from: 44 BCE
   to: 28 BCE
-  sources: [{ source: bridoux-2020, locator: '¶159' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est sans doute en 44 av. J.-C., à la mort de Sittius, que le
+        territoire des Sittiani est rattaché à la province romaine d’Afrique
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [relation, to]
   confidence: uncertain
   review: draft
   note: >-
@@ -3694,30 +4041,106 @@
   relation: client
   from: before 133 BCE
   to: 117 BCE
-  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶124'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À l’ouest, ce territoire parvient en 118 av. J.-C. jusqu’au fleuve
+        Mulucha (oued Moulouya), tandis qu’à l’est il est délimité depuis 146
+        av. J.-C. par la frontière de la province romaine d’Afrique
+      supports: [polity]
+    - source: sallust-jug
+      locator: '7.2'
+      quote: >-
+        Accordingly, when Micipsa sent cavalry and infantry to aid the Romans in
+        the war with Numantia , he gave Jugurtha command of the Numidians whom
+        he sent to Spain
+      supports: [relation, from]
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha devient maître de toute la Numidie. Après que l’affaire ait été
+        portée devant le sénat romain, la Numidie est partagée entre Jugurtha,
+        roi de la partie occidentale, et Adherbal, roi de la partie orientale.
+        En 113 av. J.-C., quatre années après le partage
+      supports: [polity, relation, to]
+    - source: bridoux-2020
+      locator: '¶141'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        La limite occidentale du royaume d’Adherbal est inconnue et nous ne
+        disposons d’aucun indice pour proposer une quelconque hypothèse à ce
+        sujet.
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Micipsa's kingdom ran from the Mulucha to the fossa regia (Bridoux ¶124).
-    In the division of c. 116 this ground went to Jugurtha or to Adherbal, and
-    nobody can say which (¶141): it is unclaimed until 112.
+    In the division four years before 113, so 117 (¶140), this ground went to
+    Jugurtha or to Adherbal, and nobody can say which (¶141): it is unclaimed
+    until 112.
 
 - atom: numidia-igilgili
   polity: numidia
   relation: client
   from: 112 BCE
   to: 112 BCE
-  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶142'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha règne quant à lui jusqu’à l’oued Moulouya qui le sépare du
+        royaume de Bocchus I. Entre 112 et 105 av. J.-C., Jugurtha gouverne donc
+        un territoire délimité par le fleuve Mulucha (Moulouya) et la Fossa
+        Regia
+      supports: [polity, from]
+    - source: sallust-jug
+      locator: '22.2'
+      quote: >-
+        When Jugurtha heard their message, he rejoined that nothing had more
+        weight and nothing was more precious to him than the will of the senate
+      supports: [relation]
+    - source: sallust-jug
+      locator: '27.3'
+      quote: >-
+        Numidia and Italy , as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were Publius
+        Scipio Nasica and Lucius Calpurnius Bestia
+      supports: [to]
   confidence: probable
   review: draft
-  note: Jugurtha's whole kingdom once Cirta fell, before Rome declared war.
+  note: >-
+    Jugurtha's whole kingdom once Cirta fell, before Rome declared war; he
+    still professed obedience to the senate's envoys (Sall. Jug. 22.2).
 
 - atom: numidia-igilgili
   polity: numidia
   relation: independent
   from: 111 BCE
   to: 106 BCE
-  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  sources:
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Because of this, war was declared upon Jugurtha , and consul Calpurnius
+        Bestia , who was sent out to conduct this war
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians , and Numidia as far as the river
+        Muluccha , were subject to Jugurtha
+      supports: [polity]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome
+      supports: [to]
   confidence: probable
   review: draft
   note: Jugurtha's kingdom at war with Rome; see numidia.
@@ -3727,43 +4150,138 @@
   relation: client
   from: 105 BCE
   to: 89 BCE
-  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Marius promet à Gauda le commandement de la Numidie si Jugurtha est
+        capturé ou tué et les droits du prince, de par le testament de Micipsa,
+        sont visiblement confirmés dès après la victoire romaine en 105 av.
+        J.-C.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Gauda, que les auteurs anciens s’emploient à décrire comme un prince
+        faible d’esprit, est manifestement considéré par les Romains comme un
+        roi docile. Le souverain doit donc régner sur l’ensemble de la Numidie.
+      supports: [polity, relation]
+    - source: bridoux-2020
+      locator: '¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la mort de Gauda, sans doute survenue en 88 av. J.-C., se constituent
+        deux royaumes numides
+      supports: [to]
   confidence: probable
   review: draft
-  note: Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶145).
+  note: >-
+    Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶145), to his
+    death, "sans doute" in 88 (¶147).
 
 - atom: numidia-igilgili
   polity: numidia-masinissa
   relation: client
   from: c. 88 BCE
   to: 82 BCE
-  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
+        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
+        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
+        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
+        son autorité sur son territoire dont nous avons des raisons de penser
+        qu’il se confond avec la Numidie occidentale, plus précisément entre
+        l’oued Soummam et le fleuve Ampsaga
+      supports: [polity, from, to]
   confidence: uncertain
   review: draft
   note: >-
     Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
     survenue en 88" (Bridoux ¶147–148); split from the next row only because
-    the standing of the kingdom changes (relations.yaml).
+    the standing of the kingdom changes (relations.yaml). No text read says
+    how Masteabar stood with Rome: the relation is unquoted.
 
 - atom: numidia-igilgili
   polity: numidia-masinissa
   relation: client
   from: 81 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶154'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        la situation de Massinissa II, qui règne sur un royaume vassal des
+        Massyles de l’est, détaché de la Numidie traditionnelle qu’il administre
+        depuis 81 au moins et jusqu’en 46 av. J.-C.
+      supports: [polity, relation, from, to]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        localiser la principauté de Massinissa II dans l’ouest de la Numidie
+        (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au contact de
+        la Maurétanie, au fleuve Ampsaga à l’est
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au moment de la chute de Juba I, en 46 av. J.-C., le roi Massinissa II
+        périt visiblement lui aussi
+      supports: [to]
+    - { source: bridoux-2020, locator: '¶149' }
   confidence: uncertain
   review: draft
   note: >-
     Masinissa II's principality, which Bridoux takes as a vassal of the eastern
-    Numidian kings (¶155). Given to Sittius in 46, recovered by Arabio in 44.
-    Ran from "before 68" until September 2026.
+    Numidian kings (¶154–155). Given to Sittius in 46, recovered by Arabio in
+    44. Ran from "before 68" until September 2026.
 
 - atom: numidia-soummam
   polity: numidia
   relation: client
   from: before 133 BCE
   to: 117 BCE
-  sources: [{ source: bridoux-2020, locator: '¶124' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶124'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À l’ouest, ce territoire parvient en 118 av. J.-C. jusqu’au fleuve
+        Mulucha (oued Moulouya), tandis qu’à l’est il est délimité depuis 146
+        av. J.-C. par la frontière de la province romaine d’Afrique
+      supports: [polity]
+    - source: sallust-jug
+      locator: '7.2'
+      quote: >-
+        Accordingly, when Micipsa sent cavalry and infantry to aid the Romans in
+        the war with Numantia , he gave Jugurtha command of the Numidians whom
+        he sent to Spain
+      supports: [relation, from]
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha devient maître de toute la Numidie. Après que l’affaire ait été
+        portée devant le sénat romain, la Numidie est partagée entre Jugurtha,
+        roi de la partie occidentale, et Adherbal, roi de la partie orientale.
+        En 113 av. J.-C., quatre années après le partage
+      supports: [polity, relation, to]
   confidence: probable
   review: draft
   note: As numidia-igilgili; unclaimed in c. 116–113.
@@ -3773,7 +4291,29 @@
   relation: client
   from: 112 BCE
   to: 112 BCE
-  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶142'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha règne quant à lui jusqu’à l’oued Moulouya qui le sépare du
+        royaume de Bocchus I. Entre 112 et 105 av. J.-C., Jugurtha gouverne donc
+        un territoire délimité par le fleuve Mulucha (Moulouya) et la Fossa
+        Regia
+      supports: [polity, from]
+    - source: sallust-jug
+      locator: '22.2'
+      quote: >-
+        When Jugurtha heard their message, he rejoined that nothing had more
+        weight and nothing was more precious to him than the will of the senate
+      supports: [relation]
+    - source: sallust-jug
+      locator: '27.3'
+      quote: >-
+        Numidia and Italy , as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were Publius
+        Scipio Nasica and Lucius Calpurnius Bestia
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -3782,7 +4322,26 @@
   relation: independent
   from: 111 BCE
   to: 106 BCE
-  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  sources:
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Because of this, war was declared upon Jugurtha , and consul Calpurnius
+        Bestia , who was sent out to conduct this war
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians , and Numidia as far as the river
+        Muluccha , were subject to Jugurtha
+      supports: [polity]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -3791,7 +4350,31 @@
   relation: client
   from: 105 BCE
   to: 89 BCE
-  sources: [{ source: bridoux-2020, locator: '¶145' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Marius promet à Gauda le commandement de la Numidie si Jugurtha est
+        capturé ou tué et les droits du prince, de par le testament de Micipsa,
+        sont visiblement confirmés dès après la victoire romaine en 105 av.
+        J.-C.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Gauda, que les auteurs anciens s’emploient à décrire comme un prince
+        faible d’esprit, est manifestement considéré par les Romains comme un
+        roi docile. Le souverain doit donc régner sur l’ensemble de la Numidie.
+      supports: [polity, relation]
+    - source: bridoux-2020
+      locator: '¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la mort de Gauda, sans doute survenue en 88 av. J.-C., se constituent
+        deux royaumes numides
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -3800,17 +4383,52 @@
   relation: client
   from: c. 88 BCE
   to: 82 BCE
-  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
+        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
+        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
+        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
+        son autorité sur son territoire dont nous avons des raisons de penser
+        qu’il se confond avec la Numidie occidentale, plus précisément entre
+        l’oued Soummam et le fleuve Ampsaga
+      supports: [polity, from, to]
   confidence: uncertain
   review: draft
-  note: Masteabar's; see numidia-igilgili.
+  note: Masteabar's; see numidia-igilgili. The relation is unquoted.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
   relation: client
   from: 81 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶148–149, ¶155' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶154'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        la situation de Massinissa II, qui règne sur un royaume vassal des
+        Massyles de l’est, détaché de la Numidie traditionnelle qu’il administre
+        depuis 81 au moins et jusqu’en 46 av. J.-C.
+      supports: [polity, relation, from, to]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        localiser la principauté de Massinissa II dans l’ouest de la Numidie
+        (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au contact de
+        la Maurétanie, au fleuve Ampsaga à l’est
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au moment de la chute de Juba I, en 46 av. J.-C., le roi Massinissa II
+        périt visiblement lui aussi
+      supports: [to]
   confidence: uncertain
   review: draft
   note: Masinissa II's principality; see numidia-igilgili.
