@@ -3482,29 +3482,53 @@
   names:
     - { text: Aedes Martis in Circo, lang: la, preferred: true }
     - { text: Temple of Mars in the Circus Flaminius, lang: en }
-  from: 133 BCE
+  from: { earliest: 138 BCE, latest: 130 BCE }
   to: after 27 BCE
-  condition:
-    - { value: under construction, from: 133 BCE, to: 132 BCE }
-    - { value: standing, from: 131 BCE, to: after 27 BCE }
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Aedes Martis#in_circo_Flaminio, p. 328' }
-    - { source: digital-augustan-rome, locator: 'Mars, Aedes (Campus Flaminius)' }
+    - source: platner-ashby
+      locator: 'Aedes Martis#in_circo_Flaminio, p. 328'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Martis.html
+      quote: >-
+        a temple in circo Flaminio , built for D. Junius Brutus Callaicus in 138 B.C.
+        by the architect Hermodorus of Salamis
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: https://www.digitalaugustanrome.org/api/dag/records/mars-aedes-campus-flaminius/
+      quote: >-
+        Republican Temple to Mars located near the *Circus Flaminius, erected ex
+        manubiis by D. Brutus Callaicus between 135 and 130 B.C., after his Spanish
+        triumph
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: https://www.digitalaugustanrome.org/api/dag/records/mars-aedes-campus-flaminius/
+      quote: >-
+        Remains of a hexastyle peripteral temple near the Church of S. Salvatore in
+        Campo (in the N Circus Flaminius) were first identified in 1838
+      supports: [location]
+    - source: pliny-nh
+      locator: '36.26'
+      quote: >-
+        there is furthermore the colossal seated statue of Mars by the same artist in
+        the temple built by Brutus Callaecus also in the Circus
+      supports: [to]
     - { source: cavallero-2018, locator: 'pp. 317–334' }
-    - { source: pliny-nh, locator: '36.26' }
     - { source: cicero-arch, locator: '27' }
   confidence: probable
   review: draft
   note: >-
-    Built from his spoils for D. Iunius Brutus Callaicus after his triumph over the
-    Callaeci (about 133 BCE) by the Greek architect Hermodorus of Salamis, with verses
-    of Accius at its entrance and a colossal Mars and a Venus by Scopas inside. Its
-    remains, under S. Salvatore in Campo, are of a marble temple of six columns by
-    eleven on a crepis of six steps, about 14.6 by 27.8 m, facing north-east (Zevi;
-    Cavallero 2018); Tortorici thought a prostyle temple on a podium equally possible.
-    The year of its dedication is not recorded: the model shows it going up in 133–132
-    BCE.
+    Built from his spoils for D. Iunius Brutus Callaicus by the Greek architect
+    Hermodorus of Salamis, with verses of Accius at its entrance and a colossal Mars
+    and a Venus by Scopas inside. Its remains, under S. Salvatore in Campo, are of a
+    marble temple of six columns by eleven on a crepis of six steps, about 14.6 by 27.8
+    m, facing north-east (Zevi; Cavallero 2018); Tortorici thought a prostyle temple on
+    a podium equally possible. The year of its dedication is not recorded, and the
+    readable sources disagree: Platner & Ashby say 138 BCE, Digital Augustan Rome
+    135–130, after his triumph over the Callaeci. Until October 2026 it read 133 BCE,
+    going up in 133–132 and standing from 131, years no readable text gives; it now
+    spans both readings and is drawn standing throughout.
 
 - id: aedes-bellonae
   kind: temple
