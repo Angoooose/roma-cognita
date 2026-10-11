@@ -798,8 +798,8 @@
   from: before 96 BCE
   to: after 27 BCE
   ruler: >-
-    Aretas II, c. 120/110–96; Obodas I, c. 96–85; Aretas III, c. 85–62; then
-    Malichus I, to 31; Obodas, from 30
+    Aretas II, in 96; Obodas I, c. 90; Aretas III, from c. 85, still king in 62;
+    then Malichus I, to 31; Obodas, from 30
   sources:
     - source: josephus-aj
       locator: '13.360'
@@ -920,7 +920,14 @@
     (Schürer), and Aretas II, "king of the Arabians" at Alexander Jannaeus'
     siege of Gaza in 96 (Josephus, AJ 13.360; Schürer). Schürer makes Justin's
     Erotimus (39.5.5–6) the founder of the royal line, but Justin dates him
-    only loosely. So the kingdom now opens at 96.
+    only loosely. So the kingdom now opens at 96. The reigns read "Aretas II,
+    c. 120/110–96; Obodas I, c. 96–85; Aretas III, c. 85–62" until October
+    2026, years from coins in closed books; they now say only what Josephus
+    and Schürer state: Aretas II at Gaza in 96, Obodas I c. 90, Aretas III from
+    about 85 (Schürer, to 60 "according to the hitherto prevailing view") and
+    paying off Scaurus in 62 (AJ 14.80). Schürer has Malichus I 50–28, last
+    heard of in 30 (AJ 15.165), and Obodas from c. 28; the record's 31/30 is
+    an open question for the project's owner.
 
 - id: bosporus
   kind: kingdom
