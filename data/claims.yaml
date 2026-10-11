@@ -4215,7 +4215,7 @@
 - atom: pontus
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
@@ -4230,7 +4230,7 @@
 - atom: galatia-pontus
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
@@ -4240,7 +4240,7 @@
 - atom: armenia-minor
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 17, 88–89, 99–100' }
@@ -4253,7 +4253,7 @@
 - atom: comana-pontica
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 64, 82, 88–89, 99–100' }
@@ -5616,7 +5616,7 @@
 - atom: pontus-inner
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
@@ -6932,7 +6932,7 @@
   polity: pontus-regnum
   relation: allied
   from: before 133 BCE
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.11, 12.3.39' }
     - { source: appian, locator: 'Mithr. 10–13, 56–57' }
@@ -6951,7 +6951,7 @@
   polity: pontus-regnum
   relation: allied
   from: before 133 BCE
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.30, 12.3.39' }
     - { source: appian, locator: 'Mithr. 10–13, 56–57' }
@@ -6965,7 +6965,7 @@
   polity: pontus-regnum
   relation: allied
   from: before 133 BCE
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.32–34' }
   confidence: probable
@@ -6976,7 +6976,7 @@
   polity: pontus-regnum
   relation: allied
   from: { earliest: 113 BCE, latest: 90 BCE }
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.28' }
     - { source: appian, locator: 'Mithr. 17' }
@@ -6994,7 +6994,7 @@
   polity: pontus-regnum
   relation: allied
   from: { earliest: 113 BCE, latest: 90 BCE }
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.28' }
     - { source: appian, locator: 'Mithr. 15' }
@@ -8407,7 +8407,7 @@
   polity: pontus-regnum
   relation: allied
   from: { earliest: 113 BCE, latest: 90 BCE }
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - { source: strabo, locator: '12.3.28, 11.2.18' }
     - { source: appian, locator: 'Mithr. 15' }
@@ -8425,7 +8425,7 @@
 - atom: colchis
   polity: pontus-regnum
   relation: independent
-  from: 89 BCE
+  from: 88 BCE
   to: 66 BCE
   sources:
     - { source: appian, locator: 'Mithr. 64, 101' }

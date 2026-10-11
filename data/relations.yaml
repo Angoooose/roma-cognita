@@ -1716,7 +1716,7 @@
   type: allied-to
   of: rome
   from: before 133 BCE
-  to: 90 BCE
+  to: 89 BCE
   sources:
     - source: appian
       locator: 'Mithr. 10'
@@ -1738,7 +1738,13 @@
       quote: >-
         Mithridates, who is your friend and ally, calls upon you as friends and
         allies (for so the treaty reads)
-      supports: [type, of]
+      supports: [type, of, to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        In Bithynia Nicomedes was restored to the throne and Ariobarzanes in the
+        kingdom of Cappadocia
+      supports: [to]
     - { source: appian, locator: 'Mithr. 11, 13, 56–57' }
     - { source: justin, locator: '38.5' }
   confidence: probable
@@ -1748,15 +1754,13 @@
     Greater Phrygia (Justin 37.1); his son was still formally a friend and ally
     of Rome until the war of 89 (App. Mithr. 10–13, 56–57). In force in 133:
     Euergetes was a friend of Rome in the Third Punic War and rewarded after
-    Aristonicus' capture (130). The end is not backed: no readable text
-    dates the break to 89. Mithridates' envoy still invoked the treaty after
-    Nicomedes' raid (Mithr. 12), which followed his restoration in 89 (Livy
-    Per. 74, in the year of Pompeius' consulship); Appian puts the first clash
-    "about the 173rd Olympiad", 88/87 (Mithr. 17), and Livy the king's
-    seizure of Bithynia and Cappadocia in the book of Sulla's consulship, 88
-    (Per. 77). On those the alliance would run to 89; left at 90 because the
-    claims on Pontus' own ground (outside this research) change hands at
-    89/90 too.
+    Aristonicus' capture (130). It runs to 89: Mithridates' envoy still
+    invoked the treaty after Nicomedes' raid (Mithr. 12), which followed his
+    restoration in the year of Pompeius' consulship, 89 (Livy Per. 74); Appian
+    puts the first clash "about the 173rd Olympiad", 88/87 (Mithr. 17), and
+    Livy the king's seizure of Bithynia and Cappadocia in the book of Sulla's
+    consulship, 88 (Per. 77). It read 90 until October 2026, and the claims on
+    Pontus' ground moved with it (allied to 89, independent from 88).
 
 # --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
 
