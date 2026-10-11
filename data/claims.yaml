@@ -11313,7 +11313,7 @@
   polity: armenia
   relation: client
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - source: cassius-dio
       locator: '49.39.1'
