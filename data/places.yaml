@@ -1483,11 +1483,13 @@
   prominence: 2
   status:
     - value: conventus
-      from: 48 BCE
+      from: { earliest: 49 BCE, latest: 48 BCE }
       to: after 27 BCE
       note: >-
-        From its first attestation: in 48 "the Roman citizens, residing there"
-        held Salona against Octavius (Caesar BC 3.9). Before 68 until the
+        From its first attestation: "the Roman citizens, residing there" held
+        Salona against Octavius (Caesar BC 3.9), in Caesar's narrative of 48;
+        Broughton puts Octavius' attack on Salonae in 49. It was 48 until
+        October 2026. Before 68 until the
         extension to 133 BCE; nothing records Roman residents when Metellus
         wintered there in 119 (App. Ill. 11) or when Cosconius took it in 78–76
         (Eutropius 6.4).
