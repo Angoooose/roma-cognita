@@ -4429,18 +4429,10 @@
   kind: people
   names:
     - { text: Arverni, lang: la, preferred: true }
-  from: before 122 BCE
+  from: before 121 BCE
   to: 52 BCE
   ruler: Bituitus, son of Luerius, king to 121
   sources:
-    - source: broughton-mrr
-      locator: 'vol. I, 122 B.C., p. 516'
-      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
-      quote: >-
-        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he was
-        victorious over the Salluvii, and then engaged in war against the
-        Allobroges and the Arverni
-      supports: [kind, from]
     - source: strabo
       locator: '4.2.3'
       quote: >-
@@ -4457,7 +4449,7 @@
         the army of Bituitus , 120,000 men were killed; after the king himself
         had gone to Rome to make peace with the Senate, he was kept in custody at
         Alba
-      supports: [ruler]
+      supports: [ruler, from]
     - source: caesar-bg
       locator: '1.45'
       quote: >-
@@ -4490,9 +4482,9 @@
     extent anyone can draw and is not claimed. Beaten by Domitius and Fabius in
     121, Bituitus was held at Alba (Livy Per. 61), but the Arverni were
     pardoned and neither made a province nor taxed (BG 1.45). It read "before
-    133" until the October 2026 check: the first dated text is Domitius'
-    war in 122 (MRR), the year their claim starts from; Luerius' reign, which
-    Strabo puts before Bituitus', is undated.
+    133" until the October 2026 check: the first dated text is Fabius' war in
+    121 (Per. 61, by his consulship), the year their claim starts from;
+    Luerius' reign, which Strabo puts before Bituitus', is undated.
 
 - id: vaccaei
   kind: people
