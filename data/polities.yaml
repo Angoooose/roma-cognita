@@ -946,7 +946,7 @@
   kind: province
   names:
     - { text: Cyrenae, lang: la, preferred: true }
-  from: c. 74 BCE
+  from: { earliest: 75 BCE, latest: 74 BCE }
   to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
@@ -955,7 +955,10 @@
   confidence: probable
   review: draft
   note: >-
-    Bequeathed to Rome in 96, organised as a province c. 74. Given with Crete
+    Bequeathed to Rome in 96. Its first governor, the quaestor P. Lentulus
+    Marcellinus, was sent "to the new province of Cyrene" (Sall. Hist. 2.43 M)
+    in 75 by Maurenbrecher's dating and Kallet-Marx's, in 74 by Münzer's
+    (MRR); the start was c. 74 and is now that range. Given with Crete
     to Cassius (or Brutus) in 44 (App. BC 3.8), then Antony's. Promised to
     Cleopatra Selene in 34 (Dio 49.41.3; see cyrenaica-selene); Scarpus' army,
     which went over to Octavian after Actium, stood "in Africa" to guard Egypt

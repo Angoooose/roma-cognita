@@ -531,7 +531,7 @@
 - polity: cyrenae
   type: province-of
   of: rome
-  from: c. 74 BCE
+  from: { earliest: 75 BCE, latest: 74 BCE }
   to: 28 BCE
   sources:
     - { source: livy-per, locator: '70' }
@@ -539,7 +539,9 @@
     - { source: sallust-hist, locator: '2.43 M' }
   confidence: probable
   review: draft
-  note: 'Bequeathed 96, organised c. 74.'
+  note: >-
+    Bequeathed 96; a quaestor first sent to it in 75 or 74 (MRR, after
+    Maurenbrecher and Münzer). The start was c. 74.
 
 - polity: creta
   type: province-of
