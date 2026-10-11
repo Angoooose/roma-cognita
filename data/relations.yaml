@@ -2828,8 +2828,36 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: res-gestae, locator: '27.1' }
-    - { source: cassius-dio, locator: '53.12.7' }
+    - source: cassius-dio
+      locator: '51.17.1'
+      quote: >-
+        Afterwards he made Egypt tributary and gave it in charge of Cornelius
+        Gallus.
+      supports: [type, of]
+    - source: res-gestae
+      locator: '27.1'
+      quote: >-
+        I added Egypt to the empire of the Roman people.
+      supports: [type, of]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [type, to]
   confidence: certain
   review: draft
   note: Held by Octavian through a prefect of equestrian rank (Dio 51.17.1, 53.13.2).
