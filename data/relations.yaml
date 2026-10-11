@@ -1314,8 +1314,31 @@
   from: c. 110 BCE
   to: 64 BCE
   sources:
-    - { source: diophantus-decree }
-    - { source: strabo, locator: '7.4.3' }
+    - source: diophantus-decree
+      quote: >-
+        when the Scythians surrendered to him the royal fortresses of Chabaioi
+        and Neapolis, it came to pass that almost all of them became subject to
+        the king Mithridates Eupator
+      supports: [type, of]
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        he not only subdued all these by force
+      supports: [type]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1898,22 +1921,100 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '4.1.5' }
-    - { source: livy-per, locator: '47, 60' }
+    - source: livy-per
+      locator: '47'
+      quote: >-
+        Consul Quintus Opimius subdued the Transalpine Ligurians, who had
+        attacked two towns of the Massiliots, Antipolis and Nicaea.
+      supports: [type, of, from]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        Marcus Fulvius Flaccus, sent out to help the Massiliots against Gallic
+        Salluvians living on the Massilian frontier
+      supports: [type, of, from]
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        by means of which they defended themselves against the barbarians, and
+        likewise obtained the alliance of the Romans, to whom they rendered many
+        important services
+      supports: [type, of]
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        Caesar and his successors treated with moderation the offences of which
+        they were guilty during the war, in consideration of their former
+        friendship; and have preserved to the state the right of governing
+        according to its ancient laws. So that neither Marseilles nor the cities
+        dependent on it are under submission to the governors sent
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     An ally long before 133: Rome fought the Ligurians beyond the Alps at its
-    request in 154 (Livy Per. 47) and again, against the Salluvii, in 125 (Per.
-    60). Its territory is the Province's from
-    49 (claims.yaml).
+    request in 154, the consulship of Opimius (Livy Per. 47), and again, against
+    the Salluvii, under Fulvius Flaccus, consul in 125 (Per. 60). Its territory
+    is the Province's from 49 (claims.yaml).
 
 - polity: paphlagonia
   type: client-of
   of: rome
   from: 63 BCE
   to: after 27 BCE
-  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  sources:
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis.
+      supports: [type, of]
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        this country was comprised within these boundaries when Pompey took it
+        over, upon his overthrow of Mithridates … And he gave over to the
+        descendants of Pylaemenes the office of king over certain of the
+        Paphlagonians situated in the interior
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, 372'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The remainder … was assigned to princes of native stock. … Paphlagonia
+        was divided between them, and it was expected that in return for this
+        boon they would rule in the interest of Rome.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the possession
+        of their kingdoms.
+      supports: [type]
+    - source: magie-1950
+      locator: 'vol. I, 465'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        which Antony had granted, and Augustus confirmed, to Deiotarus
+        Philadelphus, the old monarch’s great-grandson. … On his death (or that
+        of his heir) in 6/5 b.c., his dominions, like those of Amyntas, were
+        annexed to Rome’s Empire.
+      supports: [to]
   confidence: probable
   review: draft
 
@@ -1922,7 +2023,50 @@
   of: rome
   from: 63 BCE
   to: after 27 BCE
-  sources: [{ source: strabo, locator: '12.3.34' }]
+  sources:
+    - source: strabo
+      locator: '12.3.34'
+      quote: >-
+        when Pompey took over the authority, he appointed Archelaus priest and
+        included within his boundaries, in addition to the sacred land, a
+        territory of two schoeni (that is, sixty stadia) in circuit and ordered
+        the inhabitants to obey his rule.
+      supports: [type, of]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He also appointed Archelaus to the priesthood of the goddess worshipped
+        at Comana, which is a royal prerogative.
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 371'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        He preserved the high-priesthood of the Goddess but appointed to the
+        office a man who would be an obedient vassal of Rome.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: strabo
+      locator: '12.3.35'
+      quote: >-
+        but now that he has been deposed, the office is held by Dyteutus, son of
+        Adiatorix, who is thought to have obtained the honor from Augustus
+        Caesar
+      supports: [type, of, to]
   confidence: probable
   review: draft
 
@@ -1931,9 +2075,37 @@
   of: rome
   from: 49 BCE
   to: 39 BCE
-  sources: [{ source: cassius-dio, locator: '41.42.7' }]
+  sources:
+    - source: cassius-dio
+      locator: '41.42.7–43.1'
+      quote: >-
+        by Caesar and those in the city he was called to account and declared an
+        enemy, while Bocchus and Bogud were named kings, because they were
+        hostile to him. … The ensuing year the Romans had two sets of
+        magistrates … The people of the city had chosen as consuls Caesar and
+        Publius Servius
+      supports: [type, of, from]
+    - source: bridoux-2020
+      locator: '¶99'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Dion Cassius mentionne les deux monarques maures et nous indique
+        précisément qu’ils sont reconnus comme tels par Rome en 49 av. J.-C. …
+        Bogud règne sur la Maurétanie occidentale
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '48.43.1–45.3'
+      quote: >-
+        in the consulship of Appius Claudius and Gaius Norbanus … Bogud the Moor
+        sailed to Spain … failed to win back his own domain … Bocchus forthwith
+        took possession of his kingdom
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    Named king by Caesar's senate in 49 (Dio 41.42.7); lost his kingdom to
+    Bocchus in 38, the year of Appius Claudius and Norbanus (Dio 48.43.1,
+    48.45.1–3), so the relation runs to 39.
 
 - polity: numidia-masinissa
   type: client-of
@@ -1999,9 +2171,42 @@
   of: rome
   from: 46 BCE
   to: 45 BCE
-  sources: [{ source: appian, locator: 'BC 4.54' }]
+  sources:
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        When Gaius Caesar pursued the Pompeians to Africa Sittius joined him and
+        destroyed Juba's famous general, Saburra, and received from Caesar, as
+        a reward for these services, the territory of Masinissa, not all, but
+        the best part of it. … He returned to Africa after Caesar's death … He
+        expelled Bocchus from his territory and killed Sittius by stratagem.
+      supports: [type, of, from, to]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au moment de la chute de Juba I, en 46 av. J.-C., le roi Massinissa II
+        périt visiblement lui aussi
+      supports: [from]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Aussitôt après la mort de César, Arabion récupère vraisemblablement
+        l’intégralité du territoire de son père
+      supports: [to]
+    - source: bridoux-2020
+      locator: '¶160'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        gouverné par Arabion de 44 à 41 av. J.-C.
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    Sittius' share of Masinissa II's land, given him by Caesar after Juba's
+    fall in 46; Arabio took it back and killed Sittius after Caesar's death
+    (App. BC 4.54), in 44 (Bridoux ¶159–160), so the relation runs to 45.
 
 - polity: pontic-cities
   type: allied-to
@@ -2009,7 +2214,27 @@
   from: 71 BCE
   to: 56 BCE
   sources:
-    - { source: eutropius, locator: '6.10' }
+    - source: eutropius
+      locator: '6.10'
+      quote: >-
+        He then besieged several cities lying above Pontus, where he destroyed
+        Apollonia, Calatis, Parthenopolis, Tomi, Histros, and Burziaone, and,
+        putting an end to the war, returned to Rome.
+      supports: [from]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
+        Pompey were made consuls
+      supports: [from]
+    - source: cassius-dio
+      locator: '38.10.1–3'
+      quote: >-
+        The latter, while governor of Macedonia, had inflicted many injuries upon
+        the subject territory as well as upon that which was in alliance with
+        Rome … When he tried the same tactics on the allies in Moesia, he was
+        defeated near the city of the Istrians
+      supports: [type, of]
     - { source: appian, locator: 'Ill. 30' }
   confidence: probable
   review: needs-check
@@ -2021,8 +2246,28 @@
   from: 113 BCE
   to: after 27 BCE
   sources:
-    - { source: caesar-bc, locator: '1.18' }
-    - { source: appian, locator: 'Celt. 13' }
+    - source: appian
+      locator: 'Celt. 13'
+      quote: >-
+        A numerous band of the Teutones bent on plunder invaded the territory of
+        Noricum. The Roman consul, Papirius Carbo … complaining that they had
+        invaded the people of Noricum, who were foreign friends of the Romans.
+      supports: [type, of, from]
+    - source: caesar-bc
+      locator: '1.18'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=1:chapter=18
+      quote: >-
+        about three hundred horse from the king of Noricum
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '54.19.1–20.2'
+      quote: >-
+        during the consulship of Lucius Domitius and Publius Scipio … The
+        Pannonians in company with the Norici overran Istria; but the former,
+        upon being discomfited by Silius and his lieutenants, both came to terms
+        again themselves and caused the Norici to be subjected to the same
+        slavery.
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -2035,8 +2280,45 @@
   from: 122 BCE
   to: 52 BCE
   sources:
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Proconsul Gnaeus Domitius successfully fought against the Allobroges
+        near the town of Vindalium. The reason for starting this war was that
+        the Allobroges had offered refuge to king Toutomotulus of the
+        Salluvians, and had supported him with all possible means when he
+        devastated the land of the Aedui, an ally of the Roman people.
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 516'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
+        was victorious over the Salluvii, and then engaged in war against the
+        Allobroges and the Arverni
+      supports: [from]
+    - source: caesar-bg
+      locator: '1.35'
+      quote: >-
+        in the consulship of Marcus Messalla and Marcus Piso … the Senate had
+        decided that the governor of the Province of Gaul should protect, as
+        far as he could do so with advantage to the state, the Aedui and the
+        other friends of the Roman people
+      supports: [type, of]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.55'
+      quote: >-
+        Litaviccus had been received by the Aedui at Bibracte, the town of
+        supreme influence among them; the magistrate, Convictolitavis, and a
+        great part of the senate had gone to join him; deputies had been
+        despatched officially to Vercingetorix to secure peace and friendship.
+      supports: [to]
     - { source: caesar-bg, locator: '1.33' }
-    - { source: livy-per, locator: '61' }
     - { source: strabo, locator: '4.3.2' }
   confidence: probable
   review: needs-check
@@ -2088,17 +2370,77 @@
   of: rome
   from: 58 BCE
   to: 52 BCE
-  sources: [{ source: caesar-bg, locator: '1.28' }]
+  sources:
+    - source: caesar-bg
+      locator: '1.28'
+      quote: >-
+        all the remainder, upon delivery of hostages, arms, and deserters, he
+        admitted to surrender. He commanded the Helvetii, Tulingi, and
+        Latobrigi to return to their own borders, whence they had started
+      supports: [from]
+    - source: caesar-bg
+      locator: '1.6'
+      quote: >-
+        The day was the 28th of March, in the consulship of Lucius Piso and
+        Aulus Gabinius.
+      supports: [from]
+    - source: cicero-balb
+      locator: '32'
+      quote: >-
+        But some treaties are in existence, as for instance those with the
+        Germans, the Insubres, the Helvetians, and the Iapidae
+      supports: [type, of]
+    - source: caesar-bg
+      locator: '7.1'
+      quote: >-
+        There he heard of the murder of Clodius
+      supports: [to]
+    - source: caesar-bg
+      locator: '7.75'
+      quote: >-
+        eight thousand each from the Pictones, Turoni, Parisii, and Helvetii
+      supports: [to]
   confidence: probable
   review: draft
-  note: Sent home after Bibracte, 58, and received into alliance.
+  note: >-
+    Sent home after Bibracte, 58, and received into alliance: Caesar admitted
+    them to surrender (BG 1.28), and in 56 Cicero names the Helvetians among
+    the peoples Rome had treaties with (Balb. 32). In 52 they owed men to the
+    army raised to relieve Alesia (BG 7.75).
 
 - polity: colchis
   type: client-of
   of: rome
   from: 63 BCE
   to: after 27 BCE
-  sources: [{ source: appian, locator: 'Mithr. 114' }]
+  sources:
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Attalus prince of Paphlagonia and Aristarchus prince of Colchis.
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        peace was assured by the recognition of the local dynast Aristarchus as
+        the ruler of Colchis
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
   confidence: probable
   review: draft
 
@@ -2107,7 +2449,20 @@
   of: rome
   from: 65 BCE
   to: after 27 BCE
-  sources: [{ source: cassius-dio, locator: '37.2' }]
+  sources:
+    - source: cassius-dio
+      locator: '37.2.7'
+      quote: >-
+        then at last he sent his children to Pompey and concluded a treaty
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [from]
+    - { source: cassius-dio, locator: '37.2' }
   confidence: uncertain
   review: needs-check
 
@@ -2116,7 +2471,27 @@
   of: rome
   from: 65 BCE
   to: after 27 BCE
-  sources: [{ source: plutarch, locator: 'Pompey 35' }]
+  sources:
+    - source: cassius-dio
+      locator: '37.5.1'
+      quote: >-
+        Pompey granted peace to the Albanians
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 359'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        After the battle Pompey made a formal treaty with the vanquished
+        Albanian prince, who presented him with costly gifts.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [from]
+    - { source: plutarch, locator: 'Pompey 35' }
   confidence: uncertain
   review: needs-check
 
@@ -2125,10 +2500,57 @@
   of: rome
   from: 66 BCE
   to: 32 BCE
-  sources: [{ source: plutarch, locator: 'Pompey 33' }]
+  sources:
+    - source: cassius-dio
+      locator: '36.52.3–4'
+      quote: >-
+        telling him among other things that he had not lost the kingdom of
+        Armenia, but had gained the friendship of the Romans
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '36.53.6'
+      quote: >-
+        he shortly afterwards enrolled the king among the friends and allies of
+        the Roman people
+      supports: [type, of]
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        others he distributed to kings — to Tigranes, Armenia
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.44.3–4'
+      quote: >-
+        set out for Ionia and Greece to wage war against Caesar. The Mede at
+        first, by employing the Romans as allies, conquered the Parthians and
+        Artaxes who came again him; but as Antony summoned back his own
+        soldiers, and moreover retained those of the king, the latter was in
+        turn defeated and captured, and so Armenia was lost together with Media.
+      supports: [to]
+    - source: cassius-dio
+      locator: '50.2.2'
+      quote: >-
+        making all other preparations for war as if against other persons,
+        until the time that Gnaeus Domitius and Gaius Sosius, both belonging to
+        Antony's party, became consuls. Then they made no further concealment,
+        but became openly hostile.
+      supports: [to]
+    - { source: plutarch, locator: 'Pompey 33' }
   confidence: probable
   review: draft
-  note: Tigranes kept his kingdom as a friend and ally after submitting to Pompey.
+  note: >-
+    Tigranes kept his kingdom as a friend and ally after submitting to Pompey,
+    the year before the consulship of Cotta and Torquatus (Dio 36.52–53,
+    37.1.1). Antony seized Artavasdes II in 34 and held the country; it was
+    lost when Antony recalled his soldiers for the war with Caesar (Dio
+    49.44.3–4), which was open from the consulship of Domitius and Sosius, 32
+    (50.2.2).
 
 - polity: atropatene
   type: client-of
@@ -2436,10 +2858,38 @@
   from: 31 BCE
   to: after 27 BCE
   sources:
-    - { source: tacitus-ann, locator: '2.3' }
+    - source: tacitus-ann
+      locator: '2.3'
+      quote: >-
+        Artavasdes’ son, Artaxias II, hostile to us on account of his father,
+        defended himself and his crown by virtue of Parthian strength
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '49.40.1'
+      quote: >-
+        for Artaxes withdrew and went to the Parthian king, after fighting an
+        engagement and suffering defeat
+      supports: [of]
+    - source: cassius-dio
+      locator: '54.7.4'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia
+      supports: [to]
+    - source: cassius-dio
+      locator: '54.9.4–5'
+      quote: >-
+        since the other Armenians had preferred charges against Artaxes and had
+        summoned his brother Tigranes, who was in Rome, the emperor sent
+        Tiberius to drive Artaxes out of the kingdom and to reinstate Tigranes.
+        … before his arrival the Armenians slew Artaxes
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: Artaxias II, restored "by the arms of the Arsacidae".
+  note: >-
+    Artaxias II, who "defended himself and his crown by virtue of Parthian
+    strength" (Tac. Ann. 2.3), until the Armenians killed him in 20, the
+    consulship of Apuleius and Silius (Dio 54.7.4, 54.9.4–5).
 
 - polity: atropatene
   type: allied-to
@@ -2630,8 +3080,44 @@
   from: { earliest: 95 BCE, latest: 93 BCE }
   to: 67 BCE
   sources:
-    - { source: justin, locator: '38.3' }
-    - { source: appian, locator: 'Mithr. 15, 78, 84–87' }
+    - source: justin
+      locator: '38.3'
+      quote: >-
+        Mithridates formed an alliance with Tigranes, with a resolution at once
+        to go to war with the Romans
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, 205–206'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        not long after the Senate’s decision against him in 95 … Mithradates,
+        therefore, turned toward the East. Here Tigranes, who had recently
+        ascended the throne of Greater Armenia … What inducement was offered him
+        besides a marriage with Mithradates’s daughter Cleopatra we do not know,
+        but an alliance was concluded, with the result that Tigranes’s generals
+        invaded Cappadocia and drove out Ariobarzanes. … the order was given
+        that Lucius Cornelius Sulla, one of the praetors of 93, should restore
+        Ariobarzanes to his kingdom.
+      supports: [type, of, from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        Tigranes of Armenia is his son-in-law and Arsaces of Parthia his ally.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '36.50.1'
+      quote: >-
+        The king then hastened toward Tigranes. But on sending courtiers to him
+        he found no friendship awaiting him … far from receiving him, Tigranes
+        even arrested and threw into prison the men sent ahead by him.
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 78, 84–87' }
   confidence: probable
   review: needs-check
   note: >-
