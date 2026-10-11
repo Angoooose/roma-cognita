@@ -2570,7 +2570,7 @@
     call its king subject.
 
 - polity: albania
-  type: client-of
+  type: allied-to
   of: rome
   from: 65 BCE
   to: after 36 BCE
@@ -2617,7 +2617,11 @@
     "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the
     relation ends open there, as the claim does. Augustus records their kings'
     embassies seeking his friendship (Res Gestae 31) without a date. Ran to
-    after 27 BCE until October 2026, which no readable text supports.
+    after 27 BCE until October 2026, which no readable text supports. Allied,
+    not client (checked October 2026; it read client): Pompey "granted peace"
+    (Dio 37.5.1) and "made a formal treaty" with the prince (Magie I 359), and
+    Canidius "conciliated" them (49.24.1); none has Rome set up, depose or call
+    its king subject.
 
 - polity: armenia
   type: client-of
