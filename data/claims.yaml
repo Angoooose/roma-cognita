@@ -6284,8 +6284,17 @@
   polity: bosporus
   relation: independent
   from: before 133 BCE
-  to: c. 109 BCE
+  to: c. 111 BCE
   sources:
+    - source: minns-1913
+      locator: 'p. 582'
+      quote: >-
+        Accordingly Paerisades put himself under the protection of Mithridates
+        VI Eupator king of Pontus … After defeating Palacus, Diophantus went to
+        the Bosporus and there was most successful (presumably in the winter of
+        B.C. iio, inscr. 1. 10), apparently relieving Paerisades from his
+        enemies, but leaving him the semblance of authority.
+      supports: [to]
     - source: strabo
       locator: '7.4.4'
       quote: >-
@@ -6320,14 +6329,29 @@
     before", gave it over to Mithridates Eupator. No tie to Rome is recorded.
     In force in 133: the gift was to Eupator, who died in Cicero's consulship
     (63, Dio 37.10.4) after reigning fifty-seven years (App. Mithr. 112), so
-    came to the throne in 120.
+    came to the throne in 120. Ends when Paerisades put himself under the
+    king's protection, by the winter of 110 on Minns' reading of the decree
+    (see the next row); it ran to c. 109 until October 2026.
 
 - atom: bosporus
   polity: pontus-regnum
   relation: independent
-  from: c. 108 BCE
+  from: c. 110 BCE
   to: 86 BCE
   sources:
+    - source: minns-1913
+      locator: 'p. 582'
+      quote: >-
+        Diophantus went to the Bosporus and there was most successful
+        (presumably in the winter of B.C. iio, inscr. 1. 10), apparently
+        relieving Paerisades from his enemies, but leaving him the semblance of
+        authority. So things remained for about three years … However, in the
+        autumn of 107, when Diophantus was actually at Bosporus seeing after the
+        interests of Mithridates, the Scythians under Saumacus^ who had been
+        brought up by Paerisades, rose and killed the old king … after his
+        failure Diophantus could establish his master's unlimited authority over
+        the kingdom.
+      supports: [polity, from]
     - source: strabo
       locator: '7.4.3–4'
       quote: >-
@@ -6356,12 +6380,19 @@
         sons, one was in Pontus and Bosporus, holding without any opposition the
         ancient realm as far as the deserts beyond Lake Maeotis
       supports: [polity, relation]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
     Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
-    Panticapaeum back for the king (the decree); the revolt is not drawn. In
+    Panticapaeum back for the king (the decree); the revolt is not drawn. The
+    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
+    the king's protection, with Diophantus at the Bosporus, by the winter of
+    110, keeping "the semblance of authority" until he was killed in 107, and
+    the king's "unlimited authority" only after the revolt was put down in the
+    spring after: the change of hands falls somewhere in 110–106, and the row
+    starts at its first year. It started c. 108 until October 2026, a year no
+    readable text gives. In
     88–87 a son of Mithridates held "Pontus and Bosporus … as far as the
     deserts beyond Lake Maeotis" (Plut. Sulla 11.2). The Bosporan peoples had
     revolted by the time the king came home in 85 (App. Mithr. 64); when is not
