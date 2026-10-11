@@ -5433,11 +5433,45 @@
   from: 46 BCE
   to: 45 BCE
   sources:
-    - { source: appian, locator: 'BC 4.54' }
-    - { source: bridoux-2020, locator: '¶101–102' }
+    - source: appian
+      locator: 'BC 4.54'
+      quote: >-
+        When Gaius Caesar pursued the Pompeians to Africa Sittius joined him …
+        Caesar gave his territory to this Sittius, and to Bocchus, the king of
+        Mauritania … He returned to Africa after Caesar's death … He expelled
+        Bocchus from his territory
+      supports: [polity, from, to]
+    - source: cassius-dio
+      locator: '41.42.7'
+      quote: >-
+        by Caesar and those in the city he was called to account and declared
+        an enemy, while Bocchus and Bogud were named kings, because they were
+        hostile to him.
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Selon Appien, César partage le territoire de Massinissa II entre
+        Sittius et Bocchus II en récompense de leurs services, mais en réserve
+        la meilleure partie à Sittius
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au
+        contact de la Maurétanie, au fleuve Ampsaga à l’est, à la limite du
+        royaume de Juba I
+      supports: [polity]
   confidence: uncertain
   review: draft
-  note: Caesar's grant to Bocchus II; Arabio probably recovered it in 44 (Bridoux ¶159).
+  note: >-
+    Caesar's grant to Bocchus II of part of Masinissa II's land, which ran
+    from the Soummam to the Ampsaga (Bridoux ¶155); Arabio, back in Africa
+    after Caesar's death, expelled Bocchus (App. BC 4.54). That this atom was
+    Bocchus' share, and Sittius' the east, is Bridoux's reading (¶102).
 
 - atom: mauretania-east
   polity: numidia
@@ -5445,21 +5479,97 @@
   from: before 133 BCE
   to: 117 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶123–124' }
-    - { source: sallust-jug, locator: '19.7' }
+    - source: sallust-jug
+      locator: '8.1–2'
+      quote: >-
+        if king Micipsa should die, he might gain the sole power in Numidia …
+        Now when Numantia had been destroyed
+      supports: [polity, from]
+    - source: sallust-jug
+      locator: '14.1'
+      quote: >-
+        my sire Micipsa admonished me on his death-bed to consider that I was
+        only a steward of the kingdom of Numidia, but that the right and
+        authority were in your hands
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶124'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        L’étendue du territoire gouverné par Micipsa est indiquée dans les
+        textes littéraires anciens. À l’ouest, ce territoire parvient en 118
+        av. J.-C. jusqu’au fleuve Mulucha (oued Moulouya)
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶123'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        le règne de Micipsa est mentionné dans deux autres inscriptions,
+        découvertes à Cherchell et Thigibba
+      supports: [polity]
+    - source: broughton-mrr
+      locator: 'I 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls C. Licrntus P. f. - n. GETA … Sent as head
+        of a commission of ten Legates to divide the kingdom of Numidia
+        between Jugurtha and Adherbal
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'I 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Gsell (Hist. anc. Afr, Nord 7.147) is inclined to date this commission
+        in 117. This year is the latest possible date.
+      supports: []
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 113 av. J.-C., quatre années après le partage, Jugurtha envahit le
+        royaume de son frère.
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Numidian to the Mulucha under Micipsa (Bridoux ¶124), one of whose
-    inscriptions was found at Cherchell, Iol (¶123). Unclaimed in c. 116–113,
-    as numidia-igilgili.
+    inscriptions was found at Cherchell, Iol (¶123); Micipsa was king when
+    Numantia fell, 133 (Sall. Jug. 8). Ended by the senate's division of the
+    kingdom, which Broughton enters under 116, "the latest possible date",
+    and Gsell and Bridoux put in 117 ("quatre années après le partage" of
+    113, Bridoux ¶140): to 117 follows Broughton. Unclaimed in c. 116–113, as
+    numidia-igilgili.
 
 - atom: mauretania-east
   polity: numidia
   relation: client
   from: 112 BCE
   to: 112 BCE
-  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶142'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha règne quant à lui jusqu’à l’oued Moulouya qui le sépare du
+        royaume de Bocchus I. Entre 112 et 105 av. J.-C., Jugurtha gouverne
+        donc un territoire délimité par le fleuve Mulucha (Moulouya) et la
+        Fossa Regia
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 113 av. J.-C., quatre années après le partage, Jugurtha envahit le
+        royaume de son frère. Un an plus tard, contre l’avis des commissaires
+        romains, il s’empare de Cirta et fait massacrer Adherbal. Ces
+        événements sont à l’origine du déclenchement de la guerre contre Rome.
+      supports: [from, to]
+    - source: sallust-jug
+      locator: '24.7'
+      quote: >-
+        it is your realm that he now holds by force of arms, and it is I, whom
+        you made ruler of Numidia, that he is besieging
+      supports: [relation]
   confidence: probable
   review: draft
 
@@ -5468,28 +5578,133 @@
   relation: independent
   from: 111 BCE
   to: 106 BCE
-  sources: [{ source: sallust-jug, locator: '19.7, 27' }]
+  sources:
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians, and Numidia as far as the river
+        Muluccha, were subject to Jugurtha.
+      supports: [polity]
+    - source: sallust-jug
+      locator: '27.3–5'
+      quote: >-
+        Numidia and Italy, as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were
+        Publius Scipio Nasica and Lucius Calpurnius Bestia; Numidia fell to
+        Bestia, Italy to Scipio. An army was then enrolled to be transported to
+        Africa
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome,
+        Marius was made consul in his absence
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    At war with Rome from the consulship of Nasica and Bestia, 111 (Sall.
+    Jug. 27), to Jugurtha's capture in the year Caepio and Mallius were
+    beaten by the Gauls, 105 (114).
 
 - atom: mauretania-east
   polity: numidia
   relation: client
   from: 105 BCE
   to: 89 BCE
-  sources: [{ source: bridoux-2020, locator: '¶75, ¶145 and pl. VIII' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Gauda, que les auteurs anciens s’emploient à décrire comme un prince
+        faible d’esprit, est manifestement considéré par les Romains comme un
+        roi docile. Le souverain doit donc régner sur l’ensemble de la
+        Numidie. À la suite de l’annexion par Bocchus I des territoires
+        occidentaux, le royaume s’étend vraisemblablement depuis la région
+        comprise entre l’embouchure de l’oued Chélif et le cap Ténès à la
+        Fossa Regia
+      supports: [polity, relation]
+    - source: bridoux-2020
+      locator: '¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        les droits du prince, de par le testament de Micipsa, sont visiblement
+        confirmés dès après la victoire romaine en 105 av. J.-C.
+      supports: [from]
+    - source: sallust-jug
+      locator: '65.3'
+      quote: >-
+        that if Jugurtha should be taken or killed, he would without delay be
+        made ruler of Numidia
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la mort de Gauda, sans doute survenue en 88 av. J.-C., se
+        constituent deux royaumes numides
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     East of Bocchus I's gains of 105, which Gsell and Bridoux end between the
-    mouth of the Chelif and Cap Ténès (¶75): so Gauda's (¶145).
+    mouth of the Chelif and Cap Ténès (¶75): so Gauda's (¶145), to his death,
+    "sans doute" in 88 (¶147).
 
 - atom: mauretania-east
   polity: mauretania
   relation: client
   from: c. 80 BCE
   to: 34 BCE
-  sources: [{ source: bridoux-2020, locator: '¶97, ¶102' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶97'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Sosus est maître d’un territoire hérité de Bocchus I, qui englobe donc
+        une partie de l’ancienne Numidie et qu’il étend peut-être jusqu’à
+        l’oued Soummam
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        J. Desanges pense que dès la première moitié du I er siècle av. J.-C.
+        le royaume maure s’est encore accru vers l’est, aux dépens de la
+        Numidie, et ce jusqu’à l’oued Soummam, ou tout du moins jusqu’à
+        l’Algérois. L’hypothèse est tout à fait vraisemblable.
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶90'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        il faut considérer qu’il règne de 81 ou 80 av. J.-C., date
+        vraisemblable de la fin du règne de Bocchus I, à 49 av. J.-C., Bogud et
+        Bocchus II étant alors assurément rois de Maurétanie
+      supports: [from]
+    - source: plutarch
+      locator: 'Marius 32.2'
+      quote: >-
+        when Bocchus the Numidian, who had been designated an ally of the
+        Romans, set up trophy-bearing Victories on the Capitol
+      supports: [relation]
+    - source: cassius-dio
+      locator: '41.42.7'
+      quote: >-
+        by Caesar and those in the city he was called to account and declared
+        an enemy, while Bocchus and Bogud were named kings, because they were
+        hostile to him.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus … At the
+        death of Bocchus he gave his kingdom to no one else, but enrolled it
+        among the Roman provinces.
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -5507,13 +5722,72 @@
   from: before 133 BCE
   to: 117 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶74, ¶124' }
-    - { source: sallust-jug, locator: '110.8' }
+    - source: sallust-jug
+      locator: '8.1–2'
+      quote: >-
+        if king Micipsa should die, he might gain the sole power in Numidia …
+        Now when Numantia had been destroyed
+      supports: [polity, from]
+    - source: sallust-jug
+      locator: '110.8'
+      quote: >-
+        I shall not pass the river Muluccha, which was the boundary between
+        Micipsa and myself
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶121'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la veille de sa mort, Massinissa I étend donc sa domination depuis le
+        milieu de la Grande Syrte, Leptis comprise, jusqu’à la limite du
+        royaume maure.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶124'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        L’étendue du territoire gouverné par Micipsa est indiquée dans les
+        textes littéraires anciens. À l’ouest, ce territoire parvient en 118
+        av. J.-C. jusqu’au fleuve Mulucha (oued Moulouya)
+      supports: [polity]
+    - source: sallust-jug
+      locator: '14.1'
+      quote: >-
+        my sire Micipsa admonished me on his death-bed to consider that I was
+        only a steward of the kingdom of Numidia, but that the right and
+        authority were in your hands
+      supports: [relation]
+    - source: broughton-mrr
+      locator: 'I 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls C. Licrntus P. f. - n. GETA … Sent as head
+        of a commission of ten Legates to divide the kingdom of Numidia
+        between Jugurtha and Adherbal
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'I 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Gsell (Hist. anc. Afr, Nord 7.147) is inclined to date this commission
+        in 117. This year is the latest possible date.
+      supports: []
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 113 av. J.-C., quatre années après le partage, Jugurtha envahit le
+        royaume de son frère.
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Numidian west to the Mulucha, "the boundary between Micipsa and myself"
-    (Bocchus in Sall. Jug. 110.8; Bridoux ¶74).
+    (Bocchus in Sall. Jug. 110.8; Bridoux ¶74), from Masinissa's last years
+    (Bridoux ¶121) through Micipsa's reign, which saw Numantia fall (Sall.
+    Jug. 8). To the senate's division, which Broughton enters under 116, "the
+    latest possible date", and Gsell and Bridoux put in 117 (Bridoux ¶140):
+    to 117 follows Broughton.
 
 - atom: mauretania-central
   polity: numidia-jugurtha
@@ -5521,21 +5795,82 @@
   from: c. 116 BCE
   to: 113 BCE
   sources:
-    - { source: sallust-jug, locator: '16.5' }
-    - { source: bridoux-2020, locator: '¶142' }
+    - source: sallust-jug
+      locator: '16.5'
+      quote: >-
+        When the division was made, the part of Numidia adjoining Mauretania,
+        which was the more fertile and thickly populated, was assigned to
+        Jugurtha
+      supports: [polity]
+    - source: sallust-jug
+      locator: '16.2'
+      quote: >-
+        It was voted that ten commissioners should divide Micipsa's former
+        kingdom between Jugurtha and Adherbal.
+      supports: [relation]
+    - source: broughton-mrr
+      locator: 'I 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls C. Licrntus P. f. - n. GETA … Sent as head
+        of a commission of ten Legates to divide the kingdom of Numidia
+        between Jugurtha and Adherbal
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'I 531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Gsell (Hist. anc. Afr, Nord 7.147) is inclined to date this commission
+        in 117. This year is the latest possible date.
+      supports: [from]
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 113 av. J.-C., quatre années après le partage, Jugurtha envahit le
+        royaume de son frère. Un an plus tard, contre l’avis des commissaires
+        romains, il s’empare de Cirta et fait massacrer Adherbal.
+      supports: [from, to]
   confidence: probable
   review: needs-check
   note: >-
     "The part of Numidia adjoining Mauretania" was Jugurtha's (Sall. Jug.
     16.5). This atom touches the Mulucha, so it was his whatever the line with
-    Adherbal was; the atoms between are unclaimed.
+    Adherbal was; the atoms between are unclaimed. The division is 116 in
+    Broughton (the latest possible year) and 117 in Gsell and Bridoux; "c.
+    116" covers both. Jugurtha took Cirta a year after invading his
+    brother's kingdom in 113 (Bridoux ¶140), and held all Numidia from 112.
 
 - atom: mauretania-central
   polity: numidia
   relation: client
   from: 112 BCE
   to: 112 BCE
-  sources: [{ source: bridoux-2020, locator: '¶142' }]
+  sources:
+    - source: bridoux-2020
+      locator: '¶142'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Jugurtha règne quant à lui jusqu’à l’oued Moulouya qui le sépare du
+        royaume de Bocchus I. Entre 112 et 105 av. J.-C., Jugurtha gouverne
+        donc un territoire délimité par le fleuve Mulucha (Moulouya) et la
+        Fossa Regia
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 113 av. J.-C., quatre années après le partage, Jugurtha envahit le
+        royaume de son frère. Un an plus tard, contre l’avis des commissaires
+        romains, il s’empare de Cirta et fait massacrer Adherbal. Ces
+        événements sont à l’origine du déclenchement de la guerre contre Rome.
+      supports: [from, to]
+    - source: sallust-jug
+      locator: '24.7'
+      quote: >-
+        it is your realm that he now holds by force of arms, and it is I, whom
+        you made ruler of Numidia, that he is besieging
+      supports: [relation]
   confidence: probable
   review: draft
 
@@ -5544,12 +5879,43 @@
   relation: independent
   from: 111 BCE
   to: 106 BCE
-  sources: [{ source: sallust-jug, locator: '19.7, 92.5' }]
+  sources:
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians, and Numidia as far as the river
+        Muluccha, were subject to Jugurtha.
+      supports: [polity]
+    - source: sallust-jug
+      locator: '92.5'
+      quote: >-
+        Not far from the river Muluccha, which separated the realms of
+        Jugurtha and Bocchus
+      supports: [polity]
+    - source: sallust-jug
+      locator: '27.3–5'
+      quote: >-
+        Numidia and Italy, as the Sempronian law required, were assigned to the
+        consuls who should next be elected. The consuls in question were
+        Publius Scipio Nasica and Lucius Calpurnius Bestia; Numidia fell to
+        Bestia, Italy to Scipio. An army was then enrolled to be transported to
+        Africa
+      supports: [relation, from]
+    - source: sallust-jug
+      locator: '114.1–3'
+      quote: >-
+        At this same time our generals Quintus Caepio and Gnaeus Manlius were
+        defeated by the Gauls … But when it was announced that the war in
+        Numidia was ended and that Jugurtha was being brought captive to Rome,
+        Marius was made consul in his absence
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     "Numidia as far as the river Muluccha" was Jugurtha's (Sall. Jug. 19.7);
-    Marius took his fort near the river in 106 (92.5).
+    Marius took his fort near the river in 106 (92.5). At war with Rome from
+    the consulship of Nasica and Bestia, 111 (27), to Jugurtha's capture in
+    the year Caepio and Mallius were beaten, 105 (114).
 
 - atom: mauretania-central
   polity: mauretania
@@ -5558,15 +5924,72 @@
   to: 34 BCE
   sources:
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '97.2, 111.1' }
-    - { source: bridoux-2020, locator: '¶74–75' }
+    - source: sallust-jug
+      locator: '97.2'
+      quote: >-
+        promised the Moor himself a third part of Numidia
+      supports: [polity]
+    - source: sallust-jug
+      locator: '111.1'
+      quote: >-
+        if he would deliver the king into the hands of the Romans, they would
+        be greatly indebted to him. Then friendship, alliance, and the part of
+        Numidia which he now desired would freely be given him.
+      supports: [polity, relation]
+    - source: bridoux-2020
+      locator: '¶74'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 105 av. J.-C., Bocchus I reçoit une partie de l’ancien territoire
+        de Jugurtha, qui pourrait correspondre au tiers de la Numidie.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶75'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est désormais l’interprétation de St. Gsell qui attire davantage
+        notre attention. L’auteur déduit du texte de Salluste que cette limite
+        doit se situer entre l’embouchure du Chélif et le cap Ténès.
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶80'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus I est client de Sylla, et ce depuis l’alliance conclue entre
+        les deux hommes pendant la guerre de Jugurtha
+      supports: [relation]
+    - source: plutarch
+      locator: 'Marius 32.2'
+      quote: >-
+        when Bocchus the Numidian, who had been designated an ally of the
+        Romans, set up trophy-bearing Victories on the Capitol
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶99'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Dion Cassius mentionne les deux monarques maures et nous indique
+        précisément qu’ils sont reconnus comme tels par Rome en 49 av. J.-C.,
+        ce qui permet de fixer leur accession au trône au cours de cette même
+        année. Bogud règne sur la Maurétanie occidentale, Bocchus II sur la
+        Maurétanie orientale.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus … At the
+        death of Bocchus he gave his kingdom to no one else, but enrolled it
+        among the Roman provinces.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     The part of Numidia Bocchus I was promised by Jugurtha and then by Sulla
     (Sall. Jug. 97.2, 111.1), perhaps a third of the kingdom, reaching to about
     Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had carried it "au moins
-    jusqu'à l'embouchure du Chélif"). Ran from "before 68" until September 2026.
+    jusqu'à l'embouchure du Chélif"). From 49 Bocchus II's eastern kingdom
+    (Bridoux ¶99), to his death in the consulship of Octavian and Tullus, 33
+    (Dio 49.43.6–7). Ran from "before 68" until September 2026.
 
 - atom: mauretania-west
   polity: mauretania
@@ -5574,15 +5997,52 @@
   from: before 133 BCE
   to: 106 BCE
   sources:
-    - { source: sallust-jug, locator: '19.7, 80.4' }
-    - { source: bridoux-2020, locator: '¶73' }
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        All the Moors were ruled by king Bocchus, who knew nothing of the Roman
+        people save their name and was in turn unknown to us before that time
+        either in peace or in war.
+      supports: [polity, relation]
+    - source: sallust-jug
+      locator: '80.4–5'
+      quote: >-
+        at the beginning of this very war Bocchus had sent envoys to Rome, to
+        ask for a treaty of alliance; but this arrangement, so advantageous for
+        the war which was already under way, had been thwarted
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶66'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À l’ouest, Baga semble l’avoir repoussé jusqu’au fleuve Moulouya aux
+        alentours de cette date
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶73'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus I est ainsi le premier roi de Maurétanie à apparaître dans la
+        tradition littéraire après la mention de Baga. On admet que son règne
+        débute au plus tard en 118 av. J.-C., d’après Salluste qui nous informe
+        qu’il gouverne déjà au temps du roi numide Micipsa (148-118 av. J.-C.)
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: '¶74'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 105 av. J.-C., Bocchus I reçoit une partie de l’ancien territoire
+        de Jugurtha, qui pourrait correspondre au tiers de la Numidie.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Bocchus I's kingdom was "unknown to us before that time either in peace or
     in war" (Sall. Jug. 19.7); his request for a treaty was refused (80.4) and
     he fought Marius in 106. His predecessors after Baga are unknown (Bridoux
-    ¶73).
+    ¶73): the kingdom is in force at 133 between Baga's push to the Moulouya,
+    c. 206 (¶66), and Bocchus I's reign under Micipsa (¶73), with nothing
+    between to suggest a change. To the alliance of 105 (¶74).
 
 - atom: mauretania-west
   polity: mauretania
@@ -5591,15 +6051,74 @@
   to: 50 BCE
   sources:
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '111.1' }
-    - { source: bridoux-2020, locator: '¶80, ¶91, ¶99–100' }
+    - source: sallust-jug
+      locator: '111.1'
+      quote: >-
+        if he would deliver the king into the hands of the Romans, they would
+        be greatly indebted to him. Then friendship, alliance, and the part of
+        Numidia which he now desired would freely be given him.
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶74'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        En 105 av. J.-C., Bocchus I reçoit une partie de l’ancien territoire
+        de Jugurtha, qui pourrait correspondre au tiers de la Numidie.
+      supports: [from]
+    - source: bridoux-2020
+      locator: '¶80'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus I est client de Sylla, et ce depuis l’alliance conclue entre
+        les deux hommes pendant la guerre de Jugurtha
+      supports: [relation]
+    - source: plutarch
+      locator: 'Marius 32.2'
+      quote: >-
+        when Bocchus the Numidian, who had been designated an ally of the
+        Romans, set up trophy-bearing Victories on the Capitol
+      supports: [relation]
+    - source: bridoux-2020
+      locator: '¶89'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Six balles de fronde en plomb portant l’inscription en relief REX SOS,
+        datant du I er siècle av. J.-C. et provenant de Volubilis, viennent
+        témoigner de la souveraineté qu’exerce Sosus
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶91'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Nous pensons que Sosus/Mastanesosus exerce son pouvoir sur l’ensemble
+        de la Maurétanie, un territoire qu’il aurait donc hérité de Bocchus I
+      supports: [polity]
+    - source: bridoux-2020
+      locator: '¶90'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        il faut considérer qu’il règne de 81 ou 80 av. J.-C., date
+        vraisemblable de la fin du règne de Bocchus I, à 49 av. J.-C., Bogud et
+        Bocchus II étant alors assurément rois de Maurétanie
+      supports: [to]
+    - source: bridoux-2020
+      locator: '¶99'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Dion Cassius mentionne les deux monarques maures et nous indique
+        précisément qu’ils sont reconnus comme tels par Rome en 49 av. J.-C.,
+        ce qui permet de fixer leur accession au trône au cours de cette même
+        année. Bogud règne sur la Maurétanie occidentale, Bocchus II sur la
+        Maurétanie orientale.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     From the alliance of 105. Sosus ruled here as well: his sling bullets were
-    found at Volubilis and Thamusida (Bridoux ¶91). Sertorius' siege of Tingi
-    in 81 left the country as he found it (Plut. Sertorius 9.5). Ran from
-    "before 68" until September 2026.
+    found at Volubilis and Thamusida (Bridoux ¶89, ¶91). Sertorius' siege of
+    Tingi in 81 left the country as he found it (Plut. Sertorius 9.5). To 50:
+    Bogud's western kingdom begins with the recognition of 49 (Bridoux ¶99).
+    Ran from "before 68" until September 2026.
 
 - atom: aegyptus
   polity: aegyptus
@@ -5607,15 +6126,50 @@
   from: before 133 BCE
   to: 60 BCE
   sources:
+    - source: livy-per
+      locator: '52'
+      quote: >-
+        Ptolemy received a severe head wound and died when physicians tried to
+        trepan the skull in order to heal the wound; he was succeeded by his
+        younger brother Ptolemy … (who had reigned in Cyrene)
+      supports: [polity, from]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        he said that Tiberius Gracchus appeared to be lawfully killed … the no
+        less turbulent situation in Egypt. Ptolemy (surnamed Euergetes) was
+        hated by his people because he was too cruel, and secretly fled to
+        Cyprus
+      supports: [polity, from]
+    - source: caesar-bc
+      locator: '3.107'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=107
+      quote: >-
+        the alliance with Ptolemy, the father, had been contracted during his
+        former consulship
+      supports: [to]
+    - source: justin
+      locator: '38.8'
+      quote: >-
+        he went out to meet some Roman commissioners, Scipio Africanus, Spurius
+        Mummius, and Lucius Metellus, who had come to inspect the dominions of
+        their allies
+      supports: []
     - { source: cassius-dio, locator: '39.12.1' }
     - { source: bennett-ptolemies, locator: 'Ptolemy XII' }
   confidence: probable
   review: needs-check
   note: >-
     A kingdom on friendly terms with Rome but not its client until Ptolemy XII
-    was recognised friend and ally in 59 (see the relation). Its civil wars
-    (132–124, 107, 88) and the Theban revolt of c. 88–86 were fought over the
-    one kingdom and are not drawn.
+    was recognised friend and ally in Caesar's first consulship, 59 (Caes. BC
+    3.107; see the relation). Ptolemy VIII succeeded in 145 (Liv. Per. 52) and
+    still reigned, amid civil war, at the time of Carbo's tribunate, 131 (Per.
+    59). Its civil wars (132–124, 107, 88) and the Theban revolt of c. 88–86
+    were fought over the one kingdom and are not drawn. Justin calls Egypt one
+    of Rome's allies when Scipio Aemilianus' embassy visited Ptolemy VIII
+    (38.8), which by the rule for Pontus would make this row allied, not
+    independent; that would need an allied-to relation, so the relation is
+    left as it was and unbacked.
 
 - atom: aegyptus
   polity: aegyptus
@@ -5624,37 +6178,98 @@
   to: 31 BCE
   sources:
     - { source: braund-1984 }
-    - { source: caesar-bc, locator: '3.107' }
-    - { source: cassius-dio, locator: '39.12.1' }
+    - source: caesar-bc
+      locator: '3.107'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=107
+      quote: >-
+        considering the difference between Ptolemy and his sister, as subject
+        to the cognizance of the Roman people, and of him as consul; and the
+        rather, because the alliance with Ptolemy, the father, had been
+        contracted during his former consulship
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '39.12.1'
+      quote: >-
+        in order to have his rule confirmed and to receive the name of friend
+        and ally
+      supports: [relation]
+    - source: suetonius-iul
+      locator: '35.1'
+      quote: >-
+        turned over the rule of Egypt to Cleopatra and her younger
+      supports: [polity, relation]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [to]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life … As for Cleopatra, baffling the vigilance of her guards
+        she caused an asp to be smuggled in to her, and ended her life
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
-    From the recognition of 59 (Caes. BC 3.107; Dio 39.12.1); a Roman garrison
-    from 55. Until September 2026 this row ran from "before 68" and its note
-    asked for this change.
+    From the recognition of 59, in Caesar's first consulship (Caes. BC 3.107;
+    Dio 39.12.1); a Roman garrison from 55. Ended with Cleopatra's death in
+    the year after Actium, which was fought in the consulship of Octavian and
+    Messalla, 31 (Vell. 2.84.1, 2.87.1). Until September 2026 this row ran
+    from "before 68" and its note asked for this change.
 
 - atom: nabataea-moab
   polity: nabataea
   relation: independent
   from: 65 BCE
   to: 63 BCE
-  sources: [{ source: josephus-aj, locator: '14.18' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.18'
+      quote: >-
+        Hyrcanus promised him, that when he had been brought thither, and had
+        received his kingdom, he would restore that country, and those twelve
+        cities which his father Alexander had taken from the Arabians
+      supports: []
+    - source: josephus-aj
+      locator: '14.80–81'
+      quote: >-
+        SCAURUS made now an expedition against Petraea, in Arabia … he
+        persuaded Aretas to give Scaurus a sum of money, to prevent the burning
+        of his country, and undertook to be his surety for three hundred talents
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    Hyrcanus promised the twelve towns back to Aretas III for his help, c. 65.
-    Whether the Nabataeans held them afterwards is not stated. Independent to
-    Scaurus' campaign, as nabataea (the extension to 133).
+    Hyrcanus promised the twelve towns back to Aretas III for his help, c. 65,
+    on condition that he first "received his kingdom" (AJ 14.18), which he
+    did only under Pompey in 63. Whether the Nabataeans held them afterwards
+    is not stated, and no readable text found in the backfill of October 2026
+    says so: polity and start are unbacked. Independent to Scaurus' campaign,
+    as nabataea (the extension to 133).
 
 - atom: nabataea-moab
   polity: nabataea
   relation: client
   from: 62 BCE
   to: after 27 BCE
-  sources: [{ source: josephus-aj, locator: '14.18, 14.80–81' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.80–81'
+      quote: >-
+        SCAURUS made now an expedition against Petraea, in Arabia … he
+        persuaded Aretas to give Scaurus a sum of money, to prevent the burning
+        of his country, and undertook to be his surety for three hundred talents
+      supports: [from]
   confidence: uncertain
   review: needs-check
-  note: As nabataea, from Scaurus' campaign of 62.
+  note: >-
+    As nabataea, from Scaurus' campaign of 62, after Pompey had left for Rome
+    (AJ 14.79–80). That Moab was Nabataean in these years is not stated by
+    any readable text (see the row before).
 
 # --- the Black Sea -------------------------------------------------------------
 # Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until

@@ -65,7 +65,67 @@
         - [11.5, 37.6]
   sources:
     - { source: bridoux-2020, locator: '¶125–135 and pl. II (the fossa regia)' }
-    - { source: pliny-nh, locator: '5.25' }
+    - source: pliny-nh
+      locator: '5.25'
+      quote: >-
+        That portion which we have called Africa is divided into two provinces,
+        the Old and the New; these are separated by a dyke which was made by
+        order of the second Scipio Africanus and the kings, and extended to
+        Thenae
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶125'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        cette frontière est matérialisée par un fossé, la Fossa Regia, qui a
+        assurément pour point de départ le fleuve Tusca et pour point d’arrivée
+        Thaenae
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶127'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Il est plus logique de fixer le fleuve Tusca juste à l’est de la cité
+        et ainsi de l’identifier à l’oued Zouara.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶128'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le point d’arrivée de la Fossa Regia (Thaenae) doit être localisé à
+        Tyna, sur la côte méditerranéenne, à dix kilomètres au sud de Sfax
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶129'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        la Fossa Regia suit, sur les djebels qui bordent à l’est l’oued
+        Kalled, la ligne de partage des eaux entre cette vallée et celle de
+        l’oued Siliana … il est désormais vraisemblable que la frontière est
+        fixée au sud de Seressi et de Furnos Maius
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶131'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        La seconde hypothèse, émise par N. Ferchiou, propose, depuis l’oued el
+        Kebir ou l’oued Zouara, de faire passer la Fossa Regia à l’est de Vaga
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶133'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Ch. Tissot fait passer la Fossa Regia près de la côte, par la sebkha
+        Kelbia, celle de Sidi El Hani et celle d’El Gorra qui forment des
+        obstacles naturels.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶135'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Enfin l’hypothèse d’un tracé oriental de la Fossa Regia, proposée par
+        Ch. Tissot, tend à être confirmée par une étude d’A. M’Charek.
+      supports: [construction]
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -98,6 +158,31 @@
         - [7.1, 37.3]
   sources:
     - { source: bridoux-2020, locator: '¶101–102, ¶157–159 and pls. X–XII' }
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        nous savons que le royaume de Massinissa II ne s’étendait pas, à l’est,
+        au-delà de ce fleuve, puisque Cirta, située le long de celui-ci,
+        appartenait à Juba I
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après la défaite du roi numide, la partie orientale de son royaume est
+        annexée et constitue la nouvelle province d’Afrique, tandis que la
+        partie occidentale est remise à Sittius
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        tandis que les Sittiani conservent la totalité de leur territoire à
+        l’est de l’Ampsaga (pl. XII). Ces voisins des Numides sont alors
+        implantés jusqu’à un point inconnu situé entre Rusicade (Ras Skikda) et
+        Hippo Regius.
+      supports: [construction]
     - { source: pliny-nh, locator: '5.22 ("Cirta Sittianorum cognomine")' }
     - { source: hydrorivers }
     - { source: natural-earth }
@@ -129,6 +214,23 @@
         - [6.4, 37.2]
   sources:
     - { source: bridoux-2020, locator: '¶102, ¶155, ¶159 and pls. IX–XII' }
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Il faut donc admettre que la limite orientale de la Maurétanie était
+        alors fixée bien à l’ouest du cours de l’Ampsaga, pour laisser place à
+        la principauté de Sittius.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au
+        contact de la Maurétanie, au fleuve Ampsaga à l’est, à la limite du
+        royaume de Juba I
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
@@ -160,6 +262,25 @@
         - [5.77, 37.1]
   sources:
     - { source: bridoux-2020, locator: '¶97, ¶102, ¶148, ¶155 and pl. IX' }
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au
+        contact de la Maurétanie, au fleuve Ampsaga à l’est, à la limite du
+        royaume de Juba I
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire dont nous avons des raisons de penser qu’il se confond
+        avec la Numidie occidentale, plus précisément entre l’oued Soummam et
+        le fleuve Ampsaga
+      supports: [construction]
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: uncertain
@@ -203,6 +324,40 @@
         - [11.5, 37.6]
   sources:
     - { source: bridoux-2020, locator: '¶157, ¶165–166 and pls. VIII, X–XI' }
+    - source: bridoux-2020
+      locator: '¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Depuis le fleuve Ampsaga, le royaume de Juba I doit s’étendre vers
+        l’est jusqu’à la Fossa Regia
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶165'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Par ailleurs, les limites méridionales de ces royaumes nous échappent.
+        Elles devaient être fixées là où commençait l’aire de domination des
+        Gétules.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶165'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au sud-ouest de Kairouan, la cité d’Aquae Regiae, et plus à l’ouest, à
+        peu près à la même latitude que cette dernière, celle de Thala, sont
+        incluses au sein du royaume numide
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶143'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au sud-est, Jugurtha détient assurément Capsa et les Emporia des Syrtes
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.22'
+      quote: >-
+        At the river Ampsaga Numidia begins
+      supports: [construction]
     - { source: barrington, locator: 'maps 33–35' }
     - { source: natural-earth }
   confidence: probable
@@ -240,6 +395,23 @@
         - [5.0, 37.0]
   sources:
     - { source: bridoux-2020, locator: '¶75, ¶97, ¶102 and pl. IX' }
+    - source: bridoux-2020
+      locator: '¶75'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est désormais l’interprétation de St. Gsell qui attire davantage
+        notre attention. L’auteur déduit du texte de Salluste que cette limite
+        doit se situer entre l’embouchure du Chélif et le cap Ténès.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        J. Desanges pense que dès la première moitié du I er siècle av. J.-C.
+        le royaume maure s’est encore accru vers l’est, aux dépens de la
+        Numidie, et ce jusqu’à l’oued Soummam, ou tout du moins jusqu’à
+        l’Algérois. L’hypothèse est tout à fait vraisemblable.
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
@@ -275,7 +447,44 @@
         - [1.3, 37.0]
   sources:
     - { source: bridoux-2020, locator: '¶74–75, ¶99–100 and pls. VIII, XIII' }
-    - { source: pliny-nh, locator: '5.19' }
+    - source: bridoux-2020
+      locator: '¶74'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Si au temps des rois numides Micipsa et Jugurtha nous pouvons
+        assurément situer la limite occidentale du royaume de Bocchus I au
+        fleuve Muluccha (oued Moulouya, pl. VII)
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶75'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est désormais l’interprétation de St. Gsell qui attire davantage
+        notre attention. L’auteur déduit du texte de Salluste que cette limite
+        doit se situer entre l’embouchure du Chélif et le cap Ténès.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶100'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Une indication de Pline suggère que la limite entre les royaumes de
+        Bogud et de Bocchus II est la même que celle des deux provinces
+        romaines de Maurétanie, c’est-à-dire l’oued Moulouya
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.19'
+      quote: >-
+        the further Mauritania being called the “land of Bogud,” while that
+        which is now called Caesariensis was called the “country of Bocchus.”
+        … the river Mulucha, which served as the limit between the territory
+        of Bocchus and that of the Massaesyli
+      supports: [construction]
+    - source: sallust-jug
+      locator: '110.8'
+      quote: >-
+        I shall not pass the river Muluccha, which was the boundary between
+        Micipsa and myself
+      supports: [construction]
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
