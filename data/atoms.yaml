@@ -624,19 +624,28 @@
   construction:
     - method: outline
       edge:
-        - at: [12.0, 26.7]
+        - at: [12.15, 26.32]
           note: the western end of the Wadi al-Ajal
-        - at: [13.2, 26.95]
-          note: north of Garama
-        - [14.5, 27.3]
-        - at: [15.2, 26.9]
-          note: the Sabha oases
-        - [14.6, 26.3]
-        - at: [14.2, 25.7]
-          note: the Murzuq basin
-        - [13.3, 25.7]
-        - [12.8, 26.3]
-        - [12.0, 26.4]
+        - at: [12.6, 26.44]
+          via: curve
+        - at: [13.1, 26.49]
+          via: curve
+          note: the Jarma escarpment, south of Garama
+        - at: [13.45, 26.52]
+          via: curve
+        - at: [14.0, 26.69]
+          via: curve
+        - at: [14.0, 26.86]
+          note: al-Abyad, the eastern end
+        - at: [13.5, 26.69]
+          via: curve
+        - at: [13.1, 26.66]
+          via: curve
+          note: north of Garama, the edge of the Edeyen Ubari
+        - at: [12.6, 26.6]
+          via: curve
+        - at: [12.15, 26.48]
+          via: curve
   sources:
     - source: gonzalez-rodriguez-2015
       locator: 'p. 29'
@@ -644,6 +653,26 @@
         During the Proto-Urban Garamantian phase (PUGAR), 500 BC-1 BC, what was
         to become the capital of the Garamantes, Garama, was established and
         there was an increase in the location of the settlements in the valleys.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 2'
+      quote: >-
+        the Wadi al-Ajal (Figure 1.1), a long linear band of oases to the south
+        west of Sabha (the modern capital of Fazzan). The Wadi al-Ajal lies
+        between the sands of the Edeyen Ubari to the north and the sandstone
+        plateau of Massak Sattafat to the south.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 319'
+      quote: >-
+        During the Proto-Urban period there is an increase of settlements
+        situated in strategic and defensible locations in the valley.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 127'
+      quote: >-
+        This area of the Wadi al-Ajal is the easternmost sector considered as it
+        forms the limit of the Wadi ash-Sharqi.
       supports: [construction]
     - source: gonzalez-rodriguez-2015
       locator: 'p. 319'
@@ -669,9 +698,15 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    The Fazzan: the oasis belt of the Wadi al-Ajal round Garama and the Murzuq
-    basin, the core of the Garamantian state (Mattingly). A convention round the
-    oases, not a frontier.
+    The Wadi al-Ajal, the band of oases round Garama between the Ubari sand
+    sea and the Massak Sattafat escarpment, where Garama and the valley's
+    settlements grew in the Proto-Urban phase, 500–1 BCE (Gonzalez Rodriguez).
+    Its southern edge follows the escarpment, its ends the surveyed sectors
+    from south of Ubari to al-Abyad. Until October 2026 it also took in the
+    Murzuq basin and the Sabha oases; the Murzuq oases developed mainly after
+    1 BCE (Mattingly, Sterry and Edwards), and no readable text puts either in
+    the Garamantes' hands in 133–27. A convention round the oases, not a
+    frontier.
 
 # === The Levant ================================================================
 # Judaea is drawn as Pompey left it in 63 (Josephus AJ 14.74–76; BJ 1.155–157):
