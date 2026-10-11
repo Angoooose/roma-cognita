@@ -712,6 +712,31 @@
   url: https://doi.org/10.12775/EtudTrav.38.003
   note: Open access; read. Cited by page.
 
+- id: sai-mission
+  kind: modern
+  citation: >-
+    Mission archéologique de Saï (dir. V. Francigny), "Saï: an island at the
+    heart of Nubia", French Ministry of Culture, Grands sites archéologiques
+  url: https://archeologie.culture.gouv.fr/en/sai-island-heart-nubia
+  note: The excavators' outreach page; read.
+
+- id: gonzalez-rodriguez-2015
+  kind: modern
+  citation: >-
+    M. Gonzalez Rodriguez, Death is another country: Mortuary rituals and
+    identity in Fazzan, Libya (PhD thesis, University of Leicester, 2015)
+  url: https://ndownloader.figshare.com/files/18309836
+  note: Open access on Leicester figshare; read. Cited by printed page.
+
+- id: mattingly-sterry-edwards-2015
+  kind: modern
+  citation: >-
+    D. Mattingly, M. Sterry and D. Edwards, "The origins and development of
+    Zuwīla, Libyan Sahara: an archaeological and historical overview of an
+    ancient oasis town and caravan centre" (author's version, 2015)
+  url: https://ndownloader.figshare.com/files/18343844
+  note: Open access on Leicester figshare; read. Cited by printed page.
+
 # --- datasets ------------------------------------------------------------------
 
 - id: natural-earth
@@ -886,6 +911,21 @@
   url: https://waterinventory.org/sites/waterinventory.org/files/chapters/Chapter-03-Tigris_River-Basin-web_0.pdf
   note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
     into the Tharthar depression from 1956.
+
+- id: sissakian-2011
+  kind: modern
+  citation: >-
+    V. K. Sissakian, "Genesis and age estimation of the Tharthar Depression,
+    Central West Iraq", Iraqi Bulletin of Geology and Mining 7.3 (2011), 47–62
+  url: https://www.ibgm-iq.org/ibgm/index.php/ibgm/article/download/156/155
+  note: Open access; read. Cited by page.
+
+- id: korinthos-isthmus
+  kind: modern
+  citation: >-
+    Municipality of Corinth, "The Isthmus" (municipal website, read October 2026)
+  url: https://korinthos.gr/en/the-isthmus/
+  note: A municipal summary, not an engineering history; read.
 
 # --- the city of Rome (the plan, DESIGN.md §7.7) ------------------------------
 # Added September 2026 for data/places/rome.yaml. Dates come from Platner &
