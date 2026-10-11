@@ -12217,7 +12217,7 @@
   polity: asia
   relation: province
   from: 43 BCE
-  to: 43 BCE
+  to: after 43 BCE
   sources:
     - source: cicero-fam
       locator: '12.15.5'
