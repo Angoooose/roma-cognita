@@ -6530,7 +6530,7 @@
 - atom: bosporus-tanais
   polity: pontus-regnum
   relation: independent
-  from: c. 108 BCE
+  from: before 87 BCE
   to: { earliest: 87 BCE, latest: 86 BCE }
   sources:
     - source: plutarch
@@ -6539,13 +6539,13 @@
         about the time when Sulla was moving his armament from Italy … of his
         sons, one was in Pontus and Bosporus, holding without any opposition the
         ancient realm as far as the deserts beyond Lake Maeotis
-      supports: [to]
+      supports: [polity, relation, from, to]
     - source: eutropius
       locator: '5.4'
       quote: >-
         having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
         for the year ensuing, set out for Asia
-      supports: [to]
+      supports: [from, to]
     - source: appian
       locator: 'Mithr. 64'
       quote: >-
@@ -6565,11 +6565,12 @@
   note: >-
     As bosporus, whose end it shares (87 or 86; 86 until October 2026).
     Plutarch's son of Mithridates held the realm "as far as the deserts beyond
-    Lake Maeotis" in 87 (Sulla 11.2); how far up the Maeotic
-    shore that reached, and whether it was so from the first, is not known.
-    Under the Spartocids before c. 108 the shore is left unclaimed: Strabo
-    gives them only "the neighboring settlements near the south of Lake
-    Maeotis" (7.4.4).
+    Lake Maeotis" in 87 (Sulla 11.2); how far up the Maeotic shore that
+    reached, and since when, no readable text says, so the row starts at
+    that attestation. It started c. 108, with bosporus, until October 2026.
+    Strabo gives the Spartocids only "the neighboring settlements near the
+    south of Lake Maeotis" (7.4.4), and Minns has Pharnaces, after 63, the
+    first to extend his frontiers to the Tanais (p. 589).
 
 - atom: bosporus-tanais
   polity: bosporus
