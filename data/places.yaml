@@ -3900,10 +3900,50 @@
       note: enfranchised under the lex Iulia; it held out against Sulla until c. 80 (Livy Per. 89).
   labelSide: w
   sources:
-    - { source: pleiades, locator: places/403292 }
-    - { source: beloch-1880, locator: 'p. 176' }
-    - { source: appian, locator: 'BC 1.49' }
-    - { source: livy-per, locator: '89' }
+    - source: pleiades
+      locator: places/403292
+      url: https://pleiades.stoa.org/places/403292/json
+      quote: '"reprPoint": [10.8600625, 43.401604000000006]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        das Jahr des Ausbruchs des hannibalischen Krieges, 218 v. Chr. In
+        Etrurien haben wir wenigstens 11 foederirte Gemeinden: Pisae,
+        Volaterrae, Populonia
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship … They sent this decree
+        around among the Etruscans, who gladly accepted the citizenship.
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: livy-per
+      locator: '89'
+      quote: >-
+        He besieged Volaterrae, a town still putting up resistance, and
+        accepted its surrender.
+      supports: []
+    - source: cicero-fam
+      locator: '13.4'
+      quote: I have very close ties with the townsmen of Volaterrae.
+      supports: [status]
+    - source: strabo
+      locator: '5.2.6'
+      quote: >-
+        The country of the Volaterrani is washed by the sea. Their city is
+        situated in a deep hollow on the top of a high hill.
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -3927,11 +3967,54 @@
       note: enfranchised under the lex Iulia.
   labelSide: w
   sources:
-    - { source: pleiades, locator: places/403212 }
-    - { source: beloch-1880, locator: 'p. 176' }
-    - { source: appian, locator: 'BC 1.49' }
+    - source: pleiades
+      locator: places/403212
+      url: https://pleiades.stoa.org/places/403212/json
+      quote: '"reprPoint": [10.489646524702335, 42.98824389753146]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        das Jahr des Ausbruchs des hannibalischen Krieges, 218 v. Chr. In
+        Etrurien haben wir wenigstens 11 foederirte Gemeinden: Pisae,
+        Volaterrae, Populonia
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship … They sent this decree
+        around among the Etruscans, who gladly accepted the citizenship.
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: strabo
+      locator: '5.2.6'
+      quote: >-
+        Poplonium is situated on a lofty promontory, which projects into the
+        sea, and forms a chersonesus. It likewise sustained a siege about the
+        same time. This little place is now deserted, with the exception of the
+        sanctuarys and a few houses; the sea-port, which is situated at the
+        root of the mountain, is better inhabited
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.50'
+      quote: >-
+        Populonium formerly belonging to the Etrurians, the only town they had
+        on this coast
+      supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    By Strabo's day (5.2.6) the hill town was all but deserted, its temples
+    and a few houses standing, and the port below better inhabited.
 
 - id: cosa
   pleiades: '413107'
@@ -3947,13 +4030,64 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
-    - value: colonia
+    - value: municipium
       from: 90 BCE
       to: after 27 BCE
+      note: >-
+        a municipal town by the time of Verres (Cic. Verr. 2.5.161), not
+        colonia as this row read until October 2026.
   labelSide: w
   sources:
-    - { source: pleiades, locator: places/413107 }
-    - { source: beloch-1880, locator: 'p. 58' }
+    - source: pleiades
+      locator: places/413107
+      url: https://pleiades.stoa.org/places/413107/json
+      quote: '"reprPoint": [11.288528551159217, 42.41132644707036]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.7'
+      quote: >-
+        In the consulship of Fabius Dorso and Claudius Canina, three hundred
+        years before the present date, colonies were established at Cosa and
+        Paestum.
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 58'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: das Gebiet, wohin 273 die latinische Colonie Cosa deducirt wurde
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 41'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        von den 33 latinischen Colonien, die zur Zeit des Socialkrieges noch
+        bestanden, die Tribus von Ardea, Pontiae, Saticula, Cosa und Copia
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: cicero-verr
+      locator: '2.5.161'
+      quote: >-
+        The miserable man cried out that he was a Roman citizen, a citizen,
+        also, of the municipal town of Cosa
+      supports: [status]
+    - source: strabo
+      locator: '5.2.8'
+      quote: >-
+        After Poplonium is the city of Cossae, situated at a short distance
+        from the sea
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -3973,9 +4107,54 @@
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: n
   sources:
-    - { source: pleiades, locator: places/403234 }
-    - { source: beloch-1880, locator: 'pp. 66, 147' }
-    - { source: velleius, locator: '1.15.2' }
+    - source: pleiades
+      locator: places/403234
+      url: https://pleiades.stoa.org/places/403234/json
+      quote: '"reprPoint": [10.50703, 43.841840000000005]'
+      supports: [location]
+    - source: velleius
+      locator: '1.15.2'
+      quote: >-
+        in the consulship of Gnaeus Manlius Volso and Fulvius Nobilior, a
+        colony was established at Bononia … and another four years afterwards
+        at Luca.
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 147'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        5 alte coloniae Latinae: Bononia, Placentia, Nepet, Sutrium, Luca.
+        Wäre Luca nicht latinische Colonie gewesen
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 66'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Von Luca ist soviel sicher, dass es bis zum Socialkriege das römische
+        Bürgerrecht nicht gehabt hat
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: strabo
+      locator: '5.1.11'
+      quote: Near to the mountains above Luna is the city of Lucca.
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.50'
+      quote: then the colony of Luca, at some distance from the sea
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -3995,8 +4174,24 @@
       note: A Roman colony of 177 (Beloch 66).
   labelSide: w
   sources:
-    - { source: pleiades, locator: places/403235 }
-    - { source: beloch-1880, locator: 'p. 66' }
+    - source: pleiades
+      locator: places/403235
+      url: https://pleiades.stoa.org/places/403235/json
+      quote: '"reprPoint": [10.016793477728111, 44.063991648743624]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 66'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: Auf dem gewonnenen Gebiete wurde 177 die Bürgercolonie Luna angelegt
+      supports: [from, status]
+    - source: strabo
+      locator: '5.2.5'
+      quote: Of these Luna is a city and harbour
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.50'
+      quote: The first town in Etruria is Luna, with a noble harbour
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4019,8 +4214,45 @@
       to: after 27 BCE
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/393421 }
-    - { source: beloch-1880, locator: 'p. 65' }
+    - source: pleiades
+      locator: places/393421
+      url: https://pleiades.stoa.org/places/393421/json
+      quote: '"reprPoint": [11.3455467, 44.494573700000004]'
+      supports: [location]
+    - source: velleius
+      locator: '1.15.2'
+      quote: >-
+        in the consulship of Gnaeus Manlius Volso and Fulvius Nobilior, a
+        colony was established at Bononia
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 156'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        seitdem noch in Italien gegründeten latinischen Colonien: Beneventuru,
+        Firinum, Aesernia, Brundisium, Spoletium, Cremona, Placentia, Copia,
+        Valentia, Bononia, Aquileia
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.115'
+      quote: >-
+        In the interior there are the colonies of Bononia, formerly called
+        Felsina
+      supports: [status, to]
   confidence: certain
   review: draft
 
@@ -4075,8 +4307,48 @@
       to: after 27 BCE
   labelSide: s
   sources:
-    - { source: pleiades, locator: places/383628 }
-    - { source: beloch-1880, locator: 'p. 65' }
+    - source: pleiades
+      locator: places/383628
+      url: https://pleiades.stoa.org/places/383628/json
+      quote: '"reprPoint": [10.026149, 45.133639]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.8'
+      quote: >-
+        Cremona and Placentia were established just before Hannibal's arrival
+        in Italy.
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 65'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        auf dem eroberten Lande wurden 218 die latinischen Colonien Cremona und
+        Placentia gegründet
+      supports: [from, status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.130'
+      quote: In the interior of the tenth region are the colonies of Cremona
+      supports: [status, to]
+    - source: strabo
+      locator: '5.1.11'
+      quote: >-
+        Placentia and Cremona, situated about the middle of the country, are
+        close to each other.
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4139,20 +4411,62 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony, starved out by the insurgents in 90 (App. BC 1.41; Livy Per. 73) and their capital after Corfinium (Diodorus 37.2.9).
-    - value: colonia
-      from: 87 BCE
-      to: after 27 BCE
-      note: Roman again only when the Samnites made terms in 87 (App. BC 1.68); in insurgent hands 90–88, with no status here.
   labelSide: n
   sources:
-    - { source: pleiades, locator: places/432652 }
-    - { source: beloch-1880, locator: 'p. 53' }
-    - { source: appian, locator: 'BC 1.41' }
+    - source: pleiades
+      locator: places/432652
+      url: https://pleiades.stoa.org/places/432652/json
+      quote: '"reprPoint": [14.2324325, 41.596276]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.8'
+      quote: >-
+        At the outbreak of the First Punic War Firmum and Castrum were occupied
+        by colonies, a year later Aesernia
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 53'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Dazu kommen dann die beiden Städte Aesernia und Beneventum, wohin 263
+        und 268 latinische Colonien deducirt wurden
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.41'
+      quote: >-
+        Vettius Cato defeated Sextus Julius, killed 2000 of his men, and
+        marched against Aesernia, which adhered to Rome.
+      supports: [status]
+    - source: livy-per
+      locator: '72'
+      quote: The colonies of Aesernia and Alba were besieged by the Italians.
+      supports: [status]
     - { source: livy-per, locator: '73' }
-    - { source: diodorus, locator: '37.2.9' }
-    - { source: appian, locator: 'BC 1.68' }
+    - source: diodorus
+      locator: '37.2.9'
+      quote: >-
+        they agreed to abandon Corfinium, their capital city, and transplanted
+        themselves to Aesernia, a city of the Samnites
+      supports: []
+    - source: strabo
+      locator: '5.3.10'
+      quote: >-
+        Aesernia and Alliphae, cities of the Samnites, the former was destroyed
+        in the Marsian war, the other still remains.
+      supports: []
+    - source: strabo
+      locator: '5.4.11'
+      quote: >-
+        their cities have now come to be mere villages (though some have
+        utterly vanished), I mean Bovianum, Aesernia
+      supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    Destroyed in the Social War and a village by Strabo's day (5.3.10,
+    5.4.11). Until October 2026 the status read colonia again from 87, when
+    the Samnites made terms (App. BC 1.68); no text read gives its standing
+    after the war, so that row was dropped.
 
 - id: venusia
   pleiades: '442847'
@@ -4171,13 +4485,51 @@
     - value: colonia
       from: 88 BCE
       to: after 27 BCE
-      note: retaken by Metellus Pius in 88 (Diodorus 37.2.10); with the insurgents 90–89, with no status here.
+      note: retaken by Metellus Pius in 88 (Diodorus 37.2.10); with the insurgents 90–89, with no status here. One of the cities the triumvirs promised their soldiers in 43 (App. BC 4.3), a colony in Pliny's list (3.104).
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/442847 }
-    - { source: beloch-1880, locator: 'p. 61' }
-    - { source: appian, locator: 'BC 1.42' }
-    - { source: diodorus, locator: '37.2.10' }
+    - source: pleiades
+      locator: places/442847
+      url: https://pleiades.stoa.org/places/442847/json
+      quote: '"reprPoint": [15.82726823923303, 40.96889922390714]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.6'
+      quote: >-
+        colonists were sent to Minturnae and Sinuessa, and four years afterwards
+        to Venusia.
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 61'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Colonien latinischen Rechts constituirt worden, wie Paestum, Venusia,
+        Brundisium
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.42'
+      quote: Canusia and Venusia and many other towns in Apulia sided with Judacilius.
+      supports: [status]
+    - source: diodorus
+      locator: '37.2.10'
+      quote: >-
+        Metellus captured the important city of Venusia in Apulia, which had in
+        it a great number of soldiers
+      supports: [status]
+    - source: appian
+      locator: 'BC 4.3'
+      quote: >-
+        they promised them, beside other gifts, eighteen cities of Italy as
+        colonies … The most renowned among these were Capua, Rhegium, Venusia
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.104'
+      quote: of the Daunii, the colonies of Luceria and Venusia
+      supports: [status, to]
+    - source: strabo
+      locator: '5.4.11'
+      quote: Beneventum, however, has held up very well, and so has Venusia.
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4201,9 +4553,38 @@
       note: enfranchised once Apulia was retaken.
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/442525 }
-    - { source: beloch-1880, locator: 'p. 175' }
-    - { source: appian, locator: 'BC 1.42, 1.52' }
+    - source: pleiades
+      locator: places/442525
+      url: https://pleiades.stoa.org/places/442525/json
+      quote: '"reprPoint": [16.0655784, 41.221427649999995]'
+      supports: [location]
+    - source: pleiades
+      locator: places/442525
+      url: https://pleiades.stoa.org/places/442525/json
+      quote: >-
+        Canusium became allied to Rome in 318 B.C. It received municipal status
+        in 88 B.C.
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So haben auch die Römer ihre Bündnisse mit jeder apulischen Gemeinde
+        gesondert geschlossen; mit Arpi z. B. 326 (Liv. 8, 27), mit Teate und
+        Canusium 318
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.42'
+      quote: Canusia and Venusia and many other towns in Apulia sided with Judacilius.
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.52'
+      quote: He received the surrender of Cannae and laid siege to Canusium.
+      supports: []
+    - source: pliny-nh
+      locator: '3.104'
+      quote: the towns of Canusium and Arpi
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4223,7 +4604,48 @@
       note: a Latin colony; its people became Roman citizens under the lex Iulia of 90.
   labelSide: n
   sources:
-    - { source: pleiades, locator: places/442640 }
+    - source: pleiades
+      locator: places/442640
+      url: https://pleiades.stoa.org/places/442640/json
+      quote: '"reprPoint": [15.3354745, 41.5086475]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.4'
+      quote: >-
+        Three years later a colony was established at Tarracina, four years
+        afterwards another at Luceria
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Tarent und die 3 alten latinischen ColonienBrundisiurn, Venusia,
+        Luceria
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.104'
+      quote: of the Daunii, the colonies of Luceria and Venusia
+      supports: [to]
+    - source: strabo
+      locator: '6.3.9'
+      quote: >-
+        Luceria — a place which likewise was in ancient times a city of the
+        Daunii, but is now reduced
+      supports: [to]
     - { source: beloch-1880, locator: 'p. 51' }
   confidence: certain
   review: draft
@@ -4244,8 +4666,31 @@
       note: a Peucetian ally that struck its own coins (Beloch 175).
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/442500 }
-    - { source: beloch-1880, locator: 'p. 175' }
+    - source: pleiades
+      locator: places/442500
+      url: https://pleiades.stoa.org/places/442500/json
+      quote: '"reprPoint": [16.870331, 41.129222]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        prägt jede Gemeinde für sich und mit eigenem Namen: Arpi, Canusiuru,
+        Teate, Caelium, Rubi, Ausculum, Azetium, Barium … So haben auch die
+        Römer ihre Bündnisse mit jeder apulischen Gemeinde gesondert
+        geschlossen … mit den Poediculern und Sallentinern erst nach
+        Vertreibung des Pyrrhos
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.102'
+      quote: The towns of the Pediculi are Rudiae, Egnatia, and Barium
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4269,11 +4714,49 @@
       note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/442615 }
-    - { source: beloch-1880, locator: 'p. 175' }
-    - { source: appian, locator: 'BC 1.49' }
+    - source: pleiades
+      locator: places/442615
+      url: https://pleiades.stoa.org/places/442615/json
+      quote: '"reprPoint": [18.491083500000002, 40.1458515]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So haben auch die Römer ihre Bündnisse mit jeder apulischen Gemeinde
+        gesondert geschlossen … mit den Poediculern und Sallentinern erst nach
+        Vertreibung des Pyrrhos
+      supports: [from, status]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: strabo
+      locator: '6.3.5'
+      quote: Again, from Leuca to Hydrus, a small town, one hundred and fifty stadia.
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.100'
+      quote: >-
+        then Hydruntum, the spot at which the Ionian is separated from the
+        Adriatic sea
+      supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    Beloch names no treaty with Hydrus itself: its standing as an ally rests
+    on his account of Rome's separate treaties with each Iapygian community,
+    the Sallentines' after Pyrrhus (p. 175).
 
 - id: croton
   pleiades: '452317'
@@ -4291,8 +4774,26 @@
       note: A Roman colony of 194 (Beloch 62).
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/452317 }
-    - { source: beloch-1880, locator: 'p. 62' }
+    - source: pleiades
+      locator: places/452317
+      url: https://pleiades.stoa.org/places/452317/json
+      quote: '"reprPoint": [17.127966, 39.0811675]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: 194 Tempsa und Croto als Bürgercolonien
+      supports: [from, status]
+    - source: pliny-nh
+      locator: '3.97'
+      quote: We first come to the town of Croton
+      supports: [to]
+    - source: strabo
+      locator: '6.1.12'
+      quote: >-
+        The first city is Croton, within one hundred and fifty stadia from the
+        Lacinium
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4312,8 +4813,52 @@
       note: Copia, a Latin colony of 193 on the land of Thurii, which stood beside it as an ally (Beloch 62, 64); its people became Roman citizens under the lex Iulia of 90.
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/452457 }
-    - { source: beloch-1880, locator: 'pp. 62, 64' }
+    - source: pleiades
+      locator: places/452457
+      url: https://pleiades.stoa.org/places/452457/json
+      quote: '"reprPoint": [16.494262352883187, 39.71732767319154]'
+      supports: [location]
+    - source: strabo
+      locator: '6.1.13'
+      quote: >-
+        they took refuge in Rome, and the Romans sent colonists to supplement
+        them, since their population was reduced, and changed the name of the
+        city to Copiae.
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        193 wird Copia im Gebiet von Thurioi, 192 Valentia (Vibo) als
+        latinische Colonie
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 41'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        von den 33 latinischen Colonien, die zur Zeit des Socialkrieges noch
+        bestanden, die Tribus von Ardea, Pontiae, Saticula, Cosa und Copia
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.97'
+      quote: >-
+        the town of Thurii, situate between the two rivers Crathis and Sybaris
+      supports: [to]
+    - { source: beloch-1880, locator: 'p. 64' }
   confidence: certain
   review: draft
 
@@ -4333,10 +4878,50 @@
       note: Valentia, a Latin colony of 192; its people became Roman citizens under the lex Iulia of 90.
   labelSide: w
   sources:
-    - { source: pleiades, locator: places/452337 }
-    - { source: beloch-1880, locator: 'p. 62' }
+    - source: pleiades
+      locator: places/452337
+      url: https://pleiades.stoa.org/places/452337/json
+      quote: '"reprPoint": [16.097648, 38.675581]'
+      supports: [location]
+    - source: strabo
+      locator: '6.1.5'
+      quote: >-
+        Later on, the Brettii were in possession of Hipponium, but the Romans
+        took it away from them and changed its name to Vibo Valentia.
+      supports: []
+    - source: velleius
+      locator: '1.14.8'
+      quote: Two years afterwards a colony was established at Valentia
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        192 Valentia (Vibo) als latinische Colonie
+      supports: [from, status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.73'
+      quote: then Hippo, now called Vibo Valentia
+      supports: [to]
   confidence: certain
   review: draft
+  note: >-
+    Cicero calls Valentia an illustrious municipality in 71 (Verr. 2.5.40),
+    after its enfranchisement.
 
 - id: locri
   pleiades: '452369'
@@ -4358,9 +4943,50 @@
       note: enfranchised under the lex Iulia.
   labelSide: e
   sources:
-    - { source: pleiades, locator: places/452369 }
-    - { source: beloch-1880, locator: 'pp. 62, 176' }
-    - { source: appian, locator: 'BC 1.49' }
+    - source: pleiades
+      locator: places/452369
+      url: https://pleiades.stoa.org/places/452369/json
+      quote: '"reprPoint": [16.244339500000002, 38.226295500000006]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Kroton, JLohroi, seit 282 und wieder nach dem Abfalle zu Pyrrhos 277 …
+        im Ganzen also 10 Bundesstaaten hellenischer Nationalität … die
+        Darstellung der hellenischen Verfassungen, die diese Städte sich bis
+        auf den Socialkrieg bewahrt haben
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        In ihrer alten Stellung als foederirte Städte blieben hier natürlich
+        Rhegion und Petelia … ferner Lokroi
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.95'
+      quote: >-
+        At Locri begins the fore-part of Italy, called Magna Graecia
+      supports: [to]
+    - source: strabo
+      locator: '6.1.7'
+      quote: Then comes the city Locri Epizephyrii
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4373,11 +4999,29 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pleiades, locator: places/658481 }
+    - source: pleiades
+      locator: places/658481
+      url: https://pleiades.stoa.org/places/658481/json
+      quote: '"reprPoint": [36.1873455, 37.176408]'
+      supports: [location]
+    - source: pleiades
+      locator: places/658481
+      url: https://pleiades.stoa.org/places/658481/json
+      quote: 'Settlement; 330 BC - AD 640'
+      supports: [from, to]
+    - source: strabo
+      locator: '12.2.7'
+      quote: >-
+        Not far from this city are Castabala and Cybistra, towns still nearer
+        to the mountain. At Castabala is the sanctuary of the Perasian Artemis
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: probable
   review: draft
-  note: Seat of Tarcondimotus (polities.yaml, amanus).
+  note: >-
+    Seat of Tarcondimotus (polities.yaml, amanus). No ancient text read
+    names the town before 133: the open start rests on Pleiades' dating of
+    the settlement (330 BC – AD 640).
 
 - id: chalcis-sub-libano
   pleiades: '678086'
@@ -4388,14 +5032,41 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pleiades, locator: places/678086 }
+    - source: pleiades
+      locator: places/678086
+      url: https://pleiades.stoa.org/places/678086/json
+      quote: '"reprPoint": [36.241643, 33.95773]'
+      supports: [location]
+    - source: pleiades
+      locator: places/678086
+      url: https://pleiades.stoa.org/places/678086/json
+      quote: 'Unknown; 330 BC - AD 300'
+      supports: [from, to]
+    - source: josephus-aj
+      locator: '14.126'
+      quote: >-
+        Ptolemy, the son of Menneus, who was the ruler of Chalcis, under Mount
+        Libanus
+      supports: []
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        At no great distance were Heliopolis and Chalcis, which were subject to
+        Ptolemy, son of Mennaeus
+      supports: []
+    - source: josephus-aj
+      locator: '19.338'
+      quote: Herod his brother, who was king of Chalcis
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
   note: >-
     The Ituraean seat. The site is not securely identified: the position is
     Pleiades', after Barrington map 69 D2, and Anjar or Majdal Anjar in the
-    southern Beqaa is also proposed. The weakest position in the dataset.
+    southern Beqaa is also proposed. The weakest position in the dataset. No
+    ancient text read names the town before 49 (Josephus): the open start
+    rests on Pleiades' dating (330 BC – AD 300).
 
 # --- Italy and the islands: added September 2026 (the extension to 133) -------
 # Places the years 133–68 need: colonies founded and a city destroyed, the
@@ -4408,7 +5079,7 @@
   names:
     - { text: Fregellae, preferred: true }
   from: before 133 BCE
-  to: 125 BCE
+  to: after 27 BCE
   prominence: 4
   status:
     - value: colonia latina
@@ -4416,16 +5087,61 @@
       to: 125 BCE
       note: a Latin colony of 328 (Beloch 51).
   sources:
-    - { source: livy-per, locator: '60' }
-    - { source: velleius, locator: '2.6.4' }
+    - source: pleiades
+      locator: places/432846
+      url: https://pleiades.stoa.org/places/432846/json
+      quote: '"reprPoint": [13.538889, 41.536667]'
+      supports: [location]
+    - source: beloch-1880
+      locator: 'p. 138'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: 9. Fregellae, deducirt 328
+      supports: [from, status]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        Praetor Lucius Opimius accepted the surrender of the rebellious
+        Fregellans and sacked Fregellae.
+      supports: [status]
+    - source: velleius
+      locator: '2.6.4'
+      quote: Lucius Opimius, who, as praetor, had destroyed Fregellae
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. I, 125 B.C., p. 510'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        125 B.C. A.U.C. 629 … Praetors … Reduced Fregellae, which had rebelled,
+        and destroyed the town
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 139'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        der Vernichtung des Gemeinwesens von Fregellae nach der Einnahme durch
+        Rom 125
+      supports: [status]
+    - source: strabo
+      locator: '5.3.10'
+      quote: >-
+        Fregellae, though now a village, was formerly a considerable city
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.64'
+      quote: the old Frabaterni, the new Frabaterni, the Ficolenses, the Fregellani
+      supports: [to]
     - { source: beloch-1880, locator: 'p. 51' }
-    - { source: pleiades, locator: places/432846 }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The Latin colony that revolted in 125 and was taken and destroyed by the
     praetor Opimius (Livy Per. 60; Vell. 2.6.4). Its people were resettled at
-    Fabrateria Nova the next year.
+    Fabrateria Nova the next year. The place itself lived on as a village
+    (Strabo 5.3.10) and the Fregellani are in Augustus' list of the towns of
+    Latium (Pliny 3.64), so the place runs on to the window's end; until
+    October 2026 it ended in 125 with the colony. Probable, because the
+    sources say destroyed and Strabo says a village: which the map draws is a
+    choice.
 
 - id: fabrateria-nova
   pleiades: '432825'
@@ -4438,8 +5154,33 @@
   prominence: 4
   status: colonia
   sources:
-    - { source: velleius, locator: '1.15.4' }
-    - { source: pleiades, locator: places/432825 }
+    - source: pleiades
+      locator: places/432825
+      url: https://pleiades.stoa.org/places/432825/json
+      quote: '"reprPoint": [13.558107, 41.51929]'
+      supports: [location]
+    - source: velleius
+      locator: '1.15.4'
+      quote: >-
+        In the consulship of Cassius Longinus and Sextius Calvinus … Fabrateria
+        was founded
+      supports: [from, status]
+    - source: broughton-mrr
+      locator: 'vol. I, 124 B.C., p. 511'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        124 B.C. A.U.C. 630 … Cassius may have founded Fabrateria to replace
+        Fregellae
+      supports: [from]
+    - source: beloch-1880
+      locator: 'p. 139'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: dass die Colonie Fabrateria nova im Ager Fregellanus
+      supports: [status]
+    - source: pliny-nh
+      locator: '3.64'
+      quote: the old Frabaterni, the new Frabaterni
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -4463,9 +5204,39 @@
       to: after 27 BCE
       note: Minervia, a colony of 123–122 (Vell. 1.15.4), on Roman public land; Beloch gives it to Gracchus' rival Livius Drusus (63).
   sources:
-    - { source: velleius, locator: '1.15.4' }
-    - { source: beloch-1880, locator: 'p. 63' }
-    - { source: pleiades, locator: places/452439 }
+    - source: pleiades
+      locator: places/452439
+      url: https://pleiades.stoa.org/places/452439/json
+      quote: '"reprPoint": [16.59444299400895, 38.807814704747045]'
+      supports: [location]
+    - source: velleius
+      locator: '1.15.4'
+      quote: >-
+        In the consulship of Cassius Longinus and Sextius Calvinus … Fabrateria
+        was founded … and in the next year Scolacium Minervium
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. I, 123 B.C., p. 514'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: probably laws authorizing colonies at Scolacium and Tarentum
+      supports: [status]
+    - source: beloch-1880
+      locator: 'p. 63'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: die Anlage der livianischen Colonie Minervia (Scylacium) 122 v. Chr.
+      supports: [status]
+    - source: strabo
+      locator: '6.1.10'
+      quote: >-
+        After this city comes Scylletium, a colony of the Athenians who were
+        with Menestheus (and now called Scylacium).
+      supports: [from, to]
+    - source: pliny-nh
+      locator: '3.95'
+      quote: >-
+        the Gulf of Scylacium, and Scylacium itself, which was called by the
+        Athenians, when they founded it, Scylletium
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4480,9 +5251,31 @@
   prominence: 4
   status: colonia
   sources:
-    - { source: velleius, locator: '1.15.5' }
-    - { source: beloch-1880, locator: 'p. 67' }
-    - { source: pleiades, locator: places/383642 }
+    - source: pleiades
+      locator: places/383642
+      url: https://pleiades.stoa.org/places/383642/json
+      quote: '"reprPoint": [7.875942, 45.466604]'
+      supports: [location]
+    - source: velleius
+      locator: '1.15.5'
+      quote: >-
+        Eighteen years later Eporedia was founded in the country of the
+        Bagienni in the consulship of Marius, then consul for the sixth time,
+        and Valerius Flaccus
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        die Colonie Eporedia, die einzige Gemeinde, die überhaupt bis zum
+        Socialkrieg in der Transpadana das römische Bürgerrecht besessen hat
+      supports: [status]
+    - source: strabo
+      locator: '4.6.7'
+      quote: >-
+        carried them to Eporedia, a Roman colony which had been planted as a
+        bulwark against the Salassi
+      supports: [status, to]
   confidence: certain
   review: draft
   note: >-
@@ -4505,9 +5298,45 @@
       to: 91 BCE
       note: a Latin colony of 303 (Beloch 51), besieged by the insurgents (Livy Per. 72).
   sources:
+    - source: pleiades
+      locator: places/413005
+      url: https://pleiades.stoa.org/places/413005/json
+      quote: '"reprPoint": [13.411179118219938, 42.07990437219554]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.5'
+      quote: Then the colonies of Sora and Alba were founded
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 141'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: 16. Alba Fucentis, deducirt 303
+      supports: [from, status]
+    - source: livy-per
+      locator: '72'
+      quote: The colonies of Aesernia and Alba were besieged by the Italians.
+      supports: [status]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: strabo
+      locator: '5.3.13'
+      quote: >-
+        Alba is the most inland of all the Latin cities; it borders on the
+        Marsi, and is situated on a high hill near to Lake Fucinus.
+      supports: [to]
     - { source: beloch-1880, locator: 'p. 51' }
-    - { source: livy-per, locator: '72' }
-    - { source: pleiades, locator: places/413005 }
   confidence: certain
   review: draft
 
@@ -4526,9 +5355,47 @@
       to: 91 BCE
       note: a Latin colony (Beloch 55), where Pompeius Strabo was besieged in 90 (App. BC 1.47).
   sources:
-    - { source: beloch-1880, locator: 'p. 55' }
-    - { source: appian, locator: 'BC 1.47' }
-    - { source: pleiades, locator: places/413135 }
+    - source: pleiades
+      locator: places/413135
+      url: https://pleiades.stoa.org/places/413135/json
+      quote: '"reprPoint": [13.7168264, 43.1610772]'
+      supports: [location]
+    - source: velleius
+      locator: '1.14.8'
+      quote: >-
+        At the outbreak of the First Punic War Firmum and Castrum were occupied
+        by colonies
+      supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 55'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        mit Ausnahme natürlich der latinischen Colonie Firmum; und im
+        Socialkrieg ist von allen picentischen Gemeinden allein Asculum von Rom
+        abgefallen
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.47'
+      quote: Lafrenius besieged Pompeius, who had shut himself up in Firmum.
+      supports: []
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        by the Julian law itself, by which the rights of citizenship were given
+        to the allies and to the Latins
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
+    - source: strabo
+      locator: '5.4.2'
+      quote: Firmum Picenum, with its port of Castellum
+      supports: [to]
   confidence: certain
   review: draft
 
@@ -4542,9 +5409,34 @@
   to: after 27 BCE
   prominence: 4
   sources:
-    - { source: appian, locator: 'BC 1.51' }
-    - { source: strabo, locator: '5.4.11' }
-    - { source: pleiades, locator: places/432725 }
+    - source: pleiades
+      locator: places/432725
+      url: https://pleiades.stoa.org/places/432725/json
+      quote: '"reprPoint": [14.473913, 41.48673]'
+      supports: [location]
+    - source: livy
+      locator: '9.31.3–4'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=9:chapter=31
+      quote: >-
+        Thence his conquering army marched to Bovianum. This was the chief city
+        of the Pentrian Samnites
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.51'
+      quote: >-
+        Sulla destroyed his camp and moved against Bovianum, where the common
+        council of the rebels was held.
+      supports: [from]
+    - source: strabo
+      locator: '5.4.11'
+      quote: >-
+        their cities have now come to be mere villages (though some have
+        utterly vanished), I mean Bovianum
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.107'
+      quote: the colony of old Bovianum
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -4561,15 +5453,34 @@
   to: 89 BCE
   prominence: 4
   sources:
-    - { source: pliny-nh, locator: '3.70' }
+    - source: pleiades
+      locator: places/433128
+      url: https://pleiades.stoa.org/places/433128/json
+      quote: '"reprPoint": [14.498922719088991, 40.702969978473526]'
+      supports: [location]
+    - source: pleiades
+      locator: places/433128
+      url: https://pleiades.stoa.org/places/433128/json
+      quote: >-
+        Archaeological-site; 330 BC - AD 99 … An Oscan and Roman settlement
+        located on the bay of Naples.
+      supports: [from]
+    - source: pliny-nh
+      locator: '3.70'
+      quote: >-
+        In the Campanian territory there was also the town of Stabiae, until
+        the consulship of Cneius Pompeius and L. Cato … it was destroyed in the
+        Social War by L. Sulla the legatus, and all that now stands on its site
+        is a single farmhouse.
+      supports: [to]
     - { source: appian, locator: 'BC 1.42' }
-    - { source: pleiades, locator: places/433128 }
   confidence: certain
   review: draft
   note: >-
     One of the Nucerine league, taken by Papius Mutilus in 90 (App. BC 1.42)
     and destroyed by Sulla on 30 April 89, after which only a farmhouse stood
-    there (Pliny 3.70); the villas of the bay came later.
+    there (Pliny 3.70); the villas of the bay came later. No ancient text
+    read names the town before 133: the open start rests on Pleiades.
 
 - id: enna
   pleiades: '462236'
@@ -4582,9 +5493,29 @@
   to: after 27 BCE
   prominence: 4
   sources:
-    - { source: diodorus, locator: '34/35.2.11–24' }
-    - { source: strabo, locator: '6.2.6' }
-    - { source: pleiades, locator: places/462236 }
+    - source: pleiades
+      locator: places/462236
+      url: https://pleiades.stoa.org/places/462236/json
+      quote: '"reprPoint": [14.28015265, 37.56720465]'
+      supports: [location]
+    - source: diodorus
+      locator: '34/35.2.11'
+      quote: >-
+        they suddenly armed themselves and broke into the city of Enna, led by
+        their captain Eunus
+      supports: [from]
+    - source: diodorus
+      locator: '34/35.2.21'
+      quote: >-
+        He marched from there to Enna, and by a long siege reduced it to such
+        straits, that there was no hope left for anyone to escape.
+      supports: [from]
+    - source: strabo
+      locator: '6.2.6'
+      quote: >-
+        In the interior is Enna, where is the sanctuary of Demeter, with only a
+        few inhabitants
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -4601,13 +5532,41 @@
   to: after 27 BCE
   prominence: 4
   sources:
-    - { source: diodorus, locator: '36.7.2–4' }
-    - { source: pleiades, locator: places/462525 }
+    - source: pleiades
+      locator: places/462525
+      url: https://pleiades.stoa.org/places/462525/json
+      quote: '"reprPoint": [13.217575, 37.578612]'
+      supports: [location]
+    - source: pleiades
+      locator: places/462525
+      url: https://pleiades.stoa.org/places/462525/json
+      quote: >-
+        Ancient Triokala was a fortified site in western Sicily that was allied
+        to Carthage during the second Punic War.
+      supports: [from]
+    - source: diodorus
+      locator: '36.7.2'
+      quote: >-
+        The fortress, which was in itself very secure, he made still more
+        strong
+      supports: []
+    - source: diodorus
+      locator: '36.7.3'
+      quote: >-
+        They say that it was called Triocala, because it was remarkable for
+        three fine things
+      supports: []
+    - source: pliny-nh
+      locator: '3.91'
+      quote: the Tissinenses, the Triocalini, the Tyracinenses
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     The rock Tryphon walled as his royal city (Diodorus 36.7.3). Pleiades
-    marks its identification with a question mark.
+    marks its identification with a question mark. That it stood before 133
+    rests on Pleiades (a Carthaginian ally in the Second Punic War); the
+    Triocalini are among Pliny's tributary towns of Sicily (3.91).
 
 - id: mariana
   pleiades: '472096'
@@ -4620,10 +5579,34 @@
   prominence: 4
   status: colonia
   sources:
-    - { source: pliny-nh, locator: '3.80' }
-    - { source: pleiades, locator: places/472096 }
+    - source: pleiades
+      locator: places/472096
+      url: https://pleiades.stoa.org/places/472096/json
+      quote: '"reprPoint": [9.495665719461659, 42.539147985458115]'
+      supports: [location]
+    - source: pliny-nh
+      locator: '3.80'
+      quote: >-
+        It contains thirty-two states, and two colonies, that of Mariana,
+        founded by C. Marius
+      supports: [status, to]
+    - source: broughton-mrr
+      locator: 'vol. I, 100 B.C., p. 578, n. 4'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        It is uncertain whether those in Cercina and Corsica should be dated in
+        103 or in 100
+      supports: [from]
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        they [Cinna and Marius] appointed themselves consuls for the next year …
+        After many crimes, Marius died on the Ides of January.
+      supports: [from]
   confidence: probable
   review: needs-check
   note: >-
     A colony founded by C. Marius (Pliny 3.80). The year is not recorded:
-    between his colonial laws of 103–100 and his death in January 86.
+    Broughton puts the Marian settlement in Corsica under Saturninus' laws of
+    103 or 100 (MRR I 578 n. 4); the latest bound is Marius' death in
+    January 86 (Livy Per. 80).
