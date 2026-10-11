@@ -2308,7 +2308,26 @@
     at: [29.49, 37.2]
     note: Cibyra
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        its villages extended alongside it from Pisidia and the neighboring
+        Milyas as far as Lycia and the Peraea of the Rhodians. Three bordering
+        cities were added to it, Bubon, Balbura, and Oenoandon
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It included the four communities of Cibyra, Bubon, Balbura and
+        Oenoanda, which formed a federation, known as the Tetrapolis, in the
+        valley of the Horzum Qay and the mountainous region on the east and
+        south. … Cibyra itself, situated on a ridge overlooking the broad plain
+        of the river … The southern half of the Tetrapolis, consisting of the
+        mountain-communities of Bubon, Balbura and Oenoanda, he turned over to
+        the Lycian Federation … but Cibyra and its territory, with the broad
+        and fertile valley of the Horzum
+      supports: [construction]
     - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
     - { source: barrington, locator: 'map 65' }
   confidence: uncertain
@@ -2401,7 +2420,22 @@
           note: west of Bubon (Pleiades 638792)
         - [29.12, 37.0]
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        Three bordering cities were added to it, Bubon, Balbura, and Oenoandon
+        … the tyranny ended in the time of Moagetes, when Murena overthrew it
+        and included Balbura and Bubon within the territory of the Lycians.
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        a federation, known as the Tetrapolis, in the valley of the Horzum Qay
+        and the mountainous region on the east and south. … The southern half
+        of the Tetrapolis, consisting of the mountain-communities of Bubon,
+        Balbura and Oenoanda, he turned over to the Lycian Federation
+      supports: [construction]
     - { source: barrington, locator: 'map 65' }
   confidence: uncertain
   review: needs-check
@@ -2412,8 +2446,10 @@
     the ground of asia and lycia: until then Bubon and Balbura fell in a strip
     of asia between asia-phrygia's line and asia's own southern edge, though
     lycia's note meant them to be Lycian. Strabo names only Bubon and Balbura;
-    Oenoanda, Lycian later, is drawn with them. Takes its northern line from
-    cibyra and asia-phrygia.
+    Magie has Murena give all three, "the southern half of the Tetrapolis",
+    to the Lycians, and Cibyra's own territory the valley of the Horzum Çay
+    (241–242), which is the line between this atom and cibyra. Takes its
+    northern line from cibyra and asia-phrygia.
 
 - id: asia
   evidence: derived
@@ -3187,7 +3223,25 @@
     at: [28.66, 36.86]
     note: Caunus (Pleiades 638796)
   sources:
-    - { source: strabo, locator: '14.2.2–3' }
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        then to Caunus and to the Calbis, a river near Caunus, which is deep and
+        affords passage for merchant vessels
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.3'
+      quote: >-
+        The city has dockyards, and a harbor that can be closed. Above the city,
+        on a height, lies Imbrus, a stronghold. Although the country is fertile
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 50'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in the extreme south, the flat land surrounding the lake that lay back
+        of Caunus.
+      supports: [construction]
     - { source: appian, locator: 'Mithr. 23' }
     - { source: cicero-qfr, locator: '1.1.33' }
   confidence: uncertain
