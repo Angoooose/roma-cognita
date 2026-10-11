@@ -15,12 +15,55 @@
   from: 90 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 1.49' }
-    - { source: cicero-balb, locator: '21' }
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship, which was the one thing they
+        all desired most. They sent this decree around among the Etruscans, who
+        gladly accepted the citizenship.
+      supports: [type, of, from]
+    - source: appian
+      locator: 'BC 1.50'
+      quote: >-
+        The insurgents along the Adriatic coast, before they learned of the
+        change of sentiment among the Etruscans, sent 15,000 men to their
+        assistance by a long and difficult road. Gnaeus Pompeius, who was now
+        consul
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        until the whole of Italy came into the Roman state except the Lucanians
+        and the Samnites
+      supports: [type, of]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        even by the Julian law itself, by which the rights of citizenship were
+        given to the allies and to the Latins
+      supports: [type]
+    - source: res-gestae
+      locator: '16'
+      quote: >-
+        I paid cash to the towns for the lands that I assigned to soldiers in
+        my fourth consulship, and later in the consulship of Marcus Crassus and
+        Gnaeus Lentulus … The sum amounted to about 600,000,000 sesterces paid
+        for lands in Italy, and about 260,000,000 disbursed for provincial
+        lands.
+      supports: [to]
     - { source: cicero-arch, locator: '7' }
   confidence: certain
   review: draft
-  note: lex Iulia 90, lex Plautia Papiria 89; from 90, with its polity.
+  note: >-
+    lex Iulia 90, lex Plautia Papiria 89; from 90, with its polity (Appian
+    puts the grant between the consuls of 90 and Pompeius' consulship of 89).
 
 - polity: ager-romanus
   type: citizen-territory-of
@@ -28,7 +71,43 @@
   from: before 133 BCE
   to: 91 BCE
   sources:
-    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
+    - source: beloch-1880
+      locator: 'p. 68'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        dass die Ausdehnung der Tribus Pollia und die des römischen
+        Bürgergebiets in der Gallia Cisalpina bis zum Socialkriege sich
+        einander decken, und dass also zur Bestimmung der Ausdehnung des Ager
+        Romanus
+      supports: [type, of, to]
+    - source: beloch-1880
+      locator: 'p. 65'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Mutiua heisst bei Polybios (III 40) schon damals Colonie, und ist
+        jedenfalls seitdem beständig im römischen Besitze geblieben
+      supports: [from]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        wie alle Bürgergemeinden des diesseitigen Galliens bis auf den
+        Socialkrieg in die Tribus Pollia eingeschrieben worden sind : Mutina,
+        Parma, Regium Lepidi, Forum Cornelii, Faventia
+      supports: [type, of, from, to]
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship
+      supports: [to]
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–64' }
   confidence: certain
   review: draft
 
@@ -38,6 +117,35 @@
   from: before 133 BCE
   to: 82 BCE
   sources:
+    - source: appian
+      locator: 'BC 1.34'
+      quote: >-
+        Fulvius Flaccus in his consulship first openly excited among the
+        Italians the desire for Roman citizenship, so as to be partners in the
+        hegemony instead of subjects.
+      supports: [type, of, from]
+    - source: beloch-1880
+      locator: 'p. 169'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        diesem Umfang ist der samnitische Bund als Glied in die italische
+        Eidgenossenschaft eingetreten und hat ihr bis zum Socialkriege angehört
+      supports: [from]
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [to]
     - { source: beloch-1880, locator: 'ch. X, pp. 201–215' }
     - { source: appian, locator: 'BC 1.39' }
   confidence: certain

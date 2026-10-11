@@ -50,9 +50,55 @@
   from: 90 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 1.49' }
-    - { source: cicero-balb, locator: '21' }
-    - { source: cicero-arch, locator: '7' }
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship, which was the one thing they
+        all desired most. They sent this decree around among the Etruscans, who
+        gladly accepted the citizenship.
+      supports: [kind, from]
+    - source: appian
+      locator: 'BC 1.50'
+      quote: >-
+        The insurgents along the Adriatic coast, before they learned of the
+        change of sentiment among the Etruscans, sent 15,000 men to their
+        assistance by a long and difficult road. Gnaeus Pompeius, who was now
+        consul
+      supports: [from]
+    - source: cicero-balb
+      locator: '21'
+      quote: >-
+        even by the Julian law itself, by which the rights of citizenship were
+        given to the allies and to the Latins
+      supports: [kind]
+    - source: velleius
+      locator: '2.20.2'
+      quote: >-
+        although the citizenship had been given to Italy with the proviso that
+        the new citizens should be enrolled in but eight tribes
+      supports: [kind]
+    - source: res-gestae
+      locator: '16'
+      quote: >-
+        I paid cash to the towns for the lands that I assigned to soldiers in
+        my fourth consulship, and later in the consulship of Marcus Crassus and
+        Gnaeus Lentulus … The sum amounted to about 600,000,000 sesterces paid
+        for lands in Italy, and about 260,000,000 disbursed for provincial
+        lands.
+      supports: [to]
+    - source: cicero-arch
+      locator: '7'
+      quote: >-
+        The freedom of the city was given him in accordance with the provisions
+        of the law of Silvanus and Carbo
+      supports: []
   confidence: certain
   review: draft
   note: >-
@@ -65,7 +111,10 @@
     ager-romanus, and each part of Italy passes to italia in the year it was
     enfranchised or submitted (claims.yaml). Citizen territory is not a
     province and had no governor; it is modelled as a polity so the ground can
-    be claimed by it and named ITALIA.
+    be claimed by it and named ITALIA. Appian puts the senate's grant among
+    the events of the consuls Julius Caesar and Rutilius (BC 1.40, 1.49),
+    before Pompeius Strabo's consulship of 89 (1.50), hence 90; the Res Gestae
+    still sets Italy's land against the provinces' in 14 (RG 16).
 
 # --- Italy before the Social War (added September 2026, the extension to 133) --
 # Before 90 the peninsula was a patchwork: the Roman citizen land (ager-romanus),
@@ -83,8 +132,43 @@
   from: before 133 BCE
   to: 91 BCE
   sources:
-    - { source: beloch-1880, locator: 'ch. III, pp. 43–68' }
-    - { source: appian, locator: 'BC 1.49' }
+    - source: beloch-1880
+      locator: 'p. 68'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        dass die Ausdehnung der Tribus Pollia und die des römischen
+        Bürgergebiets in der Gallia Cisalpina bis zum Socialkriege sich
+        einander decken, und dass also zur Bestimmung der Ausdehnung des Ager
+        Romanus
+      supports: [kind, to]
+    - source: beloch-1880
+      locator: 'p. 65'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Mutiua heisst bei Polybios (III 40) schon damals Colonie, und ist
+        jedenfalls seitdem beständig im römischen Besitze geblieben
+      supports: [from]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        wie alle Bürgergemeinden des diesseitigen Galliens bis auf den
+        Socialkrieg in die Tribus Pollia eingeschrieben worden sind : Mutina,
+        Parma, Regium Lepidi, Forum Cornelii, Faventia
+      supports: [kind, from, to]
+    - source: appian
+      locator: 'BC 1.40'
+      quote: >-
+        The Romans were led by the consuls Sextus Julius Caesar and Publius
+        Rutilius Lupus
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.49'
+      quote: >-
+        The Senate also voted that those Italians who had adhered to their
+        alliance should be admitted to citizenship
+      supports: [to]
+    - { source: beloch-1880, locator: 'ch. III, pp. 43–64' }
   confidence: certain
   review: draft
   note: >-
@@ -102,8 +186,53 @@
   from: before 133 BCE
   to: 82 BCE
   sources:
-    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–177; ch. X, pp. 201–215' }
-    - { source: cicero-balb, locator: '21, 32, 50' }
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Im Ganzen also umfässte Roms italische Symrnachie ausser dem führenden
+        Staate und den unmittelbar darin incorporirten Gemeinden (Municipien)
+        noch mindestens 135 souveräne Bundesstaaten
+      supports: [kind]
+    - source: beloch-1880
+      locator: 'p. 169'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        diesem Umfang ist der samnitische Bund als Glied in die italische
+        Eidgenossenschaft eingetreten und hat ihr bis zum Socialkriege angehört
+      supports: [kind, from]
+    - source: appian
+      locator: 'BC 1.34'
+      quote: >-
+        Fulvius Flaccus in his consulship first openly excited among the
+        Italians the desire for Roman citizenship, so as to be partners in the
+        hegemony instead of subjects.
+      supports: [from]
+    - source: granius-licinianus
+      locator: 'p. 32.7–14'
+      url: https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+      quote: >-
+        quos equites a consu|libus Claudio et Servilio | missi conciderunt …
+        Data erat et Sul|lae proviwcia Gallia Cisal
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [to]
+    - source: cicero-balb
+      locator: '32'
+      quote: >-
+        But some treaties are in existence, as for instance those with the
+        Germans, the Insubres, the Helvetians, and the Iapidae, and with some of
+        the barbarian tribes in Gaul in which there is a special exception made
+        that no one of them is to be received by us as a citizen of Rome.
+      supports: []
+    - { source: beloch-1880, locator: 'ch. VIII, pp. 158–175; ch. X, pp. 201–215' }
+    - { source: cicero-balb, locator: '21, 50' }
     - { source: appian, locator: 'BC 1.39' }
     - { source: asconius-pis, locator: '3 C' }
   confidence: certain
@@ -119,7 +248,11 @@
     beyond the Po the Cenomani, the Veneti and the Insubres, whose treaty barred
     their men from Roman citizenship (Cic. Balb. 32), and the Ligurians left
     allied run on until the province of c. 81, Latin communities from the lex
-    Pompeia of 89 (Asconius, Pis. 3 C).
+    Pompeia of 89 (Asconius, Pis. 3 C). The end is the province's start
+    (gallia-cisalpina): Sulla's reforms of 81 (MRR) and the province "given"
+    to Sulla by Granius' account of 79. Cicero still names treaties with the
+    Insubres in 56 (Balb. 32): the treaties outlived the league as the map
+    draws it, which is a choice of drawing, not a date in the sources.
 
 - id: italici
   kind: league
@@ -138,26 +271,95 @@
   to: 88 BCE
   ruler: >-
     two consuls a year and a senate of 500 (Diodorus 37.2.5–6): Q. Poppaedius
-    Silo the Marsian and C. Papius Mutilus the Samnite, 90
+    Silo the Marsian and C. Papius Mutilus the Samnite, the first chosen, 91
+    or 90
   sources:
-    - { source: diodorus, locator: '37.2.4–11' }
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans. The rebellion began with the people of
+        Asculum
+      supports: [from]
+    - source: diodorus
+      locator: '37.2.4'
+      quote: >-
+        amongst which was Corfinium, a large and famous city, recently
+        established as the capital city of the Italians.
+      supports: [kind]
+    - source: diodorus
+      locator: '37.2.5'
+      quote: >-
+        They had likewise a senate consisting of five hundred members … who made
+        a law that two consuls should be chosen every year, and twelve generals.
+      supports: [kind, ruler]
+    - source: diodorus
+      locator: '37.2.6'
+      quote: >-
+        At this time Quintus Pompaedius Silo, a Marsian, (a person of the
+        highest repute in his country), and Gaius Aponius Motylus, a Samnite,
+        likewise famous for his noble acts above the rest of his own nation,
+        were chosen consuls
+      supports: [ruler]
+    - source: appian
+      locator: 'BC 1.38'
+      quote: >-
+        They sent envoys to each other secretly, formed a league, and exchanged
+        hostages as a pledge of good faith.
+      supports: [kind]
+    - source: appian
+      locator: 'BC 1.53'
+      quote: >-
+        Such was the course of events throughout Italy as regards the Social
+        War, which had raged with violence thus far and until the whole of
+        Italy came into the Roman state except the Lucanians and the Samnites.
+        These also seem to have obtained what they desired somewhat later.
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.68'
+      quote: >-
+        They ordered Caecilius Metellus, who was carrying on the remainder of
+        the Social War against the Samnites, to make peace on the best terms he
+        could … In this way the Samnites became allies of Marius. … They were
+        thrust out by Octavius and Pompeius
+      supports: [to]
+    - source: livy-per
+      locator: '80'
+      quote: >-
+        Citizenship was given to the Italian nations by the Senate. The
+        Samnites, the only ones to take up arms again, sided with Cinna and
+        Marius. … Cinna and Marius, together with Carbo and Sertorius, attacked
+        the Janiculum, but were routed by consul Octavius and retreated.
+      supports: [to]
+    - { source: diodorus, locator: '37.2.7–11' }
     - { source: strabo, locator: '5.4.2' }
     - { source: velleius, locator: '2.15–17' }
-    - { source: appian, locator: 'BC 1.38–53' }
-    - { source: appian, locator: 'BC 1.68' }
+    - { source: appian, locator: 'BC 1.39–52' }
     - { source: livy-per, locator: '72–76' }
-    - { source: livy-per, locator: '80' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The allies in revolt, the Social or "Marsic" War. The rising began at
-    Asculum late in 91 (Livy Per. 72; App. BC 1.38–39); the league took
+    Asculum, in 91 or 90 (Livy Per. 72; App. BC 1.38–39); the league took
     Corfinium as its capital, with a senate, consuls and generals on the Roman
     model, and moved to Aesernia when the Marsi and their neighbours gave in
     (Diodorus 37.2.9). By the end of 88 only the Samnites, the Lucanians and
     Nola held out (Diodorus 37.2.11; App. BC 1.53), and the Samnites made
     terms with Marius and Cinna in 87 (App. BC 1.68; Livy Per. 80). Its last
-    year, 87, belongs to italia. Drawn in a colour of its own: an independent
+    year, 87, belongs to italia. Its first year is 91 or 90: Diodorus dates
+    the outbreak to the consuls Philippus and Sextus Julius, 91 (37.2.2),
+    Velleius the rising, Asculum's first, to the consuls L. Caesar and
+    Rutilius, 90 (2.15.1). It stays 91, since the claims on the allied
+    atoms start then, but is probable, not certain, until they can be made a
+    range with it (October 2026). The ruler named Silo and Mutilus consuls
+    for 90 until then: Diodorus has them chosen "at this time", as the war
+    began (37.2.6), and gives no year of their own. Drawn in a colour of its own: an independent
     power at war with Rome, not an ally.
 
 # The two slave kingdoms of Sicily are drawn as seats (seats.yaml): each held

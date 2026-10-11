@@ -3253,8 +3253,40 @@
           note: above Venafrum
         - [13.76, 41.74]
   sources:
-    - { source: beloch-1880, locator: 'pp. 52–53, 167–169' }
-    - { source: strabo, locator: '5.4.11' }
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Ein reichliches Drittel des Ganzen wurde zunächst dem römischen Gebiete
+        direct incorporirt, und entweder als Praefectur organisirt (Atina,
+        Casinum, Venafrum, Allifae), oder zur Deduction latinischer Colonien
+        verwendet (Saticula, Interamna, Sora, Beneventum, Aesernia).
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Seitdem sind Caiatia, Compulteria, Telesia, Gaudium souveräne Glieder
+        des italischen Bundes
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 169'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        das Gebirgsland am oberen Tifernus und Sangrus mit der Hauptstadt
+        Bovianum, den alten Gau der Pentrer, der immer der Kern des Ganzen
+        gewesen war … diesem Umfang ist der samnitische Bund als Glied in die
+        italische Eidgenossenschaft eingetreten und hat ihr bis zum
+        Socialkriege angehört
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.11'
+      quote: >-
+        And verily their cities have now come to be mere villages (though some
+        have utterly vanished), I mean Bovianum, Aesernia, Panna, Telesia (close
+        to Venafrum), and others like them.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 52–53' }
     - { source: appian, locator: 'BC 1.51, 1.53, 1.68' }
     - { source: diodorus, locator: '37.2.9–11' }
     - { source: mapterhorn }
@@ -3294,8 +3326,37 @@
         - [14.66, 40.9]
         - [14.64, 41.0]
   sources:
-    - { source: beloch-1880, locator: 'pp. 64–65, 168' }
-    - { source: appian, locator: 'BC 1.39, 1.51' }
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Von Samnium abgetrennt wurde ferner der Süden der Landschaft, der Gau
+        der Hirpiner. Schon geographisch war dieser Landestheil durch die
+        Colonie Benevent mit ihrem weiten Gebiete isolirt von den
+        Stammesgenossen im Norden
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 168'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So sehen wir denn auch im Socialkriege die Hirpiner als ganzes Volk den
+        italischen Bundesgenossen sich anschliessen.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 65'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        die Grenzsteine gefunden worden, die C. Gracchus bei Vermessung des
+        römischen Staatslandes setzen Hess
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.51'
+      quote: >-
+        He spared the other towns that gave themselves up, and in this way the
+        entire population of the Hirpini was brought under subjection.
+      supports: []
+    - { source: beloch-1880, locator: 'p. 64' }
+    - { source: appian, locator: 'BC 1.39' }
     - { source: livy-per, locator: '75' }
     - { source: velleius, locator: '2.16.2' }
     - { source: mapterhorn }
@@ -3337,8 +3398,33 @@
         - [15.05, 41.5]
         - [14.9, 41.85]
   sources:
-    - { source: beloch-1880, locator: 'pp. 64–65, 174–175' }
-    - { source: appian, locator: 'BC 1.39, 1.42, 1.52–53' }
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Härter behandelt worden ist das eigentliche Apulien. Zwar sind auch hier
+        Larinum, Teanum, Canusium, Ausculum, Salapia, Hyria am Garganus … ja
+        vielleicht Arpi selbst bundesgenössische Gemeinden geblieben. Aber
+        wenigstens ein Theil des arpanischen Gebiets wurde römisches
+        Staatsland, und als solches später zur Errichtung der Colonie Sipontum
+        verwendet
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So haben auch die Römer ihre Bündnisse mit jeder apulischen Gemeinde
+        gesondert geschlossen
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.52'
+      quote: >-
+        Cosconius overran the territory of Larinum, Venusia, and Asculum, and
+        invaded that of the Poediculi, and within two days received their
+        surrender.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 65, 174' }
+    - { source: appian, locator: 'BC 1.39, 1.42, 1.53' }
     - { source: diodorus, locator: '37.2.8, 37.2.10' }
     - { source: strabo, locator: '5.4.2' }
     - { source: hydrorivers }
@@ -3371,7 +3457,35 @@
         - [16.9, 40.72]
         - [17.3, 40.95]
   sources:
-    - { source: beloch-1880, locator: 'pp. 63–64, 174–176' }
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die staatsrechtliche Stellung der Sallentiner und Poediculer ist,
+        soviel wir sehen, durch ihren Abfall zu Hannibal nicht verändert
+        worden; sie haben eben noch zur rechten Zeit mit Rom ihren Frieden
+        gemacht. Römisches Staatsgebiet können wir in diesen Gegenden vor dem
+        Socialkrieg überall nicht nachweisen
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die Stadt Tarent also ist durch den hannibalischen Krieg keineswegs zur
+        römischen Bürgergemeinde geworden, sondern hat nur ihr altes günstiges
+        Bündniss verloren, und als foederirte Stadt schlechteren Rechts
+        fortbestanden … Daneben ist freilich der grössere Theil des
+        tarentinischen Gebietes als römischer ager publicus eingezogen worden;
+        auf diesem Gebiet hat dann Drusus seine Colonie Neptunia constituirt
+      supports: [construction]
+    - source: strabo
+      locator: '6.3.1'
+      quote: >-
+        Messapia forms a sort of peninsula, since it is enclosed by the isthmus
+        that extends from Brentesium as far as Taras, three hundred and ten
+        stadia.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 174–176' }
     - { source: velleius, locator: '1.15.4' }
     - { source: hydrorivers }
   confidence: uncertain
@@ -3416,8 +3530,38 @@
         - [14.8, 40.3]
         - [14.85, 40.47]
   sources:
-    - { source: beloch-1880, locator: 'pp. 63, 172–173' }
-    - { source: strabo, locator: '5.4.13, 6.1.1' }
+    - source: beloch-1880
+      locator: 'p. 63'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Im Uebrigen zeigt die Haltung Lucaniens im Socialkriege, dass der
+        grössere Theil der dortigen Gemeinden in der Stellung von civitates
+        foederatae geblieben ist. Namentlich gilt das von den Griechenstädten
+        Velia und Herakleia; vielleicht auch von Metapontion.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 63'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        ist wahrscheinlich damals das fruchtbare Thal der Tanager (Val di
+        Diano) zum ager publicus gemacht worden; 133 wurde dort Forum Popilii
+        angelegt … Ferner wurde der Ager Picentinus ganz eingezogen (Strab. p.
+        251), und auf dem gewonnenen Gebiete die Bürgercolonie Salernum (194)
+        gegründet; im selben Jahr Buxentum im Süden Lucaniens.
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.13'
+      quote: >-
+        The country of the Picentes extends as far as the River Silaris, which
+        separates the old Campania from this country.
+      supports: [construction]
+    - source: strabo
+      locator: '6.1.1'
+      quote: >-
+        After the mouth of the Silaris one comes to Leucania … Laus — a river
+        and city; it is the last of the Leucanian cities
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 172–173' }
     - { source: appian, locator: 'BC 1.39, 1.41, 1.53' }
     - { source: livy-per, locator: '76' }
     - { source: diodorus, locator: '37.2.11, 37.2.13' }
@@ -3456,7 +3600,32 @@
         - [15.3, 39.5]
         - [15.55, 39.9]
   sources:
-    - { source: beloch-1880, locator: 'pp. 62–63, 174–176' }
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        In ihrer alten Stellung als foederirte Städte blieben hier natürlich
+        Rhegion und Petelia, die allein durch alle Wechselfälle des Krieges Rom
+        treu geblieben waren, ferner Lokroi, Consentia … Pandosia, und einige
+        andere unbedeutende Orte … Die Marken aller übrigen Städte aber wurden
+        zu römischem ager publieus
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die erworbenen Gebiete werden zum grössten Theil zur Anlage neuer
+        Colonien verwendet: 193 wird Copia im Gebiet von Thurioi, 192 Valentia
+        (Vibo) als latinische Colonie
+      supports: [construction]
+    - source: strabo
+      locator: '6.1.4'
+      quote: >-
+        The seaboard that comes next after Leucania, as far as the Sicilian
+        Strait and for a distance of thirteen hundred and fifty stadia, is
+        occupied by the Brettii.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 63, 174–176' }
     - { source: velleius, locator: '1.15.4' }
     - { source: diodorus, locator: '37.2.13' }
   confidence: uncertain
@@ -3520,9 +3689,43 @@
         - [9.9, 43.0]
         - [10.2, 43.76]
   sources:
-    - { source: beloch-1880, locator: 'pp. 55–61, 160–165, 176' }
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        In Etrurien haben wir wenigstens 11 foederirte Gemeinden: Pisae,
+        Volaterrae, Populonia, -Rusellae, Vetulonia, Volsinii, Clusium,
+        Perusia, Cortona, Arretium, Faesulae; inümbrien wenigstens 16 :
+        Ravenna, Sassina, Pitinum, Urbinum, Sestinum, Tifernum Metaurense ,
+        Tifernum Tiberinum, Iguvium, Arna, Vxettona, Tuder, Carsulae, Ameria,
+        Interamna, Ocriculum, Camerinum
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 57'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        dass das römische Gebiet in Umbrien sich in ununterbrochenem Striche
+        längs der Via Flaminia vom Nar bis zur gallischen Grenze erstreckt hat,
+        Camerinum und vielleicht Matelica im Osten, die Gemeinden des
+        Tiberthaies im Westen als Buudesstädte ausschliessend
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'pp. 60–61'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die Mark von Tarquinii reichte nach N. die Marta herauf bis an den See
+        von Bolsena … doch spricht alles dafür, dass das römische Gebiet sich
+        wenigstens bis in die Nähe des Umbro und an den Südfuss des Monte
+        Amiata erstreckt hat.
+      supports: [construction]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - { source: beloch-1880, locator: 'pp. 55–56, 58–59, 160–165' }
     - { source: appian, locator: 'BC 1.49' }
-    - { source: livy-per, locator: '74' }
     - { source: hydrorivers }
     - { source: mapterhorn }
   confidence: uncertain
@@ -3591,7 +3794,26 @@
         - [9.9, 43.0]
         - [10.2, 43.76]
   sources:
-    - { source: suetonius-iul, locator: '24, 31–32' }
+    - source: strabo
+      locator: '5.1.11'
+      quote: >-
+        The boundaries which separate from the rest of Italy this country, which
+        we designate Citerior Keltica, were marked by the Apennine mountains
+        above Tyrrhenia and the river Esino, and afterwards by the Rubicon.
+      supports: [construction]
+    - source: suetonius-iul
+      locator: '31'
+      quote: >-
+        overtaking his cohorts at the river Rubicon, which was the boundary of
+        his province
+      supports: [construction]
+    - source: suetonius-iul
+      locator: '24'
+      quote: >-
+        Caesar compelled Pompeius and Crassus to come to Luca, a city in his
+        province
+      supports: [construction]
+    - { source: suetonius-iul, locator: '32' }
     - { source: pliny-nh, locator: '3.50' }
     - { source: broughton-mrr }
     - { source: hydrorivers }
@@ -3639,9 +3861,41 @@
         - [10.6, 43.6]
         - [10.1, 43.8]
   sources:
-    - { source: beloch-1880, locator: 'pp. 65–68' }
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        wie alle Bürgergemeinden des diesseitigen Galliens bis auf den
+        Socialkrieg in die Tribus Pollia eingeschrieben worden sind : Mutina,
+        Parma, Regium Lepidi, Forum Cornelii, Faventia
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Und auch diesseits des Stromes gehören alle Gemeinden; die nachweislich
+        bis zum Socialkriege Bundesrecht gehabt haben, zu anderen Tribus: so
+        Placentia zur Voturia, Bononia zur Lemonia
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 66'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: Auf dem gewonnenen Gebiete wurde 177 die Bürgercolonie Luna angelegt
+      supports: [construction]
+    - source: cicero-balb
+      locator: '50'
+      quote: >-
+        Cnaeus Pompeius, the father of this man, after he had performed mighty
+        achievements in the Italian war, present Publius Caesius, a Roman knight
+        and a virtuous man, who is still alive, a native of Ravenna, a city of a
+        federate state, with the freedom of the city of Rome?
+      supports: [construction]
+    - source: strabo
+      locator: '5.1.11'
+      quote: For the Trebia meeting the Po near Placentia
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 65, 68' }
     - { source: asconius-pis, locator: '3 C' }
-    - { source: cicero-balb, locator: '50' }
     - { source: hydrorivers }
     - { source: mapterhorn }
   confidence: uncertain
@@ -3709,10 +3963,37 @@
         - [7.5, 43.6]
         - [9.0, 44.0]
   sources:
-    - { source: caesar-bg, locator: '1.10, 8.24' }
-    - { source: pliny-nh, locator: '3.127, 3.136–137' }
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        on the seventh day he moved from Ocelum, the last station of Hither
+        Gaul, into the borders of the Vocontii in Further Gaul.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.127'
+      quote: >-
+        Six miles beyond this place lies the river Formio, 189 miles distant
+        from Ravenna, the ancient boundary of enlarged Italy, and now the
+        frontier of Istria.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.48'
+      quote: >-
+        The river Rutuba, the town of Albium Intemelium … and the river Macra,
+        which is the boundary of Liguria.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Jenseits des Apennin ist der grössere Theil der Ebene am rechten Poufer
+        den Ligurern entrissen und zu römischem Staatsgebiet gemacht worden …
+        die Statiellier (um Acqui) haben ihre Genieindeautonomie bis auf Caesar
+        behalten
+      supports: [construction]
+    - { source: caesar-bg, locator: '8.24' }
+    - { source: pliny-nh, locator: '3.136–137' }
     - { source: barrington, locator: 'maps 39–40' }
-    - { source: beloch-1880, locator: 'p. 67' }
     - { source: natural-earth }
   confidence: probable
   review: draft
