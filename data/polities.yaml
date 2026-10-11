@@ -3755,8 +3755,8 @@
   names:
     - { text: Dacia, lang: la, preferred: true }
   from: before 79 BCE
-  to: 44 BCE
-  ruler: Burebista, to c. 44
+  to: after 44 BCE
+  ruler: Burebista
   sources:
     - source: strabo
       locator: '7.3.11'
@@ -3767,13 +3767,13 @@
         peoples … However, certain men rose up against Boerebistas and he was
         deposed before the Romans sent an expedition against him; and those who
         succeeded him divided the empire into several parts.
-      supports: [kind, ruler]
+      supports: [kind, to, ruler]
     - source: strabo
       locator: '7.3.5'
       quote: >-
         at the time when Byrebistas , against whom already the Deified Caesar had
         prepared to make an expedition, was reigning over the Getae
-      supports: [kind, from, ruler]
+      supports: [kind, from, to, ruler]
     - source: suetonius-aug
       locator: '8'
       quote: >-
@@ -3781,7 +3781,7 @@
         expedition against the Dacians and then against the Parthians , Augustus
         , who had been sent on in advance to Apollonia , devoted his leisure to
         study. As soon as he learned that his uncle had been slain
-      supports: []
+      supports: [to]
     - source: jordanes-getica
       locator: '67'
       quote: >-
@@ -3798,7 +3798,11 @@
     the Romans" (Getica 67), 82–79, and Strabo still reigning when Caesar
     prepared his expedition (7.3.5), so the kingdom was in force by 79. It
     read c. 60, a modern convention no readable text states, until October
-    2026; Jordanes' date is late and stands alone, hence uncertain.
+    2026; Jordanes' date is late and stands alone, hence uncertain. The end
+    is open: Burebista still reigned when Caesar planned his Dacian war, the
+    year Caesar was killed (Suet. Aug. 8), and was overthrown "before the
+    Romans sent an expedition against him" (Strabo 7.3.11), in a year no
+    readable text gives. It read 44 until October 2026.
 
 - id: pontic-cities
   kind: league
