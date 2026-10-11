@@ -16323,19 +16323,23 @@
 - atom: samaria
   polity: judaea
   relation: independent
-  from: { earliest: 111 BCE, latest: 107 BCE }
+  from: 111 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.255–256, 13.275–281' }
     - { source: schurer-vermes }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
-    Hyrcanus took "Shechem and Gerizzim, and the nation of the Cutheans" (AJ
+    Hyrcanus took "Shechem and Garizin, and the nation of the Cutheans" (AJ
     13.255) and the temple on Gerizim; Josephus tells it after 129, and the
     excavators are reported to date the destruction c. 112–111 (not checked
     here: the reports of the coin evidence differ). Then he besieged Samaria
-    for a year, took it and "demolished it entirely" (13.275–281), c. 108–107.
+    for a year, took it and "demolished it entirely" (13.275–281), which
+    Schürer (1891, 283–284) puts between 111 and 107, "probably not long
+    before" 107. Until October 2026 the start was that range, drawn at its
+    midpoint (109), which left 111–110 blank after the Seleucid row; it is
+    now drawn from 111, the earliest year, and lowered from probable.
 
 - atom: syria-palaestina
   polity: seleucid
