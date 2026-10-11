@@ -1734,10 +1734,30 @@
     - source: josephus-aj
       locator: '14.39'
       quote: >-
-        took cognizance of the country of Ptolemy Menneus, a wicked man … yet
-        did he buy off the punishment of his crimes for a thousand talents, with
-        which money Pompey paid the soldiers their wages.
-      supports: [type, of]
+        when Pompey had ordered those that had controversies one with another to
+        come to him in the beginning of the spring, he brought his army out of
+        their winter quarters, and marched into the country of Damascus … took
+        cognizance of the country of Ptolemy Menneus, a wicked man … yet did he
+        buy off the punishment of his crimes for a thousand talents, with which
+        money Pompey paid the soldiers their wages.
+      supports: [type, of, from]
+    - source: josephus-aj
+      locator: '14.46'
+      quote: >-
+        he would settle all their affairs, after he had first taken a view of
+        the affairs of the Nabateans. In the mean time, he ordered them to be
+        quiet; and treated Aristobulus civilly, lest he should make the nation
+        revolt, and hinder his return; which yet Aristobulus did; for without
+        expecting any further determination, which Pompey had promised them, he
+        went to the city Delius, and thence marched into Judea.
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        for although the city was taken on the third month, on the day of the
+        fast, upon the hundred and seventy-ninth Olympiad, when Caius Antonius
+        and Marcus Tullius Cicero were consuls
+      supports: [from]
     - source: cassius-dio
       locator: '49.32.5'
       quote: >-
