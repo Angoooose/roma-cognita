@@ -15864,13 +15864,33 @@
         as we now know from the Cnidos version of the Pirate Law, Lycaonia was
         under Roman rule before this date
       supports: [relation, from]
+    - source: strabo
+      locator: '12.6.2'
+      quote: >-
+        To Lycaonia belongs also Isaurice, near the Taurus itself … They were a
+        source of much trouble to the Romans and in particular to Publius
+        Servilius, surnamed Isauricus, with whom I was acquainted; he subjected
+        these places to the Romans
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., pp. 96–99'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … L. Octavius On. f. C. n. … Proconsul in Cilicia (see 78-76,
+        Promagistrates). In 75 may be placed his advance across the Taurus and
+        reduction of the Isaurians on the northern slopes
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     The law on the praetorian provinces (Cnidus copy, col. III 22–25) leaves
     Lycaonia with the governor of Asia "as before" (Sherwin-White 1976, n. 24;
     Dmitriev 349 on I.Knidos 31). The row starts at the law, not at whatever
-    earlier year it came to Asia.
+    earlier year it came to Asia. It ends where cilicia's row on this ground
+    begins: Servilius, proconsul of Cilicia, subjected Isaurice, which
+    "belongs" to Lycaonia (Strabo 12.6.2), in 75 (MRR II 96–99). No text
+    shows Asia's governor in Lycaonia after the law, nor dates the transfer
+    of the steppe itself.
 
 - atom: cilicia
   polity: cilicia
