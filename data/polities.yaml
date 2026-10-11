@@ -3299,14 +3299,16 @@
         and Mitchell I 38 (late 30s or early 20s
       supports: []
     - { source: dmitriev-2000, locator: 'pp. 359–360' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Antipater held Derbe and Laranda until Amyntas "attacked and killed
     Derbetes" (Strabo 12.6.3). The date is not recorded: about 36 (Robert), the
     late 30s or early 20s (Mitchell), or after Actium with Octavian's leave
     (Magie I 443), which is the date drawn (Dmitriev 371 n. 81 collects the
-    views).
+    views; his own text has it "several years after Polemo had left for
+    Pontus"). As the readable texts disagree, the confidence was lowered from
+    probable in October 2026.
 
 - id: lycia
   kind: league
