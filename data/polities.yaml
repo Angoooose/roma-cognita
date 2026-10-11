@@ -5626,8 +5626,29 @@
   to: after 27 BCE
   ruler: Artavasdes, once king of Media Atropatene, to c. 20
   sources:
-    - { source: cassius-dio, locator: '54.9.2' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: cassius-dio
+      locator: '54.9.2'
+      quote: >-
+        These latter together with Lesser Armenia he granted to Archelaus,
+        because the Mede, who previously had ruled them, was dead.
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Polemo, indeed, was punished by a delay in confirming his position, for
+        it was not until four years later — in 26 b.c. — that he was formally
+        declared a “friend and ally” of Rome. He lost, moreover, the territory
+        which had been given to him in Armenia Minor. This was presented to
+        Artavasdes, the former king of Media Atropatene
+      supports: [from, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 484'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        a son of that Artavasdes who had once been made ruler of Lesser Armenia
+        by Augustus and had died shortly before 20 b.c.
+      supports: [kind, ruler, to]
   confidence: uncertain
   review: needs-check
   note: >-
