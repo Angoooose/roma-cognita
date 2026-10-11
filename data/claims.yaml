@@ -6253,7 +6253,28 @@
   from: before 96 BCE
   to: 63 BCE
   sources:
-    - { source: josephus-aj, locator: '13.360, 13.375, 13.387–392' }
+    - source: josephus-aj
+      locator: '13.360'
+      quote: >-
+        Aretas, king of the Arabians, a person then very illustrious,
+        encouraged them to go on with alacrity, and promised them that he would
+        come to their assistance
+      supports: [polity, relation]
+    - source: schurer-1890
+      locator: 'p. 351'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        is spoken of at the time of the siege of Gaza by Alexander Jannaus in
+        B.C. 96. … A couple of years later, about B.C. 90, Alexander Jannaus
+        attacked King Obedas I.
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '14.80'
+      quote: >-
+        he persuaded Aretas to give Scaurus a sum of money, to prevent the
+        burning of his country
+      supports: [to]
+    - { source: josephus-aj, locator: '13.375, 13.387–392' }
     - { source: josephus-bj, locator: '1.90' }
     - { source: sullivan-1990 }
     - { source: bowersock-1983 }
