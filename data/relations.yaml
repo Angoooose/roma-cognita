@@ -514,7 +514,7 @@
 - polity: emesa
   type: client-of
   of: rome
-  from: 64 BCE
+  from: before 51 BCE
   to: 31 BCE
   sources:
     - source: cicero-fam
@@ -523,7 +523,7 @@
         a despatch on the same subject reached me from Iamblichus , phylarch of
         the Arabians , who is generally considered to be well-disposed and
         friendly to our Republic.
-      supports: [type, of]
+      supports: [type, of, from]
     - source: strabo
       locator: '16.2.10'
       quote: >-
@@ -550,7 +550,10 @@
     Strabo names Sampsiceramus and Iamblichus as the Emeseni's chiefs, so
     Cicero's and Dio's Iamblichus "of the Arabians" is Emesa's. Dio puts
     Antony's killing of him in the year of Caesar and Messalla's consulship
-    (50.10.1), 31.
+    (50.10.1), 31. The start was 64 (Pompey's settlement, after Sullivan) until
+    October 2026: no readable text dates the tie to 64, so it now opens at its
+    first attestation, Cicero's despatch from Cilicia in his proconsulship of 51,
+    when the Parthians crossed the Euphrates.
 
 - polity: osroene
   type: client-of
