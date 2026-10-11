@@ -7775,11 +7775,15 @@
         according to its ancient laws. So that neither Marseilles nor the cities
         dependent on it are under submission to the governors sent
       supports: []
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     Caesar left the Massaliots their city and their freedom, but took their
-    territory and ships.
+    territory and ships: Dio has them stripped "of everything else except the
+    name of freedom" (41.25.3). Strabo, writing under Augustus, disagrees:
+    neither Massalia "nor the cities dependent on it" answered to the governors
+    (4.1.5). Both are quoted and the confidence lowered from probable in the
+    October 2026 backfill.
 
 - atom: helvetii
   polity: helvetii
