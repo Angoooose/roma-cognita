@@ -99,6 +99,14 @@
         The freedom of the city was given him in accordance with the provisions
         of the law of Silvanus and Carbo
       supports: []
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [from]
   confidence: certain
   review: draft
   note: >-
@@ -167,6 +175,14 @@
       quote: >-
         The Senate also voted that those Italians who had adhered to their
         alliance should be admitted to citizenship
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
       supports: [to]
     - { source: beloch-1880, locator: 'ch. III, pp. 43–64' }
   confidence: certain
