@@ -30,6 +30,35 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: strabo
+      locator: '8.2.1'
+      quote: >-
+        The width of the Isthmus at the “Diolcus,” where the ships are hauled
+        overland from one sea to the other, is forty stadia
+      supports: [op, to]
+    - source: pliny-nh
+      locator: '4.10'
+      quote: >-
+        such vessels as from their magnitude cannot be carried across by land on
+        vehicles. For this reason it is that both King Demetrius, Caesar the
+        Dictator, the prince Gaius, and Domitius Nero, have at different times
+        made the attempt to cut through this neck by forming a navigable canal;
+        a profane design, as may be clearly seen by the result in every one of
+        these instances.
+      supports: [op, from, to]
+    - source: korinthos-isthmus
+      quote: >-
+        the narrowest point is where the Corinth Canal (1880-1893) was
+        constructed
+      supports: [op]
+    - source: korinthos-isthmus
+      quote: >-
+        Periander, was the first to conceive the project of opening the Isthmus
+        around 602 BC. However, he ultimately settled for the creation of the
+        diolkos … Subsequently, Demetrius Poliorcetes, Julius Caesar, Caligula,
+        and Nero all studied and attempted to open the canal, but without
+        success.
+      supports: [op, from, to]
     - { source: corinth-canal-1893 }
   confidence: certain
   review: needs-check
@@ -42,7 +71,30 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: escwa-bgr-2013 }
+    - source: escwa-bgr-2013
+      locator: 'p. 112'
+      quote: >-
+        Natural conditions have changed due to the diversion of water from the
+        Tigris into the Tharthar Depression
+      supports: [op]
+    - source: escwa-bgr-2013
+      locator: 'p. 113, table 4'
+      quote: >-
+        Lake Tharthar (the reservoir) covers an area of 2,420 km 2
+      supports: [op]
+    - source: sissakian-2011
+      locator: 'p. 47'
+      quote: >-
+        The Tharthar Depression since 1956 is changed to an artificial reservoir
+        to collect the over flooded water of the Tigris River, during flood
+        seasons, therefore was called Tharthar Lake.
+      supports: [op, from, to]
+    - source: sissakian-2011
+      locator: 'p. 48'
+      quote: >-
+        The Tharthar Lake is a natural closed depression, before being filled by
+        flooded access water from the Tigris River, since 1956
+      supports: [op, from, to]
   confidence: certain
   review: needs-check
   note: >-

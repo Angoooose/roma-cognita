@@ -2520,6 +2520,28 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: sai-mission
+      locator: 'Powerful Nubian kingdoms'
+      quote: >-
+        Saï was incorporated into the kingdom of Napata (9th – 3rd century BCE),
+        and then the kingdom of Meroe (3rd century BCE – mid-4th century CE)
+      supports: [polity, from, to]
+    - source: eller-2025
+      locator: 'p. 65 n. 13'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        it could be either the kingdom of Meroe or the kingdom of Napata. The
+        former succeeded the latter around
+      supports: [from]
+    - source: strabo
+      locator: '17.1.54'
+      quote: >-
+        Candace, queen of the Ethiopians in our time … When she sent ambassadors
+        to treat of peace … The enemy sent ambassadors, but he ordered them to
+        repair to Caesar … They arrived at Samos, where Caesar was at that time
+        … The ambassadors obtained all that they desired, and Caesar even
+        remitted the tribute which he had imposed.
+      supports: [relation, to]
     - { source: torok-1997, locator: 'chs. 4–5' }
   confidence: uncertain
   review: needs-check
@@ -2530,6 +2552,34 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 29'
+      quote: >-
+        During the Proto-Urban Garamantian phase (PUGAR), 500 BC-1 BC, what was
+        to become the capital of the Garamantes, Garama, was established
+      supports: [polity, from]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 51'
+      quote: >-
+        the Garamantes can be seen as an early desert state … The Garamantian
+        civilisation, from the earliest phase, between 1000-500 BC, and the 5
+        th -6 th centuries AD, has seen the development of agriculture and
+        urbanism together with the rise of a hierarchical society
+      supports: [polity, from, to]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 32'
+      quote: >-
+        Despite being defeated by Roman armies - notably Cornelius Balbus,
+        proconsul of Africa (20 BC), as described by Pliny ( Natural History V
+        35-37) … the Garamantes were never annexed to the Roman Empire.
+      supports: [relation, to]
+    - source: pliny-nh
+      locator: '5.36'
+      quote: >-
+        Garama too, that most famous capital of the Garamantes; all which places
+        have been subdued by the Roman arms. It was on this occasion that
+        Cornelius Balbus was honoured with a triumph
+      supports: [polity]
     - { source: mattingly-2003 }
   confidence: probable
   review: draft

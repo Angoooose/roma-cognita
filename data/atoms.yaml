@@ -594,6 +594,19 @@
         - { at: [32.45, 22.6], via: curve, note: the west bank }
         - { at: [32.75, 23.2], via: curve }
   sources:
+    - source: sai-mission
+      locator: 'Powerful Nubian kingdoms'
+      quote: >-
+        Saï was incorporated into the kingdom of Napata (9th – 3rd century BCE),
+        and then the kingdom of Meroe (3rd century BCE – mid-4th century CE)
+      supports: [construction]
+    - source: eller-2025
+      locator: 'p. 67'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        Ptolemy VI expanded by reestablishing control over Lower Nubia up to the
+        Second Cataract
+      supports: [construction]
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: barrington, locator: 'maps 80–81' }
   confidence: uncertain
@@ -623,7 +636,33 @@
         - [12.8, 26.3]
         - [12.0, 26.4]
   sources:
-    - { source: pliny-nh, locator: '5.35–38' }
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 29'
+      quote: >-
+        During the Proto-Urban Garamantian phase (PUGAR), 500 BC-1 BC, what was
+        to become the capital of the Garamantes, Garama, was established and
+        there was an increase in the location of the settlements in the valleys.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 319'
+      quote: >-
+        The Wadi al-Ajal, where the capital Garama is located, became the centre
+        of this civilisation that extended to the Wadi Tanezzuft on the west, the
+        Wadi ash-Shati to the north and the Zuwila-Murzuq-Barjuj depression
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.36'
+      quote: >-
+        Garama too, that most famous capital of the Garamantes
+      supports: [construction]
+    - source: mattingly-sterry-edwards-2015
+      locator: 'p. 16'
+      quote: >-
+        There are no certain ceramics of the Proto-Urban Garamantian period
+        (500-1 BC), a characteristic also of the Murzuq area, where the main
+        development of oases appears to fall in the Classic and Late
+        Garamantian eras
+      supports: []
     - { source: mattingly-2003 }
   confidence: uncertain
   review: needs-check
