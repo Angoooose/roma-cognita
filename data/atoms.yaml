@@ -2106,7 +2106,32 @@
           note: south of Lake Urmia
         - [44.8, 37.6]
   sources:
-    - { source: strabo, locator: '11.13.1–2' }
+    - source: strabo
+      locator: '11.13.2'
+      quote: >-
+        This country lies east of Armenia and Matiane, west of Greater Media,
+        and north of both; and it lies adjacent to the region round the recess
+        of the Hyrcanian Sea and to Matiane on the south.
+      supports: [construction]
+    - source: strabo
+      locator: '11.13.6'
+      quote: >-
+        on the south by Apollioniatis, which the ancients called Sitacene, and
+        by the mountain Zagrus … and on the west by the Atropatii and certain of
+        the Armenians
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.6'
+      quote: >-
+        both on the Araxes River, Arxata being near the borders of Atropatia
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.8'
+      quote: >-
+        one the Mantiane, which being translated means “Blue”; it is the
+        largest salt water lake after Lake Maeotis, as they say, extending as
+        far as Atropatia
+      supports: [construction]
     - { source: schottky-1989 }
   confidence: uncertain
   review: needs-check
@@ -2609,8 +2634,48 @@
           note: south of Zela
         - [35.1, 40.45]
   sources:
-    - { source: magie-1950, locator: 'vol. I, 433–436' }
-    - { source: strabo, locator: '12.3.37–39' }
+    - source: magie-1950
+      locator: 'vol. I, pp. 434–435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Polemo, however, was provided with other dominions, namely that portion
+        of Pontus which lay east of the river Iris … Polemo obtained the eastern
+        portion of the region. … It is highly probable that, together with
+        eastern Pontus, Polemo obtained from Antony the cities of Amaseia and
+        Amisus
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of those which he founded east of the Halys, the communities of the
+        Lycus valley came, like Amaseia and Amisus, under the rule of Polemo,
+        Neapolis was assigned to Deiotarus, and Megalopolis, probably, to
+        Ateporix.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.37'
+      quote: >-
+        The whole of the country around is held by Pythodoris, to whom belong,
+        not only Phanaroea, but also Zelitis and Megalopolitis.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.38'
+      quote: >-
+        Now after the territory of the Amisenians, and extending to the Halys
+        River, is Phazemonitis … The northern side of this country is bounded
+        by Gazelonitis and the country of the Amisenians; the western by the
+        Halys River; the eastern by Phanaroea; and the remaining side by my
+        country, that of the Amaseians
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.39'
+      quote: >-
+        This, then, is the length of their country, whereas the breadth from
+        the north to the south extends, not only to Zelitis, but also to
+        Greater Cappadocia, as far as the Trocmi. … Amaseia was also given to
+        kings, though it is now a province.
+      supports: [construction]
     - { source: barrington, locator: 'maps 86–87' }
   confidence: uncertain
   review: needs-check
@@ -2774,9 +2839,42 @@
         - at: [31.5, 38.2]
           note: the Sultan Dağ, between Philomelium and Antioch
   sources:
-    - { source: strabo, locator: '12.6.1–3' }
+    - source: strabo
+      locator: '12.6.1'
+      quote: >-
+        In this neighborhood is also Iconium … Here the region in question is
+        near the Taurus, which separates Cappadocia and Lycaonia from Cilicia
+        Tracheia, which last lies above that region. The boundary between the
+        Lycaonians and the Cappadocians lies between Coropassus, a village of
+        the Lycaonians, and Garsaura, a town of the Cappadocians.
+      supports: [construction]
+    - source: strabo
+      locator: '12.6.2'
+      quote: >-
+        To Lycaonia belongs also Isaurice, near the Taurus itself, which has
+        the two Isauras
+      supports: [construction]
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        On the side of Isaurice lies Derbe, which lies closer to Cappadocia
+        than to any other country and was the royal seat of the tyrant
+        Antipater Derbetes. He also possessed Laranda.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.95'
+      quote: >-
+        Lycaonia, which belongs to the jurisdiction of the province of Asia, to
+        which also resort the people of Philomelium … To this jurisdiction is
+        also added a Tetrarchy of Lycaonia in that part which joins up to
+        Galatia, containing fourteen states, with the famous city of Iconium.
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.20.1'
+      quote: >-
+        five at Philomelium, ten at Iconium
+      supports: []
     - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
-    - { source: cicero-att, locator: '5.20.1' }
     - { source: barrington, locator: 'maps 63, 65–66' }
   confidence: uncertain
   review: needs-check
@@ -2807,9 +2905,27 @@
         - [31.75, 37.85]
         - [31.5, 38.2]
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
-    - { source: strabo, locator: '12.6.4' }
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of what remained, the hill-country of northern Pisidia was now given to
+        Amyntas
+      supports: [construction]
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        in Pisidia, Amyntas
+      supports: []
+    - source: strabo
+      locator: '12.6.4'
+      quote: >-
+        being in possession of the Antiocheia near Pisidia and of the country
+        as far as the Apollonias near Apameia Cibotus … he captured many places
+        which previously had been impregnable, among which was Cremna. However,
+        he did not even try to win Sandalium by force, which is situated
+        between Cremna and Sagalassus.
+      supports: [construction]
     - { source: barrington, locator: 'maps 62, 65' }
   confidence: uncertain
   review: needs-check
@@ -3318,9 +3434,45 @@
         - [33.0, 35.9]
         - [31.5, 36.4]
   sources:
-    - { source: strabo, locator: '14.5.2–3' }
-    - { source: strabo, locator: '14.5.6' }
-    - { source: magie-1950, locator: 'vol. I, 434, 443' }
+    - source: strabo
+      locator: '14.5.1'
+      quote: >-
+        As for Cilicia outside the Taurus, one part of it is called Tracheia
+        and the other Pedias. As for Tracheia, its coast is narrow and has no
+        level ground, or scarcely any; and, besides that, it lies at the foot
+        of the Taurus
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.2'
+      quote: >-
+        The first place in Cilicia, then, to which one comes, is a stronghold,
+        Coracesium, situated on an abrupt rock
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.3'
+      quote: >-
+        After Coracesium, one comes to Arsinoe, a city; then to Hamaxia … it
+        was on this account that Antony assigned this region to Cleopatra,
+        since it was suited to the building of her fleets. Then one comes to
+        Laertes … Then to Selinus, a city and river. … Then to Anemurium … then
+        to a place called Melania, and to Celenderis, a city with a harbor.
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        after he had received the whole of Cilicia Tracheia except Seleuceia —
+        the same way in which it was obtained formerly by Amyntas and still
+        earlier by Cleopatra
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Whatever portion of Cilicia Aspera this prince held or hoped to hold,
+        was likewise lost to him, for the region was now presented by Antony to
+        Cleopatra, to whom its timber was especially valuable for building a
+        fleet.
+      supports: []
     - { source: barrington, locator: 'maps 65–66' }
   confidence: probable
   review: needs-check
@@ -3633,9 +3785,25 @@
         - [15.2, 44.55]
         - [14.85, 45.1]
   sources:
-    - { source: strabo, locator: '4.6.10' }
-    - { source: strabo, locator: '7.5.4' }
-    - { source: strabo, locator: '7.5.2' }
+    - source: strabo
+      locator: '4.6.10'
+      quote: >-
+        Formerly the Iapodes were numerous, inhabiting either side of the
+        mountain … Their cities are Metulum, Arupenum, Monetium, and Vendon.
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.4'
+      quote: >-
+        for the Iapodes are situated on the Albian Mountain, which is the last
+        mountain of the Alps, is very lofty, and reaches down to the country of
+        the Pannonians on one side and to the Adrias on the other.
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.2'
+      quote: >-
+        the Noarus is further increased in volume by the Colapis, which flows
+        from the Albian Mountain through the country of the Iapodes
+      supports: [construction]
     - { source: appian, locator: 'Ill. 16–21' }
     - { source: barrington, locator: 'map 20' }
   confidence: uncertain
@@ -3648,7 +3816,9 @@
     flows through the Iapodes' country (7.5.2), so their ground may have
     straddled it, and the Una as their limit is the usual archaeological one,
     not confirmed here in the scholarship. Takes the coast's edge from
-    illyricum and the south from delmatae. Added September 2026.
+    illyricum and the south from delmatae. Added September 2026. Strabo also
+    gives the Iapodes a coast of a thousand stadia before the Liburni's
+    (7.5.4); that strip is drawn in illyricum, which this atom does not cut.
 
 - id: thessalia
   evidence: derived
@@ -3680,7 +3850,41 @@
         - [23.3, 39.05]
         - [24.1, 39.3]
   sources:
-    - { source: bowersock-1965, locator: '284–285' }
+    - source: strabo
+      locator: '9.5.1'
+      quote: >-
+        Thessaly comprises, first, on the sea, the coast which extends from
+        Thermopylae to the outlet of the Peneius River and the extremities of
+        Pelion … on one side, beginning at Pelion and the Peneius, Macedonia
+        stretches towards the interior as far as Paeonia and the Epeirote
+        tribes … There remains the western side, which is surrounded by the
+        Aitolians and Acarnanians and Amphilochians, and, of the Epeirotes, the
+        Athamanians and Molossians and what was once called the land of the
+        Aethices, or, in a word, the land about Pindus.
+      supports: [construction]
+    - source: strabo
+      locator: '9.5.2'
+      quote: >-
+        But when a cleft was made by earthquakes at Tempe, as it is now called,
+        and split off Ossa from Olympus, the Peneius poured out through it
+        towards the sea
+      supports: [construction]
+    - source: bowersock-1965
+      locator: 'p. 278'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Thessalien reichte an der Küstenseite von Thermopylae bis zur Mündung
+        des Peneios- flusses und zum Peliongebirge. Seine nördliche Grenze
+        reichte westwärts nach Paeonien und den epirotischen Stämmen
+        … die westliche Grenze besteht haupt- sächlich aus der Pinduskette.
+      supports: [construction]
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Unter Augustus waren alle diese Orte, wie auch Thessalien, Teile der
+        Provinz Achaia gewesen.
+      supports: []
     - { source: barrington, locator: 'maps 49–51, 55' }
     - { source: natural-earth }
   confidence: probable
@@ -3722,9 +3926,39 @@
         - [21.45, 39.05]
         - [21.1, 39.0]
   sources:
-    - { source: bowersock-1965, locator: '284–285' }
-    - { source: strabo, locator: '17.3.25' }
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: strabo
+      locator: '7.7.5'
+      quote: >-
+        Now the Chaones and the Thesproti and, next in order after these, the
+        Cassopaei (these, too, are Thesproti) inhabit the seaboard which
+        extends from the Ceraunian Mountains as far as the Ambracian Gulf
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.8'
+      quote: >-
+        for above Epidamnus and Apollonia as far as the Ceraunian Mountains
+        dwell the Bylliones, the Taulantii, the Parthini, and the Brygi
+      supports: [construction]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the seventh Achaia, extending to Thessaly, the Aetolians, Acarnanians,
+        and the Epirotic nations who border upon Macedonia
+      supports: [construction]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus, the Dalmatian and Macedonian districts … were held
+        to belong to the people and the senate
+      supports: []
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        die Provinz Epirus, bestehend aus dem eigent- lichen Epirus, Akarnanien
+        und gewissen Inseln … Unter Augustus waren alle diese Orte, wie auch
+        Thessalien, Teile der Provinz Achaia gewesen.
+      supports: []
     - { source: barrington, locator: 'maps 49, 54' }
     - { source: natural-earth }
   confidence: uncertain
