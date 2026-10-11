@@ -5584,9 +5584,9 @@
 
 - atom: emesa
   polity: emesa
-  relation: client
+  relation: allied
   from: { earliest: 64 BCE, latest: 51 BCE }
-  to: 31 BCE
+  to: { earliest: 47 BCE, latest: 32 BCE }
   sources:
     - source: strabo
       locator: '16.2.10'
@@ -5600,15 +5600,12 @@
         a despatch on the same subject reached me from Iamblichus, phylarch of
         the Arabians, who is generally considered to be well-disposed and
         friendly to our Republic.
-      supports: [from]
-    - source: cassius-dio
-      locator: '51.2.2'
+      supports: [relation, from]
+    - source: josephus-aj
+      locator: '14.129'
       quote: >-
-        he also deposed from their thrones Philopator, the son of
-        Tarcondimotus, Lycomedes, the king of a part of Cappadocian Pontus, and
-        Alexander, the brother of Iamblichus. The last-named, because he had
-        secured his realm as a reward for accusing Caesar, he led in his
-        triumphal procession and afterwards put to death.
+        all the Syrians assisted him also, as not willing to appear behindhand
+        in their alacrity for Caesar , viz. Iamblicus the ruler
       supports: [relation, to]
     - source: cassius-dio
       locator: '50.13.7'
@@ -5620,10 +5617,51 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Begins between Pompey's settlement of Syria (64), before which Emesa was
-    independent, and the client-of relation's first attestation, Cicero's
-    despatch of 51 (relations.yaml). It was from 64, which no readable text dates
-    the tie to.
+    A friendly dynast, not yet a dependent one: Iamblichus sent Cicero word of
+    the Parthians in 51 and was "well-disposed and friendly to our Republic",
+    and helped Caesar in 47 (AJ 14.129). Begins between Pompey's settlement of
+    Syria (64), before which Emesa was independent, and Cicero's despatch of
+    51. Ends between 47, when it still acted as a friend, and 32, the year
+    before it is first seen dependent (see the client row). Until October 2026
+    this was a client row from 64 to 31.
+
+- atom: emesa
+  polity: emesa
+  relation: client
+  from: { earliest: 46 BCE, latest: 31 BCE }
+  to: 31 BCE
+  sources:
+    - source: cassius-dio
+      locator: '50.13.7'
+      quote: >-
+        For this reason he tortured and put to death, among others, Iamblichus,
+        king of a tribe of the Arabians
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus, Lycomedes, the king of a part of Cappadocian Pontus, and
+        Alexander, the brother of Iamblichus. The last-named, because he had
+        secured his realm as a reward for accusing Caesar, he led in his
+        triumphal procession and afterwards put to death.
+      supports: [relation, to]
+    - source: josephus-aj
+      locator: '14.129'
+      quote: >-
+        all the Syrians assisted him also, as not willing to appear behindhand
+        in their alacrity for Caesar , viz. Iamblicus the ruler
+      supports: [from]
+    - { source: sullivan-1990 }
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Dependent by Antony's last year: he could torture and kill its king, in the
+    consulship of Caesar and Messalla (Dio 50.13.7, 50.10.1), and gave the
+    realm to Iamblichus' brother Alexander as a reward, until Octavian deposed
+    him (Dio 51.2.2). When the friendly dynasty of the 50s and 40s became a
+    dependent one is not stated, so the row begins between 46, after Iamblichus
+    helped Caesar as a friend (AJ 14.129), and 31.
 
 - atom: ituraea
   polity: seleucid
