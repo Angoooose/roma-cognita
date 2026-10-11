@@ -1608,7 +1608,7 @@
         Krieges dort Truppen aushebt, so ist doch zunächst gewiss an den weiten
         Bürgerbezirk der Cispadana zu denken, und nicht an die Contingente der
         Insubrer oder Cenomanen
-      supports: [polity, relation, from]
+      supports: [polity, relation]
     - source: beloch-1880
       locator: 'p. 27'
       url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
