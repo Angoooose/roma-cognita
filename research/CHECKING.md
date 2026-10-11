@@ -36,12 +36,14 @@ independent, so:
 - Is every historical field backed by at least one **yes**? A field with none
   is unbacked, whatever the note says.
 
-## What to write
+## What to do with what fails
 
-Don't edit the record. Add an entry to `data/proposed-corrections.yaml` for
-anything that isn't a clean **yes**: a quote not found, a passage that is
-**silent** or **no** on a field it supposedly supports, a field left unbacked.
-Use the format in the method, with `found by` naming yourself and `field`
-naming what fails.
+Once you have judged a record, you may read its note, and fix what failed, one
+fix per commit as the method's [Disagreements](README.md#disagreements) says:
 
-The project's owner decides each entry.
+- a quote not found: correct it from the text, or remove the citation;
+- a field the passage is **silent** on: take it out of `supports`;
+- a passage that says **no**: fix the record to what the passage says;
+- a field left unbacked: research it, or narrow it to what is backed.
+
+The project's owner reviews the branch before it is merged.

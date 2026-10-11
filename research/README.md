@@ -82,6 +82,8 @@ consulship of Lutatius and Manlius") or by events ("after Syracuse fell"). A
 quote that dates something that way backs the BCE year: the step from consuls to
 year is the standard list of consuls, not a fact that needs citing each time.
 Use DPRR's (cached under `.cache/sources/dprr/`) to make the conversion.
+Arithmetic from a quoted date counts the same way: "four years" before a
+quoted 26 is 30.
 
 **Dates a translator or website added are not the source's.** Appian's margins
 ("B.C. 64") are the translator's; ToposText's "[75 BCE]" headings are the
@@ -105,30 +107,15 @@ disagreement (below), not something to explain away.
 
 ## Disagreements
 
-**Never change a record's facts while researching it.** If a source contradicts
-the record (a different year, a different holder, a relation that reads
-otherwise), add an entry to `data/proposed-corrections.yaml` and leave the
-record as it is:
+**When a readable source contradicts the record, fix the record.** A
+different year, a different holder, a relation that reads otherwise: change it,
+one fix per commit (`fix(claims): …`), with what it said, what it says now and
+the quotes in the commit message. Git's history is the record of what research
+changed; the project's owner reviews the branch before it is merged.
 
-```yaml
-- record: claims.yaml · atom sicilia · polity sicilia
-  field: from
-  says: 241 BCE
-  suggests: 227 BCE
-  source: solinus
-  locator: '5.1'
-  url: https://…
-  quote: >-
-    …
-  note: >-
-    241 is when Rome took the island; Solinus and Velleius put the province
-    later.
-  found by: <agent and model, or person>
-  status: open        # open | accepted | rejected
-```
-
-The project's owner decides each one. Corrections found this way are the
-measure of how much the research was worth, so log them even when unsure.
+**When readable sources disagree with each other, don't pick one.** Quote both,
+make the field cover both (a range of years) or lower its `confidence`, and say
+in `note` who says what.
 
 ## Reading a text
 
@@ -151,7 +138,7 @@ starts from it.
 
 1. Every quoted citation has one passage, a quote and `supports`.
 2. Every historical field is backed by a quote, or narrowed to what is.
-3. Every disagreement is in `data/proposed-corrections.yaml`.
+3. Every fix is its own commit, saying what changed and on what evidence.
 4. The texts are downloaded and the quotes found in them:
 
    ```bash
