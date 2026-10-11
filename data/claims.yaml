@@ -6236,13 +6236,58 @@
     Messalla, 31 (Vell. 2.84.1, 2.87.1). Until September 2026 this row ran
     from "before 68" and its note asked for this change.
 
+# --- the Black Sea -------------------------------------------------------------
+# Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
+# Paerisades V gave it to Mithridates (Strabo 7.4.4), Diophantus' wars for the
+# king c. 110–107 (the Diophantus decree, IOSPE I² 352), the revolt of the
+# Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
+# the king's son, set over them c. 80 (Mithr. 67), who made himself a friend of
+# Rome in 70 (Mithr. 83). The dates of c. 110–107 are the decree's usual ones;
+# the decree itself is dated only by a Chersonesite eponym. The Maeotic shore
+# (bosporus-tanais) is left unclaimed under Machares (c. 80–66): no readable
+# text gives it to him, the Maeotic princes received Mithridates in 65 as
+# rulers of their own (Mithr. 102), and Minns (p. 589) has Pharnaces, after 63,
+# the first to push the frontier to the Tanais.
+
 - atom: bosporus
   polity: bosporus
   relation: independent
   from: before 133 BCE
-  to: c. 109 BCE
+  to: c. 111 BCE
   sources:
-    - { source: strabo, locator: '7.4.4' }
+    - source: minns-1913
+      locator: 'p. 582'
+      quote: >-
+        Accordingly Paerisades put himself under the protection of Mithridates
+        VI Eupator king of Pontus … After defeating Palacus, Diophantus went to
+        the Bosporus and there was most successful (presumably in the winter of
+        B.C. iio, inscr. 1. 10), apparently relieving Paerisades from his
+        enemies, but leaving him the semblance of authority.
+      supports: [to]
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        For a long time it was ruled as a monarchy by the dynasty of Leuco,
+        Satyrus, and Parisades, as were also all the neighboring settlements
+        near the south of Lake Maeotis on both sides, until Parisades gave over
+        the sovereignty to Mithridates. … The last of these monarchs also bore
+        the name Parisades, but he was unable to hold out against the
+        barbarians, who kept exacting greater tribute than before, and he
+        therefore gave over the sovereignty to Mithridates Eupator.
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 112'
+      quote: >-
+        He lived sixty-eight or sixty-nine years, and of these he reigned
+        fifty-seven
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
     - { source: diophantus-decree }
   confidence: probable
   review: needs-check
@@ -6251,26 +6296,100 @@
     Parisades", Strabo 7.4.4) until its last king, Paerisades V, "unable to hold
     out against the barbarians, who kept exacting greater tribute than
     before", gave it over to Mithridates Eupator. No tie to Rome is recorded.
+    In force in 133: the gift was to Eupator, who died in Cicero's consulship
+    (63, Dio 37.10.4) after reigning fifty-seven years (App. Mithr. 112), so
+    came to the throne in 120. Ends when Paerisades put himself under the
+    king's protection, by the winter of 110 on Minns' reading of the decree
+    (see the next row); it ran to c. 109 until October 2026.
 
 - atom: bosporus
   polity: pontus-regnum
   relation: independent
-  from: c. 108 BCE
-  to: 86 BCE
+  from: c. 110 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
   sources:
-    - { source: strabo, locator: '7.4.3–4' }
-    - { source: diophantus-decree }
-    - { source: plutarch, locator: 'Sulla 11.2' }
-  confidence: probable
+    - source: minns-1913
+      locator: 'p. 582'
+      quote: >-
+        Diophantus went to the Bosporus and there was most successful
+        (presumably in the winter of B.C. iio, inscr. 1. 10), apparently
+        relieving Paerisades from his enemies, but leaving him the semblance of
+        authority. So things remained for about three years … However, in the
+        autumn of 107, when Diophantus was actually at Bosporus seeing after the
+        interests of Mithridates, the Scythians under Saumacus^ who had been
+        brought up by Paerisades, rose and killed the old king … after his
+        failure Diophantus could establish his master's unlimited authority over
+        the kingdom.
+      supports: [polity, from]
+    - source: strabo
+      locator: '7.4.3–4'
+      quote: >-
+        established himself as lord of the Bosporus, receiving the country as a
+        voluntary gift from Parisades who held sway over it
+      supports: [polity, relation]
+    - source: strabo
+      locator: '7.4.6'
+      quote: >-
+        the people of this region, together with those of the Asiatic districts
+        round about Sindice, used to pay as tribute to Mithridates one hundred
+        and eighty thousand medimni and also two hundred talents of silver
+      supports: [polity]
+    - source: diophantus-decree
+      quote: >-
+        he set out from our city and took Theodosia and Pantikapaion; and
+        punishing those who were responsible for the revolt and capturing
+        Saumakos, who was the murderer of the king Pairisadas, he sent him under
+        arrest into the kingdom (of Mithridates), and (thus) he regained the
+        power of the king Mithridates Eupator
+      supports: [polity]
+    - source: plutarch
+      locator: 'Sulla 11.1–2'
+      quote: >-
+        about the time when Sulla was moving his armament from Italy … of his
+        sons, one was in Pontus and Bosporus, holding without any opposition the
+        ancient realm as far as the deserts beyond Lake Maeotis
+      supports: [polity, relation, to]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        Mithridates, after his return to Pontus, went to war with the Colchians
+        and the tribes around the Cimmerian Bosporus who had revolted from him.
+      supports: [to]
+    - source: magie-1950
+      locator: 'p. 230'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Then Mithradates, leaving his refuge in Mitylene, advanced to the city
+        of Dardanus, not far from the ravaged Ilium. 58 Here, in the early
+        autumn of 85, the Roman general and the King of Pontus met.
+      supports: [to]
+  confidence: uncertain
   review: needs-check
   note: >-
     Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
     Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
-    Panticapaeum back for the king (the decree); the revolt is not drawn. In
-    88–87 a son of Mithridates held "Pontus and Bosporus … as far as the
-    deserts beyond Lake Maeotis" (Plut. Sulla 11.2). The Bosporan peoples had
-    revolted by the time the king came home in 85 (App. Mithr. 64); when is not
-    recorded, and the row ends in 86.
+    Panticapaeum back for the king (the decree); the revolt is not drawn. The
+    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
+    the king's protection, with Diophantus at the Bosporus, by the winter of
+    110, keeping "the semblance of authority" until he was killed in 107, and
+    the king's "unlimited authority" only after the revolt was put down in the
+    spring after: the change of hands falls somewhere in 110–106, and the row
+    starts at its first year. It started c. 108 until October 2026, a year no
+    readable text gives. In
+    87, as Sulla left Italy after naming the consuls of that year (Eutrop.
+    5.4), a son of Mithridates held "Pontus and Bosporus … as far as the
+    deserts beyond Lake Maeotis" (Plut. Sulla 11.1–2). The Bosporan peoples had
+    revolted by the time the king came home after Dardanus, in the autumn of
+    85 (App. Mithr. 64; Magie): the last year of the row is 87 or 86. It ended
+    in 86 until October 2026; no readable text dates the revolt (Minns, p. 586
+    n. 1, reports Reinach's date of 86 for a rising under one Hygiaenon, which
+    he doubts).
 
 - atom: bosporus
   polity: bosporus
@@ -6278,14 +6397,42 @@
   from: c. 80 BCE
   to: 71 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 67' }
+    - source: appian
+      locator: 'Mithr. 67'
+      quote: >-
+        As Mithridates was now at leisure he subdued the tribes of the Bosporus
+        and appointed Machares, one of his sons, king over them.
+      supports: [polity, relation]
+    - source: minns-1913
+      locator: 'p. 587'
+      quote: >-
+        After the defeat of Murena and the conclusion of peace {81 h.c.)
+        Mithridates was free to deal with Bosporus, which he speedily
+        reconquered. … Meanwhile Machares was installed as viceroy of Bosporus
+        (B.C. 79)
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Marcus Crassus and Gnaeus Pompey were made consuls
+      supports: [to]
+    - source: livy-per
+      locator: '98'
+      quote: >-
+        Machares, the son of Mithridates and king of Bosphorus, received the
+        title of friend from Lucius Lucullus. … Censors Gnaeus Lentulus and
+        Lucius Gellius conducted a strict censorship
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     After Murena's war (83–81) Mithridates "subdued the tribes of the Bosporus
     and appointed Machares, one of his sons, king over them" (App. Mithr. 67):
-    a kingdom under a son of the king, drawn as Pontus' client. The years of
-    the revolt before it, 85–81, are left unclaimed.
+    a kingdom under a son of the king, drawn as Pontus' client. Minns puts the
+    installation in 79, after the peace of 81; c. 80 covers it. The years of
+    the revolt before it are left unclaimed. Ends when Machares went over to
+    Lucullus, which Livy's epitomator puts between the consuls of 70 (Crassus
+    and Pompey, Per. 97) and that year's censors (Per. 98).
 
 - atom: bosporus
   polity: bosporus
@@ -6293,60 +6440,106 @@
   from: 70 BCE
   to: 66 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 83' }
-    - { source: plutarch, locator: 'Lucullus 24.1' }
-    - { source: livy-per, locator: '98' }
+    - source: appian
+      locator: 'Mithr. 83'
+      quote: >-
+        He entered into friendly relations with Machares, the son of Mithridates
+        and ruler of the Bosporus, who sent him a crown of gold.
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Lucullus 24.1'
+      quote: >-
+        Machares also, the son of Mithridates, who held the Bosporus, sent
+        Lucullus a crown valued at a thousand pieces of gold, begging to be
+        included in the list of Rome's friends and allies
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'p. 342'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The request was quickly granted, and Mithradates’s son was included
+        among the friends and allies of Rome
+      supports: [relation]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Marcus Crassus and Gnaeus Pompey were made consuls
+      supports: [from]
+    - source: livy-per
+      locator: '98'
+      quote: >-
+        Machares, the son of Mithridates and king of Bosphorus, received the
+        title of friend from Lucius Lucullus. … Censors Gnaeus Lentulus and
+        Lucius Gellius conducted a strict censorship
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 102'
+      quote: >-
+        When his son, Machares, learned that he had made such a journey in so
+        short a time among savage tribes … he anticipated his fate by killing
+        himself.
+      supports: [to]
+    - source: minns-1913
+      locator: 'p. 588'
+      quote: >-
+        he slew himself after having been ruler of Bos- porus fourteen years and
+        almost independent for the last seven (71 — 65 b.c.)
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     After Sinope fell, Lucullus "entered into friendly relations with Machares,
     the son of Mithridates and ruler of the Bosporus, who sent him a crown of
     gold" (App. Mithr. 83); Machares asked "to be included in the list of
-    Rome's friends and allies" (Plut. Luc. 24.1). Dated to 70 with Sinope; it
-    may belong to the winter of 70/69. It ends when his father came in 65 and
-    Machares killed himself (Mithr. 102).
+    Rome's friends and allies" (Plut. Luc. 24.1), and was (Magie). Livy's
+    epitomator puts it between the consuls of 70 and that year's censors (Per.
+    97–98). It ends when his father came in 65 and Machares killed himself
+    (Mithr. 102; Minns, 71–65).
 
 - atom: bosporus-tanais
   polity: pontus-regnum
   relation: independent
-  from: c. 108 BCE
-  to: 86 BCE
+  from: before 87 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
   sources:
-    - { source: plutarch, locator: 'Sulla 11.2' }
+    - source: plutarch
+      locator: 'Sulla 11.1–2'
+      quote: >-
+        about the time when Sulla was moving his armament from Italy … of his
+        sons, one was in Pontus and Bosporus, holding without any opposition the
+        ancient realm as far as the deserts beyond Lake Maeotis
+      supports: [polity, relation, from, to]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        having appointed Cnaeus Octavius and Lucius Cornelius Cinna the consuls
+        for the year ensuing, set out for Asia
+      supports: [from, to]
+    - source: appian
+      locator: 'Mithr. 64'
+      quote: >-
+        Mithridates, after his return to Pontus, went to war with the Colchians
+        and the tribes around the Cimmerian Bosporus who had revolted from him.
+      supports: [to]
+    - source: magie-1950
+      locator: 'p. 230'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Here, in the early autumn of 85, the Roman general and the King of
+        Pontus met.
+      supports: [to]
     - { source: strabo, locator: '11.2.11' }
   confidence: uncertain
   review: needs-check
   note: >-
-    As bosporus. Plutarch's son of Mithridates held the realm "as far as the
-    deserts beyond Lake Maeotis" in 88–87 (Sulla 11.2); how far up the Maeotic
-    shore that reached, and whether it was so from the first, is not known.
-    Under the Spartocids before c. 108 the shore is left unclaimed: Strabo
-    gives them only "the neighboring settlements near the south of Lake
-    Maeotis" (7.4.4).
-
-- atom: bosporus-tanais
-  polity: bosporus
-  relation: client
-  from: c. 80 BCE
-  to: 71 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 67' }
-    - { source: strabo, locator: '11.2.11' }
-  confidence: uncertain
-  review: needs-check
-  note: As bosporus; Appian's "tribes of the Bosporus" were very likely these Maeotic peoples.
-
-- atom: bosporus-tanais
-  polity: bosporus
-  relation: client
-  from: 70 BCE
-  to: 66 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 83' }
-    - { source: strabo, locator: '11.2.11' }
-  confidence: uncertain
-  review: needs-check
-  note: As bosporus.
+    As bosporus, whose end it shares (87 or 86; 86 until October 2026).
+    Plutarch's son of Mithridates held the realm "as far as the deserts beyond
+    Lake Maeotis" in 87 (Sulla 11.2); how far up the Maeotic shore that
+    reached, and since when, no readable text says, so the row starts at
+    that attestation. It started c. 108, with bosporus, until October 2026.
+    Strabo gives the Spartocids only "the neighboring settlements near the
+    south of Lake Maeotis" (7.4.4), and Minns has Pharnaces, after 63, the
+    first to extend his frontiers to the Tanais (p. 589).
 
 - atom: bosporus
   polity: bosporus
@@ -6354,10 +6547,46 @@
   from: 63 BCE
   to: 49 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 113' }
+    - source: appian
+      locator: 'Mithr. 113'
+      quote: >-
+        Pharnaces, for delivering Italy from much trouble, was inscribed as a
+        friend and ally of the Romans, and was given Bosporus as his kingdom
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.14.1–2'
+      quote: >-
+        he granted the kingdom of Bosporus to Pharnaces as the wages of his
+        bloody deed, and enrolled him as a friend and ally
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        About 48 n.c. he thought that the Romans being preoccupied with the
+        civil war, he had an opportunity of regaining his father's kingdom.
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        he conceived the desire to win back again the entire kingdom of his
+        ancestors, and so he revolted just at the time of the quarrel between
+        Caesar and Pompey
+      supports: [to]
   confidence: certain
   review: draft
-  note: 'Pharnaces II confirmed by Pompey, 63.'
+  note: >-
+    Pharnaces II confirmed by Pompey in 63, the year of Cicero's consulship in
+    which Mithridates died (Dio 37.10.4). It ends with his revolt, which Minns
+    puts about 48; Dio has him begin "just at the time of the quarrel between
+    Caesar and Pompey", which could be 49, but his first moves he reports
+    after Pharsalus (42.9.2).
 
 - atom: bosporus
   polity: bosporus
@@ -6365,30 +6594,174 @@
   from: 48 BCE
   to: 42 BCE
   sources:
-    - { source: bellum-alexandrinum, locator: '34–41' }
-    - { source: appian, locator: 'Mithr. 120' }
+    - source: bellum-alexandrinum
+      locator: '34–41'
+      quote: >-
+        Pharnaces seized Pontus with all his forces. … Thus he held unchallenged
+        sway over Pontus, boasting that he had recovered the kingdom of his
+        father.
+      supports: [relation]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        About 48 n.c. he thought that the Romans being preoccupied with the
+        civil war, he had an opportunity of regaining his father's kingdom.
+      supports: [from]
+    - source: cassius-dio
+      locator: '41.43.1'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates, contrary to
+        custom, and a mighty battle was fought. The people of the city had
+        chosen as consuls Caesar and Publius Servius
+      supports: [from]
+    - source: cassius-dio
+      locator: '42.9.2–3'
+      quote: >-
+        Pharnaces, just as soon as he had learned that Pompey and Caesar were at
+        variance, had began to lay claim to his ancestral domain … and he
+        actually seized many points before the other's arrival
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '42.46.4'
+      quote: >-
+        learning that Asander, whom he had left as governor of Bosporus, had
+        revolted, he gave up advancing any farther. For Asander … rose against
+        him, thinking thus to do a favour to the Romans and to receive the
+        sovereignty of Bosporus from them.
+      supports: [polity]
+    - source: cassius-dio
+      locator: '42.48.4'
+      quote: >-
+        to Mithridates the Pergamenian he gave a tetrarchy in Galatia and the
+        title of king and allowed him to wage war against Asander, so that by
+        conquering him, he might get Bosporus also
+      supports: [relation]
+    - source: strabo
+      locator: '13.4.3'
+      quote: >-
+        he was appointed tetrarch from his mothers family and king both of the
+        Bosporus and other territories. He was overthrown by Asander, who not
+        only slew King Pharnaces but also took possession of the Bosporus.
+      supports: [polity, relation]
+    - source: rostovtzeff-1922
+      locator: 'p. 151'
+      quote: >-
+        Asandros would not submit to this decision. With the help of his
+        subjects he defeated Mithridates, who perished in the conflict. … But
+        Caesar was assassinated at Rome on the eve of his departure for the
+        east, and Asandros contrived, no doubt by paying money, to obtain recogni-
+        tion from Antonj as archon and later as king of the Bosphorus.
+      supports: [relation, to]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 20'
+      quote: >-
+        Thus, if the first staters with the name of Asander as archon were
+        issued at the earliest in 44/43 BC then his last coins (the 29th year)
+        should be dated from 16/15 BC at the earliest.
+      supports: [to]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 19'
+      quote: >-
+        The coins then indicate that Asander ruled over the Bosporus for 29
+        years, firstly as archon and then as a king.
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
-    Pharnaces II turned on Rome after Pharsalus and was beaten at Zela in 47;
-    Asander, who killed him, held the kingdom against Caesar's grant of it to
-    Mithridates of Pergamum. When Rome recognised Asander is not settled.
+    Pharnaces II turned on Rome about 48 (Minns; Dio 42.9.2, in the year of
+    Caesar's second consulship) and was beaten at Zela in 47; Asander, who
+    killed him, held the kingdom against Caesar's grant of it to Mithridates
+    of Pergamum (Dio 42.48.4; Strabo 13.4.3). Rostovtzeff has him recognised
+    by Antony after Caesar's death, as archon and later as king; on Vnukov and
+    Kovalenko's dating of his coins the royal title (years 4–29) comes in
+    41/40 at the earliest, hence the end in 42. Magie has the recognition
+    "probably from Augustus" (see the client row from c. 41).
 
 - atom: bosporus-tanais
   polity: bosporus
   relation: client
-  from: 63 BCE
+  from: { earliest: 63 BCE, latest: 49 BCE }
   to: 49 BCE
-  sources: [{ source: strabo, locator: '11.2.11' }]
+  sources:
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        often the rulers of the Bosporians held possession of the region as far
+        as the Tanais, and particularly the latest rulers, Pharnaces, Asander,
+        and Polemon
+      supports: [polity]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        With this arrangement Pharnaces had to be content, and he occupied
+        himself in extending his power over the tribes to the east of the
+        Maeotis, so that his frontiers reached to the Tanais.
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 113'
+      quote: >-
+        Pharnaces, for delivering Italy from much trouble, was inscribed as a
+        friend and ally of the Romans
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        About 48 n.c. he thought that the Romans being preoccupied with the
+        civil war, he had an opportunity of regaining his father's kingdom.
+      supports: [to]
   confidence: uncertain
   review: draft
+  note: >-
+    As bosporus; Pharnaces' frontiers reached the Tanais (Strabo; Minns). When
+    is not recorded: Minns has him content with Pompey's grant of 63 and then
+    extending his power east of the Maeotis, so the start is a range over his
+    years as Rome's friend. It started in 63 until October 2026.
 
 - atom: bosporus-tanais
   polity: bosporus
   relation: independent
   from: 48 BCE
   to: 42 BCE
-  sources: [{ source: strabo, locator: '11.2.11' }]
+  sources:
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        often the rulers of the Bosporians held possession of the region as far
+        as the Tanais, and particularly the latest rulers, Pharnaces, Asander,
+        and Polemon
+      supports: [polity]
+    - source: magie-1950
+      locator: 'p. 477'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        extending his power along the shore of the Sea of Azov as far as the
+        river Don
+      supports: [polity]
+    - source: cassius-dio
+      locator: '42.48.4'
+      quote: >-
+        allowed him to wage war against Asander, so that by conquering him, he
+        might get Bosporus also
+      supports: [relation]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        About 48 n.c. he thought that the Romans being preoccupied with the
+        civil war, he had an opportunity of regaining his father's kingdom.
+      supports: [from]
+    - source: rostovtzeff-1922
+      locator: 'p. 151'
+      quote: >-
+        Asandros contrived, no doubt by paying money, to obtain recogni- tion
+        from Antonj as archon and later as king of the Bosphorus.
+      supports: [to]
   confidence: uncertain
   review: draft
   note: As bosporus.

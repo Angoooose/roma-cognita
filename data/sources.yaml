@@ -79,6 +79,25 @@
     https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt,
     vol. II https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt.
 
+- id: minns-1913
+  kind: modern
+  citation: >-
+    E. H. Minns, Scythians and Greeks. A Survey of Ancient History and
+    Archaeology on the North Coast of the Euxine from the Danube to the
+    Caucasus (Cambridge, 1913)
+  url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+  note: >-
+    The archive.org scan, readable without borrowing; quotations are from its
+    full text, OCR errors included. Pages are the running heads.
+
+- id: rostovtzeff-1922
+  kind: modern
+  citation: M. Rostovtzeff, Iranians and Greeks in South Russia (Oxford, 1922)
+  url: https://archive.org/download/in.ernet.dli.2015.280370/2015.280370.Iranians-And_djvu.txt
+  note: >-
+    The archive.org scan, readable without borrowing; quotations are from its
+    full text. Pages are the running heads.
+
 - id: mitchell-1993
   kind: modern
   citation: S. Mitchell, Anatolia. Land, Men, and Gods in Asia Minor, 2 vols (Oxford, 1993)
@@ -712,6 +731,10 @@
 - id: lucian-macrobii
   kind: ancient
   citation: '[Lucian], Macrobii'
+  url: https://archive.org/download/in.ernet.dli.2015.529397/2015.529397.lucian-vol1_djvu.txt
+  edition: >-
+    A. M. Harmon's Loeb translation, "Octogenarians", in Lucian vol. I (1913),
+    from the full text of the archive.org scan
 
 - id: florus
   kind: ancient
