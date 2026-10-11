@@ -2347,10 +2347,10 @@
   names:
     - { text: Aedes Fidei, lang: la, preferred: true }
     - { text: Temple of Fides, lang: en }
-  from: 254 BCE
+  from: { earliest: 258 BCE, latest: 247 BCE }
   to: after 27 BCE
   condition:
-    - { value: standing, from: 254 BCE, to: 116 BCE }
+    - { value: standing, from: { earliest: 258 BCE, latest: 247 BCE }, to: 116 BCE }
     - { value: under construction, from: 115 BCE, to: 110 BCE }
     - { value: standing, from: 109 BCE, to: after 27 BCE }
   prominence: 5
@@ -2360,13 +2360,15 @@
     - { source: reusser-1993, locator: 'pp. 34–36, 55, 62, 64, 78' }
     - { source: cicero-nd, locator: '2.61' }
     - { source: appian, locator: 'BC 1.16' }
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     Dedicated by A. Atilius Calatinus "in 254 or 250 B.C., and restored and re-dedicated
-    by M. Aemilius Scaurus in 115 B.C." (Platner & Ashby); rebuilt between his
-    consulship of 115 and his censorship of 109 (Reusser), which the map shows as
-    building. The senate met in it on the day Ti. Gracchus was killed. It stood on the
+    by M. Aemilius Scaurus in 115 B.C." (Platner & Ashby); built "between 258 and 247
+    B.C." and rebuilt "between 115 and 109 B.C." (Digital Augustan Rome, after
+    Reusser), which the map shows as building. The founding was 254 BCE until October
+    2026 and is now the range both sources fit; the rebuilding follows Digital Augustan
+    Rome, but Platner & Ashby put the re-dedication in 115, so the record is uncertain. The senate met in it on the day Ti. Gracchus was killed. It stood on the
     south-west side of the Area Capitolina near its southern corner, over the Tarpeian
     cliff, where the base of its statue and the treaty tablets once fixed to its walls
     fell into the Piazza della Consolazione, its back against the precinct wall, facing
