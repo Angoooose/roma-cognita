@@ -15949,7 +15949,7 @@
         Praetor Marcus Antonius pursued the pirates to Cilicia. … Consul Gaius
         Marius defended his camp against a violent attack by the Teutons and
         Ambronians.
-      supports: [polity, from]
+      supports: []
     - source: sumner-1978
       locator: 'p. 213'
       url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
@@ -15970,7 +15970,7 @@
       locator: 'n. 12'
       quote: >-
         Ipse iter eire profectus Sidam
-      supports: [polity]
+      supports: []
     - source: cicero-verr
       locator: '2.1.44'
       quote: >-
