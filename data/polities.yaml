@@ -5796,7 +5796,7 @@
         I recovered all the provinces beyond the Adriatic sea towards the east,
         together with Cyrene, the greater part of them being then occupied by
         kings.
-      supports: [kind, to]
+      supports: [kind]
     - source: velleius
       locator: '2.84.1'
       quote: >-
@@ -6121,8 +6121,29 @@
   to: after 27 BCE
   ruler: Artavasdes, once king of Media Atropatene, to c. 20
   sources:
-    - { source: cassius-dio, locator: '54.9.2' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: cassius-dio
+      locator: '54.9.2'
+      quote: >-
+        These latter together with Lesser Armenia he granted to Archelaus,
+        because the Mede, who previously had ruled them, was dead.
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Polemo, indeed, was punished by a delay in confirming his position, for
+        it was not until four years later — in 26 b.c. — that he was formally
+        declared a “friend and ally” of Rome. He lost, moreover, the territory
+        which had been given to him in Armenia Minor. This was presented to
+        Artavasdes, the former king of Media Atropatene
+      supports: [from, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 484'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        a son of that Artavasdes who had once been made ruler of Lesser Armenia
+        by Augustus and had died shortly before 20 b.c.
+      supports: [kind, ruler, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -6137,8 +6158,40 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '14.6.6' }
-    - { source: cassius-dio, locator: '53.12.7' }
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        From that time the island became a province, just as it is now — a
+        praetorian province. During a short intervening time Antony gave it
+        over to Cleopatra and her sister Arsinoe, but when he was overthrown
+        his whole organization was overthrown with him.
+      supports: [kind, from]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        Then, in the consulship of Caesar and Messala Corvinus, the decisive
+        battle took place at Actium.
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [kind, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [to]
     - { source: cassius-dio, locator: '54.4.1' }
   confidence: probable
   review: draft
@@ -6155,10 +6208,62 @@
   to: 38 BCE
   ruler: Antigonus Mattathias, 40–37
   sources:
-    - { source: josephus-aj, locator: '14.330–369' }
-    - { source: josephus-aj, locator: '14.487' }
+    - source: josephus-aj
+      locator: '14.365'
+      quote: >-
+        And thus was Antigonus brought back into Judea by the king of the
+        Parthians, and received Hyrcanus and Phasaelus for his prisoners
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 390'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Afterwards the Parthians carried away Hyrcanus with them as a prisoner,
+        and set up Antigonus as king
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [to, ruler]
+    - source: schurer-1891
+      locator: 'p. 398, n. 11'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from tlie statement of Josephus it must certainly be concluded that the
+        fall of the city did not occur before B.c. 37
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: []
+    - source: cassius-dio
+      locator: '49.23.1'
+      quote: >-
+        This was the course of events in the consulship of Claudius and Norbanus
+      supports: []
     - { source: debevoise-1938, locator: 'p. 113' }
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     The Hasmonean Antigonus, made king by the Parthians when they took
@@ -6166,7 +6271,11 @@
     beheaded at Antioch (AJ 14.487, 15.8–10). A polity of its own because in
     39–38 there were two Jewish governments: Antigonus in Jerusalem, and Rome's
     king Herod in Joppa, Idumaea and Galilee. The kingdom's last year, 37,
-    belongs to Herod.
+    belongs to Herod. The end is disputed: Josephus puts the fall in the
+    consulship of Agrippa and Gallus (37), Dio under Claudius and Norbanus (38,
+    49.22.3–23.1), which would end the kingdom a year earlier. The later date
+    is kept, Josephus' and Schürer's, as for Africa Nova; confidence is
+    lowered.
 
 # --- added September 2026: the extension to 133 BCE — the West ---------------
 

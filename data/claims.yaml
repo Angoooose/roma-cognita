@@ -15149,7 +15149,7 @@
       locator: 'vol. I, pp. 168–169'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
       quote: >-
-        This district, it will be remembered, had been granted in … to
+        This district, it will be remembered, had been granted in … 129 to
         Mithradates V of Pontus in return for the aid which he had rendered
         against Aristonicus.
       supports: [to]
@@ -15195,7 +15195,7 @@
       locator: 'vol. I, pp. 168–169'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
       quote: >-
-        This district, it will be remembered, had been granted in … to
+        This district, it will be remembered, had been granted in … 129 to
         Mithradates V of Pontus in return for the aid which he had rendered
         against Aristonicus. The King’s possession of Phrygia, however, was of
         but short duration; for about 120 b.c. he was murdered by some of his
@@ -15908,7 +15908,7 @@
         Possibly the text means that the area of the later Roman province,
         i.e. Pamphylia and Pisidia, was given with Lycaonia, cf. also Jones op.
         cit. (n. 2), 131, and restored to the Roman province before 102
-      supports: [to]
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15986,7 +15986,7 @@
         Praetor Marcus Antonius pursued the pirates to Cilicia. … Consul Gaius
         Marius defended his camp against a violent attack by the Teutons and
         Ambronians.
-      supports: [polity, from]
+      supports: []
     - source: sumner-1978
       locator: 'p. 213'
       url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
@@ -16007,7 +16007,7 @@
       locator: 'n. 12'
       quote: >-
         Ipse iter eire profectus Sidam
-      supports: [polity]
+      supports: []
     - source: cicero-verr
       locator: '2.1.44'
       quote: >-
