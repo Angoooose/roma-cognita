@@ -4545,7 +4545,7 @@
   polity: aegyptus
   relation: independent
   from: before 133 BCE
-  to: 108 BCE
+  to: { earliest: 108 BCE, latest: 106 BCE }
   sources:
     - source: justin
       locator: '38.8'
@@ -4578,7 +4578,11 @@
     year 10, 108/107 (Bennett). Justin's will would put Apion in Cyrene from
     116, which these documents contradict; Bennett sets out both. What followed
     until Apion is not known; Bennett thinks Ptolemy IX may have kept Cyrene
-    after he lost Egypt in 107.
+    after he lost Egypt in 107. The end is a range because no text states it:
+    108 is the last year attested (the royal letter and the statue base), and
+    Bennett's later, ambiguous evidence, an Apollonia inscription of Ptolemy
+    IX's admiral dated no earlier than 106/5, keeps him there to 106 or later.
+    It was 108 until October 2026 (checked).
 
 - atom: cyrenaica
   polity: cyrenaica-apion
@@ -4902,14 +4906,26 @@
       quote: >-
         Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
         districts … were held to belong to the people and the senate
-      supports: [relation, to]
+      supports: [relation]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
     - { source: bridoux-2020, locator: '¶157' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Annexed after Thapsus, in Caesar's third consulship with Lepidus, 46 (Dio
     43.1.1, 43.9.2–4; Bell. Afr. 97). Kept to the settlement of 27, as the
-    polity (see africa-nova).
+    polity (see africa-nova). The end is disputed (27 by the older view, 35 by
+    Fishwick and Shaw), so the row is probable, not certain; Dio 53.12.4 shows
+    a province in 27 but does not say this one ended before it (checked).
 
 - atom: numidia-cirta
   polity: numidia
@@ -5051,7 +5067,17 @@
       quote: >-
         Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
         districts … were held to belong to the people and the senate
-      supports: [relation, to]
+      supports: [relation]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -5202,32 +5228,6 @@
   note: >-
     Gauda ruled all Numidia east of Bocchus' gains (Bridoux ¶145), to his
     death, "sans doute" in 88 (¶147).
-
-- atom: numidia-igilgili
-  polity: numidia-masinissa
-  relation: client
-  from: c. 88 BCE
-  to: 82 BCE
-  sources:
-    - source: bridoux-2020
-      locator: '¶148'
-      url: https://books.openedition.org/efr/31990
-      quote: >-
-        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
-        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
-        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
-        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
-        son autorité sur son territoire dont nous avons des raisons de penser
-        qu’il se confond avec la Numidie occidentale, plus précisément entre
-        l’oued Soummam et le fleuve Ampsaga
-      supports: [polity, from, to]
-  confidence: uncertain
-  review: draft
-  note: >-
-    Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
-    survenue en 88" (Bridoux ¶147–148); split from the next row only because
-    the standing of the kingdom changes (relations.yaml). No text read says
-    how Masteabar stood with Rome: the relation is unquoted.
 
 - atom: numidia-igilgili
   polity: numidia-masinissa
@@ -5399,28 +5399,6 @@
       supports: [to]
   confidence: probable
   review: draft
-
-- atom: numidia-soummam
-  polity: numidia-masinissa
-  relation: client
-  from: c. 88 BCE
-  to: 82 BCE
-  sources:
-    - source: bridoux-2020
-      locator: '¶148'
-      url: https://books.openedition.org/efr/31990
-      quote: >-
-        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
-        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
-        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
-        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
-        son autorité sur son territoire dont nous avons des raisons de penser
-        qu’il se confond avec la Numidie occidentale, plus précisément entre
-        l’oued Soummam et le fleuve Ampsaga
-      supports: [polity, from, to]
-  confidence: uncertain
-  review: draft
-  note: Masteabar's; see numidia-igilgili. The relation is unquoted.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
@@ -6184,8 +6162,14 @@
         their allies
       supports: []
     - { source: cassius-dio, locator: '39.12.1' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy XII' }
-  confidence: probable
+    - source: bennett-ptolemies
+      locator: 'Ptolemy XII'
+      url: https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_xii.htm
+      quote: >-
+        Ptolemy XII was not recognised as a Roman "friend and ally" until early
+        A.U.C. 695 = 59, with the help of some extremely large bribes
+      supports: [relation, to]
+  confidence: uncertain
   review: needs-check
   note: >-
     A kingdom on friendly terms with Rome but not its client until Ptolemy XII
@@ -6197,7 +6181,10 @@
     of Rome's allies when Scipio Aemilianus' embassy visited Ptolemy VIII
     (38.8), which by the rule for Pontus would make this row allied, not
     independent; that would need an allied-to relation, so the relation is
-    left as it was and unbacked.
+    left as it was. Bennett (Ptolemy XII, which is as far as it goes) says
+    Ptolemy XII was not recognised as friend and ally until 59, but that
+    Ptolemy XI (80) was "certainly" one and Ptolemy X only hypothetically:
+    the texts do not agree, so the row is uncertain (checked, October 2026).
 
 - atom: aegyptus
   polity: aegyptus
@@ -6248,65 +6235,6 @@
     the year after Actium, which was fought in the consulship of Octavian and
     Messalla, 31 (Vell. 2.84.1, 2.87.1). Until September 2026 this row ran
     from "before 68" and its note asked for this change.
-
-- atom: nabataea-moab
-  polity: nabataea
-  relation: independent
-  from: 65 BCE
-  to: 63 BCE
-  sources:
-    - source: josephus-aj
-      locator: '14.18'
-      quote: >-
-        Hyrcanus promised him, that when he had been brought thither, and had
-        received his kingdom, he would restore that country, and those twelve
-        cities which his father Alexander had taken from the Arabians
-      supports: []
-    - source: josephus-aj
-      locator: '14.80–81'
-      quote: >-
-        SCAURUS made now an expedition against Petraea, in Arabia … he
-        persuaded Aretas to give Scaurus a sum of money, to prevent the burning
-        of his country, and undertook to be his surety for three hundred talents
-      supports: [to]
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Hyrcanus promised the twelve towns back to Aretas III for his help, c. 65,
-    on condition that he first "received his kingdom" (AJ 14.18), which he
-    did only under Pompey in 63. Whether the Nabataeans held them afterwards
-    is not stated, and no readable text found in the backfill of October 2026
-    says so: polity and start are unbacked. Independent to Scaurus' campaign,
-    as nabataea (the extension to 133).
-
-- atom: nabataea-moab
-  polity: nabataea
-  relation: client
-  from: 62 BCE
-  to: after 27 BCE
-  sources:
-    - source: josephus-aj
-      locator: '14.80–81'
-      quote: >-
-        SCAURUS made now an expedition against Petraea, in Arabia … he
-        persuaded Aretas to give Scaurus a sum of money, to prevent the burning
-        of his country, and undertook to be his surety for three hundred talents
-      supports: [from]
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    As nabataea, from Scaurus' campaign of 62, after Pompey had left for Rome
-    (AJ 14.79–80). That Moab was Nabataean in these years is not stated by
-    any readable text (see the row before).
-
-# --- the Black Sea -------------------------------------------------------------
-# Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
-# Paerisades V gave it to Mithridates (Strabo 7.4.4), Diophantus' wars for the
-# king c. 110–107 (the Diophantus decree, IOSPE I² 352), the revolt of the
-# Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
-# the king's son, set over them c. 80 (Mithr. 67), who made himself a friend of
-# Rome in 70 (Mithr. 83). The dates of c. 110–107 are the decree's usual ones;
-# the decree itself is dated only by a Chersonesite eponym.
 
 - atom: bosporus
   polity: bosporus
