@@ -2047,11 +2047,66 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    Paerisades V, the last Spartocid, to c. 108; Machares, son of Mithridates
-    VI, c. 80–65; Pharnaces II, 63–47; Asander (archon, then king), from 47;
-    Dynamis his wife
+    Paerisades V, the last Spartocid, under Mithridates' protection from c.
+    110, killed 107; Machares, son of Mithridates VI, c. 80–65; Pharnaces II,
+    63–47; Asander (archon, then king), from 47; Dynamis his wife
   sources:
-    - { source: appian, locator: 'Mithr. 67, 83, 102, 113, 120' }
+    - source: minns-1913
+      locator: 'p. 582'
+      quote: >-
+        Diophantus went to the Bosporus and there was most successful
+        (presumably in the winter of B.C. iio, inscr. 1. 10), apparently
+        relieving Paerisades from his enemies, but leaving him the semblance of
+        authority. So things remained for about three years … However, in the
+        autumn of 107, when Diophantus was actually at Bosporus seeing after the
+        interests of Mithridates, the Scythians under Saumacus^ who had been
+        brought up by Paerisades, rose and killed the old king
+      supports: [ruler]
+    - source: appian
+      locator: 'Mithr. 67'
+      quote: >-
+        appointed Machares, one of his sons, king over them
+      supports: [ruler]
+    - source: minns-1913
+      locator: 'p. 587'
+      quote: >-
+        Meanwhile Machares was installed as viceroy of Bosporus (B.C. 79)
+      supports: [ruler]
+    - source: minns-1913
+      locator: 'p. 588'
+      quote: >-
+        he slew himself after having been ruler of Bos- porus fourteen years and
+        almost independent for the last seven (71 — 65 b.c.)
+      supports: [ruler]
+    - source: appian
+      locator: 'Mithr. 113'
+      quote: >-
+        Pharnaces, for delivering Italy from much trouble, was inscribed as a
+        friend and ally of the Romans, and was given Bosporus as his kingdom
+      supports: [ruler]
+    - source: appian
+      locator: 'Mithr. 120'
+      quote: >-
+        Pharnaces alone fought valiantly until he died of his wounds, being then
+        fifty years of age and having been king of Bosporus fifteen years.
+      supports: [ruler]
+    - source: minns-1913
+      locator: 'p. 589'
+      quote: >-
+        on his way encountered Caesar at Zela, to be utterly defeated (b.c. 47)\
+        He made his peace with Rome as best he could, and fled back to
+        Bosporus … but was hemmed in and slain by Asander.
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'p. 477'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Thereupon Asander assumed supreme power, calling himself at first Archon
+        and afterward King. 28 He strengthened his position by a marriage with
+        Dynamis, the daughter of Pharnaces
+      supports: [ruler]
+    - { source: appian, locator: 'Mithr. 83' }
+    - { source: appian, locator: 'Mithr. 102' }
     - source: strabo
       locator: '7.4.4'
       quote: >-
@@ -2092,7 +2147,9 @@
     polity of its own (claims.yaml); a kingdom again under Machares, whom his
     father made king c. 80 and who killed himself when Mithridates came in 65
     (App. Mithr. 67, 102). Pharnaces II confirmed by Pompey in 63; killed after
-    Zela. Started before 68 until the extension to 133 BCE.
+    Zela. Started before 68 until the extension to 133 BCE. Paerisades ruled
+    "to c. 108" until October 2026; Minns has him under Mithridates'
+    protection from the winter of 110 and killed in the autumn of 107.
 
 - id: thracia-odrysae
   kind: kingdom
