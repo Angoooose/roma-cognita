@@ -3111,7 +3111,35 @@
   of: rome
   from: 39 BCE
   to: 37 BCE
-  sources: [{ source: appian, locator: 'BC 5.75' }]
+  sources:
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute … in a part of Cilicia, Polemon
+      supports: [type, of, from]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        In 39 B.C. Antony made Polemo king by giving him a “part of Cilicia.”
+        Strabo says that this Polemo I was in control of Iconium at that time.
+      supports: [from]
+    - source: dmitriev-2000
+      locator: 'p. 364'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When Polemo left for Pontus in late 37 or 36, Iconium went over to
+        Amyntas
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … The extension of Amyntas’s dominions to
+        Lycaonia meant, of course, that the district was lost to Polemo.
+      supports: [to]
   confidence: probable
   review: draft
 
