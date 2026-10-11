@@ -2907,7 +2907,7 @@
   names:
     - { text: Domus Augusti, lang: la, preferred: true }
     - { text: House of Octavian, lang: en }
-  from: { earliest: 44 BCE, latest: 36 BCE }
+  from: before 36 BCE
   to: 36 BCE
   condition: under construction
   prominence: 5
@@ -2924,7 +2924,11 @@
     agents (Velleius 2.81.3). Still unfinished, it was filled in after the lightning
     of 36 BCE to make the temple's terrace (Iacopi and Tedone, RömMitt 2005/6), and
     the people voted him a house at public expense (Dio 49.15.5). Where he lived
-    after is disputed; the House of Livia next door is drawn as his.
+    after is disputed; the House of Livia next door is drawn as his. The start was
+    44–36 BCE until October 2026; no readable text says when the buying or building
+    began, only that the houses had been bought before his return in 36 (Velleius),
+    so it is now an open end. Digital Augustan Rome reads it otherwise, as his house
+    built after 36 and dated "between 36 and 28 B.C." by its remains.
 
 - id: casa-romuli
   kind: house
