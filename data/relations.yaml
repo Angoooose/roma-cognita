@@ -2967,7 +2967,41 @@
   of: rome
   from: 30 BCE
   to: after 27 BCE
-  sources: [{ source: cassius-dio, locator: '53.12.7' }]
+  sources:
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        From that time the island became a province, just as it is now — a
+        praetorian province. During a short intervening time Antony gave it
+        over to Cleopatra and her sister Arsinoe, but when he was overthrown
+        his whole organization was overthrown with him.
+      supports: [type, from]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        Then, in the consulship of Caesar and Messala Corvinus, the decisive
+        battle took place at Actium.
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars. Antony promptly
+        ended his life
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [to]
   confidence: probable
   review: draft
 
