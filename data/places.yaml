@@ -5253,7 +5253,10 @@
       supports: []
     - source: cicero-fam
       locator: '13.4'
-      quote: I have very close ties with the townsmen of Volaterrae.
+      quote: >-
+        their case for the retention of civil rights is unusually strong: first,
+        because by the blessing of heaven they contrived to elude the vindictive
+        measures of the Sullan epoch
       supports: [status]
     - source: strabo
       locator: '5.2.6'
