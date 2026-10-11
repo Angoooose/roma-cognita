@@ -870,8 +870,24 @@
         - at: [34.97, 31.6]
           note: east of Marisa, which Pompey restored to its own people (AJ 14.75)
   sources:
-    - { source: josephus-aj, locator: '14.74–76, 14.91' }
-    - { source: josephus-bj, locator: '1.155–157, 1.170' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president, and
+        confined the whole nation, which had elevated itself so high before,
+        within its own bounds. … and restored the rest of the cities, Hippos,
+        and Scythopolis, and Pella, and Dia, and Samaria, as also Marissa
+      supports: [construction]
+    - source: josephus-bj
+      locator: '1.170'
+      quote: >-
+        He also parted the whole nation into five conventions, assigning one
+        portion to Jerusalem, another to Gadara, that another should belong to
+        Amathus, a fourth to Jericho, and to the fifth division was allotted
+        Sepphoris, a city of Galilee.
+      supports: [construction]
+    - { source: josephus-aj, locator: '14.91' }
     - { source: schurer-vermes, locator: 'vol. I, 237–42' }
     - { source: barrington, locator: 'maps 69–70' }
   confidence: probable
@@ -895,7 +911,20 @@
         - [34.84, 31.93]
         - [34.55, 31.93]
   sources:
-    - { source: josephus-aj, locator: '14.74–76, 14.202–206' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+      supports: [construction]
+    - source: josephus-aj
+      locator: '14.202–206'
+      quote: >-
+        It is also our pleasure that the city Joppa, which the Jews had
+        originally, when they made a league of friendship with the Romans,
+        shall belong to them, as it. formerly did; and that Hyrcanus, the son
+        of Alexander, and his sons, have as tribute of that city from those
+        that occupy the land for the country
+      supports: [construction]
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -1063,8 +1092,22 @@
           note: Carmel; Ptolemais beyond was never Hasmonean
         - [34.6, 32.8]
   sources:
-    - { source: josephus-aj, locator: '13.395–397, 14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president … and
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella, and
+        Dia, and Samaria
+      supports: [construction]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also made other cities free from their dominion, that lay in the
+        midst of the country, such, I mean, as they had not demolished before
+        that time; Hippos, and Scythopolis, as also Pella, and Samaria
+      supports: [construction]
+    - { source: josephus-aj, locator: '13.395–397' }
     - { source: schurer-vermes, locator: 'vol. I, 237–42' }
     - { source: natural-earth }
   confidence: uncertain
@@ -1326,8 +1369,36 @@
         - [35.6, 35.2]
         - [35.8, 36.3]
   sources:
+    - source: strabo
+      locator: '16.2.1'
+      quote: >-
+        SYRIA is bounded on the north by Cilicia and the mountain Amanus … on
+        the east it is bounded by the Euphrates and the Arabian Scenitae, who
+        live on this side the Euphrates; on the south, by Arabia Felix and
+        Egypt; on the west, by the Egyptian and Syrian Seas as far as Issus.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.2'
+      quote: >-
+        Beginning from Cilicia and Mount Amanus, we set down as parts of Syria,
+        Commagene, and the Seleucis of Syria, as it is called, then Coele-Syria,
+        lastly, on the coast, Phoenicia, and in the interior, Judaea.
+      supports: [construction]
+    - source: josephus-aj
+      locator: '14.79'
+      quote: >-
+        Now Pompey committed Coele Syria, as far as the river Euphrates and
+        Egypt, to Scaurus, with two Roman legions
+      supports: [construction]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        In this way the Romans, without fighting, came into possession of
+        Cilicia and both inland Syria and Coele-Syria, Phoenicia, Palestine,
+        and all the other countries bearing the Syrian name from the Euphrates
+        to Egypt and the sea.
+      supports: [construction]
     - { source: josephus-aj, locator: '14.74–76' }
-    - { source: strabo, locator: '16.2' }
     - { source: sullivan-1990 }
     - { source: barrington, locator: 'maps 67–69' }
     - { source: hydrorivers }

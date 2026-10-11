@@ -1105,12 +1105,34 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [kind]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [kind, to]
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
   note: >-
-    Pompey's annexation; the end of the Seleucid kingdom. Cassius' in 43–42;
+    Pompey's annexation; the end of the Seleucid kingdom. Plutarch has him
+    declare Syria a province when he came down into it, and Dio has him in
+    Syria in the consulship of L. Caesar and Figulus (64). Cassius' in 43–42;
     then Antony's, governed by Saxa, Ventidius, Sosius and others. Overrun by
     the Parthians in 40, all but Tyre (Dio 48.26.1), and recovered in 39; the
     province went on. The Cilician plain was governed with it from 38 at the
@@ -2240,14 +2262,97 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    John Hyrcanus I, 134–104; Aristobulus I, 104–103, the first to take the
-    diadem (AJ 13.301); Alexander Jannaeus, 103–76; Salome Alexandra, 76–67;
-    Aristobulus II, 67–63; Hyrcanus II, 63–40; Herod, king from 40, in
-    Jerusalem from 37
+    John Hyrcanus I, 134–104 (or 135–105); Aristobulus I, 104–103 (or
+    105–104), the first to take the diadem (AJ 13.301); Alexander Jannaeus,
+    103–76 (or 104–78); Salome Alexandra, 76–67 (or 78–69); Aristobulus II,
+    67–63 (or 69–63); Hyrcanus II, 63–40; Herod, king from 40, in Jerusalem
+    from 37
   sources:
-    - { source: josephus-aj, locator: '14.54–79, 14.143' }
-    - { source: josephus-bj, locator: '1.141–158, 1.199' }
-    - { source: josephus-aj, locator: '14.381–385' }
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the first year of John Hyrcanus, B.c. 135—134, he invaded Judea,
+        devastated the whole country, and finally laid siege to Hyrcanus in
+        his capital, Jerusalem.
+      supports: [from, ruler]
+    - source: josephus-aj
+      locator: '13.299'
+      quote: >-
+        administered the government in the best manner for thirty-one years,
+        and then died
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '13.301'
+      quote: >-
+        the eldest son Aristobulus, intending to change the government into a
+        kingdom, for so he resolved to do, first of all put a diadem on his head
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '13.318'
+      quote: >-
+        In saying which last words he died, having reigned a year.
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '20.242–244'
+      quote: >-
+        And when Alexander had been both king and high priest twenty-seven
+        years, he departed this life … but retained the kingdom herself nine
+        years, and then departed this life. … But when he had reigned three
+        years, and as many months, Pompey came upon him, and not only took the
+        city of Jerusalem by force … He also restored the high priesthood to
+        Hyrcanus, and made him governor of the nation, but forbade him to wear
+        a diadem. … Barzapharnes and Pacorus, the generals of the Parthians,
+        passed over Euphrates, and fought with Hyrcanus, and took him alive,
+        and made Antigonus, the son of Aristobulus, king
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '14.4'
+      quote: >-
+        Hyrcanus then began his high priesthood on the third year of the
+        hundred and seventy-seventh Olympiad … when Quintus Hortensius and
+        Quintus Metellus, who was called Metellus of Crete, were consuls at
+        Rome … when presently Aristobulus began to make war against him
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The beginning of that war of the brothers, and consequently also the
+        death of Alexandra, occurred therefore in the first half of B.c. 69.
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        Antony informed them further, that it was for their advantage in the
+        Parthian war that Herod should be king. This seemed good to all the
+        senators; and so they made a decree accordingly. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain,
+        thirty-four years; but since he had been declared king by the Romans,
+        thirty-seven
+      supports: [kind, to]
+    - { source: josephus-aj, locator: '14.54–79' }
+    - { source: josephus-bj, locator: '1.141–158' }
     - { source: kokkinos-1998 }
   confidence: probable
   review: draft
@@ -2263,7 +2368,13 @@
     senate made Herod king the same year (AJ 14.381–385), and he took Jerusalem
     in 37. Cleopatra had Jericho and the coast from 36 (claims.yaml); in 30
     Octavian gave them back and added Samaria, Gadara, Hippos, Gaza, Anthedon,
-    Joppa and Strato's Tower (AJ 15.217; BJ 1.396).
+    Joppa and Strato's Tower (AJ 15.217; BJ 1.396). Josephus' two
+    chronologies of the Hasmoneans disagree: counting his reign lengths back
+    from 63 (Aristobulus II three years and three months, Alexandra nine,
+    Jannaeus twenty-seven, Aristobulus I one, Hyrcanus thirty-one) gives the
+    first dates in ruler; his consuls of 69 for the start of the brothers' war
+    (AJ 14.4), which Schürer follows, give those in brackets. The ruler line
+    read 134–104, 104–103, 103–76, 76–67 and 67–63 alone until October 2026.
 
 - id: ituraea
   kind: kingdom

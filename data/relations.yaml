@@ -664,11 +664,33 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Syr. 49, 70' }
+    - source: plutarch
+      locator: 'Pompey 39.2'
+      quote: >-
+        he himself went down into Syria, and since this country had no
+        legitimate kings, he declared it to be a province and possession of the
+        Roman people
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [type, of, to]
+    - { source: appian, locator: 'Syr. 49' }
     - { source: velleius, locator: '2.38.6' }
   confidence: certain
   review: draft
-  note: Pompey's annexation.
+  note: >-
+    Pompey's annexation, when he came down into Syria (Plutarch), where Dio
+    has him in the consulship of L. Caesar and Figulus (64).
 
 - polity: bithynia-pontus
   type: province-of
@@ -1201,7 +1223,38 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.74–79' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [type, of]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [type, of]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        Antony informed them further, that it was for their advantage in the
+        Parthian war that Herod should be king. This seemed good to all the
+        senators; and so they made a decree accordingly.
+      supports: [type, of]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain,
+        thirty-four years; but since he had been declared king by the Romans,
+        thirty-seven
+      supports: [type, of, to]
   confidence: certain
   review: draft
   note: >-
@@ -1980,15 +2033,61 @@
   type: client-of
   of: seleucid
   from: before 133 BCE
-  to: 130 BCE
+  to: after 130 BCE
   sources:
-    - { source: josephus-aj, locator: '13.236–248, 13.273' }
+    - source: josephus-aj
+      locator: '13.245–248'
+      quote: >-
+        if the besieged would deliver up their arms, and pay tribute for Joppa,
+        and the other cities which bordered upon Judea, and admit a garrison of
+        his, on these terms he would make war against them no longer. … yet
+        were they willing, instead of the admission of the garrison, to give him
+        hostages, and five hundred talents of silver
+      supports: [type, of]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the first year of John Hyrcanus, B.c. 135—134, he invaded Judea,
+        devastated the whole country, and finally laid siege to Hyrcanus in
+        his capital, Jerusalem.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Owing to the discrepancy of the sources, it would be exceedingly risky
+        to fix a particular year lor the siege (Clinton, I.e., gives B.c.
+        134-133).
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.273'
+      quote: >-
+        for after the death of Antiochus, he revolted from the Macedonians, nor
+        did he any longer pay them the least regard, either as their subject or
+        their friend
+      supports: [type, of]
+    - source: schurer-1891
+      locator: 'p. 279'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        dependence on Antiochus VII. also obliged him to take the field with
+        the Syrian monarch against the Parthians in b.c. 129. … The death of
+        Antiochus in the Parthian campaign, in b.c. 128, was for Hyrcanns a
+        favourable occurrence.
+      supports: [to]
+    - { source: josephus-aj, locator: '13.236' }
   confidence: probable
   review: needs-check
   note: >-
     Hyrcanus I paid tribute and gave hostages to Antiochus VII after the siege
-    of Jerusalem, and marched with him to the east; free on the king's death in
-    129 (AJ 13.273).
+    of Jerusalem, and marched with him to the east; free on the king's death
+    (AJ 13.273). Schürer dates the siege's start to Hyrcanus' first year,
+    135/134, and reports Clinton's 134–133 for it; the terms followed it. The
+    king's death is usually put in 129, but no readable text here says so:
+    Schürer has the campaign in 129 and the death in 128. So the end is open,
+    in force in 130 and ended no earlier. It read 130 until October 2026; the
+    claims on judaea and judaea-joppa still end the client row in 130.
 
 - polity: atropatene
   type: client-of
