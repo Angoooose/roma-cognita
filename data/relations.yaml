@@ -368,14 +368,22 @@
       quote: >-
         quos equites a consu|libus Claudio et Servilio | missi conciderunt …
         Data erat et Sul|lae proviwcia Gallia Cisal
-      supports: [type, of]
+      supports: [type, of, from]
     - source: piegdon-2010
       quote: >-
         The determination of the precise date when the province in northern
         Italy was created has been and still is contentious … a fragment of the
         Late Antiquity work of the rhetor Licinianus says that the province was
         established by Sulla
-      supports: [type, of]
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 81 B.C., p. 74'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Within this year Sulla celebrated his triumph over Mithridates … and
+        probably carried through the major portion of his administrative and
+        constitutional reforms
+      supports: [from]
     - source: broughton-mrr
       locator: 'vol. II, 76 B.C., p. 96, n. 4'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
@@ -399,7 +407,7 @@
     - { source: cah-ix }
   confidence: probable
   review: draft
-  note: Dissolved into Italy in 42.
+  note: From Sulla's reorganisation (see the polity); dissolved into Italy in 42.
 
 - polity: cyrenae
   type: province-of
