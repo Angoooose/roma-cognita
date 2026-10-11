@@ -2799,7 +2799,25 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague … At the death of Bocchus he gave his kingdom to no one else,
+        but enrolled it among the Roman provinces.
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: See the polity; formal provincial status is doubted.
