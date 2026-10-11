@@ -1674,8 +1674,44 @@
   from: 64 BCE
   to: after 27 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 377'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The “conquered” Antiochus, therefore, was allowed to retain his
+        kingdom. His royal title was recognized by Pompey and he was added to
+        the list of Rome’s client-kings.
+      supports: [type, of]
+    - source: appian
+      locator: 'Mithr. 106'
+      quote: >-
+        Pompey then passed over Mount Taurus and made … war against Antiochus,
+        the king of Commagene, until the latter entered into friendly relations
+        with him.
+      supports: [of]
+    - source: magie-1950
+      locator: 'vol. II, p. 1216'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For the submission of AntiOchus to Pompey in 64 see above p. 376.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 445'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In Commagene, on the other hand, King Mithradates II, even though he
+        had fought on Antony’s side, was retained in power.
+      supports: [type, to]
+    - source: cassius-dio
+      locator: '54.7.4–9.3'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia … to one Mithridates, though still a mere
+        boy, he gave Commagene, inasmuch as its king had put the boy's father
+        to death.
+      supports: [type, of, to]
     - { source: sullivan-1990 }
-    - { source: appian, locator: 'Mithr. 106, 114' }
+    - { source: appian, locator: 'Mithr. 114' }
   confidence: probable
   review: draft
   note: From Pompey's war with Antiochus I and the friendship that ended it.
@@ -1838,13 +1874,57 @@
   from: 64 BCE
   to: 31 BCE
   sources:
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        in my time a notable man established himself as lord of all, and was
+        named king by the Romans because of his manly virtues — I refer to
+        Tarcondimotus
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, p. 377'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        This region had been overrun by Afranius in the autumn of 64, but,
+        peopled in part by bandit-tribes, it was ill-suited for incorporation
+        in a Roman province. It was therefore left under the rule of a local
+        dynast, Tarcondimotus, who was now recognized as friend and ally of
+        Rome.
+      supports: [of, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 397'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Tarcondimotus, whom Pompey had made ruler over part of the mountain
+        region of the Amanus
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '50.14.2'
+      quote: >-
+        he not only gained nothing from the victory, but perished, together
+        with Tarcondimotus
+      supports: [to]
+    - source: cassius-dio
+      locator: '50.10.1'
+      quote: >-
+        Valerius Messalla, who had once been proscribed by them, became consul
+        with Caesar.
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.2.2'
+      quote: >-
+        he also deposed from their thrones Philopator, the son of
+        Tarcondimotus
+      supports: [type, of, to]
     - { source: sullivan-1990 }
-    - { source: strabo, locator: '14.5.18' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Made king by the Romans (Strabo 14.5.18); dated from Pompey's settlement,
-    which no text states.
+    Made king by the Romans (Strabo 14.5.18); dated from Pompey's settlement:
+    Afranius overran the region in the autumn of 64 and Pompey left
+    Tarcondimotus to rule it (Magie I 377, 397). Ends with his death at
+    Actium, in the consulship of Caesar and Messalla (31), and Octavian's
+    deposing of his son Philopator (Dio 50.14.2, 50.10.1, 51.2.2).
 
 # --- added September 2026: the neighbours of Rome ------------------------------
 
