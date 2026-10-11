@@ -2475,7 +2475,7 @@
   type: client-of
   of: rome
   from: 65 BCE
-  to: after 27 BCE
+  to: after 36 BCE
   sources:
     - source: cassius-dio
       locator: '37.2.7'
@@ -2489,9 +2489,29 @@
         Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
         the Iberians.
       supports: [from]
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        when Gellius and Nerva were now holding office, Publius Canidius Crassus
+        made a campaign against the Iberians in Asia, conquered in battle their
+        king Pharnabazus and brought them to make an alliance
+      supports: [type, of, to]
+    - source: res-gestae
+      locator: '31'
+      quote: >-
+        and the kings of the Albanians and the Iberians and the Medes sent
+        embassies to seek our friendship
+      supports: []
     - { source: cassius-dio, locator: '37.2' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Submitted to Pompey after his invasion of 65. Last attested in 36, when
+    Canidius beat Pharnabazus and brought the Iberians into alliance (Dio
+    49.24.1); the relation ends open there, as the claim does. Augustus records
+    their kings' embassies seeking his friendship (Res Gestae 31) without a
+    date. Ran to after 27 BCE until October 2026, which no readable text
+    supports.
 
 - polity: albania
   type: client-of
