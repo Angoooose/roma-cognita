@@ -3198,13 +3198,83 @@
   from: before 133 BCE
   to: 65 BCE
   ruler: >-
-    Antiochus VII Sidetes, to 129; Demetrius II again, 129–126/125; Alexander
-    Zabinas, c. 128–123; Antiochus VIII Grypus, 125–96, against Antiochus IX
-    Cyzicenus from 114/113; their sons Seleucus VI, Antiochus X, Demetrius III
-    (at Damascus), Philip I and Antiochus XII, to c. 83; Antiochus XIII
-    Asiaticus, 69–64
+    Antiochus VII Sidetes, to 129/128; Demetrius II again, 128–125/124;
+    Alexander Zabinas, 128–122; Antiochus VIII Grypus, 125/124–96, against
+    Antiochus IX Cyzicenus, 113–95; their sons Seleucus VI, Antiochus X,
+    Antiochus XI, Philip I, Demetrius III (at Damascus) and Antiochus XII,
+    95–83; Antiochus XIII Asiaticus, 69–65
   sources:
-    - { source: appian, locator: 'Syr. 49, 68–70' }
+    - source: schurer-1891
+      locator: 'pp. 177–178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VII. Sidetes, b.c. 138-128. So long as Demetrius was the
+        prisoner of the Parthians, Antiochus VII. held undisturbed sway in
+        Syria. — In B.c. 129 he undertook a campaign against the Parthians, and
+        in it he met his death in b.c. 128.
+      supports: [kind, from, ruler]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Gutschmid, Geschichte Iran's, Tub. 1888, pp. 75-77, who places the
+        death of Antiochus in B.c. 129.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        NiCATOR, a second time, b.c. 128-125 or 124(?). Alexander Zabinas, b.c.
+        128-122 (?). After a ten years' imprisonment among the Parthians, as
+        Porphyry relates in Eusebius, Demetrius II. once again became king of
+        Syria.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'pp. 179–180'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus VIII. Grypos, b.c. 125 or 124-113. … After a reign of eleven
+        years, in b.c. 113, Antiochus VIII. Grypos was driven from the throne
+        by Antiochus IX. Kyri- kenos
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 181'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antiochus IX. Cyzicexos, B.c. 113-95. … For two years Cyzicenos now
+        ruled as sole monarch. But in B.c. Ill, Grypos returned and wrested the
+        greater part of Syria from his cousin. Only Coele-Syria remained in the
+        possession of Cyzicenos. … Antiochus Grypos died fifteen years after his
+        return, in B.c. 96
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'pp. 181–182'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        During the next twelve years, from B.C. 95 to b.c. 83, there now
+        followed an almost unbroken series of conflicts between the five sons
+        of Antiochus Grypos … and the son of Antiochus Cyzicenos, Antiochus X.
+        Eusebes, on the other … the fourth brother, Demetrius Eucarus, had
+        seized upon another portion, with Damascus as its capital.
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 183'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
+        B.C. 69 to B.c. 65 under the title of Antiochus … It was Pompey who, on
+        his victorious march through Asia, first made a complete end of the
+        Seleucid dynasty, in B.c. 65
+      supports: [to, ruler]
+    - source: appian
+      locator: 'Syr. 70'
+      quote: >-
+        The son of Pius and Selene, who was brought up in Asia and was for that
+        reason called Asiaticus, was deprived of the government of Syria by
+        Pompey, as I have already mentioned. He was the seventeenth king of
+        Syria
+      supports: [kind, ruler]
+    - { source: appian, locator: 'Syr. 49, 68–69' }
     - { source: justin, locator: '38.10, 39.1–39.5, 40.1–40.2' }
     - { source: josephus-aj, locator: '13.365–371, 13.387–391' }
     - { source: sherwin-white-1984, locator: 'ch. 9' }
@@ -3214,12 +3284,18 @@
   note: >-
     One polity for a dynasty at war with itself: from 113 the kingdom was
     divided between Grypus at Antioch and Cyzicenus in Coele-Syria, and their
-    sons after them; the reign dates are argued from coins (Ehling) and are
-    approximate. Antiochus VII won back Babylon in 130 ("having got possession
-    of Babylon", Justin 38.10) and was killed fighting Phraates II in 129. Tigranes held Syria and the Cilician plain in
-    83–70 (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set
-    aside by Pompey in 64. What Antiochus XIII held beyond Antioch is doubtful:
-    the rest of the country was in the hands of local dynasts.
+    sons after them; the reign dates are Schürer's (1891, pp. 177–183), from
+    Porphyry, Josephus and the coins, and are approximate. Until October 2026
+    they were given as Ehling's, a book not opened, and differed: Sidetes to
+    129, Demetrius II 129–126/125, Zabinas c. 128–123, Grypus from 125,
+    Cyzicenus from 114/113, Asiaticus to 64; they now follow Schürer, who also
+    gives Gutschmid's 129 for Sidetes' death. Antiochus VII won back Babylon in
+    130 ("having got possession of Babylon", Justin 38.10) and was killed
+    fighting Phraates II. Tigranes held Syria and the Cilician plain in 83–70
+    (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set aside by
+    Pompey, in 65 by Schürer's reckoning (183), though Pompey himself came to
+    Syria only in 64. What Antiochus XIII held beyond Antioch is doubtful: the
+    rest of the country was in the hands of local dynasts.
 
 # Added September 2026 for the extension to 133 BCE: the free cities of the
 # Phoenician coast and the kingdom of Sophene.
