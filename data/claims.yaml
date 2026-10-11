@@ -1012,7 +1012,7 @@
 - atom: italia-apulia
   polity: italici
   relation: independent
-  from: { earliest: 91 BCE, latest: 90 BCE }
+  from: 91 BCE
   to: 89 BCE
   sources:
     - source: appian
@@ -1039,7 +1039,7 @@
         in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
         up arms against the Romans . The rebellion began with the people of
         Asculum
-      supports: [from]
+      supports: []
     - source: appian
       locator: 'BC 1.53'
       quote: >-
@@ -1066,10 +1066,10 @@
     Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus took
     Venusia and beat the last Apulians (Diodorus 37.2.10; App. BC 1.53), and
     the war was over but for Nola in the year of Sulla's consulship, 88 (Vell.
-    2.17.1). The start is 91–90 because the sources disagree: Diodorus has the war
-    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
-    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
-    October 2026.
+    2.17.1). The sources disagree on the start: Diodorus has the war break out under
+    the consuls of 91 (37.2.2), Velleius has all Italy take up arms, beginning
+    at Asculum, under those of 90 (2.15.1). It is drawn from 91, as on the
+    other insurgent rows, with both quoted.
 
 - atom: italia-apulia
   polity: italia
@@ -1151,7 +1151,7 @@
 - atom: italia-samnium
   polity: italici
   relation: independent
-  from: { earliest: 91 BCE, latest: 90 BCE }
+  from: 91 BCE
   to: 88 BCE
   sources:
     - source: livy-per
@@ -1180,7 +1180,7 @@
         in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
         up arms against the Romans . The rebellion began with the people of
         Asculum
-      supports: [from]
+      supports: []
     - source: diodorus
       locator: '37.2.11–13'
       quote: >-
@@ -1210,10 +1210,10 @@
     could not come to terms with them, and Marius and Cinna granted all they
     asked in 87, the year of Octavius' consulship (App. BC 1.68; Livy Per. 80).
     They fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as
-    citizens in a Roman civil war, which is not drawn. The start is 91–90 because the sources disagree: Diodorus has the war
-    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
-    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
-    October 2026.
+    citizens in a Roman civil war, which is not drawn. The sources disagree on the start: Diodorus has the war break out under
+    the consuls of 91 (37.2.2), Velleius has all Italy take up arms, beginning
+    at Asculum, under those of 90 (2.15.1). It is drawn from 91, as on the
+    other insurgent rows, with both quoted.
 
 - atom: italia-samnium
   polity: italia
@@ -1295,7 +1295,7 @@
 - atom: italia-lucania
   polity: italici
   relation: independent
-  from: { earliest: 91 BCE, latest: 90 BCE }
+  from: 91 BCE
   to: 88 BCE
   sources:
     - source: livy-per
@@ -1324,7 +1324,7 @@
         in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
         up arms against the Romans . The rebellion began with the people of
         Asculum
-      supports: [from]
+      supports: []
     - source: diodorus
       locator: '37.2.11–13'
       quote: >-
@@ -1347,10 +1347,10 @@
     with them (App. BC 1.53) when the Senate gave citizenship to the Italians
     in 87, the year of Octavius' consulship (Livy Per. 80). Lamponius' remnant
     went on fighting in Bruttium after Sulla had left for the East (Diodorus
-    37.2.13), but is not drawn as holding Lucania. The start is 91–90 because the sources disagree: Diodorus has the war
-    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
-    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
-    October 2026.
+    37.2.13), but is not drawn as holding Lucania. The sources disagree on the start: Diodorus has the war break out under
+    the consuls of 91 (37.2.2), Velleius has all Italy take up arms, beginning
+    at Asculum, under those of 90 (2.15.1). It is drawn from 91, as on the
+    other insurgent rows, with both quoted.
 
 - atom: italia-lucania
   polity: italia
