@@ -2517,8 +2517,22 @@
   type: client-of
   of: rome
   from: 65 BCE
-  to: after 27 BCE
+  to: after 36 BCE
   sources:
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        when Gellius and Nerva were now holding office … with this king he
+        invaded Albania, the adjoining country, and, after
+        overcoming the inhabitants and their king Zober, conciliated them
+        likewise
+      supports: [type, of, to]
+    - source: res-gestae
+      locator: '31'
+      quote: >-
+        and the kings of the Albanians and the Iberians and the Medes sent
+        embassies to seek our friendship
+      supports: []
     - source: cassius-dio
       locator: '37.5.1'
       quote: >-
@@ -2541,6 +2555,13 @@
     - { source: plutarch, locator: 'Pompey 35' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Oroeses sued for peace after Pompey's campaign of 65. Last attested in 36,
+    when Canidius, in the year of Gellius and Nerva, beat Zober and
+    "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the
+    relation ends open there, as the claim does. Augustus records their kings'
+    embassies seeking his friendship (Res Gestae 31) without a date. Ran to
+    after 27 BCE until October 2026, which no readable text supports.
 
 - polity: armenia
   type: client-of
