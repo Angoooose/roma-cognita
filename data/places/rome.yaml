@@ -607,10 +607,10 @@
   names:
     - { text: Forum Iulium, lang: la, preferred: true }
     - { text: Forum of Caesar, lang: en }
-  from: { earliest: 54 BCE, latest: 51 BCE }
+  from: 54 BCE
   to: after 27 BCE
   condition:
-    - { value: under construction, from: { earliest: 54 BCE, latest: 51 BCE }, to: 47 BCE }
+    - { value: under construction, from: 54 BCE, to: 47 BCE }
     - { value: standing, from: 46 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -663,9 +663,10 @@
     sixty million sesterces (Cicero, Letters to Atticus 4.16.8), and dedicated with its
     temple on 26 September 46 BCE, the last day of his triumph. The houses excavated
     under it end in 55 BCE (SITAR), but Platner & Ashby put the start of the work
-    "probably" in 51, during Caesar's absence in Gaul, so the works are shown starting
-    some time between 54 and 51, and the forum standing from its dedication. Until
-    October 2026 the works started in 54. The remains are of Trajan's rebuilding on
+    "probably" in 51, during Caesar's absence in Gaul: the works began some time
+    between 54 and 51. They are drawn from 54, the earliest, since a range would be
+    drawn at its midpoint and leave the site empty after the houses end; the forum
+    stands from its dedication. The remains are of Trajan's rebuilding on
     the same plan.
 
 - id: aedes-veneris-genetricis
