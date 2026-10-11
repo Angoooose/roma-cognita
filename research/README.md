@@ -100,8 +100,10 @@ provinces in 27, names many but not all: check the province is in his list.
 Iamblichus is Emesa's ruler only through Strabo naming him so: quote both.
 
 **A range on a start is drawn at its midpoint.** Check it doesn't leave a
-year blank, or overlap, against the record before it on the same ground; where
-it would, lower the confidence instead and quote both readings.
+year blank, or overlap, against the record before it on the same ground. Where
+it would, start at the range's stated bound next to that record (its earliest
+year, quoted), give the whole range in `note`, and lower the confidence. The
+year written is then a bound a text states, not a guess.
 
 **A year no readable text states is not kept.** "Province from 146", a client
 king's first year, a frontier's date: these are often scholars' inferences,
