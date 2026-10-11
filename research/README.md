@@ -19,7 +19,8 @@ words were read in an open text and copied into `quote`.**
   download the page itself, see [Reading a text](#reading-a-text)).
 - A citation without a quote may stay, as the modern authority or further
   reading, but it backs nothing. A book you could not open is cited this way or
-  not at all.
+  not at all. There is no need to quote every work a record cites, only enough
+  to back each field.
 
 ## A citation
 
@@ -90,9 +91,13 @@ quoted 26 is 30.
 site's. They can point you to the year; they can't back it.
 
 **Open ends need less.** `from: before 133 BCE` only says the state was in force
-in 133 (see data/README.md). Back it with a passage showing it in force at or
-near 133, not with its origin. Dio 53.12.4–5, Augustus' division of the
-provinces, backs "in force at 27" for every province that survived.
+in 133 (see data/README.md). Back it with a passage showing it in force at
+133, or with two that bracket it (in force before 133 and still after) when
+nothing between suggests a change. Dio 53.12.4–5, Augustus' division of the
+provinces in 27, names many but not all: check the province is in his list.
+
+**A chain of passages backs a field when every link is quoted.** Cicero's
+Iamblichus is Emesa's ruler only through Strabo naming him so: quote both.
 
 **A year no readable text states is not kept.** "Province from 146", a client
 king's first year, a frontier's date: these are often scholars' inferences,
