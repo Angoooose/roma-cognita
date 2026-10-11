@@ -5315,7 +5315,7 @@
   kind: province
   names:
     - { text: Creta et Cyrenae, lang: la, preferred: true }
-  from: { earliest: 36 BCE, latest: 27 BCE }
+  from: before 27 BCE
   to: after 27 BCE
   sources:
     - source: cassius-dio
@@ -5345,7 +5345,10 @@
     though Dio says his list follows later arrangements (53.12.8) and Strabo's
     joint listing (17.3.25) is Tiberian. An Antonian officer struck coin at
     Cnossus and Cyrene alike (RPC I 914–917), so a joint command is likely
-    earlier. The ground passes to it at 27.
+    earlier. The ground passes to it at 27. The start was a range from 36,
+    resting on those coins; RPC's online entries name the province and the
+    magistrate but give no year, and no other open text dates a joint
+    command, so it is now an open end at its first attestation.
 
 - id: triakontaschoinos
   kind: kingdom
