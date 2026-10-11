@@ -6278,7 +6278,11 @@
 # Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
 # the king's son, set over them c. 80 (Mithr. 67), who made himself a friend of
 # Rome in 70 (Mithr. 83). The dates of c. 110–107 are the decree's usual ones;
-# the decree itself is dated only by a Chersonesite eponym.
+# the decree itself is dated only by a Chersonesite eponym. The Maeotic shore
+# (bosporus-tanais) is left unclaimed under Machares (c. 80–66): no readable
+# text gives it to him, the Maeotic princes received Mithridates in 65 as
+# rulers of their own (Mithr. 102), and Minns (p. 589) has Pharnaces, after 63,
+# the first to push the frontier to the Tanais.
 
 - atom: bosporus
   polity: bosporus
@@ -6571,30 +6575,6 @@
     Strabo gives the Spartocids only "the neighboring settlements near the
     south of Lake Maeotis" (7.4.4), and Minns has Pharnaces, after 63, the
     first to extend his frontiers to the Tanais (p. 589).
-
-- atom: bosporus-tanais
-  polity: bosporus
-  relation: client
-  from: c. 80 BCE
-  to: 71 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 67' }
-    - { source: strabo, locator: '11.2.11' }
-  confidence: uncertain
-  review: needs-check
-  note: As bosporus; Appian's "tribes of the Bosporus" were very likely these Maeotic peoples.
-
-- atom: bosporus-tanais
-  polity: bosporus
-  relation: client
-  from: 70 BCE
-  to: 66 BCE
-  sources:
-    - { source: appian, locator: 'Mithr. 83' }
-    - { source: strabo, locator: '11.2.11' }
-  confidence: uncertain
-  review: needs-check
-  note: As bosporus.
 
 - atom: bosporus
   polity: bosporus
