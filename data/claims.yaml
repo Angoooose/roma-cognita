@@ -20552,6 +20552,15 @@
         he persuaded Aretas to give Scaurus a sum of money, to prevent the
         burning of his country
       supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 62 B.C., p. 175'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        62 B.C. A.U.C. 692 Consuls … Remained in charge in Syria when Pompey
+        returned to Asia Minor (see 63, and below, 62, Promagistrates, on
+        Pompey). Began an invasion of Nabatean Arabia, but desisted in return
+        for a payment of 300 talents
+      supports: [to]
     - { source: josephus-aj, locator: '13.375, 13.387–392' }
     - { source: josephus-bj, locator: '1.90' }
     - { source: sullivan-1990 }
