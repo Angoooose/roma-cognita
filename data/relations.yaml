@@ -3289,7 +3289,23 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '15.344' }
+    - source: schurer-1890
+      locator: 'App. I, p. 333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        It seems therefore that Zenodorus, after the death of Lysanias, had
+        received on rent a portion of his territory from Cleopatra, and that
+        aftei Cleopatra's death this "rented" domain, subject to tribute, was
+        continued to him with the title of tetrarch.
+      supports: [type, of, from]
+    - source: schurer-1890
+      locator: 'App. I, pp. 332–333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        About the year 23 B.C. … Josephus tells of a certain Zenodorus who had
+        taken on lease the possessions that previously belonged to Lysanias …
+        Three years later, in B.C. 20, Zeno- dorus died
+      supports: [to]
   confidence: probable
   review: needs-check
   note: Zenodorus' lease of the house of Lysanias.
