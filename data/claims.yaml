@@ -380,18 +380,27 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Some forty Apulian communities were allies of Rome at the outbreak of the
     Hannibalic war (Beloch 176), and the Apulians were still allies without
     citizenship when they revolted (App. BC 1.39), which Diodorus dates to the
-    consuls of 91 (37.2.2).
+    consuls of 91 (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-apulia
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 89 BCE
   sources:
     - source: appian
@@ -411,6 +420,13 @@
       quote: >-
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
       supports: [from]
     - source: appian
       locator: 'BC 1.53'
@@ -438,7 +454,10 @@
     Cosconius recovered much of Apulia in 89 (App. BC 1.52); Metellus took
     Venusia and beat the last Apulians (Diodorus 37.2.10; App. BC 1.53), and
     the war was over but for Nola in the year of Sulla's consulship, 88 (Vell.
-    2.17.1).
+    2.17.1). The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-apulia
   polity: italia
@@ -499,6 +518,13 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
     - { source: beloch-1880, locator: 'pp. 167–169' }
   confidence: probable
   review: draft
@@ -506,12 +532,14 @@
     The Samnite confederacy was an ally of Rome at the outbreak of the
     Hannibalic war (Beloch 176), and still an ally without citizenship when it
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
-    (37.2.2).
+    (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-samnium
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 88 BCE
   sources:
     - source: livy-per
@@ -533,6 +561,13 @@
       quote: >-
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
       supports: [from]
     - source: diodorus
       locator: '37.2.11–13'
@@ -563,7 +598,10 @@
     could not come to terms with them, and Marius and Cinna granted all they
     asked in 87, the year of Octavius' consulship (App. BC 1.68; Livy Per. 80).
     They fought for the Marians at the Colline Gate in 82 (Vell. 2.27), as
-    citizens in a Roman civil war, which is not drawn.
+    citizens in a Roman civil war, which is not drawn. The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-samnium
   polity: italia
@@ -624,6 +662,13 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [to]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
+      supports: []
     - { source: beloch-1880, locator: 'pp. 172–173' }
   confidence: probable
   review: draft
@@ -631,12 +676,14 @@
     The Lucanian confederacy was an ally of Rome at the outbreak of the
     Hannibalic war (Beloch 176), and still an ally without citizenship when it
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
-    (37.2.2).
+    (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
+    row keeps 92, the year before the earlier date, and the insurgents' row
+    starts 91–90.
 
 - atom: italia-lucania
   polity: italici
   relation: independent
-  from: 91 BCE
+  from: { earliest: 91 BCE, latest: 90 BCE }
   to: 88 BCE
   sources:
     - source: livy-per
@@ -658,6 +705,13 @@
       quote: >-
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum
       supports: [from]
     - source: diodorus
       locator: '37.2.11–13'
@@ -681,7 +735,10 @@
     with them (App. BC 1.53) when the Senate gave citizenship to the Italians
     in 87, the year of Octavius' consulship (Livy Per. 80). Lamponius' remnant
     went on fighting in Bruttium after Sulla had left for the East (Diodorus
-    37.2.13), but is not drawn as holding Lucania.
+    37.2.13), but is not drawn as holding Lucania. The start is 91–90 because the sources disagree: Diodorus has the war
+    break out under the consuls of 91 (37.2.2), Velleius has all Italy take up
+    arms, beginning at Asculum, under those of 90 (2.15.1). It read 91 until
+    October 2026.
 
 - atom: italia-lucania
   polity: italia
