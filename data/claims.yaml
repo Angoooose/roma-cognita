@@ -16865,10 +16865,19 @@
         hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
         Tullius Cicero were consuls
       supports: [to]
-  confidence: certain
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
+  confidence: probable
   review: draft
   note: >-
-    As judaea. The brothers' war of 69 was fought at Jericho (AJ 14.4).
+    As judaea: Porphyry puts Antiochus VII's death in 129/128, Schürer in 128;
+    certain until October 2026. The brothers' war of 69 was fought at Jericho
+    (AJ 14.4).
 
 - atom: judaea-joppa
   polity: judaea
