@@ -70,6 +70,10 @@ export function validate(
       doubtLines(d.needsCheck),
     )
     out += section(
+      `PARTLY BACKED — fields with no quote yet (${e.gaps.length})`,
+      e.gaps.map((g) => `${g.where}: ${g.fields.join(', ')}`),
+    )
+    out += section(
       `UNCERTAIN — confidence: uncertain (${d.uncertain.length})`,
       doubtLines(d.uncertain),
     )

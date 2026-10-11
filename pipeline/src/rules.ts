@@ -578,6 +578,8 @@ export interface EvidenceReport {
   backed: number
   /** Some do. */
   partly: number
+  /** Which records those are, and the fields still without a quote. */
+  gaps: { where: string; fields: string[] }[]
   /** None do: no quoted citation yet. */
   unresearched: number
   /** Cited only to datasets, which back geometry and positions, not events. */
@@ -588,7 +590,7 @@ export interface EvidenceReport {
 export function evidence(ds: Dataset): EvidenceReport {
   const byId = new Map(ds.sources.map((s) => [s.id, s]))
   const out: EvidenceReport = {
-    backed: 0, partly: 0, unresearched: 0, datasets: 0, quotes: { found: 0, unread: 0 },
+    backed: 0, partly: 0, gaps: [], unresearched: 0, datasets: 0, quotes: { found: 0, unread: 0 },
   }
   const counted = new Set<SourceRef>()
   for (const [kind, fields] of Object.entries(STATED) as [RecordKind, string[]][]) {
@@ -611,7 +613,13 @@ export function evidence(ds: Dataset): EvidenceReport {
       const asked = fields.filter((f) => hasField(r, f))
       const got = asked.filter((f) => backed.has(f)).length
       if (got && got === asked.length) out.backed++
-      else if (got) out.partly++
+      else if (got) {
+        out.partly++
+        out.gaps.push({
+          where: ds.origin.get(r) ?? '(unknown)',
+          fields: asked.filter((f) => !backed.has(f)),
+        })
+      }
       else out.unresearched++
     }
   }
