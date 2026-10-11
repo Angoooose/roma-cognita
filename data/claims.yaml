@@ -10022,6 +10022,20 @@
       quote: >-
         Thessaly which has been harassed by you
       supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        it is clear that Graecia or Achaia was not assigned regularly as a
+        provincia until 27 B.C. … Officially Greece was again "freed" in 146 as
+        it had been in 196.
+      supports: []
+    - source: kallet-marx-1995
+      locator: 'p. 165'
+      quote: >-
+        Not only Athenians but even the ambassadors from a Thessalian backwater
+        might be addressed honorably in the senatorial decree as "fine and good
+        friends from a people fine and good, our friend and ally."
+      supports: []
     - source: strabo
       locator: '17.3.25'
       quote: >-
@@ -10037,14 +10051,18 @@
       supports: [to]
     - { source: broughton-mrr }
     - { source: nigdelis-2007 }
-  confidence: certain
+  confidence: uncertain
   review: draft
   note: >-
     Part of the macedonia atom until it was split out (September 2026); the
     row is macedonia's. Thessaly was overseen by the commander in Macedonia
     from 148, as the rest of mainland Greece was (Kallet-Marx pp. 50–51), and
     was part of Piso's consular province in 57–55 (Cic. Pis. 37, 96); under
-    Augustus it was Achaea's (Strabo 17.3.25; Bowersock p. 287).
+    Augustus it was Achaea's (Strabo 17.3.25; Bowersock p. 287). Uncertain,
+    as achaea's row is, since October 2026 (it read certain): Cicero has
+    Thessaly in Piso's province, but Kallet-Marx has Greece formally free
+    after 146 and no province of its own before 27 (p. 50), and the senate
+    addressing Thessalian envoys as "our friend and ally" (p. 165).
 
 - atom: thessalia
   polity: achaea
