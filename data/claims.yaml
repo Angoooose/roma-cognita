@@ -4517,7 +4517,7 @@
   polity: aegyptus
   relation: independent
   from: before 133 BCE
-  to: 108 BCE
+  to: { earliest: 108 BCE, latest: 106 BCE }
   sources:
     - source: justin
       locator: '38.8'
@@ -4550,7 +4550,11 @@
     year 10, 108/107 (Bennett). Justin's will would put Apion in Cyrene from
     116, which these documents contradict; Bennett sets out both. What followed
     until Apion is not known; Bennett thinks Ptolemy IX may have kept Cyrene
-    after he lost Egypt in 107.
+    after he lost Egypt in 107. The end is a range because no text states it:
+    108 is the last year attested (the royal letter and the statue base), and
+    Bennett's later, ambiguous evidence, an Apollonia inscription of Ptolemy
+    IX's admiral dated no earlier than 106/5, keeps him there to 106 or later.
+    It was 108 until October 2026 (checked).
 
 - atom: cyrenaica
   polity: cyrenaica-apion
