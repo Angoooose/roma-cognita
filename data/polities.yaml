@@ -2976,8 +2976,7 @@
   from: { earliest: 136 BCE, latest: 132 BCE }
   to: after 27 BCE
   ruler: >-
-    Aryu, from 132, and his successors; Abgar II, to 53; Ma'nu II, 52–34;
-    Paqor, 34–29; Abgar III, from 29 (the Edessene list)
+    Orhoi son of Hevia, the first king; Abgar, in Pompey's time and in 53
   sources:
     - source: chronicle-edessa
       locator: 'year 180'
@@ -2993,6 +2992,13 @@
         or, as he calls it, in the year of Abraham 1880.
       supports: [kind, from]
     - source: chronicle-edessa
+      locator: 'note 1'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        there began to reign over Edessa (Urhoi) the first King Orhoi, son of
+        Hevia, five years
+      supports: [ruler]
+    - source: chronicle-edessa
       locator: 'year 400'
       url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
       quote: >-
@@ -3002,7 +3008,15 @@
       locator: '40.20.1'
       quote: >-
         Nevertheless, the greatest injury was done them by Abgarus of Osroene.
+        For he had pledged himself to peace with the Romans in the time of
+        Pompey
       supports: [ruler, to]
+    - source: cassius-dio
+      locator: '40.17.1'
+      quote: >-
+        And when the winter set in, in which Gnaeus Calvinus and Valerius
+        Messalla became consuls
+      supports: [ruler]
     - source: tacitus-ann
       locator: '12.12'
       quote: >-
@@ -3021,9 +3035,12 @@
     the year of Abraham 1880, B.C. 136, and Assemani's reckoning of year 180 as
     B.C. 129, which the Seleucid era does not bear out. The start was "c. 132"
     until October 2026; it is now the range between Dionysius' year and the
-    Chronicle's, drawn at 134. The rulers follow the Edessene king-list as Segal gives it
-    (not opened for this extension), whose early dates he says are to be
-    treated with caution.
+    Chronicle's, drawn at 134. The rulers were the Edessene king-list as
+    Segal gives it (Aryu, from 132; Abgar II, to 53; Ma'nu II, 52–34; Paqor,
+    34–29; Abgar III, from 29), whose early dates he says are to be treated
+    with caution; Segal is not open, so since October 2026 the field keeps
+    only the kings a readable text names: Dionysius' first king (in the
+    Chronicle's note) and Dio's Abgarus of 53.
     Its standing with Rome after the 60s is not known (see relations.yaml).
     Still a kingdom in 27: Abgarus of Osroene fought Crassus in 53 (Dio
     40.20.1), Acbarus held Edessa in 49 CE (Tacitus Ann. 12.12), and the
