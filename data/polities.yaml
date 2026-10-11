@@ -3713,7 +3713,7 @@
   names:
     - { text: Scythae, lang: la, preferred: true }
   from: before 133 BCE
-  to: after 27 BCE
+  to: after 63 BCE
   ruler: Scilurus; his son Palacus, fl. c. 110–107
   sources:
     - source: strabo
@@ -3746,7 +3746,11 @@
     The Crimean Scythians, with their royal seat at Neapolis. Scilurus and his
     sons, "fifty in number" according to Poseidonius (Strabo 7.4.3), fought
     Diophantus for Mithridates c. 110–107; "Palakos, king of the Scythians" in
-    the decree. Subject to Mithridates from then (claims.yaml).
+    the decree. Subject to Mithridates from then (claims.yaml). It ran "after
+    27 BCE" until the October 2026 check: no citation backed an end, and no
+    text read has the Scythians of the peninsula as a kingdom after
+    Mithridates' death in 63, where their last claim already ends. The start,
+    "before 133", still rests on the decree's commentary alone (claims.yaml).
 
 - id: chersonesus
   kind: city-state
