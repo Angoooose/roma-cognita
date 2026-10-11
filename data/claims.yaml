@@ -6728,7 +6728,7 @@
 - atom: bosporus-tanais
   polity: bosporus
   relation: client
-  from: { earliest: 63 BCE, latest: 49 BCE }
+  from: 63 BCE
   to: 49 BCE
   sources:
     - source: strabo
@@ -6769,8 +6769,9 @@
   note: >-
     As bosporus; Pharnaces' frontiers reached the Tanais (Strabo; Minns). When
     is not recorded: Minns has him content with Pompey's grant of 63 and then
-    extending his power east of the Maeotis, so the start is a range over his
-    years as Rome's friend. It started in 63 until October 2026.
+    extending his power east of the Maeotis, at some point between 63 and 49.
+    Drawn from 63, the earliest the texts allow, since a range would be drawn
+    at its midpoint and leave the shore blank from the row before.
 
 - atom: bosporus-tanais
   polity: bosporus
