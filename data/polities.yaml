@@ -3754,7 +3754,7 @@
   kind: kingdom
   names:
     - { text: Dacia, lang: la, preferred: true }
-  from: c. 60 BCE
+  from: before 79 BCE
   to: 44 BCE
   ruler: Burebista, to c. 44
   sources:
@@ -3773,7 +3773,7 @@
       quote: >-
         at the time when Byrebistas , against whom already the Deified Caesar had
         prepared to make an expedition, was reigning over the Getae
-      supports: [kind, ruler]
+      supports: [kind, from, ruler]
     - source: suetonius-aug
       locator: '8'
       quote: >-
@@ -3787,15 +3787,18 @@
       quote: >-
         Then when Buruista was king of the Goths , Dicineus came to Gothia at the
         time when Sulla ruled the Romans .
-      supports: [kind, ruler]
+      supports: [kind, from, ruler]
     - { source: lockyear-2004 }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Burebista's union of the Getae and Dacians, which Strabo says he made 'in a
     few years' and which broke up when he was overthrown (Strabo
-    7.3.11). Its start is not datable; c. 60
-    is a convention.
+    7.3.11). Jordanes has Buruista already king "at the time when Sulla ruled
+    the Romans" (Getica 67), 82–79, and Strabo still reigning when Caesar
+    prepared his expedition (7.3.5), so the kingdom was in force by 79. It
+    read c. 60, a modern convention no readable text states, until October
+    2026; Jordanes' date is late and stands alone, hence uncertain.
 
 - id: pontic-cities
   kind: league
