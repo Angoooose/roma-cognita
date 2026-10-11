@@ -170,7 +170,7 @@
     - { text: Stratonicea, preferred: true }
     - { text: Stratonicaea }
     - { text: Hadrianopolis }
-  from: before 133 BCE
+  from: before 130 BCE
   to: after 27 BCE
   prominence: 4
   sources:
@@ -184,7 +184,9 @@
     texts say only "Stratonicea"; Kallet-Marx takes it as the one "on the
     upper Caicus", where Aristonicus "had had his stronghold" (p. 114). The
     attribution of his cistophori as "King Eumenes" to its mint (Robinson,
-    NC 1954) was not read.
+    NC 1954) was not read. It stood "before 133" here until October 2026; it
+    is first attested in 130, when the consul Perperna took Aristonicus there,
+    and Pleiades attests it in the Roman period (30 BC–AD 300).
 
 - id: massilia
   pleiades: '148127'
