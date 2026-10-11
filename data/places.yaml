@@ -4411,10 +4411,6 @@
       from: before 133 BCE
       to: 91 BCE
       note: a Latin colony, starved out by the insurgents in 90 (App. BC 1.41; Livy Per. 73) and their capital after Corfinium (Diodorus 37.2.9).
-    - value: colonia
-      from: 87 BCE
-      to: after 27 BCE
-      note: Roman again only when the Samnites made terms in 87 (App. BC 1.68); in insurgent hands 90–88, with no status here.
   labelSide: n
   sources:
     - source: pleiades
@@ -4464,9 +4460,13 @@
         their cities have now come to be mere villages (though some have
         utterly vanished), I mean Bovianum, Aesernia
       supports: [to]
-    - { source: appian, locator: 'BC 1.68' }
   confidence: certain
   review: draft
+  note: >-
+    Destroyed in the Social War and a village by Strabo's day (5.3.10,
+    5.4.11). Until October 2026 the status read colonia again from 87, when
+    the Samnites made terms (App. BC 1.68); no text read gives its standing
+    after the war, so that row was dropped.
 
 - id: venusia
   pleiades: '442847'
