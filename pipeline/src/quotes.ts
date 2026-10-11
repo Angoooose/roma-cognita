@@ -16,9 +16,9 @@
  *   PDFs are read with pdf.js, so nothing needs installing beyond npm's.
  *
  * A quote matches when its words appear in order, ignoring case, accents,
- * punctuation and bare numbers (section and footnote marks); `…` is a cut, and
- * the pieces must appear in that order. A text not downloaded is reported, never
- * failed: a fresh clone has no cache.
+ * punctuation, bare numbers (section and footnote marks) and words a scan broke
+ * at a line end; `…` is a cut, and the pieces must appear in that order. A text
+ * not downloaded is reported, never failed: a fresh clone has no cache.
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -51,6 +51,8 @@ export function htmlText(html: string): string {
 /** Words only: lower case, no accents, no punctuation, no bare numbers. */
 export function normalise(s: string): string {
   const words = s
+    // A word a scan broke at a line end ("king- dom") is one word.
+    .replace(/(\p{L})-\s+(\p{Ll})/gu, '$1$2')
     .normalize('NFKD')
     .replace(/\p{M}/gu, '')
     .toLowerCase()

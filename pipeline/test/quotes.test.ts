@@ -23,6 +23,11 @@ describe('quoteIn', () => {
     expect(quoteIn('Pompeius took Amaseia', 'Pompéius 12 took [3] Amáseia')).toBe(true)
   })
 
+  it('rejoins a word a scan broke at a line end', () => {
+    expect(quoteIn('the kingdom of Commagene', 'the king-\ndom of Commagene')).toBe(true)
+    expect(quoteIn('the king- dom of Commagene', 'the king-\ndom of Commagene')).toBe(true)
+  })
+
   it("fails a quote the text doesn't have", () => {
     expect(quoteIn('Bithynia was made a province by Pompey', dio)).toBe(false)
   })
