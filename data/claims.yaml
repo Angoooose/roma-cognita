@@ -17200,7 +17200,7 @@
       quote: >-
         Lucullus assigned it to a son of Antiochus Eusebes, who reigned from
         B.C. 69 to B.c. 65
-      supports: [from, to]
+      supports: []
     - source: schurer-1891
       locator: 'p. 184'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -17209,7 +17209,7 @@
         Diodorus … gives an account. Antiochus XIII. Asiaticus sought to
         maintain his possession of the throne by the aid of Sampsigeram of
         Emesa.
-      supports: [polity, from, to]
+      supports: [polity]
     - source: cassius-dio
       locator: '37.6.4–7.1'
       quote: >-
@@ -17227,7 +17227,11 @@
     Antiochus' reign of 69–65. So the principality is first attested between
     69 and 65; the row starts at the earlier bound, 69, next to Tigranes'
     row, rather than leave the years between blank. Ends with Pompey in Syria
-    (64).
+    (64). Checking, October 2026: Schürer's two passages say who reigned in
+    Syria in 69–65 and that Sampsigeram of Emesa acted in 65 or 64; neither
+    says when Emesa became its own ruler's or that it stopped being, so they
+    no longer list from and to. The start is unbacked; the end rests on Dio
+    placing Pompey in Syria in 64, which does not name Emesa.
 
 - atom: emesa
   polity: emesa
