@@ -2605,7 +2605,7 @@
   names:
     - { text: Aedes Iovis Statoris, lang: la, preferred: true }
     - { text: Temple of Jupiter Stator in the Porticus Metelli, lang: en }
-  from: c. 146 BCE
+  from: { earliest: 146 BCE, latest: 131 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2616,8 +2616,10 @@
   confidence: probable
   review: draft
   note: >-
-    Built by Q. Caecilius Metellus Macedonicus "after his triumph in 146 B.C.",
-    the first temple in Rome "entirely of marble". "Its exact site is known,
+    Built by Q. Caecilius Metellus Macedonicus "after his triumph in 146 B.C."
+    (Platner & Ashby), or "either in 146 (Coarelli 489) or 131 B.C. (Gwyn Morgan)"
+    (Digital Augustan Rome); c. 146 BCE until October 2026, now the range of both.
+    The first temple in Rome "entirely of marble". "Its exact site is known,
     beneath the church of S. Maria in Campitelli" (Platner & Ashby).
 
 - id: aedes-iunonis-reginae-metelli
