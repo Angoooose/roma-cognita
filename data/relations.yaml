@@ -553,7 +553,7 @@
 - polity: illyricum
   type: province-of
   of: rome
-  from: 59 BCE
+  from: before 59 BCE
   to: after 27 BCE
   sources:
     - source: eutropius
@@ -578,7 +578,10 @@
       supports: [type, of, to]
   confidence: probable
   review: draft
-  note: The lex Vatinia.
+  note: >-
+    The lex Vatinia of 59 gave it to Caesar; it read "from 59" until October
+    2026, but a proconsul had been sent into Illyricum about 78 (Eutropius
+    6.4–5), so the start is open, as the polity.
 
 - polity: africa-nova
   type: province-of
