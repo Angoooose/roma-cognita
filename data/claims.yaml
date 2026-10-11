@@ -20376,6 +20376,13 @@
         and of these he made the Moabites and Gileadites tributary.
       supports: [polity, relation]
     - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able to
+        keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: schurer-1891
       locator: 'p. 298'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
       quote: >-
@@ -20544,6 +20551,15 @@
       quote: >-
         he persuaded Aretas to give Scaurus a sum of money, to prevent the
         burning of his country
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 62 B.C., p. 175'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        62 B.C. A.U.C. 692 Consuls … Remained in charge in Syria when Pompey
+        returned to Asia Minor (see 63, and below, 62, Promagistrates, on
+        Pompey). Began an invasion of Nabatean Arabia, but desisted in return
+        for a payment of 300 talents
       supports: [to]
     - { source: josephus-aj, locator: '13.375, 13.387–392' }
     - { source: josephus-bj, locator: '1.90' }
@@ -20898,6 +20914,12 @@
       quote: >-
         this prince had put to death the Romans left behind in Armenia
       supports: [to]
+    - source: strabo
+      locator: '11.12.3'
+      quote: >-
+        and leaving these and the region of Commagene on the right, and
+        Acilisene and Sophene in Greater Armenia on the left
+      supports: [polity]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -20921,7 +20943,7 @@
       quote: >-
         After this Antony occupied the whole of Armenia, taking some of the
         people peaceably and some by force … then he left his legions in Armenia
-      supports: [relation, from]
+      supports: [polity, relation, from]
     - source: cassius-dio
       locator: '49.43.6'
       quote: >-
@@ -20940,6 +20962,12 @@
       quote: >-
         this prince had put to death the Romans left behind in Armenia
       supports: [to]
+    - source: strabo
+      locator: '11.12.3'
+      quote: >-
+        and leaving these and the region of Commagene on the right, and
+        Acilisene and Sophene in Greater Armenia on the left
+      supports: [polity]
   confidence: probable
   review: draft
   note: >-
@@ -20984,6 +21012,13 @@
         and leaving these and the region of Commagene on the right, and
         Acilisene and Sophene in Greater Armenia on the left
       supports: [polity, to]
+    - source: cassius-dio
+      locator: '54.9.4'
+      quote: >-
+        since the other Armenians had preferred charges against Artaxes and had
+        summoned his brother Tigranes, who was in Rome, the emperor sent
+        Tiberius to drive Artaxes out of the kingdom
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
