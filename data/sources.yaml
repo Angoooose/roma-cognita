@@ -93,6 +93,20 @@
     E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
     rev. G. Vermes, F. Millar et al., vol. I (Edinburgh, 1973)
 
+- id: schurer-1890
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division I, vol. II, trans. J. Macpherson (Edinburgh: T. & T. Clark, 1890),
+    Appendix II, "History of the Nabatean Kings"
+  url: https://archive.org/details/p1historyofjewis02sch
+  note: >-
+    A scan on archive.org (a later printing), readable without borrowing. Quote
+    from its full text,
+    https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt,
+    given as the citation's url. The revision by Vermes and Millar
+    (schurer-vermes) supersedes it but is not open.
+
 - id: myers-2010
   kind: modern
   citation: E. A. Myers, The Ituraeans and the Roman Near East (Cambridge, 2010)

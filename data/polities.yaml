@@ -801,6 +801,105 @@
     Aretas II, c. 120/110–96; Obodas I, c. 96–85; Aretas III, c. 85–62; then
     Malichus I, to 31; Obodas, from 30
   sources:
+    - source: josephus-aj
+      locator: '13.360'
+      quote: >-
+        Aretas , king of the Arabians , a person then very illustrious,
+        encouraged them to go on with alacrity, and promised them that he would
+        come to their assistance
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '13.375'
+      quote: >-
+        he had joined battle with Obedas, king of the Arabians
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '13.392'
+      quote: >-
+        After him Aretas reigned over Coele Syria , being called to the
+        government by those that held Damascus
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '14.80'
+      quote: >-
+        he persuaded Aretas to give Scaurus a sum of money, to prevent the
+        burning of his country
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '48.41.5'
+      quote: >-
+        large sums also from Antigonus and Antiochus and Malchus the Nabataean ,
+        because they had given help to Pacorus
+      supports: [ruler]
+    - source: plutarch
+      locator: 'Antony 61.2'
+      quote: >-
+        Malchus from Arabia
+      supports: [ruler]
+    - source: josephus-aj
+      locator: '15.165'
+      quote: >-
+        desired him to write about these matters to Malchus , who was then
+        governor of Arabia
+      supports: []
+    - source: strabo
+      locator: '16.4.21'
+      quote: >-
+        The capital of the Nabataeans is called Petra . … It is always governed
+        by a king of the royal race.
+      supports: [kind, to]
+    - source: strabo
+      locator: '16.4.24'
+      quote: >-
+        Another cause of the failure of the expedition was the fact of king
+        Obodas not paying much attention to public affairs
+      supports: [kind, ruler, to]
+    - source: schurer-1890
+      locator: 'p. 350'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        of the Nabateans of whom we know anything is that Aretas (Aretas I.) with
+        whom the high priest Jason in B.C. 169 in vain sought shelter … it would
+        seem that the Nabatean princes then had not yet assumed the title of
+        king.
+      supports: []
+    - source: schurer-1890
+      locator: 'p. 351'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        The kingdom of the Nabateans, however, did not rise into greater
+        importance until the end of the second century before Christ … This
+        Erotimus therefore ought to be regarded as the founder of the royal
+      supports: []
+    - source: schurer-1890
+      locator: 'p. 351'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        is spoken of at the time of the siege of Gaza by Alexander Jannaus in
+        B.C. 96. … A couple of years later, about B.C. 90, Alexander Jannaus
+        attacked King Obedas I.
+      supports: [kind, ruler]
+    - source: schurer-1890
+      locator: 'p. 355'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        The period of the reign of Aretas III. extends, according to the hitherto
+        prevailing view, from somewhere about B.C. 85 to B.C. 60.
+      supports: [ruler]
+    - source: schurer-1890
+      locator: 'p. 355'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        reigned from B.C. 50 to B.C. 28.
+      supports: []
+    - source: schurer-1890
+      locator: 'p. 356'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        The last that we hear of Malchus is that he promised the aged … to
+        support him in the revolt planned against Herod in B.C. 30 … about B.C.
+        28-9, was king during the campaign of
+      supports: []
     - { source: sullivan-1990 }
     - { source: bowersock-1983 }
   confidence: probable
