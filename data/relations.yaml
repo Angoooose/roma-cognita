@@ -1815,22 +1815,71 @@
     and by 31.
 
 - polity: osroene
-  type: client-of
+  type: allied-to
   of: rome
-  from: 64 BCE
-  to: after 43 BCE
+  from: { earliest: 66 BCE, latest: 62 BCE }
+  to: 54 BCE
   sources:
     - { source: sullivan-1990 }
-    - { source: cassius-dio, locator: '40.20.1' }
+    - source: cassius-dio
+      locator: '40.20.1'
+      quote: >-
+        Abgarus of Osroene. For he had pledged himself to peace with the
+        Romans in the time of Pompey
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '36.42.3–4'
+      quote: >-
+        the day on which Lucius Tullus and Aemilius Lepidus entered upon their
+        consulship … He went so far as to offer him command of the war against
+        Tigranes and that against Mithridates
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.44.3'
+      quote: >-
+        when he sent ahead Marcus Piso, his lieutenant, to seek the consulship,
+        they postponed the elections so that he might attend them
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.46.1'
+      quote: >-
+        The next year, in the consulship of Piso and Marcus Messalla
+      supports: [from]
+    - source: cassius-dio
+      locator: '40.20.1–2'
+      quote: >-
+        but now chose the side of the barbarians. … but Abgarus, while
+        favouring the Parthian cause, pretended to be well disposed toward
+        Crassus.
+      supports: [to]
+    - source: cassius-dio
+      locator: '40.23.1'
+      quote: >-
+        But when he, too, attacked, thereupon the Osroeni themselves assailed
+        the Romans on their exposed rear
+      supports: [to]
+    - source: cassius-dio
+      locator: '40.17.1'
+      quote: >-
+        And when the winter set in, in which Gnaeus Calvinus and Valerius
+        Messalla became consuls
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    From Pompey's settlement (Afranius crossed northern Mesopotamia in 65–64):
-    Dio has Abgar in treaty with Rome "in the time of Pompey" (40.20.1), and no
-    earlier tie is recorded. Left open at 43 on purpose (September 2026): nothing attests Osroene's
-    standing in 43–27. Abgar was bound to Rome under Pompey (Dio 40.20.1) and
-    served Parthia against Crassus in 53; geography points to a Parthian
-    vassal, but no text says so for these years.
+    The start is "the time of Pompey" (Dio 40.20.1), his eastern command:
+    offered him in the year of Tullus and Lepidus, 66 (36.42.3–4), and held
+    until he sent Piso ahead to the elections of 62 (37.44.3, 37.46.1). It
+    was 64 until October 2026, the year of Afranius' march through
+    Mesopotamia, which no text ties to Abgar; the range is drawn at 64.
+    Allied, not client (it was client-of until October 2026): the one text on
+    the tie has Abgar "pledged himself to peace with the Romans", and none has
+    Rome set him up, depose him or call him subject.
+    No earlier tie is recorded. It ends with 54: in Crassus' campaign of 53, the
+    year of Calvinus and Messalla (40.17.1), Abgar "chose the side of the
+    barbarians" and his Osroeni fell on the Roman rear (40.20.1, 40.23.1).
+    It was left open at "after 43" until October 2026; no text renews the
+    tie after 53.
 
 - polity: amanus
   type: client-of

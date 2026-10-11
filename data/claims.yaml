@@ -1795,14 +1795,51 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
-    - { source: livy-per, locator: '60' }
+    - source: broughton-mrr
+      locator: 'vol. I, 163 B.C., p. 440'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        whereupon Gracchus, after holding the elections, succeeded him in
+        Corsica and Sardinia
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 126 B.C., p. 508'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Orestes received command against rebels in Sardinia
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 518'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul in Sardinia, whence he returned to celebrate a triumph
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        Consul Lucius Aurelius subdued rebellious Sardinians.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [polity, relation, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        The third was Sardinia, with Corsica; the fourth Sicily
+      supports: [polity, relation, to]
   confidence: certain
   review: draft
   note: >-
     The whole island, though the mountain peoples of the interior rose again
     and again, as when L. Aurelius put down the Sardinians in 126 (Livy Per.
-    60). Not a change of hands.
+    60). Not a change of hands. Nothing readable puts the island in 133
+    itself: Ti. Gracchus' command in Corsica and Sardinia in 163 and
+    Orestes' in 126 bracket it (MRR), and Dio's and Strabo's lists of
+    Augustus' division in 27 both name it.
 
 - atom: corsica
   polity: sardinia-corsica
