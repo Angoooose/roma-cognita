@@ -1748,6 +1748,18 @@
         - [27.5, 40.6]
         - [28.3, 40.5]
   sources:
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        Asia within the Halys and Taurus , except the Galatians and the nations
+        under Amyntas , Bithynia , and the Propontis
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.1–2'
+      quote: >-
+        Now the beginning of the seaboard is the Peraea of the Rhodians on the
+        sea … then to Caunus and to the Calbis , a river near Caunus
+      supports: [construction]
     - { source: magie-1950 }
     - { source: dmitriev-2000 }
     - { source: barrington, locator: 'maps 51, 52, 56, 61–62, 65' }
@@ -1786,6 +1798,24 @@
         - [28.5, 39.9]
         - [28.2, 40.2]
   sources:
+    - source: strabo
+      locator: '12.4.1'
+      quote: >-
+        Bithynia is bounded on the east by the Paphlagonians and Mariandyni and
+        some of the Epicteti ; on the north by the Pontic Sea, from the outlets
+        of the Sangarius River to the mouth of the sea at Byzantium and
+        Chalcedon ; on the west by the Propontis ; and towards the south by
+        Mysia and by Phrygia Epictetus
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.2'
+      quote: >-
+        the parts farther on, extending as far as the mouth of the Pontus and
+        Chalcedon , remained under the rule of the king of Bithynia . But when
+        the kings had been overthrown, the Romans preserved the same
+        boundaries, so that Heracleia was added to Pontus and the parts farther
+        on went to the Bithynians
+      supports: []
     - { source: magie-1950 }
     - { source: barrington, locator: 'maps 52, 86' }
     - { source: natural-earth }
@@ -1793,7 +1823,12 @@
   review: draft
   note: >-
     The kingdom Nicomedes IV bequeathed in 74, from the Rhyndacus and Olympus
-    to the Parthenius. Takes the Rhyndacus–Olympus line from asia.
+    to the Parthenius. Takes the Rhyndacus–Olympus line from asia. Strabo
+    bounds Bithynia's coast at the Sangarius (12.4.1) and has Mithridates'
+    coast run west as far as Heraclea, which the Romans then added to Pontus
+    (12.3.2): the stretch from the Sangarius to the Parthenius, with Heraclea,
+    was not the Bithynian king's, and is drawn here only because no atom yet
+    separates it (October 2026).
 
 - id: comana-pontica
   evidence: schematic
@@ -1883,7 +1918,29 @@
         - [32.6, 41.15]
         - [32.3, 41.2]
   sources:
-    - { source: strabo, locator: '12.3.1, 12.3.13, 12.3.34' }
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        he held the country bounded by the Halys River as far as the Tibarani
+        and Armenia , and held also, of the country this side the Halys , the
+        region extending to Amastris and to certain parts of Paphlagonia . …
+        The parts towards Armenia and those round Colchis he distributed to the
+        potentates who had fought on his side, but the remaining parts he
+        divided into eleven states and added them to Bithynia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        One part of this country is occupied by the Amiseni , but the other was
+        given to Deiotarus by Pompey , as also the regions of Pharnacia and
+        Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.10'
+      quote: >-
+        After the Parthenius River, then, one comes to Amastris
+      supports: [construction]
+    - { source: strabo, locator: '12.3.34' }
     - { source: hojte-2009, locator: 'pp. 95–96' }
     - { source: barrington, locator: 'maps 86–87' }
     - { source: natural-earth }
@@ -1921,6 +1978,27 @@
         - [35.9, 36.5]
         - [34.2, 36.3]
   sources:
+    - source: strabo
+      locator: '14.5.1'
+      quote: >-
+        But Cilicia Pedias extends from Soli and Tarsus as far as Issus , and
+        also to those parts beyond which, on the northern side of the Taurus ,
+        Cappadocians are situated
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        Thus Archelaus received, in addition to Cappadocia , Cilicia Tracheia ;
+        and the boundary of the latter, the river Lamus and the village of the
+        same name [ Lamos ], lies between Soli and Elaeussa
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        the Amanides Gates , with a mooring-place, where ends the mountain
+        Amanus , which extends down from the Taurus and lies above Cilicia
+        towards the east
+      supports: [construction]
     - { source: borgia-2017, locator: 'pp. 300–304' }
     - { source: dmitriev-2000 }
     - { source: barrington, locator: 'map 66' }
@@ -2043,6 +2121,13 @@
         - [31.5, 36.4]
         - [30.55, 36.3]
   sources:
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea : from the 15th of March at the same place for the districts
+        of Synnada , Pamphylia
+      supports: [construction]
     - { source: dmitriev-2000, locator: 'pp. 355–363' }
     - { source: borgia-2017, locator: 'pp. 300–304' }
     - { source: cicero-att, locator: '5.20.1, 5.21.9' }
@@ -2084,7 +2169,22 @@
           note: Pessinus inside
         - [31.0, 39.3]
   sources:
-    - { source: strabo, locator: '12.5.1–2' }
+    - source: strabo
+      locator: '12.5.1–2'
+      quote: >-
+        The Galatians , then, are to the south of the Paphlagonians . … The
+        Trocmi possess the parts near Pontus and Cappadocia . … Tavium … but
+        the Tectosages the parts near Greater Phrygia in the neighborhood of
+        Pessinus and Orcaorci . To the Tectosages belonged the fortress Ancyra
+        … And the Tolistobogii border on the Bithynians and Phrygia Epictetus
+      supports: [construction]
+    - source: strabo
+      locator: '12.5.4'
+      quote: >-
+        After Galatia towards the south are situated Lake Tatta, which lies
+        alongside Greater Cappadocia near Morimene but is a part of Greater
+        Phrygia
+      supports: [construction]
     - { source: mitchell-1993, locator: 'vol. I, ch. 3' }
     - { source: barrington, locator: 'maps 63, 86' }
     - { source: natural-earth }
@@ -2113,7 +2213,18 @@
           via: crest
         - [37.15, 40.8]
   sources:
-    - { source: strabo, locator: '12.3.13' }
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        the other was given to Deiotarus by Pompey , as also the regions of
+        Pharnacia and Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        Above the region of Pharnacia and Trapezus are the Tibareni and the
+        Chaldaei , whose country extends to Lesser Armenia
+      supports: [construction]
     - { source: mapterhorn }
     - { source: natural-earth }
   confidence: uncertain
@@ -2142,7 +2253,19 @@
         - [37.8, 39.4]
         - [37.2, 39.6]
   sources:
-    - { source: strabo, locator: '12.3.13, 12.3.28' }
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        Lesser Armenia , like Sophene , was always in the possession of
+        potentates … near Dasteira in Acilisene (near by, also, was the
+        Euphrates , which separates Acilisene from Lesser Armenia )
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        given to Deiotarus by Pompey , as also the regions of Pharnacia and
+        Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
     - { source: barrington, locator: 'map 87' }
   confidence: uncertain
   review: needs-check
@@ -2178,7 +2301,27 @@
         - [33.5, 38.3]
         - [33.2, 38.9]
   sources:
-    - { source: strabo, locator: '12.1.1–4, 12.2.7' }
+    - source: strabo
+      locator: '12.1.1'
+      quote: >-
+        bounded on the south by the “ Cilician ” Taurus , as it is called, and
+        on the east by Armenia and Colchis
+      supports: [construction]
+    - source: strabo
+      locator: '12.1.4'
+      quote: >-
+        those near the Taurus were reckoned as five in number, I mean Melitene
+        , Cataonia , Cilicia , Tyanitis , and Garsauritis … The Romans later
+        assigned to the predecessors of Archelaus an eleventh prefecture, taken
+        from Cilicia , I mean the country round Castabala and Cybistra
+      supports: [construction]
+    - source: strabo
+      locator: '12.2.1'
+      quote: >-
+        It is situated opposite to Sophene ; and the Euphrates River flows
+        between it and Commagene , which latter borders on it
+      supports: [construction]
+    - { source: strabo, locator: '12.2.7' }
     - { source: dmitriev-2000 }
     - { source: sullivan-1990 }
     - { source: barrington, locator: 'maps 63–64' }
