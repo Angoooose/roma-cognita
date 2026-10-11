@@ -95,12 +95,15 @@
         The Tharthar Lake is a natural closed depression, before being filled by
         flooded access water from the Tigris River, since 1956
       supports: [op, from, to]
-  confidence: certain
+  confidence: probable
   review: needs-check
   note: >-
-    A dry salt depression (Wadi Tharthar) until the Tigris was diverted into it
-    from 1956. HydroLAKES types it as a natural lake, so the reservoir filter
-    in the coast build does not catch it. The locator is still to be supplied.
+    A natural closed depression (Wadi Tharthar) until the Tigris was diverted
+    into it from 1956 (Sissakian; ESCWA). It read "a dry salt depression" until
+    October 2026, which no readable text states: it may have held a seasonal
+    salt lake, so the confidence is probable, but nothing shows a standing lake
+    in antiquity. HydroLAKES types it as a natural lake, so the reservoir
+    filter in the coast build does not catch it.
 
 # --- lakes drained since ------------------------------------------------------
 # Shapes derived by pipeline/src/landscape/derive-coasts.ts: the modern ground
