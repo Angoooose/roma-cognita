@@ -6995,12 +6995,15 @@
         Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
         … the latter date is probably correct.
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     The kingdom of Scilurus and his sons, who pressed Chersonesus and fought
     Mithridates' generals from their forts at Palacium, Chabum and Neapolis
-    (Strabo 7.4.3, 7.4.7).
+    (Strabo 7.4.3, 7.4.7). The decree is undated; Magie gives Niese's 114/3
+    and Reinach's 110 (the OCR's "no") for the start of the war and prefers
+    110, so the end is c. 111 and the confidence uncertain (probable until the
+    October 2026 backfill).
 
 - atom: scythia-minor
   polity: scythia-minor
