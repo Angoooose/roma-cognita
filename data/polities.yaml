@@ -4290,7 +4290,7 @@
   kind: people
   names:
     - { text: Helvetii, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 107 BCE
   to: 52 BCE
   sources:
     - source: caesar-bg
@@ -4307,7 +4307,7 @@
         In the country of the Nitiobriges , consul Lucius Cassius [Longinus] was
         massacred with his army by the Gallic Tigurini , a Helvetian tribe that
         had left its own country.
-      supports: [kind]
+      supports: [kind, from]
     - source: caesar-bg
       locator: '7.75'
       quote: >-
@@ -4323,7 +4323,9 @@
     Their Tigurini joined the Cimbri and killed the consul L. Cassius among the
     Nitiobriges in 107 (Livy Per. 65; BG 1.12). Tacitus puts the Helvetii of an
     earlier age between the Rhine and the Main (Germania 28); when they settled
-    the plateau Caesar knew is not recorded.
+    the plateau Caesar knew is not recorded. It read "before 133" until the
+    October 2026 check, which found no text naming them before 107, the year
+    the polity's claim already starts from.
 
 - id: sequani
   kind: people
