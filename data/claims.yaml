@@ -19468,7 +19468,7 @@
 
 - atom: atropatene
   polity: atropatene
-  relation: client
+  relation: allied
   from: 66 BCE
   to: 36 BCE
   sources:
@@ -19480,7 +19480,9 @@
     was taken from him (Dio 36.53.2), the year before the consulship of Cotta
     and Torquatus (37.1.1): 66, which belongs to this row as Armenia's own
     client row starts then. Until October 2026 it read 65, and the row before
-    ended in 66.
+    ended in 66. Allied, not client: in 36 the Mede had gone "to bear aid to
+    his ally, the Parthian king" (Dio 49.25.2), and no text calls him
+    Parthia's subject; it was client until October 2026.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
