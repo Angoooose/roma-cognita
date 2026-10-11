@@ -3562,19 +3562,51 @@
   names:
     - { text: Porticus Metelli, lang: la, preferred: true }
     - { text: Portico of Metellus, lang: en }
-  from: c. 146 BCE
+  from: { earliest: 147 BCE, latest: 146 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: velleius, locator: '1.11.3' }
-    - { source: platner-ashby, locator: 'Porticus Octaviae, pp. 427–428' }
-    - { source: digital-augustan-rome, locator: 'Porticus Octaviae' }
+    - source: velleius
+      locator: '1.11.3'
+      quote: >-
+        the Metellus Macedonicus who had previously built the portico about the two
+        temples without inscriptions which are now surrounded by the portico of
+        Octavia
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Porticus Metelli (porticus, pp. 419–431)'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/porticus.html
+      quote: >-
+        Porticus Metelli: built in 147 B.C. by Q. Caecilius Metellus Macedonicus
+        around the temples of Jupiter Stator and Juno
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: https://www.digitalaugustanrome.org/api/dag/records/porticus-octaviae/
+      quote: >-
+        was built by Q. Caecilius Metellus Macedonicus in 146 B.C. around the temples
+        of Iuno Regina and Iuppiter Stator
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Porticus Octaviae, pp. 427–428'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Porticus_Octaviae.html
+      quote: >-
+        at some time after 27 B.C. … in place of the Porticus Metelli
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: https://www.digitalaugustanrome.org/api/dag/records/porticus-octaviae/
+      quote: >-
+        Perhaps the building campaign began in 27, and concluded with the dedication
+        of the library three years later.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Q. Caecilius Metellus Macedonicus's colonnade round the temples of Jupiter
-    Stator and Juno Regina, after his triumph of 146 BCE, fronting the Circus
-    Flaminius. Augustus rebuilt it as the Porticus Octaviae "between 27 and 23 B.C."
+    Stator and Juno Regina, fronting the Circus Flaminius: built in 147 BCE (Platner &
+    Ashby) or 146, after his triumph (Digital Augustan Rome); it read c. 146 until
+    October 2026, and now spans both. Augustus rebuilt it as the Porticus Octaviae "between 27 and 23 B.C."
     on the same lines to the south-west and south-east, "118 metres in width and
     somewhat more in length", extended to the north-east; the Porticus Metelli is
     drawn a little shorter, about 118 by 115 m.
