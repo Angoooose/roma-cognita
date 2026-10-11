@@ -306,7 +306,7 @@
   location: [4.8195, 45.7589]
   names:
     - { text: Lugdunum, preferred: true }
-  from: 43 BCE
+  from: { earliest: 44 BCE, latest: 43 BCE }
   to: after 27 BCE
   prominence: 2
   status: colonia
@@ -314,9 +314,13 @@
     - { source: cassius-dio, locator: '46.50' }
     - { source: cicero-fam, locator: '10.11' }
     - { source: pleiades, locator: places/167717 }
-  confidence: certain
+  confidence: probable
   review: draft
-  note: Founded by L. Munatius Plancus in 43 (Dio 46.50). Pleiades dates the place from 30.
+  note: >-
+    Founded by L. Munatius Plancus: Dio tells it after Mutina, in 43
+    (46.50.3–5), Broughton puts it "late in 44 or early in 43", so the start
+    is that range; it was 43, certain, until October 2026. Pleiades dates the
+    place from 30.
 
 - id: utica
   pleiades: '315248'
