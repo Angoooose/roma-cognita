@@ -3011,8 +3011,35 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369' }
-    - { source: debevoise-1938, locator: 'pp. 113–116' }
+    - source: josephus-aj
+      locator: '14.330'
+      quote: >-
+        Now Antigonus had promised to give the Parthians a thousand talents, and
+        five hundred women, upon condition they would take the government away
+        from Hyrcanus, and bestow it upon him
+      supports: [type, of]
+    - source: debevoise-1938
+      locator: 'p. 112'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        Antigonus was made king in Jerusalem; and Hyrcanus was carried away to
+        Parthia. By Parthian intervention a Jewish king again sat on the throne
+        in the Holy City
+      supports: [type, of]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: debevoise-1938
+      locator: 'p. 116'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        Pacorus evidently then withdrew from Syria late in 39 B.c., and the
+        country was occupied by Ventidius.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
