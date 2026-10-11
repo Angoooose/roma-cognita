@@ -19099,7 +19099,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 104 BCE
+  to: { earliest: 114 BCE, latest: 104 BCE }
   sources:
     - { source: josephus-aj, locator: '13.324' }
   confidence: uncertain
@@ -19107,7 +19107,11 @@
   note: >-
     In Jannaeus' first year Strato's Tower and Dora "were held by the tyrant
     Zoilus" (AJ 13.324), who had set himself up "on occasion of the contest
-    between the kings" (13.326); when is not known, and he is not drawn.
+    between the kings" (13.326); when is not known, and he is not drawn. The
+    contest began when Cyzicenus drove Grypus out in 113 (Schürer 1891, 180),
+    so the Seleucid hold ended between 114 and Jannaeus' first campaign;
+    drawn at the midpoint, with Zoilus' years left blank. Until October 2026
+    it read 104, which no text states.
 
 - atom: strato-tower
   polity: judaea
@@ -19128,12 +19132,15 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 104 BCE
+  to: { earliest: 114 BCE, latest: 104 BCE }
   sources:
     - { source: josephus-aj, locator: '13.324' }
   confidence: uncertain
   review: needs-check
-  note: As strato-tower; Dora was Zoilus' too.
+  note: >-
+    As strato-tower; Dora was Zoilus' too, and Ascalon was free from 104
+    (Schürer 1891, 306). Until October 2026 it ended in 104, which no text
+    states.
 
 - atom: palaestina-coast
   polity: judaea
