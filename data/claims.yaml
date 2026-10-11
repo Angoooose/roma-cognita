@@ -15455,7 +15455,38 @@
   from: { earliest: 71 BCE, latest: 70 BCE }
   to: 69 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 78, 82–83' }
+    - source: appian
+      locator: 'Mithr. 83'
+      quote: >-
+        Sinope continued to resist him vigorously … Lucullus at once made it a
+        free city … After Sinope Lucullus restored to their homes the citizens
+        of Amisus
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, pp. 336–338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        With the King’s flight from Pontus in the summer of 71 all opposition
+        to the Romans, except in isolated places, collapsed at once. … then by
+        a surprise attack at night captured Amisus itself … With the fall of
+        Amisus most of eastern Pontus came under Lucullus’s power.
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 303'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        By the end of 70 the last Pontic strongholds at Amisus, Sinope, Amasea,
+        and Heraclea fell, and Mithridates' kingdom was entirely in Lucullus's
+        hands.
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 312'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Mithridates was able to slip back into his kingdom in 68 with a new
+        army provided by Tigranes
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 78, 82' }
     - { source: memnon, locator: '30, 37' }
     - { source: plutarch, locator: 'Lucullus 19, 23, 35.5' }
     - { source: cassius-dio, locator: '36.43.2' }
@@ -15573,12 +15604,52 @@
   from: { earliest: 71 BCE, latest: 70 BCE }
   to: 69 BCE
   sources:
-    - { source: plutarch, locator: 'Lucullus 19.1' }
+    - source: plutarch
+      locator: 'Lucullus 19.1'
+      quote: >-
+        Lucullus pushed on in pursuit as far as Talaura, whence, four days
+        before, Mithridates had succeeded in escaping to Tigranes, in Armenia;
+        then he turned aside. After subduing the Chaldaeans and the Tibareni,
+        he occupied Lesser Armenia, reducing its fortresses and cities
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, pp. 336–337'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        With the King’s flight from Pontus in the summer of 71 all opposition
+        to the Romans, except in isolated places, collapsed at once. … Lucullus,
+        marching along the Euxine and through the back-country as far as the
+        border of Armenia, met with little resistance to his arms
+      supports: [relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 303'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        By the end of 70 the last Pontic strongholds at Amisus, Sinope, Amasea,
+        and Heraclea fell, and Mithridates' kingdom was entirely in Lucullus's
+        hands.
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 312'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Mithridates was able to slip back into his kingdom in 68 with a new
+        army provided by Tigranes
+      supports: [to]
+    - source: cassius-dio
+      locator: '36.9.1'
+      quote: >-
+        Meanwhile Mithridates had invaded the other Armenia and the neighbouring
+        districts. … and thereupon he promptly recovered most of the districts.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Lucullus "occupied Lesser Armenia, reducing its fortresses and cities"
-    (Plut. Luc. 19.1).
+    (Plut. Luc. 19.1), in his pursuit after Cabira, which Magie and Kallet-Marx
+    put in 71 (Magie 336–337; Kallet-Marx 303); the kingdom was all his by the
+    end of 70. Mithridates came back in 68 (Kallet-Marx 312) by "the other
+    Armenia", recovering most of it (Dio 36.9.1).
 
 # Bithynia
 
@@ -15588,15 +15659,66 @@
   from: before 133 BCE
   to: 75 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 7, 10–11, 60, 71' }
+    - source: magie-1950
+      locator: 'vol. I, pp. 317–318'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in 149 b.c., when Prusias’s son, Nicomedes, setting out from Rome …
+        rebelled against the old monarch and entered Bithynia with an army …
+        The Senate was probably not unwilling to have an assurance of a stable
+        peace between the two rival client-kingdoms. Nicomedes II, surnamed
+        Epiphanes, thus began his reign as the protege of Attalus. … the
+        example of Attalus probably contributed to his conception of his duties
+        as a client-king. His fidelity was shown when he responded to the
+        Senate’s call for aid in the suppression of the revolt of Aristonicus.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 318'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        About 127 b.c. Epiphanes was succeeded by his son, Nicomedes III
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 7'
+      quote: >-
+        In this way Nicomedes succeeded Prusias as king of the Bithynians. At
+        his death his son, Nicomedes, surnamed Philopator, succeeded him, the
+        Senate confirming his ancestral authority.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 319'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His ultimate restoration by Sulla — one of the provisions of the Treaty
+        of Dardanus f — made him an obedient vassal of Rome for the remaining
+        eleven years of his reign.
+      supports: [relation, to]
+    - source: eutropius
+      locator: '6.6'
+      quote: >-
+        in the consulate of Lucius Licinius Lucullus and Marcus Aurelius Cotta.
+        Nicomedes, king of Bithynia, died, appointing by his will the Roman
+        people his heir.
+      supports: [polity, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 320'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        When he died, in 74, it was found that he had bequeathed his king- dom
+        to the Roman people.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 10–11, 60, 71' }
     - { source: strabo, locator: '14.1.38' }
     - { source: livy-per, locator: '93.2' }
-    - { source: eutropius, locator: '6.6.1' }
   confidence: certain
   review: draft
   note: >-
     The kingdom of the Nicomedes, to the bequest (the polity has the dates).
-    Heraclea, a free city, and Chalcedon lie inside the atom.
+    Heraclea, a free city, and Chalcedon lie inside the atom. A client kingdom
+    in Magie's words from Nicomedes II's accession in 149 (317–318), still so in
+    the war with Aristonicus and to Nicomedes IV's death in 74, Lucullus' and
+    Cotta's consulship (Eutropius 6.6), so the kingdom's ground is the
+    province's from 74.
 
 - atom: bithynia
   polity: pontus-regnum
@@ -15683,9 +15805,57 @@
   from: { earliest: 89 BCE, latest: 88 BCE }
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 18–20, 55–60' }
+    - source: appian
+      locator: 'Mithr. 20'
+      quote: >-
+        Having subverted the whole dominion of Nicomedes at one blow,
+        Mithridates took possession of it and put the cities in order.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'p. 252'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It is now clear that the Mithridatic War began in 89
+      supports: [from]
+    - source: livy-per
+      locator: '77'
+      quote: >-
+        had used violence against the opposing consuls Quintus Pompeius and
+        Lucius Sulla … King Mithridates of Pontus, having occupied Bithynia and
+        Cappadocia and having expelled governor Aquilius, invaded Phrygia
+      supports: [polity, relation, from]
+    - source: plutarch
+      locator: 'Sulla 22.5'
+      quote: >-
+        Mithridates was to renounce Asia and Paphlagonia, restore Bithynia to
+        Nicomedes and Cappadocia to Ariobarzanes
+      supports: [polity, to]
+    - source: kallet-marx-1995
+      locator: 'pp. 261–262'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        he therefore entered into negotiations with the Pontic king which
+        occupied much of 85, as the imperator marched through Macedonia and
+        toward the Hellespont. Terms of peace were agreed upon at Dardanus in
+        the Troad late in that year.
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 60'
+      quote: >-
+        Then he directed Curio to restore Nicomedes to Bithynia and Ariobarzanes
+        to Cappadocia
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 264'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        We return, then, to the immediate aftermath of the settlement at
+        Dardanus in 85. … Sulla restored Nicomedes to Bithynia, and Paphlagonia
+        was added to his kingdom; Galatia was left to its local dynasts.
+        Ariobarzanes was restored to Cappadocia
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 18–19, 55–58' }
     - { source: strabo, locator: '12.3.40' }
-    - { source: plutarch, locator: 'Sulla 22.5' }
   confidence: certain
   review: draft
   note: >-
@@ -15761,8 +15931,63 @@
   from: { earliest: 89 BCE, latest: 88 BCE }
   to: 86 BCE
   sources:
+    - source: eutropius
+      locator: '5.5'
+      quote: >-
+        He next marched into Bithynia and Paphlagonia, driving out the kings,
+        Pylaemenes and Nicomedes, who were also in alliance with the Romans.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'p. 252'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It is now clear that the Mithridatic War began in 89
+      supports: [from]
+    - source: memnon
+      locator: '22.6'
+      quote: >-
+        Later, when Sulla and Marius were engaged in fighting for control of the
+        Roman state, Mithridates gave 40,000 foot-soldiers and 10,000 cavalry to
+        his general Archelaus … set off from the plain of Amaseia and marched
+        through Paphlagonia, leading an army of 150,000 men.
+      supports: [polity, from]
+    - source: livy-per
+      locator: '77'
+      quote: >-
+        had used violence against the opposing consuls Quintus Pompeius and
+        Lucius Sulla … Lucius Sulla entered the city with an army, fought a
+        battle against the factions of Sulpicius and Marius in the city itself
+      supports: [from]
+    - source: plutarch
+      locator: 'Sulla 22.5'
+      quote: >-
+        Mithridates was to renounce Asia and Paphlagonia, restore Bithynia to
+        Nicomedes and Cappadocia to Ariobarzanes
+      supports: [polity, to]
+    - source: plutarch
+      locator: 'Sulla 23.3'
+      quote: >-
+        he accepted the other terms, but demanded that Paphlagonia be not taken
+        away from him
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'pp. 261–262'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        he therefore entered into negotiations with the Pontic king which
+        occupied much of 85, as the imperator marched through Macedonia and
+        toward the Hellespont. Terms of peace were agreed upon at Dardanus in
+        the Troad late in that year.
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 264'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        We return, then, to the immediate aftermath of the settlement at
+        Dardanus in 85. … Sulla restored Nicomedes to Bithynia, and Paphlagonia
+        was added to his kingdom
+      supports: [to]
     - { source: appian, locator: 'Mithr. 18–21' }
-    - { source: plutarch, locator: 'Sulla 22.5, 23.3' }
     - { source: justin, locator: '37.4, 38.2' }
     - { source: kallet-marx-1995, locator: 'pp. 242–243' }
   confidence: probable
@@ -15776,6 +16001,10 @@
     king held is not recorded, and when the senate intervened c. 96/95 it was
     Nicomedes it took Paphlagonia from (Justin 38.2), who "was eventually able
     to spread Bithynian control over all Paphlagonia" (Kallet-Marx 243).
+    Kallet-Marx starts the war in 89 (252); Memnon has Mithridates march
+    through Paphlagonia while "Sulla and Marius were engaged in fighting for
+    control of the Roman state" (22.6), which Livy's epitome tells under the
+    consuls Pompeius and Sulla, 88 (Per. 77); hence 89–88.
 
 - atom: galatia
   polity: pontus-regnum
@@ -15783,17 +16012,50 @@
   from: 86 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 46' }
+    - source: appian
+      locator: 'Mithr. 46'
+      quote: >-
+        When Mithridates heard of this great disaster he was astonished and
+        terror-stricken … First, he put to death the tetrarchs of Galatia with
+        their wives and children … He confiscated their property, established
+        garrisons in their towns, and appointed Eumachus satrap of the nation.
+        But the tetrarchs who had escaped raised an army from the country
+        people forthwith, expelled him and his garrisons, and drove them out of
+        Galatia
+      supports: [polity, relation, from, to]
+    - source: kallet-marx-1995
+      locator: 'p. 261'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        on 1 March 86 Athens fell to the Romans, and the Pontic forces … lost
+        two disastrous battles at Chaeronea and Orchomenus in the course of the
+        year.
+      supports: [from, to]
+    - source: appian
+      locator: 'Mithr. 45'
+      quote: >-
+        Such was the result of the battle of Chaeronea between Sulla and
+        Archelaus
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
-    After his defeats in Greece Mithridates "put to death the tetrarchs of
-    Galatia with their wives and children, not only those who were united with
-    him as friends, but those who were not his subjects - all except three who
-    escaped", "established garrisons in their towns, and appointed Eumachus
-    satrap of the nation"; the survivors "expelled him and his garrisons"
-    (App. Mithr. 46), in 86 or 85. Before this the Galatians were not his
-    subjects, so the row starts with the massacre, not with 88.
+    After his defeat at Chaeronea (App. Mithr. 45), in 86 (Kallet-Marx 261),
+    Mithridates "put to death the tetrarchs of Galatia with their wives and
+    children, not only those who were united with him as friends, but those who
+    were not his subjects - all except three who escaped", "established
+    garrisons in their towns, and appointed Eumachus satrap of the nation"; the
+    survivors "forthwith" "expelled him and his garrisons" (App. Mithr. 46), so
+    the row is that one year. Before this he may have held some of Galatia:
+    Appian's "not his subjects" implies that some were; Justin has him seize
+    Galatia when he and Nicomedes shared Paphlagonia (37.4), in 108/107 by
+    Kallet-Marx (242–243), who writes of his "conquest of much, if not all of
+    Galatia"; and at Dardanus he was to give up "Paphlagonia, Galatia,
+    Cappadocia" (Kallet-Marx 262). But Galatians fought with Cassius against him
+    in 90–89 (App. Mithr. 11, 17), and no text says which tetrarchies were his
+    or when, so nothing before the massacre is drawn. The note said until
+    October 2026 that the Galatians were not his subjects before it, which
+    Appian's words do not bear.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -15970,13 +16232,67 @@
   from: { earliest: 89 BCE, latest: 88 BCE }
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 15, 60' }
-    - { source: plutarch, locator: 'Sulla 22.5' }
+    - source: eutropius
+      locator: '5.5'
+      quote: >-
+        Incensed at this reply, he immediately invaded Cappadocia, and expelled
+        from thence Ariobarzanes the king, an ally of the Roman people.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'p. 252'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        It is now clear that the Mithridatic War began in 89
+      supports: [from]
+    - source: livy-per
+      locator: '77'
+      quote: >-
+        had used violence against the opposing consuls Quintus Pompeius and
+        Lucius Sulla … King Mithridates of Pontus, having occupied Bithynia and
+        Cappadocia and having expelled governor Aquilius, invaded Phrygia
+      supports: [polity, relation, from]
+    - source: plutarch
+      locator: 'Sulla 22.5'
+      quote: >-
+        Mithridates was to renounce Asia and Paphlagonia, restore Bithynia to
+        Nicomedes and Cappadocia to Ariobarzanes
+      supports: [polity, to]
+    - source: kallet-marx-1995
+      locator: 'pp. 261–262'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        he therefore entered into negotiations with the Pontic king which
+        occupied much of 85, as the imperator marched through Macedonia and
+        toward the Hellespont. Terms of peace were agreed upon at Dardanus in
+        the Troad late in that year.
+      supports: [to]
+    - source: appian
+      locator: 'Mithr. 60'
+      quote: >-
+        Then he directed Curio to restore Nicomedes to Bithynia and Ariobarzanes
+        to Cappadocia
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 264'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        We return, then, to the immediate aftermath of the settlement at
+        Dardanus in 85. … Ariobarzanes was restored to Cappadocia, but as we
+        saw, Mithridates did not entirely relinquish the disputed region
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 15–16' }
   confidence: probable
   review: draft
   note: >-
-    His son Ariarathes "drove out Ariobarzanes" (App. Mithr. 15); Curio
-    restored him after Dardanus (60).
+    In the war Mithridates "invaded Cappadocia, and expelled from thence
+    Ariobarzanes" (Eutropius 5.5); Livy's epitome has him hold it under the
+    consuls of 88 (Per. 77), Kallet-Marx starts the war in 89 (252). Curio
+    restored Ariobarzanes after Dardanus, late in 85 (App. Mithr. 60;
+    Kallet-Marx 261–262, 264), though Mithridates kept part of the kingdom
+    (Kallet-Marx 262–264). On the eve of the war his son Ariarathes had once
+    already "drove out Ariobarzanes" (App. Mithr. 15), but the Romans
+    restored him again before the fighting (16); that brief seizure is not
+    drawn.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -15984,7 +16300,42 @@
   from: 81 BCE
   to: 79 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 66–67' }
+    - source: appian
+      locator: 'Mithr. 66'
+      quote: >-
+        Aulus Gabinius was sent to tell Murena that the former order, that he
+        should not fight Mithridates, was to be taken seriously, and to
+        reconcile Mithridates and Ariobarzanes with each other. At a conference
+        between them Mithridates betrothed his little daughter, four years old,
+        to Ariobarzanes, and improved the occasion to stipulate that he should
+        not only retain that part of Cappadocia which he then held, but have
+        another part in addition.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'p. 263'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        In 81 Gabinius arranged a meeting between the two kings at which
+        Mithridates' four-year-old daughter was betrothed to Ariobarzanes, but
+        this proved to be only a pretext under which Mithridates seized more
+        of Cappadocia.
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 67'
+      quote: >-
+        Ariobarzanes … sent thither to complain that Cappadocia had not been
+        delivered up to him, but that a greater part of it was yet retained by
+        Mithridates. Sulla commanded Mithridates to give up Cappadocia. … He did
+        so, and then sent another embassy to sign the agreements. But now Sulla
+        had just died
+      supports: [polity, to]
+    - source: kallet-marx-1995
+      locator: 'p. 263'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Significantly, once Sulla was dead the consuls of 78 refused even to
+        consider the matter further.
+      supports: [to]
     - { source: kallet-marx-1995, locator: 'p. 295' }
   confidence: uncertain
   review: needs-check
@@ -15993,7 +16344,10 @@
     he then held, but have another part in addition" (App. Mithr. 66);
     Ariobarzanes complained that "a greater part of it was yet retained by
     Mithridates", and Sulla made him give it up (67). Only part of the kingdom,
-    drawn whole; the end is Sulla's order, shortly before his death in 78.
+    drawn whole. Kallet-Marx dates Gabinius' meeting to 81 (263). The end is
+    Sulla's order, which Mithridates obeyed just before Sulla died (App. Mithr.
+    67), in 78 (Kallet-Marx 263: "once Sulla was dead the consuls of 78"); so
+    the last year is 79, though 78 cannot be ruled out.
     Tigranes' raid, when he carried the Cappadocians off to Tigranocerta
     (App. Mithr. 67; Strabo 12.2.9), in 78 or 77 (Kallet-Marx 295), is not
     drawn as a holding.
