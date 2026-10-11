@@ -17429,6 +17429,11 @@
         hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
         Tullius Cicero were consuls
       supports: [from]
+    - source: appian
+      locator: 'Mithr. 106'
+      quote: >-
+        brought under Roman rule without fighting, … also Idumea and Ituraea
+      supports: [relation]
     - source: schurer-1890
       locator: 'App. I, pp. 330–331'
       url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
