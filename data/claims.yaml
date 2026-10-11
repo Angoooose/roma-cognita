@@ -10101,11 +10101,40 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
-    - { source: bridoux-2020, locator: '¶103' }
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague … At the death of Bocchus he gave his kingdom to no one else,
+        but enrolled it among the Roman provinces.
+      supports: [polity, relation, from]
+    - source: bridoux-2020
+      locator: '¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus II se retrouve à la tête d’un vaste territoire, de l’Atlantique à
+        l’Ampsaga, sur lequel il règne jusqu’à sa mort en 33 av. J.-C.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: As mauretania-west; that this was Bocchus' at his death rests on Bridoux ¶103.
+  note: >-
+    As mauretania-west. That this was Bocchus' at his death rests on Bridoux,
+    who has his kingdom reach the Ampsaga from 38 to his death in 33 (¶103).
+    Enrolled among the provinces in Octavian's second consulship, 33 (Dio
+    49.43.6–7), and given to Juba with "the possessions of Bocchus" in Augustus'
+    ninth, 25 (53.25.3, 53.26.2), so still Rome's in 27.
 
 - atom: numidia-igilgili
   polity: mauretania-roman
@@ -10113,8 +10142,32 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
-    - { source: bridoux-2020, locator: '¶103' }
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague … At the death of Bocchus he gave his kingdom to no one else,
+        but enrolled it among the Roman provinces.
+      supports: [polity, relation, from]
+    - source: bridoux-2020
+      locator: '¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus II se retrouve à la tête d’un vaste territoire, de l’Atlantique à
+        l’Ampsaga, sur lequel il règne jusqu’à sa mort en 33 av. J.-C.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: As numidia-soummam.
@@ -10125,13 +10178,44 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: fishwick-1993, locator: '53' }
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was that
+        the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and "senatorial"
+        provinces. In a paper published in 1977 it was argued by D. Fishwick and
+        B.D. Shaw that the evidence shows Africa was already united under one
+        governor by 35 B.C.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: he entered the senate in his seventh consulship
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.12.8'
+      quote: >-
+        I have enumerated these provinces in this way because at the present
+        time each one of them is governed separately, whereas in the beginning
+        and for a long period thereafter they were administered two and three
+        together.
+      supports: [polity]
   confidence: probable
   review: draft
   note: >-
     One province with the old Africa by 27 at the latest, and perhaps from 36/35
-    (see africa-nova). The ground was Rome's either way.
+    (see africa-nova): the merger was put in 27 until Fishwick and Shaw argued
+    for 35 (Fishwick 1993, 53). Dio's list of the settlement in Augustus'
+    seventh consulship, 27, names Africa and Numidia apart, but he says he uses
+    the names of his own day for provinces then "administered two and three
+    together" (53.12.8). The ground was Rome's either way, which is why the row
+    is probable despite the dispute over its polity.
 
 - atom: numidia-cirta
   polity: africa
@@ -10139,7 +10223,34 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: fishwick-1993, locator: '53' }
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was that
+        the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and "senatorial"
+        provinces. In a paper published in 1977 it was argued by D. Fishwick and
+        B.D. Shaw that the evidence shows Africa was already united under one
+        governor by 35 B.C.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: he entered the senate in his seventh consulship
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.12.8'
+      quote: >-
+        I have enumerated these provinces in this way because at the present
+        time each one of them is governed separately, whereas in the beginning
+        and for a long period thereafter they were administered two and three
+        together.
+      supports: [polity]
   confidence: uncertain
   review: draft
   note: As numidia. Cirta was made a full Roman colony by Octavian at a date not known.
@@ -10150,15 +10261,45 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
+    - source: cassius-dio
+      locator: '51.17.1'
+      quote: >-
+        Afterwards he made Egypt tributary and gave it in charge of Cornelius
+        Gallus.
+      supports: [polity, relation]
+    - source: res-gestae
+      locator: '27.1'
+      quote: I added Egypt to the empire of the Roman people.
+      supports: [polity, relation]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria and
+        there put the finishing touch upon the civil wars.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's share
+      supports: [polity, relation, to]
     - { source: cassius-dio, locator: '51.19.6' }
-    - { source: res-gestae, locator: '27.1' }
     - { source: macrobius-sat, locator: '1.12.35' }
   confidence: certain
   review: draft
   note: >-
-    Alexandria fell in August 30. The Thebaid's revolt of 29, put down by
-    Gallus (Philae stele; Strabo 17.1.53), was a rising inside the province and
-    is not drawn.
+    Alexandria fell in the year after Actium, which was fought in the
+    consulship of Octavian and Messalla, 31 (Vell. 2.84.1, 2.87.1): 30. Egypt
+    was then made tributary under Cornelius Gallus (Dio 51.17.1), and fell to
+    Caesar's share in the settlement of 27 (53.12.7). The Thebaid's revolt of
+    29, put down by Gallus (Philae stele; Strabo 17.1.53), was a rising inside
+    the province and is not drawn.
 
 - atom: cyrenaica
   polity: cyrenaica-selene
@@ -10166,14 +10307,55 @@
   from: 34 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '49.41.3' }
-    - { source: res-gestae, locator: '27.3' }
+    - source: cassius-dio
+      locator: '49.41.3'
+      quote: >-
+        he promised to give to his own children by Cleopatra the following
+        districts: … to Cleopatra, the Cyrenaica in Libya
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: res-gestae
+      locator: '27.3'
+      quote: >-
+        I recovered all the provinces beyond the Adriatic sea towards the east,
+        together with Cyrene, the greater part of them being then occupied by
+        kings.
+      supports: [relation, to]
+    - source: plutarch
+      locator: 'Antony 54.4'
+      quote: >-
+        he declared Cleopatra Queen of Egypt, Cyprus, Libya, and Coele Syria
+      supports: [relation]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.5.6'
+      quote: >-
+        Antony, for his part, had sailed to Pinarius Scarpus in Africa and to the
+        army under Scarpus' command previously assembled there for the
+        protection of Egypt. But when this general not only refused to receive
+        him
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    Given to Cleopatra Selene at the Donations of 34; "for the most part in
-    possession of kings" when Augustus recovered it (RGDA 27.3). The Roman
-    province is drawn to 35 and again from 30.
+    Given to Cleopatra Selene at the Donations, in Antony's consular year, 34
+    (Dio 49.39.1, 49.41.3, where it is a promise); "for the most part in
+    possession of kings" when Augustus recovered it (RGDA 27.3). Plutarch gives
+    "Libya" to the queen herself, not her daughter (Antony 54.4): the sources
+    disagree on which of the two held it, though both make it a kingdom of
+    Antony's making. Lost to Antony when the army in Africa refused him after
+    Actium, 31 (Dio 51.5.6; Vell. 2.84.1). The Roman province is drawn to 35 and
+    again from 30.
 
 - atom: cyrenaica
   polity: cyrenae
@@ -10181,13 +10363,39 @@
   from: 30 BCE
   to: 28 BCE
   sources:
+    - source: res-gestae
+      locator: '27.3'
+      quote: >-
+        I recovered all the provinces beyond the Adriatic sea towards the east,
+        together with Cyrene
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '51.9.1'
+      quote: >-
+        Antony learned that Cornelius Gallus had taken over Scarpus' army and had
+        suddenly marched with these troops upon Paraetonium and occupied it.
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria and
+        there put the finishing touch upon the civil wars.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [to]
     - { source: cassius-dio, locator: '51.5.6' }
-    - { source: res-gestae, locator: '27.3' }
   confidence: probable
   review: draft
   note: >-
     Recovered after Actium; Scarpus, whose army stood "in Africa" to guard
-    Egypt, went over to Octavian (Dio 51.5.6, 51.9.1).
+    Egypt, refused Antony (Dio 51.5.6), and Gallus had his army in the spring of
+    30, before Alexandria fell (51.9.1; Vell. 2.87.1). Joined to Crete in the
+    settlement of 27 (Dio 53.12.4), so this row ends with 28.
 
 - atom: cyrenaica
   polity: creta-cyrenae
@@ -10195,9 +10403,22 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: he entered the senate in his seventh consulship
+      supports: [from]
   confidence: probable
   review: draft
+  note: >-
+    First attested in the settlement of Augustus' seventh consulship, 27 (Dio
+    53.2.7, 53.12.4); the ground passes to it then (see the polity).
 
 - atom: creta
   polity: creta-cyrenae
@@ -10205,9 +10426,20 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: he entered the senate in his seventh consulship
+      supports: [from]
   confidence: probable
   review: draft
+  note: As cyrenaica.
 
 # Lower Nubia
 
@@ -10217,22 +10449,60 @@
   from: before 68 BCE
   to: 30 BCE
   sources:
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        brought the army beyond the Nile Cataract, a region to which neither the
+        Roman people nor the kings of Egypt had marched … and installed a ruler
+        over the Triacontaschoenos on Aethiopian territory
+      supports: [polity, relation, from, to]
+    - source: philae-stele
+      locator: 'Hieroglyphic version'
+      quote: Regnal year 1, fourth month of the winter season
+      supports: [to]
+    - source: eller-2025
+      locator: 'p. 67'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        which Ptolemy VI expanded by reestablishing control over Lower Nubia up
+        to the Second Cataract
+      supports: []
+    - source: eller-2025
+      locator: 'p. 67'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        Due to the scarcity of both Egyptian and Meroitic sources, the political
+        situation in Lower Nubia during much of the fi rst century … remains di
+        ffi cult to determine
+      supports: []
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        whether the Ptolemies retained control over the entire region at the
+        time of Egypt’s annexation by Rome, or whether their authority was
+        limited to the Dodekaschoinos … suggesting that while Ptolemaic control
+        may not have extended to the Second Cataract, it likely reached at least
+        beyond Maharraqa.
+      supports: []
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: barrington, locator: 'map 81' }
-    - { source: eller-2025, locator: 'pp. 67–68' }
   confidence: uncertain
   review: needs-check
   note: >-
     Part of the kush atom until it was split out (September 2026); the row is
-    kush's. The stele of 29 has Gallus march "beyond the Nile Cataract, a region
-    to which neither the Roman people nor the kings of Egypt had marched".
-    Whether the Dodecaschoenus next to Philae was Ptolemaic before 30 is argued:
-    Burstein (Barrington map 81) puts the Egyptian–Kushite boundary at
-    Hierasykaminos for most of the period the map covers. Left at "before 68"
-    on purpose, and 133–69 unclaimed: Ptolemy VI had "reestablish[ed] control
-    over Lower Nubia up to the Second Cataract", and when the Ptolemies lost it
-    again is not known; the first century "remains difficult to determine"
-    (Eller 2025, 67–68).
+    kush's. The stele of Octavian's first Egyptian regnal year (29) has Gallus
+    march "beyond the Nile Cataract, a region to which neither the Roman people
+    nor the kings of Egypt had marched", and set a ruler over the
+    Triacontaschoenus "on Aethiopian territory": Kushite ground before him, on
+    the stele's word. Eller disagrees: Ptolemy VI had reestablished control "up
+    to the Second Cataract", and at the annexation Ptolemaic control "likely
+    reached at least beyond Maharraqa", though the first century "remains
+    difficult to determine" (2025, 67–68); Burstein (Barrington map 81) puts the
+    boundary at Hierasykaminos. The readable texts disagree on whose the
+    northern part was, which is why the row is uncertain. Left at "before 68"
+    on purpose, and 133–69 unclaimed, because when the Ptolemies lost it again
+    is not known.
 
 - atom: triakontaschoinos
   polity: triakontaschoinos
@@ -10240,13 +10510,77 @@
   from: 29 BCE
   to: after 27 BCE
   sources:
-    - { source: philae-stele }
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        received the same king under his protection , and installed a ruler
+        over the Triacontaschoenos on Aethiopian territory
+      supports: [polity, relation, from]
+    - source: philae-stele
+      locator: 'Greek version'
+      quote: >-
+        and installed a ruler over the Triakontaschoinos, a district of
+        Aethiopia
+      supports: [polity, relation]
+    - source: philae-stele
+      locator: 'Hieroglyphic version'
+      quote: Regnal year 1, fourth month of the winter season
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.19.6'
+      quote: >-
+        The day on which Alexandria had been captured they declared a lucky day,
+        and directed that in future years it should be taken by the inhabitants
+        of that city as the starting-point in their reckoning of time.
+      supports: [from]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        No sooner had the Romans taken control of Egypt than they had to confront
+        the kingdom of Meroe in … Cornelius Gallus led the repression and
+        appointed a Nubian tyrannos to govern the Triakontaschoinos.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '17.1.54'
+      quote: >-
+        The Ethiopians, emboldened in consequence of a part of the forces in
+        Egypt being drawn off by Aelius Gallus, who was engaged in war with the
+        Arabs, invaded the Thebais, and attacked the garrison, consisting of
+        three cohorts, near Syene; surprised and took Syene, Elephantine, and
+        Philae
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.28.1'
+      quote: >-
+        Augustus now became consul for the tenth time, with Gaius Norbanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.29.3'
+      quote: >-
+        While this was going on, another and a new campaign had at once its
+        beginning and its end. It was conducted by Aelius Gallus, the governor of
+        Egypt, against the country called Arabia Felix
+      supports: [to]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        the Meroites took advan- tage of the departure of half the legions
+        stationed in Egypt for Arabia to regain a foothold in Lower Nubia
+      supports: [to]
     - { source: hoffmann-2009 }
   confidence: uncertain
   review: needs-check
   note: >-
     Gallus' buffer under a ruler of his own, from Syene to the Second Cataract,
-    the region's name for its extent (see the polity).
+    the region's name for its extent (see the polity). Dated by the stele's
+    first regnal year of Caesar, the year counted from the capture of
+    Alexandria in August 30 (Dio 51.19.6), whose fourth winter month fell in the
+    spring of 29. It stood until the Meroites came back while Aelius Gallus was
+    in Arabia: 25 to Eller (p. 68), Augustus' tenth consulship, 24, to Dio
+    (53.28.1, 53.29.3; Strabo 17.1.54). Either way it was in force in 27.
 
 - atom: pontus-inner
   polity: bithynia-pontus
@@ -10254,13 +10588,48 @@
   from: 63 BCE
   to: 37 BCE
   sources:
-    - { source: strabo, locator: '12.3.1' }
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        this country was comprised within these boundaries when Pompey took it
+        over, upon his overthrow of Mithridates. … the remaining parts he divided
+        into eleven states and added them to Bithynia, so that out of both there
+        was formed a single province.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and Mithridates
+        no longer caused any injury to the Romans, but had destroyed himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … Polemo, however, was provided with other
+        dominions, namely that portion of Pontus which lay east of the river
+        Iris, and he also received the title of King.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Nevertheless, he did not receive all of the province which Pompey had
+        formed out of the former Pontic kingdom.
+      supports: [polity, relation]
     - { source: hojte-2009 }
   confidence: probable
   review: draft
   note: >-
     Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Pompey's settlement.
+    Pompey's settlement: he took the kingdom over on the fall of Mithridates
+    and joined it to Bithynia as one province (Strabo 12.3.1), in the year
+    Cicero and Antonius were consuls, 63 (Dio 37.10.4). Divided among kings and
+    priests when Polemon was given Pontus east of the Iris in 37/36 (Magie I
+    434–435). Darius, king "in Pontus" from 39, held Phazimonitis to the west
+    (Magie I 434); how much else of this ground was his in 39–37 is not known,
+    so the province is drawn to 37.
 
 - atom: pontus-inner
   polity: pontus-regnum
@@ -10268,15 +10637,56 @@
   from: 88 BCE
   to: 66 BCE
   sources:
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        As for Pontus, Mithridates Eupator established himself as king of it; and
+        he held the country bounded by the Halys River as far as the Tibarani
+        and Armenia
+      supports: [polity]
+    - source: strabo
+      locator: '12.3.30'
+      quote: >-
+        It was at Cabeira that the palace of Mithridates was built, and also the
+        water-mill
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        the first civil war began at Rome; and in the same year also the
+        Mithridatic war. … for when Sulla. the consul, was sent to conduct the war
+        against Mithridates
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '36.50.1'
+      quote: Failing, therefore, of the expected refuge, he turned aside into Colchis
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus, Pompey engaged in warfare with both the Albanians and
+        the Iberians.
+      supports: [to]
     - { source: appian, locator: 'Mithr. 17–21, 55–58, 88–89, 99–100' }
     - { source: cassius-dio, locator: '36.9–12' }
   confidence: probable
   review: draft
   note: >-
     Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    At war with Rome from 89. The kingdom went on while Lucullus held it in
-    71–69 (the occupation is its own row); Mithridates slipped back in 68, won
-    back "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66.
+    Mithridates' own country, with his palace at Cabeira (Strabo 12.3.30). At
+    war with Rome from 89; Rome declared war in Sulla's consulship, 88 (App.
+    Mithr. 22; Eutr. 5.4). The kingdom went on while Lucullus held it in 71–69
+    (the occupation is its own row); Mithridates slipped back in 68, won back
+    "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66, the year
+    before Cotta and Torquatus' consulship (36.50.1, 37.1.1).
 
 - atom: pontus-inner
   polity: bosporus
@@ -10284,14 +10694,44 @@
   from: 48 BCE
   to: 47 BCE
   sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces. … This victory made Pharnaces master of Pontus. Following up
+        his success, he overran the kingdom of his ancestors
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '42.46.3'
+      quote: after acquiring all the rest of Pontus, captured Amisus also
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
     - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
-    - { source: cassius-dio, locator: '42.45–47' }
   confidence: certain
   review: draft
   note: >-
     Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, until
-    Caesar broke him at Zela in August 47.
+    Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, in the
+    autumn of 48 (Magie I 409), until Caesar, who reached Tarsus in 47 (Magie I
+    410), broke him at Zela in August 47.
 
 - atom: lycaonia
   polity: cilicia
@@ -10299,21 +10739,74 @@
   from: 75 BCE
   to: 44 BCE
   sources:
-    - { source: broughton-mrr, locator: vol. II }
-    - { source: livy-per, locator: '93' }
-    - { source: strabo, locator: '12.6.2' }
-    - { source: dmitriev-2000 }
+    - source: livy-per
+      locator: '93'
+      quote: In Cilicia, proconsul Publius Servilius conquered the Isaurians
+      supports: [polity, relation]
+    - source: strabo
+      locator: '12.6.2'
+      quote: >-
+        To Lycaonia belongs also Isaurice, near the Taurus itself … They were a
+        source of much trouble to the Romans and in particular to Publius
+        Servilius, surnamed Isauricus, with whom I was acquainted; he subjected
+        these places to the Romans
+      supports: [polity, relation]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., pp. 96–99'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … L. Octavius On. f. C. n. … Proconsul in Cilicia (see 78-76,
+        Promagistrates). In 75 may be placed his advance across the Taurus and
+        reduction of the Isaurians on the northern slopes
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        it seems evident that at least the highland-country of Isauria, which
+        had been overrun during the brilliant expedition of Servilius Isauricus,
+        … was still included within its boundaries
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        an addition which pre- supposes the inclusion also of at least the
+        western part of Lycaonia with its judiciary centre, Iconium, as well as
+        the neighbouring Phrygia Paroreius. But whether this region was added to
+        Cilicia by Pompey or whether it was incorporated later, together with
+        the three Phrygian dioceses, cannot be determined.
+      supports: [polity, relation]
+    - source: dmitriev-2000
+      locator: 'p. 349'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        By the mid-first century B.C., the district of Lycaonia had been attached
+        to the province of Cilicia, which was governed by Cicero in 51/0.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It has been previously observed that the province of Cilicia was probably
+        dismembered soon after Caesar's death.
+      supports: [to]
     - { source: sherwin-white-1976, locator: 'n. 61' }
   confidence: uncertain
   review: needs-check
   note: >-
     Part of the cilicia atom until lycaonia was split from it (September 2026); the row was cilicia's.
-    When Lycaonia passed from Asia to Cilicia is not recorded; Dmitriev says
-    only that it had been attached to Cilicia "by the mid-first century B.C."
-    Dated from P. Servilius, proconsul of Cilicia, who "in Cilicia Isauros
-    domuit" in 75 (Livy Per. 93) — Isauria belonged to Lycaonia (Strabo 12.6.2);
-    Marcius Rex, governor of Cilicia, was in Lycaonia in 67 (a fragment of
-    Sallust's Histories, as Sherwin-White 1976 n. 61 cites it; not read).
+    When the Lycaonian steppe passed from Asia to Cilicia is not recorded: in
+    Cilicia by 56, perhaps from Pompey (Magie I 376), "by the mid-first century
+    B.C." (Dmitriev 349). The row is dated from the Isaurian part of the atom:
+    Isaurice "belongs to Lycaonia" (Strabo 12.6.2), and P. Servilius,
+    proconsul in Cilicia, conquered the Isaurians (Livy Per. 93), the campaign
+    Broughton places in 75 (MRR II 99); Isauria was still in the province
+    under Pompey (Magie I 376). So the start is backed for Isauria only.
+    Marcius Rex, governor of Cilicia, went through Lycaonia in 67 (a fragment of
+    Sallust's Histories, as Sherwin-White 1976 n. 61 cites it; not read). The
+    province "was probably dismembered soon after Caesar's death" (Magie I
+    433).
 
 - atom: pisidia
   polity: cilicia
@@ -10321,15 +10814,55 @@
   from: 80 BCE
   to: 44 BCE
   sources:
-    - { source: broughton-mrr, locator: vol. II }
-    - { source: cicero-verr, locator: '2.1.95' }
+    - source: cicero-verr
+      locator: '2.1.44'
+      quote: After Cilicia was appointed to Cnaeus Dolabella as his province
+      supports: [polity, relation]
+    - source: cicero-verr
+      locator: '2.1.95'
+      quote: >-
+        But how he as proquaestor harassed the republic of the Milyades, how he
+        oppressed Lycia, Pamphylia, Pisidia, and all Phrygia, in his levying
+        corn from them
+      supports: [polity]
+    - source: broughton-mrr
+      locator: 'vol. II, pp. 79–80'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls L. CoRNELIUS L. f. P. n. SULLA FELIX Pat. … Q. CaEcrLIUS Q. f. L.
+        n. METELLUS Prus … Cw. CORNELIUS DOLABELLA Pat. … Pr. … Proconsul
+        (Ps.-Ascon. … Stangl; Schol. Gron. … Stangl) in Cilieia
+      supports: [relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 418'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It is not improbable that Caesar originated the plan for the dis-
+        memberment of the large and unwieldy province of Cilicia which seems to
+        have been put into execution after his death. … Further reductions were
+        made when Pamphylia also was combined with Asia and with it, doubtless
+        in order to connect the two, a portion of the mountain- region of Milyas
+        and Pisidia.
+      supports: [polity, relation, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It has been previously observed that the province of Cilicia was probably
+        dismembered soon after Caesar's death.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Part of the cilicia atom until pisidia was split from it (September 2026); the row was cilicia's.
-    Dated from Dolabella's province, when his pro-quaestor Verres levied grain
-    on "Lyciam, Pamphyliam, Pisidiam Phrygiamque totam" (Verr. 2.1.95); who held
-    the lake district before is not known, and it is unclaimed.
+    Dated from Dolabella's province (Verr. 2.1.44), proconsul in Cilicia in the
+    year Sulla and Metellus Pius were consuls, 80 (MRR II 79–80), when his
+    pro-quaestor Verres levied grain on "Lyciam, Pamphyliam, Pisidiam
+    Phrygiamque totam" (Verr. 2.1.95). The levy shows Pisidia under the
+    governor's hand, not that it was his province in form (Lycia was free).
+    Part of Pisidia went to Asia when Cilicia was dismembered after Caesar's
+    death (Magie I 418, 433). Who held the lake district before 80 is not
+    known, and it is unclaimed.
 
 - atom: pontus-inner
   polity: pontus-polemon
@@ -10337,18 +10870,79 @@
   from: 36 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.25.4' }
-    - { source: strabo, locator: '12.3.39' }
-    - { source: magie-1950, locator: 'vol. I, 434–435' }
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of these perhaps the most important were his arrangements concerning
+        the client-kingdoms.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … Polemo, however, was provided with other
+        dominions, namely that portion of Pontus which lay east of the river
+        Iris, and he also received the title of King.
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It is highly probable that, together with eastern Pontus, Polemo
+        obtained from Antony the cities of Amaseia and Amisus
+      supports: [polity]
+    - source: strabo
+      locator: '12.3.39'
+      quote: Amaseia was also given to kings, though it is now a province.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.24.1'
+      quote: >-
+        During the remainder of the winter, when Gellius and Nerva were now
+        holding office
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.25.4'
+      quote: >-
+        slew his whole detachment, with the exception of Polemon, king of
+        Pontus, who was then accompanying Statianus
+      supports: [polity, from]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When in late 37 or 36 Polemo left for Pontus which he received from
+        Antony who had taken it away from Darius, son of Pharnaces
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Archelaus and Polemo were likewise per- mitted to keep their kingdoms of
+        Cappadocia and Pontus. Polemo, indeed, was punished by a delay in
+        confirming his position, for it was not until four years later — in 26
+        b.c. — that he was formally declared a “friend and ally” of Rome.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.25.1'
+      quote: >-
+        In this same year Polemon, the king of Pontus, was enrolled among the
+        friends and allies of the Roman people
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    Polemon was "king of Pontus" by 36 (Dio 49.25.4), with "that portion of
-    Pontus which lay east of the river Iris" and very probably Amaseia (Magie I
-    434–435); Amaseia "was also given to kings" (Strabo 12.3.39). Inside this
-    ground Zela was a temple state again and Ateporix had a small principality
-    (Strabo 12.3.37), neither of which can be drawn apart. What Darius held of
-    it in 39–37 is not known, so the province is drawn to 37.
+    Polemon was given "that portion of Pontus which lay east of the river Iris"
+    in 37/36 and very probably Amaseia (Magie I 434–435); Amaseia "was also
+    given to kings" (Strabo 12.3.39). He was "king of Pontus" in Antony's
+    campaign of the year Gellius and Nerva were consuls, 36 (Dio 49.24.1,
+    49.25.4). Kept his kingdom after Actium, and was enrolled a friend and ally
+    in 26 (Magie I 443; Dio 53.25.1). Inside this ground Zela was a temple state
+    again and Ateporix had a small principality (Strabo 12.3.37), neither of
+    which can be drawn apart. What Darius held of it in 39–37 is not known, so
+    the province is drawn to 37.
 
 - atom: galatia-pontus
   polity: pontus-polemon
@@ -10356,16 +10950,64 @@
   from: 39 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: strabo, locator: '12.3.29' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute: in Pontus, Darius, the son of Pharnaces and
+        grandson of Mithridates
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: In 39 B.C. Antony made Polemo king
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The portion of Pontus, on the other hand, which had belonged to the late
+        King, namely the coast region of Pharnaceia and Trebizond with its rich
+        hinterland, was assigned to the Pontic prince Darius
+      supports: [polity]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When in late 37 or 36 Polemo left for Pontus which he received from
+        Antony who had taken it away from Darius, son of Pharnaces
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Archelaus and Polemo were likewise per- mitted to keep their kingdoms of
+        Cappadocia and Pontus.
+      supports: [to]
+    - source: strabo
+      locator: '12.3.29'
+      quote: >-
+        Pharnacia and Trapezus are ruled by Pythodoris … She became the wife of
+        Polemon and reigned along with him for a time
+      supports: [polity, to]
   confidence: probable
   review: draft
   note: >-
     Deiotarus' Pontic coast with Pharnacia and Trapezus went to Darius son of
-    Pharnaces in 39 (App. BC 5.75; Magie I 433), and from 37/36 to Polemon;
-    Polemon's widow Pythodoris later held "Pharnacia and Trapezus" (Strabo
-    12.3.29).
+    Pharnaces (Magie I 433), one of the kings Antony set up "on condition of
+    their paying a prescribed tribute" (App. BC 5.75) in the year of Marcius
+    and Sabinus, 39 (Dio 48.34.1; Dmitriev 370, "In 39 B.C."), and from 37/36
+    to Polemon, who kept it after Actium (Magie I 443). Polemon's widow
+    Pythodoris later held "Pharnacia and Trapezus" (Strabo 12.3.29). The year
+    39 rests on Appian's placing the grants after the treaty of Misenum, which
+    Dio puts in that consulship.
 
 - atom: armenia-minor
   polity: pontus-polemon
@@ -10373,15 +11015,50 @@
   from: 33 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '49.33.2' }
-    - { source: cassius-dio, locator: '49.44.3' }
+    - source: cassius-dio
+      locator: '49.33.1–2'
+      quote: >-
+        the following year, when Pompeius and Cornificius were consuls … had
+        sent Polemon to him requesting his friendship and alliance. … and later
+        gave Polemon Lesser Armenia as a reward for his mission
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.44.3'
+      quote: After this Antony bestowed upon Polemon, as I have stated, Lesser Armenia
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        He lost, moreover, the territory which had been given to him in Armenia
+        Minor.
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.2.1'
+      quote: >-
+        He deprived all the princes and kings except Amyntas and Archelaus of
+        the lands which they had received from Antony
+      supports: [to]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Promised to Polemon for his embassy to the Mede in 35 (Dio 49.33.2) and
-    given in 33: "Antony bestowed upon Polemon, as I have stated, Lesser
-    Armenia" (49.44.3). Who held it in 39–34 after Deiotarus is not recorded,
-    and it is left unclaimed.
+    Promised to Polemon for his embassy to the Mede in 35 (Dio 49.33.1–2) and
+    given in Octavian's second consulship, 33: "Antony bestowed upon Polemon,
+    as I have stated, Lesser Armenia" (49.43.6, 49.44.3). Taken from him after
+    Actium, 31 (Dio 51.2.1; Magie I 443; Vell. 2.84.1). Who held it in 39–34
+    after Deiotarus is not recorded, and it is left unclaimed.
 
 - atom: armenia-minor
   polity: armenia-minor-artavasdes
@@ -10389,16 +11066,50 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '54.9.2' }
-    - { source: magie-1950, locator: 'vol. I, 443' }
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        He lost, moreover, the territory which had been given to him in Armenia
+        Minor. This was presented to Artavasdes, the former king of Media
+        Atropatene
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        Of his own accord he restored Iotape to the Median king, who had found
+        an asylum with him after his defeat
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria and
+        there put the finishing touch upon the civil wars.
+      supports: [from]
+    - source: cassius-dio
+      locator: '54.7.4'
+      quote: >-
+        in the spring of the year when Marcus Apuleius and Publius Silius were
+        consuls, he went on into Asia
+      supports: [to]
+    - source: cassius-dio
+      locator: '54.9.2'
+      quote: >-
+        These latter together with Lesser Armenia he granted to Archelaus,
+        because the Mede, who previously had ruled them, was dead.
+      supports: [polity, relation, to]
   confidence: uncertain
   review: needs-check
   note: >-
     Taken from Polemon after Actium and "presented to Artavasdes, the former
-    king of Media Atropatene" (Magie I 443), who had fled to Octavian (Dio
-    51.16.2). Dio says it passed to Archelaus in 20 "because the Mede, who
-    previously had ruled them, was dead" (54.9.2). The year of the gift is not
-    recorded.
+    king of Media Atropatene" (Magie I 443), who was with Octavian in Egypt in
+    30 (Dio 51.16.2; Vell. 2.87.1). Dio says it passed to Archelaus in the
+    consulship of Apuleius and Silius, 20, "because the Mede, who previously had
+    ruled them, was dead" (54.7.4, 54.9.2). The year of the gift is not
+    recorded: any year from 30 to 21. Drawn from 30, the earliest the texts
+    allow and the year after Polemon's row ends, rather than from the range's
+    middle, which would leave the ground blank; that it was his by 27 is not
+    attested.
 
 - atom: lycaonia
   polity: lycaonia-polemon
@@ -10406,16 +11117,64 @@
   from: 39 BCE
   to: 37 BCE
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: strabo, locator: '12.6.1' }
-    - { source: dmitriev-2000, locator: 'pp. 370–371' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute … in a part of Cilicia, Polemon
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        In 39 B.C. Antony made Polemo king by giving him a “part of Cilicia.”
+        Strabo says that this Polemo I was in control of Iconium at that time.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '12.6.1'
+      quote: >-
+        In this neighborhood is also Iconium, a town that is well settled and
+        has a more prosperous territory than the above-mentioned ass-grazing
+        country. This place was held by Polemon.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the arid steppe of Lycaonia together with the city of Iconium and
+        perhaps the adjacent part of Cilicia Aspera to Polemo
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … The extension of Amyntas’s dominions to
+        Lycaonia meant, of course, that the district was lost to Polemo.
+      supports: [to]
+    - source: dmitriev-2000
+      locator: 'p. 364'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When Polemo left for Pontus in late 37 or 36, Iconium went over to
+        Amyntas
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    "In a part of Cilicia, Polemon" (App. BC 5.75): Iconium "was held by
-    Polemon" (Strabo 12.6.1), and his Cilicia "stretched from Iconium to
-    Trachea" (Dmitriev 370–371). Where it ended is not recorded; the whole of
-    Lycaonia is drawn his.
+    "In a part of Cilicia, Polemon" (App. BC 5.75), one of the kings Antony set
+    up after Misenum, in the year of Marcius and Sabinus, 39 (Dio 48.34.1;
+    Dmitriev 370): Iconium "was held by Polemon" (Strabo 12.6.1), and his
+    Cilicia "stretched from Iconium to Trachea" (Dmitriev 371). Lost to Amyntas
+    in 37/36 (Magie I 434; Dmitriev 364), so drawn to 37. Where it ended is not
+    recorded; the whole of Lycaonia is drawn his.
 
 - atom: lycaonia
   polity: galatia
@@ -10423,17 +11182,70 @@
   from: 36 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.32.3' }
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        Antony, in addition to making the arrangements mentioned above, assigned
+        principalities, giving Galatia to Amyntas, though he had been only the
+        secretary of Deiotarus, and also adding to his domain Lycaonia with
+        portions of Pamphylia
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Galatia, on the other hand, did not pass to Castor’s heir. Antony,
+        evidently regarding Amyntas as a more valuable supporter, presented the
+        district to him, conferring on him also the title of King. … His
+        kingdom was increased by the addition of Lycaonia
+      supports: [polity, relation]
+    - source: dmitriev-2000
+      locator: 'p. 364'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When Polemo left for Pontus in late 37 or 36, Iconium went over to
+        Amyntas who controlled Galatia and Lycaonia up to the Taurus. After the
+        death of Amyntas in 25, his whole king- dom, including Lycaonia, was
+        transformed into the province of Galatia
+      supports: [polity, from, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the possession
+        of their kingdoms
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory. Thus Galatia
+        together with Lycaonia obtained a Roman governor
+      supports: [polity, to]
     - { source: strabo, locator: '12.6.3' }
-    - { source: dmitriev-2000, locator: 'p. 364' }
   confidence: probable
   review: draft
   note: >-
-    Amyntas received Galatia "with Lycaonia" (Dio 49.32.3): "when Polemo left
+    Amyntas received Galatia "with Lycaonia" (Dio 49.32.3) in the year before
+    the consulship of Pompeius and Cornificius, 36 (49.33.1): "when Polemo left
     for Pontus in late 37 or 36, Iconium went over to Amyntas" (Dmitriev 364).
-    He "received Isaura from the Romans" and built a palace there (Strabo
-    12.6.3), perhaps only after Actium (Magie I 443); Isauria is drawn with
-    Lycaonia from 36.
+    Confirmed in his kingdom after Actium (Magie I 443), he held Lycaonia until
+    his death in Augustus' ninth consulship, 25 (Dio 53.25.3, 53.26.3). He
+    "received Isaura from the Romans" and built a palace there (Strabo 12.6.3),
+    perhaps only after Actium (Magie I 443); Isauria is drawn with Lycaonia
+    from 36.
 
 - atom: pisidia
   polity: pisidia-amyntas
