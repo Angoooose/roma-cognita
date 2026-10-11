@@ -3713,7 +3713,7 @@
   names:
     - { text: Scythae, lang: la, preferred: true }
   from: before 133 BCE
-  to: after 27 BCE
+  to: after 63 BCE
   ruler: Scilurus; his son Palacus, fl. c. 110–107
   sources:
     - source: strabo
@@ -3746,7 +3746,11 @@
     The Crimean Scythians, with their royal seat at Neapolis. Scilurus and his
     sons, "fifty in number" according to Poseidonius (Strabo 7.4.3), fought
     Diophantus for Mithridates c. 110–107; "Palakos, king of the Scythians" in
-    the decree. Subject to Mithridates from then (claims.yaml).
+    the decree. Subject to Mithridates from then (claims.yaml). It ran "after
+    27 BCE" until the October 2026 check: no citation backed an end, and no
+    text read has the Scythians of the peninsula as a kingdom after
+    Mithridates' death in 63, where their last claim already ends. The start,
+    "before 133", still rests on the decree's commentary alone (claims.yaml).
 
 - id: chersonesus
   kind: city-state
@@ -4290,7 +4294,7 @@
   kind: people
   names:
     - { text: Helvetii, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 107 BCE
   to: 52 BCE
   sources:
     - source: caesar-bg
@@ -4307,7 +4311,7 @@
         In the country of the Nitiobriges , consul Lucius Cassius [Longinus] was
         massacred with his army by the Gallic Tigurini , a Helvetian tribe that
         had left its own country.
-      supports: [kind]
+      supports: [kind, from]
     - source: caesar-bg
       locator: '7.75'
       quote: >-
@@ -4323,15 +4327,31 @@
     Their Tigurini joined the Cimbri and killed the consul L. Cassius among the
     Nitiobriges in 107 (Livy Per. 65; BG 1.12). Tacitus puts the Helvetii of an
     earlier age between the Rhine and the Main (Germania 28); when they settled
-    the plateau Caesar knew is not recorded.
+    the plateau Caesar knew is not recorded. It read "before 133" until the
+    October 2026 check, which found no text naming them before 107, the year
+    the polity's claim already starts from.
 
 - id: sequani
   kind: people
   names:
     - { text: Sequani, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 61 BCE
   to: 52 BCE
   sources:
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        In the consulship of Marcus Messalla and Marcus Piso … on another the
+        Jura range, exceeding high, lying between Sequani and the Helvetii
+      supports: [kind, from]
+    - source: caesar-bg
+      locator: '1.3'
+      quote: >-
+        Casticus, of the Sequani, son of Catamantaloedes, who had held for many
+        years the kingship of the Sequani, and had been called by the Senate
+        “the friend of the Roman people,” to seize in his own state the
+        kingship which his father had held before him
+      supports: [kind, from]
     - source: caesar-bg
       locator: '1.31'
       quote: >-
@@ -4363,6 +4383,11 @@
     - { source: fichtl-2004 }
   confidence: certain
   review: draft
+  note: >-
+    First dated in 61, when Casticus, son of the Sequani's long-reigning king,
+    is named (BG 1.2–3). It read "before 133" until the October 2026 check:
+    no text read has them in 133, though Strabo has them "for long" at
+    enmity with Rome (4.3.2), and their claim already started at 61.
 
 - id: aedui
   kind: people
@@ -4404,7 +4429,7 @@
   kind: people
   names:
     - { text: Arverni, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 121 BCE
   to: 52 BCE
   ruler: Bituitus, son of Luerius, king to 121
   sources:
@@ -4424,7 +4449,7 @@
         the army of Bituitus , 120,000 men were killed; after the king himself
         had gone to Rome to make peace with the Senate, he was kept in custody at
         Alba
-      supports: [ruler]
+      supports: [ruler, from]
     - source: caesar-bg
       locator: '1.45'
       quote: >-
@@ -4456,7 +4481,10 @@
     Pyrenees, the Ocean and the Rhine (Strabo 4.2.3); that hegemony has no
     extent anyone can draw and is not claimed. Beaten by Domitius and Fabius in
     121, Bituitus was held at Alba (Livy Per. 61), but the Arverni were
-    pardoned and neither made a province nor taxed (BG 1.45).
+    pardoned and neither made a province nor taxed (BG 1.45). It read "before
+    133" until the October 2026 check: the first dated text is Fabius' war in
+    121 (Per. 61, by his consulship), the year their claim starts from;
+    Luerius' reign, which Strabo puts before Bituitus', is undated.
 
 - id: vaccaei
   kind: people
@@ -4515,7 +4543,7 @@
   kind: people
   names:
     - { text: Astures, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 29 BCE
   to: after 27 BCE
   sources:
     - source: florus
@@ -4525,11 +4553,16 @@
         freedom from the rule of Rome .
       supports: [kind, to]
     - source: cassius-dio
+      locator: '51.20.1'
+      quote: >-
+        when he was consul for the fifth time, with Sextus Apuleius
+      supports: [from]
+    - source: cassius-dio
       locator: '51.20.5'
       quote: >-
         there were still under arms the Treveri , who had brought in the Germans
         to help them, and the Cantabri , the Vaccaei , and the Astures
-      supports: [kind]
+      supports: [kind, from]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
     - { source: suetonius-aug, locator: '26.3' }
@@ -4540,7 +4573,8 @@
     Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
     29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
     (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
-    53.25.8).
+    53.25.8). It read "before 133" until the October 2026 check: the first text
+    with them is Dio's for 29, the year their claim starts from.
 
 - id: cantabri
   kind: people

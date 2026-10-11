@@ -2562,7 +2562,7 @@
         included within his boundaries, in addition to the sacred land, a
         territory of two schoeni (that is, sixty stadia) in circuit and ordered
         the inhabitants to obey his rule
-      supports: [construction]
+      supports: []
     - source: strabo
       locator: '12.3.35'
       quote: >-
@@ -2580,7 +2580,9 @@
     in circuit" (12.3.34), some 11 km round, far smaller than the outline
     drawn, and Lycomedes' later addition as four hundred schoeni (12.3.35),
     far larger; the outline sits between the two and follows neither (noted
-    October 2026).
+    October 2026). 12.3.34 no longer lists `construction` (the October 2026
+    check): the outline rests only on Strabo's naming the town (12.3.32), and
+    its size is a convention.
 
 - id: pontus-inner
   evidence: schematic
@@ -5228,7 +5230,7 @@
       locator: '1.53'
       quote: >-
         a woman of Noricum, sister to King Voccio
-      supports: [construction]
+      supports: []
     - source: strabo
       locator: '7.1.5'
       quote: >-
