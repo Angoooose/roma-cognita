@@ -59,12 +59,12 @@
         and Nero all studied and attempted to open the canal, but without
         success.
       supports: [op, from, to]
-    - { source: corinth-canal-1893 }
   confidence: certain
   review: needs-check
   note: >-
-    Cut 1881–93. In the Republic the isthmus was crossed by hauling ships on
-    the diolkos. The source is a placeholder citation to be replaced.
+    The modern canal was cut in the 1880s and opened in 1893 (1880–1893 on the
+    Corinth municipality's page). In the Republic the isthmus was crossed by
+    hauling ships on the diolkos, and every attempt at a canal failed.
 
 - id: lake-tharthar
   op: remove-water
