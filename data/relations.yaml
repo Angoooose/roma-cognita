@@ -1731,8 +1731,29 @@
   from: 63 BCE
   to: 37 BCE
   sources:
+    - source: josephus-aj
+      locator: '14.39'
+      quote: >-
+        took cognizance of the country of Ptolemy Menneus, a wicked man … yet
+        did he buy off the punishment of his crimes for a thousand talents, with
+        which money Pompey paid the soldiers their wages.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        he had acknowledged as his own some of her children … and because he had
+        presented them with extensive portions of Arabia, in the districts both
+        of Malchus and of the Ituraeans (for he executed Lysanias, whom he
+        himself had made king over them, on the charge that he had favoured
+        Pacorus)
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [to]
     - { source: sullivan-1990 }
-    - { source: josephus-aj, locator: '14.39' }
   confidence: uncertain
   review: needs-check
   note: From Ptolemy's submission to Pompey in 63.
