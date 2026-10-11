@@ -271,7 +271,8 @@
   to: 88 BCE
   ruler: >-
     two consuls a year and a senate of 500 (Diodorus 37.2.5–6): Q. Poppaedius
-    Silo the Marsian and C. Papius Mutilus the Samnite, 90
+    Silo the Marsian and C. Papius Mutilus the Samnite, the first chosen, 91
+    or 90
   sources:
     - source: diodorus
       locator: '37.2.2'
@@ -356,7 +357,9 @@
     Velleius the rising, Asculum's first, to the consuls L. Caesar and
     Rutilius, 90 (2.15.1). It stays 91, since the claims on the allied
     atoms start then, but is probable, not certain, until they can be made a
-    range with it (October 2026). Drawn in a colour of its own: an independent
+    range with it (October 2026). The ruler named Silo and Mutilus consuls
+    for 90 until then: Diodorus has them chosen "at this time", as the war
+    began (37.2.6), and gives no year of their own. Drawn in a colour of its own: an independent
     power at war with Rome, not an ally.
 
 # The two slave kingdoms of Sicily are drawn as seats (seats.yaml): each held
