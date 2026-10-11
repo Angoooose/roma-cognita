@@ -188,10 +188,57 @@
   of: rome
   from: 74 BCE
   to: after 27 BCE
-  sources: [{ source: magie-1950 }, { source: broughton-mrr, locator: vol. II }]
+  sources:
+    - source: eutropius
+      locator: '6.6'
+      quote: >-
+        in the consulate of Lucius Licinius Lucullus and Marcus Aurelius Cotta .
+        Nicomedes , king of Bithynia , died, appointing by his will the Roman
+        people his heir.
+      supports: [of, from]
+    - source: livy-per
+      locator: '93'
+      quote: >-
+        King Nicomedes of Bithynia made the Roman nation his heir and his kingdom
+        was transformed into a province.
+      supports: [type, of]
+    - source: appian
+      locator: 'Mithr. 71'
+      quote: >-
+        Nicomedes had lately died childless and bequeathed his kingdom to the
+        Romans. Cotta , its governor, was a man altogether unwarlike.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Bithynia with Pontus which adjoined it, Sardinia and Baetica were held to
+        belong to the people and the senate
+      supports: [type, of, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 320'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        When he died, in 74, it was found that he had bequeathed his king- dom to
+        the Roman people. … ordered the governor of Asia, Marcus Juncus, to take
+        over Bithynia and organize it as a province of Rome.
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. II, p. 106'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Nicomedes died in the consulship of Lucullus and Cotta, and the evidence
+        of Bithynian coins indicates that the date was at any rate later than
+        October of 75. It may have been very early in 74 or even, given some
+        slight inexactitude on the part of Eutropius, have occurred at the end of
+        75.
+      supports: []
   confidence: certain
   review: draft
-  note: Bithynia from the bequest of 74; with Pontus from Pompey's settlement of 63.
+  note: >-
+    Bithynia from the bequest of 74; with Pontus from Pompey's settlement of 63.
+    Eutropius dates the death to the consuls of 74 and Magie follows him;
+    Broughton allows the end of 75 (an open question for the project's owner,
+    left at 74).
 
 - polity: gallia-comata
   type: province-of
@@ -467,11 +514,46 @@
 - polity: emesa
   type: client-of
   of: rome
-  from: 64 BCE
+  from: before 51 BCE
   to: 31 BCE
-  sources: [{ source: sullivan-1990 }]
+  sources:
+    - source: cicero-fam
+      locator: '15.1.2'
+      quote: >-
+        a despatch on the same subject reached me from Iamblichus , phylarch of
+        the Arabians , who is generally considered to be well-disposed and
+        friendly to our Republic.
+      supports: [type, of, from]
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        Arethusa , belonging to Sampsiceramus and Iamblichus his son, chiefs of
+        the tribe of the Emeseni .
+      supports: []
+    - source: josephus-aj
+      locator: '14.129'
+      quote: >-
+        on his account it was that all the Syrians assisted him also, as not
+        willing to appear behindhand in their alacrity for Caesar , viz.
+        Iamblicus the ruler
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '50.13.7'
+      quote: >-
+        For this reason he tortured and put to death, among others, Iamblichus ,
+        king of a tribe of the Arabians
+      supports: [to]
+    - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
+  note: >-
+    Strabo names Sampsiceramus and Iamblichus as the Emeseni's chiefs, so
+    Cicero's and Dio's Iamblichus "of the Arabians" is Emesa's. Dio puts
+    Antony's killing of him in the year of Caesar and Messalla's consulship
+    (50.10.1), 31. The start was 64 (Pompey's settlement, after Sullivan) until
+    October 2026: no readable text dates the tie to 64, so it now opens at its
+    first attestation, Cicero's despatch from Cilicia in his proconsulship of 51,
+    when the Parthians crossed the Euphrates.
 
 - polity: osroene
   type: client-of
@@ -512,18 +594,104 @@
   of: rome
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: mitchell-2005 }]
+  sources:
+    - source: appian
+      locator: 'Mithr. 61'
+      quote: >-
+        Sulla bestowed freedom on the inhabitants of Ilium , Chios , Lycia ,
+        Rhodes , Magnesia , and some others, either as a reward for their
+        cooperation, or a recompense for what they had bravely suffered on his
+        account, and inscribed them as friends of the Roman people.
+      supports: [type, of]
+    - source: mitchell-2005
+      locator: 'SEG 55.1452, preamble'
+      url: https://www.attalus.org/docs/seg/s55_1452.html
+      quote: >-
+        [this oath] was accomplished on the 9th day before the Kalends of
+        Sextilis {24 July 46 B.C.} according to the law of Caesar in the comitium
+        [by the Romans] and Lycians
+      supports: [of]
+    - source: appian
+      locator: 'BC 4.61'
+      quote: >-
+        The Rhodians and the Lycians said that they would help neither Cassius
+        nor Brutus in civil wars
+      supports: []
+    - source: cassius-dio
+      locator: '47.33.1'
+      quote: >-
+        Ariobarzanes , the Rhodians , and the Lycians , while not opposing them,
+        were yet unwilling to form an alliance with them.
+      supports: []
+    - source: appian
+      locator: 'BC 5.7'
+      quote: >-
+        He released the Lycians from taxes altogether, and urged the rebuilding of
+        Xanthus .
+      supports: []
+    - source: strabo
+      locator: '14.3.3'
+      quote: >-
+        In earlier times they would deliberate about war and peace and alliances,
+        but now they naturally do not do so, since these matters necessarily lie
+        in the power of the Romans … they remained ever free under the Romans,
+        thus retaining their ancestral usages
+      supports: []
   confidence: certain
   review: draft
+  note: >-
+    Whether Lycia was Rome's ally or a free state under her is an open question
+    for the project's owner. The treaty of 46 (Mitchell's text, of which only
+    the preamble and the territorial clauses are online) is sworn by Romans and
+    Lycians; Strabo has them free but no longer making their own alliances. No
+    open text found shows the alliance in force at 133: the Lycian League's
+    dedication to Roma on the Capitol (OGIS 551) speaks only of goodwill and
+    is dated c. 150 or c. 80.
 
 - polity: rhodus
   type: allied-to
   of: rome
   from: before 133 BCE
   to: after 27 BCE
-  sources: [{ source: fraser-bean-1954 }]
+  sources:
+    - source: livy-per
+      locator: '46'
+      quote: >-
+        At their request, an alliance was concluded with the Rhodians .
+      supports: [type, of, from]
+    - source: livy-per
+      locator: '78'
+      quote: >-
+        He attacked the city of Rhodes , which alone had remained faithful to the
+        Roman people
+      supports: [type, of, from]
+    - source: appian
+      locator: 'BC 4.66'
+      quote: >-
+        not to disregard the treaty which existed between the Rhodians and the
+        Romans which bound them not to bear arms against each other.
+      supports: [type, of]
+    - source: appian
+      locator: 'BC 4.70'
+      quote: >-
+        treaties made with you by Gaius Caesar , the founder of the present
+        monarchy, — yet these very treaties say that the Romans and the Rhodians
+        shall assist each other in case of need.
+      supports: [type, of]
+    - source: strabo
+      locator: '14.2.5'
+      quote: >-
+        became a friend to the Romans and to all kings who favoured both the
+        Romans and the Greeks. Consequently it not only has remained autonomous.
+      supports: [to]
+    - { source: fraser-bean-1954 }
   confidence: certain
   review: draft
+  note: >-
+    The alliance concluded in 164 (Per. 46) stood in 88, when Rhodes "alone had
+    remained faithful" (Per. 78), and was renewed through Caesar (App. BC
+    4.68–70). Cassius' storming of Rhodes in 43/42 was a Roman faction against
+    an ally; the triumvirs rewarded the island (App. BC 5.7).
 
 - polity: massalia
   type: allied-to
@@ -852,9 +1020,35 @@
   of: rome
   from: 30 BCE
   to: after 27 BCE
-  sources: [{ source: magie-1950, locator: 'vol. I, 443' }]
+  sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        for it was not until four years later — in 26 b.c. — that he was formally
+        declared a “friend and ally” of Rome. He lost, moreover, the territory
+        which had been given to him in Armenia Minor. This was presented to
+        Artavasdes, the former king of Media Atropatene
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '54.9.2'
+      quote: >-
+        These latter together with Lesser Armenia he granted to Archelaus ,
+        because the Mede, who previously had ruled them, was dead.
+      supports: [type, of, to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        Of his own accord he restored Iotape to the Median king, who had found an
+        asylum with him after his defeat
+      supports: []
   confidence: uncertain
   review: needs-check
+  note: >-
+    Magie puts the grant in Octavian's settlement after Actium, the one from
+    which Polemo waited "four years" for his title "in 26": that is, 30. Dio
+    54.9.2 has Augustus dispose of Lesser Armenia, in 20, because the Mede who
+    had ruled it was dead. No ancient text dates the grant itself.
 
 - polity: cyprus
   type: province-of

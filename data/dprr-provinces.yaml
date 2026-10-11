@@ -360,6 +360,24 @@
   polities:
     - polity: illyricum
   sources:
+    - source: appian
+      locator: 'Ill. 7'
+      quote: >-
+        Agron was king of that part of Illyria which borders … the Adriatic Sea
+        … Thereupon the Romans invaded Illyria by land
+      supports: [kind]
+    - source: appian
+      locator: 'Ill. 13'
+      quote: >-
+        The Roman Senate transferred this army, together with the province of
+        Macedonia and Roman Illyria, to Brutus Caepio
+      supports: [kind, polities]
+    - source: suetonius-iul
+      locator: '22'
+      quote: >-
+        by the bill of Vatinius he received only Gallia Cisalpina with the
+        addition of Illyricum
+      supports: [polities]
     - { source: wilkes-1969, locator: 'pp. 37–41' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
   confidence: probable
@@ -601,6 +619,25 @@
   polities:
     - polity: cappadocia
   sources:
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        others he distributed to kings — to Tigranes , Armenia ; to Pharnaces ,
+        Bosporus ; to Ariobarzanes , Cappadocia
+      supports: [kind, polities]
+    - source: cicero-fam
+      locator: '15.2.4'
+      quote: >-
+        a formal resolution of yours had imposed upon me the duty of protecting
+        king Ariobarzanes (surnamed Eusebes and Philorhomaeus), of defending the
+        personal safety of that sovereign and the integrity of his dominions
+      supports: [kind, polities]
+    - source: cassius-dio
+      locator: '57.17.7'
+      quote: >-
+        After this Cappadocia fell to the Romans and was put in charge of a
+        knight as governor.
+      supports: [polities]
     - { source: sullivan-1990 }
   confidence: probable
   review: draft
