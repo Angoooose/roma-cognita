@@ -3065,7 +3065,44 @@
   of: rome
   from: 39 BCE
   to: 37 BCE
-  sources: [{ source: appian, locator: 'BC 5.75' }]
+  sources:
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        The Senate having voted to ratify all that he had done or should do … He
+        set up kings here and there as he pleased, on condition of their paying
+        a prescribed tribute … in Pisidia, Amyntas
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, pp. 433–434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of what remained, the hill-country of northern Pisidia was now given to
+        Amyntas … Their rule over their respective assignments, however, proved
+        to be of short duration, for three years later each received a kingdom
+        which greatly increased his prestige and power. 19 In 37/6 b.c. Castor,
+        ruler of Galatia and Paphlagonia, died or was deposed from his throne. …
+        Antony, evidently regarding Amyntas as a more valuable supporter,
+        presented the district to him, conferring on him also the title of King.
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        assigned principalities, giving Galatia to Amyntas
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [to]
   confidence: probable
   review: draft
 
