@@ -583,6 +583,8 @@
 - id: cicero-qfr
   kind: ancient
   citation: Cicero, Epistulae ad Quintum Fratrem
+  url: https://www.thelatinlibrary.com/cicero/fratrem1.shtml
+  edition: the Latin text on The Latin Library (book 1)
 
 - id: cicero-de-oratore
   kind: ancient
