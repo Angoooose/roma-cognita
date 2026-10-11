@@ -2347,10 +2347,10 @@
   names:
     - { text: Aedes Fidei, lang: la, preferred: true }
     - { text: Temple of Fides, lang: en }
-  from: 254 BCE
+  from: { earliest: 258 BCE, latest: 247 BCE }
   to: after 27 BCE
   condition:
-    - { value: standing, from: 254 BCE, to: 116 BCE }
+    - { value: standing, from: { earliest: 258 BCE, latest: 247 BCE }, to: 116 BCE }
     - { value: under construction, from: 115 BCE, to: 110 BCE }
     - { value: standing, from: 109 BCE, to: after 27 BCE }
   prominence: 5
@@ -2360,13 +2360,50 @@
     - { source: reusser-1993, locator: 'pp. 34–36, 55, 62, 64, 78' }
     - { source: cicero-nd, locator: '2.61' }
     - { source: appian, locator: 'BC 1.16' }
-  confidence: probable
+    - source: platner-ashby
+      locator: 'Fides, aedes, p. 209'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Fidei.html'
+      quote: >-
+        This was dedicated — and presumably built — by A. Atilius Calatinus in 254
+        or 250 B.C. … and restored and re-dedicated by M. Aemilius Scaurus in 115
+        B.C.
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Fides, aedes, p. 209'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Fidei.html'
+      quote: >-
+        In 43 B.C. a great storm tore off some of these tablets … The diplomata of
+        honourably discharged soldiers were also fastened up here
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Fides, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fides-aedes/'
+      quote: >-
+        was built between 258 and 247 B.C. and rebuilt between 115 and 109 B.C.
+      supports: [from, condition]
+    - source: digital-augustan-rome
+      locator: 'Fides, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fides-aedes/'
+      quote: >-
+        It may be placed on the SW edge of the Area Capitolina on the basis of
+        archaeological remains found in the Piazza della Consolazione and the Vico
+        Iugario.
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Fides, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fides-aedes/'
+      quote: >-
+        A military diploma set up ‘on a wall behind the Temple of Fides’
+      supports: [to]
+  confidence: uncertain
   review: draft
   note: >-
     Dedicated by A. Atilius Calatinus "in 254 or 250 B.C., and restored and re-dedicated
-    by M. Aemilius Scaurus in 115 B.C." (Platner & Ashby); rebuilt between his
-    consulship of 115 and his censorship of 109 (Reusser), which the map shows as
-    building. The senate met in it on the day Ti. Gracchus was killed. It stood on the
+    by M. Aemilius Scaurus in 115 B.C." (Platner & Ashby); built "between 258 and 247
+    B.C." and rebuilt "between 115 and 109 B.C." (Digital Augustan Rome, after
+    Reusser), which the map shows as building. The founding was 254 BCE until October
+    2026 and is now the range both sources fit; the rebuilding follows Digital Augustan
+    Rome, but Platner & Ashby put the re-dedication in 115, so the record is uncertain. The senate met in it on the day Ti. Gracchus was killed. It stood on the
     south-west side of the Area Capitolina near its southern corner, over the Tarpeian
     cliff, where the base of its statue and the treaty tablets once fixed to its walls
     fell into the Piazza della Consolazione, its back against the precinct wall, facing
@@ -2389,6 +2426,28 @@
     - { source: platner-ashby, locator: 'Veiovis, aedes, pp. 548–549' }
     - { source: pleiades, locator: places/243075423 }
     - { source: musei-capitolini, locator: 'Tempio di Veiove' }
+    - source: digital-augustan-rome
+      locator: 'Veiovis, Aedes (Capitolium)'
+      url: 'https://www.digitalaugustanrome.org/records/veiovis-aedes-capitolium/'
+      quote: >-
+        The temple dedicated to the ‘young’ or ‘bad’ Jupiter in 192 B.C. … and
+        rebuilt in the early 1st c. B.C. was located
+      supports: [from, to]
+    - source: digital-augustan-rome
+      locator: 'Veiovis, Aedes (Capitolium)'
+      url: 'https://www.digitalaugustanrome.org/records/veiovis-aedes-capitolium/'
+      quote: >-
+        It has been identified with the remains of a small temple under the SW
+        corner of Palazzo Senatorio on the *Capitol, nestled into a corner of the
+        later *Tabularium.
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Veiovis, aedes, pp. 548–549'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Veiovis.html'
+      quote: >-
+        According to Vitruvius ( loc. cit. ) this temple was peculiar in having
+        'columns added on the right and left of the flanks of the pronaos'
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2409,6 +2468,32 @@
   sources:
     - { source: platner-ashby, locator: 'Victoria, aedes, p. 570' }
     - { source: digital-augustan-rome, locator: 'Victoria, Aedes (Palatium)' }
+    - source: platner-ashby
+      locator: 'Victoria, aedes, p. 570'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Templum_Victoriae.html'
+      quote: >-
+        dedicated by him on 1st August … when consul in 294 B.C.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Victoria, Aedes (Palatium)'
+      url: 'https://www.digitalaugustanrome.org/records/victoria-aedes-palatium/'
+      quote: >-
+        Temple to Victory on the SW *Palatine adjacent to the Temple of *Magna Mater
+        and the shrine to *Victoria Virgo
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Victoria, Aedes (Palatium)'
+      url: 'https://www.digitalaugustanrome.org/records/victoria-aedes-palatium/'
+      quote: >-
+        Dedicated in 294 B.C. by L. Postumius Megillus
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Victoria, Aedes (Palatium)'
+      url: 'https://www.digitalaugustanrome.org/records/victoria-aedes-palatium/'
+      quote: >-
+        the temple was substantially restored in the late-Republican or
+        early-Augustan era … perhaps in the wake of the fire of A.D. 3
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2437,6 +2522,25 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Iuno Lucina, aedes, pp. 288–289' }
+    - source: platner-ashby
+      locator: 'Iuno Lucina, aedes, pp. 288–289'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Junonis_Lucinae.html'
+      quote: >-
+        a temple built in 375 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Iuno Lucina, aedes, pp. 288–289'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Junonis_Lucinae.html'
+      quote: >-
+        probably not far west of S. Prassede and … just north-west of the Torre
+        Cantarelli
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Iuno Lucina, aedes, pp. 288–289'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Junonis_Lucinae.html'
+      quote: >-
+        It continued to exist during the empire, as is shown by inscriptions
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2458,6 +2562,29 @@
   sources:
     - { source: platner-ashby, locator: 'Tellus, aedes, p. 511' }
     - { source: pleiades, locator: places/241048343 }
+    - source: platner-ashby
+      locator: 'Tellus, aedes, p. 511'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Telluris.html'
+      quote: >-
+        a temple vowed by P. Sempronius Sophus during an earthquake which occurred
+        during a battle with the Picentes in 268 B.C. … It was doubtless built at
+        once
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Tellus, aedes, p. 511'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Telluris.html'
+      quote: >-
+        The latter restored the temple about 54 B.C. … It was standing in the fourth
+        century
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Tellus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/tellus-aedes/'
+      quote: >-
+        Palombi offers a convincing interpretation of the Severan Marble Plan which
+        places the Temple of Tellus in the vicinity of S. Pietro in Vincoli, a site
+        securely within the Carinae
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -2484,6 +2611,33 @@
   sources:
     - { source: platner-ashby, locator: 'Honos et Virtus, aedes, pp. 258–259' }
     - { source: pleiades, locator: places/387810362 }
+    - source: platner-ashby
+      locator: 'Honos et Virtus, aedes, pp. 258–259'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Honos_et_Virtus.html'
+      quote: >-
+        a double temple, of which the original part was built by Q. Fabius Maximus
+        Verrucosus in 234 B.C. after his war with the Ligurians
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Honos et Virtus, aedes, pp. 258–259'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Honos_et_Virtus.html'
+      quote: >-
+        This temple was restored by Vespasian
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Honos et Virtus, Aedes (''''ad portam Capenam'''')'
+      url: 'https://www.digitalaugustanrome.org/records/honos-et-virtus-aedes-ad-portam-capenam/'
+      quote: >-
+        in 19 B.C. when the senate erected the Altar of Fortuna Redux in front of
+        the temple
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Honos et Virtus, Aedes (''''ad portam Capenam'''')'
+      url: 'https://www.digitalaugustanrome.org/records/honos-et-virtus-aedes-ad-portam-capenam/'
+      quote: >-
+        our placement of the temple follows the traditional, as well as the most
+        recent, siting just outside the Porta Capena at the foot of the *Caelian
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -2498,16 +2652,32 @@
   names:
     - { text: Aedes Iani, lang: la, preferred: true }
     - { text: Temple of Janus in the Forum Holitorium, lang: en }
-  from: 260 BCE
+  from: c. 260 BCE
   to: after 27 BCE
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Ianus, aedes, pp. 277–278' }
     - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - source: digital-augustan-rome
+      locator: 'Ianus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/ianus-aedes/'
+      quote: >-
+        The northernmost of the three preserved temples in the *Forum Holitorium
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Ianus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/ianus-aedes/'
+      quote: >-
+        Built by C. Duilius soon after 260 B.C., Augustus began to reconstruct the
+        temple, but the project was only completed by Tiberius who rededicated the
+        temple in A.D. 17
+      supports: [from, to]
   confidence: probable
   review: draft
   note: >-
-    Built by C. Duilius after Mylae, "extra portam Carmentalem"; Platner & Ashby take it
+    Built by C. Duilius after Mylae, "soon after 260 B.C." (Digital Augustan Rome), so
+    about 260 (260 BCE exactly until October 2026, which no text states);
+    "extra portam Carmentalem"; Platner & Ashby take it
     as the north temple of the three under S. Nicola in Carcere, whose remains place it.
     Frank dates the rebuilding there to about 90 BCE.
     Its standing remains, six Ionic columns across a triple row at the front, are of a
@@ -2533,6 +2703,38 @@
     - { source: platner-ashby, locator: 'Spes, aedes, pp. 493–494' }
     - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
     - { source: digital-augustan-rome, locator: 'Spes, Aedes (Forum Holitorium)' }
+    - source: platner-ashby
+      locator: 'Spes, aedes, pp. 493–494'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Spei.html'
+      quote: >-
+        a temple in the Forum Holitorium, built and dedicated by A. Atilius
+        Calatinus during the first Punic war
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Spes, aedes, pp. 493–494'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Spei.html'
+      quote: >-
+        and burned again in 31
+      supports: [condition]
+    - source: digital-augustan-rome
+      locator: 'Spes, Aedes (Forum Holitorium)'
+      url: 'https://www.digitalaugustanrome.org/records/spes-aedes/'
+      quote: >-
+        probably the one furthest S
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Spes, Aedes (Forum Holitorium)'
+      url: 'https://www.digitalaugustanrome.org/records/spes-aedes/'
+      quote: >-
+        After a fire in 31 B.C. damaged the building, Augustus began its
+        restoration, and Germanicus rededicated it in A.D. 17
+      supports: [condition, to]
+    - source: digital-augustan-rome
+      locator: 'Spes, Aedes (Forum Holitorium)'
+      url: 'https://www.digitalaugustanrome.org/records/spes-aedes/'
+      quote: >-
+        it seems unlikely that Augustus left the temple in ruins for very long
+      supports: [condition]
   confidence: probable
   review: draft
   note: >-
@@ -2559,6 +2761,28 @@
     - { source: digital-augustan-rome, locator: 'Iuno Sospita, Aedes' }
     - { source: cicero-div, locator: '1.4; 1.99' }
     - { source: obsequens, locator: '55' }
+    - source: digital-augustan-rome
+      locator: 'Iuno Sospita, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/iuno-sospita-aedes/'
+      quote: >-
+        The Temple to Iuno Sospita was vowed by C. Cornelius in 197 B.C. … and
+        dedicated three years later
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Iuno Sospita, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/iuno-sospita-aedes/'
+      quote: >-
+        the Temple of Iuno Sospita is probably situated between those of *Ianus and
+        *Spes
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Iuno Sospita, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/iuno-sospita-aedes/'
+      quote: >-
+        a second phase in the 1st c. B.C., corresponding to the reconstruction by L.
+        Iulius … It is extraordinarily well preserved due to its integration into
+        the Church of S. Nicola in Carcere.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2584,6 +2808,20 @@
   sources:
     - { source: platner-ashby, locator: 'Pietas, aedes, p. 390' }
     - { source: vitti-2010, locator: '§7' }
+    - source: platner-ashby
+      locator: 'Pietas, aedes, p. 390'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Pietatis.html'
+      quote: >-
+        vowed by M'. Acilius Glabrio in the battle of Thermopylae in 191 B.C. , and
+        begun by him, but dedicated in 181 by his son
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Pietas, aedes, p. 390'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Pietatis.html'
+      quote: >-
+        This temple stood at the east end of the area afterwards occupied by the
+        theatre of Marcellus, and was destroyed by Caesar in 44 B.C.
+      supports: [location, to]
   confidence: probable
   review: draft
   note: >-
@@ -2601,7 +2839,7 @@
   names:
     - { text: Aedes Iovis Statoris, lang: la, preferred: true }
     - { text: Temple of Jupiter Stator in the Porticus Metelli, lang: en }
-  from: c. 146 BCE
+  from: { earliest: 146 BCE, latest: 131 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2609,11 +2847,40 @@
         source: platner-ashby,
         locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304',
       }
+    - source: platner-ashby
+      locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Jovis_Statoris.html'
+      quote: >-
+        a temple which, with that of Iuno Regina and the enclosing Porticus Metelli
+        (q.v.) , was built by Q. Caecilius Metellus Macedonicus after his triumph in
+        146 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Jovis_Statoris.html'
+      quote: >-
+        its exact site is known, beneath the church of S. Maria in Campitelli
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-octaviae/'
+      quote: >-
+        either in 146 (Coarelli 489) or 131 B.C. (Gwyn Morgan) by Q. Caecilius
+        Metellus Macedonicus
+      supports: [from]
+    - source: velleius
+      locator: '1.11.3'
+      quote: >-
+        the two temples without inscriptions which are now surrounded by the portico
+        of Octavia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
-    Built by Q. Caecilius Metellus Macedonicus "after his triumph in 146 B.C.",
-    the first temple in Rome "entirely of marble". "Its exact site is known,
+    Built by Q. Caecilius Metellus Macedonicus "after his triumph in 146 B.C."
+    (Platner & Ashby), or "either in 146 (Coarelli 489) or 131 B.C. (Gwyn Morgan)"
+    (Digital Augustan Rome); c. 146 BCE until October 2026, now the range of both.
+    The first temple in Rome "entirely of marble". "Its exact site is known,
     beneath the church of S. Maria in Campitelli" (Platner & Ashby).
 
 - id: aedes-iunonis-reginae-metelli
@@ -2623,7 +2890,7 @@
   names:
     - { text: Aedes Iunonis Reginae, lang: la, preferred: true }
     - { text: Temple of Juno Regina in the Porticus Metelli, lang: en }
-  from: 179 BCE
+  from: { earliest: 179 BCE, latest: 146 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2633,6 +2900,34 @@
       }
     - { source: livy, locator: '40.52.1' }
     - { source: digital-augustan-rome, locator: 'Porticus Octaviae' }
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-octaviae/'
+      quote: >-
+        The pseudo-peripteral hexastyle Temple of Iuno Regina was built by M.
+        Aemilius Lepidus during his censorship in 179 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Jovis_Statoris.html'
+      quote: >-
+        a temple which, with that of Iuno Regina and the enclosing Porticus Metelli
+        (q.v.) , was built by Q. Caecilius Metellus Macedonicus after his triumph in
+        146 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Iuppiter Stator, aedes (Porticus Metelli), p. 304'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Jovis_Statoris.html'
+      quote: >-
+        The temple of Juno was just west of this, on the opposite side of the Via
+        della Tribuna di Campitelli.
+      supports: [location]
+    - source: velleius
+      locator: '1.11.3'
+      quote: >-
+        the two temples without inscriptions which are now surrounded by the portico
+        of Octavia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2641,7 +2936,9 @@
     is now taken to be M. Aemilius Lepidus's temple dedicated in 179 BCE (Livy
     40.52.1), which Metellus's porticus later enclosed (Digital Augustan Rome,
     Porticus Octaviae); Platner & Ashby's own article on Juno Regina put that one
-    elsewhere. Six columns across its front.
+    elsewhere, and their article on Jupiter Stator has Metellus build both temples
+    after his triumph of 146. The start was 179 BCE until October 2026 and is now the
+    range of the two readings. Six columns across its front.
 
 - id: aedes-herculis-musarum
   kind: temple
@@ -2653,10 +2950,6 @@
     - { text: Temple of Hercules of the Muses, lang: en }
   from: c. 187 BCE
   to: after 27 BCE
-  condition:
-    - { value: standing, from: c. 187 BCE, to: 34 BCE }
-    - { value: under construction, from: 33 BCE, to: 30 BCE }
-    - { value: standing, from: 29 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Hercules Musarum, aedes, p. 255' }
@@ -2664,16 +2957,39 @@
     - { source: digital-augustan-rome, locator: 'Porticus Philippi' }
     - { source: suetonius-aug, locator: '29.5' }
     - { source: ovid-fasti, locator: '6.801–812' }
+    - source: platner-ashby
+      locator: 'Hercules Musarum, aedes, p. 255'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Herculis_Musarum.html'
+      quote: >-
+        erected by M. Fulvius Nobilior after his capture of Ambracia in 189 B.C. ,
+        and probably after his triumph in 187
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Hercules Musarum, aedes, p. 255'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Herculis_Musarum.html'
+      quote: >-
+        In 29 B.C. L. Marcius Philippus restored this temple and built a porticus,
+        the Porticus Philippi (q.v.) around it
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Hercules Musarum, aedes, p. 255'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Herculis_Musarum.html'
+      quote: >-
+        close to the south-west part of the circus itself, and north-west of the
+        porticus Octaviae, where some remains have been found that probably belonged
+        to this temple
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
     Built by M. Fulvius Nobilior after taking Ambracia, "probably after his triumph
     in 187"; "in 29 B.C. L. Marcius Philippus restored this temple" and put a
     portico round it (Suetonius, Augustus 29.5; the monument of Philippus in Ovid,
-    Fasti 6.801–812). When the works began is not recorded: the map shows them from
-    33 BCE, the year of Philippus's triumph from Spain, whose spoils would have paid
-    for them, to the restoration P&A date to 29; what they kept of Fulvius's temple
-    is not known, so it rises from the ground. Placed from a fragment of the Marble Plan
+    Fasti 6.801–812). When the works began is not recorded. Until October 2026 the
+    map showed them from 33 BCE, the year of Philippus's triumph from Spain, to 30,
+    standing again from 29; no readable text dates the works, only the restoration
+    "in 29 B.C." (Platner & Ashby), so the temple is now drawn standing throughout.
+    Placed from a fragment of the Marble Plan
     "north-west of the porticus Octaviae" (Platner & Ashby), about 100 m north-west
     of its entrance, which is where Pleiades and this record once put it. A small
     round temple on a podium of about 48 by 21 m facing south (Coarelli, in Digital
@@ -2696,6 +3012,29 @@
   sources:
     - { source: livy, locator: '44.16.10–11' }
     - { source: digitales-forum-romanum, locator: 'Basilica Sempronia' }
+    - source: platner-ashby
+      locator: 'Basilica Sempronia, p. 82'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/basilicae.html'
+      quote: >-
+        Basilica Sempronia: erected in 170 B.C. by the censor Ti. Sempronius
+        Gracchus, behind the Tabernae Veteres (q.v.) and near the statue of
+        Vortumnus
+      supports: [from, location]
+    - source: platner-ashby
+      locator: 'Basilica Sempronia, p. 82'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/basilicae.html'
+      quote: >-
+        It stood therefore at the point where the vicus Tuscus entered the forum.
+        Nothing is known of the history of the building, but it must have been
+        destroyed when the Julia was built.
+      supports: [location, to]
+    - source: platner-ashby
+      locator: 'Basilica Iulia, pp. 78–80'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Basilica_Julia.html'
+      quote: >-
+        It was perhaps begun by Aemilius Paullus on behalf of Caesar, probably in 54
+        B.C.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2720,6 +3059,36 @@
     - { source: cassius-dio, locator: '43.49.1' }
     - { source: appian, locator: 'BC 1.97' }
     - { source: velleius, locator: '2.61.3' }
+    - source: platner-ashby
+      locator: 'Rostra, pp. 450–451'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Rostra.html'
+      quote: >-
+        It took its name from the beaks of the ships captured from the people of
+        Antium in 338 B.C. with which it was decorated
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Rostra, pp. 450–451'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Rostra.html'
+      quote: >-
+        It was situated on the south side of the Comitium in front of the Curia
+        Hostilia
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Rostra, pp. 450–451'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Rostra.html'
+      quote: >-
+        The curved front of the rostra , as represented by the canalis with the
+        beaks of ships with which it was adorned, is held to be represented in a
+        coin of 45 B.C. of Lollius Palikanus
+      supports: [from]
+    - source: cassius-dio
+      locator: '43.49.1'
+      quote: >-
+        The next year, during which Caesar was at once dictator for the fifth time …
+        and consul for the fifth time, choosing Antony as his colleague … the
+        Rostra, which was formerly in the centre of the Forum, was moved back to its
+        present position
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2746,6 +3115,42 @@
     - { source: humm-2005, locator: 'ch. 12, pp. 603–626' }
     - { source: carafa-1998, locator: 'pp. 135–155' }
     - { source: pliny-nh, locator: '34.26' }
+    - source: platner-ashby
+      locator: 'Comitium, pp. 134–137'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Comitium.html'
+      quote: >-
+        In 145 B.C. the tribune C. Licinius Crassus was the first, we are told, to
+        lead the legislative assembly of the people from the comitium to the forum
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Comitium, pp. 134–137'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Comitium.html'
+      quote: >-
+        is a pavement of finely cut and laid travertine slabs immediately in front
+        of the curia , generally attributed to the restoration of Faustus Sulla
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Comitium, pp. 134–137'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Comitium.html'
+      quote: >-
+        In the centre of the north side was the curia ; on the west were the carcer
+        and the basilica Porcia ; on the south were the rostra and the Graecostasis
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Comitium, pp. 134–137'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Comitium.html'
+      quote: >-
+        which represents the level of the Comitium as established by Caesar. It was
+        now quite a small area
+      supports: [to]
+    - source: cassius-dio
+      locator: '43.49.1'
+      quote: >-
+        The next year, during which Caesar was at once dictator for the fifth time …
+        and consul for the fifth time, choosing Antony as his colleague … the
+        Rostra, which was formerly in the centre of the Forum, was moved back to its
+        present position
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -2770,9 +3175,7 @@
   from: before 133 BCE
   to: 45 BCE
   condition:
-    - { value: standing, from: before 133 BCE, to: 82 BCE }
-    - { value: under construction, from: 81 BCE, to: 81 BCE }
-    - { value: standing, from: 80 BCE, to: 53 BCE }
+    - { value: standing, from: before 133 BCE, to: 53 BCE }
     - { value: burnt, from: 52 BCE, to: 52 BCE }
     - { value: under construction, from: 51 BCE, to: 46 BCE }
     - { value: standing, from: 45 BCE, to: 45 BCE }
@@ -2784,6 +3187,51 @@
     - { source: pliny-nh, locator: '34.26' }
     - { source: appian, locator: 'BC 1.32' }
     - { source: humm-2005, locator: 'p. 611, n. 38' }
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        the original senate house of Rome, situated on the north side of the
+        Comitium
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        was a painting of the victory of M. Valerius Messala over Hiero and the
+        Carthaginians in 263 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        It was restored by Sulla in 80 B.C. and somewhat enlarged
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        In 52 B.C. it was burnt down by the partisans of Clodius and rebuilt by
+        Sulla's son Faustus
+      supports: [condition]
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        (written in 45 B.C. ): Curiam nostram, Hostiliam dico, non hanc novam
+      supports: [condition]
+    - source: platner-ashby
+      locator: 'Curia Hostilia, pp. 142–143'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Curia_Hostilia.html'
+      quote: >-
+        In 44 B.C. it was decided to build a new curia
+      supports: [to]
+    - source: cassius-dio
+      locator: '44.5.1'
+      quote: >-
+        constructing a new senate-house, since that of Hostilius, although repaired,
+        had been demolished
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -2794,7 +3242,10 @@
     and 15 m high, is the Digitales Forum Romanum's hypothesis.
     Sulla pulled down the old curia and built a larger one forward over the Comitium's
     north steps, where the statues of Pythagoras and Alcibiades had stood (Pliny, NH
-    34.26): shown building in 81 and standing from 80. The older curia's size is not
+    34.26): "restored by Sulla in 80 B.C. and somewhat enlarged" (Platner & Ashby).
+    Until October 2026 the map showed it building in 81; no readable text dates the
+    works, so the enlarged curia now simply replaces the old one in 80 (in the design,
+    not the condition). The older curia's size is not
     known; it is drawn a little smaller and further back, as "somewhat enlarged"
     implies. In 100 BCE the crowd stripped its roof of tiles to stone Saturninus and
     Glaucia, shut inside by Marius (Appian, BC 1.32).
@@ -2815,6 +3266,26 @@
     - { source: livy, locator: '39.44.7' }
     - { source: platner-ashby, locator: 'Basilica Porcia, p. 82' }
     - { source: digitales-forum-romanum, locator: 'Basilica Porcia' }
+    - source: platner-ashby
+      locator: 'Basilica Porcia, p. 82'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/basilicae.html'
+      quote: >-
+        Basilica Porcia: the first basilica in Rome, built for judicial and business
+        purposes by Cato in 184 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Basilica Porcia, p. 82'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/basilicae.html'
+      quote: >-
+        It stood a little west of the curia, In Lautumiis (q.v.)
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Basilica Porcia, p. 82'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/basilicae.html'
+      quote: >-
+        It was burned in 52 B.C. with the curia of Sulla at the funeral of Clodius,
+        and probably totally destroyed, as there is no further mention of it
+      supports: [to, condition]
   confidence: uncertain
   review: draft
   note: >-
@@ -2836,6 +3307,44 @@
     - { source: platner-ashby, locator: 'Atrium Vestae, pp. 58–59' }
     - { source: suetonius-iul, locator: '46' }
     - { source: osm-rome, locator: relation/13402598 }
+    - source: platner-ashby
+      locator: 'Atrium Vestae, pp. 58–59'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Atrium_Vestae.html'
+      quote: >-
+        These excavations show some remains of the republican atrium , that is, the
+        house of the Vestals, immediately south of the temple, adjoining the domus
+        Publica on the east, with the same north and south orientation. This
+        indicates the antiquity of both, though almost no remains earlier than the
+        second century B.C. are now visible.
+      supports: [from, location]
+    - source: platner-ashby
+      locator: 'Atrium Vestae, pp. 58–59'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Atrium_Vestae.html'
+      quote: >-
+        The domus Publica seems to have been larger than the house of the Vestals,
+        and to have occupied all the space between the Sacra via and the earlier
+        Nova via
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Atrium Vestae, pp. 58–59'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Atrium_Vestae.html'
+      quote: >-
+        still continued to be the residence of the pontifex maximus until Augustus,
+        on assuming that office in 12 B.C. , transferred it to the Palatine … and
+        presented the domus Publica to the Vestals
+      supports: [to]
+    - source: suetonius-iul
+      locator: '46'
+      quote: >-
+        after he became pontifex maximus, in the official residence on the Sacred
+        Way
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Domus Publica'
+      url: 'https://www.digitalaugustanrome.org/records/domus-publica/'
+      quote: >-
+        just E of the *Atrium Vestae
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -2862,6 +3371,40 @@
     - { source: platner-ashby, locator: 'Fornix Fabianus, pp. 211–212' }
     - { source: broughton-mrr, locator: 'Q. Fabius Maximus, curule aedile, 57 BCE' }
     - { source: digital-augustan-rome, locator: 'Fornix Fabianus' }
+    - source: platner-ashby
+      locator: 'Fornix Fabianus, pp. 211–212'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Fornix_Fabianus.html'
+      quote: >-
+        an honorary arch erected on or over the Sacra via at the east end of the
+        forum by Q. Fabius Allobrogicus in 121 B.C. to commemorate his victory over
+        the Allobroges
+      supports: [from, location]
+    - source: platner-ashby
+      locator: 'Fornix Fabianus, pp. 211–212'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Fornix_Fabianus.html'
+      quote: >-
+        and was restored by the grandson of the builder in 56 B.C.
+      supports: [condition]
+    - source: platner-ashby
+      locator: 'Fornix Fabianus, pp. 211–212'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Fornix_Fabianus.html'
+      quote: >-
+        with some scanty remains of tufa foundations on the … north side of the
+        temple of Julius Caesar
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Fornix Fabianus'
+      url: 'https://www.digitalaugustanrome.org/records/fornix-fabianus/'
+      quote: >-
+        then restored by Fabius’ grandson in 57 B.C.
+      supports: [condition]
+    - source: digital-augustan-rome
+      locator: 'Fornix Fabianus'
+      url: 'https://www.digitalaugustanrome.org/records/fornix-fabianus/'
+      quote: >-
+        ‘before the Sacra Via between the Temple of Faustina and the Temple of
+        Vesta’
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2886,6 +3429,20 @@
   sources:
     - { source: platner-ashby, locator: 'Area Capitolina, pp. 47–50' }
     - { source: velleius, locator: '2.1.2' }
+    - source: platner-ashby
+      locator: 'Area Capitolina, pp. 47–50'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Area_Capitolina.html'
+      quote: >-
+        the open space in front of and around the temple of Jupiter Optimus Maximus
+        on the south summit of the Capitoline
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Area Capitolina, pp. 47–50'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Area_Capitolina.html'
+      quote: >-
+        It was enlarged in 388 B.C. , and was regarded as a notable monument even at
+        the beginning of the empire
+      supports: [from, to]
   confidence: probable
   review: draft
   note: >-
@@ -2901,7 +3458,7 @@
   names:
     - { text: Domus Augusti, lang: la, preferred: true }
     - { text: House of Octavian, lang: en }
-  from: { earliest: 44 BCE, latest: 36 BCE }
+  from: before 36 BCE
   to: 36 BCE
   condition: under construction
   prominence: 5
@@ -2910,6 +3467,43 @@
     - { source: cassius-dio, locator: '49.15.5' }
     - { source: suetonius-aug, locator: '72' }
     - { source: osm-rome, locator: way/132581385 }
+    - source: velleius
+      locator: '2.81.3'
+      quote: >-
+        Caesar, on his victorious return to the city, made the announcement that he
+        meant to set apart for public use certain houses which he had secured by
+        purchase through his agents in order that there might be a free area about
+        his own residence.
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.1.1'
+      quote: >-
+        All this happened in the winter in which Lucius Gellius and Cocceius Nerva
+        became consuls.
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.15.5'
+      quote: >-
+        The people at this time resolved that a house should be presented to Caesar
+        at public expense; for he had made public property of the place on the
+        Palatine which he had bought for the purpose of erecting a residence upon
+        it, and had consecrated it to Apollo, after a thunderbolt had descended upon
+        it.
+      supports: [from, to]
+    - source: digital-augustan-rome
+      locator: 'Domus: Augustus'
+      url: 'https://www.digitalaugustanrome.org/records/domus-augustus/'
+      quote: >-
+        The house of Augustus stood on the SW *Palatine slope which rose above the
+        *Circus Maximus between *Scalae Caci, the Temple of *Apollo, and the house
+        of Livia
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Domus: Augustus'
+      url: 'https://www.digitalaugustanrome.org/records/domus-augustus/'
+      quote: >-
+        The house, like the nearby Temple of Apollo, dates between 36 and 28 B.C.
+      supports: []
   confidence: uncertain
   review: draft
   note: >-
@@ -2918,7 +3512,11 @@
     agents (Velleius 2.81.3). Still unfinished, it was filled in after the lightning
     of 36 BCE to make the temple's terrace (Iacopi and Tedone, RömMitt 2005/6), and
     the people voted him a house at public expense (Dio 49.15.5). Where he lived
-    after is disputed; the House of Livia next door is drawn as his.
+    after is disputed; the House of Livia next door is drawn as his. The start was
+    44–36 BCE until October 2026; no readable text says when the buying or building
+    began, only that the houses had been bought before his return in 36 (Velleius),
+    so it is now an open end. Digital Augustan Rome reads it otherwise, as his house
+    built after 36 and dated "between 36 and 28 B.C." by its remains.
 
 - id: casa-romuli
   kind: house
@@ -2939,6 +3537,36 @@
     - { source: cassius-dio, locator: '48.43.4' }
     - { source: platner-ashby, locator: 'Casa Romuli, pp. 101–102' }
     - { source: digital-augustan-rome, locator: 'Casa Romuli (Palatium)' }
+    - source: dionysius
+      locator: '1.79.11'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/1D*.html'
+      quote: >-
+        One of these, called the hut of Romulus, remained even to my day on the
+        flank of the Palatine hill which faces towards the Circus, and it is
+        preserved holy by those who have charge of these matters
+      supports: [from, to, location]
+    - source: dionysius
+      locator: '1.79.11'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/1D*.html'
+      quote: >-
+        if any part of it is injured, either by storms or by the lapse of time, they
+        repair the damage and restore the hut as nearly as possible to its former
+        condition
+      supports: [condition]
+    - source: cassius-dio
+      locator: '48.43.1–4'
+      quote: >-
+        But in the consulship of Appius Claudius and Gaius Norbanus … Thus the hut
+        of Romulus was burned as a result of some ritual which the pontifices were
+        performing in it
+      supports: [condition]
+    - source: platner-ashby
+      locator: 'Casa Romuli, pp. 101–102'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Casa_Romuli.html'
+      quote: >-
+        the house of Romulus on the south-west corner of the Palatine hill, near the
+        top of the Scalae Caci
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -2965,6 +3593,32 @@
   sources:
     - { source: platner-ashby, locator: 'Aesculapius, aedes, pp. 2–3' }
     - { source: digital-augustan-rome, locator: 'Aesculapius, Aedes' }
+    - source: platner-ashby
+      locator: 'Aesculapius, aedes, pp. 2–3'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Aesculapii.html'
+      quote: >-
+        the temple of Aesculapius erected on the island in the Tiber soon after 291
+        B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Aesculapius, aedes, pp. 2–3'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Aesculapii.html'
+      quote: >-
+        it appears certain that the first temple was rebuilt or restored towards the
+        end of the republic
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Aesculapius, aedes, pp. 2–3'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Aesculapii.html'
+      quote: >-
+        is mentioned as standing near the temple in the time of Augustus
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Aesculapius, aedes, pp. 2–3'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Aesculapii.html'
+      quote: >-
+        it probably occupied the site of the present church of S. Bartolomeo
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -2979,17 +3633,46 @@
   names:
     - { text: Aedes Fauni, lang: la, preferred: true }
     - { text: Temple of Faunus, lang: en }
-  from: 194 BCE
+  from: { earliest: 196 BCE, latest: 194 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
     - { source: livy, locator: '33.42.10; 34.53.4' }
     - { source: vitruvius, locator: '3.2.3' }
     - { source: platner-ashby, locator: 'Faunus, aedes, p. 205' }
+    - source: platner-ashby
+      locator: 'Faunus, aedes, p. 205'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Fauni.html'
+      quote: >-
+        situated at the north end of the island in the Tiber
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Faunus, aedes, p. 205'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Fauni.html'
+      quote: >-
+        It was vowed in 196 B.C. by the aediles … Two years later it was dedicated
+        by Domitius
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Faunus, aedes, p. 205'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Fauni.html'
+      quote: >-
+        Idibus agrestis fumant altaria Fauni / Hic ubi discretas insula rumpit aquas
+        … Vitruvius cites it as an example of a prostyle temple
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Faunus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/faunus-aedes/'
+      quote: >-
+        A temple was dedicated to Faunus, an ancient Latin god of the forest and its
+        prophetic voices … in 196 B.C. at the N end of the Tiber island
+      supports: [from, location]
   confidence: probable
   review: draft
   note: >-
-    Dedicated in 194 BCE at the island's upstream end (Ovid, Fasti 2.193–194), and
+    Vowed in 196 and dedicated "two years later" (Platner & Ashby), but "dedicated …
+    in 196 B.C." in Digital Augustan Rome; 194 BCE until October 2026, now the range
+    of both. At the island's upstream end (Ovid, Fasti 2.193–194), and
     Vitruvius's own example of a temple of four columns across its front and none
     down its sides. Its size is not known.
 
@@ -3011,6 +3694,46 @@
     - { source: cassius-dio, locator: '50.8.3' }
     - { source: platner-ashby, locator: 'Pons Sublicius, pp. 401–402' }
     - { source: digital-augustan-rome, locator: 'Pons Sublicius' }
+    - source: platner-ashby
+      locator: 'Pons Sublicius, pp. 401–402'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Pons_Sublicius.html'
+      quote: >-
+        the oldest and most famous of the bridges across the Tiber, built, according
+        to tradition, by Ancus Martius
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Pons Sublicius, pp. 401–402'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Pons_Sublicius.html'
+      quote: >-
+        but the bridge was always repaired and was standing as late as the fifth
+        century
+      supports: [to, condition]
+    - source: platner-ashby
+      locator: 'Pons Sublicius, pp. 401–402'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Pons_Sublicius.html'
+      quote: >-
+        The strongest evidence indicates that it crossed from the forum Boarium just
+        below the later pons Aemilius
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Pons Sublicius'
+      url: 'https://www.digitalaugustanrome.org/records/pons-sublicius/'
+      quote: >-
+        locating its left-bank head immediately S of the *Round Temple by the Tiber
+      supports: [location]
+    - source: cassius-dio
+      locator: '50.2.1'
+      quote: >-
+        Sosius, however, had had no experience with misfortunes, and so on the very
+        first day of the year he said much in praise of Antony
+      supports: [condition]
+    - source: cassius-dio
+      locator: '50.8.3'
+      quote: >-
+        Much damage was also caused by storm; thus, a trophy which stood upon the
+        Aventine fell, a statue of Victory fell from the back wall of the theatre,
+        and the wooden bridge was utterly demolished.
+      supports: [condition]
   confidence: uncertain
   review: draft
   note: >-
@@ -3039,6 +3762,42 @@
     - { source: tucci-2012, locator: 'pp. 575–591' }
     - { source: arata-felici-2011, locator: 'pp. 127–153' }
     - { source: burgers-2015, locator: 'pp. 199–201' }
+    - source: digital-augustan-rome
+      locator: 'Porticus Aemilia (Emporium)'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-aemilia-emporium/'
+      quote: >-
+        The vast, monumental warehouse in *Emporium that lay parallel to the Tiber
+        and SW of the *Aventine hill is traditionally identified as the “Porticus
+        Aemilia” following Gatti
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Porticus Aemilia (Emporium)'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-aemilia-emporium/'
+      quote: >-
+        which was then associated with the much earlier work of the aediles Marcus
+        Aemilius Lepidus and Lucius Aemilius Paulus in 193 B.C.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Porticus Aemilia (Emporium)'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-aemilia-emporium/'
+      quote: >-
+        is likely to be dated to the 1st c. B.C., most probably to the time of Sulla
+      supports: []
+    - source: digital-augustan-rome
+      locator: 'Porticus Aemilia (Emporium)'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-aemilia-emporium/'
+      quote: >-
+        his architectural reconstruction has been well established with the
+        acceptance of the location of fragments 23 and 24 of the Marble Plan
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Porticus Aemilia, p. 420'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Porticus_Aemilia.html'
+      quote: >-
+        built by the aediles L. Aemilius Lepidus and L. Aemilius Paullus in 193 B.C.
+        … and restored in 174 by the censors Q. Fulvius Flaccus and A. Postumius
+        Albinus
+      supports: [from]
   confidence: uncertain
   review: draft
   note: >-
@@ -3066,6 +3825,40 @@
     - { source: platner-ashby, locator: 'Horrea Galbae, pp. 261–262' }
     - { source: digital-augustan-rome, locator: 'Horrea Galbana' }
     - { source: coarelli-1988, locator: 'p. 42' }
+    - source: platner-ashby
+      locator: 'Horrea Galbae, pp. 261–262'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horrea_Galbae.html'
+      quote: >-
+        warehouses in the district known as Praedia Galbana (q.v.) between the
+        south-west side of the Aventine and the Tiber
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Horrea Galbae, pp. 261–262'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horrea_Galbae.html'
+      quote: >-
+        These horrea came under imperial control at the beginning of the principate
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Horrea Galbana'
+      url: 'https://www.digitalaugustanrome.org/records/horrea-galbana/'
+      quote: >-
+        The identification of the monumental complex is well established, and the
+        late 2nd-c. B.C. date for its construction is not debated.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Horrea Galbana'
+      url: 'https://www.digitalaugustanrome.org/records/horrea-galbana/'
+      quote: >-
+        that were dated to mid-1st c. B.C. (Rickman 104). Coarelli has recently
+        suggested a late 2nd-c. B.C. date for the same evidence
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Horrea Galbana'
+      url: 'https://www.digitalaugustanrome.org/records/horrea-galbana/'
+      quote: >-
+        The spacious warehouses were organized around three rectangular courtyards
+        immediately SE of the Porticus Aemilia
+      supports: [location]
   confidence: uncertain
   review: draft
   note: >-
@@ -3090,6 +3883,35 @@
   sources:
     - { source: platner-ashby, locator: 'Horrea Galbae, p. 261' }
     - { source: digital-augustan-rome, locator: 'Sepulcrum: Ser. Sulpicius Galba' }
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Ser. Sulpicius Galba'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-ser-sulpicius-galba/'
+      quote: >-
+        Monumental tomb structure of the late 2nd c. B.C. in the *Emporium area,
+        belonging to Servius Sulpicius Galba
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Ser. Sulpicius Galba'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-ser-sulpicius-galba/'
+      quote: >-
+        Constructed of fine Monte Verde tufa masonry with peperino blocks for its
+        cornice, the monument should be dated to … 100 B.C.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Ser. Sulpicius Galba'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-ser-sulpicius-galba/'
+      quote: >-
+        The monument was erected in the urban ensemble of the Emporium between the
+        *Horrea Galbana structures and the vast warehouse called the *“Porticus
+        Aemilia”
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Ser. Sulpicius Galba'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-ser-sulpicius-galba/'
+      quote: >-
+        The building can also be traced on the Severan Marble Plan, although it is
+        not labeled
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -3122,7 +3944,47 @@
     - { source: ruggiero-1991, locator: 'pp. 265–282' }
     - { source: colini-buzzetti-1986, locator: 'pp. 8–20' }
     - { source: adam-1994 }
-  confidence: probable
+    - source: digital-augustan-rome
+      locator: 'Portunus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/portunus-aedes/'
+      quote: >-
+        The well-preserved Ionic temple between the *Tiber and the *Forum Bovarium,
+        formerly attributed to Fortuna Virilis, is now widely agreed to be that of
+        Portunus
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Portunus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/portunus-aedes/'
+      quote: >-
+        the earlier dates to the late 4th- or early 3rd-c. B.C., had a 6-m-tall
+        podium of Grotta Oscura blocks
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Portunus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/portunus-aedes/'
+      quote: >-
+        The current temple was built on the same podium around 80/70 B.C.
+      supports: [condition]
+    - source: digital-augustan-rome
+      locator: 'Portunus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/portunus-aedes/'
+      quote: >-
+        contra, Coarelli 1988, 147, who suggests an early 2nd-c. B.C. date
+      supports: []
+    - source: platner-ashby
+      locator: 'Mater Matuta, aedes, pp. 330–331'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Matris_Matutae.html'
+      quote: >-
+        If this is correct, the temple must have been restored about the middle of
+        the first century B.C.
+      supports: []
+    - source: platner-ashby
+      locator: 'Mater Matuta, aedes, pp. 330–331'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Matris_Matutae.html'
+      quote: >-
+        is an ancient temple converted into the church of S. Maria Egiziaca … in 872
+      supports: [to]
+  confidence: uncertain
   review: draft
   note: >-
     The temple of the god of the harbour by the Pons Aemilius, standing today: Ionic,
@@ -3132,7 +3994,9 @@
     It was built about 80/70 BCE (Ruggiero; Coarelli argued for the early 2nd century)
     on the podium of a temple of the late 4th or early 3rd century, a podium of Grotta
     Oscura tufa 6 m high with an arched passage in its front. The building years are not
-    recorded: the map shows it rising from 80 and standing from 75. What the old temple
+    recorded: the map shows it rising from 80 and standing from 75. Platner & Ashby
+    date the rebuilding "about the middle of the first century B.C.", so the record is
+    uncertain (probable until October 2026). What the old temple
     over its podium looked like is not known, so until 80 it is the typical Tuscan
     temple.
 
