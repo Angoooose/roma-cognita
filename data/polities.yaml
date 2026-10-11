@@ -2900,7 +2900,9 @@
     - { text: Emesa, lang: la, preferred: true }
   from: 69 BCE
   to: 31 BCE
-  ruler: Sampsiceramus I; Iamblichus I, by 51 to 31; Alexander, 31–30
+  ruler: >-
+    Sampsiceramus I, by 65/64; Iamblichus I, his son, by 51 to 31;
+    Alexander, Iamblichus' brother, 31
   sources:
     - source: strabo
       locator: '16.2.10'
@@ -2960,7 +2962,11 @@
     Iamblichus his son" (16.2.10). Antony tortured Iamblichus to death before
     Actium (Dio 50.13.7), and his brother Alexander, who had the realm "as a
     reward for accusing" him, was deposed by Octavian and killed after the
-    triumph (51.2.2; still a suppliant in 30, Josephus BJ 1.393). The kingdom
+    triumph (51.2.2). Iamblichus' first year is Cicero's despatch as
+    proconsul of Cilicia, 51 (Fam. 15.1.2). Alexander's reign is given only
+    as 31, the year Octavian deposed him; until October 2026 it read 31–30,
+    on Josephus BJ 1.393, whose suppliant Alexander, "one of Antony's
+    friends", is not said to be of Emesa. The kingdom
     was restored to Iamblichus II only in 20 (Dio 54.9.2).
     The principality is first seen when Antiochus XIII called on
     Sampsiceramus (Diodorus 40.1b.1), an episode Schürer puts "probably" in
