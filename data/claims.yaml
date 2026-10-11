@@ -1049,9 +1049,16 @@
 - atom: lusitania-north
   polity: hispania-ulterior
   relation: province
-  from: 60 BCE
+  from: { earliest: 61 BCE, latest: 60 BCE }
   to: after 27 BCE
   sources:
+    - source: broughton-mrr
+      locator: 'vol. II, 61 B.C., p. 180'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Governor, probably with the title Proconsul, in Farther Spain … where
+        he carried on a war with the Callaeci and Lusitani
+      supports: [polity, relation, from]
     - source: suetonius-iul
       locator: '18'
       quote: >-
@@ -1101,7 +1108,11 @@
   review: draft
   note: >-
     Brought under Roman arms by Caesar's campaigns as propraetor, 61–60: the
-    Mons Herminius cleared and the peoples to the Durius subdued.
+    Mons Herminius cleared and the peoples to the Durius subdued. Broughton
+    puts the war in 61, Caesar's year in Farther Spain after his praetorship
+    of 62; Dio tells it among the events of 60, the year of Afranius and
+    Metellus (37.49.1, 37.52.1), and Caesar left for the elections that
+    summer (Suet. Iul. 18). It read 60 until October 2026; it now covers both.
 
 - atom: gallia-transalpina
   polity: gallia-transalpina
