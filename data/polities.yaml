@@ -2756,7 +2756,59 @@
   sources:
     - { source: sullivan-1990 }
     - { source: myers-2010 }
-    - { source: cassius-dio, locator: '49.32.5' }
+    - source: cassius-dio
+      locator: '49.32.5'
+      quote: >-
+        in the districts both of Malchus and of the Ituraeans (for he executed
+        Lysanias, whom he himself had made king over them, on the charge that
+        he had favoured Pacorus)
+      supports: [kind, ruler]
+    - source: schurer-1890
+      locator: 'App. I, p. 330'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Ptolemy, son of Mennaus, reigned from about B.C. 85 to about B.C. 40.
+        About B.C. 85, from fear of him, the Damascenes called in the aid of
+        Aretas, king of the Arabians
+      supports: [from, ruler]
+    - source: josephus-aj
+      locator: '13.392'
+      quote: >-
+        Aretas reigned over Coele Syria, being called to the government by
+        those that held Damascus, by reason of the hatred they bore to Ptolemy
+        Menneus
+      supports: [from]
+    - source: schurer-1890
+      locator: 'App. I, pp. 331–332'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Ptolemy died during the progress of the Parthian war, B.C. 40 … Ptolemy
+        was succeeded by his son Lysanias … Dio Cassius styles him " King of the
+        Itureans " … Antony caused Lysanias to be executed in B.C. 36
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '14.330'
+      quote: >-
+        Ptolemy, the son of Menneus, also was now dead, and Lysanias his son
+        took his government
+      supports: [ruler]
+    - source: schurer-1890
+      locator: 'App. I, p. 333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        It seems therefore that Zenodorus, after the death of Lysanias, had
+        received on rent a portion of his territory from Cleopatra, and that
+        aftei Cleopatra's death this "rented" domain, subject to tribute, was
+        continued to him with the title of tetrarch.
+      supports: [ruler]
+    - source: schurer-1890
+      locator: 'App. I, pp. 332–333'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        About the year 23 B.C. … Josephus tells of a certain Zenodorus who had
+        taken on lease the possessions that previously belonged to Lysanias …
+        Three years later, in B.C. 20, Zeno- dorus died
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -3023,9 +3075,45 @@
     III, c. 70–57; Orodes II, 57–38/37; Phraates IV from 38/37 (the usurper
     Tiridates II c. 31–30)
   sources:
-    - { source: debevoise-1938, locator: 'pp. 70–108' }
+    - source: debevoise-1938
+      locator: 'p. 270'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        PARTHIAN KINGS B.C. … Phraates II 138/37-ca. 128 Artabanus II ca.
+        128-124/23 Mithradates II ca. 123-88/87 Gotarzes I g1-81/80 Orodes I
+        80-76/75 Sinatruces 76/75-70 or 69 Phraates III 70 or 69-58/57
+        Mithradates III 58/57-55 Orodes II ca. §7-37/ 36 Pacorus I died in 38
+        Phraates IV Ca. 38-2 Tiridates II 64. 30-25
+      supports: [kind, from, to, ruler]
+    - source: justin
+      locator: '42.1'
+      quote: >-
+        AFTER the death of Mithridates, king of the Parthians, Phraates his son
+        was made king
+      supports: [kind, ruler]
+    - source: justin
+      locator: '42.2'
+      quote: >-
+        In his stead Artabanus, his uncle, was made king. … He was succeeded by
+        his son Mithridates, to whom his achievements procured the surname of
+        Great
+      supports: [ruler]
+    - source: debevoise-1938
+      locator: 'p. 121'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        HRAATES IV came into power shortly before 37 B.c.
+      supports: [ruler]
+    - source: debevoise-1938
+      locator: 'pp. 135–136'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        even before 31 B.c. a certain Tiridates (II) was in open revolt against
+        the king. … where he spent the winter of 30/29 B.c. About the same time
+        Phraates and his “‘Scythian”’ allies drove Tiridates from Parthia, and
+        he fled to Syria
+      supports: [ruler]
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
-    - { source: debevoise-1938, locator: 'pp. 108–138' }
     - { source: cassius-dio, locator: '51.18.2–3' }
   confidence: certain
   review: draft
@@ -3048,7 +3136,44 @@
     Mithridates, Tigranes' son-in-law (Dio 36.14.2), in the 60s; Ariobarzanes
     I; Artavasdes I, to c. 31 (in exile with Octavian from 30)
   sources:
-    - { source: strabo, locator: '11.13.1–2' }
+    - source: strabo
+      locator: '11.13.1'
+      quote: >-
+        The other part is Atropatian Media, which got its name from the
+        commander Atropates … after he was proclaimed king, he organized this
+        country into a separate state by itself, and his succession of
+        descendants is preserved to this day
+      supports: [kind, from, to]
+    - source: cassius-dio
+      locator: '36.14.2'
+      quote: >-
+        the other Mithridates from Media, the son-in-law of Tigranes, fell
+        suddenly upon the Romans while they were scattered
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '49.25.1'
+      quote: >-
+        undertook to make a campaign against Artavasdes, the king of the Medes
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        the latter was in turn defeated and captured, and so Armenia was lost
+        together with Media
+      supports: [ruler]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        Of his own accord he restored Iotape to the Median king, who had found
+        an asylum with him after his defeat
+      supports: [ruler]
+    - source: res-gestae
+      locator: '32'
+      quote: >-
+        The following kings sought refuge with me as suppliants: Tiridates,
+        King of Parthia, and later Phraates son of King Phraates; Artavasdes,
+        King of the Medes
+      supports: [ruler]
     - { source: schottky-1989 }
     - { source: plutarch, locator: 'Antony 38' }
     - { source: cassius-dio, locator: '49.33.1–2' }
@@ -4723,9 +4848,52 @@
   to: 36 BCE
   ruler: Sex. Pompeius, 43–36
   sources:
+    - source: cassius-dio
+      locator: '46.40.3'
+      quote: >-
+        Thus to Sextus Pompey they entrusted the fleet, to Marcus Brutus
+        Macedonia, and to Cassius Syria together with the war against
+        Dolabella.
+      supports: [kind, from, ruler]
+    - source: velleius
+      locator: '2.73.2'
+      quote: >-
+        in the period which followed the flight of Antony from Mutina … had
+        recalled Sextus for Spain … and had entrusted to him the guarding of
+        the coast
+      supports: [kind, from, ruler]
+    - source: appian
+      locator: 'BC 4.84'
+      quote: >-
+        When the triumvirate was established he sailed to Sicily, and as
+        Bithynicus, the governor, would not yield the island, he besieged him
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.19.1–2'
+      quote: >-
+        After this Sextus occupied the whole of the island and put Bithynicus
+        to death … Thus he fared as long as the forces of Cassius and Brutus
+        held together
+      supports: [from, ruler]
+    - source: appian
+      locator: 'BC 5.72'
+      quote: >-
+        should govern Sardinia, Sicily, and Corsica, and any other islands then
+        in his possession
+      supports: [kind]
+    - source: cassius-dio
+      locator: '49.1.1'
+      quote: >-
+        All this happened in the winter in which Lucius Gellius and Cocceius
+        Nerva became consuls.
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.11.1'
+      quote: >-
+        This more than anything else caused Sextus to despair of the
+        situation, and he resolved to flee
+      supports: [to, ruler]
     - { source: cassius-dio, locator: '48.17.4–19.1' }
-    - { source: appian, locator: 'BC 4.84–85' }
-    - { source: appian, locator: 'BC 5.72' }
     - { source: appian, locator: 'BC 5.126' }
     - { source: welch-2012 }
   confidence: certain
@@ -4749,8 +4917,38 @@
   from: { earliest: 46 BCE, latest: 27 BCE }
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
-    - { source: strabo, locator: '17.3.25' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.12.1'
+      quote: >-
+        he did, in fact, restore to the senate the weaker provinces
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. II, p. 299 (46 B.C., Promagistrates)'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        46 B.C. 209 P. Surcos Rurus Pat. (93) Pr. 48 Imperator in Illyricum
+        … Governor of Achaea, title not preserved, but probably as a
+        Procon- sul, since he was a consular. Like Brutus in Cisalpine Gaul, he
+        governed by Caesar’s appointment; and remained until the summer of 45
+      supports: [kind, from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar … the seventh
+        Achaia, extending to Thessaly, the Aetolians, Acarnanians, and the
+        Epirotic nations who border upon Macedonia
+      supports: [kind, to]
     - { source: bowersock-1965, locator: '284–285' }
   confidence: uncertain
   review: needs-check
@@ -4772,8 +4970,57 @@
   from: before 133 BCE
   to: 36 BCE
   sources:
+    - source: appian
+      locator: 'Ill. 18'
+      quote: >-
+        The transalpine Iapydes, a strong and savage tribe, drove back the
+        Romans twice within the space of about twenty years, overran Aquileia,
+        and plundered the Roman colony of Tergestus.
+      supports: [kind]
+    - source: strabo
+      locator: '4.6.10'
+      quote: >-
+        Formerly the Iapodes were numerous, inhabiting either side of the
+        mountain, and were notorious for their predatory habits, but they have
+        been entirely reduced and brought to subjection by Augustus Caesar.
+      supports: [kind, to]
+    - source: livy
+      locator: '43.5.3–4'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0149:book=43:chapter=5
+      quote: >-
+        Ambassadors came at the same time from the Carnians, Istrians, and
+        Iapidans … nor had they as yet been able to discover for what reason
+        they were treated as enemies by the consul
+      supports: [from]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Gaius Sempronius at first fought unsuccessfully against the
+        Iapydes
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.34.1–2'
+      quote: >-
+        now that Sextus had perished … for the Salassi, Taurisci, Liburni, and
+        Iapydes, who even before this had been behaving in no decent manner
+        toward the Romans, not only having failed to contribute their
+        assessments of tribute but also having more than once invaded and
+        ravaged the neighbouring districts, openly revolted at this time
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.18.6'
+      quote: >-
+        So Sextus was executed in the consulship of Lucius Cornificius and one
+        Sextus Pompeius.
+      supports: [to]
+    - source: appian
+      locator: 'Ill. 21'
+      quote: >-
+        After the destruction of Metulus the remainder of the Iapydes, being
+        terror-stricken, surrendered to Augustus. The transalpine Iapydes were
+        then for the first time brought in subjection to the Romans.
+      supports: [to]
     - { source: appian, locator: 'Ill. 16–21' }
-    - { source: strabo, locator: '4.6.10' }
     - { source: strabo, locator: '7.5.4' }
   confidence: probable
   review: draft
@@ -4794,7 +5041,25 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
+    - source: cassius-dio
+      locator: '49.43.6–7'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague … At the death of Bocchus he gave his kingdom to no one else,
+        but enrolled it among the Roman provinces.
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
     - { source: cassius-dio, locator: '53.12.9' }
     - { source: amela-valverde-2012, locator: '155–164' }
   confidence: uncertain
@@ -4818,10 +5083,42 @@
   from: 30 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '51.17.1' }
-    - { source: cassius-dio, locator: '53.12.7' }
-    - { source: res-gestae, locator: '27.1' }
-    - { source: philae-stele }
+    - source: cassius-dio
+      locator: '51.17.1'
+      quote: >-
+        Afterwards he made Egypt tributary and gave it in charge of Cornelius
+        Gallus.
+      supports: [kind]
+    - source: res-gestae
+      locator: '27.1'
+      quote: >-
+        I added Egypt to the empire of the Roman people.
+      supports: [kind]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [from]
+    - source: velleius
+      locator: '2.87.1'
+      quote: >-
+        The following year Caesar followed Cleopatra and Antony to Alexandria
+        and there put the finishing touch upon the civil wars.
+      supports: [from]
+    - source: cassius-dio
+      locator: '53.12.7'
+      quote: >-
+        These provinces, then, together with Coele-Syria, as it is called,
+        Phoenicia, Cilicia, Cyprus and Egypt, fell at that time to Caesar's
+        share
+      supports: [kind, to]
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        first praefect of Alexandria and Egypt after the kings had been subdued
+        by Caesar, son of the divine Caesar
+      supports: [kind]
     - { source: cah-x, locator: 'ch. 14b' }
   confidence: certain
   review: draft
@@ -4960,8 +5257,46 @@
   to: 31 BCE
   ruler: Cleopatra Selene, 34–30
   sources:
-    - { source: cassius-dio, locator: '49.41.3' }
-    - { source: res-gestae, locator: '27.3' }
+    - source: cassius-dio
+      locator: '49.41.3'
+      quote: >-
+        he promised to give to his own children by Cleopatra the following
+        districts: … to Cleopatra, the Cyrenaica in Libya
+      supports: [from, ruler]
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: plutarch
+      locator: 'Antony 36.3'
+      quote: >-
+        acknowledging his two children by her, and called one Alexander and the
+        other Cleopatra, with the surname for the first of Sun, and for the
+        other of Moon
+      supports: [ruler]
+    - source: res-gestae
+      locator: '27.3'
+      quote: >-
+        I recovered all the provinces beyond the Adriatic sea towards the east,
+        together with Cyrene, the greater part of them being then occupied by
+        kings.
+      supports: [kind, to]
+    - source: velleius
+      locator: '2.84.1'
+      quote: >-
+        in the consulship of Caesar and Messala Corvinus, the decisive battle
+        took place at Actium
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.5.6'
+      quote: >-
+        Antony, for his part, had sailed to Pinarius Scarpus in Africa and to
+        the army under Scarpus' command previously assembled there for the
+        protection of Egypt. But when this general not only refused to receive
+        him
+      supports: [to]
     - { source: rpc-i, locator: '919–925' }
   confidence: uncertain
   review: needs-check
@@ -4980,7 +5315,24 @@
   from: { earliest: 36 BCE, latest: 27 BCE }
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Sicily, Crete and the Cyrenaic portion of Libya, Bithynia with Pontus
+        which adjoined it, Sardinia and Baetica were held to belong to the
+        people and the senate
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship
+      supports: [from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar … the eighth
+        Crete, with Cyrenaea
+      supports: [kind, to]
     - { source: rpc-i, locator: '914–917' }
   confidence: probable
   review: needs-check
@@ -5001,7 +5353,66 @@
   to: after 27 BCE
   ruler: a ruler set up by Cornelius Gallus, name unknown
   sources:
-    - { source: philae-stele }
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        brought the army beyond the Nile Cataract … gave audience to ambassadors
+        from the king of the Aethiopians at Philae, received the same king under
+        his protection, and installed a ruler over the Triacontaschoenos on
+        Aethiopian territory
+      supports: [kind, from, ruler]
+    - source: philae-stele
+      locator: 'Greek version'
+      quote: >-
+        and installed a ruler over the Triakontaschoinos, a district of Aethiopia
+      supports: [kind, ruler]
+    - source: philae-stele
+      locator: 'Hieroglyphic version'
+      quote: >-
+        Regnal year 1, fourth month of the winter season
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.19.6'
+      quote: >-
+        The day on which Alexandria had been captured they declared a lucky
+        day, and directed that in future years it should be taken by the
+        inhabitants of that city as the starting-point in their reckoning of
+        time.
+      supports: [from]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        Cornelius Gallus led the repression and appointed a Nubian tyrannos to
+        govern the Triakontaschoinos.
+      supports: [kind, from, ruler]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        the Meroites took advan- tage of the departure of half the legions
+        stationed in Egypt for Arabia to regain a foothold in Lower Nubia
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.28.1'
+      quote: >-
+        Augustus now became consul for the tenth time, with Gaius Norbanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.29.3'
+      quote: >-
+        While this was going on, another and a new campaign had at once its
+        beginning and its end. It was conducted by Aelius Gallus, the governor
+        of Egypt, against the country called Arabia Felix
+      supports: [to]
+    - source: strabo
+      locator: '17.1.54'
+      quote: >-
+        The Ethiopians, emboldened in consequence of a part of the forces in
+        Egypt being drawn off by Aelius Gallus, who was engaged in war with the
+        Arabs, invaded the Thebais
+      supports: [to]
     - { source: hoffmann-2009 }
   confidence: uncertain
   review: needs-check
@@ -5021,10 +5432,59 @@
   to: after 27 BCE
   ruler: Darius son of Pharnaces, 39–37; Polemon I, from 37/36
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: cassius-dio, locator: '49.25.4' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        The Senate having voted to ratify all that he had done or should do …
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute: in Pontus, Darius, the son of Pharnaces
+        and grandson of Mithridates
+      supports: [kind, from, ruler]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When in late 37 or 36 Polemo left for Pontus which he received from
+        Antony who had taken it away from Darius, son of Pharnaces
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Polemo, however, was provided with other dominions, namely that portion
+        of Pontus which lay east of the river Iris, and he also received the
+        title of King. 23 Part of Polemo’s kingdom had previously been assigned
+        to Darius, the son of Pharnaces, now either dead or deposed
+      supports: [kind, ruler]
+    - source: cassius-dio
+      locator: '49.25.4'
+      quote: >-
+        slew his whole detachment, with the exception of Polemon, king of
+        Pontus, who was then accompanying Statianus
+      supports: [ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Archelaus and Polemo were likewise per- mitted to keep their kingdoms
+        of Cappadocia and Pontus. Polemo, indeed, was punished by a delay in
+        confirming his position, for it was not until four years later — in 26
+        b.c. — that he was formally declared a “friend and ally” of Rome.
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.25.1'
+      quote: >-
+        In this same year Polemon, the king of Pontus, was enrolled among the
+        friends and allies of the Roman people
+      supports: [to]
     - { source: cassius-dio, locator: '49.44.3' }
-    - { source: magie-1950, locator: 'vol. I, 433–435, 443' }
   confidence: probable
   review: draft
   note: >-
@@ -5042,8 +5502,43 @@
   to: 37 BCE
   ruler: Amyntas, 39–37/36
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        The Senate having voted to ratify all that he had done or should do …
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute … in Pisidia, Amyntas
+      supports: [kind, from, ruler]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, pp. 433–434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of what remained, the hill-country of northern Pisidia was now given to
+        Amyntas … Their rule over their respective assignments, however, proved
+        to be of short duration, for three years later each received a kingdom
+        which greatly increased his prestige and power. 19 In 37/6 b.c. Castor,
+        ruler of Galatia and Paphlagonia, died or was deposed from his throne.
+        … Antony, evidently regarding Amyntas as a more valuable supporter,
+        presented the district to him, conferring on him also the title of King.
+      supports: [ruler, to]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        assigned principalities, giving Galatia to Amyntas
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        These were his acts at that time; the following year, when Pompeius and
+        Cornificius were consuls
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5059,9 +5554,41 @@
   to: 37 BCE
   ruler: Polemon, 39–37/36
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: strabo, locator: '12.6.1' }
-    - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        He set up kings here and there as he pleased, on condition of their
+        paying a prescribed tribute … in a part of Cilicia, Polemon
+      supports: [kind, from, ruler]
+    - source: dmitriev-2000
+      locator: 'p. 370'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        In 39 B.C. Antony made Polemo king by giving him a “part of Cilicia.”
+        Strabo says that this Polemo I was in control of Iconium at that time.
+      supports: [kind, from, ruler]
+    - source: strabo
+      locator: '12.6.1'
+      quote: >-
+        In this neighborhood is also Iconium, a town that is well settled and
+        has a more prosperous territory than the above-mentioned ass-grazing
+        country. This place was held by Polemon.
+      supports: [ruler]
+    - source: dmitriev-2000
+      locator: 'p. 364'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        When Polemo left for Pontus in late 37 or 36, Iconium went over to
+        Amyntas
+      supports: [to, ruler]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 37/6 b.c. Castor, ruler of Galatia and Paphlagonia, died or was
+        deposed from his throne. … The extension of Amyntas’s dominions to
+        Lycaonia meant, of course, that the district was lost to Polemo.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
