@@ -1660,7 +1660,7 @@
   names:
     - { text: Mausoleum Augusti, lang: la, preferred: true }
     - { text: Mausoleum of Augustus, lang: en }
-  from: 28 BCE
+  from: before 31 BCE
   to: after 27 BCE
   condition: under construction
   prominence: 5
@@ -1672,7 +1672,7 @@
         by Augustus for himself, his family, and his successors in the northern part
         of the campus Martius, between the via Flaminia and the Tiber, as early as 28
         B.C.
-      supports: [from]
+      supports: []
     - source: platner-ashby
       locator: 'Mausoleum Augusti, p. 333'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Mausoleum_Augusti.html
@@ -1690,7 +1690,14 @@
       quote: >-
         This structure he had built in his sixth consulship between the Via Flaminia
         and the bank of the Tiber
-      supports: [from]
+      supports: []
+    - source: digital-augustan-rome
+      locator: 'Mausoleum: Augustus'
+      url: https://www.digitalaugustanrome.org/records/mausoleum-augustus/
+      quote: >-
+        argued that the construction must have started before 31 B.C., which concords
+        with the earlier suggestion of Kraft
+      supports: [from, condition]
     - source: digital-augustan-rome
       locator: 'Mausoleum: Augustus'
       url: https://www.digitalaugustanrome.org/records/mausoleum-augustus/
@@ -1706,12 +1713,18 @@
         reprPoint: [12.47641228819921, 41.90599920726595]
       supports: [location]
     - { source: osm-rome, locator: relation/2709954 }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
-    Built by Augustus for himself and his family in the northern Campus Martius,
-    begun as early as 28 BCE. When it was finished is not recorded; the first
-    burial in it was Marcellus', in 23 BCE.
+    Built by Augustus for himself and his family in the northern Campus Martius.
+    Von Hesberg, from the style of its Doric entablature, argues the works began
+    before 31 BCE (Digital Augustan Rome), so it is shown being built from then.
+    Suetonius says Augustus had built it in his sixth consulship, 28 BCE (Aug.
+    100.4), but in 23 Augustus buried Marcellus "in the tomb he was building" (Dio
+    53.30.5), and Digital Augustan Rome reads Suetonius as "perhaps only to a
+    certain extent": it is shown under construction through 27. Until October 2026
+    it started in 28 BCE, Platner & Ashby's "as early as 28", which is Suetonius's
+    date for a building already put up, not for its start.
 
 # --- the Campus Martius, the river quarter and the tombs -------------------------
 
