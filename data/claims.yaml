@@ -5204,32 +5204,6 @@
 - atom: numidia-igilgili
   polity: numidia-masinissa
   relation: client
-  from: c. 88 BCE
-  to: 82 BCE
-  sources:
-    - source: bridoux-2020
-      locator: '¶148'
-      url: https://books.openedition.org/efr/31990
-      quote: >-
-        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
-        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
-        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
-        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
-        son autorité sur son territoire dont nous avons des raisons de penser
-        qu’il se confond avec la Numidie occidentale, plus précisément entre
-        l’oued Soummam et le fleuve Ampsaga
-      supports: [polity, from, to]
-  confidence: uncertain
-  review: draft
-  note: >-
-    Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
-    survenue en 88" (Bridoux ¶147–148); split from the next row only because
-    the standing of the kingdom changes (relations.yaml). No text read says
-    how Masteabar stood with Rome: the relation is unquoted.
-
-- atom: numidia-igilgili
-  polity: numidia-masinissa
-  relation: client
   from: 81 BCE
   to: 47 BCE
   sources:
@@ -5397,28 +5371,6 @@
       supports: [to]
   confidence: probable
   review: draft
-
-- atom: numidia-soummam
-  polity: numidia-masinissa
-  relation: client
-  from: c. 88 BCE
-  to: 82 BCE
-  sources:
-    - source: bridoux-2020
-      locator: '¶148'
-      url: https://books.openedition.org/efr/31990
-      quote: >-
-        Masteabar, fils de Gauda, porte le titre de roi … nous pouvons penser
-        qu’il accède au trône en 88 av. J.-C., si cette date correspond bien à
-        la mort de Gauda. Masteabar n’est manifestement plus au pouvoir en 81
-        av. J.-C., année durant laquelle un roi du nom de Massinissa II exerce
-        son autorité sur son territoire dont nous avons des raisons de penser
-        qu’il se confond avec la Numidie occidentale, plus précisément entre
-        l’oued Soummam et le fleuve Ampsaga
-      supports: [polity, from, to]
-  confidence: uncertain
-  review: draft
-  note: Masteabar's; see numidia-igilgili. The relation is unquoted.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
