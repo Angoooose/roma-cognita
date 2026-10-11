@@ -195,12 +195,27 @@
         citizenship … they comprised the whole under the general denomination
         of Italians and Romans
       supports: [polity, relation, to]
-  confidence: certain
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - source: florus
+      locator: '2.6.5'
+      quote: >-
+        All Latium and Picenum, all Etruria and Campania, and finally all Italy
+        rose against their mother and parent city.
+      supports: []
+  confidence: probable
   review: draft
   note: >-
     The lex Iulia of 90 gave citizenship to the allies who had not revolted
     (App. BC 1.49: the Etruscans gladly accepted it; Broughton dates the law
-    by the consul L. Caesar, 90).
+    by the consul L. Caesar, 90). Probable, not certain: Livy (Per. 74) has
+    the Etruscans in revolt and beaten by Porcius, and Florus (2.6.5) has all
+    Etruria rising, so how much of the ground took the citizenship in 90 is
+    in doubt.
 
 - atom: italia-calabria
   polity: socii
