@@ -2131,7 +2131,7 @@
         Sertorius, another exile, launched a very big war in Hispania Ulterior.
         Proconsul Lucius Manlius and Marcus Domitius, his deputy, were defeated
         in battle by quaestor Hirtuleius.
-      supports: [polity, from]
+      supports: []
     - source: livy-per
       locator: '91'
       quote: >-
