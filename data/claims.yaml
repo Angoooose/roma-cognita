@@ -19994,54 +19994,251 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 104 BCE
+  to: { earliest: 114 BCE, latest: 104 BCE }
   sources:
-    - { source: josephus-aj, locator: '13.324' }
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Towards the end of the second century before Christ, the kingdom of the
+        Seleucidae increasingly exhibits an image of dissolution. The central
+        authority was so weakened by continual revolutions, that a multitude of
+        independent communities were founded in the border lands of the empire.
+        … Zoilus in Straton's Tower and Dora
+      supports: [polity, relation]
+    - source: schurer-1910
+      locator: 'p. 69'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Twenty years later Coelesyria came permanently under the dominion of the
+        Seleucidae through the victory of Antiochus the Great at Panias (198
+        B.C.).
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '13.324'
+      quote: >-
+        Strato's Tower and Dora, which were held by the tyrant Zoilus. Now while
+        Antiochus Philometor, and Antiochus who was called Cyzicenus, were
+        making war one against another … Zoilus, who possessed Strato's Tower
+        and Dora and maintained a legion of soldiers, and, on occasion of the
+        contest between the kings, affected tyranny himself
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 180'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After a reign of eleven years, in b.c. 113, Antiochus VIII. Grypos was
+        driven from the throne by Antiochus IX.
+      supports: [to]
+    - source: schurer-1910
+      locator: 'pp. 84–85'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        In the beginning of the reign of Alexander Jannaeus, a "tyrant," Zoilus
+        was master of Straton's Tower and … Dora
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 297'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        ALEXANDER JANNÄUS, B.C. 104-78
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     In Jannaeus' first year Strato's Tower and Dora "were held by the tyrant
     Zoilus" (AJ 13.324), who had set himself up "on occasion of the contest
-    between the kings" (13.326); when is not known, and he is not drawn.
+    between the kings" (13.326); when is not known, and he is not drawn. The
+    contest began when Cyzicenus drove Grypus out in 113 (Schürer 1891, 180),
+    so the Seleucid hold ended between 114 and Jannaeus' first campaign;
+    drawn at the midpoint, with Zoilus' years left blank. Until October 2026
+    it read 104, which no text states.
 
 - atom: strato-tower
   polity: judaea
   relation: independent
-  from: { earliest: 103 BCE, latest: 96 BCE }
+  from: 103 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.324–335, 13.395' }
+    - source: josephus-aj
+      locator: '13.334–335'
+      quote: >-
+        he desired that, by way of requital, he would take off Zoilus the
+        tyrant, and give his country to the Jews. And then indeed Ptolemy, with
+        pleasure, made such a league of friendship with Alexander, and subdued
+        Zoilus
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX, n. 14'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+      supports: [from]
+    - source: schurer-1910
+      locator: 'p. 85'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        He was soon overthrown by Alexander Jannaeus … and hence Straton's Tower
+        is named
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        At the sea-side, Strato's Tower, Apollonia, Joppa, Iamneia, Azotos,
+        Gaza, Anthedon, Raphia, and Rhinocolura
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able to
+        keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower …
+        All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Jannaeus bought Ptolemy Lathyrus' help to "take off Zoilus the tyrant, and
-    give his country to the Jews" (AJ 13.335), c. 103–102; Strato's Tower is
-    the first city on the list of the Jews' possessions at his death (13.395).
-    When it passed is not stated; by the war on Gaza (96) at the latest.
+    give his country to the Jews" (AJ 13.335), in the war of 103–101; Zoilus
+    was "soon overthrown" by Jannaeus (Schürer 1910, 85), and Strato's Tower
+    is the first city on the list of the Jews' possessions after his three
+    years' war of 84–81 (13.395). When it passed is not stated: the range is
+    103 to that list. Drawn from 103, the earliest year. Until October 2026 it
+    read 103–96, whose later bound (the war on Gaza) no text states.
 
 - atom: palaestina-coast
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 104 BCE
+  to: { earliest: 114 BCE, latest: 104 BCE }
   sources:
-    - { source: josephus-aj, locator: '13.324' }
+    - source: schurer-1910
+      locator: 'p. 60'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        a multitude of independent communities were founded in the border lands
+        of the empire. … Thus Tyre had an era dating from the year 126 B.C.;
+        Sidon a similar one from the year 111; Ascalon from 104. … Zoilus in
+        Straton's Tower and Dora
+      supports: [polity, relation, to]
+    - source: schurer-1910
+      locator: 'p. 89'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Eighty years afterwards (139-138 B.C.) Trypho was here besieged by
+        Antiochus Sidetes with a large army … Some decades afterwards we find it
+        in the possession of the tyrant Zoilus
+      supports: [polity, from, to]
+    - source: schurer-1910
+      locator: 'p. 69'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Twenty years later Coelesyria came permanently under the dominion of the
+        Seleucidae through the victory of Antiochus the Great at Panias (198
+        B.C.).
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '13.324'
+      quote: >-
+        Strato's Tower and Dora, which were held by the tyrant Zoilus. Now while
+        Antiochus Philometor, and Antiochus who was called Cyzicenus, were
+        making war one against another … Zoilus, who possessed Strato's Tower
+        and Dora and maintained a legion of soldiers, and, on occasion of the
+        contest between the kings, affected tyranny himself
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 180'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        After a reign of eleven years, in b.c. 113, Antiochus VIII. Grypos was
+        driven from the throne by Antiochus IX.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 297'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        ALEXANDER JANNÄUS, B.C. 104-78
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: As strato-tower; Dora was Zoilus' too.
+  note: >-
+    As strato-tower; Dora was Zoilus' too, and Ascalon was free from 104
+    (Schürer 1891, 306). Until October 2026 it ended in 104, which no text
+    states.
 
 - atom: palaestina-coast
   polity: judaea
   relation: independent
-  from: { earliest: 103 BCE, latest: 96 BCE }
+  from: 103 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.324, 13.335, 13.395' }
+    - source: josephus-aj
+      locator: '13.324'
+      quote: >-
+        for of the maritime cities there remained only Ptolemais and Gaza to be
+        conquered, besides Strato's Tower and Dora, which were held by the
+        tyrant Zoilus
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX, n. 14'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        At the sea-side, Strato's Tower, Apollonia, Joppa, Iamneia, Azotos
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 306, n.'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        But Dora also must have belonged to the domain of Alexander; for
+        Straton's Tower and Dora had previously belonged to a tyrant Zoilus, who
+        had been subdued by Alexander
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able to
+        keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        as also Marissa, and Azotos, and Iamnia, and Arethusa, to their own
+        inhabitants … of the maritime cities, Gaza, and Joppa, and Dora and
+        Strato's Tower … All these Pompey left in a state of freedom
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: gitler-master-2010 }
   confidence: uncertain
   review: needs-check
   note: >-
-    Dora with Zoilus' country; Iamnia and Azotus are on the list of the Jews'
+    Drawn from 103, Jannaeus' first campaign; until October 2026 the start was
+    103–96, whose later bound no text states. Dora with Zoilus' country (see
+    strato-tower); Iamnia and Azotus are on the list of the Jews'
     cities (AJ 13.395). The atom's two pieces differ: in Jannaeus' first year
     "of the maritime cities there remained only Ptolemais and Gaza to be
     conquered, besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and
@@ -20056,6 +20253,36 @@
   from: before 133 BCE
   to: 97 BCE
   sources:
+    - source: schurer-1910
+      locator: 'p. 69'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Twenty years later Coelesyria came permanently under the dominion of the
+        Seleucidae through the victory of Antiochus the Great at Panias (198
+        B.C.). Gaza also must then have been conquered
+      supports: [polity, relation, from]
+    - source: schurer-1910
+      locator: 'pp. 69–70'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        Gaza refusing to join the party of Antiochus, was besieged by … Jonathan
+        the Maccabee in concert with him, and its environs laid waste, whereupon
+        it gave up its opposition and delivered hostages to Jonathan as a pledge
+        of its adherence to Antiochus.
+      supports: [polity, from]
+    - source: schurer-1910
+      locator: 'p. 70'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        About the year 96 B.C. Gaza as well as the neighbouring cities of Raphia
+        and Anthedon fell into the hands of Alexander Jannaeus.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
+      supports: [to]
     - { source: josephus-aj, locator: '13.357–364' }
   confidence: uncertain
   review: needs-check
@@ -20066,7 +20293,52 @@
   from: 96 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.357–364, 13.395' }
+    - source: josephus-aj
+      locator: '13.364'
+      quote: >-
+        delivered up the city to Alexander … and when he had utterly overthrown
+        their city, he returned to Jerusalem, having spent a year in that siege
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
+      supports: [from]
+    - source: schurer-1910
+      locator: 'p. 70'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        About the year 96 B.C. Gaza as well as the neighbouring cities of Raphia
+        and Anthedon fell into the hands of Alexander Jannaeus.
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        At the sea-side, Strato's Tower, Apollonia, Joppa, Iamneia, Azotos,
+        Gaza, Anthedon, Raphia
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able to
+        keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower …
+        All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: schurer-vermes }
   confidence: probable
   review: draft
@@ -20079,16 +20351,56 @@
 - atom: nabataea-moab
   polity: judaea
   relation: independent
-  from: c. 93 BCE
+  from: { earliest: 96 BCE, latest: 90 BCE }
   to: c. 88 BCE
   sources:
-    - { source: josephus-aj, locator: '13.374, 13.382' }
+    - source: josephus-aj
+      locator: '13.374'
+      quote: >-
+        He also overcame the Arabians, such as the Moabites and Gileadites, and
+        made them bring tribute.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 301'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        He went forth against the Arab tribes which dwelt east of the Jordan,
+        and of these he made the Moabites and Gileadites tributary.
+      supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Gaza must have taken place in b.c. 96
+      supports: [from]
+    - source: schurer-1890
+      locator: 'p. 351'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        A couple of years later, about B.C. 90, Alexander Jannaus attacked King
+        Obedas I.
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.382'
+      quote: >-
+        he was forced to deliver back to the king of Arabia the land of Moab and
+        Gilead, which he had subdued
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 302'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        they called to their aid Demetrius III. Eucärus, a son of Antiochus
+        Grypos … somewhere about b.c. 88
+      supports: [to]
     - { source: josephus-bj, locator: '1.89' }
   confidence: uncertain
   review: needs-check
   note: >-
     Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
-    made them pay tribute (AJ 13.374), after Gaza and before the civil war. In
+    made them pay tribute (AJ 13.374), after Gaza (96) and before he attacked
+    Obodas, about 90 (Schürer 1890, 351); drawn at the midpoint, 93, which it
+    read as "c. 93" until October 2026. In
     that war "he was forced to deliver back to the king of Arabia the land of
     Moab and Gilead, which he had subdued" (13.382), after Demetrius III's
     invasion, c. 88. Unclaimed before: who held Moab is not recorded.
@@ -20097,30 +20409,106 @@
   polity: nabataea
   relation: independent
   from: c. 87 BCE
-  to: 84 BCE
+  to: 85 BCE
   sources:
-    - { source: josephus-aj, locator: '13.382' }
+    - source: josephus-aj
+      locator: '13.382'
+      quote: >-
+        he was forced to deliver back to the king of Arabia the land of Moab and
+        Gilead, which he had subdued
+      supports: [polity, from]
+    - source: schurer-1890
+      locator: 'p. 351'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        the fall of the empire of the Ptolemies and the Seleucid dynasty made
+        possible the founding of a powerful independent commonwealth upon their
+        borders
+      supports: [relation]
+    - source: schurer-1891
+      locator: 'p. 302'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        they called to their aid Demetrius III. Eucärus, a son of Antiochus
+        Grypos … somewhere about b.c. 88
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 304'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        the campaigns which Alexander Jannäus during the next three years, b.c.
+        84—81, carried on in the country east of the Jordan
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Given back to the Arabian king in the civil war (AJ 13.382), to Jannaeus'
-    recovery of it, which is not narrated.
+    recovery of it, which is not narrated (see the next row). Until October
+    2026 it ended in 84.
 
 - atom: nabataea-moab
   polity: judaea
   relation: independent
-  from: { earliest: 83 BCE, latest: 80 BCE }
+  from: 84 BCE
   to: 66 BCE
   sources:
-    - { source: josephus-aj, locator: '13.393–397, 14.18' }
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        in the country of Moab, Heshbon, and Medaba, Lemba, and Oronas,
+        Gelithon, Zoara
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.393–395'
+      quote: >-
+        after he had spent three years in this war, he returned to his own
+        country … Now at this time the Jews were in possession of the following
+        cities
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 304'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        the campaigns which Alexander Jannäus during the next three years, b.c.
+        84—81, carried on in the country east of the Jordan
+      supports: [from]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able to
+        keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.18'
+      quote: >-
+        Hyrcanus promised him, that when he had been brought thither, and had
+        received his kingdom, he would restore that country, and those twelve
+        cities which his father Alexander had taken from the Arabians
+      supports: [polity, to]
+    - source: josephus-aj
+      locator: '14.29'
+      quote: >-
+        In the mean time Pompey sent Scaurus into Syria, while he was himself in
+        Armenia, and making war with Tigranes
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Zoara and the other towns "in the country of Moab" are on the list of the
     Jews' cities after Jannaeus' three years' war beyond the Jordan (AJ
-    13.393–397), and Hyrcanus II promised twelve of them back to Aretas III in
-    65 (14.18). When Jannaeus took Moab again is not stated; the range is that
-    war.
+    13.393–397), which Schürer (1891, 304) dates 84–81; Hyrcanus II promised
+    twelve of them back to Aretas III (14.18) before Scaurus came south, while
+    Pompey was at war with Tigranes in 66 (14.29). When Jannaeus took Moab
+    again is not stated: the range is that war, 84–81, drawn from its first
+    year so as to follow the Nabataean row. Until October 2026 it read 83–80,
+    which no readable text gives.
 
 - atom: nabataea
   polity: nabataea
@@ -20170,7 +20558,44 @@
   from: 62 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.80–81' }
+    - source: josephus-aj
+      locator: '14.80'
+      quote: >-
+        SCAURUS made now an expedition against Petraea, in Arabia … he persuaded
+        Aretas to give Scaurus a sum of money, to prevent the burning of his
+        country, and undertook to be his surety for three hundred talents.
+      supports: [polity, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 62 B.C., p. 175'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        62 B.C. A.U.C. 692 Consuls … Remained in charge in Syria when Pompey
+        returned to Asia Minor (see 63, and below, 62, Promagistrates, on
+        Pompey). Began an invasion of Nabatean Arabia, but desisted in return
+        for a payment of 300 talents
+      supports: [from]
+    - source: schurer-1890
+      locator: 'pp. 353–354'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Only to this extent was the subjugation of Aretas carried, of which
+        Pompey had boasted
+      supports: [relation]
+    - source: schurer-1890
+      locator: 'p. 355'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        On account of the aid given by him to the Parthians, Ventidius exacted
+        from him a tribute in B.C. 39
+      supports: [relation]
+    - source: schurer-1890
+      locator: 'p. 356'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Obodas IL, about B.C. 28-9, was king during the campaign of Aeiius
+        Gallus against the southern Arabians, B.C. 25-24, in which campaign a
+        thousand Nabatean auxiliary troops took part.
+      supports: [polity, relation, to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
@@ -20186,8 +20611,39 @@
   from: before 133 BCE
   to: 96 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
-    - { source: justin, locator: '38.3, 42.2' }
+    - source: justin
+      locator: '42.2'
+      quote: >-
+        At last he turned his arms against Ortoadistes, king of Armenia.
+      supports: [polity]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        the country was divided into two parts by Artaxias and Zariadris, the
+        generals of Antiochus the Great … but when the king was defeated, they
+        joined the Romans and were ranked as autonomous, with the title of king.
+        Now Tigranes was a descendant of Artaxias
+      supports: [polity, relation, from]
+    - source: justin
+      locator: '38.3'
+      quote: >-
+        The king of Armenia, at this time, was Tigranes, who had long before
+        been committed as a hostage to the Parthians, but had subsequently been
+        sent back to take possession of his father's throne.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, 338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Having ascended the throne of Armenia in 95 b.c.
+      supports: [to]
+    - source: debevoise-1938
+      locator: 'p. 45'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        About 94 B.c., probably on the death of his father Artavasdes, the
+        Armenian prince Tigranes
+      supports: [polity]
     - { source: sherwin-white-1984 }
   confidence: uncertain
   review: needs-check
@@ -20204,8 +20660,42 @@
   from: 95 BCE
   to: 67 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
-    - { source: justin, locator: '40.1' }
+    - source: justin
+      locator: '40.1'
+      quote: >-
+        Tigranes king of Armenia, who, in addition to the strength of his own
+        kingdom, was supported by an alliance with Parthia
+      supports: [polity, relation]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        But he was overcome by Tigranes, who established himself as lord of all.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Having ascended the throne of Armenia in 95 b.c.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. II, 1099'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        For Tigranes I of Armenia see Geyer in R.E. vi a 970L He began to reign
+        in 95 b.c.
+      supports: [from]
+    - source: cassius-dio
+      locator: '36.52.3–4'
+      quote: >-
+        telling him among other things that he had not lost the kingdom of
+        Armenia, but had gained the friendship of the Romans
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 33' }
     - { source: sherwin-white-1984 }
   confidence: probable
@@ -20224,7 +20714,36 @@
   from: before 133 BCE
   to: 95 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
+    - source: strabo
+      locator: '11.14.5'
+      quote: >-
+        Artaxias and Zariadris, who formerly were generals of Antiochus the
+        Great, but later, after his defeat, reigned as kings (the former as king
+        of Sophene
+      supports: [polity, from]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        they joined the Romans and were ranked as autonomous, with the title of
+        king. … the Sophenian Artanes, who held the southern parts and those
+        that lay more to the west than these, was a descendant of Zariadris. But
+        he was overcome by Tigranes
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '12.2.1'
+      quote: >-
+        Tomisa by name. This was sold to the ruler of Sophene for one hundred
+        talents
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Having ascended the throne of Armenia in 95 b.c. at the age of about
+        forty-five, he entered almost at once upon an ambitious career of
+        conquest. After seizing the district of Sophene on the eastern bank of
+        the Euphrates
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
@@ -20237,7 +20756,54 @@
   from: c. 94 BCE
   to: 67 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        But he was overcome by Tigranes, who established himself as lord of all.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 338'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Having ascended the throne of Armenia in 95 b.c. at the age of about
+        forty-five, he entered almost at once upon an ambitious career of
+        conquest. After seizing the district of Sophene on the eastern bank of
+        the Euphrates
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, 205'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        By his conquest of Sophene, on the eastern bank of the Euphrates, he had
+        become a neighbour of Cappadocia.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. II, 1099'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        He began to reign in 95 b.c. For his conquest of Sophene … formulated
+        before Tigranes's invasion in 93 b.c.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 357–358'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Even Sophene, the first of the districts he … annexed, was taken from
+        him and given to his son.
+      supports: [polity, to]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
@@ -20246,96 +20812,314 @@
     year.
 
 - atom: sophene
-  polity: armenia
+  polity: cappadocia
   relation: client
   from: 66 BCE
   to: 35 BCE
   sources:
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        To the younger he assigned Sophene only.
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 105'
+      quote: >-
+        To Ariobarzanes he gave back the kingdom of Cappadocia and added to it
+        Sophene and Gordyene, which he had partitioned
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, 375'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In addition to Tomisa, he obtained the whole district of Sophene, on the
+        eastern bank of the Euphrates
+      supports: [polity]
     - { source: plutarch, locator: 'Pompey 33' }
-    - { source: cassius-dio, locator: '36.52–53' }
-    - { source: appian, locator: 'Mithr. 105' }
   confidence: uncertain
   review: needs-check
   note: >-
-    As armenia (the row is armenia's). In 66 Sophene was not reckoned part of
-    Tigranes' hereditary kingdom: Lucullus had "robbed him of" it (Plut.
-    Pompey 33.4), and Pompey took it from him and gave it to Tigranes' son,
-    whom he then put in chains (Dio 36.53.2–4). Appian has Sophene and
-    Gordyene then given to Ariobarzanes of Cappadocia (Mithr. 105). None of
-    this is drawn; who held Sophene after 66 wants a human decision.
+    In 66 Sophene was not reckoned part of Tigranes' hereditary kingdom:
+    Pompey took it from him and gave it to Tigranes' son, whom he then put in
+    chains (Dio 36.53.2–4), and added it to Ariobarzanes' Cappadocia (Appian
+    Mithr. 105; Magie 375). The son's months are not drawn. Until October
+    2026 this row was Armenia's, as a client, which those texts contradict.
+    When Sophene went back to Armenia is not recorded (Strabo has it in
+    Greater Armenia in his own day, 11.12.3); the end at 35 is only the
+    boundary with the Armenian rows from Antony's seizure of Armenia in 34,
+    and wants a human decision.
 
 - atom: sophene
   polity: armenia
   relation: client
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
-    - { source: cassius-dio, locator: '49.39–41' }
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.39.5–6'
+      quote: >-
+        Thereupon he arrested him … for he professed to have arrested him for no
+        other purpose than to levy tribute upon the Armenians for the
+        safeguarding of the king and to maintain his sovereignty
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.44.1–2'
+      quote: >-
+        the Mede received a portion of the newly-acquire Armenia
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose end has been 33–31 since October
+    2026; this read 32 until then.
 
 - atom: sophene
   polity: rome
   relation: occupied
   from: 34 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
-    - { source: cassius-dio, locator: '49.39–40, 49.44.4' }
+    - source: cassius-dio
+      locator: '49.39.1'
+      quote: >-
+        Antony meanwhile resigned his office on the very first day, putting
+        Lucius Sempronius Atratinus in his place
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.40.1–2'
+      quote: >-
+        After this Antony occupied the whole of Armenia, taking some of the
+        people peaceably and some by force … then he left his legions in Armenia
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
   confidence: probable
   review: draft
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose end has been 33–31 since October
+    2026; this read 32 until then.
 
 - atom: sophene
   polity: armenia
   relation: independent
-  from: 31 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
-    - { source: tacitus-ann, locator: '2.3' }
-    - { source: cassius-dio, locator: '51.16.2' }
+    - source: tacitus-ann
+      locator: '2.3'
+      quote: >-
+        Artavasdes’ son, Artaxias II, hostile to us on account of his father,
+        defended himself and his crown by virtue of Parthian strength
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        but as Antony summoned back his own soldiers, and moreover retained
+        those of the king, the latter was in turn defeated and captured, and so
+        Armenia was lost together with Media
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        he refused the request of Artaxes that his brothers be sent to him,
+        because this prince had put to death the Romans left behind in Armenia
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 428'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Antony, who, as well as Cleopatra, had committed suicide in August b.c.
+        30
+      supports: [from]
+    - source: strabo
+      locator: '11.12.3'
+      quote: >-
+        and leaving these and the region of Commagene on the right, and
+        Acilisene and Sophene in Greater Armenia on the left
+      supports: [polity, to]
   confidence: probable
   review: draft
-  note: As armenia (the row is armenia's).
+  note: >-
+    As armenia (the row is armenia's), whose start has been 32–30 since
+    October 2026; this read 31 until then.
 
 - atom: atropatene
   polity: atropatene
   relation: client
   from: before 133 BCE
-  to: 86 BCE
+  to: 87 BCE
   sources:
-    - { source: strabo, locator: '11.13.1–2' }
+    - source: strabo
+      locator: '11.13.1'
+      quote: >-
+        The other part is Atropatian Media … after he was proclaimed king, he
+        organized this country into a separate state by itself, and his
+        succession of descendants is preserved to this day
+      supports: [polity, from]
+    - source: debevoise-1938
+      locator: 'p. 50'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        This event, which took place in 87 B.c., is the last dated occurrence in
+        the reign of Mithradates II … Mithradates had controlled Iran, including
+        Kurdistan, and northern Mesopotamia
+      supports: [to]
+    - { source: strabo, locator: '11.13.2' }
     - { source: schottky-1989 }
   confidence: uncertain
   review: needs-check
   note: >-
-    A vassal kingdom throughout: of Parthia, then of Tigranes, then of Parthia
-    again (relations.yaml). One row for each master.
+    One row for each master (relations.yaml): Parthia, then Tigranes, then
+    Parthia again. Mithradates II of Parthia, who "had controlled Iran", was
+    still alive in 87 (Debevoise 50); Tigranes moved only after his death.
+    Until October 2026 this ended in 86, which no text states.
 
 - atom: atropatene
   polity: atropatene
   relation: client
-  from: 85 BCE
-  to: 66 BCE
+  from: 86 BCE
+  to: 67 BCE
   sources:
-    - { source: strabo, locator: '11.14.15' }
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        and he subjugated to himself the rulers of Atropene and Gordyaea
+      supports: [polity, relation]
+    - source: debevoise-1938
+      locator: 'p. 50'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        This event, which took place in 87 B.c., is the last dated occurrence in
+        the reign of Mithradates II
+      supports: [from]
+    - source: debevoise-1938
+      locator: 'pp. 50–51'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        Mithradates II had been a friend and ally of Tigranes of Armenia. On his
+        death the latter felt free, not to say urged, to proceed against
+        Gotarzes … Atropatene became his vassal state.
+      supports: [relation, from]
+    - source: plutarch
+      locator: 'Lucullus 27.6'
+      quote: >-
+        assigning the left wing to the king of the Adiabeni, the right to the
+        king of the Medes
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
     - { source: plutarch, locator: 'Lucullus 31.7' }
     - { source: cassius-dio, locator: '36.14.2' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15);
-    the Atropateni fought for him in 68 (Plut. Lucullus 31.7).
+    Tigranes "subjugated to himself the rulers of Atropene" (Strabo 11.14.15)
+    after the death of Mithradates II, still alive in 87 (Debevoise 50–51);
+    no text gives the year, and the king of the Medes held his right wing at
+    Tigranocerta in 69 (Plut. Lucullus 27.6), so the start lies in 86–69; the
+    Atropateni fought for him again in 68 (31.7). Drawn from 86, its first year,
+    to follow the Parthian row; until October 2026 it read 85, which no text
+    states. To 67: Tigranes' submission in 66 belongs to the next row.
 
 - atom: atropatene
   polity: atropatene
-  relation: client
-  from: 65 BCE
+  relation: allied
+  from: 66 BCE
   to: 36 BCE
   sources:
+    - source: appian
+      locator: 'Mithr. 106'
+      quote: >-
+        He also fought against Darius the Mede, and put him to flight, either
+        because he had helped Antiochus, or Tigranes before him.
+      supports: [polity]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.25.1–2'
+      quote: >-
+        undertook to make a campaign against Artavasdes, the king of the Medes …
+        learning there that the Mede had gone far away from his own land to bear
+        aid to his ally, the Parthian king
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.33.1'
+      quote: >-
+        the following year, when Pompeius and Cornificius were consuls … had
+        sent Polemon to him requesting his friendship and alliance
+      supports: [to]
     - { source: strabo, locator: '11.13.1–2' }
   confidence: uncertain
   review: needs-check
+  note: >-
+    From Tigranes' submission to Pompey, in which "what he had acquired later"
+    was taken from him (Dio 36.53.2), the year before the consulship of Cotta
+    and Torquatus (37.1.1): 66, which belongs to this row as Armenia's own
+    client row starts then. Until October 2026 it read 65, and the row before
+    ended in 66. Allied, not client: in 36 the Mede had gone "to bear aid to
+    his ally, the Parthian king" (Dio 49.25.2), and no text calls him
+    Parthia's subject; it was client until October 2026.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia

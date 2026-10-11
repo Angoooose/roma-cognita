@@ -2826,16 +2826,20 @@
     (50.2.2).
 
 - polity: atropatene
-  type: client-of
+  type: allied-to
   of: parthia
-  from: 65 BCE
+  from: 66 BCE
   to: 36 BCE
   sources: [{ source: strabo, locator: '11.13.1–2' }]
   confidence: uncertain
   review: needs-check
   note: >-
     Back under Parthia once Tigranes had submitted to Pompey (66); when is not
-    recorded. The rows before are in the extension to 133.
+    recorded. The rows before are in the extension to 133. From 66, the year
+    of the submission, as Armenia's client-of rome; it read 65 until October
+    2026, and the tie to Armenia ended in 66. Allied, not client-of: in 36 the
+    Mede went "to bear aid to his ally, the Parthian king" (Dio 49.25.2); it
+    was client-of until October 2026.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 
@@ -3403,7 +3407,7 @@
   type: client-of
   of: parthia
   from: before 133 BCE
-  to: 86 BCE
+  to: 87 BCE
   sources:
     - { source: strabo, locator: '11.13.1–2' }
     - { source: schottky-1989 }
@@ -3411,13 +3415,15 @@
   review: needs-check
   note: >-
     Under the Arsacids since their conquest of Media (c. 148); Parthian
-    overlordship of Atropatene in these years is inferred, not attested.
+    overlordship of Atropatene in these years is inferred, not attested. To
+    87, when Mithradates II was still alive (Debevoise 50); it ended in 86
+    until October 2026.
 
 - polity: atropatene
   type: client-of
   of: armenia
-  from: 85 BCE
-  to: 66 BCE
+  from: 86 BCE
+  to: 67 BCE
   sources:
     - { source: strabo, locator: '11.14.15' }
     - { source: plutarch, locator: 'Lucullus 27.6, 31.7' }
@@ -3426,12 +3432,14 @@
   review: needs-check
   note: >-
     Tigranes "subjugated to himself the rulers of Atropene and Gordyaea"
-    (Strabo 11.14.15), in the war with Parthia after Mithridates II's death
-    (c. 87–85; Strabo gives no year). The king of the Medes held Tigranes'
+    (Strabo 11.14.15), in the war with Parthia after Mithridates II's death;
+    he was still alive in 87 (Debevoise 50), and Strabo gives no year, so
+    the start lies in 86–69 and is drawn from 86 (85 until October 2026).
+    The king of the Medes held Tigranes'
     right wing at Tigranocerta in 69 (Plut. Lucullus 27.6), the Atropateni
     fought for him at the Arsanias in 68 (31.7), and "Mithridates from Media,
     the son-in-law of Tigranes" fell on Lucullus' men in 67 (Dio 36.14.2). To
-    Tigranes' submission in 66.
+    67: Tigranes' submission in 66 belongs to the next row.
 
 - polity: armenia
   type: allied-to
