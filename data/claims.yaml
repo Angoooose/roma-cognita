@@ -1947,7 +1947,7 @@
   polity: baliares
   relation: independent
   from: before 133 BCE
-  to: 124 BCE
+  to: 122 BCE
   sources:
     - source: livy
       locator: '28.37.5–6'
@@ -1970,7 +1970,14 @@
       quote: >-
         Metellus received command against the piratical inhabitants of the
         Balearic islands
-      supports: [polity, relation, from, to]
+      supports: [polity, relation, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 518'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr. for 121). Continued his reduction and settlement
+        of the Balearic islands
+      supports: [to]
     - source: strabo
       locator: '3.5.1'
       quote: >-
@@ -1979,17 +1986,20 @@
         surnamed Balearicus, marched against them. He it was who built the
         cities.
       supports: [polity, relation]
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Free of Rome and hostile to Carthage's fleet in 206 (Livy 28.37), and still
     to be conquered when Q. Metellus, consul in 123, received the command
-    against them (MRR): the two bracket 133. Ends the year before his war.
+    against them (MRR): the two bracket 133. Ends the year before the island
+    is Rome's, 121 (the next row): Metellus was still at "his reduction and
+    settlement" as proconsul in 122 (MRR). It read 124, the year before the
+    command, at certain, until the check.
 
 - atom: baliares
   polity: hispania-citerior
   relation: province
-  from: 123 BCE
+  from: 121 BCE
   to: after 27 BCE
   sources:
     - source: broughton-mrr
@@ -1998,14 +2008,14 @@
       quote: >-
         Metellus received command against the piratical inhabitants of the
         Balearic islands
-      supports: [from]
+      supports: []
     - source: broughton-mrr
       locator: 'vol. I, 122 B.C., p. 518'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         Proconsul (Act. Tr. for 121). Continued his reduction and settlement
         of the Balearic islands
-      supports: [relation]
+      supports: [relation, from]
     - source: strabo
       locator: '3.5.1'
       quote: >-
@@ -2044,8 +2054,11 @@
   note: >-
     Conquered by Q. Metellus, consul in 123 (MRR; Livy Per. 60), who
     settled 3,000 Romans from Spain in his new towns of Palma and Pollentia
-    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). The war ran
-    on into 122–121, Metellus as proconsul (MRR). That the islands were Hither
+    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). He received
+    the command in 123 but was still at "his reduction and settlement" as
+    proconsul in 122, and his triumph is entered under 121 (MRR), so the
+    islands are drawn Rome's from 121, not from the year the war began; no
+    text dates the end of the fighting nearer. It read 123 until the check. That the islands were Hither
     Spain's rests on Pliny, who counts them with the province and its
     jurisdiction of Carthago Nova (3.18, 3.25); no earlier text names the
     province they were governed from. Until September 2026 the islands were
