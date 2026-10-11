@@ -833,7 +833,7 @@
 - atom: gallia-transalpina
   polity: gallia-transalpina
   relation: province
-  from: 121 BCE
+  from: { earliest: 121 BCE, latest: 120 BCE }
   to: after 27 BCE
   sources:
     - { source: broughton-mrr }
@@ -5543,14 +5543,18 @@
 - atom: emesa
   polity: emesa
   relation: client
-  from: 64 BCE
+  from: { earliest: 64 BCE, latest: 51 BCE }
   to: 31 BCE
   sources:
     - { source: strabo, locator: '16.2.10' }
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
-  note: From Pompey's settlement of Syria, which left the dynasts in place.
+  note: >-
+    Begins between Pompey's settlement of Syria (64), before which Emesa was
+    independent, and the client-of relation's first attestation, Cicero's
+    despatch of 51 (relations.yaml). It was from 64, which no readable text dates
+    the tie to.
 
 - atom: ituraea
   polity: seleucid
@@ -6178,7 +6182,7 @@
 - atom: nabataea
   polity: nabataea
   relation: independent
-  from: before 133 BCE
+  from: before 96 BCE
   to: 63 BCE
   sources:
     - { source: josephus-aj, locator: '13.360, 13.375, 13.387–392' }
@@ -6193,7 +6197,8 @@
     1.90); the Arabian king who beat and killed Antiochus XII (AJ 13.391),
     unnamed in the Greek (Whiston supplies Aretas) and taken by modern work for
     Obodas; Aretas III, who held Damascus from c. 85 (13.392). Its Damascene is
-    not drawn.
+    not drawn. Opened at the polity's first attested king, Aretas II at Gaza in
+    96 (polities.yaml); it was before 133, which no readable text supports.
 
 - atom: nabataea
   polity: nabataea
