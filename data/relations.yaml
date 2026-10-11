@@ -1333,9 +1333,53 @@
     relation until Rome recognised Asander, which is undated.
 
 - polity: thracia-odrysae
+  type: allied-to
+  of: rome
+  from: before 90 BCE
+  to: 32 BCE
+  sources:
+    - source: diodorus
+      locator: '37.5a'
+      quote: >-
+        He also contacted Cotys, the king of the Thracians, and asked him to
+        summon the youth and persuade him to desist from his venture
+      supports: [type, of, from]
+    - source: kallet-marx-1995
+      locator: 'pp. 36–37'
+      quote: >-
+        Around 90, a certain young man named Euphenes proclaimed himself king
+        of the Macedonians … informed the Roman commander, C. Sentius, of the
+        young man's "madness" ( ), but at the same time arranged for a Thracian
+        king, one Cotys, to summon Euphenes
+      supports: [type, of, from]
+    - source: cicero-verr
+      locator: '2.1.63'
+      quote: >-
+        when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
+        and to king Sadala
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '47.25.1'
+      quote: >-
+        On the way he took charge of the territory which had belonged to
+        Sadalus, who had died childless and had left it to the Romans
+      supports: [type, of]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were … Sadalas of Thrace
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Kings working with Rome, from Cotys about 90 to Sadalus' bequest of 42; no
+    text names their standing, so drawn as allied, the closest the texts
+    describe (see the claim). Added October 2026.
+
+- polity: thracia-odrysae
   type: client-of
   of: rome
-  from: before 31 BCE
+  from: 31 BCE
   to: after 27 BCE
   sources:
     - source: cicero-verr

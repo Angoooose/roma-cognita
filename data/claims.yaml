@@ -2760,8 +2760,60 @@
 
 - atom: thracia-odrysae
   polity: thracia-odrysae
+  relation: allied
+  from: before 90 BCE
+  to: 32 BCE
+  sources:
+    - source: diodorus
+      locator: '37.5a'
+      quote: >-
+        He also contacted Cotys, the king of the Thracians, and asked him to
+        summon the youth and persuade him to desist from his venture
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'pp. 36–37'
+      quote: >-
+        Around 90, a certain young man named Euphenes proclaimed himself king
+        of the Macedonians … informed the Roman commander, C. Sentius, of the
+        young man's "madness" ( ), but at the same time arranged for a Thracian
+        king, one Cotys, to summon Euphenes
+      supports: [relation, from]
+    - source: cicero-verr
+      locator: '2.1.63'
+      quote: >-
+        when he had prevailed on Cnaeus Dolabella to send him to king Nicomedes
+        and to king Sadala
+      supports: [relation]
+    - source: cassius-dio
+      locator: '47.25.1'
+      quote: >-
+        On the way he took charge of the territory which had belonged to
+        Sadalus, who had died childless and had left it to the Romans
+      supports: [relation]
+    - source: plutarch
+      locator: 'Antony 61.1'
+      quote: >-
+        Of subject kings who fought with him, there were … Sadalas of Thrace
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Odrysian kings, from the first attested in the window: Cotys, about
+    90, acting at the Roman commander Sentius' request (Diodorus 37.5a;
+    Kallet-Marx), Sadala, to whom the governor of Cilicia sent Verres in 80/79
+    (Cic. Verr. 2.1.63), and Sadalus, who left his territory "to the Romans"
+    (Dio 47.25.1, 42). No text calls them Rome's allies or clients; this is
+    the closest standing the texts describe, kings working with Rome, which
+    the data draws as allied. Ends the year before Sadalas is first called a
+    "subject king", at Actium (see the client row). Added October 2026: the
+    kingdom was drawn blank before 31. Odrysian authority over the inland
+    tribes was intermittent, and the governors of Macedonia fought Thracians
+    again and again (Livy Per. 63–97; Cic. Pis. 84).
+
+- atom: thracia-odrysae
+  polity: thracia-odrysae
   relation: client
-  from: before 31 BCE
+  from: 31 BCE
   to: after 27 BCE
   sources:
     - source: cicero-verr
@@ -2809,16 +2861,10 @@
     51.25.4–5), and Lollius was aiding their king's house against the Bessi
     before 16 (Dio 54.20.3). Antony's "subject kings" at Actium included
     Sadalas of Thrace (Plut. Ant. 61.1). The start is the first year a text
-    has the king Rome's subject, 31, not the beginning of the tie: c. 80 the
-    governor of Cilicia sent Verres as his legate "to king Nicomedes and to
-    king Sadala" (Cic. Verr. 2.1.63), which shows a king in touch with Rome but
-    says nothing of his standing, and the claim read "c. 80" on it until the
-    check. Before 31 the kingdom is left unclaimed:
-    Cicero recalls "that general defection of all the barbarians" round
-    Macedonia under Sentius, governor c. 93–87 (Pis. 84), Thracians served in
-    Mithridates' armies (App. Mithr. 41), and the governors of Macedonia
-    fought Thracians again and again from 114 to 71 (Livy Per. 63–97), so no
-    standing with Rome can be drawn back to 133.
+    has the king Rome's subject, 31, not the beginning of the tie; before it
+    the kings are drawn as allied (the row before). The claim read "c. 80"
+    until October 2026, on Verres' embassy to king Sadala (Cic. Verr. 2.1.63),
+    which says nothing of his standing.
 
 # The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
 # Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
