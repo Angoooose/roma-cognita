@@ -9887,8 +9887,13 @@
         Octavius sent officers to receive Sardinia and Corsica, which Menodorus
         turned over to them
       supports: [to]
+    - source: cassius-dio
+      locator: '48.2.1'
+      quote: >-
+        since Sextus was still occupying Sardinia and Sicily
+      supports: []
     - { source: appian, locator: 'BC 5.78' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Menodorus (Dio's Menas) took Sardinia and its two legions for Sextus while
@@ -9896,7 +9901,8 @@
     handed it to Octavian in 38 (Dio 48.45.5–6; App. BC 5.78, 5.80). Dio 48.2.1
     has Sextus "still occupying Sardinia and Sicily" already in 42; Appian
     (5.56) calls Sardinia Octavian's before 40 and Dio's own narrative has the
-    seizure in 40, so 48.2.1 is read as an anticipation. The year: Dio's
+    seizure in 40, so 48.2.1 is read as an anticipation; since the texts
+    disagree the row is probable, not certain (October 2026). The year: Dio's
     narrative of the seizure follows Perusia, taken in the consulship of
     Calvinus and Pollio (40; 48.15.1), and closes "the events of the two
     years" before that of Marcius and Sabinus (39; 48.34.1); the surrender
