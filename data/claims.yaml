@@ -4878,14 +4878,26 @@
       quote: >-
         Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
         districts … were held to belong to the people and the senate
-      supports: [relation, to]
+      supports: [relation]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
     - { source: bridoux-2020, locator: '¶157' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Annexed after Thapsus, in Caesar's third consulship with Lepidus, 46 (Dio
     43.1.1, 43.9.2–4; Bell. Afr. 97). Kept to the settlement of 27, as the
-    polity (see africa-nova).
+    polity (see africa-nova). The end is disputed (27 by the older view, 35 by
+    Fishwick and Shaw), so the row is probable, not certain; Dio 53.12.4 shows
+    a province in 27 but does not say this one ended before it (checked).
 
 - atom: numidia-cirta
   polity: numidia
@@ -5027,7 +5039,17 @@
       quote: >-
         Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
         districts … were held to belong to the people and the senate
-      supports: [relation, to]
+      supports: [relation]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
