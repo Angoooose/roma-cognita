@@ -20914,6 +20914,12 @@
       quote: >-
         this prince had put to death the Romans left behind in Armenia
       supports: [to]
+    - source: strabo
+      locator: '11.12.3'
+      quote: >-
+        and leaving these and the region of Commagene on the right, and
+        Acilisene and Sophene in Greater Armenia on the left
+      supports: [polity]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -20937,7 +20943,7 @@
       quote: >-
         After this Antony occupied the whole of Armenia, taking some of the
         people peaceably and some by force … then he left his legions in Armenia
-      supports: [relation, from]
+      supports: [polity, relation, from]
     - source: cassius-dio
       locator: '49.43.6'
       quote: >-
@@ -20956,6 +20962,12 @@
       quote: >-
         this prince had put to death the Romans left behind in Armenia
       supports: [to]
+    - source: strabo
+      locator: '11.12.3'
+      quote: >-
+        and leaving these and the region of Commagene on the right, and
+        Acilisene and Sophene in Greater Armenia on the left
+      supports: [polity]
   confidence: probable
   review: draft
   note: >-
