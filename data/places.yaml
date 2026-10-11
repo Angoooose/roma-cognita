@@ -6887,7 +6887,7 @@
       quote: >-
         The fortress, which was in itself very secure, he made still more
         strong
-      supports: []
+      supports: [from]
     - source: diodorus
       locator: '36.7.3'
       quote: >-
@@ -6903,8 +6903,10 @@
   note: >-
     The rock Tryphon walled as his royal city (Diodorus 36.7.3). Pleiades
     marks its identification with a question mark. That it stood before 133
-    rests on Pleiades (a Carthaginian ally in the Second Punic War); the
-    Triocalini are among Pliny's tributary towns of Sicily (3.91).
+    is bracketed: a Carthaginian ally in the Second Punic War (Pleiades), and
+    the secure fortress Tryphon took over in the second slave war, after the
+    first one that ended in 132 (Diodorus 36.7.2); the Triocalini are among
+    Pliny's tributary towns of Sicily (3.91).
 
 - id: mariana
   pleiades: '472096'
