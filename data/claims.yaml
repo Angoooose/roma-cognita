@@ -15557,7 +15557,7 @@
 - atom: caunus
   polity: asia
   relation: province
-  from: 133 BCE
+  from: before 88 BCE
   to: 85 BCE
   sources:
     - source: appian
@@ -15567,7 +15567,28 @@
         Antiochus and had been lately liberated by the Romans, pursued the
         Italians … Such was the awful fate that befell the Romans and Italians
         throughout the province of Asia
-      supports: [polity, relation]
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        When the consuls cast lots, the government of Asia and the Mithridatic
+        war fell to Cornelius Sulla. … he wrote secretly to all his satraps and
+        magistrates that on the thirtieth day thereafter they should set upon
+        all Romans and Italians in their towns
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 113'
+      quote: >-
+        Toward the south neither Lycia nor Caria had been part of the Attalid
+        kingdom, nor is there any evidence that they came under Roman control
+        in the war; there matters will have continued as before.
+      supports: []
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        There is no evidence for the current belief that western Caria was
+        included in Asia from the first
+      supports: []
     - source: cicero-qfr
       locator: '1.1.33'
       url: https://www.thelatinlibrary.com/cicero/fratrem1.shtml
@@ -15593,6 +15614,12 @@
     Free since Rome took it from Rhodes after 167, "lately liberated by the
     Romans" (App. Mithr. 23). Drawn with Asia as the other free cities of Caria
     are (see asia); whether it was ever under the governor is not recorded.
+    It read from 133 until October 2026, but Caria was not Attalid, and
+    neither Kallet-Marx (113) nor Sherwin-White (n. 6) finds evidence that
+    it came under Rome with the bequest; the first text to count Caunus in
+    "the province of Asia" is Appian's account of the massacre of 88, ordered
+    in the year the consuls drew lots for the war (Mithr. 22–23). Unclaimed
+    before.
 
 - atom: caunus
   polity: pontus-regnum
