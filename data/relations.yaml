@@ -778,14 +778,15 @@
 - polity: numidia-jugurtha
   type: client-of
   of: rome
-  from: c. 116 BCE
+  from: { earliest: 117 BCE, latest: 116 BCE }
   to: 113 BCE
   sources: [{ source: sallust-jug, locator: '16, 20.5' }]
   confidence: probable
   review: needs-check
   note: >-
     Jugurtha's kingdom by the senate's own division (Sall. Jug. 16); Adherbal
-    still put "more trust in the friendship of the Roman people" (20.5).
+    still put "more trust in the friendship of the Roman people" (20.5). The
+    division is dated 117 or 116 (MRR; Bridoux, 117); the start was c. 116.
 
 - polity: mauretania
   type: client-of

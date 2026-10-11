@@ -1260,7 +1260,7 @@
   to: 47 BCE
   ruler: >-
     Micipsa, to 118; his heirs in dispute, 118–117; Adherbal (the eastern
-    kingdom), 116–112; Jugurtha, 112–105; Gauda, 105–c. 88; Hiempsal II, c. 88–c. 50; Juba I, by 50–46
+    kingdom), 117 or 116–112; Jugurtha, 112–105; Gauda, 105–c. 88; Hiempsal II, c. 88–c. 50; Juba I, by 50–46
   sources:
     - { source: braund-1984 }
     - { source: bridoux-2020, locator: '¶122–157' }
@@ -1276,8 +1276,8 @@
     drove Adherbal out (Livy Per. 62); the senate's commission under Opimius
     divided the kingdom, "the part of Numidia adjoining Mauretania, which was the
     more fertile and thickly populated" to Jugurtha and the part "having more
-    harbours and … more buildings" to Adherbal (Sall. Jug. 16.5), dated 116 as
-    usual (Bridoux puts it c. 117). This polity follows Adherbal's eastern
+    harbours and … more buildings" to Adherbal (Sall. Jug. 16.5), in 117 or
+    116 (MRR; Bridoux puts it c. 117). This polity follows Adherbal's eastern
     kingdom, whose capital was Cirta; Jugurtha's western one is
     numidia-jugurtha. Jugurtha took Cirta and killed Adherbal in 112 (Jug. 26),
     and Rome went to war in 111 (Jug. 27; Per. 64). After his surrender in 105
@@ -1294,20 +1294,24 @@
   kind: kingdom
   names:
     - { text: Regnum Iugurthae, preferred: true }
-  from: c. 116 BCE
+  from: { earliest: 117 BCE, latest: 116 BCE }
   to: 113 BCE
-  ruler: Jugurtha, 116–112
+  ruler: Jugurtha, 117 or 116–112
   sources:
     - { source: sallust-jug, locator: '16.5, 19.7, 20' }
     - { source: bridoux-2020, locator: '¶140–142 and pl. VII' }
   confidence: probable
   review: needs-check
   note: >-
-    Jugurtha's share of the division of c. 116: the part of Numidia next to
+    Jugurtha's share of the division of 117 or 116: the part of Numidia next to
     Mauretania (Sall. Jug. 16.5), whose western frontier was the Mulucha (Jug.
     19.7, 110.8). Where it met Adherbal's kingdom is unknown: "nous ne disposons
     d'aucun indice pour proposer une quelconque hypothèse" (Bridoux ¶141). From
     112 Jugurtha held the whole kingdom, which is numidia. The name is ours.
+    The start was c. 116, the usual date of Opimius' commission; MRR puts it
+    in 117 or 116 ("This year is the latest possible date", after Gsell's 117)
+    and Bridoux in 117, four years before Jugurtha's invasion of 113, so it is
+    now a range.
 
 - id: mauretania
   kind: kingdom
