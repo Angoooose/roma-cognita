@@ -41,7 +41,7 @@ import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
 import { rewindRFC7946, ringProblems } from '../geo.ts'
 import { type Bbox, type Raster, isSea, lonLatToPixel, pixelMetres, readDem } from '../features/dem.ts'
-import { type Pt, blur, components, fillRings, nearestSeed } from '../features/grid.ts'
+import { type Pt, blur, catmullRom, components, fillRings, nearestSeed } from '../features/grid.ts'
 import { renderPreview } from '../features/preview.ts'
 import { geometryArea, vectorise } from '../features/vectorise.ts'
 import { SHORES, type Shore } from './coasts.ts'
@@ -118,9 +118,28 @@ interface Result {
   areaKm2: number
 }
 
+/** Points per hull segment on the spline: a few hundred metres apart at most. */
+const SPLINE_PER = 24
+
+/**
+ * The hull as a closed centripetal Catmull–Rom curve through its vertices, so a shore
+ * read off a figure at a few points becomes the smooth arc a beach is, passing through
+ * every one of them, and not a chain of straight lines with a corner at each. It adds
+ * no claim the points do not make; centripetal parametrisation keeps it from looping
+ * or overshooting far between them.
+ */
+function closedSpline(pts: Pt[]): Pt[] {
+  const n = pts.length
+  const wrapped = [pts[n - 1], ...pts, pts[0], pts[1]]
+  const curve = catmullRom(wrapped, SPLINE_PER)
+  // Segment k of `curve` runs from wrapped[k] to wrapped[k + 1]; keep p0 → p1 … p(n−1) → p0.
+  const ring = curve.slice(SPLINE_PER, (n + 1) * SPLINE_PER)
+  return [...ring, ring[0]].map(([x, y]) => [Math.round(x * 1e5) / 1e5, Math.round(y * 1e5) / 1e5] as Pt)
+}
+
 async function deriveShore(shore: Shore): Promise<Result> {
   console.log(`\n${shore.id} — ${shore.label}`)
-  const hullRing = [...shore.hull, shore.hull[0]]
+  const hullRing = shore.straight ? [...shore.hull, shore.hull[0]] : closedSpline(shore.hull)
   if (shore.method.kind === 'polygon') {
     const geometry = rewindRFC7946({ type: 'Polygon', coordinates: [hullRing] } as AreaGeometry)
     const problems = ringProblems(geometry)

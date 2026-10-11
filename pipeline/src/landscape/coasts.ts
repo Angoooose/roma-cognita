@@ -61,6 +61,13 @@ export interface Shore {
    * off it stays pale and shallow for this far.
    */
   shelfKm?: number
+  /**
+   * Keep the hull's straight edges. Every other hull is drawn as a smooth curve through
+   * its vertices (derive-coasts.ts); this is for a loose box round water that is
+   * returned to land, whose visible edge is the water's own shore: a curve would only
+   * bulge the box out over the sea beyond it, or cut its corners.
+   */
+  straight?: boolean
   /** Arms of water narrower than this are cut off, m: modern drains cut below the old level. */
   narrowestM?: number
   /** Enclosed rises smaller than this are drowned: towns, levees and spoil on the surface model. */
@@ -608,6 +615,7 @@ export const SHORES: Shore[] = [
       [30.3, 23.6],
     ],
     method: { kind: 'polygon' },
+    straight: true,
     why: 'Filled after 1998 by Lake Nasser’s spillway; HydroLAKES types them as natural lakes, so the reservoir filter keeps them.',
     minIslandKm2: 0,
     sites: [],
@@ -795,6 +803,7 @@ export const SHORES: Shore[] = [
       [11.96, 44.68],
     ],
     method: { kind: 'polygon' },
+    straight: true,
     why:
       'Roman villas at Agosta and Dosso dei Sassi stand on what is now the lagoon floor: the valli formed as the delta ' +
       'subsided after antiquity (ISPRA sheet 205 notes). Removing them draws the ground as land.',
@@ -818,6 +827,7 @@ export const SHORES: Shore[] = [
       [13.33, 45.682],
     ],
     method: { kind: 'polygon' },
+    straight: true,
     why:
       'The Grado lagoon is post-Roman: in the Roman period it was mostly dry land, with a harbour at San Gottardo now 500 m ' +
       'offshore at −4 m (Donda et al. 2025). The Marano lagoon to the west had existed for five thousand years.',
