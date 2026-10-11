@@ -1256,7 +1256,7 @@
     extension to 133 BCE.
 
 - polity: bosporus
-  type: client-of
+  type: allied-to
   of: rome
   from: 70 BCE
   to: 66 BCE
@@ -1306,7 +1306,9 @@
   note: >-
     Machares "received the title of friend from Lucius Lucullus" (Livy Per.
     98), until his father came to the Bosporus in 65. Added for the extension
-    to 133 BCE.
+    to 133 BCE. Allied, not client: no text has Rome set Machares up; he asked
+    to be among Rome's "friends and allies" (Plut. Luc. 24.1) and was
+    (October 2026; it read client).
 
 - polity: scythia-minor
   type: client-of

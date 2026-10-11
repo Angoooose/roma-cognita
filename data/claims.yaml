@@ -6533,7 +6533,7 @@
 
 - atom: bosporus
   polity: bosporus
-  relation: client
+  relation: allied
   from: 70 BCE
   to: 66 BCE
   sources:
@@ -6588,7 +6588,9 @@
     After Sinope fell, Lucullus "entered into friendly relations with Machares,
     the son of Mithridates and ruler of the Bosporus, who sent him a crown of
     gold" (App. Mithr. 83); Machares asked "to be included in the list of
-    Rome's friends and allies" (Plut. Luc. 24.1), and was (Magie). Livy's
+    Rome's friends and allies" (Plut. Luc. 24.1), and was (Magie). Allied, not
+    client: no text has Rome set him up, only taking him as friend and ally at
+    his own request (October 2026; it read client). Livy's
     epitomator puts it between the consuls of 70 and that year's censors (Per.
     97–98). It ends when his father came in 65 and Machares killed himself
     (Mithr. 102; Minns, 71–65).
@@ -7324,7 +7326,7 @@
 
 - atom: chersonesus
   polity: bosporus
-  relation: client
+  relation: allied
   from: 70 BCE
   to: 66 BCE
   sources:
@@ -7368,7 +7370,8 @@
   note: >-
     As bosporus, under Machares as Rome's friend: his treaty with Lucullus is
     dated 70 by Minns (p. 587 and note), until his father came in the spring of
-    65 (Magie I 356).
+    65 (Magie I 356). Allied, not client, as bosporus (October 2026; it read
+    client).
 
 - atom: chersonesus
   polity: pontus-regnum
