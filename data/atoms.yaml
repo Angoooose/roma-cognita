@@ -2523,8 +2523,42 @@
         - [14.3, 44.4]
         - [13.9, 44.9]
   sources:
+    - source: pliny-nh
+      locator: '3.139'
+      quote: >-
+        The nation of the Liburni adjoins the river Arsia, and extends as far as
+        the river Titus. … but now the whole in general are comprised under the
+        one name of Illyricum.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.141'
+      quote: >-
+        Scardona, situate upon the river, at a distance of twelve miles from the
+        sea, forms the boundary of Liburnia and the beginning of Dalmatia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.145'
+      quote: >-
+        At Lissum begins the province of Macedonia
+      supports: [construction]
+    - source: caesar-bc
+      locator: '3.9'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=9
+      quote: >-
+        Salona is built upon a hill, and advantageously situated for defence;
+        but as the fortifications were very inconsiderable, the Roman citizens,
+        residing there, immediately surrounded the place with wooden towers
+      supports: [construction]
+    - source: caesar-bc
+      locator: '3.29'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=29
+      quote: >-
+        the Roman citizens inhabiting Lissus, to whom Caesar had before made a
+        grant of the town, after fortifying it with great care, opened their
+        gates to Antony
+      supports: [construction]
     - { source: suetonius-iul, locator: '22' }
-    - { source: caesar-bc, locator: '3.9, 3.29, 3.40' }
+    - { source: caesar-bc, locator: '3.40' }
     - { source: wilkes-1969, locator: 'pp. 37–41' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
     - { source: barrington, locator: 'map 20' }
@@ -3700,9 +3734,32 @@
   construction:
     - { method: box, bbox: [2.2, 39.05, 4.5, 40.2] }
   sources:
-    - { source: strabo, locator: '3.5.1' }
+    - source: strabo
+      locator: '3.5.1'
+      quote: >-
+        two named the Pityussae, and two the Gymnasiae, (also called the
+        Baleares,) … The larger of the Gymnasiae contains two cities, Palma, and
+        Polentia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.77'
+      quote: >-
+        The larger island is 100 miles in length, and 475 in circumference. …
+        At thirty miles' distance is the smaller island, 40 miles in length, and
+        150 in circumference
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.78'
+      quote: >-
+        In the open sea, at twelve miles' distance from the larger island
+        (Majorca), is Capraria with its treacherous coast
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.76'
+      quote: >-
+        These islands now bear the name of Ebusus, and form a federate state.
+      supports: [construction]
     - { source: livy-per, locator: '60' }
-    - { source: pliny-nh, locator: '3.76–77' }
     - { source: natural-earth }
   confidence: certain
   review: draft
@@ -3735,6 +3792,20 @@
         - at: [-3.6, 42.1]
           note: north of Clunia
   sources:
+    - source: strabo
+      locator: '3.4.13'
+      quote: >-
+        the most powerful are the Aruaci, situated to the east and south, near
+        to the Carpetani and the sources of the Tagus. Their most renowned city
+        is Numantia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.27'
+      quote: >-
+        The river Areva gives its name to the Arevaci; of whom there are six
+        towns, Segontia and Uxama … as also Segovia and Nova Augusta, Termes,
+        and Clunia itself, the frontier of Celtiberia.
+      supports: [construction]
     - { source: appian, locator: 'Hisp. 98–100' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: appian, locator: 'BC 1.108–115' }
@@ -3809,10 +3880,45 @@
         - [3.4, 42.5]
     - { method: box, bbox: [1.1, 38.6, 1.8, 39.2] }
   sources:
+    - source: pliny-nh
+      locator: '3.6'
+      quote: >-
+        beginning at the frontier town of Urgi, is the Nearer, or Tarraconensian
+        Spain, extending as far as the chain of the Pyrenees. … is separated
+        from Baetica and Lusitania by Mount Solorius, the chains of the Oretani
+        and the Carpetani, and that of the Astures.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.8'
+      quote: >-
+        and Murgi, which is at the boundary of Baetica
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.25'
+      quote: >-
+        Sixty-five different nations resort to [New] Carthage, besides the
+        inhabitants of the islands. … the Castulonenses … those of Toletum the
+        capital of Carpetania, situate on the river Tagus
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        Baetica appertains to the people … Its eastern boundary has been fixed
+        near to Castlon.
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.10'
+      quote: >-
+        The nation of the Vascons, in which is Pompelon, or Pompey's city, lies
+        north of Iaccetania.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.76'
+      quote: >-
+        These islands now bear the name of Ebusus, and form a federate state.
+      supports: [construction]
     - { source: richardson-1986, locator: 'ch. 1 and appendix' }
     - { source: richardson-1996 }
-    - { source: pliny-nh, locator: '3.6, 3.8, 3.25' }
-    - { source: strabo, locator: '3.4.10, 3.4.20 (Baetica bounded near Castulo)' }
     - { source: barrington, locator: 'maps 24–27' }
     - { source: mapterhorn }
     - { source: natural-earth }
@@ -3852,8 +3958,27 @@
         - [-9.2, 41.2]
         - [-9.8, 39.6]
   sources:
-    - { source: cassius-dio, locator: '37.52–53' }
-    - { source: strabo, locator: '3.3.1, 3.4.20' }
+    - source: strabo
+      locator: '3.3.3'
+      quote: >-
+        North of the Tagus is Lusitania … On the southern side this country is
+        bounded by the Tagus, on the west and north by the ocean
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        the Lusitanians, who are situated next Baetica, and extend as far as the
+        outlets of the river Douro
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.52.3–4'
+      quote: >-
+        he proceeded to the Herminian mountains and ordered the inhabitants to
+        move into the plain … carried off their children and wives and most
+        valuable possessions out of the way across the Durius
+      supports: [construction]
+    - { source: cassius-dio, locator: '37.53' }
+    - { source: strabo, locator: '3.3.1' }
     - { source: appian, locator: 'Hisp. 71–73, 99' }
     - { source: plutarch, locator: 'Sertorius 10–12' }
     - { source: hydrorivers }

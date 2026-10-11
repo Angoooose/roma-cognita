@@ -692,7 +692,53 @@
   from: 133 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Hisp. 98–100' }
+    - source: appian
+      locator: 'Hisp. 98'
+      quote: >-
+        Having divided the territory of the Numantines among their near
+        neighbors and transacted certain business in the other cities,
+        threatening or fining any whom he suspected, he sailed for home.
+      supports: [relation]
+    - source: appian
+      locator: 'Hisp. 99'
+      quote: >-
+        The Romans, according to their custom, sent ten senators to the newly
+        acquired provinces of Spain, which Scipio, or Brutus before him, had
+        received in surrender, or had taken by force
+      supports: [relation, from]
+    - source: broughton-mrr
+      locator: 'vol. I, 134 B.C., p. 490'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        given the command in Hither Spain by special vote
+      supports: [polity]
+    - source: broughton-mrr
+      locator: 'vol. I, 133 B.C., p. 494'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Destroyed Numantia and sold the survivors into slavery, and with the aid
+        of the usual senatorial commission completed arrangements in his
+        province
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '3.4.13'
+      quote: >-
+        Of the four divisions into which the Keltiberians are separated, the
+        most powerful are the Aruaci … Their most renowned city is Numantia.
+      supports: []
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [polity, relation, to]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        The third oversees the midland district, and governs the cities
+        inhabited by the togati … These are the Keltiberians
+      supports: [polity, relation, to]
+    - { source: appian, locator: 'Hisp. 100' }
     - { source: livy-per, locator: '59' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: richardson-1996, locator: 'ch. 3' }
@@ -714,10 +760,42 @@
   from: before 133 BCE
   to: 124 BCE
   sources:
-    - { source: strabo, locator: '3.5.1' }
-    - { source: florus, locator: '1.43' }
+    - source: livy
+      locator: '28.37.5–6'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=28:chapter=37
+      quote: >-
+        The Balearian islands are two in number; one larger than the other, and
+        more powerful in men and arms … But here his fleet was opposed with as
+        much hostility as he would have met with had the Romans inhabited that
+        island.
+      supports: [polity, relation, from]
+    - source: florus
+      locator: '1.43.2'
+      quote: >-
+        The Balearic islanders at this period had ravaged the seas with their
+        piratical outrages.
+      supports: [polity, relation]
+    - source: broughton-mrr
+      locator: 'vol. I, 123 B.C., p. 513'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus received command against the piratical inhabitants of the
+        Balearic islands
+      supports: [polity, relation, from, to]
+    - source: strabo
+      locator: '3.5.1'
+      quote: >-
+        But certain malefactors, though few in number, having associated with
+        the pirates in those seas, they all got a bad name, and Metellus,
+        surnamed Balearicus, marched against them. He it was who built the
+        cities.
+      supports: [polity, relation]
   confidence: certain
   review: draft
+  note: >-
+    Free of Rome and hostile to Carthage's fleet in 206 (Livy 28.37), and still
+    to be conquered when Q. Metellus, consul in 123, received the command
+    against them (MRR): the two bracket 133. Ends the year before his war.
 
 - atom: baliares
   polity: hispania-citerior
@@ -725,18 +803,64 @@
   from: 123 BCE
   to: after 27 BCE
   sources:
-    - { source: livy-per, locator: '60' }
-    - { source: strabo, locator: '3.5.1' }
+    - source: broughton-mrr
+      locator: 'vol. I, 123 B.C., p. 513'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Metellus received command against the piratical inhabitants of the
+        Balearic islands
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 518'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr. for 121). Continued his reduction and settlement
+        of the Balearic islands
+      supports: [relation]
+    - source: strabo
+      locator: '3.5.1'
+      quote: >-
+        Metellus, surnamed Balearicus, marched against them. He it was who
+        built the cities. … He introduced into the country 3000 Roman colonists
+        from Spain.
+      supports: [relation]
+    - source: livy-per
+      locator: '60'
+      quote: >-
+        It also contains an account of the war of Quintus [Caecilius] Metellus
+        against those Balearans whom the Greeks call Gymnesios
+      supports: []
+    - source: pliny-nh
+      locator: '3.18'
+      quote: >-
+        The whole province is now divided into seven jurisdictions … To these
+        are to be added the islands, which will be described on another occasion
+      supports: [polity, relation, to]
+    - source: pliny-nh
+      locator: '3.25'
+      quote: >-
+        Sixty-five different nations resort to [New] Carthage, besides the
+        inhabitants of the islands.
+      supports: [polity, relation, to]
+    - source: pliny-nh
+      locator: '3.77'
+      quote: >-
+        The Baleares, so formidable in war with their slingers, have received
+        from the Greeks the name of Gymnasiae. … It has the following towns;
+        Palma and Pollentia, enjoying the rights of Roman citizens
+      supports: [relation, to]
     - { source: orosius, locator: '5.13.1' }
-    - { source: pliny-nh, locator: '3.77' }
   confidence: probable
   review: draft
   note: >-
-    Conquered by Q. Metellus, consul in 123 (Livy Per. 60, under 123), who
+    Conquered by Q. Metellus, consul in 123 (MRR; Livy Per. 60), who
     settled 3,000 Romans from Spain in his new towns of Palma and Pollentia
-    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). The war may
-    have run into 122. Until September 2026 the islands were part of the
-    hispania-citerior atom and Hither Spain's throughout.
+    (Strabo 3.5.1), towns of Roman citizens in Pliny's day (3.77). The war ran
+    on into 122–121, Metellus as proconsul (MRR). That the islands were Hither
+    Spain's rests on Pliny, who counts them with the province and its
+    jurisdiction of Carthago Nova (3.18, 3.25); no earlier text names the
+    province they were governed from. Until September 2026 the islands were
+    part of the hispania-citerior atom and Hither Spain's throughout.
 
 - atom: hispania-ulterior
   polity: hispania-ulterior
@@ -791,9 +915,51 @@
   from: c. 77 BCE
   to: 73 BCE
   sources:
-    - { source: plutarch, locator: 'Sertorius 12.3, 16.1' }
+    - source: plutarch
+      locator: 'Sertorius 12.3'
+      quote: >-
+        Lucius Domitius, who was pro-consul of the other Spain, was defeated at
+        the hands of his quaestor
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '90'
+      quote: >-
+        Marcus Lepidus, who tried to revoke the acts of Sulla, caused a war. He
+        was expelled form Italy by his colleague Quintus Catulus … Quintus
+        Sertorius, another exile, launched a very big war in Hispania Ulterior.
+        Proconsul Lucius Manlius and Marcus Domitius, his deputy, were defeated
+        in battle by quaestor Hirtuleius.
+      supports: [polity, from]
+    - source: livy-per
+      locator: '91'
+      quote: >-
+        Although Gnaeus Pompey was still a Roman knight, he was sent out against
+        Sertorius with the powers of a proconsul. Sertorius stormed several
+        cities and subdued several tribes.
+      supports: [polity, relation, from]
+    - source: plutarch
+      locator: 'Sertorius 16.1'
+      quote: >-
+        Sertorius, then, since all the peoples within the river Ebro were
+        unitedly taking up his cause, had an army of great numbers
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '96'
+      quote: >-
+        Consul Gnaeus Lentulus, however, unsuccessfully fought against Spartacus.
+        Consul Lucius Gellius and praetor Quintus Arrius were defeated by the
+        same leader. At a banquet, Sertorius was killed by Marcus Perpenna …
+        Gnaeus Pompey, after the latter had recovered the Spanish provinces
+      supports: [to]
+    - source: florus
+      locator: '2.10.9'
+      quote: >-
+        until, after Sertorius had been brought low by treachery in his own camp
+        and Perperna had been defeated and given up, the cities also of Osca,
+        Termes, Ulia, Valentia, Auxuma and Calagurris … themselves entered in
+        allegiance with Rome
+      supports: [polity, relation, to]
     - { source: orosius, locator: '5.23.3–4' }
-    - { source: livy-per, locator: '90–91, 96' }
     - { source: strabo, locator: '3.4.10' }
     - { source: florus, locator: '2.10.9' }
     - { source: sallust-hist, locator: '2.98 M' }
@@ -819,8 +985,56 @@
   from: c. 77 BCE
   to: 73 BCE
   sources:
-    - { source: livy-per, locator: '92' }
-    - { source: florus, locator: '2.10.9' }
+    - source: appian
+      locator: 'BC 1.108'
+      quote: >-
+        He had an army from Italy itself and he raised another from the
+        Celtiberians, and drove out of Spain the former praetors
+      supports: [polity, relation]
+    - source: strabo
+      locator: '3.4.13'
+      quote: >-
+        Of the four divisions into which the Keltiberians are separated, the
+        most powerful are the Aruaci
+      supports: []
+    - source: plutarch
+      locator: 'Sertorius 16.1'
+      quote: >-
+        Sertorius, then, since all the peoples within the river Ebro were
+        unitedly taking up his cause, had an army of great numbers
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '91'
+      quote: >-
+        Although Gnaeus Pompey was still a Roman knight, he was sent out against
+        Sertorius with the powers of a proconsul.
+      supports: [from]
+    - source: livy-per
+      locator: '92'
+      quote: >-
+        Later, Sertorius was besieged at Clunia, but by repeated sallies he was
+        able to inflict as much damage on the besiegers as he received.
+      supports: [polity, relation]
+    - source: florus
+      locator: '2.10.9'
+      quote: >-
+        until, after Sertorius had been brought low by treachery in his own camp
+        and Perperna had been defeated and given up, the cities also of Osca,
+        Termes, Ulia, Valentia, Auxuma and Calagurris … themselves entered in
+        allegiance with Rome
+      supports: [polity, relation, to]
+    - source: livy-per
+      locator: '96'
+      quote: >-
+        Consul Gnaeus Lentulus, however, unsuccessfully fought against Spartacus.
+        … Gnaeus Pompey, after the latter had recovered the Spanish provinces
+      supports: [to]
+    - source: strabo
+      locator: '3.4.10'
+      quote: >-
+        that Sertorius sustained the last efforts of the war, after being
+        ejected from the country of the Keltiberians
+      supports: []
     - { source: orosius, locator: '5.23.14' }
     - { source: appian, locator: 'BC 1.112' }
   confidence: probable
@@ -838,8 +1052,51 @@
   from: 60 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '37.52–53' }
-    - { source: plutarch, locator: 'Caesar 12' }
+    - source: suetonius-iul
+      locator: '18'
+      quote: >-
+        Being allotted the province of Hispania Ulterior after his praetorship
+        … After restoring order in his province, he made off with equal haste,
+        and without waiting for the arrival of his successor, to sue at the same
+        time for a triumph and the consulship.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '37.49.1'
+      quote: >-
+        At this time Pompey entered Italy and had Lucius Afranius and Metellus
+        Celer appointed consuls
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.52.1–4'
+      quote: >-
+        While these things were happening in the city, Caesar had obtained the
+        government of Lusitania after his praetorship … he proceeded to the
+        Herminian mountains and ordered the inhabitants to move into the plain
+        … When some of their neighbours, fearing that he would march against
+        them too, carried off their children and wives and most valuable
+        possessions out of the way across the Durius, he first occupied their
+        cities
+      supports: [polity, relation, from]
+    - source: plutarch
+      locator: 'Caesar 12.1'
+      quote: >-
+        Then he led his army against the Callaici and Lusitani, overpowered
+        them, and marched on as far as the outer sea, subduing their tribes
+        which before were not obedient to Rome.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        while to Caesar belonged the remainder of Spain, — that is, the district
+        of Tarraco and Lusitania
+      supports: [relation, to]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        The praetor with a lieutenant administers justice amongst the
+        Lusitanians, who are situated next Baetica, and extend as far as the
+        outlets of the river Douro
+      supports: [relation, to]
   confidence: probable
   review: draft
   note: >-
@@ -900,9 +1157,34 @@
   from: before 133 BCE
   to: 122 BCE
   sources:
-    - { source: strabo, locator: '4.1.13' }
+    - source: strabo
+      locator: '4.1.13'
+      quote: >-
+        But the Tectosages dwell near to the Pyrenees, bordering for a small
+        space the northern side of the Cevennes … the treasures found in the
+        city of Tolosa (Tolosse) by the Roman general Caepio
+      supports: [polity]
+    - source: strabo
+      locator: '4.2.3'
+      quote: >-
+        Before this they had brought 200,000 men against Maximus Aemilianus,
+        and the same number against Domitius Aenobarbus. … The Arverni extended
+        their dominion as far as Narbonne and the borders of Marseilles, and
+        exercised authority over the nations as far as the Pyrenees
+      supports: [relation, from, to]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Consul Quintus Fabius Maximus, grandson of Paulus, successfully fought
+        against the Allobroges and Bituitus, the king of the Arvernians.
+      supports: [to]
   confidence: probable
   review: needs-check
+  note: >-
+    Outside Rome's reach while the Arverni held sway to the Pyrenees, which
+    ended with their defeat by Fabius, consul in 121 (Strabo 4.2.3; Livy Per.
+    61): so no Roman tie before 121. Under Arvernian authority, not free of
+    every power; the map's "independent" means only that Rome had no hold.
 
 - atom: tolosates
   polity: tectosages
@@ -910,7 +1192,40 @@
   from: { earliest: 121 BCE, latest: 118 BCE }
   to: 107 BCE
   sources:
-    - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
+    - source: cassius-dio
+      locator: '26.90.1'
+      quote: >-
+        Tolosa, which had formerly been in alliance with the Romans, but had
+        revolted, as a result of the hopes placed in the Cimbri, even to the
+        point of keeping the garrison in chains, was suddenly occupied at night
+        by the Romans
+      supports: [relation, to]
+    - source: pliny-nh
+      locator: '3.37'
+      quote: >-
+        the Tolosani in the territory of the Tectosages on the confines of
+        Aquitania
+      supports: [polity]
+    - source: broughton-mrr
+      locator: 'vol. I, 106 B.C., p. 553'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        In Gaul he attacked the Volcae Tectosages and seized the sacred treasure
+        at Tolosa
+      supports: [polity, to]
+    - source: strabo
+      locator: '4.2.3'
+      quote: >-
+        The Arverni extended their dominion as far as Narbonne and the borders
+        of Marseilles, and exercised authority over the nations as far as the
+        Pyrenees
+      supports: [from]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Consul Quintus Fabius Maximus, grandson of Paulus, successfully fought
+        against the Allobroges and Bituitus, the king of the Arvernians.
+      supports: [from]
     - { source: velleius, locator: '2.7.8' }
   confidence: uncertain
   review: needs-check
@@ -927,10 +1242,44 @@
   from: 106 BCE
   to: after 27 BCE
   sources:
+    - source: broughton-mrr
+      locator: 'vol. I, 106 B.C., p. 553'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        In Gaul he attacked the Volcae Tectosages and seized the sacred treasure
+        at Tolosa
+      supports: [from]
+    - source: cassius-dio
+      locator: '26.90.1'
+      quote: >-
+        Tolosa, which had formerly been in alliance with the Romans, but had
+        revolted … was suddenly occupied at night by the Romans
+      supports: [relation]
+    - source: strabo
+      locator: '4.1.13'
+      quote: >-
+        When the Romans obtained possession of the country they put up these
+        lakes to public sale
+      supports: [relation]
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the borders of the Tolosates, a state in the Province
+      supports: [polity, relation]
+    - source: pliny-nh
+      locator: '3.37'
+      quote: >-
+        the Tolosani in the territory of the Tectosages on the confines of
+        Aquitania … According to Agrippa the length of the province of Gallia
+        Narbonensis is 370 miles
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
     - { source: orosius, locator: '5.15.25' }
-    - { source: strabo, locator: '4.1.13' }
-    - { source: caesar-bg, locator: '1.10' }
-    - { source: broughton-mrr, locator: 'vol. I, 106 BCE' }
   confidence: probable
   review: draft
   note: >-
@@ -945,12 +1294,54 @@
   from: 51 BCE
   to: after 27 BCE
   sources:
+    - source: caesar-bg
+      locator: '8.46'
+      quote: >-
+        he judged that in the campaigns of the previous summers Gaul had been
+        conquered and subdued. But as he himself had never visited Aquitaine …
+        he started with two legions for that part of Gaul, to spend there the
+        campaign season of his last summer.
+      supports: [from]
+    - source: caesar-bg
+      locator: '8.48'
+      quote: >-
+        the ensuing year [50 BC], when Lucius Paulus and Gaius Marcellus were
+        consuls, contains no operations on a large scale in Gaul
+      supports: [from]
+    - source: suetonius-iul
+      locator: '22'
+      quote: >-
+        but presently he was assigned Gallia Comata as well by the senate
+      supports: [polity]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers … he reduced to the
+        form of a province; and imposed upon it a yearly tribute of 40,000,000
+        sesterces.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '53.12.5'
+      quote: >-
+        and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
+        Aquitania, and Belgica
+      supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '53.22.5'
+      quote: >-
+        on coming to the provinces of Gaul lingered there … He took a census of
+        the inhabitants and regulated their life and government.
+      supports: [relation, to]
     - { source: caesar-bg, locator: VII–VIII }
-    - { source: suetonius-iul, locator: '25' }
   confidence: uncertain
   review: needs-check
   note: >-
-    The single weakest date in the dataset — see the polity.
+    The single weakest date in the dataset — see the polity. Dated from 51,
+    the summer after which Caesar judged Gaul "conquered and subdued" (BG
+    8.46), the year before Paulus and Marcellus (8.48); Suetonius has the whole
+    reduced to a province, with its tribute, within his nine years (Iul. 25),
+    without a year.
 
 - atom: illyricum
   polity: illyricum
@@ -958,7 +1349,25 @@
   from: 59 BCE
   to: after 27 BCE
   sources:
-    - { source: suetonius-iul, locator: '22' }
+    - source: suetonius-iul
+      locator: '22'
+      quote: >-
+        At first, it is true, by the bill of Vatinius he received only Gallia
+        Cisalpina with the addition of Illyricum
+      supports: [polity, relation]
+    - source: eutropius
+      locator: '6.17'
+      quote: >-
+        Caius Julius Caesar, who was afterwards emperor, was made consul with
+        Lucius Bibulus; and Gaul and Illyricum, with ten legions, were decreed
+        to him.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus, the Dalmatian and Macedonian
+        districts … were held to belong to the people and the senate
+      supports: [polity, relation, to]
     - { source: dzino-2010, locator: 'pp. 80–98' }
   confidence: uncertain
   review: draft
