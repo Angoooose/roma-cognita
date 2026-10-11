@@ -2525,7 +2525,7 @@
     readable text supports.
 
 - polity: iberia-caucasia
-  type: client-of
+  type: allied-to
   of: rome
   from: 65 BCE
   to: after 36 BCE
@@ -2564,7 +2564,10 @@
     49.24.1); the relation ends open there, as the claim does. Augustus records
     their kings' embassies seeking his friendship (Res Gestae 31) without a
     date. Ran to after 27 BCE until October 2026, which no readable text
-    supports.
+    supports. Allied, not client (checked October 2026; it read client): the
+    texts have Artoces send his children and conclude a treaty (Dio 37.2.7) and
+    the Iberians make an alliance (49.24.1); none has Rome set up, depose or
+    call its king subject.
 
 - polity: albania
   type: client-of
