@@ -951,7 +951,7 @@
   location: [3.1241, 45.7182]
   names:
     - { text: Gergovia, preferred: true }
-  from: { earliest: 70 BCE, latest: 60 BCE }
+  from: { earliest: 69 BCE, latest: 60 BCE }
   to: after 27 BCE
   prominence: 2
   labelSide: w
@@ -964,7 +964,8 @@
     The Arverni reoccupied the plateau only about 60 BCE, when its great works
     were built "in the 60s"; it was left for Augustonemetum (Clermont) in the
     first decades CE (Musée de Gergovie; Puy-de-Dôme). It stood "before 68"
-    here until September 2026. Their oppida before it, Corent (founded at the
+    here until September 2026, and began at 70 until October 2026: "the 60s"
+    are 69–60. Their oppida before it, Corent (founded at the
     end of the second century) and Gondole, are not yet places.
 
 - id: dyrrachium
