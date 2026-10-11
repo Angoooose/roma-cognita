@@ -8662,7 +8662,7 @@
   polity: pontic-cities
   relation: allied
   from: 71 BCE
-  to: 56 BCE
+  to: 62 BCE
   sources:
     - source: eutropius
       locator: '6.10'
@@ -8691,12 +8691,12 @@
         the subject territory as well as upon that which was in alliance with
         Rome … When he tried the same tactics on the allies in Moesia, he was
         defeated near the city of the Istrians
-      supports: [polity, relation]
+      supports: [polity, relation, to]
     - source: cassius-dio
       locator: '37.10.4'
       quote: >-
         when Marcus Cicero had become consul with Gaius Antonius
-      supports: []
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -8707,15 +8707,16 @@
     from the campaign's end, before the consuls of 70 (Livy Per. 97), drawn
     from 71. They were "the allies in Moesia" whom C. Antonius, consul in 63,
     attacked as governor of Macedonia (Dio 38.10.1–3, 37.10.4), so in force in
-    62. The end, 56, is the year before Burebista's conquest as conventionally
-    dated, and no text read states it: the readable bounds are 62, still Rome's
-    allies, and 48, already Burebista's (see the next row). Left closed because
-    an open end here overlaps the next row and the polity dacia starts c. 60.
+    62. The end read 56 until October 2026, the year before Burebista's
+    conquest as conventionally dated, which no text read states: the readable
+    bounds are 62, still Rome's allies, and 48, already Burebista's (see the
+    next row). It ends at 62, the last year a text shows, and the next row
+    starts the year after, the earliest the texts allow.
 
 - atom: pontic-cities
   polity: dacia
   relation: independent
-  from: 55 BCE
+  from: 61 BCE
   to: 44 BCE
   sources:
     - source: akornion-decree
@@ -8747,17 +8748,18 @@
         enterprises and plans were cut short by his death.
       supports: [to]
     - { source: mihailov-igbulg, locator: 'I² 13' }
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     The Akornion decree of Dionysopolis: Burebista "gained control of the
     entire land beyond the river (Istros), as well as of the land on this
     side", and sent Akornion to Pompey in Macedonia, where the Pompeians sat
-    at Thessalonica in 48 (Dio 41.43.1–2), so in force by 48. The start, 55,
-    is the conventional date (c. 55–48) and no text read states it; the
-    readable bounds are 62, when the cities were still Rome's allies (the row
-    before), and 48. A range or open start would overlap the row before and
-    reach outside the polity dacia (c. 60), so it is left at 55.
+    at Thessalonica in 48 (Dio 41.43.1–2), so in force by 48. The start read
+    55 until October 2026, the conventional date (c. 55–48), which no text read
+    states; the readable bounds are 62, when the cities were still Rome's allies
+    (the row before), and 48. Drawn from 61, the earliest the texts allow, since
+    a range would be drawn at its midpoint and leave the coast blank from the
+    row before; the transition lies somewhere in 61–48.
 
 - atom: pontic-cities
   polity: pontic-cities
