@@ -8552,7 +8552,7 @@
 - atom: dacia
   polity: dacia
   relation: independent
-  from: c. 60 BCE
+  from: before 79 BCE
   to: 44 BCE
   sources:
     - source: strabo
@@ -8582,17 +8582,18 @@
       quote: >-
         Then when Buruista was king of the Goths, Dicineus came to Gothia at the
         time when Sulla ruled the Romans.
-      supports: []
+      supports: [from]
   confidence: uncertain
   review: needs-check
   note: >-
     Burebista was reigning when Caesar planned his expedition against the
     Dacians, cut short by his death in 44 (Strabo 7.3.5; Suet. Iul. 44), and
-    was deposed before any Roman expedition came (7.3.11). The start, c. 60, is
-    not stated by any text read: Strabo gives no year, and Jordanes, the only
-    one that dates him, makes him king "when Sulla ruled the Romans" (Getica
-    67), twenty years earlier. Left unnarrowed because the polity (dacia) has
-    the same start; see the backfill report.
+    was deposed before any Roman expedition came (7.3.11). The start read c. 60
+    until October 2026, a year no text states: Strabo gives no year, and
+    Jordanes, the only one that dates him, makes him king "when Sulla ruled the
+    Romans" (Getica 67), twenty years earlier. The row starts where the text
+    does, as the polity (dacia) does, with Burebista in force in 79 at the
+    latest; how far back his rule reaches is not recorded.
 
 - atom: pontic-cities
   polity: pontic-cities
