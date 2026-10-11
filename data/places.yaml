@@ -5079,7 +5079,7 @@
   names:
     - { text: Fregellae, preferred: true }
   from: before 133 BCE
-  to: 125 BCE
+  to: after 27 BCE
   prominence: 4
   status:
     - value: colonia latina
@@ -5102,32 +5102,46 @@
       quote: >-
         Praetor Lucius Opimius accepted the surrender of the rebellious
         Fregellans and sacked Fregellae.
-      supports: [status, to]
+      supports: [status]
     - source: velleius
       locator: '2.6.4'
       quote: Lucius Opimius, who, as praetor, had destroyed Fregellae
-      supports: [status, to]
+      supports: [status]
     - source: broughton-mrr
       locator: 'vol. I, 125 B.C., p. 510'
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         125 B.C. A.U.C. 629 … Praetors … Reduced Fregellae, which had rebelled,
         and destroyed the town
-      supports: [status, to]
+      supports: [status]
     - source: beloch-1880
       locator: 'p. 139'
       url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
       quote: >-
         der Vernichtung des Gemeinwesens von Fregellae nach der Einnahme durch
         Rom 125
-      supports: [status, to]
+      supports: [status]
+    - source: strabo
+      locator: '5.3.10'
+      quote: >-
+        Fregellae, though now a village, was formerly a considerable city
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.64'
+      quote: the old Frabaterni, the new Frabaterni, the Ficolenses, the Fregellani
+      supports: [to]
     - { source: beloch-1880, locator: 'p. 51' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The Latin colony that revolted in 125 and was taken and destroyed by the
     praetor Opimius (Livy Per. 60; Vell. 2.6.4). Its people were resettled at
-    Fabrateria Nova the next year.
+    Fabrateria Nova the next year. The place itself lived on as a village
+    (Strabo 5.3.10) and the Fregellani are in Augustus' list of the towns of
+    Latium (Pliny 3.64), so the place runs on to the window's end; until
+    October 2026 it ended in 125 with the colony. Probable, because the
+    sources say destroyed and Strabo says a village: which the map draws is a
+    choice.
 
 - id: fabrateria-nova
   pleiades: '432825'
