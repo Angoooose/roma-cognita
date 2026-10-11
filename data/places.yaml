@@ -1478,7 +1478,7 @@
   names:
     - { text: Salonae, preferred: true }
     - { text: Salona }
-  from: before 133 BCE
+  from: before 119 BCE
   to: after 27 BCE
   prominence: 2
   status:
@@ -1498,6 +1498,10 @@
     - { source: appian, locator: 'Ill. 11' }
   confidence: certain
   review: draft
+  note: >-
+    First attested in 119, when Metellus wintered "at the town of Salona" in
+    his consulship (App. Ill. 11); it stood "before 133" here until October
+    2026, which no open text bears out.
 
 - id: panticapaeum
   pleiades: '854719'
