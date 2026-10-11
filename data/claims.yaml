@@ -8020,7 +8020,7 @@
 
 - atom: derbe
   polity: derbe
-  relation: independent
+  relation: client
   from: before 50 BCE
   to: 31 BCE
   sources:
@@ -8044,7 +8044,7 @@
       quote: >-
         one of whom, a certain Antipater, was now brought into the position of a
         Roman vassal by the gift of a territory containing Derbe and Laranda
-      supports: [polity, from]
+      supports: [polity, relation, from]
     - source: magie-1950
       locator: 'vol. I, 443'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
@@ -8059,10 +8059,10 @@
     Antipater held Derbe and Laranda from Pompey's settlement (Magie I 375,
     whose "now" is Pompey's arrangements of 64–63) and was Cicero's friend
     (Fam. 13.73); Octavian let Amyntas attack him after Actium (Magie I 443),
-    so the row runs to 31 and Galatia's from 30. The relation is not backed:
-    Magie calls Antipater "a Roman vassal", which reads as a client, not
-    independent; drawing it so would need a client-of relation for derbe in
-    relations.yaml and a change to the polity.
+    so the row runs to 31 and Galatia's from 30. Client, not independent
+    (October 2026; it read independent): Magie calls Antipater "a Roman vassal"
+    by Pompey's gift. The validator warns that it has no client-of relation
+    behind it; that needs a relations.yaml record for derbe, not yet written.
 
 - atom: lycia
   polity: lycia
