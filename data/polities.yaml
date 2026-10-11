@@ -3133,8 +3133,8 @@
   from: before 133 BCE
   to: after 27 BCE
   ruler: >-
-    Mithridates, Tigranes' son-in-law (Dio 36.14.2), in the 60s; Ariobarzanes
-    I; Artavasdes I, to c. 31 (in exile with Octavian from 30)
+    Mithridates, Tigranes' son-in-law (Dio 36.14.2), in the 60s; Artavasdes I,
+    to c. 31 (in exile with Octavian from 30)
   sources:
     - source: strabo
       locator: '11.13.1'
@@ -3184,7 +3184,10 @@
     Strabo 11.13.3); its king then changed sides and was Antony's ally from 35
     to 31, when Phraates took the kingdom and the Mede fled to Octavian (Dio
     49.44.4, 51.16.2), who later gave him Lesser Armenia
-    (armenia-minor-artavasdes).
+    (armenia-minor-artavasdes). An Ariobarzanes I between Mithridates and
+    Artavasdes, which the ruler list used to carry, is named by no text read
+    for this record (Debevoise knows only the later Ariobarzanes, son of
+    Artavasdes); Schottky, who may hold it, is not open.
 
 - id: iberia-caucasia
   kind: kingdom
