@@ -3406,9 +3406,30 @@
 - atom: cilicia-campestris
   polity: cilicia
   relation: province
-  from: { earliest: 67 BCE, latest: 64 BCE }
+  from: { earliest: 67 BCE, latest: 62 BCE }
   to: 44 BCE
   sources:
+    - source: borgia-2017
+      locator: 'p. 301'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        He was granted the imperium infinitum by virtue of the Lex Gabinia
+        (January 67 BC
+      supports: [from]
+    - source: plutarch
+      locator: 'Pompey 28.4'
+      quote: >-
+        after restoring the city of Soli, which had lately been devastated by
+        Tigranes, the king of Armenia, Pompey settled many there.
+      supports: [from]
+    - source: borgia-2017
+      locator: 'p. 301'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        it is not clear what the exact boundaries of the new province of
+        Cilicia created in 62 BC were, and how it was organised, because ancient
+        sources remain utterly silent on that score until 56 BC.
+      supports: [polity, relation, from]
     - source: magie-1950
       locator: 'vol. I, p. 376'
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
@@ -3440,8 +3461,12 @@
   note: >-
     The plain came under Rome with Pompey, who settled pirates in its cities
     (Soloi-Pompeiopolis, Mallus, Adana) after 67; before, it had been
-    Tigranes' and the last Seleucids'. Magie ties its annexation to the making
-    of Syria a province (I 376). The province "was probably dismembered soon
+    Tigranes' and the last Seleucids'. The start covers the readings: Pompey's
+    command from the lex Gabinia of January 67 (Borgia 301), under which he
+    settled pirates at Soli (Plut. Pompey 28.4); Magie's annexation with the
+    making of Syria a province, in 64, or earlier under Lucullus (I 376); and
+    Borgia's "new province of Cilicia created in 62 BC" (301). Until October
+    2026 the range was 67–64, which left Borgia's 62 out. The province "was probably dismembered soon
     after Caesar's death" (I 433); elsewhere Magie puts the plain's attachment
     to Syria "apparently in the course of 44" (I 418), which would make 44
     Syria's; the next row (syria, from 43) is left as it is.
