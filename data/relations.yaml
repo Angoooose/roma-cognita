@@ -534,9 +534,34 @@
   from: { earliest: 75 BCE, latest: 74 BCE }
   to: 28 BCE
   sources:
-    - { source: livy-per, locator: '70' }
-    - { source: appian, locator: 'BC 1.111' }
-    - { source: sallust-hist, locator: '2.43 M' }
+    - source: sallust-hist
+      locator: '2.43 M'
+      quote: >-
+        P. Lentulus Marcellinus was sent out as quaestor to the new province of
+        Cyrene . This province had been given to us by the will of the deceased
+        king Apion
+      supports: [type, of, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., p. 97'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Quaestors … P. CORNELIUS LENTULUS … Sent to Cyrene (Sall. Hist. 2.43M,
+        in 75, Maurenbrecher, or 74, Münzer, RE).
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        it is clear that despite the testament of King Apion, no Roman
+        magistrate had been assigned Cyrene as a provincia before 75, when,
+        Sallust tells us, "Publius Lentulus Marcellinus . . . was sent as
+        quaestor to a new provincia , Cyrene"
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Crete and the Cyrenaic portion of Libya … were held to belong to the
+        people and the senate
+      supports: [type, of, to]
   confidence: probable
   review: draft
   note: >-
@@ -737,7 +762,36 @@
   from: 46 BCE
   to: 28 BCE
   sources:
-    - { source: bellum-africum, locator: '97' }
+    - source: bellum-africum
+      locator: '97'
+      quote: >-
+        farmed out the collection of the royal taxes, and turned the kingdom
+        into a province. Then, leaving C. Sallustius behind there in military
+        command with the powers of proconsul
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '43.1.1'
+      quote: >-
+        The following year he became both dictator and consul at once, holding
+        each of the offices for the third time, and with Lepidus as his
+        colleague in both instances.
+      supports: [from]
+    - source: cassius-dio
+      locator: '43.9.4'
+      quote: >-
+        the region of the Numidians was called the new province, because it had
+        been newly captured.
+      supports: [type, from]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -753,8 +807,35 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
+    - source: sallust-jug
+      locator: '14.1'
+      quote: >-
+        my sire Micipsa admonished me on his death-bed to consider that I was
+        only a steward of the kingdom of Numidia , but that the right and
+        authority were in your hands
+      supports: [type, of]
+    - source: sallust-jug
+      locator: '7.2–8.2'
+      quote: >-
+        when Micipsa sent cavalry and infantry to aid the Romans in the war with
+        Numantia , he gave Jugurtha command of the Numidians whom he sent to
+        Spain … Now when Numantia had been destroyed
+      supports: [type, of, from]
+    - source: sallust-jug
+      locator: '24.7'
+      quote: >-
+        it is your realm that he now holds by force of arms, and it is I, whom
+        you made ruler of Numidia , that he is besieging.
+      supports: [type, of]
+    - source: livy-per
+      locator: '64'
+      quote: >-
+        Adherbal , attacked by Jugurtha and besieged in the town of Cirtha was
+        killed in violation of a senatorial decree. … Because of this, war was
+        declared upon Jugurtha , and consul Calpurnius Bestia , who was sent out
+        to conduct this war
+      supports: [to]
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '5.4–5, 16, 21.4' }
   confidence: probable
   review: draft
   note: >-
@@ -770,9 +851,52 @@
   from: 105 BCE
   to: 47 BCE
   sources:
+    - source: sallust-jug
+      locator: '65.3'
+      quote: >-
+        if Jugurtha should be taken or killed, he would without delay be made
+        ruler of Numidia
+      supports: [type, of]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶144–145'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        les droits du prince, de par le testament de Micipsa, sont visiblement
+        confirmés dès après la victoire romaine en 105 av. J.-C. … Gauda, que
+        les auteurs anciens s’emploient à décrire comme un prince faible
+        d’esprit, est manifestement considéré par les Romains comme un roi
+        docile
+      supports: [type, of, from]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [type, of]
+    - source: plutarch
+      locator: 'Pompey 12.4'
+      quote: >-
+        King Iarbas also, the confederate of Domitius , was captured, and his
+        kingdom given to Hiempsal .
+      supports: [type, of]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶22'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Hiempsal II et Massinissa II maintiennent visiblement les liens de
+        clientèle avec les optimates durant leurs règnes.
+      supports: [type]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après la défaite du roi numide, la partie orientale de son royaume est
+        annexée et constitue la nouvelle province d’Afrique, tandis que la
+        partie occidentale est remise à Sittius
+      supports: [to]
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '65.2–3' }
-    - { source: plutarch, locator: 'Pompey 12.4' }
   confidence: probable
   review: draft
   note: >-
@@ -785,7 +909,33 @@
   of: rome
   from: { earliest: 117 BCE, latest: 116 BCE }
   to: 113 BCE
-  sources: [{ source: sallust-jug, locator: '16, 20.5' }]
+  sources:
+    - source: sallust-jug
+      locator: '16.2'
+      quote: >-
+        It was voted that ten commissioners should divide Micipsa 's former
+        kingdom between Jugurtha and Adherbal .
+      supports: [type, of]
+    - source: broughton-mrr
+      locator: 'vol. I, 116 B.C., pp. 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls … Legates, Ambassadors … Sent as head of a
+        commission of ten Legates to divide the kingdom of Numidia between
+        Jugurtha and Adherbal … Gsell (Hist. anc. Afr, Nord 7.147) is inclined
+        to date this commission in 117. This year is the latest possible date.
+      supports: [from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après que l’affaire ait été portée devant le sénat romain, la Numidie
+        est partagée entre Jugurtha, roi de la partie occidentale, et Adherbal,
+        roi de la partie orientale. En 113 av. J.-C., quatre années après le
+        partage, Jugurtha envahit le royaume de son frère. Un an plus tard,
+        contre l’avis des commissaires romains, il s’empare de Cirta et fait
+        massacrer Adherbal.
+      supports: [type, of, from, to]
   confidence: probable
   review: needs-check
   note: >-
@@ -799,9 +949,41 @@
   from: 105 BCE
   to: 34 BCE
   sources:
+    - source: sallust-jug
+      locator: '111.1'
+      quote: >-
+        if he would deliver the king into the hands of the Romans , they would
+        be greatly indebted to him. Then friendship, alliance, and the part of
+        Numidia which he now desired would freely be given him.
+      supports: [type, of]
+    - source: sallust-jug
+      locator: '113.6–114.1'
+      quote: >-
+        the king himself was bound and delivered to Sulla , who took him to
+        Marius . … At this same time our generals Quintus Caepio and Gnaeus
+        Manlius were defeated by the Gauls
+      supports: [from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶80'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus I est client de Sylla, et ce depuis l’alliance conclue entre les
+        deux hommes pendant la guerre de Jugurtha
+      supports: [type, from]
+    - source: cassius-dio
+      locator: '48.45.3'
+      quote: >-
+        Bocchus forthwith took possession of his kingdom, which was afterwards
+        confirmed to him by Caesar
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [to]
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '19.7, 80.4, 111.1' }
-    - { source: bridoux-2020, locator: '¶80' }
+    - { source: sallust-jug, locator: '19.7, 80.4' }
   confidence: probable
   review: needs-check
   note: >-
@@ -838,8 +1020,38 @@
   from: 62 BCE
   to: after 27 BCE
   sources:
+    - source: broughton-mrr
+      locator: 'vol. II, 62 B.C., p. 175'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        62 B.C. A.U.C. 692 Consuls … Remained in charge in Syria when Pompey
+        returned to Asia Minor (see 63, and below, 62, Promagistrates, on
+        Pompey). Began an invasion of Nabatean Arabia, but desisted in return
+        for a payment of 300 talents
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.80'
+      quote: >-
+        he persuaded Aretas to give Scaurus a sum of money, to prevent the
+        burning of his country, and undertook to be his surety for three hundred
+        talents.
+      supports: [from]
+    - source: schurer-1890
+      locator: 'p. 355'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        On account of the aid given by him to the Parthians, Ventidius exacted
+        from him a tribute in B.C. 39
+      supports: [type, of]
+    - source: schurer-1890
+      locator: 'p. 356'
+      url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
+      quote: >-
+        Obodas IL, about B.C. 28-9, was king during the campaign of Aeiius
+        Gallus against the southern Arabians, B.C. 25-24, in which campaign a
+        thousand Nabatean auxiliary troops took part.
+      supports: [type, of, to]
     - { source: sullivan-1990 }
-    - { source: josephus-aj, locator: '14.80–81' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1287,7 +1499,26 @@
   of: rome
   from: c. 88 BCE
   to: 82 BCE
-  sources: [{ source: bridoux-2020, locator: '¶147–148' }]
+  sources:
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [type, of]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar, fils de Gauda, porte le titre de roi, comme l’atteste une
+        inscription grecque de Syracuse … nous pouvons penser qu’il accède au
+        trône en 88 av. J.-C., si cette date correspond bien à la mort de Gauda.
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire
+      supports: [from, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -1300,7 +1531,22 @@
   of: numidia
   from: 81 BCE
   to: 47 BCE
-  sources: [{ source: bridoux-2020, locator: '¶154–155, ¶161' }]
+  sources:
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶154'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Massinissa II, qui règne sur un royaume vassal des Massyles de l’est,
+        détaché de la Numidie traditionnelle qu’il administre depuis 81 au moins
+        et jusqu’en 46 av. J.-C.
+      supports: [type, of, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶161'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Massinissa II et Arabion sont bien à la tête d’un royaume vassal de la
+        dynastie massyle dont Juba I serait de fait le dernier roi.
+      supports: [type, of]
   confidence: probable
   review: draft
   note: >-
@@ -1514,7 +1760,35 @@
   from: 96 BCE
   to: 75 BCE
   sources:
-    - { source: livy-per, locator: '70' }
+    - source: livy-per
+      locator: '70'
+      quote: >-
+        After his death, king Ptolemy of Cyrene , surnamed Apion , made the
+        Roman people his inheritor and the Senate decreed that all the towns in
+        his kingdom were to be free.
+      supports: [of, from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        As far back as 96 King Apion had left Cyrene to the Roman people as his
+        heir, but at the time the Senate seems to have done little more than to
+        declare the cities of the former kingdom "free."
+      supports: [of, from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        it is clear that despite the testament of King Apion, no Roman
+        magistrate had been assigned Cyrene as a provincia before 75, when,
+        Sallust tells us, "Publius Lentulus Marcellinus . . . was sent as
+        quaestor to a new provincia , Cyrene"
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., p. 97'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Quaestors … P. CORNELIUS LENTULUS … Sent to Cyrene (Sall. Hist. 2.43M,
+        in 75, Maurenbrecher, or 74, Münzer, RE).
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
