@@ -3211,12 +3211,12 @@
   names:
     - { text: Tigranocerta, preferred: true }
     - { text: Cholimma }
-  from: c. 80 BCE
+  from: before 77 BCE
   to: after 27 BCE
   prominence: 3
   status:
     - value: royal seat
-      from: c. 80 BCE
+      from: before 77 BCE
       to: 70 BCE
       note: >-
         Tigranes' new capital, peopled with Greeks and others carried off from
@@ -3231,6 +3231,21 @@
       quote: >-
         reprPoint: [41.38204995464358, 37.977039393010486]
       supports: [location]
+    - source: appian
+      locator: 'Mithr. 67'
+      quote: >-
+        But now Sulla had just died … So Mithridates persuaded his son-in-law,
+        Tigranes, to make an incursion into Cappadocia … settled them, with
+        others, in a certain place where he had first assumed the diadem of
+        Armenia and which he had called after himself, Tigranocerta
+      supports: [from, status]
+    - source: broughton-mrr
+      locator: 'vol. II, 78 B.C., p. 85'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        78 B.C. A.U.C. 676 Consuls … Lepidus quarreled with his colleague,
+        attempted to prevent giving funeral honors to Sulla
+      supports: [from, status]
     - source: appian
       locator: 'Mithr. 84'
       quote: >-
@@ -3261,12 +3276,16 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Founded in the 80s or 70s (c. 80 is a convention; the deportations from
-    Cappadocia of 78/77 fed it). The site is disputed: Pleiades puts it at
-    Arzan, after Barrington map 89 D3; Silvan (Martyropolis) and other sites
-    have been proposed. Broughton's running head for 69 reads "09 B.C." in the
-    scan. Strabo, writing under Augustus, has Lucullus leave it "a small
-    village", which is all that is drawn after 69.
+    Appian has Tigranes settle the Cappadocians he carried off at Tigranocerta,
+    a place he "had called after himself", in the raid that followed Sulla's
+    death in 78 (Mithr. 67; Broughton dates the death by Lepidus' consulship);
+    Strabo puts the founding after Tigranes took Syria (11.14.15). Until
+    October 2026 the town and its royal seat started c. 80, a convention no
+    readable text gives; they now start before 77, the raid being the first
+    dated mention. The site is disputed: Pleiades puts it at Arzan, after
+    Barrington map 89 D3; Silvan (Martyropolis) and other sites have been
+    proposed. Broughton's running head for 69 reads "09 B.C." in the scan.
+    Strabo, writing under Augustus, has Lucullus leave it "a small village".
 
 - id: arpinum
   pleiades: '432700'
