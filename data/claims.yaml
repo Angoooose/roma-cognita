@@ -3587,8 +3587,14 @@
         The chief portion of the passage peculiarly rich in material, Antiq.
         xiv. 10. 6, belongs most probably to B.c. 44.
       supports: []
-  confidence: probable
+  confidence: uncertain
   review: draft
+  note: >-
+    When Caesar gave Joppa back is not settled. His decree (AJ 14.202–206)
+    carries no consulship, and Schürer, after Mendelssohn, dates its
+    beginning, with a share of Joppa's tribute, to 47 but most of it, with
+    Joppa itself, probably to 44; the Jews certainly held it in 44. Drawn
+    from 47, the earlier reading. It was probable until October 2026.
 
 - atom: judaea-joppa
   polity: judaea
@@ -3626,9 +3632,11 @@
         eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
         second time, and Caius Asinius Pollio
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: draft
-  note: Restored to Hyrcanus by Caesar (AJ 14.205).
+  note: >-
+    Restored to Hyrcanus by Caesar (AJ 14.205), in 47 or by 44 (Schürer; see
+    the row before). Drawn from 47. It was probable until October 2026.
 
 # --- Africa --------------------------------------------------------------------
 
