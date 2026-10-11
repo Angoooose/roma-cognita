@@ -15777,11 +15777,71 @@
 - atom: cappadocia
   polity: pontus-regnum
   relation: occupied
-  from: 90 BCE
-  to: 90 BCE
+  from: { earliest: 92 BCE, latest: 91 BCE }
+  to: { earliest: 91 BCE, latest: 90 BCE }
   sources:
-    - { source: appian, locator: 'Mithr. 10–11' }
-    - { source: justin, locator: '38.3' }
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        Simultaneously Mithraas and Bagoas drove out Ariobarzanes, whom the
+        Romans had confirmed as king of Cappadocia, and installed Ariarthes in
+        his place.
+      supports: [polity, relation]
+    - source: justin
+      locator: '38.3'
+      quote: >-
+        On the first approach of Tigranes, Ariobarzanes packed up his baggage
+        and went off to Rome. Thus, through the instrumentality of Tigranes,
+        Cappadocia was destined to fall again under the power of Mithridates.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'pp. 250–251'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Perhaps in 92 one Socrates Chrestus, backed by Mithridates, wrested
+        Bithynia and Paphlagonia from his half brother Nicomedes IV … At about
+        the same time the young king of Armenia, Tigranes, now Mithridates'
+        son-in-law, had Ariobarzanes expelled from Cappadocia and Ariarathes
+        IX reintroduced to the unhappy kingdom.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, pp. 206–207'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Sulla’s entry into Cappadocia in the summer of 92 b.c. … Within a year
+        of his departure Mithradates entered Cappa- … docia and once more
+        installed the oft-enthroned “Ariarathes.”
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 11'
+      quote: >-
+        Cassius and Manius, with the army of the former, and a large force
+        collected from the Galatians and Phrygians, restored Nicomedes to
+        Bithynia and Ariobarzanes to Cappadocia.
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 254'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        successfully completed their mission to restore the kings in 90
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 208'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the early autumn of 90 a law was enacted … an order was given that
+        the two kings should be restored to their thrones. … Perhaps even
+        before the commissioners could take any action, a second law, passed
+        early in 89 … the two monarchs, brought back from Rome, were restored
+        to their kingdoms.
+      supports: [to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Gnaeus Pompeius routed … In Bithynia Nicomedes was restored to the
+        throne and Ariobarzanes in the kingdom of Cappadocia. … Consul Gnaeus
+        Pompeius defeated the Marsians in an open battle.
+      supports: [to]
     - { source: kallet-marx-1995, locator: 'pp. 356–359' }
   confidence: probable
   review: needs-check
@@ -15793,8 +15853,15 @@
     before the senate sent Aquillius. Sherwin-White puts an earlier Armenian
     expulsion before Sulla's mission, which would then be a restoration;
     Kallet-Marx (356–359) argues there was only the one, and that Sulla
-    installed Ariobarzanes for the first time in 96 or 95. No Armenian holding
-    is drawn in the 90s.
+    installed Ariobarzanes for the first time in 96 or 95. Magie too has an
+    Armenian expulsion before Sulla, whom he puts in Cappadocia in the summer
+    of 92 (206). No Armenian holding is drawn in the 90s. Drawn as 90 alone
+    until October 2026, a year no readable text gives: Kallet-Marx has this
+    expulsion at about the time of Socrates' coup, "perhaps in 92" (250–251),
+    Magie within a year of Sulla's departure (206–207); the restoration is 90
+    in Kallet-Marx (254), after the law of early 89 perhaps in Magie (208), and
+    in Livy's book 74, the year of the consul Pompeius Strabo (89). So the start
+    is 92–91 and the end 91–90, as bithynia's under Socrates.
 
 - atom: cappadocia
   polity: pontus-regnum
