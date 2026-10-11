@@ -698,6 +698,32 @@
   from: 146 BCE
   to: after 27 BCE
   sources:
+    - source: velleius
+      locator: '1.12.5'
+      quote: >-
+        Carthage , after standing for six hundred and seventy-two years, was
+        destroyed in the consulship of Gnaeus Cornelius Lentulus and Lucius
+        Mummius
+      supports: [from]
+    - source: appian
+      locator: 'Pun. 135'
+      quote: >-
+        Upon all the rest a tribute was imposed, both a land tax and a personal
+        tax, upon men and women alike. It was decreed that a praetor should be
+        sent from Rome yearly to govern the country.
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '43.9.4'
+      quote: >-
+        the region surrounding Carthage , which we also call Africa, was called
+        the old province, because it had long ago been subjugated
+      supports: [kind]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia , Asia … were held to belong to the people and the
+        senate
+      supports: [kind, to]
     - { source: broughton-mrr }
     - { source: cassius-dio, locator: '48.21–23' }
     - { source: cassius-dio, locator: '49.14.6' }
@@ -1023,16 +1049,51 @@
   kind: province
   names:
     - { text: Cyrenae, lang: la, preferred: true }
-  from: c. 74 BCE
+  from: { earliest: 75 BCE, latest: 74 BCE }
   to: 28 BCE
   sources:
-    - { source: livy-per, locator: '70' }
-    - { source: appian, locator: 'BC 1.111' }
-    - { source: sallust-hist, locator: '2.43 M' }
+    - source: sallust-hist
+      locator: '2.43 M'
+      quote: >-
+        P. Lentulus Marcellinus was sent out as quaestor to the new province of
+        Cyrene . This province had been given to us by the will of the deceased
+        king Apion
+      supports: [kind, from]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., p. 97'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Quaestors … P. CORNELIUS LENTULUS … Sent to Cyrene (Sall. Hist. 2.43M,
+        in 75, Maurenbrecher, or 74, Münzer, RE).
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        it is clear that despite the testament of King Apion, no Roman
+        magistrate had been assigned Cyrene as a provincia before 75, when,
+        Sallust tells us, "Publius Lentulus Marcellinus . . . was sent as
+        quaestor to a new provincia , Cyrene"
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Crete and the Cyrenaic portion of Libya … were held to belong to the
+        people and the senate
+      supports: [kind, to]
+    - source: appian
+      locator: 'BC 1.111'
+      quote: >-
+        The following year, which was in the 176th Olympiad , two countries were
+        acquired by the Romans by bequest. Bithynia was left to them by
+        Nicomedes , and Cyrene by Ptolemy Apion
+      supports: []
   confidence: probable
   review: draft
   note: >-
-    Bequeathed to Rome in 96, organised as a province c. 74. Given with Crete
+    Bequeathed to Rome in 96. Its first governor, the quaestor P. Lentulus
+    Marcellinus, was sent "to the new province of Cyrene" (Sall. Hist. 2.43 M)
+    in 75 by Maurenbrecher's dating and Kallet-Marx's, in 74 by Münzer's
+    (MRR); the start was c. 74 and is now that range. Given with Crete
     to Cassius (or Brutus) in 44 (App. BC 3.8), then Antony's. Promised to
     Cleopatra Selene in 34 (Dio 49.41.3; see cyrenaica-selene); Scarpus' army,
     which went over to Octavian after Actium, stood "in Africa" to guard Egypt
@@ -1308,11 +1369,39 @@
   from: 46 BCE
   to: 28 BCE
   sources:
-    - { source: bellum-africum, locator: '97' }
+    - source: bellum-africum
+      locator: '97'
+      quote: >-
+        farmed out the collection of the royal taxes, and turned the kingdom
+        into a province. Then, leaving C. Sallustius behind there in military
+        command with the powers of proconsul
+      supports: [kind, from]
+    - source: cassius-dio
+      locator: '43.1.1'
+      quote: >-
+        The following year he became both dictator and consul at once, holding
+        each of the offices for the third time, and with Lepidus as his
+        colleague in both instances.
+      supports: [from]
+    - source: cassius-dio
+      locator: '43.9.4'
+      quote: >-
+        the region of the Numidians was called the new province, because it had
+        been newly captured.
+      supports: [kind, from]
+    - source: fishwick-1993
+      locator: 'p. 53'
+      quote: >-
+        Until some fifteen years ago the unanimous view among historians was
+        that the Republican provinces were merged in 27 B.C. at the time of the
+        "division" of the Roman empire into so-called "imperial" and
+        "senatorial" provinces. In a paper published in 1977 it was argued by D.
+        Fishwick and B.D. Shaw that the evidence shows Africa was already united
+        under one governor by 35 B.C.
+      supports: [to]
     - { source: fishwick-shaw-1977 }
-    - { source: fishwick-1993, locator: '53' }
     - { source: fishwick-1994 }
-  confidence: certain
+  confidence: probable
   review: needs-check
   note: >-
     Numidia annexed after Thapsus. When it was joined to the old province is
@@ -1324,7 +1413,8 @@
     his "the Africas" of 36 and 32 (49.14.6, 50.6.4) may be geography. The
     claims pass to africa at 27, the latest date; only the line between the two
     Africas is in doubt, not whose ground it was. The polity is kept to 28 to
-    match. Juba II's "kingdom of his
+    match, and its confidence lowered from certain to probable since the
+    readable sources disagree on its end. Juba II's "kingdom of his
     fathers" of 30 (Dio 51.15.6) is not drawn: he exchanged it in 25 for
     Mauretania, its people having "been enrolled in the Roman state" (53.26.2),
     and nothing shows he ruled Numidia in between.
@@ -1434,13 +1524,119 @@
   to: 47 BCE
   ruler: >-
     Micipsa, to 118; his heirs in dispute, 118–117; Adherbal (the eastern
-    kingdom), 116–112; Jugurtha, 112–105; Gauda, 105–c. 88; Hiempsal II, c. 88–c. 50; Juba I, by 50–46
+    kingdom), 117 or 116–112; Jugurtha, 112–105; Gauda, 105–c. 88; Hiempsal II, c. 88–c. 50; Juba I, by 50–46
   sources:
+    - source: sallust-jug
+      locator: '5.4–6'
+      quote: >-
+        Masinissa , king of Numidia … His son Micipsa then became sole ruler,
+        since his brothers Mastanabal and Gulussa had fallen ill and died.
+      supports: [kind, ruler]
+    - source: sallust-jug
+      locator: '7.2–8.2'
+      quote: >-
+        when Micipsa sent cavalry and infantry to aid the Romans in the war with
+        Numantia , he gave Jugurtha command of the Numidians whom he sent to
+        Spain … Now when Numantia had been destroyed
+      supports: [from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶123'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        en 139 av. J.-C. Micipsa règne seul sur la Numidie … Celui-ci demeure au
+        pouvoir jusqu’en 118 av. J.-C., année de sa mort
+      supports: [from, ruler]
+    - source: livy-per
+      locator: '62'
+      quote: >-
+        Consul Quintus Marcius defeated the Stynians, a nation living in the
+        Alps . When he died, king Micipsa of Numidia left his kingdom to his
+        three sons Adherbal , Hiempsal , and Jugurtha … Jugurtha launched an
+        armed attack on his brother Hiempsal , who was defeated and killed.
+        Adherbal was expelled from the kingdom, but restored by the Senate.
+      supports: [ruler]
+    - source: broughton-mrr
+      locator: 'vol. I, 116 B.C., pp. 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls … Legates, Ambassadors … Sent as head of a
+        commission of ten Legates to divide the kingdom of Numidia between
+        Jugurtha and Adherbal … Gsell (Hist. anc. Afr, Nord 7.147) is inclined
+        to date this commission in 117. This year is the latest possible date.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après que l’affaire ait été portée devant le sénat romain, la Numidie
+        est partagée entre Jugurtha, roi de la partie occidentale, et Adherbal,
+        roi de la partie orientale. En 113 av. J.-C., quatre années après le
+        partage, Jugurtha envahit le royaume de son frère. Un an plus tard,
+        contre l’avis des commissaires romains, il s’empare de Cirta et fait
+        massacrer Adherbal.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶142'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Entre 112 et 105 av. J.-C., Jugurtha gouverne donc un territoire
+        délimité par le fleuve Mulucha (Moulouya) et la Fossa Regia
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶144'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        les droits du prince, de par le testament de Micipsa, sont visiblement
+        confirmés dès après la victoire romaine en 105 av. J.-C. Le règne de
+        Gauda est en tout cas attesté par deux inscriptions latines où figure
+        son titre de rex
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la mort de Gauda, sans doute survenue en 88 av. J.-C. , se constituent
+        deux royaumes numides qui coexistent jusqu’à la victoire de César à
+        Thapsus en l’an 46 av. J.-C.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶149'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        L’autre successeur de Gauda, Hiempsal II, est mieux connu. Deux
+        inscriptions précisent qu’il est lui aussi un fils du souverain défunt .
+        Nous savons qu’il est au pouvoir en 88 av. J.-C.
+      supports: [ruler]
+    - source: plutarch
+      locator: 'Pompey 12.4'
+      quote: >-
+        King Iarbas also, the confederate of Domitius , was captured, and his
+        kingdom given to Hiempsal .
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶152'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Il est assurément encore au pouvoir en 62 av. J.-C. et règne
+        probablement jusqu’en 50 av. J.-C., année durant laquelle nous savons
+        que son fils, Juba I, détient le pouvoir
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶156'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Les sources littéraires anciennes nous informent donc que Juba I, fils
+        de Hiempsal II, règne depuis 50 au moins, jusqu’en 46 av. J.-C.
+      supports: [ruler, to]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après la défaite du roi numide, la partie orientale de son royaume est
+        annexée et constitue la nouvelle province d’Afrique, tandis que la
+        partie occidentale est remise à Sittius
+      supports: [to]
     - { source: braund-1984 }
-    - { source: bridoux-2020, locator: '¶122–157' }
-    - { source: sallust-jug, locator: '5.4–7, 13, 16, 26–27' }
-    - { source: livy-per, locator: '62, 64' }
-    - { source: plutarch, locator: 'Pompey 12.4' }
   confidence: probable
   review: draft
   note: >-
@@ -1450,8 +1646,8 @@
     drove Adherbal out (Livy Per. 62); the senate's commission under Opimius
     divided the kingdom, "the part of Numidia adjoining Mauretania, which was the
     more fertile and thickly populated" to Jugurtha and the part "having more
-    harbours and … more buildings" to Adherbal (Sall. Jug. 16.5), dated 116 as
-    usual (Bridoux puts it c. 117). This polity follows Adherbal's eastern
+    harbours and … more buildings" to Adherbal (Sall. Jug. 16.5), in 117 or
+    116 (MRR; Bridoux puts it c. 117). This polity follows Adherbal's eastern
     kingdom, whose capital was Cirta; Jugurtha's western one is
     numidia-jugurtha. Jugurtha took Cirta and killed Adherbal in 112 (Jug. 26),
     and Rome went to war in 111 (Jug. 27; Per. 64). After his surrender in 105
@@ -1468,20 +1664,55 @@
   kind: kingdom
   names:
     - { text: Regnum Iugurthae, preferred: true }
-  from: c. 116 BCE
+  from: { earliest: 117 BCE, latest: 116 BCE }
   to: 113 BCE
-  ruler: Jugurtha, 116–112
+  ruler: Jugurtha, 117 or 116–112
   sources:
-    - { source: sallust-jug, locator: '16.5, 19.7, 20' }
-    - { source: bridoux-2020, locator: '¶140–142 and pl. VII' }
+    - source: sallust-jug
+      locator: '16.5'
+      quote: >-
+        When the division was made, the part of Numidia adjoining Mauretania ,
+        which was the more fertile and thickly populated, was assigned to
+        Jugurtha
+      supports: [kind, ruler]
+    - source: broughton-mrr
+      locator: 'vol. I, 116 B.C., pp. 530–531'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        116 B.C. A.U.C. 638 Consuls … Legates, Ambassadors … Sent as head of a
+        commission of ten Legates to divide the kingdom of Numidia between
+        Jugurtha and Adherbal … Gsell (Hist. anc. Afr, Nord 7.147) is inclined
+        to date this commission in 117. This year is the latest possible date.
+      supports: [from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶140'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après que l’affaire ait été portée devant le sénat romain, la Numidie
+        est partagée entre Jugurtha, roi de la partie occidentale, et Adherbal,
+        roi de la partie orientale. En 113 av. J.-C., quatre années après le
+        partage, Jugurtha envahit le royaume de son frère. Un an plus tard,
+        contre l’avis des commissaires romains, il s’empare de Cirta et fait
+        massacrer Adherbal.
+      supports: [from, to, ruler]
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        The greater number of the Gaetulians , and Numidia as far as the river
+        Muluccha , were subject to Jugurtha .
+      supports: [ruler]
   confidence: probable
   review: needs-check
   note: >-
-    Jugurtha's share of the division of c. 116: the part of Numidia next to
+    Jugurtha's share of the division of 117 or 116: the part of Numidia next to
     Mauretania (Sall. Jug. 16.5), whose western frontier was the Mulucha (Jug.
     19.7, 110.8). Where it met Adherbal's kingdom is unknown: "nous ne disposons
     d'aucun indice pour proposer une quelconque hypothèse" (Bridoux ¶141). From
     112 Jugurtha held the whole kingdom, which is numidia. The name is ours.
+    The start was c. 116, the usual date of Opimius' commission; MRR puts it
+    in 117 or 116 ("This year is the latest possible date", after Gsell's 117)
+    and Bridoux in 117, four years before Jugurtha's invasion of 113, so it is
+    now a range.
 
 - id: mauretania
   kind: kingdom
@@ -1493,12 +1724,64 @@
     Bocchus I, by 118 to c. 81/80; Sosus (Mastanesosus), c. 80–49; Bocchus II,
     49–33
   sources:
+    - source: sallust-jug
+      locator: '19.7'
+      quote: >-
+        All the Moors were ruled by king Bocchus , who knew nothing of the Roman
+        people save their name and was in turn unknown to us before that time
+        either in peace or in war.
+      supports: [kind, ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶73'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus I est ainsi le premier roi de Maurétanie à apparaître dans la
+        tradition littéraire après la mention de Baga. On admet que son règne
+        débute au plus tard en 118 av. J.-C., d’après Salluste qui nous informe
+        qu’il gouverne déjà au temps du roi numide Micipsa … On peut estimer
+        qu’il maintient sa souveraineté jusqu’à la fin de 81 ou jusqu’en 80 av.
+        J.-C.
+      supports: [from, ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, contents'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        De l’Atlantique à l’Ampsaga : un royaume maure en pleine extension
+        (206-33 av. J.-C.)
+      supports: [kind, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶90'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        il faut considérer qu’il règne de 81 ou 80 av. J.-C., date vraisemblable
+        de la fin du règne de Bocchus I, à 49 av. J.-C., Bogud et Bocchus II
+        étant alors assurément rois de Maurétanie
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶99'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Dion Cassius mentionne les deux monarques maures et nous indique
+        précisément qu’ils sont reconnus comme tels par Rome en 49 av. J.-C., ce
+        qui permet de fixer leur accession au trône au cours de cette même année
+        . Bogud règne sur la Maurétanie occidentale, Bocchus II sur la
+        Maurétanie orientale.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Bocchus II se retrouve à la tête d’un vaste territoire, de l’Atlantique
+        à l’Ampsaga, sur lequel il règne jusqu’à sa mort en 33 av. J.-C.
+      supports: [ruler, to]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [to]
     - { source: braund-1984 }
-    - { source: sallust-jug, locator: '19.7, 80.4, 97.2, 110.8, 111.1' }
-    - { source: bridoux-2020, locator: '¶73–97' }
     - { source: cassius-dio, locator: '48.45.1–3' }
-    - { source: cassius-dio, locator: '49.43.7' }
-    - { source: bridoux-2020, locator: '¶103' }
   confidence: probable
   review: needs-check
   note: >-
@@ -2974,7 +3257,56 @@
   to: 42 BCE
   ruler: Masteabar, c. 88–82; Masinissa II, by 81–46; Arabio, 44–41
   sources:
-    - { source: bridoux-2020, locator: '¶147–159 and pl. IX' }
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶147'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        À la mort de Gauda, sans doute survenue en 88 av. J.-C. , se constituent
+        deux royaumes numides
+      supports: [kind, from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar, fils de Gauda, porte le titre de roi, comme l’atteste une
+        inscription grecque de Syracuse … nous pouvons penser qu’il accède au
+        trône en 88 av. J.-C., si cette date correspond bien à la mort de Gauda.
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire
+      supports: [kind, from, ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶154'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Massinissa II, qui règne sur un royaume vassal des Massyles de l’est,
+        détaché de la Numidie traditionnelle qu’il administre depuis 81 au moins
+        et jusqu’en 46 av. J.-C.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le récit d’Appien ne permet pas de douter que Massinissa II est
+        souverain et l’auteur qualifie explicitement son fils Arabion de roi
+      supports: [kind, ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶160'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        entre celui-ci et la Maurétanie s’étend manifestement un territoire
+        administré par Masteabar puis Massinissa II, lequel est reconquis par
+        les Numides et gouverné par Arabion de 44 à 41 av. J.-C.
+      supports: [ruler]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le souverain numide périt vraisemblablement en 41 av. J.-C. dans le
+        conflit qui voit s’opposer Sextius et Fango, gouverneurs de l’ Africa .
+        Ainsi disparaît définitivement le royaume numide, dès lors annexé aux
+        territoires de Bocchus II.
+      supports: [to, ruler]
     - { source: appian, locator: 'BC 4.54–56' }
     - { source: cassius-dio, locator: '48.22.4–6' }
   confidence: probable
@@ -3425,10 +3757,49 @@
   to: 97 BCE
   ruler: Ptolemy Apion, to 96
   sources:
-    - { source: justin, locator: '39.5.2' }
-    - { source: livy-per, locator: '70' }
+    - source: justin
+      locator: '39.5'
+      quote: >-
+        his natural brother, to whom his father had left the kingdom of Cyrene
+        by will, died, appointing the Roman people his heir
+      supports: [kind, ruler]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        Ptolemy Apion , king of Cyrene, son of Ptolemy VIII possibly by an
+        Egyptian concubine , date of birth unknown , became king of Cyrene
+        possibly in 116 or 101, probably between 105 and 101 , died 96 without
+        heirs, willing Cyrene to the Romans
+      supports: [kind, ruler, from, to]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion, n. 6'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        suggesting Ptolemy IX lost control of Cyrene after that date, presumably
+        to Ptolemy Apion, i.e. a terminus post quem of 105
+      supports: [from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy Apion, n. 6'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/apion.htm
+      quote: >-
+        This seems a reasonable argument to me, giving a terminus ante quem of
+        100 for Apion.
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 248'
+      quote: >-
+        the virtually contemporaneous declaration of the "freedom" of Cyrene in
+        96 after the death of Ptolemy Apion
+      supports: [to]
+    - source: livy-per
+      locator: '70'
+      quote: >-
+        After his death, king Ptolemy of Cyrene , surnamed Apion , made the
+        Roman people his inheritor and the Senate decreed that all the towns in
+        his kingdom were to be free.
+      supports: [ruler, to]
     - { source: lex-provinciis-praetoriis, locator: 'Delphi copy (SEG III 378)' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
   confidence: probable
   review: needs-check
   note: >-
@@ -3451,9 +3822,42 @@
   from: 96 BCE
   to: 75 BCE
   sources:
-    - { source: livy-per, locator: '70' }
-    - { source: plutarch, locator: 'Lucullus 2.3–2.4' }
-    - { source: sallust-hist, locator: '2.43 M' }
+    - source: livy-per
+      locator: '70'
+      quote: >-
+        After his death, king Ptolemy of Cyrene , surnamed Apion , made the
+        Roman people his inheritor and the Senate decreed that all the towns in
+        his kingdom were to be free.
+      supports: [kind, from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        As far back as 96 King Apion had left Cyrene to the Roman people as his
+        heir, but at the time the Senate seems to have done little more than to
+        declare the cities of the former kingdom "free."
+      supports: [kind, from]
+    - source: kallet-marx-1995
+      locator: 'p. 364'
+      quote: >-
+        it is clear that despite the testament of King Apion, no Roman
+        magistrate had been assigned Cyrene as a provincia before 75, when,
+        Sallust tells us, "Publius Lentulus Marcellinus . . . was sent as
+        quaestor to a new provincia , Cyrene"
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. II, 75 B.C., p. 97'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Quaestors … P. CORNELIUS LENTULUS … Sent to Cyrene (Sall. Hist. 2.43M,
+        in 75, Maurenbrecher, or 74, Münzer, RE).
+      supports: [to]
+    - source: plutarch
+      locator: 'Lucullus 2.3'
+      quote: >-
+        He also made Cyrene , and finding it in confusion in consequence of
+        successive tyrannies and wars, he restored it to order, and fixed its
+        constitution
+      supports: []
   confidence: probable
   review: needs-check
   note: >-

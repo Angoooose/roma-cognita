@@ -519,8 +519,29 @@
         - [-5.6, 36.1]
         - [-6.4, 35.9]
   sources:
+    - source: pliny-nh
+      locator: '5.19'
+      quote: >-
+        the further Mauritania being called the “land of Bogud ,” while that
+        which is now called Caesariensis was called the “country of Bocchus .”
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.5'
+      quote: >-
+        At a distance of thirty-five miles from this last is the town of
+        Volubilis … At the same distance from it is the city of Sala , situate
+        on a river which bears the same name, a place which stands upon the very
+        verge of the desert
+      supports: [construction]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶100'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Une indication de Pline suggère que la limite entre les royaumes de
+        Bogud et de Bocchus II est la même que celle des deux provinces romaines
+        de Maurétanie, c’est-à-dire l’oued Moulouya
+      supports: [construction]
     - { source: barrington, locator: 'map 28 and Map-by-Map Directory, map 28 (M. Euzennat)' }
-    - { source: bridoux-2020, locator: '¶99–100 and pl. XIII' }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -559,7 +580,22 @@
         - [22.0, 33.3]
         - [19.8, 32.6]
   sources:
-    - { source: pliny-nh, locator: '5.28, 5.38' }
+    - source: pliny-nh
+      locator: '5.38'
+      quote: >-
+        The last place in the territory of Cyrenaica is Catabathmos , consisting
+        of a town, and a valley with a sudden and steep descent.
+      supports: [construction]
+    - source: sallust-jug
+      locator: '19.3'
+      quote: >-
+        In the neighbourhood, then, of the Catabathmos , the region which
+        separates Egypt from Africa, the first city as you follow the coast is
+        Cyrene , a colony of Thera , and then come the two Syrtes with Lepcis
+        between them. Next we come to the altars of the Philaeni, the point
+        which the Carthaginians regarded as marking the boundary between their
+        empire and Egypt
+      supports: [construction]
     - { source: barrington, locator: 'maps 37–38' }
     - { source: natural-earth }
   confidence: probable
@@ -659,9 +695,27 @@
     at: [31.2, 29.2]
     note: The name belongs on the valley, where the kingdom was, not on the eastern desert.
   sources:
-    - { source: pliny-nh, locator: '5.39, 5.59, 5.68' }
-    - { source: barrington, locator: 'maps 74–81' }
-    - { source: natural-earth }
+    - source: pliny-nh
+      locator: '5.39'
+      quote: >-
+        The region that follows is called Libya Mareotis , and borders upon
+        Egypt . It is held by the Marmaridae , the Adyrmachidae , and, after
+        them, the Mareotoe . The distance from Catabathmos to Paraetonium is
+        eighty-six miles.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.59'
+      quote: >-
+        The Nile first enters the Egyptian territory at Syene , on the frontiers
+        of Aethiopia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.68'
+      quote: >-
+        Ostracine , at a distance of sixty-five miles from Pelusium , is the
+        frontier town of Arabia . After this, at the point where the Sirbonian
+        Lake becomes visible, Idumaea and Palaestina begin.
+      supports: [construction]
   confidence: probable
   review: draft
   note: >-
@@ -731,7 +785,15 @@
         - at: [36.1, 30.9]
           via: curve
   sources:
-    - { source: josephus-aj, locator: '14.18' }
+    - source: josephus-aj
+      locator: '14.18'
+      quote: >-
+        Hyrcanus promised him, that when he had been brought thither, and had
+        received his kingdom, he would restore that country, and those twelve
+        cities which his father Alexander had taken from the Arabians , which
+        were these, Medaba , Nabaloth, Libba, Arabatha, Galanthone, Zoira,
+        Orone, Marissa , Rudda, Alousa, and Orubda.
+      supports: [construction]
     - { source: barrington, locator: 'map 71' }
     - { source: natural-earth }
   confidence: uncertain
