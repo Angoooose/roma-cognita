@@ -4115,7 +4115,7 @@
   polity: cilicia
   relation: province
   from: 58 BCE
-  to: 48 BCE
+  to: 49 BCE
   sources:
     - source: magie-1950
       locator: 'vol. I, p. 384'
@@ -4137,17 +4137,43 @@
       quote: >-
         in 58 BC Cyprus was incorporated into Cilicia (governor M. Porcius Cato)
       supports: [polity, relation, from]
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        declared joint ruler of Cyprus with her brother … by Caesar c. Kal.-a.d.
+        VIII Id. Nov. AUC 706 = c. 25-30 August 48
+      supports: [to]
     - { source: plutarch, locator: 'Cato Minor 34–38' }
   confidence: certain
   review: draft
-  note: Annexed 58 and attached to Cilicia; Cicero governed it in 51–50.
+  note: >-
+    Annexed 58 and attached to Cilicia; Cicero governed it in 51–50. Caesar
+    gave it to Arsinoe and the younger Ptolemy at Alexandria in 48 (Bennett,
+    "Arsinoe IV", on Dio 42.35), so 48 is theirs. Ran to 48 until October
+    2026.
 
 - atom: cyprus
   polity: aegyptus
   relation: client
-  from: 47 BCE
+  from: 48 BCE
   to: 31 BCE
   sources:
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        declared joint ruler of Cyprus with her brother … by Caesar c. Kal.-a.d.
+        VIII Id. Nov. AUC 706 = c. 25-30 August 48
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        does not mention the award of Cyprus, and the accuracy of the report
+        has been doubted … But Cleopatra VII was certainly in possession of it
+        in 43
+      supports: [polity]
     - source: cassius-dio
       locator: '42.35.5'
       quote: >-
@@ -4201,7 +4227,9 @@
   review: needs-check
   note: >-
     Given back to the Ptolemies — to Arsinoe and the younger Ptolemy — by
-    Caesar during the Alexandrian war (Dio 42.35); held by Cleopatra
+    Caesar at Alexandria in 48 (Dio 42.35; Bennett dates the award to c.
+    25–30 August 48 by the Julian calendar, AUC 706, and notes that Caesar
+    does not mention it); held by Cleopatra
     thereafter: her governor Serapion sent ships to Cassius in 43 (App. BC
     4.61). Who ruled it in 41–37 is disputed. Antony's freedman Demetrius "had
     at this time been assigned to Cyprus by Antony" in 39 (Dio 48.40.6), and
@@ -4209,7 +4237,10 @@
     she lacked it; but a Salamis inscription of her year 15 (38/37) names her
     strategos of the island. Bicknell (1977) has Antony take it from her in 41,
     Schrapel (1996) keeps it hers throughout, and Cayla (2017) argues for joint
-    rule in 41–37/36. Drawn as hers throughout. Roman from 30 (cyprus).
+    rule in 41–37/36. Drawn as hers throughout. Antony's grant fell with him
+    (Strabo 14.6.6), overthrown at Actium in the year Caesar and Messalla were
+    consuls, 31 (Dio 50.10.1). Roman from 30 (cyprus). Started in 47 until
+    October 2026.
 
 # --- the Levant ----------------------------------------------------------------
 
