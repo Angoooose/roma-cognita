@@ -5713,8 +5713,60 @@
   to: 38 BCE
   ruler: Antigonus Mattathias, 40–37
   sources:
-    - { source: josephus-aj, locator: '14.330–369' }
-    - { source: josephus-aj, locator: '14.487' }
+    - source: josephus-aj
+      locator: '14.365'
+      quote: >-
+        And thus was Antigonus brought back into Judea by the king of the
+        Parthians, and received Hyrcanus and Phasaelus for his prisoners
+      supports: [ruler]
+    - source: schurer-1891
+      locator: 'p. 390'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Afterwards the Parthians carried away Hyrcanus with them as a prisoner,
+        and set up Antigonus as king
+      supports: [kind, ruler]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [to, ruler]
+    - source: schurer-1891
+      locator: 'p. 398, n. 11'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from tlie statement of Josephus it must certainly be concluded that the
+        fall of the city did not occur before B.c. 37
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: []
+    - source: cassius-dio
+      locator: '49.23.1'
+      quote: >-
+        This was the course of events in the consulship of Claudius and Norbanus
+      supports: []
     - { source: debevoise-1938, locator: 'p. 113' }
   confidence: probable
   review: draft
