@@ -944,7 +944,7 @@
       quote: >-
         until the whole of Italy came into the Roman state except the Lucanians
         and the Samnites
-      supports: [polity, relation, to]
+      supports: [polity, relation]
     - source: beloch-1880
       locator: 'p. 168'
       url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
@@ -1091,7 +1091,7 @@
         Caecilius Metellus , his successor in the praetorship, attacked the
         Apulians and overcame them in battle … until the whole of Italy came
         into the Roman state except the Lucanians and the Samnites
-      supports: [polity, relation, to]
+      supports: [polity, relation]
     - source: velleius
       locator: '2.17.1'
       quote: >-
@@ -1235,7 +1235,7 @@
         Citizenship was given to the Italian nations by the Senate. The Samnites
         , the only ones to take up arms again, sided with Cinna and Marius …
         Consul Gnaeus Octavius was killed
-      supports: [polity, relation, from, to]
+      supports: [polity, relation, from]
     - source: appian
       locator: 'BC 1.53'
       quote: >-
@@ -1378,7 +1378,7 @@
       quote: >-
         Citizenship was given to the Italian nations by the Senate … Consul
         Gnaeus Octavius was killed
-      supports: [polity, relation, from, to]
+      supports: [polity, relation, from]
     - source: pliny-nh
       locator: '3.71'
       quote: >-
