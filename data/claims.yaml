@@ -2567,7 +2567,7 @@
 - atom: illyricum
   polity: illyricum
   relation: province
-  from: 59 BCE
+  from: before 59 BCE
   to: after 27 BCE
   sources:
     - source: suetonius-iul
@@ -2593,9 +2593,11 @@
   confidence: uncertain
   review: draft
   note: >-
-    Assigned to Caesar with Cisalpina by the lex Vatinia of 59. What Rome held
-    was the coast; before 59 its governance is unclear and it is left
-    unclaimed, back to 133: Appian has "Roman Illyria" raided in 135 and
+    Assigned to Caesar with Cisalpina by the lex Vatinia of 59. That is the
+    year it is attested in force, not the year it began (the polity and the
+    relation say "before 59"), and it read 59 exactly until the check. What
+    Rome held was the coast; before 59 its governance is unclear and it is
+    left unclaimed, back to 133: Appian has "Roman Illyria" raided in 135 and
     "the Illyrian subjects of Rome" in 156 (Ill. 10–11), and Cosconius took
     Salona in 78–76 (Eutropius 6.4), but no source says who governed the coast
     or how far Rome's writ ran on it.
