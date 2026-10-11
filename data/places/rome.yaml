@@ -273,8 +273,8 @@
   to: after 27 BCE
   condition:
     - { value: standing, from: before 133 BCE, to: 43 BCE }
-    - { value: under construction, from: 42 BCE, to: c. 35 BCE, kept: footings }
-    - { value: standing, from: c. 34 BCE, to: after 27 BCE }
+    - { value: under construction, from: 42 BCE, to: 42 BCE, kept: footings }
+    - { value: standing, from: 41 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - source: platner-ashby
@@ -330,8 +330,10 @@
     in it (P&A, p. 464), so only the footings are kept and the podium rises new.
     The eight columns standing now are from a late-antique restoration, and the
     outline is the podium.
-    Plancus's rebuilding from 42 BCE is not dated to its end; the map shows it under
-    way to about 35 BCE (Digital Augustan Rome: it "must have begun in the late 40s").
+    Plancus's rebuilding is dated only to its start, 42 BCE (Digital Augustan Rome: it
+    "must have begun in the late 40s"), so the map shows that one year as building, as
+    it does for other works no source dates to their end. Until October 2026 it was
+    shown under way to about 35 BCE, a year no readable text gives.
     The point is the podium's centre, about 40 m west of where the Forum's plan once
     put it.
 
