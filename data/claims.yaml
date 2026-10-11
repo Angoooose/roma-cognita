@@ -2389,7 +2389,7 @@
 - atom: tolosates
   polity: tectosages
   relation: allied
-  from: { earliest: 121 BCE, latest: 107 BCE }
+  from: 121 BCE
   to: 107 BCE
   sources:
     - source: cassius-dio
@@ -2437,7 +2437,12 @@
     revolt that ended it, before Caepio took the city in 106 (MRR). Until
     October 2026 it read 121–118, taking the colony of Narbo on their borders
     in 118 (Vell. 2.7.8) as its latest start; no readable text ties Narbo to
-    the Tolosates' alliance. The revolt of 107 is inside this row.
+    the Tolosates' alliance. The revolt of 107 is inside this row. The start
+    is drawn at 121, the earliest the texts allow, not at the midpoint of
+    121–107 (the relation keeps the range): a range on a start is drawn at its
+    midpoint, 114, which would leave 121–115 blank after the independent row
+    that ends in 122. Uncertain, so drawn fainter; the alliance may have begun
+    any time up to the revolt. It was 121–107 until the check.
 
 - atom: tolosates
   polity: gallia-transalpina
