@@ -3192,10 +3192,35 @@
   kind: kingdom
   names:
     - { text: Paphlagonia, lang: la, preferred: true }
-  from: 63 BCE
+  from: { earliest: 64 BCE, latest: 62 BCE }
   to: after 27 BCE
   ruler: Attalus, to 40; Castor, 40–37/36; Deiotarus Philadelphus, from 37/36
   sources:
+    - source: magie-1950
+      locator: 'vol. I, 372'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Paphlagonia, along with the rest of the defeated King’s dominions, had
+        become part of the spoils of war, to be disposed of by Pompey … Two
+        claimants were found, Attalus and Pylaemenes
+      supports: [kind, ruler]
+    - source: magie-1950
+      locator: 'vol. I, 360'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the spring of 64 Pompey advanced to Amisus, and here, as the arbiter
+        of Asia Minor, the conqueror announced his plans for the disposal of his
+        conquests.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 368'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        These arrangements for the organization of northern and eastern Asia
+        Minor as well as of Syria, begun by Pompey at Amisus in the winter of
+        65-64 and completed at Antioch in 64-63 and again at Amisus in the
+        following winter
+      supports: [from]
     - source: strabo
       locator: '12.3.1'
       quote: >-
@@ -3268,6 +3293,11 @@
     with Pompeiopolis as well, by 37/36 at the latest; its date is not known and
     it stays with the pontus atom. Philadelphus went over to Octavian before
     Actium (Plut. Antony 63.3, as Magie I 443 reads it) and kept his kingdom.
+    It was dated 63; no text read dates the grant to Attalus and Pylaemenes
+    within Pompey's arrangements, which Magie (I 360, 368) has begun in the
+    winter of 65–64, announced at Amisus in the spring of 64 and finished
+    there in the winter of 63–62, so the start is 64–62 (drawn at its
+    midpoint, 63).
 
 - id: comana-pontica
   kind: city-state
