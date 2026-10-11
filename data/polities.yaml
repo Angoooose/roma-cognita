@@ -984,7 +984,7 @@
   to: after 27 BCE
   ruler: >-
     Aretas II, in 96; Obodas I, c. 90; Aretas III, from c. 85, still king in 62;
-    then Malichus I, to 31; Obodas, from 30
+    then Malichus I, still king in 30; Obodas, from c. 28
   sources:
     - source: josephus-aj
       locator: '13.360'
@@ -1026,7 +1026,7 @@
       quote: >-
         desired him to write about these matters to Malchus , who was then
         governor of Arabia
-      supports: []
+      supports: [ruler]
     - source: strabo
       locator: '16.4.21'
       quote: >-
@@ -1076,7 +1076,7 @@
       url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
       quote: >-
         reigned from B.C. 50 to B.C. 28.
-      supports: []
+      supports: [ruler]
     - source: schurer-1890
       locator: 'p. 356'
       url: https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt
@@ -1084,7 +1084,7 @@
         The last that we hear of Malchus is that he promised the aged … to
         support him in the revolt planned against Herod in B.C. 30 … about B.C.
         28-9, was king during the campaign of
-      supports: []
+      supports: [ruler]
     - { source: sullivan-1990 }
     - { source: bowersock-1983 }
   confidence: probable
@@ -1110,9 +1110,10 @@
     2026, years from coins in closed books; they now say only what Josephus
     and Schürer state: Aretas II at Gaza in 96, Obodas I c. 90, Aretas III from
     about 85 (Schürer, to 60 "according to the hitherto prevailing view") and
-    paying off Scaurus in 62 (AJ 14.80). Schürer has Malichus I 50–28, last
-    heard of in 30 (AJ 15.165), and Obodas from c. 28; the record's 31/30 is
-    an open question for the project's owner.
+    paying off Scaurus in 62 (AJ 14.80). Malichus I ended in 31 and Obodas
+    began in 30 until October 2026, after Bowersock; but Josephus has Malichus
+    still king in 30, at Hyrcanus' plot (AJ 15.165), and Schürer has him reign
+    to 28 and Obodas king by 28–29, so they now read so.
 
 - id: bosporus
   kind: kingdom
