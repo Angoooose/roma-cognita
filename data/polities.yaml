@@ -2052,7 +2052,37 @@
     Dynamis his wife
   sources:
     - { source: appian, locator: 'Mithr. 67, 83, 102, 113, 120' }
-    - { source: strabo, locator: '7.4.4' }
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        For a long time it was ruled as a monarchy by the dynasty of Leuco,
+        Satyrus, and Parisades … The last of these monarchs also bore the name
+        Parisades, but he was unable to hold out against the barbarians, who
+        kept exacting greater tribute than before, and he therefore gave over
+        the sovereignty to Mithridates Eupator. But since the time of
+        Mithridates the kingdom has been subject to the Romans.
+      supports: [kind, from, to]
+    - source: appian
+      locator: 'Mithr. 112'
+      quote: >-
+        He lived sixty-eight or sixty-nine years, and of these he reigned
+        fifty-seven
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: cassius-dio
+      locator: '54.24.1–4'
+      quote: >-
+        The next year Marcus Crassus and Gnaeus Cornelius were consuls … one
+        Scribonius, who claimed to be a grandson of Mithridates and to have
+        received the kingdom from Augustus after the death of Asander, married
+        Asander's wife, named Dynamis
+      supports: [to]
     - { source: diophantus-decree }
   confidence: probable
   review: draft
