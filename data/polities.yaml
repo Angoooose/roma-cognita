@@ -5475,14 +5475,54 @@
   to: c. 83 BCE
   ruler: its tyrants; Moagetes, the last
   sources:
-    - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
-    - { source: kallet-marx-1995, locator: 'p. 114' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        Three bordering cities were added to it, Bubon, Balbura, and Oenoandon,
+        and the union was called Tetrapolis … It was always ruled by tyrants;
+        but still they ruled it with moderation. However, the tyranny ended in
+        the time of Moagetes, when Murena overthrew it
+      supports: [kind, ruler, to]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        On the east of Caria lay the state of Cibyratis. It included the four
+        communities of Cibyra, Bubon, Balbura and Oenoanda, which formed a
+        federation, known as the Tetrapolis … When the Romans first came to
+        Asia it was ruled by a “tyrant” named Moagetes, who was characterized
+        as cruel and treacherous, and it seems to have been similarly governed
+        by a single ruler, though perhaps unofficially, down to the time of
+        Murena. … ence of the state of Cibyra, Murena brought to an abrupt end.
+        Enter- ing the district with an army, he overthrew the reigning
+        “tyrant,” who, like his predecessor of the previous century, bore the
+        name of Moagetes.
+      supports: [kind, from, ruler]
+    - source: sherwin-white-1976
+      locator: 'n. 51'
+      quote: >-
+        There is no reason to doubt either the identification of Strabo's
+        Murena with the famous legate of Sulla, or the survival of the dynasty
+        of Cibyra from 190 down to this period
+      supports: [from, ruler]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Cibyra, which enjoyed a treaty of alliance with Rome, remained under its
+        own tyrants until captured by L. Murena in 83
+      supports: [from, to, ruler]
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        Further east the tetrapolis of Cibyra survived as independent to c. 82
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     "It was always ruled by tyrants", over a tetrapolis of Cibyra, Bubon,
     Balbura and Oenoanda, until "the tyranny ended in the time of Moagetes,
     when Murena overthrew it" (Strabo 13.4.17); Murena governed Asia in 84–81.
-    Sherwin-White has the tetrapolis independent "to c. 82" (n. 6),
-    Kallet-Marx has Murena capture it in 83 (114).
+    Sherwin-White has the dynasty survive "from 190" (n. 51) and the tetrapolis
+    independent "to c. 82" (n. 6); Kallet-Marx has Murena capture it in 83
+    (113–114). The end, c. 83, sits between the two.
