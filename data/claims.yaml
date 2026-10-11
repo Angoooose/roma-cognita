@@ -3615,9 +3615,24 @@
 - atom: galatia-pontus
   polity: galatia
   relation: client
-  from: 63 BCE
+  from: { earliest: 63 BCE, latest: 62 BCE }
   to: 40 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions along the Euxine coast, which had been assigned to him in
+        62 by Pompey
+      supports: [polity, from]
     - source: strabo
       locator: '12.3.13'
       quote: >-
@@ -3640,7 +3655,8 @@
   review: needs-check
   note: >-
     Deiotarus' kingdom on the Euxine coast, given him by Pompey (Strabo
-    12.3.13). He died "about the time when the compact" of Brundisium was
+    12.3.13) in the settlement of the winter of 63/62 (Magie I 365); Magie
+    dates the grant to 62 (I 413). Until October 2026 the row started in 63. He died "about the time when the compact" of Brundisium was
     formed, in 40, and Antony gave the coast to Darius (Magie I 433).
 
 - atom: armenia-minor
