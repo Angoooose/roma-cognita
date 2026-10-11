@@ -1356,7 +1356,7 @@
 - polity: tectosages
   type: allied-to
   of: rome
-  from: { earliest: 121 BCE, latest: 118 BCE }
+  from: { earliest: 121 BCE, latest: 107 BCE }
   to: 107 BCE
   sources:
     - source: cassius-dio
@@ -1373,13 +1373,22 @@
       quote: >-
         Consuls Q. SERVILIUS CN. f. CN. n. CAEPIO … In Gaul he attacked the
         Volcae Tectosages and seized the sacred treasure at Tolosa
-      supports: [to]
+      supports: [from, to]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        Consul Quintus Fabius Maximus, grandson of Paulus, successfully fought
+        against the Allobroges and Bituitus, the king of the Arvernians.
+      supports: [from]
   confidence: uncertain
   review: needs-check
   note: >-
     Tolosa "had formerly been in alliance with the Romans" and kept a Roman
     garrison until it revolted (Dio fr. 90); when the alliance began is not
-    recorded (claims.yaml).
+    recorded: no earlier than Fabius' defeat of the Arverni in 121 (Per. 61),
+    no later than the revolt Caepio ended in 106 (MRR), as on the claim. It
+    read 121–118 until October 2026, on Narbo, which no readable text ties to
+    Tolosa.
 
 - polity: helvetii
   type: allied-to
