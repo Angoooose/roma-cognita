@@ -750,9 +750,28 @@ known and what is generated are kept apart:
       pier or an islet is), its sourced arches scaled to that width, and its deck
       comes down to the ground at each end and rises over the arches. The build
       reports a bridge whose water differs from its design by more than a quarter.
-    - **The Tiber Island's ship** is a travertine embankment on the island's own
-      shore, rising towards its downstream end as a ship's sides rise to the stern,
-      with the relief of Aesculapius' staff near it.
+      Its faces are laid in courses, with a ring of voussoirs round each arch, a
+      string course at the deck and a coped parapet, in a lighter shade of its
+      stone; its cutwaters are hooded. Past each end its deck comes down as a ramp until
+      it meets the ground along its line (the model samples the lowest ground across
+      the deck every 2 m past the water), runs on a few metres, and goes into the
+      ground; its parapets step down and end where it meets the ground, and its
+      abutments follow the ground down. Where one lands on the Tiber Island its deck
+      comes down to the island's top and the embankment opens for its abutment. The
+      small holes in the modern river's outline (today's bridge piers, the islet
+      under the Pons Fabricius, the Ponte Rotto) are left out of the plan's river.
+    - **The Tiber Island's ship** (reworked 2026-09-29) is a travertine embankment on
+      the island's own shore: the shore smoothed of the modern embankment's steps
+      and drawn to a point at the prow downstream (island.ts, for the river's
+      outline too, so the water, the ground and the wall keep to one shore). Its
+      face is laid in courses, leaning back a little and stained where the river
+      rises; a coping stands out over it, and a low parapet along the top rises
+      towards the prow as a ship's sides do, with the relief of Aesculapius' staff
+      near it. Behind it the island is level, 3 m over the water, with a paved walk
+      along the parapet. The embankment lays the island's top itself, since the
+      terrain's cells are too coarse to hold an edge at the wall; the ground under
+      it rises from the river as a bank, which is what shows before the wall's
+      years.
     - **No street under a building.** Where a recorded or main street's line crosses
       a monument's footprint it stops at its edge (plate.ts), except over the bridges,
       the island and the open squares.

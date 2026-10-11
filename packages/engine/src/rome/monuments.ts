@@ -12,7 +12,7 @@ import {
   type Tholos,
   tholos,
 } from './architecture.ts'
-import { type Builder, C, type Pt, SKIN } from './builder.ts'
+import { type Builder, C, type Pt, SKIN, STONE } from './builder.ts'
 import {
   BASILICA_WORKS,
   beds,
@@ -1317,14 +1317,52 @@ interface Bridge {
   /** The water's surface, and the ground at its two ends, metres over its ground (from the model). */
   water?: number
   banks?: [number, number]
+  /** The ground past each end over its ground, every BRIDGE_PROFILE_M out from the water (from the model). */
+  profiles?: [number[], number[]]
+}
+
+/** How far apart the model samples the ground past a bridge's ends (model.ts `BRIDGE_PROFILE_M`). */
+const BRIDGE_PROFILE_M = 2
+/**
+ * A deck's ramp down from the water's edge until it meets the ground, how steep; how
+ * far it runs on along the ground as its approach, and how far it sinks into it by
+ * the end, metres.
+ */
+const BRIDGE_RAMP = 0.16
+const BRIDGE_APPROACH = 5
+const BRIDGE_SINK = 0.6
+/** How far past its approach it dives into the ground, metres, one down for one along. */
+const BRIDGE_DIVE = 3
+/** How far past where its deck meets the ground its parapets run on, stepping down, before they end. */
+const BRIDGE_PARAPET_END = 2
+
+/**
+ * A bridge's parts, metres: the band of its faces between the arches' crowns and the
+ * deck; its parapet's height and thickness; the string course along its faces at the
+ * deck, how deep and how far it stands out; the ring of voussoirs round each arch, how
+ * deep and how far it stands out; and how high the hood over each cutwater rises to
+ * the pier's face.
+ */
+const BRIDGE = {
+  fascia: 1.2,
+  parapet: 1.1,
+  parapetThick: 0.35,
+  string: 0.3,
+  stringOut: 0.12,
+  ring: 0.7,
+  ringOut: 0.08,
+  hood: 1.4,
 }
 
 const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   const wl = d.water ?? 2
-  const [hA, hB] = d.banks ?? [wl + 8, wl + 8]
+  // The model gives its ends in the order of its axis, which this frame's u runs against.
+  const [hB, hA] = d.banks ?? [wl + 8, wl + 8]
   // Along the bridge in a frame turned so its u runs from bank to bank, -l/2 to l/2.
   const S = F.sub(0, 0, Math.PI / 2)
   const wall = d.timber ? PART.timber : face
+  // Its copings, string courses and arch rings: the face's stone, a shade lighter.
+  const trim = d.timber ? PART.timber : face.clone().lerp(C.paving, 0.45)
   const deckCol = d.timber ? PART.timber : C.paving
   const land = 7
   // The arches, scaled from the design's spans to the water here, bank to bank.
@@ -1333,34 +1371,133 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   const spans = d.spans.map((x) => x * k)
   const piers = d.piers.map((x) => x * k)
   const rise = d.rise ?? 0.5
-  // The deck: from the ground at one end to the ground at the other, lifted over the
-  // stream to clear its arches, and eased at the banks.
+  // The deck: lifted over the stream to clear its arches, eased down to its banks.
   const clear = d.timber ? 4.5 : Math.max(...spans) * rise + 2.2
-  const deck = (u: number) => {
+  const lifted = (u: number) => {
     const t = Math.min(1, Math.max(0, (u + l / 2) / l))
     const ends = hA + (hB - hA) * t
     const need = wl + clear
     const off = Math.max(0, need - ends)
     // How far out over the water the lift reaches, full across the middle.
-    const e = Math.min(1, Math.min(u + l / 2 + land, l / 2 + land - u) / (l * 0.3 + land))
+    const e = Math.max(
+      0,
+      Math.min(1, Math.min(u + l / 2 + land, l / 2 + land - u) / (l * 0.3 + land)),
+    )
     return ends + off * (e * e * (3 - 2 * e))
+  }
+  // Past each end the ground along its line (from the model), `x` out from the water;
+  // or its bank, where the model gave none.
+  const groundAt = (end: number, x: number) => {
+    const p = d.profiles?.[1 - end]
+    if (!p || p.length < 2) return end ? hB : hA
+    const f = Math.min(p.length - 1, Math.max(0, x / BRIDGE_PROFILE_M))
+    const i = Math.min(p.length - 2, Math.floor(f))
+    return p[i] + (p[i + 1] - p[i]) * (f - i)
+  }
+  // Onto the land the deck comes down from the water's edge as a ramp until it meets
+  // the ground wherever that lies, and runs on a few metres as its approach, sinking
+  // into the ground (the terrain is drawn from coarser cells than the model samples,
+  // and lies a little off its heights).
+  const past = (u: number) =>
+    u < -l / 2 ? { end: 0, x: -l / 2 - u } : u > l / 2 ? { end: 1, x: u - l / 2 } : null
+  const edge = [lifted(-l / 2), lifted(l / 2)]
+  const ramp = (end: number, x: number) => edge[end] - BRIDGE_RAMP * x
+  const meets = [0, 1].map((end) => {
+    for (let x = 0; x < BRIDGE_PROFILE_M * 20; x += 0.5)
+      if (ramp(end, x) <= groundAt(end, x)) return x
+    return BRIDGE_PROFILE_M * 20
+  })
+  // How far along its approach a point past the ends is, 0 to 1.
+  const along = (p: { end: number; x: number }) =>
+    Math.min(1, Math.max(0, (p.x - meets[p.end]) / BRIDGE_APPROACH))
+  // Past its approach it dives into the ground, so where the terrain is drawn below
+  // its heights the paving is seen going down into the bank, not a face standing on it.
+  const deck = (u: number) => {
+    const p = past(u)
+    if (!p) return lifted(u)
+    const dive = Math.max(0, p.x - meets[p.end] - BRIDGE_APPROACH)
+    const g = groundAt(p.end, p.x) - BRIDGE_SINK * along(p) - dive
+    return Math.max(ramp(p.end, p.x), g)
+  }
+  // Its parapets: stepping down where the deck meets the ground, and ending there,
+  // the approach running on without them.
+  const parapetAt = (u: number) => {
+    const p = past(u)
+    if (!p) return BRIDGE.parapet
+    const t = (p.x - meets[p.end]) / BRIDGE_PARAPET_END
+    return t > 1.001 ? 0 : BRIDGE.parapet * (1 - 0.6 * Math.max(0, t))
+  }
+  const run = BRIDGE_APPROACH + BRIDGE_DIVE
+  const [uA, uB] = [-l / 2 - meets[0] - run, l / 2 + meets[1] + run]
+  const [pA, pB] = [
+    -l / 2 - meets[0] - BRIDGE_PARAPET_END,
+    l / 2 + meets[1] + BRIDGE_PARAPET_END,
+  ]
+  // The ground under a point past the ends, for the masonry to go down into.
+  const under = (u: number) => {
+    const p = past(u)
+    return p ? groundAt(p.end, p.x) - 2 : wl - 4
   }
   const step = 2
   const us: number[] = []
-  for (let u = -l / 2 - land; u < l / 2 + land; u += step) us.push(u)
-  us.push(l / 2 + land)
-  // The deck's paving, its two faces down to where the arches or piers take over,
-  // and its parapets.
+  for (let u = uA; u < uB; u += step) us.push(u)
+  us.push(uB, pA, pB)
+  us.sort((a, b) => a - b)
+  // A stone face laid in courses (`SKIN.ashlar`), as the island's embankment is, or
+  // the timber bridge's planks left plain.
+  const coursed = (on: boolean) => {
+    if (!d.timber) S.b.look = on ? SKIN.ashlar * 10 + 0.61 * 0.9 : 0
+  }
+  // A quad of a face along the bridge (points u, v, z), with its place in the courses.
+  const faceQuad = (
+    a: number[],
+    b: number[],
+    c: number[],
+    dd: number[],
+    col: THREE.Color,
+  ) => {
+    const s = (p: number[]) => [...p, p[0] + l, F.base + p[2]]
+    S.skinQuad(s(a), s(b), s(c), s(dd), col)
+  }
+  const P = BRIDGE
+  // The deck's paving; its faces from where the arches or piers take over up to the
+  // parapet's coping in one, a string course standing out along them at the deck;
+  // and the parapets' inner faces and copings.
   for (let i = 0; i + 1 < us.length; i++) {
     const [a, b] = [us[i], us[i + 1]]
     const [za, zb] = [deck(a), deck(b)]
     S.quad([a, -w / 2, za], [b, -w / 2, zb], [b, w / 2, zb], [a, w / 2, za], deckCol)
     for (const s of [-1, 1]) {
       const v = (s * w) / 2
-      S.quad([a, v, za - 1.2], [b, v, zb - 1.2], [b, v, zb], [a, v, za], wall)
-      const pv = v - s * 0.25
-      S.quad([a, pv, za], [b, pv, zb], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
-      S.quad([a, v, za + 1.1], [b, v, zb + 1.1], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
+      const pv = v - s * P.parapetThick
+      // Past its parapets' ends, the face only up to the paving.
+      const open = parapetAt(a) === 0 || parapetAt(b) === 0
+      const [ta, tb] = open ? [za, zb] : [za + parapetAt(a), zb + parapetAt(b)]
+      coursed(true)
+      faceQuad([a, v, za - P.fascia], [b, v, zb - P.fascia], [b, v, tb], [a, v, ta], wall)
+      coursed(false)
+      if (!open) {
+        S.quad([a, pv, za], [b, pv, zb], [b, pv, tb], [a, pv, ta], wall)
+        S.quad([a, v, ta], [b, v, tb], [b, pv, tb], [a, pv, ta], trim)
+      }
+      if (d.timber) continue
+      const sv = v + s * P.stringOut
+      const [s0a, s0b, s1a, s1b] = [za - P.string, zb - P.string, za, zb]
+      S.quad([a, sv, s0a], [b, sv, s0b], [b, sv, s1b], [a, sv, s1a], trim)
+      S.quad([a, v, s1a], [b, v, s1b], [b, sv, s1b], [a, sv, s1a], trim)
+      S.quad([a, v, s0a], [b, v, s0b], [b, sv, s0b], [a, sv, s0a], trim)
+    }
+  }
+  // The deck's ends, closed down into the ground, and its parapets' ends.
+  for (const u of [uA, uB]) {
+    const z = deck(u)
+    S.quad([u, -w / 2, under(u)], [u, w / 2, under(u)], [u, w / 2, z], [u, -w / 2, z], wall)
+  }
+  for (const u of [pA, pB]) {
+    const [z, h] = [deck(u), BRIDGE.parapet * 0.4]
+    for (const s of [-1, 1]) {
+      const [v, pv] = [(s * w) / 2, (s * w) / 2 - s * P.parapetThick]
+      S.quad([u, v, z], [u, pv, z], [u, pv, z + h], [u, v, z + h], wall)
     }
   }
   if (d.timber) {
@@ -1375,51 +1512,77 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     }
     return
   }
-  // Solid masonry from the ground up to the deck at each end, onto the land.
-  const solid = (u0: number, u1: number, z0: number) => {
+  // Solid masonry up to the deck, from under the ground or the river: at each end,
+  // onto the land, and the piers.
+  const solid = (u0: number, u1: number, bottom: (u: number) => number) => {
     const n = Math.max(1, Math.ceil((u1 - u0) / step))
+    coursed(true)
     for (let j = 0; j < n; j++) {
       const [a, b] = [u0 + ((u1 - u0) * j) / n, u0 + ((u1 - u0) * (j + 1)) / n]
-      const [za, zb] = [deck(a) - 1.2, deck(b) - 1.2]
-      for (const s of [-1, 1])
-        S.quad(
-          [a, (s * w) / 2, z0],
-          [b, (s * w) / 2, z0],
-          [b, (s * w) / 2, zb],
-          [a, (s * w) / 2, za],
-          wall,
-        )
+      const [za, zb] = [deck(a) - P.fascia, deck(b) - P.fascia]
+      for (const s of [-1, 1]) {
+        const v = (s * w) / 2
+        faceQuad([a, v, bottom(a)], [b, v, bottom(b)], [b, v, zb], [a, v, za], wall)
+      }
     }
-    for (const [u, z] of [
-      [u0, deck(u0) - 1.2],
-      [u1, deck(u1) - 1.2],
-    ])
+    coursed(false)
+    for (const u of [u0, u1]) {
+      const [z0, z] = [bottom(u), deck(u) - P.fascia]
       S.quad([u, -w / 2, z0], [u, w / 2, z0], [u, w / 2, z], [u, -w / 2, z], wall)
+    }
   }
-  solid(-l / 2 - land, -l / 2, Math.min(hA, wl) - 3)
-  solid(l / 2, l / 2 + land, Math.min(hB, wl) - 3)
-  // An arch from sa to sb: its ring springing over the water, its spandrels up to the
-  // deck on both faces, its soffit dark.
+  // The abutments, from under the river at the water's edge down the ground behind.
+  const abut = (u: number) => Math.min(under(u), wl - 4)
+  solid(uA, -l / 2, abut)
+  solid(l / 2, uB, abut)
+  // An arch from sa to sb: its ring of voussoirs springing over the water, its
+  // spandrels up to the deck on both faces, its soffit dark.
   const arch = (sa: number, sb: number, r0: number) => {
-    const N = 10
+    const N = 16
     const r = (sb - sa) / 2
     const um = (sa + sb) / 2
     const crown = deck(um) - 1.6
     const spring = Math.max(wl - 0.8, crown - (sb - sa) * r0)
-    const pts = Array.from({ length: N + 1 }, (_, j) => {
-      const a = Math.PI * (1 - j / N)
-      return [um + Math.cos(a) * r, spring + Math.sin(a) * (crown - spring)] as Pt
-    })
+    // The intrados, and the ring's outer edge round it.
+    const curve = (grow: number) =>
+      Array.from({ length: N + 1 }, (_, j) => {
+        const a = Math.PI * (1 - j / N)
+        return [
+          um + Math.cos(a) * (r + grow),
+          spring + Math.sin(a) * (crown - spring + grow),
+        ] as Pt
+      })
+    const [pts, outer] = [curve(0), curve(Math.min(P.ring, r * 0.3))]
     for (const s of [-1, 1]) {
       const v = (s * w) / 2
+      const rv = v + s * P.ringOut
+      coursed(true)
       for (let j = 0; j < N; j++) {
         const [p, q] = [pts[j], pts[j + 1]]
-        S.quad(
+        faceQuad(
           [p[0], v, p[1]],
           [q[0], v, q[1]],
-          [q[0], v, deck(q[0]) - 1.2],
-          [p[0], v, deck(p[0]) - 1.2],
+          [q[0], v, deck(q[0]) - P.fascia],
+          [p[0], v, deck(p[0]) - P.fascia],
           wall,
+        )
+      }
+      coursed(false)
+      for (let j = 0; j < N; j++) {
+        const [p, q, oq, op] = [pts[j], pts[j + 1], outer[j + 1], outer[j]]
+        S.quad(
+          [p[0], rv, p[1]],
+          [q[0], rv, q[1]],
+          [oq[0], rv, oq[1]],
+          [op[0], rv, op[1]],
+          trim,
+        )
+        S.quad(
+          [op[0], v, op[1]],
+          [oq[0], v, oq[1]],
+          [oq[0], rv, oq[1]],
+          [op[0], rv, op[1]],
+          trim,
         )
       }
     }
@@ -1447,32 +1610,28 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     // cutwaters on both faces to above the floods.
     if (d.flood) {
       const fs = Math.min(d.flood * k, p * 0.6)
-      solid(pa, m - fs / 2, wl - 4)
-      solid(m + fs / 2, pb, wl - 4)
+      solid(pa, m - fs / 2, () => wl - 4)
+      solid(m + fs / 2, pb, () => wl - 4)
       arch(m - fs / 2, m + fs / 2, 0.5)
-    } else solid(pa, pb, wl - 4)
+    } else solid(pa, pb, () => wl - 4)
     for (const s of [-1, 1]) {
       const v0 = (s * w) / 2
+      const tip = v0 + s * p * 0.75
+      const [zt, zh] = [wl + 3, wl + 3 + P.hood]
       S.prism(
         [
           [pa, v0],
           [pb, v0],
-          [m, v0 + s * p * 0.75],
+          [m, tip],
         ],
         wl - 4,
-        wl + 3,
+        zt,
         wall,
       )
-      S.prism(
-        [
-          [pa, v0],
-          [pb, v0],
-          [m, v0 + s * p * 0.75],
-        ],
-        wl + 3,
-        wl + 3.01,
-        wall,
-      )
+      // Its hood, sloping up from its point to the pier's face.
+      S.tri([pa, v0, zh], [pb, v0, zh], [m, tip, zt], trim)
+      S.tri([pa, v0, zt], [m, tip, zt], [pa, v0, zh], trim)
+      S.tri([pb, v0, zt], [m, tip, zt], [pb, v0, zh], trim)
     }
     u = pb
   })
@@ -2209,79 +2368,243 @@ const comitium: Build<Design & Comitium> = (F, d) => {
 }
 
 /**
- * The Tiber Island walled as a ship (from the 60s–50s BCE): a travertine embankment
- * round its shore, from the water up past the ground, and its prow at the downstream
- * end, towards the front (+v).
+ * The Tiber Island walled as a ship (from the 60s–50s BCE): "a stone platform was
+ * built round it, and upon this a wall" (designs/south.ts) — a travertine embankment
+ * from the water up to the island's level top, a low parapet along it rising towards
+ * the prow at the downstream end (+v), and the platform paved behind it.
  */
 interface Island {
   /** Its shore, plane metres with the ground's height over the model's water there. */
   outline?: number[][]
   /** Whether the ship's walls stand yet. */
   ship?: boolean
+  /** Its level top over its base, metres (from the model). */
+  top?: number
+  /** The river as it is drawn round it, over its base, metres (from the model). */
+  river?: number
+  /** Where the bridges land on it: plane metres, the way onto it, and half the deck's width. */
+  landings?: { at: Pt; onto: Pt; half: number }[]
 }
+
+/**
+ * The embankment, metres: how far in from the shore its face stands at its top; its
+ * parapet over the island's top, and how much that rises over the last `sheerM` to
+ * the prow; its thickness, its coping's depth and how far that stands out over the
+ * face; how far out the face's foot is from its top (it leans back into the island);
+ * how high the river's stain reaches up it; and the paved walk behind it.
+ */
+const EMBANKMENT = {
+  inset: 1.5,
+  parapet: 0.5,
+  sheer: 1.8,
+  sheerM: 45,
+  thick: 1.2,
+  coping: 0.35,
+  lip: 0.25,
+  batter: 0.4,
+  stain: 0.9,
+  walk: 2.5,
+}
+/** Travertine at the waterline, darkened and greened by the river. */
+const WET = new THREE.Color('#B4AE92')
+/** The island's grass: the map's own open ground, as it is drawn lit. */
+const ISLAND_GROUND = new THREE.Color('#A6A476')
 
 const island: Build<Design & Island> = (F, d) => {
   if (!d.ship || !d.outline) return
+  const E = EMBANKMENT
   const wl = (d.water as number | undefined) ?? 2
-  const trav = C.travertine
-  const ring = d.outline.map(
-    ([x, y, g]) => [...F.local(x, y), g] as [number, number, number],
-  )
-  if (ring.length < 4) return
-  // Its winding, so each wall's inside is towards the island.
+  const level = d.top ?? wl + 3
+  const river = d.river ?? wl - 1
+  const pts = d.outline.map(([x, y]) => F.local(x, y))
+  const [p0, pn] = [pts[0], pts[pts.length - 1]]
+  if (p0[0] === pn[0] && p0[1] === pn[1]) pts.pop()
+  const n = pts.length
+  if (n < 4) return
+  // Its winding, so each point's normal is towards the island.
   let area = 0
-  for (let i = 0; i + 1 < ring.length; i++)
-    area += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
+  for (let i = 0; i < n; i++) {
+    const [a, b] = [pts[i], pts[(i + 1) % n]]
+    area += a[0] * b[1] - b[0] * a[1]
+  }
   const inward = area > 0 ? 1 : -1
-  // The ship's end: its tip downstream (the frame's front), the wall rising towards it
-  // as a ship's sides rise to its stern, over its last `SHEER` metres.
-  const SHEER = 40
-  const tip = ring.reduce((m, p) => (p[1] > m[1] ? p : m), ring[0])
-  const top = (p: [number, number, number]) => {
-    const d = Math.hypot(p[0] - tip[0], p[1] - tip[1])
-    return Math.max(wl + 2.2, p[2] + 0.6) + 2.2 * Math.max(0, 1 - d / SHEER) ** 2
+  const normal = pts.map((_, i) => {
+    const [p, q] = [pts[(i - 1 + n) % n], pts[(i + 1) % n]]
+    const L = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1
+    return [(-(q[1] - p[1]) / L) * inward, ((q[0] - p[0]) / L) * inward]
+  })
+  // Its face a little in from the shore, so the river as it is painted runs in under it.
+  for (let i = 0; i < n; i++)
+    pts[i] = [pts[i][0] + normal[i][0] * E.inset, pts[i][1] + normal[i][1] * E.inset]
+  const along = [0]
+  for (let i = 1; i <= n; i++) {
+    const [p, q] = [pts[i - 1], pts[i % n]]
+    along.push(along[i - 1] + Math.hypot(q[0] - p[0], q[1] - p[1]))
   }
-  const T = 1.4
-  for (let i = 0; i + 1 < ring.length; i++) {
-    const [a, b] = [ring[i], ring[i + 1]]
-    const L = Math.hypot(b[0] - a[0], b[1] - a[1])
-    if (L < 0.05) continue
-    const n = [(-(b[1] - a[1]) / L) * inward, ((b[0] - a[0]) / L) * inward]
-    const [ta, tb] = [top(a), top(b)]
-    const ai = [a[0] + n[0] * T, a[1] + n[1] * T]
-    const bi = [b[0] + n[0] * T, b[1] + n[1] * T]
-    // The face to the river, its coping, and its back down into the island's ground.
+  // The parapet's top: level, rising as a ship's sides do towards its prow.
+  const tip = pts.reduce((m, p) => (p[1] > m[1] ? p : m), pts[0])
+  const top = pts.map((p) => {
+    const t = Math.max(0, 1 - Math.hypot(p[0] - tip[0], p[1] - tip[1]) / E.sheerM)
+    return level + E.parapet + E.sheer * t * t
+  })
+  // From well under the river as it is drawn round the island (the terrain is drawn a
+  // little under its own heights, TerrainTiles `standInDrop`), stained up from it.
+  const foot = river - 4
+  const stain = river + E.stain
+  const face = (i: number) => top[i % n] - E.coping
+  // A point of the wall's line: where it is, its normal in, how far along the wall, and
+  // its parapet's top.
+  type WallPt = { p: number[]; n: number[]; al: number; top: number }
+  const wp = (i: number): WallPt => ({
+    p: pts[i % n],
+    n: normal[i % n],
+    al: along[i],
+    top: top[i % n],
+  })
+  const between = (a: WallPt, b: WallPt, t: number): WallPt => {
+    const m = (x: number, y: number) => x + (y - x) * t
+    const nn = [m(a.n[0], b.n[0]), m(a.n[1], b.n[1])]
+    const L = Math.hypot(nn[0], nn[1]) || 1
+    return {
+      p: [m(a.p[0], b.p[0]), m(a.p[1], b.p[1])],
+      n: [nn[0] / L, nn[1] / L],
+      al: m(a.al, b.al),
+      top: m(a.top, b.top),
+    }
+  }
+  // How far out from the shore the face is at a height: its foot furthest out.
+  const out = (w: WallPt, z: number) => {
+    const f = w.top - E.coping
+    return -E.batter * Math.max(0, (f - z) / (f - foot))
+  }
+  // A point `off` in from the wall's line towards the island, at height z; with its
+  // place in the courses for a face laid in them.
+  const on = (w: WallPt, off: number, z: number, coursed = false) => {
+    const q = [w.p[0] + w.n[0] * off, w.p[1] + w.n[1] * off, z]
+    return coursed ? [...q, w.al, F.base + z] : q
+  }
+  const at = (i: number, off: number, z: number) => on(wp(i), off, z)
+  const lip = -E.lip
+  const [back, pave] = [E.thick, E.thick + E.walk]
+  const [low, walk] = [level - 0.3, level + 0.04]
+  const side = (a: WallPt, b: WallPt) => {
+    const [fa, fb] = [a.top - E.coping, b.top - E.coping]
+    // The face in courses of squared stone: stained where the river rises, bare above.
+    F.b.look = SKIN.ashlar * 10 + 0.37 * 0.9
+    for (const [z0, za, zb, col] of [
+      [foot, stain, stain, WET],
+      [stain, fa, fb, STONE.travertine.shade],
+    ] as const) {
+      F.skinQuad(
+        on(a, out(a, z0), z0, true),
+        on(b, out(b, z0), z0, true),
+        on(b, out(b, zb), zb, true),
+        on(a, out(a, za), za, true),
+        col,
+      )
+    }
+    F.b.look = 0
+    // The coping, standing out a little over the face; the parapet's back down to the
+    // platform; and the platform's paving behind it.
+    F.quad(on(a, 0, fa), on(b, 0, fb), on(b, lip, fb), on(a, lip, fa), C.travertine)
     F.quad(
-      [a[0], a[1], wl - 1.5],
-      [b[0], b[1], wl - 1.5],
-      [b[0], b[1], tb],
-      [a[0], a[1], ta],
-      trav,
+      on(a, lip, fa),
+      on(b, lip, fb),
+      on(b, lip, b.top),
+      on(a, lip, a.top),
+      C.travertine,
     )
-    F.quad([a[0], a[1], ta], [b[0], b[1], tb], [bi[0], bi[1], tb], [ai[0], ai[1], ta], trav)
     F.quad(
-      [ai[0], ai[1], ta],
-      [bi[0], bi[1], tb],
-      [bi[0], bi[1], b[2] - 1],
-      [ai[0], ai[1], a[2] - 1],
-      trav,
+      on(a, lip, a.top),
+      on(b, lip, b.top),
+      on(b, back, b.top),
+      on(a, back, a.top),
+      C.travertine,
+    )
+    F.quad(
+      on(a, back, a.top),
+      on(b, back, b.top),
+      on(b, back, low),
+      on(a, back, low),
+      STONE.travertine.shade,
+    )
+    F.quad(
+      on(a, back, walk),
+      on(b, back, walk),
+      on(b, pave, walk),
+      on(a, pave, walk),
+      C.tufa,
     )
   }
-  // Near the tip on each side the relief of Aesculapius' staff and serpent (drawn as a
-  // darker panel), as the stern's ornament survives.
-  const near = ring
-    .map((p, i) => ({ p, i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
+  // Its end where it stops at a bridge's abutment.
+  const end = (w: WallPt) =>
+    F.quad(
+      on(w, out(w, foot), foot),
+      on(w, back, foot),
+      on(w, back, w.top),
+      on(w, lip, w.top),
+      STONE.travertine.shade,
+    )
+  // Open where a bridge lands, between the sides of its deck: the bridge's abutment
+  // takes the embankment's place there.
+  const gaps = (d.landings ?? []).map((g) => {
+    const a = F.local(g.at[0], g.at[1])
+    const b = F.local(g.at[0] + g.onto[0], g.at[1] + g.onto[1])
+    return { a, f: [b[0] - a[0], b[1] - a[1]], half: g.half }
+  })
+  const across = (g: (typeof gaps)[number], p: number[]) =>
+    -(p[0] - g.a[0]) * g.f[1] + (p[1] - g.a[1]) * g.f[0]
+  const gapAt = (p: number[]) =>
+    gaps.find((g) => {
+      const al = (p[0] - g.a[0]) * g.f[0] + (p[1] - g.a[1]) * g.f[1]
+      return Math.abs(across(g, p)) < g.half && al > -4 && al < 14
+    })
+  for (let i = 0; i < n; i++) {
+    const [a, b] = [wp(i), wp(i + 1)]
+    const [ga, gb] = [gapAt(a.p), gapAt(b.p)]
+    if (!ga && !gb) side(a, b)
+    else if (!ga || !gb) {
+      // Cut at the side of the deck.
+      const g = (ga ?? gb)!
+      const [kept, open] = ga ? [b, a] : [a, b]
+      const [ck, co] = [across(g, kept.p), across(g, open.p)]
+      const m = between(kept, open, (Math.sign(ck) * g.half - ck) / (co - ck))
+      if (ga) side(m, b)
+      else side(a, m)
+      end(m)
+    }
+  }
+  // The island's top, level out to the embankment under it: the map's terrain is too
+  // coarse to hold an edge there, and slopes down to the river inside the wall.
+  const contour = pts.map(([u, v]) => new THREE.Vector2(u, v))
+  // Ground, not a roof: it overshadows nothing.
+  const z = level + 0.02
+  const occludes = F.b.occludes
+  F.b.occludes = false
+  for (const [a, b, c] of THREE.ShapeUtils.triangulateShape(contour, []))
+    F.tri([...pts[a], z], [...pts[b], z], [...pts[c], z], ISLAND_GROUND)
+  F.b.occludes = occludes
+  // Near the prow on each side the relief of Aesculapius' staff and serpent (drawn as
+  // a darker panel), as the ornament survives there.
+  const near = pts
+    .map((p, i) => ({ i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
     .filter((q) => q.d > 8 && q.d < 16)
-  for (const { i } of near.slice(0, 2)) {
-    const [a, b] = [ring[i], ring[Math.min(ring.length - 1, i + 1)]]
-    const z = top(a)
-    F.quad(
-      [a[0], a[1], z - 2.4],
-      [b[0], b[1], z - 2.4],
-      [b[0], b[1], z - 0.8],
-      [a[0], a[1], z - 0.8],
-      PART.tufaGrey,
-    )
+  const sides = near.length
+    ? [near[0], near.find((q) => Math.abs(q.i - near[0].i) > 8)]
+    : []
+  for (const q of sides) {
+    if (!q) continue
+    const [z0, z1] = [face(q.i) - 2, face(q.i) - 0.5]
+    for (let j = q.i; j < q.i + 3; j++) {
+      const off = (k: number, z: number) => out(wp(k), z) - 0.06
+      F.quad(
+        at(j, off(j, z0), z0),
+        at(j + 1, off(j + 1, z0), z0),
+        at(j + 1, off(j + 1, z1), z1),
+        at(j, off(j, z1), z1),
+        PART.tufaGrey,
+      )
+    }
   }
 }
 

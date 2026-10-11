@@ -38,6 +38,7 @@ import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts
 import { type Course, STEP_M } from './servian.ts'
 import { type Fields, fieldTrees, type RecordedGround, TREE } from './fields.ts'
 import { FORUM_PAVING_PIECES, levelOf } from './ground.ts'
+import { ISLAND, islandAt, islandRing } from './island.ts'
 
 type Pt = [number, number]
 
@@ -672,6 +673,20 @@ const TOMBS = {
   // Clear of the road as it is drawn, which widens a little when seen from far off.
   gap: 2.5,
 }
+/**
+ * How high the Tiber Island's level top stands over the river, metres: an
+ * illustration's, not a survey's — enough for its embankment to read as one.
+ */
+const ISLE_TOP_M = 3
+/** How far in from its shore the Tiber Island's ground rises to its top, metres. */
+const ISLE_BANK_M = 16
+/** How far in from its shore that bank starts: behind the embankment's face. */
+const ISLE_BANK_FROM_M = 4
+/** The river round the Tiber Island, level, metres against the water's level. */
+const ISLE_RIVER_M = -1
+/** How far apart, and how many, the samples of the ground past a bridge's ends are, metres. */
+const BRIDGE_PROFILE_M = 2
+const BRIDGE_PROFILE_N = 21
 /** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
 const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
 
@@ -704,7 +719,59 @@ export function bakeModel(m: ModelInput) {
     cut[i] = cut[i] * (1 - t) + Math.min(cut[i], waterLevel - 3) * t
   }
   const ground = blur(cut, g.width, g.height, 2)
+  // The Tiber Island (island.ts): its top level, ISLE_TOP_M over the water, and the
+  // river round it level at ISLE_RIVER_M, where its embankment's face meets the water
+  // it is painted on (the river is drawn on the ground at its bed, not as a surface of
+  // its own). Between them a bank ISLE_BANK_M wide rising from its shore: the
+  // terrain's cells are coarser than the texels, and a step at the shore would come
+  // out through the embankment's face as a slope. From the wall's years the
+  // embankment lays its own top over the bank (monuments.ts `island`).
+  const isle = m.places.get(ISLAND)
+  const shoreAt = isle ? islandRing(m.riverRings, islandAt(isle.location)) : -1
+  const isleTop = waterLevel + ISLE_TOP_M
+  if (shoreAt >= 0) {
+    const shore = m.riverRings[shoreAt]
+    const xs = shore.map((p) => p[0])
+    const ys = shore.map((p) => p[1])
+    const river = waterLevel + ISLE_RIVER_M
+    // Out as far as the blur carried the island's old ground into the river.
+    for (let x = Math.min(...xs) - 24; x <= Math.max(...xs) + 24; x += g.texel)
+      for (let y = Math.min(...ys) - 24; y <= Math.max(...ys) + 24; y += g.texel) {
+        const i = idx(x, y)
+        if (i < 0) continue
+        // Texel centres, so each is tested once.
+        const [cx, cy] = [
+          g.x0 + (Math.floor((x - g.x0) / g.texel) + 0.5) * g.texel,
+          g.y1 - (Math.floor((g.y1 - y) / g.texel) + 0.5) * g.texel,
+        ]
+        if (inRing([cx, cy], shore)) {
+          const d = distToRing([cx, cy], shore) - ISLE_BANK_FROM_M
+          const t = Math.min(1, Math.max(0, d / ISLE_BANK_M))
+          ground[i] = river + (isleTop - river) * t * t * (3 - 2 * t)
+        } else if (m.water[i] < 0) ground[i] = river
+      }
+  }
   const at = (x: number, y: number) => sample(ground, x, y, waterLevel)
+  // The ground between the texel centres, as the terrain draws it.
+  const between = (x: number, y: number) => {
+    const fx = (x - g.x0) / g.texel - 0.5
+    const fy = (g.y1 - y) / g.texel - 0.5
+    const [c, r] = [Math.floor(fx), Math.floor(fy)]
+    const [u, v] = [fx - c, fy - r]
+    const h = (cc: number, rr: number) =>
+      cc < 0 || rr < 0 || cc >= g.width || rr >= g.height
+        ? waterLevel
+        : ground[rr * g.width + cc]
+    return (
+      (h(c, r) * (1 - u) + h(c + 1, r) * u) * (1 - v) +
+      (h(c, r + 1) * (1 - u) + h(c + 1, r + 1) * u) * v
+    )
+  }
+  // The ground over the base of what stands in the river (the bridges): on the Tiber
+  // Island its level top, which its embankment lays over the bank.
+  const groundOver = (x: number, y: number) =>
+    (shoreAt >= 0 && inRing([x, y], m.riverRings[shoreAt]) ? isleTop : between(x, y)) -
+    (waterLevel - 2)
   const slopeAt = (x: number, y: number) =>
     Math.hypot(at(x + 4, y) - at(x - 4, y), at(x, y + 4) - at(x, y - 4)) / 8
 
@@ -955,6 +1022,12 @@ export function bakeModel(m: ModelInput) {
       // The island keeps no houses off: its embankment is round its shore.
       clear: kind !== 'island',
       extra: {
+        // The island's level top, and the river round it, over its base, for its
+        // embankment.
+        ...(kind === 'island' && {
+          top: round(isleTop - (waterLevel - 2)),
+          river: round(ISLE_RIVER_M + 2),
+        }),
         ...(shore && {
           // Each shore point with the island's ground a few metres inland, over its base.
           outline: shore.map(([x, y]) => {
@@ -970,11 +1043,29 @@ export function bakeModel(m: ModelInput) {
         // A bridge's banks: the ground a few metres onto the land at each end, over its
         // base, where its deck comes down to meet it.
         ...(span && {
+          // On the Tiber Island, its level top, which its embankment lays over the bank.
           banks: [-1, 1].map((s) => {
             const e = s < 0 ? span!.a : span!.b
-            return round(
-              at(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8) - (waterLevel - 2),
-            )
+            return round(groundOver(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8))
+          }),
+          // And the ground along its line past each end, every BRIDGE_PROFILE_M out
+          // from the water, so its deck comes down to meet it wherever it lies.
+          // The lowest across its deck, so where a bank slopes across it the deck lies
+          // on its low side and goes into the high one.
+          profiles: [-1, 1].map((s) => {
+            const e = s < 0 ? span!.a : span!.b
+            const half = size[0] / 2 + 0.5
+            return Array.from({ length: BRIDGE_PROFILE_N }, (_, j) => {
+              const t = j * BRIDGE_PROFILE_M
+              const [x, y] = [e[0] + axis[0] * s * t, e[1] + axis[1] * s * t]
+              return round(
+                Math.min(
+                  ...[-half, 0, half].map((v) =>
+                    groundOver(x + axis[1] * v, y - axis[0] * v),
+                  ),
+                ),
+              )
+            })
           }),
         }),
       },
@@ -2329,6 +2420,44 @@ export function bakeModel(m: ModelInput) {
   } of courtyardTrees)
     tree(x, y, 2.5 + rand() * 1.5, TREE.mixed, years)
   const tre = new Float32Array(trees)
+  // Where the bridges land on the Tiber Island, so its embankment opens for them: each
+  // bridge end on its shore, the way onto the island, and half the deck's width, from
+  // the bridge's first year. A phase of the island's design for each, carrying the
+  // landings standing by then.
+  const landings: { from: number; at: Pt; onto: Pt; half: number }[] = []
+  if (shoreAt >= 0) {
+    const shore = m.riverRings[shoreAt]
+    for (const mo of monuments) {
+      if (mo.kind !== 'bridge' || !mo.design) continue
+      const { centre, size, axis } = mo.design
+      for (const s of [-1, 1]) {
+        const at: Pt = [
+          centre[0] + (axis[0] * s * size[1]) / 2,
+          centre[1] + (axis[1] * s * size[1]) / 2,
+        ]
+        if (distToRing(at, shore) > 6) continue
+        const onto: Pt = [axis[0] * s, axis[1] * s]
+        if (!inRing([at[0] + onto[0] * 8, at[1] + onto[1] * 8], shore)) continue
+        const from = dates(m.places.get(mo.id)).years[0]
+        landings.push({ from, at: [round(at[0]), round(at[1])], onto, half: size[0] / 2 })
+      }
+    }
+  }
+  const landingPhases = (phases: ({ from: number } & Record<string, unknown>)[]) => {
+    const standing = (y: number) => landings.filter((l) => l.from <= y)
+    const froms = [
+      ...new Set([...phases.map((ph) => ph.from), ...landings.map((l) => l.from)]),
+    ]
+    return {
+      phases: froms
+        .sort((a, b) => a - b)
+        .map((from) => ({
+          ...Object.assign({}, ...phases.filter((ph) => ph.from <= from)),
+          from,
+          landings: standing(from),
+        })),
+    }
+  }
   const bin = Buffer.concat([Buffer.from(fab.buffer), Buffer.from(tre.buffer)])
   writeFileSync(join(m.out, 'model.bin'), bin)
   writeFileSync(
@@ -2350,6 +2479,7 @@ export function bakeModel(m: ModelInput) {
         design: mo.design && {
           ...placedDesign(mo.design, facing(mo)),
           ...mo.extra,
+          ...(mo.kind === 'island' && landingPhases(mo.design.d.phases ?? [])),
           // The water's surface over its ground, for what stands in the river.
           water: round(waterLevel - mo.base),
         },

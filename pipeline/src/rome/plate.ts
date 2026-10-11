@@ -40,12 +40,15 @@ import {
   recordedGrounds,
 } from './fields.ts'
 import { ancientGround, capRidges } from './ground.ts'
+import { ISLAND, islandAt, islandRing, shipShore } from './island.ts'
 import { COURSES } from './aqueducts.ts'
 import { designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
 
 const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
 const TEXEL_M = 4
+/** Holes in the river's outline smaller than this, m², are not islands (the Tiber Island is 28,000). */
+const MIN_ISLET_M2 = 2000
 /**
  * The grid, lon/lat: the city, the Campus Martius and the Janiculum across the river,
  * the Marcia's arcade out to Capannelle (aqueducts.ts),
@@ -203,9 +206,20 @@ export async function bakePlate(
   }
 
   // --- the walled city and the river ------------------------------------------------
+  // Without the small holes in the modern river's outline: the piers of today's
+  // bridges, the islet under the Pons Fabricius and the Ponte Rotto's ruin, which
+  // were none of them dry ground in the Republic.
   const riverRings = river
     .flat()
     .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
+    .filter((ring) => Math.abs(ringArea(ring)) >= MIN_ISLET_M2)
+  // The Tiber Island's shore as the ship's sides, not the modern embankment's steps
+  // (island.ts).
+  const island = places.get(ISLAND)
+  if (island) {
+    const i = islandRing(riverRings, islandAt(island.location))
+    if (i >= 0) riverRings[i] = shipShore(riverRings[i], island.location)
+  }
   // The wall's course, SITAR's (servian.ts): the walled city is what it encloses.
   const course = servianCourse()
   const circuitRing = course.ring
@@ -824,4 +838,11 @@ function inRing([x, y]: Pt, ring: Pt[]) {
     if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c
   }
   return c
+}
+
+function ringArea(r: Pt[]) {
+  let s = 0
+  for (let i = 0, j = r.length - 1; i < r.length; j = i++)
+    s += (r[j][0] - r[i][0]) * (r[j][1] + r[i][1])
+  return s / 2
 }
