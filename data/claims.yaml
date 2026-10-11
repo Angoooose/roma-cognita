@@ -19994,7 +19994,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: { earliest: 114 BCE, latest: 104 BCE }
+  to: 104 BCE
   sources:
     - source: schurer-1910
       locator: 'p. 60'
@@ -20046,6 +20046,10 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    The end is not stated: Zoilus took power in the war between Grypus and
+    Cyzicenus, from 113, and Jannaeus' war on the coast came in 103 (AJ
+    13.324). A range, 114–104, would be drawn at 109 and leave the coast blank
+    to the Judaean row, so the row ends at 104, the bound next to it.
     In Jannaeus' first year Strato's Tower and Dora "were held by the tyrant
     Zoilus" (AJ 13.324), who had set himself up "on occasion of the contest
     between the kings" (13.326); when is not known, and he is not drawn. The
@@ -20123,7 +20127,7 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: { earliest: 114 BCE, latest: 104 BCE }
+  to: 104 BCE
   sources:
     - source: schurer-1910
       locator: 'p. 60'
@@ -20175,6 +20179,10 @@
   confidence: uncertain
   review: needs-check
   note: >-
+    The end is not stated: Zoilus took power in the war between Grypus and
+    Cyzicenus, from 113, and Jannaeus' war on the coast came in 103 (AJ
+    13.324). A range, 114–104, would be drawn at 109 and leave the coast blank
+    to the Judaean row, so the row ends at 104, the bound next to it.
     As strato-tower; Dora was Zoilus' too, and Ascalon was free from 104
     (Schürer 1891, 306). Until October 2026 it ended in 104, which no text
     states.
