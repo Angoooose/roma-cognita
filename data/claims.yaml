@@ -19116,7 +19116,7 @@
 - atom: strato-tower
   polity: judaea
   relation: independent
-  from: { earliest: 103 BCE, latest: 96 BCE }
+  from: 103 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.324–335, 13.395' }
@@ -19124,9 +19124,12 @@
   review: needs-check
   note: >-
     Jannaeus bought Ptolemy Lathyrus' help to "take off Zoilus the tyrant, and
-    give his country to the Jews" (AJ 13.335), c. 103–102; Strato's Tower is
-    the first city on the list of the Jews' possessions at his death (13.395).
-    When it passed is not stated; by the war on Gaza (96) at the latest.
+    give his country to the Jews" (AJ 13.335), in the war of 103–101; Zoilus
+    was "soon overthrown" by Jannaeus (Schürer 1910, 85), and Strato's Tower
+    is the first city on the list of the Jews' possessions after his three
+    years' war of 84–81 (13.395). When it passed is not stated: the range is
+    103 to that list. Drawn from 103, the earliest year. Until October 2026 it
+    read 103–96, whose later bound (the war on Gaza) no text states.
 
 - atom: palaestina-coast
   polity: seleucid
@@ -19145,7 +19148,7 @@
 - atom: palaestina-coast
   polity: judaea
   relation: independent
-  from: { earliest: 103 BCE, latest: 96 BCE }
+  from: 103 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.324, 13.335, 13.395' }
@@ -19153,7 +19156,9 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Dora with Zoilus' country; Iamnia and Azotus are on the list of the Jews'
+    Drawn from 103, Jannaeus' first campaign; until October 2026 the start was
+    103–96, whose later bound no text states. Dora with Zoilus' country (see
+    strato-tower); Iamnia and Azotus are on the list of the Jews'
     cities (AJ 13.395). The atom's two pieces differ: in Jannaeus' first year
     "of the maritime cities there remained only Ptolemais and Gaza to be
     conquered, besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and
