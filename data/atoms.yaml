@@ -1659,9 +1659,32 @@
           note: the Cibyratis, north of Balbura and Bubon, which were Lycian
         - [29.2, 37.1]
   sources:
+    - source: magie-1950
+      locator: 'vol. I, pp. 383–384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the districts of Phrygia and Cibyratis, consisting of the three
+        judiciary dioceses of Laodiceia-Cibyra, Apameia and Synnada, … which had
+        hitherto been part of the province of Asia. By the addition of this
+        territory — extending from the southern watershed of the San- garius on
+        the north to the frontier of Pisidia on the south and as far west as the
+        upper reaches of the Tembris and the junction of the Maeander and the
+        Lycus
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea: from the 15th of March at the same place for the districts
+        of Synnada, Pamphylia
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.20.1'
+      quote: >-
+        I did the same afterwards during my five days stay at Apamea and three
+        days at Synnada, five at Philomelium, ten at Iconium.
+      supports: []
     - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
-    - { source: magie-1950, locator: 'vol. I, 383–4' }
-    - { source: cicero-att, locator: '5.21.9' }
     - { source: sherk-rdge, locator: 'no. 52' }
     - { source: barrington, locator: 'maps 62, 65' }
   confidence: probable

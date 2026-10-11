@@ -3047,9 +3047,42 @@
   from: 133 BCE
   to: after 27 BCE
   sources:
-    - { source: broughton-mrr }
-    - { source: strabo, locator: '13.4.2, 14.1.38' }
+    - source: strabo
+      locator: '13.4.2'
+      quote: >-
+        Attalus surnamed Philometor, reigned five years, died of disease, and
+        left the Romans his heirs. The Romans proclaimed the country a province,
+        calling it Asia, by the same name as the continent.
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Ti. Gracch. 14.1'
+      quote: >-
+        And now Attalus Philometor died, and Eudemus of Pergamum brought to Rome
+        the king's last will and testament, by which the Roman people was made
+        his heir.
+      supports: [from]
+    - source: velleius
+      locator: '2.2.2'
+      quote: >-
+        In the consulship of Publius Mucius Scaevola and Lucius Calpurnius (one
+        hundred and sixty-two years ago) … he split with the party of the
+        nobles, promised the citizenship to all Italy
+      supports: [from]
+    - source: velleius
+      locator: '2.4.1'
+      quote: >-
+        While these events were taking place in Italy King Attalus had died,
+        bequeathing Asia in his will to the Roman people
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [relation, to]
+    - { source: strabo, locator: '14.1.38' }
     - { source: kallet-marx-1995, locator: 'pp. 112–115' }
+    - { source: broughton-mrr }
   confidence: probable
   review: needs-check
   note: >-
@@ -3063,6 +3096,9 @@
     (Kallet-Marx 112–115); when Caria came under the governor is not recorded,
     so the whole atom is drawn from the bequest, as with the free cities
     elsewhere (README decision 2). Aristonicus is drawn as a seat, 133–130.
+    The year: Attalus' will reached Rome in Tiberius Gracchus' tribunate
+    (Plut. Ti. Gracch. 14.1), which Velleius dates to the consuls of 133
+    (2.2.2) and puts the king's death in it (2.4.1).
 
 - atom: asia-phrygia
   polity: asia
@@ -3070,11 +3106,64 @@
   from: { earliest: 119 BCE, latest: 116 BCE }
   to: 57 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 168'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Thirteen years after Aquilius carried out his work of organization, the
+        new province was greatly enlarged by the addition of the district of
+        Phrygia.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 169'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the Senate declared that Phrygia was now part of the province of Asia.
+        In an extant fragment of a senatorial decree dated in 116
+      supports: [polity, relation, from]
+    - source: kallet-marx-1995
+      locator: 'p. 242'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        The declaration of Phrygian "freedom," which belongs a generation later
+        than where it is usually placed (ca. 119)
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 241'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        The traditional view is that Rome now resumed possession of Phrygia; but
+        Appian puts in Sulla's mouth the claim that the Senate declared Phrygia
+      supports: []
+    - source: appian
+      locator: 'Mithr. 57'
+      quote: >-
+        For this reason they decided, not that Phrygia, which had been given to
+        you wrongfully, should be made tributary to Rome, but should be free.
+      supports: []
+    - source: livy-per
+      locator: '77'
+      quote: >-
+        invaded Phrygia, a province of the Roman people, with an enormous army.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus … In the spring, after
+        distributing among his army the unprecedented amount of sixteen thousand
+        talents, the General set forth on the long march to the Aegean coast.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Six years after Pompey left Asia Minor, the three judiciary "dioceses"
+        of which Phrygia consisted — Cibyra-Laodiceia, Apameia and Synnada … were
+        taken from the province of Asia and transferred to Cilicia
+      supports: [to]
     - { source: dmitriev-2000, locator: 'n. 80 (coins of C. Fabius, proconsul of Asia in 57)' }
     - { source: mcging-1980, locator: 'pp. 35–42' }
-    - { source: kallet-marx-1995, locator: 'pp. 240–242' }
-    - { source: appian, locator: 'Mithr. 57' }
-    - { source: livy-per, locator: '77' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -3089,7 +3178,11 @@
     copy has turned up, discounts the epitome's "provincia", and puts the
     freeing of Phrygia "a generation later than where it is usually placed
     (ca. 119)", after Sulla's Cappadocian campaign of c. 95. Drawn on the
-    usual view.
+    usual view: Magie (I 168–169) has the senate declare Phrygia part of the
+    province, by a decree of 116, "thirteen years after" Aquilius' settlement
+    of 129. The end: the three Phrygian dioceses passed to Cilicia "six years
+    after Pompey left Asia Minor" (Magie I 376), who left in the spring of 62
+    (I 365), so 56 is Cilicia's.
 
 - atom: asia-phrygia
   polity: cilicia
@@ -3097,14 +3190,57 @@
   from: 56 BCE
   to: 50 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Six years after Pompey left Asia Minor, the three judiciary "dioceses"
+        of which Phrygia consisted — Cibyra-Laodiceia, Apameia and Synnada … were
+        taken from the province of Asia and transferred to Cilicia
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus … In the spring, after
+        distributing among his army the unprecedented amount of sixteen thousand
+        talents, the General set forth on the long march to the Aegean coast.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 383'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Publius Cornelius Lentulus Spinther, who had obtained his consulship in
+        57 by the aid of Caesar and with it an appointment as governor of
+        Cilicia. … Now, under Lentulus, it was still further increased by the
+        incorporation in it of the districts of Phrygia and Cibyratis
+      supports: [polity, relation]
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea: from the 15th of March at the same place for the districts
+        of Synnada, Pamphylia
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 402'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Lucius Lentulus Crus, one of the Consuls of the year … During this year,
+        and perhaps in connexion with this enlistment of soldiers, the three
+        Phrygian dioceses were retransferred from Cilicia to the province of
+        Asia.
+      supports: [to]
     - { source: dmitriev-2000, locator: 'n. 80' }
-    - { source: magie-1950, locator: 'vol. I, 383–4' }
-    - { source: cicero-att, locator: '5.21.9' }
   confidence: probable
   review: draft
   note: >-
-    Transferred c. 57/56 (Magie); Cicero held the assizes of the Cibyratic,
-    Apamean and Synnadic districts as governor of Cilicia in 50.
+    Transferred "six years after Pompey left Asia Minor" (Magie I 376), in the
+    spring of 62 (I 365), under Lentulus Spinther, governor after his
+    consulship of 57 (I 383): so 56. Cicero held the assizes of the Cibyratic,
+    Apamean and Synnadic districts as governor of Cilicia in 50 (Att. 5.21.9).
+    They went back to Asia in the year Lentulus Crus was consul, 49 (Magie I
+    402).
 
 - atom: asia-phrygia
   polity: asia
@@ -3112,11 +3248,37 @@
   from: 49 BCE
   to: after 27 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 402'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the province of Asia, where Gaius Fannius, an adherent of Pompey, was
+        governor … Lucius Lentulus Crus, one of the Consuls of the year … During
+        this year, and perhaps in connexion with this enlistment of soldiers, the
+        three Phrygian dioceses were retransferred from Cilicia to the province
+        of Asia.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        But none the less the jurisdiction of Cibyra is rated among the greatest
+        in Asia.
+      supports: [polity, to]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [relation, to]
     - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
     - { source: sherk-rdge, locator: 'no. 52' }
   confidence: probable
   review: draft
-  note: Returned to Asia under the proconsul C. Fannius, 49.
+  note: >-
+    Returned to Asia under the proconsul C. Fannius in the year Lentulus Crus
+    was consul, 49 (Magie I 402). Still Asia's in Strabo's day, when the
+    Cibyratic jurisdiction was "among the greatest in Asia" (13.4.17), and Asia
+    went to the people in the settlement of 27 (Dio 53.12.4).
 
 - atom: bithynia
   polity: bithynia-pontus
@@ -3181,11 +3343,41 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '12.3.1' }
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        this country was comprised within these boundaries when Pompey took it
+        over, upon his overthrow of Mithridates. … the remaining parts he divided
+        into eleven states and added them to Bithynia, so that out of both there
+        was formed a single province.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: livy-per
+      locator: '102'
+      quote: >-
+        Gnaeus Pompey organized Pontus as a province.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Bithynia with Pontus which adjoined it, Sardinia and Baetica were held to
+        belong to the people and the senate
+      supports: [polity, relation, to]
     - { source: hojte-2009 }
   confidence: probable
   review: draft
-  note: Pompey's settlement.
+  note: >-
+    Pompey's settlement. He took the kingdom over on the fall of Mithridates
+    and joined it to Bithynia as one province (Strabo 12.3.1); the king
+    destroyed himself in the year Cicero and Antonius were consuls, 63 (Dio
+    37.10.4). Pompey wintered in Pontus in 63/62 settling the conquered lands
+    (Magie I 365).
 
 - atom: cilicia
   polity: cilicia
@@ -3193,30 +3385,113 @@
   from: 80 BCE
   to: 44 BCE
   sources:
-    - { source: broughton-mrr, locator: vol. II }
-    - { source: cicero-verr, locator: '2.1.44, 2.1.53–54, 2.1.93' }
+    - source: cicero-verr
+      locator: '2.1.44'
+      quote: >-
+        After Cilicia was appointed to Cnaeus Dolabella as his province
+      supports: [polity, relation]
+    - source: broughton-mrr
+      locator: 'vol. II, pp. 79–80'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls L. CoRNELIUS L. f. P. n. SULLA FELIX Pat. … Q. CaEcrLIUS Q. f. L.
+        n. METELLUS Prus … Cw. CORNELIUS DOLABELLA Pat. … Pr. … Proconsul
+        (Ps.-Ascon. … Stangl; Schol. Gron. … Stangl) in Cilieia
+      supports: [polity, relation, from]
+    - source: cicero-verr
+      locator: '2.1.53'
+      quote: >-
+        You know that Aspendus is an ancient and noble town in Pamphylia, full
+        of very fine statues. I do not say that one statue or another was taken
+        away from thence: this I say, that you, O Verres, left not one statue at
+        Aspendus
+      supports: []
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It has been previously observed that the province of Cilicia was
+        probably dismembered soon after Caesar's death.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     "Posteaquam Cn. Dolabellae provincia Cilicia constituta est" (Verr.
-    2.1.44): Dolabella's province in 80–79, where his legate Verres plundered
-    Aspendus and Perge "in Pamphylia" and had "omnis ad praedandum Pamphylia"
-    open to him. The earlier, doubtful years are a row of their own, under the
-    extension to 133 below.
+    2.1.44): Dolabella's province in 80–79, proconsul in Cilicia in the year
+    Sulla and Metellus Pius were consuls (MRR II 79–80), where his legate
+    Verres plundered Aspendus and Perge "in Pamphylia" and had "omnis ad
+    praedandum Pamphylia" open to him. The earlier, doubtful years are a row of
+    their own, under the extension to 133 below. The province "was probably
+    dismembered soon after Caesar's death" (Magie I 433), and Pamphylia was
+    Asia's in 43 (Cic. Fam. 12.15.5).
 
 - atom: cilicia-campestris
   polity: cilicia
   relation: province
-  from: { earliest: 67 BCE, latest: 64 BCE }
+  from: { earliest: 67 BCE, latest: 62 BCE }
   to: 44 BCE
   sources:
-    - { source: borgia-2017, locator: 'pp. 300–301' }
+    - source: borgia-2017
+      locator: 'p. 301'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        He was granted the imperium infinitum by virtue of the Lex Gabinia
+        (January 67 BC
+      supports: [from]
+    - source: plutarch
+      locator: 'Pompey 28.4'
+      quote: >-
+        after restoring the city of Soli, which had lately been devastated by
+        Tigranes, the king of Armenia, Pompey settled many there.
+      supports: [from]
+    - source: borgia-2017
+      locator: 'p. 301'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        it is not clear what the exact boundaries of the new province of
+        Cilicia created in 62 BC were, and how it was organised, because ancient
+        sources remain utterly silent on that score until 56 BC.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The same act made it possible definitely to annex the district of Level
+        Cilicia — if, indeed, it had not been already annexed by Lucullus — to
+        the province, thus finally justifying the name by which this had long
+        been known.
+      supports: [polity, relation]
+    - source: borgia-2017
+      locator: 'p. 301'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        settled the pirates who deserved to be saved in urban centres so as to
+        avoid their future involvement in illegal activities; as far as Cilicia
+        is concerned he chose a number of important Hellenized cities, all of
+        which were located in Plain Cilicia, including Soloi (renamed
+        Pompeiopolis)
+      supports: []
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It has been previously observed that the province of Cilicia was
+        probably dismembered soon after Caesar's death.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     The plain came under Rome with Pompey, who settled pirates in its cities
     (Soloi-Pompeiopolis, Mallus, Adana) after 67; before, it had been
-    Tigranes' and the last Seleucids'.
+    Tigranes' and the last Seleucids'. The start covers the readings: Pompey's
+    command from the lex Gabinia of January 67 (Borgia 301), under which he
+    settled pirates at Soli (Plut. Pompey 28.4); Magie's annexation with the
+    making of Syria a province, in 64, or earlier under Lucullus (I 376); and
+    Borgia's "new province of Cilicia created in 62 BC" (301). Until October
+    2026 the range was 67–64, which left Borgia's 62 out. The province "was probably dismembered soon
+    after Caesar's death" (I 433); elsewhere Magie puts the plain's attachment
+    to Syria "apparently in the course of 44" (I 418), which would make 44
+    Syria's; the next row (syria, from 43) is left as it is.
 
 - atom: galatia
   polity: galatia
@@ -3224,7 +3499,54 @@
   from: before 133 BCE
   to: 64 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 17, 46, 75' }
+    - source: magie-1950
+      locator: 'vol. I, p. 22'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in 168 they again broke out in revolt. … he finally succeeded in forcing
+        the enemy to withdraw to their own territory.
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 17'
+      quote: >-
+        began to collect forces from Bithynia, Cappadocia, Paphlagonia, and the
+        Galatians of Asia.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 46'
+      quote: >-
+        he put to death the tetrarchs of Galatia with their wives and children
+        … But the tetrarchs who had escaped raised an army from the country
+        people forthwith, expelled him and his garrisons, and drove them out of
+        Galatia
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 75'
+      quote: >-
+        Finally Deiotarus, one of the tetrarchs of Galatia, drove the marauder
+        away and slew many of his men.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 372'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in general, they supported the cause of Rome. In the new organization of
+        Asia Minor it was necessary to make some arrangement by which the
+        relations of these tribes with Rome might be more definitely established
+      supports: []
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Deiotarus and others tetrarchs of the Gallograecians, who are
+        now the Galatians bordering on Cappadocia.
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [to]
     - { source: livy-per, locator: '94.2' }
   confidence: uncertain
   review: needs-check
@@ -3234,7 +3556,13 @@
     Asia" in 89 (App. Mithr. 17), Mithridates killed their tetrarchs in 86 and
     the survivors drove out his satrap (46), and Deiotarus fought his generals
     in the 70s (75; Livy Per. 94.2). Justin says Mithridates "seized also on
-    Galatia" after Paphlagonia (37.4), undated and not drawn.
+    Galatia" after Paphlagonia (37.4), undated and not drawn. The peoples
+    held their own land from before the window (Magie I 22, in 168) to
+    Pompey's settlement after Mithridates' death in 63 (App. Mithr. 114; Dio
+    37.10.4). No readable text calls them clients before Pompey: Magie has
+    them "in general" supporting Rome, their relations with it still to be
+    "more definitely established" in 63 (I 372). The relation is left as
+    client, to match the relation row (galatia client-of rome, to 64).
 
 - atom: galatia
   polity: galatia
@@ -3242,6 +3570,57 @@
   from: 63 BCE
   to: after 27 BCE
   sources:
+    - source: appian
+      locator: 'Mithr. 114'
+      quote: >-
+        He made Deiotarus and others tetrarchs of the Gallograecians, who are
+        now the Galatians bordering on Cappadocia.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 373'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In a dominant position among his fellow-countrymen, he would ensure
+        their fidelity to Rome, and as a client-prince he would prove a suitable
+        ruler
+      supports: [relation]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.32.3'
+      quote: >-
+        Antony, in addition to making the arrangements mentioned above, assigned
+        principalities, giving Galatia to Amyntas
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        both Amyntas and Deiotarus Philadelphus were confirmed in the possession
+        of their kingdoms. … These additions to an already extensive kingdom
+        made the former secretary of Deiotarus the Galatian the most powerful of
+        Rome's client-princes.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '53.26.3'
+      quote: >-
+        On the death of Amyntas he did not entrust his kingdom to the sons of
+        the deceased, but made it a part of the subject territory. Thus Galatia
+        together with Lycaonia obtained a Roman governor
+      supports: [to]
     - { source: cicero-deiotaro }
     - { source: strabo, locator: '12.5.1' }
   confidence: probable
@@ -3249,27 +3628,130 @@
   note: >-
     Deiotarus came to rule all three Galatian peoples; for part of the window
     other tetrarchs (Brogitarus of the Trocmi, 58) held pieces of it. Dated
-    from Pompey's settlement, which confirmed him.
+    from Pompey's settlement, which confirmed him (App. Mithr. 114), made
+    after Mithridates' death in 63 (Dio 37.10.4) in the winter of 63/62
+    (Magie I 365). Antony gave Galatia to Amyntas (Dio 49.32.3), Octavian
+    confirmed him after Actium (Magie I 443), and it became a province only at
+    his death in 25 (Dio 53.26.3).
 
 - atom: galatia-pontus
   polity: galatia
   relation: client
-  from: 63 BCE
+  from: { earliest: 63 BCE, latest: 62 BCE }
   to: 40 BCE
   sources:
-    - { source: strabo, locator: '12.3.13' }
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions along the Euxine coast, which had been assigned to him in
+        62 by Pompey
+      supports: [polity, from]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        the other was given to Deiotarus by Pompey, as also the regions of
+        Pharnacia and Trapezusia as far as Colchis and Lesser Armenia. Pompey
+        appointed him king of all these, when he was already in possession of
+        his ancestral Galatian tetrarchy
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions of Deiotarus, whose adventurous life came to an end about
+        the time when the compact was formed. … The portion of Pontus, on the
+        other hand, which had belonged to the late King, namely the coast region
+        of Pharnaceia and Trebizond with its rich hinterland, was assigned to the
+        Pontic prince Darius
+      supports: [to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Deiotarus' kingdom on the Euxine coast, given him by Pompey (Strabo
+    12.3.13) in the settlement of the winter of 63/62 (Magie I 365); Magie
+    dates the grant to 62 (I 413). Until October 2026 the row started in 63. He died "about the time when the compact" of Brundisium was
+    formed, in 40, and Antony gave the coast to Darius (Magie I 433).
 
 - atom: armenia-minor
   polity: galatia
   relation: client
-  from: 63 BCE
+  from: { earliest: 63 BCE, latest: 62 BCE }
   to: 48 BCE
   sources:
-    - { source: strabo, locator: '12.3.13' }
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 374'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Deiotarus received also the valleys which contain the headwaters of the
+        Lycus and the Qoruh and all the northern portion of Armenia Minor
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions along the Euxine coast, which had been assigned to him in
+        62 by Pompey
+      supports: [from]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        the other was given to Deiotarus by Pompey, as also the regions of
+        Pharnacia and Trapezusia as far as Colchis and Lesser Armenia. Pompey
+        appointed him king of all these
+      supports: [polity, relation]
+    - source: eutropius
+      locator: '6.14'
+      quote: >-
+        Armenia Minor he conferred upon Deiotarus, the king of Galatia, because
+        he had acted as his ally in the Mithridatic war.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the portion of Lesser Armenia which bordered on Cappadocia was taken
+        from him and given to Ariobarzanes.
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        restored it all to the persons who had been dispossessed, except a
+        portion of Armenia, which he granted to Ariobarzanes.
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.55.4'
+      quote: >-
+        These were the things he did in that year in which he really ruled
+        alone as dictator for the second time, though Calenus and Vatinius,
+        appointed near the close of the year, were said to be the consuls.
+      supports: [to]
   confidence: probable
   review: needs-check
+  note: >-
+    Given to Deiotarus by Pompey (Strabo 12.3.13; Eutrop. 6.14), with the
+    Euxine coast (Magie I 374), in the settlement of the winter of 63/62
+    (I 365); Magie dates that grant to 62 (I 413). Until October 2026 the row
+    started in 63. Pharnaces
+    overran it in 48 (an occupation row), and after Zela Caesar gave the part
+    bordering Cappadocia to Ariobarzanes (Dio 42.48.3; Magie I 413), in the
+    year Calenus and Vatinius were consuls, 47 (Dio 42.55.4).
 
 - atom: armenia-minor
   polity: cappadocia
@@ -3277,8 +3759,40 @@
   from: 47 BCE
   to: 45 BCE
   sources:
-    - { source: cassius-dio, locator: '42.48.3' }
-    - { source: cicero-phil, locator: '2.94' }
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        restored it all to the persons who had been dispossessed, except a
+        portion of Armenia, which he granted to Ariobarzanes.
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 413'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the portion of Lesser Armenia which bordered on Cappadocia was taken
+        from him and given to Ariobarzanes.
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '42.55.4'
+      quote: >-
+        These were the things he did in that year in which he really ruled
+        alone as dictator for the second time, though Calenus and Vatinius,
+        appointed near the close of the year, were said to be the consuls.
+      supports: [from]
+    - source: cicero-phil
+      locator: '2.93'
+      quote: >-
+        when you owed forty millions of sesterces on the fifteenth of March, you
+        had ceased to owe them by the first of April? … there was one excellent
+        decree posted up in the Capitol affecting king Deiotarus
+      supports: [to]
+    - source: cicero-phil
+      locator: '2.94'
+      quote: >-
+        he had taken Armenia from him, which had been given to him by the
+        senate. While he was alive he deprived him of all these things; now
+        that he is dead, he gives them back again.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -3292,13 +3806,35 @@
   from: 44 BCE
   to: 40 BCE
   sources:
-    - { source: cicero-phil, locator: '2.93–95' }
+    - source: cicero-phil
+      locator: '2.93'
+      quote: >-
+        when you owed forty millions of sesterces on the fifteenth of March, you
+        had ceased to owe them by the first of April? … there was one excellent
+        decree posted up in the Capitol affecting king Deiotarus, a most devoted
+        friend to the Roman people.
+      supports: [relation, from]
+    - source: cicero-phil
+      locator: '2.94'
+      quote: >-
+        he had taken Armenia from him, which had been given to him by the
+        senate. While he was alive he deprived him of all these things; now
+        that he is dead, he gives them back again.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the dominions of Deiotarus, whose adventurous life came to an end about
+        the time when the compact was formed.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Restored to Deiotarus after the Ides, by the decree Antony posted on the
     Capitol from Caesar's papers — "haec vivus eripuit, reddit mortuus" (Cicero
-    Phil. 2.93–95).
+    Phil. 2.93–95). Deiotarus died about the time of the compact of
+    Brundisium, 40 (Magie I 433).
 
 - atom: cappadocia
   polity: cappadocia
@@ -3306,14 +3842,57 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: strabo
+      locator: '12.2.11'
+      quote: >-
+        as soon as the Romans, after conquering Antiochus, began to administer
+        the affairs of Asia and were forming friendships and alliances both with
+        the tribes and with the kings, that in all other cases they gave this
+        honor to the kings individually, but gave it to the king of Cappadocia
+        and the tribe jointly.
+      supports: [polity, from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        to the sons of Ariarathes, king of Cappadocia, who had fallen in that
+        war, were assigned Lycaonia and Cilicia; and the Roman people were more
+        faithful to the sons of their ally
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '12.2.11'
+      quote: >-
+        requested that a king be appointed for them. The Romans, amazed that any
+        people should be so tired of freedom, — at any rate, they permitted them
+        to choose by vote from their own number whomever they wished. And they
+        chose Ariobarzanes; but in the course of the third generation his family
+        died out; and Archelaus was appointed king, though not related to the
+        people, being appointed by Antony.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 443'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In accordance with this policy of retaining Antony's appointees in their
+        positions of power, Archelaus and Polemo were likewise permitted to keep
+        their kingdoms of Cappadocia and Pontus.
+      supports: [polity, relation, to]
+    - source: tacitus-ann
+      locator: '2.42'
+      quote: >-
+        King Archelaus had held power in Cappadocia for over fifty years
+      supports: [to]
+    - { source: justin, locator: '38.1–38.2' }
     - { source: sullivan-1990 }
-    - { source: strabo, locator: '12.2.11' }
-    - { source: justin, locator: '37.1, 38.1–38.2' }
   confidence: probable
   review: draft
   note: >-
     The kingdom went on under every king, including the Pontic prince Ariarathes
-    IX; the years Mithridates and Tigranes held it are occupation rows.
+    IX; the years Mithridates and Tigranes held it are occupation rows. A
+    friend and ally of Rome since the war with Antiochus (Strabo 12.2.11),
+    whose king fell fighting Aristonicus for Rome (Justin 37.1); from 95 its
+    kings were chosen with Rome's leave and Archelaus was appointed by Antony
+    (Strabo 12.2.11). Octavian kept him (Magie I 443), and he reigned over
+    fifty years (Tac. Ann. 2.42).
 
 - atom: cyprus
   polity: aegyptus
@@ -3321,8 +3900,39 @@
   from: before 133 BCE
   to: 115 BCE
   sources:
-    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
-    - { source: pausanias, locator: '1.9.1–2' }
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        from the time the Ptolemaic kings became established as lords of Egypt
+        Cypros too came into their power, the Romans often cooperating with
+        them.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Since the time of Ptolemy I, this island had been subject to the rule of
+        the Egyptian kings, and repeated attempts of the Seleucids to capture it
+        had been successfully repulsed.
+      supports: [polity, relation, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        governor of Cyprus c. 118
+      supports: [polity]
+    - source: pausanias
+      locator: '1.9.1'
+      quote: >-
+        she would not allow him to be called to the throne, but prevailed on his
+        father before the call came to send him to Cyprus.
+      supports: [polity]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        proclaimed king in Cyprus in 114/3
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -3338,8 +3948,24 @@
   from: { earliest: 114 BCE, latest: 113 BCE }
   to: 108 BCE
   sources:
-    - { source: pausanias, locator: '1.9.2' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy X' }
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        proclaimed king in Cyprus in 114/3
+      supports: [polity, relation, from]
+    - source: pausanias
+      locator: '1.9.2'
+      quote: >-
+        she dispatched Alexander for the second time to Cyprus, ostensibly as
+        general
+      supports: [polity]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        replaced Ptolemy IX as junior ruler under Cleopatra III in September 107
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -3354,8 +3980,32 @@
   from: 107 BCE
   to: 106 BCE
   sources:
-    - { source: justin, locator: '39.4' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy IX' }
+    - source: justin
+      locator: '39.4'
+      quote: >-
+        pursued him with her arms while he was living in exile in Cyprus. After
+        forcing him from thence, she put to death the general of her troops
+      supports: [polity, relation]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        Helenos was the governor of Cyprus under Ptolemy X while he was in exile
+        there
+      supports: [polity]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        expelled by Cleopatra III and replaced by Ptolemy X in September/October
+        107
+      supports: [from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        took control of Cyprus in 105
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -3369,7 +4019,26 @@
   from: 105 BCE
   to: 89 BCE
   sources:
-    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy Apion' }
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        took control of Cyprus in 105
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        This can only be year 12 of Ptolemy IX, hence he was king in Cyprus at
+        least in the final part of 106/5.
+      supports: [polity, relation]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        recalled to Alexandria to replace Ptolemy X c. May 88
+      supports: [to]
+    - { source: bennett-ptolemies, locator: 'Ptolemy Apion' }
   confidence: probable
   review: needs-check
   note: >-
@@ -3386,7 +4055,25 @@
   from: 88 BCE
   to: 81 BCE
   sources:
-    - { source: bennett-ptolemies, locator: 'Ptolemy IX; Ptolemy X' }
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        recalled to Alexandria to replace Ptolemy X c. May 88
+      supports: [polity, relation, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy X'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_x.htm
+      quote: >-
+        died while attempting to invade Cyprus in late summer 88 or spring /
+        summer 87
+      supports: [polity]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        till his death c. December 81
+      supports: [to]
     - { source: plutarch, locator: 'Lucullus 3.1–3.2' }
   confidence: probable
   review: needs-check
@@ -3402,9 +4089,42 @@
   from: 80 BCE
   to: 59 BCE
   sources:
-    - { source: cicero-sest, locator: '57' }
+    - source: bennett-ptolemies
+      locator: 'Ptolemy of Cyprus'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cyprus.htm
+      quote: >-
+        returned to Egypt with Ptolemy XII in 80 and was made king of Cyprus
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In 80, when the possessions of Ptolemy VIII Lathyrus were divided between
+        his two illegitimate sons, the older, nicknamed "Auletes," succeeded to
+        the throne of Egypt and Cyprus fell to the share of the younger.
+      supports: [polity, from]
+    - source: cicero-sest
+      locator: '57'
+      quote: >-
+        King Ptolemaeus, who, if he had not as yet been himself styled an ally by
+        the senate … who, lastly, was a king, and if not yet an ally, still most
+        certainly not an enemy
+      supports: [relation]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy of Cyprus'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/cyprus.htm
+      quote: >-
+        committed suicide by poison in 58
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His brother in Cyprus, however, took no such precautions to secure his
+        crown, and in 58 the Triumvirs, taking advantage of the alleged will of
+        Ptolemy Alexander, decided to annex the island.
+      supports: [to]
     - { source: strabo, locator: '14.6.6' }
-    - { source: bennett-ptolemies, locator: 'Ptolemy of Cyprus' }
   confidence: probable
   review: draft
   note: >-
@@ -3417,28 +4137,121 @@
   polity: cilicia
   relation: province
   from: 58 BCE
-  to: 48 BCE
+  to: 49 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Two years previously, Cilicia had received another addition, namely the
+        island of Cyprus. … in 58 the Triumvirs, taking advantage of the alleged
+        will of Ptolemy Alexander, decided to annex the island.
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 385'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Cyprus itself was incorporated in the province of Cilicia.
+      supports: [polity, relation]
+    - source: borgia-2017
+      locator: 'p. 303 n. 31'
+      url: https://pressto.amu.edu.pl/index.php/seg/article/download/30066/26623
+      quote: >-
+        in 58 BC Cyprus was incorporated into Cilicia (governor M. Porcius Cato)
+      supports: [polity, relation, from]
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        declared joint ruler of Cyprus with her brother … by Caesar c. Kal.-a.d.
+        VIII Id. Nov. AUC 706 = c. 25-30 August 48
+      supports: [to]
     - { source: plutarch, locator: 'Cato Minor 34–38' }
   confidence: certain
   review: draft
-  note: Annexed 58 and attached to Cilicia; Cicero governed it in 51–50.
+  note: >-
+    Annexed 58 and attached to Cilicia; Cicero governed it in 51–50. Caesar
+    gave it to Arsinoe and the younger Ptolemy at Alexandria in 48 (Bennett,
+    "Arsinoe IV", on Dio 42.35), so 48 is theirs. Ran to 48 until October
+    2026.
 
 - atom: cyprus
   polity: aegyptus
   relation: client
-  from: 47 BCE
+  from: 48 BCE
   to: 31 BCE
   sources:
-    - { source: cassius-dio, locator: '42.35.5–6' }
-    - { source: appian, locator: 'BC 4.61' }
-    - { source: plutarch, locator: 'Antony 36.2' }
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        declared joint ruler of Cyprus with her brother … by Caesar c. Kal.-a.d.
+        VIII Id. Nov. AUC 706 = c. 25-30 August 48
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Arsinoe IV'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/arsinoe_iv.htm
+      quote: >-
+        does not mention the award of Cyprus, and the accuracy of the report
+        has been doubted … But Cleopatra VII was certainly in possession of it
+        in 43
+      supports: [polity]
+    - source: cassius-dio
+      locator: '42.35.5'
+      quote: >-
+        he bestowed the kingdom upon them both and granted Cyprus to Arsinoe and
+        Ptolemy the Younger, a sister and a brother of theirs.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 418'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Cyprus, once a possession of the Ptolemaic dynasty, was returned by
+        Caesar to Cleopatra, who stationed a prefect on the island.
+      supports: [polity]
+    - source: appian
+      locator: 'BC 4.61'
+      quote: >-
+        Then Cassius again sent to those who had rejected his application, and
+        also to Cleopatra, queen of Egypt, and to Serapio, her viceroy in Cyprus.
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The question of the succession to Egypt was settled in 59, when Ptolemy
+        Auletes paid Caesar and Pompey the sum of six thousand talents for a
+        senatorial decree and a law which recognized him both as king and as
+        friend and ally of Rome.
+      supports: [relation]
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus, and a large part of
+        Cilicia
+      supports: [polity, relation]
+    - source: strabo
+      locator: '14.6.6'
+      quote: >-
+        During a short intervening time Antony gave it over to Cleopatra and her
+        sister Arsinoe, but when he was overthrown his whole organization was
+        overthrown with him.
+      supports: [polity, to]
+    - source: cassius-dio
+      locator: '50.10.1'
+      quote: >-
+        as Antony had been deposed, as I have stated, Valerius Messalla, who had
+        once been proscribed by them, became consul with Caesar.
+      supports: [to]
     - { source: cayla-2017 }
   confidence: probable
   review: needs-check
   note: >-
     Given back to the Ptolemies — to Arsinoe and the younger Ptolemy — by
-    Caesar during the Alexandrian war (Dio 42.35); held by Cleopatra
+    Caesar at Alexandria in 48 (Dio 42.35; Bennett dates the award to c.
+    25–30 August 48 by the Julian calendar, AUC 706, and notes that Caesar
+    does not mention it); held by Cleopatra
     thereafter: her governor Serapion sent ships to Cassius in 43 (App. BC
     4.61). Who ruled it in 41–37 is disputed. Antony's freedman Demetrius "had
     at this time been assigned to Cyprus by Antony" in 39 (Dio 48.40.6), and
@@ -3446,7 +4259,10 @@
     she lacked it; but a Salamis inscription of her year 15 (38/37) names her
     strategos of the island. Bicknell (1977) has Antony take it from her in 41,
     Schrapel (1996) keeps it hers throughout, and Cayla (2017) argues for joint
-    rule in 41–37/36. Drawn as hers throughout. Roman from 30 (cyprus).
+    rule in 41–37/36. Drawn as hers throughout. Antony's grant fell with him
+    (Strabo 14.6.6), overthrown at Actium in the year Caesar and Messalla were
+    consuls, 31 (Dio 50.10.1). Roman from 30 (cyprus). Started in 47 until
+    October 2026.
 
 # --- the Levant ----------------------------------------------------------------
 
