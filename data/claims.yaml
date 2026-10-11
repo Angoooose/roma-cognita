@@ -16754,15 +16754,24 @@
         hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
         Tullius Cicero were consuls
       supports: [to]
+    - source: schurer-1891
+      locator: 'p. 177'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In B.c. 129 he undertook a campaign against the Parthians, and in it
+        he met his death in b.c. 128.
+      supports: []
     - { source: josephus-aj, locator: '13.254' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     "After the death of Antiochus, he revolted from the Macedonians, nor did he
     any longer pay them the least regard" (AJ 13.273). The Hasmonean kingdom,
     a friend of Rome by treaty but no client; kings from Aristobulus I (104).
-    Ends when Pompey took Jerusalem in the consulship of Antonius and Cicero
-    (63; AJ 14.66).
+    Porphyry puts Antiochus VII's death in Olympiad 162.4, 129/128, and
+    Schürer in 128, which would start the row a year later; certain until
+    October 2026. Ends when Pompey took Jerusalem in the consulship of
+    Antonius and Cicero (63; AJ 14.66).
 
 - atom: judaea-jericho
   polity: judaea
