@@ -9729,8 +9729,40 @@
   from: 42 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'BC 5.3' }
-    - { source: cassius-dio, locator: '48.12.5' }
+    - source: appian
+      locator: 'BC 5.3'
+      quote: >-
+        After the battle of Philippi … It was decided, at the instance of
+        Octavius, to make Cisalpine Gaul free, as the elder Caesar had intended.
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.12.5'
+      quote: >-
+        Gallia Togata, which had been included by this time in the district of
+        Italy in order that no one else, under the plea of ruling that province,
+        should keep soldiers south of the Alps
+      supports: [polity]
+    - source: strabo
+      locator: '5.1.1'
+      quote: >-
+        At the foot of the Alps commences the region now known as Italy … when
+        the Romans conferred on the Italians the privileges of equal
+        citizenship, and thought fit to extend the same honour to the Cisalpine
+        Galatae and Heneti, they comprised the whole under the general
+        denomination of Italians and Romans
+      supports: [polity, relation, to]
+    - source: pliny-nh
+      locator: '3.123'
+      quote: >-
+        THE ELEVENTH REGION OF ITALY; ITALIA TRANSPAIDANA. From the river Padus
+        the eleventh region receives its name of Transpadana
+      supports: [polity, to]
+    - source: pliny-nh
+      locator: '3.46'
+      quote: >-
+        we shall follow the arrangement of the late Emperor Augustus, and adopt
+        the division which he made of the whole of Italy into eleven districts
+      supports: [to]
     - { source: laffi-1992 }
   confidence: probable
   review: draft
@@ -9741,7 +9773,10 @@
     time in the district of Italy" in 41 (48.12.5). In practice Pollio held
     Venetia for Antony into 40 (Vell. 2.76.2), and Broughton still lists
     commanders there in 42–40; Laffi (not read) is reported to put the real end
-    in late 41. The legal decision is taken as the date.
+    in late 41. The legal decision is taken as the date. Still Italy after 27:
+    Strabo has the Cisalpine Gauls and Veneti given equal citizenship and
+    counted Italians (5.1.1), and Pliny's Transpadana is the eleventh of
+    Augustus' regions of Italy (3.46, 3.123).
 
 - atom: sicilia
   polity: sextus-pompeius
@@ -9749,8 +9784,47 @@
   from: { earliest: 43 BCE, latest: 42 BCE }
   to: 37 BCE
   sources:
-    - { source: cassius-dio, locator: '48.17.4–19.1' }
-    - { source: appian, locator: 'BC 4.84–85' }
+    - source: cassius-dio
+      locator: '48.17.3–4'
+      quote: >-
+        When, however, his name actually was posted on the tablet and he knew
+        that the edict of proscription was in force against him also … he
+        sailed to Sicily and seized Mylae and Tyndaris without effort, though
+        he was repulsed from Messana by Pompeius Bithynicus, then governor of
+        Sicily
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.19.1–2'
+      quote: >-
+        After this Sextus occupied the whole of the island and put Bithynicus to
+        death … Thus he fared as long as the forces of Cassius and Brutus held
+        together
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'BC 4.84'
+      quote: >-
+        When the triumvirate was established he sailed to Sicily, and as
+        Bithynicus, the governor, would not yield the island, he besieged him
+      supports: [from]
+    - source: appian
+      locator: 'BC 4.85'
+      quote: >-
+        In this way Pompeius possessed himself of Sicily
+      supports: [polity, relation]
+    - source: cassius-dio
+      locator: '49.1.1'
+      quote: >-
+        All this happened in the winter in which Lucius Gellius and Cocceius
+        Nerva became consuls. When the fleet had been made ready and spring had
+        set in, Caesar set out from Baiae and coasted along Italy with great
+        hopes of encompassing Sicily on all sides.
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.11.1'
+      quote: >-
+        This more than anything else caused Sextus to despair of the situation,
+        and he resolved to flee
+      supports: [to]
     - { source: cassius-dio, locator: '49.11.3' }
     - { source: powell-welch-2002 }
   confidence: certain
@@ -9762,6 +9836,11 @@
     over to Sextus before November 43". Misenum made him its lawful governor in
     39 (Dio 48.36.5), which changed the legal cover but not who held it, so the
     row runs on unbroken. Naulochus (September 36) ended it; 36 is Octavian's.
+    The start is a range because Dio and Appian put the landing after the
+    proscriptions of late 43 (48.17.3; BC 4.84) and the whole island in his
+    hands while Brutus and Cassius still stood, before Philippi in 42
+    (48.19.1–2); the end is the campaign of 36, the year of Gellius and
+    Nerva (49.1.1), in which Sextus fled (49.11.1).
 
 - atom: sardinia
   polity: sextus-pompeius
@@ -9769,11 +9848,58 @@
   from: 40 BCE
   to: 39 BCE
   sources:
-    - { source: appian, locator: 'BC 5.56' }
-    - { source: cassius-dio, locator: '48.30.7–8' }
+    - source: appian
+      locator: 'BC 5.56'
+      quote: >-
+        Antony also surrounded the harbor … He called upon Pompeius to move
+        against Italy with his fleet and to do whatever he could. Pompeius, with
+        alacrity, despatched Menodorus with a numerous fleet and four legions of
+        soldiers, who seized Sardinia, which belonged to Octavius
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '48.30.7–8'
+      quote: >-
+        he sailed to Sardinia and engaged in a conflict with Marcus Lurius, the
+        governor there … Thereupon Lurius abandoned the island and Menas
+        occupied it
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '48.15.1'
+      quote: >-
+        After the capture of Perusia in the consulship of Gnaeus Calvinus (who
+        was serving for the second time) and Asinius Pollio
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        These were the events of the two years; the next year, when Lucius
+        Marcius and Gaius Sabinus held the consulship
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        But in the consulship of Appius Claudius and Gaius Norbanus
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.45.5–6'
+      quote: >-
+        Menas, who was at this time still in Sardinia, as if he were a kind of
+        praetor … after first negotiating with Caesar, surrendered to him the
+        island, the fleet together with the army, and himself
+      supports: [to]
+    - source: appian
+      locator: 'BC 5.80'
+      quote: >-
+        Octavius sent officers to receive Sardinia and Corsica, which Menodorus
+        turned over to them
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.2.1'
+      quote: >-
+        since Sextus was still occupying Sardinia and Sicily
+      supports: []
     - { source: appian, locator: 'BC 5.78' }
-    - { source: cassius-dio, locator: '48.45.5–6' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     Menodorus (Dio's Menas) took Sardinia and its two legions for Sextus while
@@ -9781,23 +9907,89 @@
     handed it to Octavian in 38 (Dio 48.45.5–6; App. BC 5.78, 5.80). Dio 48.2.1
     has Sextus "still occupying Sardinia and Sicily" already in 42; Appian
     (5.56) calls Sardinia Octavian's before 40 and Dio's own narrative has the
-    seizure in 40, so 48.2.1 is read as an anticipation.
+    seizure in 40, so 48.2.1 is read as an anticipation; since the texts
+    disagree the row is probable, not certain (October 2026). The year: Dio's
+    narrative of the seizure follows Perusia, taken in the consulship of
+    Calvinus and Pollio (40; 48.15.1), and closes "the events of the two
+    years" before that of Marcius and Sabinus (39; 48.34.1); the surrender
+    comes in that of Claudius and Norbanus (38; 48.43.1).
 
 - atom: corsica
   polity: sextus-pompeius
   relation: occupied
-  from: 40 BCE
+  from: before 40 BCE
   to: 39 BCE
   sources:
-    - { source: appian, locator: 'BC 5.67' }
-    - { source: appian, locator: 'BC 5.72' }
-    - { source: appian, locator: 'BC 5.80' }
+    - source: appian
+      locator: 'BC 5.67'
+      quote: >-
+        those of the west were deterred by Sardinia and Corsica, which the
+        lieutenants of Pompeius held … an edict was published that the owners
+        of slaves should pay a tax for each one
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '48.31.1'
+      quote: >-
+        inasmuch as Sardinia was in hostile hands, the coast was being pillaged,
+        and they had had their corn supply cut off, while the famine, the great
+        number of taxes of all sorts which were being imposed, and in addition
+        contributions assessed upon such as possessed slaves, all irritated them
+        greatly
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.15.1'
+      quote: >-
+        After the capture of Perusia in the consulship of Gnaeus Calvinus (who
+        was serving for the second time) and Asinius Pollio
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        These were the events of the two years; the next year, when Lucius
+        Marcius and Gaius Sabinus held the consulship
+      supports: [from]
+    - source: appian
+      locator: 'BC 5.72'
+      quote: >-
+        should govern Sardinia, Sicily, and Corsica, and any other islands then
+        in his possession
+      supports: [polity]
+    - source: appian
+      locator: 'BC 5.78'
+      quote: >-
+        Menodorus, who was still governing Corsica and Sardinia
+      supports: [polity]
+    - source: appian
+      locator: 'BC 5.80'
+      quote: >-
+        Octavius sent officers to receive Sardinia and Corsica, which Menodorus
+        turned over to them
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        But in the consulship of Appius Claudius and Gaius Norbanus
+      supports: [to]
+    - source: cassius-dio
+      locator: '48.45.5–6'
+      quote: >-
+        Menas, who was at this time still in Sardinia, as if he were a kind of
+        praetor … surrendered to him the island, the fleet together with the
+        army, and himself
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Sardinia and Corsica were held by Sextus's lieutenants before Misenum (App.
-    BC 5.67), and Menodorus handed over both in 38 (5.80). No source gives the
-    year Corsica was taken; 40 follows Sardinia.
+    BC 5.67), and Menodorus handed over both in 38 (5.80), the year Dio dates
+    his desertion by the consuls Claudius and Norbanus (48.43.1, 48.45.5–6).
+    No source gives the year Corsica was taken. Appian first has it in
+    Sextus' hands in the famine that followed the peace of Brundisium, when
+    slave-owners were taxed (5.67); Dio puts that famine and that tax after
+    Perusia, taken in the consulship of Calvinus and Pollio, and before the
+    year of Marcius and Sabinus (48.15.1, 48.31.1, 48.34.1): 40. The start
+    read 40 BCE, after Sardinia, until October 2026; it is now open, held in
+    40 and taken no later.
 
 # Greece: the province of Achaea, attested in 27
 
@@ -9807,11 +9999,76 @@
   from: before 133 BCE
   to: 28 BCE
   sources:
+    - source: kallet-marx-1995
+      locator: 'pp. 50–51'
+      quote: >-
+        It is clear that the Roman commander in Macedonia was the most
+        convenient representative for Greeks to approach when Rome's
+        intervention in some Greek affair was desired; likewise, he was the
+        Senate's administrative deputy, carrying out its instructions in
+        matters involving mainland Greeks
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 51'
+      quote: >-
+        The greater frequency of Roman magisterial intervention in Greece after
+        148 is due to the simple fact that whereas previously Roman commanders
+        had been present for relatively short periods of time during the
+        prosecution of the various wars, now one was continuously no farther
+        away than Macedonia.
+      supports: [from]
+    - source: cicero-pis
+      locator: '37'
+      quote: >-
+        You obtained a consular province … all Achaia, and Thessaly, and
+        Athens, — in short the whole of Greece, was made over to you
+      supports: [polity, relation]
+    - source: cicero-pis
+      locator: '96'
+      quote: >-
+        Thessaly which has been harassed by you
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        it is clear that Graecia or Achaia was not assigned regularly as a
+        provincia until 27 B.C. … Officially Greece was again "freed" in 146 as
+        it had been in 196.
+      supports: []
+    - source: kallet-marx-1995
+      locator: 'p. 165'
+      quote: >-
+        Not only Athenians but even the ambassadors from a Thessalian backwater
+        might be addressed honorably in the senatorial decree as "fine and good
+        friends from a people fine and good, our friend and ally."
+      supports: []
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        in his first organization of (the Empire) … the seventh Achaia,
+        extending to Thessaly
+      supports: [to]
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Unter Augustus waren alle diese Orte, wie auch Thessalien, Teile der
+        Provinz Achaia gewesen.
+      supports: [to]
     - { source: broughton-mrr }
     - { source: nigdelis-2007 }
-  confidence: certain
+  confidence: uncertain
   review: draft
-  note: Part of the macedonia atom until it was split out (September 2026); the row is macedonia's.
+  note: >-
+    Part of the macedonia atom until it was split out (September 2026); the
+    row is macedonia's. Thessaly was overseen by the commander in Macedonia
+    from 148, as the rest of mainland Greece was (Kallet-Marx pp. 50–51), and
+    was part of Piso's consular province in 57–55 (Cic. Pis. 37, 96); under
+    Augustus it was Achaea's (Strabo 17.3.25; Bowersock p. 287). Uncertain,
+    as achaea's row is, since October 2026 (it read certain): Cicero has
+    Thessaly in Piso's province, but Kallet-Marx has Greece formally free
+    after 146 and no province of its own before 27 (p. 50), and the senate
+    addressing Thessalian envoys as "our friend and ally" (p. 165).
 
 - atom: thessalia
   polity: achaea
@@ -9819,8 +10076,32 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: bowersock-1965, locator: '285' }
-    - { source: strabo, locator: '17.3.25' }
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Unter Augustus waren alle diese Orte, wie auch Thessalien, Teile der
+        Provinz Achaia gewesen.
+      supports: [polity, relation]
+    - source: bowersock-1965
+      locator: 'p. 285'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Die siebte ist die Provinz Achaia bis (einschließlich) Thessa- lien
+      supports: [polity]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar … in his first
+        organization of (the Empire) … the seventh Achaia, extending to
+        Thessaly
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [from]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -9836,11 +10117,60 @@
   from: before 133 BCE
   to: 28 BCE
   sources:
+    - source: kallet-marx-1995
+      locator: 'pp. 50–51'
+      quote: >-
+        It is clear that the Roman commander in Macedonia was the most
+        convenient representative for Greeks to approach when Rome's
+        intervention in some Greek affair was desired; likewise, he was the
+        Senate's administrative deputy, carrying out its instructions in
+        matters involving mainland Greeks
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 51'
+      quote: >-
+        The greater frequency of Roman magisterial intervention in Greece after
+        148 is due to the simple fact that whereas previously Roman commanders
+        had been present for relatively short periods of time during the
+        prosecution of the various wars, now one was continuously no farther
+        away than Macedonia.
+      supports: [from]
+    - source: cicero-pis
+      locator: '96'
+      quote: >-
+        Ambracia which has been pillaged by you … Epirus which has been laid
+        waste by you
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        it is clear that Graecia or Achaia was not assigned regularly as a
+        provincia until 27 B.C. … Officially Greece was again "freed" in 146 as
+        it had been in 196.
+      supports: []
+    - source: cicero-pis
+      locator: '37'
+      quote: >-
+        You obtained a consular province
+      supports: [relation]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus, the Dalmatian and Macedonian districts
+      supports: [to]
     - { source: broughton-mrr }
     - { source: nigdelis-2007 }
-  confidence: certain
+  confidence: uncertain
   review: draft
-  note: Part of the macedonia atom until it was split out (September 2026); the row is macedonia's.
+  note: >-
+    Part of the macedonia atom until it was split out (September 2026); the
+    row is macedonia's. Overseen by the commander in Macedonia from 148, as
+    the rest of mainland Greece was (Kallet-Marx pp. 50–51); Epirus and
+    Ambracia were in Piso's consular province in 57–55 (Cic. Pis. 37, 96). In
+    27 Dio lists Epirus with Greece, apart from Macedonia (53.12.4).
+    Uncertain, as achaea's row is, since October 2026 (it read certain):
+    Cicero has Epirus in Piso's province, but Kallet-Marx has Greece formally
+    free after 146 and no province of its own before 27 (p. 50).
 
 - atom: epirus
   polity: achaea
@@ -9848,9 +10178,32 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
-    - { source: strabo, locator: '17.3.25' }
-    - { source: bowersock-1965, locator: '284–285' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus, the Dalmatian and Macedonian districts … were held
+        to belong to the people and the senate
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the seventh Achaia, extending to Thessaly, the Aetolians, Acarnanians,
+        and the Epirotic nations who border upon Macedonia
+      supports: [polity, relation]
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        die Provinz Epirus, bestehend aus dem eigent- lichen Epirus, Akarnanien
+        und gewissen Inseln … Unter Augustus waren alle diese Orte, wie auch
+        Thessalien, Teile der Provinz Achaia gewesen.
+      supports: [polity]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -9865,8 +10218,24 @@
   from: 27 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '53.12.4' }
-    - { source: strabo, locator: '17.3.25' }
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus, the Dalmatian and Macedonian districts … were held
+        to belong to the people and the senate
+      supports: [polity, relation, from, to]
+    - source: cassius-dio
+      locator: '53.2.7'
+      quote: >-
+        he entered the senate in his seventh consulship and read the following
+        address
+      supports: [from]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar … in his first
+        organization of (the Empire) … the seventh Achaia
+      supports: [polity, relation, from, to]
   confidence: probable
   review: draft
   note: >-
@@ -9881,10 +10250,56 @@
   from: before 133 BCE
   to: 36 BCE
   sources:
-    - { source: appian, locator: 'Ill. 18' }
-    - { source: appian, locator: 'Ill. 10' }
-    - { source: livy-per, locator: '59' }
-    - { source: cassius-dio, locator: '49.34.2' }
+    - source: appian
+      locator: 'Ill. 18'
+      quote: >-
+        The transalpine Iapydes, a strong and savage tribe, drove back the
+        Romans twice within the space of about twenty years, overran Aquileia,
+        and plundered the Roman colony of Tergestus.
+      supports: [polity, relation]
+    - source: livy
+      locator: '43.5.3–4'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0149:book=43:chapter=5
+      quote: >-
+        Ambassadors came at the same time from the Carnians, Istrians, and
+        Iapidans … nor had they as yet been able to discover for what reason
+        they were treated as enemies by the consul
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Gaius Sempronius at first fought unsuccessfully against the
+        Iapydes
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Ill. 10'
+      quote: >-
+        Sempronius Tuditanus and Tiberius Pandusa waged war … with the Iapydes,
+        who live among the Alps, and seem to have subjugated them … but both
+        tribes revolted not long afterward
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.18.6'
+      quote: >-
+        So Sextus was executed in the consulship of Lucius Cornificius and one
+        Sextus Pompeius.
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.34.1–2'
+      quote: >-
+        now that Sextus had perished … for the Salassi, Taurisci, Liburni, and
+        Iapydes, who even before this had been behaving in no decent manner
+        toward the Romans, not only having failed to contribute their
+        assessments of tribute but also having more than once invaded and
+        ravaged the neighbouring districts, openly revolted at this time
+      supports: [to]
+    - source: appian
+      locator: 'Ill. 21'
+      quote: >-
+        After the destruction of Metulus the remainder of the Iapydes, being
+        terror-stricken, surrendered to Augustus. The transalpine Iapydes were
+        then for the first time brought in subjection to the Romans.
+      supports: [relation, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -9893,7 +10308,11 @@
     129 and "seem[s] to have subjugated them", but they "revolted not long
     afterward" (App. Ill. 10; Livy Per. 59); the brief subjection is not drawn,
     since neither its extent nor its end is recorded. Started before 68 until
-    the extension to 133 BCE.
+    the extension to 133 BCE. In force at 133: in 170 their envoys complained
+    to the senate that the consul Cassius had treated them as enemies (Livy
+    43.5.3–4), and in 129 the consul Sempronius fought them (Per. 59). Octavian
+    marched against them after Sextus' death in the consulship of Cornificius
+    and Pompeius, 35 (Dio 49.18.6, 49.34.1–2).
 
 - atom: iapydes
   polity: illyricum
@@ -9901,9 +10320,53 @@
   from: 35 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Ill. 21' }
-    - { source: cassius-dio, locator: '49.35' }
-    - { source: cassius-dio, locator: '51.21.5' }
+    - source: appian
+      locator: 'Ill. 21'
+      quote: >-
+        After the destruction of Metulus the remainder of the Iapydes, being
+        terror-stricken, surrendered to Augustus. The transalpine Iapydes were
+        then for the first time brought in subjection to the Romans.
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '49.18.6'
+      quote: >-
+        So Sextus was executed in the consulship of Lucius Cornificius and one
+        Sextus Pompeius.
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.35.1'
+      quote: >-
+        At that time he himself led the campaign against the Iapydes, assigning
+        the rest of the tribes to others to subdue. Those that were on the
+        nearer side of the mountains, dwelling not very far from the sea, he
+        reduced with comparatively little trouble
+      supports: [relation, from]
+    - source: appian
+      locator: 'Ill. 28'
+      quote: >-
+        Thus Augustus subdued the whole Illyrian country, not only the parts
+        that had revolted from the Romans, but those that had never … before
+        been under their rule.
+      supports: [polity, relation]
+    - source: strabo
+      locator: '4.6.10'
+      quote: >-
+        Formerly the Iapodes were numerous, inhabiting either side of the
+        mountain, and were notorious for their predatory habits, but they have
+        been entirely reduced and brought to subjection by Augustus Caesar.
+      supports: [relation, to]
+    - source: cassius-dio
+      locator: '51.21.5'
+      quote: >-
+        As for the triumph, Caesar celebrated on the first day his victories
+        over the Pannonians and Dalmatians, the Iapydes and their neighbours
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [polity, relation, to]
     - { source: dzino-2010 }
   confidence: uncertain
   review: needs-check
@@ -9924,10 +10387,48 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: appian, locator: 'Ill. 25–28' }
+    - source: appian
+      locator: 'Ill. 27'
+      quote: >-
+        he returned to Rome to perform the duties of the consulship with
+        Volcatius Tullus, his colleague, leaving Statilius Taurus to finish the
+        war
+      supports: [from]
+    - source: appian
+      locator: 'Ill. 28'
+      quote: >-
+        Entering upon his new consulship on the Calends … of January … And now
+        the Dalmatians, oppressed by hunger and cut off from foreign supplies,
+        met him on the road and delivered themselves up with supplications,
+        giving 700 of their children as hostages … They also promised to pay
+        the tribute that had been in arrears since the time of Gaius Caesar and
+        to be obedient henceforth.
+      supports: [relation, from]
+    - source: appian
+      locator: 'Ill. 28'
+      quote: >-
+        Thus Augustus subdued the whole Illyrian country
+      supports: [polity]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.43.8'
+      quote: >-
+        And after the Dalmatians had been utterly subjugated, he erected from
+        the spoils thus gained the porticos and the libraries called the
+        Octavian
+      supports: [relation, from]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        the Dalmatian and Macedonian districts … were held to belong to the
+        people and the senate
+      supports: [polity, relation, to]
     - { source: cassius-dio, locator: '49.38.3–4' }
-    - { source: cassius-dio, locator: '49.43.8' }
-    - { source: cassius-dio, locator: '53.12.4' }
     - { source: dzino-2010 }
   confidence: uncertain
   review: needs-check
@@ -9950,9 +10451,46 @@
   from: c. 41 BCE
   to: after 27 BCE
   sources:
-    - { source: vnukov-kovalenko-2007 }
-    - { source: lucian-macrobii, locator: '17' }
-    - { source: strabo, locator: '7.4.4' }
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 19'
+      quote: >-
+        The legend, ΑΡΧΟΝΤΟΣ ΑΣΑΝ∆ΡΟΥ ΒΟΣΠΟΡΟΥ, is accompanied by a letter
+        indicating the year from 1 to 4 … The second group (to which our coin
+        belongs) is represented by coins with the obverse portrait of Asander
+        wearing a diadem, and the same reverse as the coins of the first group
+        but with a different legend, ΒΑΣΙΛΕΩΣ ΑΣΑΝ∆ΡΟΥ, together with the
+        year' indication from 4 to 29
+      supports: [polity, from]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 20'
+      quote: >-
+        putting on the obverses of the first gold coins with archon's title
+        supposed portraits of the powerful Romans (either those of Caesar,
+        Octavian or Antonius) clearly demonstrates Asander's loyalty to Rome and
+        his wish to obtain its favour. Thus, if the first staters with the name
+        of Asander as archon were issued at the earliest in 44/43 BC then his
+        last coins (the 29th year) should be dated from 16/15 BC at the
+        earliest.
+      supports: [relation, from, to]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 20'
+      quote: >-
+        The recent find of a unique stater of queen Dynamis dated to 21/20 BC,
+        has led some scholars to put forward the hypothesis that Asander came
+        to the throne in 50/49 or 49/48 BC.
+      supports: []
+    - source: lucian-macrobii
+      locator: '17'
+      quote: >-
+        Asandrus, who, after being ethnarch, was proclaimed king of Bosporus by
+        the divine Augustus
+      supports: [polity, relation]
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        But since the time of Mithridates the kingdom has been subject to the
+        Romans.
+      supports: [relation, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -9964,7 +10502,10 @@
     Caesar; and ps.-Lucian (Macr. 17) says Asander "was proclaimed king of
     Bosporus by the divine Augustus", which read literally points after Actium.
     Strabo: "since the time of Mithridates the kingdom has been subject to the
-    Romans" (7.4.4).
+    Romans" (7.4.4). The year is arithmetic on Vnukov and Kovalenko's
+    earliest year 1 (44/43): year 4, the first with the royal title, is 41/40.
+    Their last year, 29, falls in 16/15 at the earliest, so the row runs past
+    27.
 
 - atom: bosporus-tanais
   polity: bosporus
@@ -9972,11 +10513,36 @@
   from: c. 41 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '11.2.11' }
-    - { source: vnukov-kovalenko-2007 }
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        And often the rulers of the Bosporians held possession of the region as
+        far as the Tanais, and particularly the latest rulers, Pharnaces,
+        Asander, and Polemon.
+      supports: [polity, to]
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        But since the time of Mithridates the kingdom has been subject to the
+        Romans.
+      supports: [relation]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 20'
+      quote: >-
+        Thus, if the first staters with the name of Asander as archon were
+        issued at the earliest in 44/43 BC then his last coins (the 29th year)
+        should be dated from 16/15 BC at the earliest.
+      supports: [from, to]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 19'
+      quote: >-
+        ΒΑΣΙΛΕΩΣ ΑΣΑΝ∆ΡΟΥ, together with the year' indication from 4 to 29
+      supports: [from]
   confidence: uncertain
   review: needs-check
-  note: As bosporus.
+  note: >-
+    As bosporus. Strabo has the Bosporan rulers holding the country to the
+    Tanais, Asander and his successor Polemon among them (11.2.11).
 
 - atom: chersonesus
   polity: bosporus
@@ -9984,9 +10550,38 @@
   from: c. 41 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '7.4.3' }
-    - { source: pliny-nh, locator: '4.85' }
-    - { source: vnukov-kovalenko-2007 }
+    - source: strabo
+      locator: '7.4.3'
+      quote: >-
+        So from that time on down to the present the city of the Chersonesites
+        has been subject to the potentates of the Bosporus.
+      supports: [polity, to]
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        But since the time of Mithridates the kingdom has been subject to the
+        Romans.
+      supports: [relation]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        Strabo informs us that in his time the Chersonesos was subordinate to
+        the Bosporan kings (VII. 4. 3) but the exact date when this domination
+        was established is still the subject of controversy. Obviously it
+        occurred after Caesar's death as he granted freedom to the Chersonesos
+        in 45 BC. … The discovery of a gold coin of Asander dated to 37/36 BC
+        at the settlement of Kara-Tobe (situated in the former far chora of
+        the Chersonesos in the North-Western Crimea) helps us to narrow the
+        date, for the find suggests that at this time, approximately, the
+        Chersonesos itself and its previous possessions elsewhere were already
+        under Bosporan control.
+      supports: [polity]
+    - source: pliny-nh
+      locator: '4.85'
+      quote: >-
+        Heraclea Chersonesus, to which its freedom has been granted by the
+        Romans
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
@@ -9994,7 +10589,12 @@
     down to his own day (7.4.3). Pliny records an undated grant of freedom by the
     Romans (4.85), dated to Caesar c. 45 by Rostovtzeff; Vnukov and Kovalenko
     argue from a coin of Asander's year 8 found at Kara-Tobe that Bosporan
-    control was back by about 37/36. The free interval is not drawn.
+    control was back by about 37/36. The free interval is not drawn. The
+    start is not backed: Vnukov and Kovalenko put the Bosporan hold after
+    Caesar's grant of freedom in 45 and before about 37/36, which brackets
+    41 without stating it. A range of 44–37 would overlap the row before
+    (independent under Asander, 48–42), which that same grant contradicts;
+    left as it is and reported (October 2026).
 
 # The West
 
@@ -10004,10 +10604,44 @@
   from: c. 29 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '51.20.5' }
-    - { source: florus, locator: '2.33.47' }
+    - source: cassius-dio
+      locator: '51.20.5'
+      quote: >-
+        there were still under arms the Treveri, who had brought in the Germans
+        to help them, and the Cantabri, the Vaccaei, and the Astures, — the
+        three last-named of whom were later subjugated by Statilius Taurus
+      supports: [relation]
+    - source: perea-yebenes-2017
+      locator: 'p. 127'
+      url: https://revistas.ucm.es/index.php/GERI/article/download/56141/50804
+      quote: >-
+        Creo que el “no triunfo” se explica por el hecho de que su intervención
+        del año 29 fue más diplomática que militar … Éstos últimos, con la
+        intervención de Tauro (Cass. Dio, 51.20.5), quedaron sometidos a Roma
+      supports: [relation, from]
+    - source: pliny-nh
+      locator: '3.26'
+      quote: >-
+        To the jurisdiction of Clunia … Also, among the eighteen states of the
+        Vaccaei, there are the Intercatienses, the Pallantini, the
+        Lacobrigenses, and the Caucenses.
+      supports: [polity]
+    - source: pliny-nh
+      locator: '3.18'
+      quote: >-
+        OF NEARER SPAIN … The whole province is now divided into seven
+        jurisdictions, those of Carthage, of Tarraco, of Caesar Augusta, of
+        Clunia
+      supports: [polity]
+    - source: florus
+      locator: '2.33.46–47'
+      quote: >-
+        In the west almost all Spain had been subjugated, except that part
+        which adjoins the cliffs where the Pyrenees end … The Cantabrians rose
+        first … and harassed the Vaccaei, the Turmogi and the Autrigones by
+        frequent raids.
+      supports: [relation, to]
     - { source: orosius, locator: '6.21.3' }
-    - { source: perea-yebenes-2017, locator: '127' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -10015,7 +10649,11 @@
     usually put in 29, Perea Yébenes 2017, 127), and by 26 the Cantabri were
     raiding the Vaccaei, the Turmogi and the Autrigones (Flor. 2.33.47; Oros.
     6.21.3) — Rome's charges by then. The Turmogi and Autrigones between them
-    and Pompaelo stay unclaimed: nothing says when they came over.
+    and Pompaelo stay unclaimed: nothing says when they came over. Dio has
+    them still in arms in 29, the year of Octavian's fifth consulship
+    (51.20.1, 5); Perea Yébenes dates Taurus' intervention to that year. In
+    Pliny the Vaccaei belong to the jurisdiction of Clunia in Hither Spain
+    (3.26).
 
 # Africa, Mauretania, Egypt, Cyrene and Crete
 
@@ -10025,8 +10663,54 @@
   from: 41 BCE
   to: 34 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶103, ¶159' }
-    - { source: cassius-dio, locator: '53.26.2' }
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est en fait à partir de la mort d’Arabion, en 41 av. J.-C., que
+        Bocchus II règne sans doute jusqu’à l’Ampsaga. … À la mort d’Arabion,
+        Bocchus II se serait emparé de l’ensemble de ce royaume.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le souverain numide périt vraisemblablement en 41 av. J.-C. dans le
+        conflit qui voit s’opposer Sextius et Fango, gouverneurs de l’ Africa.
+        Ainsi disparaît définitivement le royaume numide, dès lors annexé aux
+        territoires de Bocchus II.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Selon Appien, César partage le territoire de Massinissa II entre Sittius
+        et Bocchus II en récompense de leurs services
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.45.3'
+      quote: >-
+        Bocchus forthwith took possession of his kingdom, which was afterwards
+        confirmed to him by Caesar
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
@@ -10035,7 +10719,10 @@
     ancient text says so, though Juba II was later given "the possessions of
     Bocchus and Bogud" (Dio 53.26.2) and Pliny's Mauretania ends at the Ampsaga.
     Fango, the governor of Numidia, had driven Arabio out (Dio 48.22.4), so
-    part may have gone to the province instead.
+    part may have gone to the province instead. Bocchus died in 33, the year of
+    Octavian's second consulship (Dio 49.43.6–7). Client: Caesar rewarded
+    Bocchus with Numidian land in 46 (Bridoux ¶101, after Appian) and
+    Octavian confirmed his conquest of Bogud's kingdom (Dio 48.45.3).
 
 - atom: numidia-igilgili
   polity: mauretania
@@ -10043,7 +10730,48 @@
   from: 41 BCE
   to: 34 BCE
   sources:
-    - { source: bridoux-2020, locator: '¶103, ¶159' }
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est en fait à partir de la mort d’Arabion, en 41 av. J.-C., que
+        Bocchus II règne sans doute jusqu’à l’Ampsaga. … À la mort d’Arabion,
+        Bocchus II se serait emparé de l’ensemble de ce royaume.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le souverain numide périt vraisemblablement en 41 av. J.-C. dans le
+        conflit qui voit s’opposer Sextius et Fango, gouverneurs de l’ Africa.
+        Ainsi disparaît définitivement le royaume numide, dès lors annexé aux
+        territoires de Bocchus II.
+      supports: [polity, from]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶101'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Selon Appien, César partage le territoire de Massinissa II entre Sittius
+        et Bocchus II en récompense de leurs services
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.45.3'
+      quote: >-
+        Bocchus forthwith took possession of his kingdom, which was afterwards
+        confirmed to him by Caesar
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: As numidia-soummam.
@@ -10054,14 +10782,48 @@
   from: 38 BCE
   to: 34 BCE
   sources:
-    - { source: cassius-dio, locator: '48.45.1–3' }
-    - { source: bridoux-2020, locator: '¶103' }
+    - source: cassius-dio
+      locator: '48.43.1'
+      quote: >-
+        But in the consulship of Appius Claudius and Gaius Norbanus
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.45.1–3'
+      quote: >-
+        During this same time, while these events were occurring in the city,
+        Bogud the Moor sailed to Spain … meantime the people of his own land in
+        the neighbourhood of Tingis rose against him … Bocchus forthwith took
+        possession of his kingdom, which was afterwards confirmed to him by
+        Caesar
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [to]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶103'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est ainsi qu’à partir de 38 av. J.-C., après avoir conquis le royaume
+        de Bogud, Bocchus II se retrouve à la tête d’un vaste territoire, de
+        l’Atlantique à l’Ampsaga, sur lequel il règne jusqu’à sa mort en 33 av.
+        J.-C.
+      supports: [polity, from, to]
   confidence: probable
   review: draft
   note: >-
     While Bogud was in Spain for Antony, the people of Tingi rose against him
     and Bocchus took his kingdom, which Octavian confirmed; Tingi's people were
-    made citizens (Dio 48.45.1–3).
+    made citizens (Dio 48.45.1–3), in the consulship of Claudius and Norbanus,
+    38 (48.43.1). Bocchus died in 33, Octavian's second consulship (49.43.6–7).
 
 - atom: mauretania-west
   polity: mauretania-roman
@@ -10069,7 +10831,30 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
     - { source: amela-valverde-2012, locator: '155–164' }
   confidence: uncertain
   review: needs-check
@@ -10077,7 +10862,9 @@
     Bocchus' kingdom "enrolled among the Roman provinces" at his death in 33
     (Dio 49.43.7); whether it was a province in form is disputed (see the
     polity). The western "Iulia" colonies (Zilil, Babba, Banasa) are usually put
-    before 27 (Amela Valverde 2012, 156–157).
+    before 27 (Amela Valverde 2012, 156–157). It went to Juba II, with
+    Bogud's, in Augustus' ninth consulship, 25 (Dio 53.25.3, 53.26.2), so it was
+    still Roman in 27.
 
 - atom: mauretania-central
   polity: mauretania-roman
@@ -10085,7 +10872,30 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: As mauretania-west.
@@ -10096,7 +10906,30 @@
   from: 33 BCE
   to: after 27 BCE
   sources:
-    - { source: cassius-dio, locator: '49.43.7' }
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.43.7'
+      quote: >-
+        At the death of Bocchus he gave his kingdom to no one else, but enrolled
+        it among the Roman provinces.
+      supports: [polity, relation, from]
+    - source: cassius-dio
+      locator: '53.25.3'
+      quote: >-
+        Augustus, who was now consul for the ninth time, with Marcus Silanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.26.2'
+      quote: >-
+        To Juba he gave portions of Gaetulia in return for the prince's
+        hereditary domain … and also the possessions of Bocchus and Bogud.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: As mauretania-west.
