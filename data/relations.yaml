@@ -368,7 +368,7 @@
 - polity: gallia-cisalpina
   type: province-of
   of: rome
-  from: c. 81 BCE
+  from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
     - source: granius-licinianus
@@ -416,7 +416,9 @@
     - { source: cah-ix }
   confidence: probable
   review: draft
-  note: From Sulla's reorganisation (see the polity); dissolved into Italy in 42.
+  note: >-
+    From Sulla's reorganisation, 81–80 (see the polity); dissolved into Italy
+    in 42.
 
 - polity: cyrenae
   type: province-of

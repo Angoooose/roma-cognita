@@ -583,7 +583,7 @@
   kind: province
   names:
     - { text: Gallia Cisalpina, lang: la, preferred: true }
-  from: c. 81 BCE
+  from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
     - source: granius-licinianus
@@ -608,6 +608,12 @@
         Within this year Sulla celebrated his triumph over Mithridates … and
         probably carried through the major portion of his administrative and
         constitutional reforms
+      supports: [from]
+    - source: plutarch
+      locator: 'Sertorius 4.1'
+      quote: >-
+        he was appointed quaestor of Cisalpine Gaul , and at a critical time.
+        For the Marsic war was threatening
       supports: []
     - source: appian
       locator: 'BC 5.3'
@@ -626,7 +632,7 @@
   confidence: probable
   review: draft
   note: >-
-    Before c. 81 Cisalpine Gaul was not a standing province: "Gallia" was a
+    Before Sulla Cisalpine Gaul was not a standing province: "Gallia" was a
     command given to consuls and praetors when there was fighting, over ground
     that was Roman citizen land and Latin colonies south of the Po and allied
     peoples beyond it (claims.yaml). Its standing governor is dated to Sulla's
@@ -635,10 +641,16 @@
     consuls Claudius and Servilius (79), and Piegdoń (2010) reads that as its
     creation by Sulla, whose administrative reforms Broughton puts mostly in
     81 (MRR II 74). Some date it earlier, to the 90s or to Pompeius Strabo in
-    89. Formally dissolved into Italy in 42 (Dio 48.12.5; App. BC 5.3), so the
-    province ends in 43 by the successor-takes-the-year rule. The lex Roscia of 49 enfranchised
-    the Transpadanes but did not end the province: D. Brutus governed it in
-    44–43. Its ground stays provincial to the end of the window.
+    89: Plutarch has Sertorius quaestor of Cisalpine Gaul on the eve of the
+    Marsic war (Sert. 4.1), which fits "Gallia" as a command then. The start
+    read c. 81 until October 2026, a year no readable text states; it is now
+    81–80: no earlier than Sulla's reforms of 81 (MRR), since Sulla established
+    it (Piegdoń), and no later than 80, since in his account of 79 Granius says
+    it "had been given" (data erat) to Sulla. Formally dissolved into Italy in
+    42 (Dio 48.12.5; App. BC 5.3), so the province ends in 43 by the
+    successor-takes-the-year rule. The lex Roscia of 49 enfranchised the
+    Transpadanes but did not end the province: D. Brutus governed it in 44–43.
+    Its ground stays provincial to the end of the window.
 
 - id: cyrenae
   kind: province

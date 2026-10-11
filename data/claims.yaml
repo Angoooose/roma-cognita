@@ -462,7 +462,7 @@
 - atom: cisalpina-cispadana
   polity: gallia-cisalpina
   relation: province
-  from: c. 81 BCE
+  from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
     - { source: cah-ix }
@@ -512,7 +512,7 @@
 - atom: cisalpina
   polity: gallia-cisalpina
   relation: province
-  from: c. 81 BCE
+  from: { earliest: 81 BCE, latest: 80 BCE }
   to: 43 BCE
   sources:
     - { source: cah-ix }
