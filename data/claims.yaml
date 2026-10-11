@@ -16682,6 +16682,13 @@
         puts the attack
       supports: []
     - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [to]
+    - source: schurer-1891
       locator: 'p. 279'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
       quote: >-
@@ -16727,6 +16734,13 @@
         did he any longer pay them the least regard, either as their subject or
         their friend
       supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [from]
     - source: schurer-1891
       locator: 'pp. 282–283'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -16785,6 +16799,13 @@
         In the latter period, in Olympiad 162, 3, or B.c. 130-129, Porphyry
         puts the attack
       supports: []
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [to]
     - { source: josephus-aj, locator: '13.236–248' }
   confidence: probable
   review: needs-check
@@ -16805,6 +16826,13 @@
         did he any longer pay them the least regard, either as their subject or
         their friend
       supports: [polity, relation]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128.
+      supports: [from]
     - source: josephus-aj
       locator: '14.4'
       quote: >-
