@@ -14946,9 +14946,51 @@
   from: 88 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 20–23, 48, 52, 55–58' }
-    - { source: plutarch, locator: 'Sulla 11.1, 22.5, 24.1' }
-    - { source: strabo, locator: '12.3.40' }
+    - source: strabo
+      locator: '12.3.40'
+      quote: >-
+        Mithridates followed him and not only took Bithynia at the first
+        assault but also took possession of Asia as far as Caria and Lycia
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '78'
+      quote: >-
+        Mithridates occupied Asia, cast into chains proconsul Quintus Oppius
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [polity, relation, from]
+    - source: eutropius
+      locator: '5.4'
+      quote: >-
+        when Sulla. the consul, was sent to conduct the war against
+        Mithridates, who had possessed himself of Asia and Achaia
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '83'
+      quote: >-
+        Lucius Cinna and Gnaeus Papirius Carbo, who had made themselves consuls
+        for two years … Sulla crossed into Asia and made peace with
+        Mithridates, so that he ceded the provinces of Asia, Bithynia, and
+        Cappadocia.
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.77'
+      quote: >-
+        Most of all he dwelt upon his recent victories in the Mithridatic war
+        … they proclaimed themselves consuls for the ensuing year
+      supports: [to]
+    - source: plutarch
+      locator: 'Sulla 22.5'
+      quote: >-
+        Mithridates was to renounce Asia and Paphlagonia
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 21, 23, 48, 52, 55–58' }
+    - { source: plutarch, locator: 'Sulla 11.1, 24.1' }
     - { source: kallet-marx-1995 }
   confidence: certain
   review: draft
@@ -14960,7 +15002,11 @@
     and other towns revolted in 86 (48), and Fimbria drove him from Pergamum in
     85 (52). At Dardanus in 85 he was "to renounce Asia and Paphlagonia" (Plut.
     Sulla 22.5). Mytilene held out against Rome until 81 or 80 (Kallet-Marx);
-    not drawn.
+    not drawn. The years: war was declared when the consuls of 88 drew lots
+    and Asia fell to Sulla (App. Mithr. 22; Eutrop. 5.4); the peace that
+    ceded Asia was made while Cinna and Carbo were consuls (85 and 84, Livy
+    Per. 83), before they proclaimed themselves consuls "for the ensuing
+    year", 84, on reading Sulla's letter about it (App. BC 1.77): so 85.
 
 - atom: asia-phrygia
   polity: asia
@@ -14968,15 +15014,75 @@
   from: 133 BCE
   to: 130 BCE
   sources:
-    - { source: strabo, locator: '13.4.2' }
-    - { source: justin, locator: '37.1' }
+    - source: polybius
+      locator: '21.45.10'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/21*.html
+      quote: >-
+        As for King Eumenes and his brothers … they now added to their dominion
+        the following … and in Asia Hellespontic Phrygia, Greater Phrygia
+      supports: [polity]
+    - source: strabo
+      locator: '13.4.2'
+      quote: >-
+        Attalus surnamed Philometor, reigned five years, died of disease, and
+        left the Romans his heirs. The Romans proclaimed the country a province,
+        calling it Asia, by the same name as the continent.
+      supports: [polity, relation]
+    - source: mcging-1980
+      locator: 'p. 35'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/6961/5007/14873
+      quote: >-
+        First, after being part of the kingdom of Pergamum, Phrygia was given
+        to Mithridates V Euergetes, king of Pontus, as a reward for his services
+        to Rome in the war against Aristonicus.
+      supports: [polity, to]
+    - source: plutarch
+      locator: 'Ti. Gracch. 14.1'
+      quote: >-
+        And now Attalus Philometor died, and Eudemus of Pergamum brought to Rome
+        the king's last will and testament, by which the Roman people was made
+        his heir.
+      supports: [from]
+    - source: velleius
+      locator: '2.2.2'
+      quote: >-
+        In the consulship of Publius Mucius Scaevola and Lucius Calpurnius (one
+        hundred and sixty-two years ago) … he split with the party of the
+        nobles, promised the citizenship to all Italy
+      supports: [from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … Rewards were then bestowed on
+        the princes who had given aid against Aristonicus; to Mithridates of
+        Pontus was allotted Greater Phrygia
+      supports: [to]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Marcus Perperna, however, accepted the surrender of the defeated
+        Aristonicus.
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, pp. 168–169'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        This district, it will be remembered, had been granted in … to
+        Mithradates V of Pontus in return for the aid which he had rendered
+        against Aristonicus.
+      supports: [to]
     - { source: kallet-marx-1995, locator: 'pp. 112–115' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Greater Phrygia was Attalid, so it passed to Rome with the kingdom; Rome
-    gave it to Mithridates V after the war with Aristonicus (Justin 37.1).
-    Who governed it in the war is not recorded.
+    Greater Phrygia was Attalid, given to Eumenes at Apamea in 188 (Polyb.
+    21.45.10), so it passed to Rome with the kingdom; Rome gave it to
+    Mithridates V after the war with Aristonicus (Justin 37.1; McGing 35),
+    in 129 (Magie I 168–169). Who governed it in the war is not recorded.
+    The years: Attalus' will reached Rome in Tiberius Gracchus' tribunate
+    (Plut. Ti. Gracch. 14.1), under the consuls of 133 (Vell. 2.2.2); the
+    grant followed Aristonicus' surrender to Perperna, consul in 130 (Livy
+    Per. 59).
 
 - atom: asia-phrygia
   polity: pontus-regnum
@@ -14984,9 +15090,58 @@
   from: 129 BCE
   to: c. 120 BCE
   sources:
-    - { source: justin, locator: '37.1, 38.5' }
-    - { source: appian, locator: 'Mithr. 11–13, 57' }
-    - { source: mcging-1980, locator: 'pp. 35–42' }
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        Rewards were then bestowed on the princes who had given aid against
+        Aristonicus; to Mithridates of Pontus was allotted Greater Phrygia
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Phrygia, … was given to him by your own general as a reward for his
+        victory over Aristonicus; nevertheless he paid a large sum of money to
+        that same general for it.
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        the Mithridates surnamed Euergetes (the Benefactor), who was the first
+        of them inscribed as a friend of the Roman people
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, pp. 168–169'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        This district, it will be remembered, had been granted in … to
+        Mithradates V of Pontus in return for the aid which he had rendered
+        against Aristonicus. The King’s possession of Phrygia, however, was of
+        but short duration; for about 120 b.c. he was murdered by some of his
+        courtiers
+      supports: [polity, from, to]
+    - source: mcging-1980
+      locator: 'p. 39'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/6961/5007/14873
+      quote: >-
+        Aristonicus fixes both the donor of Phrygia as Manius Aquillius,
+        consul 129, proconsul in Asia 128-126, and the recipient as Mithridates
+        V Euergetes, who died in 120.
+      supports: [polity, from, to]
+    - source: justin
+      locator: '38.5'
+      quote: >-
+        when they took from him, in his minority, the Greater Phrygia, a country
+        which they had granted to his father as a recompense for the succours
+        which he had afforded them in the war against Aristonicus
+      supports: [to]
+    - source: mcging-1980
+      locator: 'p. 35'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/6961/5007/14873
+      quote: >-
+        Then shortly after the death of Euergetes in 120 it was taken from
+        Pontus and left free for a time.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 11, 13, 57' }
   confidence: probable
   review: needs-check
   note: >-
@@ -14994,8 +15149,9 @@
     Aristonicus (Justin 37.1); Appian's Mithridates says it was "given to him by
     your own general as a reward for his victory over Aristonicus" and that his
     father paid that general for it (Mithr. 12). Taken from the son "in his
-    minority" (Justin 38.5) after the father's death, c. 120. Dated from
-    Aquillius' first year; he stayed until 126, and the grant may be later.
+    minority" (Justin 38.5) after the father's death, c. 120. Magie dates the
+    grant to 129 (I 168–169); McGing has the donor Aquillius, consul in 129
+    and proconsul to 126 (p. 39), so the grant may be later.
 
 - atom: asia-phrygia
   polity: pontus-regnum
@@ -15003,13 +15159,41 @@
   from: 88 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 20' }
-    - { source: livy-per, locator: '77' }
+    - source: appian
+      locator: 'Mithr. 20'
+      quote: >-
+        Then he invaded Phrygia and lodged at an inn which had been occupied by
+        Alexander the Great … He overran the rest of Phrygia
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '77'
+      quote: >-
+        the opposing consuls Quintus Pompeius and Lucius Sulla … King
+        Mithridates of Pontus, having occupied Bithynia and Cappadocia and
+        having expelled governor Aquilius, invaded Phrygia, a province of the
+        Roman people, with an enormous army.
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '83'
+      quote: >-
+        Lucius Cinna and Gnaeus Papirius Carbo, who had made themselves consuls
+        for two years … Sulla crossed into Asia and made peace with
+        Mithridates, so that he ceded the provinces of Asia, Bithynia, and
+        Cappadocia.
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.77'
+      quote: >-
+        Most of all he dwelt upon his recent victories in the Mithridatic war
+        … they proclaimed themselves consuls for the ensuing year
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     Mithridates "overran the rest of Phrygia" (App. Mithr. 20); "Phrygiam,
-    provinciam populi R., cum ingenti exercitu intrauit" (Livy Per. 77).
+    provinciam populi R., cum ingenti exercitu intrauit" (Livy Per. 77), in
+    the year Pompeius and Sulla were consuls, 88. He gave up the province of
+    Asia in the peace of 85 (as asia).
 
 - atom: cibyra
   polity: cibyra
@@ -15017,17 +15201,65 @@
   from: before 133 BCE
   to: c. 83 BCE
   sources:
-    - { source: strabo, locator: '13.4.17' }
-    - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
-    - { source: kallet-marx-1995, locator: 'p. 114' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        It was always ruled by tyrants; but still they ruled it with
+        moderation. However, the tyranny ended in the time of Moagetes, when
+        Murena overthrew it
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, pp. 240–241'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        When the Romans first came to Asia it was ruled by a “tyrant” named
+        Moagetes, who was characterized as cruel and treacherous, and it seems
+        to have been similarly governed by a single ruler, though perhaps
+        unofficially, down to the time of Murena.
+      supports: [polity, from]
+    - source: sherwin-white-1976
+      locator: 'n. 51'
+      quote: >-
+        the survival of the dynasty of Cibyra from 190 down to this period
+      supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        of the state of Cibyra, Murena brought to an abrupt end. Entering the
+        district with an army, he overthrew the reigning “tyrant,”
+      supports: [to]
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        Further east the tetrapolis of Cibyra survived as independent to c.
+        82
+      supports: [relation, to]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      quote: >-
+        Cibyra, which enjoyed a treaty of alliance with Rome, remained under its
+        own tyrants until captured by L. Murena in 83
+      supports: [polity, to]
+    - source: magie-1950
+      locator: 'vol. I, p. 516'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        established in 84 b.c., when Murena, having dissolved the “Tetrapolis”
+        headed by Cibyra, incorporated the latter into the province of Asia
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
     The tyrants of Cibyra, until Murena "overthrew it" in the time of Moagetes
-    (Strabo 13.4.17). Murena governed Asia from 84 to 81; the tetrapolis
-    "survived as independent to c. 82" (Sherwin-White 1976, n. 6), or was
-    "under its own tyrants until captured by L. Murena in 83" (Kallet-Marx
-    114). Strabo gives no year.
+    (Strabo 13.4.17), who gives no year. Ruled by a Moagetes "when the
+    Romans first came to Asia" (in 189) and similarly down to Murena (Magie I
+    240–241); the dynasty survived "from 190 down to this period"
+    (Sherwin-White 1976, n. 51). The end: Murena governed Asia from 84 to 81;
+    Magie puts the annexation in 84 (I 516), Kallet-Marx has Cibyra "under
+    its own tyrants until captured by L. Murena in 83" (114), and
+    Sherwin-White has the tetrapolis "independent to c. 82" (n. 6). Drawn
+    between them.
 
 - atom: cibyra
   polity: asia
@@ -15035,13 +15267,59 @@
   from: c. 82 BCE
   to: 57 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        but Cibyra and its territory, with the broad and fertile valley of the
+        Horzum … he annexed to the province of Asia.
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      quote: >-
+        remained under its own tyrants until captured by L. Murena in 83
+      supports: [from]
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        Further east the tetrapolis of Cibyra survived as independent to c.
+        82
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 516'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        established in 84 b.c., when Murena, having dissolved the “Tetrapolis”
+        headed by Cibyra, incorporated the latter into the province of Asia
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Six years after Pompey left Asia Minor, the three judiciary "dioceses"
+        of which Phrygia consisted — Cibyra-Laodiceia, Apameia and Synnada … were
+        taken from the province of Asia and transferred to Cilicia
+      supports: [to]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus … In the spring, after
+        distributing among his army the unprecedented amount of sixteen thousand
+        talents, the General set forth on the long march to the Aegean coast.
+      supports: [to]
     - { source: strabo, locator: '13.4.17' }
     - { source: dmitriev-2000, locator: 'n. 80' }
   confidence: probable
   review: needs-check
   note: >-
-    "The jurisdiction of Cibyra is rated among the greatest in Asia" (Strabo
-    13.4.17). From here the rows are asia-phrygia's, whose atom it was part of.
+    Murena annexed Cibyra and its territory "to the province of Asia" (Magie I
+    242): in 84 (Magie I 516), 83 (Kallet-Marx 114) or c. 82 (Sherwin-White
+    n. 6), so c. 82. "The jurisdiction of Cibyra is rated among the greatest
+    in Asia" (Strabo 13.4.17). It passed to Cilicia with the Phrygian
+    dioceses "six years after Pompey left Asia Minor" (Magie I 376), in the
+    spring of 62 (I 365), so 56 is Cilicia's. From here the rows are
+    asia-phrygia's, whose atom it was part of.
 
 - atom: cibyra
   polity: cilicia
@@ -15049,12 +15327,56 @@
   from: 56 BCE
   to: 50 BCE
   sources:
+    - source: magie-1950
+      locator: 'vol. I, p. 376'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Six years after Pompey left Asia Minor, the three judiciary "dioceses"
+        of which Phrygia consisted — Cibyra-Laodiceia, Apameia and Synnada … were
+        taken from the province of Asia and transferred to Cilicia
+      supports: [polity, relation, from]
+    - source: magie-1950
+      locator: 'vol. I, p. 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus … In the spring, after
+        distributing among his army the unprecedented amount of sixteen thousand
+        talents, the General set forth on the long march to the Aegean coast.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 383'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Publius Cornelius Lentulus Spinther, who had obtained his consulship in
+        57 by the aid of Caesar and with it an appointment as governor of
+        Cilicia. … Now, under Lentulus, it was still further increased by the
+        incorporation in it of the districts of Phrygia and Cibyratis
+      supports: [polity, relation]
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea: from the 15th of March at the same place for the districts
+        of Synnada, Pamphylia
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 402'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Lucius Lentulus Crus, one of the Consuls of the year … During this year,
+        and perhaps in connexion with this enlistment of soldiers, the three
+        Phrygian dioceses were retransferred from Cilicia to the province of
+        Asia.
+      supports: [to]
     - { source: dmitriev-2000, locator: 'n. 80' }
-    - { source: magie-1950, locator: 'vol. I, 383–4' }
-    - { source: cicero-att, locator: '5.21.9' }
   confidence: probable
   review: draft
-  note: Part of asia-phrygia until cibyra was split from it (September 2026); the row is asia-phrygia's.
+  note: >-
+    Part of asia-phrygia until cibyra was split from it (September 2026); the
+    row is asia-phrygia's. Transferred with the Phrygian dioceses under
+    Lentulus Spinther (Magie I 376, 383), held by Cicero as governor of
+    Cilicia in 50 (Att. 5.21.9), and returned to Asia in the year Lentulus
+    Crus was consul, 49 (Magie I 402).
 
 - atom: cibyra
   polity: asia
@@ -15062,11 +15384,45 @@
   from: 49 BCE
   to: after 27 BCE
   sources:
-    - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
+    - source: magie-1950
+      locator: 'vol. I, p. 402'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the province of Asia, where Gaius Fannius, an adherent of Pompey, was
+        governor … Lucius Lentulus Crus, one of the Consuls of the year … During
+        this year, and perhaps in connexion with this enlistment of soldiers, the
+        three Phrygian dioceses were retransferred from Cilicia to the province
+        of Asia.
+      supports: [polity, relation, from]
+    - source: dmitriev-2000
+      locator: 'p. 371'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        the districts of Phrygia (Laodicea, Apamea, and Syn- nada) which were
+        finally attached to provincia Asia under the proconsul C. Fannius, in
+        49 B.C.
+      supports: [polity, relation, from]
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        But none the less the jurisdiction of Cibyra is rated among the greatest
+        in Asia.
+      supports: [polity, to]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Africa, Numidia, Asia, Greece with Epirus … were held to belong to the
+        people and the senate
+      supports: [relation, to]
     - { source: sherk-rdge, locator: 'no. 52' }
   confidence: probable
   review: draft
-  note: Part of asia-phrygia until cibyra was split from it (September 2026); the row is asia-phrygia's.
+  note: >-
+    Part of asia-phrygia until cibyra was split from it (September 2026); the
+    row is asia-phrygia's. Returned to Asia under the proconsul C. Fannius in
+    the year Lentulus Crus was consul, 49 (Magie I 402; Dmitriev 371, who
+    names Laodicea, the Cibyratic district's assize town); still Asia's in
+    Strabo's day (13.4.17), and Asia went to the people in 27 (Dio 53.12.4).
 
 - atom: bubon-balbura
   polity: cibyra
@@ -15074,10 +15430,45 @@
   from: before 133 BCE
   to: c. 83 BCE
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        Three bordering cities were added to it, Bubon, Balbura, and Oenoandon,
+        and the union was called Tetrapolis, each of the three having one vote,
+        but Cibyra two
+      supports: [polity]
+    - source: sherwin-white-1976
+      locator: 'n. 6'
+      quote: >-
+        Further east the tetrapolis of Cibyra survived as independent to c.
+        82
+      supports: [polity, relation, to]
+    - source: sherwin-white-1976
+      locator: 'n. 51'
+      quote: >-
+        the survival of the dynasty of Cibyra from 190 down to this period
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 516'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        established in 84 b.c., when Murena, having dissolved the “Tetrapolis”
+        headed by Cibyra, incorporated the latter into the province of Asia
+        and attached to Lycia the region of Cabalis with the three remaining
+        cities, Bubon, Balbura and Oenoanda.
+      supports: [polity, to]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      quote: >-
+        remained under its own tyrants until captured by L. Murena in 83
+      supports: [to]
   confidence: probable
   review: needs-check
-  note: Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17).
+  note: >-
+    Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17).
+    Dated as cibyra: the dynasty lasted from 190 (Sherwin-White n. 51), and
+    Murena broke up the tetrapolis in 84 (Magie I 516), 83 (Kallet-Marx 114)
+    or c. 82 (Sherwin-White n. 6).
 
 - atom: bubon-balbura
   polity: lycia
@@ -15085,13 +15476,58 @@
   from: c. 82 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        the tyranny ended in the time of Moagetes, when Murena overthrew it and
+        included Balbura and Bubon within the territory of the Lycians
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, p. 516'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The territory controlled by the Lycians, however, was increased and a
+        more definite boundary established in 84 b.c., when Murena, having
+        dissolved the “Tetrapolis” headed by Cibyra, incorporated the latter
+        into the province of Asia and attached to Lycia the region of Cabalis
+        with the three remaining cities, Bubon, Balbura and Oenoanda.
+      supports: [polity, from]
+    - source: kallet-marx-1995
+      locator: 'p. 274'
+      quote: >-
+        Murena's intervention in Cibyra in the southern corner of Phrygia,
+        deposing its traditional dynasty and awarding two dries of the
+        Tetrapolis to the Lycians, Rome's loyal allies in the war
+      supports: [polity, relation]
+    - source: kallet-marx-1995
+      locator: 'pp. 113–114'
+      quote: >-
+        remained under its own tyrants until captured by L. Murena in 83
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 61'
+      quote: >-
+        Sulla bestowed freedom on the inhabitants of Ilium, Chios, Lycia,
+        Rhodes, Magnesia, and some others … and inscribed them as friends of
+        the Roman people.
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 515'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        for it was not until the time of the Emperor Claudius that it became a
+        part of Rome’s empire in the East.
+      supports: [relation, to]
     - { source: mitchell-2005 }
   confidence: probable
   review: needs-check
   note: >-
     Murena "included Balbura and Bubon within the territory of the Lycians"
-    (Strabo 13.4.17). Oenoanda's passing to the Lycians is not recorded.
+    (Strabo 13.4.17), in 84 (Magie I 516) or 83 (Kallet-Marx 114; c. 82 in
+    Sherwin-White n. 6), so c. 82. Oenoanda's passing to the Lycians is
+    stated by Magie, not by Strabo. Lycia, a free friend of Rome after Sulla
+    (App. Mithr. 61), became part of the empire only under Claudius (Magie I
+    515).
 
 - atom: caunus
   polity: asia
@@ -15099,7 +15535,33 @@
   from: 133 BCE
   to: 85 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 23' }
+    - source: appian
+      locator: 'Mithr. 23'
+      quote: >-
+        The Caunii, who had been made subject to Rhodes after the war against
+        Antiochus and had been lately liberated by the Romans, pursued the
+        Italians … Such was the awful fate that befell the Romans and Italians
+        throughout the province of Asia
+      supports: [polity, relation]
+    - source: cicero-qfr
+      locator: '1.1.33'
+      url: https://www.thelatinlibrary.com/cicero/fratrem1.shtml
+      quote: >-
+        quod Caunii nuper omnesque ex insulis, quae erant a Sulla Rhodiis
+        attributae, confugerunt ad senatum
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'pp. 275–276'
+      quote: >-
+        Sulla as a rule rewarded these communities with grants of territory
+        whose revenues will have assisted the cities' recovery: Rhodes received
+        Caunus
+      supports: [to]
+    - source: kallet-marx-1995
+      locator: 'p. 304'
+      quote: >-
+        that employed by Sulla in 85-84
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15113,12 +15575,48 @@
   from: 88 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 23' }
+    - source: strabo
+      locator: '12.3.40'
+      quote: >-
+        took possession of Asia as far as Caria and Lycia
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        When the consuls cast lots, the government of Asia and the Mithridatic
+        war fell to Cornelius Sulla. … he wrote secretly to all his satraps and
+        magistrates that on the thirtieth day thereafter they should set upon
+        all Romans and Italians in their towns
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 23'
+      quote: >-
+        The Caunii, who had been made subject to Rhodes after the war against
+        Antiochus and had been lately liberated by the Romans, pursued the
+        Italians who had taken refuge about the Vesta statue of the
+        senate-house
+      supports: [polity, relation]
+    - source: livy-per
+      locator: '83'
+      quote: >-
+        Lucius Cinna and Gnaeus Papirius Carbo, who had made themselves consuls
+        for two years … Sulla crossed into Asia and made peace with
+        Mithridates, so that he ceded the provinces of Asia, Bithynia, and
+        Cappadocia.
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.77'
+      quote: >-
+        Most of all he dwelt upon his recent victories in the Mithridatic war
+        … they proclaimed themselves consuls for the ensuing year
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     The Caunians hunted down the Italians who had fled to the statue of Vesta
-    and killed them with their families (App. Mithr. 23).
+    and killed them with their families (App. Mithr. 23), on the king's order
+    to his satraps and magistrates, given in the year the consuls of 88 drew
+    lots for the war (Mithr. 22). Ends with asia's row: the peace of 85.
 
 - atom: caunus
   polity: rhodus
@@ -15126,8 +15624,45 @@
   from: 84 BCE
   to: after 27 BCE
   sources:
-    - { source: cicero-qfr, locator: '1.1.33' }
-    - { source: strabo, locator: '14.2.3' }
+    - source: cicero-qfr
+      locator: '1.1.33'
+      url: https://www.thelatinlibrary.com/cicero/fratrem1.shtml
+      quote: >-
+        quod Caunii nuper omnesque ex insulis, quae erant a Sulla Rhodiis
+        attributae, confugerunt ad senatum, nobis ut potius vectigal quam
+        Rhodiis penderent
+      supports: [polity]
+    - source: kallet-marx-1995
+      locator: 'pp. 275–276'
+      quote: >-
+        Sulla as a rule rewarded these communities with grants of territory
+        whose revenues will have assisted the cities' recovery: Rhodes received
+        Caunus
+      supports: [polity, from]
+    - source: kallet-marx-1995
+      locator: 'p. 304'
+      quote: >-
+        that employed by Sulla in 85-84
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 61'
+      quote: >-
+        Sulla bestowed freedom on the inhabitants of Ilium, Chios, Lycia,
+        Rhodes, Magnesia, and some others … and inscribed them as friends of
+        the Roman people.
+      supports: [relation]
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        The Peraea of the Rhodians begins with Daedala, a place in the Rhodian
+        territory, but ends with Mt. Phoenix … then to Caunus
+      supports: [polity, to]
+    - source: strabo
+      locator: '14.2.3'
+      quote: >-
+        The Caunians once revolted from the Rhodians, but by a judicial
+        decision of the Romans they were restored to them.
+      supports: [polity, to]
   confidence: probable
   review: needs-check
   note: >-
@@ -15144,13 +15679,65 @@
   from: 133 BCE
   to: 130 BCE
   sources:
-    - { source: justin, locator: '37.1' }
+    - source: polybius
+      locator: '21.45.10'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/21*.html
+      quote: >-
+        and in Asia Hellespontic Phrygia, Greater Phrygia, that part of Mysia
+        of which Prusias had formerly deprived Eumenes, Lycaonia, the Milyas,
+        Lydia
+      supports: [polity]
+    - source: dmitriev-2000
+      locator: 'p. 349'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        the Apamean peace treaty (188 B.C.), which gave Lycaonia to the
+        Attalids, who controlled it till the end of their dynasty. After the
+        sub- sequent revolt of Aristonicus was suppressed in 129, Lycaonia was
+        given to the kings of Cappadocia.
+      supports: [polity, to]
+    - source: strabo
+      locator: '13.4.2'
+      quote: >-
+        Attalus surnamed Philometor, reigned five years, died of disease, and
+        left the Romans his heirs. The Romans proclaimed the country a province,
+        calling it Asia, by the same name as the continent.
+      supports: [polity, relation]
+    - source: plutarch
+      locator: 'Ti. Gracch. 14.1'
+      quote: >-
+        And now Attalus Philometor died, and Eudemus of Pergamum brought to Rome
+        the king's last will and testament, by which the Roman people was made
+        his heir.
+      supports: [from]
+    - source: velleius
+      locator: '2.2.2'
+      quote: >-
+        In the consulship of Publius Mucius Scaevola and Lucius Calpurnius (one
+        hundred and sixty-two years ago) … he split with the party of the
+        nobles, promised the citizenship to all Italy
+      supports: [from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … to the sons of Ariarathes, king
+        of Cappadocia, who had fallen in that war, were assigned Lycaonia and
+        Cilicia
+      supports: [to]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Marcus Perperna, however, accepted the surrender of the defeated
+        Aristonicus.
+      supports: [to]
     - { source: kallet-marx-1995, locator: 'pp. 112–115' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Attalid since the peace of 188, so it passed to Rome with the kingdom and
-    was Rome's to give after the war (Justin 37.1).
+    Attalid since the peace of 188 (Polyb. 21.45.10; Dmitriev 349), so it
+    passed to Rome with the kingdom and was Rome's to give after the war
+    (Justin 37.1). Dated as asia-phrygia: the bequest in 133, the grant after
+    Aristonicus' surrender to Perperna, consul in 130 (Livy Per. 59).
 
 - atom: lycaonia
   polity: cappadocia
@@ -15158,8 +15745,36 @@
   from: 129 BCE
   to: 102 BCE
   sources:
-    - { source: justin, locator: '37.1' }
-    - { source: sherwin-white-1976, locator: 'n. 7' }
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        to the sons of Ariarathes, king of Cappadocia, who had fallen in that
+        war, were assigned Lycaonia and Cilicia; and the Roman people were more
+        faithful to the sons of their ally
+      supports: [polity, relation]
+    - source: dmitriev-2000
+      locator: 'p. 349'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        After the sub- sequent revolt of Aristonicus was suppressed in 129,
+        Lycaonia was given to the kings of Cappadocia. Soon afterwards, how-
+        ever, Lycaonia is found as a district ( eparcheia ) under the control
+        of the governor of the province of Asia.
+      supports: [polity, from, to]
+    - source: sherwin-white-1976
+      locator: 'n. 7'
+      quote: >-
+        For Lycaonia see Justin 37. 1. 2, and below p. 6f. Justin's garbled
+        text couples Lycaonia with Lycia, emended to Cilicia. But Seleucid
+        Cilicia could not be given to Ariarathes in 129.
+      supports: [polity, from]
+    - source: sherwin-white-1976
+      locator: 'n. 7'
+      quote: >-
+        Possibly the text means that the area of the later Roman province,
+        i.e. Pamphylia and Pisidia, was given with Lycaonia, cf. also Jones op.
+        cit. (n. 2), 131, and restored to the Roman province before 102
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15175,9 +15790,28 @@
   from: { earliest: 101 BCE, latest: 100 BCE }
   to: 76 BCE
   sources:
-    - { source: sherwin-white-1976, locator: 'n. 24' }
-    - { source: dmitriev-2000, locator: 'p. 349' }
-    - { source: mcging-1980 }
+    - source: sherwin-white-1976
+      locator: 'n. 24'
+      quote: >-
+        III. 22–25: ὁ〈ς〉 τὴν Ἀσίαν ἐπαρχείαν διακατέχων … Λυκαονίαν διακατέχηι
+        … τούτου ἠ ἐπαρχεία Λυκαονία καθὼς … ὕπηρχεν
+      supports: [polity, relation]
+    - source: dmitriev-2000
+      locator: 'p. 349 and n. 2'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/2041/3231/12181
+      quote: >-
+        Soon afterwards, how- ever, Lycaonia is found as a district ( eparcheia
+        ) under the control of the governor of the province of Asia. … The
+        governor of Asia: I.Knidos 31 (late II B.C.), dated to 100 B.C. by S.
+        Mitchell
+      supports: [polity, relation, from]
+    - source: mcging-1980
+      locator: 'p. 41'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/6961/5007/14873
+      quote: >-
+        as we now know from the Cnidos version of the Pirate Law, Lycaonia was
+        under Roman rule before this date
+      supports: [relation, from]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -15192,10 +15826,47 @@
   from: { earliest: 102 BCE, latest: 100 BCE }
   to: 81 BCE
   sources:
-    - { source: livy-per, locator: '68' }
+    - source: livy-per
+      locator: '68'
+      quote: >-
+        Praetor Marcus Antonius pursued the pirates to Cilicia. … Consul Gaius
+        Marius defended his camp against a violent attack by the Teutons and
+        Ambronians.
+      supports: [polity, from]
+    - source: sumner-1978
+      locator: 'p. 213'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        and that Cilicia has for this reason been made a praetorian province in
+        accordance with this law
+      supports: [polity, relation]
+    - source: sumner-1978
+      locator: 'p. 214'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        It should be added that Cilicia had already come into view as a
+        potential praetorian province through the command … Antonius against
+        the pirates, 102-100. … The first praetor of Cilida under the terms of
+        our law would most likely be a praetor of 100
+      supports: [polity, relation, from]
+    - source: sherwin-white-1976
+      locator: 'n. 12'
+      quote: >-
+        Ipse iter eire profectus Sidam
+      supports: [polity]
+    - source: cicero-verr
+      locator: '2.1.44'
+      quote: >-
+        After Cilicia was appointed to Cnaeus Dolabella as his province
+      supports: [relation, to]
+    - source: broughton-mrr
+      locator: 'vol. II, 79 B.C., p. 84'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        CN. CORNELIUS DOLABELLA Pat. (135) Pr. 81 Proconsul in Cilicia.
+      supports: [to]
     - { source: cicero-de-oratore, locator: '1.82' }
-    - { source: sumner-1978 }
-    - { source: sherwin-white-1976, locator: 'nn. 12, 18, 25, 41' }
+    - { source: sherwin-white-1976, locator: 'nn. 18, 25, 41' }
     - { source: borgia-2017, locator: 'pp. 299–300' }
     - { source: de-viris-illustribus, locator: '75.4' }
   confidence: uncertain
@@ -15214,6 +15885,11 @@
     Antonius needed a territorial base, as a free Rhodes could not be one
     (n. 18); Borgia sees "only a sphere of military and political
     competence", based in Pamphylia and Pisidia, until Pompey (299–300).
+    The years: Antonius went in the year of Marius' fourth consulship, 102
+    (Livy Per. 68), and the law made Cilicia a praetorian province in 101/100
+    (Sumner 213–214). The row runs to the year Cilicia was assigned to Cn.
+    Dolabella, praetor in 81 (Verr. 2.1.44; MRR II 84), when the next row
+    begins; no text names a governor between Sulla's war and his.
 
 - atom: cilicia
   polity: pontus-regnum
@@ -15221,12 +15897,39 @@
   from: 88 BCE
   to: 86 BCE
   sources:
-    - { source: appian, locator: 'Mithr. 20' }
+    - source: appian
+      locator: 'Mithr. 20'
+      quote: >-
+        Then he sent his officers to the adjoining provinces and subjugated
+        Lycia, Pamphylia, and the rest as far as Ionia.
+      supports: [polity, relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [from]
+    - source: livy-per
+      locator: '83'
+      quote: >-
+        Lucius Cinna and Gnaeus Papirius Carbo, who had made themselves consuls
+        for two years … Sulla crossed into Asia and made peace with
+        Mithridates, so that he ceded the provinces of Asia, Bithynia, and
+        Cappadocia.
+      supports: [to]
+    - source: appian
+      locator: 'BC 1.77'
+      quote: >-
+        Most of all he dwelt upon his recent victories in the Mithridatic war
+        … they proclaimed themselves consuls for the ensuing year
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Mithridates "subjugated Lycia, Pamphylia, and the rest as far as Ionia"
-    (App. Mithr. 20) — though Lycia held out (21, 27).
+    (App. Mithr. 20) — though Lycia held out (21, 27). Dated as asia: from the
+    invasion of 88 to the peace of 85, when he gave up what he had seized.
 
 - atom: cilicia-campestris
   polity: seleucid
@@ -15234,8 +15937,53 @@
   from: before 133 BCE
   to: 84 BCE
   sources:
-    - { source: appian, locator: 'Syr. 48, 69' }
-    - { source: strabo, locator: '14.5.2' }
+    - source: strabo
+      locator: '14.5.2'
+      quote: >-
+        Coracesium, situated on an abrupt rock, which was used by Diodotus
+        called Tryphon, as a base of operations at the time when he caused
+        Syria to revolt from the kings … and it was Tryphon, together with the
+        worthlessness of the kings who by succession were then reigning over
+        Syria and at the same time over Cilicia, who caused the Cilicians to
+        organize their gangs of pirates
+      supports: [polity, relation, from]
+    - source: livy-per
+      locator: '55'
+      quote: >-
+        When the consuls Publius Cornelius Nasica … and Decimus Junius Brutus
+        were holding the levy … the son of Alexander, the king of Syria, who was
+        a mere ten years old, was killed by the treachery of his tutor
+        Diodotus
+      supports: [from]
+    - source: appian
+      locator: 'Syr. 69'
+      quote: >-
+        Then Seleucus, the son of Grypus, made war on his uncle and took the
+        government away from him. The new sovereign was violent and tyrannical
+        and was burned to death in the gymnasium at Mopsuestia in Cilicia.
+      supports: [polity, from]
+    - source: appian
+      locator: 'Syr. 48'
+      quote: >-
+        He took Cilicia at the same time (for this was also subject to the
+        Seleucidae) and put his general, Magadates, in command of all these
+        conquests for fourteen years.
+      supports: [polity, relation, to]
+    - source: appian
+      locator: 'Syr. 49'
+      quote: >-
+        When the Roman general, Lucullus, was pursuing Mithridates, who had
+        taken refuge in the territory of Tigranes, Magadates went with his army
+        to Tigranes' assistance.
+      supports: [to]
+    - source: cassius-dio
+      locator: '36.1.1'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … Lucius Lucullus at this time had defeated in battle the lords
+        of Asia, Mithridates and Tigranes the Armenian, and after forcing them
+        to avoid battle was besieging Tigranocerta.
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
@@ -15243,7 +15991,10 @@
     Syr. 48). Strabo blames "the worthlessness of the kings who by succession
     were then reigning over Syria and at the same time over Cilicia" for the
     pirates (14.5.2). The rival kings of the 90s fought over it: Seleucus VI
-    was burnt alive at Mopsuestia (Syr. 69).
+    was burnt alive at Mopsuestia (Syr. 69). In force before 133, when
+    Diodotus Tryphon fought the kings who held Cilicia (Strabo 14.5.2) in the
+    year Nasica and Brutus were consuls, 138 (Livy Per. 55), and still in the
+    90s (Syr. 69); it ends with Tigranes' conquest, dated as armenia's row.
 
 - atom: cilicia-campestris
   polity: armenia
@@ -15251,16 +16002,53 @@
   from: 83 BCE
   to: 70 BCE
   sources:
-    - { source: appian, locator: 'Syr. 48–49, 70' }
-    - { source: justin, locator: '40.1–40.2' }
+    - source: appian
+      locator: 'Syr. 48'
+      quote: >-
+        Tigranes, the son of Tigranes, king of Armenia … Tigranes conquered all
+        of the Syrian peoples this side of the Euphrates as far as Egypt. He
+        took Cilicia at the same time (for this was also subject to the
+        Seleucidae) and put his general, Magadates, in command of all these
+        conquests for fourteen years.
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Syr. 49'
+      quote: >-
+        When the Roman general, Lucullus, was pursuing Mithridates, who had
+        taken refuge in the territory of Tigranes, Magadates went with his army
+        to Tigranes' assistance. … Nor did Lucullus, who first made war on
+        Tigranes and wrested his newly acquired territory from him
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '36.1.1'
+      quote: >-
+        When the consuls drew lots, Hortensius obtained the war against the
+        Cretans. … Lucius Lucullus at this time had defeated in battle the lords
+        of Asia, Mithridates and Tigranes the Armenian, and after forcing them
+        to avoid battle was besieging Tigranocerta.
+      supports: [from, to]
+    - source: justin
+      locator: '40.1'
+      quote: >-
+        Tigranes, accordingly, being invited to the throne of Syria, enjoyed a
+        most tranquil reign over it for eighteen years
+      supports: []
+    - source: justin
+      locator: '40.2'
+      quote: >-
+        a king, who for eighteen years, during which Tigranes had governed
+        Syria, had lain hid in a corner of Cilicia
+      supports: []
+    - { source: appian, locator: 'Syr. 70' }
   confidence: uncertain
   review: needs-check
   note: >-
     Tigranes "took Cilicia at the same time (for this was also subject to the
     Seleucids) and put his general, Magadates, in command of all these
     conquests for fourteen years" (App. Syr. 48), until Lucullus "wrested his
-    newly acquired territory from him" after Tigranocerta in 69 (Syr. 49).
-    Appian's fourteen years give 83; Justin has eighteen (40.1), and some
+    newly acquired territory from him" after Tigranocerta in 69 (Syr. 49),
+    the year Hortensius was consul (Dio 36.1.1). Appian's fourteen years,
+    counted back from 69, give 83; Justin has eighteen (40.1, 40.2), and some
     modern work puts the conquest of Cilicia later. Unclaimed from 69 until
     Pompey (cilicia).
 
@@ -15272,9 +16060,49 @@
   from: before 133 BCE
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.11, 12.3.39' }
-    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
-    - { source: justin, locator: '37.1, 38.5' }
+    - source: strabo
+      locator: '12.3.11'
+      quote: >-
+        although it was independent for a long time, it could not eventually
+        preserve its freedom, but was captured by siege, and was first enslaved
+        by Pharnaces and afterwards by his successors down to Eupator and to
+        the Romans who overthrew Eupator. Eupator was both born and reared at
+        Sinope; and he accorded it especial honor and treated it as the
+        metropolis of his kingdom.
+      supports: [polity, from]
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        At any rate a king of Pontus, the Mithridates surnamed Euergetes (the
+        Benefactor), who was the first of them inscribed as a friend of the
+        Roman people, and who even sent some ships and a small force of
+        auxiliaries to aid them against the Carthaginians
+      supports: [polity, relation, from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … Rewards were then bestowed on
+        the princes who had given aid against Aristonicus; to Mithridates of
+        Pontus was allotted Greater Phrygia
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Nicomedes returned with large booty and Mithridates sent Pelopidas to
+        the Roman generals and ambassadors. … Mithridates, who is your friend
+        and ally, calls upon you as friends and allies (for so the treaty
+        reads)
+      supports: [relation, to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        In Bithynia Nicomedes was restored to the throne and Ariobarzanes in the
+        kingdom of Cappadocia. … Consul Gnaeus Pompeius defeated the Marsians in
+        an open battle.
+      supports: [to]
+    - { source: strabo, locator: '12.3.39' }
+    - { source: appian, locator: 'Mithr. 11, 13, 56–57' }
+    - { source: justin, locator: '38.5' }
   confidence: probable
   review: needs-check
   note: >-
@@ -15283,7 +16111,12 @@
     Aquillius' embassy provoked the war (App. Mithr. 10–13, 56–57). Sinope,
     taken by Pharnaces I, was its "metropolis" under Eupator (Strabo 12.3.11).
     The coast from the Parthenius to Themiscyra with the Amnias basin; Amastris
-    and Sinope were Pontic well before 133.
+    and Sinope were Pontic well before 133. The years: in force before 133,
+    when Euergetes, already Rome's friend in the Third Punic War, was
+    rewarded after Aristonicus' capture (130); it ends with 89, when the
+    king's envoy still invoked the treaty after Nicomedes' raid, which
+    followed his restoration in the year Pompeius was consul, 89 (Livy Per.
+    74), as the alliance (relations).
 
 - atom: pontus-inner
   polity: pontus-regnum
@@ -15291,8 +16124,50 @@
   from: before 133 BCE
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.30, 12.3.39' }
-    - { source: appian, locator: 'Mithr. 10–13, 56–57' }
+    - source: strabo
+      locator: '12.3.39'
+      quote: >-
+        My city [Amaseia] is situated in a large deep valley, through which
+        flows the Iris River. … Within this circuit are both the palaces and
+        monuments of the kings.
+      supports: [polity]
+    - source: strabo
+      locator: '12.3.30'
+      quote: >-
+        It was at Cabeira that the palace of Mithridates was built, and also
+        the water-mill
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        At any rate a king of Pontus, the Mithridates surnamed Euergetes (the
+        Benefactor), who was the first of them inscribed as a friend of the
+        Roman people, and who even sent some ships and a small force of
+        auxiliaries to aid them against the Carthaginians
+      supports: [polity, relation, from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … Rewards were then bestowed on
+        the princes who had given aid against Aristonicus; to Mithridates of
+        Pontus was allotted Greater Phrygia
+      supports: [polity, relation, from]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Nicomedes returned with large booty and Mithridates sent Pelopidas to
+        the Roman generals and ambassadors. … Mithridates, who is your friend
+        and ally, calls upon you as friends and allies (for so the treaty
+        reads)
+      supports: [relation, to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        In Bithynia Nicomedes was restored to the throne and Ariobarzanes in the
+        kingdom of Cappadocia. … Consul Gnaeus Pompeius defeated the Marsians in
+        an open battle.
+      supports: [to]
+    - { source: appian, locator: 'Mithr. 11, 13, 56–57' }
   confidence: probable
   review: needs-check
   note: >-
@@ -15305,10 +16180,56 @@
   from: before 133 BCE
   to: 89 BCE
   sources:
-    - { source: strabo, locator: '12.3.32–34' }
+    - source: strabo
+      locator: '12.3.32'
+      quote: >-
+        Above Phanaroea is the Pontic Comana … and particularly in the times of
+        the kings who reigned before this, I mean in the times when twice a
+        year, during the “exoduses” of the goddess, as they are called, the
+        priest wore a diadem and ranked second in honor after the king.
+      supports: [polity]
+    - source: strabo
+      locator: '12.3.33'
+      quote: >-
+        although he had received all the greatest honors from Eupator and in
+        particular the priesthood of Comana
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 10'
+      quote: >-
+        At any rate a king of Pontus, the Mithridates surnamed Euergetes (the
+        Benefactor), who was the first of them inscribed as a friend of the
+        Roman people, and who even sent some ships and a small force of
+        auxiliaries to aid them against the Carthaginians
+      supports: [relation, from]
+    - source: justin
+      locator: '37.1'
+      quote: >-
+        AFTER Aristonicus was taken prisoner … Rewards were then bestowed on
+        the princes who had given aid against Aristonicus; to Mithridates of
+        Pontus was allotted Greater Phrygia
+      supports: [relation, from]
+    - source: appian
+      locator: 'Mithr. 12'
+      quote: >-
+        Nicomedes returned with large booty and Mithridates sent Pelopidas to
+        the Roman generals and ambassadors. … Mithridates, who is your friend
+        and ally, calls upon you as friends and allies (for so the treaty
+        reads)
+      supports: [relation, to]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        In Bithynia Nicomedes was restored to the throne and Ariobarzanes in the
+        kingdom of Cappadocia. … Consul Gnaeus Pompeius defeated the Marsians in
+        an open battle.
+      supports: [to]
+    - { source: strabo, locator: '12.3.34' }
   confidence: probable
   review: needs-check
-  note: The temple state under the kings (Strabo 12.3.32–34). As pontus.
+  note: >-
+    The temple state under the kings, whose priest "ranked second in honor
+    after the king" (Strabo 12.3.32–34). As pontus.
 
 - atom: armenia-minor
   polity: pontus-regnum
