@@ -876,7 +876,14 @@
         Rhodes , Magnesia , and some others, either as a reward for their
         cooperation, or a recompense for what they had bravely suffered on his
         account, and inscribed them as friends of the Roman people.
-      supports: [type, of]
+      supports: [type, of, from]
+    - source: polybius
+      locator: '30.5.12'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/30*.html
+      quote: >-
+        the senate issued a consultum setting free all the parts of Caria and
+        Lycia which they had assigned to Rhodes
+      supports: [of, from]
     - source: mitchell-2005
       locator: 'SEG 55.1452, preamble'
       url: https://www.attalus.org/docs/seg/s55_1452.html
@@ -884,7 +891,7 @@
         [this oath] was accomplished on the 9th day before the Kalends of
         Sextilis {24 July 46 B.C.} according to the law of Caesar in the comitium
         [by the Romans] and Lycians
-      supports: [of]
+      supports: [type, of, to]
     - source: appian
       locator: 'BC 4.61'
       quote: >-
@@ -910,17 +917,19 @@
         but now they naturally do not do so, since these matters necessarily lie
         in the power of the Romans … they remained ever free under the Romans,
         thus retaining their ancestral usages
-      supports: []
-  confidence: certain
+      supports: [to]
+  confidence: probable
   review: draft
   note: >-
-    Whether Lycia was Rome's ally or a free state under her is an open question
-    for the project's owner. The treaty of 46 (Mitchell's text, of which only
-    the preamble and the territorial clauses are online) is sworn by Romans and
-    Lycians; Strabo has them free but no longer making their own alliances. No
-    open text found shows the alliance in force at 133: the Lycian League's
-    dedication to Roma on the Capitol (OGIS 551) speaks only of goodwill and
-    is dated c. 150 or c. 80.
+    Free under Rome's protection throughout: the senate freed Lycia from Rhodes
+    in 167 (Polybius 30.5.12), Sulla inscribed the Lycians friends of the Roman
+    people in 84 (App. Mithr. 61), a treaty was sworn by Romans and Lycians in
+    46 (Mitchell's text), and Strabo, writing under Augustus, has them still
+    free (14.3.3), which bracket 133 and 27. The sources differ on what the tie
+    was, so the confidence is probable, not certain: the treaty makes it an
+    alliance, Strabo a free state whose war, peace and alliances "lie in the
+    power of the Romans". The Lycian League's dedication to Roma on the Capitol
+    (OGIS 551) speaks only of goodwill and is dated c. 150 or c. 80.
 
 - polity: rhodus
   type: allied-to

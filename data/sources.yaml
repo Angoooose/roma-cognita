@@ -599,6 +599,12 @@
   kind: ancient
   citation: Cassius Dio, Roman History
 
+- id: polybius
+  kind: ancient
+  citation: Polybius, Histories
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/home.html
+  edition: W. R. Paton's Loeb translation (1922–1927), on LacusCurtius
+
 - id: pausanias
   kind: ancient
   citation: Pausanias, Description of Greece
