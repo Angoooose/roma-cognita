@@ -2975,7 +2975,60 @@
   from: 29 BCE
   to: after 27 BCE
   sources:
-    - { source: philae-stele }
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        brought the army beyond the Nile Cataract … gave audience to ambassadors
+        from the king of the Aethiopians at Philae, received the same king under
+        his protection, and installed a ruler over the Triacontaschoenos on
+        Aethiopian territory
+      supports: [type, of]
+    - source: philae-stele
+      locator: 'Hieroglyphic version'
+      quote: >-
+        Regnal year 1, fourth month of the winter season
+      supports: [from]
+    - source: cassius-dio
+      locator: '51.19.6'
+      quote: >-
+        The day on which Alexandria had been captured they declared a lucky day,
+        and directed that in future years it should be taken by the inhabitants
+        of that city as the starting-point in their reckoning of time.
+      supports: [from]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        Cornelius Gallus led the repression and appointed a Nubian tyrannos to
+        govern the Triakontaschoinos.
+      supports: [type, of]
+    - source: eller-2025
+      locator: 'p. 68'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        the Meroites took advan- tage of the departure of half the legions
+        stationed in Egypt for Arabia to regain a foothold in Lower Nubia
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.28.1'
+      quote: >-
+        Augustus now became consul for the tenth time, with Gaius Norbanus as
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '53.29.3'
+      quote: >-
+        While this was going on, another and a new campaign had at once its
+        beginning and its end. It was conducted by Aelius Gallus, the governor
+        of Egypt, against the country called Arabia Felix
+      supports: [to]
+    - source: strabo
+      locator: '17.1.54'
+      quote: >-
+        The Ethiopians, emboldened in consequence of a part of the forces in
+        Egypt being drawn off by Aelius Gallus, who was engaged in war with the
+        Arabs, invaded the Thebais
+      supports: [to]
   confidence: uncertain
   review: needs-check
 
