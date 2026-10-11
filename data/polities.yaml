@@ -866,7 +866,7 @@
   kind: province
   names:
     - { text: Illyricum, lang: la, preferred: true }
-  from: 59 BCE
+  from: before 59 BCE
   to: after 27 BCE
   sources:
     - source: eutropius
@@ -889,12 +889,32 @@
         the Dalmatian and Macedonian districts … were held to belong to the
         people and the senate
       supports: [kind, to]
+    - source: eutropius
+      locator: '6.4–5'
+      quote: >-
+        Cnaeus Cosconius was sent into Illyricum as proconsul. He reduced a
+        great part of Dalmatia, took Salonae … About the same time, the consul
+        Marcus Aemilius Lepidus, the colleague of Catulus
+      supports: []
+    - source: broughton-mrr
+      locator: 'vol. II, 78 B.C., p. 86'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul in Illyricum, where he occupied portions of the Dalmatian
+        coast, and captured Salonae after two years of campaigning
+      supports: []
     - { source: dzino-2010, locator: 'pp. 80–98' }
   confidence: probable
   review: draft
   note: >-
-    Assigned to Caesar with Cisalpina by the lex Vatinia of 59; governed with
-    it from Aquileia. Vatinius fought the Delmatae there in 45–44.
+    Assigned to Caesar with Cisalpina by the lex Vatinia of 59 (Suet. Iul. 22;
+    Eutropius 6.17, under Caesar and Bibulus); governed with it from Aquileia.
+    Vatinius fought the Delmatae there in 45–44. It read "from 59" until
+    October 2026, but Illyricum was a proconsul's province before Caesar:
+    Cosconius was "sent into Illyricum as proconsul" about Lepidus' consulship
+    of 78 (Eutropius 6.4–5; MRR, 78–76), and Culleolus may have governed it
+    before 59 (MRR). Whether it was held without a break from then is not
+    recorded, so the start is left open: in force in 59, begun no later.
 
 - id: africa-nova
   kind: province
