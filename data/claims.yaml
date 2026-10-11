@@ -11415,7 +11415,7 @@
 - atom: armenia
   polity: armenia
   relation: independent
-  from: 31 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
     - source: tacitus-ann
@@ -11457,7 +11457,7 @@
         summoned his brother Tigranes, who was in Rome, the emperor sent
         Tiberius to drive Artaxes out of the kingdom
       supports: [polity, to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     Artaxias II, defending his crown "by virtue of Parthian strength" (Tac.
