@@ -911,7 +911,7 @@
   location: [4.0356, 46.9258]
   names:
     - { text: Bibracte, preferred: true }
-  from: { earliest: 120 BCE, latest: 100 BCE }
+  from: before 100 BCE
   to: after 27 BCE
   prominence: 2
   labelSide: n
@@ -924,8 +924,9 @@
   note: >-
     The oppidum on Mont Beuvray "lived for only the space of a century,
     straddling the second and first centuries BCE", and was left for Autun in
-    the decades round the turn of the era (Bibracte); its foundation is put at
-    the end of the second century. Its "royal seat" status was dropped in
+    the decades round the turn of the era (Bibracte), so it stood at the turn
+    of the century; the site gives no closer date for its foundation, which
+    was a range of 120–100 here until October 2026. Its "royal seat" status was dropped in
     September 2026: the Aedui were governed by an annual vergobret, not a king
     (BG 1.16).
 
