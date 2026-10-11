@@ -1856,6 +1856,38 @@
 
 - polity: numidia-masinissa
   type: client-of
+  of: rome
+  from: c. 88 BCE
+  to: 82 BCE
+  sources:
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [type, of]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar, fils de Gauda, porte le titre de roi, comme l’atteste une
+        inscription grecque de Syracuse … nous pouvons penser qu’il accède au
+        trône en 88 av. J.-C., si cette date correspond bien à la mort de Gauda.
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire
+      supports: [from, to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Masteabar, Gauda's son, a king beside his brother Hiempsal II, not his
+    vassal; his standing to Rome is taken to be his father's, which nothing
+    records directly.
+
+- polity: numidia-masinissa
+  type: client-of
   of: numidia
   from: 81 BCE
   to: 47 BCE
