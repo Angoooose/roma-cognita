@@ -1834,7 +1834,7 @@
     - { text: Arelate, preferred: true }
     - { text: Col. Arelate }
     - { text: Theline }
-  from: before 133 BCE
+  from: before 49 BCE
   to: after 27 BCE
   prominence: 3
   status:
@@ -1854,6 +1854,19 @@
       quote: >-
         reprPoint: [4.630799, 43.677616]
       supports: [location]
+    - source: caesar-bc
+      locator: '1.36'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=1:chapter=36
+      quote: >-
+        gave orders for building twelve galleys at Arles
+      supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. II, 49 B.C., p. 202'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        202 49 B.C. … raised Massilia in revolt, and when this failed escaped to
+        Pompey (Caes. BC 1.34.2, and 36
+      supports: [from]
     - source: suetonius-tib
       locator: '4.1'
       url: https://topostext.org/work/202
@@ -1879,6 +1892,10 @@
       supports: [to, status]
   confidence: certain
   review: draft
+  note: >-
+    First attested in 49, when Caesar had twelve warships built at Arles for
+    the siege of Massilia (Caes. BC 1.36). It was drawn from "before 133" until
+    October 2026, but no readable text names the town before Caesar.
 
 - id: avaricum
   pleiades: '138207'
