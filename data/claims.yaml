@@ -14894,7 +14894,7 @@
 - atom: atropatene
   polity: atropatene
   relation: client
-  from: 30 BCE
+  from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
     - source: cassius-dio
@@ -14903,13 +14903,13 @@
         but as Antony summoned back his own soldiers, and moreover retained
         those of the king, the latter was in turn defeated and captured, and so
         Armenia was lost together with Media
-      supports: [relation]
+      supports: [relation, from]
     - source: cassius-dio
       locator: '51.16.2'
       quote: >-
         Of his own accord he restored Iotape to the Median king, who had found
         an asylum with him after his defeat
-      supports: []
+      supports: [from]
     - source: res-gestae
       locator: '32'
       quote: >-
@@ -14936,7 +14936,10 @@
     The Mede "was in turn defeated and captured, and so Armenia was lost
     together with Media" (Dio 49.44.4); he found asylum with Octavian (51.16.2;
     RGDA 32, "of the Medes, Artavasdes"). Who held Media Atropatene for Phraates
-    in 30–27 is not known.
+    in 30–27 is not known. When the Parthians took it is not dated: after
+    Antony's recall of his soldiers in 32 (49.44.3–4), and by the Mede's
+    asylum in 30 (51.16.2): between 32 and 30, as Armenia's independence is,
+    drawn at the midpoint, 31. Until October 2026 it read 30.
 
 # --- added September 2026: the extension to 133 BCE, Anatolia -----------------
 #
