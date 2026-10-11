@@ -16083,7 +16083,53 @@
   from: before 133 BCE
   to: 130 BCE
   sources:
-    - { source: josephus-aj, locator: '13.246' }
+    - source: josephus-aj
+      locator: '13.245–248'
+      quote: >-
+        if the besieged would deliver up their arms, and pay tribute for Joppa,
+        and the other cities which bordered upon Judea, and admit a garrison of
+        his, on these terms he would make war against them no longer
+      supports: [polity, relation]
+    - source: josephus-aj
+      locator: '13.236'
+      quote: >-
+        he invaded Judea in the fourth years' of his reign, and the first year
+        of the principality of Hyrcanus, in the hundred and sixty-second
+        Olympiad
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 275'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the first year of John Hyrcanus, B.c. 135—134, he invaded Judea,
+        devastated the whole country, and finally laid siege to Hyrcanus in
+        his capital, Jerusalem.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 275, n. 1'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In the latter period, in Olympiad 162, 3, or B.c. 130-129, Porphyry
+        puts the attack … Owing to the discrepancy of the sources, it would be
+        exceedingly risky to fix a particular year lor the siege
+      supports: []
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Porphyry assigns the death of Antiochus, after a nine years' reign, to
+        Olympiad 162. 4, or B.c. 129-128. … Gutschmid, Geschichte Iran's, Tub.
+        1888, pp. 75-77, who places the death of Antiochus in B.c. 129.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 279'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        dependence on Antiochus VII. also obliged him to take the field with
+        the Syrian monarch against the Parthians in b.c. 129. … The death of
+        Antiochus in the Parthian campaign, in b.c. 128, was for Hyrcanns a
+        favourable occurrence.
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
@@ -16103,9 +16149,48 @@
   from: 129 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.273, 13.395' }
+    - source: josephus-aj
+      locator: '13.273'
+      quote: >-
+        for after the death of Antiochus, he revolted from the Macedonians, nor
+        did he any longer pay them the least regard, either as their subject or
+        their friend
+      supports: [relation]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Gutschmid, Geschichte Iran's, Tub. 1888, pp. 75-77, who places the
+        death of Antiochus in B.c. 129.
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        Now at this time the Jews were in possession of the following cities
+        that had belonged to the Syrians, and Idumeans, and Phoenicians: At the
+        sea-side, Strato's Tower, Apollonia, Joppa
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+        … All these Pompey left in a state of freedom, and joined them to the
+        province of Syria.
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
   confidence: probable
   review: draft
+  note: >-
+    Free of the Seleucids from Antiochus VII's death (AJ 13.273), put in 129
+    (Gutschmid) or 128 (Schürer 1891, 177–178); drawn from 129, with judaea.
+    Joppa is among the Jews' cities under Jannaeus (AJ 13.395) and was taken
+    from them by Pompey in 63 (14.74–76).
 
 - atom: judaea-peraea
   polity: seleucid
@@ -16113,13 +16198,44 @@
   from: before 133 BCE
   to: 101 BCE
   sources:
-    - { source: josephus-aj, locator: '13.235, 13.356' }
+    - source: josephus-aj
+      locator: '13.235'
+      quote: >-
+        he fled to Zeno, who was called Cotylas, who was then the tyrant of
+        the city Philadelphia
+      supports: []
+    - source: josephus-aj
+      locator: '13.356'
+      quote: >-
+        So when Alexander was delivered from the fear he was in of Ptolemy, he
+        presently made an expedition against Coele Syria. He also took Gadara,
+        after a siege of ten months. He took also Areathus, a very strong
+        fortress belonging to the inhabitants above Jordan, where Theodorus,
+        the son of Zeno, had his chief treasure
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 297'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Cleopatra also withdrew her array from Palestine, and Alexander was
+        again ruler of the country. … He began these on the east of the
+        Jordan, for he took Gadara
+      supports: [to]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX, n. 14'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
     Under the kings in name; Zeno Cotylas held Philadelphia (AJ 13.235) and
-    his son Theodorus the stronghold of Amathus (13.356). Who held the Jewish
-    villages of Peraea before Jannaeus is not recorded.
+    his son Theodorus the stronghold of Amathus (13.356, where the
+    translation has "Areathus"). Who held the Jewish villages of Peraea
+    before Jannaeus is not recorded, and no readable text names the kings
+    here: the polity is unbacked. Jannaeus took Amathus once Cleopatra had
+    left the country after the war of 103–101 (Schürer 1891, 297).
 
 - atom: judaea-peraea
   polity: judaea
@@ -16127,35 +16243,155 @@
   from: c. 100 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.356, 13.374' }
+    - source: josephus-aj
+      locator: '13.356'
+      quote: >-
+        So when Alexander was delivered from the fear he was in of Ptolemy, he
+        presently made an expedition against Coele Syria. He also took Gadara,
+        after a siege of ten months. He took also Areathus, a very strong
+        fortress belonging to the inhabitants above Jordan
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '13.374'
+      quote: >-
+        Moreover, he demolished Amathus, while Theodorus durst not fight with
+        him
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 297–298'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Cleopatra also withdrew her array from Palestine, and Alexander was
+        again ruler of the country. … He began these on the east of the
+        Jordan, for he took Gadara
+      supports: [polity, from]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX, n. 14'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: josephus-bj, locator: '1.86–89' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Alexander Jannaeus took Amathus, "a very strong fortress belonging to the
-    inhabitants above Jordan", after Ptolemy Lathyrus' war (AJ 13.356), with
-    Gadara, and demolished it later (13.374). Theodorus beat him once (13.356);
-    the row runs from the first taking.
+    Alexander Jannaeus took Amathus ("Areathus" in the translation), "a very
+    strong fortress belonging to the inhabitants above Jordan", after Ptolemy
+    Lathyrus' war (AJ 13.356), with Gadara, and demolished it later (13.374).
+    Theodorus beat him once (13.356); the row runs from the first taking.
+    The war is dated 103–101 (Van't Dack, cited by Bennett).
 
 - atom: judaea-peraea
   polity: judaea
   relation: client
   from: 63 BCE
   to: 41 BCE
-  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.91'
+      quote: >-
+        So these councils governed the people; the first was at Jerusalem, the
+        second at Gadara, the third at Amathus
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        He then invaded Palestine and deposed Hyrcanus, who was at the moment in
+        charge of affairs there, having been appointed by the Romans
+      supports: [relation, to]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did
+        this man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: certain
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    As judaea (the row is judaea's). Amathus was the seat of one of
+    Gabinius' five councils of the Jews (AJ 14.91).
 
 - atom: judaea-peraea
   polity: judaea-antigonus
   relation: independent
   from: 40 BCE
   to: 38 BCE
-  sources: [{ source: josephus-aj, locator: '14.330–369' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.365'
+      quote: >-
+        And thus was Antigonus brought back into Judea by the king of the
+        Parthians, and received Hyrcanus and Phasaelus for his prisoners
+      supports: []
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [to]
   confidence: probable
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    As judaea (the row is judaea's). No readable text says who held Peraea
+    in 40–37: the polity is Antigonus' only because Judaea was (AJ 14.365).
 
 - atom: judaea-peraea
   polity: judaea
@@ -16163,11 +16399,53 @@
   from: 37 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.487' }
-    - { source: strabo, locator: '16.2.46' }
+    - source: josephus-aj
+      locator: '14.487'
+      quote: >-
+        This destruction befell the city of Jerusalem when Marcus Agrippa and
+        Caninius Gallus were consuls of Rome
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 398, n. 11'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from tlie statement of Josephus it must certainly be concluded that the
+        fall of the city did not occur before B.c. 37
+      supports: [from]
+    - source: cassius-dio
+      locator: '49.22.6'
+      quote: >-
+        These people Antony entrusted to a certain Herod to govern; but
+        Antigonus he bound to a cross and flogged
+      supports: [relation]
+    - source: strabo
+      locator: '16.2.46'
+      quote: >-
+        he received the title and authority of king, first from Antony, and
+        afterwards from Augustus Caesar
+      supports: [relation]
+    - source: josephus-aj
+      locator: '17.188'
+      quote: >-
+        he appointed Antipas, to whom he had before left the kingdom, to be
+        tetrarch of Galilee and Peraea
+      supports: [polity]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        Now to him it was that Peres and Galilee paid their tribute
+      supports: [polity, to]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain, thirty-four
+        years; but since he had been declared king by the Romans, thirty-seven
+      supports: [to]
   confidence: probable
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    As judaea (the row is judaea's). Peraea was still Herod's at his death,
+    when it went with Galilee to Antipas (AJ 17.188, 17.317–320).
 
 - atom: judaea-idumaea
   polity: seleucid
@@ -16175,10 +16453,26 @@
   from: before 133 BCE
   to: 130 BCE
   sources:
-    - { source: josephus-aj, locator: '13.257' }
+    - source: josephus-aj
+      locator: '13.254–258'
+      quote: >-
+        BUT when Hyrcanus heard of the death of Antiochus, he presently made an
+        expedition against the cities of Syria … Hyrcanus took also Dora and
+        Marissa, cities of Idumea, and subdued all the Idumeans
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Gutschmid, Geschichte Iran's, Tub. 1888, pp. 75-77, who places the
+        death of Antiochus in B.c. 129.
+      supports: [to]
   confidence: uncertain
   review: needs-check
-  note: The Idumaeans before Hyrcanus' conquest, under the kings in name.
+  note: >-
+    The Idumaeans before Hyrcanus' conquest, under the kings in name; no
+    readable text names who held them, so the polity and its start are
+    unbacked. The end is the conquest's earliest year (see the next row).
 
 - atom: judaea-idumaea
   polity: judaea
@@ -16186,7 +16480,67 @@
   from: 129 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.257–258' }
+    - source: josephus-aj
+      locator: '13.254–258'
+      quote: >-
+        BUT when Hyrcanus heard of the death of Antiochus, he presently made an
+        expedition against the cities of Syria … Hyrcanus took also Dora and
+        Marissa, cities of Idumea, and subdued all the Idumeans
+      supports: [polity, from]
+    - source: josephus-bj
+      locator: '1.62'
+      quote: >-
+        when Antiochus was gone upon an expedition against the Medes, and so
+        gave Hyrcanus an opportunity of being revenged upon him, he immediately
+        made an attack upon the cities of Syria … he also took a great many
+        other cities of Idumea, with Adoreon and Marissa
+      supports: [polity, from]
+    - source: schurer-1891
+      locator: 'p. 178'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Gutschmid, Geschichte Iran's, Tub. 1888, pp. 75-77, who places the
+        death of Antiochus in B.c. 129.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'p. 280'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Finally, he went south, took the Idumean cities Adora and Marissa, and
+        compelled the Idumeans to submit to circumcision, and to receive the
+        Jewish law.
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        Now at this time the Jews were in possession of the following cities
+        that had belonged to the Syrians, and Idumeans, and Phoenicians: … in
+        the interior around Idumea, Adora, Marissa, and all Idumea
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.10'
+      quote: >-
+        That king Alexander and his wife made him general of all Idumea
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: schurer-vermes }
   confidence: uncertain
   review: needs-check
@@ -16207,10 +16561,48 @@
   relation: client
   from: 63 BCE
   to: 41 BCE
-  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        He then invaded Palestine and deposed Hyrcanus, who was at the moment in
+        charge of affairs there, having been appointed by the Romans
+      supports: [relation, to]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did
+        this man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: certain
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    As judaea (the row is judaea's). No readable text here says Idumaea
+    stayed with Hyrcanus II under Pompey's settlement, though Antipater, his
+    minister, was "in great repute with the Idumeans" (AJ 14.121): the polity
+    is unbacked.
 
 - atom: judaea-idumaea
   polity: judaea-antigonus
@@ -16218,6 +16610,38 @@
   from: 40 BCE
   to: 39 BCE
   sources:
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-bj
+      locator: '1.303'
+      quote: >-
+        Herod did not lie at rest, but seized upon Idumea, and kept it, with
+        two thousand footmen, and four hundred horsemen; and this he did by
+        sending his brother Joseph thither, that no innovation might be made by
+        Antigonus
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        This was the state of matters when Herod, in b.c. 39, landed at
+        Ptolemais.
+      supports: [to]
     - { source: josephus-aj, locator: '14.330–369, 14.396–399, 14.413' }
   confidence: uncertain
   review: draft
@@ -16227,7 +16651,8 @@
     Idumea, and kept it", sending his brother Joseph there "that no innovation
     might be made by Antigonus" (BJ 1.303; AJ 14.413). It ran to 38 with
     Antigonus' Judaea until October 2026; uncertain, because when in that
-    winter is not said.
+    winter is not said. No readable text says Antigonus held Idumaea itself
+    (Herod's family held Masada against him): the polity is unbacked.
 
 - atom: judaea-idumaea
   polity: judaea
@@ -16235,13 +16660,50 @@
   from: 38 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.487' }
-    - { source: strabo, locator: '16.2.46' }
+    - source: josephus-bj
+      locator: '1.303'
+      quote: >-
+        Herod did not lie at rest, but seized upon Idumea, and kept it, with
+        two thousand footmen, and four hundred horsemen
+      supports: [polity, from]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        This was the state of matters when Herod, in b.c. 39, landed at
+        Ptolemais. … In the spring of the year B.c. 38, the Parthians renewed
+        the attack upon Syria.
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        Antony informed them further, that it was for their advantage in the
+        Parthian war that Herod should be king. This seemed good to all the
+        senators; and so they made a decree accordingly.
+      supports: [relation]
+    - source: strabo
+      locator: '16.2.46'
+      quote: >-
+        he received the title and authority of king, first from Antony, and
+        afterwards from Augustus Caesar
+      supports: [relation]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        Idumea, and Judea, and the country of Samaria paid tribute to Archelaus
+      supports: [polity, to]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain, thirty-four
+        years; but since he had been declared king by the Romans, thirty-seven
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Herod's from the winter of 39/38 (BJ 1.303), drawn from 38. It started
-    in 37, with Jerusalem, until October 2026.
+    in 37, with Jerusalem, until October 2026. Still Herod's at his death,
+    when it went to Archelaus (AJ 17.317–320).
 
 - atom: judaea-galilee
   polity: seleucid
@@ -16249,12 +16711,32 @@
   from: before 133 BCE
   to: 106 BCE
   sources:
-    - { source: josephus-aj, locator: '13.318–319' }
+    - source: josephus-aj
+      locator: '13.318–319'
+      quote: >-
+        made war against Iturea, and added a great part of it to Judea
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        John Hyrcanus, B.c. 135-105. Aristobulus, „ 105-104.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'pp. 293–294'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        as Galilee had not hitherto belonged to the territory of the Jewish
+        high priest, the conquests even of John Hyrcanus extending northwards
+        only as far as Samaria and Scythopolis
+      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
     Seleucid in name; its people in part Ituraean (AJ 13.318–319). Who ruled
-    it before the Hasmoneans is not recorded.
+    it before the Hasmoneans is not recorded, and no readable text names the
+    kings here: the polity and its start are unbacked. It ended in 105 until
+    October 2026 (see the next row).
 
 - atom: judaea-galilee
   polity: judaea
@@ -16262,7 +16744,45 @@
   from: 105 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.318–319' }
+    - source: josephus-aj
+      locator: '13.318–319'
+      quote: >-
+        made war against Iturea, and added a great part of it to Judea
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 293–294'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        the most important occurrence which is recorded of his short reign :
+        the conquest and Judaizing of the northern districts of Palestine. …
+        the conjecture has good grounds that the portion conquered by
+        Aristobulus was mainly Galilee
+      supports: [polity, from]
+    - source: schurer-1891
+      locator: 'p. 273'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        John Hyrcanus, B.c. 135-105. Aristobulus, „ 105-104.
+      supports: [from]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: schurer-vermes }
   confidence: uncertain
   review: needs-check
@@ -16280,10 +16800,58 @@
   relation: client
   from: 63 BCE
   to: 41 BCE
-  sources: [{ source: josephus-aj, locator: '14.74–79' }]
+  sources:
+    - source: josephus-aj
+      locator: '14.91'
+      quote: >-
+        the fourth at Jericho, and the fifth at Sepphoris in Galilee
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.158'
+      quote: >-
+        he made Phasaelus, his eldest son, governor of Jerusalem, and of the
+        places that were about it, but committed Galilee to Herod, his next son
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the high priesthood to Hyrcanus … and he made Jerusalem
+        tributary to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.77'
+      quote: >-
+        for now we lost our liberty, and became subject to the Romans
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [from]
+    - source: cassius-dio
+      locator: '48.26.2'
+      quote: >-
+        He then invaded Palestine and deposed Hyrcanus, who was at the moment in
+        charge of affairs there, having been appointed by the Romans
+      supports: [relation, to]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did
+        this man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [to]
   confidence: certain
   review: draft
-  note: As judaea (the row is judaea's).
+  note: >-
+    As judaea (the row is judaea's). Sepphoris was the seat of one of
+    Gabinius' five councils (AJ 14.91), and Antipater gave Galilee to Herod
+    to govern for Hyrcanus (14.158).
 
 - atom: judaea-galilee
   polity: judaea-antigonus
@@ -16291,7 +16859,44 @@
   from: 40 BCE
   to: 40 BCE
   sources:
-    - { source: josephus-aj, locator: '14.330–369, 14.395, 14.413–415' }
+    - source: josephus-aj
+      locator: '14.413'
+      quote: >-
+        went into Galilee, to take certain places which were held by the
+        garrisons of Antigonus
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        they accused Antigonus, and declared him an enemy, not only because of
+        his former opposition to them, but that he had now overlooked the
+        Romans, and taken the government from the Parthians. … And thus did this
+        man receive the kingdom, having obtained it in the hundred and
+        eighty-fourth Olympiad, when Caius Domitius Calvinus was consul the
+        second time, and Caius Asinius Pollio
+      supports: [relation, from]
+    - source: schurer-1891
+      locator: 'p. 389'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        In tlie year b.c. 40, … the great invasion of the Parthians occurred,
+        who overran all Further Asia with their wild hordes
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.394–395'
+      quote: >-
+        BY this time Herod had sailed out of Italy to Ptolemais, and had
+        gotten together no small army, both of strangers and of his own
+        countrymen, and marched through Galilee against Antigonus. … and all
+        Galilee, with some small exception, joined him
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        This was the state of matters when Herod, in b.c. 39, landed at
+        Ptolemais.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -16307,15 +16912,70 @@
   from: 39 BCE
   to: after 27 BCE
   sources:
-    - { source: josephus-aj, locator: '14.487' }
-    - { source: strabo, locator: '16.2.46' }
+    - source: josephus-aj
+      locator: '14.394–395'
+      quote: >-
+        marched through Galilee against Antigonus. … and all Galilee, with some
+        small exception, joined him
+      supports: [polity, from]
+    - source: schurer-1891
+      locator: 'p. 394'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        This was the state of matters when Herod, in b.c. 39, landed at
+        Ptolemais.
+      supports: [from]
+    - source: josephus-aj
+      locator: '14.411'
+      quote: >-
+        sent the Roman army to take their winter quarters in the countries that
+        were come over to him, Judea, and Galilee, and Samaria
+      supports: [polity]
+    - source: josephus-aj
+      locator: '14.384–389'
+      quote: >-
+        Antony informed them further, that it was for their advantage in the
+        Parthian war that Herod should be king. This seemed good to all the
+        senators; and so they made a decree accordingly.
+      supports: [relation]
+    - source: strabo
+      locator: '16.2.46'
+      quote: >-
+        he received the title and authority of king, first from Antony, and
+        afterwards from Augustus Caesar
+      supports: [relation]
+    - source: josephus-aj
+      locator: '17.188'
+      quote: >-
+        he appointed Antipas, to whom he had before left the kingdom, to be
+        tetrarch of Galilee and Peraea
+      supports: [polity]
+    - source: josephus-aj
+      locator: '17.317–320'
+      quote: >-
+        Now to him it was that Peres and Galilee paid their tribute
+      supports: [polity, to]
+    - source: josephus-aj
+      locator: '17.191'
+      quote: >-
+        having reigned, since he had procured Antigonus to be slain, thirty-four
+        years; but since he had been declared king by the Romans, thirty-seven
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 395'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        the Galileans had seized the opportunity to rise again against Herod
+        … Galilee was without difficulty reconquered.
+      supports: []
   confidence: probable
   review: draft
   note: >-
     Herod's from 39, when Galilee joined him (AJ 14.395); the Galileans rose
     against him in 38 while he was with Antony at Samosata, and he took it
     back "without difficulty" (Schürer 395). It started in 37, with Jerusalem,
-    until October 2026.
+    until October 2026. Still Herod's at his death, when it went to Antipas
+    (AJ 17.188, 17.317–320).
 
 - atom: samaria
   polity: seleucid
@@ -16323,12 +16983,35 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
-    - { source: josephus-aj, locator: '13.275–281' }
+    - source: josephus-aj
+      locator: '13.127'
+      quote: >-
+        I remit to them the three prefectures, Apherims, and Lydda, and
+        Ramatha, which have been added to Judea out of Samaria
+      supports: [polity, from]
+    - source: josephus-aj
+      locator: '13.275–277'
+      quote: >-
+        the injuries they had done to the people of Merissa, a colony of the
+        Jews, and confederate with them, and this in compliance to the kings of
+        Syria. … to call for Antiochus Cyzicenus to help them, who came readily
+        to their assistance
+      supports: [polity, relation, from]
+    - source: schurer-1891
+      locator: 'pp. 283–284, n.'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Samaria therefore falls between B.c. Ill and B.c. 107
+      supports: [to]
   confidence: probable
   review: needs-check
   note: >-
-    Samaria was a Seleucid city: Antiochus IX came to its help when Hyrcanus'
-    sons besieged it (AJ 13.276–277).
+    Samaria was a Seleucid city: Demetrius II gave three of its districts to
+    Judaea (AJ 13.127), and Antiochus IX came to its help when Hyrcanus' sons
+    besieged it (AJ 13.276–277), which brackets 133. Shechem and Gerizim, in
+    the same ground, fell to Hyrcanus soon after 129 (AJ 13.255); the city
+    held out to 111–107 (Schürer 1891, 283–284), and the end is that range's
+    earliest year.
 
 - atom: samaria
   polity: judaea
@@ -16336,7 +17019,60 @@
   from: 111 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.255–256, 13.275–281' }
+    - source: josephus-aj
+      locator: '13.280–281'
+      quote: >-
+        when Hyrcanus had taken that city, which was not done till after a
+        year's siege, he was not contented with doing that only, but he
+        demolished it entirely
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Thus Samaria, after a year's siege, fell into the hands of the Jews,
+        and was utterly razed to the ground.
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 283–284, n.'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Samaria therefore falls between B.c. Ill and B.c. 107,
+        probably not long before B.c. 107
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.255'
+      quote: >-
+        Shechem and Garizin, and the nation of the Cutheans
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        Now at this time the Jews were in possession of the following cities
+        that had belonged to the Syrians, and Idumeans, and Phoenicians: … and
+        all Idumea, Samaria, Mount Carmel
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella,
+        and Dia, and Samaria … All these Pompey left in a state of freedom, and
+        joined them to the province of Syria.
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
     - { source: schurer-vermes }
   confidence: uncertain
   review: needs-check
@@ -16357,12 +17093,37 @@
   from: before 133 BCE
   to: 112 BCE
   sources:
-    - { source: josephus-aj, locator: '13.275–281' }
+    - source: josephus-aj
+      locator: '13.188'
+      quote: >-
+        came from Antioch to Bethshan, which by the Greeks is called
+        Scythopolis
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.280'
+      quote: >-
+        he was such a lover of money, that he openly betrayed Scythopolis, and
+        other places near it, to the Jews
+      supports: [polity, relation, from, to]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        the following cities that had belonged to the Syrians
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 283–284, n.'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Samaria therefore falls between B.c. Ill and B.c. 107
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    The Jezreel with Scythopolis, and the Greek cities across the Jordan. It
-    ended in 108 until October 2026 (see the next row).
+    The Jezreel with Scythopolis, and the Greek cities across the Jordan.
+    Trypho, regent for the young Antiochus VI, came to Scythopolis in the 140s
+    (AJ 13.188), and Antiochus IX's general Epicrates still held it during
+    the siege of Samaria (13.280), which brackets 133. It ended in 108 until
+    October 2026 (see the next row).
 
 - atom: syria-palaestina
   polity: judaea
@@ -16370,7 +17131,59 @@
   from: 111 BCE
   to: 64 BCE
   sources:
-    - { source: josephus-aj, locator: '13.275–281, 13.393–397' }
+    - source: josephus-aj
+      locator: '13.280'
+      quote: >-
+        he was such a lover of money, that he openly betrayed Scythopolis, and
+        other places near it, to the Jews, but was not able to make them raise
+        the siege of Samaria
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'p. 283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Epicrates, also achieved nothing, but treacherously gave over
+        Scythopolis to the Jews. Thus Samaria, after a year's siege, fell into
+        the hands of the Jews
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 283–284, n.'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        The conquest of Samaria therefore falls between B.c. Ill and B.c. 107
+      supports: [from]
+    - source: josephus-aj
+      locator: '13.393'
+      quote: >-
+        But Alexander marched again to the city Dia, and took it
+      supports: [polity]
+    - source: josephus-aj
+      locator: '13.395'
+      quote: >-
+        Mount Carmel, and Mount Tabor, Scythopolis, and Gadara; of the country
+        of Gaulonitis Seleucia and Gabala
+      supports: [polity]
+    - source: schurer-1891
+      locator: 'pp. 282–283'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        from the death of Antiochus Sidetes, in B.c. 128, Judea had been able
+        to keep itself … absolutely independent of Syria.
+      supports: [relation]
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella,
+        and Dia, and Samaria … All these Pompey left in a state of freedom, and
+        joined them to the province of Syria.
+      supports: [to]
+    - source: josephus-aj
+      locator: '14.66'
+      quote: >-
+        the city was taken on the third month, on the day of the fast, upon the
+        hundred and seventy-ninth Olympiad, when Caius Antonius and Marcus
+        Tullius Cicero were consuls
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -16389,9 +17202,43 @@
   from: before 133 BCE
   to: 101 BCE
   sources:
-    - { source: josephus-aj, locator: '13.356' }
+    - source: schurer-1910
+      locator: 'p. 101'
+      url: https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt
+      quote: >-
+        It was conquered by Antiochus both at his first invasion (b.c. 218),
+        and when he finally took possession of Palestine after his victory at
+        Panias, B.C. 198. It was taken by Alexander Jannaeus after a ten
+        months' siege
+      supports: [polity, relation, from]
+    - source: josephus-aj
+      locator: '13.356'
+      quote: >-
+        So when Alexander was delivered from the fear he was in of Ptolemy, he
+        presently made an expedition against Coele Syria. He also took Gadara,
+        after a siege of ten months.
+      supports: [to]
+    - source: schurer-1891
+      locator: 'p. 297'
+      url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
+      quote: >-
+        Cleopatra also withdrew her array from Palestine, and Alexander was
+        again ruler of the country. … He began these on the east of the
+        Jordan, for he took Gadara
+      supports: [to]
+    - source: bennett-ptolemies
+      locator: 'Ptolemy IX, n. 14'
+      url: https://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/ptolemy_ix.htm
+      quote: >-
+        The Judean-Syrian-Egyptian Confict of 103-101 B.C.
+      supports: [to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    Gadara was Seleucid from Antiochus III's conquest of 198 until Jannaeus
+    took it (Schürer 1910, 101), once Cleopatra had left the country after
+    the war of 103–101 (Schürer 1891, 297; Van't Dack, cited by Bennett).
+    Hippos' history before Pompey is not recorded.
 
 - atom: gadara-hippos
   polity: judaea
