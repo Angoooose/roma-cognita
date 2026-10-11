@@ -338,7 +338,7 @@
         and all the Gauls, — that is, Gallia Narbonensis, Gallia Lugdunensis,
         Aquitania, and Belgica
       supports: [type, to]
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     From the conquest, no earlier than the surrender of the Allobroges in the
@@ -346,7 +346,11 @@
     Domitius' proconsulship of 120, in which Broughton has him organise the
     province (MRR I 524). It read 121 until October 2026, a convention no
     readable text states; whether the regular province is this old is
-    disputed (data/proposed-corrections.yaml).
+    disputed (data/proposed-corrections.yaml). Amela Valverde (2019, p. 39)
+    writes that the creation, traditionally Domitius', is now held to be rather
+    Marius' work after the Cimbric wars (consul 107), or even Pompey's in the
+    Sertorian war. Broughton and Amela Valverde disagree, so the confidence is
+    probable, not certain.
 
 - polity: cilicia
   type: province-of
