@@ -16345,17 +16345,19 @@
   polity: seleucid
   relation: independent
   from: before 133 BCE
-  to: 108 BCE
+  to: 112 BCE
   sources:
     - { source: josephus-aj, locator: '13.275–281' }
   confidence: uncertain
   review: needs-check
-  note: The Jezreel with Scythopolis, and the Greek cities across the Jordan.
+  note: >-
+    The Jezreel with Scythopolis, and the Greek cities across the Jordan. It
+    ended in 108 until October 2026 (see the next row).
 
 - atom: syria-palaestina
   polity: judaea
   relation: independent
-  from: { earliest: 107 BCE, latest: 83 BCE }
+  from: 111 BCE
   to: 64 BCE
   sources:
     - { source: josephus-aj, locator: '13.275–281, 13.393–397' }
@@ -16363,10 +16365,13 @@
   review: needs-check
   note: >-
     Scythopolis and "other places near it" were betrayed to the Jews during
-    the siege of Samaria (AJ 13.280), c. 107; Dion, Pella, Gerasa and the
-    Gaulanitis fell only to Jannaeus in his three years' war of the 80s (AJ
-    13.393–397). The atom cannot be split by those years; the range is both,
-    and it is drawn from the first.
+    the siege of Samaria (AJ 13.280), which Schürer (1891, 283–284) ends
+    between 111 and 107; Dion, Pella, Gerasa and the Gaulanitis fell only to
+    Jannaeus in his three years' war of the 80s (AJ 13.393–397). The atom
+    cannot be split by those years. Until October 2026 the start was the
+    range 107–83, drawn at its midpoint (95), which left 107–96 blank after
+    the Seleucid row; it is now drawn from 111, the earliest year the siege
+    can have ended, with Samaria's row.
 
 - atom: gadara-hippos
   polity: seleucid
