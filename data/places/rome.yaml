@@ -2476,6 +2476,20 @@
         The opposite side of the street was lined with private mansions of families who were
         eminent in the history of the republic and the empire
       supports: [to]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 439'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html'
+      quote: >-
+        on the north side of the Alta Semita and probably in the eastern part of the present
+        gardens of the royal palace, near the edge of the hill
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 438'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html'
+      quote: >-
+        said to have been vowed by L. Papirius Cursor when dictator in 325 B.C. , and
+        dedicated in 293 by his son
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
