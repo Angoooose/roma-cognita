@@ -375,7 +375,7 @@
   location: [22.8786, 37.9056]
   names:
     - { text: Corinthus, preferred: true }
-  from: 44 BCE
+  from: before 44 BCE
   to: after 27 BCE
   prominence: 2
   status: colonia
@@ -396,7 +396,7 @@
         restored again, because of its favorable position, by the deified
         Caesar , who colonized it with people that belonged for the most part
         to the freedmen class.
-      supports: [status]
+      supports: [status, from]
     - source: appian
       locator: Pun. 136
       quote: >-
@@ -409,7 +409,7 @@
       quote: >-
         he had restored again Carthage and Corinth … he not only colonized
         them, in that he regarded them as colonies of the Romans
-      supports: [status]
+      supports: [status, from]
     - source: pleiades
       locator: places/570182
       url: https://pleiades.stoa.org/places/570182/json
@@ -420,7 +420,10 @@
   review: draft
   note:
     Sacked by Mummius in 146 and not resettled as a city until Caesar's Colonia Laus Iulia
-    Corinthiensis in 44. The isthmus was never empty, but the polis was.
+    Corinthiensis. The isthmus was never empty, but the polis was. The start was 44 BCE
+    until October 2026; no readable text gives the year Corinth was colonized, only that
+    Caesar did it (Strabo 8.6.23; Dio 43.50.3) and that he arranged it before he was
+    assassinated (Appian, Pun. 136), so it is now an open end at 44.
 
 - id: lugdunum
   pleiades: '167717'
