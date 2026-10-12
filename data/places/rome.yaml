@@ -4831,6 +4831,28 @@
     - { source: coarelli-1988, locator: 'pp. 38, 180–204' }
     - { source: rakob-heilmeyer-1973, locator: 'pp. 4, 19, 35–36' }
     - { source: ziolkowski-1988, locator: 'pp. 309–333' }
+    - source: platner-ashby
+      locator: 'Portunium, p. 430'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html'
+      quote: >-
+        the ancient circular temple … which was occupied by the church of S.
+        Stephanus Rotundus (1140), S. Stefano delle Carrozze (sixteenth century), and
+        was later called S. Maria del Sole, in the Piazza Bocca della Verità
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: 'https://www.digitalaugustanrome.org/records/round-temple-tiberis/'
+      quote: >-
+        The well-preserved Round Temple by the *Tiber, with its ring of 20 Corinthian
+        columns surrounding a circular
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: 'https://www.digitalaugustanrome.org/records/round-temple-tiberis/'
+      quote: >-
+        Sometime in the decades after Augustus, major repair work was carried out on
+        about half of the colonnade
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -4859,6 +4881,28 @@
     - { source: livy, locator: '24.47.15; 25.7.6' }
     - { source: platner-ashby, locator: 'Fortuna, aedes, pp. 214–215' }
     - { source: digital-augustan-rome, locator: 'Fortuna et Mater Matuta, Aedes' }
+    - source: digital-augustan-rome
+      locator: 'Fortuna et Mater Matuta, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-et-mater-matuta-aedes/'
+      quote: >-
+        Twin temples dedicated to Fortuna and Mater Matuta located at the N border of
+        the *Forum Bovarium, just inside the *Porta Carmentalis
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Fortuna et Mater Matuta, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-et-mater-matuta-aedes/'
+      quote: >-
+        Under the nave of S. Omobono is the … of Mater Matuta, while the temple of
+        Fortuna lay further S. The visible temple remains seem to belong to the
+        reconstruction in 212 B.C.
+      supports: [location, from]
+    - source: ovid-fasti
+      locator: '6.569–580'
+      url: 'https://www.poetryintranslation.com/PITBR/Latin/OvidFastiBkSix.php'
+      quote: >-
+        Fortuna, the same day is yours, your temple Founded by the same king, in the
+        same place. And whose is that statue hidden under draped robes?
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -4880,6 +4924,22 @@
   sources:
     - { source: livy, locator: '24.47.15; 25.7.6' }
     - { source: digital-augustan-rome, locator: 'Fortuna et Mater Matuta, Aedes' }
+    - source: digital-augustan-rome
+      locator: 'Fortuna et Mater Matuta, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-et-mater-matuta-aedes/'
+      quote: >-
+        Under the nave of S. Omobono is the … of Mater Matuta, while the temple of
+        Fortuna lay further S. The visible temple remains seem to belong to the
+        reconstruction in 212 B.C.
+      supports: [location, from]
+    - source: ovid-fasti
+      locator: '6.475–480'
+      url: 'https://www.poetryintranslation.com/PITBR/Latin/OvidFastiBkSix.php'
+      quote: >-
+        Good mothers (since the Matralia is your festival), Go, offer the Theban
+        goddess the golden cakes she’s owed. Near the bridges and mighty Circus is a
+        famous square
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -4899,6 +4959,25 @@
   sources:
     - { source: platner-ashby, locator: 'Ara Maxima Herculis, pp. 253–254' }
     - { source: digital-augustan-rome, locator: 'Hercules, Ara Maxima' }
+    - source: platner-ashby
+      locator: 'Ara Maxima Herculis, p. 253'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Ara_Maxima_Herculis.html'
+      quote: >-
+        the earliest cult-centre of Hercules in Rome, in the forum Boarium
+      supports: [from, location]
+    - source: digital-augustan-rome
+      locator: 'Hercules, Ara Maxima'
+      url: 'https://www.digitalaugustanrome.org/records/hercules-ara-maxima/'
+      quote: >-
+        The remains of a large, solidly built podium, exceeding 20 x 30 m, of Anio tufa
+        blocks with travertine facing under the E part of S. Maria in Cosmedin
+      supports: [location]
+    - source: tacitus-ann
+      locator: '15.41'
+      quote: >-
+        of the most ancient sacred sites, Servius Tullius’ Temple of Luna; the great
+        altar and sanctuary which Arcadian Evander dedicated to propitious Hercules
+      supports: [from, to]
   confidence: probable
   review: draft
   note: >-
@@ -4929,6 +5008,26 @@
   sources:
     - { source: platner-ashby, locator: 'Porticus Pompei, pp. 428–429' }
     - { source: digital-augustan-rome, locator: 'Porticus Pompeianae' }
+    - source: platner-ashby
+      locator: 'Porticus Pompei, p. 428'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Porticus_Pompei.html'
+      quote: >-
+        built in 55 B.C. by Pompeius at the same time as his Theatre (q.v.), and
+        adjoining its scaena
+      supports: [condition, location]
+    - source: digital-augustan-rome
+      locator: 'Porticus Pompeianae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-pompeianae/'
+      quote: >-
+        were directly behind the stage building of the *Theatrum Pompeium, which was
+        dedicated in 55 B.C.
+      supports: [location, condition]
+    - source: platner-ashby
+      locator: 'Porticus Pompei, p. 428'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Porticus_Pompei.html'
+      quote: >-
+        The porticus was burned in the reign of Carinus
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -4957,6 +5056,38 @@
     - { source: digital-augustan-rome, locator: 'Curia Pompei (Pompeiana)' }
     - { source: cassius-dio, locator: '47.19.1' }
     - { source: suetonius-iul, locator: '88' }
+    - source: digital-augustan-rome
+      locator: 'Curia Pompei (Pompeiana)'
+      url: 'https://www.digitalaugustanrome.org/records/curia-pompei-pompeiana/'
+      quote: >-
+        The senate-house built by Cn. Pompeius Magnus at the same time as the
+        *Theatrum Pompeium in 55 B.C. stood as an … at the E end of the *Porticus
+        Pompei
+      supports: [condition, location]
+    - source: digital-augustan-rome
+      locator: 'Curia Pompei (Pompeiana)'
+      url: 'https://www.digitalaugustanrome.org/records/curia-pompei-pompeiana/'
+      quote: >-
+        It has been identified with the tufa remains in … 20 x 24 m) behind the Temple of *Fortuna Huiusce Diei
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Curia Pompei (Pompeiana)'
+      url: 'https://www.digitalaugustanrome.org/records/curia-pompei-pompeiana/'
+      quote: >-
+        In the Augustan period, the Curia Pompei no longer functioned as a
+        senate-house, but the building remained as a charred, walled-up memorial.
+      supports: [to]
+    - source: cassius-dio
+      locator: '47.19.1'
+      quote: >-
+        The room in which he had been murdered they closed for the time being and
+        later transformed into a privy.
+      supports: []
+    - source: suetonius-iul
+      locator: '88'
+      quote: >-
+        It was voted that the curia in which he was slain be walled up
+      supports: []
   confidence: certain
   review: draft
   note: >-
@@ -4980,6 +5111,33 @@
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple A' }
     - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
     - { source: caprioli-2010, locator: 'p. 49' }
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple A'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-a/'
+      quote: >-
+        One of the earliest of the four known temples in the sacral area near Largo
+        Argentina, Temple A was built on virgin soil … 250-225 B.C.
+      supports: [from, location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Largo Argentina'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-largo-argentina/'
+      quote: >-
+        they are commonly referred to as Temples A, B, C and D, proceeding from N to S
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple A'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-a/'
+      quote: >-
+        In its final modification, during the third quarter of the 1st c. B.C., the
+        building acquired a new tufa podium … In the 12th c., this temple was
+        incorporated into the Church of S. Nicola dei Caesarini
+      supports: [to]
+    - source: sovrintendenza-capitolina
+      locator: 'Area Sacra di Largo Argentina'
+      url: 'https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/aree_archeologiche/area_sacra_di_largo_argentina'
+      quote: >-
+        il tempio A (metà del III secolo a.C., dedicato a Giuturna
+      supports: [from]
   confidence: certain
   review: draft
   note: >-
@@ -5007,6 +5165,27 @@
     - { source: digital-augustan-rome, locator: 'Fortuna Huiusce Diei, Aedes' }
     - { source: caprioli-2010, locator: 'pp. 48–58' }
     - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
+    - source: digital-augustan-rome
+      locator: 'Fortuna Huiusce Diei, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-huiusce-diei-aedes/'
+      quote: >-
+        vowed by Q. Lutatius Catulus to ‘this day’s Fortune’ … on 30 June 101 B.C.,
+        during a battle at Vercellae against the Cimbri (Plut., … 26.2); it was
+        dedicated on the anniversary of the conflict sometime before 87 B.C.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Fortuna Huiusce Diei, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-huiusce-diei-aedes/'
+      quote: >-
+        temple located in the *“Area Sacra” in Largo Argentina, commonly known as
+        Temple B
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Fortuna Huiusce Diei, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-huiusce-diei-aedes/'
+      quote: >-
+        The temple was not modified again until after the fire of A.D. 80
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -5032,6 +5211,36 @@
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple C' }
     - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
     - { source: caprioli-2010, locator: 'p. 49' }
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple C'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-c/'
+      quote: >-
+        One of the four known temples in the sacral area near Largo Argentina, Temple
+        C was perhaps the oldest, originally built in the first half of the 3rd c.
+        B.C.
+      supports: [from, location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Largo Argentina'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-largo-argentina/'
+      quote: >-
+        they are commonly referred to as Temples A, B, C and D, proceeding from N to S
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple C'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-c/'
+      quote: >-
+        The massive tufa podium, with heavy moldings typical of the early 3rd c. B.C.,
+        still stands, though the visible remains of the … floor and
+        superstructure are Domitianic in date
+      supports: [to]
+    - source: sovrintendenza-capitolina
+      locator: 'Area Sacra di Largo Argentina'
+      url: 'https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/aree_archeologiche/area_sacra_di_largo_argentina'
+      quote: >-
+        La storia antica dell’area inizia agli esordi del III secolo a.C., quando,
+        sull’originario piano di campagna costituito da terra battuta e ghiaia, viene
+        costruito il tempio C
+      supports: [from]
   confidence: certain
   review: draft
   note: >-
@@ -5054,6 +5263,32 @@
   sources:
     - { source: digital-augustan-rome, locator: 'Area Sacra, Temple D' }
     - { source: sovrintendenza-capitolina, locator: 'I templi repubblicani' }
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple D'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-d/'
+      quote: >-
+        Temple D is the least well-known, and lies, largely unexcavated, below Via
+        Florida. From its earliest phase, … 200-150 B.C., only a cement podium remains
+      supports: [location, from]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Largo Argentina'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-largo-argentina/'
+      quote: >-
+        they are commonly referred to as Temples A, B, C and D, proceeding from N to S
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Temple D'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-temple-d/'
+      quote: >-
+        The superstructure, probably a Domitianic restoration, gives few clues to the
+        building’s appearance in the Augustan era
+      supports: [to]
+    - source: sovrintendenza-capitolina
+      locator: 'Area Sacra di Largo Argentina'
+      url: 'https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/aree_archeologiche/area_sacra_di_largo_argentina'
+      quote: >-
+        il tempio D (inizi II secolo a.C., dedicato ai Lares Permarini
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -5079,6 +5314,35 @@
     - { source: digital-augustan-rome, locator: '"Area Sacra": Largo Argentina' }
     - { source: obsequens, locator: '39' }
     - { source: osm-rome, locator: way/23955329 }
+    - source: sovrintendenza-capitolina
+      locator: 'Area Sacra di Largo Argentina'
+      url: 'https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/aree_archeologiche/area_sacra_di_largo_argentina'
+      quote: >-
+        Contestualmente all’ultimo edificio viene messo in opera il primo pavimento, in
+        lastre di tufo, probabilmente dopo il devastante incendio del 111 a.C.
+      supports: [from]
+    - source: sovrintendenza-capitolina
+      locator: 'Area Sacra di Largo Argentina'
+      url: 'https://www.sovraintendenzaroma.it/i_luoghi/roma_antica/aree_archeologiche/area_sacra_di_largo_argentina'
+      quote: >-
+        Un altro incendio, nell’80 d.C., provoca una radicale trasformazione sotto
+        l’imperatore Domiziano: al di sopra delle macerie spianate viene realizzato un
+        nuovo pavimento in lastre di travertino
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Largo Argentina'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-largo-argentina/'
+      quote: >-
+        Modern name for a sacral area in the S *Campus Martius which contained a series
+        of small temples … its area was bound on the W by the *Porticus Pompeianae
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: '"Area Sacra": Largo Argentina'
+      url: 'https://www.digitalaugustanrome.org/records/area-sacra-largo-argentina/'
+      quote: >-
+        Two porticoes were added soon after the original tufa pavement. One runs E–W
+        just N of Temple A
+      supports: []
   confidence: probable
   review: draft
   note: >-
@@ -5108,6 +5372,32 @@
     - { source: facchin-2011, locator: 'pp. 13–38' }
     - { source: digital-augustan-rome, locator: 'Lares Permarini, Aedes' }
     - { source: osm-rome, locator: way/125375013 }
+    - source: facchin-2011
+      locator: 'p. 24'
+      quote: >-
+        Si configura come un imponente tempio ottastilo periptero, fondato forse già nel
+        III secolo a.C. o al più tardi alla metà del II secolo a.C.
+      supports: [from]
+    - source: facchin-2011
+      locator: 'p. 29'
+      quote: >-
+        Il nucleo del podio è stato indagato nel corso degli scavi del 1996-98 nelle
+        cantine di via Celsa
+      supports: [location]
+    - source: facchin-2011
+      locator: 'p. 28'
+      quote: >-
+        Complessivamente si individuano tre fasi di vita … La seconda fase,
+        verosimilmente di metà I sec. a.C., è caratterizzata dalla ridecorazione dei
+        fusti delle colonne; mentre la terza, di età domizianea
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Lares Permarini, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/lares-permarini-aedes/'
+      quote: >-
+        Remnants of this temple were discovered in 1938 near the intersection of Via
+        delle Botteghe Oscure and Via Celsa
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -5139,6 +5429,20 @@
     - { source: cavallero-2018, locator: 'pp. 317–334' }
     - { source: pliny-nh, locator: '36.26' }
     - { source: cicero-arch, locator: '27' }
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: 'https://www.digitalaugustanrome.org/records/mars-aedes-campus-flaminius/'
+      quote: >-
+        Remains of a hexastyle peripteral temple near the Church of S. Salvatore in
+        Campo (in the N Circus Flaminius)
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: 'https://www.digitalaugustanrome.org/records/mars-aedes-campus-flaminius/'
+      quote: >-
+        A fragment of the Severan Marble Plan … that depicts part of a peripteral
+        temple with a long, narrow
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5165,6 +5469,27 @@
     - { source: livy, locator: '10.19.17' }
     - { source: platner-ashby, locator: 'Bellona, aedes, pp. 82–84' }
     - { source: digital-augustan-rome, locator: 'Bellona, Aedes' }
+    - source: digital-augustan-rome
+      locator: 'Bellona, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/bellona-aedes/'
+      quote: >-
+        A large Temple of Bellona … stood immediately E of the Temple of *Apollo
+        Medicus. The temple was vowed in 296 B.C. by Appius Claudius Caecus during a
+        battle with the Etruscans and Samnites and dedicated after his victory
+      supports: [location, from]
+    - source: digital-augustan-rome
+      locator: 'Bellona, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/bellona-aedes/'
+      quote: >-
+        The remains of the temple were discovered in Piazza Montanara
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Bellona, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/bellona-aedes/'
+      quote: >-
+        was probably dedicated by Appius Claudius Pulcher (also known as Appius
+        Maior), consul of 38 B.C., in the year 33 or 32 B.C.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5190,6 +5515,34 @@
     - { source: velleius, locator: '1.11.3' }
     - { source: platner-ashby, locator: 'Porticus Octaviae, pp. 427–428' }
     - { source: digital-augustan-rome, locator: 'Porticus Octaviae' }
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-octaviae/'
+      quote: >-
+        Scholarly consensus holds that the … was built by Q. Caecilius
+        Metellus Macedonicus in 146 B.C. around the temples of Iuno Regina and
+        Iuppiter Stator.
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-octaviae/'
+      quote: >-
+        Name for the Augustan renovation of the Republican … which was located in the area of the *Circus Flaminius
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: 'https://www.digitalaugustanrome.org/records/porticus-octaviae/'
+      quote: >-
+        Between 27 and 23 B.C. a member of the imperial family restored the portico
+        and added a library to the complex
+      supports: [to]
+    - source: velleius
+      locator: '1.11.3'
+      quote: >-
+        This is the Metellus Macedonicus who had previously built the portico about the
+        two temples without inscriptions which are now surrounded by the portico of
+        Octavia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5213,6 +5566,26 @@
     - { source: livy-per, locator: '20' }
     - { source: digital-augustan-rome, locator: 'Circus Flaminius' }
     - { source: forma-urbis-stanford, locator: 'fragment 31cc' }
+    - source: digital-augustan-rome
+      locator: 'Circus Flaminius'
+      url: 'https://www.digitalaugustanrome.org/records/circus-flaminius/'
+      quote: >-
+        The Circus Flaminius occupied the … property donated to the people of Rome in 221 B.C. by C. Flaminius
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Circus Flaminius'
+      url: 'https://www.digitalaugustanrome.org/records/circus-flaminius/'
+      quote: >-
+        In 1960 Gatti, after analyzing the ancient written sources and an account by
+        Albertini, relocated the Circus Flaminius S of the *Porticus Octaviae
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Circus Flaminius'
+      url: 'https://www.digitalaugustanrome.org/records/circus-flaminius/'
+      quote: >-
+        In the Augustan period the Circus Flaminius was paved and its large open area
+        was used only on specific occasions
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5238,6 +5611,34 @@
     - { source: cassius-dio, locator: '53.23.1–2' }
     - { source: platner-ashby, locator: 'Saepta Julia, pp. 460–461' }
     - { source: digital-augustan-rome, locator: 'Saepta Iulia' }
+    - source: digital-augustan-rome
+      locator: 'Saepta Iulia'
+      url: 'https://www.digitalaugustanrome.org/records/saepta-iulia/'
+      quote: >-
+        Planned by Julius Caesar in 54 B.C. … the Saepta was continued by M. Aemilius
+        Lepidus … after Caesar’s death and dedicated as the … in 26 B.C. by M.
+        Agrippa
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '53.23.1–2'
+      quote: >-
+        Agrippa had adorned with marble tablets and paintings this edifice in the
+        Campus Martius, which had been constructed by Lepidus with porticos all
+        around it for the meetings of the comitia tributa
+      supports: [from, to]
+    - source: cassius-dio
+      locator: '49.12.4'
+      quote: >-
+        As a result Lepidus was shorn of all authority and could not even live in
+        Italy without a guard
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Saepta Iulia'
+      url: 'https://www.digitalaugustanrome.org/records/saepta-iulia/'
+      quote: >-
+        Located E of the *Pantheum, *Thermae of Agrippa, *Stagnum and *Hecatostylum, N
+        of the *Diribitorium to which it was joined
+      supports: [location]
   confidence: uncertain
   review: draft
   note: >-
@@ -5265,6 +5666,34 @@
     - { source: res-gestae, locator: '21' }
     - { source: platner-ashby, locator: 'Theatrum Marcelli, pp. 513–515' }
     - { source: digital-augustan-rome, locator: 'Theatrum Marcelli' }
+    - source: cassius-dio
+      locator: '43.49.1–2'
+      quote: >-
+        The next year, during which Caesar was at once dictator for the fifth time …
+        and consul for the fifth time, choosing Antony as his colleague … Being anxious
+        to build a theatre, as Pompey had done, he laid the foundations, but did not
+        finish it; it was Augustus who later completed it
+      supports: [from, condition]
+    - source: digital-augustan-rome
+      locator: 'Theatrum Marcelli'
+      url: 'https://www.digitalaugustanrome.org/records/theatrum-marcelli/'
+      quote: >-
+        located at the E end of the *Circus Flaminius in front of the Temple of *Apollo
+        Medicus
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Theatrum Marcelli'
+      url: 'https://www.digitalaugustanrome.org/records/theatrum-marcelli/'
+      quote: >-
+        Dedicated in either 13 (Dio. Cass. 54.26.1) or 11 B.C.
+      supports: [to, condition]
+    - source: digital-augustan-rome
+      locator: 'Theatrum Marcelli'
+      url: 'https://www.digitalaugustanrome.org/records/theatrum-marcelli/'
+      quote: >-
+        Even though the construction was not complete, part of the celebrations of
+        the … in 17 B.C. took place in the theater
+      supports: [condition]
   confidence: certain
   review: draft
   note: >-
@@ -5298,6 +5727,39 @@
     - { source: platner-ashby, locator: 'Aqua Marcia, s.v.' }
     - { source: ashby-1935, locator: 'pp. 128–152' }
     - { source: pleiades, locator: places/423565 }
+    - source: frontinus
+      locator: '1.7'
+      quote: >-
+        in the consul … of Servius Sulpicius … Galba and Lucius Aurelius Cotta … the
+        Senate commissioned Marcius … since the term of his praetor … was not
+        sufficient for the completion of the enterprise, it was extended for a second
+        year
+      supports: [from, condition]
+    - source: frontinus
+      locator: '1.7'
+      quote: >-
+        in the consul … of Gaius Laelius and Quintus … but on both
+        occasions the influence of Marcius Rex carried the day; and thus the water was
+        brought to the Capitol
+      supports: [condition]
+    - source: frontinus
+      locator: '1.9'
+      quote: >-
+        In the same year, Agrippa repaired the conduits of Appia, Old Anio, and Marcia
+      supports: [condition]
+    - source: frontinus
+      locator: '1.4'
+      quote: >-
+        But there now run into the City: the Appian aqueduct, Old Anio, Marcia, Tepula,
+        Julia
+      supports: [to]
+    - source: ashby-1935
+      locator: 'p. 137'
+      url: 'https://archive.org/download/1935TheAqueductsOfAncientRomeThomasAshby/1935%20-%20The%20aqueducts%20of%20Ancient%20Rome%20%28Thomas%20Ashby%29_djvu.txt'
+      quote: >-
+        From Tor Fiscale to Porta Furba, 1,350 m., the Marcia continues to carry the
+        Acqua Felice.
+      supports: [location]
   confidence: certain
   review: draft
   note: >-
@@ -5323,6 +5785,25 @@
     - { source: platner-ashby, locator: 'Aqua Tepula, s.v.' }
     - { source: ashby-1935, locator: 'pp. 159–160' }
     - { source: pleiades, locator: places/423566 }
+    - source: frontinus
+      locator: '1.8'
+      quote: >-
+        in the consulate of Marcus Plautus Hypsaeus and Marcus Fulvius Flaccus … had
+        the water called Tepula brought to Rome and to the Capitol
+      supports: [from]
+    - source: frontinus
+      locator: '1.4'
+      quote: >-
+        But there now run into the City: the Appian aqueduct, Old Anio, Marcia, Tepula,
+        Julia
+      supports: [to]
+    - source: frontinus
+      locator: '1.19'
+      quote: >-
+        Of these waters, six are received in covered catch-basins, this side the
+        seventh milestone on the Latin Way … Three of these, Julia, Marcia, and Tepula,
+        are carried by the same arches from the catch-basins onward.
+      supports: [location]
   confidence: certain
   review: draft
   note: >-
@@ -5349,6 +5830,32 @@
     - { source: platner-ashby, locator: 'Aqua Julia, s.v.' }
     - { source: ashby-1935, locator: 'pp. 161–166' }
     - { source: pleiades, locator: places/423564 }
+    - source: frontinus
+      locator: '1.9'
+      quote: >-
+        in the second consulate of the Emperor Caesar Augustus, when Lucius Volcatius
+        was his colleague … Agrippa, when aedile, after his first consul … took
+        another independent source of supply
+      supports: [from]
+    - source: frontinus
+      locator: '1.4'
+      quote: >-
+        But there now run into the City: the Appian aqueduct, Old Anio, Marcia, Tepula,
+        Julia
+      supports: [to]
+    - source: ashby-1935
+      locator: 'p. 145'
+      url: 'https://archive.org/download/1935TheAqueductsOfAncientRomeThomasAshby/1935%20-%20The%20aqueducts%20of%20Ancient%20Rome%20%28Thomas%20Ashby%29_djvu.txt'
+      quote: >-
+        Just to the east of the Gate the specus of the Tepula and Iulia diverge
+      supports: [location]
+    - source: ashby-1935
+      locator: 'p. 145'
+      url: 'https://archive.org/download/1935TheAqueductsOfAncientRomeThomasAshby/1935%20-%20The%20aqueducts%20of%20Ancient%20Rome%20%28Thomas%20Ashby%29_djvu.txt'
+      quote: >-
+        A fine Arch was built by Augustus, in 5 b.c., over Via Tiburtina … The
+        dedicatory inscription of Augustus is on the exterior of the Iulia’s specus
+      supports: [location]
   confidence: probable
   review: draft
   note: >-
@@ -5380,6 +5887,33 @@
     - { source: tacitus-ann, locator: '11.1.1' }
     - { source: plutarch, locator: 'Lucullus 39.2, 41.5–6' }
     - { source: frontinus, locator: '1.22' }
+    - source: platner-ashby
+      locator: 'Horti Luculliani, p. 268'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Luculliani.html'
+      quote: >-
+        the earliest gardens on the Pincian, laid out by L. Licinius Lucullus about 60
+        B.C.
+      supports: [from, location]
+    - source: platner-ashby
+      locator: 'Horti Luculliani, pp. 268–269'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Luculliani.html'
+      quote: >-
+        They were situated immediately above the point where the aqua Virgo emerged
+        from its under … close to the junction of the present Vie due Macelli
+        and Capo le Case
+      supports: [location]
+    - source: plutarch
+      locator: 'Lucullus 39.2'
+      quote: >-
+        Even now, when luxury has increased so much, the gardens of Lucullus are
+        counted among the most costly of the imperial gardens.
+      supports: [to]
+    - source: tacitus-ann
+      locator: '11.1'
+      quote: >-
+        she herself also coveted the gardens laid out by Lucullus which Asiaticus was
+        adorning with remarkable splendour
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5409,8 +5943,27 @@
     - { source: plutarch, locator: 'Pompey 40.5, 44.3' }
     - { source: asconius, locator: 'Pro Milone, argument, pp. 33, 36 Clark; commentary pp. 50–52 Clark' }
     - { source: velleius, locator: '2.60.3' }
-    - { source: appian, locator: 'Civil Wars 3.14' }
+    - { source: appian, locator: 'BC 3.14' }
     - { source: cicero-phil, locator: '2.109' }
+    - source: plutarch
+      locator: 'Pompey 44.3'
+      quote: >-
+        wishing to have Afranius made consul, Pompey spent money lavishly on his behalf
+        among the tribes, and the people went down to Pompey's gardens to get it
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Horti Pompeiani, p. 270'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/horti.html'
+      quote: >-
+        gardens of Pompeius Magnus in the campus Martius
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Horti Pompeiani, p. 270'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/horti.html'
+      quote: >-
+        They were given to Antonius by Caesar after Pompeius' death … and were still
+        called Pompeiani in the early empire
+      supports: [to]
   confidence: uncertain
   review: draft
   note: >-
@@ -5442,8 +5995,33 @@
     - { source: cicero-phil, locator: '2.109' }
     - { source: horace-sat, locator: '1.9.18' }
     - { source: tacitus-ann, locator: '2.41.1' }
-    - { source: appian, locator: 'Civil Wars 2.143' }
+    - { source: appian, locator: 'BC 2.143' }
     - { source: cassius-dio, locator: '44.35.3' }
+    - source: platner-ashby
+      locator: 'Horti Caesaris (2), p. 266'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Caesaris.html'
+      quote: >-
+        the gardens of Julius Caesar, on the right bank of the Tiber … Their exact
+        limits are unknown, but they extended from a point near the porta Portuensis
+        southwards along the via Portuensis
+      supports: [location]
+    - source: suetonius-iul
+      locator: '83.2'
+      quote: >-
+        To the people he left his gardens near the Tiber for their common use
+      supports: [from, location]
+    - source: cicero-att
+      locator: '15.15.2'
+      quote: >-
+        The Queen's insolence, too, when she was living in Caesar's trans-Tiberine
+        villa, I cannot recall without a pang.
+      supports: [from]
+    - source: tacitus-ann
+      locator: '2.41'
+      quote: >-
+        a temple to Fors Fortuna beside the Tiber, in the gardens which Julius Caesar
+        the dictator bequeathed to the Roman people
+      supports: [to, location]
   confidence: probable
   review: draft
   note: >-
@@ -5472,6 +6050,24 @@
     - { source: richardson-1992, locator: 'Horti Sallustiani, pp. 202–203' }
     - { source: pleiades, locator: places/166405461 }
     - { source: ps-cicero-in-sallustium, locator: '19' }
+    - source: platner-ashby
+      locator: 'Horti Sallustiani, p. 271'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Sallustiani.html'
+      quote: >-
+        the gardens of the historian Sallust in Region VI
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Horti Sallustiani, p. 272'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Sallustiani.html'
+      quote: >-
+        The eastern boundary of these horti was probably the via Salaria vetus
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Horti Sallustiani, p. 271'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Sallustiani.html'
+      quote: >-
+        They were a favourite resort of Vespasian
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5504,6 +6100,40 @@
     - { source: varro-ll, locator: '5.25' }
     - { source: cicero-phil, locator: '9.17' }
     - { source: strabo, locator: '5.3.9' }
+    - source: platner-ashby
+      locator: 'Campus Esquilinus, pp. 90–91'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Campi.html'
+      quote: >-
+        it is said to have been situated north of the via Labicana (Strabo, loc. cit.
+        ), and it probably included part of the present Piazza Vittorio Emanuele
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Campus Esquilinus, p. 91'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Campi.html'
+      quote: >-
+        It formed a part of what had … been the early Esquiline necropolis
+      supports: [from]
+    - source: cicero-phil
+      locator: '9.17'
+      quote: >-
+        Caius Pansa, the consul, shall assign him a place for a tomb in the Esquiline
+        plain
+      supports: [to]
+    - source: macleane-1895
+      locator: 'Life of Horace'
+      url: 'https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt'
+      quote: >-
+        The first book of the Satires was published probably in B.C. 35
+      supports: [to]
+    - source: macleane-1895
+      locator: 'Satires 1.8, introduction'
+      url: 'https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt'
+      quote: >-
+        Campus Esquilinus, in which was a public burial-ground for the poorest of the
+        people … This place, which must always have been a public nuisance and a
+        source of malaria, was given (as some say) by a decree of the senate to
+        Mæcenas, or else purchased by him, cleared, drained, and laid out in gardens
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5532,6 +6162,40 @@
     - { source: pleiades, locator: places/399141643 }
     - { source: horace-sat, locator: '1.8.7, 14–16' }
     - { source: cassius-dio, locator: '55.7.6' }
+    - source: platner-ashby
+      locator: 'Horti Maecenatis, p. 269'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Maecenatis.html'
+      quote: >-
+        gardens which Maecenas laid out on the Esquiline, on the Servian agger and the
+        adjacent necropolis, thus transforming this unsavoury region into a beautiful
+        promenade
+      supports: [location, from]
+    - source: platner-ashby
+      locator: 'Horti Maecenatis, p. 269'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Maecenatis.html'
+      quote: >-
+        They became imperial property after the death of Maecenas, and Tiberius lived
+        here after his return to Rome in 2 A.D.
+      supports: [to]
+    - source: cicero-phil
+      locator: '9.17'
+      quote: >-
+        Caius Pansa, the consul, shall assign him a place for a tomb in the Esquiline
+        plain
+      supports: [from]
+    - source: macleane-1895
+      locator: 'Life of Horace'
+      url: 'https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt'
+      quote: >-
+        The first book of the Satires was published probably in B.C. 35
+      supports: [from]
+    - source: macleane-1895
+      locator: 'Satires 1.8, introduction'
+      url: 'https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt'
+      quote: >-
+        was given (as some say) by a decree of the senate to Mæcenas, or else purchased
+        by him, cleared, drained, and laid out in gardens
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -5559,10 +6223,38 @@
     - { source: platner-ashby, locator: 'Lucus Furrinae, pp. 317–318' }
     - { source: richardson-1992, locator: 'Lucus Furrinae, p. 235' }
     - { source: pleiades, locator: places/432336962 }
-    - { source: plutarch, locator: 'C. Gracchus 17.2' }
+    - { source: plutarch, locator: 'C. Gracch. 17.2' }
     - { source: de-viris-illustribus, locator: '65.5' }
     - { source: cicero-nd, locator: '3.46' }
     - { source: varro-ll, locator: '6.19' }
+    - source: platner-ashby
+      locator: 'Lucus Furrinae, pp. 317–318'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Lucus_Furrinae.html'
+      quote: >-
+        a grove on the right bank of the Tiber, on the site now partly occupied by the
+        Villa Sciarra on the Janiculum . It was in this grove that C. Gracchus met a
+        voluntary death in 121 B.C.
+      supports: [location, from]
+    - source: platner-ashby
+      locator: 'Lucus Furrinae, p. 318'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Lucus_Furrinae.html'
+      quote: >-
+        quoius deae honos apud antiquos. Nam ei sacra instituta annua et flamen
+        attributus
+      supports: [from]
+    - source: plutarch
+      locator: 'C. Gracch. 17.2'
+      quote: >-
+        He barely succeeded in escaping into a sacred grove of the Furies, and there
+        fell by the hand of Philocrates
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Lucus Furrinae, p. 318'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Lucus_Furrinae.html'
+      quote: >-
+        It belongs to the latter half of the second century A.D. , and shows that while
+        the old cult of Furrina was not entirely forgotten
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -5591,6 +6283,37 @@
     - { source: livy, locator: '1.21.3' }
     - { source: vitruvius, locator: '8.3.1' }
     - { source: plutarch, locator: 'Numa 13.2' }
+    - source: platner-ashby
+      locator: 'Camenae, p. 89'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Camenae.html'
+      quote: >-
+        The spring was undoubtedly at the foot of the southern extremity of the Caelian
+        hill, inside the boundaries of the Villa Mattei … The grove was around the
+        spring
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Camenae, p. 89'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Camenae.html'
+      quote: >-
+        according to tradition, Numa built beside it a small bronze aedicula … which,
+        after having been struck by lightning and removed to the temple of Honos et
+        Virtus , was again transferred by Fulvius Nobilior to the temple of Hercules
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Camenae, Camenarum Fons'
+      url: 'https://www.digitalaugustanrome.org/records/camenae-camenarum-fons/'
+      quote: >-
+        A sacred spring and grove, the sanctuary of the Camenae was situated near —
+        probably just outside — the *Porta Capena at the foot of the *Caelian
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Camenae, Camenarum Fons'
+      url: 'https://www.digitalaugustanrome.org/records/camenae-camenarum-fons/'
+      quote: >-
+        Juvenal, when mentioning such a traffic station at the Porta Capena, regrets
+        that the grove and shrine of the sacred spring, then let out to Jews and
+        exploited for grass and wood, had lost its old sylvan character
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
