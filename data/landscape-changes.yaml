@@ -14,6 +14,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: wilson-1933
+      locator: 'p. 23'
+      url: https://archive.org/download/suezcanal032262mbp/suezcanal032262mbp_djvu.txt
+      quote: >-
+        In April 1859 the work began at Port Said.
+      supports: [op, from, to]
+    - source: wilson-1933
+      locator: 'p. 38'
+      url: https://archive.org/download/suezcanal032262mbp/suezcanal032262mbp_djvu.txt
+      quote: >-
+        gave notice that the canal would be formally opened on … November 1869.
+      supports: [op, to]
     - { source: karabell-2003 }
     - { source: osm-land-polygons, locator: "channel centrelines; see canals.ts" }
   confidence: certain
@@ -114,7 +126,26 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: suetonius-iul, locator: '44: Caesar planned to drain it' }
+    - source: suetonius-iul
+      locator: '44'
+      quote: >-
+        to drain the Pomptine marshes; to let out the water from Lake Fucinus
+      supports: [op]
+    - source: strabo
+      locator: '5.3.13'
+      quote: >-
+        Lake Fucinus. This [lake] is vast as a sea, and is of great service to
+        the Marsi and all the surrounding nations.
+      supports: [op, to]
+    - source: ispra-368-avezzano
+      locator: 'p. 19'
+      quote: >-
+        Questo bacino era occupato da un lago che si estendeva per una
+        superficie di 150 Kmq tra 649 e 667 m s.l.m. … e che, nonostante un
+        primo tentativo di bonifica effettuato in età romana (II secolo d.C.),
+        era ancora presente nella seconda metà del secolo scorso, quando venne
+        definitivamente prosciugato per ottenere terreno agricolo
+      supports: [op, from, to]
     - { source: wikipedia-fucine-lake, locator: recorded depths 1783–1861; area at its largest }
     - { source: mapterhorn, locator: 'z11 terrain: the basin below 668 m' }
   confidence: probable
@@ -130,7 +161,27 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '9.2.16–18: a circuit of 380 stades, changing greatly with the seasons' }
+    - source: strabo
+      locator: '9.2.18'
+      quote: >-
+        And though the subterranean channels filled up again, Crates the mining
+        engineer of Chalcis ceased clearing away the obstructions because of
+        party strife among the Boeotians, although, as he himself says in the
+        letter to Alexander, many places had already been drained.
+      supports: [from]
+    - source: strabo
+      locator: '9.2.19'
+      quote: >-
+        Now it is a large lake, having a circuit of three hundred and eighty
+        stadia, but its outlets are nowhere to be seen, except for the fissure
+        which admits the Cephissus, and for the marshes.
+      supports: [op, to]
+    - source: koutsoyiannis-kopais
+      locator: 'p. 2'
+      quote: >-
+        After 3000 year, in 1882 Greek state started a drainage project and
+        achieved to complete it 50 years later.
+      supports: [op, to]
     - { source: koutsoyiannis-kopais, locator: 'levels +92 to +97 m' }
     - { source: knauss-1987 }
     - { source: mapterhorn, locator: 'z11 terrain: the basin below 97 m' }
@@ -148,7 +199,26 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '9.5.15, 9.5.22: Lake Boebeïs' }
+    - source: herodotus
+      locator: '7.129'
+      quote: >-
+        these rivers, and besides these rivers the lake Boibeis also, had no
+        names as they have now
+      supports: [from]
+    - source: strabo
+      locator: '9.5.2'
+      quote: >-
+        But there remains, nevertheless, Lake Nessonis, which is a large lake,
+        and Lake Boebeis, which is smaller than the former and nearer to the
+        seacoast.
+      supports: [op, to]
+    - source: strabo
+      locator: '9.5.15'
+      quote: >-
+        Lake Boebeis is near Pherae, and also borders on the foothills of Pelion
+        and the frontiers of Magnesia; and Boebe is a place situated on the
+        lake.
+      supports: [op, to]
     - { source: wikipedia-lake-karla, locator: area; drained 1962 }
     - { source: mapterhorn, locator: 'z11 terrain: the basin below 49 m' }
   confidence: uncertain
@@ -164,8 +234,26 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '17.1.35–38' }
-    - { source: herodotus, locator: '2.149' }
+    - source: herodotus
+      locator: '2.149'
+      quote: >-
+        a cause for marvel even greater than this is afforded by the lake, which
+        is called the lake of Moiris, along the side of which this labyrinth is
+        built.
+      supports: [op, from]
+    - source: strabo
+      locator: '17.1.35'
+      quote: >-
+        It has also the remarkable lake Moeris, which in extent is a sea, and
+        the colour of its waters resembles that of the sea.
+      supports: [op, to]
+    - source: strabo
+      locator: '17.1.37'
+      quote: >-
+        The lake Moeris, by its magnitude and depth, is able to sustain the
+        superabundance of water which flows into it at the time of the rise of
+        the river
+      supports: [op, to]
     - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
     - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
     - { source: mapterhorn, locator: 'z10 terrain: the depression below −2 m' }
@@ -189,6 +277,26 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: salomon-2018
+      locator: 'p. 265, abstract'
+      quote: >-
+        The port-city of Rome, which today lies 4 km from the coastline
+      supports: [op]
+    - source: salomon-2018
+      locator: 'p. 265, abstract'
+      quote: >-
+        the coastline shifted rapidly westward between the 8th and the 6th c.
+        BCE followed by a slow progradation and possible erosion phases until
+        the end of the 1st c. CE
+      supports: [op, from, to]
+    - source: ashby-1927
+      locator: 'p. 218'
+      url: https://archive.org/download/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        The coast-line has advanced at least a mile and a half on the N. side of
+        the river-mouth also, though the distance gradually diminishes as we go
+        up the coast. The Roman shore-line can be traced clearly here also
+      supports: [op]
     - { source: salomon-2018, locator: 'cores ISF-1, TB-1; fig. 1 (wall of 63–58 BCE, 2nd–3rd-century coast)' }
     - { source: salomon-2023, locator: 'fig. 1, coastline of the 2nd century CE' }
     - { source: strabo, locator: '5.3.5: Ostia harbourless from the Tiber’s silt' }
@@ -206,6 +314,21 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: vittori-2026
+      locator: 'abstract'
+      quote: >-
+        After the mid‐4th century cal BC, salinity peaks decreased, possibly
+        reducing the lagoon's potential for saltworks and fostering greater
+        reliance on the Maccarese saltworks.
+      supports: [op, from]
+    - source: ashby-1927
+      locator: 'p. 219'
+      url: https://archive.org/download/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        a far older road, the Via Campana, so called because it led past the
+        sanctuary of the Arval Brethren … to the Campus Salinarum Romanarum, the
+        salt marshes on the right bank of the Tiber
+      supports: [op, to]
     - { source: di-rita-2010, locator: brackish from the 9th–8th century BCE }
   confidence: uncertain
   review: needs-check
@@ -220,7 +343,24 @@
   to: after 27 BCE
   sources:
     - { source: salomon-2018, locator: 'fig. 1, the 19th-century lagoon' }
-    - { source: vittori-2015, locator: kept open to the sea for the salt works }
+    - source: vittori-2015
+      locator: 'abstract'
+      quote: >-
+        from the middle of the 1st millennia BC to the 19th century AD, the
+        lagoon probably remained connected to the sea and progressively silted,
+        until it disappeared in the 19th century
+      supports: [op, from, to]
+    - source: salomon-2023
+      locator: 'From Ostia to the Ostia-Portus system'
+      quote: >-
+        At Ostia, local factors included the positions of the coastline and the
+        riverbanks, limitations imposed by the salt lagoon of Stagno di Ostia
+      supports: [op]
+    - source: tacitus-ann
+      locator: '15.43'
+      quote: >-
+        He assigned the Ostian Marshes to receive the rubble
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -232,6 +372,23 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: pasquinucci-2014
+      locator: 'p. 35'
+      quote: >-
+        This coastline was almost stable from the 8 th to the 2 nd cen- tury BC
+      supports: [op, from]
+    - source: pasquinucci-2014
+      locator: 'p. 35'
+      quote: >-
+        From the 2 nd -1 st century BC up to about 1830 this coastline prograded
+        7 km westwards, mostly in corre- spondence with the a rno mouth
+      supports: [op, to]
+    - source: strabo
+      locator: '5.2.5'
+      quote: >-
+        so that necessarily the voyage up from the sea is difficult. This voyage
+        is about 20 stadia.
+      supports: [op, to]
     - { source: pasquinucci-2014, locator: 'fig. 2, the innermost ancient shoreline (after Mazzanti 2003)' }
     - { source: kaniewski-2018, locator: 'fig. 8A, the Roman period' }
     - { source: strabo, locator: '5.2.5: Pisa 20 stades from the sea by the river' }
@@ -249,7 +406,27 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: kaniewski-2018, locator: 'fig. 8A; the lagoon formed about 200 BCE' }
+    - source: kaniewski-2018
+      locator: 'Discussion'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107670/fullTextXML
+      quote: >-
+        the onset of the protected lagoon … is chronologically constrained to
+        around 200 ± 30 BC
+      supports: [op, from]
+    - source: kaniewski-2018
+      locator: 'fig. 8 caption'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107670/fullTextXML
+      quote: >-
+        Roman period - a wide lagoon basin, hosting Portus Pisanus as mentioned
+        in literary sources
+      supports: [op, to]
+    - source: kaniewski-2018
+      locator: 'Discussion'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6107670/fullTextXML
+      quote: >-
+        Livorno was finally sold to Florence in 1421 AD when the former Roman
+        harbour basin started to lose its direct connection with the sea
+      supports: [op, to]
   confidence: probable
   review: draft
   note: >-
@@ -261,6 +438,31 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: ispra-205-comacchio
+      locator: 'p. 31'
+      quote: >-
+        La linea di costa nella prima epoca romana è costituita dal sistema di
+        cordoni litoranei V (fig 13)
+      supports: [op, from]
+    - source: ispra-205-comacchio
+      locator: 'p. 115'
+      quote: >-
+        Si può quindi dedurre che dal IV al I secolo a C vi fu un imponente
+        avanzamento della linea di spiaggia
+      supports: [from]
+    - source: ispra-205-comacchio
+      locator: 'p. 118'
+      quote: >-
+        posizio- nata quindi lungo la linea di costa di età augustea, che
+        corrispondeva sostanzial- mente al cordone litoraneo che descrive un
+        ampio arco tra Lagosanto, Comacchio e Porto Garibaldi
+      supports: [op, to]
+    - source: strabo
+      locator: '5.1.7'
+      quote: >-
+        They say that it formerly stood on the sea; now, however, the district
+        is inland about 90 stadia from the sea.
+      supports: [op, to]
     - { source: ispra-205-comacchio, locator: 'fig. 13 (after Ciabatti 1966), ridge V; p. 118, the Comacchio ship' }
     - { source: ciabatti-1966 }
     - { source: cirelli-2013, locator: 'fig. 2, Ravenna and Classe' }
@@ -283,8 +485,28 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: strabo
+      locator: '5.1.7'
+      quote: >-
+        Situated in the marshes is the great [city of] Ravenna, built entirely
+        on piles, and traversed by canals, which you cross by bridges or
+        ferry-boats. At the full tides it is washed by a considerable quantity
+        of sea-water
+      supports: [op, to]
+    - source: abballe-2024
+      locator: 'p. 243'
+      quote: >-
+        During the Roman and Late Antique periods, the Ravenna Greater Region
+        was largely characterized by a wetland landscape of lagoons, marshes,
+        and swamps
+      supports: [op, to]
+    - source: ispra-205-comacchio
+      locator: 'p. 55'
+      quote: >-
+        durante la trasgressione olocenica, di un sistema barriera lagu- na,
+        come documentato anche nella limitrofa area di Ravenna
+      supports: [from]
     - { source: cirelli-2013, locator: 'fig. 2' }
-    - { source: strabo, locator: '5.1.7: Ravenna built on piles in the marshes' }
   confidence: uncertain
   review: needs-check
   note: >-
