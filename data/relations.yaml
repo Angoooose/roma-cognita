@@ -1817,7 +1817,7 @@
 - polity: emesa
   type: allied-to
   of: rome
-  from: { earliest: 64 BCE, latest: 51 BCE }
+  from: 64 BCE
   to: { earliest: 47 BCE, latest: 32 BCE }
   sources:
     - source: cicero-fam
@@ -1833,6 +1833,12 @@
         Arethusa , belonging to Sampsiceramus and Iamblichus his son, chiefs of
         the tribe of the Emeseni .
       supports: []
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
     - source: josephus-aj
       locator: '14.129'
       quote: >-
@@ -1854,7 +1860,9 @@
     Cicero's Iamblichus "of the Arabians" is Emesa's. A friendly dynast in 51
     and 47, not a dependent one. It was client-of from 64 to 31 until October
     2026: no readable text dates a tie to Pompey's settlement of 64, so it
-    begins between that and Cicero's despatch of 51; it ends between 47, when
+    begins between that and Cicero's despatch of 51, and is drawn from 64,
+    the earlier bound (Dio 37.6.4–7.1), as the claim is, so as not to leave
+    64–58 blank after the independent row; it ends between 47, when
     Iamblichus helped Caesar, and 32, since he is first seen dependent in 31
     (see the client-of row).
 

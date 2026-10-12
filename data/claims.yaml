@@ -18042,7 +18042,7 @@
 - atom: emesa
   polity: emesa
   relation: allied
-  from: { earliest: 64 BCE, latest: 51 BCE }
+  from: 64 BCE
   to: { earliest: 47 BCE, latest: 32 BCE }
   sources:
     - source: strabo
@@ -18051,6 +18051,12 @@
         Arethusa, belonging to Sampsiceramus and Iamblichus his son, chiefs of
         the tribe of the Emeseni.
       supports: [polity]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
     - source: cicero-fam
       locator: '15.1.2'
       quote: >-
@@ -18078,7 +18084,10 @@
     the Parthians in 51 and was "well-disposed and friendly to our Republic",
     and helped Caesar in 47 (AJ 14.129). Begins between Pompey's settlement of
     Syria (64), before which Emesa was independent, and Cicero's despatch of
-    51. Ends between 47, when it still acted as a friend, and 32, the year
+    51. Drawn from 64, the range's earlier bound, Pompey in Syria in the
+    consulship of Caesar and Figulus (Dio 37.6.4–7.1): as a range (64–51) it
+    sat at 57 and left 64–58 blank after the independent row, which ends in
+    65. Ends between 47, when it still acted as a friend, and 32, the year
     before it is first seen dependent (see the client row). Until October 2026
     this was a client row from 64 to 31.
 
