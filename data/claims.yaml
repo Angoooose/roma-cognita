@@ -3535,7 +3535,7 @@
 - atom: cilicia-campestris
   polity: cilicia
   relation: province
-  from: { earliest: 67 BCE, latest: 62 BCE }
+  from: 67 BCE
   to: 44 BCE
   sources:
     - source: borgia-2017
@@ -3585,7 +3585,7 @@
         It has been previously observed that the province of Cilicia was
         probably dismembered soon after Caesar's death.
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     The plain came under Rome with Pompey, who settled pirates in its cities
@@ -3595,7 +3595,11 @@
     settled pirates at Soli (Plut. Pompey 28.4); Magie's annexation with the
     making of Syria a province, in 64, or earlier under Lucullus (I 376); and
     Borgia's "new province of Cilicia created in 62 BC" (301). Until October
-    2026 the range was 67–64, which left Borgia's 62 out. The province "was probably dismembered soon
+    2026 the range was 67–64, which left Borgia's 62 out; then 67–62, drawn
+    at 64, which left 69–65 blank after Tigranes' row (to 70). It is now drawn
+    from 67, the range's first year, and lowered from probable; 69–68 stay
+    blank, as no text read says who held the plain between Tigranes'
+    withdrawal and Pompey's command. The province "was probably dismembered soon
     after Caesar's death" (I 433); elsewhere Magie puts the plain's attachment
     to Syria "apparently in the course of 44" (I 418), which would make 44
     Syria's; the next row (syria, from 43) is left as it is.
