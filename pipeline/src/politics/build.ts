@@ -19,6 +19,7 @@
  * fill stops exactly where the drawn coast does.
  *
  *   npm run politics -w pipeline
+ *   npm run politics -w pipeline -- --data   (data.json alone, after a change to data/)
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
@@ -26,7 +27,7 @@ import { fileURLToPath } from 'node:url'
 import { availableParallelism } from 'node:os'
 import { Worker } from 'node:worker_threads'
 import { DATA_RECT, TILE_TEXELS, tileRect } from '@roma-cognita/world'
-import { formatYear, type Endpoint } from '@roma-cognita/schema'
+import { formatYear, type Endpoint, type SourceRef } from '@roma-cognita/schema'
 import { loadDataset } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import { edgesTouch, inside, type Ring } from '../water/raster.ts'
@@ -57,6 +58,14 @@ type LabelledRing = Ring & { label: number }
 async function main() {
   const t0 = Date.now()
   const data = loadDataset()
+  if (process.argv.includes('--data')) {
+    mkdirSync(OUT, { recursive: true })
+    writeFileSync(join(OUT, 'data.json'), JSON.stringify(timeSeries(data)))
+    console.log(
+      `wrote data.json, ${data.polities.length} polities, ${data.claims.length} claims`,
+    )
+    return
+  }
   if (data.atoms.length > SEA - 1) throw new Error(`${data.atoms.length} atoms; labels stop at ${SEA - 1}`)
   if (!existsSync(join(WATER, 'index.json'))) throw new Error('no coast mask: run npm run water -w pipeline first')
   const water = JSON.parse(readFileSync(join(WATER, 'index.json'), 'utf8')) as {
@@ -201,6 +210,9 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
     data.names.find((n) => n.target.kind === 'polity' && n.target.id === id && n.preferred)?.text ??
     data.names.find((n) => n.target.kind === 'polity' && n.target.id === id)?.text ??
     id
+  // The page a quote was read on, where there is one, before the link the locator builds.
+  const cited = (sources: SourceRef[]) =>
+    sources.map((s) => ({ ...s, passage: s.url ?? passageUrl(s.source, s.locator) }))
   const years = data.claims.flatMap((c) => [c.from.year, c.to.year])
   const window = [Math.min(...years), Math.max(...years)]
   return {
@@ -218,7 +230,12 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       names: data.names
         .filter((n) => n.target.kind === 'polity' && n.target.id === p.id && n.preferred)
         .map((n) => ({ text: n.text, from: n.from.year, to: n.to.year })),
+      from: end(p.from),
+      to: end(p.to),
       ruler: p.ruler,
+      confidence: p.confidence,
+      sources: cited(p.sources),
+      note: p.note,
     })),
     claims: data.claims.map((c) => ({
       atom: c.atom,
@@ -228,8 +245,7 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       to: end(c.to),
       confidence: c.confidence,
       review: c.review,
-      // The page a quote was read on, where there is one, before the link the locator builds.
-      sources: c.sources.map((s) => ({ ...s, passage: s.url ?? passageUrl(s.source, s.locator) })),
+      sources: cited(c.sources),
       note: c.note,
     })),
     relations: data.relations.map((r) => ({

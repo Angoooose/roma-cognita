@@ -3,6 +3,7 @@ export { MapCamera, type CameraState } from './camera/MapCamera.ts'
 export { PROJECTION, FRAME, projection } from '@roma-cognita/world'
 export {
   type PoliticalHit,
+  type CitedSource,
   type ClaimRecord,
   type PolityRecord,
   type PoliticsLegend,
