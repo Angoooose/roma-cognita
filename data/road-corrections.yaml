@@ -147,7 +147,7 @@
 - id: ostiensis
   itinere: Rome-Ostia
   name: Via Ostiensis
-  from: before 240 BCE
+  from: before 201 BCE
   to: after 27 BCE
   sources:
     - source: platner-ashby
@@ -162,6 +162,19 @@
         intercepted a cart intended for garden rubbish, and took the road for
         Ostia
       supports: [to]
+    - source: salomon-2023
+      locator: 'From Ostia to the Ostia-Portus system'
+      quote: >-
+        a fortified early settlement ( Castrum ) built between the 4 th and the
+        3 rd c. BCE
+      supports: [from]
+    - source: salomon-2023
+      locator: 'From Ostia to the Ostia-Portus system'
+      quote: >-
+        The last section of the via Ostiensis coming from Rome towards the sea
+        corresponds to the decumanus of the Castrum that the city was built
+        around.
+      supports: [from]
     - { source: sitar, locator: '4707' }
     - { source: ashby-1927, locator: 'p. 214' }
   confidence: certain
@@ -172,7 +185,11 @@
     stretch of its basalt paving outside the Porta S. Paolo, "a piece of its pavement
     … found in the ditch surrounding the old Protestant cemetery in 1824", is dated
     260–240 BCE (SITAR 4707). The modern road "coincided with it closely" (Ashby
-    1927).
+    1927). The start was "before 240 BCE" until October 2026, from SITAR's date
+    for that paving, which could not be read again (its WFS no longer returns the
+    piece) and which no readable text states; it is now the end of the 3rd
+    century, by which the castrum of Ostia, whose decumanus is the road's last
+    stretch, stood (Salomon 2023).
 
 - id: praenestina
   itinere: Rome-Praeneste
