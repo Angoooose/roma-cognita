@@ -414,14 +414,14 @@
       quote: >-
         It empties into the sea in seven mouths … then the Bolbitine, and
         finally the Canopic, which is called by some the Heracleotic.
-      supports: [from, to]
+      supports: [from]
     - source: diodorus
       locator: '1.46.7'
       url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
       quote: >-
         at the time we visited those regions, in the One Hundred and Eightieth
         Olympiad
-      supports: [from, to]
+      supports: []
     - source: strabo
       locator: '17.1.18'
       quote: >-
