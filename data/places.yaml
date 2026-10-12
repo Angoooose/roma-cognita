@@ -636,7 +636,10 @@
         the province of Crete, until October 2026: no open text says where the
         governor of Crete sat before the joint province. It read "provincial
         seat" from before 68 until the extension to 133 BCE, when Crete was
-        still free.
+        still free. Dio 53.12.4 lists "Crete and the Cyrenaic portion of
+        Libya" among the people's provinces without saying they were one province,
+        and Pleiades' "Roman capital of Creta et Cyrenaica province" has no date, so
+        the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -673,7 +676,7 @@
         wall, he proceeded with it only about eighty stadia
       supports: [from, to]
     - { source: velleius, locator: '2.38.6' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: cyrene
