@@ -4224,6 +4224,12 @@
         they occupied and fortified the temple of Diana
       supports: [from, condition]
     - source: platner-ashby
+      locator: 'Diana, aedes, p. 149'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Dianae.html
+      quote: >-
+        It was the oldest and most important temple on the Aventine
+      supports: [from]
+    - source: platner-ashby
       locator: 'Diana, aedes, p. 150'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Dianae.html
       quote: >-
