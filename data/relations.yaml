@@ -2892,6 +2892,19 @@
         aid to his ally, the Parthian king
       supports: [type, of, to]
     - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
+    - source: cassius-dio
       locator: '49.33.1'
       quote: >-
         These were his acts at that time; the following year, when Pompeius and
@@ -3619,7 +3632,7 @@
         but as Antony summoned back his own soldiers, and moreover retained
         those of the king, the latter was in turn defeated and captured, and so
         Armenia was lost together with Media
-      supports: [of, from]
+      supports: [type, of, from]
     - source: cassius-dio
       locator: '51.16.2'
       quote: >-
@@ -3631,9 +3644,14 @@
       quote: >-
         they themselves have attained to friendship with Caesar. But they are
         also paying court to the Parthians at the same time.
-      supports: [to]
+      supports: [type, to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    As the client claim on atropatene, which carries the same passages: the
+    Mede was deposed by the Parthians and Artaxes, and Media "lost" with
+    Armenia (Dio 49.44.4); in Strabo's day the Atropatenians were "paying
+    court to the Parthians" (11.13.2). No text names a king Parthia set up.
 
 # --- added September 2026: the extension to 133 BCE, Anatolia -----------------
 
@@ -3860,6 +3878,34 @@
         the other Mithridates from Media, the son-in-law of Tigranes, fell
         suddenly upon the Romans while they were scattered
       supports: [type]
+    - source: debevoise-1938
+      locator: 'p. 50'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        This event, which took place in 87 B.c., is the last dated occurrence in
+        the reign of Mithradates II
+      supports: [from]
+    - source: debevoise-1938
+      locator: 'pp. 50–51'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        Mithradates II had been a friend and ally of Tigranes of Armenia. On his
+        death the latter felt free, not to say urged, to proceed against
+        Gotarzes … Atropatene became his vassal state.
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
