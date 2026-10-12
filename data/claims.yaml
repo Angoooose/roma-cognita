@@ -461,8 +461,10 @@
     - source: velleius
       locator: '2.15.1'
       quote: >-
-        The rebellion began with the people of Asculum, who had put to death
-        the praetor Servilius and Fonteius, his deputy
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum, who had put to death the praetor Servilius and Fonteius, his
+        deputy
       supports: [polity, relation]
     - source: broughton-mrr
       locator: 'vol. II, 89 B.C., p. 32'
@@ -608,10 +610,18 @@
         Corfinium, the metropolis of the Peligni, should be the capital for all
         the Italians instead of Rome
       supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
     - source: velleius
       locator: '2.15.1'
       quote: >-
-        it was then taken up by the Marsi
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum … it was then taken up by the Marsi
       supports: [polity, relation]
     - source: livy-per
       locator: '75'
@@ -644,7 +654,8 @@
   review: draft
   note: >-
     The rising began in the consulship of Philippus and Sextus Caesar, 91
-    (Eutropius; Diodorus 37.2.2). The Vestini surrendered, and the Marsi,
+    (Eutropius; Diodorus 37.2.2); Velleius has it taken up by the Marsi in
+    the consulship of 90 (2.15.1), so the start is probable. The Vestini surrendered, and the Marsi,
     Marrucini and Vestini were brought under, in Pompeius Strabo's consulship
     (89: Livy Per. 75; App. BC 1.50–52); the insurgents left Corfinium for
     Aesernia (Diodorus 37.2.9). Livy Per. 76 has the Paeligni surrender to
@@ -764,6 +775,12 @@
         There were engaged against them in this war the Samnites, the people of
         Asculum, the Lucanians, the Picentines, the people of Nola
       supports: [polity, relation]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans
+      supports: [polity, relation]
     - source: pliny-nh
       locator: '3.70'
       quote: >-
@@ -788,8 +805,10 @@
   confidence: probable
   review: draft
   note: >-
-    Sulla destroyed Stabiae on 30 April 89, in the consulship of Pompeius and
-    Cato (Pliny 3.70), then took Pompeii (Broughton); Herculaneum fell to
+    In arms from the outbreak in the consulship of Philippus and Sextus
+    Caesar, 91 (Florus), which Velleius puts in that of 90 (2.15.1): the start
+    is probable. Sulla destroyed Stabiae on 30 April 89, in the consulship of
+    Pompeius and Cato (Pliny 3.70), then took Pompeii (Broughton); Herculaneum fell to
     Didius and Minatius Magius (Vell. 2.16.2). Nola held out until 80 (Livy
     Per. 89), an enclave not drawn.
 
@@ -886,6 +905,12 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans
+      supports: [polity, relation]
     - source: appian
       locator: 'BC 1.51'
       quote: >-
@@ -909,7 +934,9 @@
   review: draft
   note: >-
     The Hirpini joined the rising at once (App. BC 1.39), which broke out in
-    the consulship of Philippus and Sextus Caesar, 91 (Diodorus). Sulla burned
+    the consulship of Philippus and Sextus Caesar, 91 (Diodorus); Velleius
+    has all Italy in arms in the consulship of 90 (2.15.1), so the start is
+    probable. Sulla burned
     Aeclanum and the rest of the Hirpini surrendered in 89, the year the consul
     Cato fell and Sulla went to Rome to stand for the consulship of 88 (App.
     BC 1.51; Livy Per. 75; Broughton).
@@ -1015,7 +1042,7 @@
     citizenship when they revolted (App. BC 1.39), which Diodorus dates to the
     consuls of 91 (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-apulia
   polity: italici
@@ -1154,7 +1181,7 @@
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
     (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-samnium
   polity: italici
@@ -1298,7 +1325,7 @@
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
     (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-lucania
   polity: italici
