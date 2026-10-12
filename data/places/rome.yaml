@@ -2386,7 +2386,7 @@
   location: [12.48628, 41.89091]
   names:
     - { text: Clivus Victoriae, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 78 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2422,12 +2422,15 @@
         this is the line of the clivus as it existed after the erection of this part of the
         palace
       supports: [to]
-  confidence: certain
+  confidence: uncertain
   review: draft
   note: >-
     The ascent to the Palatine from the Velabrum on its west side, named from the
     temple of Victory. "Ancient pavement exists all along this path" (Platner &
-    Ashby).
+    Ashby). The earliest the texts may date it is a repaving "alluded to in an
+    inscription of the Sullan period" (Platner & Ashby; Digital Augustan Rome: "may
+    also appear"), so it is drawn from before 78, the year Sulla died, and uncertain;
+    it was drawn from before 133, which no text states.
 
 - id: alta-semita
   kind: street
