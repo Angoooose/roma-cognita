@@ -3888,12 +3888,11 @@
   prominence: 5
   sources:
     - source: platner-ashby
-      locator: 'Forum Romanum, p. 232'
+      locator: 'Forum Romanum, pp. 230–237'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Romanum.html
       quote: >-
-        The Tabernae Veteres, and the various basilicas which succeeded them,
-        doubtless conformed to it; and so did the Tabernae Novae, and consequently
-        the basilica Aemilia
+        the curia , which adjoined the forum on the north-east … while the Volcanal
+        (q.v.) , higher still, rose on the north-west, on the slopes of the Capitol
       supports: [location]
     - source: platner-ashby
       locator: 'Forum Romanum, p. 232'
