@@ -5481,11 +5481,8 @@
   names:
     - { text: Aedes Martis in Circo, lang: la, preferred: true }
     - { text: Temple of Mars in the Circus Flaminius, lang: en }
-  from: 133 BCE
+  from: { earliest: 138 BCE, latest: 130 BCE }
   to: after 27 BCE
-  condition:
-    - { value: under construction, from: 133 BCE, to: 132 BCE }
-    - { value: standing, from: 131 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Aedes Martis#in_circo_Flaminio, p. 328' }
@@ -5507,7 +5504,22 @@
         A fragment of the Severan Marble Plan … that depicts part of a peripteral
         temple with a long, narrow
       supports: [to]
-  confidence: probable
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: 'https://www.digitalaugustanrome.org/records/mars-aedes-campus-flaminius/'
+      quote: >-
+        Republican Temple to Mars located near the *Circus Flaminius, erected … by D.
+        Brutus Callaicus between 135 and 130 B.C., after his Spanish
+        triumph
+      supports: [from, location]
+    - source: platner-ashby
+      locator: 'Aedes Martis, p. 328'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Martis.html'
+      quote: >-
+        a temple in circo Flaminio , built for D. Junius Brutus Callaicus in 138 B.C.
+        by the architect Hermodorus of Salamis
+      supports: [from]
+  confidence: uncertain
   review: draft
   note: >-
     Built from his spoils for D. Iunius Brutus Callaicus after his triumph over the
@@ -5516,8 +5528,10 @@
     remains, under S. Salvatore in Campo, are of a marble temple of six columns by
     eleven on a crepis of six steps, about 14.6 by 27.8 m, facing north-east (Zevi;
     Cavallero 2018); Tortorici thought a prostyle temple on a podium equally possible.
-    The year of its dedication is not recorded: the model shows it going up in 133–132
-    BCE.
+    When it was built is disputed: "in 138 B.C." (Platner & Ashby), "between 135 and
+    130 B.C." (Digital Augustan Rome), so it is dated 138–130 and shown from the middle
+    of that span, its works undrawn. Until October 2026 it was shown going up in
+    133–132 BCE and standing from 131, years no readable text gives.
 
 - id: aedes-bellonae
   kind: temple
