@@ -2520,8 +2520,26 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Via Aurelia, p. 561' }
-    - { source: cicero-cat, locator: '2.6' }
+    - source: platner-ashby
+      locator: 'Via Aurelia, p. 561'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Aurelia.html
+      quote: >-
+        the road which led from the pons Aemilius across the low ground on the
+        right bank of the Tiber
+      supports: [location]
+    - source: cicero-cat
+      locator: '2.6'
+      quote: >-
+        He went by the Aurelian road
+      supports: []
+    - source: ashby-1927
+      locator: 'p. 227'
+      url: https://archive.org/stream/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        The ancient Via Aurelia ascended to the N.W. … At the twelfth ancient
+        milestone lay the post-station of Lorium, near the site of an Imperial
+        villa, which was the favourite resort of Antoninus Pius and Marcus Aurelius
+      supports: [to]
     - { source: ashby-1927, locator: 'pp. 225–226' }
     - { source: sitar, locator: '15753' }
   confidence: probable
@@ -2548,9 +2566,39 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Via Campana, p. 561' }
-    - { source: platner-ashby, locator: 'Via Portuensis, p. 566' }
-    - { source: ashby-1927, locator: 'p. 217' }
+    - source: platner-ashby
+      locator: 'Via Campana, p. 561'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Campana.html
+      quote: >-
+        a road on the right bank of the Tiber, which led to the Campus Salinarum
+        romanarum
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Via Campana, p. 561'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Campana.html
+      quote: >-
+        It was probably of very early origin
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Campana, p. 561'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Campana.html
+      quote: >-
+        with which it was, in imperial times, united for purposes of administration
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Via Portuensis, p. 566'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Portuensis.html
+      quote: >-
+        It started from the pons Aemilius, and the first part of its course is
+        identical with that of the via Campana
+      supports: [location]
+    - source: ashby-1927
+      locator: 'p. 219'
+      url: https://archive.org/stream/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        it diverged to the right into hilly country from a far older road, the Via
+        Campana
+      supports: [from]
     - { source: sitar, locator: '11922, 21399, 10390, 10391, 24568' }
   confidence: probable
   review: draft
@@ -2582,7 +2630,24 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Tiberis, pp. 536–538' }
+    - source: platner-ashby
+      locator: 'Tiberis, p. 536'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Tiberis.html
+      quote: >-
+        its command of the crossing of the Tiber just below the island
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Tiberis, p. 537'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Tiberis.html
+      quote: >-
+        Protecting walls were built at least as early as the second century B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Tiberis, p. 537'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Tiberis.html
+      quote: >-
+        The next termination was carried out by the consuls of 8 B.C.
+      supports: [to]
     - { source: pleiades, locator: places/423080 }
     - { source: osm-rome, locator: 'relation/17258409, way/22747533, way/22797948, relation/5071, way/23353973, way/23353974, relation/15909049, way/23354406, way/23354527, way/23354547' }
   confidence: probable
@@ -2608,7 +2673,25 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Capitolinus, pp. 95–98' }
+    - source: platner-ashby
+      locator: 'Capitolinus, p. 95'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Capitolinus.html
+      quote: >-
+        the smallest of the hills of Rome, with a length of about 460 metres and an
+        average width of 180, lying between the forum and the campus Martius
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Capitolinus, p. 97'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Capitolinus.html
+      quote: >-
+        In 93 B.C. a considerable tract, which had belonged to the priests, was sold
+        and came into private possession
+      supports: [from]
+    - source: res-gestae
+      locator: '19.2'
+      quote: >-
+        the temples on the Capitol of Jupiter Feretrius and Jupiter the Thunderer
+      supports: [to]
     - { source: pleiades, locator: places/347036492 }
   confidence: certain
   review: draft
@@ -2625,7 +2708,26 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Palatinus, pp. 374–380' }
+    - source: platner-ashby
+      locator: 'Palatinus, p. 374'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Palatinus.html
+      quote: >-
+        the centremost of the seven hills of Rome, an irregular quadrilateral in
+        shape
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Palatinus, p. 378'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Palatinus.html
+      quote: >-
+        Later we hear of that of Cn. Octavius, consul in 165 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Palatinus, p. 378'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Palatinus.html
+      quote: >-
+        the identification of the house of Hortensius, which later on was bought by
+        Augustus
+      supports: [to]
     - { source: pleiades, locator: places/971691208 }
   confidence: certain
   review: draft
@@ -2661,7 +2763,25 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Caelius Mons, pp. 87–89' }
+    - source: platner-ashby
+      locator: 'Caelius Mons, p. 88'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Caelius_Mons.html
+      quote: >-
+        the most south-easterly of the hills of Rome, stretching west from the
+        eastern plateau
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Caelius Mons, p. 89'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Caelius_Mons.html
+      quote: >-
+        The hill was thickly populated during the republic
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Caelius Mons, p. 89'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Caelius_Mons.html
+      quote: >-
+        In 27 A.D. the hill suffered severely from a fire
+      supports: [to]
     - { source: pleiades, locator: places/695491849 }
   confidence: certain
   review: draft
@@ -2678,7 +2798,20 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Esquiliae, pp. 202–203' }
+    - source: platner-ashby
+      locator: 'Esquiliae, p. 203'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Esquiliae.html
+      quote: >-
+        the name of the fifth region of Augustus' city, which was entirely outside
+        the line of the Servian wall
+      supports: [location, to]
+    - source: livy
+      locator: '26.10.1'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0147:book=26:chapter=10
+      quote: >-
+        Fulvius Flaccus entered the city with his troops through the Capuan gate,
+        passed through the midst of the city, and through Carinae, to Esquiliae
+      supports: [from]
     - { source: pleiades, locator: places/679976755 }
   confidence: certain
   review: draft
@@ -2700,7 +2833,27 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Oppius Mons, pp. 371–372' }
+    - source: platner-ashby
+      locator: 'Oppius Mons, p. 371'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Oppius_Mons.html
+      quote: >-
+        separated from the Cispius (q.v.) on the north by the valley of the Subura,
+        and from the Caelius on the south by the valley of the Colosseum
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Cispius Mons, p. 120'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Cispius_Mons.html
+      quote: >-
+        The Cispius, the Oppius, and the Fagutal were the three parts of the
+        Esquiline, and constituted three of the montes of the Septimontium
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Esquiliae, p. 203'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Esquiliae.html
+      quote: >-
+        Of the republican Esquiliae, the Oppius fell in the third and the Cispius in
+        the fourth region
+      supports: [to]
     - { source: pleiades, locator: places/91325207 }
   confidence: certain
   review: draft
@@ -2716,7 +2869,27 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Cispius Mons, p. 120' }
+    - source: platner-ashby
+      locator: 'Cispius Mons, p. 120'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Cispius_Mons.html
+      quote: >-
+        the northern spur of the Esquiline hill, separated from the Oppius on the
+        south by the valley of the Subura
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Cispius Mons, p. 120'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Cispius_Mons.html
+      quote: >-
+        The Cispius, the Oppius, and the Fagutal were the three parts of the
+        Esquiline, and constituted three of the montes of the Septimontium
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Esquiliae, p. 203'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Esquiliae.html
+      quote: >-
+        Of the republican Esquiliae, the Oppius fell in the third and the Cispius in
+        the fourth region
+      supports: [to]
     - { source: pleiades, locator: places/257235581 }
   confidence: certain
   review: draft
@@ -2733,7 +2906,25 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Viminalis, pp. 581–582' }
+    - source: platner-ashby
+      locator: 'Viminalis, p. 581'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Viminalis.html
+      quote: >-
+        the smallest of the traditional seven hills of Rome, extending south-west
+        from the Esquiline plateau
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Viminalis, p. 581'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Viminalis.html
+      quote: >-
+        It became part of the City of the Four Regions
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Viminalis, p. 581'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Viminalis.html
+      quote: >-
+        Later this district was included in the sixth region of Augustus.
+      supports: [to]
     - { source: pleiades, locator: places/755385623 }
   confidence: certain
   review: draft
@@ -2750,7 +2941,26 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Quirinalis, pp. 436–438' }
+    - source: platner-ashby
+      locator: 'Quirinalis, p. 436'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinalis.html
+      quote: >-
+        separated from the Viminal on the south by the depression now traversed by
+        the Via Nazionale
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Quirinalis, p. 437'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinalis.html
+      quote: >-
+        did not become a part of Rome until the organisation of the Four Regions,
+        when, with the Viminal, it formed the third, Collina
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Quirinalis, p. 438'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinalis.html
+      quote: >-
+        In the Augustan division of the city the Quirinal fell into Region VI
+      supports: [to]
     - { source: pleiades, locator: places/125119394 }
   confidence: certain
   review: draft
@@ -2767,13 +2977,40 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Velia, p. 550' }
+    - source: platner-ashby
+      locator: 'Velia, p. 550'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velia.html
+      quote: >-
+        the ridge or spur that stretched out from the middle of the north side of
+        the Palatine towards the Oppius
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Velia, p. 550'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velia.html
+      quote: >-
+        It was reckoned as one of the seven hills on which the Septimontium was
+        celebrated
+      supports: [from]
+    - source: dionysius
+      locator: '5.19.1'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/5A*.html'
+      quote: >-
+        a fairly high and steep hill, called by the Romans Velia, which commands
+        the Forum
+      supports: [location, to]
+    - source: res-gestae
+      locator: '19.2'
+      quote: >-
+        the temple of the Di Penates in the Velia
+      supports: [to]
     - { source: pleiades, locator: places/157710058 }
   confidence: probable
   review: draft
   note: >-
     The ridge running from the Palatine towards the Oppius, crossed by the Sacra
-    Via at its summit. Pleiades' location is approximate.
+    Via at its summit. Pleiades' location is approximate. Its extent is itself
+    uncertain: Thayer, on the LacusCurtius page, calls Platner & Ashby's placing
+    "just another conjecture".
 
 - id: ianiculum
   kind: hill
@@ -2787,7 +3024,26 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Janiculum, pp. 274–275' }
+    - source: platner-ashby
+      locator: 'Janiculum, p. 274'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Janiculum.html
+      quote: >-
+        the long ridge on the right bank of the Tiber, running almost due north from
+        a point opposite the Aventine
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Janiculum, p. 274'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Janiculum.html
+      quote: >-
+        during the republic a guard was always posted on the hill while the comitia
+        centuriata was meeting in the campus Martius
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.28.1–3'
+      quote: >-
+        foes might occupy the Janiculum and attack the city … Even to this day it is
+        done as a matter of form.
+      supports: [to]
     - { source: pleiades, locator: places/430827518 }
   confidence: certain
   review: draft
@@ -2805,7 +3061,28 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Forum Romanum, pp. 230–237' }
+    - source: platner-ashby
+      locator: 'Forum Romanum, p. 232'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Romanum.html
+      quote: >-
+        The Tabernae Veteres, and the various basilicas which succeeded them,
+        doubtless conformed to it; and so did the Tabernae Novae, and consequently
+        the basilica Aemilia
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Forum Romanum, p. 232'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Romanum.html
+      quote: >-
+        in 145 B.C., the Comitia Tributa were transferred to the forum by the
+        tribune C. Licinius Crassus
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Forum Romanum, p. 234'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Romanum.html
+      quote: >-
+        the forum, transformed by Augustus, who continued and carried out the
+        designs of Julius Caesar, has come down to us much as he left it
+      supports: [to]
     - { source: pleiades, locator: places/502866838 }
   confidence: certain
   review: draft
@@ -2823,7 +3100,26 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Forum Boarium, pp. 224–225' }
+    - source: platner-ashby
+      locator: 'Forum Boarium, p. 223'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Boarium.html
+      quote: >-
+        It originally extended from the boundary of the Velabrum
+      supports: [location]
+    - source: livy
+      locator: '27.37.15'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=37
+      quote: >-
+        by the Tuscan street and the Velabrum, through the cattle market, up the
+        Publician hill
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Forum Boarium, p. 224'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Boarium.html
+      quote: >-
+        one of the period of Tiberius, the other of Claudius, show that the open
+        space, which was public property, required protection from encroachment
+      supports: [to]
     - { source: pleiades, locator: places/207271756 }
   confidence: certain
   review: draft
@@ -2840,7 +3136,18 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Forum Holitorium, p. 225' }
+    - source: platner-ashby
+      locator: 'Forum Holitorium, p. 225'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Holitorium.html
+      quote: >-
+        lying just outside the porta Carmentalis, in the ninth region of Augustus
+      supports: [location, to]
+    - source: platner-ashby
+      locator: 'Forum Holitorium, p. 225'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Holitorium.html
+      quote: >-
+        By the second century B.C. the forum had been paved
+      supports: [from]
     - { source: pleiades, locator: places/72845305 }
   confidence: certain
   review: draft
@@ -2856,7 +3163,25 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Velabrum, pp. 549–550' }
+    - source: platner-ashby
+      locator: 'Velabrum, p. 549'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velabrum.html
+      quote: >-
+        the low ground lying between the north-west slope of the Palatine and the
+        Capitoline
+      supports: [location]
+    - source: livy
+      locator: '27.37.15'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=37
+      quote: >-
+        by the Tuscan street and the Velabrum, through the cattle market
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Velabrum, p. 550'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velabrum.html
+      quote: >-
+        In the Middle Ages, the name was corrupted into Velum Aureum
+      supports: [to]
     - { source: pleiades, locator: places/432833118 }
   confidence: certain
   review: draft
@@ -2873,7 +3198,27 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Campus Martius, pp. 91–94' }
+    - source: platner-ashby
+      locator: 'Campus Martius, p. 91'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Campus_Martius.html
+      quote: >-
+        the level ground between the slopes of the Capitoline, the Quirinal, and the
+        Pincian hills, and the Tiber
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Campus Martius, p. 93'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Campus_Martius.html
+      quote: >-
+        The construction of the circus Flaminius in 221 B.C. marked an epoch in the
+        history of the southern part of the campus
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Campus Martius, p. 91'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Campus_Martius.html
+      quote: >-
+        After Augustus had divided the city into fourteen regions, the name campus
+        Martius was restricted to that portion of Region IX
+      supports: [to]
     - { source: pleiades, locator: places/422863 }
   confidence: certain
   review: draft
@@ -2893,7 +3238,27 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Subura, pp. 500–501' }
+    - source: platner-ashby
+      locator: 'Subura, p. 500'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Subura.html
+      quote: >-
+        the valley between the southern end of the Viminal and the western end of
+        the Esquiline, or Oppius
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Esquiliae, p. 203'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Esquiliae.html
+      quote: >-
+        Regio Esquilina was the second in the City of the Four Regions … and
+        comprised the Oppius, Cispius, Subura and Argiletum
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Subura, p. 501'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Subura.html
+      quote: >-
+        Caesar once lived here (Suet. Caes. 46) and L. Arruntius Stella, consul in
+        101 A.D.
+      supports: [to]
     - { source: pleiades, locator: places/451696383 }
   confidence: probable
   review: draft
@@ -2912,7 +3277,28 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Carinae, p. 100' }
+    - source: platner-ashby
+      locator: 'Carinae, p. 100'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Carinae.html
+      quote: >-
+        the western end of the southern spur of the Esquiline hill, including the
+        slope to the valley of the Subura on the north and that of the Colosseum on
+        the south, and corresponding to the district between the present church of
+        S. Pietro in Vincoli and the Via del Colosseo
+      supports: [location]
+    - source: livy
+      locator: '26.10.1'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0147:book=26:chapter=10
+      quote: >-
+        passed through the midst of the city, and through Carinae, to Esquiliae
+      supports: [from]
+    - source: suetonius-tib
+      locator: '15.1'
+      url: https://topostext.org/work/202
+      quote: >-
+        he at once moved from the Carinae and the house of the Pompeys to the
+        gardens of Maecenas on the Esquiline
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2940,9 +3326,35 @@
     - { value: under construction, from: 32 BCE, to: after 27 BCE }
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Diana, aedes, p. 149' }
-    - { source: suetonius-aug, locator: '29.5' }
-    - { source: digital-augustan-rome, locator: 'Diana Aventina, Aedes' }
+    - source: digital-augustan-rome
+      locator: 'Diana Aventina, Aedes'
+      url: https://www.digitalaugustanrome.org/records/diana-aventina-aedes/
+      quote: >-
+        The traditional position falls within rather narrow spatial limits, about
+        halfway between S. Sabina and S. Prisca
+      supports: [location]
+    - source: appian
+      locator: 'BC 1.26'
+      quote: >-
+        they occupied and fortified the temple of Diana
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Diana, aedes, p. 150'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Dianae.html
+      quote: >-
+        This temple was rebuilt by L. Cornificius during the reign of Augustus
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Diana Aventina, Aedes'
+      url: https://www.digitalaugustanrome.org/records/diana-aventina-aedes/
+      quote: >-
+        a bronze pillar, still standing in the Augustan period
+      supports: [to, condition]
+    - source: suetonius-aug
+      locator: '29.5'
+      quote: >-
+        the temple of Diana by Lucius Cornificius
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2971,15 +3383,41 @@
     - { value: burnt, from: 31 BCE, to: after 27 BCE }
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Ceres Liber Liberaque, aedes, pp. 109–110' }
+    - source: platner-ashby
+      locator: 'Ceres Liber Liberaque, aedes, p. 110'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Ceres.html
+      quote: >-
+        perhaps near the junction of the modern Vicolo di S. Sabina and Via S. Maria
+        in Cosmedin
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Ceres Liber Liberaque, aedes, p. 109'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Ceres.html
+      quote: >-
+        The temple was built, and dedicated in 493 B.C. by the consul Sp. Cassius
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Ceres Liber Liberaque, aedes, p. 110'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Ceres.html
+      quote: >-
+        It was burned down in 31 B.C. , restored by Augustus, and dedicated by
+        Tiberius in 17 A.D.
+      supports: [condition, to]
+    - source: cassius-dio
+      locator: '50.10.3'
+      quote: >-
+        Fire also consumed a considerable portion of the Circus itself, along with
+        the temple of Ceres
+      supports: [condition]
     - { source: pleiades, locator: places/581361483 }
   confidence: probable
   review: draft
   note: >-
-    The plebeians' temple, "dedicated in 493 B.C. by the consul Sp. Cassius";
-    "burned down in 31 B.C., restored by Augustus, and dedicated by Tiberius in 17
-    A.D." Placed "perhaps near the junction of the modern Vicolo di S. Sabina and
-    Via S. Maria in Cosmedin" (Platner & Ashby): approximate.
+    The plebeians' temple, "dedicated in 493 B.C. by the consul Sp. Cassius"
+    (Beloch, in Platner & Ashby, put it in the 4th century BCE); "burned down in 31
+    B.C., restored by Augustus, and dedicated by Tiberius in 17 A.D." Placed
+    "perhaps near the junction of the modern Vicolo di S. Sabina and Via S. Maria in
+    Cosmedin" (Platner & Ashby): approximate.
 
 - id: aedes-iunonis-reginae-aventinensis
   kind: temple
@@ -2992,13 +3430,38 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Iuno Regina, templum, p. 290' }
+    - source: platner-ashby
+      locator: 'Iuno Regina, templum, p. 290'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Juno_Regina.html
+      quote: >-
+        found near the church of S. Sabina indicate the approximate site of the
+        temple
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Iuno Regina, templum, p. 290'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Juno_Regina.html
+      quote: >-
+        a temple on the Aventine vowed by Camillus just before the taking of Veii in
+        396 B.C. … and dedicated by him in 392
+      supports: [from]
+    - source: livy
+      locator: '27.37.15'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=37
+      quote: >-
+        up the Publician hill, and to the temple of Juno Regina
+      supports: []
+    - source: res-gestae
+      locator: '19.2'
+      quote: >-
+        the temples of Minerva and Queen Juno and Jupiter Libertas on the Aventine
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Vowed by Camillus for the Juno of Veii and "dedicated by him in 392". Two
     dedications "found near the church of S. Sabina indicate the approximate site"
-    (Platner & Ashby); placed between S. Sabina and the Largo Arrigo VII.
+    (Platner & Ashby); placed between S. Sabina and the Largo Arrigo VII. Augustus
+    lists it among the temples he built (Res Gestae 19.2).
 
 - id: aedes-minervae-aventinensis
   kind: temple
@@ -3011,7 +3474,24 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Minerva, aedes, p. 342' }
+    - source: platner-ashby
+      locator: 'Minerva, aedes, p. 342'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Minervae.html
+      quote: >-
+        probably near the intersection of the modern Vie di S. Sabina and S. Prisca
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Minerva, aedes, p. 342'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Minervae.html
+      quote: >-
+        first mentioned as becoming the headquarters of the scribae and histriones
+        during the second Punic war
+      supports: [from]
+    - source: res-gestae
+      locator: '19.2'
+      quote: >-
+        the temples of Minerva and Queen Juno and Jupiter Libertas on the Aventine
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -3031,7 +3511,25 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Luna, aedes, p. 320' }
+    - source: platner-ashby
+      locator: 'Luna, aedes, p. 320'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Lunae.html
+      quote: >-
+        the temple stood at the extreme northern point of the Aventine, just above
+        the porta Trigemina
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Luna, aedes, p. 320'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Lunae.html
+      quote: >-
+        first mentioned in connection with the prodigia of 182 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Luna, aedes, p. 320'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Lunae.html
+      quote: >-
+        it was burned in the great fire of Nero
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -3051,7 +3549,24 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Mercurius, aedes, p. 339' }
+    - source: platner-ashby
+      locator: 'Mercurius, aedes, p. 339'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Mercurii.html
+      quote: >-
+        It was on the slope of the Aventine, above and … near its south-east end
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Mercurius, aedes, p. 339'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Mercurii.html
+      quote: >-
+        a temple dedicated in 495 B.C. by a centurion, M. Plaetorius
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Mercurius, aedes, p. 339'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Mercurii.html
+      quote: >-
+        It was standing in the fourth century
+      supports: [to]
     - { source: pleiades, locator: places/107133090 }
   confidence: probable
   review: draft
@@ -3076,7 +3591,44 @@
     - { value: standing, from: 45 BCE, to: after 27 BCE }
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Quirinus, aedes, pp. 438–439' }
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 439'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html
+      quote: >-
+        on the north side of the Alta Semita and probably in the eastern part of the
+        present gardens of the royal palace, near the edge of the hill
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 438'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html
+      quote: >-
+        said to have been vowed by L. Papirius Cursor when dictator in 325 B.C. ,
+        and dedicated in 293 by his son
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 439'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html
+      quote: >-
+        and again in 49 when it was much injured if not almost destroyed … It must
+        have been repaired almost at once, for the senate erected in it in 45 a
+        statue to Caesar
+      supports: [condition]
+    - source: cassius-dio
+      locator: '41.14.3'
+      quote: >-
+        another fire consumed the temple of Quirinus
+      supports: [condition]
+    - source: cassius-dio
+      locator: '43.45.3'
+      quote: >-
+        Another likeness they set up in the temple of Quirinus
+      supports: [condition]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 439'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html
+      quote: >-
+        A final restoration was completed by Augustus in 16 B.C.
+      supports: [to, condition]
     - { source: pleiades, locator: places/524616090 }
   confidence: probable
   review: draft
@@ -3099,7 +3651,24 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Salus, aedes, p. 462' }
+    - source: platner-ashby
+      locator: 'Salus, aedes, p. 462'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Salutis.html
+      quote: >-
+        near the west end of the present royal palace
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Salus, aedes, p. 462'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Salutis.html
+      quote: >-
+        dedicated by him when dictator in 303
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Salus, aedes, p. 462'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Salutis.html
+      quote: >-
+        were preserved until the building was burned in the time of Claudius
+      supports: [to]
     - { source: pleiades, locator: places/377055053 }
   confidence: probable
   review: draft
@@ -3120,14 +3689,33 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Semo Sancus, aedes, pp. 469–470' }
+    - source: platner-ashby
+      locator: 'Semo Sancus, aedes, p. 469'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Semo_Sancus.html
+      quote: >-
+        near and probably a little north of the porta Sanqualis
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Semo Sancus, aedes, p. 469'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Semo_Sancus.html
+      quote: >-
+        it was dedicated by Sp. Postumius many years later, 5th June, 466 B.C.
+      supports: [from]
+    - source: dionysius
+      locator: '4.58.4'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/4C*.html'
+      quote: >-
+        There is a memorial of this treaty at Rome in the temple of Jupiter Fidius,
+        whom the Romans call Sancus
+      supports: [to]
     - { source: pleiades, locator: places/504705904 }
   confidence: probable
   review: draft
   note: >-
     "Dedicated by Sp. Postumius ... 5th June, 466 B.C.", "a little north of the
     porta Sanqualis" where a base to the god was found (Platner & Ashby); placed at
-    the Pleiades point: approximate.
+    the Pleiades point: approximate. Dionysius, writing about 7 BCE, saw the shield
+    of the treaty with Gabii in it.
 
 - id: aedes-iunonis-monetae
   kind: temple
@@ -3141,14 +3729,34 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Iuno Moneta, aedes, pp. 289–290' }
+    - source: platner-ashby
+      locator: 'Iuno Moneta, aedes, p. 289'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Junonis_Monetae.html
+      quote: >-
+        It was on the arx
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Iuno Moneta, aedes, p. 289'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Junonis_Monetae.html
+      quote: >-
+        a temple vowed by M. Furius Camillus during the war with the Aurunci in 345
+        B.C. , erected by duoviri appointed by the senate pro amplitudine populi
+        Romani , and dedicated in 344
+      supports: [from]
+    - source: livy
+      locator: '6.20.13'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=6:chapter=20
+      quote: >-
+        His house stood where now the temple and mint of Juno Moneta stand
+      supports: [to]
     - { source: pleiades, locator: places/76518529 }
   confidence: probable
   review: draft
   note: >-
     Vowed by Camillus and "dedicated in 344"; the mint worked here in the late
-    Republic. On the Arx, perhaps "the site of the transepts of the church of S.
-    Maria in Aracoeli" (Platner & Ashby): approximate.
+    Republic, and Livy, writing under Augustus, has the temple and mint standing
+    "now" (6.20.13). On the Arx, perhaps "the site of the transepts of the church of
+    S. Maria in Aracoeli" (Platner & Ashby): approximate.
     Its site is disputed. The older view put it under the transepts of S. Maria in
     Aracoeli (Hülsen, in Platner & Ashby); Arata (MEFRA 122, 2010) puts it "subito a
     settentrione dell'Auguraculum", on the Arx's north-east top under the east end of
