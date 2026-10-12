@@ -2505,7 +2505,7 @@
   type: allied-to
   of: rome
   from: 71 BCE
-  to: after 62 BCE
+  to: 62 BCE
   sources:
     - source: eutropius
       locator: '6.10'
@@ -2542,8 +2542,8 @@
     Antonius, consul in 63, attacked as governor of Macedonia (Dio 38.10.1–3,
     37.10.4), so in force in 62; that is the last a readable text shows. It
     ran to 56, the year before Burebista's conquest as conventionally dated,
-    until October 2026; no text read states it, and the claim keeps 56 only
-    because an open end there would overlap Burebista's row.
+    until October 2026, which no text read states; it ends at 62, as the
+    allied claim does, Burebista's row starting the year after.
 
 - polity: noricum
   type: allied-to
