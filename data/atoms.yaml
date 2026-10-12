@@ -1543,11 +1543,15 @@
   confidence: uncertain
   review: draft
   note: >-
-    What Pompey took from the Jews in 63 and put under the governor of Syria:
-    the coastal plain from Raphia to Dora, Samaria, Scythopolis and the Greek
-    cities across the Jordan (Gadara, Hippos, Pella, Dion, Gerasa). Hasmonean
-    before, by Jannaeus' conquests (AJ 13.395–397). Takes Judaea's edges from
-    judaea.
+    What Pompey took from the Jews in 63 and put under the governor of Syria,
+    less the pieces split from it in September 2026 for their own later
+    histories: the coast (strato-tower, palaestina-coast, gaza), samaria and
+    gadara-hippos. What is left is the Jezreel and Scythopolis and the Greek
+    cities across the Jordan south of Gadara (Pella, Dion, Gerasa). Hasmonean
+    before, by Jannaeus' conquests (AJ 13.395–397). The outline is still
+    authored round the whole of Pompey's district, from Raphia to Carmel; the
+    split atoms come before it in this file and are cut out of it. Takes
+    Judaea's edges from judaea.
 
 - id: ituraea
   evidence: schematic
