@@ -29,7 +29,41 @@
   to: after 27 BCE
   sources:
     - { source: butzer-1976, locator: cultivable area of the valley by period (locator to supply) }
-    - { source: strabo, locator: '17.1.4' }
+    - source: herodotus
+      locator: '2.19'
+      quote: >-
+        the Nile , when it is in flood, goes over not only the Delta but also of
+        the land which is called Libyan and of that which is called Arabian
+        sometimes as much as two days' journey on each side
+      supports: [from]
+    - source: diodorus
+      locator: '1.36.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        this one alone begins to rise at that time and increases so greatly in
+        volume day by day that it finally overflows practically all Egypt
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: [from, to]
+    - source: strabo
+      locator: '17.1.4'
+      quote: >-
+        The country above the Delta is irrigated in the same manner … Egypt ,
+        from the mountains of Ethiopia to the vertex of the Delta, is merely a
+        river tract on each side of the Nile
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.58'
+      quote: >-
+        the smallest rise was that of five, in the year of the battle of
+        Pharsalia … When the waters have reached their greatest height, the
+        people open the embankments and admit them to the lands.
+      supports: [from, to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Nile main stem, DIS_AV_CMS ≥ 500' }
   confidence: probable
@@ -56,8 +90,68 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.15–17' }
-    - { source: strabo, locator: '17.1.4, 17.1.18' }
+    - source: herodotus
+      locator: '2.15'
+      quote: >-
+        counting it to extend inland as far as the city of Kercasoros , where
+        the Nile divides and runs to Pelusion and Canobos … their Delta at any
+        rate is alluvial
+      supports: [from]
+    - source: herodotus
+      locator: '2.19'
+      quote: >-
+        the Nile , when it is in flood, goes over not only the Delta
+      supports: [from]
+    - source: diodorus
+      locator: '1.33.5–7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        where the Nile in its course through Egypt divides into several streams
+        it forms the region which is called from its shape the Delta.
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.36.7–8'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        it finally overflows practically all Egypt. … since the land is a level
+        plain, while the cities and villages, as well as the farm-houses, lie on
+        artificial mounds, the scene comes to resemble the Cyclades Islands.
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: [from, to]
+    - source: strabo
+      locator: '17.1.4'
+      quote: >-
+        at the time of the rising of the Nile , the whole country is covered,
+        and resembles a sea, except the inhabited spots, which are situated upon
+        natural hills or mounds
+      supports: [to]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine , then the Sebennytic, and the
+        Phatnitic , which is the third in magnitude compared with the first two,
+        which form the boundaries of the Delta.
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.48'
+      quote: >-
+        the Nile so dividing itself as to give a triangular form to the land
+        which it encloses: from which circumstance also many persons have named
+        Egypt the Delta
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.58'
+      quote: >-
+        the smallest rise was that of five, in the year of the battle of
+        Pharsalia … When the waters have reached their greatest height, the
+        people open the embankments and admit them to the lands.
+      supports: [from, to]
     - { source: butzer-1976, locator: cultivable area of the delta by period (locator to supply) }
     - { source: bunbury-2019 }
     - { source: mapterhorn, locator: z10 terrain }
@@ -90,7 +184,48 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '17.1.35–38' }
+    - source: herodotus
+      locator: '2.149'
+      quote: >-
+        it has been brought thither from the Nile by a canal: and for six months
+        the water flows into the lake, and for six months out into the Nile again
+      supports: [from]
+    - source: diodorus
+      locator: '1.52.2–3'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        by this canal, sometimes turning the river into the lake and sometimes
+        shutting it off again, he furnished the farmers with an opportune supply
+        of water … The lake has continued to serve well the needs of the
+        Egyptians down to our time
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: [from, to]
+    - source: strabo
+      locator: '17.1.35'
+      quote: >-
+        the canal on the right hand, which leads into Libya , in the direction of
+        the Arsinoite Nome … This nome is the most considerable of all in
+        appearance, natural properties, and embellishment. … It produces wine in
+        abundance, corn, pulse, and a great variety of other grains.
+      supports: [to]
+    - source: strabo
+      locator: '17.1.37'
+      quote: >-
+        both the lake and the canal preserve a remainder, which is used for
+        irrigation
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.50'
+      quote: >-
+        There are two places called Arsinoites : these and Memphites extend to
+        the apex of the Delta
+      supports: [to]
     - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
     - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
     - { source: mapterhorn, locator: z10 terrain }
@@ -121,8 +256,42 @@
   to: after 27 BCE
   sources:
     - { source: adams-1981 }
-    - { source: strabo, locator: '16.1.9–10' }
-    - { source: herodotus, locator: '1.193' }
+    - source: herodotus
+      locator: '1.193'
+      quote: >-
+        the crop is watered by hand or with swing-buckets. For the whole
+        Babylonian territory like the Egyptian is cut up into channels
+      supports: [from]
+    - source: strabo
+      locator: '16.1.9'
+      quote: >-
+        the Euphrates , at the commencement of summer, overflows; It begins to
+        fill in the spring, when the snow in Armenia melts: the ploughed land,
+        therefore, would be covered with water and be submerged, unless the
+        overflow of the superabundant water were diverted by trenches and
+        canals
+      supports: [from, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar ; for after the
+        sovereign power had been conferred upon him by his country for life, and
+        he had become the arbiter of peace and war, he divided the whole empire
+        into two parts
+      supports: [to]
+    - source: pliny-nh
+      locator: '6.117'
+      quote: >-
+        The Macedonians formed these communities into cities, being prompted
+        thereto by the extraordinary fertility of the soil.
+      supports: [from]
+    - source: pliny-nh
+      locator: '6.124'
+      quote: >-
+        the Euphrates continues to flow with an undivided channel for a distance
+        of eighty-seven miles beyond Babylon , before its waters are diverted
+        from their channel for the purposes of irrigation
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Tigris, Euphrates, Shatt al-Arab and tributaries, DIS_AV_CMS ≥ 100' }
   confidence: probable
@@ -151,7 +320,27 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '15.3.10–11' }
+    - source: strabo
+      locator: '15.3.10'
+      quote: >-
+        Alexander preferred Babylon , because he saw that it far surpassed the
+        other cities in magnitude, and had other advantages. Although Susis is
+        fertile
+      supports: [from]
+    - source: strabo
+      locator: '15.3.11'
+      quote: >-
+        Susis is so fertile in grain, that barley and wheat produce, generally,
+        one hundred, and sometimes two hundred fold.
+      supports: [from, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar ; for after the
+        sovereign power had been conferred upon him by his country for life, and
+        he had become the arbiter of peace and war, he divided the whole empire
+        into two parts
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Karkheh, Dez, Karun, DIS_AV_CMS ≥ 50' }
   confidence: probable
@@ -212,9 +401,39 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17, 2.179' }
-    - { source: strabo, locator: '17.1.18' }
-    - { source: pliny-nh, locator: '5.64' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        the second of the ways goes towards the West, and this is called the
+        Canobic mouth
+      supports: [from]
+    - { source: herodotus, locator: '2.179' }
+    - source: diodorus
+      locator: '1.33.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        It empties into the sea in seven mouths … then the Bolbitine, and
+        finally the Canopic, which is called by some the Heracleotic.
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: [from, to]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to Canobus is Heracleium , in which is a temple of Hercules ; then
+        follows the Canobic mouth , and the commencement of the Delta.
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.64'
+      quote: >-
+        I allude to the seven more famous ones, the Canopic Mouth , next to
+        Alexandria
+      supports: [to]
     - { source: toussoun-1922 }
     - { source: pleiades, locator: 'places/727142, 727169, 727221, 727120' }
     - { source: hydrorivers, locator: modern Rosetta branch }
@@ -239,9 +458,36 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
-    - { source: pliny-nh, locator: '5.64' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        The Bolbitinitic and Bucolic mouths, on the other hand, are not natural
+        but made by digging.
+      supports: [from]
+    - source: diodorus
+      locator: '1.33.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        It empties into the sea in seven mouths … then the Bolbitine, and
+        finally the Canopic
+      supports: [from, to]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: [from, to]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.64'
+      quote: >-
+        the Canopic Mouth , next to Alexandria , those of Bolbitine , Sebennys
+      supports: [to]
     - { source: hydrorivers, locator: modern Rosetta branch }
   confidence: probable
   review: draft

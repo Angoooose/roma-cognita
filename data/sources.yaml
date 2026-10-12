@@ -2023,8 +2023,10 @@
 - id: donda-2025
   kind: modern
   citation: >-
-    F. Donda and others, on the Roman landscape now under the Grado lagoon,
-    Scientific Reports (2025) (full title to confirm)
+    D. Gaddi, E. Gordini, E. Lodolo, F. Donda, D. Melini, G. Spada and
+    P. Ventura, Discovery of Roman and early medieval palisades in Grado (Italy)
+    constraining relative sea level and paleoenvironment in the northern
+    Adriatic Sea, Scientific Reports 15 (2025) 33546
   url: https://www.nature.com/articles/s41598-025-18346-7
 
 # --- ancient coasts: the Aegean -----------------------------------------------
@@ -2057,8 +2059,18 @@
 - id: akcer-on-2020
   kind: modern
   citation: >-
-    S. Akçer-Ön and others, on Lake Bafa's separation from the sea, Geoarchaeology
-    (2020) (full title to confirm)
+    S. Akçer-Ön and others, Redating the formation of Lake Bafa, western Turkey:
+    integrative geoarchaeological methods and new environmental and dating
+    evidence, Geoarchaeology (2020)
+  url: https://doi.org/10.1002/gea.21791
+
+- id: kulzer-2018
+  kind: modern
+  citation: >-
+    A. Külzer, Reconstructing the Past in a changing Landscape. Reflections on
+    the Area of Ephesus and other Sites in Western Asia Minor, Gephyra 16 (2018)
+    75–90
+  url: https://dergipark.org.tr/en/download/article-file/569367
 
 - id: stock-2013
   kind: modern
@@ -2113,6 +2125,8 @@
 - id: mela
   kind: ancient
   citation: Pomponius Mela, De chorographia
+  url: https://www.thelatinlibrary.com/pomponius2.html
+  edition: Latin text on The Latin Library (book 2, its own section numbers)
 
 - id: crepy-boussac-2021
   kind: modern
@@ -2125,8 +2139,8 @@
 - id: flaux-2021
   kind: modern
   citation: >-
-    C. Flaux and others, on the Canopic coast and Lake Mareotis, E&G Quaternary
-    Science Journal 70 (2021) 93 (full title to confirm)
+    C. Flaux and others, The late Holocene record of Lake Mareotis, Nile Delta,
+    Egypt, E&G Quaternary Science Journal 70 (2021) 93–104
   url: https://egqsj.copernicus.org/articles/70/93/2021/
   licence: CC BY 4.0
   note: Fig. 1 draws the coastline in antiquity round Aboukir Bay.
@@ -2135,6 +2149,31 @@
   kind: modern
   citation: F. Goddio, the Heracleion–Thonis and Canopus excavations (project pages)
   url: https://www.franckgoddio.org/projects/sunken-civilizations/heracleion/
+
+- id: goddio-canopus
+  kind: modern
+  citation: F. Goddio, the Canopus excavations (project page)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/canopus/
+
+- id: goddio-alexandria
+  kind: modern
+  citation: F. Goddio, the Portus Magnus of Alexandria excavations (project page)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/alexandria/
+
+- id: marriner-2008
+  kind: modern
+  citation: >-
+    N. Marriner, J.-P. Goiran and C. Morhange, Alexander the Great's tombolos at
+    Tyre and Alexandria, eastern Mediterranean, Geomorphology 100 (2008) 377–400
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Levant/Alexandria-Tyr-Marriner2008.pdf
+
+- id: goiran-2014
+  kind: modern
+  citation: >-
+    J.-P. Goiran, P. Carbonel, J. Cavero, C. Morhange and J.-Y. Empereur, on the
+    ancient harbours of Alexandria, Géochronique 130 (2014), Géoarchéologie des
+    ports antiques, pp. 26–29
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Egypt-Libya/Alexandria/Alexandria-Goiran2014.pdf
 
 - id: vella-2005
   kind: modern
@@ -2148,10 +2187,11 @@
 - id: nienhuis-2017
   kind: modern
   citation: >-
-    J. H. Nienhuis and others, on the Ebro delta's growth, Earth Surface Dynamics 5
-    (2017) 585 (full title to confirm)
+    J. H. Nienhuis, A. D. Ashton, A. J. Kettner and L. Giosan, Large-scale coastal
+    and fluvial models constrain the late Holocene evolution of the Ebro Delta,
+    Earth Surface Dynamics 5 (2017) 585–603
   url: https://esurf.copernicus.org/articles/5/585/2017/
-  licence: CC BY 4.0
+  licence: CC BY 3.0
   note: Fig. 1, after Canicio & Ibáñez 1999, stages the delta's growth.
 
 - id: salel-2014
@@ -2160,6 +2200,23 @@
     T. Salel, map of the Narbonne lagoons "vers 550 / 50 av. n. ère" (2014), after
     Faïsse and others (as reproduced; full reference to confirm)
   url: https://www.ancientportsantiques.com/a-few-ports/narbonne/
+
+- id: sanchez-2014
+  kind: modern
+  citation: >-
+    C. Sanchez, C. Faïsse, M.-P. Jézégou and V. Mathé, Le système portuaire de
+    Narbonne antique : approche géoarchéologique, in L. Mercuri, R. González
+    Villaescusa and F. Bertoncello (eds.), Implantations humaines en milieu
+    littoral méditerranéen (APDCA, Antibes, 2014) 125–
+  url: https://ancientportsantiques.com/wp-content/uploads/Documents/PLACES/France/Narbonne/Narbonne-Sanchez2014.pdf
+
+- id: dolez-2015
+  kind: modern
+  citation: >-
+    L. Dolez, T. Salel, H. Bruneton, G. Colpo, B. Devillers and others, Holocene
+    palaeoenvironnements of the Bages-Sigean lagoon (France), Geobios 48 (2015)
+    297–308 (abstract on HAL)
+  url: https://hal.archives-ouvertes.fr/hal-01430777
 
 - id: hansman-1967
   kind: modern

@@ -298,7 +298,52 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: ispra-205-comacchio, locator: 'Roman villas at Agosta and Dosso dei Sassi on the lagoon floor' }
+    - source: ispra-205-comacchio
+      locator: 'p. 70'
+      quote: >-
+        Il sistema di cordoni litorali affioranti più antico è localizzato nel
+        settore ovest del foglio, e si sviluppa con un orientamento
+        approssimativamente SO-NE dalla zona della valle del Mezzano in direzione
+        della cittadina di Lagosanto La deposizione di questo sistema di età
+        Etrusca, corrispondente al sistema 3 di Ciabatti (1966), ha subito forti
+        opere di spianamento e si trova attualmente a quote comprese tra
+      supports: [op, from]
+    - source: ispra-205-comacchio
+      locator: 'p. 70'
+      quote: >-
+        Il dosso del Po di Spina, caratterizzato da litofacies sabbiose, è
+        orientato in direzione circa E-O ed è attribuito ad un ramo antico del
+        delta del Po che fu attivo almeno dall’età del Bronzo fino all’età romana
+        … In corrispondenza di questo tracciato si riconosce un piano di calpestio
+        di età romana, caratterizzato dalla presenza di infrastrutture e
+        insediamenti abitativi
+      supports: [op, to]
+    - source: ispra-205-comacchio
+      locator: 'p. 31'
+      quote: >-
+        Tra il 400 ed il 750 d C un deterioramento climatico, caratterizzato da un
+        forte incremento della piovosità e da una diminuzione della temperatura
+        media annua, determinò la formazione di un nuovo ramo del Po, il Po di
+        Primaro … causò la progressiva disattivazione del Po di Spina (Padotevere)
+        Si produssero così le condizioni per l’impaludamento dell’area e per una
+        concomitante invasione di acque salate dal mare
+      supports: [op, to]
+    - source: ispra-205-comacchio
+      locator: 'p. 116'
+      quote: >-
+        villa romana di Agosta … Infatti il complesso fu abbandonato probabilmente
+        all’inizio del V secolo dopo l’ennesima alluvione … i resti delle ultime
+        strutture, ripiegati su se stessi a coprire l’ultimo strato alluvionale,
+        risultano solamente velati da un sottile strato di sedimenti lagunari
+      supports: [op, to]
+    - source: ispra-205-comacchio
+      locator: 'p. 117'
+      quote: >-
+        il fenomeno della subsidenza è quanto mai evidente per il “dosso dei
+        Sassi” dove negli ultimi 2500 anni dovrebbe essere stato pari a circa 3 m;
+        infatti è stata rinvenuta una villa romana … che vede una parte notevole
+        delle strutture oggi sommersa
+      supports: [op]
   confidence: probable
   review: needs-check
   note: >-
@@ -311,7 +356,30 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: donda-2025, locator: 'the lagoon mostly emerged land in the Roman period; the San Gottardo harbour 500 m offshore at −4 m' }
+    - source: donda-2025
+      locator: 'Introduction'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12479966/fullTextXML
+      quote: >-
+        These remnants provide further evidence that the Grado lagoon during the
+        Roman period was mostly represented by emerged lands
+      supports: [op, from, to]
+    - source: donda-2025
+      locator: 'Introduction'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12479966/fullTextXML
+      quote: >-
+        archaeological artifacts reveal that even before the Aquileia foundation
+        (181 BC), the Grado area was inhabited, thanks to its proximity to the
+        mouth of a navigable river
+      supports: [from]
+    - source: donda-2025
+      locator: 'Abstract'
+      url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12479966/fullTextXML
+      quote: >-
+        The most recent palisade (VI century AD) shows a significant sea level
+        rise of + 0.40 m RSL … we add new data to reconstruct the RSL history of
+        the northeastern Adriatic coast and delineate its environmental
+        configuration, in which a lagoonal landscape developed shortly thereafter
+      supports: [op, to]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -319,7 +387,8 @@
     the Marano lagoon to the west is older and is left as it is. The coast itself lay
     at or a little seaward of today's barrier islands, which at this scale changes
     nothing, so it is not redrawn. Relative sea level was 1.2–1.7 m lower, which the
-    map does not apply.
+    map does not apply. "Mostly" land: the paper's own dig found open lagoon water
+    against the east side of the Grado barrier in the 1st–2nd century CE.
 
 # --- ancient coasts: the Aegean -----------------------------------------------
 
@@ -330,10 +399,57 @@
   sources:
     - { source: bruckner-2017, locator: 'fig. 1, the "±0" delta front; Lade, pp. 880–881 and fig. 4' }
     - { source: mullenhoff-2005 }
-    - { source: bruckner-2014, locator: 'p. 68: Priene cut off from the open sea by the 90s BCE' }
+    - source: bruckner-2014
+      locator: 'p. 68'
+      url: https://tidsskrift.dk/pdia/article/download/24132/21170
+      quote: >-
+        lower Maeander plain in the 90s BC over the “right of sailing in”, either
+        into the Maeander mouth to reach the river harbours further inland, or
+        through the entrance to the Gulf of Latmos
+      supports: [op, from]
+    - source: bruckner-2014
+      locator: 'p. 68 n. 68'
+      url: https://tidsskrift.dk/pdia/article/download/24132/21170
+      quote: >-
+        Another famous battle was fought at Lade between the Rhodians and Philip V
+        in 200 BC
+      supports: [from]
+    - source: bruckner-2014
+      locator: 'p. 86'
+      url: https://tidsskrift.dk/pdia/article/download/24132/21170
+      quote: >-
+        Step by step the westbound delta growth landlocked the former islands of
+        Hybanda (modern Özbaşı) north of Myous, and Lade (modern Batmaz Tepeleri,
+        the “un- sinkable Hills”) northwest of Miletos, … and separated the
+        Latmian Gulf … from the open sea, leading to the evolution of the still
+        brackish Lake Bafa
+      supports: [op]
     - { source: akcer-on-2020, locator: 'Bafa a lagoon with a narrow link to the sea by about 33 BCE' }
-    - { source: strabo, locator: '12.8.17; 14.1.7–10' }
-    - { source: pausanias, locator: '7.2.11; 8.24.11 (the gulf silted, 2nd century CE)' }
+    - source: strabo
+      locator: '14.1.8'
+      quote: >-
+        Next comes the Latmian Gulf, on which is situated “Heracleia below
+        Latmus,” as it is called, a small town that has an anchoring-place.
+      supports: [op, to]
+    - source: strabo
+      locator: '14.1.9'
+      quote: >-
+        But the voyage from Miletus to Heracleia, including the sinuosities of the
+        gulfs, is a little more than one hundred stadia, though that from Miletus
+        to Pyrrha, in a straight course, is only thirty
+      supports: [op, to]
+    - source: strabo
+      locator: '14.1.7'
+      quote: >-
+        The island Lade lies close in front of Miletus
+      supports: [op, to]
+    - source: pausanias
+      locator: '7.2.11'
+      quote: >-
+        A small inlet of the sea used to run into their land. This inlet the river
+        Maeander turned into a lake, by blocking up the entrance with mud.
+      supports: [op]
+    - { source: pausanias, locator: '8.24.11 (the gulf silted, 2nd century CE)' }
     - { source: mapterhorn, locator: 'z11 terrain below 6 m seaward of the delta front' }
   confidence: probable
   review: draft
@@ -353,7 +469,45 @@
   sources:
     - { source: stock-2013, locator: 'fig. 1, the "1st c. BC" shore and the "0 AD/BC" front' }
     - { source: kraft-2007, locator: 'fig. 12; pp. 134, 138' }
-    - { source: strabo, locator: '14.1.24: Attalus II’s mole' }
+    - source: kulzer-2018
+      locator: 'p. 78'
+      quote: >-
+        The Cayster created the extended plain in the west of modern Selçuk with
+        its more than 8 kilometers length in the last 2,300 years thanks to its
+        deposits; around 300 B.C. the coastline was just north and west of the
+        Ayasoluk.
+      supports: [op, from]
+    - source: kulzer-2018
+      locator: 'p. 79'
+      quote: >-
+        The harbor of Panormos for example, mentioned by the Roman geographer
+        Strabo (14,1,20), can only be localized in those regions which where
+        coastal areas at the beginning of the Common Era: therefore, wide
+        landscapes in the west of Ephesus are not affected in this context.
+      supports: [op, to]
+    - source: kulzer-2018
+      locator: 'p. 79'
+      quote: >-
+        even in byzantine times huge parts of the plain did not exist, these
+        regions were still covered with water and belonged to the sea.
+      supports: [op, to]
+    - source: strabo
+      locator: '14.1.24'
+      quote: >-
+        Ephesus has both an arsenal and a harbor. The mouth of the harbor was made
+        narrower by the engineers, but they, along with the king who ordered it,
+        were deceived as to the result, I mean Attalus Philadelphus; for he
+        thought that the entrance would be deep enough for large merchant vessels
+        — as also the harbor itself, which formerly had shallow places because of
+        the silt deposited by the Cayster River — if a mole were thrown up at the
+        mouth, which was very wide
+      supports: [op, from]
+    - source: strabo
+      locator: '14.1.24'
+      quote: >-
+        Such, then, is the harbor; and the city, because of its advantageous
+        situation in other respects, grows daily
+      supports: [op, to]
     - { source: livy, locator: '37.14–15: the harbour mouth like a river' }
     - { source: mapterhorn, locator: 'z12 terrain below 10 m seaward of the shore' }
   confidence: probable
@@ -371,7 +525,28 @@
   sources:
     - { source: kraft-1987, locator: 'fig. 14, the shoreline of 480 BCE; p. 189 on the pass' }
     - { source: vouvalidis-2010, locator: '8–10 km of advance since 480 BCE (abstract)' }
-    - { source: livy, locator: '36.15–18: swamp and quicksand between the defences and the sea' }
+    - source: livy
+      locator: '36.15.10'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=36:chapter=15
+      quote: >-
+        The hills at the eastern extremity are called Œta, and the highest of them
+        Callidromus; in a valley, at the foot of which, reaching to the Malian bay,
+        is a passage not broader than sixty paces.
+      supports: [op, from]
+    - { source: livy, locator: '36.16–18: swamp and quicksand between the defences and the sea' }
+    - source: strabo
+      locator: '9.4.17'
+      quote: >-
+        The Spercheius empties immediately outside Pylae.
+      supports: [op, to]
+    - source: strabo
+      locator: '9.5.13'
+      quote: >-
+        Thermopylae, then, is separated from Kenaion by a strait seventy stadia
+        wide; but, to one sailing along the coast beyond Pylae, it is about ten
+        stadia from the Spercheius; and thence to Phalara twenty stadia; and above
+        Phalara, fifty stadia from the sea, is situated the city of the Lamians
+      supports: [op, to]
     - { source: herodotus, locator: '7.176, 7.198–200' }
     - { source: mapterhorn, locator: 'z12 terrain below 30 m seaward of the shore' }
   confidence: uncertain
@@ -390,10 +565,47 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: pleuger-2019
+      locator: '§ 5.2.2'
+      quote: >-
+        In view of our results, it seems that a change of direction of the river
+        took place after 2600 BC, but that dry land had not yet emerged.
+      supports: [op, from]
+    - source: pleuger-2019
+      locator: '§ 5.2.3'
+      quote: >-
+        At that time, the marine bay north of Utica still existed
+      supports: [op, to]
+    - source: pleuger-2019
+      locator: '§ 5.2.4'
+      quote: >-
+        The development of a lagoon still open to the sea is visible in the UCN1
+        core at this time (4th-7th centuries AD), which shows that the alluvia
+        carried by the river began to isolate the northern compartment from the
+        sea under the effect of progradation.
+      supports: [op, to]
     - { source: pleuger-2019, locator: 'fig. 7 panel 2 ("2600 BC–1st c. AD"), fig. 1c' }
+    - source: delile-2015
+      locator: 'p. 301'
+      quote: >-
+        this ancient sea corridor became narrower in the Roman period and
+        completely disappeared in the early 5th/mid-6th century A.D.
+      supports: [op, to]
     - { source: delile-2015, locator: 'figs. 1–2' }
+    - source: ben-mosbah-sebkhet-ariana
+      locator: '¶ 88'
+      quote: >-
+        Cependant la lagune reste assez longtemps ouverte sur la mer puisque les
+        Arabes, vers 1300 ans BP, l’appelaient encore la Mer d’Azur
+      supports: [op, to]
     - { source: ben-mosbah-sebkhet-ariana, locator: 'fig. 7B: Sebkhet Ariana open to the gulf until about 1300 BP' }
-    - { source: caesar-bc, locator: '2.24: Castra Cornelia' }
+    - source: caesar-bc
+      locator: '2.24'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=24
+      quote: >-
+        the Cornelian camp, which was judged to be a situation extremely
+        advantageous. It is a high rock, jutting out into the sea
+      supports: [op]
     - { source: livy, locator: '29.35: Utica washed by the sea on one side' }
     - { source: mapterhorn, locator: 'z11 terrain below 8 m seaward of the shore' }
   confidence: probable
@@ -412,9 +624,41 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: crepy-boussac-2021
+      locator: 'abstract'
+      quote: >-
+        During the 1st millennium BCE, the Mariut lagoon experienced a drawdown in
+        its western part, and several distinct lakes formed, followed by building
+        operations in some emerged areas during the Hellenistic period (332–30
+        BCE).
+      supports: [op, from]
+    - source: crepy-boussac-2021
+      locator: '§ 6'
+      quote: >-
+        During the Roman period in the 2nd century CE, a system composed of large
+        canals was set up, linking independent basins to each other and to the
+        large Lake Mareotis (the lake actually described by Strabo) in the east.
+      supports: [op, to]
     - { source: crepy-boussac-2021, locator: 'fig. 7: the western basins separate in the Hellenistic and early Roman periods' }
-    - { source: flaux-2021 }
-    - { source: strabo, locator: '17.1.7' }
+    - source: flaux-2021
+      locator: 'abstract'
+      quote: >-
+        The data show both a rise in Nile inputs to the basin during the first
+        millennia BCE and CE and a lake-level rise of ca. 1.5 m during the Roman
+        period.
+      supports: [op, from, to]
+    - source: flaux-2021
+      locator: '§ 5'
+      quote: >-
+        Lake Mareotis' configuration was transformed by the 9th century CE from a
+        high-level, hypohaline coastal lake to a sebkha.
+      supports: [op, to]
+    - source: strabo
+      locator: '17.1.7'
+      quote: >-
+        on the south, by the sea of the lake Mareia , which is also called
+        Mareotis . This lake is filled by many canals from the Nile
+      supports: [op]
     - { source: mapterhorn, locator: 'z11 terrain below 0 m in the eastern basin' }
   confidence: uncertain
   review: needs-check
@@ -431,8 +675,44 @@
   to: after 27 BCE
   sources:
     - { source: flaux-2021, locator: 'fig. 1, the coastline in antiquity' }
-    - { source: goddio-heracleion }
-    - { source: strabo, locator: '17.1.16–18: Canopus and Heracleion' }
+    - source: goddio-heracleion
+      quote: >-
+        The city was founded probably around the 8th century BC, underwent diverse
+        natural catastrophes, and finally sunk entirely into the depths of the
+        Mediterranean in the 8th century AD.
+      supports: [op, from, to]
+    - source: goddio-heracleion
+      quote: >-
+        the city of Thonis-Heracleion, which lies 6.5 kilometres off today’s
+        coastline
+      supports: [op]
+    - source: goddio-canopus
+      quote: >-
+        During the last Pharaonic dynasties and the Ptolemaic period, Canopus was
+        famous for its sanctuaries of Osiris and Serapis
+      supports: [from]
+    - source: goddio-canopus
+      quote: >-
+        During Roman times Canopus was condemned in literature for its
+        extravagant feasts
+      supports: [to]
+    - source: goddio-canopus
+      quote: >-
+        The fate of Canopus was identical to that which befell
+        Thonis-Heracleion: the sea repossessed these places with their rich
+        histories.
+      supports: [op]
+    - source: strabo
+      locator: '17.1.17'
+      quote: >-
+        Canobus is a city, distant by land from Alexandreia 120 stadia.
+      supports: [op]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to Canobus is Heracleium , in which is a temple of Hercules ; then
+        follows the Canobic mouth
+      supports: [op]
   confidence: probable
   review: draft
   note: >-
@@ -445,7 +725,41 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '17.1.6: Pharos, the Heptastadion, the two harbours' }
+    - source: marriner-2008
+      locator: 'abstract'
+      quote: >-
+        Tyre's causeway served as a prototype for Alexandria's Heptastadium built
+        a few months later.
+      supports: [from]
+    - source: marriner-2008
+      locator: '§ 5.3.3.1'
+      quote: >-
+        Progradation of the tombolo is indicated by the accretion of a sand unit
+        after 1935 ± 55 14 C BP (360 to 610 cal. AD).
+      supports: [op, to]
+    - source: goiran-2014
+      locator: 'p. 26'
+      quote: >-
+        Alexandrie, fondée au IV e siècle avant J.-C, se dote de deux bassins
+        portuaires de part et d’autre de l’Heptastade, chaussée reliant l’île de
+        Pharos à la ville.
+      supports: [op, from]
+    - source: strabo
+      locator: '17.1.6'
+      quote: >-
+        It forms also another port, which has the name of Eunostus , or Happy
+        Return … These (two) lie contiguous in the recess called Heptastadium ,
+        and are separated from it by a mound. This mound forms a bridge from the
+        continent to the island, and extends along its western side, leaving two
+        passages only through it to the harbour of Eunostus
+      supports: [op]
+    - source: caesar-bc
+      locator: '3.112'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=112
+      quote: >-
+        This island, lying over against Alexandria , makes a haven, and is joined
+        to the continent by a causeway of nine hundred paces, and by a bridge.
+      supports: [op]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -460,7 +774,36 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '17.1.6' }
+    - source: goiran-2014
+      locator: 'p. 26'
+      quote: >-
+        Alexandrie, fondée au IV e siècle avant J.-C, se dote de deux bassins
+        portuaires de part et d’autre de l’Heptastade, chaussée reliant l’île de
+        Pharos à la ville.
+      supports: [op, from]
+    - source: goiran-2014
+      locator: 'p. 29'
+      quote: >-
+        les bassins portuaires du Magnus Portus (baie orientale) fonctionnent
+        toujours, au moins jusqu’au VIII e siècle après J.-C.
+      supports: [op, to]
+    - source: marriner-2008
+      locator: '§ 5.3.3.1'
+      quote: >-
+        Progradation of the tombolo is indicated by the accretion of a sand unit
+        after 1935 ± 55 14 C BP (360 to 610 cal. AD).
+      supports: [op, to]
+    - source: strabo
+      locator: '17.1.6'
+      quote: >-
+        That which has its entrance at the above-mentioned tower of Pharos is the
+        great harbour.
+      supports: [op]
+    - source: goddio-alexandria
+      quote: >-
+        We now know how the eastern port of Alexandria looked during the Ptolemaic
+        and Roman Periods.
+      supports: [op]
   confidence: uncertain
   review: needs-check
   note: The Great Harbour's side of the tombolo, as alexandria-heptastadion.
@@ -487,7 +830,34 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: vella-2005, locator: 'fig. 5, lobe 1; the Roman wrecks of 50 BCE–50 CE on its bar' }
+    - source: vella-2005
+      locator: 'p. 235 (abstract)'
+      quote: >-
+        the main Holocene paleo-delta lobes of Ulmet and Saint Ferre ´ol were
+        contemporaneous, being deposited from 4000 to 2000 yr BP
+      supports: [op, from]
+    - source: vella-2005
+      locator: 'p. 249'
+      quote: >-
+        On the left (east) bank, the presence of an offshore bar is attested by the
+        alignment of 14 Roman wrecks on a sub-marine beach bar … The external bar
+        would be positioned at about the level of the current 10-m isobath,
+        approximately 2 km south of the present-day coastline of the Gulf of
+        Beauduc.
+      supports: [op]
+    - source: vella-2005
+      locator: 'p. 249'
+      quote: >-
+        The wrecks were stranded on a sub-marine beach bar, and then subsided
+        approximately 6–10 m following erosion of the coast. The beach ridge is
+        dated from the age of the shipwrecks between 50 B.C. and 50 A.D.
+      supports: [op, to]
+    - source: vella-2005
+      locator: 'p. 256'
+      quote: >-
+        In the centre of the delta, the Saint Ferre ´ol arm was active between
+        4000 yr BP and 1440 AD
+      supports: [from, to]
   confidence: probable
   review: draft
   note: >-
@@ -499,7 +869,39 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: vella-2005, locator: 'fig. 5; table 3, the Cabane Rouge ridge and the Marais de Fos cores' }
+    - source: vella-2005
+      locator: 'p. 252, fig. 10'
+      quote: >-
+        Beach ridge radiocarbon datings indicate a progressive filling of the
+        palaeo-gulf from 2886 F 40 BP up to the modern period.
+      supports: [op]
+    - source: vella-2005
+      locator: 'p. 254'
+      quote: >-
+        Their morphology points to the existence of a palaeo-gulf in the eastern
+        part of the delta. The dating of these beach ridges indicates a
+        progressive filling before 2886 F 40 yr BP (Ly-8023) up to the modern
+        period. … The final beach ridge is considered as modern based on a
+        comparison of old maps and an illustrated view of 1585
+      supports: [op, from, to]
+    - source: vella-2005
+      locator: 'p. 256'
+      quote: >-
+        The Bras de Fer was apparently active between 1587 and 1711 … while the
+        downstream channel of the Grand Rhone would have become active from 1711
+        or 1713 (Russell, 1942) up to the present day. The activity of these
+        channels explains the strong progradation that can be observed on modern
+        maps of the delta in this sector
+      supports: [op, to]
+    - source: vella-2005
+      locator: 'p. 255'
+      quote: >-
+        these sea levels all correspond to a single event occurring around Fos
+        before the beginning of the Christian era … this event is reflected by a
+        retreat of the shoreline that considerably modified the paleogeography
+        and led to a marine incursion of the freshwater peat bog located behind
+        the shore in the Fos marshes
+      supports: [op]
     - { source: strabo, locator: '4.1.8: the mouths silt up; Marius’s canal' }
     - { source: pliny-nh, locator: '3.33' }
     - { source: mapterhorn, locator: 'z11 terrain below 5 m seaward of the shore' }
@@ -517,6 +919,32 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: nienhuis-2017
+      locator: 'p. 587'
+      url: https://esurf.copernicus.org/articles/5/585/2017/esurf-5-585-2017.pdf
+      quote: >-
+        Dated beach ridges show that the Ebro Delta coast was small, cuspate, and
+        wave-dominated at least until 3000 years BP (Canicio and Ibáñez, 1999).
+        The same study suggested that sometime between 1400 and 1000 years BP the
+        Riet Vell lobe had grown rapidly and extended approximately 20 km into the
+        Mediterranean Sea
+      supports: [op, from, to]
+    - source: nienhuis-2017
+      locator: 'p. 596'
+      url: https://esurf.copernicus.org/articles/5/585/2017/esurf-5-585-2017.pdf
+      quote: >-
+        the period of rapid growth of the Ebro Delta plain lasted approximately
+        1200 + 600 + 300 = 2100 years, placing the time at which rapid delta
+        growth started approximately 2100 years BP
+      supports: [op, from]
+    - source: nienhuis-2017
+      locator: 'p. 586, fig. 1'
+      url: https://esurf.copernicus.org/articles/5/585/2017/esurf-5-585-2017.pdf
+      quote: >-
+        the spits to the north (El Fangar) and south (La Banya) of the current
+        river mouth, considered to be formed by wave reworking of abandoned delta
+        lobes
+      supports: [op]
     - { source: nienhuis-2017, locator: 'fig. 1, the "start growth" stage' }
     - { source: mapterhorn, locator: 'z11 terrain below 6 m seaward of the shore' }
   confidence: uncertain
@@ -531,10 +959,63 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: salel-2014 }
-    - { source: mela, locator: '2.81–82: very broad, admitting the sea by a narrow mouth' }
-    - { source: strabo, locator: '4.1.6' }
-    - { source: pliny-nh, locator: '3.32' }
+    - source: sanchez-2014
+      locator: 'p. 128'
+      quote: >-
+        Deux carottages, réalisés à 3,5 km au sud-est de Narbonne, démontrent
+        qu’une lagune fermée euryhaline était en place dès le troisième millénaire
+        av. n.-è. et perdurait après le i er siècle de n.-è.
+      supports: [from, to]
+    - source: sanchez-2014
+      locator: 'p. 128'
+      quote: >-
+        Au ii e siècle av. n.-è., la profondeur d’eau de la lagune, au niveau du
+        Castélou, peut être estimée à environ 5 m
+      supports: [op, from]
+    - source: sanchez-2014
+      locator: 'p. 126, fig. 1'
+      quote: >-
+        L’emplacement des épaves échouées à Port-la-Nouvelle et Gruissan, en
+        retrait du cordon littoral actuel, marque le point de passage antique
+        entre la mer et la lagune.
+      supports: [op]
+    - source: dolez-2015
+      quote: >-
+        The overlying deposits represent a succession of estuarine and marine
+        facies, following by the progressive set up of a lagoonal environment at
+        ca. 2500 cal. BP.
+      supports: [from]
+    - source: salel-2014
+      quote: >-
+        At the beginning of Christianity, before the Etang de Sigean silted up,
+        the Narbo bay could be entered between the isles of Sainte Lucie and Saint
+        Martin, close to the present Grau de la Vieille Nouvelle
+      supports: [op, to]
+    - source: salel-2014
+      quote: >-
+        the main port of ancient Narbo is now believed to be located at Le
+        Castelou. This location is inside a series of coastal lakes that were more
+        widely open to the sea in ancient times.
+      supports: [op]
+    - source: mela
+      locator: '2.81'
+      url: https://www.thelatinlibrary.com/pomponius2.html
+      quote: >-
+        Lacus accipit eum Rubraesus nomine spatiosus admodum, sed qua mare
+        admittit tenuis aditu.
+      supports: [op]
+    - source: strabo
+      locator: '4.1.6'
+      quote: >-
+        Narbonne is situated above the outlets of the Atax (Aude) and the lake of
+        Narbonne.
+      supports: [op]
+    - source: pliny-nh
+      locator: '3.32'
+      quote: >-
+        the river Atax, which flows from the Pyrenees, and passes through the
+        Rubrensian Lake, the town of Narbo Martius
+      supports: [op]
     - { source: mapterhorn, locator: 'z12 terrain below 3 m inside the shore' }
   confidence: probable
   review: needs-check
@@ -552,7 +1033,43 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pliny-nh, locator: '6.138–140: Charax 10 stades from the shore at its founding, 50 miles in Juba’s day' }
+    - source: pliny-nh
+      locator: '6.139–140'
+      quote: >-
+        It stood at first at a distance of ten stadia from the shore, and even had
+        a harbour of its own. But according to Juba, it is fifty miles from the
+        sea; … and at the present day, the ambassadors from Arabia, and our own
+        merchants who have visited the place, say that it stands at a distance of
+        one hundred and twenty miles from the sea-shore. Indeed, in no part of the
+        world have alluvial deposits been formed more rapidly by the rivers
+      supports: [op]
+    - source: pliny-nh
+      locator: '6.141'
+      quote: >-
+        the description given by king Juba, in his work dedicated to Caius Caesar
+        above-mentioned, on the subject of the same expedition against Arabia
+      supports: [to]
+    - source: hansman-1967
+      locator: 'p. 30'
+      quote: >-
+        since, during the last centuries B.C., there had been a continuous
+        accession of land within the marsh areas which bordered on the upper
+        Persian Gulf, many of the older descriptions of this region were no longer
+        valid by the first century
+      supports: [op, from]
+    - source: hansman-1967
+      locator: 'p. 54'
+      quote: >-
+        It is of course known from Nearchus, Pliny and other classical writers
+        that a very large lake or lakes separated the mainland of the delta from
+        what was apparently an extensive area of shoals and tidal mud flats which
+        bordered directly on the Gulf.
+      supports: [op]
+    - source: hansman-1967
+      locator: 'p. 54'
+      quote: >-
+        Over the past centuries, much of this lake and marshland has silted up.
+      supports: [op]
     - { source: hansman-1967, locator: 'the Chaldean Lakes and their 4th-century limit' }
     - { source: heyvaert-baeteman-2007, locator: 'the coast stable from 5500 BP, building out from about 2500 BP' }
     - { source: walstra-2010, locator: 'the Karun, Karkheh and Tigris near Charax' }
