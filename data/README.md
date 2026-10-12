@@ -93,7 +93,9 @@ confirming.
    window carry their exact year. A later curator extending the window should
    treat every open end as a question, as the extension from 43 to 27 did: every
    `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
-   purpose (Osroene's standing with Rome, which nothing attests after 43). The
+   purpose (Osroene's standing with Rome, which nothing attests after 43; the
+   research of October 2026 has since closed it at 54, when Abgar turned on
+   Crassus). The
    extension back to 133 did the same for every `before 68 BCE`, except one left
    open on purpose (the Kushite hold on Lower Nubia, which nothing dates before
    68).

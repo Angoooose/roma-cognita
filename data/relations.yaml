@@ -1326,6 +1326,64 @@
     to be among Rome's "friends and allies" (Plut. Luc. 24.1) and was
     (October 2026; it read client).
 
+- polity: pontic-cities
+  type: client-of
+  of: pontus-regnum
+  from: c. 110 BCE
+  to: 72 BCE
+  sources:
+    - source: magie-1950
+      locator: 'vol. I, 195'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Within a very few years his general Diophantus not only delivered the
+        Greeks from their enemies but established the supremacy of Pontus on
+        the northern shore of the Euxine … Thus the Crimea became a part of
+        Mithradates’s realm, and with it not only the neighbouring regions but
+        apparently the Greek cities on the western shore of the Euxine also
+        were brought under his power.
+      supports: [type, of, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        that Mithradates established “a kind of Pontic protectorate” over these
+        cities has been confirmed by an inscription from Apollonia Pontica
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine, and the barbarian tribes
+        beyond them
+      supports: [type, of]
+    - source: eutropius
+      locator: '6.10'
+      quote: >-
+        He then besieged several cities lying above Pontus, where he destroyed
+        Apollonia, Calatis, Parthenopolis, Tomi, Histros, and Burziaone, and,
+        putting an end to the war, returned to Rome.
+      supports: [to]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
+        Pompey were made consuls
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Greek cities of the western Pontus under Mithridates' "kind of
+    Pontic protectorate", from Diophantus' war to M. Lucullus' campaign of
+    72–71 (see the claim). Added in October 2026.
+
 - polity: scythia-minor
   type: client-of
   of: pontus-regnum
@@ -1539,6 +1597,50 @@
     client-of until October 2026.
     The tetrarchs' standing before Pompey is not stated; they fought on Rome's
     side in 89 and in the 70s.
+
+- polity: olba
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        But Aba, the daughter of Xenophanes, one of the tyrants, came into this
+        family by marriage and herself took possession of the empire … But
+        later both Antony and Cleopatra conferred it upon her as a favor
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But after Antony’s rule over the East had been established in
+        consequence of the compact of Brundisium, the senators seem to have
+        ratified in advance all the measures that he might take. Of these
+        perhaps the most important were his arrangements concerning the
+        client-kingdoms.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        temple-state of Olba was ruled by Aba … This woman, by courting the
+        favour of Antony and Cleopatra, succeeded in retaining her power, and
+        under Augustus her descendants continued to rule this mountain-region.
+      supports: [type, of, to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aba's tenure by Antony's grant, from his arrangements of 39, and her
+    descendants' under Augustus (see the claim). Added in October 2026.
 
 - polity: derbe
   type: client-of
@@ -1817,7 +1919,7 @@
 - polity: emesa
   type: allied-to
   of: rome
-  from: { earliest: 64 BCE, latest: 51 BCE }
+  from: 64 BCE
   to: { earliest: 47 BCE, latest: 32 BCE }
   sources:
     - source: cicero-fam
@@ -1833,6 +1935,12 @@
         Arethusa , belonging to Sampsiceramus and Iamblichus his son, chiefs of
         the tribe of the Emeseni .
       supports: []
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
     - source: josephus-aj
       locator: '14.129'
       quote: >-
@@ -1854,7 +1962,9 @@
     Cicero's Iamblichus "of the Arabians" is Emesa's. A friendly dynast in 51
     and 47, not a dependent one. It was client-of from 64 to 31 until October
     2026: no readable text dates a tie to Pompey's settlement of 64, so it
-    begins between that and Cicero's despatch of 51; it ends between 47, when
+    begins between that and Cicero's despatch of 51, and is drawn from 64,
+    the earlier bound (Dio 37.6.4–7.1), as the claim is, so as not to leave
+    64–58 blank after the independent row; it ends between 47, when
     Iamblichus helped Caesar, and 32, since he is first seen dependent in 31
     (see the client-of row).
 
@@ -2439,7 +2549,7 @@
   type: allied-to
   of: rome
   from: 71 BCE
-  to: after 62 BCE
+  to: 62 BCE
   sources:
     - source: eutropius
       locator: '6.10'
@@ -2476,8 +2586,8 @@
     Antonius, consul in 63, attacked as governor of Macedonia (Dio 38.10.1–3,
     37.10.4), so in force in 62; that is the last a readable text shows. It
     ran to 56, the year before Burebista's conquest as conventionally dated,
-    until October 2026; no text read states it, and the claim keeps 56 only
-    because an open end there would overlap Burebista's row.
+    until October 2026, which no text read states; it ends at 62, as the
+    allied claim does, Burebista's row starting the year after.
 
 - polity: noricum
   type: allied-to
@@ -2813,7 +2923,7 @@
   type: client-of
   of: rome
   from: 66 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - source: cassius-dio
       locator: '36.52.3–4'
@@ -2855,6 +2965,17 @@
         Antony's party, became consuls. Then they made no further concealment,
         but became openly hostile.
       supports: [to]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 33' }
   confidence: probable
   review: draft
@@ -2863,8 +2984,10 @@
     the year before the consulship of Cotta and Torquatus (Dio 36.52–53,
     37.1.1). Antony seized Artavasdes II in 34 and held the country; it was
     lost when Antony recalled his soldiers for the war with Caesar (Dio
-    49.44.3–4), which was open from the consulship of Domitius and Sosius, 32
-    (50.2.2).
+    49.44.3–4), after the Araxes compact of 33, the year of Caesar's second
+    consulship (49.43.6), and before 30, when Artaxes had killed the Romans
+    left behind (51.16.2). It read 32 until October 2026; it now ends in the
+    same range as the client claim on the ground (33–31, drawn at 32).
 
 - polity: atropatene
   type: allied-to
@@ -2878,6 +3001,19 @@
         learning there that the Mede had gone far away from his own land to bear
         aid to his ally, the Parthian king
       supports: [type, of, to]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [from]
     - source: cassius-dio
       locator: '49.33.1'
       quote: >-
@@ -3479,7 +3615,7 @@
   note: Zenodorus' lease of the house of Lysanias.
 
 - polity: armenia
-  type: client-of
+  type: allied-to
   of: parthia
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
@@ -3550,7 +3686,11 @@
     32 (Dio 49.44.3–4, 50.2.2), and Artaxes had killed the Romans left there
     by the time Caesar settled Egypt in his fourth consulship, 30 (51.4.3,
     51.16.2). It read 31 until October 2026, which no text states; the range
-    is drawn at its midpoint, 31.
+    is drawn at its midpoint, 31. It read client-of until October 2026 too:
+    no text says Parthia set Artaxias up or calls him subject (the Armenians
+    chose him, Dio 49.39.6); he fought beside the Parthians (49.44.4) and
+    held his crown by their strength, an ally by the closest type the texts
+    describe, as the claims on armenia and sophene now say.
 
 - polity: atropatene
   type: allied-to
@@ -3602,7 +3742,7 @@
         but as Antony summoned back his own soldiers, and moreover retained
         those of the king, the latter was in turn defeated and captured, and so
         Armenia was lost together with Media
-      supports: [of, from]
+      supports: [type, of, from]
     - source: cassius-dio
       locator: '51.16.2'
       quote: >-
@@ -3614,9 +3754,14 @@
       quote: >-
         they themselves have attained to friendship with Caesar. But they are
         also paying court to the Parthians at the same time.
-      supports: [to]
+      supports: [type, to]
   confidence: uncertain
   review: needs-check
+  note: >-
+    As the client claim on atropatene, which carries the same passages: the
+    Mede was deposed by the Parthians and Artaxes, and Media "lost" with
+    Armenia (Dio 49.44.4); in Strabo's day the Atropatenians were "paying
+    court to the Parthians" (11.13.2). No text names a king Parthia set up.
 
 # --- added September 2026: the extension to 133 BCE, Anatolia -----------------
 
@@ -3843,6 +3988,34 @@
         the other Mithridates from Media, the son-in-law of Tigranes, fell
         suddenly upon the Romans while they were scattered
       supports: [type]
+    - source: debevoise-1938
+      locator: 'p. 50'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        This event, which took place in 87 B.c., is the last dated occurrence in
+        the reign of Mithradates II
+      supports: [from]
+    - source: debevoise-1938
+      locator: 'pp. 50–51'
+      url: https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt
+      quote: >-
+        Mithradates II had been a friend and ally of Tigranes of Armenia. On his
+        death the latter felt free, not to say urged, to proceed against
+        Gotarzes … Atropatene became his vassal state.
+      supports: [type, of, from]
+    - source: cassius-dio
+      locator: '36.53.2'
+      quote: >-
+        what he had acquired later (chiefly portions of Cappadocia and Syria, as
+        well as Phoenicia and the large district of Sophene bordering on
+        Armenia) he took away
+      supports: [to]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        The year following these exploits, in the consulship of Lucius Cotta and
+        Lucius Torquatus
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-

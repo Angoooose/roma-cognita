@@ -3535,7 +3535,7 @@
 - atom: cilicia-campestris
   polity: cilicia
   relation: province
-  from: { earliest: 67 BCE, latest: 62 BCE }
+  from: 67 BCE
   to: 44 BCE
   sources:
     - source: borgia-2017
@@ -3585,7 +3585,7 @@
         It has been previously observed that the province of Cilicia was
         probably dismembered soon after Caesar's death.
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     The plain came under Rome with Pompey, who settled pirates in its cities
@@ -3595,7 +3595,11 @@
     settled pirates at Soli (Plut. Pompey 28.4); Magie's annexation with the
     making of Syria a province, in 64, or earlier under Lucullus (I 376); and
     Borgia's "new province of Cilicia created in 62 BC" (301). Until October
-    2026 the range was 67–64, which left Borgia's 62 out. The province "was probably dismembered soon
+    2026 the range was 67–64, which left Borgia's 62 out; then 67–62, drawn
+    at 64, which left 69–65 blank after Tigranes' row (to 70). It is now drawn
+    from 67, the range's first year, and lowered from probable; 69–68 stay
+    blank, as no text read says who held the plain between Tigranes'
+    withdrawal and Pompey's command. The province "was probably dismembered soon
     after Caesar's death" (I 433); elsewhere Magie puts the plain's attachment
     to Syria "apparently in the course of 44" (I 418), which would make 44
     Syria's; the next row (syria, from 43) is left as it is.
@@ -4084,7 +4088,7 @@
 - atom: cyprus
   polity: cyprus-ptolemaic-early
   relation: independent
-  from: { earliest: 114 BCE, latest: 113 BCE }
+  from: 114 BCE
   to: 108 BCE
   sources:
     - source: bennett-ptolemies
@@ -4105,13 +4109,15 @@
       quote: >-
         replaced Ptolemy IX as junior ruler under Cleopatra III in September 107
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Ptolemy X, "proclaimed king in Cyprus in 114/3" (Bennett), until he
     replaced his brother in Alexandria in 107. Pausanias has his mother send
     him there "ostensibly as general" (1.9.2); the royal title rests on his
-    Cypriot dating (Bennett).
+    Cypriot dating (Bennett). Drawn from 114, the earlier year of 114/3, next
+    to the Egyptian row ending in 115: as the range 114–113 it sat at 113 and
+    left 114 blank. Uncertain, not probable, since October 2026, for that.
 
 - atom: cyprus
   polity: aegyptus
@@ -6462,9 +6468,9 @@
 
 - atom: bosporus
   polity: pontus-regnum
-  relation: independent
+  relation: allied
   from: c. 110 BCE
-  to: { earliest: 87 BCE, latest: 86 BCE }
+  to: 89 BCE
   sources:
     - source: minns-1913
       locator: 'p. 582'
@@ -6484,7 +6490,7 @@
       quote: >-
         established himself as lord of the Bosporus, receiving the country as a
         voluntary gift from Parisades who held sway over it
-      supports: [polity, relation]
+      supports: [polity]
     - source: strabo
       locator: '7.4.6'
       quote: >-
@@ -6500,6 +6506,55 @@
         arrest into the kingdom (of Mithridates), and (thus) he regained the
         power of the king Mithridates Eupator
       supports: [polity]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
+    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
+    Panticapaeum back for the king (the decree); the revolt is not drawn. The
+    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
+    the king's protection, with Diophantus at the Bosporus, by the winter of
+    110, keeping "the semblance of authority" until he was killed in 107, and
+    the king's "unlimited authority" only after the revolt was put down in the
+    spring after: the change of hands falls somewhere in 110–106, and the row
+    starts at its first year. It started c. 108 until October 2026, a year no
+    readable text gives. Allied, as the kingdom and Chersonesus are, while
+    the king's alliance with Rome was "still in force" (App. Mithr. 14),
+    until Rome declared war in 88 (Mithr. 22); until October 2026 one
+    independent row ran from c. 110 to 87–86.
+
+- atom: bosporus
+  polity: pontus-regnum
+  relation: independent
+  from: 88 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
+  sources:
+    - source: strabo
+      locator: '7.4.3–4'
+      quote: >-
+        established himself as lord of the Bosporus, receiving the country as a
+        voluntary gift from Parisades who held sway over it
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
     - source: plutarch
       locator: 'Sulla 11.1–2'
       quote: >-
@@ -6530,17 +6585,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
-    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
-    Panticapaeum back for the king (the decree); the revolt is not drawn. The
-    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
-    the king's protection, with Diophantus at the Bosporus, by the winter of
-    110, keeping "the semblance of authority" until he was killed in 107, and
-    the king's "unlimited authority" only after the revolt was put down in the
-    spring after: the change of hands falls somewhere in 110–106, and the row
-    starts at its first year. It started c. 108 until October 2026, a year no
-    readable text gives. In
-    87, as Sulla left Italy after naming the consuls of that year (Eutrop.
+    As the row before, from Rome's declaration of war in 88 (App. Mithr. 22).
+    In 87, as Sulla left Italy after naming the consuls of that year (Eutrop.
     5.4), a son of Mithridates held "Pontus and Bosporus … as far as the
     deserts beyond Lake Maeotis" (Plut. Sulla 11.1–2). The Bosporan peoples had
     revolted by the time the king came home after Dardanus, in the autumn of
@@ -7521,7 +7567,7 @@
   polity: bosporus
   relation: independent
   from: 48 BCE
-  to: 42 BCE
+  to: 46 BCE
   sources:
     - source: strabo
       locator: '7.4.3'
@@ -7551,15 +7597,24 @@
         native claimant, and for the next few years the Romans were much too
         taken up with their own affairs to disturb Asander
       supports: [relation]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        Obviously it occurred after Caesar's death as he granted freedom to the
+        Chersonesos in 45 BC.
+      supports: [to]
+    - source: pliny-nh
+      locator: '4.85'
+      quote: >-
+        Heraclea Chersonesus, to which its freedom has been granted by the
+        Romans
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    As bosporus; the grant of freedom by Caesar c. 46 would end it early. No
-    readable text dates Rome's recognition of Asander, which ends the row:
-    Minns (p. 592, n.) reports von Sallet's view that Caesar recognised him,
-    with coins from 46/5, and himself reads the coins' first years as Asander
-    archon under the heads of Octavian and Antony. The end of 42 is kept for
-    the next row's c. 41.
+    As bosporus, until Caesar granted the city its freedom in 45 (Vnukov and
+    Kovalenko 21; Pliny 4.85 records the grant without a year). Until October
+    2026 it ran to 42 with the bosporus row, which that grant contradicts.
 
 - atom: pontus
   polity: bosporus
@@ -7652,6 +7707,64 @@
   confidence: certain
   review: draft
 
+- atom: colchis
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: cassius-dio
+      locator: '42.45.3'
+      quote: >-
+        he got possession of Colchis without any difficulty
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His first move was directed against the district of Colchis at the
+        eastern end of the Euxine Sea, which had been placed by Pompey under the
+        rule of the dynast Aristarchus but now submitted without a struggle
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+  confidence: probable
+  review: draft
+  note: >-
+    Pharnaces' first conquest of 48: Colchis "submitted without a struggle"
+    before he moved into Lesser Armenia (Magie I 408; Dio 42.45.3), which he
+    held until Caesar recovered what he had taken from Rome and its treaty
+    partners after Zela in 47 (Dio 42.48.3). Probable, not certain like the
+    rows on pontus and armenia-minor: no text names Colchis among what Caesar
+    took back, and who held it after 47 is not recorded (the client claim
+    ends in 48). Added in October 2026; Pharnaces' hold on Colchis was not
+    drawn before.
+
 - atom: galatia-pontus
   polity: bosporus
   relation: occupied
@@ -7727,15 +7840,32 @@
         Adiatorix, who is thought to have obtained the honor from Augustus
         Caesar
       supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
     - { source: strabo, locator: '12.3.34' }
   confidence: probable
   review: draft
   note: >-
     Pompey's priest-ruler Archelaus, his son, then Caesar's Lycomedes from 47
     (Magie I 411), and Dyteutus, whom Augustus made priest after his triumph
-    over Adiatorix (Strabo 12.3.35). The start of 63 is no text's: Magie dates
-    Pompey's arrangements from Amisus in the spring of 64 (I 360) to the
-    winter of 63–62 (I 365, 368), a range whose middle is 63.
+    over Adiatorix (Strabo 12.3.35). From 63, as the polity and its client-of
+    relation, on the same passages: Mithridates dead in Cicero's consulship
+    (Dio 37.10.4), and Pompey completing his plans for the conquered lands in
+    Pontus in the winter of 63–62 (Magie I 365); Magie has the arrangements
+    begun at Amisus in the spring of 64 (I 360).
 
 - atom: colchis
   polity: colchis
@@ -7782,6 +7912,21 @@
         subject to him was also broken up and distributed among many persons.
         At last Polemon got Colchis
       supports: []
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -7790,10 +7935,11 @@
     after Zela is not recorded until Polemon, to whom Antony gave it (Magie I
     435; "At last Polemon got Colchis", Strabo 11.2.18), on a date no
     readable text gives. Until October 2026 the row ran to after 27 BCE, which
-    no readable text supports. The start of 63 is no text's either: Magie
-    dates Pompey's arrangements from the spring of 64 (I 360) to the winter of
-    63–62 (I 365, 368), a range whose middle is 63; the polity and its
-    relation also start in 63.
+    no readable text supports. The start of 63 is the client-of relation's,
+    on the same passages: Mithridates dead in Cicero's consulship (Dio
+    37.10.4), Pompey completing his plans in Pontus in the winter of 63–62
+    (Magie I 365); Magie has the arrangements begun at Amisus in the spring
+    of 64 (I 360), and the polity's start is the range 64–62.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
@@ -8046,7 +8192,7 @@
   polity: olba
   relation: independent
   from: 67 BCE
-  to: after 27 BCE
+  to: 40 BCE
   sources:
     - source: strabo
       locator: '14.5.10'
@@ -8070,9 +8216,15 @@
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
       quote: >-
         temple-state of Olba was ruled by Aba … This woman, by courting the
-        favour of Antony and Cleopatra, succeeded in retaining her power, and
-        under Augustus her descendants continued to rule this mountain-region.
-      supports: [polity, to]
+        favour of Antony and Cleopatra, succeeded in retaining her power
+      supports: [polity]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 28' }
   confidence: uncertain
   review: needs-check
@@ -8080,10 +8232,60 @@
     The priests' domain is drawn from Pompey's war on the pirates, which Dio
     puts in the year of Acilius and Piso, 67 (36.37.3–38.1); before it the
     country is left unclaimed with the rest of the Tracheia. Nothing read states
-    the relation: Strabo's "both Antony and Cleopatra conferred it upon her as a
-    favor" (14.5.10) reads as dependence under Antony rather than independence,
-    but drawing it as a client would need a client-of relation in
-    relations.yaml, and the polity (see olba) leaves it independent.
+    the relation in these years. To 40: Aba held it later by Antony's grant
+    (see the next row). Until October 2026 this row ran on to after 27.
+
+- atom: olba
+  polity: olba
+  relation: client
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        But Aba, the daughter of Xenophanes, one of the tyrants, came into this
+        family by marriage and herself took possession of the empire … But
+        later both Antony and Cleopatra conferred it upon her as a favor
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But after Antony’s rule over the East had been established in
+        consequence of the compact of Brundisium, the senators seem to have
+        ratified in advance all the measures that he might take. Of these
+        perhaps the most important were his arrangements concerning the
+        client-kingdoms.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        temple-state of Olba was ruled by Aba … This woman, by courting the
+        favour of Antony and Cleopatra, succeeded in retaining her power, and
+        under Augustus her descendants continued to rule this mountain-region.
+      supports: [polity, relation, from, to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "Both Antony and Cleopatra conferred it upon her as a favor" (Strabo
+    14.5.10): Aba held Olba by Antony's grant, among his arrangements for the
+    client kingdoms once the senate had ratified his acts after Brundisium
+    (Magie I 433–434), and her descendants kept it under Augustus. A client,
+    by the closest type the texts describe: a ruler Rome's triumvir set up.
+    When she had the grant is not stated: no earlier than the ratification
+    in the consulship of Marcius and Sabinus (39; Dio 48.34.1), and Cleopatra's
+    part may put it later, to 31. Drawn from 39, the earliest, next to the
+    row before, as Amyntas' and Polemo's grants are. Added in October 2026;
+    the row before ran to after 27 until then.
 
 - atom: derbe
   polity: derbe
@@ -8665,7 +8867,7 @@
   polity: pontic-cities
   relation: independent
   from: before 133 BCE
-  to: 72 BCE
+  to: c. 111 BCE
   sources:
     - source: strabo
       locator: '7.6.1'
@@ -8676,6 +8878,70 @@
         Heracleotae; then, at one thousand three hundred stadia, to Apollonia, a
         colony of the Milesians
       supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Old Greek foundations (Strabo 7.6.1), with no recorded tie to any power
+    before Mithridates' war in the Crimea; the relation is not backed. Ends
+    when that war began, c. 110 on Reinach's date, which Magie prefers to
+    Niese's 114/3 (II 1092 n. 53), as the Scythians' and the Bosporus' rows
+    do. Until October 2026 this row ran to 72, which Appian and Magie
+    contradict (see the next row).
+
+- atom: pontic-cities
+  polity: pontic-cities
+  relation: client
+  from: c. 110 BCE
+  to: 72 BCE
+  sources:
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        a small town, Ister, founded by the Milesians; then, at a distance of two
+        hundred and fifty stadia, to a second small town, Tomis; then, at two
+        hundred and eighty stadia, to a city Callatis, a colony of the
+        Heracleotae; then, at one thousand three hundred stadia, to Apollonia, a
+        colony of the Milesians
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 195'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Within a very few years his general Diophantus not only delivered the
+        Greeks from their enemies but established the supremacy of Pontus on
+        the northern shore of the Euxine … Thus the Crimea became a part of
+        Mithradates’s realm, and with it not only the neighbouring regions but
+        apparently the Greek cities on the western shore of the Euxine also
+        were brought under his power.
+      supports: [relation, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        that Mithradates established “a kind of Pontic protectorate” over these
+        cities has been confirmed by an inscription from Apollonia Pontica
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine, and the barbarian tribes
+        beyond them
+      supports: [relation]
     - source: eutropius
       locator: '6.10'
       quote: >-
@@ -8689,40 +8955,20 @@
         Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
         Pompey were made consuls
       supports: [to]
-    - source: appian
-      locator: 'Mithr. 15'
-      quote: >-
-        he has acquired many neighboring nations, the Colchians, a very warlike
-        people, the Greeks bordering on the Euxine, and the barbarian tribes
-        beyond them
-      supports: []
-    - source: magie-1950
-      locator: 'vol. I, 195'
-      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
-      quote: >-
-        Thus the Crimea became a part of Mithradates’s realm, and with it not
-        only the neighbouring regions but apparently the Greek cities on the
-        western shore of the Euxine also were brought under his power.
-      supports: []
-    - source: magie-1950
-      locator: 'vol. II, 1092 n. 53'
-      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
-      quote: >-
-        that Mithradates established “a kind of Pontic protectorate” over these
-        cities has been confirmed by an inscription from Apollonia Pontica
-      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
-    Old Greek foundations (Strabo 7.6.1), with no recorded tie to Rome before
-    M. Lucullus took them in his campaign of 72–71, ended before the consuls of
-    70 (Eutropius 6.10; Livy Per. 97). The relation is not backed and is
-    contradicted: in 89 Mithridates' envoy counts "the Greeks bordering on the
-    Euxine" among his acquisitions (App. Mithr. 15), and Magie has the western
-    cities "apparently" under his power after Diophantus' war (I 195), a
-    "Pontic protectorate" an inscription from Apollonia confirms (II 1092 n.
-    53). Drawing them as his would need a client-of pontus-regnum relation in
-    relations.yaml and a start for it, which Magie leaves undated.
+    Under Mithridates' "kind of Pontic protectorate", which an inscription
+    from Apollonia confirms (Magie II 1092 n. 53): Magie has the western
+    cities "apparently" brought under his power with the Crimea, in the war
+    Diophantus began c. 110 (I 195), and in 89 the king's envoy counts "the
+    Greeks bordering on the Euxine" among his acquisitions (App. Mithr. 15).
+    Client (of pontus-regnum), by the closest type the texts describe: put
+    under his power, as the Crimean Scythians were. Until M. Lucullus took
+    the cities in 72–71, before the consuls of 70 (Eutropius 6.10; Livy Per.
+    97). Added in October 2026; until then the cities were drawn independent
+    from before 133 to 72, which these passages contradict. Uncertain:
+    Magie hedges, and the inscription is undated.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -8785,6 +9031,19 @@
   from: 61 BCE
   to: 44 BCE
   sources:
+    - source: cassius-dio
+      locator: '38.10.1–3'
+      quote: >-
+        The latter, while governor of Macedonia, had inflicted many injuries upon
+        the subject territory as well as upon that which was in alliance with
+        Rome … When he tried the same tactics on the allies in Moesia, he was
+        defeated near the city of the Istrians
+      supports: [from]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius
+      supports: [from]
     - source: akornion-decree
       quote: >-
         recently, after King Byrebistas became the first and supreme among the
@@ -10613,9 +10872,48 @@
     Tanais, Asander and his successor Polemon among them (11.2.11).
 
 - atom: chersonesus
+  polity: chersonesus
+  relation: allied
+  from: 45 BCE
+  to: { earliest: 45 BCE, latest: 38 BCE }
+  sources:
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        Obviously it occurred after Caesar's death as he granted freedom to the
+        Chersonesos in 45 BC.
+      supports: [polity, from]
+    - source: pliny-nh
+      locator: '4.85'
+      quote: >-
+        Heraclea Chersonesus, to which its freedom has been granted by the
+        Romans
+      supports: [polity]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        The discovery of a gold coin of Asander dated to 37/36 BC at the
+        settlement of Kara-Tobe (situated in the former far chora of the
+        Chersonesos in the North-Western Crimea) helps us to narrow the date,
+        for the find suggests that at this time, approximately, the Chersonesos
+        itself and its previous possessions elsewhere were already under
+        Bosporan control.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The city free by Caesar's grant of 45 (Vnukov and Kovalenko 21; Pliny
+    4.85, "its freedom has been granted by the Romans"), until the Bosporan
+    kings had it again, after Caesar's death and by about 37/36: the end is
+    the range 45–38, drawn at 41, the year before the Bosporan row's
+    midpoint. Allied, as the free cities of Apion's bequest in Cyrenaica
+    are: no text calls the city Rome's ally, only freed by Rome, so the type
+    is not backed. Added in October 2026; the free years were not drawn.
+
+- atom: chersonesus
   polity: bosporus
   relation: client
-  from: c. 41 BCE
+  from: { earliest: 44 BCE, latest: 37 BCE }
   to: after 27 BCE
   sources:
     - source: strabo
@@ -10643,7 +10941,7 @@
         date, for the find suggests that at this time, approximately, the
         Chersonesos itself and its previous possessions elsewhere were already
         under Bosporan control.
-      supports: [polity]
+      supports: [polity, from]
     - source: pliny-nh
       locator: '4.85'
       quote: >-
@@ -10655,14 +10953,12 @@
   note: >-
     As bosporus. Strabo has the city "subject to the potentates of the Bosporus"
     down to his own day (7.4.3). Pliny records an undated grant of freedom by the
-    Romans (4.85), dated to Caesar c. 45 by Rostovtzeff; Vnukov and Kovalenko
-    argue from a coin of Asander's year 8 found at Kara-Tobe that Bosporan
-    control was back by about 37/36. The free interval is not drawn. The
-    start is not backed: Vnukov and Kovalenko put the Bosporan hold after
-    Caesar's grant of freedom in 45 and before about 37/36, which brackets
-    41 without stating it. A range of 44–37 would overlap the row before
-    (independent under Asander, 48–42), which that same grant contradicts;
-    left as it is and reported (October 2026).
+    Romans (4.85), which Vnukov and Kovalenko put in 45, under Caesar; they
+    place the Bosporan hold after Caesar's death and, from a coin of Asander's
+    year 8 (37/36) found at Kara-Tobe in the city's old chora, by about 37/36.
+    So the start is the range 44–37, drawn at 40, after the free row before
+    it. It read c. 41 until October 2026, which no text states, and the
+    Bosporan row before ran on to 42 over the years of the grant.
 
 # The West
 
@@ -14856,7 +15152,7 @@
 
 - atom: armenia
   polity: armenia
-  relation: independent
+  relation: allied
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
@@ -14869,6 +15165,12 @@
     - source: cassius-dio
       locator: '49.44.4'
       quote: >-
+        The Mede at first, by employing the Romans as allies, conquered the
+        Parthians and Artaxes who came again him
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
         but as Antony summoned back his own soldiers, and moreover retained
         those of the king, the latter was in turn defeated and captured, and so
         Armenia was lost together with Media
@@ -14878,7 +15180,7 @@
       quote: >-
         he refused the request of Artaxes that his brothers be sent to him,
         because this prince had put to death the Romans left behind in Armenia
-      supports: [polity, relation, from]
+      supports: [polity, from]
     - source: schurer-1891
       locator: 'p. 428'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -14902,8 +15204,14 @@
   confidence: uncertain
   review: draft
   note: >-
-    Artaxias II, defending his crown "by virtue of Parthian strength" (Tac.
-    Ann. 2.3), "put to death the Romans left behind in Armenia" (Dio 51.16.2),
+    Allied (with Parthia), as the relation behind it: no text calls Artaxias
+    Parthia's subject or says Parthia set him up (the Armenians chose him,
+    Dio 49.39.6), but he fought beside the Parthians (49.44.4) and held his
+    crown by their strength, so the closest type the texts describe is an
+    ally. It read independent until October 2026, against a client-of
+    relation. Artaxias II, defending his crown "by virtue of Parthian
+    strength" (Tac. Ann. 2.3), "put to death the Romans left behind in
+    Armenia" (Dio 51.16.2),
     which Dio tells among Octavian's dispositions at Alexandria after Antony's
     and Cleopatra's deaths in 30. When he came back is not recorded: after
     Antony's compact on the Araxes in 33, by 30; drawn from 31. Still king in
@@ -18030,7 +18338,7 @@
 - atom: emesa
   polity: emesa
   relation: allied
-  from: { earliest: 64 BCE, latest: 51 BCE }
+  from: 64 BCE
   to: { earliest: 47 BCE, latest: 32 BCE }
   sources:
     - source: strabo
@@ -18039,6 +18347,12 @@
         Arethusa, belonging to Sampsiceramus and Iamblichus his son, chiefs of
         the tribe of the Emeseni.
       supports: [polity]
+    - source: cassius-dio
+      locator: '37.6.4–7.1'
+      quote: >-
+        This was in the consulship of Lucius Caesar and Gaius Figulus. … when
+        Tigranes invoked the assistance of Pompey, who was in Syria
+      supports: [from]
     - source: cicero-fam
       locator: '15.1.2'
       quote: >-
@@ -18066,7 +18380,10 @@
     the Parthians in 51 and was "well-disposed and friendly to our Republic",
     and helped Caesar in 47 (AJ 14.129). Begins between Pompey's settlement of
     Syria (64), before which Emesa was independent, and Cicero's despatch of
-    51. Ends between 47, when it still acted as a friend, and 32, the year
+    51. Drawn from 64, the range's earlier bound, Pompey in Syria in the
+    consulship of Caesar and Figulus (Dio 37.6.4–7.1): as a range (64–51) it
+    sat at 57 and left 64–58 blank after the independent row, which ends in
+    65. Ends between 47, when it still acted as a friend, and 32, the year
     before it is first seen dependent (see the client row). Until October 2026
     this was a client row from 64 to 31.
 
@@ -20976,7 +21293,7 @@
 
 - atom: sophene
   polity: armenia
-  relation: independent
+  relation: allied
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
@@ -20985,6 +21302,12 @@
       quote: >-
         Artavasdes’ son, Artaxias II, hostile to us on account of his father,
         defended himself and his crown by virtue of Parthian strength
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        The Mede at first, by employing the Romans as allies, conquered the
+        Parthians and Artaxes who came again him
       supports: [relation]
     - source: cassius-dio
       locator: '49.44.4'
@@ -20998,7 +21321,7 @@
       quote: >-
         he refused the request of Artaxes that his brothers be sent to him,
         because this prince had put to death the Romans left behind in Armenia
-      supports: [relation, from]
+      supports: [from]
     - source: schurer-1891
       locator: 'p. 428'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -21019,11 +21342,13 @@
         summoned his brother Tigranes, who was in Rome, the emperor sent
         Tiberius to drive Artaxes out of the kingdom
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     As armenia (the row is armenia's), whose start has been 32–30 since
-    October 2026; this read 31 until then.
+    October 2026; this read 31 until then. Allied (with Parthia), not
+    independent, and uncertain, not probable, since October 2026, with
+    armenia's row.
 
 - atom: atropatene
   polity: atropatene

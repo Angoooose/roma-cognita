@@ -812,8 +812,10 @@
   note: >-
     Moab from the Zered to the Arnon. Alexander Jannaeus had taken its towns
     from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
-    for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
-    65. Jannaeus had given Moab back once before, in his civil war (AJ
+    for his help (Josephus AJ 14.18), but that is a conditional promise, and
+    no text read shows the Nabataeans holding Moab after it: the atom is
+    unclaimed from 65 (its Nabataean rows from 65 were dropped in October
+    2026). Jannaeus had given Moab back once before, in his civil war (AJ
     13.382), and taken it again. Takes the Dead Sea shore and Zoara from
     nabataea.
 
@@ -1543,11 +1545,15 @@
   confidence: uncertain
   review: draft
   note: >-
-    What Pompey took from the Jews in 63 and put under the governor of Syria:
-    the coastal plain from Raphia to Dora, Samaria, Scythopolis and the Greek
-    cities across the Jordan (Gadara, Hippos, Pella, Dion, Gerasa). Hasmonean
-    before, by Jannaeus' conquests (AJ 13.395–397). Takes Judaea's edges from
-    judaea.
+    What Pompey took from the Jews in 63 and put under the governor of Syria,
+    less the pieces split from it in September 2026 for their own later
+    histories: the coast (strato-tower, palaestina-coast, gaza), samaria and
+    gadara-hippos. What is left is the Jezreel and Scythopolis and the Greek
+    cities across the Jordan south of Gadara (Pella, Dion, Gerasa). Hasmonean
+    before, by Jannaeus' conquests (AJ 13.395–397). The outline is still
+    authored round the whole of Pompey's district, from Raphia to Carmel; the
+    split atoms come before it in this file and are cut out of it. Takes
+    Judaea's edges from judaea.
 
 - id: ituraea
   evidence: schematic
