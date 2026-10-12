@@ -693,6 +693,13 @@
         centre of his forum
       supports: [from, condition]
     - source: platner-ashby
+      locator: 'Forum Julium#Venus_Genetrix, p. 226'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
+      quote: >-
+        Temple and forum were dedicated on the last day of Caesar's great triumph,
+        26th September, 46 B.C.
+      supports: [condition]
+    - source: platner-ashby
       locator: 'Forum Julium#Venus_Genetrix, p. 227'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
       quote: >-
