@@ -3339,8 +3339,7 @@
   from: before 133 BCE
   to: after 27 BCE
   condition:
-    - { value: standing, from: before 133 BCE, to: 33 BCE }
-    - { value: under construction, from: 32 BCE, to: after 27 BCE }
+    - { value: standing, from: before 133 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - source: digital-augustan-rome
@@ -3376,14 +3375,16 @@
   review: draft
   note: >-
     The oldest temple on the Aventine, "ascribed by tradition to Servius Tullius",
-    rebuilt under Augustus. Placed "probably just west of the church of S. Prisca
-    on the clivus Publicius" (Platner & Ashby): approximate.
-    L. Cornificius rebuilt it, "a L. Cornificio aedes Dianae" (Suetonius), presumably
-    from the spoils of his African triumph of 32 BCE; its completion is not recorded,
-    so the map shows it rising from 32. The Marble Plan shows the new temple
-    "octostyle and dipteral, surrounded by a double colonnade". Placed midway between
-    S. Sabina and S. Prisca, where the Marble Plan's fragment is set (Digital Augustan
-    Rome).
+    rebuilt under Augustus; Gracchus' followers fortified it in 121 BCE (Appian,
+    Civil Wars 1.26). L. Cornificius rebuilt it, "a L. Cornificio aedes Dianae"
+    (Suetonius), "during the reign of Augustus" (Platner & Ashby). No readable text
+    dates the work: until October 2026 the map showed it rising from 32 BCE, the year
+    of his African triumph, from whose spoils he presumably paid for it, but nothing
+    read ties the two, so the temple is shown standing throughout. The Marble Plan
+    shows the new temple "octostyle and dipteral, surrounded by a double colonnade".
+    Placed midway between S. Sabina and S. Prisca, where the Marble Plan's fragment
+    is set (Digital Augustan Rome); Platner & Ashby put it "probably just west of the
+    church of S. Prisca on the clivus Publicius": approximate.
 
 - id: aedes-cereris-liberi-liberae
   kind: temple
