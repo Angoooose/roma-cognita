@@ -1585,6 +1585,10 @@
 - id: ovid-fasti
   kind: ancient
   citation: Ovid, Fasti
+  edition: A. S. Kline's English translation (2004), on Poetry in Translation, one page per book
+  note: >-
+    Kline's pages are not numbered by line: a citation's url is the book's page,
+    its locator the conventional lines.
 
 - id: tacitus-ann
   kind: ancient
@@ -1694,6 +1698,27 @@
   note: >-
     Book 1 was published about 35 BCE. 1.8: the Esquiline's burial ground made
     healthy ground and gardens; 1.9.18: Caesar's gardens across the Tiber.
+
+- id: jerome-chronicle
+  kind: ancient
+  citation: Jerome, Chronicle (the Latin continuation of Eusebius' Chronicle)
+  url: https://www.tertullian.org/fathers/jerome_chronicle_03_part2.htm
+  edition: >-
+    the English translation on tertullian.org (R. Pearse and others, 2005), from
+    Helm's text
+  note: Dates by Olympiad and year of Abraham. Sallust's death, "in the quadrennium before the Battle of Actium".
+
+- id: macleane-1895
+  kind: modern
+  citation: >-
+    A. J. Macleane, The Works of Horace, with English Notes, revised by R. H. Chase,
+    20th edition (Boston: Allyn and Bacon, 1895)
+  url: https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt
+  note: >-
+    Public domain, on Project Gutenberg (ebook 46938; the mirror's plain text, as
+    gutenberg.org times out). Dates Satires book 1 to "probably" 35 BCE, and
+    introduces Satires 1.8 on the Esquiline burial ground Maecenas made into
+    gardens. Locators are its sections.
 
 - id: asconius
   kind: ancient
