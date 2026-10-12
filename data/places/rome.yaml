@@ -3424,6 +3424,21 @@
         it diverged to the right into hilly country from a far older road, the Via
         Campana
       supports: [from]
+    - source: digital-augustan-rome
+      locator: Via Campana
+      url: https://www.digitalaugustanrome.org/records/via-campana/
+      quote: >-
+        One of the most ancient routes that connected Rome to the sea
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: Via Campana
+      url: https://www.digitalaugustanrome.org/records/via-campana/
+      quote: >-
+        In the late 1st c. A.D. the Via Portuensis was laid out in conjunction with the
+        construction of the Claudian port, and thereafter the Transtiberine portion of
+        the ancient route was referred to as the Via Portuensis as well, replacing the
+        designation Via Campana
+      supports: [to]
     - { source: sitar, locator: '11922, 21399, 10390, 10391, 24568' }
   confidence: probable
   review: draft
