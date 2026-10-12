@@ -869,7 +869,7 @@
     - value: municipium
       from: { earliest: 90 BCE, latest: 89 BCE }
       to: after 27 BCE
-      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21).
+      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21); no quoted text says which side won, only that the people are Romans in Strabo's day (5.4.7), so the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -919,7 +919,7 @@
         them every four years
       supports: [to]
     - { source: beloch-1880, locator: 'p. 52' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: puteoli
