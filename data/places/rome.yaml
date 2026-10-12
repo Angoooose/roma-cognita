@@ -4821,7 +4821,7 @@
   names:
     - { text: Round Temple of the Forum Boarium, lang: en, preferred: true }
     - { text: Aedes Herculis Olivarii, lang: la }
-  from: { earliest: 120 BCE, latest: 90 BCE }
+  from: { earliest: 100 BCE, latest: 51 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -4853,18 +4853,37 @@
         Sometime in the decades after Augustus, major repair work was carried out on
         about half of the colonnade
       supports: [to]
-  confidence: probable
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: 'https://www.digitalaugustanrome.org/records/round-temple-tiberis/'
+      quote: >-
+        had been attributed to the first half of the 1st c. B.C. (Strong and
+        Ward-Perkins), and intensive re-examination of its architecture has suggested a
+        more precise date in the early 1st c. B.C. (Rakob and Heilmeyer 19, 35-36)
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Portunium, p. 430'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html'
+      quote: >-
+        a favissa … which belongs to the period of the republic, although the marble
+        covering and the whole superstructure date from the early empire
+      supports: []
+  confidence: uncertain
   review: draft
   note: >-
     The round marble temple by the Tiber, standing today: twenty Corinthian columns
     10.66 m high round a cella 10 m across, of Pentelic marble on a tufa podium 2 m
     high. Whose it was is disputed: Hercules Olivarius (Coarelli) or Hercules Victor
     (Ziolkowski).
-    It was built between about 120 BCE (Coarelli, who gives it to the oil merchant M.
-    Octavius Herrenus and the Greek architect Hermodorus) and the early 1st century
-    (Rakob and Heilmeyer, from its architecture), so the map shows it from the middle of
-    that span, 105 BCE. Ziolkowski's reading, Mummius's temple of Hercules Victor
-    dedicated in 142 BCE, would put it before 133. Nothing is known of what stood on its
+    Digital Augustan Rome dates it to the first half of the 1st century BCE (Strong
+    and Ward-Perkins), "more precisely" its early years (Rakob and Heilmeyer, from its
+    architecture), so the map shows it from the middle of 100–51 BCE. Until October
+    2026 it was dated 120–90 BCE, from Coarelli's about 120 (the oil merchant M.
+    Octavius Herrenus and the Greek architect Hermodorus), which no readable text
+    gives. Platner & Ashby (1929) put the marble temple in the early empire, on a
+    Republican podium; the readable sources disagree, so the confidence is
+    uncertain. Ziolkowski's reading, Mummius's temple of Hercules Victor dedicated
+    in 142 BCE, would put it before 133. Nothing is known of what stood on its
     platform before; the model leaves it open.
 
 - id: aedes-fortunae-foro-boario
