@@ -85,6 +85,7 @@ npm run fonts    -w pipeline
 npm run rome     -w pipeline   # the model of Rome
 npm run labels   -w pipeline
 npm run people   -w pipeline
+npm run sources  -w pipeline   # the index of sources
 ```
 
 Everything lands in `build/`. Each step prints what it couldn't confirm, so read the output.
@@ -94,6 +95,8 @@ Everything lands in `build/`. Each step prints what it couldn't confirm, so read
 ```bash
 npm run dev
 ```
+
+The map is at `/`. Every work it cites is listed in the index of sources at `/sources`, with an entry for each at `/sources#<source id>`.
 
 To check the hand-written data on its own, run `npm run data:validate`. It fails on any error.
 

@@ -709,7 +709,9 @@ function Held({ hit }: { hit: PoliticalHit }) {
  * Sources as a printed page cites them: the work, then the place in it after a comma,
  * `Suetonius, Divus Iulius, 25`, running on however long either is. A hanging indent
  * keeps each source apart when it wraps. No leaders: a citation that wraps would leave
- * a stub of dots, and its locator stranded at the far edge.
+ * a stub of dots, and its locator stranded at the far edge. The work opens its entry
+ * in the index of sources (/sources), which links on to the work itself; the
+ * locator opens the passage.
  */
 function SourceRows({ sources }: { sources: CitedSource[] }) {
   if (!sources.length) return null
@@ -728,7 +730,7 @@ function SourceRows({ sources }: { sources: CitedSource[] }) {
 function Cite({ s }: { s: CitedSource }) {
   return (
     <>
-      <Link href={s.url}>{s.citation}</Link>
+      <Link href={s.id ? `/sources#${s.id}` : s.url}>{s.citation}</Link>
       {s.locator && (
         <>
           ,{' '}
@@ -852,7 +854,10 @@ function Header(props: { title: ReactNode; standing: ReactNode; onClose: () => v
   )
 }
 
-/** The work, or the passage cited in it, opened in a new tab; plain text when there is no link. */
+/**
+ * The work's entry, or the passage cited in it, opened in a new tab so the map keeps its
+ * place; plain text when there is no link.
+ */
 function Link({ href, children }: { href?: string; children: ReactNode }) {
   if (!href) return children
   return (

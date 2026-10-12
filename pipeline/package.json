@@ -18,6 +18,7 @@
     "roads": "node --max-old-space-size=8192 --import tsx src/roads/build.ts",
     "atoms": "node --max-old-space-size=8192 --import tsx src/atoms/build.ts",
     "atoms:preview": "tsx src/atoms/preview.ts",
+    "sources": "tsx src/sources/build.ts",
     "politics": "node --max-old-space-size=8192 --import tsx src/politics/build.ts",
     "derive-floodplains": "node --max-old-space-size=8192 --import tsx src/features/derive-floodplains.ts",
     "derive-coasts": "node --max-old-space-size=8192 --import tsx src/landscape/derive-coasts.ts",

@@ -128,8 +128,13 @@ export interface PoliticalHit {
   politySources: CitedSource[]
 }
 
-/** A source as the inspector prints it: the work, the place in it, and the words read there. */
+/**
+ * A source as the inspector prints it: the work, the place in it, and the words read
+ * there. `id` is the work's in sources.yaml: the sources page has an entry for it (a
+ * place's carries it once its labels are rebuilt).
+ */
 export interface CitedSource {
+  id?: string
   citation: string
   url?: string
   locator?: string
@@ -456,6 +461,7 @@ export class PoliticalLayer {
   private cite(sources: ClaimRecord['sources']): CitedSource[] {
     const works = this.data!.sources
     return sources.map((s) => ({
+      id: s.source,
       ...(works[s.source] ?? { citation: s.source }),
       locator: s.locator,
       passage: s.passage,
