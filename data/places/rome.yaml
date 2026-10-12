@@ -6498,6 +6498,13 @@
         Fortuna lay further S. The visible temple remains seem to belong to the
         reconstruction in 212 B.C.
       supports: [location, from]
+    - source: digital-augustan-rome
+      locator: 'Fortuna et Mater Matuta, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/fortuna-et-mater-matuta-aedes/'
+      quote: >-
+        Since both temples burned in the fire of 213 B.C., which also damaged the
+        *Forum Holitorium and *Porta Carmentalis
+      supports: [from]
     - source: ovid-fasti
       locator: '6.475–480'
       url: 'https://www.poetryintranslation.com/PITBR/Latin/OvidFastiBkSix.php'
