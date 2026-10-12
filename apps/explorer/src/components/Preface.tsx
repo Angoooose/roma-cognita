@@ -134,7 +134,17 @@ export function Preface({ years }: { years: string }) {
               <p className="mt-3 text-sm text-muted-foreground">
                 The territory outlines are original, drawn from the frontiers in the cited
                 scholarship. The Barrington Atlas and Broughton’s{' '}
-                <em>Magistrates of the Roman Republic</em> are cited, not copied.
+                <em>Magistrates of the Roman Republic</em> are cited, not copied. Every work
+                the map cites, ancient and modern, is in the{' '}
+                <a
+                  href="/sources"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-foreground underline underline-offset-2 transition-colors hover:text-primary"
+                >
+                  Index of Sources
+                </a>
+                .
               </p>
             </Section>
 

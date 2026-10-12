@@ -113,7 +113,8 @@ export interface PoliticalHit {
   power?: PolityRecord
   /** The chain itself, polity first. */
   chain: { polity: PolityRecord; type: RelationRecord['type'] }[]
-  sources: { citation: string; url?: string; locator?: string; passage?: string }[]
+  /** `id` is the work's in sources.yaml: the sources page has an entry for it. */
+  sources: { id?: string; citation: string; url?: string; locator?: string; passage?: string }[]
 }
 
 /** An uncertain claim's fill strength: the map says less where the sources do. */
@@ -427,6 +428,7 @@ export class PoliticalLayer {
       power: polity(power),
       chain: chain.map((l) => ({ polity: polity(l.polity)!, type: l.type })).filter((l) => l.polity),
       sources: claim.sources.map((s) => ({
+        id: s.source,
         ...(d.sources[s.source] ?? { citation: s.source }),
         locator: s.locator,
         passage: s.passage,

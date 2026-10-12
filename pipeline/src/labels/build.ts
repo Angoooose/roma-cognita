@@ -263,6 +263,7 @@ const places = data.places.map((p) => {
     confidence: p.confidence,
     review: p.review,
     sources: p.sources.map((s) => ({
+      id: s.source,
       citation: sourceById.get(s.source)?.citation ?? s.source,
       url: sourceById.get(s.source)?.url ?? workUrl(s.source),
       locator: s.locator,

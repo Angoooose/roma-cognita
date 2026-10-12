@@ -1,7 +1,7 @@
 import type { MapEntry } from '@roma-cognita/engine'
 import type { PersonRecord } from '@roma-cognita/schema'
 import { defaultFilter } from 'cmdk'
-import { Search as SearchIcon } from 'lucide-react'
+import { ArrowUpRight, BookOpen, Search as SearchIcon } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -271,7 +271,8 @@ export function Search() {
 
 /**
  * An atlas plate's title block: the map's name and the years it covers, framed in the
- * double rule, with its rows beneath: the index, the legend and the preface. App.tsx
+ * double rule, with its rows beneath: the search, the sources (a page
+ * of its own), the legend and the preface. App.tsx
  * places it at the head of the left column, above the person panel.
  */
 function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }) {
@@ -295,9 +296,19 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
           className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
         >
           <SearchIcon className="text-muted-foreground transition-colors group-hover:text-primary" />
-          <span className="transition-colors group-hover:text-primary">Index of names</span>
+          <span className="transition-colors group-hover:text-primary">Search</span>
           <span className="figures ml-auto text-muted-foreground">{KEY}</span>
         </button>
+        <a
+          href="/sources"
+          target="_blank"
+          rel="noopener"
+          className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
+        >
+          <BookOpen className="text-muted-foreground transition-colors group-hover:text-primary" />
+          <span className="transition-colors group-hover:text-primary">Sources</span>
+          <ArrowUpRight className="ml-auto text-muted-foreground" />
+        </a>
         <LegendRow />
         <Preface years={years} />
       </div>
