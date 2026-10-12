@@ -1865,7 +1865,7 @@
   names:
     - { text: Sepulcrum Bibuli, lang: la, preferred: true }
     - { text: Tomb of Bibulus, lang: en }
-  from: before 133 BCE
+  from: { earliest: 200 BCE, latest: 101 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -1908,7 +1908,7 @@
       quote: >-
         The façade of this tomb still stands … at the foot of the *Arx
       supports: [location, to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     The tomb of C. Publicius Bibulus, a plebeian aedile, at the foot of the Capitol
@@ -1918,8 +1918,11 @@
     superstructure was restored in the 1st century BCE in the old forms (Archeometra);
     Digital Augustan Rome dates the standing work to the early 1st century as a
     rebuilding of an earlier tomb. The wall that still stands, with its four Tuscan
-    pilasters, is its flank. Drawn from before 133 on its surviving wall; its width is
-    not known.
+    pilasters, is its flank. Drawn on its surviving wall; its width is not known.
+    It was drawn from before 133, which no text states: the restorers put the tomb in
+    the 2nd century BCE, so it starts some time in 200–101 (drawn from 150, before the
+    window); Platner & Ashby have it "erected (or very likely restored)" in the last
+    century of the Republic, which is why the confidence is lowered.
 
 - id: sepulcrum-scipionum
   kind: tomb
