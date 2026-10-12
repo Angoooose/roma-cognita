@@ -2831,6 +2831,14 @@
       locator: 'Via di S. Gregorio'
       url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
       quote: >-
+        its antiquity and course are assured archaeologically with finds of street pavers
+        (W. 5.77 m) flanked by travertine sidewalks, Republican-era drains, and several
+        buildings that flanked the street
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Via di S. Gregorio'
+      url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
+      quote: >-
         One group of … flanking the street had an … rear wall (though the rest is in
         early-Imperial brickwork)
       supports: [to]
