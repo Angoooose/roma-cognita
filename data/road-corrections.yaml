@@ -177,7 +177,7 @@
       supports: [from]
     - { source: sitar, locator: '4707' }
     - { source: ashby-1927, locator: 'p. 214' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The road to Rome's harbour at Ostia. "An archaic milestone of the via Ostiensis
@@ -189,7 +189,10 @@
     for that paving, which could not be read again (its WFS no longer returns the
     piece) and which no readable text states; it is now the end of the 3rd
     century, by which the castrum of Ostia, whose decumanus is the road's last
-    stretch, stood (Salomon 2023).
+    stretch, stood (Salomon 2023). Only partly backed, so probable: Salomon dates
+    the castrum "between the 4th and the 3rd c. BCE" and says the road's last
+    section is its decumanus, but no readable text dates the road from Rome itself,
+    and the archaic milestone (Platner & Ashby) is undated in the passage.
 
 - id: praenestina
   itinere: Rome-Praeneste
