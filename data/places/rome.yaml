@@ -2429,6 +2429,18 @@
       locator: 'cliva, Victoriae, p. 126'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
       quote: >-
+        which took its name from the temple of Victoria
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Victoria, aedes, p. 570'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Templum_Victoriae.html'
+      quote: >-
+        dedicated by him on 1st August … when consul in 294 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'cliva, Victoriae, p. 126'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
         Ancient pavement exists all along this path, and there is no reason for doubting that
         this is the line of the clivus as it existed after the erection of this part of the
         palace
