@@ -6462,9 +6462,9 @@
 
 - atom: bosporus
   polity: pontus-regnum
-  relation: independent
+  relation: allied
   from: c. 110 BCE
-  to: { earliest: 87 BCE, latest: 86 BCE }
+  to: 89 BCE
   sources:
     - source: minns-1913
       locator: 'p. 582'
@@ -6484,7 +6484,7 @@
       quote: >-
         established himself as lord of the Bosporus, receiving the country as a
         voluntary gift from Parisades who held sway over it
-      supports: [polity, relation]
+      supports: [polity]
     - source: strabo
       locator: '7.4.6'
       quote: >-
@@ -6500,6 +6500,55 @@
         arrest into the kingdom (of Mithridates), and (thus) he regained the
         power of the king Mithridates Eupator
       supports: [polity]
+    - source: appian
+      locator: 'Mithr. 14'
+      quote: >-
+        Yet the words of Pelopidas and the alliance of Mithridates, which was
+        still in force, put them to shame
+      supports: [relation]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
+    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
+    Panticapaeum back for the king (the decree); the revolt is not drawn. The
+    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
+    the king's protection, with Diophantus at the Bosporus, by the winter of
+    110, keeping "the semblance of authority" until he was killed in 107, and
+    the king's "unlimited authority" only after the revolt was put down in the
+    spring after: the change of hands falls somewhere in 110–106, and the row
+    starts at its first year. It started c. 108 until October 2026, a year no
+    readable text gives. Allied, as the kingdom and Chersonesus are, while
+    the king's alliance with Rome was "still in force" (App. Mithr. 14),
+    until Rome declared war in 88 (Mithr. 22); until October 2026 one
+    independent row ran from c. 110 to 87–86.
+
+- atom: bosporus
+  polity: pontus-regnum
+  relation: independent
+  from: 88 BCE
+  to: { earliest: 87 BCE, latest: 86 BCE }
+  sources:
+    - source: strabo
+      locator: '7.4.3–4'
+      quote: >-
+        established himself as lord of the Bosporus, receiving the country as a
+        voluntary gift from Parisades who held sway over it
+      supports: [polity]
+    - source: appian
+      locator: 'Mithr. 22'
+      quote: >-
+        As soon as his outbreak and invasion of Asia were known at Rome they
+        declared war against him … When the consuls cast lots, the government of
+        Asia and the Mithridatic war fell to Cornelius Sulla.
+      supports: [relation, from]
     - source: plutarch
       locator: 'Sulla 11.1–2'
       quote: >-
@@ -6530,17 +6579,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Mithridates' by Paerisades' gift (Strabo 7.4.3–4). The Scythians under
-    Saumacus rose and killed Paerisades, and Diophantus took Theodosia and
-    Panticapaeum back for the king (the decree); the revolt is not drawn. The
-    decree is dated only by a Chersonesite eponym. Minns has Paerisades under
-    the king's protection, with Diophantus at the Bosporus, by the winter of
-    110, keeping "the semblance of authority" until he was killed in 107, and
-    the king's "unlimited authority" only after the revolt was put down in the
-    spring after: the change of hands falls somewhere in 110–106, and the row
-    starts at its first year. It started c. 108 until October 2026, a year no
-    readable text gives. In
-    87, as Sulla left Italy after naming the consuls of that year (Eutrop.
+    As the row before, from Rome's declaration of war in 88 (App. Mithr. 22).
+    In 87, as Sulla left Italy after naming the consuls of that year (Eutrop.
     5.4), a son of Mithridates held "Pontus and Bosporus … as far as the
     deserts beyond Lake Maeotis" (Plut. Sulla 11.1–2). The Bosporan peoples had
     revolted by the time the king came home after Dardanus, in the autumn of
