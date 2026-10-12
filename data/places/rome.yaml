@@ -2993,7 +2993,7 @@
       quote: >-
         The earliest milestone known to us—one of those of the Via Appia at Mesa (ad Medias)
         in the Pomptine Marshes—bears the names of two aediles
-      supports: [from]
+      supports: []
     - source: digital-augustan-rome
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
