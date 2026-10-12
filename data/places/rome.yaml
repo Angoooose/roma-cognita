@@ -1111,8 +1111,7 @@
   condition:
     - { value: standing, from: before 133 BCE, to: 112 BCE }
     - { value: burnt, from: 111 BCE, to: 111 BCE }
-    - { value: under construction, from: 110 BCE, to: 106 BCE }
-    - { value: standing, from: 105 BCE, to: after 27 BCE }
+    - { value: standing, from: 110 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - source: platner-ashby
@@ -1159,8 +1158,10 @@
     podium of tufa blocks. It burned with "a very great part of the city" in 111 BCE
     (Obsequens 39) and was rebuilt on a higher podium of concrete by a Metellus,
     probably Q. Metellus Numidicus, consul in 109 (Platner & Ashby's "consul of 110" is
-    a slip: no Metellus held it). How long the works took is not recorded: the map shows
-    them to 106, after his return from Numidia. The outline is of the podium, whose
+    a slip: no Metellus held it). When the works began and how long they took is not
+    recorded: until October 2026 the map showed them 110–106, after his return from
+    Numidia; it now shows the fire of 111 and the temple standing again from 110. The
+    outline is of the podium, whose
     concrete is of the Augustan restoration, carried out with the material of the
     original building; Platner & Ashby call the identification extremely probable.
 
