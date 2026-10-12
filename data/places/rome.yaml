@@ -2549,7 +2549,7 @@
       quote: >-
         the irregular continuation of the Subura , where it ascended between the Oppius and
         Cispius to the porta Esquilina
-      supports: [location, from]
+      supports: [location]
     - source: platner-ashby
       locator: 'Vicus Iugarius, p. 574'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
@@ -2558,13 +2558,13 @@
         the via Tiburtina and Labicana , … the Subura and the Argiletum — all reached the
         crossing over the Tiber just below the island … It was thus, there is little doubt, a
         part of the original trade route
-      supports: [from]
+      supports: []
     - source: platner-ashby
       locator: 'Via Labicana, p. 563'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Labicana.html'
       quote: >-
         speaks of both roads as starting from the porta Esquilina
-      supports: [from]
+      supports: []
     - source: martial
       locator: '5.22'
       url: 'https://www.tertullian.org/fathers/martial_epigrams_book05.htm'
