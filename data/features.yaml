@@ -42,14 +42,14 @@
       quote: >-
         this one alone begins to rise at that time and increases so greatly in
         volume day by day that it finally overflows practically all Egypt
-      supports: [from, to]
+      supports: [from]
     - source: diodorus
       locator: '1.46.7'
       url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
       quote: >-
         at the time we visited those regions, in the One Hundred and Eightieth
         Olympiad
-      supports: [from, to]
+      supports: []
     - source: strabo
       locator: '17.1.4'
       quote: >-
@@ -63,7 +63,7 @@
         the smallest rise was that of five, in the year of the battle of
         Pharsalia … When the waters have reached their greatest height, the
         people open the embankments and admit them to the lands.
-      supports: [from, to]
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Nile main stem, DIS_AV_CMS ≥ 500' }
   confidence: probable
