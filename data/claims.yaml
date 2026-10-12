@@ -9260,42 +9260,14 @@
     Rome's ally from long before 133, still so when Sextius gave it the coast
     he cleared of the Salyes (Strabo 4.1.5), until it sided with Pompey and
     surrendered to Caesar in 49, the year before Caesar's second consulship
-    (Dio 41.25.1–3, 41.43.1).
+    (Dio 41.25.1–3, 41.43.1); after that, see the next row.
 
 - atom: massalia
-  polity: gallia-transalpina
-  relation: province
+  polity: massalia
+  relation: allied
   from: 49 BCE
   to: after 27 BCE
   sources:
-    - source: caesar-bc
-      locator: '2.22'
-      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=22
-      quote: >-
-        Caesar spared the town, more in regard to its antiquity and reputation,
-        than any real merit it could plead. He obliged the citizens however to
-        deliver up their arms, machines, and ships of war … to surrender all the
-        money in their treasury; and to receive a garrison of two legions.
-      supports: [relation, from]
-    - source: cassius-dio
-      locator: '41.25.3'
-      quote: >-
-        he at that time deprived them of their arms, ships, and money, and later
-        of everything else except the name of freedom.
-      supports: [relation, from]
-    - source: cassius-dio
-      locator: '41.43.1'
-      quote: >-
-        The ensuing year the Romans had two sets of magistrates … The people of
-        the city had chosen as consuls Caesar and Publius Servius
-      supports: [from]
-    - source: cassius-dio
-      locator: '53.12.5'
-      quote: >-
-        while to Caesar belonged the remainder of Spain, — that is, the district
-        of Tarraco and Lusitania, — and all the Gauls, — that is, Gallia
-        Narbonensis
-      supports: [polity, to]
     - source: strabo
       locator: '4.1.5'
       quote: >-
@@ -9304,16 +9276,41 @@
         friendship; and have preserved to the state the right of governing
         according to its ancient laws. So that neither Marseilles nor the cities
         dependent on it are under submission to the governors sent
-      supports: []
+      supports: [polity, relation, to]
+    - source: caesar-bc
+      locator: '2.22'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=22
+      quote: >-
+        Caesar spared the town, more in regard to its antiquity and reputation,
+        than any real merit it could plead. He obliged the citizens however to
+        deliver up their arms, machines, and ships of war … to surrender all the
+        money in their treasury; and to receive a garrison of two legions.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '41.25.3'
+      quote: >-
+        he at that time deprived them of their arms, ships, and money, and later
+        of everything else except the name of freedom.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '41.43.1'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates … The people of
+        the city had chosen as consuls Caesar and Publius Servius
+      supports: [from]
   confidence: uncertain
   review: draft
   note: >-
-    Caesar left the Massaliots their city and their freedom, but took their
-    territory and ships: Dio has them stripped "of everything else except the
-    name of freedom" (41.25.3). Strabo, writing under Augustus, disagrees:
-    neither Massalia "nor the cities dependent on it" answered to the governors
-    (4.1.5). Both are quoted and the confidence lowered from probable in the
-    October 2026 backfill.
+    A free city still after Caesar took it in 49, the year before his second
+    consulship (BC 2.22; Dio 41.25.3, 41.43.1): Strabo, writing under
+    Augustus, has Caesar and his successors keep its laws, so that neither
+    Massalia "nor the cities dependent on it" answered to the governors
+    (4.1.5), and free cities are drawn allied (decided October 2026). Dio
+    disagrees: Caesar stripped it "of everything else except the name of
+    freedom" (41.25.3). Both are quoted and the row is uncertain; it read
+    province of Gallia Transalpina, from 49, until October 2026. Kept apart
+    from the row before, which is probable, because the sources disagree only
+    after the surrender.
 
 - atom: helvetii
   polity: helvetii
