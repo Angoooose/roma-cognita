@@ -4418,6 +4418,12 @@
         when the Scythians surrendered to him the royal fortresses of Chabaioi
         and Neapolis
       supports: [kind]
+    - source: diophantus-decree
+      locator: 'commentary'
+      quote: >-
+        how did Chersonesos regain the lands that had been occupied by the
+        Scythians in the 3rd and 2nd century B. C.
+      supports: [from]
   confidence: probable
   review: needs-check
   note: >-
@@ -4428,7 +4434,8 @@
     27 BCE" until the October 2026 check: no citation backed an end, and no
     text read has the Scythians of the peninsula as a kingdom after
     Mithridates' death in 63, where their last claim already ends. The start,
-    "before 133", still rests on the decree's commentary alone (claims.yaml).
+    "before 133", rests on the decree's commentary alone, as on the first
+    claim: the Scythians held Chersonesite land in the 3rd and 2nd centuries.
 
 - id: chersonesus
   kind: city-state
