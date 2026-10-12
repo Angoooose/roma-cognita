@@ -2286,8 +2286,9 @@
   note: >-
     An ally long before 133: Rome fought the Ligurians beyond the Alps at its
     request in 154, the consulship of Opimius (Livy Per. 47), and again, against
-    the Salluvii, under Fulvius Flaccus, consul in 125 (Per. 60). Its territory
-    is the Province's from 49 (claims.yaml). After Caesar took the city in 49
+    the Salluvii, under Fulvius Flaccus, consul in 125 (Per. 60). Its
+    territory stays allied after 49, as a free city (claims.yaml). After
+    Caesar took the city in 49
     the sources disagree: Strabo, under Augustus, has Caesar and his successors
     keep its laws and its freedom from the governors "in consideration of their
     former friendship" (4.1.5); Dio has Caesar strip it "of everything else
@@ -2473,8 +2474,12 @@
   review: needs-check
   note: >-
     Masteabar, Gauda's son, a king beside his brother Hiempsal II, not his
-    vassal; his standing to Rome is taken to be his father's, which nothing
-    records directly.
+    vassal; his standing to Rome is taken to be his father's. Client by the
+    closest type the texts describe: Bridoux reads Cicero's Marius, a
+    suppliant in 88 "to those to whom he had given kingdoms", as Gauda's
+    sons (ch. 3, ¶43), though he doubts how far such stories show real
+    dependence (¶43–44). The claims on numidia-igilgili and numidia-soummam
+    carry the same quote.
 
 - polity: numidia-masinissa
   type: client-of
@@ -2680,7 +2685,7 @@
 - polity: tectosages
   type: allied-to
   of: rome
-  from: { earliest: 121 BCE, latest: 107 BCE }
+  from: 121 BCE
   to: 107 BCE
   sources:
     - source: cassius-dio
@@ -2712,7 +2717,9 @@
     recorded: no earlier than Fabius' defeat of the Arverni in 121 (Per. 61),
     no later than the revolt Caepio ended in 106 (MRR), as on the claim. It
     read 121–118 until October 2026, on Narbo, which no readable text ties to
-    Tolosa.
+    Tolosa. Starts at 121, the earliest bound, as the claim does: the range
+    121–107 drawn at its midpoint would leave 121–115 blank after the
+    independent row ending in 122; uncertain for it.
 
 - polity: helvetii
   type: allied-to

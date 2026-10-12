@@ -6659,11 +6659,17 @@
   status:
     - value: colonia latina
       from: before 133 BCE
-      to: 50 BCE
+      to: 91 BCE
       note: >-
-        A Latin colony north of the Po. The lex Iulia did not reach it: the people beyond the Po were still not citizens when the censors disputed whether to admit them (Dio 37.9.3), and Caesar gave
-        them citizenship in his dictatorship of 49 (Dio 41.36.3). It read colonia from 90 here until October 2026; Pliny's "colonies of Cremona" (3.130) are those Augustus himself made (Beloch 5), at
-        a date nothing here gives, so no status is drawn from 49.
+        A Latin colony north of the Po; its people became Roman citizens under the lex Iulia of 90, as Aquileia's did: Beloch excepts "the Latin colonies Cremona and Aquileia" from the
+        communities beyond the Po that were constituted only after the Social War (p. 27). The rest of the Transpadane people were Latins from 89 and still not citizens when the censors
+        disputed whether to admit them (Dio 37.9.3), until Caesar in 49 (Dio 41.36.3). From October 2026 to the reconciliation this record read colonia latina to 50 on those passages, which
+        are about the Transpadani, not the old colonies.
+    - value: colonia
+      from: 90 BCE
+      to: after 27 BCE
+      note: >-
+        As Aquileia. Pliny's "colonies of Cremona" (3.130) may be the triumvirs' or Augustus' (Beloch 5); whether an old Latin colony was a colonia or a municipium after 90 is open.
   labelSide: s
   sources:
     - source: pleiades
@@ -6684,23 +6690,40 @@
         auf dem eroberten Lande wurden 218 die latinischen Colonien Cremona und
         Placentia gegründet
       supports: [from, status]
+    - source: beloch-1880
+      locator: 'p. 27'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Mit Ausnahme der latinischen Colonien Cremona und Aquileia, und
+        vielleicht des etruskischen Mantua sind alle Municipien dieser Region
+        erst nach dem Socialkriege als Gemeinden ita- lischen Rechts
+        constituirt worden.
+      supports: [status]
+    - source: broughton-mrr
+      locator: 'vol. II, 90 B.C., p. 25'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … In the Social War Caesar held general command in the southern
+        area … In Rome he carried his law to give citizenship to all Latins and
+        [talians who had remained loyal
+      supports: [status]
     - source: cassius-dio
       locator: '37.9.3'
       quote: >-
         The censors also became involved in a dispute about the people living
         beyond the Po, one believing it wise to admit them to citizenship, while
         the other did not
-      supports: [status]
+      supports: []
     - source: cassius-dio
       locator: '41.36.3'
       quote: >-
         to the Gauls living south of the Alps and beyond the Po he gave
         citizenship because he had once governed them
-      supports: [status]
+      supports: []
     - source: pliny-nh
       locator: '3.130'
       quote: In the interior of the tenth region are the colonies of Cremona
-      supports: [to]
+      supports: [status, to]
     - source: strabo
       locator: '5.1.11'
       quote: >-

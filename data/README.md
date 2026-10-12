@@ -253,7 +253,13 @@ confirming.
     peoples' frontiers); and `italici`, the insurgents of 91–88, `independent`,
     in a colour of their own. Their own name, Italia, is kept as a non-preferred
     name so the map never letters two ITALIAs at once. A Latin colony is a place
-    status, `colonia latina`, not ground.
+    status, `colonia latina`, not ground; the old Latin colonies' people became
+    citizens under the lex Iulia of 90, Cremona and Aquileia beyond the Po
+    included (Beloch 27). The Transpadane communities are the exception: Latins
+    by the lex Pompeia of 89 (Asconius, Pis. 3 C; Beloch 26–27), still not
+    citizens in 65 (Dio 37.9.3), and enfranchised by Caesar in 49 (Dio
+    41.36.3). The "municipium from 89" of towns such as Pompeii or Asculum
+    rests on the general laws of 90–89, not on a text naming the town.
 
 23. **A rising that held towns but no territory is a seat.** Aristonicus
     (133–130) and the slave kings of Sicily (Eunus at Enna, Tryphon at Triocala)

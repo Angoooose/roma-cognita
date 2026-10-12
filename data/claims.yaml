@@ -461,8 +461,10 @@
     - source: velleius
       locator: '2.15.1'
       quote: >-
-        The rebellion began with the people of Asculum, who had put to death
-        the praetor Servilius and Fonteius, his deputy
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum, who had put to death the praetor Servilius and Fonteius, his
+        deputy
       supports: [polity, relation]
     - source: broughton-mrr
       locator: 'vol. II, 89 B.C., p. 32'
@@ -527,7 +529,6 @@
       supports: [polity, relation, to]
     - { source: livy-per, locator: '76' }
     - { source: appian, locator: 'BC 1.47–48' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
@@ -608,10 +609,18 @@
         Corfinium, the metropolis of the Peligni, should be the capital for all
         the Italians instead of Rome
       supports: [polity, relation]
+    - source: diodorus
+      locator: '37.2.2'
+      quote: >-
+        these were the sparks which at length broke forth into a flame at the
+        time when Lucius Marcius Philippus and Sextus Julius were consuls
+      supports: [from]
     - source: velleius
       locator: '2.15.1'
       quote: >-
-        it was then taken up by the Marsi
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans . The rebellion began with the people of
+        Asculum … it was then taken up by the Marsi
       supports: [polity, relation]
     - source: livy-per
       locator: '75'
@@ -644,7 +653,8 @@
   review: draft
   note: >-
     The rising began in the consulship of Philippus and Sextus Caesar, 91
-    (Eutropius; Diodorus 37.2.2). The Vestini surrendered, and the Marsi,
+    (Eutropius; Diodorus 37.2.2); Velleius has it taken up by the Marsi in
+    the consulship of 90 (2.15.1), so the start is probable. The Vestini surrendered, and the Marsi,
     Marrucini and Vestini were brought under, in Pompeius Strabo's consulship
     (89: Livy Per. 75; App. BC 1.50–52); the insurgents left Corfinium for
     Aesernia (Diodorus 37.2.9). Livy Per. 76 has the Paeligni surrender to
@@ -691,7 +701,6 @@
         of Italians and Romans
       supports: [polity, relation, to]
     - { source: livy-per, locator: '75–76' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
@@ -764,6 +773,12 @@
         There were engaged against them in this war the Samnites, the people of
         Asculum, the Lucanians, the Picentines, the people of Nola
       supports: [polity, relation]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans
+      supports: [polity, relation]
     - source: pliny-nh
       locator: '3.70'
       quote: >-
@@ -788,8 +803,10 @@
   confidence: probable
   review: draft
   note: >-
-    Sulla destroyed Stabiae on 30 April 89, in the consulship of Pompeius and
-    Cato (Pliny 3.70), then took Pompeii (Broughton); Herculaneum fell to
+    In arms from the outbreak in the consulship of Philippus and Sextus
+    Caesar, 91 (Florus), which Velleius puts in that of 90 (2.15.1): the start
+    is probable. Sulla destroyed Stabiae on 30 April 89, in the consulship of
+    Pompeius and Cato (Pliny 3.70), then took Pompeii (Broughton); Herculaneum fell to
     Didius and Minatius Magius (Vell. 2.16.2). Nola held out until 80 (Livy
     Per. 89), an enclave not drawn.
 
@@ -827,7 +844,6 @@
         themselves have become Romans
       supports: [polity, relation, to]
     - { source: velleius, locator: '2.16.2' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
@@ -886,6 +902,12 @@
         these were the sparks which at length broke forth into a flame at the
         time when Lucius Marcius Philippus and Sextus Julius were consuls
       supports: [from]
+    - source: velleius
+      locator: '2.15.1'
+      quote: >-
+        in the consulship of Lucius Caesar and Publius Rutilius … all Italy took
+        up arms against the Romans
+      supports: [polity, relation]
     - source: appian
       locator: 'BC 1.51'
       quote: >-
@@ -909,7 +931,9 @@
   review: draft
   note: >-
     The Hirpini joined the rising at once (App. BC 1.39), which broke out in
-    the consulship of Philippus and Sextus Caesar, 91 (Diodorus). Sulla burned
+    the consulship of Philippus and Sextus Caesar, 91 (Diodorus); Velleius
+    has all Italy in arms in the consulship of 90 (2.15.1), so the start is
+    probable. Sulla burned
     Aeclanum and the rest of the Hirpini surrendered in 89, the year the consul
     Cato fell and Sulla went to Rome to stand for the consulship of 88 (App.
     BC 1.51; Livy Per. 75; Broughton).
@@ -1015,7 +1039,7 @@
     citizenship when they revolted (App. BC 1.39), which Diodorus dates to the
     consuls of 91 (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-apulia
   polity: italici
@@ -1154,7 +1178,7 @@
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
     (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-samnium
   polity: italici
@@ -1298,7 +1322,7 @@
     revolted (App. BC 1.39), which Diodorus dates to the consuls of 91
     (37.2.2). Velleius puts the outbreak at Asculum in the consulship of 90 (2.15.1); the
     row keeps 92, the year before the earlier date, and the insurgents' row
-    starts 91–90.
+    starts 91, probable, with both dates quoted.
 
 - atom: italia-lucania
   polity: italici
@@ -1678,7 +1702,9 @@
   note: >-
     The Po plain north of the river and Liguria: the Cenomani, the Veneti and
     the Insubres, whose treaty barred their men from Roman citizenship (Cic.
-    Balb. 32), the Ligurian peoples, and the Latin colonies of Cremona and
+    Balb. 32; the treaty was still in force when Cicero spoke, in 56, so it
+    outlived the allied ground, which ends with the province of 81), the
+    Ligurian peoples, and the Latin colonies of Cremona and
     Aquileia and the Roman colony of Eporedia (100) inside. Uncertain in
     Liguria: Beloch has most of the plain south of the Po west of the Trebia
     Roman citizen land, Industria, Pollentia, Hasta and Forum Fulvi, with only
@@ -5364,13 +5390,24 @@
         qu’il se confond avec la Numidie occidentale, plus précisément entre
         l’oued Soummam et le fleuve Ampsaga
       supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [relation]
   confidence: uncertain
   review: draft
   note: >-
     Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
     survenue en 88" (Bridoux ¶147–148); split from the next row only because
-    the standing of the kingdom changes (relations.yaml). No text read says
-    how Masteabar stood with Rome: the relation is unquoted.
+    the standing of the kingdom changes (relations.yaml). Client, as the
+    relation: Bridoux reads Cicero's Marius, a suppliant in 88 "to those to
+    whom he had given kingdoms", as Gauda's sons, kings set up by a Roman,
+    the closest type the texts describe (ch. 3, ¶43), though he doubts how
+    far such stories show real dependence (¶43–44).
 
 - atom: numidia-igilgili
   polity: numidia-masinissa
@@ -5561,9 +5598,17 @@
         qu’il se confond avec la Numidie occidentale, plus précisément entre
         l’oued Soummam et le fleuve Ampsaga
       supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [relation]
   confidence: uncertain
   review: draft
-  note: Masteabar's; see numidia-igilgili. The relation is unquoted.
+  note: Masteabar's; see numidia-igilgili, whose relation this shares.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
@@ -9215,42 +9260,14 @@
     Rome's ally from long before 133, still so when Sextius gave it the coast
     he cleared of the Salyes (Strabo 4.1.5), until it sided with Pompey and
     surrendered to Caesar in 49, the year before Caesar's second consulship
-    (Dio 41.25.1–3, 41.43.1).
+    (Dio 41.25.1–3, 41.43.1); after that, see the next row.
 
 - atom: massalia
-  polity: gallia-transalpina
-  relation: province
+  polity: massalia
+  relation: allied
   from: 49 BCE
   to: after 27 BCE
   sources:
-    - source: caesar-bc
-      locator: '2.22'
-      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=22
-      quote: >-
-        Caesar spared the town, more in regard to its antiquity and reputation,
-        than any real merit it could plead. He obliged the citizens however to
-        deliver up their arms, machines, and ships of war … to surrender all the
-        money in their treasury; and to receive a garrison of two legions.
-      supports: [relation, from]
-    - source: cassius-dio
-      locator: '41.25.3'
-      quote: >-
-        he at that time deprived them of their arms, ships, and money, and later
-        of everything else except the name of freedom.
-      supports: [relation, from]
-    - source: cassius-dio
-      locator: '41.43.1'
-      quote: >-
-        The ensuing year the Romans had two sets of magistrates … The people of
-        the city had chosen as consuls Caesar and Publius Servius
-      supports: [from]
-    - source: cassius-dio
-      locator: '53.12.5'
-      quote: >-
-        while to Caesar belonged the remainder of Spain, — that is, the district
-        of Tarraco and Lusitania, — and all the Gauls, — that is, Gallia
-        Narbonensis
-      supports: [polity, to]
     - source: strabo
       locator: '4.1.5'
       quote: >-
@@ -9259,16 +9276,41 @@
         friendship; and have preserved to the state the right of governing
         according to its ancient laws. So that neither Marseilles nor the cities
         dependent on it are under submission to the governors sent
-      supports: []
+      supports: [polity, relation, to]
+    - source: caesar-bc
+      locator: '2.22'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=22
+      quote: >-
+        Caesar spared the town, more in regard to its antiquity and reputation,
+        than any real merit it could plead. He obliged the citizens however to
+        deliver up their arms, machines, and ships of war … to surrender all the
+        money in their treasury; and to receive a garrison of two legions.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '41.25.3'
+      quote: >-
+        he at that time deprived them of their arms, ships, and money, and later
+        of everything else except the name of freedom.
+      supports: [polity, from]
+    - source: cassius-dio
+      locator: '41.43.1'
+      quote: >-
+        The ensuing year the Romans had two sets of magistrates … The people of
+        the city had chosen as consuls Caesar and Publius Servius
+      supports: [from]
   confidence: uncertain
   review: draft
   note: >-
-    Caesar left the Massaliots their city and their freedom, but took their
-    territory and ships: Dio has them stripped "of everything else except the
-    name of freedom" (41.25.3). Strabo, writing under Augustus, disagrees:
-    neither Massalia "nor the cities dependent on it" answered to the governors
-    (4.1.5). Both are quoted and the confidence lowered from probable in the
-    October 2026 backfill.
+    A free city still after Caesar took it in 49, the year before his second
+    consulship (BC 2.22; Dio 41.25.3, 41.43.1): Strabo, writing under
+    Augustus, has Caesar and his successors keep its laws, so that neither
+    Massalia "nor the cities dependent on it" answered to the governors
+    (4.1.5), and free cities are drawn allied (decided October 2026). Dio
+    disagrees: Caesar stripped it "of everything else except the name of
+    freedom" (41.25.3). Both are quoted and the row is uncertain; it read
+    province of Gallia Transalpina, from 49, until October 2026. Kept apart
+    from the row before, which is probable, because the sources disagree only
+    after the surrender.
 
 - atom: helvetii
   polity: helvetii
@@ -9537,7 +9579,28 @@
       quote: >-
         the manner in which, even before they had sought the friendship of
         Rome, the Aedui had always held the primacy of all Gaul
-      supports: [polity, relation]
+      supports: [polity, relation, from]
+    - source: livy
+      locator: '5.34.5'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=5:chapter=34
+      quote: >-
+        He invited the surplus population of six tribes —the Bituriges, the
+        Averni, the Senones, the Aedui, the Ambarri, the Carnutes, and the
+        Aulerci.
+      supports: [polity, from]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        he devastated the land of the Aedui, an ally of the Roman people.
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 516'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
+        was victorious over the Salluvii, and then engaged in war against the
+        Allobroges and the Arverni
+      supports: [to]
     - source: strabo
       locator: '4.3.2'
       quote: >-
@@ -9551,9 +9614,11 @@
     Gaul to seek friendship and alliance with Rome (4.3.2), but the alliance is
     not attested before 122, and the ground moves at the attestation (decision
     19). Caesar has them leading Gaul "even before they had sought the
-    friendship of Rome" (BG 1.43), but no readable text dates that time or
-    puts it in 133–123: the row's start and end rest on the window's edge and
-    on the alliance's first attestation, not on a text (October 2026).
+    friendship of Rome" (BG 1.43), and Livy has them a people long before,
+    in Bellovesus' migration (5.34.5): the two bracket 133, with nothing
+    between to suggest a Roman tie, for the start. The end is the year before
+    the alliance's first attestation, in Domitius' year, 122 (Per. 61; MRR I
+    516). No text dates the friendship itself, so the row stays uncertain.
 
 - atom: aedui
   polity: aedui
@@ -9838,6 +9903,14 @@
         Astures, — the three last-named of whom were later subjugated by
         Statilius Taurus
       supports: [polity, relation]
+    - source: perea-yebenes-2017
+      locator: 'p. 127'
+      url: https://revistas.ucm.es/index.php/GERI/article/download/56141/50804
+      quote: >-
+        Creo que el “no triunfo” se explica por el hecho de que su intervención
+        del año 29 fue más diplomática que militar … Éstos últimos, con la
+        intervención de Tauro (Cass. Dio, 51.20.5), quedaron sometidos a Roma
+      supports: [to]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: probable
@@ -9845,11 +9918,10 @@
   note: >-
     Dio, among the events of Octavian's fifth consulship (29), has the
     Vaccaei "still under arms" and subdued "later" by Statilius Taurus
-    (51.20.1, 51.20.5): free in 29, not to c. 30 as the end reads. By 26
-    they were the Cantabri's victims, not Rome's enemies (Flor. 2.33.47). The
-    end would be 29 or a range 29–27, but that moves the start of the
-    hispania-citerior row after it (c. 29); left as it is and reported
-    (October 2026).
+    (51.20.1, 51.20.5); Perea Yébenes puts Taurus' intervention in 29 (2017,
+    127). Both fall in 29, the year of the transition, which belongs to the
+    successor (hispania-citerior, from c. 29), so this row ends c. 30. By 26
+    they were the Cantabri's victims, not Rome's enemies (Flor. 2.33.47).
 
 - atom: astures
   polity: astures
@@ -9978,7 +10050,14 @@
         Then he led his army against the Callaici and Lusitani, overpowered
         them, and marched on as far as the outer sea, subduing their tribes
         which before were not obedient to Rome.
-      supports: [polity, relation]
+      supports: [polity, relation, to]
+    - source: broughton-mrr
+      locator: 'vol. II, 61 B.C., p. 180'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Governor, probably with the title Proconsul, in Farther Spain … where
+        he carried on a war with the Callaeci and Lusitani
+      supports: [to]
     - source: cassius-dio
       locator: '37.53.4'
       quote: >-
@@ -10007,7 +10086,9 @@
     Rome" (Caes. 12.1), so in 133 they were free. The end read "after 27"
     until the October 2026 check: Plutarch and Dio have Caesar subdue them in
     61–60 ("and subjugated them", Dio 37.53.4), and no readable text has them
-    free in 27. It is now "after 61", the last year a text has them free; an
+    free in 27. It is now "after 61", the last year a text has them free
+    (Plutarch's tribes "not obedient to Rome" before Caesar's war, which
+    Broughton puts in 61, MRR II 180); an
     open end draws the same, and the ground after Caesar's campaign is still
     left to whoever the texts show holding it.
 
