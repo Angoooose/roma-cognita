@@ -4821,12 +4821,41 @@
   names:
     - { text: Round Temple of the Forum Boarium, lang: en, preferred: true }
     - { text: Aedes Herculis Olivarii, lang: la }
-  from: { earliest: 120 BCE, latest: 90 BCE }
+  from: { earliest: 130 BCE, latest: 51 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Portunium, p. 430' }
-    - { source: digital-augustan-rome, locator: 'Round Temple by the Tiber' }
+    - source: platner-ashby
+      locator: 'Portunium, p. 430'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html
+      quote: >-
+        the ancient circular temple … which was occupied by the church of S.
+        Stephanus Rotundus (1140), S. Stefano delle Carrozze (sixteenth century), and
+        was later called S. Maria del Sole, in the Piazza Bocca della Verità
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Portunium, p. 431, n. 3'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Portunium.html
+      quote: >-
+        Delbrück ( Hellenistische Bauten , II .43) identifies it with the temple of
+        Hercules erected about 130 B.C. by Aemilius Paullus
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: https://www.digitalaugustanrome.org/api/dag/records/round-temple-tiberis/
+      quote: >-
+        The well-preserved Round Temple by the *Tiber, with its ring of 20 Corinthian
+        columns surrounding a circular cella, had been attributed to the first half of
+        the 1st c. B.C. (Strong and Ward-Perkins), and intensive re-examination of its
+        architecture has suggested a more precise date in the early 1st c. B.C.
+      supports: [location, from]
+    - source: digital-augustan-rome
+      locator: 'Round Temple: Tiberis'
+      url: https://www.digitalaugustanrome.org/api/dag/records/round-temple-tiberis/
+      quote: >-
+        Sometime in the decades after Augustus, major repair work was carried out on
+        about half of the colonnade
+      supports: [to]
     - { source: osm-rome, locator: way/251342364 }
     - { source: coarelli-1988, locator: 'pp. 38, 180–204' }
     - { source: rakob-heilmeyer-1973, locator: 'pp. 4, 19, 35–36' }
@@ -4838,12 +4867,16 @@
     10.66 m high round a cella 10 m across, of Pentelic marble on a tufa podium 2 m
     high. Whose it was is disputed: Hercules Olivarius (Coarelli) or Hercules Victor
     (Ziolkowski).
-    It was built between about 120 BCE (Coarelli, who gives it to the oil merchant M.
-    Octavius Herrenus and the Greek architect Hermodorus) and the early 1st century
-    (Rakob and Heilmeyer, from its architecture), so the map shows it from the middle of
-    that span, 105 BCE. Ziolkowski's reading, Mummius's temple of Hercules Victor
-    dedicated in 142 BCE, would put it before 133. Nothing is known of what stood on its
-    platform before; the model leaves it open.
+    When it was built is disputed. Delbrück (as Platner & Ashby report him) gave it to
+    a temple of Hercules of about 130 BCE; Digital Augustan Rome gives the first half of
+    the 1st century BCE (Strong and Ward-Perkins), or more precisely its early years
+    (Rakob and Heilmeyer, from its architecture). The span 130–51 BCE covers both, so the
+    map shows it from about 90 BCE. It read 120–90 BCE until October 2026: 120 is
+    Coarelli's (who gives it to the oil merchant M. Octavius Herrenus and the Greek
+    architect Hermodorus), in a book that could not be read. Ziolkowski's reading,
+    Mummius's temple of Hercules Victor dedicated in 142 BCE, would put it before 133;
+    Platner & Ashby thought its superstructure early imperial on a Republican podium.
+    Nothing is known of what stood on its platform before; the model leaves it open.
 
 - id: aedes-fortunae-foro-boario
   kind: temple
@@ -5127,29 +5160,53 @@
   names:
     - { text: Aedes Martis in Circo, lang: la, preferred: true }
     - { text: Temple of Mars in the Circus Flaminius, lang: en }
-  from: 133 BCE
+  from: { earliest: 138 BCE, latest: 130 BCE }
   to: after 27 BCE
-  condition:
-    - { value: under construction, from: 133 BCE, to: 132 BCE }
-    - { value: standing, from: 131 BCE, to: after 27 BCE }
   prominence: 5
   sources:
-    - { source: platner-ashby, locator: 'Aedes Martis#in_circo_Flaminio, p. 328' }
-    - { source: digital-augustan-rome, locator: 'Mars, Aedes (Campus Flaminius)' }
+    - source: platner-ashby
+      locator: 'Aedes Martis#in_circo_Flaminio, p. 328'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Martis.html
+      quote: >-
+        a temple in circo Flaminio , built for D. Junius Brutus Callaicus in 138 B.C.
+        by the architect Hermodorus of Salamis
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: https://www.digitalaugustanrome.org/api/dag/records/mars-aedes-campus-flaminius/
+      quote: >-
+        Republican Temple to Mars located near the *Circus Flaminius, erected ex
+        manubiis by D. Brutus Callaicus between 135 and 130 B.C., after his Spanish
+        triumph
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Mars, Aedes (Campus Flaminius)'
+      url: https://www.digitalaugustanrome.org/api/dag/records/mars-aedes-campus-flaminius/
+      quote: >-
+        Remains of a hexastyle peripteral temple near the Church of S. Salvatore in
+        Campo (in the N Circus Flaminius) were first identified in 1838
+      supports: [location]
+    - source: pliny-nh
+      locator: '36.26'
+      quote: >-
+        there is furthermore the colossal seated statue of Mars by the same artist in
+        the temple built by Brutus Callaecus also in the Circus
+      supports: [to]
     - { source: cavallero-2018, locator: 'pp. 317–334' }
-    - { source: pliny-nh, locator: '36.26' }
     - { source: cicero-arch, locator: '27' }
   confidence: probable
   review: draft
   note: >-
-    Built from his spoils for D. Iunius Brutus Callaicus after his triumph over the
-    Callaeci (about 133 BCE) by the Greek architect Hermodorus of Salamis, with verses
-    of Accius at its entrance and a colossal Mars and a Venus by Scopas inside. Its
-    remains, under S. Salvatore in Campo, are of a marble temple of six columns by
-    eleven on a crepis of six steps, about 14.6 by 27.8 m, facing north-east (Zevi;
-    Cavallero 2018); Tortorici thought a prostyle temple on a podium equally possible.
-    The year of its dedication is not recorded: the model shows it going up in 133–132
-    BCE.
+    Built from his spoils for D. Iunius Brutus Callaicus by the Greek architect
+    Hermodorus of Salamis, with verses of Accius at its entrance and a colossal Mars
+    and a Venus by Scopas inside. Its remains, under S. Salvatore in Campo, are of a
+    marble temple of six columns by eleven on a crepis of six steps, about 14.6 by 27.8
+    m, facing north-east (Zevi; Cavallero 2018); Tortorici thought a prostyle temple on
+    a podium equally possible. The year of its dedication is not recorded, and the
+    readable sources disagree: Platner & Ashby say 138 BCE, Digital Augustan Rome
+    135–130, after his triumph over the Callaeci. Until October 2026 it read 133 BCE,
+    going up in 133–132 and standing from 131, years no readable text gives; it now
+    spans both readings and is drawn standing throughout.
 
 - id: aedes-bellonae
   kind: temple
@@ -5183,19 +5240,51 @@
   names:
     - { text: Porticus Metelli, lang: la, preferred: true }
     - { text: Portico of Metellus, lang: en }
-  from: c. 146 BCE
+  from: { earliest: 147 BCE, latest: 146 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: velleius, locator: '1.11.3' }
-    - { source: platner-ashby, locator: 'Porticus Octaviae, pp. 427–428' }
-    - { source: digital-augustan-rome, locator: 'Porticus Octaviae' }
+    - source: velleius
+      locator: '1.11.3'
+      quote: >-
+        the Metellus Macedonicus who had previously built the portico about the two
+        temples without inscriptions which are now surrounded by the portico of
+        Octavia
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Porticus Metelli (porticus, pp. 419–431)'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/porticus.html
+      quote: >-
+        Porticus Metelli: built in 147 B.C. by Q. Caecilius Metellus Macedonicus
+        around the temples of Jupiter Stator and Juno
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: https://www.digitalaugustanrome.org/api/dag/records/porticus-octaviae/
+      quote: >-
+        was built by Q. Caecilius Metellus Macedonicus in 146 B.C. around the temples
+        of Iuno Regina and Iuppiter Stator
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Porticus Octaviae, pp. 427–428'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Porticus_Octaviae.html
+      quote: >-
+        at some time after 27 B.C. … in place of the Porticus Metelli
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Porticus Octaviae'
+      url: https://www.digitalaugustanrome.org/api/dag/records/porticus-octaviae/
+      quote: >-
+        Perhaps the building campaign began in 27, and concluded with the dedication
+        of the library three years later.
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     Q. Caecilius Metellus Macedonicus's colonnade round the temples of Jupiter
-    Stator and Juno Regina, after his triumph of 146 BCE, fronting the Circus
-    Flaminius. Augustus rebuilt it as the Porticus Octaviae "between 27 and 23 B.C."
+    Stator and Juno Regina, fronting the Circus Flaminius: built in 147 BCE (Platner &
+    Ashby) or 146, after his triumph (Digital Augustan Rome); it read c. 146 until
+    October 2026, and now spans both. Augustus rebuilt it as the Porticus Octaviae "between 27 and 23 B.C."
     on the same lines to the south-west and south-east, "118 metres in width and
     somewhat more in length", extended to the north-east; the Porticus Metelli is
     drawn a little shorter, about 118 by 115 m.
