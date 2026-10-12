@@ -1,4 +1,4 @@
-import type { ClaimRecord, PlaceHit, PoliticalHit } from '@roma-cognita/engine'
+import type { CitedSource, ClaimRecord, PlaceHit, PoliticalHit } from '@roma-cognita/engine'
 import { ChevronRight, X } from 'lucide-react'
 import { type ReactNode, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -37,6 +37,7 @@ import {
 } from '@/components/Marks.tsx'
 import { PersonLink } from '@/components/PersonLink.tsx'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { type FastiLine, knownName } from '@/lib/people.ts'
 
@@ -136,6 +137,12 @@ function PlaceBody({ hit, year, onClose }: BodyProps<PlaceHit>) {
 }
 
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
+
+/** Between a record's years: `before 133 BCE – 84 BCE`, but `241–211 BCE to after 27 BCE` where an end is a range. */
+const sep = (from: { text: string }, to: { text: string }) =>
+  from.text.includes('–') || to.text.includes('–') ? ' to ' : ' – '
+const between = (from: { text: string }, to: { text: string }) =>
+  `${from.text}${sep(from, to)}${to.text}`
 
 /**
  * What a place was in the year shown, and where: `Basilica in Roma, under construction`,
@@ -328,10 +335,12 @@ function PlaceChart({ hit }: { hit: PlaceHit }) {
 }
 
 /**
- * A territory, drawn as the person panel draws a life: its years on the map in lanes
- * (who held it, and who governed it), who is in command in the year shown, then the
- * whole list of governors and the evidence, folded. Where DPRR's provinces are not
- * joined to this polity, there are no governors to show, and it says only who held it.
+ * A territory is two records, and the panel keeps them apart: the polity (what it was,
+ * its years, its rulers) and its claim on the ground clicked, "Held here" (on what
+ * footing, in which years, how sure the holding is). A province joined to DPRR's draws
+ * its years in lanes, who is in command in the year shown and the whole list of
+ * governors, with "Held here" folded. The polity's own note and its sources come last,
+ * folded.
  */
 function TerritoryBody({ hit, year, onClose }: BodyProps<PoliticalHit>) {
   // The store only keeps territory hits that have both.
@@ -340,28 +349,63 @@ function TerritoryBody({ hit, year, onClose }: BodyProps<PoliticalHit>) {
   const overlord = hit.power && hit.power.id !== polity.id ? hit.power.name : null
   const people = usePeople((s) => s.people)
   const joined = !!people?.isJoined(polity.id)
+  const kind = polity.kind.replace(/-/g, ' ')
   return (
     <>
       <Header
-        title={polity.name}
-        standing={standing(c.relation, overlord)}
+        title={
+          <>
+            {polity.name}
+            {polity.confidence === 'uncertain' && <Q />}
+          </>
+        }
+        standing={
+          <Backed sources={backing(hit, 'claim', 'polity', 'relation')}>
+            {standing(c.relation, overlord)}
+          </Backed>
+        }
         onClose={onClose}
       />
       <CardContent className="space-y-4 text-sm">
-        {/* A plain line, flush with the rest: a ruler has no swatch to key him. */}
-        {polity.ruler && <p>Ruled by {polity.ruler}</p>}
+        {/* Plain lines, flush with the rest: a polity and its ruler have no swatch to key them. */}
+        <div className="space-y-1">
+          <p>
+            <Backed sources={backing(hit, 'polity', 'kind')}>{cap(kind)}</Backed>,{' '}
+            <span className="figures">
+              <Backed sources={backing(hit, 'polity', 'from')}>{polity.from.text}</Backed>
+              {sep(polity.from, polity.to)}
+              <Backed sources={backing(hit, 'polity', 'to')}>{polity.to.text}</Backed>
+            </span>
+          </p>
+          {polity.ruler && (
+            <p>
+              Ruled by{' '}
+              <Backed sources={backing(hit, 'polity', 'ruler')}>{polity.ruler}</Backed>
+            </p>
+          )}
+        </div>
         {joined ? (
           <>
             <TerritoryChart hit={hit} />
             <InCommand polity={polity.id} year={year} />
             <AllGovernors hit={hit} />
-            <Fold name="held" title="Held & sources">
+            <Fold name="held" title="Held here">
               <Held hit={hit} />
             </Fold>
           </>
         ) : (
-          <Held hit={hit} />
+          <Section title="Held here">
+            <Held hit={hit} />
+          </Section>
         )}
+        {polity.note && (
+          <Fold name="polity-note" title={`About the ${kind}`}>
+            <p className="text-pretty text-foreground/80">{polity.note}</p>
+          </Fold>
+        )}
+        <Fold name="territory-sources" title={`Sources · ${cited(hit).length}`}>
+          <SourceRows sources={cited(hit)} />
+        </Fold>
       </CardContent>
     </>
   )
@@ -439,7 +483,7 @@ function TerritoryChart({ hit }: { hit: PoliticalHit }) {
             </span>
           </TooltipTrigger>
           <TooltipContent>
-            {standing(c.relation, null)}, {c.from.text} – {c.to.text}
+            {standing(c.relation, null)}, {between(c.from, c.to)}
           </TooltipContent>
         </Tooltip>
       )),
@@ -625,9 +669,14 @@ function AllGovernors({ hit }: { hit: PoliticalHit }) {
   )
 }
 
-/** Who held it and how sure, as legend rows; then the note, and the sources as index lines. */
+/**
+ * How the polity held the ground clicked and how sure the border is, as legend rows,
+ * then the claim's note. Its years are left out where they are the polity's own.
+ */
 function Held({ hit }: { hit: PoliticalHit }) {
   const c = hit.claim!
+  const p = hit.polity!
+  const ownYears = c.from.text === p.from.text && c.to.text === p.to.text
   const fills = useRomeFills()
   const fill =
     c.relation === 'province'
@@ -638,17 +687,20 @@ function Held({ hit }: { hit: PoliticalHit }) {
   return (
     <div className="space-y-3">
       <div className="space-y-1">
-        <KeyRow swatch={<Swatch fill={fill} open />}>
-          <span className="figures">
-            {c.from.text} – {c.to.text}
-          </span>
-        </KeyRow>
+        {!ownYears && (
+          <KeyRow swatch={<Swatch fill={fill} open />}>
+            <span className="figures">
+              <Backed sources={backing(hit, 'claim', 'from')}>{c.from.text}</Backed>
+              {sep(c.from, c.to)}
+              <Backed sources={backing(hit, 'claim', 'to')}>{c.to.text}</Backed>
+            </span>
+          </KeyRow>
+        )}
         <KeyRow swatch={<Swatch fill={fill} uncertain={c.confidence === 'uncertain'} />}>
-          Border <Certainty level={c.confidence} />
+          Holding <Certainty level={c.confidence} />
         </KeyRow>
       </div>
       {c.note && <p className="text-pretty text-foreground/80">{c.note}</p>}
-      <SourceRows sources={hit.sources} />
     </div>
   )
 }
@@ -659,24 +711,130 @@ function Held({ hit }: { hit: PoliticalHit }) {
  * keeps each source apart when it wraps. No leaders: a citation that wraps would leave
  * a stub of dots, and its locator stranded at the far edge.
  */
-function SourceRows({ sources }: { sources: PoliticalHit['sources'] }) {
+function SourceRows({ sources }: { sources: CitedSource[] }) {
   if (!sources.length) return null
   return (
     <ol className="space-y-1 text-xs">
       {sources.map((s, i) => (
         <li key={i} className="pl-3 -indent-3 leading-snug text-pretty">
-          <Link href={s.url}>{s.citation}</Link>
-          {s.locator && (
-            <>
-              ,{' '}
-              <span className="figures text-muted-foreground">
-                <Link href={s.passage}>{s.locator}</Link>
-              </span>
-            </>
-          )}
+          <Cite s={s} />
         </li>
       ))}
     </ol>
+  )
+}
+
+/** A source's work, and the place in it after a comma. */
+function Cite({ s }: { s: CitedSource }) {
+  return (
+    <>
+      <Link href={s.url}>{s.citation}</Link>
+      {s.locator && (
+        <>
+          ,{' '}
+          <span className="figures text-muted-foreground">
+            <Link href={s.passage}>{s.locator}</Link>
+          </span>
+        </>
+      )}
+    </>
+  )
+}
+
+const passageKey = (s: CitedSource) => `${s.citation}|${s.locator}|${s.quote}`
+
+/**
+ * The quoted passages that back some of a record's fields. A claim whose years are its
+ * polity's draws them on the polity's line, so the polity's years carry the claim's
+ * passages for them too.
+ */
+function backing(hit: PoliticalHit, record: 'polity' | 'claim', ...fields: string[]) {
+  const quoted = (sources: CitedSource[]) =>
+    sources.filter((s) => s.quote && s.supports?.some((f) => fields.includes(f)))
+  let out = quoted(record === 'polity' ? hit.politySources : hit.sources)
+  const p = hit.polity!
+  const c = hit.claim!
+  const shared = fields.every(
+    (f) => (f === 'from' || f === 'to') && c[f].text === p[f].text,
+  )
+  if (record === 'polity' && shared) out = [...out, ...quoted(hit.sources)]
+  const seen = new Set<string>()
+  return out.filter((s) => !seen.has(passageKey(s)) && seen.add(passageKey(s)))
+}
+
+/** Every source both records cite, each once: the polity's, then the claim's. */
+function cited(hit: PoliticalHit) {
+  const seen = new Set<string>()
+  return [...hit.politySources, ...hit.sources].filter(
+    (s) => !seen.has(passageKey(s)) && seen.add(passageKey(s)),
+  )
+}
+
+/**
+ * A value the sources were read for: underlined dotted, as "probable" is, and a click
+ * shows the words it rests on and where. The first passage is open; the rest follow on
+ * a click. A value nothing quoted backs is plain text, which is itself an answer.
+ */
+function Backed({ sources, children }: { sources: CitedSource[]; children: ReactNode }) {
+  const [all, setAll] = useState(false)
+  // Out beside the panel, not over it: the value it explains stays in view.
+  const [offset, setOffset] = useState(8)
+  if (!sources.length) return children
+  const shown = all ? sources : sources.slice(0, 1)
+  return (
+    <Popover onOpenChange={(open) => !open && setAll(false)}>
+      <PopoverTrigger asChild>
+        {/* A span, not a button: a button will not wrap across lines as the ruler line must. */}
+        <span
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return
+            e.preventDefault()
+            e.currentTarget.click()
+          }}
+          // A click or a key: either way it opens beside the panel, not over it.
+          onClick={(e) => {
+            const panel = e.currentTarget.closest('[data-slot=card]')
+            if (panel)
+              setOffset(
+                e.currentTarget.getBoundingClientRect().left -
+                  panel.getBoundingClientRect().left +
+                  8,
+              )
+          }}
+          className="cursor-pointer underline decoration-foreground/30 decoration-dotted underline-offset-[3px] hover:decoration-foreground/70 data-[state=open]:decoration-gold data-[state=open]:decoration-solid"
+        >
+          {children}
+        </span>
+      </PopoverTrigger>
+      <PopoverContent
+        side="left"
+        align="start"
+        sideOffset={offset}
+        className="paper rule-double max-h-[60vh] w-72 overflow-y-auto bg-card not-italic"
+      >
+        <div className="space-y-3 text-xs text-pretty">
+          {shown.map((s, i) => (
+            <div key={i} className="space-y-1">
+              <p className="text-sm leading-snug text-foreground/90">“{s.quote}”</p>
+              <p className="pl-3 -indent-3 leading-snug">
+                <Cite s={s} />
+              </p>
+            </div>
+          ))}
+          {!all && sources.length > 1 && (
+            <button
+              type="button"
+              className="text-muted-foreground hover:text-foreground"
+              onClick={() => setAll(true)}
+            >
+              {sources.length - 1} more {sources.length === 2 ? 'passage' : 'passages'}
+            </button>
+          )}
+        </div>
+      </PopoverContent>
+    </Popover>
   )
 }
 
