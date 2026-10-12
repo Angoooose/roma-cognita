@@ -7172,6 +7172,13 @@
   sources:
     - { source: velleius, locator: '1.11.3' }
     - { source: platner-ashby, locator: 'Porticus Octaviae, pp. 427–428' }
+    - source: platner-ashby
+      locator: 'Porticus Metelli'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/porticus.html'
+      quote: >-
+        built in 147 B.C. by Q. Caecilius Metellus Macedonicus around the temples of
+        Jupiter Stator and Juno
+      supports: [from]
     - { source: digital-augustan-rome, locator: 'Porticus Octaviae' }
     - source: digital-augustan-rome
       locator: 'Porticus Octaviae'
