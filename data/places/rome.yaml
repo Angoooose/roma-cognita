@@ -5915,6 +5915,12 @@
         was his colleague … Agrippa, when aedile, after his first consul … took
         another independent source of supply
       supports: [from]
+    - source: cassius-dio
+      locator: '48.32.3'
+      quote: >-
+        It was at this same time that the Aqua Iulia, as it was called, was brought
+        into Rome
+      supports: []
     - source: frontinus
       locator: '1.4'
       quote: >-
@@ -5934,11 +5940,15 @@
         A fine Arch was built by Augustus, in 5 b.c., over Via Tiburtina … The
         dedicatory inscription of Augustus is on the exterior of the Iulia’s specus
       supports: [location]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
-    Built by Agrippa as aedile in 33 BCE (Frontinus 1.9; Dio puts it in 40) and
-    carried topmost on the Marcia's arches (Frontinus 1.19). Placed at the Porta
+    Built by Agrippa as aedile in 33 BCE (Frontinus 1.9, in Augustus' second
+    consulship) and carried topmost on the Marcia's arches (Frontinus 1.19). Dio
+    (48.32.3) puts its bringing into Rome in 40, the year of Balbus' consulship;
+    the readable sources disagree, so the confidence is uncertain (probable until
+    October 2026). The map keeps Frontinus' year, which his aqueducts' order on
+    the arches (from Agrippa's works of 33) follows. Placed at the Porta
     Tiburtina, where its channel, with the Tepula's and the Marcia's, crossed the
     road (Ashby p. 145).
 
