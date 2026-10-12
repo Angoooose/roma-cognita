@@ -60,6 +60,10 @@ interface End {
 interface SourceRef {
   source: string
   locator?: string
+  /** The words relied on, copied from the text; `…` marks a cut. */
+  quote?: string
+  /** The record's fields the quote states; `[]`: cited for context. */
+  supports?: string[]
 }
 export interface ClaimRecord {
   atom: string
@@ -86,7 +90,12 @@ export interface PolityRecord {
   name: string
   /** Preferred names with the years they are in force (astronomical, inclusive). */
   names?: { text: string; from: number; to: number }[]
+  from: End
+  to: End
   ruler?: string
+  confidence: 'certain' | 'probable' | 'uncertain'
+  sources: (SourceRef & { passage?: string })[]
+  note?: string
 }
 interface AtomRecord {
   id: string
@@ -113,8 +122,25 @@ export interface PoliticalHit {
   power?: PolityRecord
   /** The chain itself, polity first. */
   chain: { polity: PolityRecord; type: RelationRecord['type'] }[]
-  /** `id` is the work's in sources.yaml: the sources page has an entry for it. */
-  sources: { id?: string; citation: string; url?: string; locator?: string; passage?: string }[]
+  /** The claim's sources, with their works' citations. */
+  sources: CitedSource[]
+  /** The polity's sources, likewise: for its kind, its years and its rulers. */
+  politySources: CitedSource[]
+}
+
+/**
+ * A source as the inspector prints it: the work, the place in it, and the words read
+ * there. `id` is the work's in sources.yaml: the sources page has an entry for it (a
+ * place's carries it once its labels are rebuilt).
+ */
+export interface CitedSource {
+  id?: string
+  citation: string
+  url?: string
+  locator?: string
+  passage?: string
+  quote?: string
+  supports?: string[]
 }
 
 /** An uncertain claim's fill strength: the map says less where the sources do. */
@@ -418,7 +444,7 @@ export class PoliticalLayer {
     const d = this.data
     if (!d) return null
     const claim = this.holding(atom, year)
-    if (!claim) return { atom, chain: [], sources: [] }
+    if (!claim) return { atom, chain: [], sources: [], politySources: [] }
     const { power, chain } = this.resolve(claim.polity, year)
     const polity = (id: string) => this.named(this.polityById.get(id), year)
     return {
@@ -427,13 +453,21 @@ export class PoliticalLayer {
       polity: polity(claim.polity),
       power: polity(power),
       chain: chain.map((l) => ({ polity: polity(l.polity)!, type: l.type })).filter((l) => l.polity),
-      sources: claim.sources.map((s) => ({
-        id: s.source,
-        ...(d.sources[s.source] ?? { citation: s.source }),
-        locator: s.locator,
-        passage: s.passage,
-      })),
+      sources: this.cite(claim.sources),
+      politySources: this.cite(this.polityById.get(claim.polity)?.sources ?? []),
     }
+  }
+
+  private cite(sources: ClaimRecord['sources']): CitedSource[] {
+    const works = this.data!.sources
+    return sources.map((s) => ({
+      id: s.source,
+      ...(works[s.source] ?? { citation: s.source }),
+      locator: s.locator,
+      passage: s.passage,
+      quote: s.quote,
+      supports: s.supports,
+    }))
   }
 
   /** The polity as named in `year`: Bithynia is Bithynia et Pontus from 63. */
