@@ -7727,15 +7727,32 @@
         Adiatorix, who is thought to have obtained the honor from Augustus
         Caesar
       supports: [polity, relation, to]
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
     - { source: strabo, locator: '12.3.34' }
   confidence: probable
   review: draft
   note: >-
     Pompey's priest-ruler Archelaus, his son, then Caesar's Lycomedes from 47
     (Magie I 411), and Dyteutus, whom Augustus made priest after his triumph
-    over Adiatorix (Strabo 12.3.35). The start of 63 is no text's: Magie dates
-    Pompey's arrangements from Amisus in the spring of 64 (I 360) to the
-    winter of 63–62 (I 365, 368), a range whose middle is 63.
+    over Adiatorix (Strabo 12.3.35). From 63, as the polity and its client-of
+    relation, on the same passages: Mithridates dead in Cicero's consulship
+    (Dio 37.10.4), and Pompey completing his plans for the conquered lands in
+    Pontus in the winter of 63–62 (Magie I 365); Magie has the arrangements
+    begun at Amisus in the spring of 64 (I 360).
 
 - atom: colchis
   polity: colchis
@@ -7782,6 +7799,21 @@
         subject to him was also broken up and distributed among many persons.
         At last Polemon got Colchis
       supports: []
+    - source: cassius-dio
+      locator: '37.10.4'
+      quote: >-
+        when Marcus Cicero had become consul with Gaius Antonius, and
+        Mithridates no longer caused any injury to the Romans, but had destroyed
+        himself
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 365'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        The winter of 63-62 Pompey spent in Pontus, in taking over the few
+        strongholds which had not already come into the power of the Romans and
+        in completing the plans for the future of the conquered lands.
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -7790,10 +7822,11 @@
     after Zela is not recorded until Polemon, to whom Antony gave it (Magie I
     435; "At last Polemon got Colchis", Strabo 11.2.18), on a date no
     readable text gives. Until October 2026 the row ran to after 27 BCE, which
-    no readable text supports. The start of 63 is no text's either: Magie
-    dates Pompey's arrangements from the spring of 64 (I 360) to the winter of
-    63–62 (I 365, 368), a range whose middle is 63; the polity and its
-    relation also start in 63.
+    no readable text supports. The start of 63 is the client-of relation's,
+    on the same passages: Mithridates dead in Cicero's consulship (Dio
+    37.10.4), Pompey completing his plans in Pontus in the winter of 63–62
+    (Magie I 365); Magie has the arrangements begun at Amisus in the spring
+    of 64 (I 360), and the polity's start is the range 64–62.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
