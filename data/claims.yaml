@@ -7652,6 +7652,64 @@
   confidence: certain
   review: draft
 
+- atom: colchis
+  polity: bosporus
+  relation: occupied
+  from: 48 BCE
+  to: 47 BCE
+  sources:
+    - source: cassius-dio
+      locator: '42.45.2'
+      quote: >-
+        This king was a son of Mithridates and ruled the Cimmerian Bosporus
+      supports: [polity]
+    - source: cassius-dio
+      locator: '42.45.3'
+      quote: >-
+        he got possession of Colchis without any difficulty
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 408'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        His first move was directed against the district of Colchis at the
+        eastern end of the Euxine Sea, which had been placed by Pompey under the
+        rule of the dynast Aristarchus but now submitted without a struggle
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, p. 409'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        In the autumn of 48, nearly four months after the battle of Pharsalus,
+        Calvinus with his somewhat makeshift army set out from Comana against
+        Pharnaces.
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, p. 410'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        he hastened northward to recover Rome’s lost possessions. … Here he
+        arrived about the ist of July 47
+      supports: [to]
+    - source: cassius-dio
+      locator: '42.48.3'
+      quote: >-
+        Next he recovered all the territory belonging to the Romans and those
+        under treaty with them which Pharnaces had taken
+      supports: [to]
+    - { source: bellum-alexandrinum, locator: '34–41, 65–77' }
+  confidence: probable
+  review: draft
+  note: >-
+    Pharnaces' first conquest of 48: Colchis "submitted without a struggle"
+    before he moved into Lesser Armenia (Magie I 408; Dio 42.45.3), which he
+    held until Caesar recovered what he had taken from Rome and its treaty
+    partners after Zela in 47 (Dio 42.48.3). Probable, not certain like the
+    rows on pontus and armenia-minor: no text names Colchis among what Caesar
+    took back, and who held it after 47 is not recorded (the client claim
+    ends in 48). Added in October 2026; Pharnaces' hold on Colchis was not
+    drawn before.
+
 - atom: galatia-pontus
   polity: bosporus
   relation: occupied
