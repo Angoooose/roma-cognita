@@ -2478,12 +2478,13 @@
   prominence: 3
   status:
     - value: colonia
-      from: { earliest: 82 BCE, latest: 80 BCE }
+      from: { earliest: 82 BCE, latest: 79 BCE }
       to: after 27 BCE
       note: >-
         a colony of the dictator Sulla (Pliny 3.80), so founded in his
-        dictatorship, which Broughton gives from 82 and still in 80; no text
-        dates the colony closer. It began "c. 81" until October 2026.
+        dictatorship, which Broughton gives from 82 and still in 80 and Appian
+        ends in the year after his second consulship (BC 1.103), so 79; no text
+        dates the colony closer. It began "c. 81" until October 2026, then 82–80.
   labelSide: e
   sources:
     - source: pleiades
@@ -2518,6 +2519,15 @@
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         80 B.C. A.U.C. 674 … Dictator L. CORNELIUS L.f. P.n. SULLA FELIX
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.103'
+      quote: >-
+        The following year Sulla , although he was dictator, undertook the
+        consulship a second time, with Metellus Pius for his colleague … The next
+        year the people, in order to pay court to Sulla , chose him consul again,
+        but he refused the office and nominated Servilius Isauricus and Claudius
+        Pulcher for their suffrages, and voluntarily laid down the supreme power
       supports: [status]
   confidence: certain
   review: draft
