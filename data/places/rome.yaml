@@ -2516,7 +2516,7 @@
   location: [12.4725, 41.8885]
   names:
     - { text: Via Aurelia, lang: la, preferred: true }
-  from: 241 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2527,6 +2527,20 @@
         the road which led from the pons Aemilius across the low ground on the
         right bank of the Tiber
       supports: [location]
+    - source: ashby-1927
+      locator: 'p. 35'
+      url: https://archive.org/stream/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        the Via Aurelia is dated by Mommsen about 177 B.c.
+      supports: [from]
+    - source: ashby-1927
+      locator: 'p. 224'
+      url: https://archive.org/stream/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt
+      quote: >-
+        the Via Aurelia, crossed the river at once and led through the
+        fortifications of the Janiculum … Its construction is attributable to about
+        175 B.c.
+      supports: [from]
     - source: cicero-cat
       locator: '2.6'
       quote: >-
@@ -2546,14 +2560,17 @@
   review: draft
   note: >-
     The road west along the coast, which Catiline took out of Rome in 63 BCE
-    (Cicero, In Catilinam 2.6); 241 BCE, the censorship of C. Aurelius Cotta, is the
-    usual inference from its name. It "led from the pons Aemilius across the low
-    ground on the right bank of the Tiber (where two arches of a viaduct belonging to
-    it were found near S. Crisogono …) up to the Janiculum", through the later Porta
-    Aurelia (Platner & Ashby), and on along the line of the modern Via Aurelia Antica
-    "for nearly 3 miles" (Ashby 1927). Its line up the Janiculum is not known, and
-    is drawn over the easiest ground, lighter. Itiner-e brings its Aurelia in
-    through the Vatican plain, which is another road, so its line is not used here.
+    (Cicero, In Catilinam 2.6). Ashby attributes its construction to about 175 BCE,
+    Mommsen (in Ashby) to about 177; until October 2026 it started in 241 BCE, the
+    censorship of C. Aurelius Cotta, an inference from its name that no readable
+    text gives, so it now reads before 133. It "led from the pons Aemilius across
+    the low ground on the right bank of the Tiber (where two arches of a viaduct
+    belonging to it were found near S. Crisogono …) up to the Janiculum", through
+    the later Porta Aurelia (Platner & Ashby), and on along the line of the modern
+    Via Aurelia Antica "for nearly 3 miles" (Ashby 1927). Its line up the Janiculum
+    is not known, and is drawn over the easiest ground, lighter. Itiner-e brings its
+    Aurelia in through the Vatican plain, which is another road, so its line is not
+    used here.
 
 - id: via-campana
   kind: road
