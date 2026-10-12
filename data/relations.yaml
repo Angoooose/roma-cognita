@@ -2680,7 +2680,7 @@
 - polity: tectosages
   type: allied-to
   of: rome
-  from: { earliest: 121 BCE, latest: 107 BCE }
+  from: 121 BCE
   to: 107 BCE
   sources:
     - source: cassius-dio
@@ -2712,7 +2712,9 @@
     recorded: no earlier than Fabius' defeat of the Arverni in 121 (Per. 61),
     no later than the revolt Caepio ended in 106 (MRR), as on the claim. It
     read 121–118 until October 2026, on Narbo, which no readable text ties to
-    Tolosa.
+    Tolosa. Starts at 121, the earliest bound, as the claim does: the range
+    121–107 drawn at its midpoint would leave 121–115 blank after the
+    independent row ending in 122; uncertain for it.
 
 - polity: helvetii
   type: allied-to
