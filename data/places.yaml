@@ -1128,7 +1128,7 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known.
+      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -1178,7 +1178,7 @@
     - { source: velleius, locator: '1.15.4' }
     - { source: plutarch, locator: 'C. Gracch. 8.3' }
     - { source: appian, locator: 'BC 1.49' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: rhegium
