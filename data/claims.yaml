@@ -14856,7 +14856,7 @@
 
 - atom: armenia
   polity: armenia
-  relation: independent
+  relation: allied
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
@@ -14869,6 +14869,12 @@
     - source: cassius-dio
       locator: '49.44.4'
       quote: >-
+        The Mede at first, by employing the Romans as allies, conquered the
+        Parthians and Artaxes who came again him
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
         but as Antony summoned back his own soldiers, and moreover retained
         those of the king, the latter was in turn defeated and captured, and so
         Armenia was lost together with Media
@@ -14878,7 +14884,7 @@
       quote: >-
         he refused the request of Artaxes that his brothers be sent to him,
         because this prince had put to death the Romans left behind in Armenia
-      supports: [polity, relation, from]
+      supports: [polity, from]
     - source: schurer-1891
       locator: 'p. 428'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -14902,8 +14908,14 @@
   confidence: uncertain
   review: draft
   note: >-
-    Artaxias II, defending his crown "by virtue of Parthian strength" (Tac.
-    Ann. 2.3), "put to death the Romans left behind in Armenia" (Dio 51.16.2),
+    Allied (with Parthia), as the relation behind it: no text calls Artaxias
+    Parthia's subject or says Parthia set him up (the Armenians chose him,
+    Dio 49.39.6), but he fought beside the Parthians (49.44.4) and held his
+    crown by their strength, so the closest type the texts describe is an
+    ally. It read independent until October 2026, against a client-of
+    relation. Artaxias II, defending his crown "by virtue of Parthian
+    strength" (Tac. Ann. 2.3), "put to death the Romans left behind in
+    Armenia" (Dio 51.16.2),
     which Dio tells among Octavian's dispositions at Alexandria after Antony's
     and Cleopatra's deaths in 30. When he came back is not recorded: after
     Antony's compact on the Araxes in 33, by 30; drawn from 31. Still king in
@@ -20976,7 +20988,7 @@
 
 - atom: sophene
   polity: armenia
-  relation: independent
+  relation: allied
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
   sources:
@@ -20985,6 +20997,12 @@
       quote: >-
         Artavasdes’ son, Artaxias II, hostile to us on account of his father,
         defended himself and his crown by virtue of Parthian strength
+      supports: [relation]
+    - source: cassius-dio
+      locator: '49.44.4'
+      quote: >-
+        The Mede at first, by employing the Romans as allies, conquered the
+        Parthians and Artaxes who came again him
       supports: [relation]
     - source: cassius-dio
       locator: '49.44.4'
@@ -20998,7 +21016,7 @@
       quote: >-
         he refused the request of Artaxes that his brothers be sent to him,
         because this prince had put to death the Romans left behind in Armenia
-      supports: [relation, from]
+      supports: [from]
     - source: schurer-1891
       locator: 'p. 428'
       url: https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt
@@ -21019,11 +21037,13 @@
         summoned his brother Tigranes, who was in Rome, the emperor sent
         Tiberius to drive Artaxes out of the kingdom
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: draft
   note: >-
     As armenia (the row is armenia's), whose start has been 32–30 since
-    October 2026; this read 31 until then.
+    October 2026; this read 31 until then. Allied (with Parthia), not
+    independent, and uncertain, not probable, since October 2026, with
+    armenia's row.
 
 - atom: atropatene
   polity: atropatene

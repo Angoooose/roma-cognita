@@ -3492,7 +3492,7 @@
   note: Zenodorus' lease of the house of Lysanias.
 
 - polity: armenia
-  type: client-of
+  type: allied-to
   of: parthia
   from: { earliest: 32 BCE, latest: 30 BCE }
   to: after 27 BCE
@@ -3563,7 +3563,11 @@
     32 (Dio 49.44.3–4, 50.2.2), and Artaxes had killed the Romans left there
     by the time Caesar settled Egypt in his fourth consulship, 30 (51.4.3,
     51.16.2). It read 31 until October 2026, which no text states; the range
-    is drawn at its midpoint, 31.
+    is drawn at its midpoint, 31. It read client-of until October 2026 too:
+    no text says Parthia set Artaxias up or calls him subject (the Armenians
+    chose him, Dio 49.39.6); he fought beside the Parthians (49.44.4) and
+    held his crown by their strength, an ally by the closest type the texts
+    describe, as the claims on armenia and sophene now say.
 
 - polity: atropatene
   type: allied-to
