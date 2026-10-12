@@ -2607,13 +2607,19 @@
         when on her return she had got as far as the top of the Cyprius Vicus, where the
         temple of Diana lately stood
       supports: [from]
+    - source: livy
+      locator: '1.48.7'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=1:chapter=48'
+      quote: >-
+        the memory of which the place still bears, for they call it the Vicus Sceleratus
+      supports: [to]
     - source: platner-ashby
       locator: 'vici, Cuprius'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
       quote: >-
         The churches of S. Maria and S. Nicolao inter duo were so called because they stood
         between this street and the Compitum Acilii
-      supports: [to]
+      supports: []
   confidence: probable
   review: draft
   note: >-
