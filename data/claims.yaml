@@ -529,7 +529,6 @@
       supports: [polity, relation, to]
     - { source: livy-per, locator: '76' }
     - { source: appian, locator: 'BC 1.47–48' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
@@ -702,7 +701,6 @@
         of Italians and Romans
       supports: [polity, relation, to]
     - { source: livy-per, locator: '75–76' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
@@ -846,7 +844,6 @@
         themselves have become Romans
       supports: [polity, relation, to]
     - { source: velleius, locator: '2.16.2' }
-    - { source: cicero-arch, locator: '7' }
   confidence: probable
   review: draft
   note: >-
