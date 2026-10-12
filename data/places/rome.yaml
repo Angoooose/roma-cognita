@@ -5067,7 +5067,8 @@
   to: after 27 BCE
   condition:
     - { value: under construction, from: { earliest: 62 BCE, latest: 57 BCE }, to: 56 BCE }
-    - { value: standing, from: 55 BCE, to: after 27 BCE }
+    - { value: standing, from: 55 BCE, to: 45 BCE }
+    - { value: burnt, from: 44 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Curia Pompeia, p. 146' }
@@ -5094,7 +5095,13 @@
       quote: >-
         In the Augustan period, the Curia Pompei no longer functioned as a
         senate-house, but the building remained as a charred, walled-up memorial.
-      supports: [to]
+      supports: [to, condition]
+    - source: appian
+      locator: 'BC 2.147'
+      quote: >-
+        They groaned, and, girding themselves, they burned the senate-chamber where
+        Caesar was slain
+      supports: [condition]
     - source: cassius-dio
       locator: '47.19.1'
       quote: >-
@@ -5124,9 +5131,12 @@
   review: draft
   note: >-
     The hall at the east end of Pompey's portico where the senate met on 15 March
-    44 BCE and Caesar was killed. In 42 BCE the triumvirs had it closed up (Dio
-    47.19.1; "curiam … obstrui placuit", Suetonius), so from then it stood sealed
-    and out of use. Its tufa walls survive behind Temple B of the Largo Argentina,
+    44 BCE and Caesar was killed. At his funeral days later the crowd "burned the
+    senate-chamber where Caesar was slain" (Appian, BC 2.147), and it was never
+    rebuilt: in 42 BCE the triumvirs had it closed up (Dio 47.19.1; Suetonius 88),
+    and under Augustus it "remained as a charred, walled-up memorial" (Digital
+    Augustan Rome). So it is shown burnt from 44 BCE; until October 2026 it was
+    shown standing to the end of the map. Its tufa walls survive behind Temple B of the Largo Argentina,
     about 20 by 24 m. Its works are shown with the theatre's: begun between 62
     (Plutarch, Pompey 42.4) and 57 (the Chronicon Paschale's laying of the
     foundations, Platner & Ashby, Theatrum Pompei, p. 515). Until October 2026 they
