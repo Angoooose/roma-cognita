@@ -486,9 +486,7 @@
   from: 179 BCE
   to: after 27 BCE
   condition:
-    - { value: standing, from: 179 BCE, to: 79 BCE }
-    - { value: under construction, from: 78 BCE, to: 78 BCE }
-    - { value: standing, from: 77 BCE, to: 56 BCE }
+    - { value: standing, from: 179 BCE, to: 56 BCE }
     - { value: under construction, from: 55 BCE, to: 35 BCE }
     - { value: standing, from: 34 BCE, to: after 27 BCE }
   prominence: 5
@@ -507,7 +505,7 @@
         In 78 B.C., the consul M. Aemilius Lepidus decorated the building (here
         called basilica Aemilia ) with engraved shields or portraits of his ancestors
         (Plin. NH XXXV .13), and probably restored it somewhat
-      supports: [condition]
+      supports: []
     - source: platner-ashby
       locator: 'Basilica Aemilia, p. 72'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Basilica_Aemilia.html
@@ -545,7 +543,9 @@
     1st century B.C." it was made two-storeyed (Freyberger and Ertel). The consul M.
     Aemilius Lepidus restored it in 78, hanging shields with his ancestors' portraits on
     it (Pliny, NH 35.13), and his son's coin shows it two-storeyed with the shields and
-    "ref(ecta)": the map takes the second storey to be his work, an inference. The
+    "ref(ecta)": the map takes the second storey to be his work, an inference (the design
+    shows it from 77; the condition no longer shows works in 78, which Platner & Ashby
+    give only as "probably restored it somewhat"). The
     aedile L. Aemilius Paullus began rebuilding it in 55 BCE, and his son dedicated the
     work in 34; from then it was often called the basilica Paulli. It burned in 14 BCE
     and was rebuilt, but Platner & Ashby find little change in its extent and plan, so
