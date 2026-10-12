@@ -261,8 +261,20 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        that one of the ways which is straight runs thus, — when the river in its
+        course downwards comes to the point of the Delta, then it cuts the Delta
+        through the midst and so issues out to the sea … it is called the
+        Sebennytic mouth
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine , then the Sebennytic, and the
+        Phatnitic
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: toussoun-1922 }
     - { source: pleiades, locator: 'places/727142, 727078, 727227' }
@@ -274,6 +286,8 @@
     routing — north-west across the Sebennytes Kato nome to the Burullus lagoon,
     where its mouth is usually placed; trimmed at the lagoon shore. The upper
     course is reasonably placed; the lower course is not. Display discharge 500 m³/s.
+    Herodotus (5th century) and Strabo (under Augustus) both name the mouth, which
+    brackets the window.
 
 - id: nile-phatnitic-branch
   kind: river
@@ -284,8 +298,25 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        The Bolbitinitic and Bucolic mouths, on the other hand, are not natural
+        but made by digging.
+      supports: [from]
+    - source: rawlinson-1862
+      locator: 'p. 22 n. 1 (Wilkinson)'
+      quote: >-
+        The Bolbitiue mouth was that of the modern Rosetta branch, as the Bucolic
+        or Phatmetic was that of Da- mietta
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        the Phatnitic , which is the third in magnitude compared with the first
+        two, which form the boundaries of the Delta. For it branches off into the
+        interior, not far from the vertex of the Delta.
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: pleiades, locator: 'places/727235, 727198' }
   confidence: probable
@@ -294,7 +325,8 @@
     Taken as the lower modern Damietta branch: from Sebennytos past Mansura (modern
     point) and Tamiathis/Damietta (727235) to the Phatnitikon Stoma (727198), traced
     along the channel in the DEM. Pleiades has the mouth but no river record.
-    Display discharge 350 m³/s.
+    Display discharge 350 m³/s. Herodotus' Bucolic mouth is Strabo's Phatnitic
+    (Wilkinson), so the two bracket the window.
 
 - id: nile-mendesian-branch
   kind: river
@@ -305,8 +337,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        There are also two other mouths which part off from the Sebennytic and go
+        to the sea, and these are called, one the Saitic , the other the
+        Mendesian mouth.
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        The Mendesian is very near the Phatnitic mouth
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: pleiades, locator: 'places/727078, 727146, 727156, 727157' }
   confidence: uncertain
@@ -328,7 +370,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        There are also two other mouths which part off from the Sebennytic and go
+        to the sea, and these are called, one the Saitic
+      supports: [from]
+    - source: strabo
+      locator: '17.1.20'
+      quote: >-
+        Then follows the Tanitic , which some call the Saitic mouth, and the
+        Tanite Nome, and in it Tanis a large city.
+      supports: [to]
     - { source: strabo, locator: '17.1.18' }
     - { source: pliny-nh, locator: '5.64' }
     - { source: bietak-1975 }
@@ -340,7 +393,8 @@
     reconstructions; Herodotus derives it from the Sebennytic, others from the
     Mendesian), past Pharbaithos (727196) and Tanis (727236) to a mouth near the
     Manzala outlet at el-Gamil, where it is usually put; trimmed ~2 km at the
-    lagoon shore. Display discharge 250 m³/s.
+    lagoon shore. Display discharge 250 m³/s. Herodotus' Saitic mouth is
+    Strabo's Tanitic (17.1.20), so the two bracket the window.
 
 - id: nile-pelusiac-branch
   kind: river
@@ -350,8 +404,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17, 2.30' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        from this city onwards it is parted into three ways; and one, which is
+        called the Pelusian mouth, turns towards the East
+      supports: [from]
+    - { source: herodotus, locator: '2.30' }
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        next is the Tanitic , and lastly the Pelusiac mouth.
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: bietak-1975 }
     - { source: pleiades, locator: 'places/727142, 727147, 727088, 727080, 727103, 727192, 727191' }
@@ -398,8 +462,10 @@
 # pipeline/src/labels/seas.ts — not its extent, which no source draws as a line.
 # The names are Pliny's; he wrote after our window, but he is the fullest Latin
 # survey of the seas, and these are the forms the Barrington Atlas prints.
-# Locators are to the book only; the paragraphs want checking (review:
-# needs-check).
+# Pliny's locators are to the book only; the paragraphs want checking (review:
+# needs-check). Each sea's dates rest on a writer before 133 (Herodotus,
+# Polybius, or Pytheas as Pliny reports him) and on Strabo, writing under
+# Augustus, both describing it: the two bracket the window.
 
 - id: oceanus-atlanticus
   kind: sea
@@ -408,6 +474,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '1.203'
+      quote: >-
+        the Sea beyond the Pillars , which is called Atlantis
+      supports: [from]
+    - source: strabo
+      locator: '2.5.27'
+      quote: >-
+        on the south, as far as the Pillars , by Our Sea; and thence to the
+        northern extremity of the Pyrenees by the Atlantic
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -420,13 +497,32 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pliny-nh, locator: book 4 }
+    - source: pliny-nh
+      locator: '37.35'
+      quote: >-
+        Pytheas speaks of an estuary of the Ocean named Metuonis and extending for
+        750 miles, the shores of which are inhabited by a German tribe, the
+        Guiones
+      supports: [from]
+    - source: strabo
+      locator: '7.2.4'
+      quote: >-
+        Of the Germans, as I have said, those towards the north extend along the
+        ocean; and beginning at the outlets of the Rhenus , they are known as far
+        as the Albis
+      supports: [to]
+    - source: pliny-nh
+      locator: '4.103'
+      quote: >-
+        scattered in the German Sea, are those known as the Glaesariae
+      supports: []
     - { source: barrington }
   confidence: probable
   review: needs-check
   note: >-
     The North Sea. Pliny's name; the Republic had none it used consistently, and
-    Caesar speaks only of the Ocean.
+    Caesar speaks only of the Ocean. Pytheas sailed it in the fourth century,
+    as Pliny reports him.
 
 - id: mare-balearicum
   kind: sea
@@ -435,10 +531,32 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pliny-nh, locator: book 3 }
+    - source: polybius
+      locator: '3.37.10'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html
+      quote: >-
+        that portion of which is washed by the Mediterranean as far as the Pillars
+        of Hercules being called Iberia
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        that surrounding the land opposite is designated by the respective names
+        of the Iberian , the Ligurian , and the Sardinian Seas
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.74'
+      quote: >-
+        as far as it washes the coasts of Spain, it is called the Hispanian Sea,
+        though some give it the name of the Iberian or Balearic Sea
+      supports: [to]
     - { source: barrington }
   confidence: certain
   review: needs-check
+  note: >-
+    The sea off Spain, which Strabo calls the Iberian and Pliny the Hispanian,
+    Iberian or Balearic. No writer before 133 that can be read names it; Polybius
+    has the Mediterranean washing Iberia.
 
 - id: mare-sardoum
   kind: sea
@@ -447,6 +565,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.10.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        they were also in possession of all the islands in the Sardinian and
+        Tyrrhenian Seas
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        the Iberian , the Ligurian , and the Sardinian Seas
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -460,6 +590,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.10.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        they were also in possession of all the islands in the Sardinian and
+        Tyrrhenian Seas
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        the remaining portion as far as Sicily is named the Tyrrhenian sea
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -473,6 +615,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '2.14.4'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/2*.html
+      quote: >-
+        Italy as a whole has the shape of a triangle of which the one or eastern
+        side is bounded by the Ionian Strait and then continuously by the
+        Adriatic Gulf
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        The Adriatic stretches north and west; it is long and narrow
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -485,6 +640,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.110.2'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        Sason lying at the entrance to the Ionian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        the Iapygian Promontory , the mouth of the Ionian Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -497,6 +663,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '3.2.8'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html
+      quote: >-
+        Philip laying hands on the islands of the Aegean
+      supports: [from]
+    - source: strabo
+      locator: '2.5.21'
+      quote: >-
+        Adjacent to these are the Aegean Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -509,6 +686,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.42.6'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        separating the Libyan from the Sardinian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        The sea opposite to the Syrtes and the Cyrenaic is called the Libyan Sea;
+        it extends as far as the Sea of Egypt
+      supports: [to]
     - { source: pliny-nh, locator: book 5 }
     - { source: barrington }
   confidence: probable
@@ -521,6 +710,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '2.113'
+      quote: >-
+        when he had come to the Aegean Sea contrary winds drove him from his
+        course to the Sea of Egypt
+      supports: [from]
+    - source: strabo
+      locator: '2.5.24'
+      quote: >-
+        The Island of Cyprus is situated in the Gulfs of Issos and Pamphylia ,
+        close to the Sea of Egypt
+      supports: [to]
     - { source: pliny-nh, locator: book 5 }
     - { source: barrington }
   confidence: probable
@@ -533,6 +734,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        The sea known as the Pontus is very nearly twenty-two thousand stades in
+        circumference
+      supports: [from]
+    - source: strabo
+      locator: '2.5.22'
+      quote: >-
+        another sea to the north, named the Propontis , and this again with
+        another called the Euxine
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -545,6 +759,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        has two mouths exactly opposite each other, one communicating the
+        Propontis
+      supports: [from]
+    - source: strabo
+      locator: '2.5.23'
+      quote: >-
+        The length of the Propontis from the Troad to Byzantium is stated to be
+        1500 stadia.
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -557,6 +784,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        the other with the Palus Maeotis, which itself has a circumference of eight
+        thousand stades
+      supports: [from]
+    - source: strabo
+      locator: '2.5.23'
+      quote: >-
+        To the north of the eastern Gulf of the Pontus , is the Lake Maeotis ,
+        whose perimeter is 9000 stadia or rather more.
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -573,6 +813,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.44.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        reaches as far as the mountains of the Tapyri, which are not far distant
+        from the Hyrcanian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        The northern, called the Caspian , by others designated the Hyrcanian Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain
@@ -585,6 +837,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '2.159'
+      quote: >-
+        triremes were built by him, some for the Northern Sea and others in the
+        Arabian gulf for the Erythraean Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        the Persian and Arabian Gulf s, formed by the [Southern] Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain
@@ -598,6 +861,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        Pythiades, the governor of the coasts of the Persian Gulf
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        the Persian and Arabian Gulf s, formed by the [Southern] Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain
