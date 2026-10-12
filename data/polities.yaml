@@ -1607,7 +1607,7 @@
   kind: kingdom
   names:
     - { text: Cyprus, lang: la, preferred: true }
-  from: { earliest: 114 BCE, latest: 113 BCE }
+  from: 114 BCE
   to: 89 BCE
   ruler: Ptolemy X Alexander, 114/113–107; Ptolemy IX Soter II, 105–88
   sources:
@@ -1642,7 +1642,9 @@
     Paphos inscription of his year 12, OGIS 166, and the end of Ptolemy X's
     Paphian coinage: Bennett, after Mitford and Mørkholm). He held it until the
     Alexandrians recalled him in 88. In 107–106 the island was the Egyptian
-    crown's, and is claimed for aegyptus.
+    crown's, and is claimed for aegyptus. From 114, the earlier year of
+    Bennett's 114/3, as its first claim (the range 114–113 until October
+    2026).
 
 - id: numidia
   kind: kingdom

@@ -4084,7 +4084,7 @@
 - atom: cyprus
   polity: cyprus-ptolemaic-early
   relation: independent
-  from: { earliest: 114 BCE, latest: 113 BCE }
+  from: 114 BCE
   to: 108 BCE
   sources:
     - source: bennett-ptolemies
@@ -4105,13 +4105,15 @@
       quote: >-
         replaced Ptolemy IX as junior ruler under Cleopatra III in September 107
       supports: [to]
-  confidence: probable
+  confidence: uncertain
   review: needs-check
   note: >-
     Ptolemy X, "proclaimed king in Cyprus in 114/3" (Bennett), until he
     replaced his brother in Alexandria in 107. Pausanias has his mother send
     him there "ostensibly as general" (1.9.2); the royal title rests on his
-    Cypriot dating (Bennett).
+    Cypriot dating (Bennett). Drawn from 114, the earlier year of 114/3, next
+    to the Egyptian row ending in 115: as the range 114–113 it sat at 113 and
+    left 114 blank. Uncertain, not probable, since October 2026, for that.
 
 - atom: cyprus
   polity: aegyptus
