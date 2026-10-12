@@ -9906,6 +9906,14 @@
         Astures, — the three last-named of whom were later subjugated by
         Statilius Taurus
       supports: [polity, relation]
+    - source: perea-yebenes-2017
+      locator: 'p. 127'
+      url: https://revistas.ucm.es/index.php/GERI/article/download/56141/50804
+      quote: >-
+        Creo que el “no triunfo” se explica por el hecho de que su intervención
+        del año 29 fue más diplomática que militar … Éstos últimos, con la
+        intervención de Tauro (Cass. Dio, 51.20.5), quedaron sometidos a Roma
+      supports: [to]
     - { source: strabo, locator: '3.3–4' }
     - { source: curchin-1991 }
   confidence: probable
@@ -9913,11 +9921,10 @@
   note: >-
     Dio, among the events of Octavian's fifth consulship (29), has the
     Vaccaei "still under arms" and subdued "later" by Statilius Taurus
-    (51.20.1, 51.20.5): free in 29, not to c. 30 as the end reads. By 26
-    they were the Cantabri's victims, not Rome's enemies (Flor. 2.33.47). The
-    end would be 29 or a range 29–27, but that moves the start of the
-    hispania-citerior row after it (c. 29); left as it is and reported
-    (October 2026).
+    (51.20.1, 51.20.5); Perea Yébenes puts Taurus' intervention in 29 (2017,
+    127). Both fall in 29, the year of the transition, which belongs to the
+    successor (hispania-citerior, from c. 29), so this row ends c. 30. By 26
+    they were the Cantabri's victims, not Rome's enemies (Flor. 2.33.47).
 
 - atom: astures
   polity: astures
@@ -10046,7 +10053,14 @@
         Then he led his army against the Callaici and Lusitani, overpowered
         them, and marched on as far as the outer sea, subduing their tribes
         which before were not obedient to Rome.
-      supports: [polity, relation]
+      supports: [polity, relation, to]
+    - source: broughton-mrr
+      locator: 'vol. II, 61 B.C., p. 180'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Governor, probably with the title Proconsul, in Farther Spain … where
+        he carried on a war with the Callaeci and Lusitani
+      supports: [to]
     - source: cassius-dio
       locator: '37.53.4'
       quote: >-
@@ -10075,7 +10089,9 @@
     Rome" (Caes. 12.1), so in 133 they were free. The end read "after 27"
     until the October 2026 check: Plutarch and Dio have Caesar subdue them in
     61–60 ("and subjugated them", Dio 37.53.4), and no readable text has them
-    free in 27. It is now "after 61", the last year a text has them free; an
+    free in 27. It is now "after 61", the last year a text has them free
+    (Plutarch's tribes "not obedient to Rome" before Caesar's war, which
+    Broughton puts in 61, MRR II 180); an
     open end draws the same, and the ground after Caesar's campaign is still
     left to whoever the texts show holding it.
 
