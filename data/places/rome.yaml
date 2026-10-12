@@ -1847,9 +1847,11 @@
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
       quote: >-
-        was located SW of the *Aventine hill and bordered by the bending course of the *Tiber
-        to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to the NE
-      supports: [location]
+        The late-Republican and early-Imperial urban trading port and industrial warehouse
+        area, was located SW of the *Aventine hill and bordered by the bending course of the
+        *Tiber to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to
+        the NE
+      supports: [location, to]
     - source: digital-augustan-rome
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
@@ -2429,6 +2431,18 @@
       locator: 'cliva, Victoriae, p. 126'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
       quote: >-
+        which took its name from the temple of Victoria
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Victoria, aedes, p. 570'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Templum_Victoriae.html'
+      quote: >-
+        dedicated by him on 1st August … when consul in 294 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'cliva, Victoriae, p. 126'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
         Ancient pavement exists all along this path, and there is no reason for doubting that
         this is the line of the clivus as it existed after the erection of this part of the
         palace
@@ -2476,6 +2490,20 @@
         The opposite side of the street was lined with private mansions of families who were
         eminent in the history of the republic and the empire
       supports: [to]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 439'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html'
+      quote: >-
+        on the north side of the Alta Semita and probably in the eastern part of the present
+        gardens of the royal palace, near the edge of the hill
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Quirinus, aedes, p. 438'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Quirinus.html'
+      quote: >-
+        said to have been vowed by L. Papirius Cursor when dictator in 325 B.C. , and
+        dedicated in 293 by his son
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -2549,7 +2577,7 @@
       quote: >-
         the irregular continuation of the Subura , where it ascended between the Oppius and
         Cispius to the porta Esquilina
-      supports: [location, from]
+      supports: [location]
     - source: platner-ashby
       locator: 'Vicus Iugarius, p. 574'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
@@ -2558,13 +2586,13 @@
         the via Tiburtina and Labicana , … the Subura and the Argiletum — all reached the
         crossing over the Tiber just below the island … It was thus, there is little doubt, a
         part of the original trade route
-      supports: [from]
+      supports: []
     - source: platner-ashby
       locator: 'Via Labicana, p. 563'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Labicana.html'
       quote: >-
         speaks of both roads as starting from the porta Esquilina
-      supports: [from]
+      supports: []
     - source: martial
       locator: '5.22'
       url: 'https://www.tertullian.org/fathers/martial_epigrams_book05.htm'
@@ -2607,13 +2635,19 @@
         when on her return she had got as far as the top of the Cyprius Vicus, where the
         temple of Diana lately stood
       supports: [from]
+    - source: livy
+      locator: '1.48.7'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=1:chapter=48'
+      quote: >-
+        the memory of which the place still bears, for they call it the Vicus Sceleratus
+      supports: [to]
     - source: platner-ashby
       locator: 'vici, Cuprius'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
       quote: >-
         The churches of S. Maria and S. Nicolao inter duo were so called because they stood
         between this street and the Compitum Acilii
-      supports: [to]
+      supports: []
   confidence: probable
   review: draft
   note: >-
@@ -2652,6 +2686,13 @@
         (1) the road which preceded the via Flaminia and the clivus Argentarius ; … — all
         reached the crossing over the Tiber just below the island … It was thus, there is
         little doubt, a part of the original trade route
+      supports: []
+    - source: archeometra-bibulus
+      locator: Ricostruzioni
+      url: https://bibulus.archeometra.it/en/ricostruzioni/
+      quote: >-
+        From the time of the Republic the ancient road connected the north-eastern
+        slopes of the Capitoline Hill with the Via Lata (Via Flaminia)
       supports: [from]
     - source: platner-ashby
       locator: 'Clivus Argentarius, p. 122'
@@ -2788,6 +2829,14 @@
         the deep valley between the *Palatium and *Caelius Mons, and probably continued to
         join the *Via Appia
       supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Via di S. Gregorio'
+      url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
+      quote: >-
+        its antiquity and course are assured archaeologically with finds of street pavers
+        (W. 5.77 m) flanked by travertine sidewalks, Republican-era drains, and several
+        buildings that flanked the street
+      supports: [from]
     - source: digital-augustan-rome
       locator: 'Via di S. Gregorio'
       url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
@@ -2987,7 +3036,7 @@
       quote: >-
         The earliest milestone known to us—one of those of the Via Appia at Mesa (ad Medias)
         in the Pomptine Marshes—bears the names of two aediles
-      supports: [from]
+      supports: []
     - source: digital-augustan-rome
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
@@ -3300,12 +3349,11 @@
       quote: >-
         only two inscriptions of its curatores who were of equestrian rank
       supports: [to]
-    - source: platner-ashby
-      locator: 'Via Appia, p. 560'
-      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+    - source: strabo
+      locator: '5.3.1'
       quote: >-
-        For its curatores (who owe their institution to Claudius, with the other curatores of
-        particular roads
+        the Via Nomentana , which commences likewise at the Porta Collina , falls in
+        with the Via Salaria near to Eretum
       supports: [to]
   confidence: probable
   review: draft
@@ -3425,6 +3473,21 @@
         it diverged to the right into hilly country from a far older road, the Via
         Campana
       supports: [from]
+    - source: digital-augustan-rome
+      locator: Via Campana
+      url: https://www.digitalaugustanrome.org/records/via-campana/
+      quote: >-
+        One of the most ancient routes that connected Rome to the sea
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: Via Campana
+      url: https://www.digitalaugustanrome.org/records/via-campana/
+      quote: >-
+        In the late 1st c. A.D. the Via Portuensis was laid out in conjunction with the
+        construction of the Claudian port, and thereafter the Transtiberine portion of
+        the ancient route was referred to as the Via Portuensis as well, replacing the
+        designation Via Campana
+      supports: [to]
     - { source: sitar, locator: '11922, 21399, 10390, 10391, 24568' }
   confidence: probable
   review: draft
@@ -3506,6 +3569,13 @@
         the smallest of the hills of Rome, with a length of about 460 metres and an
         average width of 180, lying between the forum and the campus Martius
       supports: [location]
+    - source: platner-ashby
+      locator: 'Capitolinus, pp. 95–98'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Capitolinus.html
+      quote: >-
+        for in the year 390 B.C. there was a guild of those who dwelt in Capitolio
+        atque arce
+      supports: [from]
     - source: platner-ashby
       locator: 'Capitolinus, p. 97'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Capitolinus.html
@@ -3888,12 +3958,11 @@
   prominence: 5
   sources:
     - source: platner-ashby
-      locator: 'Forum Romanum, p. 232'
+      locator: 'Forum Romanum, pp. 230–237'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Romanum.html
       quote: >-
-        The Tabernae Veteres, and the various basilicas which succeeded them,
-        doubtless conformed to it; and so did the Tabernae Novae, and consequently
-        the basilica Aemilia
+        the curia , which adjoined the forum on the north-east … while the Volcanal
+        (q.v.) , higher still, rose on the north-west, on the slopes of the Capitol
       supports: [location]
     - source: platner-ashby
       locator: 'Forum Romanum, p. 232'
@@ -4006,7 +4075,8 @@
       locator: 'Velabrum, p. 550'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velabrum.html
       quote: >-
-        In the Middle Ages, the name was corrupted into Velum Aureum
+        The Velabrum was an important centre of industrial and commercial activity,
+        and in particular of the trade in food-stuffs, oil and wine
       supports: [to]
     - { source: pleiades, locator: places/432833118 }
   confidence: certain
@@ -4163,6 +4233,12 @@
       quote: >-
         they occupied and fortified the temple of Diana
       supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Diana, aedes, p. 149'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Dianae.html
+      quote: >-
+        It was the oldest and most important temple on the Aventine
+      supports: [from]
     - source: platner-ashby
       locator: 'Diana, aedes, p. 150'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Dianae.html
