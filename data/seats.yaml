@@ -18,24 +18,86 @@
   from: { earliest: 133 BCE, latest: 132 BCE }
   to: after 27 BCE
   sources:
+    - source: chronicle-edessa
+      locator: 'year 180'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        In the year 180 kings began to rule in Edessa.
+      supports: [place, from]
+    - source: chronicle-edessa
+      locator: 'year 400'
+      url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
+      quote: >-
+        In the year 400 Abgar the king built a mausoleum for himself.
+      supports: [to]
+    - source: cassius-dio
+      locator: '40.20.1'
+      quote: >-
+        Nevertheless, the greatest injury was done them by Abgarus of Osroene.
+      supports: [to]
+    - source: tacitus-ann
+      locator: '12.12'
+      quote: >-
+        the Arab prince Acbarus (king of Osroene) … being detained by him, day
+        after day, in the town of Edessa
+      supports: [place, to]
     - { source: sullivan-1990 }
-    - { source: chronicle-edessa, locator: 'year 180' }
   confidence: certain
   review: draft
   note: >-
     From the Chronicle of Edessa's year 180 (133/132), when "kings began to
     rule in Edessa"; Dionysius' earlier date for the first king (136, see the
-    polity) is before the window and the place's own start.
+    polity) is before the window and the place's own start. Still the kings'
+    seat after 27: Abgarus of Osroene in 53 (Dio 40.20.1), Acbarus at Edessa
+    in 49 CE (Tacitus Ann. 12.12), and the Chronicle's Abgar in year 400 (89
+    CE), with nothing between to suggest a break.
 
 - polity: aristonicus
   place: stratonicea-caici
   from: 133 BCE
   to: 131 BCE
   sources:
-    - { source: eutropius, locator: '4.20' }
+    - source: kallet-marx-1995
+      locator: 'p. 99'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Attalus Ill died most likely in the spring of 133
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 99'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        shortly or immediately after Attalus's death, … one Aristonicus,
+        alleging to be an illegitimate son of Eumenes II, and thus Attalus's
+        half brother, laid claim to the Pergamene throne
+      supports: [from]
+    - source: kallet-marx-1995
+      locator: 'p. 114'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        where on the upper Caicus Aristonicus had had his stronghold
+      supports: [place]
+    - source: kallet-marx-1995
+      locator: 'p. 114'
+      url: http://ark.cdlib.org/ark:/13030/ft1x0nb0dk/
+      quote: >-
+        Perperna's victory over Aristonicus himself at Stratonicea on the upper
+        Caicus
+      supports: [place, to]
+    - source: eutropius
+      locator: '4.20'
+      quote: >-
+        defeating Aristonicus in battle, near the city Stratonice to which he
+        had fled, reduced him by famine to surrender.
+      supports: [place, to]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Marcus Perperna, however, accepted the surrender of the defeated
+        Aristonicus.
+      supports: [to]
     - { source: orosius, locator: '5.10.1–5' }
     - { source: strabo, locator: '14.1.38' }
-    - { source: kallet-marx-1995, locator: 'p. 114' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -50,20 +112,85 @@
   from: before 133 BCE
   to: 133 BCE
   sources:
+    - source: diodorus
+      locator: '34/35.2.11'
+      quote: >-
+        they suddenly armed themselves and broke into the city of Enna, led by
+        their captain Eunus
+      supports: [place]
+    - source: livy-per
+      locator: '56'
+      quote: >-
+        When the Servile War in Sicily could not be suppressed by the praetors,
+        consul Gaius Fulvius was sent. This war was started by a Syrian slave
+        named Eunus
+      supports: [from]
+    - source: diodorus
+      locator: '34/35.2.21'
+      quote: >-
+        He marched from there to Enna, and by a long siege reduced it to such
+        straits, that there was no hope left for anyone to escape
+      supports: [place, to]
+    - source: livy-per
+      locator: '59'
+      quote: >-
+        Consul Publius Rupilius defeated the Sicilian runaway slaves.
+      supports: [to]
     - { source: diodorus, locator: '34/35.2.10–24' }
     - { source: strabo, locator: '6.2.6' }
   confidence: certain
   review: draft
-  note: Eunus' city from the rising of c. 135 until Rupilius took it in 132.
+  note: >-
+    Eunus' city from the rising, which had already beaten the praetors when the
+    consul C. Fulvius of 134 was sent (Livy Per. 56), until Rupilius took it in
+    132; the last year is 133, as the polity's, 132 being Rome's.
 
 - polity: sicily-tryphon
   place: triocala
   from: { earliest: 104 BCE, latest: 103 BCE }
   to: 101 BCE
   sources:
+    - source: diodorus
+      locator: '36.7.1–2'
+      quote: >-
+        He caused himself to he proclaimed king, and was given the name Tryphon
+        by the rebels. … Since he wished to take possession of Triocala, and
+        there to build a palace, he sent to Athenion, summoning him as a king
+        would summon a general.
+      supports: [place, from]
+    - source: diodorus
+      locator: '36.3.2'
+      quote: >-
+        In pursuance of this order Licinius Nerva, then praetor in Sicily,
+        appointed hearings
+      supports: [from]
+    - source: diodorus
+      locator: '36.8.1–2'
+      quote: >-
+        At length, Lucius Licinius Lucullus was chosen general by the senate of
+        Rome, to go against the rebels. … Tryphon released Athenion
+      supports: [from]
+    - source: diodorus
+      locator: '36.10.1'
+      quote: >-
+        In the following year, Gaius Marius was elected as consul at Rome for
+        the fifth time, and with him Gaius Aquilius. Aquilius was sent as
+        general against the rebels
+      supports: [to]
+    - source: diodorus
+      locator: '36.10.1'
+      quote: >-
+        Then he marched against the remainder of them, who were about ten
+        thousand; and though they did not wait for his attack, but fled to their
+        defences, yet Aquilius did not slacken his resolution in the least,
+        until he had overcome them by siege.
+      supports: [to]
     - { source: diodorus, locator: '36.7.2–4' }
   confidence: probable
   review: draft
   note: >-
     Tryphon's royal city, walled and given a palace and a market place
-    (Diodorus 36.7.3); the site is Pleiades' doubtful identification.
+    (Diodorus 36.7.3); the site is Pleiades' doubtful identification. The
+    years are the polity's: Tryphon was proclaimed after the rising under the
+    praetor Nerva (104) and held Triocala before Lucullus (103) came against
+    him; Aquillius, consul in 101, ended it by siege (36.3–10; DPRR).

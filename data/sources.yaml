@@ -1024,6 +1024,14 @@
   note: The canal was cut 1859–69 and opened in November 1869; the parallel New
     Suez Canal channels opened in 2015.
 
+- id: wilson-1933
+  kind: modern
+  citation: >-
+    A. T. Wilson, The Suez Canal: Its Past, Present, and Future (Oxford, 1933;
+    reissued 1939)
+  url: https://archive.org/download/suezcanal032262mbp/suezcanal032262mbp_djvu.txt
+  note: Readable on archive.org (Osmania University Library's copy); locators are the book's pages.
+
 - id: escwa-bgr-2013
   kind: modern
   citation: >-
@@ -1972,9 +1980,23 @@
 - id: vittori-2015
   kind: modern
   citation: >-
-    C. Vittori and others, on the Ostia lagoon and its salt works, Journal of
-    Archaeological Science (2015) (full title to confirm)
-  url: https://www.sciencedirect.com/science/article/abs/pii/S0305440314002386
+    C. Vittori, I. Mazzini, F. Salomon, J.-P. Goiran, S. Pannuzi, C. Rosa and A.
+    Pellegrino, "Palaeoenvironmental evolution of the ancient lagoon of Ostia
+    Antica (Tiber delta, Italy)", Journal of Archaeological Science 54 (2015)
+    374–384
+  url: https://hal.science/hal-01248436v1
+  note: >-
+    The publisher's page (sciencedirect.com/science/article/abs/pii/S0305440314002386)
+    refuses downloads; the HAL record, open, carries the abstract.
+
+- id: vittori-2026
+  kind: modern
+  citation: >-
+    C. Vittori and others, "Salinity Transition in the Ostia Lagoon During the
+    Roman Period: Assessing the Feasibility of Salt Exploitation", Geoarchaeology
+    41 (2026)
+  url: https://shs.hal.science/halshs-05458542v1
+  note: The HAL record, open, carries the abstract.
 
 - id: di-rita-2010
   kind: modern
@@ -1990,6 +2012,9 @@
     of Pisa", Scientific Reports 8 (2018) 11625
   url: https://www.nature.com/articles/s41598-018-29890-w
   licence: CC BY 4.0
+  note: >-
+    nature.com answers scripts with a browser challenge; the same article's full
+    text is read from Europe PMC (PMC6107670), which quotes cite by url.
 
 - id: pasquinucci-2014
   kind: modern
@@ -2019,6 +2044,28 @@
   citation: E. Cirelli, on Ravenna and the port of Classe (2013) (full reference to confirm)
   url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Adriatic/Classis-Cirelli2013.pdf
   note: Fig. 2, a schematic map of Ravenna and Classe in the early Empire.
+
+- id: abballe-2024
+  kind: modern
+  citation: >-
+    M. Abballe, F. Boschi, M. Cavalazzi and P. Maranzana, "Lagoons, Marshes, and
+    Swamps in the Roman and Late Antique Ravenna Greater Region", Antichità
+    Altoadriatiche 98 (2024)
+  url: https://iris.unive.it/retrieve/18699c4c-f6c0-49f5-b863-d554818ecd15/2024%20AAAd%2098%2014%20Abballe%201%20bozza%2012-01-2026.pdf
+  note: >-
+    The authors' draft of January 2026 in Ca' Foscari's repository; locators are
+    its printed pages.
+
+- id: ispra-368-avezzano
+  kind: modern
+  citation: >-
+    ISPRA, Note illustrative della Carta Geologica d'Italia 1:50.000, foglio 368
+    Avezzano
+  url: https://www.isprambiente.gov.it/Media/carg/note_illustrative/368_Avezzano.pdf
+  note: >-
+    The Fucino basin's lake, 150 km² between 649 and 667 m (after Giraudi 1988),
+    present until it was drained in the late 19th century. Locators are the
+    notes' pages.
 
 - id: donda-2025
   kind: modern
