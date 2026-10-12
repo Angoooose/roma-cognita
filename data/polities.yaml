@@ -5018,7 +5018,15 @@
         all who could bear arms, but to require of each chief a certain quota
         from his state … eight thousand each from the Pictones , Turoni ,
         Parisii , and Helvetii
-      supports: [kind]
+      supports: [kind, to]
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees , the Alps and
+        the Cevennes , and by the Rhine and Rhone rivers … with the exception of
+        some allied states which had rendered him good service, he reduced to the
+        form of a province
+      supports: [to]
     - { source: fichtl-2004 }
   confidence: certain
   review: draft
@@ -5114,7 +5122,26 @@
       quote: >-
         Of the Aedui and their dependents, Segusiavi , Ambivareti , Aulerci
         Brannovices, and Blannovii, they required five-and-thirty thousand
-      supports: [kind]
+      supports: [kind, to]
+    - source: caesar-bg
+      locator: '7.90'
+      quote: >-
+        When these affairs were settled he started for the country of the
+        Aedui and recovered the state.
+      supports: [to]
+    - source: livy
+      locator: '5.34.5'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=5:chapter=34
+      quote: >-
+        He invited the surplus population of six tribes —the Bituriges, the
+        Averni, the Senones, the Aedui, the Ambarri, the Carnutes, and the
+        Aulerci.
+      supports: [kind, from]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        he devastated the land of the Aedui, an ally of the Roman people.
+      supports: [kind, from]
     - { source: fichtl-2004 }
   confidence: certain
   review: draft
@@ -5122,7 +5149,12 @@
     'Brothers and kinsmen of the Roman people' (Caesar BG 1.33), and "the first
     to enter into friendship and alliance" with Rome (Strabo 4.3.2); the
     alliance is first attested in 122, when the Allobroges ravaged their land
-    (relations.yaml).
+    (relations.yaml). In force at 133 by two passages either side: Livy has
+    the Aedui among the peoples of Bellovesus' migration in the age of
+    Tarquinius Priscus (5.34.5), and they are Rome's allies in 122 (Per. 61);
+    nothing between suggests a break. Ends in 52, when they joined
+    Vercingetorix's relief army (BG 7.75) and Caesar "recovered the state"
+    (7.90); the ground is Gallia Comata's from 51.
 
 - id: arverni
   kind: people
