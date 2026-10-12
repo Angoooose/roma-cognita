@@ -1765,6 +1765,40 @@
     - { source: pleiades, locator: places/740034026 }
     - { source: osm-rome, locator: way/182282759 }
     - { source: vitti-2010, locator: '§8' }
+    - source: platner-ashby
+      locator: 'Apollo, aedes, p. 15'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Apollinis_in_Campo_Martio.html'
+      quote: >-
+        the first temple of Apollo in Rome, in the campus Martius, vowed in 433 B.C. because
+        of a plague that had raged in the city … and dedicated in 431 by the consul Cn. Julius
+      supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Apollo, aedes, p. 15'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Apollinis_in_Campo_Martio.html'
+      quote: >-
+        These indications point definitely to a site just north of the theatre of Marcellus
+        and east of the porticus Octaviae
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Apollo Medicus Sosianus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/apollo-medicus-sosianus-aedes/'
+      quote: >-
+        Well-preserved remains document, indisputably, the complete rebuilding of the temple
+        by C. Sosius following a new design, probably after his victory in Judea in 34 B.C.
+      supports: [condition]
+    - source: digital-augustan-rome
+      locator: 'Apollo Medicus Sosianus, Aedes'
+      url: 'https://www.digitalaugustanrome.org/records/apollo-medicus-sosianus-aedes/'
+      quote: >-
+        Augustus may have been responsible for the completion of the project, presumably after
+        his triumphs in 29 B.C.
+      supports: [condition, to]
+    - source: platner-ashby
+      locator: 'Apollo, aedes, p. 16'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Aedes_Apollinis_in_Campo_Martio.html'
+      quote: >-
+        The day of dedication of the temple in the Augustan period was 23rd September
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -1793,6 +1827,36 @@
   sources:
     - { source: platner-ashby, locator: 'Emporium, p. 200' }
     - { source: pleiades, locator: places/937921711 }
+    - source: platner-ashby
+      locator: 'Emporium, p. 200'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Emporium.html'
+      quote: >-
+        It is said to have been established by M. Aemilius Lepidus and L. Aemilius Paullus
+        when curule aediles in 193 B.C. … for it was paved and enclosed by barriers by the
+        censors of 174
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Emporium, p. 200'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Emporium.html'
+      quote: >-
+        as it lay between the river and the horrea Sulpicia, it became a part of the system of
+        quays ( portus ) and warehouses ( horrea ) that extended along the left bank of the
+        river for a kilometre south from the porta Trigemina
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Emporium'
+      url: 'https://www.digitalaugustanrome.org/records/emporium/'
+      quote: >-
+        was located SW of the *Aventine hill and bordered by the bending course of the *Tiber
+        to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to the NE
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Emporium'
+      url: 'https://www.digitalaugustanrome.org/records/emporium/'
+      quote: >-
+        At the time of Augustus the entire area must already have already been developed into
+        a vast industrial and commercial zone
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -1812,7 +1876,7 @@
   names:
     - { text: Sepulcrum Bibuli, lang: la, preferred: true }
     - { text: Tomb of Bibulus, lang: en }
-  from: before 133 BCE
+  from: { earliest: 200 BCE, latest: 101 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -1820,7 +1884,42 @@
     - { source: pleiades, locator: places/503777175 }
     - { source: archeometra-bibulus, locator: 'Monumentum; Ricostruzioni' }
     - { source: digital-augustan-rome, locator: 'Sepulcrum: C. Publicius Bibulus' }
-  confidence: probable
+    - source: platner-ashby
+      locator: 'Sepulcrum Bibuli, p. 477'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sepulcrum_Bibuli.html'
+      quote: >-
+        the tomb of C. Publicius Bibulus, a plebeian aedile, erected (or very likely restored:
+        see CP 1924, 78 ) in the last century of the republic
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Sepulcrum Bibuli, p. 477'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sepulcrum_Bibuli.html'
+      quote: >-
+        at the base of the Capitoline hill, … on the east side of the via Flaminia , about 100
+        metres north of the probable site of the porta Fontinalis
+      supports: [location]
+    - source: archeometra-bibulus
+      locator: 'Ricostruzioni'
+      url: 'https://bibulus.archeometra.it/en/ricostruzioni/'
+      quote: >-
+        In the 2nd century BC, a monument dedicated to the aedile magistrate Gaius Publicius
+        Bibulus was erected along the Clivus Argentarius
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: C. Publicius Bibulus'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-c-publicius-bibulus/'
+      quote: >-
+        The structure is dated to the early 1st c. B.C., but prosopographical considerations
+        suggest that Bibulus himself lived in the 2nd c. B.C. and that this is a rebuilding of
+        an earlier tomb
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: C. Publicius Bibulus'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-c-publicius-bibulus/'
+      quote: >-
+        The façade of this tomb still stands … at the foot of the *Arx
+      supports: [location, to]
+  confidence: uncertain
   review: draft
   note: >-
     The tomb of C. Publicius Bibulus, a plebeian aedile, at the foot of the Capitol
@@ -1830,8 +1929,11 @@
     superstructure was restored in the 1st century BCE in the old forms (Archeometra);
     Digital Augustan Rome dates the standing work to the early 1st century as a
     rebuilding of an earlier tomb. The wall that still stands, with its four Tuscan
-    pilasters, is its flank. Drawn from before 133 on its surviving wall; its width is
-    not known.
+    pilasters, is its flank. Drawn on its surviving wall; its width is not known.
+    It was drawn from before 133, which no text states: the restorers put the tomb in
+    the 2nd century BCE, so it starts some time in 200–101 (drawn from 150, before the
+    window); Platner & Ashby have it "erected (or very likely restored)" in the last
+    century of the Republic, which is why the confidence is lowered.
 
 - id: sepulcrum-scipionum
   kind: tomb
@@ -1847,6 +1949,27 @@
   sources:
     - { source: platner-ashby, locator: 'Sepulcrum Scipionum, pp. 484–486' }
     - { source: pleiades, locator: places/999196280 }
+    - source: platner-ashby
+      locator: 'Sepulcrum Scipionum, p. 484'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sepulcrum_Scipionum.html'
+      quote: >-
+        the family tomb of the Cornelii Scipiones near the via Appia , about 400 metres
+        south-east of the point where the via Latina branched off to the east
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Sepulcrum Scipionum, p. 485'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sepulcrum_Scipionum.html'
+      quote: >-
+        that of L. Scipio Barbatus, consul in 298 B.C. , and apparently the first to be buried
+        there
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Cornelii Scipiones'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-cornelii-scipiones/'
+      quote: >-
+        the tomb was inherited by the Cornelii Lentuli, who reused it briefly under Claudius
+        for the burial of Cornelia Gaetulica
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -1870,6 +1993,26 @@
     - { source: platner-ashby, locator: 'sepulcra#Semproniorum, p. 486' }
     - { source: pleiades, locator: places/323719627 }
     - { source: digital-augustan-rome, locator: 'Sepulcrum Sempronii' }
+    - source: platner-ashby
+      locator: 'sepulcra, Semproniorum, p. 486'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/sepulcra.html'
+      quote: >-
+        the tomb of the Sempronii, of the end of the republic, situated just outside the porta
+        Sanqualis , at the upper end of the present Via Dataria
+      supports: [location, from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Sempronii'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-sempronii/'
+      quote: >-
+        The tomb is dated to the second half of the 1st c. B.C. based upon the lettering of
+        the inscription and style of the architectural decoration
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Sepulcrum: Sempronii'
+      url: 'https://www.digitalaugustanrome.org/records/sepulcrum-sempronii/'
+      quote: >-
+        Much of the tomb’s superstructure is extant, including the façade
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -1909,6 +2052,37 @@
         way/131451590, way/131451591, way/137620725, way/994987247, way/995618424,
         way/995618433, way/1236900617, way/1236900618, way/1391027807,
         way/1391027809, way/1543173033
+    - source: platner-ashby
+      locator: 'Sacra Via, p. 456'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sacra_Via.html'
+      quote: >-
+        the oldest and most famous street in Rome
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Sacra Via, p. 457'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sacra_Via.html'
+      quote: >-
+        After the building of the fornix Fabianus in 121 B.C. the street passed through it
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Sacra Via, p. 456'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sacra_Via.html'
+      quote: >-
+        The Sacra via proper began at the top of the Velia , where it was called summa Sacra
+        via … and extended down to the east end of the forum
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Sacra Via, p. 458'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Sacra_Via.html'
+      quote: >-
+        For the early empire the line is definitely established by the discovery of the
+        Augustan pavement
+      supports: [to]
+    - source: cassius-dio
+      locator: '54.19.7'
+      quote: >-
+        a wolf had rushed into the Forum by the Sacred Way and had killed people
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -1931,6 +2105,24 @@
     - { source: platner-ashby, locator: 'Clivus Capitolinus, pp. 122–123' }
     - source: osm-rome
       locator: way/28044937, way/123817451, way/1000529935, way/1101829124, way/1101836685
+    - source: platner-ashby
+      locator: 'Clivus Capitolinus, p. 122'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Clivus_Capitolinus.html'
+      quote: >-
+        which led up by a steep ascent from the west corner of the forum to the depression
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Clivus Capitolinus, p. 122'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Clivus_Capitolinus.html'
+      quote: >-
+        In 174 B.C. it was paved by the censors, Q. Fulvius Flaccus and A. Postumius Albinus
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Clivus Capitolinus, p. 122'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Clivus_Capitolinus.html'
+      quote: >-
+        that in front of the temple is one of the best specimens of Augustan paving in Rome
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -1950,6 +2142,46 @@
   sources:
     - { source: platner-ashby, locator: 'Vicus Tuscus, pp. 579–580' }
     - { source: osm-rome, locator: way/998877106 }
+    - source: platner-ashby
+      locator: 'Vicus Tuscus, p. 579'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Tuscus.html'
+      quote: >-
+        the street that issued from the forum between the basilica Iulia and the temple of
+        Castor and running south along the west side of the Palatine
+      supports: [location]
+    - source: tacitus-ann
+      locator: '4.65'
+      quote: >-
+        this large force settled in the plain also, with the neighbourhood of the forum,
+        Tuscan Street taking its name from theirs
+      supports: [from]
+    - source: livy
+      locator: '27.36.10'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=36'
+      quote: >-
+        After this Caius Claudius Nero and Marcus Livius a second time entered upon their
+        consulate
+      supports: [from]
+    - source: livy
+      locator: '27.37.15'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=37'
+      quote: >-
+        They then proceeded by the Tuscan street and the Velabrum, through the cattle market
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Vicus Tuscus, p. 579'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Tuscus.html'
+      quote: >-
+        The dealers in incense and perfume ( turarii ) seem to have become the most important
+        of all, for the later commentators use vicus Turarius for vicus Tuscus
+      supports: [to]
+    - source: digital-augustan-rome
+      locator: 'Vicus Tuscus'
+      url: 'https://www.digitalaugustanrome.org/records/vicus-tuscus/'
+      quote: >-
+        It was also known by the end of the Republic as a notoriously expensive shopping
+        street
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -1971,6 +2203,41 @@
   sources:
     - { source: platner-ashby, locator: 'Vicus Jugarius, pp. 574–575' }
     - { source: osm-rome, locator: way/1000529940 }
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        a street that led from the forum, between the basilica Iulia and the temple of Castor
+        , to the porta Carmentalis
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        It was thus, there is little doubt, a part of the original trade route which led to
+        the river
+      supports: [from]
+    - source: livy
+      locator: '27.36.10'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=36'
+      quote: >-
+        After this Caius Claudius Nero and Marcus Livius a second time entered upon their
+        consulate
+      supports: [from]
+    - source: livy
+      locator: '27.37.14'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0148:book=27:chapter=37'
+      quote: >-
+        From the gate they proceeded by the Jugarian street into the forum
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        The present pavement is not ancient … but preserves the line of the street after the
+        building of the basilica Iulia . Before the Augustan period it was a little further
+        towards the south-east
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -1992,6 +2259,35 @@
   sources:
     - { source: platner-ashby, locator: 'Argiletum, pp. 53–54' }
     - { source: osm-rome, locator: way/1000529923 }
+    - source: platner-ashby
+      locator: 'Argiletum, p. 53'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Argiletum.html'
+      quote: >-
+        the street between the Subura and the forum, which it entered between the Curia and
+        the basilica Aemilia
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        (2) the via Salaria , the vicus Longus , the clivus Insteius and the Argiletum ; (3)
+        the via Tiburtina and Labicana , … the Subura and the Argiletum — all reached the
+        crossing over the Tiber just below the island … It was thus, there is little doubt, a
+        part of the original trade route
+      supports: [from]
+    - source: cicero-att
+      locator: '1.14.7'
+      quote: >-
+        My brother Quintus , who purchased the remaining three-fourths of the house in the
+        Argiletum
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Argiletum'
+      url: 'https://www.digitalaugustanrome.org/records/argiletum/'
+      quote: >-
+        Recent excavations between the *Curia Iulia and Basilica Paulli uncovered paving
+        blocks belonging to the Augustan phase of the road
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -2017,6 +2313,28 @@
         way/132682587, way/136630827, way/136630828, way/137620720, way/994987251,
         way/998809820, way/998809821, way/998809822, way/998809823, way/998809824,
         way/998809825, way/998809826, way/998809827
+    - source: platner-ashby
+      locator: 'Nova Via, p. 361'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Nova_Via.html'
+      quote: >-
+        the second of the two streets in Rome before the empire which were known as viae , and
+        itself of great antiquity
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Nova Via, p. 361'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Nova_Via.html'
+      quote: >-
+        It began at the north-east corner of the Palatine, near the temple of Jupiter Stator ,
+        where it branched off from the Sacra via , and ran along the north slope of the hill
+        to its north-west corner
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Nova Via, p. 362'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Nova_Via.html'
+      quote: >-
+        Along this line, on the north side of the hill, the Nova via of the empire has been
+        excavated
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2029,7 +2347,7 @@
   location: [12.48788, 41.8903]
   names:
     - { text: Clivus Palatinus, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 78 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2039,12 +2357,39 @@
         way/28044906, way/137620702, way/137620703, way/137620704, way/137620705,
         way/137620706, way/137620707, way/137620708, way/137620709, way/137620721,
         way/1005260380
+    - source: platner-ashby
+      locator: 'cliva, Palatinus, p. 124'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        the road ascending to the Palatine from the Sacra Via (q.v.) near the Arch of Titus
+      supports: [location]
+    - source: platner-ashby
+      locator: 'cliva, Palatinus, p. 124'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        A small piece of its pavement belonging to the time of Sulla was found
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.105'
+      quote: >-
+        Quintus Catulus and Aemilius Lepidus were chosen consuls … After sealing it he was
+        taken with a fever towards evening and died the same night
+      supports: [from]
+    - source: platner-ashby
+      locator: 'cliva, Palatinus, p. 124'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        considerable remains of that laid by Augustus at a slightly higher level have been
+        found near the Arch of Titus
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
     The road up the Palatine from the Sacra Via by the Arch of Titus. The name is
     modern (it "has no ancient warranty", Platner & Ashby); a piece of its paving
-    of Sulla's time was found.
+    of Sulla's time was found. That paving is the earliest the texts date it, so it is
+    drawn from before 78, the year Sulla died; it was drawn from before 133, which
+    no text states.
 
 - id: clivus-victoriae
   kind: street
@@ -2052,7 +2397,7 @@
   location: [12.48628, 41.89091]
   names:
     - { text: Clivus Victoriae, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 78 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2061,12 +2406,42 @@
       locator: >-
         way/132682585, way/998809867, way/998809868, way/998809876, way/998809877,
         way/998809955, way/1001084344, way/1001084345, way/1005260377
-  confidence: certain
+    - source: platner-ashby
+      locator: 'cliva, Victoriae, p. 126'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        the ascent to the Palatine from the Velabrum on the west side
+      supports: [location]
+    - source: platner-ashby
+      locator: 'cliva, Victoriae, p. 126'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        A repaving of it may be alluded to in an inscription of the Sullan period found in the
+        forum
+      supports: [from]
+    - source: appian
+      locator: 'BC 1.105'
+      quote: >-
+        Quintus Catulus and Aemilius Lepidus were chosen consuls … After sealing it he was
+        taken with a fever towards evening and died the same night
+      supports: [from]
+    - source: platner-ashby
+      locator: 'cliva, Victoriae, p. 126'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        Ancient pavement exists all along this path, and there is no reason for doubting that
+        this is the line of the clivus as it existed after the erection of this part of the
+        palace
+      supports: [to]
+  confidence: uncertain
   review: draft
   note: >-
     The ascent to the Palatine from the Velabrum on its west side, named from the
     temple of Victory. "Ancient pavement exists all along this path" (Platner &
-    Ashby).
+    Ashby). The earliest the texts may date it is a repaving "alluded to in an
+    inscription of the Sullan period" (Platner & Ashby; Digital Augustan Rome: "may
+    also appear"), so it is drawn from before 78, the year Sulla died, and uncertain;
+    it was drawn from before 133, which no text states.
 
 - id: alta-semita
   kind: street
@@ -2086,6 +2461,21 @@
         way/59150262, way/59150265, way/99498970, way/106746606, way/106769418,
         way/184555071, way/202753971, way/204163770, way/366801773, way/977069765,
         way/978214493, way/983622864, way/1348192833
+    - source: platner-ashby
+      locator: 'Alta Semita, p. 4'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Alta_Semita.html'
+      quote: >-
+        This region took its name from that of its principal street, the Alta Semita , … which
+        ran north-east along the ridge of the Quirinal to the porta Collina , corresponding
+        with the modern Via del Quirinale and Via Venti Settembre
+      supports: [location, to]
+    - source: lanciani-pcr
+      locator: 'p. 190'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/Lanciani/LANPAC/4*.html'
+      quote: >-
+        The opposite side of the street was lined with private mansions of families who were
+        eminent in the history of the republic and the empire
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2106,6 +2496,31 @@
   sources:
     - { source: platner-ashby, locator: 'vici#Patricius, s.v. Vicus Patricius' }
     - { source: osm-rome, locator: 'way/52722357, way/52722538, way/189465655' }
+    - source: platner-ashby
+      locator: 'vici, Patricius'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        a street that branched off from the Subura and ran north between the Cispius and the
+        Viminal to the porta Viminalis
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Vicus Patricius'
+      url: 'https://www.digitalaugustanrome.org/records/vicus-patricius/'
+      quote: >-
+        Patricius vicus Romae dictus eo, quod ibi patricii habitaverunt
+      supports: [from]
+    - source: platner-ashby
+      locator: 'vici, Patricius'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        patricius vicus Romae dictus eo quod ibi patricii habitaverunt, iubente Servio Tullio
+      supports: [from]
+    - source: platner-ashby
+      locator: 'vici, Patricius'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        It is mentioned under the empire
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2128,6 +2543,35 @@
       locator: >-
         way/23569690, way/24167334, way/584602767, way/24167737, way/24167740,
         way/81756179, way/141394860, way/141394861
+    - source: platner-ashby
+      locator: 'cliva, Suburanus, p. 125'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        the irregular continuation of the Subura , where it ascended between the Oppius and
+        Cispius to the porta Esquilina
+      supports: [location, from]
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        (2) the via Salaria , the vicus Longus , the clivus Insteius and the Argiletum ; (3)
+        the via Tiburtina and Labicana , … the Subura and the Argiletum — all reached the
+        crossing over the Tiber just below the island … It was thus, there is little doubt, a
+        part of the original trade route
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Labicana, p. 563'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Labicana.html'
+      quote: >-
+        speaks of both roads as starting from the porta Esquilina
+      supports: [from]
+    - source: martial
+      locator: '5.22'
+      url: 'https://www.tertullian.org/fathers/martial_epigrams_book05.htm'
+      quote: >-
+        I must surmount the steep path of the Suburran hill, and the pavement dirty with
+        footsteps never dry
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2149,6 +2593,27 @@
   sources:
     - { source: platner-ashby, locator: 'vici#Cuprius, s.v. Vicus Cuprius' }
     - { source: osm-rome, locator: 'way/190043679, way/625592148, way/201194127' }
+    - source: platner-ashby
+      locator: 'vici, Cuprius'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        a street on the Esquiline, running from the Tigillum Sororium … north across the slope
+        of the Carinae to the Subura
+      supports: [location]
+    - source: livy
+      locator: '1.48.6'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=1:chapter=48'
+      quote: >-
+        when on her return she had got as far as the top of the Cyprius Vicus, where the
+        temple of Diana lately stood
+      supports: [from]
+    - source: platner-ashby
+      locator: 'vici, Cuprius'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        The churches of S. Maria and S. Nicolao inter duo were so called because they stood
+        between this street and the Compitum Acilii
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2172,6 +2637,28 @@
   sources:
     - { source: platner-ashby, locator: 'Clivus Argentarius, pp. 121–122' }
     - { source: osm-rome, locator: 'way/4951346, way/603411427' }
+    - source: platner-ashby
+      locator: 'Clivus Argentarius, pp. 121–122'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Clivus_Argentarius.html'
+      quote: >-
+        the street that formed the only immediate connection between the forum and the campus
+        Martius before the imperial fora were built. It left the forum between the curia and
+        the carcer , and ran … along the slope of the Capitoline hill
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Vicus Iugarius, p. 574'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
+      quote: >-
+        (1) the road which preceded the via Flaminia and the clivus Argentarius ; … — all
+        reached the crossing over the Tiber just below the island … It was thus, there is
+        little doubt, a part of the original trade route
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Clivus Argentarius, p. 122'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Clivus_Argentarius.html'
+      quote: >-
+        but the name was probably in use under the empire
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2196,6 +2683,32 @@
     - { source: platner-ashby, locator: 'vici#Longus, p. 575' }
     - { source: sitar, locator: '8782' }
     - { source: digital-augustan-rome, locator: 'Vicus Longus' }
+    - source: platner-ashby
+      locator: 'vici, Longus, p. 575'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        the street that traversed the valley between the Quirinal and the Viminal and joined
+        the Alta Semita (q.v.) inside the porta Collina
+      supports: [location]
+    - source: platner-ashby
+      locator: 'vici, Longus, p. 575'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        It is mentioned first by Livy ( X .23.6) in connection with the dedication of an altar
+        to Pudicitia Plebeia
+      supports: [from]
+    - source: platner-ashby
+      locator: 'vici, Longus, p. 575'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        in the year 296 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'vici, Longus, p. 575'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/vici.html'
+      quote: >-
+        it occurs on two inscriptions of the empire
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2221,6 +2734,27 @@
   sources:
     - { source: platner-ashby, locator: 'cliva#Publicius, p. 124' }
     - { source: digital-augustan-rome, locator: 'Aventinus: Street' }
+    - source: platner-ashby
+      locator: 'cliva, Publicius, p. 124'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        a street constructed and paved by Lucius and Marcus Publicius Malleolus, who were
+        curule aediles about 238 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'cliva, Publicius, p. 124'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/cliva.html'
+      quote: >-
+        It began in the forum Boarium , near the west end of the circus Maximus and the porta
+        Trigemina … and must have extended across the Aventine in a southerly direction
+      supports: [location]
+    - source: frontinus
+      locator: '1.5'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Frontinus/De_Aquis/Bennett/1*.html'
+      quote: >-
+        The distribution of Appia begins at the foot of the Publician Ascent, near the Porta
+        Trigemina
+      supports: [location, to]
   confidence: uncertain
   review: draft
   note: >-
@@ -2246,6 +2780,21 @@
     - { source: sitar, locator: '16624, 16983' }
     - { source: platner-ashby, locator: 'Porta Capena, p. 405' }
     - { source: digital-augustan-rome, locator: 'Via di S. Gregorio' }
+    - source: digital-augustan-rome
+      locator: 'Via di S. Gregorio'
+      url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
+      quote: >-
+        Modern name of an ancient street which began in the *Colosseum Valley, passed through
+        the deep valley between the *Palatium and *Caelius Mons, and probably continued to
+        join the *Via Appia
+      supports: [location]
+    - source: digital-augustan-rome
+      locator: 'Via di S. Gregorio'
+      url: 'https://www.digitalaugustanrome.org/records/via-di-s-gregorio/'
+      quote: >-
+        One group of … flanking the street had an … rear wall (though the rest is in
+        early-Imperial brickwork)
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2277,6 +2826,25 @@
         way/366692687, way/1236333976
     - { source: sitar, locator: '16890, 17882' }
     - { source: itinere, locator: Fanum Fortunae-Rome }
+    - source: platner-ashby
+      locator: 'Via Flaminia, p. 562'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Flaminia.html'
+      quote: >-
+        constructed in 220 B.C. during the
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Flaminia, p. 562'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Flaminia.html'
+      quote: >-
+        The via Flaminia started in a north-north‑west direction from a gate of the Servian
+        wall on the east slope of the Capitol
+      supports: [location]
+    - source: res-gestae
+      locator: '20.5'
+      quote: >-
+        In my seventh consulship … I restored the Via Flaminia from the city as far as
+        Ariminium
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -2306,6 +2874,25 @@
     - { source: sitar, locator: '19681, 19682, 12079, 11402, 22778' }
     - { source: ashby-1927, locator: 'pp. 176–178' }
     - { source: itinere, locator: Tarracinae-Rome }
+    - source: platner-ashby
+      locator: 'Via Appia, p. 559'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+      quote: >-
+        the road built in 312 B.C.
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Appia, p. 559'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+      quote: >-
+        It issued from the Porta Capena of the Servian wall
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Via Appia, p. 560'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+      quote: >-
+        The earliest milestone we have belongs to about 250 B.C. … and others belong to Nerva,
+        Trajan, Hadrian and Theodoric
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -2335,6 +2922,25 @@
     - { source: strabo, locator: '5.3.9' }
     - { source: sitar, locator: '19682, 2268, 12438, 9003, 9018' }
     - { source: itinere, locator: Rome-Tusculum }
+    - source: platner-ashby
+      locator: 'Via Latina, p. 564'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Latina.html'
+      quote: >-
+        a road which branched off to the left from the via Appia 830 metres from the porta
+        Capena , and after 500 metres more passed through the Porta Latina
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Via Latina, p. 564'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Latina.html'
+      quote: >-
+        it must have run at least as early as 334 B.C. as far as Cales
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Latina, p. 564'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Latina.html'
+      quote: >-
+        though the Latina was kept up also (for a milestone of Maxentius
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -2353,7 +2959,7 @@
   location: [12.48036, 41.87626]
   names:
     - { text: Via Ostiensis, lang: la, preferred: true }
-  from: before 240 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2362,6 +2968,56 @@
     - { source: sitar, locator: '4731, 4707, 22777' }
     - { source: ashby-1927, locator: 'p. 214' }
     - { source: itinere, locator: Rome-Ostia }
+    - source: platner-ashby
+      locator: 'Via Ostiensis, pp. 565–566'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Ostiensis.html'
+      quote: >-
+        The road from the porta Trigemina of the Servian wall, which is probably the original
+        via Ostiensis , kept under the north-west and south-west sides of the Aventine
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Via Ostiensis, p. 566'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Ostiensis.html'
+      quote: >-
+        An archaic milestone of the via Ostiensis was erected by the aediles
+      supports: [from]
+    - source: ashby-1927
+      locator: 'p. 36'
+      url: 'https://archive.org/download/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt'
+      quote: >-
+        The earliest milestone known to us—one of those of the Via Appia at Mesa (ad Medias)
+        in the Pomptine Marshes—bears the names of two aediles
+      supports: [from]
+    - source: digital-augustan-rome
+      locator: 'Emporium'
+      url: 'https://www.digitalaugustanrome.org/records/emporium/'
+      quote: >-
+        The late-Republican and early-Imperial urban trading port and industrial warehouse
+        area, was located SW of the *Aventine hill and bordered by the bending course of the
+        *Tiber to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to the
+        NE
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Via Ostiensis, p. 566'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Ostiensis.html'
+      quote: >-
+        the latter (with which the Sepulcrum Cestii is orientated) falling into it a little
+        beyond the tomb
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Via Ostiensis, p. 566'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Ostiensis.html'
+      quote: >-
+        For administrative purposes the via Ostiensis and the via Campana , … were both under
+        a curator of equestrian rank
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Via Appia, p. 560'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+      quote: >-
+        For its curatores (who owe their institution to Claudius, with the other curatores of
+        particular roads
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2370,7 +3026,9 @@
     sides of the Aventine", and was "joined by a branch from the porta Lavernalis and
     another from the porta Raudusculana, the latter (with which the Sepulcrum Cestii
     is orientated) falling into it a little beyond the tomb" (Platner & Ashby). Its
-    paving outside the later Porta S. Paolo is dated 260–240 BCE (SITAR 4707). Drawn
+    paving outside the later Porta S. Paolo is dated 260–240 BCE (SITAR 4707), a
+    dataset's date no readable text states, so it is drawn from before 133 on its
+    "archaic milestone … erected by the aediles" (Platner & Ashby). Drawn
     from the Porta Trigemina at SITAR's site (where the gate stood is disputed) along
     the Via della Marmorata's paving (4731), with the branch from the Porta
     Raudusculana; the Lavernalis, whose site nobody knows, is not drawn. Then south
@@ -2396,6 +3054,33 @@
     - { source: ashby-1927, locator: 'p. 128' }
     - { source: sitar, locator: '13944, 3582, 23992' }
     - { source: itinere, locator: Rome-Praeneste }
+    - source: platner-ashby
+      locator: 'Via Praenestina, p. 566'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Praenestina.html'
+      quote: >-
+        a road which began at the porta Esquilina of the Servian wall (to which the Clivus
+        Suburanus led) and separated from the Via Labicana just before the Porta Praenestina
+      supports: [location]
+    - source: platner-ashby
+      locator: 'Via Praenestina, p. 567'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Praenestina.html'
+      quote: >-
+        Originally it was called Via Gabina , and led only as far as Gabii
+      supports: [from]
+    - source: livy
+      locator: '2.11.7'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=2:chapter=11'
+      quote: >-
+        P. Valerius ordered T. Herminius with a small body of troops to take up a concealed
+        position at a distance of two miles on the Gabian road
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Praenestina, p. 567'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Praenestina.html'
+      quote: >-
+        Three of its milestones are known ( CIL I 2 833, belonging to the second century B.C.
+        , and X .6886, 8306, both belonging to the time of Maxentius)
+      supports: [from, to]
   confidence: certain
   review: draft
   note: >-
@@ -2416,7 +3101,7 @@
   location: [12.52472, 41.88775]
   names:
     - { text: Via Labicana, lang: la, preferred: true }
-  from: before 418 BCE
+  from: before 423 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2427,13 +3112,45 @@
     - { source: ashby-1927, locator: 'p. 128' }
     - { source: sitar, locator: '24216' }
     - { source: itinere, locator: Rome-Ad Bivium }
+    - source: platner-ashby
+      locator: 'Via Labicana, p. 563'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Labicana.html'
+      quote: >-
+        a road which diverged to the right from the via Praenestina just inside the porta
+        Praenestina of the Aurelian wall
+      supports: [location]
+    - source: strabo
+      locator: '5.3.9'
+      quote: >-
+        the Via Lavicana joins it, which commences, like the Via Praenestina , from the
+        Esquiline gate
+      supports: [location]
+    - source: livy
+      locator: '4.37.1'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=4:chapter=37'
+      quote: >-
+        The consuls elected were C. Sempronius Atratinus and Q. Fabius Vibulanus
+      supports: [from]
+    - source: livy
+      locator: '4.41.8'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=4:chapter=41'
+      quote: >-
+        Whilst this was going on the consul had reached the Labican road
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Labicana, p. 564'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Labicana.html'
+      quote: >-
+        For its first milestone (Vespasian)
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
     It left the city by the Porta Esquilina with the Praenestina (Strabo 5.3.9) and
     "diverged to the right from the via Praenestina just inside the porta Praenestina
     of the Aurelian wall" (Platner & Ashby), at the tomb of Eurysaces (Ashby 1927).
-    Livy has it in 418 BCE (4.41.8). Its shared first stretch is drawn as the
+    Livy has it in 423 BCE, the consulship of Sempronius Atratinus and Fabius
+    Vibulanus (4.37.1, 4.41.8). Its shared first stretch is drawn as the
     Praenestina's; from the fork it follows Itiner-e's line, along the modern Via
     Casilina, past its paving by the Marranella (SITAR 24216), which lies a little
     north of the modern road (Ashby 1902).
@@ -2445,7 +3162,7 @@
   location: [12.5075, 41.8975]
   names:
     - { text: Via Tiburtina, lang: la, preferred: true }
-  from: 307 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2453,6 +3170,29 @@
     - { source: ashby-1906, locator: 'pp. 85–88' }
     - { source: sitar, locator: '21288, 19400' }
     - { source: itinere, locator: Rome-Tibur }
+    - source: platner-ashby
+      locator: 'Via Tiburtina, p. 568'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Tiburtina.html'
+      quote: >-
+        the road which led to Tibur, 20 miles from Rome. It probably left the city by the
+        porta Esquilina of the Servian wall
+      supports: [location]
+    - source: ashby-1927
+      locator: 'p. 32'
+      url: 'https://archive.org/download/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt'
+      quote: >-
+        The origin of the rest of the roads is no doubt to be connected with the gradual
+        establishment of the Latin League. We find that while the later (long-distance) roads
+        bear as a rule the name of their constructor, all the short-distance roads on the left
+        bank of the Tiber bear the names of towns which belong to it—Nomentum, Tibur
+      supports: [from]
+    - source: ashby-1927
+      locator: 'p. 94'
+      url: 'https://archive.org/download/romancampagnainc00ashb/romancampagnainc00ashb_djvu.txt'
+      quote: >-
+        the arch erected by Augustus in 5 B.c. for the passage of the Aquae Marcia Tepula and
+        Iulia
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
@@ -2463,7 +3203,11 @@
     1906). Drawn from the Porta Esquilina to the later Porta Tiburtina, the arch of
     Augustus' aqueducts over it, by its paving just outside (SITAR 21288), and on
     along Itiner-e's line, which follows the modern Via Tiburtina to its tufa bridge
-    over the Marranella (19400); drawn lighter. Itiner-e dates it to 307 BCE.
+    over the Marranella (19400); drawn lighter. Itiner-e dates it to 307 BCE, giving
+    M. Valerius Maximus, the censor Ashby thought the Via Valeria beyond Tibur was
+    perhaps named after; no text dates the Tiburtina itself, which Ashby puts among
+    the short roads named after the towns of the Latin League, so it is drawn from
+    before 133.
 
 - id: via-salaria
   kind: road
@@ -2481,6 +3225,33 @@
     - { source: ashby-1906, locator: 'pp. 7–14' }
     - { source: ashby-1927, locator: 'p. 59' }
     - { source: itinere, locator: Rome-Reate }
+    - source: platner-ashby
+      locator: 'Via Salaria, p. 567'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Salaria.html'
+      quote: >-
+        a road leading due north and then north-east, passing through the porta Collina of the
+        Servian wall (immediately outside which it left the via Nomentana on the right)
+      supports: [location]
+    - source: livy
+      locator: '7.9.1–6'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=7:chapter=9'
+      quote: >-
+        The consuls for the following year were C. Sulpicius and C. Licinius Calvus … At all
+        events it was in this year that the Gauls formed their camp by the Salarian road,
+        three miles from the City
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Salaria, p. 567'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Salaria.html'
+      quote: >-
+        and also the eighteenth milestone of Nerva
+      supports: [to]
+    - source: pliny-nh
+      locator: '31.41'
+      quote: >-
+        as is clear from the name of the Salarian Way , since by it, according to agreement,
+        salt was imported to the Sabines
+      supports: [to]
   confidence: certain
   review: draft
   note: >-
@@ -2509,6 +3280,33 @@
     - { source: livy, locator: '3.52.3' }
     - { source: ashby-1906, locator: 'pp. 38–41' }
     - { source: itinere, locator: Rome-Nomentum }
+    - source: platner-ashby
+      locator: 'Via Nomentana, p. 565'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Nomentana.html'
+      quote: >-
+        a road which diverged immediately outside the Porta Collina from the via Salaria and
+        soon passed through the porta Nomentana of the Aurelian wall
+      supports: [location]
+    - source: livy
+      locator: '3.52.3–10'
+      url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=3:chapter=52'
+      quote: >-
+        going out by the Nomentan —or, as it was then called, the Ficulan —road, they encamped
+        on the Sacred Hill … at last the decemvirs, overborne by the unanimous opposition
+      supports: [from]
+    - source: platner-ashby
+      locator: 'Via Nomentana, p. 565'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Nomentana.html'
+      quote: >-
+        only two inscriptions of its curatores who were of equestrian rank
+      supports: [to]
+    - source: platner-ashby
+      locator: 'Via Appia, p. 560'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+      quote: >-
+        For its curatores (who owe their institution to Claudius, with the other curatores of
+        particular roads
+      supports: [to]
   confidence: probable
   review: draft
   note: >-
