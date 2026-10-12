@@ -5390,13 +5390,24 @@
         qu’il se confond avec la Numidie occidentale, plus précisément entre
         l’oued Soummam et le fleuve Ampsaga
       supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [relation]
   confidence: uncertain
   review: draft
   note: >-
     Masteabar's share of Gauda's kingdom, from Gauda's death "sans doute
     survenue en 88" (Bridoux ¶147–148); split from the next row only because
-    the standing of the kingdom changes (relations.yaml). No text read says
-    how Masteabar stood with Rome: the relation is unquoted.
+    the standing of the kingdom changes (relations.yaml). Client, as the
+    relation: Bridoux reads Cicero's Marius, a suppliant in 88 "to those to
+    whom he had given kingdoms", as Gauda's sons, kings set up by a Roman,
+    the closest type the texts describe (ch. 3, ¶43), though he doubts how
+    far such stories show real dependence (¶43–44).
 
 - atom: numidia-igilgili
   polity: numidia-masinissa
@@ -5587,9 +5598,17 @@
         qu’il se confond avec la Numidie occidentale, plus précisément entre
         l’oued Soummam et le fleuve Ampsaga
       supports: [polity, from, to]
+    - source: bridoux-2020
+      locator: 'ch. 3, ¶43'
+      url: https://books.openedition.org/efr/32000
+      quote: >-
+        Cicéron le suggère en rapportant que Marius, en 88 av. J.-C., vient en
+        suppliant vers ceux auxquels il a donné des royaumes ; or les fils de
+        Gauda gouvernent alors assurément la Numidie
+      supports: [relation]
   confidence: uncertain
   review: draft
-  note: Masteabar's; see numidia-igilgili. The relation is unquoted.
+  note: Masteabar's; see numidia-igilgili, whose relation this shares.
 
 - atom: numidia-soummam
   polity: numidia-masinissa
