@@ -2813,7 +2813,7 @@
   type: client-of
   of: rome
   from: 66 BCE
-  to: 32 BCE
+  to: { earliest: 33 BCE, latest: 31 BCE }
   sources:
     - source: cassius-dio
       locator: '36.52.3–4'
@@ -2855,6 +2855,17 @@
         Antony's party, became consuls. Then they made no further concealment,
         but became openly hostile.
       supports: [to]
+    - source: cassius-dio
+      locator: '49.43.6'
+      quote: >-
+        Caesar became consul for the second time, with Lucius Tullus as his
+        colleague
+      supports: [to]
+    - source: cassius-dio
+      locator: '51.16.2'
+      quote: >-
+        this prince had put to death the Romans left behind in Armenia
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 33' }
   confidence: probable
   review: draft
@@ -2863,8 +2874,10 @@
     the year before the consulship of Cotta and Torquatus (Dio 36.52–53,
     37.1.1). Antony seized Artavasdes II in 34 and held the country; it was
     lost when Antony recalled his soldiers for the war with Caesar (Dio
-    49.44.3–4), which was open from the consulship of Domitius and Sosius, 32
-    (50.2.2).
+    49.44.3–4), after the Araxes compact of 33, the year of Caesar's second
+    consulship (49.43.6), and before 30, when Artaxes had killed the Romans
+    left behind (51.16.2). It read 32 until October 2026; it now ends in the
+    same range as the client claim on the ground (33–31, drawn at 32).
 
 - polity: atropatene
   type: allied-to
