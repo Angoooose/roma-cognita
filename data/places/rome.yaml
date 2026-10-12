@@ -3300,12 +3300,11 @@
       quote: >-
         only two inscriptions of its curatores who were of equestrian rank
       supports: [to]
-    - source: platner-ashby
-      locator: 'Via Appia, p. 560'
-      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Via_Appia.html'
+    - source: strabo
+      locator: '5.3.1'
       quote: >-
-        For its curatores (who owe their institution to Claudius, with the other curatores of
-        particular roads
+        the Via Nomentana , which commences likewise at the Porta Collina , falls in
+        with the Via Salaria near to Eretum
       supports: [to]
   confidence: probable
   review: draft
