@@ -6120,7 +6120,7 @@
   names:
     - { text: Horti Sallustiani, lang: la, preferred: true }
     - { text: Gardens of Sallust, lang: en }
-  from: { earliest: 45 BCE, latest: 35 BCE }
+  from: { earliest: 46 BCE, latest: 35 BCE }
   to: after 27 BCE
   prominence: 5
   sources:
@@ -6146,12 +6146,39 @@
       quote: >-
         They were a favourite resort of Vespasian
       supports: [to]
+    - source: platner-ashby
+      locator: 'Horti Sallustiani, p. 271'
+      url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Horti_Sallustiani.html'
+      quote: >-
+        Sallust spent on them much of the wealth that he had amassed in Numidia
+      supports: [from]
+    - source: bellum-africum
+      locator: '97'
+      quote: >-
+        Then, leaving C. Sallustius behind there in military command with the powers
+        of proconsul, he himself left Zama and returned to Utica.
+      supports: [from]
+    - source: cassius-dio
+      locator: '43.9.2'
+      quote: >-
+        taking over the Numidians, he reduced them to the status of subjects, and
+        delivered them to Sallust, nominally to rule, but really to harry and
+        plunder.
+      supports: [from]
+    - source: jerome-chronicle
+      locator: 'Olympiad 186'
+      quote: >-
+        Sallust died in the quadrennium before the Battle of Actium.
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
     The historian Sallust's gardens in the valley between the Pincian and the
-    Quirinal, bought with the fortune he made governing Africa in 46–45 BCE, before
-    his death in 35. They may have grown out of gardens of Caesar's by the Porta
+    Quirinal, bought with the fortune he made governing Numidia, where Caesar left
+    him after Thapsus in 46 BCE (Bellum Africum 97; Dio 43.9.2), before his death "in
+    the quadrennium before the Battle of Actium" (Jerome), about 35. Until October
+    2026 the start was 45–35, from the end of his governorship, a year no readable
+    text gives. They may have grown out of gardens of Caesar's by the Porta
     Collina. The outline follows Platner & Ashby's bounds for the gardens the
     emperors later owned (the Via Salaria on the east, the Quirinal's ridge on the
     south, "probably not beyond the Piazza Barberini" on the west); how large they

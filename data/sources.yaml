@@ -1666,6 +1666,15 @@
     Book 1 was published about 35 BCE. 1.8: the Esquiline's burial ground made
     healthy ground and gardens; 1.9.18: Caesar's gardens across the Tiber.
 
+- id: jerome-chronicle
+  kind: ancient
+  citation: Jerome, Chronicle (the Latin continuation of Eusebius' Chronicle)
+  url: https://www.tertullian.org/fathers/jerome_chronicle_03_part2.htm
+  edition: >-
+    the English translation on tertullian.org (R. Pearse and others, 2005), from
+    Helm's text
+  note: Dates by Olympiad and year of Abraham. Sallust's death, "in the quadrennium before the Battle of Actium".
+
 - id: macleane-1895
   kind: modern
   citation: >-
