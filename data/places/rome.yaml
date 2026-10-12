@@ -3149,7 +3149,7 @@
   location: [12.5075, 41.8975]
   names:
     - { text: Via Tiburtina, lang: la, preferred: true }
-  from: 307 BCE
+  from: before 133 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -3190,7 +3190,11 @@
     1906). Drawn from the Porta Esquilina to the later Porta Tiburtina, the arch of
     Augustus' aqueducts over it, by its paving just outside (SITAR 21288), and on
     along Itiner-e's line, which follows the modern Via Tiburtina to its tufa bridge
-    over the Marranella (19400); drawn lighter. Itiner-e dates it to 307 BCE.
+    over the Marranella (19400); drawn lighter. Itiner-e dates it to 307 BCE, giving
+    M. Valerius Maximus, the censor Ashby thought the Via Valeria beyond Tibur was
+    perhaps named after; no text dates the Tiburtina itself, which Ashby puts among
+    the short roads named after the towns of the Latin League, so it is drawn from
+    before 133.
 
 - id: via-salaria
   kind: road
