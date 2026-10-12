@@ -1326,6 +1326,64 @@
     to be among Rome's "friends and allies" (Plut. Luc. 24.1) and was
     (October 2026; it read client).
 
+- polity: pontic-cities
+  type: client-of
+  of: pontus-regnum
+  from: c. 110 BCE
+  to: 72 BCE
+  sources:
+    - source: magie-1950
+      locator: 'vol. I, 195'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Within a very few years his general Diophantus not only delivered the
+        Greeks from their enemies but established the supremacy of Pontus on
+        the northern shore of the Euxine … Thus the Crimea became a part of
+        Mithradates’s realm, and with it not only the neighbouring regions but
+        apparently the Greek cities on the western shore of the Euxine also
+        were brought under his power.
+      supports: [type, of, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        that Mithradates established “a kind of Pontic protectorate” over these
+        cities has been confirmed by an inscription from Apollonia Pontica
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine, and the barbarian tribes
+        beyond them
+      supports: [type, of]
+    - source: eutropius
+      locator: '6.10'
+      quote: >-
+        He then besieged several cities lying above Pontus, where he destroyed
+        Apollonia, Calatis, Parthenopolis, Tomi, Histros, and Burziaone, and,
+        putting an end to the war, returned to Rome.
+      supports: [to]
+    - source: livy-per
+      locator: '97'
+      quote: >-
+        Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
+        Pompey were made consuls
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The Greek cities of the western Pontus under Mithridates' "kind of
+    Pontic protectorate", from Diophantus' war to M. Lucullus' campaign of
+    72–71 (see the claim). Added in October 2026.
+
 - polity: scythia-minor
   type: client-of
   of: pontus-regnum

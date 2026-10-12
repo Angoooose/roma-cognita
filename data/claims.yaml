@@ -8805,7 +8805,7 @@
   polity: pontic-cities
   relation: independent
   from: before 133 BCE
-  to: 72 BCE
+  to: c. 111 BCE
   sources:
     - source: strabo
       locator: '7.6.1'
@@ -8816,6 +8816,70 @@
         Heracleotae; then, at one thousand three hundred stadia, to Apollonia, a
         colony of the Milesians
       supports: [polity, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Old Greek foundations (Strabo 7.6.1), with no recorded tie to any power
+    before Mithridates' war in the Crimea; the relation is not backed. Ends
+    when that war began, c. 110 on Reinach's date, which Magie prefers to
+    Niese's 114/3 (II 1092 n. 53), as the Scythians' and the Bosporus' rows
+    do. Until October 2026 this row ran to 72, which Appian and Magie
+    contradict (see the next row).
+
+- atom: pontic-cities
+  polity: pontic-cities
+  relation: client
+  from: c. 110 BCE
+  to: 72 BCE
+  sources:
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        a small town, Ister, founded by the Milesians; then, at a distance of two
+        hundred and fifty stadia, to a second small town, Tomis; then, at two
+        hundred and eighty stadia, to a city Callatis, a colony of the
+        Heracleotae; then, at one thousand three hundred stadia, to Apollonia, a
+        colony of the Milesians
+      supports: [polity]
+    - source: magie-1950
+      locator: 'vol. I, 195'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Within a very few years his general Diophantus not only delivered the
+        Greeks from their enemies but established the supremacy of Pontus on
+        the northern shore of the Euxine … Thus the Crimea became a part of
+        Mithradates’s realm, and with it not only the neighbouring regions but
+        apparently the Greek cities on the western shore of the Euxine also
+        were brought under his power.
+      supports: [relation, from]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        that Mithradates established “a kind of Pontic protectorate” over these
+        cities has been confirmed by an inscription from Apollonia Pontica
+      supports: [relation]
+    - source: magie-1950
+      locator: 'vol. II, 1092 n. 53'
+      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
+      quote: >-
+        Its beginning was dated in 114/3 b.c. by Niese … but in no by Reinach
+        … the latter date is probably correct.
+      supports: [from]
+    - source: appian
+      locator: 'Mithr. 15'
+      quote: >-
+        he has acquired many neighboring nations, the Colchians, a very warlike
+        people, the Greeks bordering on the Euxine, and the barbarian tribes
+        beyond them
+      supports: [relation]
     - source: eutropius
       locator: '6.10'
       quote: >-
@@ -8829,40 +8893,20 @@
         Proconsul Marcus Lucullus subdued Thrace. … Marcus Crassus and Gnaeus
         Pompey were made consuls
       supports: [to]
-    - source: appian
-      locator: 'Mithr. 15'
-      quote: >-
-        he has acquired many neighboring nations, the Colchians, a very warlike
-        people, the Greeks bordering on the Euxine, and the barbarian tribes
-        beyond them
-      supports: []
-    - source: magie-1950
-      locator: 'vol. I, 195'
-      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
-      quote: >-
-        Thus the Crimea became a part of Mithradates’s realm, and with it not
-        only the neighbouring regions but apparently the Greek cities on the
-        western shore of the Euxine also were brought under his power.
-      supports: []
-    - source: magie-1950
-      locator: 'vol. II, 1092 n. 53'
-      url: https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt
-      quote: >-
-        that Mithradates established “a kind of Pontic protectorate” over these
-        cities has been confirmed by an inscription from Apollonia Pontica
-      supports: []
   confidence: uncertain
   review: needs-check
   note: >-
-    Old Greek foundations (Strabo 7.6.1), with no recorded tie to Rome before
-    M. Lucullus took them in his campaign of 72–71, ended before the consuls of
-    70 (Eutropius 6.10; Livy Per. 97). The relation is not backed and is
-    contradicted: in 89 Mithridates' envoy counts "the Greeks bordering on the
-    Euxine" among his acquisitions (App. Mithr. 15), and Magie has the western
-    cities "apparently" under his power after Diophantus' war (I 195), a
-    "Pontic protectorate" an inscription from Apollonia confirms (II 1092 n.
-    53). Drawing them as his would need a client-of pontus-regnum relation in
-    relations.yaml and a start for it, which Magie leaves undated.
+    Under Mithridates' "kind of Pontic protectorate", which an inscription
+    from Apollonia confirms (Magie II 1092 n. 53): Magie has the western
+    cities "apparently" brought under his power with the Crimea, in the war
+    Diophantus began c. 110 (I 195), and in 89 the king's envoy counts "the
+    Greeks bordering on the Euxine" among his acquisitions (App. Mithr. 15).
+    Client (of pontus-regnum), by the closest type the texts describe: put
+    under his power, as the Crimean Scythians were. Until M. Lucullus took
+    the cities in 72–71, before the consuls of 70 (Eutropius 6.10; Livy Per.
+    97). Added in October 2026; until then the cities were drawn independent
+    from before 133 to 72, which these passages contradict. Uncertain:
+    Magie hedges, and the inscription is undated.
 
 - atom: pontic-cities
   polity: pontic-cities
