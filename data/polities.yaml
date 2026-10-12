@@ -3550,6 +3550,21 @@
         in warfare with both the Albanians and the Iberians … and Artoces,
         their king, fearing that Pompey would direct his course against him
       supports: [kind, ruler]
+    - source: plutarch
+      locator: 'Pompey 34.5'
+      quote: >-
+        For the Iberians had not been subject either to the Medes or the
+        Persians, and they escaped the Macedonian dominion also
+      supports: [from]
+    - source: strabo
+      locator: '11.14.5'
+      quote: >-
+        Artaxias and Zariadris, who formerly were generals of Antiochus the
+        Great, but later, after his defeat, reigned as kings … by cutting off
+        … the country along the side of Mt. Paryadres and Chorsene and
+        Gogarene, which last is on the far side of the Cyrus River, from that
+        of the Iberians
+      supports: [from]
     - { source: braund-1994, locator: 'pp. 152–170' }
     - source: cassius-dio
       locator: '49.24.1'
@@ -3567,9 +3582,13 @@
   confidence: probable
   review: draft
   note: >-
+    In force in 133 by two passages that bracket it, as on its claim: the
+    Iberians had land of their own when the Armenian kings cut Gogarene from
+    it after Antiochus III's defeat (Strabo 11.14.5), and were never subject
+    to Medes, Persians or Macedonians down to Pompey (Plut. Pompey 34.5).
     Canidius Crassus beat its king Pharnabazus and Zober of Albania in 36 and
     "brought them to make an alliance" (Dio 49.24.1; Plut. Antony 34): the
-    client standing renewed, not changed.
+    alliance with Rome renewed, not changed.
 
 - id: albania
   kind: kingdom
@@ -3591,6 +3610,18 @@
         in the consulship of Lucius Cotta and Lucius Torquatus, Pompey engaged
         in warfare with both the Albanians and the Iberians
       supports: [ruler]
+    - source: pliny-nh
+      locator: '8.61.2'
+      quote: >-
+        When Alexander the Great was on his way to India, the king of Albania
+        had presented him with one dog of unusually large size
+      supports: [from]
+    - source: cassius-dio
+      locator: '36.54.1'
+      quote: >-
+        Oroeses, king of the Albanians dwelling beyond the Cyrnus, made an
+        expedition against them just at the time of the Saturnalia
+      supports: [from]
     - { source: cassius-dio, locator: '37.3–5' }
     - source: strabo
       locator: '11.4.6'
@@ -3608,7 +3639,12 @@
       supports: [ruler]
   confidence: probable
   review: draft
-  note: As iberia-caucasia.
+  note: >-
+    In force in 133 by two passages that bracket it, as on its claim: a king
+    of Albania sent Alexander a hound (Pliny NH 8.149, at ToposText's 8.61),
+    and its king Oroeses attacked Pompey's winter quarters in 66/65 (Dio
+    36.54.1); nothing between records a change. Otherwise as
+    iberia-caucasia.
 
 - id: colchis
   kind: kingdom
