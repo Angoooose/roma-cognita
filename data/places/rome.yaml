@@ -2577,7 +2577,20 @@
       quote: >-
         the irregular continuation of the Subura , where it ascended between the Oppius and
         Cispius to the porta Esquilina
-      supports: [location]
+      supports: [location, from]
+    - source: livy
+      locator: '2.11.5'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=2:chapter=11
+      quote: >-
+        he gave orders to a considerable body of his men to drive cattle out of the Esquiline
+        gate
+      supports: [from]
+    - source: cicero-pis
+      locator: '55'
+      quote: >-
+        that ever ready man wanted to lay me a wager that he had entered by the Esquiline
+        gate
+      supports: [from]
     - source: platner-ashby
       locator: 'Vicus Iugarius, p. 574'
       url: 'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Vicus_Jugarius.html'
@@ -2606,7 +2619,10 @@
     The continuation of the Subura up between the Oppius and the Cispius to the
     Porta Esquilina. "The remains of ancient pavement show that it followed in
     general the line of the Vie di S. Lucia in Selci, di S. Martino, and di S.
-    Vito" (Platner & Ashby); traced along them and drawn lighter.
+    Vito" (Platner & Ashby); traced along them and drawn lighter. In use
+    before 133 because the gate it climbs to was: Livy has cattle driven out
+    of the Esquiline gate in Porsenna's war (2.11.5), and Piso came home by it
+    in 55 (Cic. Pis. 55); no text names the street itself before Martial.
 
 - id: vicus-cuprius
   kind: street
@@ -5814,7 +5830,7 @@
         Palatine which he had bought for the purpose of erecting a residence upon
         it, and had consecrated it to Apollo, after a thunderbolt had descended upon
         it.
-      supports: [from, to]
+      supports: [from, to, condition]
     - source: digital-augustan-rome
       locator: 'Domus: Augustus'
       url: 'https://www.digitalaugustanrome.org/records/domus-augustus/'
