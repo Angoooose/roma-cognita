@@ -139,7 +139,8 @@ export function checkDataset(ds: Dataset): Issue[] {
         error('missing-source', r, `cites unknown source "${s.source}"`)
       // A text we can link into, cited somewhere its page has no place for: a typo,
       // a numbering the page doesn't use, or an anchor list that needs a re-fetch.
-      else if (s.locator && WORKS[s.source] && !passageUrl(s.source, s.locator))
+      // One with its own url links there instead (the inspector prefers it).
+      else if (s.locator && !s.url && WORKS[s.source] && !passageUrl(s.source, s.locator))
         warn(
           'unlinked-passage',
           r,
