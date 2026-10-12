@@ -266,7 +266,8 @@ const places = data.places.map((p) => {
       citation: sourceById.get(s.source)?.citation ?? s.source,
       url: sourceById.get(s.source)?.url ?? workUrl(s.source),
       locator: s.locator,
-      passage: passageUrl(s.source, s.locator),
+      // The page a quote was read on, where there is one, before the link the locator builds.
+      passage: s.url ?? passageUrl(s.source, s.locator),
     })),
     note: p.note,
   }

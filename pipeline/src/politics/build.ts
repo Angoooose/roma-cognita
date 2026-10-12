@@ -228,7 +228,8 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       to: end(c.to),
       confidence: c.confidence,
       review: c.review,
-      sources: c.sources.map((s) => ({ ...s, passage: passageUrl(s.source, s.locator) })),
+      // The page a quote was read on, where there is one, before the link the locator builds.
+      sources: c.sources.map((s) => ({ ...s, passage: s.url ?? passageUrl(s.source, s.locator) })),
       note: c.note,
     })),
     relations: data.relations.map((r) => ({
