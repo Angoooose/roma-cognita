@@ -1847,9 +1847,11 @@
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
       quote: >-
-        was located SW of the *Aventine hill and bordered by the bending course of the *Tiber
-        to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to the NE
-      supports: [location]
+        The late-Republican and early-Imperial urban trading port and industrial warehouse
+        area, was located SW of the *Aventine hill and bordered by the bending course of the
+        *Tiber to the W, the line of the Servian Wall to the SE, and the *Via Ostiensis to
+        the NE
+      supports: [location, to]
     - source: digital-augustan-rome
       locator: 'Emporium'
       url: 'https://www.digitalaugustanrome.org/records/emporium/'
