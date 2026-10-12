@@ -486,9 +486,7 @@
   from: 179 BCE
   to: after 27 BCE
   condition:
-    - { value: standing, from: 179 BCE, to: 79 BCE }
-    - { value: under construction, from: 78 BCE, to: 78 BCE }
-    - { value: standing, from: 77 BCE, to: 56 BCE }
+    - { value: standing, from: 179 BCE, to: 56 BCE }
     - { value: under construction, from: 55 BCE, to: 35 BCE }
     - { value: standing, from: 34 BCE, to: after 27 BCE }
   prominence: 5
@@ -507,7 +505,7 @@
         In 78 B.C., the consul M. Aemilius Lepidus decorated the building (here
         called basilica Aemilia ) with engraved shields or portraits of his ancestors
         (Plin. NH XXXV .13), and probably restored it somewhat
-      supports: [condition]
+      supports: []
     - source: platner-ashby
       locator: 'Basilica Aemilia, p. 72'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Basilica_Aemilia.html
@@ -545,7 +543,9 @@
     1st century B.C." it was made two-storeyed (Freyberger and Ertel). The consul M.
     Aemilius Lepidus restored it in 78, hanging shields with his ancestors' portraits on
     it (Pliny, NH 35.13), and his son's coin shows it two-storeyed with the shields and
-    "ref(ecta)": the map takes the second storey to be his work, an inference. The
+    "ref(ecta)": the map takes the second storey to be his work, an inference (the design
+    shows it from 77; the condition no longer shows works in 78, which Platner & Ashby
+    give only as "probably restored it somewhat"). The
     aedile L. Aemilius Paullus began rebuilding it in 55 BCE, and his son dedicated the
     work in 34; from then it was often called the basilica Paulli. It burned in 14 BCE
     and was rebuilt, but Platner & Ashby find little change in its extent and plan, so
@@ -692,6 +692,13 @@
         mythical ancestress of the Julian gens, and proceeded to build it in the
         centre of his forum
       supports: [from, condition]
+    - source: platner-ashby
+      locator: 'Forum Julium#Venus_Genetrix, p. 226'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
+      quote: >-
+        Temple and forum were dedicated on the last day of Caesar's great triumph,
+        26th September, 46 B.C.
+      supports: [condition]
     - source: platner-ashby
       locator: 'Forum Julium#Venus_Genetrix, p. 227'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Forum_Julium.html
@@ -871,7 +878,7 @@
         the Senate ordered the building of a temple to Concord in the forum
       supports: [condition]
     - { source: digital-augustan-rome, locator: 'Concordia Augusta, Aedes' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The temple of Concord at the north-west corner of the forum, below the Capitol, said
@@ -886,7 +893,10 @@
     (Ferroni); its form is not known, and it is drawn as a typical temple. Opimius's
     enlarged temple did away with Cn. Flavius's bronze shrine of Concord on the
     Graecostasis (304 BCE) and the old Senaculum (Platner & Ashby, pp. 138, 470). Its
-    dedication is not dated: the map shows 121 as building.
+    dedication is not dated: the map shows 121 as building. That is the weak
+    point: Platner & Ashby and Appian (BC 1.26) give the senate's order of 121, Plutarch
+    (C. Gracch. 17) Opimius's building, none the year it was finished, so standing from 120
+    is not backed and the record is probable, not certain (October 2026).
 
 - id: atrium-vestae
   kind: house
@@ -1104,8 +1114,7 @@
   condition:
     - { value: standing, from: before 133 BCE, to: 112 BCE }
     - { value: burnt, from: 111 BCE, to: 111 BCE }
-    - { value: under construction, from: 110 BCE, to: 106 BCE }
-    - { value: standing, from: 105 BCE, to: after 27 BCE }
+    - { value: standing, from: 110 BCE, to: after 27 BCE }
   prominence: 5
   sources:
     - source: platner-ashby
@@ -1152,8 +1161,10 @@
     podium of tufa blocks. It burned with "a very great part of the city" in 111 BCE
     (Obsequens 39) and was rebuilt on a higher podium of concrete by a Metellus,
     probably Q. Metellus Numidicus, consul in 109 (Platner & Ashby's "consul of 110" is
-    a slip: no Metellus held it). How long the works took is not recorded: the map shows
-    them to 106, after his return from Numidia. The outline is of the podium, whose
+    a slip: no Metellus held it). When the works began and how long they took is not
+    recorded: until October 2026 the map showed them 110–106, after his return from
+    Numidia; it now shows the fire of 111 and the temple standing again from 110. The
+    outline is of the podium, whose
     concrete is of the Augustan restoration, carried out with the material of the
     original building; Platner & Ashby call the identification extremely probable.
 

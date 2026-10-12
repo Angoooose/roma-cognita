@@ -375,7 +375,7 @@
   location: [22.8786, 37.9056]
   names:
     - { text: Corinthus, preferred: true }
-  from: 44 BCE
+  from: before 44 BCE
   to: after 27 BCE
   prominence: 2
   status: colonia
@@ -396,7 +396,7 @@
         restored again, because of its favorable position, by the deified
         Caesar , who colonized it with people that belonged for the most part
         to the freedmen class.
-      supports: [status]
+      supports: [status, from]
     - source: appian
       locator: Pun. 136
       quote: >-
@@ -409,7 +409,7 @@
       quote: >-
         he had restored again Carthage and Corinth … he not only colonized
         them, in that he regarded them as colonies of the Romans
-      supports: [status]
+      supports: [status, from]
     - source: pleiades
       locator: places/570182
       url: https://pleiades.stoa.org/places/570182/json
@@ -420,7 +420,10 @@
   review: draft
   note:
     Sacked by Mummius in 146 and not resettled as a city until Caesar's Colonia Laus Iulia
-    Corinthiensis in 44. The isthmus was never empty, but the polis was.
+    Corinthiensis. The isthmus was never empty, but the polis was. The start was 44 BCE
+    until October 2026; no readable text gives the year Corinth was colonized, only that
+    Caesar did it (Strabo 8.6.23; Dio 43.50.3) and that he arranged it before he was
+    assassinated (Appian, Pun. 136), so it is now an open end at 44.
 
 - id: lugdunum
   pleiades: '167717'
@@ -633,7 +636,10 @@
         the province of Crete, until October 2026: no open text says where the
         governor of Crete sat before the joint province. It read "provincial
         seat" from before 68 until the extension to 133 BCE, when Crete was
-        still free.
+        still free. Dio 53.12.4 lists "Crete and the Cyrenaic portion of
+        Libya" among the people's provinces without saying they were one province,
+        and Pleiades' "Roman capital of Creta et Cyrenaica province" has no date, so
+        the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -670,7 +676,7 @@
         wall, he proceeded with it only about eighty stadia
       supports: [from, to]
     - { source: velleius, locator: '2.38.6' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: cyrene
@@ -866,7 +872,7 @@
     - value: municipium
       from: { earliest: 90 BCE, latest: 89 BCE }
       to: after 27 BCE
-      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21).
+      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21); no quoted text says which side won, only that the people are Romans in Strabo's day (5.4.7), so the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -916,7 +922,7 @@
         them every four years
       supports: [to]
     - { source: beloch-1880, locator: 'p. 52' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: puteoli
@@ -1125,7 +1131,7 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known.
+      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -1175,7 +1181,7 @@
     - { source: velleius, locator: '1.15.4' }
     - { source: plutarch, locator: 'C. Gracch. 8.3' }
     - { source: appian, locator: 'BC 1.49' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: rhegium
@@ -1197,7 +1203,7 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia.
+      note: enfranchised under the lex Iulia. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain (October 2026).
   labelSide: s
   sources:
     - source: pleiades
@@ -1244,7 +1250,7 @@
         expeditionary forces as new settlers, and it is now fairly populous
       supports: [to]
     - { source: appian, locator: 'BC 1.49' }
-  confidence: certain
+  confidence: probable
   review: draft
 
 - id: genua
@@ -2156,7 +2162,7 @@
   status:
     - value: conventus
       from: { earliest: 49 BCE, latest: 48 BCE }
-      to: after 27 BCE
+      to: after 48 BCE
       note: >-
         From its first attestation: "the Roman citizens, residing there" held
         Salona against Octavius (Caesar BC 3.9), in Caesar's narrative of 48;
@@ -2164,7 +2170,9 @@
         October 2026. Before 68 until the
         extension to 133 BCE; nothing records Roman residents when Metellus
         wintered there in 119 (App. Ill. 11) or when Cosconius took it in 78–76
-        (Eutropius 6.4).
+        (Eutropius 6.4). It ended after 27 until October 2026; nothing readable
+        shows the community of citizens still there in 27 (Strabo 7.5.5 has only
+        the Dalmatians' port, burnt by Augustus), so the last year attested is 48.
   labelSide: e
   sources:
     - source: pleiades
@@ -2473,12 +2481,13 @@
   prominence: 3
   status:
     - value: colonia
-      from: { earliest: 82 BCE, latest: 80 BCE }
+      from: { earliest: 82 BCE, latest: 79 BCE }
       to: after 27 BCE
       note: >-
         a colony of the dictator Sulla (Pliny 3.80), so founded in his
-        dictatorship, which Broughton gives from 82 and still in 80; no text
-        dates the colony closer. It began "c. 81" until October 2026.
+        dictatorship, which Broughton gives from 82 and still in 80 and Appian
+        ends in the year after his second consulship (BC 1.103), so 79; no text
+        dates the colony closer. It began "c. 81" until October 2026, then 82–80.
   labelSide: e
   sources:
     - source: pleiades
@@ -2513,6 +2522,15 @@
       url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
       quote: >-
         80 B.C. A.U.C. 674 … Dictator L. CORNELIUS L.f. P.n. SULLA FELIX
+      supports: [status]
+    - source: appian
+      locator: 'BC 1.103'
+      quote: >-
+        The following year Sulla , although he was dictator, undertook the
+        consulship a second time, with Metellus Pius for his colleague … The next
+        year the people, in order to pay court to Sulla , chose him consul again,
+        but he refused the office and nominated Servilius Isauricus and Claudius
+        Pulcher for their suffrages, and voluntarily laid down the supreme power
       supports: [status]
   confidence: certain
   review: draft
