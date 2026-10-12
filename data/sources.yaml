@@ -98,6 +98,17 @@
     The archive.org scan, readable without borrowing; quotations are from its
     full text. Pages are the running heads.
 
+- id: rawlinson-1862
+  kind: modern
+  citation: >-
+    G. Rawlinson (tr.), with H. Rawlinson and J. G. Wilkinson, History of
+    Herodotus, vol. II (London: John Murray, 1862)
+  url: https://archive.org/download/bub_gb_B1qpT5p8u5sC/bub_gb_B1qpT5p8u5sC_djvu.txt
+  note: >-
+    Book II with Wilkinson's notes on Egypt. The archive.org scan, readable
+    without borrowing; quotations are from its full text, OCR errors included
+    ("Phatmetic" for Phatnitic). Pages are the running heads.
+
 - id: mitchell-1993
   kind: modern
   citation: S. Mitchell, Anatolia. Land, Men, and Gods in Asia Minor, 2 vols (Oxford, 1993)
