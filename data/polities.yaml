@@ -943,7 +943,7 @@
         The later name (Pliny 3.31, "Bracata antea dicta"; Strabo 4.1.1). Dio uses
         it for 43 and 27 (46.50.4, 53.12.5), but in the names of his own day; when
         it became official is not known, so it is not the preferred name here.
-  from: 121 BCE
+  from: { earliest: 121 BCE, latest: 120 BCE }
   to: after 27 BCE
   sources:
     - source: livy-per
@@ -954,6 +954,13 @@
         Paulus, successfully fought against the Allobroges and Bituitus, the
         king of the Arvernians. … The surrender of the Allobroges was accepted.
       supports: [from]
+    - source: broughton-mrr
+      locator: 'vol. I, 120 B.C., p. 524'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Proconsul (Act. Tr.). Completed his campaign in Gaul … He built the Via
+        Domitia and organized the province (see Cic. Font. 18).
+      supports: [kind, from]
     - source: amela-valverde-2019
       locator: '39'
       url: https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056
@@ -1008,8 +1015,13 @@
     from Hither Spain until then. It certainly had a governor in 78, L.
     Manlius, beaten by Sertorius' quaestor Hirtuleius (Amela Valverde 2019, 38;
     Livy Per. 90). Lowered from certain in September 2026, and to uncertain in
-    October 2026 for the dispute; a range of 121–78 would also need the
-    Province's claims and its province-of relation to start as a range. The
+    October 2026 for the dispute. The start is 121–120, as on the Province's
+    claim and its province-of relation: no earlier than the surrender of the
+    Allobroges in Fabius' consulship (Per. 61), no later than Domitius'
+    proconsulship of 120, in which Broughton has him organise the province
+    (MRR I 524); it read 121 until October 2026. A range of 121–78, for the
+    dispute, would leave the ground blank to about 100, so the later dates
+    stay in this note. The
     Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae, 102)
     without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73); and in
     the 70s peoples of the Province fought Fonteius himself while Pompey's army
