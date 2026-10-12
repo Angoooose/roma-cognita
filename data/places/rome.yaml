@@ -4999,10 +4999,10 @@
   names:
     - { text: Porticus Pompeiana, lang: la, preferred: true }
     - { text: Portico of Pompey, lang: en }
-  from: 61 BCE
+  from: { earliest: 62 BCE, latest: 57 BCE }
   to: after 27 BCE
   condition:
-    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: under construction, from: { earliest: 62 BCE, latest: 57 BCE }, to: 56 BCE }
     - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -5028,6 +5028,20 @@
       quote: >-
         The porticus was burned in the reign of Carinus
       supports: [to]
+    - source: platner-ashby
+      locator: 'Theatrum Pompei, p. 515'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Theatrum_Pompei.html
+      quote: >-
+        the first permanent theatre in Rome, built of stone by Pompeius in his second
+        consul … in 55 B.C., and dedicated in that year according to the common version
+        … Chron. Pasch. a.u.c. 697 (foundations laid)
+      supports: [from, condition]
+    - source: plutarch
+      locator: 'Pompey 42.4'
+      quote: >-
+        And being pleased with the theatre, he had sketches and plans of it made for
+        him, that he might build one like it in Rome, only larger and more splendid.
+      supports: [from]
   confidence: probable
   review: draft
   note: >-
@@ -5036,7 +5050,11 @@
     the south one, and in the court the double grove of plane trees the poets
     describe (Propertius 2.32.11–16). Its outline is known from the Marble Plan and
     the modern streets; "no remains of this building are visible". Its works are
-    shown with the theatre's, from 61 BCE.
+    shown with the theatre's: begun between 62, when Pompey had the plans of the
+    theatre at Mytilene drawn (Plutarch, Pompey 42.4), and 57, when the Chronicon
+    Paschale puts the laying of its foundations (Platner & Ashby, Theatrum Pompei,
+    p. 515). Until October 2026 they were shown from 61 BCE, as the theatre's were,
+    a year no readable text gives.
 
 - id: curia-pompei
   kind: curia
@@ -5045,10 +5063,10 @@
   names:
     - { text: Curia Pompeia, lang: la, preferred: true }
     - { text: Curia of Pompey, lang: en }
-  from: 61 BCE
+  from: { earliest: 62 BCE, latest: 57 BCE }
   to: after 27 BCE
   condition:
-    - { value: under construction, from: 61 BCE, to: 56 BCE }
+    - { value: under construction, from: { earliest: 62 BCE, latest: 57 BCE }, to: 56 BCE }
     - { value: standing, from: 55 BCE, to: after 27 BCE }
   prominence: 5
   sources:
@@ -5088,6 +5106,20 @@
       quote: >-
         It was voted that the curia in which he was slain be walled up
       supports: []
+    - source: platner-ashby
+      locator: 'Theatrum Pompei, p. 515'
+      url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Theatrum_Pompei.html
+      quote: >-
+        the first permanent theatre in Rome, built of stone by Pompeius in his second
+        consul … in 55 B.C., and dedicated in that year according to the common version
+        … Chron. Pasch. a.u.c. 697 (foundations laid)
+      supports: [from, condition]
+    - source: plutarch
+      locator: 'Pompey 42.4'
+      quote: >-
+        And being pleased with the theatre, he had sketches and plans of it made for
+        him, that he might build one like it in Rome, only larger and more splendid.
+      supports: [from]
   confidence: certain
   review: draft
   note: >-
@@ -5095,7 +5127,10 @@
     44 BCE and Caesar was killed. In 42 BCE the triumvirs had it closed up (Dio
     47.19.1; "curiam … obstrui placuit", Suetonius), so from then it stood sealed
     and out of use. Its tufa walls survive behind Temple B of the Largo Argentina,
-    about 20 by 24 m. Its works are shown with the theatre's, from 61 BCE.
+    about 20 by 24 m. Its works are shown with the theatre's: begun between 62
+    (Plutarch, Pompey 42.4) and 57 (the Chronicon Paschale's laying of the
+    foundations, Platner & Ashby, Theatrum Pompei, p. 515). Until October 2026 they
+    were shown from 61 BCE, as the theatre's were, a year no readable text gives.
 
 - id: aedes-a-largo-argentina
   kind: temple
