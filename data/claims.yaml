@@ -9582,7 +9582,28 @@
       quote: >-
         the manner in which, even before they had sought the friendship of
         Rome, the Aedui had always held the primacy of all Gaul
-      supports: [polity, relation]
+      supports: [polity, relation, from]
+    - source: livy
+      locator: '5.34.5'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=5:chapter=34
+      quote: >-
+        He invited the surplus population of six tribes —the Bituriges, the
+        Averni, the Senones, the Aedui, the Ambarri, the Carnutes, and the
+        Aulerci.
+      supports: [polity, from]
+    - source: livy-per
+      locator: '61'
+      quote: >-
+        he devastated the land of the Aedui, an ally of the Roman people.
+      supports: [to]
+    - source: broughton-mrr
+      locator: 'vol. I, 122 B.C., p. 516'
+      url: https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt
+      quote: >-
+        Consuls … AHENOBARBUS … Domitius succeeded Sextius in Gaul, where he
+        was victorious over the Salluvii, and then engaged in war against the
+        Allobroges and the Arverni
+      supports: [to]
     - source: strabo
       locator: '4.3.2'
       quote: >-
@@ -9596,9 +9617,11 @@
     Gaul to seek friendship and alliance with Rome (4.3.2), but the alliance is
     not attested before 122, and the ground moves at the attestation (decision
     19). Caesar has them leading Gaul "even before they had sought the
-    friendship of Rome" (BG 1.43), but no readable text dates that time or
-    puts it in 133–123: the row's start and end rest on the window's edge and
-    on the alliance's first attestation, not on a text (October 2026).
+    friendship of Rome" (BG 1.43), and Livy has them a people long before,
+    in Bellovesus' migration (5.34.5): the two bracket 133, with nothing
+    between to suggest a Roman tie, for the start. The end is the year before
+    the alliance's first attestation, in Domitius' year, 122 (Per. 61; MRR I
+    516). No text dates the friendship itself, so the row stays uncertain.
 
 - atom: aedui
   polity: aedui
