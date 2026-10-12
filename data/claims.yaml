@@ -7521,7 +7521,7 @@
   polity: bosporus
   relation: independent
   from: 48 BCE
-  to: 42 BCE
+  to: 46 BCE
   sources:
     - source: strabo
       locator: '7.4.3'
@@ -7551,15 +7551,24 @@
         native claimant, and for the next few years the Romans were much too
         taken up with their own affairs to disturb Asander
       supports: [relation]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        Obviously it occurred after Caesar's death as he granted freedom to the
+        Chersonesos in 45 BC.
+      supports: [to]
+    - source: pliny-nh
+      locator: '4.85'
+      quote: >-
+        Heraclea Chersonesus, to which its freedom has been granted by the
+        Romans
+      supports: [to]
   confidence: uncertain
   review: needs-check
   note: >-
-    As bosporus; the grant of freedom by Caesar c. 46 would end it early. No
-    readable text dates Rome's recognition of Asander, which ends the row:
-    Minns (p. 592, n.) reports von Sallet's view that Caesar recognised him,
-    with coins from 46/5, and himself reads the coins' first years as Asander
-    archon under the heads of Octavian and Antony. The end of 42 is kept for
-    the next row's c. 41.
+    As bosporus, until Caesar granted the city its freedom in 45 (Vnukov and
+    Kovalenko 21; Pliny 4.85 records the grant without a year). Until October
+    2026 it ran to 42 with the bosporus row, which that grant contradicts.
 
 - atom: pontus
   polity: bosporus
@@ -10704,9 +10713,48 @@
     Tanais, Asander and his successor Polemon among them (11.2.11).
 
 - atom: chersonesus
+  polity: chersonesus
+  relation: allied
+  from: 45 BCE
+  to: { earliest: 45 BCE, latest: 38 BCE }
+  sources:
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        Obviously it occurred after Caesar's death as he granted freedom to the
+        Chersonesos in 45 BC.
+      supports: [polity, from]
+    - source: pliny-nh
+      locator: '4.85'
+      quote: >-
+        Heraclea Chersonesus, to which its freedom has been granted by the
+        Romans
+      supports: [polity]
+    - source: vnukov-kovalenko-2007
+      locator: 'p. 21'
+      quote: >-
+        The discovery of a gold coin of Asander dated to 37/36 BC at the
+        settlement of Kara-Tobe (situated in the former far chora of the
+        Chersonesos in the North-Western Crimea) helps us to narrow the date,
+        for the find suggests that at this time, approximately, the Chersonesos
+        itself and its previous possessions elsewhere were already under
+        Bosporan control.
+      supports: [to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    The city free by Caesar's grant of 45 (Vnukov and Kovalenko 21; Pliny
+    4.85, "its freedom has been granted by the Romans"), until the Bosporan
+    kings had it again, after Caesar's death and by about 37/36: the end is
+    the range 45–38, drawn at 41, the year before the Bosporan row's
+    midpoint. Allied, as the free cities of Apion's bequest in Cyrenaica
+    are: no text calls the city Rome's ally, only freed by Rome, so the type
+    is not backed. Added in October 2026; the free years were not drawn.
+
+- atom: chersonesus
   polity: bosporus
   relation: client
-  from: c. 41 BCE
+  from: { earliest: 44 BCE, latest: 37 BCE }
   to: after 27 BCE
   sources:
     - source: strabo
@@ -10734,7 +10782,7 @@
         date, for the find suggests that at this time, approximately, the
         Chersonesos itself and its previous possessions elsewhere were already
         under Bosporan control.
-      supports: [polity]
+      supports: [polity, from]
     - source: pliny-nh
       locator: '4.85'
       quote: >-
@@ -10746,14 +10794,12 @@
   note: >-
     As bosporus. Strabo has the city "subject to the potentates of the Bosporus"
     down to his own day (7.4.3). Pliny records an undated grant of freedom by the
-    Romans (4.85), dated to Caesar c. 45 by Rostovtzeff; Vnukov and Kovalenko
-    argue from a coin of Asander's year 8 found at Kara-Tobe that Bosporan
-    control was back by about 37/36. The free interval is not drawn. The
-    start is not backed: Vnukov and Kovalenko put the Bosporan hold after
-    Caesar's grant of freedom in 45 and before about 37/36, which brackets
-    41 without stating it. A range of 44–37 would overlap the row before
-    (independent under Asander, 48–42), which that same grant contradicts;
-    left as it is and reported (October 2026).
+    Romans (4.85), which Vnukov and Kovalenko put in 45, under Caesar; they
+    place the Bosporan hold after Caesar's death and, from a coin of Asander's
+    year 8 (37/36) found at Kara-Tobe in the city's old chora, by about 37/36.
+    So the start is the range 44–37, drawn at 40, after the free row before
+    it. It read c. 41 until October 2026, which no text states, and the
+    Bosporan row before ran on to 42 over the years of the grant.
 
 # The West
 
