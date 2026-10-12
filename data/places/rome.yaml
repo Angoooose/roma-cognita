@@ -4012,7 +4012,8 @@
       locator: 'Velabrum, p. 550'
       url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*/Velabrum.html
       quote: >-
-        In the Middle Ages, the name was corrupted into Velum Aureum
+        The Velabrum was an important centre of industrial and commercial activity,
+        and in particular of the trade in food-stuffs, oil and wine
       supports: [to]
     - { source: pleiades, locator: places/432833118 }
   confidence: certain
