@@ -8509,35 +8509,6 @@
     extension to 133 BCE the Scythians were drawn independent from before 68,
     which Strabo's account does not support.
 
-- atom: scythia-minor
-  polity: scythia-minor
-  relation: independent
-  from: 63 BCE
-  to: after 63 BCE
-  sources:
-    - source: cassius-dio
-      locator: '37.10.4'
-      quote: >-
-        when Marcus Cicero had become consul with Gaius Antonius, and
-        Mithridates no longer caused any injury to the Romans, but had destroyed
-        himself
-      supports: [from]
-    - source: strabo
-      locator: '7.4.7'
-      quote: >-
-        the three forts which were built by Scilurus and his sons … And today
-        everything is subject to whatever kings of the Bosporians the Romans
-        choose to set up.
-      supports: [polity]
-  confidence: uncertain
-  review: needs-check
-  note: >-
-    Free of Pontus at Mithridates' death in 63 (Dio 37.10.4). Ran to after 27
-    BCE until the October 2026 backfill; but no text read has the Scythians
-    independent after that, and Strabo puts the Chersonese, the Scythian forts
-    among its places, under "whatever kings of the Bosporians the Romans choose
-    to set up" in his own day (7.4.7), so the end is left open from 63.
-
 - atom: kush
   polity: kush
   relation: independent
