@@ -2336,7 +2336,7 @@
   location: [12.48788, 41.8903]
   names:
     - { text: Clivus Palatinus, lang: la, preferred: true }
-  from: before 133 BCE
+  from: before 78 BCE
   to: after 27 BCE
   prominence: 5
   sources:
@@ -2376,7 +2376,9 @@
   note: >-
     The road up the Palatine from the Sacra Via by the Arch of Titus. The name is
     modern (it "has no ancient warranty", Platner & Ashby); a piece of its paving
-    of Sulla's time was found.
+    of Sulla's time was found. That paving is the earliest the texts date it, so it is
+    drawn from before 78, the year Sulla died; it was drawn from before 133, which
+    no text states.
 
 - id: clivus-victoriae
   kind: street
