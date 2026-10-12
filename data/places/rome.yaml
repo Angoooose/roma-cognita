@@ -878,7 +878,7 @@
         the Senate ordered the building of a temple to Concord in the forum
       supports: [condition]
     - { source: digital-augustan-rome, locator: 'Concordia Augusta, Aedes' }
-  confidence: certain
+  confidence: probable
   review: draft
   note: >-
     The temple of Concord at the north-west corner of the forum, below the Capitol, said
@@ -893,7 +893,10 @@
     (Ferroni); its form is not known, and it is drawn as a typical temple. Opimius's
     enlarged temple did away with Cn. Flavius's bronze shrine of Concord on the
     Graecostasis (304 BCE) and the old Senaculum (Platner & Ashby, pp. 138, 470). Its
-    dedication is not dated: the map shows 121 as building.
+    dedication is not dated: the map shows 121 as building. That is the weak
+    point: Platner & Ashby and Appian (BC 1.26) give the senate's order of 121, Plutarch
+    (C. Gracch. 17) Opimius's building, none the year it was finished, so standing from 120
+    is not backed and the record is probable, not certain (October 2026).
 
 - id: atrium-vestae
   kind: house
