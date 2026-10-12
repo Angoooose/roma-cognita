@@ -118,8 +118,8 @@ king's first year, a frontier's date: these are often scholars' inferences,
 from coins or inscriptions. A scholar who states one in an open text can be
 quoted for it. If no text you can read states it, a closed book doesn't save
 it: change the field to what readable texts do support, an open end
-(`from: before 51 BCE`, the first year it is attested) or a range, and say in
-`note` what it was and why it changed. This narrows the record to its
+(`from: before 51 BCE`, the first year it is attested) or a range, say in
+`note` why it now reads as it does, and in the commit message what it was. This narrows the record to its
 evidence; it isn't a disagreement. Expect conventional dates to be contradicted
 by the texts (Sicily "from 241", Macedonia "from 146"); when they are, that is a
 disagreement (below), not something to explain away.

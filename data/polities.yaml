@@ -114,15 +114,14 @@
     to the Latins and the allies who had stayed loyal (App. BC 1.49; Cic. Balb.
     21), the lex Plautia Papiria of 89 to the rest who registered (Cic. Arch.
     7); the Samnites and Lucanians came in last, in 87. Begins at the lex
-    Iulia: it was { 90, 89 } until September 2026, which drew it from 89 and
-    left the year of the first law to nobody. Before 90 the citizen land is
-    ager-romanus, and each part of Italy passes to italia in the year it was
-    enfranchised or submitted (claims.yaml). Citizen territory is not a
-    province and had no governor; it is modelled as a polity so the ground can
-    be claimed by it and named ITALIA. Appian puts the senate's grant among
-    the events of the consuls Julius Caesar and Rutilius (BC 1.40, 1.49),
-    before Pompeius Strabo's consulship of 89 (1.50), hence 90; the Res Gestae
-    still sets Italy's land against the provinces' in 14 (RG 16).
+    Iulia. Before 90 the citizen land is ager-romanus, and each part of Italy
+    passes to italia in the year it was enfranchised or submitted
+    (claims.yaml). Citizen territory is not a province and had no governor; it
+    is modelled as a polity so the ground can be claimed by it and named
+    ITALIA. Appian puts the senate's grant among the events of the consuls
+    Julius Caesar and Rutilius (BC 1.40, 1.49), before Pompeius Strabo's
+    consulship of 89 (1.50), hence 90; the Res Gestae still sets Italy's land
+    against the provinces' in 14 (RG 16).
 
 # --- Italy before the Social War (added September 2026, the extension to 133) --
 # Before 90 the peninsula was a patchwork: the Roman citizen land (ager-romanus),
@@ -373,10 +372,9 @@
     Velleius the rising, Asculum's first, to the consuls L. Caesar and
     Rutilius, 90 (2.15.1). It stays 91, since the claims on the allied
     atoms start then, but is probable, not certain, until they can be made a
-    range with it (October 2026). The ruler named Silo and Mutilus consuls
-    for 90 until then: Diodorus has them chosen "at this time", as the war
-    began (37.2.6), and gives no year of their own. Drawn in a colour of its own: an independent
-    power at war with Rome, not an ally.
+    range with it. Diodorus has Silo and Mutilus chosen "at this time", as
+    the war began (37.2.6), and gives no year of their own. Drawn in a colour
+    of its own: an independent power at war with Rome, not an ally.
 
 # The two slave kingdoms of Sicily are drawn as seats (seats.yaml): each held
 # the interior and some cities of a province Rome never stopped governing from
@@ -452,8 +450,8 @@
     Enna in 132, and Eunus died a prisoner at Morgantina (Diodorus
     34/35.2.20–23; Livy Per. 59); 132 is Rome's. Began before the window: the
     praetors had already failed when the consul C. Fulvius, of 134, was sent
-    (Livy Per. 56). The ruler's first year was "c. 135" until October 2026;
-    no readable text gives it, so it now reads "by 134".
+    (Livy Per. 56). No readable text gives the ruler's first year, so it
+    reads "by 134".
 
 - id: sicily-tryphon
   kind: kingdom
@@ -610,7 +608,7 @@
     (Sic. 2); Solinus makes Sicily and Sardinia provinces in the same year,
     with the first praetors, whom Broughton dates to 227; Velleius has it made
     a province only after Syracuse fell (212/211), perhaps meaning the whole
-    island. It read 241 until October 2026.
+    island.
 
 - id: sardinia-corsica
   kind: province
@@ -801,13 +799,14 @@
     disagree, so the start covers them: the epitome of Livy has Macedonia
     "made a province" after Pydna, in 167 (Per. 45); a Roman praetor was
     already fighting there when Andriscus killed him, and Metellus, praetor in
-    148 (MRR), won it back (Per. 50). It read 146 until October 2026. A province in the window: the praetor Silanus looted it (Per. 54);
-    Minucius drew it, consul in 110 (Sall. Jug. 35.3). Includes Greece until Achaea is attested as a province of its own in the
-    settlement of 27, which also took Thessaly and southern Epirus (see achaea).
-    Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App. BC 4.75);
-    after Philippi it was Antony's, east of Scodra from Brundisium (App. BC
-    5.65), and Octavian's from 31. In 133–68 its governors fought the
-    Scordisci and Thracians on the northern frontier again and again; the
+    148 (MRR), won it back (Per. 50). A province in the window: the praetor
+    Silanus looted it (Per. 54); Minucius drew it, consul in 110 (Sall. Jug.
+    35.3). Includes Greece until Achaea is attested as a province of its own
+    in the settlement of 27, which also took Thessaly and southern Epirus (see
+    achaea). Brutus held it with Illyricum in 43–42 (Cic. Phil. 10.25–26; App.
+    BC 4.75); after Philippi it was Antony's, east of Scodra from Brundisium
+    (App. BC 5.65), and Octavian's from 31. In 133–68 its governors fought
+    the Scordisci and Thracians on the northern frontier again and again; the
     one gain of ground dated inside it is T. Didius' Chersonese c. 100, which
     the law of 101/100 joins to Macedonia (chersonesus-thracica). Mithridates'
     son overran it in 87; his army left it in 86.
@@ -1014,18 +1013,16 @@
     Ebel (1976, not read) holds that the ground west of the Rhône was governed
     from Hither Spain until then. It certainly had a governor in 78, L.
     Manlius, beaten by Sertorius' quaestor Hirtuleius (Amela Valverde 2019, 38;
-    Livy Per. 90). Lowered from certain in September 2026, and to uncertain in
-    October 2026 for the dispute. The start is 121–120, as on the Province's
-    claim and its province-of relation: no earlier than the surrender of the
-    Allobroges in Fabius' consulship (Per. 61), no later than Domitius'
-    proconsulship of 120, in which Broughton has him organise the province
-    (MRR I 524); it read 121 until October 2026. A range of 121–78, for the
-    dispute, would leave the ground blank to about 100, so the later dates
-    stay in this note. The
-    Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae, 102)
-    without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73); and in
-    the 70s peoples of the Province fought Fonteius himself while Pompey's army
-    wintered there (Cic. Font. 12, 16).
+    Livy Per. 90). Uncertain for the dispute. The start is 121–120, as on the
+    Province's claim and its province-of relation: no earlier than the
+    surrender of the Allobroges in Fabius' consulship (Per. 61), no later than
+    Domitius' proconsulship of 120, in which Broughton has him organise the
+    province (MRR I 524). A range of 121–78, for the dispute, would leave the
+    ground blank to about 100, so the later dates stay in this note. The
+    Cimbri and Teutones crossed it in 109–102 (Arausio, 105; Aquae Sextiae,
+    102) without holding it (Per. 65–68); the Salluvii rose in 90 (Per. 73);
+    and in the 70s peoples of the Province fought Fonteius himself while
+    Pompey's army wintered there (Cic. Font. 12, 16).
 
 - id: cilicia
   kind: province
@@ -1175,15 +1172,15 @@
     creation by Sulla, whose administrative reforms Broughton puts mostly in
     81 (MRR II 74). Some date it earlier, to the 90s or to Pompeius Strabo in
     89: Plutarch has Sertorius quaestor of Cisalpine Gaul on the eve of the
-    Marsic war (Sert. 4.1), which fits "Gallia" as a command then. The start
-    read c. 81 until October 2026, a year no readable text states; it is now
-    81–80: no earlier than Sulla's reforms of 81 (MRR), since Sulla established
-    it (Piegdoń), and no later than 80, since in his account of 79 Granius says
-    it "had been given" (data erat) to Sulla. Formally dissolved into Italy in
-    42 (Dio 48.12.5; App. BC 5.3), so the province ends in 43 by the
-    successor-takes-the-year rule. The lex Roscia of 49 enfranchised the
-    Transpadanes but did not end the province: D. Brutus governed it in 44–43.
-    Its ground stays provincial to the end of the window.
+    Marsic war (Sert. 4.1), which fits "Gallia" as a command then. No
+    readable text states c. 81, so the start is 81–80: no earlier than Sulla's
+    reforms of 81 (MRR), since Sulla established it (Piegdoń), and no later
+    than 80, since in his account of 79 Granius says it "had been given" (data
+    erat) to Sulla. Formally dissolved into Italy in 42 (Dio 48.12.5; App. BC
+    5.3), so the province ends in 43 by the successor-takes-the-year rule.
+    The lex Roscia of 49 enfranchised the Transpadanes but did not end the
+    province: D. Brutus governed it in 44–43. Its ground stays provincial to
+    the end of the window.
 
 - id: cyrenae
   kind: province
@@ -1495,12 +1492,12 @@
   note: >-
     Assigned to Caesar with Cisalpina by the lex Vatinia of 59 (Suet. Iul. 22;
     Eutropius 6.17, under Caesar and Bibulus); governed with it from Aquileia.
-    Vatinius fought the Delmatae there in 45–44. It read "from 59" until
-    October 2026, but Illyricum was a proconsul's province before Caesar:
-    Cosconius was "sent into Illyricum as proconsul" about Lepidus' consulship
-    of 78 (Eutropius 6.4–5; MRR, 78–76), and Culleolus may have governed it
-    before 59 (MRR). Whether it was held without a break from then is not
-    recorded, so the start is left open: in force in 59, begun no later.
+    Vatinius fought the Delmatae there in 45–44. Illyricum was a proconsul's
+    province before Caesar: Cosconius was "sent into Illyricum as proconsul"
+    about Lepidus' consulship of 78 (Eutropius 6.4–5; MRR, 78–76), and
+    Culleolus may have governed it before 59 (MRR). Whether it was held
+    without a break from then is not recorded, so the start is left open: in
+    force in 59, begun no later.
 
 - id: africa-nova
   kind: province
@@ -1553,8 +1550,8 @@
     his "the Africas" of 36 and 32 (49.14.6, 50.6.4) may be geography. The
     claims pass to africa at 27, the latest date; only the line between the two
     Africas is in doubt, not whose ground it was. The polity is kept to 28 to
-    match, and its confidence lowered from certain to probable since the
-    readable sources disagree on its end. Juba II's "kingdom of his
+    match, and is probable, not certain, since the readable sources disagree
+    on its end. Juba II's "kingdom of his
     fathers" of 30 (Dio 51.15.6) is not drawn: he exchanged it in 25 for
     Mauretania, its people having "been enrolled in the Roman state" (53.26.2),
     and nothing shows he ruled Numidia in between.
@@ -1655,8 +1652,7 @@
     Paphian coinage: Bennett, after Mitford and Mørkholm). He held it until the
     Alexandrians recalled him in 88. In 107–106 the island was the Egyptian
     crown's, and is claimed for aegyptus. From 114, the earlier year of
-    Bennett's 114/3, as its first claim (the range 114–113 until October
-    2026).
+    Bennett's 114/3, as its first claim.
 
 - id: numidia
   kind: kingdom
@@ -1851,10 +1847,10 @@
     19.7, 110.8). Where it met Adherbal's kingdom is unknown: "nous ne disposons
     d'aucun indice pour proposer une quelconque hypothèse" (Bridoux ¶141). From
     112 Jugurtha held the whole kingdom, which is numidia. The name is ours.
-    The start was c. 116, the usual date of Opimius' commission; MRR puts it
-    in 117 or 116 ("This year is the latest possible date", after Gsell's 117)
-    and Bridoux in 117, four years before Jugurtha's invasion of 113, so it is
-    now a range.
+    The usual date of Opimius' commission is c. 116; MRR puts it in 117 or
+    116 ("This year is the latest possible date", after Gsell's 117) and
+    Bridoux in 117, four years before Jugurtha's invasion of 113, so the start
+    is a range.
 
 - id: mauretania
   kind: kingdom
@@ -2166,21 +2162,19 @@
     is not drawn. Herod fought him on Antony's orders in 32–31 (AJ 15.108–160),
     with no change of ground. In 30 "the Arabians about Petra" burned
     Cleopatra's ships (Dio 51.7.1). Obodas (II or III in modern numbering)
-    followed Malichus c. 30 (Bowersock 1983). The kingdom was "before 133"
-    until October 2026: no readable text shows a Nabataean king between
-    Aretas I, a "prince" in 169 who had "not yet assumed the title of king"
-    (Schürer), and Aretas II, "king of the Arabians" at Alexander Jannaeus'
-    siege of Gaza in 96 (Josephus, AJ 13.360; Schürer). Schürer makes Justin's
-    Erotimus (39.5.5–6) the founder of the royal line, but Justin dates him
-    only loosely. So the kingdom now opens at 96. The reigns read "Aretas II,
-    c. 120/110–96; Obodas I, c. 96–85; Aretas III, c. 85–62" until October
-    2026, years from coins in closed books; they now say only what Josephus
-    and Schürer state: Aretas II at Gaza in 96, Obodas I c. 90, Aretas III from
-    about 85 (Schürer, to 60 "according to the hitherto prevailing view") and
-    paying off Scaurus in 62 (AJ 14.80). Malichus I ended in 31 and Obodas
-    began in 30 until October 2026, after Bowersock; but Josephus has Malichus
-    still king in 30, at Hyrcanus' plot (AJ 15.165), and Schürer has him reign
-    to 28 and Obodas king by 28–29, so they now read so.
+    followed Malichus c. 30 (Bowersock 1983). No readable text shows a
+    Nabataean king between Aretas I, a "prince" in 169 who had "not yet
+    assumed the title of king" (Schürer), and Aretas II, "king of the
+    Arabians" at Alexander Jannaeus' siege of Gaza in 96 (Josephus, AJ
+    13.360; Schürer). Schürer makes Justin's Erotimus (39.5.5–6) the founder
+    of the royal line, but Justin dates him only loosely. So the kingdom opens
+    at 96. The reigns say only what Josephus and Schürer state: Aretas II at
+    Gaza in 96, Obodas I c. 90, Aretas III from about 85 (Schürer, to 60
+    "according to the hitherto prevailing view") and paying off Scaurus in 62
+    (AJ 14.80). Bowersock ends Malichus I in 31 and begins Obodas in 30; but
+    Josephus has Malichus still king in 30, at Hyrcanus' plot (AJ 15.165),
+    and Schürer has him reign to 28 and Obodas king by 28–29, so the ruler
+    follows Schürer.
 
 - id: bosporus
   kind: kingdom
@@ -2289,9 +2283,8 @@
     polity of its own (claims.yaml); a kingdom again under Machares, whom his
     father made king c. 80 and who killed himself when Mithridates came in 65
     (App. Mithr. 67, 102). Pharnaces II confirmed by Pompey in 63; killed after
-    Zela. Started before 68 until the extension to 133 BCE. Paerisades ruled
-    "to c. 108" until October 2026; Minns has him under Mithridates'
-    protection from the winter of 110 and killed in the autumn of 107.
+    Zela. Minns has Paerisades under Mithridates' protection from the winter
+    of 110 and killed in the autumn of 107.
 
 - id: thracia-odrysae
   kind: kingdom
@@ -2377,9 +2370,9 @@
     the two kings Cicero names: Sadala, to whom Verres was sent as legate c. 80
     (Verr. 2.1.63), and "king Cottus", for whom Piso killed the Bessian prince
     Rabocentus in 57–55 (Pis. 84). Its standing with Rome is drawn only from
-    31, the first year a text has a king as Rome's subject (claims.yaml). The start was "before 133" until October 2026, on
-    the Odrysian kings going back to the fifth century; no readable text
-    shows a king of this ground in 133. The first in the window is Cotys,
+    31, the first year a text has a king as Rome's subject (claims.yaml). The
+    Odrysian kings go back to the fifth century, but no readable text shows a
+    king of this ground in 133. The first in the window is Cotys,
     "the king of the Thracians", whom a Macedonian asked for help in
     Sentius' governorship, "around 90" in Kallet-Marx (Diod. 37.5a), hence
     the open start at 90. Diegylis, "king of Thrace" while an Attalus ruled
@@ -2534,15 +2527,15 @@
     Deiotarus taking the Tolistobogii (App. Mithr. 114; Magie I 373); he
     seized the Trocmi on Brogitarus' death and became sole ruler only after
     Caesar's death, when he killed Castor Tarcondarius (Strabo 12.5.3; Magie I
-    426). The ruler read "Deiotarus, c. 63–40" until October 2026. At his death in 40 his lands and
-    Paphlagonia went to his grandson Castor (Dio 48.33.5; Magie I 433), and in
-    37/36 to Amyntas, Antony's king in Pisidia since 39 (App. BC 5.75), who
-    received Galatia "with Lycaonia and portions of Pamphylia" (Dio
-    49.32.3). He went over to Octavian before Actium and was confirmed and
-    enlarged with Cleopatra's Rough Cilicia (Dio 51.2.1; Strabo 14.5.6): his
-    kingdom ran "from the mountains of northern Galatia to the shore of the
-    Mediterranean" (Magie I 434) until his death in 25, when it became a
-    province (Dio 53.26.3). The Pontic lands went to Darius in 39.
+    426). At his death in 40 his lands and Paphlagonia went to his grandson
+    Castor (Dio 48.33.5; Magie I 433), and in 37/36 to Amyntas, Antony's king
+    in Pisidia since 39 (App. BC 5.75), who received Galatia "with Lycaonia
+    and portions of Pamphylia" (Dio 49.32.3). He went over to Octavian before
+    Actium and was confirmed and enlarged with Cleopatra's Rough Cilicia (Dio
+    51.2.1; Strabo 14.5.6): his kingdom ran "from the mountains of northern
+    Galatia to the shore of the Mediterranean" (Magie I 434) until his death
+    in 25, when it became a province (Dio 53.26.3). The Pontic lands went to
+    Darius in 39.
 
 - id: cappadocia
   kind: kingdom
@@ -2738,9 +2731,7 @@
     on Magie (I 390), in 64 at the earliest on Kallet-Marx (215, after
     Mattingly's spring 64); Ariobarzanes II was murdered "probably about 54"
     (Magie I 390) and certainly before Cicero met his son as king in September
-    51 (Fam. 15.2). The ruler read "Ariobarzanes I, c. 96/95–c. 63/62;
-    Ariobarzanes II, c. 63/62–52/51; Ariobarzanes III, 51–43/42" until October
-    2026.
+    51 (Fam. 15.2).
 
 - id: commagene
   kind: kingdom
@@ -2822,9 +2813,6 @@
     The ruler reads only what readable texts give: Antiochus king in
     Hortensius' consulship (69, Dio 36.1.1–2.5) and at the siege of Samosata
     after Pacorus fell (38, Plut. Antony 34.1); Mithridates II at Actium.
-    Until October 2026 it began "Sames II; Mithridates I Callinicus, c.
-    100–70; Antiochus I, c. 70–36", from Sullivan and Facella, which were not
-    read.
 
 - id: judaea
   kind: kingdom
@@ -2944,8 +2932,7 @@
     from 63 (Aristobulus II three years and three months, Alexandra nine,
     Jannaeus twenty-seven, Aristobulus I one, Hyrcanus thirty-one) gives the
     first dates in ruler; his consuls of 69 for the start of the brothers' war
-    (AJ 14.4), which Schürer follows, give those in brackets. The ruler line
-    read 134–104, 104–103, 103–76, 76–67 and 67–63 alone until October 2026.
+    (AJ 14.4), which Schürer follows, give those in brackets.
 
 - id: ituraea
   kind: kingdom
@@ -3090,17 +3077,15 @@
     reward for accusing" him, was deposed by Octavian and killed after the
     triumph (51.2.2). Iamblichus' first year is Cicero's despatch as
     proconsul of Cilicia, 51 (Fam. 15.1.2). Alexander's reign is given only
-    as 31, the year Octavian deposed him; until October 2026 it read 31–30,
-    on Josephus BJ 1.393, whose suppliant Alexander, "one of Antony's
-    friends", is not said to be of Emesa. The kingdom
-    was restored to Iamblichus II only in 20 (Dio 54.9.2).
-    The principality is first seen when Antiochus XIII called on
-    Sampsiceramus (Diodorus 40.1b.1), an episode Schürer puts "probably" in
-    65 or 64, within Antiochus' reign of 69–65 (pp. 183–184): so it begins
-    between 69 and 65. Like its first claim row, it starts at the earlier
-    bound, 69, next to Tigranes' years, rather than leave a gap. Until
-    October 2026 it read "before 69", which says it stood in 69 and earlier;
-    no readable text does.
+    as 31, the year Octavian deposed him: the suppliant Alexander of
+    Josephus BJ 1.393, "one of Antony's friends", is not said to be of Emesa.
+    The kingdom was restored to Iamblichus II only in 20 (Dio 54.9.2). The
+    principality is first seen when Antiochus XIII called on Sampsiceramus
+    (Diodorus 40.1b.1), an episode Schürer puts "probably" in 65 or 64,
+    within Antiochus' reign of 69–65 (pp. 183–184): so it begins between 69
+    and 65. Like its first claim row, it starts at the earlier bound, 69,
+    next to Tigranes' years, rather than leave a gap. No readable text has it
+    standing in 69 and earlier.
 
 - id: osroene
   kind: kingdom
@@ -3166,19 +3151,16 @@
     entry, "In the year 180 kings began to rule in Edessa" (Seleucid year 180,
     133/132). The translator's note gives Dionysius' date for the first king,
     the year of Abraham 1880, B.C. 136, and Assemani's reckoning of year 180 as
-    B.C. 129, which the Seleucid era does not bear out. The start was "c. 132"
-    until October 2026; it is now the range between Dionysius' year and the
-    Chronicle's, drawn at 134. The rulers were the Edessene king-list as
-    Segal gives it (Aryu, from 132; Abgar II, to 53; Ma'nu II, 52–34; Paqor,
-    34–29; Abgar III, from 29), whose early dates he says are to be treated
-    with caution; Segal is not open, so since October 2026 the field keeps
-    only the kings a readable text names: Dionysius' first king (in the
-    Chronicle's note) and Dio's Abgarus of 53.
-    Its standing with Rome after the 60s is not known (see relations.yaml).
-    Still a kingdom in 27: Abgarus of Osroene fought Crassus in 53 (Dio
-    40.20.1), Acbarus held Edessa in 49 CE (Tacitus Ann. 12.12), and the
-    Chronicle has its kings from year 180 to Abgar's mausoleum in year 400
-    (89 CE), with nothing between to suggest a break.
+    B.C. 129, which the Seleucid era does not bear out. So the start is the
+    range between Dionysius' year and the Chronicle's, drawn at 134. Segal
+    gives an Edessene king-list whose early dates he says are to be treated
+    with caution; Segal is not open, so the ruler keeps only the kings a
+    readable text names: Dionysius' first king (in the Chronicle's note) and
+    Dio's Abgarus of 53. Its standing with Rome after the 60s is not known
+    (see relations.yaml). Still a kingdom in 27: Abgarus of Osroene fought
+    Crassus in 53 (Dio 40.20.1), Acbarus held Edessa in 49 CE (Tacitus Ann.
+    12.12), and the Chronicle has its kings from year 180 to Abgar's
+    mausoleum in year 400 (89 CE), with nothing between to suggest a break.
 
 - id: amanus
   kind: kingdom
@@ -3545,9 +3527,9 @@
     to 31, when Phraates took the kingdom and the Mede fled to Octavian (Dio
     49.44.4, 51.16.2), who later gave him Lesser Armenia
     (armenia-minor-artavasdes). An Ariobarzanes I between Mithridates and
-    Artavasdes, which the ruler list used to carry, is named by no text read
-    for this record (Debevoise knows only the later Ariobarzanes, son of
-    Artavasdes); Schottky, who may hold it, is not open.
+    Artavasdes is named by no text read for this record (Debevoise knows only
+    the later Ariobarzanes, son of Artavasdes); Schottky, who may hold it, is
+    not open.
 
 - id: iberia-caucasia
   kind: kingdom
@@ -3809,11 +3791,8 @@
     One polity for a dynasty at war with itself: from 113 the kingdom was
     divided between Grypus at Antioch and Cyzicenus in Coele-Syria, and their
     sons after them; the reign dates are Schürer's (1891, pp. 177–183), from
-    Porphyry, Josephus and the coins, and are approximate. Until October 2026
-    they were given as Ehling's, a book not opened, and differed: Sidetes to
-    129, Demetrius II 129–126/125, Zabinas c. 128–123, Grypus from 125,
-    Cyzicenus from 114/113, Asiaticus to 64; they now follow Schürer, who also
-    gives Gutschmid's 129 for Sidetes' death. Antiochus VII won back Babylon in
+    Porphyry, Josephus and the coins, and are approximate. Schürer also gives
+    Gutschmid's 129 for Sidetes' death. Antiochus VII won back Babylon in
     130 ("having got possession of Babylon", Justin 38.10) and was killed
     fighting Phraates II. Tigranes held Syria and the Cilician plain in 83–70
     (App. Syr. 48); the dynasty was restored by Lucullus in 69 and set aside by
@@ -4301,8 +4280,7 @@
     late 30s or early 20s (Mitchell), or after Actium with Octavian's leave
     (Magie I 443), which is the date drawn (Dmitriev 371 n. 81 collects the
     views; his own text has it "several years after Polemo had left for
-    Pontus"). As the readable texts disagree, the confidence was lowered from
-    probable in October 2026.
+    Pontus"). As the readable texts disagree, the confidence is uncertain.
 
 - id: lycia
   kind: league
@@ -4444,12 +4422,11 @@
     The Crimean Scythians, with their royal seat at Neapolis. Scilurus and his
     sons, "fifty in number" according to Poseidonius (Strabo 7.4.3), fought
     Diophantus for Mithridates c. 110–107; "Palakos, king of the Scythians" in
-    the decree. Subject to Mithridates from then (claims.yaml). It ran "after
-    27 BCE" until the October 2026 check: no citation backed an end, and no
-    text read has the Scythians of the peninsula as a kingdom after
-    Mithridates' death in 63, where their last claim already ends. The start,
-    "before 133", rests on the decree's commentary alone, as on the first
-    claim: the Scythians held Chersonesite land in the 3rd and 2nd centuries.
+    the decree. Subject to Mithridates from then (claims.yaml). No text read
+    has the Scythians of the peninsula as a kingdom after Mithridates' death
+    in 63, where their last claim already ends. The start, "before 133",
+    rests on the decree's commentary alone, as on the first claim: the
+    Scythians held Chersonesite land in the 3rd and 2nd centuries.
 
 - id: chersonesus
   kind: city-state
@@ -4486,8 +4463,7 @@
     (Strabo 7.4.3). It kept its council, assembly and yearly eponym (the
     decree for Diophantus is dated by them) under Mithridates and the
     Bosporan kings, so the polity runs on; it holds its own ground only until
-    it took the king as protector c. 110 (claims.yaml). Added for the extension
-    to 133 BCE.
+    it took the king as protector c. 110 (claims.yaml).
 
 - id: mauretania-bogud
   kind: kingdom
@@ -4803,13 +4779,12 @@
     few years' and which broke up when he was overthrown (Strabo
     7.3.11). Jordanes has Buruista already king "at the time when Sulla ruled
     the Romans" (Getica 67), 82–79, and Strabo still reigning when Caesar
-    prepared his expedition (7.3.5), so the kingdom was in force by 79. It
-    read c. 60, a modern convention no readable text states, until October
-    2026; Jordanes' date is late and stands alone, hence uncertain. The end
-    is open: Burebista still reigned when Caesar planned his Dacian war, the
-    year Caesar was killed (Suet. Aug. 8), and was overthrown "before the
-    Romans sent an expedition against him" (Strabo 7.3.11), in a year no
-    readable text gives. It read 44 until October 2026.
+    prepared his expedition (7.3.5), so the kingdom was in force by 79. No
+    readable text states the modern convention of c. 60; Jordanes' date is
+    late and stands alone, hence uncertain. The end is open: Burebista still
+    reigned when Caesar planned his Dacian war, the year Caesar was killed
+    (Suet. Aug. 8), and was overthrown "before the Romans sent an expedition
+    against him" (Strabo 7.3.11), in a year no readable text gives.
 
 - id: pontic-cities
   kind: league
@@ -4904,11 +4879,10 @@
     A kingdom friendly to Rome until its annexation after the Norican raid on
     Istria in 16 (Dio 54.20.2). No king is securely named for 43–27. The
     Taurisci made to pay tribute in 35 (App. Ill. 16), whom Strabo counts among
-    the Norici (4.6.9), lived south of the kingdom drawn here. The locator was
-    ch. 3 until September 2026; the first century BCE is chs. 4–5. Polybius
-    knew the gold of "the Taurisci Norici" (Strabo 4.6.12), and in 113 they
-    were "foreign friends of the Romans" (App. Celt. 13), hence the open start
-    at 133.
+    the Norici (4.6.9), lived south of the kingdom drawn here. Alföldy's
+    first century BCE is chs. 4–5. Polybius knew the gold of "the Taurisci
+    Norici" (Strabo 4.6.12), and in 113 they were "foreign friends of the
+    Romans" (App. Celt. 13), hence the open start at 133.
 
 - id: delmatae
   kind: people
@@ -5036,9 +5010,8 @@
     Their Tigurini joined the Cimbri and killed the consul L. Cassius among the
     Nitiobriges in 107 (Livy Per. 65; BG 1.12). Tacitus puts the Helvetii of an
     earlier age between the Rhine and the Main (Germania 28); when they settled
-    the plateau Caesar knew is not recorded. It read "before 133" until the
-    October 2026 check, which found no text naming them before 107, the year
-    the polity's claim already starts from.
+    the plateau Caesar knew is not recorded. No text names them before 107,
+    the year the polity's claim already starts from.
 
 - id: sequani
   kind: people
@@ -5094,9 +5067,8 @@
   review: draft
   note: >-
     First dated in 61, when Casticus, son of the Sequani's long-reigning king,
-    is named (BG 1.2–3). It read "before 133" until the October 2026 check:
-    no text read has them in 133, though Strabo has them "for long" at
-    enmity with Rome (4.3.2), and their claim already started at 61.
+    is named (BG 1.2–3). No text read has them in 133, though Strabo has
+    them "for long" at enmity with Rome (4.3.2), and their claim starts at 61.
 
 - id: aedui
   kind: people
@@ -5214,10 +5186,10 @@
     Pyrenees, the Ocean and the Rhine (Strabo 4.2.3); that hegemony has no
     extent anyone can draw and is not claimed. Beaten by Domitius and Fabius in
     121, Bituitus was held at Alba (Livy Per. 61), but the Arverni were
-    pardoned and neither made a province nor taxed (BG 1.45). It read "before
-    133" until the October 2026 check: the first dated text is Fabius' war in
-    121 (Per. 61, by his consulship), the year their claim starts from;
-    Luerius' reign, which Strabo puts before Bituitus', is undated.
+    pardoned and neither made a province nor taxed (BG 1.45). The first dated
+    text is Fabius' war in 121 (Per. 61, by his consulship), the year their
+    claim starts from; Luerius' reign, which Strabo puts before Bituitus', is
+    undated.
 
 - id: vaccaei
   kind: people
@@ -5306,8 +5278,8 @@
     Free of Roman rule to the end of the data: Statilius Taurus' campaign of c.
     29 (Dio 51.20.5) did not end it, and Augustus' war against them began in 26
     (Suet. Aug. 26.3; Flor. 2.33.46–48; Dio 53.25). Lancia fell only in 25 (Dio
-    53.25.8). It read "before 133" until the October 2026 check: the first text
-    with them is Dio's for 29, the year their claim starts from.
+    53.25.8). The first text with them is Dio's for 29, the year their claim
+    starts from.
 
 - id: cantabri
   kind: people
@@ -5639,8 +5611,7 @@
     "the transalpine Iapydes were then for the first time brought in subjection
     to the Romans" (Ill. 21). Dio has them among peoples who had failed to pay
     their tribute in 36–35 (49.34.2), so some — probably the cisalpine
-    Moentini and Avendeatae (Ill. 16) — were tributary before. Added September
-    2026.
+    Moentini and Avendeatae (Ill. 16) — were tributary before.
 
 - id: mauretania-roman
   kind: province
@@ -5950,10 +5921,10 @@
     though Dio says his list follows later arrangements (53.12.8) and Strabo's
     joint listing (17.3.25) is Tiberian. An Antonian officer struck coin at
     Cnossus and Cyrene alike (RPC I 914–917), so a joint command is likely
-    earlier. The ground passes to it at 27. The start was a range from 36,
-    resting on those coins; RPC's online entries name the province and the
-    magistrate but give no year, and no other open text dates a joint
-    command, so it is now an open end at its first attestation.
+    earlier. The ground passes to it at 27. RPC's online entries name the
+    province and the magistrate but give no year, and no other open text
+    dates a joint command, so the start is an open end at its first
+    attestation.
 
 - id: triakontaschoinos
   kind: kingdom
@@ -6368,8 +6339,8 @@
     belongs to Herod. The end is disputed: Josephus puts the fall in the
     consulship of Agrippa and Gallus (37), Dio under Claudius and Norbanus (38,
     49.22.3–23.1), which would end the kingdom a year earlier. The later date
-    is kept, Josephus' and Schürer's, as for Africa Nova; confidence is
-    lowered.
+    is kept, Josephus' and Schürer's, as for Africa Nova, and the record is
+    uncertain.
 
 # --- added September 2026: the extension to 133 BCE — the West ---------------
 
@@ -6484,7 +6455,7 @@
     Flor. 1.43) and took the name Balearicus. Livy tells the war in book 60,
     under 123. Metellus was still at "his reduction and settlement" as
     proconsul in 122 and triumphed in 121 (MRR), so they are free to 122 and
-    their land is Hither Spain's from 121. It read 124 until the check.
+    their land is Hither Spain's from 121.
 
 - id: tectosages
   kind: people
@@ -6605,8 +6576,7 @@
     heads 75, a date of the site's. The province is dated from 74
     (bithynia-pontus), so the kingdom ends with 75. The kings' years are
     Magie's (317–320): Nicomedes II from 149 to about 127, Nicomedes III to
-    about 94. Until October 2026 the ruler read "to c. 128/127" and
-    "c. 94–75/74", years no readable text gives.
+    about 94.
 
 - id: aristonicus
   kind: kingdom
@@ -6690,10 +6660,9 @@
     had fled (Eutropius 4.20; Orosius 5.10), and died in prison at Rome;
     Aquillius finished the war in 129. Livy's epitome, Eutropius and Justin
     all have him surrender to Perperna as consul, which was 130 (DPRR), so
-    130 is Rome's and the kingdom's last year is 131 (it was 130 until
-    October 2026). His
-    extent is not known — cities and fortresses, not a territory — so he is
-    drawn as a seat (seats.yaml).
+    130 is Rome's and the kingdom's last year is 131. His extent is not known
+    — cities and fortresses, not a territory — so he is drawn as a seat
+    (seats.yaml).
 
 - id: cibyra
   kind: city-state

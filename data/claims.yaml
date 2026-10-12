@@ -991,10 +991,9 @@
     and Samnites were in the Roman state (App. BC 1.53). Velleius has the grant
     to the conquered states in the year of Sulla's consulship, 88 (2.17.1): the
     year of submission is taken, as for the other regions. Under Augustus the
-    Hirpini were in the second region of Italy (Pliny 3.99). The row cited
-    Cicero, Arch. 7, for the lex Plautia Papiria until October 2026, but that
-    passage is about a law for individual citizens of allied cities, not the
-    surrendered peoples.
+    Hirpini were in the second region of Italy (Pliny 3.99). Cicero, Arch. 7, is
+    about a law for individual citizens of allied cities, not the surrendered
+    peoples, so it is not cited for the lex Plautia Papiria.
 
 - atom: italia-apulia
   polity: socii
@@ -1589,8 +1588,7 @@
   confidence: probable
   review: draft
   note: >-
-    A copy of cisalpina's province row, since the atom was cut out of it in
-    September 2026.
+    A copy of cisalpina's province row.
 
 - atom: cisalpina-cispadana
   polity: italia
@@ -1763,8 +1761,7 @@
     Provincial from 81–80 (see the polity); before, allied (the row above). The
     lex Roscia of 49 gave the Transpadanes citizenship, but the province went
     on: D. Brutus governed it in 44–43 and Antony fought him for it. It was
-    merged into Italy only in 42 (App. BC 5.3; Dio 48.12.5); the row ran to
-    "after 43" until September 2026, against its own polity's end.
+    merged into Italy only in 42 (App. BC 5.3; Dio 48.12.5).
 
 # --- the islands ---------------------------------------------------------------
 
@@ -2027,8 +2024,6 @@
     killed some 20,000 Arevaci and brought Termes down into the plain in
     98–93 (Hisp. 99), Sertorius held the country in the 70s, and in 56 the
     Vaccaei and their neighbours drove Metellus Nepos off Clunia (Dio 39.54).
-    It read "before 68" until September 2026, as held after Pompey's Sertorian
-    campaigns.
 
 - atom: baliares
   polity: baliares
@@ -2080,8 +2075,7 @@
     to be conquered when Q. Metellus, consul in 123, received the command
     against them (MRR): the two bracket 133. Ends the year before the island
     is Rome's, 121 (the next row): Metellus was still at "his reduction and
-    settlement" as proconsul in 122 (MRR). It read 124, the year before the
-    command, at certain, until the check.
+    settlement" as proconsul in 122 (MRR).
 
 - atom: baliares
   polity: hispania-citerior
@@ -2145,11 +2139,10 @@
     the command in 123 but was still at "his reduction and settlement" as
     proconsul in 122, and his triumph is entered under 121 (MRR), so the
     islands are drawn Rome's from 121, not from the year the war began; no
-    text dates the end of the fighting nearer. It read 123 until the check. That the islands were Hither
+    text dates the end of the fighting nearer. That the islands were Hither
     Spain's rests on Pliny, who counts them with the province and its
     jurisdiction of Carthago Nova (3.18, 3.25); no earlier text names the
-    province they were governed from. Until September 2026 the islands were
-    part of the hispania-citerior atom and Hither Spain's throughout.
+    province they were governed from.
 
 - atom: hispania-ulterior
   polity: hispania-ulterior
@@ -2401,7 +2394,7 @@
     puts the war in 61, Caesar's year in Farther Spain after his praetorship
     of 62; Dio tells it among the events of 60, the year of Afranius and
     Metellus (37.49.1, 37.52.1), and Caesar left for the elections that
-    summer (Suet. Iul. 18). It read 60 until October 2026; it now covers both.
+    summer (Suet. Iul. 18).
 
 - atom: gallia-transalpina
   polity: gallia-transalpina
@@ -2534,15 +2527,13 @@
     revolt Caepio put down (Dio fr. 90). The alliance's start is not recorded:
     no earlier than 121, when Fabius broke the Arverni, whose authority had
     reached the Pyrenees (Strabo 4.2.3; Livy Per. 61), and no later than the
-    revolt that ended it, before Caepio took the city in 106 (MRR). Until
-    October 2026 it read 121–118, taking the colony of Narbo on their borders
-    in 118 (Vell. 2.7.8) as its latest start; no readable text ties Narbo to
-    the Tolosates' alliance. The revolt of 107 is inside this row. The start
-    is drawn at 121, the earliest the texts allow, not at the midpoint of
-    121–107 (the relation keeps the range): a range on a start is drawn at its
-    midpoint, 114, which would leave 121–115 blank after the independent row
-    that ends in 122. Uncertain, so drawn fainter; the alliance may have begun
-    any time up to the revolt. It was 121–107 until the check.
+    revolt that ended it, before Caepio took the city in 106 (MRR). No readable
+    text ties Narbo to the Tolosates' alliance. The revolt of 107 is inside this
+    row. The start is drawn at 121, the earliest the texts allow, not at the
+    midpoint of 121–107 (the relation keeps the range): a range on a start is
+    drawn at its midpoint, 114, which would leave 121–115 blank after the
+    independent row that ends in 122. Uncertain, so drawn fainter; the alliance
+    may have begun any time up to the revolt.
 
 - atom: tolosates
   polity: gallia-transalpina
@@ -2682,12 +2673,11 @@
   note: >-
     Assigned to Caesar with Cisalpina by the lex Vatinia of 59. That is the
     year it is attested in force, not the year it began (the polity and the
-    relation say "before 59"), and it read 59 exactly until the check. What
-    Rome held was the coast; before 59 its governance is unclear and it is
-    left unclaimed, back to 133: Appian has "Roman Illyria" raided in 135 and
-    "the Illyrian subjects of Rome" in 156 (Ill. 10–11), and Cosconius took
-    Salona in 78–76 (Eutropius 6.4), but no source says who governed the coast
-    or how far Rome's writ ran on it.
+    relation say "before 59"). What Rome held was the coast; before 59 its
+    governance is unclear and it is left unclaimed, back to 133: Appian has
+    "Roman Illyria" raided in 135 and "the Illyrian subjects of Rome" in 156
+    (Ill. 10–11), and Cosconius took Salona in 78–76 (Eutropius 6.4), but no
+    source says who governed the coast or how far Rome's writ ran on it.
 
 # --- Greece and the Balkans ----------------------------------------------------
 
@@ -2892,10 +2882,9 @@
     (Dio 47.25.1, 42). No text calls them Rome's allies or clients; this is
     the closest standing the texts describe, kings working with Rome, which
     the data draws as allied. Ends the year before Sadalas is first called a
-    "subject king", at Actium (see the client row). Added October 2026: the
-    kingdom was drawn blank before 31. Odrysian authority over the inland
-    tribes was intermittent, and the governors of Macedonia fought Thracians
-    again and again (Livy Per. 63–97; Cic. Pis. 84).
+    "subject king", at Actium (see the client row). Odrysian authority over the
+    inland tribes was intermittent, and the governors of Macedonia fought
+    Thracians again and again (Livy Per. 63–97; Cic. Pis. 84).
 
 - atom: thracia-odrysae
   polity: thracia-odrysae
@@ -2949,9 +2938,8 @@
     before 16 (Dio 54.20.3). Antony's "subject kings" at Actium included
     Sadalas of Thrace (Plut. Ant. 61.1). The start is the first year a text
     has the king Rome's subject, 31, not the beginning of the tie; before it
-    the kings are drawn as allied (the row before). The claim read "c. 80"
-    until October 2026, on Verres' embassy to king Sadala (Cic. Verr. 2.1.63),
-    which says nothing of his standing.
+    the kings are drawn as allied (the row before). Verres' embassy to king
+    Sadala (Cic. Verr. 2.1.63) says nothing of his standing.
 
 # The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
 # Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
@@ -3001,10 +2989,9 @@
     the Chersonese and the Caenic land in war, and the law of 101/100 (late
     100 or early 99 in Sumner) sends the governor of Macedonia straight
     there; Didius triumphed from Macedonia (Cic. Pis. 61). Unclaimed before: see the atom.
-    From here the row is macedonia's, which this ground was part of until the
-    extension to 133 BCE. Still Roman in 27: the Chersonese was in Piso's
-    province in 57–55, where he sold its corn (Cic. Pis. 86), and by 12 it
-    was Agrippa's property, inherited by Augustus (Dio 54.29.5); nothing
+    From here the row is macedonia's. Still Roman in 27: the Chersonese was in
+    Piso's province in 57–55, where he sold its corn (Cic. Pis. 86), and by 12
+    it was Agrippa's property, inherited by Augustus (Dio 54.29.5); nothing
     between says it left Roman hands.
 
 - atom: macedonia
@@ -3070,12 +3057,11 @@
     entered Thessalia" was destroyed at Chaeronea (Livy Per. 82); Flaccus'
     army crossed from Europe to Chalcedon later that year (Mithr. 52), and Sulla
     marched through Macedonia to the Hellespont in 85 (Sulla 23.1). So the
-    occupation ends with 86 and the row with 87 (README decision 17); until
-    the check it ran to 86, with Greece. Drawn over the whole atom, though
-    Sentius held out somewhere in it. The years: Sulla left Italy after
-    naming the consuls of 87 (Eutrop. 5.4), and the army that had occupied
-    Macedonia was beaten in the year Flaccus was consul with Cinna, 86 (Livy
-    Per. 82; Vell. 2.23.1–3).
+    occupation ends with 86 and the row with 87 (README decision 17). Drawn over
+    the whole atom, though Sentius held out somewhere in it. The years: Sulla
+    left Italy after naming the consuls of 87 (Eutrop. 5.4), and the army that
+    had occupied Macedonia was beaten in the year Flaccus was consul with Cinna,
+    86 (Livy Per. 82; Vell. 2.23.1–3).
 
 - atom: chersonesus-thracica
   polity: pontus-regnum
@@ -3620,15 +3606,13 @@
     command from the lex Gabinia of January 67 (Borgia 301), under which he
     settled pirates at Soli (Plut. Pompey 28.4); Magie's annexation with the
     making of Syria a province, in 64, or earlier under Lucullus (I 376); and
-    Borgia's "new province of Cilicia created in 62 BC" (301). Until October
-    2026 the range was 67–64, which left Borgia's 62 out; then 67–62, drawn
-    at 64, which left 69–65 blank after Tigranes' row (to 70). It is now drawn
-    from 67, the range's first year, and lowered from probable; 69–68 stay
-    blank, as no text read says who held the plain between Tigranes'
-    withdrawal and Pompey's command. The province "was probably dismembered soon
-    after Caesar's death" (I 433); elsewhere Magie puts the plain's attachment
-    to Syria "apparently in the course of 44" (I 418), which would make 44
-    Syria's; the next row (syria, from 43) is left as it is.
+    Borgia's "new province of Cilicia created in 62 BC" (301). It is drawn from
+    67, the range's first year; 69–68 stay blank, as no text read says who held
+    the plain between Tigranes' withdrawal and Pompey's command. The province
+    "was probably dismembered soon after Caesar's death" (I 433); elsewhere
+    Magie puts the plain's attachment to Syria "apparently in the course of 44"
+    (I 418), which would make 44 Syria's; the next row (syria, from 43) is left
+    as it is.
 
 - atom: galatia
   polity: galatia
@@ -3699,23 +3683,22 @@
     Allied, not client: no readable text calls the Galatians Rome's clients
     before Pompey; the senate left them autonomous (Polybius 30.28) and they
     sent forces to Rome's generals in 89 (App. Mithr. 17), so the row reads
-    allied, the closest the texts describe (October 2026; it read client).
-    The three peoples under their tetrarchs. Their standing to Rome before
-    Pompey is not stated anywhere: Rome raised troops from "the Galatians of
-    Asia" in 89 (App. Mithr. 17), Mithridates killed their tetrarchs in 86 and
-    the survivors drove out his satrap (46), and Deiotarus fought his generals
-    in the 70s (75; Livy Per. 94.2). Justin says Mithridates "seized also on
-    Galatia" after Paphlagonia (37.4), undated and not drawn. The peoples
-    held their own land from before the window (Magie I 22, in 168) to
-    Pompey's settlement after Mithridates' death in 63 (App. Mithr. 114; Dio
-    37.10.4). No readable text calls them clients before Pompey: Magie has
-    them "in general" supporting Rome, their relations with it still to be
-    "more definitely established" in 63 (I 372). The relation is client on
-    one passage: the senate granted their autonomy on condition that they
-    stayed in their settlements and did not cross their frontier in arms
-    (Polybius 30.28, in a book of the 160s, before his history stops in 146),
-    terms Rome set and could enforce; the relation row (galatia client-of
-    rome, to 64) rests on the same passage.
+    allied, the closest the texts describe. The three peoples under their
+    tetrarchs. Their standing to Rome before Pompey is not stated anywhere: Rome
+    raised troops from "the Galatians of Asia" in 89 (App. Mithr. 17),
+    Mithridates killed their tetrarchs in 86 and the survivors drove out his
+    satrap (46), and Deiotarus fought his generals in the 70s (75; Livy Per.
+    94.2). Justin says Mithridates "seized also on Galatia" after Paphlagonia
+    (37.4), undated and not drawn. The peoples held their own land from before
+    the window (Magie I 22, in 168) to Pompey's settlement after Mithridates'
+    death in 63 (App. Mithr. 114; Dio 37.10.4). No readable text calls them
+    clients before Pompey: Magie has them "in general" supporting Rome, their
+    relations with it still to be "more definitely established" in 63 (I 372).
+    The relation is client on one passage: the senate granted their autonomy on
+    condition that they stayed in their settlements and did not cross their
+    frontier in arms (Polybius 30.28, in a book of the 160s, before his history
+    stops in 146), terms Rome set and could enforce; the relation row (galatia
+    client-of rome, to 64) rests on the same passage.
 
 - atom: galatia
   polity: galatia
@@ -3831,8 +3814,9 @@
   note: >-
     Deiotarus' kingdom on the Euxine coast, given him by Pompey (Strabo
     12.3.13) in the settlement of the winter of 63/62 (Magie I 365); Magie
-    dates the grant to 62 (I 413). Until October 2026 the row started in 63. He died "about the time when the compact" of Brundisium was
-    formed, in 40, and Antony gave the coast to Darius (Magie I 433).
+    dates the grant to 62 (I 413). He died "about the time when the compact" of
+    Brundisium was formed, in 40, and Antony gave the coast to Darius (Magie I
+    433).
 
 - atom: armenia-minor
   polity: galatia
@@ -3900,11 +3884,10 @@
   note: >-
     Given to Deiotarus by Pompey (Strabo 12.3.13; Eutrop. 6.14), with the
     Euxine coast (Magie I 374), in the settlement of the winter of 63/62
-    (I 365); Magie dates that grant to 62 (I 413). Until October 2026 the row
-    started in 63. Pharnaces
-    overran it in 48 (an occupation row), and after Zela Caesar gave the part
-    bordering Cappadocia to Ariobarzanes (Dio 42.48.3; Magie I 413), in the
-    year Calenus and Vatinius were consuls, 47 (Dio 42.55.4).
+    (I 365); Magie dates that grant to 62 (I 413). Pharnaces overran it in 48
+    (an occupation row), and after Zela Caesar gave the part bordering
+    Cappadocia to Ariobarzanes (Dio 42.48.3; Magie I 413), in the year Calenus
+    and Vatinius were consuls, 47 (Dio 42.55.4).
 
 - atom: armenia-minor
   polity: cappadocia
@@ -4142,8 +4125,7 @@
     replaced his brother in Alexandria in 107. Pausanias has his mother send
     him there "ostensibly as general" (1.9.2); the royal title rests on his
     Cypriot dating (Bennett). Drawn from 114, the earlier year of 114/3, next
-    to the Egyptian row ending in 115: as the range 114–113 it sat at 113 and
-    left 114 blank. Uncertain, not probable, since October 2026, for that.
+    to the Egyptian row ending in 115, and so uncertain, not probable.
 
 - atom: cyprus
   polity: aegyptus
@@ -4302,7 +4284,7 @@
     Ptolemy of Cyprus, king from 80 until the lex Clodia. Not a client: Cicero
     says the senate had not yet styled Ptolemy an ally (Sest. 57). Rome's claim
     to the Ptolemaic realms under the will of Ptolemy Alexander stood
-    unenforced until 58. Ran from "before 68" until September 2026.
+    unenforced until 58.
 
 - atom: cyprus
   polity: cilicia
@@ -4343,8 +4325,7 @@
   note: >-
     Annexed 58 and attached to Cilicia; Cicero governed it in 51–50. Caesar
     gave it to Arsinoe and the younger Ptolemy at Alexandria in 48 (Bennett,
-    "Arsinoe IV", on Dio 42.35), so 48 is theirs. Ran to 48 until October
-    2026.
+    "Arsinoe IV", on Dio 42.35), so 48 is theirs.
 
 - atom: cyprus
   polity: aegyptus
@@ -4432,8 +4413,7 @@
     Schrapel (1996) keeps it hers throughout, and Cayla (2017) argues for joint
     rule in 41–37/36. Drawn as hers throughout. Antony's grant fell with him
     (Strabo 14.6.6), overthrown at Actium in the year Caesar and Messalla were
-    consuls, 31 (Dio 50.10.1). Roman from 30 (cyprus). Started in 47 until
-    October 2026.
+    consuls, 31 (Dio 50.10.1). Roman from 30 (cyprus).
 
 # --- the Levant ----------------------------------------------------------------
 
@@ -4603,7 +4583,7 @@
     carries no consulship, and Schürer, after Mendelssohn, dates its
     beginning, with a share of Joppa's tribute, to 47 but most of it, with
     Joppa itself, probably to 44; the Jews certainly held it in 44. Drawn
-    from 47, the earlier reading. It was probable until October 2026.
+    from 47, the earlier reading.
 
 - atom: judaea-joppa
   polity: judaea
@@ -4645,7 +4625,7 @@
   review: draft
   note: >-
     Restored to Hyrcanus by Caesar (AJ 14.205), in 47 or by 44 (Schürer; see
-    the row before). Drawn from 47. It was probable until October 2026.
+    the row before). Drawn from 47.
 
 # --- Africa --------------------------------------------------------------------
 
@@ -4725,7 +4705,6 @@
     108 is the last year attested (the royal letter and the statue base), and
     Bennett's later, ambiguous evidence, an Apollonia inscription of Ptolemy
     IX's admiral dated no earlier than 106/5, keeps him there to 106 or later.
-    It was 108 until October 2026 (checked).
 
 - atom: cyrenaica
   polity: cyrenaica-apion
@@ -4859,8 +4838,7 @@
     gives the fragment (Hist. 2.43 M, after the consuls Octavius and Cotta,
     2.42 M); Appian has Cyrene acquired "the following year" in the 176th
     Olympiad, 76–73 (BC 1.111). Ends with Antony's grant to Cleopatra Selene
-    in his consular year, 34 (Dio 49.39.1, 49.41.3). Ran from "before 68"
-    until September 2026.
+    in his consular year, 34 (Dio 49.39.1, 49.41.3).
 
 - atom: numidia
   polity: numidia
@@ -5016,7 +4994,7 @@
   note: >-
     Gauda's, then Hiempsal II's and Juba I's eastern kingdom, to the fossa
     regia (Bridoux ¶145, ¶153, ¶157); Pompey gave it back to Hiempsal in 81
-    (Plut. Pompey 12.4). Ran from "before 68" until September 2026.
+    (Plut. Pompey 12.4).
 
 - atom: numidia
   polity: africa-nova
@@ -5190,7 +5168,7 @@
     - { source: bridoux-2020, locator: '¶102' }
   confidence: probable
   review: draft
-  note: Cirta was Juba's capital. Ran from "before 68" until September 2026.
+  note: Cirta was Juba's capital.
 
 - atom: numidia-cirta
   polity: africa-nova
@@ -5452,7 +5430,7 @@
   note: >-
     Masinissa II's principality, which Bridoux takes as a vassal of the eastern
     Numidian kings (¶154–155). Given to Sittius in 46, recovered by Arabio in
-    44. Ran from "before 68" until September 2026.
+    44.
 
 - atom: numidia-soummam
   polity: numidia
@@ -5930,7 +5908,7 @@
     être jusqu'à l'oued Soummam" (¶97). Dated from Sosus' accession, c. 80; it
     could be later. In c. 88–81, between Gauda's death and Sosus, the ground is
     unclaimed: Masteabar's share began at the Soummam (¶148), and no source says
-    whose this was. Ran from "before 68" until September 2026.
+    whose this was.
 
 - atom: mauretania-central
   polity: numidia
@@ -6205,7 +6183,7 @@
     Cap Ténès (Bridoux ¶74–75, after Gsell; Desanges had carried it "au moins
     jusqu'à l'embouchure du Chélif"). From 49 Bocchus II's eastern kingdom
     (Bridoux ¶99), to his death in the consulship of Octavian and Tullus, 33
-    (Dio 49.43.6–7). Ran from "before 68" until September 2026.
+    (Dio 49.43.6–7).
 
 - atom: mauretania-west
   polity: mauretania
@@ -6334,7 +6312,6 @@
     found at Volubilis and Thamusida (Bridoux ¶89, ¶91). Sertorius' siege of
     Tingi in 81 left the country as he found it (Plut. Sertorius 9.5). To 50:
     Bogud's western kingdom begins with the recognition of 49 (Bridoux ¶99).
-    Ran from "before 68" until September 2026.
 
 - atom: aegyptus
   polity: aegyptus
@@ -6389,11 +6366,10 @@
     59). Its civil wars (132–124, 107, 88) and the Theban revolt of c. 88–86
     were fought over the one kingdom and are not drawn. Justin calls Egypt one
     of Rome's allies when Scipio Aemilianus' embassy visited Ptolemy VIII
-    (38.8), so the row is allied, as Pontus is before 89; it read independent
-    until October 2026. Bennett (Ptolemy XII, which is as far as it goes) says
-    Ptolemy XII was not recognised as friend and ally until 59, but that
-    Ptolemy XI (80) was "certainly" one and Ptolemy X only hypothetically:
-    the texts do not agree, so the row is uncertain (checked, October 2026).
+    (38.8), so the row is allied, as Pontus is before 89. Bennett (Ptolemy XII,
+    which is as far as it goes) says Ptolemy XII was not recognised as friend
+    and ally until 59, but that Ptolemy XI (80) was "certainly" one and Ptolemy
+    X only hypothetically: the texts do not agree, so the row is uncertain.
 
 - atom: aegyptus
   polity: aegyptus
@@ -6442,8 +6418,7 @@
     From the recognition of 59, in Caesar's first consulship (Caes. BC 3.107;
     Dio 39.12.1); a Roman garrison from 55. Ended with Cleopatra's death in
     the year after Actium, which was fought in the consulship of Octavian and
-    Messalla, 31 (Vell. 2.84.1, 2.87.1). Until September 2026 this row ran
-    from "before 68" and its note asked for this change.
+    Messalla, 31 (Vell. 2.84.1, 2.87.1).
 
 # --- the Black Sea -------------------------------------------------------------
 # Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
@@ -6509,7 +6484,7 @@
     (63, Dio 37.10.4) after reigning fifty-seven years (App. Mithr. 112), so
     came to the throne in 120. Ends when Paerisades put himself under the
     king's protection, by the winter of 110 on Minns' reading of the decree
-    (see the next row); it ran to c. 109 until October 2026.
+    (see the next row).
 
 - atom: bosporus
   polity: pontus-regnum
@@ -6575,11 +6550,9 @@
     110, keeping "the semblance of authority" until he was killed in 107, and
     the king's "unlimited authority" only after the revolt was put down in the
     spring after: the change of hands falls somewhere in 110–106, and the row
-    starts at its first year. It started c. 108 until October 2026, a year no
-    readable text gives. Allied, as the kingdom and Chersonesus are, while
-    the king's alliance with Rome was "still in force" (App. Mithr. 14),
-    until Rome declared war in 88 (Mithr. 22); until October 2026 one
-    independent row ran from c. 110 to 87–86.
+    starts at its first year. Allied, as the kingdom and Chersonesus are, while
+    the king's alliance with Rome was "still in force" (App. Mithr. 14), until
+    Rome declared war in 88 (Mithr. 22).
 
 - atom: bosporus
   polity: pontus-regnum
@@ -6635,10 +6608,9 @@
     5.4), a son of Mithridates held "Pontus and Bosporus … as far as the
     deserts beyond Lake Maeotis" (Plut. Sulla 11.1–2). The Bosporan peoples had
     revolted by the time the king came home after Dardanus, in the autumn of
-    85 (App. Mithr. 64; Magie): the last year of the row is 87 or 86. It ended
-    in 86 until October 2026; no readable text dates the revolt (Minns, p. 586
-    n. 1, reports Reinach's date of 86 for a rising under one Hygiaenon, which
-    he doubts).
+    85 (App. Mithr. 64; Magie): the last year of the row is 87 or 86. No
+    readable text dates the revolt (Minns, p. 586 n. 1, reports Reinach's date
+    of 86 for a rising under one Hygiaenon, which he doubts).
 
 - atom: bosporus
   polity: bosporus
@@ -6742,10 +6714,9 @@
     gold" (App. Mithr. 83); Machares asked "to be included in the list of
     Rome's friends and allies" (Plut. Luc. 24.1), and was (Magie). Allied, not
     client: no text has Rome set him up, only taking him as friend and ally at
-    his own request (October 2026; it read client). Livy's
-    epitomator puts it between the consuls of 70 and that year's censors (Per.
-    97–98). It ends when his father came in 65 and Machares killed himself
-    (Mithr. 102; Minns, 71–65).
+    his own request. Livy's epitomator puts it between the consuls of 70 and
+    that year's censors (Per. 97–98). It ends when his father came in 65 and
+    Machares killed himself (Mithr. 102; Minns, 71–65).
 
 - atom: bosporus-tanais
   polity: pontus-regnum
@@ -6783,14 +6754,13 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    As bosporus, whose end it shares (87 or 86; 86 until October 2026).
-    Plutarch's son of Mithridates held the realm "as far as the deserts beyond
-    Lake Maeotis" in 87 (Sulla 11.2); how far up the Maeotic shore that
-    reached, and since when, no readable text says, so the row starts at
-    that attestation. It started c. 108, with bosporus, until October 2026.
-    Strabo gives the Spartocids only "the neighboring settlements near the
-    south of Lake Maeotis" (7.4.4), and Minns has Pharnaces, after 63, the
-    first to extend his frontiers to the Tanais (p. 589).
+    As bosporus, whose end it shares (87 or 86). Plutarch's son of Mithridates
+    held the realm "as far as the deserts beyond Lake Maeotis" in 87 (Sulla
+    11.2); how far up the Maeotic shore that reached, and since when, no
+    readable text says, so the row starts at that attestation. Strabo gives the
+    Spartocids only "the neighboring settlements near the south of Lake Maeotis"
+    (7.4.4), and Minns has Pharnaces, after 63, the first to extend his
+    frontiers to the Tanais (p. 589).
 
 - atom: bosporus
   polity: bosporus
@@ -7386,8 +7356,7 @@
     as the king's because Strabo has it "subject to the potentates of the
     Bosporus" from then on. Allied, as the kingdom was, while the king's
     alliance with Rome was "still in force" (App. Mithr. 14), until Rome
-    declared war in 88 (Mithr. 22). Until the extension to 133 BCE one row of
-    the king's ran from before 68 to 64.
+    declared war in 88 (Mithr. 22).
 
 - atom: chersonesus
   polity: pontus-regnum
@@ -7472,9 +7441,7 @@
     and so to Machares, king of the Bosporus from c. 80 (App. Mithr. 67), who
     fled "to the Pontic Chersonesus" when his father came in 65 (Mithr. 102).
     Minns (p. 587) has the peace with Rome in 81 and Machares installed in 79;
-    c. 80 is the middle of that range. Added in the check of the extension to
-    133 BCE, which had drawn the city as the king's own through Machares'
-    reign.
+    c. 80 is the middle of that range.
 
 - atom: chersonesus
   polity: bosporus
@@ -7522,8 +7489,7 @@
   note: >-
     As bosporus, under Machares as Rome's friend: his treaty with Lucullus is
     dated 70 by Minns (p. 587 and note), until his father came in the spring of
-    65 (Magie I 356). Allied, not client, as bosporus (October 2026; it read
-    client).
+    65 (Magie I 356). Allied, not client, as bosporus.
 
 - atom: chersonesus
   polity: pontus-regnum
@@ -7658,8 +7624,7 @@
   review: needs-check
   note: >-
     As bosporus, until Caesar granted the city its freedom in 45 (Vnukov and
-    Kovalenko 21; Pliny 4.85 records the grant without a year). Until October
-    2026 it ran to 42 with the bosporus row, which that grant contradicts.
+    Kovalenko 21; Pliny 4.85 records the grant without a year).
 
 - atom: pontus
   polity: bosporus
@@ -7807,8 +7772,7 @@
     partners after Zela in 47 (Dio 42.48.3). Probable, not certain like the
     rows on pontus and armenia-minor: no text names Colchis among what Caesar
     took back, and who held it after 47 is not recorded (the client claim
-    ends in 48). Added in October 2026; Pharnaces' hold on Colchis was not
-    drawn before.
+    ends in 48).
 
 - atom: galatia-pontus
   polity: bosporus
@@ -7979,12 +7943,11 @@
     Pharnaces in 48, after Pharsalus (Magie I 408; Dio 42.45.3). Who held it
     after Zela is not recorded until Polemon, to whom Antony gave it (Magie I
     435; "At last Polemon got Colchis", Strabo 11.2.18), on a date no
-    readable text gives. Until October 2026 the row ran to after 27 BCE, which
-    no readable text supports. The start of 63 is the client-of relation's,
-    on the same passages: Mithridates dead in Cicero's consulship (Dio
-    37.10.4), Pompey completing his plans in Pontus in the winter of 63–62
-    (Magie I 365); Magie has the arrangements begun at Amisus in the spring
-    of 64 (I 360), and the polity's start is the range 64–62.
+    readable text gives. The start of 63 is the client-of relation's, on the
+    same passages: Mithridates dead in Cicero's consulship (Dio 37.10.4), Pompey
+    completing his plans in Pontus in the winter of 63–62 (Magie I 365); Magie
+    has the arrangements begun at Amisus in the spring of 64 (I 360), and the
+    polity's start is the range 64–62.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
@@ -8021,14 +7984,12 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Allied, not client (October 2026; it read client): the texts give a
-    treaty, peace or alliance (Dio 37.2.7, 37.5.1, 49.24.1; Magie I 359), and
-    none has Rome set up or depose the king, as on the relation.
-    Submitted to Pompey after his invasion of 65. Last attested in 36, when
-    Canidius beat Pharnabazus and brought the Iberians into alliance (Dio
-    49.24.1); the row ends open there. Augustus records their kings' embassies
-    seeking his friendship (Res Gestae 31) without a date. Until October 2026
-    the row ran to after 27 BCE, which no readable text supports.
+    Allied, not client: the texts give a treaty, peace or alliance (Dio 37.2.7,
+    37.5.1, 49.24.1; Magie I 359), and none has Rome set up or depose the king,
+    as on the relation. Submitted to Pompey after his invasion of 65. Last
+    attested in 36, when Canidius beat Pharnabazus and brought the Iberians into
+    alliance (Dio 49.24.1); the row ends open there. Augustus records their
+    kings' embassies seeking his friendship (Res Gestae 31) without a date.
 
 - atom: albania
   polity: albania
@@ -8074,15 +8035,13 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Allied, not client (October 2026; it read client): the texts give a
-    treaty, peace or alliance (Dio 37.2.7, 37.5.1, 49.24.1; Magie I 359), and
-    none has Rome set up or depose the king, as on the relation.
-    Oroeses sued for peace after Pompey's campaign of 65. Last attested in 36,
-    when Canidius, in the year of Gellius and Nerva, beat Zober and
-    "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the row
-    ends open there. Augustus records their kings' embassies seeking his
-    friendship (Res Gestae 31) without a date. Until October 2026 the row ran
-    to after 27 BCE, which no readable text supports.
+    Allied, not client: the texts give a treaty, peace or alliance (Dio 37.2.7,
+    37.5.1, 49.24.1; Magie I 359), and none has Rome set up or depose the king,
+    as on the relation. Oroeses sued for peace after Pompey's campaign of 65.
+    Last attested in 36, when Canidius, in the year of Gellius and Nerva, beat
+    Zober and "conciliated" the Albanians as he had the Iberians (Dio 49.24.1);
+    the row ends open there. Augustus records their kings' embassies seeking his
+    friendship (Res Gestae 31) without a date.
 
 - atom: armenia
   polity: armenia
@@ -8278,7 +8237,7 @@
     puts in the year of Acilius and Piso, 67 (36.37.3–38.1); before it the
     country is left unclaimed with the rest of the Tracheia. Nothing read states
     the relation in these years. To 40: Aba held it later by Antony's grant
-    (see the next row). Until October 2026 this row ran on to after 27.
+    (see the next row).
 
 - atom: olba
   polity: olba
@@ -8329,8 +8288,7 @@
     When she had the grant is not stated: no earlier than the ratification
     in the consulship of Marcius and Sabinus (39; Dio 48.34.1), and Cleopatra's
     part may put it later, to 31. Drawn from 39, the earliest, next to the
-    row before, as Amyntas' and Polemo's grants are. Added in October 2026;
-    the row before ran to after 27 until then.
+    row before, as Amyntas' and Polemo's grants are.
 
 - atom: derbe
   polity: derbe
@@ -8373,9 +8331,9 @@
     Antipater held Derbe and Laranda from Pompey's settlement (Magie I 375,
     whose "now" is Pompey's arrangements of 64–63) and was Cicero's friend
     (Fam. 13.73); Octavian let Amyntas attack him after Actium (Magie I 443),
-    so the row runs to 31 and Galatia's from 30. Client, not independent
-    (October 2026; it read independent): Magie calls Antipater "a Roman vassal"
-    by Pompey's gift, with a client-of relation behind it.
+    so the row runs to 31 and Galatia's from 30. Client, not independent: Magie
+    calls Antipater "a Roman vassal" by Pompey's gift, with a client-of relation
+    behind it.
 
 - atom: lycia
   polity: lycia
@@ -8501,8 +8459,7 @@
     Mithridates' generals from their forts at Palacium, Chabum and Neapolis
     (Strabo 7.4.3, 7.4.7). The decree is undated; Magie gives Niese's 114/3
     and Reinach's 110 (the OCR's "no") for the start of the war and prefers
-    110, so the end is c. 111 and the confidence uncertain (probable until the
-    October 2026 backfill).
+    110, so the end is c. 111 and the confidence uncertain.
 
 - atom: scythia-minor
   polity: scythia-minor
@@ -8550,9 +8507,7 @@
     Strabo: Mithridates "subdued all these by force" (7.4.3). How long the
     subjection lasted is not recorded; at the end Appian counts "the princes of
     the Scythian tribes around the Euxine and Maiotis" among the king's allies
-    (Mithr. 119), and the row runs to his death in 63 (Dio 37.10.4). Until the
-    extension to 133 BCE the Scythians were drawn independent from before 68,
-    which Strabo's account does not support.
+    (Mithr. 119), and the row runs to his death in 63 (Dio 37.10.4).
 
 - atom: kush
   polity: kush
@@ -8872,12 +8827,12 @@
   note: >-
     Burebista was reigning when Caesar planned his expedition against the
     Dacians, cut short by his death in 44 (Strabo 7.3.5; Suet. Iul. 44), and
-    was deposed before any Roman expedition came (7.3.11). The start read c. 60
-    until October 2026, a year no text states: Strabo gives no year, and
-    Jordanes, the only one that dates him, makes him king "when Sulla ruled the
-    Romans" (Getica 67), twenty years earlier. The row starts where the text
-    does, as the polity (dacia) does, with Burebista in force in 79 at the
-    latest; how far back his rule reaches is not recorded.
+    was deposed before any Roman expedition came (7.3.11). No text dates his
+    rise to c. 60: Strabo gives no year, and Jordanes, the only one that dates
+    him, makes him king "when Sulla ruled the Romans" (Getica 67), twenty years
+    earlier. The row starts where the text does, as the polity (dacia) does,
+    with Burebista in force in 79 at the latest; how far back his rule reaches
+    is not recorded.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -8908,8 +8863,7 @@
     before Mithridates' war in the Crimea; the relation is not backed. Ends
     when that war began, c. 110 on Reinach's date, which Magie prefers to
     Niese's 114/3 (II 1092 n. 53), as the Scythians' and the Bosporus' rows
-    do. Until October 2026 this row ran to 72, which Appian and Magie
-    contradict (see the next row).
+    do.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -8982,9 +8936,7 @@
     Client (of pontus-regnum), by the closest type the texts describe: put
     under his power, as the Crimean Scythians were. Until M. Lucullus took
     the cities in 72–71, before the consuls of 70 (Eutropius 6.10; Livy Per.
-    97). Added in October 2026; until then the cities were drawn independent
-    from before 133 to 72, which these passages contradict. Uncertain:
-    Magie hedges, and the inscription is undated.
+    97). Uncertain: Magie hedges, and the inscription is undated.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -9035,11 +8987,10 @@
     from the campaign's end, before the consuls of 70 (Livy Per. 97), drawn
     from 71. They were "the allies in Moesia" whom C. Antonius, consul in 63,
     attacked as governor of Macedonia (Dio 38.10.1–3, 37.10.4), so in force in
-    62. The end read 56 until October 2026, the year before Burebista's
-    conquest as conventionally dated, which no text read states: the readable
-    bounds are 62, still Rome's allies, and 48, already Burebista's (see the
-    next row). It ends at 62, the last year a text shows, and the next row
-    starts the year after, the earliest the texts allow.
+    62. Burebista's conquest has a conventional date, which no text read states:
+    the readable bounds are 62, still Rome's allies, and 48, already Burebista's
+    (see the next row). It ends at 62, the last year a text shows, and the next
+    row starts the year after, the earliest the texts allow.
 
 - atom: pontic-cities
   polity: dacia
@@ -9095,12 +9046,12 @@
     The Akornion decree of Dionysopolis: Burebista "gained control of the
     entire land beyond the river (Istros), as well as of the land on this
     side", and sent Akornion to Pompey in Macedonia, where the Pompeians sat
-    at Thessalonica in 48 (Dio 41.43.1–2), so in force by 48. The start read
-    55 until October 2026, the conventional date (c. 55–48), which no text read
-    states; the readable bounds are 62, when the cities were still Rome's allies
-    (the row before), and 48. Drawn from 61, the earliest the texts allow, since
-    a range would be drawn at its midpoint and leave the coast blank from the
-    row before; the transition lies somewhere in 61–48.
+    at Thessalonica in 48 (Dio 41.43.1–2), so in force by 48. The conventional
+    date, c. 55–48, is in no text read; the readable bounds are 62, when the
+    cities were still Rome's allies (the row before), and 48. Drawn from 61, the
+    earliest the texts allow, since a range would be drawn at its midpoint and
+    leave the coast blank from the row before; the transition lies somewhere in
+    61–48.
 
 - atom: pontic-cities
   polity: pontic-cities
@@ -9221,7 +9172,7 @@
     (Eutropius 6.4). Neither left a standing that the sources record, and in 50
     they were strong enough to take Promona (Ill. 12). They surrendered to
     Octavian in his consulship with Volcatius Tullus, 33 (Ill. 27–28), so the
-    row runs to 34. Started before 68 until the extension to 133 BCE.
+    row runs to 34.
 
 - atom: massalia
   polity: massalia
@@ -9305,12 +9256,10 @@
     consulship (BC 2.22; Dio 41.25.3, 41.43.1): Strabo, writing under
     Augustus, has Caesar and his successors keep its laws, so that neither
     Massalia "nor the cities dependent on it" answered to the governors
-    (4.1.5), and free cities are drawn allied (decided October 2026). Dio
-    disagrees: Caesar stripped it "of everything else except the name of
-    freedom" (41.25.3). Both are quoted and the row is uncertain; it read
-    province of Gallia Transalpina, from 49, until October 2026. Kept apart
-    from the row before, which is probable, because the sources disagree only
-    after the surrender.
+    (4.1.5), and free cities are drawn allied. Dio disagrees: Caesar stripped it
+    "of everything else except the name of freedom" (41.25.3). Both are quoted
+    and the row is uncertain. Kept apart from the row before, which is probable,
+    because the sources disagree only after the surrender.
 
 - atom: helvetii
   polity: helvetii
@@ -9360,10 +9309,9 @@
   review: draft
   note: >-
     First attested when their Tigurini killed the consul L. Cassius in 107
-    (Per. 65; BG 1.12), having joined the Cimbri (Strabo 7.2.2). It read
-    "before 133" until October 2026: no readable text names the Helvetii
-    before the Cimbri reached them, and the polity's note doubts that they
-    held the plateau Caesar knew so early.
+    (Per. 65; BG 1.12), having joined the Cimbri (Strabo 7.2.2). No readable
+    text names the Helvetii before the Cimbri reached them, and the polity's
+    note doubts that they held the plateau Caesar knew so early.
 
 - atom: helvetii
   polity: helvetii
@@ -9513,14 +9461,14 @@
   review: draft
   note: >-
     First firmly dated in the consulship of Messalla and Piso, 61, when
-    Orgetorix urged Casticus to seize the Sequanian kingship (BG 1.2–3). It
-    read "before 133" until October 2026: Strabo has them "for long" Rome's
-    enemies and the Germans' allies "in their incursions into Italy" (4.3.2),
-    and Caesar has Casticus' father Catamantaloedes king "for many years",
-    but neither gives a year, and no readable text names the Sequani in
-    133–62. Catamantaloedes had been "called by the Senate the friend of the
-    Roman people" (BG 1.3), a title the Senate also gave Ariovistus (1.35);
-    it is not read here as an alliance of the people.
+    Orgetorix urged Casticus to seize the Sequanian kingship (BG 1.2–3). Strabo
+    has them "for long" Rome's enemies and the Germans' allies "in their
+    incursions into Italy" (4.3.2), and Caesar has Casticus' father
+    Catamantaloedes king "for many years", but neither gives a year, and no
+    readable text names the Sequani in 133–62. Catamantaloedes had been "called
+    by the Senate the friend of the Roman people" (BG 1.3), a title the Senate
+    also gave Ariovistus (1.35); it is not read here as an alliance of the
+    people.
 
 - atom: sequani
   polity: gallia-comata
@@ -9808,11 +9756,10 @@
     (BG 1.45). Domitius, consul in 122, "then engaged in war against the
     Allobroges and the Arverni" (MRR I 516; Strabo 4.2.3), but MRR does not
     say in which year, and puts his proconsular campaign, with Fabius, in 121
-    (p. 522). It read "before 133" until October 2026, then "before 122": no
-    readable text dates the Arverni in 133–122. Strabo has their dominion reach
-    the Pyrenees, the ocean and the Rhine under Bituitus' father Luerius
-    (4.2.3), but gives no year. Eutropius puts the war in the 627th year of
-    the city, under consuls who never held office together (4.22).
+    (p. 522). No readable text dates the Arverni in 133–122. Strabo has their
+    dominion reach the Pyrenees, the ocean and the Rhine under Bituitus' father
+    Luerius (4.2.3), but gives no year. Eutropius puts the war in the 627th year
+    of the city, under consuls who never held office together (4.22).
 
 - atom: arverni
   polity: gallia-comata
@@ -9968,10 +9915,9 @@
   note: >-
     First attested among the events of Octavian's fifth consulship, 29, as
     "still under arms" (Dio 51.20.1, 51.20.5), and free of Rome's rule until
-    Augustus' war of 26–25 (Flor. 2.33.46; Dio 53.25.2–8). It read "before
-    133" until October 2026: no readable text names the Astures before Dio's
-    notice, and Strabo describes them only as they were in his own day
-    (3.3.7).
+    Augustus' war of 26–25 (Flor. 2.33.46; Dio 53.25.2–8). No readable text
+    names the Astures before Dio's notice, and Strabo describes them only as
+    they were in his own day (3.3.7).
 
 - atom: cantabri
   polity: cantabri
@@ -10078,19 +10024,17 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Independent is the literal reading; lowered to uncertain in September 2026
-    because Roman influence in Callaecia may be older (see the polity). D.
-    Brutus fought them before Numantia fell (Vell. 2.5.1; Per. 56); Florus
-    has him conquer "all the peoples of Callaecia" (1.33.12), but Plutarch has
-    Caesar, in 61, subdue Callaican tribes "which before were not obedient to
-    Rome" (Caes. 12.1), so in 133 they were free. The end read "after 27"
-    until the October 2026 check: Plutarch and Dio have Caesar subdue them in
-    61–60 ("and subjugated them", Dio 37.53.4), and no readable text has them
-    free in 27. It is now "after 61", the last year a text has them free
-    (Plutarch's tribes "not obedient to Rome" before Caesar's war, which
-    Broughton puts in 61, MRR II 180); an
-    open end draws the same, and the ground after Caesar's campaign is still
-    left to whoever the texts show holding it.
+    Independent is the literal reading; uncertain because Roman influence in
+    Callaecia may be older (see the polity). D. Brutus fought them before
+    Numantia fell (Vell. 2.5.1; Per. 56); Florus has him conquer "all the
+    peoples of Callaecia" (1.33.12), but Plutarch has Caesar, in 61, subdue
+    Callaican tribes "which before were not obedient to Rome" (Caes. 12.1), so
+    in 133 they were free. Plutarch and Dio have Caesar subdue them in 61–60
+    ("and subjugated them", Dio 37.53.4), and no readable text has them free in
+    27. The end is "after 61", the last year a text has them free (Plutarch's
+    tribes "not obedient to Rome" before Caesar's war, which Broughton puts in
+    61, MRR II 180); an open end draws the same, and the ground after Caesar's
+    campaign is still left to whoever the texts show holding it.
 
 # --- added September 2026: the extension to 27 BCE -----------------------------
 #
@@ -10287,11 +10231,11 @@
     has Sextus "still occupying Sardinia and Sicily" already in 42; Appian
     (5.56) calls Sardinia Octavian's before 40 and Dio's own narrative has the
     seizure in 40, so 48.2.1 is read as an anticipation; since the texts
-    disagree the row is probable, not certain (October 2026). The year: Dio's
-    narrative of the seizure follows Perusia, taken in the consulship of
-    Calvinus and Pollio (40; 48.15.1), and closes "the events of the two
-    years" before that of Marcius and Sabinus (39; 48.34.1); the surrender
-    comes in that of Claudius and Norbanus (38; 48.43.1).
+    disagree the row is probable, not certain. The year: Dio's narrative of the
+    seizure follows Perusia, taken in the consulship of Calvinus and Pollio (40;
+    48.15.1), and closes "the events of the two years" before that of Marcius
+    and Sabinus (39; 48.34.1); the surrender comes in that of Claudius and
+    Norbanus (38; 48.43.1).
 
 - atom: corsica
   polity: sextus-pompeius
@@ -10367,8 +10311,7 @@
     slave-owners were taxed (5.67); Dio puts that famine and that tax after
     Perusia, taken in the consulship of Calvinus and Pollio, and before the
     year of Marcius and Sabinus (48.15.1, 48.31.1, 48.34.1): 40. The start
-    read 40 BCE, after Sardinia, until October 2026; it is now open, held in
-    40 and taken no later.
+    is open: held in 40 and taken no later.
 
 # Greece: the province of Achaea, attested in 27
 
@@ -10439,15 +10382,14 @@
   confidence: uncertain
   review: draft
   note: >-
-    Part of the macedonia atom until it was split out (September 2026); the
-    row is macedonia's. Thessaly was overseen by the commander in Macedonia
+    The row is macedonia's. Thessaly was overseen by the commander in Macedonia
     from 148, as the rest of mainland Greece was (Kallet-Marx pp. 50–51), and
     was part of Piso's consular province in 57–55 (Cic. Pis. 37, 96); under
-    Augustus it was Achaea's (Strabo 17.3.25; Bowersock p. 287). Uncertain,
-    as achaea's row is, since October 2026 (it read certain): Cicero has
-    Thessaly in Piso's province, but Kallet-Marx has Greece formally free
-    after 146 and no province of its own before 27 (p. 50), and the senate
-    addressing Thessalian envoys as "our friend and ally" (p. 165).
+    Augustus it was Achaea's (Strabo 17.3.25; Bowersock p. 287). Uncertain, as
+    achaea's row is: Cicero has Thessaly in Piso's province, but Kallet-Marx has
+    Greece formally free after 146 and no province of its own before 27 (p. 50),
+    and the senate addressing Thessalian envoys as "our friend and ally" (p.
+    165).
 
 - atom: thessalia
   polity: achaea
@@ -10542,14 +10484,12 @@
   confidence: uncertain
   review: draft
   note: >-
-    Part of the macedonia atom until it was split out (September 2026); the
-    row is macedonia's. Overseen by the commander in Macedonia from 148, as
-    the rest of mainland Greece was (Kallet-Marx pp. 50–51); Epirus and
-    Ambracia were in Piso's consular province in 57–55 (Cic. Pis. 37, 96). In
-    27 Dio lists Epirus with Greece, apart from Macedonia (53.12.4).
-    Uncertain, as achaea's row is, since October 2026 (it read certain):
-    Cicero has Epirus in Piso's province, but Kallet-Marx has Greece formally
-    free after 146 and no province of its own before 27 (p. 50).
+    The row is macedonia's. Overseen by the commander in Macedonia from 148, as
+    the rest of mainland Greece was (Kallet-Marx pp. 50–51); Epirus and Ambracia
+    were in Piso's consular province in 57–55 (Cic. Pis. 37, 96). In 27 Dio
+    lists Epirus with Greece, apart from Macedonia (53.12.4). Uncertain, as
+    achaea's row is: Cicero has Epirus in Piso's province, but Kallet-Marx has
+    Greece formally free after 146 and no province of its own before 27 (p. 50).
 
 - atom: epirus
   polity: achaea
@@ -10686,12 +10626,11 @@
     (Dio 49.34.2), hence uncertain. C. Sempronius Tuditanus made war on them in
     129 and "seem[s] to have subjugated them", but they "revolted not long
     afterward" (App. Ill. 10; Livy Per. 59); the brief subjection is not drawn,
-    since neither its extent nor its end is recorded. Started before 68 until
-    the extension to 133 BCE. In force at 133: in 170 their envoys complained
-    to the senate that the consul Cassius had treated them as enemies (Livy
-    43.5.3–4), and in 129 the consul Sempronius fought them (Per. 59). Octavian
-    marched against them after Sextus' death in the consulship of Cornificius
-    and Pompeius, 35 (Dio 49.18.6, 49.34.1–2).
+    since neither its extent nor its end is recorded. In force at 133: in 170
+    their envoys complained to the senate that the consul Cassius had treated
+    them as enemies (Livy 43.5.3–4), and in 129 the consul Sempronius fought
+    them (Per. 59). Octavian marched against them after Sextus' death in the
+    consulship of Cornificius and Pompeius, 35 (Dio 49.18.6, 49.34.1–2).
 
 - atom: iapydes
   polity: illyricum
@@ -10960,7 +10899,7 @@
     the range 45–38, drawn at 41, the year before the Bosporan row's
     midpoint. Allied, as the free cities of Apion's bequest in Cyrenaica
     are: no text calls the city Rome's ally, only freed by Rome, so the type
-    is not backed. Added in October 2026; the free years were not drawn.
+    is not backed.
 
 - atom: chersonesus
   polity: bosporus
@@ -11009,8 +10948,7 @@
     place the Bosporan hold after Caesar's death and, from a coin of Asander's
     year 8 (37/36) found at Kara-Tobe in the city's old chora, by about 37/36.
     So the start is the range 44–37, drawn at 40, after the free row before
-    it. It read c. 41 until October 2026, which no text states, and the
-    Bosporan row before ran on to 42 over the years of the grant.
+    it.
 
 # The West
 
@@ -11745,19 +11683,18 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Part of the kush atom until it was split out (September 2026); the row is
-    kush's. The stele of Octavian's first Egyptian regnal year (29) has Gallus
-    march "beyond the Nile Cataract, a region to which neither the Roman people
-    nor the kings of Egypt had marched", and set a ruler over the
+    The row is kush's. The stele of Octavian's first Egyptian regnal year (29)
+    has Gallus march "beyond the Nile Cataract, a region to which neither the
+    Roman people nor the kings of Egypt had marched", and set a ruler over the
     Triacontaschoenus "on Aethiopian territory": Kushite ground before him, on
     the stele's word. Eller disagrees: Ptolemy VI had reestablished control "up
     to the Second Cataract", and at the annexation Ptolemaic control "likely
     reached at least beyond Maharraqa", though the first century "remains
     difficult to determine" (2025, 67–68); Burstein (Barrington map 81) puts the
     boundary at Hierasykaminos. The readable texts disagree on whose the
-    northern part was, which is why the row is uncertain. Left at "before 68"
-    on purpose, and 133–69 unclaimed, because when the Ptolemies lost it again
-    is not known.
+    northern part was, which is why the row is uncertain. Left at "before 68" on
+    purpose, and 133–69 unclaimed, because when the Ptolemies lost it again is
+    not known.
 
 - atom: triakontaschoinos
   polity: triakontaschoinos
@@ -11877,14 +11814,13 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Pompey's settlement: he took the kingdom over on the fall of Mithridates
-    and joined it to Bithynia as one province (Strabo 12.3.1), in the year
-    Cicero and Antonius were consuls, 63 (Dio 37.10.4). Divided among kings and
-    priests when Polemon was given Pontus east of the Iris in 37/36 (Magie I
-    434–435). Darius, king "in Pontus" from 39, held Phazimonitis to the west
-    (Magie I 434); how much else of this ground was his in 39–37 is not known,
-    so the province is drawn to 37.
+    The row is pontus's. Pompey's settlement: he took the kingdom over on the
+    fall of Mithridates and joined it to Bithynia as one province (Strabo
+    12.3.1), in the year Cicero and Antonius were consuls, 63 (Dio 37.10.4).
+    Divided among kings and priests when Polemon was given Pontus east of the
+    Iris in 37/36 (Magie I 434–435). Darius, king "in Pontus" from 39, held
+    Phazimonitis to the west (Magie I 434); how much else of this ground was his
+    in 39–37 is not known, so the province is drawn to 37.
 
 - atom: pontus-inner
   polity: pontus-regnum
@@ -11935,13 +11871,13 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Mithridates' own country, with his palace at Cabeira (Strabo 12.3.30). At
-    war with Rome from 89; Rome declared war in Sulla's consulship, 88 (App.
-    Mithr. 22; Eutr. 5.4). The kingdom went on while Lucullus held it in 71–69
-    (the occupation is its own row); Mithridates slipped back in 68, won back
-    "almost all his domain" (Dio 36.17.1) and lost it to Pompey in 66, the year
-    before Cotta and Torquatus' consulship (36.50.1, 37.1.1).
+    The row is pontus's. Mithridates' own country, with his palace at Cabeira
+    (Strabo 12.3.30). At war with Rome from 89; Rome declared war in Sulla's
+    consulship, 88 (App. Mithr. 22; Eutr. 5.4). The kingdom went on while
+    Lucullus held it in 71–69 (the occupation is its own row); Mithridates
+    slipped back in 68, won back "almost all his domain" (Dio 36.17.1) and lost
+    it to Pompey in 66, the year before Cotta and Torquatus' consulship
+    (36.50.1, 37.1.1).
 
 - atom: pontus-inner
   polity: bosporus
@@ -11983,10 +11919,9 @@
   confidence: certain
   review: draft
   note: >-
-    Part of the pontus atom until pontus-inner was split from it (September 2026); the row is pontus's.
-    Pharnaces II overran Lesser Armenia and Pontus after Pompey's defeat, in the
-    autumn of 48 (Magie I 409), until Caesar, who reached Tarsus in 47 (Magie I
-    410), broke him at Zela in August 47.
+    The row is pontus's. Pharnaces II overran Lesser Armenia and Pontus after
+    Pompey's defeat, in the autumn of 48 (Magie I 409), until Caesar, who
+    reached Tarsus in 47 (Magie I 410), broke him at Zela in August 47.
 
 - atom: lycaonia
   polity: cilicia
@@ -12050,18 +11985,16 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Part of the cilicia atom until lycaonia was split from it (September 2026); the row was cilicia's.
     When the Lycaonian steppe passed from Asia to Cilicia is not recorded: in
     Cilicia by 56, perhaps from Pompey (Magie I 376), "by the mid-first century
     B.C." (Dmitriev 349). The row is dated from the Isaurian part of the atom:
-    Isaurice "belongs to Lycaonia" (Strabo 12.6.2), and P. Servilius,
-    proconsul in Cilicia, conquered the Isaurians (Livy Per. 93), the campaign
-    Broughton places in 75 (MRR II 99); Isauria was still in the province
-    under Pompey (Magie I 376). So the start is backed for Isauria only.
-    Marcius Rex, governor of Cilicia, went through Lycaonia in 67 (a fragment of
-    Sallust's Histories, as Sherwin-White 1976 n. 61 cites it; not read). The
-    province "was probably dismembered soon after Caesar's death" (Magie I
-    433).
+    Isaurice "belongs to Lycaonia" (Strabo 12.6.2), and P. Servilius, proconsul
+    in Cilicia, conquered the Isaurians (Livy Per. 93), the campaign Broughton
+    places in 75 (MRR II 99); Isauria was still in the province under Pompey
+    (Magie I 376). So the start is backed for Isauria only. Marcius Rex,
+    governor of Cilicia, went through Lycaonia in 67 (a fragment of Sallust's
+    Histories, as Sherwin-White 1976 n. 61 cites it; not read). The province
+    "was probably dismembered soon after Caesar's death" (Magie I 433).
 
 - atom: pisidia
   polity: cilicia
@@ -12109,15 +12042,14 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Part of the cilicia atom until pisidia was split from it (September 2026); the row was cilicia's.
     Dated from Dolabella's province (Verr. 2.1.44), proconsul in Cilicia in the
     year Sulla and Metellus Pius were consuls, 80 (MRR II 79–80), when his
     pro-quaestor Verres levied grain on "Lyciam, Pamphyliam, Pisidiam
     Phrygiamque totam" (Verr. 2.1.95). The levy shows Pisidia under the
-    governor's hand, not that it was his province in form (Lycia was free).
-    Part of Pisidia went to Asia when Cilicia was dismembered after Caesar's
-    death (Magie I 418, 433). Who held the lake district before 80 is not
-    known, and it is unclaimed.
+    governor's hand, not that it was his province in form (Lycia was free). Part
+    of Pisidia went to Asia when Cilicia was dismembered after Caesar's death
+    (Magie I 418, 433). Who held the lake district before 80 is not known, and
+    it is unclaimed.
 
 - atom: pontus-inner
   polity: pontus-polemon
@@ -13141,11 +13073,10 @@
   confidence: certain
   review: draft
   note: >-
-    Part of the judaea atom until judaea-jericho was split from it (September 2026); the row is judaea's.
-    Pompey takes Jerusalem, 63; Hyrcanus II high priest and later ethnarch.
-    The Parthians deposed him and set up Antigonus before Herod was made king
-    at Rome in the consulship of Calvinus and Pollio (40), so Hyrcanus' rule
-    ends in 41 (Antigonus' from 40).
+    The row is judaea's. Pompey takes Jerusalem, 63; Hyrcanus II high priest and
+    later ethnarch. The Parthians deposed him and set up Antigonus before Herod
+    was made king at Rome in the consulship of Calvinus and Pollio (40), so
+    Hyrcanus' rule ends in 41 (Antigonus' from 40).
 
 - atom: samaria
   polity: syria
@@ -13199,11 +13130,10 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria-palaestina atom until samaria was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria, after
-    he took Jerusalem in the consulship of Antonius and Cicero (63). Octavian
-    gave it to Herod once Antony and Cleopatra were dead (AJ 15.217), the year
-    after Actium (Vell. 2.84.1, 2.87.1), 30.
+    The row is syria-palaestina's. Taken from the Jews by Pompey and put under
+    the governor of Syria, after he took Jerusalem in the consulship of Antonius
+    and Cicero (63). Octavian gave it to Herod once Antony and Cleopatra were
+    dead (AJ 15.217), the year after Actium (Vell. 2.84.1, 2.87.1), 30.
 
 - atom: gadara-hippos
   polity: syria
@@ -13256,11 +13186,11 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria-palaestina atom until gadara-hippos was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria, after
-    he took Jerusalem in the consulship of Antonius and Cicero (63). Octavian
-    gave Gadara and Hippos to Herod once Antony and Cleopatra were dead (AJ
-    15.217), the year after Actium (Vell. 2.84.1, 2.87.1), 30.
+    The row is syria-palaestina's. Taken from the Jews by Pompey and put under
+    the governor of Syria, after he took Jerusalem in the consulship of Antonius
+    and Cicero (63). Octavian gave Gadara and Hippos to Herod once Antony and
+    Cleopatra were dead (AJ 15.217), the year after Actium (Vell. 2.84.1,
+    2.87.1), 30.
 
 - atom: strato-tower
   polity: syria
@@ -13309,13 +13239,12 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria-palaestina atom until strato-tower was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria, after
-    he took Jerusalem in the consulship of Antonius and Cicero (63). Antony
-    gave Cleopatra "extensive portions of Phoenicia and Palestine" in the year
-    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
-    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
-    Josephus tells with the events of 34.
+    The row is syria-palaestina's. Taken from the Jews by Pompey and put under
+    the governor of Syria, after he took Jerusalem in the consulship of Antonius
+    and Cicero (63). Antony gave Cleopatra "extensive portions of Phoenicia and
+    Palestine" in the year before Pompeius and Cornificius, 36 (Dio 49.32.5,
+    49.33.1), "the cities that were within the river Eleutherus, as far as
+    Egypt" (AJ 15.95), which Josephus tells with the events of 34.
 
 - atom: palaestina-coast
   polity: syria
@@ -13364,14 +13293,13 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria-palaestina atom until palaestina-coast was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria, after
-    he took Jerusalem in the consulship of Antonius and Cicero (63): Dora,
-    Azotus and Iamnia are named; Ascalon, free since 104, is not. Antony gave
-    Cleopatra "extensive portions of Phoenicia and Palestine" in the year
-    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
-    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
-    Josephus tells with the events of 34.
+    The row is syria-palaestina's. Taken from the Jews by Pompey and put under
+    the governor of Syria, after he took Jerusalem in the consulship of Antonius
+    and Cicero (63): Dora, Azotus and Iamnia are named; Ascalon, free since 104,
+    is not. Antony gave Cleopatra "extensive portions of Phoenicia and
+    Palestine" in the year before Pompeius and Cornificius, 36 (Dio 49.32.5,
+    49.33.1), "the cities that were within the river Eleutherus, as far as
+    Egypt" (AJ 15.95), which Josephus tells with the events of 34.
 
 - atom: gaza
   polity: syria
@@ -13420,13 +13348,12 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria-palaestina atom until gaza was split from it (September 2026); the row is syria-palaestina's.
-    Taken from the Jews by Pompey and put under the governor of Syria, after
-    he took Jerusalem in the consulship of Antonius and Cicero (63). Antony
-    gave Cleopatra "extensive portions of Phoenicia and Palestine" in the year
-    before Pompeius and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities
-    that were within the river Eleutherus, as far as Egypt" (AJ 15.95), which
-    Josephus tells with the events of 34.
+    The row is syria-palaestina's. Taken from the Jews by Pompey and put under
+    the governor of Syria, after he took Jerusalem in the consulship of Antonius
+    and Cicero (63). Antony gave Cleopatra "extensive portions of Phoenicia and
+    Palestine" in the year before Pompeius and Cornificius, 36 (Dio 49.32.5,
+    49.33.1), "the cities that were within the river Eleutherus, as far as
+    Egypt" (AJ 15.95), which Josephus tells with the events of 34.
 
 - atom: tyre
   polity: syria
@@ -13478,13 +13405,12 @@
   confidence: certain
   review: draft
   note: >-
-    Part of the syria atom until tyre was split from it (September 2026); the row is syria's.
-    Pompey's annexation: he declared Syria a province when he came down into
-    it (Plut. Pompey 39.2), in the consulship of L. Caesar and Figulus (64;
-    Dio 37.6.4–7.1), and Phoenicia came with it (App. Syr. 50). A free city
-    inside the province, which Antony kept out of his gift to Cleopatra (AJ
-    15.95); Phoenicia was Caesar's in the settlement of his seventh
-    consulship, 27 (Dio 53.2.7, 53.12.7).
+    The row is syria's. Pompey's annexation: he declared Syria a province when
+    he came down into it (Plut. Pompey 39.2), in the consulship of L. Caesar and
+    Figulus (64; Dio 37.6.4–7.1), and Phoenicia came with it (App. Syr. 50). A
+    free city inside the province, which Antony kept out of his gift to
+    Cleopatra (AJ 15.95); Phoenicia was Caesar's in the settlement of his
+    seventh consulship, 27 (Dio 53.2.7, 53.12.7).
 
 - atom: sidon
   polity: syria
@@ -13536,10 +13462,9 @@
   confidence: certain
   review: draft
   note: >-
-    Part of the syria atom until sidon was split from it (September 2026); the row is syria's.
-    Pompey's annexation, as tyre: a free city inside the province, kept out of
-    Antony's gift to Cleopatra (AJ 15.95), and in Caesar's Phoenicia in 27
-    (Dio 53.12.7).
+    The row is syria's. Pompey's annexation, as tyre: a free city inside the
+    province, kept out of Antony's gift to Cleopatra (AJ 15.95), and in Caesar's
+    Phoenicia in 27 (Dio 53.12.7).
 
 - atom: phoenicia
   polity: syria
@@ -13601,15 +13526,14 @@
   confidence: probable
   review: draft
   note: >-
-    Part of the syria atom until phoenicia was split from it (September 2026); the row is syria's.
-    Pompey's annexation, as tyre. Antony gave Cleopatra "extensive portions of
-    Phoenicia and Palestine" in the year before Pompeius and Cornificius, 36
-    (Dio 49.32.5, 49.33.1), "the cities that were within the river
-    Eleutherus, as far as Egypt, excepting Tyre and Sidon" (AJ 15.95), which
-    Josephus tells just before Cleopatra went with Antony to Armenia (AJ
-    15.96), the expedition of his second consulship, 34 (Dio 49.39.1–2),
-    which would keep the coast Syria's to 35. Probable, not certain, since
-    October 2026: the end year is Dio's against Josephus' order of events.
+    The row is syria's. Pompey's annexation, as tyre. Antony gave Cleopatra
+    "extensive portions of Phoenicia and Palestine" in the year before Pompeius
+    and Cornificius, 36 (Dio 49.32.5, 49.33.1), "the cities that were within the
+    river Eleutherus, as far as Egypt, excepting Tyre and Sidon" (AJ 15.95),
+    which Josephus tells just before Cleopatra went with Antony to Armenia (AJ
+    15.96), the expedition of his second consulship, 34 (Dio 49.39.1–2), which
+    would keep the coast Syria's to 35. Probable, not certain: the end year is
+    Dio's against Josephus' order of events.
 
 # The Parthian invasion of 40
 
@@ -13669,9 +13593,7 @@
     40 (AJ 14.330, 14.389). Ventidius "took over Syria without a battle, now
     that it was deserted by the Parthians, with the exception of the Aradii"
     (48.41.4) in the year of Marcius and Sabinus, 39 (48.34.1, 48.43.1), which
-    belongs to the province again. The province went on underneath. Missing
-    from the data until September 2026, though the schema's own comment names
-    it.
+    belongs to the province again. The province went on underneath.
 
 - atom: sidon
   polity: parthia
@@ -14159,8 +14081,7 @@
     it with her journey of 34. 36 is drawn. Hers until she died in 30 (Schürer
     428). Dio and Plutarch date the grant to 36, Josephus (as Schürer reads
     him, and follows him) to 34 (Schürer 402, n. 5): drawn from 36, the bound
-    next to the rows before, so no year is left blank. It was probable until
-    October 2026.
+    next to the rows before, so no year is left blank.
 
 - atom: judaea-jericho
   polity: judaea
@@ -14350,7 +14271,7 @@
     34-30" (II 82). Dio dates the grant to 36 (49.32.5–33.1). Dio and Plutarch
     date the grant to 36, Josephus (as Schürer reads him, and follows him) to
     34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows before,
-    so no year is left blank. It was probable until October 2026.
+    so no year is left blank.
 
 - atom: judaea-joppa
   polity: judaea
@@ -14478,7 +14399,7 @@
     give them to her. Hers until she died in 30 (Schürer 428). Dio and
     Plutarch date the grant to 36, Josephus (as Schürer reads him, and follows
     him) to 34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows
-    before, so no year is left blank. It was probable until October 2026.
+    before, so no year is left blank.
 
 - atom: phoenicia
   polity: syria
@@ -14708,7 +14629,7 @@
     36 (49.32.5–33.1). Hers until she died in 30 (Schürer 428). Dio and
     Plutarch date the grant to 36, Josephus (as Schürer reads him, and follows
     him) to 34 (Schürer 402, n. 5): drawn from 36, the bound next to the rows
-    before, so no year is left blank. It was probable until October 2026.
+    before, so no year is left blank.
 
 - atom: strato-tower
   polity: judaea
@@ -14813,8 +14734,7 @@
   note: >-
     As strato-tower. Dio and Plutarch date the grant to 36, Josephus (as
     Schürer reads him, and follows him) to 34 (Schürer 402, n. 5): drawn from
-    36, the bound next to the rows before, so no year is left blank. It was
-    probable until October 2026.
+    36, the bound next to the rows before, so no year is left blank.
 
 - atom: gaza
   polity: judaea
@@ -15260,14 +15180,12 @@
     Parthia's subject or says Parthia set him up (the Armenians chose him,
     Dio 49.39.6), but he fought beside the Parthians (49.44.4) and held his
     crown by their strength, so the closest type the texts describe is an
-    ally. It read independent until October 2026, against a client-of
-    relation. Artaxias II, defending his crown "by virtue of Parthian
-    strength" (Tac. Ann. 2.3), "put to death the Romans left behind in
-    Armenia" (Dio 51.16.2),
-    which Dio tells among Octavian's dispositions at Alexandria after Antony's
-    and Cleopatra's deaths in 30. When he came back is not recorded: after
-    Antony's compact on the Araxes in 33, by 30; drawn from 31. Still king in
-    20, when Tiberius was sent to drive him out (54.9.4).
+    ally. Artaxias II, defending his crown "by virtue of Parthian strength"
+    (Tac. Ann. 2.3), "put to death the Romans left behind in Armenia" (Dio
+    51.16.2), which Dio tells among Octavian's dispositions at Alexandria after
+    Antony's and Cleopatra's deaths in 30. When he came back is not recorded:
+    after Antony's compact on the Araxes in 33, by 30; drawn from 31. Still king
+    in 20, when Tiberius was sent to drive him out (54.9.4).
 
 - atom: atropatene
   polity: atropatene
@@ -15316,7 +15234,6 @@
     (49.44.4), told after Antony set out for Greece in 32 (49.44.3) and no
     later than his asylum with Octavian in 30 (51.16.2); no text dates it, so
     the end is between 33 and 31, as Armenia's is, drawn at the midpoint.
-    Until October 2026 it read 31.
 
 - atom: atropatene
   polity: atropatene
@@ -15366,7 +15283,7 @@
     in 30–27 is not known. When the Parthians took it is not dated: after
     Antony's recall of his soldiers in 32 (49.44.3–4), and by the Mede's
     asylum in 30 (51.16.2): between 32 and 30, as Armenia's independence is,
-    drawn at the midpoint, 31. Until October 2026 it read 30.
+    drawn at the midpoint, 31.
 
 # --- added September 2026: the extension to 133 BCE, Anatolia -----------------
 #
@@ -15712,14 +15629,13 @@
     (Strabo 13.4.17), who gives no year. Allied: the city had "a formal treaty
     of friendship and alliance" with Rome from early in the second century
     (Magie I 241; Sherwin-White n. 51; Kallet-Marx 113), which Murena
-    disregarded; it read independent until October 2026. Ruled by a Moagetes "when the
-    Romans first came to Asia" (in 189) and similarly down to Murena (Magie I
-    240–241); the dynasty survived "from 190 down to this period"
-    (Sherwin-White 1976, n. 51). The end: Murena governed Asia from 84 to 81;
-    Magie puts the annexation in 84 (I 516), Kallet-Marx has Cibyra "under
-    its own tyrants until captured by L. Murena in 83" (114), and
-    Sherwin-White has the tetrapolis "independent to c. 82" (n. 6). Drawn
-    between them.
+    disregarded. Ruled by a Moagetes "when the Romans first came to Asia" (in
+    189) and similarly down to Murena (Magie I 240–241); the dynasty survived
+    "from 190 down to this period" (Sherwin-White 1976, n. 51). The end: Murena
+    governed Asia from 84 to 81; Magie puts the annexation in 84 (I 516),
+    Kallet-Marx has Cibyra "under its own tyrants until captured by L. Murena in
+    83" (114), and Sherwin-White has the tetrapolis "independent to c. 82" (n.
+    6). Drawn between them.
 
 - atom: cibyra
   polity: asia
@@ -15832,11 +15748,10 @@
   confidence: probable
   review: draft
   note: >-
-    Part of asia-phrygia until cibyra was split from it (September 2026); the
-    row is asia-phrygia's. Transferred with the Phrygian dioceses under
-    Lentulus Spinther (Magie I 376, 383), held by Cicero as governor of
-    Cilicia in 50 (Att. 5.21.9), and returned to Asia in the year Lentulus
-    Crus was consul, 49 (Magie I 402).
+    The row is asia-phrygia's. Transferred with the Phrygian dioceses under
+    Lentulus Spinther (Magie I 376, 383), held by Cicero as governor of Cilicia
+    in 50 (Att. 5.21.9), and returned to Asia in the year Lentulus Crus was
+    consul, 49 (Magie I 402).
 
 - atom: cibyra
   polity: asia
@@ -15878,9 +15793,8 @@
   confidence: probable
   review: draft
   note: >-
-    Part of asia-phrygia until cibyra was split from it (September 2026); the
-    row is asia-phrygia's. Returned to Asia under the proconsul C. Fannius in
-    the year Lentulus Crus was consul, 49 (Magie I 402; Dmitriev 371, who
+    The row is asia-phrygia's. Returned to Asia under the proconsul C. Fannius
+    in the year Lentulus Crus was consul, 49 (Magie I 402; Dmitriev 371, who
     names Laodicea, the Cibyratic district's assize town); still Asia's in
     Strabo's day (13.4.17), and Asia went to the people in 27 (Dio 53.12.4).
 
@@ -15931,11 +15845,9 @@
   review: needs-check
   note: >-
     Cibyra's tetrapolis, with Bubon, Balbura and Oenoanda (Strabo 13.4.17),
-    allied to Rome by Cibyra's treaty (as cibyra; independent until October
-    2026).
-    Dated as cibyra: the dynasty lasted from 190 (Sherwin-White n. 51), and
-    Murena broke up the tetrapolis in 84 (Magie I 516), 83 (Kallet-Marx 114)
-    or c. 82 (Sherwin-White n. 6).
+    allied to Rome by Cibyra's treaty (as cibyra). Dated as cibyra: the dynasty
+    lasted from 190 (Sherwin-White n. 51), and Murena broke up the tetrapolis in
+    84 (Magie I 516), 83 (Kallet-Marx 114) or c. 82 (Sherwin-White n. 6).
 
 - atom: bubon-balbura
   polity: lycia
@@ -16056,12 +15968,11 @@
     Free since Rome took it from Rhodes after 167, "lately liberated by the
     Romans" (App. Mithr. 23). Drawn with Asia as the other free cities of Caria
     are (see asia); whether it was ever under the governor is not recorded.
-    It read from 133 until October 2026, but Caria was not Attalid, and
-    neither Kallet-Marx (113) nor Sherwin-White (n. 6) finds evidence that
-    it came under Rome with the bequest; the first text to count Caunus in
-    "the province of Asia" is Appian's account of the massacre of 88, ordered
-    in the year the consuls drew lots for the war (Mithr. 22–23). Unclaimed
-    before.
+    Caria was not Attalid, and neither Kallet-Marx (113) nor Sherwin-White (n.
+    6) finds evidence that it came under Rome with the bequest; the first text
+    to count Caunus in "the province of Asia" is Appian's account of the
+    massacre of 88, ordered in the year the consuls drew lots for the war
+    (Mithr. 22–23). Unclaimed before.
 
 - atom: caunus
   polity: pontus-regnum
@@ -16815,10 +16726,9 @@
     killed about 120 and he spent seven years in the mountains before he did
     (pp. 194–195), so not before 113. It was his by the war with Rome
     (Kallet-Marx 359), which began in 89 (252); Arcathias led its horse in the
-    first battle (App. Mithr. 17). The range ran to 90 until October 2026, a
-    year no readable text gives; it now ends at 89. The alliance was still in
-    force in 89 (Mithr. 14), and Rome declared war in Sulla's consulship, 88
-    (Mithr. 22). Unclaimed before.
+    first battle (App. Mithr. 17). The alliance was still in force in 89 (Mithr.
+    14), and Rome declared war in Sulla's consulship, 88 (Mithr. 22). Unclaimed
+    before.
 
 - atom: galatia-pontus
   polity: pontus-regnum
@@ -16881,8 +16791,7 @@
     death about 120 and seven years in the mountains (pp. 194–196), so not
     before 113. Pelopidas counts "the Greeks bordering on the Euxine" among
     his acquisitions on the eve of the war (App. Mithr. 15), which began in 89
-    (Kallet-Marx 252). The range ran to 90 until October 2026, a year no
-    readable text gives; it now ends at 89. To 89 as armenia-minor.
+    (Kallet-Marx 252). To 89 as armenia-minor.
 
 - atom: pontus
   polity: rome
@@ -16984,10 +16893,9 @@
     After Cabira Mithridates fled by Comana to Tigranes, and Lucullus took
     "Cabira and most of the other strongholds" (Plut. Luc. 18.1). Kallet-Marx
     (303) and Magie (334–336) both put Cabira in 71, Magie's flight "in the
-    summer of 71"; the range back to 72, "the older chronology", was dropped in
-    October 2026, as no readable text gives it. Mithridates came back in 68
-    (Kallet-Marx 312), beat the legate Fabius and besieged him in Cabira (Dio
-    36.9–10).
+    summer of 71"; no readable text gives 72, "the older chronology".
+    Mithridates came back in 68 (Kallet-Marx 312), beat the legate Fabius and
+    besieged him in Cabira (Dio 36.9–10).
 
 - atom: comana-pontica
   polity: rome
@@ -17028,10 +16936,9 @@
   review: needs-check
   note: >-
     As pontus-inner: Mithridates fled from Cabira by Comana, and his garrison
-    commanders went over to Lucullus (App. Mithr. 82), in 71 (Magie 336); the
-    range back to 72 was dropped in October 2026, as no readable text gives it.
-    Back in 68 (Kallet-Marx 312), he retired to Comana before Triarius, who beat
-    him there (Dio 36.10).
+    commanders went over to Lucullus (App. Mithr. 82), in 71 (Magie 336); no
+    readable text gives 72. Back in 68 (Kallet-Marx 312), he retired to Comana
+    before Triarius, who beat him there (Dio 36.10).
 
 - atom: armenia-minor
   polity: rome
@@ -17226,13 +17133,12 @@
     Mithridates "put Socrates on the throne by force and arms" (App. Mithr. 13)
     in place of his brother Nicomedes IV, who was restored by Aquillius'
     embassy (11). Socrates reigned by Mithridates' troops, so it is drawn as his
-    occupation. Drawn as 90 alone until October 2026, a year no readable text
-    gives. Kallet-Marx has the coup "perhaps in 92" (250) and the kings
+    occupation. Kallet-Marx has the coup "perhaps in 92" (250) and the kings
     restored in 90 (254); Magie has Nicomedes recognised early in 91 and then
-    driven out (207), and the restoration ordered after the law of autumn 90
-    and carried out perhaps after the law of early 89 (208), as Livy's epitome
-    has it in book 74, the year of the consul Pompeius Strabo (89). So the
-    start is 92–91 and the end, the year before the restoration, 91–90.
+    driven out (207), and the restoration ordered after the law of autumn 90 and
+    carried out perhaps after the law of early 89 (208), as Livy's epitome has
+    it in book 74, the year of the consul Pompeius Strabo (89). So the start is
+    92–91 and the end, the year before the restoration, 91–90.
 
 - atom: bithynia
   polity: pontus-regnum
@@ -17355,8 +17261,8 @@
     of 73/72, except Heraclea, which his garrison held until Cotta and Triarius
     took it in 71 or 70 (Memnon 34–35). Kallet-Marx (302) and Magie (324) date
     the invasion to the spring of 73; Eutropius tells it under the consuls of
-    74, Lucullus and Cotta (6.6). Until October 2026 the start was 73 alone;
-    as the readable sources disagree, it now covers both.
+    74, Lucullus and Cotta (6.6). As the readable sources disagree, the start
+    covers both.
 
 # Paphlagonia, Galatia, Cappadocia
 
@@ -17488,9 +17394,7 @@
     Galatia"; and at Dardanus he was to give up "Paphlagonia, Galatia,
     Cappadocia" (Kallet-Marx 262). But Galatians fought with Cassius against him
     in 90–89 (App. Mithr. 11, 17), and no text says which tetrarchies were his
-    or when, so nothing before the massacre is drawn. The note said until
-    October 2026 that the Galatians were not his subjects before it, which
-    Appian's words do not bear.
+    or when, so nothing before the massacre is drawn.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -17562,15 +17466,14 @@
     Mithridates killed his nephew Ariarathes VII at a parley and "bestowed the
     kingdom of Cappadocia on his own son, a child eight years old, giving him the
     name of Ariarathes, and appointing Gordius his guardian"; the Cappadocians'
-    own candidate, Ariarathes VIII, was driven out (Justin 38.1–2). Until
-    October 2026 this started c. 100, a year no readable text states. Magie
-    dates Laodice's marriage to Nicomedes, before Mithridates reinstated and
-    then killed Ariarathes VII, "about 102" (202–203); Kallet-Marx has
-    Mithridates in control when Marius came to Cappadocia in 99 or 98 (245–246).
-    So the start is 102–98. It ended when the senate took Cappadocia from him
-    (Justin 38.2): Magie has him in full control at the end of 96 and the
-    decision in 95 (203, 205); Kallet-Marx has him evacuate it before Sulla
-    marched in, in 96 or 95 (248). So the end, the year before, is 97–96.
+    own candidate, Ariarathes VIII, was driven out (Justin 38.1–2). Magie dates
+    Laodice's marriage to Nicomedes, before Mithridates reinstated and then
+    killed Ariarathes VII, "about 102" (202–203); Kallet-Marx has Mithridates in
+    control when Marius came to Cappadocia in 99 or 98 (245–246). So the start
+    is 102–98. It ended when the senate took Cappadocia from him (Justin 38.2):
+    Magie has him in full control at the end of 96 and the decision in 95 (203,
+    205); Kallet-Marx has him evacuate it before Sulla marched in, in 96 or 95
+    (248). So the end, the year before, is 97–96.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -17653,13 +17556,12 @@
     Kallet-Marx (356–359) argues there was only the one, and that Sulla
     installed Ariobarzanes for the first time in 96 or 95. Magie too has an
     Armenian expulsion before Sulla, whom he puts in Cappadocia in the summer
-    of 92 (206). No Armenian holding is drawn in the 90s. Drawn as 90 alone
-    until October 2026, a year no readable text gives: Kallet-Marx has this
+    of 92 (206). No Armenian holding is drawn in the 90s. Kallet-Marx has this
     expulsion at about the time of Socrates' coup, "perhaps in 92" (250–251),
-    Magie within a year of Sulla's departure (206–207); the restoration is 90
-    in Kallet-Marx (254), after the law of early 89 perhaps in Magie (208), and
-    in Livy's book 74, the year of the consul Pompeius Strabo (89). So the start
-    is 92–91 and the end 91–90, as bithynia's under Socrates.
+    Magie within a year of Sulla's departure (206–207); the restoration is 90 in
+    Kallet-Marx (254), after the law of early 89 perhaps in Magie (208), and in
+    Livy's book 74, the year of the consul Pompeius Strabo (89). So the start is
+    92–91 and the end 91–90, as bithynia's under Socrates.
 
 - atom: cappadocia
   polity: pontus-regnum
@@ -18381,11 +18283,11 @@
     Antiochus' reign of 69–65. So the principality is first attested between
     69 and 65; the row starts at the earlier bound, 69, next to Tigranes'
     row, rather than leave the years between blank. Ends with Pompey in Syria
-    (64). Checking, October 2026: Schürer's two passages say who reigned in
-    Syria in 69–65 and that Sampsigeram of Emesa acted in 65 or 64; neither
-    says when Emesa became its own ruler's or that it stopped being, so they
-    no longer list from and to. The start is unbacked; the end rests on Dio
-    placing Pompey in Syria in 64, which does not name Emesa.
+    (64). Schürer's two passages say who reigned in Syria in 69–65 and that
+    Sampsigeram of Emesa acted in 65 or 64; neither says when Emesa became its
+    own ruler's or that it stopped being, so they do not back from and to.
+    The start is unbacked; the end rests on Dio placing Pompey in Syria in 64,
+    which does not name Emesa.
 
 - atom: emesa
   polity: emesa
@@ -18433,11 +18335,9 @@
     and helped Caesar in 47 (AJ 14.129). Begins between Pompey's settlement of
     Syria (64), before which Emesa was independent, and Cicero's despatch of
     51. Drawn from 64, the range's earlier bound, Pompey in Syria in the
-    consulship of Caesar and Figulus (Dio 37.6.4–7.1): as a range (64–51) it
-    sat at 57 and left 64–58 blank after the independent row, which ends in
-    65. Ends between 47, when it still acted as a friend, and 32, the year
-    before it is first seen dependent (see the client row). Until October 2026
-    this was a client row from 64 to 31.
+    consulship of Caesar and Figulus (Dio 37.6.4–7.1). Ends between 47, when it
+    still acted as a friend, and 32, the year before it is first seen dependent
+    (see the client row).
 
 - atom: emesa
   polity: emesa
@@ -18696,8 +18596,7 @@
     its § 31.22.1, so it can't yet be quoted at its own locator. The sources
     differ on when its tie with Rome began, so the end is uncertain: Appian
     and Magie (II p. 1216) have Antiochus submit to Pompey in 64, where the
-    row ends, but Dio has him make overtures to Lucullus in 69 (36.2.5). It was
-    probable until October 2026.
+    row ends, but Dio has him make overtures to Lucullus in 69 (36.2.5).
 
 - atom: commagene
   polity: commagene
@@ -18928,8 +18827,7 @@
     puts the attack in 130/129, so the terms may postdate 133. Schürer has
     Hyrcanus march with Antiochus in 129 and the king die in 128, a year
     later than this row's end; moving it to 129 waits on the judaea
-    client-of seleucid relation, which ends "after 130". Probable until
-    October 2026.
+    client-of seleucid relation, which ends "after 130".
 
 - atom: judaea
   polity: judaea
@@ -18979,9 +18877,8 @@
     any longer pay them the least regard" (AJ 13.273). The Hasmonean kingdom,
     a friend of Rome by treaty but no client; kings from Aristobulus I (104).
     Porphyry puts Antiochus VII's death in Olympiad 162.4, 129/128, and
-    Schürer in 128, which would start the row a year later; certain until
-    October 2026. Ends when Pompey took Jerusalem in the consulship of
-    Antonius and Cicero (63; AJ 14.66).
+    Schürer in 128, which would start the row a year later. Ends when Pompey
+    took Jerusalem in the consulship of Antonius and Cicero (63; AJ 14.66).
 
 - atom: judaea-jericho
   polity: judaea
@@ -19037,9 +18934,8 @@
   review: needs-check
   note: >-
     As judaea, with the same doubt over both ends (the siege's year; Antiochus
-    VII's death in 129 or 128); probable until October 2026. Hyrcanus besieged
-    his father's murderer in Dagon, the fortress above Jericho, in his first
-    year (AJ 13.230).
+    VII's death in 129 or 128). Hyrcanus besieged his father's murderer in
+    Dagon, the fortress above Jericho, in his first year (AJ 13.230).
 
 - atom: judaea-jericho
   polity: judaea
@@ -19085,9 +18981,8 @@
   confidence: probable
   review: draft
   note: >-
-    As judaea: Porphyry puts Antiochus VII's death in 129/128, Schürer in 128;
-    certain until October 2026. The brothers' war of 69 was fought at Jericho
-    (AJ 14.4).
+    As judaea: Porphyry puts Antiochus VII's death in 129/128, Schürer in 128.
+    The brothers' war of 69 was fought at Jericho (AJ 14.4).
 
 - atom: judaea-joppa
   polity: judaea
@@ -19153,7 +19048,7 @@
     year" (1891, 275); in 133 the city may still have been besieged, and
     Joppa held by the king (Schürer 277). The end follows Antiochus' death,
     put in 129 (Gutschmid, Porphyry's 129–128) or 128 (Schürer 177–178,
-    279), so the tribute may have run into 129. Probable until October 2026.
+    279), so the tribute may have run into 129.
 
 - atom: judaea-joppa
   polity: judaea
@@ -19255,10 +19150,9 @@
     here: the polity is unbacked. Jannaeus took Gadara and Amathus after
     Ptolemy Lathyrus withdrew (AJ 13.356; Schürer 1891, 297) and before he
     took Gaza (96, Schürer 298), in a reign that began in 104 (Schürer 273),
-    so the year is somewhere in 104–96. Until the checking of October 2026
-    the end was 101, from "the war of 103–101" in Van't Dack's title as
-    Bennett cites it, which dates nothing here; it is now the year before
-    the earliest year, 104, as with the neighbouring rows.
+    so the year is somewhere in 104–96. The end is the year before the earliest
+    year, 104, as with the neighbouring rows; "the war of 103–101" in Van't
+    Dack's title, as Bennett cites it, dates nothing here.
 
 - atom: judaea-peraea
   polity: judaea
@@ -19331,9 +19225,6 @@
     273) and before the fall of Gaza in 96 (Schürer 298), which Josephus puts
     after Gadara and Amathus, so the year is somewhere in 104–96; drawn from
     104, the earliest, so that no year is left blank after the Seleucid row.
-    Until the checking of October 2026 the start was c. 100, from "the war of
-    103–101" in Van't Dack's title as Bennett cites it, which dates nothing
-    here.
 
 - atom: judaea-peraea
   polity: judaea
@@ -19586,10 +19477,7 @@
     his expedition against the Medes (BJ 1.62); his death is put in 129
     (Gutschmid) or 128 (Schürer 1891, 177–178). The coins and the end of
     occupation at Marisa have led much modern work (Schürer–Vermes, not read)
-    to put it c. 112–111. Until October 2026 the start was the range 129–111,
-    drawn at its midpoint (120), which left 129–121 blank after the Seleucid
-    row; it is now drawn from 129, the earliest year, and lowered from
-    probable.
+    to put it c. 112–111. It is drawn from 129, the earliest year.
 
 - atom: judaea-idumaea
   polity: judaea
@@ -19643,8 +19531,8 @@
     stayed with Hyrcanus II under Pompey's settlement, though Antipater, his
     minister, was "in great repute with the Idumeans" (AJ 14.121): the polity
     is unbacked. Appian has Pompey bring Idumaea under Roman rule, which backs
-    the relation but not who held it. Lowered from certain at the checking of
-    October 2026, since one of its fields is unbacked.
+    the relation but not who held it. Not certain, since one of its fields is
+    unbacked.
 
 - atom: judaea-idumaea
   polity: judaea-antigonus
@@ -19691,10 +19579,9 @@
     Antigonus' from the Parthian invasion of 40. Herod relieved Masada and
     took Ressa in 39 (AJ 14.396–399), and in the winter of 39/38 "seized upon
     Idumea, and kept it", sending his brother Joseph there "that no innovation
-    might be made by Antigonus" (BJ 1.303; AJ 14.413). It ran to 38 with
-    Antigonus' Judaea until October 2026; uncertain, because when in that
-    winter is not said. No readable text says Antigonus held Idumaea itself
-    (Herod's family held Masada against him): the polity is unbacked.
+    might be made by Antigonus" (BJ 1.303; AJ 14.413). Uncertain, because when
+    in that winter is not said. No readable text says Antigonus held Idumaea
+    itself (Herod's family held Masada against him): the polity is unbacked.
 
 - atom: judaea-idumaea
   polity: judaea
@@ -19743,9 +19630,8 @@
   confidence: probable
   review: draft
   note: >-
-    Herod's from the winter of 39/38 (BJ 1.303), drawn from 38. It started
-    in 37, with Jerusalem, until October 2026. Still Herod's at his death,
-    when it went to Archelaus (AJ 17.317–320).
+    Herod's from the winter of 39/38 (BJ 1.303), drawn from 38. Still Herod's at
+    his death, when it went to Archelaus (AJ 17.317–320).
 
 - atom: judaea-galilee
   polity: seleucid
@@ -19777,8 +19663,7 @@
   note: >-
     Seleucid in name; its people in part Ituraean (AJ 13.318–319). Who ruled
     it before the Hasmoneans is not recorded, and no readable text names the
-    kings here: the polity and its start are unbacked. It ended in 105 until
-    October 2026 (see the next row).
+    kings here: the polity and its start are unbacked.
 
 - atom: judaea-galilee
   polity: judaea
@@ -19834,8 +19719,7 @@
     which Schürer (1891, 273) puts in 105–104, after Hyrcanus' 135–105. Some
     put the conquest under Hyrcanus: his son Jannaeus had been "brought up in
     Galilee" (13.322). Drawn from 105, the earlier year of that reign, so
-    the Seleucid row before it ends in 106; until October 2026 it read 104
-    (and the Seleucid row 105), from a reign put in 104–103.
+    the Seleucid row before it ends in 106.
 
 - atom: judaea-galilee
   polity: judaea
@@ -19945,8 +19829,7 @@
     Antigonus' from the Parthian invasion of 40. Herod landed at Ptolemais in
     39 and "all Galilee, with some small exception, joined him" (AJ 14.395;
     Schürer 394); the Romans wintered in "Judea, and Galilee, and Samaria"
-    (14.411), and he brought over the rest that winter (14.413–415). It ran to
-    38 with Antigonus' Judaea until October 2026.
+    (14.411), and he brought over the rest that winter (14.413–415).
 
 - atom: judaea-galilee
   polity: judaea
@@ -20015,9 +19898,8 @@
   note: >-
     Herod's from 39, when Galilee joined him (AJ 14.395); the Galileans rose
     against him in 38 while he was with Antony at Samosata, and he took it
-    back "without difficulty" (Schürer 395). It started in 37, with Jerusalem,
-    until October 2026. Still Herod's at his death, when it went to Antipas
-    (AJ 17.188, 17.317–320).
+    back "without difficulty" (Schürer 395). Still Herod's at his death, when it
+    went to Antipas (AJ 17.188, 17.317–320).
 
 - atom: samaria
   polity: seleucid
@@ -20125,9 +20007,7 @@
     here: the reports of the coin evidence differ). Then he besieged Samaria
     for a year, took it and "demolished it entirely" (13.275–281), which
     Schürer (1891, 283–284) puts between 111 and 107, "probably not long
-    before" 107. Until October 2026 the start was that range, drawn at its
-    midpoint (109), which left 111–110 blank after the Seleucid row; it is
-    now drawn from 111, the earliest year, and lowered from probable.
+    before" 107. It is drawn from 111, the earliest year.
 
 - atom: syria-palaestina
   polity: seleucid
@@ -20164,8 +20044,7 @@
     The Jezreel with Scythopolis, and the Greek cities across the Jordan.
     Trypho, regent for the young Antiochus VI, came to Scythopolis in the 140s
     (AJ 13.188), and Antiochus IX's general Epicrates still held it during
-    the siege of Samaria (13.280), which brackets 133. It ended in 108 until
-    October 2026 (see the next row).
+    the siege of Samaria (13.280), which brackets 133.
 
 - atom: syria-palaestina
   polity: judaea
@@ -20233,10 +20112,8 @@
     the siege of Samaria (AJ 13.280), which Schürer (1891, 283–284) ends
     between 111 and 107; Dion, Pella, Gerasa and the Gaulanitis fell only to
     Jannaeus in his three years' war of the 80s (AJ 13.393–397). The atom
-    cannot be split by those years. Until October 2026 the start was the
-    range 107–83, drawn at its midpoint (95), which left 107–96 blank after
-    the Seleucid row; it is now drawn from 111, the earliest year the siege
-    can have ended, with Samaria's row.
+    cannot be split by those years. It is drawn from 111, the earliest year the
+    siege can have ended, with Samaria's row.
 
 - atom: gadara-hippos
   polity: seleucid
@@ -20287,10 +20164,8 @@
     took it (Schürer 1910, 101), once Ptolemy Lathyrus and Cleopatra had left
     the country (Schürer 1891, 297), in a reign that began in 104 (273) and
     before Gaza fell in 96 (298): somewhere in 104–96, so the row ends the
-    year before the earliest, as the Judaean row starts at it. Until the
-    checking of October 2026 it ended in 101, from a book title Bennett
-    cites that dates nothing here. Hippos' history before Pompey is not
-    recorded.
+    year before the earliest, as the Judaean row starts at it. Hippos' history
+    before Pompey is not recorded.
 
 - atom: gadara-hippos
   polity: judaea
@@ -20352,12 +20227,9 @@
     Jannaeus "took Gadara, after a siege of ten months" (AJ 13.356), after
     Ptolemy Lathyrus left (Schürer 1891, 297) and before Gaza fell in 96 (298),
     in a reign that began in 104 (273): somewhere in 104–96, drawn from the
-    earliest year, which is also the year after the Seleucid row's end. Until
-    the checking of October 2026 it started c. 100 (probable), from a book
-    title Bennett cites that dates nothing here; its sources were a locator
-    with no quote. Gadara is in the list of the Jews' cities at his death
-    (13.395). Hippos is not in that list, but Pompey took it from them (AJ
-    14.75).
+    earliest year, which is also the year after the Seleucid row's end. Gadara
+    is in the list of the Jews' cities at his death (13.395). Hippos is not in
+    that list, but Pompey took it from them (AJ 14.75).
 
 - atom: strato-tower
   polity: seleucid
@@ -20424,8 +20296,7 @@
     between the kings" (13.326); when is not known, and he is not drawn. The
     contest began when Cyzicenus drove Grypus out in 113 (Schürer 1891, 180),
     so the Seleucid hold ended between 114 and Jannaeus' first campaign;
-    drawn at the midpoint, with Zoilus' years left blank. Until October 2026
-    it read 104, which no text states.
+    drawn at the midpoint, with Zoilus' years left blank.
 
 - atom: strato-tower
   polity: judaea
@@ -20489,8 +20360,7 @@
     was "soon overthrown" by Jannaeus (Schürer 1910, 85), and Strato's Tower
     is the first city on the list of the Jews' possessions after his three
     years' war of 84–81 (13.395). When it passed is not stated: the range is
-    103 to that list. Drawn from 103, the earliest year. Until October 2026 it
-    read 103–96, whose later bound (the war on Gaza) no text states.
+    103 to that list. Drawn from 103, the earliest year.
 
 - atom: palaestina-coast
   polity: seleucid
@@ -20553,8 +20423,7 @@
     13.324). A range, 114–104, would be drawn at 109 and leave the coast blank
     to the Judaean row, so the row ends at 104, the bound next to it.
     As strato-tower; Dora was Zoilus' too, and Ascalon was free from 104
-    (Schürer 1891, 306). Until October 2026 it ended in 104, which no text
-    states.
+    (Schürer 1891, 306).
 
 - atom: palaestina-coast
   polity: judaea
@@ -20613,16 +20482,14 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Drawn from 103, Jannaeus' first campaign; until October 2026 the start was
-    103–96, whose later bound no text states. Dora with Zoilus' country (see
-    strato-tower); Iamnia and Azotus are on the list of the Jews'
-    cities (AJ 13.395). The atom's two pieces differ: in Jannaeus' first year
-    "of the maritime cities there remained only Ptolemais and Gaza to be
-    conquered, besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and
-    Azotus were already Jewish by 103, from a date not recorded, and the
-    southern piece is drawn too late. Ascalon, in that piece, was never
-    Hasmonean: it was free from 104/103 (its era). The atom is drawn Judaean
-    for its other towns.
+    Drawn from 103, Jannaeus' first campaign. Dora with Zoilus' country (see
+    strato-tower); Iamnia and Azotus are on the list of the Jews' cities (AJ
+    13.395). The atom's two pieces differ: in Jannaeus' first year "of the
+    maritime cities there remained only Ptolemais and Gaza to be conquered,
+    besides Strato's Tower and Dora" (AJ 13.324), so Iamnia and Azotus were
+    already Jewish by 103, from a date not recorded, and the southern piece is
+    drawn too late. Ascalon, in that piece, was never Hasmonean: it was free
+    from 104/103 (its era). The atom is drawn Judaean for its other towns.
 
 - atom: gaza
   polity: seleucid
@@ -20783,11 +20650,10 @@
   note: >-
     Jannaeus "overcame the Arabians, such as the Moabites and Gileadites" and
     made them pay tribute (AJ 13.374), after Gaza (96) and before he attacked
-    Obodas, about 90 (Schürer 1890, 351); drawn at the midpoint, 93, which it
-    read as "c. 93" until October 2026. In
-    that war "he was forced to deliver back to the king of Arabia the land of
-    Moab and Gilead, which he had subdued" (13.382), after Demetrius III's
-    invasion, c. 88. Unclaimed before: who held Moab is not recorded.
+    Obodas, about 90 (Schürer 1890, 351); drawn at the midpoint, 93. In that war
+    "he was forced to deliver back to the king of Arabia the land of Moab and
+    Gilead, which he had subdued" (13.382), after Demetrius III's invasion, c.
+    88. Unclaimed before: who held Moab is not recorded.
 
 - atom: nabataea-moab
   polity: nabataea
@@ -20827,8 +20693,7 @@
   review: needs-check
   note: >-
     Given back to the Arabian king in the civil war (AJ 13.382), to Jannaeus'
-    recovery of it, which is not narrated (see the next row). Until October
-    2026 it ended in 84.
+    recovery of it, which is not narrated (see the next row).
 
 - atom: nabataea-moab
   polity: judaea
@@ -20891,8 +20756,7 @@
     twelve of them back to Aretas III (14.18) before Scaurus came south, while
     Pompey was at war with Tigranes in 66 (14.29). When Jannaeus took Moab
     again is not stated: the range is that war, 84–81, drawn from its first
-    year so as to follow the Nabataean row. Until October 2026 it read 83–80,
-    which no readable text gives.
+    year so as to follow the Nabataean row.
 
 - atom: nabataea
   polity: nabataea
@@ -21045,7 +20909,7 @@
     his arms" (Justin 42.2). The war cost Armenia its heir: Tigranes "had long
     before been committed as a hostage to the Parthians" (Justin 38.3). Whether
     Armenia was then Parthia's vassal is not recorded; drawn independent, with
-    that doubt. Split from the row below in September 2026 by the check.
+    that doubt.
 
 - atom: armenia
   polity: armenia
@@ -21241,12 +21105,10 @@
     In 66 Sophene was not reckoned part of Tigranes' hereditary kingdom:
     Pompey took it from him and gave it to Tigranes' son, whom he then put in
     chains (Dio 36.53.2–4), and added it to Ariobarzanes' Cappadocia (Appian
-    Mithr. 105; Magie 375). The son's months are not drawn. Until October
-    2026 this row was Armenia's, as a client, which those texts contradict.
-    When Sophene went back to Armenia is not recorded (Strabo has it in
-    Greater Armenia in his own day, 11.12.3); the end at 35 is only the
-    boundary with the Armenian rows from Antony's seizure of Armenia in 34,
-    and wants a human decision.
+    Mithr. 105; Magie 375). The son's months are not drawn. When Sophene went
+    back to Armenia is not recorded (Strabo has it in Greater Armenia in his own
+    day, 11.12.3); the end at 35 is only the boundary with the Armenian rows
+    from Antony's seizure of Armenia in 34, and wants a human decision.
 
 - atom: sophene
   polity: armenia
@@ -21292,8 +21154,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    As armenia (the row is armenia's), whose end has been 33–31 since October
-    2026; this read 32 until then.
+    As armenia (the row is armenia's), whose end is 33–31.
 
 - atom: sophene
   polity: rome
@@ -21340,8 +21201,7 @@
   confidence: probable
   review: draft
   note: >-
-    As armenia (the row is armenia's), whose end has been 33–31 since October
-    2026; this read 32 until then.
+    As armenia (the row is armenia's), whose end is 33–31.
 
 - atom: sophene
   polity: armenia
@@ -21397,10 +21257,8 @@
   confidence: uncertain
   review: draft
   note: >-
-    As armenia (the row is armenia's), whose start has been 32–30 since
-    October 2026; this read 31 until then. Allied (with Parthia), not
-    independent, and uncertain, not probable, since October 2026, with
-    armenia's row.
+    As armenia (the row is armenia's), whose start is 32–30. Allied (with
+    Parthia), not independent, and uncertain, not probable, with armenia's row.
 
 - atom: atropatene
   polity: atropatene
@@ -21431,7 +21289,6 @@
     One row for each master (relations.yaml): Parthia, then Tigranes, then
     Parthia again. Mithradates II of Parthia, who "had controlled Iran", was
     still alive in 87 (Debevoise 50); Tigranes moved only after his death.
-    Until October 2026 this ended in 86, which no text states.
 
 - atom: atropatene
   polity: atropatene
@@ -21488,8 +21345,8 @@
     no text gives the year, and the king of the Medes held his right wing at
     Tigranocerta in 69 (Plut. Lucullus 27.6), so the start lies in 86–69; the
     Atropateni fought for him again in 68 (31.7). Drawn from 86, its first year,
-    to follow the Parthian row; until October 2026 it read 85, which no text
-    states. To 67: Tigranes' submission in 66 belongs to the next row.
+    to follow the Parthian row. To 67: Tigranes' submission in 66 belongs to the
+    next row.
 
 - atom: atropatene
   polity: atropatene
@@ -21536,10 +21393,9 @@
     From Tigranes' submission to Pompey, in which "what he had acquired later"
     was taken from him (Dio 36.53.2), the year before the consulship of Cotta
     and Torquatus (37.1.1): 66, which belongs to this row as Armenia's own
-    client row starts then. Until October 2026 it read 65, and the row before
-    ended in 66. Allied, not client: in 36 the Mede had gone "to bear aid to
-    his ally, the Parthian king" (Dio 49.25.2), and no text calls him
-    Parthia's subject; it was client until October 2026.
+    client row starts then. Allied, not client: in 36 the Mede had gone "to bear
+    aid to his ally, the Parthian king" (Dio 49.25.2), and no text calls him
+    Parthia's subject.
 
 - atom: iberia-caucasia
   polity: iberia-caucasia
@@ -21699,9 +21555,8 @@
     consulship, 89 (Livy Per. 74), which is where the row ends.
     The start is a range: no earlier than Eupator's accession, 57 years
     before his death in Cicero and Antonius' consulship (App. Mithr. 112; Dio
-    37.10.4), so 120; no later than that embassy of 89. Until October 2026 it
-    read 113–90: 113 is a modern reckoning of his sole rule that no readable
-    text states, and no text has Colchis his by 90.
+    37.10.4), so 120; no later than that embassy of 89. 113, a modern reckoning
+    of his sole rule, is in no readable text, and no text has Colchis his by 90.
 
 - atom: colchis
   polity: pontus-regnum

@@ -53,7 +53,9 @@ uncertain` is how firmly the sources support the record. `review: verified | dra
 project yet, so nothing is `verified`.
 
 **Every historical record cites at least one source**, by id, with a locator where
-there is one. Reasoning that should survive goes in `note`.
+there is one. Reasoning that should survive goes in `note`. What the record said
+before research changed it goes in the commit message, not in `note`: the note is
+about the past, and git keeps the history of our work on it.
 
 **A citation that was read carries its quote.** `quote` holds the words relied on,
 `supports` the record's fields they state, and `url` the page they were read on
