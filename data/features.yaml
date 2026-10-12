@@ -198,14 +198,14 @@
         shutting it off again, he furnished the farmers with an opportune supply
         of water … The lake has continued to serve well the needs of the
         Egyptians down to our time
-      supports: [from, to]
+      supports: [from]
     - source: diodorus
       locator: '1.46.7'
       url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
       quote: >-
         at the time we visited those regions, in the One Hundred and Eightieth
         Olympiad
-      supports: [from, to]
+      supports: []
     - source: strabo
       locator: '17.1.35'
       quote: >-
