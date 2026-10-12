@@ -10,12 +10,14 @@ export default defineConfig({
   // not committed: `npm run water -w pipeline`.
   publicDir: '../../build',
   // Module workers in the engine.
-  // The theme playground is a second page: /playground.html.
+  // The other pages: the index of sources, /sources, whose data is built by
+  // `npm run sources -w pipeline`; and the theme playground, /playground.html.
   build: {
     target: 'es2023',
     rollupOptions: {
       input: {
         main: path.resolve(import.meta.dirname, 'index.html'),
+        sources: path.resolve(import.meta.dirname, 'sources.html'),
         playground: path.resolve(import.meta.dirname, 'playground.html'),
       },
     },

@@ -218,6 +218,32 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+/*
+ * A drop capital, sunk two lines: its top on the first line's capitals, its foot on
+ * the second line's baseline. `initial-letter` sizes and seats it from the text's own
+ * metrics; where it is missing (Firefox), a float sized to match stands in.
+ */
+@utility drop-cap {
+  &::first-letter {
+    float: left;
+    margin: 0.06em 0.1em 0 0;
+    font-family: var(--font-heading);
+    font-size: 3.15em;
+    line-height: 0.76;
+    color: var(--primary);
+  }
+  @supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
+    &::first-letter {
+      float: none;
+      margin: 0 0.3em 0 0;
+      font-size: inherit;
+      line-height: inherit;
+      -webkit-initial-letter: 2;
+      initial-letter: 2;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
