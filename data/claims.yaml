@@ -8186,7 +8186,7 @@
   polity: olba
   relation: independent
   from: 67 BCE
-  to: after 27 BCE
+  to: 40 BCE
   sources:
     - source: strabo
       locator: '14.5.10'
@@ -8210,9 +8210,15 @@
       url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
       quote: >-
         temple-state of Olba was ruled by Aba … This woman, by courting the
-        favour of Antony and Cleopatra, succeeded in retaining her power, and
-        under Augustus her descendants continued to rule this mountain-region.
-      supports: [polity, to]
+        favour of Antony and Cleopatra, succeeded in retaining her power
+      supports: [polity]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [to]
     - { source: plutarch, locator: 'Pompey 28' }
   confidence: uncertain
   review: needs-check
@@ -8220,10 +8226,60 @@
     The priests' domain is drawn from Pompey's war on the pirates, which Dio
     puts in the year of Acilius and Piso, 67 (36.37.3–38.1); before it the
     country is left unclaimed with the rest of the Tracheia. Nothing read states
-    the relation: Strabo's "both Antony and Cleopatra conferred it upon her as a
-    favor" (14.5.10) reads as dependence under Antony rather than independence,
-    but drawing it as a client would need a client-of relation in
-    relations.yaml, and the polity (see olba) leaves it independent.
+    the relation in these years. To 40: Aba held it later by Antony's grant
+    (see the next row). Until October 2026 this row ran on to after 27.
+
+- atom: olba
+  polity: olba
+  relation: client
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        But Aba, the daughter of Xenophanes, one of the tyrants, came into this
+        family by marriage and herself took possession of the empire … But
+        later both Antony and Cleopatra conferred it upon her as a favor
+      supports: [polity, relation]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But after Antony’s rule over the East had been established in
+        consequence of the compact of Brundisium, the senators seem to have
+        ratified in advance all the measures that he might take. Of these
+        perhaps the most important were his arrangements concerning the
+        client-kingdoms.
+      supports: [relation]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        temple-state of Olba was ruled by Aba … This woman, by courting the
+        favour of Antony and Cleopatra, succeeded in retaining her power, and
+        under Augustus her descendants continued to rule this mountain-region.
+      supports: [polity, relation, from, to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    "Both Antony and Cleopatra conferred it upon her as a favor" (Strabo
+    14.5.10): Aba held Olba by Antony's grant, among his arrangements for the
+    client kingdoms once the senate had ratified his acts after Brundisium
+    (Magie I 433–434), and her descendants kept it under Augustus. A client,
+    by the closest type the texts describe: a ruler Rome's triumvir set up.
+    When she had the grant is not stated: no earlier than the ratification
+    in the consulship of Marcius and Sabinus (39; Dio 48.34.1), and Cleopatra's
+    part may put it later, to 31. Drawn from 39, the earliest, next to the
+    row before, as Amyntas' and Polemo's grants are. Added in October 2026;
+    the row before ran to after 27 until then.
 
 - atom: derbe
   polity: derbe

@@ -1598,6 +1598,50 @@
     The tetrarchs' standing before Pompey is not stated; they fought on Rome's
     side in 89 and in the 70s.
 
+- polity: olba
+  type: client-of
+  of: rome
+  from: 39 BCE
+  to: after 27 BCE
+  sources:
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        But Aba, the daughter of Xenophanes, one of the tyrants, came into this
+        family by marriage and herself took possession of the empire … But
+        later both Antony and Cleopatra conferred it upon her as a favor
+      supports: [type, of]
+    - source: magie-1950
+      locator: 'vol. I, 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        But after Antony’s rule over the East had been established in
+        consequence of the compact of Brundisium, the senators seem to have
+        ratified in advance all the measures that he might take. Of these
+        perhaps the most important were his arrangements concerning the
+        client-kingdoms.
+      supports: [type, of]
+    - source: cassius-dio
+      locator: '48.34.1'
+      quote: >-
+        the next year, when Lucius Marcius and Gaius Sabinus held the
+        consulship, the acts of the triumvirs from the time they had formed
+        their oligarchy received ratification at the hands of the senate
+      supports: [from]
+    - source: magie-1950
+      locator: 'vol. I, 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        temple-state of Olba was ruled by Aba … This woman, by courting the
+        favour of Antony and Cleopatra, succeeded in retaining her power, and
+        under Augustus her descendants continued to rule this mountain-region.
+      supports: [type, of, to]
+  confidence: uncertain
+  review: needs-check
+  note: >-
+    Aba's tenure by Antony's grant, from his arrangements of 39, and her
+    descendants' under Augustus (see the claim). Added in October 2026.
+
 - polity: derbe
   type: client-of
   of: rome
