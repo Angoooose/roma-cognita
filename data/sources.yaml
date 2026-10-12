@@ -1058,6 +1058,20 @@
     yet drawn.
   usedBy: pipeline/src/rome/model.ts
 
+- id: lanciani-pcr
+  kind: modern
+  citation: R. Lanciani, Pagan and Christian Rome (Boston and New York, 1892)
+  url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/Lanciani/LANPAC/home.html
+  note: >-
+    Public domain; transcribed on LacusCurtius, one page per chapter. Locators are
+    the book's pages.
+
+- id: martial
+  kind: ancient
+  citation: Martial, Epigrams
+  edition: the Bohn translation (London, 1897), on tertullian.org
+  url: https://www.tertullian.org/fathers/martial_epigrams_book05.htm
+
 - id: sitar
   kind: dataset
   citation: >-
