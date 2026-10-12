@@ -184,7 +184,9 @@ All `review: draft`. The derivation prints the live list; the standing ones:
   lagoon margins that were marsh in antiquity.
 - **Fayum lake level** (−2 m) and the canal-command bound (+26 m) are single
   numbers for a lake that moved during the window.
-- **Gulf coast**: Mesopotamia and Susiana stop at the modern coast.
+- **Gulf coast**: Mesopotamia and Susiana stop at the head of the Gulf as
+  persian-gulf-head draws it, a middle line in a debate that runs from the
+  modern coast to Charax; ±15–25 km.
 - **Branch courses** between sites are splines; Sebennytic lower course,
   Mendesian and Tanitic are `uncertain`. Where the Canopic leaves the Rosetta is
   our choice.

@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { stringify } from 'yaml'
 import { DATA_DIR, loadDataset, readDataset } from '../src/load.ts'
-import { checkDataset, doubts } from '../src/rules.ts'
+import { checkDataset, doubts, evidence } from '../src/rules.ts'
 import { validate } from '../src/validate.ts'
 
 /** A counter-clockwise square: a valid RFC 7946 exterior. */
@@ -265,6 +265,56 @@ describe('sources', () => {
   })
 })
 
+describe('quoted citations', () => {
+  const strabo = { id: 'strabo', kind: 'ancient', citation: 'Strabo, Geography' }
+
+  it('name one passage each', () => {
+    const { errors } = run((f) => {
+      f.sources.push(strabo)
+      f.claims[0].sources = [{ source: 'strabo', locator: '16.2.10, 16.2.16', quote: 'Apameia' }]
+    })
+    expect(rules(errors)).toContain('one-passage')
+  })
+
+  it('need a locator in a text we link into', () => {
+    const { errors } = run((f) => {
+      f.sources.push(strabo)
+      f.claims[0].sources = [{ source: 'strabo', quote: 'Apameia' }]
+    })
+    expect(rules(errors)).toContain('quote-locator')
+  })
+
+  it('support only fields the record has', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'held', supports: ['relation', 'ruler'] }]
+    })
+    expect(errors.filter((e) => e.rule === 'supports-field')).toHaveLength(1)
+  })
+
+  it('must have a quote to support anything', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', supports: ['relation'] }]
+    })
+    expect(rules(errors)).toContain('schema')
+  })
+
+  it('may be cited for context, supporting nothing', () => {
+    const { errors } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'a revolt', supports: [] }]
+    })
+    expect(errors).toEqual([])
+  })
+
+  it('back nothing until their text is read', () => {
+    const { dataset } = run((f) => {
+      f.claims[0].sources = [{ source: 'mrr', quote: 'held', supports: ['relation'] }]
+    })
+    const e = evidence(dataset)
+    expect(e.backed + e.partly).toBe(0)
+    expect(e.quotes).toEqual({ found: 0, unread: 1 })
+  })
+})
+
 describe('time', () => {
   it('rejects a signed year, the ambiguity the era strings remove', () => {
     const { errors } = run((f) => {
@@ -466,7 +516,8 @@ describe('validate', () => {
     const r = validate(DATA_DIR)
     expect(r.issues.filter((i) => i.level === 'error')).toEqual([])
     expect(r.report).toMatch(/NEEDS CHECK/)
-  })
+    // Reads every downloaded text the quotes cite: a few seconds, more under load.
+  }, 30_000)
 })
 
 describe('physical features and their shapes', () => {
@@ -552,5 +603,54 @@ describe('physical features and their shapes', () => {
       s[1].properties = { discharge: -5, colour: 'blue' }
     })
     expect(rules(errors)).toContain('geojson')
+  })
+})
+
+describe('landscape corrections and their shapes', () => {
+  const records = () => [
+    { id: 'old-bay', op: 'add-water', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
+    { id: 'old-course', op: 'river-course', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
+  ]
+  const shapes = () => [
+    { type: 'Feature', id: 'old-bay', properties: { derivation: 'test' }, geometry: square(10, 44) },
+  ]
+
+  function runChanges(
+    mutate: (r: Record<string, unknown>[], s: Record<string, unknown>[]) => void = () => {},
+  ) {
+    const recs: Record<string, unknown>[] = records()
+    const geo: Record<string, unknown>[] = shapes()
+    mutate(recs, geo)
+    const dir = write(base())
+    writeFileSync(join(dir, 'landscape-changes.yaml'), stringify(recs))
+    writeFileSync(
+      join(dir, 'geometry/landscape-changes.geojson'),
+      JSON.stringify({ type: 'FeatureCollection', features: geo }),
+    )
+    const { dataset, issues } = readDataset(dir)
+    const all = [...issues, ...checkDataset(dataset)]
+    return { dataset, errors: all.filter((i) => i.level === 'error') }
+  }
+
+  it('load clean, keyed by id; an op the coast build does not draw needs no shape', () => {
+    const { dataset, errors } = runChanges()
+    expect(errors).toEqual([])
+    expect(dataset.geometry.landscapeChanges.get('old-bay')?.type).toBe('Polygon')
+  })
+
+  it('fail when a drawn correction has no shape, or a shape has no correction', () => {
+    const { errors } = runChanges((_, s) => {
+      s[0].id = 'elsewhere'
+    })
+    expect(rules(errors)).toEqual(expect.arrayContaining(['missing-geometry', 'orphan-geometry']))
+  })
+
+  it('fail on clockwise exteriors (RFC 7946)', () => {
+    const { errors } = runChanges((_, s) => {
+      const g = square(10, 44)
+      g.coordinates[0].reverse()
+      s[0].geometry = g
+    })
+    expect(errors.map((e) => e.message).join()).toMatch(/exterior is clockwise/)
   })
 })

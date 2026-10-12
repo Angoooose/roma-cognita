@@ -16,11 +16,11 @@ import { compareRef, parseRef } from './passage.ts'
 import { allWorks, pageUrl, type Work } from './works.ts'
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const CACHE = join(ROOT_DIR, '.cache/sources/passages')
+export const CACHE = join(ROOT_DIR, '.cache/sources/passages')
 export const INDEX = join(dirname(fileURLToPath(import.meta.url)), 'passages.json')
 
 /** Each anchor on the page in page order, with the text up to the next. */
-function anchors(html: string, w: Work): { id: string; text: string }[] {
+export function anchors(html: string, w: Work): { id: string; text: string }[] {
   const re =
     w.site === 'attalus'
       ? /<A [^>]*NAME="([^"]+)"/gi
@@ -53,8 +53,11 @@ export function passages(html: string, w: Work): [ref: string, anchor: string][]
   return [...out].sort((a, b) => compareRef(parseRef(a[0])!, parseRef(b[0])!))
 }
 
+/** Where a page is cached, by the key the anchor index files it under. */
+export const pageFile = (key: string) => join(CACHE, `${key.replace(/[^a-z0-9]+/gi, '-')}.html`)
+
 async function page(key: string, w: Work, refresh: boolean): Promise<string> {
-  const file = join(CACHE, `${key.replace(/[^a-z0-9]+/gi, '-')}.html`)
+  const file = pageFile(key)
   if (!refresh && existsSync(file)) return readFileSync(file, 'utf8')
   const res = await fetch(pageUrl(w), { headers: { 'User-Agent': userAgent() } })
   if (!res.ok) throw new Error(`${pageUrl(w)}: HTTP ${res.status}`)

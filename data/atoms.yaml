@@ -65,7 +65,67 @@
         - [11.5, 37.6]
   sources:
     - { source: bridoux-2020, locator: '¶125–135 and pl. II (the fossa regia)' }
-    - { source: pliny-nh, locator: '5.25' }
+    - source: pliny-nh
+      locator: '5.25'
+      quote: >-
+        That portion which we have called Africa is divided into two provinces,
+        the Old and the New; these are separated by a dyke which was made by
+        order of the second Scipio Africanus and the kings, and extended to
+        Thenae
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶125'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        cette frontière est matérialisée par un fossé, la Fossa Regia, qui a
+        assurément pour point de départ le fleuve Tusca et pour point d’arrivée
+        Thaenae
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶127'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Il est plus logique de fixer le fleuve Tusca juste à l’est de la cité
+        et ainsi de l’identifier à l’oued Zouara.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶128'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Le point d’arrivée de la Fossa Regia (Thaenae) doit être localisé à
+        Tyna, sur la côte méditerranéenne, à dix kilomètres au sud de Sfax
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶129'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        la Fossa Regia suit, sur les djebels qui bordent à l’est l’oued
+        Kalled, la ligne de partage des eaux entre cette vallée et celle de
+        l’oued Siliana … il est désormais vraisemblable que la frontière est
+        fixée au sud de Seressi et de Furnos Maius
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶131'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        La seconde hypothèse, émise par N. Ferchiou, propose, depuis l’oued el
+        Kebir ou l’oued Zouara, de faire passer la Fossa Regia à l’est de Vaga
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶133'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Ch. Tissot fait passer la Fossa Regia près de la côte, par la sebkha
+        Kelbia, celle de Sidi El Hani et celle d’El Gorra qui forment des
+        obstacles naturels.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶135'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Enfin l’hypothèse d’un tracé oriental de la Fossa Regia, proposée par
+        Ch. Tissot, tend à être confirmée par une étude d’A. M’Charek.
+      supports: [construction]
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -98,6 +158,31 @@
         - [7.1, 37.3]
   sources:
     - { source: bridoux-2020, locator: '¶101–102, ¶157–159 and pls. X–XII' }
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        nous savons que le royaume de Massinissa II ne s’étendait pas, à l’est,
+        au-delà de ce fleuve, puisque Cirta, située le long de celui-ci,
+        appartenait à Juba I
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Après la défaite du roi numide, la partie orientale de son royaume est
+        annexée et constitue la nouvelle province d’Afrique, tandis que la
+        partie occidentale est remise à Sittius
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶159'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        tandis que les Sittiani conservent la totalité de leur territoire à
+        l’est de l’Ampsaga (pl. XII). Ces voisins des Numides sont alors
+        implantés jusqu’à un point inconnu situé entre Rusicade (Ras Skikda) et
+        Hippo Regius.
+      supports: [construction]
     - { source: pliny-nh, locator: '5.22 ("Cirta Sittianorum cognomine")' }
     - { source: hydrorivers }
     - { source: natural-earth }
@@ -129,6 +214,23 @@
         - [6.4, 37.2]
   sources:
     - { source: bridoux-2020, locator: '¶102, ¶155, ¶159 and pls. IX–XII' }
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Il faut donc admettre que la limite orientale de la Maurétanie était
+        alors fixée bien à l’ouest du cours de l’Ampsaga, pour laisser place à
+        la principauté de Sittius.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au
+        contact de la Maurétanie, au fleuve Ampsaga à l’est, à la limite du
+        royaume de Juba I
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
@@ -160,6 +262,25 @@
         - [5.77, 37.1]
   sources:
     - { source: bridoux-2020, locator: '¶97, ¶102, ¶148, ¶155 and pl. IX' }
+    - source: bridoux-2020
+      locator: '¶155'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        conduit à localiser la principauté de Massinissa II dans l’ouest de la
+        Numidie (pl. IX), depuis l’embouchure de l’oued Soummam à l’ouest, au
+        contact de la Maurétanie, au fleuve Ampsaga à l’est, à la limite du
+        royaume de Juba I
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶148'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Masteabar n’est manifestement plus au pouvoir en 81 av. J.-C., année
+        durant laquelle un roi du nom de Massinissa II exerce son autorité sur
+        son territoire dont nous avons des raisons de penser qu’il se confond
+        avec la Numidie occidentale, plus précisément entre l’oued Soummam et
+        le fleuve Ampsaga
+      supports: [construction]
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: uncertain
@@ -203,6 +324,40 @@
         - [11.5, 37.6]
   sources:
     - { source: bridoux-2020, locator: '¶157, ¶165–166 and pls. VIII, X–XI' }
+    - source: bridoux-2020
+      locator: '¶157'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Depuis le fleuve Ampsaga, le royaume de Juba I doit s’étendre vers
+        l’est jusqu’à la Fossa Regia
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶165'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Par ailleurs, les limites méridionales de ces royaumes nous échappent.
+        Elles devaient être fixées là où commençait l’aire de domination des
+        Gétules.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶165'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au sud-ouest de Kairouan, la cité d’Aquae Regiae, et plus à l’ouest, à
+        peu près à la même latitude que cette dernière, celle de Thala, sont
+        incluses au sein du royaume numide
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶143'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Au sud-est, Jugurtha détient assurément Capsa et les Emporia des Syrtes
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.22'
+      quote: >-
+        At the river Ampsaga Numidia begins
+      supports: [construction]
     - { source: barrington, locator: 'maps 33–35' }
     - { source: natural-earth }
   confidence: probable
@@ -240,6 +395,23 @@
         - [5.0, 37.0]
   sources:
     - { source: bridoux-2020, locator: '¶75, ¶97, ¶102 and pl. IX' }
+    - source: bridoux-2020
+      locator: '¶75'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est désormais l’interprétation de St. Gsell qui attire davantage
+        notre attention. L’auteur déduit du texte de Salluste que cette limite
+        doit se situer entre l’embouchure du Chélif et le cap Ténès.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶102'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        J. Desanges pense que dès la première moitié du I er siècle av. J.-C.
+        le royaume maure s’est encore accru vers l’est, aux dépens de la
+        Numidie, et ce jusqu’à l’oued Soummam, ou tout du moins jusqu’à
+        l’Algérois. L’hypothèse est tout à fait vraisemblable.
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
@@ -275,7 +447,44 @@
         - [1.3, 37.0]
   sources:
     - { source: bridoux-2020, locator: '¶74–75, ¶99–100 and pls. VIII, XIII' }
-    - { source: pliny-nh, locator: '5.19' }
+    - source: bridoux-2020
+      locator: '¶74'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Si au temps des rois numides Micipsa et Jugurtha nous pouvons
+        assurément situer la limite occidentale du royaume de Bocchus I au
+        fleuve Muluccha (oued Moulouya, pl. VII)
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶75'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        C’est désormais l’interprétation de St. Gsell qui attire davantage
+        notre attention. L’auteur déduit du texte de Salluste que cette limite
+        doit se situer entre l’embouchure du Chélif et le cap Ténès.
+      supports: [construction]
+    - source: bridoux-2020
+      locator: '¶100'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Une indication de Pline suggère que la limite entre les royaumes de
+        Bogud et de Bocchus II est la même que celle des deux provinces
+        romaines de Maurétanie, c’est-à-dire l’oued Moulouya
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.19'
+      quote: >-
+        the further Mauritania being called the “land of Bogud,” while that
+        which is now called Caesariensis was called the “country of Bocchus.”
+        … the river Mulucha, which served as the limit between the territory
+        of Bocchus and that of the Massaesyli
+      supports: [construction]
+    - source: sallust-jug
+      locator: '110.8'
+      quote: >-
+        I shall not pass the river Muluccha, which was the boundary between
+        Micipsa and myself
+      supports: [construction]
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
@@ -310,8 +519,29 @@
         - [-5.6, 36.1]
         - [-6.4, 35.9]
   sources:
+    - source: pliny-nh
+      locator: '5.19'
+      quote: >-
+        the further Mauritania being called the “land of Bogud ,” while that
+        which is now called Caesariensis was called the “country of Bocchus .”
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.5'
+      quote: >-
+        At a distance of thirty-five miles from this last is the town of
+        Volubilis … At the same distance from it is the city of Sala , situate
+        on a river which bears the same name, a place which stands upon the very
+        verge of the desert
+      supports: [construction]
+    - source: bridoux-2020
+      locator: 'ch. 1, ¶100'
+      url: https://books.openedition.org/efr/31990
+      quote: >-
+        Une indication de Pline suggère que la limite entre les royaumes de
+        Bogud et de Bocchus II est la même que celle des deux provinces romaines
+        de Maurétanie, c’est-à-dire l’oued Moulouya
+      supports: [construction]
     - { source: barrington, locator: 'map 28 and Map-by-Map Directory, map 28 (M. Euzennat)' }
-    - { source: bridoux-2020, locator: '¶99–100 and pl. XIII' }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -350,7 +580,22 @@
         - [22.0, 33.3]
         - [19.8, 32.6]
   sources:
-    - { source: pliny-nh, locator: '5.28, 5.38' }
+    - source: pliny-nh
+      locator: '5.38'
+      quote: >-
+        The last place in the territory of Cyrenaica is Catabathmos , consisting
+        of a town, and a valley with a sudden and steep descent.
+      supports: [construction]
+    - source: sallust-jug
+      locator: '19.3'
+      quote: >-
+        In the neighbourhood, then, of the Catabathmos , the region which
+        separates Egypt from Africa, the first city as you follow the coast is
+        Cyrene , a colony of Thera , and then come the two Syrtes with Lepcis
+        between them. Next we come to the altars of the Philaeni, the point
+        which the Carthaginians regarded as marking the boundary between their
+        empire and Egypt
+      supports: [construction]
     - { source: barrington, locator: 'maps 37–38' }
     - { source: natural-earth }
   confidence: probable
@@ -450,9 +695,27 @@
     at: [31.2, 29.2]
     note: The name belongs on the valley, where the kingdom was, not on the eastern desert.
   sources:
-    - { source: pliny-nh, locator: '5.39, 5.59, 5.68' }
-    - { source: barrington, locator: 'maps 74–81' }
-    - { source: natural-earth }
+    - source: pliny-nh
+      locator: '5.39'
+      quote: >-
+        The region that follows is called Libya Mareotis , and borders upon
+        Egypt . It is held by the Marmaridae , the Adyrmachidae , and, after
+        them, the Mareotoe . The distance from Catabathmos to Paraetonium is
+        eighty-six miles.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.59'
+      quote: >-
+        The Nile first enters the Egyptian territory at Syene , on the frontiers
+        of Aethiopia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.68'
+      quote: >-
+        Ostracine , at a distance of sixty-five miles from Pelusium , is the
+        frontier town of Arabia . After this, at the point where the Sirbonian
+        Lake becomes visible, Idumaea and Palaestina begin.
+      supports: [construction]
   confidence: probable
   review: draft
   note: >-
@@ -496,6 +759,17 @@
           note: the Hisma
         - [35.2, 28.9]
   sources:
+    - source: strabo
+      locator: '16.4.21'
+      quote: >-
+        The capital of the Nabataeans is called Petra.
+      supports: [construction]
+    - source: strabo
+      locator: '16.4.18'
+      quote: >-
+        Next is the Aelanitic Gulf and Nabataea, a country well peopled, and
+        abounding in cattle.
+      supports: [construction]
     - { source: barrington, locator: 'maps 70–71, 76' }
     - { source: sullivan-1990 }
     - { source: natural-earth }
@@ -522,7 +796,15 @@
         - at: [36.1, 30.9]
           via: curve
   sources:
-    - { source: josephus-aj, locator: '14.18' }
+    - source: josephus-aj
+      locator: '14.18'
+      quote: >-
+        Hyrcanus promised him, that when he had been brought thither, and had
+        received his kingdom, he would restore that country, and those twelve
+        cities which his father Alexander had taken from the Arabians , which
+        were these, Medaba , Nabaloth, Libba, Arabatha, Galanthone, Zoira,
+        Orone, Marissa , Rudda, Alousa, and Orubda.
+      supports: [construction]
     - { source: barrington, locator: 'map 71' }
     - { source: natural-earth }
   confidence: uncertain
@@ -530,8 +812,10 @@
   note: >-
     Moab from the Zered to the Arnon. Alexander Jannaeus had taken its towns
     from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
-    for his help (Josephus AJ 14.18), which dates a Nabataean claim from about
-    65. Jannaeus had given Moab back once before, in his civil war (AJ
+    for his help (Josephus AJ 14.18), but that is a conditional promise, and
+    no text read shows the Nabataeans holding Moab after it: the atom is
+    unclaimed from 65 (its Nabataean rows from 65 were dropped in October
+    2026). Jannaeus had given Moab back once before, in his civil war (AJ
     13.382), and taken it again. Takes the Dead Sea shore and Zoara from
     nabataea.
 
@@ -556,7 +840,14 @@
         - { at: [32.45, 22.6], via: curve, note: the west bank }
         - { at: [32.75, 23.2], via: curve }
   sources:
-    - { source: philae-stele }
+    - source: philae-stele
+      locator: 'Latin version'
+      quote: >-
+        brought the army beyond the Nile Cataract … gave audience to ambassadors
+        from the king of the Aethiopians at Philae, received the same king under
+        his protection, and installed a ruler over the Triacontaschoenos on
+        Aethiopian territory
+      supports: [construction]
     - { source: barrington, locator: 'map 81' }
     - { source: torok-1997, locator: 'chs. 4–5' }
   confidence: uncertain
@@ -594,43 +885,119 @@
         - { at: [32.45, 22.6], via: curve, note: the west bank }
         - { at: [32.75, 23.2], via: curve }
   sources:
+    - source: sai-mission
+      locator: 'Powerful Nubian kingdoms'
+      quote: >-
+        Saï was incorporated into the kingdom of Napata (9th – 3rd century BCE),
+        and then the kingdom of Meroe (3rd century BCE – mid-4th century CE)
+      supports: [construction]
+    - source: eller-2025
+      locator: 'p. 67'
+      url: https://apcz.umk.pl/ET/article/download/67302/44446
+      quote: >-
+        Ptolemy VI expanded by reestablishing control over Lower Nubia up to the
+        Second Cataract
+      supports: [construction]
     - { source: torok-1997, locator: 'chs. 4–5' }
     - { source: barrington, locator: 'maps 80–81' }
   confidence: uncertain
   review: needs-check
   note: >-
-    Lower Nubia above the First Cataract, the northern reach of the Meroitic
-    kingdom in the first century BCE (Török); the Dodecaschoenus next to Philae
-    was contested with the Ptolemies. The kingdom was the Nile valley; the strip
-    stops at the edge of the data frame. Takes Philae from aegyptus.
+    The Nile valley from the Second Cataract south to the edge of the data
+    frame (20.3°N), the northern reach of the Meroitic kingdom: Sai, inside the
+    strip, was Meroe's from the third century BCE (sai-mission), and the
+    Ptolemies' reach stopped at the cataract (Eller). The outline still starts
+    at Philae, but Lower Nubia north of the cataract is triakontaschoinos,
+    earlier in this file, which is cut out of it (split September 2026).
 
 - id: garamantes
   evidence: schematic
   construction:
     - method: outline
       edge:
-        - at: [12.0, 26.7]
+        - at: [12.15, 26.32]
           note: the western end of the Wadi al-Ajal
-        - at: [13.2, 26.95]
-          note: north of Garama
-        - [14.5, 27.3]
-        - at: [15.2, 26.9]
-          note: the Sabha oases
-        - [14.6, 26.3]
-        - at: [14.2, 25.7]
-          note: the Murzuq basin
-        - [13.3, 25.7]
-        - [12.8, 26.3]
-        - [12.0, 26.4]
+        - at: [12.6, 26.44]
+          via: curve
+        - at: [13.1, 26.49]
+          via: curve
+          note: the Jarma escarpment, south of Garama
+        - at: [13.45, 26.52]
+          via: curve
+        - at: [14.0, 26.69]
+          via: curve
+        - at: [14.0, 26.86]
+          note: al-Abyad, the eastern end
+        - at: [13.5, 26.69]
+          via: curve
+        - at: [13.1, 26.66]
+          via: curve
+          note: north of Garama, the edge of the Edeyen Ubari
+        - at: [12.6, 26.6]
+          via: curve
+        - at: [12.15, 26.48]
+          via: curve
   sources:
-    - { source: pliny-nh, locator: '5.35–38' }
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 29'
+      quote: >-
+        During the Proto-Urban Garamantian phase (PUGAR), 500 BC-1 BC, what was
+        to become the capital of the Garamantes, Garama, was established and
+        there was an increase in the location of the settlements in the valleys.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 2'
+      quote: >-
+        the Wadi al-Ajal (Figure 1.1), a long linear band of oases to the south
+        west of Sabha (the modern capital of Fazzan). The Wadi al-Ajal lies
+        between the sands of the Edeyen Ubari to the north and the sandstone
+        plateau of Massak Sattafat to the south.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 319'
+      quote: >-
+        During the Proto-Urban period there is an increase of settlements
+        situated in strategic and defensible locations in the valley.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 127'
+      quote: >-
+        This area of the Wadi al-Ajal is the easternmost sector considered as it
+        forms the limit of the Wadi ash-Sharqi.
+      supports: [construction]
+    - source: gonzalez-rodriguez-2015
+      locator: 'p. 319'
+      quote: >-
+        The Wadi al-Ajal, where the capital Garama is located, became the centre
+        of this civilisation that extended to the Wadi Tanezzuft on the west, the
+        Wadi ash-Shati to the north and the Zuwila-Murzuq-Barjuj depression
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.36'
+      quote: >-
+        Garama too, that most famous capital of the Garamantes
+      supports: [construction]
+    - source: mattingly-sterry-edwards-2015
+      locator: 'p. 16'
+      quote: >-
+        There are no certain ceramics of the Proto-Urban Garamantian period
+        (500-1 BC), a characteristic also of the Murzuq area, where the main
+        development of oases appears to fall in the Classic and Late
+        Garamantian eras
+      supports: []
     - { source: mattingly-2003 }
   confidence: uncertain
   review: needs-check
   note: >-
-    The Fazzan: the oasis belt of the Wadi al-Ajal round Garama and the Murzuq
-    basin, the core of the Garamantian state (Mattingly). A convention round the
-    oases, not a frontier.
+    The Wadi al-Ajal, the band of oases round Garama between the Ubari sand
+    sea and the Massak Sattafat escarpment, where Garama and the valley's
+    settlements grew in the Proto-Urban phase, 500–1 BCE (Gonzalez Rodriguez).
+    Its southern edge follows the escarpment, its ends the surveyed sectors
+    from south of Ubari to al-Abyad. Until October 2026 it also took in the
+    Murzuq basin and the Sabha oases; the Murzuq oases developed mainly after
+    1 BCE (Mattingly, Sterry and Edwards), and no readable text puts either in
+    the Garamantes' hands in 133–27. A convention round the oases, not a
+    frontier.
 
 # === The Levant ================================================================
 # Judaea is drawn as Pompey left it in 63 (Josephus AJ 14.74–76; BJ 1.155–157):
@@ -655,8 +1022,25 @@
           note: the north shore of the Dead Sea; Hyrcania stays outside
         - [35.38, 31.85]
   sources:
-    - { source: josephus-bj, locator: '1.361' }
-    - { source: plutarch, locator: 'Antony 36.2' }
+    - source: josephus-bj
+      locator: '1.361'
+      quote: >-
+        He also took away a great deal of their country; nay, even the
+        plantation of palm trees at Jericho, where also grows the balsam tree,
+        and bestowed them upon her
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.41'
+      quote: >-
+        Jericho is a plain encompassed by a mountainous district, which slopes
+        towards it somewhat in the manner of a theatre. Here is the Phoenicon
+        (or palm plantation)
+      supports: [construction]
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        and still further, the balsam-producing part of Judaea
+      supports: [construction]
     - { source: barrington, locator: 'map 70' }
   confidence: uncertain
   review: needs-check
@@ -684,6 +1068,14 @@
           note: Mount Tabor
         - [35.2, 32.62]
   sources:
+    - source: josephus-bj
+      locator: '3.35–40'
+      quote: >-
+        They are bounded toward the sun-setting, with the borders of the
+        territory belonging to Ptolemais, and by Carmel … they are bounded on
+        the south with Samaria and Scythopolis, as far as the river Jordan; on
+        the east with Hippeae and Gadaris
+      supports: [construction]
     - { source: josephus-aj, locator: '13.318–319, 14.74–76' }
     - { source: schurer-vermes }
     - { source: barrington, locator: 'maps 69–70' }
@@ -713,6 +1105,12 @@
         - [34.9, 31.25]
         - [34.8, 31.45]
   sources:
+    - source: josephus-aj
+      locator: '13.257'
+      quote: >-
+        Hyrcanus took also Dora and Marissa, cities of Idumea, and subdued all
+        the Idumeans
+      supports: [construction]
     - { source: josephus-aj, locator: '13.257–258' }
     - { source: schurer-vermes }
     - { source: barrington, locator: 'map 70' }
@@ -748,6 +1146,14 @@
         - at: [35.55, 31.46]
           note: the mouth of the Arnon; back up the Dead Sea's eastern shore
   sources:
+    - source: josephus-bj
+      locator: '3.46–47'
+      quote: >-
+        Now the length of Peraea is from Macherus to Pella, and its breadth
+        from Philadelphia to Jordan; its northern parts are bounded by Pella,
+        as we have already said, as well as its Western with Jordan; the land
+        of Moab is its southern border
+      supports: [construction]
     - { source: josephus-aj, locator: '13.356, 13.374' }
     - { source: josephus-bj, locator: '1.86–89' }
     - { source: barrington, locator: 'maps 69–71' }
@@ -794,8 +1200,24 @@
         - at: [34.97, 31.6]
           note: east of Marisa, which Pompey restored to its own people (AJ 14.75)
   sources:
-    - { source: josephus-aj, locator: '14.74–76, 14.91' }
-    - { source: josephus-bj, locator: '1.155–157, 1.170' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president, and
+        confined the whole nation, which had elevated itself so high before,
+        within its own bounds. … and restored the rest of the cities, Hippos,
+        and Scythopolis, and Pella, and Dia, and Samaria, as also Marissa
+      supports: [construction]
+    - source: josephus-bj
+      locator: '1.170'
+      quote: >-
+        He also parted the whole nation into five conventions, assigning one
+        portion to Jerusalem, another to Gadara, that another should belong to
+        Amathus, a fourth to Jericho, and to the fifth division was allotted
+        Sepphoris, a city of Galilee.
+      supports: [construction]
+    - { source: josephus-aj, locator: '14.91' }
     - { source: schurer-vermes, locator: 'vol. I, 237–42' }
     - { source: barrington, locator: 'maps 69–70' }
   confidence: probable
@@ -819,7 +1241,20 @@
         - [34.84, 31.93]
         - [34.55, 31.93]
   sources:
-    - { source: josephus-aj, locator: '14.74–76, 14.202–206' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        of the maritime cities, Gaza, and Joppa, and Dora and Strato's Tower
+      supports: [construction]
+    - source: josephus-aj
+      locator: '14.202–206'
+      quote: >-
+        It is also our pleasure that the city Joppa, which the Jews had
+        originally, when they made a league of friendship with the Romans,
+        shall belong to them, as it. formerly did; and that Hyrcanus, the son
+        of Alexander, and his sons, have as tribute of that city from those
+        that occupy the land for the country
+      supports: [construction]
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -844,7 +1279,26 @@
         - [35.05, 32.05]
         - [34.97, 32.2]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: josephus-bj
+      locator: '3.48'
+      quote: >-
+        Now as to the country of Samaria, it lies between Judea and Galilee; it
+        begins at a village that is in the great plain called Ginea, and ends at
+        the Acrabbene toparchy
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.69'
+      quote: >-
+        In the interior of Samaria are the towns of Neapolis, formerly called
+        Mamortha, Sebaste, situate on a mountain
+      supports: [construction]
     - { source: josephus-bj, locator: '1.396' }
     - { source: barrington, locator: 'maps 69–70' }
   confidence: uncertain
@@ -871,8 +1325,32 @@
           note: the Jordan below the lake
         - [35.58, 32.72]
   sources:
-    - { source: josephus-bj, locator: '1.396' }
-    - { source: pliny-nh, locator: '5.74' }
+    - source: josephus-bj
+      locator: '1.396'
+      quote: >-
+        made an addition to his kingdom, by giving him not only the country
+        which had been taken from him by Cleopatra, but besides that, Gadara,
+        and Hippos, and Samaria
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.71'
+      quote: >-
+        a lake, by many writers known as Genesara, sixteen miles in length and
+        six wide; which is skirted by the pleasant towns of Julias and Hippo on
+        the east
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.74'
+      quote: >-
+        Gadara, before which the river Hieromix flows; Hippo, which has been
+        previously mentioned
+      supports: [construction]
+    - source: josephus-bj
+      locator: '3.37'
+      quote: >-
+        they are bounded on the south with Samaria and Scythopolis, as far as
+        the river Jordan; on the east with Hippeae and Gadaris
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -894,7 +1372,27 @@
           note: the northern edge of the territory of Joppa
         - [34.6, 32.12]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.69'
+      quote: >-
+        and Joppe, a city of the Phoenicians … Next to this place comes
+        Apollonia, and then the Tower of Strato, otherwise Caesarea, built by
+        King Herod
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.75'
+      quote: >-
+        There was formerly a town here known as Crocodilon; there is still a
+        river of that name: Dorum and Sycaminon are the names of cities of which
+        the remembrance only exists.
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -926,7 +1424,28 @@
           note: south of Ascalon
         - [34.3, 31.6]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.28–29'
+      quote: >-
+        The district was so populous that the neighbouring village Iamneia, and
+        the settlements around, could furnish forty thousand soldiers … then
+        Azotus and Ascalon. From Iamneia to Azotus and Ascalon are about 200
+        stadia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.75'
+      quote: >-
+        There was formerly a town here known as Crocodilon; there is still a
+        river of that name: Dorum and Sycaminon are the names of cities of which
+        the remembrance only exists. We then come to the Promontory of Carmelus
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -955,7 +1474,25 @@
         - [34.7, 31.64]
         - [34.3, 31.7]
   sources:
-    - { source: josephus-aj, locator: '15.217' }
+    - source: josephus-aj
+      locator: '15.217'
+      quote: >-
+        He also added to his kingdom Gadara, Hippos, and Samaria; and, besides
+        those, the maritime cities, Gaza, and Anthedon, and Joppa, and Strato's
+        Tower.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.30–31'
+      quote: >-
+        Next and near Ascalon is the harbour of the Gazaei. The city is situated
+        inland at the distance of seven stadia … Next to Gaza is Raphia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.68'
+      quote: >-
+        The towns are Rhinocolura, and, in the interior, Rhaphea, Gaza, and,
+        still more inland, Anthedon
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -987,18 +1524,36 @@
           note: Carmel; Ptolemais beyond was never Hasmonean
         - [34.6, 32.8]
   sources:
-    - { source: josephus-aj, locator: '13.395–397, 14.74–76' }
-    - { source: josephus-bj, locator: '1.155–157' }
+    - source: josephus-aj
+      locator: '14.74–76'
+      quote: >-
+        took away those cities of Coele Syria which the inhabitants of Judea had
+        subdued, and put them under the government of the Roman president … and
+        restored the rest of the cities, Hippos, and Scythopolis, and Pella, and
+        Dia, and Samaria
+      supports: [construction]
+    - source: josephus-bj
+      locator: '1.155–157'
+      quote: >-
+        He also made other cities free from their dominion, that lay in the
+        midst of the country, such, I mean, as they had not demolished before
+        that time; Hippos, and Scythopolis, as also Pella, and Samaria
+      supports: [construction]
+    - { source: josephus-aj, locator: '13.395–397' }
     - { source: schurer-vermes, locator: 'vol. I, 237–42' }
     - { source: natural-earth }
   confidence: uncertain
   review: draft
   note: >-
-    What Pompey took from the Jews in 63 and put under the governor of Syria:
-    the coastal plain from Raphia to Dora, Samaria, Scythopolis and the Greek
-    cities across the Jordan (Gadara, Hippos, Pella, Dion, Gerasa). Hasmonean
-    before, by Jannaeus' conquests (AJ 13.395–397). Takes Judaea's edges from
-    judaea.
+    What Pompey took from the Jews in 63 and put under the governor of Syria,
+    less the pieces split from it in September 2026 for their own later
+    histories: the coast (strato-tower, palaestina-coast, gaza), samaria and
+    gadara-hippos. What is left is the Jezreel and Scythopolis and the Greek
+    cities across the Jordan south of Gadara (Pella, Dion, Gerasa). Hasmonean
+    before, by Jannaeus' conquests (AJ 13.395–397). The outline is still
+    authored round the whole of Pompey's district, from Raphia to Carmel; the
+    split atoms come before it in this file and are cut out of it. Takes
+    Judaea's edges from judaea.
 
 - id: ituraea
   evidence: schematic
@@ -1028,7 +1583,28 @@
         - at: [36.5, 34.45]
           note: the head of the Massyas (Beqaa)
   sources:
-    - { source: strabo, locator: '16.2.10, 16.2.16, 16.2.18' }
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        At no great distance were Heliopolis and Chalcis, which were subject to
+        Ptolemy, son of Mennaeus, who possessed the Massyas and the mountainous
+        country of the Ituraeans.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.16'
+      quote: >-
+        There are two mountains, which form Coele-Syria, as it is called, lying
+        nearly parallel to each other … Libanus and Antilibanus … A hollow plain
+        lies between them
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.18'
+      quote: >-
+        Next to the plain of Macras is that of Massyas, which also contains some
+        mountainous parts, among which is Chalcis, the acropolis, as it were, of
+        the Massyas … The Ituraeans and Arabians, all of whom are freebooters,
+        occupy the whole of the mountainous tracts.
+      supports: [construction]
     - { source: myers-2010 }
     - { source: sullivan-1990 }
   confidence: uncertain
@@ -1052,7 +1628,20 @@
         - { at: [36.6, 35.1], via: curve }
         - { at: [36.42, 34.8], via: curve }
   sources:
-    - { source: strabo, locator: '16.2.10' }
+    - source: strabo
+      locator: '16.2.10'
+      quote: >-
+        a great many of the chiefs of the neighbouring tribes were his allies,
+        who possessed strongholds, among which was Lysias, situated above the
+        lake, near Apameia, Arethusa, belonging to Sampsiceramus and Iamblichus
+        his son, chiefs of the tribe of the Emeseni
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.11'
+      quote: >-
+        nearly all the country further to the south of Apameia belongs to the
+        Scenitae … as that of Arethusa under Sampsiceramus
+      supports: [construction]
     - { source: sullivan-1990 }
   confidence: uncertain
   review: needs-check
@@ -1084,7 +1673,20 @@
           note: the Taurus
         - [38.3, 38.15]
   sources:
-    - { source: strabo, locator: '16.2.3' }
+    - source: strabo
+      locator: '16.2.3'
+      quote: >-
+        Commagene is rather a small district. It contains a strong city,
+        Samosata, in which was the seat of the kings. … Here is now the Zeugma,
+        or bridge, of the Euphrates, and near it is situated Seleuceia, a
+        fortress of Mesopotamia, assigned by Pompey to the Commageneans.
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.2'
+      quote: >-
+        then bends towards the south and cuts through the Taurus between
+        Armenia, Cappadocia, and Commagene
+      supports: [construction]
     - { source: facella-2006 }
     - { source: hydrorivers }
   confidence: probable
@@ -1109,7 +1711,14 @@
           note: behind Issus, which was in the province
         - at: [35.95, 37.1]
   sources:
-    - { source: strabo, locator: '14.5.18' }
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        the mountain Amanus, which extends down from the Taurus and lies above
+        Cilicia towards the east. It was always ruled by several powerful
+        tyrants, who possessed strongholds; but in my time a notable man
+        established himself as lord of all
+      supports: [construction]
     - { source: cicero-fam, locator: '15.1.2' }
     - { source: borgia-2017, locator: 'p. 302 n. 29' }
   confidence: uncertain
@@ -1136,8 +1745,32 @@
           note: the Ladder of Tyre (Ras en-Naqura)
         - [34.9, 33.09]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: cassius-dio, locator: '48.26.1' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: cassius-dio
+      locator: '48.26.1'
+      quote: >-
+        Pacorus made himself master of Syria and subjugated all of it except
+        Tyre
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.24'
+      quote: >-
+        Tyre is distant from Sidon not more than 200 stadia. Between the two is
+        situated a small town, called Ornithopolis, (the city of birds); next a
+        river which empties itself near Tyre into the sea.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.25'
+      quote: >-
+        Then follows Ptolemais, a large city, formerly called Ace … Between Ace
+        and Tyre is a sandy beach
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1162,7 +1795,20 @@
         - [35.245, 33.34]
         - [34.95, 33.34]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.22'
+      quote: >-
+        Next to Berytus is Sidon, at the distance of 400 stadia. Between these
+        places is the river Tamyras, and the grove of Asclepius and Leontopolis.
+        Next to Sidon is Tyre
+      supports: [construction]
     - { source: josephus-aj, locator: '14.333' }
     - { source: natural-earth }
   confidence: uncertain
@@ -1196,8 +1842,38 @@
         - [34.9, 32.7]
         - [34.85, 32.85]
   sources:
-    - { source: josephus-aj, locator: '15.95' }
-    - { source: plutarch, locator: 'Antony 36.2' }
+    - source: josephus-aj
+      locator: '15.95'
+      quote: >-
+        Thus he gave her the cities that were within the river Eleutherus, as
+        far as Egypt, excepting Tyre and Sidon, which he knew to have been free
+        cities from their ancestors
+      supports: [construction]
+    - source: plutarch
+      locator: 'Antony 36.2'
+      quote: >-
+        he made her a present of no slight or insignificant addition to her
+        dominions, namely, Phoenicia, Coele Syria, Cyprus
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.12'
+      quote: >-
+        Continuous with these places is Orthosia, then the river Eleutherus,
+        which some make the boundary of Seleucis towards Phoenicia and
+        Coele-Syria.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.18'
+      quote: >-
+        the robbers overran Byblus, and Berytus situated next to it, and which
+        lie between Sidon and Theoprosopon
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.27'
+      quote: >-
+        Next to Ace is the Tower of Strato, with a station for vessels. Between
+        these places is Mount Carmel
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: needs-check
@@ -1250,8 +1926,36 @@
         - [35.6, 35.2]
         - [35.8, 36.3]
   sources:
+    - source: strabo
+      locator: '16.2.1'
+      quote: >-
+        SYRIA is bounded on the north by Cilicia and the mountain Amanus … on
+        the east it is bounded by the Euphrates and the Arabian Scenitae, who
+        live on this side the Euphrates; on the south, by Arabia Felix and
+        Egypt; on the west, by the Egyptian and Syrian Seas as far as Issus.
+      supports: [construction]
+    - source: strabo
+      locator: '16.2.2'
+      quote: >-
+        Beginning from Cilicia and Mount Amanus, we set down as parts of Syria,
+        Commagene, and the Seleucis of Syria, as it is called, then Coele-Syria,
+        lastly, on the coast, Phoenicia, and in the interior, Judaea.
+      supports: [construction]
+    - source: josephus-aj
+      locator: '14.79'
+      quote: >-
+        Now Pompey committed Coele Syria, as far as the river Euphrates and
+        Egypt, to Scaurus, with two Roman legions
+      supports: [construction]
+    - source: appian
+      locator: 'Syr. 50'
+      quote: >-
+        In this way the Romans, without fighting, came into possession of
+        Cilicia and both inland Syria and Coele-Syria, Phoenicia, Palestine,
+        and all the other countries bearing the Syrian name from the Euphrates
+        to Egypt and the sea.
+      supports: [construction]
     - { source: josephus-aj, locator: '14.74–76' }
-    - { source: strabo, locator: '16.2' }
     - { source: sullivan-1990 }
     - { source: barrington, locator: 'maps 67–69' }
     - { source: hydrorivers }
@@ -1295,8 +1999,43 @@
         - [40.6, 43.4]
         - [39.8, 42.5]
   sources:
+    - source: strabo
+      locator: '11.2.16'
+      quote: >-
+        since Dioscurias is situated in such a gulf and occupies the most
+        easterly point of the whole sea … The same Dioscurias is the beginning
+        of the isthmus between the Caspian Sea and the Euxine
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.17'
+      quote: >-
+        Further, the greater part of the remainder of Colchis is on the sea.
+        Through it flows the Phasis, a large river having its sources in
+        Armenia and receiving the waters of the Glaucus and the Hippus, which
+        issue from the neighboring mountains.
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.18'
+      quote: >-
+        Now the Moschian country, in which is situated the sanctuary, is
+        divided into three parts: one part is held by the Colchians, another by
+        the Iberians, and another by the Armenians. There is also a small city
+        in Iberia, the city of Phrixus, the present Ideessa, well fortified, on
+        the confines of Colchis.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.17'
+      quote: >-
+        and then, near Hermonassa, to Trapezus, and then to Colchis
+      supports: [construction]
+    - source: strabo
+      locator: '11.3.4'
+      quote: >-
+        Such, then, is the pass that leads from Colchis into Iberia, being
+        shut in by rocks, by strongholds, and by rivers that run through
+        ravines.
+      supports: [construction]
     - { source: appian, locator: 'Mithr. 114' }
-    - { source: strabo, locator: '11.2.16–18' }
     - { source: braund-1994, locator: 'pp. 152–170' }
   confidence: uncertain
   review: needs-check
@@ -1323,6 +2062,30 @@
         - [44.5, 42.7]
         - [42.0, 43.1]
   sources:
+    - source: strabo
+      locator: '11.3.2'
+      quote: >-
+        Parts of the country are surrounded by the Caucasian Mountains; for
+        branches of these mountains, as I said before, project towards the
+        south; they are fruitful, comprise the whole of Iberia, and border on
+        both Armenia and Colchis. In the middle is a plain intersected by
+        rivers, the largest being the Cyrus. … and empties through a narrow
+        valley into Albania
+      supports: [construction]
+    - source: strabo
+      locator: '11.3.5'
+      quote: >-
+        The pass leading from Albania into Iberia is at first hewn through
+        rock, and then leads through a marsh formed by the River Alazonius,
+        which falls from the Caucasus. The passes from Armenia into Iberia are
+        the defiles on the Cyrus and those on the Aragus.
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.1.1'
+      quote: >-
+        They dwell on both sides of the Cyrnus, adjoining the Albanians on the
+        one hand and the Armenians on the other
+      supports: [construction]
     - { source: cassius-dio, locator: '37.1–2' }
     - { source: strabo, locator: '11.3.1–6' }
     - { source: braund-1994, locator: 'pp. 152–170' }
@@ -1352,8 +2115,29 @@
         - at: [47.5, 42.0]
           note: the crest of the Caucasus
   sources:
-    - { source: plutarch, locator: 'Pompey 34–35' }
-    - { source: strabo, locator: '11.4.1–2' }
+    - source: strabo
+      locator: '11.4.1'
+      quote: >-
+        They live between the Iberians and the Caspian Sea, their country
+        bordering on the sea towards the east and on the country of the
+        Iberians towards the west. Of the remaining sides the northern is
+        protected by the Caucasian Mountains … whereas the southern side is
+        formed by Armenia, which stretches alongside it
+      supports: [construction]
+    - source: strabo
+      locator: '11.4.2'
+      quote: >-
+        The Cyrus, which flows through Albania … Near by is also the mouth of
+        the Araxes, a turbulent stream that flows down from Armenia.
+      supports: [construction]
+    - source: plutarch
+      locator: 'Pompey 34.1'
+      quote: >-
+        The greatest of these peoples are the Albanians and the Iberians, of
+        whom the Iberians extend to the Moschian mountains and the Euxine Sea,
+        while the Albanians lie to the eastward as far as the Caspian Sea.
+      supports: [construction]
+    - { source: plutarch, locator: 'Pompey 35' }
     - { source: cassius-dio, locator: '37.3–5' }
   confidence: uncertain
   review: needs-check
@@ -1381,7 +2165,32 @@
           note: south of Lake Urmia
         - [44.8, 37.6]
   sources:
-    - { source: strabo, locator: '11.13.1–2' }
+    - source: strabo
+      locator: '11.13.2'
+      quote: >-
+        This country lies east of Armenia and Matiane, west of Greater Media,
+        and north of both; and it lies adjacent to the region round the recess
+        of the Hyrcanian Sea and to Matiane on the south.
+      supports: [construction]
+    - source: strabo
+      locator: '11.13.6'
+      quote: >-
+        on the south by Apollioniatis, which the ancients called Sitacene, and
+        by the mountain Zagrus … and on the west by the Atropatii and certain of
+        the Armenians
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.6'
+      quote: >-
+        both on the Araxes River, Arxata being near the borders of Atropatia
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.8'
+      quote: >-
+        one the Mantiane, which being translated means “Blue”; it is the
+        largest salt water lake after Lake Maeotis, as they say, extending as
+        far as Atropatia
+      supports: [construction]
     - { source: schottky-1989 }
   confidence: uncertain
   review: needs-check
@@ -1411,7 +2220,20 @@
         - at: [38.45, 38.85]
           note: back on armenia's Euphrates line
   sources:
-    - { source: strabo, locator: '11.12.4, 11.14.2, 11.14.15' }
+    - source: strabo
+      locator: '11.12.4'
+      quote: >-
+        the Antitaurus, as it is called, for there too the mountain which
+        encloses Sophene in a valley situated between itself and the Taurus
+        was so named
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.2'
+      quote: >-
+        Sophene is situated in the northern parts, between Masius and
+        Antitaurus. … The royal city of Sophene is Carcathiocerta.
+      supports: [construction]
+    - { source: strabo, locator: '11.14.15' }
     - { source: sullivan-1990 }
     - { source: barrington, locator: 'map 89' }
   confidence: uncertain
@@ -1455,9 +2277,47 @@
         - [39.2, 37.9]
         - [38.6, 38.1]
   sources:
-    - { source: strabo, locator: '11.14.1–5' }
-    - { source: plutarch, locator: 'Pompey 33' }
-    - { source: cassius-dio, locator: '36.52–53, 37.5.3–4' }
+    - source: strabo
+      locator: '11.14.1'
+      quote: >-
+        As for Armenia, the southern parts of it have the Taurus situated in
+        front of them, which separates it from the whole of the country
+        between the Euphrates and the Tigris … and on the north are the
+        mountains of Parachoathras that lie above the Caspian Sea, and Albania,
+        and Iberia, and the Caucasus … and on the west are these nations and
+        the mountains Paryadres and Scydises in their extent to Lesser Armenia
+        and the river land of the Euphrates, which latter separates Armenia
+        from Cappadocia and Commagene.
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.3'
+      quote: >-
+        As for the Araxes, it first flows towards the east as far as
+        Atropatene, and then bends towards the west and towards the north and
+        flows first past Azara and then past Artaxata, Armenian cities
+      supports: [construction]
+    - source: strabo
+      locator: '11.14.15'
+      quote: >-
+        Now Tigranes was a descendant of Artaxias and held what is properly
+        called Armenia, which lay adjacent to Media and Albania and Iberia,
+        extending as far as Colchis and Cappadocia on the Euxine
+      supports: [construction]
+    - source: plutarch
+      locator: 'Pompey 33.4'
+      quote: >-
+        he must lay the rest of his losses to Lucullus, who had robbed him of
+        Syria, Phoenicia, Cilicia, Galatia, and Sophene; but that what he had
+        kept up to the present time he should continue to hold
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.5.3–4'
+      quote: >-
+        demanding back the territory of Corduene, concerning which Phraates
+        was quarrelling with Tigranes … sent Afranius into the territory at
+        once, and having occupied it without a battle, gave it to Tigranes
+      supports: [construction]
+    - { source: cassius-dio, locator: '36.52–53' }
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
   confidence: uncertain
   review: needs-check
@@ -1511,6 +2371,12 @@
         - at: [39.1, 36.6]
           note: the Balikh
   sources:
+    - source: strabo
+      locator: '16.1.28'
+      quote: >-
+        The Euphrates and its eastern banks are the boundaries of the Parthian
+        empire.
+      supports: [construction]
     - { source: sherwin-white-1984, locator: 'chs. 10–12' }
     - { source: debevoise-1938, locator: 'pp. 70–108' }
     - { source: plutarch, locator: 'Crassus 17–33' }
@@ -1545,7 +2411,26 @@
     at: [29.49, 37.2]
     note: Cibyra
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        its villages extended alongside it from Pisidia and the neighboring
+        Milyas as far as Lycia and the Peraea of the Rhodians. Three bordering
+        cities were added to it, Bubon, Balbura, and Oenoandon
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        It included the four communities of Cibyra, Bubon, Balbura and
+        Oenoanda, which formed a federation, known as the Tetrapolis, in the
+        valley of the Horzum Qay and the mountainous region on the east and
+        south. … Cibyra itself, situated on a ridge overlooking the broad plain
+        of the river … The southern half of the Tetrapolis, consisting of the
+        mountain-communities of Bubon, Balbura and Oenoanda, he turned over to
+        the Lycian Federation … but Cibyra and its territory, with the broad
+        and fertile valley of the Horzum
+      supports: [construction]
     - { source: sherwin-white-1976, locator: 'nn. 6, 51' }
     - { source: barrington, locator: 'map 65' }
   confidence: uncertain
@@ -1583,9 +2468,32 @@
           note: the Cibyratis, north of Balbura and Bubon, which were Lycian
         - [29.2, 37.1]
   sources:
+    - source: magie-1950
+      locator: 'vol. I, pp. 383–384'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        the districts of Phrygia and Cibyratis, consisting of the three
+        judiciary dioceses of Laodiceia-Cibyra, Apameia and Synnada, … which had
+        hitherto been part of the province of Asia. By the addition of this
+        territory — extending from the southern watershed of the San- garius on
+        the north to the frontier of Pisidia on the south and as far west as the
+        upper reaches of the Tembris and the junction of the Maeander and the
+        Lycus
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea: from the 15th of March at the same place for the districts
+        of Synnada, Pamphylia
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.20.1'
+      quote: >-
+        I did the same afterwards during my five days stay at Apamea and three
+        days at Synnada, five at Philomelium, ten at Iconium.
+      supports: []
     - { source: dmitriev-2000, locator: 'p. 371 and n. 80' }
-    - { source: magie-1950, locator: 'vol. I, 383–4' }
-    - { source: cicero-att, locator: '5.21.9' }
     - { source: sherk-rdge, locator: 'no. 52' }
     - { source: barrington, locator: 'maps 62, 65' }
   confidence: probable
@@ -1615,7 +2523,22 @@
           note: west of Bubon (Pleiades 638792)
         - [29.12, 37.0]
   sources:
-    - { source: strabo, locator: '13.4.17' }
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        Three bordering cities were added to it, Bubon, Balbura, and Oenoandon
+        … the tyranny ended in the time of Moagetes, when Murena overthrew it
+        and included Balbura and Bubon within the territory of the Lycians.
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, pp. 241–242'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        a federation, known as the Tetrapolis, in the valley of the Horzum Qay
+        and the mountainous region on the east and south. … The southern half
+        of the Tetrapolis, consisting of the mountain-communities of Bubon,
+        Balbura and Oenoanda, he turned over to the Lycian Federation
+      supports: [construction]
     - { source: barrington, locator: 'map 65' }
   confidence: uncertain
   review: needs-check
@@ -1626,8 +2549,10 @@
     the ground of asia and lycia: until then Bubon and Balbura fell in a strip
     of asia between asia-phrygia's line and asia's own southern edge, though
     lycia's note meant them to be Lycian. Strabo names only Bubon and Balbura;
-    Oenoanda, Lycian later, is drawn with them. Takes its northern line from
-    cibyra and asia-phrygia.
+    Magie has Murena give all three, "the southern half of the Tetrapolis",
+    to the Lycians, and Cibyra's own territory the valley of the Horzum Çay
+    (241–242), which is the line between this atom and cibyra. Takes its
+    northern line from cibyra and asia-phrygia.
 
 - id: asia
   evidence: derived
@@ -1672,6 +2597,18 @@
         - [27.5, 40.6]
         - [28.3, 40.5]
   sources:
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        Asia within the Halys and Taurus , except the Galatians and the nations
+        under Amyntas , Bithynia , and the Propontis
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.1–2'
+      quote: >-
+        Now the beginning of the seaboard is the Peraea of the Rhodians on the
+        sea … then to Caunus and to the Calbis , a river near Caunus
+      supports: [construction]
     - { source: magie-1950 }
     - { source: dmitriev-2000 }
     - { source: barrington, locator: 'maps 51, 52, 56, 61–62, 65' }
@@ -1710,6 +2647,24 @@
         - [28.5, 39.9]
         - [28.2, 40.2]
   sources:
+    - source: strabo
+      locator: '12.4.1'
+      quote: >-
+        Bithynia is bounded on the east by the Paphlagonians and Mariandyni and
+        some of the Epicteti ; on the north by the Pontic Sea, from the outlets
+        of the Sangarius River to the mouth of the sea at Byzantium and
+        Chalcedon ; on the west by the Propontis ; and towards the south by
+        Mysia and by Phrygia Epictetus
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.2'
+      quote: >-
+        the parts farther on, extending as far as the mouth of the Pontus and
+        Chalcedon , remained under the rule of the king of Bithynia . But when
+        the kings had been overthrown, the Romans preserved the same
+        boundaries, so that Heracleia was added to Pontus and the parts farther
+        on went to the Bithynians
+      supports: []
     - { source: magie-1950 }
     - { source: barrington, locator: 'maps 52, 86' }
     - { source: natural-earth }
@@ -1717,7 +2672,12 @@
   review: draft
   note: >-
     The kingdom Nicomedes IV bequeathed in 74, from the Rhyndacus and Olympus
-    to the Parthenius. Takes the Rhyndacus–Olympus line from asia.
+    to the Parthenius. Takes the Rhyndacus–Olympus line from asia. Strabo
+    bounds Bithynia's coast at the Sangarius (12.4.1) and has Mithridates'
+    coast run west as far as Heraclea, which the Romans then added to Pontus
+    (12.3.2): the stretch from the Sangarius to the Parthenius, with Heraclea,
+    was not the Bithynian king's, and is drawn here only because no atom yet
+    separates it (October 2026).
 
 - id: comana-pontica
   evidence: schematic
@@ -1729,13 +2689,39 @@
         - { at: [36.62, 40.25], via: curve }
         - { at: [36.15, 40.2], via: curve }
   sources:
-    - { source: strabo, locator: '12.3.32–36' }
+    - source: strabo
+      locator: '12.3.32'
+      quote: >-
+        Above Phanaroea is the Pontic Comana
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.34'
+      quote: >-
+        when Pompey took over the authority, he appointed Archelaus priest and
+        included within his boundaries, in addition to the sacred land, a
+        territory of two schoeni (that is, sixty stadia) in circuit and ordered
+        the inhabitants to obey his rule
+      supports: []
+    - source: strabo
+      locator: '12.3.35'
+      quote: >-
+        But his son succeeded to the priesthood; and then later, Lycomedes, to
+        whom was assigned an additional territory of four hundred schoeni
+      supports: []
+    - { source: strabo, locator: '12.3.36' }
   confidence: uncertain
   review: needs-check
   note: >-
     The temple state of Ma at Comana, whose priesthood Pompey gave to Archelaus
     with a territory round it (Strabo 12.3.34); Caesar gave it to Lycomedes in
-    47. The extent is a convention round the town.
+    47. The extent is a convention round the town. Strabo gives Pompey's grant
+    as the sacred land and "a territory of two schoeni (that is, sixty stadia)
+    in circuit" (12.3.34), some 11 km round, far smaller than the outline
+    drawn, and Lycomedes' later addition as four hundred schoeni (12.3.35),
+    far larger; the outline sits between the two and follows neither (noted
+    October 2026). 12.3.34 no longer lists `construction` (the October 2026
+    check): the outline rests only on Strabo's naming the town (12.3.32), and
+    its size is a convention.
 
 - id: pontus-inner
   evidence: schematic
@@ -1762,8 +2748,48 @@
           note: south of Zela
         - [35.1, 40.45]
   sources:
-    - { source: magie-1950, locator: 'vol. I, 433–436' }
-    - { source: strabo, locator: '12.3.37–39' }
+    - source: magie-1950
+      locator: 'vol. I, pp. 434–435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Polemo, however, was provided with other dominions, namely that portion
+        of Pontus which lay east of the river Iris … Polemo obtained the eastern
+        portion of the region. … It is highly probable that, together with
+        eastern Pontus, Polemo obtained from Antony the cities of Amaseia and
+        Amisus
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 435'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of those which he founded east of the Halys, the communities of the
+        Lycus valley came, like Amaseia and Amisus, under the rule of Polemo,
+        Neapolis was assigned to Deiotarus, and Megalopolis, probably, to
+        Ateporix.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.37'
+      quote: >-
+        The whole of the country around is held by Pythodoris, to whom belong,
+        not only Phanaroea, but also Zelitis and Megalopolitis.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.38'
+      quote: >-
+        Now after the territory of the Amisenians, and extending to the Halys
+        River, is Phazemonitis … The northern side of this country is bounded
+        by Gazelonitis and the country of the Amisenians; the western by the
+        Halys River; the eastern by Phanaroea; and the remaining side by my
+        country, that of the Amaseians
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.39'
+      quote: >-
+        This, then, is the length of their country, whereas the breadth from
+        the north to the south extends, not only to Zelitis, but also to
+        Greater Cappadocia, as far as the Trocmi. … Amaseia was also given to
+        kings, though it is now a province.
+      supports: [construction]
     - { source: barrington, locator: 'maps 86–87' }
   confidence: uncertain
   review: needs-check
@@ -1807,7 +2833,29 @@
         - [32.6, 41.15]
         - [32.3, 41.2]
   sources:
-    - { source: strabo, locator: '12.3.1, 12.3.13, 12.3.34' }
+    - source: strabo
+      locator: '12.3.1'
+      quote: >-
+        he held the country bounded by the Halys River as far as the Tibarani
+        and Armenia , and held also, of the country this side the Halys , the
+        region extending to Amastris and to certain parts of Paphlagonia . …
+        The parts towards Armenia and those round Colchis he distributed to the
+        potentates who had fought on his side, but the remaining parts he
+        divided into eleven states and added them to Bithynia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        One part of this country is occupied by the Amiseni , but the other was
+        given to Deiotarus by Pompey , as also the regions of Pharnacia and
+        Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.10'
+      quote: >-
+        After the Parthenius River, then, one comes to Amastris
+      supports: [construction]
+    - { source: strabo, locator: '12.3.34' }
     - { source: hojte-2009, locator: 'pp. 95–96' }
     - { source: barrington, locator: 'maps 86–87' }
     - { source: natural-earth }
@@ -1845,6 +2893,27 @@
         - [35.9, 36.5]
         - [34.2, 36.3]
   sources:
+    - source: strabo
+      locator: '14.5.1'
+      quote: >-
+        But Cilicia Pedias extends from Soli and Tarsus as far as Issus , and
+        also to those parts beyond which, on the northern side of the Taurus ,
+        Cappadocians are situated
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        Thus Archelaus received, in addition to Cappadocia , Cilicia Tracheia ;
+        and the boundary of the latter, the river Lamus and the village of the
+        same name [ Lamos ], lies between Soli and Elaeussa
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.18'
+      quote: >-
+        the Amanides Gates , with a mooring-place, where ends the mountain
+        Amanus , which extends down from the Taurus and lies above Cilicia
+        towards the east
+      supports: [construction]
     - { source: borgia-2017, locator: 'pp. 300–304' }
     - { source: dmitriev-2000 }
     - { source: barrington, locator: 'map 66' }
@@ -1884,9 +2953,42 @@
         - at: [31.5, 38.2]
           note: the Sultan Dağ, between Philomelium and Antioch
   sources:
-    - { source: strabo, locator: '12.6.1–3' }
+    - source: strabo
+      locator: '12.6.1'
+      quote: >-
+        In this neighborhood is also Iconium … Here the region in question is
+        near the Taurus, which separates Cappadocia and Lycaonia from Cilicia
+        Tracheia, which last lies above that region. The boundary between the
+        Lycaonians and the Cappadocians lies between Coropassus, a village of
+        the Lycaonians, and Garsaura, a town of the Cappadocians.
+      supports: [construction]
+    - source: strabo
+      locator: '12.6.2'
+      quote: >-
+        To Lycaonia belongs also Isaurice, near the Taurus itself, which has
+        the two Isauras
+      supports: [construction]
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        On the side of Isaurice lies Derbe, which lies closer to Cappadocia
+        than to any other country and was the royal seat of the tyrant
+        Antipater Derbetes. He also possessed Laranda.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '5.95'
+      quote: >-
+        Lycaonia, which belongs to the jurisdiction of the province of Asia, to
+        which also resort the people of Philomelium … To this jurisdiction is
+        also added a Tetrarchy of Lycaonia in that part which joins up to
+        Galatia, containing fourteen states, with the famous city of Iconium.
+      supports: [construction]
+    - source: cicero-att
+      locator: '5.20.1'
+      quote: >-
+        five at Philomelium, ten at Iconium
+      supports: []
     - { source: dmitriev-2000, locator: 'pp. 364, 370–371' }
-    - { source: cicero-att, locator: '5.20.1' }
     - { source: barrington, locator: 'maps 63, 65–66' }
   confidence: uncertain
   review: needs-check
@@ -1917,9 +3019,27 @@
         - [31.75, 37.85]
         - [31.5, 38.2]
   sources:
-    - { source: appian, locator: 'BC 5.75' }
-    - { source: magie-1950, locator: 'vol. I, 433' }
-    - { source: strabo, locator: '12.6.4' }
+    - source: magie-1950
+      locator: 'vol. I, p. 433'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Of what remained, the hill-country of northern Pisidia was now given to
+        Amyntas
+      supports: [construction]
+    - source: appian
+      locator: 'BC 5.75'
+      quote: >-
+        in Pisidia, Amyntas
+      supports: []
+    - source: strabo
+      locator: '12.6.4'
+      quote: >-
+        being in possession of the Antiocheia near Pisidia and of the country
+        as far as the Apollonias near Apameia Cibotus … he captured many places
+        which previously had been impregnable, among which was Cremna. However,
+        he did not even try to win Sandalium by force, which is situated
+        between Cremna and Sagalassus.
+      supports: [construction]
     - { source: barrington, locator: 'maps 62, 65' }
   confidence: uncertain
   review: needs-check
@@ -1967,6 +3087,13 @@
         - [31.5, 36.4]
         - [30.55, 36.3]
   sources:
+    - source: cicero-att
+      locator: '5.21.9'
+      quote: >-
+        I have arranged to hold a court at Laodicea for the district of Cibyra
+        and Apamea : from the 15th of March at the same place for the districts
+        of Synnada , Pamphylia
+      supports: [construction]
     - { source: dmitriev-2000, locator: 'pp. 355–363' }
     - { source: borgia-2017, locator: 'pp. 300–304' }
     - { source: cicero-att, locator: '5.20.1, 5.21.9' }
@@ -2008,7 +3135,22 @@
           note: Pessinus inside
         - [31.0, 39.3]
   sources:
-    - { source: strabo, locator: '12.5.1–2' }
+    - source: strabo
+      locator: '12.5.1–2'
+      quote: >-
+        The Galatians , then, are to the south of the Paphlagonians . … The
+        Trocmi possess the parts near Pontus and Cappadocia . … Tavium … but
+        the Tectosages the parts near Greater Phrygia in the neighborhood of
+        Pessinus and Orcaorci . To the Tectosages belonged the fortress Ancyra
+        … And the Tolistobogii border on the Bithynians and Phrygia Epictetus
+      supports: [construction]
+    - source: strabo
+      locator: '12.5.4'
+      quote: >-
+        After Galatia towards the south are situated Lake Tatta, which lies
+        alongside Greater Cappadocia near Morimene but is a part of Greater
+        Phrygia
+      supports: [construction]
     - { source: mitchell-1993, locator: 'vol. I, ch. 3' }
     - { source: barrington, locator: 'maps 63, 86' }
     - { source: natural-earth }
@@ -2037,7 +3179,18 @@
           via: crest
         - [37.15, 40.8]
   sources:
-    - { source: strabo, locator: '12.3.13' }
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        the other was given to Deiotarus by Pompey , as also the regions of
+        Pharnacia and Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        Above the region of Pharnacia and Trapezus are the Tibareni and the
+        Chaldaei , whose country extends to Lesser Armenia
+      supports: [construction]
     - { source: mapterhorn }
     - { source: natural-earth }
   confidence: uncertain
@@ -2066,7 +3219,19 @@
         - [37.8, 39.4]
         - [37.2, 39.6]
   sources:
-    - { source: strabo, locator: '12.3.13, 12.3.28' }
+    - source: strabo
+      locator: '12.3.28'
+      quote: >-
+        Lesser Armenia , like Sophene , was always in the possession of
+        potentates … near Dasteira in Acilisene (near by, also, was the
+        Euphrates , which separates Acilisene from Lesser Armenia )
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.13'
+      quote: >-
+        given to Deiotarus by Pompey , as also the regions of Pharnacia and
+        Trapezusia as far as Colchis and Lesser Armenia
+      supports: [construction]
     - { source: barrington, locator: 'map 87' }
   confidence: uncertain
   review: needs-check
@@ -2102,7 +3267,27 @@
         - [33.5, 38.3]
         - [33.2, 38.9]
   sources:
-    - { source: strabo, locator: '12.1.1–4, 12.2.7' }
+    - source: strabo
+      locator: '12.1.1'
+      quote: >-
+        bounded on the south by the “ Cilician ” Taurus , as it is called, and
+        on the east by Armenia and Colchis
+      supports: [construction]
+    - source: strabo
+      locator: '12.1.4'
+      quote: >-
+        those near the Taurus were reckoned as five in number, I mean Melitene
+        , Cataonia , Cilicia , Tyanitis , and Garsauritis … The Romans later
+        assigned to the predecessors of Archelaus an eleventh prefecture, taken
+        from Cilicia , I mean the country round Castabala and Cybistra
+      supports: [construction]
+    - source: strabo
+      locator: '12.2.1'
+      quote: >-
+        It is situated opposite to Sophene ; and the Euphrates River flows
+        between it and Commagene , which latter borders on it
+      supports: [construction]
+    - { source: strabo, locator: '12.2.7' }
     - { source: dmitriev-2000 }
     - { source: sullivan-1990 }
     - { source: barrington, locator: 'maps 63–64' }
@@ -2130,7 +3315,28 @@
         - [32.3, 40.4]
         - [31.9, 40.75]
   sources:
-    - { source: strabo, locator: '12.3.1, 12.3.41' }
+    - source: strabo
+      locator: '12.3.9'
+      quote: >-
+        On the east, then, the Paphlagonians are bounded by the Halys River; on
+        the south by Phrygians and the Galatians who settled among them; on the
+        west by the Bithynians and the Mariandyni … and on the north by the
+        Euxine. Now this country was divided into two parts, the interior and
+        the part on the sea, each stretching from the Halys River to Bithynia;
+        and Eupator not only held the coast as far as Heracleia, but also took
+        the nearest part of the interior … The remaining parts of the interior,
+        however, were subject to potentates, even after the overthrow of
+        Mithridates.
+      supports: [construction]
+    - source: strabo
+      locator: '12.3.41'
+      quote: >-
+        After Pompeiupolis comes the remainder of the interior of Paphlagonia,
+        extending westwards as far as Bithynia. … The last to reign over
+        Paphlagonia was Deiotarus, the son of Castor, surnamed Philadelphus,
+        who possessed Gangra, the royal residence of Morzeus
+      supports: [construction]
+    - { source: strabo, locator: '12.3.1' }
     - { source: appian, locator: 'Mithr. 114' }
   confidence: uncertain
   review: needs-check
@@ -2157,7 +3363,35 @@
         - [30.7, 36.2]
         - [29.0, 35.95]
   sources:
-    - { source: strabo, locator: '14.3.1–3, 13.4.17' }
+    - source: strabo
+      locator: '14.3.1'
+      quote: >-
+        After the Peraea of the Rhodians, of which Daedala is a boundary,
+        sailing next in order towards the rising sun, one comes to Lycia, which
+        extends as far as Pamphylia
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.1'
+      quote: >-
+        the whole of Lycia, towards the parts outside and on its southern side,
+        is separated by a mountainous ridge of the Taurus from the country of
+        the Cibyrans as far as the Peraea of the Rhodians
+      supports: [construction]
+    - source: strabo
+      locator: '13.4.17'
+      quote: >-
+        However, the tyranny ended in the time of Moagetes, when Murena
+        overthrew it and included Balbura and Bubon within the territory of the
+        Lycians.
+      supports: [construction]
+    - source: strabo
+      locator: '14.3.9'
+      quote: >-
+        Now this city too is Lycian, being situated on the borders towards
+        Pamphylia, but it has no part in the common League and is a separate
+        organization to itself.
+      supports: [construction]
+    - { source: strabo, locator: '14.3.2–3' }
     - { source: mitchell-2005 }
     - { source: behrwald-2000 }
   confidence: probable
@@ -2166,6 +3400,8 @@
     The Lycian League, a free ally of Rome, from Telmessus to Phaselis with the
     Cibyran cities Bubon and Balbura. The treaty of 24 July 46 names the towns
     assigned to it. Takes its edges from asia, asia-phrygia and cilicia.
+    Strabo calls Phaselis Lycian but "no part in the common League" in his
+    day (14.3.9); it is inside the outline on the treaty of 46.
 
 - id: caunus
   evidence: schematic
@@ -2181,7 +3417,25 @@
     at: [28.66, 36.86]
     note: Caunus (Pleiades 638796)
   sources:
-    - { source: strabo, locator: '14.2.2–3' }
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        then to Caunus and to the Calbis, a river near Caunus, which is deep and
+        affords passage for merchant vessels
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.3'
+      quote: >-
+        The city has dockyards, and a harbor that can be closed. Above the city,
+        on a height, lies Imbrus, a stronghold. Although the country is fertile
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 50'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        in the extreme south, the flat land surrounding the lake that lay back
+        of Caunus.
+      supports: [construction]
     - { source: appian, locator: 'Mithr. 23' }
     - { source: cicero-qfr, locator: '1.1.33' }
   confidence: uncertain
@@ -2210,7 +3464,22 @@
         - [28.95, 36.6]
     - { method: box, bbox: [27.65, 35.85, 28.3, 36.5] }
   sources:
-    - { source: strabo, locator: '14.2.2–4' }
+    - source: strabo
+      locator: '14.2.2'
+      quote: >-
+        The Peraea of the Rhodians begins with Daedala, a place in the Rhodian
+        territory, but ends with Mt. Phoenix, as it is called, which is also
+        in the Rhodian territory. … then to Caunus and to the Calbis, a river
+        near Caunus
+      supports: [construction]
+    - source: strabo
+      locator: '14.2.4'
+      quote: >-
+        Next one comes to Physcus, a small town, which has a harbor and a
+        sacred precinct of Leto; and then to Loryma, a rugged coast, and to the
+        highest mountain in that part of the country; and on top of the
+        mountain is Phoenix
+      supports: [construction]
     - { source: fraser-bean-1954 }
   confidence: probable
   review: draft
@@ -2234,7 +3503,13 @@
           note: the coast west of Seleucia
         - [33.8, 36.05]
   sources:
-    - { source: strabo, locator: '14.5.10' }
+    - source: strabo
+      locator: '14.5.10'
+      quote: >-
+        above this and Soli is a mountainous country, in which is a city Olbe,
+        with a sanctuary of Zeus, founded by Ajax the son of Teucer. The
+        priest of this sanctuary became dynast of Cilicia Tracheia
+      supports: [construction]
     - { source: borgia-2017, locator: 'p. 302' }
   confidence: uncertain
   review: needs-check
@@ -2257,7 +3532,14 @@
         - at: [33.4, 36.9]
           note: the Taurus south of Laranda
   sources:
-    - { source: strabo, locator: '12.1.4, 12.6.3' }
+    - source: strabo
+      locator: '12.6.3'
+      quote: >-
+        On the side of Isaurice lies Derbe, which lies closer to Cappadocia
+        than to any other country and was the royal seat of the tyrant Antipater
+        Derbetes. He also possessed Laranda
+      supports: [construction]
+    - { source: strabo, locator: '12.1.4' }
     - { source: dmitriev-2000, locator: 'pp. 359–360' }
   confidence: uncertain
   review: needs-check
@@ -2284,9 +3566,45 @@
         - [33.0, 35.9]
         - [31.5, 36.4]
   sources:
-    - { source: strabo, locator: '14.5.2–3' }
-    - { source: strabo, locator: '14.5.6' }
-    - { source: magie-1950, locator: 'vol. I, 434, 443' }
+    - source: strabo
+      locator: '14.5.1'
+      quote: >-
+        As for Cilicia outside the Taurus, one part of it is called Tracheia
+        and the other Pedias. As for Tracheia, its coast is narrow and has no
+        level ground, or scarcely any; and, besides that, it lies at the foot
+        of the Taurus
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.2'
+      quote: >-
+        The first place in Cilicia, then, to which one comes, is a stronghold,
+        Coracesium, situated on an abrupt rock
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.3'
+      quote: >-
+        After Coracesium, one comes to Arsinoe, a city; then to Hamaxia … it
+        was on this account that Antony assigned this region to Cleopatra,
+        since it was suited to the building of her fleets. Then one comes to
+        Laertes … Then to Selinus, a city and river. … Then to Anemurium … then
+        to a place called Melania, and to Celenderis, a city with a harbor.
+      supports: [construction]
+    - source: strabo
+      locator: '14.5.6'
+      quote: >-
+        after he had received the whole of Cilicia Tracheia except Seleuceia —
+        the same way in which it was obtained formerly by Amyntas and still
+        earlier by Cleopatra
+      supports: [construction]
+    - source: magie-1950
+      locator: 'vol. I, p. 434'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        Whatever portion of Cilicia Aspera this prince held or hoped to hold,
+        was likewise lost to him, for the region was now presented by Antony to
+        Cleopatra, to whom its timber was especially valuable for building a
+        fleet.
+      supports: []
     - { source: barrington, locator: 'maps 65–66' }
   confidence: probable
   review: needs-check
@@ -2333,6 +3651,25 @@
         - at: [23.8, 42.3]
           note: east of the Dentheletae of the upper Strymon
   sources:
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        Bizye was the royal residence of the Astae. The term "Odrysae" is
+        applied by some to all the peoples living above the seaboard from the
+        Hebrus and Cypsela as far as Odessus
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        the districts beyond the Strymon, extending as far as the mouth of the
+        Pontus and the Haemus, all belong to the Thracians, except the
+        seaboard. This seaboard is inhabited by Greeks
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.40'
+      quote: >-
+        The territory of the Odrysae gives birth to the Hebrus
+      supports: [construction]
     - { source: barrington, locator: 'maps 21–22, 51' }
     - { source: sullivan-1990 }
     - { source: mapterhorn }
@@ -2365,6 +3702,16 @@
     - { source: eutropius, locator: '6.10' }
     - { source: mihailov-igbulg, locator: 'I² 13 (the Akornion decree)' }
     - { source: strabo, locator: '7.3.11' }
+    - source: strabo
+      locator: '7.6.1'
+      quote: >-
+        if one begins at the Sacred Mouth of the Ister and keeps the continuous
+        seaboard on the right, one comes, at a distance of five hundred stadia,
+        to a small town, Ister, founded by the Milesians; then, at a distance
+        of two hundred and fifty stadia, to a second small town, Tomis; then,
+        at two hundred and eighty stadia, to a city Callatis, a colony of the
+        Heracleotae; then, at one thousand three hundred stadia, to Apollonia
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -2396,7 +3743,25 @@
         - at: [21.8, 48.2]
           note: the upper Tisza
   sources:
-    - { source: strabo, locator: '7.3.5, 7.3.11, 7.5.2' }
+    - source: strabo
+      locator: '7.3.11'
+      quote: >-
+        within only a few years he had established a great empire and
+        subordinated to the Getae most of the neighboring peoples … he not only
+        laid waste the country of the Celti who were intermingled with the
+        Thracians and the Illyrians, but actually caused the complete
+        disappearance of the Boii who were under the rule of Critasirus, and
+        also of the Taurisci
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.2'
+      quote: >-
+        A part of this country was laid waste by the Dacians when they subdued
+        the Boii and Taurisci, Celtic tribes under the rule of Critasirus.
+        They alleged that the country was theirs, although it was separated from
+        theirs by the River Parisus
+      supports: [construction]
+    - { source: strabo, locator: '7.3.5' }
     - { source: jordanes-getica, locator: '67' }
     - { source: lockyear-2004 }
     - { source: hydrorivers }
@@ -2447,8 +3812,42 @@
         - [14.3, 44.4]
         - [13.9, 44.9]
   sources:
+    - source: pliny-nh
+      locator: '3.139'
+      quote: >-
+        The nation of the Liburni adjoins the river Arsia, and extends as far as
+        the river Titus. … but now the whole in general are comprised under the
+        one name of Illyricum.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.141'
+      quote: >-
+        Scardona, situate upon the river, at a distance of twelve miles from the
+        sea, forms the boundary of Liburnia and the beginning of Dalmatia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.145'
+      quote: >-
+        At Lissum begins the province of Macedonia
+      supports: [construction]
+    - source: caesar-bc
+      locator: '3.9'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=9
+      quote: >-
+        Salona is built upon a hill, and advantageously situated for defence;
+        but as the fortifications were very inconsiderable, the Roman citizens,
+        residing there, immediately surrounded the place with wooden towers
+      supports: [construction]
+    - source: caesar-bc
+      locator: '3.29'
+      url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=3:chapter=29
+      quote: >-
+        the Roman citizens inhabiting Lissus, to whom Caesar had before made a
+        grant of the town, after fortifying it with great care, opened their
+        gates to Antony
+      supports: [construction]
     - { source: suetonius-iul, locator: '22' }
-    - { source: caesar-bc, locator: '3.9, 3.29, 3.40' }
+    - { source: caesar-bc, locator: '3.40' }
     - { source: wilkes-1969, locator: 'pp. 37–41' }
     - { source: dzino-2010, locator: 'pp. 80–98' }
     - { source: barrington, locator: 'map 20' }
@@ -2477,6 +3876,15 @@
   sources:
     - { source: wilkes-1969, locator: 'pp. 29–45' }
     - { source: appian, locator: 'Ill. 12–13' }
+    - source: strabo
+      locator: '7.5.5'
+      quote: >-
+        Then comes the seaboard of the Dalmatians, and also their sea-port,
+        Salona … And there is Andretium, a fortified place; and also Dalmium
+        (whence the name of the tribe) … And there is Mount Adrium, which cuts
+        the Dalmatian country through the middle into two parts, one facing the
+        sea and the other in the opposite direction. Then come the River Naro
+      supports: [construction]
   confidence: uncertain
   review: needs-check
   note: >-
@@ -2509,9 +3917,25 @@
         - [15.2, 44.55]
         - [14.85, 45.1]
   sources:
-    - { source: strabo, locator: '4.6.10' }
-    - { source: strabo, locator: '7.5.4' }
-    - { source: strabo, locator: '7.5.2' }
+    - source: strabo
+      locator: '4.6.10'
+      quote: >-
+        Formerly the Iapodes were numerous, inhabiting either side of the
+        mountain … Their cities are Metulum, Arupenum, Monetium, and Vendon.
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.4'
+      quote: >-
+        for the Iapodes are situated on the Albian Mountain, which is the last
+        mountain of the Alps, is very lofty, and reaches down to the country of
+        the Pannonians on one side and to the Adrias on the other.
+      supports: [construction]
+    - source: strabo
+      locator: '7.5.2'
+      quote: >-
+        the Noarus is further increased in volume by the Colapis, which flows
+        from the Albian Mountain through the country of the Iapodes
+      supports: [construction]
     - { source: appian, locator: 'Ill. 16–21' }
     - { source: barrington, locator: 'map 20' }
   confidence: uncertain
@@ -2524,7 +3948,9 @@
     flows through the Iapodes' country (7.5.2), so their ground may have
     straddled it, and the Una as their limit is the usual archaeological one,
     not confirmed here in the scholarship. Takes the coast's edge from
-    illyricum and the south from delmatae. Added September 2026.
+    illyricum and the south from delmatae. Added September 2026. Strabo also
+    gives the Iapodes a coast of a thousand stadia before the Liburni's
+    (7.5.4); that strip is drawn in illyricum, which this atom does not cut.
 
 - id: thessalia
   evidence: derived
@@ -2556,7 +3982,41 @@
         - [23.3, 39.05]
         - [24.1, 39.3]
   sources:
-    - { source: bowersock-1965, locator: '284–285' }
+    - source: strabo
+      locator: '9.5.1'
+      quote: >-
+        Thessaly comprises, first, on the sea, the coast which extends from
+        Thermopylae to the outlet of the Peneius River and the extremities of
+        Pelion … on one side, beginning at Pelion and the Peneius, Macedonia
+        stretches towards the interior as far as Paeonia and the Epeirote
+        tribes … There remains the western side, which is surrounded by the
+        Aitolians and Acarnanians and Amphilochians, and, of the Epeirotes, the
+        Athamanians and Molossians and what was once called the land of the
+        Aethices, or, in a word, the land about Pindus.
+      supports: [construction]
+    - source: strabo
+      locator: '9.5.2'
+      quote: >-
+        But when a cleft was made by earthquakes at Tempe, as it is now called,
+        and split off Ossa from Olympus, the Peneius poured out through it
+        towards the sea
+      supports: [construction]
+    - source: bowersock-1965
+      locator: 'p. 278'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Thessalien reichte an der Küstenseite von Thermopylae bis zur Mündung
+        des Peneios- flusses und zum Peliongebirge. Seine nördliche Grenze
+        reichte westwärts nach Paeonien und den epirotischen Stämmen
+        … die westliche Grenze besteht haupt- sächlich aus der Pinduskette.
+      supports: [construction]
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        Unter Augustus waren alle diese Orte, wie auch Thessalien, Teile der
+        Provinz Achaia gewesen.
+      supports: []
     - { source: barrington, locator: 'maps 49–51, 55' }
     - { source: natural-earth }
   confidence: probable
@@ -2598,9 +4058,39 @@
         - [21.45, 39.05]
         - [21.1, 39.0]
   sources:
-    - { source: bowersock-1965, locator: '284–285' }
-    - { source: strabo, locator: '17.3.25' }
-    - { source: cassius-dio, locator: '53.12.4' }
+    - source: strabo
+      locator: '7.7.5'
+      quote: >-
+        Now the Chaones and the Thesproti and, next in order after these, the
+        Cassopaei (these, too, are Thesproti) inhabit the seaboard which
+        extends from the Ceraunian Mountains as far as the Ambracian Gulf
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.8'
+      quote: >-
+        for above Epidamnus and Apollonia as far as the Ceraunian Mountains
+        dwell the Bylliones, the Taulantii, the Parthini, and the Brygi
+      supports: [construction]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the seventh Achaia, extending to Thessaly, the Aetolians, Acarnanians,
+        and the Epirotic nations who border upon Macedonia
+      supports: [construction]
+    - source: cassius-dio
+      locator: '53.12.4'
+      quote: >-
+        Greece with Epirus, the Dalmatian and Macedonian districts … were held
+        to belong to the people and the senate
+      supports: []
+    - source: bowersock-1965
+      locator: 'p. 287'
+      url: http://www.rhm.uni-koeln.de/108/Bowersock.pdf
+      quote: >-
+        die Provinz Epirus, bestehend aus dem eigent- lichen Epirus, Akarnanien
+        und gewissen Inseln … Unter Augustus waren alle diese Orte, wie auch
+        Thessalien, Teile der Provinz Achaia gewesen.
+      supports: []
     - { source: barrington, locator: 'maps 49, 54' }
     - { source: natural-earth }
   confidence: uncertain
@@ -2633,9 +4123,36 @@
         - [26.1, 40.2]
         - [25.95, 40.6]
   sources:
+    - source: sumner-1978
+      locator: 'p. 219'
+      url: https://grbs.library.duke.edu/index.php/grbs/article/download/7401/4923/14785
+      quote: >-
+        the first person to have the province following Didius' conquest of
+        the Caineic Cherso- nese in eastern Thrace; he is to go directly to the
+        Chersonese.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.47'
+      quote: >-
+        In the interior are Bizya, a citadel of the kings of Thrace … the
+        district called Caenica … Lysimachia in the Chersonesus is being now
+        gradually deserted
+      supports: [construction]
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        then to the Hebrus, which is navigable inland to Cypsela, a distance of
+        one hundred and twenty stadia. This, he says, was the boundary of the
+        Macedonia which the Romans first took away from Perseus
+      supports: [construction]
+    - source: strabo
+      locator: '7.8.52 (fr. 52)'
+      quote: >-
+        The Thracian Chersonesus forms three seas: the Propontis in the north,
+        the Hellespont in the east, and the Melas Gulf in the south
+      supports: [construction]
     - { source: lex-provinciis-praetoriis, locator: 'Knidos IV 6–11; Delphi B 27–29' }
-    - { source: sumner-1978, locator: '218–219, 225' }
-    - { source: pliny-nh, locator: '4.47' }
+    - { source: sumner-1978, locator: '225' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: uncertain
@@ -2709,8 +4226,47 @@
         - [20.6, 41.95]
         - [20.2, 42.05]
   sources:
+    - source: strabo
+      locator: '7.8.47 (fr. 47)'
+      quote: >-
+        then to the Hebrus, which is navigable inland to Cypsela, a distance of
+        one hundred and twenty stadia. This, he says, was the boundary of the
+        Macedonia which the Romans first took away from Perseus and afterwards
+        from the Pseudo- Philip. Now Paulus, who captured Perseus, annexed the
+        Epeirotic tribes to Macedonia, divided the country into four parts for
+        purposes of administration, and apportioned one part to Amphipolis,
+        another to Thessaloniceia, another to Pella, and another to the
+        Pelagonians
+      supports: [construction]
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        From Apollonia to Macedonia one travels the Egnatian Road towards the
+        east; it has been measured by Roman miles and marked by pillars as far
+        as Cypsela and the Hebrus River
+      supports: [construction]
+    - source: cicero-pis
+      locator: '96'
+      quote: >-
+        Dyrrachium and Apollonia which have been completely emptied by you
+      supports: [construction]
+    - source: cicero-pis
+      locator: '37'
+      quote: >-
+        who ever had Macedonia of all provinces — a land which has on its
+        borders so many tribes of barbarians that the commanders in Macedonia
+        have always had only just those boundaries of their province which were
+        also the boundaries of their swords and javelins
+      supports: [construction]
+    - source: cicero-pis
+      locator: '84'
+      quote: >-
+        You waged a wicked and cruel war against the Denseletae, a nation which
+        has at all times been obedient to this empire, and which even at the
+        time of that general defection of all the barbarians, preserved
+        Macedonia for us
+      supports: [construction]
     - { source: nigdelis-2007 }
-    - { source: cicero-pis, locator: '84' }
     - { source: barrington, locator: 'maps 49–51, 54–55' }
     - { source: natural-earth }
   confidence: probable
@@ -2754,6 +4310,24 @@
         - [21.5, 39.05]
         - [21.0, 39.1]
   sources:
+    - source: strabo
+      locator: '7.7.4'
+      quote: >-
+        Then, beginning at the Ambracian Gulf, all the districts which, one
+        after another, incline towards the east and stretch parallel to the
+        Peloponnesus belong to Greece
+      supports: [construction]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        the seventh Achaia, extending to Thessaly, the Aetolians, Acarnanians,
+        and the Epirotic nations who border upon Macedonia
+      supports: [construction]
+    - source: kallet-marx-1995
+      locator: 'p. 50'
+      quote: >-
+        Officially Greece was again "freed" in 146 as it had been in 196.
+      supports: [construction]
     - { source: kallet-marx-1995 }
     - { source: barrington, locator: 'maps 54–58' }
     - { source: natural-earth }
@@ -2801,7 +4375,39 @@
         - [36.4, 44.6]
         - [35.4, 44.8]
   sources:
-    - { source: strabo, locator: '7.4.4–6, 11.2.10–14' }
+    - source: strabo
+      locator: '7.4.4'
+      quote: >-
+        After the aforesaid mountainous district is the city Theodosia. It is
+        situated in a fertile plain and has a harbor that can accommodate as
+        many as a hundred ships; this harbor in earlier times was a boundary
+        between the countries of the Bosporians and the Taurians.
+      supports: [construction]
+    - source: strabo
+      locator: '7.4.5'
+      quote: >-
+        But in earlier times only a small part of it — that which is close to
+        the mouth of Lake Maeotis and to Panticapaion and extends as far as
+        Theodosia — was held by the tyrants of the Bosporians
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.10'
+      quote: >-
+        Of these, Phanagoreia and Kepoi are situated on the island
+        above-mentioned, on the left as one sails in, but the other cities are
+        on the right, across the Hypanis, in the Syndic territory. There is also
+        a place called Gorgipia in the Syndic territory, the royal residence of
+        the Sindi, near the sea; and also a place called Aborace. All the people
+        who are subject to the potentates of the Bosporus are called Bosporians
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.12'
+      quote: >-
+        After the Sindic territory and Gorgipia, on the sea, one comes to the
+        coast of the Achaei and the Zygi and the Heniochi, which for the most
+        part is harborless and mountainous
+      supports: [construction]
+    - { source: strabo, locator: '11.2.14' }
     - { source: barrington, locator: 'maps 84, 87' }
     - { source: natural-earth }
   confidence: probable
@@ -2827,7 +4433,28 @@
         - [39.0, 45.0]
         - [37.3, 45.25]
   sources:
-    - { source: strabo, locator: '11.2.3, 11.2.11' }
+    - source: strabo
+      locator: '11.2.3'
+      quote: >-
+        On the river and the lake is an inhabited city bearing the same name,
+        Tanais; it was founded by the Greeks who held the Bosporus.
+      supports: [construction]
+    - source: strabo
+      locator: '11.2.11'
+      quote: >-
+        As for the Asiatic Maeotae in general, some of them were subjects of
+        those who possessed the emporium on the Tanais, and the others of the
+        Bosporians … And often the rulers of the Bosporians held possession of
+        the region as far as the Tanais, and particularly the latest rulers,
+        Pharnaces, Asander, and Polemon.
+      supports: [construction]
+    - source: magie-1950
+      locator: 'p. 477'
+      url: https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt
+      quote: >-
+        extending his power along the shore of the Sea of Azov as far as the
+        river Don
+      supports: [construction]
     - { source: natural-earth }
   confidence: uncertain
   review: draft
@@ -2848,7 +4475,14 @@
         - { at: [33.72, 44.45], via: curve }
         - { at: [33.35, 44.38], via: curve }
   sources:
-    - { source: strabo, locator: '7.4.2–3' }
+    - source: strabo
+      locator: '7.4.2'
+      quote: >-
+        this is the isthmus that encloses the Little Chersonesus, which, as I
+        was saying, is a part of the Great Chersonesus and has on it the city of
+        Chersonesus, which bears the same name as the peninsula
+      supports: [construction]
+    - { source: strabo, locator: '7.4.3' }
     - { source: diophantus-decree }
     - { source: natural-earth }
   confidence: uncertain
@@ -2875,7 +4509,15 @@
         - [34.0, 44.4]
         - [33.3, 44.3]
   sources:
-    - { source: strabo, locator: '7.4.3, 7.4.7' }
+    - source: strabo
+      locator: '7.4.7'
+      quote: >-
+        In addition to the places in the Chersonesus which I have enumerated,
+        there were also the three forts which were built by Scilurus and his
+        sons — the forts which they used as bases of operations against the
+        generals of Mithridates — I mean Palacium, Chabum, and Neapolis
+      supports: [construction]
+    - { source: strabo, locator: '7.4.3' }
   confidence: uncertain
   review: needs-check
   note: >-
@@ -2917,9 +4559,45 @@
           note: the watershed towards Interamnia of the Praetuttii, Roman since 290
         - [13.50, 42.72]
   sources:
-    - { source: beloch-1880, locator: 'pp. 54–55' }
-    - { source: appian, locator: 'BC 1.38, 1.47–48' }
-    - { source: strabo, locator: '5.4.2' }
+    - source: beloch-1880
+      locator: 'p. 55'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Freilich fehlen directe Zeugnisse dafür, wieweit sich das römische
+        Staatsgebiet in Picenum erstreckt hat; nur dass Asculum bis zum
+        Bundesgenossenkrieg foederirt war
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 55'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Jedenfalls lässt sich keine der Städte Picenums, die später die Velina
+        gehabt haben, als frühere Bundesgemeinde nachweisen, mit Ausnahme
+        natürlich der latinischen Colonie Firmum; und im Socialkrieg ist von
+        allen picentischen Gemeinden allein Asculum von Rom abgefallen.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 54'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        die Praetuttianer bis zur Küste des adriatischen Meeres der römischen
+        Herrschaft unterworfen. … so lassen diese Thatsachen keinen Zweifel
+        daran, dass diese Landschaft schon lange vor dem Socialkrieg das
+        römische Bürgerrecht besessen hat.
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        Asculum Picenum , a very strong position, upon which is built a wall:
+        the mountains which surround it are not accessible to armies.
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.38'
+      quote: >-
+        Servilius hastened to Asculum and indulged in very menacing language to
+        the people, who were celebrating a festival, and they put him to death
+      supports: []
+    - { source: appian, locator: 'BC 1.47–48' }
     - { source: mapterhorn }
   confidence: uncertain
   review: needs-check
@@ -2962,8 +4640,41 @@
           note: in the strait, leaving Capreae to Neapolis
         - [14.28, 40.7]
   sources:
-    - { source: beloch-1880, locator: 'pp. 50, 52, 171' }
-    - { source: appian, locator: 'BC 1.39, 1.42, 1.50' }
+    - source: beloch-1880
+      locator: 'p. 171'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Südlich vom Volturnus sind foederirte Gemeinden die … oskischen Städte
+        Nola mit Abella, und Nuceria mit den ihm engverbundenen Orten Pompei,
+        Herculaneum, Stabiae
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 50'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Dasselbe Recht erhalten in Campanien Fundi, Formiae, ferner Capua mit
+        seinen abhängigen Orten Volturnum … dann Cumae, Acerrae, Suessula.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 52'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        der Abschluss der Foedera mit Neapolis 326, Nola 311, Nuceria 308
+        unterwarf ganz Campanien dem römischen Einfluss.
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.42'
+      quote: >-
+        Gaius Papius captured Nola by treachery … Then he plundered the entire
+        country around Nuceria . The towns in the vicinity were struck with
+        terror and submitted to him
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.39'
+      quote: >-
+        the Hirpini , the Pompeiians, the Venusini
+      supports: [construction]
+    - { source: appian, locator: 'BC 1.50' }
     - { source: pliny-nh, locator: '3.70' }
     - { source: velleius, locator: '2.16.2' }
   confidence: uncertain
@@ -3018,8 +4729,46 @@
           note: mouth of the Biferno (Tifernus)
         - [15.15, 42.15]
   sources:
-    - { source: strabo, locator: '5.4.2' }
-    - { source: beloch-1880, locator: 'pp. 51–54, 165' }
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        Above Picenum are the Vestini , the Marsi , the Peligni , the Marucini ,
+        and the Frentani , a Samnitic nation possessing the hill-country, and
+        extending almost to the sea. All these nations are small, but extremely
+        brave
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.2'
+      quote: >-
+        After Aternum is Orton , a naval arsenal of the Frentani , and Buca ,
+        which belongs to the same people, and is conterminous with the Apulian
+        Teanum
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 54'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Entschieden bundesgenössisch sind ferner bis zum Socialkriege gewesen
+        alle Städte der Marser, die Paeligner … und die Frentaner
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 53'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Wie es scheint, hat damals das unmittelbar römische Gebiet den Kamm des
+        Gran Sasso d'Italia (Fiscellus) nicht überschritten, und hat Pinna das
+        römische Passivbürgerrecht nicht erhalten, sondern ist civitas foederata
+        geblieben.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 52'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Paeligner um Corfinium und Sulmo haben bekanntlich bis zum Socialkrieg
+        eine foederirte Gemeinde gebildet. Amiternum und Peltuinum sind also wie
+        es scheint schon jetzt römische Praefecturen geworden.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'p. 165' }
     - { source: appian, locator: 'BC 1.39, 1.52' }
     - { source: livy-per, locator: '75–76' }
     - { source: mapterhorn }
@@ -3070,8 +4819,40 @@
           note: above Venafrum
         - [13.76, 41.74]
   sources:
-    - { source: beloch-1880, locator: 'pp. 52–53, 167–169' }
-    - { source: strabo, locator: '5.4.11' }
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Ein reichliches Drittel des Ganzen wurde zunächst dem römischen Gebiete
+        direct incorporirt, und entweder als Praefectur organisirt (Atina,
+        Casinum, Venafrum, Allifae), oder zur Deduction latinischer Colonien
+        verwendet (Saticula, Interamna, Sora, Beneventum, Aesernia).
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Seitdem sind Caiatia, Compulteria, Telesia, Gaudium souveräne Glieder
+        des italischen Bundes
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 169'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        das Gebirgsland am oberen Tifernus und Sangrus mit der Hauptstadt
+        Bovianum, den alten Gau der Pentrer, der immer der Kern des Ganzen
+        gewesen war … diesem Umfang ist der samnitische Bund als Glied in die
+        italische Eidgenossenschaft eingetreten und hat ihr bis zum
+        Socialkriege angehört
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.11'
+      quote: >-
+        And verily their cities have now come to be mere villages (though some
+        have utterly vanished), I mean Bovianum, Aesernia, Panna, Telesia (close
+        to Venafrum), and others like them.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 52–53' }
     - { source: appian, locator: 'BC 1.51, 1.53, 1.68' }
     - { source: diodorus, locator: '37.2.9–11' }
     - { source: mapterhorn }
@@ -3111,8 +4892,37 @@
         - [14.66, 40.9]
         - [14.64, 41.0]
   sources:
-    - { source: beloch-1880, locator: 'pp. 64–65, 168' }
-    - { source: appian, locator: 'BC 1.39, 1.51' }
+    - source: beloch-1880
+      locator: 'p. 167'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Von Samnium abgetrennt wurde ferner der Süden der Landschaft, der Gau
+        der Hirpiner. Schon geographisch war dieser Landestheil durch die
+        Colonie Benevent mit ihrem weiten Gebiete isolirt von den
+        Stammesgenossen im Norden
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 168'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So sehen wir denn auch im Socialkriege die Hirpiner als ganzes Volk den
+        italischen Bundesgenossen sich anschliessen.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 65'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        die Grenzsteine gefunden worden, die C. Gracchus bei Vermessung des
+        römischen Staatslandes setzen Hess
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.51'
+      quote: >-
+        He spared the other towns that gave themselves up, and in this way the
+        entire population of the Hirpini was brought under subjection.
+      supports: []
+    - { source: beloch-1880, locator: 'p. 64' }
+    - { source: appian, locator: 'BC 1.39' }
     - { source: livy-per, locator: '75' }
     - { source: velleius, locator: '2.16.2' }
     - { source: mapterhorn }
@@ -3154,8 +4964,33 @@
         - [15.05, 41.5]
         - [14.9, 41.85]
   sources:
-    - { source: beloch-1880, locator: 'pp. 64–65, 174–175' }
-    - { source: appian, locator: 'BC 1.39, 1.42, 1.52–53' }
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Härter behandelt worden ist das eigentliche Apulien. Zwar sind auch hier
+        Larinum, Teanum, Canusium, Ausculum, Salapia, Hyria am Garganus … ja
+        vielleicht Arpi selbst bundesgenössische Gemeinden geblieben. Aber
+        wenigstens ein Theil des arpanischen Gebiets wurde römisches
+        Staatsland, und als solches später zur Errichtung der Colonie Sipontum
+        verwendet
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 175'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        So haben auch die Römer ihre Bündnisse mit jeder apulischen Gemeinde
+        gesondert geschlossen
+      supports: [construction]
+    - source: appian
+      locator: 'BC 1.52'
+      quote: >-
+        Cosconius overran the territory of Larinum, Venusia, and Asculum, and
+        invaded that of the Poediculi, and within two days received their
+        surrender.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 65, 174' }
+    - { source: appian, locator: 'BC 1.39, 1.42, 1.53' }
     - { source: diodorus, locator: '37.2.8, 37.2.10' }
     - { source: strabo, locator: '5.4.2' }
     - { source: hydrorivers }
@@ -3188,7 +5023,35 @@
         - [16.9, 40.72]
         - [17.3, 40.95]
   sources:
-    - { source: beloch-1880, locator: 'pp. 63–64, 174–176' }
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die staatsrechtliche Stellung der Sallentiner und Poediculer ist,
+        soviel wir sehen, durch ihren Abfall zu Hannibal nicht verändert
+        worden; sie haben eben noch zur rechten Zeit mit Rom ihren Frieden
+        gemacht. Römisches Staatsgebiet können wir in diesen Gegenden vor dem
+        Socialkrieg überall nicht nachweisen
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 64'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die Stadt Tarent also ist durch den hannibalischen Krieg keineswegs zur
+        römischen Bürgergemeinde geworden, sondern hat nur ihr altes günstiges
+        Bündniss verloren, und als foederirte Stadt schlechteren Rechts
+        fortbestanden … Daneben ist freilich der grössere Theil des
+        tarentinischen Gebietes als römischer ager publicus eingezogen worden;
+        auf diesem Gebiet hat dann Drusus seine Colonie Neptunia constituirt
+      supports: [construction]
+    - source: strabo
+      locator: '6.3.1'
+      quote: >-
+        Messapia forms a sort of peninsula, since it is enclosed by the isthmus
+        that extends from Brentesium as far as Taras, three hundred and ten
+        stadia.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 174–176' }
     - { source: velleius, locator: '1.15.4' }
     - { source: hydrorivers }
   confidence: uncertain
@@ -3233,8 +5096,38 @@
         - [14.8, 40.3]
         - [14.85, 40.47]
   sources:
-    - { source: beloch-1880, locator: 'pp. 63, 172–173' }
-    - { source: strabo, locator: '5.4.13, 6.1.1' }
+    - source: beloch-1880
+      locator: 'p. 63'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Im Uebrigen zeigt die Haltung Lucaniens im Socialkriege, dass der
+        grössere Theil der dortigen Gemeinden in der Stellung von civitates
+        foederatae geblieben ist. Namentlich gilt das von den Griechenstädten
+        Velia und Herakleia; vielleicht auch von Metapontion.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 63'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        ist wahrscheinlich damals das fruchtbare Thal der Tanager (Val di
+        Diano) zum ager publicus gemacht worden; 133 wurde dort Forum Popilii
+        angelegt … Ferner wurde der Ager Picentinus ganz eingezogen (Strab. p.
+        251), und auf dem gewonnenen Gebiete die Bürgercolonie Salernum (194)
+        gegründet; im selben Jahr Buxentum im Süden Lucaniens.
+      supports: [construction]
+    - source: strabo
+      locator: '5.4.13'
+      quote: >-
+        The country of the Picentes extends as far as the River Silaris, which
+        separates the old Campania from this country.
+      supports: [construction]
+    - source: strabo
+      locator: '6.1.1'
+      quote: >-
+        After the mouth of the Silaris one comes to Leucania … Laus — a river
+        and city; it is the last of the Leucanian cities
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 172–173' }
     - { source: appian, locator: 'BC 1.39, 1.41, 1.53' }
     - { source: livy-per, locator: '76' }
     - { source: diodorus, locator: '37.2.11, 37.2.13' }
@@ -3273,7 +5166,32 @@
         - [15.3, 39.5]
         - [15.55, 39.9]
   sources:
-    - { source: beloch-1880, locator: 'pp. 62–63, 174–176' }
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        In ihrer alten Stellung als foederirte Städte blieben hier natürlich
+        Rhegion und Petelia, die allein durch alle Wechselfälle des Krieges Rom
+        treu geblieben waren, ferner Lokroi, Consentia … Pandosia, und einige
+        andere unbedeutende Orte … Die Marken aller übrigen Städte aber wurden
+        zu römischem ager publieus
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 62'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die erworbenen Gebiete werden zum grössten Theil zur Anlage neuer
+        Colonien verwendet: 193 wird Copia im Gebiet von Thurioi, 192 Valentia
+        (Vibo) als latinische Colonie
+      supports: [construction]
+    - source: strabo
+      locator: '6.1.4'
+      quote: >-
+        The seaboard that comes next after Leucania, as far as the Sicilian
+        Strait and for a distance of thirteen hundred and fifty stadia, is
+        occupied by the Brettii.
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 63, 174–176' }
     - { source: velleius, locator: '1.15.4' }
     - { source: diodorus, locator: '37.2.13' }
   confidence: uncertain
@@ -3337,9 +5255,43 @@
         - [9.9, 43.0]
         - [10.2, 43.76]
   sources:
-    - { source: beloch-1880, locator: 'pp. 55–61, 160–165, 176' }
+    - source: beloch-1880
+      locator: 'p. 176'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        In Etrurien haben wir wenigstens 11 foederirte Gemeinden: Pisae,
+        Volaterrae, Populonia, -Rusellae, Vetulonia, Volsinii, Clusium,
+        Perusia, Cortona, Arretium, Faesulae; inümbrien wenigstens 16 :
+        Ravenna, Sassina, Pitinum, Urbinum, Sestinum, Tifernum Metaurense ,
+        Tifernum Tiberinum, Iguvium, Arna, Vxettona, Tuder, Carsulae, Ameria,
+        Interamna, Ocriculum, Camerinum
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 57'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        dass das römische Gebiet in Umbrien sich in ununterbrochenem Striche
+        längs der Via Flaminia vom Nar bis zur gallischen Grenze erstreckt hat,
+        Camerinum und vielleicht Matelica im Osten, die Gemeinden des
+        Tiberthaies im Westen als Buudesstädte ausschliessend
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'pp. 60–61'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Die Mark von Tarquinii reichte nach N. die Marta herauf bis an den See
+        von Bolsena … doch spricht alles dafür, dass das römische Gebiet sich
+        wenigstens bis in die Nähe des Umbro und an den Südfuss des Monte
+        Amiata erstreckt hat.
+      supports: [construction]
+    - source: livy-per
+      locator: '74'
+      quote: >-
+        Deputy Aulus Plotius defeated the Umbrians and praetor Lucius Porcius
+        the Etruscans. Both nations had revolted.
+      supports: []
+    - { source: beloch-1880, locator: 'pp. 55–56, 58–59, 160–165' }
     - { source: appian, locator: 'BC 1.49' }
-    - { source: livy-per, locator: '74' }
     - { source: hydrorivers }
     - { source: mapterhorn }
   confidence: uncertain
@@ -3408,7 +5360,26 @@
         - [9.9, 43.0]
         - [10.2, 43.76]
   sources:
-    - { source: suetonius-iul, locator: '24, 31–32' }
+    - source: strabo
+      locator: '5.1.11'
+      quote: >-
+        The boundaries which separate from the rest of Italy this country, which
+        we designate Citerior Keltica, were marked by the Apennine mountains
+        above Tyrrhenia and the river Esino, and afterwards by the Rubicon.
+      supports: [construction]
+    - source: suetonius-iul
+      locator: '31'
+      quote: >-
+        overtaking his cohorts at the river Rubicon, which was the boundary of
+        his province
+      supports: [construction]
+    - source: suetonius-iul
+      locator: '24'
+      quote: >-
+        Caesar compelled Pompeius and Crassus to come to Luca, a city in his
+        province
+      supports: [construction]
+    - { source: suetonius-iul, locator: '32' }
     - { source: pliny-nh, locator: '3.50' }
     - { source: broughton-mrr }
     - { source: hydrorivers }
@@ -3456,9 +5427,41 @@
         - [10.6, 43.6]
         - [10.1, 43.8]
   sources:
-    - { source: beloch-1880, locator: 'pp. 65–68' }
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        wie alle Bürgergemeinden des diesseitigen Galliens bis auf den
+        Socialkrieg in die Tribus Pollia eingeschrieben worden sind : Mutina,
+        Parma, Regium Lepidi, Forum Cornelii, Faventia
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Und auch diesseits des Stromes gehören alle Gemeinden; die nachweislich
+        bis zum Socialkriege Bundesrecht gehabt haben, zu anderen Tribus: so
+        Placentia zur Voturia, Bononia zur Lemonia
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 66'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: Auf dem gewonnenen Gebiete wurde 177 die Bürgercolonie Luna angelegt
+      supports: [construction]
+    - source: cicero-balb
+      locator: '50'
+      quote: >-
+        Cnaeus Pompeius, the father of this man, after he had performed mighty
+        achievements in the Italian war, present Publius Caesius, a Roman knight
+        and a virtuous man, who is still alive, a native of Ravenna, a city of a
+        federate state, with the freedom of the city of Rome?
+      supports: [construction]
+    - source: strabo
+      locator: '5.1.11'
+      quote: For the Trebia meeting the Po near Placentia
+      supports: [construction]
+    - { source: beloch-1880, locator: 'pp. 65, 68' }
     - { source: asconius-pis, locator: '3 C' }
-    - { source: cicero-balb, locator: '50' }
     - { source: hydrorivers }
     - { source: mapterhorn }
   confidence: uncertain
@@ -3526,10 +5529,37 @@
         - [7.5, 43.6]
         - [9.0, 44.0]
   sources:
-    - { source: caesar-bg, locator: '1.10, 8.24' }
-    - { source: pliny-nh, locator: '3.127, 3.136–137' }
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        on the seventh day he moved from Ocelum, the last station of Hither
+        Gaul, into the borders of the Vocontii in Further Gaul.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.127'
+      quote: >-
+        Six miles beyond this place lies the river Formio, 189 miles distant
+        from Ravenna, the ancient boundary of enlarged Italy, and now the
+        frontier of Istria.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.48'
+      quote: >-
+        The river Rutuba, the town of Albium Intemelium … and the river Macra,
+        which is the boundary of Liguria.
+      supports: [construction]
+    - source: beloch-1880
+      locator: 'p. 67'
+      url: https://archive.org/download/deritalischebund00belo/deritalischebund00belo_djvu.txt
+      quote: >-
+        Jenseits des Apennin ist der grössere Theil der Ebene am rechten Poufer
+        den Ligurern entrissen und zu römischem Staatsgebiet gemacht worden …
+        die Statiellier (um Acqui) haben ihre Genieindeautonomie bis auf Caesar
+        behalten
+      supports: [construction]
+    - { source: caesar-bg, locator: '8.24' }
+    - { source: pliny-nh, locator: '3.136–137' }
     - { source: barrington, locator: 'maps 39–40' }
-    - { source: beloch-1880, locator: 'p. 67' }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -3562,7 +5592,20 @@
         - [12.6, 46.7]
         - [12.2, 47.1]
   sources:
-    - { source: caesar-bg, locator: '1.5, 1.53' }
+    - source: caesar-bg
+      locator: '1.53'
+      quote: >-
+        a woman of Noricum, sister to King Voccio
+      supports: []
+    - source: strabo
+      locator: '7.1.5'
+      quote: >-
+        the countries of the Rhaeti and the Norici extend as far as the passes
+        over the Alps and verge toward Italy, a part thereof bordering on the
+        country of the Insubri and a part on that of the Carni and the legions
+        about Aquileia
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.5' }
     - { source: caesar-bc, locator: '1.18' }
     - { source: alfoldy-1974, locator: 'ch. 3' }
     - { source: mapterhorn }
@@ -3583,14 +5626,56 @@
     - { method: box, bbox: [12.3, 35.45, 12.95, 35.9] }
   sources:
     - { source: natural-earth }
-    - { source: cicero-verr, locator: '2.4.103' }
+    - source: pliny-nh
+      locator: '3.87'
+      quote: >-
+        Of this triangle, the promontory, which, as we have already mentioned,
+        is called Pelorus, faces Scylla and juts out towards Italy, while
+        Pachynum extends in the direction of Greece
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.92'
+      quote: >-
+        Towards Africa, its islands are Gaulos, Melita, 87 miles from Camerina,
+        and 113 from Lilybaion, Cosyra, Hieronnesos, Caene, Galata, Lopadusa,
+        Aethusa
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.92'
+      quote: >-
+        On this side of Sicily, facing the river Metaurus, at a distance of
+        nearly 25 miles from Italy, are the seven islands called the Aeolian
+      supports: [construction]
+    - source: strabo
+      locator: '6.2.11'
+      quote: >-
+        the governor of Sicily, Titus Flaminius, reported the event to the
+        Senate, and the Senate sent a deputation to offer propitiatory
+        sacrifices, both in the islet and in Liparae
+      supports: [construction]
+    - source: strabo
+      locator: '6.2.11'
+      quote: >-
+        Off Pachynus lie Melita, whence come the little dogs called Melitaean,
+        and Gaudos, both eighty-eight miles distant from the Cape. Cossura lies
+        off Lilybaion
+      supports: [construction]
+    - source: cicero-verr
+      locator: '2.4.103'
+      quote: >-
+        There is an island called Melita, O judges, separated from Sicily by a
+        sufficiently wide and perilous navigation, in which there is a town of
+        the same name, to which Verres never went, though it was for three
+        years a manufactory to him for weaving women's garments.
+      supports: [construction]
   confidence: certain
   review: draft
   note: >-
     Sicily with the Aeolian and Aegadian islands, Melita and Gaulos, Cossyra and
     the Pelagiae. Melita was within Verres' reach as governor of Sicily: he kept
     a weaving works there and robbed its temple of Juno (Cicero Verr. 2.4.103).
-    Takes Calabria's tip from italia.
+    The mainland shore of the strait is italia-bruttium's, which comes first
+    in this file: the island stops at Cape Pelorus.
 
 - id: sardinia
   evidence: surveyed
@@ -3624,9 +5709,32 @@
   construction:
     - { method: box, bbox: [2.2, 39.05, 4.5, 40.2] }
   sources:
-    - { source: strabo, locator: '3.5.1' }
+    - source: strabo
+      locator: '3.5.1'
+      quote: >-
+        two named the Pityussae, and two the Gymnasiae, (also called the
+        Baleares,) … The larger of the Gymnasiae contains two cities, Palma, and
+        Polentia
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.77'
+      quote: >-
+        The larger island is 100 miles in length, and 475 in circumference. …
+        At thirty miles' distance is the smaller island, 40 miles in length, and
+        150 in circumference
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.78'
+      quote: >-
+        In the open sea, at twelve miles' distance from the larger island
+        (Majorca), is Capraria with its treacherous coast
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.76'
+      quote: >-
+        These islands now bear the name of Ebusus, and form a federate state.
+      supports: [construction]
     - { source: livy-per, locator: '60' }
-    - { source: pliny-nh, locator: '3.76–77' }
     - { source: natural-earth }
   confidence: certain
   review: draft
@@ -3659,6 +5767,20 @@
         - at: [-3.6, 42.1]
           note: north of Clunia
   sources:
+    - source: strabo
+      locator: '3.4.13'
+      quote: >-
+        the most powerful are the Aruaci, situated to the east and south, near
+        to the Carpetani and the sources of the Tagus. Their most renowned city
+        is Numantia.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.27'
+      quote: >-
+        The river Areva gives its name to the Arevaci; of whom there are six
+        towns, Segontia and Uxama … as also Segovia and Nova Augusta, Termes,
+        and Clunia itself, the frontier of Celtiberia.
+      supports: [construction]
     - { source: appian, locator: 'Hisp. 98–100' }
     - { source: cassius-dio, locator: '39.54' }
     - { source: appian, locator: 'BC 1.108–115' }
@@ -3733,10 +5855,45 @@
         - [3.4, 42.5]
     - { method: box, bbox: [1.1, 38.6, 1.8, 39.2] }
   sources:
+    - source: pliny-nh
+      locator: '3.6'
+      quote: >-
+        beginning at the frontier town of Urgi, is the Nearer, or Tarraconensian
+        Spain, extending as far as the chain of the Pyrenees. … is separated
+        from Baetica and Lusitania by Mount Solorius, the chains of the Oretani
+        and the Carpetani, and that of the Astures.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.8'
+      quote: >-
+        and Murgi, which is at the boundary of Baetica
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.25'
+      quote: >-
+        Sixty-five different nations resort to [New] Carthage, besides the
+        inhabitants of the islands. … the Castulonenses … those of Toletum the
+        capital of Carpetania, situate on the river Tagus
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        Baetica appertains to the people … Its eastern boundary has been fixed
+        near to Castlon.
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.10'
+      quote: >-
+        The nation of the Vascons, in which is Pompelon, or Pompey's city, lies
+        north of Iaccetania.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.76'
+      quote: >-
+        These islands now bear the name of Ebusus, and form a federate state.
+      supports: [construction]
     - { source: richardson-1986, locator: 'ch. 1 and appendix' }
     - { source: richardson-1996 }
-    - { source: pliny-nh, locator: '3.6, 3.8, 3.25' }
-    - { source: strabo, locator: '3.4.10, 3.4.20 (Baetica bounded near Castulo)' }
     - { source: barrington, locator: 'maps 24–27' }
     - { source: mapterhorn }
     - { source: natural-earth }
@@ -3776,8 +5933,27 @@
         - [-9.2, 41.2]
         - [-9.8, 39.6]
   sources:
-    - { source: cassius-dio, locator: '37.52–53' }
-    - { source: strabo, locator: '3.3.1, 3.4.20' }
+    - source: strabo
+      locator: '3.3.3'
+      quote: >-
+        North of the Tagus is Lusitania … On the southern side this country is
+        bounded by the Tagus, on the west and north by the ocean
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        the Lusitanians, who are situated next Baetica, and extend as far as the
+        outlets of the river Douro
+      supports: [construction]
+    - source: cassius-dio
+      locator: '37.52.3–4'
+      quote: >-
+        he proceeded to the Herminian mountains and ordered the inhabitants to
+        move into the plain … carried off their children and wives and most
+        valuable possessions out of the way across the Durius
+      supports: [construction]
+    - { source: cassius-dio, locator: '37.53' }
+    - { source: strabo, locator: '3.3.1' }
     - { source: appian, locator: 'Hisp. 71–73, 99' }
     - { source: plutarch, locator: 'Sertorius 10–12' }
     - { source: hydrorivers }
@@ -3788,8 +5964,8 @@
     Lusitania between the Tagus and the Durius. Caesar, propraetor of Ulterior
     in 61–60, cleared the Mons Herminius and brought the country to the Durius
     under Roman arms, then sailed to Brigantium and "alarmed" the Callaeci (Dio
-    37.52–53). Claimed from 60; the Callaeci beyond the Durius are not. Left
-    unclaimed in 133–61: D. Brutus had taken the surrender of its towns in
+    37.52–53). Claimed from 61–60; the Callaeci beyond the Durius are not. Left
+    unclaimed in 133–62: D. Brutus had taken the surrender of its towns in
     138–136 (App. Hisp. 71–73; Strabo 3.3.1), and the Senate sent ten
     commissioners to settle what he had won (Hisp. 99); but the Lusitanians were
     Sertorius' mainstay in the 70s (Plut. Sert. 10–12), and Caesar had to
@@ -3820,6 +5996,22 @@
         - [-6.5, 36.6]
         - [-5.4, 35.95]
   sources:
+    - source: pliny-nh
+      locator: '3.6'
+      quote: >-
+        The first land situate upon this Gulf is that which is called the
+        Farther Spain or Baetica; next to which, beginning at the frontier town
+        of Urgi, is the Nearer, or Tarraconensian Spain, extending as far as the
+        chain of the Pyrenees. The Farther Spain is divided lengthwise into two
+        provinces, Lusitania and Baetica, the former stretching along the
+        northern side of the latter, and being divided from it by the river Ana.
+      supports: [construction]
+    - source: pliny-nh
+      locator: '4.112–113'
+      quote: >-
+        the river Durius … dividing the Vettones from Asturia, the Gallaeci from
+        Lusitania … After passing the Durius, Lusitania begins.
+      supports: [construction]
     - { source: richardson-1986 }
     - { source: pliny-nh, locator: '3.6–17' }
     - { source: barrington, locator: 'maps 26–27' }
@@ -3853,7 +6045,14 @@
           note: the Esla
         - [-5.75, 41.9]
   sources:
-    - { source: strabo, locator: '3.3.2–3, 3.4.13' }
+    - source: strabo
+      locator: '3.3.2'
+      quote: >-
+        the Vettones and Vaccaei, through whose [country] the Douro flows as it
+        passes Acontia, a city of the Vaccaei
+      supports: [construction]
+    - { source: strabo, locator: '3.3.3' }
+    - { source: strabo, locator: '3.4.13' }
     - { source: cassius-dio, locator: '39.54, 51.20' }
     - { source: curchin-1991 }
   confidence: uncertain
@@ -3883,7 +6082,20 @@
           note: the boundary with the Cantabri, which Strabo puts at the estuary of the Melsus (3.4.20); taken at the Sella
         - [-5.5, 43.8]
   sources:
-    - { source: strabo, locator: '3.3.3, 3.3.7, 3.4.20' }
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        The river Melsus flows through the country of the Asturians, and at a
+        little distance is the city of Nougat, close to an estuary formed by the
+        ocean, which separates the Asturians from the Cantabrians
+      supports: [construction]
+    - source: strabo
+      locator: '3.3.3'
+      quote: >-
+        To the east the Gallicians border on the nation of the Astures and
+        Keltiberians
+      supports: [construction]
+    - { source: strabo, locator: '3.3.7' }
     - { source: curchin-1991 }
     - { source: barrington, locator: 'map 24' }
   confidence: uncertain
@@ -3908,7 +6120,20 @@
           note: the mouth of the Asón
         - [-4.5, 43.8]
   sources:
-    - { source: strabo, locator: '3.3.7–8, 3.4.12' }
+    - source: strabo
+      locator: '3.3.7'
+      quote: >-
+        those bordering the northern side of Iberia, the Gallicians, the
+        Asturians, and the Cantabrians, as far as the Vascons and the Pyrenees
+      supports: [construction]
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        an estuary formed by the ocean, which separates the Asturians from the
+        Cantabrians
+      supports: [construction]
+    - { source: strabo, locator: '3.3.8' }
+    - { source: strabo, locator: '3.4.12' }
     - { source: cassius-dio, locator: '53.25–26, 53.29' }
     - { source: curchin-1991 }
   confidence: uncertain
@@ -3932,6 +6157,14 @@
         - [-6.9, 42.2]
         - [-6.9, 42.9]
   sources:
+    - source: strabo
+      locator: '3.4.20'
+      quote: >-
+        one of whom with two legions guards the whole country north of the Douro, the
+        inhabitants of which formerly were styled Lusitanians, but are now
+        called Gallicians. The northern mountains, together with the Asturian
+        and Cantabrian, border on these
+      supports: [construction]
     - { source: strabo, locator: '3.3.2–5' }
     - { source: cassius-dio, locator: '37.53' }
     - { source: appian, locator: 'Hisp. 72' }
@@ -3968,15 +6201,31 @@
         - [7.3, 43.4]
         - [5.5, 43.0]
   sources:
-    - { source: strabo, locator: '4.1.4–9' }
+    - source: strabo
+      locator: '4.1.9'
+      quote: >-
+        The [coast] which extends from this [last city] to the river Var, and
+        the Ligurians who dwell near it, contains the Massilian cities of
+        Tauroentium, Olbia, Antipolis, Nicaea
+      supports: [construction]
+    - source: strabo
+      locator: '4.1.5'
+      quote: >-
+        compel the barbarians to keep at a distance of twelve stadia from those
+        parts of the coast which possessed good harbours, and at a distance of
+        eight stadia where it was rugged. The land which they thus abandoned, he
+        presented to the Massilians
+      supports: [construction]
+    - { source: strabo, locator: '4.1.4' }
     - { source: caesar-bc, locator: '1.34–36, 2.1–22' }
     - { source: ebel-1976 }
   confidence: uncertain
   review: needs-check
   note: >-
     Massalia's own territory and its coastal colonies — Tauroentium, Olbia,
-    Antipolis, Nicaea (Strabo 4.1.9): a free ally inside the Province until
-    Caesar took the city in 49 (BC 2.22). A strip for the chora and the string
+    Antipolis, Nicaea (Strabo 4.1.9): a free ally inside the Province, still
+    free, with its dependent cities, after Caesar took the city in 49 by
+    Strabo's account (4.1.5; BC 2.22). A strip for the chora and the string
     of foundations; its depth is a convention. The coast Sextius cleared for the
     city in 122, twelve stadia deep where there were harbours and eight where it
     was rugged (Strabo 4.1.5), is about as deep as the strip.
@@ -4003,9 +6252,21 @@
         - at: [1.95, 43.0]
           note: the divide between the Ariège and the upper Aude, a convention
   sources:
+    - source: strabo
+      locator: '4.1.12–13'
+      quote: >-
+        The Tectosages, and certain others whom we shall mention afterwards,
+        border on the range of the Cevennes … But the Tectosages dwell near to
+        the Pyrenees, bordering for a small space the northern side of the
+        Cevennes
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the borders of the Santones, which are not far removed from the borders
+        of the Tolosates, a state in the Province
+      supports: [construction]
     - { source: cassius-dio, locator: '26.90.1 (Loeb fr. 90, book 27)' }
-    - { source: strabo, locator: '4.1.12–13' }
-    - { source: caesar-bg, locator: '1.10' }
     - { source: orosius, locator: '5.15.25' }
     - { source: mapterhorn }
     - { source: natural-earth }
@@ -4067,6 +6328,38 @@
         - [5.0, 42.8]
         - [3.4, 42.5]
   sources:
+    - source: caesar-bg
+      locator: '1.6'
+      quote: >-
+        The other route, through the Roman Province, was far more easy and
+        convenient, forasmuch as the Rhone flows between the borders of the
+        Helvetii and the Allobroges … The last town of the Allobroges, the
+        nearest to the borders of the Helvetii, is Geneva
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.10'
+      quote: >-
+        the Tolosates, a state in the Province. … he moved from Ocelum, the last
+        station of Hither Gaul, into the borders of the Vocontii in Further
+        Gaul. Thence he led his army into the borders of the Allobroges, and
+        from thence into the country of the Segusiavi, the first tribe outside
+        the Province, across the Rhone.
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.7–8'
+      quote: >-
+        posting garrisons among the Ruteni of the Province, the Volcae
+        Arecomici, the Tolosates, and around Narbo … the territory of the
+        Helvii, which touches the borders of the Arverni. … Now the range of the
+        Cevennes, which parts the Arverni from the Helvii
+      supports: [construction]
+    - source: pliny-nh
+      locator: '3.30–31'
+      quote: >-
+        The Pyrenean mountains divide Spain from Gaul … the province of [Gallia]
+        Narbonensis … It is divided from Italy by the river Varus, and by the
+        range of the Alps
+      supports: [construction]
     - { source: caesar-bg, locator: '1.6–10, 1.45, 7.7–8, 7.64–65' }
     - { source: cicero-font, locator: '12–14, 20, 26' }
     - { source: amela-valverde-2019, locator: '24, 28' }
@@ -4111,7 +6404,16 @@
         - at: [6.9, 46.4]
           note: Lake Geneva, the frontier with the Province
   sources:
-    - { source: caesar-bg, locator: '1.2, 1.6' }
+    - source: caesar-bg
+      locator: '1.2'
+      quote: >-
+        On one side there is the river Rhine, exceeding broad and deep, which
+        separates the Helvetian territory from the Germans; on another the Jura
+        range, exceeding high, lying between Sequani and the Helvetii; on the
+        third, the Lake of Geneva and the river Rhone, which separates the
+        Roman Province from the Helvetii
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.6' }
     - { source: hydrorivers }
     - { source: natural-earth }
   confidence: probable
@@ -4142,7 +6444,25 @@
           note: the southern Vosges
         - [7.3, 47.95]
   sources:
-    - { source: caesar-bg, locator: '1.1, 1.8, 1.12, 1.31' }
+    - source: caesar-bg
+      locator: '1.12'
+      quote: >-
+        There is a river Arar (Saone), which flows through the borders of the
+        Aedui and the Sequani into the Rhone
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.8'
+      quote: >-
+        the Jura range, which separates the territory of the Sequani from the
+        Helvetii
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.1'
+      quote: >-
+        on the side of the Sequani and the Helvetii, it touches on the river
+        Rhine
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.31' }
     - { source: fichtl-2004 }
     - { source: hydrorivers }
   confidence: uncertain
@@ -4171,7 +6491,19 @@
         - [4.6, 45.9]
         - [4.85, 46.0]
   sources:
-    - { source: caesar-bg, locator: '1.10–12, 7.55' }
+    - source: caesar-bg
+      locator: '1.12'
+      quote: >-
+        There is a river Arar (Saone), which flows through the borders of the
+        Aedui and the Sequani into the Rhone
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.55'
+      quote: >-
+        Noviodunum was a town of the Aedui situated in an advantageous position
+        by the banks of the Loire
+      supports: [construction]
+    - { source: caesar-bg, locator: '1.10–11' }
     - { source: fichtl-2004 }
     - { source: hydrorivers }
   confidence: uncertain
@@ -4201,7 +6533,18 @@
           note: towards the Lemovices
         - [2.2, 46.0]
   sources:
-    - { source: caesar-bg, locator: '7.4–8, 7.75' }
+    - source: caesar-bg
+      locator: '7.8'
+      quote: >-
+        the range of the Cevennes, which parts the Arverni from the Helvii
+      supports: [construction]
+    - source: caesar-bg
+      locator: '7.75'
+      quote: >-
+        the Arverni, together with the Eleuteti, Cadurci, Gabali, and
+        Vellavii, who are regularly under the sovereignty of the Arverni
+      supports: [construction]
+    - { source: caesar-bg, locator: '7.4–7' }
     - { source: fichtl-2004 }
   confidence: uncertain
   review: needs-check
@@ -4246,8 +6589,25 @@
         - at: [9.5, 47.45]
           note: the south shore of the Lacus Brigantinus
   sources:
+    - source: suetonius-iul
+      locator: '25'
+      quote: >-
+        All that part of Gallia which is bounded by the Pyrenees, the Alps and
+        the Cevennes, and by the Rhine and Rhone rivers, a circuit of some 3,200
+        miles, with the exception of some allied states which had rendered him
+        good service, he reduced to the form of a province
+      supports: [construction]
+    - source: caesar-bg
+      locator: '1.1'
+      quote: >-
+        Gaul is a whole divided into three parts, one of which is inhabited by
+        the Belgae, another by the Aquitani, and a third by a people called in
+        their own tongue Celtae … The Belgae, beginning from the edge of the
+        Gallic territory, reach to the lower part of the river Rhine … Aquitania,
+        starting from the Garonne, reaches to the Pyrenees and to that part of
+        the Ocean which is by Spain
+      supports: [construction]
     - { source: caesar-bg, locator: '1.1, 3.1–6, 8.46–49' }
-    - { source: suetonius-iul, locator: '25' }
     - { source: drinkwater-1983, locator: 'ch. 1' }
     - { source: hydrorivers }
     - { source: mapterhorn }

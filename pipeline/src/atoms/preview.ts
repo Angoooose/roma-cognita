@@ -29,6 +29,7 @@ export const REGIONS: Record<string, Bbox & { z: number }> = {
   levant: { west: 32, south: 28, east: 40.5, north: 37.5, z: 6 },
   africa: { west: -10.5, south: 29, east: 12, north: 37.8, z: 6 },
   libya: { west: 10, south: 28, east: 26, north: 34, z: 6 },
+  fazzan: { west: 10.5, south: 24.5, east: 16.5, north: 28.5, z: 7 },
   egypt: { west: 24.5, south: 22.5, east: 36, north: 32, z: 6 },
   pontic: { west: 27, south: 40, east: 42, north: 48, z: 6 },
   east: { west: 36, south: 29, east: 50, north: 43.5, z: 5 },

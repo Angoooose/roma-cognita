@@ -50,16 +50,29 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
     at: [12.48356, 41.89293],
     size: [72, 45],
     bearing: 118,
-    level: 'top',
+    // Its levels as Delbrück measured them, from the threshold of the stair's door at
+    // 20.48 m (Tafel VI, VII): the gallery's floor, the building's level, at 35.80 m.
+    level: 35.8,
+    // Cut into the saddle behind and at its ends; on the Forum side its substructure
+    // stands from the ground at that door; along its north-east end a street at the
+    // gallery's floor (Delbrück, p. 40).
+    cut: {
+      sides: [false, true, true, true],
+      h: 12,
+      foot: 20.5,
+      street: [false, false, false, true],
+    },
     gallery: { h: 10, order: 'doric', open: true, pier: 2.9 },
     bays: 11,
     windows: 6,
-    body: 11,
+    // A light upper storey (Delbrück, p. 46), its form not known: drawn plain, as two
+    // ranges side by side over the platform, its height drawn.
+    upper: { h: 7, set: 1.5 },
     // Veiovis's temple stands in its west corner, built round (Musei Capitolini).
     notch: [8, 36, -22.5, -4],
     // Its works drawn at their middle: the lower storeys were up long before 65.
     progress: 0.6,
-    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993): a substructure wall 3.43 m thick with "six recesses with narrow windows", and on it a gallery "5 m wide and 10 m high" of eleven arches, "7.50 m high and 3.54–3.60 m wide", between Doric half-columns of peperino; outer walls of grey sperone with travertine dressings (P&A, Tabularium, pp. 506–508). The upper Corinthian storey is Flavian and is left out. Facing about 118°, down the Forum. Built from 78 BCE, probably to 65, Catulus\'s censorship (DAR, after Mura Sommella, LTUR), in part over buildings of the 2nd century damaged in the fire of 83.',
+    why: 'Catulus\'s building of 78 BCE (CIL VI 1314) under the Palazzo Senatorio, whose outline it is, about 72 m along the Forum (OpenStreetMap, way 136630993), built from 78 BCE, probably to 65 (DAR, after Mura Sommella, LTUR). As Delbrück measured it (Hellenistische Bauten in Latium I, 1907, pp. 23–46, Tafeln III–IX), its heights from the threshold of the stair\'s door, "20,48 ü M" (Tafel VI, VII). The Forum side: a retaining wall from the ground below the saddle almost to the saddle\'s height (p. 29), "50 Fuß" against columns of 30 (p. 36), of 25 courses that "treten leicht zurück, die oberste — Binder — kragt vor", its free face stuccoed from the start (p. 29), the stucco "sehr dicht, blaßgelblich" (p. 28), its courses drawn showing through it as lines, with "six recesses with narrow windows" (P&A, Tabularium, p. 507); Concord\'s back "tight against" it (Richardson, p. 99), its blocks left rough behind the temple of 121 (Delbrück, p. 29); at its south-west end "a fine arched doorway" to "a long flight of sixty-six steps" (P&A, p. 507). On it the gallery, its floor at 15.32 over the threshold, 35.80 m (Tafel VI, VII): "5 m wide and 10 m high", eleven arches between Doric half-columns (P&A), vaulted, carrying "die Bettung des Pavimentes der Porticus" and over its entablature "eine niedrige Attika" (Delbrück, p. 35), closed at its south-west end by a barrel vault (p. 40), mostly of sperone, travertine "für die Imposten der Pfeilerreihe, die Kapitelle und den Architrav der Halbsäulenordnung" (p. 33). The colonnade on it, of travertine, Corinthian, its columns "etwa 10 m" high (p. 44), is "etwa flavische Zeit, ist also ein nachträglicher Zusatz oder ein Erneuerungsbau, — welches von beiden, entzieht sich der Beurteilung" (p. 46): whether one stood there in 78 BCE, and its form if so, is not known, and it is left out. Behind it substructures and rooms whose floor "liegt … so hoch wie in der Bogenhalle" (p. 42), under a platform at the gallery\'s top, "47.5 m asl" in Tucci (2014, pp. 43–123, quoted, not read). On the platform "irgend ein Oberbau ist hier anzunehmen, kann aber nur leicht gewesen sein, da sich gar nichts erhalten hat"; halls behind the gallery\'s middle, "sehr hoch", are inferred from the substructures "mit geringerer Sicherheit", and one travertine block is thought to come from "der gemeinsamen Imposte zweier paralleler Tonnengewölbe", over voids in the substructures (pp. 44, 46). Its form not being known, it is drawn plain, as a range behind the gallery and a second behind it beside Veiovis\'s corner under roofs of tiles side by side, set in from the platform\'s edges, the platform paved round it (p. 35); its size, height and roof are not given. The south-west end "leicht geböscht", with three wall strips and between the two north-western a deep niche (pp. 37, 40), the Clivus Capitolinus climbing at its foot (p. 37); the north-east wall begins a course under the gallery\'s floor, a street along it climbing from that level (p. 40); the north-west front "etwas über dem Pflaster der Bogenhalle", on a socle of travertine over travertine paving (p. 40). Its walls stuccoed, travertine for "Stufen, Türeinfassungen, ungeschützte Zierglieder" (p. 26). Not given in what was read: the ground behind Concord (drawn at the door\'s level), the upper storey\'s form and size, the depth of the rooms behind the gallery and the niche\'s height; the Musei Capitolini put the ancient saddle "circa 8 metri al di sotto dell\'attuale", against Delbrück\'s paving at the gallery\'s level along its north-west front. Facing about 118°, down the Forum.',
   },
   'aedes-iunonis-monetae': {
     model: 'temple',
@@ -77,7 +90,9 @@ export const DESIGNS_CAPITOL: Record<string, Design> = {
   'aedes-veiovis': {
     model: 'temple',
     at: [12.4833, 41.89285],
-    level: 'top',
+    // At the Tabularium's floor round it (Delbrück, Tafel VI, VII): its own level is
+    // not published in the sources read.
+    level: 35.8,
     size: [15, 18],
     bearing: 220,
     plan: 'prostyle',

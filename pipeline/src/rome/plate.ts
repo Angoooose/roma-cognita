@@ -39,13 +39,17 @@ import {
   layFields,
   recordedGrounds,
 } from './fields.ts'
-import { ancientGround } from './ground.ts'
+import { ancientGround, capRidges } from './ground.ts'
+import { ISLAND, islandAt, islandRing, shipShore } from './island.ts'
+import { fitRiver, placeBridges } from './bridges.ts'
 import { COURSES } from './aqueducts.ts'
-import { designFootprints } from './designs.ts'
+import { DESIGNS, designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
 
 const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
 const TEXEL_M = 4
+/** Holes in the river's outline smaller than this, m², are not islands (the Tiber Island is 28,000). */
+const MIN_ISLET_M2 = 2000
 /**
  * The grid, lon/lat: the city, the Campus Martius and the Janiculum across the river,
  * the Marcia's arcade out to Capannelle (aqueducts.ts),
@@ -203,9 +207,43 @@ export async function bakePlate(
   }
 
   // --- the walled city and the river ------------------------------------------------
-  const riverRings = river
-    .flat()
-    .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
+  // Without the small holes in the modern river's outline: the piers of today's
+  // bridges, the islet under the Pons Fabricius and the Ponte Rotto's ruin, which
+  // were none of them dry ground in the Republic.
+  let riverPolys = river
+    .map((poly) =>
+      poly
+        .map((ring) => ring.map(([lon, lat]) => projection.forward(lon, lat)))
+        .filter((ring) => Math.abs(ringArea(ring)) >= MIN_ISLET_M2),
+    )
+    .filter((poly) => poly.length > 0)
+  // The Tiber Island's shore as the ship's sides, not the modern embankment's steps
+  // (island.ts).
+  const island = places.get(ISLAND)
+  if (island) {
+    for (const poly of riverPolys) {
+      const i = islandRing(poly, islandAt(island.location))
+      if (i > 0) poly[i] = shipShore(poly[i], island.location)
+    }
+  }
+  // The bridges at their sourced size, and the river's banks moved to meet them
+  // (bridges.ts).
+  const wetIn = (rings: Pt[][]) => (p: Pt) =>
+    rings.filter((r) => inRing(p, r)).length % 2 === 1
+  const bridges = placeBridges(places, outlines, wetIn(riverPolys.flat()))
+  const isles = island
+    ? riverPolys.flatMap((poly) => {
+        const i = islandRing(poly, islandAt(island.location))
+        return i > 0 ? [poly[i]] : []
+      })
+    : []
+  riverPolys = fitRiver(riverPolys, bridges, (id) => DESIGNS[id].size?.[0] ?? 8, isles)
+  for (const b of bridges)
+    if (Math.abs(b.moved) > 0.5)
+      console.log(
+        `model: ${b.id}: its banks moved ${Math.abs(b.moved).toFixed(1)} m ${b.moved > 0 ? 'back' : 'out'} on each side to meet its ${b.water.toFixed(1)} m of arches and piers`,
+      )
+  const riverRings = riverPolys.flat()
   // The wall's course, SITAR's (servian.ts): the walled city is what it encloses.
   const course = servianCourse()
   const circuitRing = course.ring
@@ -219,13 +257,23 @@ export async function bakePlate(
   // The valley floors set to the ground the excavations found walked on in the late
   // Republic (ground.ts); the terrain as it is elsewhere, and in the river, whose
   // level is its own.
+  // Whole on land from RIVER_CLAMP_M off the water (the field stops there), and
+  // fading to nothing 4 m off it.
   const ancient = ancientGround(grid, smooth)
   for (let i = 0; i < h.length; i++) {
-    const k = ancient.change[i] * Math.min(1, Math.max(0, (water[i] - 4) / 30))
+    const k =
+      ancient.change[i] * Math.min(1, Math.max(0, (water[i] - 4) / (RIVER_CLAMP_M - 4)))
     h[i] += k
     smooth[i] += k
   }
-  for (const f of ancient.found)
+  // The ridges capped on the valleys' ground, on land.
+  const ridges = capRidges(grid, smooth)
+  for (let i = 0; i < h.length; i++) {
+    if (water[i] <= 4) continue
+    h[i] += ridges.change[i]
+    smooth[i] += ridges.change[i]
+  }
+  for (const f of [...ancient.found, ...ridges.found])
     console.log(
       `  ground: ${f.what.split(':')[0]}: ${f.floor.toFixed(1)} m today, ${f.level.toFixed(1)} m then (${f.change.toFixed(1)} m)`,
     )
@@ -308,8 +356,11 @@ export async function bakePlate(
     roads.flatMap((l) => l.slice(1).map((q, i) => [l[i], q] as [Pt, Pt])),
     ROAD_CLAMP_M,
   ).d
-  // The river's level, as the model takes it: the lowest tenth of the ground under it.
-  const onRiver = [...h.filter((_, i) => water[i] < -4)].sort((a, b) => a - b)
+  // The river's level, as the model takes it: the lowest tenth of the ground under it
+  // within the plan, where the model stands (the board carries it kilometres beyond).
+  const onRiver = [
+    ...h.filter((_, i) => water[i] < -4 && reachField[i] < PLATE_REACH_M),
+  ].sort((a, b) => a - b)
   const grounds = recordedGrounds(places, groundOutlines)
   const fields = layFields({
     grid,
@@ -343,6 +394,7 @@ export async function bakePlate(
     course,
     streets,
     riverRings,
+    bridges,
     water,
     reach: reachField,
     reachM: PLATE_REACH_M,
@@ -811,4 +863,11 @@ function inRing([x, y]: Pt, ring: Pt[]) {
     if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c
   }
   return c
+}
+
+function ringArea(r: Pt[]) {
+  let s = 0
+  for (let i = 0, j = r.length - 1; i < r.length; j = i++)
+    s += (r[j][0] - r[i][0]) * (r[j][1] + r[i][1])
+  return s / 2
 }

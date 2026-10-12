@@ -6,6 +6,7 @@
 import { parentPort } from 'node:worker_threads'
 import sharp from 'sharp'
 import { TILE_TEXELS } from '@roma-cognita/world'
+import { type AncientJob, ancientChannel } from './ancient.ts'
 import { fillPolygons, signedDistance, type Grid, type Ring } from './raster.ts'
 
 export interface BakeJob {
@@ -21,6 +22,11 @@ export interface BakeJob {
   addWater: Ring[]
   distanceTexels: number
   supersample: number
+  /**
+   * Set where the tile reaches ancient sea: its rings, and the coast's, from
+   * `reach` metres round the tile, for channel 2.
+   */
+  ancient?: AncientJob
 }
 
 /** How far a removed-water corridor may reach into the floodplain it was cut through, m. */
@@ -78,8 +84,9 @@ async function bake(job: BakeJob): Promise<Uint8Array<ArrayBuffer>> {
     fields.push(signedDistance(fp, w, w))
   }
 
-  // Channel 0 the shore, channel 1 the floodplain edge (both positive inside), 2 unused.
+  // Channel 0 the shore, channel 1 the floodplain edge (both positive inside), 2 ancient sea.
   const out = new Uint8Array(TILE_TEXELS * TILE_TEXELS * 3)
+  if (job.ancient) ancientChannel(job.ancient, job.x0, job.y0, job.step, out)
   const scale = 127.5 / (distanceTexels * S)
   for (let r = 0; r < TILE_TEXELS; r++) {
     // Texel (c, r) sits at fine coordinate (margin + c)·S − ½: bilinear between two

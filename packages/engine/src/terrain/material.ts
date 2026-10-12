@@ -410,8 +410,8 @@ export function createTerrainMaterial(n: number) {
   // A focused polity keeps its colour at every zoom, where fills otherwise fade out.
   const tinted = mix(ground0, litFill, max(pol.fillAlpha, pol.focusInside.mul(0.55)))
   const glowed = mix(tinted, pol.glow.mul(lit), pol.glowAlpha)
-  // On the plan of Rome the plate draws the Tiber on its real course, so the coarse
-  // line gives way there (rome/shading.ts).
+  // On the plan of Rome the plate draws the Tiber's water, so the map's line of it
+  // gives way there (rome/shading.ts `riverSwap`).
   const mx = km.x.mul(1000)
   const my = km.y.mul(1000)
   // The country round Rome, close in: its farmland and gardens, under the rivers and

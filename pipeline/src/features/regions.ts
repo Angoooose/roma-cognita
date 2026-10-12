@@ -124,11 +124,13 @@ export const REGIONS: Region[] = [
       [31.04, 29.36],
     ],
     channels: [],
-    method: { kind: 'band', min: -2, max: 26 },
+    method: { kind: 'band', min: -45, max: 26 },
     why:
       'The Fayum is a depression, not a valley: cultivation runs downhill from the Bahr Yusuf inlet at el-Lahun to the lake. ' +
-      'Lower bound: the Ptolemaic lake level, about −2 m after the reclamation under Ptolemy II (Ball 1939; Caton-Thompson & Gardner 1934) — ' +
-      'modern Lake Qarun stands near −43 m, so the modern shrinkage would badly understate the lake. ' +
+      'Lower bound: the lake itself. It stood near −2 m after the reclamation under Ptolemy II (Ball 1939; Caton-Thompson & Gardner 1934), ' +
+      'against Lake Qarun’s −43 m now, and is drawn by the landscape change lake-moeris, which clips this band as it clips the coast; ' +
+      'so the band runs down to the modern lake bed and the lake takes what was water. A band stopping at −2 m left the modern drains ' +
+      'cut below that level as strips of desert through the fields. ' +
       'Upper bound: the canal command near the Lahun inlet, set so the Ptolemaic edge villages (Karanis, Bakchias, Philadelpheia, ' +
       'Theadelpheia, Dionysias, Tebtunis, Narmouthis) sit on or just outside the edge — villages were built on the desert margin above the fields.',
     clean: { minSpeckKm2: 2, maxHoleKm2: 10 },

@@ -1,6 +1,7 @@
 /**
  * Geometry for the landscape corrections that remove modern water: the Suez and
- * Corinth canals and Lake Tharthar. Writes data/geometry/landscape-changes.geojson.
+ * Corinth canals and Lake Tharthar, written into data/geometry/landscape-changes.geojson
+ * beside the other generators' shapes (see shapes.ts).
  *
  *   npx tsx pipeline/src/landscape/canals.ts
  *
@@ -19,9 +20,8 @@
  * 108 m texels cannot leave a sliver, but narrow enough not to reach the lagoons
  * beside the northern canal.
  */
-import { writeFileSync } from 'node:fs'
-import { join } from 'node:path'
 import { projection } from '@roma-cognita/world'
+import { type LandscapeShape, writeLandscapeShapes } from './shapes.ts'
 
 type LonLat = [number, number]
 
@@ -192,7 +192,7 @@ function corridor(line: LonLat[], halfWidth: number): LonLat[][][] {
 
 const round = (p: LonLat): LonLat => [Math.round(p[0] * 1e5) / 1e5, Math.round(p[1] * 1e5) / 1e5]
 
-const features = [
+const features: LandscapeShape[] = [
   {
     type: 'Feature',
     id: 'suez-canal',
@@ -222,6 +222,4 @@ const features = [
   },
 ]
 
-const out = join(import.meta.dirname, '../../../data/geometry/landscape-changes.geojson')
-writeFileSync(out, `${JSON.stringify({ type: 'FeatureCollection', features })}\n`)
-console.log(`wrote ${out}`)
+writeLandscapeShapes(features)

@@ -1,0 +1,34 @@
+# Sites
+
+Where open texts can be read, and what to watch for in each. Started October
+2026 from the first research runs; add to it whenever you learn something.
+
+| Source | Notes |
+| --- | --- |
+| ToposText (topostext.org) | Most ancient texts in English. Whole work per page. Its Periochae of Livy start at book 46. Strabo 16 follows Hamilton's paragraphing and Josephus' anchors are Whiston's chapters, with Niese's numbers printed as [§] in the text, so a passage may sit under a different anchor than its standard locator. Strabo 17 is Hamilton's too ("Ethiopians", "Candace"), not the LacusCurtius wording. Appian's translator puts dates inside sentences ("made (B.C. 64 war"): cut around them with `…`. Sallust's Jugurtha has an anchor per chapter only; Cicero's Pro Fonteio is numbered differently from the standard. Diodorus 31.19a sits inside its § 31.22.1, so it can't be quoted at its own locator; ToposText's Diodorus starts at book 8. Bracketed years in the text ("[88 BCE]", "Lentulus[14 BCE]") are the site's and sometimes wrong (Pliny 3.70's consuls are 89): date from the consuls named, and cut quotes around the brackets with `…`. Strabo 5.1.1 is anchored as 4.7.1; Book 7's fragments as `7.8.N`; Dio's fragments under the book before (Loeb fr. 90 of book 27 is `26.90.1`). Florus has one anchor per chapter. A quote across two anchors needs a `…` at the join. |
+| LacusCurtius (penelope.uchicago.edu) | Needs a browser User-Agent. Book pages have literal asterisks in the path (`17A1*.html`). |
+| Perseus (perseus.tufts.edu) | The passage goes in the address, e.g. `text?doc=Perseus:text:1999.02.0137:book=5:chapter=36`. |
+| The Latin Library | Latin only. Livy's Periochae 1–45 (`livy/liv.perN.shtml`), Solinus, Mela (`pomponius1–3.html`), Cicero to Quintus (`cicero/fratrem1.shtml`). |
+| attalus.org | Translated inscriptions (OGIS, SEG). Latin-1 encoded. Asconius in Latin (`/latin/asconius1.html`). |
+| Perseus | English Livy 27–36 (Edmonds) is `Perseus:text:1999.02.0148`, address `:book=28:chapter=37`; works through a citation `url`. Sometimes returns 503: The Latin Library's Livy is the fallback. |
+| archive.org | The advanced-search API with `access-restricted-item:false` finds readable books in seconds; the `_djvu.txt` file is the full text, and is what a citation's `url` should be. Readable there: Broughton's MRR, Magie, Schürer's 1890 English translation (good for Nabataean and Judaean dates). The scans' OCR has flaws: MRR prints "CI L" for CIL, so cut a quote short of such spots. Page numbers are running heads (Magie's come after each page's text; parts of MRR print only the odd pages), so count from them. In MRR the head comes before the page's text ("123 B.C. 513" odd, "518 122 B.C." even); to pin a year, quote the running head with the first entry under it ("46 B.C. 209 P. Sulpicius…"): "Consuls" alone matches every year's heading. Beloch 1880 (`deritalischebund00belo_djvu.txt`) is readable in German: copy its OCR exactly, errors included, and cut before footnote marks stuck to words ("deducirt1)"). Kallet-Marx, Hegemony to Empire, is whole at the ark.cdlib.org address in sources.yaml. |
+| DPRR (romanrepublic.ac.uk) | The website blocks bots; use the SPARQL endpoint or the local cache. Its `primaryReferences` look misaligned: don't use them to find ancient passages without checking. |
+| figshare, OJS journals | Open theses and articles download as PDFs without a gate. The figshare API (`api.figshare.com/v2/articles/<id>`) gives the PDF's `ndownloader` address. Some PDFs (apcz.umk.pl) split words at ligatures ("e ff orts") or turn small capitals into odd glyphs: quote around them. |
+| Blocked | PHI Greek Inscriptions, JSTOR, OAPEN, HathiTrust full text, Qatar Digital Library, Chiron (DAI). |
+| Bennett's Ptolemies (instonebrewer.com) | Blocks scripted downloads (403/406) at times; `quotes:fetch` sometimes gets through, and the Wayback Machine always does: `https://web.archive.org/web/2024id_/http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/<page>.htm` (the content page, not `_fr.htm`). |
+| OpenEdition Books | A browser User-Agent gets a bot challenge; `quotes:fetch`'s own gets the page. Bridoux 2020 is one page per chapter (ch. 1 `efr/31990`, ch. 3 `efr/32000`), paragraphs numbered per chapter, so a locator needs chapter and ¶; the citation's `url` is the chapter page. |
+| Digital Augustan Rome | `digitalaugustanrome.org/records/<slug>/` is readable through `quotes:fetch`; `/api/dag/records/` lists the slugs. Italics come through as a stray word "i": cut quotes around them. Some records are empty. |
+| Pleiades | The HTML pages are behind a bot check (delete any challenge page `quotes:fetch` caches); `places/<id>/json` works: quote `reprPoint` with all its digits, or the periods it attests. |
+| Europe PMC, HAL, ISPRA | For open papers behind nature.com or Springer's bot checks, Europe PMC's `webservices/rest/PMC…/fullTextXML`; HAL records and its API carry abstracts; ISPRA's CARG notes (`isprambiente.gov.it/Media/carg/note_illustrative/…`) are open PDFs. |
+| Not open | Society for Libyan Studies e-books (form), Cambridge Core unless marked open access. |
+
+Any page or PDF that isn't an ancient work we link into: read it with
+
+```bash
+npm run quotes:fetch -w pipeline -- <url>
+```
+
+which prints the text exactly as the validator will search it (PDFs included),
+so a quote copied from it will match. A table's cells may come out in a
+different order than they look: quote one cell at a time, or cut between them
+with `…`.

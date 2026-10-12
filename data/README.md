@@ -55,6 +55,12 @@ project yet, so nothing is `verified`.
 **Every historical record cites at least one source**, by id, with a locator where
 there is one. Reasoning that should survive goes in `note`.
 
+**A citation that was read carries its quote.** `quote` holds the words relied on,
+`supports` the record's fields they state, and `url` the page they were read on
+when it isn't the passage the locator links to. The validator finds each quote in
+its text and counts how many records are backed; how to research a record is
+[research/README.md](../research/README.md).
+
 **An ancient text's locator links to the passage.** Write it the way the text is
 normally cited ("16.2.10", "Mithr. 114", "Pompey 34–35", "2.43 M"), and the
 inspector opens an English translation at that place, mostly on ToposText.
@@ -87,7 +93,9 @@ confirming.
    window carry their exact year. A later curator extending the window should
    treat every open end as a question, as the extension from 43 to 27 did: every
    `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
-   purpose (Osroene's standing with Rome, which nothing attests after 43). The
+   purpose (Osroene's standing with Rome, which nothing attests after 43; the
+   research of October 2026 has since closed it at 54, when Abgar turned on
+   Crassus). The
    extension back to 133 did the same for every `before 68 BCE`, except one left
    open on purpose (the Kushite hold on Lower Nubia, which nothing dates before
    68).
@@ -180,11 +188,15 @@ confirming.
     Thresholds: Nile valley 8 m; delta 4 m (from the seven branches); Mesopotamia
     6 m plus a flatness test (≤ 0.06 %, closed by 3 km) because the Southern Desert
     rises too gently for height alone; Susiana 12 m; middle Euphrates 8 m; the
-    Fayum an elevation band −2…+26 m (Ptolemaic lake level to canal command). The
+    Fayum an elevation band up to +26 m (canal command), below which Lake Moeris cuts it. The
     tool prints each area beside published figures — none of which has yet been
     checked against the work cited — and the check sites. Previews it renders are
-    the review surface. Floodplain shapes are modern-coast: ancient coasts and
-    lagoons are landscape-change work.
+    the review surface. Floodplain shapes stop at the coast the map draws: the
+    modern one with the landscape corrections applied (the ancient coasts, lakes
+    and lagoons of landscape-changes.yaml, derived by
+    `npm run derive-coasts -w pipeline`), so they are rederived after a shore changes.
+    After a shore changes the order is: derive-coasts, derive-floodplains, then
+    the coast mask (npm run water) and what reads it (politics, labels).
 
 16. **The Nile delta branches are authored lines** (`kind: river`), waypoints in
     `pipeline/src/features/delta-branches.ts` with each coordinate's provenance
@@ -241,7 +253,13 @@ confirming.
     peoples' frontiers); and `italici`, the insurgents of 91–88, `independent`,
     in a colour of their own. Their own name, Italia, is kept as a non-preferred
     name so the map never letters two ITALIAs at once. A Latin colony is a place
-    status, `colonia latina`, not ground.
+    status, `colonia latina`, not ground; the old Latin colonies' people became
+    citizens under the lex Iulia of 90, Cremona and Aquileia beyond the Po
+    included (Beloch 27). The Transpadane communities are the exception: Latins
+    by the lex Pompeia of 89 (Asconius, Pis. 3 C; Beloch 26–27), still not
+    citizens in 65 (Dio 37.9.3), and enfranchised by Caesar in 49 (Dio
+    41.36.3). The "municipium from 89" of towns such as Pompeii or Asculum
+    rests on the general laws of 90–89, not on a text naming the town.
 
 23. **A rising that held towns but no territory is a seat.** Aristonicus
     (133–130) and the slave kings of Sicily (Eunus at Enna, Tryphon at Triocala)

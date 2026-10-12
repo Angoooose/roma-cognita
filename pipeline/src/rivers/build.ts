@@ -35,11 +35,14 @@ const REGIONS = ['eu', 'af', 'as']
 /**
  * Discharge floors (m³/s), simplification tolerances (m) and tile levels per tier. Tier 0
  * is the great rivers, which show at every zoom, so it keeps full detail like the rest —
- * simplifying it for the overview left the Tiber angular at regional zoom. Tier 2 is
- * only fetched once the camera is close enough for a 1 m³/s stream to be worth a line.
+ * simplifying it for the overview left the Tiber angular at regional zoom — and is cut
+ * into level-4 tiles, whose points are stored in steps of ~20 m (`encodeTile`): at
+ * level 2 the steps were ~80 m, and a river surveyed to metres was drawn as a
+ * staircase close in. Tier 2 is only fetched once the camera is close enough for a
+ * 1 m³/s stream to be worth a line.
  */
 const TIERS = [
-  { minQ: 100, tolerance: 60, level: 2, smoothing: 2 },
+  { minQ: 100, tolerance: 60, level: 4, smoothing: 2 },
   { minQ: 10, tolerance: 200, level: 3, smoothing: 2 },
   { minQ: 1, tolerance: 60, level: 5, smoothing: 2 },
 ]
@@ -57,6 +60,21 @@ const AUTHORED_NETWORKS = ['nile-delta-floodplain']
 /** Lakes this big swallow the reaches that cross them; smaller ones the river runs over. */
 const LAKE_KM2 = 1
 
+/**
+ * A modern reach runs along an authored line that replaces it (`replacesModern`) when
+ * its middle lies within this of the line, off either end, and it carries at least
+ * half the line's discharge: the main stem, not a tributary coming in beside it.
+ * HydroRIVERS strays up to a few hundred metres from the surveyed course, and cuts
+ * across meanders.
+ */
+const REPLACE_M = 1500
+/**
+ * A reach that joined a replaced one gives up its points this near the authored line
+ * and runs straight on to it, so it meets the line where it comes to it rather than
+ * where HydroRIVERS' channel was, past it.
+ */
+const JOIN_M = 400
+
 async function main() {
   const t0 = Date.now()
   console.log('reading HydroLAKES (to cut reaches that cross lakes)…')
@@ -66,6 +84,21 @@ async function main() {
   // dropped: HydroRIVERS' Rosetta and Damietta would otherwise draw beside the
   // Bolbitine and Phatnitic that follow them, and cut across the reconstructed branches.
   const replacedIndex = new RingIndex(readAreas(AUTHORED_NETWORKS))
+  // Authored lines that replace the modern main stem along them, as they will be drawn.
+  const authored = readAuthoredRivers()
+  const replacing = authored
+    .filter((a) => a.replacesModern)
+    .map((a) => {
+      const { smoothing } = TIERS[Math.max(0, TIERS.findIndex((t) => a.q >= t.minQ))]
+      return {
+        id: a.id,
+        q: a.q,
+        pts: chaikin(a.coords.map(([lon, lat]) => projection.forward(lon, lat)), smoothing),
+      }
+    })
+  /** The ends of the modern reaches replaced, where their tributaries joined them: → the line. */
+  const replacedEnds = new Map<string, (typeof replacing)[number]>()
+  const endKey = ([x, y]: [number, number]) => `${x},${y}`
 
   // tier → tile key → lines
   const tiers = TIERS.map(() => new Map<string, Line[]>())
@@ -73,6 +106,7 @@ async function main() {
   let kept = 0
   let inLakes = 0
   let replaced = 0
+  let modernReplaced = 0
   for (const region of REGIONS) {
     const dir = join(CACHE, `HydroRIVERS_v10_${region}_shp`)
     if (!existsSync(dir)) throw new Error(`missing ${dir}: download and unzip HydroRIVERS_v10_${region}_shp.zip`)
@@ -90,6 +124,17 @@ async function main() {
 
       const xy = coords.map(([lon, lat]) => projection.forward(lon, lat))
       if (!xy.some(([x, y]) => x >= DATA_RECT.minX && x <= DATA_RECT.maxX && y >= DATA_RECT.minY && y <= DATA_RECT.maxY)) continue
+      const along = replacing.find((r) => {
+        if (q < r.q / 2) return false
+        const near = nearestOnLine(r.pts, xy[Math.floor(xy.length / 2)])
+        return near.d < REPLACE_M && !near.atEnd
+      })
+      if (along) {
+        replacedEnds.set(endKey(xy[0]), along)
+        replacedEnds.set(endKey(xy[xy.length - 1]), along)
+        modernReplaced++
+        continue
+      }
       const tier = TIERS.findIndex((t) => q >= t.minQ)
       const { tolerance, level, smoothing } = TIERS[tier]
       const line = chaikin(simplify(xy, tolerance), smoothing)
@@ -128,10 +173,30 @@ async function main() {
     console.log(`  ${region}: ${reaches} reaches read so far, ${kept} kept`)
   }
 
-  // Authored river courses from data/ — the ancient Nile delta branches first. They
-  // go through the same smoothing and tiling as HydroRIVERS, sized by the discharge
-  // their records estimate for display.
-  const authored = readAuthoredRivers()
+  // The reaches that joined a replaced one — its tributaries, and the main stem beyond
+  // the authored line's ends — are carried on to the line.
+  let joined = 0
+  const joinEnd = (pts: [number, number][], r: (typeof replacing)[number]) => {
+    while (pts.length > 2 && nearestOnLine(r.pts, pts[pts.length - 2]).d < JOIN_M) pts.pop()
+    pts[pts.length - 1] = nearestOnLine(r.pts, pts[pts.length - 2]).at
+  }
+  for (const tiles of tiers)
+    for (const lines of tiles.values())
+      for (const l of lines) {
+        const tail = replacedEnds.get(endKey(l.pts[l.pts.length - 1]))
+        if (tail) joinEnd(l.pts, tail)
+        const head = replacedEnds.get(endKey(l.pts[0]))
+        if (head) {
+          l.pts.reverse()
+          joinEnd(l.pts, head)
+          l.pts.reverse()
+        }
+        if (tail || head) joined++
+      }
+
+  // Authored river courses from data/ — the ancient Nile delta branches, and the rivers
+  // surveyed from OpenStreetMap. They go through the same smoothing and tiling as
+  // HydroRIVERS, sized by the discharge their records give for display.
   for (const { id, q, coords, reconstructed } of authored) {
     const tier = TIERS.findIndex((t) => q >= t.minQ)
     if (tier < 0) continue
@@ -176,6 +241,7 @@ async function main() {
   })
   writeFileSync(join(OUT, 'index.json'), JSON.stringify(index))
   console.log(`${replaced} modern segments replaced by authored networks`)
+  console.log(`${modernReplaced} modern reaches replaced by authored lines, ${joined} reaches joined to them`)
   console.log(`${inLakes} segments dropped inside lakes ≥ ${LAKE_KM2} km²; done in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
 }
 
@@ -184,10 +250,11 @@ async function main() {
  *   u32 line count
  *   per line: u16 point count, u16 discharge code, then points as i16 x, i16 y
  * Points are relative to the tile centre in units of (tile size × 1.5) / 32767, so a
- * reach that starts in the tile may run half a tile past its edge. That is ~5 m at
- * level 5 and ~40 m at level 3, well under a line's width. The discharge word holds a
- * log code in its low 14 bits, q = 10^(code / 2048 − 1) (0.1 to 10⁷ m³/s), and in its
- * top bit whether the course is reconstructed.
+ * reach that starts in the tile may run half a tile past its edge. Rounding moves a
+ * point up to half a unit: ~5 m at level 5, ~10 m at level 4 and ~20 m at level 3,
+ * well under a line's width. The discharge word holds a log code in its low 14 bits,
+ * q = 10^(code / 2048 − 1) (0.1 to 10⁷ m³/s), and in its top bit whether the course is
+ * reconstructed.
  */
 function encodeTile(lines: Line[], level: number, i: number, j: number): Buffer {
   const size = ROOT.size / 2 ** level
@@ -214,12 +281,20 @@ function clamp16(v: number) {
   return Math.max(-32767, Math.min(32767, Math.round(v)))
 }
 
+interface Authored {
+  id: string
+  q: number
+  coords: number[][]
+  reconstructed: boolean
+  replacesModern: boolean
+}
+
 /**
  * `kind: river` features with LineString geometry in data/geometry/features.geojson.
  * `properties.discharge` (m³/s) is a display estimate the record documents; without
  * it a branch draws as a middling river.
  */
-function readAuthoredRivers(): { id: string; q: number; coords: number[][]; reconstructed: boolean }[] {
+function readAuthoredRivers(): Authored[] {
   const recordsFile = join(ROOT_DIR, 'data/features.yaml')
   const geometryFile = join(ROOT_DIR, 'data/geometry/features.geojson')
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
@@ -228,11 +303,11 @@ function readAuthoredRivers(): { id: string; q: number; coords: number[][]; reco
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
     features: {
       id: string
-      properties?: { discharge?: number; reconstructed?: boolean[] }
+      properties?: { discharge?: number; reconstructed?: boolean[]; replacesModern?: boolean }
       geometry: { type: string; coordinates: number[][] | number[][][] }
     }[]
   }
-  const out: { id: string; q: number; coords: number[][]; reconstructed: boolean }[] = []
+  const out: Authored[] = []
   for (const f of collection.features) {
     if (!ids.has(f.id)) continue
     const q = f.properties?.discharge ?? 100
@@ -243,7 +318,13 @@ function readAuthoredRivers(): { id: string; q: number; coords: number[][]; reco
           ? (f.geometry.coordinates as number[][][])
           : []
     lines.forEach((coords, k) =>
-      out.push({ id: f.id, q, coords, reconstructed: f.properties?.reconstructed?.[k] ?? false }),
+      out.push({
+        id: f.id,
+        q,
+        coords,
+        reconstructed: f.properties?.reconstructed?.[k] ?? false,
+        replacesModern: f.properties?.replacesModern ?? false,
+      }),
     )
   }
   return out
@@ -283,6 +364,23 @@ function findShp(dir: string): string {
     } else if (e.name.endsWith('.shp')) return p
   }
   return ''
+}
+
+/** The nearest point of a line to `p`, how far it is, and whether it is one of the line's ends. */
+function nearestOnLine(pts: [number, number][], [px, py]: [number, number]) {
+  let best = { d: Infinity, at: pts[0], atEnd: true }
+  for (let k = 0; k + 1 < pts.length; k++) {
+    const [ax, ay] = pts[k]
+    const [bx, by] = pts[k + 1]
+    const dx = bx - ax
+    const dy = by - ay
+    const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)))
+    const at: [number, number] = [ax + t * dx, ay + t * dy]
+    const d = Math.hypot(at[0] - px, at[1] - py)
+    if (d < best.d)
+      best = { d, at, atEnd: (k === 0 && t === 0) || (k === pts.length - 2 && t === 1) }
+  }
+  return best
 }
 
 /** Douglas–Peucker, iterative, in plane metres. Endpoints always survive, so reaches still meet. */

@@ -60,6 +60,12 @@ export const AtomGeometrySchema = keyedCollection(AreaGeometrySchema)
 export type AtomGeometry = z.infer<typeof AtomGeometrySchema>
 
 /**
+ * data/geometry/landscape-changes.geojson: the area each landscape correction covers.
+ * Written by the generators in pipeline/src/landscape, each of which owns its own ids.
+ */
+export const LandscapeChangeGeometrySchema = keyedCollection(AreaGeometrySchema)
+
+/**
  * Properties a feature's shape may carry. `discharge` (m³/s) is a rough mean
  * flow for river lines, used only to size the line on the map; the record's
  * note says where it came from. `derivation` records how a derived shape was
@@ -74,6 +80,12 @@ export const FeaturePropertiesSchema = z
      * fainter, so a guess never reads as a survey.
      */
     reconstructed: z.array(z.boolean()).optional(),
+    /**
+     * A river line surveyed more closely than HydroRIVERS' modern channel it follows
+     * (OpenStreetMap's, rivers/fetch.ts): the rivers build draws it in place of the
+     * modern reaches along it and joins their tributaries to it.
+     */
+    replacesModern: z.boolean().optional(),
     derivation: z.string().optional(),
   })
   .nullable()

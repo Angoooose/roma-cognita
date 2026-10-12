@@ -10,9 +10,14 @@
 # provenance of every coordinate in pipeline/src/features/delta-branches.ts; the
 # same tool writes their lines. `discharge` on a line is display width only.
 #
+# Rivers surveyed from OpenStreetMap (sources: osm-waterways) are fetched into
+# their lines by pipeline/src/rivers/fetch.ts, and drawn in place of HydroRIVERS'
+# coarser modern channel along them.
+#
 # Every record here is "always" within the window: before 133 BCE to after 27 BCE.
 # Change over the window (the Fayum lake falling, the Pelusiac silting, the Gulf
-# coast advancing) is landscape-change work and is not attempted.
+# coast advancing) is not attempted. The floodplains stop at the coast the map
+# draws: today's, with the landscape corrections (landscape-changes.yaml) applied.
 
 # --- floodplains ---------------------------------------------------------------
 
@@ -24,7 +29,41 @@
   to: after 27 BCE
   sources:
     - { source: butzer-1976, locator: cultivable area of the valley by period (locator to supply) }
-    - { source: strabo, locator: '17.1.4' }
+    - source: herodotus
+      locator: '2.19'
+      quote: >-
+        the Nile , when it is in flood, goes over not only the Delta but also of
+        the land which is called Libyan and of that which is called Arabian
+        sometimes as much as two days' journey on each side
+      supports: [from]
+    - source: diodorus
+      locator: '1.36.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        this one alone begins to rise at that time and increases so greatly in
+        volume day by day that it finally overflows practically all Egypt
+      supports: [from]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: []
+    - source: strabo
+      locator: '17.1.4'
+      quote: >-
+        The country above the Delta is irrigated in the same manner … Egypt ,
+        from the mountains of Ethiopia to the vertex of the Delta, is merely a
+        river tract on each side of the Nile
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.58'
+      quote: >-
+        the smallest rise was that of five, in the year of the battle of
+        Pharsalia … When the waters have reached their greatest height, the
+        people open the embankments and admit them to the lands.
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Nile main stem, DIS_AV_CMS ≥ 500' }
   confidence: probable
@@ -51,8 +90,68 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.15–17' }
-    - { source: strabo, locator: '17.1.4, 17.1.18' }
+    - source: herodotus
+      locator: '2.15'
+      quote: >-
+        counting it to extend inland as far as the city of Kercasoros , where
+        the Nile divides and runs to Pelusion and Canobos … their Delta at any
+        rate is alluvial
+      supports: [from]
+    - source: herodotus
+      locator: '2.19'
+      quote: >-
+        the Nile , when it is in flood, goes over not only the Delta
+      supports: [from]
+    - source: diodorus
+      locator: '1.33.5–7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        where the Nile in its course through Egypt divides into several streams
+        it forms the region which is called from its shape the Delta.
+      supports: [from]
+    - source: diodorus
+      locator: '1.36.7–8'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        it finally overflows practically all Egypt. … since the land is a level
+        plain, while the cities and villages, as well as the farm-houses, lie on
+        artificial mounds, the scene comes to resemble the Cyclades Islands.
+      supports: [from]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: []
+    - source: strabo
+      locator: '17.1.4'
+      quote: >-
+        at the time of the rising of the Nile , the whole country is covered,
+        and resembles a sea, except the inhabited spots, which are situated upon
+        natural hills or mounds
+      supports: [to]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine , then the Sebennytic, and the
+        Phatnitic , which is the third in magnitude compared with the first two,
+        which form the boundaries of the Delta.
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.48'
+      quote: >-
+        the Nile so dividing itself as to give a triangular form to the land
+        which it encloses: from which circumstance also many persons have named
+        Egypt the Delta
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.58'
+      quote: >-
+        the smallest rise was that of five, in the year of the battle of
+        Pharsalia … When the waters have reached their greatest height, the
+        people open the embankments and admit them to the lands.
+      supports: [to]
     - { source: butzer-1976, locator: cultivable area of the delta by period (locator to supply) }
     - { source: bunbury-2019 }
     - { source: mapterhorn, locator: z10 terrain }
@@ -61,7 +160,7 @@
   confidence: probable
   review: draft
   note: >-
-    From the latitude of Memphis to the modern coast. Derived as ground within 4 m
+    From the latitude of Memphis to the sea. Derived as ground within 4 m
     of the floodplain surface beside the nearest of the seven ancient branches
     (the nile-*-branch records) — not the modern Rosetta and Damietta channels, which
     is what made the earlier runtime approach lopsided. The datum is the ground
@@ -71,8 +170,10 @@
     Canopic and the Pelusiac. About 23,000 km², which is the whole modern delta's
     land, larger than Butzer's cultivable estimates as usually cited (to check):
     the northern third was lagoon, marsh and pasture (the Boukolia) in antiquity.
-    Lake Mareotis/Maryut, Manzala (the Tanitic lagoon) and Burullus are cut only at
-    their modern HydroLAKES extent; their ancient extent is landscape-change work.
+    Lake Mareotis is cut at its ancient extent (landscape change lake-mareotis),
+    and the Canopic promontory now under Aboukir Bay is land (canopic-coast);
+    Manzala (the Tanitic lagoon) and Burullus are cut only at their modern
+    HydroLAKES extent.
     Built-up Cairo reads high on the surface model; gaps under 8 km² are filled.
 
 - id: fayum-floodplain
@@ -83,7 +184,48 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '17.1.35–38' }
+    - source: herodotus
+      locator: '2.149'
+      quote: >-
+        it has been brought thither from the Nile by a canal: and for six months
+        the water flows into the lake, and for six months out into the Nile again
+      supports: [from]
+    - source: diodorus
+      locator: '1.52.2–3'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        by this canal, sometimes turning the river into the lake and sometimes
+        shutting it off again, he furnished the farmers with an opportune supply
+        of water … The lake has continued to serve well the needs of the
+        Egyptians down to our time
+      supports: [from]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: []
+    - source: strabo
+      locator: '17.1.35'
+      quote: >-
+        the canal on the right hand, which leads into Libya , in the direction of
+        the Arsinoite Nome … This nome is the most considerable of all in
+        appearance, natural properties, and embellishment. … It produces wine in
+        abundance, corn, pulse, and a great variety of other grains.
+      supports: [to]
+    - source: strabo
+      locator: '17.1.37'
+      quote: >-
+        both the lake and the canal preserve a remainder, which is used for
+        irrigation
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.50'
+      quote: >-
+        There are two places called Arsinoites : these and Memphites extend to
+        the apex of the Delta
+      supports: [to]
     - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
     - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
     - { source: mapterhorn, locator: z10 terrain }
@@ -91,12 +233,13 @@
   review: draft
   note: >-
     The Fayum is watered downhill from the Bahr Yusuf inlet at el-Lahun, so it is
-    derived as an elevation band, not a height above a river: from −2 m, the lake
-    level usually given for the Ptolemaic reclamation (Ball 1939; Caton-Thompson &
-    Gardner 1934 — to check), up to +26 m, the canal command near the inlet. Lake
-    Qarun now stands near −43 m, so the modern shrinkage would badly overstate the
-    Ptolemaic cultivated area; the band leaves the ground between −43 and −2 m as
-    the ancient lake. The hull keeps out the lake's north shore (desert, beyond the
+    derived as an elevation band, not a height above a river, up to +26 m, the
+    canal command near the inlet. Its lower edge is the lake: Lake Moeris at about
+    −2 m, the level usually given for the Ptolemaic reclamation (Ball 1939;
+    Caton-Thompson & Gardner 1934 — to check), drawn by the landscape change
+    lake-moeris and cut out of the band like any water. Lake Qarun now stands near
+    −43 m, so the modern shrinkage would badly overstate the Ptolemaic cultivated
+    area. The hull keeps out the lake's north shore (desert, beyond the
     canals: Soknopaiou Nesos stood on it) and the Wadi Rayan depression (modern
     drainage lakes). About 1,500 km², inside the 1,200–1,800 km² range usually
     cited for Ptolemaic cultivation (not checked against a work). Uncertain because
@@ -113,8 +256,42 @@
   to: after 27 BCE
   sources:
     - { source: adams-1981 }
-    - { source: strabo, locator: '16.1.9–10' }
-    - { source: herodotus, locator: '1.193' }
+    - source: herodotus
+      locator: '1.193'
+      quote: >-
+        the crop is watered by hand or with swing-buckets. For the whole
+        Babylonian territory like the Egyptian is cut up into channels
+      supports: [from]
+    - source: strabo
+      locator: '16.1.9'
+      quote: >-
+        the Euphrates , at the commencement of summer, overflows; It begins to
+        fill in the spring, when the snow in Armenia melts: the ploughed land,
+        therefore, would be covered with water and be submerged, unless the
+        overflow of the superabundant water were diverted by trenches and
+        canals
+      supports: [from, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar ; for after the
+        sovereign power had been conferred upon him by his country for life, and
+        he had become the arbiter of peace and war, he divided the whole empire
+        into two parts
+      supports: [to]
+    - source: pliny-nh
+      locator: '6.117'
+      quote: >-
+        The Macedonians formed these communities into cities, being prompted
+        thereto by the extraordinary fertility of the soil.
+      supports: [from]
+    - source: pliny-nh
+      locator: '6.124'
+      quote: >-
+        the Euphrates continues to flow with an undivided channel for a distance
+        of eighty-seven miles beyond Babylon , before its waters are diverted
+        from their channel for the purposes of irrigation
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Tigris, Euphrates, Shatt al-Arab and tributaries, DIS_AV_CMS ≥ 100' }
   confidence: probable
@@ -126,12 +303,12 @@
     flatter than 0.06% on terrain smoothed over ~1 km, the flat mask then closed by
     3 km so levees, canal banks and tells inside the plain stay in: the Southern
     Desert beyond the Euphrates rises too gently for a height threshold alone, but
-    not as gently as the alluvium. The southern edge is the modern coast. Where the
-    Gulf stood in the late first millennium BCE is debated (the head of the Gulf
-    has been put anywhere from near the modern coast to well inland), so the
-    southern third is the least certain part of the shape; it wants a
-    landscape-change record. The Hawizeh and Hammar marshes are cut only where
-    HydroLAKES has open water. About 78,700 km²; no published area has been
+    not as gently as the alluvium. The southern edge is the head of the Gulf as the
+    landscape change persian-gulf-head draws it. Where the Gulf stood in the late
+    first millennium BCE is debated (anywhere from near the modern coast to well
+    inland), so the southern third is the least certain part of the shape. The
+    Hawizeh and Hammar marshes are cut only where
+    HydroLAKES has open water. About 77,300 km²; no published area has been
     checked. Hit itself falls ~25 km short of the polygon: the narrow valley
     between Hit and Ramadi fails the flatness test.
 
@@ -143,7 +320,27 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: strabo, locator: '15.3.10–11' }
+    - source: strabo
+      locator: '15.3.10'
+      quote: >-
+        Alexander preferred Babylon , because he saw that it far surpassed the
+        other cities in magnitude, and had other advantages. Although Susis is
+        fertile
+      supports: [from]
+    - source: strabo
+      locator: '15.3.11'
+      quote: >-
+        Susis is so fertile in grain, that barley and wheat produce, generally,
+        one hundred, and sometimes two hundred fold.
+      supports: [from, to]
+    - source: strabo
+      locator: '17.3.25'
+      quote: >-
+        at present it is that established by Augustus Caesar ; for after the
+        sovereign power had been conferred upon him by his country for life, and
+        he had become the arbiter of peace and war, he divided the whole empire
+        into two parts
+      supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
     - { source: hydrorivers, locator: 'Karkheh, Dez, Karun, DIS_AV_CMS ≥ 50' }
   confidence: probable
@@ -158,7 +355,9 @@
     Mesopotamian alluvium (the line is the Mesopotamian hull, roughly the modern
     border and the Hawizeh marsh), and the south-east, where the coastal plain
     continues to the Jarrahi and Hendijan. The Karkheh and Dez reservoirs are
-    kept out by the hull. About 30,200 km²; no ancient area figure is known to us.
+    kept out by the hull. The southern edge is the head of the Gulf as
+    persian-gulf-head draws it, which takes the Shadegan flats. About 26,700 km²;
+    no ancient area figure is known to us.
 
 - id: middle-euphrates-valley
   kind: floodplain
@@ -202,9 +401,39 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17, 2.179' }
-    - { source: strabo, locator: '17.1.18' }
-    - { source: pliny-nh, locator: '5.64' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        the second of the ways goes towards the West, and this is called the
+        Canobic mouth
+      supports: [from]
+    - { source: herodotus, locator: '2.179' }
+    - source: diodorus
+      locator: '1.33.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        It empties into the sea in seven mouths … then the Bolbitine, and
+        finally the Canopic, which is called by some the Heracleotic.
+      supports: [from]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: []
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to Canobus is Heracleium , in which is a temple of Hercules ; then
+        follows the Canobic mouth , and the commencement of the Delta.
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.64'
+      quote: >-
+        I allude to the seven more famous ones, the Canopic Mouth , next to
+        Alexandria
+      supports: [to]
     - { source: toussoun-1922 }
     - { source: pleiades, locator: 'places/727142, 727169, 727221, 727120' }
     - { source: hydrorivers, locator: modern Rosetta branch }
@@ -229,9 +458,36 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
-    - { source: pliny-nh, locator: '5.64' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        The Bolbitinitic and Bucolic mouths, on the other hand, are not natural
+        but made by digging.
+      supports: [from]
+    - source: diodorus
+      locator: '1.33.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1B*.html
+      quote: >-
+        It empties into the sea in seven mouths … then the Bolbitine, and
+        finally the Canopic
+      supports: [from]
+    - source: diodorus
+      locator: '1.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/1C*.html
+      quote: >-
+        at the time we visited those regions, in the One Hundred and Eightieth
+        Olympiad
+      supports: []
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine
+      supports: [to]
+    - source: pliny-nh
+      locator: '5.64'
+      quote: >-
+        the Canopic Mouth , next to Alexandria , those of Bolbitine , Sebennys
+      supports: [to]
     - { source: hydrorivers, locator: modern Rosetta branch }
   confidence: probable
   review: draft
@@ -251,8 +507,20 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        that one of the ways which is straight runs thus, — when the river in its
+        course downwards comes to the point of the Delta, then it cuts the Delta
+        through the midst and so issues out to the sea … it is called the
+        Sebennytic mouth
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        Next to the Canobic mouth is the Bolbitine , then the Sebennytic, and the
+        Phatnitic
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: toussoun-1922 }
     - { source: pleiades, locator: 'places/727142, 727078, 727227' }
@@ -264,6 +532,8 @@
     routing — north-west across the Sebennytes Kato nome to the Burullus lagoon,
     where its mouth is usually placed; trimmed at the lagoon shore. The upper
     course is reasonably placed; the lower course is not. Display discharge 500 m³/s.
+    Herodotus (5th century) and Strabo (under Augustus) both name the mouth, which
+    brackets the window.
 
 - id: nile-phatnitic-branch
   kind: river
@@ -274,8 +544,25 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        The Bolbitinitic and Bucolic mouths, on the other hand, are not natural
+        but made by digging.
+      supports: [from]
+    - source: rawlinson-1862
+      locator: 'p. 22 n. 1 (Wilkinson)'
+      quote: >-
+        The Bolbitiue mouth was that of the modern Rosetta branch, as the Bucolic
+        or Phatmetic was that of Da- mietta
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        the Phatnitic , which is the third in magnitude compared with the first
+        two, which form the boundaries of the Delta. For it branches off into the
+        interior, not far from the vertex of the Delta.
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: pleiades, locator: 'places/727235, 727198' }
   confidence: probable
@@ -284,7 +571,8 @@
     Taken as the lower modern Damietta branch: from Sebennytos past Mansura (modern
     point) and Tamiathis/Damietta (727235) to the Phatnitikon Stoma (727198), traced
     along the channel in the DEM. Pleiades has the mouth but no river record.
-    Display discharge 350 m³/s.
+    Display discharge 350 m³/s. Herodotus' Bucolic mouth is Strabo's Phatnitic
+    (Wilkinson), so the two bracket the window.
 
 - id: nile-mendesian-branch
   kind: river
@@ -295,8 +583,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        There are also two other mouths which part off from the Sebennytic and go
+        to the sea, and these are called, one the Saitic , the other the
+        Mendesian mouth.
+      supports: [from]
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        The Mendesian is very near the Phatnitic mouth
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: pleiades, locator: 'places/727078, 727146, 727156, 727157' }
   confidence: uncertain
@@ -318,7 +616,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        There are also two other mouths which part off from the Sebennytic and go
+        to the sea, and these are called, one the Saitic
+      supports: [from]
+    - source: strabo
+      locator: '17.1.20'
+      quote: >-
+        Then follows the Tanitic , which some call the Saitic mouth, and the
+        Tanite Nome, and in it Tanis a large city.
+      supports: [to]
     - { source: strabo, locator: '17.1.18' }
     - { source: pliny-nh, locator: '5.64' }
     - { source: bietak-1975 }
@@ -330,7 +639,8 @@
     reconstructions; Herodotus derives it from the Sebennytic, others from the
     Mendesian), past Pharbaithos (727196) and Tanis (727236) to a mouth near the
     Manzala outlet at el-Gamil, where it is usually put; trimmed ~2 km at the
-    lagoon shore. Display discharge 250 m³/s.
+    lagoon shore. Display discharge 250 m³/s. Herodotus' Saitic mouth is
+    Strabo's Tanitic (17.1.20), so the two bracket the window.
 
 - id: nile-pelusiac-branch
   kind: river
@@ -340,8 +650,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: herodotus, locator: '2.17, 2.30' }
-    - { source: strabo, locator: '17.1.18' }
+    - source: herodotus
+      locator: '2.17'
+      quote: >-
+        from this city onwards it is parted into three ways; and one, which is
+        called the Pelusian mouth, turns towards the East
+      supports: [from]
+    - { source: herodotus, locator: '2.30' }
+    - source: strabo
+      locator: '17.1.18'
+      quote: >-
+        next is the Tanitic , and lastly the Pelusiac mouth.
+      supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: bietak-1975 }
     - { source: pleiades, locator: 'places/727142, 727147, 727088, 727080, 727103, 727192, 727191' }
@@ -355,6 +675,32 @@
     It was still the eastern outlet in the window and silted later. Display
     discharge 600 m³/s.
 
+# --- rivers surveyed from OpenStreetMap ---------------------------------------------
+
+- id: tiber
+  kind: river
+  pleiades: '423080'
+  names:
+    - { text: Tiberis, lang: la, preferred: true }
+    - { text: Tiber, lang: en }
+  from: before 133 BCE
+  to: after 27 BCE
+  sources:
+    - { source: osm-waterways, locator: way/547426106 }
+    - { source: hydrorivers, locator: 'main stem, DIS_AV_CMS 190–228' }
+  confidence: probable
+  review: draft
+  note: >-
+    The Tiber from above the Aniene to the sea, on OpenStreetMap's centreline, in
+    place of HydroRIVERS', which runs ~150 m west of it through Rome and cuts
+    straight across the bend round the Campus Martius. The same course the model of
+    Rome draws the river's water on (the tiberis place in places/rome.yaml), so the
+    two meet without a break. The course is today's: through Rome it is the
+    Republic's, between the modern embankments; at Ostia the river looped round the
+    town until the flood of 1557 cut it off (the Fiume Morto), which is not drawn.
+    Below Ostia the line runs on over land the delta has built since, where the map
+    draws the Republic's sea. Display discharge 220 m³/s, HydroRIVERS' through Rome.
+
 # --- seas ------------------------------------------------------------------------
 #
 # Water names, in Latin (DESIGN §8.2). A sea's shape in geometry/features.geojson
@@ -362,8 +708,10 @@
 # pipeline/src/labels/seas.ts — not its extent, which no source draws as a line.
 # The names are Pliny's; he wrote after our window, but he is the fullest Latin
 # survey of the seas, and these are the forms the Barrington Atlas prints.
-# Locators are to the book only; the paragraphs want checking (review:
-# needs-check).
+# Pliny's locators are to the book only; the paragraphs want checking (review:
+# needs-check). Each sea's dates rest on a writer before 133 (Herodotus,
+# Polybius, or Pytheas as Pliny reports him) and on Strabo, writing under
+# Augustus, both describing it: the two bracket the window.
 
 - id: oceanus-atlanticus
   kind: sea
@@ -372,6 +720,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '1.203'
+      quote: >-
+        the Sea beyond the Pillars , which is called Atlantis
+      supports: [from]
+    - source: strabo
+      locator: '2.5.27'
+      quote: >-
+        on the south, as far as the Pillars , by Our Sea; and thence to the
+        northern extremity of the Pyrenees by the Atlantic
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -384,13 +743,32 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pliny-nh, locator: book 4 }
+    - source: pliny-nh
+      locator: '37.35'
+      quote: >-
+        Pytheas speaks of an estuary of the Ocean named Metuonis and extending for
+        750 miles, the shores of which are inhabited by a German tribe, the
+        Guiones
+      supports: [from]
+    - source: strabo
+      locator: '7.2.4'
+      quote: >-
+        Of the Germans, as I have said, those towards the north extend along the
+        ocean; and beginning at the outlets of the Rhenus , they are known as far
+        as the Albis
+      supports: [to]
+    - source: pliny-nh
+      locator: '4.103'
+      quote: >-
+        scattered in the German Sea, are those known as the Glaesariae
+      supports: []
     - { source: barrington }
   confidence: probable
   review: needs-check
   note: >-
     The North Sea. Pliny's name; the Republic had none it used consistently, and
-    Caesar speaks only of the Ocean.
+    Caesar speaks only of the Ocean. Pytheas sailed it in the fourth century,
+    as Pliny reports him.
 
 - id: mare-balearicum
   kind: sea
@@ -399,10 +777,32 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: pliny-nh, locator: book 3 }
+    - source: polybius
+      locator: '3.37.10'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html
+      quote: >-
+        that portion of which is washed by the Mediterranean as far as the Pillars
+        of Hercules being called Iberia
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        that surrounding the land opposite is designated by the respective names
+        of the Iberian , the Ligurian , and the Sardinian Seas
+      supports: [to]
+    - source: pliny-nh
+      locator: '3.74'
+      quote: >-
+        as far as it washes the coasts of Spain, it is called the Hispanian Sea,
+        though some give it the name of the Iberian or Balearic Sea
+      supports: [to]
     - { source: barrington }
   confidence: certain
   review: needs-check
+  note: >-
+    The sea off Spain, which Strabo calls the Iberian and Pliny the Hispanian,
+    Iberian or Balearic. No writer before 133 that can be read names it; Polybius
+    has the Mediterranean washing Iberia.
 
 - id: mare-sardoum
   kind: sea
@@ -411,6 +811,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.10.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        they were also in possession of all the islands in the Sardinian and
+        Tyrrhenian Seas
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        the Iberian , the Ligurian , and the Sardinian Seas
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -424,6 +836,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.10.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        they were also in possession of all the islands in the Sardinian and
+        Tyrrhenian Seas
+      supports: [from]
+    - source: strabo
+      locator: '2.5.19'
+      quote: >-
+        the remaining portion as far as Sicily is named the Tyrrhenian sea
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -437,6 +861,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '2.14.4'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/2*.html
+      quote: >-
+        Italy as a whole has the shape of a triangle of which the one or eastern
+        side is bounded by the Ionian Strait and then continuously by the
+        Adriatic Gulf
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        The Adriatic stretches north and west; it is long and narrow
+      supports: [to]
     - { source: pliny-nh, locator: book 3 }
     - { source: barrington }
   confidence: certain
@@ -449,6 +886,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.110.2'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        Sason lying at the entrance to the Ionian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        the Iapygian Promontory , the mouth of the Ionian Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -461,6 +909,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '3.2.8'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/3*.html
+      quote: >-
+        Philip laying hands on the islands of the Aegean
+      supports: [from]
+    - source: strabo
+      locator: '2.5.21'
+      quote: >-
+        Adjacent to these are the Aegean Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -473,6 +932,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '1.42.6'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/1*.html
+      quote: >-
+        separating the Libyan from the Sardinian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.20'
+      quote: >-
+        The sea opposite to the Syrtes and the Cyrenaic is called the Libyan Sea;
+        it extends as far as the Sea of Egypt
+      supports: [to]
     - { source: pliny-nh, locator: book 5 }
     - { source: barrington }
   confidence: probable
@@ -485,6 +956,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '2.113'
+      quote: >-
+        when he had come to the Aegean Sea contrary winds drove him from his
+        course to the Sea of Egypt
+      supports: [from]
+    - source: strabo
+      locator: '2.5.24'
+      quote: >-
+        The Island of Cyprus is situated in the Gulfs of Issos and Pamphylia ,
+        close to the Sea of Egypt
+      supports: [to]
     - { source: pliny-nh, locator: book 5 }
     - { source: barrington }
   confidence: probable
@@ -497,6 +980,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        The sea known as the Pontus is very nearly twenty-two thousand stades in
+        circumference
+      supports: [from]
+    - source: strabo
+      locator: '2.5.22'
+      quote: >-
+        another sea to the north, named the Propontis , and this again with
+        another called the Euxine
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -509,6 +1005,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        has two mouths exactly opposite each other, one communicating the
+        Propontis
+      supports: [from]
+    - source: strabo
+      locator: '2.5.23'
+      quote: >-
+        The length of the Propontis from the Troad to Byzantium is stated to be
+        1500 stadia.
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -521,6 +1030,19 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '4.39.1'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/4*.html
+      quote: >-
+        the other with the Palus Maeotis, which itself has a circumference of eight
+        thousand stades
+      supports: [from]
+    - source: strabo
+      locator: '2.5.23'
+      quote: >-
+        To the north of the eastern Gulf of the Pontus , is the Lake Maeotis ,
+        whose perimeter is 9000 stadia or rather more.
+      supports: [to]
     - { source: pliny-nh, locator: book 4 }
     - { source: barrington }
   confidence: certain
@@ -537,6 +1059,18 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.44.5'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        reaches as far as the mountains of the Tapyri, which are not far distant
+        from the Hyrcanian Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        The northern, called the Caspian , by others designated the Hyrcanian Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain
@@ -549,6 +1083,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: herodotus
+      locator: '2.159'
+      quote: >-
+        triremes were built by him, some for the Northern Sea and others in the
+        Arabian gulf for the Erythraean Sea
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        the Persian and Arabian Gulf s, formed by the [Southern] Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain
@@ -562,6 +1107,17 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
+    - source: polybius
+      locator: '5.46.7'
+      url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/5*.html
+      quote: >-
+        Pythiades, the governor of the coasts of the Persian Gulf
+      supports: [from]
+    - source: strabo
+      locator: '2.5.18'
+      quote: >-
+        the Persian and Arabian Gulf s, formed by the [Southern] Sea
+      supports: [to]
     - { source: pliny-nh, locator: book 6 }
     - { source: barrington }
   confidence: certain

@@ -13,6 +13,11 @@
   citation: >-
     T. R. S. Broughton, The Magistrates of the Roman Republic, 3 vols (New York:
     American Philological Association, 1951–1986)
+  url: https://archive.org/details/broughton-magistrates-roman-republic
+  note: >-
+    A scan on archive.org, readable without borrowing. Quote from its full text,
+    https://archive.org/download/broughton-magistrates-roman-republic/Broughton_Magistrates_Roman_Republic_djvu.txt,
+    given as the citation's url.
 
 - id: cah-ix
   kind: modern
@@ -67,6 +72,42 @@
 - id: magie-1950
   kind: modern
   citation: D. Magie, Roman Rule in Asia Minor to the End of the Third Century after Christ, 2 vols (Princeton, 1950)
+  url: https://archive.org/details/RRAM01Magie1950
+  note: >-
+    Scans on archive.org, readable without borrowing. Quote from the full text of
+    the volume cited, given as the citation's url: vol. I
+    https://archive.org/download/RRAM01Magie1950/RRAM01_Magie_1950_djvu.txt,
+    vol. II https://archive.org/download/RRAM02Magie1950/RRAM02_Magie_1950_djvu.txt.
+
+- id: minns-1913
+  kind: modern
+  citation: >-
+    E. H. Minns, Scythians and Greeks. A Survey of Ancient History and
+    Archaeology on the North Coast of the Euxine from the Danube to the
+    Caucasus (Cambridge, 1913)
+  url: https://archive.org/download/scythiansgreekss00minn/scythiansgreekss00minn_djvu.txt
+  note: >-
+    The archive.org scan, readable without borrowing; quotations are from its
+    full text, OCR errors included. Pages are the running heads.
+
+- id: rostovtzeff-1922
+  kind: modern
+  citation: M. Rostovtzeff, Iranians and Greeks in South Russia (Oxford, 1922)
+  url: https://archive.org/download/in.ernet.dli.2015.280370/2015.280370.Iranians-And_djvu.txt
+  note: >-
+    The archive.org scan, readable without borrowing; quotations are from its
+    full text. Pages are the running heads.
+
+- id: rawlinson-1862
+  kind: modern
+  citation: >-
+    G. Rawlinson (tr.), with H. Rawlinson and J. G. Wilkinson, History of
+    Herodotus, vol. II (London: John Murray, 1862)
+  url: https://archive.org/download/bub_gb_B1qpT5p8u5sC/bub_gb_B1qpT5p8u5sC_djvu.txt
+  note: >-
+    Book II with Wilkinson's notes on Egypt. The archive.org scan, readable
+    without borrowing; quotations are from its full text, OCR errors included
+    ("Phatmetic" for Phatnitic). Pages are the running heads.
 
 - id: mitchell-1993
   kind: modern
@@ -81,6 +122,50 @@
   citation: >-
     E. Schürer, The History of the Jewish People in the Age of Jesus Christ,
     rev. G. Vermes, F. Millar et al., vol. I (Edinburgh, 1973)
+
+- id: schurer-1890
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division I, vol. II, trans. J. Macpherson (Edinburgh: T. & T. Clark, 1890),
+    Appendix II, "History of the Nabatean Kings"
+  url: https://archive.org/details/p1historyofjewis02sch
+  note: >-
+    A scan on archive.org (a later printing), readable without borrowing. Quote
+    from its full text,
+    https://archive.org/download/p1historyofjewis02sch/p1historyofjewis02sch_djvu.txt,
+    given as the citation's url. The revision by Vermes and Millar
+    (schurer-vermes) supersedes it but is not open.
+
+- id: schurer-1891
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division I, vol. I, trans. J. Macpherson (New York: Scribner's, 1891)
+  url: https://archive.org/details/historyofjewishp01sch
+  note: >-
+    The political history from 175 BCE: the Hasmoneans, Pompey, Caesar's
+    decrees for Hyrcanus II, Herod. A scan on archive.org, readable without
+    borrowing. Quote from its full text,
+    https://archive.org/download/historyofjewishp01sch/historyofjewishp01sch_djvu.txt,
+    given as the citation's url; page numbers are the running heads.
+    Superseded by schurer-vermes, which is not open.
+
+- id: schurer-1910
+  kind: modern
+  citation: >-
+    E. Schürer, A History of the Jewish People in the Time of Jesus Christ,
+    Division II, vol. I, trans. S. Taylor and P. Christie (Edinburgh: T. & T.
+    Clark, 1910 printing)
+  url: https://archive.org/details/p2historyofjewishp01schuoft
+  note: >-
+    The Hellenistic towns of Palestine one by one (§ 23): who held Gaza,
+    Ascalon, Azotus, Iamnia, Joppa, Strato's Tower and Dora, and when. A scan
+    on archive.org, readable without borrowing. Quote from its full text,
+    https://archive.org/download/p2historyofjewishp01schuoft/p2historyofjewishp01schuoft_djvu.txt,
+    given as the citation's url; page numbers are the running heads, which
+    come before each page's text. Superseded by schurer-vermes-ii, which is
+    not open.
 
 - id: myers-2010
   kind: modern
@@ -145,6 +230,13 @@
 - id: debevoise-1938
   kind: modern
   citation: N. C. Debevoise, A Political History of Parthia (Chicago, 1938)
+  url: https://archive.org/details/politicalhistory00debe
+  note: >-
+    A scan on archive.org, readable without borrowing (public domain by
+    HathiTrust's copyright review). Quote from its full text,
+    https://archive.org/download/politicalhistory00debe/politicalhistory00debe_djvu.txt,
+    given as the citation's url; page numbers are the running heads. Its
+    "Artabanus II" (c. 128–124/23) is the Artabanus I of later numbering.
 
 - id: braund-1994
   kind: modern
@@ -399,6 +491,21 @@
   note: >-
     Open access; read. Pompey's march through the Province in 77, Fonteius'
     wars, and a survey of opinion on when the Province was organised (39).
+    Quote from the article's PDF,
+    https://revistas.upsa.es/index.php/helmantica/article/download/468/359/1056,
+    given as the citation's url.
+
+- id: piegdon-2010
+  kind: modern
+  citation: >-
+    M. Piegdoń, "'Est enim ille flos Italiae': Northern Italy in the legal and
+    administrative structures of the Roman Republic in the 3rd–1st BC", Studia
+    Prawnoustrojowe 12 (2010) 175–188
+  url: https://ruj.uj.edu.pl/server/api/core/items/21e914ac-e90f-4017-99db-5937d25cc387
+  note: >-
+    Only the English abstract is open, in the Jagiellonian University
+    repository's record of the article (the url); the article itself was not
+    read.
 
 - id: ribera-valentia
   kind: modern
@@ -487,6 +594,8 @@
 - id: cicero-qfr
   kind: ancient
   citation: Cicero, Epistulae ad Quintum Fratrem
+  url: https://www.thelatinlibrary.com/cicero/fratrem1.shtml
+  edition: the Latin text on The Latin Library (book 1)
 
 - id: cicero-de-oratore
   kind: ancient
@@ -523,6 +632,7 @@
   kind: ancient
   citation: Asconius, Commentary on Cicero's In Pisonem
   url: https://www.attalus.org/latin/asconius1.html
+  edition: A. C. Clark's Latin text (Oxford, 1907), on attalus.org
   note: Cited by the pages of A. C. Clark's edition (Oxford, 1907).
 
 - id: cicero-balb
@@ -558,6 +668,12 @@
 - id: cassius-dio
   kind: ancient
   citation: Cassius Dio, Roman History
+
+- id: polybius
+  kind: ancient
+  citation: Polybius, Histories
+  url: https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/home.html
+  edition: W. R. Paton's Loeb translation (1922–1927), on LacusCurtius
 
 - id: pausanias
   kind: ancient
@@ -651,10 +767,34 @@
 - id: lucian-macrobii
   kind: ancient
   citation: '[Lucian], Macrobii'
+  url: https://archive.org/download/in.ernet.dli.2015.529397/2015.529397.lucian-vol1_djvu.txt
+  edition: >-
+    A. M. Harmon's Loeb translation, "Octogenarians", in Lucian vol. I (1913),
+    from the full text of the archive.org scan
 
 - id: florus
   kind: ancient
   citation: Florus, Epitome of Roman History
+
+- id: solinus
+  kind: ancient
+  citation: Solinus, Collectanea rerum memorabilium
+  url: https://www.thelatinlibrary.com/solinus1.html
+  edition: Latin text on The Latin Library
+
+- id: granius-licinianus
+  kind: ancient
+  citation: >-
+    Granius Licinianus, ed. M. Flemisch, Grani Liciniani quae supersunt
+    (Leipzig: Teubner, 1904)
+  url: https://archive.org/details/granilicinianiqu00liciuoft
+  edition: >-
+    Flemisch's Teubner text, from the full text of the archive.org scan; cited by
+    its page and line
+  note: >-
+    A damaged palimpsest, and the scan's text is rough OCR: quote it exactly as
+    https://archive.org/download/granilicinianiqu00liciuoft/granilicinianiqu00liciuoft_djvu.txt
+    prints it, given as the citation's url.
 
 - id: orosius
   kind: ancient
@@ -700,6 +840,31 @@
     Lower Nubia", Études et Travaux 38 (2025), 61–84
   url: https://doi.org/10.12775/EtudTrav.38.003
   note: Open access; read. Cited by page.
+
+- id: sai-mission
+  kind: modern
+  citation: >-
+    Mission archéologique de Saï (dir. V. Francigny), "Saï: an island at the
+    heart of Nubia", French Ministry of Culture, Grands sites archéologiques
+  url: https://archeologie.culture.gouv.fr/en/sai-island-heart-nubia
+  note: The excavators' outreach page; read.
+
+- id: gonzalez-rodriguez-2015
+  kind: modern
+  citation: >-
+    M. Gonzalez Rodriguez, Death is another country: Mortuary rituals and
+    identity in Fazzan, Libya (PhD thesis, University of Leicester, 2015)
+  url: https://ndownloader.figshare.com/files/18309836
+  note: Open access on Leicester figshare; read. Cited by printed page.
+
+- id: mattingly-sterry-edwards-2015
+  kind: modern
+  citation: >-
+    D. Mattingly, M. Sterry and D. Edwards, "The origins and development of
+    Zuwīla, Libyan Sahara: an archaeological and historical overview of an
+    ancient oasis town and caravan centre" (author's version, 2015)
+  url: https://ndownloader.figshare.com/files/18343844
+  note: Open access on Leicester figshare; read. Cited by printed page.
 
 # --- datasets ------------------------------------------------------------------
 
@@ -859,21 +1024,37 @@
   note: The canal was cut 1859–69 and opened in November 1869; the parallel New
     Suez Canal channels opened in 2015.
 
-- id: corinth-canal-1893
+- id: wilson-1933
   kind: modern
   citation: >-
-    The Corinth Canal, cut 1881–1893 across the Isthmus of Corinth; general
-    reference (to be replaced by a specific engineering history)
-  note: Nero's attempt of 67 CE was abandoned; in our period ships were hauled
-    across on the diolkos.
+    A. T. Wilson, The Suez Canal: Its Past, Present, and Future (Oxford, 1933;
+    reissued 1939)
+  url: https://archive.org/download/suezcanal032262mbp/suezcanal032262mbp_djvu.txt
+  note: Readable on archive.org (Osmania University Library's copy); locators are the book's pages.
 
 - id: escwa-bgr-2013
   kind: modern
   citation: >-
     UN-ESCWA and BGR, Inventory of Shared Water Resources in Western Asia
     (Beirut, 2013), chapter on the Tigris basin
+  url: https://waterinventory.org/sites/waterinventory.org/files/chapters/Chapter-03-Tigris_River-Basin-web_0.pdf
   note: Describes the Wadi Tharthar flood-relief scheme, which diverted the Tigris
     into the Tharthar depression from 1956.
+
+- id: sissakian-2011
+  kind: modern
+  citation: >-
+    V. K. Sissakian, "Genesis and age estimation of the Tharthar Depression,
+    Central West Iraq", Iraqi Bulletin of Geology and Mining 7.3 (2011), 47–62
+  url: https://www.ibgm-iq.org/ibgm/index.php/ibgm/article/download/156/155
+  note: Open access; read. Cited by page.
+
+- id: korinthos-isthmus
+  kind: modern
+  citation: >-
+    Municipality of Corinth, "The Isthmus" (municipal website, read October 2026)
+  url: https://korinthos.gr/en/the-isthmus/
+  note: A municipal summary, not an engineering history; read.
 
 # --- the city of Rome (the plan, DESIGN.md §7.7) ------------------------------
 # Added September 2026 for data/places/rome.yaml. Dates come from Platner &
@@ -895,6 +1076,20 @@
     Argentina, the Forum Boarium temples), which is why those monuments are not
     yet drawn.
   usedBy: pipeline/src/rome/model.ts
+
+- id: lanciani-pcr
+  kind: modern
+  citation: R. Lanciani, Pagan and Christian Rome (Boston and New York, 1892)
+  url: https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/Lanciani/LANPAC/home.html
+  note: >-
+    Public domain; transcribed on LacusCurtius, one page per chapter. Locators are
+    the book's pages.
+
+- id: martial
+  kind: ancient
+  citation: Martial, Epigrams
+  edition: the Bohn translation (London, 1897), on tertullian.org
+  url: https://www.tertullian.org/fathers/martial_epigrams_book05.htm
 
 - id: sitar
   kind: dataset
@@ -1229,6 +1424,19 @@
     reconstruction
   url: https://bibulus.archeometra.it/en/ricostruzioni/
 
+- id: osm-waterways
+  kind: dataset
+  citation: >-
+    OpenStreetMap contributors, river centrelines (waterway=river), fetched through
+    the Overpass API
+  url: https://www.openstreetmap.org/
+  licence: ODbL-1.0
+  note: >-
+    Locators are OpenStreetMap ways ("way/547426106"). Modern courses, surveyed on
+    imagery, far closer than HydroRIVERS' grid-derived ones; copied into
+    data/geometry/features.geojson with the date they were fetched
+    (pipeline/src/rivers/fetch.ts).
+
 # --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
 # Added September 2026. No record cites these: they are the methods and the
 # evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).
@@ -1377,6 +1585,10 @@
 - id: ovid-fasti
   kind: ancient
   citation: Ovid, Fasti
+  edition: A. S. Kline's English translation (2004), on Poetry in Translation, one page per book
+  note: >-
+    Kline's pages are not numbered by line: a citation's url is the book's page,
+    its locator the conventional lines.
 
 - id: tacitus-ann
   kind: ancient
@@ -1486,6 +1698,27 @@
   note: >-
     Book 1 was published about 35 BCE. 1.8: the Esquiline's burial ground made
     healthy ground and gardens; 1.9.18: Caesar's gardens across the Tiber.
+
+- id: jerome-chronicle
+  kind: ancient
+  citation: Jerome, Chronicle (the Latin continuation of Eusebius' Chronicle)
+  url: https://www.tertullian.org/fathers/jerome_chronicle_03_part2.htm
+  edition: >-
+    the English translation on tertullian.org (R. Pearse and others, 2005), from
+    Helm's text
+  note: Dates by Olympiad and year of Abraham. Sallust's death, "in the quadrennium before the Battle of Actium".
+
+- id: macleane-1895
+  kind: modern
+  citation: >-
+    A. J. Macleane, The Works of Horace, with English Notes, revised by R. H. Chase,
+    20th edition (Boston: Allyn and Bacon, 1895)
+  url: https://gutenberg.pglaf.org/4/6/9/3/46938/46938-0.txt
+  note: >-
+    Public domain, on Project Gutenberg (ebook 46938; the mirror's plain text, as
+    gutenberg.org times out). Dates Satires book 1 to "probably" 35 BCE, and
+    introduces Satires 1.8 on the Esquiline burial ground Maecenas made into
+    gardens. Locators are its sections.
 
 - id: asconius
   kind: ancient
@@ -1652,6 +1885,17 @@
     by the city's eponym; c. 107 and the campaigns of c. 110–107 are the usual
     modern dating, not the stone's.
 
+- id: akornion-decree
+  kind: ancient
+  citation: >-
+    Decree of Dionysopolis in honour of Akornion, son of Dionysius, 48–44 BCE
+    (IGBulg I² 13)
+  url: https://telamon.uni-sofia.bg/en/epi/view_ins/IGBulg_0013
+  edition: >-
+    The Greek text and English translation of Telamon, the Ancient Greek
+    Inscriptions from Bulgaria project of Sofia University (eds. V. Latyshev,
+    E. Kalinka, G. Mihailov, N. Sharankov)
+
 # --- the extension to 133 BCE: the Levant, Armenia and the East -------------------
 # Added September 2026. Josephus' Antiquities 13 was read in Whiston's
 # translation by Niese's numbers (Lexundria); the modern works below were not
@@ -1716,3 +1960,374 @@
     The first king's name (Aryu; "Orhoi, son of Hevia" in the translator's
     note from Dionysius) comes from the Edessene list in the later
     chroniclers, as Segal gives it.
+
+- id: wikipedia-fucine-lake
+  kind: modern
+  citation: Wikipedia, "Fucine Lake" (consulted 27 September 2026)
+  url: https://en.wikipedia.org/wiki/Fucine_Lake
+  note: >-
+    A placeholder for the lake's recorded levels (650–680 m), its depths measured
+    between 1783 and 1861 and its area at its largest (about 140 km²). The figures
+    come from the survey made for the Torlonia drainage, which is to be found and
+    cited in its place.
+
+- id: koutsoyiannis-kopais
+  kind: modern
+  citation: >-
+    D. Koutsoyiannis and others (NTUA), on the hydrology and drainage of Lake Kopais,
+    after Knauss's reconstruction (full title and venue to confirm)
+  url: https://www.itia.ntua.gr/en/getfile/1539/1/documents/Copais_WH10_9_14.pdf
+  note: >-
+    The lake bed at about +92 m, the water ranging from +92 to +97 m before it
+    overflowed westward, and the areas between those levels.
+
+- id: knauss-1987
+  kind: modern
+  citation: >-
+    J. Knauss, Die Melioration des Kopaisbeckens durch die Minyer im 2. Jt. v. Chr.
+    (Munich, 1987)
+  note: Not seen; cited through koutsoyiannis-kopais, which models his levels.
+
+- id: wikipedia-lake-karla
+  kind: modern
+  citation: Wikipedia, "Lake Karla" (consulted 27 September 2026)
+  url: https://en.wikipedia.org/wiki/Lake_Karla
+  note: >-
+    A placeholder for the lake's seasonal area (up to about 180 km²) and its drainage
+    in 1962, to be replaced by a hydrological study of the basin.
+
+# --- ancient coasts: Italy ----------------------------------------------------
+# Figures were read for these by georeferencing them against named sites; the
+# locators on each landscape-change record say which figure.
+
+- id: salomon-2018
+  kind: modern
+  citation: >-
+    F. Salomon and others, on the Tiber delta and Ostia's shore, Earth-Science
+    Reviews 177 (2018) (full title to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/ItalyWest/Portus/Ostia-Salomon2018.pdf
+  note: >-
+    Cores ISF-1 and TB-1 date the shore at Ostia; fig. 1 maps the city wall, the
+    2nd–3rd-century coast and the 19th-century lagoon.
+
+- id: salomon-2023
+  kind: modern
+  citation: F. Salomon and others, Water History (2023) (full title to confirm)
+  url: http://www.ostia-antica.org/fulltext/salomon/salomon2023.pdf
+  note: Fig. 1 draws the coastline of the 2nd century CE between Portus and Ostia.
+
+- id: vittori-2015
+  kind: modern
+  citation: >-
+    C. Vittori, I. Mazzini, F. Salomon, J.-P. Goiran, S. Pannuzi, C. Rosa and A.
+    Pellegrino, "Palaeoenvironmental evolution of the ancient lagoon of Ostia
+    Antica (Tiber delta, Italy)", Journal of Archaeological Science 54 (2015)
+    374–384
+  url: https://hal.science/hal-01248436v1
+  note: >-
+    The publisher's page (sciencedirect.com/science/article/abs/pii/S0305440314002386)
+    refuses downloads; the HAL record, open, carries the abstract.
+
+- id: vittori-2026
+  kind: modern
+  citation: >-
+    C. Vittori and others, "Salinity Transition in the Ostia Lagoon During the
+    Roman Period: Assessing the Feasibility of Salt Exploitation", Geoarchaeology
+    41 (2026)
+  url: https://shs.hal.science/halshs-05458542v1
+  note: The HAL record, open, carries the abstract.
+
+- id: di-rita-2010
+  kind: modern
+  citation: >-
+    F. Di Rita and others, on the Maccarese lagoon's Holocene history, Journal of
+    Paleolimnology (2010) (full title to confirm)
+  url: https://link.springer.com/article/10.1007/s10933-009-9385-9
+
+- id: kaniewski-2018
+  kind: modern
+  citation: >-
+    D. Kaniewski and others, "Holocene evolution of Portus Pisanus, the lost harbour
+    of Pisa", Scientific Reports 8 (2018) 11625
+  url: https://www.nature.com/articles/s41598-018-29890-w
+  licence: CC BY 4.0
+  note: >-
+    nature.com answers scripts with a browser challenge; the same article's full
+    text is read from Europe PMC (PMC6107670), which quotes cite by url.
+
+- id: pasquinucci-2014
+  kind: modern
+  citation: >-
+    M. Pasquinucci, on the ports of Pisa, 2014, with a shoreline map after Mazzanti
+    2003 (full reference to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/ItalyWest/Pisa-Pasquinucci2014.pdf
+
+- id: ispra-205-comacchio
+  kind: modern
+  citation: >-
+    ISPRA, Note illustrative della Carta Geologica d'Italia 1:50.000, foglio 205
+    Comacchio
+  url: https://www.isprambiente.gov.it/Media/carg/note_illustrative/205_Comacchio.pdf
+  note: >-
+    Reproduces Ciabatti 1966's beach-ridge map (fig. 13), with ridge V labelled
+    "cordone romano – inizio era volgare", and dates the Comacchio ship's wreck to the
+    Augustan shore (p. 118).
+
+- id: ciabatti-1966
+  kind: modern
+  citation: M. Ciabatti, on the beach ridges of the Po delta between Ravenna and the Adige (1966)
+  note: Not seen; read through the ISPRA notes to sheet 205, which reproduce his map.
+
+- id: cirelli-2013
+  kind: modern
+  citation: E. Cirelli, on Ravenna and the port of Classe (2013) (full reference to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Adriatic/Classis-Cirelli2013.pdf
+  note: Fig. 2, a schematic map of Ravenna and Classe in the early Empire.
+
+- id: abballe-2024
+  kind: modern
+  citation: >-
+    M. Abballe, F. Boschi, M. Cavalazzi and P. Maranzana, "Lagoons, Marshes, and
+    Swamps in the Roman and Late Antique Ravenna Greater Region", Antichità
+    Altoadriatiche 98 (2024)
+  url: https://iris.unive.it/retrieve/18699c4c-f6c0-49f5-b863-d554818ecd15/2024%20AAAd%2098%2014%20Abballe%201%20bozza%2012-01-2026.pdf
+  note: >-
+    The authors' draft of January 2026 in Ca' Foscari's repository; locators are
+    its printed pages.
+
+- id: ispra-368-avezzano
+  kind: modern
+  citation: >-
+    ISPRA, Note illustrative della Carta Geologica d'Italia 1:50.000, foglio 368
+    Avezzano
+  url: https://www.isprambiente.gov.it/Media/carg/note_illustrative/368_Avezzano.pdf
+  note: >-
+    The Fucino basin's lake, 150 km² between 649 and 667 m (after Giraudi 1988),
+    present until it was drained in the late 19th century. Locators are the
+    notes' pages.
+
+- id: donda-2025
+  kind: modern
+  citation: >-
+    D. Gaddi, E. Gordini, E. Lodolo, F. Donda, D. Melini, G. Spada and
+    P. Ventura, Discovery of Roman and early medieval palisades in Grado (Italy)
+    constraining relative sea level and paleoenvironment in the northern
+    Adriatic Sea, Scientific Reports 15 (2025) 33546
+  url: https://www.nature.com/articles/s41598-025-18346-7
+
+# --- ancient coasts: the Aegean -----------------------------------------------
+
+- id: bruckner-2017
+  kind: modern
+  citation: >-
+    H. Brückner, A. Herda, M. Kerschner, M. Müllenhoff and F. Stock, "Life cycle of
+    estuarine islands — from the formation to the landlocking of former islands in
+    the environs of Miletos and Ephesos in western Asia Minor (Turkey)", Journal of
+    Archaeological Science: Reports 12 (2017) 876–894
+  url: https://www.sciencedirect.com/science/article/pii/S2352409X16307416
+  note: Fig. 1 (after Müllenhoff 2005) dates the Maeander delta front at intervals.
+
+- id: mullenhoff-2005
+  kind: modern
+  citation: >-
+    M. Müllenhoff, Geoarchäologische, sedimentologische und morphodynamische
+    Untersuchungen im Mündungsgebiet des Büyük Menderes (Mäander), Westtürkei,
+    Marburger Geographische Schriften 141 (2005)
+  note: Not seen; read through bruckner-2017 fig. 1.
+
+- id: bruckner-2014
+  kind: modern
+  citation: >-
+    H. Brückner and others, "On the Lion Harbour and other harbours in Miletos",
+    Proceedings of the Danish Institute at Athens 7 (2014) 49–103
+  url: https://tidsskrift.dk/pdia/article/view/24132
+
+- id: akcer-on-2020
+  kind: modern
+  citation: >-
+    S. Akçer-Ön and others, Redating the formation of Lake Bafa, western Turkey:
+    integrative geoarchaeological methods and new environmental and dating
+    evidence, Geoarchaeology (2020)
+  url: https://doi.org/10.1002/gea.21791
+
+- id: kulzer-2018
+  kind: modern
+  citation: >-
+    A. Külzer, Reconstructing the Past in a changing Landscape. Reflections on
+    the Area of Ephesus and other Sites in Western Asia Minor, Gephyra 16 (2018)
+    75–90
+  url: https://dergipark.org.tr/en/download/article-file/569367
+
+- id: stock-2013
+  kind: modern
+  citation: >-
+    F. Stock and others, on the harbours of Ephesos, Quaternary International 312
+    (2013) 57–69 (full title to confirm)
+  note: Fig. 1 draws the shore of the early 1st century BCE and the delta front of 0 CE.
+
+- id: kraft-2007
+  kind: modern
+  citation: >-
+    J. C. Kraft, H. Brückner, I. Kayan and H. Engelmann, "The geographies of ancient
+    Ephesus and the Artemision in Anatolia", Geoarchaeology 22 (2007) 121–149
+  url: https://doi.org/10.1002/gea.20151
+
+- id: kraft-1987
+  kind: modern
+  citation: >-
+    J. C. Kraft, G. Rapp, J. A. Szemler, C. Tziavos and E. W. Kase, "The pass at
+    Thermopylae, Greece", Journal of Field Archaeology 14 (1987) 181–198
+  note: Fig. 14 draws the shoreline of 480 BCE.
+
+- id: vouvalidis-2010
+  kind: modern
+  citation: >-
+    K. Vouvalidis and others, on the palaeogeography of Thermopylae and the Malian
+    Gulf, Geodinamica Acta 23 (2010) 241–253 (full title to confirm)
+  url: https://doi.org/10.3166/ga.23.241-253
+  note: Only the abstract seen; it gives 8–10 km of advance since 480 BCE.
+
+# --- ancient coasts: Africa, Egypt, Gaul, Spain, the Gulf ---------------------
+
+- id: pleuger-2019
+  kind: modern
+  citation: >-
+    E. Pleuger and others, on the Holocene evolution of the Gulf of Utica and the
+    Medjerda delta, Quaternary Science Reviews 220 (2019) 263–278 (full title to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/NorthAfrica/Utica-Pleuger2019.pdf
+
+- id: delile-2015
+  kind: modern
+  citation: >-
+    H. Delile and others, on the geoarchaeology of Utica, Geoarchaeology 30 (2015) 291
+    (full title to confirm)
+  url: https://ancientportsantiques.com/wp-content/uploads/Documents/PLACES/NorthAfrica/Utica-Delile2015.pdf
+
+- id: ben-mosbah-sebkhet-ariana
+  kind: modern
+  citation: M. Ben Mosbah and others, on Sebkhet Ariana, Quaternaire (full reference to confirm)
+  url: https://journals.openedition.org/quaternaire/5548
+
+- id: mela
+  kind: ancient
+  citation: Pomponius Mela, De chorographia
+  url: https://www.thelatinlibrary.com/pomponius2.html
+  edition: Latin text on The Latin Library (book 2, its own section numbers)
+
+- id: crepy-boussac-2021
+  kind: modern
+  citation: >-
+    M. Crépy and M.-F. Boussac, on the western Mareotis in the Hellenistic and Roman
+    periods, E&G Quaternary Science Journal 70 (2021) 39 (full title to confirm)
+  url: https://egqsj.copernicus.org/articles/70/39/2021/
+  licence: CC BY 4.0
+
+- id: flaux-2021
+  kind: modern
+  citation: >-
+    C. Flaux and others, The late Holocene record of Lake Mareotis, Nile Delta,
+    Egypt, E&G Quaternary Science Journal 70 (2021) 93–104
+  url: https://egqsj.copernicus.org/articles/70/93/2021/
+  licence: CC BY 4.0
+  note: Fig. 1 draws the coastline in antiquity round Aboukir Bay.
+
+- id: goddio-heracleion
+  kind: modern
+  citation: F. Goddio, the Heracleion–Thonis and Canopus excavations (project pages)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/heracleion/
+
+- id: goddio-canopus
+  kind: modern
+  citation: F. Goddio, the Canopus excavations (project page)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/canopus/
+
+- id: goddio-alexandria
+  kind: modern
+  citation: F. Goddio, the Portus Magnus of Alexandria excavations (project page)
+  url: https://www.franckgoddio.org/projects/sunken-civilizations/alexandria/
+
+- id: marriner-2008
+  kind: modern
+  citation: >-
+    N. Marriner, J.-P. Goiran and C. Morhange, Alexander the Great's tombolos at
+    Tyre and Alexandria, eastern Mediterranean, Geomorphology 100 (2008) 377–400
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Levant/Alexandria-Tyr-Marriner2008.pdf
+
+- id: goiran-2014
+  kind: modern
+  citation: >-
+    J.-P. Goiran, P. Carbonel, J. Cavero, C. Morhange and J.-Y. Empereur, on the
+    ancient harbours of Alexandria, Géochronique 130 (2014), Géoarchéologie des
+    ports antiques, pp. 26–29
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Egypt-Libya/Alexandria/Alexandria-Goiran2014.pdf
+
+- id: vella-2005
+  kind: modern
+  citation: >-
+    C. Vella, T.-J. Fleury, G. Raccasi, M. Provansal, F. Sabatier and M. Bourcier,
+    "Evolution of the Rhône delta plain in the Holocene", Marine Geology 222–223
+    (2005) 235–265
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/France/Camargue/Camargue-Vella&Provansal2005.pdf
+  note: Fig. 5 (Lambert II étendu) draws the lobes; table 3 gives the cores in WGS84.
+
+- id: nienhuis-2017
+  kind: modern
+  citation: >-
+    J. H. Nienhuis, A. D. Ashton, A. J. Kettner and L. Giosan, Large-scale coastal
+    and fluvial models constrain the late Holocene evolution of the Ebro Delta,
+    Earth Surface Dynamics 5 (2017) 585–603
+  url: https://esurf.copernicus.org/articles/5/585/2017/
+  licence: CC BY 3.0
+  note: Fig. 1, after Canicio & Ibáñez 1999, stages the delta's growth.
+
+- id: salel-2014
+  kind: modern
+  citation: >-
+    T. Salel, map of the Narbonne lagoons "vers 550 / 50 av. n. ère" (2014), after
+    Faïsse and others (as reproduced; full reference to confirm)
+  url: https://www.ancientportsantiques.com/a-few-ports/narbonne/
+
+- id: sanchez-2014
+  kind: modern
+  citation: >-
+    C. Sanchez, C. Faïsse, M.-P. Jézégou and V. Mathé, Le système portuaire de
+    Narbonne antique : approche géoarchéologique, in L. Mercuri, R. González
+    Villaescusa and F. Bertoncello (eds.), Implantations humaines en milieu
+    littoral méditerranéen (APDCA, Antibes, 2014) 125–
+  url: https://ancientportsantiques.com/wp-content/uploads/Documents/PLACES/France/Narbonne/Narbonne-Sanchez2014.pdf
+
+- id: dolez-2015
+  kind: modern
+  citation: >-
+    L. Dolez, T. Salel, H. Bruneton, G. Colpo, B. Devillers and others, Holocene
+    palaeoenvironnements of the Bages-Sigean lagoon (France), Geobios 48 (2015)
+    297–308 (abstract on HAL)
+  url: https://hal.archives-ouvertes.fr/hal-01430777
+
+- id: hansman-1967
+  kind: modern
+  citation: J. Hansman, "Charax and the Karkheh" (1967; venue and pages to confirm)
+  url: https://archive.org/stream/HansmanCharaxAndTheKarkheh/Hansman-Charax%20and%20the%20Karkheh_djvu.txt
+
+- id: heyvaert-baeteman-2007
+  kind: modern
+  citation: >-
+    V. M. A. Heyvaert and C. Baeteman, on the Holocene coastal evolution of lower
+    Khuzestan, Marine Geology 242 (2007) (full title to confirm)
+  url: https://www.sciencedirect.com/science/article/abs/pii/S0025322707000217
+  note: Only the abstract seen.
+
+- id: walstra-2010
+  kind: modern
+  citation: >-
+    J. Walstra and others, on the rivers of lower Khuzestan and the site of Charax
+    Spasinou (2010) (full reference to confirm)
+  url: https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/IndOc-Gulf/CharaxSpasinou-Walstra2010.pdf
+
+- id: reinink-smith-carter-2022
+  kind: modern
+  citation: >-
+    L. Reinink-Smith and R. Carter, "Late Holocene development of Bubiyan Island,
+    Kuwait", Quaternary Research (2022)
+  url: https://www.cambridge.org/core/journals/quaternary-research/article/abs/late-holocene-development-of-bubiyan-island-kuwait/FD3CB9742FC8B0A5EDE6EBAC8F15C301
+  note: Only the abstract seen.

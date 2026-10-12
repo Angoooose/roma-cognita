@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { passages } from '../src/passages/fetch.ts'
 import {
   findAnchor,
+  namesSeveral,
   parseRef,
+  rangeEnd,
   passageUrl,
   readLocator,
   workUrl,
@@ -182,5 +184,24 @@ describe('passageUrl', () => {
     expect(passageUrl('strabo')).toBeUndefined()
     expect(workUrl('strabo')).toBe('https://topostext.org/work/144')
     expect(workUrl('appian')).toBeUndefined()
+  })
+})
+
+describe('rangeEnd', () => {
+  it('reads the end of the first range, filling in the parts it leaves out', () => {
+    expect(rangeEnd('42.35.5–6', '42.35.5')).toBe('42.35.6')
+    expect(rangeEnd('Mithr. 17–21, 55–58', '17')).toBe('21')
+    expect(rangeEnd('14.5.2–14.6.1', '14.5.2')).toBe('14.6.1')
+    expect(rangeEnd('16.2.10', '16.2.10')).toBe('16.2.10')
+  })
+})
+
+describe('namesSeveral', () => {
+  it('tells a list of passages from one passage or range', () => {
+    expect(namesSeveral('Mithr. 64, 101')).toBe(true)
+    expect(namesSeveral('13.273; 14.18')).toBe(true)
+    expect(namesSeveral('1.5 and 1.53')).toBe(true)
+    expect(namesSeveral('42.35.5–6')).toBe(false)
+    expect(namesSeveral('5.22 ("Cirta, Hippo")')).toBe(false)
   })
 })

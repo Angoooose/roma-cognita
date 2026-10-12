@@ -12,7 +12,7 @@ import {
   type Tholos,
   tholos,
 } from './architecture.ts'
-import { type Builder, C, type Pt, SKIN } from './builder.ts'
+import { type Builder, C, type Pt, SKIN, STONE } from './builder.ts'
 import {
   BASILICA_WORKS,
   beds,
@@ -542,12 +542,23 @@ interface Porticus {
   h: number
   order: Order
   sides?: [boolean, boolean, boolean, boolean]
-  /** The sides with no portico closed by the precinct's wall, with a gateway this wide. */
+  /** The sides with no portico closed by the precinct's wall, with a gateway this wide in its front. */
   gate?: number
+  /** The side porticoes ending this far from the back, level with the front of a temple there. */
+  heads?: number
   double?: boolean
   paving?: 'travertine' | 'tufa' | 'marble' | 'garden'
-  /** Shops behind the porticoes on the sides named, this deep. */
-  shops?: { depth: number; sides: [boolean, boolean, boolean, boolean] }
+  /**
+   * Shops behind the porticoes on the sides named, this deep: `h` high (the
+   * portico's wall, if not given); where they were cut into a hillside (`hillside`),
+   * under one roof with their portico, rising from its columns to `h` at the hill.
+   */
+  shops?: {
+    depth: number
+    sides: [boolean, boolean, boolean, boolean]
+    h?: number
+    hillside?: boolean
+  }
   /** A gateway in the middle of the front. */
   propylon?: { w: number; columns: number }
   /** Rows of trees in a garden court: how many rows, and their spacing. */
@@ -570,7 +581,79 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
         : d.paving === 'marble'
           ? face
           : C.travertine
+  /**
+   * Shops cut into the hillside behind side `i`'s portico, under one roof with it: one
+   * slope from the hill at the shops' back, `shops.h` high, down over the shops and the
+   * portico to its columns; beyond the portico's heads over the shops alone.
+   */
+  const hillside = (i: number) => {
+    const s = d.shops!.depth
+    const zb = d.shops!.h ?? d.h + 1.4
+    const zf = d.h + 0.4 + Math.max(0.8, d.h * 0.18)
+    const z = (c: number) => zf + ((zb - zf) * (c + d.depth)) / (s + d.depth)
+    // A point `along` the side and `c` out from the precinct's line.
+    const len = i % 2 ? l : w
+    const pt = (along: number, c: number): [number, number] =>
+      i === 0
+        ? [along, l / 2 + c]
+        : i === 1
+          ? [w / 2 + c, along]
+          : i === 2
+            ? [along, -l / 2 - c]
+            : [-w / 2 - c, along]
+    // Where the portico runs along it: all of it, or from its heads (towards the back,
+    // -v) to the front.
+    const porch = (d.sides ?? [true, true, true, true])[i]
+    const cut = porch && d.heads !== undefined && i % 2 ? d.heads : 0
+    const p0 = -len / 2 + cut
+    const [a0, a1] = [-len / 2, len / 2]
+    const zj = z(0)
+    stage(P.walls, [0, zj])
+    const [q0, q1] = [pt(a0, 0), pt(a1, s)]
+    F.box(
+      Math.min(q0[0], q1[0]),
+      Math.max(q0[0], q1[0]),
+      Math.min(q0[1], q1[1]),
+      Math.max(q0[1], q1[1]),
+      -F.deep,
+      zj,
+      shade,
+      null,
+    )
+    stage(P.roof, [zf, zb])
+    const look = F.b.look
+    F.b.look = SKIN.roof * 10 + 0.7 * 0.9
+    const run = s + d.depth
+    const slope = (b0: number, b1: number, c0: number) =>
+      F.skinQuad(
+        [...pt(b0, s + 0.3), zb, 0, 0, run],
+        [...pt(b1, s + 0.3), zb, b1 - b0, 0, run],
+        [...pt(b1, c0), z(c0), b1 - b0, s + 0.3 - c0, run],
+        [...pt(b0, c0), z(c0), 0, s + 0.3 - c0, run],
+        C.roofTemple,
+      )
+    if (porch) slope(p0, len / 2, -d.depth)
+    // Beyond the heads the shops' part alone, down to the precinct's wall.
+    if (p0 > a0) slope(a0, p0, 0)
+    F.b.look = look
+    // The ends closed under the roof: the shops' from their walls' top, the portico's
+    // from the precinct's wall.
+    const wall = d.h + 1.4
+    for (const a of [a0, a1]) {
+      F.tri([...pt(a, 0), zj], [...pt(a, s), zj], [...pt(a, s), zb], shade)
+      const open = porch && (a === a1 || p0 === a0)
+      if (open)
+        F.skinQuad(
+          [...pt(a, -d.depth), wall],
+          [...pt(a, 0), wall],
+          [...pt(a, 0), zj],
+          [...pt(a, -d.depth), z(-d.depth)],
+          shade,
+        )
+    }
+  }
   quadriporticus(F, w, l, {
+    roofless: [0, 1, 2, 3].map((i) => !!d.shops?.hillside && !!d.shops.sides[i]),
     depth: d.depth,
     h: d.h,
     order: d.order,
@@ -579,6 +662,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
     court,
     sides: d.sides,
     gate: d.gate,
+    heads: d.heads,
     double: d.double,
     seed: 0.4,
     stage: W
@@ -596,7 +680,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
   })
   if (d.shops) {
     const s = d.shops.depth
-    const H = d.h + 1.4
+    const H = d.shops.h ?? d.h + 1.4
     const edges: [number, number, number, number][] = [
       [-w / 2, w / 2, l / 2, l / 2 + s],
       [w / 2, w / 2 + s, -l / 2, l / 2],
@@ -605,6 +689,7 @@ const porticus: Build<Design & Porticus & Building> = (F, d, w, l, face, shade) 
     ]
     edges.forEach(([u0, u1, v0, v1], i) => {
       if (!d.shops!.sides[i]) return
+      if (d.shops!.hillside) return hillside(i)
       stage(P.walls, [0, H])
       F.box(u0, u1, v0, v1, -F.deep, H, shade, null)
       if (W) {
@@ -1214,10 +1299,13 @@ const mausoleum: Build<Design & Mausoleum> = (F, d, w, _l, face) => {
 }
 
 /**
- * A bridge along its length (v, from bank to bank), `w` wide: arches of the given
- * spans springing from piers with pointed cutwaters, a small flood arch through a
- * pier where it had one, and a deck with parapets at the height of its banks. A
- * timber bridge (the Sublicius) is a deck on trestles of piles.
+ * A bridge along its length (v, from bank to bank), `w` wide, built as its sources give
+ * it (pipeline bridges.ts): arches of the given spans springing from piers with
+ * pointed cutwaters, a small flood arch through a pier where it had one, abutments to
+ * its full length, and the deck its design sets — clearing its arches, coming down on
+ * ramps to its banks and running on as its approaches. The river and the ground are
+ * fitted to it, not it to them. A timber bridge (the Sublicius) is a deck on trestles
+ * of piles.
  */
 interface Bridge {
   /** The arches' spans, bank to bank, metres; and the piers' widths between them. */
@@ -1229,60 +1317,140 @@ interface Bridge {
   flood?: number
   /** A timber bridge on trestles of piles. */
   timber?: boolean
-  /** The water's surface, and the ground at its two ends, metres over its ground (from the model). */
+  /** The water's surface over its ground, metres (from the model). */
   water?: number
-  banks?: [number, number]
+  /**
+   * Its deck over its ground every metre along it from `from` (this frame's u), and
+   * where its ramps come down to its banks; and each arch's springing (from the model).
+   */
+  deck?: { from: number; z: number[]; ramps: [number, number] }
+  springs?: number[]
+}
+
+/** How low its parapets come down towards the foot of each ramp, and over how many metres. */
+const PARAPET_FOOT = { h: 0.5, over: 3 }
+
+/**
+ * A bridge's parts, metres: the band of its faces between the arches' crowns and the
+ * deck; its parapet's height and thickness; the string course along its faces at the
+ * deck, how deep and how far it stands out; the ring of voussoirs round each arch, how
+ * deep and how far it stands out; how high the hood over each cutwater rises to the
+ * pier's face; and how far under its deck its walls run down into the made ground.
+ */
+const BRIDGE = {
+  fascia: 1.2,
+  parapet: 1.1,
+  parapetThick: 0.35,
+  string: 0.3,
+  stringOut: 0.12,
+  ring: 0.7,
+  ringOut: 0.08,
+  hood: 1.4,
+  footing: 4,
 }
 
 const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
   const wl = d.water ?? 2
-  const [hA, hB] = d.banks ?? [wl + 8, wl + 8]
-  // Along the bridge in a frame turned so its u runs from bank to bank, -l/2 to l/2.
+  // Along the bridge in a frame turned so its u runs from bank to bank.
   const S = F.sub(0, 0, Math.PI / 2)
   const wall = d.timber ? PART.timber : face
+  // Its copings, string courses and arch rings: the face's stone, a shade lighter.
+  const trim = d.timber ? PART.timber : face.clone().lerp(C.paving, 0.45)
   const deckCol = d.timber ? PART.timber : C.paving
-  const land = 7
-  // The arches, scaled from the design's spans to the water here, bank to bank.
-  const total = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
-  const k = l / total
-  const spans = d.spans.map((x) => x * k)
-  const piers = d.piers.map((x) => x * k)
+  // Its arches and piers at their sourced size, centred, its abutments out to its
+  // length; its deck as the model set it from its design, or level where it set none.
+  const T = d.spans.reduce((s, x) => s + x, 0) + d.piers.reduce((s, x) => s + x, 0)
   const rise = d.rise ?? 0.5
-  // The deck: from the ground at one end to the ground at the other, lifted over the
-  // stream to clear its arches, and eased at the banks.
-  const clear = d.timber ? 4.5 : Math.max(...spans) * rise + 2.2
-  const deck = (u: number) => {
-    const t = Math.min(1, Math.max(0, (u + l / 2) / l))
-    const ends = hA + (hB - hA) * t
-    const need = wl + clear
-    const off = Math.max(0, need - ends)
-    // How far out over the water the lift reaches, full across the middle.
-    const e = Math.min(1, Math.min(u + l / 2 + land, l / 2 + land - u) / (l * 0.3 + land))
-    return ends + off * (e * e * (3 - 2 * e))
+  const flat = wl + 8
+  const profile = d.deck ?? {
+    from: -l / 2,
+    z: [flat, flat],
+    ramps: [-l / 2, l / 2] as [number, number],
   }
+  const deck = (u: number) => {
+    const { from, z } = profile
+    const f = Math.min(z.length - 1, Math.max(0, u - from))
+    const i = Math.min(z.length - 2, Math.floor(f))
+    return z[i] + (z[i + 1] - z[i]) * (f - i)
+  }
+  const [uA, uB] = [profile.from, profile.from + profile.z.length - 1]
+  const [rA, rB] = profile.ramps
+  // Its parapets the length of the bridge and its ramps, coming down towards each
+  // ramp's foot and ending there; the level approaches beyond run on without them.
+  const parapetAt = (u: number) => {
+    if (u < rA - 1e-3 || u > rB + 1e-3) return 0
+    const t = Math.min(1, Math.max(0, Math.min(u - rA, rB - u) / PARAPET_FOOT.over))
+    return PARAPET_FOOT.h + (BRIDGE.parapet - PARAPET_FOOT.h) * t
+  }
+  // Its walls run down into the made ground under its ramps and approaches.
+  const under = (u: number) => deck(u) - BRIDGE.footing
   const step = 2
   const us: number[] = []
-  for (let u = -l / 2 - land; u < l / 2 + land; u += step) us.push(u)
-  us.push(l / 2 + land)
-  // The deck's paving, its two faces down to where the arches or piers take over,
-  // and its parapets.
+  for (let u = uA; u < uB; u += step) us.push(u)
+  us.push(uB, rA, rB)
+  us.sort((a, b) => a - b)
+  // A stone face laid in courses (`SKIN.ashlar`), as the island's embankment is, or
+  // the timber bridge's planks left plain.
+  const coursed = (on: boolean) => {
+    if (!d.timber) S.b.look = on ? SKIN.ashlar * 10 + 0.61 * 0.9 : 0
+  }
+  // A quad of a face along the bridge (points u, v, z), with its place in the courses.
+  const faceQuad = (
+    a: number[],
+    b: number[],
+    c: number[],
+    dd: number[],
+    col: THREE.Color,
+  ) => {
+    const s = (p: number[]) => [...p, p[0] + l, F.base + p[2]]
+    S.skinQuad(s(a), s(b), s(c), s(dd), col)
+  }
+  const P = BRIDGE
+  // The deck's paving; its faces from where the arches or piers take over up to the
+  // parapet's coping in one, a string course standing out along them at the deck;
+  // and the parapets' inner faces and copings.
   for (let i = 0; i + 1 < us.length; i++) {
     const [a, b] = [us[i], us[i + 1]]
     const [za, zb] = [deck(a), deck(b)]
     S.quad([a, -w / 2, za], [b, -w / 2, zb], [b, w / 2, zb], [a, w / 2, za], deckCol)
     for (const s of [-1, 1]) {
       const v = (s * w) / 2
-      S.quad([a, v, za - 1.2], [b, v, zb - 1.2], [b, v, zb], [a, v, za], wall)
-      const pv = v - s * 0.25
-      S.quad([a, pv, za], [b, pv, zb], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
-      S.quad([a, v, za + 1.1], [b, v, zb + 1.1], [b, pv, zb + 1.1], [a, pv, za + 1.1], wall)
+      const pv = v - s * P.parapetThick
+      // Past its parapets' ends, the face only up to the paving.
+      const open = parapetAt(a) === 0 || parapetAt(b) === 0
+      const [ta, tb] = open ? [za, zb] : [za + parapetAt(a), zb + parapetAt(b)]
+      coursed(true)
+      faceQuad([a, v, za - P.fascia], [b, v, zb - P.fascia], [b, v, tb], [a, v, ta], wall)
+      coursed(false)
+      if (!open) {
+        S.quad([a, pv, za], [b, pv, zb], [b, pv, tb], [a, pv, ta], wall)
+        S.quad([a, v, ta], [b, v, tb], [b, pv, tb], [a, pv, ta], trim)
+      }
+      if (d.timber) continue
+      const sv = v + s * P.stringOut
+      const [s0a, s0b, s1a, s1b] = [za - P.string, zb - P.string, za, zb]
+      S.quad([a, sv, s0a], [b, sv, s0b], [b, sv, s1b], [a, sv, s1a], trim)
+      S.quad([a, v, s1a], [b, v, s1b], [b, sv, s1b], [a, sv, s1a], trim)
+      S.quad([a, v, s0a], [b, v, s0b], [b, sv, s0b], [a, sv, s0a], trim)
+    }
+  }
+  // The deck's ends, closed down into the ground, and its parapets' ends.
+  for (const u of [uA, uB]) {
+    const z = deck(u)
+    S.quad([u, -w / 2, under(u)], [u, w / 2, under(u)], [u, w / 2, z], [u, -w / 2, z], wall)
+  }
+  for (const u of [rA, rB]) {
+    const [z, h] = [deck(u), PARAPET_FOOT.h]
+    for (const s of [-1, 1]) {
+      const [v, pv] = [(s * w) / 2, (s * w) / 2 - s * P.parapetThick]
+      S.quad([u, v, z], [u, pv, z], [u, pv, z + h], [u, v, z + h], wall)
     }
   }
   if (d.timber) {
     // Bents of piles across the stream under the deck, with a cross beam on each.
-    const n = spans.length
+    const n = d.spans.length
     for (let j = 0; j <= n; j++) {
-      const u = -l / 2 + (l * j) / n
+      const u = -T / 2 + (T * j) / n
       const z = deck(u) - 0.5
       for (const v of [-w / 2 + 0.4, 0, w / 2 - 0.4])
         S.drum(u, v, 0.25, 0.25, wl - 3, z, 5, PART.wood, null)
@@ -1290,51 +1458,77 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     }
     return
   }
-  // Solid masonry from the ground up to the deck at each end, onto the land.
-  const solid = (u0: number, u1: number, z0: number) => {
+  // Solid masonry up to the deck, from under the ground or the river: at each end,
+  // onto the land, and the piers.
+  const solid = (u0: number, u1: number, bottom: (u: number) => number) => {
     const n = Math.max(1, Math.ceil((u1 - u0) / step))
+    coursed(true)
     for (let j = 0; j < n; j++) {
       const [a, b] = [u0 + ((u1 - u0) * j) / n, u0 + ((u1 - u0) * (j + 1)) / n]
-      const [za, zb] = [deck(a) - 1.2, deck(b) - 1.2]
-      for (const s of [-1, 1])
-        S.quad(
-          [a, (s * w) / 2, z0],
-          [b, (s * w) / 2, z0],
-          [b, (s * w) / 2, zb],
-          [a, (s * w) / 2, za],
-          wall,
-        )
+      const [za, zb] = [deck(a) - P.fascia, deck(b) - P.fascia]
+      for (const s of [-1, 1]) {
+        const v = (s * w) / 2
+        faceQuad([a, v, bottom(a)], [b, v, bottom(b)], [b, v, zb], [a, v, za], wall)
+      }
     }
-    for (const [u, z] of [
-      [u0, deck(u0) - 1.2],
-      [u1, deck(u1) - 1.2],
-    ])
+    coursed(false)
+    for (const u of [u0, u1]) {
+      const [z0, z] = [bottom(u), deck(u) - P.fascia]
       S.quad([u, -w / 2, z0], [u, w / 2, z0], [u, w / 2, z], [u, -w / 2, z], wall)
+    }
   }
-  solid(-l / 2 - land, -l / 2, Math.min(hA, wl) - 3)
-  solid(l / 2, l / 2 + land, Math.min(hB, wl) - 3)
-  // An arch from sa to sb: its ring springing over the water, its spandrels up to the
-  // deck on both faces, its soffit dark.
-  const arch = (sa: number, sb: number, r0: number) => {
-    const N = 10
+  // The abutments, ramps and approaches: from under the river at its banks, down into
+  // the made ground behind.
+  const abut = (u: number) => Math.min(under(u), wl - 4)
+  solid(uA, -T / 2, abut)
+  solid(T / 2, uB, abut)
+  // An arch from sa to sb springing at `spring`, rising `r0` of its span: its ring of
+  // voussoirs, its spandrels up to the deck on both faces, its soffit dark.
+  const arch = (sa: number, sb: number, spring: number, r0: number) => {
+    const N = 16
     const r = (sb - sa) / 2
     const um = (sa + sb) / 2
-    const crown = deck(um) - 1.6
-    const spring = Math.max(wl - 0.8, crown - (sb - sa) * r0)
-    const pts = Array.from({ length: N + 1 }, (_, j) => {
-      const a = Math.PI * (1 - j / N)
-      return [um + Math.cos(a) * r, spring + Math.sin(a) * (crown - spring)] as Pt
-    })
+    const crown = spring + (sb - sa) * r0
+    // The intrados, and the ring's outer edge round it.
+    const curve = (grow: number) =>
+      Array.from({ length: N + 1 }, (_, j) => {
+        const a = Math.PI * (1 - j / N)
+        return [
+          um + Math.cos(a) * (r + grow),
+          spring + Math.sin(a) * (crown - spring + grow),
+        ] as Pt
+      })
+    const [pts, outer] = [curve(0), curve(Math.min(P.ring, r * 0.3))]
     for (const s of [-1, 1]) {
       const v = (s * w) / 2
+      const rv = v + s * P.ringOut
+      coursed(true)
       for (let j = 0; j < N; j++) {
         const [p, q] = [pts[j], pts[j + 1]]
-        S.quad(
+        faceQuad(
           [p[0], v, p[1]],
           [q[0], v, q[1]],
-          [q[0], v, deck(q[0]) - 1.2],
-          [p[0], v, deck(p[0]) - 1.2],
+          [q[0], v, deck(q[0]) - P.fascia],
+          [p[0], v, deck(p[0]) - P.fascia],
           wall,
+        )
+      }
+      coursed(false)
+      for (let j = 0; j < N; j++) {
+        const [p, q, oq, op] = [pts[j], pts[j + 1], outer[j + 1], outer[j]]
+        S.quad(
+          [p[0], rv, p[1]],
+          [q[0], rv, q[1]],
+          [oq[0], rv, oq[1]],
+          [op[0], rv, op[1]],
+          trim,
+        )
+        S.quad(
+          [op[0], v, op[1]],
+          [oq[0], v, oq[1]],
+          [oq[0], rv, oq[1]],
+          [op[0], rv, op[1]],
+          trim,
         )
       }
     }
@@ -1350,44 +1544,41 @@ const bridge: Build<Design & Bridge> = (F, d, w, l, face) => {
     }
     return spring
   }
-  let u = -l / 2
-  spans.forEach((span, i) => {
-    arch(u, u + span, rise)
+  let u = -T / 2
+  d.spans.forEach((span, i) => {
+    arch(u, u + span, d.springs?.[i] ?? wl + 0.3, rise)
     u += span
-    const p = piers[i]
+    const p = d.piers[i]
     if (p === undefined) return
     const [pa, pb] = [u, u + p]
     const m = (pa + pb) / 2
-    // The pier up to the deck, a flood arch through it where it had one, and pointed
-    // cutwaters on both faces to above the floods.
+    // The pier up to the deck, a flood arch through it where it had one (its crown a
+    // little under the arches' ring course), and pointed cutwaters on both faces to
+    // above the floods.
     if (d.flood) {
-      const fs = Math.min(d.flood * k, p * 0.6)
-      solid(pa, m - fs / 2, wl - 4)
-      solid(m + fs / 2, pb, wl - 4)
-      arch(m - fs / 2, m + fs / 2, 0.5)
-    } else solid(pa, pb, wl - 4)
+      const fs = Math.min(d.flood, p * 0.6)
+      solid(pa, m - fs / 2, () => wl - 4)
+      solid(m + fs / 2, pb, () => wl - 4)
+      arch(m - fs / 2, m + fs / 2, deck(m) - P.fascia - 1 - fs / 2, 0.5)
+    } else solid(pa, pb, () => wl - 4)
     for (const s of [-1, 1]) {
       const v0 = (s * w) / 2
+      const tip = v0 + s * p * 0.75
+      const [zt, zh] = [wl + 3, wl + 3 + P.hood]
       S.prism(
         [
           [pa, v0],
           [pb, v0],
-          [m, v0 + s * p * 0.75],
+          [m, tip],
         ],
         wl - 4,
-        wl + 3,
+        zt,
         wall,
       )
-      S.prism(
-        [
-          [pa, v0],
-          [pb, v0],
-          [m, v0 + s * p * 0.75],
-        ],
-        wl + 3,
-        wl + 3.01,
-        wall,
-      )
+      // Its hood, sloping up from its point to the pier's face.
+      S.tri([pa, v0, zh], [pb, v0, zh], [m, tip, zt], trim)
+      S.tri([pa, v0, zt], [m, tip, zt], [pa, v0, zh], trim)
+      S.tri([pb, v0, zt], [m, tip, zt], [pb, v0, zh], trim)
     }
     u = pb
   })
@@ -1438,54 +1629,205 @@ const arch: Build<Design & Arch> = (F, d, w, l, face) => {
  */
 interface Tabularium {
   gallery: Storey
+  /** The upper storey: its height over the platform, and how far it is set in from the platform's edges. */
+  upper?: { h: number; set: number }
   bays: number
   windows: number
-  /** The body behind the gallery, its height over the saddle. */
-  body: number
   /** A corner left open, across and along (u0, u1, v0, v1): Veiovis's temple, built round. */
   notch?: [number, number, number, number]
 }
 
-const tabularium: Build<Design & Tabularium> = (F, d, w, l, _face, shade) => {
-  // Sperone, the grey-brown Gabine stone of its outer walls, with travertine dressings.
-  const sperone = new THREE.Color('#B3A58C')
+/**
+ * The Tabularium, as Delbrück measured it (Hellenistische Bauten in Latium I, 1907, pp.
+ * 23–46; designs/capitol.ts): on the Forum side its substructure, battered and under a
+ * projecting top course, with small windows and the door of its stair; on it the
+ * gallery, its floor the building's level, under a low attic and a paved walk; behind
+ * it a platform at the gallery's top over the substructures and rooms, and on it a
+ * light upper storey drawn as two plain ranges; its south-west end closed, with
+ * wall strips and a deep niche; a travertine socle along its north-west front.
+ */
+const tabularium: Build<Design & Tabularium> = (F, d, w, l, face) => {
   const drop = F.deep - 1.5
-  F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, 0.4, sperone)
+  const { g, batter, course } = TABULARIUM
+  const s = d.gallery
+  const pier = s.pier ?? 2.6
+  const ent = Math.min(1.6, s.h * 0.13)
+  const half = Math.min(pier * 0.7, Frame.diameter(s.h - ent, s.order ?? 'doric') * 1.1)
+  const inset = Math.max(half * 0.6, 0.35) - 0.15
+  const back = l / 2 - inset - g
+  const end0 = w / 2 - pier / 2 - 0.25
+  // The deep niche in the south-west end, between its two north-western wall
+  // strips, from the ground at its foot to its lintel under the top course (p. 40):
+  // cut out of the walls it is in (`solid`).
+  const end = d.notch ? d.notch[3] : -l / 2
+  const strips = [back, back - TABULARIUM.rooms, end + 0.75]
+  const N = TABULARIUM.niche
+  const nv = (strips[1] + strips[2]) / 2
+  const niche = [
+    w / 2 - N.deep,
+    nv - N.w / 2,
+    nv + N.w / 2,
+    N.floor,
+    0.4 + s.h - 0.6 - N.lintel,
+  ]
+  const solid = (
+    u0: number,
+    u1: number,
+    v0: number,
+    v1: number,
+    z0: number,
+    z1: number,
+    top: THREE.Color | null = face,
+  ) => {
+    const [nu, a, b, nz0, nz1] = niche
+    if (u1 <= nu || v1 <= a || v0 >= b || z1 <= nz0 || z0 >= nz1)
+      return F.box(u0, u1, v0, v1, z0, z1, face, top)
+    if (v0 < a) F.box(u0, u1, v0, a, z0, z1, face, top)
+    if (v1 > b) F.box(u0, u1, b, v1, z0, z1, face, top)
+    const [c0, c1] = [Math.max(v0, a), Math.min(v1, b)]
+    if (u0 < nu) F.box(u0, nu, c0, c1, z0, z1, face, top)
+    if (z0 < nz0) F.box(Math.max(u0, nu), u1, c0, c1, z0, nz0, face)
+    if (z1 > nz1) F.box(Math.max(u0, nu), u1, c0, c1, nz1, z1, face, top, true)
+  }
+  // The substructure under the platform, to the gallery's floor.
+  solid(-w / 2, w / 2, -l / 2, l / 2 - g, -F.deep, 0.4)
+  // Under the gallery its Forum face, set back a little as it rises (25 courses
+  // "treten leicht zurück", p. 29), under a projecting top course ("kragt vor"); the
+  // courses show through its stucco as lines.
+  F.b.look = SKIN.courses * 10
+  F.box(-w / 2, w / 2, l / 2 - g, l / 2 - batter, -F.deep, 0.4, face)
+  F.box(-w / 2, w / 2, l / 2 - batter, l / 2, -F.deep, -drop, face)
+  F.quad(
+    [-w / 2, l / 2, -drop],
+    [w / 2, l / 2, -drop],
+    [w / 2, l / 2 - batter, -course],
+    [-w / 2, l / 2 - batter, -course],
+    face,
+  )
+  for (const u of [-w / 2, w / 2])
+    F.tri([u, l / 2, -drop], [u, l / 2 - batter, -drop], [u, l / 2 - batter, -course], face)
+  F.box(-w / 2, w / 2, l / 2 - g, l / 2 + 0.15, -course, 0.4, face)
+  F.b.look = 0
+  // Its small windows, on the battered face.
+  const faceAt = (z: number) => l / 2 - batter * ((z + drop) / (drop - course)) + 0.03
   for (let k = 0; k < d.windows; k++) {
     const u = -w / 2 + ((k + 0.5) * w) / d.windows
-    const z = -drop * 0.45
+    const z = -drop * 0.5
     F.quad(
-      [u - 0.45, l / 2 + 0.03, z],
-      [u + 0.45, l / 2 + 0.03, z],
-      [u + 0.45, l / 2 + 0.03, z + 1.6],
-      [u - 0.45, l / 2 + 0.03, z + 1.6],
+      [u - 0.45, faceAt(z), z],
+      [u + 0.45, faceAt(z), z],
+      [u + 0.45, faceAt(z + 1.6), z + 1.6],
+      [u - 0.45, faceAt(z + 1.6), z + 1.6],
       PART.dark,
     )
   }
-  const G = F.sub(0, l / 2, Math.PI)
-  const z = G.arcade(-w / 2, w / 2, 0, 5, 0.4, [d.gallery], w / d.bays, sperone)
-  // A low parapet over the gallery, its roof a terrace.
-  G.box(-w / 2, w / 2, 0, 0.6, z, z + 1.1, sperone)
-  G.box(-w / 2, w / 2, 0, 5, z - 0.2, z, C.travertine)
-  // The office behind, at the saddle's level, under low roofs of tiles, round the
-  // corner left for Veiovis's temple.
+  // The arched doorway of its stair up from the Forum, at the south-west end (+u), on
+  // the ground at its foot, in a frame of travertine.
+  F.box(w / 2 - 6.6, w / 2 - 3, l / 2 - 0.2, l / 2 + 0.25, -drop, -drop + 4.8, C.travertine)
+  F.quad(
+    [w / 2 - 6, l / 2 + 0.28, -drop],
+    [w / 2 - 3.6, l / 2 + 0.28, -drop],
+    [w / 2 - 3.6, l / 2 + 0.28, -drop + 4],
+    [w / 2 - 6, l / 2 + 0.28, -drop + 4],
+    PART.dark,
+  )
+  // The gallery, closed at its south-west end by a wall to near its arches' crowns
+  // (pp. 37, 40); the architrave of its half-columns of travertine (p. 33). It stands
+  // on the wall below, its half-columns' fronts over the top course's (p. 33: "unter
+  // den Halbsäulen liegt je ein Läufer") and its end piers and entablature within the
+  // building's ends.
+  const G = F.sub(0, l / 2 - inset, Math.PI)
+  const z = G.arcade(
+    -end0,
+    end0,
+    0,
+    g,
+    0.4,
+    [s],
+    (2 * end0) / d.bays,
+    face,
+    PART.dark,
+    undefined,
+    0,
+    C.travertine,
+  )
+  F.box(w / 2 - 0.9, w / 2, back, l / 2 - inset, 0.4, z, face)
+  // A low attic over its entablature, and the paving of the walk on its vaults (p. 35).
+  G.box(-w / 2, w / 2, 0, 0.6, z, z + 1.1, face)
+  G.box(-w / 2, w / 2, 0, g, z - 0.2, z, C.travertine)
+  // Behind it, the platform at the gallery's top over the substructures and the rooms
+  // of the floor below (p. 42), round the corner left for Veiovis's temple; along the
+  // north-west front a socle of travertine a little over the gallery's floor (p. 40).
   const [n0, n1, m0, m1] = d.notch ?? [w, w, l, l]
   const parts: [number, number, number, number][] = d.notch
     ? [
-        [-w / 2, n0, -l / 2, l / 2 - 5],
-        [n0, w / 2, m1, l / 2 - 5],
+        [-w / 2, n0, -l / 2, back],
+        [n0, w / 2, m1, back],
       ]
-    : [[-w / 2, w / 2, -l / 2, l / 2 - 5]]
+    : [[-w / 2, w / 2, -l / 2, back]]
   void n1
   void m0
-  for (const [u0, u1, v0, v1] of parts) {
-    F.box(u0, u1, v0, v1, 0.4, d.body, shade, null)
-    F.roof(u0 - 0.3, u1 + 0.3, v0 - 0.3, v1 + 0.3, d.body, {
-      tiles: C.roofTemple,
-      pitch: 0.18,
-      seed: 0.55,
-    })
+  // Its face to the gallery a little behind the gallery's back wall, not in its plane.
+  for (const [u0, u1, v0, v1] of parts) solid(u0, u1, v0, v1 - 0.05, 0.4, z, C.travertine)
+  F.box(
+    -w / 2,
+    d.notch ? n0 : w / 2,
+    -l / 2 - 0.3,
+    -l / 2,
+    0.4,
+    1.8,
+    C.travertine,
+    C.travertine,
+  )
+  // The upper storey, light (p. 46): a range behind the gallery and, behind it, a
+  // second beside Veiovis's corner, their roofs of tiles side by side meeting in a
+  // valley, set in from the platform's edges; its form drawn plain, not being known.
+  if (d.upper) {
+    const { h, set } = d.upper
+    const front = d.notch ? m1 + set : -l / 2 + set
+    const ranges: [number, number, number, number][] = [
+      [-w / 2 + set, w / 2 - set, front, back - set],
+    ]
+    if (d.notch) ranges.push([-w / 2 + set, n0 - set, -l / 2 + set, front])
+    for (const [k, [u0, u1, v0, v1]] of ranges.entries()) {
+      F.box(u0, u1, v0, v1, z, z + h, face, null)
+      F.roof(u0 - 0.4, u1 + 0.4, v0 - (k ? 0.4 : 0), v1 + (k ? 0 : 0.4), z + h, {
+        along: 'u',
+        tiles: C.roofTemple,
+        pitch: 0.25,
+        seed: 0.45 + k * 0.1,
+      })
+    }
   }
+  // The south-west end, where it stands (to Veiovis's corner): three wall strips under
+  // its top course, at the back walls of the gallery and of the rooms behind it and
+  // further north-west, and a deep niche between the two north-western strips, its
+  // lintel under the top course (pp. 37, 40).
+  for (const v of strips)
+    F.box(w / 2, w / 2 + 0.15, v - 0.75, v + 0.75, -F.deep, z - 0.3, face)
+  F.box(w / 2, w / 2 + 0.25, end, back, z - 0.6, z, face)
+  // Over the niche its lintel, a flat arch of wedges (p. 40), standing a little proud
+  // of the wall.
+  const [, a, b, , top] = niche
+  F.box(w / 2, w / 2 + 0.08, a - 0.5, b + 0.5, top, top + N.lintel, face)
+}
+
+/**
+ * The Tabularium's parts, metres: the gallery's depth (P&A, p. 507: "5 m wide"); how
+ * far its Forum face is set back over its height, and its top course's depth (both
+ * "leicht", not measured); the depth of the rooms behind the gallery, between the wall
+ * strips of its south-west end (not given; drawn); the niche's width and depth (not
+ * given; drawn), its floor (lost: drawn on the ground at its foot, at the higher end
+ * of its slope, 1.9 m under the gallery's floor, as a shelter for the gate's guard,
+ * which Delbrück suggests it may have been, would open on the street) and its
+ * lintel's height (drawn).
+ */
+const TABULARIUM = {
+  g: 5,
+  batter: 0.5,
+  course: 0.6,
+  rooms: 6,
+  niche: { w: 3.6, deep: 2.4, floor: -1.9, lintel: 1.1 },
 }
 
 /**
@@ -1973,79 +2315,243 @@ const comitium: Build<Design & Comitium> = (F, d) => {
 }
 
 /**
- * The Tiber Island walled as a ship (from the 60s–50s BCE): a travertine embankment
- * round its shore, from the water up past the ground, and its prow at the downstream
- * end, towards the front (+v).
+ * The Tiber Island walled as a ship (from the 60s–50s BCE): "a stone platform was
+ * built round it, and upon this a wall" (designs/south.ts) — a travertine embankment
+ * from the water up to the island's level top, a low parapet along it rising towards
+ * the prow at the downstream end (+v), and the platform paved behind it.
  */
 interface Island {
   /** Its shore, plane metres with the ground's height over the model's water there. */
   outline?: number[][]
   /** Whether the ship's walls stand yet. */
   ship?: boolean
+  /** Its level top over its base, metres (from the model). */
+  top?: number
+  /** The river as it is drawn round it, over its base, metres (from the model). */
+  river?: number
+  /** Where the bridges land on it: plane metres, the way onto it, and half the deck's width. */
+  landings?: { at: Pt; onto: Pt; half: number }[]
 }
+
+/**
+ * The embankment, metres: how far in from the shore its face stands at its top; its
+ * parapet over the island's top, and how much that rises over the last `sheerM` to
+ * the prow; its thickness, its coping's depth and how far that stands out over the
+ * face; how far out the face's foot is from its top (it leans back into the island);
+ * how high the river's stain reaches up it; and the paved walk behind it.
+ */
+const EMBANKMENT = {
+  inset: 1.5,
+  parapet: 0.5,
+  sheer: 1.8,
+  sheerM: 45,
+  thick: 1.2,
+  coping: 0.35,
+  lip: 0.25,
+  batter: 0.4,
+  stain: 0.9,
+  walk: 2.5,
+}
+/** Travertine at the waterline, darkened and greened by the river. */
+const WET = new THREE.Color('#B4AE92')
+/** The island's grass: the map's own open ground, as it is drawn lit. */
+const ISLAND_GROUND = new THREE.Color('#A6A476')
 
 const island: Build<Design & Island> = (F, d) => {
   if (!d.ship || !d.outline) return
+  const E = EMBANKMENT
   const wl = (d.water as number | undefined) ?? 2
-  const trav = C.travertine
-  const ring = d.outline.map(
-    ([x, y, g]) => [...F.local(x, y), g] as [number, number, number],
-  )
-  if (ring.length < 4) return
-  // Its winding, so each wall's inside is towards the island.
+  const level = d.top ?? wl + 3
+  const river = d.river ?? wl - 1
+  const pts = d.outline.map(([x, y]) => F.local(x, y))
+  const [p0, pn] = [pts[0], pts[pts.length - 1]]
+  if (p0[0] === pn[0] && p0[1] === pn[1]) pts.pop()
+  const n = pts.length
+  if (n < 4) return
+  // Its winding, so each point's normal is towards the island.
   let area = 0
-  for (let i = 0; i + 1 < ring.length; i++)
-    area += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
+  for (let i = 0; i < n; i++) {
+    const [a, b] = [pts[i], pts[(i + 1) % n]]
+    area += a[0] * b[1] - b[0] * a[1]
+  }
   const inward = area > 0 ? 1 : -1
-  // The ship's end: its tip downstream (the frame's front), the wall rising towards it
-  // as a ship's sides rise to its stern, over its last `SHEER` metres.
-  const SHEER = 40
-  const tip = ring.reduce((m, p) => (p[1] > m[1] ? p : m), ring[0])
-  const top = (p: [number, number, number]) => {
-    const d = Math.hypot(p[0] - tip[0], p[1] - tip[1])
-    return Math.max(wl + 2.2, p[2] + 0.6) + 2.2 * Math.max(0, 1 - d / SHEER) ** 2
+  const normal = pts.map((_, i) => {
+    const [p, q] = [pts[(i - 1 + n) % n], pts[(i + 1) % n]]
+    const L = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1
+    return [(-(q[1] - p[1]) / L) * inward, ((q[0] - p[0]) / L) * inward]
+  })
+  // Its face a little in from the shore, so the river as it is painted runs in under it.
+  for (let i = 0; i < n; i++)
+    pts[i] = [pts[i][0] + normal[i][0] * E.inset, pts[i][1] + normal[i][1] * E.inset]
+  const along = [0]
+  for (let i = 1; i <= n; i++) {
+    const [p, q] = [pts[i - 1], pts[i % n]]
+    along.push(along[i - 1] + Math.hypot(q[0] - p[0], q[1] - p[1]))
   }
-  const T = 1.4
-  for (let i = 0; i + 1 < ring.length; i++) {
-    const [a, b] = [ring[i], ring[i + 1]]
-    const L = Math.hypot(b[0] - a[0], b[1] - a[1])
-    if (L < 0.05) continue
-    const n = [(-(b[1] - a[1]) / L) * inward, ((b[0] - a[0]) / L) * inward]
-    const [ta, tb] = [top(a), top(b)]
-    const ai = [a[0] + n[0] * T, a[1] + n[1] * T]
-    const bi = [b[0] + n[0] * T, b[1] + n[1] * T]
-    // The face to the river, its coping, and its back down into the island's ground.
+  // The parapet's top: level, rising as a ship's sides do towards its prow.
+  const tip = pts.reduce((m, p) => (p[1] > m[1] ? p : m), pts[0])
+  const top = pts.map((p) => {
+    const t = Math.max(0, 1 - Math.hypot(p[0] - tip[0], p[1] - tip[1]) / E.sheerM)
+    return level + E.parapet + E.sheer * t * t
+  })
+  // From well under the river as it is drawn round the island (the terrain is drawn a
+  // little under its own heights, TerrainTiles `standInDrop`), stained up from it.
+  const foot = river - 4
+  const stain = river + E.stain
+  const face = (i: number) => top[i % n] - E.coping
+  // A point of the wall's line: where it is, its normal in, how far along the wall, and
+  // its parapet's top.
+  type WallPt = { p: number[]; n: number[]; al: number; top: number }
+  const wp = (i: number): WallPt => ({
+    p: pts[i % n],
+    n: normal[i % n],
+    al: along[i],
+    top: top[i % n],
+  })
+  const between = (a: WallPt, b: WallPt, t: number): WallPt => {
+    const m = (x: number, y: number) => x + (y - x) * t
+    const nn = [m(a.n[0], b.n[0]), m(a.n[1], b.n[1])]
+    const L = Math.hypot(nn[0], nn[1]) || 1
+    return {
+      p: [m(a.p[0], b.p[0]), m(a.p[1], b.p[1])],
+      n: [nn[0] / L, nn[1] / L],
+      al: m(a.al, b.al),
+      top: m(a.top, b.top),
+    }
+  }
+  // How far out from the shore the face is at a height: its foot furthest out.
+  const out = (w: WallPt, z: number) => {
+    const f = w.top - E.coping
+    return -E.batter * Math.max(0, (f - z) / (f - foot))
+  }
+  // A point `off` in from the wall's line towards the island, at height z; with its
+  // place in the courses for a face laid in them.
+  const on = (w: WallPt, off: number, z: number, coursed = false) => {
+    const q = [w.p[0] + w.n[0] * off, w.p[1] + w.n[1] * off, z]
+    return coursed ? [...q, w.al, F.base + z] : q
+  }
+  const at = (i: number, off: number, z: number) => on(wp(i), off, z)
+  const lip = -E.lip
+  const [back, pave] = [E.thick, E.thick + E.walk]
+  const [low, walk] = [level - 0.3, level + 0.04]
+  const side = (a: WallPt, b: WallPt) => {
+    const [fa, fb] = [a.top - E.coping, b.top - E.coping]
+    // The face in courses of squared stone: stained where the river rises, bare above.
+    F.b.look = SKIN.ashlar * 10 + 0.37 * 0.9
+    for (const [z0, za, zb, col] of [
+      [foot, stain, stain, WET],
+      [stain, fa, fb, STONE.travertine.shade],
+    ] as const) {
+      F.skinQuad(
+        on(a, out(a, z0), z0, true),
+        on(b, out(b, z0), z0, true),
+        on(b, out(b, zb), zb, true),
+        on(a, out(a, za), za, true),
+        col,
+      )
+    }
+    F.b.look = 0
+    // The coping, standing out a little over the face; the parapet's back down to the
+    // platform; and the platform's paving behind it.
+    F.quad(on(a, 0, fa), on(b, 0, fb), on(b, lip, fb), on(a, lip, fa), C.travertine)
     F.quad(
-      [a[0], a[1], wl - 1.5],
-      [b[0], b[1], wl - 1.5],
-      [b[0], b[1], tb],
-      [a[0], a[1], ta],
-      trav,
+      on(a, lip, fa),
+      on(b, lip, fb),
+      on(b, lip, b.top),
+      on(a, lip, a.top),
+      C.travertine,
     )
-    F.quad([a[0], a[1], ta], [b[0], b[1], tb], [bi[0], bi[1], tb], [ai[0], ai[1], ta], trav)
     F.quad(
-      [ai[0], ai[1], ta],
-      [bi[0], bi[1], tb],
-      [bi[0], bi[1], b[2] - 1],
-      [ai[0], ai[1], a[2] - 1],
-      trav,
+      on(a, lip, a.top),
+      on(b, lip, b.top),
+      on(b, back, b.top),
+      on(a, back, a.top),
+      C.travertine,
+    )
+    F.quad(
+      on(a, back, a.top),
+      on(b, back, b.top),
+      on(b, back, low),
+      on(a, back, low),
+      STONE.travertine.shade,
+    )
+    F.quad(
+      on(a, back, walk),
+      on(b, back, walk),
+      on(b, pave, walk),
+      on(a, pave, walk),
+      C.tufa,
     )
   }
-  // Near the tip on each side the relief of Aesculapius' staff and serpent (drawn as a
-  // darker panel), as the stern's ornament survives.
-  const near = ring
-    .map((p, i) => ({ p, i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
+  // Its end where it stops at a bridge's abutment.
+  const end = (w: WallPt) =>
+    F.quad(
+      on(w, out(w, foot), foot),
+      on(w, back, foot),
+      on(w, back, w.top),
+      on(w, lip, w.top),
+      STONE.travertine.shade,
+    )
+  // Open where a bridge lands, between the sides of its deck: the bridge's abutment
+  // takes the embankment's place there.
+  const gaps = (d.landings ?? []).map((g) => {
+    const a = F.local(g.at[0], g.at[1])
+    const b = F.local(g.at[0] + g.onto[0], g.at[1] + g.onto[1])
+    return { a, f: [b[0] - a[0], b[1] - a[1]], half: g.half }
+  })
+  const across = (g: (typeof gaps)[number], p: number[]) =>
+    -(p[0] - g.a[0]) * g.f[1] + (p[1] - g.a[1]) * g.f[0]
+  const gapAt = (p: number[]) =>
+    gaps.find((g) => {
+      const al = (p[0] - g.a[0]) * g.f[0] + (p[1] - g.a[1]) * g.f[1]
+      return Math.abs(across(g, p)) < g.half && al > -4 && al < 14
+    })
+  for (let i = 0; i < n; i++) {
+    const [a, b] = [wp(i), wp(i + 1)]
+    const [ga, gb] = [gapAt(a.p), gapAt(b.p)]
+    if (!ga && !gb) side(a, b)
+    else if (!ga || !gb) {
+      // Cut at the side of the deck.
+      const g = (ga ?? gb)!
+      const [kept, open] = ga ? [b, a] : [a, b]
+      const [ck, co] = [across(g, kept.p), across(g, open.p)]
+      const m = between(kept, open, (Math.sign(ck) * g.half - ck) / (co - ck))
+      if (ga) side(m, b)
+      else side(a, m)
+      end(m)
+    }
+  }
+  // The island's top, level out to the embankment under it: the map's terrain is too
+  // coarse to hold an edge there, and slopes down to the river inside the wall.
+  const contour = pts.map(([u, v]) => new THREE.Vector2(u, v))
+  // Ground, not a roof: it overshadows nothing.
+  const z = level + 0.02
+  const occludes = F.b.occludes
+  F.b.occludes = false
+  for (const [a, b, c] of THREE.ShapeUtils.triangulateShape(contour, []))
+    F.tri([...pts[a], z], [...pts[b], z], [...pts[c], z], ISLAND_GROUND)
+  F.b.occludes = occludes
+  // Near the prow on each side the relief of Aesculapius' staff and serpent (drawn as
+  // a darker panel), as the ornament survives there.
+  const near = pts
+    .map((p, i) => ({ i, d: Math.hypot(p[0] - tip[0], p[1] - tip[1]) }))
     .filter((q) => q.d > 8 && q.d < 16)
-  for (const { i } of near.slice(0, 2)) {
-    const [a, b] = [ring[i], ring[Math.min(ring.length - 1, i + 1)]]
-    const z = top(a)
-    F.quad(
-      [a[0], a[1], z - 2.4],
-      [b[0], b[1], z - 2.4],
-      [b[0], b[1], z - 0.8],
-      [a[0], a[1], z - 0.8],
-      PART.tufaGrey,
-    )
+  const sides = near.length
+    ? [near[0], near.find((q) => Math.abs(q.i - near[0].i) > 8)]
+    : []
+  for (const q of sides) {
+    if (!q) continue
+    const [z0, z1] = [face(q.i) - 2, face(q.i) - 0.5]
+    for (let j = q.i; j < q.i + 3; j++) {
+      const off = (k: number, z: number) => out(wp(k), z) - 0.06
+      F.quad(
+        at(j, off(j, z0), z0),
+        at(j + 1, off(j + 1, z0), z0),
+        at(j + 1, off(j + 1, z1), z1),
+        at(j, off(j, z1), z1),
+        PART.tufaGrey,
+      )
+    }
   }
 }
 

@@ -7,6 +7,21 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ## Deferred
 
+### The ground and river fitted to the bridges show in every year
+
+- The river is fitted to each bridge, and made ground laid under its ramps
+  (bridges.ts), once, for all years. So before a bridge is built its channel and
+  made ground still show: the Tiber Island's notches before the Fabricius (62 BCE)
+  and the Cestius (about 46 BCE), the cut bank and mound at the Fabricius' mainland
+  end.
+- Fix: bake a second, "before" texture (the ground before the made ground, the
+  river's distance before it was fitted, and which bridge changed each texel, its
+  year in plan.json), and have the shaders that read the ground and the river use
+  it before that year. The model's own shadow-catching ground mesh can follow the
+  year or be left; the difference there is small.
+- Keep the island's smoothed shore in every year: OpenStreetMap's stepped modern
+  shore is no better before 62 BCE. Only the embankment is dated.
+
 ### Modern ponds in HydroLAKES
 
 - Lakes now appear only once they are ~3×3 texels at the current level. That
@@ -25,14 +40,44 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 
 ### More landscape corrections
 
-- Done: the Suez Canal, the Corinth Canal and Lake Tharthar are `remove-water`
-  records (`data/landscape-changes.yaml`), applied by the coast build.
-- Next batch: the Latmian Gulf, Ostia and the Tiber mouth, the Po delta, the
-  Fucine Lake, Lake Copais, the Pontine Marshes, and the Nile lagoons (Mareotis,
-  Manzala).
-- A correction that begins or ends inside the window (the Latmian Gulf silting,
-  for one) needs per-year variants of the affected mask tiles. v1 bakes one
-  landscape for the whole window.
+- Drawn (DESIGN.md §6.1): the canals and Tharthar, four drained lakes, and the
+  ancient coasts and lagoons of the first list.
+- Still to draw, each needing its own reconstruction read:
+  - the Thermaic Gulf and the lagoon that linked Pella to the sea (Loudias,
+    Giannitsa), and the Acheloos at Oiniadai — AWMC has classical-period patches
+    for both;
+  - Manzala smaller than today, with marsh on its south and east;
+  - the western Rhône: the gulf behind the Espiguette and Peccais;
+  - Lacus Prilius at Grosseto; Troy and the Scamander; the Ambracian Gulf;
+    Paestum and the Sele; the smaller western Mareotis basins;
+  - Amik (the Lake of Antioch), smaller than its modern extent, and Kerkini,
+    whose predecessor's extent needs a source;
+  - the sea between Narbonne's ancient barrier and today's, and Alexandria's
+    sunken quarters (Antirhodos, Lochias), both too fine for the first pass.
+- Placeholder citations (Wikipedia for the Fucine Lake and Karla, papers whose
+  full titles are to confirm) are marked in `data/sources.yaml`.
+- A correction that begins or ends inside the window needs per-year variants of
+  the affected mask tiles. v1 bakes one landscape for the whole window, about
+  50 BCE. The Maeander advanced ~1 km and the Cayster ~1.5 km within it;
+  Utica's corridor was emerging.
+
+### Uncertain shores are drawn as one line
+
+- The head of the Gulf, the Po delta and the Ebro are `uncertain`, but the mask
+  is binary: the coast is one crisp line. The Gulf's water shelves over 20 km so
+  it stays pale, which is the only softening.
+- A true soft coast needs a softness input to the shader (a fourth mask
+  channel, or a texture beside it), so that the land/water edge itself can fade
+  over kilometres where the record is uncertain, or be hatched as flats.
+
+### Ancient sea depth is a ramp
+
+- The terrain worker gives ancient sea a gentle depth from its shore (3 m per km,
+  to 12 m). Where a study gives depths (the Lion Harbour's 22 m basin, the
+  Ephesus shoals), a record could carry them.
+- Land that has sunk (Canopus, the Saint-Ferréol lobe) is drawn as flat ground at
+  0 m, since the terrain there is sea. Subsidence and uplift are otherwise not
+  applied; see DESIGN.md §6.1 on sea level.
 
 ### Smooth modern cuts out of the terrain
 
@@ -68,9 +113,13 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
 - For the rivers that matter most at regional zoom (Tiber, Arno, Po, Rhône,
   Nile), OSM waterways would be exact. Worth doing for a curated list, not
   wholesale.
-- **At Rome** the drawn river runs ~150 m west of its real course. On the model
-  of Rome (DESIGN §7.7) the board draws OSM's outline of the Tiber in its place;
-  elsewhere at regional zoom the offset remains.
+- **Done: the Tiber**, from above the Aniene to the sea, on OSM's centreline
+  (`tiber` in features.yaml, `npm run rivers:fetch`); HydroRIVERS' main stem
+  along it is dropped and its tributaries joined to it. Another river is a record
+  citing `osm-waterways` and a discharge in rivers/fetch.ts.
+- **The Tiber at Ostia** follows today's course. Until the flood of 1557 it looped
+  round the town (the Fiume Morto); OSM does not map the old bed, so it needs a
+  course drawn from a study of the delta.
 
 ### Political layer, left for later
 
@@ -278,8 +327,8 @@ Historical questions live separately, in [data/DOUBTS.md](data/DOUBTS.md).
   the Arx at only ~27–33 m: the Mapterhorn surface there carries the Vittoriano's
   terraces and the Aracoeli's stair, and no ancient level of the summit is in
   SITAR to restore it by.
-- **Where the board meets the map.** The Tiber on the board and the HydroRIVERS
-  line do not meet at its edge, and the Itiner-e roads stop there.
+- **Where the board meets the map.** The Itiner-e roads stop at its edge. (The
+  Tiber now runs on across it: board and map draw one course.)
 - **More roads.** The Salaria and Nomentana (Itiner-e dates them from 30 BCE),
   the Aurelia (a tangle of lines), and the Ostiensis, Praenestina, Labicana and
   Latina (no Itiner-e line) are not drawn.

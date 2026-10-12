@@ -165,22 +165,34 @@ export const DESIGNS_FORUM: Record<string, Design> = {
   },
   'forum-iulium': {
     model: 'forum',
-    // Cut into the foot of the Arx behind its peperino wall (P&A, p. 227).
-    level: 'low',
-    size: [75, 160],
+    // OpenStreetMap's outline is the excavated area, the south-west half and the
+    // Trajanic Basilica Argentaria beyond it; the north-east half is under the Via dei
+    // Fori Imperiali. So it is placed on the temple's axis (the temple's centre, from
+    // its surveyed outline), its south-east end in line with the Curia's.
+    at: [12.48484, 41.89416],
+    atLocal: [0, -56],
+    size: [76, 160],
     bearing: 131,
-    depth: 11,
+    // Cut into the Arx behind the shops and into the saddle behind the temple; on the
+    // Subura and Argiletum sides built on ground near its level (Delfino 2014).
+    level: 14.5,
+    cut: { sides: [false, true, true, false], h: 12 },
+    depth: 13,
     h: 9,
     order: 'corinthian',
     double: true,
-    sides: [false, true, true, true],
+    // Porticoes down the long sides, ending level with the temple's front.
+    sides: [false, true, false, true],
+    heads: 42,
     // The south-east end, towards the Argiletum, closed by the precinct's wall with its
     // entrance: whether a portico stood there, perhaps Augustan, is not known (DAR).
     gate: 12,
-    shops: { depth: 10, sides: [false, true, false, false] },
+    // In two storeys, their backs cut into the hill, under one roof with the portico
+    // rising to the top of the retaining wall behind them (`cut`, and its coping).
+    shops: { depth: 10, sides: [false, true, false, false], h: 12.7, hillside: true },
     paving: 'travertine',
     statue: true,
-    why: 'About 160 by 75 m overall (OCD; the open square "about 115 metres long and 30 wide", P&A, Forum Iulium, p. 227), double porticoes on three sides, the temple at the north-west end facing south-east down its axis, shops behind the south-west portico cut into the Arx under a peperino wall "12 m high" (P&A). The south-east end towards the Argiletum and the junction with the Curia are hypothetical, and an Augustan portico may have stood there as a monumental entrance (DAR, Forum Iulium): drawn as the precinct\'s wall with a gateway. Caesar\'s equestrian statue stood in the middle (Pliny, NH 8.155). Dedicated unfinished in 46 BCE, completed by Octavian (RG 20.3).',
+    why: 'About 160 by 76 m overall, "136,7 x 75,9 m" as Caesar built it and 20 m longer after Octavian\'s works, which joined its south-east end to the Curia (Delfino, Forum Iulium, 2014, III.3.4.2; P&A, Forum Iulium, pp. 225–227, has the square "about 115 metres long and 30 wide" from before the excavations). Double porticoes "non inferiore ai 13 m" deep down its long sides, ending level with the temple\'s front, apses between their heads and the podium drawn as the precinct\'s wall; shops behind the south-west portico, in two storeys (Delfino), cut into the Arx under a peperino wall "12 m high" (P&A), under one roof with the portico; the temple at the north-west end on the axis, facing south-east down it. The square paved at "14.50 m s.l.m." falling to 14.35: cut into the Arx on the south-west and into the saddle to the Quirinal on the north-west, while on the Subura and Argiletum sides the foundations stood from 14 m, their tops above ground (Delfino, III.3.3–4). The north-east half is under the Via dei Fori Imperiali, drawn as the south-west. The south-east end drawn as the precinct\'s wall with a gateway; an Augustan colonnade stood there towards the Argiletum (Delfino; DAR). Caesar\'s equestrian statue stood in the middle (Pliny, NH 8.155). Dedicated unfinished in 46 BCE, completed by Octavian (RG 20.3).',
   },
   'aedes-veneris-genetricis': {
     model: 'temple',

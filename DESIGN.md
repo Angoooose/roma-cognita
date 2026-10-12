@@ -218,7 +218,7 @@ of each outline, and the validator asserts it.
 | Bathymetry              | **EMODnet DTM 2024** (~115 m) over the European seas, **GEBCO_2026** (15″, ~460 m) elsewhere, baked offline (§7.2)                                                      | CC BY 4.0; public domain with attribution                         | Drives the shallows. AWS Terrain Tiles were used at runtime until September 2026: ~1–2 km at sea, and they drew the Caspian as a flat −28 m slab.            |
 | Coastline, modern       | OSM land polygons, split edition (osmdata.openstreetmap.de)                                                                                                             | ODbL                                                              | Natural Earth 10m is too coarse at 50 m/px                                                                                                                   |
 | Lakes                   | **HydroLAKES v1.0** (≥ 0.05 km²)                                                                                                                                        | CC BY 4.0                                                         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically                                                              |
-| Coastline, ancient      | Our `landscape-change` records; AWMC period patches as seed                                                                                                             | ours; ODbL                                                        | AWMC's `roman_open_water` layer is 2 polygons (Miletus, Ephesus) and its Hellenistic layer 5 (adding Utica). Checked 2026-09-22.                             |
+| Coastline, ancient      | Our `landscape-change` records: shores read off published reconstructions, filled over the Mapterhorn terrain (§6.1)                                                   | ours                                                              | AWMC's period layers were checked and not used: a handful of coarse, uncited polygons (`roman_open_water` is 2, Miletus and Ephesus). Checked 2026-09-22. |
 | Places                  | **Pleiades**; DARE as a cross-check                                                                                                                                     | CC BY 3.0; CC BY-SA 3.0                                           | Importance is curated by us                                                                                                                                  |
 | Territory geometry      | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | Rebuilt September 2026 (`pipeline/src/atoms`). AWMC's `roman_empire_bce_60` was dropped: one unnamed Roman extent, coarse, cut with straight lines, and ODbL |
 | Region and people names | AWMC `regional_names_linework`                                                                                                                                          | ODbL                                                              | Baselines give size and angle                                                                                                                                |
@@ -239,6 +239,36 @@ attribution screen is generated from the `source` registry.
 These are changes visible at regional scale, each digitised from a published
 reconstruction. Each record starts at `review: draft` or `needs-check`.
 
+**How a shore is made** (`npm run derive-coasts -w pipeline`,
+`pipeline/src/landscape/`). Almost none of this exists as data, so each shore
+is read off a dated figure in a published study, georeferenced against the
+named sites on it, to the kilometre or so the figure supports. That line is
+the landward side of an authored hull; the hull's other sides run out over the
+sea or up hillsides. The derivation then floods today's terrain from the sea,
+inside the hull, through ground no higher than a threshold: the figure says how
+far the water reached, and the terrain gives its shape along the valley sides.
+The same flood from a seed below a level draws a drained lake. Where the terrain
+cannot help it gives way to the author: a lagoon whose basin the reclaimed
+ground no longer shows is an outline (`polygon`); a town buried in the same silt
+as its bay (Miletus) is kept dry by hand; land that has sunk since (Canopus,
+the Saint-Ferréol lobe) is today's sea inside the hull. Every vertex says where
+it comes from in `coasts.ts`, and every record in `landscape-changes.yaml`
+cites its figures. Each run prints the areas and whether check sites (Ostia's
+theatre, Priene, Lade, Utica…) fall on the water, the shore or the land where
+the sources put them; its previews are the review surface.
+
+**Drawn** (September 2026): the Fucine Lake, Copais, Boibeis and the Fayum's
+Lake Moeris; the Tiber mouth and its two lagoons, the Arno and Portus Pisanus,
+the Po delta and the Ravenna lagoon; the Latmian Gulf, Ephesus, the Malian Gulf;
+the Gulf of Utica, Lake Mareotis, the Canopic promontory and Alexandria's
+harbours; the Rhône east of the Petit Rhône and the Saint-Ferréol lobe; the Ebro;
+the Narbonne lagoon; the head of the Persian Gulf. Returned to land: the Valli di
+Comacchio, the Grado lagoon and the Toshka lakes. Aquileia's coast was checked
+and does not move at this scale. The Pontine Marshes were checked and are not
+drawn: drained enough by the Republic to be marsh and farmland, not water.
+
+**The list it was drawn from:**
+
 - **Silted bays and deltas:**
   - the Latmian Gulf (Miletus, Priene, Myus, Heraclea);
   - Ephesus and the Cayster;
@@ -256,7 +286,8 @@ reconstruction. Each record starts at `review: draft` or `needs-check`.
 - **Drained water to restore:** the Fucine Lake, Lake Copais, the Pontine
   Marshes.
 - **Persian Gulf head:** the ancient shoreline is debated, so it is drawn with
-  `confidence: uncertain` and a soft edge.
+  `confidence: uncertain`, at a middle line, with 20 km of shallows off it for
+  the belt of flats the studies describe (`shelfKm`).
 
 Sea level was about −1.35 m in the central Mediterranean (Lambeck 2004), which
 is invisible at regional scale. It is not applied globally, because local
@@ -310,8 +341,19 @@ tectonics dominate.
 
 - **The land/water mask is a signed distance field of the coast**, built by
   `npm run water -w pipeline` (`pipeline/src/water/`):
-  - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs). The
-    `landscape-change` records will be applied here per year once they exist.
+  - **Inputs:** OSM land polygons minus HydroLAKES (no reservoirs), then the
+    `remove-water` and `add-water` records (§6.1), which win over both. One
+    landscape for the whole window: each shore is drawn as it stood about 50 BCE.
+  - **Channel 2 is ancient sea:** inside an `add-water` shape whose surface was
+    the sea, how far each texel lies from its edge, to 4 km (further where a
+    shape shelves more gently). The modern plain under an old bay stands a few
+    metres up, and everything that reads height would have drawn it as a lake on
+    today's relief — flat lake colour, no surf, the furrows in the water. So the
+    terrain worker lays that ground at sea level wherever channel 0 says water
+    (an island keeps its hill), and gives it a depth from the distance: a gentle
+    ramp to 12 m, not a reconstruction, with the baked bathymetry winning where
+    it is deeper so the old bay's mouth has no seam. The distance is in metres,
+    not texels, so every level encodes the same ramp.
   - **Layout:** tiles use the terrain quadtree's own addresses and texel grid,
     for levels 0–10. Texels are 27 m at level 10; the deepest terrain (level 11,
     13.5 m) reads a window of its level-10 ancestor. The mask stopped at level 8
@@ -703,14 +745,50 @@ known and what is generated are kept apart:
       board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
       `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
       its big triangles cut through the buildings.
-    - **Bridges run bank to bank** (decided 2026-09-25): each spans the water it
-      crosses along its axis on the plan's river (dry gaps under 45 m joined, as a
-      pier or an islet is), its sourced arches scaled to that width, and its deck
-      comes down to the ground at each end and rises over the arches. The build
-      reports a bridge whose water differs from its design by more than a quarter.
-    - **The Tiber Island's ship** is a travertine embankment on the island's own
-      shore, rising towards its downstream end as a ship's sides rise to the stern,
-      with the relief of Aesculapius' staff near it.
+    - **Bridges are built as their sources give them, and the river fitted to them**
+      (decided 2026-10-11, replacing bridges scaled to the water, 2026-09-25;
+      bridges.ts). The plan's river is OpenStreetMap's, the Tiber inside its
+      1870s–1900s embankment walls, so a bridge scaled to it was the wrong size (the
+      Fabricius' arches at 70% of their 24 m, the Cestius' at under half). Now each
+      bridge stands at its sourced size over the middle of the water on its axis,
+      and the river's banks are moved to meet its abutments: the water under it is
+      exactly as wide as its arches and piers, a channel cut either side easing
+      back to the river's own, or the ground made up where the river is wider. An
+      island it does not land on keeps its shore. The build reports how far each
+      bank moved (the Cestius' most, about 12 m each side, through the island's
+      bulge). Its deck is its design's: over its arches it clears their crowns,
+      level or rising to the middle and never dipping between them; smaller arches
+      beside a great one spring higher, on taller piers, under the deck it sets.
+      Past its outermost arches it comes down on ramps at 22% to its banks, the
+      same height at both ends (on the Tiber Island its top; elsewhere the mean
+      ground past its abutments), and runs on level 6 m as its approach. Every
+      change of grade is rounded by a parabolic curve, as a road over a hump is:
+      over a crown along the length of its arch (the crown first raised by what
+      the curve takes off, so the deck still clears it), at a ramp's foot over
+      8 m. The Cestius' arch rises 0.3 of its span, a shallow segment like the
+      bridge's surviving form: its rise is not recorded, so this is a judgement. The ground
+      is fitted to the bridge, not the bridge to the ground: made ground laid just
+      under its ramps and approaches across its width and a shoulder, eased back
+      into the land over 10 m; its walls run down into it. Its footprint, which
+      keeps the houses off, runs the length of its approaches. Its faces are laid
+      in courses, with a ring of voussoirs round each arch, a string course at the
+      deck and a coped parapet, in a lighter shade of its stone; its cutwaters are
+      hooded; its parapets come down towards each ramp's foot and end there. Where
+      one lands on the Tiber Island the embankment opens for its abutment. The
+      small holes in the modern river's outline (today's bridge piers, the islet
+      under the Pons Fabricius, the Ponte Rotto) are left out of the plan's river.
+    - **The Tiber Island's ship** (reworked 2026-09-29) is a travertine embankment on
+      the island's own shore: the shore smoothed of the modern embankment's steps
+      and drawn to a point at the prow downstream (island.ts, for the river's
+      outline too, so the water, the ground and the wall keep to one shore). Its
+      face is laid in courses, leaning back a little and stained where the river
+      rises; a coping stands out over it, and a low parapet along the top rises
+      towards the prow as a ship's sides do, with the relief of Aesculapius' staff
+      near it. Behind it the island is level, 5 m over the water, with a paved walk
+      along the parapet. The embankment lays the island's top itself, since the
+      terrain's cells are too coarse to hold an edge at the wall; the ground under
+      it rises from the river as a bank, which is what shows before the wall's
+      years.
     - **No street under a building.** Where a recorded or main street's line crosses
       a monument's footprint it stops at its edge (plate.ts), except over the bridges,
       the island and the open squares.
@@ -885,8 +963,9 @@ known and what is generated are kept apart:
       cemetery from about 35 BCE; neither is drawn yet.
     - The known buildings placed only roughly that would stand on it (Juno Moneta,
       Luna) are moved in off it; the wall is the better known.
-  - The Tiber on OpenStreetMap's course, and the streets and roads (§ below)
-    paved on the ground.
+  - The Tiber on OpenStreetMap's course, from above the Ponte Milvio to the
+    Magliana (its pieces of water joined into one), and the streets and roads
+    (§ below) paved on the ground.
 - **Generated**, seeded so every build is the same (`city.ts`, model.ts). The
   method follows procedural city modelling, and the forms follow what Rome's fabric
   is known to have been (the sources are catalogued in data/sources.yaml):
@@ -1353,9 +1432,12 @@ what the city adds drawn on it:
 - Close in, a ground mesh over the same heights draws only the model's shadows.
   Beyond it the terrain carries them baked: each footprint swept away from the
   sun. Only what stands through the whole window casts a baked shadow.
-- The Tiber is drawn in the map's river colour on its real course, in place of
-  the coarse HydroRIVERS line, crossfading to that line a few hundred metres
-  beyond everything on the plan so the river never breaks.
+- The Tiber is drawn in the map's river colour as OpenStreetMap's outline of its
+  water, across the whole plate's grid rather than only the board, so the fields
+  beside it always have their river. The map's line of it is OpenStreetMap's
+  centreline (`tiber` in features.yaml, drawn in place of HydroRIVERS'), so the two
+  follow one course: the water hands over to the line by zoom, and a few hundred
+  metres inside the grid's edge, without a break.
 - The city's streets show only while they can be drawn at their width; the map's
   roads give way to them then, and draw instead when zoomed out. The streets end
   with the board, but the roads out of the gates run on as far as the country

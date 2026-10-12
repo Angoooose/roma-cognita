@@ -19,22 +19,13 @@ import { join } from 'node:path'
 import type { AreaGeometry, LonLat } from '@roma-cognita/schema'
 import { DATA_DIR, loadDataset } from '../load.ts'
 import { distanceKm, rewindRFC7946 } from '../geo.ts'
+import { overpass, type Element } from '../overpass.ts'
 
-const OVERPASS = 'https://overpass-api.de/api/interpreter'
 /** A record's location further than this from its outline's centre is worth a look. */
 const NEAR_M = 80
 
-type Kind = 'node' | 'way' | 'relation'
+type Kind = Element['type']
 type Coords = [number, number][]
-
-interface Element {
-  type: Kind
-  id: number
-  lat?: number
-  lon?: number
-  geometry?: { lat: number; lon: number }[]
-  members?: { type: Kind; role: string; geometry?: { lat: number; lon: number }[] }[]
-}
 
 const data = loadDataset()
 const wanted = new Map<string, { type: Kind; id: number }[]>()
@@ -57,24 +48,8 @@ const query = `[out:json][timeout:120];(${(['node', 'way', 'relation'] as const)
   .filter((t) => ids(t).length)
   .map((t) => `${t}(id:${ids(t).join(',')});`)
   .join('')});out geom;`
-const elements: Element[] = (await overpass(query)).elements
+const elements: Element[] = (await overpass(query, 'rome:fetch')).elements
 const byKey = new Map(elements.map((e) => [`${e.type}/${e.id}`, e]))
-
-/** The public server turns queries away when it is busy; it asks callers to back off. */
-async function overpass(q: string, tries = 5): Promise<{ elements: Element[] }> {
-  for (let i = 1; ; i++) {
-    const res = await fetch(OVERPASS, {
-      method: 'POST',
-      headers: { 'User-Agent': 'roma-cognita pipeline (rome:fetch)' },
-      body: new URLSearchParams({ data: q }),
-    })
-    const body = await res.text()
-    if (res.ok && body.startsWith('{')) return JSON.parse(body)
-    if (i === tries) throw new Error(`Overpass: ${res.status} ${body.slice(0, 400)}`)
-    console.log(`Overpass busy (${res.status}), retrying in ${10 * i} s`)
-    await new Promise((r) => setTimeout(r, 10_000 * i))
-  }
-}
 
 const round = (v: number) => Math.round(v * 1e7) / 1e7
 const coords = (g: { lat: number; lon: number }[]): Coords =>

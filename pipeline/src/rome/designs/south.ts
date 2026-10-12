@@ -67,7 +67,9 @@ export const DESIGNS_SOUTH: Record<string, Design> = {
     bearing: 17,
     spans: [5.8, 23.65, 5.8],
     piers: [6, 6],
-    rise: 0.4,
+    // Its arch's rise is not recorded: a judgement, a shallow segment like the
+    // bridge's surviving form, not a sourced figure.
+    rise: 0.3,
     why: 'Its Republican form is not known; the late bridge on its line was "48 metres long and 8.20 wide, with one central arch, 23.65 metres in span, and a small arch on each side, 5.80 metres wide", and "the general appearance and form of the two bridges were doubtless about the same" (P&A, Pons Cestius, p. 400).',
   },
   'pons-sublicius': {
@@ -166,18 +168,7 @@ export const DESIGNS_SOUTH: Record<string, Design> = {
     podium: 3,
     stairs: 'front',
     extent: [16, 27],
-    phases: [
-      {
-        from: -31,
-        extent: [30, 48],
-        plan: 'peripteral',
-        front: 8,
-        order: 'ionic',
-        column: 12,
-        podium: 3.5,
-      },
-    ],
-    why: 'Rebuilt by L. Cornificius (Suetonius, Augustus 29.5) after his triumph of 32 BCE, "octostyle and dipteral, surrounded by a double colonnade" on the Marble Plan (P&A, Diana, pp. 149–151): drawn as eight columns across and columns round, rising from 32 BCE, its size conjectural; the old temple before it a typical one. Its facing is not known.',
+    why: 'The old temple, a typical one, its size conjectural. L. Cornificius rebuilt it "octostyle and dipteral, surrounded by a double colonnade" on the Marble Plan (Suetonius, Augustus 29.5; P&A, Diana, pp. 149–151), but no readable text dates the rebuilding, which Suetonius counts among the works of Augustus\' reign, so it is not drawn inside the window; until October 2026 it rose from 32 BCE, after his triumph. Its facing is not known.',
   },
   'aedes-cereris-liberi-liberae': {
     model: 'temple',

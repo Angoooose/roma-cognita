@@ -38,6 +38,8 @@ import { DEFAULT_TEMPLE, DESIGNS, type Design, planeBearing } from './designs.ts
 import { type Course, STEP_M } from './servian.ts'
 import { type Fields, fieldTrees, type RecordedGround, TREE } from './fields.ts'
 import { FORUM_PAVING_PIECES, levelOf } from './ground.ts'
+import { ISLAND, islandAt, islandRing } from './island.ts'
+import { type BridgeSite, deckProfile } from './bridges.ts'
 
 type Pt = [number, number]
 
@@ -51,6 +53,8 @@ export interface ModelInput {
   course: Course
   streets: StreetLine[]
   riverRings: Pt[][]
+  /** The bridges placed over the river, which is fitted to them (bridges.ts). */
+  bridges: BridgeSite[]
   /** Signed distance to the river, metres, clamped (plate.ts). */
   water: Float32Array
   /** Signed distance to the hull of the plan, metres (plate.ts). */
@@ -206,11 +210,23 @@ const FORUM_PAVING = [
   { from: -43, stone: 'travertine' },
 ]
 
-/** The Arx's summit and the Asylum, lon/lat and radius, metres: open ground, no houses. */
+/**
+ * The Arx's summit and the Asylum, lon/lat and radius, metres: open ground, no houses.
+ * The Asylum is the saddle between the summits, under the Piazza del Campidoglio, out
+ * to the halls of the Tabularium on its Forum side.
+ */
 const CAPITOL_OPEN: [[number, number], number][] = [
   [[12.4835, 41.8948], 60],
-  [[12.48266, 41.8933], 38],
+  [[12.48285, 41.89325], 65],
 ]
+/**
+ * The ground between the foot of the Capitol and the Forum's head, kept open: the
+ * Area Volcani, at whose level the Tabularium's substructure began (Platner & Ashby,
+ * Tabularium, p. 507), and the Clivus Capitolinus climbing past Saturn and turning up
+ * the hill (Clivus Capitolinus, p. 122): the ground the Tabularium's front, Concord
+ * and Saturn close round.
+ */
+const FORUM_HEAD = ['tabularium', 'aedes-concordiae', 'aedes-saturni']
 /** The Asylum's two groves, lon/lat: trees towards each summit. */
 const ASYLUM_GROVES: [number, number][] = [
   [12.48238, 41.89352],
@@ -219,9 +235,21 @@ const ASYLUM_GROVES: [number, number][] = [
 
 /**
  * A levelled site (`bakeModel`): the walk round a building at its level, how far
- * beyond it the ground eases back, and how deep a cut, metres, needs a retaining wall.
+ * beyond it the ground eases back, how deep a cut, metres, needs a retaining wall, and
+ * how long a run of it must be to be drawn: shorter, a stub of a wall holding nothing.
  */
-const SITE = { walk: 3, ease: 10, cut: 1.2 }
+const SITE = { walk: 3, ease: 10, cut: 1.2, run: 8 }
+/**
+ * A site cut into a hillside on some sides only (a design's `cut`): how far beyond its
+ * other sides today's higher ground is taken down to its level, how steeply, as a
+ * share of the distance, the hill rises again from the top of its retaining wall, and
+ * that wall's thickness (the engine's, buildModel.ts), standing against the building;
+ * how far in from such a wall the ground under a building built out over lower
+ * ground follows the hill outside it (wider than the terrain mesh's step); and how
+ * far across it, as a share of its depth from its open sides, that ground climbs from
+ * its foot to its level, the hillside's top under the rest of it.
+ */
+const CUT = { lower: 30, rise: 0.5, wall: 1.4, inside: 10, slope: 0.6 }
 /**
  * The buildings round the Forum's square: those of the Forum proper, then those of
  * the Comitium at its north-west end.
@@ -648,6 +676,22 @@ const TOMBS = {
   // Clear of the road as it is drawn, which widens a little when seen from far off.
   gap: 2.5,
 }
+/**
+ * How high the Tiber Island's level top stands over the river, metres: an
+ * illustration's, not a survey's — enough for its embankment to read as one.
+ */
+const ISLE_TOP_M = 5
+/** How far in from its shore the Tiber Island's ground rises to its top, metres. */
+const ISLE_BANK_M = 16
+/** How far in from its shore that bank starts: behind the embankment's face. */
+const ISLE_BANK_FROM_M = 4
+/** The river round the Tiber Island, level, metres against the water's level. */
+const ISLE_RIVER_M = -1
+/**
+ * The made ground under a bridge's ramps and approaches, metres: its shoulder either
+ * side of the deck, how far it eases back into the land, and how far under the paving.
+ */
+const MADE_GROUND = { shoulder: 2, ease: 10, under: 0.3 }
 /** The farmsteads: tried on a grid this far apart, this share built, between these distances from the wall. */
 const FARMS = { spacing: 170, share: 0.55, from: 550, reach: 2400 }
 
@@ -666,10 +710,12 @@ export function bakeModel(m: ModelInput) {
 
   // --- the ground -------------------------------------------------------------------
   // The water surface is the river's lowest tenth under the surface model, which
-  // records the water itself; the bed is laid 3 m below it so the terrain never
-  // shows through, with a light blur so the banks are not cliffs.
+  // records the water itself, within the plan (the river falls on beyond it); the bed
+  // is laid 3 m below it so the terrain never shows through, with a light blur so the
+  // banks are not cliffs.
   const onRiver: number[] = []
-  for (let i = 0; i < m.water.length; i++) if (m.water[i] < -4) onRiver.push(m.raw[i])
+  for (let i = 0; i < m.water.length; i++)
+    if (m.water[i] < -4 && m.reach[i] < m.reachM) onRiver.push(m.raw[i])
   onRiver.sort((a, b) => a - b)
   const waterLevel = onRiver[Math.floor(onRiver.length * 0.1)] ?? 8
   const cut = new Float32Array(m.smooth)
@@ -678,6 +724,38 @@ export function bakeModel(m: ModelInput) {
     cut[i] = cut[i] * (1 - t) + Math.min(cut[i], waterLevel - 3) * t
   }
   const ground = blur(cut, g.width, g.height, 2)
+  // The Tiber Island (island.ts): its top level, ISLE_TOP_M over the water, and the
+  // river round it level at ISLE_RIVER_M, where its embankment's face meets the water
+  // it is painted on (the river is drawn on the ground at its bed, not as a surface of
+  // its own). Between them a bank ISLE_BANK_M wide rising from its shore: the
+  // terrain's cells are coarser than the texels, and a step at the shore would come
+  // out through the embankment's face as a slope. From the wall's years the
+  // embankment lays its own top over the bank (monuments.ts `island`).
+  const isle = m.places.get(ISLAND)
+  const shoreAt = isle ? islandRing(m.riverRings, islandAt(isle.location)) : -1
+  const isleTop = waterLevel + ISLE_TOP_M
+  if (shoreAt >= 0) {
+    const shore = m.riverRings[shoreAt]
+    const xs = shore.map((p) => p[0])
+    const ys = shore.map((p) => p[1])
+    const river = waterLevel + ISLE_RIVER_M
+    // Out as far as the blur carried the island's old ground into the river.
+    for (let x = Math.min(...xs) - 24; x <= Math.max(...xs) + 24; x += g.texel)
+      for (let y = Math.min(...ys) - 24; y <= Math.max(...ys) + 24; y += g.texel) {
+        const i = idx(x, y)
+        if (i < 0) continue
+        // Texel centres, so each is tested once.
+        const [cx, cy] = [
+          g.x0 + (Math.floor((x - g.x0) / g.texel) + 0.5) * g.texel,
+          g.y1 - (Math.floor((g.y1 - y) / g.texel) + 0.5) * g.texel,
+        ]
+        if (inRing([cx, cy], shore)) {
+          const d = distToRing([cx, cy], shore) - ISLE_BANK_FROM_M
+          const t = Math.min(1, Math.max(0, d / ISLE_BANK_M))
+          ground[i] = river + (isleTop - river) * t * t * (3 - 2 * t)
+        } else if (m.water[i] < 0) ground[i] = river
+      }
+  }
   const at = (x: number, y: number) => sample(ground, x, y, waterLevel)
   const slopeAt = (x: number, y: number) =>
     Math.hypot(at(x + 4, y) - at(x - 4, y), at(x, y + 4) - at(x, y - 4)) / 8
@@ -858,16 +936,34 @@ export function bakeModel(m: ModelInput) {
       centre[0] -= axis[1] * du + axis[0] * dv
       centre[1] -= -axis[0] * du + axis[1] * dv
     }
-    const ring = rect(
-      centre[0],
-      centre[1],
-      size[0],
-      size[1],
-      Math.atan2(axis[1], axis[0]) - Math.PI / 2,
-    )
+    const kind = own[0]?.kind ?? p.kind
+    // A bridge at its sourced size, over the middle of the water it crosses, the river
+    // fitted to it (bridges.ts); its deck from its design, its banks the same height at
+    // both ends: on the Tiber Island its level top, elsewhere the mean of the ground
+    // past its abutments, to which the ground is fitted (below). Its footprint runs the
+    // length of its ramps and approaches, so they keep the houses off.
+    let deck: ReturnType<typeof deckProfile> | null = null
+    let reach: Pt = size
+    const site = kind === 'bridge' ? m.bridges.find((b) => b.id === id) : undefined
+    if (site) {
+      centre[0] = site.centre[0]
+      centre[1] = site.centre[1]
+      const ends = [-1, 1].map((s): Pt => [
+        centre[0] + (axis[0] * s * (size[1] + 12)) / 2,
+        centre[1] + (axis[1] * s * (size[1] + 12)) / 2,
+      ])
+      const onIsle = ends.some((e) => shoreAt >= 0 && inRing(e, m.riverRings[shoreAt]))
+      const bank = onIsle
+        ? isleTop
+        : ends.reduce((s, e) => s + at(e[0], e[1]), 0) / ends.length
+      deck = deckProfile(d, Math.max(bank - waterLevel, 1))
+      const half = Math.max(-deck.from, deck.from + deck.z.length - 1)
+      reach = [size[0] + 2 * MADE_GROUND.shoulder, 2 * half]
+    }
+    // With the shops behind its porticoes, which keep the houses off too.
+    const ring = footprint(d, centre, reach, axis).ring
     const rings =
       d.at || d.size || !largest ? [ring] : own.find((mo) => mo.rings[0] === largest)!.rings
-    const kind = own[0]?.kind ?? p.kind
     for (const mo of own) monuments.splice(monuments.indexOf(mo), 1)
     // The island's own shore, for its embankment: the hole in the river the island is
     // (OpenStreetMap's outline of it is the modern embankments, wider than its land).
@@ -877,36 +973,6 @@ export function bakeModel(m: ModelInput) {
             .filter((r) => inRing(centre, r))
             .sort((a, b) => Math.abs(ringArea(a)) - Math.abs(ringArea(b)))[0]
         : undefined
-    // A bridge runs from bank to bank along its axis: walked out from its centre until
-    // the ground is dry, so it meets the ground at both ends whatever its design's
-    // length (the river's line here is OpenStreetMap's, not the Republic's).
-    let span: { a: Pt; b: Pt } | null = null
-    if (kind === 'bridge') {
-      // The water along its axis, 0.5 m at a time out to 250 m either side; runs of it
-      // joined across dry gaps under 45 m (a pier, an islet in the river's line, or its line broken under a
-      // bridge); the run nearest its centre is what it crosses.
-      const pt = (t: number): Pt => [centre[0] + axis[0] * t, centre[1] + axis[1] * t]
-      const runs: [number, number][] = []
-      for (let t = -250; t <= 250; t += 0.5) {
-        if (sample(m.water, ...pt(t), 99) >= 0) continue
-        const last = runs[runs.length - 1]
-        if (last && t - last[1] < 45) last[1] = t
-        else runs.push([t, t])
-      }
-      const gap = (r: [number, number]) =>
-        r[0] <= 0 && r[1] >= 0 ? 0 : Math.min(Math.abs(r[0]), Math.abs(r[1]))
-      const run = runs.sort((a, b) => gap(a) - gap(b))[0] ?? [-size[1] / 2, size[1] / 2]
-      span = { a: pt(run[0]), b: pt(run[1]) }
-      const L = Math.hypot(span.b[0] - span.a[0], span.b[1] - span.a[1])
-      const mid: Pt = [(span.a[0] + span.b[0]) / 2, (span.a[1] + span.b[1]) / 2]
-      if (Math.abs(L - size[1]) / size[1] > 0.25)
-        console.log(
-          `model: ${id}: the water here is ${L.toFixed(0)} m across, its design ${size[1].toFixed(0)} m; its arches are scaled to it`,
-        )
-      centre[0] = mid[0]
-      centre[1] = mid[1]
-      size = [size[0], L]
-    }
     // A bridge stands on the water; the rest on the lowest ground under them, or, where
     // the design says it is a terrace built out on a slope, its highest or middle
     // ground, its foundations running down to the lowest.
@@ -914,11 +980,13 @@ export function bakeModel(m: ModelInput) {
     const heights = rings[0].map(([x, y]) => at(x, y))
     const low = Math.min(...heights)
     const level =
-      d.level === 'top'
-        ? Math.max(...heights)
-        : d.level === 'mean'
-          ? heights.reduce((a, b) => a + b, 0) / heights.length
-          : low
+      typeof d.level === 'number'
+        ? d.level
+        : d.level === 'top'
+          ? Math.max(...heights)
+          : d.level === 'mean'
+            ? heights.reduce((a, b) => a + b, 0) / heights.length
+            : low
     monuments.push({
       id,
       kind,
@@ -932,6 +1000,12 @@ export function bakeModel(m: ModelInput) {
       // The island keeps no houses off: its embankment is round its shore.
       clear: kind !== 'island',
       extra: {
+        // The island's level top, and the river round it, over its base, for its
+        // embankment.
+        ...(kind === 'island' && {
+          top: round(isleTop - (waterLevel - 2)),
+          river: round(ISLE_RIVER_M + 2),
+        }),
         ...(shore && {
           // Each shore point with the island's ground a few metres inland, over its base.
           outline: shore.map(([x, y]) => {
@@ -944,15 +1018,15 @@ export function bakeModel(m: ModelInput) {
             ]
           }),
         }),
-        // A bridge's banks: the ground a few metres onto the land at each end, over its
-        // base, where its deck comes down to meet it.
-        ...(span && {
-          banks: [-1, 1].map((s) => {
-            const e = s < 0 ? span!.a : span!.b
-            return round(
-              at(e[0] + axis[0] * s * 8, e[1] + axis[1] * s * 8) - (waterLevel - 2),
-            )
-          }),
+        // A bridge's deck over its base, every metre along it from `from` (the
+        // engine's u), where its ramps reach its banks, and each arch's springing.
+        ...(deck && {
+          deck: {
+            from: deck.from,
+            z: deck.z.map((z) => round(z + 2, 100)),
+            ramps: deck.ramps.map((r) => round(r)),
+          },
+          springs: deck.springs.map((s) => round(s + 2, 100)),
         }),
       },
     })
@@ -1071,9 +1145,39 @@ export function bakeModel(m: ModelInput) {
     .filter((mo) => mo.design && mo.clear !== false && mo.kind !== 'bridge')
     .sort((a, b) => Math.abs(ringArea(b.rings[0])) - Math.abs(ringArea(a.rings[0])))
   for (const mo of sites) {
-    const ring = mo.rings[0]
     const d = mo.design!.d
-    const [x0, y0, x1, y1] = bounds(ring, SITE.walk + SITE.ease + g.texel)
+    const cut = d.cut
+    // A site cut in on some sides only: its footprint with the shops behind its
+    // porticoes, which were cut into the hill with it, and which side of it each point
+    // is beyond (front, right, back, left).
+    const { axis } = mo.design!
+    const {
+      mid,
+      w: sw,
+      l: sl,
+      ring: box,
+    } = footprint(d, mo.design!.centre, mo.design!.size, axis)
+    const right: Pt = [axis[1], -axis[0]]
+    const ring = cut ? box : mo.rings[0]
+    // How far a point is beyond each side (front, right, back, left): negative inside.
+    const beyondOf = (p: Pt) => {
+      const [x, y] = [p[0] - mid[0], p[1] - mid[1]]
+      const [u, v] = [x * right[0] + y * right[1], x * axis[0] + y * axis[1]]
+      return [v - sl / 2, u - sw / 2, -v - sl / 2, -u - sw / 2]
+    }
+    const sideOf = (p: Pt) => {
+      const beyond = beyondOf(p)
+      return beyond.indexOf(Math.max(...beyond))
+    }
+    const alongside = (p: Pt, side: number) => {
+      const beyond = beyondOf(p)
+      return beyond[(side + 1) % 4] <= 0 && beyond[(side + 3) % 4] <= 0
+    }
+    const outOf: Pt[] = [axis, right, [-axis[0], -axis[1]], [-right[0], -right[1]]]
+    const [x0, y0, x1, y1] = bounds(
+      ring,
+      SITE.walk + (cut ? Math.max(SITE.ease, CUT.lower) : SITE.ease) + g.texel,
+    )
     // Its level: of the ground under it now (the larger sites round it already level).
     const under: number[] = []
     for (let y = y0; y <= y1; y += g.texel)
@@ -1081,15 +1185,44 @@ export function bakeModel(m: ModelInput) {
     if (!under.length) under.push(...ring.map(([x, y]) => at(x, y)))
     const lowUnder = Math.min(...under)
     // Cut and fill balanced, unless the design says it was cut in (`low`) or built out
-    // as a terrace (`top`).
+    // as a terrace (`top`), or gives the level its excavators found.
     // On the Forum's square, the square's own level.
     const level = onForum.has(mo.id)
       ? forumLevel
-      : d.level === 'top'
-        ? Math.max(...under)
-        : d.level === 'low'
-          ? lowUnder
-          : under.reduce((a, b) => a + b, 0) / under.length
+      : typeof d.level === 'number'
+        ? d.level
+        : d.level === 'top'
+          ? Math.max(...under)
+          : d.level === 'low'
+            ? lowUnder
+            : under.reduce((a, b) => a + b, 0) / under.length
+    const foot = Math.min(level, cut?.foot ?? level)
+    // The ground under a building built out over lower ground, where the terrain's
+    // coarse mesh is hidden inside it: a slope rising from its foot's level at its
+    // open sides to its own level CUT.slope of the way across, as the hillside it was
+    // set into, so that before it was built the ground reads as a slope and not a cliff;
+    // and within CUT.inside of a wall cut into the hill, eased to the hill's own
+    // height just outside that wall, so the mesh never dips along it.
+    const underBuilt = (p: Pt) => {
+      const beyond = beyondOf(p)
+      const sides = cut!.sides
+      const half = (i: number) => (i % 2 ? sw : sl) / 2
+      const open = [0, 1, 2, 3].filter((i) => !sides[i])
+      const t = Math.min(1, ...open.map((i) => -beyond[i] / (2 * half(i))))
+      const slope = foot + (level - foot) * smoothstep(0, CUT.slope, t)
+      let near = -1
+      for (let i = 0; i < 4; i++)
+        if (sides[i] && -beyond[i] < CUT.inside && (near < 0 || beyond[i] > beyond[near]))
+          near = i
+      if (near < 0) return slope
+      const o = outOf[near]
+      const reach = -beyond[near] + CUT.wall + 3
+      const edge = Math.max(
+        foot,
+        Math.min(level, sample(before, p[0] + o[0] * reach, p[1] + o[1] * reach, level)),
+      )
+      return edge + (slope - edge) * smoothstep(0, CUT.inside, -beyond[near])
+    }
     const before = new Float32Array(ground)
     const c0 = Math.max(0, Math.floor((x0 - g.x0) / g.texel))
     const c1 = Math.min(g.width - 1, Math.ceil((x1 - g.x0) / g.texel))
@@ -1101,8 +1234,36 @@ export function bakeModel(m: ModelInput) {
         const k = r * g.width + c
         if (m.water[k] < 4) continue
         const dist = inRing(p, ring) ? 0 : distToRing(p, ring)
-        if (dist <= SITE.walk) ground[k] = level
-        else if (dist < SITE.walk + SITE.ease) {
+        // Where it was cut into the hill its own back wall is the retaining wall's face:
+        // no walk round it there.
+        const side = sideOf(p)
+        const hill = !!cut && cut.sides[side]
+        // Beside its other sides the ground is only ever lowered, to its level or to the
+        // ground at its foot (`cut.foot`): where it stands over lower ground its own
+        // walls go down to meet it.
+        if (dist === 0 && cut && foot < level) ground[k] = underBuilt(p)
+        else if (cut?.street?.[side] && dist > 0 && alongside(p, side)) {
+          // A street along it at its level, where today's ground is lower: raised to
+          // it, and eased back down beyond; only alongside it, not past its corners.
+          const out = Math.max(0, dist - SITE.walk)
+          ground[k] =
+            before[k] >= level
+              ? Math.min(before[k], level + cut.h + out * CUT.rise)
+              : level + (before[k] - level) * smoothstep(0, CUT.lower, out)
+        } else if (dist <= (hill ? CUT.wall : SITE.walk))
+          // Outside a building cut into a hill the ground is only ever lowered: the hill
+          // meets its walls at its own height, and on its open sides it is taken down to
+          // the ground at its foot.
+          ground[k] = cut && dist > 0 ? Math.min(before[k], hill ? level : foot) : level
+        else if (cut) {
+          // Where it was cut into the hill, the hill rising from its retaining wall's top;
+          // elsewhere today's higher ground, the fill of later centuries, taken down and
+          // eased back.
+          const out = dist - (hill ? CUT.wall : SITE.walk)
+          if (hill) ground[k] = Math.min(before[k], level + cut.h + out * CUT.rise)
+          else if (before[k] > foot && out < CUT.lower)
+            ground[k] = foot + (before[k] - foot) * smoothstep(0, CUT.lower, out)
+        } else if (dist < SITE.walk + SITE.ease) {
           // Eased back where the ground is near the level; left where it is not, for the
           // wall or the building's own foundations to meet it.
           const off = before[k] - level
@@ -1112,14 +1273,31 @@ export function bakeModel(m: ModelInput) {
         }
       }
     mo.base = level
-    mo.design!.drop = Math.max(mo.design!.drop, level - lowUnder)
+    mo.design!.drop = Math.max(mo.design!.drop, level - Math.min(lowUnder, foot))
     // Retaining walls: along each edge, where the ground just beyond the walk stands
     // more than `SITE.cut` over the level.
-    const outward = ringArea(ring) > 0 ? -1 : 1
+    // Each edge's right-hand normal, which points out of a ring wound anticlockwise.
+    const outward = ringArea(ring) > 0 ? 1 : -1
+    // Where another building stands on the ground behind, its own walls hold that
+    // ground once it is begun: the wall stands only until then.
+    const own = yearsOf(mo.id)
+    const coverOf = (p: Pt) =>
+      sites.find(
+        (o) =>
+          o !== mo &&
+          yearsOf(o.id)[1] >= own[0] &&
+          yearsOf(o.id)[0] <= own[1] &&
+          inRing(p, o.rings[0]),
+      )
     let run: number[][] = []
+    let cover: (typeof sites)[number] | undefined
     const flush = () => {
-      if (run.length > 1)
-        retaining.push({ id: mo.id, base: round(level), pts: run, years: yearsOf(mo.id) })
+      const years = [own[0], cover ? Math.min(own[1], yearsOf(cover.id)[0] - 1) : own[1]]
+      const long = run
+        .slice(1)
+        .reduce((a, q, i) => a + Math.hypot(q[0] - run[i][0], q[1] - run[i][1]), 0)
+      if (long >= SITE.run && years[0] <= years[1])
+        retaining.push({ id: mo.id, base: round(level), pts: run, years })
       run = []
     }
     for (let i = 0; i + 1 < ring.length; i++) {
@@ -1128,18 +1306,24 @@ export function bakeModel(m: ModelInput) {
       if (L < 0.5) continue
       const n: Pt = [((b[1] - a[1]) / L) * outward, (-(b[0] - a[0]) / L) * outward]
       const steps = Math.max(1, Math.round(L / 3))
+      const walled = !cut || cut.sides[sideOf([(a[0] + b[0]) / 2, (a[1] + b[1]) / 2])]
       for (let k = 0; k <= steps; k++) {
         const t = k / steps
         const q: Pt = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]
-        const w: Pt = [q[0] + n[0] * (SITE.walk - 0.6), q[1] + n[1] * (SITE.walk - 0.6)]
-        const beyond = sample(
-          before,
-          q[0] + n[0] * (SITE.walk + 3),
-          q[1] + n[1] * (SITE.walk + 3),
-          level,
-        )
-        if (beyond - level > SITE.cut)
-          run.push([round(w[0]), round(w[1]), round(beyond - level + 0.7)])
+        // Its middle: at the walk's edge, or on a cut side against the building's back.
+        const face = cut ? CUT.wall / 2 : SITE.walk - 0.6
+        const w: Pt = [q[0] + n[0] * face, q[1] + n[1] * face]
+        const behind = (cut ? CUT.wall : SITE.walk) + 3
+        const back: Pt = [q[0] + n[0] * behind, q[1] + n[1] * behind]
+        const beyond = sample(cut ? ground : before, back[0], back[1], level)
+        const covered = coverOf(back)
+        if (covered !== cover) {
+          flush()
+          cover = covered
+        }
+        const high = cut ? Math.min(beyond - level, cut.h) : beyond - level
+        if (high > SITE.cut && walled)
+          run.push([round(w[0]), round(w[1]), round(high + 0.7)])
         else flush()
       }
       flush()
@@ -1208,6 +1392,46 @@ export function bakeModel(m: ModelInput) {
               : AGGER.bank * (1 - smoothstep(AGGER.top, AGGER.top + AGGER.run, f))
           ground[k] = Math.max(before[k], before[k] + (g0[i] + h - before[k]) * w)
         }
+      }
+  }
+
+  // The made ground under each bridge's ramps and approaches (bridges.ts): laid just
+  // under its deck across its width and a shoulder, and eased back into the land round
+  // it, so the ground meets the bridge rather than the bridge the ground. Not in the
+  // river, nor on the Tiber Island, whose embankment lays its own top.
+  for (const mo of monuments) {
+    const deck = mo.extra?.deck as { from: number; z: number[] } | undefined
+    if (!deck || !mo.design) continue
+    const { centre, size, axis } = mo.design
+    const side: Pt = [axis[1], -axis[0]]
+    const zAt = (u: number) => {
+      const f = Math.min(deck.z.length - 1, Math.max(0, u - deck.from))
+      const i = Math.min(deck.z.length - 2, Math.floor(f))
+      return mo.base + deck.z[i] + (deck.z[i + 1] - deck.z[i]) * (f - i)
+    }
+    const [u0, u1] = [deck.from, deck.from + deck.z.length - 1]
+    const half = size[0] / 2 + MADE_GROUND.shoulder
+    const E = MADE_GROUND.ease
+    const r = Math.max(-u0, u1) + E
+    for (let x = centre[0] - r; x <= centre[0] + r; x += g.texel)
+      for (let y = centre[1] - r; y <= centre[1] + r; y += g.texel) {
+        const k = idx(x, y)
+        if (k < 0 || m.water[k] < 0) continue
+        const [cx, cy] = [
+          g.x0 + (Math.floor((x - g.x0) / g.texel) + 0.5) * g.texel,
+          g.y1 - (Math.floor((g.y1 - y) / g.texel) + 0.5) * g.texel,
+        ]
+        const [dx, dy] = [cx - centre[0], cy - centre[1]]
+        // The engine's u runs against the model's axis (monuments.ts `bridge`).
+        const u = -(dx * axis[0] + dy * axis[1])
+        const v = Math.abs(dx * side[0] + dy * side[1])
+        if (u < u0 - E || u > u1 + E || v > half + E) continue
+        if (shoreAt >= 0 && inRing([cx, cy], m.riverRings[shoreAt])) continue
+        const w =
+          (1 - smoothstep(half, half + E, v)) *
+          (1 - smoothstep(0, E, Math.max(u0 - u, u - u1, 0)))
+        const line = zAt(u) - MADE_GROUND.under
+        ground[k] += (line - ground[k]) * w
       }
   }
 
@@ -1368,6 +1592,15 @@ export function bakeModel(m: ModelInput) {
         .filter((gr) => pts.some((q) => inRing(q, gr.ring)))
         .map((gr) => gr.years[0] - 1),
     )
+  /** The last year a tree at `q` stands: until a later monument takes the ground its crown spreads over. */
+  const crownUntil = ([x, y]: Pt, r = 3) =>
+    until([
+      [x, y],
+      [x + r, y],
+      [x - r, y],
+      [x, y + r],
+      [x, y - r],
+    ])
   /**
    * The first year a house at `pts` stands (DESIGN.md §7.7, "The city growing"). The
    * city inside the wall was full by 133 BCE: private houses of the 2nd century BCE
@@ -1408,6 +1641,8 @@ export function bakeModel(m: ModelInput) {
     .filter((p): p is Place => !!p)
     .map((p) => projection.forward(...p.location))
   if (boarium.length > 2) open.push(hull(boarium))
+  const head = monuments.filter((mo) => FORUM_HEAD.includes(mo.id))
+  if (head.length === FORUM_HEAD.length) open.push(hull(head.flatMap((mo) => mo.rings[0])))
   // Before a precinct's gateway the ground is kept open, so it does not open onto a
   // house: 20 m out, a little wider than the gate.
   for (const mo of monuments) {
@@ -1553,7 +1788,8 @@ export function bakeModel(m: ModelInput) {
 
   // --- the generated city ------------------------------------------------------------------
   const fabric: number[] = []
-  const courtyardTrees: Pt[] = []
+  /** Trees in gardens and groves, and the years they stand (a house's, its garden's). */
+  const courtyardTrees: { at: Pt; years?: number[] }[] = []
   const placed = new SpatialHash(30)
   const [bx0, by0, bx1, by1] = bounds(m.circuit, SUBURB.reach + 20)
   const lot = (
@@ -1601,7 +1837,11 @@ export function bakeModel(m: ModelInput) {
   // the ground kept open there does not reshuffle the streets across the city.
   for (const l of city.lots)
     if (!l.pts.some((q) => isOpen(q))) lot(l.pts, l.h, l.kind, l.roof, l.tone)
-  courtyardTrees.push(...city.gardens.filter((q) => !isOpen(q)))
+  // A garden's tree stands as long as its house: a monument that takes the house's
+  // site takes its garden too.
+  for (const q of city.gardens)
+    if (!isOpen(q))
+      courtyardTrees.push({ at: q, years: [since([q], LOT_KIND.house), crownUntil(q)] })
 
   // Outside it the suburb (`GROWN`), built on the country's own plots (fields.ts): a
   // built plot has its building at the road end — a row of shops by the gates, a
@@ -2106,7 +2346,11 @@ export function bakeModel(m: ModelInput) {
       !insideMonument(p) &&
       !onWall(p),
   ))
-    tree(t.x, t.y, t.r, t.kind, t.years)
+    // Until a monument begun within the window takes its ground, as a house does.
+    tree(t.x, t.y, t.r, t.kind, [
+      t.years[0],
+      Math.min(t.years[1], crownUntil([t.x, t.y], t.r)),
+    ])
   const TREE_STRIDE = 7
 
   // --- shadows on the board ------------------------------------------------------------------
@@ -2166,12 +2410,54 @@ export function bakeModel(m: ModelInput) {
     for (let k = 0; k < 9; k++) {
       const a = k * 2.4
       const rr = 3 + (k % 3) * 5
-      courtyardTrees.push([gx + Math.cos(a) * rr, gy + Math.sin(a) * rr])
+      courtyardTrees.push({ at: [gx + Math.cos(a) * rr, gy + Math.sin(a) * rr] })
     }
   }
   const fab = new Float32Array(fabric)
-  for (const [x, y] of courtyardTrees) tree(x, y, 2.5 + rand() * 1.5, TREE.mixed)
+  for (const {
+    at: [x, y],
+    years,
+  } of courtyardTrees)
+    tree(x, y, 2.5 + rand() * 1.5, TREE.mixed, years)
   const tre = new Float32Array(trees)
+  // Where the bridges land on the Tiber Island, so its embankment opens for them: each
+  // bridge end on its shore, the way onto the island, and half the deck's width, from
+  // the bridge's first year. A phase of the island's design for each, carrying the
+  // landings standing by then.
+  const landings: { from: number; at: Pt; onto: Pt; half: number }[] = []
+  if (shoreAt >= 0) {
+    const shore = m.riverRings[shoreAt]
+    for (const mo of monuments) {
+      if (mo.kind !== 'bridge' || !mo.design) continue
+      const { centre, size, axis } = mo.design
+      for (const s of [-1, 1]) {
+        const at: Pt = [
+          centre[0] + (axis[0] * s * size[1]) / 2,
+          centre[1] + (axis[1] * s * size[1]) / 2,
+        ]
+        if (distToRing(at, shore) > 6) continue
+        const onto: Pt = [axis[0] * s, axis[1] * s]
+        if (!inRing([at[0] + onto[0] * 8, at[1] + onto[1] * 8], shore)) continue
+        const from = dates(m.places.get(mo.id)).years[0]
+        landings.push({ from, at: [round(at[0]), round(at[1])], onto, half: size[0] / 2 })
+      }
+    }
+  }
+  const landingPhases = (phases: ({ from: number } & Record<string, unknown>)[]) => {
+    const standing = (y: number) => landings.filter((l) => l.from <= y)
+    const froms = [
+      ...new Set([...phases.map((ph) => ph.from), ...landings.map((l) => l.from)]),
+    ]
+    return {
+      phases: froms
+        .sort((a, b) => a - b)
+        .map((from) => ({
+          ...Object.assign({}, ...phases.filter((ph) => ph.from <= from)),
+          from,
+          landings: standing(from),
+        })),
+    }
+  }
   const bin = Buffer.concat([Buffer.from(fab.buffer), Buffer.from(tre.buffer)])
   writeFileSync(join(m.out, 'model.bin'), bin)
   writeFileSync(
@@ -2193,6 +2479,7 @@ export function bakeModel(m: ModelInput) {
         design: mo.design && {
           ...placedDesign(mo.design, facing(mo)),
           ...mo.extra,
+          ...(mo.kind === 'island' && landingPhases(mo.design.d.phases ?? [])),
           // The water's surface over its ground, for what stands in the river.
           water: round(waterLevel - mo.base),
         },
@@ -2377,7 +2664,7 @@ function ringArea(r: Pt[]) {
 }
 
 /** The smallest rectangle round a ring, by its edges' directions: centre, its long axis (a unit vector), and its sides. */
-function orientedBox(r: Pt[]) {
+export function orientedBox(r: Pt[]) {
   let best = { area: Infinity, cx: 0, cy: 0, axis: [0, 1] as Pt, long: 0, short: 0 }
   for (let i = 0; i + 1 < r.length; i++) {
     const a = Math.atan2(r[i + 1][1] - r[i][1], r[i + 1][0] - r[i][0])
@@ -2408,6 +2695,28 @@ function orientedBox(r: Pt[]) {
 }
 
 const round = (v: number, k = 10) => Math.round(v * k) / k
+
+/**
+ * A design's footprint: its box, `size` across and along round `centre`, with the
+ * shops behind its porticoes on the sides it has them (front, right, back, left).
+ */
+function footprint(d: Design, centre: Pt, size: Pt, axis: Pt) {
+  const right: Pt = [axis[1], -axis[0]]
+  const shops = (d as { shops?: { depth: number; sides: boolean[] } }).shops
+  const margin = [0, 1, 2, 3].map((i) => (shops?.sides[i] ? shops.depth : 0))
+  const [du, dv] = [(margin[1] - margin[3]) / 2, (margin[0] - margin[2]) / 2]
+  const [w, l] = [size[0] + margin[1] + margin[3], size[1] + margin[0] + margin[2]]
+  const mid: Pt = [
+    centre[0] + right[0] * du + axis[0] * dv,
+    centre[1] + right[1] * du + axis[1] * dv,
+  ]
+  return {
+    mid,
+    w,
+    l,
+    ring: rect(mid[0], mid[1], w, l, Math.atan2(axis[1], axis[0]) - Math.PI / 2),
+  }
+}
 
 function rect(cx: number, cy: number, w: number, d: number, angle: number): Pt[] {
   const [c, s] = [Math.cos(angle), Math.sin(angle)]

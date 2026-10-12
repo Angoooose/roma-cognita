@@ -18,6 +18,7 @@ import { parse as parseYaml } from 'yaml'
 import type { z } from 'zod'
 import {
   AtomGeometrySchema,
+  LandscapeChangeGeometrySchema,
   FeatureGeometrySchema,
   AtomSchema,
   ClaimSchema,
@@ -77,6 +78,8 @@ export interface Dataset {
     atoms: Map<string, AreaGeometry>
     /** data/geometry/features.geojson, keyed by feature id. */
     features: Map<string, FeatureShape>
+    /** data/geometry/landscape-changes.geojson, keyed by landscape-change id. */
+    landscapeChanges: Map<string, AreaGeometry>
   }
   /** Where each record came from, for messages: `claims.yaml#3`. Keyed by the record object. */
   origin: WeakMap<object, string>
@@ -276,6 +279,12 @@ function readFeatureGeometry(dir: string, issues: Issue[]): Map<string, FeatureS
   )
 }
 
+/** Optional: a dataset with no landscape corrections has no landscape-changes.geojson. */
+function readLandscapeGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometry> {
+  const data = readGeoJson(dir, 'landscape-changes.geojson', false, LandscapeChangeGeometrySchema, issues)
+  return new Map((data?.features ?? []).map((f) => [f.id, f.geometry]))
+}
+
 /** Flattens inline names, filling in what each inherits from the record it names. */
 function flattenNames(
   kind: NameTarget['kind'],
@@ -332,6 +341,7 @@ export function readDataset(dir: string = DATA_DIR): { dataset: Dataset; issues:
     geometry: {
       atoms: readAtomGeometry(dir, issues),
       features: readFeatureGeometry(dir, issues),
+      landscapeChanges: readLandscapeGeometry(dir, issues),
     },
     origin,
   }

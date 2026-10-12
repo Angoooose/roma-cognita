@@ -21,11 +21,29 @@ export type Confidence = z.infer<typeof ConfidenceSchema>
 export const ReviewSchema = z.enum(['verified', 'draft', 'needs-check'])
 export type Review = z.infer<typeof ReviewSchema>
 
-/** A citation: a source id from data/sources.yaml, plus where in it (page, map, fragment). */
-export const SourceRefSchema = z.strictObject({
-  source: SlugSchema,
-  locator: z.string().min(1).optional(),
-})
+/**
+ * A citation: a source id from data/sources.yaml, plus where in it (page, map,
+ * fragment). A citation with a `quote` names one passage and was read
+ * (research/README.md); one without backs nothing and stands as further reading.
+ */
+export const SourceRefSchema = z
+  .strictObject({
+    source: SlugSchema,
+    locator: z.string().min(1).optional(),
+    /** The words relied on, copied from the text; `…` marks a cut. The validator finds them in it. */
+    quote: z.string().min(1).optional(),
+    /** The record's fields this passage states. `[]`: cited for context. */
+    supports: z.array(z.string().min(1)).optional(),
+    /**
+     * The page the quote was read on, when it is not the passage the locator
+     * links to: a scan's full text, an article's PDF.
+     */
+    url: z.url().optional(),
+  })
+  .refine((s) => !s.supports?.length || s.quote, {
+    message: 'a citation that supports a field needs the quote it rests on',
+    path: ['supports'],
+  })
 export type SourceRef = z.infer<typeof SourceRefSchema>
 
 /** WGS84 longitude, latitude — the only coordinates the data files ever hold. */

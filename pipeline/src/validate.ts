@@ -13,7 +13,7 @@
  */
 import { resolve } from 'node:path'
 import { DATA_DIR, readDataset, type Issue } from './load.ts'
-import { checkDataset, doubts, type Doubt } from './rules.ts'
+import { checkDataset, doubts, evidence, type Doubt } from './rules.ts'
 
 export interface ValidationResult {
   issues: Issue[]
@@ -50,6 +50,7 @@ export function validate(
   const errors = issues.filter((i) => i.level === 'error')
   const warnings = issues.filter((i) => i.level === 'warning')
   const d = doubts(dataset)
+  const e = evidence(dataset)
 
   let out = `data:validate — ${dir}\n`
   out += `\n${Object.entries(d.counts)
@@ -58,6 +59,7 @@ export function validate(
     .join(', ')}`
   if (d.claimYears)
     out += `\ndated claim endpoints fall within ${d.claimYears}; the rest are open ends`
+  out += `\nevidence: ${e.backed} records backed by quotes, ${e.partly} partly, ${e.unresearched} not yet, ${e.datasets} from datasets alone`
   out += '\n'
 
   out += section(`ERRORS (${errors.length})`, issueLines(errors))
@@ -68,10 +70,21 @@ export function validate(
       doubtLines(d.needsCheck),
     )
     out += section(
+      `PARTLY BACKED — fields with no quote yet (${e.gaps.length})`,
+      e.gaps.map((g) => `${g.where}: ${g.fields.join(', ')}`),
+    )
+    out += section(
       `UNCERTAIN — confidence: uncertain (${d.uncertain.length})`,
       doubtLines(d.uncertain),
     )
-    out += section('NOT CHECKED', d.notChecked)
+    out += section('NOT CHECKED', [
+      ...(e.quotes.unread
+        ? [
+            `quotes whose text isn't downloaded (${e.quotes.unread} of ${e.quotes.unread + e.quotes.found}): run npm run passages:fetch and npm run quotes:fetch -w pipeline`,
+          ]
+        : []),
+      ...d.notChecked,
+    ])
   }
   out += `\n${errors.length ? 'FAIL' : 'OK'}: ${plural(errors.length, 'error')}, ${plural(warnings.length, 'warning')}, ${d.needsCheck.length} needing a check\n`
 
