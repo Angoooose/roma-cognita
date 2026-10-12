@@ -2159,7 +2159,7 @@
   status:
     - value: conventus
       from: { earliest: 49 BCE, latest: 48 BCE }
-      to: after 27 BCE
+      to: after 48 BCE
       note: >-
         From its first attestation: "the Roman citizens, residing there" held
         Salona against Octavius (Caesar BC 3.9), in Caesar's narrative of 48;
@@ -2167,7 +2167,9 @@
         October 2026. Before 68 until the
         extension to 133 BCE; nothing records Roman residents when Metellus
         wintered there in 119 (App. Ill. 11) or when Cosconius took it in 78–76
-        (Eutropius 6.4).
+        (Eutropius 6.4). It ended after 27 until October 2026; nothing readable
+        shows the community of citizens still there in 27 (Strabo 7.5.5 has only
+        the Dalmatians' port, burnt by Augustus), so the last year attested is 48.
   labelSide: e
   sources:
     - source: pleiades
