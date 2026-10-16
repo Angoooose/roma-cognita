@@ -31,6 +31,7 @@ import { loadDataset, ROOT_DIR } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import { edgesTouch, inside, type Ring } from '../water/raster.ts'
 import { RingIndex } from '../water/ring-index.ts'
+import { coastTiles } from '../water/tiles.ts'
 import { projectRing } from '../water/sources.ts'
 import type { AtomRings, PoliticsJob, PoliticsResult, ShoreTile } from './bake-worker.ts'
 
@@ -92,6 +93,7 @@ async function main() {
   })
   const index = new RingIndex(rings)
   console.log(`${data.atoms.length} atoms, ${rings.length} rings`)
+  const findCoastTile = coastTiles(WATER)
 
   const pool = new Pool(Math.max(1, availableParallelism() - 2))
   const levels: Uint16Array[] = []
@@ -129,8 +131,10 @@ async function main() {
             const jj = j + dj
             const code =
               ii < 0 || jj < 0 || ii >= n || jj >= n ? 0 : waterCodes[level][jj * n + ii]
-            const file = join(WATER, `${level}/${ii}/${jj}.webp`)
-            shore.push(code === 2 && existsSync(file) ? { code, file } : { code })
+            const source = code === 2 ? findCoastTile({ level, i: ii, j: jj }) : null
+            if (code === 2 && !source)
+              throw new Error(`coast tile ${level}/${ii}/${jj} is a shore tile but was not found`)
+            shore.push(source ? { code, source } : { code })
           }
         }
         // Settled without a bake: open sea, or land with no outline edge near it.

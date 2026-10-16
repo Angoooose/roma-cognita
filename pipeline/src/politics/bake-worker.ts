@@ -25,6 +25,7 @@ import { parentPort } from 'node:worker_threads'
 import sharp from 'sharp'
 import { TILE_TEXELS } from '@roma-cognita/world'
 import { edt, fillPolygons, type Grid, type Ring } from '../water/raster.ts'
+import { readTile, type TileSource } from '../water/tiles.ts'
 import { encodeDistance } from './encoding.ts'
 
 const N = TILE_TEXELS
@@ -34,10 +35,10 @@ export interface AtomRings {
   rings: Ring[]
 }
 
-/** One of the nine coast-mask tiles around the job: its index code, and the file if it was written. */
+/** One of the nine coast-mask tiles around the job: its index code, and where it is if it was written. */
 export interface ShoreTile {
   code: number
-  file?: string
+  source?: TileSource
 }
 
 export interface PoliticsJob {
@@ -70,8 +71,7 @@ function stitchShore(job: PoliticsJob): { field: Float32Array; width: number } {
   for (let dj = 0; dj < 3; dj++) {
     for (let di = 0; di < 3; di++) {
       const t = job.shore[dj * 3 + di]
-      let data: Uint8Array | null = null
-      if (t.file) data = decodeChannel0(t.file)
+      const data = decoded[dj * 3 + di]
       const uniform = t.code === 0 ? -reach : reach
       for (let r = 0; r < N; r++) {
         // Mask images are stored north-up; the stitched field runs north with its row.
@@ -86,24 +86,19 @@ function stitchShore(job: PoliticsJob): { field: Float32Array; width: number } {
   return { field, width }
 }
 
-/** Channel 0 of every coast tile the job names, decoded up front (sharp is asynchronous). */
-const decoded = new Map<string, Uint8Array>()
-
-function decodeChannel0(file: string): Uint8Array {
-  const ch = decoded.get(file)
-  if (!ch) throw new Error(`coast tile ${file} was not decoded`)
-  return ch
-}
+/** Channel 0 of each of the job's nine coast tiles, decoded up front (sharp is asynchronous); null where none was written. */
+let decoded: (Uint8Array | null)[] = []
 
 async function predecode(job: PoliticsJob) {
-  decoded.clear()
-  await Promise.all(
+  decoded = await Promise.all(
     job.shore.map(async (t) => {
-      if (!t.file) return
-      const { data, info } = await sharp(t.file).raw().toBuffer({ resolveWithObject: true })
+      if (!t.source) return null
+      const { data, info } = await sharp(readTile(t.source))
+        .raw()
+        .toBuffer({ resolveWithObject: true })
       const ch = new Uint8Array(N * N)
       for (let k = 0; k < N * N; k++) ch[k] = data[k * info.channels]
-      decoded.set(t.file, ch)
+      return ch
     }),
   )
 }

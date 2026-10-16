@@ -21,6 +21,7 @@ import { loadDataset, ROOT_DIR, DATA_DIR } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
+import { coastTiles, readTile } from '../water/tiles.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
 import { knownPolygons, readKnownWorld } from '../known/world.ts'
 import { projection } from '@roma-cognita/world'
@@ -295,7 +296,12 @@ for (const [i, p] of places.entries()) {
 // under the box on each side. Sizes mirror the engine's TIER_EM.
 const LAND_SCALES = [3000, 1500, 800, 400, 200]
 const SIDE_EM = [0, 18, 16.5, 16, 15, 14]
-const water = await coastSampler()
+const water = await coastSampler(
+  places.map((p) => {
+    const em = SIDE_EM[p.prominence[0]?.value ?? 4] * LAND_SCALES[0]
+    return { x: p.x, y: p.y, reach: 8 * LAND_SCALES[0] + p.name.length * 0.5 * em + em }
+  }),
+)
 for (const p of places) {
   const tier = p.prominence[0]?.value ?? 4
   const land: Record<string, number[]> = { e: [], w: [], n: [], s: [] }
@@ -345,8 +351,8 @@ writeFileSync(
 )
 console.log(`${places.length} places, ${seats.length} seats`)
 
-/** Land or sea at a plane point, from the coast mask's level-6 tiles (build/water). */
-async function coastSampler() {
+/** Land or sea at a plane point within `reach` of one of `around`, from the coast mask's level-6 tiles (build/water). */
+async function coastSampler(around: { x: number; y: number; reach: number }[]) {
   const { default: sharp } = await import('sharp')
   const { ROOT, TILE_TEXELS } = await import('@roma-cognita/world')
   const dir = join(ROOT_DIR, 'build/water')
@@ -355,28 +361,25 @@ async function coastSampler() {
   const codes = new Uint8Array(Buffer.from(index.codes[level], 'base64'))
   const n = 2 ** level
   const size = ROOT.size / n
-  const tiles = new Map<string, Uint8Array | null>()
+  const find = coastTiles(dir)
+  const tiles = new Map<string, Uint8Array>()
   const keys = new Set<string>()
-  for (const p of data.places) {
-    const [x, y] = projection.forward(...p.location)
-    for (let di = -1; di <= 1; di++)
-      for (let dj = -1; dj <= 1; dj++) {
-        const i = Math.floor((x - ROOT.x) / size) + di
-        const j = Math.floor((y - ROOT.y) / size) + dj
+  const tileOf = (v: number, origin: number) =>
+    Math.min(n - 1, Math.max(0, Math.floor((v - origin) / size)))
+  for (const { x, y, reach } of around)
+    for (let i = tileOf(x - reach, ROOT.x); i <= tileOf(x + reach, ROOT.x); i++)
+      for (let j = tileOf(y - reach, ROOT.y); j <= tileOf(y + reach, ROOT.y); j++)
         if (codes[j * n + i] === 2) keys.add(`${i}/${j}`)
-      }
-  }
   for (const key of keys) {
-    try {
-      const { data: px, info } = await sharp(join(dir, `${level}/${key}.webp`))
-        .raw()
-        .toBuffer({ resolveWithObject: true })
-      const ch = new Uint8Array(TILE_TEXELS * TILE_TEXELS)
-      for (let k = 0; k < ch.length; k++) ch[k] = px[k * info.channels]
-      tiles.set(key, ch)
-    } catch {
-      tiles.set(key, null)
-    }
+    const [i, j] = key.split('/').map(Number)
+    const source = find({ level, i, j })
+    if (!source) throw new Error(`coast tile ${level}/${key} is a shore tile but was not found`)
+    const { data: px, info } = await sharp(readTile(source))
+      .raw()
+      .toBuffer({ resolveWithObject: true })
+    const ch = new Uint8Array(TILE_TEXELS * TILE_TEXELS)
+    for (let k = 0; k < ch.length; k++) ch[k] = px[k * info.channels]
+    tiles.set(key, ch)
   }
   return {
     isLand(x: number, y: number) {
@@ -385,8 +388,7 @@ async function coastSampler() {
       if (i < 0 || j < 0 || i >= n || j >= n) return false
       const code = codes[j * n + i]
       if (code !== 2) return code === 1 || code === 3
-      const t = tiles.get(`${i}/${j}`)
-      if (!t) return false
+      const t = tiles.get(`${i}/${j}`)!
       const c = Math.round(((x - (ROOT.x + i * size)) / size) * (TILE_TEXELS - 1))
       const r =
         TILE_TEXELS - 1 - Math.round(((y - (ROOT.y + j * size)) / size) * (TILE_TEXELS - 1))
