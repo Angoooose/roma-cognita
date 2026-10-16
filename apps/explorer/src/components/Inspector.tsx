@@ -812,19 +812,22 @@ function Backed({ sources, children }: { sources: CitedSource[]; children: React
         side="left"
         align="start"
         sideOffset={offset}
-        className="paper rule-double max-h-[60vh] w-72 overflow-y-auto bg-card not-italic"
+        // Padded only clear of the double rule, so the passages scroll inside it.
+        className="paper rule-double max-h-[60vh] w-72 bg-card p-1 not-italic"
       >
-        {/* Ruled apart, as the index of sources sets its passages. */}
-        <div className="divide-y divide-rule/60 text-xs text-pretty">
-          {sources.map((s, i) => (
-            <div key={i} className="space-y-1 py-3 first:pt-0 last:pb-0">
-              <p className="text-sm leading-snug text-foreground/90">“{s.quote}”</p>
-              <p className="pl-3 -indent-3 leading-snug">
-                <Cite s={s} />
-              </p>
-            </div>
-          ))}
-        </div>
+        <ScrollArea>
+          {/* Ruled apart, as the index of sources sets its passages. */}
+          <div className="divide-y divide-rule/60 px-3 py-1.5 text-xs text-pretty">
+            {sources.map((s, i) => (
+              <div key={i} className="space-y-1 py-3 first:pt-0 last:pb-0">
+                <p className="text-sm leading-snug text-foreground/90">“{s.quote}”</p>
+                <p className="pl-3 -indent-3 leading-snug">
+                  <Cite s={s} />
+                </p>
+              </div>
+            ))}
+          </div>
+        </ScrollArea>
       </PopoverContent>
     </Popover>
   )
