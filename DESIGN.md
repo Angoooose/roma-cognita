@@ -1282,9 +1282,9 @@ copy. What we take from it:
     panel. It is not a dialog: the map and timeline stay live while it is
     open, and only its row closes it. It starts closed, and the reader's
     choice is remembered.
-  - The title block's last row is the preface, named as an atlas names its
-    front matter. It opens the one dialog in the interface: what the map is, where it stands, how to use it, how far to trust it (§1,
-    with Rome's generated fabric as the exception, §7.7) and whose work it is
+  - The title block's last row is About. It opens the one dialog in the
+    interface: what the map is, where it stands, how to use it, how far to
+    trust it (§1, with Rome's generated fabric as the exception, §7.7) and whose work it is
     drawn from (§6), read on its own rather than beside the map. It is written
     plainly and without a narrator: no "we" or "I". On hover, and
     while the legend is open, a row's icon takes its text's colour.

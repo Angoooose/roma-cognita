@@ -15,7 +15,7 @@ import {
   Swatch,
   Town,
 } from '@/components/Legend.tsx'
-import { Preface } from '@/components/Preface.tsx'
+import { About } from '@/components/About.tsx'
 import {
   Command,
   CommandEmpty,
@@ -272,7 +272,7 @@ export function Search() {
 /**
  * An atlas plate's title block: the map's name and the years it covers, framed in the
  * double rule, with its rows beneath: the search, the sources (a page
- * of its own), the legend and the preface. App.tsx
+ * of its own), the legend and the about page. App.tsx
  * places it at the head of the left column, above the person panel.
  */
 function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }) {
@@ -310,7 +310,7 @@ function TitleBlock({ years, onSearch }: { years: string; onSearch: () => void }
           <ArrowUpRight className="ml-auto text-muted-foreground" />
         </a>
         <LegendRow />
-        <Preface years={years} />
+        <About years={years} />
       </div>
       <Legend />
     </div>

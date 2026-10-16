@@ -11,12 +11,12 @@ import { Fleuron, Section } from '@/components/Marks.tsx'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 /**
- * The title block's last row, and the plate it opens, as an atlas opens with its
- * preface: what the map is, where it stands, how to use it, how far to trust it (DESIGN.md
- * §1, §7.7), and whose work it is drawn from (§6; data/README.md, "People"). Unlike the legend it is a
- * dialog: it is read on its own, not beside the map.
+ * The title block's last row, and the plate it opens: what the map is, where it
+ * stands, how to use it, how far to trust it (DESIGN.md §1, §7.7), and whose work it
+ * is drawn from (§6; data/README.md, "People"). Unlike the legend it is a dialog: it
+ * is read on its own, not beside the map.
  */
-export function Preface({ years }: { years: string }) {
+export function About({ years }: { years: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,12 +25,12 @@ export function Preface({ years }: { years: string }) {
           className="group flex w-full items-center gap-2 rounded-md px-3 py-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
         >
           <Info className="text-muted-foreground transition-colors group-hover:text-primary" />
-          <span className="transition-colors group-hover:text-primary">Preface</span>
+          <span className="transition-colors group-hover:text-primary">About</span>
         </button>
       </DialogTrigger>
       <DialogContent className="paper flex max-h-[min(720px,calc(100vh-4rem))] flex-col gap-0 p-0 sm:max-w-xl">
         <header className="px-8 pt-7 pb-5 text-center">
-          <div className="caps mb-2 text-xs text-muted-foreground">Preface</div>
+          <div className="caps mb-2 text-xs text-muted-foreground">About</div>
           <DialogTitle className="font-heading text-2xl leading-tight font-semibold tracking-[0.16em]">
             Roma Cognita
           </DialogTitle>
