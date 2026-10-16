@@ -304,7 +304,6 @@ export function LaneChart(props: {
             )}
           </>
         )}
-        {shows && <KeyItem swatch={<Index />}>The map's year</KeyItem>}
       </div>
     </div>
   )
