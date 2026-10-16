@@ -23,7 +23,7 @@
 
 <p>
   <a href="https://roma.angoose.dev">
-    <img src="https://github.com/user-attachments/assets/63fb079b-b5c9-4f5c-8369-6038754ab0e4" alt="Roma Cognita map" width="100%" />
+    <img width="3456" height="1928" alt="Roma Cognita map" src="https://github.com/user-attachments/assets/d709f66d-4759-40eb-9af0-c61b294e75c4" />
   </a>
 </p>
 
