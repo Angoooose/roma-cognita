@@ -49,8 +49,10 @@ export interface PersonRecord {
    * The years this person is attested, from their dated posts, statuses and life
    * dates, or else DPRR's era where that is unambiguous. Absent when nothing dates
    * them: such people are reached through their relatives, never by the year filter.
+   * `sometime` where their only dates are windows (PostRecord.sometime): active at
+   * some point within the span, not across it.
    */
-  active?: { from: Year; to: Year; basis: 'assertions' | 'era' }
+  active?: { from: Year; to: Year; basis: 'assertions' | 'sometime' | 'era' }
   /** From Wikidata, where it has this person. */
   en?: {
     wikidata: string
@@ -68,6 +70,12 @@ export interface PostRecord {
   office: number
   from: AssertedYear
   to: AssertedYear
+  /**
+   * The range is a window: the post was held at some point within it, not throughout
+   * (a tribunate "between 99 and 87", a command "date uncertain").
+   * pipeline/src/people/windows.ts says which ranges are windows.
+   */
+  sometime?: true
   /** DPRR is unsure the person held the post at all. */
   uncertain: boolean
   provinces: { id: number; uncertain: boolean }[]

@@ -20,6 +20,7 @@ import {
   Q,
   Section,
   Swatch,
+  hatch,
   useRomeFills,
 } from '@/components/Marks.tsx'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -195,6 +196,8 @@ function useShowCommand(c: Command) {
   const span = map?.politics.window
   const goToPolity = useExplorer((s) => s.goToPolity)
   const goToYear = useExplorer((s) => s.goToYear)
+  // A window has no year to go to.
+  if (c.sometime) return {}
   const ground = onMap(c, map)
   if (ground) return { go: () => goToPolity(ground.polity, ground.year) }
   if (span && c.from <= span[1] && c.to >= span[0]) {
@@ -212,13 +215,17 @@ const TRACK = 360 - 32 - 68
 /**
  * The life drawn in lanes on one axis: the offices as dots, commands in their ground's
  * colour, and the Senate or a priesthood as spans, over the timeline's ruler with its
- * gold index at the year the map shows.
+ * gold index at the year the map shows. An office or command held sometime within a
+ * span, in no year a source fixes, is that span hatched.
  */
 function LifeChart({ career }: { career: Career }) {
   const fill = useRomeFills().province
-  const offices = career.lines.filter((l) => l.chart)
+  const charted = career.lines.filter((l) => l.chart)
+  const offices = charted.filter((l) => !l.sometime)
+  const windows = charted.filter((l) => l.sometime)
   const years = [
     ...offices.map((l) => l.from),
+    ...windows.flatMap((l) => [l.from, l.to]),
     ...career.commands.flatMap((c) => [c.from, c.to]),
     ...career.standing.flatMap((l) => l.spans.flatMap((s) => [s.from, s.to])),
   ]
@@ -234,45 +241,67 @@ function LifeChart({ career }: { career: Career }) {
   const a = axis(lo, hi)
 
   const lanes: Lane[] = []
-  if (offices.length) {
+  if (charted.length) {
     const labels = placeLabels(offices, (y) => ((y - lo + 0.5) / a.n) * TRACK)
     // A row above the dots only if some label had to go there.
     const above = labels.includes('above')
+    const bands = windows.map((l, i) => (
+      <Tooltip key={`w${i}`}>
+        <TooltipTrigger asChild>
+          <Bar
+            axis={a}
+            from={l.from}
+            to={l.to}
+            fill={INK}
+            uncertain={l.uncertain}
+            sometime
+            className={cn('cursor-default', above && 'top-7')}
+          />
+        </TooltipTrigger>
+        <TooltipContent>
+          {l.label}
+          {l.uncertain && '?'}, {when(l)}
+        </TooltipContent>
+      </Tooltip>
+    ))
     lanes.push({
       label: 'Offices',
       height: above ? 'h-10' : 'h-6',
-      body: offices.map((l, i) => (
-        <Tooltip key={i}>
-          <TooltipTrigger asChild>
-            {/* The dot and its label are one target: either shows what the office was. */}
-            <span
-              className={cn(
-                'absolute grid size-3 -translate-x-1/2 -translate-y-1/2 cursor-default place-items-center',
-                above ? 'top-7' : 'top-1/2',
-              )}
-              style={{ left: a.mid(l.from) }}
-            >
-              <Dot uncertain={l.uncertain} />
-              {labels[i] && (
-                <span
-                  className={cn(
-                    'absolute text-[0.6875rem] leading-none whitespace-nowrap',
-                    SIDE[labels[i]],
-                  )}
-                  style={{ opacity: l.uncertain ? 0.7 : 1 }}
-                  aria-hidden
-                >
-                  {l.abbreviation}
-                </span>
-              )}
-            </span>
-          </TooltipTrigger>
-          <TooltipContent>
-            {l.label}
-            {l.uncertain && '?'}, {formatSpan([l.from, l.to])}
-          </TooltipContent>
-        </Tooltip>
-      )),
+      body: [
+        ...bands,
+        ...offices.map((l, i) => (
+          <Tooltip key={i}>
+            <TooltipTrigger asChild>
+              {/* The dot and its label are one target: either shows what the office was. */}
+              <span
+                className={cn(
+                  'absolute grid size-3 -translate-x-1/2 -translate-y-1/2 cursor-default place-items-center',
+                  above ? 'top-7' : 'top-1/2',
+                )}
+                style={{ left: a.mid(l.from) }}
+              >
+                <Dot uncertain={l.uncertain} />
+                {labels[i] && (
+                  <span
+                    className={cn(
+                      'absolute text-[0.6875rem] leading-none whitespace-nowrap',
+                      SIDE[labels[i]],
+                    )}
+                    style={{ opacity: l.uncertain ? 0.7 : 1 }}
+                    aria-hidden
+                  >
+                    {l.abbreviation}
+                  </span>
+                )}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              {l.label}
+              {l.uncertain && '?'}, {formatSpan([l.from, l.to])}
+            </TooltipContent>
+          </Tooltip>
+        )),
+      ],
     })
   }
   if (career.commands.length) {
@@ -301,11 +330,12 @@ function LifeChart({ career }: { career: Career }) {
               to={s.to}
               fill={INK}
               uncertain={s.uncertain}
+              sometime={s.sometime}
               className="cursor-default"
             />
           </TooltipTrigger>
           <TooltipContent>
-            {lane.label}, {formatSpan([s.from, s.to])}
+            {lane.label}, {when(s)}
             {s.uncertain && ', uncertain'}
           </TooltipContent>
         </Tooltip>
@@ -313,8 +343,16 @@ function LifeChart({ career }: { career: Career }) {
     })
   }
 
-  return <LaneChart axis={a} lanes={lanes} />
+  const sometime =
+    windows.length > 0 ||
+    career.commands.some((c) => c.sometime) ||
+    career.standing.some((l) => l.spans.some((s) => s.sometime))
+  return <LaneChart axis={a} lanes={lanes} sometime={sometime} />
 }
+
+/** `63 BCE`, `58–50 BCE`, or for a window `sometime 264–31 BCE`. */
+const when = (x: { from: number; to: number; sometime: boolean }) =>
+  `${x.sometime ? 'sometime ' : ''}${formatSpan([x.from, x.to])}`
 
 type Side = 'right' | 'left' | 'above'
 
@@ -418,7 +456,7 @@ function CommandBar(props: {
       <HoverCardTrigger asChild>
         <button
           type="button"
-          aria-label={`${c.label}, ${places(c, map)}, ${formatSpan([c.from, c.to])}`}
+          aria-label={`${c.label}, ${places(c, map)}, ${when(c)}`}
           onClick={show.go}
           className={cn(
             'group absolute inset-y-0 z-20 px-px',
@@ -428,7 +466,10 @@ function CommandBar(props: {
         >
           <span
             className="absolute inset-x-px top-1/2 h-2.5 -translate-y-1/2 rounded-[1px] ring-foreground/50 transition-shadow group-hover:ring-1"
-            style={{ background: props.fill, opacity: opacity(props.fill, c.uncertain) }}
+            style={{
+              background: c.sometime ? hatch(props.fill) : props.fill,
+              opacity: opacity(props.fill, c.uncertain),
+            }}
           />
         </button>
       </HoverCardTrigger>
@@ -443,7 +484,7 @@ function CommandBar(props: {
           </div>
           <div className="figures text-xs text-muted-foreground">
             {c.label}
-            {c.uncertain && '?'} · {formatSpan([c.from, c.to])}
+            {c.uncertain && '?'} · {when(c)}
           </div>
           {(c.source || c.citations.length > 0) && (
             <div className="text-xs text-muted-foreground italic">
@@ -451,13 +492,15 @@ function CommandBar(props: {
             </div>
           )}
           <div className="pt-0.5 text-xs text-muted-foreground">
-            {show.go
-              ? show.year !== undefined
-                ? `Click to go to ${formatYear(show.year)}`
-                : 'Click to show on the map'
-              : show.span
-                ? `Outside the years this map covers, ${formatSpan(show.span)}`
-                : null}
+            {c.sometime
+              ? 'Held once in these years; the sources do not say when'
+              : show.go
+                ? show.year !== undefined
+                  ? `Click to go to ${formatYear(show.year)}`
+                  : 'Click to show on the map'
+                : show.span
+                  ? `Outside the years this map covers, ${formatSpan(show.span)}`
+                  : null}
           </div>
         </div>
       </HoverCardContent>
@@ -486,6 +529,7 @@ function CareerList({ career }: { career: Career }) {
             mark={l.kind === 'office' ? <Dot uncertain={l.uncertain} /> : undefined}
             from={l.from}
             to={l.to}
+            sometime={l.sometime}
           >
             <CareerWords line={l} />
           </IndexRow>
@@ -538,9 +582,10 @@ function Commands({ career }: { career: Career }) {
         {career.commands.map((c, i) => (
           <IndexRow
             key={i}
-            mark={<Swatch fill={fill} uncertain={c.uncertain} />}
+            mark={<Swatch fill={fill} uncertain={c.uncertain} sometime={c.sometime} />}
             from={c.from}
             to={c.to}
+            sometime={c.sometime}
           >
             <CommandWords command={c} />
           </IndexRow>

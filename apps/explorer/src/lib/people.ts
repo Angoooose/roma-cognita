@@ -231,7 +231,8 @@ export class People {
    * A career as the person panel draws it: the offices and other posts in order, the
    * commands with the ground they were held on, and the standing that ran for years
    * (the Senate, a priesthood) as lanes. A post DPRR repeats year by year, such as a
-   * proconsulship renewed, is merged into one run of years.
+   * proconsulship renewed, is merged into one run of years. A post held sometime within
+   * its years stays a line of its own, marked `sometime`.
    */
   career(id: PersonId): Career {
     const posts = this.postsOf.get(id) ?? []
@@ -271,6 +272,7 @@ export class People {
         to: e.year,
         label: word,
         uncertain: e.uncertain,
+        sometime: false,
         colleagues: [],
         chart: false,
       })
@@ -288,6 +290,7 @@ export class People {
             from: s.from!.year,
             to: s.to?.year ?? s.from!.year,
             uncertain: s.uncertain,
+            sometime: false,
           }))
           .sort((a, b) => a.from - b.from),
       })
@@ -297,7 +300,12 @@ export class People {
       standing.push({
         label: capital(OFFICE_WORDS[name] ?? name),
         spans: list
-          .map((p) => ({ from: p.from.year, to: p.to.year, uncertain: p.uncertain }))
+          .map((p) => ({
+            from: p.from.year,
+            to: p.to.year,
+            uncertain: p.uncertain,
+            sometime: !!p.sometime,
+          }))
           .sort((a, b) => a.from - b.from),
       })
     }
@@ -347,6 +355,7 @@ export class People {
       from: first.from.year,
       to: run.at(-1)!.to.year,
       uncertain: run.some((p) => p.uncertain),
+      sometime: !!first.sometime,
       detail: this.detail(first),
       abbreviation: this.offices.get(first.office)?.abbreviation,
     }
@@ -417,6 +426,7 @@ export class People {
       to: run.at(-1)!.to.year,
       label: this.officeLabel(first),
       uncertain: run.some((p) => p.uncertain),
+      sometime: !!first.sometime,
       places,
       source: source?.abbreviation ?? source?.name,
       citations: [...new Set(run.flatMap((p) => p.citations))],
@@ -494,6 +504,8 @@ export interface CareerLine {
   /** After the office, in italic: `urban`, `Gallia Transalpina`. */
   detail?: string
   uncertain: boolean
+  /** Held at some point within `from`–`to`, not throughout (PostRecord.sometime). */
+  sometime: boolean
   /** The other consuls or censors of the year. */
   colleagues: PersonRecord[]
   /** DPRR's abbreviation, for the chart's label: `cos.`. */
@@ -518,6 +530,8 @@ export interface Command {
   /** `Proconsul`. */
   label: string
   uncertain: boolean
+  /** Held at some point within `from`–`to`, not throughout (PostRecord.sometime). */
+  sometime: boolean
   places: CommandPlace[]
   source?: string
   citations: string[]
@@ -526,7 +540,7 @@ export interface Command {
 export interface Lane {
   /** `Senate`, `Pontifex`. */
   label: string
-  spans: { from: number; to: number; uncertain: boolean }[]
+  spans: { from: number; to: number; uncertain: boolean; sometime: boolean }[]
 }
 
 export interface Career {
@@ -570,12 +584,16 @@ export interface FamilyGroup {
 
 /**
  * Runs of one post held year after year: DPRR records a proconsulship renewed for four
- * years as four posts. Posts with the same key that meet or overlap become one run.
+ * years as four posts. Posts with the same key that meet or overlap become one run. A
+ * window joins nothing: it is one year somewhere in its span, not the years around it.
  */
 function merge(posts: PostRecord[], key: (p: PostRecord) => string): PostRecord[][] {
   const groups = new Map<string, PostRecord[]>()
-  for (const p of posts) push(groups, key(p), p)
   const runs: PostRecord[][] = []
+  for (const p of posts) {
+    if (p.sometime) runs.push([p])
+    else push(groups, key(p), p)
+  }
   for (const list of groups.values()) {
     list.sort((a, b) => a.from.year - b.from.year)
     let run: PostRecord[] = []

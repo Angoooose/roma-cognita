@@ -7,6 +7,7 @@ import {
   type DprrProvince,
   type OfficeRole,
   type PersonId,
+  type PostRecord,
 } from '@roma-cognita/schema'
 import {
   activeSpan,
@@ -20,6 +21,7 @@ import {
 import { joinGovernors, unattestedYears } from '../src/people/governors.ts'
 import { ROOT_DIR } from '../src/load.ts'
 import { classifyOffices } from '../src/people/offices.ts'
+import { windowTest } from '../src/people/windows.ts'
 
 describe('dprrYear', () => {
   it('reads DPRR’s BCE years as astronomical ones', () => {
@@ -87,6 +89,61 @@ describe('activeSpan', () => {
     // A zero end is not a year; a positive end may be CE or a lost minus sign.
     expect(activeSpan([], { from: '-100', to: '0' })).toBeUndefined()
     expect(activeSpan([], { from: '-125', to: '25' })).toBeUndefined()
+  })
+
+  it('takes windows only where nothing else dates the person, and says so', () => {
+    const era = { from: '-300', to: '25' }
+    expect(activeSpan([], era, [-263, -30])).toEqual({
+      from: -263,
+      to: -30,
+      basis: 'sometime',
+    })
+    expect(activeSpan([-62], era, [-263, -30])).toEqual({
+      from: -62,
+      to: -62,
+      basis: 'assertions',
+    })
+  })
+})
+
+describe('windowTest', () => {
+  const post = (id: number, start: string, end: string, role: OfficeRole, office = '') => ({
+    id,
+    start,
+    end,
+    role,
+    office,
+  })
+
+  it('reads a multi-year range of an office held a year at a time as a window', () => {
+    const { isWindow } = windowTest([], [])
+    // Appuleius, proconsul of Sicily "date uncertain"; a tribune "between 99 and 87".
+    expect(isWindow(post(7502, '-264', '-31', 'command', 'proconsul'))).toBe(true)
+    expect(isWindow(post(7405, '-99', '-87', 'magistracy', 'tribunus plebis'))).toBe(true)
+    expect(isWindow(post(7491, '-43', '-36', 'staff', 'quaestor'))).toBe(true)
+    expect(isWindow(post(1, '-63', '-63', 'command', 'consul'))).toBe(false)
+  })
+
+  it('reads an office held for years as a tenure unless listed', () => {
+    const augur = post(11033, '-83', '-78', 'priesthood', 'augur')
+    const senator = post(7680, '-509', '-31', 'distinction', 'senator - office unknown')
+    const list = [
+      { id: 7680, expect: ['-509', '-31'] as [string, string], why: 'sen. date uncertain' },
+    ]
+    const { isWindow, report } = windowTest([augur, senator], list)
+    expect(isWindow(augur)).toBe(false)
+    expect(isWindow(senator)).toBe(true)
+    expect(report.stale).toEqual([])
+  })
+
+  it('reports a listed window whose range has changed, and does not mark it', () => {
+    const senator = post(7680, '-100', '-31', 'distinction')
+    const list = [
+      { id: 7680, expect: ['-509', '-31'] as [string, string], why: 'sen. date uncertain' },
+    ]
+    const { isWindow, report } = windowTest([senator], list)
+    expect(isWindow(senator)).toBe(false)
+    expect(report.stale).toEqual([expect.objectContaining({ found: ['-100', '-31'] })])
   })
 })
 
@@ -348,7 +405,7 @@ describe('joinGovernors', () => {
       review: 'draft',
     },
   ] as DprrProvince[]
-  const join = (posts: ReturnType<typeof post>[]) =>
+  const join = (posts: PostRecord[]) =>
     joinGovernors(
       posts,
       (id) => names[id],
@@ -369,6 +426,11 @@ describe('joinGovernors', () => {
       [1, -50, 'command'],
       [2, -50, 'staff'],
     ])
+  })
+
+  it('puts no one in a province for a post held sometime within its years', () => {
+    const { records } = join([{ ...post(1, 10, -263, -30, 1), sometime: true }])
+    expect(records).toEqual([])
   })
 
   it('keeps the province each year came from, for a post that names several', () => {

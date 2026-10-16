@@ -76,7 +76,10 @@ function PersonPreview({ person, people }: { person: PersonRecord; people: Peopl
   )
 }
 
-/** `106–43 BCE`, `born 106 BCE`, `attested 75–43 BCE`, or nothing where nothing dates them. */
+/**
+ * `106–43 BCE`, `born 106 BCE`, `attested 75–43 BCE`, `attested sometime 264–31 BCE`
+ * where only a window dates them, or `undated`.
+ */
 export function lifeLine(people: People, p: PersonRecord) {
   const { born, died } = people.lifespan(p.id)
   const year = (e: { year: number; bound: string }) =>
@@ -91,7 +94,8 @@ export function lifeLine(people: People, p: PersonRecord) {
   }
   if (p.active) {
     const span = formatSpan([p.active.from, p.active.to])
-    return p.active.basis === 'era' ? `c. ${span}` : `attested ${span}`
+    if (p.active.basis === 'era') return `c. ${span}`
+    return p.active.basis === 'sometime' ? `attested sometime ${span}` : `attested ${span}`
   }
   return 'undated'
 }

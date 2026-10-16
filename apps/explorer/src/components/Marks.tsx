@@ -129,15 +129,32 @@ export const INK = 'var(--foreground)'
 export const opacity = (fill: string, uncertain?: boolean) =>
   fill === INK ? (uncertain ? 0.2 : 0.55) : uncertain ? 0.45 : 1
 
-/** A legend swatch (Legend.tsx). `open` fades it in, as the legend's schematic frontier. */
-export function Swatch(props: { fill: string; uncertain?: boolean; open?: boolean }) {
+/**
+ * A window: held at some point within these years, not throughout. Hatched, so it reads
+ * as somewhere in the span rather than all of it, and never as a solid run of years.
+ */
+export const hatch = (fill: string) =>
+  `repeating-linear-gradient(135deg, ${fill} 0 1.5px, transparent 1.5px 4px)`
+
+/**
+ * A legend swatch (Legend.tsx). `open` fades it in, as the legend's schematic frontier;
+ * `sometime` hatches it, for a window.
+ */
+export function Swatch(props: {
+  fill: string
+  uncertain?: boolean
+  open?: boolean
+  sometime?: boolean
+}) {
   return (
     <span
       className="block h-3 w-5 rounded-[1px]"
       style={{
-        background: props.open
-          ? `linear-gradient(90deg, transparent, ${props.fill} 85%)`
-          : props.fill,
+        background: props.sometime
+          ? hatch(props.fill)
+          : props.open
+            ? `linear-gradient(90deg, transparent, ${props.fill} 85%)`
+            : props.fill,
         opacity: opacity(props.fill, props.uncertain),
       }}
     />
@@ -238,6 +255,8 @@ export function LaneChart(props: {
   fill?: string
   /** Keys in place of Held and Uncertain, for a chart that is not of holding. */
   legend?: ReactNode
+  /** Some span is a window, so the key explains the hatching. */
+  sometime?: boolean
 }) {
   const year = useExplorer((s) => s.year)
   const { axis: a, lanes } = props
@@ -280,6 +299,9 @@ export function LaneChart(props: {
           <>
             <KeyItem swatch={<Swatch fill={fill} />}>Held</KeyItem>
             <KeyItem swatch={<Swatch fill={fill} uncertain />}>Uncertain</KeyItem>
+            {props.sometime && (
+              <KeyItem swatch={<Swatch fill={fill} sometime />}>Sometime within</KeyItem>
+            )}
           </>
         )}
         {shows && <KeyItem swatch={<Index />}>The map's year</KeyItem>}
@@ -298,11 +320,14 @@ export function Bar(props: {
   /** The sources leave this end open: it fades out, as the legend's schematic frontier. */
   openStart?: boolean
   openEnd?: boolean
+  /** Held at some point within these years, not throughout: hatched. */
+  sometime?: boolean
   className?: string
 }) {
   const { fill } = props
-  const background =
-    props.openStart || props.openEnd
+  const background = props.sometime
+    ? hatch(fill)
+    : props.openStart || props.openEnd
       ? `linear-gradient(90deg, ${props.openStart ? 'transparent' : fill}, ${fill} 12%, ${fill} 88%, ${props.openEnd ? 'transparent' : fill})`
       : fill
   return (
@@ -391,9 +416,11 @@ export function IndexRow(props: {
   now?: (year: string) => string
   /** A line saying there is nothing here, such as "No one attested". */
   faint?: boolean
+  /** Held at some point within the years, not throughout: said so, and never current. */
+  sometime?: boolean
 }) {
   const year = useExplorer((s) => s.year)
-  const now = props.from <= year && year <= props.to
+  const now = !props.sometime && props.from <= year && year <= props.to
   const said = (props.now ?? ((y) => `Held in ${y}`))(formatYear(year))
   return (
     <li
@@ -427,6 +454,7 @@ export function IndexRow(props: {
         </Tooltip>
       )}
       <span className="figures shrink-0 whitespace-nowrap text-muted-foreground">
+        {props.sometime && <span className="italic">sometime </span>}
         {formatSpan([props.from, props.to])}
       </span>
     </li>

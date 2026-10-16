@@ -11,6 +11,9 @@
  * A join the table marks uncertain (Transalpine Gaul standing for Gallia Comata) makes
  * everyone it brings uncertain there: DPRR cannot say which half of Gaul a man held.
  *
+ * A post held sometime within its years (PostRecord.sometime) puts no one in any one
+ * of them, so it governs nothing here.
+ *
  * DPRR works in whole years, so two commanders in one year is ordinary: an outgoing
  * governor and his successor. Both are kept; the app shows both.
  */
@@ -77,6 +80,7 @@ export function joinGovernors(
 
   const records: GovernorshipRecord[] = []
   for (const post of posts) {
+    if (post.sometime) continue
     const role = roleOf(post.office)
     for (const link of post.provinces) {
       const name = provinceName(link.id)
