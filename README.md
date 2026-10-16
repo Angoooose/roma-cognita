@@ -9,7 +9,8 @@
     <a href="https://roma.angoose.dev"><b>Open the map</b></a> ·
     <a href="#how-its-built">How it's built</a> ·
     <a href="#running-it">Running it</a> ·
-    <a href="#credits">Credits</a>
+    <a href="#credits">Credits</a> ·
+    <a href="#licence">Licence</a>
   </sub>
 </p>
 
@@ -119,4 +120,8 @@ Built on the work of many others.
 | About 60 ancient texts | History, from Caesar and Cicero to Strabo |
 | More than 100 modern studies | History, led by Broughton's *Magistrates of the Roman Republic* and the *Barrington Atlas* |
 
-The full list, with each dataset's licence, is in `data/sources.yaml`. Our own data is released under **CC BY-SA 4.0**, for non-commercial use.
+The full list, with each dataset's licence, is in `data/sources.yaml`.
+
+## Licence
+
+The code is released under the [MIT licence](LICENSE). Our data in `data/` is released under [CC BY-SA 4.0](data/LICENSE), except the geometry drawn from OpenStreetMap, which stays under the ODbL. The people come from DPRR under CC BY-NC 4.0. They are fetched and built on your machine, never stored in the repo, and the build writes DPRR's licence beside them.

@@ -26,8 +26,8 @@
  *
  * It prints its own doubt: the area of every region beside the published
  * figures it should be near, the thresholds, where the check sites fell, and
- * anything that looked wrong. Previews go to --preview <dir> (default: the
- * scratchpad path below, or FLOODPLAIN_PREVIEW_DIR).
+ * anything that looked wrong. Previews go to --preview <dir> (default
+ * FLOODPLAIN_PREVIEW_DIR, else none).
  *
  *   npm run derive-floodplains -w pipeline                 all regions
  *   npm run derive-floodplains -w pipeline -- nile-delta   regions whose id contains it
@@ -86,11 +86,7 @@ const SIMPLIFY_M = 60
 const round = (v: number) => Math.round(v * 1e5) / 1e5
 const argv = process.argv.slice(2)
 const previewFlag = argv.indexOf('--preview')
-const PREVIEW_DIR =
-  previewFlag >= 0
-    ? argv[previewFlag + 1]
-    : (process.env.FLOODPLAIN_PREVIEW_DIR ??
-      '/private/tmp/claude-501/-Users-angus-Documents-GitHub-claude/1a178eb0-273d-4d69-9b0a-3a6d43e7f9d5/scratchpad/floodplains')
+const PREVIEW_DIR = previewFlag >= 0 ? argv[previewFlag + 1] : process.env.FLOODPLAIN_PREVIEW_DIR
 const filters = argv.filter((a, i) => !a.startsWith('--') && argv[i - 1] !== '--preview')
 
 const doubts: string[] = []
