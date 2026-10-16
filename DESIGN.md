@@ -1,11 +1,8 @@
-# Roman world map — design
+# Roma Cognita — design
 
 A GPU-rendered, game-quality interactive map of the Roman world with a timeline.
 Imperator: Rome is the bar for how it should _feel_; the Barrington Atlas is the
-bar for what it may _claim_. The Cicero project will be its first consumer, but
-the map is a general-purpose package and knows nothing about Cicero.
-
-Status: draft, September 2026.
+bar for what it may _claim_.
 
 ---
 
@@ -25,27 +22,30 @@ Status: draft, September 2026.
    decoration for its own sake. This is what keeps the map from looking
    vibe-coded.
 4. **Zooming in adds detail and never removes it.**
-5. **Build small, structure for growth.** v1 is one period. Growing it means
-   adding rows, never changing the schema or the renderer.
+5. **Build small, structure for growth.** The map covers one period. Growing
+   it means adding rows, never changing the schema or the renderer.
 6. **Builds report their own doubt.** Every build prints what it could not
    confirm, what it moved and what it overrode.
 
 ---
 
-## 2. Scope of v1
+## 2. Scope
 
-| Decision       | v1                                                                                                                            | Grows to                              |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| Time window    | **133–27 BCE**, the Gracchi to Augustus's settlement                                                                          | any year; schema is open              |
-| Frame          | **10°W–50°E, 22°N–58°N**: Ireland/Portugal to the Persian Gulf, Upper Egypt to Scotland; data carries a few degrees of margin | wider by config                       |
-| Zoom           | continental → **regional** (towns, roads, villas, ~50 m/px)                                                                   | city-plan level is a separate product |
-| Neighbours     | Parthia, Germania, Dacia, Britannia, Arabia: named, roughly bounded, not curated town by town                                 | curated as needed                     |
-| Platform       | **desktop browsers only**, mouse and trackpad                                                                                 | —                                     |
-| Licence stance | **non-commercial**; our data released under **CC BY-SA 4.0**                                                                  | —                                     |
+| Decision    | Now                                                                                                                           | Grows to                              |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| Time window | **133–27 BCE**, the Gracchi to Augustus's settlement                                                                          | any year; schema is open              |
+| Frame       | **10°W–50°E, 22°N–58°N**: Ireland/Portugal to the Persian Gulf, Upper Egypt to Scotland; data carries a few degrees of margin | wider by config                       |
+| Zoom        | continental → **regional** (towns, roads, villas, ~50 m/px)                                                                   | city-plan level is a separate product |
+| Neighbours  | Parthia, Germania, Dacia, Britannia, Arabia: named, roughly bounded, not curated town by town                                 | curated as needed                     |
+| Platform    | **desktop browsers only**, mouse and trackpad                                                                                 | —                                     |
+| Licences    | code **MIT**; `data/` **CC BY-SA 4.0**, except `data/geometry/rome.geojson`, which is **ODbL** (drawn from OpenStreetMap)     | —                                     |
 
-Non-commercial use opens up share-alike and non-commercial sources (FABDEM,
-DARE). Every record carries its sources' licences, so if the project ever goes
-commercial the build can be re-run without them.
+Every record carries its sources' licences, and the attribution is generated
+from them. The one non-commercial source, the Digital Prosopography of the Roman
+Republic (CC BY-NC 4.0), feeds only the people layer. It cannot be merged into
+CC BY-SA data, so it is kept out of `data/`: it is fetched and built locally
+(`pipeline/src/people/`), with its licence beside it (the "People" section of
+[data/README.md](data/README.md)).
 
 ---
 
@@ -55,23 +55,22 @@ commercial the build can be re-run without them.
 roma-cognita/
   DESIGN.md
   data/                 hand-authored records (YAML) + geometry (GeoJSON) — the moat
-  pipeline/             ingest, validate, bake — Node/TS, GDAL CLI for rasters
+  pipeline/             ingest, validate, bake — Node/TS
   packages/
     world/              projection, frame and tile addressing, shared by pipeline and engine
     schema/             zod schemas + TS types, shared by pipeline and engine
     engine/             the renderer and its public API (three.js)
   apps/
-    explorer/           first consumer: the map, a timeline, an inspector
+    explorer/           the map, a timeline, an inspector
 ```
 
-npm workspaces, TypeScript, Vite. Cicero either becomes `apps/cicero` or
-imports `packages/engine` from its own repo; it plugs in through the same API
-as the explorer (§9) either way.
+npm workspaces, TypeScript, Vite. Anything else that wants the map imports
+`packages/engine` and plugs in through the same API as the explorer (§9).
 
 **Flow:** `data/` + external sources → `pipeline` (validate → join → bake) →
 `build/` outputs (textures, tiles, JSON) → `engine` → apps.
 
-**Stack, from the research (September 2026):**
+**Stack:**
 
 - **three.js WebGPURenderer.** It falls back to WebGL2 automatically, which
   matters because ~5% of desktop users, mostly on Linux Firefox, still lack
@@ -79,12 +78,10 @@ as the explorer (§9) either way.
   Rejected: Cesium, MapLibre, Mapbox and deck.gl (too little control over the
   look, and built for a globe or Web Mercator); Bevy/wasm (too costly on the
   web); raw WebGPU (we would rebuild tiling and text for no gain).
-- **Text:** msdf-atlas-gen bakes MTSDF atlases at build time, and harfbuzzjs
-  shapes the text. Slug is the upgrade path for very large type: its patent
-  was dedicated to the public domain in March 2026 and the reference shaders
-  are MIT/Apache.
-- **Lines:** instanced segment quads (Rye Terrell's technique), with a
-  cumulative-distance attribute for dashes.
+- **Text:** msdf-bmfont-xml bakes MSDF atlases at build time, and the glyph
+  layout is ours (§7.5).
+- **Lines:** roads, rivers and borders are painted into the terrain in its own
+  shader pass (§7.3, §7.4), so they sit on the relief at any tilt.
 
 ---
 
@@ -104,8 +101,8 @@ Scale error along parallels, computed for the candidates:
 | 28 / 52     | 4.0% at 58°N     | 2.2%                                  |
 
 30/50 is the compromise: Scotland pays a little so the core stays tight.
-Because every output is pre-projected, **this decision is frozen once the
-pipeline ships.** Changing it means rebuilding every file.
+Because every output is pre-projected, **this decision is frozen.** Changing it
+means rebuilding every file.
 
 A known trap: d3-geo and polygon-clipping disagree on ring winding. The
 pipeline normalises winding once, at ingest, and asserts it.
@@ -152,7 +149,7 @@ province status, and so on.
   inspector shows the range.
 - **Open ends.** `"before 133 BCE"` means the record starts before the window,
   and is distinct from an unknown start.
-- **Precision:** v1 works in whole years. The schema allows month/day with a
+- **Precision:** the map works in whole years. The schema allows month/day with a
   `calendar` tag (`roman-republican` / `julian`) for later. Cicero's letters
   are dated to the day, and the pre-45 BCE Roman calendar drifted months out of
   step with the seasons.
@@ -176,7 +173,7 @@ should survive.
 - Otherwise **our own stable slugs** (`hispania-citerior`). Never array
   positions, and never IDs from upstream files. AWMC OBJECTIDs are not stable
   across releases.
-- Territory geometry is **authored, not ingested** (September 2026): each atom
+- Territory geometry is **authored, not ingested**: each atom
   is built by `npm run atoms -w pipeline` from the frontier its sources name —
   vertices at places (with Pleiades ids), legs along rivers (HydroRIVERS) or
   ranges (the DEM), clipped to land — so no upstream id is ever needed.
@@ -204,40 +201,39 @@ of each outline, and the validator asserts it.
   - an interval with end before start;
   - a record with no source;
   - an atom set that does not cover the land it came from.
-- It lives in git for v1. An editing tool (a map-side inspector that writes
-  YAML) is planned once hand-editing hurts, not before.
+- It lives in git, edited by hand. An editing tool (a map-side inspector that
+  writes YAML) waits until hand-editing hurts.
 
 ---
 
 ## 6. Sources
 
-| Layer                   | Source                                                                                                                                                                  | Licence                                                           | Notes                                                                                                                                                        |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Terrain (runtime)       | **Mapterhorn** `planet.pmtiles`, Terrarium encoding                                                                                                                     | various open; **terms of the hosted file unverified**             | 30 m global, finer in parts of Italy and Spain. Web Mercator, reprojected by the engine (§7.1). Fallback: AWS Terrain Tiles.                                 |
-| Terrain (offline bakes) | Copernicus GLO-30; **FABDEM** (bare earth) now allowed                                                                                                                  | Copernicus licence; CC BY-NC-SA                                   | Used for ambient occlusion and texture-shading bakes                                                                                                         |
-| Bathymetry              | **EMODnet DTM 2024** (~115 m) over the European seas, **GEBCO_2026** (15″, ~460 m) elsewhere, baked offline (§7.2)                                                      | CC BY 4.0; public domain with attribution                         | Drives the shallows. AWS Terrain Tiles were used at runtime until September 2026: ~1–2 km at sea, and they drew the Caspian as a flat −28 m slab.            |
-| Coastline, modern       | OSM land polygons, split edition (osmdata.openstreetmap.de)                                                                                                             | ODbL                                                              | Natural Earth 10m is too coarse at 50 m/px                                                                                                                   |
-| Lakes                   | **HydroLAKES v1.0** (≥ 0.05 km²)                                                                                                                                        | CC BY 4.0                                                         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically                                                              |
-| Coastline, ancient      | Our `landscape-change` records: shores read off published reconstructions, filled over the Mapterhorn terrain (§6.1)                                                   | ours                                                              | AWMC's period layers were checked and not used: a handful of coarse, uncited polygons (`roman_open_water` is 2, Miletus and Ephesus). Checked 2026-09-22. |
-| Places                  | **Pleiades**; DARE as a cross-check                                                                                                                                     | CC BY 3.0; CC BY-SA 3.0                                           | Importance is curated by us                                                                                                                                  |
-| Territory geometry      | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | Rebuilt September 2026 (`pipeline/src/atoms`). AWMC's `roman_empire_bce_60` was dropped: one unnamed Roman extent, coarse, cut with straight lines, and ODbL |
-| Region and people names | AWMC `regional_names_linework`                                                                                                                                          | ODbL                                                              | Baselines give size and angle                                                                                                                                |
-| Rivers                  | AWMC river lines (Barrington); HydroRIVERS for minor                                                                                                                    | ODbL; **licence to verify**                                       | Modern courses corrected at deltas                                                                                                                           |
-| Roads                   | **Itiner-e**                                                                                                                                                            | CC BY 4.0                                                         | Only dated segments ship. Construction date kept per feature, so a road never draws before it was built.                                                     |
-| Surface textures        | ambientCG, Poly Haven                                                                                                                                                   | CC0                                                               | Rock, scree, sand, soil, scrub                                                                                                                               |
-| Aridity / biome         | Köppen–Geiger (Beck et al.)                                                                                                                                             | **licence to verify**                                             | Modern climate as a proxy for desert versus green; used coarsely                                                                                             |
-| Reference only          | Barrington Atlas, Broughton MRR, Talbert                                                                                                                                | ©                                                                 | Cited, never copied                                                                                                                                          |
+| Layer              | Source                                                                                                                                                                  | Licence                                                           | Notes                                                                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Terrain            | **Mapterhorn** hosted tiles, Terrarium-encoded WebP to z12, mostly Copernicus GLO-30 in these regions                                                                   | various open; **terms of the hosted file unverified**             | 30 m global, finer in parts of Italy and Spain. Web Mercator, reprojected by the engine (§7.1). Also fetched and cached offline for the derivations (§6.1, §7.1). |
+| Bathymetry         | **EMODnet DTM 2024** (~115 m) over the European seas, **GEBCO_2026** (15″, ~460 m) elsewhere, baked offline (§7.2)                                                      | CC BY 4.0; public domain with attribution                         | Drives the shallows                                                                                                                                               |
+| Coastline, modern  | OSM land polygons, split edition (osmdata.openstreetmap.de)                                                                                                             | ODbL                                                              | Natural Earth 10m is too coarse at 50 m/px                                                                                                                        |
+| Lakes              | **HydroLAKES v1.0** (≥ 0.05 km²)                                                                                                                                        | CC BY 4.0                                                         | Reservoirs (type 2) are dropped, which removes Nasser, Atatürk, Assad and similar automatically                                                                   |
+| Coastline, ancient | Our `landscape-change` records: shores read off published reconstructions, filled over the Mapterhorn terrain (§6.1)                                                    | ours                                                              | AWMC's period layers were checked and not used: a handful of coarse, uncited polygons (`roman_open_water` is 2, Miletus and Ephesus)                              |
+| Places             | **Pleiades**                                                                                                                                                            | CC BY 3.0                                                         | Importance is curated by us                                                                                                                                       |
+| Territory geometry | **Our own outlines**, authored from the frontiers the cited scholarship names: rivers along HydroRIVERS, ranges along the Mapterhorn DEM, clipped to Natural Earth land | ours (CC BY-SA); public domain; HydroRIVERS **licence to verify** | `pipeline/src/atoms`. AWMC's `roman_empire_bce_60` was not used: one unnamed Roman extent, coarse, cut with straight lines, and ODbL                              |
+| Rivers             | **HydroRIVERS v1.0**, sized by discharge; the Tiber's line from OpenStreetMap (§7.7)                                                                                    | **licence to verify**; ODbL                                       | Modern courses; where the Roman course differed, that is a `landscape-change` record                                                                              |
+| Roads              | **Itiner-e**                                                                                                                                                            | CC BY 4.0                                                         | Only dated segments ship. Construction date kept per feature, so a road never draws before it was built.                                                          |
+| Aridity / biome    | Köppen–Geiger 1991–2020, 1 km (Beck et al. 2023)                                                                                                                        | CC BY 4.0                                                         | Modern climate as a proxy for desert versus green; used coarsely                                                                                                  |
+| People             | Digital Prosopography of the Roman Republic; Wikidata                                                                                                                   | CC BY-NC 4.0; CC0                                                 | Built locally, never written into `data/` (§2)                                                                                                                    |
+| Reference only     | Barrington Atlas, Broughton MRR, Talbert                                                                                                                                | ©                                                                 | Cited, never copied                                                                                                                                               |
 
 ODbL is share-alike but it is not CC BY-SA: a database derived from ODbL data
 must itself be released under ODbL, so ODbL-derived layers (the OSM coast
-mask, AWMC names) keep their licence and are credited separately. The territory
+mask, the OpenStreetMap outlines in `data/geometry/rome.geojson`) keep their
+licence and are credited separately. The territory
 outlines are clipped to public-domain Natural Earth land for that reason. The
 attribution screen is generated from the `source` registry.
 
-### 6.1 Landscape changes, the v1 list
+### 6.1 Landscape changes
 
 These are changes visible at regional scale, each digitised from a published
-reconstruction. Each record starts at `review: draft` or `needs-check`.
+reconstruction, and each reviewed like any record (`review`, §5.3).
 
 **How a shore is made** (`npm run derive-coasts -w pipeline`,
 `pipeline/src/landscape/`). Almost none of this exists as data, so each shore
@@ -257,34 +253,18 @@ cites its figures. Each run prints the areas and whether check sites (Ostia's
 theatre, Priene, Lade, Utica…) fall on the water, the shore or the land where
 the sources put them; its previews are the review surface.
 
-**Drawn** (September 2026): the Fucine Lake, Copais, Boibeis and the Fayum's
-Lake Moeris; the Tiber mouth and its two lagoons, the Arno and Portus Pisanus,
-the Po delta and the Ravenna lagoon; the Latmian Gulf, Ephesus, the Malian Gulf;
-the Gulf of Utica, Lake Mareotis, the Canopic promontory and Alexandria's
-harbours; the Rhône east of the Petit Rhône and the Saint-Ferréol lobe; the Ebro;
-the Narbonne lagoon; the head of the Persian Gulf. Returned to land: the Valli di
-Comacchio, the Grado lagoon and the Toshka lakes. Aquileia's coast was checked
-and does not move at this scale. The Pontine Marshes were checked and are not
-drawn: drained enough by the Republic to be marsh and farmland, not water.
+**Drawn:** the Fucine Lake, Copais, Boibeis and the Fayum's Lake Moeris; the
+Tiber mouth and its two lagoons, the Arno and Portus Pisanus, the Po delta and
+the Ravenna lagoon; the Latmian Gulf, Ephesus, the Malian Gulf; the Gulf of
+Utica, Lake Mareotis, the Canopic promontory and Alexandria's harbours; the
+Rhône east of the Petit Rhône and the Saint-Ferréol lobe; the Ebro; the
+Narbonne lagoon; the head of the Persian Gulf. Returned to land: the Valli di
+Comacchio, the Grado lagoon and the Toshka lakes. Modern reservoirs (Nasser, Atatürk, Keban, Assad and the
+like) go with HydroLAKES' reservoir type (§6).
 
-**The list it was drawn from:**
-
-- **Silted bays and deltas:**
-  - the Latmian Gulf (Miletus, Priene, Myus, Heraclea);
-  - Ephesus and the Cayster;
-  - the Tiber mouth (Ostia);
-  - the Po delta (Ravenna, Adria, Spina);
-  - the Arno (Pisa);
-  - Aquileia's lagoon;
-  - the Gulf of Utica and the Bagradas;
-  - Thermopylae and the Malian Gulf;
-  - the Nile branches and Lake Mareotis;
-  - the Rhône mouth;
-  - the Ebro delta, mostly post-Roman land to be removed.
-- **Modern reservoirs to remove:** Lake Nasser, Atatürk, Keban, Assad, and the
-  largest Spanish and Anatolian reservoirs.
-- **Drained water to restore:** the Fucine Lake, Lake Copais, the Pontine
-  Marshes.
+- **Checked and not moved:** Aquileia's coast does not move at this scale. The
+  Pontine Marshes are not drawn as water: drained enough by the Republic to be
+  marsh and farmland.
 - **Persian Gulf head:** the ancient shoreline is debated, so it is drawn with
   `confidence: uncertain`, at a middle line, with 20 km of shallows off it for
   the belt of flats the studies describe (`shelfKm`).
@@ -299,26 +279,30 @@ tectonics dominate.
 
 ### 7.1 Terrain
 
-- **A quadtree of heightmap tiles in the Albers plane**, CDLOD-style, with
-  geomorphing between levels. A top-down strategy camera with limited tilt
-  keeps this simple.
+- **A quadtree of heightmap tiles in the Albers plane.** A top-down strategy
+  camera with limited tilt keeps this simple.
 - **Reprojection:** a worker fetches the Mercator Terrarium tiles covering an
   Albers tile, resamples them into an Albers heightmap, and caches the result.
   The GPU only ever sees plane-space tiles.
-- Mesh: a regular grid per tile (Martini or RTIN later, if the vertex budget
-  bites).
-- **Lighting in the shader:** light from several directions, plus a baked
-  ambient-occlusion and texture-shading overlay at low zoom for mountain
-  structure.
-- **Materials:** CC0 detail textures blended by masks derived from data, not
-  painted:
-  - **rock** from slope;
-  - **bare ground** from elevation;
-  - **green versus arid** from the aridity/biome layer;
-  - **sand** from distance to coast.
+- **Mesh:** a regular grid per tile, 64 segments a side, since lighting is per
+  texel. Over the model of Rome deep tiles get a denser grid, up to 512 segments
+  (about 5 m), so the ground follows its levelled sites (§7.7).
+- **Lighting in the shader:** light from several directions, the north-west
+  carrying it.
+- **Ground colour** comes from data, not painting
+  (`packages/engine/src/terrain/material.ts`):
+  - **the colour family** (temperate, desert, steppe, dry summer, cold) from the
+    climate texture (§6), baked by `npm run biome -w pipeline`;
+  - **rock** from slope, and **snow** from height, lower where the climate is
+    cold;
+  - **deserts** paler on sand seas and darker and redder on rough ground, from
+    the slope alone;
+  - **wet sand** along low, flat shores;
+  - noise at three scales (~60 km, ~6 km, ~600 m) so flat colour never reads as
+    flat, moving only within the family the climate picked.
 
-  The masks describe physical ground only. There are no invented fields or
-  forests. Centuriation drawn from real survey data is a later, evidenced
+  The ground describes physical ground only. There are no invented fields or
+  forests. Centuriation drawn from real survey data would be an evidenced
   exception. The one place farmland is drawn is round the model of Rome (§7.7),
   close in, keyed as illustrative like its houses.
 
@@ -356,9 +340,9 @@ tectonics dominate.
     not texels, so every level encodes the same ramp.
   - **Layout:** tiles use the terrain quadtree's own addresses and texel grid,
     for levels 0–10. Texels are 27 m at level 10; the deepest terrain (level 11,
-    13.5 m) reads a window of its level-10 ancestor. The mask stopped at level 8
-    (108 m) until September 2026, and at full zoom that rounded every harbour
-    mole, spit and islet into a blob next to 15 m relief.
+    13.5 m) reads a window of its level-10 ancestor. Anything coarser (108 m at
+    level 8) rounds every harbour mole, spit and islet into a blob next to 15 m
+    relief.
   - **Encoding:** distance is clamped to ±16 texels, quantised to 8 bits, and
     stored as lossless WebP (~5 KB per tile).
   - **Skipped tiles:** tiles with no shore are not written. `index.json`
@@ -371,8 +355,9 @@ tectonics dominate.
     allows 20k), and levels 9–10 alone are hundreds of thousands of tiles.
   - **What it gives the shader:** from one field, a crisp antialiased coast at
     any zoom (the edge is where the field crosses zero, found to sub-texel
-    precision), a screen-space shore rim, and a hairline of ink. It is also why
-    land below sea level (Qattara, the Jordan valley) is no longer drawn as sea.
+    precision), a screen-space shore rim, and a hairline of ink. Land below sea
+    level (Qattara, the Jordan valley) is land, because the mask, not the
+    height, says what is water.
 - **Depth is baked too** (`npm run depth -w pipeline`, `pipeline/src/depth/`),
   after the coast mask, whose tile codes say which tiles are dry:
   - **Sources:** EMODnet DTM 2024 (~115 m) wherever it reaches, which is every
@@ -380,12 +365,12 @@ tectonics dominate.
     Caspian). EMODnet is fetched in 2° chunks from its WCS into `.cache`.
   - **Sea under the source's land.** Neither source's shore agrees with OSM's;
     GEBCO's can sit half a kilometre off. Where the mask says sea but a source
-    says land, depth read 0 and drew a turquoise fringe unrelated to the sea
-    floor. So each source's sea is carried a short way under its land (1.8 km
+    says land, depth would read 0 and draw a turquoise fringe unrelated to the
+    sea floor. So each source's sea is carried a short way under its land (1.8 km
     EMODnet, 3.7 km GEBCO) before sampling.
   - **Smoothed by depth.** EMODnet is a patchwork of surveys, and each
     footprint and track line leaves a straight-edged step: coloured by depth,
-    the open sea read as a grid of boxes that appeared tile by tile on zooming
+    the open sea would read as a grid of boxes appearing tile by tile on zooming
     in. The bake blurs the depth with a radius that grows with it — 100 m in
     the shallows, 1 km from 400 m down — so shelves, banks and channels keep
     their shape and the survey seams offshore go. Land does not drag the blur
@@ -402,11 +387,11 @@ tectonics dominate.
   - **Encoding:** √depth in 1/32 steps (0.15 m at 6 m, 4 m at 5,000 m), gradient
     predictor, deflate (`packages/world/src/depth.ts`). A byte per texel bands
     the shallows ramp; this is ~30 KB for a level-8 tile full of shelf.
-  - **Not tied to the shore distance.** A runtime limit (floor falling no
-    faster than 1:2 from the drawn coast) was tried and removed: the shore
-    distance is clamped at 16 mask texels, a reach that differs between tiles
-    with coast and without, so it capped whole coastal tiles at ~215 m and drew
-    a lighter rectangle round every island.
+  - **Not tied to the shore distance.** A runtime limit on the floor (falling
+    no faster than 1:2 from the drawn coast) does not work: the shore distance is
+    clamped at 16 mask texels, a reach that differs between tiles with coast and
+    without, so it caps whole coastal tiles at ~215 m and draws a lighter
+    rectangle round every island.
 - **Shading** (`packages/engine/src/terrain/water.ts`) keeps the paper tier's
   contrast far out and adds detail only as it becomes resolvable:
   - **Colour from depth** in exponential steps, as light falls off in water:
@@ -419,31 +404,29 @@ tectonics dominate.
     and each tile gets its offset into that period in double precision: world
     kilometres over a 15 m wavelength overflow float32 and drew the ripples on
     a grid. Value noise, warped octave by octave, with a sine-free hash, since
-    both plain value noise and a sin hash showed straight lines close in. The
+    both plain value noise and a sin hash show straight lines close in. The
     noise is baked once into a tileable texture (value and gradient, four
     texels a cell), so an octave is one read rather than eight hashes.
   - **Cost:** the surface and surf sit behind branches that only water pixels,
     close enough in to show them, take; an octave finer than a pixel is
-    skipped. Measured September 2026 against the commit before any of this
-    (paired, Retina, M-series): +0.1 ms a frame inland, +0.3–1 ms over water
-    (4–13%). The arithmetic noise, unbranched, had cost up to 25%.
+    skipped. Measured against the same terrain without them (paired, Retina,
+    M-series): +0.1 ms a frame inland, +0.3–1 ms over water (4–13%), where the
+    same noise computed unbranched cost up to 25%.
   - **Surf in metres:** lines 28 m apart over the last ~120 m of gently
     shelving shores (not cliffs), broken by noise, with foam at the water's
     edge: the engraver's waterlining, read as surf. A darker band of wet sand
     runs along low, flat shores.
-  - **Nothing moves.** Drifting swell and rolling surf were built and taken
-    out (September 2026): motion is a game's idiom, it pulls the eye from what
-    the map is about, and a still map only needs drawing when something
-    changes.
+  - **Nothing moves.** No drifting swell or rolling surf: motion is a game's
+    idiom, it pulls the eye from what the map is about, and a still map only
+    needs drawing when something changes.
   - **The overview rim** (a few pixels of shallows along every coast) is kept
     only far out. It is measured in the camera's metres per pixel: measured in
-    the field's own derivative, it drew a square around every islet smaller
-    than a mask texel.
+    the field's own derivative, it would draw a square around every islet
+    smaller than a mask texel.
 
 ### 7.3 Politics: the atom field
 
-Built in September 2026 (`npm run politics -w pipeline`,
-`packages/engine/src/politics/`). It follows the Imperator technique, splitting
+`npm run politics -w pipeline`, `packages/engine/src/politics/`. It follows the Imperator technique, splitting
 _where_ from _who_, with one change: borders come from a distance field, not
 from vector lines.
 
@@ -473,13 +456,13 @@ from vector lines.
   `setYear` rewrites one table and cross-fades between the two. It never
   rebuilds a tile.
 
-- **Colour by power** (decided 2026-09-22). A polity takes the colour of the
+- **Colour by power.** A polity takes the colour of the
   power it answers to, found by following `province-of`, `client-of` and
   similar links up to the top. Provinces are small, stable shifts of that
   colour. Client kingdoms are the colour washed towards parchment. Uncertain
   claims draw fainter. Colours are style, in `politics/palette.ts`, not data.
-- **Borders are drawn in the terrain shader from the field.** This replaces the
-  earlier plan of vector segments. The shader:
+- **Borders are drawn in the terrain shader from the field**, not as vector
+  segments. The shader:
   - takes labels from the nearest texel, never interpolated;
   - interpolates distance from the four texels around, each re-expressed
     against the nearest texel's pair so no phantom line appears midway between
@@ -498,8 +481,8 @@ from vector lines.
   - A schematic boundary has no hard line and no glow: a faint, wide soft band,
     with the fill fading in across the zone. It reads as a region's margin, not
     a frontier.
-  - The "dashed core" of the first plan needs an along-line coordinate the
-    field does not have, so it was dropped.
+  - There is no dashed line: a dash needs an along-line coordinate the field
+    does not have.
 - **Zoom tiers (§7.6).**
   - The fill runs from 82% at the overview to 10% close in.
   - The glow stays at 70%, sized in pixels and capped at 15 km. The contrast
@@ -511,28 +494,26 @@ from vector lines.
 
 ### 7.4 Lines and points
 
-Roads, rivers and borders were to share one instanced line renderer. In the end
-all three are painted into the terrain in its own shader pass (§7.1, §7.3), so they
-sit on the relief at any tilt.
+Roads, rivers and borders are all painted into the terrain in its own shader
+pass (§7.1, §7.3), so they sit on the relief at any tilt.
 
-**Roads were built in September 2026** (`npm run roads -w pipeline`,
-`packages/engine/src/roads`). The source is Itiner-e, static version 2024, CC BY 4.0.
-What matters about it:
+**Roads** (`npm run roads -w pipeline`, `packages/engine/src/roads`). The source
+is Itiner-e, static version 2024, CC BY 4.0. What matters about it:
 
 - **The coordinates are EPSG:3395.** The source's GeoJSON is ellipsoidal World
   Mercator, not EPSG:4326, and is unprojected with an iterated latitude.
 - **Only dated roads are drawn.** A segment is kept only when the source dates
-  its construction to 27 BCE or earlier (`pipeline/src/roads/dating.ts`, ported
-  and moved to astronomical years):
+  its construction to 27 BCE or earlier (`pipeline/src/roads/dating.ts`, in
+  astronomical years):
   - `Cons_per_e`, the Roman builder, outranks `Lower_Date`, the older route;
   - the latest bound of a range decides.
 
   That leaves the Republican trunk network as historians name it. An undated road
   cannot take part in a time series, so it is dropped, not drawn faintly.
 
-- **Corrections to its dating** (`data/road-corrections.yaml`, decided 2026-09-26).
+- **Corrections to its dating** (`data/road-corrections.yaml`).
   Itiner-e leaves some of the oldest roads out of Rome undated, and dates the
-  Salaria by a later paving ("Late Republic (72–30 BCE)"), so zoomed out they were
+  Salaria by a later paving ("Late Republic (72–30 BCE)"), which would leave them
   missing round the city. Where the sources show a road in use in the window, a
   record dates every segment of that Itiner-e line from then, with its sources, and
   the build prints each line it corrected: the Salaria (Livy 7.9.6), the Nomentana
@@ -547,8 +528,8 @@ What matters about it:
 - **The tile field** holds, per texel, the distance to the nearest road, plus
   one exact integer packing its year, class and certainty. At a tie between two
   roads, the older one wins, so a junction never waits on the newer road.
-- **Style** (reworked 2026-09-22; a bare hairline read as unfinished): a cased
-  road, the atlas symbol.
+- **Style:** a cased road, the atlas symbol; a bare hairline reads as
+  unfinished.
   - A cream core between fine dark edges, 3.2 CSS px wide for main roads and
     2.4 for secondary. It is the same language as the settlement names: light
     type with a dark halo.
@@ -556,10 +537,10 @@ What matters about it:
     overview.
   - Certainty sets the strength: surveyed 100%, conjectured 80%, hypothetical
     55%.
-  - Dashes were considered and set aside. They need an along-road coordinate
-    per texel, which half floats cannot hold at close zoom.
+  - No dashes: they need an along-road coordinate per texel, which half floats
+    cannot hold at close zoom.
 
-**Points were built in September 2026** (`packages/engine/src/labels/PlaceLayer.ts`).
+**Points** (`packages/engine/src/labels/PlaceLayer.ts`).
 Settlements and seats are screen-sized: each is anchored to its place and offset in
 pixels by the vertex shader. The anchor stands on the ground — its height from
 Mapterhorn at z10, baked into places.json, times the terrain's vertical
@@ -569,16 +550,14 @@ it to the top of their building (or, where it is not drawn, of the roofs round i
 so each marker sits on its temple's roof.
 
 - **Markers** are drawn in pixels, like engraved symbols: fixed stroke widths, one
-  pixel of antialiasing, no halo discs (reworked 2026-09-22, after the first
-  version read as a generic web map).
+  pixel of antialiasing, no halo discs, which read as a generic web map.
   - A town is a small ink dot with a paper hairline.
   - A capital (provincial or royal seat) is a fine ring round a dot, with paper
     between them.
   - Rome has a second, finer ring.
   - A kingdom drawn as its capital (`seats.yaml`) is a diamond in its power's
     colour, outlined in ink.
-- **What shows** (also reworked 2026-09-22; the first version crowded the
-  overview):
+- **What shows**, kept sparse so the overview is not crowded:
   - Rome shows at every scale. Tier 1 appears from 3,000 m/px, then 1,500, 800
     and 400 for tiers 2–4.
   - Seats name their kingdom from 1,700 m/px in. Further out, the territory
@@ -593,18 +572,17 @@ so each marker sits on its temple's roof.
 - **Names keep to the land.** The pipeline measures, on the coast mask, how much
   land lies under a name on each side of its place, at five scales, and
   placement tries land sides first.
-- **One style everywhere** (decided 2026-09-22): settlement names are light
+- **One style everywhere:** settlement names are light
   type (`#F3EBDA`) with a soft dark halo, 2.4 px wide, over land or sea. The
   hierarchy it gives: territories are dark capitals printed on the land,
   settlements are light type above it, seas are gold italic.
   - Light reads over busy relief, where dark ink sinks into it.
-  - Dark everywhere was tried and read worse.
-  - Choosing light or dark per name, by the ground under it, was also tried. It
-    read as random: neighbours differed, and names flipped as the zoom crossed
-    a threshold.
+  - Dark everywhere reads worse.
+  - Choosing light or dark per name, by the ground under it, reads as random:
+    neighbours differ, and names flip as the zoom crosses a threshold.
 - **Rome** is set at 19 px against 18 for the other great cities. Its double
-  ring and Cinzel capitals carry its weight, not size (22 px was tried and
-  looked oversized).
+  ring and Cinzel capitals carry its weight, not size (22 px looks
+  oversized).
 - **Knockout.** Where Rome's name is set over territory lettering, that
   lettering fades to a ghost inside a box around the name, as a printer cuts a
   territory name back around a city. The box is a screen rectangle, updated
@@ -621,14 +599,15 @@ so each marker sits on its temple's roof.
 
 ### 7.5 Labels
 
-Territory and water names were built in September 2026 (`pipeline/src/labels`,
-`packages/engine/src/labels`). Settlement names are in §7.4.
+Territory and water names: `pipeline/src/labels`, `packages/engine/src/labels`.
+Settlement names are in §7.4.
 
 - **Fonts** are baked to MSDF atlases by `npm run fonts -w pipeline`
   (msdf-bmfont-xml): Cinzel for land and EB Garamond italic for water, both
   OFL. The licence texts ship beside the atlases.
-  - Latin only for now. Polytonic Greek and harfbuzz shaping come with Greek
-    names. Until then, kerning comes from the atlas's own pair table.
+  - The atlases are Latin, with the diacritics transliterated forms use.
+    Kerning comes from the atlas's own pair table; polytonic Greek would need
+    OpenType shaping (harfbuzz).
 - **Glyph layout is ours.** Each glyph is centred on the path at its own arc
   length and turned to the path's tangent there.
   - There is one mesh per typeface, rebuilt only when the year changes.
@@ -647,15 +626,15 @@ Territory and water names were built in September 2026 (`pipeline/src/labels`,
   - take the largest capitals whose centred text fits the curve and never sits
     on ground thinner than the letters need, then open the tracking to fill
     about 72% of the curve.
-- **No name tilts more than 35° from horizontal, plus 10° of bend at its ends**
-  (decided 2026-09-22, after Aegyptus came out almost vertical). The axis is
+- **No name tilts more than 35° from horizontal, plus 10° of bend at its ends**,
+  or a tall land such as Aegyptus would be lettered almost vertically. The axis is
   clamped, every angle in range is tried, and the one giving the largest letters
   wins. Tall, narrow lands get a name across them, not one the reader has to
   turn their head for. Everything reads left to right.
 - **Water names** follow courses placed by hand (`pipeline/src/labels/seas.ts`),
   stored as the sea records' line geometry, and are sized to fill 90% of the
   course.
-- **Not yet built:**
+- **Not built:**
   - collision among territory names themselves (they sit inside their
     territories and have not needed it; settlements avoid them, §7.4);
   - two-line names;
@@ -667,7 +646,7 @@ Territory and water names were built in September 2026 (`pipeline/src/labels`,
 | ------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Paper**     | whole frame                   | Flat political colour, the unfinished sketch beyond the known world, a dark sea with gold italic sea names, almost no terrain |
 | **Political** | a region of the Mediterranean | Political colour over lit relief (terrain shows through as light and shade), large curved names, borders, main roads          |
-| **Terrain**   | a province or smaller         | Materials, glowing borders instead of full fills, roads, settlements, physical names, the shore band and foam                 |
+| **Terrain**   | a province or smaller         | Ground colour, glowing borders instead of full fills, roads, settlements, physical names, the shore band and foam             |
 
 The tiers crossfade continuously with camera distance. They are never hard
 switches.
@@ -684,33 +663,31 @@ so it never leaves out something the rest of the data draws.
 
 ### 7.7 The model of Rome
 
-**Built in September 2026** (`data/places/rome.yaml`, `pipeline/src/rome`,
-`packages/engine/src/rome`). Zoomed right into Rome, a model of the city rises out
-of the map's own terrain: below ~14 m/px it starts to rise, and it stands by 8. It is the one exception to §2's "city-plan
-level is a separate product": a capital drawn in detail is normal in an atlas, and
-nobody expects every town to get the same.
+`data/places/rome.yaml`, `pipeline/src/rome`, `packages/engine/src/rome`. Zoomed
+right into Rome, a model of the city rises out of the map's own terrain: below
+~14 m/px it starts to rise, and it stands by 8. It is the one exception to §2's
+"city-plan level is a separate product": a capital drawn in detail is normal in an
+atlas, and nobody expects every town to get the same.
 
-**It is also the one exception to §1** (decided 2026-09-24). A plan drawn only
-from what is sourced was sparse and read as a data overlay. So the model shows
-what nobody can map building by building — the houses and blocks of flats between
-the monuments — as a clearly generic, generated fabric. It is drawn plainer and
-more muted than the known buildings, so the eye reads it as a backdrop, and the
-legend keys it as illustrative. Realism goes into the known buildings first. What is
-known and what is generated are kept apart:
+**It is also the one exception to §1.** A plan drawn only from what is sourced is
+sparse and reads as a data overlay. So the model shows what nobody can map
+building by building — the houses and blocks of flats between the monuments — as a
+clearly generic, generated fabric. It is drawn plainer and more muted than the
+known buildings, so the eye reads it as a backdrop, and the legend keys it as
+illustrative. Realism goes into the known buildings first. What is known and what
+is generated are kept apart:
 
 - **Known**, from the records (every one dated and sourced, like any place):
-  - **Each built as itself** (decided 2026-09-24). Every known building has a
-    design (`pipeline/src/rome/designs.ts` and `designs/`): its type, its size,
-    its columns, its stairs and the way it faced, as its sources give them for
-    133–27 BCE, with those sources in the design's note. The engine knows how each
-    type is put together (`architecture.ts`, `monuments.ts`); the design says
-    which building it is. So the Capitol's temple is a Tuscan temple with three
-    rows of six columns, three cellae and a gilded roof; Castor's the Metellan
-    octastyle with its speakers' tribunal and side stairs; Vesta's a ring of
-    twenty Ionic columns on three steps; Pompey's theatre a cavea of three
-    arcaded storeys with Venus Victrix's temple at its top; the Circus Caesar's,
-    with its one-storey shop arcade, timber upper tiers and the euripus. The
-    research behind each is summarised in its record's note.
+  - **Each built as itself.** Every known building has a design
+    (`pipeline/src/rome/designs.ts` and `designs/`): its type, its size, its
+    columns, its stairs and the way it faced, as its sources give them for 133–27
+    BCE, with those sources in the design's note. The engine knows how each type
+    is put together (`architecture.ts`, `monuments.ts`); the design says which
+    building it is. So the Capitol's temple is a Tuscan temple with three rows of
+    six columns, three cellae and a gilded roof; Castor's the Metellan octastyle
+    with its speakers' tribunal and side stairs; Vesta's a ring of twenty Ionic
+    columns on three steps; Pompey's theatre a cavea of three arcaded storeys
+    with Venus Victrix's temple at its top.
     - **Placing.** A design stands on its record's surveyed outline (its box and
       axis) unless it gives a centre, a size and a bearing of its own: where the
       outline is of a later rebuilding (Castor's Augustan podium, Concord's
@@ -719,8 +696,8 @@ known and what is generated are kept apart:
     - **Where Platner & Ashby are superseded** (the Largo Argentina, the Forum
       Boarium, the Circus Flaminius, the Palatine's temples, the Late Republican
       phases of the Forum) the designs follow Digital Augustan Rome and the
-      Digitales Forum Romanum, which give the modern literature, and the
-      Sovrintendenza and Musei Capitolini for what the excavations found.
+      Digitales Forum Romanum for the modern literature, and the Sovrintendenza
+      and Musei Capitolini for what the excavations found.
     - **Where nothing is known of a building's form** — most of the temples on the
       Aventine, the Quirinal and the Esquiline — it is the typical mid-Republican
       temple (`DEFAULT_TEMPLE`): four Tuscan columns across a deep porch on a
@@ -728,539 +705,311 @@ known and what is generated are kept apart:
       the Largo Argentina's Temple C. Buildings with no remains whose form is a
       published hypothesis (the Curia Hostilia, the Basilica Porcia) are drawn to
       it, and their records say so.
-    - **On a slope** a design may stand as a terrace on its highest or middle
-      ground, its foundations running down to the lowest (`level`): the Area
-      Capitolina and its temples, and the Tabularium, whose substructure rises
-      from the Forum's ground to the saddle's.
-    - **Its site levelled** (decided 2026-09-25). Each designed building's site is
-      cut and filled level in the ground everything stands on (`ground.png`, model.ts),
-      the larger first, so a temple in a forum stands on the forum: at the mean of the
-      ground under it, or its lowest where it was cut into a slope (Caesar's forum,
-      cut into the Arx behind a peperino wall "12 m high", Platner & Ashby, p. 227), or
-      its highest where it was built out as a terrace. A walk 3 m wide runs round it
-      at its level; beyond, ground within a metre or two of the level eases back over
-      10 m, and where the site is cut more than 1.2 m into rising ground a retaining
-      wall of squared tufa holds the ground back. Over falling ground its own walls
-      and podium stand on foundations down to the ground. The terrain over the model's
-      board is drawn on a grid of about 5 m (512 segments a tile, from level 9;
-      `TerrainTiles.ts`) so it follows the levelled ground; at the map's usual 38 m
-      its big triangles cut through the buildings.
-    - **Bridges are built as their sources give them, and the river fitted to them**
-      (decided 2026-10-11, replacing bridges scaled to the water, 2026-09-25;
-      bridges.ts). The plan's river is OpenStreetMap's, the Tiber inside its
-      1870s–1900s embankment walls, so a bridge scaled to it was the wrong size (the
-      Fabricius' arches at 70% of their 24 m, the Cestius' at under half). Now each
-      bridge stands at its sourced size over the middle of the water on its axis,
-      and the river's banks are moved to meet its abutments: the water under it is
-      exactly as wide as its arches and piers, a channel cut either side easing
-      back to the river's own, or the ground made up where the river is wider. An
-      island it does not land on keeps its shore. The build reports how far each
-      bank moved (the Cestius' most, about 12 m each side, through the island's
-      bulge). Its deck is its design's: over its arches it clears their crowns,
-      level or rising to the middle and never dipping between them; smaller arches
-      beside a great one spring higher, on taller piers, under the deck it sets.
-      Past its outermost arches it comes down on ramps at 22% to its banks, the
-      same height at both ends (on the Tiber Island its top; elsewhere the mean
-      ground past its abutments), and runs on level 6 m as its approach. Every
-      change of grade is rounded by a parabolic curve, as a road over a hump is:
-      over a crown along the length of its arch (the crown first raised by what
-      the curve takes off, so the deck still clears it), at a ramp's foot over
-      8 m. The Cestius' arch rises 0.3 of its span, a shallow segment like the
-      bridge's surviving form: its rise is not recorded, so this is a judgement. The ground
-      is fitted to the bridge, not the bridge to the ground: made ground laid just
-      under its ramps and approaches across its width and a shoulder, eased back
-      into the land over 10 m; its walls run down into it. Its footprint, which
-      keeps the houses off, runs the length of its approaches. Its faces are laid
-      in courses, with a ring of voussoirs round each arch, a string course at the
-      deck and a coped parapet, in a lighter shade of its stone; its cutwaters are
-      hooded; its parapets come down towards each ramp's foot and end there. Where
-      one lands on the Tiber Island the embankment opens for its abutment. The
-      small holes in the modern river's outline (today's bridge piers, the islet
-      under the Pons Fabricius, the Ponte Rotto) are left out of the plan's river.
-    - **The Tiber Island's ship** (reworked 2026-09-29) is a travertine embankment on
-      the island's own shore: the shore smoothed of the modern embankment's steps
-      and drawn to a point at the prow downstream (island.ts, for the river's
-      outline too, so the water, the ground and the wall keep to one shore). Its
-      face is laid in courses, leaning back a little and stained where the river
-      rises; a coping stands out over it, and a low parapet along the top rises
-      towards the prow as a ship's sides do, with the relief of Aesculapius' staff
-      near it. Behind it the island is level, 5 m over the water, with a paved walk
-      along the parapet. The embankment lays the island's top itself, since the
-      terrain's cells are too coarse to hold an edge at the wall; the ground under
-      it rises from the river as a bank, which is what shows before the wall's
-      years.
-    - **No street under a building.** Where a recorded or main street's line crosses
-      a monument's footprint it stops at its edge (plate.ts), except over the bridges,
-      the island and the open squares.
     - Proportions a source does not give are Vitruvius' rules of thumb: a column
       seven diameters high for the Tuscan, nine for the Ionic, ten for the
       Corinthian; an entablature about a quarter of the column; a pediment a
       ninth of its width high.
+    - **On a slope** a design may stand as a terrace on its highest or middle
+      ground, its foundations running down to the lowest (`level`): the Area
+      Capitolina and its temples, and the Tabularium.
+    - **Its site levelled.** Each designed building's site is cut and filled level
+      in the ground everything stands on (`ground.png`, model.ts), the larger
+      first, so a temple in a forum stands on the forum: at the mean of the ground
+      under it, or its lowest where it was cut into a slope (Caesar's forum, cut
+      into the Arx behind a peperino wall "12 m high", Platner & Ashby, p. 227), or
+      its highest where it was built out as a terrace. A walk 3 m wide runs round
+      it at its level; beyond, the ground eases back over 10 m, and where the site
+      is cut more than 1.2 m into rising ground a retaining wall of squared tufa
+      holds it back. The terrain over the model's board is drawn on a grid of
+      about 5 m (§7.1) so it follows the levelled ground.
+    - **No street under a building.** Where a recorded or main street's line
+      crosses a monument's footprint it stops at its edge (plate.ts), except over
+      the bridges, the island and the open squares.
+  - **Bridges are built as their sources give them, and the river fitted to
+    them** (bridges.ts). The plan's river is OpenStreetMap's, the Tiber inside
+    its 1870s–1900s embankment walls, so a bridge scaled to it would be the wrong
+    size. Each bridge stands at its sourced size over the middle of the water on
+    its axis, and the river's banks are moved to meet its abutments, cut back or
+    made up; the build reports how far each bank moved. Its deck clears its
+    arches' crowns and comes down on ramps at 22% to level approaches, every
+    change of grade rounded as a road over a hump is, and the ground is fitted to
+    the bridge, not the bridge to the ground. Its footprint, which keeps the
+    houses off, runs the length of its approaches. The Cestius' arch rises 0.3 of
+    its span, like the bridge's surviving form: its rise is not recorded, so this
+    is a judgement.
+  - **The Tiber Island's ship** is a travertine embankment on the island's own
+    shore, smoothed of the modern embankment's steps and drawn to a point at the
+    prow downstream (island.ts, which gives the river's outline too, so the water,
+    the ground and the wall keep to one shore), with a parapet rising towards the
+    prow as a ship's sides do and the relief of Aesculapius' staff near it.
+    Behind it the island is level, 5 m over the water; the embankment lays the
+    island's top itself, since the terrain's cells are too coarse to hold an edge
+    at the wall.
   - **Their stone** is the one Platner & Ashby give for the window (`STONE_OF`,
     model.ts), and changes with the year where a building was refaced in it:
-    - marble for Saturn from Plancus's rebuilding (42 BCE), the Regia from
-      Calvinus's (36 BCE), Venus Genetrix, the Basilica Julia, Palatine Apollo,
-      Sosius's Apollo from 34 BCE and the round temple by the Tiber;
-    - travertine for the Mausoleum of Augustus and the tomb of Bibulus;
-    - the rest white stucco over tufa or peperino, the Republic's usual finish.
-      Rome's first marble temple was Metellus's of 146 BCE (Iuppiter Stator,
-      p. 304), and Augustus "found it built of brick and left it in marble"
-      ([Suetonius, Augustus 28.3](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Augustus*.html#28.3)).
-      So the marble city is Augustan, and the model does not anticipate it.
-    - Where an article's marble belongs to a later rebuilding (Castor, Concord,
-      Vesta, the Basilica Aemilia, the Curia), it is not taken.
-  - The Forum square, paved in Monte Verde tufa at the Sullan level and in
+    marble for Saturn from Plancus's rebuilding (42 BCE), the Regia from 36 BCE,
+    Venus Genetrix, the Basilica Julia, the two temples of Apollo and the round
+    temple by the Tiber; travertine for the Mausoleum of Augustus and the tomb of
+    Bibulus; the rest white stucco over tufa or peperino, the Republic's usual
+    finish. Augustus "found it built of brick and left it in marble"
+    ([Suetonius, Augustus 28.3](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Augustus*.html#28.3)),
+    so the marble city is Augustan, and the model does not anticipate it: where
+    an article's marble belongs to a later rebuilding (Castor, Concord, Vesta, the
+    Basilica Aemilia, the Curia), it is not taken.
+  - **The Forum square**, paved in Monte Verde tufa at the Sullan level and in
     travertine from Caesar's relaying (Forum Romanum, pp. 232–233), taken as 44
-    BCE. The travertine that survives is Augustan.
-    - **Level** (decided 2026-09-25): its paving lies at 13.5 m by the Lacus
-      Iuturnae (SITAR 17854, 17890), and the street at the Argiletum's mouth at 13.9 m,
-      but today's ground, smoothed, rises 11 m across it to the Capitol's foot. So
-      the square, the Comitium with it, is cut and filled to its paving's level
-      before any site, easing back to the ground round it over 30 m, and the
-      buildings on it (those round it, and what stands inside its outline) stand at
-      that level; behind Concord and Saturn the Capitol's slope rises to the
-      Tabularium.
-    - **Painted on the ground** (plate-0 green, `shading.ts`), not laid as a slab
-      over it: its outline, a fine dark edge as the streets have, the stone of the
-      year, and close in the joints of its slabs, in rows along its length (from
-      Caesar's rostra to his temple, which face each other down it), each row's
-      joints staggered and each slab a shade apart. The slabs' size (rows 1.5 m
-      wide, slabs 3 m long) is illustrative, not a survey's. The streets that cross
-      the square run on its paving, so they are not drawn over it.
-  - **The years 44–27 BCE** (decided 2026-09-24), when the window was carried to
-    27 BCE. Everything dated in them changes the model in its year:
-    - Caesar's rostra from 44 BCE, the old rostra given up; the Curia Hostilia,
-      rebuilt by Faustus Sulla after the fire of 52, pulled down in 44; the
-      Curia Julia rising from 44 and standing from 29, with Victory on its gable;
-      the Divus Iulius rising from 42 and standing from 29 on its platform with
-      the altar's niche; Plancus's Saturn rising from 42; the Regia in marble
-      from 36; the Basilica Paulli standing from 34;
-    - on the Palatine, Octavian's unfinished house of two peristyles until 36 BCE,
-      then Apollo's temple rising and, from 28, standing in marble over the Circus
-      with the portico of the Danaids before it; the hut of Romulus burnt in 38;
-    - in the Campus Martius, the Theatre of Marcellus's foundations from 44 on
-      the site Caesar cleared (the temple of Pietas gone), the Saepta Julia's
-      porticoes by 36, Sosius's Apollo rising from 34, and the Mausoleum's drum
-      and ring walls rising from 28;
-    - the Aqua Julia and the Tepula on the Marcia's arcade from 33 (below);
-      Agrippa's dolphins on the Circus's axis from 33; the Circus, Ceres and Spes
-      burnt in 31; Cornificius's Diana rising from 32; the Pons Sublicius wrecked
-      in 32; the wall round Juno Lucina's grove from 41.
-    - Left out, and why, in BACKLOG.md: the Pantheon (begun in 27, finished in
-      25), the Amphitheatre of Statilius Taurus and the Porticus Octavia of 168
-      BCE (sites unknown), the Actian arch (doubted), Jupiter Feretrius (tiny, its
-      site unknown).
-  - **The years 133–68 BCE** (decided 2026-09-28), when the window was carried back
-    to 133 BCE with the world map. Five research passes (the Forum and Palatine, the
-    Capitol, the Campus Martius, the south of the city, and a chronicle of every
-    recorded building, fire and demolition year by year) found what changed; each
+    BCE. Its paving lies at 13.5 m (SITAR 17854, 17890), but today's smoothed
+    ground rises 11 m across it, so the square and the Comitium are cut and filled
+    to that level before any site, and the buildings on it stand there. It is
+    painted on the ground (`shading.ts`), not laid as a slab: its outline, the
+    stone of the year, and close in the joints of its slabs in rows along its
+    length, a size that is illustrative, not a survey's.
+  - **Through the window**, everything dated changes the model in its year. Each
     change is in its record's dates and note and its design's `phases`, with its
-    sources. Everything dated in them changes the model in its year:
-    - **In the Forum**: the archaic temple of Castor (three cellae behind a deep porch
-      of Tuscan columns, Nielsen and Poulsen) until L. Metellus's of 117; an older
-      Concord, of unknown form and so the typical temple, until Opimius's of 121; the
-      Basilica Fulvia of one storey until Lepidus's restoration of 78 (the second
-      storey is taken to be his, from his son's coin); the **Comitium** (a new
-      builder, `comitium`): rings of low tufa steps round a paved floor, the old
-      Rostra on its south rim, about 42 m across on Coarelli's reading (Carafa's
-      dissent in the record), until Sulla's larger curia of 80 took its north side;
-      the older, smaller curia behind its steps until Sulla pulled it down in 81.
-    - **On the Palatine**: the Magna Mater burnt with "a very great part of the city"
-      in 111 and rebuilt on a higher podium to 106; Victoria's tufa columns Tuscan
-      until its restoration of about 40.
-    - **On the Capitol**: Jupiter's archaic temple, lower and under terracotta tiles,
-      until the fire of 6 July 83; a burnt shell through 82; Catulus's rising from 81
-      and dedicated in 69. Fides moved to the precinct's south-west side, where
-      Reusser's evidence puts it, and rising 115–110; the Tabularium rising 78–66.
-    - **In the Campus Martius**: Mars in Circo, Hermodorus's marble temple, going up
-      in 133–132; the Largo Argentina paved 1.40 m over the old ground after the fire
-      of 111, with its north portico (`area-sacra-largo-argentina`), the older temples'
-      podia standing lower from then; Temple A small until about 50, Temple B an open
-      ring of columns until 68 (a choice between "early" and "mid" 1st century);
-      the temple of Via delle Botteghe Oscure, missing before, standing throughout;
-      Bellona the typical temple until its rebuilding of 32; Spes and Juno Sospita
-      swapped to the modern identification.
-    - **In the south**: the round temple by the Tiber from 105 (the middle of
-      120–90), its platform open before; Portunus's older temple, of unknown form,
-      until the Ionic one rose in 80–76; the Horrea Galbana and Galba's tomb from
-      about 100, the family's estate open before; the Circus Maximus with timber
-      stands along its sides only, no shops and its curved end open, until Caesar's
-      rebuilding of 46.
-    - **The Servian Wall**'s patches of darker Anio tufa appear from 87, when the
-      consuls "repaired the walls, and planted engines on them" (Appian, Civil Wars
-      1.66).
-    - A building may be part-built more than once (Jupiter's: burnt, then rising), so
-      each spell of its `condition` is shown as itself (model.ts `dates`, buildModel.ts).
-    - A design whose site was open ground before it (`open`: a platform, an estate)
-      keeps the generated houses off it in the years before; otherwise houses stand on
-      a later monument's site until it is begun, as before.
-    - The generated city grows with the year where the sources date its growth
-      (**The city growing**, below).
-    - Researched and left out, and why, in BACKLOG.md.
-  - The aqueducts (`aqueducts.ts`). Only the Marcia's arcade stood above ground
-    near Rome: the Appia and the Anio Vetus ran underground into the city
+    sources: the archaic Castor until L. Metellus's of 117; the Comitium
+    (`comitium`), rings of low tufa steps round a paved floor, until Sulla's
+    curia of 80 took its north side; Jupiter's archaic temple until the fire of
+    83, a burnt shell, then Catulus's rising from 81; the Largo Argentina paved
+    over after the fire of 111, its older podia standing lower from then;
+    Caesar's rostra, curia and forum; Apollo's temple on the Palatine; the
+    Theatre of Marcellus's foundations and the Mausoleum rising from 28. A
+    building may be part-built more than once (Jupiter's: burnt, then rising), so
+    each spell of its `condition` is shown as itself (model.ts `dates`,
+    buildModel.ts).
+    - A design whose site was open ground before it (`open`: a platform, an
+      estate) keeps the generated houses off it in the years before; otherwise
+      houses stand on a later monument's site until it is begun (Caesar's forum
+      went up on the houses he bought).
+    - What was researched and left out, and why, is listed in the header of
+      `data/places/rome.yaml`: among them the Pantheon (begun in 27, finished in
+      25), the Amphitheatre of Statilius Taurus and the Porticus Octavia of 168
+      BCE (sites unknown), the Actian arch (doubted).
+  - **The aqueducts** (`aqueducts.ts`). Only the Marcia's arcade stood above
+    ground near Rome: the Appia and the Anio Vetus ran underground into the city
     (Frontinus 1.5–1.6), and are recorded but not drawn. The Marcia is drawn for
-    about 9 km, as Frontinus gives it: out of the ground at Capannelle by the
-    seventh milestone, on substructures, then on arches past Roma Vecchia, Tor
-    Fiscale and Porta Furba, along the line of the Via del Mandrione to just
-    outside the later Porta Maggiore, north to the Porta Tiburtina and along the
-    Via Marsala, then underground again to pass under the agger (Frontinus 1.7;
-    Ashby 1935, pp. 129–148). Where it goes into or comes out of the ground, the
-    masonry slopes into a bank of earth over the channel. Beyond it, the low
-    grassy spoil heaps round its shafts, one every two actus (71 m, Vitruvius
-    8.6.3), trail off and fade out within about 260 m. Whatever of the
-    model runs to the edge of its ground fades out with it. Its terminal
-    reservoir, whose site "is difficult to fix" (Ashby p. 149), is not drawn.
+    about 9 km, as Frontinus gives it, from Capannelle by the seventh milestone
+    to the agger (Frontinus 1.7; Ashby 1935, pp. 129–148).
     - Its line joins its surveyed remains (OpenStreetMap), following
       OpenStreetMap's reconstruction of the route between them, which is tagged
       approximate. Its channel is at the levels Ashby surveyed (62.1 m at Tor
       Fiscale to 52.6 m at the Via Castro Pretorio), interpolated between them.
-    - Where the channel stands more than an arch's height over the ground, it runs
-      on an arcade. Where it is lower it runs on a solid wall, and where it goes
-      below ground only the heads of its shafts show.
+      Where the channel stands more than an arch's height over the ground it runs
+      on an arcade; lower, on a solid wall; below ground only the spoil heaps
+      round its shafts show, one every two actus (71 m, Vitruvius 8.6.3).
     - The arcade is built as Ashby measured the Republican work: arches of 5.4 m
-      between piers 2.4 m wide and 3.25 m long; piers of reddish tufa; voussoirs,
-      imposts and a string-course of grey peperino; spandrels of yellow tufa; and
-      the Marcia's channel of red tufa under overhanging cover slabs.
+      between piers 2.4 m wide; piers of reddish tufa; voussoirs, imposts and a
+      string-course of grey peperino; spandrels of yellow tufa; the channel of red
+      tufa under overhanging cover slabs.
     - It stands from 140 BCE, when the water reached the Capitol, and is shown
       under construction from 144. From 33 BCE Agrippa carried the Tepula and the
       Julia on it, "Julia topmost; next below is Tepula; then Marcia" (Frontinus
-      1.19). Their channels are stacked on the Marcia's from that year. Where the
-      Tepula ran before is unknown, so it is not drawn earlier.
-    - A click on the arcade opens the Marcia.
-  - **The Servian Wall** (decided 2026-09-25; `servian.ts`, model.ts `WALL`,
-    `wall.ts`), on SITAR's reconstruction of its whole course (codice PA 19694,
-    made for the 2017 "Roma medio repubblicana" conference from the surveyed
+      1.19), so their channels are stacked on the Marcia's from that year. Where
+      the Tepula ran before is unknown, so it is not drawn earlier.
+  - **The Servian Wall** (`servian.ts`, model.ts `WALL`, `wall.ts`), on SITAR's
+    reconstruction of its whole course (codice PA 19694, from the surveyed
     remains, archive plans, historic maps and studies of the terrain): the middle
-    of its band, smoothed a little, following the hills' brows round the Arx, the
-    Quirinal, the Caelian and both Aventines, and bent through the Porta
-    Caelimontana's surveyed blocks in the Arch of Dolabella. Between the Capitol and
-    the Aventine it runs inland from the Porta Carmentalis to the Porta Trigemina,
-    leaving the river outside (SITAR, after Coarelli); the older view had the river
-    close the circuit, and Wiseman (2021) argues the line changed in 212 BCE.
+    of its band, following the hills' brows. Between the Capitol and the Aventine
+    it runs inland from the Porta Carmentalis to the Porta Trigemina, leaving the
+    river outside (SITAR, after Coarelli); the older view had the river close the
+    circuit.
     - **As it was built**, from the remains and the sources: a curtain of squared
-      pale Grotta Oscura tufa 3.8 m thick, laid dry in courses of two Roman feet,
-      end-out and side-out by turns (painted on, `SKIN.ashlar`), with patches of the
-      darker Anio tufa of the first century's repairs; each face running down to
-      the ground on its side, its walk 7.5 m over its ground or a little over the
-      hill behind where it crowns a brow, rising and falling in long runs. No top of
-      it survives: the battlemented parapet is a reconstruction, as Strabo's "wall
-      with towers" on the agger and Livy's repairs of walls and towers allow.
+      pale Grotta Oscura tufa 3.8 m thick, laid dry in courses of two Roman feet
+      (painted on, `SKIN.ashlar`), with patches of the darker Anio tufa from 87,
+      when the consuls "repaired the walls" (Appian, Civil Wars 1.66); its walk
+      7.5 m over its ground. No top of it survives: the battlemented parapet is a
+      reconstruction, as Strabo's "wall with towers" and Livy's repairs of walls
+      and towers allow.
     - **The agger** from the Porta Collina to the Porta Esquilina, where the flat
-      plateau gave the wall no brow: its ditch about 30 m wide and 9 m deep cut into
-      the ground in front of it (Dionysius 9.68) and its earth bank 10 m high behind
-      it (Middleton), crossed by causeways and cut through at its gates, with towers
-      along it every ~36 m.
-    - **Thirteen gates**, placed by their surveyed remains or SITAR's sites (after
-      Coarelli and the Lexicon): each a passage 3.6 m wide between two bastions
-      standing out in front, and behind it a court closing in to an inner arch,
-      after the plans of the Porta Collina, Viminalis and Sanqualis. Those whose
-      site is unknown or disputed (Ratumena, Flumentana, Lavernalis, Querquetulana)
-      are not drawn.
-    - Houses keep 3 m from its inner face and off the agger's bank, and the ground
-      at its foot outside is kept open for 12 m. By 27 BCE the city pressed against
-      it ("now commonly", Livy 1.44) and Maecenas's gardens covered the agger's
-      cemetery from about 35 BCE; neither is drawn yet.
-    - The known buildings placed only roughly that would stand on it (Juno Moneta,
-      Luna) are moved in off it; the wall is the better known.
+      plateau gave the wall no brow: its ditch about 30 m wide and 9 m deep
+      (Dionysius 9.68) and its earth bank 10 m high behind it (Middleton), with
+      towers along it every ~36 m.
+    - **Thirteen gates**, placed by their surveyed remains or SITAR's sites: each
+      a passage 3.6 m wide between two bastions, and behind it a court closing in
+      to an inner arch, after the plans of the Porta Collina, Viminalis and
+      Sanqualis. Those whose site is unknown or disputed are not drawn.
+    - Houses keep 3 m from its inner face and off the agger's bank, and the
+      ground at its foot outside is kept open for 12 m. Known buildings placed
+      only roughly that would stand on it (Juno Moneta, Luna) are moved in off
+      it; the wall is the better known.
   - The Tiber on OpenStreetMap's course, from above the Ponte Milvio to the
-    Magliana (its pieces of water joined into one), and the streets and roads
-    (§ below) paved on the ground.
+    Magliana, and the streets and roads (below) paved on the ground.
 - **Generated**, seeded so every build is the same (`city.ts`, model.ts). The
-  method follows procedural city modelling, and the forms follow what Rome's fabric
-  is known to have been (the sources are catalogued in data/sources.yaml):
-  - **Streets in a hierarchy.** The recorded streets stay. A main street runs from
-    each gate to the Forum by the cheapest way over the ground, shunning
+  method follows procedural city modelling, and the forms follow what Rome's
+  fabric is known to have been (the sources are catalogued in data/sources.yaml):
+  - **Streets in a hierarchy.** The recorded streets stay. A main street runs
+    from each gate to the Forum by the cheapest way over the ground, shunning
     slopes and preferring the recorded streets (Emilien et al. 2012; Galin et al.
     2011), so the main streets follow the valleys and merge as they near the
-    centre. Where a main street's way runs along a recorded street, the recorded
-    street is the street, and the main street is only what leaves it.
-  - **Local streets grown, not cut** (`growth.ts`, decided 2026-09-24). A town that
-    grew was not divided from above: each lane was laid off one already there and
-    took its line from its neighbours. So the lanes grow out from the Forum:
+    centre.
+  - **Local streets grown, not cut** (`growth.ts`). A town that grew was not
+    divided from above: each lane was laid off one already there and took its
+    line from its neighbours. So the lanes grow out from the Forum:
     - along every street, a block's side apart, a lane may leave it square on
-      either side; those nearest the Forum are laid first, and each lane laid may
-      branch in its turn (Weber et al. 2009);
+      either side, those nearest the Forum first, and each may branch in its turn
+      (Weber et al. 2009);
     - a lane follows one field of directions over the city (Chen et al. 2008):
       along the contours where the ground slopes, and elsewhere square or parallel
-      to the streets round it, the recorded ones weighing most. So the blocks of a
-      quarter line up and the quarters turn with the hills;
-    - a lane that comes near a street runs on to meet it, one near a junction ends
-      in it, and one leaving a street opposite another carries it on across, so
-      streets cross and continue rather than meeting in staggered ends (Weber et
-      al. 2009; Courtat et al. 2011);
-    - none is laid alongside another nearer than a block's depth;
-    - a dead end near a street runs on to it; a short stub is taken away; about a
-      third of the rest are kept as blind alleys;
+      to the streets round it. So the blocks of a quarter line up and the
+      quarters turn with the hills;
+    - lanes snap to streets and junctions near them, and carry on across a street
+      opposite one another, so streets cross rather than meeting in staggered
+      ends (Weber et al. 2009; Courtat et al. 2011); about a third of dead ends
+      are kept as blind alleys;
     - the excavated pieces of street that belong to no recorded street (SITAR) are
-      laid first and run on along their line, so the lanes pass where streets were
-      found;
-    - a block still more than 1.7 times its quarter's length is cut across the
-      middle, through a junction on its long side where there is one.
+      laid first, so the lanes pass where streets were found.
 
     Blocks are what is left between the streets: 32–42 by 55–80 m in the valleys
-    (Cosa's and Pompeii's), larger on the hills and round the houses of the rich,
-    varying smoothly over the city; on a slope, shallower terraces. The streets are
-    of three widths, so the network reads: the main and recorded streets 7 m, the
-    lanes 3–4.4 m, and a lane rising more than 1 in 8 a flight of steps 2 m wide
-    (decided 2026-09-24). Rome was
-    "casually built upon … rather than regularly planned" (Livy 5.55), with "narrow,
-    twisting lanes" (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m
-    wide (Poehler 2017).
+    (Cosa's and Pompeii's), larger on the hills, shallower terraces on a slope.
+    The main and recorded streets are 7 m wide, the lanes 3–4.4 m, and a lane
+    rising more than 1 in 8 is a flight of steps. Rome was "casually built upon …
+    rather than regularly planned" (Livy 5.55), with "narrow, twisting lanes"
+    (Tacitus, _Annals_ 15.38); Pompeii's streets are mostly 2–4 m wide (Poehler
+    2017).
 
-  - **Plots from the street to the middle of the block** (decided 2026-09-24).
-    Every 2 m of a block belongs to the street frontage nearest it, so a plot runs
-    from its street back to the middle of the block, up to 26 m, where it meets
-    the plots behind: the block is split between its streets as a straight
-    skeleton splits it (Vanegas et al. 2012), however ragged its outline, and is
-    built solid. Where plots meet at the middle or cross at a cramped corner, the
-    one laid first keeps the ground and the other is cut back.
-    - **A corner plot is one plot.** At a corner turning between 55° and 125° it
-      fronts both streets and belongs to the one that matters more (a main or
-      recorded street), or the longer frontage, as a corner plot belongs to one
-      street (Conzen's town-plan analysis; Emilien et al. 2012). Sharper or more
-      open corners are left to the plots either side.
-    - **Plots come in series.** Along a street a run of two to seven plots is of
-      one width, now and then a double one, then another run begins: plots laid
-      out together, as Conzen found them.
-    - **Yards behind, courts only in large buildings** (decided 2026-09-24, from
-      how the rooms were lit). A plot up to 17 m deep, one or two rooms lit from
-      the street, is built to its back: the rows of shops with rooms over them of
-      the Via Anicia plan and of Cicero's letters. On a deeper plot the building
-      fills its front 12–17 m and the back of the plot is its yard; the yards of
-      plots back to back make one open, irregular yard in the middle of the block,
-      as back land is (Conzen). A yard shallower than 5 m is built over. Of the
-      runs of three deep plots or more, three in ten are one building round a
-      court 6–9 m deep, its end plots its wings: the courtyard blocks of the
-      Marble Plan. So the valleys read as closed rows round a few yards, not a
-      light-well in every building. How the inside of a Republican block was used
-      is not recorded; this is inference from how rooms were lit, the Marble Plan
-      two centuries on, and Pompeii.
-    - **Atrium houses** stand in the quarters of the rich (a third of their plots)
-      and now and then on the hills. A house takes the front of its plot, about as
-      deep as it is wide (17–26 m), its garden behind. Its rooms stand in ranges
-      round the atrium, roofed and falling inward to the opening over its pool:
-      the opening is a quarter to a third as wide as the atrium (Vitruvius 6.3.6),
-      about a fifth of the house's width, not an open court. So the quarters of
-      the rich are more open than the valleys, in their gardens.
-    - A tree stands only in open ground of 150 m² or more, few in the crowded
-      quarters and more in the gardens of the rich: a light-well is not a garden,
-      and the people of Rome grew "images of gardens" in their windows (Pliny,
-      _Natural History_ 19.59).
+  - **Plots from the street to the middle of the block.** Every 2 m of a block
+    belongs to the street frontage nearest it, so a plot runs back to the middle
+    of the block, up to 26 m: the block is split between its streets as a
+    straight skeleton splits it (Vanegas et al. 2012), and is built solid.
+    - **A corner plot is one plot**, belonging to the street that matters more,
+      as Conzen's town-plan analysis finds; and **plots come in series**: along a
+      street a run of two to seven plots is of one width, then another run
+      begins.
+    - **Yards behind, courts only in large buildings**, from how the rooms were
+      lit. A plot up to 17 m deep, one or two rooms lit from the street, is built
+      to its back: the rows of shops with rooms over them of the Via Anicia plan
+      and of Cicero's letters. A deeper plot's building fills its front 12–17 m,
+      and the yards of plots back to back make one irregular yard in the middle of
+      the block. Three in ten runs of deep plots are one building round a court,
+      the courtyard blocks of the Marble Plan. How the inside of a Republican
+      block was used is not recorded; this is inference from how rooms were lit,
+      the Marble Plan two centuries on, and Pompeii.
+    - **Atrium houses** stand in the quarters of the rich and now and then on the
+      hills: ranges round an atrium roofed and falling inward to its opening, a
+      quarter to a third of the atrium's width (Vitruvius 6.3.6), not an open
+      court, a garden behind.
+    - A tree stands only in open ground of 150 m² or more: a light-well is not a
+      garden, and the people of Rome grew "images of gardens" in their windows
+      (Pliny, _Natural History_ 19.59).
   - **Buildings, not lots.** A run of one to five neighbouring lots of flats along
-    a street is one building, as the blocks of flats on the Marble Plan take several
-    shops' frontage, and it may run on round a gentle bend in the street (up to
-    35°), never round a corner. A building has one height, one wash and one
-    weathering of its tiles, and a low tiled roof (a pitch of about 20°) with its
-    ridge along the middle of the strip, so a row makes one long roof, hipped at the
-    block's corners.
+    a street is one building, as the blocks of flats on the Marble Plan take
+    several shops' frontage. A building has one height, one wash and one
+    weathering of its tiles, and a low tiled roof with its ridge along the strip,
+    so a row makes one long roof.
     - Heights follow a smooth pattern across the city, some 200 m across, within
-      the quarter's range: a stretch of street is of a height, and the change comes
-      between stretches. Every building on a main or recorded street stands a
-      storey higher, never lower, in runs two plots longer, so the street's
-      frontage reads as one; a courtyard building's range behind its court is a
-      storey lower; and a quarter of the other buildings step a storey up or down
-      from the pattern.
-    - a lone narrow deep lot sometimes turns its gable to the street;
-    - one building in sixteen has a flat terrace;
-    - an atrium house's ranges fall inward to its court, as a compluviate atrium's
-      roof did (Vitruvius 6.3).
-    - Nothing narrower than 4 m or shallower than 6 m (a room and its walls) is
-      built, and no lot with a corner sharper than 25°: those are left as yard or
-      street. An atrium house needs a lot 17 m across for ranges round a court, and
-      on a smaller one is a single house.
-
-    A storey is 3 m over a 3.8 m ground floor of shops. Walls are washed in a
-    narrow range with a few ochres and reds, and the tiles are weathered, lighter
-    or darker, browner or redder.
-
-  - **Quarters.**
-    - The valleys (the Subura, the Velabrum): flats of three to five storeys on
-      lots 6–11 m wide. Cicero's Rome is "raised up and hanging" on its upper
-      floors (_De lege agraria_ 2.96).
-    - The hills: two or three storeys on wider lots.
-    - Within 300 m of the Palatine, the Velia, the Carinae, the Quirinal and the
-      Caelian: atrium houses on lots 16–26 m wide, four ranges round a court (the
-      front one of two storeys), among flats built only 14 m deep with yards
-      behind, as rich and poor stood side by side on the Marble Plan.
-    - Low ground near the river: warehouses on lots 30–60 m long.
-    - The top of the Palatine: great houses round their courts, of one or two
-      storeys, and hardly a block of flats — the houses "sprang up all over the
-      hill", and no Republican source puts flats there (Platner & Ashby,
-      Palatinus, p. 378).
-  - The slopes too steep to build on are left to scattered trees.
-  - The houses are plain stucco in a narrow range of washes under one terracotta,
-    varied a little lot by lot: plainer than the known buildings. Atrium houses
-    are a paler render, warehouses bare tufa.
+      the quarter's range; buildings on a main or recorded street stand a storey
+      higher, so the street's frontage reads as one.
+    - A building on a slope steps with it: where the ground rises more than 2.2 m
+      from a plot's street to its back, it is two or three parts, each on its own
+      ground.
+    - A storey is 3 m over a 3.8 m ground floor of shops.
+  - **Quarters.** The valleys (the Subura, the Velabrum): flats of three to five
+    storeys on lots 6–11 m wide; Cicero's Rome is "raised up and hanging" on its
+    upper floors (_De lege agraria_ 2.96). The hills: two or three storeys on
+    wider lots. Near the Palatine, the Velia, the Carinae, the Quirinal and the
+    Caelian: atrium houses among flats, as rich and poor stood side by side on the
+    Marble Plan. Low ground near the river: warehouses. The top of the Palatine:
+    great houses and hardly a block of flats, since no Republican source puts
+    flats there (Platner & Ashby, Palatinus, p. 378).
+  - The houses are plain stucco in a narrow range of washes under one terracotta:
+    plainer than the known buildings.
   - The monuments, the Forum, and ground too steep or wet are kept clear; so are
-    the Capitol's summits and the Asylum between them, sacred ground where
-    nobody lived ("ne quis patricius in arce aut Capitolio habitaret", Livy
-    6.20.13), each as far as the ground stays near its top, the Asylum with its
-    two groves; and the Forum Boarium between its temples and the Ara Maxima,
-    the cattle market, whose limits are not known. The recorded streets and the generated main streets are
-    paved in basalt, as Rome's streets were from 174 BCE (Livy 41.27), so the
-    main network shows from far off; the lanes are trodden earth.
+    the Capitol's summits and the Asylum, sacred ground where nobody lived (Livy
+    6.20.13), and the Forum Boarium, the cattle market.
   - About 17,500 lots in all. The regional catalogues of the 4th century CE
     count some 46,000 blocks of flats and 1,790 houses in the imperial city.
-  - A thinner suburb lines the roads out of the gates and fills a few areas beyond
-    them, growing year by year (**The city growing**, below).
-  - **The suburb on the country's plots** (decided 2026-09-29, replacing houses
-    scattered on a jittered grid, which read as one box repeated and could stand on
-    a road). A suburban building takes a plot of the fields (fields.ts `plotAt`):
-    its front at the plot's road end, the rest of the plot left to its crop, so the
-    buildings keep the plots' lines and face the roads. By kind:
-    - within ~320 m of a gate, **rows of shops** with rooms over them, the plot's
-      whole frontage, so neighbouring plots make a row, a yard behind;
-    - **houses**, most of a plot's width, one or two storeys, their roofs ridged
-      along the road or gabled to it, now and then a lean-to or a flat terrace, and
-      two in five an L with a lower wing behind, a walled garden beyond;
-    - **workshops**, a small building at one side of a walled yard;
-    - beyond ~650 m, **farmsteads**: ranges round a yard, square to the plot (Varro 1.13);
-    - in the Emporium, a grid of blocks square to the Porticus Aemilia, a street
-      between each, a block one cell (26 by 30 m) or two, each one of the kinds a
-      river port's warehouse quarter had on the Marble Plan and at Ostia: storerooms
-      round one court or two (the Horrea Galbana has three); a long range on the
-      street; two ranges back to back along a corridor; an open yard for timber or
-      stone, walled, with a shed ("inter lignarios", Livy 35.41.10); a merchant's
-      house with shops on the street. One storey or two, their depths and setbacks
-      varied block by block.
-    The yards and gardens are a floor, trodden earth or garden beds, over the
-    fields' paint, and a plastered wall 1.8 m high open at the front for a gate. No
-    part of a building comes within 8 m of a road's or street's line, tested all
-    along its outline, nor over a plot's edge, where the lanes run; tombs stand 7.5 m
-    back from the road's line. The shares of **The city growing** are of tries about
-    10 m apart along a road; a plot's frontage is about two, so a plot is built if
-    either would be (1 − (1 − share)²). Which plots are built, and as what, is
-    generated: illustrative, not of any building.
-  - **The city growing** (decided 2026-09-29; `GROWTH` and `GROWN` in model.ts). Two
-    research passes, on the city inside the wall and on the suburbs, read the texts,
-    the modern literature and SITAR's dated remains of houses, warehouses and tombs
-    (queried from its WFS: 36 private buildings founded 200–28 BCE inside the wall,
-    and the dated houses and tombs outside it counted by road and period). Each
-    generated house and tomb has a first year as well as a last; a stretch of suburb
-    has a share built that rises with the year, and each try draws one number, built
-    from the year the share passes it, so a house once built stays. Every share and
-    reach is inferred, the direction of each change sourced:
-    - **Inside the wall** the city was full by 133: private houses of the 2nd century
-      BCE are found in every quarter excavated (SITAR), Livy has three-storey blocks
-      in 218 (21.62.3), and Varro finds the Esquiline's groves hemmed in and the
-      Aventine's laurel grove built over (LL 5.49, 5.152). So nothing inside the wall
-      is thinned for 133, except: the Capitol's slopes, where half the houses within
-      120 m of the open summits come only after the priests' land round the Capitol
-      was sold in 89 BCE (Orosius 5.18.27; Tacitus, Histories 3.71); and Caesar's
-      forum, whose houses (excavated, ending in 55: SITAR) go when the land was bought
-      in 54 (Cicero, Letters to Atticus 4.16.8), its works rising from then. The head
-      of the Subura at the foot of the Cispius is a quarter of the rich throughout (a
-      house of 150–100 BCE with a coloured-stone floor, peristyle houses of the
-      mid-1st century: SITAR; Caesar's house in the Subura, Suetonius, Iulius 46).
-      Heights stay as they are: the texts show blocks growing taller (Cicero, De
-      lege agraria 2.96; Vitruvius 2.8.17; Augustus's cap of 70 feet, Strabo 5.3.7)
-      but give no numbers by date.
-    - **Outside it** the texts that describe a suburb without a break are Augustan
-      (Dionysius 4.13.3–5; Strabo 5.3.7–8; Livy 1.44.4); the law of about 45 BCE
-      speaks of "continuous habitation" within a mile (Tabula Heracleensis ll. 20,
-      56). The suburb was "less evenly distributed" than a ring (Digital Augustan
-      Rome, Continentia):
-      - along the **Appia**'s first mile, the Vicus Sulpicius and the shops the flood
-        of 54 swept away by the temple of Mars (Cicero, Letters to Quintus 3.7.1), 1.5
-        km out, densest in its first 600 m, growing to 54; the **Latina** beyond the
-        fork tombs only;
-      - the **Emporium** filling with warehouses, a fifth of its ground in 133 to
-        seven-tenths from 50 (the Horrea Galbana of about 100; others from about 80:
-        SITAR; DAR), Monte Testaccio's site kept open (its dumping is Augustan);
-      - outside the **Porta Esquilina**, south of the Labicana, where houses of the
-        2nd century BCE are excavated 216–440 m out, and along the Labicana and
-        Praenestina to 1.2 km from about 100; the **Tiburtina** crossing the open
-        common of the Campus Viminalis, bounded by L. Sentius's stones of about
-        100–75: tombs, no houses;
-      - the **Salaria** and **Nomentana** roads of tombs, houses only by the Porta
-        Collina (41 of the Salaria's 56 dated tombs, no houses: SITAR);
-      - the valley between the **Quirinal and the Pincian** (a house of the late 2nd
-        century with fine floors: SITAR);
-      - a modest quarter at the **Trastevere bridgehead** (a Republican house there:
-        SITAR), of two or three storeys, and a thin suburb along the Aurelia and
-        the Campana;
-      - houses against the wall's outer face by the gates, growing late, as the
-        Augustan writers saw them;
-      - **left open**: the Campus west of the Flaminia (Caesar's plan to build over
-        it in 45, "campum Martium coaedificari", came to nothing: Cicero, Letters to
-        Atticus 13.33a.1) and the Caelian beyond the Porta Caelimontana, whose houses
-        are Augustan (DAR).
-    - **The tombs** along the roads thicken, ×0.4 of the most in 133, ×0.6 by 80,
-      ×1.0 by 45: of the dated tombs within 4 km, 17 begin before 133, 45 in 133–81
-      and 58 in 80–28 (SITAR; its dates come in broad bins, "from about 100" and
-      "from about 50"). Drums under their mounds only from 50; travertine more often
-      from then.
-    - The wall's distance, for a house far from it, is the true distance to its
-      course (the grid used near it found nothing beyond ~80 m, so the old suburb
-      had not reached its ~450 m).
+  - **The suburb on the country's plots.** A thinner suburb lines the roads out
+    of the gates. A suburban building takes a plot of the fields (fields.ts
+    `plotAt`): its front at the plot's road end, the rest left to its crop, so
+    the buildings keep the plots' lines and face the roads. Within ~320 m of a
+    gate they are rows of shops; then houses and workshops with walled yards;
+    beyond ~650 m farmsteads, ranges round a yard (Varro 1.13). In the Emporium
+    (model.ts) a grid of blocks square to the Porticus Aemilia holds the kinds a
+    river port's warehouse quarter had on the Marble Plan and at Ostia:
+    storerooms round courts, long ranges, timber and stone yards ("inter
+    lignarios", Livy 35.41.10). No building comes within 8 m of a road's line,
+    and tombs stand 7.5 m back. Which plots are built, and as what, is generated:
+    illustrative, not of any building.
+  - **The city growing** (`GROWTH` and `GROWN` in model.ts), read from the texts,
+    the modern literature and SITAR's dated remains of houses, warehouses and
+    tombs (queried from its WFS). Each generated house and tomb has a first year
+    as well as a last; a stretch of suburb has a share built that rises with the
+    year, and each try draws one number, built from the year the share passes
+    it, so a house once built stays. Every share and reach is inferred; the
+    direction of each change is sourced:
+    - **Inside the wall** the city was full by 133: private houses of the 2nd
+      century BCE are found in every quarter excavated (SITAR), and Livy has
+      three-storey blocks in 218 (21.62.3). Nothing there is thinned, except the
+      Capitol's slopes, half of whose houses come only after the priests' land
+      was sold in 89 BCE (Orosius 5.18.27), and Caesar's forum, whose houses go
+      when the land was bought in 54 (Cicero, Letters to Atticus 4.16.8). Heights
+      do not change with the year: the texts show blocks growing taller but give
+      no numbers by date.
+    - **Outside it** the texts that describe a suburb without a break are
+      Augustan (Dionysius 4.13.3–5; Strabo 5.3.7–8); the law of about 45 BCE
+      speaks of "continuous habitation" within a mile (Tabula Heracleensis). The
+      suburb was "less evenly distributed" than a ring (Digital Augustan Rome), so
+      it grows road by road where the remains put it: the Appia's first mile; the
+      Emporium filling with warehouses, a fifth of its ground in 133 to
+      seven-tenths from 50; outside the Porta Esquilina and along the Labicana and
+      Praenestina; houses by the Porta Collina, but tombs only along the Salaria,
+      Nomentana and Tiburtina; the Trastevere bridgehead; houses against the
+      wall's outer face by the gates, late. The Campus west of the Flaminia is
+      left open (Caesar's plan to build over it came to nothing: Cicero, Letters
+      to Atticus 13.33a.1), and so is the Caelian beyond the wall.
+    - **The tombs** along the roads thicken, ×0.4 of the most in 133, ×0.6 by
+      80, ×1.0 by 45, as SITAR's dated tombs within 4 km do (17 before 133, 45 in
+      133–81, 58 in 80–28).
   - None of it is a claim about any building. The records, the inspector and
     search know only the monuments.
-- **The country round the city** (decided 2026-09-25: it replaced groves scattered
-  on a noise, which drew a wooded country Rome's plain was not). The land outside
-  the wall was farmed hard, and the model shows it as farmland, gardens and tombs
+- **The country round the city.** The land outside the wall was farmed hard, and
+  the model shows it as farmland, gardens and tombs, not woodland
   (`pipeline/src/rome/fields.ts`, `packages/engine/src/rome/fields.ts`). It is
   painted on the ground, so it stays quiet under the model, with a little of it
-  raised close in. It reaches ~1.35 km beyond everything on the plan, past the
-  board's own edge, and thins out plot by plot into the map's ground. It shows
-  only once the model stands (see **Zooming in** below).
+  raised close in. It reaches ~1.35 km beyond everything on the plan and thins
+  out plot by plot into the map's ground. It shows only once the model stands
+  (see **Zooming in** below).
   - **Known**: the gardens and groves the sources place (kinds `garden`, `grove`
-    and `cemetery` in rome.yaml, with Platner & Ashby's and Richardson's pages):
-    Lucullus' on the Pincian, Caesar's across the Tiber, Sallust's, Maecenas' on the
-    Esquiline over the old burial ground, the groves of Furrina and the Camenae.
-    Their outlines are drawn by hand from the bounds their sources give
-    (`data/geometry/rome-grounds.geojson`, each saying what it follows), and are
-    approximate. Each stands for its own years: a garden laid out within the window
-    shows the farmland it replaced until then, and takes the houses on its ground
-    when it comes; once the burial ground is cleared, about 35 BCE, the farmland
-    round it runs on over it. A garden is lawn crossed by gravel walks, its trees
-    scattered and its edge lined with cypresses; a grove a looser stand of holm oaks. Pompey's gardens, which
-    nobody can place, are a point only.
+    and `cemetery` in rome.yaml): Lucullus' on the Pincian, Caesar's across the
+    Tiber, Sallust's, Maecenas' on the Esquiline over the old burial ground, the
+    groves of Furrina and the Camenae. Their outlines are drawn by hand from the
+    bounds their sources give (`data/geometry/rome-grounds.geojson`), and are
+    approximate. Each stands for its own years. Pompey's gardens, which nobody
+    can place, are a point only.
   - **Generated**, seeded, following what the sources say the land near the city
     was used for (Varro, _On Agriculture_ 1.16.3; Cato, _On Agriculture_ 7–8;
     Morley 1996, ch. 4):
     - **Lanes and plots.** Blocks between lanes (a Voronoi of jittered points
-      ~230 m apart, the ground pushed about a little so the lanes bend) face the
-      nearest road, and are cut into strips running back from it, so every plot
-      has a frontage: 12–26 m wide near the city, 35–80 m far out. About half the
-      block edges are lanes of trodden earth, the rest only a hedge between plots.
-      The distances to the lanes and hedges are stored signed, by the side of the
-      line a texel is on, so the line crosses zero between texel centres and draws
-      unbroken however close the camera comes (an unsigned distance on a 4 m grid
-      never reaches zero between centres, and a 3 m lane broke into dashes).
+      ~230 m apart) face the nearest road, and are cut into strips running back
+      from it, so every plot has a frontage: 12–26 m wide near the city, 35–80 m
+      far out. The distances to the lanes and hedges are stored signed, so the
+      line crosses zero between texel centres and draws unbroken however close
+      the camera comes; an unsigned distance on a 4 m grid would break a 3 m lane
+      into dashes.
     - **What each plot grows** is drawn by distance from the wall: market gardens
-      and orchards close in, vines and olives in the middle ground, grain, stubble,
-      fallow and pasture beyond. Vines and olives take the slopes, vines the ones
-      turned to the sun; gardens the watered low ground and the roads; meadow the
-      Tiber's flats, which flood; scrub what is too steep to plough. Half the plots
-      of a block share its main use, so a farm reads as one.
-    - **Summer**, as the model's light is: the grain ripe or cut, the fallow being
-      ploughed, the pasture dry, the gardens, vines and meadows green. Vines in rows
-      about two metres apart, garden beds, olives on a 9 m grid and fruit trees on
-      a 7 m one, ploughed furrows, mown swathes — each fading to its average colour
-      when too fine to draw. The palette is muted a quarter of the way to the map's
-      ground.
-    - **Raised close in**: olives and fruit trees on the same rows the ground is
-      painted with, within 1.6 km of the wall; scattered trees on the scrub;
-      farmsteads here and there, ranges round a yard square to their plot (Varro
-      1.13); and tombs along the roads out of the gates, an altar, a façade or a
-      drum as the known tombs are built, thickest near the gates (burial in the
-      city was forbidden: Cicero, _Laws_ 2.58; Purcell 1987).
-    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8),
-      from the river to the Via Flaminia, and the ground round the monuments
-      outside the wall open too.
-  - No umbrella pines outside the gardens: the pine skyline that says "Rome" now
-    is mostly later planting.
+      and orchards close in, vines and olives in the middle ground, grain,
+      fallow and pasture beyond. Vines and olives take the slopes, meadow the
+      Tiber's flats, scrub what is too steep to plough. Half the plots of a block
+      share its main use, so a farm reads as one.
+    - **Summer**, as the model's light is: the grain ripe or cut, the pasture
+      dry, the gardens, vines and meadows green; vine rows, olive and fruit-tree
+      grids and furrows each fading to its average colour when too fine to draw.
+    - **Raised close in**: olives and fruit trees on the painted rows, within 1.6
+      km of the wall; farmsteads; and tombs along the roads out of the gates,
+      thickest near the gates (burial in the city was forbidden: Cicero, _Laws_
+      2.58; Purcell 1987).
+    - The Campus Martius north of the Saepta is left open grass (Strabo 5.3.8).
+  - No umbrella pines outside the gardens: the pine skyline that says "Rome"
+    today is mostly later planting.
 - **The timeline** moves the known buildings. One not yet built, or gone, is not
   shown. One burnt is a roofless shell cut at seven-tenths, blackened towards its
-  top (decided 2026-09-24: squashing them to a third of their height made columns
-  stubby).
-- **Building sites** (`rome/works.ts`, decided 2026-09-29). A temple being built
-  rises through its works, from the year they began to its dedication, a course of
-  two Roman feet at a time, each part in its own share of the years:
-  - The records say when works began and ended, almost never how far they had got
-    in a given year. So the share each part takes is a convention, the same for
-    every temple, drawn from how Roman builders worked, not a record of any one:
+  top (squashing it in height would make its columns stubby).
+- **Building sites** (`rome/works.ts`). A temple being built rises through its
+  works, from the year they began to its dedication, a course of two Roman feet
+  at a time, each part in its own share of the years:
+  - The records say when works began and ended, almost never how far they had
+    got in a given year. So the share each part takes is a convention, the same
+    for every temple, drawn from how Roman builders worked, not a record of any
+    one:
     | share     | what goes up                                                                                                  | why                                                                                 |
     | --------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
     | 0–0.08    | the site dug, travertine footings under its walls and column lines                                            | the Augustan podium of Castor (Platner & Ashby, Aedes Castoris)                     |
@@ -1270,264 +1019,117 @@ known and what is generated are kept apart:
     | 0.68–0.78 | the roof: its timbers, then its tiles from the eaves up                                                       | Vitruvius 4.2.1                                                                     |
     | 0.78–0.90 | the pediment's figures; the palm on the crane                                                                 | set while the scaffold stands (Pliny NH 36.13); the Haterii relief                  |
     | 0.90–1    | the podium faced in marble, the steps laid, the scaffold and crane gone                                       | the surfaces most easily spoilt go on last                                          |
-  - Round it, for the years each is needed: the site's trodden earth; a
-    free-standing scaffold of poles round the cella's flanks and back, a runner at
-    every lift of a metre and a half and putlogs in to the wall (not socketed: a
-    marble face takes no putlog holes; J.-P. Adam, _Roman Building_, 1994, pp.
-    145–156); a crane of two legs bolted at the head and spread at the foot, held
-    by stays to stakes, worked by a treadwheel at its foot (Vitruvius 10.2.1–3,
-    10.2.7; the Haterii relief, Vatican Museums inv. 9998); and the yard before its
-    front, with tufa seasoning in stacks (Vitruvius 2.7.5), drums, entablature
-    blocks and a roughed capital, heaps of lime and sand (Vitruvius 2.5.1), roof
-    timbers and tiles.
-  - Left out, as not attested: wheelbarrows, sawn planks decked all round, turning
-    jibs, cranes worked by cranks.
-  - **Rebuilding** (decided 2026-09-29). A record's works span may say what of the
-    old building they `kept`: `footings`, its `podium`, or its `walls` (re-roofed
-    and refitted), each only where a source says so; left out, the works start from
-    bare ground. What was kept stands from the first year. The first year is spent
-    clearing the ruin: heaps of smoke-stained rubble and charred timbers on what was
-    kept, or on the ground. The rest goes up over the years left, in the same order.
-    Each burnt or building span of a record is its own, so a temple burnt one year
-    and rebuilt from the next stands as a shell for a year and then rises (the
-    Capitol's, burnt in 83 BCE and rebuilt on the old foundations, Dionysius of
-    Halicarnassus 4.61.4). Every type's works have the same seven stages (ground,
-    base, walls, upper, roof, finish, facing; `Stages`), each type its own shares
-    of them, and `kept` reaches the end of the ground, the base or the walls, so
-    the same words serve every type.
-  - **Being finished**: work a source puts on a building after its dedication.
-    A temple stands whole, the scaffold still round its cella, with no crane or
-    yard; any other building simply stands. The span runs to the last year a
-    source puts work on it, since when the work ended is seldom recorded (the
-    Capitol's to 62 BCE, when Caesar said much of it was half finished:
-    Suetonius, _Divus Iulius_ 15; Dio 37.44.1–2). The inspector's Fabric lane
-    hatches it more sparsely than building.
-  - **Round temples** (decided 2026-09-29) rise in a temple's shares: the podium
-    or steps (and the long platform, where there is one) cored then faced; the
-    cella's round wall, a bed on each course, and the ring of columns drum by drum;
-    the round entablature; the cone of tiles from the eaves up over twelve radial
-    rafters. The scaffold stands round the colonnade in ten runs; the crane leans
-    over the cella's wall from a flank. Of the four on the map only Hercules
-    Musarum was rebuilt in the window: by L. Marcius Philippus with a portico round
-    it (Suetonius, _Augustus_ 29.5; Ovid, _Fasti_ 6.801–812), shown from his
-    triumph of 33 BCE to 29, the year P&A give. Vesta had no works in it; Temple B
-    of the Largo Argentina (vowed 101 BCE, dedicated before 87) and the Forum
-    Boarium's tholos (late 2nd century, its owner disputed) have no dated works to
-    show.
-  - **Basilicas** (decided 2026-09-29) rise the same way, with their own shares
-    (`BASILICA_WORKS`): the platform, cored then faced (0.06–0.15); the storeys of
-    arcades one after another (0.15–0.5); the clerestory over the nave, its walls
-    between the beams left open for light (Vitruvius 5.1.6–7; 0.5–0.65); the low
-    roof of the aisles and the nave's gable, over a truss on each pier (5.1.9;
-    0.65–0.8); the marble last. The scaffold stands round the flanks and back while
-    the arcades go up, and a second one on the aisles round the clerestory; the
-    crane leans over the outer arcade from a long side.
-  - **Timber centering** under the arches while a storey goes up: "at least two
-    arcs of a circle made of wood and solidly braced" (J.-P. Adam, _Roman
-    Building_, p. 357), a rib at either face on a chord at the springing, with
-    laggings across. It stands at the springing, which the Romans chose "very
-    frequently … to save on wood" (the same), with no ledge drawn for it, as none
-    is known on the arcades of Rome. The same centering "was then moved along to
-    put up the next section" (p. 358), so it is under a third of the arches at a
-    time, a different third on each storey, and it stands until the storey over it
-    is half built. No Roman picture of it survives (p. 358), so its sizes are a
-    guess.
-  - **Senate houses** (`CURIA_WORKS`): the podium (0.05–0.15); the tall walls, a
-    bed on each course so they read as walls (0.15–0.55); the trusses over the
-    hall and its tiles (0.6–0.75); then the porch and the Victory on the gable
-    (0.75–0.9), the porch late as the chalcidicum beside the Curia Julia (RG 19);
-    the facing and steps last.
-  - **Theatres** (decided 2026-09-29; `THEATRE_WORKS`): the seating and its outer
-    arcade rise together as one structure of radial walls and vaults, storey by
-    storey on centering (0.08–0.65), since the façade's piers, the ring corridors
-    and the sloping vaults carry one another; the radial walls show under the
-    seats while they go up. A theatre on the plain wants deep foundations (Vitruvius
-    5.3.3): curved footings under the arcade, the radial walls and the seats' inner
-    edge. The stage building rises beside the seats, with its own scaffold; then
-    the portico round the top and the roofs, the stage's marble front, and the
-    orchestra paved last. The temple at the top of the seats, Venus Victrix's in
-    Pompey's (Tertullian, _De spectaculis_ 10), has works of its own over the last
-    third, once the seats under it are up. Works still going on when the map ends
-    get as far as their design says (`progress`), and no further: the Theatre of
-    Marcellus shows only its foundations by 27 BCE. Pompey's is shown building from
-    61 BCE, the year of his triumph whose spoils paid for it, after the plans of the
-    theatre at Mytilene he had drawn in 62 (Plutarch, _Pompey_ 42.4), to its
-    dedication in 55 (Dio 39.38.1); its porticus and curia with it. No source dates
-    its start.
-  - **Porticoes and forums** (decided 2026-09-29; `PORTICUS_WORKS`): round the court,
-    the colonnades' floors, then the enclosure walls rising, the columns and
-    entablature, the lean-to roofs, the statues, and the court paved and planted
-    last; shops rise with the walls, a gateway with the columns. The court is the
-    yard, the crane stands in it leaning over the back colonnade, and the scaffold
-    stands outside the walls of the sides with porticoes. A temple in the court is
-    its own record, with its own works (Venus Genetrix in Caesar's forum, 48–47).
-  - **Every other type** (decided 2026-09-29): with no stages of its own, the whole
-    building rises a course at a time over its works (`GENERAL_WORKS`), to its top
-    or as far as its design says the works had got by the end of the window (the
-    Theatre of Marcellus only its foundations, the Mausoleum a third of its height),
-    with the scaffold on its flanks and back, a crane if it stands over 6 m and the
-    yard before its front. The Mausoleum has no scaffold: its rings were raised
-    about 70 cm at a time with the earth between them filled in, each fill the floor
-    for the next lift, "instead of scaffolding" (the excavators of 2021, as reported
-    at its reopening), so earth floors rise inside it. A bridge has none either, its
-    works standing in the river. The circus, squares, the island, quays and
-    enclosures keep the cut at two-fifths.
-  - Works the records date only where the sources do: the Pons Fabricius in 62 BCE,
-    let and approved by L. Fabricius in his year (CIL VI 1305; Dio 37.45.3); Venus
-    Genetrix from its vow at Pharsalus in 48 to its dedication in 46 (Appian, _Civil
-    Wars_ 2.68; Dio 43.22); the Fornix Fabianus restored on its footings by the
-    builder's grandson as curule aedile in 57 (CIL VI 1303; Broughton). Where no
-    source dates the works — the start of Pompey's theatre (only its plans, drawn in
-    62, bound it: Plutarch, _Pompey_ 42.4), the round temple by the Tiber, the
-    Horrea Galbana, the tombs, the Area Sacra's paving, Temple B's end, the new
-    Rostra's end, the Saepta's start — the building appears in its first year.
-- The generated city stands throughout, except on the site of a monument begun within
-  the window: there houses stand until that year (Caesar's forum went up on the
-  houses he bought).
+  - Round it, for the years each is needed: a free-standing scaffold of poles
+    round the cella's flanks and back (a marble face takes no putlog holes; J.-P.
+    Adam, _Roman Building_, 1994, pp. 145–156); a crane of two legs worked by a
+    treadwheel (Vitruvius 10.2.1–3; the Haterii relief); and the yard before its
+    front, with tufa seasoning in stacks (Vitruvius 2.7.5), drums, a roughed
+    capital, heaps of lime and sand, roof timbers and tiles. Left out, as not
+    attested: wheelbarrows, decked planking, turning jibs, cranes worked by
+    cranks.
+  - **Every type works in the same seven stages** (ground, base, walls, upper,
+    roof, finish, facing; `Stages`), each type with its own shares of them:
+    round temples, basilicas (`BASILICA_WORKS`, the clerestory left open for
+    light, Vitruvius 5.1.6–7), senate houses (`CURIA_WORKS`), theatres
+    (`THEATRE_WORKS`, the seating and outer arcade rising together as one
+    structure of radial walls and vaults, on deep foundations, Vitruvius 5.3.3),
+    porticoes and forums (`PORTICUS_WORKS`, the court as the yard), and every
+    other type (`GENERAL_WORKS`, rising a course at a time). The Mausoleum has no
+    scaffold: its rings were raised with the earth between them filled in, each
+    fill the floor for the next lift, "instead of scaffolding" (its excavators,
+    2021). A bridge has none either.
+  - **Timber centering** stands under a third of a storey's arches at a time,
+    moved along as the work goes (J.-P. Adam, _Roman Building_, pp. 357–358). No
+    Roman picture of it survives, so its sizes are a guess.
+  - **Rebuilding.** A record's works span may say what of the old building they
+    `kept`: `footings`, its `podium`, or its `walls`, each only where a source
+    says so; left out, the works start from bare ground. The first year is spent
+    clearing the ruin. Each burnt or building span of a record is its own, so a
+    temple burnt one year and rebuilt from the next stands as a shell and then
+    rises (the Capitol's, burnt in 83 BCE and rebuilt on the old foundations,
+    Dionysius of Halicarnassus 4.61.4).
+  - **Being finished**: work a source puts on a building after its dedication. A
+    temple stands whole, the scaffold still round its cella; the span runs to the
+    last year a source puts work on it (the Capitol's to 62 BCE: Suetonius,
+    _Divus Iulius_ 15). The inspector's Fabric lane hatches it more sparsely than
+    building.
+  - Works still going on when the map ends get as far as their design says
+    (`progress`): the Theatre of Marcellus only its foundations by 27 BCE, the
+    Mausoleum a third of its height.
+  - Works are dated only where the sources date them (the Pons Fabricius in 62
+    BCE, CIL VI 1305; Venus Genetrix from its vow at Pharsalus in 48 to its
+    dedication in 46; Pompey's theatre from his triumph of 61 to 55). Where no
+    source dates them, the building appears in its first year.
 
 **The ground** (`plate.ts`, `rome/shading.ts`) is the map's own terrain, with only
 what the city adds drawn on it:
 
-- The terrain is laid on the Mapterhorn heights smoothed over ~45 m (`ground.png`),
-  and lit and given its rock by their slope — the light with the slope drawn up
-  twice, so the hills read — so the surface model's modern
-  buildings do not show, and the model stands on it exactly. Over the Capitol it
-  is smoothed over ~14 m instead, so its steep brows and its summits stand nearer
-  their height. The relief is today's, except in the valleys where excavations
-  found the ancient ground, and the agger's ditch and bank.
-- **The ancient valley floors** (`ground.ts`, decided 2026-09-24). Since antiquity
-  the valleys have filled up. Where SITAR records the height of ground walked on
-  then (`rome-levels.geojson`, from its excavated levels), the valley floor is set
-  to it. Each correction cites the pieces whose levels give its height:
-  - the Forum valley at the mouth of the Argiletum, 13.9 m above the sea (a street
-    and a lane later under Caesar's forum, in use until 101 and 55 BCE: SITAR
-    16681, 16671);
-  - the Forum's square, 13.5 m (its paving and a street of the early 2nd century
-    CE, a ceiling for the Republican level: 17854, 17890);
-  - the valley of the Colosseum, 16.2 m (the square and street of 7 BCE–64 CE, a
-    ceiling: 15456, 15428);
-  - the Via Appia inside and at the Porta Capena, 13.0 and 11.3 m (its paving of
-    312 BCE: 17004, 16624);
-  - the Via Flaminia at the foot of the Capitol, 13.2 m (220 BCE–50 CE: 6627,
-    6628).
-
-  The model's ground there is 22–29 m, so the floors fall 9–15 m; part of that is
-  the smoothed surface model's own error, since the Forum is excavated to near its
-  ancient level today. A correction follows its valley: from its point it runs out
-  over ground no more than 12 m above the floor, round the hills, up to 450 m, and
-  lowers the floor by the whole change and the valley's sides less, to nothing 12
-  m up. So the valleys from the Capitol to the Porta Capena deepen round the
-  Palatine, which stands higher for it. Where no valley floor was excavated — the
-  Subura, the Circus' valley, the valleys of the north — the terrain is as it is.
-  Hillsides and the Velia are left out, where the terrain model is too uncertain to
-  measure against; the Velia stood higher before the cut of 1932. SITAR's 1924
-  contours cover only the open ground of the south, where today's terrain is close
-  to them, and are not used. A building on a slope steps with it: where the ground
-  rises more than 2.2 m from a plot's street to its back, the building is two or
-  three parts, each on its own ground, fewer storeys going up the slope and more
-  going down.
-
+- The terrain is laid on the Mapterhorn heights smoothed over ~45 m
+  (`ground.png`; ~14 m over the Capitol, so its brows and summits keep their
+  height), so the surface model's modern buildings do not show, and the model
+  stands on it exactly. It is lit with its slope drawn up twice, so the hills
+  read.
+- **The ancient valley floors** (`ground.ts`). Since antiquity the valleys have
+  filled up. Where SITAR records the height of ground walked on then
+  (`rome-levels.geojson`), the valley floor is set to it, each correction citing
+  the excavated pieces whose levels give its height: the Forum valley and the
+  Argiletum's mouth (13.5–13.9 m), the valley of the Colosseum, the Via Appia at
+  the Porta Capena and the Via Flaminia at the foot of the Capitol. The model's
+  ground there is 22–29 m, so the floors fall 9–15 m. A correction follows its
+  valley, over ground no more than 12 m above the floor and up to 450 m out,
+  lowering the floor fully and the valley's sides less. Where no valley floor
+  was excavated the terrain is as it is; hillsides and the Velia are left out,
+  where the terrain model is too uncertain to measure against.
 - Inside the walls, the ground between the houses is trodden earth: the
   terrain's colour pulled most of the way to it, its relief kept.
 - Close in, a ground mesh over the same heights draws only the model's shadows.
   Beyond it the terrain carries them baked: each footprint swept away from the
   sun. Only what stands through the whole window casts a baked shadow.
 - The Tiber is drawn in the map's river colour as OpenStreetMap's outline of its
-  water, across the whole plate's grid rather than only the board, so the fields
-  beside it always have their river. The map's line of it is OpenStreetMap's
-  centreline (`tiber` in features.yaml, drawn in place of HydroRIVERS'), so the two
-  follow one course: the water hands over to the line by zoom, and a few hundred
-  metres inside the grid's edge, without a break.
+  water, across the whole plate's grid. The map's line of it is OpenStreetMap's
+  centreline (`tiber` in features.yaml, drawn in place of HydroRIVERS'), so the
+  water hands over to the line by zoom without a break.
 - The city's streets show only while they can be drawn at their width; the map's
-  roads give way to them then, and draw instead when zoomed out. The streets end
-  with the board, but the roads out of the gates run on as far as the country
-  round the city (`countryMask`), and the map's roads give way to them there too, so
-  a road does not stop short in the fields: past the Aurelian gates the two are the
-  same Itiner-e line, and one fades into the other where the fields fade into the
-  map's ground (decided 2026-09-26).
-- The earth, the smoothed lighting and the baked shadows come in as the model
-  rises. Before it the city is its picture from overhead, and beyond ~70 m/px
-  Rome is ordinary terrain like any other town (**Zooming in**, below).
+  roads give way to them then. The roads out of the gates run on as far as the
+  country round the city (`countryMask`), and past the Aurelian gates they are
+  the same Itiner-e line as the map's, so one fades into the other where the
+  fields fade into the map's ground.
 
-**Streets and roads** (`streets.ts`) are paved ways on the ground, in basalt
-(decided 2026-09-26): the censors of 174 BCE had the city's streets paved in it,
-"vias sternendas silice in urbe" (Livy 41.27.5), and the Via Appia in 293 BCE from
-the temple of Mars outside the Porta Capena to Bovillae (Livy 10.47.4). It is a warm grey, weathered and dusty,
-not black, so the city stays light; close in, the joints of its polygonal blocks
-are drawn, about 0.7 m across, a size that is illustrative. The lanes between are
-trodden earth. They are:
+**Streets and roads** (`streets.ts`) are paved in basalt: the censors of 174 BCE
+had the city's streets paved in it (Livy 41.27.5), and the Via Appia was paved
+from 293 BCE (Livy 10.47.4). It is a warm grey, not black, so the city stays
+light; close in, the joints of its polygonal blocks are drawn, a size that is
+illustrative. The lanes are trodden earth. The streets are:
 
 - the Forum and Palatine streets from OpenStreetMap's paths on the excavated
   paving;
-- five streets traced along the modern streets Platner & Ashby identify them with,
-  cut to within the walls: the Alta Semita, the Vicus Patricius, the Clivus
-  Suburanus, the Vicus Cuprius and the Clivus Argentarius;
-- streets drawn from the evidence (`routes.ts`), where no one modern street
-  carries them: the rest of the Vicus Tuscus, the Vicus Iugarius and the
-  Argiletum beyond their surveyed first stretches; the Vicus Longus; the Clivus
-  Publicius; and the street from the Porta Capena up the valley under the Via di
-  S. Gregorio (decided 2026-09-24). Each is a line through its evidence:
-  - the pieces of its paving that excavations found, from SITAR, the
-    Soprintendenza's archaeological GIS (`sitar.ts`, CC BY-SA 4.0, the project's
-    own licence), cited by number: the Vicus Longus runs along the stretch
-    Lanciani mapped under the Banca d'Italia, and straight on "on a line that
-    crosses the via Nazionale at an angle of twenty degrees" for "one kilometre"
-    to the Alta Semita, as Platner & Ashby have it;
-  - the points the sources fix: gates, the ends of the surveyed stretches, the
-    street corners Platner & Ashby name, the temple of Diana the Clivus Publicius
-    passed;
-  - and between them the easiest way over the ground, off the monuments and the
-    river: a cheapest path over a 3 m grid where a step costs its length and more
-    on a slope, in sixteen directions, smoothed. So a street keeps to its valley
-    and climbs a hill across the slope.
-
+- five streets traced along the modern streets Platner & Ashby identify them
+  with: the Alta Semita, the Vicus Patricius, the Clivus Suburanus, the Vicus
+  Cuprius and the Clivus Argentarius;
+- streets drawn from the evidence (`routes.ts`) where no one modern street
+  carries them: the Vicus Tuscus, the Vicus Iugarius and the Argiletum beyond
+  their surveyed stretches, the Vicus Longus, the Clivus Publicius, and the
+  street up the valley from the Porta Capena. Each is a line through the pieces
+  of its paving that excavations found (SITAR, cited by number; `sitar.ts`), the
+  points the sources fix (gates, street corners, the temples they passed), and
+  between them the cheapest path over the ground, off the monuments and the
+  river, so a street keeps to its valley and climbs a hill across the slope.
   They are drawn lighter, as the traced streets are. Digital Augustan Rome's
   plan of 14 CE is read for which streets there were and roughly where; since it
-  carries no licence, none of its drawing is copied. The streets it places only
-  by a point, knows only from imperial sources (the Clivus Scauri), or ties to a
-  street since renamed or rebuilt (the Clivus Orbius) are still left to the
-  generated streets;
-
-- the pieces of excavated street that belong to no recorded street, 110 in and
-  round the walls that may have stood in 68–27 BCE (most dated only "Roman"),
-  are kept in `data/geometry/rome-sitar.geojson` for the generated streets to
-  follow;
-- the Via Flaminia along the Corso, which "coincides absolutely" with it;
-- **the consular roads out of the gates** (`roads.ts`, decided 2026-09-26). Zoomed
-  out, the map drew its roads into Rome; zoomed in, the board hides the map's roads
-  and drew only the Appia and the Tiburtina, as Itiner-e's lines ruled to a gate
-  (Itiner-e runs every road inside the later Aurelian Wall straight to the Forum),
-  so the rest vanished at the walls. Now eleven roads run from the gate each left by,
-  or the Pons Aemilius, out past the board's edge, each a line through stops as the
-  streets drawn from the evidence are:
-  - the gate (servian.ts) and the sources' fixed points — the later Aurelian gates,
-    which stand on the older roads; the forks; the bridges;
-  - SITAR's reconstructions of three courses, as narrow bands whose middle line is
-    taken: the Flaminia from the Porta Fontinalis to the Ponte Milvio (16890), the
-    Appia's first mile "between the 4th and the 1st century BCE" (19681) and the
-    Latina's line (19682). The two part about 550 m from the Porta Capena, the
-    Latina to the left as Strabo has it (5.3.9); Platner & Ashby put the fork at
-    830 m;
-  - the pieces of their paving that excavations found, wherever they lie, fetched by
-    number into `data/geometry/rome-roads.geojson`;
-  - and then Itiner-e's line, from where it keeps to the ancient road (within a few
-    metres of the modern road that follows it, outside the Aurelian gates), so the
-    board's road meets the map's where one gives way to the other. The Aurelia
-    alone does not: Itiner-e's comes in through the Vatican plain, another road, and
-    the Aurelia is drawn to the board's edge along the Via Aurelia Antica.
-
-  The roads: the Appia and the Latina from the Porta Capena; the Ostiensis from the
-  Porta Trigemina, with its branch from the Porta Raudusculana; the Praenestina and
-  the Labicana together from the Porta Esquilina to their fork at the tomb of
-  Eurysaces; the Tiburtina from the Porta Esquilina (its gate disputed, so drawn
-  lighter); the Salaria and the Nomentana from the Porta Collina; the Flaminia; and
-  over the Pons Aemilius the Aurelia, up the Janiculum, and the Campana along the
-  right bank. Left out: the Ardeatina (unattested in the window, its start
-  disputed), the Laurentina, the Vitellia, the Triumphalis and Cornelia (no bridge
-  before Nero's), the Collatina and the road from the Porta Viminalis (nothing found
-  within 4 km). The suburb's houses, the tombs and the plots of the country face
-  these roads, so they line each one; Itiner-e's lines into the middle of the city
-  are no longer roads the plots face.
+  carries no licence, none of its drawing is copied;
+- the 110 excavated pieces of street that belong to no recorded street, kept in
+  `data/geometry/rome-sitar.geojson` for the generated streets to follow;
+- **the consular roads out of the gates** (`roads.ts`). Itiner-e runs every road
+  inside the later Aurelian Wall straight to the Forum, so its lines cannot be
+  the roads the gates opened on. Eleven roads run from their gates, or the Pons
+  Aemilius, out past the board's edge, each a line through the gate
+  (servian.ts), the sources' fixed points (the later Aurelian gates, the forks,
+  the bridges), SITAR's reconstructions of the Flaminia, the Appia and the
+  Latina, and the excavated pieces of their paving
+  (`data/geometry/rome-roads.geojson`), then Itiner-e's line from where it keeps
+  to the ancient road. Left out: roads unattested in the window or with no
+  bridge to them (the Ardeatina, the Triumphalis and Cornelia, and others). The
+  suburb's houses, the tombs and the plots of the country face these roads.
 
 **The look** is a photograph of a model city on a table (`ModelLayer.ts`,
 `miniature.ts`):
@@ -1535,88 +1137,61 @@ trodden earth. They are:
 - matte materials: the known monuments in their stone, the houses plainer
   stucco under terracotta, the wall tufa, the trees muted green;
 - a low sun from the north-west, the terrain's light direction, casting real
-  shadows across roofs and streets. The shadow map is fitted to the view each
-  frame, so its texels stay near a metre;
-- a bright sky and bounce light that keep the shaded walls light;
-- a wash of relief over the whole model, as an illustrated map shades its hills:
-  the smoothed ground lit from the north-west with its slope drawn up twice, at
-  half strength and never darker than 70%, so slopes turned from the light fall a
-  little darker and hilltops a little lighter. It helps the seven hills read from
-  straight above, where the roofs cover most of the ground. It was stronger (four
-  times, 90%, down to 45%) while the valleys lay at today's height; with the
-  valley floors at their ancient depth the real slopes and their shadows do most
-  of the work, and the stronger wash turned roofs on the slopes muddy;
-- walls darkening a little where they meet the ground, and everything darkening
-  where the model overshadows itself: a grid of the height of what stands in each
-  2 m cell, blurred over about 10 m and 30 m, against which a narrow street, a
-  courtyard or the foot of a wall under a taller neighbour sees less of the sky.
-  The grid is built again when the year changes, as buildings come and go. The
-  ground between the houses darkens with it, the narrow streets most;
-- a little warm haze with distance, so the near streets stand out from the roofs
-  behind them;
-- the generated houses' walls and roofs painted on in the shader, drawn only while
-  they are a few pixels across and fading to their average beyond:
-  - on the street front, a ground floor of shops, each a room open to the street
-    across most of its width, or an atrium house's door with shops either side,
-    as the street fronts of Pompeii and Herculaneum (Wallace-Hadrill 1994; Ellis
-    2018); warehouses a wide door;
-  - small windows on the floors above, one every 2.4–3 m on the flats, few on a
-    house's front, which looked in on its atrium;
-  - a darker dado along the foot of the wall, now and then red; the shade of the
-    eaves along the top;
-  - tiled roofs, as Rome was from the war with Pyrrhus (Pliny, _Natural History_
-    16.36): rows of cover tiles down the slope about half a metre apart, tiles a
-    little lighter or darker one by one, the ridge tiles and the eaves' edge.
-    Where the doors and windows fall is generated, as the lots are: illustrative,
-    not of any building. The camera comes in to 250 m over the city, where they can
-    be seen;
+  shadows across roofs and streets, the shadow map fitted to the view each frame
+  so its texels stay near a metre; a bright sky and bounce light keep the shaded
+  walls light;
+- a light wash of relief over the whole model, as an illustrated map shades its
+  hills, so the seven hills read from straight above, where the roofs cover most
+  of the ground. It is light because the valley floors at their ancient depth
+  give real slopes and shadows; a stronger wash turns roofs on the slopes muddy;
+- everything darkening where the model overshadows itself: a grid of the height
+  of what stands in each 2 m cell, blurred over about 10 m and 30 m, against
+  which a narrow street, a courtyard or the foot of a wall under a taller
+  neighbour sees less of the sky, rebuilt when the year changes;
+- a little warm haze with distance;
+- the generated houses' walls and roofs painted on in the shader, drawn only
+  while they are a few pixels across: shops open to the street on the ground
+  floor, as the street fronts of Pompeii and Herculaneum (Wallace-Hadrill 1994;
+  Ellis 2018), small windows above, a darker dado, and tiled roofs, as Rome's
+  were from the war with Pyrrhus (Pliny, _Natural History_ 16.36). Where the
+  doors and windows fall is generated, as the lots are;
 - tilted, a tilt-shift: the top and bottom of the frame out of focus, as a
-  close-range photograph of a model is, with a touch more contrast and colour.
-  It is a pass over the whole frame, run only while the model stands and the
+  close-range photograph of a model is, run only while the model stands and the
   view is tilted.
 
-Heights scale with the terrain's vertical exaggeration, and the model grows out
-of the ground as the zoom comes in, between 14 and 8 m/px.
+Heights scale with the terrain's vertical exaggeration.
 
-**Zooming in** (decided 2026-09-27), the city comes in first and the country
-round it last, so that Rome never looks like a patch of different ground in
-Italy's:
+**Zooming in**, the city comes in first and the country round it last, so that
+Rome never looks like a patch of different ground in Italy's:
 
 - **From ~70 m/px to 50** the city fades in as a picture of the model drawn from
-  straight overhead (`rome/portrait.ts`, ModelLayer `paint`): standing, in its sun
-  and its shadows, drawn again for each year's buildings. It is only the city, its
-  suburb and its known groves and gardens, on the map's own ground; the ground
-  inside the wall is trodden earth, and the map's roads give way under it.
-- **From 14 m/px to 8** the model rises out of that picture, which fades out under
-  it; the model is not drawn further out, so the whole city is only ever standing
-  in 3D once its buildings are a few pixels high.
+  straight overhead (`rome/portrait.ts`, ModelLayer `paint`), in its sun and its
+  shadows, drawn again for each year's buildings: only the city, its suburb and
+  its known gardens, on the map's own ground. Further out Rome is ordinary
+  terrain like any other town.
+- **From 14 m/px to 8** the model rises out of that picture, which fades out
+  under it, so the city only ever stands in 3D once its buildings are a few
+  pixels high. The earth, the smoothed lighting and the baked shadows come in
+  with it.
 - **From 8 m/px to 4**, once it stands, the country comes in (`FIELDS_MPP`),
-  evenly over the whole view, as the model's rise is: the fields, and the olives,
-  orchards and baked shadows standing on them, together. Its plots are drawn
-  relative to the map's ground under them, and towards the country's edge they
-  drop out one by one into it. The known gardens and groves stand throughout.
+  evenly over the whole view: the fields, and the olives, orchards and baked
+  shadows standing on them, together. Towards the country's edge its plots drop
+  out one by one into the map's ground.
 
 **The legend** keys the model while it stands: marble, stucco over tufa,
-travertine, and the houses as illustrative, with a line saying that only the named
-buildings are from the records and the houses show how crowded the city was, not
-where any house stood.
+travertine, and the houses as illustrative, with a line saying that only the
+named buildings are from the records and the houses show how crowded the city
+was, not where any house stood.
 
-**Names** are few:
-
-- the hills in widely spaced capitals, each turned to its hill's long axis and
-  bowed gently over it, as the engraved plans set them, and receding as the zoom
-  reaches their buildings;
-- the quarters and the Tiber in italic;
-- the hills and quarters, like the monuments, in light type with a soft dark halo,
-  but fainter, so that they stay behind the monuments' names;
-- the monuments from 1.5 m/px, set as the towns are: light type with a dark halo,
-  which reads over the model's roofs where dark ink sank into them.
-
-They come in turns as the zoom comes in, so that no view carries every layer at
-once: the hills alone to about 2.5 m/px; then the quarters, as the hills recede
-(gone by about 1.5 m/px, the smaller spurs a little later); then the monuments.
-
-Streets are not lettered. A click inside a monument's outline opens it, or inside the footprint drawn for one with no outline.
+**Names** are few: the hills in widely spaced capitals bowed over each hill's
+long axis, as the engraved plans set them; the quarters and the Tiber in italic;
+the monuments from 1.5 m/px, set as the towns are, in light type with a dark halo,
+which reads over the model's roofs where dark ink sinks into them. The hills and
+quarters are fainter, so they stay behind the monuments' names. They come in
+turns as the zoom comes in, so that no view carries every layer at once: the hills
+alone to about 2.5 m/px, then the quarters as the hills recede, then the
+monuments. Streets are not lettered. A click inside a monument's outline opens
+it, or inside the footprint drawn for one with no outline.
 
 **Closer zoom**: over the city the camera may come to 700 m (~0.4 m/px) against
 4 km elsewhere, easing back over 1.5 km outside it.
@@ -1651,7 +1226,7 @@ copy. What we take from it:
 - A heavy game interface.
 - Its fonts or art, which are licensed to Paradox.
 
-### 8.1 First palette (draft, to be tuned against screenshots)
+### 8.1 Palette
 
 | Token          | Hex                                                  | Use                                                                  |
 | -------------- | ---------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1668,26 +1243,25 @@ copy. What we take from it:
 
 ### 8.2 Type
 
-- **Land names:** Cinzel, or a comparable open Trajan-derived capital face,
+- **Land names:** Cinzel, an open Trajan-derived capital face,
   tracked +8% to +40% depending on how much room the label has.
 - **Water and secondary names:** EB Garamond italic.
-- **Settlements:** EB Garamond small caps. Built in Regular, mixed case, for
-  now: small caps need OpenType shaping (harfbuzz), not a fake from scaled
-  capitals.
+- **Settlements:** EB Garamond Medium, mixed case (§7.4). True small caps
+  would need OpenType shaping (harfbuzz), and a fake from scaled capitals is
+  not used.
 - **Language:** Latin nominative by default. The Greek-speaking east keeps
   Greek forms where only Greek is attested. It is not silently latinised; this
   is carried over.
 
 ### 8.3 Discipline
 
-- A written style spec (this section, grown) comes before shader work.
+- A written style spec (this section) comes before shader work.
 - **Side-by-side screenshot checks at each zoom tier, against the references.**
   Every change must move towards them rather than add something.
 - The interface is minimal and quiet: a timeline, an inspector and a legend.
   No default component-library look.
-- **The interface theme is an engraved atlas** (decided 2026-09-23;
-  `apps/explorer/src/index.css`). The panels are printed matter laid over the
-  map, in the map's own inks:
+- **The interface theme is an engraved atlas** (`apps/explorer/src/index.css`).
+  The panels are printed matter laid over the map, in the map's own inks:
   - two modes: **parchment** (the sheet: paper, dark ink, Rome's red deepened
     to carry cream type) and **ink & gold** (the sea's voice: warm near-black,
     cream type, the sea names' gold);
@@ -1699,34 +1273,32 @@ copy. What we take from it:
     the year is a gold index mark on the line. Confidence badges are dashed
     when uncertain, as the map's lines are.
   - The panels follow the reader's system theme.
-  - The timeline is a slim strip in the bottom-right corner (decided
-    2026-09-23), 40 px in both states, that never moves: it always shows the
-    year and opens its ruler beside it. Only its toggle opens or closes it.
-  - The legend is a row of the title block, under the index (decided
-    2026-09-24). Its key opens beside the title block, over the map, set in
-    short columns (Rome's colours, the kinds of doubt, the map's marks) so it
+  - The timeline is a slim strip in the bottom-right corner, 40 px in both
+    states, that never moves: it always shows the year and opens its ruler
+    beside it. Only its toggle opens or closes it.
+  - The legend is a row of the title block, under the index. Its key opens
+    beside the title block, over the map, set in short columns (Rome's colours, the kinds of doubt, the map's marks) so it
     is no taller than the block: it never moves and never covers the person
     panel. It is not a dialog: the map and timeline stay live while it is
     open, and only its row closes it. It starts closed, and the reader's
     choice is remembered.
-  - The title block's last row is the preface (decided 2026-09-24), named as
-    an atlas names its front matter. It opens the one dialog in the interface:
-    what the map is, where it stands, how to use it, how far to trust it (§1,
+  - The title block's last row is the preface, named as an atlas names its
+    front matter. It opens the one dialog in the interface: what the map is, where it stands, how to use it, how far to trust it (§1,
     with Rome's generated fabric as the exception, §7.7) and whose work it is
     drawn from (§6), read on its own rather than beside the map. It is written
     plainly and without a narrator: no "we" or "I". On hover, and
     while the legend is open, a row's icon takes its text's colour.
-  - Search is the atlas's index (decided 2026-09-23). The top-left corner holds
-    the plate's title block, the map's name and the years it covers in the
+  - Search is the atlas's index. The top-left corner holds the plate's title
+    block, the map's name and the years it covers in the
     double rule, with "Index of names ⌘K" under it. Each result is its map
     mark, its name, a dotted leader and what it belongs to (`Province of
-Roma`); what is not on the map in the year shown is greyed with its years,
+    Roma`); what is not on the map in the year shown is greyed with its years,
     and going to it moves the timeline to the first. With nothing typed it
     offers the year's largest polities and its great cities. The map stays
     sharp behind it under a thin paper wash.
   - Italic is kept to short phrases. Tooltips and notes are upright: Garamond
     italic thins out over a sentence, and light-on-dark type at 13 px breaks
-    up the way Regular did on the map (§7.4).
+    up as Garamond Regular does on the map (§7.4).
   - `/playground.html` shows the interface over screenshots of the three
     tiers, a specimen of every component, and a live token editor.
   - shadcn components are ours once themed. Nine carry edits beyond the tokens
@@ -1735,42 +1307,35 @@ Roma`); what is not on the map in the year shown is greyed with its years,
 
 ---
 
-## 9. Engine API (for the explorer and Cicero)
+## 9. Engine API
 
 ```ts
-const map = await createRomeMap(canvas, { data: '/data', year: '63 BCE' })
+const map = await RomeMap.create(container, { camera })
 
-map.setYear('49 BCE', { animate: true })
+map.setYear(-48, { animate: true }) // astronomical years (§5.2); 49 BCE
 map.flyTo({ kind: 'place', id: 'roma' }) // or a polity; entries() lists them
-map.setMode('political') // 'political' | 'physical' | 'status' | ...
+map.setFocus('parthia') // bring a polity forward; null clears it
 
-map.on('hover', (e) => e.hits) // places, atoms → claims(year), routes
-map.on('click', (e) => e.hits)
-map.on('yearchange', (year) => {})
-
-// App-owned layers go into the same renderer, with the same time filtering
-map.addLayer({
-  id: 'letters',
-  kind: 'points' | 'lines' | 'arcs',
-  features, // lon/lat + interval + style
-})
+const hit = await map.pick(clientX, clientY) // { place } | { territory }: the claim this year
+const all = await map.entries() // everything searchable, named for the year shown
+map.shows(ref, year) // whether a place or polity is on the map in a year
+map.onModel = (shown) => {} // the model of Rome (§7.7) has risen or sunk back
 ```
 
-The engine is framework-free. A thin React wrapper lives in the explorer app.
+The engine is framework-free: it owns a canvas inside the container it is given,
+and apps drive it through these methods. A thin React wrapper lives in the
+explorer app.
 
 ---
 
 ## 10. Hosting and budgets
 
-- **Terrain** comes from Mapterhorn's hosted file, with AWS Terrain Tiles as a
-  fallback. The hosted file's terms and rate limits are unverified and must be
-  checked before launch.
+- **Terrain** comes from Mapterhorn's hosted tiles at runtime.
 - **Everything else is ours and small:** the atom field, claims, vectors,
-  fonts, textures and baked overlays. The target is **under ~200 MB total**,
-  which ships with the app on any static host. Cloudflare Pages limits each
-  file to 25 MiB, and allows 20k files on the free plan.
+  fonts and baked overlays, served as static files with the app. Static hosts
+  limit file size and count (Cloudflare Pages: 25 MiB a file, 20k files on the
+  free plan), which is why the deep tiles are packed (§7.2).
 - Local development needs no hosting at all.
-- R2 or Source Cooperative only if the project outgrows that.
 - **Budgets:**
   - 60 fps at 1440p on an M1-class laptop;
   - first frame under 5 MB transferred;
@@ -1778,55 +1343,14 @@ The engine is framework-free. A thin React wrapper lives in the explorer app.
 
 ---
 
-## 11. Plan
+## 11. Risks and open questions
 
-**M0: foundations.** Agree this doc, scaffold the repo, write
-`packages/schema`.
-
-Then **two tracks in parallel:**
-
-**Track A: basemap spike (Italy only).** The aim is to prove the technology
-and the look; polish comes later.
-
-1. Terrain quadtree from Mapterhorn tiles, reprojected to Albers, lit.
-2. Water: coast SDF and bathymetry shallows.
-3. Material masks and CC0 detail textures.
-4. Zoom-tier crossfade.
-
-Exit when screenshots at all three tiers sit credibly beside the references,
-it holds 60 fps, and WebGPU and WebGL2 give matching output.
-
-**Track B: data model and first dataset.**
-
-1. Schema and validator, including the era-string time parser.
-2. A first dataset in the new model: 68–43 BCE (done September 2026).
-3. Extend the data to 133–27 BCE and the full frame, including Parthia and the
-   neighbours. The neighbours were added in September 2026, and the window was
-   carried forward to 27 BCE the same month (68–27, `data/README.md` decisions
-   17–21); the years 133–69 remain.
-4. The first 10 `landscape-change` records.
-5. Pipeline outputs: the atom field (built; borders come from it, see §7.3) and the
-   claims table.
-
-**M2: merge.** The political layer on the basemap with the year scrubber:
-crossfades, glow borders, vector borders, and one curved area label.
-
-**M3: labels, roads and places** in full.
-
-**M4: explorer polish, then Cicero integration.**
-
----
-
-## 12. Risks and open questions
-
-- **The hosted terrain file's terms and zoom ceiling** are unverified. If it
-  fails, we bake our own Albers terrain tiles for the frame, which means taking
-  on hosting.
-- **Whether 3DTilesRendererJS works with WebGPURenderer** is unverified. We may
-  write our own tile manager, which is likely simpler for a flat plane anyway.
-- **Curved labels** are the highest-craft component. Budget for iteration.
+- **The hosted terrain's terms and rate limits** are unverified. If they fail
+  us, the answer is to bake our own Albers terrain tiles for the frame, which
+  means taking on hosting.
+- **HydroRIVERS' licence** is to verify (data/sources.yaml).
 - **Neighbour extents** (Parthia, Germania, Arabia) have weak evidence. The
   default is seats and soft schematic zones, never confident polygons.
-- **Licences to verify:** HydroRIVERS, Köppen–Geiger, Mapterhorn's hosted file.
-- **Curation effort dominates engineering.** Plan the data work as the main
-  job, not as a side task.
+- **Curation effort dominates engineering.** The data work is the main job,
+  not a side task. What looks wrong or rests on weak ground is listed in
+  data/DOUBTS.md.
