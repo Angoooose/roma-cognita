@@ -774,17 +774,15 @@ function cited(hit: PoliticalHit) {
 
 /**
  * A value the sources were read for: underlined dotted, as "probable" is, and a click
- * shows the words it rests on and where. The first passage is open; the rest follow on
- * a click. A value nothing quoted backs is plain text, which is itself an answer.
+ * shows the words it rests on and where, every passage at once. A value nothing quoted
+ * backs is plain text, which is itself an answer.
  */
 function Backed({ sources, children }: { sources: CitedSource[]; children: ReactNode }) {
-  const [all, setAll] = useState(false)
   // Out beside the panel, not over it: the value it explains stays in view.
   const [offset, setOffset] = useState(8)
   if (!sources.length) return children
-  const shown = all ? sources : sources.slice(0, 1)
   return (
-    <Popover onOpenChange={(open) => !open && setAll(false)}>
+    <Popover>
       <PopoverTrigger asChild>
         {/* A span, not a button: a button will not wrap across lines as the ruler line must. */}
         <span
@@ -817,7 +815,7 @@ function Backed({ sources, children }: { sources: CitedSource[]; children: React
         className="paper rule-double max-h-[60vh] w-72 overflow-y-auto bg-card not-italic"
       >
         <div className="space-y-3 text-xs text-pretty">
-          {shown.map((s, i) => (
+          {sources.map((s, i) => (
             <div key={i} className="space-y-1">
               <p className="text-sm leading-snug text-foreground/90">“{s.quote}”</p>
               <p className="pl-3 -indent-3 leading-snug">
@@ -825,15 +823,6 @@ function Backed({ sources, children }: { sources: CitedSource[]; children: React
               </p>
             </div>
           ))}
-          {!all && sources.length > 1 && (
-            <button
-              type="button"
-              className="text-muted-foreground hover:text-foreground"
-              onClick={() => setAll(true)}
-            >
-              {sources.length - 1} more {sources.length === 2 ? 'passage' : 'passages'}
-            </button>
-          )}
         </div>
       </PopoverContent>
     </Popover>
