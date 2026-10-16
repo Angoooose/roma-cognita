@@ -12,12 +12,14 @@
     "build": "npm run build -w apps/explorer",
     "typecheck": "tsc -b",
     "test": "vitest run",
-    "data:validate": "npm run validate -w pipeline"
+    "data:validate": "npm run validate -w pipeline",
+    "shot": "node scripts/shot.mjs"
   },
   "devDependencies": {
-    "typescript": "~6.0.2",
-    "vitest": "*",
+    "playwright-core": "^1.64.1",
+    "prettier": "*",
     "tsx": "*",
-    "prettier": "*"
+    "typescript": "~6.0.2",
+    "vitest": "*"
   }
 }

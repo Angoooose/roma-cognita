@@ -103,6 +103,8 @@ The map is at `/`. Every work it cites is listed in the index of sources at `/so
 
 To check the hand-written data on its own, run `npm run data:validate`. It fails on any error.
 
+To take screenshots of the map, run `npm run shot -- <view…>`, e.g. `npm run shot -- forum italy --prefix before`. It starts its own server from your checkout, waits until each view has finished drawing, and uses your installed Google Chrome. `npm run shot -- --list` lists the named views; the options are at the top of `scripts/shot.mjs`.
+
 ## Credits
 
 Built on the work of many others.
