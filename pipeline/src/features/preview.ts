@@ -1,12 +1,12 @@
 /**
  * Preview PNGs for the floodplain derivation: a hillshade computed from the same
  * DEM, with the derived polygons, the hull, the channels and the check sites on
- * top. They exist so a human (or Claude) can look at a shape before it ships.
+ * top, so a shape can be checked by eye before it ships.
  */
 import sharp from 'sharp'
-import type { Bbox, Raster } from './dem.ts'
-import { lonLatToPixel, pixelMetres } from './dem.ts'
-import type { Pt } from './grid.ts'
+import type { Bbox, Raster } from '../lib/dem.ts'
+import { lonLatToPixel, pixelMetres } from '../lib/dem.ts'
+import type { Pt } from '../lib/grid.ts'
 
 export interface Overlay {
   polygons: Pt[][][] // lon/lat

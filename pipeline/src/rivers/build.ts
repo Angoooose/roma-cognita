@@ -20,15 +20,13 @@
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { parse as parseYaml } from 'yaml'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import * as shapefile from 'shapefile'
 import { DATA_RECT, ROOT, projection } from '@roma-cognita/world'
 import { RingIndex } from '../water/ring-index.ts'
 import { BBOX, SOURCES, ensureUnzipped, keepLake, lakeArea, projectRing, readRings } from '../water/sources.ts'
+import { ROOT_DIR, CACHE_DIR, DATA_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const CACHE = join(ROOT_DIR, '.cache/sources')
 const OUT = join(ROOT_DIR, 'build/rivers')
 const REGIONS = ['eu', 'af', 'as']
 
@@ -78,7 +76,7 @@ const JOIN_M = 400
 async function main() {
   const t0 = Date.now()
   console.log('reading HydroLAKES (to cut reaches that cross lakes)…')
-  const lakes = await readRings(ensureUnzipped(CACHE, SOURCES.lakes.zip), keepLake, lakeArea)
+  const lakes = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip), keepLake, lakeArea)
   const lakeIndex = new RingIndex(lakes.rings.filter((r) => r.areaKm2 >= LAKE_KM2))
   // Where authored ancient courses replace the modern network, the modern channels are
   // dropped: HydroRIVERS' Rosetta and Damietta would otherwise draw beside the
@@ -108,7 +106,7 @@ async function main() {
   let replaced = 0
   let modernReplaced = 0
   for (const region of REGIONS) {
-    const dir = join(CACHE, `HydroRIVERS_v10_${region}_shp`)
+    const dir = join(CACHE_DIR, `HydroRIVERS_v10_${region}_shp`)
     if (!existsSync(dir)) throw new Error(`missing ${dir}: download and unzip HydroRIVERS_v10_${region}_shp.zip`)
     const source = await shapefile.open(findShp(dir), findShp(dir).replace(/\.shp$/, '.dbf'))
     for (;;) {
@@ -295,8 +293,8 @@ interface Authored {
  * it a branch draws as a middling river.
  */
 function readAuthoredRivers(): Authored[] {
-  const recordsFile = join(ROOT_DIR, 'data/features.yaml')
-  const geometryFile = join(ROOT_DIR, 'data/geometry/features.geojson')
+  const recordsFile = join(DATA_DIR, 'features.yaml')
+  const geometryFile = join(DATA_DIR, 'geometry/features.geojson')
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
   const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; kind: string }[]
   const ids = new Set(records.filter((r) => r.kind === 'river').map((r) => r.id))
@@ -332,7 +330,7 @@ function readAuthoredRivers(): Authored[] {
 
 /** Area features from data/geometry/features.geojson, projected, by id. */
 function readAreas(ids: string[]) {
-  const file = join(ROOT_DIR, 'data/geometry/features.geojson')
+  const file = join(DATA_DIR, 'geometry/features.geojson')
   if (!existsSync(file)) return []
   const collection = JSON.parse(readFileSync(file, 'utf8')) as {
     features: { id: string; geometry: { type: string; coordinates: unknown } }[]

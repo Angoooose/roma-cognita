@@ -16,10 +16,10 @@
  *   city, which is not a road anyone surveyed, so it is taken up only beyond it.
  */
 import { readFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import { projection } from '@roma-cognita/world'
 import type { Place } from '@roma-cognita/schema'
-import { DATA_DIR } from '../load.ts'
+import { DATA_DIR, ROOT_DIR } from '../load.ts'
 import { ROADS } from './roads.ts'
 import { ROUTES, type Stop } from './routes.ts'
 import { middleLine } from './servian.ts'
@@ -93,7 +93,7 @@ function clipInside(line: Pt[], ring: Pt[]): Pt[][] {
 
 /** The built Itiner-e lines by name (build/roads, see pipeline/src/roads/build.ts). */
 export function itinere(): Map<string, { pts: Pt[]; certain: boolean }[]> {
-  const dir = resolve(import.meta.dirname, '../../../build/roads')
+  const dir = join(ROOT_DIR, 'build/roads')
   const meta = JSON.parse(readFileSync(join(dir, 'roads.json'), 'utf8')).lines
   const b = readFileSync(join(dir, 'roads.bin'))
   const out = new Map<string, { pts: Pt[]; certain: boolean }[]>()
@@ -625,36 +625,4 @@ class MinHeap {
     }
     return top
   }
-}
-
-/**
- * A path to letter a street along: its longest line, resampled every `step` metres
- * and smoothed, so the name does not jitter along a path mapped in short pieces.
- */
-export function letteringPath(lines: StreetLine[], step = 6): Pt[] | null {
-  const length = (p: Pt[]) =>
-    p.slice(1).reduce((s, q, i) => s + Math.hypot(q[0] - p[i][0], q[1] - p[i][1]), 0)
-  const best = [...lines].sort((a, b) => length(b.pts) - length(a.pts))[0]
-  if (!best || length(best.pts) < 30) return null
-  const pts = best.pts
-  const out: Pt[] = [pts[0]]
-  let carry = 0
-  for (let i = 0; i + 1 < pts.length; i++) {
-    const [a, b] = [pts[i], pts[i + 1]]
-    const d = Math.hypot(b[0] - a[0], b[1] - a[1])
-    let t = step - carry
-    while (t <= d) {
-      out.push([a[0] + ((b[0] - a[0]) * t) / d, a[1] + ((b[1] - a[1]) * t) / d])
-      t += step
-    }
-    carry = d - (t - step)
-  }
-  const k = 3
-  return out.map((_, i) => {
-    const w = out.slice(Math.max(0, i - k), i + k + 1)
-    return [
-      Math.round(w.reduce((s, q) => s + q[0], 0) / w.length),
-      Math.round(w.reduce((s, q) => s + q[1], 0) / w.length),
-    ] as Pt
-  })
 }

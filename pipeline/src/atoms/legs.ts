@@ -19,9 +19,10 @@
  */
 import { join } from 'node:path'
 import type { Leg } from '@roma-cognita/schema'
-import { readDem, lonLatToPixel, pixelToLonLat, isSea } from '../features/dem.ts'
-import { catmullRom, leastCostPath, simplifyIndices, type Pt } from '../features/grid.ts'
-import { readDbf, readShp } from '../features/shp.ts'
+import { readDem, lonLatToPixel, pixelToLonLat, isSea } from '../lib/dem.ts'
+import { catmullRom, leastCostPath, simplifyIndices, type Pt } from '../lib/grid.ts'
+import { readDbf, readShp } from '../lib/shp.ts'
+import { CACHE_DIR } from '../load.ts'
 
 /** Degrees, ~300 m. */
 const TOLERANCE = 0.003
@@ -93,7 +94,7 @@ export function km(a: Pt, b: Pt) {
 
 // --- rivers --------------------------------------------------------------------
 
-const RIVERS = join(import.meta.dirname, '../../../.cache/sources')
+const RIVERS = CACHE_DIR
 const REGIONS = ['eu', 'af', 'as']
 const riverShp = (r: string) =>
   join(RIVERS, `HydroRIVERS_v10_${r}_shp/HydroRIVERS_v10_${r}_shp/HydroRIVERS_v10_${r}.shp`)

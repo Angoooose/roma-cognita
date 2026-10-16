@@ -22,20 +22,18 @@
  *   npm run politics -w pipeline -- --data   (data.json alone, after a change to data/)
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { availableParallelism } from 'node:os'
 import { Worker } from 'node:worker_threads'
 import { DATA_RECT, TILE_TEXELS, tileRect } from '@roma-cognita/world'
 import { formatYear, type Endpoint, type SourceRef } from '@roma-cognita/schema'
-import { loadDataset } from '../load.ts'
+import { loadDataset, ROOT_DIR } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import { edgesTouch, inside, type Ring } from '../water/raster.ts'
 import { RingIndex } from '../water/ring-index.ts'
 import { projectRing } from '../water/sources.ts'
 import type { AtomRings, PoliticsJob, PoliticsResult, ShoreTile } from './bake-worker.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/politics')
 const WATER = join(ROOT_DIR, 'build/water')
 

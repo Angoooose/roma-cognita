@@ -8,13 +8,13 @@
  * the plate's grid, and each monument's and garden's outline and years for picking.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import pc, { type Polygon } from 'polygon-clipping'
 import { projection } from '@roma-cognita/world'
-import { DATA_DIR, loadDataset } from '../load.ts'
+import { DATA_DIR, ROOT_DIR, loadDataset } from '../load.ts'
 import { bakePlate } from './plate.ts'
 
-const OUT = resolve(import.meta.dirname, '../../../build/rome')
+const OUT = join(ROOT_DIR, 'build/rome')
 
 type Ring = [number, number][]
 

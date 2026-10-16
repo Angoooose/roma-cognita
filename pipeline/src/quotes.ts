@@ -23,16 +23,15 @@
  */
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import type { Source, SourceRef } from '@roma-cognita/schema'
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs'
-import { loadDataset } from './load.ts'
-import { userAgent } from './people/agent.ts'
+import { CACHE_DIR, loadDataset } from './load.ts'
+import { userAgent } from './agent.ts'
 import { anchors, pageFile } from './passages/fetch.ts'
 import { findAnchor, pageIndex, rangeEnd, work } from './passages/passage.ts'
 
-const ROOT_DIR = resolve(import.meta.dirname, '../..')
-const QUOTED = join(ROOT_DIR, '.cache/sources/quoted')
+const QUOTED = join(CACHE_DIR, 'quoted')
 
 const ENTITIES: Record<string, string> = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',

@@ -26,7 +26,7 @@
  * The fields are loaded without premultiplication, so alpha is data like the rest.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import sharp from 'sharp'
 import { projection } from '@roma-cognita/world'
 import type { Place } from '@roma-cognita/schema'
@@ -45,8 +45,9 @@ import { fitRiver, placeBridges } from './bridges.ts'
 import { COURSES } from './aqueducts.ts'
 import { DESIGNS, designFootprints } from './designs.ts'
 import { bakeModel, writeGround } from './model.ts'
+import { CACHE_DIR } from '../load.ts'
 
-const CACHE = resolve(import.meta.dirname, '../../../.cache/sources/mapterhorn-rome')
+const CACHE = join(CACHE_DIR, 'mapterhorn-rome')
 const TEXEL_M = 4
 /** Holes in the river's outline smaller than this, m², are not islands (the Tiber Island is 28,000). */
 const MIN_ISLET_M2 = 2000

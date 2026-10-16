@@ -11,8 +11,7 @@
  *   npm run sources -w pipeline
  */
 import { mkdirSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 import type {
   AreaGeometry,
   Builds,
@@ -21,10 +20,9 @@ import type {
   SourceKind,
   SourcesIndex,
 } from '@roma-cognita/schema'
-import { loadDataset } from '../load.ts'
+import { loadDataset, ROOT_DIR } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/sources')
 
 /** The window, astronomical: 133 BCE to 27 BCE. */

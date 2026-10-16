@@ -3,7 +3,7 @@
  * Corinth canals and Lake Tharthar, written into data/geometry/landscape-changes.geojson
  * beside the other generators' shapes (see shapes.ts).
  *
- *   npx tsx pipeline/src/landscape/canals.ts
+ *   npm run canals -w pipeline
  *
  * The canals are drawn as corridors along their centrelines, and the centrelines come
  * from the coastline data itself: `probe-canal.ts` walks the OSM land polygons row by

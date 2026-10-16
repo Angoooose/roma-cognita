@@ -12,10 +12,10 @@
  * `pixelMetres` accounts for when a threshold or an area is in metres.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, join } from 'node:path'
 import sharp from 'sharp'
+import { ROOT_DIR } from '../load.ts'
 
-export const ROOT_DIR = resolve(import.meta.dirname, '../../..')
 export const DEM_CACHE = join(ROOT_DIR, '.cache/mapterhorn')
 const URL = (z: number, x: number, y: number) =>
   `https://tiles.mapterhorn.com/${z}/${x}/${y}.webp`

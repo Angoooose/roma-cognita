@@ -168,7 +168,7 @@ export const DESIGNS_SOUTH: Record<string, Design> = {
     podium: 3,
     stairs: 'front',
     extent: [16, 27],
-    why: 'The old temple, a typical one, its size conjectural. L. Cornificius rebuilt it "octostyle and dipteral, surrounded by a double colonnade" on the Marble Plan (Suetonius, Augustus 29.5; P&A, Diana, pp. 149–151), but no readable text dates the rebuilding, which Suetonius counts among the works of Augustus\' reign, so it is not drawn inside the window; until October 2026 it rose from 32 BCE, after his triumph. Its facing is not known.',
+    why: 'The old temple, a typical one, its size conjectural. L. Cornificius rebuilt it "octostyle and dipteral, surrounded by a double colonnade" on the Marble Plan (Suetonius, Augustus 29.5; P&A, Diana, pp. 149–151), but no readable text dates the rebuilding, which Suetonius counts among the works of Augustus\' reign, so it is not drawn inside the window. Its facing is not known.',
   },
   'aedes-cereris-liberi-liberae': {
     model: 'temple',

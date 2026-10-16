@@ -2,22 +2,22 @@
  * Records the passages each ancient text's English page has an anchor for, so a
  * citation can link to the passage and not just the work (works.ts says which pages).
  * The pages are fetched once and cached under .cache/sources/passages/; what they
- * hold is written to passages.json beside this file, which is committed: every build
+ * hold is written to data/passages.json, which is committed: every build
  * reads it, and a re-fetch that moves an anchor shows up as a diff.
  *
  *   npm run passages:fetch -w pipeline              (cached pages are reused)
  *   npm run passages:fetch -w pipeline -- --refresh (download them all again)
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { userAgent } from '../people/agent.ts'
+import { userAgent } from '../agent.ts'
 import { compareRef, parseRef } from './passage.ts'
 import { allWorks, pageUrl, type Work } from './works.ts'
+import { CACHE_DIR, DATA_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-export const CACHE = join(ROOT_DIR, '.cache/sources/passages')
-export const INDEX = join(dirname(fileURLToPath(import.meta.url)), 'passages.json')
+export const CACHE = join(CACHE_DIR, 'passages')
+export const INDEX = join(DATA_DIR, 'passages.json')
 
 /** Each anchor on the page in page order, with the text up to the next. */
 export function anchors(html: string, w: Work): { id: string; text: string }[] {

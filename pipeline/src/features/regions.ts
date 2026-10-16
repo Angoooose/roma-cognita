@@ -27,8 +27,8 @@
  * **Regions exclude each other** in order: a region's floodplain is cut by the
  * hulls of the regions listed before it in `REGIONS`, so no ground is counted twice.
  */
-import type { Bbox } from './dem.ts'
-import type { Pt } from './grid.ts'
+import type { Bbox } from '../lib/dem.ts'
+import type { Pt } from '../lib/grid.ts'
 
 export type ChannelSpec =
   | {

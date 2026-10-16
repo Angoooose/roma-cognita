@@ -12,12 +12,12 @@
 import { mkdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import sharp from 'sharp'
-import { DATA_DIR, readDataset } from '../load.ts'
-import { lonLatToPixel, pixelMetres, readDem, type Bbox } from '../features/dem.ts'
-import type { Pt } from '../features/grid.ts'
+import { DATA_DIR, ROOT_DIR, readDataset } from '../load.ts'
+import { lonLatToPixel, pixelMetres, readDem, type Bbox } from '../lib/dem.ts'
+import type { Pt } from '../lib/grid.ts'
 import { vertexOf } from './legs.ts'
 
-const OUT = join(import.meta.dirname, '../../../.cache/atoms-preview')
+const OUT = join(ROOT_DIR, '.cache/atoms-preview')
 
 export const REGIONS: Record<string, Bbox & { z: number }> = {
   world: { west: -11, south: 22, east: 50, north: 53, z: 4 },

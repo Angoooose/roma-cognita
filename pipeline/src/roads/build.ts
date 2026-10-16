@@ -30,15 +30,13 @@
  * - roads.json: the same lines' names, builders and dates, in the same order.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 import { DATA_RECT, projection } from '@roma-cognita/world'
 import { formatYear } from '@roma-cognita/schema'
-import { loadDataset } from '../load.ts'
+import { loadDataset, ROOT_DIR, CACHE_DIR } from '../load.ts'
 import { firstYear } from './dating.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const SRC = join(ROOT_DIR, '.cache/sources/itinere/itinere_roads.geojson')
+const SRC = join(CACHE_DIR, 'itinere/itinere_roads.geojson')
 const URL_SRC = 'https://zenodo.org/records/17122148/files/itinere_roads.geojson?download=1'
 const OUT = join(ROOT_DIR, 'build/roads')
 

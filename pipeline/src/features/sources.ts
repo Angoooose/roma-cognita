@@ -14,12 +14,11 @@
  */
 import { existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
-import type { Bbox } from './dem.ts'
-import { ROOT_DIR } from './dem.ts'
-import { readDbf, readShp } from './shp.ts'
-import type { Pt } from './grid.ts'
+import type { Bbox } from '../lib/dem.ts'
+import { CACHE_DIR as CACHE } from '../load.ts'
+import { readDbf, readShp } from '../lib/shp.ts'
+import type { Pt } from '../lib/grid.ts'
 
-const CACHE = join(ROOT_DIR, '.cache/sources')
 const LAND = join(CACHE, 'land-polygons-split-4326/land-polygons-split-4326/land_polygons.shp')
 const LAKES = join(CACHE, 'HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10.shp')
 export const LAKE_KM2 = 1

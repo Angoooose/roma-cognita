@@ -23,7 +23,7 @@
  * (the middle of the Republic's last century), and a shore that moved within the
  * window says so in its record's note.
  */
-import type { Pt } from '../features/grid.ts'
+import type { Pt } from '../lib/grid.ts'
 
 export interface Shore {
   /** The landscape-change record this is the shape of. */

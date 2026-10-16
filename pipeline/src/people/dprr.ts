@@ -12,12 +12,12 @@
  * endpoint said on the day in manifest.json.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { userAgent } from './agent.ts'
+import { userAgent } from '../agent.ts'
+import { CACHE_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-export const DPRR_CACHE = join(ROOT_DIR, '.cache/sources/dprr')
+export const DPRR_CACHE = join(CACHE_DIR, 'dprr')
 const ENDPOINT = 'https://romanrepublic.ac.uk/rdf/endpoint'
 
 const PREFIX = `

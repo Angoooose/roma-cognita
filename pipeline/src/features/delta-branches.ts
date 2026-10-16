@@ -30,7 +30,7 @@
  * moved and the map's coast is modern.
  */
 import type { Confidence } from '@roma-cognita/schema'
-import type { Pt } from './grid.ts'
+import type { Pt } from '../lib/grid.ts'
 
 export interface Waypoint {
   at: Pt

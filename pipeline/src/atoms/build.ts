@@ -20,14 +20,14 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import pc, { type MultiPolygon, type Polygon } from 'polygon-clipping'
 import type { Atom } from '@roma-cognita/schema'
-import { DATA_DIR, readDataset } from '../load.ts'
+import { CACHE_DIR, DATA_DIR, readDataset } from '../load.ts'
 import { rewindRFC7946 } from '../geo.ts'
 import { Land, boundsOf, type Bounds } from './land.ts'
 import { km, resolveEdge, vertexOf } from './legs.ts'
-import type { Pt } from '../features/grid.ts'
+import type { Pt } from '../lib/grid.ts'
 
 const OUT = join(DATA_DIR, 'geometry/atoms.geojson')
-const PLEIADES = join(import.meta.dirname, '../../../.cache/sources/pleiades/pleiades-places-latest.csv')
+const PLEIADES = join(CACHE_DIR, 'pleiades/pleiades-places-latest.csv')
 /** Pieces smaller than this (deg², ~0.1 km²) are slivers of the difference, not ground. */
 const MIN_PIECE = 1e-5
 /** A vertex that names a Pleiades place should stand within this of it. */

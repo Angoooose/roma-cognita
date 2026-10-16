@@ -12,8 +12,8 @@
  * Pleiades is the one dataset cited this way: its locator names the place's page.
  */
 import { existsSync, readFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
+import { DATA_DIR } from '../load.ts'
 import { WORKS, pageUrl, type Work } from './works.ts'
 
 /** A reference split into its parts: "36.17a" is [[36, ''], [17, 'a']]. */
@@ -69,7 +69,7 @@ let index: Map<string, { page: string; refs: [Ref, string, string][] }> | undefi
 
 function load() {
   if (index) return index
-  const file = join(dirname(fileURLToPath(import.meta.url)), 'passages.json')
+  const file = join(DATA_DIR, 'passages.json')
   const raw: Index = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {}
   index = new Map(
     Object.entries(raw).map(([key, { page, passages }]) => [

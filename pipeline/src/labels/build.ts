@@ -15,19 +15,17 @@
  *   npm run labels -w pipeline
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 import { formatYear } from '@roma-cognita/schema'
-import { loadDataset } from '../load.ts'
+import { loadDataset, ROOT_DIR, DATA_DIR } from '../load.ts'
 import { passageUrl, workUrl } from '../passages/passage.ts'
 import type { Ring } from '../water/raster.ts'
 import { projectRing } from '../water/sources.ts'
 import { placeLabel, textWidth, type FontMetrics } from './territories.ts'
 import { knownPolygons, readKnownWorld } from '../known/world.ts'
 import { projection } from '@roma-cognita/world'
-import { lonLatToPixel, readDem, TILE, type Raster } from '../features/dem.ts'
+import { lonLatToPixel, readDem, TILE, type Raster } from '../lib/dem.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/labels')
 
 export function readFont(name: string): FontMetrics {
@@ -238,7 +236,7 @@ const placeName = (id: string) =>
 const sourceById = new Map(data.sources.map((s) => [s.id, s]))
 const planned = new Set<string>(
   JSON.parse(
-    readFileSync(join(ROOT_DIR, 'data/geometry/rome.geojson'), 'utf8'),
+    readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8'),
   ).features.map((f: { id: string }) => f.id),
 )
 const places = data.places.map((p) => {

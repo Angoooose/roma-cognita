@@ -48,7 +48,11 @@ import {
   RouteSchema,
 } from '@roma-cognita/schema'
 
-export const DATA_DIR = resolve(import.meta.dirname, '../../data')
+/** The repository root. */
+export const ROOT_DIR = resolve(import.meta.dirname, '../..')
+export const DATA_DIR = join(ROOT_DIR, 'data')
+/** Downloaded sources, gitignored: each build fetches or unzips into it once. */
+export const CACHE_DIR = join(ROOT_DIR, '.cache/sources')
 
 export interface Issue {
   level: 'error' | 'warning'

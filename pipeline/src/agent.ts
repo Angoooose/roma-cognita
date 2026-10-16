@@ -1,12 +1,14 @@
 /**
- * The User-Agent for the one-off fetches from DPRR and Wikidata. Wikimedia asks every
- * script to say who runs it and how to reach them, so the contact comes from the
- * environment — ROMA_COGNITA_CONTACT, set in the gitignored .env.local at the repo root —
- * and is never written into the code.
+ * The User-Agent for every fetch the pipeline makes, optionally naming the script that
+ * makes it. Public services (Wikimedia, Overpass among them) ask every script to say
+ * who runs it and how to reach them, so the contact comes from the environment —
+ * ROMA_COGNITA_CONTACT, set in the gitignored .env.local at the repo root — and is
+ * never written into the code.
  */
-export function userAgent(): string {
+export function userAgent(script?: string): string {
   const contact = process.env.ROMA_COGNITA_CONTACT?.trim()
-  return `roma-cognita/0.1 (non-commercial historical atlas${contact ? `; ${contact}` : ''})`
+  const parts = ['non-commercial historical atlas', script, contact].filter(Boolean)
+  return `roma-cognita/0.1 (${parts.join('; ')})`
 }
 
 /** Warns, once, when the fetch will go out without a contact. */

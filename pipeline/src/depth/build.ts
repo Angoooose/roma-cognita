@@ -1,8 +1,8 @@
 /**
- * Bakes sea depth onto the terrain quadtree, replacing the runtime AWS Terrain Tiles
- * fetch (DESIGN.md §7.2).
+ * Bakes sea depth onto the terrain quadtree (DESIGN.md §7.2).
  *
- * AWS depth was ~1–2 km a pixel at sea and merged two sources, which drew blocky,
+ * Depth is baked rather than fetched at run time because the runtime source, AWS
+ * Terrain Tiles, is ~1–2 km a pixel at sea and merges two sources, which draws blocky,
  * mottled shallows and tilted turquoise slabs in the Caspian. This bakes GEBCO_2026
  * everywhere and EMODnet's ~115 m DTM over the European seas, on the terrain's own
  * texel grid, so the worker only windows it:
@@ -19,8 +19,7 @@
  *   npm run depth -w pipeline
  */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { availableParallelism } from 'node:os'
 import { Worker } from 'node:worker_threads'
 import {
@@ -45,9 +44,8 @@ import {
   readGebco,
   type LonLatRaster,
 } from './sources.ts'
+import { ROOT_DIR, CACHE_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const CACHE = join(ROOT_DIR, '.cache/sources')
 const OUT = join(ROOT_DIR, 'build/depth')
 const WATER_INDEX = join(ROOT_DIR, 'build/water/index.json')
 
@@ -68,7 +66,7 @@ async function main() {
   const wet = (a: TileAddress) => code(a) === 0 || code(a) === 2
 
   console.log('reading GEBCO…')
-  const gebco: LonLatRaster[] = [await readGebco(CACHE, BBOX)]
+  const gebco: LonLatRaster[] = [await readGebco(CACHE_DIR, BBOX)]
   for (let m = 1; m <= GEBCO_MIPS; m++) gebco.push(halve(gebco[m - 1]))
   console.log(
     `  ${gebco[0].width}×${gebco[0].height}, ${((Date.now() - t0) / 1000).toFixed(0)} s`,
@@ -97,7 +95,7 @@ async function main() {
     }
   }
   const missing = [...needed.values()].filter(
-    ([w, s]) => !existsSync(emodnetChunkPath(CACHE, w, s)),
+    ([w, s]) => !existsSync(emodnetChunkPath(CACHE_DIR, w, s)),
   )
   console.log(
     `${loose.length} overview tiles, ${packs.length} packs; EMODnet ${needed.size} chunks, ${missing.length} to fetch`,
@@ -107,7 +105,7 @@ async function main() {
   await Promise.all(
     Array.from({ length: FETCH_CONCURRENCY }, async () => {
       for (let next = missing.pop(); next; next = missing.pop()) {
-        if (!(await fetchEmodnetChunk(CACHE, next[0], next[1])))
+        if (!(await fetchEmodnetChunk(CACHE_DIR, next[0], next[1])))
           failed.push(`${next[1]}_${next[0]}`)
         if (++fetched % 20 === 0)
           console.log(
@@ -123,7 +121,7 @@ async function main() {
 
   rmSync(OUT, { recursive: true, force: true })
   const pool = new Pool(Math.max(1, availableParallelism() - 2), {
-    cache: CACHE,
+    cache: CACHE_DIR,
     gebco,
     codes,
     maxLevel: MAX_LEVEL,

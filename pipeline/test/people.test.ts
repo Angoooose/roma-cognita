@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import {
   formatYear,
@@ -18,6 +18,7 @@ import {
   type RelationshipAssertion,
 } from '../src/people/build.ts'
 import { joinGovernors, unattestedYears } from '../src/people/governors.ts'
+import { ROOT_DIR } from '../src/load.ts'
 import { classifyOffices } from '../src/people/offices.ts'
 
 describe('dprrYear', () => {
@@ -250,7 +251,7 @@ describe('classifyOffices', () => {
 })
 
 // Against the real build, when there is one: the facts the phase is built on.
-const BUILD = resolve(import.meta.dirname, '../../build/people')
+const BUILD = join(ROOT_DIR, 'build/people')
 describe.skipIf(!existsSync(join(BUILD, 'manifest.json')))('build/people', () => {
   const read = <T>(name: string): T =>
     JSON.parse(readFileSync(join(BUILD, `${name}.json`), 'utf8'))

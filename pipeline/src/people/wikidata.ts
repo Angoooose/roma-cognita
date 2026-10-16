@@ -24,10 +24,10 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { userAgent, warnIfNoContact } from './agent.ts'
+import { userAgent, warnIfNoContact } from '../agent.ts'
+import { CACHE_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const OUT = join(ROOT_DIR, '.cache/sources/dprr/wikidata.json')
+const OUT = join(CACHE_DIR, 'dprr/wikidata.json')
 const ENDPOINT = 'https://query.wikidata.org/sparql'
 
 export interface WikidataPerson {

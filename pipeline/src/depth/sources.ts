@@ -10,8 +10,8 @@
  *
  * Both sources carry land heights as well as sea depths, and neither agrees with the
  * OSM coast the map draws — GEBCO's shore can sit half a kilometre off it. Where the
- * coast mask says sea but a source says land, the old runtime sampling read depth 0
- * and drew a turquoise fringe that had nothing to do with the sea floor. So each
+ * coast mask says sea but a source says land, sampling the source reads depth 0
+ * and draws a turquoise fringe that has nothing to do with the sea floor. So each
  * source's sea is extended a short way under its land (`extendSea`): the renderer
  * then finds a real neighbouring depth wherever the mask puts water.
  *
@@ -234,14 +234,6 @@ function hasValidNeighbour(
     }
   }
   return false
-}
-
-/** South-west corner of the EMODnet chunk holding lon/lat. */
-export function emodnetChunkOf(lon: number, lat: number) {
-  return {
-    west: Math.floor(lon / EMODNET_CHUNK_DEG) * EMODNET_CHUNK_DEG,
-    south: Math.floor(lat / EMODNET_CHUNK_DEG) * EMODNET_CHUNK_DEG,
-  }
 }
 
 export function emodnetChunkPath(cache: string, west: number, south: number) {

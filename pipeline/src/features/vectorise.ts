@@ -8,8 +8,8 @@ import { contours } from 'd3-contour'
 import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
 import { rewindRFC7946, ringProblems } from '../geo.ts'
-import { type Raster, pixelToLonLat } from './dem.ts'
-import { type Pt, blur, simplifyIndices } from './grid.ts'
+import { type Raster, pixelToLonLat } from '../lib/dem.ts'
+import { type Pt, blur, simplifyIndices } from '../lib/grid.ts'
 
 export interface VectoriseOptions {
   /** Douglas–Peucker tolerance, metres. */

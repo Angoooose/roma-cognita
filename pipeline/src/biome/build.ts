@@ -17,14 +17,13 @@
  *   npm run biome -w pipeline
  */
 import { existsSync, mkdirSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { fromFile } from 'geotiff'
 import sharp from 'sharp'
 import { DATA_RECT, ROOT, projection } from '@roma-cognita/world'
+import { ROOT_DIR, CACHE_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const SRC = join(ROOT_DIR, '.cache/sources/koppen/1991_2020/koppen_geiger_0p00833333.tif')
+const SRC = join(CACHE_DIR, 'koppen/1991_2020/koppen_geiger_0p00833333.tif')
 const OUT = join(ROOT_DIR, 'build/biome/biome.png')
 
 const SIZE = 2048

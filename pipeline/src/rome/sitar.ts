@@ -33,6 +33,7 @@
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { projection } from '@roma-cognita/world'
+import { userAgent } from '../agent.ts'
 import { DATA_DIR } from '../load.ts'
 import { CORRECTIONS } from './ground.ts'
 import { ROADS } from './roads.ts'
@@ -66,7 +67,7 @@ const params = new URLSearchParams({
   bbox: `${BOX.join(',')},urn:ogc:def:crs:EPSG::4326`,
 })
 const res = await fetch(`${WFS}?${params}`, {
-  headers: { 'User-Agent': 'roma-cognita pipeline (rome:sitar)' },
+  headers: { 'User-Agent': userAgent('rome:sitar') },
 })
 if (!res.ok) throw new Error(`SITAR: ${res.status} ${(await res.text()).slice(0, 400)}`)
 const all = (
@@ -130,7 +131,7 @@ interface Level {
 }
 const levelRes = await fetch(
   `${WFS}?${new URLSearchParams({ ...Object.fromEntries(params), typeNames: 'sitar:v_st_archaeo_part_altimetry' })}`,
-  { headers: { 'User-Agent': 'roma-cognita pipeline (rome:sitar)' } },
+  { headers: { 'User-Agent': userAgent('rome:sitar') } },
 )
 if (!levelRes.ok) throw new Error(`SITAR levels: ${levelRes.status}`)
 const levels = (
@@ -217,7 +218,7 @@ const wallRes = await fetch(
     srsName: 'EPSG:4326',
     CQL_FILTER: "categoria='INFRASTRUTTURE DI FORTIFICAZIONE/MILITARI'",
   })}`,
-  { headers: { 'User-Agent': 'roma-cognita pipeline (rome:sitar)' } },
+  { headers: { 'User-Agent': userAgent('rome:sitar') } },
 )
 if (!wallRes.ok) throw new Error(`SITAR wall: ${wallRes.status}`)
 const forts = (
@@ -318,7 +319,7 @@ const roadRes = await fetch(
     srsName: 'EPSG:4326',
     CQL_FILTER: `codice_pa IN (${roadCited.join(',')})`,
   })}`,
-  { headers: { 'User-Agent': 'roma-cognita pipeline (rome:sitar)' } },
+  { headers: { 'User-Agent': userAgent('rome:sitar') } },
 )
 if (!roadRes.ok) throw new Error(`SITAR roads: ${roadRes.status}`)
 const roadFeatures = (

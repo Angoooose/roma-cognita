@@ -14,13 +14,12 @@
  *   npm run fonts -w pipeline
  */
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
 // @ts-expect-error no types
 import generateBMFont from 'msdf-bmfont-xml'
+import { ROOT_DIR, CACHE_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const CACHE = join(ROOT_DIR, '.cache/sources/fonts')
+const CACHE = join(CACHE_DIR, 'fonts')
 const OUT = join(ROOT_DIR, 'build/fonts')
 
 const FONTS = [

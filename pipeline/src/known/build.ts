@@ -15,14 +15,13 @@
  *   npm run known -w pipeline
  */
 import { mkdirSync, readFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import sharp from 'sharp'
 import { parse } from 'yaml'
 import { ROOT, projection } from '@roma-cognita/world'
 import { knownPolygons, readKnownWorld, type LonLat } from './world.ts'
+import { ROOT_DIR, DATA_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
 const OUT = join(ROOT_DIR, 'build/known/known.png')
 
 const SIZE = 1024
@@ -37,12 +36,12 @@ async function main() {
   const known = readKnownWorld()
   fillRings([known.ring], inside)
 
-  const atoms = JSON.parse(readFileSync(join(ROOT_DIR, 'data/geometry/atoms.geojson'), 'utf8'))
+  const atoms = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/atoms.geojson'), 'utf8'))
   for (const f of atoms.features) {
     for (const rings of knownPolygons(known, f.id, f.geometry)) fillRings(rings, inside)
   }
 
-  const places = parse(readFileSync(join(ROOT_DIR, 'data/places.yaml'), 'utf8')) as {
+  const places = parse(readFileSync(join(DATA_DIR, 'places.yaml'), 'utf8')) as {
     location?: LonLat
   }[]
   const r = PLACE_REACH_KM / texelKm

@@ -39,7 +39,7 @@ import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
 import { DATA_DIR } from '../load.ts'
 import { BRANCHES, type Branch } from './delta-branches.ts'
-import { type Bbox, type Raster, lonLatToPixel, pixelMetres, pixelToLonLat, readDem } from './dem.ts'
+import { type Bbox, type Raster, lonLatToPixel, pixelMetres, pixelToLonLat, readDem } from '../lib/dem.ts'
 import {
   type Pt,
   blur,
@@ -51,7 +51,7 @@ import {
   minFilter,
   nearestSeed,
   simplifyIndices,
-} from './grid.ts'
+} from '../lib/grid.ts'
 import { type Overlay, renderPreview } from './preview.ts'
 import { geometryArea, vectorise } from './vectorise.ts'
 import { REGIONS, type Region } from './regions.ts'

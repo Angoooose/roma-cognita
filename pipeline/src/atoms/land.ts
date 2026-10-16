@@ -12,11 +12,12 @@
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import pc, { type MultiPolygon, type Polygon } from 'polygon-clipping'
-import { readShp } from '../features/shp.ts'
-import { simplifyIndices, type Pt } from '../features/grid.ts'
+import { readShp } from '../lib/shp.ts'
+import { simplifyIndices, type Pt } from '../lib/grid.ts'
 import { signedArea } from '../geo.ts'
+import { CACHE_DIR } from '../load.ts'
 
-const CACHE = join(import.meta.dirname, '../../../.cache/sources/natural-earth')
+const CACHE = join(CACHE_DIR, 'natural-earth')
 export const LAND_SOURCES = {
   land: { url: 'https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip', shp: 'land/ne_10m_land.shp' },
   minor: {

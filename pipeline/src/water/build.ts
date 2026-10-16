@@ -6,7 +6,7 @@
  * shader gets a crisp, antialiased coast at any zoom (the edge is where the field
  * crosses zero, found to a fraction of a texel), the shallow-water band and shore foam
  * — and land below sea level stops being drawn as sea, because the mask, not height,
- * now decides what is water (DESIGN.md §7.2).
+ * decides what is water (DESIGN.md §7.2).
  *
  * Tiles are addressed exactly like terrain nodes and share their texel grid, so a
  * terrain tile at level ≤ MAX_LEVEL reads its own mask tile and deeper ones read a
@@ -17,8 +17,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { parse as parseYaml } from 'yaml'
-import { dirname, join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { availableParallelism } from 'node:os'
 import { Worker } from 'node:worker_threads'
 import {
@@ -35,9 +34,8 @@ import type { BakeJob, BakeResult } from './bake-worker.ts'
 import { edgesTouch, inside, type Ring } from './raster.ts'
 import { RingIndex } from './ring-index.ts'
 import { SOURCES, ensureUnzipped, keepLake, keepLand, lakeArea, projectRing, readRings } from './sources.ts'
+import { ROOT_DIR, CACHE_DIR, DATA_DIR } from '../load.ts'
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../..')
-const CACHE = join(ROOT_DIR, '.cache/sources')
 const OUT = join(ROOT_DIR, 'build/water')
 
 /**
@@ -85,8 +83,8 @@ function minLakeKm2(level: number) {
  * so the coast build does not depend on the rest of the data validating.
  */
 function readFloodplains(): Ring[] {
-  const recordsFile = join(ROOT_DIR, 'data/features.yaml')
-  const geometryFile = join(ROOT_DIR, 'data/geometry/features.geojson')
+  const recordsFile = join(DATA_DIR, 'features.yaml')
+  const geometryFile = join(DATA_DIR, 'geometry/features.geojson')
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
   const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; kind: string }[]
   const ids = new Set(records.filter((r) => r.kind === 'floodplain').map((r) => r.id))
@@ -119,9 +117,9 @@ function readFloodplains(): Ring[] {
  * come when a correction ends inside it (the Latmian Gulf silting, for one).
  */
 function readLandscapeChanges() {
-  const recordsFile = join(ROOT_DIR, 'data/landscape-changes.yaml')
-  const geometryFile = join(ROOT_DIR, 'data/geometry/landscape-changes.geojson')
-  const sourcesFile = join(ROOT_DIR, 'data/sources.yaml')
+  const recordsFile = join(DATA_DIR, 'landscape-changes.yaml')
+  const geometryFile = join(DATA_DIR, 'geometry/landscape-changes.geojson')
+  const sourcesFile = join(DATA_DIR, 'sources.yaml')
   const out = {
     removeWater: [] as Ring[],
     addWater: [] as Ring[],
@@ -191,10 +189,10 @@ interface Credit {
 async function main() {
   const t0 = Date.now()
   console.log('reading OSM land polygons…')
-  const land = await readRings(ensureUnzipped(CACHE, SOURCES.land.zip), keepLand)
+  const land = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.land.zip), keepLand)
   console.log(`  ${land.stats.kept} pieces, ${land.stats.rings} rings, ${fmt(land.stats.points)} points`)
   console.log('reading HydroLAKES…')
-  const lakes = await readRings(ensureUnzipped(CACHE, SOURCES.lakes.zip), keepLake, lakeArea)
+  const lakes = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip), keepLake, lakeArea)
   console.log(`  ${lakes.stats.kept} lakes, ${fmt(lakes.stats.points)} points; dropped`, lakes.stats.dropped)
   console.log(`  read in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
 

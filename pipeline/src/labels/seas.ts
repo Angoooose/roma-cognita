@@ -6,7 +6,7 @@
  * Written into data/geometry/features.geojson beside the floodplains and rivers,
  * keeping whatever else is there.
  *
- *   npx tsx pipeline/src/labels/seas.ts
+ *   npm run seas -w pipeline
  *
  * The records these belong to — names, sources — are the `sea`, `gulf` and `lake`
  * entries in data/features.yaml.

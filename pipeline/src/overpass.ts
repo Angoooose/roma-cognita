@@ -2,6 +2,8 @@
  * OpenStreetMap through the Overpass API, for the fetchers that name their elements
  * in their records' locators (rome/fetch.ts, rivers/fetch.ts).
  */
+import { userAgent } from './agent.ts'
+
 const OVERPASS = 'https://overpass-api.de/api/interpreter'
 
 export interface Element {
@@ -27,7 +29,7 @@ export async function overpass(
   for (let i = 1; ; i++) {
     const res = await fetch(OVERPASS, {
       method: 'POST',
-      headers: { 'User-Agent': `roma-cognita pipeline (${agent})` },
+      headers: { 'User-Agent': userAgent(agent) },
       body: new URLSearchParams({ data: q }),
     })
     const body = await res.text()
