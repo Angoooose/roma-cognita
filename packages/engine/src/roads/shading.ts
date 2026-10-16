@@ -19,10 +19,11 @@ import {
 
 /**
  * Roman roads, painted into the terrain like the rivers (DESIGN.md §7.4): a cased
- * line — cream core, dark edges — from each tile's distance-to-road field, so a road sits on the relief at any
- * tilt. The field also carries the nearest road's first year, class and certainty
- * (packRoad in heightWorker.ts), so the timeline shows a road only from the year the
- * source dates it, and never before.
+ * line — cream core, dark edges — from each tile's field of offsets to the nearest
+ * road (roadField in heightWorker.ts), so a road sits on the relief at any tilt. The
+ * nearest road's first year, class and certainty (packRoad) ride in the politics
+ * texture's spare channel, so the timeline shows a road only from the year the source
+ * dates it, and never before.
  *
  * - Main roads appear from the regional view in, secondary roads closer; never at the
  *   overview.
@@ -43,14 +44,20 @@ const CORE = new THREE.Color('#E4D3AE')
 
 type F = THREE.Node<'float'>
 
-export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F) {
-  // Distance interpolates; the code is read from the nearest texel, never blended.
+export function roadShading(
+  tex: THREE.TextureNode,
+  politics: THREE.TextureNode,
+  n: number,
+  pxM: F,
+) {
+  // The offset interpolates, exactly across a straight road; the code is read from
+  // the nearest texel, never blended, in the politics texture's spare channel.
   const d = texture(
     tex,
     uv()
       .mul((n - 1) / n)
       .add(0.5 / n),
-  ).r
+  ).rg.length()
   const near = min(
     floor(
       uv()
@@ -61,8 +68,11 @@ export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F
   )
   const code = floor(
     (
-      textureLoad(tex, ivec2(int(near.x), int(near.y))) as unknown as THREE.Node<'vec4'>
-    ).y.add(0.5),
+      textureLoad(
+        politics,
+        ivec2(int(near.x), int(near.y)),
+      ) as unknown as THREE.Node<'vec4'>
+    ).w.add(0.5),
   )
   const year = floor(code.div(6)).sub(300)
   const rest = code.sub(floor(code.div(6)).mul(6))
@@ -81,13 +91,11 @@ export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F
   // same language as the settlement names (light type, dark halo). Widths in pixels.
   const widthPx = mix(float(3.2), float(2.4), secondary).mul(roadUniforms.pixelRatio)
   const edgePx = mix(float(0.8), float(0.7), secondary).mul(roadUniforms.pixelRatio)
-  // Never narrower than ~0.6 texel, capped in pixels — the river rule (material.ts):
-  // a bilinear distance overestimates on the line's centre, and a line thinner than
-  // that breaks into dashes between texel centres.
-  const floorM = texelM.mul(0.6).min(pxM.mul(1.4))
-  const outer = max(widthPx.mul(pxM).mul(0.5), floorM)
+  // In pixels alone. The offset field holds a line's centre to well under a texel, so
+  // unlike the rivers (material.ts) a road needs no floor in texels to stay whole.
+  const outer = widthPx.mul(pxM).mul(0.5)
   const inner = max(outer.sub(edgePx.mul(pxM)), float(0))
-  const aa = max(pxM.mul(0.5), texelM.mul(0.3).min(pxM.mul(1.2)))
+  const aa = pxM.mul(0.5)
   const casing = float(1).sub(smoothstep(outer.sub(aa), outer.add(aa), d))
   const core = float(1).sub(smoothstep(inner.sub(aa), inner.add(aa), d))
   // Certainty: surveyed roads full strength, conjectured lighter, hypothetical faint.

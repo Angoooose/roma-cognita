@@ -43,6 +43,7 @@ import {
 } from '../rome/shading.ts'
 import { GRATICULE_INK, graticuleNode } from '../edge/graticule.ts'
 import { knownDistanceKm, noise2, paperNode } from '../edge/paper.ts'
+import { toHalf } from './half.ts'
 import { seededNoise } from './noise.ts'
 import { waterLattice, waterShading } from './water.ts'
 
@@ -162,7 +163,7 @@ export function createTerrainMaterial(n: number) {
     terrain: texture(blankTile(THREE.RGBAFormat)),
     water: texture(blankTile(THREE.RGBAFormat)),
     politics: texture(blankTile(THREE.RGBAFormat)),
-    roads: texture(blankTile(THREE.RGFormat)),
+    roads: texture(noRoads),
   }
   // Uniforms, not literals: a number baked into the graph makes a distinct shader per
   // tile size. Set per tile by `bind`.
@@ -418,7 +419,7 @@ export function createTerrainMaterial(n: number) {
     inRiver.mul(float(1).sub(nearRomeOnly(float(0), () => riverSwap(mx, my, pxM)))),
   )
   // Roads over the rivers they cross, under the borders.
-  const road = roadShading(slots.roads, n, pxM, texelM)
+  const road = roadShading(slots.roads, slots.politics, n, pxM)
   // The plan draws Rome's own streets and roads, so the map's give way there: to its
   // streets on the board, and to its roads out of the gates as far as the country
   // round the city reaches, where one road hands over to the other.
@@ -666,6 +667,17 @@ export function createTerrainMaterial(n: number) {
   }
   return { material: mat, bind }
 }
+
+/**
+ * The roads texture of every tile with no road within reach (roadField in
+ * heightWorker.ts), shared rather than one each: most tiles close in have none. One
+ * texel, its offset far beyond any road's width. Never disposed with a tile.
+ */
+export const noRoads = (() => {
+  const t = blankTile(THREE.RGFormat)
+  ;(t.image.data as Uint16Array)[0] = toHalf(60000)
+  return t
+})()
 
 /** Stands in for a tile's texture until the first tile binds its own: same format, same sampler. */
 function blankTile(format: THREE.PixelFormat) {

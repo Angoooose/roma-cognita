@@ -1,6 +1,6 @@
 import * as THREE from 'three/webgpu'
 import { DATA_RECT, ROOT, TILE_TEXELS } from '@roma-cognita/world'
-import { createTerrainMaterial, type TileTextures } from './material.ts'
+import { createTerrainMaterial, noRoads, type TileTextures } from './material.ts'
 import type { TileJob, TileResult } from './heightWorker.ts'
 
 /**
@@ -287,7 +287,7 @@ export class TerrainTiles {
       terrain: dataTexture(r.terrain, THREE.RGBAFormat),
       water: dataTexture(r.water, THREE.RGBAFormat),
       politics: dataTexture(r.politics, THREE.RGBAFormat),
-      roads: dataTexture(r.roads, THREE.RGFormat),
+      roads: r.roads ? dataTexture(r.roads, THREE.RGFormat) : noRoads,
     }
     const material = (this.material ??= createTerrainMaterial(TEXELS))
     const mesh = new THREE.Mesh(this.geometryFor(node), material.material)
@@ -319,7 +319,7 @@ export class TerrainTiles {
       // Never evict the top of the tree: it is the stand-in of last resort.
       if (n.level <= 2 || n.lastUsed === this.frame) continue
       this.group.remove(n.mesh!)
-      for (const t of Object.values(n.textures!)) t.dispose()
+      for (const t of Object.values(n.textures!)) if (t !== noRoads) t.dispose()
       n.mesh = n.textures = undefined
       n.state = 'idle'
     }
@@ -328,7 +328,7 @@ export class TerrainTiles {
   dispose() {
     for (const w of this.workers) w.terminate()
     walk(this.root, (n) => {
-      for (const t of Object.values(n.textures ?? {})) t.dispose()
+      for (const t of Object.values(n.textures ?? {})) if (t !== noRoads) t.dispose()
     })
     this.material?.material.dispose()
     this.geometry.dispose()

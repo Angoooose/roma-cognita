@@ -56,14 +56,15 @@ export interface TileResult {
   /**
    * RGBA half floats, n×n: the lower and higher atom label either side of the nearest
    * political boundary, the signed distance to it (km, positive on the higher label's
-   * side), and 0. See pipeline/src/politics.
+   * side), and the nearest road's packed code (roadField). See pipeline/src/politics.
    */
   politics: Uint16Array
   /**
-   * RG half floats, n×n: distance to the nearest dated Roman road (m), and that road's
-   * packed code — see packRoad. Roads are drawn by the shader only from their year.
+   * RG half floats, n×n: the offset east and north to the nearest point on a dated
+   * Roman road (m). That road's code rides in the politics texture's spare channel.
+   * Null where no road comes within reach of the tile: it then shares one far texture.
    */
-  roads: Uint16Array
+  roads: Uint16Array | null
   minHeight: number
   maxHeight: number
 }
@@ -872,13 +873,19 @@ function loadRoads() {
   return roadIndex
 }
 
-/** Distance from every texel to the nearest road, and that road's code. */
-async function roadField(job: TileJob): Promise<Uint16Array> {
-  const out = new Uint16Array(N * N * 2)
-  const far = toHalf(ROAD_FAR)
-  for (let o = 0; o < N * N; o++) out[o * 2] = far
+/**
+ * The offset from every texel to the nearest point on a road, returned, and that
+ * road's packed code, written into the politics field's spare fourth channel: the
+ * code is read from the nearest texel, never filtered, so it needs no texture of its
+ * own. Null when no road comes within reach of any texel.
+ *
+ * An offset, not a distance: across a straight road it is linear, so the shader's
+ * bilinear sample is exact and the line stays clean however far a tile is magnified.
+ * A distance is V-shaped there, and interpolated it swells between texels.
+ */
+async function roadField(job: TileJob, politics: Uint16Array): Promise<Uint16Array | null> {
   const idx = await loadRoads()
-  if (!idx) return out
+  if (!idx) return null
   const { x0, y0, size } = tileRect(job)
   const step = size / (N - 1)
   // Enough reach for a line a few pixels wide, on this tile or magnified as a stand-in.
@@ -891,9 +898,12 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
   for (let r = r0; r <= r1; r++)
     for (let c = c0; c <= c1; c++)
       for (const s of idx.cells.get(r * 100000 + c) ?? []) seen.add(s)
-  if (!seen.size) return out
+  if (!seen.size) return null
   const dist = new Float32Array(N * N).fill(ROAD_FAR)
   const code = new Float32Array(N * N)
+  const ox = new Float32Array(N * N).fill(ROAD_FAR)
+  const oy = new Float32Array(N * N)
+  let near = false
   const g = idx.segs
   for (const s of seen) {
     const ax = g[s * 5]
@@ -905,6 +915,7 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
     const rr0 = Math.max(0, Math.floor((Math.min(ay, by) - reach - y0) / step))
     const rr1 = Math.min(N - 1, Math.ceil((Math.max(ay, by) + reach - y0) / step))
     if (cc0 > cc1 || rr0 > rr1) continue
+    near = true
     const dx = bx - ax
     const dy = by - ay
     const len2 = dx * dx + dy * dy || 1
@@ -913,19 +924,26 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
       for (let cc = cc0; cc <= cc1; cc++) {
         const px = x0 + cc * step
         const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len2))
-        const d = Math.hypot(ax + t * dx - px, ay + t * dy - py)
+        const vx = ax + t * dx - px
+        const vy = ay + t * dy - py
+        const d = Math.hypot(vx, vy)
         const o = rr * N + cc
         // Nearest wins; at a tie the older road, so a junction never waits on the newer.
         if (d < dist[o] - 1 || (Math.abs(d - dist[o]) <= 1 && g[s * 5 + 4] < code[o])) {
           dist[o] = d
+          ox[o] = vx
+          oy[o] = vy
           code[o] = g[s * 5 + 4]
         }
       }
     }
   }
+  if (!near) return null
+  const out = new Uint16Array(N * N * 2)
   for (let o = 0; o < N * N; o++) {
-    out[o * 2] = toHalf(Math.min(dist[o], ROAD_FAR))
-    out[o * 2 + 1] = toHalf(code[o])
+    out[o * 2] = toHalf(Math.max(-ROAD_FAR, Math.min(ox[o], ROAD_FAR)))
+    out[o * 2 + 1] = toHalf(Math.max(-ROAD_FAR, Math.min(oy[o], ROAD_FAR)))
+    politics[o * 4 + 3] = toHalf(code[o])
   }
   return out
 }
@@ -1006,7 +1024,7 @@ async function build(job: TileJob): Promise<TileResult> {
     riverField(job),
     politicsField(job),
   ])
-  const roads = await roadField(job)
+  const roads = await roadField(job, politics)
   const { shore, floodplain, ancient, ancientDistance } = await coastDistance(
     job,
     heights,
@@ -1046,10 +1064,7 @@ async function build(job: TileJob): Promise<TileResult> {
 
 self.onmessage = async (e: MessageEvent<TileJob>) => {
   const result = await build(e.data)
-  ;(self as unknown as Worker).postMessage(result, [
-    result.terrain.buffer,
-    result.water.buffer,
-    result.politics.buffer,
-    result.roads.buffer,
-  ])
+  const transfer = [result.terrain.buffer, result.water.buffer, result.politics.buffer]
+  if (result.roads) transfer.push(result.roads.buffer)
+  ;(self as unknown as Worker).postMessage(result, transfer)
 }
