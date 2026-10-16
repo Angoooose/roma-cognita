@@ -1,5 +1,5 @@
 /**
- * What each DPRR office *was*, for our purposes (PEOPLE.md §4.2). The question this
+ * What each DPRR office *was*, for our purposes. The question this
  * answers first is "who governed this province in this year": a province's posts
  * include the governor's legates and quaestors, and only the holder of imperium is
  * the governor. The other roles let the person panel group a career sensibly.

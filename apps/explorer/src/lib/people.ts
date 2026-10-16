@@ -12,7 +12,7 @@ import type {
 } from '@roma-cognita/schema'
 
 /**
- * The people layer (PEOPLE.md), as the app reads it: build/people/, fetched once after
+ * The people layer, as the app reads it: build/people/, fetched once after
  * the map's first frame and indexed for the panels. Everything here is derived from
  * DPRR (CC BY-NC 4.0) and Wikidata; the person panel credits both.
  */

@@ -1,6 +1,6 @@
 /**
  * The people layer: DPRR and Wikidata, from the cache that dprr.ts and wikidata.ts
- * fetched, normalised into build/people/ (PEOPLE.md §4).
+ * fetched, normalised into build/people/.
  *
  *   npm run people -w pipeline
  *
@@ -19,7 +19,7 @@
  *   by the relationship and the sex of the other person, and merged.
  * - **Corrections to DPRR are applied and reported** (corrections.ts).
  *
- * The output is CC BY-NC 4.0, like DPRR, and is never copied into data/ (PEOPLE.md §2).
+ * The output is CC BY-NC 4.0, like DPRR, and is never copied into data/ (data/README.md, "People").
  */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'

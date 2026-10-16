@@ -38,7 +38,7 @@ import { usePeople } from '@/peopleStore.ts'
 
 /**
  * The person panel: a life, on the left, beneath the title block, while the place stays
- * on the right (PEOPLE.md). It is not a dialog: the map stays live between the two, and
+ * on the right. It is not a dialog: the map stays live between the two, and
  * the timeline moves the gold index through the career. Opening a relative replaces the
  * person and remembers the way back; a name opened from anywhere else starts afresh.
  *

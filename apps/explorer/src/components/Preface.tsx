@@ -13,7 +13,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 /**
  * The title block's last row, and the plate it opens, as an atlas opens with its
  * preface: what the map is, where it stands, how to use it, how far to trust it (DESIGN.md
- * §1, §7.7), and whose work it is drawn from (§6, PEOPLE.md §2). Unlike the legend it is a
+ * §1, §7.7), and whose work it is drawn from (§6; data/README.md, "People"). Unlike the legend it is a
  * dialog: it is read on its own, not beside the map.
  */
 export function Preface({ years }: { years: string }) {

@@ -1,5 +1,5 @@
 /**
- * The people layer as baked into build/people/ (PEOPLE.md §4), shared by the pipeline
+ * The people layer as baked into build/people/ (pipeline/src/people/build.ts), shared by the pipeline
  * that writes it and the app that reads it.
  *
  * Everything here is derived from DPRR (CC BY-NC 4.0) plus Wikidata (CC0), and lives
@@ -125,7 +125,7 @@ export interface LifeEventRecord {
   note?: string
 }
 
-/** Our classification of an office (pipeline/src/people/offices.ts, PEOPLE.md §4.2). */
+/** Our classification of an office (pipeline/src/people/offices.ts). */
 export type OfficeRole =
   | 'command'
   | 'staff'

@@ -976,7 +976,7 @@
     People, offices, family relationships and statuses, fetched from its SPARQL
     endpoint (pipeline/src/people/dprr.ts). Kept in build/people/ only and never
     copied into data/, because NC cannot be relicensed under our CC BY-SA
-    (PEOPLE.md §2).
+    (data/README.md, "People").
 
 - id: wikidata-dprr
   kind: dataset

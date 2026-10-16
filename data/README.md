@@ -78,11 +78,9 @@ at ingest and the validator asserts it. A consumer that wants the other conventi
 ## Scope
 
 The data covers 133–27 BCE: from Tiberius Gracchus' tribunate and Attalus'
-bequest to the settlement of January 27. It was 68–43 until September 2026, when
-it was carried forward through the triumviral years to 27, and then back through
-the Gracchi, Jugurtha, the Social War, Mithridates, Sulla and Sertorius to 133
-(the research and its independent check of every citation are summarised in
-DOUBTS.md, one section per extension). Nothing reaches back before 133 yet.
+bequest to the settlement of January 27. Every citation was checked against its
+text independently of the research that made it; what the checks left open is in
+DOUBTS.md. Nothing reaches back before 133 yet.
 
 ## Decisions
 
@@ -216,7 +214,7 @@ confirming.
     Pompeius in Sicily, Sardinia and Corsica (43–37) is polity `kind: command`, and
     his rows are `occupied`: the provinces under him never stopped being
     provinces. The Liberators and the triumvirs are not polities; which triumvir
-    held which province is left for a table of its own (BACKLOG.md).
+    held which province is not modelled.
 
 19. **When a province is first attested, not founded, the claim moves at the
     attestation.** Achaea and Creta et Cyrenae are both first firmly attested in the
@@ -274,6 +272,23 @@ confirming.
     conquered ground before any settlement is Rome's occupation**: Lucullus' of
     Pontus in 72/71–69, which no commission organised until 67, is a row in the
     occupation layer by polity `rome`, over the kingdom's own.
+
+## People
+
+The people on the map, and who governed each province, come from the Digital
+Prosopography of the Roman Republic (DPRR, King's College London), which is
+CC BY-NC 4.0. That licence cannot be merged with this directory's CC BY-SA:
+share-alike would relicense DPRR's material on terms that allow commercial use,
+which NC forbids. So the two are kept apart:
+
+- DPRR's data is fetched and built locally into `build/people/`, with DPRR's
+  licence beside it (`pipeline/src/people/`). **No DPRR fact is written into
+  `data/`.**
+- What we author about DPRR is ours and lives here. `dprr-provinces.yaml`, which
+  lines up DPRR's provinces with our polities, refers to DPRR only by its province
+  names, and every judgement in it rests on the sources it cites.
+- Every person panel credits DPRR, links the person's DPRR page and its licence,
+  and says the data was normalised.
 
 ## Open doubts
 

@@ -1,11 +1,11 @@
 /**
- * How DPRR's "provinces" line up with our polities (PEOPLE.md §3.1, phase 2):
+ * How DPRR's "provinces" line up with our polities :
  * data/dprr-provinces.yaml, one entry per DPRR province name.
  *
  * DPRR's 92 provinces are not all ground. Only a `territory` is joined to polities,
  * and only its governors and their staff appear in a province's inspector. The table
  * is our own work, so it lives in data/ under our licence: it refers to DPRR by its
- * province names and copies nothing else from it (PEOPLE.md §2).
+ * province names and copies nothing else from it (data/README.md, "People").
  */
 import { z } from 'zod'
 import { ConfidenceSchema, ReviewSchema, SlugSchema, SourceRefSchema } from './common.ts'

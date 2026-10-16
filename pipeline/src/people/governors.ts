@@ -1,6 +1,6 @@
 /**
  * Who governed each of our polities, year by year: DPRR's posts joined to our polities
- * through data/dprr-provinces.yaml (PEOPLE.md, phase 2).
+ * through data/dprr-provinces.yaml.
  *
  * A post counts for a polity in a year when its province is a `territory` joined to
  * that polity over that year, and its office is a `command` (the governor) or `staff`

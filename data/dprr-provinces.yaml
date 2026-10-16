@@ -2,11 +2,11 @@
 # with our polities, so that a province on the map can show who governed it in
 # the year drawn. One entry per DPRR province, keyed by DPRR's own name for it,
 # spelt exactly as DPRR spells it. The schema is packages/schema/src/
-# dprrProvinces.ts; the reasoning behind the join is PEOPLE.md §3.1.
+# dprrProvinces.ts.
 #
 # Licence. This table is our work, under our licence (CC BY-SA), and lives in
 # data/ for that reason. DPRR is CC BY-NC, and the two cannot be merged
-# (PEOPLE.md §2), so nothing here is taken from DPRR except the names of its
+# (README.md, "People"), so nothing here is taken from DPRR except the names of its
 # provinces. No governors, no dates of office, no counts. Every judgement below
 # rests on the sources cited, not on DPRR's records.
 #

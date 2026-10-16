@@ -63,7 +63,7 @@ const PEOPLE_SHOWN = 30
  * and opens the inspector; what is not on the map in the year shown is listed greyed
  * with its years, and going to it moves the timeline to the first of them.
  *
- * People are listed too (PEOPLE.md §5.3), ordered by the year shown but never filtered
+ * People are listed too, ordered by the year shown but never filtered
  * by it: those attested then first, everyone else greyed after. Each is set against
  * their highest office, which tells namesakes apart. Enter opens the person panel.
  */

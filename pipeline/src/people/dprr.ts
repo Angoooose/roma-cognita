@@ -9,7 +9,7 @@
  * Each table is one SELECT, flattened to rows of strings exactly as DPRR returns
  * them — years still in DPRR's own numbering (−63 is 63 BCE), ids still bare. All
  * interpretation happens in build.ts, so the cache is a faithful copy of what the
- * endpoint said on the day in manifest.json. See PEOPLE.md §3 for what is in it.
+ * endpoint said on the day in manifest.json.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
