@@ -313,7 +313,8 @@ export class RomeMap {
 
   /**
    * What is under a client (CSS pixel) position: a settlement if its marker or name is
-   * there, otherwise the atom and the claim on it this year.
+   * there, otherwise the atom and the claim on it this year. In the model of Rome only
+   * settlements and monuments are found.
    */
   async pick(
     clientX: number,
@@ -332,6 +333,8 @@ export class RomeMap {
       p && this.view.metresPerPixel < PLAN_MPP ? this.plan.pick(p.x, p.y, this.year) : null
     const hit = monument ? this.places.hitFor(monument, this.year) : null
     if (hit) return { place: hit }
+    // In the model of Rome the ground is the city's, not a territory to be opened.
+    if (this.modelShown) return null
     const territory = p ? await this.politics.pick(p.x, p.y) : null
     return territory ? { territory } : null
   }
