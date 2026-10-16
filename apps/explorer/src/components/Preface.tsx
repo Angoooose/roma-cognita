@@ -106,14 +106,11 @@ export function Preface({ years }: { years: string }) {
                 <Source href="https://itiner-e.org" licence="CC BY 4.0">
                   Itiner-e, <em>roads</em>
                 </Source>
-                <Source href="https://awmc.unc.edu" licence="ODbL">
-                  Ancient World Mapping Center, <em>regions and rivers</em>
-                </Source>
                 <Source href="https://www.wikidata.org" licence="CC0">
                   Wikidata, <em>English names</em>
                 </Source>
                 <Source href="https://www.hydrosheds.org" licence="CC BY 4.0">
-                  HydroLAKES, <em>lakes</em>
+                  HydroSHEDS, <em>rivers and lakes</em>
                 </Source>
                 <Source href="https://osmdata.openstreetmap.de" licence="ODbL">
                   OpenStreetMap, <em>coastline</em>
@@ -129,6 +126,15 @@ export function Preface({ years }: { years: string }) {
                 </Source>
                 <Source href="https://www.naturalearthdata.com" licence="Public domain">
                   Natural Earth, <em>land</em>
+                </Source>
+                <Source href="https://doi.org/10.6084/m9.figshare.21789074" licence="CC BY 4.0">
+                  Köppen–Geiger (Beck et al., 2023), <em>climate</em>
+                </Source>
+                <Source
+                  href="https://www.archeositarproject.it/en/piattaforma/open-data/"
+                  licence="CC BY-SA 4.0"
+                >
+                  SITAR, <em>the archaeological map of Rome</em>
                 </Source>
               </ul>
               <p className="mt-3 text-sm text-muted-foreground">

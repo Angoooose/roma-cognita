@@ -131,7 +131,7 @@ const GAP = 4
 const INK = new THREE.Color('#2A241E')
 const PAPER = new THREE.Color('#EDE6D6')
 /**
- * Settlement names are light type with a dark halo, everywhere (decided 2026-09-22):
+ * Settlement names are light type with a dark halo, everywhere:
  * territories are dark capitals printed on the land, settlements float above it, seas
  * are gold italic. Light reads over busy relief where dark ink sinks into it.
  */
@@ -892,8 +892,7 @@ function textMaterial(
   const mat = new THREE.MeshBasicNodeMaterial()
   screenAnchored(mat)
   // One style everywhere, land or sea. (Choosing light or dark per name, by the ground
-  // under it, was tried and read as random: neighbours differed and names flipped
-  // with the zoom.) The halo is wider than the land lettering's, and soft, so the
+  // under it, reads as random: neighbours differ and names flip with the zoom.) The halo is wider than the land lettering's, and soft, so the
   // name holds on pale desert as well as on dark relief.
   const { ink, halo } = msdfInk(f, atlas, uv(), gain, haloAlpha, 2.4)
   mat.colorNode = mix(

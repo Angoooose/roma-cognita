@@ -19,7 +19,6 @@ export type Confidence = z.infer<typeof ConfidenceSchema>
 
 /** The state of our own work on the record. Reported by the build, never drawn. */
 export const ReviewSchema = z.enum(['verified', 'draft', 'needs-check'])
-export type Review = z.infer<typeof ReviewSchema>
 
 /**
  * A citation: a source id from data/sources.yaml, plus where in it (page, map,

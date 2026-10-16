@@ -66,7 +66,8 @@ function readPersonParam(): PersonId | null {
   return v && /^(dprr:\d+|ours:[a-z0-9-]+)$/.test(v) ? (v as PersonId) : null
 }
 
-// Replaced, not pushed: the browser's back button leaves the map, as it always has.
+// Replaced, not pushed: the browser's back button leaves the map rather than stepping
+// back through everyone opened.
 function writePersonParam(id: PersonId | null) {
   const url = new URL(location.href)
   if (id) url.searchParams.set('person', id)

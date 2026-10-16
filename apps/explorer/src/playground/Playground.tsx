@@ -21,14 +21,14 @@ export type Backdrop = keyof typeof BACKDROPS
 
 function initialMode(): Mode {
   try {
-    return localStorage.getItem('officina-mode') === 'dark' ? 'dark' : 'light'
+    return localStorage.getItem('playground-mode') === 'dark' ? 'dark' : 'light'
   } catch {
     return 'light'
   }
 }
 
 /**
- * Officina: the theme playground. The top half is the interface as it would sit on
+ * The theme playground. The top half is the interface as it would sit on
  * the map (over screenshots of the three zoom tiers, DESIGN.md §7.6); the bottom is a
  * specimen sheet of every component. The tuner on the right edits the tokens live.
  */
@@ -42,7 +42,7 @@ export function Playground() {
     document.documentElement.classList.toggle('dark', mode === 'dark')
     document.body.style.overflow = 'auto'
     try {
-      localStorage.setItem('officina-mode', mode)
+      localStorage.setItem('playground-mode', mode)
     } catch {}
   }, [mode])
 
@@ -58,10 +58,10 @@ export function Playground() {
         <div className="mx-auto flex max-w-[1500px] items-center gap-4 px-6 py-3">
           <div className="mr-auto leading-none">
             <div className="font-heading text-lg font-semibold tracking-[0.14em]">
-              Officina
+              Theme playground
             </div>
             <div className="text-xs text-muted-foreground italic">
-              the Roma Cognita interface, on trial
+              the Roma Cognita interface, for tuning
             </div>
           </div>
           <ToggleGroup

@@ -43,7 +43,7 @@ const RANGES = [
   },
 ] as const
 
-const STORE = 'officina-overrides'
+const STORE = 'playground-overrides'
 
 function load(): Record<Mode, Overrides> {
   try {

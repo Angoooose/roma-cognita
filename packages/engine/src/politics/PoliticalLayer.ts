@@ -369,7 +369,7 @@ export class PoliticalLayer {
   }
 
   private holding(atom: string, year: number) {
-    // Occupation is a separate layer (packages/schema claimLayer); v1 draws holdings.
+    // Occupation is a separate layer (packages/schema claimLayer); this draws holdings.
     return this.data!.claims.find((c) => c.atom === atom && c.relation !== 'occupied' && covers(c, year))
   }
 

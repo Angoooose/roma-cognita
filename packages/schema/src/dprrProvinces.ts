@@ -27,7 +27,6 @@ export const DprrProvinceKindSchema = z.enum([
   /** A name too broad to place on one polity: Hispania, Gallia. */
   'vague',
 ])
-export type DprrProvinceKind = z.infer<typeof DprrProvinceKindSchema>
 
 export const DprrProvinceSchema = z
   .strictObject({

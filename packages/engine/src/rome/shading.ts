@@ -75,8 +75,8 @@ export const planUniforms = {
   /**
    * How much the relief under the city is drawn up, so the hills read from above:
    * the smoothed slope's light is exaggerated this many times, on the ground and in
-   * the wash over the model (`reliefWash`). Twice, now the valley floors lie at
-   * their ancient depth (pipeline ground.ts): more, and a real slope falls muddy.
+   * the wash over the model (`reliefWash`). Twice, with the valley floors at their
+   * ancient depth (pipeline ground.ts): more, and a real slope falls muddy.
    */
   relief: uniform(2),
   /** The year shown, astronomical (ModelLayer sets it with the model's). */

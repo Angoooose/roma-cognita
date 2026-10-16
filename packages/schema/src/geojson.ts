@@ -57,7 +57,6 @@ export const keyedCollection = <G extends z.ZodType>(geometry: G) =>
 
 /** data/geometry/atoms.geojson */
 export const AtomGeometrySchema = keyedCollection(AreaGeometrySchema)
-export type AtomGeometry = z.infer<typeof AtomGeometrySchema>
 
 /**
  * data/geometry/landscape-changes.geojson: the area each landscape correction covers.
@@ -102,7 +101,6 @@ export const FeatureGeometrySchema = z.object({
     }),
   ),
 })
-export type FeatureGeometry = z.infer<typeof FeatureGeometrySchema>
 export type AnyGeometry = z.infer<typeof AnyGeometrySchema>
 
 /**

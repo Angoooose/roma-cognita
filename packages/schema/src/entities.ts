@@ -300,7 +300,6 @@ export const PlaceConditionSchema = z.enum([
  * Left out when the works began from bare ground, or the sources do not say.
  */
 export const PlaceKeptSchema = z.enum(['footings', 'podium', 'walls'])
-export type PlaceKept = z.infer<typeof PlaceKeptSchema>
 
 export interface Dated<T> {
   value: T

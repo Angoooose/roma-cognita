@@ -19,6 +19,7 @@ import {
   vec2,
   vec3,
 } from 'three/tsl'
+import { rgb } from '../color.ts'
 
 /**
  * Water shading, close up and far out (DESIGN.md §7.2).
@@ -48,11 +49,6 @@ import {
  * Nothing here is a claim about the past: it is how water looks, not where anything
  * was. Colours are the tokens in §8.1 plus the steps between them.
  */
-
-function rgb(hex: string) {
-  const c = new THREE.Color(hex)
-  return vec3(c.r, c.g, c.b)
-}
 
 const SEA_DEEP = rgb('#1E3150')
 const SEA_MID = rgb('#24506E')
@@ -116,10 +112,9 @@ const GRAD_RANGE = 2
 /**
  * The water's noise, baked once: value noise on a PERIOD-cell lattice with its
  * gradient, four texels a cell. An octave is then one texture read, not eight hashes
- * and their interpolation — the arithmetic version made water views 12–25% dearer to
- * draw than before this shading existed. The pattern is the same noise the shader
- * used to compute: quintic value noise over Dave Hoskins' sine-free hash (a sin hash
- * correlates along the axes and drew straight lines through the ripples), so it
+ * and their interpolation, which in the shader make water views 12–25% dearer to
+ * draw. The noise is quintic value noise over Dave Hoskins' sine-free hash (a sin hash
+ * correlates along the axes and draws straight lines through the ripples), so it
  * tiles exactly at the lattice's period.
  *
  * RGBA8: value, then the gradient in x and y mapped from ±GRAD_RANGE. Mipmapped, and

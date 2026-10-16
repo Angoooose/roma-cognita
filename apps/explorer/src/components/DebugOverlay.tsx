@@ -3,7 +3,7 @@ import { useExplorer } from '@/store.ts'
 
 /**
  * `?debug=1`. Frame timing cannot be measured from a headless browser, so the page
- * measures itself — this is how the old SVG map found its contour-layer bottleneck.
+ * measures itself; the readout is what finds which layer a slow view is spending on.
  * Written straight to the DOM each frame, not through React state.
  */
 export function DebugOverlay() {

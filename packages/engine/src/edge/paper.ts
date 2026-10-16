@@ -8,9 +8,9 @@ import {
   smoothstep,
   texture,
   vec2,
-  vec3,
 } from 'three/tsl'
 import { ROOT } from '@roma-cognita/world'
+import { rgb } from '../color.ts'
 
 /**
  * The paper past the known world, as a surface rather than a flat colour: fibre grain,
@@ -20,12 +20,6 @@ import { ROOT } from '@roma-cognita/world'
  * depends only on plane position, pixel size and the distance to the known world,
  * never on anything tile-specific.
  */
-
-/** An sRGB token as a linear-space vec3. */
-function rgb(hex: string) {
-  const c = new THREE.Color(hex)
-  return vec3(c.r, c.g, c.b)
-}
 
 export const PAPER_HEX = '#D9CFB8'
 const PAPER = rgb(PAPER_HEX)

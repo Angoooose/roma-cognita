@@ -25,6 +25,7 @@ import {
   vec3,
 } from 'three/tsl'
 import { DATA_RECT, ROOT } from '@roma-cognita/world'
+import { rgb } from '../color.ts'
 import { politicsUniforms } from '../politics/PoliticalLayer.ts'
 import { politicalShading } from '../politics/shading.ts'
 import { roadShading } from '../roads/shading.ts'
@@ -65,12 +66,6 @@ export const terrainUniforms = {
    * harder the further out the camera is — the controls set this from metres/pixel.
    */
   shadeExaggeration: uniform(1),
-}
-
-/** An sRGB token as a linear-space vec3 (THREE.Color converts on construction). */
-function rgb(hex: string) {
-  const c = new THREE.Color(hex)
-  return vec3(c.r, c.g, c.b)
 }
 
 /**
@@ -307,7 +302,7 @@ export function createTerrainMaterial(n: number) {
 
   // Deserts are not one colour: sand seas are pale, rocky plateaus, escarpments and wadi
   // walls darker and redder. Only the terrain decides which is which — a noise field
-  // here was tried and read as camouflage, patches the ground does not have.
+  // here reads as camouflage, patches the ground does not have.
   const rough = smoothstep(0.02, 0.18, slope)
   const desertTone = mix(GROUND_DESERT.mul(1.04), GROUND_DESERT_ROCK, rough)
   ground = mix(ground, desertTone, b.r.mul(0.8))
@@ -362,7 +357,7 @@ export function createTerrainMaterial(n: number) {
   // once that is more than a pixel or two, and at a width that grows with discharge
   // before then — so the Nile reads as the Nile at the overview without turning into a
   // kilometre-wide band when zoomed in. Whether it shows at all follows the same rule
-  // the worker used to choose which rivers a tile carries.
+  // the worker uses to choose which rivers a tile carries.
   const riverDist = w.b
   // Negative discharge marks a reconstructed course: our line between attested sites,
   // drawn thinner and paler so it never reads as a surveyed river.

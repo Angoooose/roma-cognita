@@ -223,8 +223,8 @@ export class TerrainTiles {
     node.texelPx = texelPx
     if (texelPx > SPLIT_TEXEL_PX && node.level < MAX_LEVEL) {
       // Ancestors on the view's path are in use even when not drawn: they are the
-      // stand-ins in waiting. Left to age, eviction dropped them and the next frame
-      // loaded them again, so a view needing near the limit never stopped loading.
+      // stand-ins in waiting. Left to age, eviction would drop them and the next frame
+      // load them again, so a view needing near the limit would never stop loading.
       node.lastUsed = this.frame
       node.children ??= split(node)
       for (const child of node.children) this.select(child, eye, focalPx, out)

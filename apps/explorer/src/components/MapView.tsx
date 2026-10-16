@@ -4,6 +4,8 @@ import { useExplorer } from '@/store.ts'
 
 interface Props {
   camera: CameraState
+  /** Expose the engine as `window.map`, for the screenshot harness and the console. */
+  debug: boolean
   forceWebGL: boolean
   year: number
 }
@@ -13,7 +15,7 @@ interface Props {
  * unmount. The engine is framework-free (DESIGN.md §9); this is the thin wrapper.
  * Props are read once, at creation.
  */
-export function MapView({ camera, forceWebGL, year }: Props) {
+export function MapView({ camera, debug, forceWebGL, year }: Props) {
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -24,8 +26,7 @@ export function MapView({ camera, forceWebGL, year }: Props) {
       map = m
       m.setYear(year)
       useExplorer.getState().attach(m)
-      // For the screenshot harness and the console.
-      Object.assign(window, { map: m })
+      if (import.meta.env.DEV || debug) Object.assign(window, { map: m })
     })
     return () => {
       cancelled = true

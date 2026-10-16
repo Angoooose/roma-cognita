@@ -24,7 +24,12 @@ export function App() {
   }, [ready])
   return (
     <>
-      <MapView camera={params.camera} forceWebGL={params.forceWebGL} year={params.year} />
+      <MapView
+        camera={params.camera}
+        debug={params.debug}
+        forceWebGL={params.forceWebGL}
+        year={params.year}
+      />
       {ready && !params.bare && (
         <>
           {/* The left column: the title block, with the index and the legend, and beneath
