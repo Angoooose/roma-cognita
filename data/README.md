@@ -30,6 +30,10 @@ which exits non-zero on any error and prints what the data itself is unsure of.
 | `road-corrections.yaml`  | corrections to Itiner-e's dating of its roads: a line the source leaves undated, or dates by a later paving, dated from when the sources show the road in use; applied by `npm run roads -w pipeline` |
 | `geometry/rome-levels.geojson` | heights (m above the sea) SITAR records on ground walked on, floors, paving and streets, in a phase between 400 BCE and 150 CE, and those the corrections of Rome's valley floors cite (pipeline/src/rome/ground.ts); CC BY-SA 4.0; fetched by `npm run rome:sitar -w pipeline`, never edited by hand |
 | `known-world.yaml`       | how far Roman geography reached, as one coarse ring: where the map's colour stops; baked by `npm run known -w pipeline` |
+| `landscape-changes.yaml` | dated corrections to the modern coast, lakes and canals (DESIGN §6.1): where the landscape of 133–27 BCE differed from today's, how, and on whose authority; applied by the coast build |
+| `geometry/landscape-changes.geojson` | their shapes, lon/lat, keyed by id; written by the generators in `pipeline/src/landscape` (`npm run derive-coasts -w pipeline`), never edited by hand |
+| `dprr-provinces.yaml`    | how DPRR's provinces line up with our polities, so a province can show who governed it; names DPRR's provinces and nothing else of DPRR's (see People) |
+| `passages.json`          | the passages each ancient text's English page has an anchor for, so a citation can link to the passage; written by `npm run passages:fetch -w pipeline`, never edited by hand |
 
 Any of these may be split into `<entity>/*.yaml` once it grows; the loader reads both.
 
@@ -90,20 +94,15 @@ confirming.
 1. **Window edges are open ends.** A row in force at the window's start reads
    `before 133 BCE` and one still in force at its end reads `after 27 BCE`: in force
    at that year, extent beyond it not stated. Rows starting or ending inside the
-   window carry their exact year. A later curator extending the window should
-   treat every open end as a question, as the extension from 43 to 27 did: every
-   `after 43 BCE` became a real end or `after 27 BCE`, except one left open on
-   purpose (Osroene's standing with Rome, which nothing attests after 43; the
-   research of October 2026 has since closed it at 54, when Abgar turned on
-   Crassus). The
-   extension back to 133 did the same for every `before 68 BCE`, except one left
-   open on purpose (the Kushite hold on Lower Nubia, which nothing dates before
-   68).
+   window carry their exact year. Anyone extending the window should treat every
+   open end as a question. An open end inside the window is one the sources
+   bound no further: the Kushite hold on Lower Nubia reads `before 68 BCE`,
+   because nothing dates it earlier.
 
 2. **Where the true start is known but the atom is not the polity, the claim stays
    open.** Sicilia the province dates from 241 BCE (on the polity), but the atom is
    the whole island and Syracuse was an allied kingdom until 212/211, so the claim
-   reads `before 68 BCE`, not `241 BCE`. Same rule for every province: the date of
+   reads `before 133 BCE`, not `241 BCE`. Same rule for every province: the date of
    creation is the polity's `from`, never the claim's.
 
 3. **Client kingdoms are three records.** (a) polity `kind: kingdom` — what the
@@ -123,13 +122,11 @@ confirming.
    client, allied, independent) and occupation. The Parthian occupation of Syria in
    40 BCE did not end the province; both rows can stand.
 
-6. **Atom outlines are authored** (rebuilt September 2026). The first outlines
-   were AWMC's 60 BCE shading cut with straight lines, and twelve-vertex rings for
-   the kingdoms; neither followed a frontier any source names, and AWMC's ODbL
-   would not relicense. Each atom's `construction` is now an `outline` — vertices
-   at places or features, joined straight, along a river (HydroRIVERS), along a
-   range (the DEM) or by a curve for an unsurveyed zone — or a `box` round an
-   island. `npm run atoms -w pipeline` resolves them, clips to Natural Earth land
+6. **Atom outlines are authored.** A shaded atlas such as AWMC's 60 BCE map
+   follows no frontier any source names, and AWMC's ODbL would not relicense, so
+   each atom's `construction` is an `outline` — vertices at places or features,
+   joined straight, along a river (HydroRIVERS), along a range (the DEM) or by a
+   curve for an unsurveyed zone — or a `box` round an island. `npm run atoms -w pipeline` resolves them, clips to Natural Earth land
    and cuts each earlier atom out of the next, so a shared frontier is authored
    once, by whichever atom comes first in atoms.yaml.
    `npm run atoms:preview -w pipeline` draws them over a hillshade for review.
@@ -177,14 +174,14 @@ confirming.
 14. **Places are `certain`** where matched to their Pleiades entry, taking
     Pleiades' coordinate and id as truth.
 
-15. **Floodplains are derived, not drawn** (September 2026). `kind: floodplain`
+15. **Floodplains are derived, not drawn.** `kind: floodplain`
     records own names, dates and sources; their outlines are made from terrain by
     `npm run derive-floodplains -w pipeline` and committed. Per region: an authored
     loose hull (ours, over a DEM preview, never traced from the Barrington Atlas),
     channels, a threshold. The measure is height above the *floodplain surface
     beside* the nearest channel (the median of the DEM within ~1.3 km of it),
     not above its water: a modern river's water sits metres below its banks and an
-    ancient dry branch has none, so a water datum made the delta lopsided again.
+    ancient dry branch has none, so a water datum would make the delta lopsided.
     Thresholds: Nile valley 8 m; delta 4 m (from the seven branches); Mesopotamia
     6 m plus a flatness test (≤ 0.06 %, closed by 3 km) because the Southern Desert
     rises too gently for height alone; Susiana 12 m; middle Euphrates 8 m; the
@@ -208,7 +205,7 @@ confirming.
 17. **Occupation follows the successor rule too.** A row in the occupation layer
     ends the year before the occupier was driven out: Labienus' occupation of
     Asia and Pacorus' of Syria are 40–40, because Ventidius recovered both in 39.
-    Pharnaces' 48–47, from before, is the one row that does not (DOUBTS.md).
+    Pharnaces' 48–47 is the one row that does not (DOUBTS.md).
 
 18. **A Roman commander holding ground against Rome is a `command`.** Sextus
     Pompeius in Sicily, Sardinia and Corsica (43–37) is polity `kind: command`, and
@@ -225,27 +222,25 @@ confirming.
     the latest date and the note carries the rest.
 
 20. **An atom is split only where a source dates a change of hands at that
-    grain** (decided 2026-09-24). The new atoms of the extension — Thessaly and
-    southern Epirus, the Iapydes, inner Pontus, Lycaonia, northern Pisidia, Rough
+    grain.** Atoms cut from a larger one — such as Thessaly and southern Epirus, the Iapydes, inner Pontus, Lycaonia, northern Pisidia, Rough
     Cilicia, Lower Nubia (the Triacontaschoenus), Tyre, Sidon, the Phoenician and
     Palestinian coasts, Strato's Tower, Gaza, Samaria, Gadara with Hippos, and
-    Jericho — each carry copies of their parent's earlier claims, so the years
-    before the split draw as they did. A child that leaves its parent standing
+    Jericho — carry copies of their parent's earlier claims, so the years
+    before the split draw as the parent. A child that leaves its parent standing
     does not use `splitFrom`, which means the parent is gone.
 
 21. **Disputed creations of 27 are not drawn.** Lusitania and Baetica, and the
     three Gauls, are dated by Dio to 27 and by most modern work to 16–13; the two
-    Spains and Gallia Comata are kept whole to 27, and the dispute is in their notes
-    (decided 2026-09-24). Mauretania after Bocchus (33) is drawn as a province,
-    uncertain, because Dio's "enrolled among the provinces" (49.43.7) is the one
+    Spains and Gallia Comata are kept whole to 27, and the dispute is in their notes.
+    Mauretania after Bocchus (33) is drawn as a province, uncertain, because Dio's "enrolled among the provinces" (49.43.7) is the one
     explicit statement.
 
-22. **Italy before the Social War is three polities** (decided 2026-09-27). Before
+22. **Italy before the Social War is three polities.** Before
     90 the single `italia` atom could not stand: its ground was Roman citizen land
     and allied land, which the Social War enfranchised piece by piece in 90–87.
     Ten atoms are cut from `italia`, and Cispadana from `cisalpina`, at the grain
     the war and its laws date (Beloch 1880; DOUBTS.md), each carrying `italia` from its own year on, so from 87 the map
-    reads ITALIA as before. Before that: `ager-romanus` (citizen territory of
+    reads ITALIA whole. Before that: `ager-romanus` (citizen territory of
     Rome, to 91); `socii`, one league for every allied community, `subject-of
     rome`, so it draws as a washed shade of Rome (the allies had no right of war
     and peace and owed troops under the formula togatorum; one polity, because

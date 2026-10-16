@@ -123,7 +123,7 @@
     consulship of 89 (1.50), hence 90; the Res Gestae still sets Italy's land
     against the provinces' in 14 (RG 16).
 
-# --- Italy before the Social War (added September 2026, the extension to 133) --
+# --- Italy before the Social War ---------------------------------------------
 # Before 90 the peninsula was a patchwork: the Roman citizen land (ager-romanus),
 # the Latin colonies (drawn as places, status colonia latina) and some 150
 # allied communities bound to Rome by treaties (socii). The allies are one
@@ -1230,7 +1230,7 @@
     Bequeathed to Rome in 96. Its first governor, the quaestor P. Lentulus
     Marcellinus, was sent "to the new province of Cyrene" (Sall. Hist. 2.43 M)
     in 75 by Maurenbrecher's dating and Kallet-Marx's, in 74 by Münzer's
-    (MRR); the start was c. 74 and is now that range. Given with Crete
+    (MRR); the start is that range. Given with Crete
     to Cassius (or Brutus) in 44 (App. BC 3.8), then Antony's. Promised to
     Cleopatra Selene in 34 (Dio 49.41.3; see cyrenaica-selene); Scarpus' army,
     which went over to Octavian after Actium, stood "in Africa" to guard Egypt
@@ -3232,7 +3232,7 @@
     given it in 20 (Dio 54.9.2). Who held the ground in 30–20 is not known;
     Dmitriev suggests Amyntas, then Archelaus. It is left unclaimed.
 
-# --- added September 2026: the neighbours of Rome ------------------------------
+# --- the neighbours of Rome --------------------------------------------------
 
 - id: pontus-regnum
   kind: kingdom
@@ -3803,8 +3803,7 @@
     Antiochus XIII held beyond Antioch is doubtful: the rest of the country
     was in the hands of local dynasts.
 
-# Added September 2026 for the extension to 133 BCE: the free cities of the
-# Phoenician coast and the kingdom of Sophene.
+# The free cities of the Phoenician coast and the kingdom of Sophene.
 
 - id: tyre
   kind: city-state
@@ -5417,7 +5416,7 @@
     The Cretan cities, independent until Q. Metellus conquered the island in
     69–67.
 
-# --- added September 2026: the extension to 27 BCE -----------------------------
+# --- the triumviral years, 44–27 BCE -----------------------------------------
 
 - id: sextus-pompeius
   kind: command
@@ -6342,7 +6341,7 @@
     is kept, Josephus' and Schürer's, as for Africa Nova, and the record is
     uncertain.
 
-# --- added September 2026: the extension to 133 BCE — the West ---------------
+# --- from 133 BCE: the West --------------------------------------------------
 
 - id: sertorius
   kind: command
@@ -6495,7 +6494,7 @@
     began is not recorded: after the war of 121, and by the foundation of Narbo
     on their borders in 118, is the likeliest reading.
 
-# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+# --- from 133 BCE: Anatolia --------------------------------------------------
 
 - id: bithynia-regnum
   kind: kingdom

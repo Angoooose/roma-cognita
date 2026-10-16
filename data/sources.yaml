@@ -301,9 +301,9 @@
   kind: modern
   citation: G. Mihailov, Inscriptiones Graecae in Bulgaria repertae, vol. I² (Sofia, 1970)
 
-# Added for the extension to 27 BCE (September 2026). Bibliographic details were
-# checked against the publisher, a library catalogue, JSTOR or a review; a note
-# says where a work's content was read and where only its entry was confirmed.
+# Bibliographic details of the works below were checked against the publisher,
+# a library catalogue, JSTOR or a review; a note says where a work's content
+# was read and where only its entry was confirmed.
 
 - id: cah-x
   kind: modern
@@ -479,8 +479,8 @@
     (Princeton, 2000)
   note: Reference only — cited, never digitised from (DESIGN §6).
 
-# Added for the extension to 133 BCE: the West (September 2026). Read where the
-# note says so; otherwise only the entry was confirmed.
+# --- the West ------------------------------------------------------------------
+# Read where the note says so; otherwise only the entry was confirmed.
 
 - id: amela-valverde-2019
   kind: modern
@@ -539,9 +539,9 @@
     fin du IIe siècle" (the Département,
     https://www.puy-de-dome.fr/culture/archeologie/plateau-de-gergovie/poi-au-temps-des-oppida.html).
 
-# Added for the extension to 133 BCE, Anatolia (September 2026). The ancient
-# texts were read in English translation (Justin, Memnon) or in Latin (Cicero)
-# on the pages given; a note says how much of each modern work was read.
+# --- Anatolia ------------------------------------------------------------------
+# The ancient texts were read in English translation (Justin, Memnon) or in
+# Latin (Cicero) on the pages given; a note says how much of each modern work was read.
 
 - id: sherwin-white-1976
   kind: modern
@@ -601,8 +601,8 @@
   kind: ancient
   citation: Cicero, De Oratore
 
-# --- the extension to 133 BCE: Italy and the islands ---------------------------
-# Added September 2026. Beloch was read on the Internet Archive and is cited by
+# --- Italy and the islands -----------------------------------------------------
+# Beloch was read on the Internet Archive and is cited by
 # page; the ancient texts were read in the English translations works.ts points
 # to (Asconius in Latin on attalus.org, where no English translation is online).
 
@@ -815,7 +815,7 @@
   kind: ancient
   citation: Suetonius, Tiberius
 
-# --- added September 2026: the extension to 133 BCE, Africa and Egypt ------------
+# --- Africa and Egypt ----------------------------------------------------------
 
 - id: sallust-jug
   kind: ancient
@@ -886,7 +886,7 @@
   note: Locators are the place path, e.g. places/423025.
 
 # --- physical geography: floodplains and the Nile branches ---------------------
-# Added September 2026 for the floodplain records in features.yaml. Floodplain
+# For the floodplain records in features.yaml. Floodplain
 # shapes are derived from terrain (pipeline/src/features/derive-floodplains.ts);
 # the modern works below are cited for the regions' extents, the branch courses
 # and the figures the derived areas are checked against — never traced.
@@ -1057,7 +1057,7 @@
   note: A municipal summary, not an engineering history; read.
 
 # --- the city of Rome (the plan, DESIGN.md §7.7) ------------------------------
-# Added September 2026 for data/places/rome.yaml. Dates come from Platner &
+# For data/places/rome.yaml. Dates come from Platner &
 # Ashby, each article checked on LacusCurtius; outlines from OpenStreetMap, which
 # traces what survives on the ground today (the record says when that is a later
 # rebuilding on the same site); locations from Pleiades where it has the monument.
@@ -1180,8 +1180,8 @@
     temple rebuilt in the empire on its republican podium is outlined as rebuilt.
     Copied into data/geometry/rome.geojson with the date it was fetched.
 
-# --- the model of Rome carried back to 133 BCE (DESIGN.md §7.7) -------------
-# Added September 2026 for the buildings built, rebuilt, burnt or pulled down in
+# --- the model of Rome, 133–68 BCE (DESIGN.md §7.7) ----------------------------
+# For the buildings built, rebuilt, burnt or pulled down in
 # 133–68 BCE. Where a work was read only through another that summarises it, its
 # note says which.
 
@@ -1438,7 +1438,7 @@
     (pipeline/src/rivers/fetch.ts).
 
 # --- the generated city of Rome (DESIGN.md §7.7) -------------------------------
-# Added September 2026. No record cites these: they are the methods and the
+# No record cites these: they are the methods and the
 # evidence the generated streets, blocks and lots follow (pipeline/src/rome/city.ts).
 # None of it is traced; the figures are comparanda, several from other cities.
 
@@ -1624,7 +1624,7 @@
     2.8.17: Rome builds upward for want of ground; 6.3: the atrium house.
 
 # --- the aqueducts of Rome (DESIGN.md §7.7) --------------------------------------
-# Added September 2026 for the aqueduct records in places/rome.yaml and their
+# For the aqueduct records in places/rome.yaml and their
 # courses and arcades (pipeline/src/rome/aqueducts.ts).
 
 - id: frontinus
@@ -1650,7 +1650,7 @@
     5.4 m), and the surveyed levels of each channel. Locators are the book's pages.
 
 # --- the houses of the model of Rome (DESIGN.md §7.7) ----------------------------
-# Added September 2026 for the doors, shops, windows and tiled roofs painted on the
+# For the doors, shops, windows and tiled roofs painted on the
 # generated houses (packages/engine/src/rome/ModelLayer.ts). The patterns are
 # illustrative; these are the evidence for what they show.
 
@@ -1808,7 +1808,7 @@
   usedBy: pipeline/src/rome/fields.ts
 
 # --- the roads out of Rome (DESIGN.md §7.4, §7.7) ---------------------------------
-# Added September 2026 for data/road-corrections.yaml and the consular roads the
+# For data/road-corrections.yaml and the consular roads the
 # model of Rome draws from its gates (pipeline/src/rome/roads.ts). Ashby walked and
 # surveyed the roads of the Campagna; his papers give each one's course from the
 # gate, the finds along it and how far the modern road keeps to it.
@@ -1851,8 +1851,8 @@
     2.6 (November 63 BCE): Catiline has left Rome, "Aurelia via profectus est", by
     the Via Aurelia.
 
-# --- the extension to 133 BCE: the Balkans and the Black Sea ----------------------
-# Added September 2026. Each was opened: Sumner's article in full (GRBS, open
+# --- the Balkans and the Black Sea ---------------------------------------------
+# Each was opened: Sumner's article in full (GRBS, open
 # access), the decree in the English translation on the Chersonesos museum's site.
 
 - id: lex-provinciis-praetoriis
@@ -1896,8 +1896,8 @@
     Inscriptions from Bulgaria project of Sofia University (eds. V. Latyshev,
     E. Kalinka, G. Mihailov, N. Sharankov)
 
-# --- the extension to 133 BCE: the Levant, Armenia and the East -------------------
-# Added September 2026. Josephus' Antiquities 13 was read in Whiston's
+# --- the Levant, Armenia and the East ------------------------------------------
+# Josephus' Antiquities 13 was read in Whiston's
 # translation by Niese's numbers (Lexundria); the modern works below were not
 # opened and are cited without pages, their claims resting on the ancient
 # passages cited beside them.
@@ -1910,7 +1910,7 @@
   note: >-
     The Hellenistic cities, for the eras of freedom of Tyre (126/125),
     Sidon (111) and Ascalon (104/103) counted on their coins. Not opened; each
-    era is also cited from an open source below, found in the check.
+    era is also cited from an open source below.
 
 - id: cng-tyre-shekel
   kind: modern
@@ -1920,7 +1920,7 @@
   url: https://www.cngcoins.com/Coin.aspx?CoinID=99707
   note: >-
     A dealer's catalogue entry, cited as open evidence of Tyre's era: year 24
-    is 103/2 BC, so year 1 is 126/5. Opened in the check (September 2026).
+    is 103/2 BC, so year 1 is 126/5. Opened.
 
 - id: livius-sidon
   kind: modern
@@ -1928,7 +1928,7 @@
   url: https://www.livius.org/articles/place/sidon/sidon-3/
   note: >-
     "In 111 BCE, Sidon regained it independence. Official documents were dated
-    to a Sidonian Era that begins in that year." Opened in the check.
+    to a Sidonian Era that begins in that year." Opened.
 
 - id: gitler-master-2010
   kind: modern
@@ -1955,7 +1955,7 @@
     Sacred Literature, 4th series, vol. 5 (1864), pp. 28–45
   url: https://www.tertullian.org/fathers/chronicle_of_edessa.htm
   note: >-
-    Added by the check. Its first entry, "In the year 180 kings began to rule
+    Its first entry, "In the year 180 kings began to rule
     in Edessa", is year 180 of the Seleucid era, 133/132; it names no king.
     The first king's name (Aryu; "Orhoi, son of Hevia" in the translator's
     note from Dionysius) comes from the Edessene list in the later

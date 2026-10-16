@@ -428,10 +428,10 @@
   review: draft
   note:
     Sacked by Mummius in 146 and not resettled as a city until Caesar's Colonia Laus Iulia
-    Corinthiensis. The isthmus was never empty, but the polis was. The start was 44 BCE
-    until October 2026; no readable text gives the year Corinth was colonized, only that
-    Caesar did it (Strabo 8.6.23; Dio 43.50.3) and that he arranged it before he was
-    assassinated (Appian, Pun. 136), so it is now an open end at 44.
+    Corinthiensis. The isthmus was never empty, but the polis was. No readable text gives
+    the year Corinth was colonized, only that Caesar did it (Strabo 8.6.23; Dio 43.50.3)
+    and that he arranged it before he was assassinated (Appian, Pun. 136), so the start
+    is an open end at 44.
 
 - id: lugdunum
   pleiades: '167717'
@@ -479,8 +479,7 @@
   note: >-
     Founded by L. Munatius Plancus: Dio tells it after Mutina, in 43
     (46.50.3–5), Broughton puts it "late in 44 or early in 43", so the start
-    is that range; it was 43, certain, until October 2026. Pleiades dates the
-    place from 30.
+    is that range. Pleiades dates the place from 30.
 
 - id: utica
   pleiades: '315248'
@@ -579,9 +578,9 @@
     The citizen colony of 118, "in the consulship of Porcius and Marcius" (Vell.
     2.7.8), "a watch-tower of the Roman people" (Cic. Font. 13). Pleiades files
     the older native Narbo (Naro) under the same entry; it stood at Montlaurès,
-    a few kilometres north, and is not drawn. It was a "provincial seat" here
-    until October 2026, by convention: no open text makes it the governor's
-    seat, so its status is the colony the texts name.
+    a few kilometres north, and is not drawn. It is not marked a provincial
+    seat: no open text makes it the governor's seat, so its status is the
+    colony the texts name.
 
 - id: thessalonica
   pleiades: '491741'
@@ -640,14 +639,12 @@
       to: after 27 BCE
       note: >-
         The capital of Creta et Cyrenae (Pleiades), the joint province first
-        attested in the settlement of 27 (Dio 53.12.4). It was a seat from 66,
-        the province of Crete, until October 2026: no open text says where the
-        governor of Crete sat before the joint province. It read "provincial
-        seat" from before 68 until the extension to 133 BCE, when Crete was
-        still free. Dio 53.12.4 lists "Crete and the Cyrenaic portion of
+        attested in the settlement of 27 (Dio 53.12.4). No open text says where
+        the governor of Crete sat before the joint province, and before 66
+        Crete was free. Dio 53.12.4 lists "Crete and the Cyrenaic portion of
         Libya" among the people's provinces without saying they were one province,
         and Pleiades' "Roman capital of Creta et Cyrenaica province" has no date, so
-        the record is probable, not certain (October 2026).
+        the record is probable, not certain.
   labelSide: s
   sources:
     - source: pleiades
@@ -724,9 +721,8 @@
   note: >-
     The city was the Ptolemies', then Apion's, then one of the free cities of
     his bequest (96–75), then in the province named for it (Sallust Hist. 2.43
-    M, "the new province of Cyrene"). No status is given: it was a provincial
-    seat from c. 74 until October 2026, but no open text says where the
-    governor sat, and the joint province of 27 had its capital at Gortyn
+    M, "the new province of Cyrene"). No status is given: no open text says
+    where the governor sat, and the joint province of 27 had its capital at Gortyn
     (Pleiades).
 
 - id: nicomedia
@@ -829,7 +825,7 @@
     - value: colonia
       from: 59 BCE
       to: after 27 BCE
-      note: Capua was a prefecture with no civic rights of its own from 211 until Caesar's law of 59 settled 20,000 citizens on its land and restored them (Vell. 2.44.4). M. Brutus' colony there of 83 did not outlast Sulla. It was a colonia from before 68 in this record until September 2026.
+      note: Capua was a prefecture with no civic rights of its own from 211 until Caesar's law of 59 settled 20,000 citizens on its land and restored them (Vell. 2.44.4). M. Brutus' colony there of 83 did not outlast Sulla.
   labelSide: n
   sources:
     - source: pleiades
@@ -880,7 +876,7 @@
     - value: municipium
       from: { earliest: 90 BCE, latest: 89 BCE }
       to: after 27 BCE
-      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21); no quoted text says which side won, only that the people are Romans in Strabo's day (5.4.7), so the record is probable, not certain (October 2026).
+      note: its people disputed whether to take citizenship under the lex Iulia or keep their treaty (Cic. Balb. 21); no quoted text says which side won, only that the people are Romans in Strabo's day (5.4.7), so the record is probable, not certain.
   labelSide: s
   sources:
     - source: pleiades
@@ -1139,7 +1135,7 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia. It was a colonia in this record until September 2026; whether Neptunia had been joined to the city by 68–27 is not known. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain (October 2026).
+      note: enfranchised under the lex Iulia. Whether Neptunia had been joined to the city by 68–27 is not known. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain.
   labelSide: s
   sources:
     - source: pleiades
@@ -1211,7 +1207,7 @@
     - value: municipium
       from: 90 BCE
       to: after 27 BCE
-      note: enfranchised under the lex Iulia. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain (October 2026).
+      note: enfranchised under the lex Iulia. No quoted text says the city took the lex Iulia (Broughton has it for loyal Latins and Italians in general), so the record is probable, not certain.
   labelSide: s
   sources:
     - source: pleiades
@@ -1464,9 +1460,8 @@
     The oppidum on Mont Beuvray "lived for only the space of a century,
     straddling the second and first centuries BCE", and was left for Autun in
     the decades round the turn of the era (Bibracte), so it stood at the turn
-    of the century; the site gives no closer date for its foundation, which
-    was a range of 120–100 here until October 2026. Its "royal seat" status was dropped in
-    September 2026: the Aedui were governed by an annual vergobret, not a king
+    of the century; the site gives no closer date for its foundation. It is
+    not a royal seat: the Aedui were governed by an annual vergobret, not a king
     (BG 1.16).
 
 - id: alesia
@@ -1519,9 +1514,8 @@
   note: >-
     The Arverni reoccupied the plateau only about 60 BCE, when its great works
     were built "in the 60s"; it was left for Augustonemetum (Clermont) in the
-    first decades CE (Musée de Gergovie; Puy-de-Dôme). It stood "before 68"
-    here until September 2026, and began at 70 until October 2026: "the 60s"
-    are 69–60. Their oppida before it, Corent (founded at the
+    first decades CE (Musée de Gergovie; Puy-de-Dôme). "The 60s" are 69–60.
+    Their oppida before it, Corent (founded at the
     end of the second century) and Gondole, are not yet places.
 
 - id: dyrrachium
@@ -1733,8 +1727,7 @@
         The free port, which "the razing of Corinth" in 146 made greater still,
         until "the generals of Mithridates, and the tyrant who caused it to
         revolt, visited Delos" in 88 and "completely ruined it"; it "remained
-        in an impoverished condition" to Strabo's day (10.5.4). The emporium
-        ran on through 68–27 until the extension to 133 BCE.
+        in an impoverished condition" to Strabo's day (10.5.4).
   labelSide: s
   sources:
     - source: pleiades
@@ -2174,13 +2167,11 @@
       note: >-
         From its first attestation: "the Roman citizens, residing there" held
         Salona against Octavius (Caesar BC 3.9), in Caesar's narrative of 48;
-        Broughton puts Octavius' attack on Salonae in 49. It was 48 until
-        October 2026. Before 68 until the
-        extension to 133 BCE; nothing records Roman residents when Metellus
-        wintered there in 119 (App. Ill. 11) or when Cosconius took it in 78–76
-        (Eutropius 6.4). It ended after 27 until October 2026; nothing readable
-        shows the community of citizens still there in 27 (Strabo 7.5.5 has only
-        the Dalmatians' port, burnt by Augustus), so the last year attested is 48.
+        Broughton puts Octavius' attack on Salonae in 49. Nothing records Roman
+        residents when Metellus wintered there in 119 (App. Ill. 11) or when
+        Cosconius took it in 78–76 (Eutropius 6.4), and nothing readable shows
+        the community of citizens still there in 27 (Strabo 7.5.5 has only the
+        Dalmatians' port, burnt by Augustus), so the last year attested is 48.
   labelSide: e
   sources:
     - source: pleiades
@@ -2231,8 +2222,7 @@
   review: draft
   note: >-
     First attested in 119, when Metellus wintered "at the town of Salona" in
-    his consulship (App. Ill. 11); it stood "before 133" here until October
-    2026, which no open text bears out.
+    his consulship (App. Ill. 11); no open text attests it earlier.
 
 - id: panticapaeum
   pleiades: '854719'
@@ -2350,8 +2340,7 @@
       to: after 27 BCE
       note: >-
         Cicero called it a municipium in 55, to Asconius' surprise, who knew it
-        as a Latin colony of 218 (Ascon. 2–3 C). It was a colonia from 90 here
-        until October 2026. Pliny lists it among the colonies (3.115), and
+        as a Latin colony of 218 (Ascon. 2–3 C). Pliny lists it among the colonies (3.115), and
         Beloch takes it as a colony again by Asconius' day (p. 12); when it
         became one is not known.
   labelSide: n
@@ -2416,8 +2405,7 @@
       note: >-
         enfranchised under the lex Iulia. Pleiades has it "a Roman colony in
         89 B.C." and Pliny "the colony of Pisae" (3.50), in his day; no open
-        text calls it a municipium, so the record is probable, not certain
-        (October 2026).
+        text calls it a municipium, so the record is probable, not certain.
   labelSide: w
   sources:
     - source: pleiades
@@ -2495,7 +2483,7 @@
         a colony of the dictator Sulla (Pliny 3.80), so founded in his
         dictatorship, which Broughton gives from 82 and still in 80 and Appian
         ends in the year after his second consulship (BC 1.103), so 79; no text
-        dates the colony closer. It began "c. 81" until October 2026, then 82–80.
+        dates the colony closer.
   labelSide: e
   sources:
     - source: pleiades
@@ -2590,8 +2578,7 @@
     in Sall. Hist. 2.98 M), and the burnt level at l'Almoina bears him out; the
     city was rebuilt only at the end of Augustus' reign (Ribera). Florus lists a
     Valentia among the towns that surrendered after Perperna's end in 72
-    (2.10.9): a remnant, or another Valentia. It stood "after 27" here until
-    September 2026.
+    (2.10.9): a remnant, or another Valentia.
 
 - id: saguntum
   pleiades: '266021'
@@ -2608,8 +2595,7 @@
   confidence: certain
   review: draft
 
-# Added September 2026 for the extension to 133 BCE: the foundations of 123–75
-# in Spain and Gaul.
+# The foundations of 123–75 in Spain and Gaul.
 
 - id: palma
   pleiades: '265998'
@@ -2670,7 +2656,7 @@
     islands (Strabo 3.5.1), during his command there: consul in 123, he went
     on with the settlement of the islands as proconsul in 122 and triumphed
     over them in 121 (Broughton). No text dates the building within those
-    years, so the start is that range; it was 123 until October 2026. A town
+    years, so the start is that range. A town
     of Roman citizens in Pliny's day (3.77).
 
 - id: pollentia
@@ -2771,10 +2757,10 @@
   note: >-
     "Pompelon, or Pompey's city" among the Vascones (Strabo 3.4.10), so it
     stood by Pompey's death in 48, in the consulship of Caesar and Servilius
-    (Vell. 2.53.2). When it was founded is not recorded. Until October 2026 it
-    started c. 75, when Pompey's army went "into the territory of the Vascones
-    to gather food" (Sall. Hist. 2.93 M), before his winter of 75/74; but no
-    readable text puts the town's founding then, and Sallust does not name it.
+    (Vell. 2.53.2). When it was founded is not recorded. Pompey's army went
+    "into the territory of the Vascones to gather food" in 75 (Sall. Hist. 2.93
+    M), before his winter of 75/74; but no readable text puts the town's
+    founding then, and Sallust does not name it.
 
 - id: aquae-sextiae
   pleiades: '148053'
@@ -2866,8 +2852,7 @@
       to: after 27 BCE
       note: >-
         Founded by Ti. Claudius Nero, "sent to conduct colonies to Gaul, among them
-        Narbo and Arelate" (Suet. Tib. 4.1), in 46 (Broughton); it had been a colony
-        "before 68" here until September 2026. Pliny lists "Arelate Sextanorum"
+        Narbo and Arelate" (Suet. Tib. 4.1), in 46 (Broughton). Pliny lists "Arelate Sextanorum"
         among the colonies (3.36).
   labelSide: w
   sources:
@@ -2917,8 +2902,8 @@
   review: draft
   note: >-
     First attested in 49, when Caesar had twelve warships built at Arles for
-    the siege of Massilia (Caes. BC 1.36). It was drawn from "before 133" until
-    October 2026, but no readable text names the town before Caesar.
+    the siege of Massilia (Caes. BC 1.36). No readable text names the town
+    before Caesar.
 
 - id: avaricum
   pleiades: '138207'
@@ -3124,8 +3109,8 @@
   confidence: certain
   review: draft
   note: >-
-    The royal seat ended in 47 in September 2026; it had run across the whole
-    window.
+    The royal seat runs to 47: Bocchus II and Sittius took Cirta from Juba I
+    in 46, and the year of a transition belongs to the successor.
 
 - id: hippo-regius
   pleiades: '305090'
@@ -3235,8 +3220,7 @@
         Bocchus II's, from his accession in 49, when Rome named him king (Dio
         41.42.7; Bridoux ch. 1 ¶99), to his death in 33, when his kingdom went
         to Rome (Dio 49.43.7; Bridoux ch. 1 ¶103). Bridoux takes Iol for his
-        capital, "sans doute" (ch. 2 ¶28). Until September 2026 this ran
-        from "before 68", but Iol lay in Micipsa's kingdom (his inscription
+        capital, "sans doute" (ch. 2 ¶28). Before 49 Iol lay in Micipsa's kingdom (his inscription
         from Cherchell, Bridoux ¶123) and, as drawn here, in Numidia until
         Gauda's death c. 88; where Sosus reigned from is not known.
   labelSide: n
@@ -4302,10 +4286,9 @@
     Appian has Tigranes settle the Cappadocians he carried off at Tigranocerta,
     a place he "had called after himself", in the raid that followed Sulla's
     death in 78 (Mithr. 67; Broughton dates the death by Lepidus' consulship);
-    Strabo puts the founding after Tigranes took Syria (11.14.15). Until
-    October 2026 the town and its royal seat started c. 80, a convention no
-    readable text gives; they now start before 77, the raid being the first
-    dated mention. The site is disputed: Pleiades puts it at Arzan, after
+    Strabo puts the founding after Tigranes took Syria (11.14.15). The town
+    and its royal seat start before 77, the raid being the first dated
+    mention; the conventional c. 80 is in no readable text. The site is disputed: Pleiades puts it at Arzan, after
     Barrington map 89 D3; Silvan (Martyropolis) and other sites have been
     proposed. Broughton's running head for 69 reads "09 B.C." in the scan.
     Strabo, writing under Augustus, has Lucullus leave it "a small village".
@@ -4992,7 +4975,7 @@
     - value: colonia
       from: c. 81 BCE
       to: after 27 BCE
-      note: a colony of Sulla's veterans (Beloch 5); Cicero calls it a colony in 63 (Cat. 1.8). The year is not recorded; it lies between the town's fall in 82 and 63. It was a municipium in this record until September 2026.
+      note: a colony of Sulla's veterans (Beloch 5); Cicero calls it a colony in 63 (Cat. 1.8). The year is not recorded; it lies between the town's fall in 82 and 63.
   labelSide: e
   sources:
     - source: pleiades
@@ -5424,8 +5407,7 @@
       from: 90 BCE
       to: after 27 BCE
       note: >-
-        the Latin colonies were municipia from the lex Iulia (Beloch 5). It was a
-        colonia from 90 here until October 2026. Beloch counts Spoletium among
+        the Latin colonies were municipia from the lex Iulia (Beloch 5). Beloch counts Spoletium among
         Sulla's colonies (p. 8), but no readable text dates that settlement, so
         no later change is drawn.
   labelSide: e
@@ -6377,8 +6359,7 @@
       from: 90 BCE
       to: after 27 BCE
       note: >-
-        a municipal town by the time of Verres (Cic. Verr. 2.5.161), not
-        colonia as this row read until October 2026.
+        a municipal town by the time of Verres (Cic. Verr. 2.5.161).
   labelSide: w
   sources:
     - source: pleiades
@@ -6556,8 +6537,8 @@
       from: 90 BCE
       to: after 27 BCE
       note: >-
-        Festus names Bononia among the old Latin colonies that became municipia through the Social War (Beloch 147), and the Latin colonies were municipia from the lex Iulia (Beloch 5). It read
-        colonia from 90 here until October 2026: Pliny calls Bononia a colony (3.115), but his colonies are those Augustus himself made (Beloch 5), at a date nothing here gives.
+        Festus names Bononia among the old Latin colonies that became municipia through the Social War (Beloch 147), and the Latin colonies were municipia from the lex Iulia (Beloch 5).
+        Pliny calls Bononia a colony (3.115), but his colonies are those Augustus himself made (Beloch 5), at a date nothing here gives.
   labelSide: e
   sources:
     - source: pleiades
@@ -6663,7 +6644,7 @@
       note: >-
         A Latin colony north of the Po; its people became Roman citizens under the lex Iulia of 90, as Aquileia's did: Beloch excepts "the Latin colonies Cremona and Aquileia" from the
         communities beyond the Po that were constituted only after the Social War (p. 27). The rest of the Transpadane people were Latins from 89 and still not citizens when the censors
-        disputed whether to admit them (Dio 37.9.3), until Caesar in 49 (Dio 41.36.3). From October 2026 to the reconciliation this record read colonia latina to 50 on those passages, which
+        disputed whether to admit them (Dio 37.9.3), until Caesar in 49 (Dio 41.36.3). Those passages
         are about the Transpadani, not the old colonies.
     - value: colonia
       from: 90 BCE
@@ -6845,9 +6826,8 @@
   review: draft
   note: >-
     Destroyed in the Social War and a village by Strabo's day (5.3.10,
-    5.4.11). Until October 2026 the status read colonia again from 87, when
-    the Samnites made terms (App. BC 1.68); no text read gives its standing
-    after the war, so that row was dropped.
+    5.4.11). The Samnites made terms in 87 (App. BC 1.68), but no text read
+    gives its standing after the war, so no status is drawn after 91.
 
 - id: venusia
   pleiades: '442847'
@@ -6911,11 +6891,10 @@
   review: draft
   note: >-
     A Latin colony that joined the insurgents in 90 and was retaken by Metellus
-    Pius (Diodorus 37.2.10). Until October 2026 the status read colonia again
-    from 88, the year of the retaking; but the retaking only ends the
-    insurgents' hold, no text read gives the town's standing after the war, and
-    the colony of the triumvirs is only promised in 43 (App. BC 4.3) or listed
-    by Pliny (3.104), so that row was dropped.
+    Pius (Diodorus 37.2.10) in 88; but the retaking only ends the insurgents'
+    hold, no text read gives the town's standing after the war, and the colony
+    of the triumvirs is only promised in 43 (App. BC 4.3) or listed by Pliny
+    (3.104), so no status is drawn after 91.
 
 - id: canusium
   pleiades: '442525'
@@ -7452,7 +7431,7 @@
     ancient text read names the town before 49 (Josephus): the open start
     rests on Pleiades' dating (330 BC – AD 300).
 
-# --- Italy and the islands: added September 2026 (the extension to 133) -------
+# --- Italy and the islands, 133–68 ---------------------------------------------
 # Places the years 133–68 need: colonies founded and a city destroyed, the
 # insurgents' strongholds, and the seats of the Sicilian slave kings.
 
@@ -7522,8 +7501,7 @@
     praetor Opimius (Livy Per. 60; Vell. 2.6.4). Its people were resettled at
     Fabrateria Nova the next year. The place itself lived on as a village
     (Strabo 5.3.10) and the Fregellani are in Augustus' list of the towns of
-    Latium (Pliny 3.64), so the place runs on to the window's end; until
-    October 2026 it ended in 125 with the colony. Probable, because the
+    Latium (Pliny 3.64), so the place runs on to the window's end. Probable, because the
     sources say destroyed and Strabo says a village: which the map draws is a
     choice.
 

@@ -16,7 +16,7 @@
 
 # --- Italy -------------------------------------------------------------------
 #
-# Carried back to 133 in September 2026. Before the Social War the italia atom
+# Before the Social War the italia atom
 # is the Roman citizen land (ager-romanus) and the allied regions cut out of it
 # are the socii's, washed Roman on the map (a subject-of relation). The
 # insurgents' league, italici, holds its ground independent from the outbreak
@@ -24,7 +24,7 @@
 # the year of submission, or of the law that enfranchised it, is italia's (the
 # lex Iulia of 90 for the loyal, 89 for the Marsic peoples, the Hirpini and the
 # Nucerine cities, 88 for Apulia, 87 for Samnium and Lucania). From 87 all of
-# peninsular Italy is italia, as before. The civil war of 88–82, fought for
+# peninsular Italy is italia. The civil war of 88–82, fought for
 # the government of Rome itself, and Nola's and Volaterrae's last stands, are
 # not drawn.
 
@@ -2942,7 +2942,7 @@
     Sadala (Cic. Verr. 2.1.63) says nothing of his standing.
 
 # The Thracian Chersonese, taken by T. Didius c. 100, and Mithridates' armies in
-# Greece and Macedonia, 88–86 (added for the extension to 133 BCE). Occupation
+# Greece and Macedonia, 88–86. Occupation
 # rows end the year before the occupier was driven out (README decision 17).
 
 - atom: chersonesus-thracica
@@ -3540,7 +3540,7 @@
     Sulla and Metellus Pius were consuls (MRR II 79–80), where his legate
     Verres plundered Aspendus and Perge "in Pamphylia" and had "omnis ad
     praedandum Pamphylia" open to him. The earlier, doubtful years are a row of
-    their own, under the extension to 133 below. The province "was probably
+    their own, further down this file. The province "was probably
     dismembered soon after Caesar's death" (Magie I 433), and Pamphylia was
     Asia's in 43 (Cic. Fam. 12.15.5).
 
@@ -6421,7 +6421,7 @@
     Messalla, 31 (Vell. 2.84.1, 2.87.1).
 
 # --- the Black Sea -------------------------------------------------------------
-# Back to 133 (added for the extension to 133 BCE): the Spartocid kingdom until
+# From 133: the Spartocid kingdom until
 # Paerisades V gave it to Mithridates (Strabo 7.4.4), Diophantus' wars for the
 # king c. 110–107 (the Diophantus decree, IOSPE I² 352), the revolt of the
 # Bosporan peoples in the First Mithridatic War (App. Mithr. 64), and Machares,
@@ -6988,7 +6988,7 @@
   review: draft
   note: As bosporus.
 
-# --- added September 2026: the neighbours of Rome ------------------------------
+# --- the neighbours of Rome --------------------------------------------------
 
 - atom: pontus
   polity: pontus-regnum
@@ -10036,7 +10036,7 @@
     61, MRR II 180); an open end draws the same, and the ground after Caesar's
     campaign is still left to whoever the texts show holding it.
 
-# --- added September 2026: the extension to 27 BCE -----------------------------
+# --- the triumviral years, 44–27 BCE -----------------------------------------
 #
 # Occupation rows follow the same rule as every other row: the year the
 # occupier was driven out belongs to whoever came back (Labienus' occupation of
@@ -13880,10 +13880,9 @@
     Antigonus king (AJ 14.330–369; Schürer 389–390); the senate declared him
     an enemy and made Herod king in the consulship of Calvinus and Pollio, 40
     (AJ 14.384–389). From 39 Herod took Joppa, relieved Masada and by the
-    winter of 39/38 held Galilee (AJ 14.394–399, 14.413–415) — Idumaea and
-    Galilee were part of this atom then (their own atoms since the extension
-    to 133 carry the same rows), so it is drawn Antigonus' to the fall of
-    Jerusalem: in the consulship of Agrippa and Gallus, 37 (AJ 14.487), which
+    winter of 39/38 held Galilee (AJ 14.394–399, 14.413–415). Judaea, and
+    with it Idumaea and Galilee, whose atoms carry the same rows, is drawn
+    Antigonus' to the fall of Jerusalem: in the consulship of Agrippa and Gallus, 37 (AJ 14.487), which
     Schürer follows; Dio tells it under Claudius and Norbanus, 38
     (49.22–23.1).
 
@@ -15285,7 +15284,7 @@
     asylum in 30 (51.16.2): between 32 and 30, as Armenia's independence is,
     drawn at the midpoint, 31.
 
-# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+# --- from 133 BCE: Anatolia --------------------------------------------------
 #
 # Attalus' bequest and Aristonicus; Greater Phrygia and Lycaonia given to kings
 # and taken back; Cibyra's tyranny to Murena; Pontus growing under the two
@@ -17689,10 +17688,10 @@
     (App. Mithr. 67; Strabo 12.2.9), in 78 or 77 (Kallet-Marx 295), is not
     drawn as a holding.
 
-# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
-# The rows of these atoms that used to open at 68 are rewritten here, so each
-# atom's history reads in one place. The Seleucid kingdom is one polity
-# throughout, though from 113 its rival kings divided it; that division is not
+# --- from 133 BCE: the Levant, Armenia and the East --------------------------
+# Each of these atoms has all its rows here, so its history reads in one
+# place. The Seleucid kingdom is one polity throughout, though from 113 its
+# rival kings divided it; that division is not
 # drawn, because no source gives it a line at the atoms' grain.
 
 # Syria and the Phoenician coast

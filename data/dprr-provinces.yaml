@@ -20,7 +20,7 @@
 #
 # Rules followed:
 # - A join names only polities in polities.yaml, and agrees with claims.yaml:
-#   where the ground changed hands in 68–27 BCE, the join is dated to match
+#   where the ground changed hands in 133–27 BCE, the join is dated to match
 #   (Pontus from 63, Cyprus 58–48).
 # - An undated join holds whenever both the DPRR post and the polity exist. So a
 #   post from before a province was created (Crete before 66, Syria before 64)
@@ -461,7 +461,7 @@
     own. Joined to them, not to Illyricum; the imperial province of Dalmatia is
     later. A post here is a war command, never a governorship of the people.
     From their surrender in 33 their ground is Illyricum's (claims.yaml), so the
-    join moves there too (September 2026).
+    join moves there too.
 
 - dprr: Macedonia
   kind: territory
@@ -558,8 +558,7 @@
     government. Before 80 the kingdom had no standing with Rome that the map
     draws, and the commands "in Thrace" of 135–88 (Cosconius, Cato, Drusus,
     Minucius, Sentius: Livy Per. 56, 63, 65, 70) were the governors of
-    Macedonia fighting on its frontier, so they are joined to macedonia (the
-    extension to 133 BCE).
+    Macedonia fighting on its frontier, so they are joined to macedonia.
 
 - dprr: Crete
   kind: territory

@@ -6,7 +6,7 @@
 # generators in pipeline/src/landscape, each of which keeps the others' shapes.
 # The validator checks that every add-water and remove-water record has one.
 #
-# The interval is when the correction applies: all three of these hold for the
+# The interval is when the correction applies: every record here holds for the
 # whole of the map's window.
 
 - id: suez-canal
@@ -111,10 +111,9 @@
   review: needs-check
   note: >-
     A natural closed depression (Wadi Tharthar) until the Tigris was diverted
-    into it from 1956 (Sissakian; ESCWA). It read "a dry salt depression" until
-    October 2026, which no readable text states: it may have held a seasonal
-    salt lake, so the confidence is probable, but nothing shows a standing lake
-    in antiquity. HydroLAKES types it as a natural lake, so the reservoir
+    into it from 1956 (Sissakian; ESCWA). No readable text states that it was
+    dry: it may have held a seasonal salt lake, so the confidence is probable,
+    but nothing shows a standing lake in antiquity. HydroLAKES types it as a natural lake, so the reservoir
     filter in the coast build does not catch it.
 
 # --- lakes drained since ------------------------------------------------------

@@ -3,14 +3,13 @@
 # schematic ellipses given a scholarly citation, so the map marks the seat of
 # power instead.
 #
-# September 2026: Galatia, Cappadocia, Commagene, Judaea, Emesa, Ituraea and
-# Tarcondimotus' Amanus are now drawn as territory, from their frontiers in the
-# ancient geographers and the scholarship (atoms.yaml), and their seats are
-# gone. Osroene stays a seat: its extent east of the Euphrates is not known.
+# Galatia, Cappadocia, Commagene, Judaea, Emesa, Ituraea and Tarcondimotus'
+# Amanus are drawn as territory, from their frontiers in the ancient
+# geographers and the scholarship (atoms.yaml), so they have no seat here.
+# Osroene is a seat: its extent east of the Euphrates is not known.
 #
 # Each row cites its polity's source and runs for its polity's years; an open
-# end is where the 133–27 BCE window cuts it off. Aristonicus (133–130) and the
-# slave kings of Sicily were added for the extension to 133. The seat's position is its place's
+# end is where the 133–27 BCE window cuts it off. The seat's position is its place's
 # (places.yaml), which is Pleiades'.
 
 - polity: osroene

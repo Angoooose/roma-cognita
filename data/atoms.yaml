@@ -3,11 +3,8 @@
 # data/geometry/atoms.geojson, keyed by the same id, and is built from the
 # `construction` below by `npm run atoms -w pipeline` (pipeline/src/atoms).
 #
-# Rebuilt September 2026. The first outlines were AWMC's
-# 60 BCE shading cut with straight lines, and hand-drawn twelve-vertex rings
-# for the kingdoms; neither followed anything the sources name, and AWMC's
-# ODbL would not relicense. Every outline is now authored here from the
-# frontiers the cited scholarship describes:
+# Every outline is authored here from the frontiers the cited scholarship
+# describes:
 #
 #   outline  the frontier, vertex by vertex. A vertex is a place (with its
 #            Pleiades id where it has one) or a routing point, and says how the
@@ -604,7 +601,7 @@
     The coast from the Altars of the Philaeni to the Catabathmus, with the
     Gebel Akhdar and its pre-desert; Augila lay outside (Barrington map 38).
     The end points are ancient; the inland edge is a convention along the
-    desert margin. Replaces AWMC's blob, which stopped short at both ends.
+    desert margin.
 
 - id: aegyptus
   evidence: schematic
@@ -814,8 +811,7 @@
     from the Nabataeans; Hyrcanus II promised twelve of them back to Aretas III
     for his help (Josephus AJ 14.18), but that is a conditional promise, and
     no text read shows the Nabataeans holding Moab after it: the atom is
-    unclaimed from 65 (its Nabataean rows from 65 were dropped in October
-    2026). Jannaeus had given Moab back once before, in his civil war (AJ
+    unclaimed from 65. Jannaeus had given Moab back once before, in his civil war (AJ
     13.382), and taken it again. Takes the Dead Sea shore and Zoara from
     nabataea.
 
@@ -855,8 +851,7 @@
   note: >-
     Lower Nubia from Philae to the Second Cataract: the Triacontaschoenus,
     thirty schoinoi above Syene, of the Philae stele of 29, which Cornelius
-    Gallus set under a ruler of his own. Split from kush (September 2026), which
-    held it before; its outline is kush's own north of the cataract, cut across
+    Gallus set under a ruler of his own. Kush held it before; its outline is kush's own north of the cataract, cut across
     the valley there. Takes Philae from aegyptus.
 
 - id: kush
@@ -906,9 +901,9 @@
     The Nile valley from the Second Cataract south to the edge of the data
     frame (20.3°N), the northern reach of the Meroitic kingdom: Sai, inside the
     strip, was Meroe's from the third century BCE (sai-mission), and the
-    Ptolemies' reach stopped at the cataract (Eller). The outline still starts
-    at Philae, but Lower Nubia north of the cataract is triakontaschoinos,
-    earlier in this file, which is cut out of it (split September 2026).
+    Ptolemies' reach stopped at the cataract (Eller). The outline starts at
+    Philae, but Lower Nubia north of the cataract is triakontaschoinos,
+    earlier in this file, which is cut out of it.
 
 - id: garamantes
   evidence: schematic
@@ -993,8 +988,8 @@
     sea and the Massak Sattafat escarpment, where Garama and the valley's
     settlements grew in the Proto-Urban phase, 500–1 BCE (Gonzalez Rodriguez).
     Its southern edge follows the escarpment, its ends the surveyed sectors
-    from south of Ubari to al-Abyad. Until October 2026 it also took in the
-    Murzuq basin and the Sabha oases; the Murzuq oases developed mainly after
+    from south of Ubari to al-Abyad. It leaves out the Murzuq basin and the
+    Sabha oases: the Murzuq oases developed mainly after
     1 BCE (Mattingly, Sterry and Edwards), and no readable text puts either in
     the Garamantes' hands in 133–27. A convention round the oases, not a
     frontier.
@@ -1048,7 +1043,7 @@
     The plain of Jericho between the escarpment and the Jordan, with its palm
     and balsam groves, "the plantation of palm trees at Jericho, where also
     grows the balsam tree" (Josephus BJ 1.361), which Antony gave Cleopatra and
-    Herod leased back. Split from judaea (September 2026). The edges are a
+    Herod leased back. The edges are a
     convention for the plantations' plain.
 
 - id: judaea-galilee
@@ -1082,12 +1077,11 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Galilee, the northern piece of Hyrcanus II's ethnarchy. Split from judaea
-    (September 2026, for the extension to 133): Aristobulus I (104–103) "made
+    Galilee, the northern piece of Hyrcanus II's ethnarchy. Aristobulus I
+    (104–103) "made
     war against Iturea, and added a great part of it to Judea" (AJ 13.318),
     which most modern work (Schürer–Vermes) takes to be the conquest of
-    Galilee; some put it under Hyrcanus I. Its outline is judaea's old second
-    piece.
+    Galilee; some put it under Hyrcanus I.
 
 - id: judaea-idumaea
   evidence: schematic
@@ -1119,8 +1113,7 @@
   note: >-
     Idumaea, the hills south of Beth-Zur with Hebron and Adora, which Hyrcanus
     I conquered: "Hyrcanus took also Dora and Marissa, cities of Idumea, and
-    subdued all the Idumeans" (AJ 13.257). Split from judaea (September 2026,
-    for the extension to 133). Its northern line is a convention between
+    subdued all the Idumeans" (AJ 13.257). Its northern line is a convention between
     Beth-Zur and Hebron; Marisa itself lies just outside, in gaza. Takes its
     western and southern edges from judaea.
 
@@ -1161,12 +1154,11 @@
   review: needs-check
   note: >-
     Peraea, the land beyond the Jordan between Pella and the Arnon, which
-    Pompey left to Hyrcanus II with Judaea. Split from judaea (September 2026,
-    in the check of the extension to 133): its chief fortress, Amathus, was
+    Pompey left to Hyrcanus II with Judaea. Its chief fortress, Amathus, was
     held by Theodorus son of Zeno until Alexander Jannaeus took it after
     Ptolemy Lathyrus' war (AJ 13.356) and later demolished it (13.374), so the
-    ground was not Hasmonean in 133. Its outline is judaea's old eastern side;
-    how much of it the Jews held before Jannaeus is not known. Takes the Jordan
+    ground was not Hasmonean in 133. How much of it the Jews held before
+    Jannaeus is not known. Takes the Jordan
     from judaea-jericho.
 
 - id: judaea
@@ -1224,7 +1216,7 @@
   review: draft
   note: >-
     The ethnarchy of Hyrcanus II after 63: Judaea, with Idumaea, Galilee and
-    Peraea (split off for the extension to 133) and Samaria and the Jezreel
+    Peraea (each its own atom) and Samaria and the Jezreel
     between them in the province. The edges follow the cities Pompey removed
     from the Jews rather than any surveyed line. What is left is Judaea
     proper, Hasmonean from before 133; its eastern side is judaea-peraea's.
@@ -1305,8 +1297,7 @@
   review: needs-check
   note: >-
     The Samaritis between Judaea and Galilee, with Samaria (Sebaste), which
-    Octavian gave Herod in 30. Split from syria-palaestina (September 2026).
-    Whether the Jezreel went with it is not known; it stays with the province.
+    Octavian gave Herod in 30. Whether the Jezreel went with it is not known; it stays with the province.
     Takes Judaea's edges from judaea.
 
 - id: gadara-hippos
@@ -1356,7 +1347,7 @@
   note: >-
     The city territories of Hippos and Gadara, south-east and east of the Sea
     of Galilee: Decapolis cities that Octavian gave Herod in 30 (BJ 1.396).
-    Split from syria-palaestina (September 2026); their extent is a convention.
+    Their extent is a convention.
 
 - id: strato-tower
   evidence: schematic
@@ -1398,7 +1389,7 @@
   review: needs-check
   note: >-
     Strato's Tower (later Caesarea) and the Sharon coast between the Crocodile
-    River and Joppa. Split from syria-palaestina (September 2026). Takes its
+    River and Joppa. Takes its
     inland edge from samaria.
 
 - id: palaestina-coast
@@ -1455,7 +1446,7 @@
     between Joppa and Gaza. They were inside Cleopatra's grant of "the cities
     that were within the river Eleutherus, as far as Egypt" (AJ 15.95) and are
     not in Octavian's list for Herod in 30. Two pieces, one atom, because their
-    history is the same. Split from syria-palaestina (September 2026). Takes
+    history is the same. Takes
     its inland edges from judaea and judaea-joppa.
 
 - id: gaza
@@ -1498,8 +1489,7 @@
   review: needs-check
   note: >-
     Gaza with Anthedon and Raphia, which Octavian gave Herod in 30 (Raphia is
-    kept with them by convention). Split from syria-palaestina (September
-    2026). Takes its northern edge from palaestina-coast and its eastern from
+    kept with them by convention). Takes its northern edge from palaestina-coast and its eastern from
     judaea.
 
 - id: syria-palaestina
@@ -1546,13 +1536,12 @@
   review: draft
   note: >-
     What Pompey took from the Jews in 63 and put under the governor of Syria,
-    less the pieces split from it in September 2026 for their own later
-    histories: the coast (strato-tower, palaestina-coast, gaza), samaria and
+    less the pieces with later histories of their own: the coast (strato-tower, palaestina-coast, gaza), samaria and
     gadara-hippos. What is left is the Jezreel and Scythopolis and the Greek
     cities across the Jordan south of Gadara (Pella, Dion, Gerasa). Hasmonean
-    before, by Jannaeus' conquests (AJ 13.395–397). The outline is still
-    authored round the whole of Pompey's district, from Raphia to Carmel; the
-    split atoms come before it in this file and are cut out of it. Takes
+    before, by Jannaeus' conquests (AJ 13.395–397). The outline is authored
+    round the whole of Pompey's district, from Raphia to Carmel; those atoms
+    come before it in this file and are cut out of it. Takes
     Judaea's edges from judaea.
 
 - id: ituraea
@@ -1775,8 +1764,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Tyre and its territory between the Leontes and the Ladder of Tyre. Split
-    from syria (September 2026): Tyre alone of Syria held out against Pacorus
+    Tyre and its territory between the Leontes and the Ladder of Tyre. Tyre
+    alone of Syria held out against Pacorus
     (Dio 48.26.1), and Antony left it out of his grant to Cleopatra with Sidon,
     "which he knew to have been free cities from their ancestors" (AJ 15.95).
     Takes its inland edge from judaea and ituraea.
@@ -1815,8 +1804,7 @@
   review: needs-check
   note: >-
     Sidon and its territory between the Tamyras and the Leontes, left out of
-    Cleopatra's grant with Tyre (AJ 15.95). Split from syria (September 2026).
-    Takes its edges from tyre and ituraea.
+    Cleopatra's grant with Tyre (AJ 15.95). Takes its edges from tyre and ituraea.
 
 - id: phoenicia
   evidence: schematic
@@ -1881,8 +1869,7 @@
     The Phoenician coast within the Eleutherus, less Tyre and Sidon: Orthosia,
     Tripolis, Byblos and Berytus in the north, and Ptolemais between the Ladder
     of Tyre and Carmel in the south. Cleopatra's from Antony's grant (AJ
-    15.95; Plut. Antony 36.2). Two pieces, one atom. Split from syria
-    (September 2026). Takes its inland edges from ituraea and judaea.
+    15.95; Plut. Antony 36.2). Two pieces, one atom. Takes its inland edges from ituraea and judaea.
 
 - id: syria
   evidence: schematic
@@ -2244,8 +2231,7 @@
     Sophene in a valley situated between itself and the Taurus" (Strabo
     11.12.4), and Sophene lies "between Masius and Antitaurus", with its royal
     city Carcathiocerta (11.14.2). Tigranes put down its last king, Artanes
-    (11.14.15). Split from armenia (September 2026, for the
-    extension to 133): a kingdom of its own until Tigranes' accession, c. 95.
+    (11.14.15). A kingdom of its own until Tigranes' accession, c. 95.
     Its northern edge is a convention along the Antitaurus. Takes its western
     and southern edges from armenia's.
 
@@ -2324,8 +2310,7 @@
   note: >-
     Armenia Maior as Pompey left it to Tigranes in 66: the Araxes valley with
     Artaxata, the lands round Lake Van, and Gordyene towards the Tigris
-    (Sophene, a kingdom of its own until c. 95, is its own atom since the
-    extension to 133). Before 66 Tigranes' empire was larger; that is not
+    (Sophene, a kingdom of its own until c. 95, is its own atom). Before 66 Tigranes' empire was larger; that is not
     drawn, nor is Gordyene's own history (its king Zarbienus under Tigranes,
     Plut. Lucullus 21, 29; Parthian in 66–65, Dio 37.5.3–4). Takes the
     Euphrates from armenia-minor and cappadocia, the Caucasian kingdoms' lines
@@ -2441,9 +2426,8 @@
     ended in the time of Moagetes, when Murena overthrew it and included
     Balbura and Bubon within the territory of the Lycians. But none the less
     the jurisdiction of Cibyra is rated among the greatest in Asia" (13.4.17).
-    Split from asia-phrygia (September 2026, for the extension to 133) because
-    the tyranny held it until Murena, governor of Asia in 84–81; its southern
-    line is asia-phrygia's, unchanged, and its northern edge towards the
+    Its own atom because the tyranny held it until Murena, governor of Asia in
+    84–81; its southern line is asia-phrygia's, and its northern edge towards the
     Phrygian districts is a convention.
 
 - id: asia-phrygia
@@ -2504,7 +2488,7 @@
     back to Asia under the proconsul C. Fannius in 49 (Dmitriev n. 80, after
     Magie and Sherk RDGE 52). Cicero held assizes for them as governor of
     Cilicia in 50 (Att. 5.21.9). The district lines are approximate. Cibyra's
-    own land is its own atom from September 2026 (cibyra), cut out of this one.
+    own land is its own atom (cibyra), cut out of this one.
 
 - id: bubon-balbura
   evidence: schematic
@@ -2545,10 +2529,7 @@
   note: >-
     Bubon, Balbura and Oenoanda, three of the four cities of Cibyra's
     tetrapolis (Strabo 13.4.17), which Murena gave to the Lycians when he put
-    down the tyranny. Split (September 2026, for the extension to 133) from
-    the ground of asia and lycia: until then Bubon and Balbura fell in a strip
-    of asia between asia-phrygia's line and asia's own southern edge, though
-    lycia's note meant them to be Lycian. Strabo names only Bubon and Balbura;
+    down the tyranny. Strabo names only Bubon and Balbura;
     Magie has Murena give all three, "the southern half of the Tetrapolis",
     to the Lycians, and Cibyra's own territory the valley of the Horzum Çay
     (241–242), which is the line between this atom and cibyra. Takes its
@@ -2676,8 +2657,8 @@
     bounds Bithynia's coast at the Sangarius (12.4.1) and has Mithridates'
     coast run west as far as Heraclea, which the Romans then added to Pontus
     (12.3.2): the stretch from the Sangarius to the Parthenius, with Heraclea,
-    was not the Bithynian king's, and is drawn here only because no atom yet
-    separates it (October 2026).
+    was not the Bithynian king's, and is drawn here only because no atom
+    separates it.
 
 - id: comana-pontica
   evidence: schematic
@@ -2718,10 +2699,9 @@
     as the sacred land and "a territory of two schoeni (that is, sixty stadia)
     in circuit" (12.3.34), some 11 km round, far smaller than the outline
     drawn, and Lycomedes' later addition as four hundred schoeni (12.3.35),
-    far larger; the outline sits between the two and follows neither (noted
-    October 2026). 12.3.34 no longer lists `construction` (the October 2026
-    check): the outline rests only on Strabo's naming the town (12.3.32), and
-    its size is a convention.
+    far larger; the outline sits between the two and follows neither. It
+    rests only on Strabo's naming the town (12.3.32), and its size is a
+    convention.
 
 - id: pontus-inner
   evidence: schematic
@@ -2796,7 +2776,7 @@
   note: >-
     Inner Pontus east of the Halys: Amaseia, Phanaroea with Diospolis
     (Cabira), Zela, Megalopolis (Sebasteia) and eastern Phazemonitis with
-    Neapolis. Split from pontus (September 2026) because Antony gave it to
+    Neapolis. Its own atom because Antony gave it to
     kings while the coast stayed in the province: Amaseia "was also given to
     kings" (Strabo 12.3.39), and Polemon took the land east of the Iris, and
     very probably Amaseia (Magie I 434–435). The Zela temple state and
@@ -2868,7 +2848,7 @@
     (Strabo 12.3.1). The country towards Armenia and Colchis went to allied
     dynasts. Comana, a temple state, lies inside this outline. Takes the
     Parthenius from bithynia. Inner Pontus east of the Halys is its own atom
-    from September 2026 (pontus-inner), cut out of this one; what is left is
+    (pontus-inner), cut out of this one; what is left is
     the coast from the Parthenius to Themiscyra and the Amnias basin with
     Pompeiopolis, which went to the kings of Paphlagonia at a date not known
     (Magie I 434).
@@ -2995,12 +2975,11 @@
   note: >-
     Lycaonia with Iconium, Lystra and Laodicea Catacecaumene, Philomelium, and
     Isauria (Isaura Vetus and Nova), which Strabo counts as part of Lycaonia
-    (12.6.2). Split from cilicia (September 2026): Antony gave "a part of
+    (12.6.2). Antony gave "a part of
     Cilicia", with Iconium, to Polemon in 39 (App. BC 5.75; Strabo 12.6.1), and
     it went to Amyntas when Polemon left for Pontus in 37/36 (Dio 49.32.3;
     Dmitriev 364). Isauria may have come to Amyntas only after Actium (Magie I
-    443); it is drawn with Lycaonia. Its outline is cilicia's old northern
-    part.
+    443); it is drawn with Lycaonia.
 
 - id: pisidia
   evidence: schematic
@@ -3047,7 +3026,7 @@
     Northern Pisidia, the lake district round Antioch near Pisidia and Lakes
     Eğirdir and Karalis, which Antony gave to Amyntas in 39 ("in Pisidia,
     Amyntas", App. BC 5.75; Magie I 433, "the hill-country of northern
-    Pisidia"). Split from cilicia (September 2026). Strabo gives Amyntas the
+    Pisidia"). Strabo gives Amyntas the
     country "as far as the Apollonias near Apameia Cibotus" (12.6.4), which
     lies inside asia-phrygia; that describes his holdings at his death in 25,
     and when he gained it is not known, so asia-phrygia is not cut. Cremna and
@@ -3107,7 +3086,7 @@
     (Dmitriev). Derbe and Laranda under Antipater, and the Tracheia east of
     Side, lay outside. The northern edge towards Galatia is approximate. Takes
     the Phrygian line from asia-phrygia. Lycaonia with Isauria and northern
-    Pisidia are their own atoms from September 2026 (lycaonia, pisidia), cut out
+    Pisidia are their own atoms (lycaonia, pisidia), cut out
     of this one; what is left is Pamphylia and southern Pisidia with Termessus
     and Selge.
 
@@ -3441,9 +3420,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Caunus and its land by the Calbis and Lake Köyceğiz. Split from
-    rhodian-peraea (September 2026, for the extension to 133) because it was
-    not Rhodian for the whole span: "made subject to Rhodes after the war
+    Caunus and its land by the Calbis and Lake Köyceğiz, its own atom because
+    it was not Rhodian for the whole span: "made subject to Rhodes after the war
     against Antiochus and … lately liberated by the Romans" (App. Mithr. 23),
     it was given back to Rhodes by Sulla, and in the 50s the Caunians asked the
     senate to pay their tribute to Rome rather than to the Rhodians (Cicero,
@@ -3486,7 +3464,7 @@
   note: >-
     Rhodes with its mainland Peraea: the Loryma peninsula, Physcus and Caunus
     (Strabo 14.2.2–4). Takes its edges from asia and lycia. Caunus is its own
-    atom from September 2026 (caunus), cut out of this one.
+    atom (caunus), cut out of this one.
 
 - id: olba
   evidence: schematic
@@ -3612,7 +3590,7 @@
     Rough Cilicia west of Olba: Coracesium, Hamaxia, Laertes, Selinus,
     Anemurium and Celenderis (Strabo 14.5.2–3), the cedar coast Antony gave
     Cleopatra "since it was suited to the building of her fleets" (14.5.3).
-    Unclaimed ground until September 2026. Strabo's grant ran over "the whole
+    Strabo's grant ran over "the whole
     of Cilicia Tracheia except Seleuceia" (14.5.6), which would take in Olba's
     coast by Corycus and Elaeussa too; that is left with olba (see its note).
     Takes every landward edge from its neighbours.
@@ -3948,7 +3926,7 @@
     flows through the Iapodes' country (7.5.2), so their ground may have
     straddled it, and the Una as their limit is the usual archaeological one,
     not confirmed here in the scholarship. Takes the coast's edge from
-    illyricum and the south from delmatae. Added September 2026. Strabo also
+    illyricum and the south from delmatae. Strabo also
     gives the Iapodes a coast of a thousand stadia before the Liburni's
     (7.5.4); that strip is drawn in illyricum, which this atom does not cut.
 
@@ -4023,8 +4001,7 @@
   review: needs-check
   note: >-
     Thessaly, from Olympus and Tempe to Othrys and the Pindus, with Magnesia
-    (Ossa, Pelion, Demetrias). Split from macedonia (September 2026) because
-    Augustan Achaea took it in (Bowersock 1965), while it had been part of
+    (Ossa, Pelion, Demetrias). Its own atom because Augustan Achaea took it in (Bowersock 1965), while it had been part of
     Macedonia before. Whether Perrhaebia and Magnesia went with it is not
     settled. The northern course between Olympus and the Pindus follows the
     ridge of the Cambunian mountains, a convention for the ancient border of
@@ -4096,8 +4073,8 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Epirus south of the Aous and the Acroceraunian mountains. Split from
-    macedonia (September 2026): Dio's "Greece with Epirus" and Strabo's
+    Epirus south of the Aous and the Acroceraunian mountains. Its own atom
+    because Dio's "Greece with Epirus" and Strabo's
     "certain Epeirotic tribes which border on Macedonia" put part of Epirus in
     Achaea by the Augustan settlement. How far north that part reached is not
     known; the Aous line keeps Apollonia, Byllis and Amantia in Macedonia and
@@ -4159,7 +4136,7 @@
   review: needs-check
   note: >-
     The Thracian Chersonese and the land east of the lower Hebrus, cut out of
-    macedonia (added for the extension to 133 BCE) because the law on the
+    macedonia because the law on the
     praetorian provinces of 101/100 dates its coming to Rome: the governor of
     Macedonia is to go straight to the Chersonese and the Caenic land, which
     Titus Didius had taken in war as spear-won ground (Knidos IV 6–11, in
@@ -4172,9 +4149,9 @@
     not recorded, though the Knidos clause can be read as making only the
     Caenic land his conquest. Where the Caenic land lay is not
     certain: Pliny puts the district "called Caenica" inland, by Bizye and
-    Apros (4.47), beyond this outline, which keeps macedonia's old northern
-    line and is only the part of Didius' gain the map already drew as
-    Macedonian. Aenus lies inside.
+    Apros (4.47), beyond this outline, which stops at macedonia's northern
+    line and holds only the part of Didius' gain south of it. Aenus lies
+    inside.
 
 - id: macedonia
   evidence: derived
@@ -4278,9 +4255,8 @@
     Egnatia's coast to the Hebrus and the Thracian Chersonese. The northern
     edge stops short of Scupi and the Dardanians.
     Takes the Drilon from illyricum, the Rhodope from thracia-odrysae and the
-    Hellespont from asia. Thessaly and southern Epirus, part of this outline
-    until September 2026, are their own atoms (thessalia, epirus), cut out of it,
-    and so, since the extension to 133 BCE, is the Thracian Chersonese with
+    Hellespont from asia. Thessaly and southern Epirus are their own atoms
+    (thessalia, epirus), cut out of it, and so is the Thracian Chersonese with
     the lower Hebrus (chersonesus-thracica), which Rome took only c. 100.
 
 - id: achaea
@@ -4528,7 +4504,7 @@
 
 # === Italy and the islands =====================================================
 
-# Italy before the Social War (the extension to 133 BCE, September 2026). The
+# Italy before the Social War. The
 # italia atom is what was Roman citizen land in 133–91; the atoms above it are
 # the allied regions cut out of it, one for each group the Social War dates
 # differently: the loyal allies of Etruria and Umbria, of the heel and of the
@@ -5393,7 +5369,7 @@
     (the conference of 56); the Macra is the Augustan limit (Pliny 3.50) and is
     not used. Between the Arno and the Rubicon the line runs along the Apennine
     watershed. The Rubicon is taken as the modern Rubicone, whose
-    identification is conventional. Since September 2026 the allied regions of
+    identification is conventional. The allied regions of
     133–91 are cut out of it (the atoms above), and what is left is the Roman
     citizen land of those years, with the Latin colonies and a few allied
     cities inside (Beloch 1880, ch. III); after 87 it is Italy with the rest.
@@ -5567,7 +5543,7 @@
     The Po plain to the break of slope of the Alps, from Ocelum in the Susa
     valley to the Formio beyond Aquileia, with Liguria to Albintimilium. The
     Salassi, the Cottian and Maritime Alps and the Raetian valleys were not
-    held. Takes the Arno–Rubicon line from italia. Since September 2026
+    held. Takes the Arno–Rubicon line from italia.
     Cispadane Gaul east of the Trebia is cut out of it (cisalpina-cispadana),
     so this is the land north of the Po and Liguria, drawn allied until the
     province of c. 81, though Beloch has much of the Ligurian plain south of
@@ -5740,8 +5716,7 @@
   review: draft
   note: >-
     The Baliares proper, Strabo's Gymnesiae — Mallorca, Menorca and Cabrera —
-    which Q. Metellus conquered in 123 (Livy Per. 60; Strabo 3.5.1). Cut from
-    hispania-citerior in September 2026 for the extension to 133 BCE. Ebusus and
+    which Q. Metellus conquered in 123 (Livy Per. 60; Strabo 3.5.1). Ebusus and
     the Pityussae, a federate city in Pliny's day (3.76) and no part of
     Metellus' war, stay with hispania-citerior.
 
@@ -6276,9 +6251,9 @@
     The Tolosates, the Volcae Tectosages of Tolosa and the upper Garonne (Strabo
     4.1.13): "formerly in alliance with the Romans", with a Roman garrison, until
     they rose in the hope of the Cimbri and Caepio took the city in 106 (Dio fr.
-    90; Oros. 5.15.25); "in the Province" by 58 (BG 1.10). Cut from
-    gallia-transalpina in September 2026 because that change is dated at this
-    grain. The eastern edge towards Carcaso and Narbo is a convention at the
+    90; Oros. 5.15.25); "in the Province" by 58 (BG 1.10). Its own atom
+    because that change is dated at this grain. The eastern edge towards
+    Carcaso and Narbo is a convention at the
     watershed; the other edges are the Province's own.
 
 - id: gallia-transalpina

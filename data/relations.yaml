@@ -225,7 +225,7 @@
   note: >-
     The sources disagree on the start, so it covers them all, as on the
     polity: 241 on Appian and the peace, 227 for the first praetor (Solinus
-    5.1; MRR), 212/211 on Velleius. It read 241 until October 2026.
+    5.1; MRR), 212/211 on Velleius.
 
 - polity: sardinia-corsica
   type: province-of
@@ -369,7 +369,7 @@
   note: >-
     No readable text gives the conventional 146, so the start covers what
     the texts do say, as on the polity: 167 on Livy Per. 45, 148 for
-    Metellus' recovery (MRR). It read 146 until October 2026.
+    Metellus' recovery (MRR).
 
 - polity: africa
   type: province-of
@@ -495,8 +495,7 @@
     From the conquest, no earlier than the surrender of the Allobroges in the
     consulship of Q. Fabius Maximus (121; Livy Per. 61), and no later than
     Domitius' proconsulship of 120, in which Broughton has him organise the
-    province (MRR I 524). It read 121 until October 2026, a convention no
-    readable text states; whether the regular province is this old is
+    province (MRR I 524). Whether the regular province is this old is
     disputed. Amela Valverde (2019, p. 39)
     writes that the creation, traditionally Domitius', is now held to be rather
     Marius' work after the Cimbric wars (consul 107), or even Pompey's in the
@@ -856,8 +855,8 @@
   confidence: probable
   review: draft
   note: >-
-    The lex Vatinia of 59 gave it to Caesar; it read "from 59" until October
-    2026, but a proconsul had been sent into Illyricum about 78 (Eutropius
+    The lex Vatinia of 59 gave it to Caesar, but a proconsul had been sent
+    into Illyricum about 78 (Eutropius
     6.4–5), so the start is open, as the polity.
 
 - polity: africa-nova
@@ -1130,8 +1129,7 @@
   note: >-
     Rome's ally when Scipio Aemilianus' embassy visited Ptolemy VIII (Justin
     38.8), to Ptolemy XII's recognition as friend and ally in 59, when the
-    client-of row begins (Caes. BC 3.107; Bennett). Added October 2026; Egypt
-    had no relation to Rome before 59.
+    client-of row begins (Caes. BC 3.107; Bennett).
 
 - polity: aegyptus
   type: client-of
@@ -1182,9 +1180,8 @@
     From 59, when Caesar's law and a decree of the senate made Ptolemy XII a
     friend and ally (Caes. BC 3.107; Dio 39.12.1; Suet. Iul. 54.3). Before it
     Egypt was an independent kingdom on friendly terms with Rome, and is drawn
-    independent (decided September 2026, over 55, the Gabinian garrison: the
-    formal recognition is the change of standing, the garrison a consequence
-    of it). Until 2026 this row ran across the whole of 68–27.
+    independent (59 rather than 55, the Gabinian garrison: the formal
+    recognition is the change of standing, the garrison a consequence of it).
 
 - polity: nabataea
   type: client-of
@@ -1268,8 +1265,7 @@
   note: >-
     Machares, set over the Bosporus by his father c. 80 (App. Mithr. 67; Minns
     has 79, after the peace of 81), until he went over to Lucullus in 70,
-    between that year's consuls and censors (Livy Per. 97–98). Added for the
-    extension to 133 BCE.
+    between that year's consuls and censors (Livy Per. 97–98).
 
 - polity: bosporus
   type: allied-to
@@ -1321,10 +1317,9 @@
   review: needs-check
   note: >-
     Machares "received the title of friend from Lucius Lucullus" (Livy Per.
-    98), until his father came to the Bosporus in 65. Added for the extension
-    to 133 BCE. Allied, not client: no text has Rome set Machares up; he asked
-    to be among Rome's "friends and allies" (Plut. Luc. 24.1) and was
-    (October 2026; it read client).
+    98), until his father came to the Bosporus in 65. Allied, not client: no
+    text has Rome set Machares up; he asked to be among Rome's "friends and
+    allies" (Plut. Luc. 24.1) and was.
 
 - polity: pontic-cities
   type: client-of
@@ -1382,7 +1377,7 @@
   note: >-
     The Greek cities of the western Pontus under Mithridates' "kind of
     Pontic protectorate", from Diophantus' war to M. Lucullus' campaign of
-    72–71 (see the claim). Added in October 2026.
+    72–71 (see the claim).
 
 - polity: scythia-minor
   type: client-of
@@ -1419,7 +1414,7 @@
   review: needs-check
   note: >-
     Subject to Mithridates after Diophantus' wars; how long is not recorded
-    (see the claim). Added for the extension to 133 BCE.
+    (see the claim).
 
 - polity: bosporus
   type: client-of
@@ -1508,7 +1503,7 @@
   note: >-
     Kings working with Rome, from Cotys about 90 to Sadalus' bequest of 42; no
     text names their standing, so drawn as allied, the closest the texts
-    describe (see the claim). Added October 2026.
+    describe (see the claim).
 
 - polity: thracia-odrysae
   type: client-of
@@ -1593,8 +1588,7 @@
   confidence: uncertain
   review: needs-check
   note: >-
-    Allied, the closest standing the texts describe (see the claim); it read
-    client-of until October 2026.
+    Allied, the closest standing the texts describe (see the claim).
     The tetrarchs' standing before Pompey is not stated; they fought on Rome's
     side in 89 and in the 70s.
 
@@ -1640,7 +1634,7 @@
   review: needs-check
   note: >-
     Aba's tenure by Antony's grant, from his arrangements of 39, and her
-    descendants' under Augustus (see the claim). Added in October 2026.
+    descendants' under Augustus (see the claim).
 
 - polity: derbe
   type: client-of
@@ -1668,7 +1662,6 @@
   note: >-
     Antipater, "a Roman vassal" by Pompey's gift of Derbe and Laranda (Magie I
     375), until Amyntas killed him after Actium (Magie I 443); as the claim.
-    Added October 2026.
 
 - polity: galatia
   type: client-of
@@ -1960,9 +1953,8 @@
   note: >-
     Strabo names Sampsiceramus and Iamblichus as the Emeseni's chiefs, so
     Cicero's Iamblichus "of the Arabians" is Emesa's. A friendly dynast in 51
-    and 47, not a dependent one. It was client-of from 64 to 31 until October
-    2026: no readable text dates a tie to Pompey's settlement of 64, so it
-    begins between that and Cicero's despatch of 51, and is drawn from 64,
+    and 47, not a dependent one, so allied, not client. No readable text dates
+    a tie to Pompey's settlement of 64, so it begins between that and Cicero's despatch of 51, and is drawn from 64,
     the earlier bound (Dio 37.6.4–7.1), as the claim is, so as not to leave
     64–58 blank after the independent row; it ends between 47, when
     Iamblichus helped Caesar, and 32, since he is first seen dependent in 31
@@ -2056,17 +2048,16 @@
   note: >-
     The start is "the time of Pompey" (Dio 40.20.1), his eastern command:
     offered him in the year of Tullus and Lepidus, 66 (36.42.3–4), and held
-    until he sent Piso ahead to the elections of 62 (37.44.3, 37.46.1). It
-    was 64 until October 2026, the year of Afranius' march through
-    Mesopotamia, which no text ties to Abgar; the range is drawn at 64.
-    Allied, not client (it was client-of until October 2026): the one text on
+    until he sent Piso ahead to the elections of 62 (37.44.3, 37.46.1). The
+    range is drawn at 64, the year of Afranius' march through Mesopotamia,
+    which no text ties to Abgar.
+    Allied, not client: the one text on
     the tie has Abgar "pledged himself to peace with the Romans", and none has
     Rome set him up, depose him or call him subject.
     No earlier tie is recorded. It ends with 54: in Crassus' campaign of 53, the
     year of Calvinus and Messalla (40.17.1), Abgar "chose the side of the
     barbarians" and his Osroeni fell on the Roman rear (40.20.1, 40.23.1).
-    It was left open at "after 43" until October 2026; no text renews the
-    tie after 53.
+    No text renews the tie after 53.
 
 - polity: amanus
   type: client-of
@@ -2126,7 +2117,7 @@
     Actium, in the consulship of Caesar and Messalla (31), and Octavian's
     deposing of his son Philopator (Dio 50.14.2, 50.10.1, 51.2.2).
 
-# --- added September 2026: the neighbours of Rome ------------------------------
+# --- the neighbours of Rome --------------------------------------------------
 
 - polity: lycia
   type: allied-to
@@ -2292,8 +2283,8 @@
     the sources disagree: Strabo, under Augustus, has Caesar and his successors
     keep its laws and its freedom from the governors "in consideration of their
     former friendship" (4.1.5); Dio has Caesar strip it "of everything else
-    except the name of freedom" (41.25.3). Both are quoted and the confidence
-    lowered from certain in October 2026.
+    except the name of freedom" (41.25.3). Both are quoted, and the
+    disagreement is why the confidence is uncertain.
 
 - polity: paphlagonia
   type: client-of
@@ -2590,9 +2581,9 @@
     (Eutropius 6.10; Livy Per. 97). They were "the allies in Moesia" whom C.
     Antonius, consul in 63, attacked as governor of Macedonia (Dio 38.10.1–3,
     37.10.4), so in force in 62; that is the last a readable text shows. It
-    ran to 56, the year before Burebista's conquest as conventionally dated,
-    until October 2026, which no text read states; it ends at 62, as the
-    allied claim does, Burebista's row starting the year after.
+    ends at 62, as the allied claim does, Burebista's row starting the year
+    after; no text read carries it to 56, the year before Burebista's
+    conquest as conventionally dated.
 
 - polity: noricum
   type: allied-to
@@ -2626,7 +2617,7 @@
   review: needs-check
   note: >-
     "Foreign friends of the Romans" in 113 (App. Celt. 13), its first
-    attestation; before 68 until the extension to 133 BCE.
+    attestation.
 
 - polity: aedui
   type: allied-to
@@ -2715,9 +2706,8 @@
     Tolosa "had formerly been in alliance with the Romans" and kept a Roman
     garrison until it revolted (Dio fr. 90); when the alliance began is not
     recorded: no earlier than Fabius' defeat of the Arverni in 121 (Per. 61),
-    no later than the revolt Caepio ended in 106 (MRR), as on the claim. It
-    read 121–118 until October 2026, on Narbo, which no readable text ties to
-    Tolosa. Starts at 121, the earliest bound, as the claim does: the range
+    no later than the revolt Caepio ended in 106 (MRR), as on the claim. No
+    readable text ties Narbo to Tolosa. Starts at 121, the earliest bound, as the claim does: the range
     121–107 drawn at its midpoint would leave 121–115 blank after the
     independent row ending in 122; uncertain for it.
 
@@ -2824,8 +2814,7 @@
     Pharnaces in 48, after Pharsalus (Magie I 408; Dio 42.45.3), as on the
     claim. Who held it after Zela is not recorded until Polemon, to whom
     Antony gave it ("At last Polemon got Colchis", Strabo 11.2.18), on a date
-    no readable text gives. Ran to after 27 BCE until October 2026, which no
-    readable text supports.
+    no readable text gives.
 
 - polity: iberia-caucasia
   type: allied-to
@@ -2866,8 +2855,7 @@
     Canidius beat Pharnabazus and brought the Iberians into alliance (Dio
     49.24.1); the relation ends open there, as the claim does. Augustus records
     their kings' embassies seeking his friendship (Res Gestae 31) without a
-    date. Ran to after 27 BCE until October 2026, which no readable text
-    supports. Allied, not client (checked October 2026; it read client): the
+    date. Allied, not client: the
     texts have Artoces send his children and conclude a treaty (Dio 37.2.7) and
     the Iberians make an alliance (49.24.1); none has Rome set up, depose or
     call its king subject.
@@ -2919,9 +2907,8 @@
     when Canidius, in the year of Gellius and Nerva, beat Zober and
     "conciliated" the Albanians as he had the Iberians (Dio 49.24.1); the
     relation ends open there, as the claim does. Augustus records their kings'
-    embassies seeking his friendship (Res Gestae 31) without a date. Ran to
-    after 27 BCE until October 2026, which no readable text supports. Allied,
-    not client (checked October 2026; it read client): Pompey "granted peace"
+    embassies seeking his friendship (Res Gestae 31) without a date. Allied,
+    not client: Pompey "granted peace"
     (Dio 37.5.1) and "made a formal treaty" with the prince (Magie I 359), and
     Canidius "conciliated" them (49.24.1); none has Rome set up, depose or call
     its king subject.
@@ -2993,8 +2980,8 @@
     lost when Antony recalled his soldiers for the war with Caesar (Dio
     49.44.3–4), after the Araxes compact of 33, the year of Caesar's second
     consulship (49.43.6), and before 30, when Artaxes had killed the Romans
-    left behind (51.16.2). It read 32 until October 2026; it now ends in the
-    same range as the client claim on the ground (33–31, drawn at 32).
+    left behind (51.16.2). It ends in the same range as the client claim on
+    the ground (33–31, drawn at 32).
 
 - polity: atropatene
   type: allied-to
@@ -3034,13 +3021,12 @@
   review: needs-check
   note: >-
     Back under Parthia once Tigranes had submitted to Pompey (66); when is not
-    recorded. The rows before are in the extension to 133. From 66, the year
-    of the submission, as Armenia's client-of rome; it read 65 until October
-    2026, and the tie to Armenia ended in 66. Allied, not client-of: in 36 the
-    Mede went "to bear aid to his ally, the Parthian king" (Dio 49.25.2); it
-    was client-of until October 2026.
+    recorded. The rows before are further down this file. From 66, the year
+    of the submission, as Armenia's client-of rome, since the tie to Armenia
+    ended in 66. Allied, not client-of: in 36 the Mede went "to bear aid to
+    his ally, the Parthian king" (Dio 49.25.2).
 
-# --- added September 2026: the extension to 27 BCE -----------------------------
+# --- the triumviral years, 44–27 BCE -----------------------------------------
 
 - polity: achaea
   type: province-of
@@ -3692,12 +3678,11 @@
     for the war with Caesar, open from the consulship of Domitius and Sosius,
     32 (Dio 49.44.3–4, 50.2.2), and Artaxes had killed the Romans left there
     by the time Caesar settled Egypt in his fourth consulship, 30 (51.4.3,
-    51.16.2). It read 31 until October 2026, which no text states; the range
-    is drawn at its midpoint, 31. It read client-of until October 2026 too:
+    51.16.2). The range is drawn at its midpoint, 31. Allied, not client-of:
     no text says Parthia set Artaxias up or calls him subject (the Armenians
     chose him, Dio 49.39.6); he fought beside the Parthians (49.44.4) and
     held his crown by their strength, an ally by the closest type the texts
-    describe, as the claims on armenia and sophene now say.
+    describe, as the claims on armenia and sophene say.
 
 - polity: atropatene
   type: allied-to
@@ -3770,7 +3755,7 @@
     Armenia (Dio 49.44.4); in Strabo's day the Atropatenians were "paying
     court to the Parthians" (11.13.2). No text names a king Parthia set up.
 
-# --- added September 2026: the extension to 133 BCE, Anatolia -----------------
+# --- from 133 BCE: Anatolia --------------------------------------------------
 
 - polity: bithynia-regnum
   type: client-of
@@ -3884,10 +3869,10 @@
     restoration in the year of Pompeius' consulship, 89 (Livy Per. 74); Appian
     puts the first clash "about the 173rd Olympiad", 88/87 (Mithr. 17), and
     Livy the king's seizure of Bithynia and Cappadocia in the book of Sulla's
-    consulship, 88 (Per. 77). It read 90 until October 2026, and the claims on
-    Pontus' ground moved with it (allied to 89, independent from 88).
+    consulship, 88 (Per. 77). The claims on Pontus' ground follow it (allied
+    to 89, independent from 88).
 
-# --- added September 2026: the extension to 133 BCE, the Levant, Armenia and the East
+# --- from 133 BCE: the Levant, Armenia and the East --------------------------
 
 - polity: judaea
   type: client-of
@@ -3946,8 +3931,8 @@
     135/134, and reports Clinton's 134–133 for it; the terms followed it. The
     king's death is usually put in 129, but no readable text here says so:
     Schürer has the campaign in 129 and the death in 128. So the end is open,
-    in force in 130 and ended no earlier. It read 130 until October 2026; the
-    claims on judaea and judaea-joppa still end the client row in 130.
+    in force in 130 and ended no earlier. The claims on judaea and
+    judaea-joppa end the client row in 130.
 
 - polity: atropatene
   type: client-of
@@ -3962,8 +3947,7 @@
   note: >-
     Under the Arsacids since their conquest of Media (c. 148); Parthian
     overlordship of Atropatene in these years is inferred, not attested. To
-    87, when Mithradates II was still alive (Debevoise 50); it ended in 86
-    until October 2026.
+    87, when Mithradates II was still alive (Debevoise 50).
 
 - polity: atropatene
   type: client-of
@@ -4029,7 +4013,7 @@
     Tigranes "subjugated to himself the rulers of Atropene and Gordyaea"
     (Strabo 11.14.15), in the war with Parthia after Mithridates II's death;
     he was still alive in 87 (Debevoise 50), and Strabo gives no year, so
-    the start lies in 86–69 and is drawn from 86 (85 until October 2026).
+    the start lies in 86–69 and is drawn from 86.
     The king of the Medes held Tigranes'
     right wing at Tigranocerta in 69 (Plut. Lucullus 27.6), the Atropateni
     fought for him at the Arsanias in 68 (31.7), and "Mithridates from Media,
