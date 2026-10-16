@@ -1,5 +1,6 @@
-import { type CameraState, RomeMap } from '@roma-cognita/engine'
+import { type CameraState, type MapRef, RomeMap } from '@roma-cognita/engine'
 import { useEffect, useRef } from 'react'
+import { writeParams } from '@/lib/params.ts'
 import { useExplorer } from '@/store.ts'
 
 interface Props {
@@ -9,6 +10,9 @@ interface Props {
   forceWebGL: boolean
   /** The share of the first frame's data loaded, as it arrives. */
   onProgress?: (loaded: number) => void
+  /** A thing to open the inspector on, and whether to fly to it rather than keep `camera`. */
+  show: MapRef | null
+  flyToShow: boolean
   year: number
 }
 
@@ -17,7 +21,15 @@ interface Props {
  * unmount. The engine is framework-free (DESIGN.md §9); this is the thin wrapper.
  * Props are read once, at creation.
  */
-export function MapView({ camera, debug, forceWebGL, onProgress, year }: Props) {
+export function MapView({
+  camera,
+  debug,
+  forceWebGL,
+  onProgress,
+  show,
+  flyToShow,
+  year,
+}: Props) {
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -28,6 +40,9 @@ export function MapView({ camera, debug, forceWebGL, onProgress, year }: Props) 
       map = m
       m.setYear(year)
       useExplorer.getState().attach(m)
+      if (show) useExplorer.getState().open(show, { fly: flyToShow })
+      m.onCamera = () =>
+        writeParams({ camera: { lonLat: m.view.lonLat, state: m.view.state } })
       if (import.meta.env.DEV || debug) Object.assign(window, { map: m })
     })
     return () => {

@@ -31,6 +31,8 @@ export function App() {
         debug={params.debug}
         forceWebGL={params.forceWebGL}
         onProgress={splashProgress}
+        show={params.show}
+        flyToShow={!params.cameraSet}
         year={params.year}
       />
       {ready && !params.bare && (

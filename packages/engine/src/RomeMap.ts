@@ -58,6 +58,8 @@ export class RomeMap {
    * so the legend can key it (DESIGN.md §7.7).
    */
   onModel?: (shown: boolean) => void
+  /** Called whenever the camera moves: every frame of a pan, a flight or a turn. */
+  onCamera?: () => void
   private modelShown = false
   /** Built in `create`, once the known-world texture it browns from has loaded. */
   private paper?: PaperLayer
@@ -155,7 +157,10 @@ export class RomeMap {
     })
 
     this.view = new MapCamera(this.renderer.domElement, opts.camera)
-    this.view.onChange = () => (this.dirty = true)
+    this.view.onChange = () => {
+      this.dirty = true
+      this.onCamera?.()
+    }
     const normal = this.view.minDistanceAt(0, 0)
     this.view.minDistanceAt = (x, y) => this.plan.minDistanceAt(x, y, normal)
     this.scene.add(this.terrain.group)

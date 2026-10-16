@@ -1,5 +1,6 @@
 import type { PersonId } from '@roma-cognita/schema'
 import { create } from 'zustand'
+import { readParams, writeParams } from '@/lib/params.ts'
 import { People } from '@/lib/people.ts'
 
 /**
@@ -30,7 +31,7 @@ let loading: Promise<void> | null = null
 export const usePeople = create<PeopleState>()((set, get) => ({
   people: null,
   failed: null,
-  person: readPersonParam(),
+  person: readParams().person,
   trail: [],
 
   load() {
@@ -45,32 +46,18 @@ export const usePeople = create<PeopleState>()((set, get) => ({
     const { person, trail } = get()
     if (id === person) return
     set({ person: id, trail: opts?.fromPerson && person ? [...trail, person] : [] })
-    writePersonParam(id)
+    writeParams({ person: id })
   },
 
   back() {
     const { trail } = get()
     const person = trail.at(-1) ?? null
     set({ person, trail: trail.slice(0, -1) })
-    writePersonParam(person)
+    writeParams({ person })
   },
 
   close() {
     set({ person: null, trail: [] })
-    writePersonParam(null)
+    writeParams({ person: null })
   },
 }))
-
-function readPersonParam(): PersonId | null {
-  const v = new URLSearchParams(location.search).get('person')
-  return v && /^(dprr:\d+|ours:[a-z0-9-]+)$/.test(v) ? (v as PersonId) : null
-}
-
-// Replaced, not pushed: the browser's back button leaves the map rather than stepping
-// back through everyone opened.
-function writePersonParam(id: PersonId | null) {
-  const url = new URL(location.href)
-  if (id) url.searchParams.set('person', id)
-  else url.searchParams.delete('person')
-  history.replaceState(history.state, '', url)
-}

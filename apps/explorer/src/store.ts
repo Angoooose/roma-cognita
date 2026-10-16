@@ -6,6 +6,7 @@ import type {
   RomeMap,
 } from '@roma-cognita/engine'
 import { create } from 'zustand'
+import { writeParams } from '@/lib/params.ts'
 
 export type Inspected =
   { kind: 'place'; hit: PlaceHit } | { kind: 'territory'; hit: PoliticalHit }
@@ -40,6 +41,8 @@ interface ExplorerState {
   goToPolity(id: string, year: number): void
   /** Shows a settlement in a year, as `goToPolity` shows a polity. */
   goToPlace(id: string, year: number): void
+  /** Opens the inspector on a thing in the year shown, flying to it if `fly`. */
+  open(ref: MapRef, opts: { fly: boolean }): void
   closeInspector(): void
 }
 
@@ -111,6 +114,11 @@ export const useExplorer = create<ExplorerState>()((set, get) => ({
     flyAndInspect({ kind: 'place', id })
   },
 
+  open(ref, { fly }) {
+    if (fly) flyAndInspect(ref)
+    else inspectRef(ref)
+  },
+
   closeInspector() {
     pickSeq++
     get().map?.setFocus(null)
@@ -149,4 +157,19 @@ function show(hit: Awaited<ReturnType<RomeMap['pick']>>, selection: Selection) {
   } else {
     useExplorer.setState({ inspected: null, selection: null })
   }
+}
+
+// The year and the thing inspected are mirrored to the address (lib/params.ts). A spot
+// clicked on the map is written as what was found there, since its screen position
+// means nothing on another screen.
+useExplorer.subscribe((s, prev) => {
+  if (!s.map) return
+  if (s.year !== prev.year) writeParams({ year: s.year })
+  if (s.inspected !== prev.inspected) writeParams({ show: refOf(s.inspected) })
+})
+
+function refOf(inspected: Inspected | null): MapRef | null {
+  if (inspected?.kind === 'place') return { kind: 'place', id: inspected.hit.place.id }
+  const polity = inspected?.hit.polity
+  return polity ? { kind: 'polity', id: polity.id } : null
 }
