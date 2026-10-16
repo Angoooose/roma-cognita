@@ -4,11 +4,11 @@
 /*
  * The frontispiece, shown while the map loads (index.html; lib/splash.ts takes it
  * away). It is the open sea the map starts from, with the map's name in the sea names'
- * voice: gold on dark water, the title in Cinzel and the years in Garamond italic. Its
- * one ornament is the theme's (Marks.tsx, Fleuron): a rule with the seat's diamond,
- * whose hairlines are drawn out from the diamond while the map loads, and finished
- * when it is ready. Linked from index.html, not imported, so it paints before the
- * bundle has run.
+ * voice: gold on dark water, the title in Cinzel and the years in Garamond italic.
+ * Under it is the timeline's ruler (Timeline.tsx), the map's years, engraved from left
+ * to right as the map loads. Once it has, the gold index is set on the year the map
+ * opens at, the year under it, and the frontispiece gives way. Linked from index.html,
+ * not imported, so it paints before the bundle has run.
  */
 
 #splash {
@@ -68,52 +68,87 @@
   color: color-mix(in oklab, var(--cream) 62%, var(--sea));
 }
 
-#splash .rule {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 280px;
+#splash .ruler {
+  --at: 0;
+  position: relative;
+  width: 300px;
+  height: 7px;
+  margin-top: 16px;
+  color: color-mix(in oklab, var(--cream) 62%, var(--sea));
 }
 
-#splash .rule i {
-  flex: 1;
-  height: 1px;
-  background: color-mix(in oklab, var(--gold) 45%, transparent);
-  transform: scaleX(0);
-  /* Drawn out slowly, most of the way, while the map loads… */
-  transition: transform 2.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+/* Engraved as far as `--drawn`, 0 to 1, of the way along. */
+#splash .scale {
+  --drawn: 0;
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  clip-path: inset(-2px calc((1 - var(--drawn)) * 100%) -2px -2px);
 }
 
-#splash .rule i:first-child {
-  transform-origin: right;
+#splash .scale line {
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-opacity: 0.55;
 }
 
-#splash .rule i:last-child {
-  transform-origin: left;
+#splash .scale line.long,
+#splash .scale line:first-child {
+  stroke-opacity: 0.85;
 }
 
-#splash.fonts .rule i {
-  transform: scaleX(0.82);
+/* The index: the timeline's pointer, its tip on the rule, set down once loaded. */
+#splash .index {
+  position: absolute;
+  bottom: 100%;
+  left: calc(var(--at) * 100%);
+  width: 11px;
+  height: 8px;
+  transform: translate(-50%, -5px);
+  overflow: visible;
+  fill: var(--gold);
+  opacity: 0;
+  transition:
+    opacity 300ms ease,
+    transform 300ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
-/* …and finished, quickly, when it is ready. */
-#splash.done .rule i {
-  transform: scaleX(1);
-  transition-duration: 280ms;
-  transition-timing-function: ease-out;
+#splash.arrived .index {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
-#splash .rule b {
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  transform: rotate(45deg);
+#splash .year {
+  margin-top: 4px;
+  margin-right: -0.14em;
+  font-family: 'Cinzel Variable', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--gold);
+  /* Its line held while empty, so nothing moves when the year is set. */
+  min-height: 1.2em;
+  line-height: 1.2;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+#splash.arrived .year {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   #splash .plate,
-  #splash .rule i {
+  #splash .index {
     transition: opacity 400ms ease;
+  }
+
+  #splash .plate {
     transform: none;
+  }
+
+  #splash .index {
+    transform: translate(-50%, 0);
   }
 }

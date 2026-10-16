@@ -14,8 +14,12 @@
     <div id="splash" aria-hidden="true">
       <div class="plate">
         <h1>Roma Cognita</h1>
-        <div class="rule"><i></i><b></b><i></i></div>
         <div class="years">the Roman world</div>
+        <div class="ruler" data-first="133" data-last="27">
+          <svg class="scale"></svg>
+          <svg class="index" viewBox="0 0 12 9"><polygon points="0,0 12,0 6,9" /></svg>
+        </div>
+        <div class="year"></div>
       </div>
     </div>
     <script>
@@ -23,6 +27,21 @@
       {
         const splash = document.getElementById('splash')
         const show = () => splash.classList.add('fonts')
+        // The ruler's ticks, as the timeline's: every fifth year, longer every 25th and at
+        // the ends. Years BCE, counting down from the first.
+        const ruler = splash.querySelector('.ruler')
+        const first = Number(ruler.dataset.first)
+        const last = Number(ruler.dataset.last)
+        let ticks = ''
+        for (let y = first; y >= last; y--) {
+          const end = y === first || y === last
+          if (y % 5 && !end) continue
+          const long = end || y % 25 === 0
+          const x = ((first - y) / (first - last)) * 100
+          ticks += `<line x1="${x}%" x2="${x}%" y1="0" y2="${long ? 6 : 3.5}" class="${long ? 'long' : ''}" />`
+        }
+        ruler.querySelector('.scale').innerHTML =
+          `<line x1="0" x2="100%" y1="0" y2="0" />${ticks}`
         Promise.all([
           document.fonts.load('500 30px "Cinzel Variable"'),
           document.fonts.load('italic 17px "EB Garamond Variable"'),

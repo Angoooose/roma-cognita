@@ -7,6 +7,8 @@ interface Props {
   /** Expose the engine as `window.map`, for the screenshot harness and the console. */
   debug: boolean
   forceWebGL: boolean
+  /** The share of the first frame's data loaded, as it arrives. */
+  onProgress?: (loaded: number) => void
   year: number
 }
 
@@ -15,13 +17,13 @@ interface Props {
  * unmount. The engine is framework-free (DESIGN.md §9); this is the thin wrapper.
  * Props are read once, at creation.
  */
-export function MapView({ camera, debug, forceWebGL, year }: Props) {
+export function MapView({ camera, debug, forceWebGL, onProgress, year }: Props) {
   const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let map: RomeMap | undefined
     let cancelled = false
-    RomeMap.create(container.current!, { camera, forceWebGL }).then((m) => {
+    RomeMap.create(container.current!, { camera, forceWebGL, onProgress }).then((m) => {
       if (cancelled) return m.dispose()
       map = m
       m.setYear(year)

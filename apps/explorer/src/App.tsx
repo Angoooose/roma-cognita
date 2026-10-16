@@ -6,28 +6,31 @@ import { PersonPanel } from '@/components/PersonPanel.tsx'
 import { Search } from '@/components/Search.tsx'
 import { Timeline } from '@/components/Timeline.tsx'
 import { readParams } from '@/lib/params.ts'
-import { dismissSplash } from '@/lib/splash.ts'
+import { dismissSplash, splashProgress, startSplash } from '@/lib/splash.ts'
 import { usePeople } from '@/peopleStore.ts'
 import { useExplorer } from '@/store.ts'
 
 const params = readParams()
+startSplash(params.year)
 
 export function App() {
-  const ready = useExplorer((s) => s.map !== null)
+  const map = useExplorer((s) => s.map)
+  const ready = map !== null
   const loadPeople = usePeople((s) => s.load)
   // The people are not needed for the first frame: fetch them once the map is up.
   useEffect(() => {
     if (ready && !params.bare) loadPeople()
   }, [ready, loadPeople])
   useEffect(() => {
-    if (ready) dismissSplash()
-  }, [ready])
+    if (map) dismissSplash(map)
+  }, [map])
   return (
     <>
       <MapView
         camera={params.camera}
         debug={params.debug}
         forceWebGL={params.forceWebGL}
+        onProgress={splashProgress}
         year={params.year}
       />
       {ready && !params.bare && (
