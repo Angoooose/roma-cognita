@@ -105,6 +105,20 @@ export class TerrainTiles {
     return this.jobs.size === 0 && this.queue.length === 0 && this.settled
   }
   private settled = false
+  /**
+   * How many levels the coarsest tile on screen is below the detail it is wanted at: 0
+   * when every tile is drawn at its own, 1 when some stand-in is magnified twice, and so
+   * on. Infinity while some part of the view has nothing loaded to draw at all.
+   */
+  lag = Infinity
+  /** Each selected tile's lag, as `lag` is for the worst of them. */
+  private lags: number[] = []
+
+  /** The share of the selected tiles drawn no more than `levels` coarser than their own. */
+  coverage(levels: number) {
+    if (!this.lags.length) return 0
+    return this.lags.filter((l) => l <= levels).length / this.lags.length
+  }
   private drawn = new Set<Node>()
 
   /**
@@ -134,9 +148,11 @@ export class TerrainTiles {
     // (see `standInDrop` in material.ts), so wherever both are drawn the finer wins.
     const draw = new Set<Node>()
     let settled = true
+    const lags: number[] = []
     for (const node of selected) {
       if (node.state === 'ready') {
         draw.add(node)
+        lags.push(0)
         continue
       }
       settled = false
@@ -144,9 +160,12 @@ export class TerrainTiles {
       let a: Node | undefined = node.parent
       while (a && a.state !== 'ready') a = a.parent
       if (a) draw.add(a)
+      lags.push(a ? node.level - a.level : Infinity)
       collectReady(node, STAND_IN_DEPTH, draw)
     }
     this.settled = settled
+    this.lags = lags
+    this.lag = Math.max(0, ...lags)
 
     const changed =
       draw.size !== this.drawn.size || [...draw].some((n) => !this.drawn.has(n))

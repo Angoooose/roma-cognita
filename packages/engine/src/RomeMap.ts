@@ -22,6 +22,11 @@ export interface RomeMapOptions {
   camera: CameraState
   /** Force the WebGL2 backend, to check the fallback renders the same picture. */
   forceWebGL?: boolean
+  /**
+   * Called as the data the first frame needs arrives, with the share of it loaded, 0
+   * to 1. The terrain comes after; `coverage` follows that.
+   */
+  onProgress?: (loaded: number) => void
 }
 
 export interface FrameStats {
@@ -67,7 +72,7 @@ export class RomeMap {
     // first view is close enough in to show it.
     const model = map.model.load()
     const close = opts.camera.distance < map.view.distanceFor(MODEL_MPP[0])
-    await Promise.all([
+    const loads: Promise<unknown>[] = [
       map.renderer.init(),
       loadDataTextures(),
       map.politics.load(),
@@ -75,7 +80,11 @@ export class RomeMap {
       map.places.load(),
       map.plan.load(),
       ...(close ? [model] : []),
-    ])
+    ]
+    let loaded = 0
+    opts.onProgress?.(0)
+    for (const l of loads) l.then(() => opts.onProgress?.(++loaded / loads.length))
+    await Promise.all(loads)
     // The plan lets the camera closer than the terrain alone would: the view asked for
     // was clamped before it loaded, so it is asked for again.
     map.view.state.distance = opts.camera.distance
@@ -367,6 +376,20 @@ export class RomeMap {
   /** True once every visible tile is drawn at its own detail — used by screenshots. */
   get idle() {
     return this.terrain.idle && !this.dirty
+  }
+
+  /**
+   * True once every visible tile is drawn no more than `levels` coarser than its own
+   * detail, each level doubling the stand-in's magnification. Zero is `idle` but for
+   * tiles still loading that the view no longer needs.
+   */
+  drawnWithin(levels: number) {
+    return this.terrain.lag <= levels && !this.dirty
+  }
+
+  /** The share of the visible tiles drawn no more than `levels` coarser than their own. */
+  coverage(levels: number) {
+    return this.terrain.coverage(levels)
   }
 
   dispose() {
