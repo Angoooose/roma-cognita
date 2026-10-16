@@ -200,6 +200,7 @@ export class RomeMap {
     politicsUniforms.fill.value = 0.1 + 0.72 * tier
     politicsUniforms.glow.value = 0.7
     if (this.politics.tick(now)) this.dirty = true
+    if (this.labels.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
     roadUniforms.pixelRatio.value = this.renderer.getPixelRatio()
     planUniforms.pixelRatio.value = this.renderer.getPixelRatio()

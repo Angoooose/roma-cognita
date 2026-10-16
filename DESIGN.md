@@ -453,8 +453,10 @@ from vector lines.
   - row 1: polity, power, evidence, and a sea flag;
   - row 2: border ink, and a client flag.
 
-  `setYear` rewrites one table and cross-fades between the two. It never
-  rebuilds a tile.
+  A third table holds, per atom, how far it has faded from `from` to `to`.
+  `setYear` rewrites only the atoms whose holder changes, and each fades on its
+  own clock, so dragging the timeline never restarts a fade already under way.
+  A land name that comes or goes fades with it. It never rebuilds a tile.
 
 - **Colour by power.** A polity takes the colour of the
   power it answers to, found by following `province-of`, `client-of` and

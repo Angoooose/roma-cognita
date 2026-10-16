@@ -5,13 +5,12 @@ import {
   max,
   mix,
   screenUV,
-  select,
   smoothstep,
   uniform,
   uv,
   vec3,
 } from 'three/tsl'
-import { politicsUniforms } from '../politics/PoliticalLayer.ts'
+import { FADE_MS } from '../politics/PoliticalLayer.ts'
 import { loadFont, msdfInk, type FontData } from './msdf.ts'
 
 /**
@@ -24,8 +23,8 @@ import { loadFont, msdfInk, type FontData } from './msdf.ts'
  *
  * Names are sized in metres, so they grow and shrink with what they name, the way a
  * printed map's lettering does; each fades in once it is big enough to read and out
- * again once it is too big to take in. A year change swaps the set of land names,
- * cross-fading with the political colours.
+ * again once it is too big to take in. A year change swaps the set of land names: each
+ * name that comes or goes fades on its own, in step with the colours under it.
  */
 
 interface Placement {
@@ -158,6 +157,8 @@ export function setKnockouts(
 /** One typeface: its atlas, metrics, material and the mesh of its glyphs. */
 class Face {
   mesh: THREE.Mesh | null = null
+  /** Each name in the mesh and its run of vertices, for writing its fade. */
+  runs: { p: Placement; start: number; count: number }[] = []
   readonly font: FontData
   readonly atlas: THREE.Texture
   readonly material: THREE.MeshBasicNodeMaterial
@@ -172,7 +173,12 @@ export class LabelLayer {
   readonly group = new THREE.Group()
   private faces = new Map<string, Face>()
   private placements: Placement[] = []
-  private shown = new Set<Placement>()
+  /**
+   * Every name on the map or fading: how far it is shown (linear, 0 to 1), and whether
+   * it is coming or going. A name turned round mid-fade carries on from where it is.
+   */
+  private fades = new Map<Placement, { at: number; to: 0 | 1 }>()
+  private last = 0
   /** Glyph corners of the names on the map, plane metres, for other layers to avoid. */
   private glyphBoxes: { corners: [number, number][]; capHeight: number; style: string }[] =
     []
@@ -213,28 +219,57 @@ export class LabelLayer {
       .map((p) => ({ text: p.text, years: p.years, path: p.path, atoms: p.atoms ?? [] }))
   }
 
-  /** Rebuilds the glyph meshes for `year`; names that change cross-fade with the colours. */
+  /** Shows the names of `year`; with `animate`, those that come or go fade. */
   setYear(year: number, animate: boolean) {
     const next = new Set(
       this.placements.filter((p) => p.years.some(([a, b]) => a <= year && year <= b)),
     )
-    // 0 steady, 1 arriving, 2 leaving — the shader weighs each by the politics fade.
-    const modes = new Map<Placement, number>()
-    for (const p of next) modes.set(p, animate && !this.shown.has(p) ? 1 : 0)
-    if (animate) for (const p of this.shown) if (!next.has(p)) modes.set(p, 2)
-    this.shown = next
-    this.glyphBoxes = []
+    for (const [p, f] of this.fades) {
+      if (next.has(p)) f.to = 1
+      else if (animate) f.to = 0
+      else this.fades.delete(p)
+    }
+    for (const p of next) if (!this.fades.has(p)) this.fades.set(p, { at: 0, to: 1 })
+    if (!animate) for (const f of this.fades.values()) f.at = 1
+    this.last = performance.now()
+    this.build()
+  }
 
+  /** Advances the names' fades; true while any is still running. */
+  tick(now: number) {
+    const step = (now - this.last) / FADE_MS
+    this.last = now
+    let running = false
+    let gone = false
+    for (const [p, f] of this.fades) {
+      if (f.at === f.to) continue
+      f.at = f.to ? Math.min(1, f.at + step) : Math.max(0, f.at - step)
+      if (f.at === 0 && f.to === 0) {
+        this.fades.delete(p)
+        gone = true
+      }
+      running = true
+    }
+    if (!running) return false
+    if (gone) this.build()
+    else this.writeFades()
+    return true
+  }
+
+  /** Rebuilds the glyph meshes for the names on the map or fading. */
+  private build() {
+    this.glyphBoxes = []
     for (const [name, face] of this.faces) {
       const positions: number[] = []
       const uvs: number[] = []
       const caps: number[] = []
-      const mode: number[] = []
       const index: number[] = []
-      for (const [p, m] of modes) {
+      face.runs = []
+      for (const [p, f] of this.fades) {
         if (styleOf(p) !== name) continue
+        const start = positions.length / 3
         for (const q of layout(face.font, p)) {
-          if (m !== 2)
+          if (f.to === 1)
             this.glyphBoxes.push({
               corners: q.map(([x, y]) => [x, y]),
               capHeight: p.capHeight,
@@ -245,16 +280,19 @@ export class LabelLayer {
             positions.push(x, y, 0)
             uvs.push(u, v)
             caps.push(p.capHeight)
-            mode.push(m)
           }
           index.push(base, base + 1, base + 2, base, base + 2, base + 3)
         }
+        face.runs.push({ p, start, count: positions.length / 3 - start })
       }
       const g = new THREE.BufferGeometry()
       g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
       g.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2))
       g.setAttribute('capHeight', new THREE.Float32BufferAttribute(caps, 1))
-      g.setAttribute('fadeMode', new THREE.Float32BufferAttribute(mode, 1))
+      g.setAttribute(
+        'fade',
+        new THREE.Float32BufferAttribute(new Float32Array(positions.length / 3), 1),
+      )
       g.setIndex(index)
       if (face.mesh) {
         face.mesh.geometry.dispose()
@@ -265,6 +303,22 @@ export class LabelLayer {
         face.mesh.renderOrder = 10
         this.group.add(face.mesh)
       }
+    }
+    this.writeFades()
+  }
+
+  /** Writes each name's fade, eased, into its vertices. */
+  private writeFades() {
+    for (const face of this.faces.values()) {
+      const attr = face.mesh?.geometry.getAttribute('fade') as
+        THREE.BufferAttribute | undefined
+      if (!attr) continue
+      const a = attr.array as Float32Array
+      for (const { p, start, count } of face.runs) {
+        const t = this.fades.get(p)?.at ?? 0
+        a.fill(t * t * (3 - 2 * t), start, start + count)
+      }
+      attr.needsUpdate = true
     }
   }
 
@@ -394,13 +448,7 @@ function createMaterial(f: FontData, atlas: THREE.Texture, style: FaceStyle) {
   const zoom = smoothstep(style.fadeIn[0], style.fadeIn[1], capPx).mul(
     float(1).sub(smoothstep(style.fadeOut[0], style.fadeOut[1], capPx)),
   )
-  const m = attribute('fadeMode', 'float')
-  const k = politicsUniforms.mix
-  const year = select(
-    m.greaterThan(1.5),
-    float(1).sub(k),
-    select(m.greaterThan(0.5), k, float(1)),
-  )
+  const year = attribute('fade', 'float')
 
   mat.colorNode = mix(
     vec3(style.halo.r, style.halo.g, style.halo.b),

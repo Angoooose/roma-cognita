@@ -10,7 +10,10 @@ import { polityStyle } from './palette.ts'
  * claims table into per-atom colour tables for a year, which the terrain shader
  * reads. Changing the year rewrites a 2048×3 texture, never a tile.
  *
- * Two tables, `from` and `to`, and a mix between them: a year change cross-fades.
+ * Two tables, `from` and `to`, and a third holding how far each atom has faded from
+ * one to the other. Each atom fades on its own clock, from the moment its holder
+ * changes, so a year step never restarts or disturbs a fade already under way: dragging
+ * the timeline, each change of hands dissolves once and is gone.
  */
 
 /** Width of the tables: one column per label. Labels are exact in half floats to 2048. */
@@ -18,11 +21,11 @@ export const TABLE_WIDTH = 2048
 /** Rows: 0 fill (linear rgb, alpha), 1 ids (polity, power, evidence, is-sea), 2 border ink (rgb, is-client). */
 const ROWS = 3
 
-function table() {
+function table(rows = ROWS) {
   const t = new THREE.DataTexture(
-    new Uint16Array(TABLE_WIDTH * ROWS * 4),
+    new Uint16Array(TABLE_WIDTH * rows * 4),
     TABLE_WIDTH,
-    ROWS,
+    rows,
     THREE.RGBAFormat,
     THREE.HalfFloatType,
   )
@@ -34,11 +37,19 @@ function table() {
 }
 
 /** Shared by every terrain tile's material. */
-export const politicsTables = { from: table(), to: table() }
+export const politicsTables = {
+  from: table(),
+  to: table(),
+  /** One row: per label, how far `from` has faded into `to` (x), eased, 0 to 1. */
+  mix: table(1),
+}
+
+/** How long one atom's change of hands takes to dissolve, ms. */
+export const FADE_MS = 350
 
 export const politicsUniforms = {
-  /** 0 shows `from`, 1 shows `to`. */
-  mix: uniform(1),
+  /** 1 while any atom is fading, so at rest the shader skips the `from` lookups. */
+  fading: uniform(0),
   /** How strongly fills cover the ground; set from the zoom (§7.6). */
   fill: uniform(0.6),
   /** Border glow strength; rises as fills fade out close in. */
@@ -184,7 +195,9 @@ export class PoliticalLayer {
   year = 0
   private polityIndex = new Map<string, number>()
   private polityById = new Map<string, PolityRecord>()
-  private fade: { start: number; ms: number } | null = null
+  /** Per label: linear progress of its fade from `from` to `to`; 1 at rest. */
+  private progress = new Float32Array(TABLE_WIDTH).fill(1)
+  private last = 0
   private focusFade: { start: number; ms: number; from: number; to: number } | null = null
   /** The focused polity, if any. */
   focused: string | null = null
@@ -220,35 +233,83 @@ export class PoliticalLayer {
       this.polityById.set(p.id, p)
     })
     this.year = this.data.window[0]
-    this.write(politicsTables.to, this.year)
-    this.write(politicsTables.from, this.year)
+    this.show(this.year, false)
   }
 
   get window(): [number, number] | null {
     return this.data?.window ?? null
   }
 
-  /** Shows `year`; with `animate`, cross-fades from what is on screen now. */
+  /** Shows `year`; with `animate`, each atom that changes hands cross-fades. */
   setYear(year: number, opts: { animate?: boolean } = {}) {
     if (!this.data) return
     year = Math.round(year)
     if (year === this.year) return
     this.year = year
-    if (opts.animate) {
-      // The current mix becomes the new start: copy what `to` holds into `from`.
-      const from = politicsTables.from.image.data as Uint16Array
-      const to = politicsTables.to.image.data as Uint16Array
-      if (politicsUniforms.mix.value < 0.5) to.set(from)
-      from.set(to)
-      politicsTables.from.needsUpdate = true
-      this.fade = { start: performance.now(), ms: 350 }
-      politicsUniforms.mix.value = 0
-    } else {
-      this.fade = null
-      politicsUniforms.mix.value = 1
+    this.show(year, !!opts.animate)
+  }
+
+  /**
+   * Writes `year` into the tables. Where an atom is still fading when it changes again,
+   * whichever state it shows more of becomes its `from` and the new one fades in over
+   * it; going back to the state it is leaving reverses the fade where it stands.
+   */
+  private show(year: number, animate: boolean) {
+    const next = new Uint16Array(TABLE_WIDTH * ROWS * 4)
+    this.write(next, year)
+    const from = politicsTables.from.image.data as Uint16Array
+    const to = politicsTables.to.image.data as Uint16Array
+    const p = this.progress
+    const same = (a: Uint16Array, b: Uint16Array, label: number) => {
+      for (let r = 0; r < ROWS; r++) {
+        const o = (r * TABLE_WIDTH + label) * 4
+        for (let k = 0; k < 4; k++) if (a[o + k] !== b[o + k]) return false
+      }
+      return true
     }
-    this.write(politicsTables.to, year)
-    if (!opts.animate) this.write(politicsTables.from, year)
+    const copy = (dst: Uint16Array, src: Uint16Array, label: number) => {
+      for (let r = 0; r < ROWS; r++) {
+        const o = (r * TABLE_WIDTH + label) * 4
+        dst.set(src.subarray(o, o + 4), o)
+      }
+    }
+    for (let label = 0; label < TABLE_WIDTH; label++) {
+      if (!animate) {
+        copy(to, next, label)
+        copy(from, next, label)
+        p[label] = 1
+        continue
+      }
+      if (same(to, next, label)) continue
+      if (p[label] < 1 && same(from, next, label)) {
+        copy(from, to, label)
+        copy(to, next, label)
+        p[label] = 1 - p[label]
+        continue
+      }
+      // The state shown more becomes the one faded from (smoothstep is symmetric about ½).
+      if (p[label] >= 0.5) copy(from, to, label)
+      copy(to, next, label)
+      p[label] = 0
+    }
+    politicsTables.from.needsUpdate = true
+    politicsTables.to.needsUpdate = true
+    this.last = performance.now()
+    this.writeMix()
+  }
+
+  /** Eases each label's progress into the mix table; true while any is below 1. */
+  private writeMix() {
+    const buf = politicsTables.mix.image.data as Uint16Array
+    let any = false
+    for (let label = 0; label < TABLE_WIDTH; label++) {
+      const t = this.progress[label]
+      if (t < 1) any = true
+      buf[label * 4] = toHalf(t * t * (3 - 2 * t))
+    }
+    politicsTables.mix.needsUpdate = true
+    politicsUniforms.fading.value = any ? 1 : 0
+    return any
   }
 
   /**
@@ -275,10 +336,24 @@ export class PoliticalLayer {
   /** Advances a cross-fade or a focus fade; true while one is running. */
   tick(now: number) {
     let running = false
-    if (this.fade) {
-      const t = Math.min(1, (now - this.fade.start) / this.fade.ms)
-      politicsUniforms.mix.value = t * t * (3 - 2 * t)
-      if (t >= 1) this.fade = null
+    if (politicsUniforms.fading.value) {
+      const step = (now - this.last) / FADE_MS
+      this.last = now
+      const from = politicsTables.from.image.data as Uint16Array
+      const to = politicsTables.to.image.data as Uint16Array
+      const p = this.progress
+      for (let label = 0; label < TABLE_WIDTH; label++) {
+        if (p[label] >= 1) continue
+        p[label] = Math.min(1, p[label] + step)
+        // At rest an atom's two states agree, so a neighbour's fade reads it the same.
+        if (p[label] === 1)
+          for (let r = 0; r < ROWS; r++) {
+            const o = (r * TABLE_WIDTH + label) * 4
+            from.set(to.subarray(o, o + 4), o)
+            politicsTables.from.needsUpdate = true
+          }
+      }
+      this.writeMix()
       running = true
     }
     const f = this.focusFade
@@ -399,9 +474,8 @@ export class PoliticalLayer {
     )
   }
 
-  private write(tex: THREE.DataTexture, year: number) {
+  private write(buf: Uint16Array, year: number) {
     const d = this.data!
-    const buf = tex.image.data as Uint16Array
     buf.fill(0)
     const set = (label: number, row: number, v: [number, number, number, number]) => {
       const o = (row * TABLE_WIDTH + label) * 4
@@ -433,7 +507,6 @@ export class PoliticalLayer {
       ])
       set(label, 2, [style.line.r, style.line.g, style.line.b, isClient ? 1 : 0])
     })
-    tex.needsUpdate = true
   }
 
   /** The atom under a point on the plane, and what held it in the current year. */

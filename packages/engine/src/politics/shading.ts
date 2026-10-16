@@ -124,30 +124,35 @@ export function politicalShading(
     const inHi = isFocus(idHi)
     return { fill, power, province, schematic, ink, inLo, inHi }
   }
-  // The year shown, and only while a cross-fade runs the one it is leaving: at rest the
-  // mix is exactly 1 and the old year's lookups would be multiplied by nothing.
-  const k = politicsUniforms.mix
+  // The year shown, and only while some atom is fading the state it is leaving: at rest
+  // the old year's lookups would be multiplied by nothing. Each atom fades on its own
+  // clock (PoliticalLayer.show); an area takes its own atom's, and a boundary the less
+  // far along of its two, so a border is not drawn before the atom that makes it.
   const b = year(politicsTables.to)
   type Year = ReturnType<typeof year>
+  const kLo = () => row(politicsTables.mix, lo, 0).x as F
+  const kHi = () => row(politicsTables.mix, hi, 0).x as F
+  const area = () => mix(kLo(), kHi(), side)
+  const edge = () => min(kLo(), kHi())
   // Typed as floats inside; the same graph serves the vec4s.
-  const fading = <T extends F | V4>(pick: (y: Year) => T): T =>
+  const fading = <T extends F | V4>(pick: (y: Year) => T, k: () => F): T =>
     Fn(() => {
       const v = (pick(b) as F).toVar()
-      If(k.lessThan(1), () => {
-        v.assign(mix(pick(year(politicsTables.from)) as F, pick(b) as F, k))
+      If(politicsUniforms.fading.greaterThan(0), () => {
+        v.assign(mix(pick(year(politicsTables.from)) as F, pick(b) as F, k()))
       })
       return v
     })() as unknown as T
-  const fill = fading((y) => y.fill)
-  const power = fading((y) => y.power)
-  const province = fading((y) => y.province)
-  const schematic = fading((y) => y.schematic).mul(power)
-  const ink = fading((y) => y.ink)
+  const fill = fading((y) => y.fill, area)
+  const power = fading((y) => y.power, edge)
+  const province = fading((y) => y.province, edge)
+  const schematic = fading((y) => y.schematic, edge).mul(power)
+  const ink = fading((y) => y.ink, edge)
   const on = politicsUniforms.enabled
   // Which side of the focused polity's edge this pixel is on, and whether the nearest
   // boundary is that edge at all (one side in, one out).
-  const inLo = fading((y) => y.inLo)
-  const inHi = fading((y) => y.inHi)
+  const inLo = fading((y) => y.inLo, kLo)
+  const inHi = fading((y) => y.inHi, kHi)
   const focusAmount = politicsUniforms.focusAmount.mul(on)
   const focusInside = mix(inLo, inHi, side).mul(focusAmount)
   const focusEdge = abs(inLo.sub(inHi)).mul(focusAmount)
