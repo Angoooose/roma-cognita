@@ -101,7 +101,10 @@ export const SEA_COURSES: Record<string, LonLat[]> = {
 }
 
 const file = join(DATA_DIR, 'geometry/features.geojson')
-const collection = JSON.parse(readFileSync(file, 'utf8')) as { type: string; features: { id: string }[] }
+const collection = JSON.parse(readFileSync(file, 'utf8')) as {
+  type: string
+  features: { id: string }[]
+}
 const kept = collection.features.filter((f) => !(f.id in SEA_COURSES))
 const seas = Object.entries(SEA_COURSES).map(([id, line]) => ({
   type: 'Feature',
@@ -109,5 +112,8 @@ const seas = Object.entries(SEA_COURSES).map(([id, line]) => ({
   properties: { derivation: 'pipeline/src/labels/seas.ts: label course, hand-placed' },
   geometry: { type: 'LineString', coordinates: line },
 }))
-writeFileSync(file, `${JSON.stringify({ type: 'FeatureCollection', features: [...kept, ...seas] })}\n`)
+writeFileSync(
+  file,
+  `${JSON.stringify({ type: 'FeatureCollection', features: [...kept, ...seas] })}\n`,
+)
 console.log(`wrote ${seas.length} sea courses beside ${kept.length} other features`)

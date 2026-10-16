@@ -121,7 +121,9 @@ async function bake(job: BakeJob): Promise<Uint8Array<ArrayBuffer>> {
   // 18.6 KB a tile, measured on level 5), and every value survives exactly. Effort 4,
   // not 6: measured on level 6, effort 6 is 3.91 KB at 95 ms a tile against 3.77 KB at
   // 9.7 ms — it was most of the build's time and bought nothing.
-  const buf = await sharp(out, { raw: { width: TILE_TEXELS, height: TILE_TEXELS, channels: 3 } })
+  const buf = await sharp(out, {
+    raw: { width: TILE_TEXELS, height: TILE_TEXELS, channels: 3 },
+  })
     .webp({ lossless: true, effort: 4 })
     .toBuffer()
   // Copied out of sharp's Buffer, which may be a slice of a shared pool and so cannot

@@ -128,8 +128,18 @@ export const SHORES: Shore[] = [
       'ground, and is set above the dunes.',
     minIslandKm2: 1,
     sites: [
-      { name: 'Ostia theatre', at: [12.2912, 41.7537], prov: 'on land, 0.5 km from the Roman shore', expect: 'shore' },
-      { name: 'Portus, Trajan’s basin', at: [12.264, 41.7788], prov: 'built after the window, partly out at sea', expect: 'shore' },
+      {
+        name: 'Ostia theatre',
+        at: [12.2912, 41.7537],
+        prov: 'on land, 0.5 km from the Roman shore',
+        expect: 'shore',
+      },
+      {
+        name: 'Portus, Trajan’s basin',
+        at: [12.264, 41.7788],
+        prov: 'built after the window, partly out at sea',
+        expect: 'shore',
+      },
     ],
   },
 
@@ -218,8 +228,18 @@ export const SHORES: Shore[] = [
       'of San Rossore and Tombolo stand at now, so the threshold only keeps the loose ends off higher ground.',
     minIslandKm2: 1,
     sites: [
-      { name: 'Pisa', at: [10.3966, 43.723], prov: 'Piazza dei Miracoli; 20 stades up the Arno (Strabo 5.2.5)', expect: 'land' },
-      { name: 'San Piero a Grado', at: [10.345, 43.68], prov: 'the Roman landing at the Arno mouth', expect: 'shore' },
+      {
+        name: 'Pisa',
+        at: [10.3966, 43.723],
+        prov: 'Piazza dei Miracoli; 20 stades up the Arno (Strabo 5.2.5)',
+        expect: 'land',
+      },
+      {
+        name: 'San Piero a Grado',
+        at: [10.345, 43.68],
+        prov: 'the Roman landing at the Arno mouth',
+        expect: 'shore',
+      },
     ],
     view: { west: 10.18, south: 43.53, east: 10.45, north: 43.93 },
   },
@@ -292,9 +312,24 @@ export const SHORES: Shore[] = [
       'modern valli are not ancient water (see valli-di-comacchio).',
     minIslandKm2: 2,
     sites: [
-      { name: 'Ravenna', at: [12.199, 44.418], prov: 'the town, on its islands in the lagoon', expect: 'land' },
-      { name: 'Comacchio', at: [12.185, 44.694], prov: 'on the Augustan ridge', expect: 'shore' },
-      { name: 'Adria', at: [12.056, 45.053], prov: 'reached the sea by canals (Strabo 5.1.8), ~14 km', expect: 'land' },
+      {
+        name: 'Ravenna',
+        at: [12.199, 44.418],
+        prov: 'the town, on its islands in the lagoon',
+        expect: 'land',
+      },
+      {
+        name: 'Comacchio',
+        at: [12.185, 44.694],
+        prov: 'on the Augustan ridge',
+        expect: 'shore',
+      },
+      {
+        name: 'Adria',
+        at: [12.056, 45.053],
+        prov: 'reached the sea by canals (Strabo 5.1.8), ~14 km',
+        expect: 'land',
+      },
     ],
     view: { west: 12.0, south: 44.25, east: 12.75, north: 45.25 },
   },
@@ -376,11 +411,36 @@ export const SHORES: Shore[] = [
       'turn of the eras; for 50 BCE it would sit 0.3–0.5 km further inland, less than its own error.',
     minIslandKm2: 0.5,
     sites: [
-      { name: 'Miletus theatre', at: [27.2779, 37.53], prov: 'on the Theatre Harbour', expect: 'shore' },
-      { name: 'Lade', at: [27.223, 37.531], prov: 'on the island, until the Late Roman period (Brückner et al. 2017)', expect: 'shore' },
-      { name: 'Priene', at: [27.296, 37.6613], prov: 'cut off from the open sea by the 90s BCE (Brückner et al. 2014); 40 stades from it by Strabo’s day (12.8.17)', expect: 'land' },
-      { name: 'Myus', at: [27.4259, 37.5987], prov: 'the site (OSM); 30 stades up from the mouth (Strabo 14.1.10)', expect: 'shore' },
-      { name: 'Herakleia', at: [27.5398, 37.5052], prov: 'the site (OSM); "a small town with an anchorage" (Strabo 14.1.8)', expect: 'shore' },
+      {
+        name: 'Miletus theatre',
+        at: [27.2779, 37.53],
+        prov: 'on the Theatre Harbour',
+        expect: 'shore',
+      },
+      {
+        name: 'Lade',
+        at: [27.223, 37.531],
+        prov: 'on the island, until the Late Roman period (Brückner et al. 2017)',
+        expect: 'shore',
+      },
+      {
+        name: 'Priene',
+        at: [27.296, 37.6613],
+        prov: 'cut off from the open sea by the 90s BCE (Brückner et al. 2014); 40 stades from it by Strabo’s day (12.8.17)',
+        expect: 'land',
+      },
+      {
+        name: 'Myus',
+        at: [27.4259, 37.5987],
+        prov: 'the site (OSM); 30 stades up from the mouth (Strabo 14.1.10)',
+        expect: 'shore',
+      },
+      {
+        name: 'Herakleia',
+        at: [27.5398, 37.5052],
+        prov: 'the site (OSM); "a small town with an anchorage" (Strabo 14.1.8)',
+        expect: 'shore',
+      },
     ],
     view: { west: 27.08, south: 37.4, east: 27.65, north: 37.7 },
   },
@@ -414,8 +474,18 @@ export const SHORES: Shore[] = [
       'harbour west of the theatre lies seaward of the line and so is water, as it was, dredged.',
     minIslandKm2: 0.3,
     sites: [
-      { name: 'Artemision', at: [27.3636, 37.9498], prov: 'about 1.3 km from open water by 50 BCE (Kraft et al. 2007)', expect: 'land' },
-      { name: 'Ephesus theatre', at: [27.3419, 37.941], prov: 'above the harbour', expect: 'shore' },
+      {
+        name: 'Artemision',
+        at: [27.3636, 37.9498],
+        prov: 'about 1.3 km from open water by 50 BCE (Kraft et al. 2007)',
+        expect: 'land',
+      },
+      {
+        name: 'Ephesus theatre',
+        at: [27.3419, 37.941],
+        prov: 'above the harbour',
+        expect: 'shore',
+      },
     ],
     view: { west: 27.2, south: 37.9, east: 27.4, north: 38.02 },
   },
@@ -457,8 +527,18 @@ export const SHORES: Shore[] = [
       'threshold is set above the travertine, and the line does the work.',
     minIslandKm2: 0.5,
     sites: [
-      { name: 'Thermopylae, middle gate', at: [22.5366, 38.7968], prov: 'the Kolonos, by the Leonidas monument', expect: 'shore' },
-      { name: 'Lamia', at: [22.434, 38.899], prov: 'on the hills above the gulf’s head', expect: 'land' },
+      {
+        name: 'Thermopylae, middle gate',
+        at: [22.5366, 38.7968],
+        prov: 'the Kolonos, by the Leonidas monument',
+        expect: 'shore',
+      },
+      {
+        name: 'Lamia',
+        at: [22.434, 38.899],
+        prov: 'on the hills above the gulf’s head',
+        expect: 'land',
+      },
     ],
     view: { west: 22.4, south: 38.77, east: 22.82, north: 38.95 },
   },
@@ -509,7 +589,12 @@ export const SHORES: Shore[] = [
       '2–5 m; the ridges well above.',
     minIslandKm2: 0.5,
     sites: [
-      { name: 'Utica', at: [10.062, 37.056], prov: '"washed by the sea on one side" (Livy 29.35)', expect: 'shore' },
+      {
+        name: 'Utica',
+        at: [10.062, 37.056],
+        prov: '"washed by the sea on one side" (Livy 29.35)',
+        expect: 'shore',
+      },
     ],
     view: { west: 9.98, south: 36.9, east: 10.32, north: 37.2 },
   },
@@ -698,7 +783,12 @@ export const SHORES: Shore[] = [
       'the Fangar and Banya spits and the Alfacs enclosure are all later. The delta plain stands at 0–4 m.',
     minIslandKm2: 1,
     sites: [
-      { name: 'Amposta', at: [0.58, 40.708], prov: 'the maximum Holocene flooding reached it; 10–12 km from the Roman mouth', expect: 'land' },
+      {
+        name: 'Amposta',
+        at: [0.58, 40.708],
+        prov: 'the maximum Holocene flooding reached it; 10–12 km from the Roman mouth',
+        expect: 'land',
+      },
     ],
     view: { west: 0.5, south: 40.52, east: 0.95, north: 40.85 },
   },
@@ -735,7 +825,12 @@ export const SHORES: Shore[] = [
       'The map is schematic, to about 1.5 km.',
     minIslandKm2: 0.3,
     sites: [
-      { name: 'Narbo Martius', at: [3.003, 43.184], prov: 'above the lake (Strabo 4.1.6)', expect: 'land' },
+      {
+        name: 'Narbo Martius',
+        at: [3.003, 43.184],
+        prov: 'above the lake (Strabo 4.1.6)',
+        expect: 'land',
+      },
     ],
   },
 
@@ -781,7 +876,12 @@ export const SHORES: Shore[] = [
       'one line inside that belt. The ground here stands at 0–2 m.',
     minIslandKm2: 5,
     sites: [
-      { name: 'Charax Spasinou', at: [47.578, 30.895], prov: 'Jebel Khayyaber; 50 miles from the sea in Juba’s day', expect: 'land' },
+      {
+        name: 'Charax Spasinou',
+        at: [47.578, 30.895],
+        prov: 'Jebel Khayyaber; 50 miles from the sea in Juba’s day',
+        expect: 'land',
+      },
     ],
   },
 
@@ -857,12 +957,35 @@ export const SHORES: Shore[] = [
       'close to the 140 km² recorded at the lake’s largest.',
     minIslandKm2: 0.2,
     sites: [
-      { name: 'Avezzano', at: [13.44, 42.03], prov: 'the Incile, where the tunnel begins', expect: 'shore' },
-      { name: 'Marruvium', at: [13.625, 42.005], prov: 'San Benedetto dei Marsi; the Marsi’s lakeside town', expect: 'shore' },
-      { name: 'Ortucchio', at: [13.645, 41.955], prov: 'on a lakeside spur', expect: 'shore' },
-      { name: 'lake centre', at: [13.55, 42.0], prov: 'the basin floor, 651 m', expect: 'water' },
+      {
+        name: 'Avezzano',
+        at: [13.44, 42.03],
+        prov: 'the Incile, where the tunnel begins',
+        expect: 'shore',
+      },
+      {
+        name: 'Marruvium',
+        at: [13.625, 42.005],
+        prov: 'San Benedetto dei Marsi; the Marsi’s lakeside town',
+        expect: 'shore',
+      },
+      {
+        name: 'Ortucchio',
+        at: [13.645, 41.955],
+        prov: 'on a lakeside spur',
+        expect: 'shore',
+      },
+      {
+        name: 'lake centre',
+        at: [13.55, 42.0],
+        prov: 'the basin floor, 651 m',
+        expect: 'water',
+      },
     ],
-    expectKm2: { label: 'the lake at its largest, about 140 km² (1816)', range: [100, 150] },
+    expectKm2: {
+      label: 'the lake at its largest, about 140 km² (1816)',
+      range: [100, 150],
+    },
   },
   {
     id: 'lake-copais',
@@ -884,8 +1007,18 @@ export const SHORES: Shore[] = [
       'peat there has shrunk. Even at 97 m Orchomenos is 2 km from the water: the western arm was fen more than lake.',
     minIslandKm2: 0.2,
     sites: [
-      { name: 'Orchomenos', at: [22.975, 38.49], prov: 'on the western shore', expect: 'shore' },
-      { name: 'Haliartos', at: [23.1, 38.38], prov: 'on the southern shore', expect: 'shore' },
+      {
+        name: 'Orchomenos',
+        at: [22.975, 38.49],
+        prov: 'on the western shore',
+        expect: 'shore',
+      },
+      {
+        name: 'Haliartos',
+        at: [23.1, 38.38],
+        prov: 'on the southern shore',
+        expect: 'shore',
+      },
       { name: 'lake centre', at: [23.1, 38.45], prov: 'the bed, 90 m', expect: 'water' },
     ],
   },
@@ -948,7 +1081,12 @@ export const SHORES: Shore[] = [
       'it draws the Caspian.',
     minIslandKm2: 0.5,
     sites: [
-      { name: 'Soknopaiou Nesos', at: [30.6689, 29.5335], prov: 'pleiades:737053; above the north shore', expect: 'shore' },
+      {
+        name: 'Soknopaiou Nesos',
+        at: [30.6689, 29.5335],
+        prov: 'pleiades:737053; above the north shore',
+        expect: 'shore',
+      },
     ],
   },
 ]

@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { edgesTouch, fillEvenOdd, fillPolygons, inside, signedDistance, type Ring } from '../src/water/raster.ts'
+import {
+  edgesTouch,
+  fillEvenOdd,
+  fillPolygons,
+  inside,
+  signedDistance,
+  type Ring,
+} from '../src/water/raster.ts'
 
 function ring(points: [number, number][], polygon = 0): Ring {
   const xy = new Float64Array(points.flat())
@@ -87,6 +94,8 @@ describe('edgesTouch and inside', () => {
     expect(inside([r], 18, 18)).toBe(false)
   })
   it('counts a point in two overlapping polygons as inside', () => {
-    expect(inside([square(0, 0, 10.6, 20, 1), square(9.4, 0, 20, 20, 2)], 10, 10)).toBe(true)
+    expect(inside([square(0, 0, 10.6, 20, 1), square(9.4, 0, 20, 20, 2)], 10, 10)).toBe(
+      true,
+    )
   })
 })

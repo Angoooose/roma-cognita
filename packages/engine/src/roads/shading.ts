@@ -1,5 +1,21 @@
 import * as THREE from 'three/webgpu'
-import { clamp, float, floor, int, ivec2, max, min, mix, select, smoothstep, texture, textureLoad, uniform, uv, vec3 } from 'three/tsl'
+import {
+  clamp,
+  float,
+  floor,
+  int,
+  ivec2,
+  max,
+  min,
+  mix,
+  select,
+  smoothstep,
+  texture,
+  textureLoad,
+  uniform,
+  uv,
+  vec3,
+} from 'three/tsl'
 
 /**
  * Roman roads, painted into the terrain like the rivers (DESIGN.md §7.4): a cased
@@ -29,9 +45,25 @@ type F = THREE.Node<'float'>
 
 export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F) {
   // Distance interpolates; the code is read from the nearest texel, never blended.
-  const d = texture(tex, uv().mul((n - 1) / n).add(0.5 / n)).r
-  const near = min(floor(uv().mul(n - 1).add(0.5)), float(n - 1))
-  const code = floor((textureLoad(tex, ivec2(int(near.x), int(near.y))) as unknown as THREE.Node<'vec4'>).y.add(0.5))
+  const d = texture(
+    tex,
+    uv()
+      .mul((n - 1) / n)
+      .add(0.5 / n),
+  ).r
+  const near = min(
+    floor(
+      uv()
+        .mul(n - 1)
+        .add(0.5),
+    ),
+    float(n - 1),
+  )
+  const code = floor(
+    (
+      textureLoad(tex, ivec2(int(near.x), int(near.y))) as unknown as THREE.Node<'vec4'>
+    ).y.add(0.5),
+  )
   const year = floor(code.div(6)).sub(300)
   const rest = code.sub(floor(code.div(6)).mul(6))
   const secondary = select(rest.greaterThanEqual(3), float(1), float(0))
@@ -59,8 +91,20 @@ export function roadShading(tex: THREE.TextureNode, n: number, pxM: F, texelM: F
   const casing = float(1).sub(smoothstep(outer.sub(aa), outer.add(aa), d))
   const core = float(1).sub(smoothstep(inner.sub(aa), inner.add(aa), d))
   // Certainty: surveyed roads full strength, conjectured lighter, hypothetical faint.
-  const strength = select(certainty.lessThan(0.5), float(1), select(certainty.lessThan(1.5), float(0.8), float(0.55)))
-  const alpha = clamp(casing.mul(strength).mul(zoom).mul(built).mul(roadUniforms.enabled), 0, 1)
-  const colour = mix(vec3(EDGE.r, EDGE.g, EDGE.b), vec3(CORE.r, CORE.g, CORE.b), core.div(max(casing, 1e-3)).clamp(0, 1))
+  const strength = select(
+    certainty.lessThan(0.5),
+    float(1),
+    select(certainty.lessThan(1.5), float(0.8), float(0.55)),
+  )
+  const alpha = clamp(
+    casing.mul(strength).mul(zoom).mul(built).mul(roadUniforms.enabled),
+    0,
+    1,
+  )
+  const colour = mix(
+    vec3(EDGE.r, EDGE.g, EDGE.b),
+    vec3(CORE.r, CORE.g, CORE.b),
+    core.div(max(casing, 1e-3)).clamp(0, 1),
+  )
   return { colour, alpha }
 }

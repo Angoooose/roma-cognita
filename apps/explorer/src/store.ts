@@ -1,4 +1,10 @@
-import type { MapEntry, MapRef, PlaceHit, PoliticalHit, RomeMap } from '@roma-cognita/engine'
+import type {
+  MapEntry,
+  MapRef,
+  PlaceHit,
+  PoliticalHit,
+  RomeMap,
+} from '@roma-cognita/engine'
 import { create } from 'zustand'
 
 export type Inspected =

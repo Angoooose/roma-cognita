@@ -38,7 +38,15 @@ async function shapeOf(atom: Atom): Promise<MultiPolygon> {
   for (const part of atom.construction) {
     if (part.method === 'box') {
       const [w, s, e, n] = part.bbox
-      parts.push([[[w, s], [e, s], [e, n], [w, n], [w, s]]])
+      parts.push([
+        [
+          [w, s],
+          [e, s],
+          [e, n],
+          [w, n],
+          [w, s],
+        ],
+      ])
     } else {
       parts.push([await resolveEdge(part.edge, atom.id)])
     }
@@ -49,10 +57,12 @@ async function shapeOf(atom: Atom): Promise<MultiPolygon> {
 
 const areaOf = (ring: Pt[]) => {
   let s = 0
-  for (let i = 0; i + 1 < ring.length; i++) s += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
+  for (let i = 0; i + 1 < ring.length; i++)
+    s += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]
   return Math.abs(s / 2)
 }
-const polygonArea = (p: Polygon) => areaOf(p[0] as Pt[]) - p.slice(1).reduce((a, h) => a + areaOf(h as Pt[]), 0)
+const polygonArea = (p: Polygon) =>
+  areaOf(p[0] as Pt[]) - p.slice(1).reduce((a, h) => a + areaOf(h as Pt[]), 0)
 
 /** Rough km² of a lon/lat multipolygon: each polygon scaled at its own latitude. */
 function km2(shape: MultiPolygon) {
@@ -75,7 +85,8 @@ const round = (shape: MultiPolygon): MultiPolygon =>
     }),
   )
 
-const touches = (a: Bounds, b: Bounds) => a.east >= b.west && a.west <= b.east && a.north >= b.south && a.south <= b.north
+const touches = (a: Bounds, b: Bounds) =>
+  a.east >= b.west && a.west <= b.east && a.north >= b.south && a.south <= b.north
 
 function readPleiades(): Map<string, Pt> | null {
   if (!existsSync(PLEIADES)) return null
@@ -94,18 +105,19 @@ function readPleiades(): Map<string, Pt> | null {
       const get = (k: string) => row[header!.indexOf(k)]
       const lon = Number(get('reprLong'))
       const lat = Number(get('reprLat'))
-      if (get('reprLat') && Number.isFinite(lon) && Number.isFinite(lat)) out.set(get('id'), [lon, lat])
+      if (get('reprLat') && Number.isFinite(lon) && Number.isFinite(lat))
+        out.set(get('id'), [lon, lat])
     }
     row = []
   }
   for (let i = 0; i < text.length; i++) {
     const c = text[i]
     if (quoted) {
-      if (c === '"' && text[i + 1] === '"') (field += '"'), i++
+      if (c === '"' && text[i + 1] === '"') ((field += '"'), i++)
       else if (c === '"') quoted = false
       else field += c
     } else if (c === '"') quoted = true
-    else if (c === ',') row.push(field), (field = '')
+    else if (c === ',') (row.push(field), (field = ''))
     else if (c === '\n') endRow()
     else if (c !== '\r') field += c
   }
@@ -116,7 +128,10 @@ function readPleiades(): Map<string, Pt> | null {
 async function main() {
   const t0 = Date.now()
   const { dataset, issues } = readDataset(DATA_DIR)
-  const fatal = issues.filter((i) => i.level === 'error' && i.rule !== 'missing-geometry' && i.rule !== 'orphan-geometry')
+  const fatal = issues.filter(
+    (i) =>
+      i.level === 'error' && i.rule !== 'missing-geometry' && i.rule !== 'orphan-geometry',
+  )
   if (fatal.length) {
     for (const i of fatal) console.error(`${i.where}: ${i.message}`)
     throw new Error('atoms.yaml does not load')
@@ -149,7 +164,10 @@ async function main() {
     shape = round(shape.filter((p) => polygonArea(p) >= MIN_PIECE))
     // Rounding can pinch a ring; one more pass leaves it valid.
     if (shape.length) shape = pc.union(shape)
-    if (!shape.length) throw new Error(`${atom.id}: nothing left after clipping to land and to earlier atoms`)
+    if (!shape.length)
+      throw new Error(
+        `${atom.id}: nothing left after clipping to land and to earlier atoms`,
+      )
     taken.push({ id: atom.id, shape, bounds: boundsOf(shape) })
     features.push({
       type: 'Feature',
@@ -166,12 +184,16 @@ async function main() {
         const p = pleiades.get(v.pleiades)
         if (!p) places.push(`pleiades:${v.pleiades} (${v.note ?? ''}) is not in the dump`)
         else if (km(p, v.at) > PLEIADES_KM) {
-          places.push(`${v.note ?? v.pleiades} is ${km(p, v.at).toFixed(0)} km from pleiades:${v.pleiades} [${p}]`)
+          places.push(
+            `${v.note ?? v.pleiades} is ${km(p, v.at).toFixed(0)} km from pleiades:${v.pleiades} [${p}]`,
+          )
           far++
         }
       }
     }
-    console.log(`${atom.id.padEnd(26)} ${String(Math.round(km2(shape))).padStart(9)} km²  ${shape.length} piece(s)`)
+    console.log(
+      `${atom.id.padEnd(26)} ${String(Math.round(km2(shape))).padStart(9)} km²  ${shape.length} piece(s)`,
+    )
     for (const s of places) console.log(`    ! ${s}`)
   }
 
@@ -179,7 +201,9 @@ async function main() {
     OUT,
     `{"type":"FeatureCollection","features":[\n${features.map((f) => JSON.stringify(f)).join(',\n')}\n]}\n`,
   )
-  console.log(`wrote ${features.length} atoms in ${((Date.now() - t0) / 1000).toFixed(0)} s${far ? `; ${far} vertices far from their Pleiades place` : ''}`)
+  console.log(
+    `wrote ${features.length} atoms in ${((Date.now() - t0) / 1000).toFixed(0)} s${far ? `; ${far} vertices far from their Pleiades place` : ''}`,
+  )
 }
 
 await main()

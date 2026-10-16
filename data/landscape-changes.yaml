@@ -27,7 +27,7 @@
         gave notice that the canal would be formally opened on … November 1869.
       supports: [op, to]
     - { source: karabell-2003 }
-    - { source: osm-land-polygons, locator: "channel centrelines; see canals.ts" }
+    - { source: osm-land-polygons, locator: 'channel centrelines; see canals.ts' }
   confidence: certain
   review: draft
   note: >-
@@ -145,7 +145,10 @@
         era ancora presente nella seconda metà del secolo scorso, quando venne
         definitivamente prosciugato per ottenere terreno agricolo
       supports: [op, from, to]
-    - { source: wikipedia-fucine-lake, locator: recorded depths 1783–1861; area at its largest }
+    - {
+        source: wikipedia-fucine-lake,
+        locator: recorded depths 1783–1861; area at its largest,
+      }
     - { source: mapterhorn, locator: 'z11 terrain: the basin below 668 m' }
   confidence: probable
   review: needs-check
@@ -254,7 +257,10 @@
         the river
       supports: [op, to]
     - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
-    - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
+    - {
+        source: caton-thompson-gardner-1934,
+        locator: ancient lake levels (locator to supply),
+      }
     - { source: mapterhorn, locator: 'z10 terrain: the depression below −2 m' }
   confidence: uncertain
   review: draft
@@ -296,7 +302,10 @@
         the river-mouth also, though the distance gradually diminishes as we go
         up the coast. The Roman shore-line can be traced clearly here also
       supports: [op]
-    - { source: salomon-2018, locator: 'cores ISF-1, TB-1; fig. 1 (wall of 63–58 BCE, 2nd–3rd-century coast)' }
+    - {
+        source: salomon-2018,
+        locator: 'cores ISF-1, TB-1; fig. 1 (wall of 63–58 BCE, 2nd–3rd-century coast)',
+      }
     - { source: salomon-2023, locator: 'fig. 1, coastline of the 2nd century CE' }
     - { source: strabo, locator: '5.3.5: Ostia harbourless from the Tiber’s silt' }
     - { source: mapterhorn, locator: 'z12 terrain seaward of the shore' }
@@ -388,7 +397,10 @@
         so that necessarily the voyage up from the sea is difficult. This voyage
         is about 20 stadia.
       supports: [op, to]
-    - { source: pasquinucci-2014, locator: 'fig. 2, the innermost ancient shoreline (after Mazzanti 2003)' }
+    - {
+        source: pasquinucci-2014,
+        locator: 'fig. 2, the innermost ancient shoreline (after Mazzanti 2003)',
+      }
     - { source: kaniewski-2018, locator: 'fig. 8A, the Roman period' }
     - { source: strabo, locator: '5.2.5: Pisa 20 stades from the sea by the river' }
     - { source: mapterhorn, locator: 'z12 terrain seaward of the shore' }
@@ -462,7 +474,10 @@
         They say that it formerly stood on the sea; now, however, the district
         is inland about 90 stadia from the sea.
       supports: [op, to]
-    - { source: ispra-205-comacchio, locator: 'fig. 13 (after Ciabatti 1966), ridge V; p. 118, the Comacchio ship' }
+    - {
+        source: ispra-205-comacchio,
+        locator: 'fig. 13 (after Ciabatti 1966), ridge V; p. 118, the Comacchio ship',
+      }
     - { source: ciabatti-1966 }
     - { source: cirelli-2013, locator: 'fig. 2, Ravenna and Classe' }
     - { source: strabo, locator: '5.1.7–8: Spina 90 stades from the sea; Atria by canals' }
@@ -618,7 +633,10 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: bruckner-2017, locator: 'fig. 1, the "±0" delta front; Lade, pp. 880–881 and fig. 4' }
+    - {
+        source: bruckner-2017,
+        locator: 'fig. 1, the "±0" delta front; Lade, pp. 880–881 and fig. 4',
+      }
     - { source: mullenhoff-2005 }
     - source: bruckner-2014
       locator: 'p. 68'
@@ -645,7 +663,10 @@
         Latmian Gulf … from the open sea, leading to the evolution of the still
         brackish Lake Bafa
       supports: [op]
-    - { source: akcer-on-2020, locator: 'Bafa a lagoon with a narrow link to the sea by about 33 BCE' }
+    - {
+        source: akcer-on-2020,
+        locator: 'Bafa a lagoon with a narrow link to the sea by about 33 BCE',
+      }
     - source: strabo
       locator: '14.1.8'
       quote: >-
@@ -688,7 +709,10 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: stock-2013, locator: 'fig. 1, the "1st c. BC" shore and the "0 AD/BC" front' }
+    - {
+        source: stock-2013,
+        locator: 'fig. 1, the "1st c. BC" shore and the "0 AD/BC" front',
+      }
     - { source: kraft-2007, locator: 'fig. 12; pp. 134, 138' }
     - source: kulzer-2018
       locator: 'p. 78'
@@ -744,7 +768,10 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: kraft-1987, locator: 'fig. 14, the shoreline of 480 BCE; p. 189 on the pass' }
+    - {
+        source: kraft-1987,
+        locator: 'fig. 14, the shoreline of 480 BCE; p. 189 on the pass',
+      }
     - { source: vouvalidis-2010, locator: '8–10 km of advance since 480 BCE (abstract)' }
     - source: livy
       locator: '36.15.10'
@@ -754,7 +781,10 @@
         Callidromus; in a valley, at the foot of which, reaching to the Malian bay,
         is a passage not broader than sixty paces.
       supports: [op, from]
-    - { source: livy, locator: '36.16–18: swamp and quicksand between the defences and the sea' }
+    - {
+        source: livy,
+        locator: '36.16–18: swamp and quicksand between the defences and the sea',
+      }
     - source: strabo
       locator: '9.4.17'
       quote: >-
@@ -819,7 +849,10 @@
         Cependant la lagune reste assez longtemps ouverte sur la mer puisque les
         Arabes, vers 1300 ans BP, l’appelaient encore la Mer d’Azur
       supports: [op, to]
-    - { source: ben-mosbah-sebkhet-ariana, locator: 'fig. 7B: Sebkhet Ariana open to the gulf until about 1300 BP' }
+    - {
+        source: ben-mosbah-sebkhet-ariana,
+        locator: 'fig. 7B: Sebkhet Ariana open to the gulf until about 1300 BP',
+      }
     - source: caesar-bc
       locator: '2.24'
       url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0076:book=2:chapter=24
@@ -860,7 +893,10 @@
         canals was set up, linking independent basins to each other and to the
         large Lake Mareotis (the lake actually described by Strabo) in the east.
       supports: [op, to]
-    - { source: crepy-boussac-2021, locator: 'fig. 7: the western basins separate in the Hellenistic and early Roman periods' }
+    - {
+        source: crepy-boussac-2021,
+        locator: 'fig. 7: the western basins separate in the Hellenistic and early Roman periods',
+      }
     - source: flaux-2021
       locator: 'abstract'
       quote: >-
@@ -1036,7 +1072,10 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: hydrolakes, locator: 'lakes 1492, 1494, 1495 (Toshka 1 and 2 and their neighbour)' }
+    - {
+        source: hydrolakes,
+        locator: 'lakes 1492, 1494, 1495 (Toshka 1 and 2 and their neighbour)',
+      }
   confidence: certain
   review: needs-check
   note: >-
@@ -1292,9 +1331,15 @@
         Over the past centuries, much of this lake and marshland has silted up.
       supports: [op]
     - { source: hansman-1967, locator: 'the Chaldean Lakes and their 4th-century limit' }
-    - { source: heyvaert-baeteman-2007, locator: 'the coast stable from 5500 BP, building out from about 2500 BP' }
+    - {
+        source: heyvaert-baeteman-2007,
+        locator: 'the coast stable from 5500 BP, building out from about 2500 BP',
+      }
     - { source: walstra-2010, locator: 'the Karun, Karkheh and Tigris near Charax' }
-    - { source: reinink-smith-carter-2022, locator: 'Bubiyan already existed about 4000 BP' }
+    - {
+        source: reinink-smith-carter-2022,
+        locator: 'Bubiyan already existed about 4000 BP',
+      }
     - { source: mapterhorn, locator: 'z9 terrain below 3 m seaward of the shore' }
   confidence: uncertain
   review: needs-check

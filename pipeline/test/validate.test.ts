@@ -27,9 +27,10 @@ const ok = { sources: src, confidence: 'certain', review: 'draft' }
 /** The smallest dataset that exercises every file and passes clean. */
 function base() {
   return {
-    sources: [
-      { id: 'mrr', kind: 'modern', citation: 'Broughton, MRR' },
-    ] as Record<string, unknown>[],
+    sources: [{ id: 'mrr', kind: 'modern', citation: 'Broughton, MRR' }] as Record<
+      string,
+      unknown
+    >[],
     atoms: [
       {
         id: 'north',
@@ -43,7 +44,12 @@ function base() {
         construction: [
           {
             method: 'outline',
-            edge: [[10, 43], { at: [11, 43], via: 'curve' }, { at: [11, 44], note: 'a river mouth' }, [10, 44]],
+            edge: [
+              [10, 43],
+              { at: [11, 43], via: 'curve' },
+              { at: [11, 44], note: 'a river mouth' },
+              [10, 44],
+            ],
           },
         ],
         ...ok,
@@ -241,7 +247,10 @@ describe('references', () => {
 
   it('fail on an outline leg that is not a known way of drawing a frontier', () => {
     const { errors } = run((f) => {
-      ;(f.atoms[1].construction as { edge: unknown[] }[])[0].edge[1] = { at: [11, 43], via: 'wall' }
+      ;(f.atoms[1].construction as { edge: unknown[] }[])[0].edge[1] = {
+        at: [11, 43],
+        via: 'wall',
+      }
     })
     expect(errors.length).toBeGreaterThan(0)
   })
@@ -271,7 +280,9 @@ describe('quoted citations', () => {
   it('name one passage each', () => {
     const { errors } = run((f) => {
       f.sources.push(strabo)
-      f.claims[0].sources = [{ source: 'strabo', locator: '16.2.10, 16.2.16', quote: 'Apameia' }]
+      f.claims[0].sources = [
+        { source: 'strabo', locator: '16.2.10, 16.2.16', quote: 'Apameia' },
+      ]
     })
     expect(rules(errors)).toContain('one-passage')
   })
@@ -286,7 +297,9 @@ describe('quoted citations', () => {
 
   it('support only fields the record has', () => {
     const { errors } = run((f) => {
-      f.claims[0].sources = [{ source: 'mrr', quote: 'held', supports: ['relation', 'ruler'] }]
+      f.claims[0].sources = [
+        { source: 'mrr', quote: 'held', supports: ['relation', 'ruler'] },
+      ]
     })
     expect(errors.filter((e) => e.rule === 'supports-field')).toHaveLength(1)
   })
@@ -522,14 +535,35 @@ describe('validate', () => {
 
 describe('physical features and their shapes', () => {
   const always = { from: 'before 100 BCE', to: 'after 1 CE', ...ok }
-  const line = { type: 'LineString', coordinates: [[10.2, 44.2], [10.8, 44.8]] }
+  const line = {
+    type: 'LineString',
+    coordinates: [
+      [10.2, 44.2],
+      [10.8, 44.8],
+    ],
+  }
   const records = () => [
-    { id: 'plain-green', kind: 'floodplain', names: [{ text: 'Campus', preferred: true }], ...always },
-    { id: 'flumen', kind: 'river', names: [{ text: 'Flumen', preferred: true }], ...always },
+    {
+      id: 'plain-green',
+      kind: 'floodplain',
+      names: [{ text: 'Campus', preferred: true }],
+      ...always,
+    },
+    {
+      id: 'flumen',
+      kind: 'river',
+      names: [{ text: 'Flumen', preferred: true }],
+      ...always,
+    },
     { id: 'mons', kind: 'mountain', names: [{ text: 'Mons', preferred: true }], ...always },
   ]
   const shapes = () => [
-    { type: 'Feature', id: 'plain-green', properties: { derivation: 'test' }, geometry: square(10, 44) },
+    {
+      type: 'Feature',
+      id: 'plain-green',
+      properties: { derivation: 'test' },
+      geometry: square(10, 44),
+    },
     { type: 'Feature', id: 'flumen', properties: { discharge: 120 }, geometry: line },
   ]
 
@@ -609,10 +643,21 @@ describe('physical features and their shapes', () => {
 describe('landscape corrections and their shapes', () => {
   const records = () => [
     { id: 'old-bay', op: 'add-water', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
-    { id: 'old-course', op: 'river-course', from: 'before 100 BCE', to: 'after 1 CE', ...ok },
+    {
+      id: 'old-course',
+      op: 'river-course',
+      from: 'before 100 BCE',
+      to: 'after 1 CE',
+      ...ok,
+    },
   ]
   const shapes = () => [
-    { type: 'Feature', id: 'old-bay', properties: { derivation: 'test' }, geometry: square(10, 44) },
+    {
+      type: 'Feature',
+      id: 'old-bay',
+      properties: { derivation: 'test' },
+      geometry: square(10, 44),
+    },
   ]
 
   function runChanges(
@@ -642,7 +687,9 @@ describe('landscape corrections and their shapes', () => {
     const { errors } = runChanges((_, s) => {
       s[0].id = 'elsewhere'
     })
-    expect(rules(errors)).toEqual(expect.arrayContaining(['missing-geometry', 'orphan-geometry']))
+    expect(rules(errors)).toEqual(
+      expect.arrayContaining(['missing-geometry', 'orphan-geometry']),
+    )
   })
 
   it('fail on clockwise exteriors (RFC 7946)', () => {

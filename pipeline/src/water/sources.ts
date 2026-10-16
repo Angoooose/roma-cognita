@@ -65,7 +65,12 @@ export const BBOX = (() => {
     }
   }
   // A little slack for rings that cross the edge.
-  return { west: b.west - 0.5, east: b.east + 0.5, south: b.south - 0.5, north: b.north + 0.5 }
+  return {
+    west: b.west - 0.5,
+    east: b.east + 0.5,
+    south: b.south - 0.5,
+    north: b.north + 0.5,
+  }
 })()
 
 export function ensureUnzipped(cacheDir: string, zip: string) {
@@ -73,7 +78,9 @@ export function ensureUnzipped(cacheDir: string, zip: string) {
   if (!existsSync(dir)) {
     const src = join(cacheDir, zip)
     if (!existsSync(src)) {
-      throw new Error(`missing ${src} — download it first (see SOURCES in water/sources.ts)`)
+      throw new Error(
+        `missing ${src} — download it first (see SOURCES in water/sources.ts)`,
+      )
     }
     mkdirSync(dir, { recursive: true })
     execFileSync('unzip', ['-q', '-o', src, '-d', dir])
@@ -188,7 +195,9 @@ export function projectRing(ring: number[][], polygon: number, areaKm2: number):
     pts.push(lon, lat)
     const next = ring[k + 1]
     if (!next) break
-    const steps = Math.ceil(Math.max(Math.abs(next[0] - lon), Math.abs(next[1] - lat)) / MAX_SEGMENT_DEG)
+    const steps = Math.ceil(
+      Math.max(Math.abs(next[0] - lon), Math.abs(next[1] - lat)) / MAX_SEGMENT_DEG,
+    )
     for (let s = 1; s < steps; s++) {
       const t = s / steps
       pts.push(lon + (next[0] - lon) * t, lat + (next[1] - lat) * t)

@@ -82,9 +82,13 @@ async function main() {
   const c1 = Math.min(W, Math.ceil((lonMax + 1 - west) / dx))
   const r0 = Math.max(0, Math.floor((north - (latMax + 1)) / dy))
   const r1 = Math.min(H, Math.ceil((north - (latMin - 1)) / dy))
-  const [raster] = (await image.readRasters({ window: [c0, r0, c1, r1] })) as unknown as [Uint8Array]
+  const [raster] = (await image.readRasters({ window: [c0, r0, c1, r1] })) as unknown as [
+    Uint8Array,
+  ]
   const ww = c1 - c0
-  console.log(`read ${ww}×${r1 - r0} Köppen pixels in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
+  console.log(
+    `read ${ww}×${r1 - r0} Köppen pixels in ${((Date.now() - t0) / 1000).toFixed(0)} s`,
+  )
 
   // Normalised convolution: accumulate class weights and a validity count separately,
   // blur both, divide. Sea and no-data pixels then take the climate of the nearest
@@ -142,7 +146,8 @@ function blur(src: Float32Array): Float32Array {
   const r = Math.ceil(BLUR_SIGMA * 3)
   const kernel = new Float32Array(2 * r + 1)
   let sum = 0
-  for (let k = -r; k <= r; k++) sum += kernel[k + r] = Math.exp(-(k * k) / (2 * BLUR_SIGMA ** 2))
+  for (let k = -r; k <= r; k++)
+    sum += kernel[k + r] = Math.exp(-(k * k) / (2 * BLUR_SIGMA ** 2))
   for (let k = 0; k < kernel.length; k++) kernel[k] /= sum
   const tmp = new Float32Array(src.length)
   const out = new Float32Array(src.length)

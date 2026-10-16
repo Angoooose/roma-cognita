@@ -35,6 +35,7 @@ independent, so:
    method: open ends
    need only the state in force at that year, and a year given by consuls or by
    an event counts.
+
 3. **Read around the quote.** A sentence or two either side. Does the context
    change its meaning?
 

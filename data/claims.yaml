@@ -3281,7 +3281,10 @@
         of which Phrygia consisted — Cibyra-Laodiceia, Apameia and Synnada … were
         taken from the province of Asia and transferred to Cilicia
       supports: [to]
-    - { source: dmitriev-2000, locator: 'n. 80 (coins of C. Fabius, proconsul of Asia in 57)' }
+    - {
+        source: dmitriev-2000,
+        locator: 'n. 80 (coins of C. Fabius, proconsul of Asia in 57)',
+      }
     - { source: mcging-1980, locator: 'pp. 35–42' }
   confidence: uncertain
   review: needs-check

@@ -6,8 +6,7 @@ import { type GridFrame, shadeGrid } from './occlusionGrid.ts'
  * the tops and the grid's frame once, then a year at a time.
  */
 export type OcclusionJob =
-  | { tops: Float32Array; frame: GridFrame }
-  | { id: number; year: number }
+  { tops: Float32Array; frame: GridFrame } | { id: number; year: number }
 export interface OcclusionResult {
   id: number
   year: number

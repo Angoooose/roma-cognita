@@ -112,8 +112,16 @@ export function distanceKm([lon1, lat1]: LonLat, [lon2, lat2]: LonLat): number {
 export function overlapArea(a: AreaGeometry, b: AreaGeometry): number {
   const [pa, pb] = [polygonsOf(a), polygonsOf(b)]
   const box = (ps: Polys) => {
-    let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity
-    for (const p of ps) for (const [x, y] of p[0]) (w = Math.min(w, x)), (e = Math.max(e, x)), (s = Math.min(s, y)), (n = Math.max(n, y))
+    let w = Infinity,
+      s = Infinity,
+      e = -Infinity,
+      n = -Infinity
+    for (const p of ps)
+      for (const [x, y] of p[0])
+        ((w = Math.min(w, x)),
+          (e = Math.max(e, x)),
+          (s = Math.min(s, y)),
+          (n = Math.max(n, y)))
     return { w, s, e, n }
   }
   const [ba, bb] = [box(pa), box(pb)]
@@ -122,7 +130,10 @@ export function overlapArea(a: AreaGeometry, b: AreaGeometry): number {
   let km2 = 0
   for (const poly of shared) {
     const lat = poly[0].reduce((t, p) => t + p[1], 0) / poly[0].length
-    const deg2 = poly.reduce((t, ring, i) => t + (i === 0 ? 1 : -1) * Math.abs(signedArea(ring)), 0)
+    const deg2 = poly.reduce(
+      (t, ring, i) => t + (i === 0 ? 1 : -1) * Math.abs(signedArea(ring)),
+      0,
+    )
     km2 += deg2 * 111.32 * Math.cos((lat * Math.PI) / 180) * 110.57
   }
   return km2

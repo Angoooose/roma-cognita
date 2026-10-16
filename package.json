@@ -2,7 +2,11 @@
   "name": "roma-cognita",
   "private": true,
   "type": "module",
-  "workspaces": ["packages/*", "apps/*", "pipeline"],
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "pipeline"
+  ],
   "scripts": {
     "dev": "npm run dev -w apps/explorer",
     "build": "npm run build -w apps/explorer",

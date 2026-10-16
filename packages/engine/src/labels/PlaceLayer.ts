@@ -68,7 +68,13 @@ export interface PlaceRecord {
    * `id` is the work's in sources.yaml (its entry on the sources page); `url` the work;
    * `passage` the place in it the locator cites, when it can be read online.
    */
-  sources: { id?: string; citation: string; url?: string; locator?: string; passage?: string }[]
+  sources: {
+    id?: string
+    citation: string
+    url?: string
+    locator?: string
+    passage?: string
+  }[]
   note?: string
 }
 

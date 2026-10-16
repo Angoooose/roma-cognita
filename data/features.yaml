@@ -28,7 +28,10 @@
   from: before 133 BCE
   to: after 27 BCE
   sources:
-    - { source: butzer-1976, locator: cultivable area of the valley by period (locator to supply) }
+    - {
+        source: butzer-1976,
+        locator: cultivable area of the valley by period (locator to supply),
+      }
     - source: herodotus
       locator: '2.19'
       quote: >-
@@ -152,7 +155,10 @@
         Pharsalia … When the waters have reached their greatest height, the
         people open the embankments and admit them to the lands.
       supports: [to]
-    - { source: butzer-1976, locator: cultivable area of the delta by period (locator to supply) }
+    - {
+        source: butzer-1976,
+        locator: cultivable area of the delta by period (locator to supply),
+      }
     - { source: bunbury-2019 }
     - { source: mapterhorn, locator: z10 terrain }
     - { source: osm-land-polygons }
@@ -179,7 +185,12 @@
 - id: fayum-floodplain
   kind: floodplain
   names:
-    - { text: Arsinoites, lang: grc-Latn, preferred: true, note: 'the Arsinoite nome, named for Arsinoe II under Ptolemy II; earlier "the Lake" (Limne)' }
+    - {
+        text: Arsinoites,
+        lang: grc-Latn,
+        preferred: true,
+        note: 'the Arsinoite nome, named for Arsinoe II under Ptolemy II; earlier "the Lake" (Limne)',
+      }
     - { text: Fayum, lang: en }
   from: before 133 BCE
   to: after 27 BCE
@@ -227,7 +238,10 @@
         the apex of the Delta
       supports: [to]
     - { source: ball-1939, locator: levels of Lake Moeris (locator to supply) }
-    - { source: caton-thompson-gardner-1934, locator: ancient lake levels (locator to supply) }
+    - {
+        source: caton-thompson-gardner-1934,
+        locator: ancient lake levels (locator to supply),
+      }
     - { source: mapterhorn, locator: z10 terrain }
   confidence: uncertain
   review: draft
@@ -250,7 +264,12 @@
 - id: mesopotamian-alluvium
   kind: floodplain
   names:
-    - { text: Babylonia, lang: la, preferred: true, note: 'with Sumer, the old name of the southern plain, and Characene/Mesene at its head' }
+    - {
+        text: Babylonia,
+        lang: la,
+        preferred: true,
+        note: 'with Sumer, the old name of the southern plain, and Characene/Mesene at its head',
+      }
     - { text: Mesopotamian alluvium, lang: en }
   from: before 133 BCE
   to: after 27 BCE
@@ -293,7 +312,10 @@
         from their channel for the purposes of irrigation
       supports: [to]
     - { source: mapterhorn, locator: z10 terrain }
-    - { source: hydrorivers, locator: 'Tigris, Euphrates, Shatt al-Arab and tributaries, DIS_AV_CMS ≥ 100' }
+    - {
+        source: hydrorivers,
+        locator: 'Tigris, Euphrates, Shatt al-Arab and tributaries, DIS_AV_CMS ≥ 100',
+      }
   confidence: probable
   review: draft
   note: >-
@@ -664,7 +686,10 @@
       supports: [to]
     - { source: pliny-nh, locator: '5.64' }
     - { source: bietak-1975 }
-    - { source: pleiades, locator: 'places/727142, 727147, 727088, 727080, 727103, 727192, 727191' }
+    - {
+        source: pleiades,
+        locator: 'places/727142, 727147, 727088, 727080, 727103, 727192, 727191',
+      }
   confidence: probable
   review: draft
   note: >-

@@ -40,12 +40,15 @@ function hash(s: string) {
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619)
   return (h >>> 0) / 4294967296
 }
-const colour = (id: string) => `hsl(${Math.floor(hash(id) * 360)},${45 + Math.floor(hash(`${id}s`) * 30)}%,52%)`
+const colour = (id: string) =>
+  `hsl(${Math.floor(hash(id) * 360)},${45 + Math.floor(hash(`${id}s`) * 30)}%,52%)`
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
 async function render(name: string, view: Bbox & { z: number }) {
   const { dataset } = readDataset(DATA_DIR)
-  const geo = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/atoms.geojson'), 'utf8')) as {
+  const geo = JSON.parse(
+    readFileSync(join(DATA_DIR, 'geometry/atoms.geojson'), 'utf8'),
+  ) as {
     features: { id: string; geometry: { type: string; coordinates: Pt[][][] } }[]
   }
   const dem = await readDem(view, view.z)
@@ -63,32 +66,54 @@ async function render(name: string, view: Bbox & { z: number }) {
       const k = (j * W + i) * 3
       const v = at(i, j)
       if (v === 0) {
-        img[k] = 170, img[k + 1] = 188, img[k + 2] = 205
+        ;((img[k] = 170), (img[k + 1] = 188), (img[k + 2] = 205))
         continue
       }
-      const dzdx = ((at(Math.min(W - 1, i + 1), j) - at(Math.max(0, i - 1), j)) / (2 * cell)) * 4
-      const dzdy = ((at(i, Math.min(H - 1, j + 1)) - at(i, Math.max(0, j - 1))) / (2 * cell)) * 4
-      const shade = Math.max(0, (1 - dzdx + dzdy) / Math.sqrt(3 * (1 + dzdx * dzdx + dzdy * dzdy)))
+      const dzdx =
+        ((at(Math.min(W - 1, i + 1), j) - at(Math.max(0, i - 1), j)) / (2 * cell)) * 4
+      const dzdy =
+        ((at(i, Math.min(H - 1, j + 1)) - at(i, Math.max(0, j - 1))) / (2 * cell)) * 4
+      const shade = Math.max(
+        0,
+        (1 - dzdx + dzdy) / Math.sqrt(3 * (1 + dzdx * dzdx + dzdy * dzdy)),
+      )
       const base = 90 + 150 * shade
-      img[k] = Math.min(255, base), img[k + 1] = Math.min(255, base * 0.97), img[k + 2] = Math.min(255, base * 0.9)
+      ;((img[k] = Math.min(255, base)),
+        (img[k + 1] = Math.min(255, base * 0.97)),
+        (img[k + 2] = Math.min(255, base * 0.9)))
     }
   }
   const P = ([lon, lat]: Pt) => {
     const [px, py] = lonLatToPixel(dem.z, lon, lat)
     return [px - vx0, py - vy0] as const
   }
-  const d = (ring: Pt[]) => `M${ring.map((p) => P(p).map((v) => v.toFixed(1)).join(',')).join('L')}Z`
+  const d = (ring: Pt[]) =>
+    `M${ring
+      .map((p) =>
+        P(p)
+          .map((v) => v.toFixed(1))
+          .join(','),
+      )
+      .join('L')}Z`
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`
   const labels: string[] = []
   for (const f of geo.features) {
-    const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates as unknown as Pt[][]] : (f.geometry.coordinates as unknown as Pt[][][])
+    const polys =
+      f.geometry.type === 'Polygon'
+        ? [f.geometry.coordinates as unknown as Pt[][]]
+        : (f.geometry.coordinates as unknown as Pt[][][])
     svg += `<path d="${polys.map((p) => p.map(d).join(' ')).join(' ')}" fill="${colour(f.id)}" fill-opacity="0.42" fill-rule="evenodd" stroke="#222" stroke-width="1"/>`
     // Label on the largest piece's vertex mean — rough, but this is a review plate.
     const big = polys.reduce((a, b) => (b[0].length > a[0].length ? b : a))
-    const [cx, cy] = big[0].reduce(([x, y], p) => [x + p[0] / big[0].length, y + p[1] / big[0].length], [0, 0])
+    const [cx, cy] = big[0].reduce(
+      ([x, y], p) => [x + p[0] / big[0].length, y + p[1] / big[0].length],
+      [0, 0],
+    )
     const [lx, ly] = P([cx, cy])
     if (lx > 0 && ly > 0 && lx < W && ly < H)
-      labels.push(`<text x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" font-family="Helvetica" font-size="12" text-anchor="middle" fill="#000" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(f.id)}</text>`)
+      labels.push(
+        `<text x="${lx.toFixed(0)}" y="${ly.toFixed(0)}" font-family="Helvetica" font-size="12" text-anchor="middle" fill="#000" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(f.id)}</text>`,
+      )
   }
   for (const atom of dataset.atoms)
     for (const part of atom.construction) {
@@ -105,9 +130,13 @@ async function render(name: string, view: Bbox & { z: number }) {
   svg += `<text x="8" y="20" font-family="Helvetica" font-size="15" fill="#000" stroke="#fff" stroke-width="3" paint-order="stroke">${esc(`atoms — ${name}`)}</text></svg>`
   mkdirSync(OUT, { recursive: true })
   const file = join(OUT, `${name}.png`)
-  await sharp(img, { raw: { width: W, height: H, channels: 3 } }).composite([{ input: Buffer.from(svg) }]).png().toFile(file)
+  await sharp(img, { raw: { width: W, height: H, channels: 3 } })
+    .composite([{ input: Buffer.from(svg) }])
+    .png()
+    .toFile(file)
   console.log(file)
 }
 
 const only = process.argv.slice(2)
-for (const [name, view] of Object.entries(REGIONS)) if (!only.length || only.includes(name)) await render(name, view)
+for (const [name, view] of Object.entries(REGIONS))
+  if (!only.length || only.includes(name)) await render(name, view)

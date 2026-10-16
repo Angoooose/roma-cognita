@@ -24,7 +24,15 @@ import { dirname, join } from 'node:path'
 import * as shapefile from 'shapefile'
 import { DATA_RECT, ROOT, projection } from '@roma-cognita/world'
 import { RingIndex } from '../water/ring-index.ts'
-import { BBOX, SOURCES, ensureUnzipped, keepLake, lakeArea, projectRing, readRings } from '../water/sources.ts'
+import {
+  BBOX,
+  SOURCES,
+  ensureUnzipped,
+  keepLake,
+  lakeArea,
+  projectRing,
+  readRings,
+} from '../water/sources.ts'
 import { ROOT_DIR, CACHE_DIR, DATA_DIR } from '../load.ts'
 
 const OUT = join(ROOT_DIR, 'build/rivers')
@@ -76,7 +84,11 @@ const JOIN_M = 400
 async function main() {
   const t0 = Date.now()
   console.log('reading HydroLAKES (to cut reaches that cross lakes)…')
-  const lakes = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip), keepLake, lakeArea)
+  const lakes = await readRings(
+    ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip),
+    keepLake,
+    lakeArea,
+  )
   const lakeIndex = new RingIndex(lakes.rings.filter((r) => r.areaKm2 >= LAKE_KM2))
   // Where authored ancient courses replace the modern network, the modern channels are
   // dropped: HydroRIVERS' Rosetta and Damietta would otherwise draw beside the
@@ -87,11 +99,20 @@ async function main() {
   const replacing = authored
     .filter((a) => a.replacesModern)
     .map((a) => {
-      const { smoothing } = TIERS[Math.max(0, TIERS.findIndex((t) => a.q >= t.minQ))]
+      const { smoothing } =
+        TIERS[
+          Math.max(
+            0,
+            TIERS.findIndex((t) => a.q >= t.minQ),
+          )
+        ]
       return {
         id: a.id,
         q: a.q,
-        pts: chaikin(a.coords.map(([lon, lat]) => projection.forward(lon, lat)), smoothing),
+        pts: chaikin(
+          a.coords.map(([lon, lat]) => projection.forward(lon, lat)),
+          smoothing,
+        ),
       }
     })
   /** The ends of the modern reaches replaced, where their tributaries joined them: → the line. */
@@ -107,8 +128,14 @@ async function main() {
   let modernReplaced = 0
   for (const region of REGIONS) {
     const dir = join(CACHE_DIR, `HydroRIVERS_v10_${region}_shp`)
-    if (!existsSync(dir)) throw new Error(`missing ${dir}: download and unzip HydroRIVERS_v10_${region}_shp.zip`)
-    const source = await shapefile.open(findShp(dir), findShp(dir).replace(/\.shp$/, '.dbf'))
+    if (!existsSync(dir))
+      throw new Error(
+        `missing ${dir}: download and unzip HydroRIVERS_v10_${region}_shp.zip`,
+      )
+    const source = await shapefile.open(
+      findShp(dir),
+      findShp(dir).replace(/\.shp$/, '.dbf'),
+    )
     for (;;) {
       const { done, value } = await source.read()
       if (done) break
@@ -118,10 +145,25 @@ async function main() {
       const g = value.geometry
       if (g.type !== 'LineString') continue
       const coords = g.coordinates as number[][]
-      if (!coords.some(([lon, lat]) => lon >= BBOX.west && lon <= BBOX.east && lat >= BBOX.south && lat <= BBOX.north)) continue
+      if (
+        !coords.some(
+          ([lon, lat]) =>
+            lon >= BBOX.west && lon <= BBOX.east && lat >= BBOX.south && lat <= BBOX.north,
+        )
+      )
+        continue
 
       const xy = coords.map(([lon, lat]) => projection.forward(lon, lat))
-      if (!xy.some(([x, y]) => x >= DATA_RECT.minX && x <= DATA_RECT.maxX && y >= DATA_RECT.minY && y <= DATA_RECT.maxY)) continue
+      if (
+        !xy.some(
+          ([x, y]) =>
+            x >= DATA_RECT.minX &&
+            x <= DATA_RECT.maxX &&
+            y >= DATA_RECT.minY &&
+            y <= DATA_RECT.maxY,
+        )
+      )
+        continue
       const along = replacing.find((r) => {
         if (q < r.q / 2) return false
         const near = nearestOnLine(r.pts, xy[Math.floor(xy.length / 2)])
@@ -207,7 +249,9 @@ async function main() {
     let list = tiers[tier].get(key)
     if (!list) tiers[tier].set(key, (list = []))
     list.push({ q, pts: line, reconstructed })
-    console.log(`  authored: ${id} (${q} m³/s, ${coords.length} points${reconstructed ? ', reconstructed' : ''})`)
+    console.log(
+      `  authored: ${id} (${q} m³/s, ${coords.length} points${reconstructed ? ', reconstructed' : ''})`,
+    )
   }
 
   mkdirSync(OUT, { recursive: true })
@@ -239,8 +283,12 @@ async function main() {
   })
   writeFileSync(join(OUT, 'index.json'), JSON.stringify(index))
   console.log(`${replaced} modern segments replaced by authored networks`)
-  console.log(`${modernReplaced} modern reaches replaced by authored lines, ${joined} reaches joined to them`)
-  console.log(`${inLakes} segments dropped inside lakes ≥ ${LAKE_KM2} km²; done in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
+  console.log(
+    `${modernReplaced} modern reaches replaced by authored lines, ${joined} reaches joined to them`,
+  )
+  console.log(
+    `${inLakes} segments dropped inside lakes ≥ ${LAKE_KM2} km²; done in ${((Date.now() - t0) / 1000).toFixed(0)} s`,
+  )
 }
 
 /**
@@ -296,12 +344,19 @@ function readAuthoredRivers(): Authored[] {
   const recordsFile = join(DATA_DIR, 'features.yaml')
   const geometryFile = join(DATA_DIR, 'geometry/features.geojson')
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
-  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; kind: string }[]
+  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as {
+    id: string
+    kind: string
+  }[]
   const ids = new Set(records.filter((r) => r.kind === 'river').map((r) => r.id))
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
     features: {
       id: string
-      properties?: { discharge?: number; reconstructed?: boolean[]; replacesModern?: boolean }
+      properties?: {
+        discharge?: number
+        reconstructed?: boolean[]
+        replacesModern?: boolean
+      }
       geometry: { type: string; coordinates: number[][] | number[][][] }
     }[]
   }
@@ -372,7 +427,10 @@ function nearestOnLine(pts: [number, number][], [px, py]: [number, number]) {
     const [bx, by] = pts[k + 1]
     const dx = bx - ax
     const dy = by - ay
-    const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)))
+    const t = Math.max(
+      0,
+      Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)),
+    )
     const at: [number, number] = [ax + t * dx, ay + t * dy]
     const d = Math.hypot(at[0] - px, at[1] - py)
     if (d < best.d)
@@ -428,7 +486,10 @@ function chaikin(pts: [number, number][], passes: number): [number, number][] {
     for (let k = 0; k + 1 < out.length; k++) {
       const [ax, ay] = out[k]
       const [bx, by] = out[k + 1]
-      next.push([0.75 * ax + 0.25 * bx, 0.75 * ay + 0.25 * by], [0.25 * ax + 0.75 * bx, 0.25 * ay + 0.75 * by])
+      next.push(
+        [0.75 * ax + 0.25 * bx, 0.75 * ay + 0.25 * by],
+        [0.25 * ax + 0.75 * bx, 0.25 * ay + 0.75 * by],
+      )
     }
     next.push(out[out.length - 1])
     out = next

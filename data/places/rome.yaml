@@ -684,7 +684,10 @@
       supports: [location]
     - { source: osm-rome, locator: relation/1841081 }
     - { source: cicero-att, locator: '4.16.8' }
-    - { source: sitar, locator: '16664, 16675, 16688, 16703 (the houses under it, to 55 BCE)' }
+    - {
+        source: sitar,
+        locator: '16664, 16675, 16688, 16703 (the houses under it, to 55 BCE)',
+      }
   confidence: probable
   review: draft
   note: >-
@@ -1446,7 +1449,10 @@
     - { source: musei-capitolini, locator: 'Area of the temple of Jupiter Capitolinus' }
     - { source: kaderka-tucci-2021, locator: '§§1–40' }
     - { source: arata-2010-giove, locator: 'pp. 585–624' }
-    - { source: digital-augustan-rome, locator: 'Iuppiter Optimus Maximus Capitolinus, Aedes' }
+    - {
+        source: digital-augustan-rome,
+        locator: 'Iuppiter Optimus Maximus Capitolinus, Aedes',
+      }
     - { source: livy, locator: '10.23.12; 35.10.12; 40.51.3' }
     - { source: pliny-nh, locator: '33.57; 36.45; 36.185' }
     - { source: dionysius, locator: '4.61.4' }
@@ -3579,7 +3585,10 @@
         The next termination was carried out by the consuls of 8 B.C.
       supports: [to]
     - { source: pleiades, locator: places/423080 }
-    - { source: osm-rome, locator: 'relation/17258409, way/22747533, way/22797948, relation/5071, way/23353973, way/23353974, relation/15909049, way/23354406, way/23354527, way/23354547' }
+    - {
+        source: osm-rome,
+        locator: 'relation/17258409, way/22747533, way/22797948, relation/5071, way/23353973, way/23353974, relation/15909049, way/23354406, way/23354527, way/23354547',
+      }
   confidence: probable
   review: draft
   note: >-
@@ -4992,14 +5001,14 @@
         This temple was restored by Vespasian
       supports: [to]
     - source: digital-augustan-rome
-      locator: 'Honos et Virtus, Aedes (''''ad portam Capenam'''')'
+      locator: "Honos et Virtus, Aedes (''ad portam Capenam'')"
       url: 'https://www.digitalaugustanrome.org/records/honos-et-virtus-aedes-ad-portam-capenam/'
       quote: >-
         in 19 B.C. when the senate erected the Altar of Fortuna Redux in front of
         the temple
       supports: [to]
     - source: digital-augustan-rome
-      locator: 'Honos et Virtus, Aedes (''''ad portam Capenam'''')'
+      locator: "Honos et Virtus, Aedes (''ad portam Capenam'')"
       url: 'https://www.digitalaugustanrome.org/records/honos-et-virtus-aedes-ad-portam-capenam/'
       quote: >-
         our placement of the temple follows the traditional, as well as the most
@@ -5024,7 +5033,10 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Ianus, aedes, pp. 277–278' }
-    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - {
+        source: sovrintendenza-capitolina,
+        locator: 'Templi repubblicani di San Nicola in Carcere',
+      }
     - source: digital-augustan-rome
       locator: 'Ianus, Aedes'
       url: 'https://www.digitalaugustanrome.org/records/ianus-aedes/'
@@ -5068,7 +5080,10 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Spes, aedes, pp. 493–494' }
-    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - {
+        source: sovrintendenza-capitolina,
+        locator: 'Templi repubblicani di San Nicola in Carcere',
+      }
     - { source: digital-augustan-rome, locator: 'Spes, Aedes (Forum Holitorium)' }
     - source: platner-ashby
       locator: 'Spes, aedes, pp. 493–494'
@@ -5124,7 +5139,10 @@
   prominence: 5
   sources:
     - { source: platner-ashby, locator: 'Iuno Sospita, aedes (1), p. 291' }
-    - { source: sovrintendenza-capitolina, locator: 'Templi repubblicani di San Nicola in Carcere' }
+    - {
+        source: sovrintendenza-capitolina,
+        locator: 'Templi repubblicani di San Nicola in Carcere',
+      }
     - { source: digital-augustan-rome, locator: 'Iuno Sospita, Aedes' }
     - { source: cicero-div, locator: '1.4; 1.99' }
     - { source: obsequens, locator: '55' }
@@ -7020,7 +7038,10 @@
   to: after 27 BCE
   prominence: 5
   sources:
-    - { source: sovrintendenza-capitolina, locator: 'Area archeologica di via delle Botteghe Oscure' }
+    - {
+        source: sovrintendenza-capitolina,
+        locator: 'Area archeologica di via delle Botteghe Oscure',
+      }
     - { source: facchin-2011, locator: 'pp. 13–38' }
     - { source: digital-augustan-rome, locator: 'Lares Permarini, Aedes' }
     - { source: osm-rome, locator: way/125375013 }
@@ -7648,7 +7669,10 @@
     - { source: platner-ashby, locator: 'Horti Pompeiani, p. 270' }
     - { source: richardson-1992, locator: 'Horti Pompeiani (1) and (2), p. 201' }
     - { source: plutarch, locator: 'Pompey 40.5, 44.3' }
-    - { source: asconius, locator: 'Pro Milone, argument, pp. 33, 36 Clark; commentary pp. 50–52 Clark' }
+    - {
+        source: asconius,
+        locator: 'Pro Milone, argument, pp. 33, 36 Clark; commentary pp. 50–52 Clark',
+      }
     - { source: velleius, locator: '2.60.3' }
     - { source: appian, locator: 'BC 3.14' }
     - { source: cicero-phil, locator: '2.109' }

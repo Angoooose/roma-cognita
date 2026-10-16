@@ -127,7 +127,10 @@ export function Preface({ years }: { years: string }) {
                 <Source href="https://www.naturalearthdata.com" licence="Public domain">
                   Natural Earth, <em>land</em>
                 </Source>
-                <Source href="https://doi.org/10.6084/m9.figshare.21789074" licence="CC BY 4.0">
+                <Source
+                  href="https://doi.org/10.6084/m9.figshare.21789074"
+                  licence="CC BY 4.0"
+                >
                   Köppen–Geiger (Beck et al., 2023), <em>climate</em>
                 </Source>
                 <Source

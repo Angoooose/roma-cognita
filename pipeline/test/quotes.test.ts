@@ -41,8 +41,8 @@ describe('quoteIn', () => {
 
 describe('htmlText', () => {
   it('drops markup and decodes entities', () => {
-    expect(htmlText('<p>Caesar&rsquo;s <i>Gallic</i> War &amp; &#8220;more&#8221;</p>')).toMatch(
-      /Caesar’s +Gallic +War & “more”/,
-    )
+    expect(
+      htmlText('<p>Caesar&rsquo;s <i>Gallic</i> War &amp; &#8220;more&#8221;</p>'),
+    ).toMatch(/Caesar’s +Gallic +War & “more”/)
   })
 })

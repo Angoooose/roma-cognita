@@ -65,7 +65,10 @@ async function main() {
     for (let i = 0; i < SIZE; i++) {
       const o = j * SIZE + i
       const km = (Math.sqrt(toKnown[o]) - Math.sqrt(toUnknown[o])) * texelKm
-      out[(SIZE - 1 - j) * SIZE + i] = Math.max(0, Math.min(255, Math.round(128 + km / KM_PER_STEP)))
+      out[(SIZE - 1 - j) * SIZE + i] = Math.max(
+        0,
+        Math.min(255, Math.round(128 + km / KM_PER_STEP)),
+      )
     }
   }
   mkdirSync(dirname(OUT), { recursive: true })
@@ -108,7 +111,8 @@ function fillRings(rings: LonLat[][], mask: Uint8Array) {
     const y = j + 0.5
     const xs: number[] = []
     for (const [x0, y0, x1, y1] of edges) {
-      if ((y0 <= y && y1 > y) || (y1 <= y && y0 > y)) xs.push(x0 + ((y - y0) / (y1 - y0)) * (x1 - x0))
+      if ((y0 <= y && y1 > y) || (y1 <= y && y0 > y))
+        xs.push(x0 + ((y - y0) / (y1 - y0)) * (x1 - x0))
     }
     xs.sort((a, b) => a - b)
     for (let k = 0; k + 1 < xs.length; k += 2) {

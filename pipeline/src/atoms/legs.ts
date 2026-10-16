@@ -36,7 +36,9 @@ export interface Vertex {
 }
 
 export const vertexOf = (leg: Leg): Vertex =>
-  Array.isArray(leg) ? { at: leg as Pt, via: 'line' } : { ...leg, at: leg.at as Pt, via: leg.via ?? 'line' }
+  Array.isArray(leg)
+    ? { at: leg as Pt, via: 'line' }
+    : { ...leg, at: leg.at as Pt, via: leg.via ?? 'line' }
 
 /** The closed ring through `edge`. Each vertex's `via` says how the frontier reaches it from the one before. */
 export async function resolveEdge(edge: Leg[], what: string): Promise<Pt[]> {
@@ -61,7 +63,9 @@ export async function resolveEdge(edge: Leg[], what: string): Promise<Pt[]> {
       run.push(order[m % n].at)
       const pts = catmullRom(run, 10)
       // Drop the anchor span; the next leg draws it in its own way.
-      const cut = pts.findIndex((p) => p[0] === run[run.length - 2][0] && p[1] === run[run.length - 2][1])
+      const cut = pts.findIndex(
+        (p) => p[0] === run[run.length - 2][0] && p[1] === run[run.length - 2][1],
+      )
       out.push(...pts.slice(1, cut >= 0 ? cut + 1 : undefined))
       k = m - 1
       continue
@@ -72,7 +76,9 @@ export async function resolveEdge(edge: Leg[], what: string): Promise<Pt[]> {
         const path = v.via === 'river' ? riverPath(prev, v.at) : await crestPath(prev, v.at)
         out.push(...path.slice(1))
       } catch (e) {
-        throw new Error(`${what}: ${v.via} leg to ${v.note ?? v.at.join(',')}: ${(e as Error).message}`)
+        throw new Error(
+          `${what}: ${v.via} leg to ${v.note ?? v.at.join(',')}: ${(e as Error).message}`,
+        )
       }
     }
   }
@@ -118,16 +124,21 @@ function reachesNear(a: Pt, b: Pt, m: number): Map<number, Reach> {
     const shp = riverShp(region)
     const recs = readShp(shp, bbox)
     if (!recs.length) continue
-    const attrs = readDbf(shp.replace(/\.shp$/, '.dbf'), recs.map((r) => r.index), [
-      'HYRIV_ID',
-      'NEXT_DOWN',
-      'UPLAND_SKM',
-    ])
+    const attrs = readDbf(
+      shp.replace(/\.shp$/, '.dbf'),
+      recs.map((r) => r.index),
+      ['HYRIV_ID', 'NEXT_DOWN', 'UPLAND_SKM'],
+    )
     for (const r of recs) {
       const at = attrs.get(r.index)!
       const upland = at.UPLAND_SKM as number
       if (upland < 30) continue
-      out.set(at.HYRIV_ID as number, { id: at.HYRIV_ID as number, next: at.NEXT_DOWN as number, upland, line: r.parts[0] })
+      out.set(at.HYRIV_ID as number, {
+        id: at.HYRIV_ID as number,
+        next: at.NEXT_DOWN as number,
+        upland,
+        line: r.parts[0],
+      })
     }
   }
   return out
@@ -146,7 +157,9 @@ function project(p: Pt, a: Pt, b: Pt): Pt {
   const dx = (b[0] - a[0]) * kx
   const dy = b[1] - a[1]
   const len2 = dx * dx + dy * dy
-  const t = len2 ? Math.max(0, Math.min(1, (((p[0] - a[0]) * kx) * dx + (p[1] - a[1]) * dy) / len2)) : 0
+  const t = len2
+    ? Math.max(0, Math.min(1, ((p[0] - a[0]) * kx * dx + (p[1] - a[1]) * dy) / len2))
+    : 0
   return [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])]
 }
 
@@ -173,7 +186,7 @@ function snaps(p: Pt, reaches: Map<number, Reach>): Snap[] {
 /** Upstream `from` down to `to`, or null if `to` is not downstream of `from`. */
 function walk(from: Snap, to: Snap, reaches: Map<number, Reach>): Pt[] | null {
   const ids: number[] = []
-  for (let id = from.reach.id; ; ) {
+  for (let id = from.reach.id; ;) {
     ids.push(id)
     if (id === to.reach.id) break
     const r = reaches.get(id)
@@ -203,7 +216,11 @@ export function riverPath(a: Pt, b: Pt): Pt[] {
     // mouth the biggest stream is not always the one the frontier follows.
     const pairs = snaps(a, reaches)
       .flatMap((sa) => snaps(b, reaches).map((sb) => [sa, sb] as const))
-      .sort(([a1, b1], [a2, b2]) => Math.min(a2.reach.upland, b2.reach.upland) - Math.min(a1.reach.upland, b1.reach.upland))
+      .sort(
+        ([a1, b1], [a2, b2]) =>
+          Math.min(a2.reach.upland, b2.reach.upland) -
+          Math.min(a1.reach.upland, b1.reach.upland),
+      )
     for (const [sa, sb] of pairs) {
       path = walk(sa, sb, reaches) ?? walk(sb, sa, reaches)?.reverse()
       if (path) break
@@ -237,7 +254,7 @@ export async function crestPath(a: Pt, b: Pt): Promise<Pt[]> {
   const dem = await readDem(bbox, z)
   let lo = Infinity
   let hi = -Infinity
-  for (const h of dem.data) if (!isSea(h)) (lo = Math.min(lo, h)), (hi = Math.max(hi, h))
+  for (const h of dem.data) if (!isSea(h)) ((lo = Math.min(lo, h)), (hi = Math.max(hi, h)))
   const cost = new Float32Array(dem.data.length)
   for (let k = 0; k < cost.length; k++) {
     const h = dem.data[k]
@@ -249,8 +266,19 @@ export async function crestPath(a: Pt, b: Pt): Promise<Pt[]> {
     const [x, y] = lonLatToPixel(z, p[0], p[1])
     return Math.round(y - dem.y0) * dem.width + Math.round(x - dem.x0)
   }
-  const path = leastCostPath(cost, dem.width, px(a), px(b), [0, 0, dem.width - 1, dem.height - 1])
-  const pts = path.map((q): Pt => pixelToLonLat(z, dem.x0 + (q % dem.width) + 0.5, dem.y0 + Math.floor(q / dem.width) + 0.5))
+  const path = leastCostPath(cost, dem.width, px(a), px(b), [
+    0,
+    0,
+    dem.width - 1,
+    dem.height - 1,
+  ])
+  const pts = path.map((q): Pt =>
+    pixelToLonLat(
+      z,
+      dem.x0 + (q % dem.width) + 0.5,
+      dem.y0 + Math.floor(q / dem.width) + 0.5,
+    ),
+  )
   // Pixel staircases would survive a tight simplification; the crest is not known to better than ~1 km anyway.
   const kept = simplifyIndices(pts, 0.006).map((i) => pts[i])
   return [a, ...kept.slice(1, -1), b]

@@ -43,14 +43,14 @@ It should feel like a strategy game, but it should only show what the historical
 
 The map draws on open datasets, ancient texts and modern scholarship. Every border, place and person cites where it comes from. A data pipeline checks it all and bakes it into what the browser draws.
 
-| Folder | What's in it |
-| --- | --- |
-| `data/` | Hand-written records (YAML) and geometry (GeoJSON), each tied to its sources |
-| `pipeline/` | Pulls in the open datasets, checks the data and bakes it into tiles, textures and JSON |
-| `packages/engine` | The renderer: three.js WebGPU, with a WebGL2 fallback |
-| `packages/schema` | The shape of every record, checked by the pipeline and shared with the app |
-| `packages/world` | The projection, the map frame and the tile formats, shared by the pipeline and the renderer |
-| `apps/explorer` | The map app, with its timeline and inspector |
+| Folder            | What's in it                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| `data/`           | Hand-written records (YAML) and geometry (GeoJSON), each tied to its sources                |
+| `pipeline/`       | Pulls in the open datasets, checks the data and bakes it into tiles, textures and JSON      |
+| `packages/engine` | The renderer: three.js WebGPU, with a WebGL2 fallback                                       |
+| `packages/schema` | The shape of every record, checked by the pipeline and shared with the app                  |
+| `packages/world`  | The projection, the map frame and the tile formats, shared by the pipeline and the renderer |
+| `apps/explorer`   | The map app, with its timeline and inspector                                                |
 
 ## Running it
 
@@ -107,20 +107,20 @@ To check the hand-written data on its own, run `npm run data:validate`. It fails
 
 Built on the work of many others.
 
-| Source | What it gives the map |
-| --- | --- |
-| [Digital Prosopography of the Roman Republic](https://romanrepublic.ac.uk) | People, from King's College London |
-| [Wikidata](https://www.wikidata.org) | English names for people |
-| [Pleiades](https://pleiades.stoa.org) | Ancient places |
-| [Itiner-e](https://doi.org/10.5281/zenodo.17122148) | Roads of the Roman Empire |
-| [OpenStreetMap](https://www.openstreetmap.org) · [Natural Earth](https://www.naturalearthdata.com) | Coastlines |
-| [GEBCO](https://www.gebco.net) · [EMODnet Bathymetry](https://emodnet.ec.europa.eu/en/bathymetry) | Sea depths |
-| [Mapterhorn](https://mapterhorn.com) | Terrain |
-| [HydroSHEDS](https://www.hydrosheds.org) | Rivers and lakes (HydroRIVERS, HydroLAKES) |
-| Köppen–Geiger (Beck et al., 2023) | Climate |
-| [SITAR](https://www.archeositarproject.it/en/piattaforma/open-data/) | The archaeological map of Rome |
-| 78 ancient texts | History, from Caesar and Cicero to Strabo |
-| More than 200 modern studies | History, led by Broughton's *Magistrates of the Roman Republic* and the *Barrington Atlas* |
+| Source                                                                                             | What it gives the map                                                                      |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [Digital Prosopography of the Roman Republic](https://romanrepublic.ac.uk)                         | People, from King's College London                                                         |
+| [Wikidata](https://www.wikidata.org)                                                               | English names for people                                                                   |
+| [Pleiades](https://pleiades.stoa.org)                                                              | Ancient places                                                                             |
+| [Itiner-e](https://doi.org/10.5281/zenodo.17122148)                                                | Roads of the Roman Empire                                                                  |
+| [OpenStreetMap](https://www.openstreetmap.org) · [Natural Earth](https://www.naturalearthdata.com) | Coastlines                                                                                 |
+| [GEBCO](https://www.gebco.net) · [EMODnet Bathymetry](https://emodnet.ec.europa.eu/en/bathymetry)  | Sea depths                                                                                 |
+| [Mapterhorn](https://mapterhorn.com)                                                               | Terrain                                                                                    |
+| [HydroSHEDS](https://www.hydrosheds.org)                                                           | Rivers and lakes (HydroRIVERS, HydroLAKES)                                                 |
+| Köppen–Geiger (Beck et al., 2023)                                                                  | Climate                                                                                    |
+| [SITAR](https://www.archeositarproject.it/en/piattaforma/open-data/)                               | The archaeological map of Rome                                                             |
+| 78 ancient texts                                                                                   | History, from Caesar and Cicero to Strabo                                                  |
+| More than 200 modern studies                                                                       | History, led by Broughton's _Magistrates of the Roman Republic_ and the _Barrington Atlas_ |
 
 The full list, with each dataset's licence, is in `data/sources.yaml`.
 

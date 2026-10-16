@@ -17,7 +17,15 @@ const POWERS: Record<string, string> = {
 }
 
 /** Muted, mid-light hues for independent powers, chosen to sit apart from Rome's red. */
-const FALLBACK = ['#B98F4A', '#5E8C84', '#7A6A96', '#8E9A52', '#5A7398', '#A0734F', '#9A6A7E']
+const FALLBACK = [
+  '#B98F4A',
+  '#5E8C84',
+  '#7A6A96',
+  '#8E9A52',
+  '#5A7398',
+  '#A0734F',
+  '#9A6A7E',
+]
 
 const PARCHMENT = new THREE.Color('#D8D2C4')
 
@@ -35,14 +43,20 @@ function hash(s: string) {
 }
 
 export function powerColour(power: string): THREE.Color {
-  return new THREE.Color(POWERS[power] ?? FALLBACK[Math.floor(hash(power) * FALLBACK.length)])
+  return new THREE.Color(
+    POWERS[power] ?? FALLBACK[Math.floor(hash(power) * FALLBACK.length)],
+  )
 }
 
 /**
  * The style of `polity` when it answers to `power`. `client` washes the colour out;
  * the power's own core territory (Italia for Rome) is the undiluted colour.
  */
-export function polityStyle(polity: string, power: string, opts: { client: boolean; core: boolean }): PolityStyle {
+export function polityStyle(
+  polity: string,
+  power: string,
+  opts: { client: boolean; core: boolean },
+): PolityStyle {
   const base = powerColour(power)
   const fill = base.clone()
   if (!opts.core) {
@@ -64,5 +78,10 @@ function offsetHSL(c: THREE.Color, h: number, s: number, l: number) {
   const hsl = { h: 0, s: 0, l: 0 }
   c.getHSL(hsl, THREE.SRGBColorSpace)
   const clamp = (v: number) => Math.min(1, Math.max(0, v))
-  return c.setHSL((hsl.h + h + 1) % 1, clamp(hsl.s + s), clamp(hsl.l + l), THREE.SRGBColorSpace)
+  return c.setHSL(
+    (hsl.h + h + 1) % 1,
+    clamp(hsl.s + s),
+    clamp(hsl.l + l),
+    THREE.SRGBColorSpace,
+  )
 }

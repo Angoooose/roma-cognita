@@ -235,9 +235,9 @@ const placeName = (id: string) =>
   id
 const sourceById = new Map(data.sources.map((s) => [s.id, s]))
 const planned = new Set<string>(
-  JSON.parse(
-    readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8'),
-  ).features.map((f: { id: string }) => f.id),
+  JSON.parse(readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8')).features.map(
+    (f: { id: string }) => f.id,
+  ),
 )
 const places = data.places.map((p) => {
   const [x, y] = projection.forward(...p.location)

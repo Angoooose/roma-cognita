@@ -40,8 +40,22 @@ import { join } from 'node:path'
 import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
 import { rewindRFC7946, ringProblems } from '../geo.ts'
-import { type Bbox, type Raster, isSea, lonLatToPixel, pixelMetres, readDem } from '../lib/dem.ts'
-import { type Pt, blur, catmullRom, components, fillRings, nearestSeed } from '../lib/grid.ts'
+import {
+  type Bbox,
+  type Raster,
+  isSea,
+  lonLatToPixel,
+  pixelMetres,
+  readDem,
+} from '../lib/dem.ts'
+import {
+  type Pt,
+  blur,
+  catmullRom,
+  components,
+  fillRings,
+  nearestSeed,
+} from '../lib/grid.ts'
 import { renderPreview } from '../features/preview.ts'
 import { geometryArea, vectorise } from '../features/vectorise.ts'
 import { SHORES, type Shore } from './coasts.ts'
@@ -77,18 +91,26 @@ const toPx = (dem: Raster, [lon, lat]: Pt): Pt => {
 }
 
 const rowAreas = (dem: Raster) =>
-  Float64Array.from({ length: dem.height }, (_, j) => (pixelMetres(dem.z, dem.y0 + j + 0.5) / 1000) ** 2)
+  Float64Array.from(
+    { length: dem.height },
+    (_, j) => (pixelMetres(dem.z, dem.y0 + j + 0.5) / 1000) ** 2,
+  )
 
 /** Flood from `seeds` through `open` pixels, 4-connected. */
 function flood(open: Uint8Array, seeds: number[], width: number): Uint8Array {
   const out = new Uint8Array(open.length)
   const stack: number[] = []
-  for (const s of seeds) if (open[s] && !out[s]) (out[s] = 1), stack.push(s)
+  for (const s of seeds) if (open[s] && !out[s]) ((out[s] = 1), stack.push(s))
   while (stack.length) {
     const p = stack.pop()!
     const i = p % width
-    for (const q of [p - width, p + width, i > 0 ? p - 1 : -1, i < width - 1 ? p + 1 : -1]) {
-      if (q >= 0 && q < open.length && open[q] && !out[q]) (out[q] = 1), stack.push(q)
+    for (const q of [
+      p - width,
+      p + width,
+      i > 0 ? p - 1 : -1,
+      i < width - 1 ? p + 1 : -1,
+    ]) {
+      if (q >= 0 && q < open.length && open[q] && !out[q]) ((out[q] = 1), stack.push(q))
     }
   }
   return out
@@ -134,16 +156,24 @@ function closedSpline(pts: Pt[]): Pt[] {
   const curve = catmullRom(wrapped, SPLINE_PER)
   // Segment k of `curve` runs from wrapped[k] to wrapped[k + 1]; keep p0 → p1 … p(n−1) → p0.
   const ring = curve.slice(SPLINE_PER, (n + 1) * SPLINE_PER)
-  return [...ring, ring[0]].map(([x, y]) => [Math.round(x * 1e5) / 1e5, Math.round(y * 1e5) / 1e5] as Pt)
+  return [...ring, ring[0]].map(
+    ([x, y]) => [Math.round(x * 1e5) / 1e5, Math.round(y * 1e5) / 1e5] as Pt,
+  )
 }
 
 async function deriveShore(shore: Shore): Promise<Result> {
   console.log(`\n${shore.id} — ${shore.label}`)
-  const hullRing = shore.straight ? [...shore.hull, shore.hull[0]] : closedSpline(shore.hull)
+  const hullRing = shore.straight
+    ? [...shore.hull, shore.hull[0]]
+    : closedSpline(shore.hull)
   if (shore.method.kind === 'polygon') {
-    const geometry = rewindRFC7946({ type: 'Polygon', coordinates: [hullRing] } as AreaGeometry)
+    const geometry = rewindRFC7946({
+      type: 'Polygon',
+      coordinates: [hullRing],
+    } as AreaGeometry)
     const problems = ringProblems(geometry)
-    if (problems.length) throw new Error(`${shore.id}: hull is unsound: ${JSON.stringify(problems)}`)
+    if (problems.length)
+      throw new Error(`${shore.id}: hull is unsound: ${JSON.stringify(problems)}`)
     const areaKm2 = geometryArea(geometry)
     console.log(`  polygon as authored: ${areaKm2.toFixed(1)} km²`)
     return { shore, geometry, areaKm2 }
@@ -167,19 +197,28 @@ async function deriveShore(shore: Shore): Promise<Result> {
       if (h <= m.maxHeight) reach[p] = 1
       if (isSea(h)) seeds.push(p)
     }
-    if (!seeds.length) throw new Error(`${shore.id}: no modern sea inside the hull to flood from`)
+    if (!seeds.length)
+      throw new Error(`${shore.id}: no modern sea inside the hull to flood from`)
   } else {
     for (let p = 0; p < hull.length; p++) if (hull[p] && dem.data[p] < m.level) reach[p] = 1
     const [x, y] = toPx(dem, m.seed)
     const seed = Math.floor(y) * width + Math.floor(x)
     if (!hull[seed]) throw new Error(`${shore.id}: the seed is outside the hull`)
-    if (!reach[seed]) throw new Error(`${shore.id}: the seed stands ${dem.data[seed].toFixed(1)} m, above the lake level`)
+    if (!reach[seed])
+      throw new Error(
+        `${shore.id}: the seed stands ${dem.data[seed].toFixed(1)} m, above the lake level`,
+      )
     seeds.push(seed)
   }
   // Authored ancient land is closed to the flood before it starts.
   if (shore.land?.length) {
     const dry = new Uint8Array(hull.length)
-    fillRings(dry, width, height, shore.land.map((r) => [...r, r[0]].map((p) => toPx(dem, p))))
+    fillRings(
+      dry,
+      width,
+      height,
+      shore.land.map((r) => [...r, r[0]].map((p) => toPx(dem, p))),
+    )
     for (let p = 0; p < dry.length; p++) if (dry[p]) reach[p] = 0
   }
   water = flood(reach, seeds, width)
@@ -210,12 +249,18 @@ async function deriveShore(shore: Shore): Promise<Result> {
   components(water, width, height, 1, (pixels) => {
     if (areaOf(pixels) < MIN_RING_KM2) for (const p of pixels) water[p] = 0
   })
-  console.log(`  ${drowned} rises under ${shore.minIslandKm2} km² drowned, ${islands} islands kept`)
+  console.log(
+    `  ${drowned} rises under ${shore.minIslandKm2} km² drowned, ${islands} islands kept`,
+  )
 
-  const geometry = vectorise(water, dem, { simplifyM: SIMPLIFY_M, minRingKm2: MIN_RING_KM2 })
+  const geometry = vectorise(water, dem, {
+    simplifyM: SIMPLIFY_M,
+    minRingKm2: MIN_RING_KM2,
+  })
   // What the shape adds to the map is the water that is land today: report that, not the sea it overlaps.
   let addedKm2 = 0
-  for (let p = 0; p < water.length; p++) if (water[p] && !isSea(dem.data[p])) addedKm2 += rows[(p / width) | 0]
+  for (let p = 0; p < water.length; p++)
+    if (water[p] && !isSea(dem.data[p])) addedKm2 += rows[(p / width) | 0]
   const areaKm2 = geometryArea(geometry)
   console.log(
     `  ${m.kind === 'sea' ? `ground ≤ ${m.maxHeight} m reached from the sea` : `ground < ${m.level} m reached from the seed`}: ${addedKm2.toFixed(0)} km² of water that is land today (${areaKm2.toFixed(0)} km² with the sea it overlaps)`,
@@ -224,19 +269,28 @@ async function deriveShore(shore: Shore): Promise<Result> {
     const [lo, hi] = shore.expectKm2.range
     const verdict = addedKm2 < lo ? 'BELOW' : addedKm2 > hi ? 'ABOVE' : 'within'
     console.log(`    vs ${shore.expectKm2.label}: ${lo}–${hi} km² → ${verdict}`)
-    if (verdict !== 'within') doubt(`${shore.id}: ${addedKm2.toFixed(0)} km² is ${verdict} ${shore.expectKm2.label}`)
+    if (verdict !== 'within')
+      doubt(
+        `${shore.id}: ${addedKm2.toFixed(0)} km² is ${verdict} ${shore.expectKm2.label}`,
+      )
   }
 
   // --- check sites ---
-  const polys = (geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates) as Pt[][][]
+  const polys = (
+    geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates
+  ) as Pt[][][]
   const verdicts = shore.sites.map((s) => {
-    const wet = polys.some(([outer, ...holes]) => inRing(s.at, outer) && !holes.some((r) => inRing(s.at, r)))
+    const wet = polys.some(
+      ([outer, ...holes]) => inRing(s.at, outer) && !holes.some((r) => inRing(s.at, r)),
+    )
     const dist = Math.min(...polys.flatMap((poly) => poly.map((r) => distToRing(s.at, r))))
     const got = dist <= SHORE_KM ? 'shore' : wet ? 'water' : 'land'
     const ok = got === s.expect || (s.expect === 'shore' && dist <= 2 * SHORE_KM)
     const [x, y] = toPx(dem, s.at)
     const inside = x >= 0 && y >= 0 && x < width && y < height
-    const ground = inside ? `ground ${dem.data[Math.floor(y) * width + Math.floor(x)].toFixed(0)} m` : 'off the terrain read'
+    const ground = inside
+      ? `ground ${dem.data[Math.floor(y) * width + Math.floor(x)].toFixed(0)} m`
+      : 'off the terrain read'
     const line = `${s.name}: ${wet ? 'in the water' : 'on land'}, ${dist.toFixed(1)} km from the shore; ${ground} (expected ${s.expect})`
     console.log(`    site ${ok ? '  ' : '✗ '}${line}`)
     if (!ok) doubt(`${shore.id}: ${line}`)
@@ -302,19 +356,25 @@ function distToRing(p: Pt, ring: Pt[]): number {
     const [bx, by] = q[k + 1]
     const dx = bx - ax
     const dy = by - ay
-    const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)))
+    const t = Math.max(
+      0,
+      Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)),
+    )
     best = Math.min(best, Math.hypot(px - ax - t * dx, py - ay - t * dy))
   }
   return best / 1000
 }
 
 async function main() {
-  const selected = SHORES.filter((s) => !filters.length || filters.some((f) => s.id.includes(f)))
+  const selected = SHORES.filter(
+    (s) => !filters.length || filters.some((f) => s.id.includes(f)),
+  )
   const results: Result[] = []
   for (const shore of selected) results.push(await deriveShore(shore))
   const stamp = new Date().toISOString().slice(0, 10)
   const surfaceOf = (s: Shore) =>
-    s.surface ?? (s.method.kind === 'sea' || s.method.kind === 'lake' ? s.method.kind : undefined)
+    s.surface ??
+    (s.method.kind === 'sea' || s.method.kind === 'lake' ? s.method.kind : undefined)
   const how = (m: Shore['method']) =>
     m.kind === 'polygon'
       ? 'authored polygon (pipeline/src/landscape/coasts.ts)'
@@ -335,7 +395,9 @@ async function main() {
     }
   })
   writeLandscapeShapes(features)
-  console.log(`\n${doubts.length ? `${doubts.length} doubts:\n  ${doubts.join('\n  ')}` : 'no doubts'}`)
+  console.log(
+    `\n${doubts.length ? `${doubts.length} doubts:\n  ${doubts.join('\n  ')}` : 'no doubts'}`,
+  )
 }
 
 await main()

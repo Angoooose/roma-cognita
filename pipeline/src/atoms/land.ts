@@ -19,7 +19,10 @@ import { CACHE_DIR } from '../load.ts'
 
 const CACHE = join(CACHE_DIR, 'natural-earth')
 export const LAND_SOURCES = {
-  land: { url: 'https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip', shp: 'land/ne_10m_land.shp' },
+  land: {
+    url: 'https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip',
+    shp: 'land/ne_10m_land.shp',
+  },
   minor: {
     url: 'https://naciscdn.org/naturalearth/10m/physical/ne_10m_minor_islands.zip',
     shp: 'minor/ne_10m_minor_islands.shp',
@@ -46,7 +49,8 @@ export class Land {
   constructor(bounds: Bounds) {
     for (const src of Object.values(LAND_SOURCES)) {
       const path = join(CACHE, src.shp)
-      if (!existsSync(path)) throw new Error(`missing ${path} — download and unzip ${src.url} into ${CACHE}`)
+      if (!existsSync(path))
+        throw new Error(`missing ${path} — download and unzip ${src.url} into ${CACHE}`)
       for (const rec of readShp(path, bounds))
         for (const ring of rec.parts) {
           const kept = simplifyIndices(ring, COAST_TOLERANCE).map((i) => ring[i])
@@ -106,10 +110,22 @@ export class Land {
  */
 function clipToBox(ring: Pt[], x0: number, y0: number, x1: number, y1: number): Pt[] {
   const edges: [(p: Pt) => boolean, (a: Pt, b: Pt) => Pt][] = [
-    [(p) => p[0] >= x0, (a, b) => [x0, a[1] + ((b[1] - a[1]) * (x0 - a[0])) / (b[0] - a[0])]],
-    [(p) => p[0] <= x1, (a, b) => [x1, a[1] + ((b[1] - a[1]) * (x1 - a[0])) / (b[0] - a[0])]],
-    [(p) => p[1] >= y0, (a, b) => [a[0] + ((b[0] - a[0]) * (y0 - a[1])) / (b[1] - a[1]), y0]],
-    [(p) => p[1] <= y1, (a, b) => [a[0] + ((b[0] - a[0]) * (y1 - a[1])) / (b[1] - a[1]), y1]],
+    [
+      (p) => p[0] >= x0,
+      (a, b) => [x0, a[1] + ((b[1] - a[1]) * (x0 - a[0])) / (b[0] - a[0])],
+    ],
+    [
+      (p) => p[0] <= x1,
+      (a, b) => [x1, a[1] + ((b[1] - a[1]) * (x1 - a[0])) / (b[0] - a[0])],
+    ],
+    [
+      (p) => p[1] >= y0,
+      (a, b) => [a[0] + ((b[0] - a[0]) * (y0 - a[1])) / (b[1] - a[1]), y0],
+    ],
+    [
+      (p) => p[1] <= y1,
+      (a, b) => [a[0] + ((b[0] - a[0]) * (y1 - a[1])) / (b[1] - a[1]), y1],
+    ],
   ]
   let pts = ring.slice(0, -1)
   for (const [inside, cross] of edges) {
@@ -129,7 +145,10 @@ function clipToBox(ring: Pt[], x0: number, y0: number, x1: number, y1: number): 
 }
 
 function overlapsBox(ring: Pt[], x0: number, y0: number, x1: number, y1: number) {
-  let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity
+  let w = Infinity,
+    s = Infinity,
+    e = -Infinity,
+    n = -Infinity
   for (const [x, y] of ring) {
     if (x < w) w = x
     if (x > e) e = x

@@ -33,7 +33,15 @@ import {
 import type { BakeJob, BakeResult } from './bake-worker.ts'
 import { edgesTouch, inside, type Ring } from './raster.ts'
 import { RingIndex } from './ring-index.ts'
-import { SOURCES, ensureUnzipped, keepLake, keepLand, lakeArea, projectRing, readRings } from './sources.ts'
+import {
+  SOURCES,
+  ensureUnzipped,
+  keepLake,
+  keepLand,
+  lakeArea,
+  projectRing,
+  readRings,
+} from './sources.ts'
 import { ROOT_DIR, CACHE_DIR, DATA_DIR } from '../load.ts'
 
 const OUT = join(ROOT_DIR, 'build/water')
@@ -86,10 +94,16 @@ function readFloodplains(): Ring[] {
   const recordsFile = join(DATA_DIR, 'features.yaml')
   const geometryFile = join(DATA_DIR, 'geometry/features.geojson')
   if (!existsSync(recordsFile) || !existsSync(geometryFile)) return []
-  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as { id: string; kind: string }[]
+  const records = (parseYaml(readFileSync(recordsFile, 'utf8')) ?? []) as {
+    id: string
+    kind: string
+  }[]
   const ids = new Set(records.filter((r) => r.kind === 'floodplain').map((r) => r.id))
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
-    features: { id: string; geometry: { type: string; coordinates: number[][][] | number[][][][] } }[]
+    features: {
+      id: string
+      geometry: { type: string; coordinates: number[][][] | number[][][][] }
+    }[]
   }
   const rings: Ring[] = []
   let polygon = 0
@@ -134,9 +148,12 @@ function readLandscapeChanges() {
     sources: { source: string }[]
   }[]
   const citations = new Map(
-    ((parseYaml(readFileSync(sourcesFile, 'utf8')) ?? []) as { id: string; citation: string }[]).map(
-      (s) => [s.id, s.citation.trim()],
-    ),
+    (
+      (parseYaml(readFileSync(sourcesFile, 'utf8')) ?? []) as {
+        id: string
+        citation: string
+      }[]
+    ).map((s) => [s.id, s.citation.trim()]),
   )
   const byId = new Map(records.map((r) => [r.id, r]))
   const collection = JSON.parse(readFileSync(geometryFile, 'utf8')) as {
@@ -150,7 +167,8 @@ function readLandscapeChanges() {
   for (const f of collection.features) {
     const record = byId.get(f.id)
     const op = record?.op
-    const target = op === 'remove-water' ? out.removeWater : op === 'add-water' ? out.addWater : null
+    const target =
+      op === 'remove-water' ? out.removeWater : op === 'add-water' ? out.addWater : null
     if (!target) continue
     const polys =
       f.geometry.type === 'Polygon'
@@ -190,10 +208,19 @@ async function main() {
   const t0 = Date.now()
   console.log('reading OSM land polygons…')
   const land = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.land.zip), keepLand)
-  console.log(`  ${land.stats.kept} pieces, ${land.stats.rings} rings, ${fmt(land.stats.points)} points`)
+  console.log(
+    `  ${land.stats.kept} pieces, ${land.stats.rings} rings, ${fmt(land.stats.points)} points`,
+  )
   console.log('reading HydroLAKES…')
-  const lakes = await readRings(ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip), keepLake, lakeArea)
-  console.log(`  ${lakes.stats.kept} lakes, ${fmt(lakes.stats.points)} points; dropped`, lakes.stats.dropped)
+  const lakes = await readRings(
+    ensureUnzipped(CACHE_DIR, SOURCES.lakes.zip),
+    keepLake,
+    lakeArea,
+  )
+  console.log(
+    `  ${lakes.stats.kept} lakes, ${fmt(lakes.stats.points)} points; dropped`,
+    lakes.stats.dropped,
+  )
   console.log(`  read in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
 
   const floodplains = readFloodplains()
@@ -214,10 +241,18 @@ async function main() {
    * Channel 2 needs the final coast ANCIENT_REACH_M round the tile, further than the
    * shore channel's margin, so its rings come from a wider query.
    */
-  const widestShelf = Math.max(ANCIENT_REACH_M, ...changes.ancientSea.map((r) => r.shelf ?? 0))
+  const widestShelf = Math.max(
+    ANCIENT_REACH_M,
+    ...changes.ancientSea.map((r) => r.shelf ?? 0),
+  )
   const ancientJob = (rect: readonly [number, number, number, number]) => {
     // As far round the tile as the widest shelf of the ancient sea near it.
-    const near = ancientIndex.query(rect[0] - widestShelf, rect[1] - widestShelf, rect[2] + widestShelf, rect[3] + widestShelf)
+    const near = ancientIndex.query(
+      rect[0] - widestShelf,
+      rect[1] - widestShelf,
+      rect[2] + widestShelf,
+      rect[3] + widestShelf,
+    )
     const m = Math.max(ANCIENT_REACH_M, ...near.map((r) => r.shelf ?? 0))
     const r = [rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m] as const
     return {
@@ -260,7 +295,8 @@ async function main() {
         const ancientHere = ancientIndex.query(...rect)
         const ancient =
           ancientHere.length > 0 &&
-          (edgesTouch(ancientHere, ...rect) || inside(ancientHere, x0 + size / 2, y0 + size / 2))
+          (edgesTouch(ancientHere, ...rect) ||
+            inside(ancientHere, x0 + size / 2, y0 + size / 2))
         // A uniform parent has uniform children, with one exception: lakes too small
         // for the parent's level can appear in its children, so an all-land parent only
         // settles a child that no lake at the child's level reaches. (Floodplain edges
@@ -346,7 +382,9 @@ async function main() {
     mkdirSync(dirname(file), { recursive: true })
     tiles.sort(
       (a, b) =>
-        a.address.level - b.address.level || a.address.j - b.address.j || a.address.i - b.address.i,
+        a.address.level - b.address.level ||
+        a.address.j - b.address.j ||
+        a.address.i - b.address.i,
     )
     const pack = writePack(tiles)
     largest = Math.max(largest, pack.length)
@@ -368,7 +406,9 @@ async function main() {
     codes: codes.slice(0, CODE_LEVEL + 1).map((c) => Buffer.from(c).toString('base64')),
   }
   writeFileSync(join(OUT, 'index.json'), JSON.stringify(index))
-  console.log(`wrote ${written} tiles, ${fmt(bytes)} B, in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
+  console.log(
+    `wrote ${written} tiles, ${fmt(bytes)} B, in ${((Date.now() - t0) / 1000).toFixed(0)} s`,
+  )
 }
 
 /**
@@ -411,7 +451,12 @@ class BakePool {
     })
   }
 
-  private send(w: Worker, job: BakeJob, resolve: (r: Uint8Array) => void, reject: (e: Error) => void) {
+  private send(
+    w: Worker,
+    job: BakeJob,
+    resolve: (r: Uint8Array) => void,
+    reject: (e: Error) => void,
+  ) {
     this.pending.set(job.id, [resolve, reject])
     w.postMessage(job)
   }
@@ -428,7 +473,11 @@ class BakePool {
 }
 
 function fmt(n: number) {
-  return n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${(n / 1e3).toFixed(0)}k` : `${n}`
+  return n >= 1e6
+    ? `${(n / 1e6).toFixed(1)}M`
+    : n >= 1e3
+      ? `${(n / 1e3).toFixed(0)}k`
+      : `${n}`
 }
 
 await main()

@@ -34,10 +34,29 @@ import { findAnchor, pageIndex, rangeEnd, work } from './passages/passage.ts'
 const QUOTED = join(CACHE_DIR, 'quoted')
 
 const ENTITIES: Record<string, string> = {
-  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
-  mdash: '—', ndash: '–', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', hellip: '…',
-  sect: '§', para: '¶', middot: '·', aelig: 'æ', AElig: 'Æ', oelig: 'œ', OElig: 'Œ',
-  szlig: 'ß', laquo: '«', raquo: '»',
+  amp: '&',
+  lt: '<',
+  gt: '>',
+  quot: '"',
+  apos: "'",
+  nbsp: ' ',
+  mdash: '—',
+  ndash: '–',
+  lsquo: '‘',
+  rsquo: '’',
+  ldquo: '“',
+  rdquo: '”',
+  hellip: '…',
+  sect: '§',
+  para: '¶',
+  middot: '·',
+  aelig: 'æ',
+  AElig: 'Æ',
+  oelig: 'œ',
+  OElig: 'Œ',
+  szlig: 'ß',
+  laquo: '«',
+  raquo: '»',
 }
 
 /** A page's words, without its markup. */
@@ -111,12 +130,16 @@ function passageText(ref: SourceRef): { text: string; in: string } | { why: stri
     pages.set(key, existsSync(file) ? anchors(readFileSync(file, 'utf8'), w) : null)
   }
   const blocks = pages.get(key)
-  if (!idx || !blocks) return { why: `${key} not downloaded: npm run passages:fetch -w pipeline` }
+  if (!idx || !blocks)
+    return { why: `${key} not downloaded: npm run passages:fetch -w pipeline` }
   const first = findAnchor(idx.refs, start, w)
   if (!first) return { why: `no passage for ${ref.source} ${ref.locator}` }
   const last = findAnchor(idx.refs, rangeEnd(ref.locator!, start), w) ?? first
   const i = blocks.findIndex((b) => b.id === first)
-  const j = Math.max(i, blocks.findIndex((b) => b.id === last))
+  const j = Math.max(
+    i,
+    blocks.findIndex((b) => b.id === last),
+  )
   if (i < 0) return { why: `${key} has changed since passages:fetch; fetch it again` }
   const text = blocks
     .slice(Math.max(0, i - 1), j + 2)
@@ -178,7 +201,9 @@ export async function pdfText(body: Uint8Array): Promise<string> {
   const pages: string[] = []
   for (let n = 1; n <= doc.numPages; n++) {
     const { items } = await (await doc.getPage(n)).getTextContent()
-    pages.push(items.map((i) => ('str' in i ? i.str + (i.hasEOL ? '\n' : ' ') : '')).join(''))
+    pages.push(
+      items.map((i) => ('str' in i ? i.str + (i.hasEOL ? '\n' : ' ') : '')).join(''),
+    )
   }
   await task.destroy()
   return pages.join('\n\n')
@@ -203,7 +228,10 @@ async function download(url: string, refresh: boolean): Promise<string | { why: 
   if (!refresh && existsSync(file)) return readFileSync(file, 'utf8')
   const res = await fetch(url, { headers: { 'User-Agent': userAgent() } })
   if (!res.ok) return { why: `HTTP ${res.status}` }
-  const text = await asText(Buffer.from(await res.arrayBuffer()), res.headers.get('content-type') ?? '')
+  const text = await asText(
+    Buffer.from(await res.arrayBuffer()),
+    res.headers.get('content-type') ?? '',
+  )
   if (typeof text === 'string') {
     mkdirSync(QUOTED, { recursive: true })
     writeFileSync(file, text)
@@ -224,9 +252,17 @@ async function main() {
   const ds = loadDataset()
   const sources = new Map(ds.sources.map((s) => [s.id, s]))
   const refs = [
-    ...ds.atoms, ...ds.polities, ...ds.claims, ...ds.relations, ...ds.seats,
-    ...ds.places, ...ds.routes, ...ds.roadCorrections, ...ds.landscapeChanges,
-    ...ds.features, ...ds.names,
+    ...ds.atoms,
+    ...ds.polities,
+    ...ds.claims,
+    ...ds.relations,
+    ...ds.seats,
+    ...ds.places,
+    ...ds.routes,
+    ...ds.roadCorrections,
+    ...ds.landscapeChanges,
+    ...ds.features,
+    ...ds.names,
   ].flatMap((r) => r.sources)
   const urls = new Set(
     refs.filter((r) => r.quote).flatMap((r) => textUrl(r, sources.get(r.source)) ?? []),

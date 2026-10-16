@@ -18,7 +18,11 @@ export interface VectoriseOptions {
   minRingKm2: number
 }
 
-export function vectorise(mask: Uint8Array, dem: Raster, opts: VectoriseOptions): AreaGeometry {
+export function vectorise(
+  mask: Uint8Array,
+  dem: Raster,
+  opts: VectoriseOptions,
+): AreaGeometry {
   // Crop to the mask with a margin so the contour closes inside the grid.
   let i0 = dem.width
   let j0 = dem.height
@@ -39,14 +43,17 @@ export function vectorise(mask: Uint8Array, dem: Raster, opts: VectoriseOptions)
   const h = j1 - j0 + 1 + 2 * pad
   const values = new Float32Array(w * h)
   for (let j = j0; j <= j1; j++)
-    for (let i = i0; i <= i1; i++) values[(j - j0 + pad) * w + (i - i0 + pad)] = mask[j * dem.width + i]
+    for (let i = i0; i <= i1; i++)
+      values[(j - j0 + pad) * w + (i - i0 + pad)] = mask[j * dem.width + i]
   const smooth = blur(values, w, h, 1)
   const [mp] = contours().size([w, h]).thresholds([0.5])(smooth as unknown as number[])
   const polys: Pt[][][] = []
   for (const poly of mp.coordinates as Pt[][][]) {
     const rings: Pt[][] = []
     for (const [ri, ring] of poly.entries()) {
-      const ll = ring.map(([x, y]) => pixelToLonLat(dem.z, x + i0 - pad + dem.x0, y + j0 - pad + dem.y0))
+      const ll = ring.map(([x, y]) =>
+        pixelToLonLat(dem.z, x + i0 - pad + dem.x0, y + j0 - pad + dem.y0),
+      )
       const s = simplifyRing(ll, opts.simplifyM)
       if (s.length < 4) continue
       const a = Math.abs(ringArea(s))
@@ -58,7 +65,10 @@ export function vectorise(mask: Uint8Array, dem: Raster, opts: VectoriseOptions)
   }
   const g = rewindRFC7946({ type: 'MultiPolygon', coordinates: polys } as AreaGeometry)
   const problems = ringProblems(g)
-  if (problems.length) throw new Error(`vectorised geometry is unsound: ${JSON.stringify(problems.slice(0, 3))}`)
+  if (problems.length)
+    throw new Error(
+      `vectorised geometry is unsound: ${JSON.stringify(problems.slice(0, 3))}`,
+    )
   return g
 }
 
@@ -73,7 +83,11 @@ function simplifyRing(ring: Pt[], tolerance: number): Pt[] {
     const last = out[out.length - 1]
     if (!last || last[0] !== p[0] || last[1] !== p[1]) out.push(p)
   }
-  if (out.length && (out[0][0] !== out[out.length - 1][0] || out[0][1] !== out[out.length - 1][1])) out.push(out[0])
+  if (
+    out.length &&
+    (out[0][0] !== out[out.length - 1][0] || out[0][1] !== out[out.length - 1][1])
+  )
+    out.push(out[0])
   return out
 }
 
@@ -88,6 +102,7 @@ export function ringArea(ring: Pt[]): number {
 export function geometryArea(g: AreaGeometry): number {
   const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates
   let a = 0
-  for (const poly of polys) poly.forEach((r, i) => (a += (i === 0 ? 1 : -1) * Math.abs(ringArea(r as Pt[]))))
+  for (const poly of polys)
+    poly.forEach((r, i) => (a += (i === 0 ? 1 : -1) * Math.abs(ringArea(r as Pt[]))))
   return a
 }

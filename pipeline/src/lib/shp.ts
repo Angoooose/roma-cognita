@@ -51,7 +51,10 @@ export function readShp(path: string, bbox: Bbox): ShpRecord[] {
       for (let p = 0; p < numParts; p++) {
         const part: [number, number][] = []
         for (let k = starts[p]; k < starts[p + 1]; k++) {
-          part.push([body.readDoubleLE(base + k * 16), body.readDoubleLE(base + k * 16 + 8)])
+          part.push([
+            body.readDoubleLE(base + k * 16),
+            body.readDoubleLE(base + k * 16 + 8),
+          ])
         }
         parts.push(part)
       }
@@ -81,7 +84,10 @@ export function readDbf(
     const layout = new Map<string, { at: number; len: number; type: string }>()
     let at = 1 // deletion flag
     for (let o = 32; o + 32 <= headerLen && desc[o] !== 0x0d; o += 32) {
-      const name = desc.subarray(o, o + 11).toString('latin1').replace(/\0.*$/, '')
+      const name = desc
+        .subarray(o, o + 11)
+        .toString('latin1')
+        .replace(/\0.*$/, '')
       const type = String.fromCharCode(desc[o + 11])
       const len = desc[o + 16]
       layout.set(name, { at, len, type })
@@ -94,7 +100,10 @@ export function readDbf(
       const r: Record<string, number | string> = {}
       for (const f of fields) {
         const { at, len, type } = layout.get(f)!
-        const s = rec.subarray(at, at + len).toString('latin1').trim()
+        const s = rec
+          .subarray(at, at + len)
+          .toString('latin1')
+          .trim()
         r[f] = type === 'N' || type === 'F' ? Number(s) : s
       }
       out.set(row, r)

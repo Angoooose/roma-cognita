@@ -157,7 +157,13 @@ export function signedDistance(land: Uint8Array, w: number, h: number): Float32A
 }
 
 /** Does any edge of `rings` touch the rectangle? Used to find tiles with coast in them. */
-export function edgesTouch(rings: Ring[], minX: number, minY: number, maxX: number, maxY: number) {
+export function edgesTouch(
+  rings: Ring[],
+  minX: number,
+  minY: number,
+  maxX: number,
+  maxY: number,
+) {
   for (const r of rings) {
     if (r.maxX < minX || r.minX > maxX || r.maxY < minY || r.minY > maxY) continue
     const p = r.xy
@@ -204,7 +210,10 @@ function segmentHitsRect(
     return true
   }
   return (
-    clip(-dx, ax - minX) && clip(dx, maxX - ax) && clip(-dy, ay - minY) && clip(dy, maxY - ay)
+    clip(-dx, ax - minX) &&
+    clip(dx, maxX - ax) &&
+    clip(-dy, ay - minY) &&
+    clip(dy, maxY - ay)
   )
 }
 

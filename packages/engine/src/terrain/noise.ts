@@ -14,7 +14,8 @@ import { float, Fn, floor, int, select, sub, uint, vec2 } from 'three/tsl'
  * helpers three/tsl does not export.
  */
 export function seededNoise(p: THREE.Node<'vec2'>, seed: number): THREE.Node<'float'> {
-  if (!Number.isInteger(seed)) throw new Error(`seededNoise: seed ${seed} is not a whole number`)
+  if (!Number.isInteger(seed))
+    throw new Error(`seededNoise: seed ${seed} is not a whole number`)
   return perlinOnPlane(vec2(p), int(seed))
 }
 
@@ -73,7 +74,15 @@ const hash3 = Fn(([x0, y0, z0]: [I, I, I]) => {
   const a = uint().toVar()
   const b = uint().toVar()
   const c = uint().toVar()
-  a.assign(b.assign(c.assign(uint(0xdeadbeef).add(len.shiftLeft(uint(2))).add(uint(13)))))
+  a.assign(
+    b.assign(
+      c.assign(
+        uint(0xdeadbeef)
+          .add(len.shiftLeft(uint(2)))
+          .add(uint(13)),
+      ),
+    ),
+  )
   a.addAssign(uint(x))
   b.addAssign(uint(y))
   c.addAssign(uint(z))
@@ -96,7 +105,11 @@ const gradient = Fn(([hash0, x0, y0]: [U, F, F]) => {
   const h = uint(hash.bitAnd(uint(15))).toVar()
   const u = float(select(h.lessThan(uint(8)), x, y)).toVar()
   const v = float(
-    select(h.lessThan(uint(4)), y, select(h.equal(uint(12)).or(h.equal(uint(14))), x, float(0))),
+    select(
+      h.lessThan(uint(4)),
+      y,
+      select(h.equal(uint(12)).or(h.equal(uint(14))), x, float(0)),
+    ),
   ).toVar()
   const nu = select(h.bitAnd(uint(1)).notEqual(uint(0)), u.negate(), u)
   const nv = select(h.bitAnd(uint(2)).notEqual(uint(0)), v.negate(), v)
@@ -111,7 +124,11 @@ const gradient = Fn(([hash0, x0, y0]: [U, F, F]) => {
   ],
 })
 
-const fade = (t: F) => t.mul(t).mul(t).mul(t.mul(t.mul(6.0).sub(15.0)).add(10.0))
+const fade = (t: F) =>
+  t
+    .mul(t)
+    .mul(t)
+    .mul(t.mul(t.mul(6.0).sub(15.0)).add(10.0))
 
 const perlinOnPlane = Fn(([p0, Z]: [THREE.Node<'vec2'>, I]) => {
   const p = vec2(p0).toVar()
@@ -124,11 +141,15 @@ const perlinOnPlane = Fn(([p0, Z]: [THREE.Node<'vec2'>, I]) => {
   const v0 = float(gradient(hash3(X, Y, Z), fx, fy)).toVar()
   const v1 = float(gradient(hash3(X.add(int(1)), Y, Z), fx.sub(1.0), fy)).toVar()
   const v2 = float(gradient(hash3(X, Y.add(int(1)), Z), fx, fy.sub(1.0))).toVar()
-  const v3 = float(gradient(hash3(X.add(int(1)), Y.add(int(1)), Z), fx.sub(1.0), fy.sub(1.0))).toVar()
+  const v3 = float(
+    gradient(hash3(X.add(int(1)), Y.add(int(1)), Z), fx.sub(1.0), fy.sub(1.0)),
+  ).toVar()
   // mx_trilerp's near plane; its far plane is weighted by fade(0) = 0.
   const s1 = float(sub(1.0, s)).toVar()
   const t1 = float(sub(1.0, t)).toVar()
-  const result = float(t1.mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))))).toVar()
+  const result = float(
+    t1.mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s)))),
+  ).toVar()
   return result.mul(0.982)
 }).setLayout({
   name: 'rm_perlin_plane',

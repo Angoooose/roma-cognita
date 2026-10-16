@@ -39,7 +39,14 @@ import { projection } from '@roma-cognita/world'
 import type { AreaGeometry } from '@roma-cognita/schema'
 import { DATA_DIR } from '../load.ts'
 import { BRANCHES, type Branch } from './delta-branches.ts'
-import { type Bbox, type Raster, lonLatToPixel, pixelMetres, pixelToLonLat, readDem } from '../lib/dem.ts'
+import {
+  type Bbox,
+  type Raster,
+  lonLatToPixel,
+  pixelMetres,
+  pixelToLonLat,
+  readDem,
+} from '../lib/dem.ts'
 import {
   type Pt,
   blur,
@@ -66,18 +73,25 @@ const OUT = join(DATA_DIR, 'geometry/features.geojson')
  */
 const CORRECTIONS: { op: 'remove-water' | 'add-water'; rings: Pt[][] }[] = (() => {
   const ops = new Map(
-    ((parseYaml(readFileSync(join(DATA_DIR, 'landscape-changes.yaml'), 'utf8')) ?? []) as { id: string; op: string }[]).map(
-      (r) => [r.id, r.op],
-    ),
+    (
+      (parseYaml(readFileSync(join(DATA_DIR, 'landscape-changes.yaml'), 'utf8')) ?? []) as {
+        id: string
+        op: string
+      }[]
+    ).map((r) => [r.id, r.op]),
   )
-  const shapes = JSON.parse(readFileSync(join(DATA_DIR, 'geometry/landscape-changes.geojson'), 'utf8')) as {
+  const shapes = JSON.parse(
+    readFileSync(join(DATA_DIR, 'geometry/landscape-changes.geojson'), 'utf8'),
+  ) as {
     features: { id: string; geometry: AreaGeometry }[]
   }
   const out: { op: 'remove-water' | 'add-water'; rings: Pt[][] }[] = []
   for (const f of shapes.features) {
     const op = ops.get(f.id)
     if (op !== 'remove-water' && op !== 'add-water') continue
-    const polys = (f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates) as Pt[][][]
+    const polys = (
+      f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
+    ) as Pt[][][]
     for (const rings of polys) out.push({ op, rings })
   }
   return out.sort((a, b) => (a.op === b.op ? 0 : a.op === 'remove-water' ? -1 : 1))
@@ -86,12 +100,14 @@ const SIMPLIFY_M = 60
 const round = (v: number) => Math.round(v * 1e5) / 1e5
 const argv = process.argv.slice(2)
 const previewFlag = argv.indexOf('--preview')
-const PREVIEW_DIR = previewFlag >= 0 ? argv[previewFlag + 1] : process.env.FLOODPLAIN_PREVIEW_DIR
+const PREVIEW_DIR =
+  previewFlag >= 0 ? argv[previewFlag + 1] : process.env.FLOODPLAIN_PREVIEW_DIR
 const filters = argv.filter((a, i) => !a.startsWith('--') && argv[i - 1] !== '--preview')
 
 const doubts: string[] = []
 const T0 = Date.now()
-const tick = (what: string) => console.log(`  [${((Date.now() - T0) / 1000).toFixed(0)} s] ${what}`)
+const tick = (what: string) =>
+  console.log(`  [${((Date.now() - T0) / 1000).toFixed(0)} s] ${what}`)
 const doubt = (s: string) => {
   doubts.push(s)
   console.log(`  DOUBT: ${s}`)
@@ -110,12 +126,19 @@ const toPx = (dem: Raster, [lon, lat]: Pt): Pt => {
   const [x, y] = lonLatToPixel(dem.z, lon, lat)
   return [x - dem.x0, y - dem.y0]
 }
-const toLonLat = (dem: Raster, [x, y]: Pt): Pt => pixelToLonLat(dem.z, x + dem.x0, y + dem.y0)
-const centre = (dem: Raster, p: number): Pt => [(p % dem.width) + 0.5, Math.floor(p / dem.width) + 0.5]
+const toLonLat = (dem: Raster, [x, y]: Pt): Pt =>
+  pixelToLonLat(dem.z, x + dem.x0, y + dem.y0)
+const centre = (dem: Raster, p: number): Pt => [
+  (p % dem.width) + 0.5,
+  Math.floor(p / dem.width) + 0.5,
+]
 
 /** Area of one pixel in km², by row. */
 const rowAreas = (dem: Raster) =>
-  Float64Array.from({ length: dem.height }, (_, j) => (pixelMetres(dem.z, dem.y0 + j + 0.5) / 1000) ** 2)
+  Float64Array.from(
+    { length: dem.height },
+    (_, j) => (pixelMetres(dem.z, dem.y0 + j + 0.5) / 1000) ** 2,
+  )
 
 function maskArea(mask: Uint8Array, dem: Raster, rows = rowAreas(dem)) {
   let a = 0
@@ -125,7 +148,12 @@ function maskArea(mask: Uint8Array, dem: Raster, rows = rowAreas(dem)) {
 
 function rasterise(dem: Raster, rings: Pt[][]): Uint8Array {
   const m = new Uint8Array(dem.width * dem.height)
-  fillRings(m, dem.width, dem.height, rings.map((r) => r.map((p) => toPx(dem, p))))
+  fillRings(
+    m,
+    dem.width,
+    dem.height,
+    rings.map((r) => r.map((p) => toPx(dem, p))),
+  )
   return m
 }
 
@@ -135,7 +163,7 @@ function nearestVertex(line: Pt[], p: Pt): number {
   let bd = Infinity
   line.forEach(([x, y], k) => {
     const d = (x - p[0]) ** 2 + (y - p[1]) ** 2
-    if (d < bd) (bd = d), (best = k)
+    if (d < bd) ((bd = d), (best = k))
   })
   return best
 }
@@ -147,7 +175,11 @@ const kmBetween = (a: Pt, b: Pt) => {
   return Math.hypot(ax - bx, ay - by) / 1000
 }
 
-function running<T extends number>(values: T[], half: number, f: (w: number[]) => number): number[] {
+function running<T extends number>(
+  values: T[],
+  half: number,
+  f: (w: number[]) => number,
+): number[] {
   return values.map((_, k) => f(values.slice(Math.max(0, k - half), k + half + 1)))
 }
 const median = (w: number[]) => {
@@ -179,7 +211,7 @@ function snapLow(dem: Raster, p: Pt, radius = 15): number {
     for (let i = Math.floor(x) - radius; i <= Math.floor(x) + radius; i++) {
       if (i < 0 || j < 0 || i >= dem.width || j >= dem.height) continue
       const v = dem.data[j * dem.width + i] + 0.02 * Math.hypot(i - x, j - y)
-      if (v < bv) (bv = v), (best = j * dem.width + i)
+      if (v < bv) ((bv = v), (best = j * dem.width + i))
     }
   }
   return best
@@ -188,7 +220,9 @@ function snapLow(dem: Raster, p: Pt, radius = 15): number {
 function buildBranches(dem: Raster, land: Uint8Array): BuiltBranch[] {
   const bbox = bboxOf(REGIONS.find((r) => r.id === 'nile-delta-floodplain')!.hull)
   const rosettaChains = readRivers('af', bbox, 500)
-  const rosetta = rosettaChains.sort((a, b) => b.line.length - a.line.length)[0].line.map((p) => toPx(dem, p))
+  const rosetta = rosettaChains
+    .sort((a, b) => b.line.length - a.line.length)[0]
+    .line.map((p) => toPx(dem, p))
   // Cost for tracing modern channels: cheap on the lowest ground within ~800 m.
   const low = minFilter(dem.data, dem.width, dem.height, 12)
   const cost = new Float32Array(dem.data.length)
@@ -216,12 +250,13 @@ function buildBranches(dem: Raster, land: Uint8Array): BuiltBranch[] {
       }
     }
     let cur = wps[0].px
-    for (let k = 1; k < wps.length; ) {
+    for (let k = 1; k < wps.length;) {
       const via = wps[k].via ?? 'spline'
       if (via === 'rosetta') {
         const i0 = nearestVertex(rosetta, cur)
         const i1 = nearestVertex(rosetta, wps[k].px)
-        const seg = i0 <= i1 ? rosetta.slice(i0, i1 + 1) : rosetta.slice(i1, i0 + 1).reverse()
+        const seg =
+          i0 <= i1 ? rosetta.slice(i0, i1 + 1) : rosetta.slice(i1, i0 + 1).reverse()
         push(seg, false)
         cur = seg[seg.length - 1]
         k++
@@ -243,7 +278,8 @@ function buildBranches(dem: Raster, land: Uint8Array): BuiltBranch[] {
         k++
       } else {
         const run: Pt[] = [cur]
-        while (k < wps.length && (wps[k].via ?? 'spline') === 'spline') run.push(wps[k++].px)
+        while (k < wps.length && (wps[k].via ?? 'spline') === 'spline')
+          run.push(wps[k++].px)
         const curve = catmullRom(run, 16)
         push(curve.slice(1), true)
         cur = run[run.length - 1]
@@ -255,7 +291,9 @@ function buildBranches(dem: Raster, land: Uint8Array): BuiltBranch[] {
     const onLand = ([x, y]: Pt) => {
       const i = Math.floor(x)
       const j = Math.floor(y)
-      return i >= 0 && j >= 0 && i < dem.width && j < dem.height && land[j * dem.width + i] === 1
+      return (
+        i >= 0 && j >= 0 && i < dem.width && j < dem.height && land[j * dem.width + i] === 1
+      )
     }
     while (end > 1 && !onLand(line[end])) end--
     const trimmed = line.slice(end)
@@ -324,7 +362,10 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
   tick('DEM read')
   const land = rasterise(dem, readLand(bbox))
   const lakes = readLakes(bbox)
-  const lake = rasterise(dem, lakes.flatMap((l) => l.rings))
+  const lake = rasterise(
+    dem,
+    lakes.flatMap((l) => l.rings),
+  )
   for (let p = 0; p < n; p++) if (lake[p]) land[p] = 0
   // The corrections the coast mask applies, in the same order, so a floodplain stops at
   // the coast the map draws and a branch runs out to its ancient mouth.
@@ -337,11 +378,17 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
     const other = rasterise(dem, [r.hull])
     for (let p = 0; p < n; p++) if (other[p]) hull[p] = 0
   }
-  console.log(`  hull ${maskArea(hull, dem, rows).toFixed(0)} km² after earlier regions; ${lakes.length} lakes ≥ 1 km² cut`)
+  console.log(
+    `  hull ${maskArea(hull, dem, rows).toFixed(0)} km² after earlier regions; ${lakes.length} lakes ≥ 1 km² cut`,
+  )
 
   tick('land, lakes, hulls rasterised')
   // Channels.
-  const channels: { label: string; px: Pt[]; style: Overlay['channels'][number]['style'] }[] = []
+  const channels: {
+    label: string
+    px: Pt[]
+    style: Overlay['channels'][number]['style']
+  }[] = []
   let branches: BuiltBranch[] = []
   for (const spec of region.channels) {
     if (spec.kind === 'delta-branches') {
@@ -352,11 +399,17 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
       const lines = readRivers(spec.region, bbox, spec.minQ)
       for (const c of lines) {
         const pieces = clipLine(c, spec.clip)
-        for (const piece of pieces) channels.push({ label: c.label, px: piece.map((p) => toPx(dem, p)), style: 'modern' })
+        for (const piece of pieces)
+          channels.push({
+            label: c.label,
+            px: piece.map((p) => toPx(dem, p)),
+            style: 'modern',
+          })
       }
     }
   }
-  if (!channels.length && region.method.kind === 'hand') throw new Error(`${region.id}: no channels`)
+  if (!channels.length && region.method.kind === 'hand')
+    throw new Error(`${region.id}: no channels`)
 
   const seedPixels: number[] = []
   const seedHeight: number[] = []
@@ -380,14 +433,20 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
     for (let p = 0; p < n; p++) {
       const s = nearest[p]
       hand[p] = s < 0 ? Infinity : dem.data[p] - seedHeight[s]
-      if (hull[p] && land[p] && hand[p] <= region.method.maxHeight && (!slope || slope[p] <= maxSlope))
+      if (
+        hull[p] &&
+        land[p] &&
+        hand[p] <= region.method.maxHeight &&
+        (!slope || slope[p] <= maxSlope)
+      )
         cand[p] = 1
     }
     if (slope && region.method.closeKm) {
       const r = (region.method.closeKm * 1000) / pixelMetres(dem.z, dem.y0 + dem.height / 2)
       const closed = close(cand, dem.width, dem.height, r)
       for (let p = 0; p < n; p++)
-        cand[p] = closed[p] && hull[p] && land[p] && hand[p] <= region.method.maxHeight ? 1 : 0
+        cand[p] =
+          closed[p] && hull[p] && land[p] && hand[p] <= region.method.maxHeight ? 1 : 0
     }
   } else {
     const { min, max } = region.method
@@ -437,35 +496,54 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
   console.log(
     `  method: ${m.kind === 'hand' ? `HAND ≤ ${m.maxHeight} m${m.maxSlope ? `, slope ≤ ${(m.maxSlope * 100).toFixed(3)}%` : ''}` : `elevation ${m.min} m to ${m.max} m`}; clean: specks < ${region.clean.minSpeckKm2} km², gaps < ${region.clean.maxHoleKm2} km²`,
   )
-  console.log(`  area ${areaKm2.toFixed(0)} km² (polygon, equal-area) — ${geometry.coordinates.length} polygons`)
+  console.log(
+    `  area ${areaKm2.toFixed(0)} km² (polygon, equal-area) — ${geometry.coordinates.length} polygons`,
+  )
   for (const pub of region.published) {
-    const verdict = areaKm2 < pub.lowKm2 ? 'BELOW' : areaKm2 > pub.highKm2 ? 'ABOVE' : 'within'
+    const verdict =
+      areaKm2 < pub.lowKm2 ? 'BELOW' : areaKm2 > pub.highKm2 ? 'ABOVE' : 'within'
     console.log(
       `    vs ${pub.label}: ${pub.lowKm2}–${pub.highKm2} km² → ${verdict}${pub.checked ? '' : ' (figure not checked against the work)'}`,
     )
-    if (verdict !== 'within') doubt(`${region.id}: area ${areaKm2.toFixed(0)} km² is ${verdict} ${pub.label} (${pub.lowKm2}–${pub.highKm2})`)
+    if (verdict !== 'within')
+      doubt(
+        `${region.id}: area ${areaKm2.toFixed(0)} km² is ${verdict} ${pub.label} (${pub.lowKm2}–${pub.highKm2})`,
+      )
   }
   const polys = geometry.coordinates as Pt[][][]
   const verdicts = region.sites.map((s) => {
-    const inside = polys.some(([outer, ...hs]) => inRing(s.at, outer) && !hs.some((h) => inRing(s.at, h)))
-    const dist = inside ? 0 : Math.min(...polys.flatMap((poly) => poly.map((r) => distToRing(s.at, r))))
+    const inside = polys.some(
+      ([outer, ...hs]) => inRing(s.at, outer) && !hs.some((h) => inRing(s.at, h)),
+    )
+    const dist = inside
+      ? 0
+      : Math.min(...polys.flatMap((poly) => poly.map((r) => distToRing(s.at, r))))
     const [x, y] = toPx(dem, s.at)
     const p = Math.floor(y) * dem.width + Math.floor(x)
     const h = dem.data[p]
     const hh = hand ? hand[p] : NaN
     const got = inside ? 'in' : dist <= 1.5 ? 'edge' : 'out'
-    const ok = got === s.expect || (s.expect === 'edge' && dist <= 3) || (got === 'edge' && s.expect !== 'out')
+    const ok =
+      got === s.expect ||
+      (s.expect === 'edge' && dist <= 3) ||
+      (got === 'edge' && s.expect !== 'out')
     const line = `${s.name}: ${inside ? 'inside' : `${dist.toFixed(1)} km outside`}; ground ${h.toFixed(1)} m${hand ? `, ${hh.toFixed(1)} m above channel` : ''} (expected ${s.expect})`
     console.log(`    site ${ok ? '  ' : '✗ '}${line}`)
     if (!ok) doubt(`${region.id}: ${line}`)
     return { name: s.name, at: s.at, verdict: inside ? '✓' : `${dist.toFixed(1)} km` }
   })
   for (const b of branches) {
-    if (b.trimmedKm > 0.5) console.log(`    ${b.branch.id}: mouth trimmed ${b.trimmedKm.toFixed(1)} km at the modern shore`)
+    if (b.trimmedKm > 0.5)
+      console.log(
+        `    ${b.branch.id}: mouth trimmed ${b.trimmedKm.toFixed(1)} km at the modern shore`,
+      )
     for (const w of b.branch.waypoints) {
       if (w.via === 'trace' || w.via === 'rosetta') continue
       const d = Math.min(...b.lonlat.map((q) => kmBetween(q, w.at)))
-      if (d > 1) console.log(`    ${b.branch.id}: waypoint ${w.prov} is ${d.toFixed(1)} km from the line (snapped or trimmed)`)
+      if (d > 1)
+        console.log(
+          `    ${b.branch.id}: waypoint ${w.prov} is ${d.toFixed(1)} km from the line (snapped or trimmed)`,
+        )
     }
   }
 
@@ -475,7 +553,10 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
     const overlay: Overlay = {
       polygons: polys,
       hull: region.hull,
-      channels: channels.map((c) => ({ line: c.px.map((p) => toLonLat(dem, p)), style: c.style })),
+      channels: channels.map((c) => ({
+        line: c.px.map((p) => toLonLat(dem, p)),
+        style: c.style,
+      })),
       sites: verdicts,
       caption: [
         `${region.label} — ${m.kind === 'hand' ? `HAND ≤ ${m.maxHeight} m${m.maxSlope ? `, slope ≤ ${(m.maxSlope * 100).toFixed(3)}%` : ''}` : `${m.min}…${m.max} m`}`,
@@ -484,7 +565,10 @@ async function deriveRegion(region: Region, previous: Region[]): Promise<Result>
     }
     const views = region.views ?? [bboxOf(region.hull)]
     for (const [k, v] of views.entries()) {
-      const file = join(PREVIEW_DIR, `${region.id}${views.length > 1 ? `-${k + 1}` : ''}.png`)
+      const file = join(
+        PREVIEW_DIR,
+        `${region.id}${views.length > 1 ? `-${k + 1}` : ''}.png`,
+      )
       await renderPreview(dem, v, overlay, file)
       console.log(`  preview ${file}`)
     }
@@ -534,9 +618,10 @@ function clipLine(c: Channel, clip?: Bbox): Pt[][] {
   const out: Pt[][] = []
   let cur: Pt[] = []
   for (const p of c.line) {
-    const inside = p[0] >= clip.west && p[0] <= clip.east && p[1] >= clip.south && p[1] <= clip.north
+    const inside =
+      p[0] >= clip.west && p[0] <= clip.east && p[1] >= clip.south && p[1] <= clip.north
     if (inside) cur.push(p)
-    else if (cur.length) out.push(cur), (cur = [])
+    else if (cur.length) (out.push(cur), (cur = []))
   }
   if (cur.length >= 2) out.push(cur)
   return out.filter((l) => l.length >= 2)
@@ -571,7 +656,10 @@ function distToRing(p: Pt, ring: Pt[]): number {
     const [bx, by] = q[k + 1]
     const dx = bx - ax
     const dy = by - ay
-    const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)))
+    const t = Math.max(
+      0,
+      Math.min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy || 1)),
+    )
     best = Math.min(best, Math.hypot(px - ax - t * dx, py - ay - t * dy))
   }
   return best / 1000
@@ -587,7 +675,9 @@ interface OutFeature {
 }
 
 async function main() {
-  const selected = REGIONS.filter((r) => !filters.length || filters.some((f) => r.id.includes(f)))
+  const selected = REGIONS.filter(
+    (r) => !filters.length || filters.some((f) => r.id.includes(f)),
+  )
   const results: Result[] = []
   for (const region of selected) {
     const previous = REGIONS.slice(0, REGIONS.indexOf(region))
@@ -595,7 +685,9 @@ async function main() {
   }
 
   // Merge into the existing file so a partial run only replaces what it derived.
-  const existing: OutFeature[] = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')).features : []
+  const existing: OutFeature[] = existsSync(OUT)
+    ? JSON.parse(readFileSync(OUT, 'utf8')).features
+    : []
   const replaced = new Map<string, OutFeature>(existing.map((f) => [f.id, f]))
   const stamp = new Date().toISOString().slice(0, 10)
   for (const r of results) {
@@ -650,7 +742,9 @@ async function main() {
     const f = features.find((x) => x.id === id)
     return f ? geometryArea(f.geometry as AreaGeometry) : 0
   }
-  const egypt = ['nile-valley-floodplain', 'nile-delta-floodplain', 'fayum-floodplain'].map(areaOf)
+  const egypt = ['nile-valley-floodplain', 'nile-delta-floodplain', 'fayum-floodplain'].map(
+    areaOf,
+  )
   const total = egypt.reduce((a, b) => a + b, 0)
   console.log(
     `  Egypt (valley ${egypt[0].toFixed(0)} + delta ${egypt[1].toFixed(0)} + Fayum ${egypt[2].toFixed(0)}): ${total.toFixed(0)} km² vs c. 22,000–34,000 km² for ancient cultivable land (the range usually cited from Butzer 1976 — not checked)`,
@@ -660,15 +754,23 @@ async function main() {
   console.log(`\nDOUBTS (${doubts.length})`)
   for (const d of doubts) console.log(`  ${d}`)
   console.log('\nNOT CHECKED')
-  console.log('  the DEM is a surface model (Copernicus GLO-30 in Mapterhorn): towns stand up; gaps under maxHoleKm2 are filled, larger cities are not')
-  console.log('  ancient river courses other than the delta branches: HAND is measured from modern channels')
-  console.log('  the published figures are ranges as commonly cited and have not been checked against the works (see each region)')
+  console.log(
+    '  the DEM is a surface model (Copernicus GLO-30 in Mapterhorn): towns stand up; gaps under maxHoleKm2 are filled, larger cities are not',
+  )
+  console.log(
+    '  ancient river courses other than the delta branches: HAND is measured from modern channels',
+  )
+  console.log(
+    '  the published figures are ranges as commonly cited and have not been checked against the works (see each region)',
+  )
 }
 
 /** Line vertices rounded to ~1 m and thinned where the spline oversampled (≤ 30 m apart). */
 function thinLine(line: Pt[]): Pt[] {
   const planar = line.map(([lon, lat]) => projection.forward(lon, lat) as Pt)
-  return simplifyIndices(planar, 15).map((k) => [round(line[k][0]), round(line[k][1])] as Pt)
+  return simplifyIndices(planar, 15).map(
+    (k) => [round(line[k][0]), round(line[k][1])] as Pt,
+  )
 }
 
 await main()

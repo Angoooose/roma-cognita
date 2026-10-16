@@ -279,13 +279,22 @@ function readAtomGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometr
 function readFeatureGeometry(dir: string, issues: Issue[]): Map<string, FeatureShape> {
   const data = readGeoJson(dir, 'features.geojson', false, FeatureGeometrySchema, issues)
   return new Map(
-    (data?.features ?? []).map((f) => [f.id, { geometry: f.geometry, properties: f.properties }]),
+    (data?.features ?? []).map((f) => [
+      f.id,
+      { geometry: f.geometry, properties: f.properties },
+    ]),
   )
 }
 
 /** Optional: a dataset with no landscape corrections has no landscape-changes.geojson. */
 function readLandscapeGeometry(dir: string, issues: Issue[]): Map<string, AreaGeometry> {
-  const data = readGeoJson(dir, 'landscape-changes.geojson', false, LandscapeChangeGeometrySchema, issues)
+  const data = readGeoJson(
+    dir,
+    'landscape-changes.geojson',
+    false,
+    LandscapeChangeGeometrySchema,
+    issues,
+  )
   return new Map((data?.features ?? []).map((f) => [f.id, f.geometry]))
 }
 

@@ -94,7 +94,8 @@ export function waterLattice(local: V2) {
     at: (w: Wavelength) => lattices.get(w)!,
     /** Moves every lattice to a tile; the terrain material calls it as each tile draws. */
     set(tile: { x0: number; y0: number }) {
-      for (const [w, o] of offsets) o.set(wrap(tile.x0 / 1000 / w), wrap(tile.y0 / 1000 / w))
+      for (const [w, o] of offsets)
+        o.set(wrap(tile.x0 / 1000 / w), wrap(tile.y0 / 1000 / w))
     },
   }
 }

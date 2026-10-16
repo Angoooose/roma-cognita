@@ -538,7 +538,10 @@
         Bogud et de Bocchus II est la même que celle des deux provinces romaines
         de Maurétanie, c’est-à-dire l’oued Moulouya
       supports: [construction]
-    - { source: barrington, locator: 'map 28 and Map-by-Map Directory, map 28 (M. Euzennat)' }
+    - {
+        source: barrington,
+        locator: 'map 28 and Map-by-Map Directory, map 28 (M. Euzennat)',
+      }
     - { source: natural-earth }
   confidence: probable
   review: draft
@@ -684,7 +687,11 @@
         - { at: [28.6, 25.45], via: curve }
     - method: outline
       edge:
-        - { at: [30.35, 25.8], via: curve, note: 'the Kharga oasis (the Oasis Magna, with Hibis)' }
+        - {
+            at: [30.35, 25.8],
+            via: curve,
+            note: 'the Kharga oasis (the Oasis Magna, with Hibis)',
+          }
         - { at: [30.8, 25.75], via: curve }
         - { at: [30.85, 24.6], via: curve }
         - { at: [30.4, 24.65], via: curve }

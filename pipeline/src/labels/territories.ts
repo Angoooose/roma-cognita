@@ -87,16 +87,23 @@ function fillSmallHoles(mask: Uint8Array, w: number, h: number, share: number) {
       out?.push(k)
       const x = k % w
       const y = (k / w) | 0
-      for (const [nx, ny] of [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]]) {
+      for (const [nx, ny] of [
+        [x - 1, y],
+        [x + 1, y],
+        [x, y - 1],
+        [x, y + 1],
+      ]) {
         if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue
         const n = ny * w + nx
-        if (!seen[n] && !mask[n]) (seen[n] = 1), stack.push(n)
+        if (!seen[n] && !mask[n]) ((seen[n] = 1), stack.push(n))
       }
     }
   }
   // Everything outside that touches the border is the sea round the shape, not a hole.
-  for (let x = 0; x < w; x++) for (const y of [0, h - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
-  for (let y = 0; y < h; y++) for (const x of [0, w - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
+  for (let x = 0; x < w; x++)
+    for (const y of [0, h - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
+  for (let y = 0; y < h; y++)
+    for (const x of [0, w - 1]) if (!mask[y * w + x] && !seen[y * w + x]) flood(y * w + x)
   for (let k = 0; k < w * h; k++) {
     if (mask[k] || seen[k]) continue
     const hole: number[] = []

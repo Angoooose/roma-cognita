@@ -149,7 +149,15 @@ for (const f of fc.features) {
   const certainty = p.Segment_s === 'Certain' ? 0 : p.Segment_s === 'Hypothetical' ? 2 : 1
   for (const part of f.geometry.coordinates) {
     const plane = part.map(([x, y]) => projection.forward(xToLon(x), yToLat(y)))
-    if (!plane.some(([x, y]) => x >= DATA_RECT.minX && x <= DATA_RECT.maxX && y >= DATA_RECT.minY && y <= DATA_RECT.maxY))
+    if (
+      !plane.some(
+        ([x, y]) =>
+          x >= DATA_RECT.minX &&
+          x <= DATA_RECT.maxX &&
+          y >= DATA_RECT.minY &&
+          y <= DATA_RECT.maxY,
+      )
+    )
       continue
     const pts = simplify(plane, TOLERANCE_M)
     if (pts.length < 2) continue
@@ -213,5 +221,7 @@ for (const c of corrections.values()) {
   )
 }
 console.log('by builder:')
-for (const [who, k] of Object.entries(km).sort((a, b) => b[1] - a[1]).slice(0, 20))
+for (const [who, k] of Object.entries(km)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 20))
   console.log(`  ${String(Math.round(k)).padStart(5)} km  ${who}`)

@@ -1,14 +1,5 @@
 import * as THREE from 'three/webgpu'
-import {
-  abs,
-  float,
-  If,
-  mix,
-  mx_noise_float,
-  smoothstep,
-  texture,
-  vec2,
-} from 'three/tsl'
+import { abs, float, If, mix, mx_noise_float, smoothstep, texture, vec2 } from 'three/tsl'
 import { ROOT } from '@roma-cognita/world'
 import { rgb } from '../color.ts'
 

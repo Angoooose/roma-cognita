@@ -3,7 +3,12 @@ import type { Ring } from '../src/water/raster.ts'
 import { placeLabel, textWidth, type FontMetrics } from '../src/labels/territories.ts'
 
 // A monospaced stand-in: every glyph 0.7 em wide, caps 0.7 em tall.
-const font: FontMetrics = { size: 64, advance: new Map(), kerning: new Map(), capHeight: 0.7 }
+const font: FontMetrics = {
+  size: 64,
+  advance: new Map(),
+  kerning: new Map(),
+  capHeight: 0.7,
+}
 for (let c = 32; c < 127; c++) font.advance.set(c, 0.7 * 64)
 
 function rect(x0: number, y0: number, x1: number, y1: number, turn = 0): Ring[] {
@@ -18,7 +23,10 @@ function rect(x0: number, y0: number, x1: number, y1: number, turn = 0): Ring[] 
   ].map(([x, y]) => {
     const dx = x - cx
     const dy = y - cy
-    return [cx + dx * Math.cos(turn) - dy * Math.sin(turn), cy + dx * Math.sin(turn) + dy * Math.cos(turn)]
+    return [
+      cx + dx * Math.cos(turn) - dy * Math.sin(turn),
+      cy + dx * Math.sin(turn) + dy * Math.cos(turn),
+    ]
   })
   const xs = pts.map((p) => p[0])
   const ys = pts.map((p) => p[1])

@@ -19,9 +19,16 @@ function square(x0: number, y0: number, x1: number, y1: number, polygon: number)
 function bake(sea: Ring[]) {
   const out = new Uint8Array(TILE_TEXELS * TILE_TEXELS * 3)
   const land = [square(-50_000, -50_000, 50_000, 50_000, 0)]
-  ancientChannel({ reach: 4000, sea, land, lakes: [], removeWater: [], addWater: sea }, 0, 0, 100, out)
+  ancientChannel(
+    { reach: 4000, sea, land, lakes: [], removeWater: [], addWater: sea },
+    0,
+    0,
+    100,
+    out,
+  )
   // Image row 0 is the tile's north edge.
-  return (x: number, y: number) => out[((TILE_TEXELS - 1 - y / 100) * TILE_TEXELS + x / 100) * 3 + 2]
+  return (x: number, y: number) =>
+    out[((TILE_TEXELS - 1 - y / 100) * TILE_TEXELS + x / 100) * 3 + 2]
 }
 
 describe('the ancient sea channel', () => {

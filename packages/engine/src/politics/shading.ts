@@ -1,5 +1,23 @@
 import * as THREE from 'three/webgpu'
-import { abs, clamp, dot, float, floor, Fn, If, int, ivec2, max, min, mix, select, smoothstep, textureLoad, uv, vec3 } from 'three/tsl'
+import {
+  abs,
+  clamp,
+  dot,
+  float,
+  floor,
+  Fn,
+  If,
+  int,
+  ivec2,
+  max,
+  min,
+  mix,
+  select,
+  smoothstep,
+  textureLoad,
+  uv,
+  vec3,
+} from 'three/tsl'
 import { politicsTables, politicsUniforms } from './PoliticalLayer.ts'
 
 /**
@@ -41,7 +59,11 @@ export interface PoliticalNodes {
 type V4 = THREE.Node<'vec4'>
 type F = THREE.Node<'float'>
 
-export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): PoliticalNodes {
+export function politicalShading(
+  tex: THREE.TextureNode,
+  n: number,
+  pxKm: F,
+): PoliticalNodes {
   // Texel centres sit at integer positions (the grid is vertex-aligned). Labels come
   // from the nearest texel — they can never be interpolated — and the distance from a
   // bilinear mix of the four around, each first expressed against the nearest texel's
@@ -56,7 +78,11 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
   const c01 = at(0, 1)
   const c11 = at(1, 1)
   const right = t.x.greaterThan(0.5)
-  const nearest = select(t.y.greaterThan(0.5), select(right, c11, c01), select(right, c10, c00)) as V4
+  const nearest = select(
+    t.y.greaterThan(0.5),
+    select(right, c11, c01),
+    select(right, c10, c00),
+  ) as V4
   const lo = nearest.x
   const hi = nearest.y
   const align = (c: V4) => {
@@ -92,7 +118,8 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
     const fill = mix(fillLo, fillHi, side)
     const ink = select(fillHi.w.greaterThan(fillLo.w), inkHi, inkLo)
     const focus = politicsUniforms.focus
-    const isFocus = (id: V4) => select(id.x.equal(focus).and(focus.greaterThan(0)), float(1), float(0))
+    const isFocus = (id: V4) =>
+      select(id.x.equal(focus).and(focus.greaterThan(0)), float(1), float(0))
     const inLo = isFocus(idLo)
     const inHi = isFocus(idHi)
     return { fill, power, province, schematic, ink, inLo, inHi }
@@ -135,23 +162,42 @@ export function politicalShading(tex: THREE.TextureNode, n: number, pxKm: F): Po
   // Lines, in pixels. A schematic boundary is a convention, not a surveyed line
   // (DESIGN.md §7.3): no hard line and no glow, and the fill fades in across the zone
   // instead, so the edge reads as a region's margin rather than a frontier.
-  const powerLine = float(1).sub(smoothstep(0.55, 1.6, dPx)).mul(0.9)
-  const schematicLine = float(1).sub(smoothstep(0, 4, dPx)).mul(0.22)
-  const provinceLine = float(1).sub(smoothstep(0.15, 1.0, dPx)).mul(0.45)
-  const lineAlpha = max(mix(powerLine, schematicLine, schematic).mul(power), provinceLine.mul(province)).mul(on)
+  const powerLine = float(1)
+    .sub(smoothstep(0.55, 1.6, dPx))
+    .mul(0.9)
+  const schematicLine = float(1)
+    .sub(smoothstep(0, 4, dPx))
+    .mul(0.22)
+  const provinceLine = float(1)
+    .sub(smoothstep(0.15, 1.0, dPx))
+    .mul(0.45)
+  const lineAlpha = max(
+    mix(powerLine, schematicLine, schematic).mul(power),
+    provinceLine.mul(province),
+  ).mul(on)
   const feather = mix(float(1), smoothstep(float(0), zoneKm, abs(d)), schematic)
 
   // Glow: a band of the realm's own colour, richer than its fill, along a power border
   // and on the claimed side only.
   const luma = dot(fill.xyz, vec3(0.2126, 0.7152, 0.0722))
   const glow = clamp(mix(vec3(luma), fill.xyz, 1.15).mul(0.94), 0, 1)
-  const glowAlpha = zone.mul(power).mul(float(1).sub(schematic)).mul(fill.w).mul(politicsUniforms.glow).mul(on)
+  const glowAlpha = zone
+    .mul(power)
+    .mul(float(1).sub(schematic))
+    .mul(fill.w)
+    .mul(politicsUniforms.glow)
+    .mul(on)
 
   // The focus: a bright line, hard even on a schematic frontier (the outline marks the
   // selection, not the evidence), cased in a hairline of ink a pixel wider on each side
   // so it reads on pale ground too, and a full glow band just inside it.
-  const focusLineAlpha = float(1).sub(smoothstep(1.0, 2.0, dPx)).mul(focusEdge)
-  const focusCaseAlpha = float(1).sub(smoothstep(2.2, 3.2, dPx)).mul(focusEdge).mul(0.85)
+  const focusLineAlpha = float(1)
+    .sub(smoothstep(1.0, 2.0, dPx))
+    .mul(focusEdge)
+  const focusCaseAlpha = float(1)
+    .sub(smoothstep(2.2, 3.2, dPx))
+    .mul(focusEdge)
+    .mul(0.85)
   const focusGlowAlpha = zone.mul(focusEdge).mul(focusInside).mul(0.85)
 
   return {

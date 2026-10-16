@@ -109,13 +109,17 @@ function cached(key: string, load: () => Promise<Float32Array | null>) {
   return p
 }
 
-async function pixels(url: string): Promise<{ rgba: Uint8ClampedArray; width: number } | null> {
+async function pixels(
+  url: string,
+): Promise<{ rgba: Uint8ClampedArray; width: number } | null> {
   const res = await fetch(url)
   if (!res.ok) return null
   return decodeImage(await res.blob())
 }
 
-async function decodeImage(blob: Blob): Promise<{ rgba: Uint8ClampedArray; width: number }> {
+async function decodeImage(
+  blob: Blob,
+): Promise<{ rgba: Uint8ClampedArray; width: number }> {
   // These images are data, not pictures: any colour management or premultiplication
   // corrupts them — the same class of bug as the PNG colour profiles that shift
   // province ids by one or two in the EU4 web map.
@@ -126,7 +130,10 @@ async function decodeImage(blob: Blob): Promise<{ rgba: Uint8ClampedArray; width
   const canvas = new OffscreenCanvas(bitmap.width, bitmap.height)
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!
   ctx.drawImage(bitmap, 0, 0)
-  return { rgba: ctx.getImageData(0, 0, bitmap.width, bitmap.height).data, width: bitmap.width }
+  return {
+    rgba: ctx.getImageData(0, 0, bitmap.width, bitmap.height).data,
+    width: bitmap.width,
+  }
 }
 
 async function terrarium(url: string): Promise<Float32Array | null> {
@@ -166,7 +173,8 @@ async function sampleMercator(
     const lat = Math.max(-85, Math.min(85, lonlat[i * 2 + 1])) * (Math.PI / 180)
     // Global pixel coordinates with pixel centres at integers.
     const gx = ((lon + 180) / 360) * world - 0.5
-    const gy = ((1 - Math.log(Math.tan(lat) + 1 / Math.cos(lat)) / Math.PI) / 2) * world - 0.5
+    const gy =
+      ((1 - Math.log(Math.tan(lat) + 1 / Math.cos(lat)) / Math.PI) / 2) * world - 0.5
     px[i] = gx
     py[i] = gy
     for (const tx of [Math.floor(gx / T), Math.floor((gx + 1) / T)]) {
@@ -181,7 +189,10 @@ async function sampleMercator(
   const loaded = new Map<string, Float32Array | null>()
   await Promise.all(
     [...needed].map(async ([key, [tx, ty]]) => {
-      const url = src.url.replace('{z}', `${z}`).replace('{x}', `${tx}`).replace('{y}', `${ty}`)
+      const url = src.url
+        .replace('{z}', `${z}`)
+        .replace('{x}', `${tx}`)
+        .replace('{y}', `${ty}`)
       loaded.set(key, await cached(url, () => terrarium(url)))
     }),
   )
@@ -263,7 +274,11 @@ interface Coast {
   ancientDistance: Float32Array
 }
 
-async function coastDistance(job: TileJob, heights: Float32Array, m: number): Promise<Coast> {
+async function coastDistance(
+  job: TileJob,
+  heights: Float32Array,
+  m: number,
+): Promise<Coast> {
   const shore = new Float32Array(N * N)
   const floodplain = new Float32Array(N * N)
   const ancient = new Float32Array(N * N)
@@ -370,7 +385,11 @@ function cachedMask(store: TileStore, address: TileAddress) {
         }
         const ancient = new Float32Array(N * N)
         for (let k = 0; k < ancient.length; k++) ancient[k] = img.rgba[k * 4 + 2] / 255
-        return [channel(0), channel(1), ancient] as [Float32Array, Float32Array, Float32Array]
+        return [channel(0), channel(1), ancient] as [
+          Float32Array,
+          Float32Array,
+          Float32Array,
+        ]
       })
       .catch(() => null)
     if (masks.size >= CACHE_LIMIT / 2) masks.delete(masks.keys().next().value!)
@@ -507,7 +526,12 @@ const riverTiles = new Map<string, Promise<Float32Array>>()
  * Decodes one river tile (format: encodeTile in pipeline/src/rivers/build.ts) into
  * segments [ax, ay, bx, by, q], q negative for a reconstructed course.
  */
-function loadRiverTile(tier: number, level: number, i: number, j: number): Promise<Float32Array> {
+function loadRiverTile(
+  tier: number,
+  level: number,
+  i: number,
+  j: number,
+): Promise<Float32Array> {
   const key = `${tier}/${i}/${j}`
   let p = riverTiles.get(key)
   if (!p) {
@@ -824,7 +848,12 @@ function loadRoads() {
       const arr = new Float32Array(segs)
       const cells = new Map<number, number[]>()
       for (let s = 0; s < arr.length / 5; s++) {
-        const [ax, ay, bx, by] = [arr[s * 5], arr[s * 5 + 1], arr[s * 5 + 2], arr[s * 5 + 3]]
+        const [ax, ay, bx, by] = [
+          arr[s * 5],
+          arr[s * 5 + 1],
+          arr[s * 5 + 2],
+          arr[s * 5 + 3],
+        ]
         const c0 = Math.floor(Math.min(ax, bx) / ROAD_CELL)
         const c1 = Math.floor(Math.max(ax, bx) / ROAD_CELL)
         const r0 = Math.floor(Math.min(ay, by) / ROAD_CELL)
@@ -859,7 +888,9 @@ async function roadField(job: TileJob): Promise<Uint16Array> {
   const c1 = Math.floor((x0 + size + reach) / ROAD_CELL)
   const r0 = Math.floor((y0 - reach) / ROAD_CELL)
   const r1 = Math.floor((y0 + size + reach) / ROAD_CELL)
-  for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) for (const s of idx.cells.get(r * 100000 + c) ?? []) seen.add(s)
+  for (let r = r0; r <= r1; r++)
+    for (let c = c0; c <= c1; c++)
+      for (const s of idx.cells.get(r * 100000 + c) ?? []) seen.add(s)
   if (!seen.size) return out
   const dist = new Float32Array(N * N).fill(ROAD_FAR)
   const code = new Float32Array(N * N)
@@ -959,7 +990,12 @@ async function build(job: TileJob): Promise<TileResult> {
   const lonlat = new Float64Array(m * m * 2)
   for (let r = 0; r < m; r++) {
     for (let c = 0; c < m; c++) {
-      projection.inverseInto(x0 + (c - 1) * step, y0 + (r - 1) * step, lonlat, (r * m + c) * 2)
+      projection.inverseInto(
+        x0 + (c - 1) * step,
+        y0 + (r - 1) * step,
+        lonlat,
+        (r * m + c) * 2,
+      )
     }
   }
   const lat = projection.inverse(x0 + size / 2, y0 + size / 2)[1]
@@ -971,7 +1007,11 @@ async function build(job: TileJob): Promise<TileResult> {
     politicsField(job),
   ])
   const roads = await roadField(job)
-  const { shore, floodplain, ancient, ancientDistance } = await coastDistance(job, heights, m)
+  const { shore, floodplain, ancient, ancientDistance } = await coastDistance(
+    job,
+    heights,
+    m,
+  )
   layAncientSea(heights, depths, m, step, shore, ancient, ancientDistance)
 
   const terrain = new Uint16Array(N * N * 4)

@@ -20,7 +20,13 @@ export interface Overlay {
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
-export async function renderPreview(dem: Raster, view: Bbox, overlay: Overlay, file: string, maxPx = 1600) {
+export async function renderPreview(
+  dem: Raster,
+  view: Bbox,
+  overlay: Overlay,
+  file: string,
+  maxPx = 1600,
+) {
   const [vx0, vy0] = lonLatToPixel(dem.z, view.west, view.north)
   const [vx1, vy1] = lonLatToPixel(dem.z, view.east, view.south)
   const ox = Math.max(0, Math.floor(vx0 - dem.x0))
@@ -32,14 +38,15 @@ export async function renderPreview(dem: Raster, view: Bbox, overlay: Overlay, f
   const H = Math.floor((ey - oy) / step)
   const h = new Float32Array(W * H)
   for (let j = 0; j < H; j++)
-    for (let i = 0; i < W; i++) h[j * W + i] = dem.data[(oy + j * step) * dem.width + ox + i * step]
+    for (let i = 0; i < W; i++)
+      h[j * W + i] = dem.data[(oy + j * step) * dem.width + ox + i * step]
   const img = Buffer.alloc(W * H * 3)
   // Hillshade from the north-west, 3× vertical exaggeration, plus a faint hypsometric tint.
   const az = (315 * Math.PI) / 180
   const alt = (45 * Math.PI) / 180
   let lo = Infinity
   let hi = -Infinity
-  for (const v of h) if (v !== 0) (lo = Math.min(lo, v)), (hi = Math.max(hi, v))
+  for (const v of h) if (v !== 0) ((lo = Math.min(lo, v)), (hi = Math.max(hi, v)))
   for (let j = 0; j < H; j++) {
     const cell = pixelMetres(dem.z, dem.y0 + oy + j * step) * step
     for (let i = 0; i < W; i++) {
@@ -61,7 +68,8 @@ export async function renderPreview(dem: Raster, view: Bbox, overlay: Overlay, f
       const aspect = Math.atan2(dzdy, -dzdx)
       const shade = Math.max(
         0,
-        Math.cos(alt) * Math.cos(slope) + Math.sin(alt) * Math.sin(slope) * Math.cos(az - Math.PI / 2 - aspect),
+        Math.cos(alt) * Math.cos(slope) +
+          Math.sin(alt) * Math.sin(slope) * Math.cos(az - Math.PI / 2 - aspect),
       )
       const t = (v - lo) / Math.max(1, hi - lo)
       const base = 60 + 170 * shade
@@ -76,10 +84,17 @@ export async function renderPreview(dem: Raster, view: Bbox, overlay: Overlay, f
   }
   const path = (pts: Pt[], close = false) => `M${pts.map(P).join('L')}${close ? 'Z' : ''}`
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`
-  const polys = overlay.polygons.map((poly) => poly.map((r) => path(r, true)).join(' ')).join(' ')
+  const polys = overlay.polygons
+    .map((poly) => poly.map((r) => path(r, true)).join(' '))
+    .join(' ')
   svg += `<path d="${polys}" fill="${overlay.fill ?? '#3c8c28'}" fill-opacity="0.45" fill-rule="evenodd" stroke="#1d4d10" stroke-width="1"/>`
   svg += `<path d="${path(overlay.hull, true)}" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6 4"/>`
-  const colour = { modern: '#1f5fbf', certain: '#0b2f8a', probable: '#0b2f8a', uncertain: '#8a0b6a' }
+  const colour = {
+    modern: '#1f5fbf',
+    certain: '#0b2f8a',
+    probable: '#0b2f8a',
+    uncertain: '#8a0b6a',
+  }
   for (const c of overlay.channels) {
     const dash = c.style === 'uncertain' ? ' stroke-dasharray="5 3"' : ''
     svg += `<path d="${path(c.line)}" fill="none" stroke="${colour[c.style]}" stroke-width="${c.style === 'modern' ? 1.2 : 2}"${dash}/>`

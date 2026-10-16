@@ -114,7 +114,11 @@ export const BRANCHES: Branch[] = [
       KERKASOROS,
       { ...ATHRIBIS, via: 'trace' },
       { ...SEBENNYTOS, via: 'trace' },
-      { at: [31.16, 31.2], prov: 'ours', why: 'north-west across the Sebennytes Kato nome (Pleiades label 727223 at 31.14, 31.36)' },
+      {
+        at: [31.16, 31.2],
+        prov: 'ours',
+        why: 'north-west across the Sebennytes Kato nome (Pleiades label 727223 at 31.14, 31.36)',
+      },
       { at: [31.1, 31.45], prov: 'ours', why: 'towards the Burullus lagoon' },
       {
         at: [31.07, 31.58],
@@ -131,7 +135,12 @@ export const BRANCHES: Branch[] = [
     waypoints: [
       SEBENNYTOS,
       { at: [31.38, 31.04], prov: 'modern:Mansura', via: 'trace' },
-      { at: [31.812588, 31.417068], prov: 'pleiades:727235', via: 'trace', why: 'Tamiathis (Damietta)' },
+      {
+        at: [31.812588, 31.417068],
+        prov: 'pleiades:727235',
+        via: 'trace',
+        why: 'Tamiathis (Damietta)',
+      },
       {
         at: [31.844, 31.523],
         prov: 'pleiades:727198',
@@ -147,7 +156,11 @@ export const BRANCHES: Branch[] = [
     discharge: 250,
     waypoints: [
       ATHRIBIS,
-      { at: [31.355543, 30.682989], prov: 'pleiades:727146', why: 'Tell el-Moqdam (Leontopolis); our routing puts the branch past it' },
+      {
+        at: [31.355543, 30.682989],
+        prov: 'pleiades:727146',
+        why: 'Tell el-Moqdam (Leontopolis); our routing puts the branch past it',
+      },
       { at: [31.51741, 30.956115], prov: 'pleiades:727156', why: 'Mendes' },
       { at: [31.75, 31.18], prov: 'ours', why: 'north-east towards the lagoon' },
       {
@@ -184,17 +197,24 @@ export const BRANCHES: Branch[] = [
     discharge: 600,
     waypoints: [
       KERKASOROS,
-      { at: [31.3308260017, 30.2924725049], prov: 'pleiades:727147', why: 'Tell el-Yahudiya' },
+      {
+        at: [31.3308260017, 30.2924725049],
+        prov: 'pleiades:727147',
+        why: 'Tell el-Yahudiya',
+      },
       BUBASTIS,
       {
         at: [31.8228926667, 30.7863139],
         prov: 'pleiades:727080',
         why: 'Avaris/Pi-Ramesses (Tell el-Dab‘a–Qantir), located on the Pelusiac by Bietak 1975',
       },
-      { at: [32.1734853333, 30.8600223333], prov: 'pleiades:727103', why: 'Daphnai, "Daphnae of Pelusium" (Herodotus 2.30)' },
+      {
+        at: [32.1734853333, 30.8600223333],
+        prov: 'pleiades:727103',
+        why: 'Daphnai, "Daphnae of Pelusium" (Herodotus 2.30)',
+      },
       { at: [32.5473404, 31.0427587], prov: 'pleiades:727192', why: 'Pelusium' },
       { at: [32.5824, 31.062], prov: 'pleiades:727191', why: 'Pelousiakon Stoma' },
     ],
   },
 ]
-

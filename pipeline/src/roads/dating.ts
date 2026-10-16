@@ -53,7 +53,9 @@ export function parsePeriod(text: string | null | undefined): [number, number] |
     if (tokens[i].era) era = tokens[i].era as 'BCE' | 'CE'
     else tokens[i].era = era
   }
-  const years = tokens.map((t) => (t.value === 0 ? 0 : toAstronomical(t.value, t.era as 'BCE' | 'CE')))
+  const years = tokens.map((t) =>
+    t.value === 0 ? 0 : toAstronomical(t.value, t.era as 'BCE' | 'CE'),
+  )
   return [Math.min(...years), Math.max(...years)]
 }
 
@@ -76,7 +78,8 @@ export function firstYear(p: SegmentDates): number | null {
   if (built) return built[1]
   const lower = p.Lower_Date
   if (lower == null || Math.abs(lower) === UNKNOWN) return null
-  const margin = p.Low_Date_E != null && Math.abs(p.Low_Date_E) !== UNKNOWN ? p.Low_Date_E : 0
+  const margin =
+    p.Low_Date_E != null && Math.abs(p.Low_Date_E) !== UNKNOWN ? p.Low_Date_E : 0
   const year = lower + margin
   // Source years have no zero: −514 is 514 BCE.
   return year < 0 ? year + 1 : year

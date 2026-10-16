@@ -27,7 +27,9 @@ const [x0, y0] = projection.forward(west, south)
 const [x1, y1] = projection.forward(east, north)
 const width = Math.ceil((x1 - x0) / STEP)
 const height = Math.ceil((y1 - y0) / STEP)
-const rings = land.rings.filter((r) => r.maxX > x0 && r.minX < x1 && r.maxY > y0 && r.minY < y1)
+const rings = land.rings.filter(
+  (r) => r.maxX > x0 && r.minX < x1 && r.maxY > y0 && r.minY < y1,
+)
 const mask = new Uint8Array(width * height)
 fillPolygons(rings, { x0, y0, step: STEP, width, height }, mask)
 

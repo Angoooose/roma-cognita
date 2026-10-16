@@ -71,7 +71,8 @@ function bake(fontPath: string): Promise<{ png: Buffer; json: string }> {
       },
       (err: Error | null, textures: { texture: Buffer }[], font: { data: string }) => {
         if (err) return fail(err)
-        if (textures.length !== 1) return fail(new Error(`${fontPath}: ${textures.length} atlas pages, expected 1`))
+        if (textures.length !== 1)
+          return fail(new Error(`${fontPath}: ${textures.length} atlas pages, expected 1`))
         ok({ png: textures[0].texture, json: font.data })
       },
     ),
@@ -89,5 +90,7 @@ for (const f of FONTS) {
   meta.pages = [`${f.name}.png`]
   writeFileSync(join(OUT, `${f.name}.json`), JSON.stringify(meta))
   copyFileSync(join(CACHE, f.licence), join(OUT, `${f.name}.OFL.txt`))
-  console.log(`${f.name}: ${meta.chars.length} glyphs, ${meta.common.scaleW}×${meta.common.scaleH}, ${meta.kernings.length} kerning pairs`)
+  console.log(
+    `${f.name}: ${meta.chars.length} glyphs, ${meta.common.scaleW}×${meta.common.scaleH}, ${meta.kernings.length} kerning pairs`,
+  )
 }

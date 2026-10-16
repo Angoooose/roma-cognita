@@ -122,17 +122,33 @@ export function checkDataset(ds: Dataset): Issue[] {
       // A name's citations are usually its record's, inherited: checked there.
       for (const f of names.has(r) ? [] : (s.supports ?? []))
         if (!hasField(r, f))
-          error('supports-field', r, `${s.source} supports "${f}", which the record doesn't have`)
+          error(
+            'supports-field',
+            r,
+            `${s.source} supports "${f}", which the record doesn't have`,
+          )
       if (s.quote && !quoted.has(s)) {
         quoted.add(s)
         if (s.locator && WORKS[s.source] && namesSeveral(s.locator))
-          error('one-passage', r, `${s.source} ${s.locator}: a quoted citation names one passage; cite the source once for each`)
+          error(
+            'one-passage',
+            r,
+            `${s.source} ${s.locator}: a quoted citation names one passage; cite the source once for each`,
+          )
         else if (!s.locator && WORKS[s.source] && !s.url)
-          error('quote-locator', r, `${s.source}: a quote needs the locator of the passage it is from`)
+          error(
+            'quote-locator',
+            r,
+            `${s.source}: a quote needs the locator of the passage it is from`,
+          )
         else {
           const q = checkQuote(s, sources.get(s.source))
           if (q.status === 'not-found')
-            error('quote-not-found', r, `${s.source} ${s.locator ?? ''}: the quote isn't in ${q.in}`)
+            error(
+              'quote-not-found',
+              r,
+              `${s.source} ${s.locator ?? ''}: the quote isn't in ${q.in}`,
+            )
         }
       }
       if (!sources.has(s.source))
@@ -558,8 +574,16 @@ function hasField(r: object, f: string): boolean {
  * out, it isn't asked for.
  */
 type RecordKind =
-  | 'atoms' | 'polities' | 'claims' | 'relations' | 'seats' | 'places'
-  | 'routes' | 'roadCorrections' | 'landscapeChanges' | 'features'
+  | 'atoms'
+  | 'polities'
+  | 'claims'
+  | 'relations'
+  | 'seats'
+  | 'places'
+  | 'routes'
+  | 'roadCorrections'
+  | 'landscapeChanges'
+  | 'features'
 
 const STATED: Record<RecordKind, string[]> = {
   atoms: ['construction'],
@@ -591,7 +615,12 @@ export interface EvidenceReport {
 export function evidence(ds: Dataset): EvidenceReport {
   const byId = new Map(ds.sources.map((s) => [s.id, s]))
   const out: EvidenceReport = {
-    backed: 0, partly: 0, gaps: [], unresearched: 0, datasets: 0, quotes: { found: 0, unread: 0 },
+    backed: 0,
+    partly: 0,
+    gaps: [],
+    unresearched: 0,
+    datasets: 0,
+    quotes: { found: 0, unread: 0 },
   }
   const counted = new Set<SourceRef>()
   for (const [kind, fields] of Object.entries(STATED) as [RecordKind, string[]][]) {
@@ -620,8 +649,7 @@ export function evidence(ds: Dataset): EvidenceReport {
           where: ds.origin.get(r) ?? '(unknown)',
           fields: asked.filter((f) => !backed.has(f)),
         })
-      }
-      else out.unresearched++
+      } else out.unresearched++
     }
   }
   return out

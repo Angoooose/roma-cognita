@@ -35,13 +35,25 @@ export interface AncientJob {
  * Measured on its own grid over the tile plus the widest shelf: exact to a grid cell
  * (at most that / 64, ~60 m for the usual 4 km), which is ample for a depth ramp.
  */
-export function ancientChannel(a: AncientJob, x0: number, y0: number, step: number, out: Uint8Array) {
+export function ancientChannel(
+  a: AncientJob,
+  x0: number,
+  y0: number,
+  step: number,
+  out: Uint8Array,
+) {
   const widest = Math.max(a.reach, ...a.sea.map((r) => r.shelf ?? a.reach))
   const cell = Math.max(step, widest / 64)
   const margin = Math.ceil(widest / cell) + 2
   const span = (TILE_TEXELS - 1) * step
   const w = Math.ceil(span / cell) + 1 + 2 * margin
-  const g: Grid = { x0: x0 - margin * cell, y0: y0 - margin * cell, step: cell, width: w, height: w }
+  const g: Grid = {
+    x0: x0 - margin * cell,
+    y0: y0 - margin * cell,
+    step: cell,
+    width: w,
+    height: w,
+  }
   const water = new Uint8Array(w * w)
   const land = new Uint8Array(w * w)
   const scratch = new Uint8Array(w * w)
@@ -66,7 +78,8 @@ export function ancientChannel(a: AncientJob, x0: number, y0: number, step: numb
       g,
       scratch,
     )
-    for (let k = 0; k < scale.length; k++) if (scratch[k]) scale[k] = Math.min(scale[k], a.reach / shelf!)
+    for (let k = 0; k < scale.length; k++)
+      if (scratch[k]) scale[k] = Math.min(scale[k], a.reach / shelf!)
   }
   const d = signedDistance(water, w, w)
   for (let r = 0; r < TILE_TEXELS; r++) {
@@ -82,8 +95,13 @@ export function ancientChannel(a: AncientJob, x0: number, y0: number, step: numb
         (d[(y + 1) * w + x] * (1 - tx) + d[(y + 1) * w + x + 1] * tx) * ty
       const o = ((TILE_TEXELS - 1 - r) * TILE_TEXELS + c) * 3 + 2
       const k = Math.round(fy) * w + Math.round(fx)
-      out[o] = v < -1 ? 0 : 1 + Math.round((254 * Math.min(Math.max(v, 0) * cell * scale[k], a.reach)) / a.reach)
+      out[o] =
+        v < -1
+          ? 0
+          : 1 +
+            Math.round(
+              (254 * Math.min(Math.max(v, 0) * cell * scale[k], a.reach)) / a.reach,
+            )
     }
   }
 }
-

@@ -68,7 +68,8 @@ interface SourceRef {
 export interface ClaimRecord {
   atom: string
   polity: string
-  relation: 'province' | 'citizen-territory' | 'client' | 'allied' | 'independent' | 'occupied'
+  relation:
+    'province' | 'citizen-territory' | 'client' | 'allied' | 'independent' | 'occupied'
   from: End
   to: End
   confidence: 'certain' | 'probable' | 'uncertain'
@@ -167,10 +168,16 @@ export interface PoliticsLegend {
   unclaimed: boolean
 }
 
-const covers = (r: { from: End; to: End }, year: number) => r.from.year <= year && year <= r.to.year
+const covers = (r: { from: End; to: End }, year: number) =>
+  r.from.year <= year && year <= r.to.year
 const EVIDENCE = { surveyed: 0, derived: 1, schematic: 2 } as const
 /** Relations that make a polity part of another power, rather than an ally of it. */
-const SUBORDINATE = new Set(['province-of', 'citizen-territory-of', 'client-of', 'subject-of'])
+const SUBORDINATE = new Set([
+  'province-of',
+  'citizen-territory-of',
+  'client-of',
+  'subject-of',
+])
 
 export class PoliticalLayer {
   data: PoliticsData | null = null
@@ -181,19 +188,29 @@ export class PoliticalLayer {
   private focusFade: { start: number; ms: number; from: number; to: number } | null = null
   /** The focused polity, if any. */
   focused: string | null = null
-  private index: { maxLevel: number; distanceTexels: number; levels: Uint16Array[]; palettes: Record<string, number[]> } | null =
-    null
+  private index: {
+    maxLevel: number
+    distanceTexels: number
+    levels: Uint16Array[]
+    palettes: Record<string, number[]>
+  } | null = null
   private pickTiles = new Map<string, Promise<ImageData | null>>()
 
   async load() {
     const [data, index] = await Promise.all([
-      fetch('/politics/data.json').then((r) => (r.ok ? r.json() : null)).catch(() => null),
-      fetch('/politics/index.json').then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch('/politics/data.json')
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
+      fetch('/politics/index.json')
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     ])
     if (index) {
       this.index = {
         ...index,
-        levels: (index.levels as string[]).map((b) => new Uint16Array(Uint8Array.from(atob(b), (c) => c.charCodeAt(0)).buffer)),
+        levels: (index.levels as string[]).map(
+          (b) => new Uint16Array(Uint8Array.from(atob(b), (c) => c.charCodeAt(0)).buffer),
+        ),
       }
     }
     if (!data) return
@@ -283,7 +300,9 @@ export class PoliticalLayer {
     let client = false
     let at = polity
     for (let guard = 0; guard < 8; guard++) {
-      const link = this.data!.relations.find((r) => r.polity === at && SUBORDINATE.has(r.type) && covers(r, year))
+      const link = this.data!.relations.find(
+        (r) => r.polity === at && SUBORDINATE.has(r.type) && covers(r, year),
+      )
       if (!link) break
       chain.push({ polity: at, type: link.type })
       if (link.type === 'client-of' || link.type === 'subject-of') client = true
@@ -337,7 +356,12 @@ export class PoliticalLayer {
       if (isClient) entry.client ??= shade
       else entry.province ??= shade
     }
-    return { powers: [...powers.values()].sort((a, b) => b.atoms - a.atoms), uncertain, schematic, unclaimed }
+    return {
+      powers: [...powers.values()].sort((a, b) => b.atoms - a.atoms),
+      uncertain,
+      schematic,
+      unclaimed,
+    }
   }
 
   /** Every polity in the data, whatever the year. */
@@ -370,7 +394,9 @@ export class PoliticalLayer {
 
   private holding(atom: string, year: number) {
     // Occupation is a separate layer (packages/schema claimLayer); this draws holdings.
-    return this.data!.claims.find((c) => c.atom === atom && c.relation !== 'occupied' && covers(c, year))
+    return this.data!.claims.find(
+      (c) => c.atom === atom && c.relation !== 'occupied' && covers(c, year),
+    )
   }
 
   private write(tex: THREE.DataTexture, year: number) {
@@ -399,7 +425,12 @@ export class PoliticalLayer {
       })
       const alpha = claim.confidence === 'uncertain' ? UNCERTAIN_ALPHA : 1
       set(label, 0, [style.fill.r, style.fill.g, style.fill.b, alpha])
-      set(label, 1, [this.polityIndex.get(claim.polity) ?? 0, this.polityIndex.get(power) ?? 0, ev, 0])
+      set(label, 1, [
+        this.polityIndex.get(claim.polity) ?? 0,
+        this.polityIndex.get(power) ?? 0,
+        ev,
+        0,
+      ])
       set(label, 2, [style.line.r, style.line.g, style.line.b, isClient ? 1 : 0])
     })
     tex.needsUpdate = true
@@ -452,7 +483,9 @@ export class PoliticalLayer {
       claim,
       polity: polity(claim.polity),
       power: polity(power),
-      chain: chain.map((l) => ({ polity: polity(l.polity)!, type: l.type })).filter((l) => l.polity),
+      chain: chain
+        .map((l) => ({ polity: polity(l.polity)!, type: l.type }))
+        .filter((l) => l.polity),
       sources: this.cite(claim.sources),
       politySources: this.cite(this.polityById.get(claim.polity)?.sources ?? []),
     }
@@ -483,7 +516,10 @@ export class PoliticalLayer {
         .then((r) => (r.ok ? r.blob() : null))
         .then(async (b) => {
           if (!b) return null
-          const bmp = await createImageBitmap(b, { colorSpaceConversion: 'none', premultiplyAlpha: 'none' })
+          const bmp = await createImageBitmap(b, {
+            colorSpaceConversion: 'none',
+            premultiplyAlpha: 'none',
+          })
           const canvas = new OffscreenCanvas(bmp.width, bmp.height)
           const ctx = canvas.getContext('2d', { willReadFrequently: true })!
           ctx.drawImage(bmp, 0, 0)

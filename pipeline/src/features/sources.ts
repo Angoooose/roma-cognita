@@ -19,8 +19,14 @@ import { CACHE_DIR as CACHE } from '../load.ts'
 import { readDbf, readShp } from '../lib/shp.ts'
 import type { Pt } from '../lib/grid.ts'
 
-const LAND = join(CACHE, 'land-polygons-split-4326/land-polygons-split-4326/land_polygons.shp')
-const LAKES = join(CACHE, 'HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10.shp')
+const LAND = join(
+  CACHE,
+  'land-polygons-split-4326/land-polygons-split-4326/land_polygons.shp',
+)
+const LAKES = join(
+  CACHE,
+  'HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10_shp/HydroLAKES_polys_v10.shp',
+)
 export const LAKE_KM2 = 1
 
 function need(path: string) {
@@ -42,12 +48,11 @@ export interface Lake {
 
 export function readLakes(bbox: Bbox): Lake[] {
   const recs = readShp(need(LAKES), bbox)
-  const attrs = readDbf(LAKES.replace(/\.shp$/, '.dbf'), recs.map((r) => r.index), [
-    'Hylak_id',
-    'Lake_name',
-    'Lake_type',
-    'Lake_area',
-  ])
+  const attrs = readDbf(
+    LAKES.replace(/\.shp$/, '.dbf'),
+    recs.map((r) => r.index),
+    ['Hylak_id', 'Lake_name', 'Lake_type', 'Lake_area'],
+  )
   return recs
     .map((r) => ({ r, a: attrs.get(r.index)! }))
     .filter(({ a }) => a.Lake_type !== 2 && (a.Lake_area as number) >= LAKE_KM2)
@@ -81,12 +86,11 @@ function riversShp(region: string) {
 export function readRivers(region: string, bbox: Bbox, minQ: number): Channel[] {
   const shp = riversShp(region)
   const recs = readShp(shp, bbox)
-  const attrs = readDbf(shp.replace(/\.shp$/, '.dbf'), recs.map((r) => r.index), [
-    'HYRIV_ID',
-    'NEXT_DOWN',
-    'DIS_AV_CMS',
-    'MAIN_RIV',
-  ])
+  const attrs = readDbf(
+    shp.replace(/\.shp$/, '.dbf'),
+    recs.map((r) => r.index),
+    ['HYRIV_ID', 'NEXT_DOWN', 'DIS_AV_CMS', 'MAIN_RIV'],
+  )
   const byId = new Map<number, { line: Pt[]; next: number; q: number }>()
   for (const r of recs) {
     const a = attrs.get(r.index)!
@@ -105,7 +109,11 @@ export function readRivers(region: string, bbox: Bbox, minQ: number): Channel[] 
   const out: Channel[] = []
   const chains = heads.map((h) => {
     const ids: number[] = []
-    for (let id: number | undefined = h; id !== undefined && byId.has(id); id = byId.get(id)!.next) {
+    for (
+      let id: number | undefined = h;
+      id !== undefined && byId.has(id);
+      id = byId.get(id)!.next
+    ) {
       ids.push(id)
       if (ids.length > 100000) break
     }

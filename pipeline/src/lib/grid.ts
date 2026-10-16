@@ -11,10 +11,17 @@ export type Pt = [number, number]
  * pixel centres (i + 0.5, j + 0.5). Rings of one polygon and its holes can be
  * passed together; even–odd makes holes holes.
  */
-export function fillRings(out: Uint8Array, width: number, height: number, rings: Pt[][], value = 1) {
+export function fillRings(
+  out: Uint8Array,
+  width: number,
+  height: number,
+  rings: Pt[][],
+  value = 1,
+) {
   let ymin = Infinity
   let ymax = -Infinity
-  for (const r of rings) for (const [, y] of r) (ymin = Math.min(ymin, y)), (ymax = Math.max(ymax, y))
+  for (const r of rings)
+    for (const [, y] of r) ((ymin = Math.min(ymin, y)), (ymax = Math.max(ymax, y)))
   const j0 = Math.max(0, Math.floor(ymin - 0.5))
   const j1 = Math.min(height - 1, Math.ceil(ymax - 0.5))
   const edges: [number, number, number, number][] = []
@@ -54,7 +61,7 @@ export function linePixels(line: Pt[], width: number, height: number): number[] 
       const j = Math.floor(y0 + ((y1 - y0) * s) / n)
       if (i < 0 || j < 0 || i >= width || j >= height) continue
       const p = j * width + i
-      if (p !== last) out.push(p), (last = p)
+      if (p !== last) (out.push(p), (last = p))
     }
   }
   return out
@@ -88,7 +95,7 @@ export function nearestSeed(
     const dx = i - sx[s]
     const dy = j - sy[s]
     const d = dx * dx + dy * dy
-    if (d < dist2[p]) (dist2[p] = d), (nearest[p] = s)
+    if (d < dist2[p]) ((dist2[p] = d), (nearest[p] = s))
   }
   for (let j = 0; j < height; j++) {
     for (let i = 0; i < width; i++) {
@@ -159,7 +166,7 @@ export function components(
           const jj = j + dj
           if (ii < 0 || jj < 0 || ii >= width || jj >= height) continue
           const q = jj * width + ii
-          if (!seen[q] && mask[q] === value) (seen[q] = 1), (stack[top++] = q)
+          if (!seen[q] && mask[q] === value) ((seen[q] = 1), (stack[top++] = q))
         }
       }
     }
@@ -168,7 +175,12 @@ export function components(
 }
 
 /** Separable box blur of radius r, three times: a cheap Gaussian of σ ≈ r. */
-export function blur(src: Float32Array, width: number, height: number, r: number): Float32Array {
+export function blur(
+  src: Float32Array,
+  width: number,
+  height: number,
+  r: number,
+): Float32Array {
   let a = Float32Array.from(src)
   let b = new Float32Array(src.length)
   const pass = (from: Float32Array, to: Float32Array, horizontal: boolean) => {
@@ -178,7 +190,8 @@ export function blur(src: Float32Array, width: number, height: number, r: number
     for (let l = 0; l < lines; l++) {
       const base = horizontal ? l * width : l
       let sum = 0
-      for (let k = -r; k <= r; k++) sum += from[base + Math.min(len - 1, Math.max(0, k)) * stride]
+      for (let k = -r; k <= r; k++)
+        sum += from[base + Math.min(len - 1, Math.max(0, k)) * stride]
       for (let k = 0; k < len; k++) {
         to[base + k * stride] = sum / (2 * r + 1)
         const add = Math.min(len - 1, k + r + 1)
@@ -196,20 +209,27 @@ export function blur(src: Float32Array, width: number, height: number, r: number
 }
 
 /** Minimum over a (2r+1)² window, separably. */
-export function minFilter(src: Float32Array, width: number, height: number, r: number): Float32Array {
+export function minFilter(
+  src: Float32Array,
+  width: number,
+  height: number,
+  r: number,
+): Float32Array {
   const tmp = new Float32Array(src.length)
   const out = new Float32Array(src.length)
   for (let j = 0; j < height; j++) {
     for (let i = 0; i < width; i++) {
       let m = Infinity
-      for (let k = Math.max(0, i - r); k <= Math.min(width - 1, i + r); k++) m = Math.min(m, src[j * width + k])
+      for (let k = Math.max(0, i - r); k <= Math.min(width - 1, i + r); k++)
+        m = Math.min(m, src[j * width + k])
       tmp[j * width + i] = m
     }
   }
   for (let i = 0; i < width; i++) {
     for (let j = 0; j < height; j++) {
       let m = Infinity
-      for (let k = Math.max(0, j - r); k <= Math.min(height - 1, j + r); k++) m = Math.min(m, tmp[k * width + i])
+      for (let k = Math.max(0, j - r); k <= Math.min(height - 1, j + r); k++)
+        m = Math.min(m, tmp[k * width + i])
       out[j * width + i] = m
     }
   }
@@ -326,7 +346,7 @@ export function simplifyIndices(pts: Pt[], tolerance: number): number[] {
         const t = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len2))
         d = (px - ax - t * dx) ** 2 + (py - ay - t * dy) ** 2
       }
-      if (d > wd) (wd = d), (worst = k)
+      if (d > wd) ((wd = d), (worst = k))
     }
     if (worst >= 0) {
       keep[worst] = 1
@@ -344,10 +364,14 @@ export function catmullRom(pts: Pt[], per = 12): Pt[] {
   const P = [
     [2 * pts[0][0] - pts[1][0], 2 * pts[0][1] - pts[1][1]] as Pt,
     ...pts,
-    [2 * pts[pts.length - 1][0] - pts[pts.length - 2][0], 2 * pts[pts.length - 1][1] - pts[pts.length - 2][1]] as Pt,
+    [
+      2 * pts[pts.length - 1][0] - pts[pts.length - 2][0],
+      2 * pts[pts.length - 1][1] - pts[pts.length - 2][1],
+    ] as Pt,
   ]
   const out: Pt[] = []
-  const tj = (ti: number, a: Pt, b: Pt) => ti + Math.sqrt(Math.hypot(b[0] - a[0], b[1] - a[1])) || ti + 1e-9
+  const tj = (ti: number, a: Pt, b: Pt) =>
+    ti + Math.sqrt(Math.hypot(b[0] - a[0], b[1] - a[1])) || ti + 1e-9
   for (let k = 1; k + 2 < P.length; k++) {
     const [p0, p1, p2, p3] = [P[k - 1], P[k], P[k + 1], P[k + 2]]
     const t0 = 0

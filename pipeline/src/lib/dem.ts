@@ -86,7 +86,10 @@ async function fetchTile(z: number, x: number, y: number): Promise<Buffer | null
 }
 
 async function decodeTile(buf: Buffer): Promise<Float32Array> {
-  const { data, info } = await sharp(buf).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  const { data, info } = await sharp(buf)
+    .removeAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true })
   if (info.width !== TILE || info.height !== TILE)
     throw new Error(`expected ${TILE}px tiles, got ${info.width}×${info.height}`)
   const out = new Float32Array(TILE * TILE)
@@ -119,7 +122,8 @@ export async function readDem(
     data: new Float32Array(tw * TILE * th * TILE),
   }
   const jobs: [number, number][] = []
-  for (let ty = ty0; ty <= ty1; ty++) for (let tx = tx0; tx <= tx1; tx++) jobs.push([tx, ty])
+  for (let ty = ty0; ty <= ty1; ty++)
+    for (let tx = tx0; tx <= tx1; tx++) jobs.push([tx, ty])
   log(`  DEM z${z}: ${jobs.length} tiles (${r.width}×${r.height} px)`)
   let next = 0
   const worker = async () => {

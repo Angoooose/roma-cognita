@@ -38,7 +38,7 @@ sources:
     quote: >-
       …
     supports: [polity]
-  - source: cayla-2017          # modern authority, not read: backs nothing
+  - source: cayla-2017 # modern authority, not read: backs nothing
 ```
 
 - **`locator`** names one passage. A range (`42.35.5–6`) is one passage; a list

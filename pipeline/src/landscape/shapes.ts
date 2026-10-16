@@ -27,14 +27,22 @@ export interface LandscapeShape {
  * `features` are dropped, so a generator can retire a shape; everything else is kept.
  * Features are sorted by id, so the file diffs cleanly whichever generator ran last.
  */
-export function writeLandscapeShapes(features: LandscapeShape[], owned: Iterable<string> = []) {
+export function writeLandscapeShapes(
+  features: LandscapeShape[],
+  owned: Iterable<string> = [],
+) {
   const replaced = new Set([...owned, ...features.map((f) => f.id)])
   const kept: LandscapeShape[] = existsSync(LANDSCAPE_SHAPES)
-    ? (JSON.parse(readFileSync(LANDSCAPE_SHAPES, 'utf8')).features as LandscapeShape[]).filter(
-        (f) => !replaced.has(f.id),
-      )
+    ? (
+        JSON.parse(readFileSync(LANDSCAPE_SHAPES, 'utf8')).features as LandscapeShape[]
+      ).filter((f) => !replaced.has(f.id))
     : []
-  const all = [...kept, ...features].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
-  writeFileSync(LANDSCAPE_SHAPES, `${JSON.stringify({ type: 'FeatureCollection', features: all })}\n`)
+  const all = [...kept, ...features].sort((a, b) =>
+    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
+  )
+  writeFileSync(
+    LANDSCAPE_SHAPES,
+    `${JSON.stringify({ type: 'FeatureCollection', features: all })}\n`,
+  )
   console.log(`wrote ${features.length} of ${all.length} shapes to ${LANDSCAPE_SHAPES}`)
 }

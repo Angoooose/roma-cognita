@@ -383,8 +383,17 @@
 - id: sicily-eunus
   kind: kingdom
   names:
-    - { text: Fugitivi, lang: la, preferred: true, note: 'the runaways, as the Latin tradition calls the rebels (Livy Per. 58, 59)' }
-    - { text: Syri, lang: la, note: 'Eunus took the name Antiochus and called his followers Syrians (Diodorus 34/35.2.24)' }
+    - {
+        text: Fugitivi,
+        lang: la,
+        preferred: true,
+        note: 'the runaways, as the Latin tradition calls the rebels (Livy Per. 58, 59)',
+      }
+    - {
+        text: Syri,
+        lang: la,
+        note: 'Eunus took the name Antiochus and called his followers Syrians (Diodorus 34/35.2.24)',
+      }
   from: before 133 BCE
   to: 133 BCE
   ruler: Eunus, called Antiochus, by 134 to 132
@@ -456,7 +465,12 @@
 - id: sicily-tryphon
   kind: kingdom
   names:
-    - { text: Fugitivi, lang: la, preferred: true, note: 'the runaways of the second Sicilian slave war' }
+    - {
+        text: Fugitivi,
+        lang: la,
+        preferred: true,
+        note: 'the runaways of the second Sicilian slave war',
+      }
   from: { earliest: 104 BCE, latest: 103 BCE }
   to: 101 BCE
   ruler: Salvius, called Tryphon, c. 104–c. 102; Athenion, c. 102–101
@@ -1344,7 +1358,13 @@
   kind: province
   names:
     - { text: Bithynia, lang: la, preferred: true, from: 74 BCE, to: 64 BCE }
-    - { text: Bithynia et Pontus, lang: la, preferred: true, from: 63 BCE, to: after 27 BCE }
+    - {
+        text: Bithynia et Pontus,
+        lang: la,
+        preferred: true,
+        from: 63 BCE,
+        to: after 27 BCE,
+      }
   from: 74 BCE
   to: after 27 BCE
   sources:

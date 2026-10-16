@@ -57,8 +57,7 @@ export interface PoliticsJob {
 }
 
 export type PoliticsResult =
-  | { id: number; uniform: number }
-  | { id: number; image: Uint8Array; palette: number[] }
+  { id: number; uniform: number } | { id: number; image: Uint8Array; palette: number[] }
 
 const SLIVER_M = 3000
 const ISLAND_M = 30000
@@ -135,7 +134,8 @@ async function bake(job: PoliticsJob): Promise<PoliticsResult> {
       const b = field[y * sw + x + 1]
       const c = field[(y + 1) * sw + x]
       const d = field[(y + 1) * sw + x + 1]
-      shore[p * w + q] = ((a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty) * step
+      shore[p * w + q] =
+        ((a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty) * step
     }
   }
 
@@ -180,7 +180,8 @@ async function bake(job: PoliticsJob): Promise<PoliticsResult> {
   }
 
   // 3. Small islands and slivers no outline covers.
-  if (present.length) claimSmallPieces(land, label, best, bestD2, w, M * S, (ISLAND_M / fstep) ** 2)
+  if (present.length)
+    claimSmallPieces(land, label, best, bestD2, w, M * S, (ISLAND_M / fstep) ** 2)
 
   // 4. Everything else on land stays 0, unclaimed. 5. The sea takes its nearest land.
   for (let k = 0; k < size; k++) tmp[k] = land[k] && !label[k] ? 1 : 0
@@ -246,7 +247,7 @@ async function bake(job: PoliticsJob): Promise<PoliticsResult> {
         hi = Math.max(own, other)
         d = own === hi ? s : -s
       }
-      if (lo !== hi || lo !== final[(M * S) * w + M * S]) uniform = false
+      if (lo !== hi || lo !== final[M * S * w + M * S]) uniform = false
       const o = ((N - 1 - r) * N + c) * 3
       out[o] = idx(lo)
       out[o + 1] = idx(hi)
@@ -254,7 +255,8 @@ async function bake(job: PoliticsJob): Promise<PoliticsResult> {
     }
   }
   if (uniform) return { id: job.id, uniform: palette[0] }
-  if (palette.length > 256) throw new Error(`more than 256 labels in one tile at ${x0}, ${y0}`)
+  if (palette.length > 256)
+    throw new Error(`more than 256 labels in one tile at ${x0}, ${y0}`)
 
   // Lossless WebP, three channels: no alpha, because browsers premultiply decoded
   // images and a transparent texel would lose its labels.
@@ -305,7 +307,12 @@ function claimSmallPieces(
       if (x > maxX) maxX = x
       if (y < minY) minY = y
       if (y > maxY) maxY = y
-      for (const n of [x > 0 ? k - 1 : -1, x < w - 1 ? k + 1 : -1, y > 0 ? k - w : -1, y < w - 1 ? k + w : -1]) {
+      for (const n of [
+        x > 0 ? k - 1 : -1,
+        x < w - 1 ? k + 1 : -1,
+        y > 0 ? k - w : -1,
+        y < w - 1 ? k + w : -1,
+      ]) {
         if (n >= 0 && free(n) && !seen[n]) {
           seen[n] = 1
           stack.push(n)

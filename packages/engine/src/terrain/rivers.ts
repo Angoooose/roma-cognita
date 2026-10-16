@@ -19,4 +19,3 @@ export function riverMinDischarge(metresPerPixel: number) {
 export function riverHalfWidth(q: number) {
   return 3 * Math.sqrt(q)
 }
-

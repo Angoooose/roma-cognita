@@ -171,11 +171,15 @@ describe('passageUrl', () => {
     expect(passageUrl('osm-rome', 'the Forum')).toBeUndefined()
   })
 
-  it("links a Platner & Ashby locator to its article on LacusCurtius", () => {
+  it('links a Platner & Ashby locator to its article on LacusCurtius', () => {
     const base =
       'https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Italy/Lazio/Roma/Rome/_Texts/PLATOP*'
-    expect(passageUrl('platner-ashby', 'Pons Fabricius, p. 400')).toBe(`${base}/Pons_Fabricius.html`)
-    expect(passageUrl('platner-ashby', 'Vesta#aedes, pp. 556–559')).toBe(`${base}/Vesta.html#aedes`)
+    expect(passageUrl('platner-ashby', 'Pons Fabricius, p. 400')).toBe(
+      `${base}/Pons_Fabricius.html`,
+    )
+    expect(passageUrl('platner-ashby', 'Vesta#aedes, pp. 556–559')).toBe(
+      `${base}/Vesta.html#aedes`,
+    )
     expect(passageUrl('platner-ashby', 'p. 400')).toBeUndefined()
   })
 

@@ -64,15 +64,18 @@ async function main() {
     )
     return
   }
-  if (data.atoms.length > SEA - 1) throw new Error(`${data.atoms.length} atoms; labels stop at ${SEA - 1}`)
-  if (!existsSync(join(WATER, 'index.json'))) throw new Error('no coast mask: run npm run water -w pipeline first')
+  if (data.atoms.length > SEA - 1)
+    throw new Error(`${data.atoms.length} atoms; labels stop at ${SEA - 1}`)
+  if (!existsSync(join(WATER, 'index.json')))
+    throw new Error('no coast mask: run npm run water -w pipeline first')
   const water = JSON.parse(readFileSync(join(WATER, 'index.json'), 'utf8')) as {
     maxLevel: number
     distanceTexels: number
     codes: string[]
   }
   const waterCodes = water.codes.map((b) => new Uint8Array(Buffer.from(b, 'base64')))
-  if (water.maxLevel < MAX_LEVEL) throw new Error(`coast mask stops at level ${water.maxLevel}`)
+  if (water.maxLevel < MAX_LEVEL)
+    throw new Error(`coast mask stops at level ${water.maxLevel}`)
 
   // Labels follow atoms.yaml order; data.json records the mapping.
   const rings: LabelledRing[] = []
@@ -83,7 +86,8 @@ async function main() {
     const polys = geom.type === 'Polygon' ? [geom.coordinates] : geom.coordinates
     for (const poly of polys) {
       const id = polygon++
-      for (const ring of poly) rings.push({ ...projectRing(ring, id, Infinity), label: k + 1 })
+      for (const ring of poly)
+        rings.push({ ...projectRing(ring, id, Infinity), label: k + 1 })
     }
   })
   const index = new RingIndex(rings)
@@ -123,7 +127,8 @@ async function main() {
           for (let di = -1; di <= 1; di++) {
             const ii = i + di
             const jj = j + dj
-            const code = ii < 0 || jj < 0 || ii >= n || jj >= n ? 0 : waterCodes[level][jj * n + ii]
+            const code =
+              ii < 0 || jj < 0 || ii >= n || jj >= n ? 0 : waterCodes[level][jj * n + ii]
             const file = join(WATER, `${level}/${ii}/${jj}.webp`)
             shore.push(code === 2 && existsSync(file) ? { code, file } : { code })
           }
@@ -136,7 +141,13 @@ async function main() {
             const cy = y0 + size / 2
             const labels = [...new Set(here.map((r) => r.label))]
             grid[j * n + i] =
-              labels.find((l) => inside(here.filter((r) => r.label === l), cx, cy)) ?? UNCLAIMED
+              labels.find((l) =>
+                inside(
+                  here.filter((r) => r.label === l),
+                  cx,
+                  cy,
+                ),
+              ) ?? UNCLAIMED
             continue
           }
         }
@@ -179,7 +190,9 @@ async function main() {
     }
     await Promise.all(writes)
     levels.push(grid)
-    console.log(`level ${level}: ${baked} tiles, ${((Date.now() - tl) / 1000).toFixed(1)} s`)
+    console.log(
+      `level ${level}: ${baked} tiles, ${((Date.now() - tl) / 1000).toFixed(1)} s`,
+    )
   }
   await pool.close()
 
@@ -187,7 +200,7 @@ async function main() {
     join(OUT, 'index.json'),
     JSON.stringify({
       _comment:
-        'Political field tiles. levels[level] is base64 of a little-endian uint16 grid, 2^level × 2^level, row j north from the root, column i east: the label of a uniform tile, or 65535 for a tile written as {level}/{i}/{j}.webp. In a written tile, channel 0 and 1 are palette slots of the lower and higher label either side of the nearest boundary, and channel 2 the signed distance to that boundary on a square-root scale — with u = v / 127.5 - 1, it decodes to texels as sign(u) * u² * distanceTexels, positive on the higher label\'s side. Both labels equal means no boundary within the clamp. Image row 0 is the north edge.',
+        "Political field tiles. levels[level] is base64 of a little-endian uint16 grid, 2^level × 2^level, row j north from the root, column i east: the label of a uniform tile, or 65535 for a tile written as {level}/{i}/{j}.webp. In a written tile, channel 0 and 1 are palette slots of the lower and higher label either side of the nearest boundary, and channel 2 the signed distance to that boundary on a square-root scale — with u = v / 127.5 - 1, it decodes to texels as sign(u) * u² * distanceTexels, positive on the higher label's side. Both labels equal means no boundary within the clamp. Image row 0 is the north edge.",
       texels: TILE_TEXELS,
       maxLevel: MAX_LEVEL,
       distanceTexels: DISTANCE_TEXELS,
@@ -198,14 +211,17 @@ async function main() {
     }),
   )
   writeFileSync(join(OUT, 'data.json'), JSON.stringify(timeSeries(data)))
-  console.log(`wrote ${written} tiles, ${(bytes / 1e6).toFixed(1)} MB, in ${((Date.now() - t0) / 1000).toFixed(0)} s`)
+  console.log(
+    `wrote ${written} tiles, ${(bytes / 1e6).toFixed(1)} MB, in ${((Date.now() - t0) / 1000).toFixed(0)} s`,
+  )
 }
 
 /** What the engine needs to colour the map for a year and to explain a click. */
 function timeSeries(data: ReturnType<typeof loadDataset>) {
   const end = (e: Endpoint) => ({ year: e.year, text: e.text })
   const preferred = (id: string) =>
-    data.names.find((n) => n.target.kind === 'polity' && n.target.id === id && n.preferred)?.text ??
+    data.names.find((n) => n.target.kind === 'polity' && n.target.id === id && n.preferred)
+      ?.text ??
     data.names.find((n) => n.target.kind === 'polity' && n.target.id === id)?.text ??
     id
   // The page a quote was read on, where there is one, before the link the locator builds.
@@ -219,7 +235,11 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
     window,
     windowText: window.map((y) => formatYear(y)),
     sea: SEA,
-    atoms: data.atoms.map((a) => ({ id: a.id, evidence: a.evidence, confidence: a.confidence })),
+    atoms: data.atoms.map((a) => ({
+      id: a.id,
+      evidence: a.evidence,
+      confidence: a.confidence,
+    })),
     polities: data.polities.map((p) => ({
       id: p.id,
       kind: p.kind,
@@ -254,7 +274,10 @@ function timeSeries(data: ReturnType<typeof loadDataset>) {
       to: end(r.to),
     })),
     sources: Object.fromEntries(
-      data.sources.map((s) => [s.id, { citation: s.citation, url: s.url ?? workUrl(s.id) }]),
+      data.sources.map((s) => [
+        s.id,
+        { citation: s.citation, url: s.url ?? workUrl(s.id) },
+      ]),
     ),
   }
 }

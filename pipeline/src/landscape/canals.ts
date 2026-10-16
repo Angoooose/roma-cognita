@@ -190,7 +190,10 @@ function corridor(line: LonLat[], halfWidth: number): LonLat[][][] {
   return out
 }
 
-const round = (p: LonLat): LonLat => [Math.round(p[0] * 1e5) / 1e5, Math.round(p[1] * 1e5) / 1e5]
+const round = (p: LonLat): LonLat => [
+  Math.round(p[0] * 1e5) / 1e5,
+  Math.round(p[1] * 1e5) / 1e5,
+]
 
 const features: LandscapeShape[] = [
   {
@@ -202,13 +205,17 @@ const features: LandscapeShape[] = [
     },
     geometry: {
       type: 'MultiPolygon',
-      coordinates: SUEZ.flatMap((c) => corridor(c.line, c.halfWidth)).map((p) => p.map((r) => r.map(round))),
+      coordinates: SUEZ.flatMap((c) => corridor(c.line, c.halfWidth)).map((p) =>
+        p.map((r) => r.map(round)),
+      ),
     },
   },
   {
     type: 'Feature',
     id: 'corinth-canal',
-    properties: { derivation: 'pipeline/src/landscape/canals.ts: corridor along the canal axis' },
+    properties: {
+      derivation: 'pipeline/src/landscape/canals.ts: corridor along the canal axis',
+    },
     geometry: {
       type: 'MultiPolygon',
       coordinates: corridor(CORINTH, 150).map((p) => p.map((r) => r.map(round))),
@@ -217,7 +224,9 @@ const features: LandscapeShape[] = [
   {
     type: 'Feature',
     id: 'lake-tharthar',
-    properties: { derivation: 'pipeline/src/landscape/canals.ts: box around the modern lake' },
+    properties: {
+      derivation: 'pipeline/src/landscape/canals.ts: box around the modern lake',
+    },
     geometry: { type: 'Polygon', coordinates: [THARTHAR] },
   },
 ]

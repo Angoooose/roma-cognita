@@ -54,7 +54,8 @@ export function passages(html: string, w: Work): [ref: string, anchor: string][]
 }
 
 /** Where a page is cached, by the key the anchor index files it under. */
-export const pageFile = (key: string) => join(CACHE, `${key.replace(/[^a-z0-9]+/gi, '-')}.html`)
+export const pageFile = (key: string) =>
+  join(CACHE, `${key.replace(/[^a-z0-9]+/gi, '-')}.html`)
 
 async function page(key: string, w: Work, refresh: boolean): Promise<string> {
   const file = pageFile(key)
