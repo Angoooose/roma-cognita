@@ -48,6 +48,8 @@ The map draws on open datasets, ancient texts and modern scholarship. Every bord
 | `data/` | Hand-written records (YAML) and geometry (GeoJSON), each tied to its sources |
 | `pipeline/` | Pulls in the open datasets, checks the data and bakes it into tiles, textures and JSON |
 | `packages/engine` | The renderer: three.js WebGPU, with a WebGL2 fallback |
+| `packages/schema` | The shape of every record, checked by the pipeline and shared with the app |
+| `packages/world` | The projection, the map frame and the tile formats, shared by the pipeline and the renderer |
 | `apps/explorer` | The map app, with its timeline and inspector |
 
 ## Running it
@@ -62,13 +64,11 @@ npm install
 
 **2. Get the source data**
 
-The raw datasets aren't in the repo. Each build checks for what it needs in `.cache/sources/`, and if something is missing, it stops and prints where to download it. People data is fetched for you:
+The raw datasets aren't in the repo. Each build checks for what it needs in `.cache/sources/`, and if something is missing, it stops and prints where to download it. People data is fetched for you. Set `ROMA_COGNITA_CONTACT` in `.env.local` to your email first: it's sent with each request, which is polite to the servers you're fetching from. Then:
 
 ```bash
 npm run people:fetch -w pipeline
 ```
-
-Set `ROMA_COGNITA_CONTACT` in `.env.local` to your email first. It's sent with each request, which is polite to the servers you're fetching from.
 
 **3. Bake the map**
 
@@ -90,6 +90,8 @@ npm run sources  -w pipeline   # the index of sources
 ```
 
 Everything lands in `build/`. Each step prints what it couldn't confirm, so read the output.
+
+Some of the geometry in `data/geometry/` is generated as well, by scripts you only need when changing it: `rome:fetch`, `rivers:fetch`, `derive-coasts`, `derive-floodplains`, `seas` and `canals`. Each script's header says what it writes.
 
 **4. Start it**
 
@@ -117,8 +119,8 @@ Built on the work of many others.
 | [HydroSHEDS](https://www.hydrosheds.org) | Rivers and lakes (HydroRIVERS, HydroLAKES) |
 | Köppen–Geiger (Beck et al., 2023) | Climate |
 | [SITAR](https://www.archeositarproject.it/en/piattaforma/open-data/) | The archaeological map of Rome |
-| About 60 ancient texts | History, from Caesar and Cicero to Strabo |
-| More than 100 modern studies | History, led by Broughton's *Magistrates of the Roman Republic* and the *Barrington Atlas* |
+| 78 ancient texts | History, from Caesar and Cicero to Strabo |
+| More than 200 modern studies | History, led by Broughton's *Magistrates of the Roman Republic* and the *Barrington Atlas* |
 
 The full list, with each dataset's licence, is in `data/sources.yaml`.
 
