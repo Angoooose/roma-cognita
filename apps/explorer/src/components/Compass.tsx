@@ -45,7 +45,7 @@ export function Compass({ map }: { map: RomeMap }) {
           </svg>
         </button>
       </TooltipTrigger>
-      <TooltipContent>North up</TooltipContent>
+      <TooltipContent>North up · right-drag to turn</TooltipContent>
     </Tooltip>
   )
 }
