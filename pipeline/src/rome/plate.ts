@@ -45,7 +45,7 @@ import { ISLAND, islandAt, islandRing, shipShore } from './island.ts'
 import { fitRiver, placeBridges } from './bridges.ts'
 import { COURSES } from './aqueducts.ts'
 import { DESIGNS, designFootprints } from './designs.ts'
-import { bakeModel, writeGround } from './model.ts'
+import { bakeModel, builtGround, writeGround } from './model.ts'
 import { CACHE_DIR } from '../load.ts'
 
 const CACHE = join(CACHE_DIR, 'mapterhorn-rome')
@@ -77,15 +77,19 @@ const SQUARE_CLAMP_M = 16
 /** The roads' distance field, for the plots that front them (fields.ts), is clamped at this. */
 const ROAD_CLAMP_M = 40
 /**
- * The open ground of the Campus Martius, lon/lat: the plain north of the Saepta
- * between the Via Flaminia and the river, where the people drilled, exercised and
- * raced, "the plain covered with grass throughout the year" (Strabo 5.3.8; Platner
- * & Ashby, Campus Martius, pp. 91–94). Left open, not farmed. The outline is loose:
- * the open ground stops at the river, its east edge runs along the Via Flaminia's line
- * (which ends short of its north edge), and its north and south edges wander.
+ * The open ground of the Campus Martius, lon/lat: the plain between the Via Flaminia
+ * and the river, from the Capitol's foot and the Circus Flaminius (the Prata
+ * Flaminia) north, where the people drilled, exercised and raced, "the plain covered
+ * with grass throughout the year" (Strabo 5.3.8; Platner & Ashby, Campus Martius, pp.
+ * 91–94, Circus Flaminius, p. 111). Public land, left open, not farmed; the monuments
+ * built on it stand in its grass. The outline is loose: the open ground stops at the
+ * river and the wall, its east edge runs along the Via Flaminia's line (which ends
+ * short of its north edge), and its north edge wanders.
  */
 const CAMPUS_OPEN: [number, number][] = [
-  [12.4705, 41.8988],
+  [12.4695, 41.8925],
+  [12.4795, 41.8895],
+  [12.4835, 41.8935],
   [12.4812, 41.8988],
   [12.4758, 41.9105],
   [12.4715, 41.9115],
@@ -376,6 +380,7 @@ export async function bakePlate(
     riverRings,
     waterLevel: onRiver[Math.floor(onRiver.length * 0.1)] ?? 8,
     monuments: monumentRings,
+    built: builtGround(places),
     open: [
       {
         ring: CAMPUS_OPEN.map(([lon, lat]) => projection.forward(lon, lat)),

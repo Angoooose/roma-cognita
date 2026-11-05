@@ -160,6 +160,8 @@ export interface FieldsInput {
   waterLevel: number
   /** Monuments' footprints, left open. */
   monuments: Pt[][]
+  /** Ground outside the wall built up as a town or a market, where no country is drawn (model.ts `builtGround`). */
+  built: Pt[][]
   /**
    * Open ground: the Campus Martius. Its outline is loose; it stops at the river and
    * the roads, from the side `at` is on, and its edge wanders a little (`wobble`).
@@ -266,11 +268,14 @@ export function layFields(f: FieldsInput): Fields {
   }
   for (const ring of f.monuments)
     rasterise(g, grow(ring, MONUMENT_CLEAR_M), (i) => (open[i] = 1))
+  const built = new Uint8Array(n)
+  for (const ring of f.built) rasterise(g, ring, (i) => (built[i] = 1))
   // The edges of the recorded and open grounds, for the lane field below.
   const regionEdges: { ring: Pt[]; wobble: number }[] = [
     ...f.grounds.map((gr) => ({ ring: gr.ring, wobble: 0 })),
     ...f.open.map((o) => ({ ring: o.ring, wobble: o.wobble })),
     ...f.monuments.map((ring) => ({ ring: grow(ring, MONUMENT_CLEAR_M), wobble: 0 })),
+    ...f.built.map((ring) => ({ ring, wobble: 0 })),
   ]
 
   // --- the blocks ------------------------------------------------------------------------
@@ -413,7 +418,12 @@ export function layFields(f: FieldsInput): Fields {
   }
   for (let i = 0; i < n; i++) {
     // Inside the wall only a recorded ground (Maecenas', over the rampart) is drawn.
-    if (f.reach[i] > FIELDS_REACH_M || (f.city[i] < 0 && !recorded[i]) || f.water[i] < 3)
+    if (
+      f.reach[i] > FIELDS_REACH_M ||
+      (f.city[i] < 0 && !recorded[i]) ||
+      (built[i] && !recorded[i]) ||
+      f.water[i] < 3
+    )
       continue
     const p = at(i)
     const { b, b1, b2, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane, rel } =

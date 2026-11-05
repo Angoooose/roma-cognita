@@ -652,6 +652,56 @@ const GROWN: {
 /** How far inside an area of `GROWN` its houses thin out to its edge, metres. */
 const GROWN_EDGE = 80
 
+/**
+ * The Forum Boarium, the cattle market by the river: its limits are not known, so
+ * only the ground between its temples and the Ara Maxima, kept open (Platner & Ashby,
+ * Forum Boarium, pp. 224–225).
+ */
+function boariumGround(places: Map<string, Place>): Pt[] | null {
+  const at = [
+    'aedes-portuni',
+    'aedes-herculis-olivarii',
+    'ara-maxima-herculis',
+    'aedes-fortunae-foro-boario',
+    'aedes-matris-matutae',
+  ]
+    .map((id) => places.get(id))
+    .filter((p): p is Place => !!p)
+    .map((p) => projection.forward(...p.location))
+  return at.length > 2 ? hull(at) : null
+}
+
+/**
+ * The ground outside the wall that was a town or a market, not farmed: the riverside
+ * from the Forum Holitorium, paved by the 2nd century BCE, to the Forum Boarium, which
+ * reached from the Velabrum to the river (Platner & Ashby, pp. 223–225), drawn round
+ * their temples and out to the bank; and the quarters of `GROWN` built up as a town or with warehouses.
+ * The country (fields.ts) is not drawn there, so it shows the city's own ground; the
+ * suburb's houses stand on farm plots, and keep them.
+ */
+export function builtGround(places: Map<string, Place>): Pt[][] {
+  const out = GROWN.areas
+    .filter((a) => a.kind !== 'house')
+    .map((a) => a.ring.map((c) => projection.forward(...c)))
+  const markets = [
+    'forum-boarium',
+    'forum-holitorium',
+    'aedes-portuni',
+    'aedes-herculis-olivarii',
+    'ara-maxima-herculis',
+    'aedes-fortunae-foro-boario',
+    'aedes-matris-matutae',
+    'aedes-iani-foro-holitorio',
+    'aedes-spei-foro-holitorio',
+    'aedes-iunonis-sospitae',
+  ]
+    .map((id) => places.get(id))
+    .filter((p): p is Place => !!p)
+    .map((p) => projection.forward(...p.location))
+  if (markets.length > 2) out.push(grow(hull(markets), 90))
+  return out
+}
+
 /** The first year a draw `t` is built under `c`, or null if never: -100000 if from before the window. */
 function builtFrom(c: Curve, t: number): number | null {
   if (t < c[0][1]) return -100000
@@ -1633,20 +1683,8 @@ export function bakeModel(m: ModelInput) {
   // Capitolina, the Arx with its Auguraculum and Juno Moneta — and so was the Asylum
   // between them, "inter duos lucos"; houses climbed the slopes only (Platner & Ashby,
   // Arx and Asylum, p. 55; Tacitus, Histories 3.71).
-  // The Forum Boarium, the cattle market by the river: its limits are not known, so
-  // only the ground between its temples and the Ara Maxima is kept open (Platner &
-  // Ashby, Forum Boarium, pp. 224–225).
-  const boarium = [
-    'aedes-portuni',
-    'aedes-herculis-olivarii',
-    'ara-maxima-herculis',
-    'aedes-fortunae-foro-boario',
-    'aedes-matris-matutae',
-  ]
-    .map((id) => m.places.get(id))
-    .filter((p): p is Place => !!p)
-    .map((p) => projection.forward(...p.location))
-  if (boarium.length > 2) open.push(hull(boarium))
+  const boarium = boariumGround(m.places)
+  if (boarium) open.push(boarium)
   const head = monuments.filter((mo) => FORUM_HEAD.includes(mo.id))
   if (head.length === FORUM_HEAD.length) open.push(hull(head.flatMap((mo) => mo.rings[0])))
   // Before a precinct's gateway the ground is kept open, so it does not open onto a
