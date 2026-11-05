@@ -209,8 +209,12 @@ export function layFields(f: FieldsInput): Fields {
   f.grounds.forEach((gr, k) => {
     // Only the ground on the record's side of the river: an outline drawn loosely
     // along a bank (Caesar's gardens) does not cross it.
+    // A burial ground stays outside the wall and its ditch, however its outline is
+    // drawn: the dead were not buried in the city (Twelve Tables 10.1, Cicero, Laws
+    // 2.58), and the houses inside stand over it otherwise.
+    const minCity = gr.kind === 'burial' ? BURIAL_OUTSIDE_M : -Infinity
     const within = new Uint8Array(n)
-    rasterise(g, gr.ring, (i) => (within[i] = 1))
+    rasterise(g, gr.ring, (i) => (within[i] = f.city[i] >= minCity ? 1 : 0))
     const seed = texelAt(g, gr.at)
     const queue = seed >= 0 && within[seed] ? [seed] : []
     const reached = new Uint8Array(n)
@@ -602,6 +606,12 @@ export const ROWS_M = { olives: 9, orchard: 7 }
  * the shader's painted rows carry them, too small by then to stand out.
  */
 const TREES_WITHIN_M = 1600
+
+/**
+ * How far outside the wall's line a burial ground begins, metres: past the wall, its
+ * berm and its ditch (model.ts `WALL`, `AGGER`).
+ */
+const BURIAL_OUTSIDE_M = 40
 
 export interface Tree {
   x: number
