@@ -334,15 +334,35 @@ export class RomeMap {
     )
     if (place) return { place }
     const p = this.view.ground(clientX, clientY)
-    // Close in, a click inside a monument's outline on the plan of Rome opens it.
-    const monument =
-      p && this.view.metresPerPixel < PLAN_MPP ? this.plan.pick(p.x, p.y, this.year) : null
+    // Close in, a click on a monument on the plan of Rome opens it: the first thing
+    // the eye's ray meets, so a tall temple is found before the building behind it.
+    const at =
+      this.view.metresPerPixel < PLAN_MPP ? (this.struck(clientX, clientY) ?? p) : null
+    const monument = at ? this.plan.pick(at.x, at.y, this.year) : null
     const hit = monument ? this.places.hitFor(monument, this.year) : null
     if (hit) return { place: hit }
     // In the model of Rome the ground is the city's, not a territory to be opened.
     if (this.modelShown) return null
     const territory = p ? await this.politics.pick(p.x, p.y) : null
     return territory ? { territory } : null
+  }
+
+  /**
+   * Where the eye's ray through a client position first meets the model — a roof, a
+   * wall or the ground — stepping along it from the eye. Null without the model.
+   */
+  private struck(clientX: number, clientY: number) {
+    if (!this.modelShown) return null
+    const ray = this.view.rayAt(clientX, clientY)
+    const far = this.view.camera.position.z / Math.max(0.05, -ray.direction.z) + 50
+    const step = Math.max(0.5, far / 3000)
+    const q = new THREE.Vector3()
+    for (let t = 0; t < far; t += step) {
+      ray.at(t, q)
+      const top = this.model.surfaceAt(q.x, q.y)
+      if (top !== null && q.z <= top) return q
+    }
+    return null
   }
 
   /** Everything the reader can search for, named for the year shown. */

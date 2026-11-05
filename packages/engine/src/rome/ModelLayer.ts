@@ -596,6 +596,17 @@ export class ModelLayer {
   }
 
   /**
+   * The world height of the top of whatever stands at a plane point this year, as
+   * far as the model has risen — or of its ground where nothing does. Null outside
+   * the model.
+   */
+  surfaceAt(x: number, y: number) {
+    if (!this.ground || !this.occlusion) return null
+    const top = this.occlusion.topNear(x, y, 0) * modelUniforms.grow.value
+    return (this.ground(x, y) + top) * terrainUniforms.verticalExaggeration.value
+  }
+
+  /**
    * Shows a year: the buildings of that year stand, and the shading of the ones round
    * them is built again for it, a moment after the year stops changing.
    */

@@ -189,6 +189,17 @@ export class MapCamera {
     return true
   }
 
+  /** The ray from the eye through a client position, in world space. */
+  rayAt(clientX: number, clientY: number): THREE.Ray {
+    const r = this.el.getBoundingClientRect()
+    this.ndc.set(
+      ((clientX - r.left) / r.width) * 2 - 1,
+      -((clientY - r.top) / r.height) * 2 + 1,
+    )
+    this.raycaster.setFromCamera(this.ndc, this.camera)
+    return this.raycaster.ray.clone()
+  }
+
   /** The point on the plane (z = 0) under a client position. Ignores relief. */
   ground(clientX: number, clientY: number): THREE.Vector3 | null {
     const r = this.el.getBoundingClientRect()
