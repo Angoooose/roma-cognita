@@ -1582,25 +1582,31 @@ export function bakeModel(m: ModelInput) {
   // A garden laid out within the window (Lucullus', Maecenas') takes the houses on
   // its ground when it comes, as a monument does.
   const laidOut = m.grounds.filter((gr) => gr.years[0] > WINDOW[0])
-  const until = (pts: Pt[]) =>
+  const until = (pts: Pt[], own?: RecordedGround) =>
     Math.min(
       100000,
       ...late
         .filter((mo) => pts.some((q) => inside(q, mo)))
         .map((mo) => yearsOf(mo.id)[0] - 1),
       ...laidOut
-        .filter((gr) => pts.some((q) => inRing(q, gr.ring)))
+        .filter((gr) => gr !== own && pts.some((q) => inRing(q, gr.ring)))
         .map((gr) => gr.years[0] - 1),
     )
-  /** The last year a tree at `q` stands: until a later monument takes the ground its crown spreads over. */
-  const crownUntil = ([x, y]: Pt, r = 3) =>
-    until([
-      [x, y],
-      [x + r, y],
-      [x - r, y],
-      [x, y + r],
-      [x, y - r],
-    ])
+  /**
+   * The last year a tree at `q` stands: until a later monument takes the ground its
+   * crown spreads over. A garden's own trees are not cleared by the garden.
+   */
+  const crownUntil = ([x, y]: Pt, r = 3, own?: RecordedGround) =>
+    until(
+      [
+        [x, y],
+        [x + r, y],
+        [x - r, y],
+        [x, y + r],
+        [x, y - r],
+      ],
+      own,
+    )
   /**
    * The first year a house at `pts` stands (DESIGN.md §7.7, "The city growing"). The
    * city inside the wall was full by 133 BCE: private houses of the 2nd century BCE
@@ -2349,7 +2355,7 @@ export function bakeModel(m: ModelInput) {
     // Until a monument begun within the window takes its ground, as a house does.
     tree(t.x, t.y, t.r, t.kind, [
       t.years[0],
-      Math.min(t.years[1], crownUntil([t.x, t.y], t.r)),
+      Math.min(t.years[1], crownUntil([t.x, t.y], t.r, t.ground)),
     ])
   const TREE_STRIDE = 7
 

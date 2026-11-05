@@ -609,6 +609,8 @@ export interface Tree {
   r: number
   kind: number
   years: [number, number]
+  /** The recorded ground it was planted in, if any. */
+  ground?: RecordedGround
 }
 
 export function fieldTrees(
@@ -705,6 +707,7 @@ export function fieldTrees(
                   ? TREE.mixed
                   : TREE.pine,
           years: gr.years,
+          ground: gr,
         })
       }
   })
@@ -718,7 +721,7 @@ export function fieldTrees(
       for (let t = 4; t < L - 4; t += 8) {
         const p: Pt = [a[0] + ((b[0] - a[0]) * t) / L, a[1] + ((b[1] - a[1]) * t) / L]
         if (!onGround(p, k) || !free(p, true)) continue
-        trees.push({ x: p[0], y: p[1], r: 3, kind: TREE.cypress, years: gr.years })
+        trees.push({ x: p[0], y: p[1], r: 3, kind: TREE.cypress, years: gr.years, ground: gr })
       }
     }
   })
