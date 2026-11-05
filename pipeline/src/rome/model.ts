@@ -1329,8 +1329,16 @@ export function bakeModel(m: ModelInput) {
     // Each edge's right-hand normal, which points out of a ring wound anticlockwise.
     const outward = ringArea(ring) > 0 ? 1 : -1
     // Where another building stands on the ground behind, its own walls hold that
-    // ground once it is begun: the wall stands only until then.
-    const own = yearsOf(mo.id)
+    // ground once it is begun: the wall stands only until then. A building smaller
+    // than its site at first (`extent`) is walled from the phase that fills it: the
+    // old temple of Concord stood on a site cut wider for Opimius's.
+    const own = [...yearsOf(mo.id)]
+    const fits = (e: unknown) =>
+      !e || !d.size || ((e as number[])[0] >= d.size[0] && (e as number[])[1] >= d.size[1])
+    if (!fits(d.extent)) {
+      const filled = d.phases?.find((ph) => ph.extent && fits(ph.extent))
+      if (filled) own[0] = Math.max(own[0], filled.from)
+    }
     const coverOf = (p: Pt) =>
       sites.find(
         (o) =>
@@ -1373,12 +1381,34 @@ export function bakeModel(m: ModelInput) {
         }
         const high = cut ? Math.min(beyond - level, cut.h) : beyond - level
         if (high > SITE.cut && walled)
-          run.push([round(w[0]), round(w[1]), round(high + 0.7)])
+          run.push([round(w[0]), round(w[1]), round(high + 0.7), back[0], back[1]])
         else flush()
       }
       flush()
     }
   }
+  // A smaller site levelled after a wall was raised can take down the ground behind
+  // it, leaving it standing free: each wall is kept only where the finished ground
+  // behind it still stands over its site, and no higher than that ground.
+  const held = retaining.flatMap((r) => {
+    const out: (typeof retaining)[number][] = []
+    let pts: number[][] = []
+    const end = () => {
+      const long = pts
+        .slice(1)
+        .reduce((a, q, i) => a + Math.hypot(q[0] - pts[i][0], q[1] - pts[i][1]), 0)
+      if (long >= SITE.run) out.push({ ...r, pts })
+      pts = []
+    }
+    for (const [x, y, h, bx, by] of r.pts) {
+      const high = sample(ground, bx, by, r.base) - r.base
+      if (high > SITE.cut) pts.push([x, y, round(Math.min(h, high + 0.7))])
+      else end()
+    }
+    end()
+    return out
+  })
+  retaining.splice(0, retaining.length, ...held)
 
   // Known buildings standing on one another in the same years are a mistake in their
   // placing: the build says so.
