@@ -170,6 +170,8 @@ export interface FieldsInput {
 
 export interface Fields {
   rgba: Uint8Array
+  /** Signed distance to a block's edge where it is a hedge, metres, clamped (plate-1 alpha). */
+  blockEdge: Float32Array
   /** The land's use at each texel (`LAND`). */
   use: Uint8Array
   /** The direction the rows run, radians, as the shader has it (quantised). */
@@ -366,7 +368,7 @@ export function layFields(f: FieldsInput): Fields {
     const u = rel[0] * b.dir[0] + rel[1] * b.dir[1] + hash(key, 0, 6) * w
     const v = Math.abs(rel[0] * -b.dir[1] + rel[1] * b.dir[0])
     const [iu, iv] = [Math.floor(u / w), Math.floor(v / d)]
-    return { b1, b, side, isLane, toBlock, toLane, rel, key, w, d, u, v, iu, iv }
+    return { b1, b2, b, side, isLane, toBlock, toLane, rel, key, w, d, u, v, iu, iv }
   }
 
   // --- each texel ----------------------------------------------------------------------
@@ -383,6 +385,17 @@ export function layFields(f: FieldsInput): Fields {
   // lane's its block's side.
   const hedgeAt = new Float32Array(n).fill(EDGE_CLAMP_M)
   const laneAt = new Float32Array(n).fill(LANE_CLAMP_M)
+  // A block's edge that is not a lane is a hedge too, but the hedge field cannot carry
+  // it: its sign is the plot's, and two blocks' plots meet along it at random. So the
+  // block edges have a field of their own (plate-1 alpha), signed by the block's own
+  // side in a second colouring, chosen below so that it changes across them.
+  const blockAt = new Int32Array(n).fill(-1)
+  const toBlockAt = new Float32Array(n)
+  const hedgeEdges = new Map<number, Set<number>>()
+  const link = (a: number, b: number) => {
+    if (!hedgeEdges.has(a)) hedgeEdges.set(a, new Set())
+    hedgeEdges.get(a)!.add(b)
+  }
   const S = 3
   const slopeAt = (i: number) => {
     const c = i % g.width
@@ -403,7 +416,11 @@ export function layFields(f: FieldsInput): Fields {
     if (f.reach[i] > FIELDS_REACH_M || (f.city[i] < 0 && !recorded[i]) || f.water[i] < 3)
       continue
     const p = at(i)
-    const { b, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane } = plotOf(p)
+    const { b, b1, b2, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane, rel } =
+      plotOf(p)
+    blockAt[i] = b1
+    toBlockAt[i] = toBlock
+    if (!isLane && toBlock < g.texel) (link(b1, b2), link(b2, b1))
     const fu = u / w - iu
     const fv = v / d - iv
     const toU = Math.min(fu, 1 - fu) * w
@@ -427,12 +444,24 @@ export function layFields(f: FieldsInput): Fields {
       continue
     }
 
-    // What the plot grows.
-    const { slope, south } = slopeAt(i)
-    const low = f.smooth[i] < f.waterLevel + MEADOW.over && b.fromRiver < MEADOW.within
+    // What the plot grows, from the ground at its middle, so the whole plot grows one
+    // thing: taken texel by texel, a plot on a hillside changed crop across itself in
+    // steps, with no hedge between.
+    const n_: Pt = [-b.dir[1], b.dir[0]]
+    const across = Math.sign(rel[0] * n_[0] + rel[1] * n_[1]) || 1
+    const along = (iu + 0.5) * w - hash(key, 0, 6) * w
+    const mid = texelAt(g, [
+      b.foot[0] + b.dir[0] * along + n_[0] * across * (iv + 0.5) * d,
+      b.foot[1] + b.dir[1] * along + n_[1] * across * (iv + 0.5) * d,
+    ])
+    const m = mid >= 0 ? mid : i
+    const { slope, south } = slopeAt(m)
+    const low = f.smooth[m] < f.waterLevel + MEADOW.over && b.fromRiver < MEADOW.within
     let use_: number
-    // The river's banks are steep where the model cuts its bed; they are meadow.
-    if (slope > SCRUB_SLOPE && f.water[i] < RIVER_BANK_M) use_ = LAND.meadow
+    // The river's banks are steep where the model cuts its bed; they are meadow, to the
+    // water's edge however the plot lies.
+    const bank = slopeAt(i).slope > SCRUB_SLOPE && f.water[i] < RIVER_BANK_M
+    if (bank) use_ = LAND.meadow
     else if (slope > SCRUB_SLOPE) use_ = LAND.scrub
     else if (low) use_ = LAND.meadow
     else {
@@ -445,7 +474,7 @@ export function layFields(f: FieldsInput): Fields {
           return wt * (1 - hill * 0.6)
         // Gardens want water and the city's roads.
         if (crop === LAND.garden)
-          return wt * (1 - hill * 0.7) * (f.roadDist[i] < 12 || b.fromRiver < 400 ? 1.6 : 1)
+          return wt * (1 - hill * 0.7) * (f.roadDist[m] < d || b.fromRiver < 400 ? 1.6 : 1)
         return wt
       })
       const farm = pick(weights, hash(key, 0, 7))
@@ -516,6 +545,46 @@ export function layFields(f: FieldsInput): Fields {
     })
   }
 
+  // The second colouring, each connected run of blocks met only by hedges taken
+  // breadth first, then a block turned wherever more of its hedges would change sign
+  // than not. A run that closes on itself round an odd number of blocks still leaves
+  // one of its edges unsigned, and undrawn: the count is printed.
+  const hedgeSide = new Map<number, number>()
+  let unsigned = 0
+  for (const start of hedgeEdges.keys()) {
+    if (hedgeSide.has(start)) continue
+    hedgeSide.set(start, 1)
+    const queue = [start]
+    for (let k = 0; k < queue.length; k++) {
+      const a = queue[k]
+      for (const b of hedgeEdges.get(a)!) {
+        if (!hedgeSide.has(b)) {
+          hedgeSide.set(b, -hedgeSide.get(a)!)
+          queue.push(b)
+        } else if (b > a && hedgeSide.get(b) === hedgeSide.get(a)) unsigned++
+      }
+    }
+  }
+  for (let pass = 0; pass < 20; pass++) {
+    let turned = 0
+    for (const [a, bs] of hedgeEdges) {
+      let same = 0
+      for (const b of bs) if (hedgeSide.get(b) === hedgeSide.get(a)) same++
+      if (same * 2 > bs.size) (hedgeSide.set(a, -hedgeSide.get(a)!), turned++)
+    }
+    if (!turned) break
+  }
+  unsigned = 0
+  for (const [a, bs] of hedgeEdges)
+    for (const b of bs) if (b > a && hedgeSide.get(b) === hedgeSide.get(a)) unsigned++
+  let edges = 0
+  for (const [a, bs] of hedgeEdges) for (const b of bs) if (b > a) edges++
+  console.log(`fields: ${edges} block edges hedged, ${unsigned} left undrawn`)
+  const blockEdge = new Float32Array(n).fill(EDGE_CLAMP_M)
+  for (let i = 0; i < n; i++)
+    if (blockAt[i] >= 0)
+      blockEdge[i] = (hedgeSide.get(blockAt[i]) ?? 1) * Math.min(EDGE_CLAMP_M, toBlockAt[i])
+
   const rgba = new Uint8Array(n * 4)
   for (let i = 0; i < n; i++) {
     rgba[i * 4] = use[i] * 16 + (tone[i] & 15)
@@ -534,6 +603,7 @@ export function layFields(f: FieldsInput): Fields {
   )
   return {
     rgba,
+    blockEdge,
     use,
     angle: (i: number) => (dirByte[i] / 256) * Math.PI,
     edge,
@@ -731,7 +801,14 @@ export function fieldTrees(
       for (let t = 4; t < L - 4; t += 8) {
         const p: Pt = [a[0] + ((b[0] - a[0]) * t) / L, a[1] + ((b[1] - a[1]) * t) / L]
         if (!onGround(p, k) || !free(p, true)) continue
-        trees.push({ x: p[0], y: p[1], r: 3, kind: TREE.cypress, years: gr.years, ground: gr })
+        trees.push({
+          x: p[0],
+          y: p[1],
+          r: 3,
+          kind: TREE.cypress,
+          years: gr.years,
+          ground: gr,
+        })
       }
     }
   })

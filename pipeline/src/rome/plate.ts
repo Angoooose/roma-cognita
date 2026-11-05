@@ -21,7 +21,8 @@
  * street drawn lighter, 127 a road, 63 a road drawn lighter.
  * plate-1: R signed distance to the circuit, G signed distance to the river, B the
  * distance to the hull of the circuit and everything on the plan, out to
- * REACH_CLAMP_M, for the board's edge.
+ * REACH_CLAMP_M, for the board's edge; A signed distance to the edge of a block of
+ * the country's plots, where it is a hedge rather than a lane (fields.ts).
  * plate-2: the country outside the wall, its farmland and gardens (fields.ts).
  * The fields are loaded without premultiplication, so alpha is data like the rest.
  */
@@ -462,7 +463,7 @@ export async function bakePlate(
     img1[i * 4] = signed(city[i], CITY_CLAMP_M)
     img1[i * 4 + 1] = signed(water[i], RIVER_CLAMP_M)
     img1[i * 4 + 2] = signed(reachField[i], REACH_CLAMP_M)
-    img1[i * 4 + 3] = 255
+    img1[i * 4 + 3] = signed(fields.blockEdge[i], EDGE_CLAMP_M)
   }
   mkdirSync(out, { recursive: true })
   for (const [i, img] of [img0, img1, fields.rgba].entries())

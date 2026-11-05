@@ -288,27 +288,43 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
   // they cross zero on the line itself and it draws unbroken; their size is the
   // distance.
   const signed = (v: F) => v.mul(255).sub(128).div(127)
-  const toEdge = abs(signed(lin.b)).mul(fieldUniforms.edgeClamp)
+  // A hedge is a plot's edge (plate-2 blue) or a block's where no lane runs (plate-1
+  // alpha), each in a field of its own.
+  const block = texture(planTextures.plate[1], uv).level(float(0)).a
+  const toPlotEdge = abs(signed(lin.b)).mul(fieldUniforms.edgeClamp).toVar()
+  const toBlockEdge = abs(signed(block)).mul(fieldUniforms.edgeClamp).toVar()
+  const toEdge = min(toPlotEdge, toBlockEdge)
   const toLane = abs(signed(lin.a)).mul(fieldUniforms.laneClamp)
   // What the land is comes from the nearest texel, looked up a step inside the plot
   // from its nearest edge — down the slope of the interpolated distance — so a plot's
-  // edge runs straight across the texels rather than stepping along them. A plot's
-  // edge is the hedge field's; a block's the lane field's, which along a block edge
-  // that is not a lane stands `NOT_A_LANE_M` (pipeline fields.ts) further out.
-  const at = (dx: number, dy: number) =>
-    texture(planTextures.plate[2], plateUV(mx.add(dx), my.add(dy))).level(float(0))
-  const [e0, e1, e2, e3] = [at(1.5, 0), at(-1.5, 0), at(0, 1.5), at(0, -1.5)]
-  const slope = (pick: (v: THREE.Node<'vec4'>) => F) =>
+  // edge runs straight across the texels rather than stepping along them. The edge is
+  // the nearer hedge's, or the lane field's, which along a block edge that is not a
+  // lane stands `NOT_A_LANE_M` (pipeline fields.ts) further out.
+  const at = (k: number, dx: number, dy: number) =>
+    texture(planTextures.plate[k], plateUV(mx.add(dx), my.add(dy))).level(float(0))
+  const around = (k: number) => [
+    at(k, 1.5, 0),
+    at(k, -1.5, 0),
+    at(k, 0, 1.5),
+    at(k, 0, -1.5),
+  ]
+  const [e0, e1, e2, e3] = around(2)
+  const [f0, f1, f2, f3] = around(1)
+  const slope = (pick: (v: THREE.Node<'vec4'>) => F, [a, b, c, d] = [e0, e1, e2, e3]) =>
     vec2(
-      abs(signed(pick(e0))).sub(abs(signed(pick(e1)))),
-      abs(signed(pick(e2))).sub(abs(signed(pick(e3)))),
+      abs(signed(pick(a))).sub(abs(signed(pick(b)))),
+      abs(signed(pick(c))).sub(abs(signed(pick(d)))),
     )
   const toward = (g: THREE.Node<'vec2'>) => g.div(max(length(g), 1e-4))
   const byHedge = float(3.2).sub(toEdge)
   const byBlock = clamp(float(3.2 + 4).sub(toLane), 0, 3.2)
   const inward = select(
     byHedge.greaterThan(0),
-    toward(slope((v) => v.b)).mul(byHedge),
+    select(
+      toPlotEdge.lessThan(toBlockEdge),
+      toward(slope((v) => v.b)),
+      toward(slope((v) => v.a, [f0, f1, f2, f3])),
+    ).mul(byHedge),
     toward(slope((v) => v.a)).mul(byBlock),
   )
   const cell = min(
