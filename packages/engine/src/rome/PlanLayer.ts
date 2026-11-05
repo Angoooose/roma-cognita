@@ -123,6 +123,22 @@ export class PlanLayer {
     return this.plate
   }
 
+  /**
+   * Whether a plane point is inside a monument's outline, in any year; undefined where
+   * it has no outline on the plan.
+   */
+  covers(id: string, x: number, y: number): boolean | undefined {
+    const o = this.outlines.find((o) => o.id === id)
+    if (!o) return undefined
+    return (
+      x >= o.box[0] &&
+      x <= o.box[2] &&
+      y >= o.box[1] &&
+      y <= o.box[3] &&
+      o.rings.some((poly) => poly.reduce((c, ring) => c !== inRing(x, y, ring), false))
+    )
+  }
+
   /** The id of the monument standing at a plane point in `year`, smallest first. */
   pick(x: number, y: number, year: number): string | null {
     const hits = this.outlines.filter(

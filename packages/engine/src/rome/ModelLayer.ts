@@ -204,15 +204,25 @@ class Occlusion {
     this.tex.dispose()
   }
 
-  /** The top of whatever stands within `r` metres of a point, metres over its ground. */
-  topNear(x: number, y: number, r: number) {
+  /**
+   * The top of whatever stands within `r` metres of a point, metres over its ground;
+   * only where `keep` holds, if given.
+   */
+  topNear(x: number, y: number, r: number, keep?: (x: number, y: number) => boolean) {
     if (!this.raw) return 0
     const [ci, cj] = [(x - this.x0) / OCC_CELL_M, (y - this.y0) / OCC_CELL_M]
     const n = Math.ceil(r / OCC_CELL_M)
     let top = 0
     for (let j = Math.floor(cj) - n; j <= Math.floor(cj) + n; j++)
       for (let i = Math.floor(ci) - n; i <= Math.floor(ci) + n; i++)
-        if (i >= 0 && j >= 0 && i < this.nx && j < this.ny)
+        if (
+          i >= 0 &&
+          j >= 0 &&
+          i < this.nx &&
+          j < this.ny &&
+          (!keep ||
+            keep(this.x0 + (i + 0.5) * OCC_CELL_M, this.y0 + (j + 0.5) * OCC_CELL_M))
+        )
           top = Math.max(top, this.raw[j * this.nx + i])
     return top
   }
@@ -573,11 +583,16 @@ export class ModelLayer {
   /**
    * Where a monument's marker and name hang (labels/PlaceLayer.ts `Anchor`): on the
    * model's ground, lifted to the top of its building while the model stands — or,
-   * where its building is not drawn, of the roofs round it. Null outside the model.
+   * where its building is not drawn, of the roofs round it. With `own`, only its own
+   * outline is looked in, so a basin's name does not climb its neighbour's roof. Null
+   * outside the model.
    */
-  anchor(x: number, y: number) {
+  anchor(x: number, y: number, own?: (x: number, y: number) => boolean) {
     if (!this.ground || !this.occlusion) return null
-    return { ground: this.ground(x, y), lift: this.occlusion.topNear(x, y, ANCHOR_REACH_M) }
+    return {
+      ground: this.ground(x, y),
+      lift: this.occlusion.topNear(x, y, ANCHOR_REACH_M, own),
+    }
   }
 
   /**

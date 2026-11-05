@@ -59,6 +59,8 @@ export interface PlaceRecord {
   within?: string
   /** Drawn as an outline on the city plan (build/rome): named, with no marker. */
   outlined?: boolean
+  /** The ground its outline covers, m². */
+  footprint?: number
   labelSide?: 'n' | 's' | 'e' | 'w'
   /** Share of land under a name on each side, at each of the file's `landScales`. */
   land?: Record<string, number[]>
@@ -468,7 +470,13 @@ export class PlaceLayer {
         target: 1,
       })
     }
-    return out.sort((a, b) => a.rank - b.rank || a.place.name.localeCompare(b.place.name))
+    // Among equals the larger building first: a temple's name before its basin's.
+    return out.sort(
+      (a, b) =>
+        a.rank - b.rank ||
+        (b.place.footprint ?? 0) - (a.place.footprint ?? 0) ||
+        a.place.name.localeCompare(b.place.name),
+    )
   }
 
   private nameWidth(it: Item) {

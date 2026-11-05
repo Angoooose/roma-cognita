@@ -94,8 +94,14 @@ export class RomeMap {
     if (map.plan.rect) map.terrain.setFineRect(map.plan.rect)
     // Rome's monuments hang on the model's ground, and on their roofs while it stands.
     const anchorOf = map.places.anchorOf
-    map.places.anchorOf = (p) =>
-      (p.within === 'roma' && map.model.anchor(p.x, p.y)) || anchorOf(p)
+    map.places.anchorOf = (p) => {
+      if (p.within !== 'roma') return anchorOf(p)
+      const own =
+        map.plan.covers(p.id, p.x, p.y) === undefined
+          ? undefined
+          : (x: number, y: number) => !!map.plan.covers(p.id, x, y)
+      return map.model.anchor(p.x, p.y, own) || anchorOf(p)
+    }
     // The city from overhead, for the map further out (rome/portrait.ts), drawn again
     // for each year's buildings.
     map.model.onShaded = () => {

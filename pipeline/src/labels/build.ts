@@ -235,11 +235,26 @@ const placeName = (id: string) =>
   data.names.find((n) => n.target.kind === 'place' && n.target.id === id)?.text ??
   id
 const sourceById = new Map(data.sources.map((s) => [s.id, s]))
-const planned = new Set<string>(
-  JSON.parse(readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8')).features.map(
-    (f: { id: string }) => f.id,
-  ),
-)
+/** The places drawn on the plan of Rome, and the ground each outline covers, m². */
+const planned = new Map<string, number>()
+for (const f of JSON.parse(readFileSync(join(DATA_DIR, 'geometry/rome.geojson'), 'utf8'))
+  .features as { id: string; geometry: { type: string; coordinates: unknown } }[]) {
+  const polys = (
+    f.geometry.type === 'Polygon'
+      ? [f.geometry.coordinates]
+      : f.geometry.type === 'MultiPolygon'
+        ? f.geometry.coordinates
+        : []
+  ) as [number, number][][][]
+  const area = polys.reduce((sum, [ring]) => {
+    const pts = ring.map((c) => projection.forward(...c))
+    let a = 0
+    for (let i = 0; i + 1 < pts.length; i++)
+      a += pts[i][0] * pts[i + 1][1] - pts[i + 1][0] * pts[i][1]
+    return sum + Math.abs(a) / 2
+  }, 0)
+  planned.set(f.id, (planned.get(f.id) ?? 0) + Math.round(area))
+}
 const places = data.places.map((p) => {
   const [x, y] = projection.forward(...p.location)
   return {
@@ -258,6 +273,7 @@ const places = data.places.map((p) => {
     within: p.within,
     // Drawn on the city plan (build/rome), so it is named without a marker.
     outlined: planned.has(p.id) || undefined,
+    footprint: planned.get(p.id),
     labelSide: p.labelSide,
     confidence: p.confidence,
     review: p.review,
@@ -373,7 +389,8 @@ async function coastSampler(around: { x: number; y: number; reach: number }[]) {
   for (const key of keys) {
     const [i, j] = key.split('/').map(Number)
     const source = find({ level, i, j })
-    if (!source) throw new Error(`coast tile ${level}/${key} is a shore tile but was not found`)
+    if (!source)
+      throw new Error(`coast tile ${level}/${key} is a shore tile but was not found`)
     const { data: px, info } = await sharp(readTile(source))
       .raw()
       .toBuffer({ resolveWithObject: true })

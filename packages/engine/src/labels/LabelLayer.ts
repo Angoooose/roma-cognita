@@ -87,6 +87,8 @@ const STYLES: Record<string, FaceStyle> = {
     fadeIn: [4, 7],
     fadeOut: [18, 30],
   },
+  // A quarter's name goes once the view is inside the quarter, before it is set
+  // across its buildings and stands in the way of their names.
   'plan-district': {
     ink: new THREE.Color('#F3EBDA'),
     inkAlpha: 0.88,
@@ -95,7 +97,7 @@ const STYLES: Record<string, FaceStyle> = {
     haloPx: 2.2,
     gain: 0.2,
     fadeIn: [8, 11],
-    fadeOut: [80, 140],
+    fadeOut: [34, 52],
   },
   'plan-street': {
     ink: new THREE.Color('#2A241E'),
