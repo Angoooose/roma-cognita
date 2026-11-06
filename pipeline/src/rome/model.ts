@@ -227,6 +227,8 @@ const CAPITOL_OPEN: [[number, number], number][] = [
  * and Saturn close round.
  */
 const FORUM_HEAD = ['tabularium', 'aedes-concordiae', 'aedes-saturni']
+/** The buildings of the Vestals' precinct, the ground among them kept open. */
+const VESTALS = ['aedes-vestae', 'regia', 'atrium-vestae', 'domus-publica']
 /** The Asylum's two groves, lon/lat: trees towards each summit. */
 const ASYLUM_GROVES: [number, number][] = [
   [12.48238, 41.89352],
@@ -1717,6 +1719,13 @@ export function bakeModel(m: ModelInput) {
   if (boarium) open.push(boarium)
   const head = monuments.filter((mo) => FORUM_HEAD.includes(mo.id))
   if (head.length === FORUM_HEAD.length) open.push(hull(head.flatMap((mo) => mo.rings[0])))
+  // The Vestals' precinct: no private house stood between the temple of Vesta, the
+  // Regia, the Vestals' house and the chief priest's beside them, where the grove of
+  // Vesta ran down from the Palatine to the Nova Via (Cicero, On Divination 1.101;
+  // Platner & Ashby, Atrium Vestae, pp. 58–60).
+  const vestals = monuments.filter((mo) => VESTALS.includes(mo.id))
+  if (vestals.length === VESTALS.length)
+    open.push(hull(vestals.flatMap((mo) => mo.rings[0])))
   // Before a precinct's gateway the ground is kept open, so it does not open onto a
   // house: 20 m out, a little wider than the gate.
   for (const mo of monuments) {
