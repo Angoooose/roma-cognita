@@ -108,7 +108,7 @@ const POINT_TEMPLE: {
 
 /**
  * What the known buildings were faced with in the window, where Platner & Ashby say
- * (checked against each article, September 2026), from the year given, astronomical.
+ * (checked against each article), from the year given, astronomical.
  * A building not listed, or before its first entry, is drawn in white stucco over
  * tufa or peperino, the Republic's usual finish: Rome's first marble temple was
  * Metellus's of 146 BCE (Iuppiter Stator, p. 304), and marble only became the rule
