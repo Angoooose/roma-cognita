@@ -4,16 +4,12 @@ import {
   type Aqueduct,
   Builder,
   C,
-  ccw,
   FABRIC_STRIDE,
   LOT,
   MOUND_FADE_M,
   MOUND_H_M,
   MOUND_R_M,
   type Mesh,
-  orientedBox,
-  polygonArea,
-  edges,
   type Pt,
   ROOF,
   SKIN,
@@ -513,116 +509,13 @@ const STAGED = new Set([
  */
 const UNRISEN = new Set(['circus', 'square', 'island', 'quay', 'enclosure'])
 
-/**
- * One known building, raised by its type. Temples stand on a podium with steps at
- * the front, a colonnade round the cella under an entablature and a pedimented
- * roof, facing `faces`; a round shrine is a ring of columns under a cone; a
- * basilica a colonnade under a raised clerestory; a forum a paved court inside
- * porticoes. The proportions are the types' (Vitruvius' rules of thumb), not
- * measurements of these buildings.
- */
+/** One known building, raised from its design as it stood in `year` (monuments.ts). */
 function monument(b: Builder, m: Monument, year: number) {
-  if (m.design) {
-    const { phases, ...d } = m.design
-    const now = Object.assign({}, d, ...(phases ?? []).filter((ph) => ph.from <= year))
-    return buildDesign(b, now, m.base)
-  }
-  const [outer, ...holes] = m.rings.map((r) => ccw(r, true))
-  const rings = [outer, ...holes.map((h) => ccw(h, false))]
-  const base = m.base
-  const obb = orientedBox(outer)
-  const boxy = obb.area > 0 && polygonArea(outer) / obb.area > 0.8
-  // Round: its outline as compact as a circle's (perimeter² / 4π·area near 1).
-  let perimeter = 0
-  for (let i = 0; i + 1 < outer.length; i++)
-    perimeter += Math.hypot(outer[i + 1][0] - outer[i][0], outer[i + 1][1] - outer[i][1])
-  const round = (perimeter * perimeter) / (4 * Math.PI * polygonArea(outer)) < 1.08
-  switch (m.kind) {
-    case 'bridge': {
-      b.walls(outer, 0, m.body, base, C.stone)
-      b.top(rings, m.body, base, C.paving)
-      return
-    }
-    case 'forum': {
-      b.top(rings, 0.4, base, C.travertine)
-      edges(outer, (a, c) => b.portico(a, c, 9, m.body, base))
-      return
-    }
-    case 'circus': {
-      // Stands round the edge in three tiers, and the long barrier down the arena.
-      b.top(rings, 0.3, base, C.sand)
-      for (const [k, [w, h]] of [
-        [26, 4],
-        [18, 8],
-        [9, 12],
-      ].entries())
-        edges(outer, (a, c) =>
-          b.edgeBlock(a, c, w, 0.3, h, base, k === 2 ? b.face : b.shade, b.face),
-        )
-      b.block(
-        obb.cx,
-        obb.cy,
-        obb.angle,
-        8,
-        obb.long * 0.62,
-        -2,
-        2.5,
-        'flat',
-        base,
-        b.face,
-        b.face,
-      )
-      return
-    }
-    case 'theatre': {
-      // The seating rises from the stage to the outer wall.
-      const r = Math.max(...outer.map(([x, y]) => Math.hypot(x - obb.cx, y - obb.cy)))
-      const [cx, cy] = [Math.max(...outer.map((p) => p[0])) - 12, obb.cy]
-      const zAt = ([x, y]: Pt) =>
-        4 + (m.body - 4) * Math.min(1, Math.hypot(x - cx, y - cy) / r)
-      b.walls(outer, -6, 0, base, b.face, outer.map(zAt))
-      b.top(rings, zAt, base, C.seating)
-      b.block(cx + 6, cy, 0, 12, 95, -6, m.body, 'gable', base, b.face, C.roofTemple)
-      return
-    }
-  }
-  if (m.kind === 'temple' && round)
-    return b.tholos(obb.cx, obb.cy, obb.short / 2, m.podium || 3, base)
-  if (m.kind === 'temple' && boxy)
-    return b.temple(obb, m.faces, m.podium || 3, m.body, base)
-  if (m.kind === 'basilica' && boxy) return b.basilica(obb, m.body, base)
-  if (
-    (m.kind === 'curia' ||
-      m.kind === 'house' ||
-      m.kind === 'warehouse' ||
-      m.kind === 'portico') &&
-    boxy
-  ) {
-    b.block(
-      obb.cx,
-      obb.cy,
-      obb.angle,
-      obb.short,
-      obb.long,
-      -6,
-      m.body,
-      m.roof === 'flat' ? 'flat' : 'gable',
-      base,
-      b.face,
-      C.roofTemple,
-      0.6,
-    )
-    return
-  }
-  const podium = m.podium
-  const body = podium + m.body
-  if (podium > 0) {
-    b.walls(outer, -6, podium, base, b.face)
-    b.top(rings, podium, base, b.face)
-  }
-  b.walls(outer, podium > 0 ? podium : -6, body, base, b.face)
-  for (const h of holes) b.walls(ccw(h, true), podium > 0 ? podium : -6, body, base, b.face)
-  b.top(rings, body, base, m.roof === 'flat' ? b.shade : C.roofTemple)
+  // Every monument the bake writes has a design (pipeline model.ts says if one has not).
+  if (!m.design) return
+  const { phases, ...d } = m.design
+  const now = Object.assign({}, d, ...(phases ?? []).filter((ph) => ph.from <= year))
+  return buildDesign(b, now, m.base)
 }
 
 /** A tiled roof, weathered: lighter or darker, and now and then browner or redder. */

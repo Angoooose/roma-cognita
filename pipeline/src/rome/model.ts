@@ -2537,6 +2537,10 @@ export function bakeModel(m: ModelInput) {
     }
   }
   const bin = Buffer.concat([Buffer.from(fab.buffer), Buffer.from(tre.buffer)])
+  // The engine raises a monument from its design alone: one without is not drawn.
+  const undesigned = monuments.filter((mo) => !mo.design).map((mo) => mo.id)
+  if (undesigned.length)
+    console.log(`model: no design for ${undesigned.join(', ')}; not drawn (designs.ts)`)
   writeFileSync(join(m.out, 'model.bin'), bin)
   writeFileSync(
     join(m.out, 'model.json'),
