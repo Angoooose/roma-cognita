@@ -81,11 +81,20 @@ export class PlanLayer {
     fieldUniforms.edgeClamp.value = fl.edgeClamp
     fieldUniforms.laneClamp.value = fl.laneClamp
     const slots = fieldUniforms.grounds.array as THREE.Vector4[]
+    const angles = fieldUniforms.groundAngles.array as number[]
     fl.grounds.forEach(
       (
-        g: { kind: keyof typeof GROUND; years: [number, number]; prior: number },
+        g: {
+          kind: keyof typeof GROUND
+          years: [number, number]
+          prior: number
+          angle: number
+        },
         k: number,
-      ) => slots[k + 1].set(g.years[0], g.years[1], g.prior, GROUND[g.kind]),
+      ) => {
+        slots[k + 1].set(g.years[0], g.years[1], g.prior, GROUND[g.kind])
+        angles[k + 1] = g.angle
+      },
     )
     this.plate = [pl.x0, pl.y0, pl.x0 + pl.width * pl.texel, pl.y0 + pl.height * pl.texel]
     this.outlines = meta.outlines.map((o: Omit<Outline, 'box'>) => {

@@ -610,6 +610,7 @@ export async function bakePlate(
         kind: gr.kind,
         years: gr.years,
         prior: gr.prior,
+        angle: gr.angle,
       })),
     },
   }

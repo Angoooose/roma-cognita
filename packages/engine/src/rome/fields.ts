@@ -18,6 +18,7 @@ import {
   select,
   sin,
   smoothstep,
+  step,
   texture,
   textureLoad,
   uniform,
@@ -67,6 +68,8 @@ export const fieldUniforms = {
     Array.from({ length: 16 }, () => new THREE.Vector4(1, 0, 0, 0)),
     'vec4',
   ),
+  /** Each recorded ground's own lie, radians, by the same index: its walks' or pits'. */
+  groundAngles: uniformArray(new Array(16).fill(0), 'float'),
 }
 
 /** What the land is used for (pipeline fields.ts `LAND`). */
@@ -389,6 +392,26 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
     const share = (Math.PI * r * r) / (spacing * spacing)
     return mix(float(share), spot, float(1).sub(smoothstep(r * 0.4, r * 1.2, pxM)))
   }
+  /**
+   * Pits scattered over a lattice `spacing` apart: in a `share` of its cells, each set
+   * off its cell's middle and `r0`–`r1` across, fading to their share when too fine.
+   */
+  const pits = (spacing: number, r0: number, r1: number, share: number) => {
+    const cell = floor(vec2(ru, rv).div(spacing))
+    const roll = (seed: number) =>
+      fract(sin(cell.dot(vec2(12.9898 + seed, 78.233 + seed * 1.7))).mul(43758.5453))
+    const at = cell
+      .add(0.5)
+      .add(vec2(roll(1), roll(2)).sub(0.5).mul(0.6))
+      .mul(spacing)
+    const r = mix(float(r0), float(r1), roll(3))
+    const d = length(vec2(ru, rv).sub(at))
+    const pit = float(1)
+      .sub(smoothstep(r.sub(aa), r.add(aa), d))
+      .mul(step(roll(4), float(share)))
+    const mean = (share * Math.PI * ((r0 + r1) / 2) ** 2) / (spacing * spacing)
+    return mix(float(mean), pit, float(1).sub(smoothstep(r0 * 0.4, r1 * 1.2, pxM)))
+  }
   /** A soft mottle, to take the flatness off a field, fading out when too fine. */
   const mottle = (scale: number, seed: number) =>
     seededNoise(vec2(px, py).div(scale), seed).mul(
@@ -412,6 +435,20 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
       .and(year.greaterThanEqual(p.x))
       .and(year.lessThanEqual(p.y))
     groundKind.assign(select(now, g.w, select(then, p.w, float(-1))))
+    // While it stands, its walks or pits lie its own way, not the way of the plots
+    // under it, which change at every block.
+    If(groundKind.greaterThanEqual(0), () => {
+      const lie = (k: THREE.Node<'int'>) =>
+        fieldUniforms.groundAngles.element(k) as unknown as THREE.Node<'float'>
+      const b = select(now, lie(int(tone)), lie(int(g.z)))
+      ru.assign(px.mul(cos(b)).add(py.mul(sin(b))))
+      rv.assign(
+        px
+          .mul(sin(b))
+          .negate()
+          .add(py.mul(cos(b))),
+      )
+    })
     // Outside its years, the farmland it was laid out over, before and after (the
     // burial ground, cleared by about 35 BCE, goes back to the country round it).
     kind.assign(select(groundKind.lessThan(0), floor(g8.div(16)), float(LAND.recorded)))
@@ -471,9 +508,9 @@ function fieldsOver(colour: V3, mx: F, my: F, pxM: F) {
       const walk = max(stripes(ru, 45, 0.06), stripes(rv, 45, 0.06)).mul(0.7)
       const lawn = P.lawn.mul(float(1).add(mottle(8, 56).mul(0.05)))
       const garden = mix(lawn, P.walk, walk.mul(0.6))
-      // The burial ground: rough, trodden grass over the pits, bare where they are.
+      // The burial ground: rough, trodden grass, and here and there the earth of a pit.
       const rough = mix(P.pasture, P.burial, float(0.5).add(mottle(10, 55).mul(0.6)))
-      const burial = mix(rough, P.pit, spots(9, 1.6).mul(0.55))
+      const burial = mix(rough, P.pit, pits(12, 0.9, 2, 0.35).mul(0.32))
       look.assign(
         select(
           groundKind.equal(GROUND.grove),

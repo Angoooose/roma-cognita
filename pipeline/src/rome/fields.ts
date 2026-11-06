@@ -141,6 +141,8 @@ export interface RecordedGround {
    * recorded ground it was laid out over, or 0 for the farmland it replaced.
    */
   prior: number
+  /** The lie of its walks or its pits, radians over half a turn: along its longest side. */
+  angle: number
 }
 
 export interface FieldsInput {
@@ -660,6 +662,7 @@ export function recordedGrounds(
         ring: poly[0],
         years: [p.from.year, p.to.year],
         prior: 0,
+        angle: longestSide(poly[0]),
       })
   }
   // Earlier first, so a ground laid out over another comes after it (`prior`).
@@ -667,6 +670,18 @@ export function recordedGrounds(
   if (out.length > 15)
     throw new Error('fields: more than 15 recorded grounds (plate-2 has 4 bits)')
   return out
+}
+
+/** The direction of a ring's longest side, radians over half a turn. */
+function longestSide(ring: Pt[]) {
+  let best = 0
+  let angle = 0
+  for (let i = 0; i + 1 < ring.length; i++) {
+    const [dx, dy] = [ring[i + 1][0] - ring[i][0], ring[i + 1][1] - ring[i][1]]
+    const L = Math.hypot(dx, dy)
+    if (L > best) [best, angle] = [L, (Math.atan2(dy, dx) + Math.PI * 2) % Math.PI]
+  }
+  return Math.round(angle * 1e4) / 1e4
 }
 
 // --- trees ---------------------------------------------------------------------------------
