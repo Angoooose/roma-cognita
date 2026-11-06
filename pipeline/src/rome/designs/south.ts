@@ -118,8 +118,8 @@ export const DESIGNS_SOUTH: Record<string, Design> = {
     model: 'quay',
     size: [165, 30],
     bearing: 316,
-    level: 'top',
-    why: 'The quay of 193 BCE, "paved with stone" and given "steps up from the Tiber" by the censors of 174 (Livy 35.10.12, 41.27.8), its tufa embankments along the left bank for 165 m here (OpenStreetMap, relation 5660515), with stones for mooring (P&A, Emporium, p. 200).',
+    flights: 3,
+    why: 'The quay of 193 BCE, "paved with stone" and given "steps up from the Tiber" by the censors of 174 (Livy 35.10.12, 41.27.8), its tufa embankments along the left bank for 165 m here (OpenStreetMap, relation 5660515), with stones for mooring (P&A, Emporium, p. 200). How many flights of steps there were, and where, is not known: three are drawn, evenly spaced. It is laid at the level of the bank behind it, cut and fill balanced.',
   },
   'porticus-aemilia': {
     model: 'navalia',

@@ -2556,15 +2556,25 @@ const island: Build<Design & Island> = (F, d) => {
 }
 
 /**
- * A quay along the river (the Emporium): a paved platform of tufa, its front a wall
- * down to the water with flights of steps down it and stones for mooring.
+ * A quay along the river (the Emporium): a paved platform of tufa, its front (+v) a
+ * wall down to the water with stones for mooring along its edge and `flights` of
+ * steps down it to the river, spaced evenly along it.
  */
-const quay: Build<Design> = (F, _d, w, l) => {
+const quay: Build<Design & { water?: number; flights?: number }> = (F, d, w, l) => {
   F.box(-w / 2, w / 2, -l / 2, l / 2, -F.deep, 0.3, C.tufa)
+  const flights = d.flights ?? 0
+  const water = Math.min(-0.5, d.water ?? -2)
+  const run = Frame.flight(0.3 - water)
+  const at = (k: number) => -w / 2 + ((k + 0.5) * w) / flights
+  const onStairs = (u: number) =>
+    Array.from({ length: flights }, (_, k) => at(k)).some((s) => Math.abs(u - s) < 3.5)
   for (let k = 0; k < Math.round(w / 8); k++) {
     const u = -w / 2 + ((k + 0.5) * w) / Math.round(w / 8)
+    if (onStairs(u)) continue
     F.box(u - 0.35, u + 0.35, l / 2 - 0.6, l / 2 + 0.15, 0.3, 0.9, C.travertine)
   }
+  for (let k = 0; k < flights; k++)
+    F.steps(at(k) - 2.5, at(k) + 2.5, l / 2, l / 2 + run, water, 0.3, '+v', C.tufa)
 }
 
 /** A great altar on a platform (the Ara Maxima): its podium, the altar on it, a low fence round it. */
