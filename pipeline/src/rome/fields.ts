@@ -143,6 +143,8 @@ export interface RecordedGround {
   prior: number
   /** The lie of its walks or its pits, radians over half a turn: along its longest side. */
   angle: number
+  /** For the part of a ground laid out over an earlier one, the whole ground's index. */
+  of?: number
 }
 
 export interface FieldsInput {
@@ -365,7 +367,22 @@ export function layFields(f: FieldsInput): Fields {
 
   // --- recorded ground -------------------------------------------------------------------
   const recorded = new Uint8Array(n)
-  f.grounds.forEach((gr, k) => {
+  // The part of a ground laid out over an earlier one is a ground of its own in the
+  // list (`of` its whole), remembering that earlier one as `prior`: the plate holds
+  // one ground a texel.
+  const parts = new Map<string, number>()
+  const count = f.grounds.length
+  const overlying = (k: number, under: number) => {
+    const key = `${k},${under}`
+    if (!parts.has(key)) {
+      f.grounds.push({ ...f.grounds[k], prior: under, of: k })
+      parts.set(key, f.grounds.length)
+      if (f.grounds.length > 15)
+        throw new Error('fields: more than 15 recorded grounds (plate-2 has 4 bits)')
+    }
+    return parts.get(key)!
+  }
+  f.grounds.slice(0, count).forEach((gr, k) => {
     // Only the ground on the record's side of the river: an outline drawn loosely
     // along a bank (Caesar's gardens) does not cross it.
     // A burial ground stays outside the wall and its ditch, however its outline is
@@ -376,10 +393,21 @@ export function layFields(f: FieldsInput): Fields {
     // ground or a grove ended, so each takes the whole plots whose middle falls inside
     // its outline, and its edge runs along their hedges and lanes like any field's.
     const byPlot = gr.kind !== 'garden'
+    // The burial ground's extent is a guess (its record says so), so it thins out
+    // plot by plot over its last `BURIAL_FRAY_M`, each plot the likelier to be
+    // farmland the nearer its outline, rather than stopping at a line.
+    const segs = gr.ring.slice(0, -1).map((q, j) => [q, gr.ring[j + 1]] as [Pt, Pt])
+    const frays = gr.kind === 'burial'
+    const takes = (mid: Pt) => {
+      if (!inRing(mid, gr.ring)) return false
+      if (!frays) return true
+      const depth = nearestSeg(segs, mid).d / BURIAL_FRAY_M
+      return depth >= 1 || hash(Math.round(mid[0]), Math.round(mid[1]), 20) < depth
+    }
     const within = new Uint8Array(n)
     rasterise(g, byPlot ? grow(gr.ring, PLOT_REACH_M) : gr.ring, (i) => {
       if (f.city[i] < minCity) return
-      within[i] = !byPlot || inRing(plotMiddle(at(i)), gr.ring) ? 1 : 0
+      within[i] = !byPlot || takes(plotMiddle(at(i))) ? 1 : 0
     })
     const seed = texelAt(g, gr.at)
     const queue = seed >= 0 && within[seed] ? [seed] : []
@@ -388,9 +416,9 @@ export function layFields(f: FieldsInput): Fields {
     while (queue.length) {
       const i = queue.pop()!
       // A later ground laid out over an earlier one (Maecenas' gardens on the
-      // Esquiline's burial ground) remembers it, for the years before its own.
-      if (recorded[i] && !gr.prior) gr.prior = recorded[i]
-      recorded[i] = k + 1
+      // Esquiline's burial ground) remembers it, for the years before its own: where
+      // it was, not across the whole later ground.
+      recorded[i] = recorded[i] ? overlying(k, recorded[i]) : k + 1
       const c = i % g.width
       for (const j of [i - 1, i + 1, i - g.width, i + g.width]) {
         if (j < 0 || j >= n || reached[j] || !within[j] || f.water[j] < 3) continue
@@ -721,6 +749,9 @@ const TREES_WITHIN_M = 1600
 /** How far beyond its outline a plot's middle can lie for a texel inside it, metres. */
 const PLOT_REACH_M = 100
 
+/** Over how much of its outline's inside the burial ground thins out, metres. */
+const BURIAL_FRAY_M = 160
+
 /**
  * How far outside the wall's line a burial ground begins, metres: past the wall, its
  * berm and its ditch (model.ts `WALL`, `AGGER`).
@@ -797,10 +828,11 @@ export function fieldTrees(
   // The recorded grounds, planted on a looser grid of their own.
   const onGround = (p: Pt, k: number) => {
     const i = texelAt(g, p)
-    return i >= 0 && f.recorded[i] === k + 1
+    if (i < 0 || !f.recorded[i]) return false
+    return f.recorded[i] === k + 1 || grounds[f.recorded[i] - 1].of === k
   }
   grounds.forEach((gr, k) => {
-    if (gr.kind === 'burial') return
+    if (gr.kind === 'burial' || gr.of !== undefined) return
     // A sacred grove a stand of trees with glades in it, a garden its trees along
     // walks and round lawns: neither a wood.
     const S = gr.kind === 'grove' ? 10 : 13
@@ -837,7 +869,7 @@ export function fieldTrees(
   })
   // A garden's walk round its edge is lined with cypresses.
   grounds.forEach((gr, k) => {
-    if (gr.kind !== 'garden') return
+    if (gr.kind !== 'garden' || gr.of !== undefined) return
     const inset = grow(gr.ring, -5)
     for (let e = 0; e + 1 < inset.length; e++) {
       const [a, b] = [inset[e], inset[e + 1]]

@@ -1663,7 +1663,7 @@ export function bakeModel(m: ModelInput) {
   /** The last year a house at `p` stands: the year before a later monument took its site. */
   // A garden laid out within the window (Lucullus', Maecenas') takes the houses on
   // its ground when it comes, as a monument does.
-  const laidOut = m.grounds.filter((gr) => gr.years[0] > WINDOW[0])
+  const laidOut = m.grounds.filter((gr) => gr.years[0] > WINDOW[0] && gr.of === undefined)
   const until = (pts: Pt[], own?: RecordedGround) =>
     Math.min(
       100000,
