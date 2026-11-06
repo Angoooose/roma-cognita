@@ -210,36 +210,7 @@ export function layFields(f: FieldsInput): Fields {
     g.y1 - (Math.floor(i / g.width) + 0.5) * g.texel,
   ]
 
-  // --- recorded and open ground ------------------------------------------------------
-  const recorded = new Uint8Array(n)
-  f.grounds.forEach((gr, k) => {
-    // Only the ground on the record's side of the river: an outline drawn loosely
-    // along a bank (Caesar's gardens) does not cross it.
-    // A burial ground stays outside the wall and its ditch, however its outline is
-    // drawn: the dead were not buried in the city (Twelve Tables 10.1, Cicero, Laws
-    // 2.58), and the houses inside stand over it otherwise.
-    const minCity = gr.kind === 'burial' ? BURIAL_OUTSIDE_M : -Infinity
-    const within = new Uint8Array(n)
-    rasterise(g, gr.ring, (i) => (within[i] = f.city[i] >= minCity ? 1 : 0))
-    const seed = texelAt(g, gr.at)
-    const queue = seed >= 0 && within[seed] ? [seed] : []
-    const reached = new Uint8Array(n)
-    for (const i of queue) reached[i] = 1
-    while (queue.length) {
-      const i = queue.pop()!
-      // A later ground laid out over an earlier one (Maecenas' gardens on the
-      // Esquiline's burial ground) remembers it, for the years before its own.
-      if (recorded[i] && !gr.prior) gr.prior = recorded[i]
-      recorded[i] = k + 1
-      const c = i % g.width
-      for (const j of [i - 1, i + 1, i - g.width, i + g.width]) {
-        if (j < 0 || j >= n || reached[j] || !within[j] || f.water[j] < 3) continue
-        if ((j === i - 1 && c === 0) || (j === i + 1 && c === g.width - 1)) continue
-        reached[j] = 1
-        queue.push(j)
-      }
-    }
-  })
+  // --- open ground ---------------------------------------------------------------------
   const open = new Uint8Array(n)
   const wobbled = (p: Pt, m: number): Pt =>
     m
@@ -274,7 +245,9 @@ export function layFields(f: FieldsInput): Fields {
   for (const ring of f.built) rasterise(g, ring, (i) => (built[i] = 1))
   // The edges of the recorded and open grounds, for the lane field below.
   const regionEdges: { ring: Pt[]; wobble: number }[] = [
-    ...f.grounds.map((gr) => ({ ring: gr.ring, wobble: 0 })),
+    ...f.grounds
+      .filter((gr) => gr.kind === 'garden')
+      .map((gr) => ({ ring: gr.ring, wobble: 0 })),
     ...f.open.map((o) => ({ ring: o.ring, wobble: o.wobble })),
     ...f.monuments.map((ring) => ({ ring: grow(ring, MONUMENT_CLEAR_M), wobble: 0 })),
     ...f.built.map((ring) => ({ ring, wobble: 0 })),
@@ -378,6 +351,56 @@ export function layFields(f: FieldsInput): Fields {
     return { b1, b2, b, side, isLane, toBlock, toLane, rel, key, w, d, u, v, iu, iv }
   }
 
+  /** The middle of the plot a point is in. */
+  const plotMiddle = (p: Pt): Pt => {
+    const { b, rel, key, w, d, iu, iv } = plotOf(p)
+    const n_: Pt = [-b.dir[1], b.dir[0]]
+    const across = Math.sign(rel[0] * n_[0] + rel[1] * n_[1]) || 1
+    const along = (iu + 0.5) * w - hash(key, 0, 6) * w
+    return [
+      b.foot[0] + b.dir[0] * along + n_[0] * across * (iv + 0.5) * d,
+      b.foot[1] + b.dir[1] * along + n_[1] * across * (iv + 0.5) * d,
+    ]
+  }
+
+  // --- recorded ground -------------------------------------------------------------------
+  const recorded = new Uint8Array(n)
+  f.grounds.forEach((gr, k) => {
+    // Only the ground on the record's side of the river: an outline drawn loosely
+    // along a bank (Caesar's gardens) does not cross it.
+    // A burial ground stays outside the wall and its ditch, however its outline is
+    // drawn: the dead were not buried in the city (Twelve Tables 10.1, Cicero, Laws
+    // 2.58), and the houses inside stand over it otherwise.
+    const minCity = gr.kind === 'burial' ? BURIAL_OUTSIDE_M : -Infinity
+    // A garden was walled, and keeps its outline. Nobody recorded where a burial
+    // ground or a grove ended, so each takes the whole plots whose middle falls inside
+    // its outline, and its edge runs along their hedges and lanes like any field's.
+    const byPlot = gr.kind !== 'garden'
+    const within = new Uint8Array(n)
+    rasterise(g, byPlot ? grow(gr.ring, PLOT_REACH_M) : gr.ring, (i) => {
+      if (f.city[i] < minCity) return
+      within[i] = !byPlot || inRing(plotMiddle(at(i)), gr.ring) ? 1 : 0
+    })
+    const seed = texelAt(g, gr.at)
+    const queue = seed >= 0 && within[seed] ? [seed] : []
+    const reached = new Uint8Array(n)
+    for (const i of queue) reached[i] = 1
+    while (queue.length) {
+      const i = queue.pop()!
+      // A later ground laid out over an earlier one (Maecenas' gardens on the
+      // Esquiline's burial ground) remembers it, for the years before its own.
+      if (recorded[i] && !gr.prior) gr.prior = recorded[i]
+      recorded[i] = k + 1
+      const c = i % g.width
+      for (const j of [i - 1, i + 1, i - g.width, i + g.width]) {
+        if (j < 0 || j >= n || reached[j] || !within[j] || f.water[j] < 3) continue
+        if ((j === i - 1 && c === 0) || (j === i + 1 && c === g.width - 1)) continue
+        reached[j] = 1
+        queue.push(j)
+      }
+    }
+  })
+
   // --- each texel ----------------------------------------------------------------------
   const use = new Uint8Array(n)
   const tone = new Uint8Array(n)
@@ -428,8 +451,7 @@ export function layFields(f: FieldsInput): Fields {
     )
       continue
     const p = at(i)
-    const { b, b1, b2, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane, rel } =
-      plotOf(p)
+    const { b, b1, b2, toBlock, toLane, key, w, d, u, v, iu, iv, side, isLane } = plotOf(p)
     blockAt[i] = b1
     toBlockAt[i] = toBlock
     if (!isLane && toBlock < g.texel) (link(b1, b2), link(b2, b1))
@@ -459,13 +481,7 @@ export function layFields(f: FieldsInput): Fields {
     // What the plot grows, from the ground at its middle, so the whole plot grows one
     // thing: taken texel by texel, a plot on a hillside changed crop across itself in
     // steps, with no hedge between.
-    const n_: Pt = [-b.dir[1], b.dir[0]]
-    const across = Math.sign(rel[0] * n_[0] + rel[1] * n_[1]) || 1
-    const along = (iu + 0.5) * w - hash(key, 0, 6) * w
-    const mid = texelAt(g, [
-      b.foot[0] + b.dir[0] * along + n_[0] * across * (iv + 0.5) * d,
-      b.foot[1] + b.dir[1] * along + n_[1] * across * (iv + 0.5) * d,
-    ])
+    const mid = texelAt(g, plotMiddle(p))
     const m = mid >= 0 ? mid : i
     const { slope, south } = slopeAt(m)
     const low = f.smooth[m] < f.waterLevel + MEADOW.over && b.fromRiver < MEADOW.within
@@ -701,6 +717,9 @@ export const ROWS_M = { olives: 9, orchard: 7 }
  * the shader's painted rows carry them, too small by then to stand out.
  */
 const TREES_WITHIN_M = 1600
+
+/** How far beyond its outline a plot's middle can lie for a texel inside it, metres. */
+const PLOT_REACH_M = 100
 
 /**
  * How far outside the wall's line a burial ground begins, metres: past the wall, its
