@@ -6,6 +6,7 @@ import {
   mix,
   screenUV,
   smoothstep,
+  step,
   uniform,
   uv,
   vec3,
@@ -131,6 +132,11 @@ const STYLES: Record<string, FaceStyle> = {
 export const labelUniforms = {
   /** Ground metres per CSS pixel at the target; the zoom fade keys on it. */
   metresPerPixel: uniform(1000),
+  /**
+   * The screen's rightward direction on the ground plane (the camera's heading):
+   * each name is laid both ways, and shows the way that reads left to right.
+   */
+  right: uniform(new THREE.Vector2(1, 0)),
   enabled: uniform(1),
   /**
    * Knockouts: screen rectangles (u0, v0, u1, v1 in screen uv, v down) where land
@@ -265,25 +271,34 @@ export class LabelLayer {
       const positions: number[] = []
       const uvs: number[] = []
       const caps: number[] = []
+      const reads: number[] = []
       const index: number[] = []
       face.runs = []
       for (const [p, f] of this.fades) {
         if (styleOf(p) !== name) continue
         const start = positions.length / 3
-        for (const q of layout(face.font, p)) {
-          if (f.to === 1)
-            this.glyphBoxes.push({
-              corners: q.map(([x, y]) => [x, y]),
-              capHeight: p.capHeight,
-              style: styleOf(p),
-            })
-          const base = positions.length / 3
-          for (const [x, y, u, v] of q) {
-            positions.push(x, y, 0)
-            uvs.push(u, v)
-            caps.push(p.capHeight)
+        // Laid left to right along its path, and again right to left for a view
+        // turned round, each with the direction it reads in.
+        const [a, b] = [p.path[0], p.path[p.path.length - 1]]
+        const along = Math.sign(b[0] - a[0]) || 1
+        const dir = [(b[0] - a[0]) * along, (b[1] - a[1]) * along]
+        for (const back of [false, true]) {
+          for (const q of layout(face.font, p, back)) {
+            if (f.to === 1 && !back)
+              this.glyphBoxes.push({
+                corners: q.map(([x, y]) => [x, y]),
+                capHeight: p.capHeight,
+                style: styleOf(p),
+              })
+            const base = positions.length / 3
+            for (const [x, y, u, v] of q) {
+              positions.push(x, y, 0)
+              uvs.push(u, v)
+              caps.push(p.capHeight)
+              reads.push(back ? -dir[0] : dir[0], back ? -dir[1] : dir[1])
+            }
+            index.push(base, base + 1, base + 2, base, base + 2, base + 3)
           }
-          index.push(base, base + 1, base + 2, base, base + 2, base + 3)
         }
         face.runs.push({ p, start, count: positions.length / 3 - start })
       }
@@ -291,6 +306,7 @@ export class LabelLayer {
       g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
       g.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2))
       g.setAttribute('capHeight', new THREE.Float32BufferAttribute(caps, 1))
+      g.setAttribute('reads', new THREE.Float32BufferAttribute(reads, 2))
       g.setAttribute(
         'fade',
         new THREE.Float32BufferAttribute(new Float32Array(positions.length / 3), 1),
@@ -382,7 +398,11 @@ async function loadFace(name: string, font: string): Promise<Face | null> {
  * Each glyph is centred on the path at its own arc length and turned to the path's
  * tangent there, which is how lettering follows a curve without shearing.
  */
-function layout(f: FontData, p: Placement): [number, number, number, number][][] {
+function layout(
+  f: FontData,
+  p: Placement,
+  back = false,
+): [number, number, number, number][][] {
   const em = p.capHeight / (f.capPx / f.size)
   const k = em / f.size // metres per atlas pixel
   const cps = [...p.text].map((c) => c.codePointAt(0)!)
@@ -394,8 +414,10 @@ function layout(f: FontData, p: Placement): [number, number, number, number][][]
       width += (f.kerning.get(`${cps[i]},${cps[i + 1]}`) ?? 0) * k + p.tracking * em
   }
   // Paths are baked left to right; if one ever is not, lay it the other way rather
-  // than print a name upside down.
-  const pts = p.path[p.path.length - 1][0] < p.path[0][0] ? [...p.path].reverse() : p.path
+  // than print a name upside down. `back` lays it right to left, for a view turned
+  // round.
+  const ltr = p.path[p.path.length - 1][0] < p.path[0][0] ? [...p.path].reverse() : p.path
+  const pts = back ? [...ltr].reverse() : ltr
   const path = arcLength(pts)
   let pen = (path.total - width) / 2
   // The path runs through the middle of the capitals: baseline is half a cap below.
@@ -451,6 +473,8 @@ function createMaterial(f: FontData, atlas: THREE.Texture, style: FaceStyle) {
     float(1).sub(smoothstep(style.fadeOut[0], style.fadeOut[1], capPx)),
   )
   const year = attribute('fade', 'float')
+  // Of a name's two layings, the one that reads left to right on screen.
+  const upright = step(0, attribute('reads', 'vec2').dot(labelUniforms.right))
 
   mat.colorNode = mix(
     vec3(style.halo.r, style.halo.g, style.halo.b),
@@ -474,6 +498,7 @@ function createMaterial(f: FontData, atlas: THREE.Texture, style: FaceStyle) {
     .mul(float(1).sub(knocked.mul(0.72)))
     .mul(zoom)
     .mul(year)
+    .mul(upright)
     .mul(labelUniforms.enabled)
   return mat
 }

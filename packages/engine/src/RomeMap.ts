@@ -18,6 +18,9 @@ import { planUniforms } from './rome/shading.ts'
 import { Miniature } from './rome/miniature.ts'
 import { entries, frame, hitFor, type MapRef } from './find.ts'
 
+/** The screen's right in the world, reused each frame. */
+const SCREEN_RIGHT = new THREE.Vector3()
+
 export interface RomeMapOptions {
   camera: CameraState
   /** Force the WebGL2 backend, to check the fallback renders the same picture. */
@@ -222,6 +225,9 @@ export class RomeMap {
     if (this.politics.tick(now)) this.dirty = true
     if (this.labels.tick(now)) this.dirty = true
     labelUniforms.metresPerPixel.value = mpp
+    // The screen's right on the ground, for the lettering to read left to right.
+    const right = SCREEN_RIGHT.setFromMatrixColumn(this.view.camera.matrixWorld, 0)
+    labelUniforms.right.value.set(right.x, right.y)
     roadUniforms.pixelRatio.value = this.renderer.getPixelRatio()
     planUniforms.pixelRatio.value = this.renderer.getPixelRatio()
     // The terrain lays itself smooth under the model as the board comes in (18–26 m/px),
