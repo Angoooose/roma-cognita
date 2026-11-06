@@ -151,7 +151,7 @@ export class RomeMap {
     this.renderer.setPixelRatio(window.devicePixelRatio)
     // Only the model of Rome casts and takes shadows (rome/ModelLayer.ts).
     this.renderer.shadowMap.enabled = true
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
+    this.renderer.shadowMap.type = THREE.PCFShadowMap
     // Past the last terrain tile: the paper the terrain fades into at the far margin, so
     // the edge of the data never shows.
     this.renderer.setClearColor(PAPER_HEX)
