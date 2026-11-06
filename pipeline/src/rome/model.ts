@@ -1865,6 +1865,8 @@ export function bakeModel(m: ModelInput) {
   /** Trees in gardens and groves, and the years they stand (a house's, its garden's). */
   const courtyardTrees: { at: Pt; years?: number[] }[] = []
   const placed = new SpatialHash(30)
+  /** Every building's footprint, so a tree keeps off a long one as well as a short one. */
+  const lots = new FootprintGrid(30)
   const [bx0, by0, bx1, by1] = bounds(m.circuit, SUBURB.reach + 20)
   const lot = (
     pts: Pt[],
@@ -1874,6 +1876,7 @@ export function bakeModel(m: ModelInput) {
     tone: number,
     from?: number,
   ) => {
+    if (kind !== LOT_KIND.yard && kind !== LOT_KIND.garden) lots.add(pts.slice(0, 4))
     fabric.push(
       ...pts.slice(0, 4).flatMap(([x, y]) => [round(x), round(y)]),
       round(h),
@@ -2414,6 +2417,7 @@ export function bakeModel(m: ModelInput) {
       (inCity || !inCircuit(p[0], p[1])) &&
       sample(m.water, p[0], p[1], -1) >= 10 &&
       !placed.near(p, 8) &&
+      !lots.near(p, 0) &&
       aqueductGrid.nearest(p).d >= 8 &&
       streetGrid.nearest(p).d >= 6 &&
       monumentGrid.nearest(p).d >= 10 &&
@@ -2946,6 +2950,34 @@ class SpatialHash {
       for (let j = cj - 2; j <= cj + 2; j++)
         for (const [x, y, rr] of this.cells.get(`${i},${j}`) ?? [])
           if (Math.hypot(x - p[0], y - p[1]) < r + rr) return true
+    return false
+  }
+}
+
+/** Footprints by the cells their bounds cross: whether a point is in one, or near. */
+class FootprintGrid {
+  private cells = new Map<string, Pt[][]>()
+  private size: number
+  constructor(size: number) {
+    this.size = size
+  }
+  add(ring: Pt[]) {
+    const closed = [...ring, ring[0]]
+    const [x0, y0, x1, y1] = bounds(closed, 0)
+    for (let i = Math.floor(x0 / this.size); i <= Math.floor(x1 / this.size); i++)
+      for (let j = Math.floor(y0 / this.size); j <= Math.floor(y1 / this.size); j++) {
+        const k = `${i},${j}`
+        const list = this.cells.get(k) ?? []
+        list.push(closed)
+        this.cells.set(k, list)
+      }
+  }
+  near(p: Pt, r: number) {
+    const [ci, cj] = [Math.floor(p[0] / this.size), Math.floor(p[1] / this.size)]
+    for (let i = ci - 1; i <= ci + 1; i++)
+      for (let j = cj - 1; j <= cj + 1; j++)
+        for (const ring of this.cells.get(`${i},${j}`) ?? [])
+          if (inRing(p, ring) || distToRing(p, ring) < r) return true
     return false
   }
 }
