@@ -1,4 +1,5 @@
 @import '@fontsource-variable/cinzel';
+@import '@fontsource-variable/eb-garamond';
 @import '@fontsource-variable/eb-garamond/wght-italic.css';
 
 /*
@@ -9,6 +10,10 @@
  * to right as the map loads. Once it has, the gold index is set on the year the map
  * opens at, the year under it, and the frontispiece gives way. Linked from index.html,
  * not imported, so it paints before the bundle has run.
+ *
+ * On a phone or tablet it stays (lib/handheld.ts): the ruler engraved whole between the
+ * map's first and last years, and under a rule a short note saying the map is read on a
+ * computer, with the link to send there. The upright Garamond is for that note alone.
  */
 
 #splash {
@@ -136,6 +141,124 @@
 
 #splash.arrived .year {
   opacity: 1;
+}
+
+/* The phone or tablet's plate. */
+
+#splash .span,
+#splash .handheld-note {
+  display: none;
+}
+
+#splash.handheld {
+  overflow-y: auto;
+  padding: 32px 16px;
+  pointer-events: auto;
+}
+
+#splash.handheld .plate {
+  width: min(300px, 100%);
+}
+
+#splash.handheld h1 {
+  /* Cinzel's capitals are wide: "Roma Cognita" fits a phone's width at this size. */
+  font-size: min(30px, 6.6vw);
+  white-space: nowrap;
+}
+
+#splash.handheld .scale {
+  --drawn: 1;
+}
+
+#splash.handheld .year {
+  display: none;
+}
+
+#splash.handheld .span {
+  display: flex;
+  justify-content: space-between;
+  align-self: stretch;
+  margin-top: -4px;
+  font-family: 'Cinzel Variable', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: color-mix(in oklab, var(--cream) 62%, var(--sea));
+}
+
+#splash.handheld .handheld-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  margin-top: 22px;
+}
+
+/* A rule with a seat's diamond at its centre, as the panels' (Marks.tsx, Fleuron). */
+#splash .fleuron {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  color: color-mix(in oklab, var(--gold) 42%, transparent);
+}
+
+#splash .fleuron span {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+#splash .fleuron i {
+  width: 6px;
+  height: 6px;
+  rotate: 45deg;
+  background: var(--gold);
+}
+
+#splash .handheld-note p {
+  margin: 22px 0 26px;
+  font-family: 'EB Garamond Variable', 'Garamond', serif;
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: pretty;
+  color: color-mix(in oklab, var(--cream) 82%, var(--sea));
+}
+
+#splash .handheld-note button {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The interface's gilt button (components/ui/button.tsx), a size up for a finger. */
+#splash .send {
+  min-width: 200px;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid color-mix(in oklab, var(--gold) 60%, transparent);
+  border-radius: 3px;
+  background: transparent;
+  font-family: 'Cinzel Variable', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+#splash .send:active {
+  border-color: var(--gold);
+  background: color-mix(in oklab, var(--gold) 10%, transparent);
+}
+
+#splash .handheld-note button:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

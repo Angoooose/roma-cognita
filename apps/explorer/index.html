@@ -11,7 +11,7 @@
   </head>
   <body>
     <!-- Shown while the map loads: src/splash.css, taken away by src/lib/splash.ts. -->
-    <div id="splash" aria-hidden="true">
+    <div id="splash">
       <div class="plate">
         <h1>Roma Cognita</h1>
         <div class="years">the Roman world</div>
@@ -20,6 +20,17 @@
           <svg class="index" viewBox="0 0 12 9"><polygon points="0,0 12,0 6,9" /></svg>
         </div>
         <div class="year"></div>
+        <!-- On a phone or tablet the frontispiece stays, saying where to read the map:
+             src/lib/handheld.ts. -->
+        <div class="span"><span>133 BCE</span><span>27 BCE</span></div>
+        <div class="handheld-note">
+          <div class="fleuron"><span></span><i></i><span></span></div>
+          <p>
+            The map is made for a larger screen, explored with a mouse or trackpad. Open it
+            on a computer to explore.
+          </p>
+          <button type="button" class="send">Send the link</button>
+        </div>
       </div>
     </div>
     <script>
@@ -27,6 +38,14 @@
       {
         const splash = document.getElementById('splash')
         const show = () => splash.classList.add('fonts')
+        // A touch screen with no mouse or trackpad attached is a phone or tablet, which
+        // the map is not made for (DESIGN.md §2): it has no pinch to zoom.
+        const handheld =
+          matchMedia('(any-pointer: coarse)').matches &&
+          !matchMedia('(any-pointer: fine)').matches
+        if (handheld) splash.classList.add('handheld')
+        else splash.querySelector('.handheld-note').remove()
+        splash.setAttribute('aria-hidden', String(!handheld))
         // The ruler's ticks, as the timeline's: every fifth year, longer every 25th and at
         // the ends. Years BCE, counting down from the first.
         const ruler = splash.querySelector('.ruler')
@@ -45,6 +64,7 @@
         Promise.all([
           document.fonts.load('500 30px "Cinzel Variable"'),
           document.fonts.load('italic 17px "EB Garamond Variable"'),
+          handheld && document.fonts.load('17px "EB Garamond Variable"'),
         ]).then(show, show)
         setTimeout(show, 900)
       }

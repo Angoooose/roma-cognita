@@ -1275,6 +1275,12 @@ copy. What we take from it:
     the year is a gold index mark on the line. Confidence badges are dashed
     when uncertain, as the map's lines are.
   - The panels follow the reader's system theme.
+  - The map is for desktop only (§2): it has no pinch to zoom. On a phone or
+    tablet (a touch screen with no mouse or trackpad attached) the loading
+    plate stays, gold on the open sea. It shows the whole ruler with the map's
+    first and last years, a rule with the seat diamond, a short note that the
+    map is read on a computer, and a gilt button to send the link on. None of
+    the map is fetched (`src/lib/handheld.ts`).
   - The timeline is a slim strip in the bottom-right corner, 40 px in both
     states, that never moves: it always shows the year and opens its ruler
     beside it. Only its toggle opens or closes it.
